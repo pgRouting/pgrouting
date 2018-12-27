@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Contraction - Family of functions (Experimental) &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v3.0.0-dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -238,12 +230,12 @@
 </div></blockquote>
 <p class="rubric">Examples</p>
 <ul class="simple">
-<li>The green node <code class="docutils literal"><span class="pre">B</span></code> represents a dead end node</li>
-<li>The node <code class="docutils literal"><span class="pre">A</span></code> is the only node connecting to <code class="docutils literal"><span class="pre">B</span></code>.</li>
-<li>Node <code class="docutils literal"><span class="pre">A</span></code> is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.</li>
+<li>The green node <code class="docutils literal notranslate"><span class="pre">B</span></code> represents a dead end node</li>
+<li>The node <code class="docutils literal notranslate"><span class="pre">A</span></code> is the only node connecting to <code class="docutils literal notranslate"><span class="pre">B</span></code>.</li>
+<li>Node <code class="docutils literal notranslate"><span class="pre">A</span></code> is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.</li>
 <li>Directed graph</li>
 </ul>
-<img src="_images/graphviz-6fc9016a49d5e658840ce453c9268a695ff2939f.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-e002cb4fdb79b93e0efb0c60906e796ce901b508.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
     B [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon;
@@ -253,19 +245,19 @@
     rankdir=LR;
     G -&gt; A [dir=none, weight=1, penwidth=3];
     A -&gt; B;
-}" />
+}" class="graphviz" /></div>
 </div>
 <div class="section" id="operation-dead-end-contraction">
 <h3>Operation: Dead End Contraction<a class="headerlink" href="#operation-dead-end-contraction" title="Permalink to this headline">¶</a></h3>
 <p>The dead end contraction will stop until there are no more dead end nodes.
 For example from the following graph:</p>
 <ul class="simple">
-<li>Node <code class="docutils literal"><span class="pre">A</span></code> is connected to the rest of the graph by an unlimited number of edges.</li>
-<li>Node <code class="docutils literal"><span class="pre">B</span></code> is connected to the rest of the graph with one incoming edge.</li>
-<li>Node <code class="docutils literal"><span class="pre">B</span></code> is the only node connecting to <code class="docutils literal"><span class="pre">C</span></code>.</li>
-<li>The green node <code class="docutils literal"><span class="pre">C</span></code> represents a <cite>Dead End</cite> node</li>
+<li>Node <code class="docutils literal notranslate"><span class="pre">A</span></code> is connected to the rest of the graph by an unlimited number of edges.</li>
+<li>Node <code class="docutils literal notranslate"><span class="pre">B</span></code> is connected to the rest of the graph with one incoming edge.</li>
+<li>Node <code class="docutils literal notranslate"><span class="pre">B</span></code> is the only node connecting to <code class="docutils literal notranslate"><span class="pre">C</span></code>.</li>
+<li>The green node <code class="docutils literal notranslate"><span class="pre">C</span></code> represents a <cite>Dead End</cite> node</li>
 </ul>
-<img src="_images/graphviz-b6b32fbe23b359d49121b5dfacd26bf54d5a2806.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-ade791d152ae02e6bec03432389ce4d58635b655.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
     B [style=filled; color=deepskyblue];
     C [style=filled; color=green];
@@ -277,9 +269,9 @@ For example from the following graph:</p>
     G -&gt; A [dir=none, weight=1, penwidth=3];
     A -&gt; B;
     B -&gt; C;
-}" />
-<p>After contracting <code class="docutils literal"><span class="pre">C</span></code>, node <code class="docutils literal"><span class="pre">B</span></code> is now a <cite>Dead End</cite> node and is contracted:</p>
-<img src="_images/graphviz-2331219294bdd1a3a078493dfe2dca246003f719.png" alt="digraph G {
+}" class="graphviz" /></div>
+<p>After contracting <code class="docutils literal notranslate"><span class="pre">C</span></code>, node <code class="docutils literal notranslate"><span class="pre">B</span></code> is now a <cite>Dead End</cite> node and is contracted:</p>
+<div class="graphviz"><img src="_images/graphviz-fee1f3d6770149d5db8321e6dbab8efce97ddd35.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
     B [style=filled; color=green;label=&quot;B {C}&quot;;];
     &quot;G&quot; [shape=tripleoctagon;
@@ -289,9 +281,9 @@ For example from the following graph:</p>
     rankdir=LR;
     G -&gt; A [dir=none, weight=1, penwidth=3];
     A -&gt; B;
-}" />
-<p>Node <code class="docutils literal"><span class="pre">B</span></code> gets contracted</p>
-<img src="_images/graphviz-e45031245519360d5196bbdac8e826fca87e9771.png" alt="digraph G {
+}" class="graphviz" /></div>
+<p>Node <code class="docutils literal notranslate"><span class="pre">B</span></code> gets contracted</p>
+<div class="graphviz"><img src="_images/graphviz-e654fa28fa47c27bb2fe2665caa75650deb0b8c1.png" alt="digraph G {
     A [style=filled;color=deepskyblue;label=&quot;A {B, C}&quot;;];
     &quot;G&quot; [shape=tripleoctagon;
     style=filled;color=deepskyblue;
@@ -299,13 +291,13 @@ For example from the following graph:</p>
 
     rankdir=LR;
     G -&gt; A [dir=none, weight=1, penwidth=3];
-}" />
-<p>Nodes <code class="docutils literal"><span class="pre">B</span></code> and <code class="docutils literal"><span class="pre">C</span></code> belong to node <code class="docutils literal"><span class="pre">A</span></code>.</p>
+}" class="graphviz" /></div>
+<p>Nodes <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> belong to node <code class="docutils literal notranslate"><span class="pre">A</span></code>.</p>
 </div>
 <div class="section" id="not-dead-end-nodes">
 <h3>Not Dead End nodes<a class="headerlink" href="#not-dead-end-nodes" title="Permalink to this headline">¶</a></h3>
-<p>In this graph <code class="docutils literal"><span class="pre">B</span></code> is not a <cite>dead end</cite> node.</p>
-<img src="_images/graphviz-109c187751f4397014fcaba0fd6644889bf3711b.png" alt="digraph G {
+<p>In this graph <code class="docutils literal notranslate"><span class="pre">B</span></code> is not a <cite>dead end</cite> node.</p>
+<div class="graphviz"><img src="_images/graphviz-81a2d932155366d34dce9105efbd7c384cb54b7d.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
     B [style=filled; color=red];
     &quot;G&quot; [shape=tripleoctagon;
@@ -314,7 +306,7 @@ For example from the following graph:</p>
 
     G -&gt; A [dir=none, weight=1, penwidth=3];
     B -&gt; A;
-}" />
+}" class="graphviz" /></div>
 </div>
 </div>
 <div class="section" id="linear-contraction">
@@ -329,13 +321,13 @@ For example from the following graph:</p>
 </ul>
 <p class="rubric">Examples</p>
 <ul class="simple">
-<li>The green node <code class="docutils literal"><span class="pre">B</span></code> represents a linear node</li>
-<li>The nodes <code class="docutils literal"><span class="pre">A</span></code> and <code class="docutils literal"><span class="pre">C</span></code> are the only nodes connecting to <code class="docutils literal"><span class="pre">B</span></code>.</li>
-<li>Node <code class="docutils literal"><span class="pre">A</span></code> is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.</li>
-<li>Node <code class="docutils literal"><span class="pre">C</span></code> is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.</li>
+<li>The green node <code class="docutils literal notranslate"><span class="pre">B</span></code> represents a linear node</li>
+<li>The nodes <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> are the only nodes connecting to <code class="docutils literal notranslate"><span class="pre">B</span></code>.</li>
+<li>Node <code class="docutils literal notranslate"><span class="pre">A</span></code> is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.</li>
+<li>Node <code class="docutils literal notranslate"><span class="pre">C</span></code> is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.</li>
 <li>Directed graph</li>
 </ul>
-<img src="_images/graphviz-5401de51e398cd5a1e66d33dc04bec163fd4061f.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-5976dd8456b91da529df5272cf5c18bb6883451a.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
     B [style=filled; color=green];
     C [style=filled;color=deepskyblue];
@@ -348,20 +340,20 @@ For example from the following graph:</p>
     G -&gt; C [dir=none, weight=1, penwidth=3];
     A -&gt; B;
     B -&gt; C;
-}" />
+}" class="graphviz" /></div>
 </div>
 <div class="section" id="operation-linear-contraction">
 <h3>Operation: Linear Contraction<a class="headerlink" href="#operation-linear-contraction" title="Permalink to this headline">¶</a></h3>
 <p>The linear contraction will stop until there are no more linear nodes.
 For example from the following graph:</p>
 <ul class="simple">
-<li>Node <code class="docutils literal"><span class="pre">A</span></code> is connected to the rest of the graph by an unlimited number of edges.</li>
-<li>Node <code class="docutils literal"><span class="pre">B</span></code> is connected to the rest of the graph with one incoming edge and one outgoing edge.</li>
-<li>Node <code class="docutils literal"><span class="pre">C</span></code> is connected to the rest of the graph with one incoming edge and one outgoing edge.</li>
-<li>Node <code class="docutils literal"><span class="pre">D</span></code> is connected to the rest of the graph by an unlimited number of edges.</li>
-<li>The green nodes <code class="docutils literal"><span class="pre">B</span></code> and <code class="docutils literal"><span class="pre">C</span></code> represents <cite>Linear</cite> nodes.</li>
+<li>Node <code class="docutils literal notranslate"><span class="pre">A</span></code> is connected to the rest of the graph by an unlimited number of edges.</li>
+<li>Node <code class="docutils literal notranslate"><span class="pre">B</span></code> is connected to the rest of the graph with one incoming edge and one outgoing edge.</li>
+<li>Node <code class="docutils literal notranslate"><span class="pre">C</span></code> is connected to the rest of the graph with one incoming edge and one outgoing edge.</li>
+<li>Node <code class="docutils literal notranslate"><span class="pre">D</span></code> is connected to the rest of the graph by an unlimited number of edges.</li>
+<li>The green nodes <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> represents <cite>Linear</cite> nodes.</li>
 </ul>
-<img src="_images/graphviz-948e1e546080b9020db46f6a5602f9e15f559671.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-bc7b60a82f767405751e940083a29f79a12d7c45.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
     B [style=filled; color=green];
     C [style=filled; color=green];
@@ -377,9 +369,9 @@ For example from the following graph:</p>
     B -&gt; C;
     C -&gt; D;
 
-}" />
-<p>After contracting <code class="docutils literal"><span class="pre">B</span></code>, a new edge gets inserted between <code class="docutils literal"><span class="pre">A</span></code> and <code class="docutils literal"><span class="pre">C</span></code> which is represented by red color.</p>
-<img src="_images/graphviz-4a4a8dc29d4568f43cf375c9e4579ef200955746.png" alt="digraph G {
+}" class="graphviz" /></div>
+<p>After contracting <code class="docutils literal notranslate"><span class="pre">B</span></code>, a new edge gets inserted between <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> which is represented by red color.</p>
+<div class="graphviz"><img src="_images/graphviz-0f53a1f679991a0f127cdc202958721f76616f7e.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
     C [style=filled; color=green];
     D [style=filled; color=deepskyblue];
@@ -393,9 +385,9 @@ For example from the following graph:</p>
     A -&gt; C [label=&quot;{B}&quot;;color=red]
     C -&gt; D;
 
-}" />
-<p>Node <code class="docutils literal"><span class="pre">C</span></code> is <cite>linear node</cite> and gets contracted.</p>
-<img src="_images/graphviz-58cd6a70974a1eda1ea5235b8725a98753f73940.png" alt="digraph G {
+}" class="graphviz" /></div>
+<p>Node <code class="docutils literal notranslate"><span class="pre">C</span></code> is <cite>linear node</cite> and gets contracted.</p>
+<div class="graphviz"><img src="_images/graphviz-611d124f062113d368253ae1e1f77bb307bc233e.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
     D [style=filled; color=deepskyblue];
     &quot;G&quot; [shape=tripleoctagon;
@@ -407,13 +399,13 @@ For example from the following graph:</p>
     G -&gt; D [dir=none, weight=1, penwidth=3];
     A -&gt; D [label=&quot;{B, C}&quot;;color=red];
 
-}" />
-<p>Nodes <code class="docutils literal"><span class="pre">B</span></code> and <code class="docutils literal"><span class="pre">C</span></code> belong to edge connecting <code class="docutils literal"><span class="pre">A</span></code> and <code class="docutils literal"><span class="pre">D</span></code> which is represented by red color.</p>
+}" class="graphviz" /></div>
+<p>Nodes <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> belong to edge connecting <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">D</span></code> which is represented by red color.</p>
 </div>
 <div class="section" id="not-linear-nodes">
 <h3>Not Linear nodes<a class="headerlink" href="#not-linear-nodes" title="Permalink to this headline">¶</a></h3>
-<p>In this graph <code class="docutils literal"><span class="pre">B</span></code> is not a <cite>linear</cite> node.</p>
-<img src="_images/graphviz-ed24aa4d8338b38581a9387a0d5ab1f58aa65472.png" alt="digraph G {
+<p>In this graph <code class="docutils literal notranslate"><span class="pre">B</span></code> is not a <cite>linear</cite> node.</p>
+<div class="graphviz"><img src="_images/graphviz-5bd056c1436ff736bbf4541c057415e97abfe82e.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
     B [style=filled; color=red];
     C [style=filled;color=deepskyblue];
@@ -426,14 +418,14 @@ For example from the following graph:</p>
     G -&gt; C [dir=none, weight=1, penwidth=3];
     A -&gt; B;
     C -&gt; B;
-}" />
+}" class="graphviz" /></div>
 </div>
 </div>
 <div class="section" id="the-cycle">
 <h2>The cycle<a class="headerlink" href="#the-cycle" title="Permalink to this headline">¶</a></h2>
 <p>Contracting a graph, can be done with more than one operation. The order of the operations affect the resulting contracted graph, after applying one operation, the set of vertices that can be contracted by another operation changes.</p>
-<p>This implementation, cycles <code class="docutils literal"><span class="pre">max_cycles</span></code> times through <code class="docutils literal"><span class="pre">operations_order</span></code> .</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>&lt;input&gt;
+<p>This implementation, cycles <code class="docutils literal notranslate"><span class="pre">max_cycles</span></code> times through <code class="docutils literal notranslate"><span class="pre">operations_order</span></code> .</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;input&gt;
 do max_cycles times {
     for (operation in operations_order)
      { do operation }
@@ -456,7 +448,7 @@ do max_cycles times {
 <p>Doing a linear contraction operation to the graph above</p>
 <img alt="_images/undirected_sampledata_c.png" src="_images/undirected_sampledata_c.png" />
 <p>There are five cases, in this documentation, which arise when calculating the shortest path between a given source and target.
-In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra</span></code> is used.</p>
+In this examples, <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> is used.</p>
 <ul class="simple">
 <li><strong>Case 1</strong>: Both source and target belong to the contracted graph.</li>
 <li><strong>Case 2</strong>: Source belongs to a contracted graph, while target belongs to a edge subgraph.</li>
@@ -468,11 +460,11 @@ In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra<
 <h3>Construction of the graph in the database<a class="headerlink" href="#construction-of-the-graph-in-the-database" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">Original Data</p>
 <p>The following query shows the original data involved in the contraction operation.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <p class="rubric">Contraction Results</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractGraph</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractGraph</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
@@ -490,7 +482,7 @@ In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra<
 </div>
 <p>The above results do not represent the contracted graph. They represent the changes done to the graph after applying the contraction algorithm. We can see that vertices like 6 and 11 do not appear in the contraction results because they were not affected by the contraction algorithm.</p>
 <p class="rubric">step 1</p>
-<p>Adding extra columns to the <code class="docutils literal"><span class="pre">edge_table</span></code> and <code class="docutils literal"><span class="pre">edge_table_vertices_pgr</span></code> tables:</p>
+<p>Adding extra columns to the <code class="docutils literal notranslate"><span class="pre">edge_table</span></code> and <code class="docutils literal notranslate"><span class="pre">edge_table_vertices_pgr</span></code> tables:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -506,15 +498,15 @@ In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra<
 <td>The vertices set belonging to the vertex/edge</td>
 </tr>
 <tr class="row-odd"><td><strong>is_contracted</strong></td>
-<td>On a <cite>vertex</cite> table: when <code class="docutils literal"><span class="pre">true</span></code> the vertex is contracted, so is not part of the contracted graph.</td>
+<td>On a <cite>vertex</cite> table: when <code class="docutils literal notranslate"><span class="pre">true</span></code> the vertex is contracted, so is not part of the contracted graph.</td>
 </tr>
 <tr class="row-even"><td><strong>is_contracted</strong></td>
-<td>On an <cite>edge</cite> table: when <code class="docutils literal"><span class="pre">true</span></code> the edge was generated by the contraction algorithm.</td>
+<td>On an <cite>edge</cite> table: when <code class="docutils literal notranslate"><span class="pre">true</span></code> the edge was generated by the contraction algorithm.</td>
 </tr>
 </tbody>
 </table>
 <p>Using the following queries:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edge_table</span> <span class="n">ADD</span> <span class="n">contracted_vertices</span> <span class="n">BIGINT</span><span class="p">[];</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edge_table</span> <span class="n">ADD</span> <span class="n">contracted_vertices</span> <span class="n">BIGINT</span><span class="p">[];</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">ADD</span> <span class="n">contracted_vertices</span> <span class="n">BIGINT</span><span class="p">[];</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
@@ -528,7 +520,7 @@ In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra<
 </div>
 <p class="rubric">step 2</p>
 <p>For simplicity, in this documentation, store the results of the call to pgr_contractGraph in a temporary table</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
 <span class="n">FROM</span> <span class="n">pgr_contractGraph</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="n">true</span><span class="p">);</span>
@@ -540,7 +532,7 @@ In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra<
 <ul class="simple">
 <li>In <cite>edge_table_vertices_pgr.is_contracted</cite> indicate the vertices that are contracted.</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table_vertices_pgr</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table_vertices_pgr</span>
 <span class="n">SET</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">true</span>
 <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span>  <span class="n">unnest</span><span class="p">(</span><span class="n">contracted_vertices</span><span class="p">)</span> <span class="n">FROM</span>  <span class="n">contraction_results</span><span class="p">);</span>
 <span class="n">UPDATE</span> <span class="mi">10</span>
@@ -549,7 +541,7 @@ In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra<
 <ul class="simple">
 <li>Add to <cite>edge_table_vertices_pgr.contracted_vertices</cite>  the contracted vertices belonging to the vertices.</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table_vertices_pgr</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table_vertices_pgr</span>
 <span class="n">SET</span> <span class="n">contracted_vertices</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">contracted_vertices</span>
 <span class="n">FROM</span> <span class="n">contraction_results</span>
 <span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;v&#39;</span> <span class="n">AND</span> <span class="n">edge_table_vertices_pgr</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
@@ -559,7 +551,7 @@ In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra<
 <ul class="simple">
 <li>Insert the new edges generated by  pgr_contractGraph.</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edge_table</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_contracted</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edge_table</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_contracted</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">true</span>
 <span class="n">FROM</span> <span class="n">contraction_results</span>
 <span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;e&#39;</span><span class="p">;</span>
@@ -571,7 +563,7 @@ In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra<
 <ul class="simple">
 <li>On the <cite>edge_table_vertices_pgr</cite></li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_contracted</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_contracted</span>
 <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span>
 <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">is_contracted</span>
@@ -600,7 +592,7 @@ In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra<
 <ul class="simple">
 <li>On the <cite>edge_table</cite></li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_contracted</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_contracted</span>
 <span class="n">FROM</span> <span class="n">edge_table</span>
 <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">is_contracted</span>
@@ -634,7 +626,7 @@ In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra<
 <ul class="simple">
 <li>vertices that belong to the contracted graph are the non contracted vertices</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span>  <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span>  <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span>
 <span class="n">WHERE</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">false</span>
 <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
  <span class="nb">id</span>
@@ -660,7 +652,7 @@ In this examples, <code class="docutils literal"><span class="pre">pgr_dijkstra<
 </div></blockquote>
 <p>Visually, looking at the original graph, going from 3 to 11: 3 -&gt; 6 -&gt; 11, and in the contracted graph, it is also 3 -&gt; 6 -&gt; 11.
 The results, on the contracted graph match the results as if it was done on the original graph.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
     $$
     WITH
     vertices_in_graph AS (
@@ -692,7 +684,7 @@ The results, on the contracted graph match the results as if it was done on the 
 </dl>
 <p>Visually, looking at the original graph, going from 3 to 1: 3 -&gt; 2 -&gt; 1, and in the contracted graph, it is also 3 -&gt; 2 -&gt; 1.
 The results, on the contracted graph match the results as if it was done on the original graph.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
     $$
     WITH
     expand_edges AS (SELECT id, unnest(contracted_vertices) AS vertex FROM edge_table),
@@ -729,7 +721,7 @@ The results, on the contracted graph match the results as if it was done on the 
 </div></blockquote>
 <p>Visually, looking at the original graph, going from 7 to 13: 7 -&gt; 8 -&gt; 5 -&gt; 10 -&gt; 13, and in the contracted graph, it is also 7 -&gt; 8 -&gt; 5 -&gt; 10 -&gt; 13.
 The results, on the contracted graph match the results as if it was done on the original graph.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
     $$
     WITH
 
@@ -776,7 +768,7 @@ The results, on the contracted graph match the results as if it was done on the 
 </div></blockquote>
 <p>Visually, looking at the original graph, going from 3 to 7: 3 -&gt; 2 -&gt; 5 -&gt; 8 -&gt; 7, but in the contracted graph, it is 3 -&gt; 5 -&gt; 8 -&gt; 7.
 The results, on the contracted graph do not match the results as if it was done on the original graph. This is because the path contains edge 19 which is added by the contraction algorithm.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM  pgr_dijkstra(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM  pgr_dijkstra(
     $$
     WITH
     expand_vertices AS (SELECT id, unnest(contracted_vertices) AS vertex FROM edge_table_vertices_pgr),
@@ -804,7 +796,7 @@ The results, on the contracted graph do not match the results as if it was done 
 </div>
 <p class="rubric">case 5: The path contains an edge added by the contraction algorithm.</p>
 <p>In the previous example we can see that the path from vertex 3 to vertex 7 contains an edge which is added by the contraction algorithm.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>WITH
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
 first_dijkstra AS (
     SELECT * FROM  pgr_dijkstra(
         $$
@@ -844,7 +836,7 @@ SELECT edge, contracted_vertices
 </div></blockquote>
 <p>Visually, looking at the original graph, going from 3 to 7: 3 -&gt; 2 -&gt; 5 -&gt; 8 -&gt; 7, and in the contracted graph, it is also 3 -&gt; 2 -&gt; 5 -&gt; 8 -&gt; 7.
 The results, on the contracted graph match the results as if it was done on the original graph.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra($$
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra($$
     WITH
     -- This returns the results from case 2
     first_dijkstra AS (
@@ -928,8 +920,8 @@ The results, on the contracted graph match the results as if it was done on the 
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 30, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+      Last updated on Dec 27, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

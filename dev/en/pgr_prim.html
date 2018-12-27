@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>pgr_prim - Experimental &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v3.0.0-dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -28,15 +21,14 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Transformation - Family of functions (Experimental)" href="transformation-family.html" />
-    <link rel="prev" title="pgr_kruskalBFS - Experimental" href="pgr_kruskalBFS.html" />
+    <link rel="next" title="pgr_primDD - Experimental" href="pgr_primDD.html" />
+    <link rel="prev" title="Prim - Family of functions (Experimental)" href="prim-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -121,11 +113,11 @@
               
                 
   <li>
-    <a href="pgr_kruskalBFS.html" title="Previous Chapter: pgr_kruskalBFS - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_kruskalBF...</span>
+    <a href="prim-family.html" title="Previous Chapter: Prim - Family of functions (Experimental)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Prim - Family...</span>
     </a>
   </li>
   <li>
-    <a href="transformation-family.html" title="Next Chapter: Transformation - Family of functions (Experimental)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Transformatio... &raquo;</span>
+    <a href="pgr_primDD.html" title="Next Chapter: pgr_primDD - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_primDD - ... &raquo;</span>
     </a>
   </li>
               
@@ -155,10 +147,9 @@
       
   <div class="section" id="pgr-prim-experimental">
 <h1>pgr_prim - Experimental<a class="headerlink" href="#pgr-prim-experimental" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">pgr_prim</span></code> — Returns the minimum spanning tree of graph using Prim algorithm.
-In particular, the Prim algorithm implemented by Boost.Graph.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_prim</span></code> — Minimum spanning forest of graph using Prim algorithm.</p>
 <div class="figure" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/prim_minimum_spanning_tree.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
 <div class="admonition warning">
@@ -185,137 +176,65 @@ In particular, the Prim algorithm implemented by Boost.Graph.</p>
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li><strong>TBD</strong></li>
+<li>New as experimental on v3.0.0</li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>The prim algorithm was developed in 1930 by Czech mathematician Vojtěch Jarník.
-It is a greedy algorithm that finds a minimum spanning tree for a weighted
-undirected graph. This means it finds a subset of the edges that forms a tree
-that includes every vertex, where the total weight of all the edges in the tree
-is minimized. The algorithm operates by building this tree one vertex at a time,
-from an arbitrary starting vertex, at each step adding the cheapest possible
-connection from the tree to another vertex.</p>
-<p>This algorithms find the minimum spanning forest in a possibly disconnected
-graph; in contrast, the most basic form of Prim’s algorithm only finds minimum
-spanning trees in connected graphs. However, running Prim’s algorithm separately
-for each connected component of the graph, then it is called minimum spanning
-forest.</p>
+<p>This algorithm finds the minimum spanning forest in a possibly disconnected
+graph using Prim’s algorithm.</p>
 <p><strong>The main characteristics are:</strong></p>
 <ul class="simple">
 <li>It’s implementation is only on <strong>undirected graph</strong>.</li>
 <li>Process is done only on edges with positive costs.</li>
-<li>Span start from chosen root_vertex resulting subgraph.<ul>
-<li>When root vertex is not given then result is minimun spanning tree of disconnected graph.</li>
+<li>When the graph is connected<ul>
+<li>The resulting edges make up a tree</li>
 </ul>
 </li>
-<li>Values are returned when there is a minimum spanning tree.<ul>
-<li>When there is no edge in graph then EMPTY SET is return.</li>
+<li>When the graph is not connected,<ul>
+<li>Finds a minimum spanning tree for each connected component.</li>
+<li>The resulting edges make up a forest.</li>
 </ul>
 </li>
-<li>The minimum spanning tree is same for any root vertex.</li>
-<li>Running time: <span class="math">\(O(E*log V)\)</span></li>
+<li>Prim’s running time: <span class="math notranslate nohighlight">\(O(E*log V)\)</span></li>
+</ul>
+<ul class="simple">
+<li>EMPTY SET is returned when there are no edges in the graph.</li>
 </ul>
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none" id="index-0"><div class="highlight"><pre><span></span>pgr_prim(edges_sql)
-pgr_prim(edges_sql, root_vertex)
+<p class="rubric" id="index-0">Summary</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_prim(edges_sql)
 
-RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost)
-   or EMPTY SET
+RETURNS SET OF (seq, edge, cost)
+OR EMPTY SET
 </pre></div>
 </div>
-<p>The signature is for a <strong>undirected</strong> graph.</p>
-<p class="rubric">pgr_prim without root vertex</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Minimum Spanning Forest of a subgraph</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_prim(TEXT edges_sql);
-RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPTY SET
-</pre></div>
-</div>
-<p>When root vertex is not given then result is MST of disconnected graph.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_prim</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span>
-<span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">root_vertex</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">tree_cost</span>
-<span class="o">-----+-------------+------+------+------+----------+-----------</span>
-   <span class="mi">1</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">3</span>
-   <span class="mi">5</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">4</span>
-   <span class="mi">6</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">5</span>
-   <span class="mi">7</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span>
-   <span class="mi">8</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">7</span>
-   <span class="mi">9</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">8</span>
-  <span class="mi">10</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">9</span>
-  <span class="mi">11</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">10</span>
-  <span class="mi">12</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">11</span>
-  <span class="mi">13</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>        <span class="mi">12</span>
-  <span class="mi">14</span> <span class="o">|</span>          <span class="mi">14</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span>
-  <span class="mi">15</span> <span class="o">|</span>          <span class="mi">14</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
-  <span class="mi">16</span> <span class="o">|</span>          <span class="mi">16</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span>
-  <span class="mi">17</span> <span class="o">|</span>          <span class="mi">16</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
-<span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<p class="rubric">pgr_prim with root vertex</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_prim(TEXT edges_sql, BIGINT root_vertex);
-RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPTY SET
-</pre></div>
-</div>
-<p>Results is subgraph which contain root_vertex.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_prim</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span> <span class="mi">4</span>
-<span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">root_vertex</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">tree_cost</span>
-<span class="o">-----+-------------+------+------+------+----------+-----------</span>
-   <span class="mi">1</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">3</span>
-   <span class="mi">5</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">4</span>
-   <span class="mi">6</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">5</span>
-   <span class="mi">7</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">6</span>
-   <span class="mi">8</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">7</span>
-   <span class="mi">9</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">8</span>
-  <span class="mi">10</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">9</span>
-  <span class="mi">11</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>        <span class="mi">10</span>
-  <span class="mi">12</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">11</span>
-  <span class="mi">13</span> <span class="o">|</span>           <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">12</span>
-<span class="p">(</span><span class="mi">13</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_prim</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id &gt; 10&#39;</span><span class="p">,</span> <span class="mi">9</span>
-<span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">root_vertex</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">tree_cost</span>
-<span class="o">-----+-------------+------+------+------+----------+-----------</span>
-   <span class="mi">1</span> <span class="o">|</span>           <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>           <span class="mi">9</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>           <span class="mi">9</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>           <span class="mi">9</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">3</span>
-   <span class="mi">5</span> <span class="o">|</span>           <span class="mi">9</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">4</span>
-   <span class="mi">6</span> <span class="o">|</span>           <span class="mi">9</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">5</span>
-   <span class="mi">7</span> <span class="o">|</span>           <span class="mi">9</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span>
-<span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span> <span class="n">FROM</span> <span class="n">pgr_prim</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id &lt; 14&#39;</span>
+<span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">edge</span><span class="p">;</span>
+ <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="o">------+------</span>
+    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
+    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span>
+    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span>
+    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span>
+    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
+    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -324,45 +243,32 @@ RETURNS SET OF (seq, root_vertex, node, edge, cost, agg_cost, tree_cost) or EMPT
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="19%" />
-<col width="22%" />
-<col width="9%" />
-<col width="49%" />
+<col width="21%" />
+<col width="24%" />
+<col width="54%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
 <th class="head">Type</th>
-<th class="head">Default</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>SQL query as described above.</td>
-</tr>
-<tr class="row-odd"><td><strong>root_vertex</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Root vertex from where spanning of tree start and
-resulting in subgraph.</p>
-<ul class="last simple">
-<li>In the absence of root vertex the result is
-MST of disconnected graph.</li>
-</ul>
-</td>
+<tr class="row-even"><td><strong>Edges SQL</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
+<td>SQL query described in <a class="reference internal" href="#inner-query">Inner query</a>.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Edges SQL</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+<tr class="field-odd field"><th class="field-name">Edges SQL:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
 </tr>
 </tbody>
 </table>
@@ -382,22 +288,22 @@ MST of disconnected graph.</li>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&#160;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
@@ -406,7 +312,7 @@ MST of disconnected graph.</li>
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
@@ -430,8 +336,7 @@ MST of disconnected graph.</li>
 </div>
 <div class="section" id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">For prim algorithms</p>
-<p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">root_vertex,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost,</span> <span class="pre">tree_cost)</span></code></p>
+<p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
@@ -446,32 +351,16 @@ MST of disconnected graph.</li>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>Sequential value starting from <strong>1</strong>.</td>
-</tr>
-<tr class="row-odd"><td><strong>root_vertex</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>Root vertex from where spanning of tree start.</td>
-</tr>
-<tr class="row-even"><td><strong>node</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the node in spanning tree.</td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
+<td>Sequential value starting from <span class="math notranslate nohighlight">\(1\)</span>.</td>
 </tr>
 <tr class="row-odd"><td><strong>edge</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the edge used to go to node.</td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
+<td>Identifier of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td>Cost to traverse of edge to the node.</td>
-</tr>
-<tr class="row-odd"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td>Aggregate cost from node to root_vertex.</td>
-</tr>
-<tr class="row-even"><td><strong>tree_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td>Aggregate cost of edges that is covered in spanning.</td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
+<td>Cost to traverse the edge.</td>
 </tr>
 </tbody>
 </table>
@@ -479,8 +368,11 @@ MST of disconnected graph.</li>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">https://en.wikipedia.org/wiki/Prim%27s_algorithm</a></li>
+<li><a class="reference internal" href="spanningTree-family.html"><span class="doc">Spanning Tree - Families of functions (Experimental)</span></a></li>
+<li><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Family of functions (Experimental)</span></a></li>
 <li>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
+<li><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Prim’s algorithm documentation</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Prim'_algorithm">Wikipedia: Prim’s algorithm</a></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -503,8 +395,8 @@ MST of disconnected graph.</li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 30, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+      Last updated on Dec 27, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

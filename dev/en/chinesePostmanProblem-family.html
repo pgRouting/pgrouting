@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Chinese Postman Problem - Family of functions (Experimental) &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v3.0.0-dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -157,23 +149,23 @@
 <div class="toctree-wrapper compound">
 </div>
 <p>Given the following query:</p>
-<p>pgr_directedChPP(<span class="math">\(sql\)</span>)</p>
-<p>where  <span class="math">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}\)</span></p>
+<p>pgr_directedChPP(<span class="math notranslate nohighlight">\(sql\)</span>)</p>
+<p>where  <span class="math notranslate nohighlight">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}\)</span></p>
 <p>and</p>
 <ul class="simple">
-<li><span class="math">\(source = \bigcup source_i\)</span>,</li>
-<li><span class="math">\(target = \bigcup target_i\)</span>,</li>
+<li><span class="math notranslate nohighlight">\(source = \bigcup source_i\)</span>,</li>
+<li><span class="math notranslate nohighlight">\(target = \bigcup target_i\)</span>,</li>
 </ul>
 <p>The graphs are defined as follows:</p>
 <p class="rubric">Directed graph</p>
-<p>The weighted directed graph, <span class="math">\(G(V,E)\)</span>, is definied by:</p>
+<p>The weighted directed graph, <span class="math notranslate nohighlight">\(G(V,E)\)</span>, is definied by:</p>
 <ul class="simple">
-<li>the set of vertices  <span class="math">\(V\)</span><ul>
-<li><span class="math">\(V = source \cup target \cup {start_{vid}} \cup  {end_{vid}}\)</span></li>
+<li>the set of vertices  <span class="math notranslate nohighlight">\(V\)</span><ul>
+<li><span class="math notranslate nohighlight">\(V = source \cup target \cup {start_{vid}} \cup  {end_{vid}}\)</span></li>
 </ul>
 </li>
-<li>the set of edges <span class="math">\(E\)</span><ul>
-<li><span class="math">\(E = \begin{cases}
+<li>the set of edges <span class="math notranslate nohighlight">\(E\)</span><ul>
+<li><span class="math notranslate nohighlight">\(E = \begin{cases}
 \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{if } reverse\_cost = \varnothing \\
 \text{ }  \text{ }  &amp; \quad \text{ } \\
 \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp;  \quad \text{ } \\
@@ -185,29 +177,29 @@
 <p class="rubric">The problem</p>
 <p>Given:</p>
 <ul class="simple">
-<li><span class="math">\(G(V,E)\)</span></li>
+<li><span class="math notranslate nohighlight">\(G(V,E)\)</span></li>
 </ul>
 <p>Then:</p>
 <blockquote>
-<div><p><span class="math">\(pgr\_directedChPP(edges\_sql) = \boldsymbol{\Phi}\)</span></p>
-<p><span class="math">\(\boldsymbol{\Phi} = {(seq_i, node_i, edge\_i, cost_i, agg\_cost_i)}\)</span></p>
+<div><p><span class="math notranslate nohighlight">\(pgr\_directedChPP(edges\_sql) = \boldsymbol{\Phi}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\boldsymbol{\Phi} = {(seq_i, node_i, edge\_i, cost_i, agg\_cost_i)}\)</span></p>
 </div></blockquote>
 <p>Where:</p>
 <blockquote>
 <div><ul class="simple">
-<li><span class="math">\(seq_i = i\)</span></li>
-<li><span class="math">\(node_i \in V\)</span></li>
-<li><span class="math">\(edge_i  = \begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &amp;\quad  \text{when } i \neq | \pi | \\ -1 &amp;\quad  \text{when } i = | \pi | \\ \end{cases}\)</span></li>
-<li><span class="math">\(cost_i = cost_{(node_i, node_{i+1})}\)</span></li>
-<li><span class="math">\(agg\_cost_i  = \begin{cases}  0   &amp;\quad  \text{when } i = 1  \\ \displaystyle\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &amp;\quad  \text{when } i \neq 1 \\ \end{cases}\)</span></li>
+<li><span class="math notranslate nohighlight">\(seq_i = i\)</span></li>
+<li><span class="math notranslate nohighlight">\(node_i \in V\)</span></li>
+<li><span class="math notranslate nohighlight">\(edge_i  = \begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &amp;\quad  \text{when } i \neq | \pi | \\ -1 &amp;\quad  \text{when } i = | \pi | \\ \end{cases}\)</span></li>
+<li><span class="math notranslate nohighlight">\(cost_i = cost_{(node_i, node_{i+1})}\)</span></li>
+<li><span class="math notranslate nohighlight">\(agg\_cost_i  = \begin{cases}  0   &amp;\quad  \text{when } i = 1  \\ \displaystyle\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &amp;\quad  \text{when } i \neq 1 \\ \end{cases}\)</span></li>
 </ul>
 </div></blockquote>
 <dl class="docutils">
 <dt>In other words: The algorithm is to find the shortest path which contains every edge in a graph and starts and ends on the same node, if it exists, in terms of a sequence of nodes and of edges,</dt>
 <dd><ul class="first last simple">
-<li><span class="math">\(seq\)</span> indicates the relative position in the path of the <span class="math">\(node\)</span> or <span class="math">\(edge\)</span>.</li>
-<li><span class="math">\(cost\)</span> is the cost of the edge to be used to go to the next node.</li>
-<li><span class="math">\(agg\_cost\)</span> is the cost from the start node up to the node.</li>
+<li><span class="math notranslate nohighlight">\(seq\)</span> indicates the relative position in the path of the <span class="math notranslate nohighlight">\(node\)</span> or <span class="math notranslate nohighlight">\(edge\)</span>.</li>
+<li><span class="math notranslate nohighlight">\(cost\)</span> is the cost of the edge to be used to go to the next node.</li>
+<li><span class="math notranslate nohighlight">\(agg\_cost\)</span> is the cost from the start node up to the node.</li>
 </ul>
 </dd>
 </dl>
@@ -235,8 +227,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 21, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+      Last updated on Dec 27, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

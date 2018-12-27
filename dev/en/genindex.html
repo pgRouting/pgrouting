@@ -3,25 +3,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Index &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v3.0.0-dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -34,8 +27,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -324,13 +316,17 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pgr_kruskal.html#index-0">kruskal - Experimental</a>
 </li>
-      <li><a href="pgr_kruskalBFS.html#index-1">kruskal(Multiple vertices) - Experimental</a>, <a href="pgr_kruskalDD.html#index-1">[1]</a>, <a href="pgr_kruskalDFS.html#index-1">[2]</a>
+      <li><a href="pgr_kruskalDFS.html#index-1">kruskal(Multiple vertices) - Experimental</a>
 </li>
-      <li><a href="pgr_kruskalDD.html#index-0">kruskal(Single vertex) - Experimental</a>
+      <li><a href="pgr_kruskalBFS.html#index-1">kruskalBFS(Multiple vertices) - Experimental</a>
+</li>
+      <li><a href="pgr_kruskalBFS.html#index-0">kruskalBFS(Single vertex) - Experimental</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pgr_kruskalBFS.html#index-0">kruskalBFS(Single vertex) - Experimental</a>
+      <li><a href="pgr_kruskalDD.html#index-1">kruskalDD(Multiple vertices) - Experimental</a>
+</li>
+      <li><a href="pgr_kruskalDD.html#index-0">kruskalDD(Single vertex) - Experimental</a>
 </li>
       <li><a href="pgr_kruskalDFS.html#index-0">kruskalDFS(Single vertex) - Experimental</a>
 </li>
@@ -388,10 +384,22 @@
 </li>
       <li><a href="pgr_prim.html#index-0">prim - Experimental</a>
 </li>
-      <li><a href="pgr_pushRelabel.html#index-3">pushRelabel(Many to Many)</a>
+      <li><a href="pgr_primBFS.html#index-1">primBFS(Multiple vertices) - Experimental</a>
+</li>
+      <li><a href="pgr_primBFS.html#index-0">primBFS(Single vertex) - Experimental</a>
+</li>
+      <li><a href="pgr_primDD.html#index-1">primDD(Multiple vertices) - Experimental</a>
+</li>
+      <li><a href="pgr_primDD.html#index-0">primDD(Single vertex) - Experimental</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pgr_primDFS.html#index-1">primDFS(Multiple vertices) - Experimental</a>
+</li>
+      <li><a href="pgr_primDFS.html#index-0">primDFS(Single vertex) - Experimental</a>
+</li>
+      <li><a href="pgr_pushRelabel.html#index-3">pushRelabel(Many to Many)</a>
+</li>
       <li><a href="pgr_pushRelabel.html#index-2">pushRelabel(Many to One)</a>
 </li>
       <li><a href="pgr_pushRelabel.html#index-1">pushRelabel(One to Many)</a>
@@ -479,8 +487,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 30, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+      Last updated on Dec 27, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

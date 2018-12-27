@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>pgr_aStarCostMatrix &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v3.0.0-dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -165,7 +157,7 @@
       
   <div class="section" id="pgr-astarcostmatrix">
 <h1>pgr_aStarCostMatrix<a class="headerlink" href="#pgr-astarcostmatrix" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">pgr_aStarCostMatrix</span></code> - Calculates the a cost matrix using <a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_aStarCostMatrix</span></code> - Calculates the a cost matrix using <a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a>.</p>
 <div class="figure" id="id1">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
@@ -184,12 +176,12 @@
 <li>let <cite>v</cite> and <cite>u</cite> are nodes on the graph:<ul>
 <li>when there is no path from <cite>v</cite> to <cite>u</cite>:<ul>
 <li>no corresponding row is returned</li>
-<li>cost from <cite>v</cite> to <cite>u</cite> is <span class="math">\(\inf\)</span></li>
+<li>cost from <cite>v</cite> to <cite>u</cite> is <span class="math notranslate nohighlight">\(\inf\)</span></li>
 </ul>
 </li>
-<li>when <span class="math">\(v = u\)</span> then<ul>
+<li>when <span class="math notranslate nohighlight">\(v = u\)</span> then<ul>
 <li>no corresponding row is returned</li>
-<li>cost from <cite>v</cite> to <cite>u</cite> is <span class="math">\(0\)</span></li>
+<li>cost from <cite>v</cite> to <cite>u</cite> is <span class="math notranslate nohighlight">\(0\)</span></li>
 </ul>
 </li>
 </ul>
@@ -200,12 +192,12 @@
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_aStarCostMatrix(edges_sql, vids [, directed] [, heuristic] [, factor] [, epsilon])
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_aStarCostMatrix(edges_sql, vids [, directed] [, heuristic] [, factor] [, epsilon])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 <p class="rubric">Using defaults</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_aStarCostMatrix(edges_sql, vids)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_aStarCostMatrix(edges_sql, vids)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
@@ -213,35 +205,35 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Cost matrix for vertices <span class="math">\(\{1, 2, 3, 4\}\)</span> on a <strong>directed</strong> graph</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Cost matrix for vertices <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> on a <strong>directed</strong> graph</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCostMatrix</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCostMatrix</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
     <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
 <span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">5</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
          <span class="mi">3</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">3</span>
+         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span>
+         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
 <span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
 <div class="section" id="complete-signature">
 <span id="index-0"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_aStarCostMatrix(edges_sql, vids, [, directed] [, heuristic] [, factor] [, epsilon])
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_aStarCostMatrix(edges_sql, vids, [, directed] [, heuristic] [, factor] [, epsilon])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
@@ -249,29 +241,29 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Symmetric cost matrix for vertices <span class="math">\(\{1, 2, 3, 4\}\)</span> on an <strong>undirected</strong> graph using heuristic <span class="math">\(2\)</span></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Symmetric cost matrix for vertices <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> on an <strong>undirected</strong> graph using heuristic <span class="math notranslate nohighlight">\(2\)</span></td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCostMatrix</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCostMatrix</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
     <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">),</span>
     <span class="n">directed</span> <span class="p">:</span><span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span>
 <span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">3</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span>
+         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
          <span class="mi">3</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span>
+         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
 <span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -294,11 +286,11 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
 <td><a class="reference internal" href="#edges-sql">edges_sql</a>  inner query.</td>
 </tr>
 <tr class="row-odd"><td><strong>vids</strong></td>
-<td><code class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
 <td>Array of vertices identifiers.</td>
 </tr>
 </tbody>
@@ -321,18 +313,18 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>directed</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
-<td><code class="docutils literal"><span class="pre">true</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
 <td><ul class="first last simple">
-<li>When <code class="docutils literal"><span class="pre">true</span></code> the graph is considered as Directed.</li>
-<li>When <code class="docutils literal"><span class="pre">false</span></code> the graph is considered as Undirected.</li>
+<li>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered as Directed.</li>
+<li>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected.</li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><strong>heuristic</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
-<td><code class="docutils literal"><span class="pre">5</span></code></td>
-<td><p class="first">Heuristic number. Current valid values 0~5. Default <code class="docutils literal"><span class="pre">5</span></code></p>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">5</span></code></td>
+<td><p class="first">Heuristic number. Current valid values 0~5. Default <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
 <ul class="last simple">
 <li>0: h(v) = 0 (Use this value to compare with pgr_dijkstra)</li>
 <li>1: h(v) abs(max(dx, dy))</li>
@@ -344,14 +336,14 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </td>
 </tr>
 <tr class="row-even"><td><strong>factor</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td><code class="docutils literal"><span class="pre">1</span></code></td>
-<td>For units manipulation. <span class="math">\(factor &gt; 0\)</span>.  See <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">Factor</span></a></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span></code></td>
+<td>For units manipulation. <span class="math notranslate nohighlight">\(factor &gt; 0\)</span>.  See <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">Factor</span></a></td>
 </tr>
 <tr class="row-odd"><td><strong>epsilon</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td><code class="docutils literal"><span class="pre">1</span></code></td>
-<td>For less restricted results. <span class="math">\(epsilon &gt;= 1\)</span>.</td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span></code></td>
+<td>For less restricted results. <span class="math notranslate nohighlight">\(epsilon &gt;= 1\)</span>.</td>
 </tr>
 </tbody>
 </table>
@@ -385,22 +377,22 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&#160;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
@@ -409,7 +401,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
@@ -418,22 +410,22 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </td>
 </tr>
 <tr class="row-odd"><td><strong>x1</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&#160;</td>
 <td>X coordinate of <cite>source</cite> vertex.</td>
 </tr>
 <tr class="row-even"><td><strong>y1</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&#160;</td>
 <td>Y coordinate of <cite>source</cite> vertex.</td>
 </tr>
 <tr class="row-odd"><td><strong>x2</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&#160;</td>
 <td>X coordinate of <cite>target</cite> vertex.</td>
 </tr>
 <tr class="row-even"><td><strong>y2</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&#160;</td>
 <td>Y coordinate of <cite>target</cite> vertex.</td>
 </tr>
@@ -454,7 +446,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </div>
 <div class="section" id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<p>Returns set of <code class="docutils literal"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -469,16 +461,16 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the starting vertex. Used when multiple starting vetrices are in the query.</td>
 </tr>
 <tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the ending vertex. Used when multiple ending vertices are in the query.</td>
 </tr>
 <tr class="row-even"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
-<td>Aggregate cost from <code class="docutils literal"><span class="pre">start_vid</span></code> to <code class="docutils literal"><span class="pre">end_vid</span></code>.</td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
+<td>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -493,7 +485,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
     $$
     SELECT * FROM pgr_aStarCostMatrix(
         &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
@@ -545,8 +537,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 30, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+      Last updated on Dec 27, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

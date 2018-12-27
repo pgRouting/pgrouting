@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Traveling Sales Person - Family of functions &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v3.0.0-dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -199,14 +191,14 @@ find the cheapest way for visiting all of the cities and returning to the starti
 </ul>
 </li>
 <li>This problem is an NP-hard optimization problem.</li>
-<li>To calculate the number of different tours through <span class="math">\(n\)</span> cities:<ul>
+<li>To calculate the number of different tours through <span class="math notranslate nohighlight">\(n\)</span> cities:<ul>
 <li>Given a starting city,</li>
-<li>There are <span class="math">\(n-1\)</span> choices for the second city,</li>
-<li>And  <span class="math">\(n-2\)</span> choices for the third city, etc.</li>
-<li>Multiplying these together we get <span class="math">\((n-1)!  = (n-1) (n-2) . .  1\)</span>.</li>
+<li>There are <span class="math notranslate nohighlight">\(n-1\)</span> choices for the second city,</li>
+<li>And  <span class="math notranslate nohighlight">\(n-2\)</span> choices for the third city, etc.</li>
+<li>Multiplying these together we get <span class="math notranslate nohighlight">\((n-1)!  = (n-1) (n-2) . .  1\)</span>.</li>
 <li>Now since our travel costs do not depend on the direction we take around the tour:<ul>
 <li>this number by 2</li>
-<li><span class="math">\((n-1)!/2\)</span>.</li>
+<li><span class="math notranslate nohighlight">\((n-1)!/2\)</span>.</li>
 </ul>
 </li>
 </ul>
@@ -227,7 +219,7 @@ and gradually cool down until the desired temperature is reached.</p>
 <p>For each temperature, a neighbouring new solution <strong>snew</strong> is calculated. The higher the temperature
 the higher the probability of accepting the new solution as a possible bester solution.</p>
 <p>Once the desired temperature is reached, the best solution found is returned</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Solution = initial_solution;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Solution = initial_solution;
 
 temperature = initial_temperature;
 while (temperature &gt; final_temperature) {
@@ -266,7 +258,7 @@ simulated annealing process.</p>
 </ul>
 <p>Note that, if no change was found in the first <strong>max_consecutive_non_changes</strong> tries, then the
 simulated annealing will stop.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Solution = initial_solution;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Solution = initial_solution;
 
 temperature = initial_temperature;
 while (temperature &gt; final_temperature) {
@@ -302,8 +294,8 @@ special characteristics of the problem.</p>
 <li>this will help to set a reasonable <strong>max_processing_time</strong></li>
 </ul>
 </li>
-<li><span class="math">\(n * (n-1)\)</span></li>
-<li><span class="math">\(500 * n\)</span></li>
+<li><span class="math notranslate nohighlight">\(n * (n-1)\)</span></li>
+<li><span class="math notranslate nohighlight">\(500 * n\)</span></li>
 </ul>
 </li>
 <li>For a faster decreasing the temperature set <strong>cooling_factor</strong> to a smaller number,
@@ -334,52 +326,52 @@ and set to a higher number for a slower decrease.</li>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td><cite>0</cite></td>
 <td>The greedy part of the implementation will use this identifier.</td>
 </tr>
 <tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td><cite>0</cite></td>
 <td>Last visiting vertex before returning to start_vid.</td>
 </tr>
 <tr class="row-even"><td><strong>max_processing_time</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td><cite>+infinity</cite></td>
 <td>Stop the annealing processing when the value is reached.</td>
 </tr>
 <tr class="row-odd"><td><strong>tries_per_temperature</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
 <td><cite>500</cite></td>
 <td>Maximum number of times a neighbor(s) is searched in each temperature.</td>
 </tr>
 <tr class="row-even"><td><strong>max_changes_per_temperature</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
 <td><cite>60</cite></td>
 <td>Maximum number of times the solution is changed in each temperature.</td>
 </tr>
 <tr class="row-odd"><td><strong>max_consecutive_non_changes</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
 <td><cite>100</cite></td>
 <td>Maximum number of consecutive times the solution is not changed in each temperature.</td>
 </tr>
 <tr class="row-even"><td><strong>initial_temperature</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td><cite>100</cite></td>
 <td>Starting temperature.</td>
 </tr>
 <tr class="row-odd"><td><strong>final_temperature</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td><cite>0.1</cite></td>
 <td>Ending temperature.</td>
 </tr>
 <tr class="row-even"><td><strong>cooling_factor</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td><cite>0.9</cite></td>
 <td>Value between between 0 and 1 (not including) used to calculate the next temperature.</td>
 </tr>
 <tr class="row-odd"><td><strong>randomize</strong></td>
-<td><code class="docutils literal"><span class="pre">BOOLEAN</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
 <td><cite>true</cite></td>
 <td><p class="first">Choose the random seed</p>
 <ul class="last simple">
@@ -393,7 +385,7 @@ and set to a higher number for a slower decrease.</li>
 </div>
 <div class="section" id="description-of-the-return-columns">
 <h3>Description of the return columns<a class="headerlink" href="#description-of-the-return-columns" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <code class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -408,30 +400,30 @@ and set to a higher number for a slower decrease.</li>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal"><span class="pre">INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
 <td>Row sequence.</td>
 </tr>
 <tr class="row-odd"><td><strong>node</strong></td>
-<td><code class="docutils literal"><span class="pre">BIGINT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the node/coordinate/point.</td>
 </tr>
 <tr class="row-even"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td><dl class="first last docutils">
-<dt>Cost to traverse from the current <code class="docutils literal"><span class="pre">node</span></code> ito the next <code class="docutils literal"><span class="pre">node</span></code> in the path sequence.</dt>
+<dt>Cost to traverse from the current <code class="docutils literal notranslate"><span class="pre">node</span></code> ito the next <code class="docutils literal notranslate"><span class="pre">node</span></code> in the path sequence.</dt>
 <dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">0</span></code> for the last row in the path sequence.</li>
+<li><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the path sequence.</li>
 </ul>
 </dd>
 </dl>
 </td>
 </tr>
 <tr class="row-odd"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">FLOAT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td><dl class="first last docutils">
-<dt>Aggregate cost from the <code class="docutils literal"><span class="pre">node</span></code> at <code class="docutils literal"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> to the current node.</dt>
+<dt>Aggregate cost from the <code class="docutils literal notranslate"><span class="pre">node</span></code> at <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> to the current node.</dt>
 <dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">0</span></code> for the first row in the path sequence.</li>
+<li><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the path sequence.</li>
 </ul>
 </dd>
 </dl>
@@ -475,8 +467,8 @@ and set to a higher number for a slower decrease.</li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 30, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+      Last updated on Dec 27, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

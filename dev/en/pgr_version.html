@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>pgr_version &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v3.0.0-dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -153,7 +145,7 @@
       
   <div class="section" id="pgr-version">
 <h1>pgr_version<a class="headerlink" href="#pgr-version" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">pgr_version</span></code> — Query for pgRouting version information.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_version</span></code> — Query for pgRouting version information.</p>
 <p class="rubric">Availability</p>
 <ul class="simple">
 <li>New in version 2.0.0</li>
@@ -161,7 +153,7 @@
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Returns a table with pgRouting version information.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">table</span><span class="p">()</span> <span class="n">pgr_version</span><span class="p">();</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">table</span><span class="p">()</span> <span class="n">pgr_version</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -182,23 +174,23 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>version</strong></td>
-<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">varchar</span></code></td>
 <td>pgRouting version</td>
 </tr>
 <tr class="row-odd"><td><strong>tag</strong></td>
-<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">varchar</span></code></td>
 <td>Git tag of pgRouting build</td>
 </tr>
 <tr class="row-even"><td><strong>hash</strong></td>
-<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">varchar</span></code></td>
 <td>Git hash of pgRouting build</td>
 </tr>
 <tr class="row-odd"><td><strong>branch</strong></td>
-<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">varchar</span></code></td>
 <td>Git branch of pgRouting build</td>
 </tr>
 <tr class="row-even"><td><strong>boost</strong></td>
-<td><code class="docutils literal"><span class="pre">varchar</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">varchar</span></code></td>
 <td>Boost version</td>
 </tr>
 </tbody>
@@ -209,7 +201,7 @@
 <ul class="simple">
 <li>Query for the version string</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">version</span> <span class="n">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">version</span> <span class="n">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
  <span class="n">version</span>
 <span class="o">---------</span>
  <span class="mf">3.0</span><span class="o">.</span><span class="mi">0</span>
@@ -241,8 +233,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 30, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+      Last updated on Dec 27, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

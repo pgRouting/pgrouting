@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v3.0.0-dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -155,7 +147,7 @@
       
   <div class="section" id="pgr-linegraphfull-experimental">
 <h1>pgr_lineGraphFull - Experimental<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">pgr_lineGraphFull</span></code> — Transforms a given graph into a new graph where all of the vertices from the original graph are converted to line graphs.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> — Transforms a given graph into a new graph where all of the vertices from the original graph are converted to line graphs.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>Experimental functions</p>
@@ -205,13 +197,13 @@
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraphFull(edges_sql)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_lineGraphFull(edges_sql)
 RETURNS SET OF (seq, source, target, cost, edge)
     OR EMPTY SET
 </pre></div>
 </div>
 <p class="rubric">Using defaults</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>pgr_lineGraphFull(TEXT edges_sql)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_lineGraphFull(TEXT edges_sql)
 RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </pre></div>
 </div>
@@ -219,11 +211,11 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Full line graph of subgraph of edges <span class="math">\(\{4, 7, 8, 10\}\)</span></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Full line graph of subgraph of edges <span class="math notranslate nohighlight">\(\{4, 7, 8, 10\}\)</span></td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraphFull</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraphFull</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
       <span class="n">FROM</span> <span class="n">edge_table</span>
       <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="s1">&#39;</span>
@@ -281,7 +273,7 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>sql</strong></td>
-<td><code class="docutils literal"><span class="pre">TEXT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
 <td>&#160;</td>
 <td>SQL query as described above.</td>
 </tr>
@@ -294,7 +286,7 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+<tr class="field-odd field"><th class="field-name">Edges SQL:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
 </tr>
 </tbody>
 </table>
@@ -314,22 +306,22 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-INTEGER</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
 <td>&#160;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>&#160;</td>
 <td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
 <ul class="last simple">
@@ -338,7 +330,7 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
 <td>-1</td>
 <td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
 <ul class="last simple">
@@ -373,7 +365,7 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </tbody>
 </table>
 <p>This example displays how this graph transformation works to create additional edges for each possible turn in a graph.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT id, source, target, cost, reverse_cost
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SELECT id, source, target, cost, reverse_cost
   FROM edge_table
   WHERE id IN (4,7,8,10);
 </pre></div>
@@ -381,7 +373,7 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 <div class="line-block">
 <div class="line"><img alt="first" class="align-middle" src="_images/original.png" /></div>
 </div>
-<div class="highlight-none"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(&#39;SELECT id,
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(&#39;SELECT id,
                                         source,
                                         target,
                                         cost,
@@ -404,7 +396,7 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </table>
 <p>The vertices in the transformed graph are each created by splitting up the vertices in the original graph. Unless a vertex in the original graph is a leaf vertex, it will generate more than one vertex in the transformed graph. One of the newly created vertices in the transformed graph will be given the same vertex-id as the vertex that it was created from in the original graph, but the rest of the newly created vertices will have negative vertex ids. Following is an example of how to generate a table that maps the ids of the newly created vertices with the original vertex that they were created from</p>
 <p>The first step is to store your results graph into a table and then create the vertex mapping table with one row for each distinct vertex id in the results graph.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>CREATE TABLE lineGraph_edges AS SELECT * FROM pgr_lineGraphFull(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CREATE TABLE lineGraph_edges AS SELECT * FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id IN (4,7,8,10)$$
 );
@@ -419,7 +411,7 @@ SELECT 16
 </pre></div>
 </div>
 <p>Next, we set the original_id of all of the vertices in the results graph that were given the same vertex id as the vertex that it was created from in the original graph.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">r</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">r</span>
   <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span>
   <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">AS</span> <span class="n">v</span>
   <span class="n">WHERE</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
@@ -427,7 +419,7 @@ SELECT 16
 </pre></div>
 </div>
 <p>Then, we cross reference all of the other newly created vertices that do not have the same original_id and set their original_id values.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">unassignedVertices</span>
   <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">original_id</span>
        <span class="n">FROM</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">e</span>
@@ -480,7 +472,7 @@ SELECT 16
 </pre></div>
 </div>
 <p>The only vertices left that have not been mapped are a few of the leaf vertices from the original graph. The following sql completes the mapping for these leaf vertices (in the case of this example graph there are no leaf vertices but this is necessary for larger graphs).</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">unassignedVertexIds</span>
   <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span>
         <span class="n">FROM</span> <span class="n">lineGraph_vertices</span>
@@ -527,7 +519,7 @@ SELECT 16
 </pre></div>
 </div>
 <p>Now our vertex mapping table is complete:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lineGraph_vertices</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lineGraph_vertices</span><span class="p">;</span>
  <span class="nb">id</span>  <span class="o">|</span> <span class="n">original_id</span>
 <span class="o">-----+-------------</span>
    <span class="mi">2</span> <span class="o">|</span>           <span class="mi">2</span>
@@ -560,7 +552,7 @@ SELECT 16
 </table>
 <p>One use case for this graph transformation is to be able to run a shortest path search that takes into account the cost or limitation of turning. Below is an example of running a dijkstra’s shortest path from vertex 2 to vertex 8 in the original graph, while adding a turn penalty cost of 100 to the turn from edge 4 to edge -7.</p>
 <p>First we must increase set the cost of making the turn to 100:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">lineGraph_edges</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">lineGraph_edges</span>
   <span class="n">SET</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">100</span>
   <span class="n">WHERE</span> <span class="n">source</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">target</span>
                      <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
@@ -571,7 +563,7 @@ SELECT 16
 </pre></div>
 </div>
 <p>Then we must run a dijkstra’s shortest path search using all of the vertices in the new graph that were created from vertex 2 as the starting point, and all of the vertices in the new graph that were created from vertex 8 as the ending point.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SELECT * FROM
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM
   (SELECT * FROM
     (SELECT * FROM pgr_dijkstra($$SELECT seq AS id, * FROM lineGraph_edges$$,
       (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 2),
@@ -619,8 +611,8 @@ SELECT 16
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 30, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+      Last updated on Dec 27, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

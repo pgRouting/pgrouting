@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Release Notes &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v3.0.0-dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -34,8 +27,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -104,7 +96,11 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Release Notes</a><ul>
 <li><a class="reference internal" href="#pgrouting-3-0-0-release-notes">pgRouting 3.0.0 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-2-6-2-release-notes">pgRouting 2.6.2 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-2-6-1-release-notes">pgRouting 2.6.1 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-6-0-release-notes">pgRouting 2.6.0 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-2-5-5-release-notes">pgRouting 2.5.5 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-2-5-4-release-notes">pgRouting 2.5.4 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-5-3-release-notes">pgRouting 2.5.3 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-5-2-release-notes">pgRouting 2.5.2 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-2-5-1-release-notes">pgRouting 2.5.1 Release Notes</a></li>
@@ -175,12 +171,16 @@
     <div class="col-md-12 content">
       
   <div class="section" id="release-notes">
-<h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<span id="change-log"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
 <p>To see the full list of changes check the list of <a class="reference external" href="https://github.com/pgRouting/pgrouting/commits">Git commits</a> on Github.</p>
 <p class="rubric">Table of contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#changelog-3-0-0"><span class="std std-ref">pgRouting 3.0.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-6-2"><span class="std std-ref">pgRouting 2.6.2 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-6-1"><span class="std std-ref">pgRouting 2.6.1 Release Notes</span></a></li>
 <li><a class="reference internal" href="#changelog-2-6-0"><span class="std std-ref">pgRouting 2.6.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-5-5"><span class="std std-ref">pgRouting 2.5.5 Release Notes</span></a></li>
+<li><a class="reference internal" href="#changelog-2-5-4"><span class="std std-ref">pgRouting 2.5.4 Release Notes</span></a></li>
 <li><a class="reference internal" href="#changelog-2-5-3"><span class="std std-ref">pgRouting 2.5.3 Release Notes</span></a></li>
 <li><a class="reference internal" href="#changelog-2-5-2"><span class="std std-ref">pgRouting 2.5.2 Release Notes</span></a></li>
 <li><a class="reference internal" href="#changelog-2-5-1"><span class="std std-ref">pgRouting 2.5.1 Release Notes</span></a></li>
@@ -203,6 +203,23 @@
 </ul>
 <div class="section" id="pgrouting-3-0-0-release-notes">
 <span id="changelog-3-0-0"></span><h2>pgRouting 3.0.0 Release Notes<a class="headerlink" href="#pgrouting-3-0-0-release-notes" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">New Experimental functions</p>
+<ul class="simple">
+<li>Prim family<ul>
+<li>pgr_prim</li>
+<li>pgr_primDD</li>
+<li>pgr_primDFS</li>
+<li>pgr_primBFS</li>
+</ul>
+</li>
+<li>Kruskal family<ul>
+<li>pgr_kruskal</li>
+<li>pgr_kruskalDD</li>
+<li>pgr_kruskalDFS</li>
+<li>pgr_kruskalBFS</li>
+</ul>
+</li>
+</ul>
 <p class="rubric">Proposed moved to official on pgRouting</p>
 <ul class="simple">
 <li>aStar Family<ul>
@@ -284,6 +301,54 @@
 </li>
 </ul>
 </div>
+<div class="section" id="pgrouting-2-6-2-release-notes">
+<span id="changelog-2-6-2"></span><h2>pgRouting 2.6.2 Release Notes<a class="headerlink" href="#pgrouting-2-6-2-release-notes" title="Permalink to this headline">¶</a></h2>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.2%22%20">Git closed milestone for 2.6.2</a> on Github.</p>
+<p class="rubric">Bug fixes</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1152">#1152</a> Fixes driving distance when vertex is not part of the graph</li>
+<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1098">#1098</a> Fixes windows test</li>
+<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1165">#1165</a> Fixes build for python3 and perl5</li>
+</ul>
+</div>
+<div class="section" id="pgrouting-2-6-1-release-notes">
+<span id="changelog-2-6-1"></span><h2>pgRouting 2.6.1 Release Notes<a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Permalink to this headline">¶</a></h2>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.1%22%20">Git closed milestone for 2.6.1</a> on Github.</p>
+<ul class="simple">
+<li>Fixes server crash on several functions.<ul>
+<li>pgr_floydWarshall</li>
+<li>pgr_johnson</li>
+<li>pgr_astar</li>
+<li>pgr_bdAstar</li>
+<li>pgr_bdDijstra</li>
+<li>pgr_alphashape</li>
+<li>pgr_dijkstraCostMatrix</li>
+<li>pgr_dijkstra</li>
+<li>pgr_dijkstraCost</li>
+<li>pgr_drivingDistance</li>
+<li>pgr_KSP</li>
+<li>pgr_dijkstraVia (proposed)</li>
+<li>pgr_boykovKolmogorov (proposed)</li>
+<li>pgr_edgeDisjointPaths (proposed)</li>
+<li>pgr_edmondsKarp (proposed)</li>
+<li>pgr_maxCardinalityMatch (proposed)</li>
+<li>pgr_maxFlow (proposed)</li>
+<li>pgr_withPoints (proposed)</li>
+<li>pgr_withPointsCost (proposed)</li>
+<li>pgr_withPointsKSP (proposed)</li>
+<li>pgr_withPointsDD (proposed)</li>
+<li>pgr_withPointsCostMatrix (proposed)</li>
+<li>pgr_contractGraph (experimental)</li>
+<li>pgr_pushRelabel (experimental)</li>
+<li>pgr_vrpOneDepot (experimental)</li>
+<li>pgr_gsoc_vrppdtw (experimental)</li>
+<li>Fixes for deprecated functions where also applied but not tested</li>
+</ul>
+</li>
+<li>Removed compilation warning for g++8</li>
+<li>Fixed a fallthrugh on Astar and bdAstar.</li>
+</ul>
+</div>
 <div class="section" id="pgrouting-2-6-0-release-notes">
 <span id="changelog-2-6-0"></span><h2>pgRouting 2.6.0 Release Notes<a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.0%22%20">Git closed milestone for 2.6.0</a> on Github.</p>
@@ -314,6 +379,54 @@
 </ul>
 </li>
 <li>Cleaned the internal code of withPoints</li>
+</ul>
+</div>
+<div class="section" id="pgrouting-2-5-5-release-notes">
+<span id="changelog-2-5-5"></span><h2>pgRouting 2.5.5 Release Notes<a class="headerlink" href="#pgrouting-2-5-5-release-notes" title="Permalink to this headline">¶</a></h2>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.5%22%20">Git closed milestone for 2.5.5</a> on Github.</p>
+<p class="rubric">Bug fixes</p>
+<ul class="simple">
+<li>Fixes driving distance when vertex is not part of the graph</li>
+<li>Fixes windows test</li>
+<li>Fixes build for python3 and perl5</li>
+</ul>
+</div>
+<div class="section" id="pgrouting-2-5-4-release-notes">
+<span id="changelog-2-5-4"></span><h2>pgRouting 2.5.4 Release Notes<a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Permalink to this headline">¶</a></h2>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.4%22%20">Git closed milestone for 2.5.4</a> on Github.</p>
+<ul class="simple">
+<li>Fixes server crash on several functions.<ul>
+<li>pgr_floydWarshall</li>
+<li>pgr_johnson</li>
+<li>pgr_astar</li>
+<li>pgr_bdAstar</li>
+<li>pgr_bdDijstra</li>
+<li>pgr_alphashape</li>
+<li>pgr_dijkstraCostMatrix</li>
+<li>pgr_dijkstra</li>
+<li>pgr_dijkstraCost</li>
+<li>pgr_drivingDistance</li>
+<li>pgr_KSP</li>
+<li>pgr_dijkstraVia (proposed)</li>
+<li>pgr_boykovKolmogorov (proposed)</li>
+<li>pgr_edgeDisjointPaths (proposed)</li>
+<li>pgr_edmondsKarp (proposed)</li>
+<li>pgr_maxCardinalityMatch (proposed)</li>
+<li>pgr_maxFlow (proposed)</li>
+<li>pgr_withPoints (proposed)</li>
+<li>pgr_withPointsCost (proposed)</li>
+<li>pgr_withPointsKSP (proposed)</li>
+<li>pgr_withPointsDD (proposed)</li>
+<li>pgr_withPointsCostMatrix (proposed)</li>
+<li>pgr_contractGraph (experimental)</li>
+<li>pgr_pushRelabel (experimental)</li>
+<li>pgr_vrpOneDepot (experimental)</li>
+<li>pgr_gsoc_vrppdtw (experimental)</li>
+<li>Fixes for deprecated functions where also applied but not tested</li>
+</ul>
+</li>
+<li>Removed compilation warning for g++8</li>
+<li>Fixed a fallthrugh on Astar and bdAstar.</li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-3-release-notes">
@@ -385,10 +498,6 @@
 <li>pgr_biconnectedComponents</li>
 <li>pgr_articulationPoints</li>
 <li>pgr_bridges</li>
-<li>pgr_minCostMaxFlow</li>
-<li>pgr_minCostMaxFlow_Cost</li>
-<li>pgr_directedChPP</li>
-<li>pgr_directedChPP_Cost</li>
 </ul>
 <p class="rubric">Deprecated Signatures</p>
 <ul class="simple">
@@ -743,8 +852,8 @@ The main Goals for this release are:</p>
 <li>Installs as PostgreSQL EXTENSION</li>
 <li>Return types re factored and unified</li>
 <li>Support for table SCHEMA in function parameters</li>
-<li>Support for <code class="docutils literal"><span class="pre">st_</span></code> PostGIS function prefix</li>
-<li>Added <code class="docutils literal"><span class="pre">pgr_</span></code> prefix to functions and types</li>
+<li>Support for <code class="docutils literal notranslate"><span class="pre">st_</span></code> PostGIS function prefix</li>
+<li>Added <code class="docutils literal notranslate"><span class="pre">pgr_</span></code> prefix to functions and types</li>
 <li>Better documentation: <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></li>
 <li>shooting_star is discontinued</li>
 </ul>
@@ -752,7 +861,7 @@ The main Goals for this release are:</p>
 <div class="section" id="pgrouting-1-x-release-notes">
 <span id="changelog-1-x"></span><h2>pgRouting 1.x Release Notes<a class="headerlink" href="#pgrouting-1-x-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed">Git closed issues for 1.x</a> on Github.
-The following release notes have been copied from the previous <code class="docutils literal"><span class="pre">RELEASE_NOTES</span></code> file and are kept as a reference.</p>
+The following release notes have been copied from the previous <code class="docutils literal notranslate"><span class="pre">RELEASE_NOTES</span></code> file and are kept as a reference.</p>
 <div class="section" id="changes-for-release-1-05">
 <h3>Changes for release 1.05<a class="headerlink" href="#changes-for-release-1-05" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -832,8 +941,8 @@ The following release notes have been copied from the previous <code class="docu
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 30, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+      Last updated on Dec 27, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>

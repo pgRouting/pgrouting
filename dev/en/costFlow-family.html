@@ -2,25 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Minimum Cost Maximum FLow - Family of functions (Experimental) &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v3.0.0-dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -208,23 +200,23 @@
 <div class="section" id="problem-definition">
 <h2>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
 <p>A flow network with cost is a directed graph where each edge has a capacity, a flow and a cost.
-For each edge <span class="math">\((u, v)\)</span> in the given graph, it has capacity <span class="math">\(c(u, v) &gt; 0\)</span>, flow <span class="math">\(f(u, v) &gt;= 0\)</span> and cost <span class="math">\(a(u, v) &gt;= 0\)</span>.</p>
-<p><span class="math">\(f(u, v) &lt;= c(u, v)\)</span></p>
-<p>The cost of sending this flow along an edge <span class="math">\((u, v)\)</span> is <span class="math">\(f(u, v) * a(u, v)\)</span>.
+For each edge <span class="math notranslate nohighlight">\((u, v)\)</span> in the given graph, it has capacity <span class="math notranslate nohighlight">\(c(u, v) &gt; 0\)</span>, flow <span class="math notranslate nohighlight">\(f(u, v) &gt;= 0\)</span> and cost <span class="math notranslate nohighlight">\(a(u, v) &gt;= 0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(f(u, v) &lt;= c(u, v)\)</span></p>
+<p>The cost of sending this flow along an edge <span class="math notranslate nohighlight">\((u, v)\)</span> is <span class="math notranslate nohighlight">\(f(u, v) * a(u, v)\)</span>.
 Additionally, the incoming and outgoing flow of a node must be equal except the for source which only has outgoing flow, and the destination(sink) which only has incoming flow.</p>
 <p>Minimum Cost Maximum flow algorithms calculate the minimum cost maximum flow through the graph and the flow/cost of each edge.</p>
 <p>Given the following query:</p>
-<p>pgr_minCostMaxFlow <span class="math">\((edges\_sql, source\_vertex, sink\_vertex)\)</span></p>
-<p>where <span class="math">\(edges\_sql = \{(id_i, source_i, target_i, capacity_i, reverse\_capacity_i, cost_i, reverse\_cost_i)\}\)</span></p>
+<p>pgr_minCostMaxFlow <span class="math notranslate nohighlight">\((edges\_sql, source\_vertex, sink\_vertex)\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(edges\_sql = \{(id_i, source_i, target_i, capacity_i, reverse\_capacity_i, cost_i, reverse\_cost_i)\}\)</span></p>
 <p class="rubric">Graph definition</p>
-<p>The weighted directed graph, <span class="math">\(G(V,E)\)</span>, is defined as:</p>
+<p>The weighted directed graph, <span class="math notranslate nohighlight">\(G(V,E)\)</span>, is defined as:</p>
 <ul class="simple">
-<li>the set of vertices  <span class="math">\(V\)</span><ul>
-<li><span class="math">\(source\_vertex  \cup  sink\_vertex  \bigcup  source_i  \bigcup  target_i\)</span></li>
+<li>the set of vertices  <span class="math notranslate nohighlight">\(V\)</span><ul>
+<li><span class="math notranslate nohighlight">\(source\_vertex  \cup  sink\_vertex  \bigcup  source_i  \bigcup  target_i\)</span></li>
 </ul>
 </li>
-<li>the set of edges <span class="math">\(E\)</span><ul>
-<li><span class="math">\(E = \begin{cases}
+<li>the set of edges <span class="math notranslate nohighlight">\(E\)</span><ul>
+<li><span class="math notranslate nohighlight">\(E = \begin{cases}
 \text{ } \{(source_i, target_i, capacity_i, cost_i) \text{ when } capacity &gt; 0 \} &amp; \quad  \text{ if } reverse\_capacity = \varnothing \\
 \text{ } &amp; \quad \text{ } \\
 \{(source_i, target_i, capacity_i, cost_i) \text{ when } capacity &gt; 0 \} &amp; \text{ } \\
@@ -235,22 +227,22 @@ Additionally, the incoming and outgoing flow of a node must be equal except the 
 <p class="rubric">Minimum Cost Maximum Flow problem</p>
 <p>Given:</p>
 <ul class="simple">
-<li><span class="math">\(G(V,E)\)</span></li>
-<li><span class="math">\(source\_vertex \in V\)</span> the source vertex</li>
-<li><span class="math">\(sink\_vertex \in V\)</span> the sink vertex</li>
+<li><span class="math notranslate nohighlight">\(G(V,E)\)</span></li>
+<li><span class="math notranslate nohighlight">\(source\_vertex \in V\)</span> the source vertex</li>
+<li><span class="math notranslate nohighlight">\(sink\_vertex \in V\)</span> the sink vertex</li>
 </ul>
 <p>Then:</p>
 <blockquote>
-<div><p><span class="math">\(pgr\_minCostMaxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}\)</span></p>
-<p><span class="math">\(\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i, cost_i, agg\_cost_i)}\)</span></p>
+<div><p><span class="math notranslate nohighlight">\(pgr\_minCostMaxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i, cost_i, agg\_cost_i)}\)</span></p>
 </div></blockquote>
 <p>Where:</p>
-<p><span class="math">\(\boldsymbol{\Phi}\)</span> is a subset of the original edges with their residual capacity, flow, cost and aggregate cost. The minimum cost through the graph can be obtained by aggregating on each edge and summing the sending cost of it. In particular:</p>
+<p><span class="math notranslate nohighlight">\(\boldsymbol{\Phi}\)</span> is a subset of the original edges with their residual capacity, flow, cost and aggregate cost. The minimum cost through the graph can be obtained by aggregating on each edge and summing the sending cost of it. In particular:</p>
 <ul class="simple">
-<li><span class="math">\(id_i = i\)</span></li>
-<li><span class="math">\(edge\_id = id_i\)</span> in edges_sql</li>
-<li><span class="math">\(residual\_capacity_i = capacity_i - flow_i\)</span></li>
-<li><span class="math">\(agg\_cost_i = agg\_cost_{i-1} + cost_i\)</span></li>
+<li><span class="math notranslate nohighlight">\(id_i = i\)</span></li>
+<li><span class="math notranslate nohighlight">\(edge\_id = id_i\)</span> in edges_sql</li>
+<li><span class="math notranslate nohighlight">\(residual\_capacity_i = capacity_i - flow_i\)</span></li>
+<li><span class="math notranslate nohighlight">\(agg\_cost_i = agg\_cost_{i-1} + cost_i\)</span></li>
 </ul>
 </div>
 <div class="section" id="see-also">
@@ -279,8 +271,8 @@ Additionally, the incoming and outgoing flow of a node must be equal except the 
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Oct 30, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+      Last updated on Dec 27, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
 </footer>
