@@ -65,6 +65,8 @@ DIFF=`git diff sql/sigs/pgrouting--${VERSION}.sig`
 
 if [[ !  -z  $DIFF  ]]
 then
+    echo Signature file not updated
+    echo $DIFF
     ERROR=1
 fi
 
