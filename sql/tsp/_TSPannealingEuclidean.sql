@@ -25,14 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
---------------------
--- pgr_TSPeuclidean
---------------------
-
-
-CREATE OR REPLACE FUNCTION pgr_TSPeuclidean(
-    TEXT, -- coordinates_sql (required)
-
+CREATE OR REPLACE FUNCTION _pgr_TSPAnnealingEuclidean(
+    coordinates_sql TEXT,
     start_id BIGINT DEFAULT 0,
     end_id BIGINT DEFAULT 0,
 
@@ -52,34 +46,11 @@ CREATE OR REPLACE FUNCTION pgr_TSPeuclidean(
     OUT node BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT *
-    FROM _pgr_TSPeuclidean(_pgr_get_statement($1), $2,$3, $4, $5,$6,$7, $8,$9,$10, $11);
-$BODY$
-LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
-
+RETURNS SETOF record
+AS 'MODULE_PATHNAME', 'euclideanTSP'
+LANGUAGE C VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_TSPeuclidean(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
-IS 'pgr_TSPeuclidean
- - Parameters
-   - coordinates SQL with columns: id, x, y
- - Optional parameters
-    - start_id := 0
-    - end_id := 0
-
-    - max_processing_time := ''+infinity''::FLOAT
-
-    - tries_per_temperature := 500
-    - max_changes_per_temperature :=  60
-    - max_consecutive_non_changes :=  100
-
-    - initial_temperature FLOAT := 100
-    - final_temperature := 0.1
-    - cooling_factor := 0.9
-
-    - randomize := true';
+COMMENT ON FUNCTION _pgr_TSPannealingEuclidean(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
+IS 'pgRouting internal function';

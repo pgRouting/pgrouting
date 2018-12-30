@@ -7,15 +7,14 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_TSPeuclidean
+pgr_TSPannealing
 =============================================================================
 
-``pgr_TSPeuclidean`` - Using *Simulated Annealing* approximation algorithm
+* ``pgr_TSPannealing`` - Using *Simulated Annealing* approximation algorithm
 
+.. rubric:: Availability: 2.0.0
 
-.. rubric:: Availability
-
-* New in version 2.3.0
+* Signature changed 2.3.0
 
 Description
 -------------------------------------------------------------------------------
@@ -32,11 +31,11 @@ Signatures
 .. rubric:: Summary
 
 .. index::
-    single: TSPeuclidean
+    single: TSP
 
 .. code-block:: none
 
-    pgr_TSPeuclidean(Coordinates SQL,
+    pgr_TSPannealing(Matrix SQL,
         [start_id], [end_id],
         [max_processing_time],
         [tries_per_temperature], [max_changes_per_temperature], [max_consecutive_non_changes],
@@ -46,7 +45,7 @@ Signatures
 
 :Example: Not having a random execution
 
-.. literalinclude:: doc-pgr_TSPeuclidean.queries
+.. literalinclude:: doc-pgr_TSPannealing.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -56,7 +55,7 @@ Parameters
 ====================  =================================================
 Parameter             Description
 ====================  =================================================
-**Coordinates SQL**   an SQL query, described in the `Inner query`_
+**Matrix SQL**        an SQL query, described in the `Inner query`_
 ====================  =================================================
 
 Optional Parameters
@@ -69,19 +68,20 @@ Optional Parameters
 Inner query
 -------------------------------------------------------------------------------
 
-**Coordinates SQL**: an SQL query, which should return a set of rows with the following columns:
+**Matrix SQL**: an SQL query, which should return a set of rows with the following columns:
 
-======= =========== =================================================
-Column  Type        Description
-======= =========== =================================================
-**id**  ``BIGINT``  (optional) Identifier of the coordinate.
+============= =========== =================================================
+Column        Type              Description
+============= =========== =================================================
+**start_vid** ``BIGINT``  Identifier of the starting vertex.
+**end_vid**   ``BIGINT``  Identifier of the ending vertex.
+**agg_cost**  ``FLOAT``   Cost for going from start_vid to end_vid
+============= =========== =================================================
 
-                    - When missing the coordinates will receive an **id** starting from 1, in the order given.
+Can be Used with :doc:`costMatrix-category` functions with `directed := false`.
 
-**x**   ``FLOAT``   X value of the coordinate.
-**y**   ``FLOAT``   Y value of the coordinate.
-======= =========== =================================================
-
+If using `directed := true`, the resulting non symmetric matrix must be converted to
+symmetric by fixing the non symmetric values according to your application needs.
 
 Result Columns
 -------------------------------------------------------------------------------
@@ -93,15 +93,20 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Try :math:`3` times per temperature with cooling factor of :math:`0.5`, not having a random execution
+:Example: Start from vertex :math:`7`
 
-.. literalinclude:: doc-pgr_TSPeuclidean.queries
+.. literalinclude:: doc-pgr_TSPannealing.queries
    :start-after: -- q2
    :end-before: -- q3
 
-:Example: Skipping the Simulated Annealing & showing some process information
+:Example: Using with points of interest.
 
-.. literalinclude:: doc-pgr_TSPeuclidean.queries
+To generate a symmetric matrix:
+
+* the **side** information of pointsOfInterset is ignored by not including it in the query
+* and **directed := false**
+
+.. literalinclude:: doc-pgr_TSPannealing.queries
    :start-after: -- q3
    :end-before: -- q4
 

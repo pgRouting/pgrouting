@@ -75,13 +75,13 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
-SELECT test_anyIntegerXY('pgr_tspeuclidean',
+SELECT test_anyIntegerXY('pgr_tspannealingeuclidean',
     ARRAY['id', 'x', 'y'],
     'id');
-SELECT test_anyNumericalXY('pgr_tspeuclidean',
+SELECT test_anyNumericalXY('pgr_tspannealingeuclidean',
     ARRAY['id', 'x', 'y'],
     'x');
-SELECT test_anyNumericalXY('pgr_tspeuclidean',
+SELECT test_anyNumericalXY('pgr_tspannealingeuclidean',
     ARRAY['id', 'x', 'y'],
     'y');
 

@@ -4,8 +4,8 @@
 SELECT plan(28);
 SET client_min_messages TO WARNING;
 
-SELECT has_function('pgr_tsp');
-SELECT has_function('pgr_tsp', ARRAY[
+SELECT has_function('pgr_tspannealing');
+SELECT has_function('pgr_tspannealing', ARRAY[
     'text', 'bigint', 'bigint',
     'double precision',
     'integer', 'integer', 'integer',
@@ -14,7 +14,7 @@ SELECT has_function('pgr_tsp', ARRAY[
     'double precision',
     'boolean'
     ]);
-SELECT function_returns('pgr_tsp', ARRAY[
+SELECT function_returns('pgr_tspannealing', ARRAY[
     'text', 'bigint', 'bigint',
     'double precision',
     'integer', 'integer', 'integer',
@@ -41,7 +41,7 @@ SELECT array[
 'agg_cost'];
 
 SELECT set_has(
-    $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_tsp'$$,
+    $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_tspannealing'$$,
     'parameters');
 
 
@@ -121,18 +121,18 @@ end_sql = ' FROM matrixrows $$, randomize := false)';
 END;
 $BODY$ LANGUAGE plpgsql;
 
-SELECT test_anyInteger('pgr_tsp',
+SELECT test_anyInteger('pgr_tspannealing',
     ARRAY['start_vid', 'end_vid', 'agg_cost'],
     'start_vid');
-SELECT test_anyInteger('pgr_tsp',
+SELECT test_anyInteger('pgr_tspannealing',
     ARRAY['start_vid', 'end_vid', 'agg_cost'],
     'end_vid');
-SELECT test_anyNumerical('pgr_tsp',
+SELECT test_anyNumerical('pgr_tspannealing',
     ARRAY['start_vid', 'end_vid', 'agg_cost'],
     'agg_cost');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSP('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
+    SELECT * FROM pgr_TSPannealing('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
         max_processing_time := -4,
         randomize := false)$$,
     'XX000',
@@ -140,7 +140,7 @@ SELECT throws_ok($$
     'SHOULD throw because max_processing_time has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSP('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
+    SELECT * FROM pgr_TSPannealing('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
         tries_per_temperature := -4,
         randomize := false)$$,
     'XX000',
@@ -148,7 +148,7 @@ SELECT throws_ok($$
     'SHOULD throw because tries_per_temperature has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSP('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
+    SELECT * FROM pgr_TSPannealing('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
         max_changes_per_temperature := -4,
         randomize := false)$$,
     'XX000',
@@ -156,7 +156,7 @@ SELECT throws_ok($$
     'SHOULD throw because max_changes_per_temperature has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSP('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
+    SELECT * FROM pgr_TSPannealing('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
         max_consecutive_non_changes := -4,
         randomize := false)$$,
     'XX000',
@@ -164,7 +164,7 @@ SELECT throws_ok($$
     'SHOULD throw because max_consecutive_non_changes has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSP('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
+    SELECT * FROM pgr_TSPannealing('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
         cooling_factor := 0,
         randomize := false)$$,
     'XX000',
@@ -172,7 +172,7 @@ SELECT throws_ok($$
     'SHOULD throw because cooling_factor has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSP('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
+    SELECT * FROM pgr_TSPannealing('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
         cooling_factor := 1,
         randomize := false)$$,
     'XX000',
@@ -180,7 +180,7 @@ SELECT throws_ok($$
     'SHOULD throw because cooling_factor has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSP('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
+    SELECT * FROM pgr_TSPannealing('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
         initial_temperature := 0,
         randomize := false)$$,
     'XX000',
@@ -188,7 +188,7 @@ SELECT throws_ok($$
     'SHOULD throw because initial_temperature has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSP('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
+    SELECT * FROM pgr_TSPannealing('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
         final_temperature := 101,
         randomize := false)$$,
     'XX000',
@@ -196,7 +196,7 @@ SELECT throws_ok($$
     'SHOULD throw because final_temperature has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSP('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
+    SELECT * FROM pgr_TSPannealing('SELECT start_vid, end_vid, agg_cost FROM matrixrows',
         final_temperature := 0,
         randomize := false)$$,
     'XX000',

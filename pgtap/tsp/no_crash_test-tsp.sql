@@ -29,7 +29,7 @@ BEGIN
     'NULL'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_TSP', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_TSPannealing', params, subs);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;

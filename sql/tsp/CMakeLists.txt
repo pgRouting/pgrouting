@@ -1,9 +1,9 @@
 
 SET(LOCAL_FILES
-    _TSP.sql
-    _TSPeuclidean.sql
-    TSP.sql
-    TSPeuclidean.sql
+    _TSPannealing.sql
+    _TSPannealingEuclidean.sql
+    TSPannealing.sql
+    TSPannealingEuclidean.sql
     )
 
 foreach (f ${LOCAL_FILES})

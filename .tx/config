@@ -67,9 +67,9 @@ file_filter = locale/<lang>/LC_MESSAGES/pgr_dijkstraCostMatrix.po
 source_file = locale/pot/pgr_dijkstraCostMatrix.pot
 source_lang = en
 
-[pgrouting.pgr_euclideanTSP]
-file_filter = locale/<lang>/LC_MESSAGES/pgr_euclideanTSP.po
-source_file = locale/pot/pgr_euclideanTSP.pot
+[pgrouting.pgr_TSPannealingEuclidean]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_TSPannealingEuclidean.po
+source_file = locale/pot/pgr_TSPannealingEuclidean.pot
 source_lang = en
 
 [pgrouting.pgr_dijkstraCost]
@@ -137,9 +137,9 @@ file_filter = locale/<lang>/LC_MESSAGES/pgr_vrpOneDepot.po
 source_file = locale/pot/pgr_vrpOneDepot.pot
 source_lang = en
 
-[pgrouting.pgr_TSP]
-file_filter = locale/<lang>/LC_MESSAGES/pgr_TSP.po
-source_file = locale/pot/pgr_TSP.pot
+[pgrouting.pgr_TSPannealing]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_TSPannealing.po
+source_file = locale/pot/pgr_TSPannealing.pot
 source_lang = en
 
 [pgrouting.drivingDistance-category]

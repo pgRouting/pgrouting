@@ -1,7 +1,7 @@
 
 SET(LOCAL_FILES
-    pgr_TSPeuclidean.rst
-    pgr_TSP.rst
+    pgr_TSPannealingEuclidean.rst
+    pgr_TSPannealing.rst
     TSP-family.rst
     )
 

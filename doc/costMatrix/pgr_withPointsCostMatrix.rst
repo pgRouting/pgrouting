@@ -120,7 +120,7 @@ Inner query
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: :doc:`pgr_TSP` using ``pgr_withPointsCostMatrix`` for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on an **undirected** graph
+:Example: :doc:`pgr_TSPannealing` using ``pgr_withPointsCostMatrix`` for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- withPoints q3
@@ -131,7 +131,7 @@ See Also
 
 * :doc:`pgr_withPoints`
 * :doc:`costMatrix-category`
-* :doc:`pgr_TSP`
+* :doc:`pgr_TSPannealing`
 * `sampledata` network.
 
 .. rubric:: Indices and tables

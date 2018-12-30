@@ -53,7 +53,7 @@ Signatures
 
 .. index::
     single: dijkstraCostMatrix
-    
+
 Complete Signature
 ...............................................................................
 

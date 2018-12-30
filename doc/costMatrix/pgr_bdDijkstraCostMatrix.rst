@@ -68,7 +68,7 @@ Complete Signature
    :start-after: -- bdDijkstra q2
    :end-before: -- bdDijkstra q3
 
-Parameters 
+Parameters
 -------------------------------------------------------------------------------
 
 ================ ====================== =================================================
@@ -107,7 +107,7 @@ See Also
 
 * :doc:`pgr_bdDijkstra`
 * :doc:`costMatrix-category`
-* :doc:`pgr_TSP`
+* :doc:`pgr_TSPannealing`
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

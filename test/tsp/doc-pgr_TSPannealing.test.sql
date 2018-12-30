@@ -1,5 +1,5 @@
 \echo -- q1
-SELECT * FROM pgr_TSP(
+SELECT * FROM pgr_TSPannealing(
     $$
     SELECT * FROM pgr_dijkstraCostMatrix(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -8,7 +8,7 @@ SELECT * FROM pgr_TSP(
     $$,
     randomize := false);
 \echo -- q2
-SELECT * FROM pgr_TSP(
+SELECT * FROM pgr_TSPannealing(
     $$
     SELECT * FROM pgr_dijkstraCostMatrix(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -20,7 +20,7 @@ SELECT * FROM pgr_TSP(
     randomize := false
 );
 \echo -- q3
-SELECT * FROM pgr_TSP(
+SELECT * FROM pgr_TSPannealing(
     $$
     SELECT * FROM pgr_withPointsCostMatrix(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',

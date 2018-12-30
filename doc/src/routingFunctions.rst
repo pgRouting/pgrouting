@@ -56,7 +56,7 @@ Routing Functions
 
 :doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)
 
-:doc:`pgr_TSP`
+:doc:`TSP-family`
 
 .. include:: TSP-family.rst
    :start-after: index from here

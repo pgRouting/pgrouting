@@ -54,7 +54,7 @@ Characteristics
 
 The main Characteristics are:
 
-* Can be used as input to :doc:`pgr_TSP`.
+* Can be used as input to :doc:`pgr_TSPannealing`.
 
   * :directly: when the resulting matrix is symmetric and there is no :math:`\infty` value.
   * It will be the users responsibility to make the matrix symmetric.
