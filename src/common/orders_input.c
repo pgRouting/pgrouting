@@ -197,7 +197,7 @@ pgr_get_pd_orders_general(
     if (with_id) {
         PGR_DBG("Finish reading %ld orders for matrix", (*total_pd_orders));
     } else {
-        PGR_DBG("Finish reading %ld orders for eucledian", (*total_pd_orders));
+        PGR_DBG("Finish reading %ld orders for euclidean", (*total_pd_orders));
     }
     time_msg("reading edges", start_t, clock());
 }

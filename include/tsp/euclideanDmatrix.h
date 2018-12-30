@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: eucledianDmatrix.h
+FILE: euclideanDmatrix.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_TSP_EUCLEDIANDMATRIX_H_
-#define INCLUDE_TSP_EUCLEDIANDMATRIX_H_
+#ifndef INCLUDE_TSP_EUCLIDEANDMATRIX_H_
+#define INCLUDE_TSP_EUCLIDEANDMATRIX_H_
 #pragma once
 
 #include <iostream>
@@ -35,12 +35,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace tsp {
 
-class Tour;  // for tourCost
+class Tour;
 
-class eucledianDmatrix {
+class EuclideanDmatrix {
  public:
-    eucledianDmatrix() = default;
-    explicit eucledianDmatrix(
+    EuclideanDmatrix() = default;
+    explicit EuclideanDmatrix(
             const std::vector< Coordinate_t > &data_coordinates);
 
     bool has_no_infinity() const;
@@ -105,7 +105,7 @@ class eucledianDmatrix {
 
     friend std::ostream& operator<<(
             std::ostream &log,
-            const eucledianDmatrix &matrix);
+            const EuclideanDmatrix &matrix);
 
  protected:
     void set_ids();
@@ -121,4 +121,4 @@ class eucledianDmatrix {
 }  // namespace tsp
 }  // namespace pgrouting
 
-#endif  // INCLUDE_TSP_EUCLEDIANDMATRIX_H_
+#endif  // INCLUDE_TSP_EUCLIDEANDMATRIX_H_

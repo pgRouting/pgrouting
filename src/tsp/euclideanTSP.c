@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: eucledianTSP.c
+File: euclideanTSP.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -35,11 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 
 #include "c_common/coordinates_input.h"
-#include "drivers/tsp/eucledianTSP_driver.h"
+#include "drivers/tsp/euclideanTSP_driver.h"
 
 
 
-PGDLLEXPORT Datum eucledianTSP(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum euclideanTSP(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -111,7 +111,7 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    do_pgr_eucledianTSP(
+    do_pgr_euclideanTSP(
             coordinates, total_coordinates,
             start_vid,
             end_vid,
@@ -129,7 +129,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg("eucledianTSP", start_t, clock());
+    time_msg("euclideanTSP", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -149,9 +149,9 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PG_FUNCTION_INFO_V1(eucledianTSP);
+PG_FUNCTION_INFO_V1(euclideanTSP);
 PGDLLEXPORT Datum
-eucledianTSP(PG_FUNCTION_ARGS) {
+euclideanTSP(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
@@ -173,7 +173,7 @@ eucledianTSP(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /*
 
-           CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
+           CREATE OR REPLACE FUNCTION pgr_euclideanTSP(
            coordinates_sql TEXT,
            start_id BIGINT DEFAULT 0,
            end_id BIGINT DEFAULT 0,

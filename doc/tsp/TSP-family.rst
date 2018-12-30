@@ -13,7 +13,7 @@ Traveling Sales Person - Family of functions
 .. index from here
 
 * :doc:`pgr_TSP` - When input is given as matrix cell information.
-* :doc:`pgr_eucledianTSP` - When input are coordinates.
+* :doc:`pgr_TSPeuclidean` - When input are coordinates.
 
 .. index to here
 
@@ -21,14 +21,29 @@ Traveling Sales Person - Family of functions
     :hidden:
 
     pgr_TSP
-    pgr_eucledianTSP
+    pgr_TSPeuclidean
 
+.. contents:: Table of Contents
+    :local:
 
 General Information
-------------------------------------
+-------------------------------------------------------------------------------
+
+Problem Definition
+...............................................................................
+
+.. tsp problem definition start
+
+The travelling salesman problem (TSP) or travelling salesperson problem asks the
+following question:
+
+*Given a list of cities and the distances between each pair of cities, which is
+the shortest possible route that visits each city exactly once and returns to the origin city?*
+
+.. tsp problem definition end
 
 Origin
-..........
+...............................................................................
 
 The traveling sales person problem was studied in the 18th century by mathematicians
  **Sir William Rowam Hamilton** and **Thomas Penyngton  Kirkman**.
@@ -40,18 +55,12 @@ can be found in the book **Graph Theory (Biggs et  al. 1976)**.
 * ISBN-10: 0198539169
 
 It is believed that the general form of the TSP have been first studied by Kalr Menger in Vienna and Harvard.
-The problem  was  later promoted by Hassler, Whitney  &  Merrill at Princeton.
-A detailed  description about the connection between Menger & Whitney, and the development of the
-TSP can be found in  `On the history of combinatorial optimization (till 1960) <http://www.cwi.nl/~lex/files/histco.ps>`_
-
-Problem Definition
-...................
-
-Given a collection of cities and travel cost between each pair,
-find the cheapest way for visiting all of the cities and returning to the starting point.
+The problem was later promoted by Hassler, Whitney & Merrill at Princeton.
+A detailed description about the connection between Menger & Whitney, and the development of the
+TSP can be found in `On the history of combinatorial optimization (till 1960) <http://www.cwi.nl/~lex/files/histco.ps>`_
 
 Characteristics
-................
+...............................................................................
 
 - The travel costs are symmetric:
 
@@ -70,8 +79,10 @@ Characteristics
     - this number by 2
     -  :math:`(n-1)!/2`.
 
-TSP & Simulated Annealing
-.........................
+.. _simulated-annealing:
+
+Simulated Annealing Algorithm
+-------------------------------------------------------------------------------
 
 The simulated annealing algorithm was originally inspired from the process of
 annealing in metal work.
@@ -79,7 +90,7 @@ annealing in metal work.
 Annealing involves heating and cooling a material to
 alter its physical properties due to the changes in its internal structure.
 As the metal cools its new structure becomes fixed,
-consequently causing the metal to retain its newly obtained properties. [C001]_
+consequently causing the metal to retain its newly obtained properties.
 
 
 .. rubric:: Pseudocode
@@ -87,7 +98,7 @@ consequently causing the metal to retain its newly obtained properties. [C001]_
 Given an initial solution, the simulated annealing process, will start with a high temperature
 and gradually cool down until the desired temperature is reached.
 
-For each temperature, a neighbouring new solution **snew** is calculated. The higher the temperature
+For each temperature, a neighbouring new solution **newSolution** is calculated. The higher the temperature
 the higher the probability of accepting the new solution as a possible bester solution.
 
 Once the desired temperature is reached, the best solution found is returned
@@ -100,9 +111,9 @@ Once the desired temperature is reached, the best solution found is returned
     while (temperature > final_temperature) {
 
         do tries_per_temperature times {
-            snew = neighbour(solution);
-            If P(E(solution), E(snew), T) >= random(0, 1)
-                solution = snew;
+            newSolution = neighbour(solution);
+            If P(E(solution), E(newSolution), T) >= random(0, 1)
+                solution = newSolution;
         }
 
         temperature = temperature * cooling factor;
@@ -113,63 +124,61 @@ Once the desired temperature is reached, the best solution found is returned
 
 
 pgRouting Implementation
-.........................
+...............................................................................
 
 pgRouting's implementation adds some extra parameters to allow some exit controls within the
 simulated annealing process.
 
-To cool down faster to the next temperature:
+* ``max_changes_per_temperature``:
 
-- max_changes_per_temperature: limits the number of changes in the solution per temperature
-- max_consecutive_non_changes: limits the number of consecutive non changes per temperature
+  * Limits the number of changes in the solution per temperature
+  * Count is reset to :math:`0` when **temperature** changes
+  * Count is increased by :math: `1` when **solution** changes
 
-This is done by doing some book keeping on the times **solution = snew;** is executed.
+* ``max_consecutive_non_changes``:
 
-- max_changes_per_temperature: Increases by one when **solution** changes
-- max_consecutive_non_changes: Reset to 0 when **solution** changes, and increased each **try**
+  * Limits the number of consecutive non changes per temperature
+  * Count is reset to :math:`0` when **solution** changes
+  * Count is increased by :math: `1` when **solution** changes
 
-Additionally to stop the algorithm at a higher temperature than the desired one:
+* ``max_processing_time``:
 
-- max_processing_time: limits the time the simulated annealing is performed.
-- book keeping is done to see if there was a change in **solution** on the last temperature
-
-Note that, if no change was found in the first **max_consecutive_non_changes** tries, then the
-simulated annealing will stop.
+  * Limits the time the simulated annealing is performed.
 
 .. code-block:: none
 
     Solution = initial_solution;
 
     temperature = initial_temperature;
-    while (temperature > final_temperature) {
+    WHILE (temperature > final_temperature) {
 
-        do tries_per_temperature times {
-            snew = neighbour(solution);
-            If P(E(solution), E(snew), T) >= random(0, 1)
-                solution = snew;
+        DO tries_per_temperature times {
+            newSolution = neighbour(solution);
+            If Probability(E(solution), E(newSolution), T) >= random(0, 1)
+                solution = newSolution;
 
-            when max_changes_per_temperature is reached
-                or max_consecutive_non_changes is reached
-                BREAK;
+            BREAK DO WHEN:
+                max_changes_per_temperature is reached
+                OR max_consecutive_non_changes is reached
         }
 
         temperature = temperature * cooling factor;
-        when no changes were done in the current temperature
-            or max_processing_time has being reached
-            BREAK;
+        BREAK WHILE WHEN:
+            no changes were done in the current temperature
+            OR max_processing_time has being reached
     }
 
-    Output: the best solution
+    Output: the best solution found
 
 
 Choosing parameters
-.........................
+...............................................................................
 
 There is no exact rule on how the parameters have to be chose, it will depend on the
 special characteristics of the problem.
 
-- Your computational time is crucial, then put your time limit to **max_processing_time**.
-- Make the **tries_per_temperture** depending on the number of cities, for example:
+- If the computational time is crucial, then limit execution time with **max_processing_time**.
+- Make the **tries_per_temperture** depending on the number of cities (:math:`n`), for example:
 
   - Useful to estimate the time it takes to do one cycle: use `1`
 
@@ -188,12 +197,13 @@ special characteristics of the problem.
 
 A recommendation is to play with the values and see what fits to the particular data.
 
-.. tsp control parameters begin
 
-Description Of the Control parameters
-.....................................................................
+Description of the Control Parameters
+...............................................................................
 
 The control parameters are optional, and have a default value.
+
+.. tsp control parameters begin
 
 =============================== ===========  ============  =================================================
 Parameter                       Type         Default       Description
@@ -217,19 +227,20 @@ Parameter                       Type         Default       Description
 
 .. tsp control parameters end
 
-.. tsp return values begin
 
 Description of the return columns
-...............................................................................
+---------------------------------------------------------------------------
 
-Returns set of ``(seq, node, cost, agg_cost)``
+.. tsp return values begin
+
+Returns SET OF ``(seq, node, cost, agg_cost)``
 
 ============= =========== =================================================
 Column           Type              Description
 ============= =========== =================================================
 **seq**       ``INTEGER`` Row sequence.
 **node**      ``BIGINT``  Identifier of the node/coordinate/point.
-**cost**      ``FLOAT``   Cost to traverse from the current ``node`` ito the next ``node`` in the path sequence.
+**cost**      ``FLOAT``   Cost to traverse from the current ``node`` to the next ``node`` in the path sequence.
                             - ``0`` for the last row in the path sequence.
 
 **agg_cost**  ``FLOAT``   Aggregate cost from the ``node`` at ``seq = 1`` to the current node.
@@ -244,10 +255,9 @@ See Also
 
 .. rubric:: References
 
-.. [C001] `Simulated annaeling algorithm for beginners <http://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`_
-
-* http://en.wikipedia.org/wiki/Traveling_salesman_problem
-* http://en.wikipedia.org/wiki/Simulated_annealing
+* `Simulated annaeling algorithm for beginners <http://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__
+* `Wikipedia: Traveling Salesman Problem <http://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
+* `Wikipedia: Simulated annealing <http://en.wikipedia.org/wiki/Simulated_annealing>`__
 
 .. rubric:: Indices and tables
 

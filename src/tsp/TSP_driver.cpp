@@ -101,7 +101,7 @@ do_pgr_tsp(
         }
 
 
-        log << "pgr_eucledianTSP Processing Information \n"
+        log << "Processing Information \n"
             << "Initializing tsp class --->";
         pgrouting::tsp::TSP<pgrouting::tsp::Dmatrix> tsp(costs);
 

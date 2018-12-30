@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: eucledianDmatrix.cpp
+FILE: euclideanDmatrix.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "tsp/eucledianDmatrix.h"
+#include "tsp/euclideanDmatrix.h"
 
 #include <algorithm>
 #include <vector>
@@ -39,7 +39,7 @@ namespace tsp {
 
 
 const std::vector<double>
-eucledianDmatrix::get_row(size_t i) const {
+EuclideanDmatrix::get_row(size_t i) const {
     std::vector<double> result;
 
     for (size_t j = 0; j < ids.size(); ++j) {
@@ -52,7 +52,7 @@ eucledianDmatrix::get_row(size_t i) const {
 
 
 double
-eucledianDmatrix::comparable_distance(size_t i, size_t j) const {
+EuclideanDmatrix::comparable_distance(size_t i, size_t j) const {
     if (special_distance >= 0 &&
             ((row == i && column == j)
              ||(row == j && column == i))) {
@@ -64,7 +64,7 @@ eucledianDmatrix::comparable_distance(size_t i, size_t j) const {
 }
 
 double
-eucledianDmatrix::distance(size_t i, size_t j) const {
+EuclideanDmatrix::distance(size_t i, size_t j) const {
     if (special_distance >= 0 &&
             ((row == i && column == j)
              ||(row == j && column == i))) {
@@ -75,7 +75,7 @@ eucledianDmatrix::distance(size_t i, size_t j) const {
 }
 
 double
-eucledianDmatrix::tourCost(const Tour &tour) const {
+EuclideanDmatrix::tourCost(const Tour &tour) const {
     double total_cost(0);
     if (tour.cities.empty()) return total_cost;
 
@@ -93,26 +93,26 @@ eucledianDmatrix::tourCost(const Tour &tour) const {
 
 
 bool
-eucledianDmatrix::has_id(int64_t id) const {
+EuclideanDmatrix::has_id(int64_t id) const {
     auto pos = std::lower_bound(ids.begin(), ids.end(), id);
     return *pos == id;
 }
 
 size_t
-eucledianDmatrix::get_index(int64_t id) const {
+EuclideanDmatrix::get_index(int64_t id) const {
     auto pos = std::lower_bound(ids.begin(), ids.end(), id);
     return pos - ids.begin();
 }
 
 int64_t
-eucledianDmatrix::get_id(size_t id) const {
+EuclideanDmatrix::get_id(size_t id) const {
     return ids[id];
 }
 
 /*
  * constructor
  */
-eucledianDmatrix::eucledianDmatrix(
+EuclideanDmatrix::EuclideanDmatrix(
         const std::vector < Coordinate_t > &data_coordinates)
     : coordinates(data_coordinates) {
         set_ids();
@@ -122,7 +122,7 @@ eucledianDmatrix::eucledianDmatrix(
     }
 
 void
-eucledianDmatrix::set_ids() {
+EuclideanDmatrix::set_ids() {
     ids.reserve(coordinates.size());
     for (const auto &data : coordinates) {
         ids.push_back(data.id);
@@ -136,21 +136,21 @@ eucledianDmatrix::set_ids() {
 }
 
 bool
-eucledianDmatrix::has_no_infinity() const {
+EuclideanDmatrix::has_no_infinity() const {
     return true;
 }
 
 bool
-eucledianDmatrix::obeys_triangle_inequality() const {
+EuclideanDmatrix::obeys_triangle_inequality() const {
     return true;
 }
 
 bool
-eucledianDmatrix::is_symmetric() const {
+EuclideanDmatrix::is_symmetric() const {
     return true;
 }
 
-std::ostream& operator<<(std::ostream &log, const eucledianDmatrix &matrix) {
+std::ostream& operator<<(std::ostream &log, const EuclideanDmatrix &matrix) {
     for (const auto id : matrix.ids) {
         log << "\t" << id;
     }

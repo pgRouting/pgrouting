@@ -1,12 +1,11 @@
 ADD_LIBRARY(tsp OBJECT
-    eucledianTSP.c
-    newTSP.c
+    euclideanTSP.c
+    TSP.c
 
-    newTSP_driver.cpp
-    eucledianTSP_driver.cpp
+    TSP_driver.cpp
+    euclideanTSP_driver.cpp
 
-    Dmatrix.cpp
-    eucledianDmatrix.cpp
+    euclideanDmatrix.cpp
     tour.cpp
 
     )

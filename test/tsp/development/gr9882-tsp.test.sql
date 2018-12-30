@@ -9896,8 +9896,8 @@ COPY gr9882 (id, x, y) FROM stdin WITH DELIMITER ' ';
 \.
 
 UPDATE gr9882 SET the_geom = ST_makePoint(x,y);
-SELECT * into grece from pgr_eucledianDmatrix('gr9882'::regclass);
+SELECT * into grece from pgr_euclideanDmatrix('gr9882'::regclass);
 SELECT * from pgr_xydtsp($$SELECT * from grece$$, true);
--- SELECT * from pgr_xydtsp($$SELECT * from pgr_eucledianDmatrix('gr9882'::regclass)$$, true, 1);
+-- SELECT * from pgr_xydtsp($$SELECT * from pgr_euclideanDmatrix('gr9882'::regclass)$$, true, 1);
 -- SELECT * from pgr_tsp('SELECT id::integer, x, y from gr9882', 1);
 
