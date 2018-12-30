@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 /*
- * its with either (foo_x, foo_y) pairs for eucledian or with foo_node_id (for matrix)
+ * its with either (foo_x, foo_y) pairs for euclidean or with foo_node_id (for matrix)
  */
 typedef struct {
     int64_t id;

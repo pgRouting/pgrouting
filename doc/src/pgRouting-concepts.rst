@@ -505,7 +505,7 @@ Description of the return values for a :doc:`costMatrix-category` function
 
 .. return_cost_start
 
-Returns set of ``(start_vid, end_vid, agg_cost)``
+Returns SET OF ``(start_vid, end_vid, agg_cost)``
 
 ============== ========== =================================================
 Column         Type       Description

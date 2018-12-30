@@ -57,7 +57,7 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
     FOR i IN 1..29 LOOP
-        RETURN query SELECT is((SELECT agg_cost < 27603 * upper_bound  FROM pgr_eucledianTSP('select * FROM wi29', i, randomize := false) WHERE seq = 30),
+        RETURN query SELECT is((SELECT agg_cost < 27603 * upper_bound  FROM pgr_TSPeuclidean('select * FROM wi29', i, randomize := false) WHERE seq = 30),
             't',
             'i= ' || i || ' upper_bound = ' || upper_bound);
     END LOOP;

@@ -51,19 +51,19 @@ SET client_min_messages TO NOTICE;
 
 SELECT * from pgr_tsp($$SELECT id::INTEGER, x, y FROM wi29$$, 17);
 
-SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 17, randomize := false);
-SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 17, 25, randomize := false);
+SELECT * FROM pgr_TSPeuclidean($$select * FROM wi29$$, 17, randomize := false);
+SELECT * FROM pgr_TSPeuclidean($$select * FROM wi29$$, 17, 25, randomize := false);
 
 UPDATE wi29 SET id = id + 100;
-SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 117, 125, randomize := false);
-SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, randomize := false);
+SELECT * FROM pgr_TSPeuclidean($$select * FROM wi29$$, 117, 125, randomize := false);
+SELECT * FROM pgr_TSPeuclidean($$select * FROM wi29$$, randomize := false);
 
 
 /*
 CREATE VIEW wi29_path AS
 WITH
 results AS (
-    SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$);
+    SELECT * FROM pgr_TSPeuclidean($$select * FROM wi29$$);
 ),
 geoms AS (
     SELECT seq, node, cost, agg_cost, the_geom AS second  FROM results JOIN wi29 ON (node = id)

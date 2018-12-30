@@ -213,14 +213,14 @@ UPDATE qa194 SET the_geom = ST_makePoint(x,y);
 -- SELECT * from pgr_tsp('SELECT id::integer, x, y from qa194', 1);
 
 SET client_min_messages TO DEBUG1;
-SELECT * from pgr_eucledianTSP($$SELECT id::integer, x, y from qa194$$);
-SELECT * from pgr_eucledianTSP($$SELECT id::integer, x, y from qa194$$, max_processing_time := 3);
+SELECT * from pgr_euclideanTSP($$SELECT id::integer, x, y from qa194$$);
+SELECT * from pgr_euclideanTSP($$SELECT id::integer, x, y from qa194$$, max_processing_time := 3);
 
 /*
 CREATE VIEW qa194_path AS
 WITH
 results AS (
-    SELECT seq, node, cost, agg_cost from pgr_xydtsp($$select * from pgr_eucledianDmatrix('qa194'::regclass)$$, 1)
+    SELECT seq, node, cost, agg_cost from pgr_xydtsp($$select * from pgr_euclideanDmatrix('qa194'::regclass)$$, 1)
 ),
 geoms AS (
     SELECT seq, node, cost, agg_cost, the_geom AS second  FROM results JOIN qa194 ON (node = id)
@@ -233,7 +233,7 @@ SELECT * FROM edges;
 WITH
 results AS (
     SELECT * from pgr_xydtsp($$select * from
-        pgr_eucledianDmatrix('SELECT id::integer, st_x(the_geom) as x, st_y(the_geom) as y FROM edge_table_vertices_pgr')$$, 6, 5)
+        pgr_euclideanDmatrix('SELECT id::integer, st_x(the_geom) as x, st_y(the_geom) as y FROM edge_table_vertices_pgr')$$, 6, 5)
 ),
 geoms AS (
     SELECT seq, node, cost, agg_cost, the_geom AS second  FROM results JOIN edge_table_vertices_pgr ON (node = id) order by seq

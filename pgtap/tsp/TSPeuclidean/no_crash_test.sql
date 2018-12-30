@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(5);
+SELECT plan(9);
 
 PREPARE data AS
 SELECT id, st_X(the_geom) AS x, st_Y(the_geom)AS y  FROM edge_table_vertices_pgr;
@@ -19,7 +19,10 @@ BEGIN
     'NULL'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_eucledianTSP', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_TSPeuclidean', params, subs);
+
+    params[1] := '$$data$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_TSPeuclidean', params, subs);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;

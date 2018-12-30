@@ -7,14 +7,15 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_TSP
+pgr_TSPeuclidean
 =============================================================================
 
-* ``pgr_TSP`` - Using *Simulated Annealing* approximation algorithm
+``pgr_TSPeuclidean`` - Using *Simulated Annealing* approximation algorithm
 
-.. rubric:: Availability: 2.0.0
 
-* Signature changed 2.3.0
+.. rubric:: Availability
+
+* New in version 2.3.0
 
 Description
 -------------------------------------------------------------------------------
@@ -31,11 +32,11 @@ Signatures
 .. rubric:: Summary
 
 .. index::
-    single: TSP
+    single: TSPeuclidean
 
 .. code-block:: none
 
-    pgr_TSP(Matrix SQL,
+    pgr_TSPeuclidean(Coordinates SQL,
         [start_id], [end_id],
         [max_processing_time],
         [tries_per_temperature], [max_changes_per_temperature], [max_consecutive_non_changes],
@@ -45,7 +46,7 @@ Signatures
 
 :Example: Not having a random execution
 
-.. literalinclude:: doc-pgr_TSP.queries
+.. literalinclude:: doc-pgr_TSPeuclidean.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -55,7 +56,7 @@ Parameters
 ====================  =================================================
 Parameter             Description
 ====================  =================================================
-**Matrix SQL**        an SQL query, described in the `Inner query`_
+**Coordinates SQL**   an SQL query, described in the `Inner query`_
 ====================  =================================================
 
 Optional Parameters
@@ -68,20 +69,19 @@ Optional Parameters
 Inner query
 -------------------------------------------------------------------------------
 
-**Matrix SQL**: an SQL query, which should return a set of rows with the following columns:
+**Coordinates SQL**: an SQL query, which should return a set of rows with the following columns:
 
-============= =========== =================================================
-Column        Type              Description
-============= =========== =================================================
-**start_vid** ``BIGINT``  Identifier of the starting vertex.
-**end_vid**   ``BIGINT``  Identifier of the ending vertex.
-**agg_cost**  ``FLOAT``   Cost for going from start_vid to end_vid
-============= =========== =================================================
+======= =========== =================================================
+Column  Type        Description
+======= =========== =================================================
+**id**  ``BIGINT``  (optional) Identifier of the coordinate.
 
-Can be Used with :doc:`costMatrix-category` functions with `directed := false`.
+                    - When missing the coordinates will receive an **id** starting from 1, in the order given.
 
-If using `directed := true`, the resulting non symmetric matrix must be converted to
-symmetric by fixing the non symmetric values according to your application needs.
+**x**   ``FLOAT``   X value of the coordinate.
+**y**   ``FLOAT``   Y value of the coordinate.
+======= =========== =================================================
+
 
 Result Columns
 -------------------------------------------------------------------------------
@@ -93,20 +93,15 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Start from vertex :math:`7`
+:Example: Try :math:`3` times per temperature with cooling factor of :math:`0.5`, not having a random execution
 
-.. literalinclude:: doc-pgr_TSP.queries
+.. literalinclude:: doc-pgr_TSPeuclidean.queries
    :start-after: -- q2
    :end-before: -- q3
 
-:Example: Using with points of interest.
+:Example: Skipping the Simulated Annealing & showing some process information
 
-To generate a symmetric matrix:
-
-* the **side** information of pointsOfInterset is ignored by not including it in the query
-* and **directed := false**
-
-.. literalinclude:: doc-pgr_TSP.queries
+.. literalinclude:: doc-pgr_TSPeuclidean.queries
    :start-after: -- q3
    :end-before: -- q4
 
