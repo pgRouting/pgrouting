@@ -37,14 +37,6 @@ run_psql () {
 }
 
 # ------------------------------------------------------------------------------
-# CREATE DATABASE
-# ------------------------------------------------------------------------------
-#export PGUSER
-#run_psql -l
-#run_psql -c "CREATE DATABASE ____tmp_pgdb______;"
-#export PGDATABASE
-
-# ------------------------------------------------------------------------------
 # CREATE EXTENSION
 # ------------------------------------------------------------------------------
 run_psql  -c "CREATE EXTENSION postgis;"
@@ -57,21 +49,26 @@ run_psql -c "SELECT version();"
 run_psql -c "SELECT postgis_full_version();"
 run_psql -c "SELECT pgr_version();"
 
-#PGROUTING_VERSION=`run_psql -A -t -c "SELECT version FROM pgr_version();"`
 
 # ------------------------------------------------------------------------------
-# Test runner
+# Regenerate the signature file & check if it was updated
 # ------------------------------------------------------------------------------
-# use -v -v for more verbose debuging output
-# ./tools/test-runner.pl -v -v -pgver $POSTGRESQL_VERSION
-#./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE
-#./tools/test-runner.pl -pgver $POSTGRESQL_VERSION $IGNORE -v -alg ksp
+VERSION=`grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt`
+FILE="sql/sigs/pgrouting--$VERSION.sig"
+echo "#VERSION pgrouting $VERSION" > $FILE
+echo "#TYPES" >> $FILE
+run_psql -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> $FILE
+echo "#FUNCTIONS" >> $FILE
+run_psql  -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> $FILE
 
-#cd ./tools/testers/
-#psql -f setup_db.sql
-#pg_prove ../../src/trsp/test/pgtap/*
-#dropdb ___pgr___test___
-#cd ../../
+DIFF=`git diff sql/sigs/pgrouting--${VERSION}.sig`
+
+if [[ !  -z  $DIFF  ]]
+then
+    echo Signature file not updated
+    echo $DIFF
+    ERROR=1
+fi
 
 ./tools/testers/algorithm-tester.pl -pgver $POSTGRESQL_VERSION -pguser $PGUSER
 
