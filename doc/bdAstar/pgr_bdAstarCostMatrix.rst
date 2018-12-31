@@ -123,7 +123,7 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Use with :doc:`pgr_TSP`
+:Example: Use with :doc:`pgr_TSPannealing`
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- astar q3

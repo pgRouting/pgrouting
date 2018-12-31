@@ -46,7 +46,7 @@ SELECT * FROM pgr_dijkstraCostMatrix(
 (12 rows)
 
 -- dijkstra q3
-SELECT * FROM pgr_TSP(
+SELECT * FROM pgr_TSPannealing(
     $$
     SELECT * FROM pgr_dijkstraCostMatrix(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -109,7 +109,7 @@ SELECT * FROM pgr_withPointsCostMatrix(
 (12 rows)
 
 -- withPoints q3
-SELECT * FROM pgr_TSP(
+SELECT * FROM pgr_TSPannealing(
     $$
     SELECT * FROM pgr_withPointsCostMatrix(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
@@ -172,7 +172,7 @@ SELECT * FROM pgr_aStarCostMatrix(
 (12 rows)
 
 -- astar q3
-SELECT * FROM pgr_TSP(
+SELECT * FROM pgr_TSPannealing(
     $$
     SELECT * FROM pgr_aStarCostMatrix(
         'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
@@ -236,7 +236,7 @@ SELECT * FROM pgr_bdDijkstraCostMatrix(
 (12 rows)
 
 -- bdDijkstra q3
-SELECT * FROM pgr_TSP(
+SELECT * FROM pgr_TSPannealing(
     $$
     SELECT * FROM pgr_bdDijkstraCostMatrix(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -300,7 +300,7 @@ SELECT * FROM pgr_bdAstarCostMatrix(
 (12 rows)
 
 -- bdAstar q3
-SELECT * FROM pgr_TSP(
+SELECT * FROM pgr_TSPannealing(
     $$
     SELECT * FROM pgr_bdAstarCostMatrix(
         'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
