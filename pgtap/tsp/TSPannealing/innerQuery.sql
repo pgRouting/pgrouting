@@ -1,13 +1,20 @@
 
 \i setup.sql
 
-SELECT plan(15);
+SELECT plan(30);
 
 CREATE TEMP TABLE coords AS
 SELECT id, ST_X(the_geom) AS x, ST_Y(the_geom) AS y
 FROM edge_table_vertices_pgr;
 
-CREATE OR REPLACE FUNCTION test_anyIntegerXY(fn TEXT, params TEXT[], parameter TEXT)
+CREATE TEMP TABLE matrix AS
+SELECT * FROM pgr_dijkstraCostMatrix(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE ID < 14),
+    directed:= false
+);
+
+CREATE OR REPLACE FUNCTION test_anyIntegerXY(fn TEXT, params TEXT[], parameter TEXT, tbl regclass)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -22,7 +29,7 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM coords $$, randomize := false)';
+    end_sql = ' FROM ' || tbl || '$$, randomize := false)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
@@ -41,7 +48,7 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION test_anyNumericalXY(fn TEXT, params TEXT[], parameter TEXT)
+CREATE OR REPLACE FUNCTION test_anyNumericalXY(fn TEXT, params TEXT[], parameter TEXT, tbl regclass)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -56,7 +63,7 @@ BEGIN
         END IF;
     start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM coords $$, randomize := false)';
+    end_sql = ' FROM ' || tbl || '$$, randomize := false)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
@@ -75,15 +82,26 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
-SELECT test_anyIntegerXY('pgr_tspannealingeuclidean',
+SELECT test_anyIntegerXY('pgr_tspannealing',
     ARRAY['id', 'x', 'y'],
-    'id');
-SELECT test_anyNumericalXY('pgr_tspannealingeuclidean',
+    'id', 'coords');
+SELECT test_anyNumericalXY('pgr_tspannealing',
     ARRAY['id', 'x', 'y'],
-    'x');
-SELECT test_anyNumericalXY('pgr_tspannealingeuclidean',
+    'x', 'coords');
+SELECT test_anyNumericalXY('pgr_tspannealing',
     ARRAY['id', 'x', 'y'],
-    'y');
+    'y', 'coords');
+
+SELECT test_anyIntegerXY('pgr_tspannealing',
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'start_vid', 'matrix');
+SELECT test_anyIntegerXY('pgr_tspannealing',
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'end_vid', 'matrix');
+SELECT test_anyNumericalXY('pgr_tspannealing',
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'agg_cost', 'matrix');
+
 
 SELECT finish();
 ROLLBACK;

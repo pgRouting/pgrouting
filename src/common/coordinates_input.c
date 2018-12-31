@@ -39,6 +39,8 @@ void pgr_fetch_row(
         Column_info_t info[3],
         int64_t *default_id,
         Coordinate_t *distance) {
+    if (!column_found(info[1].colNumber)) return;
+
     if (column_found(info[0].colNumber)) {
         distance->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     } else {
@@ -71,7 +73,7 @@ void pgr_get_coordinates(
     for (i = 0; i < 3; ++i) {
         info[i].colNumber = -1;
         info[i].type = 0;
-        info[i].strict = true;
+        info[i].strict = false;
         info[i].eType = ANY_NUMERICAL;
     }
     info[0].name = "id";
@@ -79,7 +81,6 @@ void pgr_get_coordinates(
     info[2].name = "y";
 
     info[0].eType = ANY_INTEGER;
-    info[0].strict = false;
 
 
     void *SPIplan;
@@ -98,6 +99,7 @@ void pgr_get_coordinates(
         SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 3);
+        if (!column_found(info[1].colNumber)) return;
 
         ntuples = SPI_processed;
         total_tuples += ntuples;

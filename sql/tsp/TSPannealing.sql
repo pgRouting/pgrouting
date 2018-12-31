@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION pgr_TSPannealing(
-    matrix_row_sql TEXT,
+    TEXT, -- Coordinates SQL or Matrix SQL
 
     start_id BIGINT DEFAULT 0,
     end_id BIGINT DEFAULT 0,
@@ -67,7 +67,9 @@ ROWS 1000;
 COMMENT ON FUNCTION pgr_TSPannealing(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
 IS 'pgr_TSP
  - Parameters
-   - matrix SQL with columns: start_vid, end_vid, agg_cost
+    - matrix SQL with columns: start_vid, end_vid, agg_cost
+    OR
+    - coordinates SQL with columns: id, x, y
  - Optional parameters
     - start_id := 0
     - end_id := 0

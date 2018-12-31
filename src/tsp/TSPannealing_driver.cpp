@@ -27,7 +27,7 @@
  *
  *  ******************************************************************** PGR-GNU*/
 
-#include "drivers/tsp/newTSP_driver.h"
+#include "drivers/tsp/TSPannealing_driver.h"
 
 #include <string.h>
 #include <sstream>

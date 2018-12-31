@@ -7,18 +7,14 @@ SELECT * FROM pgr_TSPannealing(
         directed := false)
     $$,
     randomize := false);
+\echo -- q1.1
 \echo -- q2
 SELECT * FROM pgr_TSPannealing(
     $$
-    SELECT * FROM pgr_dijkstraCostMatrix(
-        'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-        (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 14),
-        directed := false
-    )
+    SELECT id, st_X(the_geom) AS x, st_Y(the_geom)AS y  FROM edge_table_vertices_pgr
     $$,
-    start_id := 7,
-    randomize := false
-);
+    randomize := false);
+\echo -- q2.1
 \echo -- q3
 SELECT * FROM pgr_TSPannealing(
     $$
@@ -30,4 +26,4 @@ SELECT * FROM pgr_TSPannealing(
     start_id := 5,
     randomize := false
 );
-\echo -- q4
+\echo -- q3.1

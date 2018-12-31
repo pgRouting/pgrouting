@@ -12,8 +12,7 @@ Traveling Sales Person - Family of functions
 
 .. index from here
 
-* :doc:`pgr_TSPannealing` - When input is given as matrix cell information.
-* :doc:`pgr_TSPannealingEuclidean` - When input are coordinates.
+* :doc:`pgr_TSPannealing` - Using *Simulated Annealing* approximation algorithm
 
 .. index to here
 
@@ -21,7 +20,6 @@ Traveling Sales Person - Family of functions
     :hidden:
 
     pgr_TSPannealing
-    pgr_TSPannealingEuclidean
 
 .. contents:: Table of Contents
     :local:

@@ -17,7 +17,6 @@ SET(LOCAL_FILES
     doc-pgr_nodeNetwork.queries
     doc-pgr_analyzeOneWay.queries
     doc-pgr_createVerticesTable.queries
-    doc-pgr_TSPannealingEuclidean.queries
     doc-pgr_TSPannealing.queries
     doc-pickDeliverEuclidean.queries
     doc-contractGraph.queries

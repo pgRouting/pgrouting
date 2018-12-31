@@ -4,8 +4,8 @@
 SELECT plan(5);
 SET client_min_messages TO WARNING;
 
-SELECT has_function('pgr_tspannealingeuclidean');
-SELECT has_function('pgr_tspannealingeuclidean', ARRAY[
+SELECT has_function('pgr_tspannealing');
+SELECT has_function('pgr_tspannealing', ARRAY[
     'text', 'bigint', 'bigint',
     'double precision',
     'integer', 'integer', 'integer',
@@ -14,7 +14,7 @@ SELECT has_function('pgr_tspannealingeuclidean', ARRAY[
     'double precision',
     'boolean'
     ]);
-SELECT function_returns('pgr_tspannealingeuclidean', ARRAY[
+SELECT function_returns('pgr_tspannealing', ARRAY[
     'text', 'bigint', 'bigint',
     'double precision',
     'integer', 'integer', 'integer',
@@ -26,7 +26,7 @@ SELECT function_returns('pgr_tspannealingeuclidean', ARRAY[
 
 -- parameter names
 SELECT set_eq(
-    $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_tspannealingeuclidean'$$,
+    $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_tspannealing'$$,
     $$SELECT '{
         "","start_id","end_id",
         "max_processing_time",
@@ -38,7 +38,7 @@ SELECT set_eq(
 
 -- parameter types
 SELECT set_eq(
-    $$SELECT proallargtypes FROM pg_proc WHERE proname = 'pgr_tspannealingeuclidean'$$,
+    $$SELECT proallargtypes FROM pg_proc WHERE proname = 'pgr_tspannealing'$$,
     $$SELECT '{25,20,20,701,23,23,23,701,701,701,16,23,20,701,701}'::OID[] $$
 );
 

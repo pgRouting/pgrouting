@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION _pgr_TSPannealing(
-    matrix_row_sql TEXT,
+    TEXT,
     start_id BIGINT DEFAULT 0,
     end_id BIGINT DEFAULT 0,
 
@@ -52,7 +52,7 @@ CREATE OR REPLACE FUNCTION _pgr_TSPannealing(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF record
-AS 'MODULE_PATHNAME', 'newTSP'
+AS 'MODULE_PATHNAME', 'TSPannealing'
 LANGUAGE c VOLATILE STRICT;
 
 

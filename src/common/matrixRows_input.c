@@ -70,7 +70,7 @@ void pgr_get_matrixRows(
     for (i = 0; i < 3; ++i) {
         info[i].colNumber = -1;
         info[i].type = 0;
-        info[i].strict = true;
+        info[i].strict = false;
         info[i].eType = ANY_INTEGER;
     }
     info[0].name = "start_vid";
@@ -94,6 +94,10 @@ void pgr_get_matrixRows(
         SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 3);
+        if (!column_found(info[0].colNumber)
+                || !column_found(info[0].colNumber)
+                || !column_found(info[0].colNumber)
+           ) return;
 
         ntuples = SPI_processed;
         total_tuples += ntuples;

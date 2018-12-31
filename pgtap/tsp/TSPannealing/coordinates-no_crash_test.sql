@@ -19,10 +19,10 @@ BEGIN
     'NULL'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_TSPannealingEuclidean', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_TSPannealing', params, subs);
 
     params[1] := '$$data$$';
-    RETURN query SELECT * FROM no_crash_test('pgr_TSPannealingEuclidean', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_TSPannealing', params, subs);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;

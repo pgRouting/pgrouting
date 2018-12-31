@@ -30,8 +30,28 @@ Signatures
 
 .. rubric:: Summary
 
+.. code-block:: none
+
+    pgr_TSPannealing(Matrix SQL,
+        [start_id], [end_id],
+        [max_processing_time],
+        [tries_per_temperature], [max_changes_per_temperature], [max_consecutive_non_changes],
+        [initial_temperature], [final_temperature], [cooling_factor],
+        [randomize])
+
+    pgr_TSPannealing(Coordinates SQL,
+        [start_id], [end_id],
+        [max_processing_time],
+        [tries_per_temperature], [max_changes_per_temperature], [max_consecutive_non_changes],
+        [initial_temperature], [final_temperature], [cooling_factor],
+        [randomize])
+    RETURNS SETOF (seq, node, cost, agg_cost)
+
 .. index::
-    single: TSP
+    single: TSPannealing(Matrix)
+
+Matrix
+...............................................................................
 
 .. code-block:: none
 
@@ -47,7 +67,29 @@ Signatures
 
 .. literalinclude:: doc-pgr_TSPannealing.queries
    :start-after: -- q1
-   :end-before: -- q2
+   :end-before: -- q1.1
+
+.. index::
+    single: TSPannealing(Coordinates)
+
+Coordinates
+...............................................................................
+
+.. code-block:: none
+
+    pgr_TSPannealing(Coordinates SQL,
+        [start_id], [end_id],
+        [max_processing_time],
+        [tries_per_temperature], [max_changes_per_temperature], [max_consecutive_non_changes],
+        [initial_temperature], [final_temperature], [cooling_factor],
+        [randomize])
+    RETURNS SETOF (seq, node, cost, agg_cost)
+
+:Example: Not having a random execution
+
+.. literalinclude:: doc-pgr_TSPannealing.queries
+   :start-after: -- q2
+   :end-before: -- q2.1
 
 Parameters
 -------------------------------------------------------------------------------
@@ -55,7 +97,8 @@ Parameters
 ====================  =================================================
 Parameter             Description
 ====================  =================================================
-**Matrix SQL**        an SQL query, described in the `Inner query`_
+**Matrix SQL**        an SQL query, described in `Matrix SQL`_
+**Coordinates SQL**   an SQL query, described in the `Coordinates SQL`_
 ====================  =================================================
 
 Optional Parameters
@@ -68,7 +111,9 @@ Optional Parameters
 Inner query
 -------------------------------------------------------------------------------
 
-**Matrix SQL**: an SQL query, which should return a set of rows with the following columns:
+**Matrix SQL**
+...............................................................................
+
 
 ============= =========== =================================================
 Column        Type              Description
@@ -83,6 +128,20 @@ Can be Used with :doc:`costMatrix-category` functions with `directed := false`.
 If using `directed := true`, the resulting non symmetric matrix must be converted to
 symmetric by fixing the non symmetric values according to your application needs.
 
+Coordinates SQL
+...............................................................................
+
+======= =========== =================================================
+Column  Type        Description
+======= =========== =================================================
+**id**  ``BIGINT``  (optional) Identifier of the coordinate.
+
+                    - When missing the coordinates will receive an **id** starting from 1, in the order given.
+
+**x**   ``FLOAT``   X value of the coordinate.
+**y**   ``FLOAT``   Y value of the coordinate.
+======= =========== =================================================
+
 Result Columns
 -------------------------------------------------------------------------------
 
@@ -93,12 +152,6 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Start from vertex :math:`7`
-
-.. literalinclude:: doc-pgr_TSPannealing.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
 :Example: Using with points of interest.
 
 To generate a symmetric matrix:
@@ -108,7 +161,7 @@ To generate a symmetric matrix:
 
 .. literalinclude:: doc-pgr_TSPannealing.queries
    :start-after: -- q3
-   :end-before: -- q4
+   :end-before: -- q3.1
 
 The queries use the :doc:`sampledata` network.
 

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: newTSP.c
+File: euclideanTSP.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -34,19 +34,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
+#include "c_common/coordinates_input.h"
 #include "c_common/matrixRows_input.h"
-#include "drivers/tsp/newTSP_driver.h"
+#include "drivers/tsp/TSPannealing_driver.h"
+#include "drivers/tsp/TSPannealingEuclidean_driver.h"
 
 
 
-PGDLLEXPORT Datum newTSP(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum TSPannealing(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
-        char* distances_sql,
+        char* info_sql,
         int64_t start_vid,
         int64_t end_vid,
 
@@ -69,7 +71,6 @@ process(
     /*
      * errors in parameters
      */
-
     if (initial_temperature < final_temperature) {
         elog(ERROR, "Condition not met: initial_temperature"
                " > final_temperature");
@@ -94,18 +95,23 @@ process(
     }
 
 
+    Coordinate_t *coordinates = NULL;
+    size_t total_coordinates = 0;
+
     Matrix_cell_t *distances = NULL;
     size_t total_distances = 0;
-    pgr_get_matrixRows(distances_sql, &distances, &total_distances);
+    pgr_get_matrixRows(info_sql, &distances, &total_distances);
 
     if (total_distances == 0) {
-        PGR_DBG("No distances found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
+        pgr_get_coordinates(info_sql, &coordinates, &total_coordinates);
+        if (total_coordinates == 0) {
+            PGR_DBG("No information found");
+            (*result_count) = 0;
+            (*result_tuples) = NULL;
+            pgr_SPI_finish();
+            return;
+        }
     }
-
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
@@ -113,25 +119,45 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    do_pgr_tsp(
-            distances, total_distances,
-            start_vid,
-            end_vid,
-            initial_temperature,
-            final_temperature,
-            cooling_factor,
-            tries_per_temperature,
-            max_changes_per_temperature,
-            max_consecutive_non_changes,
-            randomize,
-            time_limit,
-            result_tuples,
-            result_count,
-            &log_msg,
-            &notice_msg,
-            &err_msg);
+    if (total_coordinates == 0) {
+        do_pgr_tsp(
+                distances, total_distances,
+                start_vid,
+                end_vid,
+                initial_temperature,
+                final_temperature,
+                cooling_factor,
+                tries_per_temperature,
+                max_changes_per_temperature,
+                max_consecutive_non_changes,
+                randomize,
+                time_limit,
+                result_tuples,
+                result_count,
+                &log_msg,
+                &notice_msg,
+                &err_msg);
+    } else {
+        do_pgr_euclideanTSP(
+                coordinates, total_coordinates,
+                start_vid,
+                end_vid,
+                initial_temperature,
+                final_temperature,
+                cooling_factor,
+                tries_per_temperature,
+                max_changes_per_temperature,
+                max_consecutive_non_changes,
+                randomize,
+                time_limit,
+                result_tuples,
+                result_count,
+                &log_msg,
+                &notice_msg,
+                &err_msg);
+    }
 
-    time_msg("TSP", start_t, clock());
+    time_msg("TSPannealing", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -144,16 +170,16 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (distances) pfree(distances);
+    if (coordinates) pfree(coordinates);
 
     pgr_SPI_finish();
 }
 /*                                                                            */
 /******************************************************************************/
 
-PG_FUNCTION_INFO_V1(newTSP);
+PG_FUNCTION_INFO_V1(TSPannealing);
 PGDLLEXPORT Datum
-newTSP(PG_FUNCTION_ARGS) {
+TSPannealing(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
@@ -175,8 +201,8 @@ newTSP(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /*
 
-           CREATE OR REPLACE FUNCTION pgr_newTSP(
-           matrix_row_sql TEXT,
+           CREATE OR REPLACE FUNCTION pgr_TSPannealing(
+           coordinates_sql TEXT,
            start_id BIGINT DEFAULT 0,
            end_id BIGINT DEFAULT 0,
 
@@ -273,4 +299,3 @@ newTSP(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

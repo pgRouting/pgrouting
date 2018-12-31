@@ -1,9 +1,7 @@
 
 SET(LOCAL_FILES
     _TSPannealing.sql
-    _TSPannealingEuclidean.sql
     TSPannealing.sql
-    TSPannealingEuclidean.sql
     )
 
 foreach (f ${LOCAL_FILES})

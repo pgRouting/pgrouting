@@ -54,7 +54,7 @@ pgRouting 3.0.0 Release Notes
 .. rubric:: Fixed Issues
 
 * `#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__:
-  * Renamed pgr_eucledianTSP to pgr_TSPannealingEuclidean
+  * Renamed pgr_eucledianTSP to pgr_TSPannealing
   * Renamed pgr_TSP to pgr_TSPannealing
 
 .. rubric:: New Experimental functions

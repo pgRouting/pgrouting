@@ -9,7 +9,7 @@ FROM edge_table_vertices_pgr;
 
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSPannealingEuclidean('SELECT id, x, y FROM coords',
+    SELECT * FROM pgr_TSPannealing('SELECT id, x, y FROM coords',
         max_processing_time := -4,
         randomize := false)$$,
     'XX000',
@@ -17,7 +17,7 @@ SELECT throws_ok($$
     '1 SHOULD throw because max_processing_time has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSPannealingEuclidean('SELECT id, x, y FROM coords',
+    SELECT * FROM pgr_TSPannealing('SELECT id, x, y FROM coords',
         tries_per_temperature := -4,
         randomize := false)$$,
     'XX000',
@@ -25,7 +25,7 @@ SELECT throws_ok($$
     '2 SHOULD throw because tries_per_temperature has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSPannealingEuclidean('SELECT id, x, y FROM coords',
+    SELECT * FROM pgr_TSPannealing('SELECT id, x, y FROM coords',
         max_changes_per_temperature := -4,
         randomize := false)$$,
     'XX000',
@@ -33,7 +33,7 @@ SELECT throws_ok($$
     '3 SHOULD throw because max_changes_per_temperature has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSPannealingEuclidean('SELECT id, x, y FROM coords',
+    SELECT * FROM pgr_TSPannealing('SELECT id, x, y FROM coords',
         max_consecutive_non_changes := -4,
         randomize := false)$$,
     'XX000',
@@ -41,7 +41,7 @@ SELECT throws_ok($$
     '4 SHOULD throw because max_consecutive_non_changes has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSPannealingEuclidean('SELECT id, x, y FROM coords',
+    SELECT * FROM pgr_TSPannealing('SELECT id, x, y FROM coords',
         cooling_factor := 0,
         randomize := false)$$,
     'XX000',
@@ -49,7 +49,7 @@ SELECT throws_ok($$
     '5 SHOULD throw because cooling_factor has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSPannealingEuclidean('SELECT id, x, y FROM coords',
+    SELECT * FROM pgr_TSPannealing('SELECT id, x, y FROM coords',
         cooling_factor := 1,
         randomize := false)$$,
     'XX000',
@@ -57,7 +57,7 @@ SELECT throws_ok($$
     '6 SHOULD throw because cooling_factor has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSPannealingEuclidean('SELECT id, x, y FROM coords',
+    SELECT * FROM pgr_TSPannealing('SELECT id, x, y FROM coords',
         initial_temperature := 0,
         randomize := false)$$,
     'XX000',
@@ -65,7 +65,7 @@ SELECT throws_ok($$
     '7 SHOULD throw because initial_temperature has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSPannealingEuclidean('SELECT id, x, y FROM coords',
+    SELECT * FROM pgr_TSPannealing('SELECT id, x, y FROM coords',
         final_temperature := 101,
         randomize := false)$$,
     'XX000',
@@ -73,7 +73,7 @@ SELECT throws_ok($$
     '8 SHOULD throw because final_temperature has illegal value');
 
 SELECT throws_ok($$
-    SELECT * FROM pgr_TSPannealingEuclidean('SELECT id, x, y FROM coords',
+    SELECT * FROM pgr_TSPannealing('SELECT id, x, y FROM coords',
         final_temperature := 0,
         randomize := false)$$,
     'XX000',
