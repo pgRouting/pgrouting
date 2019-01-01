@@ -29,15 +29,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
-std::ostream& operator << (std::ostream &log, const Base_node &node) {
-    node.print(log);
-    return log;
-}
-
-void
-Base_node::print(std::ostream& os) const {
-    os << id()
-        << "(" << idx() << ")";
+std::ostream&
+operator << (std::ostream &os, const Base_node &node) {
+    return os << node.id()
+        << "(" << node.idx() << ")";
 }
 
 Base_node::Base_node(size_t _idx, int64_t _id)

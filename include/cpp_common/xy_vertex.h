@@ -28,14 +28,10 @@
 #define INCLUDE_CPP_COMMON_XY_VERTEX_H_
 #pragma once
 
-#ifdef Max
-#undef Max
-#endif
-#ifdef Min
-#undef Min
-#endif
+#include <boost/geometry.hpp>
+#include <boost/geometry/geometries/point_xy.hpp>
 
-#include <CGAL/Simple_cartesian.h>
+//#include <CGAL/Simple_cartesian.h>
 #include <vector>
 
 #include "c_types/pgr_edge_xy_t.h"
@@ -43,9 +39,9 @@
 
 namespace pgrouting {
 
-// typedef boost::geometry::model::d2::point_xy<double> Point;
-typedef CGAL::Simple_cartesian<double> Simple_cartasian;
-typedef Simple_cartasian::Point_2  Point;
+typedef boost::geometry::model::d2::point_xy<double> Point;
+//typedef CGAL::Simple_cartesian<double> Simple_cartasian;
+//typedef Simple_cartasian::Point_2  Point;
 
 
 class XY_vertex {
