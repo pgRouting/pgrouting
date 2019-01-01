@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <limits>
 #include <functional>
+#include <numeric>
 
 
 #include "cpp_common/pgr_assert.h"
