@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-FILE: alpha.h
+File: points_input.h
 
-Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
-Mail: project@pgrouting.org
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky_vergara@hotmail.com
 
 ------
 
@@ -22,31 +22,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHA_DRIVER_H_
-#define INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHA_DRIVER_H_
+#ifndef INCLUDE_C_COMMON_POINT_INPUT_H_
+#define INCLUDE_C_COMMON_POINT_INPUT_H_
 #pragma once
 
-/* for syze_t */
+/* for size-t */
 #include <stddef.h>
+
 #include "c_types/pgr_point_t.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+/*! @brief pgr_point_input
 
-  int alpha_shape(
-          Pgr_point_t *vertices,
-          size_t count,
+For queries of the type:
+~~~~{.c}
+SELECT x, y
+FROM ...
+~~~~
 
-          double alpha,
+@param[in] points_sql
+@param[out] points
+@param[out] total_points
+*/
+void pgr_point_input(
+        char *points_sql,
+        Pgr_point_t **points,
+        size_t *total_points);
 
-          Pgr_point_t **res,
-          size_t *res_count,
-          char **err_msg);
-
-#ifdef __cplusplus
-}
-#endif
 
 
-#endif  // INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHA_DRIVER_H_
+#endif  // INCLUDE_C_COMMON_POINT_INPUT_H_

@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-FILE: alpha.h
+File: pgr_edge_xy_t.h
 
-Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
-Mail: project@pgrouting.org
+Copyright (c) 2017 Celia Virginia Vergara Castillo
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -21,32 +21,15 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+/*! @file */
 
-#ifndef INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHA_DRIVER_H_
-#define INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHA_DRIVER_H_
+#ifndef INCLUDE_C_TYPES_PGR_POINT_XY_T_H_
+#define INCLUDE_C_TYPES_PGR_POINT_XY_T_H_
 #pragma once
 
-/* for syze_t */
-#include <stddef.h>
-#include "c_types/pgr_point_t.h"
+typedef struct {
+    double x;
+    double y;
+} Pgr_point_t;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-  int alpha_shape(
-          Pgr_point_t *vertices,
-          size_t count,
-
-          double alpha,
-
-          Pgr_point_t **res,
-          size_t *res_count,
-          char **err_msg);
-
-#ifdef __cplusplus
-}
-#endif
-
-
-#endif  // INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHA_DRIVER_H_
+#endif  // INCLUDE_C_TYPES_PGR_POINT_XY_T_H_

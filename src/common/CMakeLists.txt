@@ -11,6 +11,7 @@ ADD_LIBRARY(common OBJECT
     orders_input.c
     orders_input.c
     vehicles_input.c
+    pgr_point_input.c
 
     restrictions_input.c
 
