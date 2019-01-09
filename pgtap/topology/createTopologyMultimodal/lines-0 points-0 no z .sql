@@ -2,7 +2,7 @@
 
 -- Cant be Warning because postgis is printing into warning channel.
 set client_min_messages TO error;
-select plan(1);
+select plan(7);
 
 drop TABLE IF EXISTS test_table_l1;
 create table test_table_l1(
@@ -55,31 +55,31 @@ select results_eq('createTopology_1', array[1]::bigint[]); --point( 8 10) not in
 --testing connectivity
 
 --test simple conn
-prepare test2 as
+prepare test1 as
 select count(*) from pgr_dijkstra(
   'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
   (select id from graph_lines_pt where id_geom =6 ),
   (select id from graph_lines_pt where id_geom =4 )
 );
-select results_eq('test2', array[3]::bigint[]);
+select results_eq('test1', array[3]::bigint[]);
 
 --test simple conn
-prepare test3 as
+prepare test2 as
 select count(*) from pgr_dijkstra(
   'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
   (select id from graph_lines_pt where id_geom =6 ),
   (select id from graph_lines_pt where id_geom =2 )
 );
-select results_eq('test3', array[3]::bigint[]);
+select results_eq('test2', array[3]::bigint[]);
 
 --test connectivity through inner point 1 on line 1
-prepare test1 as
+prepare test3 as
 select count(*) from pgr_dijkstra(
   'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
   (select id from graph_lines_pt where id_geom =6 ),
   (select id from graph_lines_pt where id_geom =5 )
 );
-select results_eq('test1', array[0]::bigint[]);
+select results_eq('test3', array[0]::bigint[]);
 
 --test point 3 was included, and connectivity to it ------------------------
 --test point 3 was included
@@ -94,7 +94,29 @@ select count(*) from pgr_dijkstra(
   (select id from graph_lines_pt where id_geom =2 ),
   (select id from graph_lines_pt where id_geom =3 )
 );
-select results_eq('test5',array[0]::bigint[])  --there is no connection because point 3 is not included
+select results_eq('test5',array[0]::bigint[]);  --there is no connection because point 3 is not included
+
+--Testing connectivity through lines inner vertices
+--test connectivity between 2 lines that crosses
+prepare test6 as
+select count(*) from pgr_dijkstra(
+  'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
+  (select id from graph_lines_pt where id_geom =7 ),
+  (select id from graph_lines_pt where id_geom =5 )
+);
+select results_eq('test6', array[0]::bigint[]); --there is no connection because of line conn policy
+
+prepare test7 as
+select count(*) from pgr_dijkstra(
+  'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
+  (select id from graph_lines_pt where id_geom =7 ),
+  (select id from graph_lines_pt where id_geom =0 )
+);
+select results_eq('test7', array[0]::bigint[]); -- there is no connection because of line conn policy
+
+SELECT * FROM finish();
+ROLLBACK;
+
 
 
 
