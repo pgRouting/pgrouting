@@ -15,6 +15,7 @@ insert into test_table_l1 VALUES ('SRID=4326;linestring(0 0, 10 10)',2);
 insert into test_table_l1 VALUES ('SRID=4326;linestring(10 10,10 0)',3);
 insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0, 10 10)',4);
 insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0, 8 10, 10 10)', 5);
+insert into test_table_l1 values ('SRID=4326;linestring(7 12, 13 10, 14 8)', 6);
 
 drop table if EXISTS test_table_p1;
 create TABLE test_table_p1(
@@ -49,6 +50,47 @@ select results_eq('createTopology_1', array[1]::bigint[]); --point( 8 10) not in
 
 --testing connectivity
 
+--test simple conn
+prepare test2 as
+select count(*) from pgr_dijkstra(
+  'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
+  (select id from graph_lines_pt where id_geom =6 ),
+  (select id from graph_lines_pt where id_geom =4 )
+);
+select results_eq('test2', array[3]::bigint[]);
+
+--test simple conn
+prepare test3 as
+select count(*) from pgr_dijkstra(
+  'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
+  (select id from graph_lines_pt where id_geom =6 ),
+  (select id from graph_lines_pt where id_geom =2 )
+);
+select results_eq('test3', array[3]::bigint[]);
+
+--test connectivity through inner point 1 on line 1
+prepare test1 as
+select count(*) from pgr_dijkstra(
+  'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
+  (select id from graph_lines_pt where id_geom =6 ),
+  (select id from graph_lines_pt where id_geom =5 )
+);
+select results_eq('test1', array[0]::bigint[]);
+
+--test point 3 was included, and connectivity to it ------------------------
+--test point 3 was included
+prepare test4 as
+select count(*) from graph_lines_pt where id_geom = 3;
+select results_eq('test4',array[0]::bigint[]); --not included as lineConn is 0 and point conn is 0
+
+--test Testing connection policy and connectivity.
+prepare test5 as
+select count(*) from pgr_dijkstra(
+  'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
+  (select id from graph_lines_pt where id_geom =2 ),
+  (select id from graph_lines_pt where id_geom =3 )
+);
+select results_eq('test5',array[0]::bigint[])  --there is no connection because point 3 is not included
 
 
 
