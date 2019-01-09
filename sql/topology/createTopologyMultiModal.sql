@@ -445,9 +445,14 @@ BEGIN
       --         END IF;
 
       --For each intermediate point of this line having a representant
-      for v_r,v_point in SELECT r,geom from pgr_create_top_graph_ptos where id = v_line.id and
-          layname = v_keyvalue.key and
-          pos = 3 and  r is not null  LOOP
+      for v_r,v_point in select geometries.r, geometries.geom
+                         from  (SELECT r,geom from pgr_create_top_graph_ptos where id = v_line.id and
+                            layname = v_keyvalue.key and
+                            pos = 3 and  r is not null) as geometries
+                         inner join (select * from st_dumppoints(v_line.the_geom)) as points on -- It's needed that points are
+                           (st_3ddwithin(points.geom,geometries.geom,p_tolerance))     -- in order of line drawn
+                         order by points.path
+        LOOP
 
         if (v_zconn = 2 and v_geom_dims = 3)  THEN
           EXECUTE 'SELECT  geom,source,target,id from '||v_lines_table_name ||
