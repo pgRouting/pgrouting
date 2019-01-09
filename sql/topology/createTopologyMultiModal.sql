@@ -112,7 +112,6 @@ BEGIN
       v_p_array := v_p_array || v_p;
     END LOOP;
   END LOOP;
-  raise notice 'p:%,   converted:%',st_astext(p_l),st_astext(st_makeLine(v_p_array));
   return st_makeLine(v_p_array);
 
 END;
@@ -171,13 +170,13 @@ BEGIN
   --Table where points needed to build the graph are stored.
   drop table if EXISTS pgr_create_top_graph_ptos;
   CREATE TEMPORARY TABLE pgr_create_top_graph_ptos(
-                                                     pos INTEGER, --Point position inside its geometry, 1=start, 2=end, 3=middle.
-                                                     id INTEGER,  --Geometry's id where this point belongs to.
-                                                     layname char(128), --Layer's name where this point belongs to.
-                                                     r INTEGER,   --Representative' id of this point in the graph, it is null in case it doesn't belongs to the graph.FK to v_r_table_name.id
-                                                     geom geometry,
-                                                     g INTEGER,   --Layer's groups where this point belongs to
-                                                     dims INTEGER --Dimensions of this point
+     pos INTEGER, --Point position inside its geometry, 1=start, 2=end, 3=middle.
+     id INTEGER,  --Geometry's id where this point belongs to.
+     layname char(128), --Layer's name where this point belongs to.
+     r INTEGER,   --Representative' id of this point in the graph, it is null in case it doesn't belongs to the graph.FK to v_r_table_name.id
+     geom geometry,
+     g INTEGER,   --Layer's groups where this point belongs to
+     dims INTEGER --Dimensions of this point
   );
   create index on pgr_create_top_graph_ptos(id);
   create index on pgr_create_top_graph_ptos using gist(geom);
