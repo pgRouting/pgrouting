@@ -1,63 +1,11 @@
-\i setup.sql
-
--- Cant be Warning because postgis is printing into warning channel.
-set client_min_messages TO error;
-select plan(1);
-
-drop TABLE IF EXISTS test_table_l1;
-create table test_table_l1(
-   geom geometry('linestring',4326),
-   id integer primary key
-);
-
-insert into test_table_l1 VALUES ('SRID=4326;linestring(5 0,10 10, 15 10)',1);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(0 0, 10 10)',2);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(10 10,10 0)',3);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0, 10 10)',4);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0, 8 10, 10 10)', 5);
-
-drop table if EXISTS test_table_p1;
-create TABLE test_table_p1(
-   geom geometry('point',4326),
-   id serial
-  );
-
-insert into test_table_p1 values('SRID=4326;point(10 10)',1);
-insert into test_table_p1 values('SRID=4326;point(10 0)',2);
-insert into test_table_p1 values('SRID=4326;point(8 10)',2);
-
-prepare createTopology_1 as
-SELECT count(*) from pgr_createtopology_layers('{
-  "1": [
-    "manoL"
-  ]
-}','{"manoP":["manoL"]}'
-         , '{
-  "manoL": {
-    "sql": "select id as id, geom as the_geom,0 as z_start, 0 as z_end from \"test_table_l1\"",
-    "pconn": 0,
-    "zconn": 2
-  },
-  "manoP":{
-    "sql":"select id as id, geom as the_geom,0 as z_start, 0 as z_end from \"test_table_p1\"",
-    "pconn":0,
-    "zconn":2
-   }
-}', 'graph_lines', 'public', 0.000001);
-
-select results_eq('createTopology_1', array[1]::bigint[]); --point( 8 10) not intersect with any line point because of connection policy
-
-
-
-
 select * from pgr_create_top_graph_ptos;
 
 
-                ------------------z index-------------------------------
+------------------z index-------------------------------
 drop TABLE IF EXISTS test_table_l1;
 create table test_table_l1(
-                                             geom geometry('linestringz',4326),
-                                             id SERIAL
+                            geom geometry('linestringz',4326),
+                            id SERIAL
 );
 insert into test_table_l1 VALUES ('SRID=4326;linestring(5 0 0,10 10 10, 15 10 0)');
 insert into test_table_l1 VALUES ('SRID=4326;linestring(0 0 0, 10 10 0)');
@@ -66,8 +14,8 @@ insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0 0, 10 10 10)');
 
 drop table if EXISTS test_table_p1;
 create TABLE test_table_p1(
-                                             geom geometry('pointz',4326),
-                                             id serial
+                            geom geometry('pointz',4326),
+                            id serial
 );
 insert into test_table_p1 values('SRID=4326;point(10 10 10)');
 insert into test_table_p1 values('SRID=4326;point(10 10 0)');
@@ -95,10 +43,10 @@ SELECT pgr_createtopology_layers('{
 ------------------------Using z from column--------------------------------------------
 drop TABLE IF EXISTS test_table_l1;
 create table test_table_l1(
-                                             geom geometry('linestring',4326),
-                                             z_start FLOAT,
-                                             z_end FLOAT,
-                                             id SERIAL
+                            geom geometry('linestring',4326),
+                            z_start FLOAT,
+                            z_end FLOAT,
+                            id SERIAL
 );
 insert into test_table_l1 VALUES ('SRID=4326;linestring(5 0,10 10, 15 10)',0,0);
 insert into test_table_l1 VALUES ('SRID=4326;linestring(0 0,10 10, 20 10)', 0, 10);
@@ -107,9 +55,9 @@ insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0, 10 10)',0, 10);
 
 drop table if EXISTS test_table_p1;
 create TABLE test_table_p1(
-                                             geom geometry('point',4326),
-                                             z FLOAT,
-                                             id serial
+                            geom geometry('point',4326),
+                            z FLOAT,
+                            id serial
 );
 insert into test_table_p1 values('SRID=4326;point(10 10)',10);
 insert into test_table_p1 values('SRID=4326;point(10 0)',0);
@@ -136,23 +84,23 @@ SELECT pgr_createtopology_layers('{
 ------------------------Many Groups---------------------------------------------------
 drop TABLE IF EXISTS test_table_l1;
 create table test_table_l1(
-                                             geom geometry('linestring',4326),
-                                             id SERIAL
+                            geom geometry('linestring',4326),
+                            id SERIAL
 );
 insert into test_table_l1 VALUES ('SRID=4326;linestring(5 0,10 0, 15 0)'),
-                                                  ('SRID=4326;linestring(5 1,10 1, 15 1)');
+                                 ('SRID=4326;linestring(5 1,10 1, 15 1)');
 
 drop table if EXISTS test_table_p1;
 create TABLE test_table_p1(
-                                             geom geometry('point',4326),
-                                             id serial
+                            geom geometry('point',4326),
+                            id serial
 );
 insert into test_table_p1 values('SRID=4326;point(10 0)');
 
 drop table if EXISTS test_table_l2;
 create TABLE test_table_l2(
-                                             geom geometry('linestring',4326),
-                                             id serial
+                            geom geometry('linestring',4326),
+                            id serial
 );
 
 INSERT into test_table_l2 values ('SRID=4326;linestring(10 -1, 10 0, 10 1, 10 2)');
@@ -184,22 +132,22 @@ SELECT pgr_createtopology_layers('{
 ------------------------LinearLayer3d and puntual layer 2d-------------------------------
 drop TABLE IF EXISTS test_table_l1;
 create table test_table_l1(
-                                             geom geometry('linestringz',4326),
-                                             id SERIAL
+                            geom geometry('linestringz',4326),
+                            id SERIAL
 );
 insert into test_table_l1 VALUES ('SRID=4326;linestring(5 0 0,10 10 0, 15 10 0)');
 
 drop TABLE IF EXISTS test_table_l2;
 create table test_table_l2(
-                                             geom geometry('linestringz',4326),
-                                             id SERIAL
+                            geom geometry('linestringz',4326),
+                            id SERIAL
 );
 insert into test_table_l2 VALUES ('SRID=4326;linestring(5 0 1,10 10 1, 15 10 1)');
 
 drop table if EXISTS test_table_p1;
 create TABLE test_table_p1(
-                                             geom geometry('point',4326),
-                                             id serial
+                            geom geometry('point',4326),
+                            id serial
 );
 insert into test_table_p1 values('SRID=4326;point(10 10)');
 
@@ -229,16 +177,16 @@ SELECT pgr_createtopology_layers('{
 ----------------------Testing multilines------------------------------------------------
 drop TABLE IF EXISTS test_table_l1;
 create table test_table_l1(
-                                             geom geometry('multilinestring',4326),
-                                             id SERIAL
+                            geom geometry('multilinestring',4326),
+                            id SERIAL
 );
 insert into test_table_l1 VALUES ('SRID=4326;multilinestring((5 0,10 0),(10 0, 15 0))'),
-                                                  ('SRID=4326;multilinestring((5 2,10 0),(10 0, 15 2))');
+                                 ('SRID=4326;multilinestring((5 2,10 0),(10 0, 15 2))');
 
 drop table if EXISTS test_table_p1;
 create TABLE test_table_p1(
-                                             geom geometry('point',4326),
-                                             id serial
+                            geom geometry('point',4326),
+                            id serial
 );
 insert into test_table_p1 values('SRID=4326;point(10 0)');
 
@@ -264,13 +212,13 @@ SELECT pgr_createtopology_layers('{
 -----------------testin some error---------------------------------
 drop TABLE IF EXISTS test_table_l1;
 create table test_table_l1(
-                                             geom geometry('linestring',4326),
-                                             id SERIAL
+                            geom geometry('linestring',4326),
+                            id SERIAL
 );
 insert into test_table_l1 VALUES ('SRID=4326;linestring(1 1, 2 2, 1 3)'),
-                                                  ('SRID=4326;linestring(2 1, 2 2, 3 4)'),
-                                                  ('SRID=4326;linestring(3 1, 2 2)'),
-                                                  ('SRID=4326;linestring(4 1, 2 2)');
+                                 ('SRID=4326;linestring(2 1, 2 2, 3 4)'),
+                                 ('SRID=4326;linestring(3 1, 2 2)'),
+                                 ('SRID=4326;linestring(4 1, 2 2)');
 SELECT pgr_createtopology_layers('{
   "1": [
     "manoL"
