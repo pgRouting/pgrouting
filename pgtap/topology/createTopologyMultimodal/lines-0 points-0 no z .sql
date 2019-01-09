@@ -34,16 +34,16 @@ insert into test_table_p1 values('SRID=4326;point(7 12)',7);
 prepare createTopology_1 as
 SELECT count(*) from pgr_createtopology_layers('{
   "1": [
-    "manoL"
+    "linealLayer-1"
   ]
-}','{"manoP":["manoL"]}'
+}','{"pointLayer-1":["linealLayer-1"]}'
          , '{
-  "manoL": {
+  "linealLayer-1": {
     "sql": "select id as id, geom as the_geom,0 as z_start, 0 as z_end from \"test_table_l1\"",
     "pconn": 0,
     "zconn": 2
   },
-  "manoP":{
+  "pointLayer-1":{
     "sql":"select id as id, geom as the_geom,0 as z_start, 0 as z_end from \"test_table_p1\"",
     "pconn":0,
     "zconn":2
