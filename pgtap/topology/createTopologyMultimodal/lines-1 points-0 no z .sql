@@ -1,7 +1,7 @@
 \i setup.sql
 
 -- Cant be Warning because postgis is printing into warning channel.
-set client_min_messages to notice;
+set client_min_messages to warning;
 select plan(8);
 
 drop TABLE IF EXISTS test_table_l1;
