@@ -14,6 +14,7 @@ insert into test_table_l1 VALUES ('SRID=4326;linestring(5 0,10 10, 15 10)',1);
 insert into test_table_l1 VALUES ('SRID=4326;linestring(0 0, 10 10)',2);
 insert into test_table_l1 VALUES ('SRID=4326;linestring(10 10,10 0)',3);
 insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0, 10 10)',4);
+insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0, 8 10, 10 10)', 5);
 
 drop table if EXISTS test_table_p1;
 create TABLE test_table_p1(
@@ -23,8 +24,9 @@ create TABLE test_table_p1(
 
 insert into test_table_p1 values('SRID=4326;point(10 10)',1);
 insert into test_table_p1 values('SRID=4326;point(10 0)',2);
-prepare createTopology_1 as
+insert into test_table_p1 values('SRID=4326;point(8 10)',2);
 
+prepare createTopology_1 as
 SELECT count(*) from pgr_createtopology_layers('{
   "1": [
     "manoL"
@@ -43,7 +45,7 @@ SELECT count(*) from pgr_createtopology_layers('{
    }
 }', 'graph_lines', 'public', 0.000001);
 
-select results_eq('createTopology_1', array[0]::bigint[]);
+select results_eq('createTopology_1', array[1]::bigint[]); --point( 8 10) not intersect with any line point because of connection policy
 
 
 
