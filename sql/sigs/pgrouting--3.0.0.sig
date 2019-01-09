@@ -1,5 +1,10 @@
 #VERSION pgrouting 3.0.0
 #TYPES
+pgr_create_top_buildings_lines
+pgr_create_top_error_report
+pgr_create_top_line_layers_type
+pgr_create_top_points_layers_type
+pgr_create_top_points_type
 #FUNCTIONS
 pgr_alphashape(text,double precision)
 pgr_analyzegraph(text,double precision,text,text,text,text,text)
@@ -62,7 +67,11 @@ _pgr_contractgraph(text,bigint[],integer,bigint[],boolean)
 pgr_contractgraph(text,bigint[],integer,bigint[],boolean)
 _pgr_createindex(text,text,text,integer,text)
 _pgr_createindex(text,text,text,text,integer,text)
+pgr_create_top_get_point_dims(integer,integer,integer)
+pgr_create_topo_check_intersect(geometry,geometry,double precision)
+pgr_createtopology_layers(jsonb,jsonb,jsonb,text,text,double precision)
 pgr_createtopology(text,double precision,text,text,text,text,text,boolean)
+pgr_create_topo_set_point(integer,geometry,double precision,integer)
 pgr_createverticestable(text,text,text,text,text)
 pgr_dagshortestpath(text,anyarray,anyarray)
 _pgr_dagshortestpath(text,anyarray,anyarray,boolean,boolean)
@@ -152,6 +161,7 @@ pgr_mincostmaxflow(text,anyarray,bigint)
 pgr_mincostmaxflow(text,bigint,anyarray)
 pgr_mincostmaxflow(text,bigint,bigint)
 _pgr_msg(integer,text,text)
+pgr_multiline_to_linestring(geometry,double precision,boolean)
 pgr_nodenetwork(text,double precision,text,text,text,text,boolean)
 _pgr_onerror(boolean,integer,text,text,text,text)
 _pgr_parameter_check(text,text,boolean)
@@ -161,6 +171,9 @@ _pgr_pickdeliver(text,text,text,double precision,integer,integer)
 pgr_pickdeliver(text,text,text,double precision,integer,integer)
 pgr_pointsaspolygon(character varying,double precision)
 _pgr_pointtoid(geometry,double precision,text,integer)
+pgr_polyfill_jsonb_object_set_key(jsonb,text,anyelement)
+pgr_polyfill_jsonb_set(jsonb,text[],jsonb)
+pgr_polyfill_json_object_set_path(jsonb,text[],anyelement)
 pgr_primbfs(text,anyarray,bigint)
 pgr_primbfs(text,bigint,bigint)
 pgr_primdd(text,anyarray,double precision)
