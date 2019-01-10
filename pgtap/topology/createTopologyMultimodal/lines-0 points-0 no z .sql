@@ -50,7 +50,11 @@ SELECT count(*) from pgr_createtopology_layers('{
    }
 }', 'graph_lines', 'public', 0.000001);
 
-select results_eq('createTopology_1', array[1]::bigint[]); --point( 8 10) not intersect with any line point because of connection policy
+select case when pg_version_num() < 90500
+   then skip('required version 9.5 at least', 1)
+   else
+        results_eq('createTopology_1', array[1]::bigint[]) --point( 8 10) not intersect with any line point because of connection policy
+   end;
 
 --testing connectivity
 
@@ -61,7 +65,13 @@ select count(*) from pgr_dijkstra(
   (select id from graph_lines_pt where id_geom =6 ),
   (select id from graph_lines_pt where id_geom =4 )
 );
-select results_eq('test1', array[3]::bigint[]);
+
+select case when pg_version_num() < 90500
+  then skip('required version 9.5 at least', 1)
+  else
+       results_eq('test1', array[3]::bigint[])
+  end;
+
 
 --test simple conn
 prepare test2 as
@@ -70,7 +80,11 @@ select count(*) from pgr_dijkstra(
   (select id from graph_lines_pt where id_geom =6 ),
   (select id from graph_lines_pt where id_geom =2 )
 );
-select results_eq('test2', array[3]::bigint[]);
+select case when pg_version_num() < 90500
+  then skip('required version 9.5 at least', 1)
+  else
+      results_eq('test2', array[3]::bigint[])
+  end;
 
 --test connectivity through inner point 1 on line 1
 prepare test3 as
@@ -79,13 +93,22 @@ select count(*) from pgr_dijkstra(
   (select id from graph_lines_pt where id_geom =6 ),
   (select id from graph_lines_pt where id_geom =5 )
 );
-select results_eq('test3', array[0]::bigint[]);
+select case when pg_version_num() < 90500
+  then skip('required version 9.5 at least', 1)
+  else
+      results_eq('test3', array[0]::bigint[])
+  end;
 
 --test point 3 was included, and connectivity to it ------------------------
 --test point 3 was included
 prepare test4 as
 select count(*) from graph_lines_pt where id_geom = 3;
-select results_eq('test4',array[0]::bigint[]); --not included as lineConn is 0 and point conn is 0
+
+select case when pg_version_num() < 90500
+  then skip('required version 9.5 at least', 1)
+  else
+      results_eq('test4',array[0]::bigint[]) --not included as lineConn is 0 and point conn is 0
+  end;
 
 --test Testing connection policy and connectivity.
 -- prepare test5 as
@@ -104,7 +127,12 @@ select count(*) from pgr_dijkstra(
   (select id from graph_lines_pt where id_geom =7 ),
   (select id from graph_lines_pt where id_geom =5 )
 );
-select results_eq('test6', array[0]::bigint[]); --there is no connection because of line conn policy
+
+select case when pg_version_num() < 90500
+  then skip('required version 9.5 at least', 1)
+  else
+      results_eq('test6', array[0]::bigint[]) --there is no connection because of line conn policy
+  end;
 
 prepare test7 as
 select count(*) from pgr_dijkstra(
@@ -112,7 +140,12 @@ select count(*) from pgr_dijkstra(
   (select id from graph_lines_pt where id_geom =7 ),
   (select id from graph_lines_pt where id_geom =6 )
 );
-select results_eq('test7', array[0]::bigint[]); -- there is no connection because of line conn policy
+
+select case when pg_version_num() < 90500
+  then skip('required version 9.5 at least', 1)
+  else
+      results_eq('test7', array[0]::bigint[]) -- there is no connection because of line conn policy
+  end;
 
 SELECT * FROM finish();
 ROLLBACK;
