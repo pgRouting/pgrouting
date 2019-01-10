@@ -2,7 +2,7 @@
 
 -- Cant be Warning because postgis is printing into warning channel.
 set client_min_messages TO warning;
-select plan(8);
+select plan(7);
 
 drop TABLE IF EXISTS test_table_l1;
 create table test_table_l1(
@@ -88,13 +88,13 @@ select count(*) from graph_lines_pt where id_geom = 3;
 select results_eq('test4',array[0]::bigint[]); --not included as lineConn is 0 and point conn is 0
 
 --test Testing connection policy and connectivity.
-prepare test5 as
-select count(*) from pgr_dijkstra(
-  'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
-  (select id from graph_lines_pt where id_geom =2 ),
-  (select id from graph_lines_pt where id_geom =3 )
-);
-select throws_ok('test5');  --there is no connection because point 3 is not included
+-- prepare test5 as
+-- select count(*) from pgr_dijkstra(
+--   'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
+--   (select id from graph_lines_pt where id_geom =2 ),
+--   (select id from graph_lines_pt where id_geom =3 )
+-- );
+-- select throws_ok('test5');  --there is no connection because point 3 is not included
 
 --Testing connectivity through lines inner vertices
 --test connectivity between 2 lines that crosses
