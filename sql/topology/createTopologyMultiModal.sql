@@ -239,7 +239,7 @@ BEGIN
       v_pconn := p_layers->v_lineal_layer->>'pconn';
       v_zconn := p_layers->v_lineal_layer->>'zconn';
 
-      p_layers := jsonb_insert(p_layers,('{'||v_lineal_layer||', group}')::text[], to_jsonb(v_group));
+      p_layers := jsonb_set(p_layers,('{'||v_lineal_layer||', group}')::text[], to_jsonb(v_group));
 
       v_first := true;
       FOR v_line in EXECUTE (p_layers->v_lineal_layer->>'sql') loop
@@ -254,7 +254,7 @@ BEGIN
 
         if v_first THEN
           v_geom_dims := st_ndims(v_line.the_geom);
-          p_layers := jsonb_insert(p_layers,('{'||v_lineal_layer||',dims}')::text[], to_jsonb(v_geom_dims));
+          p_layers := jsonb_set(p_layers,('{'||v_lineal_layer||',dims}')::text[], to_jsonb(v_geom_dims));
           v_first := FALSE;
         END IF;
 
@@ -365,7 +365,7 @@ BEGIN
         if v_first THEN
           --As points from point layers are always converted v_geom_dims = v_point_dims
           v_geom_dims := st_ndims(v_point);
-          p_layers = jsonb_insert(p_layers,('{'||v_keyvalue.key||', dims}')::text[], to_jsonb(v_geom_dims));
+          p_layers = jsonb_set(p_layers,('{'||v_keyvalue.key||', dims}')::text[], to_jsonb(v_geom_dims));
           v_first := FALSE;
         END IF;
         --There may exists multiple points that intersects in the same group, all with equal r, some with same r and the other with null, or all with r = null
