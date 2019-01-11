@@ -50,7 +50,7 @@ SELECT count(*) from pgr_createtopology_layers('{
    }
 }', 'graph_lines', 'public', 0.000001);
 
-select results_eq('createTopology_1', array[0]::bigint[]); --point( 8 10) not intersect with any line point because of connection policy
+select results_eq('createTopology_1', array[0]::bigint[]);
 
 --testing connectivity
 
