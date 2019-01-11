@@ -55,6 +55,65 @@ create type pgr_create_top_buildings_lines as (
   target INT,
   id INTEGER
   );
+CREATE OR REPLACE FUNCTION "pgr_polyfill_json_object_set_path"(
+  "jsonb"          jsonb,
+  "key_path"      TEXT[],
+  "value_to_set"  anyelement
+)
+  RETURNS jsonb
+  LANGUAGE sql
+  IMMUTABLE
+  STRICT
+    AS
+    $function$
+      SELECT CASE COALESCE(array_length("key_path", 1), 0)
+         WHEN 0 THEN to_jsonb("value_to_set")
+         WHEN 1 THEN "pgr_polyfill_jsonb_object_set_key"("jsonb", "key_path"[l], "value_to_set")
+         ELSE "pgr_polyfill_jsonb_object_set_key"(
+             "jsonb",
+             "key_path"[l],
+             "pgr_polyfill_json_object_set_path"(
+                 COALESCE(NULLIF(("jsonb" -> "key_path"[l])::text, 'null'), '{}')::jsonb,
+                 "key_path"[l+1:u],
+                 "value_to_set"
+               )
+           )
+         END
+      FROM array_lower("key_path", 1) l,
+           array_upper("key_path", 1) u
+    $function$;
+
+CREATE OR REPLACE FUNCTION "pgr_polyfill_jsonb_object_set_key"(
+  "jsonb"          jsonb,
+  "key_to_set"    TEXT,
+  "value_to_set"  anyelement
+)
+  RETURNS jsonb
+  LANGUAGE sql
+  IMMUTABLE
+  STRICT
+  AS
+  $function$
+    SELECT concat('{', string_agg(to_json("key") || ':' || "value"::text, ','), '}')::jsonb
+    FROM (SELECT *
+          FROM jsonb_each("jsonb")
+          WHERE "key" <> "key_to_set"
+          UNION ALL
+          SELECT "key_to_set", to_jsonb("value_to_set")) AS "fields"
+  $function$;
+
+create or REPLACE FUNCTION pgr_polyfill_jsonb_set(p_jsonb jsonb, p_path text[], p_value jsonb)
+  returns jsonb as
+  $$
+    BEGIN
+      if pg_version_num() < 90500 then
+        return pgr_polyfill_json_object_set_path(p_jsonb, p_path, p_value);
+      else
+        return jsonb_set(p_jsonb, p_path, p_value);
+      end if;
+    end;
+  $$
+language plpgsql;
 
 --It is expected p_point to be a point or pointz and 4326
 create or REPLACE FUNCTION pgr_create_topo_set_point(z_conn INTEGER, p_point geometry, p_z FLOAT,p_dims INTEGER)
@@ -239,7 +298,7 @@ BEGIN
       v_pconn := p_layers->v_lineal_layer->>'pconn';
       v_zconn := p_layers->v_lineal_layer->>'zconn';
 
-      p_layers := jsonb_set(p_layers,('{'||v_lineal_layer||', group}')::text[], to_jsonb(v_group));
+      p_layers := pgr_polyfill_jsonb_set(p_layers,('{'||v_lineal_layer||', group}')::text[], to_jsonb(v_group));
 
       v_first := true;
       FOR v_line in EXECUTE (p_layers->v_lineal_layer->>'sql') loop
@@ -254,7 +313,7 @@ BEGIN
 
         if v_first THEN
           v_geom_dims := st_ndims(v_line.the_geom);
-          p_layers := jsonb_set(p_layers,('{'||v_lineal_layer||',dims}')::text[], to_jsonb(v_geom_dims));
+          p_layers := pgr_polyfill_jsonb_set(p_layers,('{'||v_lineal_layer||',dims}')::text[], to_jsonb(v_geom_dims));
           v_first := FALSE;
         END IF;
 
@@ -333,7 +392,7 @@ BEGIN
 
           --after this iteration intermediate points where inserted
           --so this is to avoid duplicate insertings
-          p_layers := jsonb_set(p_layers, (v_lineal_layer || '{pconn}'::text[]), '1'::jsonb );
+          p_layers := pgr_polyfill_jsonb_set(p_layers, (v_lineal_layer || '{pconn}'::text[]), '1'::jsonb );
           v_zconn := p_layers->v_lineal_layer->>'zconn';
           v_geom_dims := p_layers->v_lineal_layer->>'dims';
 
@@ -365,7 +424,7 @@ BEGIN
         if v_first THEN
           --As points from point layers are always converted v_geom_dims = v_point_dims
           v_geom_dims := st_ndims(v_point);
-          p_layers = jsonb_set(p_layers,('{'||v_keyvalue.key||', dims}')::text[], to_jsonb(v_geom_dims));
+          p_layers = pgr_polyfill_jsonb_set(p_layers,('{'||v_keyvalue.key||', dims}')::text[], to_jsonb(v_geom_dims));
           v_first := FALSE;
         END IF;
         --There may exists multiple points that intersects in the same group, all with equal r, some with same r and the other with null, or all with r = null
