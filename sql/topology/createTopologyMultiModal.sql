@@ -387,8 +387,8 @@ BEGIN
         v_group := p_layers->v_lineal_layer->>'group';
         v_p_groups := v_p_groups || v_group;
 
-        if p_layers->(v_keyvalue.key)->>'pconn' = '1' and
-           p_layers->v_lineal_layer->>'pconn' = '0' THEN
+        if (p_layers->(v_keyvalue.key)->>'pconn') = '1' and
+           (p_layers->v_lineal_layer->>'pconn') = '0' THEN
 
           --after this iteration intermediate points where inserted
           --so this is to avoid duplicate insertings
@@ -470,7 +470,7 @@ BEGIN
   for v_keyvalue in select * from jsonb_each(p_layers) LOOP
 
 
-    if p_layers->(v_keyvalue.key)->'group' ISNULL then
+    if (p_layers->(v_keyvalue.key)->'group') ISNULL then
       CONTINUE ;
     END IF;
 
