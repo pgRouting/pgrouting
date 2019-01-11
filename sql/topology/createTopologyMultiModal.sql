@@ -67,7 +67,7 @@ CREATE OR REPLACE FUNCTION "pgr_polyfill_json_object_set_path"(
     AS
     $function$
       SELECT CASE COALESCE(array_length("key_path", 1), 0)
-         WHEN 0 THEN to_jsonb("value_to_set")
+         WHEN 0 THEN to_json("value_to_set")::jsonb
          WHEN 1 THEN "pgr_polyfill_jsonb_object_set_key"("jsonb", "key_path"[l], "value_to_set")
          ELSE "pgr_polyfill_jsonb_object_set_key"(
              "jsonb",
@@ -99,7 +99,7 @@ CREATE OR REPLACE FUNCTION "pgr_polyfill_jsonb_object_set_key"(
           FROM jsonb_each("jsonb")
           WHERE "key" <> "key_to_set"
           UNION ALL
-          SELECT "key_to_set", to_jsonb("value_to_set")) AS "fields"
+          SELECT "key_to_set", to_json("value_to_set")::jsonb) AS "fields"
   $function$;
 
 create or REPLACE FUNCTION pgr_polyfill_jsonb_set(p_jsonb jsonb, p_path text[], p_value jsonb)
@@ -298,7 +298,7 @@ BEGIN
       v_pconn := p_layers->v_lineal_layer->>'pconn';
       v_zconn := p_layers->v_lineal_layer->>'zconn';
 
-      p_layers := pgr_polyfill_jsonb_set(p_layers,('{'||v_lineal_layer||', group}')::text[], to_jsonb(v_group));
+      p_layers := pgr_polyfill_jsonb_set(p_layers,('{'||v_lineal_layer||', group}')::text[], to_json(v_group)::jsonb);
 
       v_first := true;
       FOR v_line in EXECUTE (p_layers->v_lineal_layer->>'sql') loop
@@ -313,7 +313,7 @@ BEGIN
 
         if v_first THEN
           v_geom_dims := st_ndims(v_line.the_geom);
-          p_layers := pgr_polyfill_jsonb_set(p_layers,('{'||v_lineal_layer||',dims}')::text[], to_jsonb(v_geom_dims));
+          p_layers := pgr_polyfill_jsonb_set(p_layers,('{'||v_lineal_layer||',dims}')::text[], to_json(v_geom_dims)::jsonb);
           v_first := FALSE;
         END IF;
 
@@ -424,7 +424,7 @@ BEGIN
         if v_first THEN
           --As points from point layers are always converted v_geom_dims = v_point_dims
           v_geom_dims := st_ndims(v_point);
-          p_layers = pgr_polyfill_jsonb_set(p_layers,('{'||v_keyvalue.key||', dims}')::text[], to_jsonb(v_geom_dims));
+          p_layers = pgr_polyfill_jsonb_set(p_layers,('{'||v_keyvalue.key||', dims}')::text[], to_json(v_geom_dims)::jsonb);
           v_first := FALSE;
         END IF;
         --There may exists multiple points that intersects in the same group, all with equal r, some with same r and the other with null, or all with r = null
