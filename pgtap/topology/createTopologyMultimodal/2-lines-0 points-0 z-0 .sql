@@ -195,7 +195,7 @@ prepare test13 as
                            (select id from graph_lines_pt where id_geom =14 ),
                            (select id from graph_lines_pt where id_geom =9 )
                          );
-select results_eq('test13', array[0]::bigint[]); -- there is not connection because of layer and point connectivity policy
+select results_eq('test13', array[0]::bigint[]); -- there is not connection because of layer and point connectivity policy, must be layer-1 point-1 to have connectivity
 
 
 SELECT * FROM finish();
