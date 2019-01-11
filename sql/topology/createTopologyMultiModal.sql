@@ -432,7 +432,7 @@ BEGIN
         from pgr_create_top_graph_ptos as g
         where st_dwithin(g.geom, v_point, p_tolerance) and --to use index
           st_3ddwithin(g.geom, v_point, p_tolerance) and
-          (array_position(v_p_groups, g.g) is not null) and dims = v_geom_dims
+          (v_p_groups @> (g.g || ARRAY []::int[])) and dims = v_geom_dims
         ORDER BY r NULLS LAST --Because I order by r with nulls last the first value must be an assigned one if there is one
         limit 1;
         if v_point_intersected.geom is NULL then
@@ -459,7 +459,7 @@ BEGIN
 
         UPDATE pgr_create_top_graph_ptos as g set r = v_r where st_dwithin(g.geom, v_point, p_tolerance) and --to use index
           st_3ddwithin(g.geom, v_point, p_tolerance) and
-          (array_position(v_p_groups, g.g) is not null) and dims = v_geom_dims;
+          (v_p_groups @> (g.g || ARRAY []::int[])) and dims = v_geom_dims;
 
       END LOOP;
 
