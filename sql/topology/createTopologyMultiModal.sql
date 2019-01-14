@@ -1,33 +1,3 @@
-/*PGR-GNU*****************************************************************
-
-Copyright (c) 2019 pgRouting developers
-Author: Manuel Fuentes Jiménez <m92fuentes@gmail.com>
-Mail: project@pgrouting.org
-
-------
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
-********************************************************************PGR-GNU*/
-drop type IF EXISTS  pgr_create_top_line_layers_type CASCADE;
-create type pgr_create_top_line_layers_type as(
-  id INTEGER,
-  the_geom geometry,
-  z_start FLOAT,
-  z_end FLOAT
-  );
 drop type IF EXISTS pgr_create_top_points_type CASCADE;
 create type pgr_create_top_points_type as(
   pos INTEGER,
@@ -213,7 +183,12 @@ $$
 DECLARE
   v_lineal_group_record record;
   v_lineal_layer text;  --Layer being analized
-  v_line pgr_create_top_line_layers_type ; --Data type returned by sql from line layers
+  --current line layer--------------------------------------------------------------------------
+  v_current_line_layer_id integer; --identifier of current line from line_layer
+  v_current_line_layer_the_geom geometry ; --geom of current line from line_layer
+  v_current_line_layer_z_start float ; --z_start of current line from line_layer
+  v_current_line_layer_z_end float; --z_end of current line from line_layer
+  ------------------------------------------------------------------------------------------
   v_point_type pgr_create_top_points_layers_type; --Data type returned by sql from point layers
   v_pconn integer;   --Layer's connectivity politicy
   v_zconn INTEGER;   --Z connectivity
@@ -301,23 +276,24 @@ BEGIN
       p_layers := pgr_polyfill_jsonb_set(p_layers,('{'||v_lineal_layer||', group}')::text[], to_json(v_group)::jsonb);
 
       v_first := true;
-      FOR v_line in EXECUTE (p_layers->v_lineal_layer->>'sql') loop
+      FOR v_current_line_layer_id, v_current_line_layer_the_geom, v_current_line_layer_z_start, v_current_line_layer_z_end in
+        EXECUTE (p_layers->v_lineal_layer->>'sql') loop
         --Adding points
 
         --This is needed in order to drop duplicates points in a linestring or multilinestring.
-        v_line.the_geom := pgr_multiline_to_linestring(v_line.the_geom,p_tolerance, FALSE );
-        if(v_line.the_geom is NULL ) THEN
-          return next (v_line.id,v_lineal_layer,'Invalid MultiLinestring. A valid multilinestring is the one conformed by lines connected like they were a single line chopped. Geom wasnt used.' )::pgr_create_top_error_report;
+        v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom,p_tolerance, FALSE );
+        if(v_current_line_layer_the_geom is NULL ) THEN
+          return next (v_current_line_layer_id,v_lineal_layer,'Invalid MultiLinestring. A valid multilinestring is the one conformed by lines connected like they were a single line chopped. Geom wasnt used.' )::pgr_create_top_error_report;
           continue;
         END IF;
 
         if v_first THEN
-          v_geom_dims := st_ndims(v_line.the_geom);
+          v_geom_dims := st_ndims(v_current_line_layer_the_geom);
           p_layers := pgr_polyfill_jsonb_set(p_layers,('{'||v_lineal_layer||',dims}')::text[], to_json(v_geom_dims)::jsonb);
           v_first := FALSE;
         END IF;
 
-        v_n_points := st_npoints(v_line.the_geom);
+        v_n_points := st_npoints(v_current_line_layer_the_geom);
         FOR v_i in 1..(case when v_pconn = 0 then 2 else v_n_points end) LOOP
 
           IF v_pconn = 0  THEN
@@ -329,16 +305,16 @@ BEGIN
           END IF;
           case v_i
             when 1          then v_point_pos := 1;
-            v_z_value   := v_line.z_start;
+            v_z_value   := v_current_line_layer_z_start;
             when v_n_points then v_point_pos := 2;
-            v_z_value   := v_line.z_end;
+            v_z_value   := v_current_line_layer_z_end;
             ELSE                 v_point_pos := 3;
             v_z_value   := 0;
             END CASE;
 
           v_point_dims := pgr_create_top_get_point_dims(v_point_pos, v_geom_dims, v_zconn) ;
 
-          v_point = st_pointn(v_line.the_geom,v_i );
+          v_point = st_pointn(v_current_line_layer_the_geom,v_i );
           v_point = pgr_create_topo_set_point(v_zconn, v_point, v_z_value,v_point_dims);
           select into v_point_intersected *
           from pgr_create_top_graph_ptos as g
@@ -367,7 +343,7 @@ BEGIN
                 v_r := null;   */
           END IF;
 
-          insert into pgr_create_top_graph_ptos values (v_point_pos,v_line.id, v_lineal_layer, v_r, v_point, v_group,v_point_dims);
+          insert into pgr_create_top_graph_ptos values (v_point_pos,v_current_line_layer_id, v_lineal_layer, v_r, v_point, v_group,v_point_dims);
         END LOOP;
 
 
@@ -397,18 +373,20 @@ BEGIN
           v_geom_dims := p_layers->v_lineal_layer->>'dims';
 
 
-          for v_line in EXECUTE p_layers->v_lineal_layer->>'sql' LOOP
-            v_line.the_geom := pgr_multiline_to_linestring(v_line.the_geom,p_tolerance, FALSE );
-            if(v_line.the_geom is NULL ) THEN --I havent done anything with this line, it wasnt processed because of topological errors.
+          for v_current_line_layer_id, v_current_line_layer_the_geom, v_current_line_layer_z_start, v_current_line_layer_z_end in
+            EXECUTE p_layers->v_lineal_layer->>'sql' LOOP
+              
+            v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom,p_tolerance, FALSE );
+            if(v_current_line_layer_the_geom is NULL ) THEN --I havent done anything with this line, it wasnt processed because of topological errors.
               continue;
             END IF;
-            v_n_points := st_npoints(v_line.the_geom);
+            v_n_points := st_npoints(v_current_line_layer_the_geom);
             FOR v_i in 2..(v_n_points-1) LOOP
-              v_point = st_pointn(v_line.the_geom,v_i );
+              v_point = st_pointn(v_current_line_layer_the_geom,v_i );
               v_point = pgr_create_topo_set_point(v_zconn, v_point, 0, v_geom_dims);
               v_point_dims := pgr_create_top_get_point_dims(3, v_geom_dims, v_zconn);
 
-              insert into pgr_create_top_graph_ptos values (3,v_line.id,v_lineal_layer,null,v_point,v_group, v_point_dims);
+              insert into pgr_create_top_graph_ptos values (3,v_current_line_layer_id,v_lineal_layer,null,v_point,v_group, v_point_dims);
             END LOOP;
           END LOOP;
 
@@ -477,17 +455,18 @@ BEGIN
     v_zconn := p_layers->(v_keyvalue.key)->>'zconn';
     v_geom_dims := p_layers->(v_keyvalue.key)->>'dims';
     v_first := TRUE ;
-    for v_line in EXECUTE p_layers->(v_keyvalue.key)->>'sql' LOOP
+    for v_current_line_layer_id,v_current_line_layer_the_geom,v_current_line_layer_z_start,v_current_line_layer_z_end
+        in EXECUTE p_layers->(v_keyvalue.key)->>'sql' LOOP
 
 
-      v_line.the_geom := pgr_multiline_to_linestring(v_line.the_geom, p_tolerance, (v_geom_dims = 3 and v_zconn = 2));
-      if(v_line.the_geom is NULL ) THEN --I havent done anything with this line, it wasnt processed because of topological errors.
+      v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom, p_tolerance, (v_geom_dims = 3 and v_zconn = 2));
+      if(v_current_line_layer_the_geom is NULL ) THEN --I havent done anything with this line, it wasnt processed because of topological errors.
         continue;
       END IF;
 
 
       --For every line in a layer there is only one start point and end point, so I can do this.
-      for v_pos, v_r in SELECT pos,r from pgr_create_top_graph_ptos where id = v_line.id and layname = v_keyvalue.key and (pos=1 or pos =2) LOOP
+      for v_pos, v_r in SELECT pos,r from pgr_create_top_graph_ptos where id = v_current_line_layer_id and layname = v_keyvalue.key and (pos=1 or pos =2) LOOP
         if v_pos = 1 THEN
           v_source = v_r;
         ELSEIF v_pos = 2 THEN
@@ -495,7 +474,7 @@ BEGIN
         END IF;
       END LOOP;
       --Insert first line with its source and target values.
-      EXECUTE 'INSERT into '||v_lines_table_name||' VALUES ($1,$2,$3,$4,$5)'using v_line.the_geom, v_source, v_target,v_line.id,v_keyvalue.key;
+      EXECUTE 'INSERT into '||v_lines_table_name||' VALUES ($1,$2,$3,$4,$5)'using v_current_line_layer_the_geom, v_source, v_target,v_current_line_layer_id,v_keyvalue.key;
 
       --      Points are not added so this is not necessary
       --         --if geometries are 2d and z is gotten from query, intermediate points will not have z value, so lines can't be chopped
@@ -505,10 +484,10 @@ BEGIN
 
       --For each intermediate point of this line having a representant
       for v_r,v_point in select geometries.r, geometries.geom
-                         from  (SELECT r,geom from pgr_create_top_graph_ptos where id = v_line.id and
+                         from  (SELECT r,geom from pgr_create_top_graph_ptos where id = v_current_line_layer_id and
                             layname = v_keyvalue.key and
                             pos = 3 and  r is not null) as geometries
-                         inner join (select * from st_dumppoints(v_line.the_geom)) as points on -- It's needed that points are
+                         inner join (select * from st_dumppoints(v_current_line_layer_the_geom)) as points on -- It's needed that points are
                            (st_3ddwithin(points.geom,geometries.geom,p_tolerance))     -- in order of line drawn
                          order by points.path
         LOOP
@@ -516,11 +495,11 @@ BEGIN
         if (v_zconn = 2 and v_geom_dims = 3)  THEN
           EXECUTE 'SELECT  geom,source,target,id from '||v_lines_table_name ||
                   ' where id_geom = $1 and layname = $2 and pgr_create_topo_check_intersect("geom",$3,$4)'
-            into v_line_intersected using v_line.id, v_keyvalue.key,st_buffer(v_point, p_tolerance),p_tolerance;
+            into v_line_intersected using v_current_line_layer_id, v_keyvalue.key,st_buffer(v_point, p_tolerance),p_tolerance;
         ELSE
           EXECUTE 'SELECT  geom,source,target,id from '||v_lines_table_name ||
                   ' where id_geom = $1 and layname = $2 and st_3ddwithin(geom, $3,$4)'
-            into v_line_intersected using v_line.id, v_keyvalue.key,v_point, p_tolerance  ;
+            into v_line_intersected using v_current_line_layer_id, v_keyvalue.key,v_point, p_tolerance  ;
         END IF;
         v_points_make_line := '{}';
         --This always has to execute because if there is a representative point, there is a line that contains it
@@ -531,7 +510,7 @@ BEGIN
           END IF;
           if st_astext(v_line_point) = st_astext(v_point) THEN
             v_points_make_line := v_points_make_line || v_line_point;
-            EXECUTE 'insert into '||v_lines_table_name||' values ($1,$2,$3,$4,$5)' USING st_makeline(v_points_make_line),v_source,v_r,v_line.id,v_keyvalue.key;
+            EXECUTE 'insert into '||v_lines_table_name||' values ($1,$2,$3,$4,$5)' USING st_makeline(v_points_make_line),v_source,v_r,v_current_line_layer_id,v_keyvalue.key;
             v_points_make_line :='{}';
             v_source := v_r;
           END IF;
@@ -542,7 +521,7 @@ BEGIN
         --this will never insert garbage because of if there is an intermediate point that has a representative point
         --there is a line who contains it and therefore it will be chopped just over that point in this iteration, so the
         --final line is going to have that point as the first point and the last point from v_line_intersected's last point
-        EXECUTE 'insert into '||v_lines_table_name ||' values($1,$2,$3,$4,$5)' USING st_makeline(v_points_make_line), v_r, v_target,v_line.id,v_keyvalue.key;
+        EXECUTE 'insert into '||v_lines_table_name ||' values($1,$2,$3,$4,$5)' USING st_makeline(v_points_make_line), v_r, v_target,v_current_line_layer_id,v_keyvalue.key;
         EXECUTE 'DELETE From '||v_lines_table_name ||' where id = $1' USING v_line_intersected.id;
 
       END LOOP;
