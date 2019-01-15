@@ -44,7 +44,7 @@ SELECT count(*) from pgr_createtopology_layers('{
     "zconn": 2
   },
   "pointLayer-1":{
-    "sql":"select id as id, geom as the_geom,0 as z_start, 0 as z_end from \"test_table_p1\"",
+    "sql":"select id as id, geom as the_geom,0 as z from \"test_table_p1\"",
     "pconn":0,
     "zconn":2
    }
