@@ -1,9 +1,3 @@
-drop type IF EXISTS pgr_create_top_points_layers_type CASCADE;
-CREATE type pgr_create_top_points_layers_type as(
-  id INTEGER,
-  the_geom geometry, --Puntos 2d o 3d
-  z FLOAT
-  );
 drop type IF EXISTS pgr_create_top_error_report CASCADE;
 CREATE type pgr_create_top_error_report as(
   id INTEGER, --identificador de la geometria
@@ -182,8 +176,10 @@ DECLARE
   v_current_line_layer_z_end float; --z_end of current line from line_layer
   ----------------------------------------------------------------------------------------------------
   --current point layer-------------------------------------------------------------------------------
-  v_point_type pgr_create_top_points_layers_type; --Data type returned by sql from point layers
-
+  v_point_id integer;
+  v_point_the_geom geometry;
+  v_point_z float;
+  ----------------------------------------------------------------------------------------------------
   v_pconn integer;   --Layer's connectivity politicy
   v_zconn INTEGER;   --Z connectivity
   v_z_value FLOAT;   --Z value when geometry'z is not used
@@ -395,9 +391,10 @@ BEGIN
       v_zconn := p_layers->(v_keyvalue.key)->>'zconn';
       v_lineal_layer := null;
       v_first :=TRUE;
-      FOR v_point_type in EXECUTE p_layers->(v_keyvalue.key)->>'sql' LOOP
+      FOR v_point_the_geom, v_point_z, v_point_id in EXECUTE 'select subq.the_geom, subq.z, subq.id from (' || (p_layers->(v_keyvalue.key)->>'sql')||') as subq' LOOP
+        raise notice '% - % - %', st_astext(v_point_the_geom), v_point_z, v_point_id;
 
-        v_point := pgr_create_topo_set_point(v_zconn, v_point_type.the_geom,v_point_type.z, 0);
+        v_point := pgr_create_topo_set_point(v_zconn, v_point_the_geom,v_point_z, 0);
         if v_first THEN
           --As points from point layers are always converted v_geom_dims = v_point_dims
           v_geom_dims := st_ndims(v_point);
@@ -413,25 +410,25 @@ BEGIN
         ORDER BY r NULLS LAST --Because I order by r with nulls last the first value must be an assigned one if there is one
         limit 1;
         if v_r_geom is NULL then
-          return next (v_point_type.id, v_keyvalue.key,'El punto no intersecta a ningun otro punto del grafo')::pgr_create_top_error_report;
+          return next (v_point_id, v_keyvalue.key,'El punto no intersecta a ningun otro punto del grafo')::pgr_create_top_error_report;
           CONTINUE ;
         END IF;
 
         EXECUTE 'select layname from ' || v_r_table_name|| ' where id=$1'into v_lineal_layer using v_r_r;
 
         if v_lineal_layer is not null THEN
-          return next (v_point_type.id, v_keyvalue.key,'El punto se intersecta con otro punto de otra capa puntual en el mismo grupo, no se sabe por cual de los 2 hacer la union.')::pgr_create_top_error_report;
+          return next (v_point_id, v_keyvalue.key,'El punto se intersecta con otro punto de otra capa puntual en el mismo grupo, no se sabe por cual de los 2 hacer la union.')::pgr_create_top_error_report;
           CONTINUE;
         END IF;
 
         if v_r_r is NULL THEN
           EXECUTE 'insert into '||v_r_table_name||' values($1,$2,$3,$4) '
-            using v_r_point_id, v_keyvalue.key, v_point_type.id, v_point;
+            using v_r_point_id, v_keyvalue.key, v_point_id, v_point;
           v_r := v_r_point_id;
           v_r_point_id := v_r_point_id+1;
         else
           v_r = v_r_r;
-          EXECUTE 'update '||v_r_table_name|| ' set layname=$1, id_geom=$2 where id=$3' using v_keyvalue.key,v_point_type.id,v_r;
+          EXECUTE 'update '||v_r_table_name|| ' set layname=$1, id_geom=$2 where id=$3' using v_keyvalue.key,v_point_id,v_r;
         END IF;
 
         UPDATE pgr_create_top_graph_ptos as g set r = v_r where st_dwithin(g.geom, v_point, p_tolerance) and --to use index
