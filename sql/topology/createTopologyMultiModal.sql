@@ -373,7 +373,7 @@ BEGIN
           v_geom_dims := p_layers->v_lineal_layer->>'dims';
 
 
-          for v_current_line_layer_id, v_current_line_layer_the_geom, v_current_line_layer_z_start, v_current_line_layer_z_end in
+          for v_current_line_layer_id, v_current_line_layer_the_geom in
             EXECUTE p_layers->v_lineal_layer->>'sql' LOOP
               
             v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom,p_tolerance, FALSE );
@@ -455,8 +455,8 @@ BEGIN
     v_zconn := p_layers->(v_keyvalue.key)->>'zconn';
     v_geom_dims := p_layers->(v_keyvalue.key)->>'dims';
     v_first := TRUE ;
-    for v_current_line_layer_id,v_current_line_layer_the_geom,v_current_line_layer_z_start,v_current_line_layer_z_end
-        in EXECUTE p_layers->(v_keyvalue.key)->>'sql' LOOP
+    for v_current_line_layer_id,v_current_line_layer_the_geom in
+      EXECUTE p_layers->(v_keyvalue.key)->>'sql' LOOP
 
 
       v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom, p_tolerance, (v_geom_dims = 3 and v_zconn = 2));
