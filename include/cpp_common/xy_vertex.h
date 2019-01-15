@@ -28,10 +28,10 @@
 #define INCLUDE_CPP_COMMON_XY_VERTEX_H_
 #pragma once
 
-#include "cpp_common/bpoint.hpp"
 
 #include <vector>
 
+#include "cpp_common/bpoint.hpp"
 #include "c_types/pgr_edge_xy_t.h"
 
 

@@ -38,9 +38,7 @@ namespace alphashape {
 class Pgr_triangle {
  public:
      Pgr_triangle() = default;
-     Pgr_triangle(
-             Bpoint p1, Bpoint p2, Bpoint p3
-        );
+     Pgr_triangle(Bpoint p1, Bpoint p2, Bpoint p3);
 
      bool has_point(const Bpoint &p) const;
      bool has_edge(const Bpoint &p1, const Bpoint &p2) const;

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: points_input.h
+File: pgr_point_input.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_C_COMMON_POINT_INPUT_H_
-#define INCLUDE_C_COMMON_POINT_INPUT_H_
+#ifndef INCLUDE_C_COMMON_PGR_POINT_INPUT_H_
+#define INCLUDE_C_COMMON_PGR_POINT_INPUT_H_
 #pragma once
 
 /* for size-t */
@@ -50,4 +50,4 @@ void pgr_point_input(
 
 
 
-#endif  // INCLUDE_C_COMMON_POINT_INPUT_H_
+#endif  // INCLUDE_C_COMMON_PGR_POINT_INPUT_H_

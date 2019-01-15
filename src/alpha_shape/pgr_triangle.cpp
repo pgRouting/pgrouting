@@ -34,8 +34,7 @@ Pgr_triangle::Pgr_triangle(
              Bpoint p1, Bpoint p2, Bpoint p3) :
     m_p1(p1),
     m_p2(p2),
-    m_p3(p3)
-{
+    m_p3(p3) {
 }
 
 bool

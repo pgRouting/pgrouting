@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <iostream>
 #include <vector>
+#include <set>
 #include <algorithm>
 #include <sstream>
 #include <limits>
@@ -93,7 +94,7 @@ class Pgr_prim : public Pgr_mst<G> {
 
      void primTree(
              const G &graph,
-             int64_t root_vertex );
+             int64_t root_vertex);
 
      void generate_mst(const G &graph);
 
@@ -110,7 +111,7 @@ template <class G>
 void
 Pgr_prim<G>::primTree(
         const G &graph,
-        int64_t root_vertex ) {
+        int64_t root_vertex) {
     clear();
 
     predecessors.resize(graph.num_vertices());

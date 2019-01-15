@@ -356,8 +356,6 @@ class Pgr_mst {
              pgassert(graph[*ei].cost > 0);
          return true;
      }
-
-
 };
 
 }  // namespace functions
