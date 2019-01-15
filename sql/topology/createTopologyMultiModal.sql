@@ -1,11 +1,3 @@
-drop type IF EXISTS pgr_create_top_points_type CASCADE;
-create type pgr_create_top_points_type as(
-  pos INTEGER,
-  id INTEGER,
-  layname char(128),
-  r INTEGER,
-  geom geometry
-  );
 drop type IF EXISTS pgr_create_top_points_layers_type CASCADE;
 CREATE type pgr_create_top_points_layers_type as(
   id INTEGER,
@@ -194,7 +186,12 @@ DECLARE
   v_zconn INTEGER;   --Z connectivity
   v_z_value FLOAT;   --Z value when geometry'z is not used
   v_point geometry;  --Point to insert
-  v_point_intersected pgr_create_top_points_type; -- row del punto que tuvo interseccion con el actual
+  --representative_point_layer------------------------------------------------------------------------
+  v_r_id integer;
+  v_r_geom geometry;
+  v_r_r integer;
+
+  ----------------------------------------------------------------------------------------------------
   v_r INTEGER;        --representante del actual punto, es un id.
   v_n_points INTEGER; --cantidad de puntos en la geometria que se esta analizando
   v_point_pos INTEGER; --posicion del punto en su geom, 1-inicio 2-fin, 3-medio
@@ -316,7 +313,7 @@ BEGIN
 
           v_point = st_pointn(v_current_line_layer_the_geom,v_i );
           v_point = pgr_create_topo_set_point(v_zconn, v_point, v_z_value,v_point_dims);
-          select into v_point_intersected *
+          select geom, r, id into v_r_geom, v_r_r, v_r_id
           from pgr_create_top_graph_ptos as g
           WHERE st_dwithin(v_point,g.geom,p_tolerance) and --to use index
             st_3ddwithin(v_point, g.geom, p_tolerance) and g = v_group and dims = v_point_dims --a point with 3d never can be represent by a point in 2d and viceversa
@@ -326,15 +323,15 @@ BEGIN
           --if some point intersects with an intermediate point both of them must have same r
           --the set of point that intersects must have same r
           v_r := NULL;
-          if v_point_intersected.geom is not null and v_point_intersected.r is not NULL then
-            v_r :=v_point_intersected.r;
-          ELSEIF v_point_pos != 3 or (v_point_intersected.geom is not null) THEN
+          if v_r_geom is not null and v_r_r is not NULL then
+            v_r :=v_r_r;
+          ELSEIF v_point_pos != 3 or (v_r_geom is not null) THEN
             --create a new representant.
             v_r := v_r_point_id;
-            IF v_point_intersected.r is NULL THEN
+            IF v_r_r is NULL THEN
               UPDATE pgr_create_top_graph_ptos set r = v_r
-              where id = v_point_intersected.id --use index
-                and st_astext(geom) = st_astext(v_point_intersected.geom);
+              where id = v_r_id --use index
+                and st_astext(geom) = st_astext(v_r_geom);
             END IF;
             EXECUTE 'insert into '|| v_r_table_name ||
                     ' values($1,null,null, $2)' using v_r, v_point;
@@ -375,7 +372,7 @@ BEGIN
 
           for v_current_line_layer_id, v_current_line_layer_the_geom in
             EXECUTE p_layers->v_lineal_layer->>'sql' LOOP
-              
+
             v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom,p_tolerance, FALSE );
             if(v_current_line_layer_the_geom is NULL ) THEN --I havent done anything with this line, it wasnt processed because of topological errors.
               continue;
@@ -406,32 +403,32 @@ BEGIN
           v_first := FALSE;
         END IF;
         --There may exists multiple points that intersects in the same group, all with equal r, some with same r and the other with null, or all with r = null
-        SELECT into v_point_intersected *
+        SELECT geom, r into v_r_geom, v_r_r 
         from pgr_create_top_graph_ptos as g
         where st_dwithin(g.geom, v_point, p_tolerance) and --to use index
           st_3ddwithin(g.geom, v_point, p_tolerance) and
           (v_p_groups @> (g.g || ARRAY []::int[])) and dims = v_geom_dims
         ORDER BY r NULLS LAST --Because I order by r with nulls last the first value must be an assigned one if there is one
         limit 1;
-        if v_point_intersected.geom is NULL then
+        if v_r_geom is NULL then
           return next (v_point_type.id, v_keyvalue.key,'El punto no intersecta a ningun otro punto del grafo')::pgr_create_top_error_report;
           CONTINUE ;
         END IF;
 
-        EXECUTE 'select layname from ' || v_r_table_name|| ' where id=$1'into v_lineal_layer using v_point_intersected.r;
+        EXECUTE 'select layname from ' || v_r_table_name|| ' where id=$1'into v_lineal_layer using v_r_r;
 
         if v_lineal_layer is not null THEN
           return next (v_point_type.id, v_keyvalue.key,'El punto se intersecta con otro punto de otra capa puntual en el mismo grupo, no se sabe por cual de los 2 hacer la union.')::pgr_create_top_error_report;
           CONTINUE;
         END IF;
 
-        if v_point_intersected.r is NULL THEN
+        if v_r_r is NULL THEN
           EXECUTE 'insert into '||v_r_table_name||' values($1,$2,$3,$4) '
             using v_r_point_id, v_keyvalue.key, v_point_type.id, v_point;
           v_r := v_r_point_id;
           v_r_point_id := v_r_point_id+1;
         else
-          v_r = v_point_intersected.r;
+          v_r = v_r_r;
           EXECUTE 'update '||v_r_table_name|| ' set layname=$1, id_geom=$2 where id=$3' using v_keyvalue.key,v_point_type.id,v_r;
         END IF;
 
