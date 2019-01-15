@@ -44,7 +44,7 @@ insert into test_table_p1 values('SRID=4326;point(15 8 50)',11);
 
 
 prepare createTopology_1 as
-  SELECT count(*) from  pgr_createtopology_layers('{
+  SELECT count(*) from  pgr_createtopology_multimodal('{
   "1": [
     "linealLayer-1"
   ]
