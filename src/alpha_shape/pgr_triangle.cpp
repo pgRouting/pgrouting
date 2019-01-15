@@ -40,12 +40,14 @@ Pgr_triangle::Pgr_triangle(
 
 bool
 Pgr_triangle::has_point(const Bpoint &p) const {
-    return true;
+    return boost::geometry::equals(p, m_p1)
+       || boost::geometry::equals(p, m_p2)
+       || boost::geometry::equals(p, m_p3);
 }
 
 bool
 Pgr_triangle::has_edge(const Bpoint &p1, const Bpoint &p2) const {
-    return true;
+    return has_point(p1) && has_point(p2);
 }
 
 }  // namespace alphashape
