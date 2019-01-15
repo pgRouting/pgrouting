@@ -4,13 +4,6 @@ CREATE type pgr_create_top_error_report as(
   layname text, --nombre de la capa al q pertenece
   error text
   );
-drop type IF EXISTS pgr_create_top_buildings_lines CASCADE;
-create type pgr_create_top_buildings_lines as (
-  geom geometry,
-  source INT,
-  target INT,
-  id INTEGER
-  );
 CREATE OR REPLACE FUNCTION "pgr_polyfill_json_object_set_path"(
   "jsonb"          jsonb,
   "key_path"      TEXT[],
@@ -202,7 +195,10 @@ DECLARE
   v_source INTEGER;
   v_target INTEGER;
   v_pos INTEGER;
-  v_line_intersected pgr_create_top_buildings_lines;
+  --current line intersecting by intermediate point---------------------------------------------------
+  v_intersected_geom geometry;
+  v_intersected_id  integer;
+  ----------------------------------------------------------------------------------------------------
   v_points_make_line geometry[];
   v_line_point geometry;
   v_first BOOLEAN;
@@ -489,17 +485,17 @@ BEGIN
         LOOP
 
         if (v_zconn = 2 and v_geom_dims = 3)  THEN
-          EXECUTE 'SELECT  geom,source,target,id from '||v_lines_table_name ||
+          EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
                   ' where id_geom = $1 and layname = $2 and pgr_create_topo_check_intersect("geom",$3,$4)'
-            into v_line_intersected using v_current_line_layer_id, v_keyvalue.key,st_buffer(v_point, p_tolerance),p_tolerance;
+            into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key,st_buffer(v_point, p_tolerance),p_tolerance;
         ELSE
-          EXECUTE 'SELECT  geom,source,target,id from '||v_lines_table_name ||
+          EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
                   ' where id_geom = $1 and layname = $2 and st_3ddwithin(geom, $3,$4)'
-            into v_line_intersected using v_current_line_layer_id, v_keyvalue.key,v_point, p_tolerance  ;
+            into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key,v_point, p_tolerance  ;
         END IF;
         v_points_make_line := '{}';
         --This always has to execute because if there is a representative point, there is a line that contains it
-        FOR v_line_point in SELECT geom from st_dumppoints(v_line_intersected.geom) ORDER BY path LOOP
+        FOR v_line_point in SELECT geom from st_dumppoints(v_intersected_geom) ORDER BY path LOOP
           --As each point is an intermediate point it is going to have the same dimension as the line that contains it
           if v_zconn = 2 and v_geom_dims = 3 THEN
             v_line_point := pgr_create_topo_set_point(2,v_line_point,0,0);
@@ -516,9 +512,9 @@ BEGIN
 
         --this will never insert garbage because of if there is an intermediate point that has a representative point
         --there is a line who contains it and therefore it will be chopped just over that point in this iteration, so the
-        --final line is going to have that point as the first point and the last point from v_line_intersected's last point
+        --final line is going to have that point as the first point and the last point from v_intersected's last point
         EXECUTE 'insert into '||v_lines_table_name ||' values($1,$2,$3,$4,$5)' USING st_makeline(v_points_make_line), v_r, v_target,v_current_line_layer_id,v_keyvalue.key;
-        EXECUTE 'DELETE From '||v_lines_table_name ||' where id = $1' USING v_line_intersected.id;
+        EXECUTE 'DELETE From '||v_lines_table_name ||' where id = $1' USING v_intersected_id;
 
       END LOOP;
     END LOOP;
