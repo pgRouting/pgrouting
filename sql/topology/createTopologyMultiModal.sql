@@ -68,7 +68,7 @@ create or REPLACE FUNCTION pgr_polyfill_jsonb_set(p_jsonb jsonb, p_path text[], 
   returns jsonb as
   $$
     BEGIN
-      if pg_version_num() < 90500 then
+      if current_setting('server_version_num')::integer < 90500 then
         return pgr_polyfill_json_object_set_path(p_jsonb, p_path, p_value);
       else
         return jsonb_set(p_jsonb, p_path, p_value);
