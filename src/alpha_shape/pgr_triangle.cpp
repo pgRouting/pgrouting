@@ -39,12 +39,12 @@ Pgr_triangle::Pgr_triangle(
 }
 
 bool
-Pgr_triangle::has_point(const Bpoint &p) {
+Pgr_triangle::has_point(const Bpoint &p) const {
     return true;
 }
 
 bool
-Pgr_triangle::has_edge(const Bpoint &p1, const Bpoint &p2) {
+Pgr_triangle::has_edge(const Bpoint &p1, const Bpoint &p2) const {
     return true;
 }
 
