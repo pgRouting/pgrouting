@@ -1,10 +1,6 @@
 #VERSION pgrouting 3.0.0
 #TYPES
-pgr_create_top_buildings_lines
 pgr_create_top_error_report
-pgr_create_top_line_layers_type
-pgr_create_top_points_layers_type
-pgr_create_top_points_type
 #FUNCTIONS
 pgr_alphashape(text,double precision)
 pgr_analyzegraph(text,double precision,text,text,text,text,text)
