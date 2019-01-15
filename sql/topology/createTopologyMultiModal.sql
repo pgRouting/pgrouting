@@ -175,13 +175,15 @@ $$
 DECLARE
   v_lineal_group_record record;
   v_lineal_layer text;  --Layer being analized
-  --current line layer--------------------------------------------------------------------------
+  --current line layer--------------------------------------------------------------------------------
   v_current_line_layer_id integer; --identifier of current line from line_layer
   v_current_line_layer_the_geom geometry ; --geom of current line from line_layer
   v_current_line_layer_z_start float ; --z_start of current line from line_layer
   v_current_line_layer_z_end float; --z_end of current line from line_layer
-  ------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------
+  --current point layer-------------------------------------------------------------------------------
   v_point_type pgr_create_top_points_layers_type; --Data type returned by sql from point layers
+
   v_pconn integer;   --Layer's connectivity politicy
   v_zconn INTEGER;   --Z connectivity
   v_z_value FLOAT;   --Z value when geometry'z is not used
