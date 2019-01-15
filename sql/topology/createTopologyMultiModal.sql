@@ -1,9 +1,3 @@
-drop type IF EXISTS pgr_create_top_error_report CASCADE;
-CREATE type pgr_create_top_error_report as(
-  id INTEGER, --identificador de la geometria
-  layname text, --nombre de la capa al q pertenece
-  error text
-  );
 CREATE OR REPLACE FUNCTION "pgr_polyfill_json_object_set_path"(
   "jsonb"          jsonb,
   "key_path"      TEXT[],
@@ -156,8 +150,9 @@ $$ LANGUAGE plpgsql;
 
 
 create or REPLACE function pgr_createtopology_layers (p_lineal_groups jsonb, p_puntual_groups jsonb, p_layers jsonb,
-                                                                        p_graph_lines_table text, p_graph_lines_schema text, p_tolerance FLOAT)
-  returns setof pgr_create_top_error_report AS
+                                                                        p_graph_lines_table text, p_graph_lines_schema text, p_tolerance FLOAT,
+                                                                        out ip_out_d integer, out p_out_layname text, out p_out_error text)
+  returns setof record AS
 $$
 DECLARE
   v_lineal_group_record record;
@@ -274,7 +269,7 @@ BEGIN
         --This is needed in order to drop duplicates points in a linestring or multilinestring.
         v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom,p_tolerance, FALSE );
         if(v_current_line_layer_the_geom is NULL ) THEN
-          return next (v_current_line_layer_id,v_lineal_layer,'Invalid MultiLinestring. A valid multilinestring is the one conformed by lines connected like they were a single line chopped. Geom wasnt used.' )::pgr_create_top_error_report;
+          return query select v_current_line_layer_id, v_lineal_layer ,'Invalid MultiLinestring. A valid multilinestring is the one conformed by lines connected like they were a single line chopped. Geom wasnt used.';
           continue;
         END IF;
 
@@ -406,14 +401,14 @@ BEGIN
         ORDER BY r NULLS LAST --Because I order by r with nulls last the first value must be an assigned one if there is one
         limit 1;
         if v_r_geom is NULL then
-          return next (v_point_id, v_keyvalue.key,'El punto no intersecta a ningun otro punto del grafo')::pgr_create_top_error_report;
+          return query select  v_point_id, v_keyvalue.key ,'El punto no intersecta a ningun otro punto del grafo';
           CONTINUE ;
         END IF;
 
         EXECUTE 'select layname from ' || v_r_table_name|| ' where id=$1'into v_lineal_layer using v_r_r;
 
         if v_lineal_layer is not null THEN
-          return next (v_point_id, v_keyvalue.key,'El punto se intersecta con otro punto de otra capa puntual en el mismo grupo, no se sabe por cual de los 2 hacer la union.')::pgr_create_top_error_report;
+          return query select v_point_id, v_keyvalue.key ,'El punto se intersecta con otro punto de otra capa puntual en el mismo grupo, no se sabe por cual de los 2 hacer la union.';
           CONTINUE;
         END IF;
 
