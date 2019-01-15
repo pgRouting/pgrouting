@@ -29,11 +29,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_VRP_NODE_H_
 #pragma once
 
-#include <string>
 #include <iosfwd>
+#include "cpp_common/bpoint.hpp"
 #include "vrp/base_node.h"
-#include "cpp_common/xy_vertex.h"
-#include "vrp/pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -68,7 +66,7 @@ class Node : public Base_node {
      void print(std::ostream& os) const;
 
  private:
-     pgrouting::Point m_point;
+     Bpoint m_point;
 };
 
 }  // namespace vrp

@@ -28,8 +28,7 @@
 #define INCLUDE_CPP_COMMON_XY_VERTEX_H_
 #pragma once
 
-#include <boost/geometry.hpp>
-#include <boost/geometry/geometries/point_xy.hpp>
+#include "cpp_common/bpoint.hpp"
 
 #include <vector>
 
@@ -37,8 +36,6 @@
 
 
 namespace pgrouting {
-
-typedef boost::geometry::model::d2::point_xy<double> Point;
 
 class XY_vertex {
  public:
@@ -50,7 +47,7 @@ class XY_vertex {
 
   XY_vertex(const Pgr_edge_xy_t &other, bool is_source) :
       id(is_source? other.source : other.target),
-      point(is_source? Point(other.x1, other.y1) : Point(other.x2, other.y2))
+      point(is_source? Bpoint(other.x1, other.y1) : Bpoint(other.x2, other.y2))
       {}
 
 
@@ -67,7 +64,7 @@ class XY_vertex {
 
  public:
   int64_t id;
-  Point point;
+  Bpoint point;
 };
 
 size_t
