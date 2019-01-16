@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: delauny_input.h
+FILE: alphaShape_driver.h
 
-Copyright (c) 2018 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Copyright (c) 2018 Vicky Vergara
+Mail: project@pgrouting.org
 
 ------
 
@@ -21,24 +21,46 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#ifndef INCLUDE_C_COMMON_DELAUNY_INPUT_H_
-#define INCLUDE_C_COMMON_DELAUNY_INPUT_H_
+
+#ifndef INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHASHAPE_DRIVER_H_
+#define INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHASHAPE_DRIVER_H_
 #pragma once
 
-/* for size-t */
+/* for syze_t */
 #include <stddef.h>
-
+#include "c_types/pgr_point_t.h"
 #include "c_types/delauny_t.h"
 
-/*!
-  bigint tid,
-  bigint pid,
-  float x,
-  float y,
-  */
-void pgr_get_delauny(
-        char *sql,
-        Delauny_t **delauny,
-        size_t *total_delauny);
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#endif  // INCLUDE_C_COMMON_DELAUNY_INPUT_H_
+    char * delauny_query(
+            char * points_query);
+
+    size_t points_size(
+            Pgr_point_t *vertices,
+            const size_t count);
+
+    int do_alphaShape(
+            Pgr_point_t *vertices,
+            size_t count,
+            Delauny_t *delaunyArr,
+            size_t delaunyTotal,
+
+
+            double alpha,
+
+            Pgr_point_t **res,
+            size_t *res_count,
+            char **log_msg,
+            char **notice_msg,
+
+            char **err_msg);
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif  // INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHASHAPE_DRIVER_H_
