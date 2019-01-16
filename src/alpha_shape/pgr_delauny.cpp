@@ -33,12 +33,24 @@ namespace pgrouting {
 namespace alphashape {
 
 Pgr_delauny::Pgr_delauny(
-             std::vector<Bpoint> points,
-             std::vector<Delauny_t> triangles) {
+             const std::vector<Bpoint> &p_points,
+             const std::vector<Delauny_t> &p_delauny) :
+    m_points(p_points),
+    m_delauny(p_delauny) {
+       for (size_t i = 0; i < m_points.size(); ++i) {
+           m_relation.insert(std::pair<size_t, std::vector<Pgr_triangle*> >(i, std::vector<Pgr_triangle*>()));
+       }
+
+       for (size_t i = 0; i < m_delauny.size(); i = i + 3) {
+           Bpoint p1(m_delauny[i].x, m_delauny[i].y);
+           //which is the point id?
+       }
 }
 
 void
 Pgr_delauny::clear() {
+    m_relation.clear();
+    m_triangles.clear();
     m_points.clear();
 }
 

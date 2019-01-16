@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct matrix_cell {
+typedef struct {
     int64_t tid;
     int64_t pid;
     double x;

@@ -44,13 +44,16 @@ class Pgr_delauny {
  public:
      Pgr_delauny() = default;
      Pgr_delauny(
-             std::vector<Bpoint> points,
-             std::vector<Delauny_t> triangles);
+             const std::vector<Bpoint> &points,
+             const std::vector<Delauny_t> &triangles);
 
      void clear();
 
  private:
-     std::map<Bpoint, std::vector<Pgr_triangle>> m_points;
+     std::vector<Bpoint> m_points;
+     std::vector<Delauny_t> m_delauny;
+     std::vector<Pgr_triangle> m_triangles;
+     std::map<size_t, std::vector<Pgr_triangle*> > m_relation;
 };
 
 
