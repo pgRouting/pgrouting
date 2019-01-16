@@ -17,6 +17,8 @@ ADD_LIBRARY(common OBJECT
 
     coordinates_input.c
     arrays_input.c
+    delauny_input.c
+
     check_parameters.c
 
     time_msg.c
