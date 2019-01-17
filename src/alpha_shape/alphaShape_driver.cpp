@@ -202,7 +202,7 @@ do_alphaShape(
                 " less than 3 points remain!!."
                 " Alpha shape calculation needs at least 3 vertices.";
                 *err_msg = pgr_msg(err.str().c_str());
-                return -1;
+                return;
             }
         log << "points: ";
         i = 0;
@@ -230,7 +230,7 @@ do_alphaShape(
         if (segments.empty()) {
             *return_tuples = nullptr;
             *res_count = 0;
-            return EXIT_SUCCESS;
+            return;
         }
 
         auto the_rings = extract_rings(segments);

@@ -4,6 +4,7 @@ ADD_LIBRARY(alpha_shape OBJECT
 
     pgr_triangle.cpp
     pgr_delauny.cpp
+    pgr_alphaShape.cpp
 
     alphaShape_driver.cpp
  )

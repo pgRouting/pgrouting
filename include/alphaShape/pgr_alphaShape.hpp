@@ -1,8 +1,11 @@
 /*PGR-GNU*****************************************************************
-FILE: alphaShape_driver.h
+file: pgr_alphaShape.hpp
 
-Copyright (c) 2018 Vicky Vergara
+Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org
+
+Copyright (c) 2018 Celia Virginia Vergara Castillo
+vicky_vergara@hotmail.com
 
 ------
 
@@ -22,45 +25,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHASHAPE_DRIVER_H_
-#define INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHASHAPE_DRIVER_H_
+#ifndef INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_HPP_
+#define INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_HPP_
 #pragma once
 
-/* for syze_t */
-#include <stddef.h>
-#include "c_types/pgr_point_t.h"
-#include "c_types/delauny_t.h"
+#include "alphaShape/pgr_delauny.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+namespace pgrouting {
+namespace alphashape {
 
-    char * delauny_query(
-            char * points_query);
+class Pgr_alphaShape {
+ public:
+     Pgr_alphaShape() = default;
 
-    size_t points_size(
-            Pgr_point_t *vertices,
-            const size_t count);
+     void clear();
 
-    void do_alphaShape(
-            Pgr_point_t *vertices,
-            size_t count,
-            Delauny_t *delaunyArr,
-            size_t delaunyTotal,
+ private:
+     /*! @name members
+     @{ */
+     Pgr_delauny m_info;
+     /*!@}*/
+};
 
-
-            double alpha,
-
-            Pgr_point_t **res,
-            size_t *res_count,
-            char **log_msg,
-            char **notice_msg,
-
-            char **err_msg);
-
-#ifdef __cplusplus
-}
-#endif
+}  // namespace alphashape
+}  // namespace pgrouting
 
 
-#endif  // INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHASHAPE_DRIVER_H_
+#endif  // INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_HPP_
