@@ -8,6 +8,6 @@ create table layers_info(
 create table layer (
   id integer,
   geom geometry,
-  z_start integer, --used if z is 1 from layers_info
+  z_start integer,
   z_end integer
 );

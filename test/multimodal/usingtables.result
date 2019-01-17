@@ -1,3 +1,20 @@
- 'tests' => [qw(
-      usingtables
-            )],
+ BEGIN;
+ BEGIN
+ SET client_min_messages TO NOTICE;
+ SET
+ create table layers_info(
+   layer_name text,
+   layer_from_query text,
+   conn_policy integer,
+   z integer
+ );
+ CREATE TABLE
+ create table layer (
+   id integer,
+   geom geometry,
+   z_start integer,
+   z_end integer
+ );
+ CREATE TABLE
+ ROLLBACK;
+ ROLLBACK
