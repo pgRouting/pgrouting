@@ -49,6 +49,8 @@ class Pgr_delauny {
 
      void clear();
 
+     friend std::ostream& operator<<(std::ostream&, const Pgr_delauny&);
+
  private:
      std::vector<Bpoint> m_points;
      std::vector<Delauny_t> m_delauny;

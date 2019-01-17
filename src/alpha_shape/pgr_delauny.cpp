@@ -54,5 +54,24 @@ Pgr_delauny::clear() {
     m_points.clear();
 }
 
+std::ostream&
+operator<<(std::ostream& os, const Pgr_delauny &d) {
+    for (const auto p : d.m_points) {
+        os << boost::geometry::wkt(p);
+    };
+
+    for (const auto t : d.m_triangles) {
+        os << t;
+    }
+
+    for (const auto d : d.m_relation) {
+        os << d.first;
+        for (const auto e : d.second) {
+            os << e;
+        }
+    }
+    return os;
+}
+
 }  // namespace alphashape
 }  // namespace pgrouting

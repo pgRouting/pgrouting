@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "alphaShape/pgr_triangle.hpp"
+#include <sstream>
 
 namespace pgrouting {
 namespace alphashape {
@@ -47,6 +48,12 @@ Pgr_triangle::has_point(const Bpoint &p) const {
 bool
 Pgr_triangle::has_edge(const Bpoint &p1, const Bpoint &p2) const {
     return has_point(p1) && has_point(p2);
+}
+
+std::ostream&
+operator<<(std::ostream& os, const Pgr_triangle &t) {
+    os << boost::geometry::wkt(t.m_p1) << boost::geometry::wkt(t.m_p2) << boost::geometry::wkt(t.m_p3);
+    return os;
 }
 
 }  // namespace alphashape

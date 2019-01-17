@@ -37,6 +37,9 @@ namespace alphashape {
 class Pgr_alphaShape {
  public:
      Pgr_alphaShape() = default;
+     Pgr_alphaShape(
+             std::vector<Bpoint>,
+             std::vector<Delauny_t>);
 
      void clear();
 

@@ -30,12 +30,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "cpp_common/bpoint.hpp"
+#include <iosfwd>
+#include "cpp_common/pgr_messages.h"
 
 namespace pgrouting {
 namespace alphashape {
 
 
-class Pgr_triangle {
+class Pgr_triangle : public Pgr_messages {
  public:
      Pgr_triangle() = default;
      Pgr_triangle(Bpoint p1, Bpoint p2, Bpoint p3);
@@ -43,7 +45,9 @@ class Pgr_triangle {
      bool has_point(const Bpoint &p) const;
      bool has_edge(const Bpoint &p1, const Bpoint &p2) const;
 
- private:
+     friend std::ostream& operator<<(std::ostream&, const Pgr_triangle&);
+
+ protected:
      Bpoint m_p1;
      Bpoint m_p2;
      Bpoint m_p3;

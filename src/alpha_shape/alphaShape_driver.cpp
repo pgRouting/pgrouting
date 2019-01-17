@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 
 #include "cpp_common/bpoint.hpp"
+#include "alphaShape/pgr_alphaShape.hpp"
 
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/Alpha_shape_2.h>
@@ -174,6 +175,7 @@ do_alphaShape(
         pgassert(delaunyTotal > 0);
 
         using Bpoint = pgrouting::Bpoint;
+        using Pgr_alphaShape = pgrouting::alphashape::Pgr_alphaShape;
         std::vector<Point> points;
         std::vector<Bpoint> bpoints;
 
@@ -193,8 +195,6 @@ do_alphaShape(
             log << i++ << ")" << boost::geometry::wkt(p) << "\n";
             pgr_msg(log.str().c_str());
         }
-        *log_msg = pgr_msg(log.str().c_str());
-        return;
 
         log << "points: ";
         i = 0;
@@ -202,6 +202,10 @@ do_alphaShape(
             log << i++ << ")" << p << "\n";
         }
 
+        Pgr_alphaShape(bpoints, delauny);
+
+        *log_msg = pgr_msg(log.str().c_str());
+        return;
         Alpha_shape_2 A(points.begin(), points.end(),
                 static_cast<double>(10000),
                 Alpha_shape_2::REGULARIZED);
