@@ -43,6 +43,9 @@ class Pgr_alphaShape {
 
      void clear();
 
+     friend std::ostream& operator<<(std::ostream&, const Pgr_alphaShape&);
+
+
  private:
      /*! @name members
      @{ */

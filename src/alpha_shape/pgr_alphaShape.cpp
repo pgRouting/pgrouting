@@ -41,6 +41,12 @@ Pgr_alphaShape::Pgr_alphaShape(
     m_info(p_points, p_delauny) {
 }
 
+std::ostream&
+operator<<(std::ostream& os, const Pgr_alphaShape &a) {
+    os << a.m_info;
+    return os;
+}
+
 
 }  // namespace alphashape
 }  // namespace pgrouting

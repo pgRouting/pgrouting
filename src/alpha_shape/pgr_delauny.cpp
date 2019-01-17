@@ -56,18 +56,21 @@ Pgr_delauny::clear() {
 
 std::ostream&
 operator<<(std::ostream& os, const Pgr_delauny &d) {
+    os << "Points\n";
     for (const auto p : d.m_points) {
-        os << boost::geometry::wkt(p);
+        os << boost::geometry::wkt(p) << ", ";
     };
 
+    os << "\nDelauny triangles\n";
     for (const auto t : d.m_triangles) {
-        os << t;
+        os << t << ",";
     }
 
+    os << "\nrelation\n";
     for (const auto d : d.m_relation) {
-        os << d.first;
+        os << "\n" << d.first << ": ";
         for (const auto e : d.second) {
-            os << e;
+            os << e << ",";
         }
     }
     return os;

@@ -62,13 +62,15 @@ delauny_query(
         std::ostringstream delauny_sql;
 
         delauny_sql << "WITH "
-            << "vertices AS (" << points_query << "), "
-            << "the_geom AS (SELECT ST_makePoint(x, y) AS geom FROM vertices), "
-            << "the_points AS (SELECT a.path[1] AS tid, (ST_DumpPoints(a.geom)).* "
-            << "FROM (SELECT (ST_Dump(ST_DelaunayTriangles(ST_union(geom), 0 , 0))).* "
-            << "FROM the_geom) AS a) "
-            << "SELECT tid, path[2] AS pid, ST_X(geom) AS x, ST_y(geom) AS y "
-            << "FROM the_points WHERE path[2] != 4 ";
+            << "\nvertices AS (SELECT row_number() over() AS pid, x, y FROM (" << points_query << ") AS a), "
+            << "\nthe_geom AS (SELECT pid, ST_makePoint(x, y) AS geom FROM vertices), "
+            << "\nthe_points AS (SELECT a.path[1] AS tid, (ST_DumpPoints(a.geom)).* "
+            << "\n   FROM (SELECT (ST_Dump(ST_DelaunayTriangles(ST_union(geom), 0 , 0))).* "
+            << "\n         FROM the_geom) AS a) "
+            << "\nSELECT tid, pid, ST_X(geom) AS x, ST_y(geom) AS y "
+            << "\nFROM the_points"
+            << "\nJOIN the_geom USING (geom)"
+            << "\nWHERE path[2] != 4 ";
 
             return pgr_msg(delauny_sql.str().c_str());
     } catch (...) {
@@ -202,7 +204,9 @@ do_alphaShape(
             log << i++ << ")" << p << "\n";
         }
 
-        Pgr_alphaShape(bpoints, delauny);
+        Pgr_alphaShape alphaShape(bpoints, delauny);
+
+        log << alphaShape;
 
         *log_msg = pgr_msg(log.str().c_str());
         return;
