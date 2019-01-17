@@ -60,9 +60,11 @@ static void process(
     pointsTotal = points_size(pointsArr, pointsTotal);
     PGR_DBG("%ld", pointsTotal);
 
+#if 0
     for (size_t i = 0; i < pointsTotal; ++i) {
         PGR_DBG("x %.10f y %.10f", pointsArr[i].x, pointsArr[i].y);
     }
+#endif
 
     PGR_DBG("totalpoints2: %ld", pointsTotal);
 
@@ -82,17 +84,17 @@ static void process(
 
     Delauny_t *delaunyArr = NULL;
     size_t delaunyTotal = 0;
-    PGR_DBG("HERE1");
     pgr_get_delauny(delauny_sql, &delaunyArr, &delaunyTotal);
-    PGR_DBG("HERE2");
 
-    PGR_DBG("%ld", delaunyTotal);
+    PGR_DBG("delauny total %ld", delaunyTotal);
 
+#if 0
     for (size_t i = 0; i < delaunyTotal; ++i) {
         PGR_DBG("tid %ld pid %ld x %.10f y %.10f", delaunyArr[i].tid, delaunyArr[i].pid, delaunyArr[i].x, delaunyArr[i].y);
     }
+#endif
 
-    PGR_DBG("Calling CGAL alpha-shape\n");
+    PGR_DBG("Calling alpha-shape driver\n");
 
     char *err_msg = NULL;
     char* log_msg = NULL;

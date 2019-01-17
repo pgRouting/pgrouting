@@ -1,5 +1,8 @@
 
 SET(LOCAL_FILES
+    _alphaShape1.sql
+    alphaShape1.sql
+
     alphaShape.sql
     pointsAsPolygon.sql
     )

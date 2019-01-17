@@ -32,6 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
 
+#include "cpp_common/bpoint.hpp"
+
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/Alpha_shape_2.h>
 #include <CGAL/Alpha_shape_vertex_base_2.h>
@@ -151,8 +153,8 @@ extract_rings(std::vector<Segment> segments) {
 
 void
 do_alphaShape(
-        Pgr_point_t *vertices,
-        size_t count,
+        Pgr_point_t *pointsArr,
+        size_t pointsTotal,
         Delauny_t *delaunyArr,
         size_t delaunyTotal,
         double alpha,
@@ -166,16 +168,19 @@ do_alphaShape(
     std::ostringstream err;
     std::ostringstream notice;
     try {
-        pgassert(vertices);
-        pgassert(count);
+        pgassert(pointsArr);
+        pgassert(pointsTotal > 2);
         pgassert(delaunyArr);
-        pgassert(delaunyTotal);
+        pgassert(delaunyTotal > 0);
 
+        using Bpoint = pgrouting::Bpoint;
         std::vector<Point> points;
+        std::vector<Bpoint> bpoints;
 
-        for (std::size_t j = 0; j < count; ++j) {
-            Point p(vertices[j].x, vertices[j].y);
+        for (std::size_t j = 0; j < pointsTotal; ++j) {
+            Point p(pointsArr[j].x, pointsArr[j].y);
             points.push_back(p);
+            bpoints.push_back(Bpoint(pointsArr[j].x, pointsArr[j].y));
         }
 
         std::vector<Delauny_t> delauny(delaunyArr, delaunyArr + delaunyTotal);
@@ -184,26 +189,13 @@ do_alphaShape(
         }
 
         size_t i(0);
-        for (const auto p : points) {
-            log << i++ << ")" << p << "\n";
+        for (const auto p : bpoints) {
+            log << i++ << ")" << boost::geometry::wkt(p) << "\n";
+            pgr_msg(log.str().c_str());
         }
+        *log_msg = pgr_msg(log.str().c_str());
+        return;
 
-        std::sort(points.begin(), points.end(),
-                [](const Point &e1, const Point &e2)->bool {
-                    return e2.y() < e1.y();
-                });
-        std::stable_sort(points.begin(), points.end(),
-                [](const Point &e1, const Point &e2)->bool {
-                    return e2.x() < e1.x();
-                });
-        points.erase(std::unique(points.begin(), points.end()), points.end());
-        if (points.size() != count &&  points.size() < 3) {
-            err << "After eliminating duplicated points,"
-                " less than 3 points remain!!."
-                " Alpha shape calculation needs at least 3 vertices.";
-                *err_msg = pgr_msg(err.str().c_str());
-                return;
-            }
         log << "points: ";
         i = 0;
         for (const auto p : points) {
