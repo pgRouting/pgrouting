@@ -34,13 +34,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/delauny_t.h"
 #include "cpp_common/bpoint.hpp"
+#include "cpp_common/pgr_messages.h"
 #include "alphaShape/pgr_triangle.hpp"
 
 namespace pgrouting {
 namespace alphashape {
 
 
-class Pgr_delauny {
+class Pgr_delauny : public Pgr_messages {
  public:
      Pgr_delauny() = default;
      Pgr_delauny(
@@ -55,7 +56,7 @@ class Pgr_delauny {
      std::vector<Bpoint> m_points;
      std::vector<Delauny_t> m_delauny;
      std::vector<Pgr_triangle> m_triangles;
-     std::map<size_t, std::vector<Pgr_triangle*> > m_relation;
+     std::map<Bpoint, std::vector<size_t> > m_relation;
 };
 
 

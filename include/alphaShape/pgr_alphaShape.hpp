@@ -29,12 +29,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_HPP_
 #pragma once
 
+#include "cpp_common/pgr_messages.h"
 #include "alphaShape/pgr_delauny.hpp"
 
 namespace pgrouting {
 namespace alphashape {
 
-class Pgr_alphaShape {
+class Pgr_alphaShape : public Pgr_messages {
  public:
      Pgr_alphaShape() = default;
      Pgr_alphaShape(
@@ -43,7 +44,9 @@ class Pgr_alphaShape {
 
      void clear();
 
+#if 1
      friend std::ostream& operator<<(std::ostream&, const Pgr_alphaShape&);
+#endif
 
 
  private:

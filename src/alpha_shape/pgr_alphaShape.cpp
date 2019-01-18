@@ -39,6 +39,7 @@ Pgr_alphaShape::Pgr_alphaShape(
         std::vector<Bpoint> p_points,
         std::vector<Delauny_t> p_delauny) :
     m_info(p_points, p_delauny) {
+        log << m_info.get_log();
 }
 
 std::ostream&

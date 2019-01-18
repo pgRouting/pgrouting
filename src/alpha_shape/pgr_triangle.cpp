@@ -56,5 +56,10 @@ operator<<(std::ostream& os, const Pgr_triangle &t) {
     return os;
 }
 
+bool
+Pgr_triangle::operator==(const Pgr_triangle &p2) {
+    return has_point(p2.m_p1) && has_point(p2.m_p2) && has_point(p2.m_p3);
+}
+
 }  // namespace alphashape
 }  // namespace pgrouting

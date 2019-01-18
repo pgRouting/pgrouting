@@ -206,7 +206,11 @@ do_alphaShape(
 
         Pgr_alphaShape alphaShape(bpoints, delauny);
 
+        log << "LOG STARTS **********\n";
+        log << alphaShape.get_log();
+        log << "LOG ENDS **********\n";
         log << alphaShape;
+        log << "LOG ENDS **********\n";
 
         *log_msg = pgr_msg(log.str().c_str());
         return;

@@ -31,10 +31,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/point_xy.hpp>
 
+// TODO(vicky) mogidying this file should not affect:
+// dijkstra_driver.cpp
+// dijkstraVia_driver.cpp
+// floydWarshall_driver
+// etc...
 namespace pgrouting {
 
 typedef boost::geometry::model::d2::point_xy<double> Bpoint;
 
+#if 0
+bool operator<(const Bpoint &p1, const Bpoint &p2);
+
+struct CmpMyType
+{
+    bool operator<(const Bpoint &p1);
+};
+
+#endif
 }  // namespace pgrouting
 
 #endif  // INCLUDE_CPP_COMMON_BPOINT_HPP_
