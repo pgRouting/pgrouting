@@ -53,14 +53,6 @@ cleanup_data(std::vector<Delauny_t> &delauny) {
                 }), delauny.end());
 }
 
-size_t
-point_idx(const std::vector<Bpoint> &points, Bpoint p1) {
-    return std::find_if(points.begin(), points.end(),
-            [&p1](const Bpoint &p)->bool {
-                return boost::geometry::equals(p, p1);
-            })  - points.begin();
-}
-
 }  // namespace detail
 
 Pgr_delauny::Pgr_delauny(
@@ -98,17 +90,24 @@ Pgr_delauny::Pgr_delauny(
         /*
          * creating the triangles
          */
-        for (size_t i = 0; i < m_delauny.size(); i = i + 3) {
-            auto p1 = m_points[m_delauny[i].pid];
-            auto p2 = m_points[m_delauny[i + 1].pid];
-            auto p3 = m_points[m_delauny[i + 2].pid];
-            auto tid = m_triangles.size();
-            m_triangles.push_back(Pgr_triangle(p1, p2, p3));
+        size_t i(0);
+        std::vector<size_t> triangle_points(3);
+        for (auto d : m_delauny) {
+            triangle_points[i] = d.pid;
+            if (i == 2) {
+                auto tid = m_triangles.size();
+                m_triangles.push_back(Pgr_triangle(
+                            m_points[triangle_points[0]],
+                            m_points[triangle_points[1]],
+                            m_points[triangle_points[2]]));
 
-            m_relation[detail::point_idx(m_points, p1)].push_back(tid);
-            m_relation[detail::point_idx(m_points, p2)].push_back(tid);
-            m_relation[detail::point_idx(m_points, p3)].push_back(tid);
+                for (auto p : triangle_points) {
+                    m_relation[p].push_back(tid);
+                }
+            }
+            i = i == 2? 0 : i + 1;
         }
+
         log << *this;
 }
 
