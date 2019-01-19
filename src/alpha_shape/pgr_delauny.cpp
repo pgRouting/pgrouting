@@ -52,6 +52,15 @@ cleanup_data(std::vector<Delauny_t> &delauny) {
                     return e1.tid == e2.tid && e1.pid == e2.pid;
                 }), delauny.end());
 }
+
+size_t
+point_idx(const std::vector<Bpoint> &points, Bpoint p1) {
+    return std::find_if(points.begin(), points.end(),
+            [&p1](const Bpoint &p)->bool {
+                return boost::geometry::equals(p, p1);
+            })  - points.begin();
+}
+
 }  // namespace detail
 
 Pgr_delauny::Pgr_delauny(
@@ -86,14 +95,21 @@ Pgr_delauny::Pgr_delauny(
          */
         detail::cleanup_data(m_delauny);
 
-        for (const auto d : m_delauny) {
-            log << d.tid << ")" << d.pid << "," << d.x << " " << d.y << "\n";
-        }
-
         /*
-         * TODO creating the triangles
+         * creating the triangles
          */
+        for (size_t i = 0; i < m_delauny.size(); i = i + 3) {
+            auto p1 = m_points[m_delauny[i].pid];
+            auto p2 = m_points[m_delauny[i + 1].pid];
+            auto p3 = m_points[m_delauny[i + 2].pid];
+            auto tid = m_triangles.size();
+            m_triangles.push_back(Pgr_triangle(p1, p2, p3));
 
+            m_relation[detail::point_idx(m_points, p1)].push_back(tid);
+            m_relation[detail::point_idx(m_points, p2)].push_back(tid);
+            m_relation[detail::point_idx(m_points, p3)].push_back(tid);
+        }
+        log << *this;
 }
 
 void
@@ -103,7 +119,6 @@ Pgr_delauny::clear() {
     m_points.clear();
 }
 
-#if 1
 std::ostream&
 operator<<(std::ostream& os, const Pgr_delauny &d) {
     os << "Points\n";
@@ -113,19 +128,18 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
 
     os << "\nDelauny triangles\n";
     for (const auto t : d.m_triangles) {
-        os << t << ",";
+        os << t << ",\n";
     }
 
     os << "\nrelation\n";
-    for (const auto d : d.m_relation) {
-        os << "\n" << boost::geometry::wkt(d.first) << ": ";
-        for (const auto e : d.second) {
-            os << e << ",";
+    for (const auto r : d.m_relation) {
+        os << "\n" << r.first << "->" << boost::geometry::wkt(d.m_points[r.first]) << ": ";
+        for (const auto e : r.second) {
+            os << "\n   " << e << "->" << d.m_triangles[e];
         }
     }
     return os;
 }
-#endif
 
 }  // namespace alphashape
 }  // namespace pgrouting

@@ -56,7 +56,7 @@ class Pgr_delauny : public Pgr_messages {
      std::vector<Bpoint> m_points;
      std::vector<Delauny_t> m_delauny;
      std::vector<Pgr_triangle> m_triangles;
-     std::map<Bpoint, std::vector<size_t> > m_relation;
+     std::map<size_t, std::vector<size_t> > m_relation;
 };
 
 
