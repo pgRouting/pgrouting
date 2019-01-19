@@ -36,6 +36,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace alphashape {
 
+namespace detail {
+void
+cleanup_data(std::vector<Delauny_t> &delauny) {
+        std::sort(delauny.begin(), delauny.end(),
+                [](const Delauny_t &e1, const Delauny_t &e2)->bool {
+                    return e1.pid < e2.pid;
+                });
+        std::stable_sort(delauny.begin(), delauny.end(),
+                [](const Delauny_t &e1, const Delauny_t &e2)->bool {
+                    return e1.tid < e2.tid;
+                });
+        delauny.erase(std::unique(delauny.begin(), delauny.end(),
+                [](const Delauny_t &e1, const Delauny_t &e2)->bool {
+                    return e1.tid == e2.tid && e1.pid == e2.pid;
+                }), delauny.end());
+}
+}  // namespace detail
+
 Pgr_delauny::Pgr_delauny(
              const std::vector<Bpoint> &p_points,
              const std::vector<Delauny_t> &p_delauny) :
@@ -63,16 +81,17 @@ Pgr_delauny::Pgr_delauny(
             }
         }
 
+        /*
+         * removing duplicate triangles information
+         */
+        detail::cleanup_data(m_delauny);
+
         for (const auto d : m_delauny) {
             log << d.tid << ")" << d.pid << "," << d.x << " " << d.y << "\n";
         }
 
         /*
-         * TODO removing duplicate triangles information
-         */
-
-        /*
-         * TODO creating the tirangles
+         * TODO creating the triangles
          */
 
 }
