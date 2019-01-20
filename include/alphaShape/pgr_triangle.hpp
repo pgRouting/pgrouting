@@ -41,7 +41,9 @@ namespace alphashape {
 class Pgr_triangle : public Pgr_messages {
  public:
      Pgr_triangle() = default;
+#if 0
      Pgr_triangle(Bpoint p1, Bpoint p2, Bpoint p3);
+#endif
      Pgr_triangle(const std::vector<Bpoint> &p_points);
 
 
@@ -61,10 +63,11 @@ class Pgr_triangle : public Pgr_messages {
      void circle_info();
 
  private:
+#if 0
      Bpoint m_p1;
      Bpoint m_p2;
      Bpoint m_p3;
-
+#endif
      boost::geometry::model::polygon<Bpoint> m_poly;
 
      Bpoint m_center;

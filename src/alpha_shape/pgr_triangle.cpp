@@ -83,23 +83,17 @@ point_within_circle(
 
 }  // namespace detail
 
+#if 0
 Pgr_triangle::Pgr_triangle(
-             Bpoint p1, Bpoint p2, Bpoint p3) :
-    m_p1(p1),
-    m_p2(p2),
-    m_p3(p3) {
+             Bpoint p1, Bpoint p2, Bpoint p3) {
     circle_info();
     m_poly.outer().push_back(p1);
     m_poly.outer().push_back(p2);
     m_poly.outer().push_back(p3);
 }
+#endif
 
-Pgr_triangle::Pgr_triangle(
-             const std::vector<Bpoint> &p_points) :
-    m_p1(p_points[0]),
-    m_p2(p_points[1]),
-    m_p3(p_points[2]) {
-
+Pgr_triangle::Pgr_triangle(const std::vector<Bpoint> &p_points) {
     circle_info();
     m_poly.outer().push_back(p_points[0]);
     m_poly.outer().push_back(p_points[1]);
@@ -108,9 +102,12 @@ Pgr_triangle::Pgr_triangle(
 
 bool
 Pgr_triangle::has_point(const Bpoint &p) const {
+    return boost::geometry::within(p, m_poly);
+#if 0
     return boost::geometry::equals(p, m_p1)
        || boost::geometry::equals(p, m_p2)
        || boost::geometry::equals(p, m_p3);
+#endif
 }
 
 bool
@@ -121,23 +118,26 @@ Pgr_triangle::has_edge(const Bpoint &p1, const Bpoint &p2) const {
 std::ostream&
 operator<<(std::ostream& os, const Pgr_triangle &t) {
     double alpha = 1;
-    os << boost::geometry::wkt(t.m_p1) << boost::geometry::wkt(t.m_p2) << boost::geometry::wkt(t.m_p3);
+    os << boost::geometry::wkt(t.m_poly);
+#if 0
     os << " Center: " << boost::geometry::wkt(t.m_center) << " radius: " << t.m_radius
         << " alpha: " << t.alpha()
         << " invalid points 0.1: " << t.invalid_points(alpha).size();
     for (auto p : t.invalid_points(alpha)) {
         os << boost::geometry::wkt(p) << ", ";
     }
+#endif
     return os;
 }
 
 bool
 Pgr_triangle::operator==(const Pgr_triangle &p2) {
-    return has_point(p2.m_p1) && has_point(p2.m_p2) && has_point(p2.m_p3);
+    return boost::geometry::equals(m_poly, p2.m_poly);
 }
 
 void
 Pgr_triangle::circle_info() {
+#if 0
     Bpoint d1 = m_p1;
     Bpoint d2 = m_p2;
     Bpoint d3 = m_p3;
@@ -155,11 +155,13 @@ Pgr_triangle::circle_info() {
     m_center = Bpoint(s2.x() + m * d2.x(), s2.y() + m * d2.y());
 
     m_radius = boost::geometry::distance(m_center, d1);
+#endif
 }
 
 std::vector<Bpoint>
 Pgr_triangle::invalid_points(double alpha) const {
     std::vector<Bpoint> points;
+#if 0
     if (detail::point_within_circle(m_p1, m_p2, m_p3, alpha)) {
         points.push_back(m_p3);
     }
@@ -169,6 +171,7 @@ Pgr_triangle::invalid_points(double alpha) const {
     if (detail::point_within_circle(m_p2, m_p3, m_p1, alpha)) {
         points.push_back(m_p1);
     }
+#endif
     return points;
 }
 

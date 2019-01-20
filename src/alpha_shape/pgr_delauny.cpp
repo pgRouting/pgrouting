@@ -92,17 +92,15 @@ Pgr_delauny::Pgr_delauny(
          * creating the triangles
          */
         size_t i(0);
-        std::vector<size_t> triangle_points(3);
+        std::vector<size_t> point_idx(3);
+        std::vector<Bpoint> triangle_points(3);
         for (auto d : m_delauny) {
-            triangle_points[i] = d.pid;
+            point_idx[i] = d.pid;
+            triangle_points[i] = Bpoint(d.x, d.y);
             if (i == 2) {
                 auto tid = m_triangles.size();
-                m_triangles.push_back(Pgr_triangle(
-                            m_points[triangle_points[0]],
-                            m_points[triangle_points[1]],
-                            m_points[triangle_points[2]]));
-
-                for (auto p : triangle_points) {
+                m_triangles.push_back(Pgr_triangle(triangle_points));
+                for (auto p : point_idx) {
                     m_relation[p].push_back(tid);
                 }
             }
