@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "cpp_common/bpoint.hpp"
+#include <boost/geometry/geometries/polygon.hpp>
 #include <iosfwd>
 #include "cpp_common/pgr_messages.h"
 
@@ -41,17 +42,33 @@ class Pgr_triangle : public Pgr_messages {
  public:
      Pgr_triangle() = default;
      Pgr_triangle(Bpoint p1, Bpoint p2, Bpoint p3);
+     Pgr_triangle(const std::vector<Bpoint> &p_points);
+
 
      bool has_point(const Bpoint &p) const;
      bool has_edge(const Bpoint &p1, const Bpoint &p2) const;
+     std::vector<Bpoint> invalid_points(double alpha) const;
+
+
+     double alpha() const {return 1 / m_radius;}
+     double radius() const {return m_radius;}
+     Bpoint center() const {return m_center;}
 
      bool operator==(const Pgr_triangle&);
      friend std::ostream& operator<<(std::ostream&, const Pgr_triangle&);
 
- protected:
+ private:
+     void circle_info();
+
+ private:
      Bpoint m_p1;
      Bpoint m_p2;
      Bpoint m_p3;
+
+     boost::geometry::model::polygon<Bpoint> m_poly;
+
+     Bpoint m_center;
+     double m_radius;
 };
 
 

@@ -87,6 +87,7 @@ Pgr_delauny::Pgr_delauny(
          */
         detail::cleanup_data(m_delauny);
 
+
         /*
          * creating the triangles
          */
@@ -108,6 +109,11 @@ Pgr_delauny::Pgr_delauny(
             i = i == 2? 0 : i + 1;
         }
 
+        /*
+         * Saving delauny edges information
+         */
+        for (auto t : m_triangles) {
+        }
         log << *this;
 }
 
@@ -117,6 +123,14 @@ Pgr_delauny::clear() {
     m_triangles.clear();
     m_points.clear();
 }
+
+struct compare_points {
+    bool operator() (const Bpoint &lhs, const Bpoint &rhs) const {
+        if (lhs.x() < rhs.x()) return true;
+        if (lhs.x() > rhs.x()) return false;
+        return lhs.y() < rhs.y();
+    }
+};
 
 std::ostream&
 operator<<(std::ostream& os, const Pgr_delauny &d) {
@@ -137,6 +151,19 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
             os << "\n   " << e << "->" << d.m_triangles[e];
         }
     }
+
+    double alpha = 0.6;
+    std::set<Bpoint, compare_points> invalid_points;
+    for (auto t : d.m_triangles) {
+        auto invalid = t.invalid_points(alpha);
+        invalid_points.insert(invalid.begin(), invalid.end());
+    }
+
+    os << "\nINVALID\n";
+    for (auto p : invalid_points) {
+        os << boost::geometry::wkt(p) << ", ";
+    }
+
     return os;
 }
 
