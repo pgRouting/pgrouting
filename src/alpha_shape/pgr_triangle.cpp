@@ -103,16 +103,23 @@ Pgr_triangle::Pgr_triangle(const std::vector<Bpoint> &p_points) {
 bool
 Pgr_triangle::has_point(const Bpoint &p) const {
     return boost::geometry::within(p, m_poly);
-#if 0
-    return boost::geometry::equals(p, m_p1)
-       || boost::geometry::equals(p, m_p2)
-       || boost::geometry::equals(p, m_p3);
-#endif
 }
 
 bool
 Pgr_triangle::has_edge(const Bpoint &p1, const Bpoint &p2) const {
     return has_point(p1) && has_point(p2);
+}
+
+bool
+Pgr_triangle::adjacent(const Pgr_triangle& t) const {
+    std::list<boost::geometry::model::polygon<Bpoint>> output;
+    boost::geometry::difference(t.m_poly, m_poly, output);
+    return output.size();
+}
+
+bool
+Pgr_triangle::touches(const Pgr_triangle& t) const {
+    return boost::geometry::touches(t.m_poly, m_poly);
 }
 
 std::ostream&

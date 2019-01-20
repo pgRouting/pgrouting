@@ -49,6 +49,9 @@ class Pgr_triangle : public Pgr_messages {
 
      bool has_point(const Bpoint &p) const;
      bool has_edge(const Bpoint &p1, const Bpoint &p2) const;
+     bool touches(const Pgr_triangle&) const;
+     bool adjacent(const Pgr_triangle&) const;
+
      std::vector<Bpoint> invalid_points(double alpha) const;
 
 

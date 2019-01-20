@@ -150,6 +150,7 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
         }
     }
 
+#if 0
     double alpha = 0.6;
     std::set<Bpoint, compare_points> invalid_points;
     for (auto t : d.m_triangles) {
@@ -161,7 +162,7 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
     for (auto p : invalid_points) {
         os << boost::geometry::wkt(p) << ", ";
     }
-
+#endif
     return os;
 }
 
