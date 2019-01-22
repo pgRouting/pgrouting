@@ -150,6 +150,18 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
         }
     }
 
+    os << "\nadjacent\n";
+    for (const auto t1 : d.m_triangles) {
+        for (const auto t2 : d.m_triangles) {
+            auto adj = t1.adjacent_segment(t2);
+            os << "adjacent(" << t1 << ", " << t2 << ") =";
+            for (const auto a : adj) {
+                os << boost::geometry::wkt(a) << "\t";
+            }
+            os << "\n";
+        }
+    }
+
 #if 0
     double alpha = 0.6;
     std::set<Bpoint, compare_points> invalid_points;

@@ -101,8 +101,12 @@ Pgr_triangle::Pgr_triangle(const std::vector<Bpoint> &p_points) {
 }
 
 bool
-Pgr_triangle::has_point(const Bpoint &p) const {
-    return boost::geometry::within(p, m_poly);
+Pgr_triangle::has_point(const Bpoint &u) const {
+    std::vector<Bpoint> const &points = m_poly.outer();
+    for (const auto v : points) {
+       if (boost::geometry::equals(u, v)) return true;
+    }
+    return false;
 }
 
 bool
@@ -110,11 +114,29 @@ Pgr_triangle::has_edge(const Bpoint &p1, const Bpoint &p2) const {
     return has_point(p1) && has_point(p2);
 }
 
+std::vector<Bpoint>
+Pgr_triangle::adjacent_segment(const Pgr_triangle& t) const {
+    std::vector<Bpoint> points = t.m_poly.outer();
+    pgassert(points.size() == 3);
+    std::vector<Bpoint> result;
+    size_t count = 0;
+    for (const auto p : points) {
+        count += has_point(p)? 1 :  0;
+        Bpoint p1 = p;
+        if (has_point(p)) result.push_back(p1);
+    }
+    return count == 2? result : std::vector<Bpoint>();
+}
+
 bool
 Pgr_triangle::adjacent(const Pgr_triangle& t) const {
-    std::list<boost::geometry::model::polygon<Bpoint>> output;
-    boost::geometry::difference(t.m_poly, m_poly, output);
-    return output.size();
+    std::vector<Bpoint> points = t.m_poly.outer();
+    pgassert(points.size() == 3);
+    size_t count = 0;
+    for (const auto p : points) {
+        count += has_point(p)? 1 :  0;
+    }
+    return count == 2;
 }
 
 bool

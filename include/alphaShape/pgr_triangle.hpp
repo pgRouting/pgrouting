@@ -54,6 +54,7 @@ class Pgr_triangle : public Pgr_messages {
 
      std::vector<Bpoint> invalid_points(double alpha) const;
 
+     std::vector<Bpoint> adjacent_segment(const Pgr_triangle& t) const;
 
      double alpha() const {return 1 / m_radius;}
      double radius() const {return m_radius;}
