@@ -58,8 +58,11 @@ cleanup_data(std::vector<Delauny_t> &delauny) {
 Pgr_delauny::Pgr_delauny(
              const std::vector<Bpoint> &p_points,
              const std::vector<Delauny_t> &p_delauny) :
-    m_points(p_points),
+   // m_points(p_points),
     m_delauny(p_delauny) {
+        for (const auto p : p_points) {
+            boost::geometry::append(m_points, p);
+        }
         /*
          * Inserting points from delauny inforamtion
          */
@@ -137,6 +140,8 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
         os << boost::geometry::wkt(p) << ", ";
     };
 
+
+
     os << "\nDelauny triangles\n";
     for (const auto t : d.m_triangles) {
         os << t << ",\n";
@@ -161,6 +166,13 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
             os << "\n";
         }
     }
+
+
+    os << "\nconvexHull\n";
+    boost::geometry::model::polygon<Bpoint> hull;
+    boost::geometry::convex_hull(d.m_points, hull);
+    os << boost::geometry::wkt(hull) << "\t";
+
 
 #if 0
     double alpha = 0.6;

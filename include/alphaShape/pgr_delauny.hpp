@@ -53,7 +53,7 @@ class Pgr_delauny : public Pgr_messages {
      friend std::ostream& operator<<(std::ostream&, const Pgr_delauny&);
 
  private:
-     std::vector<Bpoint> m_points;
+     boost::geometry::model::multi_point<Bpoint> m_points;
      std::vector<Delauny_t> m_delauny;
      std::vector<Pgr_triangle> m_triangles;
      std::map<size_t, std::vector<size_t> > m_relation;
