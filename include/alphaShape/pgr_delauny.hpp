@@ -47,6 +47,9 @@ class Pgr_delauny : public Pgr_messages {
      Pgr_delauny(
              const std::vector<Bpoint> &points,
              const std::vector<Delauny_t> &triangles);
+     std::vector<Bpoint>
+         possible_centers(const Bpoint p1, const Bpoint p2, const double r);
+
 
      void clear();
 
