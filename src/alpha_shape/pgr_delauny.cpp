@@ -96,9 +96,13 @@ Pgr_delauny::Pgr_delauny(
          * creating the triangles
          */
         size_t i(0);
+        size_t line_num(0);
         std::vector<size_t> point_idx(3);
         std::vector<Bpoint> triangle_points(3);
-        for (auto d : m_delauny) {
+        //m_lines.resize(1);
+        m_lines.resize(m_delauny.size());
+
+        for (const auto d : m_delauny) {
             point_idx[i] = d.pid;
             triangle_points[i] = Bpoint(d.x, d.y);
             if (i == 2) {
@@ -111,14 +115,20 @@ Pgr_delauny::Pgr_delauny(
             /*
              * Saving delauny edges information
              */
-            m_lines.push_back(Pgr_delauny::Blines(triangle_points[0], triangle_points[1]);
-            m_lines.push_back(Pgr_delauny::Blines(triangle_points[0], triangle_points[2]);
-            m_lines.push_back(Pgr_delauny::Blines(triangle_points[1], triangle_points[2]);
+            if (i == 1) {
+                boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[0]));
+                boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[1]));
+            } else if (i == 2) {
+                boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[0]));
+                boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[2]));
+                boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[1]));
+                boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[2]));
+            }
+
             i = i == 2? 0 : i + 1;
+            ++line_num;
         }
 
-        for (auto t : m_triangles) {
-        }
         log << *this;
 }
 
@@ -195,6 +205,8 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
     };
 
 
+    os << "\nDelauny info size" << d.m_delauny.size() <<  "\n";
+
 
     os << "\nDelauny triangles\n";
     for (const auto t : d.m_triangles) {
@@ -209,6 +221,7 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
         }
     }
 
+#if 0
     os << "\nadjacent\n";
     for (const auto t1 : d.m_triangles) {
         for (const auto t2 : d.m_triangles) {
@@ -220,7 +233,7 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
             os << "\n";
         }
     }
-
+#endif
 
     os << "\nconvexHull\n";
     boost::geometry::model::polygon<Bpoint> hull;
@@ -231,19 +244,6 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
 
 
 
-#if 0
-    double alpha = 0.6;
-    std::set<Bpoint, compare_points> invalid_points;
-    for (auto t : d.m_triangles) {
-        auto invalid = t.invalid_points(alpha);
-        invalid_points.insert(invalid.begin(), invalid.end());
-    }
-
-    os << "\nINVALID\n";
-    for (auto p : invalid_points) {
-        os << boost::geometry::wkt(p) << ", ";
-    }
-#endif
     return os;
 }
 

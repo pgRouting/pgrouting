@@ -42,7 +42,9 @@ namespace alphashape {
 
 
 class Pgr_delauny : public Pgr_messages {
-    using Blines = boost::geometry::model::multi_linestrings<Bpoint>
+    using Bline = boost::geometry::model::linestring<Bpoint>;
+    using Blines = boost::geometry::model::multi_linestring<Bline>;
+
  public:
      Pgr_delauny() = default;
      Pgr_delauny(
