@@ -108,12 +108,15 @@ Pgr_delauny::Pgr_delauny(
                     m_relation[p].push_back(tid);
                 }
             }
+            /*
+             * Saving delauny edges information
+             */
+            m_lines.push_back(Pgr_delauny::Blines(triangle_points[0], triangle_points[1]);
+            m_lines.push_back(Pgr_delauny::Blines(triangle_points[0], triangle_points[2]);
+            m_lines.push_back(Pgr_delauny::Blines(triangle_points[1], triangle_points[2]);
             i = i == 2? 0 : i + 1;
         }
 
-        /*
-         * Saving delauny edges information
-         */
         for (auto t : m_triangles) {
         }
         log << *this;
@@ -222,7 +225,10 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
     os << "\nconvexHull\n";
     boost::geometry::model::polygon<Bpoint> hull;
     boost::geometry::convex_hull(d.m_points, hull);
-    os << boost::geometry::wkt(hull) << "\t";
+    os << boost::geometry::wkt(hull) << "\n";
+
+    os << boost::geometry::wkt(d.m_lines) << "\t";
+
 
 
 #if 0

@@ -42,6 +42,7 @@ namespace alphashape {
 
 
 class Pgr_delauny : public Pgr_messages {
+    using Blines = boost::geometry::model::multi_linestrings<Bpoint>
  public:
      Pgr_delauny() = default;
      Pgr_delauny(
@@ -57,6 +58,7 @@ class Pgr_delauny : public Pgr_messages {
 
  private:
      boost::geometry::model::multi_point<Bpoint> m_points;
+     Blines m_lines;
      std::vector<Delauny_t> m_delauny;
      std::vector<Pgr_triangle> m_triangles;
      std::map<size_t, std::vector<size_t> > m_relation;
