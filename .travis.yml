@@ -29,8 +29,8 @@ matrix:
     - os: linux
       env: POSTGRESQL_VERSION=9.5   PG_USER=postgres DOCUMENTATION=OFF
 
-    - os: linux
-      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres DOCUMENTATION=OFF
+#    - os: linux
+#      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres DOCUMENTATION=OFF
 
     - os: linux
       env: POSTGRESQL_VERSION=9.6   PG_USER=postgres DOCUMENTATION=ON
