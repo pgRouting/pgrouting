@@ -34,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "alphaShape/pgr_triangle.hpp"
 
+namespace bg = boost::geometry;
+
 namespace pgrouting {
 namespace alphashape {
 
@@ -53,15 +55,40 @@ cleanup_data(std::vector<Delauny_t> &delauny) {
                     return e1.tid == e2.tid && e1.pid == e2.pid;
                 }), delauny.end());
 }
+}  // namespace detail
 
 std::vector<Bpoint>
-possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
+Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double r) const {
     std::vector<Bpoint> centers;
+    pgassert(!bg::equals(p1, p2));
 
     double x1 = p1.x();
     double x2 = p2.x();
     double y1 = p1.y();
     double y2 = p2.y();
+
+    auto p_a = p2;
+    bg::subtract_point(p_a, p1);
+    bg::divide_value(p_a, 2);
+
+    log << "\t p_a " << bg::wkt(p_a);
+    Bpoint origin(0, 0);
+    log << "\t origin " << bg::wkt(origin);
+
+    auto a1 = bg::distance(p_a, origin);
+    log << "\t a " << a1;
+
+    if (!(r > a1)) return centers;
+    auto b1 = std::sqrt((r + a1) * (r - a1));
+    log << "\t b " << b1;
+
+    auto m = b1 / a1;
+
+    Bpoint c1( p1.x() + m * p_a.y(), p1.y() - m * p_a.x());
+    Bpoint c2( p1.x() - m * p_a.y(), p1.y() + m * p_a.x());
+    centers.push_back(c1);
+    centers.push_back(c2);
+#if 0
 
     double ca = (x1 * x1) + (y1 * y1) - (x2 * x2) - (y2 * y2);
 
@@ -100,10 +127,10 @@ possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
         double y = -(x3/y3) * x + (c/(2 * y3));
         centers.push_back(Bpoint(x, y));
     }
+#endif
 
     return centers;
 }
-}  // namespace detail
 
 Pgr_delauny::Pgr_delauny(
              const std::vector<Bpoint> &p_points,
@@ -180,7 +207,7 @@ Pgr_delauny::Pgr_delauny(
             i = i == 2? 0 : i + 1;
         }
 
-        // log << *this;
+        log << *this;
 }
 
 
@@ -189,13 +216,50 @@ Pgr_delauny::alpha_edges(double alpha) const {
     if (alpha == 0) return;
 
     auto radius = 1 / alpha;
+    std::vector<Bline> not_inalpha;
+    std::vector<Bline> inalpha;
+
     for (const auto line : m_lines) {
-        log << "segment " << boost::geometry::wkt(line);
+        log << "\n\nsegment " << boost::geometry::wkt(line);
         pgassert(line.size() == 2);
-        auto centers = detail::possible_centers(line[0], line[1], alpha);
+        auto centers = possible_centers(line[0], line[1], alpha);
         for(const auto c : centers) {
             log << "\tcenter " << boost::geometry::wkt(c);
         };
+        if (centers.empty()) {
+            not_inalpha.push_back(line);
+        } else {
+            inalpha.push_back(line);
+            /*
+             * Is the segment in a border?
+             */
+                size_t count0(0);
+                size_t count1(0);
+            for (const auto p : m_points) {
+                if (bg::equals(p, line[0]) || bg::equals(p, line[1])) continue;
+                if (bg::distance(p, centers[0]) < radius) {
+                        log << "\nwithin circle" << bg::wkt(p) << " at center" << bg::wkt(centers[0]);
+                        ++count0;
+                }
+                if (bg::distance(p, centers[1]) < radius) {
+                        log << "\nwithin circle" << bg::wkt(p) << " at center" << bg::wkt(centers[1]);
+                        ++count1;
+                }
+
+                log << "\nCOunts " << count0 << ", " << count1;
+                // log << "\n**********an external edge" << bg::wkt(line);
+            }
+
+        }
+    }
+    log << "\nNot on alpha ";
+    for (const auto line : not_inalpha) {
+        log << "\n" << boost::geometry::wkt(line);
+    }
+
+    log << "\nOn alpha ";
+    for (const auto line : inalpha) {
+        log << "\n" << boost::geometry::wkt(line);
     }
 
 }

@@ -58,6 +58,8 @@ class Pgr_delauny : public Pgr_messages {
  private:
 
      void alpha_edges(double alpha) const;
+     std::vector<Bpoint>
+         possible_centers(const Bpoint p1, const Bpoint p2, const double r) const;
 
      boost::geometry::model::multi_point<Bpoint> m_points;
      Blines m_lines;
