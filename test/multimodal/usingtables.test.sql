@@ -162,7 +162,7 @@ insert into layers_info values('linealLayer-1','select id, the_geom, z_start, z_
                               ('linealLayer-2','select id, the_geom, z_start, z_end from test_table_l2',1,0),
                               ('pointLayer-1','select id, the_geom, z from test_table_p1',1,0);
 
-SELECT count(*) from  pgr_wrap_createtopology_multimodal(
+SELECT * from  pgr_wrap_createtopology_multimodal(
   'select * from lineal_groups',
   'select * from point_groups',
   'select * from layers_info',
@@ -170,79 +170,79 @@ SELECT count(*) from  pgr_wrap_createtopology_multimodal(
   'public',
   0.000001
 );
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_l' ||
    'ines',
    (select id from graph_lines_pt where id_geom =6 ),
    (select id from graph_lines_pt where id_geom =4 )
 );
 --test2
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
    (select id from graph_lines_pt where id_geom =6 ),
    (select id from graph_lines_pt where id_geom =2 )
 );
 
 --test3
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
    (select id from graph_lines_pt where id_geom =6 ),
    (select id from graph_lines_pt where id_geom =5 )
  );
 
 --test4 as
-select count(*) from graph_lines_pt where id_geom = 3;
+select * from graph_lines_pt where id_geom = 3;
 --test5 as
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
    (select id from graph_lines_pt where id_geom =2 ),
    (select id from graph_lines_pt where id_geom =3 )
  );
 --test6 as
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
    (select id from graph_lines_pt where id_geom =7 ),
    (select id from graph_lines_pt where id_geom =5 )
  );
 
 --test7 as
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
    (select id from graph_lines_pt where id_geom =7 ),
    (select id from graph_lines_pt where id_geom =6 )
  );
 --test8 as
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
    (select id from graph_lines_pt where id_geom =11 ),
    (select id from graph_lines_pt where id_geom =1 )
 );
 --test9 as
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
    (select id from graph_lines_pt where id_geom =11 ),
    (select id from graph_lines_pt where id_geom =9 )
  );
 --test10 as
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
    (select id from graph_lines_pt where id_geom =10 ),
    (select id from graph_lines_pt where id_geom =9 )
  );
 --test11 as
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
    (select id from graph_lines_pt where id_geom =13 ),
    (select id from graph_lines_pt where id_geom =12 )
  );
 --test12 as
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
    (select id from graph_lines_pt where id_geom =13 ),
    (select id from graph_lines_pt where id_geom =9 )
  );
 --test13 as
-select count(*) from pgr_dijkstra(
+select * from pgr_dijkstra(
    'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
    (select id from graph_lines_pt where id_geom =14 ),
    (select id from graph_lines_pt where id_geom =9 )
