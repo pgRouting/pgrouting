@@ -50,15 +50,15 @@ class Pgr_delauny : public Pgr_messages {
      Pgr_delauny(
              const std::vector<Bpoint> &points,
              const std::vector<Delauny_t> &triangles);
-     std::vector<Bpoint>
-         possible_centers(const Bpoint p1, const Bpoint p2, const double r);
-
 
      void clear();
 
      friend std::ostream& operator<<(std::ostream&, const Pgr_delauny&);
 
  private:
+
+     void alpha_edges(double alpha) const;
+
      boost::geometry::model::multi_point<Bpoint> m_points;
      Blines m_lines;
      std::vector<Delauny_t> m_delauny;

@@ -54,6 +54,55 @@ cleanup_data(std::vector<Delauny_t> &delauny) {
                 }), delauny.end());
 }
 
+std::vector<Bpoint>
+possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
+    std::vector<Bpoint> centers;
+
+    double x1 = p1.x();
+    double x2 = p2.x();
+    double y1 = p1.y();
+    double y2 = p2.y();
+
+    double ca = (x1 * x1) + (y1 * y1) - (x2 * x2) - (y2 * y2);
+
+
+    // This are common stuff
+    double x3 = x1 - x2;
+    double y3 = y1 - y2;
+
+    Bpoint p3(p1);
+    boost::geometry::subtract_point(p3, p2);
+    pgassert(p3.x() == x3);
+    pgassert(p3.y() == y3);
+
+
+    double cy = (ca/(2 * y3)) - y1;
+
+    double a = ((x3 * x3) + (y3 * y3)) / (y3 * y3);
+    double b = ((2 * x1) - (2 * (cy) * x3/y3));
+    double c = ((x1 * x1) + (cy * cy) - (r * r));
+
+    std::vector<double> roots;
+
+    double denominator = 2 * a;
+    double bNumerator = -b;
+    double underSquare = (b * b) - (4 * a * c);
+    if (underSquare < 0 || denominator == 0) {
+        // imaginary roots
+    } else {
+        double sqrt = std::sqrt(underSquare);
+        roots = {(bNumerator + sqrt) / denominator, (bNumerator - sqrt) / denominator};
+        pgassert(roots.size()==2);
+    }
+
+    for (auto root : roots) {
+        double x = root;
+        double y = -(x3/y3) * x + (c/(2 * y3));
+        centers.push_back(Bpoint(x, y));
+    }
+
+    return centers;
+}
 }  // namespace detail
 
 Pgr_delauny::Pgr_delauny(
@@ -118,75 +167,51 @@ Pgr_delauny::Pgr_delauny(
             if (i == 1) {
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[0]));
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[1]));
+                ++line_num;
             } else if (i == 2) {
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[0]));
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[2]));
+                ++line_num;
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[1]));
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[2]));
+                ++line_num;
             }
 
             i = i == 2? 0 : i + 1;
-            ++line_num;
         }
 
-        log << *this;
+        // log << *this;
 }
+
+
+void
+Pgr_delauny::alpha_edges(double alpha) const {
+    if (alpha == 0) return;
+
+    auto radius = 1 / alpha;
+    for (const auto line : m_lines) {
+        log << "segment " << boost::geometry::wkt(line);
+        pgassert(line.size() == 2);
+        auto centers = detail::possible_centers(line[0], line[1], alpha);
+        for(const auto c : centers) {
+            log << "\tcenter " << boost::geometry::wkt(c);
+        };
+    }
+
+}
+
+
 
 void
 Pgr_delauny::clear() {
     m_relation.clear();
+    m_delauny.clear();
     m_triangles.clear();
     m_points.clear();
+    m_lines.clear();
 }
 
-std::vector<Bpoint>
-Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
-    std::vector<Bpoint> points;
 
-    double x1 = p1.x();
-    double x2 = p2.x();
-    double y1 = p1.y();
-    double y2 = p2.y();
-
-    double ca = (x1 * x1) + (y1 * y1) - (x2 * x2) - (y2 * y2);
-
-
-    // This are common stuff
-    double x3 = x1 - x2;
-    double y3 = y1 - y2;
-
-    Bpoint p3(p1);
-    boost::geometry::subtract_point(p3, p2);
-    pgassert(p3.x() == x3);
-    pgassert(p3.y() == y3);
-
-
-    double cy = (ca/(2 * y3)) - y1;
-
-    double a = ((x3 * x3) + (y3 * y3)) / (y3 * y3);
-    double b = ((2 * x1) - (2 * (cy) * x3/y3));
-    double c = ((x1 * x1) + (cy * cy) - (r * r));
-
-    std::vector<double> roots;
-
-    double denominator = 2 * a;
-    double bNumerator = -b;
-    double underSquare = (b * b) - (4 * a * c);
-    if (underSquare < 0 || denominator == 0) {
-        // imaginary roots
-    } else {
-        double sqrt = std::sqrt(underSquare);
-        roots = {(bNumerator + sqrt) / denominator, (bNumerator - sqrt) / denominator};
-    }
-
-    for (auto root : roots) {
-        double x = root;
-        double y = -(x3/y3) * x + (c/(2 * y3));
-        points.push_back(Bpoint(x, y));
-    }
-
-    return points;
-}
 
 struct compare_points {
     bool operator() (const Bpoint &lhs, const Bpoint &rhs) const {
@@ -220,6 +245,7 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
             os << "\n   " << e << "->" << d.m_triangles[e];
         }
     }
+    d.alpha_edges(1);
 
 #if 0
     os << "\nadjacent\n";
@@ -233,14 +259,14 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
             os << "\n";
         }
     }
-#endif
 
     os << "\nconvexHull\n";
     boost::geometry::model::polygon<Bpoint> hull;
-    boost::geometry::convex_hull(d.m_points, hull);
+    boost::geometry::convex_hull(d.m_lines, hull);
     os << boost::geometry::wkt(hull) << "\n";
 
     os << boost::geometry::wkt(d.m_lines) << "\t";
+#endif
 
 
 
