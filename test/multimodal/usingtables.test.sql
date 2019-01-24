@@ -64,33 +64,28 @@ declare
   v_pconn int;
   v_z int;
 begin
-  raise notice 'here';
   for v_layer_name, v_group in EXECUTE p_lineal_groups loop
     if v_lineal_groups->v_group is null then
-      v_lineal_groups = jsonb_set(v_lineal_groups,('{'||v_group||'}')::text[],'[]'::jsonb);
+      v_lineal_groups = pgr_polyfill_jsonb_set(v_lineal_groups,('{'||v_group||'}')::text[],'[]'::jsonb);
     end if;
 
-    v_lineal_groups = jsonb_insert(v_lineal_groups,('{'||v_group||',0}')::text[],('"'||v_layer_name||'"')::jsonb);
+    v_lineal_groups = pgr_polyfill_jsonb_insert(v_lineal_groups,('{'||v_group||',0}')::text[],('"'||v_layer_name||'"')::jsonb);
   end loop;
 
   for v_point_name, v_layer_name in EXECUTE p_puntual_groups loop
     if v_puntual_groups->v_point_name is null then
-      v_puntual_groups = jsonb_set(v_puntual_groups,('{'||v_point_name ||'}'):: text[],'[]'::jsonb);
+      v_puntual_groups = pgr_polyfill_jsonb_set(v_puntual_groups,('{'||v_point_name ||'}'):: text[],'[]'::jsonb);
     end if;
-    v_puntual_groups = jsonb_insert(v_puntual_groups,('{'||v_point_name ||',0}')::text[],('"'||v_layer_name||'"')::jsonb);
+    v_puntual_groups = pgr_polyfill_jsonb_insert(v_puntual_groups,('{'||v_point_name ||',0}')::text[],('"'||v_layer_name||'"')::jsonb);
   end loop;
 
   for v_layer_name, v_sql, v_pconn, v_z in EXECUTE p_layers loop
-    v_layers = jsonb_set(v_layers,('{'||v_layer_name||'}')::text[],('{'
+    v_layers = pgr_polyfill_jsonb_set(v_layers,('{'||v_layer_name||'}')::text[],('{'
       || '"sql"   :"'|| v_sql   || '"' ||
          ',"pconn":"'|| v_pconn || '"' ||
          ',"zconn":"'|| v_z     || '"' ||
          '}')::jsonb);
   end loop;
-
-  raise notice 'lineal_group: %', v_lineal_groups;
-  raise notice 'puntual_group: %', v_puntual_groups;
-  raise notice 'v_layers: %', v_layers;
 
   return query select * from pgr_createtopology_multimodal(v_lineal_groups, v_puntual_groups, v_layers, p_graph_lines_table, p_graph_lines_schema, p_tolerance);
 end;
