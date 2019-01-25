@@ -67,6 +67,10 @@ Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double r) 
     double y1 = p1.y();
     double y2 = p2.y();
 
+    auto rombus_center = p2;
+    bg::add_point(rombus_center, p1);
+    bg::divide_value(rombus_center, 2);
+
     auto p_a = p2;
     bg::subtract_point(p_a, p1);
     bg::divide_value(p_a, 2);
@@ -76,58 +80,20 @@ Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double r) 
     log << "\t origin " << bg::wkt(origin);
 
     auto a1 = bg::distance(p_a, origin);
-    log << "\t a " << a1;
+    log << "\t a " << a1 << "\tr " << r;
 
     if (!(r > a1)) return centers;
     auto b1 = std::sqrt((r + a1) * (r - a1));
     log << "\t b " << b1;
 
-    auto m = b1 / a1;
+    auto m = - b1 / a1;
+    // recta que pasa por (x0 + x1)/2 , (y0 + y1)/ 2 com pendiente m
+    // y = mx + b
 
-    Bpoint c1( p1.x() + m * p_a.y(), p1.y() - m * p_a.x());
-    Bpoint c2( p1.x() - m * p_a.y(), p1.y() + m * p_a.x());
+    Bpoint c1(rombus_center.x() + m * p_a.y(), rombus_center.y() - m * p_a.x());
+    Bpoint c2(rombus_center.x() - m * p_a.y(), rombus_center.y() + m * p_a.x());
     centers.push_back(c1);
     centers.push_back(c2);
-#if 0
-
-    double ca = (x1 * x1) + (y1 * y1) - (x2 * x2) - (y2 * y2);
-
-
-    // This are common stuff
-    double x3 = x1 - x2;
-    double y3 = y1 - y2;
-
-    Bpoint p3(p1);
-    boost::geometry::subtract_point(p3, p2);
-    pgassert(p3.x() == x3);
-    pgassert(p3.y() == y3);
-
-
-    double cy = (ca/(2 * y3)) - y1;
-
-    double a = ((x3 * x3) + (y3 * y3)) / (y3 * y3);
-    double b = ((2 * x1) - (2 * (cy) * x3/y3));
-    double c = ((x1 * x1) + (cy * cy) - (r * r));
-
-    std::vector<double> roots;
-
-    double denominator = 2 * a;
-    double bNumerator = -b;
-    double underSquare = (b * b) - (4 * a * c);
-    if (underSquare < 0 || denominator == 0) {
-        // imaginary roots
-    } else {
-        double sqrt = std::sqrt(underSquare);
-        roots = {(bNumerator + sqrt) / denominator, (bNumerator - sqrt) / denominator};
-        pgassert(roots.size()==2);
-    }
-
-    for (auto root : roots) {
-        double x = root;
-        double y = -(x3/y3) * x + (c/(2 * y3));
-        centers.push_back(Bpoint(x, y));
-    }
-#endif
 
     return centers;
 }
@@ -207,7 +173,7 @@ Pgr_delauny::Pgr_delauny(
             i = i == 2? 0 : i + 1;
         }
 
-        log << *this;
+        alpha_edges(1);
 }
 
 
@@ -218,11 +184,12 @@ Pgr_delauny::alpha_edges(double alpha) const {
     auto radius = 1 / alpha;
     std::vector<Bline> not_inalpha;
     std::vector<Bline> inalpha;
+    std::vector<Bline> border;
 
     for (const auto line : m_lines) {
         log << "\n\nsegment " << boost::geometry::wkt(line);
         pgassert(line.size() == 2);
-        auto centers = possible_centers(line[0], line[1], alpha);
+        auto centers = possible_centers(line[0], line[1], radius);
         for(const auto c : centers) {
             log << "\tcenter " << boost::geometry::wkt(c);
         };
@@ -233,25 +200,33 @@ Pgr_delauny::alpha_edges(double alpha) const {
             /*
              * Is the segment in a border?
              */
-                size_t count0(0);
-                size_t count1(0);
+            size_t count0(0);
+            size_t count1(0);
             for (const auto p : m_points) {
                 if (bg::equals(p, line[0]) || bg::equals(p, line[1])) continue;
+                log << "\n" << bg::wkt(p);
                 if (bg::distance(p, centers[0]) < radius) {
-                        log << "\nwithin circle" << bg::wkt(p) << " at center" << bg::wkt(centers[0]);
-                        ++count0;
+#if 0
+                    log << "within circle" << " at center" << bg::wkt(centers[0]);
+#endif
+                    ++count0;
                 }
                 if (bg::distance(p, centers[1]) < radius) {
-                        log << "\nwithin circle" << bg::wkt(p) << " at center" << bg::wkt(centers[1]);
-                        ++count1;
+#if 0
+                    log << "\twithin circle" << " at center" << bg::wkt(centers[1]);
+#endif
+                    ++count1;
                 }
-
-                log << "\nCOunts " << count0 << ", " << count1;
-                // log << "\n**********an external edge" << bg::wkt(line);
             }
-
+            log << "\n" << count0 << "," << count1;
+            if ((count0 && !count1) || (!count0 && count1)) {
+                log << "**********an external edge" << bg::wkt(line);
+                border.push_back(line);
+            }
         }
     }
+
+#if 0
     log << "\nNot on alpha ";
     for (const auto line : not_inalpha) {
         log << "\n" << boost::geometry::wkt(line);
@@ -259,6 +234,14 @@ Pgr_delauny::alpha_edges(double alpha) const {
 
     log << "\nOn alpha ";
     for (const auto line : inalpha) {
+        log << "\n" << boost::geometry::wkt(line);
+    }
+#endif
+
+    log << "\nOn external ";
+    Blines alpha_edges;
+
+    for (const auto line : border) {
         log << "\n" << boost::geometry::wkt(line);
     }
 
@@ -309,7 +292,6 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
             os << "\n   " << e << "->" << d.m_triangles[e];
         }
     }
-    d.alpha_edges(1);
 
 #if 0
     os << "\nadjacent\n";

@@ -208,10 +208,11 @@ do_alphaShape(
 
         log << "LOG STARTS **********\n";
         log << alphaShape.get_log();
-        log << "LOG ENDS **********\n";
+        log << "\nLOG ENDS **********\n";
+#if 0
         log << alphaShape;
         log << "LOG ENDS **********\n";
-
+#endif
         *log_msg = pgr_msg(log.str().c_str());
         return;
         Alpha_shape_2 A(points.begin(), points.end(),
