@@ -42,6 +42,18 @@ namespace alphashape {
 
 namespace {
 
+#if 0
+template<class ForwardIt, class T, class Compare=std::less<>>
+ForwardIt binary_find(ForwardIt first, ForwardIt last, const T& value, Compare comp={})
+{
+    // Note: BOTH type T and the type after ForwardIt is dereferenced
+    // must be implicitly convertible to BOTH Type1 and Type2, used in Compare.
+    // This is stricter than lower_bound requirement (see above)
+    first = std::lower_bound(first, last, value, comp);
+    return first != last && !comp(value, *first) ? first : last;
+}
+#endif
+
 void
 cleanup_data(std::vector<Delauny_t> &delauny) {
         std::sort(delauny.begin(), delauny.end(),
@@ -59,6 +71,23 @@ cleanup_data(std::vector<Delauny_t> &delauny) {
 }
 
 void
+remove_duplicated(Bpoints  &points) {
+        std::sort(points.begin(), points.end(),
+                [](const Bpoint &lhs, const Bpoint &rhs)->bool {
+                    return lhs.y() < rhs.y();
+                });
+        std::stable_sort(points.begin(), points.end(),
+                [](const Bpoint &lhs, const Bpoint &rhs)->bool {
+                    return lhs.x() < rhs.x();
+                });
+        points.erase(std::unique(points.begin(), points.end(),
+                [](const Bpoint &lhs, const Bpoint &rhs)->bool {
+                    return bg::equals(lhs, rhs);
+                }), points.end());
+}
+
+
+void
 remove_duplicated_lines(Blines  &lines) {
         std::sort(lines.begin(), lines.end(),
                 [](const Bline &lhs, const Bline &rhs)->bool {
@@ -73,6 +102,7 @@ remove_duplicated_lines(Blines  &lines) {
                     return bg::equals(lhs, rhs);
                 }), lines.end());
 }
+
 
 std::vector<Bpoint>
 possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
@@ -105,36 +135,49 @@ possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
 }
 }  // namespace detail
 
+/*
+ * Inserting points from delauny information
+ *  tid, pid, Bpoint
+ *  equivalent to the vertex information:
+ *  pid, Bpoint
+ *  Where Bpoint is unique
+ */
+void
+Pgr_delauny::save_points_from_delauny_info() {
+#if 0
+    for (auto &d : m_delauny) m_points.push_back({d.x, d.y});
+    remove_duplicated(m_points);
+
+
+#else
+    for (auto &d : m_delauny) {
+        Bpoint p(d.x, d.y);
+        auto point_itr = std::find_if(m_points.begin(), m_points.end(),
+                [&p](const Bpoint &p1)->bool {
+                    return boost::geometry::equals(p, p1);
+                });
+
+        if (point_itr == m_points.end()) {
+            /*
+             * Point is not found
+             */
+            d.pid = m_points.size();
+            m_points.push_back(p);
+        } else {
+            d.pid = point_itr - m_points.begin();
+        }
+    }
+#endif
+}
+
 Pgr_delauny::Pgr_delauny(
              const std::vector<Delauny_t> &p_delauny) :
     m_delauny(p_delauny) {
-        /*
-         * Inserting points from delauny inforamtion
-         */
-
-        for (auto &d : m_delauny) {
-            Bpoint p(d.x, d.y);
-            auto point_itr = std::find_if(m_points.begin(), m_points.end(),
-                    [&p](const Bpoint &p1)->bool {
-                        return boost::geometry::equals(p, p1);
-                    });
-
-            if (point_itr == m_points.end()) {
-                /*
-                 * Point is not found
-                 */
-                d.pid = m_points.size();
-                m_points.push_back(p);
-            } else {
-                d.pid = point_itr - m_points.begin();
-            }
-        }
-
+        save_points_from_delauny_info();
         /*
          * removing duplicate triangles information
          */
         cleanup_data(m_delauny);
-
 
         /*
          * creating the triangles
@@ -147,7 +190,28 @@ Pgr_delauny::Pgr_delauny(
         m_lines.resize(m_delauny.size());
 
         for (const auto d : m_delauny) {
-            point_idx[i] = d.pid;
+            Bpoint p({d.x, d.y});
+            triangle_points[i] = p;
+
+#if 0
+            auto point_itr1 = binary_find(
+                    m_points.begin(), m_points.end(), triangle_points[i],
+                    [](Bpoint lhs, Bpoint rhs) -> bool {
+                        if (bg::equals(lhs, rhs)) return false;
+                        if (lhs.x() < rhs.x()) return true;
+                        return lhs.y() < rhs.y();
+                    }) - m_points.begin();
+#endif
+
+            auto point_itr = std::find_if(m_points.begin(), m_points.end(),
+                [&p](const Bpoint &p1)->bool {
+                    return boost::geometry::equals(p, p1);
+                });
+
+            point_idx[i] = point_itr - m_points.begin();
+#if 0
+            pgassert(point_idx[i] == point_itr1);
+#endif
             triangle_points[i] = Bpoint(d.x, d.y);
             if (i == 2) {
                 auto tid = m_triangles.size();
@@ -182,7 +246,6 @@ Pgr_delauny::Pgr_delauny(
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[2]));
                 ++line_num;
             }
-
 
             i = i == 2? 0 : i + 1;
         }
