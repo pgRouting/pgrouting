@@ -40,7 +40,8 @@ namespace bg = boost::geometry;
 namespace pgrouting {
 namespace alphashape {
 
-namespace detail {
+namespace {
+
 void
 cleanup_data(std::vector<Delauny_t> &delauny) {
         std::sort(delauny.begin(), delauny.end(),
@@ -56,10 +57,30 @@ cleanup_data(std::vector<Delauny_t> &delauny) {
                     return e1.tid == e2.tid && e1.pid == e2.pid;
                 }), delauny.end());
 }
-}  // namespace detail
+
+void
+remove_duplicated_lines(Blines  &lines) {
+#if 0
+        std::sort(lines.begin(), lines.end(),
+                [](const Bline &e1, const Bline &e2)->bool {
+                    if (bg::equals(e1, e2)) return false;
+                    if (e1.x() < e2.x()) return true;
+                    return e1.y() < e2.y();
+
+                });
+        std::stable_sort(delauny.begin(), delauny.end(),
+                [](const Delauny_t &e1, const Delauny_t &e2)->bool {
+                    return e1.tid < e2.tid;
+                });
+        delauny.erase(std::unique(delauny.begin(), delauny.end(),
+                [](const Delauny_t &e1, const Delauny_t &e2)->bool {
+                    return e1.tid == e2.tid && e1.pid == e2.pid;
+                }), delauny.end());
+#endif
+}
 
 std::vector<Bpoint>
-Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double r) const {
+possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
     std::vector<Bpoint> centers;
     pgassert(!bg::equals(p1, p2));
 
@@ -87,6 +108,7 @@ Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double r) 
 
     return centers;
 }
+}  // namespace detail
 
 Pgr_delauny::Pgr_delauny(
              const std::vector<Delauny_t> &p_delauny) :
@@ -116,7 +138,7 @@ Pgr_delauny::Pgr_delauny(
         /*
          * removing duplicate triangles information
          */
-        detail::cleanup_data(m_delauny);
+        cleanup_data(m_delauny);
 
 
         /*
@@ -142,11 +164,22 @@ Pgr_delauny::Pgr_delauny(
             /*
              * Saving delauny edges information
              */
-            if (i == 1) {
+            if (i == 2) {
+                log << "\n";
+                for (auto const p : triangle_points) log << bg::wkt(p);
+
+                std::sort(triangle_points.begin(), triangle_points.end(),
+                [](const Bpoint &lhs, const Bpoint &rhs)->bool {
+                    if (lhs.x() < rhs.x()) return true;
+                    if (lhs.x() > rhs.x()) return false;
+                    return lhs.y() < rhs.y();
+                });
+                log << "->";
+                for (auto const p : triangle_points) log << bg::wkt(p);
+
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[0]));
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[1]));
                 ++line_num;
-            } else if (i == 2) {
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[0]));
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[2]));
                 ++line_num;
@@ -154,6 +187,7 @@ Pgr_delauny::Pgr_delauny(
                 boost::geometry::append(m_lines[line_num], Bpoint(triangle_points[2]));
                 ++line_num;
             }
+
 
             i = i == 2? 0 : i + 1;
         }
@@ -189,23 +223,11 @@ Pgr_delauny::alpha_edges(double alpha) const {
             size_t count1(0);
             for (const auto p : m_points) {
                 if (bg::equals(p, line[0]) || bg::equals(p, line[1])) continue;
-                log << "\n" << bg::wkt(p);
-                if (bg::distance(p, centers[0]) < radius) {
-#if 0
-                    log << "within circle" << " at center" << bg::wkt(centers[0]);
-#endif
-                    ++count0;
-                }
-                if (bg::distance(p, centers[1]) < radius) {
-#if 0
-                    log << "\twithin circle" << " at center" << bg::wkt(centers[1]);
-#endif
-                    ++count1;
-                }
+                count0 += (bg::distance(p, centers[0]) < radius)? 1 : 0;
+                count1 += (bg::distance(p, centers[1]) < radius)? 1 : 0;
             }
-            log << "\n" << count0 << "," << count1;
+
             if ((count0 && !count1) || (!count0 && count1)) {
-                log << "**********an external edge" << bg::wkt(line);
                 border.push_back(line);
             }
         }

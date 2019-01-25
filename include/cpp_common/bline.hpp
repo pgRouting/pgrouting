@@ -33,10 +33,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
+using Bpoints = bg::model::multi_point<Bpoint>;
+
 using Bline = bg::model::linestring<Bpoint>;
+using Blines = bg::model::multi_linestring<Bline>;
+
 using Bpoly = bg::model::polygon<Bpoint>;
-using BmultiPoint = bg::model::multi_point<Bpoint>;
-using BmultiLine = bg::model::multi_linestring<Bpoint>;
+
 
 }  // namespace pgrouting
 

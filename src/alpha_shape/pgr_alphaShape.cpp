@@ -35,8 +35,7 @@ Pgr_alphaShape::clear() {
     m_info.clear();
 }
 
-Pgr_alphaShape::Pgr_alphaShape(
-        std::vector<Delauny_t> p_delauny) :
+Pgr_alphaShape::Pgr_alphaShape(std::vector<Delauny_t> p_delauny) :
     m_info(p_delauny) {
         log << m_info.get_log();
 }
