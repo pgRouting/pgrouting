@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 
 #include "cpp_common/bpoint.hpp"
+#include "cpp_common/bline.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "alphaShape/pgr_triangle.hpp"
 
@@ -62,11 +63,6 @@ Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double r) 
     std::vector<Bpoint> centers;
     pgassert(!bg::equals(p1, p2));
 
-    double x1 = p1.x();
-    double x2 = p2.x();
-    double y1 = p1.y();
-    double y2 = p2.y();
-
     auto rombus_center = p2;
     bg::add_point(rombus_center, p1);
     bg::divide_value(rombus_center, 2);
@@ -75,37 +71,26 @@ Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double r) 
     bg::subtract_point(p_a, p1);
     bg::divide_value(p_a, 2);
 
-    log << "\t p_a " << bg::wkt(p_a);
     Bpoint origin(0, 0);
-    log << "\t origin " << bg::wkt(origin);
 
-    auto a1 = bg::distance(p_a, origin);
-    log << "\t a " << a1 << "\tr " << r;
+    auto a = bg::distance(p_a, origin);
 
-    if (!(r > a1)) return centers;
-    auto b1 = std::sqrt((r + a1) * (r - a1));
-    log << "\t b " << b1;
+    /*
+     * The segment is not alpha
+     */
+    if (!(r > a)) return centers;
 
-    auto m = - b1 / a1;
-    // recta que pasa por (x0 + x1)/2 , (y0 + y1)/ 2 com pendiente m
-    // y = mx + b
+    auto m = - std::sqrt((r + a) * (r - a)) / a;
 
-    Bpoint c1(rombus_center.x() + m * p_a.y(), rombus_center.y() - m * p_a.x());
-    Bpoint c2(rombus_center.x() - m * p_a.y(), rombus_center.y() + m * p_a.x());
-    centers.push_back(c1);
-    centers.push_back(c2);
+    centers.push_back({rombus_center.x() + m * p_a.y(), rombus_center.y() - m * p_a.x()});
+    centers.push_back({rombus_center.x() - m * p_a.y(), rombus_center.y() + m * p_a.x()});
 
     return centers;
 }
 
 Pgr_delauny::Pgr_delauny(
-             const std::vector<Bpoint> &p_points,
              const std::vector<Delauny_t> &p_delauny) :
-   // m_points(p_points),
     m_delauny(p_delauny) {
-        for (const auto p : p_points) {
-            boost::geometry::append(m_points, p);
-        }
         /*
          * Inserting points from delauny inforamtion
          */

@@ -38,15 +38,11 @@ namespace alphashape {
 class Pgr_alphaShape : public Pgr_messages {
  public:
      Pgr_alphaShape() = default;
-     Pgr_alphaShape(
-             std::vector<Bpoint>,
-             std::vector<Delauny_t>);
+     Pgr_alphaShape(std::vector<Delauny_t>);
 
      void clear();
 
-#if 1
      friend std::ostream& operator<<(std::ostream&, const Pgr_alphaShape&);
-#endif
 
 
  private:

@@ -204,7 +204,7 @@ do_alphaShape(
             log << i++ << ")" << p << "\n";
         }
 
-        Pgr_alphaShape alphaShape(bpoints, delauny);
+        Pgr_alphaShape alphaShape(delauny);
 
         log << "LOG STARTS **********\n";
         log << alphaShape.get_log();

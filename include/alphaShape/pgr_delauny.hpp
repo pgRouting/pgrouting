@@ -31,9 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <map>
+#include <iosfwd>
 
 #include "c_types/delauny_t.h"
 #include "cpp_common/bpoint.hpp"
+#include "cpp_common/bline.hpp"
 #include "cpp_common/pgr_messages.h"
 #include "alphaShape/pgr_triangle.hpp"
 
@@ -48,7 +50,6 @@ class Pgr_delauny : public Pgr_messages {
  public:
      Pgr_delauny() = default;
      Pgr_delauny(
-             const std::vector<Bpoint> &points,
              const std::vector<Delauny_t> &triangles);
 
      void clear();
@@ -61,7 +62,7 @@ class Pgr_delauny : public Pgr_messages {
      std::vector<Bpoint>
          possible_centers(const Bpoint p1, const Bpoint p2, const double r) const;
 
-     boost::geometry::model::multi_point<Bpoint> m_points;
+     BmultiPoint    m_points;
      Blines m_lines;
      std::vector<Delauny_t> m_delauny;
      std::vector<Pgr_triangle> m_triangles;

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: blinestring.hpp
+File: bline.hpp
 
 Copyright (c) 2019 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -33,7 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-typedef typedef bg::model::linestring<point_t> Blinestring_t;
+using Bline = bg::model::linestring<Bpoint>;
+using Bpoly = bg::model::polygon<Bpoint>;
+using BmultiPoint = bg::model::multi_point<Bpoint>;
+using BmultiLine = bg::model::multi_linestring<Bpoint>;
 
 }  // namespace pgrouting
 

@@ -31,6 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/point_xy.hpp>
 
+namespace bg = boost::geometry;
+
 // TODO(vicky) mogidying this file should not affect:
 // dijkstra_driver.cpp
 // dijkstraVia_driver.cpp
@@ -38,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // etc...
 namespace pgrouting {
 
-typedef boost::geometry::model::d2::point_xy<double> Bpoint;
+using Bpoint = bg::model::d2::point_xy<double>;
 
 #if 0
 bool operator<(const Bpoint &p1, const Bpoint &p2);
