@@ -60,23 +60,18 @@ cleanup_data(std::vector<Delauny_t> &delauny) {
 
 void
 remove_duplicated_lines(Blines  &lines) {
-#if 0
         std::sort(lines.begin(), lines.end(),
-                [](const Bline &e1, const Bline &e2)->bool {
-                    if (bg::equals(e1, e2)) return false;
-                    if (e1.x() < e2.x()) return true;
-                    return e1.y() < e2.y();
-
+                [](const Bline &lhs, const Bline &rhs)->bool {
+                    return lhs[0].y() < rhs[0].y();
                 });
-        std::stable_sort(delauny.begin(), delauny.end(),
-                [](const Delauny_t &e1, const Delauny_t &e2)->bool {
-                    return e1.tid < e2.tid;
+        std::stable_sort(lines.begin(), lines.end(),
+                [](const Bline &lhs, const Bline &rhs)->bool {
+                    return lhs[0].x() < rhs[0].x();
                 });
-        delauny.erase(std::unique(delauny.begin(), delauny.end(),
-                [](const Delauny_t &e1, const Delauny_t &e2)->bool {
-                    return e1.tid == e2.tid && e1.pid == e2.pid;
-                }), delauny.end());
-#endif
+        lines.erase(std::unique(lines.begin(), lines.end(),
+                [](const Bline &lhs, const Bline &rhs)->bool {
+                    return bg::equals(lhs, rhs);
+                }), lines.end());
 }
 
 std::vector<Bpoint>
@@ -191,6 +186,11 @@ Pgr_delauny::Pgr_delauny(
 
             i = i == 2? 0 : i + 1;
         }
+
+
+        log << "\nbefore" << bg::wkt(m_lines);
+        remove_duplicated_lines(m_lines);
+        log << "\nafter" << bg::wkt(m_lines);
 
         alpha_edges(1);
 }
