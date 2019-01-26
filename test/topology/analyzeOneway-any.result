@@ -1,5 +1,7 @@
+--q1
 BEGIN;
 BEGIN
+
 SET client_min_messages TO NOTICE;
 SET
 SELECT pgr_analyzeOneway('edge_table',
@@ -8,7 +10,7 @@ ARRAY['', 'B', 'FT'],
 ARRAY['', 'B', 'FT'],
 ARRAY['', 'B', 'TF'],
 oneway:='dir');
-NOTICE:  PROCESSING:
+NOTICE:  PROCESSING:--q1
 NOTICE:  pgr_analyzeOneway('edge_table','{"",B,TF}','{"",B,FT}','{"",B,FT}','{"",B,TF}','dir','source','target',t)
 NOTICE:  Analyzing graph for one way street errors.
 NOTICE:  Analysis 25% complete ...
@@ -23,3 +25,4 @@ NOTICE:  Found 0 potential problems in directionality
 
 ROLLBACK;
 ROLLBACK
+--q1.1
