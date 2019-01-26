@@ -32,11 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "c_common/edges_input.h"
-#if 0
 #include "c_types/pgr_point_t.h"
-#include "c_common/pgr_point_input.h"
-#include "c_common/delauny_input.h"
-#endif
 
 #include "drivers/alpha_shape/alphaShape_driver.h"
 
@@ -55,23 +51,6 @@ static void process(
 
     pgr_get_edges_xy(edges_sql, &edgesArr, &edgesSize);
 
-#if 0
-    Pgr_point_t *pointsArr = NULL;
-    size_t pointsTotal = 0;
-    pgr_point_input(points_sql, &pointsArr, &pointsTotal);
-    for (size_t i = 0; i < pointsTotal; ++i) {
-        PGR_DBG("x %.10f y %.10f", pointsArr[i].x, pointsArr[i].y);
-    }
-    PGR_DBG("totalpoints1: %ld", pointsTotal);
-
-    PGR_DBG("%ld", pointsTotal);
-    pointsTotal = points_size(pointsArr, pointsTotal);
-    PGR_DBG("%ld", pointsTotal);
-    for (size_t i = 0; i < pointsTotal; ++i) {
-        PGR_DBG("x %.10f y %.10f", pointsArr[i].x, pointsArr[i].y);
-    }
-#endif
-
     PGR_DBG("total edges %ld", edgesSize);
 
     if (edgesSize < 3) {
@@ -81,24 +60,6 @@ static void process(
         pgr_SPI_finish();
         return;
     }
-
-#if 0
-    /*
-     * Calculating Delauny triangles using postGIS
-     */
-    char * delauny_sql = delauny_query(points_sql);
-    PGR_DBG("%s", delauny_sql);
-
-    Delauny_t *delaunyArr = NULL;
-    size_t delaunyTotal = 0;
-    pgr_get_delauny(delauny_sql, &delaunyArr, &delaunyTotal);
-
-    PGR_DBG("delauny total %ld", delaunyTotal);
-
-    for (size_t i = 0; i < delaunyTotal; ++i) {
-        PGR_DBG("tid %ld pid %ld x %.10f y %.10f", delaunyArr[i].tid, delaunyArr[i].pid, delaunyArr[i].x, delaunyArr[i].y);
-    }
-#endif
 
     PGR_DBG("Calling alpha-shape driver\n");
 
