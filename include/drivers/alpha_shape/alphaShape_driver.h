@@ -28,26 +28,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* for syze_t */
 #include <stddef.h>
+#include "c_types/pgr_edge_xy_t.h"
 #include "c_types/pgr_point_t.h"
-#include "c_types/delauny_t.h"
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#if 0
     char * delauny_query(
             char * points_query);
 
     size_t points_size(
             Pgr_point_t *vertices,
             const size_t count);
-
+#endif
     void do_alphaShape(
-            Pgr_point_t *vertices,
-            size_t count,
-            Delauny_t *delaunyArr,
-            size_t delaunyTotal,
-
+            Pgr_edge_xy_t *edgesArr,
+            size_t edgesTotal,
 
             double alpha,
 

@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------
 
 CREATE OR REPLACE FUNCTION _pgr_alphaShape1(
-    TEXT, -- vertices sql
+    TEXT, -- edges sql
     alpha FLOAT DEFAULT 0,
 
     OUT x FLOAT,

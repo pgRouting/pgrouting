@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/bpoint.hpp"
 #include "alphaShape/pgr_alphaShape.hpp"
 
+#if 0
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/Alpha_shape_2.h>
 #include <CGAL/Alpha_shape_vertex_base_2.h>
@@ -51,10 +52,11 @@ using Fb    = CGAL::Alpha_shape_face_base_2<K>;
 using Tds   = CGAL::Triangulation_data_structure_2<Vb,Fb>;
 using Triangulation_2   = CGAL::Delaunay_triangulation_2<K,Tds>;
 using Alpha_shape_2     = CGAL::Alpha_shape_2<Triangulation_2>;
-
+#endif
 
 // ---------------------------------------------------------------------
 
+#if 0
 char *
 delauny_query(
         char * points_query) {
@@ -107,8 +109,9 @@ points_size(
         return 0;
     }
 }
+#endif
 
-
+#if 0
 using Ring = std::vector<Point>;
 
 static
@@ -153,13 +156,13 @@ extract_rings(std::vector<Segment> segments) {
     }
     return rings;
 }
+#endif
 
 void
 do_alphaShape(
-        Pgr_point_t *pointsArr,
-        size_t pointsTotal,
-        Delauny_t *delaunyArr,
-        size_t delaunyTotal,
+        Pgr_edge_xy_t *edgesArr,
+        size_t edgesTotal,
+
         double alpha,
 
         Pgr_point_t **return_tuples,
@@ -171,11 +174,10 @@ do_alphaShape(
     std::ostringstream err;
     std::ostringstream notice;
     try {
-        pgassert(pointsArr);
-        pgassert(pointsTotal > 2);
-        pgassert(delaunyArr);
-        pgassert(delaunyTotal > 0);
+        pgassert(edgesArr);
+        pgassert(edgesTotal > 2);
 
+#if 0
         using Bpoint = pgrouting::Bpoint;
         using Pgr_alphaShape = pgrouting::alphashape::Pgr_alphaShape;
         std::vector<Point> points;
@@ -261,6 +263,7 @@ do_alphaShape(
                 idx++;
             }
         }
+#endif
 
         *log_msg = log.str().empty()?
             *log_msg :

@@ -31,26 +31,34 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 
 
+#include "c_common/edges_input.h"
+#if 0
 #include "c_types/pgr_point_t.h"
 #include "c_common/pgr_point_input.h"
 #include "c_common/delauny_input.h"
+#endif
 
 #include "drivers/alpha_shape/alphaShape_driver.h"
 
 PGDLLEXPORT Datum alphaShape(PG_FUNCTION_ARGS);
 
 static void process(
-        char* points_sql,
+        char* edges_sql,
         double alpha,
 
         Pgr_point_t **res,
         size_t *result_count) {
     pgr_SPI_connect();
 
+    Pgr_edge_xy_t *edgesArr = NULL;
+    size_t edgesSize = 0;
+
+    pgr_get_edges_xy(edges_sql, &edgesArr, &edgesSize);
+
+#if 0
     Pgr_point_t *pointsArr = NULL;
     size_t pointsTotal = 0;
     pgr_point_input(points_sql, &pointsArr, &pointsTotal);
-
     for (size_t i = 0; i < pointsTotal; ++i) {
         PGR_DBG("x %.10f y %.10f", pointsArr[i].x, pointsArr[i].y);
     }
@@ -59,23 +67,22 @@ static void process(
     PGR_DBG("%ld", pointsTotal);
     pointsTotal = points_size(pointsArr, pointsTotal);
     PGR_DBG("%ld", pointsTotal);
-
-#if 0
     for (size_t i = 0; i < pointsTotal; ++i) {
         PGR_DBG("x %.10f y %.10f", pointsArr[i].x, pointsArr[i].y);
     }
 #endif
 
-    PGR_DBG("totalpoints2: %ld", pointsTotal);
+    PGR_DBG("total edges %ld", edgesSize);
 
-    if (pointsTotal < 3) {
-        if (pointsArr) pfree(pointsArr);
+    if (edgesSize < 3) {
+        if (edgesArr) pfree(edgesArr);
         elog(ERROR, "Less than 3 vertices."
                 " pgr_alphaShape needs at least 3 vertices.");
         pgr_SPI_finish();
         return;
     }
 
+#if 0
     /*
      * Calculating Delauny triangles using postGIS
      */
@@ -88,7 +95,6 @@ static void process(
 
     PGR_DBG("delauny total %ld", delaunyTotal);
 
-#if 0
     for (size_t i = 0; i < delaunyTotal; ++i) {
         PGR_DBG("tid %ld pid %ld x %.10f y %.10f", delaunyArr[i].tid, delaunyArr[i].pid, delaunyArr[i].x, delaunyArr[i].y);
     }
@@ -101,8 +107,7 @@ static void process(
     char* notice_msg = NULL;
 
     do_alphaShape(
-            pointsArr, pointsTotal,
-            delaunyArr, delaunyTotal,
+            edgesArr, edgesSize,
             alpha,
 
             res,
@@ -122,8 +127,7 @@ static void process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (pointsArr) pfree(pointsArr);
-    if (delaunyArr) pfree(delaunyArr);
+    if (edgesArr) pfree(edgesArr);
     pgr_SPI_finish();
 }
 
