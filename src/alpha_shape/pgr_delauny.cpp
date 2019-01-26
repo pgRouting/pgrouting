@@ -147,41 +147,22 @@ possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
  */
 void
 Pgr_delauny::save_points_from_delauny_info() {
-#if 1
     for (auto &d : m_delauny) m_points.push_back({d.x, d.y});
-
-#else
-    for (auto &d : m_delauny) {
-        Bpoint p(d.x, d.y);
-        auto point_itr = std::find_if(m_points.begin(), m_points.end(),
-                [&p](const Bpoint &p1)->bool {
-                    return boost::geometry::equals(p, p1);
-                });
-
-        if (point_itr == m_points.end()) {
-            /*
-             * Point is not found
-             */
-            d.pid = m_points.size();
-            m_points.push_back(p);
-        } else {
-            d.pid = point_itr - m_points.begin();
-        }
-    }
-#endif
     remove_duplicated(m_points);
-    log << "\npoints after removing duplicates" << bg::wkt(m_points);
 }
 
+// TODO p_delauny is an edge table
 Pgr_delauny::Pgr_delauny(
              const std::vector<Delauny_t> &p_delauny) :
     m_delauny(p_delauny) {
         save_points_from_delauny_info();
+#if 0
         /*
          * removing duplicate triangles information
+         * Not working because pid is not saved on m_delauny
          */
         cleanup_data(m_delauny);
-
+#endif
         /*
          * creating the triangles
          */
@@ -285,18 +266,6 @@ Pgr_delauny::alpha_edges(double alpha) const {
             }
         }
     }
-
-#if 0
-    log << "\nNot on alpha ";
-    for (const auto line : not_inalpha) {
-        log << "\n" << boost::geometry::wkt(line);
-    }
-
-    log << "\nOn alpha ";
-    for (const auto line : inalpha) {
-        log << "\n" << boost::geometry::wkt(line);
-    }
-#endif
 
     log << "\nOn external ";
     Blines alpha_edges;
