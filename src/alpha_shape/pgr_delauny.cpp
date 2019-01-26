@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <algorithm>
+#include <functional>
 
 #include "cpp_common/bpoint.hpp"
 #include "cpp_common/bline.hpp"
@@ -42,17 +43,16 @@ namespace alphashape {
 
 namespace {
 
-#if 0
-template<class ForwardIt, class T, class Compare=std::less<>>
+
+template<class ForwardIt, class T, class Compare=std::less<T>>
 ForwardIt binary_find(ForwardIt first, ForwardIt last, const T& value, Compare comp={})
 {
     // Note: BOTH type T and the type after ForwardIt is dereferenced
     // must be implicitly convertible to BOTH Type1 and Type2, used in Compare.
-    // This is stricter than lower_bound requirement (see above)
+    // This is stricter than lower_bound requirement
     first = std::lower_bound(first, last, value, comp);
     return first != last && !comp(value, *first) ? first : last;
 }
-#endif
 
 void
 cleanup_data(std::vector<Delauny_t> &delauny) {
@@ -107,7 +107,10 @@ remove_duplicated_lines(Blines  &lines) {
 std::vector<Bpoint>
 possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
     std::vector<Bpoint> centers;
-    pgassert(!bg::equals(p1, p2));
+    /*
+     * p1 and p2 are the same point
+     */
+    if (bg::equals(p1, p2)) return centers;
 
     auto rombus_center = p2;
     bg::add_point(rombus_center, p1);
@@ -144,10 +147,8 @@ possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
  */
 void
 Pgr_delauny::save_points_from_delauny_info() {
-#if 0
+#if 1
     for (auto &d : m_delauny) m_points.push_back({d.x, d.y});
-    remove_duplicated(m_points);
-
 
 #else
     for (auto &d : m_delauny) {
@@ -168,6 +169,8 @@ Pgr_delauny::save_points_from_delauny_info() {
         }
     }
 #endif
+    remove_duplicated(m_points);
+    log << "\npoints after removing duplicates" << bg::wkt(m_points);
 }
 
 Pgr_delauny::Pgr_delauny(
@@ -191,28 +194,15 @@ Pgr_delauny::Pgr_delauny(
 
         for (const auto d : m_delauny) {
             Bpoint p({d.x, d.y});
-            triangle_points[i] = p;
-
-#if 0
-            auto point_itr1 = binary_find(
+            triangle_points[i] = Bpoint({d.x, d.y});
+            point_idx[i]  = binary_find(
                     m_points.begin(), m_points.end(), triangle_points[i],
                     [](Bpoint lhs, Bpoint rhs) -> bool {
-                        if (bg::equals(lhs, rhs)) return false;
                         if (lhs.x() < rhs.x()) return true;
+                        if (lhs.x() > rhs.x()) return false;
                         return lhs.y() < rhs.y();
                     }) - m_points.begin();
-#endif
 
-            auto point_itr = std::find_if(m_points.begin(), m_points.end(),
-                [&p](const Bpoint &p1)->bool {
-                    return boost::geometry::equals(p, p1);
-                });
-
-            point_idx[i] = point_itr - m_points.begin();
-#if 0
-            pgassert(point_idx[i] == point_itr1);
-#endif
-            triangle_points[i] = Bpoint(d.x, d.y);
             if (i == 2) {
                 auto tid = m_triangles.size();
                 m_triangles.push_back(Pgr_triangle(triangle_points));
