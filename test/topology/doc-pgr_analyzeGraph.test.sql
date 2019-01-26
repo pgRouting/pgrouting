@@ -28,13 +28,13 @@ SELECT  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');
 SELECT  pgr_analyzeGraph('edge_table',0.001,the_geom:='the_geom',id:='id',source:='source',target:='target');
 \echo -- q5.1
 
-\echo -- q6
+\echo -- q6.1
 SELECT  pgr_analyzeGraph('edge_table',0.001,source:='source',id:='id',target:='target',the_geom:='the_geom');
-\echo -- q6.1
+\echo -- q6.2
 
-\echo -- q6
+\echo -- q6.3
 SELECT  pgr_analyzeGraph('edge_table',0.001,source:='source');
-\echo -- q6.1
+\echo -- q6.4
 
 \echo -- q7
 SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='id < 10');
@@ -46,19 +46,13 @@ SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_
 
 \echo -- q9
 CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
-\echo -- q9.1
-
-\echo -- q10
 SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)');
-\echo -- q10.1
+\echo -- q10
 
 \echo -- q11
 CREATE TABLE mytable AS (SELECT id AS gid, source AS src ,target AS tgt , the_geom AS mygeom FROM edge_table);
-\echo -- q11.1
-
-\echo -- q12
 SELECT pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt', clean := true);
-\echo -- q12.1
+\echo -- q12
 
 \echo -- q13
 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt');
