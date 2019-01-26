@@ -1,8 +1,8 @@
 #VERSION pgrouting 3.0.0
 #TYPES
 #FUNCTIONS
+pgr_alphashape1(geometry[],double precision,boolean)
 _pgr_alphashape1(text,double precision)
-pgr_alphashape1(text,double precision)
 pgr_alphashape(text,double precision)
 pgr_analyzegraph(text,double precision,text,text,text,text,text)
 pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)
