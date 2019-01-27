@@ -218,7 +218,7 @@ $$ LANGUAGE plpgsql;
 
 create or REPLACE function pgr_createtopology_multimodal (p_lineal_groups jsonb, p_puntual_groups jsonb, p_layers jsonb,
                                                                         p_graph_lines_table text, p_graph_lines_schema text, p_tolerance FLOAT,
-                                                                        out ip_out_d integer, out p_out_layname text, out p_out_error text)
+                                                                        out ip_out_d bigint, out p_out_layname text, out p_out_error text)
   returns setof record AS
 $$
 DECLARE
