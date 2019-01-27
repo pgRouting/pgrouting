@@ -34,13 +34,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iosfwd>
 
 #include "c_types/delauny_t.h"
+#include "c_types/pgr_edge_xy_t.h"
 #include "cpp_common/bpoint.hpp"
 #include "cpp_common/bline.hpp"
 #include "cpp_common/pgr_messages.h"
 #include "alphaShape/pgr_triangle.hpp"
+#include "cpp_common/pgr_base_graph.hpp"
 
 namespace pgrouting {
 namespace alphashape {
+
+using BG = boost::adjacency_list<
+        boost::setS, boost::vecS,
+        boost::undirectedS,
+        XY_vertex, Basic_edge >;
+using G = graph::Pgr_base_graph <BG, XY_vertex, Basic_edge>;
 
 
 class Pgr_delauny : public Pgr_messages {
@@ -49,8 +57,8 @@ class Pgr_delauny : public Pgr_messages {
 
  public:
      Pgr_delauny() = default;
-     Pgr_delauny(
-             const std::vector<Delauny_t> &triangles);
+     Pgr_delauny(const std::vector<Delauny_t> &triangles);
+     Pgr_delauny(const std::vector<Pgr_edge_xy_t> &edges);
 
      void clear();
 
@@ -60,6 +68,9 @@ class Pgr_delauny : public Pgr_messages {
 
      void alpha_edges(double alpha) const;
      void save_points_from_delauny_info();
+     void save_points_from_graph_info();
+
+     G graph;
 
      Bpoints   m_points;
      Blines m_lines;

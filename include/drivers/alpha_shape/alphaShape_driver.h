@@ -36,14 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-#if 0
-    char * delauny_query(
-            char * points_query);
-
-    size_t points_size(
-            Pgr_point_t *vertices,
-            const size_t count);
-#endif
     void do_alphaShape(
             Pgr_edge_xy_t *edgesArr,
             size_t edgesTotal,

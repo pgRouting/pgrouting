@@ -32,15 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
 
-#include "cpp_common/bpoint.hpp"
 #include "alphaShape/pgr_alphaShape.hpp"
-
+#include "cpp_common/pgr_base_graph.hpp"
 
 
 void
 do_alphaShape(
         Pgr_edge_xy_t *edgesArr,
-        size_t edgesTotal,
+        size_t edgesSize,
 
         double alpha,
 
@@ -54,9 +53,20 @@ do_alphaShape(
     std::ostringstream notice;
     try {
         pgassert(edgesArr);
-        pgassert(edgesTotal > 2);
+        pgassert(edgesSize > 2);
+
+        std::vector<Pgr_edge_xy_t> edges(edgesArr, edgesArr + edgesSize);
+        using Pgr_alphaShape = pgrouting::alphashape::Pgr_alphaShape;
+        Pgr_alphaShape alphaShape(edges);
 
 #if 0
+        log << "Working with Undirected Graph\n";
+        pgrouting::xyUndirectedGraph undigraph(
+                pgrouting::extract_vertices(edgesArr, edgesSize),
+                UNDIRECTED);
+        undigraph.insert_edges(edgesArr, edgesSize);
+        log << undigraph;
+
         using Bpoint = pgrouting::Bpoint;
         using Pgr_alphaShape = pgrouting::alphashape::Pgr_alphaShape;
         std::vector<Point> points;
@@ -85,14 +95,13 @@ do_alphaShape(
             log << i++ << ")" << p << "\n";
         }
 
-        Pgr_alphaShape alphaShape(delauny);
 
+#endif
         log << "LOG STARTS **********\n";
         log << alphaShape.get_log();
         log << "\nLOG ENDS **********\n";
         log << alphaShape;
         log << "LOG ENDS **********\n";
-#endif
 
         *log_msg = log.str().empty()?
             *log_msg :

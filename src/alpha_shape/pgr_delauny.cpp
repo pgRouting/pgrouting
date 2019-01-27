@@ -31,9 +31,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <functional>
 
+#include <boost/graph/iteration_macros.hpp>
+
+#include "cpp_common/pgr_assert.h"
+
 #include "cpp_common/bpoint.hpp"
 #include "cpp_common/bline.hpp"
-#include "cpp_common/pgr_assert.h"
 #include "alphaShape/pgr_triangle.hpp"
 
 namespace bg = boost::geometry;
@@ -42,7 +45,6 @@ namespace pgrouting {
 namespace alphashape {
 
 namespace {
-
 
 template<class ForwardIt, class T, class Compare=std::less<T>>
 ForwardIt binary_find(ForwardIt first, ForwardIt last, const T& value, Compare comp={})
@@ -151,9 +153,29 @@ Pgr_delauny::save_points_from_delauny_info() {
     remove_duplicated(m_points);
 }
 
-// TODO p_delauny is an edge table
+// TODO this is not necesary the points can be accessed from the graph
+// shows how the access can be done
+void
+Pgr_delauny::save_points_from_graph_info() {
+    BGL_FORALL_VERTICES_T(v, graph.graph, BG) {
+        m_points.push_back(graph[v].point);
+    }
+}
+
+
+Pgr_delauny::Pgr_delauny(const std::vector<Pgr_edge_xy_t> &edges) :
+graph(UNDIRECTED) {
+    log << "Working with Undirected Graph\n";
+    graph.insert_edges(edges);
+    save_points_from_graph_info();
+
+    log << graph;
+}
+
+
 Pgr_delauny::Pgr_delauny(
-             const std::vector<Delauny_t> &p_delauny) :
+        const std::vector<Delauny_t> &p_delauny) :
+    graph(UNDIRECTED),
     m_delauny(p_delauny) {
         save_points_from_delauny_info();
 #if 0

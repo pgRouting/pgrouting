@@ -34,7 +34,7 @@ namespace pgrouting {
 
 
 std::ostream& operator<<(std::ostream& log, const XY_vertex &v) {
-    log << v.id << "(" << v.point.x() << "," << v.point.y() << ")";
+    log << v.id << "-" << bg::wkt(v.point);
     return log;
 }
 

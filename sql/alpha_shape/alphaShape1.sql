@@ -43,13 +43,13 @@ delauny_query   TEXT;
 BEGIN
     info_query = $$
         foo AS (
-            SELECT tid, seq, source, geom
+            SELECT id, seq, source, geom
             FROM the_points
             JOIN delauny_info USING (geom)
             WHERE seq != 4
         )
         SELECT
-            tid as edge_id,
+            id,
             one.source,
             two.source as target,
             1 AS cost,
@@ -57,7 +57,7 @@ BEGIN
             ST_Y(one.geom) AS y1,
             ST_X(two.geom) AS x2,
             ST_Y(two.geom) AS y2
-        FROM foo AS one JOIN foo as two USING(tid)
+        FROM foo AS one JOIN foo as two USING(id)
         WHERE one.source < two.source;
         $$;
 
@@ -70,10 +70,10 @@ BEGIN
                 SELECT unnest(%1$L::geometry[]) AS geom
             ),
             data AS (
-                SELECT row_number() over() AS tid, geom FROM original_data
+                SELECT row_number() over() AS id, geom FROM original_data
             ),
             delauny_info AS (
-                SELECT tid,
+                SELECT id,
                 (ST_DumpPoints(geom)).path[2] as seq,
                 (ST_DumpPoints(geom)).geom
                 FROM data
@@ -97,7 +97,7 @@ BEGIN
             FROM the_unique_points
         ),
         delauny_info AS (
-            SELECT a.path[1] AS tid,
+            SELECT a.path[1] AS id,
             (ST_DumpPoints(a.geom)).path[2] as seq,
             (ST_DumpPoints(a.geom)).geom
             FROM (

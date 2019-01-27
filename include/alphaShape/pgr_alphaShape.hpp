@@ -30,7 +30,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "cpp_common/pgr_messages.h"
+
 #include "alphaShape/pgr_delauny.hpp"
+#include "c_types/pgr_edge_xy_t.h"
+
 
 namespace pgrouting {
 namespace alphashape {
@@ -38,7 +41,8 @@ namespace alphashape {
 class Pgr_alphaShape : public Pgr_messages {
  public:
      Pgr_alphaShape() = default;
-     Pgr_alphaShape(std::vector<Delauny_t>);
+     Pgr_alphaShape(const std::vector<Delauny_t>&);
+     Pgr_alphaShape(const std::vector<Pgr_edge_xy_t>&);
 
      void clear();
 
