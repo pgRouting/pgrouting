@@ -336,7 +336,7 @@ BEGIN
         --This is needed in order to drop duplicates points in a linestring or multilinestring.
         v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom,p_tolerance, FALSE );
         if(v_current_line_layer_the_geom is NULL ) THEN
-          return query select v_current_line_layer_id::int, v_lineal_layer::text ,'Invalid MultiLinestring. A valid multilinestring is the one conformed by lines connected like they were a single line chopped. Geom wasnt used.'::text;
+          return query select v_current_line_layer_id::bigint, v_lineal_layer::text ,'Invalid MultiLinestring. A valid multilinestring is the one conformed by lines connected like they were a single line chopped. Geom wasnt used.'::text;
           continue;
         END IF;
 
@@ -467,14 +467,14 @@ BEGIN
         ORDER BY r NULLS LAST --Because I order by r with nulls last the first value must be an assigned one if there is one
         limit 1;
         if v_r_geom is NULL then
-          return query select  v_point_id::int, v_keyvalue.key::text ,'El punto no intersecta a ningun otro punto del grafo'::text;
+          return query select  v_point_id::bigint, v_keyvalue.key::text ,'El punto no intersecta a ningun otro punto del grafo'::text;
           CONTINUE ;
         END IF;
 
         EXECUTE 'select layname from ' || v_r_table_name|| ' where id=$1'into v_lineal_layer using v_r_r;
 
         if v_lineal_layer is not null THEN
-          return query select v_point_id::int, v_keyvalue.key::text ,'El punto se intersecta con otro punto de otra capa puntual en el mismo grupo, no se sabe por cual de los 2 hacer la union.'::int;
+          return query select v_point_id::bigint, v_keyvalue.key::text ,'El punto se intersecta con otro punto de otra capa puntual en el mismo grupo, no se sabe por cual de los 2 hacer la union.'::int;
           CONTINUE;
         END IF;
 
