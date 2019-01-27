@@ -474,7 +474,7 @@ BEGIN
         EXECUTE 'select layname from ' || v_r_table_name|| ' where id=$1'into v_lineal_layer using v_r_r;
 
         if v_lineal_layer is not null THEN
-          return query select v_point_id::bigint, v_keyvalue.key::text ,'El punto se intersecta con otro punto de otra capa puntual en el mismo grupo, no se sabe por cual de los 2 hacer la union.'::int;
+          return query select v_point_id::bigint, v_keyvalue.key::text ,'El punto se intersecta con otro punto de otra capa puntual en el mismo grupo, no se sabe por cual de los 2 hacer la union.'::text;
           CONTINUE;
         END IF;
 
