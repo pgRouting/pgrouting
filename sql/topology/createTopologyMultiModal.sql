@@ -117,7 +117,7 @@ create or REPLACE FUNCTION pgr_polyfill_jsonb_insert(p_jsonb jsonb, p_path text[
   returns jsonb as
 $$
 BEGIN
-  if current_setting('server_version_num')::integer < 90500 then
+  if current_setting('server_version_num')::integer   < 90500 then
     return pgr_polyfill_json_object_insert_path(p_jsonb, p_path, p_value);
   else
     return jsonb_insert(p_jsonb, p_path, p_value);
@@ -225,13 +225,13 @@ DECLARE
   v_lineal_group_record record;
   v_lineal_layer text;  --Layer being analized
   --current line layer--------------------------------------------------------------------------------
-  v_current_line_layer_id integer; --identifier of current line from line_layer
+  v_current_line_layer_id bigint; --identifier of current line from line_layer
   v_current_line_layer_the_geom geometry ; --geom of current line from line_layer
   v_current_line_layer_z_start float ; --z_start of current line from line_layer
   v_current_line_layer_z_end float; --z_end of current line from line_layer
   ----------------------------------------------------------------------------------------------------
   --current point layer-------------------------------------------------------------------------------
-  v_point_id integer;
+  v_point_id bigint;
   v_point_the_geom geometry;
   v_point_z float;
   ----------------------------------------------------------------------------------------------------
@@ -240,7 +240,7 @@ DECLARE
   v_z_value FLOAT;   --Z value when geometry'z is not used
   v_point geometry;  --Point to insert
   --representative_point_layer------------------------------------------------------------------------
-  v_r_id integer;
+  v_r_id bigint;
   v_r_geom geometry;
   v_r_r integer;
 
@@ -248,18 +248,18 @@ DECLARE
   v_r INTEGER;        --representante del actual punto, es un id.
   v_n_points INTEGER; --cantidad de puntos en la geometria que se esta analizando
   v_point_pos INTEGER; --posicion del punto en su geom, 1-inicio 2-fin, 3-medio
-  v_r_point_id INTEGER default 1; --id del proximo punto representante a insertar
+  v_r_point_id bigint default 1; --id del proximo punto representante a insertar
   v_group INTEGER DEFAULT 0;
   v_keyvalue record;
   v_r_table_name text;
   v_lines_table_name text;
   v_p_groups INTEGER[];
-  v_source INTEGER;
-  v_target INTEGER;
+  v_source bigint;
+  v_target bigint;
   v_pos INTEGER;
   --current line intersecting by intermediate point---------------------------------------------------
   v_intersected_geom geometry;
-  v_intersected_id  integer;
+  v_intersected_id  bigint;
   ----------------------------------------------------------------------------------------------------
   v_points_make_line geometry[];
   v_line_point geometry;
@@ -280,7 +280,7 @@ BEGIN
   drop table if EXISTS pgr_create_top_graph_ptos;
   CREATE TEMPORARY TABLE pgr_create_top_graph_ptos(
      pos INTEGER, --Point position inside its geometry, 1=start, 2=end, 3=middle.
-     id INTEGER,  --Geometry's id where this point belongs to.
+     id bigint,  --Geometry's id where this point belongs to.
      layname char(128), --Layer's name where this point belongs to.
      r INTEGER,   --Representative' id of this point in the graph, it is null in case it doesn't belongs to the graph.FK to v_r_table_name.id
      geom geometry,
@@ -296,9 +296,9 @@ BEGIN
   --Table of Representative points.
   EXECUTE 'drop table if exists '|| v_r_table_name;
   EXECUTE 'create table '|| v_r_table_name  ||
-          '(id integer primary key, ' ||
+          '(id bigint primary key, ' ||
           'layname text,' ||
-          'id_geom integer,' ||
+          'id_geom bigint,' ||
           'geom geometry)';
 
   -- Table of graph's edges
@@ -307,9 +307,9 @@ BEGIN
     --It is linestring because of if there is a layer with multilinestring geometries,
     --in order to them being valid, they must be convertable to linestring completely
           '(geom geometry,' ||
-          'source integer,' ||
-          'target integer,' ||
-          'id_geom integer,' || --id of the geometry that contains this edge
+          'source bigint,' ||
+          'target bigint,' ||
+          'id_geom bigint,' || --id of the geometry that contains this edge
           'layname text,' ||     --name of the layer that has the geometry containing this edge
           'id serial primary key)';
   EXECUTE 'create index on '|| v_lines_table_name||' (id_geom)';
