@@ -30,23 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace alphashape {
 
-void
-Pgr_alphaShape::clear() {
-    m_info.clear();
-}
-
-#if 0
-Pgr_alphaShape::Pgr_alphaShape(const std::vector<Delauny_t> &p_delauny) :
-    m_info(p_delauny) {
-        log << m_info.get_log();
-}
-#endif
-
 Pgr_alphaShape::Pgr_alphaShape(
         const std::vector<Pgr_edge_xy_t> &edges) :
-    m_info(edges) {
-        log << m_info.get_log();
-    }
+    m_info(edges) { }
 
 
 std::ostream&

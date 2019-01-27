@@ -40,13 +40,9 @@ namespace alphashape {
 
 class Pgr_alphaShape : public Pgr_messages {
  public:
-     Pgr_alphaShape() = default;
-#if 0
-     Pgr_alphaShape(const std::vector<Delauny_t>&);
-#endif
+     Pgr_alphaShape() = delete;
      Pgr_alphaShape(const std::vector<Pgr_edge_xy_t>&);
 
-     void clear();
 
      friend std::ostream& operator<<(std::ostream&, const Pgr_alphaShape&);
 

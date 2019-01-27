@@ -56,47 +56,11 @@ do_alphaShape(
         pgassert(edgesSize > 2);
 
         std::vector<Pgr_edge_xy_t> edges(edgesArr, edgesArr + edgesSize);
+
         using Pgr_alphaShape = pgrouting::alphashape::Pgr_alphaShape;
+
         Pgr_alphaShape alphaShape(edges);
 
-#if 0
-        log << "Working with Undirected Graph\n";
-        pgrouting::xyUndirectedGraph undigraph(
-                pgrouting::extract_vertices(edgesArr, edgesSize),
-                UNDIRECTED);
-        undigraph.insert_edges(edgesArr, edgesSize);
-        log << undigraph;
-
-        using Bpoint = pgrouting::Bpoint;
-        using Pgr_alphaShape = pgrouting::alphashape::Pgr_alphaShape;
-        std::vector<Point> points;
-        std::vector<Bpoint> bpoints;
-
-        for (std::size_t j = 0; j < pointsTotal; ++j) {
-            Point p(pointsArr[j].x, pointsArr[j].y);
-            points.push_back(p);
-            bpoints.push_back(Bpoint(pointsArr[j].x, pointsArr[j].y));
-        }
-
-        std::vector<Delauny_t> delauny(delaunyArr, delaunyArr + delaunyTotal);
-        for (const auto d : delauny) {
-            log << d.tid << ")" << d.pid << "," << d.x << " " << d.y << "\n";
-        }
-
-        size_t i(0);
-        for (const auto p : bpoints) {
-            log << i++ << ")" << boost::geometry::wkt(p) << "\n";
-            pgr_msg(log.str().c_str());
-        }
-
-        log << "points: ";
-        i = 0;
-        for (const auto p : points) {
-            log << i++ << ")" << p << "\n";
-        }
-
-
-#endif
         log << "LOG STARTS **********\n";
         log << alphaShape.get_log();
         log << "\nLOG ENDS **********\n";
