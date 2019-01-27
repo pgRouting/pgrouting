@@ -157,7 +157,7 @@ Pgr_delauny::save_points_from_delauny_info() {
 // shows how the access can be done
 void
 Pgr_delauny::save_points_from_graph_info() {
-    BGL_FORALL_VERTICES_T(v, graph.graph, BG) {
+    BGL_FORALL_VERTICES(v, graph.graph, BG) {
         m_points.push_back(graph[v].point);
     }
 }
@@ -169,7 +169,7 @@ graph(UNDIRECTED) {
     graph.insert_edges(edges);
     save_points_from_graph_info();
 
-    log << graph;
+    alpha_edges(1);
 }
 
 
@@ -248,12 +248,69 @@ Pgr_delauny::Pgr_delauny(
         remove_duplicated_lines(m_lines);
         log << "\nafter" << bg::wkt(m_lines);
 
-        alpha_edges(1);
+        alpha_edges_from_delauny(1);
 }
 
 
 void
 Pgr_delauny::alpha_edges(double alpha) const {
+    if (alpha == 0) return;
+
+    auto radius = 1 / alpha;
+    std::vector<Bline> not_inalpha;
+    std::vector<Bline> inalpha;
+    std::vector<Bline> border;
+
+    BGL_FORALL_EDGES_T(edge, graph.graph, BG) {
+        Bpoint source {graph[graph.source(edge)].point};
+        Bpoint target {graph[graph.target(edge)].point};
+
+#if 1
+        log << "\n\nsegment " << bg::wkt(Bline{{source, target}});
+#endif
+        auto centers = possible_centers(source, target, radius);
+#if 1
+        for(const auto c : centers) {
+            log << "\tcenter " << boost::geometry::wkt(c);
+        };
+#endif
+
+        if (centers.empty()) {
+            // TODO could be the edge descriptor
+            not_inalpha.push_back(Bline{{source, target}});
+        } else {
+            // TODO could be the edge descriptor
+            inalpha.push_back(Bline{{source, target}});
+            /*
+             * Is the segment in a border?
+             */
+            size_t count0(0);
+            size_t count1(0);
+            BGL_FORALL_VERTICES(v, graph.graph, BG) {
+                auto p(graph[v].point);
+                if (bg::equals(p, source) || bg::equals(p, target)) continue;
+                count0 += (bg::distance(p, centers[0]) < radius)? 1 : 0;
+                count1 += (bg::distance(p, centers[1]) < radius)? 1 : 0;
+            }
+
+            if ((count0 && !count1) || (!count0 && count1)) {
+            // TODO could be the edge descriptor
+                border.push_back(Bline{{source, target}});
+            }
+        }
+    }
+
+    log << "\nOn external ";
+
+    for (const auto line : border) {
+        log << "\n" << boost::geometry::wkt(line);
+    }
+}
+
+
+
+void
+Pgr_delauny::alpha_edges_from_delauny(double alpha) const {
     if (alpha == 0) return;
 
     auto radius = 1 / alpha;
@@ -295,7 +352,6 @@ Pgr_delauny::alpha_edges(double alpha) const {
     for (const auto line : border) {
         log << "\n" << boost::geometry::wkt(line);
     }
-
 }
 
 

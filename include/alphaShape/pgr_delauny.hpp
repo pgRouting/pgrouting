@@ -67,6 +67,7 @@ class Pgr_delauny : public Pgr_messages {
  private:
 
      void alpha_edges(double alpha) const;
+     void alpha_edges_from_delauny(double alpha) const;
      void save_points_from_delauny_info();
      void save_points_from_graph_info();
 
