@@ -561,7 +561,7 @@ BEGIN
           if v_zconn = 2 and v_geom_dims = 3 THEN
             v_line_point := pgr_create_topo_set_point(2,v_line_point,0,0);
           END IF;
-          if st_astext(v_line_point) = st_astext(v_point) THEN
+          if st_3ddwithin(v_line_point,v_point,p_tolerance) THEN
             v_points_make_line := v_points_make_line || v_line_point;
             EXECUTE 'insert into '||v_lines_table_name||' values ($1,$2,$3,$4,$5)' USING st_makeline(v_points_make_line),v_source,v_r,v_current_line_layer_id,v_keyvalue.key;
             v_points_make_line :='{}';
