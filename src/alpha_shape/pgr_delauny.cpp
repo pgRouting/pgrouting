@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "alphaShape/pgr_delauny.hpp"
 
+#if 0
 #include <vector>
 #include <algorithm>
 #include <functional>
@@ -38,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/bpoint.hpp"
 #include "cpp_common/bline.hpp"
 #include "alphaShape/pgr_triangle.hpp"
+#endif
 
 namespace bg = boost::geometry;
 
@@ -56,6 +58,7 @@ ForwardIt binary_find(ForwardIt first, ForwardIt last, const T& value, Compare c
     return first != last && !comp(value, *first) ? first : last;
 }
 
+#if 0
 void
 cleanup_data(std::vector<Delauny_t> &delauny) {
         std::sort(delauny.begin(), delauny.end(),
@@ -104,6 +107,7 @@ remove_duplicated_lines(Blines  &lines) {
                     return bg::equals(lhs, rhs);
                 }), lines.end());
 }
+#endif
 
 
 std::vector<Bpoint>
@@ -140,6 +144,7 @@ possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
 }
 }  // namespace detail
 
+#if 0
 /*
  * Inserting points from delauny information
  *  tid, pid, Bpoint
@@ -161,30 +166,31 @@ Pgr_delauny::save_points_from_graph_info() {
         m_points.push_back(graph[v].point);
     }
 }
-
+#endif
 
 Pgr_delauny::Pgr_delauny(const std::vector<Pgr_edge_xy_t> &edges) :
 graph(UNDIRECTED) {
     log << "Working with Undirected Graph\n";
     graph.insert_edges(edges);
+#if 0
     save_points_from_graph_info();
+#endif
 
     alpha_edges(1);
 }
 
 
+#if 0
 Pgr_delauny::Pgr_delauny(
         const std::vector<Delauny_t> &p_delauny) :
     graph(UNDIRECTED),
     m_delauny(p_delauny) {
         save_points_from_delauny_info();
-#if 0
         /*
          * removing duplicate triangles information
          * Not working because pid is not saved on m_delauny
          */
         cleanup_data(m_delauny);
-#endif
         /*
          * creating the triangles
          */
@@ -250,16 +256,18 @@ Pgr_delauny::Pgr_delauny(
 
         alpha_edges_from_delauny(1);
 }
+#endif
 
 
-void
+std::vector<Bline>
 Pgr_delauny::alpha_edges(double alpha) const {
-    if (alpha == 0) return;
+    std::vector<Bline> border;
+
+    if (alpha == 0) return border;
 
     auto radius = 1 / alpha;
     std::vector<Bline> not_inalpha;
     std::vector<Bline> inalpha;
-    std::vector<Bline> border;
 
     BGL_FORALL_EDGES_T(edge, graph.graph, BG) {
         Bpoint source {graph[graph.source(edge)].point};
@@ -305,10 +313,12 @@ Pgr_delauny::alpha_edges(double alpha) const {
     for (const auto line : border) {
         log << "\n" << boost::geometry::wkt(line);
     }
+
+    return border;
 }
 
 
-
+#if 0
 void
 Pgr_delauny::alpha_edges_from_delauny(double alpha) const {
     if (alpha == 0) return;
@@ -353,9 +363,10 @@ Pgr_delauny::alpha_edges_from_delauny(double alpha) const {
         log << "\n" << boost::geometry::wkt(line);
     }
 }
+#endif
 
 
-
+#if 0
 void
 Pgr_delauny::clear() {
     m_relation.clear();
@@ -364,9 +375,10 @@ Pgr_delauny::clear() {
     m_points.clear();
     m_lines.clear();
 }
+#endif
 
 
-
+#if 0
 struct compare_points {
     bool operator() (const Bpoint &lhs, const Bpoint &rhs) const {
         if (lhs.x() < rhs.x()) return true;
@@ -374,10 +386,12 @@ struct compare_points {
         return lhs.y() < rhs.y();
     }
 };
-
+#endif
 
 std::ostream&
 operator<<(std::ostream& os, const Pgr_delauny &d) {
+    os << d.graph;
+#if 0
     os << "Points\n";
     for (const auto p : d.m_points) {
         os << boost::geometry::wkt(p) << ", ";
@@ -400,7 +414,6 @@ operator<<(std::ostream& os, const Pgr_delauny &d) {
         }
     }
 
-#if 0
     os << "\nadjacent\n";
     for (const auto t1 : d.m_triangles) {
         for (const auto t2 : d.m_triangles) {

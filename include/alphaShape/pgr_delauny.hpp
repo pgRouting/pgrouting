@@ -30,16 +30,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <vector>
+#if 0
 #include <map>
+#endif
 #include <iosfwd>
 
-#include "c_types/delauny_t.h"
-#include "c_types/pgr_edge_xy_t.h"
-#include "cpp_common/bpoint.hpp"
-#include "cpp_common/bline.hpp"
-#include "cpp_common/pgr_messages.h"
-#include "alphaShape/pgr_triangle.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/pgr_messages.h"
+#include "cpp_common/bline.hpp"
+
+// this one is included before somehow
+#include "c_types/pgr_edge_xy_t.h"
+#if 0
+#include "c_types/delauny_t.h"
+#include "cpp_common/bpoint.hpp"
+#include "alphaShape/pgr_triangle.hpp"
+#endif
 
 namespace pgrouting {
 namespace alphashape {
@@ -52,32 +58,42 @@ using G = graph::Pgr_base_graph <BG, XY_vertex, Basic_edge>;
 
 
 class Pgr_delauny : public Pgr_messages {
+#if 0
     using Bline = boost::geometry::model::linestring<Bpoint>;
     using Blines = boost::geometry::model::multi_linestring<Bline>;
+#endif
 
  public:
      Pgr_delauny() = default;
+#if 0
      Pgr_delauny(const std::vector<Delauny_t> &triangles);
+#endif
      Pgr_delauny(const std::vector<Pgr_edge_xy_t> &edges);
 
+#if 0
      void clear();
+#endif
 
      friend std::ostream& operator<<(std::ostream&, const Pgr_delauny&);
 
  private:
 
-     void alpha_edges(double alpha) const;
+     std::vector<Bline> alpha_edges(double alpha) const;
+#if 0
      void alpha_edges_from_delauny(double alpha) const;
      void save_points_from_delauny_info();
      void save_points_from_graph_info();
+#endif
 
      G graph;
 
+#if 0
      Bpoints   m_points;
      Blines m_lines;
      std::vector<Delauny_t> m_delauny;
      std::vector<Pgr_triangle> m_triangles;
      std::map<size_t, std::vector<size_t> > m_relation;
+#endif
 };
 
 

@@ -35,10 +35,12 @@ Pgr_alphaShape::clear() {
     m_info.clear();
 }
 
+#if 0
 Pgr_alphaShape::Pgr_alphaShape(const std::vector<Delauny_t> &p_delauny) :
     m_info(p_delauny) {
         log << m_info.get_log();
 }
+#endif
 
 Pgr_alphaShape::Pgr_alphaShape(
         const std::vector<Pgr_edge_xy_t> &edges) :

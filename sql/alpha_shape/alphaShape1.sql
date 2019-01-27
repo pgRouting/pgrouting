@@ -111,6 +111,7 @@ BEGIN
 
     RAISE NOTICE '%', delauny_query;
 
+    RETURN QUERY
     SELECT *
     FROM _pgr_alphaShape1(delauny_query, $2);
 
