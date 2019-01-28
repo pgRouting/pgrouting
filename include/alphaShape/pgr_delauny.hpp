@@ -47,6 +47,8 @@ using BG = boost::adjacency_list<
         boost::undirectedS,
         XY_vertex, Basic_edge >;
 using G = graph::Pgr_base_graph <BG, XY_vertex, Basic_edge>;
+using E = boost::graph_traits<BG>::edge_descriptor;
+using V = boost::graph_traits<BG>::vertex_descriptor;
 
 
 class Pgr_delauny : public Pgr_messages {
@@ -56,11 +58,19 @@ class Pgr_delauny : public Pgr_messages {
      Pgr_delauny(const std::vector<Pgr_edge_xy_t> &edges);
 
 
+
      friend std::ostream& operator<<(std::ostream&, const Pgr_delauny&);
 
  private:
+     std::vector<Bpoly> alpha_edges(double alpha) const;
 
-     std::vector<Bline> alpha_edges(double alpha) const;
+     mutable
+     struct InSpanning {
+         std::set<E> edges;
+         bool operator()(E e) const { return edges.count(e); }
+         void clear() { edges.clear(); }
+     } m_spanning_tree;
+
      G graph;
 };
 

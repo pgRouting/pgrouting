@@ -26,6 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "alphaShape/pgr_delauny.hpp"
+#include <boost/graph/filtered_graph.hpp>
+#include <boost/graph/connected_components.hpp>
+#include "mst/visitors.hpp"
 
 namespace bg = boost::geometry;
 
@@ -78,9 +81,9 @@ graph(UNDIRECTED) {
 }
 
 
-std::vector<Bline>
+std::vector<Bpoly>
 Pgr_delauny::alpha_edges(double alpha) const {
-    std::vector<Bline> border;
+    std::vector<Bpoly> border;
 
     if (alpha == 0) return border;
 
@@ -88,7 +91,7 @@ Pgr_delauny::alpha_edges(double alpha) const {
     std::vector<Bline> not_inalpha;
     std::vector<Bline> inalpha;
 
-    BGL_FORALL_EDGES_T(edge, graph.graph, BG) {
+    BGL_FORALL_EDGES(edge, graph.graph, BG) {
         Bpoint source {graph[graph.source(edge)].point};
         Bpoint target {graph[graph.target(edge)].point};
 
@@ -113,14 +116,73 @@ Pgr_delauny::alpha_edges(double alpha) const {
             }
 
             if ((count0 && !count1) || (!count0 && count1)) {
-            // TODO could be the edge descriptor
-                border.push_back(Bline{{source, target}});
+                E e = edge;
+                m_spanning_tree.edges.insert(e);
+//                border.push_back(Bline{{source, target}});
             }
         }
     }
 
+    using Subgraph = boost::filtered_graph<BG, InSpanning, boost::keep_all>;
+    Subgraph subg (graph.graph, m_spanning_tree, {});
+
+    std::vector<V> component(num_vertices(subg));
+
+    auto num_comps = boost::connected_components(
+            subg,
+            &component[0]);
+
+    struct InComponent {
+         std::set<V> vertices;
+         bool operator()(V v) const { return vertices.count(v); }
+         void clear() { vertices.clear(); }
+     };
+
+    std::vector<InComponent> componentFilter(num_comps);
+    for (const auto v : boost::make_iterator_range(vertices(subg))) {
+        /*
+         * Save each vertex in the corresponding component
+         * v is in component[v]
+         */
+        componentFilter[component[v]].vertices.insert(v);
+    }
+
+    for (const auto filter : componentFilter) {
+        if (filter.vertices.size() < 2) continue;
+        log << "\ncomponent size: " << filter.vertices.size();
+        boost::filtered_graph<BG, InSpanning, InComponent> subSubG(graph.graph, m_spanning_tree, filter);
+        std::vector<E> visited_order;
+        /*
+         * making a dfs of the component
+         */
+        using dfs_visitor = visitors::Dfs_visitor<E>;
+        try {
+            boost::depth_first_search(subSubG, visitor(dfs_visitor(visited_order)));
+        } catch (boost::exception const& ex) {
+            (void)ex;
+            throw;
+        } catch (std::exception &e) {
+            (void)e;
+            throw;
+        } catch (...) {
+            throw;
+        }
+        log << "\nvisited order:";
+
+        Bpoly line;
+        for (const auto edge : visited_order) {
+            log << edge << "->";
+            if (edge == visited_order.front()) {
+                bg::append(line, graph[graph.source(edge)].point);
+            }
+            bg::append(line, graph[graph.target(edge)].point);
+        };
+        border.push_back(line);
+    }
+
     return border;
 }
+
 
 
 std::ostream&
