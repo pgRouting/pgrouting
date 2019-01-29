@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION pgr_alphaShape1(
 
     OUT seq BIGINT,
 --    OUT polygon_id BIGINT,
-    OUT geom TEXT)
+    OUT geom geometry)
     --OUT x FLOAT,
     --OUT y FLOAT)
 RETURNS SETOF record AS
@@ -115,7 +115,7 @@ BEGIN
     --RAISE NOTICE '%', delauny_query;
 
     RETURN QUERY
-    SELECT *
+    SELECT seq1, ST_GeomFromText(textgeom)
     FROM _pgr_alphaShape1(delauny_query, $2);
 
 END

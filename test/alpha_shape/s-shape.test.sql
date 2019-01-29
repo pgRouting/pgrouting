@@ -28,4 +28,6 @@ INSERT INTO s_test(geom) VALUES(ST_GeomFromText('MULTIPOINT(
 (376 -224), (148 -120), (174 -272), (194 -100), (292 -173), (341 -212),
 (369 -209), (189 -258), (198 -159), (275 -190), (322  -82))') ) ;
 
-SELECT * FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test));
+SELECT * FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 0.06);
+SELECT * FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 0.07);
+SELECT * FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 0.08);

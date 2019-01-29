@@ -76,7 +76,7 @@ do_alphaShape(
 
         Pgr_alphaShape alphaShape(edges);
         log << "\nalpha)" << alpha;
-        log << alphaShape;
+        //log << alphaShape;
 
         auto results = alphaShape(alpha);
         log << "\n5)\n";
@@ -125,10 +125,7 @@ do_alphaShape(
         for (const auto r : results) {
             std::stringstream ss;
             ss << bg::wkt(r);
-            //std::string s = static_cast<std::string>(bg::wkt(r));
             (*return_tuples)[row].geom = pgr_msg(ss.str().c_str());
-            log << "\n" << row << "," << ss.str();
-            log << "\n" << row << "," << (*return_tuples)[row].geom;
             ++row;
         }
 

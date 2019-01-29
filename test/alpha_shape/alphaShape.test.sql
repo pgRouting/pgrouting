@@ -3,7 +3,8 @@
 --------------------------------------------------------------------------------
 
 \echo -- q1
-SELECT * FROM pgr_alphaShape1((SELECT array_agg(the_geom) FROM edge_table), 1);
+SELECT seq, ST_AsText(geom), ST_isValid(geom), ST_NumPoints(geom)  FROM pgr_alphaShape1((SELECT array_agg(the_geom) FROM edge_table), 1.581);
+SELECT seq, ST_AsText(geom), ST_isValid(geom), ST_NumPoints(geom)  FROM pgr_alphaShape1((SELECT array_agg(the_geom) FROM edge_table), 1.582);
 \echo -- q2
 
 /*
