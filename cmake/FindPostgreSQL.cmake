@@ -85,7 +85,7 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
 
     find_path(POSTGRESQL_INCLUDE_DIR postgres.h
         ${T_POSTGRESQL_INCLUDE_DIR}
-
+        /usr/pgsql-*/include/server
         /usr/include/server
         /usr/include/pgsql/server
         /usr/local/include/pgsql/server
