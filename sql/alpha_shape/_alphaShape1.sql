@@ -31,9 +31,10 @@ CREATE OR REPLACE FUNCTION _pgr_alphaShape1(
     alpha FLOAT DEFAULT 0,
 
     OUT seq BIGINT,
-    OUT polygon_id BIGINT,
-    OUT x FLOAT,
-    OUT y FLOAT)
+    --OUT polygon_id BIGINT,
+    OUT geom TEXT)
+    --OUT x FLOAT,
+    --OUT y FLOAT)
 RETURNS SETOF record
 AS 'MODULE_PATHNAME', 'alphaShape'
 LANGUAGE c VOLATILE STRICT;

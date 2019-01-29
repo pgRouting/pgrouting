@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/alpha_shape/alphaShape_driver.h"
 
 #include <vector>
+#include <string>
 #include <cmath>
 #include <utility>
 #include <algorithm>
@@ -86,19 +87,10 @@ do_alphaShape(
         log << "\n8)\n";
 
 
-#if 1
-        for (const auto r : results) {
-            pgrouting::Bpoints points;
-            GetPoint get(points);
-            bg::for_each_point(r, get);
-            log << "\npoints in polygon" << bg::num_points(r);
-            log << "->points in polygon" << points.size();
-            for (const auto p : points) {
-                log << p.x() << ", " << p.y();
-            }
-            log << bg::wkt(r);
-        };
-
+#if 0
+        /*
+         * returning a sequence of points
+         */
         if (!results.empty()) {
             for (const auto r : results) {
                 *return_count += bg::num_points(r);
@@ -123,6 +115,23 @@ do_alphaShape(
             }
             ++pid;
         }
+#else
+        /*
+         * returning a sequence of text
+         */
+        *return_count += results.size();
+        *return_tuples = pgr_alloc(*return_count, (*return_tuples));
+        size_t row = 0;
+        for (const auto r : results) {
+            std::stringstream ss;
+            ss << bg::wkt(r);
+            //std::string s = static_cast<std::string>(bg::wkt(r));
+            (*return_tuples)[row].geom = pgr_msg(ss.str().c_str());
+            log << "\n" << row << "," << ss.str();
+            log << "\n" << row << "," << (*return_tuples)[row].geom;
+            ++row;
+        }
+
 #endif
 
         *log_msg = log.str().empty()?
