@@ -25,10 +25,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "alphaShape/pgr_delauny.hpp"
+#include "alphaShape/pgr_alphaShape.hpp"
 #include <boost/graph/filtered_graph.hpp>
 #include <boost/graph/connected_components.hpp>
-#include <boost/graph/graph_traits.hpp>
 #include "mst/visitors.hpp"
 
 namespace bg = boost::geometry;
@@ -88,9 +87,6 @@ Pgr_delauny::operator()(double alpha) const {
 
     if (alpha <= 0) return border;
 
-#if 0
-    auto radius = 1 / alpha;
-#endif
     std::vector<Bline> not_inalpha;
     std::vector<Bline> inalpha;
 
@@ -135,47 +131,10 @@ Pgr_delauny::operator()(double alpha) const {
                 log << "\ncounts" << count0 << "-" << count1;
             }
 
-#if 0
-            typename boost::graph_traits<BG>::adjacency_iterator i, end;
-            for (boost::tie(i, end) = boost::adjacent_vertices(graph.source(edge), graph.graph); i != end; ++i) {
-                    auto v = *i;
-                    auto p(graph[v].point);
-                    log << "\n testing" << bg::wkt(p);
-                    pgassert((v == graph.target(edge)) == bg::equals(p, target));
-                    if (bg::equals(p, target)) continue;
-                    log << "\n r < alpha" << (bg::distance(p, centers[0]) < alpha)
-                        <<"-" << (bg::distance(p, centers[1]) < alpha);
-                    count0 += (bg::distance(p, centers[0]) < alpha)? 1 : 0;
-                    count1 += (bg::distance(p, centers[1]) < alpha)? 1 : 0;
-                    log << "\ncounts" << count0 << "-" << count1;
-            }
 
-            for (boost::tie(i, end) = boost::adjacent_vertices(graph.target(edge), graph.graph); i != end; ++i) {
-                    auto v = *i;
-                    auto p(graph[v].point);
-                    log << "\n testing" << bg::wkt(p);
-                    pgassert((v == graph.source(edge)) == bg::equals(p, source));
-                    if (bg::equals(p, source)) continue;
-                    log << "\n r < alpha" << (bg::distance(p, centers[0]) < alpha)
-                        <<"-" << (bg::distance(p, centers[1]) < alpha);
-                    count0 += (bg::distance(p, centers[0]) < alpha)? 1 : 0;
-                    count1 += (bg::distance(p, centers[1]) < alpha)? 1 : 0;
-                    log << "\ncounts" << count0 << "-" << count1;
-            }
-#endif
-
-#if 0
-            BGL_FORALL_VERTICES(v, graph.graph, BG) {
-                auto p(graph[v].point);
-                if (bg::equals(p, source) || bg::equals(p, target)) continue;
-                count0 += (bg::distance(p, centers[0]) < alpha)? 1 : 0;
-                count1 += (bg::distance(p, centers[1]) < alpha)? 1 : 0;
-            }
-#endif
             if ((count0 && !count1) || (!count0 && count1)) {
                 E e = edge;
                 m_spanning_tree.edges.insert(e);
-//                border.push_back(Bline{{source, target}});
             }
         }
     }
@@ -251,29 +210,6 @@ std::ostream&
 operator<<(std::ostream& os, const Pgr_delauny &d) {
     os << d.graph;
 
-#if 0
-    auto border = d.alpha_edges(0.1);
-    os << "\nOn external 0.1";
-    for (const auto line : border) {
-        os << "\n" << boost::geometry::wkt(line);
-    }
-
-    border = d.alpha_edges(0.07);
-    os << "\nOn external 0.07";
-    for (const auto line : border) {
-        os << "\n" << boost::geometry::wkt(line);
-    }
-    border = d.alpha_edges(0.05);
-    os << "\nOn external 0.05";
-    for (const auto line : border) {
-        os << "\n" << boost::geometry::wkt(line);
-    }
-    border = d.alpha_edges(0.008);
-    os << "\nOn external 0.008";
-    for (const auto line : border) {
-        os << "\n" << boost::geometry::wkt(line);
-    }
-#endif
     return os;
 }
 
