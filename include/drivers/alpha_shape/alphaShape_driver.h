@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for syze_t */
 #include <stddef.h>
 #include "c_types/pgr_edge_xy_t.h"
-#include "c_types/pgr_point_t.h"
+#include "c_types/geom_text_rt.h"
 
 
 #ifdef __cplusplus
@@ -42,8 +42,8 @@ extern "C" {
 
             double alpha,
 
-            Pgr_point_t **res,
-            size_t *res_count,
+            GeomText_t **return_tuples,
+            size_t *return_count,
             char **log_msg,
             char **notice_msg,
 

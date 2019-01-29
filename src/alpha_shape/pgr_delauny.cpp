@@ -182,6 +182,7 @@ Pgr_delauny::operator()(double alpha) const {
         log << "\n" << boost::geometry::wkt(line);
     }
 
+    log << border.size() << "\n****";
     return border;
 }
 

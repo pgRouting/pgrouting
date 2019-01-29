@@ -32,7 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "c_common/edges_input.h"
-#include "c_types/pgr_point_t.h"
+#include "c_types/geom_text_rt.h"
+
 
 #include "drivers/alpha_shape/alphaShape_driver.h"
 
@@ -42,7 +43,7 @@ static void process(
         char* edges_sql,
         double alpha,
 
-        Pgr_point_t **res,
+        GeomText_t **res,
         size_t *result_count) {
     pgr_SPI_connect();
 
@@ -100,7 +101,7 @@ Datum alphaShape(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**********************************************************************/
-    Pgr_point_t *result_tuples = NULL;
+    GeomText_t *result_tuples = NULL;
     size_t      result_count = 0;
     /**********************************************************************/
 
@@ -138,7 +139,7 @@ Datum alphaShape(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Pgr_point_t*) funcctx->user_fctx;
+    result_tuples = (GeomText_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -147,22 +148,20 @@ Datum alphaShape(PG_FUNCTION_ARGS) {
         bool         *nulls;
         size_t       call_cntr = funcctx->call_cntr;
 
-        /******************************************************************/
-        values = palloc(2 * sizeof(Datum));
-        nulls = palloc(2 * sizeof(bool));
+        size_t numb = 4;
 
-        if (result_tuples[call_cntr].x == DBL_MAX && result_tuples[call_cntr].y == DBL_MAX) {
-            values[0] = 0;
-            values[1] = 0;
-            nulls[0] = true;
-            nulls[1] = true;
-        } else {
-            values[0] = Float8GetDatum(result_tuples[call_cntr].x);
-            values[1] = Float8GetDatum(result_tuples[call_cntr].y);
-            nulls[0] = false;
-            nulls[1] = false;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
+
+        size_t i;
+        for (i = 0; i < numb; ++i) {
+            nulls[i] = false;
         }
-        /******************************************************************/
+
+        values[0] = Int64GetDatum(call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].pid);
+        values[2] = Float8GetDatum(result_tuples[call_cntr].x);
+        values[3] = Float8GetDatum(result_tuples[call_cntr].y);
 
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

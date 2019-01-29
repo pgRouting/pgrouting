@@ -3,7 +3,7 @@
 --------------------------------------------------------------------------------
 
 \echo -- q1
-SELECT * FROM pgr_alphaShape1((SELECT array_agg(the_geom) FROM edge_table), 0.6);
+SELECT * FROM pgr_alphaShape1((SELECT array_agg(the_geom) FROM edge_table), 1);
 \echo -- q2
 
 /*

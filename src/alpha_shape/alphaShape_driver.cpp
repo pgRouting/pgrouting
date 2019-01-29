@@ -42,6 +42,7 @@ class GetPoint {
     GetPoint(pgrouting::Bpoints &points) : m_points(points) {}
     pgrouting::Bpoint operator()(const pgrouting::Bpoint &p)
     {
+        m_points.push_back(p);
         return p;
     }
     pgrouting::Bpoints &m_points;
@@ -54,8 +55,9 @@ do_alphaShape(
 
         double alpha,
 
-        Pgr_point_t **return_tuples,
-        size_t *res_count,
+        GeomText_t **return_tuples,
+        size_t *return_count,
+
         char **log_msg,
         char **notice_msg,
         char **err_msg) {
@@ -65,16 +67,14 @@ do_alphaShape(
     try {
         pgassert(edgesArr);
         pgassert(edgesSize > 2);
+        pgassert(*return_count == 0);
 
-        log << "\n1)\n";
         std::vector<Pgr_edge_xy_t> edges(edgesArr, edgesArr + edgesSize);
-        log << "\n2)\n";
 
         using Pgr_alphaShape = pgrouting::alphashape::Pgr_delauny;
-        log << "\n3)\n";
 
         Pgr_alphaShape alphaShape(edges);
-        log << "\n4)\n";
+        log << "\nalpha)" << alpha;
         log << alphaShape;
 
         auto results = alphaShape(alpha);
@@ -82,23 +82,48 @@ do_alphaShape(
         log << alphaShape.get_log();
         log << "\n6)\n";
         log << results.size();
+        log << "\n7)\n";
+        log << "\n8)\n";
 
 
+#if 1
         for (const auto r : results) {
             pgrouting::Bpoints points;
             GetPoint get(points);
             bg::for_each_point(r, get);
-            log << "points in polygon" << bg::num_points(r);
+            log << "\npoints in polygon" << bg::num_points(r);
+            log << "->points in polygon" << points.size();
             for (const auto p : points) {
                 log << p.x() << ", " << p.y();
             }
             log << bg::wkt(r);
         };
 
-        count(0);
-        for (const auto r : results) {
-            count += bg::num_points(r);
+        if (!results.empty()) {
+            for (const auto r : results) {
+                *return_count += bg::num_points(r);
+            }
+            *return_count += results.size() - 1;
+            *return_tuples = pgr_alloc(*return_count, (*return_tuples));
         }
+        size_t row = 0;
+        size_t pid = 0;
+        for (const auto r : results) {
+            pgrouting::Bpoints points;
+            GetPoint get(points);
+            bg::for_each_point(r, get);
+
+            log << "\npoints in polygon" << bg::num_points(r);
+            log << "->points in polygon" << points.size();
+            for (const auto p : points) {
+                (*return_tuples)[row].pid = pid + 1;
+                (*return_tuples)[row].x = p.x();
+                (*return_tuples)[row].y = p.y();
+                ++row;
+            }
+            ++pid;
+        }
+#endif
 
         *log_msg = log.str().empty()?
             *log_msg :
@@ -108,17 +133,17 @@ do_alphaShape(
             pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
-        (*res_count) = 0;
+        (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
-        (*res_count) = 0;
+        (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
-        (*res_count) = 0;
+        (*return_count) = 0;
         err << "Caught unknown exception!";
         *err_msg = pgr_msg(err.str().c_str());
     }

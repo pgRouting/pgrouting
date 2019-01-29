@@ -31,6 +31,8 @@ CREATE OR REPLACE FUNCTION pgr_alphaShape1(
     alpha FLOAT DEFAULT 0,
     is_delauny BOOLEAN DEFAULT false,
 
+    OUT seq BIGINT,
+    OUT polygon_id BIGINT,
     OUT x FLOAT,
     OUT y FLOAT)
 RETURNS SETOF record AS

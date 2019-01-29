@@ -30,6 +30,8 @@ CREATE OR REPLACE FUNCTION _pgr_alphaShape1(
     TEXT, -- edges sql
     alpha FLOAT DEFAULT 0,
 
+    OUT seq BIGINT,
+    OUT polygon_id BIGINT,
     OUT x FLOAT,
     OUT y FLOAT)
 RETURNS SETOF record
