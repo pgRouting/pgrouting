@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_messages.h"
 
 #include "alphaShape/pgr_delauny.hpp"
+#include "cpp_common/bline.hpp"
 #include "c_types/pgr_edge_xy_t.h"
 
 
@@ -43,6 +44,7 @@ class Pgr_alphaShape : public Pgr_messages {
      Pgr_alphaShape() = delete;
      Pgr_alphaShape(const std::vector<Pgr_edge_xy_t>&);
 
+     std::vector<Bpoly> operator() (double alpha);
 
      friend std::ostream& operator<<(std::ostream&, const Pgr_alphaShape&);
 

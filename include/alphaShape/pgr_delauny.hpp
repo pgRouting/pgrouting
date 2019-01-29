@@ -57,12 +57,12 @@ class Pgr_delauny : public Pgr_messages {
      Pgr_delauny() = default;
      Pgr_delauny(const std::vector<Pgr_edge_xy_t> &edges);
 
+     std::vector<Bpoly> operator() (double alpha) const;
 
 
      friend std::ostream& operator<<(std::ostream&, const Pgr_delauny&);
 
  private:
-     std::vector<Bpoly> alpha_edges(double alpha) const;
 
      mutable
      struct InSpanning {

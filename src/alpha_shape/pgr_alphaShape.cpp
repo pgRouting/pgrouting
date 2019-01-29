@@ -34,6 +34,13 @@ Pgr_alphaShape::Pgr_alphaShape(
         const std::vector<Pgr_edge_xy_t> &edges) :
     m_info(edges) { }
 
+std::vector<Bpoly>
+Pgr_alphaShape::operator() (double alpha) {
+    auto r = m_info.get_edges(alpha);
+    log << m_info.get_log();
+    log << r.size();
+    return r;
+}
 
 std::ostream&
 operator<<(std::ostream& os, const Pgr_alphaShape &a) {

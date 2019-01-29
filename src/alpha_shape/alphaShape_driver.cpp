@@ -34,7 +34,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "alphaShape/pgr_alphaShape.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/bpoint.hpp"
+#include "cpp_common/bline.hpp"
 
+class GetPoint {
+    public:
+    GetPoint(pgrouting::Bpoints &points) : m_points(points) {}
+    pgrouting::Bpoint operator()(const pgrouting::Bpoint &p)
+    {
+        return p;
+    }
+    pgrouting::Bpoints &m_points;
+};
 
 void
 do_alphaShape(
@@ -55,17 +66,39 @@ do_alphaShape(
         pgassert(edgesArr);
         pgassert(edgesSize > 2);
 
+        log << "\n1)\n";
         std::vector<Pgr_edge_xy_t> edges(edgesArr, edgesArr + edgesSize);
+        log << "\n2)\n";
 
-        using Pgr_alphaShape = pgrouting::alphashape::Pgr_alphaShape;
+        using Pgr_alphaShape = pgrouting::alphashape::Pgr_delauny;
+        log << "\n3)\n";
 
         Pgr_alphaShape alphaShape(edges);
-
-        log << "LOG STARTS **********\n";
-        log << alphaShape.get_log();
-        log << "\nLOG ENDS **********\n";
+        log << "\n4)\n";
         log << alphaShape;
-        log << "LOG ENDS **********\n";
+
+        auto results = alphaShape(alpha);
+        log << "\n5)\n";
+        log << alphaShape.get_log();
+        log << "\n6)\n";
+        log << results.size();
+
+
+        for (const auto r : results) {
+            pgrouting::Bpoints points;
+            GetPoint get(points);
+            bg::for_each_point(r, get);
+            log << "points in polygon" << bg::num_points(r);
+            for (const auto p : points) {
+                log << p.x() << ", " << p.y();
+            }
+            log << bg::wkt(r);
+        };
+
+        count(0);
+        for (const auto r : results) {
+            count += bg::num_points(r);
+        }
 
         *log_msg = log.str().empty()?
             *log_msg :

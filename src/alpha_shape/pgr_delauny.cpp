@@ -74,18 +74,16 @@ possible_centers(const Bpoint p1, const Bpoint p2, const double r) {
 
 Pgr_delauny::Pgr_delauny(const std::vector<Pgr_edge_xy_t> &edges) :
 graph(UNDIRECTED) {
-    log << "Working with Undirected Graph\n";
     graph.insert_edges(edges);
-
-    alpha_edges(1);
 }
 
 
 std::vector<Bpoly>
-Pgr_delauny::alpha_edges(double alpha) const {
+Pgr_delauny::operator()(double alpha) const {
+    log << "starting calculation\n";
     std::vector<Bpoly> border;
 
-    if (alpha == 0) return border;
+    if (alpha <= 0) return border;
 
     auto radius = 1 / alpha;
     std::vector<Bline> not_inalpha;
@@ -180,6 +178,10 @@ Pgr_delauny::alpha_edges(double alpha) const {
         border.push_back(line);
     }
 
+    for (const auto line : border) {
+        log << "\n" << boost::geometry::wkt(line);
+    }
+
     return border;
 }
 
@@ -189,12 +191,29 @@ std::ostream&
 operator<<(std::ostream& os, const Pgr_delauny &d) {
     os << d.graph;
 
-    auto border = d.alpha_edges(1);
-    os << "\nOn external ";
+#if 0
+    auto border = d.alpha_edges(0.1);
+    os << "\nOn external 0.1";
     for (const auto line : border) {
         os << "\n" << boost::geometry::wkt(line);
     }
 
+    border = d.alpha_edges(0.07);
+    os << "\nOn external 0.07";
+    for (const auto line : border) {
+        os << "\n" << boost::geometry::wkt(line);
+    }
+    border = d.alpha_edges(0.05);
+    os << "\nOn external 0.05";
+    for (const auto line : border) {
+        os << "\n" << boost::geometry::wkt(line);
+    }
+    border = d.alpha_edges(0.008);
+    os << "\nOn external 0.008";
+    for (const auto line : border) {
+        os << "\n" << boost::geometry::wkt(line);
+    }
+#endif
     return os;
 }
 

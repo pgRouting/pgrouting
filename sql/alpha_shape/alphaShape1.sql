@@ -109,7 +109,7 @@ BEGIN
 
     END IF;
 
-    RAISE NOTICE '%', delauny_query;
+    --RAISE NOTICE '%', delauny_query;
 
     RETURN QUERY
     SELECT *
