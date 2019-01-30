@@ -3,8 +3,10 @@
 --------------------------------------------------------------------------------
 
 \echo -- q1
-SELECT seq, ST_AsText(geom), ST_isValid(geom), ST_NumPoints(geom)  FROM pgr_alphaShape1((SELECT array_agg(the_geom) FROM edge_table), 1.581);
-SELECT seq, ST_AsText(geom), ST_isValid(geom), ST_NumPoints(geom)  FROM pgr_alphaShape1((SELECT array_agg(the_geom) FROM edge_table), 1.582);
+SELECT seq, ST_AsText(geom), ST_isValid(geom), ST_NPoints(geom)
+FROM pgr_alphaShape1((SELECT array_agg(the_geom) FROM edge_table), 1.581);
+SELECT seq, ST_AsText(geom), ST_isValid(geom), ST_NPoints(geom)
+FROM pgr_alphaShape1((SELECT array_agg(the_geom) FROM edge_table), 1.582);
 \echo -- q2
 
 --SELECT (ST_Dump(ST_DelaunayTriangles(ST_union(the_geom), 0 , 0))).geom
