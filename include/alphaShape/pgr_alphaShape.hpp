@@ -63,13 +63,14 @@ class Pgr_delauny : public Pgr_messages {
      friend std::ostream& operator<<(std::ostream&, const Pgr_delauny&);
 
  private:
+     std::vector<Bpoint> possible_centers( const Bpoint p1, const Bpoint p2, const double alpha_radius) const;
 
      mutable
-     struct InSpanning {
+     struct InBorder {
          std::set<E> edges;
          bool operator()(E e) const { return edges.count(e); }
          void clear() { edges.clear(); }
-     } m_spanning_tree;
+     } m_in_border;
 
      G graph;
 };
