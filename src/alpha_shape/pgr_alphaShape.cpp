@@ -127,6 +127,21 @@ to_insert(std::set<E> name, std::string kind, const G &graph) {
     return str.str();
 }
 
+std::set<V>
+get_intersection(V u, V v, const BG& graph) {
+            std::set<V> adjacent1, adjacent2, v_intersection;
+            BGL_FORALL_ADJ(u, w, graph, BG) {
+                adjacent1.insert(w);
+            }
+            BGL_FORALL_ADJ(v, w, graph, BG) {
+                adjacent2.insert(w);
+            }
+            std::set_intersection(adjacent1.begin(), adjacent1.end(),
+                    adjacent2.begin(), adjacent2.end(),
+                    std::inserter(v_intersection, v_intersection.end()));
+            return v_intersection;
+}
+
 }  // namespace
 
 /*
@@ -280,6 +295,9 @@ Pgr_delauny::operator()(double alpha) const {
 
             pgassert(!(belongs && centers.empty()));
 
+#if 1
+            auto v_intersection = get_intersection(u, v, graph.graph);
+#else
             std::set<V> adjacent1, adjacent2, v_intersection;
             BGL_FORALL_ADJ(u, w, graph.graph, BG) {
                 adjacent1.insert(w);
@@ -290,6 +308,7 @@ Pgr_delauny::operator()(double alpha) const {
             std::set_intersection(adjacent1.begin(), adjacent1.end(),
                     adjacent2.begin(), adjacent2.end(),
                     std::inserter(v_intersection, v_intersection.end()));
+#endif
 
 #if 0
             std::set_union(adjacent1.begin(), adjacent1.end(),
@@ -325,7 +344,7 @@ Pgr_delauny::operator()(double alpha) const {
                 } else {
                         if (belongs) in_border.insert(edge);
                         else if (bg::distance(graph[u].point, graph[v].point) / 2 < alpha) {
-                            in_border.insert(edge);
+                            lone_edge.insert(edge);
                         }
                 }
             } //  for each adjacent triangle
@@ -356,7 +375,9 @@ Pgr_delauny::operator()(double alpha) const {
     log << to_insert(regular_two, "3", graph);
     log << to_insert(interior, "4", graph);
     log << to_insert(exterior, "5", graph);
-    log << to_insert(in_border, "6", graph);
+    log << to_insert(face_is_hole, "6", graph);
+    log << to_insert(in_border, "7", graph);
+    log << to_insert(lone_edge, "8", graph);
 
     return border;
 }
