@@ -227,7 +227,8 @@ Pgr_delauny::operator()(double alpha) const {
     std::set< std::set<E> > singular;
     std::set< std::set<E> > face_is_hole;
     std::set<E> in_border;
-    std::set<E> lone_edge;
+    std::set<E> lone_edges;
+    std::set<E> hole_edges;
     std::set<E> boundry;
 
 
@@ -295,31 +296,7 @@ Pgr_delauny::operator()(double alpha) const {
 
             pgassert(!(belongs && centers.empty()));
 
-#if 1
             auto v_intersection = get_intersection(u, v, graph.graph);
-#else
-            std::set<V> adjacent1, adjacent2, v_intersection;
-            BGL_FORALL_ADJ(u, w, graph.graph, BG) {
-                adjacent1.insert(w);
-            }
-            BGL_FORALL_ADJ(v, w, graph.graph, BG) {
-                adjacent2.insert(w);
-            }
-            std::set_intersection(adjacent1.begin(), adjacent1.end(),
-                    adjacent2.begin(), adjacent2.end(),
-                    std::inserter(v_intersection, v_intersection.end()));
-#endif
-
-#if 0
-            std::set_union(adjacent1.begin(), adjacent1.end(),
-                    adjacent2.begin(), adjacent2.end(),
-                    std::inserter(v_union, v_union.end()));
-#endif
-
-#if 0
-            bool found0(false);
-            bool found1(false);
-#endif
 
             bool in_hull = false;
             if (v_intersection.size() == 1) {
@@ -328,7 +305,10 @@ Pgr_delauny::operator()(double alpha) const {
                     in_border.insert(edge);
                     in_hull = true;
                     log << "edge in hull";
-                }
+                } else if (bg::distance(graph[u].point, graph[v].point) / 2 < alpha) {
+                            lone_edges.insert(edge);
+                        }
+                continue;
             }
 
             for (const auto w : v_intersection) {
@@ -344,7 +324,7 @@ Pgr_delauny::operator()(double alpha) const {
                 } else {
                         if (belongs) in_border.insert(edge);
                         else if (bg::distance(graph[u].point, graph[v].point) / 2 < alpha) {
-                            lone_edge.insert(edge);
+                            lone_edges.insert(edge);
                         }
                 }
             } //  for each adjacent triangle
@@ -356,9 +336,19 @@ Pgr_delauny::operator()(double alpha) const {
             if (is_incident.size() == 1) regular_one.insert(t);
             if (is_incident.size() == 0) singular.insert(t);
         } else {
-            if (is_incident.size() == 3) face_is_hole.insert(t);
+            if (is_incident.size() == 3) {
+                face_is_hole.insert(t);
+                hole_edges.insert(is_incident.begin(), is_incident.end());
+            }
         }
     } // for each triangle
+
+    std::set<E> v_difference;
+    std::set_difference(in_border.begin(), in_border.end(),
+            hole_edges.begin(), hole_edges.end(),
+            std::inserter(v_difference, v_difference.end()));
+
+    in_border = v_difference;
 
     log << "\n- singluar.size()" << singular.size();
     log << "\n- regular_one.size()" << regular_one.size();
@@ -367,6 +357,7 @@ Pgr_delauny::operator()(double alpha) const {
     log << "\n- exterior.size()" << exterior.size();
     log << "\n- m_triangles.size()" << m_triangles.size();
     log << "\n- face_is_hole.size()" << face_is_hole.size();
+    log << "\n- hole_edges.size()" << face_is_hole.size();
     log << "\n- in_border.size()" << in_border.size();
 
     log << "drop table tbl_2; create table tbl_2 (gid serial, geom geometry, kind integer);";
@@ -377,7 +368,8 @@ Pgr_delauny::operator()(double alpha) const {
     log << to_insert(exterior, "5", graph);
     log << to_insert(face_is_hole, "6", graph);
     log << to_insert(in_border, "7", graph);
-    log << to_insert(lone_edge, "8", graph);
+    log << to_insert(lone_edges, "8", graph);
+    log << to_insert(hole_edges, "9", graph);
 
     return border;
 }
