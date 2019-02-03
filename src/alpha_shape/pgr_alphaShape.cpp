@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "alphaShape/pgr_alphaShape.hpp"
+#include <limits>
 #include <boost/graph/filtered_graph.hpp>
 #include <boost/graph/connected_components.hpp>
 #include "mst/visitors.hpp"
@@ -113,18 +114,86 @@ Pgr_delauny::operator()(double alpha) const {
     log << "starting calculation\n";
     std::vector<Bpoly> border;
     std::vector<E> hull;
+    std::vector<Bpoly> faces;
+    std::set< std::set<E> > set_of_faces;
 
     if (alpha <= 0) return border;
 
     std::vector<Bline> not_inalpha;
     std::vector<Bline> inalpha;
 
-    /*
-     * Thus we inspect every triangle ∆T∈DT(S)
-     *  (or every line segment in the case d= 2 respectively)
-     *  and checkout whether one of its circumspheres with radius α (thereare two of them) is empty.
-     *   If so, we accept such a (d−1)-simplex.
+    double min_r(std::numeric_limits<double>::max());
+    double max_r(0);
+
+    /* triangle:
+     * a =  B-C = v-w
+     * b =  A-C = u-w
+     * c =  A-B = u-v
+     *
+     * A is geometry  u is vertex descriptor
+     * B is geometry  v is vertex descriptor
+     * C is geometry  w is vertex descriptor
+     *
      */
+    BGL_FORALL_EDGES(c, graph.graph, BG) {
+        auto u = graph.source(c);
+        auto v = graph.target(c);
+        Bpoint A {graph[u].point};
+        Bpoint B {graph[v].point};
+
+#if 1
+        log << "\n****** working with" << bg::wkt(Bline{{A, B}});
+#endif
+        std::set<E> s_outedges;
+        BGL_FORALL_OUTEDGES(u, e, graph.graph, BG) {
+            s_outedges.insert(e);
+        }
+        /*
+         *  second edge of triangle b: A-C
+         */
+        for (const auto b : s_outedges) {
+            auto w = graph.adjacent(u, b);
+            if (w == v) {
+                /* it is the edge c */
+                // TODO proof
+                continue;
+            };
+            auto a_r = boost::edge(v, w, graph.graph);
+            if (!a_r.second) continue;
+
+            Bpoint C {graph[w].point};
+
+            auto center = circumcenter(A, B, C);
+            auto radius = bg::distance(center, A);
+
+            if (radius > alpha) continue;
+
+            std::set<E> face{{a_r.first, b, c}};
+            set_of_faces.insert(face);
+        }
+    }
+
+    log << "DROP TABLE tbl_2; CREATE TABLE tbl_2 (gid SERIAL, geom geometry);";
+    for (const auto face : set_of_faces) {
+        std::set<V> triangle_vertices;
+        for (const auto e : face) {
+            triangle_vertices.insert(graph.source(e));
+            triangle_vertices.insert(graph.target(e));
+        }
+        pgassert(triangle_vertices.size()==3);
+        Bpoly triangle;
+
+        for (const auto v : triangle_vertices) {
+            bg::append(triangle, graph[v].point);
+        }
+        faces.push_back(triangle);
+    }
+
+    for (const auto f : faces) {
+            log << "\nINSERT INTO tbl_2 (geom) VALUES (ST_geomFromText('"
+                << bg::wkt(f) << "'));";
+    }
+
     BGL_FORALL_EDGES(edge, graph.graph, BG) {
         Bpoint source {graph[graph.source(edge)].point};
         Bpoint target {graph[graph.target(edge)].point};
@@ -183,24 +252,43 @@ Pgr_delauny::operator()(double alpha) const {
                 log << "edge in hull";
             }
 
-            /* Expensive assertion */
             for (const auto v : v_intersection) {
                 log << "\ntriangle" << bg::wkt(Bpoly{{source, target, graph[v].point}});
                 auto center = circumcenter(source, target, graph[v].point);
                 log << " circumcenter" << bg::wkt(center);
                 log << " distances" << bg::distance(center, source) << "," << bg::distance(center, target) << bg::distance(center, graph[v].point);
                 auto radius = bg::distance(center, source);
-                for (const auto u : v_union) {
+                min_r = radius < min_r ? radius : min_r;
+                max_r = radius > max_r ? radius : max_r;
+                /* Semi Expensive assertion */
+
+                BGL_FORALL_VERTICES(u, graph.graph, BG) {
                     if (u == v_source || u == v_target || u == v) continue;
-                    pgassert (bg::distance(center, graph[u].point) < radius)
+                    if (bg::distance(center, graph[u].point) < radius) log << "ILLEGAL TRIANGLE";
                 }
             }
 
 
             for (const auto v : v_intersection) {
                 auto p(graph[v].point);
+                auto center = circumcenter(source, target, p);
+                auto radius = bg::distance(center, source);
 #if 1
                 log << "\n-" << graph.graph[v];
+#endif
+                if (radius < alpha) {
+#if 1
+                    log << "- radius < alpha" << radius << "<" << alpha;
+                    log << "\ninserting " << bg::wkt(Bline{{source, target}});
+#endif
+                    E e = edge;
+                    m_in_border.edges.insert(e);
+                    break;
+                } else {
+                    log << "- radius > alpha" << radius << ">" << alpha;
+                }
+
+#if 1
                 if (!(bg::distance(p, centers[0]) < alpha) && (bg::distance(p, centers[1]) < alpha)) {
                     log << "- Point distance to centers 1 is less than alpha radius";
                 }
@@ -222,20 +310,22 @@ Pgr_delauny::operator()(double alpha) const {
 
                 count0 += (bg::distance(p, centers[0]) < alpha)? 1 : 0;
                 count1 += (bg::distance(p, centers[1]) < alpha)? 1 : 0;
+            }
 #if 1
                 log << "\ncounts" << count0 << "-" << count1;
                 log << "\nfounds" << found0 << "-" << found1;
 #endif
-            }
 
-
-            if (!(found0 && found1)) {
+            if (false && !(found0 && found1)) {
                 log << "\ninserting " << bg::wkt(Bline{{source, target}});
                 E e = edge;
                 m_in_border.edges.insert(e);
             }
         }
     }
+
+    log << "\nMIN_R" << min_r;
+    log << "\nMAX_R" << max_r;
 
     using Subgraph = boost::filtered_graph<BG, InBorder, boost::keep_all>;
     Subgraph subg (graph.graph, m_in_border, {});
