@@ -59,10 +59,9 @@ namespace {
         return Bpoint {cx - numx / denom, cy + numy / denom};
     }
 
-}  // namespace
 
 std::vector<Bpoint>
-Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double alpha_radius) const {
+possible_centers(const Bpoint p1, const Bpoint p2, const double alpha_radius) {
     std::vector<Bpoint> centers;
     /*
      * p1 and p2 are the same point
@@ -82,9 +81,6 @@ Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double alp
 
     auto a = bg::distance(p_a, origin);
     pgassert(!(a > bg::distance(p1, p2) / 2) && !(a < bg::distance(p_a, origin)));
-    log << "distance to mid point" << a;
-    log << "- bg distance to mid point" << bg::distance(p1, p2) / 2;
-    log << "- alpha" << alpha_radius;
 
     /*
      * The segment is not alpha
@@ -99,6 +95,7 @@ Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double alp
     return centers;
 }
 
+}  // namespace
 
 /*
  * Constructor
@@ -106,6 +103,64 @@ Pgr_delauny::possible_centers(const Bpoint p1, const Bpoint p2, const double alp
 Pgr_delauny::Pgr_delauny(const std::vector<Pgr_edge_xy_t> &edges) :
 graph(UNDIRECTED) {
     graph.insert_edges(edges);
+    get_triangles();
+}
+
+/* triangle:
+ * a =  B-C = v-w
+ * b =  A-C = u-w
+ * c =  A-B = u-v
+ *
+ * A is geometry  u is vertex descriptor
+ * B is geometry  v is vertex descriptor
+ * C is geometry  w is vertex descriptor
+ */
+void
+Pgr_delauny::get_triangles() {
+    std::set< std::set<E> > triangles;
+
+    BGL_FORALL_EDGES(c, graph.graph, BG) {
+        auto u = graph.source(c);
+        auto v = graph.target(c);
+        Bpoint A {graph[u].point};
+        Bpoint B {graph[v].point};
+
+        std::set<E> s_outedges;
+
+        BGL_FORALL_OUTEDGES(u, b, graph.graph, BG) {
+            auto w = graph.adjacent(u, b);
+            if (w == v) {
+                pgassert(b == c);
+                continue;
+            };
+
+            auto a_r = boost::edge(v, w, graph.graph);
+            if (!a_r.second) continue;
+
+            std::set<E> face{{a_r.first, b, c}};
+            triangles.insert(face);
+        }
+    }
+
+    m_triangles.reserve(triangles.size());
+    m_triangles.insert(m_triangles.begin(), triangles.begin(),triangles.end());
+
+    /*
+     * calculating center & radius
+     */
+    for (const auto t : m_triangles) {
+        std::vector<E> edges(t.begin(), t.end());
+        auto a = graph.source(edges[0]);
+        auto b = graph.target(edges[0]);
+        auto c = graph.source(edges[1]);
+        c = (c == a || c == b)? graph.target(edges[1]) : c;
+
+        auto center = circumcenter(graph[a].point, graph[b].point, graph[c].point);
+        auto radius = bg::distance(center, graph[a].point);
+
+        m_centers.push_back(center);
+        m_radius.push_back(radius);
+    }
 }
 
 
@@ -116,14 +171,28 @@ Pgr_delauny::operator()(double alpha) const {
     std::vector<E> hull;
     std::vector<Bpoly> faces;
     std::set< std::set<E> > set_of_faces;
+    std::set< std::set<E> > alpha_complex;
+    std::set< std::set<E> > not_alpha_complex;
+    std::set< std::set<E> > interior;
+    std::set< std::set<E> > exterior;
+    std::set< std::set<E> > regular_one;
+    std::set< std::set<E> > regular_two;
+    std::set< std::set<E> > singular;
+    std::set< std::set<E> > face_is_hole;
+    std::set<E> in_border;
+    std::set<E> lone_edge;
+    std::set<E> boundry;
+
 
     if (alpha <= 0) return border;
 
     std::vector<Bline> not_inalpha;
     std::vector<Bline> inalpha;
 
+#if 0
     double min_r(std::numeric_limits<double>::max());
     double max_r(0);
+#endif
 
     /* triangle:
      * a =  B-C = v-w
@@ -133,47 +202,111 @@ Pgr_delauny::operator()(double alpha) const {
      * A is geometry  u is vertex descriptor
      * B is geometry  v is vertex descriptor
      * C is geometry  w is vertex descriptor
-     *
      */
-    BGL_FORALL_EDGES(c, graph.graph, BG) {
-        auto u = graph.source(c);
-        auto v = graph.target(c);
-        Bpoint A {graph[u].point};
-        Bpoint B {graph[v].point};
+    for (const auto t : m_triangles) {
+        std::vector<E> edges(t.begin(), t.end());
+        auto a = graph.source(edges[0]);
+        auto b = graph.target(edges[0]);
+        auto c = graph.source(edges[1]);
+        c = (c == a || c == b)? graph.target(edges[1]) : c;
+        pgassert(a != b && a != c && b!= c);
+
+        /*
+         * face belongs to alpha shape?
+         */
+        bool belongs(false);
 
 #if 1
-        log << "\n****** working with" << bg::wkt(Bline{{A, B}});
+        log << "\n****** working with" << bg::wkt(Bpoly{{graph[a].point, graph[b].point, graph[c].point}});
 #endif
-        std::set<E> s_outedges;
-        BGL_FORALL_OUTEDGES(u, e, graph.graph, BG) {
-            s_outedges.insert(e);
+
+        auto center = circumcenter(graph[a].point, graph[b].point, graph[c].point);
+        auto radius = bg::distance(center, graph[a].point);
+
+#if 0
+        min_r = radius < min_r? radius : min_r;
+        max_r = radius > max_r? radius : max_r;
+#endif
+
+        if (radius < alpha) {
+            set_of_faces.insert(t);
+            belongs = true;
+        } else {
+            exterior.insert(t);
+            belongs = false;
         }
-        /*
-         *  second edge of triangle b: A-C
-         */
-        for (const auto b : s_outedges) {
-            auto w = graph.adjacent(u, b);
-            if (w == v) {
-                /* it is the edge c */
-                // TODO proof
-                continue;
-            };
-            auto a_r = boost::edge(v, w, graph.graph);
-            if (!a_r.second) continue;
 
-            Bpoint C {graph[w].point};
+        std::set<E> is_incident;
 
-            auto center = circumcenter(A, B, C);
-            auto radius = bg::distance(center, A);
+        for (const auto edge : edges) {
+            /*
+             * working each edge of triangle
+             */
+            auto u = graph.source(edge);
+            auto v = graph.target(edge);
+            auto centers = possible_centers(graph[u].point, graph[v].point, alpha);
 
-            if (radius > alpha) continue;
+            pgassert(!(belongs && centers.empty()));
 
-            std::set<E> face{{a_r.first, b, c}};
-            set_of_faces.insert(face);
+            std::set<V> adjacent1, adjacent2, v_intersection, v_union;
+            BGL_FORALL_ADJ(u, w, graph.graph, BG) {
+                adjacent1.insert(w);
+            }
+            BGL_FORALL_ADJ(v, w, graph.graph, BG) {
+                adjacent2.insert(w);
+            }
+            std::set_intersection(adjacent1.begin(), adjacent1.end(),
+                    adjacent2.begin(), adjacent2.end(),
+                    std::inserter(v_intersection, v_intersection.end()));
+
+            std::set_union(adjacent1.begin(), adjacent1.end(),
+                    adjacent2.begin(), adjacent2.end(),
+                    std::inserter(v_union, v_union.end()));
+
+            bool found0(false);
+            bool found1(false);
+            if (v_intersection.size() == 1) {
+                hull.push_back(edge);
+                log << "edge in hull";
+            }
+
+            for (const auto w : v_intersection) {
+                if (w == a || w == b || w == c) continue;
+                /*
+                 * adjacent triangle (u,v,w)
+                 */
+                auto center = circumcenter(graph[u].point, graph[v].point, graph[w].point);
+                auto radius = bg::distance(center, graph[u].point);
+                if (radius < alpha) {
+                    /* is incident to a face */
+                    is_incident.insert(edge);
+                } else {
+                    in_border.insert(edge);
+                }
+            }
+        }
+
+        if (belongs) {
+            if (is_incident.size() == 3) interior.insert(t);
+            if (is_incident.size() == 2) regular_two.insert(t);
+            if (is_incident.size() == 1) regular_one.insert(t);
+            if (is_incident.size() == 0) singular.insert(t);
+        } else {
+            if (is_incident.size() == 3) face_is_hole.insert(t);
         }
     }
 
-    log << "DROP TABLE tbl_2; CREATE TABLE tbl_2 (gid SERIAL, geom geometry);";
+    log << "\n- singluar.size()" << singular.size();
+    log << "\n- regular_one.size()" << regular_one.size();
+    log << "\n- regular_two.size()" << regular_two.size();
+    log << "\n- interior.size()" << interior.size();
+    log << "\n- exterior.size()" << exterior.size();
+    log << "\n- m_triangles.size()" << m_triangles.size();
+    log << "\n- face_is_hole.size()" << face_is_hole.size();
+    log << "\n- in_border.size()" << in_border.size();
+
+#if 0
+    log << "DROP TABLE tbl_2; CREATE TABLE tbl_2 (gid SERIAL, geom geometry, kind INTEGER);";
     for (const auto face : set_of_faces) {
         std::set<V> triangle_vertices;
         for (const auto e : face) {
@@ -190,8 +323,8 @@ Pgr_delauny::operator()(double alpha) const {
     }
 
     for (const auto f : faces) {
-            log << "\nINSERT INTO tbl_2 (geom) VALUES (ST_geomFromText('"
-                << bg::wkt(f) << "'));";
+        log << "\nINSERT INTO tbl_2 (geom) VALUES (ST_geomFromText('"
+            << bg::wkt(f) << "'));";
     }
 
     BGL_FORALL_EDGES(edge, graph.graph, BG) {
@@ -239,11 +372,11 @@ Pgr_delauny::operator()(double alpha) const {
 #endif
             }
             std::set_intersection(adjacent1.begin(), adjacent1.end(),
-                          adjacent2.begin(), adjacent2.end(),
-                          std::inserter(v_intersection, v_intersection.end()));
+                    adjacent2.begin(), adjacent2.end(),
+                    std::inserter(v_intersection, v_intersection.end()));
             std::set_union(adjacent1.begin(), adjacent1.end(),
-                          adjacent2.begin(), adjacent2.end(),
-                          std::inserter(v_union, v_union.end()));
+                    adjacent2.begin(), adjacent2.end(),
+                    std::inserter(v_union, v_union.end()));
 
             bool found0(false);
             bool found1(false);
@@ -312,8 +445,8 @@ Pgr_delauny::operator()(double alpha) const {
                 count1 += (bg::distance(p, centers[1]) < alpha)? 1 : 0;
             }
 #if 1
-                log << "\ncounts" << count0 << "-" << count1;
-                log << "\nfounds" << found0 << "-" << found1;
+            log << "\ncounts" << count0 << "-" << count1;
+            log << "\nfounds" << found0 << "-" << found1;
 #endif
 
             if (false && !(found0 && found1)) {
@@ -337,9 +470,9 @@ Pgr_delauny::operator()(double alpha) const {
             &component[0]);
 
     struct InComponent {
-         std::set<V> vertices;
-         bool operator()(V v) const { return vertices.count(v); }
-         void clear() { vertices.clear(); }
+        std::set<V> vertices;
+        bool operator()(V v) const { return vertices.count(v); }
+        void clear() { vertices.clear(); }
     };
 
     std::vector<InComponent> componentFilter(num_comps);
@@ -395,37 +528,38 @@ Pgr_delauny::operator()(double alpha) const {
 #if 0
             log << bg::wkt(Bline{{graph[graph.source(edge)].point, Bline{{graph[graph.source(edge)].point}};
 
-            log << boost::source(edge, subSubG);
+                log << boost::source(edge, subSubG);
 #endif
+            }
+
+            Bpoly line;
+            for (const auto edge : visited_order) {
+                log << edge << "->";
+                if (edge == visited_order.front()) {
+                    bg::append(line, graph[graph.source(edge)].point);
+                }
+                bg::append(line, graph[graph.target(edge)].point);
+            };
+            border.push_back(line);
+            }
+
+            for (const auto line : border) {
+                log << "\n" << boost::geometry::wkt(line);
+            }
+
+            log << border.size() << "\n****";
+#endif
+            return border;
         }
 
-        Bpoly line;
-        for (const auto edge : visited_order) {
-            log << edge << "->";
-            if (edge == visited_order.front()) {
-                bg::append(line, graph[graph.source(edge)].point);
+
+
+        std::ostream&
+            operator<<(std::ostream& os, const Pgr_delauny &d) {
+                os << d.graph;
+
+                return os;
             }
-            bg::append(line, graph[graph.target(edge)].point);
-        };
-        border.push_back(line);
-    }
 
-    for (const auto line : border) {
-        log << "\n" << boost::geometry::wkt(line);
-    }
-
-    log << border.size() << "\n****";
-    return border;
-}
-
-
-
-std::ostream&
-operator<<(std::ostream& os, const Pgr_delauny &d) {
-    os << d.graph;
-
-    return os;
-}
-
-}  // namespace alphashape
+    }  // namespace alphashape
 }  // namespace pgrouting

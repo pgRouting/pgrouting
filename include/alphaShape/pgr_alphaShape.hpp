@@ -63,7 +63,7 @@ class Pgr_delauny : public Pgr_messages {
      friend std::ostream& operator<<(std::ostream&, const Pgr_delauny&);
 
  private:
-     std::vector<Bpoint> possible_centers( const Bpoint p1, const Bpoint p2, const double alpha_radius) const;
+     void get_triangles();
 
      mutable
      struct InBorder {
@@ -73,6 +73,9 @@ class Pgr_delauny : public Pgr_messages {
      } m_in_border;
 
      G graph;
+     std::vector< std::set<E> > m_triangles;
+     std::vector< Bpoint > m_centers;
+     std::vector< double > m_radius;
 };
 
 
