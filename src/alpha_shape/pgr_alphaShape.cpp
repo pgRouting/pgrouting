@@ -280,7 +280,7 @@ Pgr_delauny::operator()(double alpha) const {
 
             pgassert(!(belongs && centers.empty()));
 
-            std::set<V> adjacent1, adjacent2, v_intersection, v_union;
+            std::set<V> adjacent1, adjacent2, v_intersection;
             BGL_FORALL_ADJ(u, w, graph.graph, BG) {
                 adjacent1.insert(w);
             }
@@ -291,15 +291,25 @@ Pgr_delauny::operator()(double alpha) const {
                     adjacent2.begin(), adjacent2.end(),
                     std::inserter(v_intersection, v_intersection.end()));
 
+#if 0
             std::set_union(adjacent1.begin(), adjacent1.end(),
                     adjacent2.begin(), adjacent2.end(),
                     std::inserter(v_union, v_union.end()));
+#endif
 
+#if 0
             bool found0(false);
             bool found1(false);
+#endif
+
+            bool in_hull = false;
             if (v_intersection.size() == 1) {
                 hull.push_back(edge);
-                log << "edge in hull";
+                if (belongs) {
+                    in_border.insert(edge);
+                    in_hull = true;
+                    log << "edge in hull";
+                }
             }
 
             for (const auto w : v_intersection) {
@@ -313,356 +323,282 @@ Pgr_delauny::operator()(double alpha) const {
                     /* is incident to a face */
                     is_incident.insert(edge);
                 } else {
-                        in_border.insert(edge);
-#if 0
-                        if (bg::distance(graph[u].point, graph[v].point) <= radius) {
+                        if (belongs) in_border.insert(edge);
+                        else if (bg::distance(graph[u].point, graph[v].point) / 2 < alpha) {
                             in_border.insert(edge);
-#endif
                         }
                 }
-            }
+            } //  for each adjacent triangle
+        } // for each edge of triangle
 
-            if (belongs) {
-                if (is_incident.size() == 3) interior.insert(t);
-                if (is_incident.size() == 2) regular_two.insert(t);
-                if (is_incident.size() == 1) regular_one.insert(t);
-                if (is_incident.size() == 0) singular.insert(t);
-            } else {
-                if (is_incident.size() == 3) face_is_hole.insert(t);
-            }
-        }
-
-        log << "\n- singluar.size()" << singular.size();
-        log << "\n- regular_one.size()" << regular_one.size();
-        log << "\n- regular_two.size()" << regular_two.size();
-        log << "\n- interior.size()" << interior.size();
-        log << "\n- exterior.size()" << exterior.size();
-        log << "\n- m_triangles.size()" << m_triangles.size();
-        log << "\n- face_is_hole.size()" << face_is_hole.size();
-        log << "\n- in_border.size()" << in_border.size();
-
-        log << "drop table tbl_2; create table tbl_2 (gid serial, geom geometry, kind integer);";
-        log << to_insert(singular, "1", graph);
-        log << to_insert(regular_one, "2", graph);
-        log << to_insert(regular_two, "3", graph);
-        log << to_insert(interior, "4", graph);
-        log << to_insert(exterior, "5", graph);
-        log << to_insert(in_border, "6", graph);
-#if 0
-        for (const auto face : singular) {
-            std::vector<E> edges(face.begin(), face.end());
-            auto a = graph.source(edges[0]);
-            auto b = graph.target(edges[0]);
-            auto c = graph.source(edges[1]);
-            c = (c == a || c == b)? graph.target(edges[1]) : c;
-            pgassert(a != b && a != c && b!= c);
-
-            Bpoly triangle{{graph[a].point, graph[b].point,graph[c].point}};
-            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
-                << bg::wkt(triangle) << "'), 1);";
-        }
-        for (const auto face : regular_one) {
-            std::vector<E> edges(face.begin(), face.end());
-            auto a = graph.source(edges[0]);
-            auto b = graph.target(edges[0]);
-            auto c = graph.source(edges[1]);
-            c = (c == a || c == b)? graph.target(edges[1]) : c;
-            pgassert(a != b && a != c && b!= c);
-
-            Bpoly triangle{{graph[a].point, graph[b].point,graph[c].point}};
-            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
-                << bg::wkt(triangle) << "'), 2);";
-        }
-        for (const auto face : regular_two) {
-            std::vector<E> edges(face.begin(), face.end());
-            auto a = graph.source(edges[0]);
-            auto b = graph.target(edges[0]);
-            auto c = graph.source(edges[1]);
-            c = (c == a || c == b)? graph.target(edges[1]) : c;
-            pgassert(a != b && a != c && b!= c);
-
-            Bpoly triangle{{graph[a].point, graph[b].point,graph[c].point}};
-            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
-                << bg::wkt(triangle) << "'), 3);";
-        }
-
-        for (const auto face : interior) {
-            std::vector<E> edges(face.begin(), face.end());
-            auto a = graph.source(edges[0]);
-            auto b = graph.target(edges[0]);
-            auto c = graph.source(edges[1]);
-            c = (c == a || c == b)? graph.target(edges[1]) : c;
-            pgassert(a != b && a != c && b!= c);
-
-            Bpoly triangle{{graph[a].point, graph[b].point,graph[c].point}};
-            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
-                << bg::wkt(triangle) << "'), 4);";
-        }
-
-        for (const auto face : exterior) {
-            std::vector<E> edges(face.begin(), face.end());
-            auto a = graph.source(edges[0]);
-            auto b = graph.target(edges[0]);
-            auto c = graph.source(edges[1]);
-            c = (c == a || c == b)? graph.target(edges[1]) : c;
-            pgassert(a != b && a != c && b!= c);
-
-            Bpoly triangle{{graph[a].point, graph[b].point,graph[c].point}};
-            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
-                << bg::wkt(triangle) << "'), 5);";
-        }
-
-        for (const auto edge : in_border) {
-            auto a = graph.source(edge);
-            auto b = graph.target(edge);
-
-            Bline line{{graph[a].point, graph[b].point}};
-            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
-                << bg::wkt(line) << "'), 6);";
-        }
-#endif
-
-        return border;
-    }
-#if 0
-    for (const auto f : faces) {
-        log << "\nINSERT INTO tbl_2 (geom) VALUES (ST_geomFromText('"
-            << bg::wkt(f) << "'));";
-    }
-
-    BGL_FORALL_EDGES(edge, graph.graph, BG) {
-        Bpoint source {graph[graph.source(edge)].point};
-        Bpoint target {graph[graph.target(edge)].point};
-        auto v_source = graph.source(edge);
-        auto v_target = graph.target(edge);
-
-#if 1
-        log << "\n****** working with" << bg::wkt(Bline{{source, target}});
-#endif
-        auto centers = possible_centers(source, target, alpha);
-#if 1
-        for (const auto c : centers) {
-            log << "\ncenter:" << bg::wkt(c);
-        }
-#endif
-
-        if (centers.empty()) {
-            log << "\n alpha < d(midpoint)" << alpha << " < " << bg::distance(source, target) / 2;
-            // TODO could be the edge descriptor
-            not_inalpha.push_back(Bline{{source, target}});
+        if (belongs) {
+            if (is_incident.size() == 3) interior.insert(t);
+            if (is_incident.size() == 2) regular_two.insert(t);
+            if (is_incident.size() == 1) regular_one.insert(t);
+            if (is_incident.size() == 0) singular.insert(t);
         } else {
-            // TODO could be the edge descriptor
-            inalpha.push_back(Bline{{source, target}});
-            /*
-             * Is the segment in a border?
-             */
-            size_t count0(0);
-            size_t count1(0);
+            if (is_incident.size() == 3) face_is_hole.insert(t);
+        }
+    } // for each triangle
 
-            std::set<V> adjacent1, adjacent2, v_intersection, v_union;
-            log << "\nadjacent vertices to target" << graph[v_target] << "\n";
-            BGL_FORALL_ADJ(graph.target(edge), v, graph.graph, BG) {
+    log << "\n- singluar.size()" << singular.size();
+    log << "\n- regular_one.size()" << regular_one.size();
+    log << "\n- regular_two.size()" << regular_two.size();
+    log << "\n- interior.size()" << interior.size();
+    log << "\n- exterior.size()" << exterior.size();
+    log << "\n- m_triangles.size()" << m_triangles.size();
+    log << "\n- face_is_hole.size()" << face_is_hole.size();
+    log << "\n- in_border.size()" << in_border.size();
+
+    log << "drop table tbl_2; create table tbl_2 (gid serial, geom geometry, kind integer);";
+    log << to_insert(singular, "1", graph);
+    log << to_insert(regular_one, "2", graph);
+    log << to_insert(regular_two, "3", graph);
+    log << to_insert(interior, "4", graph);
+    log << to_insert(exterior, "5", graph);
+    log << to_insert(in_border, "6", graph);
+
+    return border;
+}
+#if 0
+for (const auto f : faces) {
+    log << "\nINSERT INTO tbl_2 (geom) VALUES (ST_geomFromText('"
+        << bg::wkt(f) << "'));";
+}
+
+BGL_FORALL_EDGES(edge, graph.graph, BG) {
+    Bpoint source {graph[graph.source(edge)].point};
+    Bpoint target {graph[graph.target(edge)].point};
+    auto v_source = graph.source(edge);
+    auto v_target = graph.target(edge);
+
 #if 1
-                log << graph[v] << ",";
+    log << "\n****** working with" << bg::wkt(Bline{{source, target}});
 #endif
-                adjacent1.insert(v);
+    auto centers = possible_centers(source, target, alpha);
+#if 1
+    for (const auto c : centers) {
+        log << "\ncenter:" << bg::wkt(c);
+    }
+#endif
+
+    if (centers.empty()) {
+        log << "\n alpha < d(midpoint)" << alpha << " < " << bg::distance(source, target) / 2;
+        // TODO could be the edge descriptor
+        not_inalpha.push_back(Bline{{source, target}});
+    } else {
+        // TODO could be the edge descriptor
+        inalpha.push_back(Bline{{source, target}});
+        /*
+         * Is the segment in a border?
+         */
+        size_t count0(0);
+        size_t count1(0);
+
+        std::set<V> adjacent1, adjacent2, v_intersection, v_union;
+        log << "\nadjacent vertices to target" << graph[v_target] << "\n";
+        BGL_FORALL_ADJ(graph.target(edge), v, graph.graph, BG) {
+#if 1
+            log << graph[v] << ",";
+#endif
+            adjacent1.insert(v);
+        }
+        log << "\nadjacent vertices to source" << graph[v_source] << "\n";
+        BGL_FORALL_ADJ(graph.source(edge), v, graph.graph, BG) {
+            adjacent2.insert(v);
+#if 1
+            log << graph[v] << ",";
+#endif
+        }
+        std::set_intersection(adjacent1.begin(), adjacent1.end(),
+                adjacent2.begin(), adjacent2.end(),
+                std::inserter(v_intersection, v_intersection.end()));
+        std::set_union(adjacent1.begin(), adjacent1.end(),
+                adjacent2.begin(), adjacent2.end(),
+                std::inserter(v_union, v_union.end()));
+
+        bool found0(false);
+        bool found1(false);
+        if (v_intersection.size() == 1) {
+            hull.push_back(edge);
+            log << "edge in hull";
+        }
+
+        for (const auto v : v_intersection) {
+            log << "\ntriangle" << bg::wkt(Bpoly{{source, target, graph[v].point}});
+            auto center = circumcenter(source, target, graph[v].point);
+            log << " circumcenter" << bg::wkt(center);
+            log << " distances" << bg::distance(center, source) << "," << bg::distance(center, target) << bg::distance(center, graph[v].point);
+            auto radius = bg::distance(center, source);
+            min_r = radius < min_r ? radius : min_r;
+            max_r = radius > max_r ? radius : max_r;
+            /* Semi Expensive assertion */
+
+            BGL_FORALL_VERTICES(u, graph.graph, BG) {
+                if (u == v_source || u == v_target || u == v) continue;
+                if (bg::distance(center, graph[u].point) < radius) log << "ILLEGAL TRIANGLE";
             }
-            log << "\nadjacent vertices to source" << graph[v_source] << "\n";
-            BGL_FORALL_ADJ(graph.source(edge), v, graph.graph, BG) {
-                adjacent2.insert(v);
+        }
+
+
+        for (const auto v : v_intersection) {
+            auto p(graph[v].point);
+            auto center = circumcenter(source, target, p);
+            auto radius = bg::distance(center, source);
 #if 1
-                log << graph[v] << ",";
+            log << "\n-" << graph.graph[v];
 #endif
-            }
-            std::set_intersection(adjacent1.begin(), adjacent1.end(),
-                    adjacent2.begin(), adjacent2.end(),
-                    std::inserter(v_intersection, v_intersection.end()));
-            std::set_union(adjacent1.begin(), adjacent1.end(),
-                    adjacent2.begin(), adjacent2.end(),
-                    std::inserter(v_union, v_union.end()));
-
-            bool found0(false);
-            bool found1(false);
-            if (v_intersection.size() == 1) {
-                hull.push_back(edge);
-                log << "edge in hull";
-            }
-
-            for (const auto v : v_intersection) {
-                log << "\ntriangle" << bg::wkt(Bpoly{{source, target, graph[v].point}});
-                auto center = circumcenter(source, target, graph[v].point);
-                log << " circumcenter" << bg::wkt(center);
-                log << " distances" << bg::distance(center, source) << "," << bg::distance(center, target) << bg::distance(center, graph[v].point);
-                auto radius = bg::distance(center, source);
-                min_r = radius < min_r ? radius : min_r;
-                max_r = radius > max_r ? radius : max_r;
-                /* Semi Expensive assertion */
-
-                BGL_FORALL_VERTICES(u, graph.graph, BG) {
-                    if (u == v_source || u == v_target || u == v) continue;
-                    if (bg::distance(center, graph[u].point) < radius) log << "ILLEGAL TRIANGLE";
-                }
-            }
-
-
-            for (const auto v : v_intersection) {
-                auto p(graph[v].point);
-                auto center = circumcenter(source, target, p);
-                auto radius = bg::distance(center, source);
+            if (radius < alpha) {
 #if 1
-                log << "\n-" << graph.graph[v];
-#endif
-                if (radius < alpha) {
-#if 1
-                    log << "- radius < alpha" << radius << "<" << alpha;
-                    log << "\ninserting " << bg::wkt(Bline{{source, target}});
-#endif
-                    E e = edge;
-                    m_in_border.edges.insert(e);
-                    break;
-                } else {
-                    log << "- radius > alpha" << radius << ">" << alpha;
-                }
-
-#if 1
-                if (!(bg::distance(p, centers[0]) < alpha) && (bg::distance(p, centers[1]) < alpha)) {
-                    log << "- Point distance to centers 1 is less than alpha radius";
-                }
-                if ((bg::distance(p, centers[0]) < alpha) && !(bg::distance(p, centers[1]) < alpha)) {
-                    log << "- Point distance to centers 0 is less than alpha radius";
-                }
-
-                if ((bg::distance(p, centers[0]) < alpha) && (bg::distance(p, centers[1]) < alpha)) {
-                    log << "- Point distance to both centers is less than alpha radius";
-                }
-
-                if (v == v_source) log << "is v source";
-                if (v == v_target) log << "is v target";
-#endif
-
-                if (v == v_source || v == v_target) continue;
-                found0 = found0 || (bg::distance(p, centers[0]) < alpha);
-                found1 = found1 || (bg::distance(p, centers[1]) < alpha);
-
-                count0 += (bg::distance(p, centers[0]) < alpha)? 1 : 0;
-                count1 += (bg::distance(p, centers[1]) < alpha)? 1 : 0;
-            }
-#if 1
-            log << "\ncounts" << count0 << "-" << count1;
-            log << "\nfounds" << found0 << "-" << found1;
-#endif
-
-            if (false && !(found0 && found1)) {
+                log << "- radius < alpha" << radius << "<" << alpha;
                 log << "\ninserting " << bg::wkt(Bline{{source, target}});
+#endif
                 E e = edge;
                 m_in_border.edges.insert(e);
+                break;
+            } else {
+                log << "- radius > alpha" << radius << ">" << alpha;
             }
+
+#if 1
+            if (!(bg::distance(p, centers[0]) < alpha) && (bg::distance(p, centers[1]) < alpha)) {
+                log << "- Point distance to centers 1 is less than alpha radius";
+            }
+            if ((bg::distance(p, centers[0]) < alpha) && !(bg::distance(p, centers[1]) < alpha)) {
+                log << "- Point distance to centers 0 is less than alpha radius";
+            }
+
+            if ((bg::distance(p, centers[0]) < alpha) && (bg::distance(p, centers[1]) < alpha)) {
+                log << "- Point distance to both centers is less than alpha radius";
+            }
+
+            if (v == v_source) log << "is v source";
+            if (v == v_target) log << "is v target";
+#endif
+
+            if (v == v_source || v == v_target) continue;
+            found0 = found0 || (bg::distance(p, centers[0]) < alpha);
+            found1 = found1 || (bg::distance(p, centers[1]) < alpha);
+
+            count0 += (bg::distance(p, centers[0]) < alpha)? 1 : 0;
+            count1 += (bg::distance(p, centers[1]) < alpha)? 1 : 0;
+        }
+#if 1
+        log << "\ncounts" << count0 << "-" << count1;
+        log << "\nfounds" << found0 << "-" << found1;
+#endif
+
+        if (false && !(found0 && found1)) {
+            log << "\ninserting " << bg::wkt(Bline{{source, target}});
+            E e = edge;
+            m_in_border.edges.insert(e);
         }
     }
+}
 
-    log << "\nMIN_R" << min_r;
-    log << "\nMAX_R" << max_r;
+log << "\nMIN_R" << min_r;
+log << "\nMAX_R" << max_r;
 
-    using Subgraph = boost::filtered_graph<BG, InBorder, boost::keep_all>;
-    Subgraph subg (graph.graph, m_in_border, {});
+using Subgraph = boost::filtered_graph<BG, InBorder, boost::keep_all>;
+Subgraph subg (graph.graph, m_in_border, {});
 
-    std::vector<V> component(num_vertices(subg));
+std::vector<V> component(num_vertices(subg));
 
-    auto num_comps = boost::connected_components(
-            subg,
-            &component[0]);
+auto num_comps = boost::connected_components(
+        subg,
+        &component[0]);
 
-    struct InComponent {
-        std::set<V> vertices;
-        bool operator()(V v) const { return vertices.count(v); }
-        void clear() { vertices.clear(); }
-    };
+struct InComponent {
+    std::set<V> vertices;
+    bool operator()(V v) const { return vertices.count(v); }
+    void clear() { vertices.clear(); }
+};
 
-    std::vector<InComponent> componentFilter(num_comps);
-    for (const auto v : boost::make_iterator_range(vertices(subg))) {
-        /*
-         * Save each vertex in the corresponding component
-         * v is in component[v]
-         */
-        componentFilter[component[v]].vertices.insert(v);
+std::vector<InComponent> componentFilter(num_comps);
+for (const auto v : boost::make_iterator_range(vertices(subg))) {
+    /*
+     * Save each vertex in the corresponding component
+     * v is in component[v]
+     */
+    componentFilter[component[v]].vertices.insert(v);
+}
+
+for (const auto filter : componentFilter) {
+    log << "\ncomponent size: " << filter.vertices.size();
+    if (filter.vertices.size() < 2) continue;
+    using BSUB = boost::filtered_graph<BG, InBorder, InComponent>;
+    BSUB subSubG(graph.graph, m_in_border, filter);
+
+    log << "\nvertices in component\n";
+    BGL_FORALL_VERTICES(v, subSubG, BSUB) {
+        log << "- " << subSubG[v];
     }
 
-    for (const auto filter : componentFilter) {
-        log << "\ncomponent size: " << filter.vertices.size();
-        if (filter.vertices.size() < 2) continue;
-        using BSUB = boost::filtered_graph<BG, InBorder, InComponent>;
-        BSUB subSubG(graph.graph, m_in_border, filter);
+    log << "\nedges in component\n";
+    log << "\nCREATE table tbl_1 (gid SERIAL, geom geometry);";
+    BGL_FORALL_EDGES(e, subSubG, BSUB) {
+        auto source = subSubG[boost::source(e, subSubG)].point;
+        auto target = subSubG[boost::target(e, subSubG)].point;
+        log << "\nINSERT INTO TABLE tbl_1 (geom) VALUES (ST_geomFromText('"
+            << bg::wkt(Bline{{source, target}}) << "'));";
+    }
 
-        log << "\nvertices in component\n";
-        BGL_FORALL_VERTICES(v, subSubG, BSUB) {
-            log << "- " << subSubG[v];
-        }
-
-        log << "\nedges in component\n";
-        log << "\nCREATE table tbl_1 (gid SERIAL, geom geometry);";
-        BGL_FORALL_EDGES(e, subSubG, BSUB) {
-            auto source = subSubG[boost::source(e, subSubG)].point;
-            auto target = subSubG[boost::target(e, subSubG)].point;
-            log << "\nINSERT INTO TABLE tbl_1 (geom) VALUES (ST_geomFromText('"
-                << bg::wkt(Bline{{source, target}}) << "'));";
-        }
-
-        std::vector<E> visited_order;
-        /*
-         * making a dfs of the component
-         */
-        using dfs_visitor = visitors::Dfs_visitor<E>;
-        try {
-            boost::depth_first_search(subSubG, visitor(dfs_visitor(visited_order)));
-        } catch (boost::exception const& ex) {
-            (void)ex;
-            throw;
-        } catch (std::exception &e) {
-            (void)e;
-            throw;
-        } catch (...) {
-            throw;
-        }
-        log << "\nvisited order:";
-        for (const auto edge : visited_order) {
-            Bpoint source {graph[graph.source(edge)].point};
-            Bpoint target {graph[graph.target(edge)].point};
+    std::vector<E> visited_order;
+    /*
+     * making a dfs of the component
+     */
+    using dfs_visitor = visitors::Dfs_visitor<E>;
+    try {
+        boost::depth_first_search(subSubG, visitor(dfs_visitor(visited_order)));
+    } catch (boost::exception const& ex) {
+        (void)ex;
+        throw;
+    } catch (std::exception &e) {
+        (void)e;
+        throw;
+    } catch (...) {
+        throw;
+    }
+    log << "\nvisited order:";
+    for (const auto edge : visited_order) {
+        Bpoint source {graph[graph.source(edge)].point};
+        Bpoint target {graph[graph.target(edge)].point};
 
 #if 0
-            log << bg::wkt(Bline{{graph[graph.source(edge)].point, Bline{{graph[graph.source(edge)].point}};
+        log << bg::wkt(Bline{{graph[graph.source(edge)].point, Bline{{graph[graph.source(edge)].point}};
 
-                log << boost::source(edge, subSubG);
+            log << boost::source(edge, subSubG);
 #endif
-            }
-
-            Bpoly line;
-            for (const auto edge : visited_order) {
-                log << edge << "->";
-                if (edge == visited_order.front()) {
-                    bg::append(line, graph[graph.source(edge)].point);
-                }
-                bg::append(line, graph[graph.target(edge)].point);
-            };
-            border.push_back(line);
-            }
-
-            for (const auto line : border) {
-                log << "\n" << boost::geometry::wkt(line);
-            }
-
-            log << border.size() << "\n****";
-            return border;
         }
+
+        Bpoly line;
+        for (const auto edge : visited_order) {
+            log << edge << "->";
+            if (edge == visited_order.front()) {
+                bg::append(line, graph[graph.source(edge)].point);
+            }
+            bg::append(line, graph[graph.target(edge)].point);
+        };
+        border.push_back(line);
+        }
+
+        for (const auto line : border) {
+            log << "\n" << boost::geometry::wkt(line);
+        }
+
+        log << border.size() << "\n****";
+        return border;
+    }
 #endif
 
 
 
-        std::ostream&
-            operator<<(std::ostream& os, const Pgr_delauny &d) {
-                os << d.graph;
+    std::ostream&
+        operator<<(std::ostream& os, const Pgr_delauny &d) {
+            os << d.graph;
 
-                return os;
-            }
+            return os;
+        }
 
-    }  // namespace alphashape
+}  // namespace alphashape
 }  // namespace pgrouting
