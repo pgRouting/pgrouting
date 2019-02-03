@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "alphaShape/pgr_alphaShape.hpp"
 #include <limits>
+#include <sstream>
 #include <boost/graph/filtered_graph.hpp>
 #include <boost/graph/connected_components.hpp>
 #include "mst/visitors.hpp"
@@ -93,6 +94,23 @@ possible_centers(const Bpoint p1, const Bpoint p2, const double alpha_radius) {
     centers.push_back({rombus_center.x() - m * p_a.y(), rombus_center.y() + m * p_a.x()});
 
     return centers;
+}
+
+std::string
+to_insert(std::set<std::set<E>> name, std::string kind, const G &graph) {
+    std::ostringstream str;
+    for (const auto face : name) {
+        std::vector<E> edges(face.begin(), face.end());
+        auto a = graph.source(edges[0]);
+        auto b = graph.target(edges[0]);
+        auto c = graph.source(edges[1]);
+        c = (c == a || c == b)? graph.target(edges[1]) : c;
+        pgassert(a != b && a != c && b!= c);
+        Bpoly geom{{graph[a].point, graph[b].point, graph[c].point}};
+        str << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
+            <<  bg::wkt(geom) << "'), " << kind +");";
+    }
+    return str.str();
 }
 
 }  // namespace
@@ -216,7 +234,7 @@ Pgr_delauny::operator()(double alpha) const {
          */
         bool belongs(false);
 
-#if 1
+#if 0
         log << "\n****** working with" << bg::wkt(Bpoly{{graph[a].point, graph[b].point, graph[c].point}});
 #endif
 
@@ -281,47 +299,117 @@ Pgr_delauny::operator()(double alpha) const {
                     /* is incident to a face */
                     is_incident.insert(edge);
                 } else {
-                    in_border.insert(edge);
+                        in_border.insert(edge);
+#if 0
+                        if (bg::distance(graph[u].point, graph[v].point) <= radius) {
+                            in_border.insert(edge);
+#endif
+                        }
                 }
+            }
+
+            if (belongs) {
+                if (is_incident.size() == 3) interior.insert(t);
+                if (is_incident.size() == 2) regular_two.insert(t);
+                if (is_incident.size() == 1) regular_one.insert(t);
+                if (is_incident.size() == 0) singular.insert(t);
+            } else {
+                if (is_incident.size() == 3) face_is_hole.insert(t);
             }
         }
 
-        if (belongs) {
-            if (is_incident.size() == 3) interior.insert(t);
-            if (is_incident.size() == 2) regular_two.insert(t);
-            if (is_incident.size() == 1) regular_one.insert(t);
-            if (is_incident.size() == 0) singular.insert(t);
-        } else {
-            if (is_incident.size() == 3) face_is_hole.insert(t);
-        }
-    }
+        log << "\n- singluar.size()" << singular.size();
+        log << "\n- regular_one.size()" << regular_one.size();
+        log << "\n- regular_two.size()" << regular_two.size();
+        log << "\n- interior.size()" << interior.size();
+        log << "\n- exterior.size()" << exterior.size();
+        log << "\n- m_triangles.size()" << m_triangles.size();
+        log << "\n- face_is_hole.size()" << face_is_hole.size();
+        log << "\n- in_border.size()" << in_border.size();
 
-    log << "\n- singluar.size()" << singular.size();
-    log << "\n- regular_one.size()" << regular_one.size();
-    log << "\n- regular_two.size()" << regular_two.size();
-    log << "\n- interior.size()" << interior.size();
-    log << "\n- exterior.size()" << exterior.size();
-    log << "\n- m_triangles.size()" << m_triangles.size();
-    log << "\n- face_is_hole.size()" << face_is_hole.size();
-    log << "\n- in_border.size()" << in_border.size();
-
+        log << "drop table tbl_2; create table tbl_2 (gid serial, geom geometry, kind integer);";
+        log << to_insert(singular, "1", graph);
+        log << to_insert(regular_one, "2", graph);
+        log << to_insert(regular_two, "3", graph);
+        log << to_insert(interior, "4", graph);
+        log << to_insert(exterior, "5", graph);
 #if 0
-    log << "DROP TABLE tbl_2; CREATE TABLE tbl_2 (gid SERIAL, geom geometry, kind INTEGER);";
-    for (const auto face : set_of_faces) {
-        std::set<V> triangle_vertices;
-        for (const auto e : face) {
-            triangle_vertices.insert(graph.source(e));
-            triangle_vertices.insert(graph.target(e));
-        }
-        pgassert(triangle_vertices.size()==3);
-        Bpoly triangle;
+        for (const auto face : singular) {
+            std::vector<E> edges(face.begin(), face.end());
+            auto a = graph.source(edges[0]);
+            auto b = graph.target(edges[0]);
+            auto c = graph.source(edges[1]);
+            c = (c == a || c == b)? graph.target(edges[1]) : c;
+            pgassert(a != b && a != c && b!= c);
 
-        for (const auto v : triangle_vertices) {
-            bg::append(triangle, graph[v].point);
+            Bpoly triangle{{graph[a].point, graph[b].point,graph[c].point}};
+            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
+                << bg::wkt(triangle) << "'), 1);";
         }
-        faces.push_back(triangle);
+        for (const auto face : regular_one) {
+            std::vector<E> edges(face.begin(), face.end());
+            auto a = graph.source(edges[0]);
+            auto b = graph.target(edges[0]);
+            auto c = graph.source(edges[1]);
+            c = (c == a || c == b)? graph.target(edges[1]) : c;
+            pgassert(a != b && a != c && b!= c);
+
+            Bpoly triangle{{graph[a].point, graph[b].point,graph[c].point}};
+            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
+                << bg::wkt(triangle) << "'), 2);";
+        }
+        for (const auto face : regular_two) {
+            std::vector<E> edges(face.begin(), face.end());
+            auto a = graph.source(edges[0]);
+            auto b = graph.target(edges[0]);
+            auto c = graph.source(edges[1]);
+            c = (c == a || c == b)? graph.target(edges[1]) : c;
+            pgassert(a != b && a != c && b!= c);
+
+            Bpoly triangle{{graph[a].point, graph[b].point,graph[c].point}};
+            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
+                << bg::wkt(triangle) << "'), 3);";
+        }
+
+        for (const auto face : interior) {
+            std::vector<E> edges(face.begin(), face.end());
+            auto a = graph.source(edges[0]);
+            auto b = graph.target(edges[0]);
+            auto c = graph.source(edges[1]);
+            c = (c == a || c == b)? graph.target(edges[1]) : c;
+            pgassert(a != b && a != c && b!= c);
+
+            Bpoly triangle{{graph[a].point, graph[b].point,graph[c].point}};
+            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
+                << bg::wkt(triangle) << "'), 4);";
+        }
+
+        for (const auto face : exterior) {
+            std::vector<E> edges(face.begin(), face.end());
+            auto a = graph.source(edges[0]);
+            auto b = graph.target(edges[0]);
+            auto c = graph.source(edges[1]);
+            c = (c == a || c == b)? graph.target(edges[1]) : c;
+            pgassert(a != b && a != c && b!= c);
+
+            Bpoly triangle{{graph[a].point, graph[b].point,graph[c].point}};
+            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
+                << bg::wkt(triangle) << "'), 5);";
+        }
+#endif
+
+        for (const auto edge : in_border) {
+            auto a = graph.source(edge);
+            auto b = graph.target(edge);
+
+            Bline line{{graph[a].point, graph[b].point}};
+            log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
+                << bg::wkt(line) << "'), 6);";
+        }
+
+        return border;
     }
-
+#if 0
     for (const auto f : faces) {
         log << "\nINSERT INTO tbl_2 (geom) VALUES (ST_geomFromText('"
             << bg::wkt(f) << "'));";
@@ -548,9 +636,9 @@ Pgr_delauny::operator()(double alpha) const {
             }
 
             log << border.size() << "\n****";
-#endif
             return border;
         }
+#endif
 
 
 
