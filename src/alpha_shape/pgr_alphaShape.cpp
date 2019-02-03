@@ -113,6 +113,20 @@ to_insert(std::set<std::set<E>> name, std::string kind, const G &graph) {
     return str.str();
 }
 
+std::string
+to_insert(std::set<E> name, std::string kind, const G &graph) {
+    std::ostringstream str;
+    for (const auto edge : name) {
+        auto a = graph.source(edge);
+        auto b = graph.target(edge);
+
+        Bline geom{{graph[a].point, graph[b].point}};
+        str << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
+            <<  bg::wkt(geom) << "'), " << kind +");";
+    }
+    return str.str();
+}
+
 }  // namespace
 
 /*
@@ -333,6 +347,7 @@ Pgr_delauny::operator()(double alpha) const {
         log << to_insert(regular_two, "3", graph);
         log << to_insert(interior, "4", graph);
         log << to_insert(exterior, "5", graph);
+        log << to_insert(in_border, "6", graph);
 #if 0
         for (const auto face : singular) {
             std::vector<E> edges(face.begin(), face.end());
@@ -396,7 +411,6 @@ Pgr_delauny::operator()(double alpha) const {
             log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
                 << bg::wkt(triangle) << "'), 5);";
         }
-#endif
 
         for (const auto edge : in_border) {
             auto a = graph.source(edge);
@@ -406,6 +420,7 @@ Pgr_delauny::operator()(double alpha) const {
             log << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
                 << bg::wkt(line) << "'), 6);";
         }
+#endif
 
         return border;
     }
