@@ -513,7 +513,7 @@ BEGIN
 
 
       v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom, p_tolerance, (v_geom_dims = 3 and v_zconn = 2));
-      if(v_current_line_layer_the_geom is NULL ) THEN --I havent done anything with this line, it wasnt processed because of topological errors.
+      if(v_current_line_layer_the_geom is NULL OR st_npoints(v_current_line_layer_the_geom) < 2) THEN --I havent done anything with this line, it wasnt processed because of topological errors.
         continue;
       END IF;
 
