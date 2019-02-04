@@ -203,7 +203,11 @@ BEGIN
       v_p_array := v_p_array || v_p;
     END LOOP;
   END LOOP;
-  return st_makeLine(v_p_array);
+  v_line = st_makeLine(v_p_array);
+  if st_npoints(v_line) < 2 then
+    return null;
+  end if;
+  return  v_line;
 
 END;
 $$ LANGUAGE plpgsql;
@@ -335,7 +339,7 @@ BEGIN
 
         --This is needed in order to drop duplicates points in a linestring or multilinestring.
         v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom,p_tolerance, FALSE );
-        if(v_current_line_layer_the_geom is NULL OR st_npoints(v_current_line_layer_the_geom) < 2 ) THEN
+        if(v_current_line_layer_the_geom is NULL ) THEN
           return query select v_current_line_layer_id::bigint, v_lineal_layer::text ,'Invalid MultiLinestring. A valid multilinestring is the one conformed by lines connected like they were a single line chopped. Geom wasnt used.'::text;
           continue;
         END IF;
@@ -430,7 +434,7 @@ BEGIN
             EXECUTE p_layers->v_lineal_layer->>'sql' LOOP
 
             v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom,p_tolerance, FALSE );
-            if(v_current_line_layer_the_geom is NULL OR st_npoints(v_current_line_layer_the_geom) < 2 ) THEN --I havent done anything with this line, it wasnt processed because of topological errors.
+            if(v_current_line_layer_the_geom is null ) THEN --I havent done anything with this line, it wasnt processed because of topological errors.
               continue;
             END IF;
             v_n_points := st_npoints(v_current_line_layer_the_geom);
@@ -512,7 +516,7 @@ BEGIN
 
 
       v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom, p_tolerance, (v_geom_dims = 3 and v_zconn = 2));
-      if(v_current_line_layer_the_geom is NULL OR st_npoints(v_current_line_layer_the_geom) < 2) THEN --I havent done anything with this line, it wasnt processed because of topological errors.
+      if(v_current_line_layer_the_geom is NULL) THEN --I havent done anything with this line, it wasnt processed because of topological errors.
         continue;
       END IF;
 
