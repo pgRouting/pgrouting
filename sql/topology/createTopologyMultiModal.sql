@@ -391,7 +391,7 @@ BEGIN
             IF v_r_r is NULL THEN
               UPDATE pgr_create_top_graph_ptos set r = v_r
               where id = v_r_id --use index
-                and st_astext(geom) = st_astext(v_r_geom);
+                and st_3ddwithin(geom,v_r_geom, p_tolerance);
             END IF;
             EXECUTE 'insert into '|| v_r_table_name ||
                     ' values($1,null,null, $2)' using v_r, v_point;
