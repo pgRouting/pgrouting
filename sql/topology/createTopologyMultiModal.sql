@@ -335,7 +335,7 @@ BEGIN
 
         --This is needed in order to drop duplicates points in a linestring or multilinestring.
         v_current_line_layer_the_geom := pgr_multiline_to_linestring(v_current_line_layer_the_geom,p_tolerance, FALSE );
-        if(v_current_line_layer_the_geom is NULL ) THEN
+        if(v_current_line_layer_the_geom is NULL OR st_npoints(v_current_line_layer_the_geom) < 2 ) THEN
           return query select v_current_line_layer_id::bigint, v_lineal_layer::text ,'Invalid MultiLinestring. A valid multilinestring is the one conformed by lines connected like they were a single line chopped. Geom wasnt used.'::text;
           continue;
         END IF;
