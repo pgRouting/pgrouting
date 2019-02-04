@@ -507,7 +507,6 @@ BEGIN
 
     v_zconn := p_layers->(v_keyvalue.key)->>'zconn';
     v_geom_dims := p_layers->(v_keyvalue.key)->>'dims';
-    v_first := TRUE ;
     for v_current_line_layer_id,v_current_line_layer_the_geom in
       EXECUTE p_layers->(v_keyvalue.key)->>'sql' LOOP
 
