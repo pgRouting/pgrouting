@@ -551,7 +551,7 @@ BEGIN
         if (v_zconn = 2 and v_geom_dims = 3)  THEN
           EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
                   ' where id_geom = $1 and layname = $2 and pgr_create_topo_check_intersect("geom",$3,$4)'
-            into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key,st_buffer(v_point, p_tolerance),p_tolerance;
+            into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key,v_point,p_tolerance;
         ELSE
           EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
                   ' where id_geom = $1 and layname = $2 and st_3ddwithin(geom, $3,$4)'
