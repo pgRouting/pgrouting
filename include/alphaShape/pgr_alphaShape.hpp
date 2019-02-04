@@ -65,13 +65,13 @@ class Pgr_delauny : public Pgr_messages {
  private:
      void get_triangles();
 
-     struct EdgeFilter {
+     struct EdgesFilter {
          std::set<E> edges;
          bool operator()(E e) const { return edges.count(e); }
          void clear() { edges.clear(); }
      } ;
 
-     G graph;
+     mutable G graph;
      std::vector< std::set<E> > m_triangles;
      std::vector< Bpoint > m_centers;
      std::vector< double > m_radius;

@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/filtered_graph.hpp>
 #include <boost/graph/connected_components.hpp>
 #include "mst/visitors.hpp"
+#include <boost/graph/dijkstra_shortest_paths.hpp>
 
 namespace bg = boost::geometry;
 
@@ -127,6 +128,23 @@ to_insert(std::set<E> name, std::string kind, const G &graph) {
     return str.str();
 }
 
+
+std::string
+to_insert(std::set<V> name, std::string kind, const G &graph) {
+    std::ostringstream str;
+    Bpoly geom;
+    for (const auto v : name) {
+        auto a = graph[v].point;
+        bg::append(geom,  a);
+    }
+
+    str << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
+            <<  bg::wkt(geom) << "'), " << kind +");";
+    return str.str();
+}
+
+
+
 std::set<V>
 get_intersection(V u, V v, const BG& graph) {
             std::set<V> adjacent1, adjacent2, v_intersection;
@@ -141,6 +159,18 @@ get_intersection(V u, V v, const BG& graph) {
                     std::inserter(v_intersection, v_intersection.end()));
             return v_intersection;
 }
+
+template <typename V>
+class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
+      public:
+          explicit dijkstra_one_goal_visitor(V goal) : m_goal(goal) {}
+          template <class B_G>
+          void examine_vertex(V &u, B_G &) {
+              if (u == m_goal) throw found_goals();
+          }
+      private:
+          V m_goal;
+};
 
 }  // namespace
 
@@ -226,7 +256,7 @@ Pgr_delauny::operator()(double alpha) const {
     std::set< std::set<E> > regular_two;
     std::set< std::set<E> > singular;
     std::set< std::set<E> > face_is_hole;
-    std::set<E> in_border;
+    EdgesFilter in_border;
     std::set<E> singular_borders;
     std::set<E> lone_edges;
     std::set<E> hole_edges;
@@ -303,7 +333,7 @@ Pgr_delauny::operator()(double alpha) const {
             if (v_intersection.size() == 1) {
                 hull.push_back(edge);
                 if (belongs) {
-                    in_border.insert(edge);
+                    in_border.edges.insert(edge);
                     in_hull = true;
                     log << "edge in hull";
                 } else if (bg::distance(graph[u].point, graph[v].point) / 2 < alpha) {
@@ -323,7 +353,7 @@ Pgr_delauny::operator()(double alpha) const {
                     /* is incident to a face */
                     is_incident.insert(edge);
                 } else {
-                        if (belongs) in_border.insert(edge);
+                        if (belongs) in_border.edges.insert(edge);
                         else if (bg::distance(graph[u].point, graph[v].point) / 2 < alpha) {
                             lone_edges.insert(edge);
                         }
@@ -348,18 +378,18 @@ Pgr_delauny::operator()(double alpha) const {
     } // for each triangle
 
     std::set<E> v_difference;
-    std::set_difference(in_border.begin(), in_border.end(),
+    std::set_difference(in_border.edges.begin(), in_border.edges.end(),
             hole_edges.begin(), hole_edges.end(),
             std::inserter(v_difference, v_difference.end()));
 
-    in_border = v_difference;
+    in_border.edges = v_difference;
 
     v_difference.clear();
-    std::set_difference(in_border.begin(), in_border.end(),
+    std::set_difference(in_border.edges.begin(), in_border.edges.end(),
             singular_borders.begin(), singular_borders.end(),
             std::inserter(v_difference, v_difference.end()));
 
-    in_border = v_difference;
+    in_border.edges = v_difference;
 
 
     log << "\n- singluar.size()" << singular.size();
@@ -371,8 +401,9 @@ Pgr_delauny::operator()(double alpha) const {
     log << "\n- face_is_hole.size()" << face_is_hole.size();
     log << "\n- hole_edges.size()" << face_is_hole.size();
     log << "\n- singular_borders.size()" << singular_borders.size();
-    log << "\n- in_border.size()" << in_border.size();
+    log << "\n- in_border.size()" << in_border.edges.size();
 
+#if 0
     log << "drop table tbl_2; create table tbl_2 (gid serial, geom geometry, kind integer);";
     log << to_insert(singular, "1", graph);
     log << to_insert(regular_one, "2", graph);
@@ -380,13 +411,95 @@ Pgr_delauny::operator()(double alpha) const {
     log << to_insert(interior, "4", graph);
     log << to_insert(exterior, "5", graph);
     log << to_insert(face_is_hole, "6", graph);
-    log << to_insert(in_border, "7", graph);
+    log << to_insert(in_border.edges, "7", graph);
     log << to_insert(lone_edges, "8", graph);
     log << to_insert(hole_edges, "9", graph);
     log << to_insert(singular_borders, "10", graph);
+#endif
+    std::set<E> used_edges;
+    BGL_FORALL_VERTICES(source, graph.graph, BG) {
+        /* cycling all vertices to get the shortest path */
+        using Subgraph = boost::filtered_graph<BG, EdgesFilter, boost::keep_all>;
+        Subgraph subg1 (graph.graph, in_border, {});
+        V v_target;
+        E edge;
+        bool found(false);
+        BGL_FORALL_OUTEDGES(source, e, subg1, Subgraph) {
+            edge = e;
+            v_target = boost::source(e, subg1) == source?
+                boost::target(e, subg1) : boost::source(e, subg1);
+            found = true;
+            break;
+        }
+        if (!found) continue;
+
+        log << "\n" << source << "->" << v_target;
+
+        /*
+         * Removing fron the graph the edge
+         */
+
+        in_border.edges.erase(edge);
+        Subgraph subg (graph.graph, in_border, {});
+
+        std::vector<V> predecessors(boost::num_vertices(subg));
+        std::vector<double> distances(num_vertices(subg));
+        try {
+             boost::dijkstra_shortest_paths(subg, source,
+                     boost::predecessor_map(&predecessors[0])
+                     .weight_map(get(&Basic_edge::cost, subg))
+                     .distance_map(&distances[0])
+                     .visitor(dijkstra_one_goal_visitor<V>(v_target)));
+         } catch(found_goals &) {
+             log << "found goal";
+         } catch (boost::exception const& ex) {
+             (void)ex;
+             throw;
+         } catch (std::exception &e) {
+             (void)e;
+             throw;
+         } catch (...) {
+             throw;
+         }
+
+        std::deque<V> poly_vertices;
+        // no path was found
+        if (v_target == predecessors[v_target]) {
+            log << " path not found";
+            continue;
+        }
+
+        /*
+         * set the target
+         */
+        auto target = v_target;
+
+        /*
+         * the last stop is the target
+         */
+        poly_vertices.push_front(target);
+
+        /*
+         * get the path
+         */
+        while (target != source) {
+            /*
+             * done when the predecesor of the target is the target
+             */
+            poly_vertices.push_front(target);
+            if (target == predecessors[target]) break;
+            target = predecessors[target];
+        }
+
+        for (const auto v : poly_vertices) {
+            log << graph[v] <<",";
+        }
+
+    }
 
     return border;
 }
+
 #if 0
 for (const auto f : faces) {
     log << "\nINSERT INTO tbl_2 (geom) VALUES (ST_geomFromText('"
