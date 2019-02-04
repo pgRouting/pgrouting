@@ -227,6 +227,7 @@ Pgr_delauny::operator()(double alpha) const {
     std::set< std::set<E> > singular;
     std::set< std::set<E> > face_is_hole;
     std::set<E> in_border;
+    std::set<E> singular_borders;
     std::set<E> lone_edges;
     std::set<E> hole_edges;
     std::set<E> boundry;
@@ -334,7 +335,10 @@ Pgr_delauny::operator()(double alpha) const {
             if (is_incident.size() == 3) interior.insert(t);
             if (is_incident.size() == 2) regular_two.insert(t);
             if (is_incident.size() == 1) regular_one.insert(t);
-            if (is_incident.size() == 0) singular.insert(t);
+            if (is_incident.size() == 0) {
+                singular.insert(t);
+                singular_borders.insert(t.begin(), t.end());
+            }
         } else {
             if (is_incident.size() == 3) {
                 face_is_hole.insert(t);
@@ -350,6 +354,14 @@ Pgr_delauny::operator()(double alpha) const {
 
     in_border = v_difference;
 
+    v_difference.clear();
+    std::set_difference(in_border.begin(), in_border.end(),
+            singular_borders.begin(), singular_borders.end(),
+            std::inserter(v_difference, v_difference.end()));
+
+    in_border = v_difference;
+
+
     log << "\n- singluar.size()" << singular.size();
     log << "\n- regular_one.size()" << regular_one.size();
     log << "\n- regular_two.size()" << regular_two.size();
@@ -358,6 +370,7 @@ Pgr_delauny::operator()(double alpha) const {
     log << "\n- m_triangles.size()" << m_triangles.size();
     log << "\n- face_is_hole.size()" << face_is_hole.size();
     log << "\n- hole_edges.size()" << face_is_hole.size();
+    log << "\n- singular_borders.size()" << singular_borders.size();
     log << "\n- in_border.size()" << in_border.size();
 
     log << "drop table tbl_2; create table tbl_2 (gid serial, geom geometry, kind integer);";
@@ -370,6 +383,7 @@ Pgr_delauny::operator()(double alpha) const {
     log << to_insert(in_border, "7", graph);
     log << to_insert(lone_edges, "8", graph);
     log << to_insert(hole_edges, "9", graph);
+    log << to_insert(singular_borders, "10", graph);
 
     return border;
 }
