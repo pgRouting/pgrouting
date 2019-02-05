@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/connected_components.hpp>
 #include "mst/visitors.hpp"
 #include <boost/graph/dijkstra_shortest_paths.hpp>
+#include <boost/geometry/algorithms/union.hpp>
 
 namespace bg = boost::geometry;
 
@@ -130,14 +131,13 @@ to_insert(std::set<E> name, std::string kind, const G &graph) {
 
 
 std::string
-to_insert(std::set<V> name, std::string kind, const G &graph) {
+to_insert(std::deque<V> name, std::string kind, const G &graph) {
     std::ostringstream str;
     Bpoly geom;
     for (const auto v : name) {
         auto a = graph[v].point;
         bg::append(geom,  a);
     }
-
     str << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
             <<  bg::wkt(geom) << "'), " << kind +");";
     return str.str();
@@ -171,6 +171,63 @@ class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
       private:
           V m_goal;
 };
+
+template <typename B_G, typename V>
+std::vector<V>
+get_predecessors(V source, V target,  const B_G &subg) {
+    pgassert(boost::num_vertices(subg));
+    std::vector<V> predecessors(boost::num_vertices(subg));
+    std::vector<double> distances(num_vertices(subg));
+    pgassert(predecessors.size() == boost::num_vertices(subg));
+    pgassert(distances.size() == boost::num_vertices(subg));
+
+    try {
+        boost::dijkstra_shortest_paths(subg, source,
+                boost::predecessor_map(&predecessors[0])
+                .weight_map(get(&Basic_edge::cost, subg))
+                .distance_map(&distances[0])
+                .visitor(dijkstra_one_goal_visitor<V>(target)));
+    } catch(found_goals &) {
+    } catch (boost::exception const& ex) {
+        (void)ex;
+        throw;
+    } catch (std::exception &e) {
+        (void)e;
+        throw;
+    } catch (...) {
+             throw;
+         }
+    return predecessors;
+}
+
+
+template <typename B_G, typename V>
+Bpoly
+get_polygon(V source, V target, const std::vector<V> & predecessors, const B_G &graph) {
+        Bpoly polygon;
+        /*
+         * There is no path -> returning empty polygon
+         */
+        if (target == predecessors[target]) {
+            pgassert(bg::num_points(polygon) == 0);
+            return polygon;
+        }
+
+        /*
+         * the last stop is the target
+         */
+        bg::append(polygon.outer(), graph[source].point);
+
+        /*
+         * get the path
+         */
+        while (target != source || target != predecessors[target]) {
+            bg::append(polygon.outer(), graph[target].point);
+            target = predecessors[target];
+        }
+        bg::correct(polygon);
+        return polygon;
+}
 
 }  // namespace
 
@@ -403,8 +460,8 @@ Pgr_delauny::operator()(double alpha) const {
     log << "\n- singular_borders.size()" << singular_borders.size();
     log << "\n- in_border.size()" << in_border.edges.size();
 
-#if 0
     log << "drop table tbl_2; create table tbl_2 (gid serial, geom geometry, kind integer);";
+#if 0
     log << to_insert(singular, "1", graph);
     log << to_insert(regular_one, "2", graph);
     log << to_insert(regular_two, "3", graph);
@@ -433,7 +490,9 @@ Pgr_delauny::operator()(double alpha) const {
         }
         if (!found) continue;
 
+#if 0
         log << "\n" << source << "->" << v_target;
+#endif
 
         /*
          * Removing fron the graph the edge
@@ -442,6 +501,9 @@ Pgr_delauny::operator()(double alpha) const {
         in_border.edges.erase(edge);
         Subgraph subg (graph.graph, in_border, {});
 
+#if 1
+        auto predecessors = get_predecessors(source, v_target, subg);
+#else
         std::vector<V> predecessors(boost::num_vertices(subg));
         std::vector<double> distances(num_vertices(subg));
         try {
@@ -451,7 +513,9 @@ Pgr_delauny::operator()(double alpha) const {
                      .distance_map(&distances[0])
                      .visitor(dijkstra_one_goal_visitor<V>(v_target)));
          } catch(found_goals &) {
+#if 0
              log << "found goal";
+#endif
          } catch (boost::exception const& ex) {
              (void)ex;
              throw;
@@ -461,11 +525,14 @@ Pgr_delauny::operator()(double alpha) const {
          } catch (...) {
              throw;
          }
-
+#endif
+#if 0
         std::deque<V> poly_vertices;
         // no path was found
         if (v_target == predecessors[v_target]) {
+#if 0
             log << " path not found";
+#endif
             continue;
         }
 
@@ -477,6 +544,7 @@ Pgr_delauny::operator()(double alpha) const {
         /*
          * the last stop is the target
          */
+        poly_vertices.push_front(source);
         poly_vertices.push_front(target);
 
         /*
@@ -491,10 +559,10 @@ Pgr_delauny::operator()(double alpha) const {
             target = predecessors[target];
         }
 
-        for (const auto v : poly_vertices) {
-            log << graph[v] <<",";
-        }
-
+        // log << to_insert(poly_vertices, "11", graph);
+#endif
+        auto polygon = get_polygon(source, v_target, predecessors, subg);
+        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(polygon) << "'), 11);";
     }
 
     return border;
