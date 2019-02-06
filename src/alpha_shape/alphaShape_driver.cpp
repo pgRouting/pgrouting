@@ -115,7 +115,6 @@ do_alphaShape(
             }
             ++pid;
         }
-#else
         /*
          * returning a sequence of text
          */
@@ -128,6 +127,16 @@ do_alphaShape(
             (*return_tuples)[row].geom = pgr_msg(ss.str().c_str());
             ++row;
         }
+
+#else
+        /*
+         * returning a multipolygon text
+         */
+        *return_count = 1;
+        *return_tuples = pgr_alloc(*return_count, (*return_tuples));
+        std::stringstream ss;
+        ss << bg::wkt(results);
+        (*return_tuples)[0].geom = pgr_msg(ss.str().c_str());
 
 #endif
 

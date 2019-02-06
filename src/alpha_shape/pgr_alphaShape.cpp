@@ -98,6 +98,17 @@ possible_centers(const Bpoint p1, const Bpoint p2, const double alpha_radius) {
     return centers;
 }
 
+Bpoly
+triangle_to_polygon(std::set<E> triangle, const G &graph) {
+        std::vector<E> edges(triangle.begin(), triangle.end());
+        auto a = graph.source(edges[0]);
+        auto b = graph.target(edges[0]);
+        auto c = graph.source(edges[1]);
+        c = (c == a || c == b)? graph.target(edges[1]) : c;
+        pgassert(a != b && a != c && b!= c);
+        return Bpoly{{graph[a].point, graph[b].point, graph[c].point}};
+}
+
 std::string
 to_insert(std::set<std::set<E>> name, std::string kind, const G &graph) {
     std::ostringstream str;
@@ -298,9 +309,10 @@ Pgr_delauny::get_triangles() {
 }
 
 
-std::vector<Bpoly>
+Bpolys
 Pgr_delauny::operator()(double alpha) const {
     log << "starting calculation\n";
+    Bpolys result;
     std::vector<Bpoly> border;
     std::vector<E> hull;
     std::vector<Bpoly> faces;
@@ -320,7 +332,7 @@ Pgr_delauny::operator()(double alpha) const {
     std::set<E> boundry;
 
 
-    if (alpha <= 0) return border;
+    if (alpha <= 0) return result;
 
     std::vector<Bline> not_inalpha;
     std::vector<Bline> inalpha;
@@ -456,7 +468,7 @@ Pgr_delauny::operator()(double alpha) const {
     log << "\n- exterior.size()" << exterior.size();
     log << "\n- m_triangles.size()" << m_triangles.size();
     log << "\n- face_is_hole.size()" << face_is_hole.size();
-    log << "\n- hole_edges.size()" << face_is_hole.size();
+    log << "\n- hole_edges.size()" << hole_edges.size();
     log << "\n- singular_borders.size()" << singular_borders.size();
     log << "\n- in_border.size()" << in_border.edges.size();
 
@@ -473,6 +485,10 @@ Pgr_delauny::operator()(double alpha) const {
     log << to_insert(hole_edges, "9", graph);
     log << to_insert(singular_borders, "10", graph);
 #endif
+
+    /*
+     * Building the polygons from the obtained borders
+     */
     std::set<E> used_edges;
     BGL_FORALL_VERTICES(source, graph.graph, BG) {
         /* cycling all vertices to get the shortest path */
@@ -501,71 +517,35 @@ Pgr_delauny::operator()(double alpha) const {
         in_border.edges.erase(edge);
         Subgraph subg (graph.graph, in_border, {});
 
-#if 1
         auto predecessors = get_predecessors(source, v_target, subg);
-#else
-        std::vector<V> predecessors(boost::num_vertices(subg));
-        std::vector<double> distances(num_vertices(subg));
-        try {
-             boost::dijkstra_shortest_paths(subg, source,
-                     boost::predecessor_map(&predecessors[0])
-                     .weight_map(get(&Basic_edge::cost, subg))
-                     .distance_map(&distances[0])
-                     .visitor(dijkstra_one_goal_visitor<V>(v_target)));
-         } catch(found_goals &) {
-#if 0
-             log << "found goal";
-#endif
-         } catch (boost::exception const& ex) {
-             (void)ex;
-             throw;
-         } catch (std::exception &e) {
-             (void)e;
-             throw;
-         } catch (...) {
-             throw;
-         }
-#endif
-#if 0
-        std::deque<V> poly_vertices;
-        // no path was found
-        if (v_target == predecessors[v_target]) {
-#if 0
-            log << " path not found";
-#endif
-            continue;
-        }
-
-        /*
-         * set the target
-         */
-        auto target = v_target;
-
-        /*
-         * the last stop is the target
-         */
-        poly_vertices.push_front(source);
-        poly_vertices.push_front(target);
-
-        /*
-         * get the path
-         */
-        while (target != source) {
-            /*
-             * done when the predecesor of the target is the target
-             */
-            poly_vertices.push_front(target);
-            if (target == predecessors[target]) break;
-            target = predecessors[target];
-        }
-
-        // log << to_insert(poly_vertices, "11", graph);
-#endif
         auto polygon = get_polygon(source, v_target, predecessors, subg);
+        if (bg::num_points(polygon) >= 3) border.push_back(polygon);
         log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(polygon) << "'), 11);";
     }
 
-    return border;
+    /*
+     * Building faces that are holes
+     */
+    std::vector<Bpoly> holes;
+    for (const auto triangle : face_is_hole) {
+        holes.push_back(triangle_to_polygon(triangle, graph));
+    }
+
+    /*
+     * Building the polygons from the singular triangles
+     * Cant have holes
+     */
+    for (const auto triangle : singular) {
+        border.push_back(triangle_to_polygon(triangle, graph));
+    }
+
+    for (const auto &p : border) {
+        result.push_back(p);
+    }
+
+    log << bg::wkt(result);
+
+    return result;
 }
 
 #if 0

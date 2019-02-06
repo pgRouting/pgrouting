@@ -39,7 +39,7 @@ using Bline = bg::model::linestring<Bpoint>;
 using Blines = bg::model::multi_linestring<Bline>;
 
 using Bpoly = bg::model::polygon<Bpoint>;
-using Bpolys = bg::model::multi_polygon<Bpoint>;
+using Bpolys = bg::model::multi_polygon<Bpoly>;
 
 
 }  // namespace pgrouting
