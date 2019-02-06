@@ -87,34 +87,7 @@ do_alphaShape(
         log << "\n8)\n";
 
 
-#if 0
-        /*
-         * returning a sequence of points
-         */
-        if (!results.empty()) {
-            for (const auto r : results) {
-                *return_count += bg::num_points(r);
-            }
-            *return_count += results.size() - 1;
-            *return_tuples = pgr_alloc(*return_count, (*return_tuples));
-        }
-        size_t row = 0;
-        size_t pid = 0;
-        for (const auto r : results) {
-            pgrouting::Bpoints points;
-            GetPoint get(points);
-            bg::for_each_point(r, get);
-
-            log << "\npoints in polygon" << bg::num_points(r);
-            log << "->points in polygon" << points.size();
-            for (const auto p : points) {
-                (*return_tuples)[row].pid = pid + 1;
-                (*return_tuples)[row].x = p.x();
-                (*return_tuples)[row].y = p.y();
-                ++row;
-            }
-            ++pid;
-        }
+#if 1
         /*
          * returning a sequence of text
          */

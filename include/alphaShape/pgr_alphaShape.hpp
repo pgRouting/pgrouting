@@ -57,7 +57,12 @@ class Pgr_delauny : public Pgr_messages {
      Pgr_delauny() = default;
      Pgr_delauny(const std::vector<Pgr_edge_xy_t> &edges);
 
+#if 1
+     std::vector<Bpoly> operator() (double alpha) const;
+#else
      Bpolys operator() (double alpha) const;
+#endif
+
 
 
      friend std::ostream& operator<<(std::ostream&, const Pgr_delauny&);
