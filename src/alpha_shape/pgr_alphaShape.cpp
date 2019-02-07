@@ -263,6 +263,8 @@ graph(UNDIRECTED) {
 void
 Pgr_delauny::get_triangles() {
     std::set< std::set<E> > triangles;
+    std::map<E, std::set<Triangle>> adjacent_triangles;
+    std::map<Triangle, std::set<Triangle>> adjacent_triangles1;
 
     BGL_FORALL_EDGES(c, graph.graph, BG) {
         auto u = graph.source(c);
@@ -271,8 +273,11 @@ Pgr_delauny::get_triangles() {
         Bpoint B {graph[v].point};
 
         std::set<E> s_outedges;
+        std::vector<Triangle> adjacent_to_edge;
 
+        size_t i = 0;
         BGL_FORALL_OUTEDGES(u, b, graph.graph, BG) {
+            ++i;
             auto w = graph.adjacent(u, b);
             if (w == v) {
                 pgassert(b == c);
@@ -284,11 +289,51 @@ Pgr_delauny::get_triangles() {
 
             std::set<E> face{{a_r.first, b, c}};
             triangles.insert(face);
+            adjacent_triangles[a_r.first].insert(face);
+            adjacent_triangles[b].insert(face);
+            adjacent_triangles[c].insert(face);
+            adjacent_to_edge.push_back(face);
+        }
+        pgassert(i > 1);
+        if (adjacent_to_edge.size() == 2) {
+            m_adjacent_triangles[adjacent_to_edge[0]].insert(adjacent_to_edge[1]);
+            m_adjacent_triangles[adjacent_to_edge[1]].insert(adjacent_to_edge[0]);
         }
     }
 
+#if 0
+    size_t i = 0;
+    for (const auto faces : m_adjacent_triangles) {
+        log << "\n" << i++;
+        for (const auto e : faces.first) {
+            log << e << ":";
+        }
+        log << faces.second.size() << "\t";
+        for (const auto e : faces.second) {
+            log << e << ",";
+        }
+    }
+#endif
+
+
+#if 0
+    size_t i = 0;
+    for (const auto faces : adjacent_triangles) {
+        log << "\n" << i++;
+        size_t j = 0;
+        for (const auto f : faces.second) {
+            log << "\t" << j++;
+            for (const auto e : f) {
+                log << e << ",";
+            }
+        }
+    }
+#endif
     m_triangles.reserve(triangles.size());
     m_triangles.insert(m_triangles.begin(), triangles.begin(),triangles.end());
+    pgassert(m_adjacent_triangles.size() == m_triangles.size());
+
+
 
     /*
      * calculating center & radius
@@ -410,8 +455,8 @@ Pgr_delauny::operator() (double alpha) const {
                     in_hull = true;
                     log << "edge in hull";
                 } else if (bg::distance(graph[u].point, graph[v].point) / 2 < alpha) {
-                            lone_edges.insert(edge);
-                        }
+                    lone_edges.insert(edge);
+                }
                 continue;
             }
 
@@ -426,10 +471,10 @@ Pgr_delauny::operator() (double alpha) const {
                     /* is incident to a face */
                     is_incident.insert(edge);
                 } else {
-                        if (belongs) in_border.edges.insert(edge);
-                        else if (bg::distance(graph[u].point, graph[v].point) / 2 < alpha) {
-                            lone_edges.insert(edge);
-                        }
+                    if (belongs) in_border.edges.insert(edge);
+                    else if (bg::distance(graph[u].point, graph[v].point) / 2 < alpha) {
+                        lone_edges.insert(edge);
+                    }
                 }
             } //  for each adjacent triangle
         } // for each edge of triangle

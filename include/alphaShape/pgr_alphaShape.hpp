@@ -50,6 +50,15 @@ using G = graph::Pgr_base_graph <BG, XY_vertex, Basic_edge>;
 using E = boost::graph_traits<BG>::edge_descriptor;
 using V = boost::graph_traits<BG>::vertex_descriptor;
 
+using Triangle = std::set<E>;
+
+using BT = boost::adjacency_list<
+        boost::setS, boost::vecS,
+        boost::undirectedS,
+        Triangle>;
+using TE = boost::graph_traits<BT>::edge_descriptor;
+using TV = boost::graph_traits<BT>::vertex_descriptor;
+
 
 class Pgr_delauny : public Pgr_messages {
 
@@ -76,7 +85,10 @@ class Pgr_delauny : public Pgr_messages {
          void clear() { edges.clear(); }
      } ;
 
+     /* edges graph */
      mutable G graph;
+
+     std::map<Triangle, std::set<Triangle>> m_adjacent_triangles;
      std::vector< std::set<E> > m_triangles;
      std::vector< Bpoint > m_centers;
      std::vector< double > m_radius;
