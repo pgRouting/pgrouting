@@ -93,6 +93,7 @@ class Pgr_delauny : public Pgr_messages {
 
      mutable std::map<Triangle, std::set<Triangle>> m_adjacent_triangles;
      std::vector< std::set<E> > m_triangles;
+     mutable std::set<E> m_lone_edges;
      std::vector< Bpoint > m_centers;
      std::vector< double > m_radius;
 };

@@ -289,7 +289,7 @@ Pgr_delauny::get_triangles() {
 #endif
     m_triangles.reserve(triangles.size());
     m_triangles.insert(m_triangles.begin(), triangles.begin(),triangles.end());
-    pgassert(m_adjacent_triangles.size() == m_triangles.size());
+    //pgassert(m_adjacent_triangles.size() == m_triangles.size());
 
 
 
@@ -339,8 +339,9 @@ Pgr_delauny::recursive_build(const Triangle face, std::set<Triangle> &used, std:
     auto original = used.size();
     used.insert(face);
 
-    if (!isIncident(face, alpha) || original == used.size()) {
-#if 0
+    if (original == used.size())  return;
+    if (!isIncident(face, alpha)) {
+#if 1
         /*
          * if length(edge) = 2 * alpha
          * then edge is in border
@@ -350,8 +351,8 @@ Pgr_delauny::recursive_build(const Triangle face, std::set<Triangle> &used, std:
             auto v = graph.target(e);
             Bpoint A {graph[u].point};
             Bpoint B {graph[v].point};
-            if (bg::distance(A, B) < alpha) {
-                border_edges.insert(e);
+            if (bg::distance(A, B) < 2 * alpha) {
+                m_lone_edges.insert(e);
             }
         }
 #endif
@@ -380,12 +381,12 @@ Pgr_delauny::recursive_build(const Triangle face, std::set<Triangle> &used, std:
             for ( const auto e : border_edges) {
                 log << e << ", ";
             }
-#endif
             std::set_intersection(
                     face.begin(), face.end(),
                     adj_t.begin(), adj_t.end(),
                     std::inserter(e_intersection, e_intersection.end()));
             continue;
+#endif
         }
         recursive_build(adj_t, used, border_edges, alpha);
         std::set_intersection(
@@ -445,6 +446,7 @@ Pgr_delauny::operator() (double alpha) const {
     std::set<E> hole_edges;
     std::set<E> boundry;
 
+    m_lone_edges.clear();
 
     if (alpha <= 0) return result;
 
@@ -453,10 +455,15 @@ Pgr_delauny::operator() (double alpha) const {
 
     std::set<Triangle> used;
     using Subgraph = boost::filtered_graph<BG, EdgesFilter, boost::keep_all>;
+
+    std::set<E> all_border_edges;
     for (const auto t : m_adjacent_triangles) {
         EdgesFilter border_edges;
         recursive_build(t.first, used, border_edges.edges, alpha);
         if (border_edges.edges.empty()) continue;
+
+        all_border_edges.insert(border_edges.edges.begin(), border_edges.edges.end());
+
         log << "\n found:" << border_edges.edges.size();
         for (const auto edge : border_edges.edges) {
             log << edge << ",";
@@ -503,6 +510,13 @@ Pgr_delauny::operator() (double alpha) const {
         }
         border.push_back(polygon);
         log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(polygon) << "'), 12);";
+    }
+    for (const auto e : m_lone_edges) {
+         auto a = graph.source(e);
+         auto b = graph.target(e);
+        Bline line{{graph[a].point, graph[b].point}};
+        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(line) << "'), 16);";
+
     }
     return border;
 }
