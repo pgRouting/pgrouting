@@ -80,6 +80,7 @@ class Pgr_delauny : public Pgr_messages {
      void get_triangles();
      void remove(const Triangle from, const Triangle del);
      bool isIncident(const Triangle t2, double alpha) const;
+     void recursive_build(const Triangle face, std::set<Triangle> &used, std::set<E> &border_edges, double alpha) const;
 
      struct EdgesFilter {
          std::set<E> edges;

@@ -110,7 +110,7 @@ triangle_to_polygon(std::set<E> triangle, const G &graph) {
         bg::correct(tri);
         return tri;
 }
-
+#if 0
 std::string
 to_insert(std::set<std::set<E>> name, std::string kind, const G &graph) {
     std::ostringstream str;
@@ -155,6 +155,7 @@ to_insert(std::deque<V> name, std::string kind, const G &graph) {
             <<  bg::wkt(geom) << "'), " << kind +");";
     return str.str();
 }
+#endif
 
 
 
@@ -377,6 +378,80 @@ Pgr_delauny::isIncident(const Triangle t, double alpha) const {
         return radius < alpha;
 }
 
+void
+Pgr_delauny::recursive_build(const Triangle face, std::set<Triangle> &used, std::set<E> &border_edges, double alpha) const {
+    auto original = used.size();
+    used.insert(face);
+
+    if (!isIncident(face, alpha) || original == used.size()) {
+        return;
+    }
+
+    size_t count(0);
+    std::set<E> e_intersection;
+
+    for (const auto adj_t : m_adjacent_triangles[face]) {
+        if (!isIncident(adj_t, alpha)) {
+#if 0
+            log << "\ncurrent edges: ";
+            for (const auto e : face) {
+                log << e << ", ";
+            }
+            log << "\tadjacent edges:";
+            for (const auto e : adj_t) {
+                log << e << ", ";
+            }
+#endif
+            std::set_intersection(
+                    face.begin(), face.end(),
+                    adj_t.begin(), adj_t.end(),
+                    std::inserter(border_edges, border_edges.end()));
+            used.insert(adj_t);
+#if 0
+            log << "\n border edges: ";
+            for ( const auto e : border_edges) {
+                log << e << ", ";
+            }
+#endif
+            std::set_intersection(
+                    face.begin(), face.end(),
+                    adj_t.begin(), adj_t.end(),
+                    std::inserter(e_intersection, e_intersection.end()));
+            continue;
+        }
+        ++count;
+        recursive_build(adj_t, used, border_edges, alpha);
+        std::set_intersection(
+                face.begin(), face.end(),
+                adj_t.begin(), adj_t.end(),
+                std::inserter(e_intersection, e_intersection.end()));
+    }
+
+    if (m_adjacent_triangles[face].size() == 2) {
+        /*
+         * One edge is on the Hull edge
+         * No adjacent triangle
+         */
+        std::set_difference(
+                face.begin(), face.end(),
+                e_intersection.begin(), e_intersection.end(),
+                std::inserter(border_edges, border_edges.end()));
+#if 0
+        log << "\n border edges: ";
+        for ( const auto e : border_edges) {
+            log << e << ", ";
+        }
+#endif
+    }
+
+#if 0
+    log << "\n exit current edges: ";
+    for (const auto e : face) {
+        log << e << ", ";
+    }
+#endif
+}
+
 #if 1
 std::vector<Bpoly>
 #else
@@ -408,6 +483,64 @@ Pgr_delauny::operator() (double alpha) const {
 
     std::vector<Bline> not_inalpha;
     std::vector<Bline> inalpha;
+
+    std::set<Triangle> used;
+    using Subgraph = boost::filtered_graph<BG, EdgesFilter, boost::keep_all>;
+    for (const auto t : m_adjacent_triangles) {
+        EdgesFilter border_edges;
+        recursive_build(t.first, used, border_edges.edges, alpha);
+        if (border_edges.edges.empty()) continue;
+        log << "\n found:" << border_edges.edges.size();
+        for (const auto edge : border_edges.edges) {
+            log << edge << ",";
+        }
+
+        std::vector<Bpoly> polys;
+        Bpoly polygon;
+        double area = 0;
+        while (!border_edges.edges.empty()) {
+            auto first_edge = *border_edges.edges.begin();
+            border_edges.edges.erase(first_edge);
+
+            Subgraph subg (graph.graph, border_edges, {});
+            auto source = boost::source(first_edge, subg);
+            auto target = boost::target(first_edge, subg);
+
+
+            auto predecessors = get_predecessors(source, target, subg);
+            auto poly = get_polygon(source, target, predecessors, subg);
+
+            if (bg::num_points(poly) >= 3) {
+                if (area == 0) {
+                    polygon = poly;
+                    area = bg::area(poly);
+                } else {
+                    auto new_area = bg::area(poly);
+                    if (new_area > area) {
+                        polys.push_back(polygon);
+                        area = new_area;
+                        polygon = poly;
+                    } else {
+                        polys.push_back(poly);
+                    }
+
+                }
+            }
+        }
+        if (!polys.empty()) {
+            polygon.inners().resize(polys.size());
+            int i(0);
+            for (const auto inner_ring : polys) {
+                bg::assign(polygon.inners()[i++], inner_ring);
+            }
+        }
+        border.push_back(polygon);
+        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(polygon) << "'), 12);";
+    }
+    return border;
+}
+
+#if 0
 
 #if 0
     double min_r(std::numeric_limits<double>::max());
@@ -537,6 +670,7 @@ Pgr_delauny::operator() (double alpha) const {
             border.push_back(p);
         }
     }
+
     return border;
 
     std::set<E> v_difference;
@@ -644,14 +778,6 @@ Pgr_delauny::operator() (double alpha) const {
         }
         if (!found) continue;
 
-#if 0
-        log << "\n" << source << "->" << v_target;
-#endif
-
-        /*
-         * Removing fron the graph the edge
-         */
-
         in_border.edges.erase(edge);
         Subgraph subg (graph.graph, in_border, {});
 
@@ -698,7 +824,7 @@ Pgr_delauny::operator() (double alpha) const {
     return green;
 #endif
 }
-
+#endif
 
 
 
