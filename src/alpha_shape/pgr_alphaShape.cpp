@@ -106,7 +106,9 @@ triangle_to_polygon(std::set<E> triangle, const G &graph) {
         auto c = graph.source(edges[1]);
         c = (c == a || c == b)? graph.target(edges[1]) : c;
         pgassert(a != b && a != c && b!= c);
-        return Bpoly{{graph[a].point, graph[b].point, graph[c].point}};
+        Bpoly tri {{graph[a].point, graph[b].point, graph[c].point}};
+        bg::correct(tri);
+        return tri;
 }
 
 std::string
@@ -353,6 +355,27 @@ Pgr_delauny::get_triangles() {
     }
 }
 
+void
+Pgr_delauny::remove(const Triangle from, const Triangle del) {
+    m_adjacent_triangles[from].erase(del);
+}
+/*
+ * Call when the adjacent triangle belongs to the shape
+ */
+bool
+Pgr_delauny::isIncident(const Triangle t, double alpha) const {
+        std::vector<E> edges(t.begin(), t.end());
+        auto a = graph.source(edges[0]);
+        auto b = graph.target(edges[0]);
+        auto c = graph.source(edges[1]);
+        c = (c == a || c == b)? graph.target(edges[1]) : c;
+        pgassert(a != b && a != c && b!= c);
+
+        auto center = circumcenter(graph[a].point, graph[b].point, graph[c].point);
+        auto radius = bg::distance(center, graph[a].point);
+
+        return radius < alpha;
+}
 
 #if 1
 std::vector<Bpoly>
@@ -400,8 +423,8 @@ Pgr_delauny::operator() (double alpha) const {
      * B is geometry  v is vertex descriptor
      * C is geometry  w is vertex descriptor
      */
-    for (const auto t : m_triangles) {
-        std::vector<E> edges(t.begin(), t.end());
+    for (const auto t : m_adjacent_triangles) {
+        std::vector<E> edges(t.first.begin(), t.first.end());
         auto a = graph.source(edges[0]);
         auto b = graph.target(edges[0]);
         auto c = graph.source(edges[1]);
@@ -413,28 +436,30 @@ Pgr_delauny::operator() (double alpha) const {
          */
         bool belongs(false);
 
-#if 0
-        log << "\n****** working with" << bg::wkt(Bpoly{{graph[a].point, graph[b].point, graph[c].point}});
-#endif
+        belongs = isIncident(t.first, alpha);
 
-        auto center = circumcenter(graph[a].point, graph[b].point, graph[c].point);
-        auto radius = bg::distance(center, graph[a].point);
+        if (!belongs) {
+            exterior.insert(t.first);
+            for (const auto adj_t : t.second) {
+                m_adjacent_triangles[adj_t].erase(t.first);
+            }
+            m_adjacent_triangles[t.first].clear();
+        }
 
-#if 0
-        min_r = radius < min_r? radius : min_r;
-        max_r = radius > max_r? radius : max_r;
-#endif
-
-        if (radius < alpha) {
-            set_of_faces.insert(t);
-            belongs = true;
-        } else {
-            exterior.insert(t);
-            belongs = false;
+        if (belongs) {
+            set_of_faces.insert(t.first);
+            for (auto adj_t : t.second) {
+                /*
+                 * adjacent face is not part of the shape
+                 */
+                if (!isIncident(adj_t, alpha)) {
+                    m_adjacent_triangles[adj_t].clear();
+                    m_adjacent_triangles[t.first].erase(adj_t);
+                }
+            }
         }
 
         std::set<E> is_incident;
-
         for (const auto edge : edges) {
             /*
              * working each edge of triangle
@@ -480,20 +505,39 @@ Pgr_delauny::operator() (double alpha) const {
         } // for each edge of triangle
 
         if (belongs) {
-            if (is_incident.size() == 3) interior.insert(t);
-            if (is_incident.size() == 2) regular_two.insert(t);
-            if (is_incident.size() == 1) regular_one.insert(t);
+            /*
+             * other way to clasify done
+             * TODO remove this way
+             */
+            if (is_incident.size() == 3) interior.insert(t.first);
+            if (is_incident.size() == 2) regular_two.insert(t.first);
+            if (is_incident.size() == 1) regular_one.insert(t.first);
             if (is_incident.size() == 0) {
-                singular.insert(t);
-                singular_borders.insert(t.begin(), t.end());
+                singular.insert(t.first);
+                singular_borders.insert(t.first.begin(), t.first.end());
             }
         } else {
+#if 1
             if (is_incident.size() == 3) {
-                face_is_hole.insert(t);
+                face_is_hole.insert(t.first);
                 hole_edges.insert(is_incident.begin(), is_incident.end());
             }
+#endif
         }
     } // for each triangle
+
+    for (const auto t : m_adjacent_triangles) {
+        if (!isIncident(t.first, alpha)) continue;
+        Bpolys result1;
+        result1.push_back(triangle_to_polygon(t.first, graph));
+        for (const auto adj_t : t.second) {
+            bg::union_(triangle_to_polygon(adj_t, graph), result1, result1);
+        }
+        for (const auto p : result1) {
+            border.push_back(p);
+        }
+    }
+    return border;
 
     std::set<E> v_difference;
     std::set_difference(in_border.edges.begin(), in_border.edges.end(),
@@ -509,12 +553,14 @@ Pgr_delauny::operator() (double alpha) const {
 
     in_border.edges = v_difference;
 
-
-    log << "\n- singluar.size()" << singular.size();
-    log << "\n- regular_one.size()" << regular_one.size();
-    log << "\n- regular_two.size()" << regular_two.size();
-    log << "\n- interior.size()" << interior.size();
-    log << "\n- exterior.size()" << exterior.size();
+#if 0
+    for (const auto t : m_adjacent_triangles) {
+        log << "\n" << bg::wkt(triangle_to_polygon(t.first, graph)) << "\tsize" << t.second.size() << ":";
+        for (const auto adj_t : t.second) {
+            log << bg::wkt(triangle_to_polygon(adj_t, graph));
+        }
+    }
+#endif
     log << "\n- m_triangles.size()" << m_triangles.size();
     log << "\n- face_is_hole.size()" << face_is_hole.size();
     log << "\n- hole_edges.size()" << hole_edges.size();
@@ -522,12 +568,55 @@ Pgr_delauny::operator() (double alpha) const {
     log << "\n- in_border.size()" << in_border.edges.size();
 
     log << "drop table tbl_2; create table tbl_2 (gid serial, geom geometry, kind integer);";
+
 #if 0
-    log << to_insert(singular, "1", graph);
-    log << to_insert(regular_one, "2", graph);
-    log << to_insert(regular_two, "3", graph);
-    log << to_insert(interior, "4", graph);
-    log << to_insert(exterior, "5", graph);
+    /*
+     * Singular faces
+     */
+    for (const auto t : m_adjacent_triangles) {
+        if (!isIncident(t.first, alpha)) continue;
+        if (!t.second.empty()) continue;
+        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(triangle_to_polygon(t.first, graph)) << "'), 1);";
+    }
+
+    /*
+     * regular one
+     */
+    for (const auto t : m_adjacent_triangles) {
+        if (!isIncident(t.first, alpha)) continue;
+        if (t.second.size() != 1) continue;
+        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(triangle_to_polygon(t.first, graph)) << "'), 2);";
+    }
+
+    /*
+     * regular two
+     */
+    for (const auto t : m_adjacent_triangles) {
+        if (!isIncident(t.first, alpha)) continue;
+        if (t.second.size() != 2) continue;
+        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(triangle_to_polygon(t.first, graph)) << "'), 3);";
+    }
+
+    /*
+     * interior
+     */
+    for (const auto t : m_adjacent_triangles) {
+        if (!isIncident(t.first, alpha)) continue;
+        if (t.second.size() != 3) continue;
+        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(triangle_to_polygon(t.first, graph)) << "'), 4);";
+    }
+
+    /*
+     * Exterior faces
+     */
+    for (const auto t : m_adjacent_triangles) {
+        if  (isIncident(t.first, alpha)) continue;
+        pgassert (t.second.empty());
+        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(triangle_to_polygon(t.first, graph)) << "'), 5);";
+    }
+
+#endif
+#if 0
     log << to_insert(face_is_hole, "6", graph);
     log << to_insert(in_border.edges, "7", graph);
     log << to_insert(lone_edges, "8", graph);

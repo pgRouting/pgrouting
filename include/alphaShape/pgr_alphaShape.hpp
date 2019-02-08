@@ -78,6 +78,8 @@ class Pgr_delauny : public Pgr_messages {
 
  private:
      void get_triangles();
+     void remove(const Triangle from, const Triangle del);
+     bool isIncident(const Triangle t2, double alpha) const;
 
      struct EdgesFilter {
          std::set<E> edges;
@@ -88,7 +90,7 @@ class Pgr_delauny : public Pgr_messages {
      /* edges graph */
      mutable G graph;
 
-     std::map<Triangle, std::set<Triangle>> m_adjacent_triangles;
+     mutable std::map<Triangle, std::set<Triangle>> m_adjacent_triangles;
      std::vector< std::set<E> > m_triangles;
      std::vector< Bpoint > m_centers;
      std::vector< double > m_radius;
