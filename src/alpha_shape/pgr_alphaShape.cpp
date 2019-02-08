@@ -62,7 +62,7 @@ namespace {
         return Bpoint {cx - numx / denom, cy + numy / denom};
     }
 
-
+#if 0
 std::vector<Bpoint>
 possible_centers(const Bpoint p1, const Bpoint p2, const double alpha_radius) {
     std::vector<Bpoint> centers;
@@ -110,52 +110,6 @@ triangle_to_polygon(std::set<E> triangle, const G &graph) {
         bg::correct(tri);
         return tri;
 }
-#if 0
-std::string
-to_insert(std::set<std::set<E>> name, std::string kind, const G &graph) {
-    std::ostringstream str;
-    for (const auto face : name) {
-        std::vector<E> edges(face.begin(), face.end());
-        auto a = graph.source(edges[0]);
-        auto b = graph.target(edges[0]);
-        auto c = graph.source(edges[1]);
-        c = (c == a || c == b)? graph.target(edges[1]) : c;
-        pgassert(a != b && a != c && b!= c);
-        Bpoly geom{{graph[a].point, graph[b].point, graph[c].point}};
-        str << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
-            <<  bg::wkt(geom) << "'), " << kind +");";
-    }
-    return str.str();
-}
-
-std::string
-to_insert(std::set<E> name, std::string kind, const G &graph) {
-    std::ostringstream str;
-    for (const auto edge : name) {
-        auto a = graph.source(edge);
-        auto b = graph.target(edge);
-
-        Bline geom{{graph[a].point, graph[b].point}};
-        str << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
-            <<  bg::wkt(geom) << "'), " << kind +");";
-    }
-    return str.str();
-}
-
-
-std::string
-to_insert(std::deque<V> name, std::string kind, const G &graph) {
-    std::ostringstream str;
-    Bpoly geom;
-    for (const auto v : name) {
-        auto a = graph[v].point;
-        bg::append(geom,  a);
-    }
-    str << "\ninsert into tbl_2 (geom, kind) values (st_geomfromtext('"
-            <<  bg::wkt(geom) << "'), " << kind +");";
-    return str.str();
-}
-#endif
 
 
 
@@ -173,6 +127,7 @@ get_intersection(V u, V v, const BG& graph) {
                     std::inserter(v_intersection, v_intersection.end()));
             return v_intersection;
 }
+#endif
 
 template <typename V>
 class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
@@ -360,8 +315,9 @@ void
 Pgr_delauny::remove(const Triangle from, const Triangle del) {
     m_adjacent_triangles[from].erase(del);
 }
+
 /*
- * Call when the adjacent triangle belongs to the shape
+ * The whole face belongs to the shape?
  */
 bool
 Pgr_delauny::isIncident(const Triangle t, double alpha) const {
@@ -384,10 +340,23 @@ Pgr_delauny::recursive_build(const Triangle face, std::set<Triangle> &used, std:
     used.insert(face);
 
     if (!isIncident(face, alpha) || original == used.size()) {
+#if 0
+        /*
+         * if length(edge) = 2 * alpha
+         * then edge is in border
+         */
+        for (const auto e : face) {
+            auto u = graph.source(e);
+            auto v = graph.target(e);
+            Bpoint A {graph[u].point};
+            Bpoint B {graph[v].point};
+            if (bg::distance(A, B) < alpha) {
+                border_edges.insert(e);
+            }
+        }
+#endif
         return;
     }
-
-    size_t count(0);
     std::set<E> e_intersection;
 
     for (const auto adj_t : m_adjacent_triangles[face]) {
@@ -406,7 +375,6 @@ Pgr_delauny::recursive_build(const Triangle face, std::set<Triangle> &used, std:
                     face.begin(), face.end(),
                     adj_t.begin(), adj_t.end(),
                     std::inserter(border_edges, border_edges.end()));
-            used.insert(adj_t);
 #if 0
             log << "\n border edges: ";
             for ( const auto e : border_edges) {
@@ -419,7 +387,6 @@ Pgr_delauny::recursive_build(const Triangle face, std::set<Triangle> &used, std:
                     std::inserter(e_intersection, e_intersection.end()));
             continue;
         }
-        ++count;
         recursive_build(adj_t, used, border_edges, alpha);
         std::set_intersection(
                 face.begin(), face.end(),
@@ -540,291 +507,6 @@ Pgr_delauny::operator() (double alpha) const {
     return border;
 }
 
-#if 0
-
-#if 0
-    double min_r(std::numeric_limits<double>::max());
-    double max_r(0);
-#endif
-
-    /* triangle:
-     * a =  B-C = v-w
-     * b =  A-C = u-w
-     * c =  A-B = u-v
-     *
-     * A is geometry  u is vertex descriptor
-     * B is geometry  v is vertex descriptor
-     * C is geometry  w is vertex descriptor
-     */
-    for (const auto t : m_adjacent_triangles) {
-        std::vector<E> edges(t.first.begin(), t.first.end());
-        auto a = graph.source(edges[0]);
-        auto b = graph.target(edges[0]);
-        auto c = graph.source(edges[1]);
-        c = (c == a || c == b)? graph.target(edges[1]) : c;
-        pgassert(a != b && a != c && b!= c);
-
-        /*
-         * face belongs to alpha shape?
-         */
-        bool belongs(false);
-
-        belongs = isIncident(t.first, alpha);
-
-        if (!belongs) {
-            exterior.insert(t.first);
-            for (const auto adj_t : t.second) {
-                m_adjacent_triangles[adj_t].erase(t.first);
-            }
-            m_adjacent_triangles[t.first].clear();
-        }
-
-        if (belongs) {
-            set_of_faces.insert(t.first);
-            for (auto adj_t : t.second) {
-                /*
-                 * adjacent face is not part of the shape
-                 */
-                if (!isIncident(adj_t, alpha)) {
-                    m_adjacent_triangles[adj_t].clear();
-                    m_adjacent_triangles[t.first].erase(adj_t);
-                }
-            }
-        }
-
-        std::set<E> is_incident;
-        for (const auto edge : edges) {
-            /*
-             * working each edge of triangle
-             */
-            auto u = graph.source(edge);
-            auto v = graph.target(edge);
-            auto centers = possible_centers(graph[u].point, graph[v].point, alpha);
-
-            pgassert(!(belongs && centers.empty()));
-
-            auto v_intersection = get_intersection(u, v, graph.graph);
-
-            bool in_hull = false;
-            if (v_intersection.size() == 1) {
-                hull.push_back(edge);
-                if (belongs) {
-                    in_border.edges.insert(edge);
-                    in_hull = true;
-                    log << "edge in hull";
-                } else if (bg::distance(graph[u].point, graph[v].point) / 2 < alpha) {
-                    lone_edges.insert(edge);
-                }
-                continue;
-            }
-
-            for (const auto w : v_intersection) {
-                if (w == a || w == b || w == c) continue;
-                /*
-                 * adjacent triangle (u,v,w)
-                 */
-                auto center = circumcenter(graph[u].point, graph[v].point, graph[w].point);
-                auto radius = bg::distance(center, graph[u].point);
-                if (radius < alpha) {
-                    /* is incident to a face */
-                    is_incident.insert(edge);
-                } else {
-                    if (belongs) in_border.edges.insert(edge);
-                    else if (bg::distance(graph[u].point, graph[v].point) / 2 < alpha) {
-                        lone_edges.insert(edge);
-                    }
-                }
-            } //  for each adjacent triangle
-        } // for each edge of triangle
-
-        if (belongs) {
-            /*
-             * other way to clasify done
-             * TODO remove this way
-             */
-            if (is_incident.size() == 3) interior.insert(t.first);
-            if (is_incident.size() == 2) regular_two.insert(t.first);
-            if (is_incident.size() == 1) regular_one.insert(t.first);
-            if (is_incident.size() == 0) {
-                singular.insert(t.first);
-                singular_borders.insert(t.first.begin(), t.first.end());
-            }
-        } else {
-#if 1
-            if (is_incident.size() == 3) {
-                face_is_hole.insert(t.first);
-                hole_edges.insert(is_incident.begin(), is_incident.end());
-            }
-#endif
-        }
-    } // for each triangle
-
-    for (const auto t : m_adjacent_triangles) {
-        if (!isIncident(t.first, alpha)) continue;
-        Bpolys result1;
-        result1.push_back(triangle_to_polygon(t.first, graph));
-        for (const auto adj_t : t.second) {
-            bg::union_(triangle_to_polygon(adj_t, graph), result1, result1);
-        }
-        for (const auto p : result1) {
-            border.push_back(p);
-        }
-    }
-
-    return border;
-
-    std::set<E> v_difference;
-    std::set_difference(in_border.edges.begin(), in_border.edges.end(),
-            hole_edges.begin(), hole_edges.end(),
-            std::inserter(v_difference, v_difference.end()));
-
-    in_border.edges = v_difference;
-
-    v_difference.clear();
-    std::set_difference(in_border.edges.begin(), in_border.edges.end(),
-            singular_borders.begin(), singular_borders.end(),
-            std::inserter(v_difference, v_difference.end()));
-
-    in_border.edges = v_difference;
-
-#if 0
-    for (const auto t : m_adjacent_triangles) {
-        log << "\n" << bg::wkt(triangle_to_polygon(t.first, graph)) << "\tsize" << t.second.size() << ":";
-        for (const auto adj_t : t.second) {
-            log << bg::wkt(triangle_to_polygon(adj_t, graph));
-        }
-    }
-#endif
-    log << "\n- m_triangles.size()" << m_triangles.size();
-    log << "\n- face_is_hole.size()" << face_is_hole.size();
-    log << "\n- hole_edges.size()" << hole_edges.size();
-    log << "\n- singular_borders.size()" << singular_borders.size();
-    log << "\n- in_border.size()" << in_border.edges.size();
-
-    log << "drop table tbl_2; create table tbl_2 (gid serial, geom geometry, kind integer);";
-
-#if 0
-    /*
-     * Singular faces
-     */
-    for (const auto t : m_adjacent_triangles) {
-        if (!isIncident(t.first, alpha)) continue;
-        if (!t.second.empty()) continue;
-        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(triangle_to_polygon(t.first, graph)) << "'), 1);";
-    }
-
-    /*
-     * regular one
-     */
-    for (const auto t : m_adjacent_triangles) {
-        if (!isIncident(t.first, alpha)) continue;
-        if (t.second.size() != 1) continue;
-        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(triangle_to_polygon(t.first, graph)) << "'), 2);";
-    }
-
-    /*
-     * regular two
-     */
-    for (const auto t : m_adjacent_triangles) {
-        if (!isIncident(t.first, alpha)) continue;
-        if (t.second.size() != 2) continue;
-        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(triangle_to_polygon(t.first, graph)) << "'), 3);";
-    }
-
-    /*
-     * interior
-     */
-    for (const auto t : m_adjacent_triangles) {
-        if (!isIncident(t.first, alpha)) continue;
-        if (t.second.size() != 3) continue;
-        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(triangle_to_polygon(t.first, graph)) << "'), 4);";
-    }
-
-    /*
-     * Exterior faces
-     */
-    for (const auto t : m_adjacent_triangles) {
-        if  (isIncident(t.first, alpha)) continue;
-        pgassert (t.second.empty());
-        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(triangle_to_polygon(t.first, graph)) << "'), 5);";
-    }
-
-#endif
-#if 0
-    log << to_insert(face_is_hole, "6", graph);
-    log << to_insert(in_border.edges, "7", graph);
-    log << to_insert(lone_edges, "8", graph);
-    log << to_insert(hole_edges, "9", graph);
-    log << to_insert(singular_borders, "10", graph);
-#endif
-
-    /*
-     * Building the polygons from the obtained borders
-     */
-    std::set<E> used_edges;
-    BGL_FORALL_VERTICES(source, graph.graph, BG) {
-        /* cycling all vertices to get the shortest path */
-        using Subgraph = boost::filtered_graph<BG, EdgesFilter, boost::keep_all>;
-        Subgraph subg1 (graph.graph, in_border, {});
-        V v_target;
-        E edge;
-        bool found(false);
-        BGL_FORALL_OUTEDGES(source, e, subg1, Subgraph) {
-            edge = e;
-            v_target = boost::source(e, subg1) == source?
-                boost::target(e, subg1) : boost::source(e, subg1);
-            found = true;
-            break;
-        }
-        if (!found) continue;
-
-        in_border.edges.erase(edge);
-        Subgraph subg (graph.graph, in_border, {});
-
-        auto predecessors = get_predecessors(source, v_target, subg);
-        auto polygon = get_polygon(source, v_target, predecessors, subg);
-        if (bg::num_points(polygon) >= 3) border.push_back(polygon);
-        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(polygon) << "'), 11);";
-    }
-
-    /*
-     * Building faces that are holes
-     */
-    Bpolys holes;
-    for (const auto triangle : face_is_hole) {
-        holes.push_back(triangle_to_polygon(triangle, graph));
-    }
-
-    /*
-     * Removing holes
-     */
-    std::vector<Bpoly> withoutholes;
-    for (const auto p : border) {
-        std::vector<Bpoly> the_diff;
-        boost::geometry::difference(p, holes, the_diff);
-        pgassert(!the_diff.empty());
-        for (const auto new_p : the_diff) withoutholes.push_back(new_p);
-    }
-
-    /*
-     * Building the polygons from the singular triangles
-     * Cant have holes
-     */
-    for (const auto triangle : singular) {
-        withoutholes.push_back(triangle_to_polygon(triangle, graph));
-        border.push_back(triangle_to_polygon(triangle, graph));
-    }
-
-    //for(const auto p : withoutholes) border.push_back(p);
-
-
-#if 1
-    return border;
-#else
-    return green;
-#endif
-}
-#endif
 
 
 
