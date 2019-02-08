@@ -1,7 +1,6 @@
-/*
-Data from
-https://github.com/plotly/documentation/blob/source-design-merge/_posts/python/scientific/alpha-shapes/data-ex-2d.txt
-*/
+-- Data from
+-- https://github.com/plotly/documentation/blob/source-design-merge/_posts/python/scientific/alpha-shapes/data-ex-2d.txt
+
 CREATE TABLE e_test(geom geometry);
 INSERT INTO e_test(geom) VALUES (ST_GeomFromText('MULTIPOINT(
 (0.072213 0.616682),
