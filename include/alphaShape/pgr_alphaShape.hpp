@@ -60,11 +60,11 @@ using TE = boost::graph_traits<BT>::edge_descriptor;
 using TV = boost::graph_traits<BT>::vertex_descriptor;
 
 
-class Pgr_delauny : public Pgr_messages {
+class Pgr_alphaShape : public Pgr_messages {
 
  public:
-     Pgr_delauny() = default;
-     Pgr_delauny(const std::vector<Pgr_edge_xy_t> &edges);
+     Pgr_alphaShape() = default;
+     Pgr_alphaShape(const std::vector<Pgr_edge_xy_t> &edges);
 
 #if 1
      std::vector<Bpoly> operator() (double alpha) const;
@@ -74,7 +74,7 @@ class Pgr_delauny : public Pgr_messages {
 
 
 
-     friend std::ostream& operator<<(std::ostream&, const Pgr_delauny&);
+     friend std::ostream& operator<<(std::ostream&, const Pgr_alphaShape&);
 
  private:
      void get_triangles();

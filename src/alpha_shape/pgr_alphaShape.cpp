@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-file: pgr_delauny.cpp
+file: pgr_alphaShape.cpp
 
 Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org
@@ -41,93 +41,27 @@ namespace alphashape {
 
 namespace {
 
-    double
-    det(double m00, double m01, double m10, double m11) {
-        return m00 * m11 - m01 * m10;
-    }
-
-    Bpoint
-    circumcenter(const Bpoint a, const Bpoint b, const Bpoint c) {
-        double cx = c.x();
-        double cy = c.y();
-        double ax = a.x() - cx;
-        double ay = a.y() - cy;
-        double bx = b.x() - cx;
-        double by = b.y() - cy;
-
-        double denom = 2 * det(ax, ay, bx, by);
-        double numx = det(ay, ax * ax + ay * ay, by, bx * bx + by * by);
-        double numy = det(ax, ax * ax + ay * ay, bx, bx * bx + by * by);
-
-        return Bpoint {cx - numx / denom, cy + numy / denom};
-    }
-
-#if 0
-std::vector<Bpoint>
-possible_centers(const Bpoint p1, const Bpoint p2, const double alpha_radius) {
-    std::vector<Bpoint> centers;
-    /*
-     * p1 and p2 are the same point
-     */
-    pgassert(!bg::equals(p1, p2));
-    if (bg::equals(p1, p2)) return centers;
-
-    auto rombus_center = p2;
-    bg::add_point(rombus_center, p1);
-    bg::divide_value(rombus_center, 2);
-
-    auto p_a = p2;
-    bg::subtract_point(p_a, p1);
-    bg::divide_value(p_a, 2);
-
-    Bpoint origin(0, 0);
-
-    auto a = bg::distance(p_a, origin);
-    pgassert(!(a > bg::distance(p1, p2) / 2) && !(a < bg::distance(p_a, origin)));
-
-    /*
-     * The segment is not alpha
-     */
-    if (!(alpha_radius > a)) return centers;
-
-    auto m = - std::sqrt((alpha_radius + a) * (alpha_radius - a)) / a;
-
-    centers.push_back({rombus_center.x() + m * p_a.y(), rombus_center.y() - m * p_a.x()});
-    centers.push_back({rombus_center.x() - m * p_a.y(), rombus_center.y() + m * p_a.x()});
-
-    return centers;
+double
+det(double m00, double m01, double m10, double m11) {
+    return m00 * m11 - m01 * m10;
 }
 
-Bpoly
-triangle_to_polygon(std::set<E> triangle, const G &graph) {
-        std::vector<E> edges(triangle.begin(), triangle.end());
-        auto a = graph.source(edges[0]);
-        auto b = graph.target(edges[0]);
-        auto c = graph.source(edges[1]);
-        c = (c == a || c == b)? graph.target(edges[1]) : c;
-        pgassert(a != b && a != c && b!= c);
-        Bpoly tri {{graph[a].point, graph[b].point, graph[c].point}};
-        bg::correct(tri);
-        return tri;
+Bpoint
+circumcenter(const Bpoint a, const Bpoint b, const Bpoint c) {
+    double cx = c.x();
+    double cy = c.y();
+    double ax = a.x() - cx;
+    double ay = a.y() - cy;
+    double bx = b.x() - cx;
+    double by = b.y() - cy;
+
+    double denom = 2 * det(ax, ay, bx, by);
+    double numx = det(ay, ax * ax + ay * ay, by, bx * bx + by * by);
+    double numy = det(ax, ax * ax + ay * ay, bx, bx * bx + by * by);
+
+    return Bpoint {cx - numx / denom, cy + numy / denom};
 }
 
-
-
-std::set<V>
-get_intersection(V u, V v, const BG& graph) {
-            std::set<V> adjacent1, adjacent2, v_intersection;
-            BGL_FORALL_ADJ(u, w, graph, BG) {
-                adjacent1.insert(w);
-            }
-            BGL_FORALL_ADJ(v, w, graph, BG) {
-                adjacent2.insert(w);
-            }
-            std::set_intersection(adjacent1.begin(), adjacent1.end(),
-                    adjacent2.begin(), adjacent2.end(),
-                    std::inserter(v_intersection, v_intersection.end()));
-            return v_intersection;
-}
-#endif
 
 template <typename V>
 class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
@@ -203,7 +137,7 @@ get_polygon(V source, V target, const std::vector<V> & predecessors, const B_G &
 /*
  * Constructor
  */
-Pgr_delauny::Pgr_delauny(const std::vector<Pgr_edge_xy_t> &edges) :
+Pgr_alphaShape::Pgr_alphaShape(const std::vector<Pgr_edge_xy_t> &edges) :
 graph(UNDIRECTED) {
     graph.insert_edges(edges);
     get_triangles();
@@ -219,7 +153,7 @@ graph(UNDIRECTED) {
  * C is geometry  w is vertex descriptor
  */
 void
-Pgr_delauny::get_triangles() {
+Pgr_alphaShape::get_triangles() {
     std::set< std::set<E> > triangles;
     std::map<E, std::set<Triangle>> adjacent_triangles;
     std::map<Triangle, std::set<Triangle>> adjacent_triangles1;
@@ -259,39 +193,8 @@ Pgr_delauny::get_triangles() {
         }
     }
 
-#if 0
-    size_t i = 0;
-    for (const auto faces : m_adjacent_triangles) {
-        log << "\n" << i++;
-        for (const auto e : faces.first) {
-            log << e << ":";
-        }
-        log << faces.second.size() << "\t";
-        for (const auto e : faces.second) {
-            log << e << ",";
-        }
-    }
-#endif
-
-
-#if 0
-    size_t i = 0;
-    for (const auto faces : adjacent_triangles) {
-        log << "\n" << i++;
-        size_t j = 0;
-        for (const auto f : faces.second) {
-            log << "\t" << j++;
-            for (const auto e : f) {
-                log << e << ",";
-            }
-        }
-    }
-#endif
     m_triangles.reserve(triangles.size());
     m_triangles.insert(m_triangles.begin(), triangles.begin(),triangles.end());
-    //pgassert(m_adjacent_triangles.size() == m_triangles.size());
-
-
 
     /*
      * calculating center & radius
@@ -312,7 +215,7 @@ Pgr_delauny::get_triangles() {
 }
 
 void
-Pgr_delauny::remove(const Triangle from, const Triangle del) {
+Pgr_alphaShape::remove(const Triangle from, const Triangle del) {
     m_adjacent_triangles[from].erase(del);
 }
 
@@ -320,7 +223,7 @@ Pgr_delauny::remove(const Triangle from, const Triangle del) {
  * The whole face belongs to the shape?
  */
 bool
-Pgr_delauny::isIncident(const Triangle t, double alpha) const {
+Pgr_alphaShape::isIncident(const Triangle t, double alpha) const {
         std::vector<E> edges(t.begin(), t.end());
         auto a = graph.source(edges[0]);
         auto b = graph.target(edges[0]);
@@ -335,7 +238,7 @@ Pgr_delauny::isIncident(const Triangle t, double alpha) const {
 }
 
 void
-Pgr_delauny::recursive_build(const Triangle face, std::set<Triangle> &used, std::set<E> &border_edges, double alpha) const {
+Pgr_alphaShape::recursive_build(const Triangle face, std::set<Triangle> &used, std::set<E> &border_edges, double alpha) const {
     auto original = used.size();
     used.insert(face);
 
@@ -425,7 +328,7 @@ std::vector<Bpoly>
 #else
 Bpolys
 #endif
-Pgr_delauny::operator() (double alpha) const {
+Pgr_alphaShape::operator() (double alpha) const {
     log << "starting calculation\n";
     Bpolys result;
     std::vector<Bpoly> border;
@@ -530,7 +433,7 @@ Pgr_delauny::operator() (double alpha) const {
 
 
 std::ostream&
-operator<<(std::ostream& os, const Pgr_delauny &d) {
+operator<<(std::ostream& os, const Pgr_alphaShape &d) {
     os << d.graph;
 
     return os;

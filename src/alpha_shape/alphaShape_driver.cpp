@@ -72,20 +72,23 @@ do_alphaShape(
 
         std::vector<Pgr_edge_xy_t> edges(edgesArr, edgesArr + edgesSize);
 
-        using Pgr_alphaShape = pgrouting::alphashape::Pgr_delauny;
+        using Pgr_alphaShape = pgrouting::alphashape::Pgr_alphaShape;
 
         Pgr_alphaShape alphaShape(edges);
+#if 0
         log << "\nalpha)" << alpha;
         //log << alphaShape;
+#endif
 
         auto results = alphaShape(alpha);
+#if 0
         log << "\n5)\n";
         log << alphaShape.get_log();
         log << "\n6)\n";
         log << results.size();
         log << "\n7)\n";
         log << "\n8)\n";
-
+#endif
 
 #if 1
         /*
