@@ -48,10 +48,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "visitors/dijkstra_one_goal_visitor.hpp"
+
 #if 0
 #include "./../../common/src/signalhandler.h"
 #endif
 
+namespace pgrouting {
 
 template < class G > class Pgr_dijkstra;
 // user's functions
@@ -309,7 +312,7 @@ class Pgr_dijkstra {
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
-                     .visitor(dijkstra_one_goal_visitor(target)));
+                     .visitor(visitors::dijkstra_one_goal_visitor<V>(target)));
          } catch(found_goals &) {
              return true;
          } catch (boost::exception const& ex) {
@@ -723,13 +726,16 @@ class Pgr_dijkstra {
 
      //! @name members
      //@{
+#if 0
      struct found_goals{};  //!< exception for termination
+#endif
      std::vector< V > predecessors;
      std::vector< double > distances;
      std::deque< V > nodesInDistance;
      std::ostringstream log;
      //@}
 
+#if 0
      //! @name Stopping classes
      //@{
      //! class for stopping when 1 target is found
@@ -743,6 +749,7 @@ class Pgr_dijkstra {
       private:
           V m_goal;
      };
+#endif
 
      //! class for stopping when all targets are found
      class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
@@ -881,9 +888,9 @@ class Pgr_dijkstra {
      };
 
 
-     //@}
 };
 
+}  // namespace pgrouting;
 
 
 #endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
