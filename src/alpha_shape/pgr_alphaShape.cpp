@@ -509,8 +509,12 @@ Pgr_delauny::operator() (double alpha) const {
             }
         }
         border.push_back(polygon);
+#if 0
         log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(polygon) << "'), 12);";
+#endif
     }
+
+#if 0
     for (const auto e : m_lone_edges) {
          auto a = graph.source(e);
          auto b = graph.target(e);
@@ -518,6 +522,7 @@ Pgr_delauny::operator() (double alpha) const {
         log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(line) << "'), 16);";
 
     }
+#endif
     return border;
 }
 
