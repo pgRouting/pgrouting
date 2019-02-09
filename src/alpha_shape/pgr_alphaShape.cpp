@@ -193,9 +193,12 @@ Pgr_alphaShape::get_triangles() {
         }
     }
 
+#if 0
     m_triangles.reserve(triangles.size());
     m_triangles.insert(m_triangles.begin(), triangles.begin(),triangles.end());
+#endif
 
+#if 0
     /*
      * calculating center & radius
      */
@@ -212,6 +215,7 @@ Pgr_alphaShape::get_triangles() {
         m_centers.push_back(center);
         m_radius.push_back(radius);
     }
+#endif
 }
 
 void
@@ -244,7 +248,7 @@ Pgr_alphaShape::recursive_build(const Triangle face, std::set<Triangle> &used, s
 
     if (original == used.size())  return;
     if (!isIncident(face, alpha)) {
-#if 1
+#if 0
         /*
          * if length(edge) = 2 * alpha
          * then edge is in border
@@ -265,31 +269,10 @@ Pgr_alphaShape::recursive_build(const Triangle face, std::set<Triangle> &used, s
 
     for (const auto adj_t : m_adjacent_triangles[face]) {
         if (!isIncident(adj_t, alpha)) {
-#if 0
-            log << "\ncurrent edges: ";
-            for (const auto e : face) {
-                log << e << ", ";
-            }
-            log << "\tadjacent edges:";
-            for (const auto e : adj_t) {
-                log << e << ", ";
-            }
-#endif
             std::set_intersection(
                     face.begin(), face.end(),
                     adj_t.begin(), adj_t.end(),
                     std::inserter(border_edges, border_edges.end()));
-#if 0
-            log << "\n border edges: ";
-            for ( const auto e : border_edges) {
-                log << e << ", ";
-            }
-            std::set_intersection(
-                    face.begin(), face.end(),
-                    adj_t.begin(), adj_t.end(),
-                    std::inserter(e_intersection, e_intersection.end()));
-            continue;
-#endif
         }
         recursive_build(adj_t, used, border_edges, alpha);
         std::set_intersection(
@@ -307,20 +290,8 @@ Pgr_alphaShape::recursive_build(const Triangle face, std::set<Triangle> &used, s
                 face.begin(), face.end(),
                 e_intersection.begin(), e_intersection.end(),
                 std::inserter(border_edges, border_edges.end()));
-#if 0
-        log << "\n border edges: ";
-        for ( const auto e : border_edges) {
-            log << e << ", ";
-        }
-#endif
     }
 
-#if 0
-    log << "\n exit current edges: ";
-    for (const auto e : face) {
-        log << e << ", ";
-    }
-#endif
 }
 
 #if 1
@@ -334,6 +305,7 @@ Pgr_alphaShape::operator() (double alpha) const {
     std::vector<Bpoly> border;
     std::vector<E> hull;
     std::vector<Bpoly> faces;
+#if 0
     std::set< std::set<E> > set_of_faces;
     std::set< std::set<E> > alpha_complex;
     std::set< std::set<E> > not_alpha_complex;
@@ -348,8 +320,11 @@ Pgr_alphaShape::operator() (double alpha) const {
     std::set<E> lone_edges;
     std::set<E> hole_edges;
     std::set<E> boundry;
+#endif
 
+#if 0
     m_lone_edges.clear();
+#endif
 
     if (alpha <= 0) return result;
 

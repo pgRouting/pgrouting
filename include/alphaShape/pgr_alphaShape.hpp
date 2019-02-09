@@ -92,10 +92,12 @@ class Pgr_alphaShape : public Pgr_messages {
      mutable G graph;
 
      mutable std::map<Triangle, std::set<Triangle>> m_adjacent_triangles;
+#if 0
      std::vector< std::set<E> > m_triangles;
      mutable std::set<E> m_lone_edges;
      std::vector< Bpoint > m_centers;
      std::vector< double > m_radius;
+#endif
 };
 
 
