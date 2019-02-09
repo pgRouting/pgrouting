@@ -30,9 +30,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <boost/graph/filtered_graph.hpp>
 #include <boost/graph/connected_components.hpp>
-#include "mst/visitors.hpp"
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 #include <boost/geometry/algorithms/union.hpp>
+
+#include "visitors/dijkstra_one_goal_visitor.hpp"
 
 namespace bg = boost::geometry;
 
@@ -63,6 +64,7 @@ circumcenter(const Bpoint a, const Bpoint b, const Bpoint c) {
 }
 
 
+#if 0
 template <typename V>
 class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
       public:
@@ -74,6 +76,7 @@ class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
       private:
           V m_goal;
 };
+#endif
 
 template <typename B_G, typename V>
 std::vector<V>
@@ -89,7 +92,7 @@ get_predecessors(V source, V target,  const B_G &subg) {
                 boost::predecessor_map(&predecessors[0])
                 .weight_map(get(&Basic_edge::cost, subg))
                 .distance_map(&distances[0])
-                .visitor(dijkstra_one_goal_visitor<V>(target)));
+                .visitor(visitors::dijkstra_one_goal_visitor<V>(target)));
     } catch(found_goals &) {
     } catch (boost::exception const& ex) {
         (void)ex;
@@ -154,23 +157,11 @@ graph(UNDIRECTED) {
  */
 void
 Pgr_alphaShape::get_triangles() {
-#if 0
-    std::set<Triangle> triangles;
-    std::map<E, std::set<Triangle>> adjacent_triangles;
-    std::map<Triangle, std::set<Triangle>> adjacent_triangles1;
-#endif
 
     BGL_FORALL_EDGES(c, graph.graph, BG) {
         auto u = graph.source(c);
         auto v = graph.target(c);
-#if 0
-        Bpoint A {graph[u].point};
-        Bpoint B {graph[v].point};
-#endif
 
-#if 0
-        std::set<E> s_outedges;
-#endif
         std::vector<Triangle> adjacent_to_edge;
 
         size_t i = 0;
@@ -186,12 +177,6 @@ Pgr_alphaShape::get_triangles() {
             if (!a_r.second) continue;
 
             Triangle face{{a_r.first, b, c}};
-#if 0
-            triangles.insert(face);
-            adjacent_triangles[a_r.first].insert(face);
-            adjacent_triangles[b].insert(face);
-            adjacent_triangles[c].insert(face);
-#endif
             adjacent_to_edge.push_back(face);
         }
         pgassert(i > 1);

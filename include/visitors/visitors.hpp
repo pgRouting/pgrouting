@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
 #include <vector>
-#include "mst/details.hpp"  // for found_goals()
+#include "visitors/found_goals.hpp"
 
 namespace pgrouting {
 namespace  visitors {
@@ -81,6 +81,7 @@ class Dfs_visitor : public boost::default_dfs_visitor {
      std::vector<E> &m_data;
 };
 
+#if 0
 /* DFS */
 template <typename V, typename E>
 class Dfs_visitor_with_root : public boost::default_dfs_visitor {
@@ -103,7 +104,7 @@ class Dfs_visitor_with_root : public boost::default_dfs_visitor {
      std::vector<E> &m_data;
      V m_roots;
 };
-
+#endif
 
 }  // namespace visitors
 }  // namespace pgrouting
