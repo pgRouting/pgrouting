@@ -29,10 +29,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <boost/geometry.hpp>
-#include "cpp_common/bpoint.hpp"
 
+namespace bg = boost::geometry;
 namespace pgrouting {
 
+using Bpoint = bg::model::d2::point_xy<double>;
 using Bpoints = bg::model::multi_point<Bpoint>;
 
 using Bline = bg::model::linestring<Bpoint>;
