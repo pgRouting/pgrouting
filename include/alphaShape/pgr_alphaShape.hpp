@@ -77,7 +77,7 @@ class Pgr_alphaShape : public Pgr_messages {
      friend std::ostream& operator<<(std::ostream&, const Pgr_alphaShape&);
 
  private:
-     void get_triangles();
+     void make_triangles();
      void remove(const Triangle from, const Triangle del);
      bool isIncident(const Triangle t2, double alpha) const;
      void recursive_build(const Triangle face, std::set<Triangle> &used, std::set<E> &border_edges, double alpha) const;

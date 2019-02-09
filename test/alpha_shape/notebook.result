@@ -38,7 +38,7 @@ INSERT INTO e_test(geom) VALUES (ST_GeomFromText('MULTIPOINT(
 ') ) ;
 INSERT 0 1
 SELECT ST_Area(geom) AS area, ST_isValid(geom), ST_NPoints(geom)
-FROM pgr_alphaShape1((SELECT array_agg(geom) FROM e_test), 0.15)i
+FROM pgr_alphaShape1((SELECT array_agg(geom) FROM e_test), 0.15)
 ORDER BY area;
       area       | st_isvalid | st_npoints
 -----------------+------------+------------

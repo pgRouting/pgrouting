@@ -129,26 +129,24 @@ get_polygon(V source, V target, const std::vector<V> & predecessors, const B_G &
 Pgr_alphaShape::Pgr_alphaShape(const std::vector<Pgr_edge_xy_t> &edges) :
 graph(UNDIRECTED) {
     graph.insert_edges(edges);
-    get_triangles();
+    make_triangles();
 }
 
-/* triangle:
- * a =  B-C = v-w
- * b =  A-C = u-w
- * c =  A-B = u-v
- *
- * A is geometry  u is vertex descriptor
- * B is geometry  v is vertex descriptor
- * C is geometry  w is vertex descriptor
- */
 void
-Pgr_alphaShape::get_triangles() {
-
+Pgr_alphaShape::make_triangles() {
+    /*
+     * triangle sides:
+     * a_r, b, c  edge descriptor
+     */
     BGL_FORALL_EDGES(c, graph.graph, BG) {
+        /*
+         * triangle vertices:
+         * u, v, w vertex descriptor
+         */
         auto u = graph.source(c);
         auto v = graph.target(c);
 
-        std::vector<Triangle> adjacent_to_edge;
+        std::vector<Triangle> adjacent_to_side;
 
         size_t i = 0;
         BGL_FORALL_OUTEDGES(u, b, graph.graph, BG) {
@@ -163,12 +161,18 @@ Pgr_alphaShape::get_triangles() {
             if (!a_r.second) continue;
 
             Triangle face{{a_r.first, b, c}};
-            adjacent_to_edge.push_back(face);
+            adjacent_to_side.push_back(face);
         }
+
+        /*
+         * All vertices must have at least 2 edges
+         * So cycle above must have passed at least twice
+         */
         pgassert(i > 1);
-        if (adjacent_to_edge.size() == 2) {
-            m_adjacent_triangles[adjacent_to_edge[0]].insert(adjacent_to_edge[1]);
-            m_adjacent_triangles[adjacent_to_edge[1]].insert(adjacent_to_edge[0]);
+
+        if (adjacent_to_side.size() == 2) {
+            m_adjacent_triangles[adjacent_to_side[0]].insert(adjacent_to_side[1]);
+            m_adjacent_triangles[adjacent_to_side[1]].insert(adjacent_to_side[0]);
         }
     }
 }
