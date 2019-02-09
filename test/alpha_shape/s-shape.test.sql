@@ -28,7 +28,9 @@ INSERT INTO s_test(geom) VALUES(ST_GeomFromText('MULTIPOINT(
 (376 -224), (148 -120), (174 -272), (194 -100), (292 -173), (341 -212),
 (369 -209), (189 -258), (198 -159), (275 -190), (322  -82))') ) ;
 
-SELECT seq, ST_AsText(geom), ST_isValid(geom), ST_NPoints(geom)
-FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 14.8123623);
-SELECT seq, ST_AsText(geom), ST_isValid(geom), ST_NPoints(geom)
-FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 14.8123624);
+SELECT ST_Area(geom) AS area, ST_isValid(geom), ST_NPoints(geom)
+FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 14.8123623)
+ORDER BY area;
+SELECT ST_Area(geom) AS area, ST_isValid(geom), ST_NPoints(geom)
+FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 14.8123624)
+ORDER BY area;
