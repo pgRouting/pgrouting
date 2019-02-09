@@ -154,17 +154,23 @@ graph(UNDIRECTED) {
  */
 void
 Pgr_alphaShape::get_triangles() {
-    std::set< std::set<E> > triangles;
+#if 0
+    std::set<Triangle> triangles;
     std::map<E, std::set<Triangle>> adjacent_triangles;
     std::map<Triangle, std::set<Triangle>> adjacent_triangles1;
+#endif
 
     BGL_FORALL_EDGES(c, graph.graph, BG) {
         auto u = graph.source(c);
         auto v = graph.target(c);
+#if 0
         Bpoint A {graph[u].point};
         Bpoint B {graph[v].point};
+#endif
 
+#if 0
         std::set<E> s_outedges;
+#endif
         std::vector<Triangle> adjacent_to_edge;
 
         size_t i = 0;
@@ -179,11 +185,13 @@ Pgr_alphaShape::get_triangles() {
             auto a_r = boost::edge(v, w, graph.graph);
             if (!a_r.second) continue;
 
-            std::set<E> face{{a_r.first, b, c}};
+            Triangle face{{a_r.first, b, c}};
+#if 0
             triangles.insert(face);
             adjacent_triangles[a_r.first].insert(face);
             adjacent_triangles[b].insert(face);
             adjacent_triangles[c].insert(face);
+#endif
             adjacent_to_edge.push_back(face);
         }
         pgassert(i > 1);
@@ -192,7 +200,6 @@ Pgr_alphaShape::get_triangles() {
             m_adjacent_triangles[adjacent_to_edge[1]].insert(adjacent_to_edge[0]);
         }
     }
-
 }
 
 void
