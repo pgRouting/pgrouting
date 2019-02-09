@@ -246,9 +246,19 @@ else()
     set(BOOST_VERSION_OK "1")
 endif()
 
+# Boost Geometry structure is different
+if ("${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}" VERSION_LESS "1.56.0")
+    set(BOOST_Geometry_VERSION_OK "0")
+else()
+    set(BOOST_Geometry_VERSION_OK "1")
+endif()
+
+
+
 message(STATUS "Boost VERSION ${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
 message(STATUS "BOOST_VERSION_OK ${BOOST_VERSION_OK}")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_VERSION_OK=${BOOST_VERSION_OK}")
+message(STATUS "BOOST_Geometry_VERSION_OK ${BOOST_Geometry_VERSION_OK}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_VERSION_OK=${BOOST_VERSION_OK} -DBOOST_Geometry_VERSION_OK=${BOOST_Geometry_VERSION_OK}")
 
 #---------------------------------------------
 #---------------------------------------------

@@ -30,8 +30,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/geometry.hpp>
 
-
-#include <boost/geometry/geometries/multi_point.hpp>
+#if BOOST_Geometry_VERSION_OK
+#include <boost/geometry/geometries/geometries.hpp>
+#else
+#include <boost/geometry/multi/geometries/multi_point.hpp>
+#endif
 
 namespace bg = boost::geometry;
 namespace pgrouting {
