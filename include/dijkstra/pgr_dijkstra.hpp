@@ -735,22 +735,9 @@ class Pgr_dijkstra {
      std::ostringstream log;
      //@}
 
-#if 0
+
      //! @name Stopping classes
      //@{
-     //! class for stopping when 1 target is found
-     class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
-      public:
-          explicit dijkstra_one_goal_visitor(V goal) : m_goal(goal) {}
-          template <class B_G>
-              void examine_vertex(V &u, B_G &) {
-                  if (u == m_goal) throw found_goals();
-              }
-      private:
-          V m_goal;
-     };
-#endif
-
      //! class for stopping when all targets are found
      class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
       public:

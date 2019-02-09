@@ -64,20 +64,6 @@ circumcenter(const Bpoint a, const Bpoint b, const Bpoint c) {
 }
 
 
-#if 0
-template <typename V>
-class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
-      public:
-          explicit dijkstra_one_goal_visitor(V goal) : m_goal(goal) {}
-          template <class B_G>
-          void examine_vertex(V &u, B_G &) {
-              if (u == m_goal) throw found_goals();
-          }
-      private:
-          V m_goal;
-};
-#endif
-
 template <typename B_G, typename V>
 std::vector<V>
 get_predecessors(V source, V target,  const B_G &subg) {
