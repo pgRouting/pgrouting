@@ -193,29 +193,6 @@ Pgr_alphaShape::get_triangles() {
         }
     }
 
-#if 0
-    m_triangles.reserve(triangles.size());
-    m_triangles.insert(m_triangles.begin(), triangles.begin(),triangles.end());
-#endif
-
-#if 0
-    /*
-     * calculating center & radius
-     */
-    for (const auto t : m_triangles) {
-        std::vector<E> edges(t.begin(), t.end());
-        auto a = graph.source(edges[0]);
-        auto b = graph.target(edges[0]);
-        auto c = graph.source(edges[1]);
-        c = (c == a || c == b)? graph.target(edges[1]) : c;
-
-        auto center = circumcenter(graph[a].point, graph[b].point, graph[c].point);
-        auto radius = bg::distance(center, graph[a].point);
-
-        m_centers.push_back(center);
-        m_radius.push_back(radius);
-    }
-#endif
 }
 
 void
@@ -247,24 +224,8 @@ Pgr_alphaShape::recursive_build(const Triangle face, std::set<Triangle> &used, s
     used.insert(face);
 
     if (original == used.size())  return;
-    if (!isIncident(face, alpha)) {
-#if 0
-        /*
-         * if length(edge) = 2 * alpha
-         * then edge is in border
-         */
-        for (const auto e : face) {
-            auto u = graph.source(e);
-            auto v = graph.target(e);
-            Bpoint A {graph[u].point};
-            Bpoint B {graph[v].point};
-            if (bg::distance(A, B) < 2 * alpha) {
-                m_lone_edges.insert(e);
-            }
-        }
-#endif
-        return;
-    }
+    if (!isIncident(face, alpha)) return;
+
     std::set<E> e_intersection;
 
     for (const auto adj_t : m_adjacent_triangles[face]) {
@@ -305,26 +266,6 @@ Pgr_alphaShape::operator() (double alpha) const {
     std::vector<Bpoly> border;
     std::vector<E> hull;
     std::vector<Bpoly> faces;
-#if 0
-    std::set< std::set<E> > set_of_faces;
-    std::set< std::set<E> > alpha_complex;
-    std::set< std::set<E> > not_alpha_complex;
-    std::set< std::set<E> > interior;
-    std::set< std::set<E> > exterior;
-    std::set< std::set<E> > regular_one;
-    std::set< std::set<E> > regular_two;
-    std::set< std::set<E> > singular;
-    std::set< std::set<E> > face_is_hole;
-    EdgesFilter in_border;
-    std::set<E> singular_borders;
-    std::set<E> lone_edges;
-    std::set<E> hole_edges;
-    std::set<E> boundry;
-#endif
-
-#if 0
-    m_lone_edges.clear();
-#endif
 
     if (alpha <= 0) return result;
 
@@ -387,20 +328,8 @@ Pgr_alphaShape::operator() (double alpha) const {
             }
         }
         border.push_back(polygon);
-#if 0
-        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(polygon) << "'), 12);";
-#endif
     }
 
-#if 0
-    for (const auto e : m_lone_edges) {
-         auto a = graph.source(e);
-         auto b = graph.target(e);
-        Bline line{{graph[a].point, graph[b].point}};
-        log << "\nINSERT INTO tbl_2 (geom, kind) VALUES (st_geomfromtext('" << bg::wkt(line) << "'), 16);";
-
-    }
-#endif
     return border;
 }
 
