@@ -259,39 +259,23 @@ Pgr_alphaShape::recursive_build(
 std::vector<Bpoly>
 Pgr_alphaShape::operator() (double alpha) const {
     std::vector<Bpoly> shape;
-#if 0
-    Bpolys result;
-    std::vector<E> hull;
-    std::vector<Bpoly> faces;
-#endif
 
     if (alpha <= 0) return shape;
-
-#if 0
-    std::vector<Bline> not_inalpha;
-    std::vector<Bline> inalpha;
-#endif
 
     std::set<Triangle> used;
     using Subgraph = boost::filtered_graph<BG, EdgesFilter, boost::keep_all>;
 
-#if 0
-    std::set<E> all_border_edges;
-#endif
     for (const auto t : m_adjacent_triangles) {
         EdgesFilter border_edges;
+        /*
+         * Recurse thru the triangles to get the border sides
+         */
         recursive_build(t.first, used, border_edges.edges, alpha);
+        /*
+         * triangle was already processed
+         * or is not part of the shape
+         */
         if (border_edges.edges.empty()) continue;
-#if 0
-        all_border_edges.insert(border_edges.edges.begin(), border_edges.edges.end());
-#endif
-
-#if 0
-        log << "\n found:" << border_edges.edges.size();
-        for (const auto edge : border_edges.edges) {
-            log << edge << ",";
-        }
-#endif
 
         std::vector<Bpoly> polys;
         Bpoly polygon;
@@ -307,7 +291,18 @@ Pgr_alphaShape::operator() (double alpha) const {
 
             auto predecessors = get_predecessors(source, target, subg);
             auto poly = get_polygon(source, target, predecessors, subg);
+            pgassert(bg::num_points(poly) >= 3 || bg::num_points(poly) == 0);
 
+            if (bg::num_points(poly) == 0) continue;
+            /*
+             * TODO(vicky) possible way to speed up is:
+             * get the edges that are part of the path and
+             * remove from border_edges.edges
+             */
+
+            /*
+             * A polygon must have at least 3 vertices
+             */
             if (bg::num_points(poly) >= 3) {
                 if (area == 0) {
                     /*
