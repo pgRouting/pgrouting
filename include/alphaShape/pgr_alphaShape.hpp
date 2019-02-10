@@ -59,13 +59,7 @@ class Pgr_alphaShape : public Pgr_messages {
      Pgr_alphaShape() = default;
      Pgr_alphaShape(const std::vector<Pgr_edge_xy_t> &edges);
 
-#if 1
      std::vector<Bpoly> operator() (double alpha) const;
-#else
-     Bpolys operator() (double alpha) const;
-#endif
-
-
 
      friend std::ostream& operator<<(std::ostream&, const Pgr_alphaShape&);
 
@@ -84,12 +78,12 @@ class Pgr_alphaShape : public Pgr_messages {
          std::set<E> edges;
          bool operator()(E e) const { return edges.count(e); }
          void clear() { edges.clear(); }
-     } ;
+     };
 
  private:
-     /* edges graph */
+     /*! sides graph */
      G graph;
-
+     /*! t -> {adj_t} */
      std::map<Triangle, std::set<Triangle>> m_adjacent_triangles;
 };
 

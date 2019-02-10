@@ -42,23 +42,33 @@ namespace alphashape {
 
 namespace {
 
+/*
+ * Determinant of this matrix
+ * r00, r01
+ * r10, r11
+ */
 double
-det(double m00, double m01, double m10, double m11) {
-    return m00 * m11 - m01 * m10;
+det(double r00, double r01, double r10, double r11) {
+    return r00 * r11 - r01 * r10;
 }
 
 Bpoint
 circumcenter(const Bpoint a, const Bpoint b, const Bpoint c) {
-    double cx = c.x();
-    double cy = c.y();
-    double ax = a.x() - cx;
-    double ay = a.y() - cy;
-    double bx = b.x() - cx;
-    double by = b.y() - cy;
+    auto cx = c.x();
+    auto cy = c.y();
+    auto ax = a.x() - cx;
+    auto ay = a.y() - cy;
+    auto bx = b.x() - cx;
+    auto by = b.y() - cy;
 
-    double denom = 2 * det(ax, ay, bx, by);
-    double numx = det(ay, ax * ax + ay * ay, by, bx * bx + by * by);
-    double numy = det(ax, ax * ax + ay * ay, bx, bx * bx + by * by);
+    auto denom = 2 * det(ax, ay, bx, by);
+    /*
+     * If denom == 0 then points are colinear
+     */
+    pgassert(denom != 0);
+
+    auto numx = det(ay, ax * ax + ay * ay, by, bx * bx + by * by);
+    auto numy = det(ax, ax * ax + ay * ay, bx, bx * bx + by * by);
 
     return Bpoint {cx - numx / denom, cy + numy / denom};
 }
@@ -123,6 +133,7 @@ get_polygon(V source, V target, const std::vector<V> & predecessors, const B_G &
 
 }  // namespace
 
+
 /*
  * Constructor
  */
@@ -177,12 +188,6 @@ Pgr_alphaShape::make_triangles() {
     }
 }
 
-#if 0
-void
-Pgr_alphaShape::remove(const Triangle from, const Triangle del) {
-    m_adjacent_triangles[from].erase(del);
-}
-#endif
 
 /*
  * The whole traingle face belongs to the shape?
@@ -203,74 +208,90 @@ Pgr_alphaShape::faceBelongs(const Triangle t, double alpha) const {
 }
 
 void
-Pgr_alphaShape::recursive_build(const Triangle face, std::set<Triangle> &used, std::set<E> &border_edges, double alpha) const {
-    auto original = used.size();
-    used.insert(face);
-
-    if (original == used.size())  return;
+Pgr_alphaShape::recursive_build(
+        const Triangle face,
+        std::set<Triangle> &used,
+        std::set<E> &border_edges,
+        double alpha) const {
+    /*
+     * Do nothing when the face does not belong to the polygon of the alphashape
+     */
     if (!faceBelongs(face, alpha)) return;
 
-    std::set<E> e_intersection;
+    /*
+     * Do nothing when the face has being processed before
+     */
+    auto original = used.size();
+    used.insert(face);
+    if (original == used.size())  return;
 
+    std::set<E> common_sides;
     for (const auto adj_t : m_adjacent_triangles.at(face)) {
         if (!faceBelongs(adj_t, alpha)) {
+            /*
+             * Adjacent face is not on shape
+             * then side is on the border
+             */
             std::set_intersection(
                     face.begin(), face.end(),
                     adj_t.begin(), adj_t.end(),
                     std::inserter(border_edges, border_edges.end()));
         }
-        recursive_build(adj_t, used, border_edges, alpha);
         std::set_intersection(
                 face.begin(), face.end(),
                 adj_t.begin(), adj_t.end(),
-                std::inserter(e_intersection, e_intersection.end()));
+                std::inserter(common_sides, common_sides.end()));
+        recursive_build(adj_t, used, border_edges, alpha);
     }
 
     if (m_adjacent_triangles.at(face).size() == 2) {
         /*
-         * One edge is on the Hull edge
-         * No adjacent triangle
+         * Side without adjacent triangle (in convex hull)
+         * is part of the border
          */
         std::set_difference(
                 face.begin(), face.end(),
-                e_intersection.begin(), e_intersection.end(),
+                common_sides.begin(), common_sides.end(),
                 std::inserter(border_edges, border_edges.end()));
     }
-
 }
 
-#if 1
 std::vector<Bpoly>
-#else
-Bpolys
-#endif
 Pgr_alphaShape::operator() (double alpha) const {
-    log << "starting calculation\n";
+    std::vector<Bpoly> shape;
+#if 0
     Bpolys result;
-    std::vector<Bpoly> border;
     std::vector<E> hull;
     std::vector<Bpoly> faces;
+#endif
 
-    if (alpha <= 0) return result;
+    if (alpha <= 0) return shape;
 
+#if 0
     std::vector<Bline> not_inalpha;
     std::vector<Bline> inalpha;
+#endif
 
     std::set<Triangle> used;
     using Subgraph = boost::filtered_graph<BG, EdgesFilter, boost::keep_all>;
 
+#if 0
     std::set<E> all_border_edges;
+#endif
     for (const auto t : m_adjacent_triangles) {
         EdgesFilter border_edges;
         recursive_build(t.first, used, border_edges.edges, alpha);
         if (border_edges.edges.empty()) continue;
-
+#if 0
         all_border_edges.insert(border_edges.edges.begin(), border_edges.edges.end());
+#endif
 
+#if 0
         log << "\n found:" << border_edges.edges.size();
         for (const auto edge : border_edges.edges) {
             log << edge << ",";
         }
+#endif
 
         std::vector<Bpoly> polys;
         Bpoly polygon;
@@ -289,21 +310,35 @@ Pgr_alphaShape::operator() (double alpha) const {
 
             if (bg::num_points(poly) >= 3) {
                 if (area == 0) {
+                    /*
+                     * consider the first polygon as the outer polygon
+                     */
                     polygon = poly;
                     area = bg::area(poly);
                 } else {
                     auto new_area = bg::area(poly);
                     if (new_area > area) {
+                        /*
+                         * if new poly is larger than the current outer polygon
+                         * - save current outer polygon as inner ring
+                         * - save new poly as outer polygon
+                         */
                         polys.push_back(polygon);
                         area = new_area;
                         polygon = poly;
                     } else {
+                        /*
+                         * New poly is inner ring
+                         */
                         polys.push_back(poly);
                     }
-
                 }
             }
         }
+
+        /*
+         * Add inner rings to the polygon
+         */
         if (!polys.empty()) {
             polygon.inners().resize(polys.size());
             int i(0);
@@ -311,10 +346,14 @@ Pgr_alphaShape::operator() (double alpha) const {
                 bg::assign(polygon.inners()[i++], inner_ring);
             }
         }
-        border.push_back(polygon);
+
+        /*
+         * Add the polygon to the alpha shape
+         */
+        shape.push_back(polygon);
     }
 
-    return border;
+    return shape;
 }
 
 
