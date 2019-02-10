@@ -1,6 +1,3 @@
-
-
-
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 --              PGR_analyzegraph
@@ -9,50 +6,48 @@
 
 \echo -- q1
 SELECT  pgr_createTopology('edge_table',0.001, clean := true);
-\echo -- q1.1
-
-\echo -- q2
 SELECT  pgr_analyzeGraph('edge_table',0.001)
-\echo -- q2.1
-
+\echo -- q1.1
 
 \echo -- q3
 SELECT  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target');
 \echo -- q3.1
 
-\echo -- q4
-SELECT  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');
-\echo -- q4.1
-
 \echo -- q5
-SELECT  pgr_analyzeGraph('edge_table',0.001,the_geom:='the_geom',id:='id',source:='source',target:='target');
+SELECT  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');
 \echo -- q5.1
 
+\echo -- q6
+SELECT  pgr_analyzeGraph('edge_table',0.001,the_geom:='the_geom',id:='id',source:='source',target:='target');
 \echo -- q6.1
-SELECT  pgr_analyzeGraph('edge_table',0.001,source:='source',id:='id',target:='target',the_geom:='the_geom');
-\echo -- q6.2
-
-\echo -- q6.3
-SELECT  pgr_analyzeGraph('edge_table',0.001,source:='source');
-\echo -- q6.4
 
 \echo -- q7
-SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='id < 10');
+SELECT  pgr_analyzeGraph('edge_table',0.001,source:='source',id:='id',target:='target',the_geom:='the_geom');
 \echo -- q7.1
 
-\echo -- q8
-SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(the_geom,0.05) FROM edge_table WHERE id=5)');
+\echo -- q8.
+SELECT  pgr_analyzeGraph('edge_table',0.001,source:='source');
 \echo -- q8.1
 
 \echo -- q9
-CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
-SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)');
+SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='id < 10');
+\echo -- q9.1
+
 \echo -- q10
+SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(the_geom,0.05) FROM edge_table WHERE id=5)');
+\echo -- q10.1
 
 \echo -- q11
+CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
+SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)');
+\echo -- q11.1
+
+\echo -- q12
 CREATE TABLE mytable AS (SELECT id AS gid, source AS src ,target AS tgt , the_geom AS mygeom FROM edge_table);
 SELECT pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt', clean := true);
-\echo -- q12
+\echo -- q12.1
+
+The arguments need to be given in the order described in the parameters:
 
 \echo -- q13
 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt');
@@ -81,28 +76,30 @@ SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',t
 \echo -- q19
 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt',
     rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
-SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
-    rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
 \echo -- q19.1
 
 \echo -- q20
+SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
+    rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
+\echo -- q20.1
+
+\echo -- q21
 DROP TABLE IF EXISTS otherTable;
 CREATE TABLE otherTable AS  (SELECT 'myhouse'::text AS place, st_point(2.5,2.5) AS other_geom) ;
 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt',
     rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
-\echo -- q20.1
-
-\echo -- q21
-SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
-    rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
 \echo -- q21.1
---------------------
 
 \echo -- q22
-SELECT  pgr_createTopology('edge_table',0.001, clean := true);
+SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
+    rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
 \echo -- q22.1
+--------------------
+
+Additional Examples
 
 \echo -- q23
+SELECT  pgr_createTopology('edge_table',0.001, clean := true);
 SELECT pgr_analyzeGraph('edge_table', 0.001);
 \echo -- q23.1
 
