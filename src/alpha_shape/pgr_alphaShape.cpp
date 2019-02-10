@@ -177,16 +177,18 @@ Pgr_alphaShape::make_triangles() {
     }
 }
 
+#if 0
 void
 Pgr_alphaShape::remove(const Triangle from, const Triangle del) {
     m_adjacent_triangles[from].erase(del);
 }
+#endif
 
 /*
- * The whole face belongs to the shape?
+ * The whole traingle face belongs to the shape?
  */
 bool
-Pgr_alphaShape::isIncident(const Triangle t, double alpha) const {
+Pgr_alphaShape::faceBelongs(const Triangle t, double alpha) const {
         std::vector<E> edges(t.begin(), t.end());
         auto a = graph.source(edges[0]);
         auto b = graph.target(edges[0]);
@@ -206,12 +208,12 @@ Pgr_alphaShape::recursive_build(const Triangle face, std::set<Triangle> &used, s
     used.insert(face);
 
     if (original == used.size())  return;
-    if (!isIncident(face, alpha)) return;
+    if (!faceBelongs(face, alpha)) return;
 
     std::set<E> e_intersection;
 
-    for (const auto adj_t : m_adjacent_triangles[face]) {
-        if (!isIncident(adj_t, alpha)) {
+    for (const auto adj_t : m_adjacent_triangles.at(face)) {
+        if (!faceBelongs(adj_t, alpha)) {
             std::set_intersection(
                     face.begin(), face.end(),
                     adj_t.begin(), adj_t.end(),
@@ -224,7 +226,7 @@ Pgr_alphaShape::recursive_build(const Triangle face, std::set<Triangle> &used, s
                 std::inserter(e_intersection, e_intersection.end()));
     }
 
-    if (m_adjacent_triangles[face].size() == 2) {
+    if (m_adjacent_triangles.at(face).size() == 2) {
         /*
          * One edge is on the Hull edge
          * No adjacent triangle

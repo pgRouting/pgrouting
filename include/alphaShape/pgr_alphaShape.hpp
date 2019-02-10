@@ -52,13 +52,14 @@ using V = boost::graph_traits<BG>::vertex_descriptor;
 
 using Triangle = std::set<E>;
 
+#if 0
 using BT = boost::adjacency_list<
         boost::setS, boost::vecS,
         boost::undirectedS,
         Triangle>;
 using TE = boost::graph_traits<BT>::edge_descriptor;
 using TV = boost::graph_traits<BT>::vertex_descriptor;
-
+#endif
 
 class Pgr_alphaShape : public Pgr_messages {
 
@@ -78,9 +79,17 @@ class Pgr_alphaShape : public Pgr_messages {
 
  private:
      void make_triangles();
+#if 0
      void remove(const Triangle from, const Triangle del);
-     bool isIncident(const Triangle t2, double alpha) const;
-     void recursive_build(const Triangle face, std::set<Triangle> &used, std::set<E> &border_edges, double alpha) const;
+#endif
+     bool faceBelongs(
+             const Triangle face,
+             double alpha) const;
+     void recursive_build(
+             const Triangle face,
+             std::set<Triangle> &used,
+             std::set<E> &border_edges,
+             double alpha) const;
 
      struct EdgesFilter {
          std::set<E> edges;
@@ -88,10 +97,11 @@ class Pgr_alphaShape : public Pgr_messages {
          void clear() { edges.clear(); }
      } ;
 
+ private:
      /* edges graph */
-     mutable G graph;
+     G graph;
 
-     mutable std::map<Triangle, std::set<Triangle>> m_adjacent_triangles;
+     std::map<Triangle, std::set<Triangle>> m_adjacent_triangles;
 #if 0
      std::vector< std::set<E> > m_triangles;
      mutable std::set<E> m_lone_edges;
