@@ -39,19 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/bpoint.hpp"
 #include "cpp_common/bline.hpp"
 
-#if 0
-class GetPoint {
- public:
-     GetPoint(pgrouting::Bpoints &points) : m_points(points) {}
-     pgrouting::Bpoint operator()(const pgrouting::Bpoint &p)
-     {
-         m_points.push_back(p);
-         return p;
-     }
-     pgrouting::Bpoints &m_points;
-};
-#endif
-
 void
 do_alphaShape(
         Pgr_edge_xy_t *edgesArr,
@@ -76,24 +63,10 @@ do_alphaShape(
         std::vector<Pgr_edge_xy_t> edges(edgesArr, edgesArr + edgesSize);
 
         using Pgr_alphaShape = pgrouting::alphashape::Pgr_alphaShape;
-
         Pgr_alphaShape alphaShape(edges);
-#if 0
-        log << "\nalpha)" << alpha;
-        //log << alphaShape;
-#endif
 
         auto results = alphaShape(alpha);
-#if 0
-        log << "\n5)\n";
-        log << alphaShape.get_log();
-        log << "\n6)\n";
-        log << results.size();
-        log << "\n7)\n";
-        log << "\n8)\n";
-#endif
 
-#if 1
         /*
          * returning a sequence of text
          */
@@ -107,17 +80,6 @@ do_alphaShape(
             ++row;
         }
 
-#else
-        /*
-         * returning a multipolygon text
-         */
-        *return_count = 1;
-        *return_tuples = pgr_alloc(*return_count, (*return_tuples));
-        std::stringstream ss;
-        ss << bg::wkt(results);
-        (*return_tuples)[0].geom = pgr_msg(ss.str().c_str());
-
-#endif
 
         *log_msg = log.str().empty()?
             *log_msg :

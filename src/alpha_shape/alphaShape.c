@@ -23,8 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
-#include "c_common/postgres_connection.h"
 #include <float.h>
+
+#include "c_common/postgres_connection.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
@@ -158,14 +159,7 @@ Datum alphaShape(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int64GetDatum(call_cntr + 1);
-#if 0
-        values[1] = Int64GetDatum(result_tuples[call_cntr].pid);
-        values[2] = Float8GetDatum(result_tuples[call_cntr].x);
-        values[3] = Float8GetDatum(result_tuples[call_cntr].y);
-#else
         values[1] = CStringGetTextDatum(result_tuples[call_cntr].geom);
-#endif
-
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
