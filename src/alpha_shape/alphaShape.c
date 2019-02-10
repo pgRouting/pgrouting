@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_types/geom_text_rt.h"
 
-
 #include "drivers/alpha_shape/alphaShape_driver.h"
 
 PGDLLEXPORT Datum alphaShape(PG_FUNCTION_ARGS);

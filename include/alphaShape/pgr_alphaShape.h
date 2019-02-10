@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-file: pgr_delauny.hpp
+file: pgr_alphaShape.h
 
 Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org
@@ -24,12 +24,18 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+/*! @file */
 
 #ifndef INCLUDE_ALPHASHAPE_PGR_DELAUNY_HPP_
 #define INCLUDE_ALPHASHAPE_PGR_DELAUNY_HPP_
 #pragma once
 
+#ifndef __cplusplus
+#error This is C++ header file
+#endif
+
 #include <vector>
+#include <map>
 #include <iosfwd>
 
 #include "cpp_common/pgr_base_graph.hpp"
