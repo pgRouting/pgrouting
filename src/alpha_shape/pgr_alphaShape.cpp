@@ -26,9 +26,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "alphaShape/pgr_alphaShape.h"
-#include <sstream>
-#include <boost/graph/filtered_graph.hpp>
+
 #include <boost/graph/dijkstra_shortest_paths.hpp>
+#include <boost/graph/filtered_graph.hpp>
+
+#include <sstream>
+#include <set>
+#include <vector>
+
 #include "visitors/dijkstra_one_goal_visitor.hpp"
 
 namespace bg = boost::geometry;
@@ -162,7 +167,7 @@ Pgr_alphaShape::make_triangles() {
             if (w == v) {
                 pgassert(b == c);
                 continue;
-            };
+            }
 
             auto a_r = boost::edge(v, w, graph.graph);
             if (!a_r.second) continue;
@@ -280,7 +285,7 @@ Pgr_alphaShape::operator() (double alpha) const {
             auto first_edge = *border_edges.edges.begin();
             border_edges.edges.erase(first_edge);
 
-            Subgraph subg (graph.graph, border_edges, {});
+            Subgraph subg(graph.graph, border_edges, {});
             auto source = boost::source(first_edge, subg);
             auto target = boost::target(first_edge, subg);
 

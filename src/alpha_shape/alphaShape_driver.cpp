@@ -24,30 +24,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/alpha_shape/alphaShape_driver.h"
 
+#include <cmath>
 #include <vector>
 #include <string>
-#include <cmath>
 #include <utility>
 #include <algorithm>
 
 #include "cpp_common/pgr_assert.h"
+#include "alphaShape/pgr_alphaShape.h"
+
 #include "cpp_common/pgr_alloc.hpp"
 
-#include "alphaShape/pgr_alphaShape.h"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/bpoint.hpp"
 #include "cpp_common/bline.hpp"
 
+#if 0
 class GetPoint {
-    public:
-    GetPoint(pgrouting::Bpoints &points) : m_points(points) {}
-    pgrouting::Bpoint operator()(const pgrouting::Bpoint &p)
-    {
-        m_points.push_back(p);
-        return p;
-    }
-    pgrouting::Bpoints &m_points;
+ public:
+     GetPoint(pgrouting::Bpoints &points) : m_points(points) {}
+     pgrouting::Bpoint operator()(const pgrouting::Bpoint &p)
+     {
+         m_points.push_back(p);
+         return p;
+     }
+     pgrouting::Bpoints &m_points;
 };
+#endif
 
 void
 do_alphaShape(

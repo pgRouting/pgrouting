@@ -38,12 +38,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <iosfwd>
 
-#include "cpp_common/pgr_base_graph.hpp"
+#include "c_types/pgr_edge_xy_t.h"
 #include "cpp_common/pgr_messages.h"
+
+#include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/bline.hpp"
 
-// this one is included before somehow
-#include "c_types/pgr_edge_xy_t.h"
 
 namespace pgrouting {
 namespace alphashape {
