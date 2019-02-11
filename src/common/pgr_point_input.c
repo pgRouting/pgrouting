@@ -46,7 +46,7 @@ void pgr_fetch_row(
  * float y,
  */
 void pgr_point_input(
-        char *sql,
+        char *points_sql,
         Pgr_point_t **points,
         size_t *pointsTotal) {
     clock_t start_t = clock();
@@ -70,7 +70,7 @@ void pgr_point_input(
 
 
     void *SPIplan;
-    SPIplan = pgr_SPI_prepare(sql);
+    SPIplan = pgr_SPI_prepare(points_sql);
 
     Portal SPIportal;
     SPIportal = pgr_SPI_cursor_open(SPIplan);

@@ -41,12 +41,12 @@ FROM ...
 
 @param[in] points_sql
 @param[out] points
-@param[out] total_points
+@param[out] pointsTotal
 */
 void pgr_point_input(
         char *points_sql,
         Pgr_point_t **points,
-        size_t *total_points);
+        size_t *pointsTotal);
 
 
 

@@ -384,6 +384,7 @@ class Pgr_base_graph {
             code that is being developed
         No edge is inserted when there is an error on the vertices
         @param edges
+        @param normal
       */
      template <typename T>
      void

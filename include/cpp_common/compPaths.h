@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-/*! \class MyClassName compPathsLess.h "cpp_common/compPathsLess.h"
+/*! \class compPathsLess
  *
  * Compares 2 paths for \b <
  *
