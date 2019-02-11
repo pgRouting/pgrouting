@@ -22,23 +22,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_MST_PGR_MST_HPP_
 #pragma once
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
+#include <visitors/dfs_visitor_with_root.hpp>
+#include <visitors/edges_order_bfs_visitor.hpp>
+#include <visitors/edges_order_dfs_visitor.hpp>
 #include <boost/graph/connected_components.hpp>
-#include <boost/graph/depth_first_search.hpp>
-#include <boost/graph/breadth_first_search.hpp>
 #include <boost/graph/filtered_graph.hpp>
 
 #include <set>
-#include <string>
 #include <utility>
+#include <string>
 #include <vector>
 
-#include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
-#include "visitors/dfs_visitor_with_root.hpp"
-#include "visitors/edges_order_bfs_visitor.hpp"
-#include "visitors/edges_order_dfs_visitor.hpp"
 #include "mst/details.hpp"
 
 namespace pgrouting {
