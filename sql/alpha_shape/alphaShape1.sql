@@ -31,12 +31,8 @@ CREATE OR REPLACE FUNCTION pgr_alphaShape1(
     alpha FLOAT DEFAULT 0,
     is_delauny BOOLEAN DEFAULT false,
 
-    OUT seq BIGINT,
---    OUT polygon_id BIGINT,
     OUT geom geometry)
-    --OUT x FLOAT,
-    --OUT y FLOAT)
-RETURNS SETOF record AS
+AS
 $BODY$
 
 DECLARE
@@ -114,16 +110,14 @@ BEGIN
 
     --RAISE NOTICE '%', delauny_query;
 
-    RETURN QUERY
-    SELECT seq1, ST_GeomFromText(textgeom)
-    FROM _pgr_alphaShape1(delauny_query, $2);
+    SELECT ST_Union(ST_GeomFromText(textgeom))
+    FROM _pgr_alphaShape1(delauny_query, $2) INTO geom;
 
 END
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT
-COST 100
-ROWS 1000;
+COST 100;
 
 COMMENT ON FUNCTION pgr_alphashape1(geometry[], FLOAT, BOOLEAN)
 IS 'pgr_alphaShape

@@ -42,11 +42,8 @@ FROM pgr_alphaShape1((SELECT array_agg(geom) FROM e_test), 0.15)
 ORDER BY area;
       area       | st_isvalid | st_npoints
 -----------------+------------+------------
-  0.002885695472 | t          |          4
-  0.015117945772 | t          |          4
- 0.0544149924175 | t          |          9
-  0.173546200689 | t          |         17
-(4 rows)
+ 0.2459648343505 | t          |         29
+(1 row)
 
 ROLLBACK;
 ROLLBACK

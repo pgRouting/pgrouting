@@ -35,43 +35,18 @@ INSERT 0 1
 SELECT ST_Area(geom) AS area, ST_isValid(geom), ST_NPoints(geom)
 FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 14.8123623)
 ORDER BY area;
-  area  | st_isvalid | st_npoints
---------+------------+------------
-  162.5 | t          |          4
-    164 | t          |          4
-    293 | t          |          5
-    306 | t          |          5
-  349.5 | t          |          5
-    351 | t          |          5
-  391.5 | t          |          5
- 1173.5 | t          |         12
- 1434.5 | t          |         11
- 3229.5 | t          |         22
-   3428 | t          |         19
- 5271.5 | t          |         20
-  11186 | t          |         58
-(13 rows)
+   area  | st_isvalid | st_npoints
+---------+------------+------------
+ 27740.5 | t          |        175
+(1 row)
 
 SELECT ST_Area(geom) AS area, ST_isValid(geom), ST_NPoints(geom)
 FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 14.8123624)
 ORDER BY area;
-  area  | st_isvalid | st_npoints
---------+------------+------------
-  162.5 | t          |          4
-    164 | t          |          4
-  209.5 | t          |          4
-    293 | t          |          5
-    306 | t          |          5
-  349.5 | t          |          5
-    351 | t          |          5
-  391.5 | t          |          5
- 1173.5 | t          |         12
- 1434.5 | t          |         11
- 3229.5 | t          |         22
-   3428 | t          |         19
- 5271.5 | t          |         20
-  11186 | t          |         58
-(14 rows)
+ area  | st_isvalid | st_npoints
+-------+------------+------------
+ 27950 | t          |        179
+(1 row)
 
 ROLLBACK;
 ROLLBACK

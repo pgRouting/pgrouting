@@ -3,18 +3,18 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT seq, ST_Area(geom), ST_isValid(geom), ST_NPoints(geom)
+SELECT ST_Area(geom), ST_isValid(geom), ST_NPoints(geom)
 FROM pgr_alphaShape1((SELECT array_agg(the_geom) FROM edge_table), 1.581);
- seq | st_area | st_isvalid | st_npoints
------+---------+------------+------------
-   1 |    9.75 | t          |         12
+ st_area | st_isvalid | st_npoints
+---------+------------+------------
+    9.75 | t          |         12
 (1 row)
 
-SELECT seq, ST_Area(geom), ST_isValid(geom), ST_NPoints(geom)
+SELECT ST_Area(geom), ST_isValid(geom), ST_NPoints(geom)
 FROM pgr_alphaShape1((SELECT array_agg(the_geom) FROM edge_table), 1.582);
- seq | st_area | st_isvalid | st_npoints
------+---------+------------+------------
-   1 |   11.75 | t          |          9
+ st_area | st_isvalid | st_npoints
+---------+------------+------------
+   11.75 | t          |          9
 (1 row)
 
 -- q2
