@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "visitors/visitors.hpp"
 #include "visitors/dfs_visitor_with_root.hpp"
 #include "visitors/edges_order_bfs_visitor.hpp"
+#include "visitors/edges_order_dfs_visitor.hpp"
 #include "mst/details.hpp"
 
 namespace pgrouting {
@@ -257,7 +258,7 @@ class Pgr_mst {
                  mstGraph(graph.graph, m_spanning_tree, {});
              std::vector<E> visited_order;
 
-             using dfs_visitor = visitors::Dfs_visitor<E>;
+             using dfs_visitor = visitors::Edges_order_dfs_visitor<E>;
              try {
                  boost::depth_first_search(mstGraph, visitor(dfs_visitor(visited_order)));
              } catch (boost::exception const& ex) {

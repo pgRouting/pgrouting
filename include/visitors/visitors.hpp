@@ -66,7 +66,6 @@ class Bfs_visitor : public boost::default_bfs_visitor {
  private:
      std::vector<E> &m_data;
 };
-#endif
 
 /* DFS */
 template <class E>
@@ -83,7 +82,6 @@ class Dfs_visitor : public boost::default_dfs_visitor {
      std::vector<E> &m_data;
 };
 
-#if 0
 /* DFS */
 template <typename V, typename E>
 class Dfs_visitor_with_root : public boost::default_dfs_visitor {
