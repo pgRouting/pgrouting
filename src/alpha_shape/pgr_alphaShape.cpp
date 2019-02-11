@@ -27,14 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "alphaShape/pgr_alphaShape.h"
 
+#include <visitors/dijkstra_one_goal_visitor.hpp>
+#if BOOST_VERSION_OK
 #include <boost/graph/dijkstra_shortest_paths.hpp>
+#else
+#include "boost/dijkstra_shortest_paths.hpp"
+#endif
 #include <boost/graph/filtered_graph.hpp>
 
 #include <sstream>
 #include <set>
 #include <vector>
 
-#include "visitors/dijkstra_one_goal_visitor.hpp"
 
 namespace bg = boost::geometry;
 
