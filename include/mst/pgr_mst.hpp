@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "visitors/visitors.hpp"
 #include "visitors/dfs_visitor_with_root.hpp"
+#include "visitors/edges_order_bfs_visitor.hpp"
 #include "mst/details.hpp"
 
 namespace pgrouting {
@@ -333,7 +334,7 @@ class Pgr_mst {
              roots =  m_tree_id;
          }
 
-         using bfs_visitor = visitors::Bfs_visitor<E>;
+         using bfs_visitor = visitors::Edges_order_bfs_visitor<E>;
          for (auto root : roots) {
              std::vector<E> visited_order;
              if (graph.has_vertex(root)) {

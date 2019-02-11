@@ -51,6 +51,7 @@ class Prim_visitor : public boost::default_dijkstra_visitor {
      std::vector<V> &m_data;
 };
 
+#if 0
 /* BFS */
 template <class E>
 class Bfs_visitor : public boost::default_bfs_visitor {
@@ -65,6 +66,7 @@ class Bfs_visitor : public boost::default_bfs_visitor {
  private:
      std::vector<E> &m_data;
 };
+#endif
 
 /* DFS */
 template <class E>
