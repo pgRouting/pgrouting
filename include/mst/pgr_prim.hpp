@@ -49,7 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#include "visitors/visitors.hpp"
+#include "visitors/prim_dijkstra_visitor.hpp"
 #include "mst/details.hpp"
 #include "mst/pgr_mst.hpp"
 
@@ -119,7 +119,7 @@ Pgr_prim<G>::primTree(
 
     auto v_root(graph.get_V(root_vertex));
 
-    using prim_visitor = visitors::Prim_visitor<V>;
+    using prim_visitor = visitors::Prim_dijkstra_visitor<V>;
     boost::prim_minimum_spanning_tree(
             graph.graph,
             &predecessors[0],
