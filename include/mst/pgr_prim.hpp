@@ -25,34 +25,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_MST_PGR_PRIM_HPP_
 #pragma once
 
-#include <boost/config.hpp>
-#include <boost/graph/connected_components.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/filtered_graph.hpp>
-
-#if BOOST_VERSION_OK
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-#else
-#include "boost/dijkstra_shortest_paths.hpp"
-#endif
-
+#include "visitors/prim_dijkstra_visitor.hpp"
 #include <boost/graph/prim_minimum_spanning_tree.hpp>
 
-#include <iostream>
 #include <vector>
 #include <set>
-#include <algorithm>
-#include <sstream>
-#include <limits>
 
-#include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/pgr_assert.h"
-
-#include "visitors/prim_dijkstra_visitor.hpp"
-#include "mst/details.hpp"
 #include "mst/pgr_mst.hpp"
-
 
 //******************************************
 
