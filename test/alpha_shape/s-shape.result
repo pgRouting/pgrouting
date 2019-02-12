@@ -48,5 +48,32 @@ ORDER BY area;
  27950 | t          |        179
 (1 row)
 
+SELECT ST_Area(pgr_pointsAsPolygon($$
+WITH
+Points AS (SELECT (st_dumppoints(geom)).geom FROM s_test)
+SELECT row_number() over()::INTEGER AS id, ST_X(geom) AS x, ST_Y(geom) AS y FROM Points
+$$, 244.056));
+ st_area
+---------
+ 34965.5
+(1 row)
+
+SELECT ST_Area(pgr_pointsAsPolygon($$
+WITH
+Points AS (SELECT (st_dumppoints(geom)).geom FROM s_test)
+SELECT row_number() over()::INTEGER AS id, ST_X(geom) AS x, ST_Y(geom) AS y FROM Points
+$$));
+ st_area
+---------
+ 35267.5
+(1 row)
+
+SELECT ST_Area(geom)
+FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test));
+ st_area
+---------
+ 55321.5
+(1 row)
+
 ROLLBACK;
 ROLLBACK
