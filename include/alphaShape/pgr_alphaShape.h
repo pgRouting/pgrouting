@@ -71,6 +71,7 @@ class Pgr_alphaShape : public Pgr_messages {
 
  private:
      void make_triangles();
+     double radius(const Triangle t) const;
      bool faceBelongs(
              const Triangle face,
              double alpha) const;
@@ -79,6 +80,7 @@ class Pgr_alphaShape : public Pgr_messages {
              std::set<Triangle> &used,
              std::set<E> &border_edges,
              double alpha) const;
+     std::vector<Bpoly> build_best_alpha() const;
 
      struct EdgesFilter {
          std::set<E> edges;

@@ -66,6 +66,7 @@ do_alphaShape(
         Pgr_alphaShape alphaShape(edges);
 
         auto results = alphaShape(alpha);
+        log << alphaShape.get_log();
 
         /*
          * returning a sequence of text

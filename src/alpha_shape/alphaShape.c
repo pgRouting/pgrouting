@@ -53,6 +53,7 @@ static void process(
     pgr_get_edges_xy(edges_sql, &edgesArr, &edgesSize);
 
     PGR_DBG("total edges %ld", edgesSize);
+    PGR_DBG("alpha %f", alpha);
 
     if (edgesSize < 3) {
         if (edgesArr) pfree(edgesArr);
