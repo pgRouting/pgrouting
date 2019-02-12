@@ -231,7 +231,7 @@ static void compute_alpha_shape(
   char* log_msg = NULL;
   char* notice_msg = NULL;
 
-  alpha_shape(vertices, total_tuples, alpha, res, res_count, &err_msg);
+  alpha_shape(vertices, total_tuples, alpha, res, res_count, &log_msg, &err_msg);
 
   if (err_msg && (*res)) {
       pfree(*res);
@@ -294,13 +294,13 @@ Datum alphashape(PG_FUNCTION_ARGS) {
     }
 
   /* stuff done on every call of the function */
-  PGR_DBG("Strange stuff doing\n");
+  //PGR_DBG("Strange stuff doing\n");
   funcctx = SRF_PERCALL_SETUP();
 
   tuple_desc = funcctx->tuple_desc;
   res = (vertex_t*)funcctx->user_fctx;
 
-  PGR_DBG("Trying to allocate some memory\n");
+  //PGR_DBG("Trying to allocate some memory\n");
 
   if (funcctx->call_cntr < funcctx->max_calls) {
       /* do when there is more left to send */
@@ -328,20 +328,20 @@ Datum alphashape(PG_FUNCTION_ARGS) {
         nulls[1] = false;
       }
 
-      PGR_DBG("Heap making\n");
+      //PGR_DBG("Heap making\n");
 
       tuple = heap_form_tuple(tuple_desc, values, nulls);
 
-      PGR_DBG("Datum making\n");
+      //PGR_DBG("Datum making\n");
 
       /* make the tuple into a datum */
       result = HeapTupleGetDatum(tuple);
 
-      PGR_DBG("Trying to free some memory\n");
+      //PGR_DBG("Trying to free some memory\n");
 
       /* clean up (this is not really necessary) */
-      pfree(values);
-      pfree(nulls);
+      //pfree(values);
+      //pfree(nulls);
 
       SRF_RETURN_NEXT(funcctx, result);
     } else  {

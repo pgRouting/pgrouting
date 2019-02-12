@@ -39,7 +39,7 @@ SELECT ST_Area(pgr_pointsAsPolygon($$
 WITH
 Points AS (SELECT (st_dumppoints(geom)).geom FROM s_test)
 SELECT row_number() over()::INTEGER AS id, ST_X(geom) AS x, ST_Y(geom) AS y FROM Points
-$$, 14.8123624));
+$$, 244.056));
 
 SELECT ST_Area(pgr_pointsAsPolygon($$
 WITH

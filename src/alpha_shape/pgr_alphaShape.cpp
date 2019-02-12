@@ -195,7 +195,6 @@ Pgr_alphaShape::make_triangles() {
          */
         pgassert(i > 1);
 
-        log << "\nadjacent_to_side.size() " << adjacent_to_side.size() ;
         if (adjacent_to_side.size() == 2) {
             m_adjacent_triangles[adjacent_to_side[0]].insert(adjacent_to_side[1]);
             m_adjacent_triangles[adjacent_to_side[1]].insert(adjacent_to_side[0]);
@@ -234,21 +233,16 @@ Pgr_alphaShape::faceBelongs(const Triangle t, double alpha) const {
 
 std::vector<Bpoly>
 Pgr_alphaShape::build_best_alpha() const{
-    log << "\n" <<__PRETTY_FUNCTION__;
     std::map<Triangle, double> border_triangles;
     std::map<Triangle, double> inner_triangles;
-    log << "\ntotal triangles" << m_adjacent_triangles.size();
 
     size_t i(0);
     for (const auto t : m_adjacent_triangles) {
-        log << "\nt.second.size() " << t.second.size();
         if (t.second.size() == 2) {
             border_triangles[t.first] = radius(t.first);
-            log << "\t border " << border_triangles[t.first] * border_triangles[t.first];
         } else  {
-            pgassertwm((t.second.size() == 3), get_log().c_str());
+            pgassert((t.second.size() == 3));
             inner_triangles[t.first] = radius(t.first);
-            log << "\t inner " << inner_triangles[t.first] * inner_triangles[t.first];
         }
         ++i;
     }
@@ -260,46 +254,32 @@ Pgr_alphaShape::build_best_alpha() const{
     double max_border_radius = max_border_triangle.second;
     double max_inner_radius = max_inner_triangle.second;
 
-    log << "\nmax_border_radius" << max_border_radius;
-    log << "\tmax_inner_radius" << max_inner_radius;
 
     auto count = border_triangles.size() + inner_triangles.size();
     while (max_border_radius >= max_inner_radius) {
-        log << "\ntotal triangles on border" << border_triangles.size();
-        log << "\ntotal inner triangles" << inner_triangles.size();
         auto max_border_triangle = *std::min_element(border_triangles.begin(), border_triangles.end(), CompareRadius());
         auto max_inner_triangle = *std::min_element(inner_triangles.begin(), inner_triangles.end(), CompareRadius());
         /*
          * Removing largest border triangle
          */
         border_triangles.erase(max_border_triangle.first);
-        log << "\nRemoving largest border triangle";
-        log << "\ntotal triangles on border" << border_triangles.size();
-        log << "\ntotal inner triangles" << inner_triangles.size();
 
         /*
          * Adjacent triangles of a border triangle
          *  - are no longer inner triangles
          *  - are now border triangles
          */
-        log << "\nAdjacent triangles of a border triangle";
         for (const auto t : m_adjacent_triangles.at(max_border_triangle.first)) {
             if (inner_triangles.find(t) != inner_triangles.end()) {
                 inner_triangles.erase(t);
-                log << "\ntotal inner triangles" << inner_triangles.size();
                 border_triangles[t] = radius(t);
-                log << "\ntotal triangles on border" << border_triangles.size();
             }
         }
-        log << "\nend cycle";
 
         auto new_max_border_triangle = *std::min_element(border_triangles.begin(), border_triangles.end(), CompareRadius());
         auto new_max_inner_triangle = *std::min_element(inner_triangles.begin(), inner_triangles.end(), CompareRadius());
-        log << "\nnew_max_border_radius2->" << new_max_border_triangle.second * new_max_border_triangle.second;
-        log << "\tnew_max_inner_radius2->" << new_max_inner_triangle.second * new_max_inner_triangle.second;
 
         if (new_max_border_triangle.second < new_max_inner_triangle.second) {
-            log << "\n rolling back";
             /*
              * Roll back and exit loop
              */
@@ -308,24 +288,16 @@ Pgr_alphaShape::build_best_alpha() const{
                  inner_triangles[t] = radius(t);
              }
             border_triangles[max_border_triangle.first] = max_border_triangle.second;
-            log << "\ntotal triangles on border" << border_triangles.size();
-            log << "\ntotal inner triangles" << inner_triangles.size();
             break;
         }
         max_border_radius = new_max_border_triangle.second;
         max_inner_radius = new_max_inner_triangle.second;
-        log << "\nmax_border_radius2->" << max_border_radius * max_border_radius;
-        log << "\tmax_inner_radius2->" << max_inner_radius * max_inner_radius;
-        log << "\ntotal triangles on border" << border_triangles.size();
-        log << "\ntotal inner triangles" << inner_triangles.size();
-        pgassertwm(count > (border_triangles.size() + inner_triangles.size()), get_log().c_str());
+        pgassert(count > (border_triangles.size() + inner_triangles.size()));
         count = border_triangles.size() + inner_triangles.size();;
     }
 
-    log << "\nmax_border_radius2->" << max_border_radius * max_border_radius;
-    log << "\nmax_border_radius->" << max_border_radius;
-    log << "\tmax_inner_radius2->" << max_inner_radius * max_inner_radius;
     pgassert(max_border_radius > 0);
+    log << "Using Alpha:" << max_border_radius * max_border_radius;
     return this->operator()(max_border_radius);
 }
 
@@ -382,7 +354,6 @@ std::vector<Bpoly>
 Pgr_alphaShape::operator() (double alpha) const {
     std::vector<Bpoly> shape;
 
-    log << "\nstarting process";
     if (alpha <= 0) {
         return build_best_alpha();
     };

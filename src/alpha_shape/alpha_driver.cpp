@@ -172,8 +172,10 @@ alpha_edges(const Alpha_shape_2& A,
 
 
 int alpha_shape(vertex_t *vertices, size_t count, double alpha,
-        vertex_t **return_tuples, size_t *res_count, char **err_msg) {
+        vertex_t **return_tuples, size_t *res_count,
+       char **log_msg, char **err_msg) {
     std::ostringstream err;
+    std::ostringstream log;
 
     try {
         std::list<Point> points;
@@ -221,9 +223,11 @@ int alpha_shape(vertex_t *vertices, size_t count, double alpha,
         if (alpha <= 0.0) {
             alpha = *A.find_optimal_alpha(1);
         }
+        log << "\nUsing alpha:" << alpha;
         A.set_alpha(alpha);
 
         alpha_edges(A, std::back_inserter(segments));
+        log << "\nSegments found" << segments.size();
 
         //  Segment s = segments.at(0);
         //  find_next_edge(s, segments, result);
@@ -269,6 +273,7 @@ int alpha_shape(vertex_t *vertices, size_t count, double alpha,
             }
         }
         *err_msg = NULL;
+        *log_msg = pgr_msg(log.str().c_str());
 
         return EXIT_SUCCESS;
     } catch (AssertFailedException &except) {

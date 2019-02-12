@@ -3,8 +3,7 @@ SET(LOCAL_FILES
     _alphaShape1.sql
     alphaShape1.sql
 
-    alphaShape.sql
-    pointsAsPolygon.sql
+    alpha_shape.sql
     )
 
 foreach (f ${LOCAL_FILES})
