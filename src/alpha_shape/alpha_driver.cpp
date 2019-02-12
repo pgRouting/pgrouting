@@ -171,8 +171,8 @@ alpha_edges(const Alpha_shape_2& A,
 }
 
 
-int alpha_shape(Pgr_point_t *vertices, size_t count, double alpha,
-        Pgr_point_t **return_tuples, size_t *res_count, char **err_msg) {
+int alpha_shape(vertex_t *vertices, size_t count, double alpha,
+        vertex_t **return_tuples, size_t *res_count, char **err_msg) {
     std::ostringstream err;
 
     try {

@@ -34,3 +34,18 @@ ORDER BY area;
 SELECT ST_Area(geom) AS area, ST_isValid(geom), ST_NPoints(geom)
 FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 14.8123624)
 ORDER BY area;
+
+SELECT ST_Area(pgr_pointsAsPolygon($$
+WITH
+Points AS (SELECT (st_dumppoints(geom)).geom FROM s_test)
+SELECT row_number() over()::INTEGER AS id, ST_X(geom) AS x, ST_Y(geom) AS y FROM Points
+$$, 14.8123624));
+
+SELECT ST_Area(pgr_pointsAsPolygon($$
+WITH
+Points AS (SELECT (st_dumppoints(geom)).geom FROM s_test)
+SELECT row_number() over()::INTEGER AS id, ST_X(geom) AS x, ST_Y(geom) AS y FROM Points
+$$));
+
+SELECT ST_Area(geom)
+FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test));

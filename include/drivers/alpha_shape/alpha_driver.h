@@ -26,23 +26,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHA_DRIVER_H_
 #pragma once
 
-/* for syze_t */
 #include <stddef.h>
-#include "c_types/pgr_point_t.h"
+
+typedef struct vertex {
+  double x;
+  double y;
+} vertex_t;
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-  int alpha_shape(
-          Pgr_point_t *vertices,
-          size_t count,
-
-          double alpha,
-
-          Pgr_point_t **res,
-          size_t *res_count,
-          char **err_msg);
+  int alpha_shape(vertex_t *vertices, size_t count, double alpha,
+                  vertex_t **res, size_t *res_count, char **err_msg);
 
 #ifdef __cplusplus
 }
