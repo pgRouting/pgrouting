@@ -25,59 +25,6 @@ INSERT INTO e_test(geom) VALUES (ST_GeomFromText('MULTIPOINT(
 SELECT results_eq('SELECT count(*) FROM (SELECT ST_DumpPoints(geom) FROM e_test) AS a', 'SELECT 30::BIGINT');
 SELECT results_eq('SELECT count(*) FROM (SELECT (ST_DumpPoints(geom)).geom FROM e_test) a;', 'SELECT 30::BIGINT');
 
-CREATE OR REPLACE FUNCTION test_alpha(alpha FLOAT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-    CREATE TABLE original AS
-    SELECT pgr_pointsAsPolygon($$
-        WITH
-        Points AS (SELECT (st_dumppoints(geom)).geom FROM e_test)
-        SELECT row_number() over()::INTEGER AS id, ST_X(geom) AS x, ST_Y(geom) AS y FROM Points$$, alpha)
-    AS geom;
-
-    CREATE TABLE newquery AS
-    SELECT pgr_alphaShape1((SELECT array_agg(geom) FROM e_test), sqrt(alpha))
-    AS geom;
-
-    RETURN QUERY
-    SELECT results_eq(
-        $$SELECT ST_IsValid(geom) FROM original$$,
-        $$SELECT true$$);
-
-    RETURN QUERY
-    SELECT results_eq(
-        $$SELECT ST_IsValid(geom) FROM newquery$$,
-        $$SELECT true$$);
-
-
-    RETURN QUERY
-    SELECT results_eq(
-        $$SELECT ST_Area(geom)::TEXT FROM original$$,
-        $$SELECT ST_Area(geom)::TEXT FROM newquery$$);
-
-    RETURN QUERY
-    SELECT results_eq(
-        $$SELECT count(*) FROM (SELECT ST_DumpPoints(geom) FROM original) AS a$$,
-        $$SELECT count(*) FROM (SELECT ST_DumpPoints(geom) FROM newquery) AS a$$);
-
-    RETURN QUERY
-    SELECT results_eq(
-        $$SELECT ST_NPoints(geom) FROM original$$,
-        $$SELECT ST_NPoints(geom) FROM newquery$$);
-
-    RETURN QUERY
-    SELECT set_eq(
-        $$SELECT (ST_DumpPoints(geom)).geom FROM original$$,
-        $$SELECT (ST_DumpPoints(geom)).geom FROM newquery$$);
-
-    DROP TABLE original;
-    DROP TABLE newquery;
-
-END
-$BODY$
-LANGUAGE plpgsql VOLATILE;
-
 -- less than 0.33 points as polygon does not give a result
 PREPARE q1 AS
 SELECT count(*)
@@ -91,10 +38,10 @@ SELECT results_eq(
         'q1',
         $$SELECT 0::BIGINT$$);
 
-SELECT test_alpha(0.33);
-SELECT test_alpha(1);
-SELECT test_alpha(5);
-SELECT test_alpha(9);
-SELECT test_alpha(10);
-SELECT test_alpha(11);
+SELECT test_alpha('e_test', 'geom', 0.33);
+SELECT test_alpha('e_test', 'geom', 1);
+SELECT test_alpha('e_test', 'geom', 5);
+SELECT test_alpha('e_test', 'geom', 9);
+SELECT test_alpha('e_test', 'geom', 10);
+SELECT test_alpha('e_test', 'geom', 11);
 

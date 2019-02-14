@@ -38,69 +38,17 @@ INSERT INTO s_test(geom) VALUES(ST_GeomFromText('MULTIPOINT(
 SELECT results_eq('SELECT count(*) FROM (SELECT ST_DumpPoints(geom) FROM s_test) AS a', 'SELECT 155::BIGINT');
 SELECT results_eq('SELECT count(*) FROM (SELECT (ST_DumpPoints(geom)).geom FROM s_test) a;', 'SELECT 155::BIGINT');
 
-CREATE OR REPLACE FUNCTION test_alpha(alpha FLOAT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-    CREATE TABLE original AS
-    SELECT pgr_pointsAsPolygon($$
-        WITH
-        Points AS (SELECT (st_dumppoints(geom)).geom FROM s_test)
-        SELECT row_number() over()::INTEGER AS id, ST_X(geom) AS x, ST_Y(geom) AS y FROM Points$$, alpha)
-    AS geom;
-
-    CREATE TABLE newquery AS
-    SELECT pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), sqrt(alpha))
-    AS geom;
-
-    RETURN QUERY
-    SELECT results_eq(
-        $$SELECT ST_IsValid(geom) FROM original$$,
-        $$SELECT true$$);
-
-    RETURN QUERY
-    SELECT results_eq(
-        $$SELECT ST_IsValid(geom) FROM newquery$$,
-        $$SELECT true$$);
-
-
-    RETURN QUERY
-    SELECT results_eq(
-        $$SELECT ST_Area(geom) FROM original$$,
-        $$SELECT ST_Area(geom) FROM newquery$$);
-
-    RETURN QUERY
-    SELECT results_eq(
-        $$SELECT count(*) FROM (SELECT ST_DumpPoints(geom) FROM original) AS a$$,
-        $$SELECT count(*) FROM (SELECT ST_DumpPoints(geom) FROM newquery) AS a$$);
-
-    RETURN QUERY
-    SELECT results_eq(
-        $$SELECT ST_NPoints(geom) FROM original$$,
-        $$SELECT ST_NPoints(geom) FROM newquery$$);
-
-    RETURN QUERY
-    SELECT set_eq(
-        $$SELECT (ST_DumpPoints(geom)).geom FROM original$$,
-        $$SELECT (ST_DumpPoints(geom)).geom FROM newquery$$);
-
-    DROP TABLE original;
-    DROP TABLE newquery;
-
-END
-$BODY$
-LANGUAGE plpgsql VOLATILE;
 
 -- smaller values make the results different
-SELECT test_alpha(244);
-SELECT test_alpha(245);
-SELECT test_alpha(300);
-SELECT test_alpha(100000);
-SELECT test_alpha(200000);
-SELECT test_alpha(500000);
-SELECT test_alpha(800000);
-SELECT test_alpha(900000);
-SELECT test_alpha(993650);
+SELECT test_alpha('s_test', 'geom', 244);
+SELECT test_alpha('s_test', 'geom', 245);
+SELECT test_alpha('s_test', 'geom', 300);
+SELECT test_alpha('s_test', 'geom', 100000);
+SELECT test_alpha('s_test', 'geom', 200000);
+SELECT test_alpha('s_test', 'geom', 500000);
+SELECT test_alpha('s_test', 'geom', 800000);
+SELECT test_alpha('s_test', 'geom', 900000);
+SELECT test_alpha('s_test', 'geom', 993650);
 
 
 ROLLBACK;
