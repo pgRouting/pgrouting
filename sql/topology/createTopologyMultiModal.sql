@@ -255,8 +255,8 @@ DECLARE
   v_r_point_id bigint default 1; --id del proximo punto representante a insertar
   v_group INTEGER DEFAULT 0;
   v_keyvalue record;
-  v_r_table_name text;
-  v_lines_table_name text;
+  v_r_table_name text; --table of edges joints
+  v_lines_table_name text; --table of edges
   v_p_groups INTEGER[];
   v_source bigint;
   v_target bigint;
