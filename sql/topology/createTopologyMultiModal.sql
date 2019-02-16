@@ -540,8 +540,8 @@ BEGIN
       --         END IF;
 
       --For each intermediate point of this line having a representant
-      for v_r,v_point in select distinct geometries.r, geometries.geom
-                         from  (SELECT r,geom from pgr_create_top_graph_ptos where id = v_current_line_layer_id and
+      for v_r,v_point in select  geometries.r, geometries.geom
+                         from  (SELECT distinct r,geom from pgr_create_top_graph_ptos where id = v_current_line_layer_id and
                             layname = v_keyvalue.key and
                             pos = 3 and  r is not null) as geometries
                          inner join (select * from st_dumppoints(v_current_line_layer_the_geom)) as points on -- It's needed that points are
