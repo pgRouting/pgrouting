@@ -391,6 +391,7 @@ BEGIN
             IF v_r_r is NULL THEN
               UPDATE pgr_create_top_graph_ptos set r = v_r
               where id = v_r_id --use index
+                and g = v_group
                 and st_3ddwithin(geom,v_r_geom, p_tolerance);
             END IF;
             EXECUTE 'insert into '|| v_r_table_name ||
