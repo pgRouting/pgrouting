@@ -221,8 +221,8 @@ $$ LANGUAGE plpgsql;
 
 
 create or REPLACE function pgr_createtopology_multimodal (p_lineal_groups jsonb, p_puntual_groups jsonb, p_layers jsonb,
-                                                                        p_graph_lines_table text, p_graph_lines_schema text, p_tolerance FLOAT,
-                                                                        out ip_out_d bigint, out p_out_layname text, out p_out_error text)
+                                                          p_graph_lines_table text, p_graph_lines_schema text, p_tolerance FLOAT,
+                                                          out ip_out_d bigint, out p_out_layname text, out p_out_error text)
   returns setof record AS
 $$
 DECLARE
@@ -283,13 +283,13 @@ BEGIN
   --Table where points needed to build the graph are stored.
   drop table if EXISTS pgr_create_top_graph_ptos;
   CREATE TEMPORARY TABLE pgr_create_top_graph_ptos(
-     pos INTEGER, --Point position inside its geometry, 1=start, 2=end, 3=middle.
-     id bigint,  --Geometry's id where this point belongs to.
-     layname char(128), --Layer's name where this point belongs to.
-     r INTEGER,   --Representative' id of this point in the graph, it is null in case it doesn't belongs to the graph.FK to v_r_table_name.id
-     geom geometry,
-     g INTEGER,   --Layer's groups where this point belongs to
-     dims INTEGER --Dimensions of this point
+                                                    pos INTEGER, --Point position inside its geometry, 1=start, 2=end, 3=middle.
+                                                    id bigint,  --Geometry's id where this point belongs to.
+                                                    layname char(128), --Layer's name where this point belongs to.
+                                                    r INTEGER,   --Representative' id of this point in the graph, it is null in case it doesn't belongs to the graph.FK to v_r_table_name.id
+                                                    geom geometry,
+                                                    g INTEGER,   --Layer's groups where this point belongs to
+                                                    dims INTEGER --Dimensions of this point
   );
   create index on pgr_create_top_graph_ptos(id);
   create index on pgr_create_top_graph_ptos using gist(geom);
@@ -464,7 +464,7 @@ BEGIN
           v_first := FALSE;
         END IF;
         --There may exists multiple points that intersects in the same group, all with equal r, some with same r and the other with null, or all with r = null
-        SELECT geom, r into v_r_geom, v_r_r 
+        SELECT geom, r into v_r_geom, v_r_r
         from pgr_create_top_graph_ptos as g
         where st_dwithin(g.geom, v_point, p_tolerance) and --to use index
           st_3ddwithin(g.geom, v_point, p_tolerance) and
@@ -551,11 +551,15 @@ BEGIN
 
         if (v_zconn = 2 and v_geom_dims = 3)  THEN
           EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
-                  ' where id_geom = $1 and layname = $2 and pgr_create_topo_check_intersect("geom",$3,$4)'
+                  ' where id_geom = $1 and layname = $2 and pgr_create_topo_check_intersect("geom",$3,$4) and not (st_3ddwithin(pgr_create_topo_set_point(2, ST_StartPoint(geom),0,3),$3,$4)) ' ||
+                  ' order by id asc ' ||
+                  ' limit 1'
             into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key,v_point,p_tolerance;
         ELSE
           EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
-                  ' where id_geom = $1 and layname = $2 and st_3ddwithin(geom, $3,$4)'
+                  ' where id_geom = $1 and layname = $2 and st_3ddwithin(geom, $3,$4) and not (st_3ddwithin( ST_StartPoint(geom),$3,$4)) ' ||
+                  ' order by id asc ' ||
+                  ' limit 1'
             into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key,v_point, p_tolerance  ;
         END IF;
         v_points_make_line := '{}';
