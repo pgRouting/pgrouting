@@ -566,6 +566,9 @@ BEGIN
                   ' limit 1'
             into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key,v_point, p_tolerance  ;
         END IF;
+        if v_intersected_geom isnull then
+          continue ; --line was chopped using this point
+        end if;
         v_points_make_line := '{}';
         --This always has to execute because if there is a representative point, there is a line that contains it
         FOR v_line_point in SELECT geom from st_dumppoints(v_intersected_geom) ORDER BY path LOOP
