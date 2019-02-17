@@ -551,13 +551,17 @@ BEGIN
 
         if (v_zconn = 2 and v_geom_dims = 3)  THEN
           EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
-                  ' where id_geom = $1 and layname = $2 and pgr_create_topo_check_intersect("geom",$3,$4) and not (st_3ddwithin(pgr_create_topo_set_point(2, ST_StartPoint(geom),0,3),$3,$4)) ' ||
+                  ' where id_geom = $1 and layname = $2 and pgr_create_topo_check_intersect("geom",$3,$4) ' ||
+                  ' and not (st_3ddwithin(pgr_create_topo_set_point(2, ST_StartPoint(geom),0,3),$3,$4)) ' ||
+                  ' and not (st_3ddwithin(pgr_create_topo_set_point(2, st_endpoint(geom),0,3),$3,$4)) ' ||
                   ' order by id asc ' ||
                   ' limit 1'
             into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key,v_point,p_tolerance;
         ELSE
           EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
-                  ' where id_geom = $1 and layname = $2 and st_3ddwithin(geom, $3,$4) and not (st_3ddwithin( ST_StartPoint(geom),$3,$4)) ' ||
+                  ' where id_geom = $1 and layname = $2 and st_3ddwithin(geom, $3,$4) ' ||
+                  ' and not (st_3ddwithin( ST_StartPoint(geom),$3,$4)) ' ||
+                  ' and not (st_3ddwithin( st_endpoint(geom),$3,$4)) ' ||
                   ' order by id asc ' ||
                   ' limit 1'
             into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key,v_point, p_tolerance  ;
