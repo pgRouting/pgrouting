@@ -54,6 +54,12 @@ static void process(
 
     PGR_DBG("total edges %ld", edgesSize);
     PGR_DBG("alpha %f", alpha);
+#if 0
+    for (size_t i = 0; i < edgesSize; ++i) {
+        PGR_DBG("x1=%f y1=%f", edgesArr[i].x1, edgesArr[i].y1);
+        PGR_DBG("x2=%f y2=%f", edgesArr[i].x2, edgesArr[i].y2);
+    }
+#endif
 
     if (edgesSize < 3) {
         if (edgesArr) pfree(edgesArr);

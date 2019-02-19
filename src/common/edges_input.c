@@ -189,6 +189,10 @@ void fetch_edge_with_xy(
     edge->y1 = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
     edge->x2 = pgr_SPI_getFloat8(tuple, tupdesc, info[7]);
     edge->y2 = pgr_SPI_getFloat8(tuple, tupdesc, info[8]);
+    PGR_DBG("%ld", edge->id);
+    PGR_DBG("x1=%f y1=%.15lf", edge->x1, edge->y1);
+    PGR_DBG("x2=%f y2=%.15lf", edge->x2, edge->y2);
+
 
     *valid_edges = edge->cost < 0? *valid_edges: *valid_edges + 1;
     *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;

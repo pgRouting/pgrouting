@@ -52,10 +52,10 @@ BEGIN
             one.source,
             two.source as target,
             1 AS cost,
-            ST_X(one.geom) AS x1,
-            ST_Y(one.geom) AS y1,
-            ST_X(two.geom) AS x2,
-            ST_Y(two.geom) AS y2
+            ST_X(one.geom)::FLOAT AS x1,
+            ST_Y(one.geom)::FLOAT AS y1,
+            ST_X(two.geom)::FLOAT AS x2,
+            ST_Y(two.geom)::FLOAT AS y2
         FROM foo AS one JOIN foo as two USING(id)
         WHERE one.source < two.source;
         $$;

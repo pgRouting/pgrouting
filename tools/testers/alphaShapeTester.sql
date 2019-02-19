@@ -19,33 +19,39 @@ BEGIN
     RETURN QUERY
     SELECT results_eq(
         $$SELECT ST_IsValid(geom) FROM original$$,
-        $$SELECT true$$);
+        $$SELECT true$$,
+        'Original should be valid with alpha = ' || alpha);
 
     RETURN QUERY
     SELECT results_eq(
         $$SELECT ST_IsValid(geom) FROM newquery$$,
-        $$SELECT true$$);
+        $$SELECT true$$,
+        'New results should be valid with alpha = ' || alpha);
 
 
     RETURN QUERY
     SELECT results_eq(
         $$SELECT ST_Area(geom)::TEXT FROM original$$,
-        $$SELECT ST_Area(geom)::TEXT FROM newquery$$);
+        $$SELECT ST_Area(geom)::TEXT FROM newquery$$,
+        'Areas are the same with alpha = ' || alpha);
 
     RETURN QUERY
     SELECT results_eq(
         $$SELECT count(*) FROM (SELECT ST_DumpPoints(geom) FROM original) AS a$$,
-        $$SELECT count(*) FROM (SELECT ST_DumpPoints(geom) FROM newquery) AS a$$);
+        $$SELECT count(*) FROM (SELECT ST_DumpPoints(geom) FROM newquery) AS a$$,
+        'Number of points are the same with alpha = ' || alpha);
 
     RETURN QUERY
     SELECT results_eq(
         $$SELECT ST_NPoints(geom) FROM original$$,
-        $$SELECT ST_NPoints(geom) FROM newquery$$);
+        $$SELECT ST_NPoints(geom) FROM newquery$$,
+        'NPoints are the same with alpha = ' || alpha);
 
     RETURN QUERY
     SELECT set_eq(
         $$SELECT (ST_DumpPoints(geom)).geom FROM original$$,
-        $$SELECT (ST_DumpPoints(geom)).geom FROM newquery$$);
+        $$SELECT (ST_DumpPoints(geom)).geom FROM newquery$$,
+        'Points are the same with alpha = ' || alpha);
 
     DROP TABLE original;
     DROP TABLE newquery;
