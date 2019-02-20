@@ -5,18 +5,18 @@ SET
 -- q1
 SELECT * FROM pgr_alphaShape(
     'SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
-    FROM edge_table_vertices_pgr');
+    FROM edge_table_vertices_pgr') ORDER BY x, y;
   x  |  y
 -----+-----
-   4 |   2
-   4 |   1
-   2 |   0
    0 |   2
  0.5 | 3.5
+   2 |   0
    2 |   4
  3.5 |   4
-   4 |   3
+   4 |   1
    4 |   2
+   4 |   3
+   4 |   3
 (9 rows)
 
 -- q2
