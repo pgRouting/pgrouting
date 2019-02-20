@@ -24,3 +24,5 @@ SELECT test_alpha('edge_table_vertices_pgr', 'the_geom', 2.4);
 -- the convex hull
 SELECT test_alpha('edge_table', 'the_geom', 2.5);
 SELECT test_alpha('edge_table_vertices_pgr', 'the_geom', 2.5);
+
+SELECT finish();
