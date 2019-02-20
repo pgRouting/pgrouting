@@ -4,7 +4,6 @@ Data from sample data of the documentation
 */
 SELECT plan(69);
 -- shape & area are the same, there is an extra collinear point in new result
-SELECT todo_start('shape & area are the same, there is an extra collinear point in new result');
 SELECT test_alpha('edge_table', 'the_geom', .3, true);
 SELECT test_alpha('edge_table_vertices_pgr', 'the_geom', 0.3);
 SELECT test_alpha('edge_table', 'the_geom', 0.4);
