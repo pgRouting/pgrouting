@@ -35,12 +35,12 @@ CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT 
     AS 'MODULE_PATHNAME', 'alphashape'
     LANGUAGE c VOLATILE STRICT;
 
+
 /*
 ----------------------------------------------------------
 -- Draws an alpha shape around given set of points.
 -- ** This should be rewritten as an aggregate. **
 ----------------------------------------------------------
-*/
 CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAULT 0)
 	RETURNS geometry AS
 	$$
@@ -98,3 +98,4 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAU
 	$$
 	LANGUAGE 'plpgsql' VOLATILE STRICT;
 
+*/

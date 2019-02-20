@@ -1,8 +1,6 @@
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2015~2019 Celia Virginia Vergara Castillo
-Copyright (c) 2006-2007 Anton A. Patrushev, Orkney, Inc.
-Copyright (c) 2005 Sylvain Pasche,
 Mail: project@pgrouting.org
 
 ------
@@ -39,21 +37,30 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(
     alpha FLOAT8 DEFAULT 0)
 
 RETURNS geometry AS
-$$
+$BODY$
 DECLARE
-geoms geometry[];
-vertex_result record;
+    geoms geometry[];
+    vertex_result record;
+    i BIGINT;
+    q TEXT;
+
 BEGIN
-    geoms := array[]::geometry[];
-    FOR vertex_result IN EXECUTE $1
-    LOOP
-        geoms = geoms || ST_MakePoint(vertex_result.x, vertex_result.y);
-    END LOOP;
-    RETURN QUERY
-    SELECT * FROM pgr_alphashape1(geoms, alpha);
+    q = format($$
+        WITH
+        a AS (
+            %1$s
+        ),
+        b AS (SELECT ST_makePoint(x, y) AS geom FROM a)
+        SELECT array_agg(geom) FROM b
+        $$, $1);
+    -- RAISE NOTICE '%', q;
+    EXECUTE q INTO geoms;
+
+    -- RAISE NOTICE 'length = %', array_length(geoms, 1);
+    RETURN pgr_alphashape1(geoms, sqrt(alpha), false);
 END;
-$$
-LANGUAGE 'plpgsql' VOLATILE STRICT;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_pointsAsPolygon(VARCHAR, FLOAT8)
 IS 'pgr_pointsAsPolygon

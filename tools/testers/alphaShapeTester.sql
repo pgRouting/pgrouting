@@ -1,5 +1,5 @@
 
-CREATE OR REPLACE FUNCTION test_alpha(_tbl REGCLASS, _geom TEXT, alpha FLOAT)
+CREATE OR REPLACE FUNCTION test_alpha(_tbl REGCLASS, _geom TEXT, alpha FLOAT, short BOOLEAN DEFAULT false)
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
@@ -35,6 +35,8 @@ BEGIN
         $$SELECT ST_Area(geom)::TEXT FROM newquery$$,
         'Areas are the same with alpha = ' || alpha);
 
+
+    IF NOT short THEN
     RETURN QUERY
     SELECT results_eq(
         $$SELECT count(*) FROM (SELECT ST_DumpPoints(geom) FROM original) AS a$$,
@@ -49,9 +51,10 @@ BEGIN
 
     RETURN QUERY
     SELECT set_eq(
-        $$SELECT (ST_DumpPoints(geom)).geom FROM original$$,
-        $$SELECT (ST_DumpPoints(geom)).geom FROM newquery$$,
+        $$SELECT ST_AsText((ST_DumpPoints(geom)).geom) FROM original$$,
+        $$SELECT ST_AsText((ST_DumpPoints(geom)).geom) FROM newquery$$,
         'Points are the same with alpha = ' || alpha);
+    END IF;
 
     DROP TABLE original;
     DROP TABLE newquery;

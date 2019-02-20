@@ -25,13 +25,13 @@ INSERT INTO e_test(geom) VALUES (ST_GeomFromText('MULTIPOINT(
 SELECT results_eq('SELECT count(*) FROM (SELECT ST_DumpPoints(geom) FROM e_test) AS a', 'SELECT 30::BIGINT');
 SELECT results_eq('SELECT count(*) FROM (SELECT (ST_DumpPoints(geom)).geom FROM e_test) a;', 'SELECT 30::BIGINT');
 
--- less than 0.33 points as polygon does not give a result
+-- less than 0.003, points as polygon does not give a result
 PREPARE q1 AS
 SELECT count(*)
 FROM (SELECT pgr_pointsAsPolygon($$
         WITH
         Points AS (SELECT (st_dumppoints(geom)).geom FROM e_test)
-        SELECT row_number() over()::INTEGER AS id, ST_X(geom) AS x, ST_Y(geom) AS y FROM Points$$, 0.032) AS geom) a
+        SELECT row_number() over()::INTEGER AS id, ST_X(geom) AS x, ST_Y(geom) AS y FROM Points$$, 0.002) AS geom) a
 WHERE geom IS NOT NULL;
 
 SELECT results_eq(
