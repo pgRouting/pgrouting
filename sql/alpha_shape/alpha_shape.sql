@@ -1,8 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Copyright (c) 2006-2007 Anton A. Patrushev, Orkney, Inc.
-Copyright (c) 2005 Sylvain Pasche,
+Copyright (c) 2019 Celia Virginia Vergara Castillo
 Mail: project@pgrouting.org
 
 ------
@@ -23,79 +21,54 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/*
 -----------------------------------------------------------------------
--- Core function for alpha shape computation.
--- The sql should return vertex ids and x,y values. Return ordered
--- vertex ids.
+-- legacy
+-- The sql should return vertex x,y values.
+   -- Before: id is compulsory
+   -- Legacy: id is ignored
+-- Return ordered vertex ids.
+   -- Before: the sequence was does not represent a closed linestring
+   -- Legacy: the sequence was represent a closed linestring
 -----------------------------------------------------------------------
-*/
-CREATE OR REPLACE FUNCTION pgr_alphashape(sql text, alpha float8 DEFAULT 0, OUT x float8, OUT y float8)
-    RETURNS SETOF record
-    AS 'MODULE_PATHNAME', 'alphashape'
-    LANGUAGE c VOLATILE STRICT;
+CREATE OR REPLACE FUNCTION pgr_alphashape(
+    text, -- SQL with x, y
+    alpha float8 DEFAULT 0,
+    OUT x float8,
+    OUT y float8)
+RETURNS SETOF record
+AS
+$BODY$
+DECLARE
+    rec record;
+    old_poly_seq BIGINT = 1;
+    old_ring     BIGINT = 1;
+BEGIN
+    FOR rec IN
+        WITH
+        multiPoly AS (SELECT pgr_pointsAsPolygon($1, sqrt(alpha)) AS geom),
+        singlePoly AS (SELECT (ST_dump(geom)).path[1] AS poly_seq, (ST_dump(geom)).geom FROM multipoly),
+        polydump AS (SELECT poly_seq, ST_DumpPoints(geom) dp FROM singlePoly)
+        SELECT poly_seq, (dp).path[1] AS ring, (dp).path[2] AS point_seq, st_asText((dp).geom) AS geom
+        FROM polydump
+        ORDER BY poly_seq, ring, point_seq
+    LOOP
+        IF (old_poly_seq != rec.poly_seq OR old_ring != rec.ring) THEN
+            RAISE NOTICE '% %', rec.poly_seq, rec.ring;
+            x = NULL;
+            y = NULL;
+            RETURN NEXT;
+            old_poly_seq := rec.poly_seq;
+            old_ring := rec.ring;
+        END IF;
 
+        x = ST_X(rec.geom);
+        y = ST_Y(rec.geom);
 
-/*
-----------------------------------------------------------
--- Draws an alpha shape around given set of points.
--- ** This should be rewritten as an aggregate. **
-----------------------------------------------------------
-CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAULT 0)
-	RETURNS geometry AS
-	$$
-	DECLARE
-		r record;
-		geoms geometry[];
-		vertex_result record;
-		i int;
-		n int;
-		spos int;
-		q text;
-		x float8[];
-		y float8[];
+        RETURN NEXT;
+    END LOOP;
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
 
-	BEGIN
-		geoms := array[]::geometry[];
-		i := 1;
-
-		FOR vertex_result IN EXECUTE 'SELECT x, y FROM pgr_alphashape('''|| query || ''', ' || alpha || ')'
-		LOOP
-			x[i] = vertex_result.x;
-			y[i] = vertex_result.y;
-			i := i+1;
-		END LOOP;
-
-		n := i;
-		IF n = 1 THEN
-			RAISE NOTICE 'n = 1';
-			RETURN NULL;
-		END IF;
-
-		spos := 1;
-		q := 'SELECT ST_GeometryFromText(''POLYGON((';
-		FOR i IN 1..n LOOP
-			IF x[i] IS NULL AND y[i] IS NULL THEN
-				q := q || ', ' || x[spos] || ' ' || y[spos] || '))'',0) AS geom;';
-				EXECUTE q INTO r;
-				geoms := geoms || array[r.geom];
-				q := '';
-			ELSE
-				IF q = '' THEN
-					spos := i;
-					q := 'SELECT ST_GeometryFromText(''POLYGON((';
-				END IF;
-				IF i = spos THEN
-					q := q || x[spos] || ' ' || y[spos];
-				ELSE
-					q := q || ', ' || x[i] || ' ' || y[i];
-				END IF;
-			END IF;
-		END LOOP;
-
-		RETURN ST_BuildArea(ST_Collect(geoms));
-	END;
-	$$
-	LANGUAGE 'plpgsql' VOLATILE STRICT;
-
-*/
+COMMENT ON FUNCTION pgr_alphaShape(TEXT, FLOAT)
+IS 'Legacy';

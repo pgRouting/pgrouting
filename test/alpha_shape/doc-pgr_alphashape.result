@@ -5,18 +5,19 @@ SET
 -- q1
 SELECT * FROM pgr_alphaShape(
     'SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
-    FROM edge_table_vertices_pgr') ORDER BY x, y;
+    FROM edge_table_vertices_pgr');
   x  |  y
 -----+-----
+   4 |   2
+   4 |   1
+   2 |   0
    0 |   2
  0.5 | 3.5
-   2 |   0
    2 |   4
  3.5 |   4
-   4 |   1
-   4 |   2
    4 |   3
-(8 rows)
+   4 |   2
+(9 rows)
 
 -- q2
 SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area

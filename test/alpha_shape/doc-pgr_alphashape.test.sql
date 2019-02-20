@@ -5,7 +5,7 @@
 \echo -- q1
 SELECT * FROM pgr_alphaShape(
     'SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
-    FROM edge_table_vertices_pgr') ORDER BY x, y;
+    FROM edge_table_vertices_pgr');
 \echo -- q2
 
 SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
