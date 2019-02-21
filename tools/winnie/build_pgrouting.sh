@@ -88,21 +88,9 @@ fi
 ZLIB_PATH="${PROJECTS}/zlib/rel-${ZLIB_VER}w${OS_BUILD}${GCC_TYPE}"
 PATH="${PATH}:${ZLIB_PATH}/include:${ZLIB_PATH}/lib:${ZLIB_PATH}/bin"
 
-#gmp
-GMP_PATH="${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}"
-PATH="${PATH}:${GMP_PATH}/include:${GMP_PATH}/lib"
-
-#mpfr
-MPFR_PATH="${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}"
-PATH="${PATH}:${MPFR_PATH}/include:${MPFR_PATH}/lib:${MPFR_PATH}/bin"
-
 #boost
 BOOSTROOT_PATH="${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE}"
 PATH="${PATH}:${BOOSTROOT_PATH}/lib"
-
-#cgal
-CGAL_PATH="${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}"
-PATH="${PATH}:${CGAL_PATH}/include:${CGAL_PATH}/lib"
 
 #cmake
 export PATH="${PATH}:/cmake/bin"
