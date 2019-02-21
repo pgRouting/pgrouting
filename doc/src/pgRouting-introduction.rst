@@ -93,6 +93,5 @@ More Information
 * PostgreSQL database server at the PostgreSQL main site http://www.postgresql.org.
 * PostGIS extension at the PostGIS project web site http://postgis.net.
 * Boost C++ source libraries at http://www.boost.org.
-* Computational Geometry Algorithms Library (CGAL) at http://www.cgal.org.
 * The Migration guide can be found at https://github.com/pgRouting/pgrouting/wiki/Migration-Guide.
 

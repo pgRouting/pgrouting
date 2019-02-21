@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-alpha\n"
@@ -208,11 +208,6 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:95
 msgid "Boost C++ source libraries at http://www.boost.org."
-msgstr ""
-
-#: ../../build/doc/pgRouting-introduction.rst:96
-msgid ""
-"Computational Geometry Algorithms Library (CGAL) at http://www.cgal.org."
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:97

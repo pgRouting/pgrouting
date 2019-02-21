@@ -107,7 +107,6 @@ Building reqirements
 * Postgresql >= 9.2
 * The Boost Graph Library (BGL) >= 1.53
 * CMake >= 3.2
-* CGAL >= 4.4
 * Sphinx >= 1.2
 
 

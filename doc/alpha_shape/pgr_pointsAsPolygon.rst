@@ -41,7 +41,6 @@ Parameters
     :y: ``float8`` y-coordinate
 
 :alpha: (optional) ``float8`` alpha value. If specified alpha value equals 0 (default), then optimal alpha value is used.
-    For more information, see `CGAL - 2D Alpha Shapes <http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html>`_.
 
 Returns a (multi)polygon geometry (with holes).
 
