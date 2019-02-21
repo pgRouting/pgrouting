@@ -48,7 +48,6 @@ addons:
       - cmake
       - libboost-thread-dev
       - libboost-graph-dev
-      #- libcgal-dev
       - python-sphinx
       - graphviz
       - texlive
