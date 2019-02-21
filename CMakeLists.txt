@@ -60,7 +60,6 @@ set(DOXYGEN_MINIMUM_VERSION "1.7")
 set(SPHINX_MINIMUM_VERSION "1.1")
 set(POSTGRESQL_MINIMUM_VERSION "9.2.0")
 set(BOOST_MINIMUM_VERSION "1.53")
-#set(CGAL_CXX_MINIMUM_VERSION "4.4")
 set(POSTGIS_MINIMUM_VERSION "2.0.0")
 set(GNU_CXX_MINIMUM_VERSION "4.6")
 set(MSVC_CXX_MINIMUM_VERSION "18.0")
@@ -136,17 +135,8 @@ if(WIN32 AND NOT MSVC)
         set(BOOST_ROOT c:/ming${OS_BUILD}/msys/local)
     endif(NOT BOOST_ROOT)
 
-    #if (NOT CGAL_ROOT)
-    #    set(CGAL_ROOT c:/ming${OS_BUILD}/msys/local)
-    #endif(NOT CGAL_ROOT)
-
-    #if (NOT GMP_ROOT)
-    #    set(GMP_ROOT c:/ming${OS_BUILD}/mingw${OS_BUILD})
-    #endif(NOT GMP_ROOT)
     if (PGROUTING_DEBUG)
         message(STATUS "OS_BUILD=${OS_BUILD}")
-        #message(STATUS "CGAL_ROOT=${CGAL_ROOT}")
-        message(STATUS "GMP_ROOT=${GMP_ROOT}")
         message(STATUS "BOOST_ROOT=${BOOST_ROOT}")
         message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
     endif()
@@ -262,19 +252,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_VERSION_OK=${BOOST_VERSION_OK} -
 
 #---------------------------------------------
 #---------------------------------------------
-# CGAL
-#---------------------------------------------
-#---------------------------------------------
-#find_package(CGAL ${CGAL_MINIMUM_VERSION})
-#if(NOT CGAL_FOUND)
-#    message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
-#endif(NOT CGAL_FOUND)
-
-#-------
-#include_directories(${CGAL_INCLUDE_DIR})
-
-#---------------------------------------------
-#---------------------------------------------
 # PGROUTING includes
 #---------------------------------------------
 #---------------------------------------------
@@ -294,7 +271,6 @@ if (PGROUTING_DEBUG)
     message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
     message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
     message(STATUS "BOOST_VERSION_OK ${BOOST_VERSION_OK}")
-    message(STATUS "CGAL_INCLUDE_DIR: ${CGAL_INCLUDE_DIR}")
     message(STATUS "PGROUTING_INCLUDE_DIRECTORIES = ${PGROUTING_INCLUDE_DIRECTORIES}")
     message(STATUS "POSTGRESQL_INCLUDE_DIR = ${POSTGRESQL_INCLUDE_DIR}")
     message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
@@ -459,7 +435,7 @@ else(APPLE)
 endif(APPLE)
 
 
-LINK_LIBRARIES(${CGAL_LIBRARIES} ${GMP_LIBRARIES} ${BOOST_THREAD_LIBRARIES})
+LINK_LIBRARIES(${BOOST_THREAD_LIBRARIES})
 
 #-------------------
 # pgRouting objects to be linked
