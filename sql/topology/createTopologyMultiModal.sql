@@ -549,25 +549,20 @@ BEGIN
                          order by points.path
         LOOP
 
-        if (v_zconn = 2 and v_geom_dims = 3)  THEN
-          EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
-                  ' where id_geom = $1 and layname = $2 and pgr_create_topo_check_intersect("geom",$3,$4) ' ||
-                  ' and not (st_3ddwithin(pgr_create_topo_set_point(2, ST_StartPoint(geom),0,3),$3,$4)) ' ||
-                  ' and not (st_3ddwithin(pgr_create_topo_set_point(2, st_endpoint(geom),0,3),$3,$4)) ' ||
-                  ' order by id asc ' ||
-                  ' limit 1'
-            into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key,v_point,p_tolerance;
-        ELSE
-          EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
-                  ' where id_geom = $1 and layname = $2 and st_3ddwithin(geom, $3,$4) ' ||
-                  ' and not (st_3ddwithin( ST_StartPoint(geom),$3,$4)) ' ||
-                  ' and not (st_3ddwithin( st_endpoint(geom),$3,$4)) ' ||
-                  ' order by id asc ' ||
-                  ' limit 1'
-            into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key,v_point, p_tolerance  ;
-        END IF;
-        if v_intersected_geom isnull then
-          continue ; --line was chopped using this point
+          if (v_zconn = 2 and v_geom_dims = 3)  THEN
+            EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
+                    ' where id_geom = $1 and layname = $2 and pgr_create_topo_check_intersect("geom",$3,$4)'
+              into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key, v_point, p_tolerance;
+          ELSE
+            EXECUTE 'SELECT  geom,id from '||v_lines_table_name ||
+                    ' where id_geom = $1 and layname = $2 and st_3ddwithin(geom, $3,$4)'
+              into v_intersected_geom, v_intersected_id using v_current_line_layer_id, v_keyvalue.key, v_point, p_tolerance  ;
+          END IF;
+        IF st_3ddwithin(st_startpoint(v_intersected_geom),v_point,p_tolerance) or
+           st_3ddwithin(st_endpoint(v_intersected_geom),v_point,p_tolerance) then
+
+          continue ; --If there is a point with R at start or end in any line, it means that this line was already chopped by this r point, so there are r
+                     --points duplicated on this point.
         end if;
         v_points_make_line := '{}';
         --This always has to execute because if there is a representative point, there is a line that contains it
