@@ -564,6 +564,20 @@ BEGIN
           continue ; --If there is a point with R at start or end in any line, it means that this line was already chopped by this r point, so there are r
                      --points duplicated on this point.
         end if;
+
+        --v_source and v_target has to refresh because line selected can be a chopped one so, v_source and v_target change
+        select r into v_source
+        from pgr_create_top_graph_ptos
+        where id = v_current_line_layer_id
+          and layname = v_keyvalue.key
+          and st_3ddwithin(geom, st_startpoint(v_intersected_geom), p_tolerance);
+
+        select r into v_target
+        from pgr_create_top_graph_ptos
+        where id = v_current_line_layer_id
+          and layname = v_keyvalue.key
+          and st_3ddwithin(geom, st_endpoint(v_intersected_geom), p_tolerance);
+
         v_points_make_line := '{}';
         --This always has to execute because if there is a representative point, there is a line that contains it
         FOR v_line_point in SELECT geom from st_dumppoints(v_intersected_geom) ORDER BY path LOOP
