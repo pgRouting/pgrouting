@@ -228,6 +228,7 @@ $$
 DECLARE
   v_lineal_group_record record;
   v_lineal_layer text;  --Layer being analized
+  v_point_layer_name text; --Point layer name being analized
   --current line layer--------------------------------------------------------------------------------
   v_current_line_layer_id bigint; --identifier of current line from line_layer
   v_current_line_layer_the_geom geometry ; --geom of current line from line_layer
@@ -463,23 +464,26 @@ BEGIN
           p_layers = pgr_polyfill_jsonb_set(p_layers,('{'||v_keyvalue.key||', dims}')::text[], to_json(v_geom_dims)::jsonb);
           v_first := FALSE;
         END IF;
+
+        FOR v_group in  select g from unnest(v_p_groups) as g loop
+
         --There may exists multiple points that intersects in the same group, all with equal r, some with same r and the other with null, or all with r = null
         SELECT geom, r into v_r_geom, v_r_r
         from pgr_create_top_graph_ptos as g
         where st_dwithin(g.geom, v_point, p_tolerance) and --to use index
           st_3ddwithin(g.geom, v_point, p_tolerance) and
-          (v_p_groups @> (g.g || ARRAY []::int[])) and dims = v_geom_dims
+          g.g = v_group  and dims = v_geom_dims
         ORDER BY r NULLS LAST --Because I order by r with nulls last the first value must be an assigned one if there is one
         limit 1;
         if v_r_geom is NULL then
-          return query select  v_point_id::bigint, v_keyvalue.key::text ,'The point from point layer:'|| v_keyvalue.key ||' doesnt intersect any other point in graph, skipping'::text;
+          return query select  v_point_id::bigint, v_keyvalue.key::text ,'The point from point layer:'|| v_keyvalue.key ||' doesnt intersect any other point in graph in group: '|| v_group ||', skipping'::text;
           CONTINUE ;
         END IF;
 
-        EXECUTE 'select layname from ' || v_r_table_name|| ' where id=$1'into v_lineal_layer using v_r_r;
+        EXECUTE 'select layname from ' || v_r_table_name|| ' where id=$1'into v_point_layer_name using v_r_r;
 
-        if v_lineal_layer is not null THEN
-          return query select v_point_id::bigint, v_keyvalue.key::text ,'The point intersects with other point from a point layer: '|| v_keyvalue.key ||' , joining groups can not be done with this point, skipping.'::text;
+        if v_point_layer_name not like (v_keyvalue.key) is not null THEN
+          return query select v_point_id::bigint, v_keyvalue.key::text ,'The point intersects with other point from another point layer: '|| v_keyvalue.key ||' , joining groups can not be done with this point, skipping.'::text;
           CONTINUE;
         END IF;
 
@@ -495,7 +499,9 @@ BEGIN
 
         UPDATE pgr_create_top_graph_ptos as g set r = v_r where st_dwithin(g.geom, v_point, p_tolerance) and --to use index
           st_3ddwithin(g.geom, v_point, p_tolerance) and
-          (v_p_groups @> (g.g || ARRAY []::int[])) and dims = v_geom_dims;
+          g.g = v_group and dims = v_geom_dims;
+
+        end loop;
 
       END LOOP;
 
