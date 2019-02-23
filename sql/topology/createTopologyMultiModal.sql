@@ -510,13 +510,12 @@ BEGIN
 
         --Adding transference lines to graph
         --IF a point in a point layer join N line layers, there has to be (n*n+1)/2 extra edges representing transference edges from one group to another
-         FOR v_group_layer_name_A, v_group_r_A, v_group_layer_name_B, v_group_r_B in select * from pgr_create_top_graph_ptos A, pgr_create_top_graph_ptos B
+         FOR v_group_layer_name_A, v_group_r_A, v_group_layer_name_B, v_group_r_B in select A.layname, A.r, B.layname, B.r from pgr_create_top_graph_ptos A, pgr_create_top_graph_ptos B
                                                         where st_dwithin(v_point,A.geom , p_tolerance) and
                                                               st_3ddwithin(A.geom, B.geom, p_tolerance) and
                                                               A.g > B.g
                                                               loop
-          EXECUTE 'insert into '||v_lines_table_name|| ' values($1,$2,$3,$4,$5,$6);'using null, v_group_r_A, v_group_r_B, null, null, array[v_group_layer_name_A,v_group_layer_name_B]  ;
-
+          EXECUTE 'insert into '||v_lines_table_name|| ' values(null,$1,$2,null,null,$3);'using v_group_r_A, v_group_r_B, array[v_group_layer_name_A,v_group_layer_name_B]  ;
          end loop;
 
       END LOOP;
