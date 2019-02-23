@@ -253,7 +253,7 @@ DECLARE
   v_n_points INTEGER; --cantidad de puntos en la geometria que se esta analizando
   v_point_pos INTEGER; --posicion del punto en su geom, 1-inicio 2-fin, 3-medio
   v_r_point_id bigint default 1; --id del proximo punto representante a insertar
-  v_group INTEGER DEFAULT 0;
+  v_group INTEGER DEFAULT -1;
   v_keyvalue record;
   v_r_table_name text; --table of edges joints
   v_lines_table_name text; --table of edges
