@@ -229,6 +229,10 @@ DECLARE
   v_lineal_group_record record;
   v_lineal_layer text;  --Layer being analized
   v_point_layer_name text; --Point layer name being analized
+  v_group_layer_name_A text; --Lineal layer name to join groups
+  v_group_layer_name_B text; --Lineal layer name to join groups
+  v_group_r_A bigint; -- Representative id of Layer A
+  v_group_r_B bigint; -- Representative id of Layer B
   --current line layer--------------------------------------------------------------------------------
   v_current_line_layer_id bigint; --identifier of current line from line_layer
   v_current_line_layer_the_geom geometry ; --geom of current line from line_layer
@@ -316,6 +320,7 @@ BEGIN
           'target bigint,' ||
           'id_geom bigint,' || --id of the geometry that contains this edge
           'layname text,' ||     --name of the layer that has the geometry containing this edge
+          'bounded_layers text[] default null,'||--ids of layers being joined
           'id serial primary key)';
   EXECUTE 'create index on '|| v_lines_table_name||' (id_geom)';
 
@@ -502,6 +507,17 @@ BEGIN
           g.g = v_group and dims = v_geom_dims;
 
         end loop;
+
+        --Adding transference lines to graph
+        --IF a point in a point layer join N line layers, there has to be (n*n+1)/2 extra edges representing transference edges from one group to another
+         FOR v_group_layer_name_A, v_group_r_A, v_group_layer_name_B, v_group_r_B in select * from pgr_create_top_graph_ptos A, pgr_create_top_graph_ptos B
+                                                        where st_dwithin(v_point,A.geom , p_tolerance) and
+                                                              st_3ddwithin(A.geom, B.geom, p_tolerance) and
+                                                              A.g > B.g
+                                                              loop
+          EXECUTE 'insert into '||v_lines_table_name|| ' values($1,$2,$3,$4,$5,$6);'using null, v_group_r_A, v_group_r_B, null, null, array[v_group_layer_name_A,v_group_layer_name_B]  ;
+
+         end loop;
 
       END LOOP;
 
