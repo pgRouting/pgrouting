@@ -482,7 +482,7 @@ BEGIN
 
           EXECUTE 'select layname from ' || v_r_table_name|| ' where id=$1'into v_point_layer_name using v_r_r;
 
-          if v_point_layer_name not like (v_keyvalue.key) is not null THEN
+          if v_point_layer_name not like (v_keyvalue.key) THEN
             return query select v_point_id::bigint, v_keyvalue.key::text ,'The point intersects with other point from another point layer: '|| v_keyvalue.key ||' , joining groups can not be done with this point, skipping.'::text;
             CONTINUE;
           END IF;
