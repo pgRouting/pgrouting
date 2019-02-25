@@ -1,7 +1,8 @@
 \i setup.sql
 
 /*
-Test for old code VS new code results
+data from
+http://www.bostongis.com/postgis_concavehull.snippet
 */
 SELECT plan(170);
 
