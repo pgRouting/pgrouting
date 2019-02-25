@@ -6,7 +6,7 @@
 
 \echo -- q1
 SELECT  pgr_createTopology('edge_table',0.001, clean := true);
-SELECT  pgr_analyzeGraph('edge_table',0.001)
+SELECT  pgr_analyzeGraph('edge_table',0.001);
 \echo -- q1.1
 
 \echo -- q3
@@ -46,8 +46,6 @@ SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_
 CREATE TABLE mytable AS (SELECT id AS gid, source AS src ,target AS tgt , the_geom AS mygeom FROM edge_table);
 SELECT pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt', clean := true);
 \echo -- q12.1
-
-The arguments need to be given in the order described in the parameters:
 
 \echo -- q13
 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt');
@@ -95,8 +93,6 @@ SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',t
     rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
 \echo -- q22.1
 --------------------
-
-Additional Examples
 
 \echo -- q23
 SELECT  pgr_createTopology('edge_table',0.001, clean := true);
