@@ -117,7 +117,7 @@ The order of the parameters do not matter:
 
 .. literalinclude:: doc-pgr_analyzeGraph.queries
    :start-after: -- q7
-   :end-before: -- q7.2
+   :end-before: -- q7.1
 
 Parameters defined with a default value can be omitted, as long as the value matches the default:
 
