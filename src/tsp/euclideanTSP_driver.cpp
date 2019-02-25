@@ -1,5 +1,5 @@
 /* PGR-GNU*****************************************************************
- * File: eucledianTSP_driver.cpp
+ * File: euclideanTSP_driver.cpp
  *
  * Generated with Template by:
  * Copyright (c) 2015 pgRouting developers
@@ -28,7 +28,7 @@
  *  ******************************************************************** PGR-GNU*/
 
 
-#include "drivers/tsp/eucledianTSP_driver.h"
+#include "drivers/tsp/euclideanTSP_driver.h"
 
 #include <string.h>
 #include <sstream>
@@ -36,13 +36,13 @@
 #include <algorithm>
 
 #include "tsp/pgr_tsp.hpp"
-#include "tsp/eucledianDmatrix.h"
+#include "tsp/euclideanDmatrix.h"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 void
-do_pgr_eucledianTSP(
+do_pgr_euclideanTSP(
         Coordinate_t *coordinates_data,
         size_t total_coordinates,
         int64_t start_vid,
@@ -71,7 +71,7 @@ do_pgr_eucledianTSP(
                 coordinates_data,
                 coordinates_data + total_coordinates);
 
-        pgrouting::tsp::eucledianDmatrix costs(coordinates);
+        pgrouting::tsp::EuclideanDmatrix costs(coordinates);
 
 
         size_t idx_start = costs.has_id(start_vid) ?
@@ -96,9 +96,9 @@ do_pgr_eucledianTSP(
         }
 
 
-        log << "pgr_eucledianTSP Processing Information\n"
+        log << "Processing Information\n"
             << "Initializing tsp class --->";
-        pgrouting::tsp::TSP<pgrouting::tsp::eucledianDmatrix> tsp(costs);
+        pgrouting::tsp::TSP<pgrouting::tsp::EuclideanDmatrix> tsp(costs);
 
 
         log << " tsp.greedyInitial --->";

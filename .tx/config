@@ -67,9 +67,9 @@ file_filter = locale/<lang>/LC_MESSAGES/pgr_dijkstraCostMatrix.po
 source_file = locale/pot/pgr_dijkstraCostMatrix.pot
 source_lang = en
 
-[pgrouting.pgr_eucledianTSP]
-file_filter = locale/<lang>/LC_MESSAGES/pgr_eucledianTSP.po
-source_file = locale/pot/pgr_eucledianTSP.pot
+[pgrouting.pgr_euclideanTSP]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_euclideanTSP.po
+source_file = locale/pot/pgr_euclideanTSP.pot
 source_lang = en
 
 [pgrouting.pgr_dijkstraCost]

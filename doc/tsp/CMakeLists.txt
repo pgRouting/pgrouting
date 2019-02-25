@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    pgr_eucledianTSP.rst
+    pgr_TSPeuclidean.rst
     pgr_TSP.rst
     TSP-family.rst
     )

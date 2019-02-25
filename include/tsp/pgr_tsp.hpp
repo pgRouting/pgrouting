@@ -43,7 +43,7 @@
 
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/Dmatrix.h"
-#include "tsp/eucledianDmatrix.h"
+#include "tsp/euclideanDmatrix.h"
 #include "tsp/tour.h"
 
 

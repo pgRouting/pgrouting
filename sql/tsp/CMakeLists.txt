@@ -1,10 +1,9 @@
 
 SET(LOCAL_FILES
-    tsp_v2.0_matrix.sql
-    tsp_v2.0_coordinates.sql
-    _makeDistanceMatrix.sql
+    _TSP.sql
+    _TSPeuclidean.sql
     TSP.sql
-    eucledianTSP.sql
+    TSPeuclidean.sql
     )
 
 foreach (f ${LOCAL_FILES})

@@ -2,6 +2,10 @@
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
 
+*Fixed Issues*
+
+* [#1153 ](https://github.com/pgRouting/pgrouting/issues/1153)_: Renamed pgr_eucledianTSP to pgr_TSPeuclidean
+
 *New Experimental functions*
 
 * Prim family
@@ -96,6 +100,8 @@ pgRouting 3.0.0 Release Notes
     * pgr_maxFlowBoykovKolmogorov
     * pgr_maxFlowEdmondsKarp
     * pgr_maximumcardinalitymatching
+
+* TSP old signatures
 
 
 

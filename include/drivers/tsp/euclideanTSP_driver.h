@@ -27,8 +27,8 @@
  *
  *  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_TSP_EUCLEDIANTSP_DRIVER_H_
-#define INCLUDE_DRIVERS_TSP_EUCLEDIANTSP_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_TSP_EUCLIDEANTSP_DRIVER_H_
+#define INCLUDE_DRIVERS_TSP_EUCLIDEANTSP_DRIVER_H_
 #pragma once
 
 /* for size-t */
@@ -47,7 +47,7 @@ extern "C" {
 #endif
 
 void
-do_pgr_eucledianTSP(
+do_pgr_euclideanTSP(
         Coordinate_t *coordinates, size_t total_coordinates,
         int64_t start_vid,
         int64_t end_vid,
@@ -71,4 +71,4 @@ do_pgr_eucledianTSP(
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_TSP_EUCLEDIANTSP_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_TSP_EUCLIDEANTSP_DRIVER_H_
