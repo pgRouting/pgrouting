@@ -8,7 +8,7 @@ NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
-NOTICE:  NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
+NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
@@ -215,7 +215,7 @@ NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('mytable', 0.001, 'mygeom', 'gid', 'src', 'tgt', rows_where := 'true', clean := t)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
-NOTICE:  NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
+NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
@@ -280,6 +280,7 @@ NOTICE:                      Ring geometries: 0
 ------------------
  OK
 (1 row)
+
 -- q15.1
 -- q16
 SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom');
