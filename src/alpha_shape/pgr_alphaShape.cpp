@@ -241,7 +241,7 @@ Pgr_alphaShape::build_best_alpha() const{
         if (t.second.size() == 2) {
             border_triangles[t.first] = radius(t.first);
         } else  {
-            pgassert((t.second.size() == 3));
+            //pgassert((t.second.size() == 3));
             inner_triangles[t.first] = radius(t.first);
         }
         ++i;
