@@ -162,14 +162,22 @@ do_alphaShape(
         /*
          * returning a sequence of text
          */
-        *return_count += results.size();
-        *return_tuples = pgr_alloc(*return_count, (*return_tuples));
-        size_t row = 0;
-        for (const auto r : results) {
+        if (results.empty()) {
+            *return_count = 1;
+            *return_tuples = pgr_alloc(*return_count, (*return_tuples));
             std::stringstream ss;
-            ss << bg::wkt(r);
-            (*return_tuples)[row].geom = pgr_msg(ss.str().c_str());
-            ++row;
+            ss << "GEOMETRYCOLLECTION EMPTY";
+            (*return_tuples)[0].geom = pgr_msg(ss.str().c_str());
+        } else {
+            *return_count = results.size();
+            *return_tuples = pgr_alloc(*return_count, (*return_tuples));
+            size_t row = 0;
+            for (const auto r : results) {
+                std::stringstream ss;
+                ss << bg::wkt(r);
+                (*return_tuples)[row].geom = pgr_msg(ss.str().c_str());
+                ++row;
+            }
         }
 
 

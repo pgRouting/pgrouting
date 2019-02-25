@@ -36,7 +36,7 @@ WHERE geom IS NOT NULL;
 
 SELECT results_eq(
         'q1',
-        $$SELECT 0::BIGINT$$);
+        $$SELECT 1::BIGINT$$);
 
 SELECT test_alpha('e_test', 'geom', 0.33);
 SELECT test_alpha('e_test', 'geom', 1);
