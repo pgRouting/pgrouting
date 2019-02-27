@@ -1,7 +1,6 @@
 
 SET(LOCAL_FILES
     pgr_alphaShape.rst
-    pgr_pointsAsPolygon.rst
     )
 
 foreach (f ${LOCAL_FILES})
