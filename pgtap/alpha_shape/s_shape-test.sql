@@ -70,8 +70,8 @@ SELECT alphaShape_tester('s_test', 'geom', 41, false, 55321.5, 51);
 
 -- best alpha
 SELECT set_eq(
-    $$SELECT st_area(geom) FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test))$$,
-    $$SELECT st_area(geom) FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 0)$$
+    $$SELECT st_area(geom)::TEXT FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test))$$,
+    $$SELECT st_area(geom)::TEXT FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 0)$$
 );
 
 SELECT alphaShape_tester('s_test', 'geom', 40, false, 55321.5, 51);

@@ -166,7 +166,7 @@ do_alphaShape(
             *return_count = 1;
             *return_tuples = pgr_alloc(*return_count, (*return_tuples));
             std::stringstream ss;
-            ss << "GEOMETRYCOLLECTION EMPTY";
+            ss << "MULTIPOLYGON EMPTY";
             (*return_tuples)[0].geom = pgr_msg(ss.str().c_str());
         } else {
             *return_count = results.size();
