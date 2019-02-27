@@ -4,7 +4,7 @@
 data from
 http://www.bostongis.com/postgis_concavehull.snippet
 */
-SELECT plan(170);
+SELECT plan(167);
 
 CREATE TABLE s_test(geom geometry);
 
@@ -69,7 +69,10 @@ SELECT alphaShape_tester('s_test', 'geom', 42, false, 55321.5, 51);
 SELECT alphaShape_tester('s_test', 'geom', 41, false, 55321.5, 51);
 
 -- best alpha
-SELECT alphaShape_tester('s_test', 'geom', 0,   false, 55321.5, 51);
+SELECT set_eq(
+    $$SELECT st_area(geom) FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test))$$,
+    $$SELECT st_area(geom) FROM pgr_alphaShape1((SELECT array_agg(geom) FROM s_test), 0)$$
+);
 
 SELECT alphaShape_tester('s_test', 'geom', 40, false, 55321.5, 51);
 SELECT alphaShape_tester('s_test', 'geom', 39, false, 55321.5, 51);

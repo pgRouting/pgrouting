@@ -6,7 +6,7 @@ Benchmark tests with data from:
 https://github.com/plotly/documentation/blob/source-design-merge/_posts/python/scientific/alpha-shapes/data-ex-2d.txt
 https://plot.ly/python/alpha-shapes/
 */
-SELECT plan(150);
+SELECT plan(147);
 
 
 CREATE TABLE e_test(geom geometry);
@@ -59,7 +59,11 @@ SELECT alphaShape_tester('e_test', 'geom', 0.22969, false, 0.5178261889305, 21);
 
 
 -- best alpha
-SELECT alphaShape_tester('e_test', 'geom', 0,       false, 0.495862454676, 22);
+SELECT set_eq(
+    $$SELECT st_area(geom) FROM pgr_alphaShape1((SELECT array_agg(geom) FROM e_test))$$,
+    $$SELECT st_area(geom) FROM pgr_alphaShape1((SELECT array_agg(geom) FROM e_test), 0)$$,
+    'SHOULD BE: best alpha obtined with spoon radius 0'
+);
 
 -- best alpha range
 SELECT alphaShape_tester('e_test', 'geom', 0.22968, false, 0.495862454676, 22);
