@@ -4,7 +4,7 @@
 data from
 http://www.bostongis.com/postgis_concavehull.snippet
 */
-SELECT plan(167);
+SELECT plan(331);
 
 CREATE TABLE s_test(geom geometry);
 

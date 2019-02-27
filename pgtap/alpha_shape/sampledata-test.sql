@@ -2,7 +2,7 @@
 Test for old code VS new code results
 Data from sample data of the documentation
 */
-SELECT plan(66);
+SELECT plan(106);
 
 PREPARE q1 AS
 SELECT ST_area(geom) FROM pgr_alphaShape((SELECT array_agg(the_geom) FROM edge_table));
@@ -29,12 +29,6 @@ SELECT alphaShape_tester('edge_table', 'the_geom', 1.0, false, 9.75, 12);
 SELECT alphaShape_tester('edge_table', 'the_geom', 0.9, false, 9.75, 12);
 SELECT alphaShape_tester('edge_table', 'the_geom', 0.8, false, 8, 12);
 SELECT alphaShape_tester('edge_table', 'the_geom', 0.7, false, 1.75, 10);
-SELECT alphaShape_tester('edge_table', 'the_geom', 0.6, false, 1.75, 10);
-SELECT alphaShape_tester('edge_table', 'the_geom', 0.5, false, 0.35, 5);
-
-
--- smalllest with area
-SELECT alphaShape_tester('edge_table', 'the_geom', 0.4302, false, 0.35, 5);
 
 -- no area
 SELECT alphaShape_tester('edge_table', 'the_geom', 0.4301, true, 0, 0);

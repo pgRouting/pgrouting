@@ -6,7 +6,7 @@ Benchmark tests with data from:
 https://github.com/plotly/documentation/blob/source-design-merge/_posts/python/scientific/alpha-shapes/data-ex-2d.txt
 https://plot.ly/python/alpha-shapes/
 */
-SELECT plan(147);
+SELECT plan(291);
 
 
 CREATE TABLE e_test(geom geometry);
