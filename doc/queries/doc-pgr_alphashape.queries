@@ -6,11 +6,11 @@ SET
 SELECT count(*) FROM pgr_alphaShape(
     'SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
     FROM edge_table_vertices_pgr');
- count
--------
-     9
-(1 row)
-
+ERROR:  malformed array literal: "SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
+    FROM edge_table_vertices_pgr"
+LINE 2:     'SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(th...
+            ^
+DETAIL:  Array value must start with "{" or dimension information.
 -- q2
 SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
 FROM (
@@ -22,11 +22,7 @@ FROM (
             FROM edge_table_vertices_pgr')
         ) AS a
    ) AS foo;
- st_area
----------
-   11.75
-(1 row)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 -- q3
 ROLLBACK;
 ROLLBACK
