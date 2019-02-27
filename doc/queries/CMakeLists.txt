@@ -3,7 +3,6 @@ SET(LOCAL_FILES
     doc-johnson.queries
     doc-pgr_bdDijkstra.queries
     doc-pgr_edgeDisjointPaths.queries
-    doc-pgr_pointsAsPolygon.queries
     doc-pgr_withPoints.queries
     doc-aStarCost.queries
     doc-ksp.queries
