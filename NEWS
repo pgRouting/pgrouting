@@ -5,6 +5,7 @@ pgRouting 3.0.0 Release Notes
 *Fixed Issues*
 
 * [#1153 ](https://github.com/pgRouting/pgrouting/issues/1153)_: Renamed pgr_eucledianTSP to pgr_TSPeuclidean
+* [#1188 ](https://github.com/pgRouting/pgrouting/issues/1188)_: Removed CGAL dependency
 
 *New Experimental functions*
 
@@ -102,6 +103,8 @@ pgRouting 3.0.0 Release Notes
     * pgr_maximumcardinalitymatching
 
 * TSP old signatures
+* pgr_pointsAsPolygon
+* pgr_alphaShape old signature
 
 
 
