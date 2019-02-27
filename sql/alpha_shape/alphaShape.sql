@@ -1,8 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Copyright (c) 2006-2007 Anton A. Patrushev, Orkney, Inc.
-Copyright (c) 2005 Sylvain Pasche,
+Copyright (c) 2018 Celia Virginia Vergara Castillo
 Mail: project@pgrouting.org
 
 ------
@@ -28,33 +26,103 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------
 --------------
 
+CREATE OR REPLACE FUNCTION pgr_alphaShape(
+    geometry[], -- geometry
+    alpha FLOAT DEFAULT 0,
+    is_delauny BOOLEAN DEFAULT false,
 
-------------------
--- pgr_alphashape
-------------------
+    OUT geom geometry)
+AS
+$BODY$
 
+DECLARE
+info_query      TEXT;
+delauny_query   TEXT;
 
-/*
------------------------------------------------------------------------
--- Core function for alpha shape computation.
--- The sql should return vertex ids and x,y values. Return ordered
--- vertex ids.
------------------------------------------------------------------------
-*/
-CREATE OR REPLACE FUNCTION pgr_alphashape(
-    TEXT, -- sql (required)
-    alpha FLOAT8 DEFAULT 0,
+BEGIN
+    info_query = $$
+        foo AS (
+            SELECT id, seq, source, geom
+            FROM the_points
+            JOIN delauny_info USING (geom)
+            WHERE seq != 4
+        )
+        SELECT
+            id,
+            one.source,
+            two.source as target,
+            1 AS cost,
+            ST_X(one.geom)::FLOAT AS x1,
+            ST_Y(one.geom)::FLOAT AS y1,
+            ST_X(two.geom)::FLOAT AS x2,
+            ST_Y(two.geom)::FLOAT AS y2
+        FROM foo AS one JOIN foo as two USING(id)
+        WHERE one.source < two.source;
+        $$;
 
-    OUT x FLOAT8,
-    OUT y FLOAT8)
-    RETURNS SETOF record
-    AS 'MODULE_PATHNAME', 'alphashape'
-    LANGUAGE c VOLATILE STRICT;
+    if is_delauny THEN
+        -- TODO check the geometries are polygons
+        -- TODO check the polygons have 3 points
+        delauny_query = format($$
+            WITH
+            original_data AS (
+                SELECT unnest(%1$L::geometry[]) AS geom
+            ),
+            data AS (
+                SELECT row_number() over() AS id, geom FROM original_data
+            ),
+            delauny_info AS (
+                SELECT id,
+                (ST_DumpPoints(geom)).path[2] as seq,
+                (ST_DumpPoints(geom)).geom
+                FROM data
+            ),
+            the_unique_points AS (
+                SELECT DISTINCT(geom) FROM delauny_info
+            ),
+            the_points AS (SELECT row_number() over() AS source, geom
+                FROM the_unique_points
+            ),
+            %2$s
+            $$, $1, info_query);
 
-COMMENT ON FUNCTION pgr_alphashape(TEXT, FLOAT8)
-IS 'pgr_alphashape
+    ELSE
+    delauny_query = format($$
+        WITH
+        the_unique_points AS (
+            SELECT DISTINCT (ST_DumpPoints(ST_Union(%1$L::geometry[]))).geom
+        ),
+        the_points AS (SELECT row_number() over() AS source, geom
+            FROM the_unique_points
+        ),
+        delauny_info AS (
+            SELECT a.path[1] AS id,
+            (ST_DumpPoints(a.geom)).path[2] as seq,
+            (ST_DumpPoints(a.geom)).geom
+            FROM (
+                SELECT (ST_Dump(ST_DelaunayTriangles(ST_union(geom), 0 , 0))).*
+                FROM the_points) AS a
+        ),
+        %2$s
+        $$, $1, info_query);
+
+    END IF;
+
+    --RAISE NOTICE '%', delauny_query;
+
+    SELECT ST_Union(ST_GeomFromText(textgeom))
+    FROM _pgr_alphaShape(delauny_query, $2) INTO geom;
+
+END
+
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT
+COST 100;
+
+COMMENT ON FUNCTION pgr_alphashape(geometry[], FLOAT, BOOLEAN)
+IS 'pgr_alphaShape
 - Parameters
-	- An SQL with columns: id, x, y 
+	- An SQL with columns: geom
 - Optional Parameters
 	- alpha := 0
 - Documentation:

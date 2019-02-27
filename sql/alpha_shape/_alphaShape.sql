@@ -26,20 +26,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------
 --------------
 
-CREATE OR REPLACE FUNCTION _pgr_alphaShape1(
+CREATE OR REPLACE FUNCTION _pgr_alphaShape(
     TEXT, -- edges sql
     alpha FLOAT DEFAULT 0,
 
     OUT seq1 BIGINT,
-    --OUT polygon_id BIGINT,
     OUT textgeom TEXT)
-    --OUT x FLOAT,
-    --OUT y FLOAT)
 RETURNS SETOF record
 AS 'MODULE_PATHNAME', 'alphaShape'
 LANGUAGE c VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_alphashape1(TEXT, FLOAT)
+COMMENT ON FUNCTION _pgr_alphashape(TEXT, FLOAT)
 IS 'pgrouting internal function';
