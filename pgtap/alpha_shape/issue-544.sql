@@ -35,15 +35,15 @@ copy nodes(id,x,y) FROM stdin WITH DELIMITER '|';
 
 
 PREPARE q1 AS
-SELECT * FROM pgr_alphaShape('select * from nodes where id = 161');
+SELECT * FROM pgr_alphaShape((SELECT array_agg(ST_MakePoint(x,y)) FROM nodes where id = 161));
 -- ERROR:  Distance is too short. only 1 vertex for alpha shape calculation. alpha shape calculation needs at least 3 vertices.
 
 PREPARE q2 AS
-SELECT * FROM pgr_alphaShape('select * from nodes where id in (160,161)');
+SELECT * FROM pgr_alphaShape((SELECT array_agg(ST_MakePoint(x,y)) FROM nodes where id IN (160, 161)));
 -- ERROR:  Error computing shape: After eliminating duplicated points, less than 3 points remain!!
 
 PREPARE q3 AS
-SELECT * FROM pgr_alphaShape('select * from nodes');
+SELECT * FROM pgr_alphaShape((SELECT array_agg(ST_MakePoint(x,y)) FROM nodes));
 
 SELECT throws_ok('q1',
  'XX000','Less than 3 vertices. pgr_alphaShape needs at least 3 vertices.',
