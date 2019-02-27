@@ -11,7 +11,7 @@ $BODY$
 BEGIN
     EXECUTE format($$
     CREATE TABLE newquery AS
-    SELECT pgr_alphaShape1((SELECT array_agg(%2$I) FROM %1$I), %3$s)
+    SELECT pgr_alphaShape((SELECT array_agg(%2$I) FROM %1$I), %3$s)
     AS geom$$, _tbl, _geom, alpha);
 
     RETURN QUERY
