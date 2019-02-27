@@ -14,71 +14,115 @@ pgr_alphaShape
 
 .. rubric:: Availability
 
-* Renamed in version 2.0.0
-* Added alpha argument with default 0 (use optimal value) in version 2.1.0
-* Supported to return multiple outer/inner ring coordinates with separator row (x=NULL and y=NULL) in version 2.1.0
+* Version 3.0.0
+
+  * Breaking change
+
+* Version 2.1.0
+
+  * Added alpha argument with default 0 (use optimal value)
+  * Support to return multiple outer/inner ring
+
+* Renamed in v2.0.0
 
 Description
 -------------------------------------------------------------------------------
 
-Returns a table with (x, y) rows that describe the vertices of an alpha shape.
+Returns the polygon part of an alpha shape.
 
-.. code-block:: sql
+Characteristics
 
-	table() pgr_alphaShape(text sql [, float8 alpha]);
+* Using Delauny triangles
+* Instead of using CGAL's definition of `alpha` it use the ``spoon_radius``
 
-Parameters
+  * :math:`spoon\_radius = \sqrt alpha`
+
+* A Triangle area is considered part of the alpha shape when :math:`circumcenter\ radius < spoon\_radius`
+* Input are an array of geometries or one geometry
+* Returns a geometry
+* When the total number of points is less than 3, returns a MULTYPOLYGON EMPTY geometry
+* Result variable name is ``geom``
+
+
+Signatures
 -------------------------------------------------------------------------------
+.. rubric:: Summary
 
-:sql: ``text`` a SQL query, which should return a set of rows with the following columns:
+.. code-block:: none
 
-    .. code-block:: sql
+   pgr_alphaShape(geometry[], [spoon_radius])
+   pgr_alphaShape(geometry,   [spoon_radius])
+   RETURNS geom OR MULTYPOLYGON EMPTY
 
-        SELECT id, x, y FROM vertex_table
+.. index::
+    single: alphaShape(geometry[])
 
-    :id: ``int4`` identifier of the vertex
-    :x: ``float8`` x-coordinate
-    :y: ``float8`` y-coordinate
+Array of Geometries
+...............................................................................
 
-:alpha: (optional) ``float8`` alpha value. If specified alpha value equals 0 (default), then optimal alpha value is used.
+.. code-block:: none
 
-Returns a vertex record for each row:
+   pgr_alphaShape(geometry[], [spoon_radius])
+   RETURNS MULTIPOLYGON OR POLYGON
+   OR MULTYPOLYGON EMPTY
 
-:x: x-coordinate
-:y: y-coordinate
-
-If a result includes multiple outer/inner rings, return those with separator row (x=NULL and y=NULL).
-
-Additional Examples
--------------------------------------------------------------------------------
-PgRouting's alpha shape implementation has no way to control the order of the output points, so the actual output might different for the same input data.
-The first query, has the output ordered, he second query shows an example usage:
-
-.. rubric:: Example: the (ordered) results
+.. rubric:: Example: grouping the geometries in an array
 
 .. literalinclude:: doc-pgr_alphashape.queries
    :start-after: -- q1
    :end-before: -- q2
 
-.. rubric:: Example: calculating the area
+.. index::
+    single: alphaShape(geometry)
 
-Steps:
+Single Geometry
+...............................................................................
 
-- Calculates the alpha shape
-    - the :code:`ORDER BY` clause is not used.
-- constructs a polygon
-- and computes the area
+.. code-block:: none
+
+   pgr_alphaShape(geometry, [spoon_radius])
+   RETURNS MULTIPOLYGON OR POLYGON
+   OR MULTYPOLYGON EMPTY
+
+.. rubric:: Example: passing a geometry collection with spoon radius 1.5 using the return variable name
 
 .. literalinclude:: doc-pgr_alphashape.queries
    :start-after: -- q2
    :end-before: -- q3
 
-The queries use the :doc:`sampledata` network.
+
+Parameters
+-------------------------------------------------------------------------------
+
+================= ================== ======== =================================================
+Parameter         Type               Default     Description
+================= ================== ======== =================================================
+**geometries**    ``geometry[]``              Array of geometries with at least :math:`3` points
+**geometry**      ``geometry``                Geometry with at least :math:`3` points
+**spoon_radius**  ``FLOAT``                   The radius of the spoon
+================= ================== ======== =================================================
+
+Return Value
+-------------------------------------------------------------------------------
+
+=================== ========================
+Kind of geometry    Description
+=================== ========================
+POLYGON             When there is only one polygon is in the alpha shape
+MULTIPOLYGON        When more than one polygon is in the alpha shape
+MULTIPOLYGON EMPTY  When less than 3 points were given
+=================== ========================
+
+
+
+
 
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`pgr_drivingDistance` - Driving Distance
+* :doc:`pgr_drivingDistance`
+* :doc:`sampledata` network.
+* `ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__
 
 .. rubric:: Indices and tables
 
