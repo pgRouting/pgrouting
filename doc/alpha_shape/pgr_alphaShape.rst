@@ -10,13 +10,13 @@
 pgr_alphaShape
 ===============================================================================
 
-``pgr_alphaShape`` — Core function for alpha shape computation.
+``pgr_alphaShape`` — Polygon part of an alpha shape.
 
 .. rubric:: Availability
 
 * Version 3.0.0
 
-  * Breaking change
+  * Breaking change on signature
 
 * Version 2.1.0
 
@@ -32,13 +32,13 @@ Returns the polygon part of an alpha shape.
 
 Characteristics
 
+* Input can be *array of geometries* or a single *geometry*
 * Using Delauny triangles
 * Instead of using CGAL's definition of `alpha` it use the ``spoon_radius``
 
   * :math:`spoon\_radius = \sqrt alpha`
 
 * A Triangle area is considered part of the alpha shape when :math:`circumcenter\ radius < spoon\_radius`
-* Input are an array of geometries or one geometry
 * Returns a geometry
 * When the total number of points is less than 3, returns a MULTYPOLYGON EMPTY geometry
 * Result variable name is ``geom``
@@ -84,7 +84,7 @@ Single Geometry
    RETURNS MULTIPOLYGON OR POLYGON
    OR MULTYPOLYGON EMPTY
 
-.. rubric:: Example: passing a geometry collection with spoon radius 1.5 using the return variable name
+.. rubric:: Example: passing a geometry collection with spoon radius :math:`1.5` using the return variable ``geom``
 
 .. literalinclude:: doc-pgr_alphashape.queries
    :start-after: -- q2
