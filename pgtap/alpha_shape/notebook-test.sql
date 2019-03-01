@@ -28,34 +28,34 @@ SELECT results_eq('SELECT count(*) FROM (SELECT (ST_DumpPoints(geom)).geom FROM 
 
 
 -- several alpha values that give the concave hull
-SELECT alphaShape_tester('e_test', 'geom', 100, false, 0.66339515423, 10);
-SELECT alphaShape_tester('e_test', 'geom', 4,   false, 0.66339515423, 10);
-SELECT alphaShape_tester('e_test', 'geom', 3.2, false, 0.66339515423, 10);
-SELECT alphaShape_tester('e_test', 'geom', 3.16, false, 0.66339515423, 10);
-SELECT alphaShape_tester('e_test', 'geom', 3.151, false, 0.66339515423, 10);
-SELECT alphaShape_tester('e_test', 'geom', 3.1504, false, 0.66339515423, 10);
-SELECT alphaShape_tester('e_test', 'geom', 3.15036, false, 0.66339515423, 10);
-SELECT alphaShape_tester('e_test', 'geom', 3.15035, false, 0.66339515423, 10);
+SELECT alphaShape_tester('e_test', 'geom', 100, false, 0.66339515423, 18);
+SELECT alphaShape_tester('e_test', 'geom', 4,   false, 0.66339515423, 18);
+SELECT alphaShape_tester('e_test', 'geom', 3.2, false, 0.66339515423, 18);
+SELECT alphaShape_tester('e_test', 'geom', 3.16, false, 0.66339515423, 18);
+SELECT alphaShape_tester('e_test', 'geom', 3.151, false, 0.66339515423, 18);
+SELECT alphaShape_tester('e_test', 'geom', 3.1504, false, 0.66339515423, 18);
+SELECT alphaShape_tester('e_test', 'geom', 3.15036, false, 0.66339515423, 18);
+SELECT alphaShape_tester('e_test', 'geom', 3.15035, false, 0.66339515423, 18);
 -- end of concave hull
-SELECT alphaShape_tester('e_test', 'geom', 3.15034, false, 0.6608269921575, 11);
-SELECT alphaShape_tester('e_test', 'geom', 3.1503, false, 0.6608269921575, 11);
-SELECT alphaShape_tester('e_test', 'geom', 3.150, false, 0.6608269921575, 11);
-SELECT alphaShape_tester('e_test', 'geom', 3.15, false, 0.6608269921575, 11);
-SELECT alphaShape_tester('e_test', 'geom', 3.1, false, 0.6608269921575, 11);
+SELECT alphaShape_tester('e_test', 'geom', 3.15034, false, 0.6608269921575, 19);
+SELECT alphaShape_tester('e_test', 'geom', 3.1503, false, 0.6608269921575, 19);
+SELECT alphaShape_tester('e_test', 'geom', 3.150, false, 0.6608269921575, 19);
+SELECT alphaShape_tester('e_test', 'geom', 3.15, false, 0.6608269921575, 19);
+SELECT alphaShape_tester('e_test', 'geom', 3.1, false, 0.6608269921575, 19);
 -- several alpha values
-SELECT alphaShape_tester('e_test', 'geom', 3,   false, 0.6608269921575, 11);
-SELECT alphaShape_tester('e_test', 'geom', 2,   false, 0.6608269921575, 11);
-SELECT alphaShape_tester('e_test', 'geom', 1,   false, 0.6608269921575, 11);
-SELECT alphaShape_tester('e_test', 'geom', 0.5, false, 0.6553009782815, 12);
-SELECT alphaShape_tester('e_test', 'geom', 0.4, false, 0.6460244460635, 13);
-SELECT alphaShape_tester('e_test', 'geom', 0.3, false, 0.6405578500125, 14);
+SELECT alphaShape_tester('e_test', 'geom', 3,   false, 0.6608269921575, 19);
+SELECT alphaShape_tester('e_test', 'geom', 2,   false, 0.6608269921575, 19);
+SELECT alphaShape_tester('e_test', 'geom', 1,   false, 0.6608269921575, 19);
+SELECT alphaShape_tester('e_test', 'geom', 0.5, false, 0.6553009782815, 20);
+SELECT alphaShape_tester('e_test', 'geom', 0.4, false, 0.6460244460635, 21);
+SELECT alphaShape_tester('e_test', 'geom', 0.3, false, 0.6405578500125, 22);
 -- near best alpha
-SELECT alphaShape_tester('e_test', 'geom', 0.25, false, 0.6405578500125, 14);
-SELECT alphaShape_tester('e_test', 'geom', 0.24, false, 0.5375455501905, 20);
-SELECT alphaShape_tester('e_test', 'geom', 0.23, false, 0.5178261889305, 21);
+SELECT alphaShape_tester('e_test', 'geom', 0.25, false, 0.6405578500125, 22);
+SELECT alphaShape_tester('e_test', 'geom', 0.24, false, 0.5375455501905, 25);
+SELECT alphaShape_tester('e_test', 'geom', 0.23, false, 0.5178261889305, 26);
 
 -- several alpha values near best alpha
-SELECT alphaShape_tester('e_test', 'geom', 0.22969, false, 0.5178261889305, 21);
+SELECT alphaShape_tester('e_test', 'geom', 0.22969, false, 0.5178261889305, 26);
 
 
 SELECT todo_start('With postgres 9.4 sometimes gives another result');
@@ -68,15 +68,15 @@ SELECT set_eq(
 SELECT todo_end();
 
 -- best alpha range
-SELECT alphaShape_tester('e_test', 'geom', 0.22968, false, 0.495862454676, 22);
-SELECT alphaShape_tester('e_test', 'geom', 0.22214, false, 0.495862454676, 22);
+SELECT alphaShape_tester('e_test', 'geom', 0.22968, false, 0.495862454676, 27);
+SELECT alphaShape_tester('e_test', 'geom', 0.22214, false, 0.495862454676, 27);
 
 -- several alpha values near best alpha
-SELECT alphaShape_tester('e_test', 'geom', 0.2221, false, 0.433826261046, 26);
-SELECT alphaShape_tester('e_test', 'geom', 0.222,  false, 0.433826261046, 26);
-SELECT alphaShape_tester('e_test', 'geom', 0.22,   false, 0.433826261046, 26);
+SELECT alphaShape_tester('e_test', 'geom', 0.2221, false, 0.433826261046, 31);
+SELECT alphaShape_tester('e_test', 'geom', 0.222,  false, 0.433826261046, 31);
+SELECT alphaShape_tester('e_test', 'geom', 0.22,   false, 0.433826261046, 31);
 
-SELECT alphaShape_tester('e_test', 'geom', 0.20, false, 0.3639712121535, 26);
+SELECT alphaShape_tester('e_test', 'geom', 0.20, false, 0.3639712121535, 31);
 SELECT alphaShape_tester('e_test', 'geom', 0.1, false, 0.0662883570555, 26);
 
 SELECT alphaShape_tester('e_test', 'geom', 0.05, false, 0.002885695472, 4);

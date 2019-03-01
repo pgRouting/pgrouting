@@ -39,19 +39,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/bpoint.hpp"
 #include "cpp_common/bline.hpp"
 
-static bool
-data_less(const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs){
+namespace {
+bool
+data_eq(const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs, int64_t round){
     return
-        std::floor(lhs.x1 *  1000000000) < std::floor(rhs.y1 * 1000000000) ?
-            true : std::floor(lhs.y1 *  1000000000) < std::floor(rhs.y1 * 1000000000);
+        std::floor(lhs.x1 * static_cast<double>(round)) == std::floor(rhs.x1 * static_cast<double>(round))
+        &&
+        std::floor(lhs.y1 * static_cast<double>(round)) == std::floor(rhs.y1 * static_cast<double>(round));
 }
 
-static bool
-data_eq(const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs){
-    return
-        std::floor(lhs.x1 *  1000000000) == std::floor(rhs.x1 * 1000000000)
-        &&
-        std::floor(lhs.y1 *  1000000000) == std::floor(rhs.y1 * 1000000000);
 }
 
 void
@@ -74,7 +70,7 @@ do_alphaShape(
         pgassert(edgesArr);
         pgassert(edgesSize > 2);
         pgassert(*return_count == 0);
-        const int64_t round = 1000000000;
+        const int64_t round = 100000000000000;
 
         std::vector<Pgr_edge_xy_t> edges(edgesArr, edgesArr + edgesSize);
         /*
@@ -105,7 +101,7 @@ do_alphaShape(
         int64_t source_id(0);
         auto prev = edges.front();
         for (auto &e : edges) {
-            if (data_eq(e, prev)) {
+            if (data_eq(e, prev, round)) {
                 e.source = source_id;
             } else {
                 e.source = ++source_id;

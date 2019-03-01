@@ -110,7 +110,7 @@ get_predecessors(V source, V target,  const B_G &subg) {
 
 template <typename B_G, typename V>
 Bpoly
-get_polygon(V source, V target, const std::vector<V> & predecessors, const B_G &graph) {
+get_polygon(V source, V target, const std::vector<V> & predecessors, const B_G &graph, std::set<E> &edges_used) {
         Bpoly polygon;
         /*
          * There is no path -> returning empty polygon
@@ -130,6 +130,7 @@ get_polygon(V source, V target, const std::vector<V> & predecessors, const B_G &
          */
         while (target != source || target != predecessors[target]) {
             bg::append(polygon.outer(), graph[target].point);
+            edges_used.insert(boost::edge(predecessors[target], target ,graph).first);
             target = predecessors[target];
         }
         bg::correct(polygon);
@@ -380,12 +381,19 @@ Pgr_alphaShape::operator() (double alpha) const {
             border_edges.edges.erase(first_edge);
 
             Subgraph subg(graph.graph, border_edges, {});
+
             auto source = boost::source(first_edge, subg);
             auto target = boost::target(first_edge, subg);
 
 
             auto predecessors = get_predecessors(source, target, subg);
-            auto poly = get_polygon(source, target, predecessors, subg);
+            std::set<E> edges_used;
+            auto poly = get_polygon(source, target, predecessors, subg, edges_used);
+
+            for (const auto &e : edges_used) {
+                border_edges.edges.erase(e);
+            }
+
             pgassert(bg::num_points(poly) >= 3 || bg::num_points(poly) == 0);
 
             if (bg::num_points(poly) == 0) continue;

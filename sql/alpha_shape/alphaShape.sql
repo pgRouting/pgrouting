@@ -38,6 +38,7 @@ $BODY$
 DECLARE
 info_query      TEXT;
 delauny_query   TEXT;
+results RECORD;
 
 BEGIN
     info_query = $$
@@ -126,11 +127,31 @@ BEGIN
 
     END IF;
 
+    /*
+    FOR results IN SELECT textgeom
+        FROM _pgr_alphaShape(delauny_query, $2)
+        WHERE NOT ST_isValid(ST_GeomFromText(textgeom))
+    LOOP
+        RAISE WARNING '%', results.textgeom;
+    END LOOP;
+
+    FOR results IN WITH a AS (SELECT 'GEOMETRYCOLLECTION(' || string_agg(textgeom,',') || ')' as geome
+        FROM _pgr_alphaShape(delauny_query, $2))
+        SELECT geome FROM a
+        WHERE ST_isValid(ST_GeomFromText(geome))
+    LOOP
+        RAISE WARNING '%', results.geome;
+    END LOOP;
+    */
+
+
     --RAISE NOTICE '%', delauny_query;
     -- RETURN;
 
-    SELECT ST_Collect(ST_GeomFromText(textgeom))
-    FROM _pgr_alphaShape(delauny_query, $2) INTO geom;
+    WITH a AS (SELECT 'GEOMETRYCOLLECTION(' || string_agg(textgeom,',') || ')' as geome
+        FROM _pgr_alphaShape(delauny_query, $2))
+    SELECT ST_GeomFromText(geome) FROM a
+    INTO geom;
 
 END
 
@@ -252,8 +273,10 @@ BEGIN
     --RAISE NOTICE '%', delauny_query;
     -- RETURN;
 
-    SELECT ST_Collect(ST_GeomFromText(textgeom))
-    FROM _pgr_alphaShape(delauny_query, $2) INTO geom;
+    WITH a AS (SELECT 'GEOMETRYCOLLECTION(' || string_agg(textgeom,',') || ')' as geome
+        FROM _pgr_alphaShape(delauny_query, $2))
+    SELECT ST_GeomFromText(geome) FROM a
+    INTO geom;
 
 END
 
