@@ -30,7 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_alphaShape(
     geometry, -- geometry
     alpha FLOAT DEFAULT 0,
-    is_delauny BOOLEAN DEFAULT false,
 
     OUT geom geometry)
 AS
@@ -41,76 +40,10 @@ info_query      TEXT;
 delauny_query   TEXT;
 
 BEGIN
-    info_query = $$
-        SELECT
-            id,
-            seq AS source,
-            -1  AS target,
-            1 AS cost,
-            ST_X(geom)::FLOAT AS x1,
-            ST_Y(geom)::FLOAT AS y1,
-            0::FLOAT AS x2,
-            0::FLOAT AS y2
-        FROM delauny_info WHERE seq != 4;
-
-        $$;
-        /*
-        foo AS (
-            SELECT id, seq, source, geom
-            FROM the_points
-            JOIN delauny_info USING (geom)
-            WHERE seq != 4
-        )
-        SELECT
-            id,
-            one.source,
-            two.source as target,
-            1 AS cost,
-            ST_X(one.geom)::FLOAT AS x1,
-            ST_Y(one.geom)::FLOAT AS y1,
-            ST_X(two.geom)::FLOAT AS x2,
-            ST_Y(two.geom)::FLOAT AS y2
-        FROM foo AS one JOIN foo as two USING(id)
-        WHERE one.source < two.source;
-*/
-    if is_delauny THEN
-        -- TODO check the geometries are polygons
-        -- TODO check the polygons have 3 points
-        delauny_query = format($$
-            WITH
-            original_data AS (
-                SELECT unnest(%1$L::geometry[]) AS geom
-            ),
-            data AS (
-                SELECT row_number() over() AS id, geom FROM original_data
-            ),
-            delauny_info AS (
-                SELECT id,
-                (ST_DumpPoints(geom)).path[2] as seq,
-                (ST_DumpPoints(geom)).geom
-                FROM data
-            ),
-            the_unique_points AS (
-                SELECT DISTINCT(geom) FROM delauny_info
-            ),
-            the_points AS (SELECT row_number() over() AS source, geom
-                FROM the_unique_points
-            ),
-            %2$s
-            $$, $1, info_query);
-
-    ELSE
-            --SELECT DISTINCT (ST_DumpPoints(ST_Collect(%1$L::geometry[]))).geom
     delauny_query = format($$
         WITH
         original AS (
             SELECT %1$L::geometry AS geom
-        ),
-        the_unique_points AS (
-            SELECT DISTINCT (ST_DumpPoints(geom)).geom FROM original
-        ),
-        the_points AS (SELECT row_number() over() AS source, geom
-            FROM the_unique_points
         ),
         delauny AS (
             SELECT (ST_Dump(ST_DelaunayTriangles(geom, 0 , 0))).*
@@ -122,6 +55,17 @@ BEGIN
             (ST_DumpPoints(delauny.geom)).geom
             FROM delauny
         )
+        SELECT
+            id,
+            seq AS source,
+            -1  AS target,
+            1 AS cost,
+            ST_X(geom)::FLOAT AS x1,
+            ST_Y(geom)::FLOAT AS y1,
+            0::FLOAT AS x2,
+            0::FLOAT AS y2
+        FROM delauny_info WHERE seq != 4;
+        $$;
         %2$s
         $$, $1, info_query);
 
