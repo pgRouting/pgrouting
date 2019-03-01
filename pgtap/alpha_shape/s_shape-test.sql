@@ -4,7 +4,7 @@
 data from
 http://www.bostongis.com/postgis_concavehull.snippet
 */
-SELECT plan(331);
+SELECT plan(167);
 
 CREATE TABLE s_test(geom geometry);
 
@@ -71,8 +71,8 @@ SELECT alphaShape_tester('s_test', 'geom', 41, false, 55321.5, 51);
 SELECT todo_start('With postgres 9.4 sometimes gives another result');
 -- best alpha
 SELECT set_eq(
-    $$SELECT st_area(geom)::TEXT FROM pgr_alphaShape((SELECT array_agg(geom) FROM s_test))$$,
-    $$SELECT st_area(geom)::TEXT FROM pgr_alphaShape((SELECT array_agg(geom) FROM s_test), 0)$$
+    $$SELECT st_area(geom)::TEXT FROM pgr_alphaShape((SELECT ST_Collect(geom) FROM s_test))$$,
+    $$SELECT st_area(geom)::TEXT FROM pgr_alphaShape((SELECT ST_Collect(geom) FROM s_test), 0)$$
 );
 SELECT todo_end();
 

@@ -2,13 +2,13 @@
 Test for old code VS new code results
 Data from sample data of the documentation
 */
-SELECT plan(106);
+SELECT plan(54);
 
 PREPARE q1 AS
-SELECT ST_area(geom) FROM pgr_alphaShape((SELECT array_agg(the_geom) FROM edge_table));
+SELECT ST_area(geom) FROM pgr_alphaShape((SELECT ST_Collect(the_geom) FROM edge_table));
 
 PREPARE q2 AS
-SELECT ST_area(geom) FROM pgr_alphaShape((SELECT array_agg(the_geom) FROM edge_table), 1.582);
+SELECT ST_area(geom) FROM pgr_alphaShape((SELECT ST_Collect(the_geom) FROM edge_table), 1.582);
 
 SELECT set_eq('q1', $$SELECT 11.75$$, 'Shall have the expected area');
 SELECT set_eq('q1', 'q2', '1.582 shall be the best spoon raidus');

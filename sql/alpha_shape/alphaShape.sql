@@ -65,11 +65,7 @@ BEGIN
             0::FLOAT AS x2,
             0::FLOAT AS y2
         FROM delauny_info WHERE seq != 4;
-        $$;
-        %2$s
-        $$, $1, info_query);
-
-    END IF;
+        $$, $1);
 
     --RAISE NOTICE '%', delauny_query;
     -- RETURN;
@@ -85,7 +81,7 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT
 COST 100;
 
-COMMENT ON FUNCTION pgr_alphashape(geometry, FLOAT, BOOLEAN)
+COMMENT ON FUNCTION pgr_alphashape(geometry, FLOAT)
 IS 'pgr_alphaShape
 - Parameters
 	- An SQL with columns: geom

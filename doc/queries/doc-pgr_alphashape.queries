@@ -3,19 +3,12 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT ST_Npoints(pgr_alphaShape((SELECT array_agg(the_geom) FROM edge_table_vertices_pgr)));
- st_npoints
-------------
-          9
-(1 row)
-
--- q2
 SELECT ST_Area(geom) FROM pgr_alphaShape((SELECT ST_Collect(the_geom) FROM edge_table_vertices_pgr), 1.5);
  st_area
 ---------
     9.75
 (1 row)
 
--- q3
+-- q2
 ROLLBACK;
 ROLLBACK

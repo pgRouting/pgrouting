@@ -18,9 +18,9 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-    params = ARRAY[$$(SELECT array_agg(the_geom) FROM edge_table_vertices_pgr)$$]::TEXT[];
+    params = ARRAY[$$(SELECT ST_Collect(the_geom) FROM edge_table_vertices_pgr)$$]::TEXT[];
     subs = ARRAY[
-    'NULL::geometry[]'
+    'NULL::geometry'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_alphashape', params, subs);
