@@ -273,7 +273,7 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     info.name);
     }
 /* TODO(vicky) Remove unused code */
-#if 1
+#if 0
     PGR_DBG("Variable: %s Value: %.20f", info.name, value);
 #endif
     return value;

@@ -40,7 +40,21 @@ info_query      TEXT;
 delauny_query   TEXT;
 
 BEGIN
+    SET client_min_messages TO DEBUG3;
     info_query = $$
+        SELECT
+            id,
+            seq AS source,
+            -1  AS target,
+            1 AS cost,
+            ST_X(geom)::FLOAT AS x1,
+            ST_Y(geom)::FLOAT AS y1,
+            0::FLOAT AS x2,
+            0::FLOAT AS y2
+        FROM delauny_info WHERE seq != 4;
+
+        $$;
+        /*
         foo AS (
             SELECT id, seq, source, geom
             FROM the_points
@@ -58,8 +72,7 @@ BEGIN
             ST_Y(two.geom)::FLOAT AS y2
         FROM foo AS one JOIN foo as two USING(id)
         WHERE one.source < two.source;
-        $$;
-
+*/
     if is_delauny THEN
         -- TODO check the geometries are polygons
         -- TODO check the polygons have 3 points
@@ -87,30 +100,37 @@ BEGIN
             $$, $1, info_query);
 
     ELSE
+            --SELECT DISTINCT (ST_DumpPoints(ST_Collect(%1$L::geometry[]))).geom
     delauny_query = format($$
         WITH
+        original AS (
+            SELECT ST_Collect((SELECT array_agg(geom) FROM issue235)::geometry[]) AS geom
+        ),
         the_unique_points AS (
-            SELECT DISTINCT (ST_DumpPoints(ST_Union(%1$L::geometry[]))).geom
+            SELECT DISTINCT (ST_DumpPoints(geom)).geom FROM original
         ),
         the_points AS (SELECT row_number() over() AS source, geom
             FROM the_unique_points
         ),
-        delauny_info AS (
-            SELECT a.path[1] AS id,
-            (ST_DumpPoints(a.geom)).path[2] as seq,
-            (ST_DumpPoints(a.geom)).geom
-            FROM (
-                SELECT (ST_Dump(ST_DelaunayTriangles(ST_union(geom), 0 , 0))).*
-                FROM the_points) AS a
+        delauny AS (
+            SELECT (ST_Dump(ST_DelaunayTriangles(geom, 0 , 0))).*
+                FROM original
         ),
+        delauny_info AS (
+            SELECT delauny.path[1] AS id,
+            (ST_DumpPoints(delauny.geom)).path[2] as seq,
+            (ST_DumpPoints(delauny.geom)).geom
+            FROM delauny
+        )
         %2$s
         $$, $1, info_query);
 
     END IF;
 
-    --RAISE NOTICE '%', delauny_query;
+    RAISE NOTICE '%', delauny_query;
+    -- RETURN;
 
-    SELECT ST_Union(ST_GeomFromText(textgeom))
+    SELECT ST_Collect(ST_GeomFromText(textgeom))
     FROM _pgr_alphaShape1(delauny_query, $2) INTO geom;
 
 END

@@ -39,6 +39,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/bpoint.hpp"
 #include "cpp_common/bline.hpp"
 
+static bool
+data_less(const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs){
+    return
+        std::floor(lhs.x1 *  1000000000) < std::floor(rhs.y1 * 1000000000) ?
+            true : std::floor(lhs.y1 *  1000000000) < std::floor(rhs.y1 * 1000000000);
+}
+
+static bool
+data_eq(const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs){
+    return
+        std::floor(lhs.x1 *  1000000000) == std::floor(rhs.x1 * 1000000000)
+        &&
+        std::floor(lhs.y1 *  1000000000) == std::floor(rhs.y1 * 1000000000);
+}
+
 void
 do_alphaShape(
         Pgr_edge_xy_t *edgesArr,
@@ -59,8 +74,84 @@ do_alphaShape(
         pgassert(edgesArr);
         pgassert(edgesSize > 2);
         pgassert(*return_count == 0);
+        const int64_t round = 1000000000;
 
         std::vector<Pgr_edge_xy_t> edges(edgesArr, edgesArr + edgesSize);
+        /*
+          id   | source | target | cost |     x1     |     y1     | x2 | y2
+        -------+--------+--------+------+------------+------------+----+----
+             1 |      1 |     -1 |    1 | 29.1296668 | 40.9434941 |  0 |  0
+             1 |      2 |     -1 |    1 | 29.1267903 | 40.9343215 |  0 |  0
+             1 |      3 |     -1 |    1 | 29.1296615 |  40.943359 |  0 |  0
+             sort based on y1
+             stable sort on x1
+
+
+        */
+        std::sort(edges.begin(),edges.end(),
+                [&round](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
+            return
+                std::floor(lhs.y1 * round) < std::floor(rhs.y1 * round);
+        });
+        std::stable_sort(edges.begin(),edges.end(),
+                [&round](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
+            return
+                std::floor(lhs.x1 * round) < std::floor(rhs.x1 * round);
+        });
+        log << "ending sort";
+
+
+
+        int64_t source_id(0);
+        auto prev = edges.front();
+        for (auto &e : edges) {
+            if (data_eq(e, prev)) {
+                e.source = source_id;
+            } else {
+                e.source = ++source_id;
+                prev = e;
+            }
+        }
+        std::stable_sort(edges.begin(),edges.end(),
+                [](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
+            return
+                lhs.id < rhs.id;
+        });
+
+        /*
+         * Vertices of triangle a, b, c
+         */
+        Pgr_edge_xy_t *a(nullptr);
+        Pgr_edge_xy_t *b(nullptr);
+        size_t count(0);
+        for (auto &c : edges) {
+            if (count == 0) {
+                a = &c;
+                ++count;
+                continue;
+            }
+            if (count == 1) {
+                b = &c;
+                pgassert(a->id == b->id);
+                ++count;
+                continue;
+            }
+            pgassert(a->id == b->id);
+            pgassert(a->id == c.id);
+
+            a->target = b->source;
+            a->x2 = b->x1;
+            a->y2 = b->y1;
+
+            b->target = c.source;
+            b->x2 = c.x1;
+            b->y2 = c.y1;
+
+            c.target = a->source;
+            c.x2 = a->x1;
+            c.y2 = a->y1;
+            count = 0;
+        }
 
         using Pgr_alphaShape = pgrouting::alphashape::Pgr_alphaShape;
         Pgr_alphaShape alphaShape(edges);
