@@ -397,11 +397,6 @@ Pgr_alphaShape::operator() (double alpha) const {
             pgassert(bg::num_points(poly) >= 3 || bg::num_points(poly) == 0);
 
             if (bg::num_points(poly) == 0) continue;
-            /*
-             * TODO(vicky) possible way to speed up is:
-             * get the edges that are part of the path and
-             * remove from border_edges.edges
-             */
 
             /*
              * A polygon must have at least 3 vertices
