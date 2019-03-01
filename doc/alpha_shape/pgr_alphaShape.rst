@@ -32,15 +32,14 @@ Returns the polygon part of an alpha shape.
 
 Characteristics
 
-* Input can be *array of geometries* or a single *geometry*
-* Using Delauny triangles
+* Input is a *geometry* and returns a *geometry*
+* Uses PostGis ST_DelaunyTriangles
 * Instead of using CGAL's definition of `alpha` it use the ``spoon_radius``
 
   * :math:`spoon\_radius = \sqrt alpha`
 
 * A Triangle area is considered part of the alpha shape when :math:`circumcenter\ radius < spoon\_radius`
-* Returns a geometry
-* When the total number of points is less than 3, returns a MULTYPOLYGON EMPTY geometry
+* When the total number of points is less than 3, returns an EMPTY geometry
 * Result variable name is ``geom``
 
 
@@ -48,47 +47,20 @@ Signatures
 -------------------------------------------------------------------------------
 .. rubric:: Summary
 
-.. code-block:: none
-
-   pgr_alphaShape(geometry[], [spoon_radius])
-   pgr_alphaShape(geometry,   [spoon_radius])
-   RETURNS geom OR MULTYPOLYGON EMPTY
-
-.. index::
-    single: alphaShape(geometry[])
-
-Array of Geometries
-...............................................................................
-
-.. code-block:: none
-
-   pgr_alphaShape(geometry[], [spoon_radius])
-   RETURNS MULTIPOLYGON OR POLYGON
-   OR MULTYPOLYGON EMPTY
-
-.. rubric:: Example: grouping the geometries in an array
-
-.. literalinclude:: doc-pgr_alphashape.queries
-   :start-after: -- q1
-   :end-before: -- q2
-
 .. index::
     single: alphaShape(geometry)
 
-Single Geometry
-...............................................................................
-
 .. code-block:: none
 
-   pgr_alphaShape(geometry, [spoon_radius])
-   RETURNS MULTIPOLYGON OR POLYGON
-   OR MULTYPOLYGON EMPTY
+   pgr_alphaShape(geometry,   [spoon_radius])
+   RETURNS geometry
+
 
 .. rubric:: Example: passing a geometry collection with spoon radius :math:`1.5` using the return variable ``geom``
 
 .. literalinclude:: doc-pgr_alphashape.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 
 Parameters
@@ -97,7 +69,6 @@ Parameters
 ================= ================== ======== =================================================
 Parameter         Type               Default     Description
 ================= ================== ======== =================================================
-**geometries**    ``geometry[]``              Array of geometries with at least :math:`3` points
 **geometry**      ``geometry``                Geometry with at least :math:`3` points
 **spoon_radius**  ``FLOAT``                   The radius of the spoon
 ================= ================== ======== =================================================
@@ -105,13 +76,11 @@ Parameter         Type               Default     Description
 Return Value
 -------------------------------------------------------------------------------
 
-=================== ========================
-Kind of geometry    Description
-=================== ========================
-POLYGON             When there is only one polygon is in the alpha shape
-MULTIPOLYGON        When more than one polygon is in the alpha shape
-MULTIPOLYGON EMPTY  When less than 3 points were given
-=================== ========================
+==================== ========================
+Kind of geometry     Description
+==================== ========================
+GEOMETRY COLLECTION  A Geometry collection of Polygons
+==================== ========================
 
 
 

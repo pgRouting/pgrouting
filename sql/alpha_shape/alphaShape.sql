@@ -29,14 +29,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION pgr_alphaShape(
     geometry, -- geometry
-    alpha FLOAT DEFAULT 0,
-
-    OUT geom geometry)
-AS
+    alpha FLOAT DEFAULT 0
+)
+RETURNS geometry AS
 $BODY$
 
 DECLARE
-info_query      TEXT;
+geom      geometry;
 delauny_query   TEXT;
 
 BEGIN
@@ -74,6 +73,7 @@ BEGIN
         FROM _pgr_alphaShape(delauny_query, $2))
     SELECT ST_GeomFromText(geome) FROM a
     INTO geom;
+    RETURN geom;
 
 END
 
