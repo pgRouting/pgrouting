@@ -53,7 +53,6 @@ static
 std::vector<pgr_components_rt>
 pgr_strongComponents(
         G &graph) {
-    std::vector<pgr_components_rt> results;
     Pgr_components< G > fn_components;
     return fn_components.strongComponents(graph);
 }

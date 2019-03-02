@@ -643,8 +643,6 @@ class Pgr_dijkstra {
              G &graph,
              const std::vector< int64_t > start_vertex,
              double distance) {
-         std::deque< std::vector< V > > pred;
-         std::deque< std::vector< double > > dist;
 
          // perform the algorithm
          std::deque<Path> paths;

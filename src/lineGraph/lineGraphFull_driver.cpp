@@ -80,7 +80,6 @@ do_pgr_lineGraphFull(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector< Line_graph_full_rt > results;
         graphType gType = DIRECTED;
 
         pgrouting::DirectedGraph digraph(gType);

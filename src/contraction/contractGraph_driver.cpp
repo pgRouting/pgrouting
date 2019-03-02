@@ -196,7 +196,6 @@ do_pgr_contractGraph(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        std::ostringstream debug;
         /*
          * Converting to C++ structures
          */

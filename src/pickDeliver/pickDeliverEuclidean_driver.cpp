@@ -70,8 +70,7 @@ do_pgr_pickDeliverEuclidean(
     std::ostringstream notice;
     std::ostringstream err;
     try {
-        std::ostringstream tmp_log;
-        *return_tuples = NULL;
+        *return_tuples = nullptr;
         *return_count = 0;
 
         /*

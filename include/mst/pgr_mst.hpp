@@ -271,8 +271,6 @@ class Pgr_mst {
 
      std::vector<pgr_mst_rt>
          dfs_ordering(const G &graph) {
-             std::vector<pgr_mst_rt> results;
-
              boost::filtered_graph<B_G, InSpanning, boost::keep_all>
                  mstGraph(graph.graph, m_spanning_tree, {});
 

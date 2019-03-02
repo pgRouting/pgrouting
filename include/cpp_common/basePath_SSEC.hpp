@@ -188,7 +188,6 @@ class Path {
         m_tot_cost(0) {
             if (original.path.empty()) return;
 
-            std::deque<Path_t> only_cost_path;
             typename G::EO_i ei, ei_end;
 
 //            auto last_node = m_start_id;

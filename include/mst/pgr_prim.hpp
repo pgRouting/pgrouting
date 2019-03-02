@@ -142,7 +142,6 @@ Pgr_prim<G>::generate_mst(const G &graph) {
             m_unassigned.insert(m_unassigned.end(), v);
     }
 
-    std::vector<pgr_mst_rt> results;
     while (!m_unassigned.empty()) {
         auto root = *m_unassigned.begin();
         m_unassigned.erase(m_unassigned.begin());

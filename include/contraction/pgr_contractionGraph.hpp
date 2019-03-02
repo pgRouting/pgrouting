@@ -273,7 +273,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
        */
 
      void add_shortcut(const T_E &edge) {
-         std::ostringstream log;
          bool inserted;
          E e;
          if (edge.cost < 0)

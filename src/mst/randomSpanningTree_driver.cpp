@@ -39,7 +39,6 @@ std::vector<pgr_randomSpanningTree_t>
 pgr_randomSpanningTree(
         G &graph,
         int64_t root_vertex ) {
-    std::vector<pgr_randomSpanningTree_t> results;
     Pgr_randomSpanningTree< G > fn_randomSpanningTree;
     return fn_randomSpanningTree.randomSpanningTree(graph, root_vertex);
 }
