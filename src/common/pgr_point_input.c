@@ -53,7 +53,6 @@ void pgr_point_input(
 
     const int tuple_limit = 1000000;
 
-    size_t ntuples;
     size_t total_tuples = 0;
 
     Column_info_t info[3];
@@ -84,7 +83,7 @@ void pgr_point_input(
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 2);
 
-        ntuples = SPI_processed;
+        size_t ntuples = SPI_processed;
         total_tuples += ntuples;
 
         if (ntuples > 0) {

@@ -72,7 +72,6 @@ pgr_get_points(
         size_t *total_points) {
     const int tuple_limit = 1000;
 
-    size_t ntuples;
     size_t total_tuples;
     Column_info_t info[4];
 
@@ -114,7 +113,7 @@ pgr_get_points(
             pgr_fetch_column_info(info, 4);
         }
 
-        ntuples = SPI_processed;
+        size_t ntuples = SPI_processed;
         total_tuples += ntuples;
 
         if (ntuples > 0) {

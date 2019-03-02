@@ -136,7 +136,6 @@ pgr_get_pd_orders_general(
 
 
 
-    size_t ntuples;
     size_t total_tuples;
 
     void *SPIplan;
@@ -154,7 +153,7 @@ pgr_get_pd_orders_general(
         if (total_tuples == 0) {
             pgr_fetch_column_info(info, 14);
         }
-        ntuples = SPI_processed;
+        size_t ntuples = SPI_processed;
         total_tuples += ntuples;
         PGR_DBG("SPI_processed %ld", ntuples);
         if (ntuples > 0) {
