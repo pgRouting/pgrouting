@@ -609,7 +609,6 @@ get_edges_basic(
 
     const int tuple_limit = 1000000;
 
-    size_t ntuples;
     size_t total_tuples;
     size_t valid_edges;
 
@@ -652,7 +651,7 @@ get_edges_basic(
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 5);
 
-        ntuples = SPI_processed;
+        size_t ntuples = SPI_processed;
         total_tuples += ntuples;
 
         if (ntuples > 0) {

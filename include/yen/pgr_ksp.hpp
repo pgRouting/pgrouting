@@ -158,11 +158,8 @@ class Pgr_ksp :  public Pgr_messages {
  protected:
      //! Performs the next cycle of the algorithm
      void doNextCycle(G &graph) {
-         int64_t spurNodeId;
-
-
          for (unsigned int i = 0; i < curr_result_path.size(); ++i) {
-             spurNodeId = curr_result_path[i].node;
+             int64_t spurNodeId = curr_result_path[i].node;
 
              auto rootPath = curr_result_path.getSubpath(i);
 

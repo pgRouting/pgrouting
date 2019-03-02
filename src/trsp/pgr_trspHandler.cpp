@@ -185,7 +185,6 @@ void Pgr_trspHandler::explore(
         int64_t cur_node,
         const EdgeInfo cur_edge,
         bool isStart) {
-    double extra_cost = 0.0;
     double totalCost;
 
     auto vecIndex = cur_edge.get_idx(isStart);
@@ -193,7 +192,7 @@ void Pgr_trspHandler::explore(
     for (const auto &index : vecIndex) {
         auto edge = m_edges[index];
 
-        extra_cost = getRestrictionCost(
+        auto extra_cost = getRestrictionCost(
                 cur_edge.idx(),
                 edge, isStart);
 
