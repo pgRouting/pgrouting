@@ -40,7 +40,6 @@ Characteristics
 
 * A Triangle area is considered part of the alpha shape when :math:`circumcenter\ radius < spoon\_radius`
 * When the total number of points is less than 3, returns an EMPTY geometry
-* Result variable name is ``geom``
 
 
 Signatures

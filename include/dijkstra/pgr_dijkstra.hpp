@@ -873,11 +873,9 @@ class Pgr_dijkstra {
           std::vector< double > &m_dist;
           std::vector<boost::default_color_type> &m_color;
      };
-
-
 };
 
-}  // namespace pgrouting;
+}  // namespace pgrouting
 
 
 #endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_

@@ -42,15 +42,6 @@ namespace pgrouting {
 
 using Bpoint = bg::model::d2::point_xy<double>;
 
-#if 0
-bool operator<(const Bpoint &p1, const Bpoint &p2);
-
-struct CmpMyType
-{
-    bool operator<(const Bpoint &p1);
-};
-
-#endif
 }  // namespace pgrouting
 
 #endif  // INCLUDE_CPP_COMMON_BPOINT_HPP_

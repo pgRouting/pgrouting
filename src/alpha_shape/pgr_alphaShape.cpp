@@ -38,6 +38,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <set>
 #include <vector>
+#include <algorithm>
+#include <utility>
+#include <map>
 
 
 namespace bg = boost::geometry;
@@ -130,7 +133,7 @@ get_polygon(V source, V target, const std::vector<V> & predecessors, const B_G &
          */
         while (target != source || target != predecessors[target]) {
             bg::append(polygon.outer(), graph[target].point);
-            edges_used.insert(boost::edge(predecessors[target], target ,graph).first);
+            edges_used.insert(boost::edge(predecessors[target], target, graph).first);
             target = predecessors[target];
         }
         bg::correct(polygon);
@@ -138,10 +141,8 @@ get_polygon(V source, V target, const std::vector<V> & predecessors, const B_G &
 }
 
 typedef std::pair<Triangle, double> MyPairType;
-struct CompareRadius
-{
-    bool operator()(const MyPairType& lhs, const MyPairType& rhs) const
-    {
+struct CompareRadius {
+    bool operator()(const MyPairType& lhs, const MyPairType& rhs) const {
         return lhs.second > rhs.second;
     }
 };
@@ -200,7 +201,7 @@ Pgr_alphaShape::make_triangles() {
             m_adjacent_triangles[adjacent_to_side[0]].insert(adjacent_to_side[1]);
             m_adjacent_triangles[adjacent_to_side[1]].insert(adjacent_to_side[0]);
         } else {
-            if (m_adjacent_triangles.find(adjacent_to_side[0])==m_adjacent_triangles.end()) {
+            if (m_adjacent_triangles.find(adjacent_to_side[0]) == m_adjacent_triangles.end()) {
                 m_adjacent_triangles[adjacent_to_side[0]].clear();
             }
         }
@@ -233,7 +234,7 @@ Pgr_alphaShape::faceBelongs(const Triangle t, double alpha) const {
 }
 
 std::vector<Bpoly>
-Pgr_alphaShape::build_best_alpha() const{
+Pgr_alphaShape::build_best_alpha() const {
     std::map<Triangle, double> border_triangles;
     std::map<Triangle, double> inner_triangles;
 
@@ -276,8 +277,10 @@ Pgr_alphaShape::build_best_alpha() const{
             }
         }
 
-        auto new_max_border_triangle = *std::min_element(border_triangles.begin(), border_triangles.end(), CompareRadius());
-        auto new_max_inner_triangle = *std::min_element(inner_triangles.begin(), inner_triangles.end(), CompareRadius());
+        auto new_max_border_triangle = *std::min_element(
+                border_triangles.begin(), border_triangles.end(), CompareRadius());
+        auto new_max_inner_triangle = *std::min_element(
+                inner_triangles.begin(), inner_triangles.end(), CompareRadius());
 
         if (new_max_border_triangle.second < new_max_inner_triangle.second) {
             /*
@@ -354,9 +357,7 @@ std::vector<Bpoly>
 Pgr_alphaShape::operator() (double alpha) const {
     std::vector<Bpoly> shape;
 
-    if (alpha <= 0) {
-        return build_best_alpha();
-    };
+    if (alpha <= 0) return build_best_alpha();
 
     std::set<Triangle> used;
     using Subgraph = boost::filtered_graph<BG, EdgesFilter, boost::keep_all>;

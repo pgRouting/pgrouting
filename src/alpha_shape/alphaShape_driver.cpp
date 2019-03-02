@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace {
 bool
-data_eq(const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs, int64_t round){
+data_eq(const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs, int64_t round) {
     return
         std::floor(lhs.x1 * static_cast<double>(round)) == std::floor(rhs.x1 * static_cast<double>(round))
         &&
@@ -81,15 +81,14 @@ do_alphaShape(
              1 |      3 |     -1 |    1 | 29.1296615 |  40.943359 |  0 |  0
              sort based on y1
              stable sort on x1
-
-
         */
-        std::sort(edges.begin(),edges.end(),
+
+        std::sort(edges.begin(), edges.end(),
                 [&round](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
             return
                 std::floor(lhs.y1 * round) < std::floor(rhs.y1 * round);
         });
-        std::stable_sort(edges.begin(),edges.end(),
+        std::stable_sort(edges.begin(), edges.end(),
                 [&round](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
             return
                 std::floor(lhs.x1 * round) < std::floor(rhs.x1 * round);
@@ -108,7 +107,7 @@ do_alphaShape(
                 prev = e;
             }
         }
-        std::stable_sort(edges.begin(),edges.end(),
+        std::stable_sort(edges.begin(), edges.end(),
                 [](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
             return
                 lhs.id < rhs.id;

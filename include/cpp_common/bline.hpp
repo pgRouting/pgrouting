@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_CPP_COMMON_BLINESTRING_HPP_
-#define INCLUDE_CPP_COMMON_BLINESTRING_HPP_
+#ifndef INCLUDE_CPP_COMMON_BLINE_HPP_
+#define INCLUDE_CPP_COMMON_BLINE_HPP_
 #pragma once
 
 #include <boost/geometry.hpp>
@@ -53,4 +53,4 @@ using Bpolys = bg::model::multi_polygon<Bpoly>;
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_BLINESTRING_HPP_
+#endif  // INCLUDE_CPP_COMMON_BLINE_HPP_

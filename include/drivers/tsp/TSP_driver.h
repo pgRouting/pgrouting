@@ -27,8 +27,8 @@
  *
  *  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_TSP_NEWTSP_DRIVER_H_
-#define INCLUDE_DRIVERS_TSP_NEWTSP_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_TSP_TSP_DRIVER_H_
+#define INCLUDE_DRIVERS_TSP_TSP_DRIVER_H_
 #pragma once
 
 /* for size-t */
@@ -71,4 +71,4 @@ do_pgr_tsp(
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_TSP_NEWTSP_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_TSP_TSP_DRIVER_H_

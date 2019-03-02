@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_ALPHASHAPE_PGR_DELAUNY_HPP_
-#define INCLUDE_ALPHASHAPE_PGR_DELAUNY_HPP_
+#ifndef INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_H_
+#define INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_H_
 #pragma once
 
 #ifndef __cplusplus
@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <map>
+#include <set>
 #include <iosfwd>
 
 #include "c_types/pgr_edge_xy_t.h"
@@ -60,10 +61,9 @@ using Triangle = std::set<E>;
 
 
 class Pgr_alphaShape : public Pgr_messages {
-
  public:
      Pgr_alphaShape() = default;
-     Pgr_alphaShape(const std::vector<Pgr_edge_xy_t> &edges);
+     explicit Pgr_alphaShape(const std::vector<Pgr_edge_xy_t> &edges);
 
      std::vector<Bpoly> operator() (double alpha) const;
 
@@ -99,4 +99,4 @@ class Pgr_alphaShape : public Pgr_messages {
 }  // namespace alphashape
 }  // namespace pgrouting
 
-#endif  // INCLUDE_ALPHASHAPE_PGR_DELAUNY_HPP_
+#endif  // INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_H_

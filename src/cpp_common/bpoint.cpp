@@ -27,21 +27,3 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/bpoint.hpp"
 
-namespace pgrouting {
-
-#if 0
-bool
-operator<(const Bpoint &p1, const Bpoint &p2){
-    auto x1 = boost::geometry::get<0>(p1);
-    auto y1 = boost::geometry::get<1>(p1);
-    auto x2 = boost::geometry::get<0>(p2);
-    auto y2 = boost::geometry::get<1>(p2);
-    if (x1 < x2) return true;
-    if (x1 > x2) return false;
-    if (y1 < y2) return true;
-    return false;
-}
-#endif
-
-}  // namespace pgrouting
-
