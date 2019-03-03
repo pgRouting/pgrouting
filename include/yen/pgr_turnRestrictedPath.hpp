@@ -95,7 +95,6 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
          bool m_stop_on_first;
          pSet &m_solutions;
          std::vector<trsp::Rule> &m_restrictions;
-         size_t count;
      };
 
 

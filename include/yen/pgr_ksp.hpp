@@ -49,7 +49,9 @@ class Pgr_ksp :  public Pgr_messages {
      typedef std::set<Path, compPathsLess> pSet;
 
  public:
-     Pgr_ksp() {
+     Pgr_ksp() :
+         m_heap_paths(false)
+    {
          m_vis = new Visitor;
      }
      ~Pgr_ksp() {

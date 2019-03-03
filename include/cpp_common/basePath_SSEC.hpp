@@ -55,7 +55,8 @@ class Path {
     double m_tot_cost;
 
  public:
-    Path(): m_tot_cost(0) {}
+    Path(): m_start_id(0), m_end_id(0), m_tot_cost(0)
+    {}
     Path(int64_t s_id, int64_t e_id)
         : m_start_id(s_id), m_end_id(e_id), m_tot_cost(0)
     {}
