@@ -54,7 +54,7 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
         : Pgr_base_graph< G, T_V, T_E >(gtype) {
         }
 
-    Pgr_lineGraphFull< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
+    explicit Pgr_lineGraphFull< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
         : Pgr_base_graph< G, T_V, T_E >(graphType::DIRECTED) {
             apply_transformation(digraph);
             store_edge_costs(digraph);
