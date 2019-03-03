@@ -219,10 +219,8 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
   // PGR_DBG("restriction: %f, %i, %s", rest->to_cost, rest->target_id, str);
 
   if (str != NULL) {
-    char* pch = NULL;
     int ci = 0;
-
-    pch = (char *)strtok(str, " ,");
+    char* pch = (char *)strtok(str, " ,");
 
     while (pch != NULL && ci < MAX_RULE_LENGTH) {
       rest->via[ci] = atoi(pch);

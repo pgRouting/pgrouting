@@ -49,6 +49,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
      typedef std::set<Path, compPathsLess> pSet;
 
  public:
+     Pgr_turnRestrictedPath() = default;
      struct found_goals{};
      class Myvisitor : public Pgr_ksp<G>::Visitor {
       public:
