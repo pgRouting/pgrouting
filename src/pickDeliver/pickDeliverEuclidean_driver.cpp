@@ -106,7 +106,7 @@ do_pgr_pickDeliverEuclidean(
             pd_problem.solve();
         } catch (AssertFailedException &except) {
             log << pd_problem.msg.get_log();
-            throw except;
+            throw;
         } catch(...) {
             log << "Caught unknown exception!";
             throw;

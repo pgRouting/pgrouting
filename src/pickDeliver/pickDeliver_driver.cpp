@@ -126,7 +126,7 @@ do_pgr_pickDeliver(
         } catch (AssertFailedException &except) {
             log << pd_problem.msg.get_log();
             pd_problem.msg.clear();
-            throw except;
+            throw;
         } catch(...) {
             log << "Caught unknown exception!";
             throw;

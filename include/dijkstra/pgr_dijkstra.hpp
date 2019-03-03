@@ -348,7 +348,7 @@ class Pgr_dijkstra {
                              nodesInDistance,
                              distances)));
          } catch(found_goals &) {
-             return true;
+             /*No op*/
          } catch (boost::exception const& ex) {
              throw;
              (void)ex;
