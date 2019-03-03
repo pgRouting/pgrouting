@@ -58,21 +58,14 @@ process(
     char *notice_msg = NULL;
     char *err_msg = NULL;
 
-    if (err_msg) {
-        pgr_global_report(log_msg, notice_msg, err_msg);
-        return;
-    }
-
     char * fn_name = get_name(0, fn_suffix, &err_msg);
     if (err_msg) {
         pgr_global_report(log_msg, notice_msg, err_msg);
         return;
     }
 
-    int64_t* rootsArr = NULL;
     size_t size_rootsArr = 0;
-
-    rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
+    int64_t* rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
