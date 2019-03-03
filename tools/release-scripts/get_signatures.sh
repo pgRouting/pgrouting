@@ -33,9 +33,9 @@ create extension pgrouting with version '$VERSION';
 EOF
 
 echo "#VERSION pgrouting $VERSION" > "$FILE"
-echo "#TYPES" >> "$FILE"
-psql $* $DB_NAME -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> "$FILE"
+echo "#TYPES" >> $FILE
+psql $DB_ARGS $DB_NAME -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> $FILE
 echo "#FUNCTIONS" >> "$FILE"
-psql $* $DB_NAME -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> "$FILE"
+psql $DB_ARGS $DB_NAME -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> $FILE
 
 dropdb --if-exists $DB_ARGS $DB_NAME
