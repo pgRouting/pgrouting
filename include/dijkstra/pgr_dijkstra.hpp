@@ -641,7 +641,7 @@ class Pgr_dijkstra {
      // preparation for many to distance No equicost
      std::deque< Path > drivingDistance_no_equicost(
              G &graph,
-             const std::vector< int64_t > start_vertex,
+             const std::vector< int64_t > &start_vertex,
              double distance) {
 
          // perform the algorithm
@@ -740,7 +740,7 @@ class Pgr_dijkstra {
      class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
       public:
           explicit dijkstra_many_goal_visitor(
-                  std::vector< V > goals,
+                  const std::vector< V > &goals,
                   size_t n_goals) :
               m_goals(goals.begin(), goals.end()),
               m_n_goals(n_goals)   {}

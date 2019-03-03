@@ -181,7 +181,7 @@ class Path {
 
     template <typename G> Path(
             const G &graph,
-            const Path original,
+            const Path &original,
             bool only_cost) :
         m_start_id(original.m_start_id),
         m_end_id(original.m_end_id),

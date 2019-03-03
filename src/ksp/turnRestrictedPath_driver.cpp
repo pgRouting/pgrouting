@@ -50,7 +50,7 @@ static
 std::deque<Path>
 pgr_dijkstraTR(
         G &graph,
-        const std::vector<pgrouting::trsp::Rule> restrictions,
+        const std::vector<pgrouting::trsp::Rule> &restrictions,
         int64_t source,
         int64_t target,
         std::string& log,

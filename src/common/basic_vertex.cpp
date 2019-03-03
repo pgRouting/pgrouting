@@ -90,7 +90,7 @@ namespace pgrouting {
 
 
     std::vector < Basic_vertex > extract_vertices(
-            const std::vector <pgr_edge_t > data_edges) {
+            const std::vector <pgr_edge_t > &data_edges) {
         std::vector< Basic_vertex > vertices;
         if (data_edges.empty()) return vertices;
 

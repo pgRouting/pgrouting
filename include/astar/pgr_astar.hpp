@@ -187,7 +187,7 @@ class Pgr_astar {
               }
           distance_heuristic(
                   B_G &g,
-                  std::vector< V > goals,
+                  const std::vector< V > &goals,
                   int heuristic,
                   double factor)
               : m_g(g),
@@ -265,7 +265,7 @@ class Pgr_astar {
      //! class for stopping when all targets are found
      class astar_many_goals_visitor : public boost::default_astar_visitor {
       public:
-          explicit astar_many_goals_visitor(std::vector< V > goals)
+          explicit astar_many_goals_visitor(const std::vector< V > &goals)
               :m_goals(goals.begin(), goals.end()) {}
           template <class B_G>
               void examine_vertex(V u, B_G &g) {
