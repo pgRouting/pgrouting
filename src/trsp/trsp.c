@@ -382,7 +382,6 @@ static int compute_trsp(
 
     edges[z].source -= v_min_id;
     edges[z].target -= v_min_id;
-    edges[z].cost = edges[z].cost;
   }
 
   PGR_DBG("Min vertex id: %ld , Max vid: %ld", v_min_id, v_max_id);

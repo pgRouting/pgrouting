@@ -349,11 +349,9 @@ class Pgr_dijkstra {
                              distances)));
          } catch(found_goals &) {
              /*No op*/
-         } catch (boost::exception const& ex) {
+         } catch (boost::exception const&) {
              throw;
-             (void)ex;
-         } catch (std::exception &e) {
-             (void)e;
+         } catch (std::exception&) {
              throw;
          } catch (...) {
              throw;
@@ -557,7 +555,7 @@ class Pgr_dijkstra {
           */
          for (const auto &vertex : start_vertex) {
              for (auto &p : pred) {
-                 if (!p.empty() & graph.has_vertex(vertex))
+                 if (!p.empty() && graph.has_vertex(vertex))
                      p[graph.get_V(vertex)] = graph.get_V(vertex);
              }
          }
