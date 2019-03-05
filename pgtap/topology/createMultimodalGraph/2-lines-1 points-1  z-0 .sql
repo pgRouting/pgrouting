@@ -2,7 +2,7 @@
 
 -- Cant be Warning because postgis is printing into warning channel.
 set client_min_messages to warning;
-select plan(11);
+select plan(14);
 drop TABLE IF EXISTS test_table_l1;
 create table test_table_l1(
                             geom geometry('linestringz',4326),
@@ -21,6 +21,17 @@ insert into test_table_l1 values ('SRID=4326;linestring(15 14 50, 15 10 50, 15 8
 insert into test_table_l1 values ('SRID=4326;linestring(15 16 35, 15 14 50)', 8); -- z connects with edge points
 insert into test_table_l1 values ('SRID=4326;linestring(13 16 35, 15 14 50, 13 14 50)', 9); -- z connects with interior points
 
+
+--2nd layer
+drop TABLE IF EXISTS test_table_l2;
+create table test_table_l2(
+                            geom geometry('linestringz',4326),
+                            id integer primary key
+);
+
+insert into test_table_l2 values ('SRID=4326;linestring(13 18 35, 13 16 35, 7 12 0)', 1);
+insert into test_table_l2 values ('SRID=4326;linestring(15 18 0, 15 16 35, 17 18 0)', 2);
+
 drop table if EXISTS test_table_p1;
 create TABLE test_table_p1(
                             geom geometry('pointz',4326),
@@ -37,31 +48,42 @@ insert into test_table_p1 values('SRID=4326;point(7 12 0)',7);
 
 --for test z
 insert into test_table_p1 values('SRID=4326;point(15 10 0)',8);
-insert into test_table_p1 values('SRID=4326;point(13 14 50)',9);
-insert into test_table_p1 values('SRID=4326;point(15 16 35)',10);
-
+insert into test_table_p1 values('SRID=4326;point(13 14 50)',9);  --edge point  of layer 2
+insert into test_table_p1 values('SRID=4326;point(15 16 35)',10); --interior point of layer 2
 insert into test_table_p1 values('SRID=4326;point(15 8 50)',11);
 
+--for test connectivity with 2nd layer
+insert into test_table_p1 values('SRID=4326;point(14 8 0)',12);
+insert into test_table_p1 values('SRID=4326;point(13 18 35)',13);
+insert into test_table_p1 values('SRID=4326;point(15 18 0)',14);
+
 prepare createTopology_1 as
-SELECT count(*) from pgr_createtopology_multimodal('{
+  SELECT count(*) from  pgr_create_multimodal_graph('{
   "1": [
     "linealLayer-1"
+  ],
+  "2": [
+    "linealLayer-2"
   ]
-}','{"pointLayer-1":["linealLayer-1"]}'
-         , '{
+}','{"pointLayer-1":["linealLayer-1","linealLayer-2"]}'
+                          , '{
   "linealLayer-1": {
     "sql": "select id as id, geom as the_geom,0 as z_start, 0 as z_end from \"test_table_l1\"",
-    "pconn": 0,
+    "pconn": 1,
+    "zconn": 0
+  },"linealLayer-2": {
+    "sql": "select id as id, geom as the_geom,0 as z_start, 0 as z_end from \"test_table_l2\"",
+    "pconn": 1,
     "zconn": 0
   },
   "pointLayer-1":{
-    "sql":"select id as id, geom as the_geom,0 as z from \"test_table_p1\"",
+    "sql":"select id as id, geom as the_geom,0 z from \"test_table_p1\"",
     "pconn":1,
     "zconn":0
    }
 }', 'graph_lines', 'public', 0.000001);
 
-select results_eq('createTopology_1', array[0]::bigint[]);
+select results_eq('createTopology_1', array[0]::bigint[]); --point( 8 10) not intersect with any line point because of connection policy
 
 --testing connectivity
 
@@ -116,7 +138,7 @@ select count(*) from pgr_dijkstra(
   (select id from graph_lines_pt where id_geom =7 ),
   (select id from graph_lines_pt where id_geom =5 )
 );
-select results_eq('test6', array[0]::bigint[]);
+select results_eq('test6', array[4]::bigint[]);
 
 prepare test7 as
 select count(*) from pgr_dijkstra(
@@ -124,7 +146,7 @@ select count(*) from pgr_dijkstra(
   (select id from graph_lines_pt where id_geom =7 ),
   (select id from graph_lines_pt where id_geom =6 )
 );
-select results_eq('test7', array[0]::bigint[]);
+select results_eq('test7', array[4]::bigint[]);
 
 prepare test8 as
   select count(*) from pgr_dijkstra(
@@ -140,7 +162,7 @@ prepare test9 as
                            (select id from graph_lines_pt where id_geom =11 ),
                            (select id from graph_lines_pt where id_geom =9 )
                          );
-select results_eq('test9', array[0]::bigint[]); -- there is no connection because inner points not connecting policy
+select results_eq('test9', array[3]::bigint[]);
 
 prepare test10 as
   select count(*) from pgr_dijkstra(
@@ -148,7 +170,33 @@ prepare test10 as
                            (select id from graph_lines_pt where id_geom =10 ),
                            (select id from graph_lines_pt where id_geom =9 )
                          );
-select results_eq('test10', array[0]::bigint[]); -- there is no connection because inner points not connecting policy
+select results_eq('test10', array[3]::bigint[]);
+
+prepare test11 as
+  select count(*) from pgr_dijkstra(
+                           'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
+                           (select id from graph_lines_pt where id_geom =13 ),
+                           (select id from graph_lines_pt where id_geom =12 )
+                         );
+select results_eq('test11', array[4]::bigint[]); --there is always be connection, unless point-layer dont join the two layers
+
+prepare test12 as
+  select count(*) from pgr_dijkstra(
+                           'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
+                           (select id from graph_lines_pt where id_geom =13 ),
+                           (select id from graph_lines_pt where id_geom =9 )
+                         );
+select results_eq('test12', array[0]::bigint[]); --there will not be connection because 2nd group is not connected to first group and
+--2nd layer not connect on point(13 16 35) because there is not such point in pontLayer-1
+
+prepare test13 as
+  select count(*) from pgr_dijkstra(
+                           'select id, source, target, 0 as cost, 0 as reverse_cost from graph_lines',
+                           (select id from graph_lines_pt where id_geom =14 ),
+                           (select id from graph_lines_pt where id_geom =9 )
+                         );
+select results_eq('test13', array[4]::bigint[]); -- there is not connection because of layer and point connectivity policy, must be layer-1 point-1 to have connectivity
+
 
 SELECT * FROM finish();
 ROLLBACK;

@@ -32,7 +32,7 @@ insert into test_table_p1 values('SRID=4326;point(0 0)',6);
 insert into test_table_p1 values('SRID=4326;point(7 12)',7);
 
 prepare createTopology_1 as
-SELECT count(*) from pgr_createtopology_multimodal('{
+SELECT count(*) from pgr_create_multimodal_graph('{
   "1": [
     "linealLayer-1"
   ]
@@ -40,17 +40,17 @@ SELECT count(*) from pgr_createtopology_multimodal('{
          , '{
   "linealLayer-1": {
     "sql": "select id as id, geom as the_geom,0 as z_start, 0 as z_end from \"test_table_l1\"",
-    "pconn": 0,
+    "pconn": 1,
     "zconn": 2
   },
   "pointLayer-1":{
     "sql":"select id as id, geom as the_geom,0 as z from \"test_table_p1\"",
-    "pconn":1,
+    "pconn":0,
     "zconn":2
    }
 }', 'graph_lines', 'public', 0.000001);
 
-select results_eq('createTopology_1', array[0]::bigint[]);
+select results_eq('createTopology_1', array[0]::bigint[]); --point( 8 10) not intersect with any line point because of connection policy
 
 --testing connectivity
 
@@ -105,7 +105,7 @@ select count(*) from pgr_dijkstra(
   (select id from graph_lines_pt where id_geom =7 ),
   (select id from graph_lines_pt where id_geom =5 )
 );
-select results_eq('test6', array[0]::bigint[]);
+select results_eq('test6', array[4]::bigint[]);
 
 prepare test7 as
 select count(*) from pgr_dijkstra(
@@ -113,7 +113,7 @@ select count(*) from pgr_dijkstra(
   (select id from graph_lines_pt where id_geom =7 ),
   (select id from graph_lines_pt where id_geom =6 )
 );
-select results_eq('test7', array[0]::bigint[]);
+select results_eq('test7', array[4]::bigint[]);
 
 SELECT * FROM finish();
 ROLLBACK;

@@ -32,7 +32,7 @@ insert into test_table_p1 values('SRID=4326;point(0 0)',6);
 insert into test_table_p1 values('SRID=4326;point(7 12)',7);
 
 prepare createTopology_1 as
-SELECT count(*) from pgr_createtopology_multimodal('{
+SELECT count(*) from pgr_create_multimodal_graph('{
   "1": [
     "linealLayer-1"
   ]
@@ -45,7 +45,7 @@ SELECT count(*) from pgr_createtopology_multimodal('{
   },
   "pointLayer-1":{
     "sql":"select id as id, geom as the_geom,0 as z from \"test_table_p1\"",
-    "pconn":0,
+    "pconn":1,
     "zconn":2
    }
 }', 'graph_lines', 'public', 0.000001);
