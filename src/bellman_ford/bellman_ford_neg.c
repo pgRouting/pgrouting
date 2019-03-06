@@ -60,15 +60,13 @@ process(
 
     PGR_DBG("Initializing arrays");
 
-    int64_t* start_vidsArr = NULL;
     size_t size_start_vidsArr = 0;
-    start_vidsArr = (int64_t*)
+    int64_t* start_vidsArr = (int64_t*)
         pgr_get_bigIntArray(&size_start_vidsArr, starts);
     PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
 
-    int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
-    end_vidsArr = (int64_t*)
+    int64_t* end_vidsArr = (int64_t*)
         pgr_get_bigIntArray(&size_end_vidsArr, ends);
     PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
 

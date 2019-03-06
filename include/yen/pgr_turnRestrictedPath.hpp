@@ -49,6 +49,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
      typedef std::set<Path, compPathsLess> pSet;
 
  public:
+     Pgr_turnRestrictedPath() = default;
      struct found_goals{};
      class Myvisitor : public Pgr_ksp<G>::Visitor {
       public:
@@ -95,7 +96,6 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
          bool m_stop_on_first;
          pSet &m_solutions;
          std::vector<trsp::Rule> &m_restrictions;
-         size_t count;
      };
 
 
@@ -122,6 +122,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 
 
      /*!
+      * @param[in] graph
       * @param[in] start_vertex original id of vertex
       * @param[in] end_vertex original id of vertex
       * @param[in] K  when k=0 stop at first path without turn restriction
@@ -235,7 +236,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 
      /*! sets an inf value on agg_cost on the vertex/edge where the restriction begins
       *
-      * @params[in] path that is being analized
+      * @param[in] paths that is being analized
       */
      std::deque<Path> inf_cost_on_restriction(std::deque<Path> &paths) {
          if (paths.empty()) return paths;

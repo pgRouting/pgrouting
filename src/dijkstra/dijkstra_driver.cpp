@@ -59,7 +59,7 @@ pgr_dijkstra(
             std::unique(targets.begin(), targets.end()),
             targets.end());
 
-    Pgr_dijkstra< G > fn_dijkstra;
+    pgrouting::Pgr_dijkstra< G > fn_dijkstra;
     auto paths = fn_dijkstra.dijkstra(
             graph,
             sources, targets,

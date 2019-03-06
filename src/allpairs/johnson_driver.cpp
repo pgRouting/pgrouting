@@ -58,8 +58,6 @@ do_pgr_johnson(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::deque< Path >paths;
-
         if (directed) {
             log << "Processing Directed graph\n";
             pgrouting::DirectedGraph digraph(gType);

@@ -55,7 +55,8 @@ class Path {
     double m_tot_cost;
 
  public:
-    Path(): m_tot_cost(0) {}
+    Path(): m_start_id(0), m_end_id(0), m_tot_cost(0)
+    {}
     Path(int64_t s_id, int64_t e_id)
         : m_start_id(s_id), m_end_id(e_id), m_tot_cost(0)
     {}
@@ -181,14 +182,13 @@ class Path {
 
     template <typename G> Path(
             const G &graph,
-            const Path original,
+            const Path &original,
             bool only_cost) :
         m_start_id(original.m_start_id),
         m_end_id(original.m_end_id),
         m_tot_cost(0) {
             if (original.path.empty()) return;
 
-            std::deque<Path_t> only_cost_path;
             typename G::EO_i ei, ei_end;
 
 //            auto last_node = m_start_id;

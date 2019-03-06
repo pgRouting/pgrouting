@@ -187,10 +187,6 @@ msgstr ""
 msgid "Boost C++ source libraries at http://www.boost.org."
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:98
-msgid "Computational Geometry Algorithms Library (CGAL) at http://www.cgal.org."
-msgstr ""
-
 #: ../../build/doc/pgRouting-introduction.rst:99
 msgid "The Migration guide can be found at https://github.com/pgRouting/pgrouting/wiki/Migration-Guide."
 msgstr ""

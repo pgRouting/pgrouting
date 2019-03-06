@@ -55,7 +55,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         : Pgr_base_graph< G, T_V, T_E >(gtype) {
         }
 
-    Pgr_lineGraph< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
+    explicit Pgr_lineGraph< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
         : Pgr_base_graph< G, T_V, T_E >(graphType::DIRECTED) {
             insert_vertices(digraph);
             create_edges(digraph);

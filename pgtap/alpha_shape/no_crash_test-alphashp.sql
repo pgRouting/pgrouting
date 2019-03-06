@@ -3,7 +3,7 @@
 SELECT plan(5);
 
 PREPARE alpha_sql AS
-SELECT id::INTEGER, ST_X(the_geom) AS x, ST_Y(the_geom) AS y FROM edge_table_vertices_pgr;
+SELECT the_geom FROM edge_table_vertices_pgr;
 
 SELECT isnt_empty('alpha_sql', 'Should not be empty true to tests be meaningful');
 
@@ -18,9 +18,9 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-    params = ARRAY['$$SELECT id::INTEGER, ST_X(the_geom) AS x, ST_Y(the_geom) AS y FROM edge_table_vertices_pgr$$']::TEXT[];
+    params = ARRAY[$$(SELECT ST_Collect(the_geom) FROM edge_table_vertices_pgr)$$]::TEXT[];
     subs = ARRAY[
-    'NULL'
+    'NULL::geometry'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_alphashape', params, subs);

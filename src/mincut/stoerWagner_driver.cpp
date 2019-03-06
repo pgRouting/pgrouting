@@ -38,7 +38,6 @@ static
 std::vector<pgr_stoerWagner_t>
 pgr_stoerWagner(
         G &graph ) {
-    std::vector<pgr_stoerWagner_t> results;
     Pgr_stoerWagner< G > fn_stoerWagner;
     return fn_stoerWagner.stoerWagner(graph);
 }

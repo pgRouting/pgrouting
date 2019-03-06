@@ -159,7 +159,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
     // build full edges
     std::map<int64_t, int>::iterator iter;
     totalDeg = 0;
-    for (iter = deg.begin(); iter != deg.end(); iter++) {
+    for (iter = deg.begin(); iter != deg.end(); ++iter) {
         int64_t p = iter->first;
         int d = iter->second;
         if (d == 0)

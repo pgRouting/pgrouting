@@ -120,6 +120,13 @@ do_trsp(
         (*return_count) = collapse_paths(return_tuples, paths);
 
 
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
+
         return;
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);

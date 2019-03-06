@@ -66,9 +66,6 @@ then
     echo "PATH ${PATH}"
 fi
 
-GMP_VER=5.1.2
-MPFR_VER=3.1.2
-CGAL_VER=4.2
 BOOST_VER=1.59.0
 BOOST_VER_WU=1_59_0
 BOOST_VER_WUM=1_59
@@ -76,9 +73,6 @@ ZLIB_VER=1.2.8
 
 if [ $JENKINS_DEBUG -eq 1]
 then
-    echo "GMP_VER ${GMP_VER}"
-    echo "MPFR_VER ${MPFR_VER}"
-    echo "GAL_VER ${CGAL_VER}"
     echo "BOOST_VER_WU ${BOOST_VER_WU}"
     echo "BOOST_VER_WUM ${BOOST_VER_WUM}"
     echo "ZLIB_VER ${ZLIB_VER}"
@@ -88,21 +82,9 @@ fi
 ZLIB_PATH="${PROJECTS}/zlib/rel-${ZLIB_VER}w${OS_BUILD}${GCC_TYPE}"
 PATH="${PATH}:${ZLIB_PATH}/include:${ZLIB_PATH}/lib:${ZLIB_PATH}/bin"
 
-#gmp
-GMP_PATH="${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}"
-PATH="${PATH}:${GMP_PATH}/include:${GMP_PATH}/lib"
-
-#mpfr
-MPFR_PATH="${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}"
-PATH="${PATH}:${MPFR_PATH}/include:${MPFR_PATH}/lib:${MPFR_PATH}/bin"
-
 #boost
 BOOSTROOT_PATH="${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE}"
 PATH="${PATH}:${BOOSTROOT_PATH}/lib"
-
-#cgal
-CGAL_PATH="${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}"
-PATH="${PATH}:${CGAL_PATH}/include:${CGAL_PATH}/lib"
 
 #cmake
 export PATH="${PATH}:/cmake/bin"
@@ -162,12 +144,8 @@ cmake --version
 
 cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON \
  -DBOOST_ROOT:PATH=${BOOSTROOT_PATH} \
- -DCGAL_ROOT:PATH=${CGAL_PATH} \
- -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} \
  -DBoost_USE_STATIC_LIBS=ON \
  -DBoost_USE_MULTITHREADED=ON \
- -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include \
- -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include" \
  -DCMAKE_BUILD_TYPE=Release \
  ../branches/${PGROUTING_VER}
 

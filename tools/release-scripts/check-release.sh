@@ -154,7 +154,7 @@ if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
 fi
 
-if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MAJOR' | grep $MAYOR) != "set(PGROUTING_VERSION_MAJOR \"$MAYOR\")" ]]; then
+if [[ $(grep 'set(PGROUTING_VERSION_MAJOR' CMakeLists.txt | grep $MAYOR) != "set(PGROUTING_VERSION_MAJOR \"$MAYOR\")" ]]; then
     error_msg "FATAL: PGROUTING_VERSION_MAJOR is not '$MAYOR' ... Verify CMakeLists.txt"
     exit 1
 else
@@ -162,21 +162,21 @@ else
 fi
 
 
-if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MINOR' | grep $MINOR) !=  "set(PGROUTING_VERSION_MINOR \"$MINOR\")" ]]; then
+if [[ $(grep 'set(PGROUTING_VERSION_MINOR' CMakeLists.txt | grep $MINOR) !=  "set(PGROUTING_VERSION_MINOR \"$MINOR\")" ]]; then
     error_msg "FATAL: PGROUTING_VERSION_MINOR is not '$MINOR' ... Verify CMakeLists.txt"
     exit 1
 else
     echo "  - [x] Check minor information is OK"
 fi
 
-if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_PATCH' | grep $MICRO) !=  "set(PGROUTING_VERSION_PATCH \"$MICRO\")" ]]; then
+if [[ $(grep 'set(PGROUTING_VERSION_PATCH' CMakeLists.txt | grep $MICRO) !=  "set(PGROUTING_VERSION_PATCH \"$MICRO\")" ]]; then
     error_msg "FATAL: PGROUTING_VERSION_PATCH is not '$MICRO' ... Verify CMakeLists.txt"
     exit 1
 else
     echo "  - [x] Check patch information is OK"
 fi
 
-if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_DEV' ) !=  "set(PGROUTING_VERSION_DEV \"$RC\")" ]]; then
+if [[ $(grep 'set(PGROUTING_VERSION_DEV' CMakeLists.txt ) !=  "set(PGROUTING_VERSION_DEV \"$RC\")" ]]; then
     error_msg "FATAL: PGROUTING_VERSION_DEV is not '$RC' ... Verify CMakeLists.txt"
     exit 1
 else
@@ -196,7 +196,7 @@ if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
 fi
 
-if [[ $(cat test/common/doc-pgr_version.result | grep "$MAYOR.$MINOR.$MICRO") != " $MAYOR.$MINOR.$MICRO" ]]; then
+if [[ $(grep "$MAYOR.$MINOR.$MICRO" test/common/doc-pgr_version.result) != " $MAYOR.$MINOR.$MICRO" ]]; then
     error_msg "test/common/doc-pgr_version.result is not $MAYOR.$MINOR.$MICRO"
     exit 1
 else
@@ -211,11 +211,11 @@ echo "- VERSION"
 
 if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
-    echo "cat VERSION | grep \"release/$MAYOR.$MINOR\""
+    echo "grep \"release/$MAYOR.$MINOR\" VERSION"
     echo "\`\`\`"
 fi
 
-if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
+if [[ $(grep "release/$MAYOR.$MINOR" VERSION) != *"release/$MAYOR.$MINOR" ]]; then
     error_msg "VERSION should have 'release/$MAYOR.$MINOR'"
     exit 1
 fi

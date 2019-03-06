@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v2.5.0-alpha\n"
@@ -179,10 +179,6 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:139
 msgid "CMake >= 2.8.8"
-msgstr ""
-
-#: ../../build/doc/pgRouting-installation.rst:140
-msgid "CGAL >=  4.2"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:144

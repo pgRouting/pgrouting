@@ -148,7 +148,7 @@ class TSP: public MATRIX {
 
      size_t find_closest_city(
              size_t current_city,
-             const std::set<size_t> inserted) const;
+             const std::set<size_t> &inserted) const;
 
      double getDeltaSlide(
              size_t posP,
@@ -201,7 +201,7 @@ template < typename MATRIX >
 size_t
 TSP<MATRIX>::find_closest_city(
         size_t current_city,
-        const std::set<size_t> inserted) const {
+        const std::set<size_t> &inserted) const {
     invariant();
 
     auto distance_row(get_row(current_city));

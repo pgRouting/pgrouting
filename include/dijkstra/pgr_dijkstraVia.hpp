@@ -44,7 +44,7 @@ template <class G>
 void
 pgr_dijkstraVia(
         G &graph,
-        const std::vector< int64_t > via_vertices,
+        const std::vector< int64_t > &via_vertices,
         std::deque< Path > &paths,
         bool strict,
         bool U_turn_on_edge,

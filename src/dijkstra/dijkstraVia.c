@@ -50,9 +50,8 @@ process(char* edges_sql,
         size_t *result_count) {
     pgr_SPI_connect();
 
-    int64_t* via_vidsArr = NULL;
     size_t size_via_vidsArr = 0;
-    via_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_via_vidsArr, vias);
+    int64_t* via_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_via_vidsArr, vias);
 
     pgr_edge_t* edges = NULL;
     size_t total_edges = 0;

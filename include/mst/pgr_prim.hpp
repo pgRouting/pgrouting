@@ -25,33 +25,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_MST_PGR_PRIM_HPP_
 #pragma once
 
-#include <boost/config.hpp>
-#include <boost/graph/connected_components.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/filtered_graph.hpp>
-
-#if BOOST_VERSION_OK
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-#else
-#include "boost/dijkstra_shortest_paths.hpp"
-#endif
-
+#include <visitors/prim_dijkstra_visitor.hpp>
 #include <boost/graph/prim_minimum_spanning_tree.hpp>
 
-#include <iostream>
 #include <vector>
-#include <algorithm>
-#include <sstream>
-#include <limits>
+#include <set>
 
-#include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/pgr_assert.h"
-
-#include "mst/visitors.hpp"
-#include "mst/details.hpp"
 #include "mst/pgr_mst.hpp"
-
 
 //******************************************
 
@@ -93,7 +73,7 @@ class Pgr_prim : public Pgr_mst<G> {
 
      void primTree(
              const G &graph,
-             int64_t root_vertex );
+             int64_t root_vertex);
 
      void generate_mst(const G &graph);
 
@@ -110,7 +90,7 @@ template <class G>
 void
 Pgr_prim<G>::primTree(
         const G &graph,
-        int64_t root_vertex ) {
+        int64_t root_vertex) {
     clear();
 
     predecessors.resize(graph.num_vertices());
@@ -118,7 +98,7 @@ Pgr_prim<G>::primTree(
 
     auto v_root(graph.get_V(root_vertex));
 
-    using prim_visitor = visitors::Prim_visitor<V>;
+    using prim_visitor = visitors::Prim_dijkstra_visitor<V>;
     boost::prim_minimum_spanning_tree(
             graph.graph,
             &predecessors[0],
@@ -162,7 +142,6 @@ Pgr_prim<G>::generate_mst(const G &graph) {
             m_unassigned.insert(m_unassigned.end(), v);
     }
 
-    std::vector<pgr_mst_rt> results;
     while (!m_unassigned.empty()) {
         auto root = *m_unassigned.begin();
         m_unassigned.erase(m_unassigned.begin());

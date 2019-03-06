@@ -1,7 +1,8 @@
 #VERSION pgrouting 3.0.0
 #TYPES
 #FUNCTIONS
-pgr_alphashape(text,double precision)
+pgr_alphashape(geometry,double precision)
+_pgr_alphashape(text,double precision)
 pgr_analyzegraph(text,double precision,text,text,text,text,text)
 pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)
 _pgr_array_reverse(anyarray)
@@ -156,7 +157,6 @@ _pgr_pickdelivereuclidean(text,text,double precision,integer,integer)
 pgr_pickdelivereuclidean(text,text,double precision,integer,integer)
 _pgr_pickdeliver(text,text,text,double precision,integer,integer)
 pgr_pickdeliver(text,text,text,double precision,integer,integer)
-pgr_pointsaspolygon(character varying,double precision)
 _pgr_pointtoid(geometry,double precision,text,integer)
 pgr_primbfs(text,anyarray,bigint)
 pgr_primbfs(text,bigint,bigint)

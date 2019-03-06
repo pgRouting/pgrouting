@@ -50,11 +50,12 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
 
 
-    explicit Pgr_lineGraphFull< G, T_V, T_E >(graphType gtype)
-        : Pgr_base_graph< G, T_V, T_E >(gtype) {
+    explicit Pgr_lineGraphFull< G, T_V, T_E >(const graphType &gtype)
+        : Pgr_base_graph< G, T_V, T_E >(gtype),
+        m_num_edges(0) {
         }
 
-    Pgr_lineGraphFull< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
+    explicit Pgr_lineGraphFull< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
         : Pgr_base_graph< G, T_V, T_E >(graphType::DIRECTED) {
             apply_transformation(digraph);
             store_edge_costs(digraph);

@@ -84,18 +84,13 @@ class PgrFlowGraph {
      }
 
      int64_t boykov_kolmogorov() {
-         size_t num_v = boost::num_vertices(graph);
-         std::vector<boost::default_color_type> color(num_v);
-         std::vector<int64_t> distance(num_v);
          return boost::boykov_kolmogorov_max_flow(
                  graph,
                  supersource,
                  supersink);
      }
+
      std::vector<General_path_element_t> edge_disjoint_paths() {
-         size_t num_v = boost::num_vertices(graph);
-         std::vector<boost::default_color_type> color(num_v);
-         std::vector<int64_t> distance(num_v);
          auto flow = boost::boykov_kolmogorov_max_flow(
                  graph,
                  supersource,

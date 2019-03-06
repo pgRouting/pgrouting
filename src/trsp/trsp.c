@@ -219,10 +219,8 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
   // PGR_DBG("restriction: %f, %i, %s", rest->to_cost, rest->target_id, str);
 
   if (str != NULL) {
-    char* pch = NULL;
     int ci = 0;
-
-    pch = (char *)strtok(str, " ,");
+    char* pch = (char *)strtok(str, " ,");
 
     while (pch != NULL && ci < MAX_RULE_LENGTH) {
       rest->via[ci] = atoi(pch);
@@ -382,7 +380,6 @@ static int compute_trsp(
 
     edges[z].source -= v_min_id;
     edges[z].target -= v_min_id;
-    edges[z].cost = edges[z].cost;
   }
 
   PGR_DBG("Min vertex id: %ld , Max vid: %ld", v_min_id, v_max_id);
@@ -506,7 +503,6 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   TupleDesc            tuple_desc;
   path_element_tt      *path;
-  char *               sql;
 
   // stuff done only on the first call of the function
   if (SRF_IS_FIRSTCALL()) {
@@ -515,6 +511,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS) {
       int i;
       double s_pos;
       double e_pos;
+      char *               sql;
 
       // create a function context for cross-call persistence
       funcctx = SRF_FIRSTCALL_INIT();

@@ -58,8 +58,8 @@ template <typename G>
 static void process_contraction(
         G &graph,
         const std::vector< pgr_edge_t > &edges,
-        const std::vector< int64_t > forbidden_vertices,
-        const std::vector< int64_t > contraction_order,
+        const std::vector< int64_t > &forbidden_vertices,
+        const std::vector< int64_t > &contraction_order,
         int64_t max_cycles,
         Identifiers<int64_t> &remaining_vertices,
         std::vector< pgrouting::CH_edge > &shortcut_edges,
@@ -117,7 +117,7 @@ static
 void get_postgres_result(
         G &graph,
         const Identifiers<int64_t> remaining_vertices,
-        const std::vector< pgrouting::CH_edge > shortcut_edges,
+        const std::vector< pgrouting::CH_edge > &shortcut_edges,
         contracted_rt **return_tuples) {
     (*return_tuples) = pgr_alloc(
             remaining_vertices.size() + shortcut_edges.size(),
@@ -196,7 +196,6 @@ do_pgr_contractGraph(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        std::ostringstream debug;
         /*
          * Converting to C++ structures
          */

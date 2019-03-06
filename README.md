@@ -6,9 +6,8 @@
 
 ### Branches
 
-* The *master* branch has the release  2.5.2
-* The *release/2.5* branch has the next micro-release 2.5.3 (if needed)
-* The *develop* branch has the development of the next minor-release 2.6.0-dev
+* The *master* branch has the latest release
+* The *develop* branch has the development of the next release
 
 For the complete list of releases go to:
 https://github.com/pgRouting/pgrouting/releases
@@ -78,9 +77,6 @@ This library contains following features:
 * K-Shortest Path, Multiple Alternative Paths (Yen's algorithm)
 * Traveling Sales Person (TSP)
 * Turn Restriction Shortest Path (TRSP)
-
-Additionally, ready for testing and to be part of 2.5 official version:
-
 * Shortest Path Dijkstra With Points Family of functions
 * Shortest Path Dijkstra Cost With Points Family of functions
 * Driving Distance With Points
@@ -89,25 +85,17 @@ Additionally, ready for testing and to be part of 2.5 official version:
 
 and many more.
 
-Family of functions include:
-
-* one to one
-* one to many
-* many to one
-* many to many
-
 ## REQUIREMENTS
 
 Building reqirements
 --------------------
 * Perl
 * C and C++ compilers
-  * GNU >= 4.6
+  * GNU >= 4.8
   * MSVC >= 18.0
-* Postgresql >= 9.2
+* Postgresql >= 9.4
 * The Boost Graph Library (BGL) >= 1.53
 * CMake >= 3.2
-* CGAL >= 4.4
 * Sphinx >= 1.2
 
 
@@ -144,7 +132,7 @@ Build with documentation (requires [Sphinx](http://sphinx-doc.org/))
 
 	cmake -DWITH_DOC=ON ..
 
-Postgresql 9.2+
+Postgresql 9.3+
 
 	createdb mydatabase
 	psql mydatabase -c "CREATE EXTENSION postgis"

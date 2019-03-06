@@ -91,7 +91,6 @@ pgr_get_restrictions(
 
     info[1].strict = false;
 
-    size_t ntuples;
     size_t total_tuples;
 
     void *SPIplan;
@@ -110,7 +109,7 @@ pgr_get_restrictions(
         if (total_tuples == 0) {
             pgr_fetch_column_info(info, 3);
         }
-        ntuples = SPI_processed;
+        size_t ntuples = SPI_processed;
         total_tuples += ntuples;
         PGR_DBG("Restrictions to be processed %ld", ntuples);
         PGR_DBG("size of structure %ld",  sizeof(Restriction_t));

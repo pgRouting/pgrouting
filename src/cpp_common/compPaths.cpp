@@ -52,7 +52,7 @@ bool compPathsLess::operator()(const Path &p1, const Path &p2) const {
     if (p1.size() < p2.size())
         return true;
 
-    pgassert(p1.tot_cost() == p2.tot_cost());
+//    pgassert(p1.tot_cost() == p2.tot_cost());
     pgassert(p1.size() == p2.size());
 
     // paths weights & lengths are equal now check by node ID
@@ -64,7 +64,7 @@ bool compPathsLess::operator()(const Path &p1, const Path &p2) const {
             return true;
     }
 
-    pgassert(p1.tot_cost() == p2.tot_cost());
+//    pgassert(p1.tot_cost() == p2.tot_cost());
     pgassert(p1.size() == p2.size());
 #ifdef NDEBUG
     for (i = 0; i < p1.size(); i++) {

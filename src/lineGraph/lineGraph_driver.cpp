@@ -79,7 +79,6 @@ do_pgr_lineGraph(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector< Line_graph_rt > results;
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         pgrouting::DirectedGraph digraph(gType);

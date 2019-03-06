@@ -384,6 +384,7 @@ class Pgr_base_graph {
             code that is being developed
         No edge is inserted when there is an error on the vertices
         @param edges
+        @param normal
       */
      template <typename T>
      void
@@ -899,7 +900,6 @@ Pgr_base_graph< G, T_V, T_E >::get_edge_id(
 template < class G, typename T_V, typename T_E >
 void
 Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T_E &edge ) {
-    bool inserted;
     typename Pgr_base_graph< G, T_V, T_E >::LI vm_s, vm_t;
     typename Pgr_base_graph< G, T_V, T_E >::E e;
 
@@ -916,6 +916,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T_E &edge ) {
     }
 
     if (edge.cost >= 0) {
+        bool inserted;
         boost::tie(e, inserted) =
             boost::add_edge(vm_s->second, vm_t->second, graph);
         graph[e].cp_members(edge);

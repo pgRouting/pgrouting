@@ -76,7 +76,7 @@ Node::operator ==(const Node &rhs) const {
     return
         (idx() == rhs.idx())
          && (id() == rhs.id())
-         && (m_point == rhs.m_point);
+         && boost::geometry::equals(m_point, rhs.m_point);
 }
 
 }  //  namespace vrp

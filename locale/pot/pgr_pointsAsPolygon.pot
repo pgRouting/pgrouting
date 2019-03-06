@@ -77,7 +77,7 @@ msgid "alpha"
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:47
-msgid "(optional) ``float8`` alpha value. If specified alpha value equals 0 (default), then optimal alpha value is used. For more information, see `CGAL - 2D Alpha Shapes <http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html>`_."
+msgid "(optional) ``float8`` alpha value. If specified alpha value equals 0 (default), then optimal alpha value is used."
 msgstr ""
 
 #: ../../build/doc/pgr_pointsAsPolygon.rst:50

@@ -190,7 +190,6 @@ void pgr_get_vehicles_general(
         info[14].strict = true;
     }
 
-    size_t ntuples;
     size_t total_tuples;
 
     void *SPIplan;
@@ -208,7 +207,7 @@ void pgr_get_vehicles_general(
         if (total_tuples == 0) {
             pgr_fetch_column_info(info, 16);
         }
-        ntuples = SPI_processed;
+        size_t ntuples = SPI_processed;
         total_tuples += ntuples;
         PGR_DBG("SPI_processed %ld", ntuples);
         if (ntuples > 0) {

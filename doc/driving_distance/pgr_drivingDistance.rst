@@ -83,7 +83,7 @@ Multiple Vertices
 
 :Example: **TBD**
 
-Parameters 
+Parameters
 -------------------------------------------------------------------------------
 
 ============== ====================== =================================================
@@ -160,7 +160,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`pgr_alphaShape` - Alpha shape computation
-* :doc:`pgr_pointsAsPolygon` - Polygon around set of points
 * :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

@@ -66,10 +66,6 @@ class Base_node : public Identifier {
      */
      virtual double distance(const Base_node *node) const = 0;
      /*!@}*/
-
-
- private:
-     virtual void print(std::ostream& os) const;
 };
 
 }  //  namespace vrp

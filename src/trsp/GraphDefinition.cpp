@@ -157,12 +157,10 @@ void GraphDefinition::explore(
     LongVector &vecIndex,
     std::priority_queue<PDP, std::vector<PDP>,
     std::greater<PDP> > &que) {
-    double extCost = 0.0;
-    GraphEdgeInfo* new_edge;
     double totalCost;
     for (const auto &index : vecIndex) {
-        new_edge = m_vecEdgeVector[index];
-        extCost = 0.0;
+        auto new_edge = m_vecEdgeVector[index];
+        double extCost = 0.0;
         if (m_bIsturnRestrictOn) {
             extCost = getRestrictionCost(cur_edge.m_lEdgeIndex,
                  *new_edge, isStart);

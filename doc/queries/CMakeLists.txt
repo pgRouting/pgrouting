@@ -1,71 +1,75 @@
-
+# Keep files in alphabetical order
 SET(LOCAL_FILES
-    doc-johnson.queries
-    doc-pgr_bdDijkstra.queries
-    doc-pgr_edgeDisjointPaths.queries
-    doc-pgr_pointsAsPolygon.queries
-    doc-pgr_withPoints.queries
     doc-aStarCost.queries
-    doc-ksp.queries
-    doc-pgr_boykovKolmogorov.queries
-    doc-pgr_edmondsKarp.queries
-    doc-pgr_pushRelabel.queries
-    doc-pgr_withPointsVia.queries
     doc-astar.queries
-    doc-pgr_alphashape.queries
-    doc-pgr_createTopology.queries
-    doc-pgr_nodeNetwork.queries
-    doc-pgr_analyzeOneWay.queries
-    doc-pgr_createVerticesTable.queries
-    doc-pgr_TSPeuclidean.queries
-    doc-pgr_TSP.queries
-    doc-pickDeliverEuclidean.queries
+    doc-bellman_ford.queries
     doc-contractGraph.queries
-    doc-pgr_analyzeGraph.queries
-    doc-pgr_dijkstraCost.queries
-    doc-pgr_fooDmatrix.queries
-    doc-pgr_version.queries
-    doc-pickDeliver.queries
     doc-contraction.queries
-    doc-pgr_bdAstarCost.queries
-    doc-pgr_dijkstra.queries
-    doc-pgr_withPointsCost.queries
-    doc-trsp.queries
+    doc-dagShortestPath.queries
+    doc-dijkstraTRSP.queries
     doc-floydWarshall.queries
-    doc-pgr_bdAstar.queries
-    doc-pgr_dijkstraVia.queries
-    doc-pgr_maxCardinalityMatch.queries
-    doc-pgr_withPointsDD.queries
-    doc-pgr_bdDijkstraCost.queries
-    doc-pgr_drivingDistance.queries
-    doc-pgr_maxFlow.queries
-    doc-pgr_withPointsKSP.queries
-	doc-pgr_connectedComponents.queries
-    doc-pgr_strongComponents.queries
-	doc-pgr_biconnectedComponents.queries
-	doc-pgr_articulationPoints.queries
-	doc-pgr_bridges.queries
-    doc-pgr_vrpOneDepot.queries
     doc-gsoc_vrppdtw.queries
-    doc-pgr_lineGraph.queries
-    doc-pgr_lineGraphFull.queries
-    doc-pgr_vrpOneDepot.queries
+    doc-johnson.queries
+    doc-ksp.queries
+    doc-pgr_alphashape.queries
+    doc-pgr_analyzeGraph.queries
+    doc-pgr_analyzeOneWay.queries
+    doc-pgr_articulationPoints.queries
+    doc-pgr_bdAstarCost.queries
+    doc-pgr_bdAstar.queries
+    doc-pgr_bdDijkstraCost.queries
+    doc-pgr_bdDijkstra.queries
     doc-pgr_bellman_ford.queries
-    doc-pgr_minCostMaxFlow.queries
-    doc-pgr_minCostMaxFlow_Cost.queries
+    doc-pgr_biconnectedComponents.queries
+    doc-pgr_boykovKolmogorov.queries
+    doc-pgr_bridges.queries
+    doc-pgr_connectedComponents.queries
+    doc-pgr_createTopology.queries
+    doc-pgr_createVerticesTable.queries
     doc-pgr_dagShortestPath.queries
-    doc-pgr_directedChPP.queries
+    doc-pgr_dijkstraCost.queries
+    doc-pgr_dijkstra.queries
+    doc-pgr_dijkstraVia.queries
     doc-pgr_directedChPP_Cost.queries
-    doc-pgr_kruskal.queries
+    doc-pgr_directedChPP.queries
+    doc-pgr_drivingDistance.queries
+    doc-pgr_edgeDisjointPaths.queries
+    doc-pgr_edmondsKarp.queries
+    doc-pgr_extractVertices.queries
+    doc-pgr_fooDmatrix.queries
+    doc-pgr_kruskalBFS.queries
     doc-pgr_kruskalDD.queries
     doc-pgr_kruskalDFS.queries
-    doc-pgr_kruskalBFS.queries
-    doc-pgr_prim.queries
+    doc-pgr_kruskal.queries
+    doc-pgr_lineGraphFull.queries
+    doc-pgr_lineGraph.queries
+    doc-pgr_maxCardinalityMatch.queries
+    doc-pgr_maxFlow.queries
+    doc-pgr_minCostMaxFlow_Cost.queries
+    doc-pgr_minCostMaxFlow.queries
+    doc-pgr_nodeNetwork.queries
+    doc-pgr_primBFS.queries
     doc-pgr_primDD.queries
     doc-pgr_primDFS.queries
-    doc-pgr_primBFS.queries
+    doc-pgr_prim.queries
+    doc-pgr_pushRelabel.queries
     doc-pgr_randomSpanTree.queries
-    doc-pgr_extractVertices.queries
+    doc-pgr_strongComponents.queries
+    doc-pgr_TSPeuclidean.queries
+    doc-pgr_TSP.queries
+    doc-pgr_turnRestrictedPath.queries
+    doc-pgr_version.queries
+    doc-pgr_vrpOneDepot.queries
+    doc-pgr_withPointsCost.queries
+    doc-pgr_withPointsDD.queries
+    doc-pgr_withPointsKSP.queries
+    doc-pgr_withPoints.queries
+    doc-pgr_withPointsVia.queries
+    doc-pickDeliverEuclidean.queries
+    doc-pickDeliver.queries
+    doc-stoerWagner.queries
+    doc-trsp.queries
+    proof_of_concept.queries
     )
 
 foreach (f ${LOCAL_FILES})

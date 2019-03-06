@@ -567,7 +567,7 @@ operator<(const Vehicle &lhs, const Vehicle &rhs) {
     /* here because sizes are equal */
 
     if (lhs.m_path.back().total_travel_time()
-            < lhs.m_path.back().total_travel_time()) return true;
+            < rhs.m_path.back().total_travel_time()) return true;
 
     return false;
 }

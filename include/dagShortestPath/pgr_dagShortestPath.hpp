@@ -29,9 +29,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <boost/config.hpp>
+#if BOOST_VERSION_OK
+#include <boost/graph/dijkstra_shortest_paths.hpp>
+#else
+#include "boost/dijkstra_shortest_paths.hpp"
+#endif
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dag_shortest_paths.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
 #include <deque>
 #include <set>
 #include <vector>
@@ -291,7 +295,7 @@ class Pgr_dag {
      class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
       public:
           explicit dijkstra_many_goal_visitor(
-                  std::vector< V > goals,
+                  const std::vector< V > &goals,
                   size_t n_goals) :
               m_goals(goals.begin(), goals.end()),
               m_n_goals(n_goals)   {}

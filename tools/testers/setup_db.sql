@@ -29,5 +29,6 @@ BEGIN;
     \i inner_styles.sql
     \i old_inner_styles.sql
     \i no_crash_test.sql
+    \i alphaShapeTester.sql
 
 END;

@@ -189,6 +189,12 @@ void fetch_edge_with_xy(
     edge->y1 = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
     edge->x2 = pgr_SPI_getFloat8(tuple, tupdesc, info[7]);
     edge->y2 = pgr_SPI_getFloat8(tuple, tupdesc, info[8]);
+#if 0
+    PGR_DBG("%ld", edge->id);
+    PGR_DBG("x1=%f y1=%.15lf", edge->x1, edge->y1);
+    PGR_DBG("x2=%f y2=%.15lf", edge->x2, edge->y2);
+#endif
+
 
     *valid_edges = edge->cost < 0? *valid_edges: *valid_edges + 1;
     *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
@@ -205,7 +211,6 @@ get_edges_9_columns(
 
     const int tuple_limit = 1000000;
 
-    size_t ntuples;
     size_t total_tuples;
     size_t valid_edges;
 
@@ -257,7 +262,7 @@ get_edges_9_columns(
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 9);
 
-        ntuples = SPI_processed;
+        size_t ntuples = SPI_processed;
         total_tuples += ntuples;
 
         if (ntuples > 0) {
@@ -313,7 +318,6 @@ get_edges_5_columns(
 
     const int tuple_limit = 1000000;
 
-    size_t ntuples;
     size_t total_tuples;
     size_t valid_edges;
 
@@ -356,7 +360,7 @@ get_edges_5_columns(
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 5);
 
-        ntuples = SPI_processed;
+        size_t ntuples = SPI_processed;
         total_tuples += ntuples;
 
         if (ntuples > 0) {
@@ -410,7 +414,6 @@ get_edges_flow(
 
     const int tuple_limit = 1000000;
 
-    size_t ntuples;
     size_t total_tuples;
     size_t valid_edges;
 
@@ -449,7 +452,7 @@ get_edges_flow(
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 5);
 
-        ntuples = SPI_processed;
+        size_t ntuples = SPI_processed;
         total_tuples += ntuples;
 
         if (ntuples > 0) {
@@ -504,7 +507,6 @@ get_edges_costFlow(
 
     const int tuple_limit = 1000000;
 
-    size_t ntuples;
     size_t total_tuples;
     size_t valid_edges;
 
@@ -549,7 +551,7 @@ get_edges_costFlow(
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 7);
 
-        ntuples = SPI_processed;
+        size_t ntuples = SPI_processed;
         total_tuples += ntuples;
 
         if (ntuples > 0) {
@@ -604,7 +606,6 @@ get_edges_basic(
 
     const int tuple_limit = 1000000;
 
-    size_t ntuples;
     size_t total_tuples;
     size_t valid_edges;
 
@@ -647,7 +648,7 @@ get_edges_basic(
         if (total_tuples == 0)
             pgr_fetch_column_info(info, 5);
 
-        ntuples = SPI_processed;
+        size_t ntuples = SPI_processed;
         total_tuples += ntuples;
 
         if (ntuples > 0) {

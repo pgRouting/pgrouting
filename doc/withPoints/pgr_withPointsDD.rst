@@ -97,7 +97,7 @@ Finds the driving distance depending on the optional parameters setup.
     pgr_withPointsDD(edges_sql, points_sql, from_vids, distance [, directed] [, driving_side] [, details] [, equicost])
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-Parameters 
+Parameters
 -------------------------------------------------------------------------------
 
 ================ ================= =================================================
@@ -177,7 +177,6 @@ See Also
 
 * :doc:`pgr_drivingDistance` - Driving distance using dijkstra.
 * :doc:`pgr_alphaShape` - Alpha shape computation.
-* :doc:`pgr_pointsAsPolygon` - Polygon around set of points.
 
 .. rubric:: Indices and tables
 

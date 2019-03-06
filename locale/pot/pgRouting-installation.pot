@@ -164,10 +164,6 @@ msgstr ""
 msgid "CMake >= 3.2"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:136
-msgid "CGAL >=  4.2"
-msgstr ""
-
 #: ../../build/doc/pgRouting-installation.rst:140
 msgid "optional dependencies"
 msgstr ""

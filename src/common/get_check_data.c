@@ -61,6 +61,7 @@ fetch_column_info(
          * [SPI_gettypeid](https://www.postgresql.org/docs/9.1/static/spi-spi-gettypeid.html)
          */
         (info->type) = SPI_gettypeid(SPI_tuptable->tupdesc, (info->colNumber));
+        PGR_DBG("%s %ld", info->name, info->type);
         if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
             elog(ERROR, "Type of column '%s' not Found", info->name);
         }
@@ -273,7 +274,7 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     }
 /* TODO(vicky) Remove unused code */
 #if 0
-    PGR_DBG("Variable: %s Value: %lf", info.name, value);
+    PGR_DBG("Variable: %s Value: %.20f", info.name, value);
 #endif
     return value;
 }

@@ -54,7 +54,7 @@ Once pgRouting is installed, it needs to be enabled in each individual database 
 .. code-block:: bash
 
     createdb routing
-    psql routing -c 'CREATE EXTENSION postGIS'
+    psql routing -c 'CREATE EXTENSION PostGIS'
     psql routing -c 'CREATE EXTENSION pgRouting'
 
 
@@ -130,10 +130,8 @@ To be able to compile pgRouting, make sure that the following dependencies are m
 * C and C++0x compilers
   * g++ version >= 4.8
 * Postgresql version >= 9.3
-* PostGIS version >= 2.2
 * The Boost Graph Library (BGL). Version >= 1.53
 * CMake >= 3.2
-* CGAL >=  4.2
 
 
 .. rubric:: optional dependencies
@@ -152,6 +150,9 @@ For testing
 * pgtap
 * pg_prove
 
+For using:
+
+* PostGIS version >= 2.2
 
 .. rubric:: Example: Installing dependencies on linux
 
@@ -174,8 +175,7 @@ Installing the compilation dependencies
     sudo apt-get install
         cmake \
         g++ \
-        libboost-graph-dev \
-        libcgal-dev
+        libboost-graph-dev
 
 .. rubric:: Optional dependencies
 

@@ -34,14 +34,14 @@ namespace pgrouting {
 
 
 std::ostream& operator<<(std::ostream& log, const XY_vertex &v) {
-    log << v.id << "(" << v.point.x() << "," << v.point.y() << ")";
+    log << v.id << "-" << bg::wkt(v.point);
     return log;
 }
 
 bool
 XY_vertex::operator==(const XY_vertex &rhs) const {
     if (&rhs == this) return true;
-    return this->id == rhs.id && point == rhs.point;
+    return this->id == rhs.id && boost::geometry::equals(point, rhs.point);
 }
 
 

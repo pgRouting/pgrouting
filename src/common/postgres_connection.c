@@ -72,8 +72,7 @@ pgr_SPI_finish(void) {
 #if 0
     PGR_DBG("Disconnecting SPI");
 #endif
-    int code = SPI_OK_FINISH;
-    code = SPI_finish();
+    int code = SPI_finish();
     if (code != SPI_OK_FINISH) {  // SPI_ERROR_UNCONNECTED
         elog(ERROR, "There was no connection to SPI");
     }

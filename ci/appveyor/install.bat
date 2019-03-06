@@ -22,7 +22,6 @@ if not defined COMMON_INSTALL_DIR set COMMON_INSTALL_DIR=%BUILD_ROOT_DIR%\local\
 if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
 if not defined PGIS_VERSION set PGIS_VERSION=2.3
 if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
-if not defined CGAL_VERSION set CGAL_VERSION=4.8.1
 set PG_VER_NO_DOT=pg%PG_VER:.=%
 
 
@@ -157,14 +156,6 @@ echo ====================================
 :: set BOOST_LOCAL_DEBUG=1
 call ci/appveyor/install-boost.bat
 
-::
-:: CGAL & GMP & MPFR
-::
-::
-set CGAL_LOCAL_DEBUG=1
-call ci/appveyor/install-CGAL.bat
-
-
 echo ======================================================
 echo Installation of Prerequisites done.
 echo Environment variables set:
@@ -172,11 +163,6 @@ echo Environment variables set:
 echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
 echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
 echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
-echo GMP_LIBRARIES %GMP_LIBRARIES%
-echo MPFR_LIBRARIES %MPFR_LIBRARIES%
-echo CGAL_LIBRARIES %CGAL_LIBRARIES%
-echo CGAL_INCLUDE_DIR %CGAL_INCLUDE_DIR%
-echo GMP_INCLUDE_DIR %GMP_INCLUDE_DIR%
 echo CMAKE_GENERATOR %CMAKE_GENERATOR%
 
 echo ======================================================
@@ -186,11 +172,6 @@ endlocal & (
     set BOOST_THREAD_LIB=%BOOST_THREAD_LIB%
     set BOOST_SYSTEM_LIB=%BOOST_SYSTEM_LIB%
     set BOOST_INCLUDE_DIR=%BOOST_INCLUDE_DIR%
-    set GMP_LIBRARIES=%GMP_LIBRARIES%
-    set MPFR_LIBRARIES=%MPFR_LIBRARIES%
-    set CGAL_LIBRARIES=%CGAL_LIBRARIES%
-    set CGAL_INCLUDE_DIR=%CGAL_INCLUDE_DIR%
-    set GMP_INCLUDE_DIR=%GMP_INCLUDE_DIR%
     set CMAKE_GENERATOR=%CMAKE_GENERATOR%
 )
 

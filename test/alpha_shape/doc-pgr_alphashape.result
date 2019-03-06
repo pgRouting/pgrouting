@@ -3,37 +3,12 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT * FROM pgr_alphaShape(
-    'SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
-    FROM edge_table_vertices_pgr') ORDER BY x, y;
-  x  |  y
------+-----
-   0 |   2
- 0.5 | 3.5
-   2 |   0
-   2 |   4
- 3.5 |   4
-   4 |   1
-   4 |   2
-   4 |   3
-(8 rows)
-
--- q2
-SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
-FROM (
-    SELECT ST_MakeLine(points ORDER BY id) AS openline
-    FROM (
-        SELECT ST_MakePoint(x, y) AS points, row_number() over() AS id
-        FROM pgr_alphaShape(
-            'SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
-            FROM edge_table_vertices_pgr')
-        ) AS a
-   ) AS foo;
+SELECT ST_Area(pgr_alphaShape((SELECT ST_Collect(the_geom) FROM edge_table_vertices_pgr), 1.5));
  st_area
 ---------
-   11.75
+    9.75
 (1 row)
 
--- q3
+-- q2
 ROLLBACK;
 ROLLBACK
