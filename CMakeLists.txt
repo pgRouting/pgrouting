@@ -217,14 +217,13 @@ message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
 #---------------------------------------------
 #---------------------------------------------
 find_package(Boost ${BOOST_MINIMUM_VERSION})
-if(Boost_INCLUDE_DIRS)
+if(Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
     message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIRS}")
-else(Boost_INCLUDE_DIRS)
+else()
     message(FATAL_ERROR " Please check your Boost installation ")
-endif(Boost_INCLUDE_DIRS)
+endif()
 
-
-include_directories(${Boost_INCLUDE_DIRS})
 
 # Boost for Chinese postman needs 1.55 at least
 # dijkstra_shortest_paths.hpp has an error fix on 1.55
@@ -269,7 +268,6 @@ if (PGROUTING_DEBUG)
     message(STATUS "PERL_VERSION_STRING = ${PERL_VERSION_STRING}")
     message(STATUS "POSTGRESQL_VERSION is ${PGSQL_VERSION}")
     message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
-    message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
     message(STATUS "BOOST_VERSION_OK ${BOOST_VERSION_OK}")
     message(STATUS "PGROUTING_INCLUDE_DIRECTORIES = ${PGROUTING_INCLUDE_DIRECTORIES}")
     message(STATUS "POSTGRESQL_INCLUDE_DIR = ${POSTGRESQL_INCLUDE_DIR}")
