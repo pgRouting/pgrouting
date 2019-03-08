@@ -38,7 +38,6 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
     endif(NOT "${POSTGRESQL_BIN}" STREQUAL "")
 
     message(STATUS "POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
-
     if(POSTGRESQL_PG_CONFIG)
         execute_process(
             COMMAND ${POSTGRESQL_PG_CONFIG} --bindir
@@ -46,26 +45,25 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
             OUTPUT_VARIABLE T_POSTGRESQL_BIN)
     endif(POSTGRESQL_PG_CONFIG)
 
-
-    # Checking POSTGRESQL_EXECUTABLE in all the dir (*) - implies that
+    # search for POSTGRESQL_EXECUTABLE _only_ in the dir specified by pg_config
     find_program(POSTGRESQL_EXECUTABLE NAMES postgres
         PATHS
         ${T_POSTGRESQL_BIN}
+        NO_DEFAULT_PATH
         )
-    message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
-
-
+    # if not found continue search in the path and all the dirs listed here (questionable)
+    find_program(POSTGRESQL_EXECUTABLE NAMES postgres
+        PATHS
+        /usr/lib/postgresql/*/bin/
+        )
+#    # more elegant, equivalent way if we want to keep both of above:
 #    find_program(POSTGRESQL_EXECUTABLE NAMES postgres
+#        HINTS
+#        ${T_POSTGRESQL_BIN}
 #        PATHS
 #        /usr/lib/postgresql/*/bin/
 #        )
-#    message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
-
-#    find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
-#        PATHS
-#        /usr/lib/postgresql/*/bin/
-#        )
-#    message(STATUS "POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
+    message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
 
     if(POSTGRESQL_PG_CONFIG)
         execute_process(
@@ -83,9 +81,12 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
             OUTPUT_VARIABLE T_POSTGRESQL_INCLUDE_DIR)
     endif(POSTGRESQL_PG_CONFIG)
 
+    #as with POSTGRESQL_EXECUTABLE we should/could use the path specified by pg_config only
+    #instead of path and our own guesses
     find_path(POSTGRESQL_INCLUDE_DIR postgres.h
+        HINTS
         ${T_POSTGRESQL_INCLUDE_DIR}
-
+        PATHS
         /usr/include/server
         /usr/include/pgsql/server
         /usr/local/include/pgsql/server
