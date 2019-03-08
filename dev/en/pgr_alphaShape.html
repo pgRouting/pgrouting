@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_pointsAsPolygon" href="pgr_pointsAsPolygon.html" />
+    <link rel="next" title="Stable Proposed Functions" href="proposed.html" />
     <link rel="prev" title="Driving Distance - Category" href="drivingDistance-category.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -97,8 +97,9 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_alphaShape</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
+<li><a class="reference internal" href="#return-value">Return Value</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -115,7 +116,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_pointsAsPolygon.html" title="Next Chapter: pgr_pointsAsPolygon"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_pointsAsPolygon &raquo;</span>
+    <a href="proposed.html" title="Next Chapter: Stable Proposed Functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Stable Propos... &raquo;</span>
     </a>
   </li>
               
@@ -145,123 +146,107 @@
       
   <div class="section" id="pgr-alphashape">
 <h1>pgr_alphaShape<a class="headerlink" href="#pgr-alphashape" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code> — Core function for alpha shape computation.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code> — Polygon part of an alpha shape.</p>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>Renamed in version 2.0.0</li>
-<li>Added alpha argument with default 0 (use optimal value) in version 2.1.0</li>
-<li>Supported to return multiple outer/inner ring coordinates with separator row (x=NULL and y=NULL) in version 2.1.0</li>
+<li>Version 3.0.0<ul>
+<li>Breaking change on signature</li>
+</ul>
+</li>
+<li>Version 2.1.0<ul>
+<li>Added alpha argument with default 0 (use optimal value)</li>
+<li>Support to return multiple outer/inner ring</li>
+</ul>
+</li>
+<li>Renamed in v2.0.0</li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Returns a table with (x, y) rows that describe the vertices of an alpha shape.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">table</span><span class="p">()</span> <span class="n">pgr_alphaShape</span><span class="p">(</span><span class="nb">text</span> <span class="k">sql</span> <span class="p">[,</span> <span class="n">float8</span> <span class="n">alpha</span><span class="p">]);</span>
+<p>Returns the polygon part of an alpha shape.</p>
+<p>Characteristics</p>
+<ul class="simple">
+<li>Input is a <em>geometry</em> and returns a <em>geometry</em></li>
+<li>Uses PostGis ST_DelaunyTriangles</li>
+<li>Instead of using CGAL’s definition of <cite>alpha</cite> it use the <code class="docutils literal notranslate"><span class="pre">spoon_radius</span></code><ul>
+<li><span class="math notranslate nohighlight">\(spoon\_radius = \sqrt alpha\)</span></li>
+</ul>
+</li>
+<li>A Triangle area is considered part of the alpha shape when <span class="math notranslate nohighlight">\(circumcenter\ radius &lt; spoon\_radius\)</span></li>
+<li>When the total number of points is less than 3, returns an EMPTY geometry</li>
+</ul>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
+<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_alphaShape(geometry,   [spoon_radius])
+RETURNS geometry
+</pre></div>
+</div>
+<p class="rubric">Example: passing a geometry collection with spoon radius <span class="math notranslate nohighlight">\(1.5\)</span> using the return variable <code class="docutils literal notranslate"><span class="pre">geom</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_alphaShape</span><span class="p">((</span><span class="n">SELECT</span> <span class="n">ST_Collect</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">));</span>
+ <span class="n">st_area</span>
+<span class="o">---------</span>
+    <span class="mf">9.75</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first"><code class="docutils literal notranslate"><span class="pre">text</span></code> a SQL query, which should return a set of rows with the following columns:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">FROM</span> <span class="n">vertex_table</span>
-</pre></div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">int4</span></code> identifier of the vertex</td>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="20%" />
+<col width="9%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
 </tr>
-<tr class="field-even field"><th class="field-name">x:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">float8</span></code> x-coordinate</td>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>geometry</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">geometry</span></code></td>
+<td>&#160;</td>
+<td>Geometry with at least <span class="math notranslate nohighlight">\(3\)</span> points</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">float8</span></code> y-coordinate</td>
+<tr class="row-odd"><td><strong>spoon_radius</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
+<td>&#160;</td>
+<td>The radius of the spoon</td>
 </tr>
 </tbody>
 </table>
-</td>
+</div>
+<div class="section" id="return-value">
+<h2>Return Value<a class="headerlink" href="#return-value" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Kind of geometry</th>
+<th class="head">Description</th>
 </tr>
-<tr class="field-even field"><th class="field-name">alpha:</th><td class="field-body"><p class="first last">(optional) <code class="docutils literal notranslate"><span class="pre">float8</span></code> alpha value. If specified alpha value equals 0 (default), then optimal alpha value is used.
-For more information, see <a class="reference external" href="http://doc.cgal.org/latest/Alpha_shapes_2/group__PkgAlphaShape2.html">CGAL - 2D Alpha Shapes</a>.</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Returns a vertex record for each row:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+</thead>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">x:</th><td class="field-body">x-coordinate</td>
-</tr>
-<tr class="field-even field"><th class="field-name">y:</th><td class="field-body">y-coordinate</td>
+<tr class="row-even"><td>GEOMETRY COLLECTION</td>
+<td>A Geometry collection of Polygons</td>
 </tr>
 </tbody>
 </table>
-<p>If a result includes multiple outer/inner rings, return those with separator row (x=NULL and y=NULL).</p>
-</div>
-<div class="section" id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
-<p>PgRouting’s alpha shape implementation has no way to control the order of the output points, so the actual output might different for the same input data.
-The first query, has the output ordered, he second query shows an example usage:</p>
-<p class="rubric">Example: the (ordered) results</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
-    <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="s1">&#39;) ORDER BY x, y;</span>
-  <span class="n">x</span>  <span class="o">|</span>  <span class="n">y</span>
-<span class="o">-----+-----</span>
-   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span>
- <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span>
- <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span>
-<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<p class="rubric">Example: calculating the area</p>
-<p>Steps:</p>
-<ul class="simple">
-<li><dl class="first docutils">
-<dt>Calculates the alpha shape</dt>
-<dd><ul class="first last">
-<li>the <code class="code docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> clause is not used.</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li>constructs a polygon</li>
-<li>and computes the area</li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">ST_MakePolygon</span><span class="p">(</span><span class="n">ST_AddPoint</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">openline</span><span class="p">,</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">openline</span><span class="p">))))::</span><span class="n">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">st_area</span>
-<span class="n">FROM</span> <span class="p">(</span>
-    <span class="n">SELECT</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">points</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">)</span> <span class="n">AS</span> <span class="n">openline</span>
-    <span class="n">FROM</span> <span class="p">(</span>
-        <span class="n">SELECT</span> <span class="n">ST_MakePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">AS</span> <span class="n">points</span><span class="p">,</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()</span> <span class="n">AS</span> <span class="nb">id</span>
-        <span class="n">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span>
-            <span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y</span>
-            <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="s1">&#39;)</span>
-        <span class="p">)</span> <span class="n">AS</span> <span class="n">a</span>
-   <span class="p">)</span> <span class="n">AS</span> <span class="n">foo</span><span class="p">;</span>
- <span class="n">st_area</span>
-<span class="o">---------</span>
-   <span class="mf">11.75</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Driving Distance</li>
-<li><a class="reference internal" href="pgr_pointsAsPolygon.html"><span class="doc">pgr_pointsAsPolygon</span></a> - Polygon around set of points</li>
+<li><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a></li>
+<li><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
+<li><a class="reference external" href="https://postgis.net/docs/ST_ConcaveHull.html">ST_ConcaveHull</a></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -284,7 +269,7 @@ The first query, has the output ordered, he second query shows an example usage:
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Dec 27, 2018.<br/>
+      Last updated on Mar 08, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

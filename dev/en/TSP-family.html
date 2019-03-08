@@ -97,14 +97,18 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Traveling Sales Person - Family of functions</a><ul>
 <li><a class="reference internal" href="#general-information">General Information</a><ul>
-<li><a class="reference internal" href="#origin">Origin</a></li>
 <li><a class="reference internal" href="#problem-definition">Problem Definition</a></li>
+<li><a class="reference internal" href="#origin">Origin</a></li>
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
-<li><a class="reference internal" href="#tsp-simulated-annealing">TSP &amp; Simulated Annealing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simulated-annealing-algorithm">Simulated Annealing Algorithm</a><ul>
 <li><a class="reference internal" href="#pgrouting-implementation">pgRouting Implementation</a></li>
 <li><a class="reference internal" href="#choosing-parameters">Choosing parameters</a></li>
-<li><a class="reference internal" href="#description-of-the-control-parameters">Description Of the Control parameters</a></li>
-<li><a class="reference internal" href="#description-of-the-return-columns">Description of the return columns</a></li>
+<li><a class="reference internal" href="#description-of-the-control-parameters">Description of the Control Parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#description-of-the-return-columns">Description of the return columns</a><ul>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -155,14 +159,42 @@
 <h1>Traveling Sales Person - Family of functions<a class="headerlink" href="#traveling-sales-person-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> - When input is given as matrix cell information.</li>
-<li><a class="reference internal" href="pgr_eucledianTSP.html"><span class="doc">pgr_eucledianTSP</span></a> - When input are coordinates.</li>
+<li><a class="reference internal" href="pgr_TSPeuclidean.html"><span class="doc">pgr_TSPeuclidean</span></a> - When input are coordinates.</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#general-information" id="id1">General Information</a><ul>
+<li><a class="reference internal" href="#problem-definition" id="id2">Problem Definition</a></li>
+<li><a class="reference internal" href="#origin" id="id3">Origin</a></li>
+<li><a class="reference internal" href="#characteristics" id="id4">Characteristics</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simulated-annealing-algorithm" id="id5">Simulated Annealing Algorithm</a><ul>
+<li><a class="reference internal" href="#pgrouting-implementation" id="id6">pgRouting Implementation</a></li>
+<li><a class="reference internal" href="#choosing-parameters" id="id7">Choosing parameters</a></li>
+<li><a class="reference internal" href="#description-of-the-control-parameters" id="id8">Description of the Control Parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#description-of-the-return-columns" id="id9">Description of the return columns</a><ul>
+<li><a class="reference internal" href="#see-also" id="id10">See Also</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="general-information">
-<h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id1">General Information</a><a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="problem-definition">
+<h3><a class="toc-backref" href="#id2">Problem Definition</a><a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h3>
+<p>The travelling salesman problem (TSP) or travelling salesperson problem asks the
+following question:</p>
+<p><em>Given a list of cities and the distances between each pair of cities, which is
+the shortest possible route that visits each city exactly once and returns to the origin city?</em></p>
+</div>
 <div class="section" id="origin">
-<h3>Origin<a class="headerlink" href="#origin" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id3">Origin</a><a class="headerlink" href="#origin" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>The traveling sales person problem was studied in the 18th century by mathematicians</dt>
 <dd><strong>Sir William Rowam Hamilton</strong> and <strong>Thomas Penyngton  Kirkman</strong>.</dd>
@@ -174,17 +206,12 @@ can be found in the book <strong>Graph Theory (Biggs et  al. 1976)</strong>.</p>
 <li>ISBN-10: 0198539169</li>
 </ul>
 <p>It is believed that the general form of the TSP have been first studied by Kalr Menger in Vienna and Harvard.
-The problem  was  later promoted by Hassler, Whitney  &amp;  Merrill at Princeton.
-A detailed  description about the connection between Menger &amp; Whitney, and the development of the
-TSP can be found in  <a class="reference external" href="http://www.cwi.nl/~lex/files/histco.ps">On the history of combinatorial optimization (till 1960)</a></p>
-</div>
-<div class="section" id="problem-definition">
-<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h3>
-<p>Given a collection of cities and travel cost between each pair,
-find the cheapest way for visiting all of the cities and returning to the starting point.</p>
+The problem was later promoted by Hassler, Whitney &amp; Merrill at Princeton.
+A detailed description about the connection between Menger &amp; Whitney, and the development of the
+TSP can be found in <a class="reference external" href="http://www.cwi.nl/~lex/files/histco.ps">On the history of combinatorial optimization (till 1960)</a></p>
 </div>
 <div class="section" id="characteristics">
-<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id4">Characteristics</a><a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The travel costs are symmetric:<ul>
 <li>traveling costs from city A to city B are just as much as traveling from B to A.</li>
@@ -205,18 +232,19 @@ find the cheapest way for visiting all of the cities and returning to the starti
 </li>
 </ul>
 </div>
-<div class="section" id="tsp-simulated-annealing">
-<h3>TSP &amp; Simulated Annealing<a class="headerlink" href="#tsp-simulated-annealing" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="simulated-annealing-algorithm">
+<span id="simulated-annealing"></span><h2><a class="toc-backref" href="#id5">Simulated Annealing Algorithm</a><a class="headerlink" href="#simulated-annealing-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>The simulated annealing algorithm was originally inspired from the process of
 annealing in metal work.</p>
 <p>Annealing involves heating and cooling a material to
 alter its physical properties due to the changes in its internal structure.
 As the metal cools its new structure becomes fixed,
-consequently causing the metal to retain its newly obtained properties. <a class="reference internal" href="#c001" id="id1">[C001]</a></p>
+consequently causing the metal to retain its newly obtained properties.</p>
 <p class="rubric">Pseudocode</p>
 <p>Given an initial solution, the simulated annealing process, will start with a high temperature
 and gradually cool down until the desired temperature is reached.</p>
-<p>For each temperature, a neighbouring new solution <strong>snew</strong> is calculated. The higher the temperature
+<p>For each temperature, a neighbouring new solution <strong>newSolution</strong> is calculated. The higher the temperature
 the higher the probability of accepting the new solution as a possible bester solution.</p>
 <p>Once the desired temperature is reached, the best solution found is returned</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Solution = initial_solution;
@@ -225,9 +253,9 @@ temperature = initial_temperature;
 while (temperature &gt; final_temperature) {
 
     do tries_per_temperature times {
-        snew = neighbour(solution);
-        If P(E(solution), E(snew), T) &gt;= random(0, 1)
-            solution = snew;
+        newSolution = neighbour(solution);
+        If P(E(solution), E(newSolution), T) &gt;= random(0, 1)
+            solution = newSolution;
     }
 
     temperature = temperature * cooling factor;
@@ -236,60 +264,60 @@ while (temperature &gt; final_temperature) {
 Output: the best solution
 </pre></div>
 </div>
-</div>
 <div class="section" id="pgrouting-implementation">
-<h3>pgRouting Implementation<a class="headerlink" href="#pgrouting-implementation" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id6">pgRouting Implementation</a><a class="headerlink" href="#pgrouting-implementation" title="Permalink to this headline">¶</a></h3>
 <p>pgRouting’s implementation adds some extra parameters to allow some exit controls within the
 simulated annealing process.</p>
-<p>To cool down faster to the next temperature:</p>
 <ul class="simple">
-<li>max_changes_per_temperature: limits the number of changes in the solution per temperature</li>
-<li>max_consecutive_non_changes: limits the number of consecutive non changes per temperature</li>
+<li><code class="docutils literal notranslate"><span class="pre">max_changes_per_temperature</span></code>:<ul>
+<li>Limits the number of changes in the solution per temperature</li>
+<li>Count is reset to <span class="math notranslate nohighlight">\(0\)</span> when <strong>temperature</strong> changes</li>
+<li>Count is increased by :math: <cite>1</cite> when <strong>solution</strong> changes</li>
 </ul>
-<p>This is done by doing some book keeping on the times <strong>solution = snew;</strong> is executed.</p>
-<ul class="simple">
-<li>max_changes_per_temperature: Increases by one when <strong>solution</strong> changes</li>
-<li>max_consecutive_non_changes: Reset to 0 when <strong>solution</strong> changes, and increased each <strong>try</strong></li>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">max_consecutive_non_changes</span></code>:<ul>
+<li>Limits the number of consecutive non changes per temperature</li>
+<li>Count is reset to <span class="math notranslate nohighlight">\(0\)</span> when <strong>solution</strong> changes</li>
+<li>Count is increased by :math: <cite>1</cite> when <strong>solution</strong> changes</li>
 </ul>
-<p>Additionally to stop the algorithm at a higher temperature than the desired one:</p>
-<ul class="simple">
-<li>max_processing_time: limits the time the simulated annealing is performed.</li>
-<li>book keeping is done to see if there was a change in <strong>solution</strong> on the last temperature</li>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">max_processing_time</span></code>:<ul>
+<li>Limits the time the simulated annealing is performed.</li>
 </ul>
-<p>Note that, if no change was found in the first <strong>max_consecutive_non_changes</strong> tries, then the
-simulated annealing will stop.</p>
+</li>
+</ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Solution = initial_solution;
 
 temperature = initial_temperature;
-while (temperature &gt; final_temperature) {
+WHILE (temperature &gt; final_temperature) {
 
-    do tries_per_temperature times {
-        snew = neighbour(solution);
-        If P(E(solution), E(snew), T) &gt;= random(0, 1)
-            solution = snew;
+    DO tries_per_temperature times {
+        newSolution = neighbour(solution);
+        If Probability(E(solution), E(newSolution), T) &gt;= random(0, 1)
+            solution = newSolution;
 
-        when max_changes_per_temperature is reached
-            or max_consecutive_non_changes is reached
-            BREAK;
+        BREAK DO WHEN:
+            max_changes_per_temperature is reached
+            OR max_consecutive_non_changes is reached
     }
 
     temperature = temperature * cooling factor;
-    when no changes were done in the current temperature
-        or max_processing_time has being reached
-        BREAK;
+    BREAK WHILE WHEN:
+        no changes were done in the current temperature
+        OR max_processing_time has being reached
 }
 
-Output: the best solution
+Output: the best solution found
 </pre></div>
 </div>
 </div>
 <div class="section" id="choosing-parameters">
-<h3>Choosing parameters<a class="headerlink" href="#choosing-parameters" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id7">Choosing parameters</a><a class="headerlink" href="#choosing-parameters" title="Permalink to this headline">¶</a></h3>
 <p>There is no exact rule on how the parameters have to be chose, it will depend on the
 special characteristics of the problem.</p>
 <ul class="simple">
-<li>Your computational time is crucial, then put your time limit to <strong>max_processing_time</strong>.</li>
-<li>Make the <strong>tries_per_temperture</strong> depending on the number of cities, for example:<ul>
+<li>If the computational time is crucial, then limit execution time with <strong>max_processing_time</strong>.</li>
+<li>Make the <strong>tries_per_temperture</strong> depending on the number of cities (<span class="math notranslate nohighlight">\(n\)</span>), for example:<ul>
 <li>Useful to estimate the time it takes to do one cycle: use <cite>1</cite><ul>
 <li>this will help to set a reasonable <strong>max_processing_time</strong></li>
 </ul>
@@ -308,7 +336,7 @@ and set to a higher number for a slower decrease.</li>
 <p>A recommendation is to play with the values and see what fits to the particular data.</p>
 </div>
 <div class="section" id="description-of-the-control-parameters">
-<h3>Description Of the Control parameters<a class="headerlink" href="#description-of-the-control-parameters" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">Description of the Control Parameters</a><a class="headerlink" href="#description-of-the-control-parameters" title="Permalink to this headline">¶</a></h3>
 <p>The control parameters are optional, and have a default value.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -383,9 +411,10 @@ and set to a higher number for a slower decrease.</li>
 </tbody>
 </table>
 </div>
+</div>
 <div class="section" id="description-of-the-return-columns">
-<h3>Description of the return columns<a class="headerlink" href="#description-of-the-return-columns" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<h2><a class="toc-backref" href="#id9">Description of the return columns</a><a class="headerlink" href="#description-of-the-return-columns" title="Permalink to this headline">¶</a></h2>
+<p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -410,7 +439,7 @@ and set to a higher number for a slower decrease.</li>
 <tr class="row-even"><td><strong>cost</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td><dl class="first last docutils">
-<dt>Cost to traverse from the current <code class="docutils literal notranslate"><span class="pre">node</span></code> ito the next <code class="docutils literal notranslate"><span class="pre">node</span></code> in the path sequence.</dt>
+<dt>Cost to traverse from the current <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next <code class="docutils literal notranslate"><span class="pre">node</span></code> in the path sequence.</dt>
 <dd><ul class="first last simple">
 <li><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the path sequence.</li>
 </ul>
@@ -431,19 +460,13 @@ and set to a higher number for a slower decrease.</li>
 </tr>
 </tbody>
 </table>
-</div>
 <div class="section" id="see-also">
-<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="c001" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[C001]</a></td><td><a class="reference external" href="http://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6">Simulated annaeling algorithm for beginners</a></td></tr>
-</tbody>
-</table>
 <ul class="simple">
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/Traveling_salesman_problem">http://en.wikipedia.org/wiki/Traveling_salesman_problem</a></li>
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/Simulated_annealing">http://en.wikipedia.org/wiki/Simulated_annealing</a></li>
+<li><a class="reference external" href="http://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6">Simulated annaeling algorithm for beginners</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Simulated_annealing">Wikipedia: Simulated annealing</a></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -467,7 +490,7 @@ and set to a higher number for a slower decrease.</li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Dec 27, 2018.<br/>
+      Last updated on Mar 08, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
