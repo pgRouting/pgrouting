@@ -1,0 +1,13 @@
+digraph "pgrouting::vrp::Vehicle_node::arrival_i_arrives_j"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node6 [label="pgrouting::vrp::Vehicle\l_node::arrival_i_arrives_j",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="pgrouting::vrp::Vehicle\l_node::arrival_time",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a23d1cfd02e19e0283a6fd90db1e4703b",tooltip="Truck&#39;s arrival_time to this node. "];
+  Node6 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="pgrouting::vrp::Tw\l_node::service_time",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a",tooltip="Returns the service time for this node. "];
+  Node6 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="pgrouting::vrp::Tw\l_node::travel_time_to",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#a7e5b1bdfeb746da922a2863bfe7ae718",tooltip="time = distance / speed. "];
+}

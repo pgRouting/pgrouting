@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Vehicle_node::has_twv" name="pgrouting::vrp::Vehicle_node::has_twv">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="215,5,367,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a671e29dcfd2783091b588bdbc8ef55f8" title="True doesn&#39;t have twc nor cv (including total counts) " alt="" coords="215,71,367,112"/>
+<area shape="rect" id="node4" href="$namespacepgrouting_1_1vrp.html#ae1e6219461754c35aa23e53c6dc3e6bb" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="205,137,377,163"/>
+</map>

@@ -1,5 +1,0 @@
-<map id="pgrouting::graph::Pgr_base_graph::target" name="pgrouting::graph::Pgr_base_graph::target">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#af0cf958391c3a94623de1e3c010f274d" title="pgrouting::graph::Pgr\l_lineGraphFull::get_postgres\l_results_directed" alt="" coords="196,5,384,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a32640e84c6abe522dcbeef889481a21b" title="pgrouting::graph::Pgr\l_lineGraph::get_postgres\l_results_directed" alt="" coords="207,85,373,141"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#aa6f37d724f89d29cc1ad0612de7cd73e" title="pgrouting::graph::Pgr\l_lineGraphFull::graph\l_add_edge" alt="" coords="217,165,363,221"/>
-</map>

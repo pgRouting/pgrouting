@@ -9,9 +9,11 @@ var searchData=
   ['edgeinfo_2eh',['edgeInfo.h',['../edgeInfo_8h.html',1,'']]],
   ['edges_5finput_2ec',['edges_input.c',['../edges__input_8c.html',1,'']]],
   ['edges_5finput_2eh',['edges_input.h',['../edges__input_8h.html',1,'']]],
-  ['euclediandmatrix_2ecpp',['eucledianDmatrix.cpp',['../eucledianDmatrix_8cpp.html',1,'']]],
-  ['euclediandmatrix_2eh',['eucledianDmatrix.h',['../eucledianDmatrix_8h.html',1,'']]],
-  ['euclediantsp_2ec',['eucledianTSP.c',['../eucledianTSP_8c.html',1,'']]],
-  ['euclediantsp_5fdriver_2ecpp',['eucledianTSP_driver.cpp',['../eucledianTSP__driver_8cpp.html',1,'']]],
-  ['euclediantsp_5fdriver_2eh',['eucledianTSP_driver.h',['../eucledianTSP__driver_8h.html',1,'']]]
+  ['edges_5forder_5fbfs_5fvisitor_2ehpp',['edges_order_bfs_visitor.hpp',['../edges__order__bfs__visitor_8hpp.html',1,'']]],
+  ['edges_5forder_5fdfs_5fvisitor_2ehpp',['edges_order_dfs_visitor.hpp',['../edges__order__dfs__visitor_8hpp.html',1,'']]],
+  ['euclideandmatrix_2ecpp',['euclideanDmatrix.cpp',['../euclideanDmatrix_8cpp.html',1,'']]],
+  ['euclideandmatrix_2eh',['euclideanDmatrix.h',['../euclideanDmatrix_8h.html',1,'']]],
+  ['euclideantsp_2ec',['euclideanTSP.c',['../euclideanTSP_8c.html',1,'']]],
+  ['euclideantsp_5fdriver_2ecpp',['euclideanTSP_driver.cpp',['../euclideanTSP__driver_8cpp.html',1,'']]],
+  ['euclideantsp_5fdriver_2eh',['euclideanTSP_driver.h',['../euclideanTSP__driver_8h.html',1,'']]]
 ];

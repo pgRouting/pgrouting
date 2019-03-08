@@ -1,0 +1,9 @@
+<map id="pgrouting::vrp::Order::pickup" name="pgrouting::vrp::Order::pickup">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3824b3c3af974687c0bdcc9aab615350" title="pgrouting::vrp::Vehicle\l_pickDeliver::erase" alt="" coords="205,5,357,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="415,185,567,227"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Order.html#a56eaa0604abebc289e5a58af278793ef" title="validate a pickup/delivery order " alt="" coords="210,123,351,164"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Order.html#a5043789d42f56a9c2dfafd5bda4ea835" title="Can order I be placed before this order? " alt="" coords="210,188,351,229"/>
+<area shape="rect" id="node6" href="$namespacepgrouting_1_1vrp.html#ad6fdaacceafff2916f80fb6855c58135" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="195,254,367,281"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa894fd15242682756ea30cc1bbd6aa42" title="puts an order at the end of the truck " alt="" coords="198,305,363,347"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69" title="Puts an order at the end front of the truck. " alt="" coords="199,371,362,412"/>
+</map>

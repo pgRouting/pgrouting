@@ -1,0 +1,6 @@
+<map id="pgrouting::vrp::Vehicle::cost" name="pgrouting::vrp::Vehicle::cost">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a2fe5a77c18f78d802599327957a2357e" title="pgrouting::vrp::Vehicle\l::cvTot" alt="" coords="205,5,357,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0d65e9efcf78078f3b914b12f61ebf75" title="pgrouting::vrp::Vehicle\l::duration" alt="" coords="205,71,357,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a574893de6aeb02d2e7fb6a8118ffcddf" title="pgrouting::vrp::Vehicle\l::total_wait_time" alt="" coords="205,136,357,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0052d0936d0a3a2ee4e29f07a76c7ec0" title="pgrouting::vrp::Vehicle\l::twvTot" alt="" coords="205,201,357,243"/>
+</map>

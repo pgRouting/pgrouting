@@ -27,7 +27,7 @@ var classpgrouting_1_1trsp_1_1Pgr__trspHandler =
     [ "process", "classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a009a1e7a265748859119283365a51d7a", null ],
     [ "process", "classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aa9906883b4fdee00762ac1866329d0c2", null ],
     [ "process_trsp", "classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320", null ],
-    [ "renumber_edges", "classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5ce674f76cc942d877e0d7abe2b92c14", null ],
+    [ "renumber_edges", "classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#af7aa55cc3fedf3cd6f1ce2e801b20116", null ],
     [ "current_node", "classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a19c1746eb6a72507be0c6889f1188387", null ],
     [ "m_adjacency", "classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aa9f557cd83e51e34020e5c09627f578b", null ],
     [ "m_dCost", "classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a20f5e9139cdf71168a00eecbd2bb6dbd", null ],

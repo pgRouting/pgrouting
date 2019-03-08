@@ -1,4 +1,5 @@
 <map id="pgrouting::graph::PgrCostFlowGraph::MinCostMaxFlow" name="pgrouting::graph::PgrCostFlowGraph::MinCostMaxFlow">
-<area shape="rect" id="node2" href="$namespaceboost.html#a10dc4b67de36b21d18a1038aab436522" title="boost::find_flow_cost" alt="" coords="266,5,413,32"/>
-<area shape="rect" id="node3" href="$namespaceboost.html#a91210cfc503412caffe8a198ab4aa82c" title="boost::successive_shortest\l_path_nonnegative_weights" alt="" coords="248,57,431,98"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a1a9475396cc368cde13dd664316c853a" title="pgrouting::graph::PgrCost\lFlowGraph::GetFlowEdges" alt="" coords="261,5,439,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ad34989e8494f03b4d98438403ac7d595" title="pgrouting::graph::PgrCost\lFlowGraph::GetMaxFlow" alt="" coords="265,71,435,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a7742b5ac2bcdd08ea4a240f18ac73887" title="pgrouting::graph::PgrCost\lFlowGraph::PgrCostFlowGraph" alt="" coords="248,136,452,177"/>
 </map>

@@ -1,6 +1,11 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/mst" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/mst">
-<area shape="rect" id="node1" href="dir_a7589322a715e2f40d33e09f49a78751.html" title="mst" alt="" coords="27,52,99,100"/>
-<area shape="rect" id="node2" href="dir_f413d2883acb285bdeb0fac3ae939ed0.html" title="cpp_common" alt="" coords="13,148,113,196"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000043_000014.html" title="6" alt="" coords="67,122,75,137"/>
-<area shape="rect" id="clust1" href="dir_d44c64559bbebec7f509842c48db8b23.html" title="include" alt="" coords="16,16,109,111"/>
+<map id="mst" name="mst">
+<area shape="rect" id="node1" href="dir_a7589322a715e2f40d33e09f49a78751.html" title="mst" alt="" coords="49,52,121,100"/>
+<area shape="rect" id="node2" href="dir_d5995d5871f728649bd47ea0d6428e03.html" title="c_types" alt="" coords="5,244,77,292"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000028_000022.html" title="1" alt="" coords="29,217,37,231"/>
+<area shape="rect" id="node3" href="dir_f413d2883acb285bdeb0fac3ae939ed0.html" title="cpp_common" alt="" coords="35,148,135,196"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000028_000013.html" title="3" alt="" coords="90,122,98,137"/>
+<area shape="rect" id="node4" href="dir_4e5658a7286517e9c5b1437feaf10aed.html" title="visitors" alt="" coords="160,148,232,196"/>
+<area shape="rect" id="edge4-headlabel" href="dir_000028_000029.html" title="4" alt="" coords="156,122,164,137"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000013_000022.html" title="8" alt="" coords="64,223,72,238"/>
+<area shape="rect" id="clust1" href="dir_d44c64559bbebec7f509842c48db8b23.html" title="include" alt="" coords="39,16,132,111"/>
 </map>

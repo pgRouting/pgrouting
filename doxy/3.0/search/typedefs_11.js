@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['undirectedgraph',['UndirectedGraph',['../namespacepgrouting.html#a268d17660990e69b13be963219157b85',1,'pgrouting']]]
+  ['xydirectedgraph',['xyDirectedGraph',['../namespacepgrouting.html#abb931ed9509bbc7bc3e8185d0e2907b5',1,'pgrouting']]],
+  ['xyundirectedgraph',['xyUndirectedGraph',['../namespacepgrouting.html#a9771a88c2a2947af6403a329491815c1',1,'pgrouting']]]
 ];

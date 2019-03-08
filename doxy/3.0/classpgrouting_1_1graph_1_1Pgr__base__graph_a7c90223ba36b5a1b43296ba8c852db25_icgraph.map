@@ -9,15 +9,15 @@
 <area shape="rect" id="node9" href="$drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f" title="do_pgr_driving_many\l_to_dist" alt="" coords="255,361,400,402"/>
 <area shape="rect" id="node10" href="$floydWarshall__driver_8h.html#ab17ad1485c10f4ae85789cd1ba05abdd" title="do_pgr_floydWarshall" alt="" coords="254,427,401,453"/>
 <area shape="rect" id="node11" href="$johnson__driver_8h.html#a4703daa6b2bebc5f8690e6b518ec8466" title="do_pgr_johnson" alt="" coords="271,477,384,504"/>
-<area shape="rect" id="node12" href="$kruskal__driver_8h.html#a105d0e41c9b35b15028dc0ed4f75df79" title="do_pgr_kruskal" alt="" coords="272,528,383,555"/>
+<area shape="rect" id="node12" href="$kruskal__driver_8h.html#aee07f349a646c93efb63eb22f510c632" title="do_pgr_kruskal" alt="" coords="272,528,383,555"/>
 <area shape="rect" id="node13" href="$ksp__driver_8h.html#a0fdd4a3e42a7ba0199d94cbf1058dd28" title="do_pgr_ksp" alt="" coords="283,579,372,605"/>
 <area shape="rect" id="node14" href="$dijkstra__driver_8h.html#a7632002dbc92c191f16181769635f393" title="do_pgr_many_to_many\l_dijkstra" alt="" coords="249,630,406,671"/>
 <area shape="rect" id="node15" href="$withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580" title="do_pgr_many_withPointsDD" alt="" coords="233,696,421,723"/>
-<area shape="rect" id="node16" href="$prim__driver_8h.html#a0968c1aab17196dfafff5ab8a7a52692" title="do_pgr_prim" alt="" coords="281,747,374,773"/>
-<area shape="rect" id="node17" href="$randomSpanningTree__driver_8h.html#aff2fec7737d2fae3f0248be44bbbb4f8" title="do_pgr_randomSpanningTree" alt="" coords="232,797,423,824"/>
-<area shape="rect" id="node18" href="$stoerWagner__driver_8h.html#ace6dcba77f5caac0c1bf464c0d5d6060" title="do_pgr_stoerWagner" alt="" coords="256,848,399,875"/>
-<area shape="rect" id="node19" href="$strongComponents__driver_8h.html#a7f9041dbe45b9f72d7a42e6ed3a311ac" title="do_pgr_strongComponents" alt="" coords="238,899,417,925"/>
-<area shape="rect" id="node20" href="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11" title="do_pgr_turnRestrictedPath" alt="" coords="239,949,416,976"/>
-<area shape="rect" id="node21" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="263,1000,392,1027"/>
-<area shape="rect" id="node22" href="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a" title="do_pgr_withPointsKsp" alt="" coords="251,1051,403,1077"/>
+<area shape="rect" id="node16" href="$randomSpanningTree__driver_8h.html#aff2fec7737d2fae3f0248be44bbbb4f8" title="do_pgr_randomSpanningTree" alt="" coords="232,747,423,773"/>
+<area shape="rect" id="node17" href="$stoerWagner__driver_8h.html#ace6dcba77f5caac0c1bf464c0d5d6060" title="do_pgr_stoerWagner" alt="" coords="256,797,399,824"/>
+<area shape="rect" id="node18" href="$strongComponents__driver_8h.html#a7f9041dbe45b9f72d7a42e6ed3a311ac" title="do_pgr_strongComponents" alt="" coords="238,848,417,875"/>
+<area shape="rect" id="node19" href="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11" title="do_pgr_turnRestrictedPath" alt="" coords="239,899,416,925"/>
+<area shape="rect" id="node20" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="263,949,392,976"/>
+<area shape="rect" id="node21" href="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a" title="do_pgr_withPointsKsp" alt="" coords="251,1000,403,1027"/>
+<area shape="rect" id="node22" href="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a0f1c6ca936a8acc9dbb8b1384ce9e40f" title="pgrouting::alphashape\l::Pgr_alphaShape::Pgr\l_alphaShape" alt="" coords="251,1051,404,1107"/>
 </map>

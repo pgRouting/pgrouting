@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data',['data',['../classPgr__prim.html#ac72e5c6e9aa3a897c50a35d2de4a8af7',1,'Pgr_prim']]],
+  ['data',['data',['../classpgrouting_1_1functions_1_1Pgr__prim.html#a304270a87b1b46b56dc8946089c5591f',1,'pgrouting::functions::Pgr_prim']]],
   ['dbg_5flog',['dbg_log',['../classpgrouting_1_1Pgr__messages.html#a421c5233d8bb92914197836950abf360',1,'pgrouting::Pgr_messages']]],
   ['deadendvertices',['deadendVertices',['../classpgrouting_1_1contraction_1_1Pgr__deadend.html#a999531a34bb650c8419b31ed004f8f57',1,'pgrouting::contraction::Pgr_deadend']]],
   ['debug',['debug',['../classpgrouting_1_1contraction_1_1Pgr__deadend.html#ab197512559204c8a442c17161c8f814e',1,'pgrouting::contraction::Pgr_deadend::debug()'],['../classpgrouting_1_1contraction_1_1Pgr__linear.html#a2b576bc1193106e299e17548fd723fa6',1,'pgrouting::contraction::Pgr_linear::debug()']]],
@@ -12,6 +12,6 @@ var searchData=
   ['deliver_5fy',['deliver_y',['../structPickDeliveryOrders__t.html#af564444415ffabe4cbb2ffb5c9f3000b',1,'PickDeliveryOrders_t']]],
   ['demand',['demand',['../structPickDeliveryOrders__t.html#aec56228fc0edd5812b5cf9ad882902de',1,'PickDeliveryOrders_t']]],
   ['departuretime',['departureTime',['../structGeneral__vehicle__orders__t.html#ac44ca989c1127b3483936bd2ed3b62be',1,'General_vehicle_orders_t']]],
-  ['distance_5f',['distance_',['../classboost_1_1detail_1_1MapReducedWeight.html#a0d089a1ef68525004c4fe739bc9b5b54',1,'boost::detail::MapReducedWeight']]],
-  ['distances',['distances',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html#affc05350450a79f61ec402f4871ad1a7',1,'pgrouting::algorithms::Pgr_astar::distances()'],['../classPgr__bellman__ford.html#ae5d0876e20772f6aa94a68a64023c977',1,'Pgr_bellman_ford::distances()'],['../classPgr__dag.html#a5efb169985ae086ff62835557580a369',1,'Pgr_dag::distances()'],['../classPgr__dijkstra.html#abb45493b234950e9f4466412169b3905',1,'Pgr_dijkstra::distances()'],['../classPgr__prim.html#a76230045630625c3498af242bcbdc2b2',1,'Pgr_prim::distances()']]]
+  ['depth',['depth',['../structpgr__mst__rt.html#aa0448b47fef49a4b70ae54239f7cddb9',1,'pgr_mst_rt']]],
+  ['distances',['distances',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html#affc05350450a79f61ec402f4871ad1a7',1,'pgrouting::algorithms::Pgr_astar::distances()'],['../classPgr__bellman__ford.html#ae5d0876e20772f6aa94a68a64023c977',1,'Pgr_bellman_ford::distances()'],['../classPgr__dag.html#a5efb169985ae086ff62835557580a369',1,'Pgr_dag::distances()'],['../classpgrouting_1_1Pgr__dijkstra.html#a9cb4c84c2f76a92afcd48a86b10a3fd7',1,'pgrouting::Pgr_dijkstra::distances()'],['../classpgrouting_1_1functions_1_1Pgr__prim.html#a84ba6e5b1fd634fca1a8986cc254f5e2',1,'pgrouting::functions::Pgr_prim::distances()']]]
 ];

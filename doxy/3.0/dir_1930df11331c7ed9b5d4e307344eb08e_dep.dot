@@ -1,4 +1,4 @@
-digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/dijkstra" {
+digraph "dijkstra" {
   compound=true
   node [ fontsize="10", fontname="Helvetica"];
   edge [ labelfontsize="10", labelfontname="Helvetica"];
@@ -7,5 +7,7 @@ digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/dijkstra" {
   dir_1930df11331c7ed9b5d4e307344eb08e [shape=box, label="dijkstra", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_1930df11331c7ed9b5d4e307344eb08e.html"];
   }
   dir_f413d2883acb285bdeb0fac3ae939ed0 [shape=box label="cpp_common" URL="dir_f413d2883acb285bdeb0fac3ae939ed0.html"];
-  dir_1930df11331c7ed9b5d4e307344eb08e->dir_f413d2883acb285bdeb0fac3ae939ed0 [headlabel="3", labeldistance=1.5 headhref="dir_000016_000014.html"];
+  dir_4e5658a7286517e9c5b1437feaf10aed [shape=box label="visitors" URL="dir_4e5658a7286517e9c5b1437feaf10aed.html"];
+  dir_1930df11331c7ed9b5d4e307344eb08e->dir_f413d2883acb285bdeb0fac3ae939ed0 [headlabel="3", labeldistance=1.5 headhref="dir_000064_000013.html"];
+  dir_1930df11331c7ed9b5d4e307344eb08e->dir_4e5658a7286517e9c5b1437feaf10aed [headlabel="1", labeldistance=1.5 headhref="dir_000064_000029.html"];
 }

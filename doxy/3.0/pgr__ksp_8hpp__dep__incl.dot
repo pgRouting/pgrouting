@@ -1,12 +1,12 @@
-digraph "/home/vicky/pgrouting/pgrouting/pgrouting/include/yen/pgr_ksp.hpp"
+digraph "pgr_ksp.hpp"
 {
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/yen/pgr_ksp.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/ksp/ksp_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ksp__driver_8cpp.html"];
-  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/ksp/withPoints_ksp\l_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$withPoints__ksp__driver_8cpp.html"];
-  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/yen/pgr_turnRestricted\lPath.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__turnRestrictedPath_8hpp.html"];
+  Node41 [label="pgr_ksp.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node41 -> Node42 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node42 [label="ksp_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ksp__driver_8cpp.html"];
+  Node41 -> Node43 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node43 [label="withPoints_ksp_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$withPoints__ksp__driver_8cpp.html"];
+  Node41 -> Node44 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node44 [label="pgr_turnRestrictedPath.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__turnRestrictedPath_8hpp.html"];
 }

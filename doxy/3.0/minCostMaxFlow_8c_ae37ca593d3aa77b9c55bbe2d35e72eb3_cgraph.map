@@ -1,4 +1,3 @@
 <map id="minCostMaxFlow_many_to_many" name="minCostMaxFlow_many_to_many">
-<area shape="rect" id="node2" href="$doxygen_2CMakeLists_8txt.html#afb9df42bb5f600fa99779fbb58b71cad" title="if" alt="" coords="231,5,269,32"/>
-<area shape="rect" id="node3" href="$minCostMaxFlow_8c.html#a7fe1c6d99b95e5d7d7119759ce62aae9" title="process" alt="" coords="216,56,284,83"/>
+<area shape="rect" id="node2" href="$minCostMaxFlow_8c.html#a7fe1c6d99b95e5d7d7119759ce62aae9" title="process" alt="" coords="216,13,284,39"/>
 </map>

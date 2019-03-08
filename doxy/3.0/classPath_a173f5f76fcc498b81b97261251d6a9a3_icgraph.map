@@ -1,8 +1,0 @@
-<map id="Path::size" name="Path::size">
-<area shape="rect" id="node2" href="$src_2bellman__ford__driver_8cpp.html#a754e723582fb2a56d5939bc9f068408a" title="do_pgr_bellman_ford" alt="" coords="152,5,295,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html#a1ff5255c35221d033252cb9360929c97" title="Performs the next cycle of the algorithm. " alt="" coords="156,57,291,98"/>
-<area shape="rect" id="node4" href="$basePath__SSEC_8cpp.html#a5ec42f9cedce93c209092bc259b9c56c" title="equi_cost" alt="" coords="184,123,263,149"/>
-<area shape="rect" id="node5" href="$classPath.html#adf67930d9eaea5c23c9a5262fc846a73" title="Path::isEqual" alt="" coords="173,173,273,200"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1compPathsLess.html#ada4f3092ce886ff87470368bd6802e2d" title="pgrouting::compPathsLess\l::operator()" alt="" coords="135,225,312,266"/>
-<area shape="rect" id="node7" href="$namespacepgRouting.html#ab0332a7731ec5fe2696668fd206fc3a6" title="pgRouting::pgr_dijkstraVia" alt="" coords="136,291,311,317"/>
-</map>

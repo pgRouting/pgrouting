@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Vehicle::getPosHighLimit" name="pgrouting::vrp::Vehicle::getPosHighLimit">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a29bf7e33dfb519d7abb8648c2d631d30" title="Invariant The path must: " alt="" coords="211,5,363,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="205,71,368,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#adc318f75bf9a66664c2d2cefa4939c8d" title="pgrouting::vrp::Vehicle\l::speed" alt="" coords="211,136,363,177"/>
+</map>

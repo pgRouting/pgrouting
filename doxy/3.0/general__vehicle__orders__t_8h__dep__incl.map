@@ -1,7 +1,7 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types/pickDeliver/general_vehicle_orders_t.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types/pickDeliver/general_vehicle_orders_t.h">
-<area shape="rect" id="node2" href="$solution_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/solution.cpp" alt="" coords="181,243,368,299"/>
-<area shape="rect" id="node3" href="$pickDeliver__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/pickDeliver\l/pickDeliver_driver.h" alt="" coords="32,124,210,195"/>
-<area shape="rect" id="node4" href="$pickDeliverEuclidean__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/pickDeliver\l/pickDeliverEuclidean_driver.h" alt="" coords="235,124,434,195"/>
-<area shape="rect" id="node5" href="$pgr__pickDeliver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pgr_pickDeliver.h" alt="" coords="458,131,653,187"/>
-<area shape="rect" id="node6" href="$vehicle_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/vehicle.h" alt="" coords="678,131,828,187"/>
+<map id="general_vehicle_orders_t.h" name="general_vehicle_orders_t.h">
+<area shape="rect" id="node2" href="$solution_8cpp.html" title="solution.cpp" alt="" coords="158,169,250,196"/>
+<area shape="rect" id="node3" href="$pickDeliver__driver_8h.html" title="pickDeliver_driver.h" alt="" coords="28,87,165,114"/>
+<area shape="rect" id="node4" href="$pickDeliverEuclidean__driver_8h.html" title="pickDeliverEuclidean\l_driver.h" alt="" coords="190,80,334,121"/>
+<area shape="rect" id="node5" href="$pgr__pickDeliver_8h.html" title="pgr_pickDeliver.h" alt="" coords="358,87,480,114"/>
+<area shape="rect" id="node6" href="$vehicle_8h.html" title="vehicle.h" alt="" coords="504,87,579,114"/>
 </map>

@@ -1,0 +1,7 @@
+<map id="pgrouting::vrp::Order::is_valid" name="pgrouting::vrp::Order::is_valid">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Order.html#a909823e836bd8fb257eede3dc13ba61e" title="The delivery node identifier. " alt="" coords="205,5,347,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="195,71,357,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76" title="is_delivery " alt="" coords="213,136,339,177"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b" title="is_pickup " alt="" coords="213,201,339,243"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Order.html#aabef0d026576976f0e0eddd40171645b" title="The delivery node identifier. " alt="" coords="205,267,347,308"/>
+</map>

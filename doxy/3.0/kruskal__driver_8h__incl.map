@@ -1,4 +1,4 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/drivers/mst/kruskal_driver.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/drivers/mst/kruskal_driver.h">
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title="c_types/pgr_edge_t.h" alt="" coords="99,124,245,151"/>
-<area shape="rect" id="node4" href="$pgr__kruskal__t_8h.html" title="c_types/pgr_kruskal_t.h" alt="" coords="270,124,431,151"/>
+<map id="kruskal_driver.h" name="kruskal_driver.h">
+<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title="c_types/pgr_edge_t.h" alt="" coords="99,80,245,107"/>
+<area shape="rect" id="node4" href="$pgr__mst__rt_8h.html" title="c_types/pgr_mst_rt.h" alt="" coords="270,80,415,107"/>
 </map>

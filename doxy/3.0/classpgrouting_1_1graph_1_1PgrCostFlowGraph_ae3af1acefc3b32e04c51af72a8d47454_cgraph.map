@@ -1,4 +1,0 @@
-<map id="pgrouting::graph::PgrCostFlowGraph::PgrCostFlowGraph" name="pgrouting::graph::PgrCostFlowGraph::PgrCostFlowGraph">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ab2383ca17e75c6eae2d6d8bcadcccba3" title="pgrouting::graph::PgrCost\lFlowGraph::GetFlowEdges" alt="" coords="257,5,436,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#aa01d040e74972a90e291b9319a9f3055" title="pgrouting::graph::PgrCost\lFlowGraph::GetMaxFlow" alt="" coords="261,71,432,112"/>
-</map>

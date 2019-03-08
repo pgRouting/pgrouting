@@ -1,12 +1,12 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/src/pickDeliver/pgr_pickDeliver.cpp" name="/home/vicky/pgrouting/pgrouting/pgrouting/src/pickDeliver/pgr_pickDeliver.cpp">
-<area shape="rect" id="node2" href="$pgr__pickDeliver_8h.html" title="vrp/pgr_pickDeliver.h" alt="" coords="211,109,357,136"/>
-<area shape="rect" id="node5" href="$fleet_8h.html" title="vrp/fleet.h" alt="" coords="409,259,489,285"/>
-<area shape="rect" id="node6" href="$vehicle__pickDeliver_8h.html" title="vrp/vehicle_pickDeliver.h" alt="" coords="499,333,667,360"/>
-<area shape="rect" id="node7" href="$order_8h.html" title="vrp/order.h" alt="" coords="918,408,1002,435"/>
-<area shape="rect" id="node8" href="$vehicle__node_8h.html" title="vrp/vehicle_node.h" alt="" coords="895,483,1025,509"/>
-<area shape="rect" id="node10" href="$pd__orders_8h.html" title="vrp/pd_orders.h" alt="" coords="211,408,323,435"/>
-<area shape="rect" id="node11" href="$solution_8h.html" title="vrp/solution.h" alt="" coords="467,184,567,211"/>
-<area shape="rect" id="node14" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="763,184,939,211"/>
-<area shape="rect" id="node15" href="$initial__solution_8h.html" title="vrp/initial_solution.h" alt="" coords="449,109,586,136"/>
-<area shape="rect" id="node16" href="$optimize_8h.html" title="vrp/optimize.h" alt="" coords="1107,109,1211,136"/>
+<map id="pgr_pickDeliver.cpp" name="pgr_pickDeliver.cpp">
+<area shape="rect" id="node2" href="$pgr__pickDeliver_8h.html" title="vrp/pgr_pickDeliver.h" alt="" coords="211,80,357,107"/>
+<area shape="rect" id="node5" href="$fleet_8h.html" title="vrp/fleet.h" alt="" coords="409,229,489,256"/>
+<area shape="rect" id="node6" href="$vehicle__pickDeliver_8h.html" title="vrp/vehicle_pickDeliver.h" alt="" coords="499,304,667,331"/>
+<area shape="rect" id="node7" href="$order_8h.html" title="vrp/order.h" alt="" coords="918,379,1002,405"/>
+<area shape="rect" id="node8" href="$vehicle__node_8h.html" title="vrp/vehicle_node.h" alt="" coords="895,453,1025,480"/>
+<area shape="rect" id="node10" href="$pd__orders_8h.html" title="vrp/pd_orders.h" alt="" coords="211,379,323,405"/>
+<area shape="rect" id="node11" href="$solution_8h.html" title="vrp/solution.h" alt="" coords="467,155,567,181"/>
+<area shape="rect" id="node14" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="763,155,939,181"/>
+<area shape="rect" id="node15" href="$initial__solution_8h.html" title="vrp/initial_solution.h" alt="" coords="449,80,586,107"/>
+<area shape="rect" id="node16" href="$optimize_8h.html" title="vrp/optimize.h" alt="" coords="1107,80,1211,107"/>
 </map>

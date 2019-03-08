@@ -12,7 +12,7 @@ var classPgr__dag =
     [ "dag", "classPgr__dag.html#a246ae21acdded44060a9f6284e836f0a", null ],
     [ "dag_1_to_1", "classPgr__dag.html#a4dc1c1bf3488ffa4c0e1c42c3feb46f4", null ],
     [ "dag_1_to_many", "classPgr__dag.html#a962d66849e2d2f878fe8d43f8ff77107", null ],
-    [ "get_paths", "classPgr__dag.html#ace60c14544c6bb60d5518d46479967bc", null ],
+    [ "get_paths", "classPgr__dag.html#aa8656201328dc172d941ad3bceee69d0", null ],
     [ "distances", "classPgr__dag.html#a5efb169985ae086ff62835557580a369", null ],
     [ "log", "classPgr__dag.html#aa1dbd4602e7aa9e86d4c6fa27728a69f", null ],
     [ "nodesInDistance", "classPgr__dag.html#ac11fae8f31241cdc4e913ee1db971389", null ],

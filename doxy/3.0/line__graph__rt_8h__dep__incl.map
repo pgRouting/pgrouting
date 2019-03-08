@@ -1,4 +1,4 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types/line_graph_rt.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types/line_graph_rt.h">
-<area shape="rect" id="node2" href="$lineGraph__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/lineGraph\l/lineGraph_driver.h" alt="" coords="5,124,175,195"/>
-<area shape="rect" id="node3" href="$pgr__turnRestrictedPath_8hpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/yen/pgr_turnRestricted\lPath.hpp" alt="" coords="199,124,402,195"/>
+<map id="line_graph_rt.h" name="line_graph_rt.h">
+<area shape="rect" id="node2" href="$lineGraph__driver_8h.html" title="lineGraph_driver.h" alt="" coords="5,80,132,107"/>
+<area shape="rect" id="node3" href="$pgr__turnRestrictedPath_8hpp.html" title="pgr_turnRestrictedPath.hpp" alt="" coords="157,80,338,107"/>
 </map>

@@ -1,8 +1,11 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/src/mst/prim.c" name="/home/vicky/pgrouting/pgrouting/pgrouting/src/mst/prim.c">
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="69,184,291,211"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="155,109,333,136"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="358,109,506,136"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="530,109,689,136"/>
-<area shape="rect" id="node7" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="713,109,884,136"/>
-<area shape="rect" id="node8" href="$prim__driver_8h.html" title="drivers/mst/prim_driver.h" alt="" coords="909,109,1075,136"/>
+<map id="prim.c" name="prim.c">
+<area shape="rect" id="node3" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="88,155,309,181"/>
+<area shape="rect" id="node5" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="155,80,333,107"/>
+<area shape="rect" id="node6" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="409,80,557,107"/>
+<area shape="rect" id="node7" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="581,80,739,107"/>
+<area shape="rect" id="node8" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="764,80,935,107"/>
+<area shape="rect" id="node9" href="$arrays__input_8h.html" title="c_common/arrays_input.h" alt="" coords="959,80,1131,107"/>
+<area shape="rect" id="node10" href="$pgr__mst__rt_8h.html" title="c_types/pgr_mst_rt.h" alt="" coords="1259,155,1405,181"/>
+<area shape="rect" id="node11" href="$mst__common_8h.html" title="drivers/mst/mst_common.h" alt="" coords="1207,80,1388,107"/>
+<area shape="rect" id="node12" href="$prim__driver_8h.html" title="drivers/mst/prim_driver.h" alt="" coords="1413,80,1579,107"/>
 </map>

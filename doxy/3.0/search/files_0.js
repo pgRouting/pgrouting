@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['alpha_2ec',['alpha.c',['../alpha_8c.html',1,'']]],
-  ['alpha_5fdriver_2ecpp',['alpha_driver.cpp',['../alpha__driver_8cpp.html',1,'']]],
-  ['alpha_5fdriver_2eh',['alpha_driver.h',['../alpha__driver_8h.html',1,'']]],
+  ['alphashape_2ec',['alphaShape.c',['../alphaShape_8c.html',1,'']]],
+  ['alphashape_5fdriver_2ecpp',['alphaShape_driver.cpp',['../alphaShape__driver_8cpp.html',1,'']]],
+  ['alphashape_5fdriver_2eh',['alphaShape_driver.h',['../alphaShape__driver_8h.html',1,'']]],
   ['arrays_5finput_2ec',['arrays_input.c',['../arrays__input_8c.html',1,'']]],
   ['arrays_5finput_2eh',['arrays_input.h',['../arrays__input_8h.html',1,'']]],
   ['articulationpoints_2ec',['articulationPoints.c',['../articulationPoints_8c.html',1,'']]],

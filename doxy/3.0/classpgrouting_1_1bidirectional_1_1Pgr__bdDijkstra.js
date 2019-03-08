@@ -13,7 +13,7 @@ var classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra =
     [ "explore_forward", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a8e29b7e547b17de4463e3a831cc8a787", null ],
     [ "found", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a13542537894b7e6e0a00937a4cfcaac8", null ],
     [ "initialize", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#adcd46d9c2709a597a33379aa3541bde0", null ],
-    [ "log", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a9f46d85304598d59946b36904bad8bb3", null ],
+    [ "log", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#ae649f49489a4496cdeb9166c3ecc53d9", null ],
     [ "pgr_bdDijkstra", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a5ec4cc07272c3b59d5adaa4b788600ef", null ],
     [ "backward_cost", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#adf12f52fa9cd644c77a6acbcca8fc9f8", null ],
     [ "backward_edge", "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a4d8eb8fd150e8963800fd84d9bd5d524", null ],

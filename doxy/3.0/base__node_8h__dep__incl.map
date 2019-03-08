@@ -1,6 +1,6 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/vrp/base_node.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/vrp/base_node.h">
-<area shape="rect" id="node2" href="$base__node_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/base\l_node.cpp" alt="" coords="5,109,156,180"/>
-<area shape="rect" id="node3" href="$dnode_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/dnode.h" alt="" coords="180,117,331,173"/>
-<area shape="rect" id="node4" href="$node_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/node.h" alt="" coords="355,117,505,173"/>
-<area shape="rect" id="node5" href="$pd__orders_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pd_orders.h" alt="" coords="529,117,691,173"/>
+<map id="base_node.h" name="base_node.h">
+<area shape="rect" id="node2" href="$base__node_8cpp.html" title="base_node.cpp" alt="" coords="5,80,116,107"/>
+<area shape="rect" id="node3" href="$dnode_8h.html" title="dnode.h" alt="" coords="140,80,208,107"/>
+<area shape="rect" id="node4" href="$node_8h.html" title="node.h" alt="" coords="233,80,294,107"/>
+<area shape="rect" id="node5" href="$pd__orders_8h.html" title="pd_orders.h" alt="" coords="318,80,409,107"/>
 </map>

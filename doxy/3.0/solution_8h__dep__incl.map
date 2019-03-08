@@ -1,8 +1,8 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/vrp/solution.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/vrp/solution.h">
-<area shape="rect" id="node2" href="$initial__solution_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/initial\l_solution.cpp" alt="" coords="5,213,156,284"/>
-<area shape="rect" id="node3" href="$optimize_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/optimize.cpp" alt="" coords="437,221,628,277"/>
-<area shape="rect" id="node4" href="$pgr__pickDeliver_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/pgr_pickDeliver.cpp" alt="" coords="181,221,413,277"/>
-<area shape="rect" id="node5" href="$solution_8cpp.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/src/pickDeliver/solution.cpp" alt="" coords="653,221,839,277"/>
-<area shape="rect" id="node6" href="$initial__solution_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/initial_solution.h" alt="" coords="95,109,282,165"/>
-<area shape="rect" id="node7" href="$pgr__pickDeliver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pgr_pickDeliver.h" alt="" coords="357,109,551,165"/>
+<map id="solution.h" name="solution.h">
+<area shape="rect" id="node2" href="$initial__solution_8cpp.html" title="initial_solution.cpp" alt="" coords="5,155,135,181"/>
+<area shape="rect" id="node3" href="$optimize_8cpp.html" title="optimize.cpp" alt="" coords="321,155,417,181"/>
+<area shape="rect" id="node4" href="$pgr__pickDeliver_8cpp.html" title="pgr_pickDeliver.cpp" alt="" coords="159,155,296,181"/>
+<area shape="rect" id="node5" href="$solution_8cpp.html" title="solution.cpp" alt="" coords="441,155,533,181"/>
+<area shape="rect" id="node6" href="$initial__solution_8h.html" title="initial_solution.h" alt="" coords="79,80,194,107"/>
+<area shape="rect" id="node7" href="$pgr__pickDeliver_8h.html" title="pgr_pickDeliver.h" alt="" coords="269,80,391,107"/>
 </map>

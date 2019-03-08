@@ -2,7 +2,7 @@ var classGraphDefinition =
 [
     [ "GraphDefinition", "classGraphDefinition.html#add9cdec7ad3dfce686757d4b000c245f", null ],
     [ "~GraphDefinition", "classGraphDefinition.html#a1c27f2bd47f8773dd301729f57d6d6a0", null ],
-    [ "addEdge", "classGraphDefinition.html#a2c40687b3b05b7420adc718ede9af365", null ],
+    [ "addEdge", "classGraphDefinition.html#a85ec22461f3082309a4b5225eac552bb", null ],
     [ "connectEdge", "classGraphDefinition.html#a03e605a7da63297b459419b8cfc17845", null ],
     [ "construct_graph", "classGraphDefinition.html#a1aa3daf43141bf0ad05ed930b3442e50", null ],
     [ "construct_path", "classGraphDefinition.html#a01ad124fbb08139fb8b1653081c4e0a7", null ],

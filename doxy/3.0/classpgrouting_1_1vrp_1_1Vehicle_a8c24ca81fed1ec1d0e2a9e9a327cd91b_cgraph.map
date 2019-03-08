@@ -1,0 +1,8 @@
+<map id="pgrouting::vrp::Vehicle::tau" name="pgrouting::vrp::Vehicle::tau">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a2fe5a77c18f78d802599327957a2357e" title="pgrouting::vrp::Vehicle\l::cvTot" alt="" coords="235,5,387,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0d65e9efcf78078f3b914b12f61ebf75" title="pgrouting::vrp::Vehicle\l::duration" alt="" coords="235,71,387,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1Identifier.html#a147f029e589a2dd36b1edd638d7ac833" title="pgrouting::Identifier::id" alt="" coords="236,137,387,163"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447" title="pgrouting::Identifier::idx" alt="" coords="232,187,391,214"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a574893de6aeb02d2e7fb6a8118ffcddf" title="pgrouting::vrp::Vehicle\l::total_wait_time" alt="" coords="235,239,387,280"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0052d0936d0a3a2ee4e29f07a76c7ec0" title="pgrouting::vrp::Vehicle\l::twvTot" alt="" coords="235,304,387,345"/>
+</map>
