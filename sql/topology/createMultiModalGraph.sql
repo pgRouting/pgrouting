@@ -428,7 +428,9 @@ BEGIN
       for v_lineal_layer in SELECT v.value from  jsonb_array_elements_text(v_keyvalue.value) as v LOOP
 
         v_group := p_layers->v_lineal_layer->>'group';
-        v_p_groups := v_p_groups || v_group;
+        if(array_position(v_p_groups, v_group) isnull ) then
+          v_p_groups := v_p_groups || v_group;
+        end if;
 
         if (p_layers->(v_keyvalue.key)->>'pconn') = '1' and
            (p_layers->v_lineal_layer->>'pconn') = '0' THEN
