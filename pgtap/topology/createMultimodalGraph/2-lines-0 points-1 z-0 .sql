@@ -91,7 +91,7 @@ PREPARE createTopology_1 AS
    }
 }', 'graph_lines', 'public', 0.000001);
 
-SELECT results_eq('createTopology_1', ARRAY[0]::BIGINT[]);
+SELECT results_eq('createTopology_1', ARRAY[12]::BIGINT[]);
 
 --testing connectivity
 
@@ -143,56 +143,56 @@ SELECT results_eq('test5',ARRAY[3]::BIGINT[]);
 PREPARE test6 AS
 SELECT count(*) FROM pgr_dijkstra(
   'SELECT id, source, target, 0 AS cost, 0 AS reverse_cost FROM graph_lines',
-  (SELECT id FROM graph_lines_pt WHERE id_geom =7 ),
-  (SELECT id FROM graph_lines_pt WHERE id_geom =5 )
+  (SELECT id FROM graph_lines_pt WHERE id_geom =7 and group_id = 0),
+  (SELECT id FROM graph_lines_pt WHERE id_geom =5 and group_id = 0)
 );
 SELECT results_eq('test6', ARRAY[0]::BIGINT[]);
 
 PREPARE test7 AS
 SELECT count(*) FROM pgr_dijkstra(
   'SELECT id, source, target, 0 AS cost, 0 AS reverse_cost FROM graph_lines',
-  (SELECT id FROM graph_lines_pt WHERE id_geom =7 ),
-  (SELECT id FROM graph_lines_pt WHERE id_geom =6 )
+  (SELECT id FROM graph_lines_pt WHERE id_geom =7  and group_id = 0),
+  (SELECT id FROM graph_lines_pt WHERE id_geom =6 and group_id = 0 )
 );
 SELECT results_eq('test7', ARRAY[0]::BIGINT[]);
 
 PREPARE test8 AS
   SELECT count(*) FROM pgr_dijkstra(
                            'SELECT id, source, target, 0 AS cost, 0 AS reverse_cost FROM graph_lines',
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =11 ),
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =1 )
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =11  and group_id = 0),
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =1 and group_id = 0 )
                          );
 SELECT results_eq('test8', ARRAY[0]::BIGINT[]); -- there is no connection because of z in point 11 and point 8
 
 PREPARE test9 AS
   SELECT count(*) FROM pgr_dijkstra(
                            'SELECT id, source, target, 0 AS cost, 0 AS reverse_cost FROM graph_lines',
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =11 ),
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =9 )
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =11  and group_id = 0),
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =9 and group_id = 0 )
                          );
 SELECT results_eq('test9', ARRAY[0]::BIGINT[]); -- there is no connection because inner points not connecting policy
 
 PREPARE test10 AS
   SELECT count(*) FROM pgr_dijkstra(
                            'SELECT id, source, target, 0 AS cost, 0 AS reverse_cost FROM graph_lines',
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =10 ),
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =9 )
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =10  and group_id = 0),
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =9 and group_id = 0 )
                          );
 SELECT results_eq('test10', ARRAY[0]::BIGINT[]); -- there is no connection because inner points not connecting policy
 
 PREPARE test11 AS
   SELECT count(*) FROM pgr_dijkstra(
                            'SELECT id, source, target, 0 AS cost, 0 AS reverse_cost FROM graph_lines',
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =13 ),
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =12 )
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =13  and group_id = 1),
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =12 and group_id = 0 )
                          );
-SELECT results_eq('test11', ARRAY[3]::BIGINT[]); --there is always be connection, unless point-layer dont join the two layers
+SELECT results_eq('test11', ARRAY[4]::BIGINT[]); --there is always be connection, unless point-layer dont join the two layers
 
 PREPARE test12 AS
   SELECT count(*) FROM pgr_dijkstra(
                            'SELECT id, source, target, 0 AS cost, 0 AS reverse_cost FROM graph_lines',
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =13 ),
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =9 )
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =13 and group_id = 1 ),
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =9  and group_id = 0)
                          );
 SELECT results_eq('test12', ARRAY[0]::BIGINT[]); --there will not be connection because 2nd group is not connected to first group and
                                                  --2nd layer not connect on point(13 16 35) because there is not such point in pontLayer-1
@@ -200,8 +200,8 @@ SELECT results_eq('test12', ARRAY[0]::BIGINT[]); --there will not be connection 
 PREPARE test13 AS
   SELECT count(*) FROM pgr_dijkstra(
                            'SELECT id, source, target, 0 AS cost, 0 AS reverse_cost FROM graph_lines',
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =14 ),
-                           (SELECT id FROM graph_lines_pt WHERE id_geom =9 )
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =14 and group_id = 1 ),
+                           (SELECT id FROM graph_lines_pt WHERE id_geom =9  and group_id = 0)
                          );
 SELECT results_eq('test13', ARRAY[0]::BIGINT[]); -- there is not connection because of layer and point connectivity policy, must be layer-1 point-1 to have connectivity
 
