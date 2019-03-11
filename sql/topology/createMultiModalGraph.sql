@@ -308,19 +308,22 @@ BEGIN
           '(id bigint primary key, ' ||
           'layname text,' ||
           'id_geom bigint,' ||
-          'geom geometry)';
+          'geom geometry,' ||
+          'group_id int' ||
+          ')';
 
   -- Table of graph's edges
   EXECUTE 'drop table if exists '|| v_lines_table_name;
   EXECUTE 'create table '|| v_lines_table_name ||
     --It is linestring because of if there is a layer with multilinestring geometries,
-    --in order to them being valid, they must be convertable to linestring completely
+    --in order to them being valid, they must be convertible to linestring completely
           '(geom geometry,' ||
           'source bigint,' ||
           'target bigint,' ||
           'id_geom bigint,' || --id of the geometry that contains this edge
           'layname text,' ||     --name of the layer that has the geometry containing this edge
           'bounded_layers text[] default null,'||--ids of layers being joined
+          'group_id int,' ||   --tells which group this edge belongs to
           'id serial primary key)';
   EXECUTE 'create index on '|| v_lines_table_name||' (id_geom)';
 
@@ -401,7 +404,7 @@ BEGIN
                 and st_3ddwithin(geom,v_r_geom, p_tolerance);
             END IF;
             EXECUTE 'insert into '|| v_r_table_name ||
-                    ' values($1,null,null, $2)' using v_r, v_point;
+                    ' values($1,null,null, $2,$3)' using v_r, v_point, v_group;
             v_r_point_id := v_r_point_id + 1;
             /*  ELSEIF v_point_pos = 3 THEN
                 v_r := null;   */
@@ -493,8 +496,8 @@ BEGIN
           END IF;
 
           if v_r_r is NULL THEN
-            EXECUTE 'insert into '||v_r_table_name||' values($1,$2,$3,$4) '
-              using v_r_point_id, v_keyvalue.key, v_point_id, v_point;
+            EXECUTE 'insert into '||v_r_table_name||' values($1,$2,$3,$4,$5) '
+              using v_r_point_id, v_keyvalue.key, v_point_id, v_point, v_group;
             v_r := v_r_point_id;
             v_r_point_id := v_r_point_id+1;
           else
@@ -515,7 +518,7 @@ BEGIN
                                                               st_3ddwithin(A.geom, B.geom, p_tolerance) and
                                                               A.g > B.g
                                                               loop
-          EXECUTE 'insert into '||v_lines_table_name|| ' values(null,$1,$2,null,null,$3);'using v_group_r_A, v_group_r_B, array[v_group_layer_name_A,v_group_layer_name_B]  ;
+          EXECUTE 'insert into '||v_lines_table_name|| ' values(null,$1,$2,null,null,$3,$4);'using v_group_r_A, v_group_r_B, array[v_group_layer_name_A,v_group_layer_name_B], v_group;
          end loop;
 
       END LOOP;
@@ -531,6 +534,7 @@ BEGIN
       CONTINUE ;
     END IF;
 
+    v_group := p_layers->(v_keyvalue.key)->'group';
     v_zconn := p_layers->(v_keyvalue.key)->>'zconn';
     v_geom_dims := p_layers->(v_keyvalue.key)->>'dims';
     for v_current_line_layer_id,v_current_line_layer_the_geom in
@@ -552,7 +556,7 @@ BEGIN
         END IF;
       END LOOP;
       --Insert first line with its source and target values.
-      EXECUTE 'INSERT into '||v_lines_table_name||' VALUES ($1,$2,$3,$4,$5)'using v_current_line_layer_the_geom, v_source, v_target,v_current_line_layer_id,v_keyvalue.key;
+      EXECUTE 'INSERT into '||v_lines_table_name||' VALUES ($1,$2,$3,$4,$5,null,$6)'using v_current_line_layer_the_geom, v_source, v_target,v_current_line_layer_id,v_keyvalue.key, v_group;
 
       --      Points are not added so this is not necessary
       --         --if geometries are 2d and z is gotten from query, intermediate points will not have z value, so lines can't be chopped
@@ -608,7 +612,7 @@ BEGIN
           END IF;
           if st_3ddwithin(v_line_point,v_point,p_tolerance) THEN
             v_points_make_line := v_points_make_line || v_line_point;
-            EXECUTE 'insert into '||v_lines_table_name||' values ($1,$2,$3,$4,$5)' USING st_makeline(v_points_make_line),v_source,v_r,v_current_line_layer_id,v_keyvalue.key;
+            EXECUTE 'insert into '||v_lines_table_name||' values ($1,$2,$3,$4,$5,null,$6)' USING st_makeline(v_points_make_line),v_source,v_r,v_current_line_layer_id,v_keyvalue.key,v_group;
             v_points_make_line :='{}';
             v_source := v_r;
           END IF;
@@ -619,7 +623,7 @@ BEGIN
         --this will never insert garbage because of if there is an intermediate point that has a representative point
         --there is a line who contains it and therefore it will be chopped just over that point in this iteration, so the
         --final line is going to have that point as the first point and the last point from v_intersected's last point
-        EXECUTE 'insert into '||v_lines_table_name ||' values($1,$2,$3,$4,$5)' USING st_makeline(v_points_make_line), v_r, v_target,v_current_line_layer_id,v_keyvalue.key;
+        EXECUTE 'insert into '||v_lines_table_name ||' values($1,$2,$3,$4,$5,null,$6)' USING st_makeline(v_points_make_line), v_r, v_target,v_current_line_layer_id,v_keyvalue.key,v_group;
         EXECUTE 'DELETE From '||v_lines_table_name ||' where id = $1' USING v_intersected_id;
 
       END LOOP;
