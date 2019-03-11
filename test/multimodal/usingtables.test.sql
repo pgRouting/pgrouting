@@ -50,7 +50,7 @@ CREATE TABLE point_layer (
 
 CREATE OR REPLACE FUNCTION pgr_wrap_create_multimodal_graph (p_lineal_groups     TEXT, p_puntual_groups     TEXT, p_layers    TEXT,
                                                           p_graph_lines_table TEXT, p_graph_lines_schema TEXT, p_tolerance FLOAT,
-                                                          OUT ip_out_d INTEGER , OUT p_out_layname TEXT, OUT p_out_error TEXT)
+                                                          OUT ip_out_d BIGINT , OUT p_out_layname TEXT, OUT p_out_error TEXT)
   RETURNS SETOF RECORD AS 
 $$
 DECLARE
@@ -202,49 +202,49 @@ SELECT * FROM pgr_dijkstra(
 --test6 as
 SELECT * FROM pgr_dijkstra(
    'SELECT id, source, target, 0 as cost, 0 as reverse_cost FROM graph_lines',
-   (SELECT id FROM graph_lines_pt WHERE id_geom =7 ),
-   (SELECT id FROM graph_lines_pt WHERE id_geom =5 )
+   (SELECT id FROM graph_lines_pt WHERE id_geom =7 and group_id = 0),
+   (SELECT id FROM graph_lines_pt WHERE id_geom =5 and group_id = 0)
  );
 
 --test7 as
 SELECT * FROM pgr_dijkstra(
    'SELECT id, source, target, 0 as cost, 0 as reverse_cost FROM graph_lines',
-   (SELECT id FROM graph_lines_pt WHERE id_geom =7 ),
-   (SELECT id FROM graph_lines_pt WHERE id_geom =6 )
+   (SELECT id FROM graph_lines_pt WHERE id_geom =7 and group_id = 0),
+   (SELECT id FROM graph_lines_pt WHERE id_geom =6 and group_id = 0 )
  );
 --test8 as
 SELECT * FROM pgr_dijkstra(
    'SELECT id, source, target, 0 as cost, 0 as reverse_cost FROM graph_lines',
-   (SELECT id FROM graph_lines_pt WHERE id_geom =11 ),
-   (SELECT id FROM graph_lines_pt WHERE id_geom =1 )
+   (SELECT id FROM graph_lines_pt WHERE id_geom =11 and group_id = 0),
+   (SELECT id FROM graph_lines_pt WHERE id_geom =1 and group_id = 0 )
 );
 --test9 as
 SELECT * FROM pgr_dijkstra(
    'SELECT id, source, target, 0 as cost, 0 as reverse_cost FROM graph_lines',
-   (SELECT id FROM graph_lines_pt WHERE id_geom =11 ),
-   (SELECT id FROM graph_lines_pt WHERE id_geom =9 )
+   (SELECT id FROM graph_lines_pt WHERE id_geom =11 and group_id = 0),
+   (SELECT id FROM graph_lines_pt WHERE id_geom =9 and group_id = 0 )
  );
 --test10 as
 SELECT * FROM pgr_dijkstra(
    'SELECT id, source, target, 0 as cost, 0 as reverse_cost FROM graph_lines',
-   (SELECT id FROM graph_lines_pt WHERE id_geom =10 ),
-   (SELECT id FROM graph_lines_pt WHERE id_geom =9 )
+   (SELECT id FROM graph_lines_pt WHERE id_geom =10 and group_id = 0),
+   (SELECT id FROM graph_lines_pt WHERE id_geom =9 and group_id = 0 )
  );
 --test11 as
 SELECT * FROM pgr_dijkstra(
    'SELECT id, source, target, 0 as cost, 0 as reverse_cost FROM graph_lines',
-   (SELECT id FROM graph_lines_pt WHERE id_geom =13 ),
-   (SELECT id FROM graph_lines_pt WHERE id_geom =12 )
+   (SELECT id FROM graph_lines_pt WHERE id_geom =13 and group_id = 1),
+   (SELECT id FROM graph_lines_pt WHERE id_geom =12 and group_id = 0 )
  );
 --test12 as
 SELECT * FROM pgr_dijkstra(
    'SELECT id, source, target, 0 as cost, 0 as reverse_cost FROM graph_lines',
-   (SELECT id FROM graph_lines_pt WHERE id_geom =13 ),
-   (SELECT id FROM graph_lines_pt WHERE id_geom =9 )
+   (SELECT id FROM graph_lines_pt WHERE id_geom =13 and group_id = 1),
+   (SELECT id FROM graph_lines_pt WHERE id_geom =9 and group_id = 0 )
  );
 --test13 as
 SELECT * FROM pgr_dijkstra(
    'SELECT id, source, target, 0 as cost, 0 as reverse_cost FROM graph_lines',
-   (SELECT id FROM graph_lines_pt WHERE id_geom =14 ),
-   (SELECT id FROM graph_lines_pt WHERE id_geom =9 )
+   (SELECT id FROM graph_lines_pt WHERE id_geom =14 and group_id = 1 ),
+   (SELECT id FROM graph_lines_pt WHERE id_geom =9  and group_id = 0)
 );
