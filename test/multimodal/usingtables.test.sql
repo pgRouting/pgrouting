@@ -95,61 +95,61 @@ $$ LANGUAGE plpgsql;
 --adding test 2lines-1points-1 z-0   from pgTapTest
 drop table if exists test_table_l1;
 create table test_table_l1(
-  the_geom geometry('linestringz',4326),
   id integer primary key,
+  the_geom geometry('linestringz',4326),
   z_start float default 0,
   z_end float default 0
 );
 
-insert into test_table_l1 VALUES ('SRID=4326;linestring(5 0 0,10 10 0, 13 10 0, 15 10 0)',1);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(0 0 0, 10 10 0)',2);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(10 10 0, 10 0 0)',3);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0 0, 10 10 0)',4);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0 0, 8 10 0, 10 10 0)', 5);
-insert into test_table_l1 values ('SRID=4326;linestring(7 12 0, 13 10 0, 14 8 0)', 6);
+insert into test_table_l1 (the_geom, id) VALUES ('SRID=4326;linestring(5 0 0,10 10 0, 13 10 0, 15 10 0)',1);
+insert into test_table_l1 (the_geom, id) VALUES ('SRID=4326;linestring(0 0 0, 10 10 0)',2);
+insert into test_table_l1 (the_geom, id) VALUES ('SRID=4326;linestring(10 10 0, 10 0 0)',3);
+insert into test_table_l1 (the_geom, id) VALUES ('SRID=4326;linestring(8 0 0, 10 10 0)',4);
+insert into test_table_l1 (the_geom, id) VALUES ('SRID=4326;linestring(8 0 0, 8 10 0, 10 10 0)', 5);
+insert into test_table_l1 (the_geom, id) values ('SRID=4326;linestring(7 12 0, 13 10 0, 14 8 0)', 6);
 
 --for test z
-insert into test_table_l1 values ('SRID=4326;linestring(15 14 50, 15 10 50, 15 8 50)', 7); --overpass over point(15 10 0)
-insert into test_table_l1 values ('SRID=4326;linestring(15 16 35, 15 14 50)', 8); -- z connects with edge points
-insert into test_table_l1 values ('SRID=4326;linestring(13 16 35, 15 14 50, 13 14 50)', 9); -- z connects with interior points
+insert into test_table_l1 (the_geom, id) values ('SRID=4326;linestring(15 14 50, 15 10 50, 15 8 50)', 7); --overpass over point(15 10 0)
+insert into test_table_l1 (the_geom, id) values ('SRID=4326;linestring(15 16 35, 15 14 50)', 8); -- z connects with edge points
+insert into test_table_l1 (the_geom, id) values ('SRID=4326;linestring(13 16 35, 15 14 50, 13 14 50)', 9); -- z connects with interior points
 
 drop table if exists test_table_l2;
 create table test_table_l2(
-  the_geom geometry('linestringz',4326),
   id integer primary key,
+  the_geom geometry('linestringz',4326),
   z_start float default 0,
   z_end float default 0
 );
 
-insert into test_table_l2 values ('SRID=4326;linestring(13 18 35, 13 16 35, 7 12 0)', 1);
-insert into test_table_l2 values ('SRID=4326;linestring(15 18 0, 15 16 35, 17 18 0)', 2);
+insert into test_table_l2 (the_geom, id) values ('SRID=4326;linestring(13 18 35, 13 16 35, 7 12 0)', 1);
+insert into test_table_l2 (the_geom, id) values ('SRID=4326;linestring(15 18 0, 15 16 35, 17 18 0)', 2);
 
 drop table if exists test_table_p1;
 create TABLE test_table_p1(
-  the_geom geometry('pointz',4326),
   id integer primary key,
+  the_geom geometry('pointz',4326),
   z float default 0
 
 );
 
-insert into test_table_p1 values('SRID=4326;point(10 10 0)',1);
-insert into test_table_p1 values('SRID=4326;point(10 0 0)',2);
-insert into test_table_p1 values('SRID=4326;point(8 10 0)',3);
-insert into test_table_p1 values('SRID=4326;point(8 0 0)',4);
-insert into test_table_p1 values('SRID=4326;point(5 0 0)',5);
-insert into test_table_p1 values('SRID=4326;point(0 0 0)',6);
-insert into test_table_p1 values('SRID=4326;point(7 12 0)',7);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(10 10 0)',1);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(10 0 0)',2);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(8 10 0)',3);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(8 0 0)',4);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(5 0 0)',5);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(0 0 0)',6);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(7 12 0)',7);
 
 --for test z
-insert into test_table_p1 values('SRID=4326;point(15 10 0)',8);
-insert into test_table_p1 values('SRID=4326;point(13 14 50)',9);  --edge point  of layer 2
-insert into test_table_p1 values('SRID=4326;point(15 16 35)',10); --interior point of layer 2
-insert into test_table_p1 values('SRID=4326;point(15 8 50)',11);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(15 10 0)',8);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(13 14 50)',9);  --edge point  of layer 2
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(15 16 35)',10); --interior point of layer 2
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(15 8 50)',11);
 
 --for test connectivity with 2nd layer
-insert into test_table_p1 values('SRID=4326;point(14 8 0)',12);
-insert into test_table_p1 values('SRID=4326;point(13 18 35)',13);
-insert into test_table_p1 values('SRID=4326;point(15 18 0)',14);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(14 8 0)',12);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(13 18 35)',13);
+insert into test_table_p1 (the_geom, id) values('SRID=4326;point(15 18 0)',14);
 
 insert into lineal_groups values('linealLayer-1',1),('linealLayer-2',2);
 insert into point_groups values('pointLayer-1','linealLayer-1'),('pointLayer-1','linealLayer-2');

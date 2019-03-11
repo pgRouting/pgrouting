@@ -6,30 +6,30 @@ select plan(8);
 
 drop TABLE IF EXISTS test_table_l1;
 create table test_table_l1(
-   geom geometry('linestring',4326),
-   id integer primary key
+   id integer primary key,
+   geom geometry('linestring',4326)
 );
 
-insert into test_table_l1 VALUES ('SRID=4326;linestring(5 0,10 10, 13 10, 15 10)',1);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(0 0, 10 10)',2);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(10 10,10 0)',3);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0, 10 10)',4);
-insert into test_table_l1 VALUES ('SRID=4326;linestring(8 0, 8 10, 10 10)', 5);
-insert into test_table_l1 values ('SRID=4326;linestring(7 12, 13 10, 14 8)', 6);
+insert into test_table_l1 (geom, id) VALUES ('SRID=4326;linestring(5 0,10 10, 13 10, 15 10)',1);
+insert into test_table_l1 (geom, id) VALUES ('SRID=4326;linestring(0 0, 10 10)',2);
+insert into test_table_l1 (geom, id) VALUES ('SRID=4326;linestring(10 10,10 0)',3);
+insert into test_table_l1 (geom, id) VALUES ('SRID=4326;linestring(8 0, 10 10)',4);
+insert into test_table_l1 (geom, id) VALUES ('SRID=4326;linestring(8 0, 8 10, 10 10)', 5);
+insert into test_table_l1 (geom, id) values ('SRID=4326;linestring(7 12, 13 10, 14 8)', 6);
 
 drop table if EXISTS test_table_p1;
 create TABLE test_table_p1(
-   geom geometry('point',4326),
-   id serial
-  );
+   id integer primary key,
+   geom geometry('point',4326)
+);
 
-insert into test_table_p1 values('SRID=4326;point(10 10)',1);
-insert into test_table_p1 values('SRID=4326;point(10 0)',2);
-insert into test_table_p1 values('SRID=4326;point(8 10)',3);
-insert into test_table_p1 values('SRID=4326;point(8 0)',4);
-insert into test_table_p1 values('SRID=4326;point(5 0)',5);
-insert into test_table_p1 values('SRID=4326;point(0 0)',6);
-insert into test_table_p1 values('SRID=4326;point(7 12)',7);
+insert into test_table_p1 (geom, id) values('SRID=4326;point(10 10)',1);
+insert into test_table_p1 (geom, id) values('SRID=4326;point(10 0)',2);
+insert into test_table_p1 (geom, id) values('SRID=4326;point(8 10)',3);
+insert into test_table_p1 (geom, id) values('SRID=4326;point(8 0)',4);
+insert into test_table_p1 (geom, id) values('SRID=4326;point(5 0)',5);
+insert into test_table_p1 (geom, id) values('SRID=4326;point(0 0)',6);
+insert into test_table_p1 (geom, id) values('SRID=4326;point(7 12)',7);
 
 prepare createTopology_1 as
 SELECT count(*) from pgr_create_multimodal_graph('{
