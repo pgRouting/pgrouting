@@ -1,0 +1,146 @@
+  BEGIN;
+  BEGIN
+  SET client_min_messages TO NOTICE;
+  SET
+  DROP TABLE IF EXISTS edge_table;
+  DROP TABLE
+  CREATE TABLE edge_table (
+                            id BIGSERIAL primary key ,
+                            dir character varying,
+                            source BIGINT,
+                            target BIGINT,
+                            cost FLOAT,
+                            reverse_cost FLOAT,
+                            capacity BIGINT,
+                            reverse_capacity BIGINT,
+                            category_id INTEGER,
+                            reverse_category_id INTEGER,
+                            x1 FLOAT,
+                            y1 FLOAT,
+                            x2 FLOAT,
+                            y2 FLOAT,
+                            the_geom geometry
+  );
+  CREATE TABLE
+  INSERT INTO edge_table (
+    category_id, reverse_category_id,
+    cost, reverse_cost,
+    capacity, reverse_capacity,
+    x1, y1,
+    x2, y2) VALUES
+  (3, 1,    1,  1,  80, 130,   2,   0,    2, 1),
+  (3, 2,   -1,  1,  -1, 100,   2,   1,    3, 1),
+  (2, 1,   -1,  1,  -1, 130,   3,   1,    4, 1),
+  (2, 4,    1,  1, 100,  50,   2,   1,    2, 2),
+  (1, 4,    1, -1, 130,  -1,   3,   1,    3, 2),
+  (4, 2,    1,  1,  50, 100,   0,   2,    1, 2),
+  (4, 1,    1,  1,  50, 130,   1,   2,    2, 2),
+  (2, 1,    1,  1, 100, 130,   2,   2,    3, 2),
+  (1, 3,    1,  1, 130,  80,   3,   2,    4, 2),
+  (1, 4,    1,  1, 130,  50,   2,   2,    2, 3),
+  (1, 2,    1, -1, 130,  -1,   3,   2,    3, 3),
+  (2, 3,    1, -1, 100,  -1,   2,   3,    3, 3),
+  (2, 4,    1, -1, 100,  -1,   3,   3,    4, 3),
+  (3, 1,    1,  1,  80, 130,   2,   3,    2, 4),
+  (3, 4,    1,  1,  80,  50,   4,   2,    4, 3),
+  (3, 3,    1,  1,  80,  80,   4,   1,    4, 2),
+  (1, 2,    1,  1, 130, 100,   0.5, 3.5,  1.999999999999,3.5),
+  (4, 1,    1,  1,  50, 130,   3.5, 2.3,  3.5,4);
+  INSERT 0 18
+  UPDATE edge_table SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
+                        dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   
+                                   WHEN (cost>0 AND reverse_cost<0) THEN 'FT'  
+                                   WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  
+                                   ELSE '' END;
+  UPDATE 18
+  SELECT pgr_createTopology('edge_table',0.001);
+  NOTICE:  PROCESSING:
+  NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+  NOTICE:  Performing checks, please wait .....
+  NOTICE:  Creating Topology, Please wait...
+  NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
+  NOTICE:  Rows with NULL geometry or NULL id: 0
+  NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+  NOTICE:  ----------------------------------------------
+   pgr_createtopology 
+  --------------------
+   OK
+  (1 row)
+  
+  ALTER TABLE edge_table ADD column bus BOOLEAN;
+  ALTER TABLE
+  UPDATE edge_table set bus = false;
+  UPDATE 18
+  UPDATE edge_table set bus = true where id IN (6,7,8,9);
+  UPDATE 4
+  DROP TABLE IF EXISTS bus_stop;
+  NOTICE:  table "bus_stop" does not exist, skipping
+  DROP TABLE
+  CREATE TABLE bus_stop(
+    id INTEGER PRIMARY KEY,
+    geom GEOMETRY('point',4326)
+  );
+  CREATE TABLE
+  insert into bus_stop select 1,st_setsrid(st_point(x2,y2),4326) from edge_table where source = 2 and target = 5;
+  INSERT 0 1
+  insert into bus_stop select 2,st_setsrid(st_point(x2,y2),4326) from edge_table where source = 4 and target = 9;
+  INSERT 0 1
+  select pgr_create_multimodal_graph('{
+    "1": [
+      "pedestrian"
+    ],
+    "2": [
+      "bus"
+    ]
+  }','{"bus_stop":["pedestrian","bus"]}'
+           , '{
+    "pedestrian": {
+      "sql": "SELECT id , the_geom,0 AS z_start, 0 AS z_end FROM edge_table where not bus",
+      "pconn": 0,
+      "zconn": 0
+    },"bus": {
+      "sql": "SELECT id , the_geom,0 AS z_start, 0 AS z_end FROM edge_table where bus",
+      "pconn": 0,
+      "zconn": 0
+    },
+    "bus_stop":{
+      "sql":"SELECT id AS id, geom AS the_geom,0 AS z FROM bus_stop",
+      "pconn":0,
+      "zconn":0
+     }
+  }', 'graph_lines', 'public', 0.000001);
+  NOTICE:  table "pgr_create_top_graph_ptos" does not exist, skipping
+  NOTICE:  table "graph_lines_pt" does not exist, skipping
+  NOTICE:  table "graph_lines" does not exist, skipping
+   pgr_create_multimodal_graph 
+  -----------------------------
+  (0 rows)
+  
+  ALTER TABLE graph_lines ADD COLUMN time_cost FLOAT;
+  ALTER TABLE
+  UPDATE graph_lines SET time_cost = ((st_length(geom)*1000)/5)*60 where layname ='pedestrian';
+  UPDATE 14
+  UPDATE graph_lines SET time_cost = ((st_length(geom)*1000)/50)*60 where layname = 'bus';
+  UPDATE 4
+  UPDATE graph_lines SET time_cost = 0 where bounded_layers @> array['bus','pedestrian'];
+  UPDATE 6
+  select pgr_dijkstra(' select id, source, target, time_cost as cost, time_cost as reverse_cost from graph_lines',
+                    
+                    (select g.id from graph_lines_pt g inner join edge_table_vertices_pgr as r on( st_intersects(st_buffer(g.geom,0.000001),st_setsrid(r.the_geom,4326))) where r.id = 1),
+                    (select g.id from graph_lines_pt g inner join edge_table_vertices_pgr as r on( st_intersects(st_buffer(g.geom,0.000001),st_setsrid(r.the_geom,4326))) where r.id = 12),
+                    true
+  );
+        pgr_dijkstra       
+  -------------------------
+   (1,1,1,11,12000,0)
+   (2,2,2,14,12000,12000)
+   (3,3,5,1,0,24000)
+   (4,4,18,9,1200,24000)
+   (5,5,19,10,1200,25200)
+   (6,6,20,5,0,26400)
+   (7,7,11,21,12000,26400)
+   (8,8,9,-1,0,38400)
+  (8 rows)
+  
+  ROLLBACK;
+  ROLLBACK
