@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 #include <algorithm>
 #include <vector>
+#include <iostream>
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/ch_vertex.h"
@@ -42,24 +43,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 namespace pgrouting {
-
-namespace graph {
-template <class G, typename T_V, typename T_E>
-class Pgr_contractionGraph;
-}
-
-    typedef  graph::Pgr_contractionGraph <
-    boost::adjacency_list < boost::listS, boost::vecS,
-    boost::undirectedS,
-    CH_vertex, CH_edge >,
-    CH_vertex, CH_edge > CHUndirectedGraph;
-
-    typedef  graph::Pgr_contractionGraph <
-    boost::adjacency_list < boost::listS, boost::vecS,
-    boost::bidirectionalS,
-    CH_vertex, CH_edge >,
-    CH_vertex, CH_edge > CHDirectedGraph;
-
 namespace graph {
 
 template <class G, typename T_V, typename T_E>
@@ -201,26 +184,29 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      /*! @brief print the graph with contracted vertices of
        all vertices and edges
        */
-     void print_graph(std::ostringstream &log) {
+     friend
+     std::ostream& operator <<(
+             std::ostream &os,
+             const Pgr_contractionGraph &g) {
          EO_i out, out_end;
-         for (auto vi = vertices(this->graph).first;
-                 vi != vertices(this->graph).second;
+         for (auto vi = vertices(g.graph).first;
+                 vi != vertices(g.graph).second;
                  ++vi) {
-             if ((*vi) >= this->num_vertices()) break;
-             log << this->graph[*vi].id << "(" << (*vi) << ")"
-                 << this->graph[*vi].contracted_vertices() << std::endl;
-             log << " out_edges_of(" << this->graph[*vi].id << "):";
-             for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
+             if ((*vi) >= g.num_vertices()) break;
+             os << g.graph[*vi].id << "(" << (*vi) << ")"
+                 << g.graph[*vi].contracted_vertices() << std::endl;
+             os << " out_edges_of(" << g.graph[*vi].id << "):";
+             for (boost::tie(out, out_end) = out_edges(*vi, g.graph);
                      out != out_end; ++out) {
-                 log << ' ' << this->graph[*out].id
-                     << "=(" << this->graph[this->source(*out)].id
-                     << ", " << this->graph[this->target(*out)].id << ") = "
-                     <<  this->graph[*out].cost <<"\t";
+                 os << ' ' << g.graph[*out].id
+                     << "=(" << g.graph[g.source(*out)].id
+                     << ", " << g.graph[g.target(*out)].id << ") = "
+                     <<  g.graph[*out].cost <<"\t";
              }
-             log << std::endl;
+             os << std::endl;
          }
+         return os;
      }
-
 
 
      /*! @brief get the contracted vertex ids of a given vertex in array format
@@ -304,7 +290,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      }
 
      void get_remaining_vertices(Identifiers<int64_t>& remaining_vertices) {
-        V vi;
         for (auto vi = vertices(this->graph).first;
                 vi != vertices(this->graph).second;
                 ++vi) {
@@ -315,14 +300,13 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
     }
 
      void get_shortcuts(std::vector< CH_edge >& shortcut_edges) {
-         V vi;
          EO_i out, out_end;
          CH_edge e;
          for (auto vi = vertices(this->graph).first;
                 vi != vertices(this->graph).second;
                 ++vi) {
             if ((*vi) >= this->num_vertices()) break;
-         
+
             for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
                     out != out_end; ++out) {
                 if (is_contracted(*out)) {

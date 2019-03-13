@@ -34,24 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "contraction/pgr_contractionGraph.hpp"
+#include "contraction/ch_graphs.hpp"
 #include "contraction/pgr_contract.hpp"
 
+#include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
-
-static
-bool
-is_valid_contraction(int64_t number) {
-    switch (number) {
-        case 1:
-        case 2:
-            return true;
-            break;
-        default:
-            return false;
-            break;
-    }
-}
 
 
 template <typename G>
@@ -61,10 +48,9 @@ static void process_contraction(
         const std::vector< int64_t > &forbidden_vertices,
         const std::vector< int64_t > &contraction_order,
         int64_t max_cycles,
-        //Identifiers<int64_t> &remaining_vertices,
-        //std::vector< pgrouting::CH_edge > &shortcut_edges,
         std::ostringstream &log,
         std::ostringstream &err) {
+
     graph.insert_edges(edges);
 
     #if 0
@@ -86,38 +72,28 @@ static void process_contraction(
             forbid_vertices += graph.get_V(vertex);
         }
         else {
+            // TODO should it be an error?
             err << "Invalid forbidden vertex: " << vertex << "\n";
         }
     }
 
 #ifndef NDEBUG
     log << "Before contraction\n";
-    graph.print_graph(log);
+    log << graph;
 #endif
 
     /*
      * Function call to get the contracted graph.
      */
-    pgrouting::contraction::Pgr_contract<G> result(graph,
+    using Contract = pgrouting::contraction::Pgr_contract<G>;
+    Contract result(graph,
             forbid_vertices,
             contraction_order,
-            max_cycles,
-            //remaining_vertices,
-            //shortcut_edges,
-            log);
-#if 0
+            max_cycles);
+
 #ifndef NDEBUG
     log << "After contraction\n";
     log << graph;
-    log << "Remaining Vertices:" << "\n";
-    for (const auto vertex : remaining_vertices) {
-        log << vertex << "\n";
-    }
-    log << "Added Edges:" << "\n";
-    for (const auto edge : shortcut_edges) {
-        log << edge << "\n";
-    }
-#endif
 #endif
 }
 
@@ -125,8 +101,6 @@ template <typename G>
 static
 void get_postgres_result(
         G &graph,
-        //const Identifiers<int64_t> remaining_vertices,
-        //const std::vector< pgrouting::CH_edge > shortcut_edges,
         contracted_rt **return_tuples,
         size_t *return_tuples_size) {
 
@@ -223,22 +197,23 @@ do_pgr_contractGraph(
                 contraction_order,
                 contraction_order + size_contraction_order);
 
-        for (const auto o : ordering) {
-            if (!is_valid_contraction(o)) {
+        for (const auto kind : ordering) {
+            if (!pgrouting::contraction::is_valid_contraction(static_cast<int>(kind))) {
                 *err_msg = pgr_msg("Invalid Contraction Type found");
-                log << "Contraction type " << o << " not valid";
+                log << "Contraction type " << kind << " not valid";
                 *log_msg = pgr_msg(log.str().c_str());
                 return;
             }
         }
 
 
+#if 0
         /*
          * Extracting vertices of the graph
          */
         Identifiers<int64_t> remaining_vertices;
         std::vector< pgrouting::CH_edge > shortcut_edges;
-
+#endif
 #ifndef NDEBUG
         log << "Original Graph: \n" <<
             std::setprecision(32);
@@ -270,38 +245,31 @@ do_pgr_contractGraph(
         graphType gType = directed? DIRECTED: UNDIRECTED;
         if (directed) {
             log << "Working with directed Graph\n";
-            pgrouting::CHDirectedGraph digraph(gType);
+            using DirectedGraph = pgrouting::graph::CHDirectedGraph;
+            DirectedGraph digraph(gType);
 
             process_contraction(digraph, edges, forbid, ordering,
                     max_cycles,
-                    //remaining_vertices, shortcut_edges,
                     log, err);
 
             get_postgres_result(
                     digraph,
-                    //remaining_vertices,
-                    //shortcut_edges,
                     return_tuples,
                     return_count);
         } else {
             log << "Working with Undirected Graph\n";
 
-            pgrouting::CHUndirectedGraph undigraph(gType);
+            using UndirectedGraph = pgrouting::graph::CHUndirectedGraph;
+            UndirectedGraph undigraph(gType);
             process_contraction(undigraph, edges, forbid, ordering,
                     max_cycles,
-                    //remaining_vertices, shortcut_edges,
                     log, err);
 
             get_postgres_result(
                     undigraph,
-                    //remaining_vertices,
-                    //shortcut_edges,
                     return_tuples,
                     return_count);
         }
-
-        //(*return_count) = remaining_vertices.size()+shortcut_edges.size();
-
 
         *log_msg = log.str().empty()?
             *log_msg :

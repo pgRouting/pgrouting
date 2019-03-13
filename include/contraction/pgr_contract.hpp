@@ -34,63 +34,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_messages.h"
 
-#include "./pgr_contractionGraph.hpp"
-#include "./pgr_linearContraction.hpp"
-#include "./pgr_deadEndContraction.hpp"
+#include "contraction/pgr_contractionGraph.hpp"
+#include "contraction/ch_graphs.hpp"
+#include "contraction/pgr_linearContraction.hpp"
+#include "contraction/pgr_deadEndContraction.hpp"
 
 namespace pgrouting {
 namespace contraction {
 
+bool is_valid_contraction(int number);
 
 template < class G >
-class Pgr_contract {
+class Pgr_contract : public Pgr_messages {
     typedef typename G::V V;
-
-
-    void perform_deadEnd(G &graph,
-            Identifiers<V> forbidden_vertices,
-            std::ostringstream& debug) {
-        Pgr_deadend<G> deadendContractor;
-        deadendContractor.setForbiddenVertices(forbidden_vertices);
-
-        deadendContractor.calculateVertices(graph);
-        try {
-            deadendContractor.doContraction(graph);
-        }
-        catch ( ... ) {
-            debug << "Caught unknown exception!\n";
-        }
-        debug << deadendContractor.debug.str();
-    }
-
-
-    void perform_linear(G &graph,
-            Identifiers<V>& forbidden_vertices,
-            std::ostringstream& debug) {
-        std::ostringstream linear_debug;
-        Pgr_linear<G> linearContractor;
-        linearContractor.setForbiddenVertices(forbidden_vertices);
-        linearContractor.calculateVertices(graph);
-        try {
-            linearContractor.doContraction(graph);
-        }
-        catch ( ... ) {
-            linear_debug << "Caught unknown exception!\n";
-        }
-        debug << linear_debug.str().c_str() << "\n";
-    }
-
 
  public:
     Pgr_contract(
             G &graph,
             Identifiers<V> forbidden_vertices,
             std::vector<int64_t> contraction_order,
-            int64_t max_cycles,
-            //Identifiers<int64_t> &remaining_vertices,
-            //std::vector<pgrouting::CH_edge> &shortcut_edges,
-            std::ostringstream& debug) {
+            int64_t max_cycles
+            ) {
         std::deque<int64_t> contract_order;
         //  push -1 to indicate the start of the queue
         contract_order.push_back(-1);
@@ -99,84 +65,84 @@ class Pgr_contract {
                 contraction_order.begin(), contraction_order.end());
         for (int64_t i = 0; i < max_cycles; ++i) {
             int64_t front = contract_order.front();
-            debug << "Starting cycle " << i+1 << "\n";
+            log << "Starting cycle " << i + 1 << "\n";
             contract_order.pop_front();
             contract_order.push_back(front);
-            front = contract_order.front();
-            while (front != -1) {
-                switch (front) {
-                    case -1:
-                        debug << "Finished cycle " << i+1 << std::endl;
-                        break;
-                    default:
-                        debug << "contraction "<< front
-                            << " asked" << std::endl;
-                        if (front == 1) {
-#ifndef NDEBUG
-                            debug << "Graph before dead end contraction"
-                                << std::endl;
-                            graph.print_graph(debug);
-                            debug << "Performing dead end contraction"
-                                << std::endl;
-#endif
-                            perform_deadEnd(graph, forbidden_vertices, debug);
-#ifndef NDEBUG
-                            debug << "Graph after dead end contraction"
-                                << std::endl;
-                            graph.print_graph(debug);
-#endif
-                        } else if (front == 2) {
-#ifndef NDEBUG
-                            debug << "Graph before linear contraction"
-                                << std::endl;
-                            graph.print_graph(debug);
-                            debug << "Performing linear contraction"
-                                << std::endl;
-#endif
-                            perform_linear(graph, forbidden_vertices, debug);
-#ifndef NDEBUG
-                            debug << "Graph after linear contraction"
-                                << std::endl;
-                            graph.print_graph(debug);
-#endif
-                        }
-                        contract_order.pop_front();
-                        contract_order.push_back(front);
-                        front = contract_order.front();
-                }
+            auto kind = contract_order.front();
+            while (kind != -1) {
+                one_cycle(graph, kind, forbidden_vertices);
+                contract_order.pop_front();
+                contract_order.push_back(front);
+                kind = contract_order.front();
             }
         }
-        #if 0
-        remaining_vertices = graph.get_changed_vertices();
-        debug << "Printing shortcuts\n";
-        for (auto shortcut : graph.shortcuts) {
-            debug << shortcut;
-            shortcut_edges.push_back(shortcut);
-        }
-        #endif
     }
 
-#if 0
-    bool is_valid_contraction_number(int number) {
-        switch (number) {
-            case -2:
-                return false;
-                break;
+
+ private:
+    void one_cycle(
+            G &graph,
+            int64_t kind,
+            Identifiers<V> &forbidden_vertices) {
+#ifndef NDEBUG
+        log << "Graph before "<< (kind == 1? "dead end" : "linear") << " contraction";
+        log << graph;
+#endif
+
+        switch (kind) {
             case -1:
-                return false;
+                pgassert(false);
                 break;
-            case 0:
-                return true;
-                break;
+
             case 1:
-                return true;
+                perform_deadEnd(graph, forbidden_vertices);
+                break;
+
+
+            case 2:
+                perform_linear(graph, forbidden_vertices);
                 break;
             default:
-                return false;
+                pgassert(false);
                 break;
         }
-    }
+#ifndef NDEBUG
+        log << "Graph before "<< (kind == 1? "dead end" : "linear") << " contraction";
+        log << graph;
 #endif
+    }
+
+    void perform_deadEnd(G &graph,
+            Identifiers<V> forbidden_vertices) {
+        Pgr_deadend<G> deadendContractor;
+        deadendContractor.setForbiddenVertices(forbidden_vertices);
+
+        deadendContractor.calculateVertices(graph);
+        try {
+            deadendContractor.doContraction(graph);
+        }
+        catch ( ... ) {
+            log << "Caught unknown exception!\n";
+        }
+        log << deadendContractor.debug.str();
+    }
+
+
+    void perform_linear(G &graph,
+            Identifiers<V>& forbidden_vertices) {
+        Pgr_linear<G> linearContractor;
+        linearContractor.setForbiddenVertices(forbidden_vertices);
+        linearContractor.calculateVertices(graph);
+        try {
+            linearContractor.doContraction(graph);
+        }
+        catch ( ... ) {
+            log << "Caught unknown exception!\n";
+            throw;
+        }
+    }
+
+
 };
 
 }  // namespace contraction
