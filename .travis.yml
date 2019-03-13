@@ -5,83 +5,144 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-#choose trusty
-
-dist: trusty
+dist: xenial
 sudo: required
 
 
 language: cpp
 
 compiler:
-    - gcc
+  - g++
 
-env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
+python:
+  - "3.5"
+  - "pypy3.5"
 
 matrix:
   include:
     - os: linux
-      env: POSTGRESQL_VERSION=10   PG_USER=postgres DOCUMENTATION=OFF
+      env: POSTGRESQL_VERSION=10 DOCUMENTATION=OFF BUILD_TYPE=Debug
+      addons:
+        postgresql: 10
+        apt:
+          sources:
+            - boost-latest
+            - ubuntu-toolchain-r-test
+          packages:
+            - postgresql-10-postgis-2.4
+            - postgresql-10-postgis-2.4-scripts
+            - postgresql-10-pgtap
+            - postgresql-server-dev-10
+            - libboost-graph-dev
+            - libtap-parser-sourcehandler-pgtap-perl
 
     - os: linux
-      env: POSTGRESQL_VERSION=9.6   PG_USER=postgres DOCUMENTATION=OFF
+      env: POSTGRESQL_VERSION=9.6 DOCUMENTATION=OFF BUILD_TYPE=Debug
+      addons:
+        postgresql: 9.6
+        apt:
+          sources:
+            - boost-latest
+            - ubuntu-toolchain-r-test
+          packages:
+            - postgresql-9.6-postgis-2.4
+            - postgresql-9.6-postgis-2.4-scripts
+            - postgresql-9.6-pgtap
+            - postgresql-server-dev-9.6
+            - libboost-graph-dev
+            - libtap-parser-sourcehandler-pgtap-perl
 
     - os: linux
-      env: POSTGRESQL_VERSION=9.5   PG_USER=postgres DOCUMENTATION=OFF
+      env: POSTGRESQL_VERSION=9.5 DOCUMENTATION=OFF BUILD_TYPE=Debug
+      addons:
+        postgresql: 9.5
+        apt:
+          sources:
+            - boost-latest
+            - ubuntu-toolchain-r-test
+          packages:
+            - postgresql-9.5-postgis-2.4
+            - postgresql-9.5-postgis-2.4-scripts
+            - postgresql-9.5-pgtap
+            - postgresql-server-dev-9.5
+            - libboost-graph-dev
+            - libtap-parser-sourcehandler-pgtap-perl
 
     - os: linux
-      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres DOCUMENTATION=OFF
+      env: POSTGRESQL_VERSION=9.4 DOCUMENTATION=OFF BUILD_TYPE=Debug
+      addons:
+        postgresql: 9.4
+        apt:
+          sources:
+            - boost-latest
+            - ubuntu-toolchain-r-test
+          packages:
+            - postgresql-9.4-postgis-2.4
+            - postgresql-9.4-postgis-2.4-scripts
+            - postgresql-9.4-pgtap
+            - postgresql-server-dev-9.4
+            - libboost-graph-dev
+            - libtap-parser-sourcehandler-pgtap-perl
 
     - os: linux
-      env: POSTGRESQL_VERSION=9.6   PG_USER=postgres DOCUMENTATION=ON
+      env: POSTGRESQL_VERSION=9.6 DOCUMENTATION=OFF BUILD_TYPE=Release
+      addons:
+        postgresql: 9.6
+        apt:
+          sources:
+            - boost-latest
+            - ubuntu-toolchain-r-test
+          packages:
+            - postgresql-9.6-postgis-2.4
+            - postgresql-9.6-postgis-2.4-scripts
+            - postgresql-9.6-pgtap
+            - postgresql-server-dev-9.6
+            - libboost-graph-dev
+            - libtap-parser-sourcehandler-pgtap-perl
+
+    - os: linux
+      env: POSTGRESQL_VERSION=9.6 DOCUMENTATION=ON BUILD_TYPE=Release
+      addons:
+        postgresql: 9.6
+        apt:
+          sources:
+            - boost-latest
+            - ubuntu-toolchain-r-test
+          packages:
+            - postgresql-server-dev-9.6
+            - libboost-graph-dev
+            - python-sphinx
 
 
-# executed. So things have to be tested oe by one.
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      # For cmake
-      - kubuntu-backports
-      - boost-latest
-    packages:
-      - cmake
-      - libboost-thread-dev
-      - libboost-graph-dev
-      - python-sphinx
-      - graphviz
-      - texlive
-      - texlive-font-utils
-      - texlive-latex-extra
-      - ghostscript
 
-
-
+before_install:
+  - PGR_VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
+  - echo "Building for $PGR_VERSION"
+  - sudo service postgresql stop
+  - sed -e 's/^port.*/port = 5432/' /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf > postgresql.conf
+  - sudo chown postgres postgresql.conf
+  - sudo mv postgresql.conf /etc/postgresql/$POSTGRESQL_VERSION/main
+  - sudo service postgresql start
 
 install:
-  - pip install sphinx
-  - sudo ./tools/travis/install-doxygen.sh
-  - sudo ./tools/travis/install-postgres.sh $POSTGRESQL_VERSION $PG_USER
-  - cmake --version
+  - if [ "$DOCUMENTATION" == "ON" ]; then  sphinx-build --version; fi
 
 before_script:
-
-  - psql -U postgres -c "create extension postgis"
-  -  export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
-
+  - if [ "$DOCUMENTATION" == "OFF" ]; then psql -p 5432 -U postgres -c "CREATE EXTENSION postgis"; fi
+  - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
   # initialize databases
-  - createdb  -U $PG_USER ___pgr___test___
-  - createdb  -U $PG_USER pgr_test__db__test
-  - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
-
+  - createdb  -U postgres ___pgr___test___
+  - createdb  -U postgres pgr_test__db__test
+  - mkdir build
+  - cd build
+  - cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWITH_DOC=$DOCUMENTATION ..
 
 script:
-  - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+  - if [ "$DOCUMENTATION" == "OFF" ]; then make; sudo make install; fi
+  - if [ "$DOCUMENTATION" == "ON" ]; then make doc; fi
+
   # tests as part of script so if a test fails the build fails
-  - if [ "$DOCUMENTATION" == "OFF" ]; then ./tools/testers/pg_prove_tests.sh $PG_USER 5432 DEBUG ; fi
+  - cd ..
+  - if [ "$DOCUMENTATION" == "OFF" ]; then bash ./tools/testers/pg_prove_tests.sh postgres 5432 $BUILD_TYPE; fi
+  - if [ "$DOCUMENTATION" == "OFF" ] && [ BUILD_TYPE == "Debug" ]; then bash ./ci/travis/doc-quieries_test.sh $POSTGRESQL_VERSION postgres; fi
 
-#after_script:
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER
-
-#after_success:
-  # blank

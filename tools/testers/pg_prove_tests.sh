@@ -41,14 +41,6 @@ echo "psql -f setup_db.sql"
 run_psql -f setup_db.sql
 
 
-if [ $RELEASE_TYPE = "bDebug" ]
-then
-    pg_prove ../../src/internalQueryTests/test/pgtap/* $PGPORT -d $PGDATABASE  -U $PGUSER
-    pg_prove ../../src/tsp/test/performance/* $PGPORT -d $PGDATABASE  -U $PGUSER
-    echo "MADE TEST **********************"
-fi
-
-
 pg_prove --recurse --ext .sql $PGPORT -d $PGDATABASE  -U $PGUSER  ../../pgtap/
 
 
