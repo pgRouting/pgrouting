@@ -2,7 +2,6 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q0
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
     ARRAY[1]::integer[], 1, ARRAY[20]::BIGINT[], true);
@@ -11,7 +10,6 @@ SELECT * FROM pgr_contractGraph(
    1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
 (1 row)
 
--- q1
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 OR id = 4 OR id = 5 OR id = 8',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
@@ -19,7 +17,6 @@ SELECT * FROM pgr_contractGraph(
 -----+------+----+---------------------+--------+--------+------
 (0 rows)
 
---q2
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
@@ -28,7 +25,6 @@ SELECT * FROM pgr_contractGraph(
    1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
 (1 row)
 
---q3
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 or id = 3',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
@@ -37,7 +33,6 @@ SELECT * FROM pgr_contractGraph(
    1 | v    |  4 | {2,3}               |     -1 |     -1 |   -1
 (1 row)
 
---q4
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 OR id = 2 or id = 3',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
@@ -46,7 +41,6 @@ SELECT * FROM pgr_contractGraph(
    1 | v    |  4 | {1,2,3}             |     -1 |     -1 |   -1
 (1 row)
 
---q5
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
