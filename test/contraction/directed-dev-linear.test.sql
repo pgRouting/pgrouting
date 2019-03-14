@@ -1,59 +1,103 @@
 
--- \echo --q5 -------------------------------------------
+UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
-\echo --q6 Checking for linear vertices case 1
--- GRPAH 1 <=> 2
+/*
+-- GRAPH 1 <=> 2
 -- EXPECTED
---   1 | e    | -1 | {3}                 |      4 |      6 |    2
-
+--   empty
+*/
 SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE id = 3 OR id = 5',
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table
+    WHERE id IN (1)$$,
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
 
--- \echo --q6 -------------------------------------------
+/*
+-- GRAPH 4->3->6
+-- EXPECTED
+-- 1 | e    | -1 | {3}                 |      4 |      6 |    2
+-- New edges:  4->6
+*/
+SELECT * FROM pgr_contractGraph(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table
+    WHERE id IN (3, 5)$$,
+    ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
 
 
-\echo --q7 Checking for linear vertices case 2
+/*
 -- GRAPH 10 <=> 5 <=> 6
 -- EXPECTED
 --   1 | e    | -1 | {5}                 |      6 |     10 |    2
 --   2 | e    | -2 | {5}                 |     10 |      6 |    2
 -- New edges:  6 <=> 10
-
+*/
 
 SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE id = 8 OR id = 10',
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table
+    WHERE id IN (8, 10)$$,
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
 
--- \echo --q7 -------------------------------------------
 
+/*
+-- GRAPH 3 -> 2 <=> 5
+-- EXPECTED
+--   1 | e    | -1 | {2}                 |      3 |      5 |    2
+-- New edges:  3 -> 5
+-- New graph: 3 ->{2}  5 -> 2
+-- vertex 2 becomes a dead end
+*/
 
-\echo --q8 Checking for linear vertices case 3
+\echo -- TODO fix Wrong Result
 SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE id = 2 OR id = 4',
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table
+    WHERE id IN (2, 4)$$,
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
--- \echo --q8 -------------------------------------------
 
-\echo --q9 Checking for linear vertices case 4
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE id = 5 OR id = 9',
-    ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
--- \echo --q9 -------------------------------------------
 
-\echo --q10 Checking linear contraction for sample data
+/*
+-- GRAPH 3 -> 6 <=> 9
+-- EXPECTED
+--   1 | e    | -1 | {6}                 |      3 |      9 |    2
+-- New edges:  3 -> 5
+-- New graph: 3 ->{6}  9 -> 6
+-- vertex 6 becomes a dead end
+*/
+\echo -- TODO fix Wrong Result
 SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table' ,
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table
+    WHERE id IN (5, 9)$$,
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
--- \echo --q10 -------------------------------------------
 
--- \echo --q12 -------------------------------------------
-\echo --q13 Checking linear contraction for a square like graph
+
+/*
+-- GRAPH (all graph)
+-- EXPECTED
+--   1 | e    | -1 | {8}                 |      5 |      7 |    2
+--   1 | e    | -1 | {8}                 |      7 |      5 |    2
+-- New edges:  3 <=> 5
+-- New graph: edges 6 & 7 removed in both ways
+-- vertex 6 becomes a dead end
+*/
 SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE id = 2 OR id = 4 OR id = 5 OR id = 8',
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
--- \echo --q13 -------------------------------------------
+
+
+/*
+-- GRAPH
+--       5 <=> 6
+--       ||    -|
+--       2 <-  3
+-- EXPECTED
+--   1 | e    | -1 | {5}                 |      2 |      6 |    2
+--   2 | e    | -1 | {5}                 |      6 |      2 |    2
+-- New edges:  2 <=> 6
+-- New graph:
+--       ===== 6
+--       ||    -|
+--       2 <-  3
+*/
+
+SELECT * FROM pgr_contractGraph(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table
+    WHERE id IN (2, 4, 5, 8)$$,
+    ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
