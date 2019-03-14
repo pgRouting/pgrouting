@@ -92,235 +92,197 @@ void Pgr_deadend<G>::calculateVertices(G &graph) {
     deadendVertices -= forbiddenVertices;
 }
 
+/**
+ * - fobbiden_vertices
+ *   - Not considered as dead end
+
+
+ * undirected:
+ * ----------
+ *   - There is only one adjacent vertex:
+ *   - All adjcent edges are from a single vertex
+ *
+
+@dot
+    graph G {
+        graph [rankdir=LR];
+        subgraph cluster0 {
+            node [shape=point,height=0.2,style=filled,color=black];
+            style=filled;
+            color=lightgrey;
+            a0; a1; a2;
+            label = "rest of graph";
+        }
+        v [color=green];
+        v -- a0;
+        v -- a0;
+    }
+@enddot
+
+directed graph
+
+is dead end when:
+(1) no incomming edge, one outgoing edge (dead start)
+(2) one incoming edge, no outgoing edge (dead end)
+(3) one outgoing edge, one incoming edge
+and both are from/to the same vertex
+(4) many incoming edges
+and no outgoing edges
+(5) many outgoing edges TODO but all go to same vertex
+and no incoming edges
+
+NOT dead end when:
+(3) one outgoing edge, one incoming edge
+and both from/to different vertex
+
+note: when contracting case 4 & 5, the vertex has to be
+part of all the adjacent vertices
+
+directed
+----------
+case (1):  (dead start)
+- one outgoing edge
+- no incoming edge
+
+@dot
+    digraph G {
+        graph [rankdir=LR];
+        subgraph cluster0 {
+            node [shape=point,height=0.2,style=filled,color=black];
+            style=filled;
+            color=lightgrey;
+            a0; a1; a2;
+            label = "rest of graph";
+        }
+        v [color=green];
+        v -> a0;
+    }
+@enddot
+
+case (2):  (dead end)
+- no outgoing edge,
+- one incoming edge
+
+
+@dot
+    digraph G {
+        graph [rankdir=LR];
+        subgraph cluster0 {
+            node [shape=point,height=0.2,style=filled,color=black];
+            style=filled;
+            color=lightgrey;
+            a0; a1; a2;
+            label = "rest of graph";
+            }
+        v [color=green];
+        a0 -> v;
+    }
+@enddot
+
+case (3):
+    - one outgoing edge,
+    - one incoming edge
+    - one adjacent vertex
+
+
+@dot
+    digraph G {
+        graph [rankdir=LR];
+        subgraph cluster0 {
+            node [shape=point,height=0.2,style=filled,color=black];
+            style=filled;
+            color=lightgrey;
+            a0; a1; a2;
+            label = "rest of graph";
+        }
+        v [color=green];
+        v -> a0;
+        a0 -> v;
+    }
+@enddot
+
+case (4):
+- no outgoing edge
+- many incoming edges
+
+@dot
+digraph G {
+    graph [rankdir=LR];
+    subgraph cluster0 {
+        node [shape=point,height=0.2,style=filled,color=black];
+        style=filled;
+        color=lightgrey;
+        a0; a1; a2;
+        label = "rest of graph";
+    }
+    v [color=green];
+    a0 -> v;
+    a1 -> v;
+    a0 -> v;
+}
+@enddot
+
+case (5):
+- many outgoing edge
+- many incoming edges
+- All adjacent edges are from a single vertex
+
+@dot
+digraph G {
+    graph [rankdir=LR];
+    subgraph cluster0 {
+        node [shape=point,height=0.2,style=filled,color=black];
+        style=filled;
+        color=lightgrey;
+        a0; a1; a2;
+        label = "rest of graph";
+    }
+    v [color=green];
+    a0 -> v;
+    a0 -> v;
+    v -> a0;
+    v -> a0;
+}
+@enddot
+
+*/
+
 template < class G >
 bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
 
-    debug << "Is dead end: " << graph.graph[v].id << "?\n";
-
-    if (forbiddenVertices.has(v)) {
-        /**
-         * - fobbiden_vertices
-         *   - Not considered as dead end
-         */
-
-        return false;
-    }
+    if (forbiddenVertices.has(v))  return false;
 
     if (graph.is_undirected()) {
-        /**
-         * undirected:
-         * ----------
-         *   - There is only one adjacent vertex:
-         *   - All adjcent edges are from a single vertex
-         *
-
-         @dot
-         graph G {
-         graph [rankdir=LR];
-         subgraph cluster0 {
-         node [shape=point,height=0.2,style=filled,color=black];
-         style=filled;
-         color=lightgrey;
-         a0; a1; a2;
-         label = "rest of graph";
-         }
-         v [color=green];
-         v -- a0;
-         v -- a0;
-         }
-         @enddot
-
-         */
-        Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(v);
-        if (adjacent_vertices.size() == 1) {
-            pgassert(graph.out_degree(v) == graph.in_degree(v));
-            return true;
-        }
-        return false;
+        return  (graph.find_adjacent_vertices(v).size() == 1);
     }
 
     pgassert(graph.is_directed());
-    /*
-     * directed graph
-     *
-     * is dead end when:
-     *  (1) no incomming edge, one outgoing edge (dead start)
-     *  (2) one incoming edge, no outgoing edge (dead end)
-     *  (3) one outgoing edge, one incoming edge
-     *       and both are from/to the same vertex
-     *  (4) many incoming edges
-     *       and no outgoing edges
-     *  (5) many outgoing edges TODO but all go to same vertex
-     *       and no incoming edges
-     *
-     * NOT dead end when:
-     *  (3) one outgoing edge, one incoming edge
-     *       and both from/to different vertex
-     *
-     * note: when contracting case 4 & 5, the vertex has to be
-     *       part of all the adjacent vertices
-     */
+    return graph.find_adjacent_vertices(v).size() == 1
+        || (graph.in_degree(v) > 0 && graph.out_degree(v) == 0);
 
+#if 0
     if (graph.in_degree(v) == 0 && graph.out_degree(v) == 1) {
-        /**
-         * directed
-         * ----------
-         *  case (1):  (dead start)
-         *   - one outgoing edge,
-         *   - no incoming edge
-         *
-
-         @dot
-         digraph G {
-         graph [rankdir=LR];
-         subgraph cluster0 {
-         node [shape=point,height=0.2,style=filled,color=black];
-         style=filled;
-         color=lightgrey;
-         a0; a1; a2;
-         label = "rest of graph";
-         }
-         v [color=green];
-         v -> a0;
-         }
-         @enddot
-
-         */
         return true;
     }
 
     if (graph.in_degree(v) == 1 && graph.out_degree(v) == 0) {
-        /**
-         * case (2):  (dead end)
-         *   - no outgoing edge,
-         *   - one incoming edge
-         *
-
-         @dot
-         digraph G {
-         graph [rankdir=LR];
-         subgraph cluster0 {
-         node [shape=point,height=0.2,style=filled,color=black];
-         style=filled;
-         color=lightgrey;
-         a0; a1; a2;
-         label = "rest of graph";
-         }
-         v [color=green];
-         a0 -> v;
-         }
-         @enddot
-
-         */
         return true;
     }
 
     if (graph.out_degree(v) == 1 && graph.in_degree(v) == 1 && graph.find_adjacent_vertices(v).size() == 1) {
-        /**
-         * case (3):
-         *   - one outgoing edge,
-         *   - one incoming edge
-         *   - one adjacent vertex
-         *
-
-         @dot
-         digraph G {
-         graph [rankdir=LR];
-         subgraph cluster0 {
-         node [shape=point,height=0.2,style=filled,color=black];
-         style=filled;
-         color=lightgrey;
-         a0; a1; a2;
-         label = "rest of graph";
-         }
-         v [color=green];
-         v -> a0;
-         a0 -> v;
-         }
-         @enddot
-
-         */
         return true;
-        Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(v);
-        auto out_e = *(out_edges(v, graph.graph).first);
-        auto in_e = *(in_edges(v, graph.graph).first);
-
-        auto out_v = graph.is_source(v, out_e) ?
-            graph.target(out_e) : graph.source(out_e);
-        auto in_v = graph.is_source(v, in_e) ?
-            graph.target(in_e) : graph.source(in_e);
-
-        if (out_v == in_v) {
-            return true;
-        }
-        return false;
     }
 
     if (graph.in_degree(v) > 0 && graph.out_degree(v) == 0) {
-        /**
-         * case (4):
-         *   - no outgoing edge,
-         *   - many incoming edges
-         *
-         *
-
-         @dot
-         digraph G {
-         graph [rankdir=LR];
-         subgraph cluster0 {
-         node [shape=point,height=0.2,style=filled,color=black];
-         style=filled;
-         color=lightgrey;
-         a0; a1; a2;
-         label = "rest of graph";
-         }
-         v [color=green];
-         a0 -> v;
-         a1 -> v;
-         a0 -> v;
-         }
-         @enddot
-
-         */
         return true;
     }
 
-    if (graph.in_degree(v) > 0 && graph.out_degree(v) > 0) {
-        /**
-         * case (5):
-         *   - many outgoing edge,
-         *   - many incoming edges
-         *   - All adjacent edges are from a single vertex
-         *
-         *
-
-         @dot
-         digraph G {
-         graph [rankdir=LR];
-         subgraph cluster0 {
-         node [shape=point,height=0.2,style=filled,color=black];
-         style=filled;
-         color=lightgrey;
-         a0; a1; a2;
-         label = "rest of graph";
-         }
-         v [color=green];
-         a0 -> v;
-         a0 -> v;
-         v -> a0;
-         v -> a0;
-         }
-         @enddot
-
-         */
-
-        auto adjacent_vertices = graph.find_adjacent_vertices(v);
-        if (adjacent_vertices.size() == 1) {
-            return true;
-        }
+    if (graph.in_degree(v) > 0 && graph.out_degree(v) > 0 && graph.find_adjacent_vertices(v).size() == 1) {
+        return true;
     }
-    debug << "Is Not Dead End\n";
+
     return false;
+#endif
 }
 
 template < class G >
