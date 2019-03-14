@@ -79,7 +79,7 @@ void Pgr_deadend<G>::calculateVertices(G &graph) {
     for (auto vi = vertices(graph.graph).first;
             vi != vertices(graph.graph).second;
             ++vi) {
-        
+
         debug << "Checking vertex " << graph[(*vi)].id << '\n';
 
         if (is_dead_end(graph, *vi)) {
@@ -96,7 +96,6 @@ template < class G >
 bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
 
     debug << "Is dead end: " << graph.graph[v].id << "?\n";
-
 
     if (forbiddenVertices.has(v)) {
         /**
@@ -134,6 +133,7 @@ bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
          */
         Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(v);
         if (adjacent_vertices.size() == 1) {
+            pgassert(graph.out_degree(v) == graph.in_degree(v));
             return true;
         }
         return false;
@@ -144,6 +144,7 @@ bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
      * directed graph
      *
      * is dead end when:
+     *  (1) no incomming edge, one outgoing edge (dead start)
      *  (2) one incoming edge, no outgoing edge (dead end)
      *  (3) one outgoing edge, one incoming edge
      *       and both are from/to the same vertex
@@ -214,7 +215,7 @@ bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
         return true;
     }
 
-    if (graph.out_degree(v) == 1 && graph.in_degree(v) == 1) {
+    if (graph.out_degree(v) == 1 && graph.in_degree(v) == 1 && graph.find_adjacent_vertices(v).size() == 1) {
         /**
          * case (3):
          *   - one outgoing edge,
@@ -239,6 +240,8 @@ bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
          @enddot
 
          */
+        return true;
+        Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(v);
         auto out_e = *(out_edges(v, graph.graph).first);
         auto in_e = *(in_edges(v, graph.graph).first);
 
@@ -357,7 +360,7 @@ Pgr_deadend<G>::doContraction(G &graph) {
                 << graph[current_vertex].id << std::endl;
 
             debug << "Adding contracted vertices of the vertex\n";
-                
+
             graph[adjacent_vertex].add_contracted_vertex(
                     graph[current_vertex]);
 
