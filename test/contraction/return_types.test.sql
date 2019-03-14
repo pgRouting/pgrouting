@@ -18,10 +18,6 @@ SET id = id + POWER(10, 8),
 UPDATE edge_table_vertices_pgr
 SET id = id + POWER(10, 8);
 
-\echo --q3
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
 
 \echo --q4
 SELECT * FROM pgr_contractGraph(
@@ -49,11 +45,6 @@ SET id = id + POWER(10, 12),
 \echo --q7
 UPDATE edge_table_vertices_pgr
 SET id = id + POWER(10, 12);
-
-\echo --q8
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
 
 \echo --q9
 SELECT * FROM pgr_contractGraph(
