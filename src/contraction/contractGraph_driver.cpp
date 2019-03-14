@@ -199,7 +199,7 @@ do_pgr_contractGraph(
 
         for (const auto kind : ordering) {
             if (!pgrouting::contraction::is_valid_contraction(static_cast<int>(kind))) {
-                *err_msg = pgr_msg("Invalid Contraction Type found");
+                *err_msg = pgr_msg("Invalid contraction type found");
                 log << "Contraction type " << kind << " not valid";
                 *log_msg = pgr_msg(log.str().c_str());
                 return;
