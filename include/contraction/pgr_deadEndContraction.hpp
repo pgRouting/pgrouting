@@ -253,36 +253,12 @@ bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
     if (forbiddenVertices.has(v))  return false;
 
     if (graph.is_undirected()) {
-        return  (graph.find_adjacent_vertices(v).size() == 1);
+        return graph.find_adjacent_vertices(v).size() == 1;
     }
 
     pgassert(graph.is_directed());
     return graph.find_adjacent_vertices(v).size() == 1
         || (graph.in_degree(v) > 0 && graph.out_degree(v) == 0);
-
-#if 0
-    if (graph.in_degree(v) == 0 && graph.out_degree(v) == 1) {
-        return true;
-    }
-
-    if (graph.in_degree(v) == 1 && graph.out_degree(v) == 0) {
-        return true;
-    }
-
-    if (graph.out_degree(v) == 1 && graph.in_degree(v) == 1 && graph.find_adjacent_vertices(v).size() == 1) {
-        return true;
-    }
-
-    if (graph.in_degree(v) > 0 && graph.out_degree(v) == 0) {
-        return true;
-    }
-
-    if (graph.in_degree(v) > 0 && graph.out_degree(v) > 0 && graph.find_adjacent_vertices(v).size() == 1) {
-        return true;
-    }
-
-    return false;
-#endif
 }
 
 template < class G >
