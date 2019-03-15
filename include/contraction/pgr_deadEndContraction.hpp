@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/identifiers.hpp"
 
 // TODO remove the debug messages
-#define NDEBUG
 
 namespace pgrouting {
 namespace contraction {
@@ -60,7 +59,6 @@ class Pgr_deadend : public Pgr_messages {
      bool is_dead_end(G &graph, V v);
      void add_if_dead_end(G &graph, V v);
      void doContraction(G &graph);
-     std::ostringstream debug;
 
  private:
      Identifiers<V> deadendVertices;
@@ -82,6 +80,8 @@ Pgr_deadend< G >::setForbiddenVertices(
 template < class G >
 void Pgr_deadend<G>::calculateVertices(G &graph) {
 #ifndef NDEBUG
+    log << __PRETTY_FUNCTION__;
+
     log << "Calculating vertices\n";
 #endif
 
@@ -105,10 +105,6 @@ void Pgr_deadend<G>::calculateVertices(G &graph) {
 }
 
 /**
- * - fobbiden_vertices
- *   - Not considered as dead end
-
-
  * undirected:
  * ----------
  *   - There is only one adjacent vertex:

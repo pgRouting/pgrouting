@@ -107,7 +107,7 @@ class Pgr_contract : public Pgr_messages {
                 break;
         }
 #ifndef NDEBUG
-        log << "Graph before "<< (kind == 1? "dead end" : "linear") << " contraction";
+        log << "Graph after "<< (kind == 1? "dead end" : "linear") << " contraction";
         log << graph;
 #endif
     }
@@ -116,8 +116,10 @@ class Pgr_contract : public Pgr_messages {
             Identifiers<V> forbidden_vertices) {
         Pgr_deadend<G> deadendContractor;
         deadendContractor.setForbiddenVertices(forbidden_vertices);
+        log << deadendContractor.get_log();
 
         deadendContractor.calculateVertices(graph);
+        log << deadendContractor.get_log();
         try {
             deadendContractor.doContraction(graph);
         }
@@ -132,7 +134,9 @@ class Pgr_contract : public Pgr_messages {
             Identifiers<V>& forbidden_vertices) {
         Pgr_linear<G> linearContractor;
         linearContractor.setForbiddenVertices(forbidden_vertices);
+        log << linearContractor.get_log();
         linearContractor.calculateVertices(graph);
+        log << linearContractor.get_log();
         try {
             linearContractor.doContraction(graph);
         }
@@ -140,6 +144,7 @@ class Pgr_contract : public Pgr_messages {
             log << "Caught unknown exception!\n";
             throw;
         }
+        log << linearContractor.get_log();
     }
 
 

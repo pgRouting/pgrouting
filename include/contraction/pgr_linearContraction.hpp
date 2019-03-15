@@ -43,7 +43,7 @@ namespace pgrouting {
 namespace contraction {
 
 template < class G >
-class Pgr_linear {
+class Pgr_linear : public Pgr_messages {
  private:
      typedef typename G::V V;
      typedef typename G::E E;
@@ -66,14 +66,14 @@ class Pgr_linear {
          return --last_edge_id;
      }
 
-     bool is_linear(G &graph, V v, std::ostringstream& debug);
+     bool is_linear(G &graph, V v);
      void add_if_linear(G &graph, V v);
      void add_edge_pair(V vertex, int64_t &incoming_eid,
              int64_t &outgoing_eid);
      bool is_shortcut_possible(G &graph, V v, V left, V right);
      void add_shortcut(G &graph, V vertex,
              E incoming_edge,
-             E outgoing_edge, std::ostringstream& debug);
+             E outgoing_edge);
      void add_shortcut(G &graph,
              pgrouting::CH_edge &shortcut);
 
@@ -82,7 +82,6 @@ class Pgr_linear {
      Identifiers<V> forbiddenVertices;
 
      int64_t last_edge_id;
-     std::ostringstream debug;
 };
 
 /*************** IMPLEMENTTION **************/
@@ -91,31 +90,69 @@ template < class G >
 void
 Pgr_linear< G >::setForbiddenVertices(
         Identifiers<V> forbidden_vertices) {
-    debug << "Setting forbidden vertices\n";
+    log << "Setting forbidden vertices\n";
     forbiddenVertices = forbidden_vertices;
 }
 
-/*
+/**
 Possibility of a shortcut from left vertex to right vertex
 *v* should be a linear vertex
+
+@dot
+    graph G {
+        graph [rankdir=LR];
+        subgraph cluster0 {
+            node [shape=point,height=0.2,style=filled,color=black];
+            style=filled;
+            color=lightgrey;
+            a0; a1; a2;
+            label = "rest of graph";
+        }
+        v [color=green];
+        v -- left;
+        v -- right;
+        u - a0;
+        w - a1;
+    }
+@enddot
+
 */
 template < class G >
 bool
-Pgr_linear< G >::is_shortcut_possible(G &graph, V v, V left_vertex, V right_vertex) {
-    auto in_degree_from_left_vertex = graph.in_degree_from_vertex(v, left_vertex);
-    auto out_degree_to_right_vertex = graph.out_degree_to_vertex(v, right_vertex);
-    auto in_degree_from_right_vertex = graph.in_degree_from_vertex(v, right_vertex);
-    auto out_degree_to_left_vertex = graph.out_degree_to_vertex(v, left_vertex);
-    return (in_degree_from_left_vertex > 0 && out_degree_to_right_vertex > 0 
+Pgr_linear< G >::is_shortcut_possible(G &graph, V v, V u, V w) {
+    if (graph.is_undirected()) {
+        /*
+         * u - v - w
+         */
+        return boost::edge(u, v, graph.graph).second &&  boost::edge(v, w,  graph.graph).second;
+    }
+
+    pgassert(graph.is_directed());
+    return
+        /*
+         * u -> v -> w
+         */
+        (boost::edge(u, v, graph.graph).second &&  boost::edge(v, w,  graph.graph).second)
+        /*
+         * u <- v <- w
+         */
+        ||  (boost::edge(w, v, graph.graph).second &&  boost::edge(v, u,  graph.graph).second);
+
+    auto in_degree_from_left_vertex = graph.in_degree_from_vertex(v, u);
+    auto out_degree_to_right_vertex = graph.out_degree_to_vertex(v, w);
+    auto in_degree_from_right_vertex = graph.in_degree_from_vertex(v, w);
+    auto out_degree_to_left_vertex = graph.out_degree_to_vertex(v, u);
+    return (in_degree_from_left_vertex > 0 && out_degree_to_right_vertex > 0
            && in_degree_from_right_vertex == 0 && out_degree_to_left_vertex == 0)
-            || (in_degree_from_left_vertex == 0 && out_degree_to_right_vertex == 0 
+            || (in_degree_from_left_vertex == 0 && out_degree_to_right_vertex == 0
            && in_degree_from_right_vertex > 0 && out_degree_to_left_vertex > 0)
-            || (in_degree_from_left_vertex > 0 && out_degree_to_right_vertex > 0 
+            || (in_degree_from_left_vertex > 0 && out_degree_to_right_vertex > 0
            && in_degree_from_right_vertex > 0 && out_degree_to_left_vertex > 0);
 }
 
 template < class G >
-bool Pgr_linear<G>::is_linear(G &graph, V v, std::ostringstream& debug) {
+bool Pgr_linear<G>::is_linear(G &graph, V v) {
+    log << __PRETTY_FUNCTION__;
 
 
     if (forbiddenVertices.has(v)) {
@@ -123,7 +160,7 @@ bool Pgr_linear<G>::is_linear(G &graph, V v, std::ostringstream& debug) {
          * - fobbiden_vertices
          *   - Not considered as linear
          */
-        debug << graph.graph[v].id << " is forbidden !!" << std::endl;
+        log << graph.graph[v].id << " is forbidden !!" << std::endl;
         return false;
     }
 
@@ -132,7 +169,7 @@ bool Pgr_linear<G>::is_linear(G &graph, V v, std::ostringstream& debug) {
     //bool adjacent_vertices_constraint = false;
     //bool degree_constraint = false;
     //bool contracted_vertices_constraint = false;
-    
+
     // Checking adjacent vertices constraint
     auto adjacent_vertices = graph.find_adjacent_vertices(v);
 
@@ -145,13 +182,13 @@ bool Pgr_linear<G>::is_linear(G &graph, V v, std::ostringstream& debug) {
         V right_vertex = adjacent_vertices.front();
         adjacent_vertices.pop_front();
         if (is_shortcut_possible(graph, v, left_vertex, right_vertex)) {
-            debug << graph.graph[v].id << " is linear !!" << std::endl;
+            log << graph.graph[v].id << " is linear !!" << std::endl;
             return true;
         }
-        debug << graph.graph[v].id << " is not linear !!" << std::endl;
+        log << graph.graph[v].id << " is not linear !!" << std::endl;
         return false;
     }
-    debug << graph.graph[v].id << " is not linear !!" << std::endl;
+    log << graph.graph[v].id << " is not linear !!" << std::endl;
     return false;
 
 
@@ -159,13 +196,13 @@ bool Pgr_linear<G>::is_linear(G &graph, V v, std::ostringstream& debug) {
 
 template < class G >
 void Pgr_linear<G>::calculateVertices(G &graph) {
-    debug << "Calculating vertices\n";
+    log << __PRETTY_FUNCTION__;
     V_i vi;
     for (vi = vertices(graph.graph).first;
             vi != vertices(graph.graph).second;
             ++vi) {
-        debug << "Checking vertex " << graph.graph[(*vi)].id << '\n';
-        if (is_linear(graph, *vi, debug)) {
+        log << "Checking vertex " << graph.graph[(*vi)].id << '\n';
+        if (is_linear(graph, *vi)) {
             linearVertices += (*vi);
         }
     }
@@ -176,24 +213,23 @@ void Pgr_linear<G>::calculateVertices(G &graph) {
 
 template < class G >
 void Pgr_linear<G>::doContraction(G &graph) {
-    std::ostringstream contraction_debug;
-    contraction_debug << "Performing contraction\n";
+    log << "Performing contraction\n";
 
     std::priority_queue<V, std::vector<V>, std::greater<V> > linearPriority;
     for (const auto linearVertex : linearVertices) {
         linearPriority.push(linearVertex);
     }
-    contraction_debug << "Linear vertices" << std::endl;
+    log << "Linear vertices" << std::endl;
     for (const auto v : linearVertices) {
-        contraction_debug << graph[v].id << ", ";
+        log << graph[v].id << ", ";
     }
-    contraction_debug << std::endl;
+    log << std::endl;
     EI_i in, in_end;
     EO_i out, out_end;
     while (!linearPriority.empty()) {
         V current_vertex = linearPriority.top();
         linearPriority.pop();
-        if (!is_linear(graph, current_vertex, contraction_debug)) {
+        if (!is_linear(graph, current_vertex)) {
             linearVertices -= current_vertex;
             continue;
         }
@@ -207,8 +243,8 @@ void Pgr_linear<G>::doContraction(G &graph) {
         adjacent_vertices.pop_front();
 
         // Adjacent vertices of the current linear vertex
-        contraction_debug << "Adjacent vertices\n";
-        contraction_debug << graph[v_1].id
+        log << "Adjacent vertices\n";
+        log << graph[v_1].id
             << ", " << graph[v_2].id
             << std::endl;
 
@@ -221,12 +257,12 @@ void Pgr_linear<G>::doContraction(G &graph) {
                     in != in_end; ++in) {
                 for (boost::tie(out, out_end) = boost::out_edges(current_vertex, graph.graph);
                         out != out_end; ++out) {
-                    //append_shortcut(graph, current_vertex, *in, *out, shortcuts, debug);
+                    //append_shortcut(graph, current_vertex, *in, *out, shortcuts, log);
                     if (graph.source(*in) == graph.target(*out)) {
                         continue;
                     }
-                    add_shortcut(graph, current_vertex, *in, *out, debug);
-                }       
+                    add_shortcut(graph, current_vertex, *in, *out);
+                }
             }
 
 
@@ -235,8 +271,8 @@ void Pgr_linear<G>::doContraction(G &graph) {
             #if 0
             if (graph.out_degree_to_vertex(vertex_1, current_vertex) > 0 &&
                     graph.in_degree_from_vertex(vertex_2, current_vertex) > 0) {
-                contraction_debug << "UNDIRECTED graph before contraction\n";
-                graph.print_graph(contraction_debug);
+                log << "UNDIRECTED graph before contraction\n";
+                graph.print_graph(log);
                 E e1 = graph.get_min_cost_edge(vertex_1,
                         current_vertex);
                 E e2 = graph.get_min_cost_edge(current_vertex,
@@ -250,29 +286,29 @@ void Pgr_linear<G>::doContraction(G &graph) {
         graph.disconnect_vertex(current_vertex);
         graph[current_vertex].clear_contracted_vertices();
 
-        //debug << "After removing vertex the graph is: " << graph << std::endl;
+        //log << "After removing vertex the graph is: " << graph << std::endl;
         //add_shortcuts(graph, shortcuts);
 
 
         linearVertices -= current_vertex;
 
         // Check if the neighbors of the linear vertex are also linear
-        if (is_linear(graph, v_1, debug)
+        if (is_linear(graph, v_1)
                 && !forbiddenVertices.has(v_1) && !linearVertices.has(v_1)) {
 
-            debug << "Adding linear vertex: " << graph[v_1].id << std::endl;
+            log << "Adding linear vertex: " << graph[v_1].id << std::endl;
             linearPriority.push(v_1);
             linearVertices += v_1;
         }
-        if (is_linear(graph, v_2, debug)
+        if (is_linear(graph, v_2)
                 && !forbiddenVertices.has(v_2) && !linearVertices.has(v_2)) {
             linearPriority.push(v_2);
-            debug << "Adding linear vertex: " << graph[v_2].id << std::endl;
+            log << "Adding linear vertex: " << graph[v_2].id << std::endl;
             linearVertices += v_2;
         }
 
     }
-    debug << contraction_debug.str().c_str() << "\n";
+    //log << contraction_debug.str().c_str() << "\n";
 }
 
 
@@ -294,8 +330,7 @@ template < class G >
 void Pgr_linear<G>::add_shortcut(
         G &graph, V vertex,
         E incoming_edge,
-        E outgoing_edge,
-        std::ostringstream& debug) {
+        E outgoing_edge) {
 
     // Create shortcut
     CH_edge shortcut(
@@ -304,7 +339,7 @@ void Pgr_linear<G>::add_shortcut(
             graph[graph.target(outgoing_edge)].id,
             graph[incoming_edge].cost + graph[outgoing_edge].cost);
 
-    // Add contracted vertices of the current linear vertex 
+    // Add contracted vertices of the current linear vertex
     shortcut.add_contracted_vertex(graph[vertex]);
 
     // Add contracted vertices of the incoming edge
@@ -312,9 +347,9 @@ void Pgr_linear<G>::add_shortcut(
 
     // Add contracted vertices of the outgoing edge
     shortcut.add_contracted_edge_vertices(graph[outgoing_edge]);
-    
+
     // Add shortcut to the graph
-    debug << "Adding shortcut\n" << shortcut << std::endl;
+    log << "Adding shortcut\n" << shortcut << std::endl;
     graph.add_shortcut(shortcut);
 }
 
