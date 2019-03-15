@@ -275,24 +275,10 @@ Pgr_deadend<G>::doContraction(G &graph) {
 
     log << "Performing contraction\n";
 
-#if 0
-    std::priority_queue<V, std::vector<V>, std::greater<V> > deadendPriority;
-
-    for (V deadendVertex : deadendVertices) {
-        deadendPriority.push(deadendVertex);
-    }
-    while (!deadendPriority.empty()) {
-        V current_vertex = deadendPriority.top();
-        deadendPriority.pop();
-#endif
-
     while (!deadendVertices.empty()) {
         V current_vertex = deadendVertices.front();
         deadendVertices -= current_vertex;
         pgassert(is_dead_end(graph, current_vertex));
-        if (!is_dead_end(graph, current_vertex)) {
-            continue;
-        }
 
         for (auto adjacent_vertex : graph.find_adjacent_vertices(current_vertex)) {
 
@@ -306,25 +292,6 @@ Pgr_deadend<G>::doContraction(G &graph) {
 
 
             log << "Adding contracted vertices of the edge\n";
-
-#if 0
-            auto o_edges = out_edges(current_vertex, graph.graph);
-            for (auto out = o_edges.first;
-                    out != o_edges.second;
-                    ++out) {
-                debug << graph.graph[*out];
-                graph.add_contracted_edge_vertices(
-                        adjacent_vertex, graph[*out]);
-            }
-            auto i_edges = in_edges(current_vertex, graph.graph);
-            for (auto in = i_edges.first;
-                    in != i_edges.second; ++in) {
-
-                debug << graph.graph[*in];
-
-                graph.add_contracted_edge_vertices(adjacent_vertex, graph[*in]);
-            }
-#endif
             log << "Current Vertex:\n";
             log << graph[current_vertex].id;
             log << "Adjacent Vertex:\n";
@@ -340,16 +307,13 @@ Pgr_deadend<G>::doContraction(G &graph) {
             if (is_dead_end(graph, adjacent_vertex)
                     && !forbiddenVertices.has(adjacent_vertex)) {
                 deadendVertices += adjacent_vertex;
-#if 0
-                deadendPriority.push(adjacent_vertex);
-#endif
             } else {
                 deadendVertices -= adjacent_vertex;
             }
         }
         graph[current_vertex].clear_contracted_vertices();
     }
-    }
+}
 
 }  // namespace contraction
 }  // namespace pgrouting
