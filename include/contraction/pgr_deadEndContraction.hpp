@@ -275,24 +275,26 @@ Pgr_deadend<G>::doContraction(G &graph) {
 
     log << "Performing contraction\n";
 
+#if 0
     std::priority_queue<V, std::vector<V>, std::greater<V> > deadendPriority;
 
     for (V deadendVertex : deadendVertices) {
         deadendPriority.push(deadendVertex);
     }
-
     while (!deadendPriority.empty()) {
         V current_vertex = deadendPriority.top();
         deadendPriority.pop();
+#endif
 
-        // pgassert(is_dead_end(graph, current_vertex));
+    while (!deadendVertices.empty()) {
+        V current_vertex = deadendVertices.front();
+        deadendVertices -= current_vertex;
+        pgassert(is_dead_end(graph, current_vertex));
         if (!is_dead_end(graph, current_vertex)) {
             continue;
         }
 
-        auto adjacent_vertices = graph.find_adjacent_vertices(current_vertex);
-
-        for (auto adjacent_vertex : adjacent_vertices) {
+        for (auto adjacent_vertex : graph.find_adjacent_vertices(current_vertex)) {
 
             log << "Contracting current vertex "
                 << graph[current_vertex].id << std::endl;
@@ -329,7 +331,6 @@ Pgr_deadend<G>::doContraction(G &graph) {
             log << graph[adjacent_vertex].id;
 
             graph.disconnect_vertex(current_vertex);
-            graph[current_vertex].clear_contracted_vertices();
             deadendVertices -= current_vertex;
 
             log << "Adjacent vertex dead_end?: "
@@ -339,11 +340,16 @@ Pgr_deadend<G>::doContraction(G &graph) {
             if (is_dead_end(graph, adjacent_vertex)
                     && !forbiddenVertices.has(adjacent_vertex)) {
                 deadendVertices += adjacent_vertex;
+#if 0
                 deadendPriority.push(adjacent_vertex);
+#endif
+            } else {
+                deadendVertices -= adjacent_vertex;
             }
         }
+        graph[current_vertex].clear_contracted_vertices();
     }
-}
+    }
 
 }  // namespace contraction
 }  // namespace pgrouting
