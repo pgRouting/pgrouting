@@ -17,18 +17,23 @@ VALUES
 
 INSERT INTO test_deadend(source, target, cost, reverse_cost, dead_case)
 VALUES
-(1, 2, 1, 0, 1),
+(1, 2, 1, -1, 1),
 
-(1, 2, 0, 1, 2),
+(1, 2, -1, 1, 2),
 
 (1, 2, 1, 1, 3),
 
-(1, 2, 0, 1, 4),
-(1, 2, 0, 1, 4),
-(1, 3, 0, 1, 4),
+(1, 2, -1, 1, 4),
+(1, 2, -1, 1, 4),
+(1, 3, -1, 1, 4),
+
+(2, 1, 1, -1, 41),
+(2, 1, 1, -1, 41),
+(3, 1, 1, -1, 41),
 
 (1, 2, 1, 1, 5),
 (1, 2, 1, 1, 5);
+
 
 SELECT * FROM pgr_contractGraph(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 1)$$,
@@ -44,6 +49,10 @@ SELECT * FROM pgr_contractGraph(
 
 SELECT * FROM pgr_contractGraph(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 4)$$,
+    ARRAY[1]::integer[]);
+
+SELECT * FROM pgr_contractGraph(
+    $$SELECT * FROM test_deadend WHERE dead_case IN (0, 41)$$,
     ARRAY[1]::integer[]);
 
 SELECT * FROM pgr_contractGraph(

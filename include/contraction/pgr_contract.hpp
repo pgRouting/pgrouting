@@ -85,7 +85,7 @@ class Pgr_contract : public Pgr_messages {
             int64_t kind,
             Identifiers<V> &forbidden_vertices) {
 #ifndef NDEBUG
-        log << "Graph before "<< (kind == 1? "dead end" : "linear") << " contraction";
+        log << "Graph before "<< (kind == 1? "dead end" : "linear") << " contraction\n";
         log << graph;
 #endif
 
@@ -124,7 +124,7 @@ class Pgr_contract : public Pgr_messages {
         catch ( ... ) {
             log << "Caught unknown exception!\n";
         }
-        log << deadendContractor.debug.str();
+        log << deadendContractor.get_log();
     }
 
 

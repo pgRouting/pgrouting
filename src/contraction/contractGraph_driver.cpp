@@ -77,7 +77,7 @@ static void process_contraction(
         }
     }
 
-#ifndef NDEBUG
+#if 0
     log << "Before contraction\n";
     log << graph;
 #endif
@@ -91,7 +91,8 @@ static void process_contraction(
             contraction_order,
             max_cycles);
 
-#ifndef NDEBUG
+    log << result.get_log();
+#if 0
     log << "After contraction\n";
     log << graph;
 #endif
