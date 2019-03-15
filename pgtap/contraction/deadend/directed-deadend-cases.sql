@@ -1,3 +1,6 @@
+\i setup.sql
+
+SELECT plan(6);
 
 CREATE TABLE test_deadend (
     id SERIAL,
@@ -34,28 +37,68 @@ VALUES
 (1, 2, 1, 1, 5),
 (1, 2, 1, 1, 5);
 
-
+--
+prepare q1 AS
 SELECT * FROM pgr_contractGraph(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 1)$$,
     ARRAY[1]::integer[]);
 
+prepare sol_2_1 AS
+SELECT 1::INTEGER AS seq,
+    'v'::CHAR AS type,
+    2::BIGINT AS id,
+    ARRAY[1]::BIGINT[] AS contracted_vertices,
+    -1::BIGINT AS source,
+    -1::BIGINT AS target,
+    -1::FLOAT AS cost;
+
+SELECT set_eq('q1', 'sol_2_1');
+
+--
+prepare q2 AS
 SELECT * FROM pgr_contractGraph(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 2)$$,
     ARRAY[1]::integer[]);
 
+SELECT set_eq('q2', 'sol_2_1');
+
+--
+prepare q3 AS
 SELECT * FROM pgr_contractGraph(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 3)$$,
     ARRAY[1]::integer[]);
+SELECT set_eq('q3', 'sol_2_1');
 
+--
+prepare q4 AS
 SELECT * FROM pgr_contractGraph(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 4)$$,
     ARRAY[1]::integer[]);
 
+PREPARE sol4 AS
+SELECT seq, type, id, contracted_vertices, source, target, cost
+FROM (VALUES
+    (1::INTEGER, 'v'::CHAR, 2::BIGINT, ARRAY[1]::BIGINT[], -1::BIGINT, -1::BIGINT, -1::FLOAT),
+    (2, 'v', 3, ARRAY[1], -1, -1, -1)
+) AS t(seq, type, id, contracted_vertices, source, target, cost );
+
+SELECT set_eq('q4', 'sol4');
+
+--
+PREPARE q41 AS
 SELECT * FROM pgr_contractGraph(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 41)$$,
     ARRAY[1]::integer[]);
+SELECT set_eq('q41', 'sol4');
 
+--
+PREPARE q5 AS
 SELECT * FROM pgr_contractGraph(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 5)$$,
     ARRAY[1]::integer[]);
+
+SELECT set_eq('q5', 'sol_2_1');
+
+
+SELECT finish();
 
