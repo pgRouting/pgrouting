@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CONTRACTION_PGR_CONTRACTIONGRAPH_HPP_
 #pragma once
 
+#include <boost/graph/iteration_macros.hpp>
 
 #include <limits>
 #include <algorithm>
@@ -58,7 +59,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          degree_size_type;
 
      Identifiers<V> removed_vertices;
-     std::vector<T_E> shortcuts;
+     Identifiers<E> shortcuts;
 
      /*! @brief Binary function that accepts two elements , and returns a value convertible to bool.
        Used as a compare function to sort the edges in increasing order of edge id
@@ -124,26 +125,35 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
 
      /*! @brief get the edge with minimum cost between two vertices
-       @param [in] source vertex_descriptor of source vertex
-       @param [in] destination vertex_descriptor of target vertex
+       @param [in] u vertex_descriptor of source vertex
+       @param [in] v vertex_descriptor of target vertex
        @return E: The edge descriptor of the edge with minimum cost
        */
-     E get_min_cost_edge(V source, V destination) {
-         EO_i out_i, out_end;
-         E min_cost_edge;
+     std::pair<E, bool> get_min_cost_edge(V u, V v) {
+         E min_edge;
          double min_cost = (std::numeric_limits<double>::max)();
-         for (boost::tie(out_i, out_end) =
-                 boost::out_edges(source, this->graph);
-                 out_i != out_end; ++out_i) {
-             auto e = *out_i;
-             if (this->target(e) == destination) {
-                 if (this->graph[e].cost < min_cost) {
+         bool found = false;
+
+         if (this->is_directed()) {
+             BGL_FORALL_OUTEDGES_T(u, e, this->graph, G) {
+                 if (this->target(e) == v && this->graph[e].cost < min_cost) {
                      min_cost = this->graph[e].cost;
-                     min_cost_edge = e;
+                     min_edge = e;
+                     found = true;
                  }
              }
+             return std::pair<E, bool>(min_edge, found);
          }
-         return min_cost_edge;
+
+         pgassert(this->is_undirected());
+         BGL_FORALL_OUTEDGES_T(u, e, this->graph, G) {
+             if (this->adjacent(u, e) == v && this->graph[e].cost < min_cost) {
+                 min_cost = this->graph[e].cost;
+                 min_edge = e;
+                 found = true;
+             }
+         }
+         return std::pair<E, bool>(min_edge, found);
      }
 
      /*! @brief The number of edges from @b neighbor to @b vertex
@@ -244,14 +254,14 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
      /*! @brief add edges(shortuct) to the graph during contraction
 
-       a -> b -> c
+       u -> v -> w
 
-       a -> c
+       u -> w
 
-       edge (a, c) is a new edge e
-       e.contracted_vertices = b + b.contracted vertices
-       b is "removed" disconnected from the graph
-       - by removing all edges to/from b
+       edge (u, w) is a new edge e
+       e.contracted_vertices = v + v.contracted vertices
+
+       removed from graph edges: u -> v  and v -> w
 
 
        @param [in] edge of type *T_E* is to be added
@@ -276,10 +286,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
          this->graph[e].cp_members(edge);
 
-         shortcuts.push_back(edge);
+         shortcuts += e;
      }
-
-
 
      bool is_contracted(V v) {
         return this->graph[v].has_contracted_vertices();
@@ -297,9 +305,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
                 remaining_vertices += this->graph[*vi].id;
             }
         }
-    }
+     }
 
-     std::vector<T_E> get_shortcuts() {
+     Identifiers<E> get_shortcuts() {
          return shortcuts;
      }
 #if 0

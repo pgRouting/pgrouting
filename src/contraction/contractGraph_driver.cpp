@@ -130,7 +130,8 @@ void get_postgres_result(
         ++sequence;
     }
 
-    for (auto edge : shortcut_edges) {
+    for (auto e : shortcut_edges) {
+        auto edge = graph[e];
         int64_t* contracted_vertices = NULL;
         //auto ids = graph.get_ids(edge.contracted_vertices());
         auto ids = edge.contracted_vertices();

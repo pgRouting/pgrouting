@@ -250,22 +250,32 @@ void Pgr_linear<G>::doContraction(G &graph) {
             << std::endl;
 
         if (graph.m_gType == DIRECTED) {
-
             /*
             Adding edge for every in edge and every out edge
+
+             u -e1_1-> v -e1_2-> w
+             w -e2_1-> v -e2_2-> u
             */
-            for (boost::tie(in, in_end) = boost::in_edges(current_vertex, graph.graph);
-                    in != in_end; ++in) {
-                for (boost::tie(out, out_end) = boost::out_edges(current_vertex, graph.graph);
-                        out != out_end; ++out) {
-                    //append_shortcut(graph, current_vertex, *in, *out, shortcuts, log);
-                    if (graph.source(*in) == graph.target(*out)) {
-                        continue;
-                    }
-                    add_shortcut(graph, current_vertex, *in, *out);
-                }
+            auto v = current_vertex;
+            V u = v_1;
+            V w = v_2;
+            pgassert(v != u);
+            pgassert(v != w);
+            pgassert(u != w);
+
+            auto e1_1 = graph.get_min_cost_edge(u, v);
+            auto e1_2 = graph.get_min_cost_edge(v, w);
+            auto e2_1 = graph.get_min_cost_edge(w, v);
+            auto e2_2 = graph.get_min_cost_edge(v, u);
+
+            if (e1_1.second && e1_2.second) {
+                log << e1_1.first << e1_2.first;
+                add_shortcut(graph, v, e1_1.first, e1_2.first);
             }
 
+            if (e2_1.second && e2_2.second) {
+                add_shortcut(graph, v, e2_1.first, e2_2.first);
+            }
 
         } else if (graph.m_gType == UNDIRECTED) {
             /*
@@ -354,19 +364,27 @@ void Pgr_linear<G>::doContraction(G &graph) {
 
 template < class G >
 void Pgr_linear<G>::add_shortcut(
-        G &graph, V vertex,
+        G &graph, V v,
         E incoming_edge,
         E outgoing_edge) {
 
+    auto u = graph.adjacent(v, incoming_edge);
+    auto w = graph.adjacent(v, outgoing_edge);
+
+    log << incoming_edge << outgoing_edge;
+    log << "(" << graph[u].id << ", "
+        << graph[w].id << ")";
     // Create shortcut
     CH_edge shortcut(
             get_next_id(),
-            graph[graph.adjacent(vertex, incoming_edge)].id,
-            graph[graph.adjacent(vertex, outgoing_edge)].id,
+            graph[u].id,
+            graph[w].id,
             graph[incoming_edge].cost + graph[outgoing_edge].cost);
 
+    log << "shorcut to be added" << shortcut;
+
     // Add contracted vertices of the current linear vertex
-    shortcut.add_contracted_vertex(graph[vertex]);
+    shortcut.add_contracted_vertex(graph[v]);
 
     // Add contracted vertices of the incoming edge
     shortcut.add_contracted_edge_vertices(graph[incoming_edge]);
@@ -376,7 +394,15 @@ void Pgr_linear<G>::add_shortcut(
 
     // Add shortcut to the graph
     log << "\nAdding shortcut\t" << shortcut << std::endl;
+    log << "\ngraph\t" << graph << std::endl;
     graph.add_shortcut(shortcut);
+    log << "\ngraph\t" << graph << std::endl;
+
+    boost::remove_edge(u, v, graph.graph);
+    boost::remove_edge(v, w, graph.graph);
+    graph.shortcuts -= incoming_edge;
+    graph.shortcuts -= outgoing_edge;
+    log << "\ngraph\t" << graph << std::endl;
 }
 
 
