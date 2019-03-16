@@ -32,6 +32,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
+#include <boost/graph/iteration_macros.hpp>
+#include <boost/graph/filtered_graph.hpp>
+
 #include <queue>
 #include <functional>
 #include <vector>
@@ -52,10 +55,11 @@ class Pgr_linear : public Pgr_messages {
      typedef typename G::EO_i EO_i;
      typedef typename G::EI_i EI_i;
      typedef typename G::degree_size_type degree_size_type;
+     typedef typename G::B_G B_G;
 
 
  public:
-     Pgr_linear():last_edge_id(-1) {}
+     Pgr_linear():last_edge_id(0) {}
      void setForbiddenVertices(
              Identifiers<V> forbidden_vertices);
      void calculateVertices(G &graph);
@@ -124,10 +128,12 @@ Pgr_linear< G >::is_shortcut_possible(G &graph, V v, V u, V w) {
         /*
          * u - v - w
          */
+        log << "\tundirected";
         return boost::edge(u, v, graph.graph).second &&  boost::edge(v, w,  graph.graph).second;
     }
 
     pgassert(graph.is_directed());
+    log << "\tdirected";
     return
         /*
          * u -> v -> w
@@ -138,6 +144,7 @@ Pgr_linear< G >::is_shortcut_possible(G &graph, V v, V u, V w) {
          */
         ||  (boost::edge(w, v, graph.graph).second &&  boost::edge(v, u,  graph.graph).second);
 
+#if 0
     auto in_degree_from_left_vertex = graph.in_degree_from_vertex(v, u);
     auto out_degree_to_right_vertex = graph.out_degree_to_vertex(v, w);
     auto in_degree_from_right_vertex = graph.in_degree_from_vertex(v, w);
@@ -148,13 +155,15 @@ Pgr_linear< G >::is_shortcut_possible(G &graph, V v, V u, V w) {
            && in_degree_from_right_vertex > 0 && out_degree_to_left_vertex > 0)
             || (in_degree_from_left_vertex > 0 && out_degree_to_right_vertex > 0
            && in_degree_from_right_vertex > 0 && out_degree_to_left_vertex > 0);
+#endif
 }
 
 template < class G >
 bool Pgr_linear<G>::is_linear(G &graph, V v) {
-    log << __PRETTY_FUNCTION__;
+    log << "\tChecking vertex " << graph[v].id << '\n';
 
 
+#if 0
     if (forbiddenVertices.has(v)) {
         /**
          * - fobbiden_vertices
@@ -163,32 +172,28 @@ bool Pgr_linear<G>::is_linear(G &graph, V v) {
         log << graph.graph[v].id << " is forbidden !!" << std::endl;
         return false;
     }
+#endif
 
-
-
-    //bool adjacent_vertices_constraint = false;
-    //bool degree_constraint = false;
-    //bool contracted_vertices_constraint = false;
 
     // Checking adjacent vertices constraint
     auto adjacent_vertices = graph.find_adjacent_vertices(v);
 
     if (adjacent_vertices.size() == 2) {
-        //adjacent_vertices_constraint = true;
+        log << "\t2 adjacent vertices";
 
-        // Checking degree constraint
-        V left_vertex = adjacent_vertices.front();
+        // Checking u - v - w
+        V u = adjacent_vertices.front();
         adjacent_vertices.pop_front();
-        V right_vertex = adjacent_vertices.front();
+        V w = adjacent_vertices.front();
         adjacent_vertices.pop_front();
-        if (is_shortcut_possible(graph, v, left_vertex, right_vertex)) {
-            log << graph.graph[v].id << " is linear !!" << std::endl;
+        if (is_shortcut_possible(graph, v, u, w)) {
+            log << graph.graph[v].id << "\t ******* is linear !!" << std::endl;
             return true;
         }
-        log << graph.graph[v].id << " is not linear !!" << std::endl;
+        log << graph.graph[v].id << "\t ******* is not linear !!" << std::endl;
         return false;
     }
-    log << graph.graph[v].id << " is not linear !!" << std::endl;
+    log << graph.graph[v].id << "\t ******* is not linear !!" << std::endl;
     return false;
 
 
@@ -196,14 +201,11 @@ bool Pgr_linear<G>::is_linear(G &graph, V v) {
 
 template < class G >
 void Pgr_linear<G>::calculateVertices(G &graph) {
-    log << __PRETTY_FUNCTION__;
+    log << "\n" << __PRETTY_FUNCTION__ << "\n";
     V_i vi;
-    for (vi = vertices(graph.graph).first;
-            vi != vertices(graph.graph).second;
-            ++vi) {
-        log << "Checking vertex " << graph.graph[(*vi)].id << '\n';
-        if (is_linear(graph, *vi)) {
-            linearVertices += (*vi);
+    BGL_FORALL_VERTICES_T(v, graph.graph, B_G) {
+        if (is_linear(graph, v)) {
+            linearVertices += v;
         }
     }
     linearVertices -= forbiddenVertices;
@@ -243,8 +245,7 @@ void Pgr_linear<G>::doContraction(G &graph) {
         adjacent_vertices.pop_front();
 
         // Adjacent vertices of the current linear vertex
-        log << "Adjacent vertices\n";
-        log << graph[v_1].id
+        log << "Adjacent vertices:\t" << graph[v_1].id
             << ", " << graph[v_2].id
             << std::endl;
 
@@ -267,20 +268,45 @@ void Pgr_linear<G>::doContraction(G &graph) {
 
 
         } else if (graph.m_gType == UNDIRECTED) {
-            // TODO: write logic afterwards
-            #if 0
-            if (graph.out_degree_to_vertex(vertex_1, current_vertex) > 0 &&
-                    graph.in_degree_from_vertex(vertex_2, current_vertex) > 0) {
-                log << "UNDIRECTED graph before contraction\n";
-                graph.print_graph(log);
-                E e1 = graph.get_min_cost_edge(vertex_1,
-                        current_vertex);
-                E e2 = graph.get_min_cost_edge(current_vertex,
-                        vertex_2);
-                add_shortcut(graph, current_vertex, e1, e2);
+            /*
+             * u - v - w
+             * e1 - e2
+             * with smallest cost
+             *
+             */
+            auto v = current_vertex;
+            V u = v_1;
+            V w = v_2;
+            pgassert(v != u);
+            pgassert(v != w);
+            pgassert(u != w);
+
+            E e1;
+            E e2;
+            double min_e1 = (std::numeric_limits<double>::max)();
+            double min_e2 = (std::numeric_limits<double>::max)();
+            BGL_FORALL_OUTEDGES_T(v, e, graph.graph, B_G) {
+                log << "\n*****cycling" << e;
+                if (graph.adjacent(v, e) == u && graph[e].cost < min_e1) {
+                    min_e1 = graph[e].cost;
+                    e1 = e;
+                }
+
+                if (graph.adjacent(v, e) == w && graph[e].cost < min_e2) {
+                    min_e2 = graph[e].cost;
+                    e2 = e;
+                }
             }
-            #endif
+            log << "\tshortest path cost" << min_e1 + min_e2;
+            add_shortcut(graph, v, e1, e2);
+            log << "\nafter shorcut\n" << graph;
+            graph.disconnect_vertex(v);
+            log << "\nafter disconnect\n" << graph;
+            graph[current_vertex].clear_contracted_vertices();
+            linearVertices -= current_vertex;
+            continue;
         }
+
 
         //Disconnecting the linear vertex after contraction
         graph.disconnect_vertex(current_vertex);
@@ -335,8 +361,8 @@ void Pgr_linear<G>::add_shortcut(
     // Create shortcut
     CH_edge shortcut(
             get_next_id(),
-            graph[graph.source(incoming_edge)].id,
-            graph[graph.target(outgoing_edge)].id,
+            graph[graph.adjacent(vertex, incoming_edge)].id,
+            graph[graph.adjacent(vertex, outgoing_edge)].id,
             graph[incoming_edge].cost + graph[outgoing_edge].cost);
 
     // Add contracted vertices of the current linear vertex
@@ -349,7 +375,7 @@ void Pgr_linear<G>::add_shortcut(
     shortcut.add_contracted_edge_vertices(graph[outgoing_edge]);
 
     // Add shortcut to the graph
-    log << "Adding shortcut\n" << shortcut << std::endl;
+    log << "\nAdding shortcut\t" << shortcut << std::endl;
     graph.add_shortcut(shortcut);
 }
 

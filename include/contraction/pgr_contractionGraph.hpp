@@ -299,13 +299,17 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         }
     }
 
+     std::vector<T_E> get_shortcuts() {
+         return shortcuts;
+     }
+#if 0
      void get_shortcuts(std::vector< CH_edge >& shortcut_edges) {
          EO_i out, out_end;
          CH_edge e;
          for (auto vi = vertices(this->graph).first;
-                vi != vertices(this->graph).second;
-                ++vi) {
-            if ((*vi) >= this->num_vertices()) break;
+                 vi != vertices(this->graph).second;
+                 ++vi) {
+             if ((*vi) >= this->num_vertices()) break;
 
             for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
                     out != out_end; ++out) {
@@ -320,6 +324,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
             }
         }
      }
+#endif
 };
 
 }  // namespace graph

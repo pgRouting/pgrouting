@@ -106,9 +106,8 @@ void get_postgres_result(
         size_t *return_tuples_size) {
 
     Identifiers<int64_t> remaining_vertices;
-    std::vector< pgrouting::CH_edge > shortcut_edges;
     graph.get_remaining_vertices(remaining_vertices);
-    graph.get_shortcuts(shortcut_edges);
+    auto shortcut_edges(graph.get_shortcuts());
 
 
     (*return_tuples_size) = remaining_vertices.size() + shortcut_edges.size();
