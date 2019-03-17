@@ -129,31 +129,38 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
        @param [in] v vertex_descriptor of target vertex
        @return E: The edge descriptor of the edge with minimum cost
        */
-     std::pair<E, bool> get_min_cost_edge(V u, V v) {
+     std::tuple<E, Identifiers<int64_t>, bool> get_min_cost_edge(V u, V v) {
          E min_edge;
+         Identifiers<int64_t> contracted_vertices;
          double min_cost = (std::numeric_limits<double>::max)();
          bool found = false;
 
          if (this->is_directed()) {
              BGL_FORALL_OUTEDGES_T(u, e, this->graph, G) {
-                 if (this->target(e) == v && this->graph[e].cost < min_cost) {
+                 if (this->target(e) == v) {
+                     contracted_vertices = this->graph[e].contracted_vertices();
+                     if (this->graph[e].cost < min_cost) {
+                         min_cost = this->graph[e].cost;
+                         min_edge = e;
+                         found = true;
+                     }
+                 }
+             }
+             return std::make_tuple(min_edge, contracted_vertices, found);
+         }
+
+         pgassert(this->is_undirected());
+         BGL_FORALL_OUTEDGES_T(u, e, this->graph, G) {
+             if (this->adjacent(u, e) == v) {
+                 contracted_vertices = this->graph[e].contracted_vertices();
+                 if (this->graph[e].cost < min_cost) {
                      min_cost = this->graph[e].cost;
                      min_edge = e;
                      found = true;
                  }
              }
-             return std::pair<E, bool>(min_edge, found);
          }
-
-         pgassert(this->is_undirected());
-         BGL_FORALL_OUTEDGES_T(u, e, this->graph, G) {
-             if (this->adjacent(u, e) == v && this->graph[e].cost < min_cost) {
-                 min_cost = this->graph[e].cost;
-                 min_edge = e;
-                 found = true;
-             }
-         }
-         return std::pair<E, bool>(min_edge, found);
+         return std::make_tuple(min_edge, contracted_vertices, found);
      }
 
      /*! @brief The number of edges from @b neighbor to @b vertex

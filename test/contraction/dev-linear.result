@@ -1,0 +1,22 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+PREPARE graph_e_1_2 AS
+    SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (1, 2);
+PREPARE
+PREPARE graph_e_11_12 AS
+    SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (11, 12);
+PREPARE
+PREPARE graph_e_3_5_11 AS
+    SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (3, 5, 11);
+PREPARE
+PREPARE graph_e_9_11_13_15 AS
+    SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (9, 11, 13, 15);
+PREPARE
+SELECT * FROM pgr_contractgraph(
+    'graph_e_3_5_11',
+    ARRAY[2]::INTEGER[], 1, ARRAY[]::INTEGER[], true);
+
+ROLLBACK;
+ROLLBACK

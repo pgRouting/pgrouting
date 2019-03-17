@@ -55,6 +55,7 @@ class CH_edge {
 
      void clear_contracted_vertices() {m_contracted_vertices.clear();}
      const Identifiers<int64_t>& contracted_vertices() const;
+     Identifiers<int64_t>& contracted_vertices();
      friend std::ostream& operator <<(std::ostream& os, const CH_edge& e);
 
  public:

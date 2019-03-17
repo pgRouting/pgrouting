@@ -51,6 +51,11 @@ CH_edge::contracted_vertices() const {
     return m_contracted_vertices;
 }
 
+Identifiers<int64_t>&
+CH_edge::contracted_vertices() {
+    return m_contracted_vertices;
+}
+
 
 void
 CH_edge::add_contracted_vertex(CH_vertex& v) {
