@@ -140,7 +140,9 @@ class Pgr_contract : public Pgr_messages {
             log << "Caught unknown exception!\n";
             throw;
         }
+#ifndef NDEBUG
         log << linearContractor.get_log();
+#endif
     }
 
 

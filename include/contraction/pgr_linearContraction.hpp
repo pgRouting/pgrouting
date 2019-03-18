@@ -99,36 +99,37 @@ class Pgr_linear : public Pgr_messages {
       w - a1;
       }
       @enddot
-
-*/
+      */
  private:
      bool is_shortcut_possible(
              G &graph,
              V v,
              V u,
              V w) {
-             if (graph.is_undirected()) {
-                 /*
-                  * u - v - w
-                  */
-                 log << "\tundirected";
-                 return boost::edge(u, v, graph.graph).second &&  boost::edge(v, w,  graph.graph).second;
-             }
-
-             pgassert(graph.is_directed());
-             log << "\tdirected";
-             return
-                 /*
-                  * u -> v -> w
-                  */
-                 (boost::edge(u, v, graph.graph).second &&  boost::edge(v, w,  graph.graph).second)
-                 /*
-                  * u <- v <- w
-                  */
-                 ||  (boost::edge(w, v, graph.graph).second &&  boost::edge(v, u,  graph.graph).second);
+         pgassert(u != v);
+         pgassert(v != w);
+         pgassert(u != w);
+         if (graph.is_undirected()) {
+             /*
+              * u - v - w
+              */
+             log << "\tundirected";
+             return graph.has_u_v_w(u, v, w);
          }
 
- private:
+         pgassert(graph.is_directed());
+         log << "\tdirected";
+         return
+             /*
+              * u -> v -> w
+              */
+             graph.has_u_v_w(u, v, w)
+             /*
+              * u <- v <- w
+              */
+             || graph.has_u_v_w(w, v, u);
+     }
+
      bool is_linear(G &graph, V v) {
          log << "\tChecking vertex " << graph[v].id << '\n';
 
@@ -152,11 +153,10 @@ class Pgr_linear : public Pgr_messages {
          }
          log << graph.graph[v].id << "\t ******* is not linear !!" << std::endl;
          return false;
-
-
      }
 
      void calculateVertices(G &graph) {
+         m_linearVertices.clear();
          V_i vi;
          BGL_FORALL_VERTICES_T(v, graph.graph, B_G) {
              if (is_linear(graph, v)) {
@@ -177,8 +177,10 @@ class Pgr_linear : public Pgr_messages {
              log << graph[v].id << ", ";
          }
          log << std::endl;
+#if 0
          EI_i in, in_end;
          EO_i out, out_end;
+#endif
          while (!m_linearVertices.empty()) {
              V current_vertex = m_linearVertices.front();
              m_linearVertices -= current_vertex;
@@ -215,6 +217,10 @@ class Pgr_linear : public Pgr_messages {
                  pgassert(v != w);
                  pgassert(u != w);
 
+#if 1
+                 process_shortcut(graph, u, v, w);
+                 process_shortcut(graph, w, v, u);
+#else
                  auto e1_1 = graph.get_min_cost_edge(u, v);
                  auto e1_2 = graph.get_min_cost_edge(v, w);
                  auto contracted_vertices = std::get<1>(e1_1) + std::get<1>(e1_2);
@@ -226,13 +232,14 @@ class Pgr_linear : public Pgr_messages {
 
                  auto e2_1 = graph.get_min_cost_edge(w, v);
                  auto e2_2 = graph.get_min_cost_edge(v, u);
-                 contracted_vertices = std::get<1>(e2_1) + std::get<1>(e2_2);
+                 auto contracted_vertices = std::get<1>(e2_1) + std::get<1>(e2_2);
 
 
                  if (std::get<2>(e2_1) && std::get<2>(e2_2)) {
                      log <<std::get<0>(e2_1)<< std::get<0>(e2_2);
                      add_shortcut(graph, v, std::get<0>(e2_1), std::get<0>(e2_2), contracted_vertices);
                  }
+#endif
 
                  m_linearVertices -= current_vertex;
              } else if (graph.m_gType == UNDIRECTED) {
@@ -249,13 +256,18 @@ class Pgr_linear : public Pgr_messages {
                  pgassert(v != w);
                  pgassert(u != w);
 
+#if 1
+                 process_shortcut(graph, u, v, w);
+#else
                  auto e1_1 = graph.get_min_cost_edge(u, v);
                  auto e1_2 = graph.get_min_cost_edge(v, w);
                  auto contracted_vertices = std::get<1>(e1_1) + std::get<1>(e1_2);
+
                  if (std::get<2>(e1_1) && std::get<2>(e1_2)) {
                      log <<std::get<0>(e1_1)<< std::get<0>(e1_2);
                      add_shortcut(graph, v, std::get<0>(e1_1), std::get<0>(e1_2), contracted_vertices);
                  }
+#endif
                  m_linearVertices -= current_vertex;
              }
 
@@ -277,6 +289,29 @@ class Pgr_linear : public Pgr_messages {
 
          }
          //log << contraction_debug.str().c_str() << "\n";
+     }
+
+     /**
+      *
+      * u ----e1{v1}----> v ----e2{v2}----> w
+      *
+      * e1: min cost edge from u to v
+      * e2: min cost edge from v to w
+      *
+      * result:
+      * u ---{v+v1+v2}---> w
+      *
+      */
+     void process_shortcut(G &graph, V u, V v, V w) {
+         auto e1 = graph.get_min_cost_edge(u, v);
+         auto e2 = graph.get_min_cost_edge(v, w);
+         auto contracted_vertices = std::get<1>(e1) + std::get<1>(e2);
+         contracted_vertices += graph[v].id;
+
+         if (std::get<2>(e1) && std::get<2>(e2)) {
+             log <<std::get<0>(e1)<< std::get<0>(e2);
+             add_shortcut(graph, v, std::get<0>(e1), std::get<0>(e2), contracted_vertices);
+         }
      }
 
 

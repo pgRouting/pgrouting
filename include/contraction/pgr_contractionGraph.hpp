@@ -156,6 +156,11 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
          return os;
      }
 
+     bool has_u_v_w(V u, V v, V w) const {
+         return boost::edge(u, v, this->graph).second &&  boost::edge(v, w, this->graph).second;
+     }
+
+
 
      /*! @brief get the contracted vertex ids of a given vertex in array format
        @param [in] vid vertex_id
