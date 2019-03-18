@@ -60,43 +60,19 @@ class Pgr_linear : public Pgr_messages {
 
  public:
      Pgr_linear():last_edge_id(0) {}
-#if 0
-     void setForbiddenVertices(
-             Identifiers<V> forbidden_vertices);
-     void calculateVertices(G &graph);
-     void doContraction(G &graph);
-#endif
 
  private:
      int64_t get_next_id() {
          return --last_edge_id;
      }
 
-#if 0
-     bool is_linear(G &graph, V v);
-     void add_if_linear(G &graph, V v);
-     void add_edge_pair(V vertex, int64_t &incoming_eid,
-             int64_t &outgoing_eid);
-     bool is_shortcut_possible(G &graph, V v, V left, V right);
-     void add_shortcut(G &graph, V vertex,
-             E incoming_edge,
-             E outgoing_edge,
-             Identifiers<int64_t> contracted_vertices);
-#endif
-#if 0
-     void add_shortcut(G &graph,
-             pgrouting::CH_edge &shortcut);
-#endif
-
-
-     /*************** IMPLEMENTTION **************/
 
  public:
      void setForbiddenVertices(
-                 Identifiers<V> forbidden_vertices) {
-             log << "Setting forbidden vertices\n";
-             forbiddenVertices = forbidden_vertices;
-         }
+             Identifiers<V> forbidden_vertices) {
+         log << "Setting forbidden vertices\n";
+         forbiddenVertices = forbidden_vertices;
+     }
 
      /**
        Possibility of a shortcut from left vertex to right vertex
@@ -122,8 +98,11 @@ class Pgr_linear : public Pgr_messages {
 
 */
  private:
-     bool
-         is_shortcut_possible(G &graph, V v, V u, V w) {
+     bool is_shortcut_possible(
+             G &graph,
+             V v,
+             V u,
+             V w) {
              if (graph.is_undirected()) {
                  /*
                   * u - v - w
@@ -143,37 +122,11 @@ class Pgr_linear : public Pgr_messages {
                   * u <- v <- w
                   */
                  ||  (boost::edge(w, v, graph.graph).second &&  boost::edge(v, u,  graph.graph).second);
-
-#if 0
-             auto in_degree_from_left_vertex = graph.in_degree_from_vertex(v, u);
-             auto out_degree_to_right_vertex = graph.out_degree_to_vertex(v, w);
-             auto in_degree_from_right_vertex = graph.in_degree_from_vertex(v, w);
-             auto out_degree_to_left_vertex = graph.out_degree_to_vertex(v, u);
-             return (in_degree_from_left_vertex > 0 && out_degree_to_right_vertex > 0
-                     && in_degree_from_right_vertex == 0 && out_degree_to_left_vertex == 0)
-                 || (in_degree_from_left_vertex == 0 && out_degree_to_right_vertex == 0
-                         && in_degree_from_right_vertex > 0 && out_degree_to_left_vertex > 0)
-                 || (in_degree_from_left_vertex > 0 && out_degree_to_right_vertex > 0
-                         && in_degree_from_right_vertex > 0 && out_degree_to_left_vertex > 0);
-#endif
          }
 
  private:
      bool is_linear(G &graph, V v) {
          log << "\tChecking vertex " << graph[v].id << '\n';
-
-
-#if 0
-         if (forbiddenVertices.has(v)) {
-             /**
-              * - fobbiden_vertices
-              *   - Not considered as linear
-              */
-             log << graph.graph[v].id << " is forbidden !!" << std::endl;
-             return false;
-         }
-#endif
-
 
          // Checking adjacent vertices constraint
          auto adjacent_vertices = graph.find_adjacent_vertices(v);
@@ -200,134 +153,127 @@ class Pgr_linear : public Pgr_messages {
      }
 
  public:
-         void calculateVertices(G &graph) {
-             log << "\n" << __PRETTY_FUNCTION__ << "\n";
-             V_i vi;
-             BGL_FORALL_VERTICES_T(v, graph.graph, B_G) {
-                 if (is_linear(graph, v)) {
-                     linearVertices += v;
-                 }
+     void calculateVertices(G &graph) {
+         log << "\n" << __PRETTY_FUNCTION__ << "\n";
+         V_i vi;
+         BGL_FORALL_VERTICES_T(v, graph.graph, B_G) {
+             if (is_linear(graph, v)) {
+                 linearVertices += v;
              }
-             linearVertices -= forbiddenVertices;
          }
+         linearVertices -= forbiddenVertices;
+     }
 
 
 
-         void doContraction(G &graph) {
-             log << "Performing contraction\n";
-
-#if 0
-             std::priority_queue<V, std::vector<V>, std::greater<V> > linearPriority;
-             for (const auto linearVertex : linearVertices) {
-                 linearPriority.push(linearVertex);
-             }
-#endif
-             log << "Linear vertices" << std::endl;
-             for (const auto v : linearVertices) {
-                 log << graph[v].id << ", ";
-             }
-             log << std::endl;
-             EI_i in, in_end;
-             EO_i out, out_end;
-             while (!linearVertices.empty()) {
-                 V current_vertex = linearVertices.front();
+     void doContraction(G &graph) {
+         log << "Performing contraction\n";
+         log << "Linear vertices" << std::endl;
+         for (const auto v : linearVertices) {
+             log << graph[v].id << ", ";
+         }
+         log << std::endl;
+         EI_i in, in_end;
+         EO_i out, out_end;
+         while (!linearVertices.empty()) {
+             V current_vertex = linearVertices.front();
+             linearVertices -= current_vertex;
+             pgassert(is_linear(graph, current_vertex));
+             if (!is_linear(graph, current_vertex)) {
                  linearVertices -= current_vertex;
-                 pgassert(is_linear(graph, current_vertex));
-                 if (!is_linear(graph, current_vertex)) {
-                     linearVertices -= current_vertex;
-                     continue;
-                 }
-                 Identifiers<V> adjacent_vertices =
-                     graph.find_adjacent_vertices(current_vertex);
-                 pgassert(adjacent_vertices.size() == 2);
-
-                 V v_1 = adjacent_vertices.front();
-                 adjacent_vertices.pop_front();
-                 V v_2 = adjacent_vertices.front();
-                 adjacent_vertices.pop_front();
-
-                 // Adjacent vertices of the current linear vertex
-                 log << "Adjacent vertices:\t" << graph[v_1].id
-                     << ", " << graph[v_2].id
-                     << std::endl;
-
-                 if (graph.m_gType == DIRECTED) {
-                     /*
-                        Adding edge for every in edge and every out edge
-
-                        u -e1_1-> v -e1_2-> w
-                        w -e2_1-> v -e2_2-> u
-                        */
-                     auto v = current_vertex;
-                     V u = v_1;
-                     V w = v_2;
-                     pgassert(v != u);
-                     pgassert(v != w);
-                     pgassert(u != w);
-
-                     auto e1_1 = graph.get_min_cost_edge(u, v);
-                     auto e1_2 = graph.get_min_cost_edge(v, w);
-                     auto contracted_vertices = std::get<1>(e1_1) + std::get<1>(e1_2);
-
-                     if (std::get<2>(e1_1) && std::get<2>(e1_2)) {
-                         log <<std::get<0>(e1_1)<< std::get<0>(e1_2);
-                         add_shortcut(graph, v, std::get<0>(e1_1), std::get<0>(e1_2), contracted_vertices);
-                     }
-
-                     auto e2_1 = graph.get_min_cost_edge(w, v);
-                     auto e2_2 = graph.get_min_cost_edge(v, u);
-                     contracted_vertices = std::get<1>(e2_1) + std::get<1>(e2_2);
-
-
-                     if (std::get<2>(e2_1) && std::get<2>(e2_2)) {
-                         log <<std::get<0>(e2_1)<< std::get<0>(e2_2);
-                         add_shortcut(graph, v, std::get<0>(e2_1), std::get<0>(e2_2), contracted_vertices);
-                     }
-
-                     linearVertices -= current_vertex;
-                 } else if (graph.m_gType == UNDIRECTED) {
-                     /*
-                      * u - v - w
-                      * e1 - e2
-                      * with smallest cost
-                      *
-                      */
-                     auto v = current_vertex;
-                     V u = v_1;
-                     V w = v_2;
-                     pgassert(v != u);
-                     pgassert(v != w);
-                     pgassert(u != w);
-
-                     auto e1_1 = graph.get_min_cost_edge(u, v);
-                     auto e1_2 = graph.get_min_cost_edge(v, w);
-                     auto contracted_vertices = std::get<1>(e1_1) + std::get<1>(e1_2);
-                     if (std::get<2>(e1_1) && std::get<2>(e1_2)) {
-                         log <<std::get<0>(e1_1)<< std::get<0>(e1_2);
-                         add_shortcut(graph, v, std::get<0>(e1_1), std::get<0>(e1_2), contracted_vertices);
-                     }
-                     linearVertices -= current_vertex;
-                 }
-
-                 log << "checking neighbor vertices";
-
-
-                 if (is_linear(graph, v_1) && !forbiddenVertices.has(v_1)) {
-                     log << "Adding linear vertex: " << graph[v_1].id << std::endl;
-                     linearVertices += v_1;
-                 } else {
-                     linearVertices -= v_1;
-                 }
-                 if (is_linear(graph, v_2) && !forbiddenVertices.has(v_2)) {
-                     log << "Adding linear vertex: " << graph[v_2].id << std::endl;
-                     linearVertices += v_2;
-                 } else {
-                     linearVertices -= v_2;
-                 }
-
+                 continue;
              }
-             //log << contraction_debug.str().c_str() << "\n";
+             Identifiers<V> adjacent_vertices =
+                 graph.find_adjacent_vertices(current_vertex);
+             pgassert(adjacent_vertices.size() == 2);
+
+             V v_1 = adjacent_vertices.front();
+             adjacent_vertices.pop_front();
+             V v_2 = adjacent_vertices.front();
+             adjacent_vertices.pop_front();
+
+             // Adjacent vertices of the current linear vertex
+             log << "Adjacent vertices:\t" << graph[v_1].id
+                 << ", " << graph[v_2].id
+                 << std::endl;
+
+             if (graph.m_gType == DIRECTED) {
+                 /*
+                    Adding edge for every in edge and every out edge
+
+                    u -e1_1-> v -e1_2-> w
+                    w -e2_1-> v -e2_2-> u
+                    */
+                 auto v = current_vertex;
+                 V u = v_1;
+                 V w = v_2;
+                 pgassert(v != u);
+                 pgassert(v != w);
+                 pgassert(u != w);
+
+                 auto e1_1 = graph.get_min_cost_edge(u, v);
+                 auto e1_2 = graph.get_min_cost_edge(v, w);
+                 auto contracted_vertices = std::get<1>(e1_1) + std::get<1>(e1_2);
+
+                 if (std::get<2>(e1_1) && std::get<2>(e1_2)) {
+                     log <<std::get<0>(e1_1)<< std::get<0>(e1_2);
+                     add_shortcut(graph, v, std::get<0>(e1_1), std::get<0>(e1_2), contracted_vertices);
+                 }
+
+                 auto e2_1 = graph.get_min_cost_edge(w, v);
+                 auto e2_2 = graph.get_min_cost_edge(v, u);
+                 contracted_vertices = std::get<1>(e2_1) + std::get<1>(e2_2);
+
+
+                 if (std::get<2>(e2_1) && std::get<2>(e2_2)) {
+                     log <<std::get<0>(e2_1)<< std::get<0>(e2_2);
+                     add_shortcut(graph, v, std::get<0>(e2_1), std::get<0>(e2_2), contracted_vertices);
+                 }
+
+                 linearVertices -= current_vertex;
+             } else if (graph.m_gType == UNDIRECTED) {
+                 /*
+                  * u - v - w
+                  * e1 - e2
+                  * with smallest cost
+                  *
+                  */
+                 auto v = current_vertex;
+                 V u = v_1;
+                 V w = v_2;
+                 pgassert(v != u);
+                 pgassert(v != w);
+                 pgassert(u != w);
+
+                 auto e1_1 = graph.get_min_cost_edge(u, v);
+                 auto e1_2 = graph.get_min_cost_edge(v, w);
+                 auto contracted_vertices = std::get<1>(e1_1) + std::get<1>(e1_2);
+                 if (std::get<2>(e1_1) && std::get<2>(e1_2)) {
+                     log <<std::get<0>(e1_1)<< std::get<0>(e1_2);
+                     add_shortcut(graph, v, std::get<0>(e1_1), std::get<0>(e1_2), contracted_vertices);
+                 }
+                 linearVertices -= current_vertex;
+             }
+
+             log << "checking neighbor vertices";
+
+
+             if (is_linear(graph, v_1) && !forbiddenVertices.has(v_1)) {
+                 log << "Adding linear vertex: " << graph[v_1].id << std::endl;
+                 linearVertices += v_1;
+             } else {
+                 linearVertices -= v_1;
+             }
+             if (is_linear(graph, v_2) && !forbiddenVertices.has(v_2)) {
+                 log << "Adding linear vertex: " << graph[v_2].id << std::endl;
+                 linearVertices += v_2;
+             } else {
+                 linearVertices -= v_2;
+             }
+
          }
+         //log << contraction_debug.str().c_str() << "\n";
+     }
 
 
      /*! \brief add edges(shortuct) to the graph during contraction
@@ -367,13 +313,6 @@ class Pgr_linear : public Pgr_messages {
          shortcut.add_contracted_vertex(graph[v]);
          shortcut.contracted_vertices() += contracted_vertices;
 
-#if 0
-         // Add contracted vertices of the incoming edge
-         shortcut.add_contracted_edge_vertices(graph[incoming_edge]);
-
-         // Add contracted vertices of the outgoing edge
-         shortcut.add_contracted_edge_vertices(graph[outgoing_edge]);
-#endif
          // Add shortcut to the graph
          log << "\nAdding shortcut\t" << shortcut << std::endl;
          log << "\ngraph\t" << graph << std::endl;
@@ -394,13 +333,6 @@ class Pgr_linear : public Pgr_messages {
 
      int64_t last_edge_id;
 };
-#if 0
-template < class G >
-void Pgr_linear<G>::add_shortcut(G &graph,
-        pgrouting::CH_edge &shortcut) {
-    graph.add_shortcut(shortcut);
-}
-#endif
 
 }  // namespace contraction
 }  // namespace pgrouting
