@@ -78,92 +78,18 @@ class Pgr_linear : public Pgr_messages {
          m_forbiddenVertices = forbidden_vertices;
      }
 
-     /**
-       Possibility of a shortcut from left vertex to right vertex
-      *v* should be a linear vertex
-
-      @dot
-      graph G {
-      graph [rankdir=LR];
-      subgraph cluster0 {
-      node [shape=point,height=0.2,style=filled,color=black];
-      style=filled;
-      color=lightgrey;
-      a0; a1; a2;
-      label = "rest of graph";
-      }
-      v [color=green];
-      v -- left;
-      v -- right;
-      u - a0;
-      w - a1;
-      }
-      @enddot
-      */
- private:
-     bool is_shortcut_possible(
-             G &graph,
-             V v,
-             V u,
-             V w) {
-         pgassert(u != v);
-         pgassert(v != w);
-         pgassert(u != w);
-         if (graph.is_undirected()) {
-             /*
-              * u - v - w
-              */
-             log << "\tundirected";
-             return graph.has_u_v_w(u, v, w);
-         }
-
-         pgassert(graph.is_directed());
-         log << "\tdirected";
-         return
-             /*
-              * u -> v -> w
-              */
-             graph.has_u_v_w(u, v, w)
-             /*
-              * u <- v <- w
-              */
-             || graph.has_u_v_w(w, v, u);
-     }
-
-     bool is_linear(G &graph, V v) {
-         log << "\tChecking vertex " << graph[v].id << '\n';
-
-         // Checking adjacent vertices constraint
-         auto adjacent_vertices = graph.find_adjacent_vertices(v);
-
-         if (adjacent_vertices.size() == 2) {
-             log << "\t2 adjacent vertices";
-
-             // Checking u - v - w
-             V u = adjacent_vertices.front();
-             adjacent_vertices.pop_front();
-             V w = adjacent_vertices.front();
-             adjacent_vertices.pop_front();
-             if (is_shortcut_possible(graph, v, u, w)) {
-                 log << graph.graph[v].id << "\t ******* is linear !!" << std::endl;
-                 return true;
-             }
-             log << graph.graph[v].id << "\t ******* is not linear !!" << std::endl;
-             return false;
-         }
-         log << graph.graph[v].id << "\t ******* is not linear !!" << std::endl;
-         return false;
+     bool is_contractible(G &graph, V v) {
+         return graph.is_linear(v) && !m_forbiddenVertices.has(v);
      }
 
      void calculateVertices(G &graph) {
          m_linearVertices.clear();
          V_i vi;
          BGL_FORALL_VERTICES_T(v, graph.graph, B_G) {
-             if (is_linear(graph, v)) {
+             if (is_contractible(graph, v)) {
                  m_linearVertices += v;
              }
          }
-         m_linearVertices -= m_forbiddenVertices;
      }
 
 
@@ -177,69 +103,70 @@ class Pgr_linear : public Pgr_messages {
              log << graph[v].id << ", ";
          }
          log << std::endl;
-#if 0
-         EI_i in, in_end;
-         EO_i out, out_end;
-#endif
+
          while (!m_linearVertices.empty()) {
              V v = m_linearVertices.front();
              m_linearVertices -= v;
-             pgassert(is_linear(graph, v));
+             pgassert(is_contractible(graph, v));
+             one_cycle(graph, v);
+         }
+     }
 
-             Identifiers<V> adjacent_vertices =
-                 graph.find_adjacent_vertices(v);
-             pgassert(adjacent_vertices.size() == 2);
+     void one_cycle(G &graph, V v) {
+         pgassert(is_contractible(graph, v));
 
-             V u = adjacent_vertices.front();
-             adjacent_vertices.pop_front();
-             V w = adjacent_vertices.front();
-             adjacent_vertices.pop_front();
+         Identifiers<V> adjacent_vertices =
+             graph.find_adjacent_vertices(v);
+         pgassert(adjacent_vertices.size() == 2);
 
-             // Adjacent vertices of the current linear vertex
-             log << "Adjacent vertices:\t" << graph[u].id
-                 << ", " << graph[w].id
-                 << std::endl;
+         V u = adjacent_vertices.front();
+         adjacent_vertices.pop_front();
+         V w = adjacent_vertices.front();
+         adjacent_vertices.pop_front();
 
-             pgassert(v != u);
-             pgassert(v != w);
-             pgassert(u != w);
+         // Adjacent vertices of the current linear vertex
+         log << "Adjacent vertices:\t" << graph[u].id
+             << ", " << graph[w].id
+             << std::endl;
 
-             if (graph.is_directed()) {
-                 /*
-                  *  u --> v --> w
-                  */
-                 process_shortcut(graph, u, v, w);
-                 /*
-                  *  w --> v --> u
-                  */
-                 process_shortcut(graph, w, v, u);
+         pgassert(v != u);
+         pgassert(v != w);
+         pgassert(u != w);
 
-             } else {
-                 pgassert (graph.is_undirected());
-                 /*
-                  * u - v - w
-                  */
-                 process_shortcut(graph, u, v, w);
+         if (graph.is_directed()) {
+             /*
+              *  u --> v --> w
+              */
+             process_shortcut(graph, u, v, w);
+             /*
+              *  w --> v --> u
+              */
+             process_shortcut(graph, w, v, u);
 
-             }
-             m_linearVertices -= v;
+         } else {
+             pgassert (graph.is_undirected());
+             /*
+              * u - v - w
+              */
+             process_shortcut(graph, u, v, w);
 
-             log << "checking neighbor vertices";
+         }
+         m_linearVertices -= v;
+
+         log << "checking neighbor vertices";
 
 
-             if (is_linear(graph, u) && !m_forbiddenVertices.has(u)) {
-                 log << "Adding linear vertex: " << graph[u].id << std::endl;
-                 m_linearVertices += u;
-             } else {
-                 m_linearVertices -= u;
-             }
-             if (is_linear(graph, w) && !m_forbiddenVertices.has(w)) {
-                 log << "Adding linear vertex: " << graph[w].id << std::endl;
-                 m_linearVertices += w;
-             } else {
-                 m_linearVertices -= w;
-             }
-
+         if (is_contractible(graph, u)) {
+             log << "Adding linear vertex: " << graph[u].id << std::endl;
+             one_cycle(graph, u);
+         } else {
+             m_linearVertices -= u;
+         }
+         if (is_contractible(graph, w)) {
+             log << "Adding linear vertex: " << graph[w].id << std::endl;
+             one_cycle(graph, w);
+         } else {
+             m_linearVertices -= w;
          }
      }
 
@@ -302,7 +229,6 @@ class Pgr_linear : public Pgr_messages {
                  graph[incoming_edge].cost + graph[outgoing_edge].cost);
 
          // Add contracted vertices of the current linear vertex
-         shortcut.add_contracted_vertex(graph[v]);
          shortcut.contracted_vertices() += contracted_vertices;
 
          // Add shortcut to the graph

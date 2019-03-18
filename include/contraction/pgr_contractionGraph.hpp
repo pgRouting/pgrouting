@@ -156,10 +156,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
          return os;
      }
 
-     bool has_u_v_w(V u, V v, V w) const {
-         return boost::edge(u, v, this->graph).second &&  boost::edge(v, w, this->graph).second;
-     }
-
 
 
      /*! @brief get the contracted vertex ids of a given vertex in array format
@@ -232,6 +228,83 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
 
      Identifiers<E> get_shortcuts() {
          return shortcuts;
+     }
+
+     bool has_u_v_w(V u, V v, V w) const {
+         return boost::edge(u, v, this->graph).second &&  boost::edge(v, w, this->graph).second;
+     }
+
+     /**
+       Possibility of a shortcut from left vertex to right vertex
+      *v* should be a linear vertex
+      u <-> v -> w: v not considered linear
+
+      @dot
+      graph G {
+      graph [rankdir=LR];
+      subgraph cluster0 {
+      node [shape=point,height=0.2,style=filled,color=black];
+      style=filled;
+      color=lightgrey;
+      a0; a1; a2;
+      label = "rest of graph";
+      }
+      v [color=green];
+      v -- left;
+      v -- right;
+      u - a0;
+      w - a1;
+      }
+      @enddot
+      */
+     bool is_shortcut_possible(
+             V v,
+             V u,
+             V w) {
+         pgassert(u != v);
+         pgassert(v != w);
+         pgassert(u != w);
+         if (this->is_undirected()) {
+             /*
+              * u - v - w
+              */
+             return has_u_v_w(u, v, w);
+         }
+
+         pgassert(this->is_directed());
+         return
+             /*
+              * u <-> v <-> w
+              */
+             (has_u_v_w(u, v, w) && has_u_v_w(w, v, u))
+             /*
+              * u -> v -> w
+              */
+             ||
+             (has_u_v_w(u, v, w) && !(boost::edge(v, u, this->graph).second || boost::edge(w, v, this->graph).second))
+             /*
+              * u <- v <- w
+              */
+             ||
+             (has_u_v_w(w, v, u) && !(boost::edge(v, w, this->graph).second || boost::edge(u, v, this->graph).second));
+     }
+
+     bool is_linear(V v) {
+         // Checking adjacent vertices constraint
+         auto adjacent_vertices = find_adjacent_vertices(v);
+
+         if (adjacent_vertices.size() == 2) {
+             // Checking u - v - w
+             V u = adjacent_vertices.front();
+             adjacent_vertices.pop_front();
+             V w = adjacent_vertices.front();
+             adjacent_vertices.pop_front();
+             if (is_shortcut_possible(v, u, w)) {
+                 return true;
+             }
+             return false;
+         }
+         return false;
      }
 };
 
