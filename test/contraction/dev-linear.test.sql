@@ -13,9 +13,3 @@ SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (3, 5,
 -- GRAPH 6 -> 11 -> 12 - 9 - 6
 PREPARE graph_e_9_11_13_15 AS
 SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (9, 11, 13, 15);
-
-SELECT type, id, contracted_vertices, source, target, cost
-FROM pgr_contractgraph(
-    'graph_e_9_11_13_15',
-    ARRAY[2]::INTEGER[], 1, ARRAY[6, 11]::INTEGER[], true);
-

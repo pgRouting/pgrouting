@@ -14,9 +14,6 @@ PREPARE
 PREPARE graph_e_9_11_13_15 AS
     SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (9, 11, 13, 15);
 PREPARE
-SELECT * FROM pgr_contractgraph(
-    'graph_e_3_5_11',
-    ARRAY[2]::INTEGER[], 1, ARRAY[]::INTEGER[], true);
 
 ROLLBACK;
 ROLLBACK

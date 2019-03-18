@@ -301,29 +301,13 @@ void Pgr_linear<G>::doContraction(G &graph) {
             pgassert(v != w);
             pgassert(u != w);
 
-            E e1;
-            E e2;
-            double min_e1 = (std::numeric_limits<double>::max)();
-            double min_e2 = (std::numeric_limits<double>::max)();
-            BGL_FORALL_OUTEDGES_T(v, e, graph.graph, B_G) {
-                log << "\n*****cycling" << e;
-                if (graph.adjacent(v, e) == u && graph[e].cost < min_e1) {
-                    min_e1 = graph[e].cost;
-                    e1 = e;
-                }
-
-                if (graph.adjacent(v, e) == w && graph[e].cost < min_e2) {
-                    min_e2 = graph[e].cost;
-                    e2 = e;
-                }
+            auto e1_1 = graph.get_min_cost_edge(u, v);
+            auto e1_2 = graph.get_min_cost_edge(v, w);
+            auto contracted_vertices = std::get<1>(e1_1) + std::get<1>(e1_2);
+            if (std::get<2>(e1_1) && std::get<2>(e1_2)) {
+                log <<std::get<0>(e1_1)<< std::get<0>(e1_2);
+                add_shortcut(graph, v, std::get<0>(e1_1), std::get<0>(e1_2), contracted_vertices);
             }
-            Identifiers<int64_t> contracted_vertices;
-            log << "\tshortest path cost" << min_e1 + min_e2;
-            add_shortcut(graph, v, e1, e2, contracted_vertices);
-            log << "\nafter shorcut\n" << graph;
-            graph.disconnect_vertex(v);
-            log << "\nafter disconnect\n" << graph;
-            graph[current_vertex].clear_contracted_vertices();
             linearVertices -= current_vertex;
         }
 
