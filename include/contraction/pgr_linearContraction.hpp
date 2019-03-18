@@ -79,8 +79,10 @@ class Pgr_linear : public Pgr_messages {
              E incoming_edge,
              E outgoing_edge,
              Identifiers<int64_t> contracted_vertices);
+#if 0
      void add_shortcut(G &graph,
              pgrouting::CH_edge &shortcut);
+#endif
 
  private:
      Identifiers<V> linearVertices;
@@ -390,11 +392,13 @@ void Pgr_linear<G>::add_shortcut(
 }
 
 
+#if 0
 template < class G >
 void Pgr_linear<G>::add_shortcut(G &graph,
         pgrouting::CH_edge &shortcut) {
     graph.add_shortcut(shortcut);
 }
+#endif
 
 }  // namespace contraction
 }  // namespace pgrouting

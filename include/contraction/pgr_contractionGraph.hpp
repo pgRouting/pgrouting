@@ -61,13 +61,14 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      Identifiers<V> removed_vertices;
      Identifiers<E> shortcuts;
 
+#if 0
      /*! @brief Binary function that accepts two elements , and returns a value convertible to bool.
        Used as a compare function to sort the edges in increasing order of edge id
        */
      static bool compareById(const T_E &edge1, const T_E &edge2) {
          return edge1.id > edge2.id;
      }
-
+#endif
      /*!
        Prepares the _graph_ to be of type *gtype*
        */
@@ -95,6 +96,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return adjacent_vertices;
      }
 
+#if 0
      std::vector<int64_t> get_ids(
              Identifiers<int64_t> boost_ids) const {
          std::vector<int64_t> ids(boost_ids.size());
@@ -104,8 +106,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          }
          return ids;
      }
+#endif
 
-
+#if 0
      /*! @brief vertices with at least one contracted vertex
       *
        @result The vids Identifiers with at least one contracted vertex
@@ -122,7 +125,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          }
          return vids;
      }
-
+#endif
 
      /*! @brief get the edge with minimum cost between two vertices
        @param [in] u vertex_descriptor of source vertex
@@ -163,6 +166,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return std::make_tuple(min_edge, contracted_vertices, found);
      }
 
+#if 0
      /*! @brief The number of edges from @b neighbor to @b vertex
 
        @param [in] vertex is the target of the edges
@@ -172,7 +176,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      degree_size_type in_degree_from_vertex(V vertex, V neighbor) {
          return out_degree_to_vertex(neighbor, vertex);
      }
-
+#endif
+#if 0
      /*! @brief The number of edges from @b vertex to @b neighbor
 
        @param [in] vertex vertex_descriptor of the given vertex
@@ -196,7 +201,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          }
          return degree;
      }
-
+#endif
 
      /*! @brief print the graph with contracted vertices of
        all vertices and edges
@@ -246,7 +251,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
 
 
-
+#if 0
      /*! @brief add the contracted vertices of an edge *e* to the vertex *v*
        @param [in] v vertex_descriptor
        @param [in] e Edge of type *T_E*
@@ -257,7 +262,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          }
          e.clear_contracted_vertices();
      }
-
+#endif
 
      /*! @brief add edges(shortuct) to the graph during contraction
 
@@ -300,10 +305,11 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         return this->graph[v].has_contracted_vertices();
      }
 
+#if 0
      bool is_contracted(E e) {
         return this->graph[e].id < -1;
      }
-
+#endif
      void get_remaining_vertices(Identifiers<int64_t>& remaining_vertices) {
         for (auto vi = vertices(this->graph).first;
                 vi != vertices(this->graph).second;
