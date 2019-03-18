@@ -46,8 +46,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace graph {
 
-template <class G, typename T_V, typename T_E>
-class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
+template <class G>
+class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
  public:
      typedef typename boost::graph_traits < G >::vertex_descriptor V;
      typedef typename boost::graph_traits < G >::edge_descriptor E;
@@ -64,8 +64,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      /*!
        Prepares the _graph_ to be of type *gtype*
        */
-     explicit Pgr_contractionGraph< G , T_V, T_E >(graphType gtype)
-         : Pgr_base_graph< G , T_V, T_E >(gtype) {
+     explicit Pgr_contractionGraph<G>(graphType gtype)
+         : Pgr_base_graph<G, CH_vertex, CH_edge >(gtype) {
          }
 
      /*! @brief get the vertex descriptors of adjacent vertices of *v*
@@ -186,10 +186,10 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
        removed from graph edges: u -> v  and v -> w
 
 
-       @param [in] edge of type *T_E* is to be added
+       @param [in] edge of type *CH_edge* is to be added
        */
 
-     void add_shortcut(const T_E &edge) {
+     void add_shortcut(const CH_edge &edge) {
          bool inserted;
          E e;
          if (edge.cost < 0)

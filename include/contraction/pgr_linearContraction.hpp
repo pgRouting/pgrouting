@@ -59,6 +59,10 @@ class Pgr_linear : public Pgr_messages {
 
 
  public:
+     void operator()(G &graph, Identifiers<V>& forbidden_vertices) {
+         doContraction(graph, forbidden_vertices);
+     }
+
      Pgr_linear():last_edge_id(0) {}
 
  private:
@@ -71,7 +75,7 @@ class Pgr_linear : public Pgr_messages {
      void setForbiddenVertices(
              Identifiers<V> forbidden_vertices) {
          log << "Setting forbidden vertices\n";
-         forbiddenVertices = forbidden_vertices;
+         m_forbiddenVertices = forbidden_vertices;
      }
 
      /**
@@ -152,35 +156,35 @@ class Pgr_linear : public Pgr_messages {
 
      }
 
- public:
      void calculateVertices(G &graph) {
-         log << "\n" << __PRETTY_FUNCTION__ << "\n";
          V_i vi;
          BGL_FORALL_VERTICES_T(v, graph.graph, B_G) {
              if (is_linear(graph, v)) {
-                 linearVertices += v;
+                 m_linearVertices += v;
              }
          }
-         linearVertices -= forbiddenVertices;
+         m_linearVertices -= m_forbiddenVertices;
      }
 
 
 
-     void doContraction(G &graph) {
+     void doContraction(G &graph, Identifiers<V> forbidden_vertices) {
+         m_forbiddenVertices = forbidden_vertices;
+         calculateVertices(graph);
          log << "Performing contraction\n";
          log << "Linear vertices" << std::endl;
-         for (const auto v : linearVertices) {
+         for (const auto v : m_linearVertices) {
              log << graph[v].id << ", ";
          }
          log << std::endl;
          EI_i in, in_end;
          EO_i out, out_end;
-         while (!linearVertices.empty()) {
-             V current_vertex = linearVertices.front();
-             linearVertices -= current_vertex;
+         while (!m_linearVertices.empty()) {
+             V current_vertex = m_linearVertices.front();
+             m_linearVertices -= current_vertex;
              pgassert(is_linear(graph, current_vertex));
              if (!is_linear(graph, current_vertex)) {
-                 linearVertices -= current_vertex;
+                 m_linearVertices -= current_vertex;
                  continue;
              }
              Identifiers<V> adjacent_vertices =
@@ -230,7 +234,7 @@ class Pgr_linear : public Pgr_messages {
                      add_shortcut(graph, v, std::get<0>(e2_1), std::get<0>(e2_2), contracted_vertices);
                  }
 
-                 linearVertices -= current_vertex;
+                 m_linearVertices -= current_vertex;
              } else if (graph.m_gType == UNDIRECTED) {
                  /*
                   * u - v - w
@@ -252,23 +256,23 @@ class Pgr_linear : public Pgr_messages {
                      log <<std::get<0>(e1_1)<< std::get<0>(e1_2);
                      add_shortcut(graph, v, std::get<0>(e1_1), std::get<0>(e1_2), contracted_vertices);
                  }
-                 linearVertices -= current_vertex;
+                 m_linearVertices -= current_vertex;
              }
 
              log << "checking neighbor vertices";
 
 
-             if (is_linear(graph, v_1) && !forbiddenVertices.has(v_1)) {
+             if (is_linear(graph, v_1) && !m_forbiddenVertices.has(v_1)) {
                  log << "Adding linear vertex: " << graph[v_1].id << std::endl;
-                 linearVertices += v_1;
+                 m_linearVertices += v_1;
              } else {
-                 linearVertices -= v_1;
+                 m_linearVertices -= v_1;
              }
-             if (is_linear(graph, v_2) && !forbiddenVertices.has(v_2)) {
+             if (is_linear(graph, v_2) && !m_forbiddenVertices.has(v_2)) {
                  log << "Adding linear vertex: " << graph[v_2].id << std::endl;
-                 linearVertices += v_2;
+                 m_linearVertices += v_2;
              } else {
-                 linearVertices -= v_2;
+                 m_linearVertices -= v_2;
              }
 
          }
@@ -290,7 +294,6 @@ class Pgr_linear : public Pgr_messages {
        - by removing all edges to/from b
        */
 
- private:
      void add_shortcut(
              G &graph, V v,
              E incoming_edge,
@@ -328,8 +331,8 @@ class Pgr_linear : public Pgr_messages {
 
 
  private:
-     Identifiers<V> linearVertices;
-     Identifiers<V> forbiddenVertices;
+     Identifiers<V> m_linearVertices;
+     Identifiers<V> m_forbiddenVertices;
 
      int64_t last_edge_id;
 };

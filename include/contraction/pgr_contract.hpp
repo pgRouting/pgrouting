@@ -133,12 +133,8 @@ class Pgr_contract : public Pgr_messages {
     void perform_linear(G &graph,
             Identifiers<V>& forbidden_vertices) {
         Pgr_linear<G> linearContractor;
-        linearContractor.setForbiddenVertices(forbidden_vertices);
-        log << linearContractor.get_log();
-        linearContractor.calculateVertices(graph);
-        log << linearContractor.get_log();
         try {
-            linearContractor.doContraction(graph);
+            linearContractor(graph, forbidden_vertices);
         }
         catch ( ... ) {
             log << "Caught unknown exception!\n";

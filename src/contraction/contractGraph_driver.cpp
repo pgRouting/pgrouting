@@ -48,8 +48,7 @@ static void process_contraction(
         const std::vector< int64_t > &forbidden_vertices,
         const std::vector< int64_t > &contraction_order,
         int64_t max_cycles,
-        std::ostringstream &log,
-        std::ostringstream &err) {
+        std::ostringstream &log) {
 
     graph.insert_edges(edges);
 
@@ -71,10 +70,12 @@ static void process_contraction(
         if (graph.has_vertex(vertex)) {
             forbid_vertices += graph.get_V(vertex);
         }
+#if 0
         else {
             // TODO should it be an error?
             err << "Invalid forbidden vertex: " << vertex << "\n";
         }
+#endif
     }
 
 #if 0
@@ -251,7 +252,7 @@ do_pgr_contractGraph(
 
             process_contraction(digraph, edges, forbid, ordering,
                     max_cycles,
-                    log, err);
+                    log);
 
             get_postgres_result(
                     digraph,
@@ -264,7 +265,7 @@ do_pgr_contractGraph(
             UndirectedGraph undigraph(gType);
             process_contraction(undigraph, edges, forbid, ordering,
                     max_cycles,
-                    log, err);
+                    log);
 
             get_postgres_result(
                     undigraph,
@@ -272,6 +273,7 @@ do_pgr_contractGraph(
                     return_count);
         }
 
+        pgassert(err.str().empty());
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
