@@ -182,114 +182,68 @@ class Pgr_linear : public Pgr_messages {
          EO_i out, out_end;
 #endif
          while (!m_linearVertices.empty()) {
-             V current_vertex = m_linearVertices.front();
-             m_linearVertices -= current_vertex;
-             pgassert(is_linear(graph, current_vertex));
-             if (!is_linear(graph, current_vertex)) {
-                 m_linearVertices -= current_vertex;
-                 continue;
-             }
+             V v = m_linearVertices.front();
+             m_linearVertices -= v;
+             pgassert(is_linear(graph, v));
+
              Identifiers<V> adjacent_vertices =
-                 graph.find_adjacent_vertices(current_vertex);
+                 graph.find_adjacent_vertices(v);
              pgassert(adjacent_vertices.size() == 2);
 
-             V v_1 = adjacent_vertices.front();
+             V u = adjacent_vertices.front();
              adjacent_vertices.pop_front();
-             V v_2 = adjacent_vertices.front();
+             V w = adjacent_vertices.front();
              adjacent_vertices.pop_front();
 
              // Adjacent vertices of the current linear vertex
-             log << "Adjacent vertices:\t" << graph[v_1].id
-                 << ", " << graph[v_2].id
+             log << "Adjacent vertices:\t" << graph[u].id
+                 << ", " << graph[w].id
                  << std::endl;
 
-             if (graph.m_gType == DIRECTED) {
+             pgassert(v != u);
+             pgassert(v != w);
+             pgassert(u != w);
+
+             if (graph.is_directed()) {
                  /*
-                    Adding edge for every in edge and every out edge
-
-                    u -e1_1-> v -e1_2-> w
-                    w -e2_1-> v -e2_2-> u
-                    */
-                 auto v = current_vertex;
-                 V u = v_1;
-                 V w = v_2;
-                 pgassert(v != u);
-                 pgassert(v != w);
-                 pgassert(u != w);
-
-#if 1
+                  *  u --> v --> w
+                  */
                  process_shortcut(graph, u, v, w);
+                 /*
+                  *  w --> v --> u
+                  */
                  process_shortcut(graph, w, v, u);
-#else
-                 auto e1_1 = graph.get_min_cost_edge(u, v);
-                 auto e1_2 = graph.get_min_cost_edge(v, w);
-                 auto contracted_vertices = std::get<1>(e1_1) + std::get<1>(e1_2);
 
-                 if (std::get<2>(e1_1) && std::get<2>(e1_2)) {
-                     log <<std::get<0>(e1_1)<< std::get<0>(e1_2);
-                     add_shortcut(graph, v, std::get<0>(e1_1), std::get<0>(e1_2), contracted_vertices);
-                 }
-
-                 auto e2_1 = graph.get_min_cost_edge(w, v);
-                 auto e2_2 = graph.get_min_cost_edge(v, u);
-                 auto contracted_vertices = std::get<1>(e2_1) + std::get<1>(e2_2);
-
-
-                 if (std::get<2>(e2_1) && std::get<2>(e2_2)) {
-                     log <<std::get<0>(e2_1)<< std::get<0>(e2_2);
-                     add_shortcut(graph, v, std::get<0>(e2_1), std::get<0>(e2_2), contracted_vertices);
-                 }
-#endif
-
-                 m_linearVertices -= current_vertex;
-             } else if (graph.m_gType == UNDIRECTED) {
+             } else {
+                 pgassert (graph.is_undirected());
                  /*
                   * u - v - w
-                  * e1 - e2
-                  * with smallest cost
-                  *
                   */
-                 auto v = current_vertex;
-                 V u = v_1;
-                 V w = v_2;
-                 pgassert(v != u);
-                 pgassert(v != w);
-                 pgassert(u != w);
-
-#if 1
                  process_shortcut(graph, u, v, w);
-#else
-                 auto e1_1 = graph.get_min_cost_edge(u, v);
-                 auto e1_2 = graph.get_min_cost_edge(v, w);
-                 auto contracted_vertices = std::get<1>(e1_1) + std::get<1>(e1_2);
 
-                 if (std::get<2>(e1_1) && std::get<2>(e1_2)) {
-                     log <<std::get<0>(e1_1)<< std::get<0>(e1_2);
-                     add_shortcut(graph, v, std::get<0>(e1_1), std::get<0>(e1_2), contracted_vertices);
-                 }
-#endif
-                 m_linearVertices -= current_vertex;
              }
+             m_linearVertices -= v;
 
              log << "checking neighbor vertices";
 
 
-             if (is_linear(graph, v_1) && !m_forbiddenVertices.has(v_1)) {
-                 log << "Adding linear vertex: " << graph[v_1].id << std::endl;
-                 m_linearVertices += v_1;
+             if (is_linear(graph, u) && !m_forbiddenVertices.has(u)) {
+                 log << "Adding linear vertex: " << graph[u].id << std::endl;
+                 m_linearVertices += u;
              } else {
-                 m_linearVertices -= v_1;
+                 m_linearVertices -= u;
              }
-             if (is_linear(graph, v_2) && !m_forbiddenVertices.has(v_2)) {
-                 log << "Adding linear vertex: " << graph[v_2].id << std::endl;
-                 m_linearVertices += v_2;
+             if (is_linear(graph, w) && !m_forbiddenVertices.has(w)) {
+                 log << "Adding linear vertex: " << graph[w].id << std::endl;
+                 m_linearVertices += w;
              } else {
-                 m_linearVertices -= v_2;
+                 m_linearVertices -= w;
              }
 
          }
-         //log << contraction_debug.str().c_str() << "\n";
      }
+
+
 
      /**
       *
