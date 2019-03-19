@@ -78,34 +78,34 @@ SELECT set_eq($$SELECT id
 
 -- the contracted graph
 PREPARE c_graph AS
-SELECT id, source, target, cost::TEXT, reverse_cost::TEXT FROM edge_table
+SELECT source, target, cost::TEXT, reverse_cost::TEXT FROM edge_table
 WHERE
     EXISTS (SELECT id FROM edge_table_vertices_pgr AS v WHERE NOT is_contracted AND v.id = edge_table.source)
     AND
     EXISTS (SELECT id FROM edge_table_vertices_pgr AS v WHERE NOT is_contracted AND v.id = edge_table.target);
 
 PREPARE c_expected_graph AS
-SELECT id, source, target, cost, reverse_cost
+SELECT source, target, cost, reverse_cost
 FROM (VALUES
-    (1,    1,    2,   '1.001',   '1.001'),
-    (2,    2,    3,  '-0.996',   '1.004'),
-    (3,    3,    4,   '-0.991',  '1.009'),
-    (4,    2,    5,   '1.016',   '1.016'),
-    (5,    3,    6,   '1.025',   '-0.975'),
-    (8,    5,    6,   '1.064',   '1.064'),
-    (9,    6,    9,   '1.081',   '1.081'),
-    (10,   5,   10,   '1.1',     '1.1'),
-    (11,   6,   11,   '1.121',   '-0.879'),
-    (12,  10,   11,   '1.144',   '-0.856'),
-    (13,  11,   12,   '1.169',   '-0.831'),
-    (14,  10,   13,   '1.196',   '1.196'),
-    (15,   9,   12,   '1.225',   '1.225'),
-    (16,   4,    9,   '1.256',   '1.256'),
-    (17,  14,   15,   '1.289',   '1.289'),
-    (18,  16,   17,   '1.324',   '1.324'),
-    (20,   7,    5,   '2.085',   '-1'),
-    (19,   5,    7,   '2.085',   '-1'))
-AS t(id, source, target, cost, reverse_cost);
+    ( 1,    2,   '1.001',   '1.001'),
+    ( 2,    3,  '-0.996',   '1.004'),
+    ( 3,    4,   '-0.991',  '1.009'),
+    ( 2,    5,   '1.016',   '1.016'),
+    ( 3,    6,   '1.025',   '-0.975'),
+    ( 5,    6,   '1.064',   '1.064'),
+    ( 6,    9,   '1.081',   '1.081'),
+    ( 5,   10,   '1.1',     '1.1'),
+    ( 6,   11,   '1.121',   '-0.879'),
+    (10,   11,   '1.144',   '-0.856'),
+    (11,   12,   '1.169',   '-0.831'),
+    (10,   13,   '1.196',   '1.196'),
+    ( 9,   12,   '1.225',   '1.225'),
+    ( 4,    9,   '1.256',   '1.256'),
+    (14,   15,   '1.289',   '1.289'),
+    (16,   17,   '1.324',   '1.324'),
+    ( 7,    5,   '2.085',   '-1'),
+    ( 5,    7,   '2.085',   '-1'))
+AS t(source, target, cost, reverse_cost);
 
 SELECT set_eq('c_graph', 'c_expected_graph', 'The contracted graph');
 

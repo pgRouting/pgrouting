@@ -80,24 +80,24 @@ SELECT set_eq($$SELECT id
 
 -- the contracted graph
 PREPARE c_graph AS
-SELECT id, source, target, cost::TEXT, reverse_cost::TEXT FROM edge_table
+SELECT source, target, cost::TEXT, reverse_cost::TEXT FROM edge_table
 WHERE
     EXISTS (SELECT id FROM edge_table_vertices_pgr AS v WHERE NOT is_contracted AND v.id = edge_table.source)
     AND
     EXISTS (SELECT id FROM edge_table_vertices_pgr AS v WHERE NOT is_contracted AND v.id = edge_table.target);
 
 PREPARE c_expected_graph AS
-SELECT id, source, target, cost, reverse_cost
+SELECT source, target, cost, reverse_cost
 FROM (VALUES
- (5,      3,      6, '1.025',       '-0.975'),
- (8,      5,      6, '1.064',        '1.064'),
- (9,      6,      9, '1.081',        '1.081'),
-(11,      6,     11, '1.121',       '-0.879'),
-(19,      5,     11, '2.244',           '-1'),
-(20,      3,      9, '2.265',           '-1'),
-(22,      9,     11, '2.394',           '-1'),
-(21,      3,      5,  '2.02',           '-1'))
-AS t(id, source, target, cost, reverse_cost);
+    (3,      6, '1.025',       '-0.975'),
+    (5,      6, '1.064',        '1.064'),
+    (6,      9, '1.081',        '1.081'),
+    (6,     11, '1.121',       '-0.879'),
+    (5,     11, '2.244',           '-1'),
+    (3,      9, '2.265',           '-1'),
+    (9,     11, '2.394',           '-1'),
+    (3,      5,  '2.02',           '-1'))
+AS t(source, target, cost, reverse_cost);
 
 SELECT set_eq('c_graph', 'c_expected_graph');
 
