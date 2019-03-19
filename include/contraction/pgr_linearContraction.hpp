@@ -230,6 +230,7 @@ class Pgr_linear : public Pgr_messages {
 
          // Add contracted vertices of the current linear vertex
          shortcut.contracted_vertices() += contracted_vertices;
+         shortcut.contracted_vertices() += graph[v].contracted_vertices();
 
          // Add shortcut to the graph
          log << "\nAdding shortcut\t" << shortcut << std::endl;
