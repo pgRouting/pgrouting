@@ -58,14 +58,12 @@ SELECT alphaShape_tester('e_test', 'geom', 0.23, false, 0.5178261889305, 26);
 SELECT alphaShape_tester('e_test', 'geom', 0.22969, false, 0.5178261889305, 26);
 
 
-SELECT todo_start('With postgres 9.4 sometimes gives another result');
 -- best alpha
 SELECT set_eq(
     $$SELECT st_area(pgr_alphaShape)::TEXT FROM pgr_alphaShape((SELECT ST_Collect(geom) FROM e_test))$$,
     $$SELECT st_area(pgr_alphaShape)::TEXT FROM pgr_alphaShape((SELECT ST_Collect(geom) FROM e_test), 0)$$,
     'SHOULD BE: best alpha obtined with spoon radius 0'
 );
-SELECT todo_end();
 
 -- best alpha range
 SELECT alphaShape_tester('e_test', 'geom', 0.22968, false, 0.495862454676, 27);
