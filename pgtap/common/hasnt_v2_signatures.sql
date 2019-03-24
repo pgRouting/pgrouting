@@ -30,7 +30,7 @@ SELECT hasnt_function('pgr_ksp',ARRAY['text', 'integer', 'integer', 'integer', '
 SELECT hasnt_function('pgr_drivingdistance',ARRAY['text', 'integer', 'double precision', 'boolean', 'boolean']);
 SELECT hasnt_function('pgr_bdastar',ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
 SELECT hasnt_function('pgr_bddijkstra',ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
-SELECT hasnt_function('pgr_tsp',ARRAY['(double precision[]', 'integer', 'integer']);
+SELECT hasnt_function('pgr_tsp',ARRAY['double precision[]', 'integer', 'integer']);
 
 -- deprecated functions
 SELECT hasnt_function('pgr_kdijkstracost');
