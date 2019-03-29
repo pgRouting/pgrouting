@@ -42,7 +42,7 @@ Parameters
 ============== ==================  =================================================
 Parameter      Type                Description
 ============== ==================  =================================================
-**Edges SQL**  ``TEXT``            Inner SQL query as described bellow.
+**Edges SQL**  ``TEXT``            Inner SQL query as described below.
 ============== ==================  =================================================
 
 Inner Query

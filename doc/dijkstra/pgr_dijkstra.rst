@@ -175,7 +175,7 @@ Parameters
 ============== ================== ======== =================================================
 Parameter      Type               Default     Description
 ============== ================== ======== =================================================
-**edges_sql**  ``TEXT``                    Inner SQL query as described bellow.
+**edges_sql**  ``TEXT``                    Inner SQL query as described below.
 **start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
 **start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
 **end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
