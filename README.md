@@ -99,7 +99,7 @@ Family of functions include:
 
 ## REQUIREMENTS
 
-Building reqirements
+Building requirements
 --------------------
 * Perl
 * C and C++ compilers
@@ -112,7 +112,7 @@ Building reqirements
 * Sphinx >= 1.2
 
 
-User's reqirements
+User's requirements
 --------------------
 
 * PostGIS  >= 2.0
