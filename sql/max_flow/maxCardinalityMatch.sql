@@ -64,7 +64,7 @@ ROWS 1000;
 -- COMMENTS
 
 
-COMMENT ON FUNCTION _pgr_maxCardinalityMatch(TEXT, BOOLEAN) 
+COMMENT ON FUNCTION _pgr_maxCardinalityMatch(TEXT, BOOLEAN)
 IS 'pgRouting internal function';
 
 
@@ -75,6 +75,6 @@ IS 'pgr_maxCardinalityMatch
 - Optional Parameters:
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+  - ${PGROUTING_DOC_LINK}/pgr_maxCardinalityMatch.html
 ';
 
