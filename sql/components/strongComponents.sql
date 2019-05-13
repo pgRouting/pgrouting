@@ -64,8 +64,9 @@ COMMENT ON FUNCTION _pgr_strongComponents(TEXT)
 IS 'pgRouting internal function';
 
 
-COMMENT ON FUNCTION pgr_strongComponents(TEXT) 
+COMMENT ON FUNCTION pgr_strongComponents(TEXT)
 IS'pgr_strongComponents
+- EXPERIMENTAL
 - Directed graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
