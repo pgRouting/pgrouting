@@ -262,7 +262,7 @@ $BODY$
 
 
 COMMENT ON FUNCTION pgr_createverticestable(TEXT, TEXT, TEXT, TEXT, TEXT)
-IS 'pgr_createverticestable
+IS 'pgr_createVerticesTable
 - Parameters
   - Edge table name
 - Optional parameters
