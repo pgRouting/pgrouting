@@ -108,6 +108,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_extractVertices(TEXT)
 IS 'pgr_extractVertices
+- PROPOSED
 - Parameters
   - Edges SQL with columns: source, target [, the_geom]
 - Documentation:
