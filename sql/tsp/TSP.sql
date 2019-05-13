@@ -66,9 +66,9 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_TSP(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
 IS 'pgr_TSP
- - Parameters
+- Parameters
    - matrix SQL with columns: start_vid, end_vid, agg_cost
- - Optional parameters
+- Optional parameters
     - start_id := 0
     - end_id := 0
 
@@ -82,4 +82,7 @@ IS 'pgr_TSP
     - final_temperature := 0.1
     - cooling_factor := 0.9
 
-    - randomize := true';
+    - randomize := true
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_TSP.html
+';
