@@ -116,6 +116,7 @@ IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_withPointsDD(Single Vertex)
+- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with colums: [pid], edge_id, fraction[,side]
@@ -132,6 +133,7 @@ IS 'pgr_withPointsDD(Single Vertex)
 
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsDD(Multiple Vertices)
+- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with colums: [pid], edge_id, fraction[,side]

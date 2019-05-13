@@ -130,6 +130,7 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_withPointsCost(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN, CHAR)
 IS 'pgr_withPointsCost (One to One)
+- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -145,6 +146,7 @@ IS 'pgr_withPointsCost (One to One)
 
 COMMENT ON FUNCTION pgr_withPointsCost(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN, CHAR)
 IS 'pgr_withPointsCost (One to Many)
+- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -160,6 +162,7 @@ IS 'pgr_withPointsCost (One to Many)
 
 COMMENT ON FUNCTION pgr_withPointsCost(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN, CHAR)
 IS 'pgr_withPointsCost (Many to One)
+- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]

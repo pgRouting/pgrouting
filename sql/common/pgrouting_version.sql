@@ -32,3 +32,9 @@ $BODY$
         '${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}'::varchar AS boost;
 $BODY$
 LANGUAGE sql IMMUTABLE;
+
+COMMENT ON FUNCTION pgr_version() IS
+'pgr_version
+- Documentation
+  - ${PGROUTING_DOC_LINK}/pgr_version.html
+';
