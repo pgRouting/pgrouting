@@ -261,7 +261,7 @@ $BODY$
 -- COMMENTS
 
 
-COMMENT ON FUNCTION pgr_createverticestable(TEXT, TEXT, TEXT, TEXT, TEXT) 
+COMMENT ON FUNCTION pgr_createverticestable(TEXT, TEXT, TEXT, TEXT, TEXT)
 IS 'pgr_createverticestable
 - Parameters
   - Edge table name
@@ -271,5 +271,5 @@ IS 'pgr_createverticestable
   - target := ''target''
   - rows_where := ''true''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_createverticestable.html
+  - ${PGROUTING_DOC_LINK}/pgr_createVerticesTable.html
 ';
