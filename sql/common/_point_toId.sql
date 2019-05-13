@@ -79,3 +79,6 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+COMMENT ON FUNCTION _pgr_pointToId(geometry, FLOAT, TEXT, INTEGER)
+IS 'pgRouting internal function';
+

@@ -129,6 +129,10 @@ END;
 $$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+COMMENT ON FUNCTION _pgr_getTableName(TEXT, INTEGER, TEXT)
+IS 'pgRouting internal function';
+
+
 
 
 /*
@@ -202,6 +206,10 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+COMMENT ON FUNCTION _pgr_getColumnName(TEXT, TEXT, TEXT, INTEGER, TEXT)
+IS 'pgRouting internal function';
+COMMENT ON FUNCTION _pgr_getColumnName(TEXT, TEXT, INTEGER, TEXT)
+IS 'pgRouting internal function';
 
 /*
 .. function:: _pgr_isColumnInTable(tab, col)
@@ -233,6 +241,8 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
+COMMENT ON FUNCTION _pgr_isColumnInTable(TEXT, TEXT)
+IS 'pgRouting internal function';
 
 /*
 .. function:: _pgr_isColumnIndexed(tab, col)
@@ -342,6 +352,10 @@ END
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
+COMMENT ON FUNCTION _pgr_isColumnIndexed(TEXT, TEXT, TEXT, INTEGER, TEXT)
+IS 'pgRouting internal function';
+COMMENT ON FUNCTION _pgr_isColumnIndexed(TEXT, TEXT, INTEGER, TEXT)
+IS 'pgRouting internal function';
 /*
 .. function:: _pgr_quote_ident(text)
 
@@ -377,6 +391,9 @@ begin
 end;
 $body$
 language plpgsql immutable;
+
+COMMENT ON FUNCTION _pgr_quote_ident(TEXT)
+IS 'pgRouting internal function';
 
 /*
  * function for comparing version strings.
@@ -437,6 +454,9 @@ $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 1;
 
+COMMENT ON FUNCTION _pgr_versionless(TEXT, TEXT)
+IS 'pgRouting internal function';
+
 create or replace function _pgr_startPoint(g geometry)
     returns geometry as
 $body$
@@ -452,6 +472,8 @@ end;
 $body$
 language plpgsql IMMUTABLE;
 
+COMMENT ON FUNCTION _pgr_startPoint(geometry)
+IS 'pgRouting internal function';
 
 
 create or replace function _pgr_endPoint(g geometry)
@@ -469,3 +491,5 @@ end;
 $body$
 language plpgsql IMMUTABLE;
 
+COMMENT ON FUNCTION _pgr_endPoint(geometry)
+IS 'pgRouting internal function';

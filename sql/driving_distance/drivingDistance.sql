@@ -41,6 +41,10 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'driving_many_to_dist'
 LANGUAGE c VOLATILE STRICT;
 
+COMMENT ON FUNCTION _pgr_drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+
 -- MULTIPLE
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(
     TEXT,     -- edges_sql (required)

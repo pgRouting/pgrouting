@@ -113,3 +113,8 @@ $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
 
+COMMENT ON FUNCTION _pgr_createIndex(TEXT, TEXT, TEXT, TEXT, INTEGER, TEXT)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_createIndex(TEXT, TEXT, TEXT, INTEGER, TEXT)
+IS 'pgRouting internal function';

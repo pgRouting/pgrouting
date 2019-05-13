@@ -161,4 +161,6 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
   LANGUAGE plpgsql VOLATILE
   COST 1;
 
+COMMENT ON FUNCTION _pgr_parameter_check(TEXT, TEXT, BOOLEAN)
+IS 'pgRouting internal function';
 
