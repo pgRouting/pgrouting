@@ -141,59 +141,59 @@ IS 'pgr_aStarCost(One to One)
   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
   - From vertex identifier
   - To vertex identifier
-- Optional Parameters: 
+- Optional Parameters:
   - directed := true
   - heuristic := 5
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_astar.html
+  - ${PGROUTING_DOC_LINK}/pgr_aStarCost.html
 ';
 
 
 COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT)
-IS 'pgr_astar(One to Many)
+IS 'pgr_aStarCost(One to Many)
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
   - From vertex identifier
   - To ARRAY[vertices identifiers]
-- Optional Parameters: 
+- Optional Parameters:
   - directed := true
   - heuristic := 5
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_astar.html
+  - ${PGROUTING_DOC_LINK}/pgr_aStarCost.html
 ';
 
 
 COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT)
-IS 'pgr_astar(Many to One)
+IS 'pgr_aStarCost(Many to One)
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
   - From ARRAY[vertices identifiers]
   - To vertex identifier
-- Optional Parameters: 
+- Optional Parameters:
   - directed := true
   - heuristic := 5
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_astar.html
+  - ${PGROUTING_DOC_LINK}/pgr_aStarCost.html
 ';
 
 
 COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT)
-IS 'pgr_astar(Many to Many)
+IS 'pgr_aStarCost(Many to Many)
  - Parameters:
    - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
    - From ARRAY[vertices identifiers]
    - To ARRAY[vertices identifiers]
- - Optional Parameters: 
+ - Optional Parameters:
    - directed := true
    - heuristic := 5
    - factor := 1
    - epsilon := 1
  - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_astar.html
+   - ${PGROUTING_DOC_LINK}/pgr_aStarCost.html
 ';

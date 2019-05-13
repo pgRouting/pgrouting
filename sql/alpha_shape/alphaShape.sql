@@ -88,5 +88,5 @@ IS 'pgr_alphaShape
 - Optional Parameters
 	- alpha := 0
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_alphashape.html
+    - ${PGROUTING_DOC_LINK}/pgr_alphaShape.html
 ';
