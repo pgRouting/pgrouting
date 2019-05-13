@@ -73,7 +73,10 @@ IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_stoerWagner(TEXT)
 IS 'pgr_stoerWagner
- - EXPERIMENTAL
- - Undirected graph
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]';
+- EXPERIMENTAL
+- Undirected graph
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_stoerWagner.html
+';
