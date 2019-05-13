@@ -57,8 +57,9 @@ LANGUAGE SQL VOLATILE STRICT;
 COMMENT ON FUNCTION _pgr_bridges(TEXT)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION pgr_bridges(TEXT) 
+COMMENT ON FUNCTION pgr_bridges(TEXT)
 IS'pgr_bridges
+- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
