@@ -75,7 +75,10 @@ IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_lineGraphFull(TEXT)
 IS 'pgr_lineGraphFull
- - EXPERIMENTAL
- - For Directed Graph
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]';
+- EXPERIMENTAL
+- For Directed Graph
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_lineGraphFull.html
+';

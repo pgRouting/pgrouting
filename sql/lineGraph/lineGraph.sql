@@ -73,9 +73,11 @@ IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_lineGraph(TEXT, BOOLEAN)
 IS 'pgr_lineGraph
- - EXPERIMENTAL
- - Parameters:
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
- - Optional Parameters:
-   - directed := true
-   ';
+- EXPERIMENTAL
+- Parameters:
+  - edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Optional Parameters:
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_lineGraph.html
+';
