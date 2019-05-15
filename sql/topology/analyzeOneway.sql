@@ -49,7 +49,7 @@ THE SOFTWARE.
    * s_out_rules      - source node out rules
    * t_in_tules       - target node in rules
    * t_out_rules      - target node out rules
-   * two_way_if_null  - flag to treat oneway nNULL values as by directional
+   * two_way_if_null  - flag to treat oneway NULL values as by directional
 
    After running this on a graph you can identify nodes with potential
    problems with the following query.
