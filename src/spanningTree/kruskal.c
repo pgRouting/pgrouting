@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: prim.c
+File: kruskal.c
 Generated with Template by:
 
 Copyright (c) 2015 pgRouting developers
@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
+
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
@@ -33,11 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 #include "c_types/pgr_mst_rt.h"
 
-#include "drivers/mst/mst_common.h"
-#include "drivers/mst/prim_driver.h"
+#include "drivers/spanningTree/mst_common.h"
+#include "drivers/spanningTree/kruskal_driver.h"
 
-PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(prim);
+PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(kruskal);
 
 
 static
@@ -57,7 +58,7 @@ process(
     char *notice_msg = NULL;
     char *err_msg = NULL;
 
-    char * fn_name = get_name(1, fn_suffix, &err_msg);
+    char * fn_name = get_name(0, fn_suffix, &err_msg);
     if (err_msg) {
         pgr_global_report(log_msg, notice_msg, err_msg);
         return;
@@ -74,14 +75,11 @@ process(
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
-
     clock_t start_t = clock();
-    do_pgr_prim(
+    do_pgr_kruskal(
             edges, total_edges,
             rootsArr, size_rootsArr,
-
             fn_suffix,
-
             max_depth,
             distance,
 
@@ -90,7 +88,6 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-
 
     time_msg(fn_name, start_t, clock());
 
@@ -106,10 +103,8 @@ process(
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
-PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
@@ -121,6 +116,7 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
+
         /* Edge sql, tree roots, fn_suffix, max_depth, distance */
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
@@ -130,7 +126,6 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
                 PG_GETARG_FLOAT8(4),
                 &result_tuples,
                 &result_count);
-
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
@@ -177,7 +172,6 @@ PGDLLEXPORT Datum prim(PG_FUNCTION_ARGS) {
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

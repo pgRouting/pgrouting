@@ -1,4 +1,4 @@
-ADD_LIBRARY(mst OBJECT
+ADD_LIBRARY(spanningTree OBJECT
     mst_common.cpp
     details.cpp
 
@@ -8,6 +8,6 @@ ADD_LIBRARY(mst OBJECT
     prim.c
     prim_driver.cpp
 
-    #randomSpanningTree.c
-    #randomSpanningTree_driver.cpp
+    randomSpanningTree.c
+    randomSpanningTree_driver.cpp
     )

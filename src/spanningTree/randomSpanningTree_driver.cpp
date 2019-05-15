@@ -22,13 +22,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#include "drivers/mst/randomSpanningTree_driver.h"
+#include "drivers/spanningTree/randomSpanningTree_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "mst/pgr_randomSpanningTree.hpp"
+#include "spanningTree/pgr_randomSpanningTree.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"

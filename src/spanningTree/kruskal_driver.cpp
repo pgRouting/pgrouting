@@ -22,7 +22,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#include "drivers/mst/kruskal_driver.h"
+#include "drivers/spanningTree/kruskal_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -32,8 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#include "mst/pgr_kruskal.hpp"
-#include "mst/details.hpp"
+#include "spanningTree/pgr_kruskal.hpp"
+#include "spanningTree/details.hpp"
 
 
 void

@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "cpp_common/pgr_base_graph.hpp"
-#include "mst/details.hpp"
+#include "spanningTree/details.hpp"
 
 namespace pgrouting {
 namespace functions {

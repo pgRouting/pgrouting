@@ -22,7 +22,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#include "drivers/mst/prim_driver.h"
+#include "drivers/spanningTree/prim_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -32,8 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#include "mst/pgr_prim.hpp"
-#include "mst/details.hpp"
+#include "spanningTree/pgr_prim.hpp"
+#include "spanningTree/details.hpp"
 
 
 void
