@@ -58,8 +58,9 @@ LANGUAGE SQL VOLATILE STRICT;
 COMMENT ON FUNCTION _pgr_articulationPoints(TEXT)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION pgr_articulationPoints(TEXT) 
+COMMENT ON FUNCTION pgr_articulationPoints(TEXT)
 IS'pgr_articulationPoints
+- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]

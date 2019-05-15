@@ -64,8 +64,9 @@ LANGUAGE SQL VOLATILE STRICT;
 COMMENT ON FUNCTION _pgr_biconnectedComponents(TEXT)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION pgr_biconnectedComponents(TEXT) 
+COMMENT ON FUNCTION pgr_biconnectedComponents(TEXT)
 IS'pgr_biconnectedComponents
+- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]

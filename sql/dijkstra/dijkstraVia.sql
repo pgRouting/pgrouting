@@ -55,7 +55,7 @@ LANGUAGE c VOLATILE STRICT;
 CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- via_vids (required)
-    
+
     directed BOOLEAN DEFAULT true,
     strict BOOLEAN DEFAULT false,
     U_turn_on_edge BOOLEAN DEFAULT true,
@@ -87,6 +87,7 @@ IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_dijkstraVia
+- PROPOSED
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - ARRAY[via vertices identifiers]

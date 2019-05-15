@@ -66,9 +66,9 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_TSPeuclidean(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
 IS 'pgr_TSPeuclidean
- - Parameters
+- Parameters
    - coordinates SQL with columns: id, x, y
- - Optional parameters
+- Optional parameters
     - start_id := 0
     - end_id := 0
 
@@ -82,4 +82,8 @@ IS 'pgr_TSPeuclidean
     - final_temperature := 0.1
     - cooling_factor := 0.9
 
-    - randomize := true';
+    - randomize := true
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_TSPeuclidean.html
+';
+

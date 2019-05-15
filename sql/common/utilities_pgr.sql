@@ -78,6 +78,10 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+COMMENT ON FUNCTION _pgr_onError(BOOLEAN, INTEGER, TEXT, TEXT, TEXT, TEXT)
+IS 'pgRouting internal function';
+
+
 /************************************************************************
 .. function:: _pgr_msg(msgKind, fnName, msg)
 
@@ -112,6 +116,8 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+COMMENT ON FUNCTION _pgr_msg(INTEGER, TEXT, TEXT)
+IS 'pgRouting internal function';
 
 /************************************************************************
 .. function:: _pgr_getColumnType(sname,tname,col,reportErrs,fnName) returns text
@@ -186,6 +192,11 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
+COMMENT ON FUNCTION _pgr_getColumnType(TEXT, TEXT, TEXT, INTEGER, TEXT)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_getColumnType(TEXT, TEXT, INTEGER, TEXT)
+IS 'pgRouting internal function';
 
 
 
@@ -220,6 +231,8 @@ END
 $BODY$
 LANGUAGE plpgsql STABLE STRICT;
 
+COMMENT ON FUNCTION _pgr_get_statement(TEXT)
+IS 'pgRouting internal function';
 
 /************************************************************************
 .. function:: _pgr_checkVertTab(vertname,columnsArr,reportErrs) returns record of sname,vname
@@ -285,4 +298,7 @@ BEGIN
  END
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
+
+COMMENT ON FUNCTION _pgr_checkVertTab(TEXT, TEXT[], INTEGER, TEXT)
+IS 'pgRouting internal function';
 

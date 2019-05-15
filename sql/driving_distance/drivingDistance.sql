@@ -41,6 +41,10 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'driving_many_to_dist'
 LANGUAGE c VOLATILE STRICT;
 
+COMMENT ON FUNCTION _pgr_drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+
 -- MULTIPLE
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(
     TEXT,     -- edges_sql (required)
@@ -91,7 +95,28 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_drivingDistance(TEXT, BIGINT, FLOAT, BOOLEAN)
-IS 'pgr_drivingDistance(Single_vertex) -- edges_sql(id,source,target,cost[,reverse_cost]), from_vid, distance [,directed]';
+IS 'pgr_drivingDistance(Single_vertex)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From vertex identifier
+   - Distance from vertex identifier
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_drivingDistance.html
+';
+
 COMMENT ON FUNCTION pgr_drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
-IS 'pgr_drivingDistance(Multiple vertices) -- edges_sql(id,source,target,cost[,reverse_cost]), from_vids, distance [,directed, equicost]';
+IS 'pgr_drivingDistance(Multiple vertices)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - From ARRAY[vertices identifiers]
+   - Distance from vertices identifiers
+- Optional Parameters
+   - directed := true
+   - equicost := false
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_drivingDistance.html
+';
+
 

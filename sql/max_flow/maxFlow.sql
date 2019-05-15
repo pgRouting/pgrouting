@@ -92,7 +92,7 @@ IS 'pgr_maxFlow(One to One)
   - from vertex
   - to vertex
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+  - ${PGROUTING_DOC_LINK}/pgr_maxFlow.html
 ';
 
 COMMENT ON FUNCTION pgr_maxFlow(TEXT, BIGINT, ANYARRAY)
@@ -103,7 +103,7 @@ IS 'pgr_maxFlow(One to Many)
   - from vertex
   - to ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+  - ${PGROUTING_DOC_LINK}/pgr_maxFlow.html
 ';
 
 COMMENT ON FUNCTION pgr_maxFlow(TEXT, ANYARRAY, BIGINT)
@@ -114,7 +114,7 @@ IS 'pgr_maxFlow(Many to One)
   - from ARRAY[vertices identifiers]
   - to vertex
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+  - ${PGROUTING_DOC_LINK}/pgr_maxFlow.html
 ';
 
 COMMENT ON FUNCTION pgr_maxFlow(TEXT, ANYARRAY, ANYARRAY)
@@ -125,5 +125,5 @@ IS 'pgr_maxFlow(Many to Many)
   - from ARRAY[vertices identifiers]
   - to ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+  - ${PGROUTING_DOC_LINK}/pgr_maxFlow.html
 ';
