@@ -99,7 +99,6 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, BIGINT, BIGINT)
 IS 'pgr_kruskalDFS(Single Vertex)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -113,7 +112,6 @@ IS 'pgr_kruskalDFS(Single Vertex)
 
 COMMENT ON FUNCTION pgr_kruskalDFS(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_kruskalDFS(Multiple Vertices)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]

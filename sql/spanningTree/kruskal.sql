@@ -52,7 +52,6 @@ LANGUAGE SQL VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_kruskal(TEXT)
 IS 'pgr_kruskal
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
 	- Edges SQL with columns: id, source, target, cost [,reverse_cost]

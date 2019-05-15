@@ -153,7 +153,6 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, NUMERIC)
 IS 'pgr_kruskalDD(Single Vertex)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -166,7 +165,6 @@ IS 'pgr_kruskalDD(Single Vertex)
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, NUMERIC)
 IS 'pgr_kruskalDD(Multiple Vertices)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -179,7 +177,6 @@ IS 'pgr_kruskalDD(Multiple Vertices)
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, BIGINT, FLOAT)
 IS 'pgr_kruskalDD(Single Vertex)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -192,7 +189,6 @@ IS 'pgr_kruskalDD(Single Vertex)
 
 COMMENT ON FUNCTION pgr_kruskalDD(TEXT, ANYARRAY, FLOAT)
 IS 'pgr_kruskalDD(Multiple Vertices)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
