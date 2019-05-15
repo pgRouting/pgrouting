@@ -11,10 +11,6 @@ Spanning Tree - Families of functions (Experimental)
 ===============================================================================
 
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 .. index from here
 
 * :doc:`pgr_randomSpanTree`
@@ -22,6 +18,17 @@ Spanning Tree - Families of functions (Experimental)
 * :doc:`prim-family`
 
 .. index to here
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
+.. index proposed from here
+
+* :doc:`pgr_randomSpanTree`
+* :doc:`prim-family`
+
+.. index proposed to here
 
 
 .. toctree::
