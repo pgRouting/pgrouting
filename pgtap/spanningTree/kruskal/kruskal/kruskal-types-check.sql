@@ -15,13 +15,13 @@ SELECT function_returns('pgr_kruskal', ARRAY['text'], 'setof record');
 -- parameter names
 SELECT set_eq(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_kruskal'$$,
-    $$SELECT  '{"","seq","edge","cost"}'::TEXT[] $$
+    $$SELECT  '{"","edge","cost"}'::TEXT[] $$
 );
 
 -- parameter types
 SELECT set_eq(
     $$SELECT  proallargtypes from pg_proc where proname = 'pgr_kruskal'$$,
-    $$SELECT  '{25,20,20,701}'::OID[] $$
+    $$SELECT  '{25,20,701}'::OID[] $$
 );
 
 

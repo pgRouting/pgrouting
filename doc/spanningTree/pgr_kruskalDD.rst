@@ -26,7 +26,8 @@ Description
 -------------------------------------------------------------------------------
 
 Using Kruskal's algorithm, extracts the nodes that have aggregate costs less than
-or equal to the value ``Distance`` within the calculated minimum spanning tree.
+or equal to the value ``Distance`` from a **root** vertex (or vertices) within
+the calculated minimum spanning tree.
 
 
 **The main Characteristics are:**

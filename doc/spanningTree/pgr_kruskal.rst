@@ -71,8 +71,6 @@ Parameter           Type                   Description
 Inner query
 -------------------------------------------------------------------------------
 
-.. rubric:: Edges SQL
-
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start
    :end-before: basic_edges_sql_end
@@ -86,7 +84,6 @@ Returns SET OF ``(seq, edge, cost)``
 ===============  =========== ====================================================
 Column           Type        Description
 ===============  =========== ====================================================
-**seq**          ``BIGINT``  Sequential value starting from :math:`1`.
 **edge**         ``BIGINT``  Identifier of the edge.
 **cost**         ``FLOAT``   Cost to traverse the edge.
 ===============  =========== ====================================================

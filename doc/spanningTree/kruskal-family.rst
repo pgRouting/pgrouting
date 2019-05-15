@@ -13,9 +13,9 @@ Kruskal - Family of functions
 .. index from here
 
 * :doc:`pgr_kruskal`
+* :doc:`pgr_kruskalBFS`
 * :doc:`pgr_kruskalDD`
 * :doc:`pgr_kruskalDFS`
-* :doc:`pgr_kruskalBFS`
 
 .. index to here
 
@@ -24,9 +24,9 @@ Kruskal - Family of functions
     :hidden:
 
     pgr_kruskal
+    pgr_kruskalBFS
     pgr_kruskalDD
     pgr_kruskalDFS
-    pgr_kruskalBFS
 
 Advanced documentation
 -------------------------------------------------------------------------------
@@ -57,8 +57,6 @@ two trees in the forest.
 
 Inner query
 -------------------------------------------------------------------------------
-
-.. rubric:: Edges SQL
 
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start

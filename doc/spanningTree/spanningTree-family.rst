@@ -21,14 +21,14 @@ of G with the minimum possible number of edges.
 For a disconnected graph, there there is no single tree, but a spanning forest,
 consisting of a spanning tree of each connected component.
 
+.. toctree::
+    :hidden:
+
+    kruskal-family
 
 Exprerimental
 -------------------------------------------------------------------------------
 .. index to here
-
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
 
 .. index experimental from here
 
@@ -37,11 +37,14 @@ Exprerimental
 
 .. index experimental to here
 
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
 
 .. toctree::
     :hidden:
 
-    kruskal-family
     pgr_randomSpanTree
     prim-family
 

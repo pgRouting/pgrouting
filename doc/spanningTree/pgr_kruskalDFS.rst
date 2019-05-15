@@ -66,7 +66,7 @@ Single vertex
    :end-before: --q2
 
 .. index::
-    single: kruskal(Multiple vertices)
+    single: kruskalDFS(Multiple vertices)
 
 Multiple vertices
 ...............................................................................
