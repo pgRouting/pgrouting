@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_kruskal - Experimental
+pgr_kruskal
 ===============================================================================
 
 ``pgr_kruskal`` — Returns the minimum spanning tree of graph using Kruskal algorithm.
@@ -17,13 +17,9 @@ pgr_kruskal - Experimental
 
    Boost Graph Inside
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 .. rubric:: Availability
 
-*  New as experimental on v3.0.0
+*  New on v3.0.0
 
 Description
 -------------------------------------------------------------------------------
@@ -43,7 +39,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: kruskal - Experimental
+    single: kruskal
 
 .. rubric:: Summary
 

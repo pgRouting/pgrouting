@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_kruskalDFS - Experimental
+pgr_kruskalDFS
 ===============================================================================
 
 ``pgr_kruskalDFS`` — Kruskal algorithm for Minimum Spanning Tree with Depth First
@@ -18,13 +18,9 @@ Search ordering.
 
    Boost Graph Inside
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 .. rubric:: Availability
 
-* Experimental on v3.0.0
+* New on v3.0.0
 
 Description
 -------------------------------------------------------------------------------
@@ -52,7 +48,7 @@ Signatures
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
-    single: kruskalDFS(Single vertex) - Experimental
+    single: kruskalDFS(Single vertex)
 
 Single vertex
 ...............................................................................
@@ -70,7 +66,7 @@ Single vertex
    :end-before: --q2
 
 .. index::
-    single: kruskal(Multiple vertices) - Experimental
+    single: kruskal(Multiple vertices)
 
 Multiple vertices
 ...............................................................................

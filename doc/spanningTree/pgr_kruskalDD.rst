@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_kruskalDD - Experimental
+pgr_kruskalDD
 ===============================================================================
 
 ``pgr_kruskalDD`` — Catchament nodes using Kruskal's algorithm.
@@ -17,13 +17,9 @@ pgr_kruskalDD - Experimental
 
    Boost Graph Inside
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 .. rubric:: Availability
 
-* New as experimental on v3.0.0
+* New on v3.0.0
 
 
 Description
@@ -53,7 +49,7 @@ Signatures
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
-    single: kruskalDD(Single vertex) - Experimental
+    single: kruskalDD(Single vertex)
 
 Single vertex
 ...............................................................................
@@ -71,7 +67,7 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: kruskalDD(Multiple vertices) - Experimental
+    single: kruskalDD(Multiple vertices)
 
 Multiple vertices
 ...............................................................................

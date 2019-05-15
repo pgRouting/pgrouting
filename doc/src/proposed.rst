@@ -143,8 +143,8 @@ Experimental Functions
 :doc:`spanningTree-family`
 
 .. include:: spanningTree-family.rst
-   :start-after: index proposed from here
-   :end-before: index proposed to here
+   :start-after: index experimental from here
+   :end-before: index experimental to here
 
 :doc:`transformation-family`
 

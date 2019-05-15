@@ -7,13 +7,8 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Kruskal - Family of functions (Experimental)
+Kruskal - Family of functions
 ===============================================================================
-
-
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
 
 .. index from here
 

@@ -7,35 +7,42 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Spanning Tree - Families of functions (Experimental)
+Spanning Tree - Families
 ===============================================================================
 
 
 .. index from here
 
-* :doc:`pgr_randomSpanTree`
 * :doc:`kruskal-family`
-* :doc:`prim-family`
 
+A spanning tree of an undirected graph is a tree that includes all the vertices
+of G with the minimum possible number of edges.
+
+For a disconnected graph, there there is no single tree, but a spanning forest,
+consisting of a spanning tree of each connected component.
+
+
+Exprerimental
+-------------------------------------------------------------------------------
 .. index to here
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-.. index proposed from here
+.. index experimental from here
 
 * :doc:`pgr_randomSpanTree`
 * :doc:`prim-family`
 
-.. index proposed to here
+.. index experimental to here
 
 
 .. toctree::
     :hidden:
 
-    pgr_randomSpanTree
     kruskal-family
+    pgr_randomSpanTree
     prim-family
 
 
