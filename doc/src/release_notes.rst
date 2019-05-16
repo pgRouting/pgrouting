@@ -65,6 +65,13 @@ pgRouting 3.0.0 Release Notes
   * pgr_kruskalDD
   * pgr_kruskalDFS
 
+* Prim family
+
+  * pgr_prim
+  * pgr_primDD
+  * pgr_primDFS
+  * pgr_primBFS
+
 
 .. rubric:: Proposed moved to official on pgRouting
 
@@ -134,12 +141,7 @@ pgRouting 3.0.0 Release Notes
 
 .. rubric:: New Experimental functions
 
-* Prim family
-
-  * pgr_prim
-  * pgr_primDD
-  * pgr_primDFS
-  * pgr_primBFS
+* No new experimental function on Mayor release
 
 
 .. rubric:: Moved to legacy
