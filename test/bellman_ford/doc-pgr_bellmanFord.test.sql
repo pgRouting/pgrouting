@@ -23,4 +23,8 @@ SELECT * FROM pgr_bellmanFord(
     ARRAY[2,11], 5
 );
 \echo -- q5
-
+SELECT * FROM pgr_bellmanFord(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    ARRAY[2,11], ARRAY[3,5]
+);
+\echo -- q6
