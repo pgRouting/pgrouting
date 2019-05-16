@@ -147,7 +147,6 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, BIGINT, NUMERIC)
 IS 'pgr_primDD(Single Vertex)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -160,7 +159,6 @@ IS 'pgr_primDD(Single Vertex)
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, ANYARRAY, NUMERIC)
 IS 'pgr_primDD(Multiple Vertices)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -173,7 +171,6 @@ IS 'pgr_primDD(Multiple Vertices)
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, BIGINT, FLOAT)
 IS 'pgr_primDD(Single Vertex)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -186,7 +183,6 @@ IS 'pgr_primDD(Single Vertex)
 
 COMMENT ON FUNCTION pgr_primDD(TEXT, ANYARRAY, FLOAT)
 IS 'pgr_primDD(Multiple Vertices)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
