@@ -14,6 +14,9 @@ Spanning Tree - Families
 .. index from here
 
 * :doc:`kruskal-family`
+* :doc:`prim-family`
+
+.. index to here
 
 A spanning tree of an undirected graph is a tree that includes all the vertices
 of G with the minimum possible number of edges.
@@ -25,27 +28,6 @@ consisting of a spanning tree of each connected component.
     :hidden:
 
     kruskal-family
-
-Exprerimental
--------------------------------------------------------------------------------
-.. index to here
-
-.. index experimental from here
-
-* :doc:`pgr_randomSpanTree`
-* :doc:`prim-family`
-
-.. index experimental to here
-
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
-
-.. toctree::
-    :hidden:
-
-    pgr_randomSpanTree
     prim-family
 
 
@@ -59,6 +41,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-
-
-

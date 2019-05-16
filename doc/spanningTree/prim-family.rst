@@ -7,31 +7,30 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Prim - Family of functions (Experimental)
+Prim - Family of functions
 ===============================================================================
-
-
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
 
 .. index from here
 
 * :doc:`pgr_prim`
+* :doc:`pgr_primBFS`
 * :doc:`pgr_primDD`
 * :doc:`pgr_primDFS`
-* :doc:`pgr_primBFS`
 
 .. index to here
 
+.. figure:: images/boost-inside.jpeg
+   :target: https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html
+
+   Boost Graph Inside
 
 .. toctree::
     :hidden:
 
     pgr_prim
+    pgr_primBFS
     pgr_primDD
     pgr_primDFS
-    pgr_primBFS
 
 
 Description
@@ -74,9 +73,17 @@ forest.
 .. Note:: From boost Graph:
    "The algorithm as implemented in Boost.Graph does not produce correct results on graphs with parallel edges."
 
+Inner query
+-------------------------------------------------------------------------------
+
+.. include:: pgRouting-concepts.rst
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
+
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`spanningTree-family`
 * `Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
 * `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim'_algorithm>`__
 
