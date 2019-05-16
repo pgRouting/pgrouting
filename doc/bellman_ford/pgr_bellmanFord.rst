@@ -55,7 +55,7 @@ The main characteristics are:
   - Running time: :math:`O(| start\_vids | * ( V * E))`
 
 
-Signatures 
+Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
@@ -75,12 +75,12 @@ Signatures
 .. code-block:: none
 
     pgr_bellmanFord(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertex :math:`3` on a **directed** graph
 
-.. literalinclude:: doc-pgr_bellman_ford.queries
+.. literalinclude:: doc-pgr_bellmanFord.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -93,17 +93,17 @@ One to One
 .. code-block:: none
 
     pgr_bellmanFord(edges_sql, from_vid,  to_vid  [, directed])
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertex :math:`3` on an **undirected** graph
 
-.. literalinclude:: doc-pgr_bellman_ford.queries
+.. literalinclude:: doc-pgr_bellmanFord.queries
    :start-after: -- q2
    :end-before: -- q3
 
 .. index::
-    single: bellman_ford(One to Many) - Experimental
+    single: bellmanFord(One to Many) - Experimental
 
 One to many
 ...............................................................................
@@ -111,12 +111,12 @@ One to many
 .. code-block:: none
 
     pgr_bellmanFord(edges_sql, from_vid,  to_vids [, directed])
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertices :math:`\{ 3, 5\}` on an **undirected** graph
 
-.. literalinclude:: doc-pgr_bellman_ford.queries
+.. literalinclude:: doc-pgr_bellmanFord.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -129,17 +129,17 @@ Many to One
 .. code-block:: none
 
     pgr_bellmanFord(edges_sql, from_vids, to_vid  [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed** graph
 
-.. literalinclude:: doc-pgr_bellman_ford.queries
+.. literalinclude:: doc-pgr_bellmanFord.queries
    :start-after: -- q4
    :end-before: -- q5
 
 .. index::
-    single: bellman_ford(Many to Many) - Experimental
+    single: bellmanFord(Many to Many) - Experimental
 
 Many to Many
 ...............................................................................
@@ -150,9 +150,9 @@ Many to Many
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** graph 
+:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** graph
 
-.. literalinclude:: doc-pgr_bellman_ford.queries
+.. literalinclude:: doc-pgr_bellmanFord.queries
    :start-after: -- q5
    :end-before: -- q6
 

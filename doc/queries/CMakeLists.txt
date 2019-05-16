@@ -2,11 +2,8 @@
 SET(LOCAL_FILES
     doc-aStarCost.queries
     doc-astar.queries
-    doc-bellman_ford.queries
     doc-contractGraph.queries
     doc-contraction.queries
-    doc-dagShortestPath.queries
-    doc-dijkstraTRSP.queries
     doc-floydWarshall.queries
     doc-gsoc_vrppdtw.queries
     doc-johnson.queries
@@ -15,11 +12,11 @@ SET(LOCAL_FILES
     doc-pgr_analyzeGraph.queries
     doc-pgr_analyzeOneWay.queries
     doc-pgr_articulationPoints.queries
+    doc-pgr_bellmanFord.queries
     doc-pgr_bdAstarCost.queries
     doc-pgr_bdAstar.queries
     doc-pgr_bdDijkstraCost.queries
     doc-pgr_bdDijkstra.queries
-    doc-pgr_bellman_ford.queries
     doc-pgr_biconnectedComponents.queries
     doc-pgr_boykovKolmogorov.queries
     doc-pgr_bridges.queries
@@ -53,7 +50,6 @@ SET(LOCAL_FILES
     doc-pgr_primDFS.queries
     doc-pgr_prim.queries
     doc-pgr_pushRelabel.queries
-    doc-pgr_randomSpanTree.queries
     doc-pgr_strongComponents.queries
     doc-pgr_TSPeuclidean.queries
     doc-pgr_TSP.queries
