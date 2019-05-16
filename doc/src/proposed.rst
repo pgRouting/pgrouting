@@ -143,8 +143,8 @@ Experimental Functions
 :doc:`spanningTree-family`
 
 .. include:: spanningTree-family.rst
-   :start-after: index from here
-   :end-before: index to here
+   :start-after: index experimental from here
+   :end-before: index experimental to here
 
 :doc:`transformation-family`
 
@@ -159,7 +159,6 @@ Experimental Functions
    chinesePostmanProblem-family
    contraction-family
    components-family
-   spanningTree-family
    transformation-family
 
 .. rubric:: Others

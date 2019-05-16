@@ -1,0 +1,64 @@
+..
+   ****************************************************************************
+    pgRouting Manual
+    Copyright(c) pgRouting Contributors
+
+    This documentation is licensed under a Creative Commons Attribution-Share
+    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+   ****************************************************************************
+
+Spanning Tree - Families
+===============================================================================
+
+
+.. index from here
+
+* :doc:`kruskal-family`
+
+A spanning tree of an undirected graph is a tree that includes all the vertices
+of G with the minimum possible number of edges.
+
+For a disconnected graph, there there is no single tree, but a spanning forest,
+consisting of a spanning tree of each connected component.
+
+.. toctree::
+    :hidden:
+
+    kruskal-family
+
+Exprerimental
+-------------------------------------------------------------------------------
+.. index to here
+
+.. index experimental from here
+
+* :doc:`pgr_randomSpanTree`
+* :doc:`prim-family`
+
+.. index experimental to here
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
+
+.. toctree::
+    :hidden:
+
+    pgr_randomSpanTree
+    prim-family
+
+
+See Also
+-------------------------------------------------------------------------------
+
+* `Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim'_algorithm>`__
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+
+
+

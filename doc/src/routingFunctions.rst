@@ -52,6 +52,14 @@ Routing Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`spanningTree-family`
+
+* :doc:`kruskal-family`
+
+  .. include:: kruskal-family.rst
+      :start-after: index from here
+      :end-before: index to here
+
 :doc:`pgr_KSP` - K-Shortest Path
 
 :doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)
@@ -79,6 +87,7 @@ Routing Functions
     bdDijkstra-family
     dijkstra-family
     flow-family
+    spanningTree-family
     pgr_KSP
     pgr_trsp
     TSP-family

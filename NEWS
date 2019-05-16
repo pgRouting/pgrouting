@@ -7,21 +7,15 @@ pgRouting 3.0.0 Release Notes
 * [#1153 ](https://github.com/pgRouting/pgrouting/issues/1153)_: Renamed pgr_eucledianTSP to pgr_TSPeuclidean
 * [#1188 ](https://github.com/pgRouting/pgrouting/issues/1188)_: Removed CGAL dependency
 
-*New Experimental functions*
-
-* Prim family
-
-  * pgr_prim
-  * pgr_primDD
-  * pgr_primDFS
-  * pgr_primBFS
+*New functions*
 
 * Kruskal family
 
   * pgr_kruskal
+  * pgr_kruskalBFS
   * pgr_kruskalDD
   * pgr_kruskalDFS
-  * pgr_kruskalBFS
+
 
 *Proposed moved to official on pgRouting*
 
@@ -88,6 +82,15 @@ pgRouting 3.0.0 Release Notes
   * pgr_edgeDisjointPaths(many to one)
   * pgr_edgeDisjointPaths(many to many)
 
+
+*New Experimental functions*
+
+* Prim family
+
+  * pgr_prim
+  * pgr_primDD
+  * pgr_primDFS
+  * pgr_primBFS
 
 
 *Moved to legacy*
