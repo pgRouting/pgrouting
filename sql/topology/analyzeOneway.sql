@@ -219,7 +219,7 @@ BEGIN
             ELSE '' END;
 
     instr := '''' || array_to_string(s_in_rules, ''',''') || '''';
-       EXECUTE 'update '||_pgr_quote_ident(vertname)||' a set ein=coalesce(ein,0)+b.cnt
+       EXECUTE 'UPDATE '||_pgr_quote_ident(vertname)||' a set ein=coalesce(ein,0)+b.cnt
       FROM (
          SELECT '|| sourcename ||', count(*) AS cnt
            FROM '|| tabname ||'
@@ -230,7 +230,7 @@ BEGIN
     RAISE NOTICE 'Analysis 25%% complete ...';
 
     instr := '''' || array_to_string(t_in_rules, ''',''') || '''';
-    EXECUTE 'update '||_pgr_quote_ident(vertname)||' a set ein=coalesce(ein,0)+b.cnt
+    EXECUTE 'UPDATE '||_pgr_quote_ident(vertname)||' a set ein=coalesce(ein,0)+b.cnt
         FROM (
          SELECT '|| targetname ||', count(*) AS cnt
            FROM '|| tabname ||'
@@ -241,7 +241,7 @@ BEGIN
     RAISE NOTICE 'Analysis 50%% complete ...';
 
     instr := '''' || array_to_string(s_out_rules, ''',''') || '''';
-    EXECUTE 'update '||_pgr_quote_ident(vertname)||' a set eout=coalesce(eout,0)+b.cnt
+    EXECUTE 'UPDATE '||_pgr_quote_ident(vertname)||' a set eout=coalesce(eout,0)+b.cnt
         FROM (
          SELECT '|| sourcename ||', count(*) AS cnt
            FROM '|| tabname ||'
@@ -251,7 +251,7 @@ BEGIN
     RAISE NOTICE 'Analysis 75%% complete ...';
 
     instr := '''' || array_to_string(t_out_rules, ''',''') || '''';
-    EXECUTE 'update '||_pgr_quote_ident(vertname)||' a set eout=coalesce(eout,0)+b.cnt
+    EXECUTE 'UPDATE '||_pgr_quote_ident(vertname)||' a set eout=coalesce(eout,0)+b.cnt
         FROM (
          SELECT '|| targetname ||', count(*) AS cnt
            FROM '|| tabname ||'
