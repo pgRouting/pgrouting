@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_base_graph.hpp"
 
 
 
@@ -83,7 +84,7 @@ do_pgr_articulationPoints(
         std::vector<pgr_components_rt> results;
 
         log << "Working with Undirected Graph\n";
-        pgrouting::ComponentsUndiGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         results = pgr_articulationPoints(
                 undigraph);
