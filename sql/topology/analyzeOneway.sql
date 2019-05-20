@@ -58,7 +58,7 @@ THE SOFTWARE.
 
        SELECT * FROM vertices_tmp WHERE in=0 or out=0;
 
-   The rules are defined as an array of text strings that if match the "col"
+   The rules are defined as an array of TEXT strings that if match the "col"
    value would be counted as true for the source or target in or out condition.
 
    Example
@@ -105,17 +105,17 @@ a network that is not properly noded.
 */
 
 CREATE OR REPLACE FUNCTION pgr_analyzeOneway(
-   text,
+   TEXT,
    TEXT[], -- s_in_rules (required)
    TEXT[], -- s_out_rules (required)
    TEXT[], -- t_in_rules (required)
    TEXT[], -- t_out_rules (required)
 
    two_way_if_null BOOLEAN default true,
-   oneway text default 'oneway',
-   source text default 'source',
-   target text default 'target')
-  RETURNS text AS
+   oneway TEXT default 'oneway',
+   source TEXT default 'source',
+   target TEXT default 'target')
+  RETURNS TEXT AS
 $BODY$
 
 
@@ -125,21 +125,21 @@ DECLARE
     s_out_rules TEXT[] := $3;
     t_in_rules TEXT[] := $4;
     t_out_rules TEXT[] := $5;
-    rule text;
-    ecnt integer;
-    instr text;
+    rule TEXT;
+    ecnt INTEGER;
+    instr TEXT;
     naming record;
-    sname text;
-    tname text;
-    tabname text;
-    vname text;
-    owname text;
-    sourcename text;
-    targetname text;
-    sourcetype text;
-    targettype text;
-    vertname text;
-    debuglevel text;
+    sname TEXT;
+    tname TEXT;
+    tabname TEXT;
+    vname TEXT;
+    owname TEXT;
+    sourcename TEXT;
+    targetname TEXT;
+    sourcetype TEXT;
+    targettype TEXT;
+    vertname TEXT;
+    debuglevel TEXT;
 
 
 BEGIN
@@ -164,7 +164,7 @@ BEGIN
 
   BEGIN
        RAISE debug 'Checking Vertices table';
-       execute 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::text[])' into naming;
+       execute 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::TEXT[])' into naming;
        execute 'UPDATE '||_pgr_quote_ident(vertname)||' SET eout=0 ,ein=0';
        RAISE DEBUG '     --> OK';
        EXCEPTION WHEN RAISE_exception THEN
@@ -196,12 +196,12 @@ BEGIN
        SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
 
-       perform _pgr_onError(sourcetypeNOTin('integer','smallint','bigint') , 2,
-                       '_pgr_createTopology',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
+       perform _pgr_onError(sourcetypeNOTin('INTEGER','smallint','BIGINT') , 2,
+                       '_pgr_createTopology',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint or BIGINT but '||sourcetype||' was found',
                        'Type of Column '|| sourcename || ' is ' || sourcetype);
 
-       perform _pgr_onError(targettype NOT in('integer','smallint','bigint') , 2,
-                       '_pgr_createTopology',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
+       perform _pgr_onError(targettype NOT in('INTEGER','smallint','BIGINT') , 2,
+                       '_pgr_createTopology',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or BIGINTi but '||targettype||' was found',
                        'Type of Column '|| targetname || ' is ' || targettype);
 
        RAISE DEBUG '     --> OK';
@@ -273,7 +273,7 @@ $BODY$
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_analyzeOneWay(text,TEXT[],TEXT[], TEXT[],TEXT[],BOOLEAN,text,text,text)
+COMMENT ON FUNCTION pgr_analyzeOneWay(TEXT,TEXT[],TEXT[], TEXT[],TEXT[],BOOLEAN,TEXT,TEXT,TEXT)
 IS 'pgr_analyzeOneWay
 - Parameters
   - edge table
