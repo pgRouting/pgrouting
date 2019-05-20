@@ -47,7 +47,7 @@ THE SOFTWARE.
    * col              - oneway column name (TEXT)
    * s_in_rules       - source node in rules
    * s_out_rules      - source node out rules
-   * t_in_tules       - target node IN rules
+   * t_in_tules       - target node inrules
    * t_out_rules      - target node out rules
    * two_way_if_null  - flag to treat oneway NULL values as by directional
 
@@ -157,7 +157,7 @@ BEGIN
     vname=tname||'_vertices_pgr';
     vertname= sname||'.'||vname;
     RAISE DEBUG '     --> OK';
-    EXCEPTION WHEN RAISE_exception THEN
+    EXCEPTION WHEN raise_exception THEN
       RAISE NOTICE 'ERROR: something went wrong checking the table name';
       RETURN 'FAIL';
   END;
@@ -167,14 +167,14 @@ BEGIN
        execute 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::TEXT[])' into naming;
        execute 'UPDATE '||_pgr_quote_ident(vertname)||' SET eout=0 ,ein=0';
        RAISE DEBUG '     --> OK';
-       EXCEPTION WHEN RAISE_exception THEN
+       EXCEPTION WHEN raise_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the vertices table';
           RETURN 'FAIL';
   END;
 
 
   BEGIN
-       RAISE debug 'Checking column names IN edge table';
+       RAISE debug 'Checking column names in edge table';
        SELECT * into sourcename FROM _pgr_getColumnName(sname, tname,source,2);
        SELECT * into targetname FROM _pgr_getColumnName(sname, tname,target,2);
        SELECT * into owname FROM _pgr_getColumnName(sname, tname,oneway,2);
@@ -185,27 +185,27 @@ BEGIN
                        'Column names are OK');
 
        RAISE DEBUG '     --> OK';
-       EXCEPTION WHEN RAISE_exception THEN
+       EXCEPTION WHEN raise_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the column names';
           RETURN 'FAIL';
   END;
 
   BEGIN
-       RAISE debug 'Checking column types IN edge table';
+       RAISE debug 'Checking column types in edge table';
        SELECT * into sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
        SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
 
-       perform _pgr_onError(sourcetypeNOTin('INTEGER','smallint','BIGINT') , 2,
+       perform _pgr_onError(sourcetype NOT IN('INTEGER','smallint','BIGINT') , 2,
                        '_pgr_createTopology',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint or BIGINT but '||sourcetype||' was found',
                        'Type of Column '|| sourcename || ' is ' || sourcetype);
 
-       perform _pgr_onError(targettype NOT in('INTEGER','smallint','BIGINT') , 2,
+       perform _pgr_onError(targettype NOT IN('INTEGER','smallint','BIGINT') , 2,
                        '_pgr_createTopology',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or BIGINTi but '||targettype||' was found',
                        'Type of Column '|| targetname || ' is ' || targettype);
 
        RAISE DEBUG '     --> OK';
-       EXCEPTION WHEN RAISE_exception THEN
+       EXCEPTION WHEN raise_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the column types';
           RETURN 'FAIL';
    END;
@@ -277,9 +277,9 @@ COMMENT ON FUNCTION pgr_analyzeOneWay(TEXT,TEXT[],TEXT[], TEXT[],TEXT[],BOOLEAN,
 IS 'pgr_analyzeOneWay
 - Parameters
   - edge table
-  - source IN rules
+  - source in rules
   - source out rules,
-  - target IN rules
+  - target inrules
   - target out rules,
 - Optional parameters
   - two_way_if_null := true
