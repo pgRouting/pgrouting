@@ -95,7 +95,6 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_primBFS(TEXT, BIGINT, BIGINT)
 IS 'pgr_primBFS(Single Vertex)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -109,7 +108,6 @@ IS 'pgr_primBFS(Single Vertex)
 
 COMMENT ON FUNCTION pgr_primBFS(TEXT, ANYARRAY, BIGINT)
 IS 'pgr_primBFS(multiple Vertices)
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]

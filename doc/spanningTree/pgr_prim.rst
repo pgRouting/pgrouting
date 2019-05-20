@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_prim - Experimental
+pgr_prim
 ===============================================================================
 
 ``pgr_prim`` — Minimum spanning forest of graph using Prim algorithm.
@@ -17,13 +17,9 @@ pgr_prim - Experimental
 
    Boost Graph Inside
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 .. rubric:: Availability
 
-* New as experimental on v3.0.0
+* New on v3.0.0
 
 Description
 -------------------------------------------------------------------------------
@@ -44,7 +40,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: prim - Experimental
+    single: prim
 
 .. rubric:: Summary
 
@@ -52,7 +48,7 @@ Signatures
 
     pgr_prim(edges_sql)
 
-    RETURNS SET OF (seq, edge, cost)
+    RETURNS SET OF (edge, cost)
     OR EMPTY SET
 
 
@@ -64,6 +60,7 @@ Signatures
 
 
 .. parameters, inner query & result columns
+   are the same as kruskal's
 
 .. include:: pgr_kruskal.rst
    :start-after: mst_information_start

@@ -60,6 +60,12 @@ Routing Functions
       :start-after: index from here
       :end-before: index to here
 
+* :doc:`prim-family`
+
+  .. include:: prim-family.rst
+      :start-after: index from here
+      :end-before: index to here
+
 :doc:`pgr_KSP` - K-Shortest Path
 
 :doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)

@@ -19,6 +19,11 @@ Kruskal - Family of functions
 
 .. index to here
 
+.. figure:: images/boost-inside.jpeg
+   :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
+
+   Boost Graph Inside
+
 
 .. toctree::
     :hidden:
@@ -28,7 +33,7 @@ Kruskal - Family of functions
     pgr_kruskalDD
     pgr_kruskalDFS
 
-Advanced documentation
+Description
 -------------------------------------------------------------------------------
 
 Kruskal's algorithm is a greedy minimum spanning tree algorithm that in each
@@ -66,6 +71,7 @@ Inner query
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`spanningTree-family`
 * `Boost: Kruskal's algorithm documentation <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
 * `Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 

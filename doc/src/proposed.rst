@@ -140,12 +140,6 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
-:doc:`spanningTree-family`
-
-.. include:: spanningTree-family.rst
-   :start-after: index experimental from here
-   :end-before: index experimental to here
-
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst
