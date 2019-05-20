@@ -47,7 +47,7 @@ THE SOFTWARE.
    * col              - oneway column name (TEXT)
    * s_in_rules       - source node in rules
    * s_out_rules      - source node out rules
-   * t_in_tules       - target node in rules
+   * t_in_tules       - target node IN rules
    * t_out_rules      - target node out rules
    * two_way_if_null  - flag to treat oneway NULL values as by directional
 
@@ -111,7 +111,7 @@ CREATE OR REPLACE FUNCTION pgr_analyzeOneway(
    TEXT[], -- t_in_rules (required)
    TEXT[], -- t_out_rules (required)
 
-   two_way_if_null boolean default true,
+   two_way_if_null BOOLEAN default true,
    oneway text default 'oneway',
    source text default 'source',
    target text default 'target')
@@ -143,8 +143,8 @@ DECLARE
 
 
 BEGIN
-  raise notice 'PROCESSING:';
-  raise notice 'pgr_analyzeOneway(''%'',''%'',''%'',''%'',''%'',''%'',''%'',''%'',%)',
+  RAISE notice 'PROCESSING:';
+  RAISE notice 'pgr_analyzeOneway(''%'',''%'',''%'',''%'',''%'',''%'',''%'',''%'',%)',
 		edge_table, s_in_rules , s_out_rules, t_in_rules, t_out_rules, oneway, source ,target,two_way_if_null ;
   execute 'show client_min_messages' into debuglevel;
 
@@ -156,56 +156,56 @@ BEGIN
     tabname=sname||'.'||tname;
     vname=tname||'_vertices_pgr';
     vertname= sname||'.'||vname;
-    raise DEBUG '     --> OK';
-    EXCEPTION WHEN raise_exception THEN
+    RAISE DEBUG '     --> OK';
+    EXCEPTION WHEN RAISE_exception THEN
       RAISE NOTICE 'ERROR: something went wrong checking the table name';
       RETURN 'FAIL';
   END;
 
   BEGIN
-       raise debug 'Checking Vertices table';
+       RAISE debug 'Checking Vertices table';
        execute 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::text[])' into naming;
        execute 'UPDATE '||_pgr_quote_ident(vertname)||' SET eout=0 ,ein=0';
-       raise DEBUG '     --> OK';
-       EXCEPTION WHEN raise_exception THEN
+       RAISE DEBUG '     --> OK';
+       EXCEPTION WHEN RAISE_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the vertices table';
           RETURN 'FAIL';
   END;
 
 
   BEGIN
-       raise debug 'Checking column names in edge table';
+       RAISE debug 'Checking column names IN edge table';
        SELECT * into sourcename FROM _pgr_getColumnName(sname, tname,source,2);
        SELECT * into targetname FROM _pgr_getColumnName(sname, tname,target,2);
        SELECT * into owname FROM _pgr_getColumnName(sname, tname,oneway,2);
 
 
-       perform _pgr_onError( sourcename in (targetname,owname) or  targetname=owname, 2,
+       perform _pgr_onError( sourcename IN (targetname,owname) or  targetname=owname, 2,
                        '_pgr_createToplogy',  'Two columns share the same name', 'Parameter names for oneway,source and target  must be different',
                        'Column names are OK');
 
-       raise DEBUG '     --> OK';
-       EXCEPTION WHEN raise_exception THEN
+       RAISE DEBUG '     --> OK';
+       EXCEPTION WHEN RAISE_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the column names';
           RETURN 'FAIL';
   END;
 
   BEGIN
-       raise debug 'Checking column types in edge table';
+       RAISE debug 'Checking column types IN edge table';
        SELECT * into sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
        SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
 
-       perform _pgr_onError(sourcetype not in('integer','smallint','bigint') , 2,
+       perform _pgr_onError(sourcetypeNOTin('integer','smallint','bigint') , 2,
                        '_pgr_createTopology',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
                        'Type of Column '|| sourcename || ' is ' || sourcetype);
 
-       perform _pgr_onError(targettype not in('integer','smallint','bigint') , 2,
+       perform _pgr_onError(targettype NOT in('integer','smallint','bigint') , 2,
                        '_pgr_createTopology',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
                        'Type of Column '|| targetname || ' is ' || targettype);
 
-       raise DEBUG '     --> OK';
-       EXCEPTION WHEN raise_exception THEN
+       RAISE DEBUG '     --> OK';
+       EXCEPTION WHEN RAISE_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the column types';
           RETURN 'FAIL';
    END;
@@ -223,7 +223,7 @@ BEGIN
       FROM (
          SELECT '|| sourcename ||', count(*) AS cnt
            FROM '|| tabname ||'
-          WHERE '|| rule || owname ||' in ('|| instr ||')
+          WHERE '|| rule || owname ||' IN ('|| instr ||')
           GROUP BY '|| sourcename ||' ) b
      WHERE a.id=b.'|| sourcename;
 
@@ -234,7 +234,7 @@ BEGIN
         FROM (
          SELECT '|| targetname ||', count(*) AS cnt
            FROM '|| tabname ||'
-          WHERE '|| rule || owname ||' in ('|| instr ||')
+          WHERE '|| rule || owname ||' IN ('|| instr ||')
           GROUP BY '|| targetname ||' ) b
         WHERE a.id=b.'|| targetname;
 
@@ -245,7 +245,7 @@ BEGIN
         FROM (
          SELECT '|| sourcename ||', count(*) AS cnt
            FROM '|| tabname ||'
-          WHERE '|| rule || owname ||' in ('|| instr ||')
+          WHERE '|| rule || owname ||' IN ('|| instr ||')
           GROUP BY '|| sourcename ||' ) b
         WHERE a.id=b.'|| sourcename;
     RAISE NOTICE 'Analysis 75%% complete ...';
@@ -255,7 +255,7 @@ BEGIN
         FROM (
          SELECT '|| targetname ||', count(*) AS cnt
            FROM '|| tabname ||'
-          WHERE '|| rule || owname ||' in ('|| instr ||')
+          WHERE '|| rule || owname ||' IN ('|| instr ||')
           GROUP BY '|| targetname ||' ) b
         WHERE a.id=b.'|| targetname;
 
@@ -263,7 +263,7 @@ BEGIN
 
     EXECUTE 'SELECT count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE ein=0 or eout=0' INTO ecnt;
 
-    RAISE NOTICE 'Found % potential problems in directionality' ,ecnt;
+    RAISE NOTICE 'Found % potential problems IN directionality' ,ecnt;
 
     RETURN 'OK';
 
@@ -273,13 +273,13 @@ $BODY$
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_analyzeOneWay(text,TEXT[],TEXT[], TEXT[],TEXT[],boolean,text,text,text)
+COMMENT ON FUNCTION pgr_analyzeOneWay(text,TEXT[],TEXT[], TEXT[],TEXT[],BOOLEAN,text,text,text)
 IS 'pgr_analyzeOneWay
 - Parameters
   - edge table
-  - source in rules
+  - source IN rules
   - source out rules,
-  - target in rules
+  - target IN rules
   - target out rules,
 - Optional parameters
   - two_way_if_null := true
