@@ -81,13 +81,10 @@ do_pgr_biconnectedComponents(
 
         graphType gType = DIRECTED;
 
-        std::vector<pgr_components_rt> results;
-
         log << "Working with Undirected Graph\n";
         pgrouting::ComponentsUndiGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_biconnectedComponents(
-                undigraph);
+        auto results(pgrouting::algorithms::biconnectedComponents(undigraph));
 
         auto count = results.size();
 

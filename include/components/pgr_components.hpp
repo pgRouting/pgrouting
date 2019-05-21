@@ -122,34 +122,13 @@ strongComponents(
     return generate_results(results);
 }
 
-
-template < class G >
-class Pgr_components {
- public:
-     typedef typename G::V V;
-     typedef typename G::E E;
-     typedef typename G::E_i E_i;
-
-     //! Biconnected Components
-     std::vector<pgr_components_rt> biconnectedComponents(
-             G &graph);
-
-     //! Articulation Points
-     std::vector<pgr_components_rt> articulationPoints(
-             G &graph);
-
-     //! Bridges
-     std::vector<pgr_components_rt> bridges(
-             G &graph);
-};
-
-
-/******************** IMPLEMENTTION ******************/
-//! Biconnected Components
+//! Biconnected Components (for undirected)
 template < class G >
 std::vector<pgr_components_rt>
-Pgr_components< G >::biconnectedComponents(
+biconnectedComponents(
         G &graph) {
+     using E =  typename G::E;
+     using E_i = typename G::E_i;
     // perform the algorithm
     struct order_edges {
         bool operator() (const E &left, const E &right) const {
@@ -170,6 +149,25 @@ Pgr_components< G >::biconnectedComponents(
 
     return generate_results(components);
 }
+
+template < class G >
+class Pgr_components {
+ public:
+     typedef typename G::V V;
+     typedef typename G::E E;
+     typedef typename G::E_i E_i;
+
+     //! Articulation Points
+     std::vector<pgr_components_rt> articulationPoints(
+             G &graph);
+
+     //! Bridges
+     std::vector<pgr_components_rt> bridges(
+             G &graph);
+};
+
+
+/******************** IMPLEMENTTION ******************/
 
 //! Articulation Points
 template < class G >
