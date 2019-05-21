@@ -39,50 +39,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <algorithm>
 
+#include "cpp_common/pgr_base_graph.hpp"
+
 namespace pgrouting {
 namespace algorithms {
 
-
-template < class G >
-class Pgr_components {
- public:
-     typedef typename G::V V;
-     typedef typename G::E E;
-     typedef typename G::E_i E_i;
-
-     //! Connected Components Vertex Version
-     std::vector<pgr_components_rt> connectedComponents(
-             G &graph);
-
-     //! Strongly Connected Components Vertex Version
-     std::vector<pgr_components_rt> strongComponents(
-             G &graph);
-
-     //! Biconnected Components
-     std::vector<pgr_components_rt> biconnectedComponents(
-             G &graph);
-
-     //! Articulation Points
-     std::vector<pgr_components_rt> articulationPoints(
-             G &graph);
-
-     //! Bridges
-     std::vector<pgr_components_rt> bridges(
-             G &graph);
-
- private:
-     //! Generate Results, Vertex Version
-     std::vector<pgr_components_rt> generate_results(
-             std::vector< std::vector< int64_t > >);
-};
-
-
-/******************** IMPLEMENTTION ******************/
+namespace {
 
 //! Generate Results, Vertex Version
-template < class G >
 std::vector<pgr_components_rt>
-Pgr_components< G >::generate_results(
+generate_results(
         std::vector< std::vector< int64_t > > components) {
     // sort identifier
     size_t num_comps = components.size();
@@ -107,27 +73,54 @@ Pgr_components< G >::generate_results(
     return results;
 }
 
-//! Connected Components Vertex Version
+}  // namespace
+
 template < class G >
 std::vector<pgr_components_rt>
-Pgr_components< G >::connectedComponents(
-        G &graph) {
+connectedComponents(G &graph) {
     size_t totalNodes = num_vertices(graph.graph);
 
     // perform the algorithm
     std::vector< int > components(totalNodes);
-    int num_comps = boost::connected_components(graph.graph, &components[0]);
+    auto num_comps = boost::connected_components(graph.graph, &components[0]);
 
     // get the results
     std::vector< std::vector< int64_t > > results;
     results.resize(num_comps);
-    for (size_t i = 0; i < totalNodes; i++)
+    for (auto node : totalNodes)
         results[components[i]].push_back(graph[i].id);
 
     return generate_results(results);
 }
 
 //! Strongly Connected Components Vertex Version
+
+template < class G >
+class Pgr_components {
+ public:
+     typedef typename G::V V;
+     typedef typename G::E E;
+     typedef typename G::E_i E_i;
+
+     //! Strongly Connected Components Vertex Version
+     std::vector<pgr_components_rt> strongComponents(
+             G &graph);
+
+     //! Biconnected Components
+     std::vector<pgr_components_rt> biconnectedComponents(
+             G &graph);
+
+     //! Articulation Points
+     std::vector<pgr_components_rt> articulationPoints(
+             G &graph);
+
+     //! Bridges
+     std::vector<pgr_components_rt> bridges(
+             G &graph);
+};
+
+
+/******************** IMPLEMENTTION ******************/
 template < class G >
 std::vector<pgr_components_rt>
 Pgr_components< G >::strongComponents(
