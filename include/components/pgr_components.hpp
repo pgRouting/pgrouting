@@ -40,40 +40,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 
 #include "cpp_common/pgr_base_graph.hpp"
+#include "components/componentsResult.h"
 
 namespace pgrouting {
 namespace algorithms {
-
-namespace {
-
-//! Generate Results, Vertex Version
-std::vector<pgr_components_rt>
-generate_results(
-        std::vector< std::vector< int64_t > > components) {
-    // sort identifier
-    size_t num_comps = components.size();
-    for (size_t i = 0; i < num_comps; i++) {
-        std::sort(components[i].begin(), components[i].end());
-    }
-    sort(components.begin(), components.end());
-
-    // generate results
-    std::vector< pgr_components_rt > results;
-    for (size_t i = 0; i < num_comps; i++) {
-        int64_t tempComp = components[i][0];
-        size_t sizeCompi = components[i].size();
-        for (size_t j = 0; j < sizeCompi; j++) {
-            pgr_components_rt tmp;
-            tmp.identifier = components[i][j];
-            tmp.n_seq = static_cast< int > (j + 1);
-            tmp.component = tempComp;
-            results.push_back(tmp);
-        }
-    }
-    return results;
-}
-
-}  // namespace
 
 /**
  * works for undirected graph
@@ -93,7 +63,7 @@ connectedComponents(G &graph) {
     for (size_t i = 0; i < totalNodes; i++)
         results[components[i]].push_back(graph[i].id);
 
-    return generate_results(results);
+    return detail::componentsResult(results);
 }
 
 //! Strongly Connected Components Vertex Version
@@ -119,7 +89,7 @@ strongComponents(
     for (size_t i = 0; i < totalNodes; i++)
         results[components[i]].push_back(graph[i].id);
 
-    return generate_results(results);
+    return detail::componentsResult(results);
 }
 
 //! Biconnected Components (for undirected)
@@ -147,7 +117,7 @@ biconnectedComponents(
     for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ei++)
         components[bimap[*ei]].push_back(graph[*ei].id);
 
-    return generate_results(components);
+    return detail::componentsResult(components);
 }
 
 template < class G >

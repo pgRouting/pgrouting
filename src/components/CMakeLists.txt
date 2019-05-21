@@ -5,6 +5,7 @@ ADD_LIBRARY(components OBJECT
     articulationPoints.c
     bridges.c
 
+    componentsResult.cpp
     connectedComponents_driver.cpp
 	strongComponents_driver.cpp
     biconnectedComponents_driver.cpp
