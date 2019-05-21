@@ -151,18 +151,6 @@ biconnectedComponents(
 }
 
 template < class G >
-class Pgr_components {
- public:
-     typedef typename G::V V;
-     typedef typename G::E E;
-     typedef typename G::E_i E_i;
-
-     //! Bridges
-     std::vector<pgr_components_rt> bridges(
-             G &graph);
-};
-
-template < class G >
 std::vector<pgr_components_rt>
 articulationPoints(
         G &graph) {
@@ -185,14 +173,13 @@ articulationPoints(
     return results;
 }
 
-/******************** IMPLEMENTTION ******************/
-
-
 //! Bridges
 template < class G >
 std::vector<pgr_components_rt>
-Pgr_components< G >::bridges(
+bridges(
         G &graph) {
+    using E =  typename G::E;
+    using E_i = typename G::E_i;
     size_t totalNodes = num_vertices(graph.graph);
     std::vector< int > tmp_comp(totalNodes);
     std::vector <pgr_components_rt> results;

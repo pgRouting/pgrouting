@@ -40,26 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 
 
-
-
-
-
-/************************************************************
-  TEXT,
-    BIGINT,
-    BIGINT,
- ***********************************************************/
-
-template < class G >
-static
-std::vector<pgr_components_rt>
-pgr_bridges(
-        G &graph) {
-    pgrouting::algorithms::Pgr_components< G > fn_components;
-    return fn_components.bridges(graph);
-}
-
-
 void
 do_pgr_bridges(
         pgr_edge_t  *data_edges,
@@ -87,8 +67,7 @@ do_pgr_bridges(
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_bridges(
-                undigraph);
+        results = pgrouting::algorithms::bridges(undigraph);
 
         auto count = results.size();
 

@@ -40,25 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 
 
-
-
-
-/************************************************************
-  TEXT,
-    BIGINT,
-    BIGINT,
- ***********************************************************/
-
-template < class G >
-static
-std::vector<pgr_components_rt>
-pgr_biconnectedComponents(
-        G &graph) {
-    pgrouting::algorithms::Pgr_components< G > fn_components;
-    return fn_components.biconnectedComponents(graph);
-}
-
-
 void
 do_pgr_biconnectedComponents(
         pgr_edge_t  *data_edges,
