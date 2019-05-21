@@ -54,7 +54,7 @@ static
 std::vector<pgr_components_rt>
 pgr_connectedComponents(
         G &graph) {
-    Pgr_components< G > fn_components;
+    pgrouting::algorithms::Pgr_components< G > fn_components;
     return fn_components.connectedComponents(graph);
 }
 

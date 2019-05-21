@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "components/pgr_components.hpp"
+#include "components/pgr_componentsGraph.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -53,7 +54,7 @@ static
 std::vector<pgr_components_rt>
 pgr_biconnectedComponents(
         G &graph) {
-    Pgr_components< G > fn_components;
+    pgrouting::algorithms::Pgr_components< G > fn_components;
     return fn_components.biconnectedComponents(graph);
 }
 

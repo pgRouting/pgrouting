@@ -39,13 +39,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <algorithm>
 
-#include "pgr_componentsGraph.hpp"
+namespace pgrouting {
+namespace algorithms {
 
-template < class G > class Pgr_components;
-// user's functions
-// for development
-
-//******************************************
 
 template < class G >
 class Pgr_components {
@@ -245,5 +241,8 @@ Pgr_components< G >::bridges(
 
     return results;
 }
+
+}  // namespace algorithms
+}  // namespace pgrouting
 
 #endif  // INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_

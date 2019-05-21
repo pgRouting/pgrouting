@@ -55,7 +55,7 @@ static
 std::vector<pgr_components_rt>
 pgr_bridges(
         G &graph) {
-    Pgr_components< G > fn_components;
+    pgrouting::algorithms::Pgr_components< G > fn_components;
     return fn_components.bridges(graph);
 }
 
