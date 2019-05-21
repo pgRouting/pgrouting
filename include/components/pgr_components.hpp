@@ -53,7 +53,7 @@ pgr_connectedComponents(pgrouting::UndirectedGraph &graph);
 
 //! Strongly Connected Components Vertex Version
 std::vector<pgr_components_rt>
-strongComponents( pgrouting::DirectedGraph &graph);
+strongComponents(pgrouting::DirectedGraph &graph);
 
 //! Biconnected Components (for undirected)
 std::vector<pgr_components_rt>
