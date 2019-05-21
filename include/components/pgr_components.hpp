@@ -75,6 +75,9 @@ generate_results(
 
 }  // namespace
 
+/**
+ * works for undirected graph
+ **/
 template < class G >
 std::vector<pgr_components_rt>
 connectedComponents(G &graph) {
@@ -87,43 +90,19 @@ connectedComponents(G &graph) {
     // get the results
     std::vector< std::vector< int64_t > > results;
     results.resize(num_comps);
-    for (auto node : totalNodes)
+    for (size_t i = 0; i < totalNodes; i++)
         results[components[i]].push_back(graph[i].id);
 
     return generate_results(results);
 }
 
 //! Strongly Connected Components Vertex Version
-
-template < class G >
-class Pgr_components {
- public:
-     typedef typename G::V V;
-     typedef typename G::E E;
-     typedef typename G::E_i E_i;
-
-     //! Strongly Connected Components Vertex Version
-     std::vector<pgr_components_rt> strongComponents(
-             G &graph);
-
-     //! Biconnected Components
-     std::vector<pgr_components_rt> biconnectedComponents(
-             G &graph);
-
-     //! Articulation Points
-     std::vector<pgr_components_rt> articulationPoints(
-             G &graph);
-
-     //! Bridges
-     std::vector<pgr_components_rt> bridges(
-             G &graph);
-};
-
-
-/******************** IMPLEMENTTION ******************/
+/**
+ * works for directed graph
+ **/
 template < class G >
 std::vector<pgr_components_rt>
-Pgr_components< G >::strongComponents(
+strongComponents(
         G &graph) {
     size_t totalNodes = num_vertices(graph.graph);
 
@@ -143,6 +122,29 @@ Pgr_components< G >::strongComponents(
     return generate_results(results);
 }
 
+
+template < class G >
+class Pgr_components {
+ public:
+     typedef typename G::V V;
+     typedef typename G::E E;
+     typedef typename G::E_i E_i;
+
+     //! Biconnected Components
+     std::vector<pgr_components_rt> biconnectedComponents(
+             G &graph);
+
+     //! Articulation Points
+     std::vector<pgr_components_rt> articulationPoints(
+             G &graph);
+
+     //! Bridges
+     std::vector<pgr_components_rt> bridges(
+             G &graph);
+};
+
+
+/******************** IMPLEMENTTION ******************/
 //! Biconnected Components
 template < class G >
 std::vector<pgr_components_rt>
