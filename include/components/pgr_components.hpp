@@ -157,22 +157,14 @@ class Pgr_components {
      typedef typename G::E E;
      typedef typename G::E_i E_i;
 
-     //! Articulation Points
-     std::vector<pgr_components_rt> articulationPoints(
-             G &graph);
-
      //! Bridges
      std::vector<pgr_components_rt> bridges(
              G &graph);
 };
 
-
-/******************** IMPLEMENTTION ******************/
-
-//! Articulation Points
 template < class G >
 std::vector<pgr_components_rt>
-Pgr_components< G >::articulationPoints(
+articulationPoints(
         G &graph) {
     // perform the algorithm
     std::vector <size_t> art_points;
@@ -192,6 +184,9 @@ Pgr_components< G >::articulationPoints(
 
     return results;
 }
+
+/******************** IMPLEMENTTION ******************/
+
 
 //! Bridges
 template < class G >
