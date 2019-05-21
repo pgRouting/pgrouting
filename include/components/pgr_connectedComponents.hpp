@@ -29,10 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/connected_components.hpp>
-#include <boost/graph/strong_components.hpp>
-#include <boost/graph/biconnected_components.hpp>
 
 #include <vector>
 #include <map>
@@ -41,7 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "components/componentsResult.h"
-#include "components/pgr_componentsGraph.hpp"
 
 namespace pgrouting {
 namespace algorithms {
@@ -50,23 +46,21 @@ namespace algorithms {
  * works for undirected graph
  **/
 std::vector<pgr_components_rt>
-pgr_connectedComponents(pgrouting::UndirectedGraph &graph);
+pgr_connectedComponents(pgrouting::UndirectedGraph &graph) {
+    size_t totalNodes = num_vertices(graph.graph);
 
-//! Strongly Connected Components Vertex Version
-std::vector<pgr_components_rt>
-strongComponents( pgrouting::DirectedGraph &graph);
+    // perform the algorithm
+    std::vector< int > components(totalNodes);
+    auto num_comps = boost::connected_components(graph.graph, &components[0]);
 
-//! Biconnected Components (for undirected)
-std::vector<pgr_components_rt>
-biconnectedComponents(pgrouting::UndirectedGraph &graph);
+    // get the results
+    std::vector< std::vector< int64_t > > results;
+    results.resize(num_comps);
+    for (size_t i = 0; i < totalNodes; i++)
+        results[components[i]].push_back(graph[i].id);
 
-//! Articulation Points
-std::vector<pgr_components_rt>
-articulationPoints(pgrouting::UndirectedGraph &graph);
-
-//! Bridges
-std::vector<pgr_components_rt>
-bridges(pgrouting::UndirectedGraph &graph);
+    return detail::componentsResult(results);
+}
 
 }  // namespace algorithms
 }  // namespace pgrouting

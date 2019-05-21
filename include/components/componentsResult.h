@@ -24,51 +24,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
-#define INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
+#ifndef INCLUDE_COMPONENTS_COMPONENTSRESULT_H_
+#define INCLUDE_COMPONENTS_COMPONENTSRESULT_H_
 #pragma once
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/connected_components.hpp>
-#include <boost/graph/strong_components.hpp>
-#include <boost/graph/biconnected_components.hpp>
+#include "c_types/pgr_components_rt.h"
 
 #include <vector>
-#include <map>
-#include <utility>
-#include <algorithm>
-
-#include "cpp_common/pgr_base_graph.hpp"
-#include "components/componentsResult.h"
-#include "components/pgr_componentsGraph.hpp"
 
 namespace pgrouting {
 namespace algorithms {
 
-/**
- * works for undirected graph
- **/
-std::vector<pgr_components_rt>
-pgr_connectedComponents(pgrouting::UndirectedGraph &graph);
+namespace detail {
 
-//! Strongly Connected Components Vertex Version
 std::vector<pgr_components_rt>
-strongComponents( pgrouting::DirectedGraph &graph);
+componentsResult(
+        std::vector<std::vector<int64_t>> components);
 
-//! Biconnected Components (for undirected)
-std::vector<pgr_components_rt>
-biconnectedComponents(pgrouting::UndirectedGraph &graph);
-
-//! Articulation Points
-std::vector<pgr_components_rt>
-articulationPoints(pgrouting::UndirectedGraph &graph);
-
-//! Bridges
-std::vector<pgr_components_rt>
-bridges(pgrouting::UndirectedGraph &graph);
+}  // namespace detail
 
 }  // namespace algorithms
 }  // namespace pgrouting
 
-#endif  // INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
+#endif  // INCLUDE_COMPONENTS_COMPONENTSRESULT_H_

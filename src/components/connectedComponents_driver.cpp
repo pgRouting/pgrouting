@@ -68,7 +68,7 @@ do_pgr_connectedComponents(
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        auto results(pgrouting::algorithms::connectedComponents(undigraph));
+        auto results(pgrouting::algorithms::pgr_connectedComponents(undigraph));
 
         auto count = results.size();
 

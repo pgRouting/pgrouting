@@ -6,6 +6,7 @@ ADD_LIBRARY(components OBJECT
     bridges.c
 
     componentsResult.cpp
+    pgr_components.cpp
     connectedComponents_driver.cpp
 	strongComponents_driver.cpp
     biconnectedComponents_driver.cpp

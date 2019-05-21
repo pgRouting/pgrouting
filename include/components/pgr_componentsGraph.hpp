@@ -57,15 +57,12 @@ namespace graph {
 template <class G, typename T_V, typename T_E>
 class Pgr_componentsGraph : public Pgr_base_graph<G, T_V, T_E> {
  public:
-     G graph;
-
      explicit Pgr_componentsGraph< G, T_V, T_E >(graphType gtype)
          : Pgr_base_graph< G, T_V, T_E >(gtype) {
          }
-
      template < typename T >
          void insert_edges(const T *edges, int64_t count) {
-             insert_edges(std::vector < T >(edges, edges + count));
+             this->insert_edges(std::vector < T >(edges, edges + count));
          }
 
      template <typename T >
@@ -99,14 +96,14 @@ class Pgr_componentsGraph : public Pgr_base_graph<G, T_V, T_E> {
                  (Pgr_base_graph< G, T_V, T_E >::vertices_map).end());
         if (edge.cost >= 0) {
             boost::tie(e, inserted) =
-                boost::add_edge(vm_s, vm_t, graph);
-            graph[e].cost = edge.cost;
-            graph[e].id = edge.id;
+                boost::add_edge(vm_s, vm_t, this->graph);
+            this->graph[e].cost = edge.cost;
+            this->graph[e].id = edge.id;
         } else if (edge.reverse_cost >= 0) {
             boost::tie(e, inserted) =
-                boost::add_edge(vm_t, vm_s, graph);
-            graph[e].cost = edge.reverse_cost;
-            graph[e].id = edge.id;
+                boost::add_edge(vm_t, vm_s, this->graph);
+            this->graph[e].cost = edge.reverse_cost;
+            this->graph[e].id = edge.id;
         }
     }
 };
