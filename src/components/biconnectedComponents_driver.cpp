@@ -34,10 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "components/pgr_components.hpp"
-#include "components/pgr_componentsGraph.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+
+#include "cpp_common/pgr_base_graph.hpp"
 
 
 void
@@ -60,10 +61,10 @@ do_pgr_biconnectedComponents(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = DIRECTED;
+        graphType gType = UNDIRECTED;
 
         log << "Working with Undirected Graph\n";
-        pgrouting::ComponentsUndiGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         auto results(pgrouting::algorithms::biconnectedComponents(undigraph));
 
