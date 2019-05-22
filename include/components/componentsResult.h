@@ -39,7 +39,7 @@ namespace detail {
 
 std::vector<pgr_components_rt>
 componentsResult(
-        std::vector<std::vector<int64_t>> components);
+        std::vector<std::vector<int64_t>> &components);
 
 }  // namespace detail
 

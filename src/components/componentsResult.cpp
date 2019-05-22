@@ -36,25 +36,20 @@ namespace detail {
 
 std::vector<pgr_components_rt>
 componentsResult(
-        std::vector< std::vector< int64_t > > components) {
+        std::vector< std::vector< int64_t > > &components) {
     // sort identifier
-    size_t num_comps = components.size();
-    for (size_t i = 0; i < num_comps; i++) {
-        std::sort(components[i].begin(), components[i].end());
+    for (auto &component : components) {
+        std::sort(component.begin(), component.end());
     }
     sort(components.begin(), components.end());
 
     // generate results
     std::vector< pgr_components_rt > results;
-    for (size_t i = 0; i < num_comps; i++) {
-        int64_t tempComp = components[i][0];
-        size_t sizeCompi = components[i].size();
-        for (size_t j = 0; j < sizeCompi; j++) {
-            pgr_components_rt tmp;
-            tmp.identifier = components[i][j];
-            tmp.n_seq = static_cast< int > (j + 1);
-            tmp.component = tempComp;
-            results.push_back(tmp);
+    for (const auto component : components) {
+        auto component_id = component[0];
+        int seq(0);
+        for (const auto element : component) {
+            results.push_back({component_id, ++seq, element});
         }
     }
     return results;
