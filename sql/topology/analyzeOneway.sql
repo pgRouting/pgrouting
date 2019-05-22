@@ -47,7 +47,7 @@ THE SOFTWARE.
    * col              - oneway column name (TEXT)
    * s_in_rules       - source node in rules
    * s_out_rules      - source node out rules
-   * t_in_tules       - target node inrules
+   * t_in_tules       - target node in rules
    * t_out_rules      - target node out rules
    * two_way_if_null  - flag to treat oneway NULL values as by directional
 
@@ -58,7 +58,7 @@ THE SOFTWARE.
 
        SELECT * FROM vertices_tmp WHERE in=0 or out=0;
 
-   The rules are defined as an array of TEXT strings that if match the "col"
+   The rules are defined as an array of text strings that if match the "col"
    value would be counted as true for the source or target in or out condition.
 
    Example
@@ -67,8 +67,8 @@ THE SOFTWARE.
    Lets assume we have a table "st" of edges and a column "one_way" that
    might have values like:
 
-   * 'FT'    - oneway FROM the source to the target node.
-   * 'TF'    - oneway FROM the target to the source node.
+   * 'FT'    - oneway from the source to the target node.
+   * 'TF'    - oneway from the target to the source node.
    * 'B'     - two way street.
    * ''      - empty field, assume teoway.
    * <NULL>  - NULL field, use two_way_if_null flag.
@@ -196,11 +196,11 @@ BEGIN
        SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
 
-       perform _pgr_onError(sourcetype NOT IN('INTEGER','smallint','BIGINT') , 2,
+       perform _pgr_onError(sourcetype NOT IN('integer','smallint','bigint') , 2,
                        '_pgr_createTopology',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint or BIGINT but '||sourcetype||' was found',
                        'Type of Column '|| sourcename || ' is ' || sourcetype);
 
-       perform _pgr_onError(targettype NOT IN('INTEGER','smallint','BIGINT') , 2,
+       perform _pgr_onError(targettype NOT IN('integer','smallint','bigint') , 2,
                        '_pgr_createTopology',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or BIGINTi but '||targettype||' was found',
                        'Type of Column '|| targetname || ' is ' || targettype);
 
@@ -279,7 +279,7 @@ IS 'pgr_analyzeOneWay
   - edge table
   - source in rules
   - source out rules,
-  - target inrules
+  - target in rules
   - target out rules,
 - Optional parameters
   - two_way_if_null := true
