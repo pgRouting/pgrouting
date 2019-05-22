@@ -93,7 +93,7 @@ THE SOFTWARE.
 
      FROM st a, vertices_tmp b
     WHERE a.source=b.id AND ein=0 OR eout=0
-   union
+   UNION
    SELECT gid
      FROM st a, vertices_tmp b
     WHERE a.target=b.id AND ein=0 OR eout=0;
@@ -146,11 +146,11 @@ BEGIN
   RAISE notice 'PROCESSING:';
   RAISE notice 'pgr_analyzeOneway(''%'',''%'',''%'',''%'',''%'',''%'',''%'',''%'',%)',
 		edge_table, s_in_rules , s_out_rules, t_in_rules, t_out_rules, oneway, source ,target,two_way_if_null ;
-  execute 'show client_min_messages' into debuglevel;
+  EXECUTE 'show client_min_messages' into debuglevel;
 
   BEGIN
     RAISE DEBUG 'Checking % exists',edge_table;
-    execute 'SELECT * FROM _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
+    EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
     sname=naming.sname;
     tname=naming.tname;
     tabname=sname||'.'||tname;
@@ -164,8 +164,8 @@ BEGIN
 
   BEGIN
        RAISE debug 'Checking Vertices table';
-       execute 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::TEXT[])' into naming;
-       execute 'UPDATE '||_pgr_quote_ident(vertname)||' SET eout=0 ,ein=0';
+       EXECUTE 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::TEXT[])' into naming;
+       EXECUTE 'UPDATE '||_pgr_quote_ident(vertname)||' SET eout=0 ,ein=0';
        RAISE DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the vertices table';
