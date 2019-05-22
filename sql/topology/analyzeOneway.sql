@@ -143,14 +143,14 @@ DECLARE
 
 
 BEGIN
-  RAISE notice 'PROCESSING:';
-  RAISE notice 'pgr_analyzeOneway(''%'',''%'',''%'',''%'',''%'',''%'',''%'',''%'',%)',
+  RAISE NOTICE 'PROCESSING:';
+  RAISE NOTICE 'pgr_analyzeOneway(''%'',''%'',''%'',''%'',''%'',''%'',''%'',''%'',%)',
 		edge_table, s_in_rules , s_out_rules, t_in_rules, t_out_rules, oneway, source ,target,two_way_if_null ;
-  EXECUTE 'show client_min_messages' into debuglevel;
+  EXECUTE 'show client_min_messages' INTO debuglevel;
 
   BEGIN
     RAISE DEBUG 'Checking % exists',edge_table;
-    EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
+    EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(edge_table)||',2)' INTO naming;
     sname=naming.sname;
     tname=naming.tname;
     tabname=sname||'.'||tname;
@@ -163,8 +163,8 @@ BEGIN
   END;
 
   BEGIN
-       RAISE debug 'Checking Vertices table';
-       EXECUTE 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::TEXT[])' into naming;
+       RAISE DEBUG 'Checking Vertices table';
+       EXECUTE 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::TEXT[])' INTO naming;
        EXECUTE 'UPDATE '||_pgr_quote_ident(vertname)||' SET eout=0 ,ein=0';
        RAISE DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
@@ -174,10 +174,10 @@ BEGIN
 
 
   BEGIN
-       RAISE debug 'Checking column names in edge table';
-       SELECT * into sourcename FROM _pgr_getColumnName(sname, tname,source,2);
-       SELECT * into targetname FROM _pgr_getColumnName(sname, tname,target,2);
-       SELECT * into owname FROM _pgr_getColumnName(sname, tname,oneway,2);
+       RAISE DEBUG 'Checking column names in edge table';
+       SELECT * INTO sourcename FROM _pgr_getColumnName(sname, tname,source,2);
+       SELECT * INTO targetname FROM _pgr_getColumnName(sname, tname,target,2);
+       SELECT * INTO owname FROM _pgr_getColumnName(sname, tname,oneway,2);
 
 
        perform _pgr_onError( sourcename IN (targetname,owname) or  targetname=owname, 2,
@@ -191,9 +191,9 @@ BEGIN
   END;
 
   BEGIN
-       RAISE debug 'Checking column types in edge table';
-       SELECT * into sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
-       SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
+       RAISE DEBUG 'Checking column types in edge table';
+       SELECT * INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
+       SELECT * INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
 
        perform _pgr_onError(sourcetype NOT IN('integer','smallint','bigint') , 2,
