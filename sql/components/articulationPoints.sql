@@ -44,11 +44,10 @@ LANGUAGE c IMMUTABLE STRICT;
 CREATE OR REPLACE FUNCTION pgr_articulationPoints(
     TEXT,   -- edges_sql (required)
 
-    OUT seq INTEGER,
     OUT node BIGINT)
-RETURNS SETOF RECORD AS
+RETURNS SETOF BIGINT AS
 $BODY$
-    SELECT *
+    SELECT node
     FROM _pgr_articulationPoints(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;

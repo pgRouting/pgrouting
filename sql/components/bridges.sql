@@ -43,11 +43,10 @@ LANGUAGE C IMMUTABLE STRICT;
 CREATE OR REPLACE FUNCTION pgr_bridges(
     TEXT,  -- edges_sql (required)
 
-    OUT seq INTEGER,
     OUT edge BIGINT)
-RETURNS SETOF RECORD AS
+RETURNS SETOF BIGINT AS
 $BODY$
-    SELECT *
+    SELECT edge
     FROM _pgr_bridges(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
