@@ -31,7 +31,6 @@ Description
 
 A connected component of an undirected graph is a set of vertices that are all reachable
 from each other.
-This implementation can only be used with an undirected graph.
 
 **The main characteristics are:**
 
@@ -49,13 +48,13 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: connectedComponents
+    single: connectedComponents -- Experimental
 
 .. code-block:: none
 
     pgr_connectedComponents(edges_sql)
 
-    RETURNS SET OF (seq, component, n_seq, node)
+    RETURNS SET OF (seq, component, node)
     OR EMPTY SET
 
 :Example: The connected components of the graph
@@ -64,26 +63,47 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
+Parameters
+-------------------------------------------------------------------------------
+
 .. include:: components-family.rst
     :start-after: components_parameters_start
     :end-before: components_parameters_end
 
-.. include:: components-family.rst
-    :start-after: components_edges_sql_start
-    :end-before: components_edges_sql_end
+Inner query
+-------------------------------------------------------------------------------
+
+:edges SQL: an SQL query of an **undirected** graph, which should return a set of rows with the following columns:
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
 
 Result Columns
 -------------------------------------------------------------------------------
 
-.. include:: components-family.rst
-    :start-after: return_componentsV_start
-    :end-before: return_componentsV_end
+.. return_componentsV_start
+
+Returns set of ``(seq, component, node)``
+
+============== ========== =================================================
+Column         Type       Description
+============== ========== =================================================
+**seq**        ``INT``    Sequential value starting from **1**.
+**component**  ``BIGINT`` Component identifier. It is equal to the minimum node identifier in the component.
+**node**       ``BIGINT`` Identifier of the vertex that belongs to **component**.
+============== ========== =================================================
+
+.. return_componentsV_end
 
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Connected_component_%28graph_theory%29
+* :doc:`components-family`
 * The queries use the :doc:`sampledata` network.
+* Boost: `Connected components <http://www.boost.org/libs/graph/doc/connected_components.html>`__
+* wikipedia: `Connected component <http://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__
 
 .. rubric:: Indices and tables
 

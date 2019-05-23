@@ -46,13 +46,13 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: bridges
+    single: bridges -- Experimental
 
 .. code-block:: none
 
-    pgr_bridges(edges_sql)
+    pgr_bridges(Edges SQL)
 
-    RETURNS SET OF (seq, node)
+    RETURNS SET OF (edge)
     OR EMPTY SET
 
 :Example: The bridges of the graph
@@ -61,19 +61,35 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
+Parameters
+-------------------------------------------------------------------------------
+
 .. include:: components-family.rst
     :start-after: components_parameters_start
     :end-before: components_parameters_end
 
-.. include:: components-family.rst
-    :start-after: components_edges_sql_start
-    :end-before: components_edges_sql_end
+Inner query
+-------------------------------------------------------------------------------
+
+:edges SQL: an SQL query of an **undirected** graph, which should return a set of rows with the following columns:
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
-.. include:: components-family.rst
-    :start-after: return_bridges_start
-    :end-before: return_bridges_end
+.. return_bridges_start
+
+Returns set of ``(edge)``
+
+============== ========== =================================================
+Column         Type       Description
+============== ========== =================================================
+**edge**       ``BIGINT`` Identifier of the edge that is a bridge.
+============== ========== =================================================
+
+.. return_bridges_end
 
 See Also
 -------------------------------------------------------------------------------

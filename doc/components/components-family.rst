@@ -401,115 +401,59 @@ Example:
 
 .. components_edges_sql_start
 
-Inner query
--------------------------------------------------------------------------------
-
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
-
-================= =================== ======== =================================================
-Column            Type                 Default  Description
-================= =================== ======== =================================================
-**id**            ``ANY-INTEGER``                Identifier of the edge.
-**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
-
-                                                 - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-
-**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
-
-                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-
-================= =================== ======== =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
-
-
-.. components_edges_sql_end
-
-
-.. components_parameters_start
 
 Parameters
 -------------------------------------------------------------------------------
 
+.. components_parameters_start
+
 =================== ====================== ========= =========================================
 Parameter           Type                   Default   Description
 =================== ====================== ========= =========================================
-**edges_sql**       ``TEXT``                         SQL query as described above.
+**edges_sql**       ``TEXT``                         SQL query as described bellow.
 =================== ====================== ========= =========================================
 
 .. components_parameters_end
 
-
-.. return_componentsV_start
-
-.. rubric:: Description of the return values for connected components and strongly connected components
-
-Returns set of ``(seq, component, n_seq, node)``
-
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**component**  ``BIGINT`` Component identifier. It is equal to the minimum node identifier in the component.
-**n_seq**      ``INT``    It is a sequential value starting from **1** in a component.
-**node**       ``BIGINT`` Identifier of the vertex.
-============== ========== =================================================
-
-.. return_componentsV_end
-
-
-.. return_componentsE_start
-
-.. rubric:: Description of the return values for biconnected components, connected components (edge version) and strongly connected components
-
-Returns set of ``(seq, component, n_seq, edge)``
-
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**component**  ``BIGINT`` Component identifier. It is equal to the minimum edge identifier in the component.
-**n_seq**      ``INT``    It is a sequential value starting from **1** in a component.
-**edge**       ``BIGINT`` Identifier of the edge.
-============== ========== =================================================
-
-.. return_componentsE_end
-
-.. return_cutvertices_start
-
-Result Columns (pgr_articulationPoints)
+Inner query
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, node)``
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**node**       ``BIGINT`` Identifier of the vertex.
-============== ========== =================================================
+Result Columns
+-------------------------------------------------------------------------------
 
-.. return_cutvertices_end
+pgr_connectedComponents & pgr_strongComponents
+...............................................................................
 
-.. return_bridges_start
+.. include:: pgr_connectedComponents.rst
+    :start-after: return_componentsV_start
+    :end-before: return_componentsV_end
 
-.. rubric:: Description of the return values for bridges
 
-Returns set of ``(seq, node)``
+pgr_biconnectedComponents
+...............................................................................
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**edge**       ``BIGINT`` Identifier of the edge.
-============== ========== =================================================
+.. include:: pgr_biconnectedComponents.rst
+    :start-after: return_componentsE_start
+    :end-before: return_componentsE_end
 
-.. return_bridges_end
+pgr_articulationPoints
+...............................................................................
+
+.. include:: pgr_articulationPoints.rst
+    :start-after: return_articulation_start
+    :end-before: return_articulation_end
+
+pgr_bridges
+...............................................................................
+
+.. include:: pgr_bridges.rst
+    :start-after: return_bridges_start
+    :end-before: return_bridges_end
+
 
 See Also
 -------------------------------------------------------------------------------
