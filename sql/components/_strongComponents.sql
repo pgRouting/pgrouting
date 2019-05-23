@@ -37,7 +37,6 @@ CREATE OR REPLACE FUNCTION _pgr_strongComponents(
 
     OUT seq INTEGER,
     OUT component BIGINT,
-    OUT n_seq INTEGER,
     OUT node BIGINT)
 
 RETURNS SETOF RECORD AS

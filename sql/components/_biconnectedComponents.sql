@@ -37,7 +37,6 @@ CREATE OR REPLACE FUNCTION _pgr_biconnectedComponents(
 
     OUT seq INTEGER,
     OUT component BIGINT,
-    OUT n_seq INTEGER,
     OUT edge BIGINT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'biconnectedComponents'

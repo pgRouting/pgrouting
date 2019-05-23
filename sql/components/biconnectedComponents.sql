@@ -32,7 +32,6 @@ CREATE OR REPLACE FUNCTION pgr_biconnectedComponents(
 
     OUT seq INTEGER,
     OUT component BIGINT,
-    OUT n_seq INTEGER,
     OUT edge BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$

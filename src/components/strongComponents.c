@@ -142,19 +142,18 @@ PGDLLEXPORT Datum strongComponents(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
-
+        size_t numb = 3;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].component);
-        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].n_seq);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].identifier);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].identifier);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

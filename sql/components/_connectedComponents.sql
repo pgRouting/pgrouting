@@ -40,9 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION _pgr_connectedComponents(
     edges_sql TEXT,
 
-    OUT seq INTEGER,
+    OUT seq BIGINT,
     OUT component BIGINT,
-    OUT n_seq INTEGER,
     OUT node BIGINT)
 
 RETURNS SETOF RECORD AS

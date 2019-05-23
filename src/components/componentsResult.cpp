@@ -47,9 +47,8 @@ componentsResult(
     std::vector< pgr_components_rt > results;
     for (const auto component : components) {
         auto component_id = component[0];
-        int seq(0);
         for (const auto element : component) {
-            results.push_back({component_id, ++seq, element});
+            results.push_back({component_id, element});
         }
     }
     return results;

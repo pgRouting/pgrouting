@@ -38,7 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 typedef struct {
     int64_t component;
-    int n_seq;
     int64_t identifier;
 } pgr_components_rt;
 
