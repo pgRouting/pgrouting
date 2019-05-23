@@ -56,7 +56,7 @@ extern "C" {
         do_pgr_bridges(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
-                pgr_components_rt **return_tuples,
+                int64_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

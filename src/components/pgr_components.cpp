@@ -133,18 +133,17 @@ articulationPoints(
  * Analogously to bridgeless graphs being 2-edge-connected,
  * graphs without articulation vertices are 2-vertex-connected.
  */
-std::vector<pgr_components_rt>
+Identifiers<int64_t>
 bridges(pgrouting::UndirectedGraph &graph) {
     using G = pgrouting::UndirectedGraph;
     using V =  typename G::V;
-    using E =  typename G::E;
     using EO_i = typename G::EO_i;
 
     Identifiers<int64_t> bridge_edges;
     Identifiers<int64_t> processed_edges;
     std::vector <pgr_components_rt> results;
     std::vector<V> components(num_vertices(graph.graph));
-    int ini_comps = boost::connected_components(graph.graph, &components[0]);
+    auto ini_comps = boost::connected_components(graph.graph, &components[0]);
 
     std::vector<V> art_points;
     boost::articulation_points(graph.graph, std::back_inserter(art_points));
@@ -192,13 +191,11 @@ bridges(pgrouting::UndirectedGraph &graph) {
             };
 
             if (parallel_count == 1) {
+                // TODO filter graph instead of removing edges
                 boost::remove_edge(edge, graph.graph);
 
-                int now_comps = boost::connected_components(graph.graph, &components[0]);
+                auto now_comps = boost::connected_components(graph.graph, &components[0]);
                 if (now_comps > ini_comps) {
-                    pgr_components_rt temp;
-                    temp.identifier = id;
-                    results.push_back(temp);
                     bridge_edges += id;
                 }
 
@@ -209,12 +206,7 @@ bridges(pgrouting::UndirectedGraph &graph) {
         }
     }
 
-    // sort identifier
-    std::sort(results.begin(), results.end(),
-            [](const pgr_components_rt &left, const pgr_components_rt &right) {
-            return left.identifier < right.identifier; });
-
-    return results;
+    return bridge_edges;
 }
 
 }  // namespace algorithms

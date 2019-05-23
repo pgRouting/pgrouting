@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/identifiers.hpp"
 #include "components/componentsResult.h"
 
 namespace pgrouting {
@@ -64,7 +65,7 @@ std::vector<pgr_components_rt>
 articulationPoints(pgrouting::UndirectedGraph &graph);
 
 //! Bridges
-std::vector<pgr_components_rt>
+Identifiers<int64_t>
 bridges(pgrouting::UndirectedGraph &graph);
 
 }  // namespace algorithms
