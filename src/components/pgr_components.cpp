@@ -46,7 +46,12 @@ std::vector<pgr_components_rt>
 pgr_connectedComponents(pgrouting::UndirectedGraph &graph) {
     // perform the algorithm
     std::vector< int > components(num_vertices(graph.graph));
-    auto num_comps = boost::connected_components(graph.graph, &components[0]);
+    size_t num_comps;
+    try {
+        num_comps = boost::connected_components(graph.graph, &components[0]);
+    } catch (...) {
+        throw;
+    }
 
     // get the results
     std::vector< std::vector< int64_t > > results(num_comps);
@@ -63,10 +68,15 @@ strongComponents(
         pgrouting::DirectedGraph &graph) {
     // perform the algorithm
     std::vector< int > components(num_vertices(graph.graph));
-    int num_comps = boost::strong_components(
-            graph.graph,
-            boost::make_iterator_property_map(components.begin(),
-                get(boost::vertex_index, graph.graph)));
+    size_t num_comps;
+    try {
+        num_comps = boost::strong_components(
+                graph.graph,
+                boost::make_iterator_property_map(components.begin(),
+                    get(boost::vertex_index, graph.graph)));
+    } catch (...) {
+        throw;
+    }
 
     // get the results
     std::vector< std::vector< int64_t > > results(num_comps);
@@ -90,7 +100,12 @@ biconnectedComponents(
     // perform the algorithm
     Edge_map bicmp_map;
     boost::associative_property_map<Edge_map> bimap(bicmp_map);
-    size_t num_comps = biconnected_components(graph.graph, bimap);
+    size_t num_comps;
+    try {
+        num_comps = biconnected_components(graph.graph, bimap);
+    } catch (...) {
+        throw;
+    }
 
     std::vector< std::vector< int64_t > > results(num_comps);
     for (auto ed : boost::make_iterator_range(edges(graph.graph))) {
@@ -108,7 +123,11 @@ articulationPoints(
 
     // perform the algorithm
     std::vector<V> art_points;
-    boost::articulation_points(graph.graph, std::back_inserter(art_points));
+    try {
+        boost::articulation_points(graph.graph, std::back_inserter(art_points));
+    } catch (...) {
+        throw;
+    }
 
     // get the results
     Identifiers<int64_t> results;
@@ -140,10 +159,20 @@ bridges(pgrouting::UndirectedGraph &graph) {
     Identifiers<int64_t> processed_edges;
     std::vector <pgr_components_rt> results;
     std::vector<V> components(num_vertices(graph.graph));
-    auto ini_comps = boost::connected_components(graph.graph, &components[0]);
+    size_t ini_comps;
+    try {
+        ini_comps = boost::connected_components(graph.graph, &components[0]);
+    } catch (...) {
+        throw;
+    }
 
     std::vector<V> art_points;
-    boost::articulation_points(graph.graph, std::back_inserter(art_points));
+    try {
+        boost::articulation_points(graph.graph, std::back_inserter(art_points));
+    } catch (...) {
+        throw;
+    }
+
     for (auto v : boost::make_iterator_range(vertices(graph.graph))) {
         if (graph.out_degree(v) == 1) {
             art_points.push_back(v);
@@ -189,16 +218,23 @@ bridges(pgrouting::UndirectedGraph &graph) {
 
             if (parallel_count == 1) {
                 // TODO filter graph instead of removing edges
-                boost::remove_edge(edge, graph.graph);
+                size_t now_comps;
+                try {
+                    boost::remove_edge(edge, graph.graph);
 
-                auto now_comps = boost::connected_components(graph.graph, &components[0]);
+                    now_comps = boost::connected_components(graph.graph, &components[0]);
+
+                    boost::add_edge(boost::source(edge, graph.graph),
+                            boost::target(edge, graph.graph),
+                            graph.graph);
+                } catch (...) {
+                    throw;
+                }
+
                 if (now_comps > ini_comps) {
                     bridge_edges += id;
                 }
 
-                boost::add_edge(boost::source(edge, graph.graph),
-                        boost::target(edge, graph.graph),
-                        graph.graph);
             }
         }
     }
