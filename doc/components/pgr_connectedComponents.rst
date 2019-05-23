@@ -10,8 +10,7 @@
 pgr_connectedComponents - Experimental
 ===============================================================================
 
-``pgr_connectedComponents`` — Return the connected components of an undirected graph using a DFS-based approach.
-In particular, the algorithm implemented by Boost.Graph.
+``pgr_connectedComponents`` — Connected components of an undirected graph using a DFS-based approach.
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/connected_components.html
@@ -24,7 +23,8 @@ In particular, the algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
-* **TBD**
+* Signature change on v3.0.0
+* New as experimental on v2.5.0
 
 Description
 -------------------------------------------------------------------------------

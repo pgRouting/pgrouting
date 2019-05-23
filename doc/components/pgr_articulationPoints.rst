@@ -24,7 +24,8 @@ In particular, the algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
-* **TBD**
+* Signature change on v3.0.0
+* New as experimental on v2.5.0
 
 Description
 -------------------------------------------------------------------------------
