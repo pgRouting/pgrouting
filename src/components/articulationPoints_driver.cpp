@@ -44,7 +44,7 @@ void
 do_pgr_articulationPoints(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        pgr_components_rt **return_tuples,
+        int64_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -78,9 +78,12 @@ do_pgr_articulationPoints(
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        for (size_t i = 0; i < count; i++) {
-            *((*return_tuples) + i) = results[i];
+        size_t i = 0;
+        for (const auto vertex : results) {
+            *((*return_tuples) + i) = vertex;
+            ++i;
         }
+
         (*return_count) = count;
 
         pgassert(*err_msg == NULL);

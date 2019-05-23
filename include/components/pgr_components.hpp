@@ -61,7 +61,7 @@ std::vector<pgr_components_rt>
 biconnectedComponents(pgrouting::UndirectedGraph &graph);
 
 //! Articulation Points
-std::vector<pgr_components_rt>
+Identifiers<int64_t>
 articulationPoints(pgrouting::UndirectedGraph &graph);
 
 //! Bridges

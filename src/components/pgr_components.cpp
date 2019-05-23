@@ -100,24 +100,21 @@ biconnectedComponents(
     return detail::componentsResult(results);
 }
 
-std::vector<pgr_components_rt>
+Identifiers<int64_t>
 articulationPoints(
         pgrouting::UndirectedGraph &graph) {
-        // perform the algorithm
-    std::vector <size_t> art_points;
+    using G = pgrouting::UndirectedGraph;
+    using V =  typename G::V;
+
+    // perform the algorithm
+    std::vector<V> art_points;
     boost::articulation_points(graph.graph, std::back_inserter(art_points));
 
     // get the results
-    std::vector <pgr_components_rt> results;
-    results.reserve(art_points.size());
-    for (const auto p : art_points) {
-        results.push_back({0, 0, graph[p].id});
+    Identifiers<int64_t> results;
+    for (const auto v : art_points) {
+        results += graph[v].id;
     }
-
-    // sort by identifier
-    std::sort(results.begin(), results.end(),
-            [](const pgr_components_rt &left, const pgr_components_rt &right) {
-            return left.identifier < right.identifier; });
 
     return results;
 }
