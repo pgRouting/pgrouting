@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: connectedComponents.sql
+File: _connectedComponents.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -37,29 +37,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_connectedComponents
 --------------------------
 
-CREATE OR REPLACE FUNCTION pgr_connectedComponents(
-    TEXT, -- edges_sql (required)
+CREATE OR REPLACE FUNCTION _pgr_connectedComponents(
+    edges_sql TEXT,
 
     OUT seq INTEGER,
     OUT component BIGINT,
     OUT n_seq INTEGER,
     OUT node BIGINT)
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT *
-    FROM _pgr_connectedComponents(_pgr_get_statement($1));
-$BODY$
-LANGUAGE SQL VOLATILE STRICT;
 
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME', 'connectedComponents'
+LANGUAGE c IMMUTABLE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_connectedComponents(TEXT)
-IS'pgr_connectedComponents
-- EXPERIMENTAL
-- Undirected graph
-- Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-- Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_connectedComponents.html
-';
+COMMENT ON FUNCTION _pgr_connectedComponents(TEXT)
+IS 'pgRouting internal function';
