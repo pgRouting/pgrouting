@@ -54,7 +54,7 @@ THE SOFTWARE.
 
 .. code-block:: sql
 
-       SELECT * from vertices_tmp where chk = 1;
+       SELECT * FROM vertices_tmp where chk = 1;
 
 HISOTRY
 :Author: Stephen Woodbridge <woodbri@swoodbridge.com>
@@ -142,7 +142,7 @@ BEGIN
 
   BEGIN
     RAISE DEBUG 'Checking % exists',edge_table;
-    execute 'select * from _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
+    execute 'select * FROM _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
     sname=naming.sname;
     tname=naming.tname;
     tabname=sname||'.'||tname;
@@ -158,7 +158,7 @@ BEGIN
 
   BEGIN
        raise debug 'Checking Vertices table';
-       execute 'select * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::text[])' into naming;
+       execute 'select * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::text[])' into naming;
        execute 'UPDATE '||_pgr_quote_ident(vertname)||' SET cnt=0 ,chk=0';
        raise DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
@@ -170,10 +170,10 @@ BEGIN
 
   BEGIN
        raise debug 'Checking column names in edge table';
-       SELECT * into idname     from _pgr_getColumnName(sname, tname,id,2);
-       SELECT * into sourcename from _pgr_getColumnName(sname, tname,source,2);
-       SELECT * into targetname from _pgr_getColumnName(sname, tname,target,2);
-       SELECT * into gname      from _pgr_getColumnName(sname, tname,the_geom,2);
+       SELECT * into idname     FROM _pgr_getColumnName(sname, tname,id,2);
+       SELECT * into sourcename FROM _pgr_getColumnName(sname, tname,source,2);
+       SELECT * into targetname FROM _pgr_getColumnName(sname, tname,target,2);
+       SELECT * into gname      FROM _pgr_getColumnName(sname, tname,the_geom,2);
 
 
        perform _pgr_onError( sourcename in (targetname,idname,gname) or  targetname in (idname,gname) or idname=gname, 2,
@@ -189,8 +189,8 @@ BEGIN
 
   BEGIN
        raise debug 'Checking column types in edge table';
-       SELECT * into sourcetype from _pgr_getColumnType(sname,tname,sourcename,1);
-       SELECT * into targettype from _pgr_getColumnType(sname,tname,targetname,1);
+       SELECT * into sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
+       SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
        perform _pgr_onError(sourcetype not in('integer','smallint','bigint') , 2,
                        'pgr_analyzeGraph',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
@@ -262,9 +262,9 @@ BEGIN
     END;
 
     selectionquery ='with
-           selectedRows as( (select '||sourcename||' AS id from '||_pgr_quote_ident(tabname)||' where true '||rows_where||')
+           selectedRows as( (select '||sourcename||' AS id FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||')
                            union
-                           (select '||targetname||' AS id from '||_pgr_quote_ident(tabname)||' where true '||rows_where||'))';
+                           (select '||targetname||' AS id FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||'))';
 
 
 
@@ -273,20 +273,20 @@ BEGIN
    BEGIN
        RAISE NOTICE 'Analyzing for dead ends. Please wait...';
        query= 'with countingsource AS (select a.'||sourcename||' AS id,count(*) AS cnts
-               from (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||sourcename||')
+               FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||sourcename||')
                      ,countingtarget AS (select a.'||targetname||' AS id,count(*) AS cntt
-                    from (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||targetname||')
+                    FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||targetname||')
                    ,totalcount AS (select id,case when cnts is null and cntt is null then 0
                                                    when cnts is null then cntt
                                                    when cntt is null then cnts
                                                    else cnts+cntt end as totcnt
-                                   from ('||_pgr_quote_ident(vertname)||' AS a left
+                                   FROM ('||_pgr_quote_ident(vertname)||' AS a left
                                    join countingsource AS t using(id) ) left join countingtarget using(id))
-               update '||_pgr_quote_ident(vertname)||' AS a set cnt=totcnt from totalcount AS b where a.id=b.id';
+               update '||_pgr_quote_ident(vertname)||' AS a set cnt=totcnt FROM totalcount AS b where a.id=b.id';
        raise debug '%',query;
        execute query;
        query=selectionquery||'
-              select count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE cnt=1 and id in (select id from selectedRows)';
+              select count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE cnt=1 and id in (select id FROM selectedRows)';
        raise debug '%',query;
        execute query  INTO numdeadends;
        raise DEBUG '     --> OK';
@@ -301,12 +301,12 @@ BEGIN
     BEGIN
           RAISE NOTICE 'Analyzing for gaps. Please wait...';
           query = 'with
-                   buffer AS (select id,st_buffer(the_geom,'||tolerance||') AS buff from '||_pgr_quote_ident(vertname)||' where cnt=1)
+                   buffer AS (select id,st_buffer(the_geom,'||tolerance||') AS buff FROM '||_pgr_quote_ident(vertname)||' where cnt=1)
                    ,veryclose AS (select b.id,st_crosses(a.'||gname||',b.buff) AS flag
-                   from  (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) AS a
+                   FROM  (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) AS a
                    join buffer AS b on (a.'||gname||'&&b.buff)
                    where '||sourcename||'!=b.id and '||targetname||'!=b.id )
-                   update '||_pgr_quote_ident(vertname)||' set chk=1 where id in (select distinct id from veryclose where flag=true)';
+                   update '||_pgr_quote_ident(vertname)||' set chk=1 where id in (select distinct id FROM veryclose where flag=true)';
           raise debug '%' ,query;
           execute query;
           GET DIAGNOSTICS  numgaps= ROW_COUNT;
@@ -318,10 +318,10 @@ BEGIN
 
     BEGIN
         RAISE NOTICE 'Analyzing for isolated edges. Please wait...';
-        query=selectionquery|| ' select count(*) FROM (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' )  AS a,
+        query=selectionquery|| ' select count(*) FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' )  AS a,
                                                  '||_pgr_quote_ident(vertname)||' AS b,
                                                  '||_pgr_quote_ident(vertname)||' AS c
-                            WHERE b.id in (select id from selectedRows) and a.'||sourcename||' =b.id
+                            WHERE b.id in (select id FROM selectedRows) and a.'||sourcename||' =b.id
                             AND b.cnt=1 AND a.'||targetname||' =c.id
                             AND c.cnt=1';
         raise debug '%' ,query;
@@ -353,12 +353,12 @@ BEGIN
 
     BEGIN
         RAISE NOTICE 'Analyzing for intersections. Please wait...';
-        query = 'select count(*) from (select distinct case when a.'||idname||' < b.'||idname||' then a.'||idname||'
+        query = 'select count(*) FROM (select distinct case when a.'||idname||' < b.'||idname||' then a.'||idname||'
                                                         else b.'||idname||' end,
                                                    case when a.'||idname||' < b.'||idname||' then b.'||idname||'
                                                         else a.'||idname||' end
-                                    FROM (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||') AS a
-                                    JOIN (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||') AS b
+                                    FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||') AS a
+                                    JOIN (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||') AS b
                                     ON (a.'|| gname||' && b.'||gname||')
                                     WHERE a.'||idname||' != b.'||idname|| '
                                         and (a.'||sourcename||' in (b.'||sourcename||',b.'||targetname||')
