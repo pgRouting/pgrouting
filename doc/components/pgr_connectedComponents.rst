@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_connectedComponents - Experimental
+pgr_connectedComponents - Proposed
 ===============================================================================
 
 ``pgr_connectedComponents`` — Connected components of an undirected graph using a DFS-based approach.
@@ -18,12 +18,16 @@ pgr_connectedComponents - Experimental
    Boost Graph Inside
 
 .. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 .. rubric:: Availability
 
-* Signature change on v3.0.0
+* On v3.0.0
+
+  * Set as `proposed`
+  * Return columns change: ``n_seq`` is removed
+
 * New as experimental on v2.5.0
 
 Description
@@ -48,7 +52,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: connectedComponents -- Experimental
+    single: connectedComponents -- Proposed
 
 .. code-block:: none
 

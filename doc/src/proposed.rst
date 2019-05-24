@@ -37,6 +37,12 @@ Stable Proposed Functions
    :start-after: index proposed from here
    :end-before: index proposed to here
 
+:doc:`components-family`
+
+.. include:: components-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 
 :doc:`withPoints-family`
 
@@ -73,6 +79,7 @@ Stable Proposed Functions
 .. toctree::
     :hidden:
 
+   components-family
     withPoints-family
     cost-category
     costMatrix-category
@@ -134,12 +141,6 @@ Experimental Functions
    :end-before: index to here
 
 
-:doc:`components-family`
-
-.. include:: components-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst
@@ -152,7 +153,6 @@ Experimental Functions
    costFlow-family
    chinesePostmanProblem-family
    contraction-family
-   components-family
    transformation-family
 
 .. rubric:: Others

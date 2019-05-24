@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_bridges - Experimental
+pgr_bridges - Proposed
 ===============================================================================
 
 ``pgr_bridges`` - Return the bridges of an undirected graph.
@@ -18,12 +18,16 @@ pgr_bridges - Experimental
    Boost Graph Inside
 
 .. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 .. rubric:: Availability
 
-* Signature change on v3.0.0
+* On v3.0.0
+
+  * Set as `proposed`
+  * Return columns change: ``seq`` is removed
+
 * New as experimental on v2.5.0
 
 Description
@@ -46,7 +50,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: bridges -- Experimental
+    single: bridges -- Proposed
 
 .. code-block:: none
 

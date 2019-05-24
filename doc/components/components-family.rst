@@ -12,8 +12,8 @@ Components - Family of functions (Proposed)
 
 
 .. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 .. index from here
 

@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_articulationPoints - Experimental
+pgr_articulationPoints - Proposed
 ===============================================================================
 
 ``pgr_articulationPoints`` - Return the articulation points of an undirected graph.
@@ -19,12 +19,16 @@ In particular, the algorithm implemented by Boost.Graph.
    Boost Graph Inside
 
 .. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 .. rubric:: Availability
 
-* Signature change on v3.0.0
+* On v3.0.0
+
+  * Set as `proposed`
+  * Return columns change: ``seq`` is removed
+
 * New as experimental on v2.5.0
 
 Description
@@ -49,7 +53,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: articulationPoints -- Experimental
+    single: articulationPoints -- Proposed
 
 .. code-block:: none
 
