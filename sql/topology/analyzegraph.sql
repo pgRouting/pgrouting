@@ -208,7 +208,7 @@ BEGIN
 
    BEGIN
        raise debug 'Checking SRID of geometry column';
-         query= 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
+         query= 'SELECT ST_SRID(' || quote_ident(gname) || ') AS srid '
             || ' FROM ' || _pgr_quote_ident(tabname)
             || ' WHERE ' || quote_ident(gname)
             || ' IS NOT NULL LIMIT 1';
@@ -262,9 +262,9 @@ BEGIN
     END;
 
     selectionquery ='with
-           selectedRows as( (select '||sourcename||' as id from '||_pgr_quote_ident(tabname)||' where true '||rows_where||')
+           selectedRows as( (select '||sourcename||' AS id from '||_pgr_quote_ident(tabname)||' where true '||rows_where||')
                            union
-                           (select '||targetname||' as id from '||_pgr_quote_ident(tabname)||' where true '||rows_where||'))';
+                           (select '||targetname||' AS id from '||_pgr_quote_ident(tabname)||' where true '||rows_where||'))';
 
 
 
@@ -272,17 +272,17 @@ BEGIN
 
    BEGIN
        RAISE NOTICE 'Analyzing for dead ends. Please wait...';
-       query= 'with countingsource as (select a.'||sourcename||' as id,count(*) as cnts
+       query= 'with countingsource AS (select a.'||sourcename||' AS id,count(*) AS cnts
                from (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||sourcename||')
-                     ,countingtarget as (select a.'||targetname||' as id,count(*) as cntt
+                     ,countingtarget AS (select a.'||targetname||' AS id,count(*) AS cntt
                     from (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||targetname||')
-                   ,totalcount as (select id,case when cnts is null and cntt is null then 0
+                   ,totalcount AS (select id,case when cnts is null and cntt is null then 0
                                                    when cnts is null then cntt
                                                    when cntt is null then cnts
                                                    else cnts+cntt end as totcnt
-                                   from ('||_pgr_quote_ident(vertname)||' as a left
-                                   join countingsource as t using(id) ) left join countingtarget using(id))
-               update '||_pgr_quote_ident(vertname)||' as a set cnt=totcnt from totalcount as b where a.id=b.id';
+                                   from ('||_pgr_quote_ident(vertname)||' AS a left
+                                   join countingsource AS t using(id) ) left join countingtarget using(id))
+               update '||_pgr_quote_ident(vertname)||' AS a set cnt=totcnt from totalcount AS b where a.id=b.id';
        raise debug '%',query;
        execute query;
        query=selectionquery||'
@@ -301,10 +301,10 @@ BEGIN
     BEGIN
           RAISE NOTICE 'Analyzing for gaps. Please wait...';
           query = 'with
-                   buffer as (select id,st_buffer(the_geom,'||tolerance||') as buff from '||_pgr_quote_ident(vertname)||' where cnt=1)
-                   ,veryclose as (select b.id,st_crosses(a.'||gname||',b.buff) as flag
-                   from  (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) as a
-                   join buffer as b on (a.'||gname||'&&b.buff)
+                   buffer AS (select id,st_buffer(the_geom,'||tolerance||') AS buff from '||_pgr_quote_ident(vertname)||' where cnt=1)
+                   ,veryclose AS (select b.id,st_crosses(a.'||gname||',b.buff) AS flag
+                   from  (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) AS a
+                   join buffer AS b on (a.'||gname||'&&b.buff)
                    where '||sourcename||'!=b.id and '||targetname||'!=b.id )
                    update '||_pgr_quote_ident(vertname)||' set chk=1 where id in (select distinct id from veryclose where flag=true)';
           raise debug '%' ,query;
@@ -318,9 +318,9 @@ BEGIN
 
     BEGIN
         RAISE NOTICE 'Analyzing for isolated edges. Please wait...';
-        query=selectionquery|| ' select count(*) FROM (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' )  as a,
-                                                 '||_pgr_quote_ident(vertname)||' as b,
-                                                 '||_pgr_quote_ident(vertname)||' as c
+        query=selectionquery|| ' select count(*) FROM (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||' )  AS a,
+                                                 '||_pgr_quote_ident(vertname)||' AS b,
+                                                 '||_pgr_quote_ident(vertname)||' AS c
                             WHERE b.id in (select id from selectedRows) and a.'||sourcename||' =b.id
                             AND b.cnt=1 AND a.'||targetname||' =c.id
                             AND c.cnt=1';
@@ -357,13 +357,13 @@ BEGIN
                                                         else b.'||idname||' end,
                                                    case when a.'||idname||' < b.'||idname||' then b.'||idname||'
                                                         else a.'||idname||' end
-                                    FROM (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||') as a
-                                    JOIN (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||') as b
+                                    FROM (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||') AS a
+                                    JOIN (select * from '||_pgr_quote_ident(tabname)||' where true '||rows_where||') AS b
                                     ON (a.'|| gname||' && b.'||gname||')
                                     WHERE a.'||idname||' != b.'||idname|| '
                                         and (a.'||sourcename||' in (b.'||sourcename||',b.'||targetname||')
                                               or a.'||targetname||' in (b.'||sourcename||',b.'||targetname||')) = false
-                                        and st_intersects(a.'||gname||', b.'||gname||')=true) as d ';
+                                        and st_intersects(a.'||gname||', b.'||gname||')=true) AS d ';
         raise debug '%' ,query;
         execute query  INTO numCrossing;
         raise DEBUG '     --> OK';
