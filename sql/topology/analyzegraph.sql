@@ -276,9 +276,9 @@ BEGIN
                FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  GROUP BY a.'||sourcename||')
                      ,countingtarget AS (select a.'||targetname||' AS id,count(*) AS cntt
                     FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  GROUP BY a.'||targetname||')
-                   ,totalcount AS (select id,case when cnts is null and cntt is null then 0
-                                                   when cnts is null then cntt
-                                                   when cntt is null then cnts
+                   ,totalcount AS (select id,case when cnts is NULL and cntt is NULL then 0
+                                                   when cnts is NULL then cntt
+                                                   when cntt is NULL then cnts
                                                    else cnts+cntt end as totcnt
                                    FROM ('||_pgr_quote_ident(vertname)||' AS a left
                                    join countingsource AS t using(id) ) left join countingtarget using(id))
