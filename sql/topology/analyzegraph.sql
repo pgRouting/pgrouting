@@ -273,9 +273,9 @@ BEGIN
    BEGIN
        RAISE NOTICE 'Analyzing for dead ends. Please wait...';
        query= 'with countingsource AS (select a.'||sourcename||' AS id,count(*) AS cnts
-               FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||sourcename||')
+               FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  GROUP BY a.'||sourcename||')
                      ,countingtarget AS (select a.'||targetname||' AS id,count(*) AS cntt
-                    FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  group by a.'||targetname||')
+                    FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  GROUP BY a.'||targetname||')
                    ,totalcount AS (select id,case when cnts is null and cntt is null then 0
                                                    when cnts is null then cntt
                                                    when cntt is null then cnts
