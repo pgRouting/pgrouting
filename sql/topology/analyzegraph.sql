@@ -54,7 +54,7 @@ THE SOFTWARE.
 
 .. code-block:: sql
 
-       SELECT * FROM vertices_tmp where chk = 1;
+       SELECT * FROM vertices_tmp WHERE chk = 1;
 
 HISOTRY
 :Author: Stephen Woodbridge <woodbri@swoodbridge.com>
@@ -250,9 +250,9 @@ BEGIN
 
 
     BEGIN
-        query='select count(*) from '||_pgr_quote_ident(tabname)||' where true  '||rows_where;
+        query='select count(*) from '||_pgr_quote_ident(tabname)||' WHERE true  '||rows_where;
         EXECUTE query into ecnt;
-        raise DEBUG '-->Rows Where condition: OK';
+        raise DEBUG '-->Rows WHERE condition: OK';
         raise DEBUG '     --> OK';
          EXCEPTION WHEN OTHERS THEN
             RAISE NOTICE 'Got %', SQLERRM;  --issue 210,211,213
@@ -262,9 +262,9 @@ BEGIN
     END;
 
     selectionquery ='with
-           selectedRows as( (select '||sourcename||' AS id FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||')
+           selectedRows as( (select '||sourcename||' AS id FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||')
                            union
-                           (select '||targetname||' AS id FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||'))';
+                           (select '||targetname||' AS id FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||'))';
 
 
 
@@ -273,16 +273,16 @@ BEGIN
    BEGIN
        RAISE NOTICE 'Analyzing for dead ends. Please wait...';
        query= 'with countingsource AS (select a.'||sourcename||' AS id,count(*) AS cnts
-               FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  GROUP BY a.'||sourcename||')
+               FROM (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||' ) a  GROUP BY a.'||sourcename||')
                      ,countingtarget AS (select a.'||targetname||' AS id,count(*) AS cntt
-                    FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) a  GROUP BY a.'||targetname||')
+                    FROM (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||' ) a  GROUP BY a.'||targetname||')
                    ,totalcount AS (select id,case when cnts is NULL and cntt is NULL then 0
                                                    when cnts is NULL then cntt
                                                    when cntt is NULL then cnts
                                                    else cnts+cntt end as totcnt
                                    FROM ('||_pgr_quote_ident(vertname)||' AS a left
                                    join countingsource AS t using(id) ) left join countingtarget using(id))
-               update '||_pgr_quote_ident(vertname)||' AS a set cnt=totcnt FROM totalcount AS b where a.id=b.id';
+               update '||_pgr_quote_ident(vertname)||' AS a set cnt=totcnt FROM totalcount AS b WHERE a.id=b.id';
        raise debug '%',query;
        execute query;
        query=selectionquery||'
@@ -301,12 +301,12 @@ BEGIN
     BEGIN
           RAISE NOTICE 'Analyzing for gaps. Please wait...';
           query = 'with
-                   buffer AS (select id,st_buffer(the_geom,'||tolerance||') AS buff FROM '||_pgr_quote_ident(vertname)||' where cnt=1)
+                   buffer AS (select id,st_buffer(the_geom,'||tolerance||') AS buff FROM '||_pgr_quote_ident(vertname)||' WHERE cnt=1)
                    ,veryclose AS (select b.id,st_crosses(a.'||gname||',b.buff) AS flag
-                   FROM  (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' ) AS a
+                   FROM  (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||' ) AS a
                    join buffer AS b on (a.'||gname||'&&b.buff)
-                   where '||sourcename||'!=b.id and '||targetname||'!=b.id )
-                   update '||_pgr_quote_ident(vertname)||' set chk=1 where id in (select distinct id FROM veryclose where flag=true)';
+                   WHERE '||sourcename||'!=b.id and '||targetname||'!=b.id )
+                   update '||_pgr_quote_ident(vertname)||' set chk=1 WHERE id in (select distinct id FROM veryclose WHERE flag=true)';
           raise debug '%' ,query;
           execute query;
           GET DIAGNOSTICS  numgaps= ROW_COUNT;
@@ -318,7 +318,7 @@ BEGIN
 
     BEGIN
         RAISE NOTICE 'Analyzing for isolated edges. Please wait...';
-        query=selectionquery|| ' select count(*) FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||' )  AS a,
+        query=selectionquery|| ' select count(*) FROM (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||' )  AS a,
                                                  '||_pgr_quote_ident(vertname)||' AS b,
                                                  '||_pgr_quote_ident(vertname)||' AS c
                             WHERE b.id in (select id FROM selectedRows) and a.'||sourcename||' =b.id
@@ -357,8 +357,8 @@ BEGIN
                                                         else b.'||idname||' end,
                                                    case when a.'||idname||' < b.'||idname||' then b.'||idname||'
                                                         else a.'||idname||' end
-                                    FROM (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||') AS a
-                                    JOIN (select * FROM '||_pgr_quote_ident(tabname)||' where true '||rows_where||') AS b
+                                    FROM (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||') AS a
+                                    JOIN (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||') AS b
                                     ON (a.'|| gname||' && b.'||gname||')
                                     WHERE a.'||idname||' != b.'||idname|| '
                                         and (a.'||sourcename||' in (b.'||sourcename||',b.'||targetname||')
