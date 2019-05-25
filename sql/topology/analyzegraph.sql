@@ -282,7 +282,7 @@ BEGIN
                                                    else cnts+cntt end as totcnt
                                    FROM ('||_pgr_quote_ident(vertname)||' AS a left
                                    join countingsource AS t using(id) ) left join countingtarget using(id))
-               update '||_pgr_quote_ident(vertname)||' AS a set cnt=totcnt FROM totalcount AS b WHERE a.id=b.id';
+               UPDATE '||_pgr_quote_ident(vertname)||' AS a set cnt=totcnt FROM totalcount AS b WHERE a.id=b.id';
        raise debug '%',query;
        execute query;
        query=selectionquery||'
@@ -306,7 +306,7 @@ BEGIN
                    FROM  (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||' ) AS a
                    join buffer AS b on (a.'||gname||'&&b.buff)
                    WHERE '||sourcename||'!=b.id and '||targetname||'!=b.id )
-                   update '||_pgr_quote_ident(vertname)||' set chk=1 WHERE id in (select distinct id FROM veryclose WHERE flag=true)';
+                   UPDATE '||_pgr_quote_ident(vertname)||' set chk=1 WHERE id in (select distinct id FROM veryclose WHERE flag=true)';
           raise debug '%' ,query;
           execute query;
           GET DIAGNOSTICS  numgaps= ROW_COUNT;
