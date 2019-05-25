@@ -176,7 +176,7 @@ BEGIN
        SELECT * into gname      FROM _pgr_getColumnName(sname, tname,the_geom,2);
 
 
-       perform _pgr_onError( sourcename in (targetname,idname,gname) or  targetname in (idname,gname) or idname=gname, 2,
+       perform _pgr_onError( sourcename IN (targetname,idname,gname) or  targetname IN (idname,gname) or idname=gname, 2,
                        'pgr_analyzeGraph',  'Two columns share the same name', 'Parameter names for id,the_geom,source and target  must be different',
                        'Column names are OK');
 
@@ -215,18 +215,18 @@ BEGIN
          EXECUTE QUERY INTO sridinfo;
 
          perform _pgr_onError( sridinfo IS NULL OR sridinfo.srid IS NULL,2,
-                 'Can not determine the srid of the geometry '|| gname ||' in table '||tabname, 'Check the geometry of column '||gname,
+                 'Can not determine the srid of the geometry '|| gname ||' IN table '||tabname, 'Check the geometry of column '||gname,
                  'SRID of '||gname||' is '||sridinfo.srid);
 
          IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
-             RAISE NOTICE ' Can not determine the srid of the geometry "%" in table %', the_geom,tabname;
+             RAISE NOTICE ' Can not determine the srid of the geometry "%" IN table %', the_geom,tabname;
              RETURN 'FAIL';
          END IF;
          srid := sridinfo.srid;
          RAISE DEBUG '     --> OK';
          EXCEPTION WHEN OTHERS THEN
              RAISE NOTICE 'Got %', SQLERRM;--issue 210,211,213
-             RAISE NOTICE 'ERROR: something went wrong when checking for SRID of % in table %', the_geom,tabname;
+             RAISE NOTICE 'ERROR: something went wrong when checking for SRID of % IN table %', the_geom,tabname;
              RETURN 'FAIL';
     END;
 
@@ -286,7 +286,7 @@ BEGIN
        RAISE debug '%',query;
        execute query;
        query=selectionquery||'
-              select count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE cnt=1 and id in (select id FROM selectedRows)';
+              select count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE cnt=1 and id IN (select id FROM selectedRows)';
        RAISE debug '%',query;
        execute query  INTO numdeadends;
        RAISE DEBUG '     --> OK';
@@ -306,7 +306,7 @@ BEGIN
                    FROM  (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||' ) AS a
                    join buffer AS b on (a.'||gname||'&&b.buff)
                    WHERE '||sourcename||'!=b.id and '||targetname||'!=b.id )
-                   UPDATE '||_pgr_quote_ident(vertname)||' set chk=1 WHERE id in (select distinct id FROM veryclose WHERE flag=true)';
+                   UPDATE '||_pgr_quote_ident(vertname)||' set chk=1 WHERE id IN (select distinct id FROM veryclose WHERE flag=true)';
           RAISE debug '%' ,query;
           execute query;
           GET DIAGNOSTICS  numgaps= ROW_COUNT;
@@ -321,7 +321,7 @@ BEGIN
         query=selectionquery|| ' select count(*) FROM (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||' )  AS a,
                                                  '||_pgr_quote_ident(vertname)||' AS b,
                                                  '||_pgr_quote_ident(vertname)||' AS c
-                            WHERE b.id in (select id FROM selectedRows) and a.'||sourcename||' =b.id
+                            WHERE b.id IN (select id FROM selectedRows) and a.'||sourcename||' =b.id
                             AND b.cnt=1 AND a.'||targetname||' =c.id
                             AND c.cnt=1';
         RAISE debug '%' ,query;
@@ -361,8 +361,8 @@ BEGIN
                                     JOIN (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||') AS b
                                     ON (a.'|| gname||' && b.'||gname||')
                                     WHERE a.'||idname||' != b.'||idname|| '
-                                        and (a.'||sourcename||' in (b.'||sourcename||',b.'||targetname||')
-                                              or a.'||targetname||' in (b.'||sourcename||',b.'||targetname||')) = false
+                                        and (a.'||sourcename||' IN (b.'||sourcename||',b.'||targetname||')
+                                              or a.'||targetname||' IN (b.'||sourcename||',b.'||targetname||')) = false
                                         and st_intersects(a.'||gname||', b.'||gname||')=true) AS d ';
         RAISE debug '%' ,query;
         execute query  INTO numCrossing;
