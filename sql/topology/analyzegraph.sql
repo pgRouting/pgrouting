@@ -197,7 +197,7 @@ BEGIN
                        'Type of Column '|| sourcename || ' is ' || sourcetype);
 
        perform _pgr_onError(targettype NOT in('INTEGER','smallint','BIGINT') , 2,
-                       'pgr_analyzeGraph',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or biginti but '||targettype||' was found',
+                       'pgr_analyzeGraph',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or bigint but '||targettype||' was found',
                        'Type of Column '|| targetname || ' is ' || targettype);
 
        RAISE DEBUG '     --> OK';
