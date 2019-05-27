@@ -94,7 +94,7 @@ std::vector<pgr_components_rt>
 biconnectedComponents(
         pgrouting::UndirectedGraph &graph) {
     using G = pgrouting::UndirectedGraph;
-    using E =  typename G::E;
+    using E = G::E;
     using Edge_map = std::map< E, size_t >;
 
     // perform the algorithm
@@ -119,7 +119,7 @@ Identifiers<int64_t>
 articulationPoints(
         pgrouting::UndirectedGraph &graph) {
     using G = pgrouting::UndirectedGraph;
-    using V =  typename G::V;
+    using V =  G::V;
 
     // perform the algorithm
     std::vector<V> art_points;
@@ -152,8 +152,8 @@ articulationPoints(
 Identifiers<int64_t>
 bridges(pgrouting::UndirectedGraph &graph) {
     using G = pgrouting::UndirectedGraph;
-    using V =  typename G::V;
-    using EO_i = typename G::EO_i;
+    using V = G::V;
+    using EO_i = G::EO_i;
 
     Identifiers<int64_t> bridge_edges;
     Identifiers<int64_t> processed_edges;
