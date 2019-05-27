@@ -75,7 +75,7 @@ Makes more checks:
    populates cnt in edge_tabVertices  <--- changed the way it was processed, because on large tables took to long.
 					   For sure I am wrong doing this, but it gave me the same result as the original.
    populates chk                      <--- added a notice for big tables, because it takes time
-           (edge_tab text, the_geom text, tolerance double precision)
+           (edge_tab TEXT, the_geom TEXT, tolerance double precision)
 */
 
 
@@ -85,14 +85,14 @@ Makes more checks:
 
 
 CREATE OR REPLACE FUNCTION pgr_analyzeGraph(
-    text, -- edge table (required)
+    TEXT, -- edge table (required)
     double precision, -- tolerance (required)
 
-    the_geom text default 'the_geom',
-    id text default 'id',
-    source text default 'source',
-    target text default 'target',
-    rows_where text default 'true')
+    the_geom TEXT default 'the_geom',
+    id TEXT default 'id',
+    source TEXT default 'source',
+    target TEXT default 'target',
+    rows_where TEXT default 'true')
 
 RETURNS character varying AS
 $BODY$
@@ -104,31 +104,31 @@ DECLARE
     seg record;
     naming record;
     sridinfo record;
-    srid integer;
-    ecnt integer;
-    vertname text;
-    sname text;
-    tname text;
-    vname text;
-    idname text;
-    sourcename text;
-    targetname text;
-    sourcetype text;
-    targettype text;
-    geotype text;
-    gname text;
-    tabName text;
+    srid INTEGER;
+    ecnt INTEGER;
+    vertname TEXT;
+    sname TEXT;
+    tname TEXT;
+    vname TEXT;
+    idname TEXT;
+    sourcename TEXT;
+    targetname TEXT;
+    sourcetype TEXT;
+    targettype TEXT;
+    geotype TEXT;
+    gname TEXT;
+    tabName TEXT;
     flag boolean ;
-    query text;
-    selectionquery text;
-    i integer;
-    tot integer;
-    NumIsolated integer;
-    numdeadends integer;
-    numgaps integer;
-    NumCrossing integer;
-    numRings integer;
-    debuglevel text;
+    query TEXT;
+    selectionquery TEXT;
+    i INTEGER;
+    tot INTEGER;
+    NumIsolated INTEGER;
+    numdeadends INTEGER;
+    numgaps INTEGER;
+    NumCrossing INTEGER;
+    numRings INTEGER;
+    debuglevel TEXT;
 
 
 
@@ -158,7 +158,7 @@ BEGIN
 
   BEGIN
        RAISE debug 'Checking Vertices table';
-       execute 'select * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::text[])' into naming;
+       execute 'select * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::TEXT[])' into naming;
        execute 'UPDATE '||_pgr_quote_ident(vertname)||' SET cnt=0 ,chk=0';
        RAISE DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
@@ -192,12 +192,12 @@ BEGIN
        SELECT * into sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
        SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
-       perform _pgr_onError(sourcetype NOT in('integer','smallint','bigint') , 2,
-                       'pgr_analyzeGraph',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found',
+       perform _pgr_onError(sourcetype NOT in('INTEGER','smallint','bigint') , 2,
+                       'pgr_analyzeGraph',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint or bigint but '||sourcetype||' was found',
                        'Type of Column '|| sourcename || ' is ' || sourcetype);
 
-       perform _pgr_onError(targettype NOT in('integer','smallint','bigint') , 2,
-                       'pgr_analyzeGraph',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or biginti but '||targettype||' was found',
+       perform _pgr_onError(targettype NOT in('INTEGER','smallint','bigint') , 2,
+                       'pgr_analyzeGraph',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or biginti but '||targettype||' was found',
                        'Type of Column '|| targetname || ' is ' || targettype);
 
        RAISE DEBUG '     --> OK';
