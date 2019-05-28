@@ -42,7 +42,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-//TODO(vicennial) : Complete file once pgr_breadthFirstSearch.hpp is implemented.
+//TODO(vicennial) : Remove below headers once pgr_breadthFirstSearch.hpp is implemented.
+#include "cpp_common/pgr_messages.h"
+#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/pgr_base_graph.hpp"
+//TODO(vicennial) : Complete file once pgr_breadthFirstSearch.hpp is implemented. 
+//TODO(vicennial) : Use parameter only_cost.
+
 /* Breadth First Search Shortest Path */
 /************************************************************
     EDGE_SQL,
