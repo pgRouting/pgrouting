@@ -137,12 +137,12 @@ BEGIN
   RAISE notice 'PROCESSING:';
   RAISE notice 'pgr_analyzeGraph(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
   RAISE notice 'Performing checks, please wait ...';
-  EXECUTE 'show client_min_messages' into debuglevel;
+  EXECUTE 'show client_min_messages' INTO debuglevel;
 
 
   BEGIN
     RAISE DEBUG 'Checking % exists',edge_table;
-    EXECUTE 'select * FROM _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
+    EXECUTE 'select * FROM _pgr_getTableName('||quote_literal(edge_table)||',2)' INTO naming;
     sname=naming.sname;
     tname=naming.tname;
     tabname=sname||'.'||tname;
@@ -158,7 +158,7 @@ BEGIN
 
   BEGIN
        RAISE debug 'Checking Vertices table';
-       EXECUTE 'select * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::TEXT[])' into naming;
+       EXECUTE 'select * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::TEXT[])' INTO naming;
        EXECUTE 'UPDATE '||_pgr_quote_ident(vertname)||' SET cnt=0 ,chk=0';
        RAISE DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
@@ -170,10 +170,10 @@ BEGIN
 
   BEGIN
        RAISE debug 'Checking column names in edge table';
-       SELECT * into idname     FROM _pgr_getColumnName(sname, tname,id,2);
-       SELECT * into sourcename FROM _pgr_getColumnName(sname, tname,source,2);
-       SELECT * into targetname FROM _pgr_getColumnName(sname, tname,target,2);
-       SELECT * into gname      FROM _pgr_getColumnName(sname, tname,the_geom,2);
+       SELECT * INTO idname     FROM _pgr_getColumnName(sname, tname,id,2);
+       SELECT * INTO sourcename FROM _pgr_getColumnName(sname, tname,source,2);
+       SELECT * INTO targetname FROM _pgr_getColumnName(sname, tname,target,2);
+       SELECT * INTO gname      FROM _pgr_getColumnName(sname, tname,the_geom,2);
 
 
        perform _pgr_onError( sourcename IN (targetname,idname,gname) OR  targetname IN (idname,gname) OR idname=gname, 2,
@@ -189,8 +189,8 @@ BEGIN
 
   BEGIN
        RAISE debug 'Checking column types in edge table';
-       SELECT * into sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
-       SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
+       SELECT * INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
+       SELECT * INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
        perform _pgr_onError(sourcetype NOT in('INTEGER','smallint','bigint') , 2,
                        'pgr_analyzeGraph',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint or bigint but '||sourcetype||' was found',
@@ -251,7 +251,7 @@ BEGIN
 
     BEGIN
         query='select count(*) from '||_pgr_quote_ident(tabname)||' WHERE true  '||rows_where;
-        EXECUTE query into ecnt;
+        EXECUTE query INTO ecnt;
         RAISE DEBUG '-->Rows WHERE condition: OK';
         RAISE DEBUG '     --> OK';
          EXCEPTION WHEN OTHERS THEN
@@ -334,7 +334,7 @@ BEGIN
 
     BEGIN
         RAISE NOTICE 'Analyzing for ring geometries. Please wait...';
-        EXECUTE 'select geometrytype('||gname||')  FROM '||_pgr_quote_ident(tabname) limit 1 into geotype;
+        EXECUTE 'select geometrytype('||gname||')  FROM '||_pgr_quote_ident(tabname) limit 1 INTO geotype;
         IF (geotype='MULTILINESTRING') THEN
             query ='select count(*)  FROM '||_pgr_quote_ident(tabname)||'
                                  WHERE true  '||rows_where||' AND st_isRing(st_linemerge('||gname||'))';
