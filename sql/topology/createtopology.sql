@@ -141,7 +141,7 @@ BEGIN
 >>>>>>> 2b393acbdce15c8586d0a6c42fbd5bd35ca04c41
 
 
-        err = sourcename in (targetname,idname,gname) or  targetname in (idname,gname) or idname=gname;
+        err = sourcename IN (targetname,idname,gname) or  targetname IN (idname,gname) or idname=gname;
         perform _pgr_onError( err, 2, fnName,
                'Two columns share the same name', 'Parameter names for id,the_geom,source and target  must be different',
 	       'Column names are OK');
@@ -159,15 +159,15 @@ BEGIN
         SELECT * into idtype from _pgr_getColumnType(sname,tname,idname,1, fnName);
 >>>>>>> 2b393acbdce15c8586d0a6c42fbd5bd35ca04c41
 
-        err = idtype not in('integer','smallint','bigint');
+        err = idtype NOT in('integer','smallint','bigint');
         perform _pgr_onError(err, 2, fnName,
 	       'Wrong type of Column id:'|| idname, ' Expected type of '|| idname || ' is integer,smallint or bigint but '||idtype||' was found');
 
-        err = sourcetype not in('integer','smallint','bigint');
+        err = sourcetype NOT in('integer','smallint','bigint');
         perform _pgr_onError(err, 2, fnName,
 	       'Wrong type of Column source:'|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found');
 
-        err = targettype not in('integer','smallint','bigint');
+        err = targettype NOT in('integer','smallint','bigint');
         perform _pgr_onError(err, 2, fnName,
 	       'Wrong type of Column target:'|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or bigint but '||targettype||' was found');
 
@@ -183,7 +183,7 @@ BEGIN
 
          err =  sridinfo IS NULL OR sridinfo.srid IS NULL;
          perform _pgr_onError(err, 2, fnName,
-	     'Can not determine the srid of the geometry '|| gname ||' in table '||tabname, 'Check the geometry of column '||gname);
+	     'Can not determine the srid of the geometry '|| gname ||' IN table '||tabname, 'Check the geometry of column '||gname);
 
          srid := sridinfo.srid;
       RAISE DEBUG '     --> OK';
