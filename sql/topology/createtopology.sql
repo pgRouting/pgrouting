@@ -159,15 +159,15 @@ BEGIN
         SELECT * into idtype from _pgr_getColumnType(sname,tname,idname,1, fnName);
 >>>>>>> 2b393acbdce15c8586d0a6c42fbd5bd35ca04c41
 
-        err = idtype NOT in('integer','smallint','bigint');
+        err = idtype NOT IN('integer','smallint','bigint');
         perform _pgr_onError(err, 2, fnName,
 	       'Wrong type of Column id:'|| idname, ' Expected type of '|| idname || ' is integer,smallint or bigint but '||idtype||' was found');
 
-        err = sourcetype NOT in('integer','smallint','bigint');
+        err = sourcetype NOT IN('integer','smallint','bigint');
         perform _pgr_onError(err, 2, fnName,
 	       'Wrong type of Column source:'|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found');
 
-        err = targettype NOT in('integer','smallint','bigint');
+        err = targettype NOT IN('integer','smallint','bigint');
         perform _pgr_onError(err, 2, fnName,
 	       'Wrong type of Column target:'|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or bigint but '||targettype||' was found');
 
