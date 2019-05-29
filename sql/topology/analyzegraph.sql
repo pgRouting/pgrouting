@@ -137,12 +137,12 @@ BEGIN
   RAISE notice 'PROCESSING:';
   RAISE notice 'pgr_analyzeGraph(''%'',%,''%'',''%'',''%'',''%'',''%'')',edge_table,tolerance,the_geom,id,source,target,rows_where;
   RAISE notice 'Performing checks, please wait ...';
-  execute 'show client_min_messages' into debuglevel;
+  EXECUTE 'show client_min_messages' into debuglevel;
 
 
   BEGIN
     RAISE DEBUG 'Checking % exists',edge_table;
-    execute 'select * FROM _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
+    EXECUTE 'select * FROM _pgr_getTableName('||quote_literal(edge_table)||',2)' into naming;
     sname=naming.sname;
     tname=naming.tname;
     tabname=sname||'.'||tname;
@@ -158,8 +158,8 @@ BEGIN
 
   BEGIN
        RAISE debug 'Checking Vertices table';
-       execute 'select * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::TEXT[])' into naming;
-       execute 'UPDATE '||_pgr_quote_ident(vertname)||' SET cnt=0 ,chk=0';
+       EXECUTE 'select * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::TEXT[])' into naming;
+       EXECUTE 'UPDATE '||_pgr_quote_ident(vertname)||' SET cnt=0 ,chk=0';
        RAISE DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
           RAISE NOTICE 'ERROR: something went wrong checking the vertices table';
@@ -284,11 +284,11 @@ BEGIN
                                    join countingsource AS t using(id) ) left join countingtarget using(id))
                UPDATE '||_pgr_quote_ident(vertname)||' AS a set cnt=totcnt FROM totalcount AS b WHERE a.id=b.id';
        RAISE debug '%',query;
-       execute query;
+       EXECUTE query;
        query=selectionquery||'
               select count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE cnt=1 AND id IN (select id FROM selectedRows)';
        RAISE debug '%',query;
-       execute query  INTO numdeadends;
+       EXECUTE query  INTO numdeadends;
        RAISE DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
           RAISE NOTICE 'Got %', SQLERRM;  --issue 210,211,213
@@ -308,7 +308,7 @@ BEGIN
                    WHERE '||sourcename||'!=b.id AND '||targetname||'!=b.id )
                    UPDATE '||_pgr_quote_ident(vertname)||' set chk=1 WHERE id IN (select distinct id FROM veryclose WHERE flag=true)';
           RAISE debug '%' ,query;
-          execute query;
+          EXECUTE query;
           GET DIAGNOSTICS  numgaps= ROW_COUNT;
           RAISE DEBUG '     --> OK';
           EXCEPTION WHEN raise_exception THEN
@@ -325,7 +325,7 @@ BEGIN
                             AND b.cnt=1 AND a.'||targetname||' =c.id
                             AND c.cnt=1';
         RAISE debug '%' ,query;
-        execute query  INTO NumIsolated;
+        EXECUTE query  INTO NumIsolated;
         RAISE DEBUG '     --> OK';
         EXCEPTION WHEN raise_exception THEN
             RAISE NOTICE 'ERROR: something went wrong when Analyzing for isolated edges';
@@ -334,16 +334,16 @@ BEGIN
 
     BEGIN
         RAISE NOTICE 'Analyzing for ring geometries. Please wait...';
-        execute 'select geometrytype('||gname||')  FROM '||_pgr_quote_ident(tabname) limit 1 into geotype;
+        EXECUTE 'select geometrytype('||gname||')  FROM '||_pgr_quote_ident(tabname) limit 1 into geotype;
         IF (geotype='MULTILINESTRING') THEN
             query ='select count(*)  FROM '||_pgr_quote_ident(tabname)||'
                                  WHERE true  '||rows_where||' AND st_isRing(st_linemerge('||gname||'))';
             RAISE debug '%' ,query;
-            execute query  INTO numRings;
+            EXECUTE query  INTO numRings;
         ELSE query ='select count(*)  FROM '||_pgr_quote_ident(tabname)||'
                                   WHERE true  '||rows_where||' AND st_isRing('||gname||')';
             RAISE debug '%' ,query;
-            execute query  INTO numRings;
+            EXECUTE query  INTO numRings;
         END IF;
         RAISE DEBUG '     --> OK';
         EXCEPTION WHEN raise_exception THEN
@@ -365,7 +365,7 @@ BEGIN
                                               OR a.'||targetname||' IN (b.'||sourcename||',b.'||targetname||')) = false
                                         AND st_intersects(a.'||gname||', b.'||gname||')=true) AS d ';
         RAISE debug '%' ,query;
-        execute query  INTO numCrossing;
+        EXECUTE query  INTO numCrossing;
         RAISE DEBUG '     --> OK';
         EXCEPTION WHEN raise_exception THEN
             RAISE NOTICE 'ERROR: something went wrong when Analyzing for intersections';
