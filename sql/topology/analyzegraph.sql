@@ -157,7 +157,7 @@ BEGIN
   END;
 
   BEGIN
-       RAISE debug 'Checking Vertices table';
+       RAISE DEBUG 'Checking Vertices table';
        EXECUTE 'select * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","cnt","chk"}''::TEXT[])' INTO naming;
        EXECUTE 'UPDATE '||_pgr_quote_ident(vertname)||' SET cnt=0 ,chk=0';
        RAISE DEBUG '     --> OK';
@@ -169,7 +169,7 @@ BEGIN
 
 
   BEGIN
-       RAISE debug 'Checking column names in edge table';
+       RAISE DEBUG 'Checking column names in edge table';
        SELECT * INTO idname     FROM _pgr_getColumnName(sname, tname,id,2);
        SELECT * INTO sourcename FROM _pgr_getColumnName(sname, tname,source,2);
        SELECT * INTO targetname FROM _pgr_getColumnName(sname, tname,target,2);
@@ -188,7 +188,7 @@ BEGIN
 
 
   BEGIN
-       RAISE debug 'Checking column types in edge table';
+       RAISE DEBUG 'Checking column types in edge table';
        SELECT * INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
        SELECT * INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
@@ -207,7 +207,7 @@ BEGIN
    END;
 
    BEGIN
-       RAISE debug 'Checking SRID of geometry column';
+       RAISE DEBUG 'Checking SRID of geometry column';
          query= 'SELECT ST_SRID(' || quote_ident(gname) || ') AS srid '
             || ' FROM ' || _pgr_quote_ident(tabname)
             || ' WHERE ' || quote_ident(gname)
@@ -232,7 +232,7 @@ BEGIN
 
 
     BEGIN
-       RAISE debug 'Checking  indices in edge table';
+       RAISE DEBUG 'Checking  indices in edge table';
        perform _pgr_createIndex(tabname , idname , 'btree');
        perform _pgr_createIndex(tabname , sourcename , 'btree');
        perform _pgr_createIndex(tabname , targetname , 'btree');
@@ -283,11 +283,11 @@ BEGIN
                                    FROM ('||_pgr_quote_ident(vertname)||' AS a left
                                    join countingsource AS t using(id) ) left join countingtarget using(id))
                UPDATE '||_pgr_quote_ident(vertname)||' AS a set cnt=totcnt FROM totalcount AS b WHERE a.id=b.id';
-       RAISE debug '%',query;
+       RAISE DEBUG '%',query;
        EXECUTE query;
        query=selectionquery||'
               select count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE cnt=1 AND id IN (select id FROM selectedRows)';
-       RAISE debug '%',query;
+       RAISE DEBUG '%',query;
        EXECUTE query  INTO numdeadends;
        RAISE DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
@@ -307,7 +307,7 @@ BEGIN
                    join buffer AS b on (a.'||gname||'&&b.buff)
                    WHERE '||sourcename||'!=b.id AND '||targetname||'!=b.id )
                    UPDATE '||_pgr_quote_ident(vertname)||' set chk=1 WHERE id IN (select distinct id FROM veryclose WHERE flag=true)';
-          RAISE debug '%' ,query;
+          RAISE DEBUG '%' ,query;
           EXECUTE query;
           GET DIAGNOSTICS  numgaps= ROW_COUNT;
           RAISE DEBUG '     --> OK';
@@ -324,7 +324,7 @@ BEGIN
                             WHERE b.id IN (select id FROM selectedRows) AND a.'||sourcename||' =b.id
                             AND b.cnt=1 AND a.'||targetname||' =c.id
                             AND c.cnt=1';
-        RAISE debug '%' ,query;
+        RAISE DEBUG '%' ,query;
         EXECUTE query  INTO NumIsolated;
         RAISE DEBUG '     --> OK';
         EXCEPTION WHEN raise_exception THEN
@@ -338,11 +338,11 @@ BEGIN
         IF (geotype='MULTILINESTRING') THEN
             query ='select count(*)  FROM '||_pgr_quote_ident(tabname)||'
                                  WHERE true  '||rows_where||' AND st_isRing(st_linemerge('||gname||'))';
-            RAISE debug '%' ,query;
+            RAISE DEBUG '%' ,query;
             EXECUTE query  INTO numRings;
         ELSE query ='select count(*)  FROM '||_pgr_quote_ident(tabname)||'
                                   WHERE true  '||rows_where||' AND st_isRing('||gname||')';
-            RAISE debug '%' ,query;
+            RAISE DEBUG '%' ,query;
             EXECUTE query  INTO numRings;
         END IF;
         RAISE DEBUG '     --> OK';
@@ -364,7 +364,7 @@ BEGIN
                                         AND (a.'||sourcename||' IN (b.'||sourcename||',b.'||targetname||')
                                               OR a.'||targetname||' IN (b.'||sourcename||',b.'||targetname||')) = false
                                         AND st_intersects(a.'||gname||', b.'||gname||')=true) AS d ';
-        RAISE debug '%' ,query;
+        RAISE DEBUG '%' ,query;
         EXECUTE query  INTO numCrossing;
         RAISE DEBUG '     --> OK';
         EXCEPTION WHEN raise_exception THEN
