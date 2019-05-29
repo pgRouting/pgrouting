@@ -176,7 +176,7 @@ BEGIN
        SELECT * into gname      FROM _pgr_getColumnName(sname, tname,the_geom,2);
 
 
-       perform _pgr_onError( sourcename IN (targetname,idname,gname) or  targetname IN (idname,gname) or idname=gname, 2,
+       perform _pgr_onError( sourcename IN (targetname,idname,gname) OR  targetname IN (idname,gname) OR idname=gname, 2,
                        'pgr_analyzeGraph',  'Two columns share the same name', 'Parameter names for id,the_geom,source and target  must be different',
                        'Column names are OK');
 
@@ -276,7 +276,7 @@ BEGIN
                FROM (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||' ) a  GROUP BY a.'||sourcename||')
                      ,countingtarget AS (select a.'||targetname||' AS id,count(*) AS cntt
                     FROM (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||' ) a  GROUP BY a.'||targetname||')
-                   ,totalcount AS (select id,case when cnts is NULL and cntt is NULL then 0
+                   ,totalcount AS (select id,case when cnts is NULL AND cntt is NULL then 0
                                                    when cnts is NULL then cntt
                                                    when cntt is NULL then cnts
                                                    else cnts+cntt end as totcnt
@@ -286,7 +286,7 @@ BEGIN
        RAISE debug '%',query;
        execute query;
        query=selectionquery||'
-              select count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE cnt=1 and id IN (select id FROM selectedRows)';
+              select count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE cnt=1 AND id IN (select id FROM selectedRows)';
        RAISE debug '%',query;
        execute query  INTO numdeadends;
        RAISE DEBUG '     --> OK';
@@ -305,7 +305,7 @@ BEGIN
                    ,veryclose AS (select b.id,st_crosses(a.'||gname||',b.buff) AS flag
                    FROM  (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||' ) AS a
                    join buffer AS b on (a.'||gname||'&&b.buff)
-                   WHERE '||sourcename||'!=b.id and '||targetname||'!=b.id )
+                   WHERE '||sourcename||'!=b.id AND '||targetname||'!=b.id )
                    UPDATE '||_pgr_quote_ident(vertname)||' set chk=1 WHERE id IN (select distinct id FROM veryclose WHERE flag=true)';
           RAISE debug '%' ,query;
           execute query;
@@ -321,7 +321,7 @@ BEGIN
         query=selectionquery|| ' select count(*) FROM (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||' )  AS a,
                                                  '||_pgr_quote_ident(vertname)||' AS b,
                                                  '||_pgr_quote_ident(vertname)||' AS c
-                            WHERE b.id IN (select id FROM selectedRows) and a.'||sourcename||' =b.id
+                            WHERE b.id IN (select id FROM selectedRows) AND a.'||sourcename||' =b.id
                             AND b.cnt=1 AND a.'||targetname||' =c.id
                             AND c.cnt=1';
         RAISE debug '%' ,query;
@@ -337,11 +337,11 @@ BEGIN
         execute 'select geometrytype('||gname||')  FROM '||_pgr_quote_ident(tabname) limit 1 into geotype;
         IF (geotype='MULTILINESTRING') THEN
             query ='select count(*)  FROM '||_pgr_quote_ident(tabname)||'
-                                 WHERE true  '||rows_where||' and st_isRing(st_linemerge('||gname||'))';
+                                 WHERE true  '||rows_where||' AND st_isRing(st_linemerge('||gname||'))';
             RAISE debug '%' ,query;
             execute query  INTO numRings;
         ELSE query ='select count(*)  FROM '||_pgr_quote_ident(tabname)||'
-                                  WHERE true  '||rows_where||' and st_isRing('||gname||')';
+                                  WHERE true  '||rows_where||' AND st_isRing('||gname||')';
             RAISE debug '%' ,query;
             execute query  INTO numRings;
         END IF;
@@ -361,9 +361,9 @@ BEGIN
                                     JOIN (select * FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||') AS b
                                     ON (a.'|| gname||' && b.'||gname||')
                                     WHERE a.'||idname||' != b.'||idname|| '
-                                        and (a.'||sourcename||' IN (b.'||sourcename||',b.'||targetname||')
-                                              or a.'||targetname||' IN (b.'||sourcename||',b.'||targetname||')) = false
-                                        and st_intersects(a.'||gname||', b.'||gname||')=true) AS d ';
+                                        AND (a.'||sourcename||' IN (b.'||sourcename||',b.'||targetname||')
+                                              OR a.'||targetname||' IN (b.'||sourcename||',b.'||targetname||')) = false
+                                        AND st_intersects(a.'||gname||', b.'||gname||')=true) AS d ';
         RAISE debug '%' ,query;
         execute query  INTO numCrossing;
         RAISE DEBUG '     --> OK';
