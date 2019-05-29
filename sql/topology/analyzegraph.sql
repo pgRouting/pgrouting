@@ -263,7 +263,7 @@ BEGIN
 
     selectionquery ='with
            selectedRows as( (select '||sourcename||' AS id FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||')
-                           union
+                           UNION
                            (select '||targetname||' AS id FROM '||_pgr_quote_ident(tabname)||' WHERE true '||rows_where||'))';
 
 
