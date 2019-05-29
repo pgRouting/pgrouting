@@ -105,12 +105,12 @@ DECLARE
 BEGIN
     msgKind = 1; -- notice
     fnName = 'pgr_createTopology';
-    raise notice 'PROCESSING:';
-    raise notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
+    RAISE notice 'PROCESSING:';
+    RAISE notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
     execute 'show client_min_messages' into debuglevel;
 
 
-    raise notice 'Performing checks, please wait .....';
+    RAISE notice 'Performing checks, please wait .....';
 
 <<<<<<< HEAD
         execute 'SELECT * FROM _pgr_getTableName('|| quote_literal(edge_table)
@@ -124,10 +124,10 @@ BEGIN
         vname=tname||'_vertices_pgr';
         vertname= sname||'.'||vname;
         rows_where = ' AND ('||rows_where||')';
-      raise DEBUG '     --> OK';
+      RAISE DEBUG '     --> OK';
 
 
-      raise debug 'Checking column names in edge table';
+      RAISE debug 'Checking column names in edge table';
 <<<<<<< HEAD
         SELECT * into idname     FROM _pgr_getColumnName(sname, tname,id,2,fnName);
         SELECT * into sourcename FROM _pgr_getColumnName(sname, tname,source,2,fnName);
@@ -146,9 +146,9 @@ BEGIN
                'Two columns share the same name', 'Parameter names for id,the_geom,source and target  must be different',
 	       'Column names are OK');
 
-      raise DEBUG '     --> OK';
+      RAISE DEBUG '     --> OK';
 
-      raise debug 'Checking column types in edge table';
+      RAISE debug 'Checking column types in edge table';
 <<<<<<< HEAD
         SELECT * into sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1, fnName);
         SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1, fnName);
@@ -171,14 +171,14 @@ BEGIN
         perform _pgr_onError(err, 2, fnName,
 	       'Wrong type of Column target:'|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or bigint but '||targettype||' was found');
 
-      raise DEBUG '     --> OK';
+      RAISE DEBUG '     --> OK';
 
-      raise debug 'Checking SRID of geometry column';
+      RAISE debug 'Checking SRID of geometry column';
          query= 'SELECT ST_SRID(' || quote_ident(gname) || ') AS srid '
             || ' FROM ' || _pgr_quote_ident(tabname)
             || ' WHERE ' || quote_ident(gname)
             || ' IS NOT NULL LIMIT 1';
-         raise debug '%',query;
+         RAISE debug '%',query;
          EXECUTE query INTO sridinfo;
 
          err =  sridinfo IS NULL OR sridinfo.srid IS NULL;
@@ -186,9 +186,9 @@ BEGIN
 	     'Can not determine the srid of the geometry '|| gname ||' in table '||tabname, 'Check the geometry of column '||gname);
 
          srid := sridinfo.srid;
-      raise DEBUG '     --> OK';
+      RAISE DEBUG '     --> OK';
 
-      raise debug 'Checking and creating indices in edge table';
+      RAISE debug 'Checking and creating indices in edge table';
         perform _pgr_createIndex(sname, tname , idname , 'btree'::text);
         perform _pgr_createIndex(sname, tname , sourcename , 'btree'::text);
         perform _pgr_createIndex(sname, tname , targetname , 'btree'::text);
@@ -198,7 +198,7 @@ BEGIN
         idname=quote_ident(idname);
         sourcename=quote_ident(sourcename);
         targetname=quote_ident(targetname);
-      raise DEBUG '     --> OK';
+      RAISE DEBUG '     --> OK';
 
 
 
@@ -233,11 +233,11 @@ BEGIN
         EXECUTE SQL  into notincluded;
 
         if clean then
-            raise debug 'Cleaning previous Topology ';
+            RAISE debug 'Cleaning previous Topology ';
                execute 'UPDATE ' || _pgr_quote_ident(tabname) ||
                ' SET '||sourcename||' = NULL,'||targetname||' = NULL';
         else
-            raise debug 'Creating topology for edges with non assigned topology';
+            RAISE debug 'Creating topology for edges with non assigned topology';
             if rows_where=' AND (true)' then
                 rows_where=  ' and ('||quote_ident(sourcename)||' is NULL or '||quote_ident(targetname)||' is  NULL)';
             end if;
@@ -251,7 +251,7 @@ BEGIN
     END;
 
     BEGIN
-         raise DEBUG 'initializing %',vertname;
+         RAISE DEBUG 'initializing %',vertname;
 <<<<<<< HEAD
          execute 'SELECT * FROM _pgr_getTableName('||quote_literal(vertname)
 =======
@@ -281,7 +281,7 @@ BEGIN
          execute 'SELECT * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::text[])' into naming;
 >>>>>>> 2b393acbdce15c8586d0a6c42fbd5bd35ca04c41
          execute 'set client_min_messages  to '|| debuglevel;
-         raise DEBUG  '  ------>OK';
+         RAISE DEBUG  '  ------>OK';
          EXCEPTION WHEN OTHERS THEN
              RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
              RAISE NOTICE 'ERROR: something went wrong when initializing the verties table';
@@ -290,7 +290,7 @@ BEGIN
 
 
 
-    raise notice 'Creating Topology, Please wait...';
+    RAISE notice 'Creating Topology, Please wait...';
         rowcount := 0;
         FOR points IN EXECUTE 'SELECT ' || idname || '::bigint AS id,'
             || ' _pgr_StartPoint(' || gname || ') AS source,'
@@ -323,10 +323,10 @@ BEGIN
                     RETURN 'FAIL';
             end;
         END LOOP;
-        raise notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
+        RAISE notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
         RAISE NOTICE 'Rows with NULL geometry or NULL id: %',notincluded;
-        Raise notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname), _pgr_quote_ident(vertname);
-        raise notice '----------------------------------------------';
+        RAISE notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname), _pgr_quote_ident(vertname);
+        RAISE notice '----------------------------------------------';
 
     RETURN 'OK';
  EXCEPTION WHEN OTHERS THEN
