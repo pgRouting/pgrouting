@@ -189,15 +189,15 @@ BEGIN
 
     BEGIN
         -- issue #193 & issue #210 & #213
-        -- this sql is for trying out the where clause
+        -- this sql is for trying out the WHERE clause
         -- the SELECT * is to avoid any column name conflicts
         -- limit 1, just try on first record
-        -- if the where clasuse is ill formed it will be caught in the exception
+        -- if the WHERE clasuse is ill formed it will be caught in the exception
         sql = 'SELECT * FROM '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
         EXECUTE sql into dummyRec;
         -- end
 
-        -- if above where clasue works this one should work
+        -- if above WHERE clasue works this one should work
         -- any error will be caught by the exception also
         sql = 'SELECT count(*) FROM '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NOT NULL AND '||
 	    idname||' IS NOT NULL)=false '||rows_where;
@@ -210,7 +210,7 @@ BEGIN
         else
             raise debug 'Creating topology for edges with non assigned topology';
             if rows_where=' AND (true)' then
-                rows_where=  ' and ('||quote_ident(sourcename)||' is null or '||quote_ident(targetname)||' is  null)';
+                rows_where=  ' and ('||quote_ident(sourcename)||' is NULL or '||quote_ident(targetname)||' is  NULL)';
             end if;
         end if;
         -- my thoery is that the SELECT Count(*) will never go through here
