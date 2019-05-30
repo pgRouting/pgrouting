@@ -93,7 +93,7 @@ do_pgr_breadthFirstSearch(
                 int64_t  max_depth,
                 bool directed,
 
-                pgr_breadthFirstSearch_rt **return_tuples,
+                pgr_mst_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

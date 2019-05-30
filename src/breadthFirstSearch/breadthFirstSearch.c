@@ -51,7 +51,7 @@ process(
     int64_t max_depth,
     bool directed,
 
-    pgr_breadthFirstSearch_rt **result_tuples,
+    pgr_mst_rt **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
@@ -131,7 +131,7 @@ PGDLLEXPORT Datum breadthFirstSearch(PG_FUNCTION_ARGS)
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    pgr_breadthFirstSearch_rt *result_tuples = NULL;
+    pgr_mst_rt *result_tuples = NULL;
     size_t result_count = 0;
     /**************************************************************************/
 
@@ -182,7 +182,7 @@ PGDLLEXPORT Datum breadthFirstSearch(PG_FUNCTION_ARGS)
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_breadthFirstSearch_rt *)funcctx->user_fctx;
+    result_tuples = (pgr_mst_rt *)funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls)
     {
@@ -202,7 +202,7 @@ PGDLLEXPORT Datum breadthFirstSearch(PG_FUNCTION_ARGS)
             OUT agg_cost FLOAT
         */
         /**********************************************************************/
-        size_t numb = 8;
+        size_t numb = 7;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
@@ -213,13 +213,12 @@ PGDLLEXPORT Datum breadthFirstSearch(PG_FUNCTION_ARGS)
         }
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
 
         /**********************************************************************/
 
