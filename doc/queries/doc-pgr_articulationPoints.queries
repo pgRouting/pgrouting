@@ -6,24 +6,24 @@ SET
 SELECT * FROM pgr_articulationPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
- seq | node
------+------
-   1 |    2
-   2 |    5
-   3 |    8
-   4 |   10
+ node
+------
+    2
+    5
+    8
+   10
 (4 rows)
 
 -- q2
 SELECT * FROM pgr_articulationPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
- seq | node
------+------
-   1 |    2
-   2 |    5
-   3 |    8
-   4 |   10
+ node
+------
+    2
+    5
+    8
+   10
 (4 rows)
 
 ROLLBACK;

@@ -1,6 +1,11 @@
 /*PGR-GNU*****************************************************************
-File: pgr_components_rt.h
+File: _connectedComponents.sql
 
+Generated with Template by:
+Copyright (c) 2016 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
 Copyright (c) 2017 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
@@ -21,24 +26,29 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_COMPONENTS_RT_H_
-#define INCLUDE_C_TYPES_PGR_COMPONENTS_RT_H_
-#pragma once
+---------------
+---------------
+--  COMPONENTS
+---------------
+---------------
 
+--------------------------
+-- pgr_connectedComponents
+--------------------------
 
-/* for int64_t */
-#ifdef __cplusplus
-#   include <cstdint>
-#else
-#   include <stdint.h>
-#endif
+CREATE OR REPLACE FUNCTION _pgr_connectedComponents(
+    edges_sql TEXT,
 
+    OUT seq BIGINT,
+    OUT component BIGINT,
+    OUT node BIGINT)
 
-typedef struct {
-    int64_t component;
-    int64_t identifier;
-} pgr_components_rt;
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME', 'connectedComponents'
+LANGUAGE c IMMUTABLE STRICT;
 
-#endif  // INCLUDE_C_TYPES_PGR_COMPONENTS_RT_H_
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_connectedComponents(TEXT)
+IS 'pgRouting internal function';

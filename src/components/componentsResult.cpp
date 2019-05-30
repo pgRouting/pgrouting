@@ -1,5 +1,7 @@
 /*PGR-GNU*****************************************************************
-File: pgr_components_rt.h
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
 
 Copyright (c) 2017 Maoguang Wang
 Mail: xjtumg1007@gmail.com
@@ -21,24 +23,38 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_COMPONENTS_RT_H_
-#define INCLUDE_C_TYPES_PGR_COMPONENTS_RT_H_
-#pragma once
+#include "components/componentsResult.h"
 
+#include <vector>
+#include <algorithm>
 
-/* for int64_t */
-#ifdef __cplusplus
-#   include <cstdint>
-#else
-#   include <stdint.h>
-#endif
+namespace pgrouting {
+namespace algorithms {
 
+namespace detail {
 
-typedef struct {
-    int64_t component;
-    int64_t identifier;
-} pgr_components_rt;
+std::vector<pgr_components_rt>
+componentsResult(
+        std::vector< std::vector< int64_t > > &components) {
+    // sort identifier
+    for (auto &component : components) {
+        std::sort(component.begin(), component.end());
+    }
+    sort(components.begin(), components.end());
 
-#endif  // INCLUDE_C_TYPES_PGR_COMPONENTS_RT_H_
+    // generate results
+    std::vector< pgr_components_rt > results;
+    for (const auto component : components) {
+        auto component_id = component[0];
+        for (const auto element : component) {
+            results.push_back({component_id, element});
+        }
+    }
+    return results;
+}
+
+}  // namespace detail
+
+}  // namespace algorithms
+}  // namespace pgrouting

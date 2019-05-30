@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_bridges - Experimental
+pgr_bridges - Proposed
 ===============================================================================
 
 ``pgr_bridges`` - Return the bridges of an undirected graph.
@@ -18,12 +18,17 @@ pgr_bridges - Experimental
    Boost Graph Inside
 
 .. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 .. rubric:: Availability
 
-* **TBD**
+* On v3.0.0
+
+  * Set as `proposed`
+  * Return columns change: ``seq`` is removed
+
+* New as experimental on v2.5.0
 
 Description
 -------------------------------------------------------------------------------
@@ -45,13 +50,13 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: bridges
+    single: bridges -- Proposed
 
 .. code-block:: none
 
-    pgr_bridges(edges_sql)
+    pgr_bridges(Edges SQL)
 
-    RETURNS SET OF (seq, node)
+    RETURNS SET OF (edge)
     OR EMPTY SET
 
 :Example: The bridges of the graph
@@ -60,19 +65,35 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
+Parameters
+-------------------------------------------------------------------------------
+
 .. include:: components-family.rst
     :start-after: components_parameters_start
     :end-before: components_parameters_end
 
-.. include:: components-family.rst
-    :start-after: components_edges_sql_start
-    :end-before: components_edges_sql_end
+Inner query
+-------------------------------------------------------------------------------
+
+:edges SQL: an SQL query of an **undirected** graph, which should return a set of rows with the following columns:
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
-.. include:: components-family.rst
-    :start-after: return_bridges_start
-    :end-before: return_bridges_end
+.. return_bridges_start
+
+Returns set of ``(edge)``
+
+============== ========== =================================================
+Column         Type       Description
+============== ========== =================================================
+**edge**       ``BIGINT`` Identifier of the edge that is a bridge.
+============== ========== =================================================
+
+.. return_bridges_end
 
 See Also
 -------------------------------------------------------------------------------

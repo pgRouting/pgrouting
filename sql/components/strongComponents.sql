@@ -27,29 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
------------------------
--- pgr_strongComponents
------------------------
-
-
-CREATE OR REPLACE FUNCTION _pgr_strongComponents(
-    edges_sql TEXT,
-
-    OUT seq INTEGER,
-    OUT component BIGINT,
-    OUT n_seq INTEGER,
-    OUT node BIGINT)
-
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'strongComponents'
-LANGUAGE c IMMUTABLE STRICT;
-
 CREATE OR REPLACE FUNCTION pgr_strongComponents(
     TEXT, -- edges_sql (required)
 
     OUT seq INTEGER,
     OUT component BIGINT,
-    OUT n_seq INTEGER,
     OUT node BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
@@ -59,10 +41,6 @@ $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
-
-COMMENT ON FUNCTION _pgr_strongComponents(TEXT)
-IS 'pgRouting internal function';
-
 
 COMMENT ON FUNCTION pgr_strongComponents(TEXT)
 IS'pgr_strongComponents

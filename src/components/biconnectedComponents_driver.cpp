@@ -38,24 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-
-
-
-
-/************************************************************
-  TEXT,
-    BIGINT,
-    BIGINT,
- ***********************************************************/
-
-template < class G >
-static
-std::vector<pgr_components_rt>
-pgr_biconnectedComponents(
-        G &graph) {
-    Pgr_components< G > fn_components;
-    return fn_components.biconnectedComponents(graph);
-}
+#include "cpp_common/pgr_base_graph.hpp"
 
 
 void
@@ -78,15 +61,12 @@ do_pgr_biconnectedComponents(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = DIRECTED;
-
-        std::vector<pgr_components_rt> results;
+        graphType gType = UNDIRECTED;
 
         log << "Working with Undirected Graph\n";
-        pgrouting::ComponentsUndiGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_biconnectedComponents(
-                undigraph);
+        auto results(pgrouting::algorithms::biconnectedComponents(undigraph));
 
         auto count = results.size();
 

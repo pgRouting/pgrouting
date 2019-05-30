@@ -27,35 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
---------------
--- pgr_bridges
---------------
-
-CREATE OR REPLACE FUNCTION _pgr_bridges(
-    edges_sql TEXT,
-
-    OUT seq INTEGER,
-    OUT edge BIGINT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'bridges'
-LANGUAGE C IMMUTABLE STRICT;
-
 CREATE OR REPLACE FUNCTION pgr_bridges(
     TEXT,  -- edges_sql (required)
 
-    OUT seq INTEGER,
     OUT edge BIGINT)
-RETURNS SETOF RECORD AS
+RETURNS SETOF BIGINT AS
 $BODY$
-    SELECT *
+    SELECT edge
     FROM _pgr_bridges(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
-
-COMMENT ON FUNCTION _pgr_bridges(TEXT)
-IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_bridges(TEXT)
 IS'pgr_bridges

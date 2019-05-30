@@ -1,11 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: articulationPoints_driver.h
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
 Copyright (c) 2017 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
@@ -27,44 +24,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_COMPONENTS_ARTICULATIONPOINTS_DRIVER_H_
-#define INCLUDE_DRIVERS_COMPONENTS_ARTICULATIONPOINTS_DRIVER_H_
+#ifndef INCLUDE_COMPONENTS_COMPONENTSRESULT_H_
+#define INCLUDE_COMPONENTS_COMPONENTSRESULT_H_
 #pragma once
 
-/* for size-t */
-#ifdef __cplusplus
-#   include <cstddef>
-#else
-#   include <stddef.h>
-#endif
-
-#include "c_types/pgr_edge_t.h"
 #include "c_types/pgr_components_rt.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <vector>
 
-    /*********************************************************
-      TEXT,
-    BIGINT,
-    BIGINT,
-     ********************************************************/
+namespace pgrouting {
+namespace algorithms {
 
+namespace detail {
 
-    void
-        do_pgr_articulationPoints(
-                pgr_edge_t  *data_edges,
-                size_t total_edges,
-                int64_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+std::vector<pgr_components_rt>
+componentsResult(
+        std::vector<std::vector<int64_t>> &components);
 
+}  // namespace detail
 
-#ifdef __cplusplus
-}
-#endif
+}  // namespace algorithms
+}  // namespace pgrouting
 
-#endif  // INCLUDE_DRIVERS_COMPONENTS_ARTICULATIONPOINTS_DRIVER_H_
+#endif  // INCLUDE_COMPONENTS_COMPONENTSRESULT_H_

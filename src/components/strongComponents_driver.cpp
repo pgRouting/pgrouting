@@ -33,29 +33,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "components/pgr_components.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_base_graph.hpp"
 
-
-
-
-
-/************************************************************
-  TEXT,
-    BIGINT,
-    BIGINT,
- ***********************************************************/
-
-template < class G >
-static
-std::vector<pgr_components_rt>
-pgr_strongComponents(
-        G &graph) {
-    Pgr_components< G > fn_components;
-    return fn_components.strongComponents(graph);
-}
+#include "components/pgr_components.hpp"
 
 
 void
@@ -80,13 +63,9 @@ do_pgr_strongComponents(
 
         graphType gType = DIRECTED;
 
-        std::vector<pgr_components_rt> results;
-
-        log << "Working with Directed Graph\n";
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges);
-        results = pgr_strongComponents(
-                digraph);
+        auto results(pgrouting::algorithms::strongComponents(digraph));
 
         auto count = results.size();
 
@@ -94,7 +73,7 @@ do_pgr_strongComponents(
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice <<
-                "No paths found between start_vid and end_vid vertices";
+                "No components found";
             return;
         }
 
