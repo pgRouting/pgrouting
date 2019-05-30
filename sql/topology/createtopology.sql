@@ -112,7 +112,7 @@ BEGIN
 
     raise notice 'Performing checks, please wait .....';
 
-        execute 'SELECT * from _pgr_getTableName('|| quote_literal(edge_table)
+        execute 'SELECT * FROM _pgr_getTableName('|| quote_literal(edge_table)
                                                   || ',2,' || quote_literal(fnName) ||' )' into naming;
         sname=naming.sname;
         tname=naming.tname;
@@ -124,10 +124,10 @@ BEGIN
 
 
       raise debug 'Checking column names in edge table';
-        SELECT * into idname     from _pgr_getColumnName(sname, tname,id,2,fnName);
-        SELECT * into sourcename from _pgr_getColumnName(sname, tname,source,2,fnName);
-        SELECT * into targetname from _pgr_getColumnName(sname, tname,target,2,fnName);
-        SELECT * into gname      from _pgr_getColumnName(sname, tname,the_geom,2,fnName);
+        SELECT * into idname     FROM _pgr_getColumnName(sname, tname,id,2,fnName);
+        SELECT * into sourcename FROM _pgr_getColumnName(sname, tname,source,2,fnName);
+        SELECT * into targetname FROM _pgr_getColumnName(sname, tname,target,2,fnName);
+        SELECT * into gname      FROM _pgr_getColumnName(sname, tname,the_geom,2,fnName);
 
 
         err = sourcename in (targetname,idname,gname) or  targetname in (idname,gname) or idname=gname;
@@ -138,9 +138,9 @@ BEGIN
       raise DEBUG '     --> OK';
 
       raise debug 'Checking column types in edge table';
-        SELECT * into sourcetype from _pgr_getColumnType(sname,tname,sourcename,1, fnName);
-        SELECT * into targettype from _pgr_getColumnType(sname,tname,targetname,1, fnName);
-        SELECT * into idtype from _pgr_getColumnType(sname,tname,idname,1, fnName);
+        SELECT * into sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1, fnName);
+        SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1, fnName);
+        SELECT * into idtype FROM _pgr_getColumnType(sname,tname,idname,1, fnName);
 
         err = idtype not in('integer','smallint','bigint');
         perform _pgr_onError(err, 2, fnName,
@@ -193,13 +193,13 @@ BEGIN
         -- the select * is to avoid any column name conflicts
         -- limit 1, just try on first record
         -- if the where clasuse is ill formed it will be caught in the exception
-        sql = 'SELECT * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
+        sql = 'SELECT * FROM '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
         EXECUTE sql into dummyRec;
         -- end
 
         -- if above where clasue works this one should work
         -- any error will be caught by the exception also
-        sql = 'SELECT count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NOT NULL AND '||
+        sql = 'SELECT count(*) FROM '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NOT NULL AND '||
 	    idname||' IS NOT NULL)=false '||rows_where;
         EXECUTE SQL  into notincluded;
 
@@ -223,7 +223,7 @@ BEGIN
 
     BEGIN
          raise DEBUG 'initializing %',vertname;
-         execute 'SELECT * from _pgr_getTableName('||quote_literal(vertname)
+         execute 'SELECT * FROM _pgr_getTableName('||quote_literal(vertname)
                                                   || ',0,' || quote_literal(fnName) ||' )' into naming;
          emptied = false;
          set client_min_messages  to warning;
@@ -242,7 +242,7 @@ BEGIN
 	         quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
              perform _pgr_createIndex(vertname , 'the_geom'::text , 'gist'::text);
          END IF;
-         execute 'SELECT * from  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::text[])' into naming;
+         execute 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::text[])' into naming;
          execute 'set client_min_messages  to '|| debuglevel;
          raise DEBUG  '  ------>OK';
          EXCEPTION WHEN OTHERS THEN
