@@ -37,25 +37,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_connectedComponents
 --------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_connectedComponents(
-    edges_sql TEXT,
-
-    OUT seq INTEGER,
-    OUT component BIGINT,
-    OUT n_seq INTEGER,
-    OUT node BIGINT)
-
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'connectedComponents'
-LANGUAGE c IMMUTABLE STRICT;
-
-
 CREATE OR REPLACE FUNCTION pgr_connectedComponents(
     TEXT, -- edges_sql (required)
 
-    OUT seq INTEGER,
+    OUT seq BIGINT,
     OUT component BIGINT,
-    OUT n_seq INTEGER,
     OUT node BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
@@ -66,9 +52,6 @@ LANGUAGE SQL VOLATILE STRICT;
 
 
 -- COMMENTS
-
-COMMENT ON FUNCTION _pgr_connectedComponents(TEXT)
-IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_connectedComponents(TEXT)
 IS'pgr_connectedComponents

@@ -1,6 +1,11 @@
 /*PGR-GNU*****************************************************************
-File: pgr_components_rt.h
+File: _strongComponents.sql
 
+Generated with Template by:
+Copyright (c) 2016 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
 Copyright (c) 2017 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
@@ -21,24 +26,24 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_COMPONENTS_RT_H_
-#define INCLUDE_C_TYPES_PGR_COMPONENTS_RT_H_
-#pragma once
-
-
-/* for int64_t */
-#ifdef __cplusplus
-#   include <cstdint>
-#else
-#   include <stdint.h>
-#endif
+-----------------------
+-- pgr_strongComponents
+-----------------------
 
 
-typedef struct {
-    int64_t component;
-    int64_t identifier;
-} pgr_components_rt;
+CREATE OR REPLACE FUNCTION _pgr_strongComponents(
+    edges_sql TEXT,
 
-#endif  // INCLUDE_C_TYPES_PGR_COMPONENTS_RT_H_
+    OUT seq INTEGER,
+    OUT component BIGINT,
+    OUT node BIGINT)
+
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME', 'strongComponents'
+LANGUAGE c IMMUTABLE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_strongComponents(TEXT)
+IS 'pgRouting internal function';

@@ -33,29 +33,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "components/pgr_components.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_base_graph.hpp"
+
+#include "components/pgr_components.hpp"
 
 
-
-
-
-/************************************************************
-  TEXT,
-    BIGINT,
-    BIGINT,
- ***********************************************************/
-
-template < class G >
-static
-std::vector<pgr_components_rt>
-pgr_connectedComponents(
-        G &graph) {
-    Pgr_components< G > fn_components;
-    return fn_components.connectedComponents(graph);
-}
 
 
 void
@@ -80,13 +65,10 @@ do_pgr_connectedComponents(
 
         graphType gType = UNDIRECTED;
 
-        std::vector<pgr_components_rt> results;
-
         log << "Working with Undirected Graph\n";
-        pgrouting::ComponentsUndiGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_connectedComponents(
-                undigraph);
+        auto results(pgrouting::algorithms::pgr_connectedComponents(undigraph));
 
         auto count = results.size();
 

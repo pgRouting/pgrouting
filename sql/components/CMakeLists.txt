@@ -1,9 +1,14 @@
 
 SET(LOCAL_FILES
+    _connectedComponents.sql
     connectedComponents.sql
+    _strongComponents.sql
     strongComponents.sql
+    _biconnectedComponents.sql
     biconnectedComponents.sql
+    _articulationPoints.sql
     articulationPoints.sql
+    _bridges.sql
     bridges.sql
     )
 
