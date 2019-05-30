@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/pgr_edge_t.h"
-#include "c_types/general_path_element_t.h"
+#include "c_types/pgr_breadthFirstSearch_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -61,7 +61,7 @@ extern "C" {
                 size_t size_start_vidsArr,
                 int64_t max_depth,
                 bool directed,
-                General_path_element_t **return_tuples,
+                pgr_breadthFirstSearch_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

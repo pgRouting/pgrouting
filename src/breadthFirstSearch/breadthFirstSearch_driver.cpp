@@ -2,7 +2,7 @@
 File: breadthFirstSearch_driver.cpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -47,7 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 //TODO(vicennial) : Complete file once pgr_breadthFirstSearch.hpp is implemented. 
-//TODO(vicennial) : Use parameter only_cost.
+//TODO(vicennial) : Use parameter max_depth.
 
 /* Breadth First Search Shortest Path */
 /************************************************************
@@ -90,12 +90,10 @@ do_pgr_breadthFirstSearch(
                 size_t total_edges,
                 int64_t  *start_vidsArr,
                 size_t size_start_vidsArr,
-                int64_t  *end_vidsArr,
-                size_t size_end_vidsArr,
+                int64_t  max_depth,
                 bool directed,
-                bool only_cost,
 
-                General_path_element_t **return_tuples,
+                pgr_breadthFirstSearch_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,
@@ -116,8 +114,6 @@ do_pgr_breadthFirstSearch(
         log << "Inserting vertices into a c++ vector structure";
         std::vector<int64_t>
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-        std::vector< int64_t >
-            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 
         std::deque< Path >paths;
         std::string logstr;
@@ -149,6 +145,7 @@ do_pgr_breadthFirstSearch(
             #endif
 
         }
+        #if 0 //TODO (vicennial): Figure out how to process return tuples
         log<< logstr;
         size_t count(0);
         count = count_tuples(paths);
@@ -172,6 +169,7 @@ do_pgr_breadthFirstSearch(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
+        #endif
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
