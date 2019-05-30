@@ -82,7 +82,7 @@ LANGUAGE SQL VOLATILE STRICT;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_breadthFirstSearch(TEXT, BIGINT, BIGINT, BOOLEAN)
-IS 'pgr_breadthFirstSearch(One to One)
+IS 'pgr_breadthFirstSearch(One to Depth)
 - EXPERIMENTAL
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -95,7 +95,7 @@ IS 'pgr_breadthFirstSearch(One to One)
 ';
 
 COMMENT ON FUNCTION pgr_breadthFirstSearch(TEXT, ANYARRAY, BIGINT, BOOLEAN)
-IS 'pgr_breadthFirstSearch(Many to One)
+IS 'pgr_breadthFirstSearch(Many to Depth)
 - EXPERIMENTAL
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
