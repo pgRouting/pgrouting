@@ -13,7 +13,7 @@ digraph "pgr_prim.hpp"
   Node0 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node5 [label="set",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node0 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="mst/pgr_mst.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__mst_8hpp.html"];
+  Node6 [label="spanningTree/pgr_mst.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__mst_8hpp.html"];
   Node6 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

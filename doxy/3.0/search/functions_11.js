@@ -36,7 +36,7 @@ var searchData=
   ['startnode',['startNode',['../classpgrouting_1_1trsp_1_1EdgeInfo.html#a85be094bf38430760f77bbff308fcc17',1,'pgrouting::trsp::EdgeInfo']]],
   ['stoerwagner',['stoerWagner',['../classPgr__stoerWagner.html#aacfe2caaed20e56ad9ac6afcecabd006',1,'Pgr_stoerWagner::stoerWagner()'],['../stoerWagner_8c.html#adc38e9c59eb5b52a25cc85d59ac585c9',1,'stoerWagner():&#160;stoerWagner.c']]],
   ['store_5fedge_5fcosts',['store_edge_costs',['../classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a996c6772c7493fcd687c36b537d37fa0',1,'pgrouting::graph::Pgr_lineGraphFull']]],
-  ['strongcomponents',['strongComponents',['../classPgr__components.html#a2306e311b0967606547481a568084178',1,'Pgr_components::strongComponents()'],['../strongComponents_8c.html#afe480bc4995e169ffeb9d3a798ab0d44',1,'strongComponents():&#160;strongComponents.c']]],
+  ['strongcomponents',['strongComponents',['../namespacepgrouting_1_1algorithms.html#aedf0b2f490016da8da55843cb27cec15',1,'pgrouting::algorithms::strongComponents()'],['../strongComponents_8c.html#afe480bc4995e169ffeb9d3a798ab0d44',1,'strongComponents():&#160;strongComponents.c']]],
   ['subseti',['subsetI',['../classpgrouting_1_1vrp_1_1Order.html#ac227fb60703e6f5f9e553144a0663e60',1,'pgrouting::vrp::Order']]],
   ['subsetj',['subsetJ',['../classpgrouting_1_1vrp_1_1Order.html#a7f2feaffbee72af3295f7e91857767af',1,'pgrouting::vrp::Order']]],
   ['succ',['succ',['../pgr__tsp_8cpp.html#a22c9c33db631799428477fa1ccfd6258',1,'succ(size_t i, size_t n):&#160;pgr_tsp.cpp'],['../pgr__tsp_8hpp.html#a22c9c33db631799428477fa1ccfd6258',1,'succ(size_t i, size_t n):&#160;pgr_tsp.hpp']]],

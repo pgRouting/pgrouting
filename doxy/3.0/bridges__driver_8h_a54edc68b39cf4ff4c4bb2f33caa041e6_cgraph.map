@@ -1,8 +1,0 @@
-<map id="do_pgr_bridges" name="do_pgr_bridges">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__componentsGraph.html#a1341eb7877973d52efe280c0f55f2a0e" title="pgrouting::graph::Pgr\l_componentsGraph::insert_edges" alt="" coords="164,5,381,47"/>
-<area shape="rect" id="node3" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="429,147,504,174"/>
-<area shape="rect" id="node4" href="$bridges__driver_8cpp.html#a23f23a5a04c9aa88f803baf9e3c6b0fd" title="pgr_bridges" alt="" coords="228,122,317,149"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="238,173,307,199"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="237,223,309,250"/>
-<area shape="rect" id="node7" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="196,275,349,316"/>
-</map>

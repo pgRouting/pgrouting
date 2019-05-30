@@ -3,7 +3,6 @@ var searchData=
   ['capacity',['Capacity',['../namespacepgrouting.html#af40d387473b84e06e65b2f866fa214d0',1,'pgrouting']]],
   ['chdirectedgraph',['CHDirectedGraph',['../namespacepgrouting.html#aa79e84cb76e3ae1e3cebfa7691387acf',1,'pgrouting']]],
   ['chundirectedgraph',['CHUndirectedGraph',['../namespacepgrouting.html#ad0884fbeed827097f05468dcaae72924',1,'pgrouting']]],
-  ['componentsundigraph',['ComponentsUndiGraph',['../namespacepgrouting.html#a67f45381783695738a73f12e35839ed8',1,'pgrouting']]],
   ['const_5fiterator',['const_iterator',['../classIdentifiers.html#a71511a42f9131120a4276aba22084a97',1,'Identifiers']]],
   ['constiterator',['constiterator',['../classpgrouting_1_1trsp_1_1Rule.html#a9ef572e3215c582ab481fd575c42bbdf',1,'pgrouting::trsp::Rule']]],
   ['constpthit',['ConstpthIt',['../classPath.html#a170e524b86767313c6fc5df8b9e59ee7',1,'Path']]],

@@ -1,7 +1,6 @@
 <map id="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;" name="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__componentsGraph.html" title="pgrouting::graph::Pgr\l_componentsGraph\&lt; G,\l T_V, T_E \&gt;" alt="" coords="413,5,574,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html" title="pgrouting::graph::Pgr\l_contractionGraph\&lt; G,\l T_V, T_E \&gt;" alt="" coords="416,85,571,141"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html" title="pgrouting::graph::Pgr\l_lineGraph\&lt; G, T_V, T_E \&gt;" alt="" coords="402,166,585,207"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html" title="pgrouting::graph::Pgr\l_lineGraphFull\&lt; G, T\l_V, T_E \&gt;" alt="" coords="422,232,565,288"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html" title="pgrouting::graph::Pgr\l_base_graph\&lt; BG, XY_vertex,\l Basic_edge \&gt;" alt="" coords="393,312,593,368"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html" title="pgrouting::graph::Pgr\l_contractionGraph\&lt; G,\l T_V, T_E \&gt;" alt="" coords="416,5,571,61"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html" title="pgrouting::graph::Pgr\l_lineGraph\&lt; G, T_V, T_E \&gt;" alt="" coords="402,86,585,127"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html" title="pgrouting::graph::Pgr\l_lineGraphFull\&lt; G, T\l_V, T_E \&gt;" alt="" coords="422,152,565,208"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html" title="pgrouting::graph::Pgr\l_base_graph\&lt; BG, XY_vertex,\l Basic_edge \&gt;" alt="" coords="393,232,593,288"/>
 </map>

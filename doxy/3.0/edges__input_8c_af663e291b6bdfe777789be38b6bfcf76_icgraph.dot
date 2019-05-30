@@ -9,5 +9,5 @@ digraph "pgr_get_edges"
   Node217 -> Node220 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node220 [label="compute_trsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$new__trsp_8c.html#a4b6c631c8d12b27e5c230ecdb589d414"];
   Node217 -> Node222 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node222 [label="process",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$articulationPoints_8c.html#aea8088be2729b7f76f6fa2affe628168"];
+  Node222 [label="process",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$articulationPoints_8c.html#a16aa0f738ea19dc7f82833cc8fe5b143"];
 }

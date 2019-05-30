@@ -4,7 +4,7 @@ digraph "mst_common.cpp"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node0 [label="mst_common.cpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="drivers/mst/mst_common.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mst__common_8h.html"];
+  Node1 [label="drivers/spanningTree\l/mst_common.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mst__common_8h.html"];
   Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node0 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

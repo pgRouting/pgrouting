@@ -62,6 +62,8 @@ var files =
     [ "check_parameters.c", "check__parameters_8c.html", "check__parameters_8c" ],
     [ "check_parameters.h", "check__parameters_8h.html", "check__parameters_8h" ],
     [ "column_info_t.h", "column__info__t_8h.html", "column__info__t_8h" ],
+    [ "componentsResult.cpp", "componentsResult_8cpp.html", "componentsResult_8cpp" ],
+    [ "componentsResult.h", "componentsResult_8h.html", "componentsResult_8h" ],
     [ "compPaths.cpp", "compPaths_8cpp.html", null ],
     [ "compPaths.h", "compPaths_8h.html", [
       [ "compPathsLess", "classpgrouting_1_1compPathsLess.html", "classpgrouting_1_1compPathsLess" ]
@@ -274,14 +276,11 @@ var files =
     [ "pgr_bidirectional.hpp", "pgr__bidirectional_8hpp.html", [
       [ "Pgr_bidirectional", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional" ]
     ] ],
-    [ "pgr_components.hpp", "pgr__components_8hpp.html", [
-      [ "Pgr_components", "classPgr__components.html", "classPgr__components" ],
-      [ "Pgr_components", "classPgr__components.html", "classPgr__components" ]
-    ] ],
+    [ "pgr_components.cpp", "pgr__components_8cpp.html", "pgr__components_8cpp" ],
+    [ "pgr_components.hpp", "pgr__components_8hpp.html", "pgr__components_8hpp" ],
     [ "pgr_components_rt.h", "pgr__components__rt_8h.html", [
       [ "pgr_components_rt", "structpgr__components__rt.html", "structpgr__components__rt" ]
     ] ],
-    [ "pgr_componentsGraph.hpp", "pgr__componentsGraph_8hpp.html", "pgr__componentsGraph_8hpp" ],
     [ "pgr_contract.hpp", "pgr__contract_8hpp.html", [
       [ "Pgr_contract", "classpgrouting_1_1contraction_1_1Pgr__contract.html", "classpgrouting_1_1contraction_1_1Pgr__contract" ]
     ] ],

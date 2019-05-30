@@ -7,6 +7,8 @@ var searchData=
   ['check_5fparameters_2ec',['check_parameters.c',['../check__parameters_8c.html',1,'']]],
   ['check_5fparameters_2eh',['check_parameters.h',['../check__parameters_8h.html',1,'']]],
   ['column_5finfo_5ft_2eh',['column_info_t.h',['../column__info__t_8h.html',1,'']]],
+  ['componentsresult_2ecpp',['componentsResult.cpp',['../componentsResult_8cpp.html',1,'']]],
+  ['componentsresult_2eh',['componentsResult.h',['../componentsResult_8h.html',1,'']]],
   ['comppaths_2ecpp',['compPaths.cpp',['../compPaths_8cpp.html',1,'']]],
   ['comppaths_2eh',['compPaths.h',['../compPaths_8h.html',1,'']]],
   ['connectedcomponents_2ec',['connectedComponents.c',['../connectedComponents_8c.html',1,'']]],

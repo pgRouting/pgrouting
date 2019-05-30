@@ -18,11 +18,11 @@
 <area shape="rect" id="node18" href="$restrictions__input_8c.html" title="restrictions_input.c" alt="" coords="2095,87,2227,114"/>
 <area shape="rect" id="node19" href="$time__msg_8c.html" title="time_msg.c" alt="" coords="2252,87,2343,114"/>
 <area shape="rect" id="node20" href="$vehicles__input_8c.html" title="vehicles_input.c" alt="" coords="2367,87,2483,114"/>
-<area shape="rect" id="node21" href="$articulationPoints_8c.html" title="Connecting code with postgres. " alt="" coords="2508,87,2641,114"/>
-<area shape="rect" id="node22" href="$biconnectedComponents_8c.html" title="Connecting code with postgres. " alt="" coords="2666,87,2843,114"/>
-<area shape="rect" id="node23" href="$bridges_8c.html" title="Connecting code with postgres. " alt="" coords="2868,87,2943,114"/>
-<area shape="rect" id="node24" href="$connectedComponents_8c.html" title="Connecting code with postgres. " alt="" coords="2967,87,3134,114"/>
-<area shape="rect" id="node25" href="$strongComponents_8c.html" title="Connecting code with postgres. " alt="" coords="3158,87,3301,114"/>
+<area shape="rect" id="node21" href="$articulationPoints_8c.html" title="articulationPoints.c" alt="" coords="2508,87,2641,114"/>
+<area shape="rect" id="node22" href="$biconnectedComponents_8c.html" title="biconnectedComponents.c" alt="" coords="2666,87,2843,114"/>
+<area shape="rect" id="node23" href="$bridges_8c.html" title="bridges.c" alt="" coords="2868,87,2943,114"/>
+<area shape="rect" id="node24" href="$connectedComponents_8c.html" title="connectedComponents.c" alt="" coords="2967,87,3134,114"/>
+<area shape="rect" id="node25" href="$strongComponents_8c.html" title="strongComponents.c" alt="" coords="3158,87,3301,114"/>
 <area shape="rect" id="node26" href="$contractGraph_8c.html" title="contractGraph.c" alt="" coords="3325,87,3440,114"/>
 <area shape="rect" id="node27" href="$minCostMaxFlow_8c.html" title="Connecting code with postgres. " alt="" coords="3465,87,3599,114"/>
 <area shape="rect" id="node28" href="$dagShortestPath_8c.html" title="dagShortestPath.c" alt="" coords="3624,87,3755,114"/>
@@ -39,13 +39,13 @@
 <area shape="rect" id="node39" href="$max__flow_8c.html" title="max_flow.c" alt="" coords="5199,87,5289,114"/>
 <area shape="rect" id="node40" href="$maximum__cardinality__matching_8c.html" title="maximum_cardinality\l_matching.c" alt="" coords="5313,80,5458,121"/>
 <area shape="rect" id="node41" href="$stoerWagner_8c.html" title="stoerWagner.c" alt="" coords="5483,87,5589,114"/>
-<area shape="rect" id="node42" href="$kruskal_8c.html" title="kruskal.c" alt="" coords="5613,87,5688,114"/>
-<area shape="rect" id="node43" href="$prim_8c.html" title="prim.c" alt="" coords="5712,87,5771,114"/>
-<area shape="rect" id="node44" href="$randomSpanningTree_8c.html" title="randomSpanningTree.c" alt="" coords="5795,87,5951,114"/>
-<area shape="rect" id="node45" href="$pickDeliver_8c.html" title="pickDeliver.c" alt="" coords="5976,87,6075,114"/>
-<area shape="rect" id="node46" href="$pickDeliverEuclidean_8c.html" title="pickDeliverEuclidean.c" alt="" coords="6099,87,6253,114"/>
-<area shape="rect" id="node47" href="$new__trsp_8c.html" title="new_trsp.c" alt="" coords="6278,87,6365,114"/>
-<area shape="rect" id="node48" href="$euclideanTSP_8c.html" title="euclideanTSP.c" alt="" coords="6389,87,6504,114"/>
-<area shape="rect" id="node49" href="$TSP_8c.html" title="TSP.c" alt="" coords="6528,87,6587,114"/>
-<area shape="rect" id="node50" href="$withPoints_8c.html" title="withPoints.c" alt="" coords="6611,87,6706,114"/>
+<area shape="rect" id="node42" href="$pickDeliver_8c.html" title="pickDeliver.c" alt="" coords="5613,87,5712,114"/>
+<area shape="rect" id="node43" href="$pickDeliverEuclidean_8c.html" title="pickDeliverEuclidean.c" alt="" coords="5736,87,5891,114"/>
+<area shape="rect" id="node44" href="$kruskal_8c.html" title="kruskal.c" alt="" coords="5915,87,5989,114"/>
+<area shape="rect" id="node45" href="$prim_8c.html" title="prim.c" alt="" coords="6013,87,6072,114"/>
+<area shape="rect" id="node46" href="$randomSpanningTree_8c.html" title="randomSpanningTree.c" alt="" coords="6097,87,6253,114"/>
+<area shape="rect" id="node47" href="$new__trsp_8c.html" title="new_trsp.c" alt="" coords="6277,87,6363,114"/>
+<area shape="rect" id="node48" href="$euclideanTSP_8c.html" title="euclideanTSP.c" alt="" coords="6388,87,6503,114"/>
+<area shape="rect" id="node49" href="$TSP_8c.html" title="TSP.c" alt="" coords="6527,87,6585,114"/>
+<area shape="rect" id="node50" href="$withPoints_8c.html" title="withPoints.c" alt="" coords="6610,87,6705,114"/>
 </map>

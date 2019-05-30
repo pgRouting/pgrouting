@@ -29,7 +29,6 @@ var annotated_dup =
     [ "Pgr_allpairs", "classPgr__allpairs.html", "classPgr__allpairs" ],
     [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", "structpgr__basic__edge__t" ],
     [ "Pgr_bellman_ford", "classPgr__bellman__ford.html", "classPgr__bellman__ford" ],
-    [ "Pgr_components", "classPgr__components.html", "classPgr__components" ],
     [ "pgr_components_rt", "structpgr__components__rt.html", "structpgr__components__rt" ],
     [ "pgr_costFlow_t", "structpgr__costFlow__t.html", "structpgr__costFlow__t" ],
     [ "Pgr_dag", "classPgr__dag.html", "classPgr__dag" ],

@@ -5,6 +5,7 @@ var searchData=
   ['anonymous_5fnamespace_7bpgr_5falphashape_2ecpp_7d',['anonymous_namespace{pgr_alphaShape.cpp}',['../namespacepgrouting_1_1alphashape_1_1anonymous__namespace_02pgr__alphaShape_8cpp_03.html',1,'pgrouting::alphashape']]],
   ['bidirectional',['bidirectional',['../namespacepgrouting_1_1bidirectional.html',1,'pgrouting']]],
   ['contraction',['contraction',['../namespacepgrouting_1_1contraction.html',1,'pgrouting']]],
+  ['detail',['detail',['../namespacepgrouting_1_1algorithms_1_1detail.html',1,'pgrouting::algorithms']]],
   ['details',['details',['../namespacepgrouting_1_1details.html',1,'pgrouting']]],
   ['flow',['flow',['../namespacepgrouting_1_1flow.html',1,'pgrouting']]],
   ['functions',['functions',['../namespacepgrouting_1_1functions.html',1,'pgrouting']]],

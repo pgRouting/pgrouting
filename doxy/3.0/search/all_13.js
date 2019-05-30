@@ -65,7 +65,7 @@ var searchData=
   ['store_5fedge_5fcosts',['store_edge_costs',['../classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a996c6772c7493fcd687c36b537d37fa0',1,'pgrouting::graph::Pgr_lineGraphFull']]],
   ['str',['str',['../classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887',1,'AssertFailedException::str()'],['../classUserQuitException.html#a66969af1e0af3c8ae5e7c567ffbb4f36',1,'UserQuitException::str()']]],
   ['strict',['strict',['../structColumn__info__t.html#a72833df7d9b7fd577a9e5c866c390518',1,'Column_info_t']]],
-  ['strongcomponents',['strongComponents',['../classPgr__components.html#a2306e311b0967606547481a568084178',1,'Pgr_components::strongComponents()'],['../strongComponents_8c.html#afe480bc4995e169ffeb9d3a798ab0d44',1,'strongComponents():&#160;strongComponents.c']]],
+  ['strongcomponents',['strongComponents',['../namespacepgrouting_1_1algorithms.html#aedf0b2f490016da8da55843cb27cec15',1,'pgrouting::algorithms::strongComponents()'],['../strongComponents_8c.html#afe480bc4995e169ffeb9d3a798ab0d44',1,'strongComponents():&#160;strongComponents.c']]],
   ['strongcomponents_2ec',['strongComponents.c',['../strongComponents_8c.html',1,'']]],
   ['strongcomponents_5fdriver_2ecpp',['strongComponents_driver.cpp',['../strongComponents__driver_8cpp.html',1,'']]],
   ['strongcomponents_5fdriver_2eh',['strongComponents_driver.h',['../strongComponents__driver_8h.html',1,'']]],

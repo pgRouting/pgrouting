@@ -60,7 +60,6 @@ var hierarchy =
     [ "Pgr_allpairs< G >::inf_plus< T >", "structPgr__allpairs_1_1inf__plus.html", null ],
     [ "pgrouting::graph::Pgr_base_graph< BG, XY_vertex, Basic_edge >", "classpgrouting_1_1graph_1_1Pgr__base__graph.html", null ],
     [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", null ],
-    [ "Pgr_components< G >", "classPgr__components.html", null ],
     [ "pgr_components_rt", "structpgr__components__rt.html", null ],
     [ "pgr_costFlow_t", "structpgr__costFlow__t.html", null ],
     [ "Pgr_dag< G >", "classPgr__dag.html", null ],
@@ -99,7 +98,6 @@ var hierarchy =
     ] ],
     [ "pgrouting::functions::Pgr_mst< G >::InSpanning", "structpgrouting_1_1functions_1_1Pgr__mst_1_1InSpanning.html", null ],
     [ "pgrouting::graph::Pgr_base_graph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__base__graph.html", [
-      [ "pgrouting::graph::Pgr_componentsGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__componentsGraph.html", null ],
       [ "pgrouting::graph::Pgr_contractionGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html", null ],
       [ "pgrouting::graph::Pgr_lineGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html", null ],
       [ "pgrouting::graph::Pgr_lineGraphFull< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html", null ]

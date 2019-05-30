@@ -4,7 +4,7 @@ digraph "kruskal_driver.cpp"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node0 [label="kruskal_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="drivers/mst/kruskal\l_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$kruskal__driver_8h.html"];
+  Node1 [label="drivers/spanningTree\l/kruskal_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$kruskal__driver_8h.html"];
   Node0 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 [label="sstream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node0 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -20,9 +20,9 @@ digraph "kruskal_driver.cpp"
   Node11 [label="cpp_common/pgr_assert.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__assert_8h.html",tooltip="Assertions Handling. "];
   Node11 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node0 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node13 [label="mst/pgr_kruskal.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__kruskal_8hpp.html"];
+  Node13 [label="spanningTree/pgr_kruskal.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__kruskal_8hpp.html"];
   Node13 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node0 -> Node42 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node42 [label="mst/details.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$details_8hpp.html"];
+  Node42 [label="spanningTree/details.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$details_8hpp.html"];
   Node42 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

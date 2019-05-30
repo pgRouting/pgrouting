@@ -41,7 +41,7 @@ var searchData=
   ['arrival_5fj_5fopens_5fi',['arrival_j_opens_i',['../classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1',1,'pgrouting::vrp::Tw_node']]],
   ['arrival_5ftime',['arrival_time',['../classpgrouting_1_1vrp_1_1Vehicle__node.html#a23d1cfd02e19e0283a6fd90db1e4703b',1,'pgrouting::vrp::Vehicle_node']]],
   ['arrivaltime',['arrivalTime',['../structGeneral__vehicle__orders__t.html#a52c7ea7b69381ea76a8306c7dbbb2758',1,'General_vehicle_orders_t']]],
-  ['articulationpoints',['articulationPoints',['../classPgr__components.html#acabf045b3c72b653c3f7d2882f2b24b4',1,'Pgr_components::articulationPoints()'],['../articulationPoints_8c.html#a949aadbd044600898b8d57d7fb780591',1,'articulationPoints():&#160;articulationPoints.c']]],
+  ['articulationpoints',['articulationPoints',['../articulationPoints_8c.html#a949aadbd044600898b8d57d7fb780591',1,'articulationPoints():&#160;articulationPoints.c'],['../namespacepgrouting_1_1algorithms.html#afd4956bd9d613360678844475d7b04d2',1,'pgrouting::algorithms::articulationPoints()']]],
   ['articulationpoints_2ec',['articulationPoints.c',['../articulationPoints_8c.html',1,'']]],
   ['articulationpoints_5fdriver_2ecpp',['articulationPoints_driver.cpp',['../articulationPoints__driver_8cpp.html',1,'']]],
   ['articulationpoints_5fdriver_2eh',['articulationPoints_driver.h',['../articulationPoints__driver_8h.html',1,'']]],
