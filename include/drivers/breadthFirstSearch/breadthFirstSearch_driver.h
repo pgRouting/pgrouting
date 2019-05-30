@@ -2,7 +2,7 @@
 File: breadthFirstSearch_driver.h
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -46,11 +46,10 @@ extern "C" {
 #endif
 
     /*********************************************************
-      TEXT,
-    BIGINT,
-    BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
+    TEXT,
+    ANYARRAY,
+    max_depth BIGINT DEFAULT 9223372036854775807,
+    directed BOOLEAN DEFAULT true
      ********************************************************/
 
 
@@ -60,10 +59,8 @@ extern "C" {
                 size_t total_tuples,
                 int64_t  *start_vidsArr,
                 size_t size_start_vidsArr,
-                int64_t  *end_vidsArr,
-                size_t size_end_vidsArr,
+                int64_t max_depth,
                 bool directed,
-                bool only_cost,
                 General_path_element_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
