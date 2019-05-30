@@ -1,0 +1,33 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+--q1
+SELECT * FROM pgr_breadthFirstSearch(
+    \'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id\',
+    2
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost 
+-----+-------+-----------+------+------+------+----------
+(0 rows)
+
+--q2
+SELECT * FROM pgr_breadthFirstSearch(
+    \'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id\',
+    ARRAY[13,2], max_depth := 3
+);
+ seq | path_seq | start_vid | node | edge | cost | agg_cost 
+-----+----------+-----------+------+------+------+----------
+(0 rows)
+
+--q3
+SELECT * FROM pgr_breadthFirstSearch(
+    \'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id\',
+    0
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost 
+-----+-------+-----------+------+------+------+----------
+(0 rows)
+
+ROLLBACK;
+ROLLBACK
