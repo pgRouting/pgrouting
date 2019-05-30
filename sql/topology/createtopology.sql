@@ -210,7 +210,7 @@ BEGIN
         else
             raise debug 'Creating topology for edges with non assigned topology';
             if rows_where=' AND (true)' then
-                rows_where=  ' and ('||quote_ident(sourcename)||' is null or '||quote_ident(targetname)||' is  null)';
+                rows_where=  ' and ('||quote_ident(sourcename)||' is NULL or '||quote_ident(targetname)||' is  NULL)';
             end if;
         end if;
         -- my thoery is that the select Count(*) will never go through here
