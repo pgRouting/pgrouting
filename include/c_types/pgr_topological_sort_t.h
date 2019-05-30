@@ -1,9 +1,6 @@
 /*PGR-GNU*****************************************************************
 File: pgr_topological_sort_t.h
 
-Copyright (c) 2015 Aditya Pratap Singh
-Mail: adityapratap.singh28@gmail.com
-
 Function's developer:
 Copyright (c) 2019 Hang Wu
 mail: nike0good@gmail.com
@@ -39,4 +36,4 @@ typedef struct {
     int sorted_v;
 } pgr_topological_sort_t;
 
-#endif  // INCLUDE_C_TYPES_PGR_STOERWAGNER_T_H_
+#endif  // INCLUDE_C_TYPES_PGR_TOPOLOGICAL_SORT_T_H_
