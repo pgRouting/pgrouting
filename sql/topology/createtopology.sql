@@ -157,7 +157,7 @@ BEGIN
       raise DEBUG '     --> OK';
 
       raise debug 'Checking SRID of geometry column';
-         query= 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
+         query= 'SELECT ST_SRID(' || quote_ident(gname) || ') AS srid '
             || ' FROM ' || _pgr_quote_ident(tabname)
             || ' WHERE ' || quote_ident(gname)
             || ' IS NOT NULL LIMIT 1';
