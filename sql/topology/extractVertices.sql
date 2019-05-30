@@ -49,7 +49,7 @@ BEGIN
     RAISE DEBUG 'PROCESSING: %(''%'')', fnName, edges_sql;
 
     BEGIN
-        quoted = '.*' || $1 || '.*as';
+        quoted = '.*' || $1 || '.*AS';
         query = format($$
             SELECT regexp_replace(regexp_replace(statement, %1$L,'','i'),';$','') FROM pg_prepared_statements WHERE name = %2$L$$,
             quoted, $1);
