@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: _breadthFirstSearch.sql
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2019 Gudesa Venkata Sai Akhil
@@ -33,16 +33,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION _pgr_breadthFirstSearch(
     edges_sql TEXT,
     from_vids ANYARRAY,
-    to_vids   ANYARRAY,
+    max_depth BIGINT,
     directed  BOOLEAN,
-    only_cost BOOLEAN,
 
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
+    OUT seq BIGINT,
+    OUT depth BIGINT,
     OUT start_vid BIGINT,
-    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
+    OUT cost FLOAT,
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
@@ -52,5 +51,5 @@ LANGUAGE c IMMUTABLE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_breadthFirstSearch(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_breadthFirstSearch(TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgRouting internal function';

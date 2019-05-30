@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: breadthFirstSearch.sql
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -31,101 +31,55 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ------------------
 
 
---ONE TO ONE
+--ONE TO DEPTH
 CREATE OR REPLACE FUNCTION pgr_breadthFirstSearch(
     TEXT,   -- edges_sql (required)
-    BIGINT, -- from_vid (required)
-    BIGINT, -- to_vid (required)
+    BIGINT, -- from_vids (required)
 
+    max_depth BIGINT DEFAULT 9223372036854775807,
     directed BOOLEAN DEFAULT true,
 
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT agg_cost FLOAT)
-
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.agg_cost
-    FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false) AS a;
-$BODY$
-LANGUAGE SQL VOLATILE STRICT;
-
-
---ONE TO MANY
-CREATE OR REPLACE FUNCTION pgr_breadthFirstSearch(
-    TEXT,     -- edges_sql (required)
-    BIGINT,   -- from_vid (required)
-    ANYARRAY, -- to_vids (required)
-
-    directed BOOLEAN DEFAULT true,
-
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT end_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT agg_cost FLOAT)
-
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.agg_cost
-    FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, false) AS a;
-$BODY$
-LANGUAGE SQL VOLATILE STRICT;
-
-
---MANY TO ONE
-CREATE OR REPLACE FUNCTION pgr_breadthFirstSearch(
-    TEXT,     -- edges_sql (required)
-    ANYARRAY, -- from_vids (required)
-    BIGINT,   -- to_vid (required)
-
-    directed BOOLEAN DEFAULT true,
-
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
+    OUT seq BIGINT,
+    OUT depth BIGINT,
     OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
+    OUT cost FLOAT,
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.agg_cost
-    FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, false) AS a;
+    SELECT *
+    FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], max_depth, directed) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 
---MANY TO MANY
+--MANY TO DEPTH
 CREATE OR REPLACE FUNCTION pgr_breadthFirstSearch(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
-    ANYARRAY, -- to_vids (required)
 
+    max_depth BIGINT DEFAULT 9223372036854775807,
     directed BOOLEAN DEFAULT true,
 
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
     OUT start_vid BIGINT,
-    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
+    OUT cost FLOAT,
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.agg_cost
-    FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, false ) AS a;
+    SELECT *
+    FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], max_depth, directed) AS a;
 $BODY$
-LANGUAGE sql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 -- COMMENTS
-
 
 COMMENT ON FUNCTION pgr_breadthFirstSearch(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_breadthFirstSearch(One to One)
@@ -133,27 +87,12 @@ IS 'pgr_breadthFirstSearch(One to One)
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From vertex identifier
-  - To vertex identifier
 - Optional Parameters: 
+  - Maximum Depth := 9223372036854775807
   - directed := true
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_breadthFirstSearch.html
 ';
-
-
-COMMENT ON FUNCTION pgr_breadthFirstSearch(TEXT, BIGINT, ANYARRAY, BOOLEAN)
-IS 'pgr_breadthFirstSearch(One to Many)
-- EXPERIMENTAL
-- Parameters:
-  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - From vertex identifier
-  - To ARRAY[vertices identifiers]
-- Optional Parameters
-  - directed := true
-- Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_breadthFirstSearch.html
-';
-
 
 COMMENT ON FUNCTION pgr_breadthFirstSearch(TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_breadthFirstSearch(Many to One)
@@ -161,22 +100,8 @@ IS 'pgr_breadthFirstSearch(Many to One)
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From ARRAY[vertices identifiers]
-  - To vertex identifier
 - Optional Parameters
-  - directed := true
-- Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_breadthFirstSearch.html
-';
-
-
-COMMENT ON FUNCTION pgr_breadthFirstSearch(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
-IS 'pgr_breadthFirstSearch(Many to Many)
-- EXPERIMENTAL
-- Parameters:
-  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - From ARRAY[vertices identifiers]
-  - To ARRAY[vertices identifiers]
-- Optional Parameters
+  - Maximum Depth := 9223372036854775807
   - directed := true
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_breadthFirstSearch.html
