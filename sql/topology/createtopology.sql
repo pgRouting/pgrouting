@@ -123,7 +123,7 @@ BEGIN
       RAISE DEBUG '     --> OK';
 
 
-      RAISE debug 'Checking column names in edge table';
+      RAISE DEBUG 'Checking column names in edge table';
         SELECT * INTO idname     FROM _pgr_getColumnName(sname, tname,id,2,fnName);
         SELECT * INTO sourcename FROM _pgr_getColumnName(sname, tname,source,2,fnName);
         SELECT * INTO targetname FROM _pgr_getColumnName(sname, tname,target,2,fnName);
@@ -137,7 +137,7 @@ BEGIN
 
       RAISE DEBUG '     --> OK';
 
-      RAISE debug 'Checking column types in edge table';
+      RAISE DEBUG 'Checking column types in edge table';
         SELECT * INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1, fnName);
         SELECT * INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1, fnName);
         SELECT * INTO idtype FROM _pgr_getColumnType(sname,tname,idname,1, fnName);
@@ -156,12 +156,12 @@ BEGIN
 
       RAISE DEBUG '     --> OK';
 
-      RAISE debug 'Checking SRID of geometry column';
+      RAISE DEBUG 'Checking SRID of geometry column';
          query= 'SELECT ST_SRID(' || quote_ident(gname) || ') AS srid '
             || ' FROM ' || _pgr_quote_ident(tabname)
             || ' WHERE ' || quote_ident(gname)
             || ' IS NOT NULL LIMIT 1';
-         RAISE debug '%',query;
+         RAISE DEBUG '%',query;
          EXECUTE query INTO sridinfo;
 
          err =  sridinfo IS NULL OR sridinfo.srid IS NULL;
@@ -171,7 +171,7 @@ BEGIN
          srid := sridinfo.srid;
       RAISE DEBUG '     --> OK';
 
-      RAISE debug 'Checking and creating indices in edge table';
+      RAISE DEBUG 'Checking and creating indices in edge table';
         perform _pgr_createIndex(sname, tname , idname , 'btree'::TEXT);
         perform _pgr_createIndex(sname, tname , sourcename , 'btree'::TEXT);
         perform _pgr_createIndex(sname, tname , targetname , 'btree'::TEXT);
@@ -204,11 +204,11 @@ BEGIN
         EXECUTE SQL  INTO notincluded;
 
         if clean then
-            RAISE debug 'Cleaning previous Topology ';
+            RAISE DEBUG 'Cleaning previous Topology ';
                EXECUTE 'UPDATE ' || _pgr_quote_ident(tabname) ||
                ' SET '||sourcename||' = NULL,'||targetname||' = NULL';
         else
-            RAISE debug 'Creating topology for edges with non assigned topology';
+            RAISE DEBUG 'Creating topology for edges with non assigned topology';
             if rows_where=' AND (true)' then
                 rows_where=  ' AND ('||quote_ident(sourcename)||' is NULL OR '||quote_ident(targetname)||' is  NULL)';
             end if;
