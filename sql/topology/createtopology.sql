@@ -107,13 +107,13 @@ BEGIN
     fnName = 'pgr_createTopology';
     RAISE notice 'PROCESSING:';
     RAISE notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
-    EXECUTE 'show client_min_messages' into debuglevel;
+    EXECUTE 'show client_min_messages' INTO debuglevel;
 
 
     RAISE notice 'Performing checks, please wait .....';
 
         EXECUTE 'SELECT * FROM _pgr_getTableName('|| quote_literal(edge_table)
-                                                  || ',2,' || quote_literal(fnName) ||' )' into naming;
+                                                  || ',2,' || quote_literal(fnName) ||' )' INTO naming;
         sname=naming.sname;
         tname=naming.tname;
         tabname=sname||'.'||tname;
@@ -124,10 +124,10 @@ BEGIN
 
 
       RAISE debug 'Checking column names in edge table';
-        SELECT * into idname     FROM _pgr_getColumnName(sname, tname,id,2,fnName);
-        SELECT * into sourcename FROM _pgr_getColumnName(sname, tname,source,2,fnName);
-        SELECT * into targetname FROM _pgr_getColumnName(sname, tname,target,2,fnName);
-        SELECT * into gname      FROM _pgr_getColumnName(sname, tname,the_geom,2,fnName);
+        SELECT * INTO idname     FROM _pgr_getColumnName(sname, tname,id,2,fnName);
+        SELECT * INTO sourcename FROM _pgr_getColumnName(sname, tname,source,2,fnName);
+        SELECT * INTO targetname FROM _pgr_getColumnName(sname, tname,target,2,fnName);
+        SELECT * INTO gname      FROM _pgr_getColumnName(sname, tname,the_geom,2,fnName);
 
 
         err = sourcename in (targetname,idname,gname) OR  targetname in (idname,gname) OR idname=gname;
@@ -138,9 +138,9 @@ BEGIN
       RAISE DEBUG '     --> OK';
 
       RAISE debug 'Checking column types in edge table';
-        SELECT * into sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1, fnName);
-        SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1, fnName);
-        SELECT * into idtype FROM _pgr_getColumnType(sname,tname,idname,1, fnName);
+        SELECT * INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1, fnName);
+        SELECT * INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1, fnName);
+        SELECT * INTO idtype FROM _pgr_getColumnType(sname,tname,idname,1, fnName);
 
         err = idtype NOT in('integer','smallint','bigint');
         perform _pgr_onError(err, 2, fnName,
@@ -194,14 +194,14 @@ BEGIN
         -- limit 1, just try on first record
         -- if the where clasuse is ill formed it will be caught in the exception
         sql = 'SELECT * FROM '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
-        EXECUTE sql into dummyRec;
+        EXECUTE sql INTO dummyRec;
         -- end
 
         -- if above where clasue works this one should work
         -- any error will be caught by the exception also
         sql = 'SELECT count(*) FROM '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NOT NULL AND '||
 	    idname||' IS NOT NULL)=false '||rows_where;
-        EXECUTE SQL  into notincluded;
+        EXECUTE SQL  INTO notincluded;
 
         if clean then
             RAISE debug 'Cleaning previous Topology ';
@@ -224,7 +224,7 @@ BEGIN
     BEGIN
          RAISE DEBUG 'initializing %',vertname;
          EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(vertname)
-                                                  || ',0,' || quote_literal(fnName) ||' )' into naming;
+                                                  || ',0,' || quote_literal(fnName) ||' )' INTO naming;
          emptied = false;
          set client_min_messages  to warning;
          IF sname=naming.sname AND vname=naming.tname  THEN
@@ -242,7 +242,7 @@ BEGIN
 	         quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
              perform _pgr_createIndex(vertname , 'the_geom'::TEXT , 'gist'::TEXT);
          END IF;
-         EXECUTE 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::TEXT[])' into naming;
+         EXECUTE 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::TEXT[])' INTO naming;
          EXECUTE 'set client_min_messages  to '|| debuglevel;
          RAISE DEBUG  '  ------>OK';
          EXCEPTION WHEN OTHERS THEN
