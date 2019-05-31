@@ -54,13 +54,13 @@ Last changes: 2013-03-22
 
 
 CREATE OR REPLACE FUNCTION pgr_createTopology(
-    text, -- edge table (required)
+    TEXT, -- edge table (required)
     double precision, -- tolerance (required)
-    the_geom text default 'the_geom',
-    id text default 'id',
-    source text default 'source',
-    target text default 'target',
-    rows_where text default 'true',
+    the_geom TEXT default 'the_geom',
+    id TEXT default 'id',
+    source TEXT default 'source',
+    target TEXT default 'target',
+    rows_where TEXT default 'true',
     clean boolean default FALSE)
 RETURNS VARCHAR AS
 $BODY$
@@ -75,29 +75,29 @@ DECLARE
     totcount bigint;
     rowcount bigint;
     srid integer;
-    sql text;
-    sname text;
-    tname text;
-    tabname text;
-    vname text;
-    vertname text;
-    gname text;
-    idname text;
-    sourcename text;
-    targetname text;
+    sql TEXT;
+    sname TEXT;
+    tname TEXT;
+    tabname TEXT;
+    vname TEXT;
+    vertname TEXT;
+    gname TEXT;
+    idname TEXT;
+    sourcename TEXT;
+    targetname TEXT;
     notincluded integer;
     i integer;
     naming record;
     info record;
     flag boolean;
-    query text;
-    idtype text;
-    gtype text;
-    sourcetype text;
-    targettype text;
-    debuglevel text;
-    dummyRec text;
-    fnName text;
+    query TEXT;
+    idtype TEXT;
+    gtype TEXT;
+    sourcetype TEXT;
+    targettype TEXT;
+    debuglevel TEXT;
+    dummyRec TEXT;
+    fnName TEXT;
     err bool;
     msgKind int;
     emptied BOOLEAN;
@@ -172,10 +172,10 @@ BEGIN
       RAISE DEBUG '     --> OK';
 
       RAISE debug 'Checking and creating indices in edge table';
-        perform _pgr_createIndex(sname, tname , idname , 'btree'::text);
-        perform _pgr_createIndex(sname, tname , sourcename , 'btree'::text);
-        perform _pgr_createIndex(sname, tname , targetname , 'btree'::text);
-        perform _pgr_createIndex(sname, tname , gname , 'gist'::text);
+        perform _pgr_createIndex(sname, tname , idname , 'btree'::TEXT);
+        perform _pgr_createIndex(sname, tname , sourcename , 'btree'::TEXT);
+        perform _pgr_createIndex(sname, tname , targetname , 'btree'::TEXT);
+        perform _pgr_createIndex(sname, tname , gname , 'gist'::TEXT);
 
         gname=quote_ident(gname);
         idname=quote_ident(idname);
@@ -240,9 +240,9 @@ BEGIN
          IF (emptied) THEN
              execute 'SELECT addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
 	         quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
-             perform _pgr_createIndex(vertname , 'the_geom'::text , 'gist'::text);
+             perform _pgr_createIndex(vertname , 'the_geom'::TEXT , 'gist'::TEXT);
          END IF;
-         execute 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::text[])' into naming;
+         execute 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::TEXT[])' into naming;
          execute 'set client_min_messages  to '|| debuglevel;
          RAISE DEBUG  '  ------>OK';
          EXCEPTION WHEN OTHERS THEN
@@ -272,11 +272,11 @@ BEGIN
             target_id := _pgr_pointToId(points.target, tolerance,vertname,srid);
             BEGIN
                 sql := 'UPDATE ' || _pgr_quote_ident(tabname) ||
-                    ' SET '||sourcename||' = '|| source_id::text || ','||targetname||' = ' || target_id::text ||
-                    ' WHERE ' || idname || ' =  ' || points.id::text;
+                    ' SET '||sourcename||' = '|| source_id::TEXT || ','||targetname||' = ' || target_id::TEXT ||
+                    ' WHERE ' || idname || ' =  ' || points.id::TEXT;
 
                 IF sql IS NULL THEN
-                    RAISE NOTICE 'WARNING: UPDATE % SET source = %, target = % WHERE % = % ', tabname, source_id::text, target_id::text, idname,  points.id::text;
+                    RAISE NOTICE 'WARNING: UPDATE % SET source = %, target = % WHERE % = % ', tabname, source_id::TEXT, target_id::TEXT, idname,  points.id::TEXT;
                 ELSE
                     EXECUTE sql;
                 END IF;
