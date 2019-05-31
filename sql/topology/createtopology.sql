@@ -103,14 +103,14 @@ DECLARE
     emptied BOOLEAN;
 
 BEGIN
-    msgKind = 1; -- notice
+    msgKind = 1; -- NOTICE
     fnName = 'pgr_createTopology';
-    RAISE notice 'PROCESSING:';
-    RAISE notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
+    RAISE NOTICE 'PROCESSING:';
+    RAISE NOTICE 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
     EXECUTE 'show client_min_messages' INTO debuglevel;
 
 
-    RAISE notice 'Performing checks, please wait .....';
+    RAISE NOTICE 'Performing checks, please wait .....';
 
         EXECUTE 'SELECT * FROM _pgr_getTableName('|| quote_literal(edge_table)
                                                   || ',2,' || quote_literal(fnName) ||' )' INTO naming;
@@ -253,7 +253,7 @@ BEGIN
 
 
 
-    RAISE notice 'Creating Topology, Please wait...';
+    RAISE NOTICE 'Creating Topology, Please wait...';
         rowcount := 0;
         FOR points IN EXECUTE 'SELECT ' || idname || '::BIGINT AS id,'
             || ' _pgr_StartPoint(' || gname || ') AS source,'
@@ -286,10 +286,10 @@ BEGIN
                     RETURN 'FAIL';
             end;
         END LOOP;
-        RAISE notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
+        RAISE NOTICE '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
         RAISE NOTICE 'Rows with NULL geometry OR NULL id: %',notincluded;
-        RAISE notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname), _pgr_quote_ident(vertname);
-        RAISE notice '----------------------------------------------';
+        RAISE NOTICE 'Vertices table for table % is: %',_pgr_quote_ident(tabname), _pgr_quote_ident(vertname);
+        RAISE NOTICE '----------------------------------------------';
 
     RETURN 'OK';
  EXCEPTION WHEN OTHERS THEN
@@ -300,7 +300,25 @@ END;
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
+NOTICE
 
 -- COMMENTS
 
