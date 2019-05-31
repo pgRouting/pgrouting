@@ -142,17 +142,17 @@ BEGIN
         SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1, fnName);
         SELECT * into idtype FROM _pgr_getColumnType(sname,tname,idname,1, fnName);
 
-        err = idtype NOT in('integer','smallint','BIGINT');
+        err = idtype NOT in('integer','smallint','bigint');
         perform _pgr_onError(err, 2, fnName,
-	       'Wrong type of Column id:'|| idname, ' Expected type of '|| idname || ' is integer,smallint or BIGINT but '||idtype||' was found');
+	       'Wrong type of Column id:'|| idname, ' Expected type of '|| idname || ' is integer,smallint or bigint but '||idtype||' was found');
 
-        err = sourcetype NOT in('integer','smallint','BIGINT');
+        err = sourcetype NOT in('integer','smallint','bigint');
         perform _pgr_onError(err, 2, fnName,
-	       'Wrong type of Column source:'|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or BIGINT but '||sourcetype||' was found');
+	       'Wrong type of Column source:'|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found');
 
-        err = targettype NOT in('integer','smallint','BIGINT');
+        err = targettype NOT in('integer','smallint','bigint');
         perform _pgr_onError(err, 2, fnName,
-	       'Wrong type of Column target:'|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or BIGINT but '||targettype||' was found');
+	       'Wrong type of Column target:'|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or bigint but '||targettype||' was found');
 
       RAISE DEBUG '     --> OK';
 
