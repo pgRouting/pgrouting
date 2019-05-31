@@ -70,10 +70,10 @@ DECLARE
     tolerance FLOAT := $2;
     points record;
     sridinfo record;
-    source_id bigint;
-    target_id bigint;
-    totcount bigint;
-    rowcount bigint;
+    source_id BIGINT;
+    target_id BIGINT;
+    totcount BIGINT;
+    rowcount BIGINT;
     srid INTEGER;
     sql TEXT;
     sname TEXT;
@@ -142,17 +142,17 @@ BEGIN
         SELECT * into targettype FROM _pgr_getColumnType(sname,tname,targetname,1, fnName);
         SELECT * into idtype FROM _pgr_getColumnType(sname,tname,idname,1, fnName);
 
-        err = idtype NOT in('integer','smallint','bigint');
+        err = idtype NOT in('integer','smallint','BIGINT');
         perform _pgr_onError(err, 2, fnName,
-	       'Wrong type of Column id:'|| idname, ' Expected type of '|| idname || ' is integer,smallint or bigint but '||idtype||' was found');
+	       'Wrong type of Column id:'|| idname, ' Expected type of '|| idname || ' is integer,smallint or BIGINT but '||idtype||' was found');
 
-        err = sourcetype NOT in('integer','smallint','bigint');
+        err = sourcetype NOT in('integer','smallint','BIGINT');
         perform _pgr_onError(err, 2, fnName,
-	       'Wrong type of Column source:'|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or bigint but '||sourcetype||' was found');
+	       'Wrong type of Column source:'|| sourcename, ' Expected type of '|| sourcename || ' is integer,smallint or BIGINT but '||sourcetype||' was found');
 
-        err = targettype NOT in('integer','smallint','bigint');
+        err = targettype NOT in('integer','smallint','BIGINT');
         perform _pgr_onError(err, 2, fnName,
-	       'Wrong type of Column target:'|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or bigint but '||targettype||' was found');
+	       'Wrong type of Column target:'|| targetname, ' Expected type of '|| targetname || ' is integer,smallint or BIGINT but '||targettype||' was found');
 
       RAISE DEBUG '     --> OK';
 
@@ -255,7 +255,7 @@ BEGIN
 
     RAISE notice 'Creating Topology, Please wait...';
         rowcount := 0;
-        FOR points IN EXECUTE 'SELECT ' || idname || '::bigint AS id,'
+        FOR points IN EXECUTE 'SELECT ' || idname || '::BIGINT AS id,'
             || ' _pgr_StartPoint(' || gname || ') AS source,'
             || ' _pgr_EndPoint('   || gname || ') AS target'
             || ' FROM '  || _pgr_quote_ident(tabname)
