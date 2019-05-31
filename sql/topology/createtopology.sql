@@ -107,12 +107,12 @@ BEGIN
     fnName = 'pgr_createTopology';
     RAISE notice 'PROCESSING:';
     RAISE notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
-    execute 'show client_min_messages' into debuglevel;
+    EXECUTE 'show client_min_messages' into debuglevel;
 
 
     RAISE notice 'Performing checks, please wait .....';
 
-        execute 'SELECT * FROM _pgr_getTableName('|| quote_literal(edge_table)
+        EXECUTE 'SELECT * FROM _pgr_getTableName('|| quote_literal(edge_table)
                                                   || ',2,' || quote_literal(fnName) ||' )' into naming;
         sname=naming.sname;
         tname=naming.tname;
@@ -205,7 +205,7 @@ BEGIN
 
         if clean then
             RAISE debug 'Cleaning previous Topology ';
-               execute 'UPDATE ' || _pgr_quote_ident(tabname) ||
+               EXECUTE 'UPDATE ' || _pgr_quote_ident(tabname) ||
                ' SET '||sourcename||' = NULL,'||targetname||' = NULL';
         else
             RAISE debug 'Creating topology for edges with non assigned topology';
@@ -223,27 +223,27 @@ BEGIN
 
     BEGIN
          RAISE DEBUG 'initializing %',vertname;
-         execute 'SELECT * FROM _pgr_getTableName('||quote_literal(vertname)
+         EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(vertname)
                                                   || ',0,' || quote_literal(fnName) ||' )' into naming;
          emptied = false;
          set client_min_messages  to warning;
          IF sname=naming.sname AND vname=naming.tname  THEN
             if clean then
-                execute 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
-                execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
+                EXECUTE 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
+                EXECUTE 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
                 emptied = true;
             end if;
          ELSE -- table doesn't exist
-            execute 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
+            EXECUTE 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
             emptied = true;
          END IF;
          IF (emptied) THEN
-             execute 'SELECT addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
+             EXECUTE 'SELECT addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
 	         quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
              perform _pgr_createIndex(vertname , 'the_geom'::TEXT , 'gist'::TEXT);
          END IF;
-         execute 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::TEXT[])' into naming;
-         execute 'set client_min_messages  to '|| debuglevel;
+         EXECUTE 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id"}''::TEXT[])' into naming;
+         EXECUTE 'set client_min_messages  to '|| debuglevel;
          RAISE DEBUG  '  ------>OK';
          EXCEPTION WHEN OTHERS THEN
              RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
