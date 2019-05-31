@@ -234,7 +234,7 @@ BEGIN
                 emptied = true;
             end if;
          ELSE -- table doesn't exist
-            execute 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt INTEGER,chk INTEGER,ein INTEGER,eout INTEGER)';
+            execute 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
             emptied = true;
          END IF;
          IF (emptied) THEN
