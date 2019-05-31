@@ -130,7 +130,7 @@ BEGIN
         SELECT * into gname      FROM _pgr_getColumnName(sname, tname,the_geom,2,fnName);
 
 
-        err = sourcename in (targetname,idname,gname) or  targetname in (idname,gname) or idname=gname;
+        err = sourcename in (targetname,idname,gname) OR  targetname in (idname,gname) OR idname=gname;
         perform _pgr_onError( err, 2, fnName,
                'Two columns share the same name', 'Parameter names for id,the_geom,source and target  must be different',
 	       'Column names are OK');
@@ -210,7 +210,7 @@ BEGIN
         else
             RAISE debug 'Creating topology for edges with non assigned topology';
             if rows_where=' AND (true)' then
-                rows_where=  ' and ('||quote_ident(sourcename)||' is NULL or '||quote_ident(targetname)||' is  NULL)';
+                rows_where=  ' and ('||quote_ident(sourcename)||' is NULL OR '||quote_ident(targetname)||' is  NULL)';
             end if;
         end if;
         -- my thoery is that the select Count(*) will never go through here
@@ -287,7 +287,7 @@ BEGIN
             end;
         END LOOP;
         RAISE notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
-        RAISE NOTICE 'Rows with NULL geometry or NULL id: %',notincluded;
+        RAISE NOTICE 'Rows with NULL geometry OR NULL id: %',notincluded;
         RAISE notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname), _pgr_quote_ident(vertname);
         RAISE notice '----------------------------------------------';
 
