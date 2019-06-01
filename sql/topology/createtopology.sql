@@ -105,12 +105,12 @@ DECLARE
 BEGIN
     msgKind = 1; -- notice
     fnName = 'pgr_createTopology';
-    RAISE NOTICE 'PROCESSING:';
-    RAISE NOTICE 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
+    RAISE notice 'PROCESSING:';
+    RAISE notice 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
     EXECUTE 'show client_min_messages' INTO debuglevel;
 
 
-    RAISE NOTICE 'Performing checks, please wait .....';
+    RAISE notice 'Performing checks, please wait .....';
 
         EXECUTE 'SELECT * FROM _pgr_getTableName('|| quote_literal(edge_table)
                                                   || ',2,' || quote_literal(fnName) ||' )' INTO naming;
@@ -215,9 +215,9 @@ BEGIN
         end if;
         -- my thoery is that the select Count(*) will never go through here
         EXCEPTION WHEN OTHERS THEN
-             RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
-             RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
-             RAISE NOTICE '%',sql;
+             RAISE notice 'Got %', SQLERRM; -- issue 210,211
+             RAISE notice 'ERROR: Condition is not correct, please execute the following query to test your condition';
+             RAISE notice '%',sql;
              RETURN 'FAIL';
     END;
 
@@ -246,14 +246,14 @@ BEGIN
          EXECUTE 'set client_min_messages  to '|| debuglevel;
          RAISE DEBUG  '  ------>OK';
          EXCEPTION WHEN OTHERS THEN
-             RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
-             RAISE NOTICE 'ERROR: something went wrong when initializing the verties table';
+             RAISE notice 'Got %', SQLERRM; -- issue 210,211
+             RAISE notice 'ERROR: something went wrong when initializing the verties table';
              RETURN 'FAIL';
     END;
 
 
 
-    RAISE NOTICE 'Creating Topology, Please wait...';
+    RAISE notice 'Creating Topology, Please wait...';
         rowcount := 0;
         FOR points IN EXECUTE 'SELECT ' || idname || '::BIGINT AS id,'
             || ' _pgr_StartPoint(' || gname || ') AS source,'
@@ -264,7 +264,7 @@ BEGIN
 
             rowcount := rowcount + 1;
             IF rowcount % 1000 = 0 THEN
-                RAISE NOTICE '% edges processed', rowcount;
+                RAISE notice '% edges processed', rowcount;
             END IF;
 
 
@@ -276,49 +276,49 @@ BEGIN
                     ' WHERE ' || idname || ' =  ' || points.id::TEXT;
 
                 IF sql IS NULL THEN
-                    RAISE NOTICE 'WARNING: UPDATE % SET source = %, target = % WHERE % = % ', tabname, source_id::TEXT, target_id::TEXT, idname,  points.id::TEXT;
+                    RAISE notice 'WARNING: UPDATE % SET source = %, target = % WHERE % = % ', tabname, source_id::TEXT, target_id::TEXT, idname,  points.id::TEXT;
                 ELSE
                     EXECUTE sql;
                 END IF;
                 EXCEPTION WHEN OTHERS THEN
-                    RAISE NOTICE '%', SQLERRM;
-                    RAISE NOTICE '%',sql;
+                    RAISE notice '%', SQLERRM;
+                    RAISE notice '%',sql;
                     RETURN 'FAIL';
             end;
         END LOOP;
-        RAISE NOTICE '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
-        RAISE NOTICE 'Rows with NULL geometry OR NULL id: %',notincluded;
-        RAISE NOTICE 'Vertices table for table % is: %',_pgr_quote_ident(tabname), _pgr_quote_ident(vertname);
-        RAISE NOTICE '----------------------------------------------';
+        RAISE notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
+        RAISE notice 'Rows with NULL geometry OR NULL id: %',notincluded;
+        RAISE notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname), _pgr_quote_ident(vertname);
+        RAISE notice '----------------------------------------------';
 
     RETURN 'OK';
  EXCEPTION WHEN OTHERS THEN
-   RAISE NOTICE 'Unexpected error %', SQLERRM; -- issue 210,211
+   RAISE notice 'Unexpected error %', SQLERRM; -- issue 210,211
    RETURN 'FAIL';
 END;
 
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
-NOTICE
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
+notice
 
 -- COMMENTS
 
