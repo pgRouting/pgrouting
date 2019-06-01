@@ -123,7 +123,7 @@ BEGIN
       RAISE DEBUG '     --> OK';
 
 
-      RAISE DEBUG 'Checking column names in edge table';
+      RAISE debug 'Checking column names in edge table';
         SELECT * INTO idname     FROM _pgr_getColumnName(sname, tname,id,2,fnName);
         SELECT * INTO sourcename FROM _pgr_getColumnName(sname, tname,source,2,fnName);
         SELECT * INTO targetname FROM _pgr_getColumnName(sname, tname,target,2,fnName);
@@ -137,7 +137,7 @@ BEGIN
 
       RAISE DEBUG '     --> OK';
 
-      RAISE DEBUG 'Checking column types in edge table';
+      RAISE debug 'Checking column types in edge table';
         SELECT * INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1, fnName);
         SELECT * INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1, fnName);
         SELECT * INTO idtype FROM _pgr_getColumnType(sname,tname,idname,1, fnName);
@@ -156,12 +156,12 @@ BEGIN
 
       RAISE DEBUG '     --> OK';
 
-      RAISE DEBUG 'Checking SRID of geometry column';
+      RAISE debug 'Checking SRID of geometry column';
          query= 'SELECT ST_SRID(' || quote_ident(gname) || ') AS srid '
             || ' FROM ' || _pgr_quote_ident(tabname)
             || ' WHERE ' || quote_ident(gname)
             || ' IS NOT NULL LIMIT 1';
-         RAISE DEBUG '%',query;
+         RAISE debug '%',query;
          EXECUTE query INTO sridinfo;
 
          err =  sridinfo IS NULL OR sridinfo.srid IS NULL;
@@ -171,7 +171,7 @@ BEGIN
          srid := sridinfo.srid;
       RAISE DEBUG '     --> OK';
 
-      RAISE DEBUG 'Checking and creating indices in edge table';
+      RAISE debug 'Checking and creating indices in edge table';
         perform _pgr_createIndex(sname, tname , idname , 'btree'::TEXT);
         perform _pgr_createIndex(sname, tname , sourcename , 'btree'::TEXT);
         perform _pgr_createIndex(sname, tname , targetname , 'btree'::TEXT);
@@ -204,20 +204,20 @@ BEGIN
         EXECUTE SQL  INTO notincluded;
 
         if clean then
-            RAISE DEBUG 'Cleaning previous Topology ';
+            RAISE debug 'Cleaning previous Topology ';
                EXECUTE 'UPDATE ' || _pgr_quote_ident(tabname) ||
                ' SET '||sourcename||' = NULL,'||targetname||' = NULL';
         else
-            RAISE DEBUG 'Creating topology for edges with non assigned topology';
+            RAISE debug 'Creating topology for edges with non assigned topology';
             if rows_where=' AND (true)' then
                 rows_where=  ' AND ('||quote_ident(sourcename)||' is NULL OR '||quote_ident(targetname)||' is  NULL)';
             end if;
         end if;
         -- my thoery is that the select Count(*) will never go through here
         EXCEPTION WHEN OTHERS THEN
-             RAISE notice 'Got %', SQLERRM; -- issue 210,211
-             RAISE notice 'ERROR: Condition is not correct, please execute the following query to test your condition';
-             RAISE notice '%',sql;
+             RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
+             RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
+             RAISE NOTICE '%',sql;
              RETURN 'FAIL';
     END;
 
@@ -246,8 +246,8 @@ BEGIN
          EXECUTE 'set client_min_messages  to '|| debuglevel;
          RAISE DEBUG  '  ------>OK';
          EXCEPTION WHEN OTHERS THEN
-             RAISE notice 'Got %', SQLERRM; -- issue 210,211
-             RAISE notice 'ERROR: something went wrong when initializing the verties table';
+             RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
+             RAISE NOTICE 'ERROR: something went wrong when initializing the verties table';
              RETURN 'FAIL';
     END;
 
@@ -264,7 +264,7 @@ BEGIN
 
             rowcount := rowcount + 1;
             IF rowcount % 1000 = 0 THEN
-                RAISE notice '% edges processed', rowcount;
+                RAISE NOTICE '% edges processed', rowcount;
             END IF;
 
 
@@ -276,49 +276,31 @@ BEGIN
                     ' WHERE ' || idname || ' =  ' || points.id::TEXT;
 
                 IF sql IS NULL THEN
-                    RAISE notice 'WARNING: UPDATE % SET source = %, target = % WHERE % = % ', tabname, source_id::TEXT, target_id::TEXT, idname,  points.id::TEXT;
+                    RAISE NOTICE 'WARNING: UPDATE % SET source = %, target = % WHERE % = % ', tabname, source_id::TEXT, target_id::TEXT, idname,  points.id::TEXT;
                 ELSE
                     EXECUTE sql;
                 END IF;
                 EXCEPTION WHEN OTHERS THEN
-                    RAISE notice '%', SQLERRM;
-                    RAISE notice '%',sql;
+                    RAISE NOTICE '%', SQLERRM;
+                    RAISE NOTICE '%',sql;
                     RETURN 'FAIL';
             end;
         END LOOP;
         RAISE notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
-        RAISE notice 'Rows with NULL geometry OR NULL id: %',notincluded;
+        RAISE NOTICE 'Rows with NULL geometry OR NULL id: %',notincluded;
         RAISE notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname), _pgr_quote_ident(vertname);
         RAISE notice '----------------------------------------------';
 
     RETURN 'OK';
  EXCEPTION WHEN OTHERS THEN
-   RAISE notice 'Unexpected error %', SQLERRM; -- issue 210,211
+   RAISE NOTICE 'Unexpected error %', SQLERRM; -- issue 210,211
    RETURN 'FAIL';
 END;
 
 
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
-notice
+
 
 -- COMMENTS
 
