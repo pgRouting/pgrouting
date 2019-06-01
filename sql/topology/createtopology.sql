@@ -103,7 +103,7 @@ DECLARE
     emptied BOOLEAN;
 
 BEGIN
-    msgKind = 1; -- NOTICE
+    msgKind = 1; -- notice
     fnName = 'pgr_createTopology';
     RAISE NOTICE 'PROCESSING:';
     RAISE NOTICE 'pgr_createTopology(''%'', %, ''%'', ''%'', ''%'', ''%'', rows_where := ''%'', clean := %)',edge_table,tolerance,the_geom,id,source,target,rows_where, clean;
