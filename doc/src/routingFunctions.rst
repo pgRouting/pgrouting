@@ -39,6 +39,11 @@ Routing Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`components-family`
+
+.. include:: components-family.rst
+   :start-after: index from here
+   :end-before: index to here
 
 :doc:`dijkstra-family`
 
@@ -91,6 +96,7 @@ Routing Functions
     aStar-family
     bdAstar-family
     bdDijkstra-family
+    components-family
     dijkstra-family
     flow-family
     spanningTree-family

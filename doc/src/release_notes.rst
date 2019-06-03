@@ -138,6 +138,15 @@ pgRouting 3.0.0 Release Notes
   * pgr_edgeDisjointPaths(many to one)
   * pgr_edgeDisjointPaths(many to many)
 
+* Components family
+
+  * pgr_connectedComponents
+  * pgr_strongComponents
+  * pgr_biconnectedComponents
+  * pgr_articulationPoints
+  * pgr_bridges
+
+
 
 .. rubric:: New Experimental functions
 

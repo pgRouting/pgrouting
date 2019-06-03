@@ -37,13 +37,6 @@ Stable Proposed Functions
    :start-after: index proposed from here
    :end-before: index proposed to here
 
-:doc:`components-family`
-
-.. include:: components-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
-
 :doc:`withPoints-family`
 
 .. include:: withPoints-family.rst
@@ -79,7 +72,6 @@ Stable Proposed Functions
 .. toctree::
     :hidden:
 
-   components-family
     withPoints-family
     cost-category
     costMatrix-category
