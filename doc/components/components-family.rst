@@ -7,13 +7,9 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Components - Family of functions (Proposed)
+Components - Family of functions
 ===============================================================================
 
-
-.. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
 
 .. index from here
 

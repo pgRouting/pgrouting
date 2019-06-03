@@ -7,26 +7,21 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_articulationPoints - Proposed
+pgr_articulationPoints
 ===============================================================================
 
 ``pgr_articulationPoints`` - Return the articulation points of an undirected graph.
-In particular, the algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/biconnected_components.html
 
    Boost Graph Inside
 
-.. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
-
 .. rubric:: Availability
 
 * On v3.0.0
 
-  * Set as `proposed`
+  * Set as `official`
   * Return columns change: ``seq`` is removed
 
 * New as experimental on v2.5.0
@@ -53,7 +48,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: articulationPoints -- Proposed
+    single: articulationPoints
 
 .. code-block:: none
 
