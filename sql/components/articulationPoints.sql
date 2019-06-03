@@ -42,10 +42,9 @@ LANGUAGE SQL VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_articulationPoints(TEXT)
 IS'pgr_articulationPoints
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_articulationPoints.html
+  - ${PGROUTING_DOC_LINK}/pgr_articulationPoints.html
 ';
