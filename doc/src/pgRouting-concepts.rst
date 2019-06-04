@@ -122,7 +122,7 @@ network. The general form of a route query is:
 
 .. code-block:: none
 
-    select pgr_dijkstra(`SELECT * FROM myroads', 1, 2)
+    select pgr_dijkstra('SELECT * FROM myroads', 1, 2)
 
 As you can see this is fairly straight forward and you can look and the
 specific algorithms for the details of the signatures and how to use them.
