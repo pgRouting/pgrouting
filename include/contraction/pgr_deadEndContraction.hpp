@@ -75,12 +75,6 @@ class Pgr_deadend {
 			|| (graph.in_degree(v) > 0 && graph.out_degree(v) == 0);
 	}
 
-	void add_if_dead_end(G &graph, V v) {
-		if (is_dead_end(graph, v)) {
-			deadendVertices += v;
-		}
-	}
-
 	void doContraction(G &graph) {
         calculateVertices(graph);
 

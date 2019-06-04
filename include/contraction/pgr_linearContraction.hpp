@@ -49,12 +49,7 @@ template < class G >
 class Pgr_linear {
  private:
      typedef typename G::V V;
-     typedef typename G::E E;
      typedef typename G::V_i V_i;
-     typedef typename G::E_i E_i;
-     typedef typename G::EO_i EO_i;
-     typedef typename G::EI_i EI_i;
-     typedef typename G::degree_size_type degree_size_type;
      typedef typename G::B_G B_G;
 
 
@@ -189,50 +184,6 @@ class Pgr_linear {
 
              graph.add_shortcut(shortcut, u, w);
          }
-     }
-
-
-     /*! \brief add edges(shortuct) to the graph during contraction
-
-       a --incomming--> b ---outgoing--> c
-
-       a -> c
-
-       edge (a, c) is a new edge: @b shortcut
-       e.contracted_vertices = b + b.contracted vertices
-       e.contracted_vertices += (a->b).contracted vertices
-       e.contracted_vertices += (b->c).contracted vertices
-       b is "removed" disconnected from the graph
-       - by removing all edges to/from b
-       */
-
-     void add_shortcut(
-             G &graph, V v,
-             E incoming_edge,
-             E outgoing_edge,
-             Identifiers<int64_t> contracted_vertices) {
-
-         auto u = graph.adjacent(v, incoming_edge);
-         auto w = graph.adjacent(v, outgoing_edge);
-
-         // Create shortcut
-         CH_edge shortcut(
-                 get_next_id(),
-                 graph[u].id,
-                 graph[w].id,
-                 graph[incoming_edge].cost + graph[outgoing_edge].cost);
-
-         // Add contracted vertices of the current linear vertex
-         shortcut.contracted_vertices() += contracted_vertices;
-         shortcut.contracted_vertices() += graph[v].contracted_vertices();
-
-         // Add shortcut to the graph
-         graph.add_shortcut(shortcut);
-
-         boost::remove_edge(u, v, graph.graph);
-         boost::remove_edge(v, w, graph.graph);
-         graph.shortcuts -= incoming_edge;
-         graph.shortcuts -= outgoing_edge;
      }
 
 

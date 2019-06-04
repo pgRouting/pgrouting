@@ -51,15 +51,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
  public:
      typedef typename boost::graph_traits < G >::vertex_descriptor V;
      typedef typename boost::graph_traits < G >::edge_descriptor E;
-     typedef typename boost::graph_traits < G >::vertex_iterator V_i;
-     typedef typename boost::graph_traits < G >::edge_iterator E_i;
      typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
      typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
-     typedef typename boost::graph_traits < G >::degree_size_type
-         degree_size_type;
-
-     Identifiers<V> removed_vertices;
-     Identifiers<E> shortcuts;
 
      /*!
        Prepares the _graph_ to be of type *gtype*
@@ -158,25 +151,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
      }
 
 
-#if 0
-     /*! @brief get the contracted vertex ids of a given vertex in array format
-       @param [in] vid vertex_id
-
-       @returns ids of contracted_vertices
-       */
-     std::vector<int64_t> get_contracted_vertices(int64_t vid) {
-         if (!this->has_vertex(vid)) return std::vector<int64_t>();
-         auto  v = this->get_V(vid);
-         std::vector<int64_t> ids(this->graph[v].contracted_vertices().size());
-
-         size_t count = 0;
-         for (auto idx :  this->graph[v].contracted_vertices()) {
-             ids[count++] =  idx;
-         }
-         return ids;
-     }
-#endif
-     /*! @brief add edges(shortuct) to the graph during contraction
+     /*! @brief add_shortuct to the graph during contraction
 
        u -> v -> w
 
@@ -201,24 +176,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
          this->graph[e]= edge;
      }
 
-#if 0
-     bool is_contracted(V v) {
-        return this->graph[v].has_contracted_vertices();
-     }
-
-     void get_remaining_vertices(Identifiers<int64_t>& remaining_vertices) {
-        for (auto vi = vertices(this->graph).first;
-                vi != vertices(this->graph).second;
-                ++vi) {
-            if (is_contracted(*vi)) {
-                remaining_vertices += this->graph[*vi].id;
-            }
-        }
-     }
-     Identifiers<E> get_shortcuts() {
-         return shortcuts;
-     }
-#endif
 
      bool has_u_v_w(V u, V v, V w) const {
          return boost::edge(u, v, this->graph).second &&  boost::edge(v, w, this->graph).second;
