@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include "cpp_common/pgr_assert.h"
-#include "cpp_common/pgr_messages.h"
 
 #include "contraction/pgr_contractionGraph.hpp"
 #include "contraction/ch_graphs.hpp"
@@ -47,7 +46,7 @@ namespace contraction {
 bool is_valid_contraction(int number);
 
 template < class G >
-class Pgr_contract : public Pgr_messages {
+class Pgr_contract {
     typedef typename G::V V;
 
  public:
@@ -65,7 +64,6 @@ class Pgr_contract : public Pgr_messages {
                 contraction_order.begin(), contraction_order.end());
         for (int64_t i = 0; i < max_cycles; ++i) {
             int64_t front = contract_order.front();
-            log << "Starting cycle " << i + 1 << "\n";
             contract_order.pop_front();
             contract_order.push_back(front);
             auto kind = contract_order.front();
@@ -84,11 +82,6 @@ class Pgr_contract : public Pgr_messages {
             G &graph,
             int64_t kind,
             Identifiers<V> &forbidden_vertices) {
-#ifndef NDEBUG
-        log << "Graph before "<< (kind == 1? "dead end" : "linear") << " contraction\n";
-        log << graph;
-#endif
-
         switch (kind) {
             case -1:
                 pgassert(false);
@@ -106,27 +99,20 @@ class Pgr_contract : public Pgr_messages {
                 pgassert(false);
                 break;
         }
-#ifndef NDEBUG
-        log << "Graph after "<< (kind == 1? "dead end" : "linear") << " contraction";
-        log << graph;
-#endif
     }
 
     void perform_deadEnd(G &graph,
             Identifiers<V> forbidden_vertices) {
         Pgr_deadend<G> deadendContractor;
         deadendContractor.setForbiddenVertices(forbidden_vertices);
-        log << deadendContractor.get_log();
 
         deadendContractor.calculateVertices(graph);
-        log << deadendContractor.get_log();
         try {
             deadendContractor.doContraction(graph);
         }
         catch ( ... ) {
-            log << "Caught unknown exception!\n";
+            throw;
         }
-        log << deadendContractor.get_log();
     }
 
 
@@ -137,12 +123,8 @@ class Pgr_contract : public Pgr_messages {
             linearContractor(graph, forbidden_vertices);
         }
         catch ( ... ) {
-            log << "Caught unknown exception!\n";
             throw;
         }
-#ifndef NDEBUG
-        log << linearContractor.get_log();
-#endif
     }
 
 

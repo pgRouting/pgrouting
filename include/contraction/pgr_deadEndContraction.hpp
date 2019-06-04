@@ -44,7 +44,7 @@ namespace pgrouting {
 namespace contraction {
 
 template < class G >
-class Pgr_deadend : public Pgr_messages {
+class Pgr_deadend {
  private:
      typedef typename G::V V;
      typedef typename G::E E;
@@ -70,37 +70,17 @@ template < class G >
 void
 Pgr_deadend< G >::setForbiddenVertices(
         Identifiers<V> forbidden_vertices) {
-#ifndef NDEBUG
-    log << "Setting forbidden vertices\n";
-#endif
     forbiddenVertices = forbidden_vertices;
 }
 
 
 template < class G >
 void Pgr_deadend<G>::calculateVertices(G &graph) {
-#ifndef NDEBUG
-    log << __PRETTY_FUNCTION__;
-
-    log << "Calculating vertices\n";
-#endif
-
     BGL_FORALL_VERTICES_T(v, graph.graph, B_G) {
-#ifndef NDEBUG
-        log << "\nChecking vertex " << graph[(v)].id;
-#endif
-
         if (is_dead_end(graph, v)) {
-#ifndef NDEBUG
-            log << "\t" << "is dead end";
-#endif
-
             deadendVertices += (v);
         }
     }
-#ifndef NDEBUG
-    log <<"\n";
-#endif
     deadendVertices -= forbiddenVertices;
 }
 
@@ -262,11 +242,6 @@ bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
     }
 
     pgassert(graph.is_directed());
-#ifndef NDEBUG
-    log << "\t adjacent vertices" << graph.find_adjacent_vertices(v).size();
-    log << "\t in_degree vertices" << graph.in_degree(v);
-    log << "\t out_degree vertices" << graph.out_degree(v);
-#endif
     return graph.find_adjacent_vertices(v).size() == 1
         || (graph.in_degree(v) > 0 && graph.out_degree(v) == 0);
 }
@@ -284,10 +259,6 @@ template < class G >
 void
 Pgr_deadend<G>::doContraction(G &graph) {
 
-#ifndef NDEBUG
-    log << "Performing contraction\n";
-#endif
-
     while (!deadendVertices.empty()) {
         V current_vertex = deadendVertices.front();
         deadendVertices -= current_vertex;
@@ -295,33 +266,11 @@ Pgr_deadend<G>::doContraction(G &graph) {
 
         for (auto adjacent_vertex : graph.find_adjacent_vertices(current_vertex)) {
 
-#ifndef NDEBUG
-            log << "Contracting current vertex "
-                << graph[current_vertex].id << std::endl;
-
-            log << "Adding contracted vertices of the vertex\n";
-#endif
-
             graph[adjacent_vertex].add_contracted_vertex(
                     graph[current_vertex]);
 
-
-#ifndef NDEBUG
-            log << "Adding contracted vertices of the edge\n";
-            log << "Current Vertex:\n";
-            log << graph[current_vertex].id;
-            log << "Adjacent Vertex:\n";
-            log << graph[adjacent_vertex].id;
-#endif
-
             graph.disconnect_vertex(current_vertex);
             deadendVertices -= current_vertex;
-
-#ifndef NDEBUG
-            log << "Adjacent vertex dead_end?: "
-                << is_dead_end(graph, adjacent_vertex)
-                << std::endl;
-#endif
 
             if (is_dead_end(graph, adjacent_vertex)
                     && !forbiddenVertices.has(adjacent_vertex)) {

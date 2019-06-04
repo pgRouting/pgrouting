@@ -46,7 +46,7 @@ namespace pgrouting {
 namespace contraction {
 
 template < class G >
-class Pgr_linear : public Pgr_messages {
+class Pgr_linear {
  private:
      typedef typename G::V V;
      typedef typename G::E E;
@@ -175,7 +175,6 @@ class Pgr_linear : public Pgr_messages {
          contracted_vertices += graph[v].id;
 
          if (std::get<2>(e1) && std::get<2>(e2)) {
-             log <<std::get<0>(e1)<< std::get<0>(e2);
              add_shortcut(graph, v, std::get<0>(e1), std::get<0>(e2), contracted_vertices);
          }
      }
@@ -204,8 +203,6 @@ class Pgr_linear : public Pgr_messages {
          auto u = graph.adjacent(v, incoming_edge);
          auto w = graph.adjacent(v, outgoing_edge);
 
-         log << incoming_edge << outgoing_edge;
-         log << "(" << graph[u].id << ", " << graph[w].id << ")";
          // Create shortcut
          CH_edge shortcut(
                  get_next_id(),
@@ -218,16 +215,12 @@ class Pgr_linear : public Pgr_messages {
          shortcut.contracted_vertices() += graph[v].contracted_vertices();
 
          // Add shortcut to the graph
-         log << "\nAdding shortcut\t" << shortcut << std::endl;
-         log << "\ngraph\t" << graph << std::endl;
          graph.add_shortcut(shortcut);
-         log << "\ngraph\t" << graph << std::endl;
 
          boost::remove_edge(u, v, graph.graph);
          boost::remove_edge(v, w, graph.graph);
          graph.shortcuts -= incoming_edge;
          graph.shortcuts -= outgoing_edge;
-         log << "\ngraph\t" << graph << std::endl;
      }
 
 
