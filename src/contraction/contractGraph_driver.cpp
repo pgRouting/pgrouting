@@ -75,10 +75,9 @@ Identifiers<typename G::E> get_shortcuts(const G& graph) {
     return eids;
 }
 
-}  // namespace
 
 template <typename G>
-static void process_contraction(
+void process_contraction(
         G &graph,
         const std::vector< pgr_edge_t > &edges,
         const std::vector< int64_t > &forbidden_vertices,
@@ -104,63 +103,38 @@ static void process_contraction(
 }
 
 template <typename G>
-static
 void get_postgres_result(
         G &graph,
         contracted_rt **return_tuples,
         size_t *count) {
-#if 0
-    Identifiers<int64_t> remaining_vertices;
-    graph.get_remaining_vertices(remaining_vertices);
-#else
-    auto remaining_vertices(get_modified_vertices(graph));
-#endif
-
-#if 0
-    auto shortcut_edges(graph.get_shortcuts());
-#else
+    auto modified_vertices(get_modified_vertices(graph));
     auto shortcut_edges(get_shortcuts(graph));
-#endif
 
-    (*count) = remaining_vertices.size() + shortcut_edges.size();
-    (*return_tuples) = pgr_alloc(
-               (*count), (*return_tuples));
+    (*count) = modified_vertices.size() + shortcut_edges.size();
+    (*return_tuples) = pgr_alloc((*count), (*return_tuples));
     size_t sequence = 0;
 
-    for (auto id : remaining_vertices) {
+    for (const auto id : modified_vertices) {
+        auto v = graph.get_V(id);
         int64_t* contracted_vertices = NULL;
-        auto ids = graph.get_contracted_vertices(id);
-        contracted_vertices = pgr_alloc(
-                   ids.size(), contracted_vertices);
+        auto vids = graph[v].contracted_vertices();
+
+        contracted_vertices = pgr_alloc(vids.size(), contracted_vertices);
+
         int count = 0;
-        for (const auto id : ids) {
+        for (const auto id : vids) {
             contracted_vertices[count++] = id;
         }
-        (*return_tuples)[sequence] = {id, const_cast<char*>("v"), -1, -1, -1.00,
-            contracted_vertices, count};
+        (*return_tuples)[sequence] = {
+            id,
+            const_cast<char*>("v"),
+            -1, -1, -1.00,
+            contracted_vertices,
+            count};
 
         ++sequence;
     }
 
-#if 0
-    for (auto e : shortcut_edges) {
-        auto edge = graph[e];
-        int64_t* contracted_vertices = NULL;
-        //auto ids = graph.get_ids(edge.contracted_vertices());
-        auto ids = edge.contracted_vertices();
-        contracted_vertices = pgr_alloc(
-                ids.size(), contracted_vertices);
-        int count = 0;
-        for (const auto id : ids) {
-            contracted_vertices[count++] = id;
-        }
-        (*return_tuples)[sequence] = {edge.id, const_cast<char*>("e"),
-            edge.source, edge.target, edge.cost,
-            contracted_vertices, count};
-
-        ++sequence;
-    }
-#else
     for (auto e : shortcut_edges) {
         auto edge = graph[e];
         int64_t* contracted_vertices = NULL;
@@ -181,8 +155,9 @@ void get_postgres_result(
 
         ++sequence;
     }
-#endif
 }
+
+}  // namespace
 
 
 

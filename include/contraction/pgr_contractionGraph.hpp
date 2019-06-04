@@ -94,7 +94,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
        @param [in] v vertex_descriptor of target vertex
        @return E: The edge descriptor of the edge with minimum cost
        */
-     std::tuple<E, Identifiers<int64_t>, bool> get_min_cost_edge(V u, V v) {
+     std::tuple<double, Identifiers<int64_t>, bool>
+     get_min_cost_edge(V u, V v) {
          E min_edge;
          Identifiers<int64_t> contracted_vertices;
          double min_cost = (std::numeric_limits<double>::max)();
@@ -111,7 +112,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
                      }
                  }
              }
-             return std::make_tuple(min_edge, contracted_vertices, found);
+             return std::make_tuple(min_cost, contracted_vertices, found);
          }
 
          pgassert(this->is_undirected());
@@ -125,7 +126,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
                  }
              }
          }
-         return std::make_tuple(min_edge, contracted_vertices, found);
+         return std::make_tuple(min_cost, contracted_vertices, found);
      }
 
 
@@ -157,7 +158,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
      }
 
 
-
+#if 0
      /*! @brief get the contracted vertex ids of a given vertex in array format
        @param [in] vid vertex_id
 
@@ -174,7 +175,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
          }
          return ids;
      }
-
+#endif
      /*! @brief add edges(shortuct) to the graph during contraction
 
        u -> v -> w
@@ -190,28 +191,17 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
        @param [in] edge of type *CH_edge* is to be added
        */
 
-     void add_shortcut(const CH_edge &edge) {
+     void add_shortcut(const CH_edge &edge, V u, V v) {
          bool inserted;
          E e;
-         if (edge.cost < 0)
-             return;
+         if (edge.cost < 0) return;
 
-         pgassert(this->vertices_map.find(edge.source)
-                 != this->vertices_map.end());
-         pgassert(this->vertices_map.find(edge.target)
-                 != this->vertices_map.end());
+         boost::tie(e, inserted) = boost::add_edge(u, v, this->graph);
 
-         auto vm_s = this->get_V(edge.source);
-         auto vm_t = this->get_V(edge.target);
-
-         boost::tie(e, inserted) =
-             boost::add_edge(vm_s, vm_t, this->graph);
-
-         this->graph[e].cp_members(edge);
-
-         shortcuts += e;
+         this->graph[e]= edge;
      }
 
+#if 0
      bool is_contracted(V v) {
         return this->graph[v].has_contracted_vertices();
      }
@@ -225,10 +215,10 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
             }
         }
      }
-
      Identifiers<E> get_shortcuts() {
          return shortcuts;
      }
+#endif
 
      bool has_u_v_w(V u, V v, V w) const {
          return boost::edge(u, v, this->graph).second &&  boost::edge(v, w, this->graph).second;

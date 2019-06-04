@@ -139,9 +139,10 @@ class Pgr_linear {
              process_shortcut(graph, u, v, w);
 
          }
+
+         graph[v].contracted_vertices().clear();
+         boost::clear_vertex(v, graph.graph);
          m_linearVertices -= v;
-
-
 
          if (is_contractible(graph, u)) {
              one_cycle(graph, u);
@@ -171,11 +172,22 @@ class Pgr_linear {
      void process_shortcut(G &graph, V u, V v, V w) {
          auto e1 = graph.get_min_cost_edge(u, v);
          auto e2 = graph.get_min_cost_edge(v, w);
-         auto contracted_vertices = std::get<1>(e1) + std::get<1>(e2);
-         contracted_vertices += graph[v].id;
 
          if (std::get<2>(e1) && std::get<2>(e2)) {
-             add_shortcut(graph, v, std::get<0>(e1), std::get<0>(e2), contracted_vertices);
+             auto contracted_vertices = std::get<1>(e1) + std::get<1>(e2);
+             double cost = std::get<0>(e1) + std::get<0>(e2);
+             contracted_vertices += graph[v].id;
+             contracted_vertices += graph[v].contracted_vertices();
+
+             // Create shortcut
+             CH_edge shortcut(
+                     get_next_id(),
+                     graph[u].id,
+                     graph[w].id,
+                     cost);
+             shortcut.contracted_vertices() = contracted_vertices;
+
+             graph.add_shortcut(shortcut, u, w);
          }
      }
 

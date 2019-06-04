@@ -32,9 +32,7 @@ SELECT * INTO contraction_info FROM pgr_contractGraph(
 PREPARE c_info AS
 SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    ('v', 2, ARRAY[1]::BIGINT[], -1, -1, '-1'::TEXT),
     ('v', 5, ARRAY[7, 8], -1, -1, '-1'),
-    ('v', 10, ARRAY[13], -1, -1, '-1'),
     ('v', 15, ARRAY[14], -1, -1, '-1'),
     ('v', 17, ARRAY[16], -1, -1, '-1'),
     ('e', -3, ARRAY[10, 13], 5, 11, '2.244'),
