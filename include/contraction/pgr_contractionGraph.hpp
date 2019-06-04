@@ -103,7 +103,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
          if (this->is_directed()) {
              BGL_FORALL_OUTEDGES_T(u, e, this->graph, G) {
                  if (this->target(e) == v) {
-                     contracted_vertices = this->graph[e].contracted_vertices();
+                     contracted_vertices += this->graph[e].contracted_vertices();
                      if (this->graph[e].cost < min_cost) {
                          min_cost = this->graph[e].cost;
                          min_edge = e;
@@ -117,7 +117,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
          pgassert(this->is_undirected());
          BGL_FORALL_OUTEDGES_T(u, e, this->graph, G) {
              if (this->adjacent(u, e) == v) {
-                 contracted_vertices = this->graph[e].contracted_vertices();
+                 contracted_vertices += this->graph[e].contracted_vertices();
                  if (this->graph[e].cost < min_cost) {
                      min_cost = this->graph[e].cost;
                      min_edge = e;

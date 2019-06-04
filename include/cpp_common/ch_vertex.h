@@ -51,6 +51,7 @@ class CH_vertex {
     void add_contracted_vertex(CH_vertex& v);
     void add_vertex_id(int64_t vid) {m_contracted_vertices += vid;}
     const Identifiers<int64_t>& contracted_vertices() const;
+    Identifiers<int64_t>& contracted_vertices();
     bool has_contracted_vertices() const;
     void clear_contracted_vertices() {m_contracted_vertices.clear();}
     friend std::ostream& operator <<(std::ostream& os, const CH_vertex& v);

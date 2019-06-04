@@ -40,6 +40,11 @@ const Identifiers<int64_t>&
     return m_contracted_vertices;
 }
 
+Identifiers<int64_t>&
+    CH_vertex::contracted_vertices() {
+    return m_contracted_vertices;
+}
+
 
 bool CH_vertex::has_contracted_vertices() const {
     if (m_contracted_vertices.size() == 0)
