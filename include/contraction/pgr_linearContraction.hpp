@@ -74,7 +74,6 @@ class Pgr_linear : public Pgr_messages {
  public:
      void setForbiddenVertices(
              Identifiers<V> forbidden_vertices) {
-         log << "Setting forbidden vertices\n";
          m_forbiddenVertices = forbidden_vertices;
      }
 
@@ -97,12 +96,6 @@ class Pgr_linear : public Pgr_messages {
      void doContraction(G &graph, Identifiers<V> forbidden_vertices) {
          m_forbiddenVertices = forbidden_vertices;
          calculateVertices(graph);
-         log << "Performing contraction\n";
-         log << "Linear vertices" << std::endl;
-         for (const auto v : m_linearVertices) {
-             log << graph[v].id << ", ";
-         }
-         log << std::endl;
 
          while (!m_linearVertices.empty()) {
              V v = m_linearVertices.front();
@@ -123,11 +116,6 @@ class Pgr_linear : public Pgr_messages {
          adjacent_vertices.pop_front();
          V w = adjacent_vertices.front();
          adjacent_vertices.pop_front();
-
-         // Adjacent vertices of the current linear vertex
-         log << "Adjacent vertices:\t" << graph[u].id
-             << ", " << graph[w].id
-             << std::endl;
 
          pgassert(v != u);
          pgassert(v != w);
@@ -153,17 +141,14 @@ class Pgr_linear : public Pgr_messages {
          }
          m_linearVertices -= v;
 
-         log << "checking neighbor vertices";
 
 
          if (is_contractible(graph, u)) {
-             log << "Adding linear vertex: " << graph[u].id << std::endl;
              one_cycle(graph, u);
          } else {
              m_linearVertices -= u;
          }
          if (is_contractible(graph, w)) {
-             log << "Adding linear vertex: " << graph[w].id << std::endl;
              one_cycle(graph, w);
          } else {
              m_linearVertices -= w;
