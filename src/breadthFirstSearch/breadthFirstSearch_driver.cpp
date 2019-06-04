@@ -55,32 +55,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     directed BOOLEAN DEFAULT true,
  ***********************************************************/
 
-#if 0
 template < class G >
-std::deque< Path >
+std::vector<pgr_mst_rt>
 pgr_breadthFirstSearch(
         G &graph,
         std::vector < int64_t > sources,
-        std::vector < int64_t > targets,
-        std::string &log,
-        bool only_cost = false) {
+        int64_t max_depth) {
     std::sort(sources.begin(), sources.end());
     sources.erase(
             std::unique(sources.begin(), sources.end()),
             sources.end());
 
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
 
-    Pgr_breadthFirstSearch< G > fn_breadthFirstSearch;
-    auto paths = fn_breadthFirstSearch.breadthFirstSearch(
-            graph, sources, targets, only_cost);
-    log += fn_breadthFirstSearch.get_log();
-    return paths;
+    pgrouting::functions::Pgr_breadthFirstSearch< G > fn_breadthFirstSearch;
+    auto results = fn_breadthFirstSearch.breadthFirstSearch(
+            graph, sources, max_depth);
+    return results;
 }
-#endif
 
 void
 do_pgr_breadthFirstSearch(
@@ -113,34 +104,27 @@ do_pgr_breadthFirstSearch(
         std::vector<int64_t>
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
 
-        std::deque< Path >paths;
+        std::vector<pgr_mst_rt> results;
         std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             
-            #if 0
-            paths = pgr_breadthFirstSearch(digraph,
+            results = pgr_breadthFirstSearch(
+                    digraph,
                     start_vertices,
-                    end_vertices,
-                    logstr,
-                    only_cost);
-            #endif
+                    max_depth);
 
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
 
-            #if 0
-            paths = pgr_breadthFirstSearch(
+            results = pgr_breadthFirstSearch(
                     undigraph,
                     start_vertices,
-                    end_vertices,
-                    logstr,
-                    only_cost);
-            #endif
+                    max_depth);
 
         }
         #if 0 //TODO (vicennial): Figure out how to process return tuples

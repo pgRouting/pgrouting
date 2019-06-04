@@ -53,7 +53,8 @@ public:
         int64_t depth){
 
         pgr_mst_rt dummy = {0, 0, 0, 0, 0.0, 0.0};
-        return dummy;
+        std::vector<pgr_mst_rt> dummyResults = {dummy};
+        return dummyResults;
 
         }
 
@@ -64,7 +65,8 @@ public:
         int64_t depth){
 
         pgr_mst_rt dummy = {0, 0, 0, 0, 0.0, 0.0};
-        return dummy;
+        std::vector<pgr_mst_rt> dummyResults = {dummy};
+        return dummyResults;
 
         }
     
