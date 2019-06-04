@@ -116,7 +116,7 @@ void get_postgres_result(
     auto remaining_vertices(get_modified_vertices(graph));
 #endif
 
-#if 1
+#if 0
     auto shortcut_edges(graph.get_shortcuts());
 #else
     auto shortcut_edges(get_shortcuts(graph));
