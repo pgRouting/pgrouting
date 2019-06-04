@@ -40,6 +40,41 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 
+-namespace {
+
+/*! @brief vertices with at least one contracted vertex
+
+  @result The vids Identifiers with at least one contracted vertex
+*/
+template <typename G>
+Identifiers<int64_t> get_modified_vertices(const G& graph) {
+    Identifiers<int64_t> vids;
+    for (auto v : boost::make_iterator_range(boost::vertices(graph.graph))) {
+        if (graph[v].has_contracted_vertices()) {
+            vids += graph[v].id;
+        }
+    }
+    return vids;
+}
+
+/*! @brief vertices with at least one contracted vertex
+
+  @result The vids Identifiers with at least one contracted vertex
+*/
+template <typename G>
+Identifiers<typename G::E> get_shortcuts(const G& graph) {
+    Identifiers<typename G::E> eids;
+    for (auto e : boost::make_iterator_range(boost::edges(graph.graph))) {
+        if (graph[e].id < 0) {
+            eids += e;
+        } else {
+            pgassert(graph[e].contracted_vertices().empty());
+        }
+    }
+    return eids;
+}
+
+}  // namespace
 
 template <typename G>
 static void process_contraction(
@@ -52,36 +87,12 @@ static void process_contraction(
 
     graph.insert_edges(edges);
 
-    #if 0
-    /*
-     * this check does not ignore vertices ids that do not belong to the graph
-     */
-    log << "Checking for valid forbidden vertices\n";
-    for (const auto vertex : forbidden_vertices) {
-        if (!graph.has_vertex(vertex)) {
-            err << "Invalid forbidden vertex: " << vertex << "\n";
-            return;
-        }
-    }
-    #endif
-
     Identifiers<typename G::V> forbid_vertices;
     for (const auto &vertex : forbidden_vertices) {
         if (graph.has_vertex(vertex)) {
             forbid_vertices += graph.get_V(vertex);
         }
-#if 0
-        else {
-            // TODO should it be an error?
-            err << "Invalid forbidden vertex: " << vertex << "\n";
-        }
-#endif
     }
-
-#if 0
-    log << "Before contraction\n";
-    log << graph;
-#endif
 
     /*
      * Function call to get the contracted graph.
@@ -93,10 +104,6 @@ static void process_contraction(
             max_cycles);
 
     log << result.get_log();
-#if 0
-    log << "After contraction\n";
-    log << graph;
-#endif
 }
 
 template <typename G>
@@ -209,44 +216,8 @@ do_pgr_contractGraph(
         }
 
 
-#if 0
-        /*
-         * Extracting vertices of the graph
-         */
-        Identifiers<int64_t> remaining_vertices;
-        std::vector< pgrouting::CH_edge > shortcut_edges;
-#endif
-#ifndef NDEBUG
-        log << "Original Graph: \n" <<
-            std::setprecision(32);
-        for (const auto edge : edges) {
-            log << "id = " << edge.id
-                << "\tsource = " << edge.source
-                << "\ttarget = " << edge.target
-                << "\tcost = " << edge.cost
-                << "\treverse_cost = " << edge.reverse_cost
-                << ")\n";
-        }
-        log << "size_contraction_order " << ordering.size() << "\n";
-        log << "contraction_order: " <<"{ ";
-        for (const auto o : ordering) {
-            log << o << ", ";
-        }
-        log << " }\n";
-
-        log << "size_forbidden_vertices " << forbid.size() << "\n";
-        log << "forbidden_vertices" << "{ ";
-        for (const auto vertex : forbid) {
-            log << vertex << ", ";
-        }
-        log << " }\n";
-        log << "max_cycles " << max_cycles << "\n";
-        log << "directed " << directed << "\n";
-#endif
-
         graphType gType = directed? DIRECTED: UNDIRECTED;
         if (directed) {
-            log << "Working with directed Graph\n";
             using DirectedGraph = pgrouting::graph::CHDirectedGraph;
             DirectedGraph digraph(gType);
 
@@ -259,8 +230,6 @@ do_pgr_contractGraph(
                     return_tuples,
                     return_count);
         } else {
-            log << "Working with Undirected Graph\n";
-
             using UndirectedGraph = pgrouting::graph::CHUndirectedGraph;
             UndirectedGraph undigraph(gType);
             process_contraction(undigraph, edges, forbid, ordering,
