@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_biconnectedComponents - Proposed
+pgr_biconnectedComponents
 ===============================================================================
 
 ``pgr_biconnectedComponents`` — Return the biconnected components of an undirected graph.
@@ -18,15 +18,11 @@ In particular, the algorithm implemented by Boost.Graph.
 
    Boost Graph Inside
 
-.. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
-
 .. rubric:: Availability
 
 * On v3.0.0
 
-  * Set as `proposed`
+  * Set as `official`
   * Return columns change: ``n_seq`` is removed
 
 * New as experimental on v2.5.0
@@ -54,7 +50,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: biconnectedComponents -- Proposed
+    single: biconnectedComponents
 
 .. code-block:: none
 

@@ -55,10 +55,9 @@ LANGUAGE SQL VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_connectedComponents(TEXT)
 IS'pgr_connectedComponents
-- EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_connectedComponents.html
+  - ${PGROUTING_DOC_LINK}/pgr_connectedComponents.html
 ';

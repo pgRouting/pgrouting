@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_strongComponents - Proposed
+pgr_strongComponents
 ===============================================================================
 
 ``pgr_strongComponents`` — Strongly connected components of a directed graph using Tarjan's algorithm based on DFS.
@@ -17,15 +17,11 @@ pgr_strongComponents - Proposed
 
    Boost Graph Inside
 
-.. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
-
 .. rubric:: Availability
 
 * On v3.0.0
 
-  * Set as `proposed`
+  * Set as `official`
   * Return columns change: ``n_seq`` is removed
 
 * New as experimental on v2.5.0
@@ -51,7 +47,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: strongComponents -- Proposed
+    single: strongComponents
 
 .. code-block:: none
 
