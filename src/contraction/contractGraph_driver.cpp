@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 
--namespace {
+namespace {
 
 /*! @brief vertices with at least one contracted vertex
 
@@ -67,6 +67,7 @@ Identifiers<typename G::E> get_shortcuts(const G& graph) {
     for (auto e : boost::make_iterator_range(boost::edges(graph.graph))) {
         if (graph[e].id < 0) {
             eids += e;
+            pgassert(!graph[e].contracted_vertices().empty());
         } else {
             pgassert(graph[e].contracted_vertices().empty());
         }
@@ -82,11 +83,8 @@ static void process_contraction(
         const std::vector< pgr_edge_t > &edges,
         const std::vector< int64_t > &forbidden_vertices,
         const std::vector< int64_t > &contraction_order,
-        int64_t max_cycles,
-        std::ostringstream &log) {
-
+        int64_t max_cycles) {
     graph.insert_edges(edges);
-
     Identifiers<typename G::V> forbid_vertices;
     for (const auto &vertex : forbidden_vertices) {
         if (graph.has_vertex(vertex)) {
@@ -98,12 +96,11 @@ static void process_contraction(
      * Function call to get the contracted graph.
      */
     using Contract = pgrouting::contraction::Pgr_contract<G>;
-    Contract result(graph,
+    Contract result(
+            graph,
             forbid_vertices,
             contraction_order,
             max_cycles);
-
-    log << result.get_log();
 }
 
 template <typename G>
@@ -111,16 +108,23 @@ static
 void get_postgres_result(
         G &graph,
         contracted_rt **return_tuples,
-        size_t *return_tuples_size) {
-
+        size_t *count) {
+#if 0
     Identifiers<int64_t> remaining_vertices;
     graph.get_remaining_vertices(remaining_vertices);
+#else
+    auto remaining_vertices(get_modified_vertices(graph));
+#endif
+
+#if 1
     auto shortcut_edges(graph.get_shortcuts());
+#else
+    auto shortcut_edges(get_shortcuts(graph));
+#endif
 
-
-    (*return_tuples_size) = remaining_vertices.size() + shortcut_edges.size();
+    (*count) = remaining_vertices.size() + shortcut_edges.size();
     (*return_tuples) = pgr_alloc(
-               (*return_tuples_size), (*return_tuples));
+               (*count), (*return_tuples));
     size_t sequence = 0;
 
     for (auto id : remaining_vertices) {
@@ -138,13 +142,14 @@ void get_postgres_result(
         ++sequence;
     }
 
+#if 0
     for (auto e : shortcut_edges) {
         auto edge = graph[e];
         int64_t* contracted_vertices = NULL;
         //auto ids = graph.get_ids(edge.contracted_vertices());
         auto ids = edge.contracted_vertices();
         contracted_vertices = pgr_alloc(
-                   ids.size(), contracted_vertices);
+                ids.size(), contracted_vertices);
         int count = 0;
         for (const auto id : ids) {
             contracted_vertices[count++] = id;
@@ -155,8 +160,29 @@ void get_postgres_result(
 
         ++sequence;
     }
-}
+#else
+    for (auto e : shortcut_edges) {
+        auto edge = graph[e];
+        int64_t* contracted_vertices = NULL;
 
+        const auto vids(edge.contracted_vertices());
+        pgassert(!vids.empty());
+
+        contracted_vertices = pgr_alloc(vids.size(), contracted_vertices);
+        int count = 0;
+        for (const auto vid : vids) {
+            contracted_vertices[count++] = vid;
+        }
+        (*return_tuples)[sequence] = {
+            edge.id,
+            const_cast<char*>("e"),
+            edge.source, edge.target, edge.cost,
+            contracted_vertices, count};
+
+        ++sequence;
+    }
+#endif
+}
 
 
 
@@ -222,8 +248,7 @@ do_pgr_contractGraph(
             DirectedGraph digraph(gType);
 
             process_contraction(digraph, edges, forbid, ordering,
-                    max_cycles,
-                    log);
+                    max_cycles);
 
             get_postgres_result(
                     digraph,
@@ -233,8 +258,7 @@ do_pgr_contractGraph(
             using UndirectedGraph = pgrouting::graph::CHUndirectedGraph;
             UndirectedGraph undigraph(gType);
             process_contraction(undigraph, edges, forbid, ordering,
-                    max_cycles,
-                    log);
+                    max_cycles);
 
             get_postgres_result(
                     undigraph,
