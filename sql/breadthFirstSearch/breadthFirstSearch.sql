@@ -50,7 +50,7 @@ CREATE OR REPLACE FUNCTION pgr_breadthFirstSearch(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], max_depth, directed) AS a;
+    FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], max_depth, directed) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
@@ -74,7 +74,7 @@ CREATE OR REPLACE FUNCTION pgr_breadthFirstSearch(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], max_depth, directed) AS a;
+    FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], max_depth, directed) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
