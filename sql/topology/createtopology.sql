@@ -287,7 +287,7 @@ BEGIN
             end;
         END LOOP;
         RAISE notice '-------------> TOPOLOGY CREATED FOR  % edges', rowcount;
-        RAISE NOTICE 'Rows with NULL geometry OR NULL id: %',notincluded;
+        RAISE NOTICE 'Rows with NULL geometry or NULL id: %',notincluded;
         RAISE notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname), _pgr_quote_ident(vertname);
         RAISE notice '----------------------------------------------';
 
