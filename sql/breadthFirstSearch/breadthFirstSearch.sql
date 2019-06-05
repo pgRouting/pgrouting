@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --ONE TO DEPTH
 CREATE OR REPLACE FUNCTION pgr_breadthFirstSearch(
     TEXT,   -- edges_sql (required)
-    BIGINT, -- from_vids (required)
+    BIGINT, -- from_vid (required)
 
     max_depth BIGINT DEFAULT 9223372036854775807,
     directed BOOLEAN DEFAULT true,

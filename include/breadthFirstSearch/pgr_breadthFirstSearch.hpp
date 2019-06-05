@@ -27,9 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 
-#include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/pgr_messages.h"
 //******************************************
 
 namespace pgrouting
@@ -46,17 +44,6 @@ class Pgr_breadthFirstSearch
 
 public:
 
-    // 1 to depth
-    std::vector<pgr_mst_rt> breadthFirstSearch(
-        G &graph,
-        int64_t start_vertex,
-        int64_t depth){
-
-        pgr_mst_rt dummy = {0, 0, 0, 0, 0.0, 0.0};
-        std::vector<pgr_mst_rt> dummyResults = {dummy};
-        return dummyResults;
-
-        }
 
     //many to depth
     std::vector<pgr_mst_rt> breadthFirstSearch(
