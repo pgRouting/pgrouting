@@ -23,26 +23,24 @@ SELECT * FROM pgr_contractGraph(
     array[1,2], directed:=true);
  seq | type | id | contracted_vertices | source | target | cost
 -----+------+----+---------------------+--------+--------+------
-   1 | v    |  5 | {7,8}               |     -1 |     -1 |   -1
-   2 | v    | 15 | {14}                |     -1 |     -1 |   -1
-   3 | v    | 17 | {16}                |     -1 |     -1 |   -1
-   4 | e    | -1 | {1,2}               |      3 |      5 |    2
-   5 | e    | -2 | {4}                 |      9 |      3 |    2
-   6 | e    | -3 | {10,13}             |      5 |     11 |    2
-   7 | e    | -4 | {12}                |     11 |      9 |    2
-(7 rows)
+   1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
+   2 | v    |  5 | {7,8}               |     -1 |     -1 |   -1
+   3 | v    | 10 | {13}                |     -1 |     -1 |   -1
+   4 | v    | 15 | {14}                |     -1 |     -1 |   -1
+   5 | v    | 17 | {16}                |     -1 |     -1 |   -1
+(5 rows)
 
 -- q3
 SELECT * INTO contraction_results
 FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1,2], directed:=true);
-SELECT 7
+SELECT 5
 -- q4
 UPDATE edge_table_vertices_pgr
 SET is_contracted = true
 WHERE id IN (SELECT  unnest(contracted_vertices) FROM  contraction_results);
-UPDATE 10
+UPDATE 6
 -- q5
 SELECT id, is_contracted
 FROM edge_table_vertices_pgr
@@ -50,17 +48,17 @@ ORDER BY id;
  id | is_contracted
 ----+---------------
   1 | t
-  2 | t
+  2 | f
   3 | f
-  4 | t
+  4 | f
   5 | f
   6 | f
   7 | t
   8 | t
   9 | f
- 10 | t
+ 10 | f
  11 | f
- 12 | t
+ 12 | f
  13 | t
  14 | t
  15 | f
@@ -73,7 +71,7 @@ UPDATE edge_table_vertices_pgr
 SET contracted_vertices = contraction_results.contracted_vertices
 FROM contraction_results
 WHERE type = 'v' AND edge_table_vertices_pgr.id = contraction_results.id;
-UPDATE 3
+UPDATE 5
 -- q7
 SELECT id, contracted_vertices, is_contracted
 FROM edge_table_vertices_pgr
@@ -81,17 +79,17 @@ ORDER BY id;
  id | contracted_vertices | is_contracted
 ----+---------------------+---------------
   1 |                     | t
-  2 |                     | t
+  2 | {1}                 | f
   3 |                     | f
-  4 |                     | t
+  4 |                     | f
   5 | {7,8}               | f
   6 |                     | f
   7 |                     | t
   8 |                     | t
   9 |                     | f
- 10 |                     | t
+ 10 | {13}                | f
  11 |                     | f
- 12 |                     | t
+ 12 |                     | f
  13 |                     | t
  14 |                     | t
  15 | {14}                | f
@@ -104,7 +102,7 @@ INSERT INTO edge_table(source, target, cost, reverse_cost, contracted_vertices, 
 SELECT source, target, cost, -1, contracted_vertices, true
 FROM contraction_results
 WHERE type = 'e';
-INSERT 0 4
+INSERT 0 0
 -- q9
 SELECT id, source, target, cost, reverse_cost, contracted_vertices, is_contracted
 FROM edge_table
@@ -129,11 +127,7 @@ ORDER BY id;
  16 |      4 |      9 |    1 |            1 |                     | f
  17 |     14 |     15 |    1 |            1 |                     | f
  18 |     16 |     17 |    1 |            1 |                     | f
- 19 |      3 |      5 |    2 |           -1 | {1,2}               | t
- 20 |      9 |      3 |    2 |           -1 | {4}                 | t
- 21 |      5 |     11 |    2 |           -1 | {10,13}             | t
- 22 |     11 |      9 |    2 |           -1 | {12}                | t
-(22 rows)
+(18 rows)
 
 -- q10
 SELECT id  FROM edge_table_vertices_pgr
@@ -141,14 +135,18 @@ WHERE is_contracted = false
 ORDER BY id;
  id
 ----
+  2
   3
+  4
   5
   6
   9
+ 10
  11
+ 12
  15
  17
-(7 rows)
+(11 rows)
 
 -- case1
 SELECT * FROM pgr_dijkstra(
@@ -188,10 +186,7 @@ SELECT * FROM pgr_dijkstra(
     3, 1, false);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
-   1 |        1 |    3 |    2 |    1 |        0
-   2 |        2 |    2 |    1 |    1 |        1
-   3 |        3 |    1 |   -1 |    0 |        2
-(3 rows)
+(0 rows)
 
 -- case3
 SELECT * FROM pgr_dijkstra(
@@ -221,12 +216,7 @@ SELECT * FROM pgr_dijkstra(
     7, 13, false);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
-   1 |        1 |    7 |    6 |    1 |        0
-   2 |        2 |    8 |    7 |    1 |        1
-   3 |        3 |    5 |   10 |    1 |        2
-   4 |        4 |   10 |   14 |    1 |        3
-   5 |        5 |   13 |   -1 |    0 |        4
-(5 rows)
+(0 rows)
 
 -- case4
 SELECT * FROM  pgr_dijkstra(
@@ -247,11 +237,12 @@ SELECT * FROM  pgr_dijkstra(
     3, 7, false);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
-   1 |        1 |    3 |   19 |    2 |        0
-   2 |        2 |    5 |    7 |    1 |        2
-   3 |        3 |    8 |    6 |    1 |        3
-   4 |        4 |    7 |   -1 |    0 |        4
-(4 rows)
+   1 |        1 |    3 |    5 |    1 |        0
+   2 |        2 |    6 |    8 |    1 |        1
+   3 |        3 |    5 |    7 |    1 |        2
+   4 |        4 |    8 |    6 |    1 |        3
+   5 |        5 |    7 |   -1 |    0 |        4
+(5 rows)
 
 -- case5q1
 WITH
@@ -278,8 +269,7 @@ SELECT edge, contracted_vertices
     WHERE is_contracted = true;
  edge | contracted_vertices
 ------+---------------------
-   19 | {1,2}
-(1 row)
+(0 rows)
 
 -- case5q2
 SELECT * FROM pgr_dijkstra($$
@@ -327,8 +317,8 @@ SELECT * FROM pgr_dijkstra($$
     3, 7, false);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
-   1 |        1 |    3 |    2 |    1 |        0
-   2 |        2 |    2 |    4 |    1 |        1
+   1 |        1 |    3 |    5 |    1 |        0
+   2 |        2 |    6 |    8 |    1 |        1
    3 |        3 |    5 |    7 |    1 |        2
    4 |        4 |    8 |    6 |    1 |        3
    5 |        5 |    7 |   -1 |    0 |        4
