@@ -102,7 +102,7 @@ FROM pgr_contractgraph(
 PREPARE v4e3q11 AS
 SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    ('e', -2, ARRAY[3, 6]::BIGINT[], 4, 11, 3))
+    ('e', -1, ARRAY[3, 6]::BIGINT[], 4, 11, 3))
 AS t(type, id, contracted_vertices, source, target, cost);
 
 SELECT set_eq('v4e3q10', 'v4e3q11', 'graph_e_3_5_11 QUERY 1: Directed graph with three edges and no forbidden vertices');

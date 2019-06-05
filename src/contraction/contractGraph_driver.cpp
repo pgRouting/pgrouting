@@ -62,8 +62,9 @@ Identifiers<int64_t> get_modified_vertices(const G& graph) {
   @result The vids Identifiers with at least one contracted vertex
 */
 template <typename G>
-Identifiers<typename G::E> get_shortcuts(const G& graph) {
-    Identifiers<typename G::E> eids;
+std::vector<typename G::E> get_shortcuts(const G& graph) {
+    using E = typename G::E;
+    Identifiers<E> eids;
     for (auto e : boost::make_iterator_range(boost::edges(graph.graph))) {
         if (graph[e].id < 0) {
             eids += e;
@@ -72,7 +73,10 @@ Identifiers<typename G::E> get_shortcuts(const G& graph) {
             pgassert(graph[e].contracted_vertices().empty());
         }
     }
-    return eids;
+    std::vector<E> o_eids(eids.begin(), eids.end());
+    std::sort(o_eids.begin(), o_eids.end(),
+            [&](E lhs, E rhs) {return -graph[lhs].id < -graph[rhs].id;});
+    return o_eids;
 }
 
 
@@ -135,6 +139,7 @@ void get_postgres_result(
         ++sequence;
     }
 
+    int64_t eid = 0;
     for (auto e : shortcut_edges) {
         auto edge = graph[e];
         int64_t* contracted_vertices = NULL;
@@ -148,13 +153,14 @@ void get_postgres_result(
             contracted_vertices[count++] = vid;
         }
         (*return_tuples)[sequence] = {
-            edge.id,
+            --eid,
             const_cast<char*>("e"),
             edge.source, edge.target, edge.cost,
             contracted_vertices, count};
-
         ++sequence;
     }
+
+
 }
 
 }  // namespace

@@ -125,7 +125,7 @@ FROM pgr_contractgraph(
 PREPARE graph_e_3_5_11_sol1 AS
 SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    ('e', -2, ARRAY[3, 6]::BIGINT[], 4, 11, 3))
+    ('e', -1, ARRAY[3, 6]::BIGINT[], 4, 11, 3))
 AS t(type, id, contracted_vertices, source, target, cost);
 
 SELECT set_eq('graph_e_3_5_11_q1', 'graph_e_3_5_11_sol1', 'graph_e_3_5_11 QUERY 1: Directed graph with three edges and no forbidden vertices');
@@ -184,7 +184,7 @@ FROM pgr_contractgraph(
 PREPARE graph_9_11_13_15_sol1 AS
 SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    ('e', -2, ARRAY[6, 9]::BIGINT[], 11, 12, 3))
+    ('e', -1, ARRAY[6, 9]::BIGINT[], 11, 12, 3))
 AS t(type, id, contracted_vertices, source, target, cost);
 
 SELECT set_eq('graph_9_11_13_15_q1', 'graph_9_11_13_15_sol1', 'graph_9_11_13_15 QUERY 1: no forbidden vertices');
@@ -200,7 +200,7 @@ FROM pgr_contractgraph(
 PREPARE graph_9_11_13_15_sol2 AS
 SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    ('e', -2, ARRAY[9, 12]::BIGINT[], 6, 11, 3))
+    ('e', -1, ARRAY[9, 12]::BIGINT[], 6, 11, 3))
 AS t(type, id, contracted_vertices, source, target, cost);
 
 SELECT set_eq('graph_9_11_13_15_q2', 'graph_9_11_13_15_sol2', 'graph_9_11_13_15 QUERY 2: forbidden vertices: 6');
@@ -217,7 +217,7 @@ FROM pgr_contractgraph(
 PREPARE graph_9_11_13_15_sol3 AS
 SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    ('e', -2, ARRAY[6, 9]::BIGINT[], 11, 12, 3))
+    ('e', -1, ARRAY[6, 9]::BIGINT[], 11, 12, 3))
 AS t(type, id, contracted_vertices, source, target, cost);
 
 SELECT set_eq('graph_9_11_13_15_q3', 'graph_9_11_13_15_sol3', 'graph_9_11_13_15 QUERY 3: forbidden vertices: 12');
@@ -249,7 +249,7 @@ FROM pgr_contractgraph(
 PREPARE graph_9_11_13_15_sol5 AS
 SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    ('e', -2, ARRAY[6, 11]::BIGINT[], 9, 12, 3))
+    ('e', -1, ARRAY[6, 11]::BIGINT[], 9, 12, 3))
 AS t(type, id, contracted_vertices, source, target, cost);
 
 SELECT set_eq('graph_9_11_13_15_q5', 'graph_9_11_13_15_sol5', 'graph_9_11_13_15 QUERY 5: forbidden vertices: 9');
@@ -264,7 +264,7 @@ FROM pgr_contractgraph(
 PREPARE graph_9_11_13_15_sol6 AS
 SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    ('e', -2, ARRAY[11, 12]::BIGINT[], 6, 9, 3))
+    ('e', -1, ARRAY[11, 12]::BIGINT[], 6, 9, 3))
 AS t(type, id, contracted_vertices, source, target, cost);
 
 SELECT set_eq('graph_9_11_13_15_q6', 'graph_9_11_13_15_sol6', 'graph_9_11_13_15 QUERY 6: forbidden vertices: 6 & 9');
@@ -279,7 +279,7 @@ FROM pgr_contractgraph(
 PREPARE graph_9_11_13_15_sol7 AS
 SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    ('e', -2, ARRAY[6, 11]::BIGINT[], 9, 12, 3))
+    ('e', -1, ARRAY[6, 11]::BIGINT[], 9, 12, 3))
 AS t(type, id, contracted_vertices, source, target, cost);
 SELECT set_eq('graph_9_11_13_15_q7', 'graph_9_11_13_15_sol7', 'graph_9_11_13_15 QUERY 7: forbidden vertices: 12 & 9');
 
@@ -307,7 +307,7 @@ FROM pgr_contractgraph(
 PREPARE graph_9_11_13_15_sol9 AS
 SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    ('e', -2, ARRAY[6, 9]::BIGINT[], 11, 12, 3))
+    ('e', -1, ARRAY[6, 9]::BIGINT[], 11, 12, 3))
 AS t(type, id, contracted_vertices, source, target, cost);
 
 SELECT set_eq('graph_9_11_13_15_q9', 'graph_9_11_13_15_sol9', 'graph_9_11_13_15 QUERY 9: forbidden vertices: 11');
@@ -322,7 +322,7 @@ FROM pgr_contractgraph(
 PREPARE graph_9_11_13_15_sol10 AS
 SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    ('e', -2, ARRAY[9, 12]::BIGINT[], 6, 11, 3))
+    ('e', -1, ARRAY[9, 12]::BIGINT[], 6, 11, 3))
 AS t(type, id, contracted_vertices, source, target, cost);
 
 SELECT set_eq('graph_9_11_13_15_q10', 'graph_9_11_13_15_sol10', 'graph_9_11_13_15 QUERY 10: forbidden vertices:  6 & 11');
