@@ -44,7 +44,7 @@ SELECT * FROM pgr_contractGraph(
     ARRAY[1]::integer[], directed := false);
 
 prepare sol_2_1 AS
-SELECT 1::INTEGER AS seq,
+SELECT
     'v'::CHAR AS type,
     2::BIGINT AS id,
     ARRAY[1]::BIGINT[] AS contracted_vertices,

@@ -44,7 +44,7 @@ SELECT * FROM pgr_contractGraph(
     ARRAY[1]::integer[]);
 
 prepare sol_2_1 AS
-SELECT 1::INTEGER AS seq,
+SELECT
     'v'::CHAR AS type,
     2::BIGINT AS id,
     ARRAY[1]::BIGINT[] AS contracted_vertices,
@@ -76,11 +76,11 @@ SELECT * FROM pgr_contractGraph(
     ARRAY[1]::integer[]);
 
 PREPARE sol4 AS
-SELECT seq, type, id, contracted_vertices, source, target, cost
+SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    (1::INTEGER, 'v'::CHAR, 2::BIGINT, ARRAY[1]::BIGINT[], -1::BIGINT, -1::BIGINT, -1::FLOAT),
-    (2, 'v', 3, ARRAY[1], -1, -1, -1)
-) AS t(seq, type, id, contracted_vertices, source, target, cost );
+    ('v'::CHAR, 2::BIGINT, ARRAY[1]::BIGINT[], -1::BIGINT, -1::BIGINT, -1::FLOAT),
+    ('v', 3, ARRAY[1], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
 
 SELECT set_eq('q4', 'sol4');
 

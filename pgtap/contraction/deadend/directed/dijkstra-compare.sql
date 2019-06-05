@@ -29,14 +29,14 @@ SELECT * INTO contraction_info FROM pgr_contractGraph(
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
 
 PREPARE c_info AS
-SELECT seq, type, id, contracted_vertices, source, target, cost
+SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    (1::INTEGER, 'v'::CHAR, 2::BIGINT, ARRAY[1]::BIGINT[], -1::BIGINT, -1::BIGINT, -1::FLOAT),
-    (2, 'v', 5, ARRAY[7,8], -1, -1, -1),
-    (3, 'v', 10, ARRAY[13], -1, -1, -1),
-    (4, 'v', 15, ARRAY[14], -1, -1, -1),
-    (5, 'v', 17, ARRAY[16], -1, -1, -1)
-) AS t(seq, type, id, contracted_vertices, source, target, cost );
+    ('v'::CHAR, 2::BIGINT, ARRAY[1]::BIGINT[], -1::BIGINT, -1::BIGINT, -1::FLOAT),
+    ('v', 5, ARRAY[7,8], -1, -1, -1),
+    ('v', 10, ARRAY[13], -1, -1, -1),
+    ('v', 15, ARRAY[14], -1, -1, -1),
+    ('v', 17, ARRAY[16], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
 
 SELECT set_eq($$SELECT * FROM contraction_info$$, 'c_info');
 

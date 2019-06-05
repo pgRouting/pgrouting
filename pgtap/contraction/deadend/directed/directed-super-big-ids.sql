@@ -19,7 +19,6 @@ SELECT * FROM pgr_contractGraph(
 
 SELECT set_eq('q1',
     $$SELECT
-    1::INTEGER AS seq,
     'v'::CHAR AS type,
     1000000000002::BIGINT AS id,
     ARRAY[1000000000001]::BIGINT[] AS contracted_vertices,
@@ -49,7 +48,6 @@ SELECT * FROM pgr_contractGraph(
 
 SELECT set_eq('q3',
     $$SELECT
-    1::INTEGER AS seq,
     'v'::CHAR AS type,
     1000000000002::BIGINT AS id,
     ARRAY[1000000000001]::BIGINT[] AS contracted_vertices,
@@ -68,7 +66,6 @@ SELECT * FROM pgr_contractGraph(
 
 SELECT set_eq('q4',
     $$SELECT
-    1::INTEGER AS seq,
     'v'::CHAR AS type,
     1000000000004::BIGINT AS id,
     ARRAY[1000000000002,1000000000003]::BIGINT[] AS contracted_vertices,
@@ -87,10 +84,10 @@ SELECT * FROM pgr_contractGraph(
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
 
 PREPARE sol5 AS
-SELECT seq, type, id, contracted_vertices, source, target, cost
+SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    (1::INTEGER, 'v'::CHAR, 1000000000004::BIGINT, ARRAY[1000000000001, 1000000000002, 1000000000003]::BIGINT[], -1::BIGINT, -1::BIGINT, -1::FLOAT)
-) AS t(seq, type, id, contracted_vertices, source, target, cost );
+    ('v'::CHAR, 1000000000004::BIGINT, ARRAY[1000000000001, 1000000000002, 1000000000003]::BIGINT[], -1::BIGINT, -1::BIGINT, -1::FLOAT)
+) AS t(type, id, contracted_vertices, source, target, cost );
 
 SELECT set_eq('q5', 'sol5');
 
@@ -107,14 +104,14 @@ SELECT * FROM pgr_contractGraph(
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
 
 PREPARE sol6 AS
-SELECT seq, type, id, contracted_vertices, source, target, cost
+SELECT type, id, contracted_vertices, source, target, cost
 FROM (VALUES
-    (1::INTEGER, 'v'::CHAR, 1000000000002::BIGINT, ARRAY[1000000000001]::BIGINT[], -1::BIGINT, -1::BIGINT, -1::FLOAT),
-    (2, 'v', 1000000000005, ARRAY[1000000000007,1000000000008], -1, -1, -1),
-    (3, 'v', 1000000000010, ARRAY[1000000000013], -1, -1, -1),
-    (4, 'v', 1000000000015, ARRAY[1000000000014], -1, -1, -1),
-    (5, 'v', 1000000000017, ARRAY[1000000000016], -1, -1, -1)
-) AS t(seq, type, id, contracted_vertices, source, target, cost );
+    ('v'::CHAR, 1000000000002::BIGINT, ARRAY[1000000000001]::BIGINT[], -1::BIGINT, -1::BIGINT, -1::FLOAT),
+    ('v', 1000000000005, ARRAY[1000000000007,1000000000008], -1, -1, -1),
+    ('v', 1000000000010, ARRAY[1000000000013], -1, -1, -1),
+    ('v', 1000000000015, ARRAY[1000000000014], -1, -1, -1),
+    ('v', 1000000000017, ARRAY[1000000000016], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
 
 SELECT set_eq('q6', 'sol6');
 

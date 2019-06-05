@@ -64,7 +64,6 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
     directed BOOLEAN DEFAULT true,
 
-    OUT seq INTEGER,
     OUT type TEXT,
     OUT id BIGINT,
     OUT contracted_vertices BIGINT[],
@@ -73,7 +72,7 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     OUT cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT type, id, contracted_vertices, source, target, cost
     FROM _pgr_contractGraph(_pgr_get_statement($1), $2::BIGINT[],  $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
