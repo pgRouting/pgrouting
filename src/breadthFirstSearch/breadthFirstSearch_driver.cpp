@@ -127,31 +127,32 @@ do_pgr_breadthFirstSearch(
                     max_depth);
 
         }
-        #if 0 //TODO (vicennial): Figure out how to process return tuples
-        log<< logstr;
-        size_t count(0);
-        count = count_tuples(paths);
+
+        auto count = results.size();
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice <<
-                "No paths found";
+                "No traversal found";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
-        (*return_count) = (collapse_paths(return_tuples, paths));
+        log << "\nConverting a set of traversals into the tuples";
+        for(size_t i = 0; i < count; i++){
+            *((*return_tuples) + i) = results[i];
+        }
+        (*return_count) = count;
 
+        pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
-        #endif
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
