@@ -192,7 +192,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         size_t      call_cntr = funcctx->call_cntr;
 
         /**********************************************************************/
-        size_t numb = 7;
+        size_t numb = 6;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
         size_t i;
@@ -241,16 +241,15 @@ contractGraph(PG_FUNCTION_ARGS) {
            int     attdim
            )
            */
-        TupleDescInitEntry(tuple_desc, (AttrNumber) 4, "contracted_vertices",
+        TupleDescInitEntry(tuple_desc, (AttrNumber) 3, "contracted_vertices",
                 INT8ARRAYOID, -1, 0);
 
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = CStringGetTextDatum(result_tuples[call_cntr].type);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].id);
-        values[3] = PointerGetDatum(arrayType);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].source);
-        values[5] = Int64GetDatum(result_tuples[call_cntr].target);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[0] = CStringGetTextDatum(result_tuples[call_cntr].type);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].id);
+        values[2] = PointerGetDatum(arrayType);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].source);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
 
         /*********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
