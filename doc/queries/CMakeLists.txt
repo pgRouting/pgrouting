@@ -65,7 +65,6 @@ SET(LOCAL_FILES
     doc-pickDeliver.queries
     doc-stoerWagner.queries
     doc-trsp.queries
-    proof_of_concept.queries
     )
 
 foreach (f ${LOCAL_FILES})
