@@ -2,8 +2,7 @@
 SET(LOCAL_FILES
     doc-aStarCost.queries
     doc-astar.queries
-    doc-contractGraph.queries
-    doc-contraction.queries
+    doc-contraction-family.queries
     doc-floydWarshall.queries
     doc-gsoc_vrppdtw.queries
     doc-johnson.queries
@@ -21,6 +20,7 @@ SET(LOCAL_FILES
     doc-pgr_boykovKolmogorov.queries
     doc-pgr_bridges.queries
     doc-pgr_connectedComponents.queries
+    doc-pgr_contraction.queries
     doc-pgr_createTopology.queries
     doc-pgr_createVerticesTable.queries
     doc-pgr_dagShortestPath.queries

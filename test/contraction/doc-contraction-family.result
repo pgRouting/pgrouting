@@ -294,7 +294,7 @@ first_dijkstra AS (
 SELECT edge, contracted_vertices
     FROM first_dijkstra JOIN edge_table
     ON (edge = id)
-    WHERE is_contracted = true;
+    WHERE is_new = true;
  edge | contracted_vertices
 ------+---------------------
    19 | {1,2}
