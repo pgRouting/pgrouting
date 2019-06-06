@@ -27,6 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 
+#include <visitors/edges_order_bfs_visitor.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/breadth_first_search.hpp>
+
 #include "cpp_common/pgr_base_graph.hpp"
 //******************************************
 
@@ -51,16 +55,70 @@ public:
         std::vector<int64_t> start_vertex,
         int64_t depth){
 
-        pgr_mst_rt dummy = {0, 0, 0, 0, 0.0, 0.0};
-        std::vector<pgr_mst_rt> dummyResults = {dummy};
-        return dummyResults;
+        // pgr_mst_rt dummy = {0, 0, 0, 0, 0.0, 0.0};
+        // std::vector<pgr_mst_rt> dummyResults = {dummy};
+        // return dummyResults;
 
+
+        std::vector<pgr_mst_rt> results;
+        using bfs_visitor = visitors::Edges_order_bfs_visitor<E>;
+        for (auto source : start_vertex)
+        {
+            std::vector<E> visited_order;
+            if (graph.has_vertex(source))
+            {
+                boost::breadth_first_search(graph.graph,
+                                            graph.get_V(source),
+                                            visitor(bfs_visitor(visited_order)));
+
+                auto single_source_results = get_results(visited_order, source, depth, graph);
+                results.insert(results.end(), single_source_results.begin(), single_source_results.end());
+            }
+            else
+            {
+                results.push_back({source, 0, source, -1, 0.0, 0.0});
+            }
+        }
+        return results;
         }
     
-
+//source, depth, node, edge
 
 private:
-    // Functions
+
+
+
+     template <typename T>
+     std::vector<pgr_mst_rt> get_results(
+             T order,
+             int64_t source,
+             int64_t max_depth,
+             const G &graph) {
+         std::vector<pgr_mst_rt> results;
+
+         std::vector<double> agg_cost(graph.num_vertices(), 0);
+         std::vector<int64_t> depth(graph.num_vertices(), 0);
+
+         for (const auto edge : order) {
+             auto u = graph.source(edge);
+             auto v = graph.target(edge);
+
+             agg_cost[v] = agg_cost[u] + graph[edge].cost;
+             depth[v] = depth[u] + 1;
+
+             if (max_depth >= depth[v]) {
+                 results.push_back({
+                     source,
+                         depth[v],
+                         graph[v].id,
+                         graph[edge].id,
+                         graph[edge].cost,
+                         agg_cost[v]
+                 });
+             }
+         }
+         return results;
+     }
 
 };
 } // namespace functions
