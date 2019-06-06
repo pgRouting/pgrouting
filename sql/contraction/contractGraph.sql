@@ -45,7 +45,6 @@ CREATE OR REPLACE FUNCTION _pgr_contractGraph(
     forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
     directed BOOLEAN DEFAULT true,
 
-    OUT seq INTEGER,
     OUT type TEXT,
     OUT id BIGINT,
     OUT contracted_vertices BIGINT[],
@@ -64,7 +63,6 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
     directed BOOLEAN DEFAULT true,
 
-    OUT seq INTEGER,
     OUT type TEXT,
     OUT id BIGINT,
     OUT contracted_vertices BIGINT[],

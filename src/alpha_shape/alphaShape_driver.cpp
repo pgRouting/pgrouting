@@ -86,12 +86,12 @@ do_alphaShape(
         std::sort(edges.begin(), edges.end(),
                 [&round](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
             return
-                std::floor(lhs.y1 * round) < std::floor(rhs.y1 * round);
+                std::floor(lhs.y1 *  static_cast<double>(round)) < std::floor(rhs.y1 *  static_cast<double>(round));
         });
         std::stable_sort(edges.begin(), edges.end(),
                 [&round](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
             return
-                std::floor(lhs.x1 * round) < std::floor(rhs.x1 * round);
+                std::floor(lhs.x1 *  static_cast<double>(round)) < std::floor(rhs.x1 *  static_cast<double>(round));
         });
         log << "ending sort";
 

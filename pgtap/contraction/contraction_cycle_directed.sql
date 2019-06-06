@@ -5,7 +5,7 @@ SELECT plan(30);
 SET client_min_messages TO WARNING;
 
 PREPARE qempty AS
-SELECT * FROM ( VALUES (-1, 'v', -1, '{}', -1, -1, -1) ) AS t(seq, type, id, contracted_vertices, source, target, cost) WHERE 1 != 1 ;
+SELECT * FROM ( VALUES ('v', -1, '{}', -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost) WHERE 1 != 1 ;
 
 -- TESTING CONTRACTION CYCLE WITH ONLY DEAD END CONTRACTION
 

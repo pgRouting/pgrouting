@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: ch_edge.h
+File: pgr_CH_graphs.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,47 +27,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_CPP_COMMON_CH_EDGE_H_
-#define INCLUDE_CPP_COMMON_CH_EDGE_H_
+#ifndef INCLUDE_CONTRACTION_CH_GRAPHS_HPP_
+#define INCLUDE_CONTRACTION_CH_GRAPHS_HPP_
 #pragma once
 
-#include <iostream>
-#include <sstream>
-#include "./ch_vertex.h"
-// #include "./basic_edge.h"
+
+#include <limits>
+#include <algorithm>
+#include <vector>
+
+#include "contraction/pgr_contractionGraph.hpp"
+#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/ch_vertex.h"
+#include "cpp_common/ch_edge.h"
+
 
 namespace pgrouting {
+namespace graph {
 
-class CH_edge {
- public:
-     CH_edge() = default;
+using CHUndirectedGraph =  Pgr_contractionGraph <
+    boost::adjacency_list < boost::listS, boost::vecS,
+    boost::undirectedS,
+    CH_vertex, CH_edge>>;
 
-     CH_edge(int64_t eid, int64_t source, int64_t target, double cost) :
-         id(eid), source(source),
-         target(target), cost(cost) {}
+using CHDirectedGraph = Pgr_contractionGraph<
+    boost::adjacency_list < boost::listS, boost::vecS,
+    boost::bidirectionalS,
+    CH_vertex, CH_edge>>;
 
-     void cp_members(const CH_edge &other);
 
-     void add_contracted_vertex(CH_vertex& v);
-     void add_contracted_edge_vertices(CH_edge& e);
-
-     bool has_contracted_vertices() const;
-
-     void clear_contracted_vertices() {m_contracted_vertices.clear();}
-     const Identifiers<int64_t>& contracted_vertices() const;
-     Identifiers<int64_t>& contracted_vertices();
-     friend std::ostream& operator <<(std::ostream& os, const CH_edge& e);
-
- public:
-     int64_t id;
-     int64_t source;
-     int64_t target;
-     double cost;
-
- private:
-     Identifiers<int64_t> m_contracted_vertices;
-};
-
+}  // namespace graph
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_CH_EDGE_H_
+#endif  // INCLUDE_CONTRACTION_CH_GRAPHS_HPP_

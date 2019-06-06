@@ -215,18 +215,18 @@ BEGIN
          EXECUTE QUERY INTO sridinfo;
 
          perform _pgr_onError( sridinfo IS NULL OR sridinfo.srid IS NULL,2,
-                 'Can not determine the srid of the geometry '|| gname ||' IN table '||tabname, 'Check the geometry of column '||gname,
+                 'Can not determine the srid of the geometry '|| gname ||' in table '||tabname, 'Check the geometry of column '||gname,
                  'SRID of '||gname||' is '||sridinfo.srid);
 
          IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
-             RAISE NOTICE ' Can not determine the srid of the geometry "%" IN table %', the_geom,tabname;
+             RAISE NOTICE ' Can not determine the srid of the geometry "%" in table %', the_geom,tabname;
              RETURN 'FAIL';
          END IF;
          srid := sridinfo.srid;
          RAISE DEBUG '     --> OK';
          EXCEPTION WHEN OTHERS THEN
              RAISE NOTICE 'Got %', SQLERRM;--issue 210,211,213
-             RAISE NOTICE 'ERROR: something went wrong when checking for SRID of % IN table %', the_geom,tabname;
+             RAISE NOTICE 'ERROR: something went wrong when checking for SRID of % in table %', the_geom,tabname;
              RETURN 'FAIL';
     END;
 

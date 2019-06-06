@@ -263,7 +263,7 @@ BEGIN
 
     EXECUTE 'SELECT count(*)  FROM '||_pgr_quote_ident(vertname)||' WHERE ein=0 OR eout=0' INTO ecnt;
 
-    RAISE NOTICE 'Found % potential problems IN directionality' ,ecnt;
+    RAISE NOTICE 'Found % potential problems in directionality' ,ecnt;
 
     RETURN 'OK';
 

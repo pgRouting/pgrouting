@@ -55,6 +55,11 @@ pgRouting 3.0.0 Release Notes
 
 * `#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__: Renamed pgr_eucledianTSP to pgr_TSPeuclidean
 * `#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Removed CGAL dependency
+* `#1002 <https://github.com/pgRouting/pgrouting/issues/1002>`__: Fixed contraction issues:
+
+  * `#1004 <https://github.com/pgRouting/pgrouting/issues/1004>`__: Contracts when forbidden vertices do not belong to graph
+  * `#1005 <https://github.com/pgRouting/pgrouting/issues/1005>`__: Intermideate results eliminated
+  * `#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No loss of information
 
 .. rubric:: New functions
 
@@ -147,6 +152,11 @@ pgRouting 3.0.0 Release Notes
   * pgr_bridges
 
 
+.. rubric:: Experimental functions
+
+* Contraction:
+
+  * Removed unnecessary column seq
 
 .. rubric:: New Experimental functions
 

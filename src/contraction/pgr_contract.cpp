@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: ch_vertex.cpp
+File: pgr_contract.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -25,45 +25,24 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
- ********************************************************************PGR-GNU*/
+********************************************************************PGR-GNU*/
 
-#include "cpp_common/ch_vertex.h"
-
-#include <algorithm>
-#include <vector>
+#include "contraction/pgr_contract.hpp"
 
 namespace pgrouting {
+namespace contraction {
 
-
-const Identifiers<int64_t>&
-    CH_vertex::contracted_vertices() const {
-    return m_contracted_vertices;
+bool is_valid_contraction(int number) {
+    switch (number) {
+        case 1:
+        case 2:
+            return true;
+            break;
+        default:
+            return false;
+            break;
+    }
 }
 
-Identifiers<int64_t>&
-    CH_vertex::contracted_vertices() {
-    return m_contracted_vertices;
-}
-
-
-bool CH_vertex::has_contracted_vertices() const {
-    if (m_contracted_vertices.size() == 0)
-        return false;
-    return true;
-}
-
-void CH_vertex::add_contracted_vertex(CH_vertex& v) {
-    m_contracted_vertices += v.id;
-    m_contracted_vertices += v.contracted_vertices();
-    //v.clear_contracted_vertices();
-}
-
-std::ostream& operator <<(std::ostream& os, const CH_vertex& v) {
-    os << "{id: " << v.id << ",\t"
-     << "contracted vertices: "
-     << v.contracted_vertices()
-     << "}";
-    return os;
-}
-
+}  // namespace contraction
 }  // namespace pgrouting

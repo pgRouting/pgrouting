@@ -22,7 +22,6 @@ SELECT array[
 'max_cycles',
 'forbidden_vertices',
 'directed',
-'seq',
 'type',
 'id',
 'contracted_vertices',

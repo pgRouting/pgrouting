@@ -144,5 +144,5 @@ script:
   # tests as part of script so if a test fails the build fails
   - cd ..
   - if [ "$DOCUMENTATION" == "OFF" ]; then bash ./tools/testers/pg_prove_tests.sh postgres 5432 $BUILD_TYPE; fi
-  - if [ "$DOCUMENTATION" == "OFF" ] && [ BUILD_TYPE == "Debug" ]; then bash ./ci/travis/doc-quieries_test.sh $POSTGRESQL_VERSION postgres; fi
+  - if [ "$DOCUMENTATION" == "OFF" ] && [ "$BUILD_TYPE" == "Debug" ]; then bash ./ci/travis/doc-quieries_test.sh $POSTGRESQL_VERSION postgres; fi
 

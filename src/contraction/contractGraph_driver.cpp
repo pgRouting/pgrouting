@@ -34,49 +34,60 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "contraction/pgr_contractionGraph.hpp"
+#include "contraction/ch_graphs.hpp"
 #include "contraction/pgr_contract.hpp"
 
+#include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 
-static
-bool
-is_valid_contraction(int64_t number) {
-    switch (number) {
-        case 1:
-        case 2:
-            return true;
-            break;
-        default:
-            return false;
-            break;
+namespace {
+
+/*! @brief vertices with at least one contracted vertex
+
+  @result The vids Identifiers with at least one contracted vertex
+*/
+template <typename G>
+Identifiers<int64_t> get_modified_vertices(const G& graph) {
+    Identifiers<int64_t> vids;
+    for (auto v : boost::make_iterator_range(boost::vertices(graph.graph))) {
+        if (graph[v].has_contracted_vertices()) {
+            vids += graph[v].id;
+        }
     }
+    return vids;
+}
+
+/*! @brief vertices with at least one contracted vertex
+
+  @result The vids Identifiers with at least one contracted vertex
+*/
+template <typename G>
+std::vector<typename G::E> get_shortcuts(const G& graph) {
+    using E = typename G::E;
+    Identifiers<E> eids;
+    for (auto e : boost::make_iterator_range(boost::edges(graph.graph))) {
+        if (graph[e].id < 0) {
+            eids += e;
+            pgassert(!graph[e].contracted_vertices().empty());
+        } else {
+            pgassert(graph[e].contracted_vertices().empty());
+        }
+    }
+    std::vector<E> o_eids(eids.begin(), eids.end());
+    std::sort(o_eids.begin(), o_eids.end(),
+            [&](E lhs, E rhs) {return -graph[lhs].id < -graph[rhs].id;});
+    return o_eids;
 }
 
 
 template <typename G>
-static void process_contraction(
+void process_contraction(
         G &graph,
         const std::vector< pgr_edge_t > &edges,
         const std::vector< int64_t > &forbidden_vertices,
         const std::vector< int64_t > &contraction_order,
-        int64_t max_cycles,
-        Identifiers<int64_t> &remaining_vertices,
-        std::vector< pgrouting::CH_edge > &shortcut_edges,
-        std::ostringstream &log,
-        std::ostringstream &err) {
+        int64_t max_cycles) {
     graph.insert_edges(edges);
-    /*
-     * this check does not ignore vertices ids that do not belong to the graph
-     */
-    log << "Checking for valid forbidden vertices\n";
-    for (const auto vertex : forbidden_vertices) {
-        if (!graph.has_vertex(vertex)) {
-            err << "Invalid forbidden vertex: " << vertex << "\n";
-            return;
-        }
-    }
-
     Identifiers<typename G::V> forbid_vertices;
     for (const auto &vertex : forbidden_vertices) {
         if (graph.has_vertex(vertex)) {
@@ -84,80 +95,75 @@ static void process_contraction(
         }
     }
 
-#ifndef NDEBUG
-    log << "Before contraction\n";
-    graph.print_graph(log);
-#endif
-
     /*
      * Function call to get the contracted graph.
      */
-    pgrouting::contraction::Pgr_contract<G> result(graph,
+    using Contract = pgrouting::contraction::Pgr_contract<G>;
+    Contract result(
+            graph,
             forbid_vertices,
             contraction_order,
-            max_cycles, remaining_vertices,
-            shortcut_edges, log);
-
-#ifndef NDEBUG
-    log << "After contraction\n";
-    log << graph;
-    log << "Remaining Vertices:" << "\n";
-    for (const auto vertex : remaining_vertices) {
-        log << vertex << "\n";
-    }
-    log << "Added Edges:" << "\n";
-    for (const auto edge : shortcut_edges) {
-        log << edge << "\n";
-    }
-#endif
+            max_cycles);
 }
 
 template <typename G>
-static
 void get_postgres_result(
         G &graph,
-        const Identifiers<int64_t> remaining_vertices,
-        const std::vector< pgrouting::CH_edge > &shortcut_edges,
-        contracted_rt **return_tuples) {
-    (*return_tuples) = pgr_alloc(
-            remaining_vertices.size() + shortcut_edges.size(),
-            (*return_tuples));
+        contracted_rt **return_tuples,
+        size_t *count) {
+    auto modified_vertices(get_modified_vertices(graph));
+    auto shortcut_edges(get_shortcuts(graph));
 
+    (*count) = modified_vertices.size() + shortcut_edges.size();
+    (*return_tuples) = pgr_alloc((*count), (*return_tuples));
     size_t sequence = 0;
 
-    for (auto id : remaining_vertices) {
+    for (const auto id : modified_vertices) {
+        auto v = graph.get_V(id);
         int64_t* contracted_vertices = NULL;
-        auto ids = graph.get_contracted_vertices(id);
-        contracted_vertices = pgr_alloc(
-                   ids.size(), contracted_vertices);
+        auto vids = graph[v].contracted_vertices();
+
+        contracted_vertices = pgr_alloc(vids.size(), contracted_vertices);
+
         int count = 0;
-        for (const auto id : ids) {
+        for (const auto id : vids) {
             contracted_vertices[count++] = id;
         }
-        (*return_tuples)[sequence] = {id, const_cast<char*>("v"), -1, -1, -1.00,
-            contracted_vertices, count};
+        (*return_tuples)[sequence] = {
+            id,
+            const_cast<char*>("v"),
+            -1, -1, -1.00,
+            contracted_vertices,
+            count};
 
         ++sequence;
     }
 
-    for (auto edge : shortcut_edges) {
+    int64_t eid = 0;
+    for (auto e : shortcut_edges) {
+        auto edge = graph[e];
         int64_t* contracted_vertices = NULL;
-        auto ids = graph.get_ids(edge.contracted_vertices());
 
-        contracted_vertices = pgr_alloc(
-                   ids.size(), contracted_vertices);
+        const auto vids(edge.contracted_vertices());
+        pgassert(!vids.empty());
+
+        contracted_vertices = pgr_alloc(vids.size(), contracted_vertices);
         int count = 0;
-        for (const auto id : ids) {
-            contracted_vertices[count++] = id;
+        for (const auto vid : vids) {
+            contracted_vertices[count++] = vid;
         }
-        (*return_tuples)[sequence] = {edge.id, const_cast<char*>("e"),
+        (*return_tuples)[sequence] = {
+            --eid,
+            const_cast<char*>("e"),
             edge.source, edge.target, edge.cost,
             contracted_vertices, count};
-
         ++sequence;
     }
+
+
 }
 
+}  // namespace
 
 
 
@@ -207,84 +213,41 @@ do_pgr_contractGraph(
                 contraction_order,
                 contraction_order + size_contraction_order);
 
-        for (const auto o : ordering) {
-            if (!is_valid_contraction(o)) {
-                *err_msg = pgr_msg("Invalid Contraction Type found");
-                log << "Contraction type " << o << " not valid";
+        for (const auto kind : ordering) {
+            if (!pgrouting::contraction::is_valid_contraction(static_cast<int>(kind))) {
+                *err_msg = pgr_msg("Invalid contraction type found");
+                log << "Contraction type " << kind << " not valid";
                 *log_msg = pgr_msg(log.str().c_str());
                 return;
             }
         }
 
 
-        /*
-         * Extracting vertices of the graph
-         */
-        Identifiers<int64_t> remaining_vertices;
-        std::vector< pgrouting::CH_edge > shortcut_edges;
-
-#ifndef NDEBUG
-        log << "Original Graph: \n" <<
-            std::setprecision(32);
-        for (const auto edge : edges) {
-            log << "id = " << edge.id
-                << "\tsource = " << edge.source
-                << "\ttarget = " << edge.target
-                << "\tcost = " << edge.cost
-                << "\treverse_cost = " << edge.reverse_cost
-                << ")\n";
-        }
-        log << "size_contraction_order " << ordering.size() << "\n";
-        log << "contraction_order: " <<"{ ";
-        for (const auto o : ordering) {
-            log << o << ", ";
-        }
-        log << " }\n";
-
-        log << "size_forbidden_vertices " << forbid.size() << "\n";
-        log << "forbidden_vertices" << "{ ";
-        for (const auto vertex : forbid) {
-            log << vertex << ", ";
-        }
-        log << " }\n";
-        log << "max_cycles " << max_cycles << "\n";
-        log << "directed " << directed << "\n";
-#endif
-
         graphType gType = directed? DIRECTED: UNDIRECTED;
         if (directed) {
-            log << "Working with directed Graph\n";
-            pgrouting::CHDirectedGraph digraph(gType);
+            using DirectedGraph = pgrouting::graph::CHDirectedGraph;
+            DirectedGraph digraph(gType);
 
             process_contraction(digraph, edges, forbid, ordering,
-                    max_cycles,
-                    remaining_vertices, shortcut_edges,
-                    log, err);
+                    max_cycles);
 
             get_postgres_result(
                     digraph,
-                    remaining_vertices,
-                    shortcut_edges,
-                    return_tuples);
+                    return_tuples,
+                    return_count);
         } else {
-            log << "Working with Undirected Graph\n";
-
-            pgrouting::CHUndirectedGraph undigraph(gType);
+            using UndirectedGraph = pgrouting::graph::CHUndirectedGraph;
+            UndirectedGraph undigraph(gType);
             process_contraction(undigraph, edges, forbid, ordering,
-                    max_cycles,
-                    remaining_vertices, shortcut_edges,
-                    log, err);
+                    max_cycles);
 
             get_postgres_result(
                     undigraph,
-                    remaining_vertices,
-                    shortcut_edges,
-                    return_tuples);
+                    return_tuples,
+                    return_count);
         }
 
-        (*return_count) = remaining_vertices.size()+shortcut_edges.size();
-
-
+        pgassert(err.str().empty());
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
