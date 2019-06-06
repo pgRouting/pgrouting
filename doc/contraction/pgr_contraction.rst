@@ -7,10 +7,10 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_contractGraph - Experimental
+pgr_contraction - Experimental
 ===============================================================================
 
-``pgr_contractGraph`` — Performs graph contraction and returns the contracted vertices and edges.
+``pgr_contraction`` — Performs graph contraction and returns the contracted vertices and edges.
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -48,12 +48,12 @@ Signatures
 
 .. rubric:: Summary
 
-The pgr_contractGraph function has the following signatures:
+The pgr_contraction function has the following signatures:
 
 .. code-block:: none
 
-    pgr_contractGraph(edges_sql, contraction_order)
-    pgr_contractGraph(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
+    pgr_contraction(edges_sql, contraction_order)
+    pgr_contraction(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
 
     RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 
@@ -61,7 +61,7 @@ The pgr_contractGraph function has the following signatures:
 
 .. code-block:: none
 
-    pgr_contractGraph(edges_sql, contraction_order)
+    pgr_contraction(edges_sql, contraction_order)
 
 :Example: Making a dead end contraction and a linear contraction.
 
@@ -73,7 +73,7 @@ The pgr_contractGraph function has the following signatures:
 
 .. code-block:: none
 
-    pgr_contractGraph(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
+    pgr_contraction(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
 
 :Example: Making a dead end contraction and a linear contraction and vertex 2 is forbidden from contraction
 

@@ -39,7 +39,7 @@ VALUES
 
 --
 prepare q1 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 1)$$,
     ARRAY[1]::integer[], directed := false);
 
@@ -56,7 +56,7 @@ SELECT set_eq('q1', 'sol_2_1');
 
 --
 prepare q2 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 2)$$,
     ARRAY[1]::integer[], directed := false);
 
@@ -64,28 +64,28 @@ SELECT set_eq('q2', 'sol_2_1');
 
 --
 prepare q3 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 3)$$,
     ARRAY[1]::integer[]);
 SELECT set_eq('q3', 'sol_2_1');
 
 --
 prepare q4 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 4)$$,
     ARRAY[1]::integer[], directed := false);
 SELECT is_empty('q4');
 
 --
 PREPARE q41 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 41)$$,
     ARRAY[1]::integer[], directed := false);
 SELECT is_empty('q41');
 
 --
 PREPARE q5 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT * FROM test_deadend WHERE dead_case IN (0, 5)$$,
     ARRAY[1]::integer[], directed := false);
 

@@ -34,11 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 
 --------------------
--- pgr_contractGraph
+-- pgr_contraction
 --------------------
 
 
-CREATE OR REPLACE FUNCTION _pgr_contractGraph(
+CREATE OR REPLACE FUNCTION _pgr_contraction(
     edges_sql TEXT,
     contraction_order BIGINT[],
     max_cycles INTEGER DEFAULT 1,
@@ -55,7 +55,7 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'contractGraph'
 LANGUAGE C VOLATILE STRICT;
 
-CREATE OR REPLACE FUNCTION pgr_contractGraph(
+CREATE OR REPLACE FUNCTION pgr_contraction(
     TEXT,     -- edges_sql (required)
     BIGINT[], -- contraction_order (required)
 
@@ -72,17 +72,17 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_contractGraph(_pgr_get_statement($1), $2::BIGINT[],  $3, $4, $5);
+    FROM _pgr_contraction(_pgr_get_statement($1), $2::BIGINT[],  $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_contractGraph(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
+COMMENT ON FUNCTION _pgr_contraction(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION pgr_contractGraph(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
-IS 'pgr_contractGraph
+COMMENT ON FUNCTION pgr_contraction(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
+IS 'pgr_contraction
 - EXPERIMENTAL
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -92,5 +92,5 @@ IS 'pgr_contractGraph
     - forbidden_vertices := ARRAY[]::BIGINT[]
     - directed := true
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_contractGraph.html
+    - ${PGROUTING_DOC_LINK}/pgr_contraction.html
 ';

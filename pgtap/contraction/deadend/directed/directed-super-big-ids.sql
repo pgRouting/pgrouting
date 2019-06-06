@@ -12,7 +12,7 @@ SET id = id + POWER(10, 12),
 -- output: 2{1}
 --Checking dead end contraction with invalid forbidden vertices
 PREPARE q1 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table
     WHERE id = 1000000000001$$,
     ARRAY[1]::integer[], 1, ARRAY[20]::BIGINT[], true);
@@ -30,7 +30,7 @@ SELECT set_eq('q1',
 -- input: 3->2, 2<->5, 5<->6, 3->6  --q1
 -- output:
 PREPARE q2 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table
     WHERE id IN (1000000000002, 1000000000004, 1000000000005, 1000000000008)$$,
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
@@ -41,7 +41,7 @@ SELECT is_empty('q2');
 -- outputt: 2{1}
 --Checking dead end contraction for single dead end node
 PREPARE q3 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table
     WHERE id = 1000000000001$$,
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
@@ -59,7 +59,7 @@ SELECT set_eq('q3',
 --  input: 2 <- 3 <- 4
 -- output: 4{2, 3}
 PREPARE q4 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table
     WHERE id IN (1000000000002, 1000000000003)$$,
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
@@ -78,7 +78,7 @@ SELECT set_eq('q4',
 --   step: 2{1} <- 3 <- 4
 -- output: 4{1, 2, 3}
 PREPARE q5 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table
     WHERE id IN (1000000000001, 1000000000002, 1000000000003)$$,
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
@@ -99,7 +99,7 @@ SELECT set_eq('q5', 'sol5');
 -- 2{1}
 -- Checking dead end contraction for sample data
 PREPARE q6 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
 

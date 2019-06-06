@@ -6,7 +6,7 @@ SELECT plan(6);
 -- output: 2{1}
 --Checking dead end contraction with invalid forbidden vertices
 PREPARE q1 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
     ARRAY[1]::integer[], 1, ARRAY[20]::BIGINT[], false);
 
@@ -23,7 +23,7 @@ SELECT set_eq('q1',
 -- input: 3-2, 2-5, 5-6, 3-6  --q1
 -- output:
 PREPARE q2 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 OR id = 4 OR id = 5 OR id = 8',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], false);
 
@@ -33,7 +33,7 @@ SELECT is_empty('q2');
 -- outputt: 2{1}
 --Checking dead end contraction for single dead end node
 PREPARE q3 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], false);
 
@@ -50,7 +50,7 @@ SELECT set_eq('q3',
 --  input: 2 - 3 - 4
 -- output: 4{2, 3}
 PREPARE q4 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 or id = 3',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], false);
 
@@ -68,7 +68,7 @@ SELECT set_eq('q4',
 --   step: 2{1} - 3 - 4
 -- output: 4{1, 2, 3}
 PREPARE q5 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 OR id = 2 or id = 3',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], false);
 
@@ -88,7 +88,7 @@ SELECT set_eq('q5', 'sol5');
 -- 2{1}
 -- Checking dead end contraction for sample data
 PREPARE q6 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], false);
 

@@ -1,7 +1,7 @@
 
 SET(LOCAL_FILES
     contraction-family.rst
-    pgr_contractGraph.rst
+    pgr_contraction.rst
     )
 
 foreach (f ${LOCAL_FILES})

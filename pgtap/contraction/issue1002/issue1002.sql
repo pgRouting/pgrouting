@@ -16,7 +16,7 @@ FROM (VALUES
 
 
 PREPARE issue1004_q AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 or id = 3$$,
     ARRAY[1]::integer[], 1, ARRAY[7]::BIGINT[], true);
 
@@ -30,7 +30,7 @@ FROM (VALUES
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
 PREPARE issue1005_q AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table
     WHERE id = 5 OR id = 11 OR id = 13$$,
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
@@ -46,7 +46,7 @@ FROM (VALUES
 
 
 PREPARE issue1006_q AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     $$SELECT id, source, target, cost  FROM edge_table WHERE id IN (8, 9, 11, 13)
     UNION
     SELECT id, target, source, reverse_cost FROM edge_table WHERE id IN (15, 16) AND reverse_cost > 0;
