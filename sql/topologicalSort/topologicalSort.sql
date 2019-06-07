@@ -3,9 +3,9 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Function's developer:
 Copyright (c) 2019 Hang Wu
 mail: nike0good@gmail.com
-
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -25,10 +25,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 ---------------
--- pgr_topological_sort
+-- pgr_topologicalSort
 ---------------
 
-CREATE OR REPLACE FUNCTION pgr_topological_sort(
+CREATE OR REPLACE FUNCTION pgr_topologicalSort(
     TEXT,   -- edges_sql (required)
     
     OUT seq INTEGER,
@@ -36,7 +36,7 @@ CREATE OR REPLACE FUNCTION pgr_topological_sort(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.sorted_v
-    FROM _pgr_topological_sort(_pgr_get_statement($1)) AS a;
+    FROM _pgr_topologicalSort(_pgr_get_statement($1)) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -45,12 +45,12 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_topological_sort(TEXT)
-IS 'pgr_topological_sort
+COMMENT ON FUNCTION pgr_topologicalSort(TEXT)
+IS 'pgr_topologicalSort
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_topological_sort.html
+   - ${PGROUTING_DOC_LINK}/pgr_topologicalSort.html
 ';
 
 

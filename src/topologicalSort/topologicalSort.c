@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-File: many_to_many_dijkstra.c
+File: topologicalSort.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -39,18 +39,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "drivers/topological_sort/topological_sort_driver.h"
+#include "drivers/topologicalSort/topologicalSort_driver.h"
 #if 0
 PG_MODULE_MAGIC;
 #endif
-PGDLLEXPORT Datum topological_sort(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(topological_sort);
+PGDLLEXPORT Datum topologicalSort(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(topologicalSort);
 
 static
 void
 process(
         char* edges_sql,
-        pgr_topological_sort_t **result_tuples,
+        pgr_topologicalSort_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
@@ -63,7 +63,7 @@ process(
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-    do_pgr_topological_sort(
+    do_pgr_topologicalSort(
             edges, total_edges,
             
             result_tuples,
@@ -73,7 +73,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg("processing pgr_topological_sort", start_t, clock());
+    time_msg("processing pgr_topologicalSort", start_t, clock());
 
 
     if (err_msg && (*result_tuples)) {
@@ -92,12 +92,12 @@ process(
 }
 
 PGDLLEXPORT Datum
-topological_sort(PG_FUNCTION_ARGS) {
+topologicalSort(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
     /**********************************************************************/
-    pgr_topological_sort_t *result_tuples = NULL;
+    pgr_topologicalSort_t *result_tuples = NULL;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -108,7 +108,7 @@ topological_sort(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        // pgr_topological_sort(
+        // pgr_topologicalSort(
         // sql TEXT,
 
         process(
@@ -139,7 +139,7 @@ topological_sort(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_topological_sort_t*) funcctx->user_fctx;
+    result_tuples = (pgr_topologicalSort_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

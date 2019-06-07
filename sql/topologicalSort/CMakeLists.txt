@@ -1,7 +1,7 @@
 
 SET(LOCAL_FILES
-    _topological_sort.sql
-    topological_sort.sql
+    _topologicalSort.sql
+    topologicalSort.sql
     )
 
 foreach (f ${LOCAL_FILES})

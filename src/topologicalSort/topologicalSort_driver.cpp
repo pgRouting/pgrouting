@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: topological_sort_driver.cpp
+File: topologicalSort_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/topological_sort/topological_sort_driver.h"
+#include "drivers/topologicalSort/topologicalSort_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -36,40 +36,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 #if 0
-#include "topological_sort/pgr_topological_sort.hpp"
+#include "topologicalSort/pgr_topologicalSort.hpp"
 #endif
-//TODO(nike0good) : Remove below headers once pgr_topological_sort.hpp is implemented.
+//TODO(nike0good) : Remove below headers once pgr_topologicalSort.hpp is implemented.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
-//TODO(nike0good) : Complete file once pgr_topological_sort.hpp is implemented. 
+//TODO(nike0good) : Complete file once pgr_topologicalSort.hpp is implemented. 
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 template < class G >
 static
-std::vector<pgr_topological_sort_t>
-pgr_topological_sort(
+std::vector<pgr_topologicalSort_t>
+pgr_topologicalSort(
         G &graph) {
 #if 0
-    Pgr_topological_sort< G > fn_topological_sort;
-    return fn_topological_sort.topological_sort(graph);
+    Pgr_topologicalSort< G > fn_topologicalSort;
+    return fn_topologicalSort.topologicalSort(graph);
 #endif
-    std::vector<pgr_topological_sort_t> vv;
+    std::vector<pgr_topologicalSort_t> vv;
     return vv;
 }
 
 
 
-// CREATE OR REPLACE FUNCTION pgr_topological_sort(
+// CREATE OR REPLACE FUNCTION pgr_topologicalSort(
 // sql text,
 void
-do_pgr_topological_sort(
+do_pgr_topologicalSort(
         pgr_edge_t  *data_edges,
         size_t total_edges,
         
 
-        pgr_topological_sort_t **return_tuples,
+        pgr_topologicalSort_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -88,12 +88,12 @@ do_pgr_topological_sort(
 
         graphType gType =  DIRECTED;
 
-        std::vector<pgr_topological_sort_t> results; 
+        std::vector<pgr_topologicalSort_t> results; 
 
         log << "Working with Directed Graph\n";
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges);
-        results = pgr_topological_sort(
+        results = pgr_topologicalSort(
                 digraph);
 
         auto count = results.size();

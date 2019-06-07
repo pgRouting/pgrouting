@@ -1,8 +1,5 @@
 /*PGR-GNU*****************************************************************
 
-File: topological_sort_driver.h
-
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
@@ -28,38 +25,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_TOPOLOGICAL_SORT_TOPOLOGICAL_SORT_DRIVER_H_
-#define INCLUDE_DRIVERS_TOPOLOGICAL_SORT_TOPOLOGICAL_SORT_DRIVER_H_
+---------------
+---------------
+-- topologicalSort
+---------------
+---------------
 
-/* for size-t */
-#ifdef __cplusplus
-#   include <cstddef>
-#else
-#   include <stddef.h>
-#endif
+CREATE OR REPLACE FUNCTION _pgr_topologicalSort(
+    edges_sql TEXT,
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_topological_sort_t.h"
+    OUT seq INTEGER,
+    OUT sorted_v INTEGER)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME', 'topologicalSort'
+LANGUAGE C VOLATILE STRICT;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+-- COMMENTS
 
-    //  CREATE OR REPLACE FUNCTION pgr_topological_sort(
-    //  sql text,
-    void do_pgr_topological_sort(
-            pgr_edge_t  *data_edges,
-            size_t total_tuples,
-
-            pgr_topological_sort_t **return_tuples,
-            size_t *return_count,
-
-            char** log_msg,
-            char** notice_msg,
-            char** err_msg);
-
-#ifdef __cplusplus
-    }
-#endif
-
-#endif  // INCLUDE_DRIVERS_TOPOLOGICAL_SORT_DRIVER_H_
+COMMENT ON FUNCTION _pgr_topologicalSort(TEXT)
+IS 'pgRouting internal function';
