@@ -103,11 +103,12 @@ pgRouting 3.0.0 Release Notes
   * pgr_bridges
 
 
-*Experimental functions*
+*Moved to proposed*
 
 * Contraction:
 
   * Removed unnecessary column seq
+  * Bug Fixes
 
 *New Experimental functions*
 

@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_contraction - Experimental
+pgr_contraction - Proposed
 ===============================================================================
 
 ``pgr_contraction`` — Performs graph contraction and returns the contracted vertices and edges.
@@ -68,7 +68,7 @@ Signatures
 The pgr_contraction function has the following signature:
 
 .. index::
-   single: contraction
+   single: contraction - Proposed
 
 .. code-block:: none
 

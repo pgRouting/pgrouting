@@ -43,6 +43,12 @@ Stable Proposed Functions
    :start-after: index proposed from here
    :end-before: index proposed to here
 
+:doc:`contraction-family` - Reduce network size using contraction techniques
+
+.. include:: contraction-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 .. rubric:: categories
 
 :doc:`cost-category`
@@ -123,12 +129,6 @@ Experimental Functions
 :doc:`chinesePostmanProblem-family`
 
 .. include:: chinesePostmanProblem-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
-:doc:`contraction-family` - Reduce network size using contraction techniques
-
-.. include:: contraction-family.rst
    :start-after: index from here
    :end-before: index to here
 
