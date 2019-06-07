@@ -17,67 +17,67 @@ pgr_contraction - Experimental
 
    Boost Graph Inside
 
-.. rubric:: Availability: 2.3.0
-
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
+.. rubric:: Availability
+
+* On v3.0.0
+
+  * Set as `proposed`
+  * Return columns change: ``seq`` is removed
+  * Bug fixes
+
+* New as experimental on v2.3.0
+
 Description
 -------------------------------------------------------------------------------
 
-Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms.
+Contraction reduces the size of the graph by removing some of the vertices and
+edges and, for example, might add edges that represent a sequence of original
+edges decreasing the total time and space used in graph algorithms.
 
 The main Characteristics are:
   - Process is done only on edges with positive costs.
+  - Does not return the full contracted graph
 
-  - There are two types of contraction methods used namely,
+    - Only changes on the graph are returned
+
+  - Currnetly there are two types of contraction methods
 
     - Dead End Contraction
     - Linear Contraction
 
-  - The values returned include the added edges and contracted vertices.
+  - The returned values include
+
+    -  the added edges by linear contraction.
+    -  the modified vertices by dead end contraction.
 
   - The returned values are ordered as follows:
 
     - column `id` ascending when type = `v`
     - column `id` descending when type = `e`
 
+
 Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
 
-The pgr_contraction function has the following signatures:
+The pgr_contraction function has the following signature:
+
+.. index::
+   single: contraction
 
 .. code-block:: none
 
-    pgr_contraction(edges_sql, contraction_order)
-    pgr_contraction(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
+    pgr_contraction(Edges SQL, Contraction order [, max_cycles] [, forbidden_vertices] [, directed])
+    RETURNS SETOF (type, id, contracted_vertices, source, target, cost)
 
-    RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
+:Example: Making a dead end contraction and a linear contraction with vertex 2 forbidden from being contracted
 
-.. rubric:: Minimal signature
-
-.. code-block:: none
-
-    pgr_contraction(edges_sql, contraction_order)
-
-:Example: Making a dead end contraction and a linear contraction.
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q1
-   :end-before: -- q2
-
-.. rubric:: Complete signature
-
-.. code-block:: none
-
-    pgr_contraction(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
-
-:Example: Making a dead end contraction and a linear contraction and vertex 2 is forbidden from contraction
-
-.. literalinclude:: doc-contractGraph.queries
+.. literalinclude:: doc-pgr_contraction.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -87,15 +87,23 @@ Parameters
 ======================= ====================== =================================================
 Column                  Type                   Description
 ======================= ====================== =================================================
-**edges_sql**           ``TEXT``               SQL query as described above.
-**contraction_order**   ``ARRAY[ANY-INTEGER]`` Ordered contraction operations.
+**Edges SQL**           ``TEXT``               SQL query as described in `Inner query`_
+**Ccontraction Order**  ``ARRAY[ANY-INTEGER]`` Ordered contraction operations.
                                                 -  1 = Dead end contraction
                                                 -  2 = Linear contraction
-**forbidden_vertices**  ``ARRAY[ANY-INTEGER]`` (optional). Identifiers of vertices forbidden from contraction. Default is an empty array.
-**max_cycles**          ``INTEGER``            (optional). Number of times the contraction operations on `contraction_order` will be performed. Default is 1.
-**directed**            ``BOOLEAN``            * When ``true`` the graph is considered as `Directed`.
-                                               * When ``false`` the graph is considered as `Undirected`.
 ======================= ====================== =================================================
+
+Optional Parameters
+...............................................................................
+
+======================= ====================== ============ =====================================
+Column                  Type                   Default      Description
+======================= ====================== ============ =====================================
+**forbidden_vertices**  ``ARRAY[ANY-INTEGER]`` Empty        Identifiers of vertices forbidden from contraction.
+**max_cycles**          ``INTEGER``            :math:`1`    Number of times the contraction operations on `contraction_order` will be performed.
+**directed**            ``BOOLEAN``            ``true``     * When ``true`` the graph is considered as `Directed`.
+                                                            * When ``false`` the graph is considered as `Undirected`.
+======================= ====================== ============ =====================================
 
 Inner query
 -------------------------------------------------------------------------------
@@ -107,49 +115,53 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-RETURNS SETOF  (seq, type, id, contracted_vertices, source, target, cost)
+RETURNS SETOF  (type, id, contracted_vertices, source, target, cost)
 
 The function returns a single row. The columns of the row are:
 
 ============================ =================   ===================================================================
 Column                       Type                Description
 ============================ =================   ===================================================================
-**seq**                      ``INTEGER``         Sequential value starting from **1**.
 **type**                     ``TEXT``            Type of the `id`.
-                                                  - 'v' when `id` is an identifier of a vertex.
-                                                  - 'e' when `id` is an identifier of an edge.
-**id**                       ``BIGINT``          Identifier of:
-                                                  * the  vertex when `type = 'v'`.
+                                                  - **'v'** when the row is a vertex.
+                                                  - **'e'** when the row is an edge.
+**id**                       ``BIGINT``          All numbers on this column are ``DISTINCT``
+                                                  * When ``type`` = **'v'**.
 
-                                                    - The vertex belongs to the edge_table passed as a parameter.
-                                                  * the edge when `type = 'e'`.
+                                                    * Identifier of the modified vertex.
+                                                  * When ``type`` = **'e'**.
 
-                                                    - The `id` is a decreasing sequence starting from **-1**.
+                                                    - Decreasing sequence starting from **-1**.
 
-                                                    - Representing a pseudo `id` as is not incorporated into the edge_table.
+                                                    - Representing a pseudo `id` as is not incorporated in the set of original edges.
 **contracted_vertices**      ``ARRAY[BIGINT]``   Array of contracted vertex identifiers.
-**source**                   ``BIGINT``          Identifier of the source vertex of the current edge `id`. Valid values when `type = 'e'`.
-**target**                   ``BIGINT``          Identifier of the target vertex of the current edge `id`. Valid values when `type = 'e'`.
-**cost**                     ``FLOAT``           Weight of the edge (`source`, `target`). Valid values when `type = 'e'`.
+**source**                   ``BIGINT``          * When ``type`` = **'v'**: :math:`-1`
+                                                 * When ``type`` = **'e'**: Identifier of the source vertex of the current edge (``source``, ``target``).
+**target**                   ``BIGINT``          * When ``type`` = **'v'**: :math:`-1`
+                                                 * When ``type`` = **'e'**: Identifier of the target vertex of the current edge (``source``, ``target``).
+**cost**                     ``FLOAT``           * When ``type`` = **'v'**: :math:`-1`
+                                                 * When ``type`` = **'e'**: Weight of the current edge (``source``, ``target``).
 ============================ =================   ===================================================================
 
-Additional Examples 
+Additional Examples
 -------------------------------------------------------------------------------
 
 :Example: Only dead end contraction
 
-.. literalinclude:: doc-contractGraph.queries
+.. literalinclude:: doc-pgr_contraction.queries
    :start-after: -- q3
    :end-before: -- q4
 
 :Example: Only linear contraction
 
-.. literalinclude:: doc-contractGraph.queries
+.. literalinclude:: doc-pgr_contraction.queries
    :start-after: -- q4
    :end-before: -- q5
 
 See Also
 -------------------------------------------------------------------------------
+
+* :doc:`contraction-family`
 
 .. rubric:: Indices and tables
 
