@@ -79,27 +79,30 @@ CREATE OR REPLACE FUNCTION my_dijkstra(
 RETURNS SETOF RECORD AS
 $BODY$
 SELECT * FROM pgr_dijkstra(
-    $contractedGraph$
+    $$
     WITH
     vertices_in_graph AS (
-        SELECT id  FROM edge_table_vertices_pgr WHERE is_contracted = false)
+        SELECT id
+        FROM edge_table_vertices_pgr
+        WHERE is_contracted = false
+    )
     SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE source IN (SELECT * FROM vertices_in_graph)
     AND target IN (SELECT * FROM vertices_in_graph)
-    $contractedGraph$,
+    $$,
     departure, destination, false);
 $BODY$
 LANGUAGE SQL VOLATILE;
 
 \echo -- use1
 SELECT * FROM my_dijkstra(3, 11);
+\echo -- use1-1
+SELECT * FROM my_dijkstra(4, 11);
+\echo -- use1-2
+SELECT * FROM my_dijkstra(4, 7);
 
 \echo -- case2
-SELECT id
-FROM edge_table
-WHERE ARRAY[4]::BIGINT[] <@ contracted_vertices OR ARRAY[12]::BIGINT[] <@ contracted_vertices;
-
 CREATE OR REPLACE FUNCTION my_dijkstra(
     departure BIGINT, destination BIGINT,
     OUT seq INTEGER, OUT path_seq INTEGER,
@@ -140,7 +143,10 @@ LANGUAGE SQL VOLATILE;
 
 \echo -- use2
 SELECT * FROM my_dijkstra(3, 11);
+\echo -- use2-1
 SELECT * FROM my_dijkstra(4, 11);
+\echo -- use2-2
+SELECT * FROM my_dijkstra(4, 7);
 
 \echo -- case3
 CREATE OR REPLACE FUNCTION my_dijkstra(
@@ -196,6 +202,8 @@ LANGUAGE SQL VOLATILE;
 
 \echo -- use3
 SELECT * FROM my_dijkstra(3, 11);
+\echo -- use3-1
 SELECT * FROM my_dijkstra(4, 11);
+\echo -- use3-2
 SELECT * FROM my_dijkstra(4, 7);
 \echo -- end

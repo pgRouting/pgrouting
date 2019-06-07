@@ -10,7 +10,6 @@
 Contraction - Family of functions (Experimental)
 ===============================================================================
 
-
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
@@ -46,8 +45,6 @@ Allowing the user to:
 - Forbid contraction on a set of nodes.
 - Decide the order of the contraction algorithms and set the maximum number of
   times they are to be executed.
-
-.. note:: UNDER DISCUSSION:  Forbid contraction on a set of edges
 
 Dead end contraction
 -------------------------------------------------------------------------------
@@ -487,12 +484,14 @@ The contracted graph
 ...............................................................................
 
 Vertices that belong to the contracted graph.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-contraction-family.queries
    :start-after: -- q10
    :end-before: -- q11
 
 Edges that belong to the contracted graph.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-contraction-family.queries
    :start-after: -- q11
@@ -507,7 +506,7 @@ Using the contracted graph
 Using the contracted graph with ``pgr_dijkstra``
 
 There are three cases when calculating the shortest path between a given source and target
-in a contracted graph.
+in a contracted graph:
 
 - Case 1: Both source and target belong to the contracted graph.
 - Case 2: Source and/or target belong to an edge subgraph.
@@ -516,61 +515,126 @@ in a contracted graph.
 Case 1: Both source and target belong to the contracted graph.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Inspecting the contracted graph above, vertex 3 and vertex 11 are part of the contracted graph. In the following query:
-
- - vertices_in_graph hold the vertices that belong to the contracted graph.
- - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
-
-Visually, looking at the original graph, going from 3 to 11: 3 -> 6 -> 11, and in the contracted graph, it is also 3 -> 6 -> 11.
-The results, on the contracted graph match the results as if it was done on the original graph.
+Using the `Edges that belong to the contracted graph.`_ on lines 10 to 19.
 
 .. literalinclude:: doc-contraction-family.queries
+   :emphasize-lines: 10-19
    :start-after: -- case1
    :end-before: -- use1
+   :linenos:
+
+.. rubric:: Case 1
+
+When both source and target belong to the contracted graph, a path is found.
 
 .. literalinclude:: doc-contraction-family.queries
    :start-after: -- use1
-   :end-before: -- case2
+   :end-before: -- use1-1
 
-Case 2: Source and/or target belong belongs to an edge subgraph.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. rubric:: Case 2
 
-Inspecting the contracted graph above, vertex 3 is part of the contracted graph and vertex 1 belongs to the contracted subgraph of edge 19. In the following query:
-  - expand1 holds the contracted vertices of the edge where vertex 1 belongs. (belongs to edge 19).
-  - vertices_in_graph hold the vertices that belong to the contracted graph and also the contracted vertices of edge 19.
-  - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
+When source and/or target belong to an edge subgraph then a path is not found.
 
-Visually, looking at the original graph, going from 3 to 1: 3 -> 2 -> 1, and in the contracted graph, it is also 3 -> 2 -> 1.
-The results, on the contracted graph match the results as if it was done on the original graph.
+In this case, the contracted graph do not have an edge connecting with
+node :math:`4`.
 
 .. literalinclude:: doc-contraction-family.queries
+   :start-after: -- use1-1
+   :end-before: -- use1-2
+
+.. rubric:: Case 3
+
+When source and/or target belong to a vertex then a path is not found.
+
+In this case, the contracted graph do not have an edge connecting with
+node :math:`7` and of node :math:`4` of the second case.
+
+.. literalinclude:: doc-contraction-family.queries
+   :start-after: -- use1-2
+   :end-before: -- case2
+
+Case 2: Source and/or target belong to an edge subgraph.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Refining the above function to include nodes that belong to an edge.
+
+- The vertices that need to be expanded are calculated on lines 10 to 16.
+- Adding to the contracted graph that additional section on lines 25 to 27.
+
+.. literalinclude:: doc-contraction-family.queries
+   :emphasize-lines: 10-16, 25-27
    :start-after: -- case2
    :end-before: -- use2
+   :linenos:
+
+.. rubric:: Case 1
+
+When both source and target belong to the contracted graph, a path is found.
 
 .. literalinclude:: doc-contraction-family.queries
    :start-after: -- use2
-   :end-before: -- case3
+   :end-before: -- use2-1
 
+.. rubric:: Case 2
+
+When source and/or target belong to an edge subgraph, now, a path is found.
+
+The routing graph now has an edge connecting with node :math:`4`.
+
+.. literalinclude:: doc-contraction-family.queries
+   :start-after: -- use2-1
+   :end-before: -- use2-2
+
+.. rubric:: Case 3
+
+When source and/or target belong to a vertex then a path is not found.
+
+In this case, the contracted graph do not have an edge connecting with
+node :math:`7`.
+
+.. literalinclude:: doc-contraction-family.queries
+   :start-after: -- use2-2
+   :end-before: -- case3
 
 Case 3: Source and/or target belong to a vertex.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Inspecting the contracted graph above, vertex 7 belongs to the contracted subgraph of vertex 5 and vertex 13 belongs to the contracted subgraph of edge 21. In the following query:
+Refining the above function to include nodes that belong to an edge.
 
- - expand7 holds the contracted vertices of vertex where vertex 7 belongs. (belongs to vertex 5)
- - expand13 holds the contracted vertices of edge where vertex 13 belongs. (belongs to edge 21)
- - vertices_in_graph hold the vertices that belong to the contracted graph, contracted vertices of vertex 5 and contracted vertices of edge 21.
- - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
-
-Visually, looking at the original graph, going from 7 to 13: 7 -> 8 -> 5 -> 10 -> 13, and in the contracted graph, it is also 7 -> 8 -> 5 -> 10 -> 13.
-The results, on the contracted graph match the results as if it was done on the original graph.
+- The vertices that need to be expanded are calculated on lines 18 to 23.
+- Adding to the contracted graph that additional section on lines 38 to 40.
 
 .. literalinclude:: doc-contraction-family.queries
+   :emphasize-lines: 18-23, 38-40
    :start-after: -- case3
    :end-before: -- use3
+   :linenos:
+
+.. rubric:: Case 1
+
+When both source and target belong to the contracted graph, a path is found.
 
 .. literalinclude:: doc-contraction-family.queries
    :start-after: -- use3
+   :end-before: -- use3-1
+
+.. rubric:: Case 2
+
+The code change do not affect this case so when source and/or target belong
+to an edge subgraph, a path is still found.
+
+.. literalinclude:: doc-contraction-family.queries
+   :start-after: -- use3-1
+   :end-before: -- use3-2
+
+.. rubric:: Case 3
+
+When source and/or target belong to a vertex, now, a path is found.
+
+Now, the routing graph has an edge connecting with node :math:`7`.
+
+.. literalinclude:: doc-contraction-family.queries
+   :start-after: -- use3-2
    :end-before: -- end
 
 See Also
