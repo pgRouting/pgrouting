@@ -33,7 +33,7 @@ SELECT has_function('pgr_withpointscostmatrix');
 SELECT has_function('pgr_withpointsksp');
 SELECT has_function('pgr_withpointsdd');
 
-SELECT has_function('pgr_contractgraph');
+SELECT has_function('pgr_contraction');
 SELECT has_function('pgr_maxflow');
 SELECT has_function('pgr_pushrelabel');
 SELECT has_function('pgr_edmondskarp');
