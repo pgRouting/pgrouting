@@ -110,9 +110,9 @@ BEGIN
     vname=tname||'_vertices_pgr';
     vertname= sname||'.'||vname;
     rows_where = ' AND ('||rows_where||')';
-  raise debug '--> Edge table exists: OK';
+  raise DEBUG '--> Edge table exists: OK';
 
-  raise debug 'Checking column names';
+  raise DEBUG 'Checking column names';
     select * into sourcename from _pgr_getColumnName(sname, tname,source,2, fnName);
     select * into targetname from _pgr_getColumnName(sname, tname,target,2, fnName);
     select * into gname      from _pgr_getColumnName(sname, tname,the_geom,2, fnName);
@@ -121,9 +121,9 @@ BEGIN
     err = sourcename in (targetname,gname) or  targetname=gname;
     perform _pgr_onError(err, 2, fnName,
         'Two columns share the same name', 'Parameter names for the_geom,source and target  must be different');
-  raise debug '--> Column names: OK';
+  raise DEBUG '--> Column names: OK';
 
-  raise debug 'Checking column types in edge table';
+  raise DEBUG 'Checking column types in edge table';
     select * into sourcetype from _pgr_getColumnType(sname,tname,sourcename,1, fnName);
     select * into targettype from _pgr_getColumnType(sname,tname,targetname,1, fnName);
 
@@ -136,14 +136,14 @@ BEGIN
     perform _pgr_onError(err, 2, fnName,
         'Wrong type of Column target: '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or biginti but '||targettype||' was found');
 
-  raise debug '-->Column types:OK';
+  raise DEBUG '-->Column types:OK';
 
-  raise debug 'Checking SRID of geometry column';
+  raise DEBUG 'Checking SRID of geometry column';
      query= 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
         || ' FROM ' || _pgr_quote_ident(tabname)
         || ' WHERE ' || quote_ident(gname)
         || ' IS NOT NULL LIMIT 1';
-     raise debug '%',query;
+     raise DEBUG '%',query;
      EXECUTE query INTO sridinfo;
 
      err =  sridinfo IS NULL OR sridinfo.srid IS NULL;
@@ -152,7 +152,7 @@ BEGIN
      srid := sridinfo.srid;
   raise DEBUG '     --> OK';
 
-  raise debug 'Checking and creating Indices';
+  raise DEBUG 'Checking and creating Indices';
      perform _pgr_createIndex(sname, tname , sourcename , 'btree'::TEXT);
      perform _pgr_createIndex(sname, tname , targetname , 'btree'::TEXT);
      perform _pgr_createIndex(sname, tname , gname , 'gist'::TEXT);
@@ -164,7 +164,7 @@ BEGIN
 
 
   BEGIN
-  raise debug 'Checking Condition';
+  raise DEBUG 'Checking Condition';
     -- issue #193 & issue #210 & #213
     -- this sql is for trying out the where clause
     -- the select * is to avoid any column name conflicts
@@ -178,7 +178,7 @@ BEGIN
     -- any error will be caught by the exception also
     sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
-    raise debug '%',sql;
+    raise DEBUG '%',sql;
     EXECUTE SQL  into notincluded;
     EXCEPTION WHEN OTHERS THEN
          RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
@@ -228,13 +228,13 @@ BEGIN
 		,numberedLines as (select row_number() OVER (ORDER BY id) AS i,* from lines )
 		,maxid as (select id,max(i) as maxi from numberedLines group by id)
 		insert into '||_pgr_quote_ident(vertname)||'(id,the_geom)  (select id,the_geom  from numberedLines join maxid using(id) where i=maxi order by id)';
-       RAISE debug '%',sql;
+       RAISE DEBUG '%',sql;
        execute sql;
        GET DIAGNOSTICS totcount = ROW_COUNT;
 
        sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b
             where '||sourcename||'=b.id and '|| targetname||' in (select id from '||_pgr_quote_ident(vertname)||')';
-       RAISE debug '%',sql;
+       RAISE DEBUG '%',sql;
        execute sql into included;
 
 
