@@ -94,11 +94,11 @@ DECLARE
 
 BEGIN
   fnName = 'pgr_createVerticesTable';
-  raise notice 'PROCESSING:';
-  raise notice 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
+  raise NOTICE 'PROCESSING:';
+  raise NOTICE 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
   execute 'show client_min_messages' into debuglevel;
 
-  raise notice 'Performing checks, please wait .....';
+  raise NOTICE 'Performing checks, please wait .....';
 
   RAISE DEBUG 'Checking % exists',edge_table;
         execute 'select * from _pgr_getTableName('|| quote_literal(edge_table)
@@ -213,7 +213,7 @@ BEGIN
   END;
 
   BEGIN
-       raise notice 'Populating %, please wait...',vertname;
+       raise NOTICE 'Populating %, please wait...',vertname;
        sql= 'with
 		lines as ((select distinct '||sourcename||' as id, _pgr_startpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
 		                  ' where ('|| gname || ' IS NULL
@@ -241,12 +241,12 @@ BEGIN
 
        execute 'select max(id) from '||_pgr_quote_ident(vertname) into ecnt;
        execute 'SELECT setval('||quote_literal(vertname||'_id_seq')||','||coalesce(ecnt,1)||' , false)';
-       raise notice '  ----->   VERTICES TABLE CREATED WITH  % VERTICES', totcount;
-       raise notice '                                       FOR   %  EDGES', included+notincluded;
+       raise NOTICE '  ----->   VERTICES TABLE CREATED WITH  % VERTICES', totcount;
+       raise NOTICE '                                       FOR   %  EDGES', included+notincluded;
        RAISE NOTICE '  Edges with NULL geometry,source or target: %',notincluded;
        RAISE NOTICE '                            Edges processed: %',included;
-       Raise notice 'Vertices table for table % is: %',_pgr_quote_ident(tabname),_pgr_quote_ident(vertname);
-       raise notice '----------------------------------------------';
+       Raise NOTICE 'Vertices table for table % is: %',_pgr_quote_ident(tabname),_pgr_quote_ident(vertname);
+       raise NOTICE '----------------------------------------------';
     END;
 
     RETURN 'OK';
