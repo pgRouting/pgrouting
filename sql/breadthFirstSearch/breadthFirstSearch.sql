@@ -64,7 +64,7 @@ CREATE OR REPLACE FUNCTION pgr_breadthFirstSearch(
     directed BOOLEAN DEFAULT true,
 
     OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT depth BIGINT,
     OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
