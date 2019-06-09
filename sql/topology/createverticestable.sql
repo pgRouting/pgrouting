@@ -233,7 +233,7 @@ BEGIN
        GET DIAGNOSTICS totcount = ROW_COUNT;
 
        sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b
-            where '||sourcename||'=b.id and '|| targetname||' in (select id from '||_pgr_quote_ident(vertname)||')';
+            where '||sourcename||'=b.id AND '|| targetname||' in (select id from '||_pgr_quote_ident(vertname)||')';
        RAISE DEBUG '%',sql;
        EXECUTE sql INTO included;
 
