@@ -1,3 +1,7 @@
+SELECT * FROM pgr_topologicalSort(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table'
+);
+
 \echo -- q1
 SELECT * FROM pgr_topologicalSort(
     'SELECT id, source, target, cost, reverse_cost 
