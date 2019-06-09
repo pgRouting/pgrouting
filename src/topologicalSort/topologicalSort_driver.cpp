@@ -51,12 +51,12 @@ static
 std::vector<pgr_topologicalSort_t>
 pgr_topologicalSort(
         G &graph) {
-#if 0
+
     Pgr_topologicalSort< G > fn_topologicalSort;
     return fn_topologicalSort.topologicalSort(graph);
-#endif
+/*
     std::vector<pgr_topologicalSort_t> vv;
-    return vv;
+    return vv;*/
 }
 
 

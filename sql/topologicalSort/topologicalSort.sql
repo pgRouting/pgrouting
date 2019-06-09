@@ -35,12 +35,10 @@ CREATE OR REPLACE FUNCTION pgr_topologicalSort(
     OUT sorted_v INTEGER)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.sorted_v
-    FROM _pgr_topologicalSort(_pgr_get_statement($1)) AS a;
+    SELECT *
+    FROM _pgr_topologicalSort(_pgr_get_statement($1)) ;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
-COST 100
-ROWS 1000;
 
 
 -- COMMENTS
@@ -52,5 +50,4 @@ IS 'pgr_topologicalSort
 - Documentation:
    - ${PGROUTING_DOC_LINK}/pgr_topologicalSort.html
 ';
-
 
