@@ -220,7 +220,7 @@ BEGIN
                                     OR '||sourcename||' is null
                                     OR '||targetname||' is null)=false
                                      '||rows_where||')
-			union (select distinct '||targetname||' as id,_pgr_endpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
+			UNION (select distinct '||targetname||' as id,_pgr_endpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
 			          ' where ('|| gname || ' IS NULL
                                     OR '||sourcename||' is null
                                     OR '||targetname||' is null)=false
