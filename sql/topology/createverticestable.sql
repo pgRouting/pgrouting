@@ -96,12 +96,12 @@ BEGIN
   fnName = 'pgr_createVerticesTable';
   raise NOTICE 'PROCESSING:';
   raise NOTICE 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
-  execute 'show client_min_messages' INTO debuglevel;
+  EXECUTE 'show client_min_messages' INTO debuglevel;
 
   raise NOTICE 'Performing checks, please wait .....';
 
   RAISE DEBUG 'Checking % exists',edge_table;
-        execute 'select * from _pgr_getTableName('|| quote_literal(edge_table)
+        EXECUTE 'select * from _pgr_getTableName('|| quote_literal(edge_table)
                                                   || ',2,' || quote_literal(fnName) ||' )' INTO naming;
 
     sname=naming.sname;
@@ -192,18 +192,18 @@ BEGIN
 
   BEGIN
      raise DEBUG 'initializing %',vertname;
-       execute 'select * from _pgr_getTableName('||quote_literal(vertname)||',0)' INTO naming;
+       EXECUTE 'select * from _pgr_getTableName('||quote_literal(vertname)||',0)' INTO naming;
        IF sname=naming.sname  AND vname=naming.tname  THEN
-           execute 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
-           execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
+           EXECUTE 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
+           EXECUTE 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
        ELSE
            set client_min_messages  to warning;
-       	   execute 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt INTEGER,chk INTEGER,ein INTEGER,eout INTEGER)';
+       	   EXECUTE 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt INTEGER,chk INTEGER,ein INTEGER,eout INTEGER)';
        END IF;
-       execute 'select addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
+       EXECUTE 'select addGeometryColumn('||quote_literal(sname)||','||quote_literal(vname)||','||
                 quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
-       execute 'CREATE INDEX '||quote_ident(vname||'_the_geom_idx')||' ON '||_pgr_quote_ident(vertname)||'  USING GIST (the_geom)';
-       execute 'set client_min_messages  to '|| debuglevel;
+       EXECUTE 'CREATE INDEX '||quote_ident(vname||'_the_geom_idx')||' ON '||_pgr_quote_ident(vertname)||'  USING GIST (the_geom)';
+       EXECUTE 'set client_min_messages  to '|| debuglevel;
        raise DEBUG  '  ------>OK';
        EXCEPTION WHEN OTHERS THEN
          RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
@@ -229,18 +229,18 @@ BEGIN
 		,maxid as (select id,max(i) as maxi from numberedLines group by id)
 		insert INTO '||_pgr_quote_ident(vertname)||'(id,the_geom)  (select id,the_geom  from numberedLines join maxid using(id) where i=maxi order by id)';
        RAISE DEBUG '%',sql;
-       execute sql;
+       EXECUTE sql;
        GET DIAGNOSTICS totcount = ROW_COUNT;
 
        sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b
             where '||sourcename||'=b.id and '|| targetname||' in (select id from '||_pgr_quote_ident(vertname)||')';
        RAISE DEBUG '%',sql;
-       execute sql INTO included;
+       EXECUTE sql INTO included;
 
 
 
-       execute 'select max(id) from '||_pgr_quote_ident(vertname) INTO ecnt;
-       execute 'SELECT setval('||quote_literal(vertname||'_id_seq')||','||coalesce(ecnt,1)||' , false)';
+       EXECUTE 'select max(id) from '||_pgr_quote_ident(vertname) INTO ecnt;
+       EXECUTE 'SELECT setval('||quote_literal(vertname||'_id_seq')||','||coalesce(ecnt,1)||' , false)';
        raise NOTICE '  ----->   VERTICES TABLE CREATED WITH  % VERTICES', totcount;
        raise NOTICE '                                       FOR   %  EDGES', included+notincluded;
        RAISE NOTICE '  Edges with NULL geometry,source or target: %',notincluded;
