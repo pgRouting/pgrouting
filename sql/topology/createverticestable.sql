@@ -226,7 +226,7 @@ BEGIN
                                     OR '||targetname||' is null)=false
                                      '||rows_where||'))
 		,numberedLines as (select row_number() OVER (ORDER BY id) AS i,* from lines )
-		,maxid as (select id,max(i) as maxi from numberedLines group by id)
+		,maxid as (select id,max(i) as maxi from numberedLines GROUP BY id)
 		insert INTO '||_pgr_quote_ident(vertname)||'(id,the_geom)  (select id,the_geom  from numberedLines join maxid using(id) where i=maxi ORDER BY id)';
        RAISE DEBUG '%',sql;
        EXECUTE sql;
