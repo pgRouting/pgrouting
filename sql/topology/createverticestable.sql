@@ -77,7 +77,7 @@ DECLARE
     sourcename TEXT;
     targetname TEXT;
     query TEXT;
-    ecnt bigint;
+    ecnt BIGINT;
     srid INTEGER;
     sourcetype TEXT;
     targettype TEXT;
@@ -128,11 +128,11 @@ BEGIN
     select * INTO targettype from _pgr_getColumnType(sname,tname,targetname,1, fnName);
 
 
-    err = sourcetype not in('INTEGER','smallint','bigint');
+    err = sourcetype not in('INTEGER','smallint','BIGINT');
     perform _pgr_onError(err, 2, fnName,
         'Wrong type of Column source: '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint or bigint but '||sourcetype||' was found');
 
-    err = targettype not in('INTEGER','smallint','bigint');
+    err = targettype not in('INTEGER','smallint','BIGINT');
     perform _pgr_onError(err, 2, fnName,
         'Wrong type of Column target: '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or biginti but '||targettype||' was found');
 
