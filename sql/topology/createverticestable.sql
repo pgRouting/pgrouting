@@ -101,7 +101,7 @@ BEGIN
   RAISE NOTICE 'Performing checks, please wait .....';
 
   RAISE DEBUG 'Checking % exists',edge_table;
-        EXECUTE 'select * from _pgr_getTableName('|| quote_literal(edge_table)
+        EXECUTE 'select * FROM _pgr_getTableName('|| quote_literal(edge_table)
                                                   || ',2,' || quote_literal(fnName) ||' )' INTO naming;
 
     sname=naming.sname;
@@ -113,9 +113,9 @@ BEGIN
   RAISE DEBUG '--> Edge table exists: OK';
 
   RAISE DEBUG 'Checking column names';
-    select * INTO sourcename from _pgr_getColumnName(sname, tname,source,2, fnName);
-    select * INTO targetname from _pgr_getColumnName(sname, tname,target,2, fnName);
-    select * INTO gname      from _pgr_getColumnName(sname, tname,the_geom,2, fnName);
+    select * INTO sourcename FROM _pgr_getColumnName(sname, tname,source,2, fnName);
+    select * INTO targetname FROM _pgr_getColumnName(sname, tname,target,2, fnName);
+    select * INTO gname      FROM _pgr_getColumnName(sname, tname,the_geom,2, fnName);
 
 
     err = sourcename IN (targetname,gname) OR  targetname=gname;
@@ -124,8 +124,8 @@ BEGIN
   RAISE DEBUG '--> Column names: OK';
 
   RAISE DEBUG 'Checking column types in edge table';
-    select * INTO sourcetype from _pgr_getColumnType(sname,tname,sourcename,1, fnName);
-    select * INTO targettype from _pgr_getColumnType(sname,tname,targetname,1, fnName);
+    select * INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1, fnName);
+    select * INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1, fnName);
 
 
     err = sourcetype not in('INTEGER','smallint','bigint');
@@ -170,13 +170,13 @@ BEGIN
     -- the select * is to avoid any column name conflicts
     -- limit 1, just try on first record
     -- if the where clasuse is ill formed it will be caught in the exception
-    sql = 'select * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
+    sql = 'select * FROM '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
     EXECUTE sql INTO dummyRec;
     -- end
 
     -- if above where clasue works this one should work
     -- any error will be caught by the exception also
-    sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
+    sql = 'select count(*) FROM '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
     RAISE DEBUG '%',sql;
     EXECUTE SQL  INTO notincluded;
@@ -192,7 +192,7 @@ BEGIN
 
   BEGIN
      RAISE DEBUG 'initializing %',vertname;
-       EXECUTE 'select * from _pgr_getTableName('||quote_literal(vertname)||',0)' INTO naming;
+       EXECUTE 'select * FROM _pgr_getTableName('||quote_literal(vertname)||',0)' INTO naming;
        IF sname=naming.sname  AND vname=naming.tname  THEN
            EXECUTE 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
            EXECUTE 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
@@ -215,31 +215,31 @@ BEGIN
   BEGIN
        RAISE NOTICE 'Populating %, please wait...',vertname;
        sql= 'with
-		lines as ((select distinct '||sourcename||' as id, _pgr_startpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
+		lines as ((select distinct '||sourcename||' as id, _pgr_startpoint(st_linemerge('||gname||')) as the_geom FROM '||_pgr_quote_ident(tabname)||
 		                  ' where ('|| gname || ' IS NULL
                                     OR '||sourcename||' is null
                                     OR '||targetname||' is null)=false
                                      '||rows_where||')
-			UNION (select distinct '||targetname||' as id,_pgr_endpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
+			UNION (select distinct '||targetname||' as id,_pgr_endpoint(st_linemerge('||gname||')) as the_geom FROM '||_pgr_quote_ident(tabname)||
 			          ' where ('|| gname || ' IS NULL
                                     OR '||sourcename||' is null
                                     OR '||targetname||' is null)=false
                                      '||rows_where||'))
-		,numberedLines as (select row_number() OVER (ORDER BY id) AS i,* from lines )
-		,maxid as (select id,max(i) as maxi from numberedLines GROUP BY id)
-		insert INTO '||_pgr_quote_ident(vertname)||'(id,the_geom)  (select id,the_geom  from numberedLines join maxid using(id) where i=maxi ORDER BY id)';
+		,numberedLines as (select row_number() OVER (ORDER BY id) AS i,* FROM lines )
+		,maxid as (select id,max(i) as maxi FROM numberedLines GROUP BY id)
+		insert INTO '||_pgr_quote_ident(vertname)||'(id,the_geom)  (select id,the_geom  FROM numberedLines join maxid using(id) where i=maxi ORDER BY id)';
        RAISE DEBUG '%',sql;
        EXECUTE sql;
        GET DIAGNOSTICS totcount = ROW_COUNT;
 
-       sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b
-            where '||sourcename||'=b.id AND '|| targetname||' IN (select id from '||_pgr_quote_ident(vertname)||')';
+       sql = 'select count(*) FROM '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b
+            where '||sourcename||'=b.id AND '|| targetname||' IN (select id FROM '||_pgr_quote_ident(vertname)||')';
        RAISE DEBUG '%',sql;
        EXECUTE sql INTO included;
 
 
 
-       EXECUTE 'select max(id) from '||_pgr_quote_ident(vertname) INTO ecnt;
+       EXECUTE 'select max(id) FROM '||_pgr_quote_ident(vertname) INTO ecnt;
        EXECUTE 'SELECT setval('||quote_literal(vertname||'_id_seq')||','||coalesce(ecnt,1)||' , false)';
        RAISE NOTICE '  ----->   VERTICES TABLE CREATED WITH  % VERTICES', totcount;
        RAISE NOTICE '                                       FOR   %  EDGES', included+notincluded;
