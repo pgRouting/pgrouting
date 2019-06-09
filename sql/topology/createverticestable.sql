@@ -130,11 +130,11 @@ BEGIN
 
     err = sourcetype not in('INTEGER','smallint','bigint');
     perform _pgr_onError(err, 2, fnName,
-        'Wrong type of Column source: '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint OR bigint but '||sourcetype||' was found');
+        'Wrong type of Column source: '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint or bigint but '||sourcetype||' was found');
 
     err = targettype not in('INTEGER','smallint','bigint');
     perform _pgr_onError(err, 2, fnName,
-        'Wrong type of Column target: '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint OR biginti but '||targettype||' was found');
+        'Wrong type of Column target: '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or biginti but '||targettype||' was found');
 
   raise DEBUG '-->Column types:OK';
 
@@ -176,7 +176,7 @@ BEGIN
 
     -- if above where clasue works this one should work
     -- any error will be caught by the exception also
-    sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL OR '||
+    sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
     raise DEBUG '%',sql;
     EXECUTE SQL  INTO notincluded;
