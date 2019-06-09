@@ -35,9 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <limits>
 
-#if 0
+//#if 0
 #include "topologicalSort/pgr_topologicalSort.hpp"
-#endif
+//#endif
 //TODO(nike0good) : Remove below headers once pgr_topologicalSort.hpp is implemented.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
