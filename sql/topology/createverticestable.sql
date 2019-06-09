@@ -96,13 +96,13 @@ BEGIN
   fnName = 'pgr_createVerticesTable';
   raise NOTICE 'PROCESSING:';
   raise NOTICE 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
-  execute 'show client_min_messages' into debuglevel;
+  execute 'show client_min_messages' INTO debuglevel;
 
   raise NOTICE 'Performing checks, please wait .....';
 
   RAISE DEBUG 'Checking % exists',edge_table;
         execute 'select * from _pgr_getTableName('|| quote_literal(edge_table)
-                                                  || ',2,' || quote_literal(fnName) ||' )' into naming;
+                                                  || ',2,' || quote_literal(fnName) ||' )' INTO naming;
 
     sname=naming.sname;
     tname=naming.tname;
@@ -113,9 +113,9 @@ BEGIN
   raise DEBUG '--> Edge table exists: OK';
 
   raise DEBUG 'Checking column names';
-    select * into sourcename from _pgr_getColumnName(sname, tname,source,2, fnName);
-    select * into targetname from _pgr_getColumnName(sname, tname,target,2, fnName);
-    select * into gname      from _pgr_getColumnName(sname, tname,the_geom,2, fnName);
+    select * INTO sourcename from _pgr_getColumnName(sname, tname,source,2, fnName);
+    select * INTO targetname from _pgr_getColumnName(sname, tname,target,2, fnName);
+    select * INTO gname      from _pgr_getColumnName(sname, tname,the_geom,2, fnName);
 
 
     err = sourcename in (targetname,gname) or  targetname=gname;
@@ -124,8 +124,8 @@ BEGIN
   raise DEBUG '--> Column names: OK';
 
   raise DEBUG 'Checking column types in edge table';
-    select * into sourcetype from _pgr_getColumnType(sname,tname,sourcename,1, fnName);
-    select * into targettype from _pgr_getColumnType(sname,tname,targetname,1, fnName);
+    select * INTO sourcetype from _pgr_getColumnType(sname,tname,sourcename,1, fnName);
+    select * INTO targettype from _pgr_getColumnType(sname,tname,targetname,1, fnName);
 
 
     err = sourcetype not in('INTEGER','smallint','bigint');
@@ -171,7 +171,7 @@ BEGIN
     -- limit 1, just try on first record
     -- if the where clasuse is ill formed it will be caught in the exception
     sql = 'select * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
-    EXECUTE sql into dummyRec;
+    EXECUTE sql INTO dummyRec;
     -- end
 
     -- if above where clasue works this one should work
@@ -179,7 +179,7 @@ BEGIN
     sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
     raise DEBUG '%',sql;
-    EXECUTE SQL  into notincluded;
+    EXECUTE SQL  INTO notincluded;
     EXCEPTION WHEN OTHERS THEN
          RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
          RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition';
@@ -192,7 +192,7 @@ BEGIN
 
   BEGIN
      raise DEBUG 'initializing %',vertname;
-       execute 'select * from _pgr_getTableName('||quote_literal(vertname)||',0)' into naming;
+       execute 'select * from _pgr_getTableName('||quote_literal(vertname)||',0)' INTO naming;
        IF sname=naming.sname  AND vname=naming.tname  THEN
            execute 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
            execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
@@ -227,7 +227,7 @@ BEGIN
                                      '||rows_where||'))
 		,numberedLines as (select row_number() OVER (ORDER BY id) AS i,* from lines )
 		,maxid as (select id,max(i) as maxi from numberedLines group by id)
-		insert into '||_pgr_quote_ident(vertname)||'(id,the_geom)  (select id,the_geom  from numberedLines join maxid using(id) where i=maxi order by id)';
+		insert INTO '||_pgr_quote_ident(vertname)||'(id,the_geom)  (select id,the_geom  from numberedLines join maxid using(id) where i=maxi order by id)';
        RAISE DEBUG '%',sql;
        execute sql;
        GET DIAGNOSTICS totcount = ROW_COUNT;
@@ -235,11 +235,11 @@ BEGIN
        sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b
             where '||sourcename||'=b.id and '|| targetname||' in (select id from '||_pgr_quote_ident(vertname)||')';
        RAISE DEBUG '%',sql;
-       execute sql into included;
+       execute sql INTO included;
 
 
 
-       execute 'select max(id) from '||_pgr_quote_ident(vertname) into ecnt;
+       execute 'select max(id) from '||_pgr_quote_ident(vertname) INTO ecnt;
        execute 'SELECT setval('||quote_literal(vertname||'_id_seq')||','||coalesce(ecnt,1)||' , false)';
        raise NOTICE '  ----->   VERTICES TABLE CREATED WITH  % VERTICES', totcount;
        raise NOTICE '                                       FOR   %  EDGES', included+notincluded;
