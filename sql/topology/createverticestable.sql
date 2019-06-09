@@ -118,7 +118,7 @@ BEGIN
     select * INTO gname      from _pgr_getColumnName(sname, tname,the_geom,2, fnName);
 
 
-    err = sourcename in (targetname,gname) or  targetname=gname;
+    err = sourcename in (targetname,gname) OR  targetname=gname;
     perform _pgr_onError(err, 2, fnName,
         'Two columns share the same name', 'Parameter names for the_geom,source and target  must be different');
   raise DEBUG '--> Column names: OK';
@@ -130,11 +130,11 @@ BEGIN
 
     err = sourcetype not in('INTEGER','smallint','bigint');
     perform _pgr_onError(err, 2, fnName,
-        'Wrong type of Column source: '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint or bigint but '||sourcetype||' was found');
+        'Wrong type of Column source: '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint OR bigint but '||sourcetype||' was found');
 
     err = targettype not in('INTEGER','smallint','bigint');
     perform _pgr_onError(err, 2, fnName,
-        'Wrong type of Column target: '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or biginti but '||targettype||' was found');
+        'Wrong type of Column target: '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint OR biginti but '||targettype||' was found');
 
   raise DEBUG '-->Column types:OK';
 
@@ -176,7 +176,7 @@ BEGIN
 
     -- if above where clasue works this one should work
     -- any error will be caught by the exception also
-    sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
+    sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL OR '||
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
     raise DEBUG '%',sql;
     EXECUTE SQL  INTO notincluded;
@@ -217,13 +217,13 @@ BEGIN
        sql= 'with
 		lines as ((select distinct '||sourcename||' as id, _pgr_startpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
 		                  ' where ('|| gname || ' IS NULL
-                                    or '||sourcename||' is null
-                                    or '||targetname||' is null)=false
+                                    OR '||sourcename||' is null
+                                    OR '||targetname||' is null)=false
                                      '||rows_where||')
 			union (select distinct '||targetname||' as id,_pgr_endpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
 			          ' where ('|| gname || ' IS NULL
-                                    or '||sourcename||' is null
-                                    or '||targetname||' is null)=false
+                                    OR '||sourcename||' is null
+                                    OR '||targetname||' is null)=false
                                      '||rows_where||'))
 		,numberedLines as (select row_number() OVER (ORDER BY id) AS i,* from lines )
 		,maxid as (select id,max(i) as maxi from numberedLines group by id)
