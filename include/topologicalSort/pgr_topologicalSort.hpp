@@ -103,7 +103,7 @@ class Pgr_topologicalSort {
     //    pgassert(w == totalcost);
           pgr_topologicalSort_t tmp;
           tmp.seq=tmp.sorted_v=1;
-          results.push_back(v);
+          results.push_back(tmp);
           return results;
      }
 };
