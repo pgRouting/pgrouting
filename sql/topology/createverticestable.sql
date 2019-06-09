@@ -118,7 +118,7 @@ BEGIN
     select * INTO gname      from _pgr_getColumnName(sname, tname,the_geom,2, fnName);
 
 
-    err = sourcename in (targetname,gname) OR  targetname=gname;
+    err = sourcename IN (targetname,gname) OR  targetname=gname;
     perform _pgr_onError(err, 2, fnName,
         'Two columns share the same name', 'Parameter names for the_geom,source and target  must be different');
   raise DEBUG '--> Column names: OK';
@@ -233,7 +233,7 @@ BEGIN
        GET DIAGNOSTICS totcount = ROW_COUNT;
 
        sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' a, '||_pgr_quote_ident(vertname)||' b
-            where '||sourcename||'=b.id AND '|| targetname||' in (select id from '||_pgr_quote_ident(vertname)||')';
+            where '||sourcename||'=b.id AND '|| targetname||' IN (select id from '||_pgr_quote_ident(vertname)||')';
        RAISE DEBUG '%',sql;
        EXECUTE sql INTO included;
 
