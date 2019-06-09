@@ -94,11 +94,11 @@ DECLARE
 
 BEGIN
   fnName = 'pgr_createVerticesTable';
-  raise NOTICE 'PROCESSING:';
-  raise NOTICE 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
+  RAISE NOTICE 'PROCESSING:';
+  RAISE NOTICE 'pgr_createVerticesTable(''%'',''%'',''%'',''%'',''%'')',edge_table,the_geom,source,target,rows_where;
   EXECUTE 'show client_min_messages' INTO debuglevel;
 
-  raise NOTICE 'Performing checks, please wait .....';
+  RAISE NOTICE 'Performing checks, please wait .....';
 
   RAISE DEBUG 'Checking % exists',edge_table;
         EXECUTE 'select * from _pgr_getTableName('|| quote_literal(edge_table)
@@ -110,9 +110,9 @@ BEGIN
     vname=tname||'_vertices_pgr';
     vertname= sname||'.'||vname;
     rows_where = ' AND ('||rows_where||')';
-  raise DEBUG '--> Edge table exists: OK';
+  RAISE DEBUG '--> Edge table exists: OK';
 
-  raise DEBUG 'Checking column names';
+  RAISE DEBUG 'Checking column names';
     select * INTO sourcename from _pgr_getColumnName(sname, tname,source,2, fnName);
     select * INTO targetname from _pgr_getColumnName(sname, tname,target,2, fnName);
     select * INTO gname      from _pgr_getColumnName(sname, tname,the_geom,2, fnName);
@@ -121,9 +121,9 @@ BEGIN
     err = sourcename IN (targetname,gname) OR  targetname=gname;
     perform _pgr_onError(err, 2, fnName,
         'Two columns share the same name', 'Parameter names for the_geom,source and target  must be different');
-  raise DEBUG '--> Column names: OK';
+  RAISE DEBUG '--> Column names: OK';
 
-  raise DEBUG 'Checking column types in edge table';
+  RAISE DEBUG 'Checking column types in edge table';
     select * INTO sourcetype from _pgr_getColumnType(sname,tname,sourcename,1, fnName);
     select * INTO targettype from _pgr_getColumnType(sname,tname,targetname,1, fnName);
 
@@ -136,27 +136,27 @@ BEGIN
     perform _pgr_onError(err, 2, fnName,
         'Wrong type of Column target: '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or biginti but '||targettype||' was found');
 
-  raise DEBUG '-->Column types:OK';
+  RAISE DEBUG '-->Column types:OK';
 
-  raise DEBUG 'Checking SRID of geometry column';
+  RAISE DEBUG 'Checking SRID of geometry column';
      query= 'SELECT ST_SRID(' || quote_ident(gname) || ') as srid '
         || ' FROM ' || _pgr_quote_ident(tabname)
         || ' WHERE ' || quote_ident(gname)
         || ' IS NOT NULL LIMIT 1';
-     raise DEBUG '%',query;
+     RAISE DEBUG '%',query;
      EXECUTE query INTO sridinfo;
 
      err =  sridinfo IS NULL OR sridinfo.srid IS NULL;
      perform _pgr_onError(err, 2, fnName,
          'Can not determine the srid of the geometry '|| gname ||' in table '||tabname, 'Check the geometry of column '||gname);
      srid := sridinfo.srid;
-  raise DEBUG '     --> OK';
+  RAISE DEBUG '     --> OK';
 
-  raise DEBUG 'Checking and creating Indices';
+  RAISE DEBUG 'Checking and creating Indices';
      perform _pgr_createIndex(sname, tname , sourcename , 'btree'::TEXT);
      perform _pgr_createIndex(sname, tname , targetname , 'btree'::TEXT);
      perform _pgr_createIndex(sname, tname , gname , 'gist'::TEXT);
-  raise DEBUG '-->Check and create indices: OK';
+  RAISE DEBUG '-->Check and create indices: OK';
 
      gname=quote_ident(gname);
      sourcename=quote_ident(sourcename);
@@ -164,7 +164,7 @@ BEGIN
 
 
   BEGIN
-  raise DEBUG 'Checking Condition';
+  RAISE DEBUG 'Checking Condition';
     -- issue #193 & issue #210 & #213
     -- this sql is for trying out the where clause
     -- the select * is to avoid any column name conflicts
@@ -178,7 +178,7 @@ BEGIN
     -- any error will be caught by the exception also
     sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
-    raise DEBUG '%',sql;
+    RAISE DEBUG '%',sql;
     EXECUTE SQL  INTO notincluded;
     EXCEPTION WHEN OTHERS THEN
          RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
@@ -191,7 +191,7 @@ BEGIN
 
 
   BEGIN
-     raise DEBUG 'initializing %',vertname;
+     RAISE DEBUG 'initializing %',vertname;
        EXECUTE 'select * from _pgr_getTableName('||quote_literal(vertname)||',0)' INTO naming;
        IF sname=naming.sname  AND vname=naming.tname  THEN
            EXECUTE 'TRUNCATE TABLE '||_pgr_quote_ident(vertname)||' RESTART IDENTITY';
@@ -204,7 +204,7 @@ BEGIN
                 quote_literal('the_geom')||','|| srid||', '||quote_literal('POINT')||', 2)';
        EXECUTE 'CREATE INDEX '||quote_ident(vname||'_the_geom_idx')||' ON '||_pgr_quote_ident(vertname)||'  USING GIST (the_geom)';
        EXECUTE 'set client_min_messages  to '|| debuglevel;
-       raise DEBUG  '  ------>OK';
+       RAISE DEBUG  '  ------>OK';
        EXCEPTION WHEN OTHERS THEN
          RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
          RAISE NOTICE 'ERROR: Initializing vertex table';
@@ -213,7 +213,7 @@ BEGIN
   END;
 
   BEGIN
-       raise NOTICE 'Populating %, please wait...',vertname;
+       RAISE NOTICE 'Populating %, please wait...',vertname;
        sql= 'with
 		lines as ((select distinct '||sourcename||' as id, _pgr_startpoint(st_linemerge('||gname||')) as the_geom from '||_pgr_quote_ident(tabname)||
 		                  ' where ('|| gname || ' IS NULL
@@ -241,12 +241,12 @@ BEGIN
 
        EXECUTE 'select max(id) from '||_pgr_quote_ident(vertname) INTO ecnt;
        EXECUTE 'SELECT setval('||quote_literal(vertname||'_id_seq')||','||coalesce(ecnt,1)||' , false)';
-       raise NOTICE '  ----->   VERTICES TABLE CREATED WITH  % VERTICES', totcount;
-       raise NOTICE '                                       FOR   %  EDGES', included+notincluded;
+       RAISE NOTICE '  ----->   VERTICES TABLE CREATED WITH  % VERTICES', totcount;
+       RAISE NOTICE '                                       FOR   %  EDGES', included+notincluded;
        RAISE NOTICE '  Edges with NULL geometry,source or target: %',notincluded;
        RAISE NOTICE '                            Edges processed: %',included;
-       Raise NOTICE 'Vertices table for table % is: %',_pgr_quote_ident(tabname),_pgr_quote_ident(vertname);
-       raise NOTICE '----------------------------------------------';
+       RAISE NOTICE 'Vertices table for table % is: %',_pgr_quote_ident(tabname),_pgr_quote_ident(vertname);
+       RAISE NOTICE '----------------------------------------------';
     END;
 
     RETURN 'OK';
