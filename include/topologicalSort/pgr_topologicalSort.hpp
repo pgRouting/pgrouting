@@ -101,9 +101,9 @@ class Pgr_topologicalSort {
     //    }
 
     //    pgassert(w == totalcost);
-          pgr_topologicalSort_t tmp;
-          tmp.seq=tmp.sorted_v=1;
-          results.push_back(tmp);
+        //   pgr_topologicalSort_t tmp;
+        //   tmp.seq=tmp.sorted_v=1;
+        //   results.push_back(tmp);
           return results;
      }
 };
@@ -112,7 +112,7 @@ template < class G >
 std::vector<pgr_topologicalSort_t>
 Pgr_topologicalSort< G >::topologicalSort(
                 G &graph) {
-//    pgassert(num_vertices(graph.graph) > 1);
+    pgassert(num_vertices(graph.graph) > 1);
       return generatetopologicalSort(
                              graph);
 }
