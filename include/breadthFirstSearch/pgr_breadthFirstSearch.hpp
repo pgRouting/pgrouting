@@ -28,7 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include <visitors/edges_order_bfs_visitor.hpp>
-#include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/breadth_first_search.hpp>
 
 #include "cpp_common/pgr_base_graph.hpp"
@@ -55,11 +54,6 @@ public:
         std::vector<int64_t> start_vertex,
         int64_t depth){
 
-        // pgr_mst_rt dummy = {0, 0, 0, 0, 0.0, 0.0};
-        // std::vector<pgr_mst_rt> dummyResults = {dummy};
-        // return dummyResults;
-
-
         std::vector<pgr_mst_rt> results;
         using bfs_visitor = visitors::Edges_order_bfs_visitor<E>;
         for (auto source : start_vertex)
@@ -81,12 +75,8 @@ public:
         }
         return results;
         }
-    
-//source, depth, node, edge
 
 private:
-
-
 
      template <typename T>
      std::vector<pgr_mst_rt> get_results(
