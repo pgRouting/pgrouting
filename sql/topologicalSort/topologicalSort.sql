@@ -38,7 +38,7 @@ $BODY$
     SELECT *
     FROM _pgr_topologicalSort(_pgr_get_statement($1)) ;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
+LANGUAGE sql VOLATILE STRICT;
 
 
 -- COMMENTS
