@@ -26,7 +26,7 @@ SELECT has_column('edge_table_vertices_pgr', 'is_contracted');
 SELECT has_column('edge_table', 'contracted_vertices');
 SELECT has_column('edge_table_vertices_pgr', 'contracted_vertices');
 
-SELECT * INTO contraction_info FROM pgr_contractGraph(
+SELECT * INTO contraction_info FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
 

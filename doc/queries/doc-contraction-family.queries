@@ -28,16 +28,16 @@ SELECT id, source, target, cost, reverse_cost FROM edge_table;
 
 -- q01
 -- q1
-ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
+ALTER TABLE edge_table_vertices_pgr ADD is_contracted BOOLEAN DEFAULT false;
 ALTER TABLE
 ALTER TABLE edge_table_vertices_pgr ADD contracted_vertices BIGINT[];
 ALTER TABLE
-ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false;
+ALTER TABLE edge_table ADD is_new BOOLEAN DEFAULT false;
 ALTER TABLE
-ALTER TABLE edge_table_vertices_pgr ADD is_contracted BOOLEAN DEFAULT false;
+ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
 ALTER TABLE
 -- q2
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1,2], directed:=false);
  type | id | contracted_vertices | source | target | cost
@@ -53,7 +53,7 @@ SELECT * FROM pgr_contractGraph(
 
 -- q3
 SELECT * INTO contraction_results
-FROM pgr_contractGraph(
+FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1,2], directed:=false);
 SELECT 7
@@ -119,17 +119,17 @@ ORDER BY id;
 (17 rows)
 
 -- q8
-INSERT INTO edge_table(source, target, cost, reverse_cost, contracted_vertices, is_contracted)
+INSERT INTO edge_table(source, target, cost, reverse_cost, contracted_vertices, is_new)
 SELECT source, target, cost, -1, contracted_vertices, true
 FROM contraction_results
 WHERE type = 'e';
 INSERT 0 4
 -- q9
-SELECT id, source, target, cost, reverse_cost, contracted_vertices, is_contracted
+SELECT id, source, target, cost, reverse_cost, contracted_vertices, is_new
 FROM edge_table
 ORDER BY id;
- id | source | target | cost | reverse_cost | contracted_vertices | is_contracted
-----+--------+--------+------+--------------+---------------------+---------------
+ id | source | target | cost | reverse_cost | contracted_vertices | is_new
+----+--------+--------+------+--------------+---------------------+--------
   1 |      1 |      2 |    1 |            1 |                     | f
   2 |      2 |      3 |   -1 |            1 |                     | f
   3 |      3 |      4 |   -1 |            1 |                     | f
@@ -155,7 +155,8 @@ ORDER BY id;
 (22 rows)
 
 -- q10
-SELECT id  FROM edge_table_vertices_pgr
+SELECT id
+FROM edge_table_vertices_pgr
 WHERE is_contracted = false
 ORDER BY id;
  id
@@ -169,18 +170,56 @@ ORDER BY id;
  17
 (7 rows)
 
+-- q11
+WITH
+vertices_in_graph AS (
+    SELECT id
+    FROM edge_table_vertices_pgr
+    WHERE is_contracted = false
+)
+SELECT id, source, target, cost, reverse_cost, contracted_vertices
+FROM edge_table
+WHERE source IN (SELECT * FROM vertices_in_graph)
+AND target IN (SELECT * FROM vertices_in_graph);
+ id | source | target | cost | reverse_cost | contracted_vertices
+----+--------+--------+------+--------------+---------------------
+  5 |      3 |      6 |    1 |           -1 |
+  8 |      5 |      6 |    1 |            1 |
+  9 |      6 |      9 |    1 |            1 |
+ 11 |      6 |     11 |    1 |           -1 |
+ 19 |      3 |      5 |    2 |           -1 | {1,2}
+ 20 |      3 |      9 |    2 |           -1 | {4}
+ 21 |      5 |     11 |    2 |           -1 | {10,13}
+ 22 |      9 |     11 |    2 |           -1 | {12}
+(8 rows)
+
 -- case1
+CREATE OR REPLACE FUNCTION my_dijkstra(
+    departure BIGINT, destination BIGINT,
+    OUT seq INTEGER, OUT path_seq INTEGER,
+    OUT node BIGINT, OUT edge BIGINT,
+    OUT cost FLOAT, OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
 SELECT * FROM pgr_dijkstra(
     $$
     WITH
     vertices_in_graph AS (
-        SELECT id  FROM edge_table_vertices_pgr WHERE is_contracted = false)
+        SELECT id
+        FROM edge_table_vertices_pgr
+        WHERE is_contracted = false
+    )
     SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE source IN (SELECT * FROM vertices_in_graph)
     AND target IN (SELECT * FROM vertices_in_graph)
     $$,
-    3, 11, false);
+    departure, destination, false);
+$BODY$
+LANGUAGE SQL VOLATILE;
+CREATE FUNCTION
+-- use1
+SELECT * FROM my_dijkstra(3, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |    3 |    5 |    1 |        0
@@ -188,169 +227,160 @@ SELECT * FROM pgr_dijkstra(
    3 |        3 |   11 |   -1 |    0 |        2
 (3 rows)
 
+-- use1-1
+SELECT * FROM my_dijkstra(4, 11);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
+-- use1-2
+SELECT * FROM my_dijkstra(4, 7);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
 -- case2
+CREATE OR REPLACE FUNCTION my_dijkstra(
+    departure BIGINT, destination BIGINT,
+    OUT seq INTEGER, OUT path_seq INTEGER,
+    OUT node BIGINT, OUT edge BIGINT,
+    OUT cost FLOAT, OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
 SELECT * FROM pgr_dijkstra(
     $$
     WITH
-    expand_edges AS (SELECT id, unnest(contracted_vertices) AS vertex FROM edge_table),
-    expand1 AS (SELECT contracted_vertices FROM edge_table
-        WHERE id IN (SELECT id FROM expand_edges WHERE vertex = 1)),
+    edges_to_expand AS (
+        SELECT id
+        FROM edge_table
+        WHERE ARRAY[$$ || departure || $$]::BIGINT[] <@ contracted_vertices
+           OR ARRAY[$$ || destination || $$]::BIGINT[] <@ contracted_vertices
+    ),
+
     vertices_in_graph AS (
-        SELECT id  FROM edge_table_vertices_pgr WHERE is_contracted = false
+        SELECT id
+        FROM edge_table_vertices_pgr
+        WHERE is_contracted = false
+
         UNION
-        SELECT unnest(contracted_vertices) FROM expand1)
+
+        SELECT unnest(contracted_vertices)
+        FROM edge_table
+        WHERE id IN (SELECT id FROM edges_to_expand)
+    )
+
     SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE source IN (SELECT * FROM vertices_in_graph)
     AND target IN (SELECT * FROM vertices_in_graph)
     $$,
-    3, 1, false);
+    departure, destination, false);
+$BODY$
+LANGUAGE SQL VOLATILE;
+CREATE FUNCTION
+-- use2
+SELECT * FROM my_dijkstra(3, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
-   1 |        1 |    3 |    2 |    1 |        0
-   2 |        2 |    2 |    1 |    1 |        1
-   3 |        3 |    1 |   -1 |    0 |        2
+   1 |        1 |    3 |    5 |    1 |        0
+   2 |        2 |    6 |   11 |    1 |        1
+   3 |        3 |   11 |   -1 |    0 |        2
 (3 rows)
 
+-- use2-1
+SELECT * FROM my_dijkstra(4, 11);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |    4 |   16 |    1 |        0
+   2 |        2 |    9 |   22 |    2 |        1
+   3 |        3 |   11 |   -1 |    0 |        3
+(3 rows)
+
+-- use2-2
+SELECT * FROM my_dijkstra(4, 7);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
 -- case3
+CREATE OR REPLACE FUNCTION my_dijkstra(
+    departure BIGINT, destination BIGINT,
+    OUT seq INTEGER, OUT path_seq INTEGER,
+    OUT node BIGINT, OUT edge BIGINT,
+    OUT cost FLOAT, OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
 SELECT * FROM pgr_dijkstra(
     $$
     WITH
-
-    expand_vertices AS (SELECT id, unnest(contracted_vertices) AS vertex FROM edge_table_vertices_pgr),
-    expand7 AS (SELECT contracted_vertices FROM edge_table_vertices_pgr
-        WHERE id IN (SELECT id FROM expand_vertices WHERE vertex = 7)),
-
-    expand_edges AS (SELECT id, unnest(contracted_vertices) AS vertex FROM edge_table),
-    expand13 AS (SELECT contracted_vertices FROM edge_table
-        WHERE id IN (SELECT id FROM expand_edges WHERE vertex = 13)),
-
-    vertices_in_graph AS (
-        SELECT id  FROM edge_table_vertices_pgr WHERE is_contracted = false
-        UNION
-        SELECT unnest(contracted_vertices) FROM expand13
-        UNION
-        SELECT unnest(contracted_vertices) FROM expand7)
-
-    SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE source IN (SELECT * FROM vertices_in_graph)
-    AND target IN (SELECT * FROM vertices_in_graph)
-    $$,
-    7, 13, false);
- seq | path_seq | node | edge | cost | agg_cost
------+----------+------+------+------+----------
-   1 |        1 |    7 |    6 |    1 |        0
-   2 |        2 |    8 |    7 |    1 |        1
-   3 |        3 |    5 |   10 |    1 |        2
-   4 |        4 |   10 |   14 |    1 |        3
-   5 |        5 |   13 |   -1 |    0 |        4
-(5 rows)
-
--- case4
-SELECT * FROM  pgr_dijkstra(
-    $$
-    WITH
-    expand_vertices AS (SELECT id, unnest(contracted_vertices) AS vertex FROM edge_table_vertices_pgr),
-    expand7 AS (SELECT contracted_vertices FROM edge_table_vertices_pgr
-        WHERE id IN (SELECT id FROM expand_vertices WHERE vertex = 7)),
-    vertices_in_graph AS (
-        SELECT id  FROM edge_table_vertices_pgr WHERE is_contracted = false
-        UNION
-        SELECT unnest(contracted_vertices) FROM expand7)
-    SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE source IN (SELECT * FROM vertices_in_graph)
-    AND target IN (SELECT * FROM vertices_in_graph)
-    $$,
-    3, 7, false);
- seq | path_seq | node | edge | cost | agg_cost
------+----------+------+------+------+----------
-   1 |        1 |    3 |   19 |    2 |        0
-   2 |        2 |    5 |    7 |    1 |        2
-   3 |        3 |    8 |    6 |    1 |        3
-   4 |        4 |    7 |   -1 |    0 |        4
-(4 rows)
-
--- case5q1
-WITH
-first_dijkstra AS (
-    SELECT * FROM  pgr_dijkstra(
-        $$
-        WITH
-        expand_vertices AS (SELECT id, unnest(contracted_vertices) AS vertex FROM edge_table_vertices_pgr),
-        expand7 AS (SELECT contracted_vertices FROM edge_table_vertices_pgr
-            WHERE id IN (SELECT id FROM expand_vertices WHERE vertex = 7)),
-        vertices_in_graph AS (
-            SELECT id  FROM edge_table_vertices_pgr WHERE is_contracted = false
-            UNION
-            SELECT unnest(contracted_vertices) FROM expand7)
-        SELECT id, source, target, cost, reverse_cost
-        FROM edge_table
-        WHERE source IN (SELECT * FROM vertices_in_graph)
-        AND target IN (SELECT * FROM vertices_in_graph)
-        $$,
-        3, 7, false))
-SELECT edge, contracted_vertices
-    FROM first_dijkstra JOIN edge_table
-    ON (edge = id)
-    WHERE is_contracted = true;
- edge | contracted_vertices
-------+---------------------
-   19 | {1,2}
-(1 row)
-
--- case5q2
-SELECT * FROM pgr_dijkstra($$
-    WITH
-    -- This returns the results from case 2
-    first_dijkstra AS (
-        SELECT * FROM  pgr_dijkstra(
-            '
-            WITH
-            expand_vertices AS (SELECT id, unnest(contracted_vertices) AS vertex FROM edge_table_vertices_pgr),
-            expand7 AS (SELECT contracted_vertices FROM edge_table_vertices_pgr
-                WHERE id IN (SELECT id FROM expand_vertices WHERE vertex = 7)),
-            vertices_in_graph AS (
-                SELECT id  FROM edge_table_vertices_pgr WHERE is_contracted = false
-                UNION
-                SELECT unnest(contracted_vertices) FROM expand7)
-            SELECT id, source, target, cost, reverse_cost
-            FROM edge_table
-            WHERE source IN (SELECT * FROM vertices_in_graph)
-            AND target IN (SELECT * FROM vertices_in_graph)
-            ',
-            3, 7, false)),
-
-    -- edges that need expansion and the vertices to be expanded.
     edges_to_expand AS (
-        SELECT edge, contracted_vertices
-        FROM first_dijkstra JOIN edge_table
-        ON (edge = id)
-        WHERE is_contracted = true),
+        SELECT id
+        FROM edge_table
+        WHERE ARRAY[$$ || departure || $$]::BIGINT[] <@ contracted_vertices
+           OR ARRAY[$$ || destination || $$]::BIGINT[] <@ contracted_vertices
+    ),
+
+    vertices_to_expand AS (
+        SELECT id
+        FROM edge_table_vertices_pgr
+        WHERE ARRAY[$$ || departure || $$]::BIGINT[] <@ contracted_vertices
+           OR ARRAY[$$ || destination || $$]::BIGINT[] <@ contracted_vertices
+    ),
 
     vertices_in_graph AS (
-        -- the nodes of the contracted solution
-        SELECT node FROM first_dijkstra
+        SELECT id
+        FROM edge_table_vertices_pgr
+        WHERE is_contracted = false
+
         UNION
-        -- the nodes of the expanding sections
-        SELECT unnest(contracted_vertices) FROM edges_to_expand)
+
+        SELECT unnest(contracted_vertices)
+        FROM edge_table
+        WHERE id IN (SELECT id FROM edges_to_expand)
+
+        UNION
+
+        SELECT unnest(contracted_vertices)
+        FROM edge_table_vertices_pgr
+        WHERE id IN (SELECT id FROM vertices_to_expand)
+    )
 
     SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE source IN (SELECT * FROM vertices_in_graph)
     AND target IN (SELECT * FROM vertices_in_graph)
-    -- not including the expanded edges
-    AND id NOT IN (SELECT edge FROM edges_to_expand)
     $$,
-    3, 7, false);
+    departure, destination, false);
+$BODY$
+LANGUAGE SQL VOLATILE;
+CREATE FUNCTION
+-- use3
+SELECT * FROM my_dijkstra(3, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
-   1 |        1 |    3 |    2 |    1 |        0
-   2 |        2 |    2 |    4 |    1 |        1
-   3 |        3 |    5 |    7 |    1 |        2
-   4 |        4 |    8 |    6 |    1 |        3
-   5 |        5 |    7 |   -1 |    0 |        4
+   1 |        1 |    3 |    5 |    1 |        0
+   2 |        2 |    6 |   11 |    1 |        1
+   3 |        3 |   11 |   -1 |    0 |        2
+(3 rows)
+
+-- use3-1
+SELECT * FROM my_dijkstra(4, 11);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |    4 |   16 |    1 |        0
+   2 |        2 |    9 |   22 |    2 |        1
+   3 |        3 |   11 |   -1 |    0 |        3
+(3 rows)
+
+-- use3-2
+SELECT * FROM my_dijkstra(4, 7);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |    4 |    3 |    1 |        0
+   2 |        2 |    3 |   19 |    2 |        1
+   3 |        3 |    5 |    7 |    1 |        3
+   4 |        4 |    8 |    6 |    1 |        4
+   5 |        5 |    7 |   -1 |    0 |        5
 (5 rows)
 
 -- end

@@ -152,11 +152,12 @@ pgRouting 3.0.0 Release Notes
   * pgr_bridges
 
 
-.. rubric:: Experimental functions
+.. rubric:: Experimental moved to proposed on pgRouting
 
 * Contraction:
 
   * Removed unnecessary column seq
+  * Bug Fixes
 
 .. rubric:: New Experimental functions
 

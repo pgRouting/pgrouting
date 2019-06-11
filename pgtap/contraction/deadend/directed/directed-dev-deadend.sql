@@ -3,14 +3,14 @@
 SELECT plan(5);
 
 SELECT throws_ok(
-    $$SELECT * FROM pgr_contractGraph(
+    $$SELECT * FROM pgr_contraction(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
         ARRAY[-1]::integer[], 1, ARRAY[]::BIGINT[], true)$$,
     'XX000', 'Invalid contraction type found');
 
 -- GRAPH: 1 <=> 2
 PREPARE q1 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
 
@@ -28,7 +28,7 @@ SELECT set_eq('q1',
 -- EXPECTED
 
 PREPARE q2 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id < 3',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
 
@@ -51,7 +51,7 @@ SELECT set_eq('q2',
 --   5 | v    | 17 | {16}                |     -1 |     -1 |   -1
 
 PREPARE q3 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
 
@@ -76,7 +76,7 @@ SELECT set_eq('q3', 'sol3');
 -- (empty)
 
 PREPARE q4 AS
-SELECT * FROM pgr_contractGraph(
+SELECT * FROM pgr_contraction(
 	$$SELECT id, source, target, cost, reverse_cost FROM edge_table
 	WHERE id IN (2, 4, 5, 8)$$,
 	ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);

@@ -1,14 +1,14 @@
 \i setup.sql
 SELECT plan(44);
 SET client_min_messages TO WARNING;
-SELECT has_function('pgr_contractgraph');
+SELECT has_function('pgr_contraction');
 
-SELECT has_function('pgr_contractgraph', ARRAY[
+SELECT has_function('pgr_contraction', ARRAY[
     'text', 'bigint[]',
     'integer', 'bigint[]', 'boolean'
     ]);
 
-SELECT function_returns('pgr_contractgraph', ARRAY[
+SELECT function_returns('pgr_contraction', ARRAY[
     'text', 'bigint[]',
     'integer', 'bigint[]', 'boolean'
     ], 'setof record');
@@ -30,7 +30,7 @@ SELECT array[
 'cost'];
 
 SELECT set_eq(
-    $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_contractgraph'$$,
+    $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_contraction'$$,
     'parameters');
 
 
@@ -108,54 +108,54 @@ $BODY$ LANGUAGE plpgsql;
 -- CHECKING INNER QUERY
 
 --id ANY-INTEGER
-SELECT test_anyInteger('pgr_contractgraph',
+SELECT test_anyInteger('pgr_contraction',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
     'id');
 
 --source is only integer
-SELECT test_anyInteger('pgr_contractgraph',
+SELECT test_anyInteger('pgr_contraction',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
     'source');
 
 --target is only integer
-SELECT test_anyInteger('pgr_contractgraph',
+SELECT test_anyInteger('pgr_contraction',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
     'target');
 
 --cost is any numerical
-SELECT test_anyNumerical('pgr_contractgraph',
+SELECT test_anyNumerical('pgr_contraction',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
     'cost');
 
 --reverse cost is any numerical
-SELECT test_anyNumerical('pgr_contractgraph',
+SELECT test_anyNumerical('pgr_contraction',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
     'reverse_cost');
 
 -- Minimal Signature
 PREPARE q10 AS
 SELECT *
-FROM pgr_contractgraph(
+FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[]);
 
 
 PREPARE q11 AS
 SELECT *
-FROM pgr_contractgraph(
+FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], directed:= true);
 
 PREPARE q12 AS
 SELECT *
-FROM pgr_contractgraph(
+FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], directed:= false);
 
 
 PREPARE q13 AS
 SELECT *
-FROM pgr_contractgraph(
+FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], max_cycles:= 1, directed:= false);
 
@@ -164,53 +164,53 @@ FROM pgr_contractgraph(
 -- Forbidden vertices array dimension should be 0 or 1
 PREPARE q1 AS
 SELECT *
-FROM pgr_contractgraph(
+FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], 1, ARRAY[ [2,3,4,5], [4,5,6,7] ]::integer[][], true);
 
 -- Contraction order array cannot be empty
 PREPARE q2 AS
 SELECT *
-FROM pgr_contractgraph(
+FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[]::integer[], 1, ARRAY[]::integer[], true);
 
 -- Forbidden vertices should be an integer array
 PREPARE q3 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[1]::integer[], 1, ARRAY[ ]::integer[], true);
 
 PREPARE q4 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[1]::integer[], 1, ARRAY[ ]::bigint[], true);
 
 PREPARE q5 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[1]::integer[], 1, ARRAY[ ]::smallint[], true);
 
 /*
 PREPARE q5 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[ ]::bigint[], ARRAY[0]::FLOAT8[], 1, true);
 */
 
 -- Contraction order array should be an integer array
 PREPARE q7 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[1]::bigint[], 1, ARRAY[ ]::bigint[], true);
 
 PREPARE q8 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[1]::integer[], 1, ARRAY[ ]::bigint[]);
 
 PREPARE q9 AS
-SELECT * FROM pgr_contractgraph(
+SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[1]::smallint[], 1, ARRAY[ ]::bigint[]);
 

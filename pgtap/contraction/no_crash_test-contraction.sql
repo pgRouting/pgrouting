@@ -24,7 +24,7 @@ BEGIN
     'NULL::BIGINT[]'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_contractGraph', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_contraction', params, subs);
 
 END
 $BODY$
