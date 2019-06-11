@@ -1,5 +1,7 @@
 \i setup.sql
-SELECT plan(0);
+SELECT plan(45);
+
+SELECT style_dijkstra('pgr_topologicalSort', ')');
 
 
 SELECT finish();
