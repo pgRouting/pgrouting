@@ -75,7 +75,7 @@ class Pgr_topologicalSort {
         
         typename std::vector< V >::reverse_iterator ii;
         for (ii=c.rbegin(); ii!=c.rend(); ++ii) {
-            int t=index(*ii);
+            auto t=*ii;
             pgr_topologicalSort_t tmp;
             tmp.sorted_v=t;
             results.push_back(tmp);
