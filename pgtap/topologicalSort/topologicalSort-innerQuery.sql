@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(45);
+SELECT plan(0);
 
 ```
 SELECT has_function('pgr_topologicalSort');
