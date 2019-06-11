@@ -35,9 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <limits>
 
-//#if 0
 #include "topologicalSort/pgr_topologicalSort.hpp"
-//#endif
+
 //TODO(nike0good) : Remove below headers once pgr_topologicalSort.hpp is implemented.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -51,14 +50,14 @@ static
 std::vector<pgr_topologicalSort_t>
 pgr_topologicalSort(
         G &graph) {
-#if 0
     Pgr_topologicalSort< G > fn_topologicalSort;
     return fn_topologicalSort.topologicalSort(graph);
-#endif
+#if 0
     std::vector<pgr_topologicalSort_t> vv;
     return vv;
-}
+#endif
 
+}
 
 
 // CREATE OR REPLACE FUNCTION pgr_topologicalSort(
