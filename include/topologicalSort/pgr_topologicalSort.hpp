@@ -67,12 +67,11 @@ class Pgr_topologicalSort {
         const G &graph ) {
         
         std::vector< pgr_topologicalSort_t > results;
-        
-        typedef adjacency_list< vecS, vecS, directedS, color_property<> > Graph;
-        typedef boost::graph_traits<Graph>::vertex_descriptor Vertex;
+
+        typedef typename boost::graph_traits < G >::vertex_descriptor Vertex;
         typedef std::vector< Vertex > container;
         container c;
-        topological_sort(G, std::back_inserter(c));
+        topological_sort(graph.graph, std::back_inserter(c));
         
         for ( container::reverse_iterator ii=c.rbegin(); ii!=c.rend(); ++ii) {
             int t=index(*ii);
