@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/typeof/typeof.hpp>
 #include <boost/graph/topological_sort.hpp>
 
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -68,12 +69,12 @@ class Pgr_topologicalSort {
         
         std::vector< pgr_topologicalSort_t > results;
 
-        typedef typename boost::graph_traits < G >::vertex_descriptor Vertex;
-        typedef typename std::vector< Vertex > container;
+        typedef typename std::vector< V > container;
         container c;
         topological_sort(graph.graph, std::back_inserter(c));
         
-        for (typename container::reverse_iterator ii=c.rbegin(); ii!=c.rend(); ++ii) {
+        std::vector< V >::reverse_iterator ii;
+        for (ii=c.rbegin(); ii!=c.rend(); ++ii) {
             int t=index(*ii);
             pgr_topologicalSort_t tmp;
             tmp.sorted_v=t;
