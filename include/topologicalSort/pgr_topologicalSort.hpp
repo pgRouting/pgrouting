@@ -69,7 +69,7 @@ class Pgr_topologicalSort {
         std::vector< pgr_topologicalSort_t > results;
 
         typedef typename boost::graph_traits < G >::vertex_descriptor Vertex;
-        typedef std::vector< Vertex > container;
+        typedef typename std::vector< Vertex > container;
         container c;
         topological_sort(graph.graph, std::back_inserter(c));
         
