@@ -28,26 +28,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_topologicalSort
 ---------------
 
+
+CREATE OR REPLACE FUNCTION _pgr_topologicalSort(
+    edges_sql TEXT,
+
+    OUT seq INTEGER,
+    OUT sorted_v INTEGER)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME', 'topologicalSort'
+LANGUAGE c VOLATILE STRICT;
+
 CREATE OR REPLACE FUNCTION pgr_topologicalSort(
-    TEXT,   -- edges_sql (required)
-    
+    edges_sql TEXT, -- edges_sql (required)
+
     OUT seq INTEGER,
     OUT sorted_v INTEGER)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_topologicalSort(_pgr_get_statement($1)) ;
+    FROM _pgr_topologicalSort(_pgr_get_statement($1));
 $BODY$
-LANGUAGE sql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 -- COMMENTS
 
+
+COMMENT ON FUNCTION _pgr_topologicalSort(TEXT)
+IS 'pgRouting internal function';
+
+
 COMMENT ON FUNCTION pgr_topologicalSort(TEXT)
 IS 'pgr_topologicalSort
+- EXPERIMENTAL
+- Directed graph
 - Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_topologicalSort.html
+  - ${PGROUTING_DOC_LINK}/pgr_topologicalSort.html
 ';
-
