@@ -73,7 +73,7 @@ class Pgr_topologicalSort {
         container c;
         topological_sort(graph.graph, std::back_inserter(c));
         
-        std::vector< V >::reverse_iterator ii;
+        typename std::vector< V >::reverse_iterator ii;
         for (ii=c.rbegin(); ii!=c.rend(); ++ii) {
             int t=index(*ii);
             pgr_topologicalSort_t tmp;
