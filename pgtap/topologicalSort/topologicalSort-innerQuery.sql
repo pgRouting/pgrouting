@@ -1,10 +1,14 @@
 \i setup.sql
-SELECT plan(1);
 
-SELECT * FROM pgr_topologicalSort(
-    'SELECT id, source, target, cost, reverse_cost
-        FROM edge_table
-     WHERE id = 18'
-);
+SELECT plan(2);
+SET client_min_messages TO ERROR;
+
+SELECT has_function('pgr_topologicalSort',
+    ARRAY['text'] );
+
+SELECT function_returns('pgr_topologicalSort',
+    ARRAY['text'],
+    'setof record');
+
 SELECT finish();
 ROLLBACK;

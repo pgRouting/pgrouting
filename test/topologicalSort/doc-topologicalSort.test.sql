@@ -1,30 +1,25 @@
-\echo -- q1
 
+\echo -- q1
 SELECT * FROM pgr_topologicalSort(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table 
-     WHERE id < 17'
+    'SELECT id, source, target, cost FROM edge_table',
+    1, 6
 );
 
 \echo -- q2
 SELECT * FROM pgr_topologicalSort(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table 
-     WHERE id = 18'
+    'SELECT id, source, target, cost FROM edge_table',
+    1, ARRAY[5,6]
 );
-
 \echo -- q3
 SELECT * FROM pgr_topologicalSort(
-$$
- SELECT id, source, target, cost, reverse_cost FROM edge_table 
-    where source = any (ARRAY(SELECT node FROM pgr_connectedComponents(
-                            'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
-                        WHERE component = 14)
-                       ) 
-                   OR     
-          target = any (ARRAY(SELECT node FROM pgr_connectedComponents(
-                            'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
-                        WHERE component = 14)
-                       )
-$$
- );
+    'SELECT id, source, target, cost FROM edge_table',
+    ARRAY[1,3], 6
+);
 
 \echo -- q4
+SELECT * FROM pgr_topologicalSort(
+    'SELECT id, source, target, cost FROM edge_table',
+    ARRAY[1, 4],ARRAY[12,6]
+);
+\echo -- q5
+
