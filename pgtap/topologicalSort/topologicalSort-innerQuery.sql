@@ -1,10 +1,10 @@
 \i setup.sql
-SELECT plan(2);
+SELECT plan(1);
 
-SELECT has_function('pgr_topologicalSort');
-
-SELECT function_returns('pgr_topologicalSort', ARRAY['text'], 'setof record');
-
-
+SELECT * FROM pgr_topologicalSort(
+    'SELECT id, source, target, cost, reverse_cost
+        FROM edge_table
+     WHERE id = 18'
+);
 SELECT finish();
 ROLLBACK;
