@@ -61,9 +61,9 @@ DECLARE
     outname TEXT;
     srid INTEGER;
     sridinfo record;
-    splits bigint;
-    touched bigint;
-    untouched bigint;
+    splits BIGINT;
+    touched BIGINT;
+    untouched BIGINT;
     geomtype TEXT;
     debuglevel TEXT;
     rows_where TEXT;
@@ -173,7 +173,7 @@ BEGIN
        ELSE
 	   set client_min_messages  to warning;
        	   execute 'CREATE TABLE '||_pgr_quote_ident(outtab)||' (id bigserial PRIMARY KEY,old_id INTEGER,sub_id INTEGER,
-								source bigint,target bigint)';
+								source BIGINT,target BIGINT)';
        END IF;
        execute 'SELECT geometrytype('||quote_ident(n_geom)||') FROM  '||_pgr_quote_ident(intab)||' limit 1' into geomtype;
        execute 'SELECT addGeometryColumn('||quote_literal(sname)||','||quote_literal(outname)||','||
