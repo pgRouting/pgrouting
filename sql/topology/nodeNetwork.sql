@@ -74,11 +74,11 @@ BEGIN
   RAISE notice 'pgr_nodeNetwork(''%'', %, ''%'', ''%'', ''%'', ''%'',  %)',
     edge_table, tolerance, id,  the_geom, table_ending, rows_where, outall;
   RAISE notice 'Performing checks, please wait .....';
-  EXECUTE 'show client_min_messages' into debuglevel;
+  EXECUTE 'show client_min_messages' INTO debuglevel;
 
   BEGIN
     RAISE DEBUG 'Checking % exists',edge_table;
-    EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(edge_table)||',0)' into naming;
+    EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(edge_table)||',0)' INTO naming;
     sname=naming.sname;
     tname=naming.tname;
     IF sname IS NULL OR tname IS NULL THEN
@@ -166,7 +166,7 @@ BEGIN
 ---------------
     BEGIN
        RAISE DEBUG 'initializing %',outtab;
-       EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(outtab)||',0)' into naming;
+       EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(outtab)||',0)' INTO naming;
        IF sname=naming.sname  AND outname=naming.tname  THEN
            EXECUTE 'TRUNCATE TABLE '||_pgr_quote_ident(outtab)||' RESTART IDENTITY';
            EXECUTE 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(outname)||','||quote_literal(n_geom)||')';
@@ -175,7 +175,7 @@ BEGIN
        	   EXECUTE 'CREATE TABLE '||_pgr_quote_ident(outtab)||' (id bigserial PRIMARY KEY,old_id INTEGER,sub_id INTEGER,
 								source BIGINT,target BIGINT)';
        END IF;
-       EXECUTE 'SELECT geometrytype('||quote_ident(n_geom)||') FROM  '||_pgr_quote_ident(intab)||' limit 1' into geomtype;
+       EXECUTE 'SELECT geometrytype('||quote_ident(n_geom)||') FROM  '||_pgr_quote_ident(intab)||' limit 1' INTO geomtype;
        EXECUTE 'SELECT addGeometryColumn('||quote_literal(sname)||','||quote_literal(outname)||','||
                 quote_literal(n_geom)||','|| srid||', '||quote_literal(geomtype)||', 2)';
        EXECUTE 'CREATE INDEX '||quote_ident(outname||'_'||n_geom||'_idx')||' ON '||_pgr_quote_ident(outtab)||'  USING GIST ('||quote_ident(n_geom)||')';
@@ -244,7 +244,7 @@ BEGIN
 
 --   EXECUTE 'drop table if exists ' || _pgr_quote_ident(outtab);
 --   EXECUTE 'create table ' || _pgr_quote_ident(outtab) || ' as
-     P_RET = 'insert into '||_pgr_quote_ident(outtab)||' (old_id,sub_id,'||quote_ident(n_geom)||') (  with cut_locations AS (
+     P_RET = 'insert INTO '||_pgr_quote_ident(outtab)||' (old_id,sub_id,'||quote_ident(n_geom)||') (  with cut_locations AS (
            SELECT l1id AS lid, locus
            FROM inter_loc
            -- then generates start AND end locus for each line that have to be cut buy a location point
@@ -272,11 +272,11 @@ BEGIN
     EXECUTE p_ret;
 	GET DIAGNOSTICS splits = ROW_COUNT;
         EXECUTE 'with diff AS (SELECT distinct old_id FROM '||_pgr_quote_ident(outtab)||' )
-                 SELECT count(*) FROM diff' into touched;
+                 SELECT count(*) FROM diff' INTO touched;
 	-- here, it misses all original line that did not need to be cut by intersection points: these lines
 	-- are already clean
 	-- inserts them in the final result: all lines which gid is not in the res table.
-	EXECUTE 'insert into ' || _pgr_quote_ident(outtab) || ' (old_id , sub_id, ' || quote_ident(n_geom) || ')
+	EXECUTE 'insert INTO ' || _pgr_quote_ident(outtab) || ' (old_id , sub_id, ' || quote_ident(n_geom) || ')
                 ( with used AS (SELECT distinct old_id FROM '|| _pgr_quote_ident(outtab)||')
 		SELECT ' ||  quote_ident(n_pkey) || ', 1 AS sub_id, ' ||  quote_ident(n_geom) ||
 		' FROM '|| _pgr_quote_ident(intab) ||' WHERE  '||quote_ident(n_pkey)||' NOT IN (SELECT * FROM used)' || rows_where || ')';
