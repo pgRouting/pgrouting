@@ -212,7 +212,7 @@ BEGIN
 	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false AND
 	st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false AND
 	st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false  )';
-    RAISE debug '%',p_ret;
+    RAISE DEBUG '%',p_ret;
     EXECUTE p_ret;
 
     -- second temp table with locus (index of intersection point on the line)
@@ -230,7 +230,7 @@ BEGIN
          UNION
         (SELECT l1id, l2id, ' || vst_line_locate_point || '(line,target) AS locus FROM intergeom)) AS foo
         WHERE locus<>0 AND locus<>1)';
-    RAISE debug  '%',p_ret;
+    RAISE DEBUG  '%',p_ret;
     EXECUTE p_ret;
 
     -- index on l1id
@@ -268,7 +268,7 @@ BEGIN
        WHERE loc2.idx = loc1.idx+1
            -- keeps only linestring geometries
            AND geometryType(' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus)) = ''LINESTRING'') ';
-    RAISE debug  '%',p_ret;
+    RAISE DEBUG  '%',p_ret;
     EXECUTE p_ret;
 	GET DIAGNOSTICS splits = ROW_COUNT;
         EXECUTE 'with diff AS (SELECT distinct old_id FROM '||_pgr_quote_ident(outtab)||' )
