@@ -96,26 +96,26 @@ BEGIN
   END;
 
   BEGIN
-       RAISE DEBUG 'Checking id column "%" columns in  % ',id,intab;
+       RAISE DEBUG 'Checking id column "%" columns IN  % ',id,intab;
        EXECUTE 'SELECT _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(id)||')' INTO n_pkey;
        IF n_pkey is NULL then
-          RAISE notice  'ERROR: id column "%"  NOT found in %',id,intab;
+          RAISE notice  'ERROR: id column "%"  NOT found IN %',id,intab;
           RETURN 'FAIL';
        END IF;
   END;
 
 
   BEGIN
-       RAISE DEBUG 'Checking id column "%" columns in  % ',the_geom,intab;
+       RAISE DEBUG 'Checking id column "%" columns IN  % ',the_geom,intab;
        EXECUTE 'SELECT _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(the_geom)||')' INTO n_geom;
        IF n_geom is NULL then
-          RAISE notice  'ERROR: the_geom  column "%"  NOT found in %',the_geom,intab;
+          RAISE notice  'ERROR: the_geom  column "%"  NOT found IN %',the_geom,intab;
           RETURN 'FAIL';
        END IF;
   END;
 
   IF n_pkey=n_geom THEN
-	RAISE notice  'ERROR: id and the_geom columns have the same name "%" in %',n_pkey,intab;
+	RAISE notice  'ERROR: id and the_geom columns have the same name "%" IN %',n_pkey,intab;
         RETURN 'FAIL';
   END IF;
 
@@ -126,18 +126,18 @@ BEGIN
           		|| ' WHERE ' || quote_ident(n_geom)
           		|| ' IS NOT NULL LIMIT 1' INTO sridinfo;
        	IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
-        	RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" in table %', n_geom,intab;
+        	RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" IN table %', n_geom,intab;
            	RETURN 'FAIL';
        	END IF;
        	srid := sridinfo.srid;
        	RAISE DEBUG '  -----> SRID found %',srid;
        	EXCEPTION WHEN OTHERS THEN
-           		RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" in table %', n_geom,intab;
+           		RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" IN table %', n_geom,intab;
            		RETURN 'FAIL';
   END;
 
     BEGIN
-      RAISE DEBUG 'Checking "%" column in % is indexed',n_pkey,intab;
+      RAISE DEBUG 'Checking "%" column IN % is indexed',n_pkey,intab;
       if (_pgr_isColumnIndexed(intab,n_pkey)) then
 	RAISE DEBUG '  ------>OK';
       else
@@ -150,7 +150,7 @@ BEGIN
     END;
 
     BEGIN
-      RAISE DEBUG 'Checking "%" column in % is indexed',n_geom,intab;
+      RAISE DEBUG 'Checking "%" column IN % is indexed',n_geom,intab;
       if (_pgr_iscolumnindexed(intab,n_geom)) then
 	RAISE DEBUG '  ------>OK';
       else
@@ -279,7 +279,7 @@ BEGIN
 	EXECUTE 'insert into ' || _pgr_quote_ident(outtab) || ' (old_id , sub_id, ' || quote_ident(n_geom) || ')
                 ( with used AS (SELECT distinct old_id FROM '|| _pgr_quote_ident(outtab)||')
 		SELECT ' ||  quote_ident(n_pkey) || ', 1 AS sub_id, ' ||  quote_ident(n_geom) ||
-		' FROM '|| _pgr_quote_ident(intab) ||' WHERE  '||quote_ident(n_pkey)||' NOT in (SELECT * FROM used)' || rows_where || ')';
+		' FROM '|| _pgr_quote_ident(intab) ||' WHERE  '||quote_ident(n_pkey)||' NOT IN (SELECT * FROM used)' || rows_where || ')';
 	GET DIAGNOSTICS untouched = ROW_COUNT;
 
 	RAISE NOTICE '  Split Edges: %', touched;
