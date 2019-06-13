@@ -59,7 +59,7 @@ DECLARE
     sname TEXT;
     tname TEXT;
     outname TEXT;
-    srid integer;
+    srid INTEGER;
     sridinfo record;
     splits bigint;
     touched bigint;
@@ -172,7 +172,7 @@ BEGIN
            execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(outname)||','||quote_literal(n_geom)||')';
        ELSE
 	   set client_min_messages  to warning;
-       	   execute 'CREATE TABLE '||_pgr_quote_ident(outtab)||' (id bigserial PRIMARY KEY,old_id integer,sub_id integer,
+       	   execute 'CREATE TABLE '||_pgr_quote_ident(outtab)||' (id bigserial PRIMARY KEY,old_id INTEGER,sub_id INTEGER,
 								source bigint,target bigint)';
        END IF;
        execute 'SELECT geometrytype('||quote_ident(n_geom)||') FROM  '||_pgr_quote_ident(intab)||' limit 1' into geomtype;
