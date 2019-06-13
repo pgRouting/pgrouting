@@ -227,7 +227,7 @@ BEGIN
 --        where ' || vst_line_locate_point || '(line,point)<>0 and ' || vst_line_locate_point || '(line,point)<>1)';
     p_ret= 'create temp table inter_loc on commit drop AS ( SELECT * FROM (
         (SELECT l1id, l2id, ' || vst_line_locate_point || '(line,source) AS locus FROM intergeom)
-         union
+         UNION
         (SELECT l1id, l2id, ' || vst_line_locate_point || '(line,target) AS locus FROM intergeom)) AS foo
         WHERE locus<>0 and locus<>1)';
     RAISE debug  '%',p_ret;
