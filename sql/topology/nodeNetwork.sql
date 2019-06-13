@@ -121,7 +121,7 @@ BEGIN
 
   BEGIN
        	raise DEBUG 'Checking the SRID of the geometry "%"', n_geom;
-       	EXECUTE 'SELECT ST_SRID(' || quote_ident(n_geom) || ') as srid '
+       	EXECUTE 'SELECT ST_SRID(' || quote_ident(n_geom) || ') AS srid '
           		|| ' FROM ' || _pgr_quote_ident(intab)
           		|| ' WHERE ' || quote_ident(n_geom)
           		|| ' IS NOT NULL LIMIT 1' INTO sridinfo;
@@ -197,15 +197,15 @@ BEGIN
     end if;
 
 --    -- First creates temp table with intersection points
-    p_ret = 'create temp table intergeom on commit drop as (
-        SELECT l1.' || quote_ident(n_pkey) || ' as l1id,
-               l2.' || quote_ident(n_pkey) || ' as l2id,
-	       l1.' || quote_ident(n_geom) || ' as line,
-	       _pgr_startpoint(l2.' || quote_ident(n_geom) || ') as source,
-	       _pgr_endpoint(l2.' || quote_ident(n_geom) || ') as target,
-               st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') as geom
-        from (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') as l1
-             join (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') as l2
+    p_ret = 'create temp table intergeom on commit drop AS (
+        SELECT l1.' || quote_ident(n_pkey) || ' AS l1id,
+               l2.' || quote_ident(n_pkey) || ' AS l2id,
+	       l1.' || quote_ident(n_geom) || ' AS line,
+	       _pgr_startpoint(l2.' || quote_ident(n_geom) || ') AS source,
+	       _pgr_endpoint(l2.' || quote_ident(n_geom) || ') AS target,
+               st_intersection(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') AS geom
+        from (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') AS l1
+             join (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') AS l2
              on (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tolerance || '))'||
         'where l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey)||' and
 	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and
@@ -225,10 +225,10 @@ BEGIN
 --        select l1id, l2id, ' || vst_line_locate_point || '(line,point) as locus from (
 --        select DISTINCT l1id, l2id, line, (ST_DumpPoints(geom)).geom as point from intergeom) as foo
 --        where ' || vst_line_locate_point || '(line,point)<>0 and ' || vst_line_locate_point || '(line,point)<>1)';
-    p_ret= 'create temp table inter_loc on commit drop as ( SELECT * from (
-        (SELECT l1id, l2id, ' || vst_line_locate_point || '(line,source) as locus from intergeom)
+    p_ret= 'create temp table inter_loc on commit drop AS ( SELECT * from (
+        (SELECT l1id, l2id, ' || vst_line_locate_point || '(line,source) AS locus from intergeom)
          union
-        (SELECT l1id, l2id, ' || vst_line_locate_point || '(line,target) as locus from intergeom)) as foo
+        (SELECT l1id, l2id, ' || vst_line_locate_point || '(line,target) AS locus from intergeom)) AS foo
         where locus<>0 and locus<>1)';
     raise debug  '%',p_ret;
     EXECUTE p_ret;
@@ -244,26 +244,26 @@ BEGIN
 
 --   EXECUTE 'drop table if exists ' || _pgr_quote_ident(outtab);
 --   EXECUTE 'create table ' || _pgr_quote_ident(outtab) || ' as
-     P_RET = 'insert into '||_pgr_quote_ident(outtab)||' (old_id,sub_id,'||quote_ident(n_geom)||') (  with cut_locations as (
-           SELECT l1id as lid, locus
+     P_RET = 'insert into '||_pgr_quote_ident(outtab)||' (old_id,sub_id,'||quote_ident(n_geom)||') (  with cut_locations AS (
+           SELECT l1id AS lid, locus
            from inter_loc
            -- then generates start and end locus for each line that have to be cut buy a location point
            UNION ALL
-           SELECT i.l1id  as lid, 0 as locus
+           SELECT i.l1id  AS lid, 0 AS locus
            from inter_loc i left join ' || _pgr_quote_ident(intab) || ' b on (i.l1id = b.' || quote_ident(n_pkey) || ')
            UNION ALL
-           SELECT i.l1id  as lid, 1 as locus
+           SELECT i.l1id  AS lid, 1 AS locus
            from inter_loc i left join ' || _pgr_quote_ident(intab) || ' b on (i.l1id = b.' || quote_ident(n_pkey) || ')
            order by lid, locus
        ),
        -- we generate a row_number index column for each input line
        -- to be able to self-join the table to cut a line between two consecutive locations
-       loc_with_idx as (
-           SELECT lid, locus, row_number() over (partition by lid order by locus) as idx
+       loc_with_idx AS (
+           SELECT lid, locus, row_number() over (partition by lid order by locus) AS idx
            from cut_locations
        )
        -- finally, each original line is cut with consecutive locations using linear referencing functions
-       SELECT l.' || quote_ident(n_pkey) || ', loc1.idx as sub_id, ' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) as ' || quote_ident(n_geom) || '
+       SELECT l.' || quote_ident(n_pkey) || ', loc1.idx AS sub_id, ' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) AS ' || quote_ident(n_geom) || '
        from loc_with_idx loc1 join loc_with_idx loc2 using (lid) join ' || _pgr_quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = loc1.lid)
        where loc2.idx = loc1.idx+1
            -- keeps only linestring geometries
@@ -271,14 +271,14 @@ BEGIN
     raise debug  '%',p_ret;
     EXECUTE p_ret;
 	GET DIAGNOSTICS splits = ROW_COUNT;
-        execute 'with diff as (SELECT distinct old_id from '||_pgr_quote_ident(outtab)||' )
+        execute 'with diff AS (SELECT distinct old_id from '||_pgr_quote_ident(outtab)||' )
                  SELECT count(*) from diff' into touched;
 	-- here, it misses all original line that did not need to be cut by intersection points: these lines
 	-- are already clean
 	-- inserts them in the final result: all lines which gid is not in the res table.
 	EXECUTE 'insert into ' || _pgr_quote_ident(outtab) || ' (old_id , sub_id, ' || quote_ident(n_geom) || ')
-                ( with used as (SELECT distinct old_id from '|| _pgr_quote_ident(outtab)||')
-		SELECT ' ||  quote_ident(n_pkey) || ', 1 as sub_id, ' ||  quote_ident(n_geom) ||
+                ( with used AS (SELECT distinct old_id from '|| _pgr_quote_ident(outtab)||')
+		SELECT ' ||  quote_ident(n_pkey) || ', 1 AS sub_id, ' ||  quote_ident(n_geom) ||
 		' from '|| _pgr_quote_ident(intab) ||' where  '||quote_ident(n_pkey)||' not in (SELECT * from used)' || rows_where || ')';
 	GET DIAGNOSTICS untouched = ROW_COUNT;
 
