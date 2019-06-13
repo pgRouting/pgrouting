@@ -70,10 +70,10 @@ DECLARE
 
 
 BEGIN
-  raise notice 'PROCESSING:';
-  raise notice 'pgr_nodeNetwork(''%'', %, ''%'', ''%'', ''%'', ''%'',  %)',
+  RAISE notice 'PROCESSING:';
+  RAISE notice 'pgr_nodeNetwork(''%'', %, ''%'', ''%'', ''%'', ''%'',  %)',
     edge_table, tolerance, id,  the_geom, table_ending, rows_where, outall;
-  raise notice 'Performing checks, please wait .....';
+  RAISE notice 'Performing checks, please wait .....';
   execute 'show client_min_messages' into debuglevel;
 
   BEGIN
@@ -96,31 +96,31 @@ BEGIN
   END;
 
   BEGIN
-       raise DEBUG 'Checking id column "%" columns in  % ',id,intab;
+       RAISE DEBUG 'Checking id column "%" columns in  % ',id,intab;
        EXECUTE 'SELECT _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(id)||')' INTO n_pkey;
        IF n_pkey is NULL then
-          raise notice  'ERROR: id column "%"  not found in %',id,intab;
+          RAISE notice  'ERROR: id column "%"  not found in %',id,intab;
           RETURN 'FAIL';
        END IF;
   END;
 
 
   BEGIN
-       raise DEBUG 'Checking id column "%" columns in  % ',the_geom,intab;
+       RAISE DEBUG 'Checking id column "%" columns in  % ',the_geom,intab;
        EXECUTE 'SELECT _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(the_geom)||')' INTO n_geom;
        IF n_geom is NULL then
-          raise notice  'ERROR: the_geom  column "%"  not found in %',the_geom,intab;
+          RAISE notice  'ERROR: the_geom  column "%"  not found in %',the_geom,intab;
           RETURN 'FAIL';
        END IF;
   END;
 
   IF n_pkey=n_geom THEN
-	raise notice  'ERROR: id and the_geom columns have the same name "%" in %',n_pkey,intab;
+	RAISE notice  'ERROR: id and the_geom columns have the same name "%" in %',n_pkey,intab;
         RETURN 'FAIL';
   END IF;
 
   BEGIN
-       	raise DEBUG 'Checking the SRID of the geometry "%"', n_geom;
+       	RAISE DEBUG 'Checking the SRID of the geometry "%"', n_geom;
        	EXECUTE 'SELECT ST_SRID(' || quote_ident(n_geom) || ') AS srid '
           		|| ' FROM ' || _pgr_quote_ident(intab)
           		|| ' WHERE ' || quote_ident(n_geom)
@@ -130,7 +130,7 @@ BEGIN
            	RETURN 'FAIL';
        	END IF;
        	srid := sridinfo.srid;
-       	raise DEBUG '  -----> SRID found %',srid;
+       	RAISE DEBUG '  -----> SRID found %',srid;
        	EXCEPTION WHEN OTHERS THEN
            		RAISE NOTICE 'ERROR: Can not determine the srid of the geometry "%" in table %', n_geom,intab;
            		RETURN 'FAIL';
@@ -165,7 +165,7 @@ BEGIN
     END;
 ---------------
     BEGIN
-       raise DEBUG 'initializing %',outtab;
+       RAISE DEBUG 'initializing %',outtab;
        execute 'SELECT * FROM _pgr_getTableName('||quote_literal(outtab)||',0)' into naming;
        IF sname=naming.sname  AND outname=naming.tname  THEN
            execute 'TRUNCATE TABLE '||_pgr_quote_ident(outtab)||' RESTART IDENTITY';
@@ -180,12 +180,12 @@ BEGIN
                 quote_literal(n_geom)||','|| srid||', '||quote_literal(geomtype)||', 2)';
        execute 'CREATE INDEX '||quote_ident(outname||'_'||n_geom||'_idx')||' ON '||_pgr_quote_ident(outtab)||'  USING GIST ('||quote_ident(n_geom)||')';
 	execute 'set client_min_messages  to '|| debuglevel;
-       raise DEBUG  '  ------>OK';
+       RAISE DEBUG  '  ------>OK';
     END;
 ----------------
 
 
-  raise notice 'Processing, please wait .....';
+  RAISE notice 'Processing, please wait .....';
 
 
     if pgis_ver_old then
@@ -212,7 +212,7 @@ BEGIN
 	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false and
 	st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and
 	st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false  )';
-    raise debug '%',p_ret;
+    RAISE debug '%',p_ret;
     EXECUTE p_ret;
 
     -- second temp table with locus (index of intersection point on the line)
@@ -230,7 +230,7 @@ BEGIN
          union
         (SELECT l1id, l2id, ' || vst_line_locate_point || '(line,target) AS locus FROM intergeom)) AS foo
         WHERE locus<>0 and locus<>1)';
-    raise debug  '%',p_ret;
+    RAISE debug  '%',p_ret;
     EXECUTE p_ret;
 
     -- index on l1id
@@ -268,7 +268,7 @@ BEGIN
        WHERE loc2.idx = loc1.idx+1
            -- keeps only linestring geometries
            and geometryType(' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus)) = ''LINESTRING'') ';
-    raise debug  '%',p_ret;
+    RAISE debug  '%',p_ret;
     EXECUTE p_ret;
 	GET DIAGNOSTICS splits = ROW_COUNT;
         execute 'with diff AS (SELECT distinct old_id FROM '||_pgr_quote_ident(outtab)||' )
@@ -282,12 +282,12 @@ BEGIN
 		' FROM '|| _pgr_quote_ident(intab) ||' WHERE  '||quote_ident(n_pkey)||' not in (SELECT * FROM used)' || rows_where || ')';
 	GET DIAGNOSTICS untouched = ROW_COUNT;
 
-	raise NOTICE '  Split Edges: %', touched;
-	raise NOTICE ' Untouched Edges: %', untouched;
-	raise NOTICE '     Total original Edges: %', touched+untouched;
+	RAISE NOTICE '  Split Edges: %', touched;
+	RAISE NOTICE ' Untouched Edges: %', untouched;
+	RAISE NOTICE '     Total original Edges: %', touched+untouched;
         RAISE NOTICE ' Edges generated: %', splits;
-	raise NOTICE ' Untouched Edges: %',untouched;
-	raise NOTICE '       Total New segments: %', splits+untouched;
+	RAISE NOTICE ' Untouched Edges: %',untouched;
+	RAISE NOTICE '       Total New segments: %', splits+untouched;
         RAISE NOTICE ' New Table: %', outtab;
         RAISE NOTICE '----------------------------------';
 
