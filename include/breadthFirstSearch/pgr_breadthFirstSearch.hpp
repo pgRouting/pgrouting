@@ -47,8 +47,6 @@ class Pgr_breadthFirstSearch
 
 public:
 
-
-    //many to depth
     std::vector<pgr_mst_rt> breadthFirstSearch(
         G &graph,
         std::vector<int64_t> start_vertex,
