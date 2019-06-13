@@ -30,15 +30,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION pgr_nodeNetwork(
-    text, -- edge table (required)
+    TEXT, -- edge table (required)
     double precision, -- tolerance (required)
 
-    id text default 'id',
-    the_geom text default 'the_geom',
-    table_ending text default 'noded',
-    rows_where text DEFAULT ''::text,
+    id TEXT default 'id',
+    the_geom TEXT default 'the_geom',
+    table_ending TEXT default 'noded',
+    rows_where TEXT DEFAULT ''::TEXT,
     outall BOOLEAN DEFAULT false)
-RETURNS text AS
+RETURNS TEXT AS
 $BODY$
 DECLARE
 	/*
@@ -47,26 +47,26 @@ DECLARE
     edge_table TEXT := $1;
     tolerance TEXT := $2;
 	p_num int := 0;
-	p_ret text := '';
+	p_ret TEXT := '';
     pgis_ver_old BOOLEAN := _pgr_versionless(postgis_lib_version(), '2.1.0.0');
-    vst_line_substring text;
-    vst_line_locate_point text;
-    intab text;
-    outtab text;
-    n_pkey text;
-    n_geom text;
+    vst_line_substring TEXT;
+    vst_line_locate_point TEXT;
+    intab TEXT;
+    outtab TEXT;
+    n_pkey TEXT;
+    n_geom TEXT;
     naming record;
-    sname text;
-    tname text;
-    outname text;
+    sname TEXT;
+    tname TEXT;
+    outname TEXT;
     srid integer;
     sridinfo record;
     splits bigint;
     touched bigint;
     untouched bigint;
-    geomtype text;
-    debuglevel text;
-    rows_where text;
+    geomtype TEXT;
+    debuglevel TEXT;
+    rows_where TEXT;
 
 
 BEGIN
