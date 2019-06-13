@@ -207,7 +207,7 @@ BEGIN
         FROM (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') AS l1
              join (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') AS l2
              on (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tolerance || '))'||
-        'where l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey)||' and
+        'WHERE l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey)||' and
 	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and
 	st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_endpoint(l2.' || quote_ident(n_geom) || '))=false and
 	st_equals(_pgr_endpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false and
@@ -229,7 +229,7 @@ BEGIN
         (SELECT l1id, l2id, ' || vst_line_locate_point || '(line,source) AS locus FROM intergeom)
          union
         (SELECT l1id, l2id, ' || vst_line_locate_point || '(line,target) AS locus FROM intergeom)) AS foo
-        where locus<>0 and locus<>1)';
+        WHERE locus<>0 and locus<>1)';
     raise debug  '%',p_ret;
     EXECUTE p_ret;
 
@@ -265,7 +265,7 @@ BEGIN
        -- finally, each original line is cut with consecutive locations using linear referencing functions
        SELECT l.' || quote_ident(n_pkey) || ', loc1.idx AS sub_id, ' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus) AS ' || quote_ident(n_geom) || '
        FROM loc_with_idx loc1 join loc_with_idx loc2 using (lid) join ' || _pgr_quote_ident(intab) || ' l on (l.' || quote_ident(n_pkey) || ' = loc1.lid)
-       where loc2.idx = loc1.idx+1
+       WHERE loc2.idx = loc1.idx+1
            -- keeps only linestring geometries
            and geometryType(' || vst_line_substring || '(l.' || quote_ident(n_geom) || ', loc1.locus, loc2.locus)) = ''LINESTRING'') ';
     raise debug  '%',p_ret;
@@ -279,7 +279,7 @@ BEGIN
 	EXECUTE 'insert into ' || _pgr_quote_ident(outtab) || ' (old_id , sub_id, ' || quote_ident(n_geom) || ')
                 ( with used AS (SELECT distinct old_id FROM '|| _pgr_quote_ident(outtab)||')
 		SELECT ' ||  quote_ident(n_pkey) || ', 1 AS sub_id, ' ||  quote_ident(n_geom) ||
-		' FROM '|| _pgr_quote_ident(intab) ||' where  '||quote_ident(n_pkey)||' not in (SELECT * FROM used)' || rows_where || ')';
+		' FROM '|| _pgr_quote_ident(intab) ||' WHERE  '||quote_ident(n_pkey)||' not in (SELECT * FROM used)' || rows_where || ')';
 	GET DIAGNOSTICS untouched = ROW_COUNT;
 
 	raise NOTICE '  Split Edges: %', touched;
