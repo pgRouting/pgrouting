@@ -82,7 +82,7 @@ BEGIN
     sname=naming.sname;
     tname=naming.tname;
     IF sname IS NULL OR tname IS NULL THEN
-	RAISE NOTICE '-------> % not found',edge_table;
+	RAISE NOTICE '-------> % NOT found',edge_table;
         RETURN 'FAIL';
     ELSE
 	RAISE DEBUG '  -----> OK';
@@ -91,7 +91,7 @@ BEGIN
     intab=sname||'.'||tname;
     outname=tname||'_'||table_ending;
     outtab= sname||'.'||outname;
-    rows_where = CASE WHEN length(rows_where) > 2 and not outall THEN ' AND (' || rows_where || ')' ELSE '' END;
+    rows_where = CASE WHEN length(rows_where) > 2 and NOT outall THEN ' AND (' || rows_where || ')' ELSE '' END;
     rows_where = CASE WHEN length(rows_where) > 2 THEN ' WHERE (' || rows_where || ')' ELSE '' END;
   END;
 
@@ -99,7 +99,7 @@ BEGIN
        RAISE DEBUG 'Checking id column "%" columns in  % ',id,intab;
        EXECUTE 'SELECT _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(id)||')' INTO n_pkey;
        IF n_pkey is NULL then
-          RAISE notice  'ERROR: id column "%"  not found in %',id,intab;
+          RAISE notice  'ERROR: id column "%"  NOT found in %',id,intab;
           RETURN 'FAIL';
        END IF;
   END;
@@ -109,7 +109,7 @@ BEGIN
        RAISE DEBUG 'Checking id column "%" columns in  % ',the_geom,intab;
        EXECUTE 'SELECT _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(the_geom)||')' INTO n_geom;
        IF n_geom is NULL then
-          RAISE notice  'ERROR: the_geom  column "%"  not found in %',the_geom,intab;
+          RAISE notice  'ERROR: the_geom  column "%"  NOT found in %',the_geom,intab;
           RETURN 'FAIL';
        END IF;
   END;
@@ -126,13 +126,13 @@ BEGIN
           		|| ' WHERE ' || quote_ident(n_geom)
           		|| ' IS NOT NULL LIMIT 1' INTO sridinfo;
        	IF sridinfo IS NULL OR sridinfo.srid IS NULL THEN
-        	RAISE NOTICE 'ERROR: Can not determine the srid of the geometry "%" in table %', n_geom,intab;
+        	RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" in table %', n_geom,intab;
            	RETURN 'FAIL';
        	END IF;
        	srid := sridinfo.srid;
        	RAISE DEBUG '  -----> SRID found %',srid;
        	EXCEPTION WHEN OTHERS THEN
-           		RAISE NOTICE 'ERROR: Can not determine the srid of the geometry "%" in table %', n_geom,intab;
+           		RAISE NOTICE 'ERROR: Can NOT determine the srid of the geometry "%" in table %', n_geom,intab;
            		RETURN 'FAIL';
   END;
 
@@ -279,7 +279,7 @@ BEGIN
 	EXECUTE 'insert into ' || _pgr_quote_ident(outtab) || ' (old_id , sub_id, ' || quote_ident(n_geom) || ')
                 ( with used AS (SELECT distinct old_id FROM '|| _pgr_quote_ident(outtab)||')
 		SELECT ' ||  quote_ident(n_pkey) || ', 1 AS sub_id, ' ||  quote_ident(n_geom) ||
-		' FROM '|| _pgr_quote_ident(intab) ||' WHERE  '||quote_ident(n_pkey)||' not in (SELECT * FROM used)' || rows_where || ')';
+		' FROM '|| _pgr_quote_ident(intab) ||' WHERE  '||quote_ident(n_pkey)||' NOT in (SELECT * FROM used)' || rows_where || ')';
 	GET DIAGNOSTICS untouched = ROW_COUNT;
 
 	RAISE NOTICE '  Split Edges: %', touched;
