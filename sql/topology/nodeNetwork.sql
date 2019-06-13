@@ -74,11 +74,11 @@ BEGIN
   RAISE notice 'pgr_nodeNetwork(''%'', %, ''%'', ''%'', ''%'', ''%'',  %)',
     edge_table, tolerance, id,  the_geom, table_ending, rows_where, outall;
   RAISE notice 'Performing checks, please wait .....';
-  execute 'show client_min_messages' into debuglevel;
+  EXECUTE 'show client_min_messages' into debuglevel;
 
   BEGIN
     RAISE DEBUG 'Checking % exists',edge_table;
-    execute 'SELECT * FROM _pgr_getTableName('||quote_literal(edge_table)||',0)' into naming;
+    EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(edge_table)||',0)' into naming;
     sname=naming.sname;
     tname=naming.tname;
     IF sname IS NULL OR tname IS NULL THEN
@@ -144,8 +144,8 @@ BEGIN
         RAISE DEBUG ' ------> Adding  index "%_%_idx".',n_pkey,intab;
 
 	set client_min_messages  to warning;
-        execute 'create  index '||tname||'_'||n_pkey||'_idx on '||_pgr_quote_ident(intab)||' using btree('||quote_ident(n_pkey)||')';
-	execute 'set client_min_messages  to '|| debuglevel;
+        EXECUTE 'create  index '||tname||'_'||n_pkey||'_idx on '||_pgr_quote_ident(intab)||' using btree('||quote_ident(n_pkey)||')';
+	EXECUTE 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
 
@@ -156,30 +156,30 @@ BEGIN
       else
         RAISE DEBUG ' ------> Adding unique index "%_%_gidx".',intab,n_geom;
 	set client_min_messages  to warning;
-        execute 'CREATE INDEX '
+        EXECUTE 'CREATE INDEX '
             || quote_ident(tname || '_' || n_geom || '_gidx' )
             || ' ON ' || _pgr_quote_ident(intab)
             || ' USING gist (' || quote_ident(n_geom) || ')';
-	execute 'set client_min_messages  to '|| debuglevel;
+	EXECUTE 'set client_min_messages  to '|| debuglevel;
       END IF;
     END;
 ---------------
     BEGIN
        RAISE DEBUG 'initializing %',outtab;
-       execute 'SELECT * FROM _pgr_getTableName('||quote_literal(outtab)||',0)' into naming;
+       EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(outtab)||',0)' into naming;
        IF sname=naming.sname  AND outname=naming.tname  THEN
-           execute 'TRUNCATE TABLE '||_pgr_quote_ident(outtab)||' RESTART IDENTITY';
-           execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(outname)||','||quote_literal(n_geom)||')';
+           EXECUTE 'TRUNCATE TABLE '||_pgr_quote_ident(outtab)||' RESTART IDENTITY';
+           EXECUTE 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(outname)||','||quote_literal(n_geom)||')';
        ELSE
 	   set client_min_messages  to warning;
-       	   execute 'CREATE TABLE '||_pgr_quote_ident(outtab)||' (id bigserial PRIMARY KEY,old_id INTEGER,sub_id INTEGER,
+       	   EXECUTE 'CREATE TABLE '||_pgr_quote_ident(outtab)||' (id bigserial PRIMARY KEY,old_id INTEGER,sub_id INTEGER,
 								source BIGINT,target BIGINT)';
        END IF;
-       execute 'SELECT geometrytype('||quote_ident(n_geom)||') FROM  '||_pgr_quote_ident(intab)||' limit 1' into geomtype;
-       execute 'SELECT addGeometryColumn('||quote_literal(sname)||','||quote_literal(outname)||','||
+       EXECUTE 'SELECT geometrytype('||quote_ident(n_geom)||') FROM  '||_pgr_quote_ident(intab)||' limit 1' into geomtype;
+       EXECUTE 'SELECT addGeometryColumn('||quote_literal(sname)||','||quote_literal(outname)||','||
                 quote_literal(n_geom)||','|| srid||', '||quote_literal(geomtype)||', 2)';
-       execute 'CREATE INDEX '||quote_ident(outname||'_'||n_geom||'_idx')||' ON '||_pgr_quote_ident(outtab)||'  USING GIST ('||quote_ident(n_geom)||')';
-	execute 'set client_min_messages  to '|| debuglevel;
+       EXECUTE 'CREATE INDEX '||quote_ident(outname||'_'||n_geom||'_idx')||' ON '||_pgr_quote_ident(outtab)||'  USING GIST ('||quote_ident(n_geom)||')';
+	EXECUTE 'set client_min_messages  to '|| debuglevel;
        RAISE DEBUG  '  ------>OK';
     END;
 ----------------
@@ -271,7 +271,7 @@ BEGIN
     RAISE debug  '%',p_ret;
     EXECUTE p_ret;
 	GET DIAGNOSTICS splits = ROW_COUNT;
-        execute 'with diff AS (SELECT distinct old_id FROM '||_pgr_quote_ident(outtab)||' )
+        EXECUTE 'with diff AS (SELECT distinct old_id FROM '||_pgr_quote_ident(outtab)||' )
                  SELECT count(*) FROM diff' into touched;
 	-- here, it misses all original line that did not need to be cut by intersection points: these lines
 	-- are already clean
