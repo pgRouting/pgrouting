@@ -254,12 +254,12 @@ BEGIN
            UNION ALL
            SELECT i.l1id  AS lid, 1 AS locus
            FROM inter_loc i left join ' || _pgr_quote_ident(intab) || ' b on (i.l1id = b.' || quote_ident(n_pkey) || ')
-           order by lid, locus
+           ORDER BY lid, locus
        ),
        -- we generate a row_number index column for each input line
        -- to be able to self-join the table to cut a line between two consecutive locations
        loc_with_idx AS (
-           SELECT lid, locus, row_number() over (partition by lid order by locus) AS idx
+           SELECT lid, locus, row_number() over (partition by lid ORDER BY locus) AS idx
            FROM cut_locations
        )
        -- finally, each original line is cut with consecutive locations using linear referencing functions
