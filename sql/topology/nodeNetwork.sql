@@ -70,10 +70,10 @@ DECLARE
 
 
 BEGIN
-  RAISE notice 'PROCESSING:';
-  RAISE notice 'pgr_nodeNetwork(''%'', %, ''%'', ''%'', ''%'', ''%'',  %)',
+  RAISE NOTICE 'PROCESSING:';
+  RAISE NOTICE 'pgr_nodeNetwork(''%'', %, ''%'', ''%'', ''%'', ''%'',  %)',
     edge_table, tolerance, id,  the_geom, table_ending, rows_where, outall;
-  RAISE notice 'Performing checks, please wait .....';
+  RAISE NOTICE 'Performing checks, please wait .....';
   EXECUTE 'show client_min_messages' INTO debuglevel;
 
   BEGIN
@@ -99,7 +99,7 @@ BEGIN
        RAISE DEBUG 'Checking id column "%" columns IN  % ',id,intab;
        EXECUTE 'SELECT _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(id)||')' INTO n_pkey;
        IF n_pkey is NULL then
-          RAISE notice  'ERROR: id column "%"  NOT found IN %',id,intab;
+          RAISE NOTICE  'ERROR: id column "%"  NOT found IN %',id,intab;
           RETURN 'FAIL';
        END IF;
   END;
@@ -109,13 +109,13 @@ BEGIN
        RAISE DEBUG 'Checking id column "%" columns IN  % ',the_geom,intab;
        EXECUTE 'SELECT _pgr_getColumnName('||quote_literal(intab)||','||quote_literal(the_geom)||')' INTO n_geom;
        IF n_geom is NULL then
-          RAISE notice  'ERROR: the_geom  column "%"  NOT found IN %',the_geom,intab;
+          RAISE NOTICE  'ERROR: the_geom  column "%"  NOT found IN %',the_geom,intab;
           RETURN 'FAIL';
        END IF;
   END;
 
   IF n_pkey=n_geom THEN
-	RAISE notice  'ERROR: id AND the_geom columns have the same name "%" IN %',n_pkey,intab;
+	RAISE NOTICE  'ERROR: id AND the_geom columns have the same name "%" IN %',n_pkey,intab;
         RETURN 'FAIL';
   END IF;
 
@@ -185,7 +185,7 @@ BEGIN
 ----------------
 
 
-  RAISE notice 'Processing, please wait .....';
+  RAISE NOTICE 'Processing, please wait .....';
 
 
     if pgis_ver_old then
