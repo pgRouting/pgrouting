@@ -10,7 +10,7 @@ CREATE TABLE edge_table1 (
     reverse_cost double precision
 );
 INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES ( 1, 2,0,0);
-INSERT INTO edge_table1 (cost,reverse_cost,x1,y1,x2,y2) VALUES (2,3,0,0);
+INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (2,3,0,0);
 
 SELECT has_function('pgr_topologicalsort');
 
