@@ -20,7 +20,7 @@ SELECT function_returns('pgr_topologicalsort', ARRAY['text'], 'setof record');
 -- error
 SELECT throws_ok(
     'SELECT * FROM pgr_topologicalsort(
-        ''SELECT id, source, target, cost, reverse_cost FROM edge_table id < 17'',
+        ''SELECT id, source, target, cost, reverse_cost FROM edge_table id < 2'',
         3
     )','42883','function pgr_topologicalsort(unknown, integer) does not exist',
     '6: Documentation says it does not work with 1 flags');
@@ -28,7 +28,7 @@ SELECT throws_ok(
 
 SELECT lives_ok(
     'SELECT * FROM pgr_topologicalsort(
-        ''SELECT id, source, target, cost, reverse_cost FROM edge_table''
+        ''SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 ' '
     )',
     '4: Documentation says works with no flags');
 
@@ -45,7 +45,7 @@ SELECT pg_typeof(seq)::text AS t1,
        pg_typeof(sorted_v)::text AS t2
     FROM (
         SELECT * FROM pgr_topologicalsort(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id < 17'
+            'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2'
         ) ) AS a
     limit 1;
 
