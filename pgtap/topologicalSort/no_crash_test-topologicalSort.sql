@@ -12,22 +12,22 @@ CREATE TABLE edge_table (
 INSERT INTO edge_table (source,target,cost,reverse_cost) VALUES ( 1, 2,0,0);
 INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES (2,3,0,0);
 
-SELECT has_function('pgr_topologicalSort');
+SELECT has_function('pgr_topologicalsort');
 
-SELECT function_returns('pgr_topologicalSort', ARRAY['text'], 'setof record');
+SELECT function_returns('pgr_topologicalsort', ARRAY['text'], 'setof record');
 
 -- flags
 -- error
 SELECT throws_ok(
-    'SELECT * FROM pgr_topologicalSort(
+    'SELECT * FROM pgr_topologicalsort(
         ''SELECT id, source, target, cost, reverse_cost FROM edge_table id < 17'',
         3
-    )','42883','function pgr_topologicalSort(unknown, integer) does not exist',
+    )','42883','function pgr_topologicalsort(unknown, integer) does not exist',
     '6: Documentation says it does not work with 1 flags');
 
 
 SELECT lives_ok(
-    'SELECT * FROM pgr_topologicalSort(
+    'SELECT * FROM pgr_topologicalsort(
         ''SELECT id, source, target, cost, reverse_cost FROM edge_table''
     )',
     '4: Documentation says works with no flags');
@@ -44,7 +44,7 @@ PREPARE q1 AS
 SELECT pg_typeof(seq)::text AS t1,
        pg_typeof(sorted_v)::text AS t2
     FROM (
-        SELECT * FROM pgr_topologicalSort(
+        SELECT * FROM pgr_topologicalsort(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id < 17'
         ) ) AS a
     limit 1;
