@@ -28,7 +28,7 @@ SELECT throws_ok(
 
 SELECT lives_ok(
     'SELECT * FROM pgr_topologicalsort(
-        ''SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 ' '
+        ''SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 ''
     )',
     '4: Documentation says works with no flags');
 
