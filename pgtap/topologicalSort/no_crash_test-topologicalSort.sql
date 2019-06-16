@@ -7,7 +7,7 @@ CREATE TABLE edge_table (
     source integer,
     target integer,
     cost double precision,
-    reverse_cost double precision,
+    reverse_cost double precision
 );
 INSERT INTO edge_table (source,target,cost,reverse_cost) VALUES ( 1, 2,0,0);
 INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES (2,3,0,0);
