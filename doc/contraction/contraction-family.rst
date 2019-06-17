@@ -7,12 +7,8 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Contraction - Family of functions (Proposed)
+Contraction - Family of functions
 ===============================================================================
-
-.. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
 
 .. index from here
 

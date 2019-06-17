@@ -102,13 +102,15 @@ pgRouting 3.0.0 Release Notes
   * pgr_articulationPoints
   * pgr_bridges
 
-
-*Moved to proposed*
-
 * Contraction:
 
   * Removed unnecessary column seq
   * Bug Fixes
+
+*Experimental moved to proposed on pgRouting*
+
+* No experimental functions moved as proposed
+
 
 *New Experimental functions*
 
