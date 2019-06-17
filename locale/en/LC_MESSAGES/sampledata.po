@@ -1,15 +1,21 @@
-# 
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.5.0-alpha\n"
+"Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 16:13-0500\n"
+"POT-Creation-Date: 2019-06-17 11:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
 
 #: ../../build/doc/sampledata.rst:11
 msgid "Sample Data"
@@ -18,8 +24,8 @@ msgstr ""
 #: ../../build/doc/sampledata.rst:13
 msgid ""
 "The documentation provides very simple example queries based on a small "
-"sample network. To be able to execute the sample queries, run the following "
-"SQL commands to create a table with a small network data set."
+"sample network. To be able to execute the sample queries, run the "
+"following SQL commands to create a table with a small network data set."
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:18
@@ -49,7 +55,7 @@ msgid "When points outside of the graph."
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:42
-msgid "Used with the :ref:`withPoints` functions."
+msgid "Used with the :doc:`withPoints-family` functions."
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:49
@@ -57,7 +63,7 @@ msgid "Restrictions"
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:50
-msgid "Used with the :ref:`trsp` functions."
+msgid "Used with the :doc:`pgr_trsp` functions."
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:57
@@ -65,7 +71,7 @@ msgid "Categories"
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:58
-msgid "Used with the :ref:`maxFlow` functions."
+msgid "Used with the :doc:`flow-family` functions."
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:65
@@ -98,14 +104,14 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:84
 msgid ""
-"Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost``"
-" columns are used"
+"Network for queries marked as ``directed`` and ``cost`` and "
+"``reverse_cost`` columns are used"
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:86
 msgid ""
-"When working with city networks, this is recommended for point of view of "
-"vehicles."
+"When working with city networks, this is recommended for point of view of"
+" vehicles."
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:91
@@ -120,8 +126,8 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:98
 msgid ""
-"When working with city networks, this is recommended for point of view of "
-"pedestrians."
+"When working with city networks, this is recommended for point of view of"
+" pedestrians."
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:104
@@ -130,7 +136,8 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:109
 msgid ""
-"Network for queries marked as ``directed`` and only ``cost`` column is used"
+"Network for queries marked as ``directed`` and only ``cost`` column is "
+"used"
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:116
@@ -150,3 +157,4 @@ msgstr ""
 #: ../../build/doc/sampledata.rst:134
 msgid "Pick & Deliver Data"
 msgstr ""
+
