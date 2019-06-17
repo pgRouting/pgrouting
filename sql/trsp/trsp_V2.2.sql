@@ -129,7 +129,7 @@ BEGIN
             $6 || $$
         )
         SELECT ROW_NUMBER() OVER() AS id,
-            _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path, ',')::INTEGER[])) AS path,
+            _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path::text, ',')::INTEGER[])) AS path,
             to_cost AS cost
         FROM old_restrictions;
     $$;
