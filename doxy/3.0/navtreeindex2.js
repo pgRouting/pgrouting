@@ -1,12 +1,18 @@
 var NAVTREEINDEX2 =
 {
-"classpgrouting_1_1CH__vertex.html#a70d797c1ab6e20724cfbb2c23bb1ff2c":[5,0,0,15,9],
+"classpgrouting_1_1CH__vertex.html#a08fd2adc15e6789453cdbe39a8b2f218":[5,0,0,15,8],
+"classpgrouting_1_1CH__vertex.html#a1603fa4678fac26711d5a44ca905c44b":[5,0,0,15,0],
+"classpgrouting_1_1CH__vertex.html#a33c437ad220a0deefedd3145f2dc6621":[5,0,0,15,9],
+"classpgrouting_1_1CH__vertex.html#a48973773b7c84cd5a79813953b1be285":[5,0,0,15,6],
+"classpgrouting_1_1CH__vertex.html#a70d797c1ab6e20724cfbb2c23bb1ff2c":[5,0,0,15,10],
 "classpgrouting_1_1CH__vertex.html#a8aed27327fb46b17456589b219989c18":[5,0,0,15,2],
-"classpgrouting_1_1CH__vertex.html#a9ff36fac6cc9b59957f0f405a6911677":[5,0,0,15,10],
+"classpgrouting_1_1CH__vertex.html#a9e899eb0f43267f5de69a84cc6a63c36":[5,0,0,15,3],
+"classpgrouting_1_1CH__vertex.html#a9ff36fac6cc9b59957f0f405a6911677":[5,0,0,15,11],
 "classpgrouting_1_1CH__vertex.html#ab03c743fffb91f4514914701e1f3fee3":[5,0,0,15,4],
-"classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be":[5,0,0,15,11],
+"classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be":[5,0,0,15,12],
 "classpgrouting_1_1CH__vertex.html#ac03a1dab25edb24d961a39195743779f":[5,0,0,15,5],
 "classpgrouting_1_1CH__vertex.html#ac2cdb301106c06a09084432225faa21c":[5,0,0,15,1],
+"classpgrouting_1_1CH__vertex.html#ae568f6a5f37b39fce9824edfb40b8d19":[5,0,0,15,7],
 "classpgrouting_1_1Identifier.html":[5,0,0,18],
 "classpgrouting_1_1Identifier.html#a147f029e589a2dd36b1edd638d7ac833":[5,0,0,18,3],
 "classpgrouting_1_1Identifier.html#a1a6b53e85b2454fb4c3f7bed36a5e385":[5,0,0,18,0],
@@ -243,11 +249,5 @@ var NAVTREEINDEX2 =
 "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a4ecb47d0dbeab63cd57721bc88cb13ad":[5,0,0,2,1,18],
 "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a542d59dbc5f102daa94bb8687b45b75d":[5,0,0,2,1,22],
 "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a58ff2aec087c8b4d339c756fa050b429":[5,0,0,2,1,27],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a5ec4cc07272c3b59d5adaa4b788600ef":[5,0,0,2,1,14],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a7994bd8b22eee89085d14a8e5d7e4345":[5,0,0,2,1,2],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a80cfad3e4fb73438a306e2b28f9597d9":[5,0,0,2,1,7],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a8e29b7e547b17de4463e3a831cc8a787":[5,0,0,2,1,10],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a9364fe09b92306ce8b43f9cda5b3b78a":[5,0,0,2,1,20],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#aab3b93605717aff1ddc6cc369d18a192":[5,0,0,2,1,29],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#aaf1b241885c2dc3e2c0563cfc586fd24":[5,0,0,2,1,5]
+"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a5ec4cc07272c3b59d5adaa4b788600ef":[5,0,0,2,1,14]
 };

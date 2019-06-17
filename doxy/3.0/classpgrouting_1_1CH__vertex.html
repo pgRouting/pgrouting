@@ -110,14 +110,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac2cdb301106c06a09084432225faa21c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8aed27327fb46b17456589b219989c18"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1CH__vertex.html#a8aed27327fb46b17456589b219989c18">CH_vertex</a> (const <a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> &amp;other, bool is_source)</td></tr>
 <tr class="separator:a8aed27327fb46b17456589b219989c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ae0801beafccce4d8022fb89a6bf78e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1CH__vertex.html#a0ae0801beafccce4d8022fb89a6bf78e">add_contracted_vertex</a> (<a class="el" href="classpgrouting_1_1CH__vertex.html">CH_vertex</a> &amp;v, int64_t vid)</td></tr>
-<tr class="separator:a0ae0801beafccce4d8022fb89a6bf78e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e899eb0f43267f5de69a84cc6a63c36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1CH__vertex.html#a9e899eb0f43267f5de69a84cc6a63c36">add_contracted_vertex</a> (<a class="el" href="classpgrouting_1_1CH__vertex.html">CH_vertex</a> &amp;v)</td></tr>
+<tr class="separator:a9e899eb0f43267f5de69a84cc6a63c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab03c743fffb91f4514914701e1f3fee3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1CH__vertex.html#ab03c743fffb91f4514914701e1f3fee3">add_vertex_id</a> (int64_t vid)</td></tr>
 <tr class="separator:ab03c743fffb91f4514914701e1f3fee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac03a1dab25edb24d961a39195743779f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1CH__vertex.html#ac03a1dab25edb24d961a39195743779f">clear_contracted_vertices</a> ()</td></tr>
 <tr class="separator:ac03a1dab25edb24d961a39195743779f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48973773b7c84cd5a79813953b1be285"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classIdentifiers.html">Identifiers</a>&lt; int64_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1CH__vertex.html#a48973773b7c84cd5a79813953b1be285">contracted_vertices</a> () const</td></tr>
 <tr class="separator:a48973773b7c84cd5a79813953b1be285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae568f6a5f37b39fce9824edfb40b8d19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classIdentifiers.html">Identifiers</a>&lt; int64_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1CH__vertex.html#ae568f6a5f37b39fce9824edfb40b8d19">contracted_vertices</a> ()</td></tr>
+<tr class="separator:ae568f6a5f37b39fce9824edfb40b8d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08fd2adc15e6789453cdbe39a8b2f218"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1CH__vertex.html#a08fd2adc15e6789453cdbe39a8b2f218">cp_members</a> (const <a class="el" href="classpgrouting_1_1CH__vertex.html">CH_vertex</a> &amp;other)</td></tr>
 <tr class="separator:a08fd2adc15e6789453cdbe39a8b2f218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33c437ad220a0deefedd3145f2dc6621"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1CH__vertex.html#a33c437ad220a0deefedd3145f2dc6621">has_contracted_vertices</a> () const</td></tr>
@@ -235,8 +237,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0ae0801beafccce4d8022fb89a6bf78e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ae0801beafccce4d8022fb89a6bf78e">&#9670;&nbsp;</a></span>add_contracted_vertex()</h2>
+<a id="a9e899eb0f43267f5de69a84cc6a63c36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e899eb0f43267f5de69a84cc6a63c36">&#9670;&nbsp;</a></span>add_contracted_vertex()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -245,42 +247,31 @@ Friends</h2></td></tr>
           <td class="memname">void pgrouting::CH_vertex::add_contracted_vertex </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classpgrouting_1_1CH__vertex.html">CH_vertex</a> &amp;&#160;</td>
-          <td class="paramname"><em>v</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>v</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int64_t&#160;</td>
-          <td class="paramname"><em>vid</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ch__vertex_8cpp_source.html#l00050">50</a> of file <a class="el" href="ch__vertex_8cpp_source.html">ch_vertex.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ch__vertex_8cpp_source.html#l00055">55</a> of file <a class="el" href="ch__vertex_8cpp_source.html">ch_vertex.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ch__vertex_8h_source.html#l00055">clear_contracted_vertices()</a>, <a class="el" href="ch__vertex_8cpp_source.html#l00039">contracted_vertices()</a>, and <a class="el" href="ch__vertex_8h_source.html#l00058">m_contracted_vertices</a>.</p>
+<p class="reference">References <a class="el" href="ch__vertex_8cpp_source.html#l00039">contracted_vertices()</a>, <a class="el" href="ch__vertex_8h_source.html#l00042">id</a>, and <a class="el" href="ch__vertex_8h_source.html#l00059">m_contracted_vertices</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="ch__vertex_8h_source.html#l00048">cp_members()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                                               {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a> += vid;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a> += v.contracted_vertices();</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    v.clear_contracted_vertices();</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__vertex_html_ab9ce1ee3cc3b65c03c8bb05d55ff30be"><div class="ttname"><a href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__vertex_8h_source.html#l00058">ch_vertex.h:58</a></div></div>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                                  {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a> += v.id;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a> += v.contracted_vertices();</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">//v.clear_contracted_vertices();</span></div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__vertex_html_ab9ce1ee3cc3b65c03c8bb05d55ff30be"><div class="ttname"><a href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__vertex_8h_source.html#l00059">ch_vertex.h:59</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1CH__vertex_a0ae0801beafccce4d8022fb89a6bf78e_cgraph.png" border="0" usemap="#classpgrouting_1_1CH__vertex_a0ae0801beafccce4d8022fb89a6bf78e_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1CH__vertex_a0ae0801beafccce4d8022fb89a6bf78e_cgraph" id="classpgrouting_1_1CH__vertex_a0ae0801beafccce4d8022fb89a6bf78e_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1CH__vertex.html#ac03a1dab25edb24d961a39195743779f" title="pgrouting::CH_vertex\l::clear_contracted_vertices" alt="" coords="216,5,395,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1CH__vertex.html#a48973773b7c84cd5a79813953b1be285" title="pgrouting::CH_vertex\l::contracted_vertices" alt="" coords="232,71,379,112"/>
+<div class="center"><img src="classpgrouting_1_1CH__vertex_a9e899eb0f43267f5de69a84cc6a63c36_cgraph.png" border="0" usemap="#classpgrouting_1_1CH__vertex_a9e899eb0f43267f5de69a84cc6a63c36_cgraph" alt=""/></div>
+<map name="classpgrouting_1_1CH__vertex_a9e899eb0f43267f5de69a84cc6a63c36_cgraph" id="classpgrouting_1_1CH__vertex_a9e899eb0f43267f5de69a84cc6a63c36_cgraph">
+<area shape="rect" id="node2" href="classpgrouting_1_1CH__vertex.html#a48973773b7c84cd5a79813953b1be285" title="pgrouting::CH_vertex\l::contracted_vertices" alt="" coords="216,5,363,47"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1CH__vertex_a0ae0801beafccce4d8022fb89a6bf78e_icgraph.png" border="0" usemap="#classpgrouting_1_1CH__vertex_a0ae0801beafccce4d8022fb89a6bf78e_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1CH__vertex_a0ae0801beafccce4d8022fb89a6bf78e_icgraph" id="classpgrouting_1_1CH__vertex_a0ae0801beafccce4d8022fb89a6bf78e_icgraph">
+<div class="center"><img src="classpgrouting_1_1CH__vertex_a9e899eb0f43267f5de69a84cc6a63c36_icgraph.png" border="0" usemap="#classpgrouting_1_1CH__vertex_a9e899eb0f43267f5de69a84cc6a63c36_icgraph" alt=""/></div>
+<map name="classpgrouting_1_1CH__vertex_a9e899eb0f43267f5de69a84cc6a63c36_icgraph" id="classpgrouting_1_1CH__vertex_a9e899eb0f43267f5de69a84cc6a63c36_icgraph">
 <area shape="rect" id="node2" href="classpgrouting_1_1CH__vertex.html#a08fd2adc15e6789453cdbe39a8b2f218" title="pgrouting::CH_vertex\l::cp_members" alt="" coords="216,5,363,47"/>
 </map>
 </div>
@@ -313,8 +304,8 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="ch__vertex_8h_source.html#l00052">52</a> of file <a class="el" href="ch__vertex_8h_source.html">ch_vertex.h</a>.</p>
 
-<p class="reference">References <a class="el" href="ch__vertex_8cpp_source.html#l00039">contracted_vertices()</a>, <a class="el" href="ch__vertex_8cpp_source.html#l00044">has_contracted_vertices()</a>, and <a class="el" href="ch__vertex_8h_source.html#l00058">m_contracted_vertices</a>.</p>
-<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{<a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a> += vid;}</div><div class="ttc" id="classpgrouting_1_1CH__vertex_html_ab9ce1ee3cc3b65c03c8bb05d55ff30be"><div class="ttname"><a href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__vertex_8h_source.html#l00058">ch_vertex.h:58</a></div></div>
+<p class="reference">References <a class="el" href="ch__vertex_8cpp_source.html#l00039">contracted_vertices()</a>, <a class="el" href="ch__vertex_8cpp_source.html#l00049">has_contracted_vertices()</a>, and <a class="el" href="ch__vertex_8h_source.html#l00059">m_contracted_vertices</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{<a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a> += vid;}</div><div class="ttc" id="classpgrouting_1_1CH__vertex_html_ab9ce1ee3cc3b65c03c8bb05d55ff30be"><div class="ttname"><a href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__vertex_8h_source.html#l00059">ch_vertex.h:59</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -350,12 +341,10 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ch__vertex_8h_source.html#l00055">55</a> of file <a class="el" href="ch__vertex_8h_source.html">ch_vertex.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ch__vertex_8h_source.html#l00056">56</a> of file <a class="el" href="ch__vertex_8h_source.html">ch_vertex.h</a>.</p>
 
-<p class="reference">References <a class="el" href="identifiers_8hpp_source.html#l00083">Identifiers&lt; T &gt;::clear()</a>, <a class="el" href="ch__vertex_8h_source.html#l00058">m_contracted_vertices</a>, and <a class="el" href="ch__vertex_8cpp_source.html#l00056">operator&lt;&lt;</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00054">pgrouting::CH_edge::add_contracted_vertex()</a>, and <a class="el" href="ch__vertex_8cpp_source.html#l00050">add_contracted_vertex()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{<a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a>.<a class="code" href="classIdentifiers.html#a25c5b0e66e42636322e638e7583b3736">clear</a>();}</div><div class="ttc" id="classpgrouting_1_1CH__vertex_html_ab9ce1ee3cc3b65c03c8bb05d55ff30be"><div class="ttname"><a href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__vertex_8h_source.html#l00058">ch_vertex.h:58</a></div></div>
+<p class="reference">References <a class="el" href="identifiers_8hpp_source.html#l00083">Identifiers&lt; T &gt;::clear()</a>, <a class="el" href="ch__vertex_8h_source.html#l00059">m_contracted_vertices</a>, and <a class="el" href="ch__vertex_8cpp_source.html#l00061">operator&lt;&lt;</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{<a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a>.<a class="code" href="classIdentifiers.html#a25c5b0e66e42636322e638e7583b3736">clear</a>();}</div><div class="ttc" id="classpgrouting_1_1CH__vertex_html_ab9ce1ee3cc3b65c03c8bb05d55ff30be"><div class="ttname"><a href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__vertex_8h_source.html#l00059">ch_vertex.h:59</a></div></div>
 <div class="ttc" id="classIdentifiers_html_a25c5b0e66e42636322e638e7583b3736"><div class="ttname"><a href="classIdentifiers.html#a25c5b0e66e42636322e638e7583b3736">Identifiers::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="identifiers_8hpp_source.html#l00083">identifiers.hpp:83</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -365,20 +354,11 @@ Here is the call graph for this function:</div>
 <area shape="rect" id="node2" href="classIdentifiers.html#a25c5b0e66e42636322e638e7583b3736" title="Identifiers::clear" alt="" coords="232,13,347,39"/>
 </map>
 </div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1CH__vertex_ac03a1dab25edb24d961a39195743779f_icgraph.png" border="0" usemap="#classpgrouting_1_1CH__vertex_ac03a1dab25edb24d961a39195743779f_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1CH__vertex_ac03a1dab25edb24d961a39195743779f_icgraph" id="classpgrouting_1_1CH__vertex_ac03a1dab25edb24d961a39195743779f_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1CH__edge.html#a2239815ed827bcd3d70f1fba769bbf11" title="pgrouting::CH_edge\l::add_contracted_vertex" alt="" coords="232,5,395,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1CH__vertex.html#a0ae0801beafccce4d8022fb89a6bf78e" title="pgrouting::CH_vertex\l::add_contracted_vertex" alt="" coords="232,71,395,112"/>
-</map>
-</div>
 
 </div>
 </div>
 <a id="a48973773b7c84cd5a79813953b1be285"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48973773b7c84cd5a79813953b1be285">&#9670;&nbsp;</a></span>contracted_vertices()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a48973773b7c84cd5a79813953b1be285">&#9670;&nbsp;</a></span>contracted_vertices() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -394,22 +374,44 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="ch__vertex_8cpp_source.html#l00039">39</a> of file <a class="el" href="ch__vertex_8cpp_source.html">ch_vertex.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ch__vertex_8h_source.html#l00058">m_contracted_vertices</a>.</p>
+<p class="reference">References <a class="el" href="ch__vertex_8h_source.html#l00059">m_contracted_vertices</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00054">pgrouting::CH_edge::add_contracted_vertex()</a>, <a class="el" href="ch__vertex_8cpp_source.html#l00050">add_contracted_vertex()</a>, <a class="el" href="ch__vertex_8h_source.html#l00052">add_vertex_id()</a>, and <a class="el" href="ch__vertex_8cpp_source.html#l00056">pgrouting::operator&lt;&lt;()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                         {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a>;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__vertex_html_ab9ce1ee3cc3b65c03c8bb05d55ff30be"><div class="ttname"><a href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__vertex_8h_source.html#l00058">ch_vertex.h:58</a></div></div>
+<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00061">pgrouting::CH_edge::add_contracted_vertex()</a>, <a class="el" href="ch__vertex_8cpp_source.html#l00055">add_contracted_vertex()</a>, <a class="el" href="ch__vertex_8h_source.html#l00052">add_vertex_id()</a>, and <a class="el" href="ch__vertex_8cpp_source.html#l00061">pgrouting::operator&lt;&lt;()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                         {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a>;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__vertex_html_ab9ce1ee3cc3b65c03c8bb05d55ff30be"><div class="ttname"><a href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__vertex_8h_source.html#l00059">ch_vertex.h:59</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classpgrouting_1_1CH__vertex_a48973773b7c84cd5a79813953b1be285_icgraph.png" border="0" usemap="#classpgrouting_1_1CH__vertex_a48973773b7c84cd5a79813953b1be285_icgraph" alt=""/></div>
 <map name="classpgrouting_1_1CH__vertex_a48973773b7c84cd5a79813953b1be285_icgraph" id="classpgrouting_1_1CH__vertex_a48973773b7c84cd5a79813953b1be285_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1CH__edge.html#a2239815ed827bcd3d70f1fba769bbf11" title="pgrouting::CH_edge\l::add_contracted_vertex" alt="" coords="200,5,363,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1CH__vertex.html#a0ae0801beafccce4d8022fb89a6bf78e" title="pgrouting::CH_vertex\l::add_contracted_vertex" alt="" coords="200,71,363,112"/>
+<area shape="rect" id="node2" href="classpgrouting_1_1CH__edge.html#af68c93faa03b2b33ec9e588d7d4c160a" title="pgrouting::CH_edge\l::add_contracted_vertex" alt="" coords="200,5,363,47"/>
+<area shape="rect" id="node3" href="classpgrouting_1_1CH__vertex.html#a9e899eb0f43267f5de69a84cc6a63c36" title="pgrouting::CH_vertex\l::add_contracted_vertex" alt="" coords="200,71,363,112"/>
 <area shape="rect" id="node4" href="classpgrouting_1_1CH__vertex.html#ab03c743fffb91f4514914701e1f3fee3" title="pgrouting::CH_vertex\l::add_vertex_id" alt="" coords="208,136,355,177"/>
 <area shape="rect" id="node5" href="namespacepgrouting.html#a8688f1ce3e691bcbaf7f2e2299c561a6" title="pgrouting::operator\&lt;\&lt;" alt="" coords="208,202,355,229"/>
 </map>
 </div>
 
+</div>
+</div>
+<a id="ae568f6a5f37b39fce9824edfb40b8d19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae568f6a5f37b39fce9824edfb40b8d19">&#9670;&nbsp;</a></span>contracted_vertices() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classIdentifiers.html">Identifiers</a>&lt; int64_t &gt; &amp; pgrouting::CH_vertex::contracted_vertices </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ch__vertex_8cpp_source.html#l00044">44</a> of file <a class="el" href="ch__vertex_8cpp_source.html">ch_vertex.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="ch__vertex_8h_source.html#l00059">m_contracted_vertices</a>.</p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                   {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a>;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__vertex_html_ab9ce1ee3cc3b65c03c8bb05d55ff30be"><div class="ttname"><a href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__vertex_8h_source.html#l00059">ch_vertex.h:59</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a08fd2adc15e6789453cdbe39a8b2f218"></a>
@@ -438,13 +440,13 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="ch__vertex_8h_source.html#l00048">48</a> of file <a class="el" href="ch__vertex_8h_source.html">ch_vertex.h</a>.</p>
 
-<p class="reference">References <a class="el" href="ch__vertex_8cpp_source.html#l00050">add_contracted_vertex()</a>, and <a class="el" href="ch__vertex_8h_source.html#l00042">id</a>.</p>
+<p class="reference">References <a class="el" href="ch__vertex_8cpp_source.html#l00055">add_contracted_vertex()</a>, and <a class="el" href="ch__vertex_8h_source.html#l00042">id</a>.</p>
 <div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                            {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        this-&gt;<span class="keywordtype">id</span> = other.id;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div></div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classpgrouting_1_1CH__vertex_a08fd2adc15e6789453cdbe39a8b2f218_cgraph.png" border="0" usemap="#classpgrouting_1_1CH__vertex_a08fd2adc15e6789453cdbe39a8b2f218_cgraph" alt=""/></div>
 <map name="classpgrouting_1_1CH__vertex_a08fd2adc15e6789453cdbe39a8b2f218_cgraph" id="classpgrouting_1_1CH__vertex_a08fd2adc15e6789453cdbe39a8b2f218_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1CH__vertex.html#a0ae0801beafccce4d8022fb89a6bf78e" title="pgrouting::CH_vertex\l::add_contracted_vertex" alt="" coords="200,5,363,47"/>
+<area shape="rect" id="node2" href="classpgrouting_1_1CH__vertex.html#a9e899eb0f43267f5de69a84cc6a63c36" title="pgrouting::CH_vertex\l::add_contracted_vertex" alt="" coords="200,5,363,47"/>
 </map>
 </div>
 
@@ -465,12 +467,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ch__vertex_8cpp_source.html#l00044">44</a> of file <a class="el" href="ch__vertex_8cpp_source.html">ch_vertex.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ch__vertex_8cpp_source.html#l00049">49</a> of file <a class="el" href="ch__vertex_8cpp_source.html">ch_vertex.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ch__vertex_8h_source.html#l00058">m_contracted_vertices</a>, and <a class="el" href="identifiers_8hpp_source.html#l00077">Identifiers&lt; T &gt;::size()</a>.</p>
+<p class="reference">References <a class="el" href="ch__vertex_8h_source.html#l00059">m_contracted_vertices</a>, and <a class="el" href="identifiers_8hpp_source.html#l00077">Identifiers&lt; T &gt;::size()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="ch__vertex_8h_source.html#l00052">add_vertex_id()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                              {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a>.<a class="code" href="classIdentifiers.html#afa735cce6596944fc64f95f4995ccc8e">size</a>() == 0)</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__vertex_html_ab9ce1ee3cc3b65c03c8bb05d55ff30be"><div class="ttname"><a href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__vertex_8h_source.html#l00058">ch_vertex.h:58</a></div></div>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                              {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">m_contracted_vertices</a>.<a class="code" href="classIdentifiers.html#afa735cce6596944fc64f95f4995ccc8e">size</a>() == 0)</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__vertex_html_ab9ce1ee3cc3b65c03c8bb05d55ff30be"><div class="ttname"><a href="classpgrouting_1_1CH__vertex.html#ab9ce1ee3cc3b65c03c8bb05d55ff30be">pgrouting::CH_vertex::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__vertex_8h_source.html#l00059">ch_vertex.h:59</a></div></div>
 <div class="ttc" id="classIdentifiers_html_afa735cce6596944fc64f95f4995ccc8e"><div class="ttname"><a href="classIdentifiers.html#afa735cce6596944fc64f95f4995ccc8e">Identifiers::size</a></div><div class="ttdeci">size_t size() const</div><div class="ttdef"><b>Definition:</b> <a href="identifiers_8hpp_source.html#l00077">identifiers.hpp:77</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -526,10 +528,10 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ch__vertex_8cpp_source.html#l00056">56</a> of file <a class="el" href="ch__vertex_8cpp_source.html">ch_vertex.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ch__vertex_8cpp_source.html#l00061">61</a> of file <a class="el" href="ch__vertex_8cpp_source.html">ch_vertex.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ch__vertex_8h_source.html#l00055">clear_contracted_vertices()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                            {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;{id: &quot;</span> &lt;&lt; v.id &lt;&lt; <span class="stringliteral">&quot;,\t&quot;</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;     &lt;&lt; <span class="stringliteral">&quot;contracted vertices: &quot;</span></div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;     &lt;&lt; v.contracted_vertices()</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;     &lt;&lt; <span class="stringliteral">&quot;}&quot;</span>;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> os;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="ch__vertex_8h_source.html#l00056">clear_contracted_vertices()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                                            {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;{id: &quot;</span> &lt;&lt; v.id &lt;&lt; <span class="stringliteral">&quot;,\t&quot;</span></div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;     &lt;&lt; <span class="stringliteral">&quot;contracted vertices: &quot;</span></div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;     &lt;&lt; v.contracted_vertices()</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;     &lt;&lt; <span class="stringliteral">&quot;}&quot;</span>;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> os;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -547,7 +549,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="ch__vertex_8h_source.html#l00042">42</a> of file <a class="el" href="ch__vertex_8h_source.html">ch_vertex.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ch__vertex_8h_source.html#l00048">cp_members()</a>, and <a class="el" href="ch__vertex_8cpp_source.html#l00056">pgrouting::operator&lt;&lt;()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00061">pgrouting::CH_edge::add_contracted_vertex()</a>, <a class="el" href="ch__vertex_8cpp_source.html#l00055">add_contracted_vertex()</a>, <a class="el" href="ch__vertex_8h_source.html#l00048">cp_members()</a>, and <a class="el" href="ch__vertex_8cpp_source.html#l00061">pgrouting::operator&lt;&lt;()</a>.</p>
 
 </div>
 </div>
@@ -571,9 +573,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ch__vertex_8h_source.html#l00058">58</a> of file <a class="el" href="ch__vertex_8h_source.html">ch_vertex.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ch__vertex_8h_source.html#l00059">59</a> of file <a class="el" href="ch__vertex_8h_source.html">ch_vertex.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ch__vertex_8cpp_source.html#l00050">add_contracted_vertex()</a>, <a class="el" href="ch__vertex_8h_source.html#l00052">add_vertex_id()</a>, <a class="el" href="ch__vertex_8h_source.html#l00055">clear_contracted_vertices()</a>, <a class="el" href="ch__vertex_8cpp_source.html#l00039">contracted_vertices()</a>, and <a class="el" href="ch__vertex_8cpp_source.html#l00044">has_contracted_vertices()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ch__vertex_8cpp_source.html#l00055">add_contracted_vertex()</a>, <a class="el" href="ch__vertex_8h_source.html#l00052">add_vertex_id()</a>, <a class="el" href="ch__vertex_8h_source.html#l00056">clear_contracted_vertices()</a>, <a class="el" href="ch__vertex_8cpp_source.html#l00039">contracted_vertices()</a>, and <a class="el" href="ch__vertex_8cpp_source.html#l00049">has_contracted_vertices()</a>.</p>
 
 </div>
 </div>
@@ -587,7 +589,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1CH__vertex.html">CH_vertex</a></li>
-    <li class="footer">Generated on Thu May 30 2019 08:39:17 for PGROUTING by
+    <li class="footer">Generated on Mon Jun 17 2019 10:22:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

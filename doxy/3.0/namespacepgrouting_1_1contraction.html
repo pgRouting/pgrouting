@@ -82,7 +82,8 @@ $(document).ready(function(){initNavTree('namespacepgrouting_1_1contraction.html
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">pgrouting::contraction Namespace Reference</div>  </div>
 </div><!--header-->
@@ -96,14 +97,50 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1contraction_1_1Pgr__linear.html">Pgr_linear</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ab334ab6d564c01f7907cf525cfbfd962"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepgrouting_1_1contraction.html#ab334ab6d564c01f7907cf525cfbfd962">is_valid_contraction</a> (int number)</td></tr>
+<tr class="separator:ab334ab6d564c01f7907cf525cfbfd962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ab334ab6d564c01f7907cf525cfbfd962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab334ab6d564c01f7907cf525cfbfd962">&#9670;&nbsp;</a></span>is_valid_contraction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pgrouting::contraction::is_valid_contraction </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="pgr__contract_8cpp_source.html#l00035">35</a> of file <a class="el" href="pgr__contract_8cpp_source.html">pgr_contract.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="contractGraph__driver_8cpp_source.html#l00178">do_pgr_contractGraph()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                      {</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">switch</span> (number) {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">case</span> 1:</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">case</span> 2:</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">default</span>:</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div></div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacepgrouting_1_1contraction_ab334ab6d564c01f7907cf525cfbfd962_icgraph.png" border="0" usemap="#namespacepgrouting_1_1contraction_ab334ab6d564c01f7907cf525cfbfd962_icgraph" alt=""/></div>
+<map name="namespacepgrouting_1_1contraction_ab334ab6d564c01f7907cf525cfbfd962_icgraph" id="namespacepgrouting_1_1contraction_ab334ab6d564c01f7907cf525cfbfd962_icgraph">
+<area shape="rect" id="node2" href="contractGraph__driver_8h.html#a20a03b3811bd108cfc729e9e22a92591" title="do_pgr_contractGraph" alt="" coords="200,13,351,39"/>
+</map>
+</div>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1contraction.html">contraction</a></li>
-    <li class="footer">Generated on Thu May 30 2019 08:39:17 for PGROUTING by
+    <li class="footer">Generated on Mon Jun 17 2019 10:22:11 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

@@ -2,7 +2,6 @@ var searchData=
 [
   ['seq',['seq',['../structGeneral__path__element__t.html#a418496a4d4cb1aa0724bd998f6c5ea40',1,'General_path_element_t::seq()'],['../structpgr__randomSpanningTree__t.html#a184d506ddae55b34047a1ad08b69b73e',1,'pgr_randomSpanningTree_t::seq()'],['../structpgr__stoerWagner__t.html#ade431ae42d584f756b10c2f8cb5871dc',1,'pgr_stoerWagner_t::seq()']]],
   ['servicetime',['serviceTime',['../structGeneral__vehicle__orders__t.html#ae3d128e43d4ad64ec58e887e71a05067',1,'General_vehicle_orders_t']]],
-  ['shortcuts',['shortcuts',['../classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a53bb9c72091ff0c50b540aad464881f0',1,'pgrouting::graph::Pgr_contractionGraph']]],
   ['side',['side',['../structPoint__on__edge__t.html#ae859f164d035909491b099e6d490705e',1,'Point_on_edge_t']]],
   ['signalhandlers_5f',['signalHandlers_',['../classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af',1,'SignalHandler']]],
   ['slide_5fcount',['slide_count',['../classpgrouting_1_1tsp_1_1TSP.html#a0862f5956ec0ad4d6906d64346704bd2',1,'pgrouting::tsp::TSP']]],
@@ -26,7 +25,7 @@ var searchData=
   ['str',['str',['../classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887',1,'AssertFailedException::str()'],['../classUserQuitException.html#a66969af1e0af3c8ae5e7c567ffbb4f36',1,'UserQuitException::str()']]],
   ['strict',['strict',['../structColumn__info__t.html#a72833df7d9b7fd577a9e5c866c390518',1,'Column_info_t']]],
   ['supersink',['supersink',['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a4e5f12d99a3aaeec6784668617ad2c8f',1,'pgrouting::graph::PgrCostFlowGraph::supersink()'],['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#ac0a7cc98e74d7910d17b04ca87482b21',1,'pgrouting::graph::PgrFlowGraph::supersink()']]],
-  ['supersource',['supersource',['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a52391548d28b58228961818e908f73c1',1,'pgrouting::graph::PgrCostFlowGraph::supersource()'],['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a44ad558a727e2f9d29e22ddd5a212487',1,'pgrouting::graph::PgrFlowGraph::supersource()'],['../classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a93e755c24c4c6916a176a6e1d2de8777',1,'pgrouting::graph::PgrDirectedChPPGraph::superSource()']]],
+  ['supersource',['superSource',['../classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a93e755c24c4c6916a176a6e1d2de8777',1,'pgrouting::graph::PgrDirectedChPPGraph::superSource()'],['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a52391548d28b58228961818e908f73c1',1,'pgrouting::graph::PgrCostFlowGraph::supersource()'],['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a44ad558a727e2f9d29e22ddd5a212487',1,'pgrouting::graph::PgrFlowGraph::supersource()']]],
   ['supertarget',['superTarget',['../classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a58a5a884928922c65762392822d7a28d',1,'pgrouting::graph::PgrDirectedChPPGraph']]],
   ['swap_5fcount',['swap_count',['../classpgrouting_1_1tsp_1_1TSP.html#a67dedaf0e84ebce1af96d68c46712a80',1,'pgrouting::tsp::TSP']]]
 ];

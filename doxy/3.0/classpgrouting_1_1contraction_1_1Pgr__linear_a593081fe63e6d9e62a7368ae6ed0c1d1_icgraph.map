@@ -1,5 +1,0 @@
-<map id="pgrouting::contraction::Pgr_linear::is_linear" name="pgrouting::contraction::Pgr_linear::is_linear">
-<area shape="rect" id="node2" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a1bae6a3ec231a3048e243ff087997853" title="pgrouting::contraction\l::Pgr_linear::calculateVertices" alt="" coords="200,5,396,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#aef91793bf9d9b4e12b2b648268f64545" title="pgrouting::contraction\l::Pgr_linear::doContraction" alt="" coords="209,71,387,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a3c80049613e3fac2192f568a58e90959" title="pgrouting::contraction\l::Pgr_linear::get_next_id" alt="" coords="217,136,379,177"/>
-</map>

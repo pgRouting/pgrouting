@@ -57,6 +57,7 @@ var files =
     [ "ch_edge.h", "ch__edge_8h.html", [
       [ "CH_edge", "classpgrouting_1_1CH__edge.html", "classpgrouting_1_1CH__edge" ]
     ] ],
+    [ "ch_graphs.hpp", "ch__graphs_8hpp.html", "ch__graphs_8hpp" ],
     [ "ch_vertex.cpp", "ch__vertex_8cpp.html", "ch__vertex_8cpp" ],
     [ "ch_vertex.h", "ch__vertex_8h.html", "ch__vertex_8h" ],
     [ "check_parameters.c", "check__parameters_8c.html", "check__parameters_8c" ],
@@ -281,10 +282,11 @@ var files =
     [ "pgr_components_rt.h", "pgr__components__rt_8h.html", [
       [ "pgr_components_rt", "structpgr__components__rt.html", "structpgr__components__rt" ]
     ] ],
-    [ "pgr_contract.hpp", "pgr__contract_8hpp.html", [
-      [ "Pgr_contract", "classpgrouting_1_1contraction_1_1Pgr__contract.html", "classpgrouting_1_1contraction_1_1Pgr__contract" ]
+    [ "pgr_contract.cpp", "pgr__contract_8cpp.html", "pgr__contract_8cpp" ],
+    [ "pgr_contract.hpp", "pgr__contract_8hpp.html", "pgr__contract_8hpp" ],
+    [ "pgr_contractionGraph.hpp", "pgr__contractionGraph_8hpp.html", [
+      [ "Pgr_contractionGraph", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html", "classpgrouting_1_1graph_1_1Pgr__contractionGraph" ]
     ] ],
-    [ "pgr_contractionGraph.hpp", "pgr__contractionGraph_8hpp.html", "pgr__contractionGraph_8hpp" ],
     [ "pgr_costFlow_t.h", "pgr__costFlow__t_8h.html", [
       [ "pgr_costFlow_t", "structpgr__costFlow__t.html", "structpgr__costFlow__t" ]
     ] ],

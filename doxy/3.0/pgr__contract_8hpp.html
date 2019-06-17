@@ -83,7 +83,8 @@ $(document).ready(function(){initNavTree('pgr__contract_8hpp.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">pgr_contract.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -91,18 +92,20 @@ $(document).ready(function(){initNavTree('pgr__contract_8hpp.html','');});
 <div class="textblock"><code>#include &lt;deque&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="pgr__assert_8h_source.html">cpp_common/pgr_assert.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="pgr__contractionGraph_8hpp_source.html">./pgr_contractionGraph.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="pgr__linearContraction_8hpp_source.html">./pgr_linearContraction.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="pgr__deadEndContraction_8hpp_source.html">./pgr_deadEndContraction.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pgr__contractionGraph_8hpp_source.html">contraction/pgr_contractionGraph.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ch__graphs_8hpp_source.html">contraction/ch_graphs.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pgr__linearContraction_8hpp_source.html">contraction/pgr_linearContraction.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pgr__deadEndContraction_8hpp_source.html">contraction/pgr_deadEndContraction.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pgr_contract.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="pgr__contract_8hpp__incl.png" border="0" usemap="#pgr__contract_8hpp" alt=""/></div>
 <map name="pgr__contract_8hpp" id="pgr__contract_8hpp">
 <area shape="rect" id="node4" href="pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="138,80,314,107"/>
-<area shape="rect" id="node5" href="pgr__contractionGraph_8hpp.html" title="./pgr_contractionGraph.hpp" alt="" coords="338,80,517,107"/>
-<area shape="rect" id="node6" href="pgr__linearContraction_8hpp.html" title="./pgr_linearContraction.hpp" alt="" coords="541,80,719,107"/>
-<area shape="rect" id="node7" href="pgr__deadEndContraction_8hpp.html" title="./pgr_deadEndContraction.hpp" alt="" coords="744,80,943,107"/>
+<area shape="rect" id="node5" href="pgr__contractionGraph_8hpp.html" title="contraction/pgr_contraction\lGraph.hpp" alt="" coords="253,155,431,196"/>
+<area shape="rect" id="node6" href="ch__graphs_8hpp.html" title="contraction/ch_graphs.hpp" alt="" coords="389,80,564,107"/>
+<area shape="rect" id="node7" href="pgr__linearContraction_8hpp.html" title="contraction/pgr_linearContraction.hpp" alt="" coords="507,162,745,189"/>
+<area shape="rect" id="node8" href="pgr__deadEndContraction_8hpp.html" title="contraction/pgr_deadEndContraction.hpp" alt="" coords="770,162,1029,189"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -111,6 +114,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="pgr__contract_8hpp__dep__incl.png" border="0" usemap="#pgr__contract_8hppdep" alt=""/></div>
 <map name="pgr__contract_8hppdep" id="pgr__contract_8hppdep">
 <area shape="rect" id="node2" href="contractGraph__driver_8cpp.html" title="contractGraph_driver.cpp" alt="" coords="5,80,173,107"/>
+<area shape="rect" id="node3" href="pgr__contract_8cpp.html" title="pgr_contract.cpp" alt="" coords="198,80,317,107"/>
 </map>
 </div>
 </div>
@@ -128,6 +132,11 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacepgrouting_1_1contraction"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepgrouting_1_1contraction.html">pgrouting::contraction</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ab334ab6d564c01f7907cf525cfbfd962"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepgrouting_1_1contraction.html#ab334ab6d564c01f7907cf525cfbfd962">pgrouting::contraction::is_valid_contraction</a> (int number)</td></tr>
+<tr class="separator:ab334ab6d564c01f7907cf525cfbfd962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -135,7 +144,7 @@ Namespaces</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_3ab07e095ccb61e6c808a03cedc1e316.html">contraction</a></li><li class="navelem"><a class="el" href="pgr__contract_8hpp.html">pgr_contract.hpp</a></li>
-    <li class="footer">Generated on Thu May 30 2019 08:39:16 for PGROUTING by
+    <li class="footer">Generated on Mon Jun 17 2019 10:22:10 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

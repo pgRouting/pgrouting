@@ -1,8 +1,0 @@
-<map id="pgrouting::contraction::Pgr_linear::doContraction" name="pgrouting::contraction::Pgr_linear::doContraction">
-<area shape="rect" id="node2" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a8e40b3cf3839a6a3ef50cc2f7288ea99" title="add edges(shortuct) to the graph during contraction " alt="" coords="231,37,401,78"/>
-<area shape="rect" id="node3" href="$classIdentifiers.html#affc6862074203a87d8e80223b555d86b" title="Identifiers::front" alt="" coords="463,15,577,42"/>
-<area shape="rect" id="node4" href="$classIdentifiers.html#a6bfd470840528175732ced70c1b4399c" title="Identifiers::pop_front" alt="" coords="449,84,591,111"/>
-<area shape="rect" id="node5" href="$classIdentifiers.html#abc73ed57af79c12963989657f99d4662" title="true ids() has element " alt="" coords="262,154,370,180"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a593081fe63e6d9e62a7368ae6ed0c1d1" title="pgrouting::contraction\l::Pgr_linear::is_linear" alt="" coords="243,205,389,246"/>
-<area shape="rect" id="node7" href="$classIdentifiers.html#afa735cce6596944fc64f95f4995ccc8e" title="Identifiers::size" alt="" coords="465,242,575,268"/>
-</map>

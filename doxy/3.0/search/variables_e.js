@@ -1,7 +1,6 @@
 var searchData=
 [
   ['removed_5fedges',['removed_edges',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad81c913d7ab75b8fef2c10efe6c208eb',1,'pgrouting::graph::Pgr_base_graph']]],
-  ['removed_5fvertices',['removed_vertices',['../classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a7226271b2387e65e8f59375098ec2207',1,'pgrouting::graph::Pgr_contractionGraph']]],
   ['residual_5fcapacity',['residual_capacity',['../structpgr__flow__t.html#a70ec27327e16df03e9c3b950eac7192f',1,'pgr_flow_t::residual_capacity()'],['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#aa67b17f8b831aba5a96e4b5acda9b5bc',1,'pgrouting::graph::PgrCostFlowGraph::residual_capacity()'],['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#aa5fbb8a13cb84db2d5ae33592eeae16d',1,'pgrouting::graph::PgrFlowGraph::residual_capacity()']]],
   ['resultedges',['resultEdges',['../classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a8703febb1b873b3fec0181de5d74c80e',1,'pgrouting::graph::PgrDirectedChPPGraph']]],
   ['resultgraph',['resultGraph',['../classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a13053604bca99c84630fac2570054421',1,'pgrouting::graph::PgrDirectedChPPGraph']]],

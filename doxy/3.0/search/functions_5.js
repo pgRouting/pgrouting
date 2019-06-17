@@ -15,7 +15,7 @@ var searchData=
   ['fetch_5frestrict_5fcolumns',['fetch_restrict_columns',['../trsp_8c.html#a7623760f545a367335141630d9e715ac',1,'trsp.c']]],
   ['fetch_5frestriction',['fetch_restriction',['../restrictions__input_8c.html#ac3cee3d89294cf9d7839cf1e4992db61',1,'restrictions_input.c']]],
   ['fetch_5fvehicles',['fetch_vehicles',['../vehicles__input_8c.html#a8dedcfbf71ecc7f6c789331d5e89e909',1,'vehicles_input.c']]],
-  ['find_5fadjacent_5fvertices',['find_adjacent_vertices',['../classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#adec7f703c60a87d1d0ce28d496b6ea7d',1,'pgrouting::graph::Pgr_contractionGraph']]],
+  ['find_5fadjacent_5fvertices',['find_adjacent_vertices',['../classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a54b195b2e1f8bf490531f9bdbc1ed56c',1,'pgrouting::graph::Pgr_contractionGraph']]],
   ['find_5fbest_5fi',['find_best_I',['../classpgrouting_1_1vrp_1_1PD__Orders.html#a6847ad4ff551e69b2630805f8480f01e',1,'pgrouting::vrp::PD_Orders']]],
   ['find_5fbest_5fj',['find_best_J',['../classpgrouting_1_1vrp_1_1PD__Orders.html#a19610270a3a6663b8fa7b05bd7eb839b',1,'pgrouting::vrp::PD_Orders']]],
   ['find_5fclosest_5fcity',['find_closest_city',['../classpgrouting_1_1tsp_1_1TSP.html#ae67a4b7c607af81b7123b7cf5298081e',1,'pgrouting::tsp::TSP']]],

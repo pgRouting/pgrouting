@@ -9,6 +9,8 @@ a0; a1; a2;
 label = "rest of graph";
 }
 v [color=green];
-v -- a0;
-v -- a0;
+v -- left;
+v -- right;
+u - a0;
+w - a1;
 }

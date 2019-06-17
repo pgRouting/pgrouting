@@ -10,6 +10,7 @@ var searchData=
   ['has_5forder',['has_order',['../classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#adb870b4b7089194de06de8471eba0767',1,'pgrouting::vrp::Vehicle_pickDeliver']]],
   ['has_5frestriction',['has_restriction',['../classPath.html#aa9094d69061056df1335819625d06894',1,'Path::has_restriction()'],['../classpgrouting_1_1yen_1_1Pgr__turnRestrictedPath_1_1Myvisitor.html#a2630afaa1bbdbb502c27118cfbb1bce4',1,'pgrouting::yen::Pgr_turnRestrictedPath::Myvisitor::has_restriction()']]],
   ['has_5ftwv',['has_twv',['../classpgrouting_1_1vrp_1_1Vehicle.html#a68809d3dfb276a4c2fdda5019276f096',1,'pgrouting::vrp::Vehicle::has_twv()'],['../classpgrouting_1_1vrp_1_1Vehicle__node.html#a926b499e318cee7a768721da337965ce',1,'pgrouting::vrp::Vehicle_node::has_twv()']]],
+  ['has_5fu_5fv_5fw',['has_u_v_w',['../classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a51cf5f536406a5b8e6ecd5d22c777c4f',1,'pgrouting::graph::Pgr_contractionGraph']]],
   ['has_5fvertex',['has_vertex',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad71f29403e6087e10e7a3e2a007c0bd9',1,'pgrouting::graph::Pgr_base_graph']]],
   ['heuristic',['heuristic',['../classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a9a673da5f6fab0c8377099d8cd8f653d',1,'pgrouting::bidirectional::Pgr_bdAstar']]]
 ];

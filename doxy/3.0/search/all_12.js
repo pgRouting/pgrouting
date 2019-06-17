@@ -16,7 +16,6 @@ var searchData=
   ['registerhandler',['registerHandler',['../classSignalHandler.html#af11376ff56c905f739de1700e6891476',1,'SignalHandler']]],
   ['release_5ftruck',['release_truck',['../classpgrouting_1_1vrp_1_1Fleet.html#acd7853577b19e5344afe1c82dbd241b7',1,'pgrouting::vrp::Fleet']]],
   ['removed_5fedges',['removed_edges',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad81c913d7ab75b8fef2c10efe6c208eb',1,'pgrouting::graph::Pgr_base_graph']]],
-  ['removed_5fvertices',['removed_vertices',['../classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a7226271b2387e65e8f59375098ec2207',1,'pgrouting::graph::Pgr_contractionGraph']]],
   ['removehandler',['removeHandler',['../classSignalHandler.html#ade885c58ad79e979187db6eb77e456b4',1,'SignalHandler']]],
   ['removevertices',['removeVertices',['../classpgrouting_1_1yen_1_1Pgr__ksp.html#a3eddf903bcd9f64fc7f51dd14430bff6',1,'pgrouting::yen::Pgr_ksp']]],
   ['renumber_5fedges',['renumber_edges',['../classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#af7aa55cc3fedf3cd6f1ce2e801b20116',1,'pgrouting::trsp::Pgr_trspHandler']]],

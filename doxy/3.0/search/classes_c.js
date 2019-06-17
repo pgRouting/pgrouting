@@ -12,6 +12,7 @@ var searchData=
   ['pgr_5fastar',['Pgr_astar',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html',1,'pgrouting::algorithms']]],
   ['pgr_5fbase_5fgraph',['Pgr_base_graph',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html',1,'pgrouting::graph']]],
   ['pgr_5fbase_5fgraph_3c_20bg_2c_20xy_5fvertex_2c_20basic_5fedge_20_3e',['Pgr_base_graph&lt; BG, XY_vertex, Basic_edge &gt;',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html',1,'pgrouting::graph']]],
+  ['pgr_5fbase_5fgraph_3c_20g_2c_20ch_5fvertex_2c_20ch_5fedge_20_3e',['Pgr_base_graph&lt; G, CH_vertex, CH_edge &gt;',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html',1,'pgrouting::graph']]],
   ['pgr_5fbasic_5fedge_5ft',['pgr_basic_edge_t',['../structpgr__basic__edge__t.html',1,'']]],
   ['pgr_5fbdastar',['Pgr_bdAstar',['../classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html',1,'pgrouting::bidirectional']]],
   ['pgr_5fbddijkstra',['Pgr_bdDijkstra',['../classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html',1,'pgrouting::bidirectional']]],
