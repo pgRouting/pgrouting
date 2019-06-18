@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+    _topologicalSort.sql
     topologicalSort.sql
     )
 
