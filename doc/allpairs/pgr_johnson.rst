@@ -23,6 +23,16 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 * Signature change on v2.2.0
 * New on v2.0.0
 
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/3.0/en/pgr_floydWarshall.html>`__)
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_floydWarshall.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_floydWarshall.html>`__
+
+**Unsupported versions:**
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_floydWarshall.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_floydWarshall.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_floydWarshall.html>`__
+
 Description
 -------------------------------------------------------------------------------
 
@@ -57,7 +67,7 @@ Signatures
 
     pgr_johnson(edges_sql)
     pgr johnson(edges_sql [, directed])
-    RETURNS SET OF (start_vid, end_vid, agg_cost) 
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
 .. rubric:: Using default
@@ -65,7 +75,7 @@ Signatures
 .. code-block:: none
 
     pgr_johnson(edges_sql)
-    RETURNS SET OF (start_vid, end_vid, agg_cost) 
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
 :Example 1: For vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
