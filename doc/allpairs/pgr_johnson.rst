@@ -24,14 +24,14 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 * New on v2.0.0
 
 **Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/3.0/en/pgr_floydWarshall.html>`__)
-`2.6 <http://docs.pgrouting.org/2.6/en/pgr_floydWarshall.html>`__
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_floydWarshall.html>`__
+current(`3.0 <http://docs.pgrouting.org/3.0/en/pgr_johnson.html>`__)
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_johnson.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_johnson.html>`__
 
 **Unsupported versions:**
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_floydWarshall.html>`__
-`2.3 <http://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_floydWarshall.html>`__
-`2.2 <http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_floydWarshall.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_johnson.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_johnson.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_johnson.html>`__
 
 Description
 -------------------------------------------------------------------------------
