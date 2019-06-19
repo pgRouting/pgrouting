@@ -49,10 +49,19 @@ CREATE OR REPLACE FUNCTION pgr_breadthFirstSearch(
 
 RETURNS SETOF RECORD AS
 $BODY$
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''max_depth'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+
+    RETURN QUERY
     SELECT *
     FROM _pgr_breadthFirstSearch(_pgr_get_statement($1),  ARRAY[$2]::BIGINT[], max_depth, directed) AS a;
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE plpgsql VOLATILE STRICT;
 
 
 --MANY TO DEPTH
@@ -73,10 +82,19 @@ CREATE OR REPLACE FUNCTION pgr_breadthFirstSearch(
 
 RETURNS SETOF RECORD AS
 $BODY$
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''max_depth'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+
+    RETURN QUERY
     SELECT *
     FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], max_depth, directed) AS a;
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE plpgsql VOLATILE STRICT;
 
 
 -- COMMENTS
