@@ -30,7 +30,6 @@ BEGIN
     '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
     ]::TEXT[];
 
-    PERFORM todo_start('query must return results');
     RETURN query SELECT * FROM no_crash_test('pgr_breadthFirstSearch', params, subs);
 
     params[1] := '$$edges$$';
@@ -96,7 +95,6 @@ BEGIN
 
     subs[2] := 'NULL::BIGINT[]';
     RETURN query SELECT * FROM no_crash_test('pgr_breadthFirstSearch', params, subs);
-    PERFORM todo_end();
 
 END
 $BODY$
