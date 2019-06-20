@@ -25,6 +25,18 @@ pgr_alphaShape
 
 * Renamed in v2.0.0
 
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/3.0/en/pgr_alphaShape.html>`__)
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_alphaShape.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_alphaShape.html>`__
+
+**Unsupported versions:**
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_alphaShape.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_alphaShape.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_alphaShape.html>`__
+`2.1 <http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_alphaShape.html>`__
+
+
 Description
 -------------------------------------------------------------------------------
 
