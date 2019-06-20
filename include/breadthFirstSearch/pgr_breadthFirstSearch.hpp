@@ -57,9 +57,9 @@ public:
         for (auto source : start_vertex)
         {
             std::vector<E> visited_order;
-            results.push_back({source, 0, source, -1, 0.0, 0.0});
             if (graph.has_vertex(source))
             {
+                results.push_back({source, 0, source, -1, 0.0, 0.0});
                 boost::breadth_first_search(graph.graph,
                                             graph.get_V(source),
                                             visitor(bfs_visitor(visited_order)));
