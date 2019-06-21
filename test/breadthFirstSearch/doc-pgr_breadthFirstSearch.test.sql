@@ -6,10 +6,16 @@ SELECT * FROM pgr_breadthFirstSearch(
 \echo --q2
 SELECT * FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    ARRAY[13,2], max_depth := 3
+    ARRAY[11,12], max_depth := 2
 );
 \echo --q3
 SELECT * FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    0
+    ARRAY[11,12], max_depth := 2, directed := false
 );
+\echo --q4
+SELECT * FROM pgr_breadthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    -10
+);
+\echo --q5
