@@ -53,8 +53,7 @@ extern "C" {
      ********************************************************/
 
 
-    void
-        do_pgr_breadthFirstSearch(
+    void do_pgr_breadthFirstSearch(
                 pgr_edge_t  *data_edges,
                 size_t total_tuples,
                 int64_t  *start_vidsArr,

@@ -33,32 +33,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 //******************************************
 
-namespace pgrouting
-{
-namespace functions
-{
+namespace pgrouting {
+namespace functions {
 
 template <class G>
-class Pgr_breadthFirstSearch
-{
+class Pgr_breadthFirstSearch {
+public:
     typedef typename G::V V;
     typedef typename G::E E;
     typedef typename G::B_G B_G;
 
-public:
 
     std::vector<pgr_mst_rt> breadthFirstSearch(
         G &graph,
         std::vector<int64_t> start_vertex,
-        int64_t depth){
+        int64_t depth) {
 
         std::vector<pgr_mst_rt> results;
         using bfs_visitor = visitors::Edges_order_bfs_visitor<E>;
-        for (auto source : start_vertex)
-        {
+
+        for (auto source : start_vertex) {
+
             std::vector<E> visited_order;
-            if (graph.has_vertex(source))
-            {
+
+            if (graph.has_vertex(source)) {
                 results.push_back({source, 0, source, -1, 0.0, 0.0});
                 boost::breadth_first_search(graph.graph,
                                             graph.get_V(source),
@@ -67,8 +65,11 @@ public:
                 auto single_source_results = get_results(visited_order, source, depth, graph);
                 results.insert(results.end(), single_source_results.begin(), single_source_results.end());
             }
+
         }
+
         return results;
+        
         }
 
 private:
