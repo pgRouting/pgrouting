@@ -84,7 +84,7 @@ Multiple vertices, Finite Depth
 
 .. Parameters, Inner query & result columns
 
-.. mstfs-information-start
+.. breadthFirstSearch-information-start
 
 Parameters
 -------------------------------------------------------------------------------
