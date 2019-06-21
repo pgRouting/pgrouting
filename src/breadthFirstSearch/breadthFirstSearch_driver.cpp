@@ -29,31 +29,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/breadthFirstSearch/breadthFirstSearch_driver.h"
 
-#include <sstream>
-#include <deque>
 #include <vector>
 #include <algorithm>
-#include <string>
-
-#if 0
-#include "breadthFirstSearch/pgr_breadthFirstSearch.hpp"
-#endif
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-//TODO(vicennial) : Remove below headers once pgr_breadthFirstSearch.hpp is implemented.
 #include "breadthFirstSearch/pgr_breadthFirstSearch.hpp"
-//TODO(vicennial) : Complete file once pgr_breadthFirstSearch.hpp is implemented. 
-//TODO(vicennial) : Use parameter max_depth.
-
-/* Breadth First Search Shortest Path */
-/************************************************************
-    EDGE_SQL,
-    ANYARRAY,
-    ANYARRAY,
-    directed BOOLEAN DEFAULT true,
- ***********************************************************/
 
 template < class G >
 std::vector<pgr_mst_rt>
@@ -75,7 +57,7 @@ pgr_breadthFirstSearch(
 
 void
 do_pgr_breadthFirstSearch(
-        pgr_edge_t  *data_edges,
+                pgr_edge_t  *data_edges,
                 size_t total_edges,
                 int64_t  *start_vidsArr,
                 size_t size_start_vidsArr,
