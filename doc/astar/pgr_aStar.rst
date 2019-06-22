@@ -41,9 +41,9 @@ current(`3.0 <http://docs.pgrouting.org/3.0/en/pgr_aStar.html>`__)
 
 **Unsupported versions:**
 `2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStar.html>`__
-`2.3 <http://docs.pgrouting.org/2.3/en/src/astar/doc/pgr_aStar.html>`__
-`2.2 <http://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_aStar.html>`__
-`2.1 <http://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_aStar.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/aStar/doc/pgr_aStar.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/aStar/doc/pgr_aStar.html>`__
+`2.1 <http://docs.pgrouting.org/2.2/en/src/aStar/doc/pgr_aStar.html>`__
 
 
 Description

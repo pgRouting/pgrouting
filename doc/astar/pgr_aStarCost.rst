@@ -27,7 +27,7 @@ current(`3.0 <http://docs.pgrouting.org/3.0/en/pgr_aStarCost.html>`__)
 `2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__
 
 **Unsupported versions:**
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStar.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__
 
 Description
 -------------------------------------------------------------------------------
