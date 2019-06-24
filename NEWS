@@ -109,7 +109,7 @@ pgRouting 3.0.0 Release Notes
 
 *Experimental moved to proposed on pgRouting*
 
-* No experimental functions moved as proposed
+* pgr_extractVertices
 
 
 *New Experimental functions*

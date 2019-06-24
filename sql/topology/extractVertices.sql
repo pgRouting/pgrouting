@@ -1,8 +1,10 @@
 /*PGR-GNU*****************************************************************
-File: extractVertices.sql
 
-Copyright (c) 2018 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2019 ~ pgRouting developers
+Mail: project@pgrouting.org
+
+Copyright (c) 2019 ~ Celia Virginia Vergara Castillo
+mail: vicky@georepublic.de
 
 ------
 
@@ -12,87 +14,300 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; WITHout even the implied warranty of
+but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along WITH this program; if not, write to the Free Software
+along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
----------------------------
--- pgr_extractVertices
----------------------------
 
-
-CREATE OR REPLACE FUNCTION pgr_extractVertices(
+CREATE OR REPLACE FUNCTION pgr_extractVertices1(
     TEXT,  -- SQL inner query (required)
 
+    dryrun BOOLEAN DEFAULT false,
+
+
     OUT id BIGINT,
+    OUT in_edges BIGINT[],
+    OUT out_edges BIGINT[],
     OUT x FLOAT,
     OUT y FLOAT,
-    OUT the_geom geometry
+    OUT geom geometry
 )
 RETURNS SETOF RECORD AS
 $BODY$
 DECLARE
-    edges_sql TEXT;
+    edges_SQL TEXT;
     quoted TEXT;
     query TEXT;
     has_geom BOOLEAN := TRUE;
+    has_source BOOLEAN := TRUE;
+    has_points BOOLEAN := TRUE;
+    has_id BOOLEAN := TRUE;
     fnName TEXT;
 
 BEGIN
     fnName = 'pgr_extractVertices';
     RAISE DEBUG 'PROCESSING: %(''%'')', fnName, edges_sql;
 
+    -- get the query
     BEGIN
         quoted = '.*' || $1 || '.*as';
         query = format($$
             SELECT regexp_replace(regexp_replace(statement, %1$L,'','i'),';$','') FROM pg_prepared_statements WHERE name = %2$L$$,
             quoted, $1);
-        EXECUTE query INTO edges_sql;
+        EXECUTE query INTO edges_SQL;
 
         EXCEPTION WHEN OTHERS
             THEN edges_sql := $1;
     END;
 
     IF edges_SQL IS NULL THEN
-        edges_sql := $1;
+        edges_SQL := $1;
     END IF;
 
+    -- has edge identifier
     BEGIN
-        query = 'SELECT the_geom FROM ('||edges_sql||' ) AS __a__ limit 1';
+        query = 'SELECT id FROM ('||edges_sql||' ) AS __a__ limit 1';
+        EXECUTE query;
+
+        EXCEPTION WHEN OTHERS THEN
+            has_id := FALSE;
+    END;
+
+    -- has geometry?
+    BEGIN
+        query = 'SELECT geom FROM ('||edges_sql||' ) AS __a__ limit 1';
         EXECUTE query;
 
         EXCEPTION WHEN OTHERS THEN
             has_geom := FALSE;
     END;
 
-    IF has_geom THEN
-        query := $q$
-        SELECT DISTINCT source, ST_X(geom), ST_Y(geom), geom FROM (
-            SELECT source, ST_startpoint(the_geom) AS geom
-            FROM ( $q$ || edges_sql || $q$) AS __a__
+    -- has points?
+    BEGIN
+      query = 'SELECT startpoint, endpoint FROM ('||edges_sql||' ) AS __a__ limit 1';
+      EXECUTE query;
 
-            UNION
-            SELECT target, ST_endpoint(the_geom)
-            FROM ( $q$ || edges_sql || $q$) AS __b__ ) AS __c__ $q$;
-    ELSE
-        query := $q$
-        SELECT DISTINCT source, NULL::FLOAT, NULL::FLOAT, NULL::geometry FROM (
-            SELECT source
-            FROM ( $q$ || edges_sql || $q$) AS a
+      EXCEPTION WHEN OTHERS THEN
+            has_points := FALSE;
+    END;
 
-            UNION
-            SELECT target
-            FROM ( $q$ || edges_sql || $q$) AS b ) AS c $q$;
+    -- has source-target?
+    BEGIN
+      query = 'SELECT source, target FROM ('||edges_sql||' ) AS __a__ limit 1';
+      EXECUTE query;
+
+      EXCEPTION WHEN OTHERS THEN
+        has_source := FALSE;
+    END;
+
+
+    IF has_geom AND has_id THEN
+      -- SELECT id, geom
+      query := $q$
+        WITH
+
+        main_sql AS (
+          $q$ || edges_sql || $q$
+        ),
+
+        the_out AS (
+          SELECT id AS out_edge, ST_StartPoint(geom) AS geom
+          FROM main_sql
+        ),
+
+        agg_out AS (
+          SELECT array_agg(out_edge) AS out_edges, ST_x(geom) AS x, ST_Y(geom) AS y, geom
+          FROM the_out
+          GROUP BY geom
+        ),
+
+        the_in AS (
+          SELECT id AS in_edge, ST_EndPoint(geom) AS geom
+          FROM main_sql
+        ),
+
+        agg_in AS (
+          SELECT array_agg(in_edge) AS in_edges, ST_x(geom) AS x, ST_Y(geom) AS y, geom
+          FROM the_in
+          GROUP BY geom
+        ),
+
+        the_points AS (
+          SELECT in_edges, out_edges, coalesce(agg_out.geom, agg_in.geom) AS geom
+          FROM agg_out
+          FULL OUTER JOIN agg_in USING (x, y)
+        )
+
+        SELECT row_number() over() AS id, in_edges, out_edges, ST_X(geom), ST_Y(geom), geom
+        FROM the_points
+      $q$;
+
+    ELSIF has_geom AND NOT has_id THEN
+      -- SELECT startpoint, endpoint
+      -- can not get the ins and outs
+      query := $q$
+        WITH
+
+        main_sql AS (
+          $q$ || edges_sql || $q$
+        ),
+
+        the_out AS (
+          SELECT DISTINCT ST_X(startpoint) AS x, ST_Y(startpoint) AS y, startpoint AS geom
+          FROM main_sql
+        ),
+
+        the_in AS (
+            SELECT DISTINCT ST_X(endpoint) AS x, ST_Y(endpoint) AS y, endpoint AS geom
+          FROM main_sql
+        ),
+
+        the_points AS (
+          SELECT x, y, coalesce(the_out.geom, the_in.geom) AS geom
+          FROM the_out
+          FULL OUTER JOIN the_in USING (x, y)
+        )
+
+        SELECT row_number() over() AS id, NULL::BIGINT[], NULL::BIGINT[], x, y, geom
+        FROM the_points
+      $q$;
+
+    ELSIF has_points AND has_id THEN
+      -- SELECT id, startpoint, endpoint
+      query := $q$
+        WITH
+
+        main_sql AS (
+          $q$ || edges_sql || $q$
+        ),
+
+        the_out AS (
+          SELECT id AS out_edge, startpoint AS geom
+          FROM main_sql
+        ),
+
+        agg_out AS (
+          SELECT array_agg(out_edge) AS out_edges, ST_x(geom) AS x, ST_Y(geom) AS y, geom
+          FROM the_out
+          GROUP BY geom
+        ),
+
+        the_in AS (
+          SELECT id AS in_edge, endpoint AS geom
+          FROM main_sql
+        ),
+
+        agg_in AS (
+          SELECT array_agg(in_edge) AS in_edges, ST_x(geom) AS x, ST_Y(geom) AS y, geom
+          FROM the_in
+          GROUP BY geom
+        ),
+
+        the_points AS (
+          SELECT in_edges, out_edges, coalesce(agg_out.geom, agg_in.geom) AS geom
+          FROM agg_out
+          FULL OUTER JOIN agg_in USING (x, y)
+        )
+
+        SELECT row_number() over() AS id, in_edges, out_edges, ST_X(geom), ST_Y(geom), geom
+        FROM the_points
+      $q$;
+
+    ELSIF has_points AND NOT has_id THEN
+      -- SELECT startpoint, endpoint
+      -- can not get the ins and outs
+      query := $q$
+        WITH
+
+        main_sql AS (
+          $q$ || edges_sql || $q$
+        ),
+
+        the_out AS (
+          SELECT DISTINCT ST_X(startpoint) AS x, ST_Y(startpoint) AS y, startpoint AS geom
+          FROM main_sql
+        ),
+
+        the_in AS (
+            SELECT DISTINCT ST_X(endpoint) AS x, ST_Y(endpoint) AS y, endpoint AS geom
+          FROM main_sql
+        ),
+
+        the_points AS (
+          SELECT x, y, coalesce(the_out.geom, the_in.geom) AS geom
+          FROM the_out
+          FULL OUTER JOIN the_in USING (x, y)
+        )
+
+        SELECT row_number() over() AS id, NULL::BIGINT[], NULL::BIGINT[], x, y, geom
+        FROM the_points
+      $q$;
+
+    ELSIF has_source AND has_id THEN
+      -- SELECT id, source, target
+      query := $q$
+        WITH
+
+        main_sql AS (
+          $q$ || edges_sql || $q$
+        ),
+
+        agg_out AS (
+          SELECT source AS vid, array_agg(id) AS out_edges
+          FROM main_sql
+          GROUP BY source
+        ),
+
+        agg_in AS (
+          SELECT target AS vid, array_agg(id) AS in_edges
+          FROM main_sql
+          GROUP BY target
+        ),
+
+        the_points AS (
+          SELECT vid, in_edges, out_edges
+          FROM agg_out
+          FULL OUTER JOIN agg_in USING (vid)
+        )
+
+        SELECT vid AS id, in_edges, out_edges, NULL::FLOAT, NULL::FLOAT, NULL::geometry
+        FROM the_points
+      $q$;
+
+
+    ELSIF has_source AND NOT has_id THEN
+      -- SELECT id, source, target
+      query := $q$
+        WITH
+
+        main_sql AS (
+          $q$ || edges_sql || $q$
+        ),
+
+
+        the_points AS (
+          SELECT source AS vid FROM main_sql
+          UNION
+          SELECT target FROM main_sql
+        )
+
+        SELECT DISTINCT vid AS id, NULL::BIGINT[], NULL::BIGINT[], NULL::FLOAT, NULL::FLOAT, NULL::geometry
+        FROM the_points
+      $q$;
+
     END IF;
 
-    RAISE DEBUG 'query %', query;
-    RETURN QUERY EXECUTE query;
+    IF dryrun THEN
+      RAISE NOTICE '%', query;
+    ELSE
+      RETURN QUERY EXECUTE query;
+    END IF;
 
     EXCEPTION WHEN OTHERS THEN
     RAISE EXCEPTION '%', SQLERRM
@@ -106,11 +321,14 @@ LANGUAGE plpgsql VOLATILE STRICT;
 -- COMMENTS
 
 
-COMMENT ON FUNCTION pgr_extractVertices(TEXT)
+COMMENT ON FUNCTION pgr_extractVertices(TEXT, BOOLEAN)
 IS 'pgr_extractVertices
-- PROPOSED
 - Parameters
-  - Edges SQL with columns: source, target [, the_geom]
+  - Edges SQL with columns: id, startpoint, endpoint
+        OR
+  - Edges SQL with columns: id, source, target
+        OR
+  - Edges SQL with columns: id, geom
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_extractVertices.html
+- ${PGROUTING_DOC_LINK}/pgr_extractVertices.html
 ';
