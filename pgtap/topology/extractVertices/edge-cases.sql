@@ -18,8 +18,8 @@ FROM pgr_extractVertices(
      FROM edge_table WHERE id > 18'
 );
 
-SELECT is_empty('query_1', 'No_edge -> No answer');
-SELECT is_empty('query_2', 'No_edge -> No answer');
+SELECT throws_ok('query_1', 'P0001', 'column "id" does not exist', 'No_edge -> No answer');
+SELECT throws_ok('query_2', 'P0001', 'column "id" does not exist', 'No_edge -> No answer');
 
 
 --
