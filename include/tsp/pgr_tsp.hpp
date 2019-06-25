@@ -504,6 +504,7 @@ template < typename MATRIX >
 void
 TSP<MATRIX>::swapClimb() {
     invariant();
+    if (!(n > 2)) return;
     pgassert(n > 2);
 
     //    auto first = std::rand() % n;
@@ -537,6 +538,8 @@ TSP<MATRIX>::annealing(
         bool randomize,
         double time_limit) {
     invariant();
+    if (!(n > 2)) return;
+
     clock_t start_time(clock());
 
     if (randomize) {
