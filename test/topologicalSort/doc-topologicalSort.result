@@ -1,0 +1,37 @@
+
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+CREATE TABLE edge_table1 (
+    id serial,
+    source integer,
+    target integer,
+    cost double precision,
+    reverse_cost double precision
+);
+CREATE TABLE
+INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES ( 1, 2,0,0);
+INSERT 0 1
+INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (2,3,0,0);
+INSERT 0 1
+SELECT * FROM pgr_topologicalsort(
+    \'SELECT id,
+            source,
+            target,
+            cost,
+            reverse_cost
+    FROM edge_table1\'
+    
+);
+ERROR:  function pgr_topologicalsort(unknown) does not exist
+LINE 1: SELECT * FROM pgr_topologicalsort(
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+SELECT * FROM pgr_topologicalsort(
+  \'SELECT id, source, target, cost, reverse_cost FROM edge_table1\'
+);
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
+-- q1
+ROLLBACK;
+ROLLBACK
