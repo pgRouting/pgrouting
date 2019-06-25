@@ -31,13 +31,12 @@ cd build/
 
 # Options Release RelWithDebInfo MinSizeRel Debug
 #cmake  -DCMAKE_BUILD_TYPE=Debug ..
-
 # with documentation
 #cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DPgRouting_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug ..
 #cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DCMAKE_BUILD_TYPE=Debug ..
 
 # when more than one postgres version is installed on the computer
-cmake  -DPOSTGRESQL_BIN=/usr/lib/postgresql/$PGSQL_VER/bin -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..
+cmake  -DPOSTGRESQL_BIN=/usr/local/opt/postgresql/bin -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..
 
 make
 sudo make install

@@ -66,13 +66,16 @@ class Pgr_topologicalSort {
      std::vector< pgr_topologicalSort_t >
      generatetopologicalSort(
         const G &graph ) {
-        
+        auto parities = boost::make_one_bit_color_map(
+                                num_vertices(graph.graph),
+                                get(boost::vertex_index, graph.graph));
+
+
         std::vector< pgr_topologicalSort_t > results;
 
         typedef typename std::vector< V > container;
         container c;
-        topological_sort(graph.graph, std::back_inserter(c));
-        
+        topological_sort(graph.graph, std::back_inserter(c),boost::parity_map(parities));
         typename std::vector< V >::reverse_iterator ii;
         for (ii=c.rbegin(); ii!=c.rend(); ++ii) {
             auto t=*ii;
@@ -88,7 +91,7 @@ template < class G >
 std::vector<pgr_topologicalSort_t>
 Pgr_topologicalSort< G >::topologicalSort(
                 G &graph) {
-    pgassert(num_vertices(graph.graph) > 1);
+    
       return generatetopologicalSort(
                              graph);
 }

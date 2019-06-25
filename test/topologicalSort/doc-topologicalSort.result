@@ -1,4 +1,3 @@
-
 BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
@@ -11,27 +10,68 @@ CREATE TABLE edge_table1 (
     reverse_cost double precision
 );
 CREATE TABLE
-INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES ( 1, 2,0,0);
-INSERT 0 1
-INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (2,3,0,0);
+INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (1,2,1,-1);
 INSERT 0 1
 SELECT * FROM pgr_topologicalsort(
-    \'SELECT id,
-            source,
-            target,
-            cost,
-            reverse_cost
-    FROM edge_table1\'
-    
+  \'SELECT id,source,target,cost,reverse_cost FROM edge_table where id=2\'
 );
-ERROR:  function pgr_topologicalsort(unknown) does not exist
-LINE 1: SELECT * FROM pgr_topologicalsort(
-                      ^
-HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+ seq | sorted_v 
+-----+----------
+   1 |        1
+   2 |        0
+(2 rows)
+
 SELECT * FROM pgr_topologicalsort(
-  \'SELECT id, source, target, cost, reverse_cost FROM edge_table1\'
+  \'SELECT id,source,target,cost,reverse_cost FROM edge_table1\'
 );
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+ seq | sorted_v 
+-----+----------
+   1 |        0
+   2 |        1
+(2 rows)
+
+SELECT * FROM pgr_topologicalsort(
+  \'SELECT id,source,target,cost,reverse_cost FROM edge_table where id=3\'
+);
+ seq | sorted_v 
+-----+----------
+   1 |        1
+   2 |        0
+(2 rows)
+
+SELECT * FROM pgr_topologicalsort(
+  \'SELECT id,source,target,cost,reverse_cost FROM edge_table where id=2 or id=3\'
+);
+ seq | sorted_v 
+-----+----------
+   1 |        2
+   2 |        1
+   3 |        0
+(3 rows)
+
+SELECT * FROM pgr_topologicalsort(
+  \'SELECT id,source,target,cost,reverse_cost FROM edge_table where id=11\'
+);
+ seq | sorted_v 
+-----+----------
+   1 |        0
+   2 |        1
+(2 rows)
+
+SELECT * FROM pgr_topologicalsort(
+  \'SELECT id,source,target,cost,reverse_cost FROM edge_table where cost=-1 or reverse_cost=-1\'
+);
+ seq | sorted_v 
+-----+----------
+   1 |        5
+   2 |        2
+   3 |        1
+   4 |        3
+   5 |        4
+   6 |        6
+   7 |        0
+(7 rows)
+
 -- q1
 ROLLBACK;
 ROLLBACK
