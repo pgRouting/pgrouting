@@ -80,44 +80,7 @@ class Pgr_topologicalSort {
             tmp.sorted_v=t;
             results.push_back(tmp);
         }
-    //    auto parities = boost::make_one_bit_color_map(
-    //                                     num_vertices(graph.graph),
-    //                                     get(boost::vertex_index, graph.graph));
-
-    //    double w = stoer_wagner_min_cut(
-    //                                graph.graph,
-    //                                get(&G::G_T_E::cost, graph.graph),
-    //                                boost::parity_map(parities));
-
-    //    double totalcost = 0;
-    //    E_i ei, ei_end;
-    //    for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ei++) {
-    //       auto s = source(*ei, graph.graph);
-    //       auto t = target(*ei, graph.graph);
-
-    //       if (get(parities, s) != get(parities, t)) {
-    //            pgr_topologicalSort_t tmp;
-
-    //            tmp.cost = graph[*ei].cost;
-
-    //            auto edge_id =
-    //              graph.get_edge_id(
-    //                      source(*ei, graph.graph),
-    //                      target(*ei, graph.graph),
-    //                      tmp.cost);
-
-    //            tmp.edge = edge_id;
-    //            totalcost += tmp.cost;
-    //            tmp.mincut = totalcost;
-    //            results.push_back(tmp);
-    //          }
-    //    }
-
-    //    pgassert(w == totalcost);
-        //   pgr_topologicalSort_t tmp;
-        //   tmp.seq=tmp.sorted_v=1;
-        //   results.push_back(tmp);
-          return results;
+        return results;
      }
 };
 
