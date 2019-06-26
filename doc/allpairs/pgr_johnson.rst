@@ -35,7 +35,6 @@ current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_johnson.html>`__)
 `2.1 <http://docs.pgrouting.org/2.1/en/src/apsp_johnson/doc/index.html#pgr-apsp-johnson>`__
 `2.0 <http://docs.pgrouting.org/2.0/en/src/apsp_johnson/doc/index.html#pgr-apsp-johnson>`__
 
-
 Description
 -------------------------------------------------------------------------------
 
