@@ -84,12 +84,6 @@ Stable Proposed Functions
     KSP-category
 
 
-:doc:`topology-functions`
-
-.. include:: topology-functions.rst
-   :start-after: topology_proposed_start
-   :end-before: topology_proposed_end
-
 .. _proposed:
 
 Experimental Functions
@@ -172,6 +166,12 @@ Experimental Functions
   pgr_bellmanFord
   pgr_dagShortestPath
   pgr_stoerWagner
+
+:doc:`topology-functions`
+
+.. include:: topology-functions.rst
+   :start-after: topology_proposed_start
+   :end-before: topology_proposed_end
 
 
 

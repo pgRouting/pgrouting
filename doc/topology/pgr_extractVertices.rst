@@ -7,14 +7,19 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_extractVertices -- Proposed
+pgr_extractVertices -- Experimental
 ===============================================================================
 
 ``pgr_extractVertices`` — Extracts the vertices information based on the source and target.
 
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
 .. rubric:: Availability
 
-* New on v3.0.0
+* New as experimental on v3.0.0
 
 Description
 -------------------------------------------------------------------------------
@@ -29,7 +34,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: pgr_extractVertices
+    single: pgr_extractVertices -- Experimental
 
 .. code-block:: sql
 
@@ -113,6 +118,7 @@ Result Columns
 -------------------------------------------------------------------------------
 
 Rreturns set of (id, in_edges, out_edges, x, y, geom)
+
 ================= =============== =================================================
 Column            Type                Description
 ================= =============== =================================================
