@@ -4,21 +4,68 @@ SET client_min_messages TO NOTICE;
 SET
 --q1
 SELECT  * FROM pgr_extractVertices('SELECT source, target, the_geom FROM edge_table');
-ERROR:  column "id" does not exist
-HINT:  Please check query: SELECT source, target, the_geom FROM edge_table
+ id | in_edges | out_edges | x | y | geom
+----+----------+-----------+---+---+------
+  1 |          |           |   |   |
+  2 |          |           |   |   |
+  3 |          |           |   |   |
+  4 |          |           |   |   |
+  5 |          |           |   |   |
+  6 |          |           |   |   |
+  7 |          |           |   |   |
+  8 |          |           |   |   |
+  9 |          |           |   |   |
+ 10 |          |           |   |   |
+ 11 |          |           |   |   |
+ 12 |          |           |   |   |
+ 13 |          |           |   |   |
+ 14 |          |           |   |   |
+ 15 |          |           |   |   |
+ 16 |          |           |   |   |
+ 17 |          |           |   |   |
+(17 rows)
+
 --q1.1
 --q2
 SELECT  * FROM pgr_extractVertices('SELECT source, target FROM edge_table WHERE id < 5');
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+ id | in_edges | out_edges | x | y | geom
+----+----------+-----------+---+---+------
+  1 |          |           |   |   |
+  2 |          |           |   |   |
+  3 |          |           |   |   |
+  4 |          |           |   |   |
+  5 |          |           |   |   |
+(5 rows)
+
 --q2.1
 --q3
 DROP TABLE IF EXISTS edge_table_vertices_pgr;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+DROP TABLE
 SELECT  * INTO edge_table_vertices_pgr
 FROM pgr_extractVertices('SELECT source, target, the_geom FROM edge_table');
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+SELECT 17
 SELECT * FROM edge_table_vertices_pgr;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+ id | in_edges | out_edges | x | y | geom
+----+----------+-----------+---+---+------
+  1 |          |           |   |   |
+  2 |          |           |   |   |
+  3 |          |           |   |   |
+  4 |          |           |   |   |
+  5 |          |           |   |   |
+  6 |          |           |   |   |
+  7 |          |           |   |   |
+  8 |          |           |   |   |
+  9 |          |           |   |   |
+ 10 |          |           |   |   |
+ 11 |          |           |   |   |
+ 12 |          |           |   |   |
+ 13 |          |           |   |   |
+ 14 |          |           |   |   |
+ 15 |          |           |   |   |
+ 16 |          |           |   |   |
+ 17 |          |           |   |   |
+(17 rows)
+
 --q3.1
 ROLLBACK;
 ROLLBACK

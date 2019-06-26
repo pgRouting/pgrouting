@@ -26,7 +26,7 @@ Signatures
 
 .. code-block:: sql
 
-   pgr_extractVertices(Edges SQL)
+   pgr_extractVertices(Edges SQL [, dryrun])
    RETURNS SETOF (id, x, y, the_geom)
 
 :Example: Extracting the vertex information
@@ -43,10 +43,20 @@ Parameters
 Parameter      Type                Description
 ============== ==================  =================================================
 **Edges SQL**  ``TEXT``            Inner SQL query as described below.
+**dryrun**     ``TEXT``            Get in a notice the resulting query.
 ============== ==================  =================================================
 
 Inner Query
 -------------------------------------------------------------------------------
+
+.. rubric:: When vertex geometry is known
+
+================= =================== =================================================
+Column            Type                Description
+================= =================== =================================================
+**id**            ``BIGINT``          (Optional) Geometry of the edge
+**startpoint**    ``POINT``           Point geometry of the starting vertex.
+**endpoint**      ``POINT``           Point geometry of the ending vertex.
 
 .. rubric:: Edges SQL
 
