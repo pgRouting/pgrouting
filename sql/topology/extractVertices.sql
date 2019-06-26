@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-CREATE OR REPLACE FUNCTION pgr_extractVertices1(
+CREATE OR REPLACE FUNCTION pgr_extractVertices(
     TEXT,  -- SQL inner query (required)
 
     dryrun BOOLEAN DEFAULT false,
@@ -52,11 +52,10 @@ DECLARE
 
 BEGIN
     fnName = 'pgr_extractVertices';
-    RAISE DEBUG 'PROCESSING: %(''%'')', fnName, edges_sql;
 
     -- get the query
     BEGIN
-        quoted = '.*' || $1 || '.*as';
+        quoted = '.*' || $1 || '\s*as';
         query = format($$
             SELECT regexp_replace(regexp_replace(statement, %1$L,'','i'),';$','') FROM pg_prepared_statements WHERE name = %2$L$$,
             quoted, $1);
@@ -69,6 +68,17 @@ BEGIN
     IF edges_SQL IS NULL THEN
         edges_SQL := $1;
     END IF;
+
+    -- query is executable
+    BEGIN
+        query = 'SELECT * FROM ('||edges_sql||' ) AS __a__ limit 1';
+        EXECUTE query;
+
+        EXCEPTION WHEN OTHERS THEN
+            RAISE EXCEPTION '%', SQLERRM
+            USING HINT = 'Please check query: '|| $1;
+        RETURN;
+    END;
 
     -- has edge identifier
     BEGIN
@@ -109,6 +119,7 @@ BEGIN
 
     IF has_geom AND has_id THEN
       -- SELECT id, geom
+      RAISE NOTICE 'has_geom AND has_id';
       query := $q$
         WITH
 
@@ -151,6 +162,7 @@ BEGIN
     ELSIF has_geom AND NOT has_id THEN
       -- SELECT startpoint, endpoint
       -- can not get the ins and outs
+      RAISE NOTICE 'has_geom AND NOT has_id';
       query := $q$
         WITH
 
@@ -158,14 +170,19 @@ BEGIN
           $q$ || edges_sql || $q$
         ),
 
-        the_out AS (
-          SELECT DISTINCT ST_X(startpoint) AS x, ST_Y(startpoint) AS y, startpoint AS geom
+        sub_main AS (
+          SELECT ST_StartPoint(geom) AS startpoint, ST_EndPoint(geom) AS endpoint
           FROM main_sql
+        ),
+
+        the_out AS (
+          SELECT  DISTINCT ST_X(startpoint) AS x, ST_Y(startpoint) AS y, startpoint AS geom
+          FROM sub_main
         ),
 
         the_in AS (
             SELECT DISTINCT ST_X(endpoint) AS x, ST_Y(endpoint) AS y, endpoint AS geom
-          FROM main_sql
+          FROM sub_main
         ),
 
         the_points AS (
@@ -301,6 +318,10 @@ BEGIN
         FROM the_points
       $q$;
 
+    ELSE
+        RAISE EXCEPTION 'Missing column'
+        USING HINT = 'Please check query: '|| $1;
+
     END IF;
 
     IF dryrun THEN
@@ -310,7 +331,7 @@ BEGIN
     END IF;
 
     EXCEPTION WHEN OTHERS THEN
-    RAISE EXCEPTION '%', SQLERRM
+        RAISE EXCEPTION '%', SQLERRM
         USING HINT = 'Please check query: '|| $1;
 
 END;
@@ -324,11 +345,11 @@ LANGUAGE plpgsql VOLATILE STRICT;
 COMMENT ON FUNCTION pgr_extractVertices(TEXT, BOOLEAN)
 IS 'pgr_extractVertices
 - Parameters
-  - Edges SQL with columns: id, startpoint, endpoint
+  - Edges SQL with columns: [id,] startpoint, endpoint
         OR
-  - Edges SQL with columns: id, source, target
+  - Edges SQL with columns: [id,] source, target
         OR
-  - Edges SQL with columns: id, geom
+  - Edges SQL with columns: [id,] geom
 - Documentation:
 - ${PGROUTING_DOC_LINK}/pgr_extractVertices.html
 ';
