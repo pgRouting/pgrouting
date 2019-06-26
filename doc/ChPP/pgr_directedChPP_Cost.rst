@@ -23,7 +23,11 @@ pgr_directedChPP_Cost - Experimental
 
 .. rubric:: Availability
 
-* **TBD**
+* Experiemntal on v3.0.0
+
+**Supported versions**
+current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_directedChPP_Cost.html>`__)
+
 
 Description
 -------------------------------------------------------------------------------
