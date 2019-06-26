@@ -159,6 +159,10 @@ pgRouting 3.0.0 Release Notes
   * Removed unnecessary column seq
   * Bug Fixes
 
+.. rubric:: New proposed functions
+
+* pgr_extractVertices
+
 .. rubric:: New Experimental functions
 
 * No new experimental function on Mayor release

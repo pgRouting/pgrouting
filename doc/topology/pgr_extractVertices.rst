@@ -28,10 +28,13 @@ edges of a graph.
 Signatures
 -------------------------------------------------------------------------------
 
+.. index::
+    single: pgr_extractVertices
+
 .. code-block:: sql
 
    pgr_extractVertices(Edges SQL [, dryrun])
-   RETURNS SETOF (id, in_edges, out_edges, x, y, the_geom)
+   RETURNS SETOF (id, in_edges, out_edges, x, y, geom)
 
 :Example: Extracting the vertex information
 
@@ -106,9 +109,10 @@ Column            Type                Description
 ================= =================== =================================================
 
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
+Rreturns set of (id, in_edges, out_edges, x, y, geom)
 ================= =============== =================================================
 Column            Type                Description
 ================= =============== =================================================
@@ -121,7 +125,7 @@ Column            Type                Description
                                    * ``NULL`` When no geometry is provided
 **y**             ``FLOAT``       Y value of the POINT geometry
                                    * ``NULL`` When no geometry is provided
-**the_geom**      ``POINT``       Geometry of the POINT
+**geom**          ``POINT``       Geometry of the POINT
                                    * ``NULL`` When no geometry is provided
 ================= =============== =================================================
 
