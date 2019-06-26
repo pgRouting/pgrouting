@@ -22,6 +22,11 @@ pgr_bdAstarCost
 * Official in v3.0.0
 * Proposed in v2.5.0
 
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdAstarCost.html>`__)
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__
+
 Description
 -------------------------------------------------------------------------------
 
