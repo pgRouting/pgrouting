@@ -27,7 +27,7 @@ pgr_directedChPP - Experimental
 * Experiemntal on v3.0.0
 
 **Supported versions**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_directedChPP.html
+current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_directedChPP.html>`__)
 
 Description
 -------------------------------------------------------------------------------
