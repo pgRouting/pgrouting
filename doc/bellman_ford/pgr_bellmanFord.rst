@@ -24,7 +24,10 @@ In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
-* **TBD**
+* Experiemntal on v3.0.0
+
+**Supported versions:**
+current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bellmanFord.html>`__)
 
 Description
 -------------------------------------------------------------------------------
