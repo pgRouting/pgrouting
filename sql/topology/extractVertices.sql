@@ -119,7 +119,6 @@ BEGIN
 
     IF has_geom AND has_id THEN
       -- SELECT id, geom
-      RAISE NOTICE 'has_geom AND has_id';
       query := $q$
         WITH
 
@@ -156,13 +155,11 @@ BEGIN
         )
 
         SELECT row_number() over() AS id, in_edges, out_edges, ST_X(geom), ST_Y(geom), geom
-        FROM the_points
-      $q$;
+        FROM the_points$q$;
 
     ELSIF has_geom AND NOT has_id THEN
       -- SELECT startpoint, endpoint
       -- can not get the ins and outs
-      RAISE NOTICE 'has_geom AND NOT has_id';
       query := $q$
         WITH
 
@@ -192,8 +189,7 @@ BEGIN
         )
 
         SELECT row_number() over() AS id, NULL::BIGINT[], NULL::BIGINT[], x, y, geom
-        FROM the_points
-      $q$;
+        FROM the_points$q$;
 
     ELSIF has_points AND has_id THEN
       -- SELECT id, startpoint, endpoint
@@ -233,8 +229,7 @@ BEGIN
         )
 
         SELECT row_number() over() AS id, in_edges, out_edges, ST_X(geom), ST_Y(geom), geom
-        FROM the_points
-      $q$;
+        FROM the_points$q$;
 
     ELSIF has_points AND NOT has_id THEN
       -- SELECT startpoint, endpoint
@@ -263,13 +258,11 @@ BEGIN
         )
 
         SELECT row_number() over() AS id, NULL::BIGINT[], NULL::BIGINT[], x, y, geom
-        FROM the_points
-      $q$;
+        FROM the_points$q$;
 
     ELSIF has_source AND has_id THEN
       -- SELECT id, source, target
-      query := $q$
-        WITH
+      query := $q$ WITH
 
         main_sql AS (
           $q$ || edges_sql || $q$
@@ -294,8 +287,7 @@ BEGIN
         )
 
         SELECT vid AS id, in_edges, out_edges, NULL::FLOAT, NULL::FLOAT, NULL::geometry
-        FROM the_points
-      $q$;
+        FROM the_points$q$;
 
 
     ELSIF has_source AND NOT has_id THEN
@@ -315,8 +307,7 @@ BEGIN
         )
 
         SELECT DISTINCT vid AS id, NULL::BIGINT[], NULL::BIGINT[], NULL::FLOAT, NULL::FLOAT, NULL::geometry
-        FROM the_points
-      $q$;
+        FROM the_points$q$;
 
     ELSE
         RAISE EXCEPTION 'Missing column'
@@ -325,7 +316,7 @@ BEGIN
     END IF;
 
     IF dryrun THEN
-      RAISE NOTICE '%', query;
+      RAISE NOTICE '%', query || ';';
     ELSE
       RETURN QUERY EXECUTE query;
     END IF;
