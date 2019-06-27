@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: contractGraph.sql
+File: _contraction.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -33,11 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 --------------------
 
---------------------
--- pgr_contraction
---------------------
-
-
 CREATE OR REPLACE FUNCTION _pgr_contraction(
     edges_sql TEXT,
     contraction_order BIGINT[],
@@ -55,42 +50,7 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'contractGraph'
 LANGUAGE C VOLATILE STRICT;
 
-CREATE OR REPLACE FUNCTION pgr_contraction(
-    TEXT,     -- edges_sql (required)
-    BIGINT[], -- contraction_order (required)
-
-    max_cycles INTEGER DEFAULT 1,
-    forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
-    directed BOOLEAN DEFAULT true,
-
-    OUT type TEXT,
-    OUT id BIGINT,
-    OUT contracted_vertices BIGINT[],
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-    SELECT *
-    FROM _pgr_contraction(_pgr_get_statement($1), $2::BIGINT[],  $3, $4, $5);
-$BODY$
-LANGUAGE SQL VOLATILE STRICT;
-
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_contraction(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
 IS 'pgRouting internal function';
-
-COMMENT ON FUNCTION pgr_contraction(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
-IS 'pgr_contraction
-- EXPERIMENTAL
-- Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - ARRAY [Contraction order]
-- Optional Parameters
-    - max_cycles := 1
-    - forbidden_vertices := ARRAY[]::BIGINT[]
-    - directed := true
-- Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_contraction.html
-';

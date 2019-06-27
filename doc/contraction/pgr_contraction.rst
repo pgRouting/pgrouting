@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_contraction - Proposed
+pgr_contraction
 ===============================================================================
 
 ``pgr_contraction`` — Performs graph contraction and returns the contracted vertices and edges.
@@ -17,15 +17,11 @@ pgr_contraction - Proposed
 
    Boost Graph Inside
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 .. rubric:: Availability
 
 * On v3.0.0
 
-  * Set as `proposed`
+  * Set as `official`
   * Return columns change: ``seq`` is removed
   * Bug fixes
 
@@ -68,7 +64,7 @@ Signatures
 The pgr_contraction function has the following signature:
 
 .. index::
-   single: contraction - Proposed
+   single: contraction
 
 .. code-block:: none
 
