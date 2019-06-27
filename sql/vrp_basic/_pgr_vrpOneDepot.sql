@@ -91,7 +91,7 @@ BEGIN
             $$' || trucks_sql || '$$,
             $$' || $3 || '$$,
             max_cycles := 2,
-            initial_sol := 4 ); ';
+            initial_sol := 7 ); ';
 
     RAISE DEBUG '%', orders_sql;
     RAISE DEBUG '%', trucks_sql;

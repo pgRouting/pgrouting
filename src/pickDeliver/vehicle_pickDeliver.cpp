@@ -167,7 +167,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
 #endif
             if (is_feasable()) {
                 pgassert(is_feasable());
-                auto delta_duration = duration()-current_duration;
+                auto delta_duration = duration() - current_duration;
                 if (delta_duration < min_delta_duration) {
 #ifndef NDEBUG
                     err_log << "\nsuccess" << tau();
@@ -297,10 +297,9 @@ Vehicle_pickDeliver::do_while_feasable(
                 order = m_orders[m_orders.find_best_I(current_feasable)];
                 insert(order);
                 break;
-                // TODO fix Lifo
-            case Lifo:
+            case OneDepot:
                 order = m_orders[m_orders.find_best_I(current_feasable)];
-                insert(order);
+                semiLIFO(order);
                 break;
             default: pgassert(false);
         }
@@ -418,6 +417,80 @@ Vehicle_pickDeliver::is_order_feasable(const Order &order) const {
     return test_truck.is_feasable();
 }
 
+void
+Vehicle_pickDeliver::semiLIFO(const Order &order) {
+    invariant();
+    pgassert(!has_order(order));
+
+    Vehicle::insert(1, order.pickup());
+    // TODO maybe this is not true, service time adds time
+    pgassert(!has_twv());
+
+    auto deliver_pos(position_limits(order.delivery()));
+#ifndef NDEBUG
+    std::ostringstream err_log;
+    err_log
+        << "\n\tdeliver limits (low, high) = ("
+        << deliver_pos.first << ", "
+        << deliver_pos.second << ") "
+        << "\noriginal" << tau();
+#endif
+
+    if (deliver_pos.second < deliver_pos.first) {
+        /* delivery generates twv evrywhere,
+         *  so put the order as last */
+        push_back(order);
+        return;
+    }
+
+    auto d_pos_backup(deliver_pos);
+    auto current_duration(duration());
+    auto min_delta_duration = (std::numeric_limits<double>::max)();
+    auto found(false);
+    auto best_deliver_pos = m_path.size() + 1;
+
+    while (deliver_pos.first <= deliver_pos.second) {
+        Vehicle::insert(deliver_pos.first, order.delivery());
+        m_orders_in_vehicle += order.idx();
+        pgassertwm(has_order(order), err_log.str());
+#ifndef NDEBUG
+        err_log << "\ndelivery inserted: " << tau();
+#endif
+        if (is_feasable()) {
+            pgassert(is_feasable());
+            auto delta_duration = duration() - current_duration;
+            if (delta_duration < min_delta_duration) {
+#ifndef NDEBUG
+                err_log << "\nsuccess" << tau();
+#endif
+                min_delta_duration = delta_duration;
+                best_deliver_pos = deliver_pos.first;
+                found = true;
+            }
+        }
+        Vehicle::erase(deliver_pos.first);
+#ifndef NDEBUG
+        err_log << "\ndelivery erased: " << tau();
+#endif
+        ++deliver_pos.first;
+    }
+
+    if (!found) {
+        Vehicle::erase(1);
+        /* order causes twv or cv
+         *  so put the order as last */
+        push_back(order);
+        m_orders_in_vehicle += order.idx();
+        return;
+    }
+    Vehicle::insert(best_deliver_pos, order.delivery());
+
+    m_orders_in_vehicle += order.idx();
+    pgassertwm(is_feasable(), err_log.str());
+    pgassertwm(has_order(order), err_log.str());
+    pgassertwm(!has_cv(), err_log.str());
+    invariant();
+}
 
 }  //  namespace vrp
 }  //  namespace pgrouting

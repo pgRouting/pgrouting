@@ -70,7 +70,7 @@ process(
         return;
     }
 
-    if (initial_solution_id < 0 || initial_solution_id > 6) {
+    if (initial_solution_id < 0 || initial_solution_id > 7) {
         elog(ERROR, "Illegal value in parameter: initial");
         (*result_count) = 0;
         (*result_tuples) = NULL;

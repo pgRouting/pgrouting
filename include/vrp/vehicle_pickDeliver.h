@@ -142,6 +142,28 @@ class Vehicle_pickDeliver : public Vehicle {
       */
      void insert(const Order &order);
 
+     /*! @brief Inserts an order In semi-Lifo order
+      *
+      * Precondition:
+      * !has_order(order)
+      *
+      * Postcondition:
+      * has_order(order)
+      * !has_cv();
+      *
+      * ~~~~{.c}
+      * Before: S .... (P1 ....... P2) ... D2 .... D1 .... E
+      *  After: S .... (P .. P1 .. P2) ... D2 .. D .. D1 .... E
+      * ~~~~
+      *
+      * push_back is performed when
+      *   - drop generates a time window violation
+      *
+      * Can generate time window violation
+      * No capacity violation
+      */
+     void semiLIFO(const Order &order);
+
 #if 0
      void insert_while_compatibleJ(
              Identifiers<PD_Orders::OID> &unassigned,

@@ -63,7 +63,7 @@ Initial_solution::Initial_solution(
             case BestInsert:
             case BestBack:
             case BestFront:
-            case Lifo:
+            case OneDepot:
                 do_while_foo(kind);
                 break;
             default: pgassert(false);
