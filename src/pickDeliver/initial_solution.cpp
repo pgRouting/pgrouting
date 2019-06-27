@@ -44,7 +44,7 @@ Initial_solution::invariant() const {
 
 
 Initial_solution::Initial_solution(
-        int kind,
+        Initials_code kind,
         size_t number_of_orders) :
     Solution(),
     all_orders(number_of_orders),
@@ -54,15 +54,16 @@ Initial_solution::Initial_solution(
         pgassert(kind >= 0 && kind < 7);
 
         switch (kind) {
-            case 0:
+            case OneTruck:
                 one_truck_all_orders();
                 break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
+            case OnePerTruck:
+            case FrontTruck:
+            case BackTruck:
+            case BestInsert:
+            case BestBack:
+            case BestFront:
+            case Lifo:
                 do_while_foo(kind);
                 break;
             default: pgassert(false);
@@ -99,7 +100,7 @@ Initial_solution::do_while_foo(int kind) {
         /*
          * kind 1 to 7 work with the same code structure
          */
-        truck.do_while_feasable(kind, unassigned, assigned);
+        truck.do_while_feasable((Initials_code)kind, unassigned, assigned);
         msg.log << unassigned.size() << " unassigned: " << unassigned << "\n";
         msg.log << assigned.size() << " assigned:" << assigned << "\n";
         msg.log << "current" << current << " unassigned: " << unassigned.size();

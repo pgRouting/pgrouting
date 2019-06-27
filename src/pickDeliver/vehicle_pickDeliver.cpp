@@ -255,7 +255,7 @@ Vehicle_pickDeliver::push_front(const Order &order) {
 
 void
 Vehicle_pickDeliver::do_while_feasable(
-        int kind,
+        Initials_code kind,
         Identifiers<size_t> &unassigned,
         Identifiers<size_t> &assigned) {
     pgassert(is_feasable());
@@ -272,7 +272,7 @@ Vehicle_pickDeliver::do_while_feasable(
         auto order = m_orders[current_feasable.front()];
 
         switch (kind) {
-            case 1:
+            case OnePerTruck:
                 push_back(order);
                 pgassert(is_feasable());
                 assigned += order.idx();
@@ -280,25 +280,31 @@ Vehicle_pickDeliver::do_while_feasable(
                 invariant();
                 return;
                 break;
-            case 2:
-                push_back(order);
-                break;
-            case 3:
+            case FrontTruck:
                 push_front(order);
                 break;
-            case 4:
+            case BackTruck:
+                push_back(order);
+                break;
+            case BestInsert:
                 insert(order);
                 break;
-            case 5:
+            case BestBack:
                 order = m_orders[m_orders.find_best_J(current_feasable)];
                 insert(order);
                 break;
-            case 6:
+            case BestFront:
+                order = m_orders[m_orders.find_best_I(current_feasable)];
+                insert(order);
+                break;
+                // TODO fix Lifo
+            case Lifo:
                 order = m_orders[m_orders.find_best_I(current_feasable)];
                 insert(order);
                 break;
             default: pgassert(false);
         }
+
         if (orders_size() == 1 && !is_feasable()) {
             pgassert(false);
         }
@@ -308,11 +314,11 @@ Vehicle_pickDeliver::do_while_feasable(
         } else {
             assigned += order.idx();
             unassigned -= order.idx();
-            if (kind == 5) {
+            if (kind == BestBack) {
                 current_feasable = m_orders[order.idx()].subsetJ(
                         current_feasable);
             }
-            if (kind == 6) {
+            if (kind == BestFront) {
                 current_feasable = m_orders[order.idx()].subsetI(
                         current_feasable);
             }

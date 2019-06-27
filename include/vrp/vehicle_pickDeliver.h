@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "vrp/pd_orders.h"
 #include "vrp/tw_node.h"
 #include "vrp/vehicle.h"
+#include "vrp/initials_code.h"
 #include "cpp_common/identifiers.hpp"
 
 namespace pgrouting {
@@ -162,7 +163,7 @@ class Vehicle_pickDeliver : public Vehicle {
      Order get_worse_order(Identifiers<size_t> of_this_subset) const;
 
      void do_while_feasable(
-             int kind,
+             Initials_code kind,
              Identifiers<size_t> &unassigned,
              Identifiers<size_t> &assigned);
 
