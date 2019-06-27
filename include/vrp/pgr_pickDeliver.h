@@ -87,6 +87,10 @@ class Pgr_pickDeliver : public PD_problem {
         m_base_nodes.push_back(std::move(node_ptr));
     }
 
+    Initials_code get_kind() const {
+        return (Initials_code) problem->m_initial_id;
+    }
+
 #if 1
     // TODO(vicky) delete this function
     bool nodesOK() const;

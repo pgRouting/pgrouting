@@ -188,8 +188,18 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
             /*
              * insert them in the other truck
              */
-            from_truck.insert(to_order);
-            to_truck.insert(from_order);
+#if 1
+            if (this->get_kind() == OneDepot) {
+                pgassert(false);
+                from_truck.insert(to_order);
+                to_truck.insert(from_order);
+            } else {
+#endif
+                from_truck.insert(to_order);
+                to_truck.insert(from_order);
+#if 1
+            }
+#endif
 
             if (from_truck.is_feasable() && to_truck.is_feasable()) {
                 /*

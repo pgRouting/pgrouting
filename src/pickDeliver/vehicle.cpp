@@ -478,13 +478,17 @@ Vehicle::Vehicle(
     m_capacity(p_m_capacity),
     m_factor(p_factor),
     m_speed(p_speed) {
+#if 0
         ENTERING();
+#endif
         m_path.clear();
         pgassert(starting_site.opens() <= starting_site.closes());
         pgassert(ending_site.opens() <= ending_site.closes());
         pgassert(capacity() > 0);
+#if 0
         msg.log << "p_idx: " << p_idx << "\t idx(): " << idx() << "\n";
         msg.log << "p_id: " << p_id << "\tid(): " << id() << "\n";
+#endif
 
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
@@ -492,7 +496,9 @@ Vehicle::Vehicle(
         evaluate(0);
         msg.log << tau() << "\n";
         invariant();
+#if 0
         EXITING();
+#endif
     }
 
 Vehicle::Vehicle(const Vehicle &v) :

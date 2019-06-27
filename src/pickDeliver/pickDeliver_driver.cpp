@@ -104,7 +104,7 @@ do_pgr_pickDeliver(
              * All Vehicles must depart from same location
              */
             for (const auto v : vehicles) {
-                if (v.start_node_id == depot_node && v.end_node_id == depot_node) {
+                if (v.start_node_id != depot_node && v.end_node_id != depot_node) {
                     err << "All vehicles must depart & arrive to same node";
                     *err_msg = pgr_msg(err.str().c_str());
                     return;
@@ -115,7 +115,7 @@ do_pgr_pickDeliver(
              * All Orders must depart from depot
              */
             for (const auto o : orders) {
-                if (o.pick_node_id == depot_node) {
+                if (o.pick_node_id != depot_node) {
                     err << "All orders must be picked at depot";
                     *err_msg = pgr_msg(err.str().c_str());
                     return;

@@ -180,7 +180,10 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         pgassert(!pd_orders.empty());
         pgassert(!vehicles.empty());
         pgassert(!m_cost_matrix.empty());
-        pgassert(m_initial_id > 0 && m_initial_id < 7);
+        if (!(m_initial_id > 0 && m_initial_id < OneDepot)) {
+            msg.log << "\n m_initial_id " << m_initial_id;
+        }
+        pgassertwm(m_initial_id > 0 && m_initial_id <= OneDepot, msg.get_log().c_str());
         pgassert(nodesOK());
 
         if (!msg.get_error().empty()) {

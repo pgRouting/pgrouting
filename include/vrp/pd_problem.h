@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "cpp_common/pgr_messages.h"
+#include "vrp/initials_code.h"
 
 
 
