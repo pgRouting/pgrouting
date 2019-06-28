@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: binaryBreadthFirstSearch.sql
+File: _binaryBreadthFirstSearch.sql
 
 Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
