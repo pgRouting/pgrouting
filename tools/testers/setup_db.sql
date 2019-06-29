@@ -23,7 +23,7 @@ BEGIN;
 
     \i sampledata.sql
     \i vrppdtw_data.sql
-    \i vrpOneDepot.data
+    \i solomon_100_RC_101.data
     \i innerQuery.sql
     \i innerQuery_old.sql
     \i inner_styles.sql
