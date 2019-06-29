@@ -79,15 +79,19 @@ Initial_solution::do_while_foo(int kind) {
     invariant();
     pgassert(kind > 0 && kind <= OneDepot);
 
+#if 0
     msg.log << "\nInitial_solution::do_while_foo\n";
+#endif
     Identifiers<size_t> notused;
 #if 0
     bool out_of_trucks(true);
 #endif
 
     while (!unassigned.empty()) {
+#if 0
         msg.log << unassigned.size() << " unassigned: " << unassigned << "\n";
         msg.log << assigned.size() << " assigned:" << assigned << "\n";
+#endif
         auto current = unassigned.size();
 #if 0
         auto truck = out_of_trucks?
@@ -96,14 +100,18 @@ Initial_solution::do_while_foo(int kind) {
 #else
         auto truck = trucks.get_truck(unassigned.front());
 #endif
+#if 0
         msg.log << "got truck:" << truck.tau() << "\n";
+#endif
         /*
          * kind 1 to 7 work with the same code structure
          */
         truck.do_while_feasable((Initials_code)kind, unassigned, assigned);
+#if 0
         msg.log << unassigned.size() << " unassigned: " << unassigned << "\n";
         msg.log << assigned.size() << " assigned:" << assigned << "\n";
         msg.log << "current" << current << " unassigned: " << unassigned.size();
+#endif
         pgassertwm(current > unassigned.size(), msg.get_log().c_str());
 
 #if 0
