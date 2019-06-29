@@ -105,7 +105,7 @@ Vehicle_pickDeliver::has_order(const Order &order) const {
 }
 
 
-void
+bool
 Vehicle_pickDeliver::insert(const Order &order) {
     invariant();
     pgassert(!has_order(order));
@@ -124,17 +124,17 @@ Vehicle_pickDeliver::insert(const Order &order) {
 #endif
 
     if (pick_pos.second < pick_pos.first) {
-        /* pickup generates twv evrywhere,
-         *  so put the order as last */
-        push_back(order);
-        return;
+        /*
+         *  pickup generates twv evrywhere
+         */
+        return false;
     }
 
     if (deliver_pos.second < deliver_pos.first) {
-        /* delivery generates twv evrywhere,
-         *  so put the order as last */
-        push_back(order);
-        return;
+        /*
+         *  delivery generates twv evrywhere
+         */
+        return false;
     }
     /*
      * Because delivery positions were estimated without
@@ -205,10 +205,8 @@ Vehicle_pickDeliver::insert(const Order &order) {
     }
     pgassertwm(!has_order(order), err_log.str());
     if (!found) {
-        /* order causes twv
-         *  so put the order as last */
-        push_back(order);
-        return;
+        /* order causes twv or cv */
+        return false;
     }
     Vehicle::insert(best_pick_pos, order.pickup());
     Vehicle::insert(best_deliver_pos, order.delivery());
@@ -218,6 +216,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
     pgassertwm(has_order(order), err_log.str());
     pgassertwm(!has_cv(), err_log.str());
     invariant();
+    return true;
 }
 
 
@@ -292,15 +291,15 @@ Vehicle_pickDeliver::do_while_feasable(
                 push_back(order);
                 break;
             case BestInsert:
-                insert(order);
+                inserted = insert(order);
                 break;
             case BestBack:
                 order = m_orders[m_orders.find_best_J(current_feasable)];
-                insert(order);
+                inserted = insert(order);
                 break;
             case BestFront:
                 order = m_orders[m_orders.find_best_I(current_feasable)];
-                insert(order);
+                inserted = insert(order);
                 break;
             case OneDepot:
                 inserted = semiLIFO(order);
@@ -314,7 +313,7 @@ Vehicle_pickDeliver::do_while_feasable(
 
         if (!is_feasable()) {
             erase(order);
-        } else if ((kind != OneDepot) || (kind == OneDepot && inserted)) {
+        } else if (has_order(order)) {
             assigned += order.idx();
             unassigned -= order.idx();
             if (kind == BestBack) {

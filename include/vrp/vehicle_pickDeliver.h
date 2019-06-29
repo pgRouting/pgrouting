@@ -140,7 +140,7 @@ class Vehicle_pickDeliver : public Vehicle {
       * Can generate time window violation
       * No capacity violation
       */
-     void insert(const Order &order);
+     bool insert(const Order &order);
 
      /*! @brief Inserts an order In semi-Lifo order
       *

@@ -220,6 +220,15 @@ class Vehicle : public Identifier, public PD_problem {
       */
      bool empty() const;
 
+     /*! @brief return number of nodes in the truck
+      *
+      * ~~~~{.c}
+      * True: S E
+      * False: S <nodes> E
+      * ~~~~
+      */
+     size_t size() const;
+
 
      /// @{
      Cost cost() const;

@@ -356,6 +356,12 @@ Vehicle::empty() const {
     return m_path.size() <= 2;
 }
 
+size_t
+Vehicle::size() const {
+    invariant();
+    return m_path.size() - 2;
+}
+
 void
 Vehicle::evaluate(POS from) {
     invariant();

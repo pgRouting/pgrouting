@@ -66,7 +66,7 @@ class Optimize : public Solution {
      bool move_reduce_cost(Vehicle_pickDeliver &from, Vehicle_pickDeliver &to);
      bool inter_swap();
 
-     void move_order(
+     bool move_order(
              Order order,
              Vehicle_pickDeliver &from_truck,
              Vehicle_pickDeliver &to_truck);

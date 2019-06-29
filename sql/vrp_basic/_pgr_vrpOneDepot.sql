@@ -90,7 +90,7 @@ BEGIN
             $$' || orders_sql || '$$,
             $$' || trucks_sql || '$$,
             $$' || $3 || '$$,
-            max_cycles := 1,
+            max_cycles := 3,
             initial_sol := 7 ); ';
 
     RAISE DEBUG '%', orders_sql;
