@@ -110,7 +110,7 @@ Optimize::inter_swap() {
             auto swapped = false;
 #endif
             swap_worse(to, from);
-            swapped_f = swap_order() || swapped_f;
+            //swapped_f = swap_order() || swapped_f;
             move_reduce_cost(from, to);
 #if 0
             msg.log << "++++++++" << p_swaps;
@@ -118,9 +118,11 @@ Optimize::inter_swap() {
         }
     }
 
+#if 0
     while (!p_swaps.empty()) {
         swapped_f = swap_order() || swapped_f;
     }
+#endif
 
     msg.log
         << "\n" <<tau("after");
@@ -136,6 +138,9 @@ Optimize::inter_swap() {
  */
 bool
 Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
+    /*
+     * working on a copy of the vehicles
+     */
     auto from_truck = from;
     auto to_truck = to;
 
@@ -147,36 +152,57 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
     auto o_from_orders = from_truck.orders_in_vehicle();
     auto o_to_orders = to_truck.orders_in_vehicle();
 
-    for (auto from_orders = o_from_orders;
+    pgassert((o_from_orders * o_to_orders).empty());
+
+    for (auto from_orders = from_truck.orders_in_vehicle();
             !from_orders.empty();
             from_orders.pop_front()) {
-
         auto from_order = from_truck.orders()[from_orders.front()];
+
         pgassert(from_truck.has_order(from_order));
 
+        if (move_order(from_order, from_truck, to_truck)) {
+            pgassert(!from_truck.has_order(from_order));
+            pgassert(to_truck.has_order(from_order));
+            /*
+             * The order could be moved to "to" truck
+             */
+            to = to_truck;
+            from = from_truck;
+            /*
+             * go to next order
+             */
+            pgassert(!from.has_order(from_order));
+            pgassert(to.has_order(from_order));
+            pgassert(!from_truck.has_order(from_order));
+            pgassert(to_truck.has_order(from_order));
+            pgassert(!(from.has_order(from_order) && to.has_order(from_order)));
+            pgassert(from.has_order(from_order) || to.has_order(from_order));
+            continue;
+        }
+
+        pgassert(from_truck.has_order(from_order));
         auto curr_from_duration = from_truck.duration();
 
-        for (auto to_orders = o_to_orders;
-                !to_orders.empty();
-                to_orders.pop_front()) {
-            auto to_order = to.orders()[to_orders.front()];
+        for (auto to_order_id : o_to_orders) {
+            auto to_order = to.orders()[to_order_id];
+            /*
+             * The orders might have being swapped before
+             */
+            if (!to_truck.has_order(to_order)) continue;
+            if (!from_truck.has_order(from_order)) break; // TODO delete line
+
+            pgassert(from_truck.has_order(from_order));
             pgassert(to_truck.has_order(to_order));
-#if 0
-            msg.log << "\n" << to_orders;
-            msg.log << "\n To " << to_order.idx();
-#endif
+
             auto curr_to_duration = to_truck.duration();
 
             /*
              * delete from_order, and to order from their trucks
              */
-#if 0
             pgassert(from_truck.has_order(from_order));
-            msg.log << "\n" << from_truck.tau();
-            msg.log << "\n" << from_order.idx();
-            pgassert(from_truck.has_order(from_order));
-#endif
             from_truck.erase(from_order);
+            pgassert(to_truck.has_order(to_order));
             to_truck.erase(to_order);
 
             /*
@@ -194,58 +220,50 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
             pgassert((to_truck.has_order(from_order) && to_truck.is_feasable()) || !to_truck.has_order(from_order));
 
             if (from_truck.has_order(to_order) && to_truck.has_order(from_order)) {
-                /*
-                 * Can swap but:
-                 *   - only swap when the total duration is reduced
-                 *   - or from_truck duration is reduced
-                 */
-#if 0
-                msg.log << "\n Can swap";
-                msg.log << "\n Curr_from_duration " << curr_from_duration;
-                msg.log << " Curr_to_duration " << curr_to_duration;
-                msg.log << "\n  new_from_duration "
-                    << from_truck.duration();
-                msg.log << "  new_to_duration " << to_truck.duration();
-#endif
+                auto new_from_duration = from_truck.duration();
+                auto new_to_duration = to_truck.duration();
+
                 auto estimated_delta =
                     - (curr_from_duration + curr_to_duration)
-                    + (to_truck.duration() + from_truck.duration());
+                    + (new_to_duration + new_from_duration);
 
                 auto estimated_duration = duration() + estimated_delta;
 
-                if (from_truck.duration() < curr_from_duration ||
+                /*
+                 * Can swap when:
+                 *   - or from_truck duration is reduced
+                 *   - the total fleet duration is reduced
+                 *   - or the new fleet duration is better than best_solution duration
+                 */
+                if (new_from_duration < curr_from_duration ||
                         estimated_delta < 0 ||
                         estimated_duration < best_solution.duration()) {
+                    /*
+                     * this acctually makes the swapping
+                     */
+                    to = to_truck;
+                    from = from_truck;
 
-#if 0
-                    msg.log
-                        << "\n Found Swap order "
-                        << from_order
-                        << " from truck " << from_truck.idx()
-                        << " with order " << to_order
-                        << " of truck " << to_truck.idx();
-#endif
+                    pgassert(!(from.has_order(from_order) && to.has_order(from_order)));
+                    pgassert(from.has_order(from_order) || to.has_order(from_order));
+                    pgassert(!(from.has_order(to_order) && to.has_order(to_order)));
+                    pgassert(from.has_order(to_order) || to.has_order(to_order));
 
                     swapped = true;
-#if 0
-                    best_to_order = to_order.idx();
-                    best_from_order = from_order.idx();
-#endif
-                    p_swaps.push(
-                            Swap_info(
-                                from,
-                                to,
-                                from_order.idx(),
-                                to_order.idx(),
-                                estimated_delta));
-#if 1
+                    break;
                 }
-#endif
-            }
+            };
+            /*
+             * Can't swap, restore vehicles
+             */
             to_truck = to;
             from_truck = from;
+
+            pgassert(!(from.has_order(from_order) && to.has_order(from_order)));
+            pgassert(from.has_order(from_order) || to.has_order(from_order));
+            pgassert(!(from.has_order(to_order) && to.has_order(to_order)));
+            pgassert(from.has_order(to_order) || to.has_order(to_order));
         }
-        from_truck = from;
     }
 
     return false && swapped;
@@ -502,8 +520,14 @@ bool
 Optimize::move_reduce_cost(
         Vehicle_pickDeliver &from,
         Vehicle_pickDeliver &to) {
+    pgassert(&from != &to);
+
     auto from_truck = from;
     auto to_truck = to;
+    /*
+     * don't move to empty truck
+     */
+    if (to_truck.empty()) return false;
 
     /*
      * don't move from a real truck to a phoney truck
@@ -511,65 +535,50 @@ Optimize::move_reduce_cost(
     if (!from_truck.is_phony() && to_truck.is_phony()) {
         return false;
     }
-#if 0
-    from.id()  > to.id()
-        ?  to : from;
-#endif
-    size_t from_pos = 0;
-    size_t to_pos = 0;
-
-    for (; from_pos < fleet.size()
-            && fleet[from_pos].idx() != from_truck.idx()
-            ; ++from_pos) {
-    }
-    pgassert(from_pos < fleet.size());
-    for (; to_pos < fleet.size()
-            && fleet[to_pos].idx() != to_truck.idx()
-            ; ++to_pos) {
-    }
-    pgassert(to_pos < fleet.size());
 
     auto moved = false;
 
     auto from_orders = from_truck.orders_in_vehicle();
-    while (!from_orders.empty()) {
+    for (const auto o_id : from_orders) {
         /*
          * removing an order decreases the duration
          */
-        auto order = from_truck.orders()[from_orders.front()];
-        from_orders -= order.idx();
+        auto order = from_truck.orders()[o_id];
 
+        auto curr_duration = from_truck.duration() + to_truck.duration();
         /*
          * insert it in the "to" truck
          */
-        to_truck.insert(order);
+        pgassert(!to_truck.has_order(order));
+        this->get_kind() == OneDepot?
+            to_truck.semiLIFO(order) :
+            to_truck.insert(order);
         pgassert((to_truck.has_order(order) && to_truck.is_feasable()) || !to_truck.has_order(order));
 
         if (to_truck.has_order(order)) {
-            msg.log
-                << "\n    Move order " << order.pickup().id()
-                << " from truck " << from_truck.idx()
-                << " to truck " << to_truck.idx();
-#if 1
-            msg.dbg_log << "\nMove before:";
-            msg.dbg_log << "\n" << fleet[to_pos].tau();
-            msg.dbg_log << "\n" << fleet[from_pos].tau();
-#endif
-
-#if 1
             from_truck.erase(order);
-#else
-            to_truck.insert(order);
-            move_order(order, fleet[from_pos], fleet[to_pos]);
-#endif
-            moved = true;
-            save_if_best();
 
-#if 1
-            msg.dbg_log << "\nMove after:";
-            msg.dbg_log << "\n" << fleet[to_pos].tau();
-            msg.dbg_log << "\n" << fleet[from_pos].tau();
-#endif
+            auto new_duration = from_truck.duration() + to_truck.duration();
+
+            /*
+             * cost is reduced
+             */
+            if (new_duration < curr_duration
+                   || from_truck.empty()
+                   || new_duration < best_solution.duration()) {
+                moved = true;
+                save_if_best();
+                continue;
+            }
+
+            /*
+             * cost is not reduced
+             * revert changes
+             */
+            to_truck.erase(order);
+            this->get_kind() == OneDepot?
+                from_truck.semiLIFO(order) :
+                from_truck.insert(order);
         };
     }
     return moved;
@@ -621,11 +630,15 @@ Optimize::move_order(
     if (to_truck.has_order(order)) {
         from_truck.erase(order);
 
+        pgassert(!(from_truck.has_order(order) && to_truck.has_order(order)));
         pgassert(!from_truck.has_order(order));
         pgassert(to_truck.has_order(order));
-        save_if_best();
         return true;
     }
+
+    pgassert(!(from_truck.has_order(order) && to_truck.has_order(order)));
+    pgassert(from_truck.has_order(order));
+    pgassert(!to_truck.has_order(order));
     return false;
 }
 
