@@ -117,6 +117,7 @@ Optimize::inter_swap() {
 #endif
         }
     }
+    pgassert(false);
     while (!p_swaps.empty()) {
         swapped_f = swap_order() || swapped_f;
     }
@@ -188,18 +189,13 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
             /*
              * insert them in the other truck
              */
-#if 1
             if (this->get_kind() == OneDepot) {
-                pgassert(false);
-                from_truck.insert(to_order);
-                to_truck.insert(from_order);
+                from_truck.semiLIFO(to_order);
+                to_truck.semiLIFO(from_order);
             } else {
-#endif
                 from_truck.insert(to_order);
                 to_truck.insert(from_order);
-#if 1
             }
-#endif
 
             if (from_truck.is_feasable() && to_truck.is_feasable()) {
                 /*
@@ -228,9 +224,9 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
 #endif
                     msg.log
                         << "\n Found Swap order "
-                        << from_order.pickup().id()
+                        << from_order
                         << " from truck " << from_truck.idx()
-                        << " with order " << to_order.pickup().id()
+                        << " with order " << to_order
                         << " of truck " << to_truck.idx();
 
                     swapped = true;

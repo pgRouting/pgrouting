@@ -344,8 +344,10 @@ class Vehicle : public Identifier, public PD_problem {
 
 
      std::pair<POS, POS> position_limits(const Vehicle_node node) const;
+     std::pair<POS, POS> drop_position_limits(const Vehicle_node node) const;
 
  private:
+     POS getDropPosLowLimit(const Vehicle_node &node) const;
      POS getPosLowLimit(const Vehicle_node &node) const;
      POS getPosHighLimit(const Vehicle_node &node) const;
 };

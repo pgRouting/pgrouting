@@ -162,7 +162,7 @@ class Vehicle_pickDeliver : public Vehicle {
       * Can generate time window violation
       * No capacity violation
       */
-     void semiLIFO(const Order &order);
+     bool semiLIFO(const Order &order);
 
 #if 0
      void insert_while_compatibleJ(
