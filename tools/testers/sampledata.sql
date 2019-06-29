@@ -20,7 +20,7 @@ DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS vehicles;
 DROP TABLE IF EXISTS orders;
 
---EDGE TABLE CREATE
+--EDGE TABLE CREATE start
 CREATE TABLE edge_table (
     id BIGSERIAL,
     dir character varying,
@@ -38,7 +38,8 @@ CREATE TABLE edge_table (
     y2 FLOAT,
     the_geom geometry
 );
---EDGE TABLE ADD DATA
+--EDGE TABLE CREATE end
+--EDGE TABLE ADD DATA start
 INSERT INTO edge_table (
     category_id, reverse_category_id,
     cost, reverse_cost,
@@ -63,6 +64,9 @@ INSERT INTO edge_table (
 (3, 3,    1,  1,  80,  80,   4,   1,    4, 2),
 (1, 2,    1,  1, 130, 100,   0.5, 3.5,  1.999999999999,3.5),
 (4, 1,    1,  1,  50, 130,   3.5, 2.3,  3.5,4);
+--EDGE TABLE ADD DATA end
+
+--EDGE TABLE update geometry start
 
 UPDATE edge_table SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
 dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
@@ -70,10 +74,13 @@ dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
            WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
            ELSE '' END;                                -- unknown
 
---EDGE TABLE TOPOLOGY
-SELECT pgr_createTopology('edge_table',0.001);
+--EDGE TABLE update geometry end
 
---POINTS CREATE
+--EDGE TABLE TOPOLOGY start
+SELECT pgr_createTopology('edge_table',0.001);
+--EDGE TABLE TOPOLOGY end
+
+--POINTS CREATE start
 CREATE TABLE pointsOfInterest(
     pid BIGSERIAL,
     x FLOAT,
@@ -97,8 +104,9 @@ UPDATE pointsOfInterest SET the_geom = st_makePoint(x,y);
 UPDATE pointsOfInterest
     SET newPoint = ST_LineInterpolatePoint(e.the_geom, fraction)
     FROM edge_table AS e WHERE edge_id = id;
+--POINTS CREATE end
 
---RESTRICTIONS CREATE
+--RESTRICTIONS CREATE start
 CREATE TABLE restrictions (
     rid BIGINT NOT NULL,
     to_cost FLOAT,
@@ -128,35 +136,7 @@ INSERT INTO new_restrictions (path, cost) VALUES
 (ARRAY[10, 12], 100),
 (ARRAY[9, 15], 100),
 (ARRAY[3, 5, 8], 100);
-
-
---RESTRICTIONS END
-/*
-CREATE TABLE categories (
-    category_id INTEGER,
-    category text,
-    capacity BIGINT
-);
-
-INSERT INTO categories VALUES
-(1, 'Category 1', 130),
-(2, 'Category 2', 100),
-(3, 'Category 3',  80),
-(4, 'Category 4',  50);
-*/
---CATEGORIES END
-
--- TODO check if this table is still used
-CREATE TABLE vertex_table (
-    id SERIAL,
-    x FLOAT,
-    y FLOAT
-);
-INSERT INTO vertex_table VALUES
-(1,2,0), (2,2,1), (3,3,1), (4,4,1), (5,0,2), (6,1,2), (7,2,2),
-(8,3,2), (9,4,2), (10,2,3), (11,3,3), (12,4,3), (13,2,4);
-
---VERTEX TABLE END
+--RESTRICTIONS CREATE end
 
 
 --VEHICLES TABLE START

@@ -36,7 +36,7 @@ Signatures
 
 * TBD
 
-.. rubric:: Summary 
+.. rubric:: Summary
 
 * TBD
 
@@ -63,7 +63,7 @@ Result Columns
 
 .. rubric:: Data
 
-.. literalinclude:: ../../tools/testers/vrpOneDepot.data
+.. literalinclude:: ../../tools/testers/solomon_100_rc101.data.sql
 
 Additional Example:
 -------------------------------------------------------------------------------
