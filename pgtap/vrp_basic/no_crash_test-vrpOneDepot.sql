@@ -3,7 +3,7 @@
 SELECT plan(13);
 
 PREPARE orders AS
-SELECT * FROM vrp_orders;
+SELECT * FROM solomon_100_RC_101;
 PREPARE vehicles AS
 SELECT * FROM vrp_vehicles;
 PREPARE distance AS
@@ -23,7 +23,7 @@ subs TEXT[];
 BEGIN
     -- one to one
     params = ARRAY[
-    '$$SELECT * FROM vrp_orders ORDER BY id$$',
+    '$$SELECT * FROM solomon_100_RC_101 ORDER BY id$$',
     '$$SELECT * FROM vrp_vehicles$$',
     '$$SELECT * FROM vrp_distance$$',
     '1'
