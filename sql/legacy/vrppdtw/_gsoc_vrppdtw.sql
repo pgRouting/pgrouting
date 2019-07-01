@@ -99,5 +99,5 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 COMMENT ON FUNCTION _pgr_gsoc_vrppdtw(TEXT, INTEGER, FLOAT, FLOAT, INTEGER)
-IS 'pgRouting internal function';
+IS 'pgRouting Deprecated internal function';
 

@@ -4,7 +4,6 @@ SET(LOCAL_FILES
     doc-astar.queries
     doc-contraction-family.queries
     doc-floydWarshall.queries
-    doc-gsoc_vrppdtw.queries
     doc-johnson.queries
     doc-ksp.queries
     doc-pgr_alphashape.queries

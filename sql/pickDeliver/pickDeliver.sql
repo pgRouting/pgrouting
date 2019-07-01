@@ -92,8 +92,7 @@ IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_pickDeliver(TEXT, TEXT, TEXT, FLOAT, INTEGER, INTEGER)
 IS 'pgr_pickDeliver
- - PRE-EXPERIMENTAL
- - NOT DOCUMENTED
+ - EXPERIMENTAL
  - Parameters:
    - orders SQL with columns:
      - id, demand, p_node_id, p_open, p_close, d_node_id, d_open, d_close

@@ -7,21 +7,18 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_pickDeliver - Proposed
+pgr_pickDeliver - Experimental
 ===============================================================================
-
-.. warning:: Documentation is being updated
 
 ``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
 
 .. rubric:: Availability
 
-* New as proposed in 2.5.0
+* New as experimental in 3.0.0
 
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
-
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
 Synopsis
@@ -68,7 +65,7 @@ Characteristics
   - the best solution found will be result
 
 .. index::
-    single: pgr_pickDeliverEuclidean - Proposed
+    single: pgr_pickDeliver - Experimental
 
 Signature
 -------------------------------------------------------------------------------

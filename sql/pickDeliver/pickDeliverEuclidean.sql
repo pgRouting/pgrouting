@@ -88,8 +88,7 @@ IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_pickDeliverEuclidean(TEXT, TEXT, FLOAT, INTEGER, INTEGER)
 IS 'pgr_pickDeliverEuclidean
- - PRE-EXPERIMENTAL
- - NOT DOCUMENTED
+ - EXPERIMENTAL
  - Parameters:
    - orders SQL with columns:
      - id, demand, p_x, p_t, d_x, d_y, p_open, p_close, d_open, d_close
