@@ -41,10 +41,10 @@ current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdAstar.html>`__)
 `2.4 <http://docs.pgrouting.org/2.4/en/pgr_bdAstar.html>`__
 
 **Unsupported versions:**
-`2.3 <http://docs.pgrouting.org/2.3/en/src/bd_astar/doc/pgr_bdAstar.html#bd-astar>`__
-`2.2 <http://docs.pgrouting.org/2.2/en/src/bd_astar/doc/pgr_bdAstar.html#bd-astar>`__
-`2.1 <http://docs.pgrouting.org/2.1/en/src/astar/doc/index.html#astar>`__
-`2.0 <http://docs.pgrouting.org/2.0/en/src/astar/doc/index.html#astar>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/bd_astar/doc/pgr_bdAstar.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/bd_astar/doc/pgr_bdAstar.html>`__
+`2.1 <http://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__
+`2.0 <http://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__
 
 Description
 -------------------------------------------------------------------------------
