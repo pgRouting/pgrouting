@@ -87,10 +87,14 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
         double factor) :
     Vehicle(id, kind, starting_site, ending_site, p_capacity, p_speed, factor),
     cost((std::numeric_limits<double>::max)()) {
+#if 0
         ENTERING();
+#endif
         m_orders_in_vehicle.clear();
         invariant();
+#if 0
         EXITING();
+#endif
     }
 
 
@@ -101,7 +105,7 @@ Vehicle_pickDeliver::has_order(const Order &order) const {
 }
 
 
-void
+bool
 Vehicle_pickDeliver::insert(const Order &order) {
     invariant();
     pgassert(!has_order(order));
@@ -120,17 +124,17 @@ Vehicle_pickDeliver::insert(const Order &order) {
 #endif
 
     if (pick_pos.second < pick_pos.first) {
-        /* pickup generates twv evrywhere,
-         *  so put the order as last */
-        push_back(order);
-        return;
+        /*
+         *  pickup generates twv evrywhere
+         */
+        return false;
     }
 
     if (deliver_pos.second < deliver_pos.first) {
-        /* delivery generates twv evrywhere,
-         *  so put the order as last */
-        push_back(order);
-        return;
+        /*
+         *  delivery generates twv evrywhere
+         */
+        return false;
     }
     /*
      * Because delivery positions were estimated without
@@ -167,7 +171,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
 #endif
             if (is_feasable()) {
                 pgassert(is_feasable());
-                auto delta_duration = duration()-current_duration;
+                auto delta_duration = duration() - current_duration;
                 if (delta_duration < min_delta_duration) {
 #ifndef NDEBUG
                     err_log << "\nsuccess" << tau();
@@ -201,10 +205,8 @@ Vehicle_pickDeliver::insert(const Order &order) {
     }
     pgassertwm(!has_order(order), err_log.str());
     if (!found) {
-        /* order causes twv
-         *  so put the order as last */
-        push_back(order);
-        return;
+        /* order causes twv or cv */
+        return false;
     }
     Vehicle::insert(best_pick_pos, order.pickup());
     Vehicle::insert(best_deliver_pos, order.delivery());
@@ -214,6 +216,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
     pgassertwm(has_order(order), err_log.str());
     pgassertwm(!has_cv(), err_log.str());
     invariant();
+    return true;
 }
 
 
@@ -255,7 +258,7 @@ Vehicle_pickDeliver::push_front(const Order &order) {
 
 void
 Vehicle_pickDeliver::do_while_feasable(
-        int kind,
+        Initials_code kind,
         Identifiers<size_t> &unassigned,
         Identifiers<size_t> &assigned) {
     pgassert(is_feasable());
@@ -264,6 +267,7 @@ Vehicle_pickDeliver::do_while_feasable(
     msg.log << "m_feasable_orders" << m_feasable_orders << "\n";
 #endif
     auto current_feasable = m_feasable_orders * unassigned;
+    bool inserted = false;
 
     while (!current_feasable.empty()) {
 #if 0
@@ -272,7 +276,7 @@ Vehicle_pickDeliver::do_while_feasable(
         auto order = m_orders[current_feasable.front()];
 
         switch (kind) {
-            case 1:
+            case OnePerTruck:
                 push_back(order);
                 pgassert(is_feasable());
                 assigned += order.idx();
@@ -280,39 +284,43 @@ Vehicle_pickDeliver::do_while_feasable(
                 invariant();
                 return;
                 break;
-            case 2:
-                push_back(order);
-                break;
-            case 3:
+            case FrontTruck:
                 push_front(order);
                 break;
-            case 4:
-                insert(order);
+            case BackTruck:
+                push_back(order);
                 break;
-            case 5:
+            case BestInsert:
+                inserted = insert(order);
+                break;
+            case BestBack:
                 order = m_orders[m_orders.find_best_J(current_feasable)];
-                insert(order);
+                inserted = insert(order);
                 break;
-            case 6:
+            case BestFront:
                 order = m_orders[m_orders.find_best_I(current_feasable)];
-                insert(order);
+                inserted = insert(order);
+                break;
+            case OneDepot:
+                inserted = semiLIFO(order);
                 break;
             default: pgassert(false);
         }
+
         if (orders_size() == 1 && !is_feasable()) {
             pgassert(false);
         }
 
         if (!is_feasable()) {
             erase(order);
-        } else {
+        } else if (has_order(order)) {
             assigned += order.idx();
             unassigned -= order.idx();
-            if (kind == 5) {
+            if (kind == BestBack) {
                 current_feasable = m_orders[order.idx()].subsetJ(
                         current_feasable);
             }
-            if (kind == 6) {
+            if (kind == BestFront) {
                 current_feasable = m_orders[order.idx()].subsetI(
                         current_feasable);
             }
@@ -412,6 +420,76 @@ Vehicle_pickDeliver::is_order_feasable(const Order &order) const {
     return test_truck.is_feasable();
 }
 
+bool
+Vehicle_pickDeliver::semiLIFO(const Order &order) {
+    invariant();
+    pgassert(!has_order(order));
+
+    /*
+     * Insert pick up as first picked
+     */
+    Vehicle::insert(1, order.pickup());
+
+    auto deliver_pos(drop_position_limits(order.delivery()));
+
+    /*
+     * delivery generates twv in all positions
+     */
+    if (deliver_pos.second < deliver_pos.first) {
+        /*
+         * Remove inserted pickup
+         */
+        Vehicle::erase(1);
+        invariant();
+        return false;
+    }
+
+    pgassert(!has_order(order));
+
+    while (deliver_pos.first <= deliver_pos.second) {
+        Vehicle::insert(deliver_pos.second, order.delivery());
+
+        if (is_feasable() && !m_path[deliver_pos.second + 1].is_pickup()) {
+            /*
+             * Found a position to insert the delivery
+             */
+
+
+            m_orders_in_vehicle += order.idx();
+
+            /*
+             * There is one more order in the vehicle
+             */
+            pgassert(has_order(order));
+            pgassert(is_feasable());
+            pgassert(!has_cv());
+            pgassert(!has_twv());
+            pgassert(has_order(order));
+            invariant();
+            return true;
+
+        }
+
+        /*
+         * This position in path is not suitable
+         */
+        Vehicle::erase(deliver_pos.second);
+
+        /*
+         * got to next position
+         */
+        --deliver_pos.second;
+    }
+
+    /*
+     * Order could not be inserted
+     */
+    Vehicle::erase(1);
+
+    pgassert(!has_order(order));
+    invariant();
+    return false;
+}
 
 }  //  namespace vrp
 }  //  namespace pgrouting

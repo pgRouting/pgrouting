@@ -85,6 +85,8 @@ class Solution : public PD_problem {
 
      void sort_by_id();
 
+     Initials_code get_kind() const;
+
      std::string cost_str() const;
      std::string tau(const std::string &title = "Tau") const;
      friend std::ostream& operator<<(

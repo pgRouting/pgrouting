@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "vrp/pd_orders.h"
 #include "vrp/tw_node.h"
 #include "vrp/vehicle.h"
+#include "vrp/initials_code.h"
 #include "cpp_common/identifiers.hpp"
 
 namespace pgrouting {
@@ -139,7 +140,29 @@ class Vehicle_pickDeliver : public Vehicle {
       * Can generate time window violation
       * No capacity violation
       */
-     void insert(const Order &order);
+     bool insert(const Order &order);
+
+     /*! @brief Inserts an order In semi-Lifo order
+      *
+      * Precondition:
+      * !has_order(order)
+      *
+      * Postcondition:
+      * has_order(order)
+      * !has_cv();
+      *
+      * ~~~~{.c}
+      * Before: S .... (P1 ....... P2) ... D2 .... D1 .... E
+      *  After: S .... (P .. P1 .. P2) ... D2 .. D .. D1 .... E
+      * ~~~~
+      *
+      * push_back is performed when
+      *   - drop generates a time window violation
+      *
+      * Can generate time window violation
+      * No capacity violation
+      */
+     bool semiLIFO(const Order &order);
 
 #if 0
      void insert_while_compatibleJ(
@@ -162,7 +185,7 @@ class Vehicle_pickDeliver : public Vehicle {
      Order get_worse_order(Identifiers<size_t> of_this_subset) const;
 
      void do_while_feasable(
-             int kind,
+             Initials_code kind,
              Identifiers<size_t> &unassigned,
              Identifiers<size_t> &assigned);
 

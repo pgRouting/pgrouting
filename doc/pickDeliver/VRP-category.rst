@@ -10,23 +10,24 @@
 Vehicle Routing Functions Category
 ===============================================================================
 
-.. contents::
-
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-.. index from here
-.. rubric:: Pickup and delivery problem
+.. index experimental from here
 
-- :doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix
-- :doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances
+* Pickup and delivery problem
 
-.. rubric:: Experimental functions
+  - :doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix
+  - :doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances
 
-- :doc:`pgr_vrpOneDepot` - VRP One Depot
+* Distribution problem
 
-.. index to here
+  - :doc:`pgr_vrpOneDepot` - From a single depot, distributes orders
+
+.. index experimental to here
+
+.. contents::
 
 .. toctree::
   :hidden:

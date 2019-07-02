@@ -231,6 +231,11 @@ Solution::operator<(const Solution &s_rhs) const {
     return false;
 }
 
+Initials_code
+Solution::get_kind() const {
+    return problem->get_kind();
+}
+
 Solution::Solution() :
     EPSILON(0.0001),
     trucks(problem->trucks()) {

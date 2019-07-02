@@ -69,7 +69,9 @@ void
 PD_Orders::build_orders(
         const std::vector<PickDeliveryOrders_t> &pd_orders
         ) {
+#if 0
     ENTERING();
+#endif
     for (const auto order : pd_orders) {
         /*
          * SAMPLE CORRECT INFORMATION
@@ -100,6 +102,7 @@ PD_Orders::build_orders(
             /*
              * matrix version
              */
+#if 0
             msg.log << "pickup \n"
                 << "pick_node_id: " << order.pick_node_id
                 << "\n";
@@ -107,6 +110,7 @@ PD_Orders::build_orders(
             msg.log << "pickup \n"
                 << "deliver_node_id: " << order.deliver_node_id
                 << "\n";
+#endif
             auto b_pick = create_b_pick<Dnode>(order, problem->node_id());
             Vehicle_node pickup(
                     {problem->node_id()++, order, Tw_node::NodeType::kPickup});
@@ -123,7 +127,9 @@ PD_Orders::build_orders(
         }
     }  //  for (creating orders)
 
+#if 0
     EXITING();
+#endif
 }
 
 bool

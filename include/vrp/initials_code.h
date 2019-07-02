@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
 
-FILE: pd_problem.h
+FILE: initials_code.h
 
-Copyright (c) 2017 pgRouting developers
+Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -25,34 +25,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_VRP_PD_PROBLEM_H_
-#define INCLUDE_VRP_PD_PROBLEM_H_
+#ifndef INCLUDE_VRP_INITIALS_CODE_H_
+#define INCLUDE_VRP_INITIALS_CODE_H_
 #pragma once
-
-#include "cpp_common/pgr_messages.h"
-#include "vrp/initials_code.h"
-
-
 
 namespace pgrouting {
 namespace vrp {
 
-class Pgr_pickDeliver;
-
-class PD_problem {
- public:
-    explicit PD_problem(Pgr_pickDeliver* p_problem);
-    PD_problem(const PD_problem &problem);
-    PD_problem() { }
-
- public:
-     static Pgr_messages msg;
-
- protected:
-     static Pgr_pickDeliver* problem;
+/*! Different kinds to insert an order into the vehicle */
+enum Initials_code {
+    OneTruck,    /*! All orders in one truck */
+    OnePerTruck, /*! One Order per truck */
+    FrontTruck,  /*! Insetion at the front of the truck */
+    BackTruck,   /*! Insetion at the back of the truck */
+    BestInsert,  /*! Best place to insert Order */
+    BestBack,    /*! Push back order that allows more orders to be inserted at the back */
+    BestFront,   /*! Push front order that allows more orders to be inserted at the front */
+    OneDepot     /*! Pick at front, drop at back, OneDepot for all vehicles */
 };
 
-}  //  namespace vrp
-}  //  namespace pgrouting
+}  // namespace vrp
+}  // namespace pgrouting
 
-#endif  // INCLUDE_VRP_PD_PROBLEM_H_
+#endif  // INCLUDE_VRP_INITIALS_CODE_H_

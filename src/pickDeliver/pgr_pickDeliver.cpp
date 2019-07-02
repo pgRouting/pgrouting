@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_assert.h"
 
+#include "vrp/initials_code.h"
 #include "vrp/vehicle_node.h"
 #include "vrp/vehicle_pickDeliver.h"
 #include "vrp/order.h"
@@ -86,7 +87,7 @@ Pgr_pickDeliver::solve() {
     if (m_initial_id == 0) {
         msg.log << "trying all \n";
         for (int i = 1; i < 7; ++i) {
-            initial_sols.push_back(Initial_solution(i, m_orders.size()));
+            initial_sols.push_back(Initial_solution((Initials_code)i, m_orders.size()));
             msg.log << "solution " << i << "\n" << initial_sols.back().tau();
             // TODO(vicky) calculate the time it takes
             msg.log << "Initial solution " << i
@@ -94,7 +95,7 @@ Pgr_pickDeliver::solve() {
         }
     } else {
         msg.log << "only trying " << m_initial_id << "\n";
-        initial_sols.push_back(Initial_solution(m_initial_id, m_orders.size()));
+        initial_sols.push_back(Initial_solution((Initials_code)m_initial_id, m_orders.size()));
         // TODO(vicky) calculate the time it takes
         msg.log << "Initial solution " << m_initial_id
             << " duration: " << initial_sols[0].duration();
@@ -179,7 +180,10 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         pgassert(!pd_orders.empty());
         pgassert(!vehicles.empty());
         pgassert(!m_cost_matrix.empty());
-        pgassert(m_initial_id > 0 && m_initial_id < 7);
+        if (!(m_initial_id > 0 && m_initial_id < OneDepot)) {
+            msg.log << "\n m_initial_id " << m_initial_id;
+        }
+        pgassertwm(m_initial_id > 0 && m_initial_id <= OneDepot, msg.get_log().c_str());
         pgassert(nodesOK());
 
         if (!msg.get_error().empty()) {

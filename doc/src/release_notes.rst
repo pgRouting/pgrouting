@@ -160,6 +160,10 @@ pgRouting 3.0.0 Release Notes
 .. rubric:: New Experimental functions
 
 * pgr_extractVertices
+* VRP category
+
+  * pgr_pickDeliverEuclidean
+  * pgr_pickDeliver
 
 
 .. rubric:: Moved to legacy
@@ -173,6 +177,10 @@ pgRouting 3.0.0 Release Notes
     * pgr_maxFlowBoykovKolmogorov
     * pgr_maxFlowEdmondsKarp
     * pgr_maximumcardinalitymatching
+
+  * VRP
+
+    * pgr_gsoc_vrppdtw
 
 * TSP old signatures
 * pgr_pointsAsPolygon

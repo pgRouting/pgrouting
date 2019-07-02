@@ -70,7 +70,7 @@ process(
         return;
     }
 
-    if (initial_solution_id < 0 || initial_solution_id > 6) {
+    if (initial_solution_id < 0 || initial_solution_id > 7) {
         elog(ERROR, "Illegal value in parameter: initial");
         (*result_count) = 0;
         (*result_tuples) = NULL;
@@ -93,6 +93,7 @@ process(
     PGR_DBG("total vehicles %ld", total_vehicles);
 
 
+#if 0
     for (size_t i = 0; i < total_pd_orders; i++) {
         PGR_DBG("%ld %f pick %f %f %ld - "
                 "%f %f %f deliver %f %f %ld - %f %f %f ",
@@ -138,7 +139,7 @@ process(
 
                vehicles_arr[i].cant_v);
     }
-
+#endif
     PGR_DBG("load matrix");
     Matrix_cell_t *matrix_cells_arr = NULL;
     size_t total_cells = 0;

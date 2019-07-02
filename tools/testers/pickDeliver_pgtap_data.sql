@@ -3,6 +3,26 @@ DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS vehicles CASCADE;
 DROP TABLE IF EXISTS dist_matrix CASCADE;
 
+-- table vehicles start
+
+CREATE TABLE vehicles (
+  id BIGSERIAL PRIMARY KEY,
+  start_node_id BIGINT,
+  start_x FLOAT,
+  start_y FLOAT,
+  start_open FLOAT,
+  start_close FLOAT,
+  "number" integer,
+  capacity FLOAT
+);
+
+INSERT INTO vehicles (start_x,  start_y,  start_open,  start_close,  "number",  capacity)
+VALUES (40,  50,  0,  1236,  25,  200);
+
+-- table vehicles end
+
+-- table orders start
+
 CREATE TABLE orders (
       id BIGINT PRIMARY KEY,
       demand FLOAT,
@@ -20,16 +40,6 @@ CREATE TABLE orders (
       d_service FLOAT
 );
 
-CREATE TABLE vehicles (
-  id BIGSERIAL PRIMARY KEY,
-  start_node_id BIGINT,
-  start_x FLOAT,
-  start_y FLOAT,
-  start_open FLOAT,
-  start_close FLOAT,
-  "number" integer,
-  capacity FLOAT
-);
 
 INSERT INTO orders (id,  demand,
 p_x,  p_y ,  p_open,  p_close,  p_service,
@@ -89,9 +99,9 @@ VALUES
 (98, 20, 58, 75,   30,   84, 90, 62, 80, 196,  239, 90),
 (100,20, 55, 85,  647,  726, 90, 55, 80, 743,  820, 90);
 
-INSERT INTO vehicles (start_x,  start_y,  start_open,  start_close,  "number",  capacity)
-VALUES (40,  50,  0,  1236,  25,  200);
+-- table orders end
 
+-- assign id start
 WITH points AS (
     SELECT DISTINCT p_x AS x, p_y AS y FROM orders
     UNION
@@ -106,18 +116,6 @@ FROM third WHERE third.id = orders.id;
 WITH
 the_ids AS (SELECT p_node_id AS id FROM orders UNION SELECT d_node_id FROM orders),
 the_max AS (SELECT max(id) FROM the_ids)
-UPDATE vehicles SET start_node_id = max+1 FROM the_max;
+UPDATE vehicles SET start_node_id = max + 1 FROM the_max;
 
-/*
-WITH
-A AS (
-    SELECT p_node_id AS id, p_x AS x, p_y AS y FROM orders
-    UNION
-    SELECT d_node_id, d_x, d_y FROM orders
-    UNION
-    SELECT start_node_id, start_x, start_y FROM vehicles
-)
-SELECT A.id AS start_vid, B.id AS end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) AS agg_cost
-INTO dist_matrix
-FROM A, A AS B WHERE A.id != B.id;
-*/
+-- assing id end

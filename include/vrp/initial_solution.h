@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include "vrp/pd_orders.h"
 #include "vrp/solution.h"
+#include "vrp/initials_code.h"
 #include "cpp_common/identifiers.hpp"
 
 namespace pgrouting {
@@ -45,7 +46,7 @@ class Pgr_pickDeliver;
 class Initial_solution : public Solution {
  public:
      Initial_solution(
-             int kind,
+             Initials_code kind,
              size_t);
 
      void invariant() const;

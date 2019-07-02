@@ -220,6 +220,15 @@ class Vehicle : public Identifier, public PD_problem {
       */
      bool empty() const;
 
+     /*! @brief return number of nodes in the truck
+      *
+      * ~~~~{.c}
+      * True: S E
+      * False: S <nodes> E
+      * ~~~~
+      */
+     size_t size() const;
+
 
      /// @{
      Cost cost() const;
@@ -344,8 +353,10 @@ class Vehicle : public Identifier, public PD_problem {
 
 
      std::pair<POS, POS> position_limits(const Vehicle_node node) const;
+     std::pair<POS, POS> drop_position_limits(const Vehicle_node node) const;
 
  private:
+     POS getDropPosLowLimit(const Vehicle_node &node) const;
      POS getPosLowLimit(const Vehicle_node &node) const;
      POS getPosHighLimit(const Vehicle_node &node) const;
 };

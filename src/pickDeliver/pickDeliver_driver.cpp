@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "vrp/pgr_pickDeliver.h"
+#include "vrp/initials_code.h"
 #include "cpp_common/Dmatrix.h"
 
 #include "cpp_common/pgr_assert.h"
@@ -92,6 +93,35 @@ do_pgr_pickDeliver(
                 matrix_cells_arr + total_cells);
 
         pgrouting::tsp::Dmatrix cost_matrix(data_costs);
+
+        auto depot_node = vehicles[0].start_node_id;
+
+        /*
+         * This applies to the one depot problem
+         */
+        if ((pgrouting::vrp::Initials_code)(initial_solution_id) == pgrouting::vrp::OneDepot) {
+            /*
+             * All Vehicles must depart from same location
+             */
+            for (const auto v : vehicles) {
+                if (v.start_node_id != depot_node && v.end_node_id != depot_node) {
+                    err << "All vehicles must depart & arrive to same node";
+                    *err_msg = pgr_msg(err.str().c_str());
+                    return;
+                }
+            }
+
+            /*
+             * All Orders must depart from depot
+             */
+            for (const auto o : orders) {
+                if (o.pick_node_id != depot_node) {
+                    err << "All orders must be picked at depot";
+                    *err_msg = pgr_msg(err.str().c_str());
+                    return;
+                }
+            }
+        }
 
         if (!cost_matrix.has_no_infinity()) {
             err << "An Infinity value was found on the Matrix";

@@ -136,16 +136,16 @@ Experimental Functions
 
 .. rubric:: Others
 
-.. rubric:: VRP
+:doc:`VRP-category`
 
-- :doc:`pgr_gsoc_vrppdtw`
-- :doc:`pgr_vrpOneDepot`
+.. include:: VRP-category.rst
+   :start-after: index experimental from here
+   :end-before: index experimental to here
 
 .. toctree::
   :hidden:
 
-  pgr_gsoc_vrppdtw
-  pgr_vrpOneDepot
+  VRP-category
 
 .. rubric:: Shortest Path Algorithms
 

@@ -1,17 +1,17 @@
 
-drop table if exists vrp_orders cascade;
-create table vrp_orders (
-    id integer not null primary key,
+DROP TABLE IF EXISTS solomon_100_RC_101 cascade;
+CREATE TABLE solomon_100_RC_101 (
+    id integer NOT NULL PRIMARY KEY,
     order_unit integer,
     open_time integer,
     close_time integer,
     service_time integer,
     x float8,
     y float8
-
 );
 
-copy vrp_orders (id, x, y, order_unit, open_time, close_time, service_time) from stdin;
+COPY solomon_100_RC_101
+(id, x, y, order_unit, open_time, close_time, service_time) FROM stdin;
 1	40.000000	50.000000	0	0	240	0
 2	25.000000	85.000000	20	145	175	10
 3	22.000000	75.000000	30	50	80	10

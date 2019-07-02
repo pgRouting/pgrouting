@@ -7,22 +7,21 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_pickDeliverEuclidean - Proposed
+pgr_pickDeliverEuclidean - Experimental
 ===============================================================================
-
-.. warning:: Documentation is being updated
 
 ``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem
 
 .. rubric:: Availability
 
-* New as proposed in 2.5.0
+* New as Experimental in 3.0.0
+
+  * Replaces pgr_gsoc_vrppdtw
 
 
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
-
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -68,7 +67,7 @@ Characteristics
 
 
 .. index::
-    single: pgr_pickDeliverEuclidean - Proposed
+    single: pgr_pickDeliverEuclidean - Experimental
 
 
 Signature

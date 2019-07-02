@@ -37,8 +37,8 @@ PD_problem::PD_problem(Pgr_pickDeliver* p_problem) {
     msg.clear();
 }
 
-PD_problem::PD_problem(const PD_problem &)
-    { }
+PD_problem::PD_problem(const PD_problem &) {
+}
 
 
 }  //  namespace vrp

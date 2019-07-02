@@ -44,25 +44,26 @@ Initial_solution::invariant() const {
 
 
 Initial_solution::Initial_solution(
-        int kind,
+        Initials_code kind,
         size_t number_of_orders) :
     Solution(),
     all_orders(number_of_orders),
     unassigned(number_of_orders),
     assigned() {
         invariant();
-        pgassert(kind >= 0 && kind < 7);
+        pgassert(kind >= 0 && kind <= OneDepot);
 
         switch (kind) {
-            case 0:
+            case OneTruck:
                 one_truck_all_orders();
                 break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
+            case OnePerTruck:
+            case FrontTruck:
+            case BackTruck:
+            case BestInsert:
+            case BestBack:
+            case BestFront:
+            case OneDepot:
                 do_while_foo(kind);
                 break;
             default: pgassert(false);
@@ -76,17 +77,21 @@ Initial_solution::Initial_solution(
 void
 Initial_solution::do_while_foo(int kind) {
     invariant();
-    pgassert(kind > 0 && kind < 7);
+    pgassert(kind > 0 && kind <= OneDepot);
 
+#if 0
     msg.log << "\nInitial_solution::do_while_foo\n";
+#endif
     Identifiers<size_t> notused;
 #if 0
     bool out_of_trucks(true);
 #endif
 
     while (!unassigned.empty()) {
+#if 0
         msg.log << unassigned.size() << " unassigned: " << unassigned << "\n";
         msg.log << assigned.size() << " assigned:" << assigned << "\n";
+#endif
         auto current = unassigned.size();
 #if 0
         auto truck = out_of_trucks?
@@ -95,14 +100,18 @@ Initial_solution::do_while_foo(int kind) {
 #else
         auto truck = trucks.get_truck(unassigned.front());
 #endif
+#if 0
         msg.log << "got truck:" << truck.tau() << "\n";
+#endif
         /*
          * kind 1 to 7 work with the same code structure
          */
-        truck.do_while_feasable(kind, unassigned, assigned);
+        truck.do_while_feasable((Initials_code)kind, unassigned, assigned);
+#if 0
         msg.log << unassigned.size() << " unassigned: " << unassigned << "\n";
         msg.log << assigned.size() << " assigned:" << assigned << "\n";
         msg.log << "current" << current << " unassigned: " << unassigned.size();
+#endif
         pgassertwm(current > unassigned.size(), msg.get_log().c_str());
 
 #if 0

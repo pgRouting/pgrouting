@@ -356,6 +356,12 @@ Vehicle::empty() const {
     return m_path.size() <= 2;
 }
 
+size_t
+Vehicle::size() const {
+    invariant();
+    return m_path.size() - 2;
+}
+
 void
 Vehicle::evaluate(POS from) {
     invariant();
@@ -391,6 +397,45 @@ Vehicle::position_limits(const Vehicle_node node) const {
     return std::make_pair(low, high);
 }
 
+std::pair<size_t, size_t>
+Vehicle::drop_position_limits(const Vehicle_node node) const {
+    POS high = getPosHighLimit(node);
+    POS low = getDropPosLowLimit(node);
+    return std::make_pair(low, high);
+}
+
+/*
+ * start searching from postition low = pos(E)
+ *
+ * S 1 2 3 4 5 6 7 ..... E
+ * node -> E
+ * node -> ...
+ * node -> 7
+ * node -> 6
+ * node -> 5
+ * node /-> 4
+ *
+ * return low_limit = 5
+ *
+ */
+size_t
+Vehicle::getDropPosLowLimit(const Vehicle_node &nodeI) const {
+    invariant();
+
+    POS low = 0;
+    POS high = m_path.size();
+    POS low_limit = high;
+
+    /* J == m_path[low_limit - 1] */
+    while (low_limit > low
+            && m_path[low_limit - 1].is_compatible_IJ(nodeI, speed())
+            && !m_path[low_limit - 1].is_pickup()) {
+        --low_limit;
+    }
+
+    invariant();
+    return low_limit;
+}
 
 /*
  * start searching from postition low = pos(E)
@@ -478,13 +523,17 @@ Vehicle::Vehicle(
     m_capacity(p_m_capacity),
     m_factor(p_factor),
     m_speed(p_speed) {
+#if 0
         ENTERING();
+#endif
         m_path.clear();
         pgassert(starting_site.opens() <= starting_site.closes());
         pgassert(ending_site.opens() <= ending_site.closes());
         pgassert(capacity() > 0);
+#if 0
         msg.log << "p_idx: " << p_idx << "\t idx(): " << idx() << "\n";
         msg.log << "p_id: " << p_id << "\tid(): " << id() << "\n";
+#endif
 
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
@@ -492,7 +541,9 @@ Vehicle::Vehicle(
         evaluate(0);
         msg.log << tau() << "\n";
         invariant();
+#if 0
         EXITING();
+#endif
     }
 
 Vehicle::Vehicle(const Vehicle &v) :
