@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_minCostMaxFlow_Cost - Experimental 
+pgr_minCostMaxFlow_Cost - Experimental
 ============================================
 
 ``pgr_minCostMaxFlow`` — Calculates the minmum cost maximum flow in a directed graph from the source(s) to the targets(s).
@@ -26,7 +26,7 @@ pgr_minCostMaxFlow_Cost - Experimental
 * New as experimental on v3.0.0
 
 **Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_minCostMaxFlow_Cost.html>__)
+current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_minCostMaxFlow_Cost.html>`__)
 
 Description
 -------------------------------------------------------------------------------
@@ -55,10 +55,10 @@ Signatures
     pgr_minCostMaxFlow_Cost(edges_sql, sources, target)
     pgr_minCostMaxFlow_Cost(edges_sql, source, targets)
     pgr_minCostMaxFlow_Cost(edges_sql, sources, targets)
-    RETURNS FLOAT 
+    RETURNS FLOAT
 
 .. index::
-    single: minCostMaxFlow_Cost(One to One) - Experimental 
+    single: minCostMaxFlow_Cost(One to One) - Experimental
 
 One to One
 ...............................................................................
@@ -66,7 +66,7 @@ One to One
 .. code-block:: none
 
     pgr_minCostMaxFlow_Cost(edges_sql, source, target)
-    RETURNS FLOAT 
+    RETURNS FLOAT
 
 :Example: From vertex :math:`2` to vertex :math:`3`
 
@@ -75,15 +75,15 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: minCostMaxFlow_Cost(One to Many) - Experimental 
+    single: minCostMaxFlow_Cost(One to Many) - Experimental
 
-One to Many 
+One to Many
 ...............................................................................
 
 .. code-block:: none
 
     pgr_minCostMaxFlow_Cost(edges_sql, source, targets)
-    RETURNS FLOAT 
+    RETURNS FLOAT
 
 :Example: From vertex :math:`13` to vertices :math:`\{7, 1, 4\}`
 
@@ -92,15 +92,15 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: minCostMaxFlow_Cost(Many to One) - Experimental 
+    single: minCostMaxFlow_Cost(Many to One) - Experimental
 
-Many to One 
+Many to One
 ...............................................................................
 
 .. code-block:: none
 
     pgr_minCostMaxFlow_Cost(edges_sql, sources, target)
-    RETURNS FLOAT 
+    RETURNS FLOAT
 
 :Example: From vertices :math:`\{1, 7, 14\}` to vertex :math:`12`
 
@@ -109,7 +109,7 @@ Many to One
    :end-before: -- q3
 
 .. index::
-    single: minCostMaxFlow_Cost(Many to Many) - Experimental 
+    single: minCostMaxFlow_Cost(Many to Many) - Experimental
 
 Many to Many
 ...............................................................................
@@ -117,7 +117,7 @@ Many to Many
 .. code-block:: none
 
     pgr_maxFlow(edges_sql, sources, targets)
-    RETURNS FLOAT 
+    RETURNS FLOAT
 
 :Example: From vertices :math:`\{7, 13\}` to vertices :math:`\{3, 9\}`
 
