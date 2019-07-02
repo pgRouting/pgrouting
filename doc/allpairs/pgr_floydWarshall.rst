@@ -30,10 +30,10 @@ current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_floydWarshall.html>`__)
 `2.4 <http://docs.pgrouting.org/2.4/en/pgr_floydWarshall.html>`__
 
 **Unsupported versions:**
-`2.3 <http://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_floydWarshall.html#pgr-floydWarshall>`__
-`2.2 <http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_floydWarshall.html#pgr-floydWarshall>`__
-`2.1 <http://docs.pgrouting.org/2.1/en/src/apsp_warshall/doc/index.html#pgr-apsp-warshall>`__
-`2.0 <http://docs.pgrouting.org/2.0/en/src/apsp_warshall/doc/index.html#pgr-apsp-warshall>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_floydWarshall.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_floydWarshall.html>`__
+`2.1 <http://docs.pgrouting.org/2.1/en/src/apsp_warshall/doc/index.html>`__
+`2.0 <http://docs.pgrouting.org/2.0/en/src/apsp_warshall/doc/index.html>`__
 
 Description
 -------------------------------------------------------------------------------
