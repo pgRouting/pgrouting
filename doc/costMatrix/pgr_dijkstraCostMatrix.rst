@@ -29,7 +29,7 @@ current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_dijkstraCostMatrix.html>`__)
 `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html>`__
 
 **Unsupported versions:**
-`2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html#pgr-dijkstraCostMatrix>`__
+`2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html>`__
 
 Description
 -------------------------------------------------------------------------------
