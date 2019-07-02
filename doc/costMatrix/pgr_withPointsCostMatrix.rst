@@ -32,8 +32,7 @@ current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_withPointsCostMatrix.html>`_
 `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsCostMatrix.html>`__
 
 **Unsupported versions:**
-`2.3 <https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_withPointsCostMatrix.html#pgr-withPointsCostMatrix>`__
-`2.2 <https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_withPointsCostMatrix.html#pgr-withPointsCostMatrix>`__
+`2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_withPointsCostMatrix.html>`__
 
 Description
 -------------------------------------------------------------------------------
