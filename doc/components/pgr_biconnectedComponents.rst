@@ -27,6 +27,11 @@ In particular, the algorithm implemented by Boost.Graph.
 
 * New as experimental on v2.5.0
 
+**Supported versions:**
+current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_biconnectedComponents.html>`__)
+`2.6 <https://docs.pgrouting.org/2.6/en/pgr_biconnectedComponents.html>`__
+`2.5 <https://docs.pgrouting.org/2.5/en/pgr_biconnectedComponents.html>`__
+
 Description
 -------------------------------------------------------------------------------
 

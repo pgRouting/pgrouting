@@ -22,6 +22,15 @@ pgr_dijkstraCostMatrix
 * Official on v3.0.0
 * Proposed on v2.3.0
 
+**Supported versions:**
+current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_dijkstraCostMatrix.html>`__)
+`2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html>`__
+`2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCostMatrix.html>`__
+`2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html>`__
+
+**Unsupported versions:**
+`2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html>`__
+
 Description
 -------------------------------------------------------------------------------
 

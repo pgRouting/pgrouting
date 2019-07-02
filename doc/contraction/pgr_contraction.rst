@@ -27,6 +27,9 @@ pgr_contraction
 
 * New as experimental on v2.3.0
 
+**Supported versions:**
+current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_contraction.html>`__)
+
 Description
 -------------------------------------------------------------------------------
 

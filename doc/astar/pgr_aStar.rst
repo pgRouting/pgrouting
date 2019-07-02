@@ -34,6 +34,18 @@ pgr_aStar
 
   * pgr_astar(One to One)
 
+  **Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_aStar.html>`__)
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_aStar.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStar.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStar.html>`__
+
+**Unsupported versions:**
+`2.3 <http://docs.pgrouting.org/2.3/en/src/astar/doc/pgr_astar.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html>`__
+`2.1 <http://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__
+`2.0 <http://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__
+
 Description
 -------------------------------------------------------------------------------
 
@@ -128,7 +140,7 @@ Many to One
 .. code-block:: none
 
     pgr_aStar(edges_sql, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{7, 2\}` to vertex :math:`12` on a **directed** graph using heuristic  :math:`0`

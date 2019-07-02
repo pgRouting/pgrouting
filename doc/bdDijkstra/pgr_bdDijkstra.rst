@@ -44,6 +44,18 @@ pgr_bdDijkstra
 
   * pgr_bdDijkstra(One to One)
 
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdDijkstra.html>`__)
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html>`__
+
+**Unsupported versions:**
+`2.3 <http://docs.pgrouting.org/2.3/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__
+`2.1 <http://docs.pgrouting.org/2.1/en/src/bd_dijkstra/doc/index.html>`__
+`2.0 <http://docs.pgrouting.org/2.0/en/src/bd_dijkstra/doc/index.html>`__
+
 Description
 -------------------------------------------------------------------------------
 * **TBD**
@@ -68,7 +80,7 @@ Signatures
 .. code-block:: none
 
     pgr_bdDijkstra(edges_sql, start_vid, end_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertex  :math:`3`
