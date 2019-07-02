@@ -23,7 +23,10 @@ pgr_minCostMaxFlow_Cost - Experimental
 
 .. rubric:: Availability
 
-* **TBD**
+* New as experimental on v3.0.0
+
+**Supported versions:**
+current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_minCostMaxFlow_Cost.html>__)
 
 Description
 -------------------------------------------------------------------------------
