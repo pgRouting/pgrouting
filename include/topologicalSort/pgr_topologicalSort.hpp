@@ -70,12 +70,17 @@ class Pgr_topologicalSort {
                                 num_vertices(graph.graph),
                                 get(boost::vertex_index, graph.graph));
 
-
         std::vector< pgr_topologicalSort_t > results;
 
         typedef typename std::vector< V > container;
         container c;
-        topological_sort(graph.graph, std::back_inserter(c),boost::parity_map(parities));
+        std::pair<int,int> pa;
+        std::vector< std::pair<int,int> > vpa;
+        vpa.push_back(std::make_pair(1,3));
+
+        boost::topological_sort(graph.graph, std::back_inserter(c));
+        
+//        int p=graph.graph[0].fi;
         typename std::vector< V >::reverse_iterator ii;
         for (ii=c.rbegin(); ii!=c.rend(); ++ii) {
             auto t=*ii;
@@ -83,6 +88,7 @@ class Pgr_topologicalSort {
             tmp.sorted_v=t;
             results.push_back(tmp);
         }
+
         return results;
      }
 };
