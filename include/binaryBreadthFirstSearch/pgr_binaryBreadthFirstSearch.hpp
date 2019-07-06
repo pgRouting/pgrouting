@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <deque>
+#include <algorithm>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -47,11 +48,44 @@ public:
     std::deque<Path> binaryBreadthFirstSearch(
         G &graph,
         std::vector<int64_t> start_vertex,
-        std::vector<int64_t> end_vertex)
-    {
+        std::vector<int64_t> end_vertex) {
 
         std::deque<Path> paths;
 
+        for(auto source : start_vertex) {
+            std::deque<Path> result_paths = one_to_many_binaryBreadthFirstSearch(
+                graph,
+                source,
+                end_vertex
+            );
+
+            paths.insert(
+                paths.begin(), 
+                std::make_move_iterator(result_paths.begin()),
+                std::make_move_iterator(result_paths.end()));
+        }
+
+        std::sort(paths.begin(), paths.end(),
+                  [](const Path &e1, const Path &e2) -> bool {
+                      return e1.end_id() < e2.end_id();
+                  });
+        std::stable_sort(paths.begin(), paths.end(),
+                         [](const Path &e1, const Path &e2) -> bool {
+                             return e1.start_id() < e2.start_id();
+                         });
+
+        return paths;
+    }
+
+    private:
+
+    std::deque<Path> one_to_many_binaryBreadthFirstSearch(
+        G &graph,
+        int64_t start_vertex,
+        std::vector<int64_t> end_vertex) {
+
+        std::deque<Path> paths;
+    
         return paths;
     }
 };
