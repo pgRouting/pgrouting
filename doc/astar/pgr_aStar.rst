@@ -34,7 +34,7 @@ pgr_aStar
 
   * pgr_astar(One to One)
 
-  **Supported versions:**
+**Supported versions:**
 current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_aStar.html>`__)
 `2.6 <http://docs.pgrouting.org/2.6/en/pgr_aStar.html>`__
 `2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStar.html>`__
@@ -74,7 +74,7 @@ Signatures
     pgr_aStar(edges_sql, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(edges_sql, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(edges_sql, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
-   
+
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -103,7 +103,7 @@ One to One
 .. code-block:: none
 
     pgr_aStar(edges_sql, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
-    
+
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
