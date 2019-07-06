@@ -173,10 +173,6 @@
 <li><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Proposed</span></a> - K shortest paths.</li>
 <li><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Proposed</span></a> - Driving distance.</li>
 </ul>
-<p><a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Family of functions (Proposed)</span></a> - Reduce network size using contraction techniques</p>
-<ul class="simple">
-<li><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction - Proposed</span></a></li>
-</ul>
 <p class="rubric">categories</p>
 <p><a class="reference internal" href="cost-category.html"><span class="doc">Cost - Category</span></a></p>
 <ul class="simple">
@@ -196,10 +192,6 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a></p>
-<ul class="simple">
-<li><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Proposed</span></a> - Extracts vertices information based on the source and target.</li>
-</ul>
 </div>
 <div class="section" id="experimental-functions">
 <span id="proposed"></span><h1>Experimental Functions<a class="headerlink" href="#experimental-functions" title="Permalink to this headline">¶</a></h1>
@@ -244,10 +236,17 @@
 <div class="toctree-wrapper compound">
 </div>
 <p class="rubric">Others</p>
-<p class="rubric">VRP</p>
+<p><a class="reference internal" href="VRP-category.html"><span class="doc">Vehicle Routing Functions Category</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_gsoc_vrppdtw.html"><span class="doc">pgr_gsoc_vrppdtw - Experimental</span></a></li>
-<li><a class="reference internal" href="pgr_vrpOneDepot.html"><span class="doc">pgr_vrpOneDepot - Experimental</span></a></li>
+<li>Pickup and delivery problem<ul>
+<li><a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a> - Pickup &amp; Delivery using a Cost Matrix</li>
+<li><a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a> - Pickup &amp; Delivery with Euclidean distances</li>
+</ul>
+</li>
+<li>Distribution problem<ul>
+<li><a class="reference internal" href="pgr_vrpOneDepot.html"><span class="doc">pgr_vrpOneDepot - Experimental</span></a> - From a single depot, distributes orders</li>
+</ul>
+</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -259,6 +258,10 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
+<p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Experimental</span></a> - Extracts vertices information based on the source and target.</li>
+</ul>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Indices and tables</p>
@@ -282,7 +285,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jun 17, 2019.<br/>
+      Last updated on Jul 06, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

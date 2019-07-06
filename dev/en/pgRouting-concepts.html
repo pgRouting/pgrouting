@@ -354,7 +354,7 @@ but we have some basic tools that might help.</p>
 <p>Once you have all the preparation work done above, computing a route is fairly easy.
 We have a lot of different algorithms that can work with your prepared road
 network. The general form of a route query is:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>select pgr_dijkstra(&#39;SELECT * FROM myroads&#39;, 1, 2)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>select pgr_dijkstra(`SELECT * FROM myroads&#39;, 1, 2)
 </pre></div>
 </div>
 <p>As you can see this is fairly straight forward and you can look and the
@@ -1468,7 +1468,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jun 17, 2019.<br/>
+      Last updated on Jul 06, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
