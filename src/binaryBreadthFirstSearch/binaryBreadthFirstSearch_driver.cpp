@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 //TODO : Correct the headers
-// #include "binaryBreadthFirstSearch/pgr_binaryBreadthFirstSearch.hpp"
+#include "binaryBreadthFirstSearch/pgr_binaryBreadthFirstSearch.hpp"
 
 //TODO : Remove below
 
@@ -56,6 +56,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+
+template < class G >
+std::deque< Path >
+pgr_binaryBreadthFirstSearch(
+        G &graph,
+        std::vector < int64_t > sources,
+        std::vector < int64_t > targets) {
+    std::sort(sources.begin(), sources.end());
+    sources.erase(
+            std::unique(sources.begin(), sources.end()),
+            sources.end());
+
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end());
+
+    pgrouting::functions::Pgr_binaryBreadthFirstSearch< G > fn_binaryBreadthFirstSearch;
+    auto paths = fn_binaryBreadthFirstSearch.binaryBreadthFirstSearch(
+            graph,
+            sources, targets);
+
+    return paths;
+}
+
 
 
 void
@@ -99,13 +124,19 @@ do_pgr_binaryBreadthFirstSearch(
             log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            // paths = pgr_binaryBreadthFirstSearch(
+            paths = pgr_binaryBreadthFirstSearch(
+                digraph,
+                start_vertices,
+                end_vertices);
 
         } else {
             log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
-            // paths = pgr_binaryBreadthFirstSearch(
+            paths = pgr_binaryBreadthFirstSearch(
+                undigraph,
+                start_vertices,
+                end_vertices);
 
         }
 
