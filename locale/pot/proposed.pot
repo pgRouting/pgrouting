@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgid "Documentation might need refinement."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:33
-#: ../../build/doc/proposed.rst:116
+#: ../../build/doc/proposed.rst:110
 msgid "Families"
 msgstr ""
 
@@ -133,79 +133,71 @@ msgstr ""
 msgid ":doc:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:81
-msgid ":doc:`topology-functions`"
-msgstr ""
-
-#: ../../build/doc/topology-functions.rst:3
-msgid ":doc:`pgr_extractVertices` - Extracts vertices information based on the source and target."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:90
+#: ../../build/doc/proposed.rst:84
 msgid "Experimental Functions"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:95
+#: ../../build/doc/proposed.rst:89
 msgid "Experimental functions"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:97
+#: ../../build/doc/proposed.rst:91
 msgid "They are not officially of the current release."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:98
+#: ../../build/doc/proposed.rst:92
 msgid "They likely will not be officially be part of the next release:"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:100
+#: ../../build/doc/proposed.rst:94
 msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:101
+#: ../../build/doc/proposed.rst:95
 msgid "Name might change."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:102
+#: ../../build/doc/proposed.rst:96
 msgid "Signature might change."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:103
+#: ../../build/doc/proposed.rst:97
 msgid "Functionality might change."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:104
+#: ../../build/doc/proposed.rst:98
 msgid "pgTap tests might be missing."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:105
+#: ../../build/doc/proposed.rst:99
 msgid "Might need c/c++ coding."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:106
+#: ../../build/doc/proposed.rst:100
 msgid "May lack documentation."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:107
+#: ../../build/doc/proposed.rst:101
 msgid "Documentation if any might need to be rewritten."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:108
+#: ../../build/doc/proposed.rst:102
 msgid "Documentation examples might need to be automatically generated."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:109
+#: ../../build/doc/proposed.rst:103
 msgid "Might need a lot of feedback from the comunity."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:110
+#: ../../build/doc/proposed.rst:104
 msgid "Might depend on a proposed function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:111
+#: ../../build/doc/proposed.rst:105
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:117
+#: ../../build/doc/proposed.rst:111
 msgid ":doc:`costFlow-family`"
 msgstr ""
 
@@ -217,7 +209,7 @@ msgstr ""
 msgid ":doc:`pgr_minCostMaxFlow` - Details of flow and cost on edges."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:123
+#: ../../build/doc/proposed.rst:117
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ""
 
@@ -229,7 +221,7 @@ msgstr ""
 msgid ":doc:`pgr_directedChPP_Cost`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:130
+#: ../../build/doc/proposed.rst:124
 msgid ":doc:`transformation-family`"
 msgstr ""
 
@@ -241,36 +233,56 @@ msgstr ""
 msgid ":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line Graph out of each vertex in the input graph."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:144
+#: ../../build/doc/proposed.rst:138
 msgid "Others"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:146
-msgid "VRP"
+#: ../../build/doc/proposed.rst:139
+msgid ":doc:`VRP-category`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:147
-msgid ":doc:`pgr_gsoc_vrppdtw`"
+#: ../../build/doc/VRP-category.rst:3
+msgid "Pickup and delivery problem"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:148
-msgid ":doc:`pgr_vrpOneDepot`"
+#: ../../build/doc/VRP-category.rst:5
+msgid ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:157
+#: ../../build/doc/VRP-category.rst:6
+msgid ":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "Distribution problem"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:10
+msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:151
 msgid "Shortest Path Algorithms"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:158
+#: ../../build/doc/proposed.rst:152
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:159
+#: ../../build/doc/proposed.rst:153
 msgid ":doc:`pgr_dagShortestPath`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:160
+#: ../../build/doc/proposed.rst:154
 msgid ":doc:`pgr_stoerWagner`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:163
+msgid ":doc:`topology-functions`"
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:3
+msgid ":doc:`pgr_extractVertices` - Extracts vertices information based on the source and target."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:172

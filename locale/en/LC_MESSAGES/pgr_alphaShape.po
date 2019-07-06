@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,140 +53,161 @@ msgstr ""
 msgid "Renamed in v2.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:29 ../../build/doc/pgr_alphaShape.rst:69
-#: ../../build/doc/pgr_alphaShape.rst:79
+#: ../../build/doc/pgr_alphaShape.rst:28
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<http://docs.pgrouting.org/dev/en/pgr_alphaShape.html>`__) `2.6 "
+"<http://docs.pgrouting.org/2.6/en/pgr_alphaShape.html>`__ `2.5 "
+"<http://docs.pgrouting.org/2.5/en/pgr_alphaShape.html>`__ `2.4 "
+"<http://docs.pgrouting.org/2.4/en/pgr_alphaShape.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:34
+msgid ""
+"**Unsupported versions:** `2.3 "
+"<http://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.2 "
+"<http://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.1 "
+"<http://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__"
+" `2.0 "
+"<http://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:41 ../../build/doc/pgr_alphaShape.rst:81
+#: ../../build/doc/pgr_alphaShape.rst:91
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:31
+#: ../../build/doc/pgr_alphaShape.rst:43
 msgid "Returns the polygon part of an alpha shape."
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:33
+#: ../../build/doc/pgr_alphaShape.rst:45
 msgid "Characteristics"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:35
+#: ../../build/doc/pgr_alphaShape.rst:47
 msgid "Input is a *geometry* and returns a *geometry*"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:36
+#: ../../build/doc/pgr_alphaShape.rst:48
 msgid "Uses PostGis ST_DelaunyTriangles"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:37
+#: ../../build/doc/pgr_alphaShape.rst:49
 msgid "Instead of using CGAL's definition of `alpha` it use the ``spoon_radius``"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:39
+#: ../../build/doc/pgr_alphaShape.rst:51
 msgid ":math:`spoon\\_radius = \\sqrt alpha`"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:41
+#: ../../build/doc/pgr_alphaShape.rst:53
 msgid ""
 "A Triangle area is considered part of the alpha shape when "
 ":math:`circumcenter\\ radius < spoon\\_radius`"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:42
+#: ../../build/doc/pgr_alphaShape.rst:54
 msgid "When the total number of points is less than 3, returns an EMPTY geometry"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:46
+#: ../../build/doc/pgr_alphaShape.rst:58
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:48
+#: ../../build/doc/pgr_alphaShape.rst:60
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:59
+#: ../../build/doc/pgr_alphaShape.rst:71
 msgid ""
 "Example: passing a geometry collection with spoon radius :math:`1.5` "
 "using the return variable ``geom``"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:66
+#: ../../build/doc/pgr_alphaShape.rst:78
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:69
+#: ../../build/doc/pgr_alphaShape.rst:81
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:69
+#: ../../build/doc/pgr_alphaShape.rst:81
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:69
+#: ../../build/doc/pgr_alphaShape.rst:81
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:71
+#: ../../build/doc/pgr_alphaShape.rst:83
 msgid "**geometry**"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:71
+#: ../../build/doc/pgr_alphaShape.rst:83
 msgid "``geometry``"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:71
+#: ../../build/doc/pgr_alphaShape.rst:83
 msgid "Geometry with at least :math:`3` points"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:72
+#: ../../build/doc/pgr_alphaShape.rst:84
 msgid "**spoon_radius**"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:72
+#: ../../build/doc/pgr_alphaShape.rst:84
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:72
+#: ../../build/doc/pgr_alphaShape.rst:84
 msgid "The radius of the spoon"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:76
+#: ../../build/doc/pgr_alphaShape.rst:88
 msgid "Return Value"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:79
+#: ../../build/doc/pgr_alphaShape.rst:91
 msgid "Kind of geometry"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:81
+#: ../../build/doc/pgr_alphaShape.rst:93
 msgid "GEOMETRY COLLECTION"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:81
+#: ../../build/doc/pgr_alphaShape.rst:93
 msgid "A Geometry collection of Polygons"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:89
+#: ../../build/doc/pgr_alphaShape.rst:101
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:91
+#: ../../build/doc/pgr_alphaShape.rst:103
 msgid ":doc:`pgr_drivingDistance`"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:92
+#: ../../build/doc/pgr_alphaShape.rst:104
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:93
+#: ../../build/doc/pgr_alphaShape.rst:105
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:96
+#: ../../build/doc/pgr_alphaShape.rst:108
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:97
+#: ../../build/doc/pgr_alphaShape.rst:109
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:98
+#: ../../build/doc/pgr_alphaShape.rst:110
 msgid ":ref:`search`"
 msgstr ""
 

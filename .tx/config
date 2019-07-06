@@ -132,11 +132,6 @@ file_filter = locales/<lang>/LC_MESSAGES/pgr_kruskal.po
 source_file = locale/pot/pgr_kruskal.pot
 source_lang = en
 
-[pgrouting.pgr_gsoc_vrppdtw]
-file_filter = locales/<lang>/LC_MESSAGES/pgr_gsoc_vrppdtw.po
-source_file = locale/pot/pgr_gsoc_vrppdtw.pot
-source_lang = en
-
 [pgrouting.index]
 file_filter = locales/<lang>/LC_MESSAGES/index.po
 source_file = locale/pot/index.pot

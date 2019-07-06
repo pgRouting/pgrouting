@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,17 +97,23 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_directedChPP_Cost.rst:26
-msgid "**TBD**"
+msgid "Experiemntal on v3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_directedChPP_Cost.rst:28
+msgid ""
+"**Supported versions** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_directedChPP_Cost.html>`__)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_directedChPP_Cost.rst:29
-#: ../../build/doc/pgr_directedChPP_Cost.rst:73
-#: ../../build/doc/pgr_directedChPP_Cost.rst:84
+#: ../../build/doc/pgr_directedChPP_Cost.rst:33
+#: ../../build/doc/pgr_directedChPP_Cost.rst:77
+#: ../../build/doc/pgr_directedChPP_Cost.rst:88
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:31
+#: ../../build/doc/pgr_directedChPP_Cost.rst:35
 msgid ""
 "The main characteristics are: - Process is done only on edges with "
 "**positive** costs. - There is no return value when the graph is not "
@@ -116,11 +122,11 @@ msgid ""
 "logV))`"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:39
+#: ../../build/doc/pgr_directedChPP_Cost.rst:43
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:42
+#: ../../build/doc/pgr_directedChPP_Cost.rst:46
 msgid "Summary"
 msgstr ""
 
@@ -128,23 +134,23 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:61
+#: ../../build/doc/pgr_directedChPP_Cost.rst:65
 msgid "Inner query"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_directedChPP_Cost.rst:73
+#: ../../build/doc/pgr_directedChPP_Cost.rst:77
 msgid "Column"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_directedChPP_Cost.rst:73
-#: ../../build/doc/pgr_directedChPP_Cost.rst:84
+#: ../../build/doc/pgr_directedChPP_Cost.rst:77
+#: ../../build/doc/pgr_directedChPP_Cost.rst:88
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_directedChPP_Cost.rst:73
+#: ../../build/doc/pgr_directedChPP_Cost.rst:77
 msgid "Default"
 msgstr ""
 
@@ -235,51 +241,54 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:70
+#: ../../build/doc/pgr_directedChPP_Cost.rst:74
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:75
+#: ../../build/doc/pgr_directedChPP_Cost.rst:79
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:75
+#: ../../build/doc/pgr_directedChPP_Cost.rst:79
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:75
+#: ../../build/doc/pgr_directedChPP_Cost.rst:79
 msgid "The edges SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:81
+#: ../../build/doc/pgr_directedChPP_Cost.rst:85
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:86
+#: ../../build/doc/pgr_directedChPP_Cost.rst:90
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:86
+#: ../../build/doc/pgr_directedChPP_Cost.rst:90
 msgid "Minimum costs of a circuit path."
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:90
+#: ../../build/doc/pgr_directedChPP_Cost.rst:94
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:92
+#: ../../build/doc/pgr_directedChPP_Cost.rst:96
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:95
+#: ../../build/doc/pgr_directedChPP_Cost.rst:99
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:96
+#: ../../build/doc/pgr_directedChPP_Cost.rst:100
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_directedChPP_Cost.rst:97
+#: ../../build/doc/pgr_directedChPP_Cost.rst:101
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "**TBD**"
+#~ msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,68 +40,72 @@ msgstr ""
 msgid "Proposed on v2.5.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:26
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:93
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:25
+msgid "**Supported versions:** current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdAstarCostMatrix.html>`__) `2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html>`__ `2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:31
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:98
 #: ../../build/doc/pgr_aStar.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:28
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:33
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:30
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:35
 msgid "Using internaly the :doc:`pgr_bdAstar` algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:31
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:36
 msgid "Returns a cost matrix."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:32
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:37
 msgid "No ordering is performed"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:33
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:38
 msgid "let `v` and `u` are nodes on the graph:"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:35
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:40
 msgid "when there is no path from `v` to `u`:"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:37
 #: ../../build/doc/pgr_bdAstarCostMatrix.rst:42
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:47
 msgid "no corresponding row is returned"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:38
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:43
 msgid "cost from `v` to `u` is :math:`\\inf`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:40
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:45
 msgid "when :math:`v = u` then"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:43
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:48
 msgid "cost from `v` to `u` is :math:`0`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:45
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:50
 msgid "When the graph is **undirected** the cost matrix is symmetric"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:48
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:53
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:51
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:56
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:58
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:63
 msgid "Using defaults"
 msgstr ""
 
@@ -111,59 +115,59 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:64
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:69
 msgid "Cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:75
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:80
 msgid "Complete Signature"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:83
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:88
 msgid "Symmetric cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on an **undirected** graph using heuristic :math:`2`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:90
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:95
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:93
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:98
 #: ../../build/doc/pgr_aStar.rst:4
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:93
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:98
 #: ../../build/doc/pgr_aStar.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:95
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:100
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:95
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:100
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:95
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:100
 msgid "`edges_sql`_  inner query."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:96
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:101
 msgid "**vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:96
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:101
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:96
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:101
 msgid "Array of vertices identifiers."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:100
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:105
 msgid "Optional Parameters"
 msgstr ""
 
@@ -259,11 +263,11 @@ msgstr ""
 msgid "For less restricted results. :math:`epsilon >= 1`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:107
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:112
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:110
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:115
 #: ../../build/doc/pgRouting-concepts.rst:0
 msgid "edges_sql"
 msgstr ""
@@ -396,7 +400,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:117
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:122
 msgid "Result Columns"
 msgstr ""
 
@@ -433,51 +437,51 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:124
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:129
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:126
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:131
 msgid "Use with :doc:`pgr_TSP`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:133
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:138
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:135
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:140
 msgid ":doc:`aStar-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:136
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:141
 msgid ":doc:`bdAstar-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:137
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:142
 msgid ":doc:`cost-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:138
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:143
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:139
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:144
 msgid ":doc:`TSP-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:140
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:145
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:143
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:148
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:144
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:149
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:145
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:150
 msgid ":ref:`search`"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,124 +37,124 @@ msgid "Insert data"
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:32
+msgid "Updating geometry"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:39
 msgid "Topology"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:33
+#: ../../build/doc/sampledata.rst:40
 msgid ""
 "Before you test a routing function use this query to create a topology "
 "(fills the ``source`` and ``target`` columns)."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:40
+#: ../../build/doc/sampledata.rst:47
 msgid "Points of interest"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:41
+#: ../../build/doc/sampledata.rst:48
 msgid "When points outside of the graph."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:42
+#: ../../build/doc/sampledata.rst:49
 msgid "Used with the :doc:`withPoints-family` functions."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:49
+#: ../../build/doc/sampledata.rst:56
 msgid "Restrictions"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:50
+#: ../../build/doc/sampledata.rst:57
 msgid "Used with the :doc:`pgr_trsp` functions."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:57
-msgid "Categories"
-msgstr ""
-
-#: ../../build/doc/sampledata.rst:58
-msgid "Used with the :doc:`flow-family` functions."
-msgstr ""
-
-#: ../../build/doc/sampledata.rst:65
-msgid "Vertex table"
-msgstr ""
-
-#: ../../build/doc/sampledata.rst:66
-msgid "Used in some deprecated signatures or deprecated functions."
-msgstr ""
-
-#: ../../build/doc/sampledata.rst:74
+#: ../../build/doc/sampledata.rst:64
 msgid "Images"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:76
+#: ../../build/doc/sampledata.rst:66
 msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:77
+#: ../../build/doc/sampledata.rst:67
 msgid "Blue arrows correspond when ``reverse_cost`` > 0 in the edge table."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:78
+#: ../../build/doc/sampledata.rst:68
 msgid "Points are outside the graph."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:79
+#: ../../build/doc/sampledata.rst:69
 msgid "Click on the graph to enlarge."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:84
+#: ../../build/doc/sampledata.rst:74
 msgid ""
 "Network for queries marked as ``directed`` and ``cost`` and "
 "``reverse_cost`` columns are used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:86
+#: ../../build/doc/sampledata.rst:76
 msgid ""
 "When working with city networks, this is recommended for point of view of"
 " vehicles."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:91
+#: ../../build/doc/sampledata.rst:81
 msgid "**Graph 1: Directed, with cost and reverse cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:96
+#: ../../build/doc/sampledata.rst:86
 msgid ""
 "Network for queries marked as ``undirected`` and ``cost`` and "
 "``reverse_cost`` columns are used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:98
+#: ../../build/doc/sampledata.rst:88
 msgid ""
 "When working with city networks, this is recommended for point of view of"
 " pedestrians."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:104
+#: ../../build/doc/sampledata.rst:94
 msgid "**Graph 2: Undirected, with cost and reverse cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:109
+#: ../../build/doc/sampledata.rst:99
 msgid ""
 "Network for queries marked as ``directed`` and only ``cost`` column is "
 "used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:116
+#: ../../build/doc/sampledata.rst:106
 msgid "**Graph 3: Directed, with cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:121
+#: ../../build/doc/sampledata.rst:111
 msgid ""
 "Network for queries marked as ``undirected`` and only ``cost`` column is "
 "used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:127
+#: ../../build/doc/sampledata.rst:117
 msgid "**Graph 4: Undirected, with cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:134
+#: ../../build/doc/sampledata.rst:124
 msgid "Pick & Deliver Data"
 msgstr ""
+
+#~ msgid "Categories"
+#~ msgstr ""
+
+#~ msgid "Used with the :doc:`flow-family` functions."
+#~ msgstr ""
+
+#~ msgid "Vertex table"
+#~ msgstr ""
+
+#~ msgid "Used in some deprecated signatures or deprecated functions."
+#~ msgstr ""
 

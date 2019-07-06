@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,15 @@ msgstr ""
 msgid "pgr_bdAstar(One to One)"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:38
+#: ../../build/doc/pgr_bdAstar.rst:37
+msgid "**Supported versions:** current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdAstar.html>`__) `2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__ `2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__ `2.4 <http://docs.pgrouting.org/2.4/en/pgr_bdAstar.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_bdAstar.rst:43
+msgid "**Unsupported versions:** `2.3 <http://docs.pgrouting.org/2.3/en/src/bd_astar/doc/pgr_bdAstar.html>`__ `2.2 <http://docs.pgrouting.org/2.2/en/src/bd_astar/doc/pgr_bdAstar.html>`__ `2.1 <http://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__ `2.0 <http://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_bdAstar.rst:50
 #: ../../build/doc/pgr_aStar.rst:4
 #: ../../build/doc/pgr_aStar.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -76,7 +84,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:40
+#: ../../build/doc/pgr_bdAstar.rst:52
 msgid "**The main characteristics are:**"
 msgstr ""
 
@@ -149,39 +157,39 @@ msgstr ""
 msgid "Running time: :math:`O((E + V) * \\log V)`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:46
+#: ../../build/doc/pgr_bdAstar.rst:58
 msgid "The results are equivalent to the union of the results of the `pgr_bdAStar(` `One to One`_ `)` on the:"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:48
+#: ../../build/doc/pgr_bdAstar.rst:60
 msgid "`pgr_bdAstar(` `One to Many`_ `)`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:49
+#: ../../build/doc/pgr_bdAstar.rst:61
 msgid "`pgr_bdAstar(` `Many to One`_ `)`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:50
+#: ../../build/doc/pgr_bdAstar.rst:62
 msgid "`pgr_bdAstar(` `Many to Many`_ `)`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:52
+#: ../../build/doc/pgr_bdAstar.rst:64
 msgid "``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:55
+#: ../../build/doc/pgr_bdAstar.rst:67
 msgid "Signature"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:58
+#: ../../build/doc/pgr_bdAstar.rst:70
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:69
+#: ../../build/doc/pgr_bdAstar.rst:81
 msgid "Optional parameters are `named parameters` and have a default value."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:72
+#: ../../build/doc/pgr_bdAstar.rst:84
 msgid "Using defaults"
 msgstr ""
 
@@ -193,43 +201,43 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:78
+#: ../../build/doc/pgr_bdAstar.rst:90
 msgid "From vertex :math:`2` to vertex :math:`3` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:88
+#: ../../build/doc/pgr_bdAstar.rst:100
 msgid "One to One"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:94
+#: ../../build/doc/pgr_bdAstar.rst:106
 msgid "From vertex :math:`2` to vertex  :math:`3` on a **directed** graph using heuristic :math:`2`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:104
+#: ../../build/doc/pgr_bdAstar.rst:116
 msgid "One to many"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:112
+#: ../../build/doc/pgr_bdAstar.rst:124
 msgid "From vertex :math:`2` to vertices :math:`\\{3, 11\\}` on a **directed** graph using heuristic :math:`3` and factor :math:`3.5`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:122
+#: ../../build/doc/pgr_bdAstar.rst:134
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:130
+#: ../../build/doc/pgr_bdAstar.rst:142
 msgid "From vertices :math:`\\{2, 7\\}` to vertex :math:`3` on an **undirected** graph using heuristic :math:`4`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:140
+#: ../../build/doc/pgr_bdAstar.rst:152
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:148
+#: ../../build/doc/pgr_bdAstar.rst:160
 msgid "From vertices :math:`\\{2, 7\\}` to vertices :math:`\\{3, 11\\}` on a **directed** graph using factor :math:`0.5`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:155
+#: ../../build/doc/pgr_bdAstar.rst:167
 msgid "Parameters"
 msgstr ""
 
@@ -326,7 +334,7 @@ msgstr ""
 msgid "Array of ending vertices identifiers. Parameter in:"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:162
+#: ../../build/doc/pgr_bdAstar.rst:174
 msgid "Optional Parameters"
 msgstr ""
 
@@ -423,11 +431,11 @@ msgstr ""
 msgid "For less restricted results. :math:`epsilon >= 1`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:170
+#: ../../build/doc/pgr_bdAstar.rst:182
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:173
+#: ../../build/doc/pgr_bdAstar.rst:185
 #: ../../build/doc/pgRouting-concepts.rst:0
 msgid "edges_sql"
 msgstr ""
@@ -555,7 +563,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:180
+#: ../../build/doc/pgr_bdAstar.rst:192
 msgid "Result Columns"
 msgstr ""
 
@@ -659,39 +667,39 @@ msgstr ""
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:187
+#: ../../build/doc/pgr_bdAstar.rst:199
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:189
+#: ../../build/doc/pgr_bdAstar.rst:201
 msgid ":doc:`aStar-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:190
+#: ../../build/doc/pgr_bdAstar.rst:202
 msgid ":doc:`bdAstar-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:191
+#: ../../build/doc/pgr_bdAstar.rst:203
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:192
+#: ../../build/doc/pgr_bdAstar.rst:204
 msgid "http://www.boost.org/libs/graph/doc/astar_search.html"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:193
+#: ../../build/doc/pgr_bdAstar.rst:205
 msgid "http://en.wikipedia.org/wiki/A*_search_algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:196
+#: ../../build/doc/pgr_bdAstar.rst:208
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:197
+#: ../../build/doc/pgr_bdAstar.rst:209
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstar.rst:198
+#: ../../build/doc/pgr_bdAstar.rst:210
 msgid ":ref:`search`"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,11 @@ msgstr ""
 msgid "Proposed in v2.5.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:26
+#: ../../build/doc/pgr_bdAstarCost.rst:25
+msgid "**Supported versions:** current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdAstarCost.html>`__) `2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__ `2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_bdAstarCost.rst:31
 #: ../../build/doc/pgr_aStar.rst:4
 #: ../../build/doc/pgr_aStar.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -117,35 +121,35 @@ msgstr ""
 msgid "Running time: :math:`O((E + V) * \\log V)`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:32
+#: ../../build/doc/pgr_bdAstarCost.rst:37
 msgid "The results are equivalent to the union of the results of the `pgr_bdAstarCost(` `One to One`_ `)` on the:"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:34
+#: ../../build/doc/pgr_bdAstarCost.rst:39
 msgid "`pgr_bdAstarCost(` `One to Many`_ `)`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:35
+#: ../../build/doc/pgr_bdAstarCost.rst:40
 msgid "`pgr_bdAstarCost(` `Many to One`_ `)`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:36
+#: ../../build/doc/pgr_bdAstarCost.rst:41
 msgid "`pgr_bdAstarCost(` `Many to Many`_ `)`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:39
+#: ../../build/doc/pgr_bdAstarCost.rst:44
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:42
+#: ../../build/doc/pgr_bdAstarCost.rst:47
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:53
+#: ../../build/doc/pgr_bdAstarCost.rst:58
 msgid "Optional parameters are `named parameters` and have a default value."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:56
+#: ../../build/doc/pgr_bdAstarCost.rst:61
 msgid "Using defaults"
 msgstr ""
 
@@ -157,43 +161,43 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:63
+#: ../../build/doc/pgr_bdAstarCost.rst:68
 msgid "From vertex :math:`2` to vertex :math:`12` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:73
+#: ../../build/doc/pgr_bdAstarCost.rst:78
 msgid "One to One"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:81
+#: ../../build/doc/pgr_bdAstarCost.rst:86
 msgid "From vertex :math:`2` to vertex :math:`12` on an **undirected** graph using heuristic :math:`2`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:91
+#: ../../build/doc/pgr_bdAstarCost.rst:96
 msgid "One to many"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:99
+#: ../../build/doc/pgr_bdAstarCost.rst:104
 msgid "From vertex `2` to vertices :math:`\\{3, 12\\}` on a **directed** graph using heuristic `2`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:109
+#: ../../build/doc/pgr_bdAstarCost.rst:114
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:117
+#: ../../build/doc/pgr_bdAstarCost.rst:122
 msgid "From vertices :math:`\\{7, 2\\}` to vertex :math:`12` on a **directed** graph using heuristic :math:`0`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:127
+#: ../../build/doc/pgr_bdAstarCost.rst:132
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:135
+#: ../../build/doc/pgr_bdAstarCost.rst:140
 msgid "From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 12\\}` on a **directed** using heuristic :math:`2`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:142
+#: ../../build/doc/pgr_bdAstarCost.rst:147
 msgid "Parameters"
 msgstr ""
 
@@ -286,7 +290,7 @@ msgstr ""
 msgid "Array of ending vertices identifiers. Parameter in:"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:149
+#: ../../build/doc/pgr_bdAstarCost.rst:154
 msgid "Optional Parameters"
 msgstr ""
 
@@ -382,11 +386,11 @@ msgstr ""
 msgid "For less restricted results. :math:`epsilon >= 1`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:157
+#: ../../build/doc/pgr_bdAstarCost.rst:162
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:160
+#: ../../build/doc/pgr_bdAstarCost.rst:165
 #: ../../build/doc/pgRouting-concepts.rst:0
 msgid "edges_sql"
 msgstr ""
@@ -513,7 +517,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:167
+#: ../../build/doc/pgr_bdAstarCost.rst:172
 msgid "Result Columns"
 msgstr ""
 
@@ -550,35 +554,35 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:174
+#: ../../build/doc/pgr_bdAstarCost.rst:179
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:176
+#: ../../build/doc/pgr_bdAstarCost.rst:181
 msgid ":doc:`bdAstar-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:177
+#: ../../build/doc/pgr_bdAstarCost.rst:182
 msgid ":doc:`cost-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:178
+#: ../../build/doc/pgr_bdAstarCost.rst:183
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:179
+#: ../../build/doc/pgr_bdAstarCost.rst:184
 msgid "Examples use :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:182
+#: ../../build/doc/pgr_bdAstarCost.rst:187
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:183
+#: ../../build/doc/pgr_bdAstarCost.rst:188
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:184
+#: ../../build/doc/pgr_bdAstarCost.rst:189
 msgid ":ref:`search`"
 msgstr ""
 

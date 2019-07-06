@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,48 +51,56 @@ msgstr ""
 msgid "New as experimental on v2.5.0"
 msgstr ""
 
+#: ../../build/doc/pgr_connectedComponents.rst:29
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_connectedComponents.html>`__) `2.6"
+" <https://docs.pgrouting.org/2.6/en/pgr_connectedComponents.html>`__ `2.5"
+" <https://docs.pgrouting.org/2.5/en/pgr_connectedComponents.html>`__"
+msgstr ""
+
 #: ../../build/doc/components-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_connectedComponents.rst:30
-#: ../../build/doc/pgr_connectedComponents.rst:91
+#: ../../build/doc/pgr_connectedComponents.rst:35
+#: ../../build/doc/pgr_connectedComponents.rst:96
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:32
+#: ../../build/doc/pgr_connectedComponents.rst:37
 msgid ""
 "A connected component of an undirected graph is a set of vertices that "
 "are all reachable from each other."
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:35
+#: ../../build/doc/pgr_connectedComponents.rst:40
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:37
+#: ../../build/doc/pgr_connectedComponents.rst:42
 msgid "The signature is for an **undirected** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:38
+#: ../../build/doc/pgr_connectedComponents.rst:43
 msgid "Components are described by vertices"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:40
+#: ../../build/doc/pgr_connectedComponents.rst:45
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:42
+#: ../../build/doc/pgr_connectedComponents.rst:47
 msgid "`component` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:43
+#: ../../build/doc/pgr_connectedComponents.rst:48
 msgid "`node` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:45
+#: ../../build/doc/pgr_connectedComponents.rst:50
 msgid "Running time: :math:`O(V + E)`"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:48
+#: ../../build/doc/pgr_connectedComponents.rst:53
 msgid "Signatures"
 msgstr ""
 
@@ -100,11 +108,11 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:60
+#: ../../build/doc/pgr_connectedComponents.rst:65
 msgid "The connected components of the graph"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:67
+#: ../../build/doc/pgr_connectedComponents.rst:72
 msgid "Parameters"
 msgstr ""
 
@@ -114,7 +122,7 @@ msgstr ""
 
 #: ../../build/doc/components-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_connectedComponents.rst:91
+#: ../../build/doc/pgr_connectedComponents.rst:96
 msgid "Type"
 msgstr ""
 
@@ -135,7 +143,7 @@ msgstr ""
 msgid "Inner query as described bellow."
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:74
+#: ../../build/doc/pgr_connectedComponents.rst:79
 msgid "Inner query"
 msgstr ""
 
@@ -143,14 +151,14 @@ msgstr ""
 msgid "edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:76
+#: ../../build/doc/pgr_connectedComponents.rst:81
 msgid ""
 "an SQL query of an **undirected** graph, which should return a set of "
 "rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_connectedComponents.rst:91
+#: ../../build/doc/pgr_connectedComponents.rst:96
 msgid "Column"
 msgstr ""
 
@@ -241,82 +249,82 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:84
+#: ../../build/doc/pgr_connectedComponents.rst:89
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:88
+#: ../../build/doc/pgr_connectedComponents.rst:93
 msgid "Returns set of ``(seq, component, node)``"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:93
+#: ../../build/doc/pgr_connectedComponents.rst:98
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:93
+#: ../../build/doc/pgr_connectedComponents.rst:98
 msgid "``INT``"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:93
+#: ../../build/doc/pgr_connectedComponents.rst:98
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:94
+#: ../../build/doc/pgr_connectedComponents.rst:99
 msgid "**component**"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:94
-#: ../../build/doc/pgr_connectedComponents.rst:95
+#: ../../build/doc/pgr_connectedComponents.rst:99
+#: ../../build/doc/pgr_connectedComponents.rst:100
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:94
+#: ../../build/doc/pgr_connectedComponents.rst:99
 msgid ""
 "Component identifier. It is equal to the minimum node identifier in the "
 "component."
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:95
+#: ../../build/doc/pgr_connectedComponents.rst:100
 msgid "**node**"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:95
+#: ../../build/doc/pgr_connectedComponents.rst:100
 msgid "Identifier of the vertex that belongs to **component**."
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:101
+#: ../../build/doc/pgr_connectedComponents.rst:106
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:103
+#: ../../build/doc/pgr_connectedComponents.rst:108
 msgid ":doc:`components-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:104
+#: ../../build/doc/pgr_connectedComponents.rst:109
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:105
+#: ../../build/doc/pgr_connectedComponents.rst:110
 msgid ""
 "Boost: `Connected components "
 "<http://www.boost.org/libs/graph/doc/connected_components.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:106
+#: ../../build/doc/pgr_connectedComponents.rst:111
 msgid ""
 "wikipedia: `Connected component "
 "<http://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:109
+#: ../../build/doc/pgr_connectedComponents.rst:114
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:110
+#: ../../build/doc/pgr_connectedComponents.rst:115
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_connectedComponents.rst:111
+#: ../../build/doc/pgr_connectedComponents.rst:116
 msgid ":ref:`search`"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -261,37 +261,37 @@ msgid "bdAstar Family"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:99
-#: ../../build/doc/release_notes.rst:388
+#: ../../build/doc/release_notes.rst:392
 msgid "pgr_bdAstar(one to many)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:100
-#: ../../build/doc/release_notes.rst:389
+#: ../../build/doc/release_notes.rst:393
 msgid "pgr_bdAstar(many to one)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:101
-#: ../../build/doc/release_notes.rst:390
+#: ../../build/doc/release_notes.rst:394
 msgid "pgr_bdAstar(many to many)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:102
-#: ../../build/doc/release_notes.rst:391
+#: ../../build/doc/release_notes.rst:395
 msgid "pgr_bdAstarCost(one to one)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:103
-#: ../../build/doc/release_notes.rst:392
+#: ../../build/doc/release_notes.rst:396
 msgid "pgr_bdAstarCost(one to many)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:104
-#: ../../build/doc/release_notes.rst:393
+#: ../../build/doc/release_notes.rst:397
 msgid "pgr_bdAstarCost(many to one)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:105
-#: ../../build/doc/release_notes.rst:394
+#: ../../build/doc/release_notes.rst:398
 msgid "pgr_bdAstarCost(many to many)"
 msgstr ""
 
@@ -316,37 +316,37 @@ msgid "bdDijkstra Family"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:113
-#: ../../build/doc/release_notes.rst:396
+#: ../../build/doc/release_notes.rst:400
 msgid "pgr_bdDijkstra(one to many)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:114
-#: ../../build/doc/release_notes.rst:397
+#: ../../build/doc/release_notes.rst:401
 msgid "pgr_bdDijkstra(many to one)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:115
-#: ../../build/doc/release_notes.rst:398
+#: ../../build/doc/release_notes.rst:402
 msgid "pgr_bdDijkstra(many to many)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:116
-#: ../../build/doc/release_notes.rst:399
+#: ../../build/doc/release_notes.rst:403
 msgid "pgr_bdDijkstraCost(one to one)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:117
-#: ../../build/doc/release_notes.rst:400
+#: ../../build/doc/release_notes.rst:404
 msgid "pgr_bdDijkstraCost(one to many)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:118
-#: ../../build/doc/release_notes.rst:401
+#: ../../build/doc/release_notes.rst:405
 msgid "pgr_bdDijkstraCost(many to one)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:119
-#: ../../build/doc/release_notes.rst:402
+#: ../../build/doc/release_notes.rst:406
 msgid "pgr_bdDijkstraCost(many to many)"
 msgstr ""
 
@@ -423,27 +423,27 @@ msgid "pgr_maxCardinalityMatching"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:140
-#: ../../build/doc/release_notes.rst:472
+#: ../../build/doc/release_notes.rst:476
 msgid "pgr_maxFlow"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:141
-#: ../../build/doc/release_notes.rst:562
+#: ../../build/doc/release_notes.rst:566
 msgid "pgr_edgeDisjointPaths(one to one)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:142
-#: ../../build/doc/release_notes.rst:563
+#: ../../build/doc/release_notes.rst:567
 msgid "pgr_edgeDisjointPaths(one to many)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:143
-#: ../../build/doc/release_notes.rst:564
+#: ../../build/doc/release_notes.rst:568
 msgid "pgr_edgeDisjointPaths(many to one)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:144
-#: ../../build/doc/release_notes.rst:565
+#: ../../build/doc/release_notes.rst:569
 msgid "pgr_edgeDisjointPaths(many to many)"
 msgstr ""
 
@@ -452,27 +452,27 @@ msgid "Components family"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:148
-#: ../../build/doc/release_notes.rst:406
+#: ../../build/doc/release_notes.rst:410
 msgid "pgr_connectedComponents"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:149
-#: ../../build/doc/release_notes.rst:407
+#: ../../build/doc/release_notes.rst:411
 msgid "pgr_strongComponents"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:150
-#: ../../build/doc/release_notes.rst:408
+#: ../../build/doc/release_notes.rst:412
 msgid "pgr_biconnectedComponents"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:151
-#: ../../build/doc/release_notes.rst:409
+#: ../../build/doc/release_notes.rst:413
 msgid "pgr_articulationPoints"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:152
-#: ../../build/doc/release_notes.rst:410
+#: ../../build/doc/release_notes.rst:414
 msgid "pgr_bridges"
 msgstr ""
 
@@ -485,31 +485,35 @@ msgid "Removed unnecessary column seq"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:157
-#: ../../build/doc/release_notes.rst:506
-#: ../../build/doc/release_notes.rst:522
-#: ../../build/doc/release_notes.rst:592
-#: ../../build/doc/release_notes.rst:605
-#: ../../build/doc/release_notes.rst:616
-#: ../../build/doc/release_notes.rst:628
-#: ../../build/doc/release_notes.rst:747
-#: ../../build/doc/release_notes.rst:778
+#: ../../build/doc/release_notes.rst:510
+#: ../../build/doc/release_notes.rst:526
+#: ../../build/doc/release_notes.rst:596
+#: ../../build/doc/release_notes.rst:609
+#: ../../build/doc/release_notes.rst:620
+#: ../../build/doc/release_notes.rst:632
+#: ../../build/doc/release_notes.rst:751
+#: ../../build/doc/release_notes.rst:782
 msgid "Bug Fixes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:160
-msgid "Experimental moved to proposed on pgRouting"
-msgstr ""
-
 #: ../../build/doc/release_notes.rst:161
-msgid "No experimental functions moved as proposed"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:165
 msgid "New Experimental functions"
 msgstr ""
 
+#: ../../build/doc/release_notes.rst:162
+msgid "pgr_extractVertices"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:163
+msgid "VRP category"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:165
+msgid "pgr_pickDeliverEuclidean"
+msgstr ""
+
 #: ../../build/doc/release_notes.rst:166
-msgid "No new experimental function on Mayor release"
+msgid "pgr_pickDeliver"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:170
@@ -545,1322 +549,1330 @@ msgid "pgr_maximumcardinalitymatching"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:181
-msgid "TSP old signatures"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:182
-msgid "pgr_pointsAsPolygon"
+msgid "VRP"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:183
+msgid "pgr_gsoc_vrppdtw"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:185
+msgid "TSP old signatures"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:186
+msgid "pgr_pointsAsPolygon"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:187
 msgid "pgr_alphaShape old signature"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:190
+#: ../../build/doc/release_notes.rst:194
 msgid "pgRouting 2.6.2 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:192
+#: ../../build/doc/release_notes.rst:196
 msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:195
-#: ../../build/doc/release_notes.rst:253
-#: ../../build/doc/release_notes.rst:282
-#: ../../build/doc/release_notes.rst:335
-#: ../../build/doc/release_notes.rst:346
-#: ../../build/doc/release_notes.rst:358
-#: ../../build/doc/release_notes.rst:440
-#: ../../build/doc/release_notes.rst:454
-#: ../../build/doc/release_notes.rst:491
-#: ../../build/doc/release_notes.rst:845
-#: ../../build/doc/release_notes.rst:852
-#: ../../build/doc/release_notes.rst:873
-#: ../../build/doc/release_notes.rst:880
+#: ../../build/doc/release_notes.rst:199
+#: ../../build/doc/release_notes.rst:257
+#: ../../build/doc/release_notes.rst:286
+#: ../../build/doc/release_notes.rst:339
+#: ../../build/doc/release_notes.rst:350
+#: ../../build/doc/release_notes.rst:362
+#: ../../build/doc/release_notes.rst:444
+#: ../../build/doc/release_notes.rst:458
+#: ../../build/doc/release_notes.rst:495
+#: ../../build/doc/release_notes.rst:849
+#: ../../build/doc/release_notes.rst:856
+#: ../../build/doc/release_notes.rst:877
+#: ../../build/doc/release_notes.rst:884
 msgid "Bug fixes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:196
+#: ../../build/doc/release_notes.rst:200
 msgid "`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes driving distance when vertex is not part of the graph"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:197
+#: ../../build/doc/release_notes.rst:201
 msgid "`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes windows test"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:198
+#: ../../build/doc/release_notes.rst:202
 msgid "`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes build for python3 and perl5"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:203
+#: ../../build/doc/release_notes.rst:207
 msgid "pgRouting 2.6.1 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:205
-msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github."
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:207
-#: ../../build/doc/release_notes.rst:294
-msgid "Fixes server crash on several functions."
-msgstr ""
-
 #: ../../build/doc/release_notes.rst:209
-#: ../../build/doc/release_notes.rst:296
-#: ../../build/doc/release_notes.rst:654
-msgid "pgr_floydWarshall"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:210
-#: ../../build/doc/release_notes.rst:297
-msgid "pgr_johnson"
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:211
 #: ../../build/doc/release_notes.rst:298
-msgid "pgr_astar"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:212
-#: ../../build/doc/release_notes.rst:299
-msgid "pgr_bdAstar"
+msgid "Fixes server crash on several functions."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:213
 #: ../../build/doc/release_notes.rst:300
-msgid "pgr_bdDijstra"
+#: ../../build/doc/release_notes.rst:658
+msgid "pgr_floydWarshall"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:214
 #: ../../build/doc/release_notes.rst:301
-msgid "pgr_alphashape"
+msgid "pgr_johnson"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:215
 #: ../../build/doc/release_notes.rst:302
-#: ../../build/doc/release_notes.rst:547
-msgid "pgr_dijkstraCostMatrix"
+msgid "pgr_astar"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:216
 #: ../../build/doc/release_notes.rst:303
-msgid "pgr_dijkstra"
+msgid "pgr_bdAstar"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:217
 #: ../../build/doc/release_notes.rst:304
-msgid "pgr_dijkstraCost"
+msgid "pgr_bdDijstra"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:218
 #: ../../build/doc/release_notes.rst:305
-msgid "pgr_drivingDistance"
+msgid "pgr_alphashape"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:219
 #: ../../build/doc/release_notes.rst:306
-msgid "pgr_KSP"
+#: ../../build/doc/release_notes.rst:551
+msgid "pgr_dijkstraCostMatrix"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:220
 #: ../../build/doc/release_notes.rst:307
-msgid "pgr_dijkstraVia (proposed)"
+msgid "pgr_dijkstra"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:221
 #: ../../build/doc/release_notes.rst:308
-msgid "pgr_boykovKolmogorov (proposed)"
+msgid "pgr_dijkstraCost"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:222
 #: ../../build/doc/release_notes.rst:309
-msgid "pgr_edgeDisjointPaths (proposed)"
+msgid "pgr_drivingDistance"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:223
 #: ../../build/doc/release_notes.rst:310
-msgid "pgr_edmondsKarp (proposed)"
+msgid "pgr_KSP"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:224
 #: ../../build/doc/release_notes.rst:311
-msgid "pgr_maxCardinalityMatch (proposed)"
+msgid "pgr_dijkstraVia (proposed)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:225
 #: ../../build/doc/release_notes.rst:312
-msgid "pgr_maxFlow (proposed)"
+msgid "pgr_boykovKolmogorov (proposed)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:226
 #: ../../build/doc/release_notes.rst:313
-msgid "pgr_withPoints (proposed)"
+msgid "pgr_edgeDisjointPaths (proposed)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:227
 #: ../../build/doc/release_notes.rst:314
-msgid "pgr_withPointsCost (proposed)"
+msgid "pgr_edmondsKarp (proposed)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:228
 #: ../../build/doc/release_notes.rst:315
-msgid "pgr_withPointsKSP (proposed)"
+msgid "pgr_maxCardinalityMatch (proposed)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:229
 #: ../../build/doc/release_notes.rst:316
-msgid "pgr_withPointsDD (proposed)"
+msgid "pgr_maxFlow (proposed)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:230
 #: ../../build/doc/release_notes.rst:317
-msgid "pgr_withPointsCostMatrix (proposed)"
+msgid "pgr_withPoints (proposed)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:231
 #: ../../build/doc/release_notes.rst:318
-msgid "pgr_contractGraph (experimental)"
+msgid "pgr_withPointsCost (proposed)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:232
 #: ../../build/doc/release_notes.rst:319
-msgid "pgr_pushRelabel (experimental)"
+msgid "pgr_withPointsKSP (proposed)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:233
 #: ../../build/doc/release_notes.rst:320
-msgid "pgr_vrpOneDepot (experimental)"
+msgid "pgr_withPointsDD (proposed)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:234
 #: ../../build/doc/release_notes.rst:321
-msgid "pgr_gsoc_vrppdtw (experimental)"
+msgid "pgr_withPointsCostMatrix (proposed)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:235
 #: ../../build/doc/release_notes.rst:322
-msgid "Fixes for deprecated functions where also applied but not tested"
+msgid "pgr_contractGraph (experimental)"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:236
+#: ../../build/doc/release_notes.rst:323
+msgid "pgr_pushRelabel (experimental)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:237
 #: ../../build/doc/release_notes.rst:324
-msgid "Removed compilation warning for g++8"
+msgid "pgr_vrpOneDepot (experimental)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:238
 #: ../../build/doc/release_notes.rst:325
+msgid "pgr_gsoc_vrppdtw (experimental)"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:239
+#: ../../build/doc/release_notes.rst:326
+msgid "Fixes for deprecated functions where also applied but not tested"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:241
+#: ../../build/doc/release_notes.rst:328
+msgid "Removed compilation warning for g++8"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:242
+#: ../../build/doc/release_notes.rst:329
 msgid "Fixed a fallthrugh on Astar and bdAstar."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:243
+#: ../../build/doc/release_notes.rst:247
 msgid "pgRouting 2.6.0 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:245
+#: ../../build/doc/release_notes.rst:249
 msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:249
+#: ../../build/doc/release_notes.rst:253
 msgid "New fexperimental functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:250
-#: ../../build/doc/release_notes.rst:405
+#: ../../build/doc/release_notes.rst:254
+#: ../../build/doc/release_notes.rst:409
 msgid "pgr_lineGraphFull"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:254
+#: ../../build/doc/release_notes.rst:258
 msgid "Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean[,text])"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:256
+#: ../../build/doc/release_notes.rst:260
 msgid "without restrictions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:258
+#: ../../build/doc/release_notes.rst:262
 msgid "calls pgr_dijkstra when both end points have a fraction IN (0,1)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:259
+#: ../../build/doc/release_notes.rst:263
 msgid "calls pgr_withPoints when at least one fraction NOT IN (0,1)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:261
+#: ../../build/doc/release_notes.rst:265
 msgid "with restrictions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:263
+#: ../../build/doc/release_notes.rst:267
 msgid "calls original trsp code"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:266
+#: ../../build/doc/release_notes.rst:270
 msgid "Internal code"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:267
+#: ../../build/doc/release_notes.rst:271
 msgid "Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [, text])"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:269
+#: ../../build/doc/release_notes.rst:273
 msgid "Removed the use of pointers"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:270
+#: ../../build/doc/release_notes.rst:274
 msgid "Internal code can accept BIGINT"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:272
+#: ../../build/doc/release_notes.rst:276
 msgid "Cleaned the internal code of withPoints"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:277
+#: ../../build/doc/release_notes.rst:281
 msgid "pgRouting 2.5.5 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:279
+#: ../../build/doc/release_notes.rst:283
 msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:283
+#: ../../build/doc/release_notes.rst:287
 msgid "Fixes driving distance when vertex is not part of the graph"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:284
+#: ../../build/doc/release_notes.rst:288
 msgid "Fixes windows test"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:285
+#: ../../build/doc/release_notes.rst:289
 msgid "Fixes build for python3 and perl5"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:290
+#: ../../build/doc/release_notes.rst:294
 msgid "pgRouting 2.5.4 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:292
+#: ../../build/doc/release_notes.rst:296
 msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:330
+#: ../../build/doc/release_notes.rst:334
 msgid "pgRouting 2.5.3 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:332
+#: ../../build/doc/release_notes.rst:336
 msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:336
+#: ../../build/doc/release_notes.rst:340
 msgid "Fix for postgresql 11: Removed a compilation error when compiling with postgreSQL"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:341
+#: ../../build/doc/release_notes.rst:345
 msgid "pgRouting 2.5.2 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:343
+#: ../../build/doc/release_notes.rst:347
 msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:347
+#: ../../build/doc/release_notes.rst:351
 msgid "Fix for postgresql 10.1: Removed a compiler condition"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:353
+#: ../../build/doc/release_notes.rst:357
 msgid "pgRouting 2.5.1 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:355
+#: ../../build/doc/release_notes.rst:359
 msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:359
+#: ../../build/doc/release_notes.rst:363
 msgid "Fixed prerequisite minimum version of: cmake"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:365
+#: ../../build/doc/release_notes.rst:369
 msgid "pgRouting 2.5.0 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:367
+#: ../../build/doc/release_notes.rst:371
 msgid "To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:371
+#: ../../build/doc/release_notes.rst:375
 msgid "enhancement:"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:372
+#: ../../build/doc/release_notes.rst:376
 msgid "pgr_version is now on SQL language"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:375
+#: ../../build/doc/release_notes.rst:379
 msgid "Breaking change on:"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:376
+#: ../../build/doc/release_notes.rst:380
 msgid "pgr_edgeDisjointPaths:"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:378
+#: ../../build/doc/release_notes.rst:382
 msgid "Added path_id, cost and agg_cost columns on the result"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:379
+#: ../../build/doc/release_notes.rst:383
 msgid "Parameter names changed"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:380
+#: ../../build/doc/release_notes.rst:384
 msgid "The many version results are the union of the one to one version"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:383
+#: ../../build/doc/release_notes.rst:387
 msgid "New Signatures:"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:384
+#: ../../build/doc/release_notes.rst:388
 msgid "pgr_bdAstar(one to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:387
-#: ../../build/doc/release_notes.rst:546
+#: ../../build/doc/release_notes.rst:391
+#: ../../build/doc/release_notes.rst:550
 msgid "New Proposed functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:395
+#: ../../build/doc/release_notes.rst:399
 msgid "pgr_bdAstarCostMatrix"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:403
+#: ../../build/doc/release_notes.rst:407
 msgid "pgr_bdDijkstraCostMatrix"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:404
+#: ../../build/doc/release_notes.rst:408
 msgid "pgr_lineGraph"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:413
-#: ../../build/doc/release_notes.rst:483
-#: ../../build/doc/release_notes.rst:570
+#: ../../build/doc/release_notes.rst:417
+#: ../../build/doc/release_notes.rst:487
+#: ../../build/doc/release_notes.rst:574
 msgid "Deprecated Signatures"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:414
+#: ../../build/doc/release_notes.rst:418
 msgid "pgr_bdastar - use pgr_bdAstar instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:417
+#: ../../build/doc/release_notes.rst:421
 msgid "Renamed Functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:418
+#: ../../build/doc/release_notes.rst:422
 msgid "pgr_maxFlowPushRelabel - use pgr_pushRelabel instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:419
+#: ../../build/doc/release_notes.rst:423
 msgid "pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:420
+#: ../../build/doc/release_notes.rst:424
 msgid "pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:421
+#: ../../build/doc/release_notes.rst:425
 msgid "pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:424
+#: ../../build/doc/release_notes.rst:428
 msgid "Deprecated function"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:425
+#: ../../build/doc/release_notes.rst:429
 msgid "pgr_pointToEdgeNode"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:431
+#: ../../build/doc/release_notes.rst:435
 msgid "pgRouting 2.4.2 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:433
+#: ../../build/doc/release_notes.rst:437
 msgid "To see the issues closed by this release see the `Git closed milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:436
+#: ../../build/doc/release_notes.rst:440
 msgid "Improvement"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:437
+#: ../../build/doc/release_notes.rst:441
 msgid "Works for postgreSQL 10"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:441
+#: ../../build/doc/release_notes.rst:445
 msgid "Fixed: Unexpected error column \"cname\""
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:442
+#: ../../build/doc/release_notes.rst:446
 msgid "Replace __linux__ with __GLIBC__ for glibc-specific headers and functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:449
+#: ../../build/doc/release_notes.rst:453
 msgid "pgRouting 2.4.1 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:451
+#: ../../build/doc/release_notes.rst:455
 msgid "To see the issues closed by this release see the `Git closed milestone for 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:455
+#: ../../build/doc/release_notes.rst:459
 msgid "Fixed compiling error on macOS"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:456
+#: ../../build/doc/release_notes.rst:460
 msgid "Condition error on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:461
+#: ../../build/doc/release_notes.rst:465
 msgid "pgRouting 2.4.0 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:463
+#: ../../build/doc/release_notes.rst:467
 msgid "To see the issues closed by this release see the `Git closed issues for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:466
-#: ../../build/doc/release_notes.rst:536
-#: ../../build/doc/release_notes.rst:697
+#: ../../build/doc/release_notes.rst:470
+#: ../../build/doc/release_notes.rst:540
+#: ../../build/doc/release_notes.rst:701
 msgid "New Signatures"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:467
+#: ../../build/doc/release_notes.rst:471
 msgid "pgr_bdDijkstra"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:471
+#: ../../build/doc/release_notes.rst:475
 msgid "New Proposed Signatures"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:473
+#: ../../build/doc/release_notes.rst:477
 msgid "pgr_astar(one to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:474
+#: ../../build/doc/release_notes.rst:478
 msgid "pgr_astar(many to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:475
+#: ../../build/doc/release_notes.rst:479
 msgid "pgr_astar(many to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:476
+#: ../../build/doc/release_notes.rst:480
 msgid "pgr_astarCost(one to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:477
+#: ../../build/doc/release_notes.rst:481
 msgid "pgr_astarCost(one to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:478
+#: ../../build/doc/release_notes.rst:482
 msgid "pgr_astarCost(many to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:479
+#: ../../build/doc/release_notes.rst:483
 msgid "pgr_astarCost(many to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:480
+#: ../../build/doc/release_notes.rst:484
 msgid "pgr_astarCostMatrix"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:484
+#: ../../build/doc/release_notes.rst:488
 msgid "pgr_bddijkstra - use pgr_bdDijkstra instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:487
-#: ../../build/doc/release_notes.rst:576
+#: ../../build/doc/release_notes.rst:491
+#: ../../build/doc/release_notes.rst:580
 msgid "Deprecated Functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:488
+#: ../../build/doc/release_notes.rst:492
 msgid "pgr_pointsToVids"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:492
+#: ../../build/doc/release_notes.rst:496
 msgid "Bug fixes on proposed functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:494
+#: ../../build/doc/release_notes.rst:498
 msgid "pgr_withPointsKSP: fixed ordering"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:496
+#: ../../build/doc/release_notes.rst:500
 msgid "TRSP original code is used with no changes on the compilation warnings"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:501
+#: ../../build/doc/release_notes.rst:505
 msgid "pgRouting 2.3.2 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:503
+#: ../../build/doc/release_notes.rst:507
 msgid "To see the issues closed by this release see the `Git closed issues for 2.3.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:507
+#: ../../build/doc/release_notes.rst:511
 msgid "Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:508
+#: ../../build/doc/release_notes.rst:512
 msgid "Fixed pgr_trsp:"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:510
+#: ../../build/doc/release_notes.rst:514
 msgid "Alternate code is not executed when the point is in reality a vertex"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:511
+#: ../../build/doc/release_notes.rst:515
 msgid "Fixed ambiguity on seq"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:517
+#: ../../build/doc/release_notes.rst:521
 msgid "pgRouting 2.3.1 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:519
+#: ../../build/doc/release_notes.rst:523
 msgid "To see the issues closed by this release see the `Git closed issues for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:523
+#: ../../build/doc/release_notes.rst:527
 msgid "Leaks on proposed max_flow functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:524
+#: ../../build/doc/release_notes.rst:528
 msgid "Regression error on pgr_trsp"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:525
+#: ../../build/doc/release_notes.rst:529
 msgid "Types discrepancy on pgr_createVerticesTable"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:531
+#: ../../build/doc/release_notes.rst:535
 msgid "pgRouting 2.3.0 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:533
+#: ../../build/doc/release_notes.rst:537
 msgid "To see the issues closed by this release see the `Git closed issues for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:537
+#: ../../build/doc/release_notes.rst:541
 msgid "pgr_TSP"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:538
+#: ../../build/doc/release_notes.rst:542
 msgid "pgr_aStar"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:541
-#: ../../build/doc/release_notes.rst:653
+#: ../../build/doc/release_notes.rst:545
+#: ../../build/doc/release_notes.rst:657
 msgid "New Functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:542
+#: ../../build/doc/release_notes.rst:546
 msgid "pgr_eucledianTSP"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:548
+#: ../../build/doc/release_notes.rst:552
 msgid "pgr_withPointsCostMatrix"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:549
+#: ../../build/doc/release_notes.rst:553
 msgid "pgr_maxFlowPushRelabel(one to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:550
+#: ../../build/doc/release_notes.rst:554
 msgid "pgr_maxFlowPushRelabel(one to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:551
+#: ../../build/doc/release_notes.rst:555
 msgid "pgr_maxFlowPushRelabel(many to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:552
+#: ../../build/doc/release_notes.rst:556
 msgid "pgr_maxFlowPushRelabel(many to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:553
+#: ../../build/doc/release_notes.rst:557
 msgid "pgr_maxFlowEdmondsKarp(one to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:554
+#: ../../build/doc/release_notes.rst:558
 msgid "pgr_maxFlowEdmondsKarp(one to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:555
+#: ../../build/doc/release_notes.rst:559
 msgid "pgr_maxFlowEdmondsKarp(many to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:556
+#: ../../build/doc/release_notes.rst:560
 msgid "pgr_maxFlowEdmondsKarp(many to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:557
+#: ../../build/doc/release_notes.rst:561
 msgid "pgr_maxFlowBoykovKolmogorov (one to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:558
+#: ../../build/doc/release_notes.rst:562
 msgid "pgr_maxFlowBoykovKolmogorov (one to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:559
+#: ../../build/doc/release_notes.rst:563
 msgid "pgr_maxFlowBoykovKolmogorov (many to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:560
+#: ../../build/doc/release_notes.rst:564
 msgid "pgr_maxFlowBoykovKolmogorov (many to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:561
+#: ../../build/doc/release_notes.rst:565
 msgid "pgr_maximumCardinalityMatching"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:566
+#: ../../build/doc/release_notes.rst:570
 msgid "pgr_contractGraph"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:571
+#: ../../build/doc/release_notes.rst:575
 msgid "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:572
+#: ../../build/doc/release_notes.rst:576
 msgid "pgr_astar - use pgr_aStar instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:577
+#: ../../build/doc/release_notes.rst:581
 msgid "pgr_flip_edges"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:578
+#: ../../build/doc/release_notes.rst:582
 msgid "pgr_vidsToDmatrix"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:579
+#: ../../build/doc/release_notes.rst:583
 msgid "pgr_pointsToDMatrix"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:580
+#: ../../build/doc/release_notes.rst:584
 msgid "pgr_textToPoints"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:587
+#: ../../build/doc/release_notes.rst:591
 msgid "pgRouting 2.2.4 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:589
+#: ../../build/doc/release_notes.rst:593
 msgid "To see the issues closed by this release see the `Git closed issues for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:593
+#: ../../build/doc/release_notes.rst:597
 msgid "Bogus uses of extern \"C\""
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:594
+#: ../../build/doc/release_notes.rst:598
 msgid "Build error on Fedora 24 + GCC 6.0"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:595
+#: ../../build/doc/release_notes.rst:599
 msgid "Regression error pgr_nodeNetwork"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:600
+#: ../../build/doc/release_notes.rst:604
 msgid "pgRouting 2.2.3 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:602
+#: ../../build/doc/release_notes.rst:606
 msgid "To see the issues closed by this release see the `Git closed issues for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:606
+#: ../../build/doc/release_notes.rst:610
 msgid "Fixed compatibility issues with PostgreSQL 9.6."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:611
+#: ../../build/doc/release_notes.rst:615
 msgid "pgRouting 2.2.2 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:613
+#: ../../build/doc/release_notes.rst:617
 msgid "To see the issues closed by this release see the `Git closed issues for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:617
+#: ../../build/doc/release_notes.rst:621
 msgid "Fixed regression error on pgr_drivingDistance"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:623
+#: ../../build/doc/release_notes.rst:627
 msgid "pgRouting 2.2.1 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:625
+#: ../../build/doc/release_notes.rst:629
 msgid "To see the issues closed by this release see the `Git closed issues for 2.2.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:629
+#: ../../build/doc/release_notes.rst:633
 msgid "Server crash fix on pgr_alphaShape"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:630
+#: ../../build/doc/release_notes.rst:634
 msgid "Bug fix on With Points family of functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:636
+#: ../../build/doc/release_notes.rst:640
 msgid "pgRouting 2.2.0 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:638
+#: ../../build/doc/release_notes.rst:642
 msgid "To see the issues closed by this release see the `Git closed issues for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:642
-#: ../../build/doc/release_notes.rst:710
+#: ../../build/doc/release_notes.rst:646
+#: ../../build/doc/release_notes.rst:714
 msgid "Improvements"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:643
+#: ../../build/doc/release_notes.rst:647
 msgid "pgr_nodeNetwork"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:645
+#: ../../build/doc/release_notes.rst:649
 msgid "Adding a row_where and outall optional parameters"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:647
+#: ../../build/doc/release_notes.rst:651
 msgid "Signature fix"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:649
+#: ../../build/doc/release_notes.rst:653
 msgid "pgr_dijkstra  -- to match what is documented"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:655
+#: ../../build/doc/release_notes.rst:659
 msgid "pgr_Johnson"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:656
+#: ../../build/doc/release_notes.rst:660
 msgid "pgr_dijkstraCost(one to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:657
+#: ../../build/doc/release_notes.rst:661
 msgid "pgr_dijkstraCost(one to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:658
+#: ../../build/doc/release_notes.rst:662
 msgid "pgr_dijkstraCost(many to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:659
+#: ../../build/doc/release_notes.rst:663
 msgid "pgr_dijkstraCost(many to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:662
-#: ../../build/doc/release_notes.rst:714
+#: ../../build/doc/release_notes.rst:666
+#: ../../build/doc/release_notes.rst:718
 msgid "Proposed functionality"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:663
+#: ../../build/doc/release_notes.rst:667
 msgid "pgr_withPoints(one to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:664
+#: ../../build/doc/release_notes.rst:668
 msgid "pgr_withPoints(one to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:665
+#: ../../build/doc/release_notes.rst:669
 msgid "pgr_withPoints(many to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:666
+#: ../../build/doc/release_notes.rst:670
 msgid "pgr_withPoints(many to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:667
+#: ../../build/doc/release_notes.rst:671
 msgid "pgr_withPointsCost(one to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:668
+#: ../../build/doc/release_notes.rst:672
 msgid "pgr_withPointsCost(one to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:669
+#: ../../build/doc/release_notes.rst:673
 msgid "pgr_withPointsCost(many to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:670
+#: ../../build/doc/release_notes.rst:674
 msgid "pgr_withPointsCost(many to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:671
+#: ../../build/doc/release_notes.rst:675
 msgid "pgr_withPointsDD(single vertex)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:672
+#: ../../build/doc/release_notes.rst:676
 msgid "pgr_withPointsDD(multiple vertices)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:673
+#: ../../build/doc/release_notes.rst:677
 msgid "pgr_withPointsKSP"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:674
+#: ../../build/doc/release_notes.rst:678
 msgid "pgr_dijkstraVia"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:678
+#: ../../build/doc/release_notes.rst:682
 msgid "Deprecated functions:"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:679
+#: ../../build/doc/release_notes.rst:683
 msgid "pgr_apspWarshall  use pgr_floydWarshall instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:680
+#: ../../build/doc/release_notes.rst:684
 msgid "pgr_apspJohnson   use pgr_Johnson instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:681
+#: ../../build/doc/release_notes.rst:685
 msgid "pgr_kDijkstraCost use pgr_dijkstraCost instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:682
+#: ../../build/doc/release_notes.rst:686
 msgid "pgr_kDijkstraPath use pgr_dijkstra instead"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:685
+#: ../../build/doc/release_notes.rst:689
 msgid "Renamed and deprecated function"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:686
+#: ../../build/doc/release_notes.rst:690
 msgid "pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:692
+#: ../../build/doc/release_notes.rst:696
 msgid "pgRouting 2.1.0 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:694
+#: ../../build/doc/release_notes.rst:698
 msgid "To see the issues closed by this release see the `Git closed issues for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:698
+#: ../../build/doc/release_notes.rst:702
 msgid "pgr_dijkstra(one to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:699
+#: ../../build/doc/release_notes.rst:703
 msgid "pgr_dijkstra(many to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:700
+#: ../../build/doc/release_notes.rst:704
 msgid "pgr_dijkstra(many to many)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:701
+#: ../../build/doc/release_notes.rst:705
 msgid "pgr_drivingDistance(multiple vertices)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:704
+#: ../../build/doc/release_notes.rst:708
 msgid "Refactored"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:705
+#: ../../build/doc/release_notes.rst:709
 msgid "pgr_dijkstra(one to one)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:706
+#: ../../build/doc/release_notes.rst:710
 msgid "pgr_ksp"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:707
+#: ../../build/doc/release_notes.rst:711
 msgid "pgr_drivingDistance(single vertex)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:711
+#: ../../build/doc/release_notes.rst:715
 msgid "pgr_alphaShape function now can generate better (multi)polygon with holes and alpha parameter."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:715
+#: ../../build/doc/release_notes.rst:719
 msgid "Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:717
+#: ../../build/doc/release_notes.rst:721
 msgid "pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:718
+#: ../../build/doc/release_notes.rst:722
 msgid "pgr_flipEdges - flip the edges in an array of geometries so the connect end to end."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:719
+#: ../../build/doc/release_notes.rst:723
 msgid "pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:720
+#: ../../build/doc/release_notes.rst:724
 msgid "pgr_pointsToVids - convert an array of point geometries into vertex ids."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:721
+#: ../../build/doc/release_notes.rst:725
 msgid "pgr_pointsToDMatrix - Create a distance matrix from an array of points."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:722
-#: ../../build/doc/release_notes.rst:723
+#: ../../build/doc/release_notes.rst:726
+#: ../../build/doc/release_notes.rst:727
 msgid "pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:725
+#: ../../build/doc/release_notes.rst:729
 msgid "Added proposed functions from GSoc Projects:"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:727
+#: ../../build/doc/release_notes.rst:731
 msgid "pgr_vrppdtw"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:728
+#: ../../build/doc/release_notes.rst:732
 msgid "pgr_vrponedepot"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:731
+#: ../../build/doc/release_notes.rst:735
 msgid "Deprecated functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:732
+#: ../../build/doc/release_notes.rst:736
 msgid "pgr_getColumnName"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:733
+#: ../../build/doc/release_notes.rst:737
 msgid "pgr_getTableName"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:734
+#: ../../build/doc/release_notes.rst:738
 msgid "pgr_isColumnCndexed"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:735
+#: ../../build/doc/release_notes.rst:739
 msgid "pgr_isColumnInTable"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:736
+#: ../../build/doc/release_notes.rst:740
 msgid "pgr_quote_ident"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:737
+#: ../../build/doc/release_notes.rst:741
 msgid "pgr_versionless"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:738
+#: ../../build/doc/release_notes.rst:742
 msgid "pgr_startPoint"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:739
+#: ../../build/doc/release_notes.rst:743
 msgid "pgr_endPoint"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:740
+#: ../../build/doc/release_notes.rst:744
 msgid "pgr_pointToId"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:743
+#: ../../build/doc/release_notes.rst:747
 msgid "No longer supported"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:744
+#: ../../build/doc/release_notes.rst:748
 msgid "Removed the 1.x legacy functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:748
+#: ../../build/doc/release_notes.rst:752
 msgid "Some bug fixes in other functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:752
+#: ../../build/doc/release_notes.rst:756
 msgid "Refactoring Internal Code"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:753
+#: ../../build/doc/release_notes.rst:757
 msgid "A C and C++ library for developer was created"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:755
+#: ../../build/doc/release_notes.rst:759
 msgid "encapsulates postgreSQL related functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:756
+#: ../../build/doc/release_notes.rst:760
 msgid "encapsulates Boost.Graph graphs"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:758
+#: ../../build/doc/release_notes.rst:762
 msgid "Directed Boost.Graph"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:759
+#: ../../build/doc/release_notes.rst:763
 msgid "Undirected Boost.graph."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:761
+#: ../../build/doc/release_notes.rst:765
 msgid "allow any-integer in the id's"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:762
+#: ../../build/doc/release_notes.rst:766
 msgid "allow any-numerical on the cost/reverse_cost columns"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:764
+#: ../../build/doc/release_notes.rst:768
 msgid "Instead of generating many libraries: - All functions are encapsulated in one library - The library has the prefix 2-1-0"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:773
+#: ../../build/doc/release_notes.rst:777
 msgid "pgRouting 2.0.1 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:775
+#: ../../build/doc/release_notes.rst:779
 msgid "Minor bug fixes."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:779
+#: ../../build/doc/release_notes.rst:783
 msgid "No track of the bug fixes were kept."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:785
+#: ../../build/doc/release_notes.rst:789
 msgid "pgRouting 2.0.0 Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:787
+#: ../../build/doc/release_notes.rst:791
 msgid "To see the issues closed by this release see the `Git closed issues for 2.0.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:789
+#: ../../build/doc/release_notes.rst:793
 msgid "With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to :ref:`pgRouting 1.x <changelog_1_x>` releases. The main Goals for this release are:"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:792
+#: ../../build/doc/release_notes.rst:796
 msgid "Major restructuring of pgRouting."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:793
+#: ../../build/doc/release_notes.rst:797
 msgid "Standardization of the function naming"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:794
+#: ../../build/doc/release_notes.rst:798
 msgid "Preparation of the project for future development."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:796
+#: ../../build/doc/release_notes.rst:800
 msgid "As a result of this effort:"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:798
+#: ../../build/doc/release_notes.rst:802
 msgid "pgRouting has a simplified structure"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:799
+#: ../../build/doc/release_notes.rst:803
 msgid "Significant new functionality has being added"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:800
+#: ../../build/doc/release_notes.rst:804
 msgid "Documentation has being integrated"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:801
+#: ../../build/doc/release_notes.rst:805
 msgid "Testing has being integrated"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:802
+#: ../../build/doc/release_notes.rst:806
 msgid "And made it easier for multiple developers to make contributions."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:806
+#: ../../build/doc/release_notes.rst:810
 msgid "Important Changes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:807
+#: ../../build/doc/release_notes.rst:811
 msgid "Graph Analytics - tools for detecting and fixing connection some problems in a graph"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:808
+#: ../../build/doc/release_notes.rst:812
 msgid "A collection of useful utility functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:809
+#: ../../build/doc/release_notes.rst:813
 msgid "Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:810
+#: ../../build/doc/release_notes.rst:814
 msgid "Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, pgr_bdDijkstra)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:811
+#: ../../build/doc/release_notes.rst:815
 msgid "One to many nodes search (pgr_kDijkstra)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:812
+#: ../../build/doc/release_notes.rst:816
 msgid "K alternate paths shortest path (pgr_ksp)"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:813
+#: ../../build/doc/release_notes.rst:817
 msgid "New TSP solver that simplifies the code and the build process (pgr_tsp), dropped \"Gaul Library\" dependency"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:814
+#: ../../build/doc/release_notes.rst:818
 msgid "Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:815
+#: ../../build/doc/release_notes.rst:819
 msgid "Dropped support for Shooting Star"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:816
+#: ../../build/doc/release_notes.rst:820
 msgid "Built a test infrastructure that is run before major code changes are checked in"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:817
+#: ../../build/doc/release_notes.rst:821
 msgid "Tested and fixed most all of the outstanding bugs reported against 1.x that existing in the 2.0-dev code base."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:818
+#: ../../build/doc/release_notes.rst:822
 msgid "Improved build process for Windows"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:819
+#: ../../build/doc/release_notes.rst:823
 msgid "Automated testing on Linux and Windows platforms trigger by every commit"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:820
+#: ../../build/doc/release_notes.rst:824
 msgid "Modular library design"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:821
+#: ../../build/doc/release_notes.rst:825
 msgid "Compatibility with PostgreSQL 9.1 or newer"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:822
+#: ../../build/doc/release_notes.rst:826
 msgid "Compatibility with PostGIS 2.0 or newer"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:823
+#: ../../build/doc/release_notes.rst:827
 msgid "Installs as PostgreSQL EXTENSION"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:824
+#: ../../build/doc/release_notes.rst:828
 msgid "Return types re factored and unified"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:825
+#: ../../build/doc/release_notes.rst:829
 msgid "Support for table SCHEMA in function parameters"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:826
+#: ../../build/doc/release_notes.rst:830
 msgid "Support for ``st_`` PostGIS function prefix"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:827
+#: ../../build/doc/release_notes.rst:831
 msgid "Added ``pgr_`` prefix to functions and types"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:828
+#: ../../build/doc/release_notes.rst:832
 msgid "Better documentation: http://docs.pgrouting.org"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:829
+#: ../../build/doc/release_notes.rst:833
 msgid "shooting_star is discontinued"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:836
+#: ../../build/doc/release_notes.rst:840
 msgid "pgRouting 1.x Release Notes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:838
+#: ../../build/doc/release_notes.rst:842
 msgid "To see the issues closed by this release see the `Git closed issues for 1.x <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed>`_ on Github. The following release notes have been copied from the previous ``RELEASE_NOTES`` file and are kept as a reference."
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:843
+#: ../../build/doc/release_notes.rst:847
 msgid "Changes for release 1.05"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:849
+#: ../../build/doc/release_notes.rst:853
 msgid "Changes for release 1.03"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:851
+#: ../../build/doc/release_notes.rst:855
 msgid "Much faster topology creation"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:856
+#: ../../build/doc/release_notes.rst:860
 msgid "Changes for release 1.02"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:858
-#: ../../build/doc/release_notes.rst:865
+#: ../../build/doc/release_notes.rst:862
+#: ../../build/doc/release_notes.rst:869
 msgid "Shooting* bug fixes"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:859
+#: ../../build/doc/release_notes.rst:863
 msgid "Compilation problems solved"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:863
+#: ../../build/doc/release_notes.rst:867
 msgid "Changes for release 1.01"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:869
+#: ../../build/doc/release_notes.rst:873
 msgid "Changes for release 1.0"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:871
+#: ../../build/doc/release_notes.rst:875
 msgid "Core and extra functions are separated"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:872
+#: ../../build/doc/release_notes.rst:876
 msgid "Cmake build process"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:877
+#: ../../build/doc/release_notes.rst:881
 msgid "Changes for release 1.0.0b"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:879
+#: ../../build/doc/release_notes.rst:883
 msgid "Additional SQL file with more simple names for wrapper functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:884
+#: ../../build/doc/release_notes.rst:888
 msgid "Changes for release 1.0.0a"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:886
+#: ../../build/doc/release_notes.rst:890
 msgid "Shooting* shortest path algorithm for real road networks"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:887
+#: ../../build/doc/release_notes.rst:891
 msgid "Several SQL bugs were fixed"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:891
+#: ../../build/doc/release_notes.rst:895
 msgid "Changes for release 0.9.9"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:893
+#: ../../build/doc/release_notes.rst:897
 msgid "PostgreSQL 8.2 support"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:894
+#: ../../build/doc/release_notes.rst:898
 msgid "Shortest path functions return empty result if they could not find any path"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:898
+#: ../../build/doc/release_notes.rst:902
 msgid "Changes for release 0.9.8"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:900
+#: ../../build/doc/release_notes.rst:904
 msgid "Renumbering scheme was added to shortest path functions"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:901
+#: ../../build/doc/release_notes.rst:905
 msgid "Directed shortest path functions were added"
 msgstr ""
 
-#: ../../build/doc/release_notes.rst:902
+#: ../../build/doc/release_notes.rst:906
 msgid "routing_postgis.sql was modified to use dijkstra in TSP search"
 msgstr ""
 

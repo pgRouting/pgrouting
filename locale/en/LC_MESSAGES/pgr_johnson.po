@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,12 +43,33 @@ msgstr ""
 msgid "New on v2.0.0"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:27
-#: ../../build/doc/pgr_johnson.rst:96 ../../build/doc/pgr_johnson.rst:115
+#: ../../build/doc/pgr_johnson.rst:26
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<http://docs.pgrouting.org/dev/en/pgr_johnson.html>`__) `2.6 "
+"<http://docs.pgrouting.org/2.6/en/pgr_johnson.html>`__ `2.5 "
+"<http://docs.pgrouting.org/2.5/en/pgr_johnson.html>`__ `2.4 "
+"<http://docs.pgrouting.org/2.4/en/pgr_johnson.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_johnson.rst:32
+msgid ""
+"**Unsupported versions:** `2.3 "
+"<http://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_johnson.html>`__ "
+"`2.2 "
+"<http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_johnson.html>`__ "
+"`2.1 "
+"<http://docs.pgrouting.org/2.1/en/src/apsp_johnson/doc/index.html>`__ "
+"`2.0 "
+"<http://docs.pgrouting.org/2.0/en/src/apsp_johnson/doc/index.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:39
+#: ../../build/doc/pgr_johnson.rst:108 ../../build/doc/pgr_johnson.rst:127
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:29
+#: ../../build/doc/pgr_johnson.rst:41
 msgid ""
 "The Johnson algorithm, is a good choice to calculate the sum of the costs"
 " of the shortest path for each pair of nodes in the graph, for *sparse "
@@ -56,63 +77,63 @@ msgid ""
 "\\log V)` time,"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:49
+#: ../../build/doc/pgr_johnson.rst:61
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:34
+#: ../../build/doc/pgr_johnson.rst:46
 msgid "It does not return a path."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:35
+#: ../../build/doc/pgr_johnson.rst:47
 msgid ""
 "Returns the sum of the costs of the shortest path for each pair of nodes "
 "in the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:36
+#: ../../build/doc/pgr_johnson.rst:48
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:37
+#: ../../build/doc/pgr_johnson.rst:49
 msgid ""
 "Boost returns a :math:`V \\times V` matrix, where the infinity values. "
 "Represent the distance between vertices for which there is no path."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:40
+#: ../../build/doc/pgr_johnson.rst:52
 msgid ""
 "We return only the non infinity values in form of a set of `(start_vid, "
 "end_vid, agg_cost)`."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:42
+#: ../../build/doc/pgr_johnson.rst:54
 msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
 "index would be the pair: `(start_vid, end_vid)`."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:45
+#: ../../build/doc/pgr_johnson.rst:57
 msgid "For the undirected graph, the results are symmetric."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:47
+#: ../../build/doc/pgr_johnson.rst:59
 msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:49
+#: ../../build/doc/pgr_johnson.rst:61
 msgid "When  `start_vid` = `end_vid`, the `agg_cost` = 0."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:52
+#: ../../build/doc/pgr_johnson.rst:64
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:55
+#: ../../build/doc/pgr_johnson.rst:67
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:64
+#: ../../build/doc/pgr_johnson.rst:76
 msgid "Using default"
 msgstr ""
 
@@ -120,11 +141,11 @@ msgstr ""
 msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:71
+#: ../../build/doc/pgr_johnson.rst:83
 msgid "For vertices :math:`\\{1, 2, 3, 4\\}` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:78
+#: ../../build/doc/pgr_johnson.rst:90
 msgid "Complete Signature"
 msgstr ""
 
@@ -132,50 +153,50 @@ msgstr ""
 msgid "Example 2"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:86
+#: ../../build/doc/pgr_johnson.rst:98
 msgid "For vertices :math:`\\{1, 2, 3, 4\\}` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:93
+#: ../../build/doc/pgr_johnson.rst:105
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:96
+#: ../../build/doc/pgr_johnson.rst:108
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:96
-#: ../../build/doc/pgr_johnson.rst:115
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:108
+#: ../../build/doc/pgr_johnson.rst:127
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:98
+#: ../../build/doc/pgr_johnson.rst:110
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:98
+#: ../../build/doc/pgr_johnson.rst:110
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:98
+#: ../../build/doc/pgr_johnson.rst:110
 msgid "SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:99
+#: ../../build/doc/pgr_johnson.rst:111
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:99
+#: ../../build/doc/pgr_johnson.rst:111
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:99
+#: ../../build/doc/pgr_johnson.rst:111
 msgid ""
 "(optional) Default is true (is directed). When set to false the graph is "
 "considered as Undirected"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:103
+#: ../../build/doc/pgr_johnson.rst:115
 msgid "Inner query"
 msgstr ""
 
@@ -193,7 +214,7 @@ msgid ""
 "columns:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:115
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:127
 msgid "Column"
 msgstr ""
 
@@ -279,74 +300,74 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:110
+#: ../../build/doc/pgr_johnson.rst:122
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:112
+#: ../../build/doc/pgr_johnson.rst:124
 msgid "Returns set of ``(start_vid, end_vid, agg_cost)``"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:117
+#: ../../build/doc/pgr_johnson.rst:129
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:117 ../../build/doc/pgr_johnson.rst:118
+#: ../../build/doc/pgr_johnson.rst:129 ../../build/doc/pgr_johnson.rst:130
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:117
+#: ../../build/doc/pgr_johnson.rst:129
 msgid "Identifier of the starting vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:118
+#: ../../build/doc/pgr_johnson.rst:130
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:118
+#: ../../build/doc/pgr_johnson.rst:130
 msgid "Identifier of the ending vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:119
+#: ../../build/doc/pgr_johnson.rst:131
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:119
+#: ../../build/doc/pgr_johnson.rst:131
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:119
+#: ../../build/doc/pgr_johnson.rst:131
 msgid "Total cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:123
+#: ../../build/doc/pgr_johnson.rst:135
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:125
+#: ../../build/doc/pgr_johnson.rst:137
 msgid ":doc:`pgr_floydWarshall`"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:126
+#: ../../build/doc/pgr_johnson.rst:138
 msgid ""
 "`Boost Johnson "
 "<http://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_ "
 "algorithm implementation."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:127
+#: ../../build/doc/pgr_johnson.rst:139
 msgid "Queries uses the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:130
+#: ../../build/doc/pgr_johnson.rst:142
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:131
+#: ../../build/doc/pgr_johnson.rst:143
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:132
+#: ../../build/doc/pgr_johnson.rst:144
 msgid ":ref:`search`"
 msgstr ""
 
