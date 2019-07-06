@@ -20,10 +20,13 @@ digraph "pgrouting::Pgr_messages::get_log"
   Node120 [label="pgrouting::vrp::Fleet\l::get_truck",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Fleet.html#aa83573a954baa1fdd349b557b664571e"];
   Node102 -> Node121 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node121 [label="pgrouting::vrp::Pgr\l_pickDeliver::nodesOK",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a20c4e77a2c753ff51d9802b9abb1e9c1"];
-  Node102 -> Node131 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node131 [label="pgrouting::Pgr_messages\l::operator=",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pgr__messages.html#aeef4a61000c045a6fe05a39abf673393"];
-  Node102 -> Node132 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node132 [label="pgr_bellman_ford",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$bellman__ford__driver_8cpp.html#aa7f05e5242a5574c24679a552f25993e"];
+  Node121 -> Node134 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node134 [label="pgrouting::vrp::Pgr\l_pickDeliver::Pgr_pickDeliver",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#adb8cc9394dc91b88dee7cb5010c57a4e",tooltip="Constructor for the matrix version. "];
+  Node102 -> Node135 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node135 [label="pgrouting::Pgr_messages\l::operator=",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pgr__messages.html#aeef4a61000c045a6fe05a39abf673393"];
   Node102 -> Node136 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node136 [label="pgr_dijkstraTR",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$turnRestrictedPath__driver_8cpp.html#ae5d636a163535e62f3c43c1571c44ccf"];
+  Node136 [label="pgr_bellman_ford",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$bellman__ford__driver_8cpp.html#aa7f05e5242a5574c24679a552f25993e"];
+  Node102 -> Node140 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node140 [label="pgr_dijkstraTR",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$turnRestrictedPath__driver_8cpp.html#ae5d636a163535e62f3c43c1571c44ccf"];
+  Node102 -> Node134 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

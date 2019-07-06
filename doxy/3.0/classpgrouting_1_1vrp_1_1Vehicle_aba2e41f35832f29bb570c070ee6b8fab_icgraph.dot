@@ -3,9 +3,9 @@ digraph "pgrouting::vrp::Vehicle::path"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node845 [label="pgrouting::vrp::Vehicle\l::path",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node845 -> Node846 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node846 [label="pgrouting::vrp::Vehicle\l::capacity",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#ae1ed768d6cabc552f29b2d33d86ff386"];
-  Node845 -> Node848 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node848 [label="pgrouting::vrp::operator\<\<",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacepgrouting_1_1vrp.html#ad52d4d4bcd5667c19bd9c78f72dde8c7"];
+  Node931 [label="pgrouting::vrp::Vehicle\l::path",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node931 -> Node932 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node932 [label="pgrouting::vrp::Vehicle\l::capacity",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#ae1ed768d6cabc552f29b2d33d86ff386"];
+  Node931 -> Node934 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node934 [label="pgrouting::vrp::operator\<\<",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacepgrouting_1_1vrp.html#ad52d4d4bcd5667c19bd9c78f72dde8c7"];
 }

@@ -3,7 +3,7 @@ digraph "pgrouting::vrp::Vehicle_pickDeliver::is_order_feasable"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node731 [label="pgrouting::vrp::Vehicle\l_pickDeliver::is_order\l_feasable",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node731 -> Node732 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node732 [label="pgrouting::vrp::Vehicle\l_pickDeliver::set_compatibles",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a0c933b7eb549491fc0a6e40a599e3ad8"];
+  Node804 [label="pgrouting::vrp::Vehicle\l_pickDeliver::is_order\l_feasable",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node804 -> Node805 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node805 [label="pgrouting::vrp::Vehicle\l_pickDeliver::set_compatibles",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a0c933b7eb549491fc0a6e40a599e3ad8"];
 }

@@ -3,13 +3,13 @@ digraph "pgrouting::vrp::Vehicle::total_wait_time"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1088 [label="pgrouting::vrp::Vehicle\l::total_wait_time",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node1088 -> Node1089 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1089 [label="pgrouting::vrp::Vehicle\l::cost",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a446393c0863473ebf3f6db060ddae597"];
-  Node1088 -> Node1092 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1092 [label="pgrouting::vrp::Vehicle\l::free_time",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#ad31399fe507a2e19da0e1357b94bffc7"];
-  Node1088 -> Node1093 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1093 [label="pgrouting::vrp::Optimize\l::sort_for_move",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#aec63939cbbeee8ec5c055a8a97ec52ba"];
-  Node1088 -> Node1099 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1099 [label="pgrouting::vrp::Vehicle::tau",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a8c24ca81fed1ec1d0e2a9e9a327cd91b"];
+  Node1245 [label="pgrouting::vrp::Vehicle\l::total_wait_time",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1245 -> Node1246 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1246 [label="pgrouting::vrp::Vehicle\l::cost",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a446393c0863473ebf3f6db060ddae597"];
+  Node1245 -> Node1254 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1254 [label="pgrouting::vrp::Vehicle\l::free_time",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#ad31399fe507a2e19da0e1357b94bffc7"];
+  Node1245 -> Node1255 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1255 [label="pgrouting::vrp::Optimize\l::sort_for_move",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#aec63939cbbeee8ec5c055a8a97ec52ba"];
+  Node1245 -> Node1258 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1258 [label="pgrouting::vrp::Vehicle::tau",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a8c24ca81fed1ec1d0e2a9e9a327cd91b"];
 }

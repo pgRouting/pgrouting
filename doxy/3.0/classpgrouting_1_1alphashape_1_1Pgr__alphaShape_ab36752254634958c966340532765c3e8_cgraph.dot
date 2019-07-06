@@ -3,7 +3,7 @@ digraph "pgrouting::alphashape::Pgr_alphaShape::recursive_build"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node150 [label="pgrouting::alphashape\l::Pgr_alphaShape::recursive_build",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node150 -> Node151 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node151 [label="pgrouting::alphashape\l::Pgr_alphaShape::faceBelongs",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a08beee755353933f89cf91ea79708188"];
+  Node154 [label="pgrouting::alphashape\l::Pgr_alphaShape::recursive_build",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node154 -> Node155 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node155 [label="pgrouting::alphashape\l::Pgr_alphaShape::faceBelongs",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a08beee755353933f89cf91ea79708188"];
 }

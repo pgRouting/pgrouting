@@ -1,5 +1,6 @@
 <map id="pgrouting::vrp::Optimize::move_reduce_cost" name="pgrouting::vrp::Optimize::move_reduce_cost">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html#a147f029e589a2dd36b1edd638d7ac833" title="pgrouting::Identifier::id" alt="" coords="220,5,371,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Optimize.html#a4f8e527bcd5a3ffc23dff8c3951dc337" title="pgrouting::vrp::Optimize\l::move_order" alt="" coords="215,57,376,98"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Optimize.html#a566ff61efd9b90653451236317ffa16f" title="pgrouting::vrp::Optimize\l::save_if_best" alt="" coords="215,122,376,163"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Solution.html#aa6bc3fa440ee4f3cdad17bd1f069bc43" title="pgrouting::vrp::Solution\l::duration" alt="" coords="424,76,580,117"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Solution.html#a82bc3ecf220fbf390c9987f908fdad26" title="pgrouting::vrp::Solution\l::get_kind" alt="" coords="217,32,373,73"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a5c9706adba6b67df27506b64815f4d8d" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_in\l_vehicle" alt="" coords="218,98,373,154"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Optimize.html#a566ff61efd9b90653451236317ffa16f" title="pgrouting::vrp::Optimize\l::save_if_best" alt="" coords="215,179,376,220"/>
 </map>

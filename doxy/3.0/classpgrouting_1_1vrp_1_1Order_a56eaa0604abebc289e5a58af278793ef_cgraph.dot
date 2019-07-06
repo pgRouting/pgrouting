@@ -3,15 +3,15 @@ digraph "pgrouting::vrp::Order::is_valid"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node136 [label="pgrouting::vrp::Order\l::is_valid",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node136 -> Node137 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node137 [label="pgrouting::vrp::Order\l::delivery",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Order.html#a909823e836bd8fb257eede3dc13ba61e",tooltip="The delivery node identifier. "];
-  Node136 -> Node138 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node138 [label="pgrouting::vrp::Tw\l_node::is_compatible_IJ",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a"];
-  Node136 -> Node145 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node145 [label="pgrouting::vrp::Tw\l_node::is_delivery",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76",tooltip="is_delivery "];
-  Node136 -> Node148 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node148 [label="pgrouting::vrp::Tw\l_node::is_pickup",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b",tooltip="is_pickup "];
-  Node136 -> Node149 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node149 [label="pgrouting::vrp::Order\l::pickup",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Order.html#aabef0d026576976f0e0eddd40171645b",tooltip="The delivery node identifier. "];
+  Node139 [label="pgrouting::vrp::Order\l::is_valid",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node139 -> Node140 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node140 [label="pgrouting::vrp::Order\l::delivery",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Order.html#a909823e836bd8fb257eede3dc13ba61e",tooltip="The delivery node identifier. "];
+  Node139 -> Node141 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node141 [label="pgrouting::vrp::Tw\l_node::is_compatible_IJ",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a"];
+  Node139 -> Node148 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node148 [label="pgrouting::vrp::Tw\l_node::is_delivery",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76",tooltip="is_delivery "];
+  Node139 -> Node151 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node151 [label="pgrouting::vrp::Tw\l_node::is_pickup",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b",tooltip="is_pickup "];
+  Node139 -> Node152 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node152 [label="pgrouting::vrp::Order\l::pickup",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Order.html#aabef0d026576976f0e0eddd40171645b",tooltip="The delivery node identifier. "];
 }

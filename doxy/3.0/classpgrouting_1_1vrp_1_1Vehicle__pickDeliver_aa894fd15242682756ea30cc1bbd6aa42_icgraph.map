@@ -1,5 +1,4 @@
 <map id="pgrouting::vrp::Vehicle_pickDeliver::push_back" name="pgrouting::vrp::Vehicle_pickDeliver::push_back">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3dd3375570d3cbe915571e2aea4560d2" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="419,27,572,83"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a5c9706adba6b67df27506b64815f4d8d" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_in\l_vehicle" alt="" coords="620,27,775,83"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="219,87,371,128"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aedf5f30b753fed6af792b114ec804636" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="219,5,372,61"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a5c9706adba6b67df27506b64815f4d8d" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_in\l_vehicle" alt="" coords="420,39,575,95"/>
 </map>

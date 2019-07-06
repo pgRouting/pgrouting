@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['illegal',['ILLEGAL',['../classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a4b2f103768fbe8c13167d531d335f173af81a4f4016aa481d88a747fab239e6f3',1,'pgrouting::trsp::Pgr_trspHandler']]]
+  ['directed',['DIRECTED',['../graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5',1,'graph_enum.h']]]
 ];

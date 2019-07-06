@@ -3,10 +3,17 @@ digraph "pgrouting::vrp::Vehicle::is_feasable"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node687 [label="pgrouting::vrp::Vehicle\l::is_feasable",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node687 -> Node688 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node688 [label="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3dd3375570d3cbe915571e2aea4560d2"];
-  Node687 -> Node697 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node697 [label="pgrouting::vrp::Vehicle\l_pickDeliver::insert",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688",tooltip="Inserts an order. "];
-  Node697 -> Node688 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node758 [label="pgrouting::vrp::Vehicle\l::is_feasable",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node758 -> Node759 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node759 [label="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aedf5f30b753fed6af792b114ec804636"];
+  Node758 -> Node771 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node771 [label="pgrouting::vrp::Vehicle\l_pickDeliver::insert",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae10bef610549433ababadd20411a5e84",tooltip="Inserts an order. "];
+  Node771 -> Node759 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node771 -> Node775 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node775 [label="pgrouting::vrp::Optimize\l::swap_order",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#a3d0a917f2993449c45ce0febbff2e13f"];
+  Node758 -> Node776 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node776 [label="pgrouting::vrp::Vehicle\l_pickDeliver::semiLIFO",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a59a88f45361f562c3c7b2391539de7b0",tooltip="Inserts an order In semi-Lifo order. "];
+  Node776 -> Node775 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node776 -> Node759 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node758 -> Node775 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

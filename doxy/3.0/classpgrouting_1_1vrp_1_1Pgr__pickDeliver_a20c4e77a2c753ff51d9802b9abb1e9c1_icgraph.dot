@@ -3,9 +3,9 @@ digraph "pgrouting::vrp::Pgr_pickDeliver::nodesOK"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node53 [label="pgrouting::vrp::Pgr\l_pickDeliver::nodesOK",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node53 -> Node54 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node54 [label="pgrouting::vrp::Pgr\l_pickDeliver::add_base_node",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a87ba9f138cb87373726d87a88a3f264b"];
-  Node53 -> Node62 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node62 [label="pgrouting::vrp::Pgr\l_pickDeliver::Pgr_pickDeliver",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#adb8cc9394dc91b88dee7cb5010c57a4e",tooltip="Constructor for the matrix version. "];
+  Node66 [label="pgrouting::vrp::Pgr\l_pickDeliver::nodesOK",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node66 -> Node67 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node67 [label="pgrouting::vrp::Pgr\l_pickDeliver::get_kind",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a16c03113dfc093fa32913f2b579dd9af"];
+  Node66 -> Node79 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node79 [label="pgrouting::vrp::Pgr\l_pickDeliver::Pgr_pickDeliver",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#adb8cc9394dc91b88dee7cb5010c57a4e",tooltip="Constructor for the matrix version. "];
 }

@@ -3,7 +3,7 @@ digraph "pgrouting::yen::Pgr_turnRestrictedPath::turnRestrictedPath"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node242 [label="pgrouting::yen::Pgr\l_turnRestrictedPath\l::turnRestrictedPath",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node242 -> Node243 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node243 [label="pgr_dijkstraTR",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$turnRestrictedPath__driver_8cpp.html#ae5d636a163535e62f3c43c1571c44ccf"];
+  Node246 [label="pgrouting::yen::Pgr\l_turnRestrictedPath\l::turnRestrictedPath",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node246 -> Node247 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node247 [label="pgr_dijkstraTR",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$turnRestrictedPath__driver_8cpp.html#ae5d636a163535e62f3c43c1571c44ccf"];
 }

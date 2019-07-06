@@ -3,10 +3,10 @@ digraph "pgrouting::vrp::Vehicle::erase"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node263 [label="pgrouting::vrp::Vehicle\l::erase",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node263 -> Node264 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node264 [label="pgrouting::vrp::Vehicle\l::evaluate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#aeec21aba283e23f4bf2a355f4f7c2764",tooltip="@ { "];
-  Node264 -> Node265 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node265 [label="pgrouting::vrp::Vehicle\l::invariant",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a29bf7e33dfb519d7abb8648c2d631d30",tooltip="Invariant The path must: "];
-  Node263 -> Node265 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node318 [label="pgrouting::vrp::Vehicle\l::erase",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node318 -> Node319 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node319 [label="pgrouting::vrp::Vehicle\l::evaluate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#aeec21aba283e23f4bf2a355f4f7c2764",tooltip="@ { "];
+  Node319 -> Node320 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node320 [label="pgrouting::vrp::Vehicle\l::invariant",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a29bf7e33dfb519d7abb8648c2d631d30",tooltip="Invariant The path must: "];
+  Node318 -> Node320 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

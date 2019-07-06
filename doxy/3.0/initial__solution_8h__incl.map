@@ -1,5 +1,6 @@
 <map id="initial_solution.h" name="initial_solution.h">
-<area shape="rect" id="node4" href="$pd__orders_8h.html" title="vrp/pd_orders.h" alt="" coords="167,80,279,107"/>
-<area shape="rect" id="node5" href="$identifiers_8hpp.html" title="cpp_common/identifiers.hpp" alt="" coords="130,155,316,181"/>
-<area shape="rect" id="node6" href="$solution_8h.html" title="vrp/solution.h" alt="" coords="44,80,144,107"/>
+<area shape="rect" id="node4" href="$pd__orders_8h.html" title="vrp/pd_orders.h" alt="" coords="177,80,289,107"/>
+<area shape="rect" id="node5" href="$identifiers_8hpp.html" title="cpp_common/identifiers.hpp" alt="" coords="140,155,325,181"/>
+<area shape="rect" id="node6" href="$solution_8h.html" title="vrp/solution.h" alt="" coords="53,80,153,107"/>
+<area shape="rect" id="node7" href="$initials__code_8h.html" title="vrp/initials_code.h" alt="" coords="364,80,491,107"/>
 </map>

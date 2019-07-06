@@ -1,9 +1,8 @@
 <map id="pgrouting::vrp::Optimize::swap_worse" name="pgrouting::vrp::Optimize::swap_worse">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Solution.html#aa6bc3fa440ee4f3cdad17bd1f069bc43" title="pgrouting::vrp::Solution\l::duration" alt="" coords="216,5,372,47"/>
-<area shape="rect" id="node3" href="$classIdentifiers.html#affc6862074203a87d8e80223b555d86b" title="Identifiers::front" alt="" coords="237,71,351,98"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447" title="pgrouting::Identifier::idx" alt="" coords="215,122,373,149"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3eae1abf0e92303ff22bf6f5f9b2cb40" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders" alt="" coords="218,173,370,215"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a5c9706adba6b67df27506b64815f4d8d" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_in\l_vehicle" alt="" coords="217,239,371,295"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Swap__bk.html#a6bb9fa31052b85492c5499378f76b2c2" title="pgrouting::vrp::Swap\l_bk::push" alt="" coords="223,320,365,361"/>
-<area shape="rect" id="node8" href="$classIdentifiers.html#afa735cce6596944fc64f95f4995ccc8e" title="Identifiers::size" alt="" coords="239,386,349,413"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Solution.html#aa6bc3fa440ee4f3cdad17bd1f069bc43" title="pgrouting::vrp::Solution\l::duration" alt="" coords="217,5,373,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Solution.html#a82bc3ecf220fbf390c9987f908fdad26" title="pgrouting::vrp::Solution\l::get_kind" alt="" coords="425,91,581,132"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#adb870b4b7089194de06de8471eba0767" title="pgrouting::vrp::Vehicle\l_pickDeliver::has_order" alt="" coords="424,181,583,223"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Optimize.html#a6725291140d233df975eb07df5b1ba0b" title="moves an order to an non empty vehicle " alt="" coords="215,123,376,164"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3eae1abf0e92303ff22bf6f5f9b2cb40" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders" alt="" coords="219,240,371,281"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a5c9706adba6b67df27506b64815f4d8d" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_in\l_vehicle" alt="" coords="218,306,373,362"/>
 </map>

@@ -3,7 +3,7 @@ digraph "pgrouting::vrp::Tw_node::type_str"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node800 [label="pgrouting::vrp::Tw\l_node::type_str",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node800 -> Node801 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node801 [label="pgrouting::vrp::Tw\l_node::type",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3",tooltip="Returns the type of this node. "];
+  Node815 [label="pgrouting::vrp::Tw\l_node::type_str",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node815 -> Node816 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node816 [label="pgrouting::vrp::Tw\l_node::type",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3",tooltip="Returns the type of this node. "];
 }

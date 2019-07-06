@@ -4,6 +4,7 @@ var classpgrouting_1_1vrp_1_1Pgr__pickDeliver =
     [ "Pgr_pickDeliver", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#adb8cc9394dc91b88dee7cb5010c57a4e", null ],
     [ "add_base_node", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a87ba9f138cb87373726d87a88a3f264b", null ],
     [ "add_node", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a29ac4c9f908dc5a106f360e97660b6d1", null ],
+    [ "get_kind", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a16c03113dfc093fa32913f2b579dd9af", null ],
     [ "get_postgres_result", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a45a23137934d700ac2f6df2afbc2b717", null ],
     [ "max_cycles", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a03193ad6e696772de1f8430edf2fcfd3", null ],
     [ "node_id", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a512937fe4b72890a7834abb0bd7e5f45", null ],

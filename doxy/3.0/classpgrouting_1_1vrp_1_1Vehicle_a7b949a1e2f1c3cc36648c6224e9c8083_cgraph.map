@@ -2,14 +2,15 @@
 <area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a446393c0863473ebf3f6db060ddae597" title="pgrouting::vrp::Vehicle\l::cost" alt="" coords="205,5,357,47"/>
 <area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#abc30f9df7e203ce3f72c6dcc964510f1" title="pgrouting::vrp::Vehicle\l::cost_compare" alt="" coords="205,71,357,112"/>
 <area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a65bf4bc2763295f93cfed232690c4e6c" title="return true when no nodes are in the truck " alt="" coords="405,121,557,163"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a29bf7e33dfb519d7abb8648c2d631d30" title="Invariant The path must: " alt="" coords="605,377,757,419"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a29bf7e33dfb519d7abb8648c2d631d30" title="Invariant The path must: " alt="" coords="605,407,757,448"/>
 <area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle.html#ad1920dd6aed04b9381b9b2ec78dddc47" title="Erase node.id() " alt="" coords="405,348,557,389"/>
 <area shape="rect" id="node7" href="$classpgrouting_1_1Identifier.html#a147f029e589a2dd36b1edd638d7ac833" title="pgrouting::Identifier::id" alt="" coords="206,305,357,331"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle.html#af98de97049075d4db58f3e97dc9185aa" title="@ { " alt="" coords="405,543,557,584"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle.html#af98de97049075d4db58f3e97dc9185aa" title="@ { " alt="" coords="405,531,557,572"/>
 <area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aac46d18126e93540a1d7321281a1fc02" title="Evaluated: pop_back a node to the path. " alt="" coords="205,239,357,280"/>
 <area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aa7d6e872a8ac0e52f899827a52b6ffcc" title="Evaluated: pop_front a node to the path. " alt="" coords="205,407,357,448"/>
 <area shape="rect" id="node11" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aa1928ca2eea11f43f5ad021a22c9a5e6" title="pgrouting::vrp::Vehicle\l::position_limits" alt="" coords="205,537,357,579"/>
 <area shape="rect" id="node12" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a6608a42ff54a288e2e1b3bed58c8bcaa" title="Evaluated: push_back a node to the path. " alt="" coords="205,472,357,513"/>
 <area shape="rect" id="node13" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a95ca8e3803a63ecfeed064a250796594" title="Evaluated: push_back a node to the path. " alt="" coords="205,655,357,696"/>
-<area shape="rect" id="node14" href="$classpgrouting_1_1vrp_1_1Vehicle.html#adc318f75bf9a66664c2d2cefa4939c8d" title="pgrouting::vrp::Vehicle\l::speed" alt="" coords="205,720,357,761"/>
+<area shape="rect" id="node14" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a376fb8b05e902c3b703c04b9a15bffb5" title="return number of nodes in the truck " alt="" coords="405,708,557,749"/>
+<area shape="rect" id="node15" href="$classpgrouting_1_1vrp_1_1Vehicle.html#adc318f75bf9a66664c2d2cefa4939c8d" title="pgrouting::vrp::Vehicle\l::speed" alt="" coords="205,772,357,813"/>
 </map>

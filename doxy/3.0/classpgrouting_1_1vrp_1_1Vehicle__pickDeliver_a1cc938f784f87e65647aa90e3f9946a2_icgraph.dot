@@ -3,7 +3,7 @@ digraph "pgrouting::vrp::Vehicle_pickDeliver::pop_back"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node860 [label="pgrouting::vrp::Vehicle\l_pickDeliver::pop_back",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node860 -> Node861 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node861 [label="pgrouting::vrp::Vehicle\l_pickDeliver::orders_in\l_vehicle",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a5c9706adba6b67df27506b64815f4d8d"];
+  Node946 [label="pgrouting::vrp::Vehicle\l_pickDeliver::pop_back",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node946 -> Node947 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node947 [label="pgrouting::vrp::Vehicle\l_pickDeliver::orders_in\l_vehicle",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a5c9706adba6b67df27506b64815f4d8d"];
 }

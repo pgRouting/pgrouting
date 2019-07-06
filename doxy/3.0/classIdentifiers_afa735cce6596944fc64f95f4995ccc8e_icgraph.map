@@ -1,11 +1,10 @@
 <map id="Identifiers::size" name="Identifiers::size">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="384,20,543,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="181,49,319,90"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1CH__vertex.html#a33c437ad220a0deefedd3145f2dc6621" title="pgrouting::CH_vertex\l::has_contracted_vertices" alt="" coords="164,114,336,156"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a08a15b441c762cc2e217f839618697d1" title="pgrouting::contraction\l::Pgr_linear::one_cycle" alt="" coords="173,180,327,221"/>
-<area shape="rect" id="node6" href="$namespacepgrouting_1_1vrp.html#ad6fdaacceafff2916f80fb6855c58135" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="164,246,336,272"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a92ec24c937b1b2ce82c0a6522c1a2dbf" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_size" alt="" coords="165,297,335,338"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Optimize.html#a7f9bae1385b3d627c3d2ef9b9873f217" title="pgrouting::vrp::Optimize\l::sort_by_id" alt="" coords="169,362,331,404"/>
-<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Optimize.html#a29de55e95d9d5b588e4691ed9dde085b" title="pgrouting::vrp::Optimize\l::sort_by_size" alt="" coords="169,428,331,469"/>
-<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Optimize.html#a39173d526079577d40c59371bcfcc680" title="pgrouting::vrp::Optimize\l::swap_worse" alt="" coords="169,493,331,534"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="384,18,543,60"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="181,48,319,89"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1CH__vertex.html#a33c437ad220a0deefedd3145f2dc6621" title="pgrouting::CH_vertex\l::has_contracted_vertices" alt="" coords="164,113,336,154"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a08a15b441c762cc2e217f839618697d1" title="pgrouting::contraction\l::Pgr_linear::one_cycle" alt="" coords="173,178,327,220"/>
+<area shape="rect" id="node6" href="$namespacepgrouting_1_1vrp.html#ad6fdaacceafff2916f80fb6855c58135" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="164,244,336,271"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a92ec24c937b1b2ce82c0a6522c1a2dbf" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_size" alt="" coords="165,296,335,337"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Optimize.html#a7f9bae1385b3d627c3d2ef9b9873f217" title="pgrouting::vrp::Optimize\l::sort_by_id" alt="" coords="169,361,331,402"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Optimize.html#a29de55e95d9d5b588e4691ed9dde085b" title="pgrouting::vrp::Optimize\l::sort_by_size" alt="" coords="169,426,331,468"/>
 </map>

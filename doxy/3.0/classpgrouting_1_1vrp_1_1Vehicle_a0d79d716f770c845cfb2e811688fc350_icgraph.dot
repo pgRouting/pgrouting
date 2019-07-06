@@ -3,9 +3,9 @@ digraph "pgrouting::vrp::Vehicle::swap"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1050 [label="pgrouting::vrp::Vehicle\l::swap",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node1050 -> Node1051 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1051 [label="pgrouting::vrp::Vehicle\l::capacity",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#ae1ed768d6cabc552f29b2d33d86ff386"];
-  Node1050 -> Node1053 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1053 [label="pgrouting::vrp::Vehicle\l::insert",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#aa22d65f920e996e3497bff86876b181f",tooltip="Insert node in best position of the position_limits. "];
+  Node1207 [label="pgrouting::vrp::Vehicle\l::swap",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1207 -> Node1208 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1208 [label="pgrouting::vrp::Vehicle\l::capacity",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#ae1ed768d6cabc552f29b2d33d86ff386"];
+  Node1207 -> Node1210 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1210 [label="pgrouting::vrp::Vehicle\l::insert",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#aa22d65f920e996e3497bff86876b181f",tooltip="Insert node in best position of the position_limits. "];
 }

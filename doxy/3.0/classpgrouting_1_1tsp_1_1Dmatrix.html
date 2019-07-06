@@ -457,7 +457,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="Dmatrix_8h_source.html#l00122">ids</a>, and <a class="el" href="Dmatrix_8cpp_source.html#l00063">set_ids()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00175">pgrouting::vrp::Fleet::build_fleet()</a>, <a class="el" href="pd__orders_8cpp_source.html#l00069">pgrouting::vrp::PD_Orders::build_orders()</a>, and <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00162">pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00179">pgrouting::vrp::Fleet::build_fleet()</a>, <a class="el" href="pd__orders_8cpp_source.html#l00069">pgrouting::vrp::PD_Orders::build_orders()</a>, and <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00163">pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                         {</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1tsp_1_1Dmatrix.html#a88b8c5dd4f09b01b7ce01fd12cd038e3">ids</a>.empty();</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div><div class="ttc" id="classpgrouting_1_1tsp_1_1Dmatrix_html_a88b8c5dd4f09b01b7ce01fd12cd038e3"><div class="ttname"><a href="classpgrouting_1_1tsp_1_1Dmatrix.html#a88b8c5dd4f09b01b7ce01fd12cd038e3">pgrouting::tsp::Dmatrix::ids</a></div><div class="ttdeci">std::vector&lt; int64_t &gt; ids</div><div class="ttdef"><b>Definition:</b> <a href="Dmatrix_8h_source.html#l00122">Dmatrix.h:122</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -674,7 +674,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="Dmatrix_8h_source.html#l00126">costs</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pickDeliver__driver_8cpp_source.html#l00046">do_pgr_pickDeliver()</a>, and <a class="el" href="TSP__driver_8cpp_source.html#l00044">do_pgr_tsp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pickDeliver__driver_8cpp_source.html#l00047">do_pgr_pickDeliver()</a>, and <a class="el" href="TSP__driver_8cpp_source.html#l00044">do_pgr_tsp()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                               {</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;row : <a class="code" href="classpgrouting_1_1tsp_1_1Dmatrix.html#a967f03ff9965975d33e2f0be77fa9d71">costs</a>) {</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;val : row) {</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">if</span> (val == (std::numeric_limits&lt;double&gt;::infinity)()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">if</span> (val == (std::numeric_limits&lt;double&gt;::max)()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        }</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1tsp_1_1Dmatrix_html_a967f03ff9965975d33e2f0be77fa9d71"><div class="ttname"><a href="classpgrouting_1_1tsp_1_1Dmatrix.html#a967f03ff9965975d33e2f0be77fa9d71">pgrouting::tsp::Dmatrix::costs</a></div><div class="ttdeci">Costs costs</div><div class="ttdef"><b>Definition:</b> <a href="Dmatrix_8h_source.html#l00126">Dmatrix.h:126</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1132,7 +1132,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1tsp.html">tsp</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1tsp_1_1Dmatrix.html">Dmatrix</a></li>
-    <li class="footer">Generated on Mon Jun 17 2019 10:22:11 for PGROUTING by
+    <li class="footer">Generated on Sat Jul 6 2019 09:17:02 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

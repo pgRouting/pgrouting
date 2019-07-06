@@ -3,10 +3,10 @@ digraph "pgrouting::vrp::Optimize::decrease_truck"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node183 [label="pgrouting::vrp::Optimize\l::decrease_truck",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node183 -> Node184 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node184 [label="pgrouting::vrp::Optimize\l::delete_empty_truck",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#a4dcb408130c2ed4164b8d754d11ad44b"];
-  Node184 -> Node185 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node185 [label="pgrouting::vrp::Optimize\l::save_if_best",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#a566ff61efd9b90653451236317ffa16f"];
-  Node183 -> Node185 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node211 [label="pgrouting::vrp::Optimize\l::decrease_truck",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node211 -> Node212 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node212 [label="pgrouting::vrp::Optimize\l::delete_empty_truck",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#a4dcb408130c2ed4164b8d754d11ad44b"];
+  Node212 -> Node213 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node213 [label="pgrouting::vrp::Optimize\l::save_if_best",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#a566ff61efd9b90653451236317ffa16f"];
+  Node211 -> Node213 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

@@ -1,0 +1,10 @@
+<map id="pgrouting::vrp::Optimize::move_order" name="pgrouting::vrp::Optimize::move_order">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a65bf4bc2763295f93cfed232690c4e6c" title="return true when no nodes are in the truck " alt="" coords="425,5,577,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3824b3c3af974687c0bdcc9aab615350" title="pgrouting::vrp::Vehicle\l_pickDeliver::erase" alt="" coords="218,364,370,405"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#adb870b4b7089194de06de8471eba0767" title="pgrouting::vrp::Vehicle\l_pickDeliver::has_order" alt="" coords="421,331,580,372"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Solution.html#a82bc3ecf220fbf390c9987f908fdad26" title="pgrouting::vrp::Solution\l::get_kind" alt="" coords="216,168,372,209"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae10bef610549433ababadd20411a5e84" title="Inserts an order. " alt="" coords="218,233,370,275"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a7b949a1e2f1c3cc36648c6224e9c8083" title="pgrouting::vrp::Vehicle\l::is_phony" alt="" coords="218,51,370,92"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a376fb8b05e902c3b703c04b9a15bffb5" title="return number of nodes in the truck " alt="" coords="425,96,577,137"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a59a88f45361f562c3c7b2391539de7b0" title="Inserts an order In semi&#45;Lifo order. " alt="" coords="215,299,373,340"/>
+</map>

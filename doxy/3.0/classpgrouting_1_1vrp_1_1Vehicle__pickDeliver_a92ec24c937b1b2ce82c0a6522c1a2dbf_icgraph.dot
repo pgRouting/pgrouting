@@ -3,9 +3,9 @@ digraph "pgrouting::vrp::Vehicle_pickDeliver::orders_size"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node830 [label="pgrouting::vrp::Vehicle\l_pickDeliver::orders_size",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node830 -> Node831 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node831 [label="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3dd3375570d3cbe915571e2aea4560d2"];
-  Node830 -> Node840 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node840 [label="pgrouting::vrp::Optimize\l::sort_for_move",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#aec63939cbbeee8ec5c055a8a97ec52ba"];
+  Node915 [label="pgrouting::vrp::Vehicle\l_pickDeliver::orders_size",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node915 -> Node916 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node916 [label="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aedf5f30b753fed6af792b114ec804636"];
+  Node915 -> Node928 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node928 [label="pgrouting::vrp::Optimize\l::sort_for_move",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Optimize.html#aec63939cbbeee8ec5c055a8a97ec52ba"];
 }

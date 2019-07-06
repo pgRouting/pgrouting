@@ -3,9 +3,9 @@ digraph "pgrouting::vrp::Vehicle::position_limits"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node889 [label="pgrouting::vrp::Vehicle\l::position_limits",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node889 -> Node890 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node890 [label="pgrouting::vrp::Vehicle\l::getPosHighLimit",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a50ba2513d8130e34f95a6a1d98253767"];
-  Node889 -> Node900 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node900 [label="pgrouting::vrp::Vehicle\l::getPosLowLimit",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#ac7cf6a7621be6ee67169364d63850dbf"];
+  Node981 [label="pgrouting::vrp::Vehicle\l::position_limits",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node981 -> Node982 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node982 [label="pgrouting::vrp::Vehicle\l::getPosHighLimit",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a50ba2513d8130e34f95a6a1d98253767"];
+  Node981 -> Node992 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node992 [label="pgrouting::vrp::Vehicle\l::getPosLowLimit",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#ac7cf6a7621be6ee67169364d63850dbf"];
 }

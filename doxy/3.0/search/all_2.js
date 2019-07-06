@@ -2,6 +2,7 @@ var searchData=
 [
   ['b_5fg',['B_G',['../classpgrouting_1_1algorithms_1_1Pgr__astar.html#a7428d73c9fae0c55c6e001b31c03df5a',1,'pgrouting::algorithms::Pgr_astar::B_G()'],['../classpgrouting_1_1contraction_1_1Pgr__linear.html#ac979261248e489c80200db98abe894a2',1,'pgrouting::contraction::Pgr_linear::B_G()'],['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a51d3dae600843a57ab20c42accfb5db1',1,'pgrouting::graph::Pgr_base_graph::B_G()'],['../classpgrouting_1_1functions_1_1Pgr__kruskal.html#a4ace1164328da193d7543328ff1dfe1c',1,'pgrouting::functions::Pgr_kruskal::B_G()'],['../classpgrouting_1_1functions_1_1Pgr__mst.html#a7a68d2fe93ce1d15c391e435a1638b7d',1,'pgrouting::functions::Pgr_mst::B_G()'],['../classpgrouting_1_1functions_1_1Pgr__prim.html#a6c2042fad6ba5710a66420e204bfc3f3',1,'pgrouting::functions::Pgr_prim::B_G()']]],
   ['back',['back',['../classPath.html#a16c8797588b1aa077a772112f4a2a307',1,'Path::back() const'],['../classPath.html#a7cec8cc626f16ea03c5b9d004b2c6105',1,'Path::back()']]],
+  ['backtruck',['BackTruck',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168fa48ad55c25ba98444d25a548838133666',1,'pgrouting::vrp']]],
   ['backward_5fcost',['backward_cost',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adf12f52fa9cd644c77a6acbcca8fc9f8',1,'pgrouting::bidirectional::Pgr_bidirectional']]],
   ['backward_5fedge',['backward_edge',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a4d8eb8fd150e8963800fd84d9bd5d524',1,'pgrouting::bidirectional::Pgr_bidirectional']]],
   ['backward_5ffinished',['backward_finished',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ab11a1d3c3525c178718d172ce3dbc655',1,'pgrouting::bidirectional::Pgr_bidirectional']]],
@@ -43,7 +44,10 @@ var searchData=
   ['best_5fcost',['best_cost',['../classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a9364fe09b92306ce8b43f9cda5b3b78a',1,'pgrouting::bidirectional::Pgr_bidirectional']]],
   ['best_5fsolution',['best_solution',['../classpgrouting_1_1vrp_1_1Optimize.html#a78bb1d40297746c7b774c05bd1ba8982',1,'pgrouting::vrp::Optimize']]],
   ['best_5ftour',['best_tour',['../classpgrouting_1_1tsp_1_1TSP.html#a95eb535f7d43e466ef554fa18bd37dcf',1,'pgrouting::tsp::TSP']]],
+  ['bestback',['BestBack',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168fa7d4db547c299a684ecb44af53705c959',1,'pgrouting::vrp']]],
   ['bestcost',['bestCost',['../classpgrouting_1_1tsp_1_1TSP.html#a16f905cb0f6392a601d1e375d2a9312b',1,'pgrouting::tsp::TSP']]],
+  ['bestfront',['BestFront',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168fa40ca77d24becf0ec70924ca238212c6a',1,'pgrouting::vrp']]],
+  ['bestinsert',['BestInsert',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168fa855ad552d2185f224406384d70ef8d55',1,'pgrouting::vrp']]],
   ['bfs_5forder',['bfs_order',['../classpgrouting_1_1functions_1_1Pgr__mst.html#a4149fc75b9f1a73e632243ef1bbe7e7d',1,'pgrouting::functions::Pgr_mst']]],
   ['bfs_5fordering',['bfs_ordering',['../classpgrouting_1_1functions_1_1Pgr__mst.html#a07e00ae343f44b13b1c57ee5f13f90d2',1,'pgrouting::functions::Pgr_mst']]],
   ['bg',['BG',['../namespacepgrouting_1_1alphashape.html#a56a742e122e8d829e8ee1600c91bdb88',1,'pgrouting::alphashape']]],

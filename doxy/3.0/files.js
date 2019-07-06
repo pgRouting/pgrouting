@@ -180,6 +180,7 @@ var files =
     [ "initial_solution.h", "initial__solution_8h.html", [
       [ "Initial_solution", "classpgrouting_1_1vrp_1_1Initial__solution.html", "classpgrouting_1_1vrp_1_1Initial__solution" ]
     ] ],
+    [ "initials_code.h", "initials__code_8h.html", "initials__code_8h" ],
     [ "johnson.c", "johnson_8c.html", "johnson_8c" ],
     [ "johnson_driver.cpp", "johnson__driver_8cpp.html", "johnson__driver_8cpp" ],
     [ "johnson_driver.h", "johnson__driver_8h.html", "johnson__driver_8h" ],

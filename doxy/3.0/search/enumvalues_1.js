@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['c_5fedge',['C_EDGE',['../classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a4b2f103768fbe8c13167d531d335f173a3934c8990f796a36bbaf5bf16b7f9655',1,'pgrouting::trsp::Pgr_trspHandler']]],
-  ['char1',['CHAR1',['../column__info__t_8h.html#a5bc91ed782fe6c30eaf15fe73b4474bba3604ea9b63f3d952ec3321bc76ce3ef7',1,'column_info_t.h']]]
+  ['backtruck',['BackTruck',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168fa48ad55c25ba98444d25a548838133666',1,'pgrouting::vrp']]],
+  ['bestback',['BestBack',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168fa7d4db547c299a684ecb44af53705c959',1,'pgrouting::vrp']]],
+  ['bestfront',['BestFront',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168fa40ca77d24becf0ec70924ca238212c6a',1,'pgrouting::vrp']]],
+  ['bestinsert',['BestInsert',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168fa855ad552d2185f224406384d70ef8d55',1,'pgrouting::vrp']]]
 ];

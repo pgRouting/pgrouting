@@ -41,7 +41,9 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ]
+        [ "Typedefs", "namespacemembers_type.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -82,13 +84,13 @@ var NAVTREEINDEX =
 "classpgrouting_1_1graph_1_1PgrFlowGraph.html#a615920406276925d5b81e1fc2bec32a5",
 "classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a5a3eb1dbcdd63014d793456f82ad784f",
 "classpgrouting_1_1vrp_1_1Base__node.html#ac447a0a784cb863f908f3375e2ca9d1c",
-"classpgrouting_1_1vrp_1_1Tw__node.html#a3a4981ecc46053d2c8e74b91aeefc1b1",
-"classpgrouting_1_1yen_1_1Pgr__ksp.html#a3eddf903bcd9f64fc7f51dd14430bff6",
-"edges__input_8c.html#a723146f18c61ddd20c6574265e7bbb9e",
-"index.html#install_sec",
-"pgr__assert_8h.html",
-"rule_8h.html",
-"structpgr__mst__rt.html#aa4b6a2db1dc8655f60f8809b4afcd596"
+"classpgrouting_1_1vrp_1_1Tw__node.html#a147f029e589a2dd36b1edd638d7ac833",
+"classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#af16bda121ef322dc50702241a9b20985",
+"edge__disjoint__paths__driver_8h.html",
+"identifier_8cpp_source.html",
+"pgr__allpairs_8hpp.html#ae2050b4698ca0163965b497c49f39c8d",
+"randomSpanningTree_8c.html#af3053b78814b65ec9a988ff04879a308",
+"structpgr__costFlow__t.html#a6fca3e5157766c3031dabab5f6286df4"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

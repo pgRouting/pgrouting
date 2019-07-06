@@ -3,7 +3,7 @@ digraph "pgrouting::vrp::Fleet::is_order_ok"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node101 [label="pgrouting::vrp::Fleet\l::is_order_ok",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node101 -> Node102 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node102 [label="pgrouting::vrp::Fleet\l::operator=",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Fleet.html#aebb9c0cf28fff9cdaa363bd1ef7011c7"];
+  Node95 [label="pgrouting::vrp::Fleet\l::is_order_ok",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node95 -> Node96 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node96 [label="pgrouting::vrp::Fleet\l::operator=",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Fleet.html#aebb9c0cf28fff9cdaa363bd1ef7011c7"];
 }

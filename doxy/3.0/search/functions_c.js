@@ -13,7 +13,7 @@ var searchData=
   ['mincostmaxflow',['MinCostMaxFlow',['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a28c4c1b3af55280347d2f79b8387ef90',1,'pgrouting::graph::PgrCostFlowGraph']]],
   ['mincostmaxflow_5fmany_5fto_5fmany',['minCostMaxFlow_many_to_many',['../minCostMaxFlow_8c.html#ae37ca593d3aa77b9c55bbe2d35e72eb3',1,'minCostMaxFlow.c']]],
   ['move_5fduration_5fbased',['move_duration_based',['../classpgrouting_1_1vrp_1_1Optimize.html#a558f3e604fc7df1a6b90edfb2135d632',1,'pgrouting::vrp::Optimize']]],
-  ['move_5forder',['move_order',['../classpgrouting_1_1vrp_1_1Optimize.html#a4f8e527bcd5a3ffc23dff8c3951dc337',1,'pgrouting::vrp::Optimize']]],
+  ['move_5forder',['move_order',['../classpgrouting_1_1vrp_1_1Optimize.html#a6725291140d233df975eb07df5b1ba0b',1,'pgrouting::vrp::Optimize']]],
   ['move_5freduce_5fcost',['move_reduce_cost',['../classpgrouting_1_1vrp_1_1Optimize.html#a18e362ade6f898d3b1cbba0505e5abcf',1,'pgrouting::vrp::Optimize']]],
   ['move_5fwait_5ftime_5fbased',['move_wait_time_based',['../classpgrouting_1_1vrp_1_1Optimize.html#a69e648bb4156e0c205f50c19563cca10',1,'pgrouting::vrp::Optimize']]],
   ['mst',['mst',['../classpgrouting_1_1functions_1_1Pgr__mst.html#a02ba33c4967775b2848e81aac3b20f28',1,'pgrouting::functions::Pgr_mst']]],

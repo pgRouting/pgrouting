@@ -3,12 +3,12 @@ digraph "pgrouting::vrp::Tw_node::is_waitTime_compatible_IJ"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node595 [label="pgrouting::vrp::Tw\l_node::is_waitTime_compatible_IJ",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node595 -> Node596 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node596 [label="pgrouting::vrp::Tw\l_node::arrival_j_opens_i",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1",tooltip="@ { "];
-  Node595 -> Node601 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node601 [label="pgrouting::vrp::Tw\l_node::is_compatible_IJ",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a"];
-  Node601 -> Node596 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node595 -> Node603 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node603 [label="pgrouting::vrp::Tw\l_node::is_early_arrival",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece",tooltip="True when arrivalTime is before it opens. "];
+  Node604 [label="pgrouting::vrp::Tw\l_node::is_waitTime_compatible_IJ",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node604 -> Node605 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node605 [label="pgrouting::vrp::Tw\l_node::arrival_j_opens_i",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1",tooltip="@ { "];
+  Node604 -> Node610 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node610 [label="pgrouting::vrp::Tw\l_node::is_compatible_IJ",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a"];
+  Node610 -> Node605 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node604 -> Node612 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node612 [label="pgrouting::vrp::Tw\l_node::is_early_arrival",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece",tooltip="True when arrivalTime is before it opens. "];
 }

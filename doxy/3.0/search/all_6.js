@@ -49,5 +49,6 @@ var searchData=
   ['from_5ftruck',['from_truck',['../classpgrouting_1_1vrp_1_1Swap__info.html#aa6b84c80e3715a8c351c386a58b00e63',1,'pgrouting::vrp::Swap_info']]],
   ['from_5fv',['from_v',['../structpgr__mst__rt.html#aa4b6a2db1dc8655f60f8809b4afcd596',1,'pgr_mst_rt']]],
   ['from_5fvid',['from_vid',['../structmatrix__cell.html#ab28cdf0c3643ac5bf0f42b70b4f6398d',1,'matrix_cell']]],
-  ['front',['front',['../classPath.html#a0cb09dad2c80430effa2a4d91506470d',1,'Path::front() const'],['../classPath.html#a6fc87e41a998bdfe9fd94c3647e6f2ba',1,'Path::front()'],['../classIdentifiers.html#affc6862074203a87d8e80223b555d86b',1,'Identifiers::front()']]]
+  ['front',['front',['../classPath.html#a0cb09dad2c80430effa2a4d91506470d',1,'Path::front() const'],['../classPath.html#a6fc87e41a998bdfe9fd94c3647e6f2ba',1,'Path::front()'],['../classIdentifiers.html#affc6862074203a87d8e80223b555d86b',1,'Identifiers::front()']]],
+  ['fronttruck',['FrontTruck',['../namespacepgrouting_1_1vrp.html#a24edc93341fa3ae7e8a78993ab12168faa490f10d10926a0e5a9a91f0194ab246',1,'pgrouting::vrp']]]
 ];

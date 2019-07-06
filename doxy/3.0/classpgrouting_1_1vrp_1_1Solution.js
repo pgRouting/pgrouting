@@ -7,6 +7,7 @@ var classpgrouting_1_1vrp_1_1Solution =
     [ "cvTot", "classpgrouting_1_1vrp_1_1Solution.html#a45296717ed69e9be5d26ee9184336a1d", null ],
     [ "duration", "classpgrouting_1_1vrp_1_1Solution.html#aa6bc3fa440ee4f3cdad17bd1f069bc43", null ],
     [ "fleet_size", "classpgrouting_1_1vrp_1_1Solution.html#aac93112e46694cbf1eddc560ab5a49b5", null ],
+    [ "get_kind", "classpgrouting_1_1vrp_1_1Solution.html#a82bc3ecf220fbf390c9987f908fdad26", null ],
     [ "get_postgres_result", "classpgrouting_1_1vrp_1_1Solution.html#a016e772056690f0481dbbe1c1375b7b4", null ],
     [ "is_feasable", "classpgrouting_1_1vrp_1_1Solution.html#ac3e8bf605c6fd5e6eceac4ddd7255bcb", null ],
     [ "operator<", "classpgrouting_1_1vrp_1_1Solution.html#a9e2dd7a7a1252e40ace284d9847bb281", null ],

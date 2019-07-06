@@ -7,7 +7,8 @@
 <area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="240,259,399,301"/>
 <area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Fleet.html#aa83573a954baa1fdd349b557b664571e" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="250,325,389,366"/>
 <area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a20c4e77a2c753ff51d9802b9abb1e9c1" title="pgrouting::vrp::Pgr\l_pickDeliver::nodesOK" alt="" coords="241,390,397,431"/>
-<area shape="rect" id="node10" href="$classpgrouting_1_1Pgr__messages.html#aeef4a61000c045a6fe05a39abf673393" title="pgrouting::Pgr_messages\l::operator=" alt="" coords="234,455,405,497"/>
-<area shape="rect" id="node11" href="$bellman__ford__driver_8cpp.html#aa7f05e5242a5574c24679a552f25993e" title="pgr_bellman_ford" alt="" coords="259,521,380,548"/>
-<area shape="rect" id="node12" href="$turnRestrictedPath__driver_8cpp.html#ae5d636a163535e62f3c43c1571c44ccf" title="pgr_dijkstraTR" alt="" coords="266,572,373,599"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#adb8cc9394dc91b88dee7cb5010c57a4e" title="Constructor for the matrix version. " alt="" coords="463,419,657,461"/>
+<area shape="rect" id="node11" href="$classpgrouting_1_1Pgr__messages.html#aeef4a61000c045a6fe05a39abf673393" title="pgrouting::Pgr_messages\l::operator=" alt="" coords="234,507,405,549"/>
+<area shape="rect" id="node12" href="$bellman__ford__driver_8cpp.html#aa7f05e5242a5574c24679a552f25993e" title="pgr_bellman_ford" alt="" coords="259,573,380,600"/>
+<area shape="rect" id="node13" href="$turnRestrictedPath__driver_8cpp.html#ae5d636a163535e62f3c43c1571c44ccf" title="pgr_dijkstraTR" alt="" coords="266,624,373,651"/>
 </map>

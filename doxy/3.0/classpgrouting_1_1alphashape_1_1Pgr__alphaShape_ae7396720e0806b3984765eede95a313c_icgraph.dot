@@ -3,7 +3,7 @@ digraph "pgrouting::alphashape::Pgr_alphaShape::make_triangles"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node125 [label="pgrouting::alphashape\l::Pgr_alphaShape::make\l_triangles",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node125 -> Node126 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node126 [label="pgrouting::alphashape\l::Pgr_alphaShape::Pgr\l_alphaShape",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a0f1c6ca936a8acc9dbb8b1384ce9e40f"];
+  Node129 [label="pgrouting::alphashape\l::Pgr_alphaShape::make\l_triangles",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node129 -> Node130 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node130 [label="pgrouting::alphashape\l::Pgr_alphaShape::Pgr\l_alphaShape",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a0f1c6ca936a8acc9dbb8b1384ce9e40f"];
 }

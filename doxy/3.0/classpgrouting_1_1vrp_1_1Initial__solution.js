@@ -1,12 +1,13 @@
 var classpgrouting_1_1vrp_1_1Initial__solution =
 [
-    [ "Initial_solution", "classpgrouting_1_1vrp_1_1Initial__solution.html#a0ed2750a07c6de761d7ca0b659a287ec", null ],
+    [ "Initial_solution", "classpgrouting_1_1vrp_1_1Initial__solution.html#a763864539f6f66609be35e374662f487", null ],
     [ "cost", "classpgrouting_1_1vrp_1_1Initial__solution.html#aacb1d3beb12b28c3fc0d8bcb76357838", null ],
     [ "cost_str", "classpgrouting_1_1vrp_1_1Initial__solution.html#adc126f5e5e435301696b12ec9afa638f", null ],
     [ "cvTot", "classpgrouting_1_1vrp_1_1Initial__solution.html#a45296717ed69e9be5d26ee9184336a1d", null ],
     [ "do_while_foo", "classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460", null ],
     [ "duration", "classpgrouting_1_1vrp_1_1Initial__solution.html#aa6bc3fa440ee4f3cdad17bd1f069bc43", null ],
     [ "fleet_size", "classpgrouting_1_1vrp_1_1Initial__solution.html#aac93112e46694cbf1eddc560ab5a49b5", null ],
+    [ "get_kind", "classpgrouting_1_1vrp_1_1Initial__solution.html#a82bc3ecf220fbf390c9987f908fdad26", null ],
     [ "get_postgres_result", "classpgrouting_1_1vrp_1_1Initial__solution.html#a016e772056690f0481dbbe1c1375b7b4", null ],
     [ "invariant", "classpgrouting_1_1vrp_1_1Initial__solution.html#ac2b7f0f11fe094e0a6964ce847542811", null ],
     [ "is_feasable", "classpgrouting_1_1vrp_1_1Initial__solution.html#ac3e8bf605c6fd5e6eceac4ddd7255bcb", null ],

@@ -3,10 +3,10 @@ digraph "pgrouting::vrp::Vehicle_node::has_cv"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node241 [label="pgrouting::vrp::Vehicle\l_node::has_cv",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node241 -> Node242 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node242 [label="pgrouting::vrp::Vehicle\l_node::evaluate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba",tooltip="@ { "];
-  Node242 -> Node241 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node241 -> Node243 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node243 [label="pgrouting::vrp::Vehicle\l_node::feasible",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a671e29dcfd2783091b588bdbc8ef55f8",tooltip="True doesn&#39;t have twc nor cv (including total counts) "];
+  Node244 [label="pgrouting::vrp::Vehicle\l_node::has_cv",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node244 -> Node245 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node245 [label="pgrouting::vrp::Vehicle\l_node::evaluate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba",tooltip="@ { "];
+  Node245 -> Node244 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node244 -> Node246 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node246 [label="pgrouting::vrp::Vehicle\l_node::feasible",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a671e29dcfd2783091b588bdbc8ef55f8",tooltip="True doesn&#39;t have twc nor cv (including total counts) "];
 }

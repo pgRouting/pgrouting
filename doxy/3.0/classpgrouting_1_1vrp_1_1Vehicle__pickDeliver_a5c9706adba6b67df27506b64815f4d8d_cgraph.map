@@ -1,12 +1,13 @@
 <map id="pgrouting::vrp::Vehicle_pickDeliver::orders_in_vehicle" name="pgrouting::vrp::Vehicle_pickDeliver::orders_in_vehicle">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3dd3375570d3cbe915571e2aea4560d2" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="231,277,384,333"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3824b3c3af974687c0bdcc9aab615350" title="pgrouting::vrp::Vehicle\l_pickDeliver::erase" alt="" coords="460,161,612,202"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#adb870b4b7089194de06de8471eba0767" title="pgrouting::vrp::Vehicle\l_pickDeliver::has_order" alt="" coords="879,226,1037,267"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="460,226,612,267"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa894fd15242682756ea30cc1bbd6aa42" title="puts an order at the end of the truck " alt="" coords="665,285,831,326"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69" title="Puts an order at the end front of the truck. " alt="" coords="455,405,617,446"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a9dd0efadc2c3f02a19c320b3cb7d6814" title="pgrouting::vrp::Vehicle\l_pickDeliver::get_first_order" alt="" coords="215,459,400,501"/>
-<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae986b7aeb637a21092142846e6c99799" title="pgrouting::vrp::Vehicle\l_pickDeliver::get_worse_order" alt="" coords="208,525,407,566"/>
-<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a1cc938f784f87e65647aa90e3f9946a2" title="The order that is picked last is removed. " alt="" coords="228,95,387,137"/>
-<area shape="rect" id="node11" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acaadbc4ac95ca48c7151fe4631fbe259" title="pgrouting::vrp::Vehicle\l_pickDeliver::pop_front" alt="" coords="229,161,385,202"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aedf5f30b753fed6af792b114ec804636" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="231,278,384,334"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3824b3c3af974687c0bdcc9aab615350" title="pgrouting::vrp::Vehicle\l_pickDeliver::erase" alt="" coords="461,147,613,188"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#adb870b4b7089194de06de8471eba0767" title="pgrouting::vrp::Vehicle\l_pickDeliver::has_order" alt="" coords="668,271,827,312"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae10bef610549433ababadd20411a5e84" title="Inserts an order. " alt="" coords="461,212,613,254"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa894fd15242682756ea30cc1bbd6aa42" title="puts an order at the end of the truck " alt="" coords="455,330,620,371"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69" title="Puts an order at the end front of the truck. " alt="" coords="456,395,619,436"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a59a88f45361f562c3c7b2391539de7b0" title="Inserts an order In semi&#45;Lifo order. " alt="" coords="458,460,617,502"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a9dd0efadc2c3f02a19c320b3cb7d6814" title="pgrouting::vrp::Vehicle\l_pickDeliver::get_first_order" alt="" coords="215,511,400,552"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae986b7aeb637a21092142846e6c99799" title="pgrouting::vrp::Vehicle\l_pickDeliver::get_worse_order" alt="" coords="208,576,407,618"/>
+<area shape="rect" id="node11" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a1cc938f784f87e65647aa90e3f9946a2" title="The order that is picked last is removed. " alt="" coords="228,96,387,138"/>
+<area shape="rect" id="node12" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acaadbc4ac95ca48c7151fe4631fbe259" title="pgrouting::vrp::Vehicle\l_pickDeliver::pop_front" alt="" coords="229,162,385,203"/>
 </map>

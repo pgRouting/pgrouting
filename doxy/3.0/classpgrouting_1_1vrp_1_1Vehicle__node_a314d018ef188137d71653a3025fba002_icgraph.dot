@@ -3,7 +3,7 @@ digraph "pgrouting::vrp::Vehicle_node::feasible"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node208 [label="pgrouting::vrp::Vehicle\l_node::feasible",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node208 -> Node209 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node209 [label="pgrouting::vrp::Vehicle\l_node::feasible",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a671e29dcfd2783091b588bdbc8ef55f8",tooltip="True doesn&#39;t have twc nor cv (including total counts) "];
+  Node211 [label="pgrouting::vrp::Vehicle\l_node::feasible",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node211 -> Node212 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node212 [label="pgrouting::vrp::Vehicle\l_node::feasible",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a671e29dcfd2783091b588bdbc8ef55f8",tooltip="True doesn&#39;t have twc nor cv (including total counts) "];
 }

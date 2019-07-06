@@ -3,7 +3,7 @@ digraph "pgrouting::vrp::Vehicle::pop_back"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node675 [label="pgrouting::vrp::Vehicle\l::pop_back",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node675 -> Node676 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node676 [label="pgrouting::vrp::Vehicle\l::is_phony",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a7b949a1e2f1c3cc36648c6224e9c8083"];
+  Node768 [label="pgrouting::vrp::Vehicle\l::pop_back",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node768 -> Node769 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node769 [label="pgrouting::vrp::Vehicle\l::is_phony",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a7b949a1e2f1c3cc36648c6224e9c8083"];
 }

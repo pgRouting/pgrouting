@@ -1,11 +1,10 @@
 <map id="Identifiers::front" name="Identifiers::front">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="419,322,577,364"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ac53c67c279159a0bc491513d3de4a20b" title="pgrouting::contraction\l::Pgr_deadend::doContraction" alt="" coords="167,46,361,88"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a3876d905842eb618d32aaf3565f2b8a4" title="pgrouting::contraction\l::Pgr_linear::doContraction" alt="" coords="409,50,587,92"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#a6847ad4ff551e69b2630805f8480f01e" title="pgrouting::vrp::PD\l_Orders::find_best_I" alt="" coords="194,177,334,218"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#a19610270a3a6663b8fa7b05bd7eb839b" title="pgrouting::vrp::PD\l_Orders::find_best_J" alt="" coords="193,242,335,284"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="195,360,333,401"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a7d3ae3ec3e657685315341a8d8395b7e" title="pgrouting::vrp::Initial\l_solution::one_truck_all\l_orders" alt="" coords="419,399,577,455"/>
-<area shape="rect" id="node9" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a08a15b441c762cc2e217f839618697d1" title="pgrouting::contraction\l::Pgr_linear::one_cycle" alt="" coords="187,112,341,153"/>
-<area shape="rect" id="node10" href="$classpgrouting_1_1vrp_1_1Optimize.html#a39173d526079577d40c59371bcfcc680" title="pgrouting::vrp::Optimize\l::swap_worse" alt="" coords="183,477,345,518"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="419,49,577,90"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ac53c67c279159a0bc491513d3de4a20b" title="pgrouting::contraction\l::Pgr_deadend::doContraction" alt="" coords="167,45,361,86"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a3876d905842eb618d32aaf3565f2b8a4" title="pgrouting::contraction\l::Pgr_linear::doContraction" alt="" coords="409,377,587,418"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#a6847ad4ff551e69b2630805f8480f01e" title="pgrouting::vrp::PD\l_Orders::find_best_I" alt="" coords="194,175,334,217"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#a19610270a3a6663b8fa7b05bd7eb839b" title="pgrouting::vrp::PD\l_Orders::find_best_J" alt="" coords="193,241,335,282"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="195,110,333,151"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a7d3ae3ec3e657685315341a8d8395b7e" title="pgrouting::vrp::Initial\l_solution::one_truck_all\l_orders" alt="" coords="419,275,577,331"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a08a15b441c762cc2e217f839618697d1" title="pgrouting::contraction\l::Pgr_linear::one_cycle" alt="" coords="187,358,341,399"/>
 </map>

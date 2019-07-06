@@ -1,4 +1,4 @@
 <map id="pgrouting::vrp::Pgr_pickDeliver::nodesOK" name="pgrouting::vrp::Pgr_pickDeliver::nodesOK">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a87ba9f138cb87373726d87a88a3f264b" title="pgrouting::vrp::Pgr\l_pickDeliver::add_base_node" alt="" coords="210,5,403,47"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a16c03113dfc093fa32913f2b579dd9af" title="pgrouting::vrp::Pgr\l_pickDeliver::get_kind" alt="" coords="231,5,382,47"/>
 <area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#adb8cc9394dc91b88dee7cb5010c57a4e" title="Constructor for the matrix version. " alt="" coords="209,71,404,112"/>
 </map>
