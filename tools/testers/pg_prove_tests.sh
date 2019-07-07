@@ -28,7 +28,7 @@ run_psql () {
     PGOPTIONS='--client-min-messages=warning' psql $PGPORT -U $PGUSER  -d $PGDATABASE -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
     if [ "$?" -ne 0 ]
     then
-        echo "Test query failed: $@"
+        echo "Test query failed: $*"
         ERROR=1
     fi
 }
