@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <deque>
 #include <algorithm>
+#include <cmath>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -115,7 +116,7 @@ public:
                 v_target = graph.target(e);
                 v_source = graph.source(e);
                 double edge_cost = graph[e].cost;
-                if(isinf(current_cost[v_target]) or current_cost[v_source] + edge_cost < current_cost[v_target]){
+                if(std::isinf(current_cost[v_target]) or current_cost[v_source] + edge_cost < current_cost[v_target]){
                     current_cost[v_target] = current_cost[v_source] + edge_cost;
                     from_edge[v_target] = e;
                     if(edge_cost != 0 ){
