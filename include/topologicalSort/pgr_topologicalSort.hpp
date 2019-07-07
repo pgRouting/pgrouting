@@ -30,7 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/one_bit_color_map.hpp>
-#include <boost/graph/stoer_wagner_min_cut.hpp>
 #include <boost/property_map/property_map.hpp>
 #include <boost/typeof/typeof.hpp>
 #include <boost/graph/topological_sort.hpp>
@@ -78,14 +77,16 @@ class Pgr_topologicalSort {
         std::vector< std::pair<int,int> > vpa;
         vpa.push_back(std::make_pair(1,3));
 
+
         boost::topological_sort(graph.graph, std::back_inserter(c));
         
-//        int p=graph.graph[0].fi;
         typename std::vector< V >::reverse_iterator ii;
         for (ii=c.rbegin(); ii!=c.rend(); ++ii) {
             auto t=*ii;
             pgr_topologicalSort_t tmp;
             tmp.sorted_v=t;
+           tmp.sorted_v=graph.graph[t].id;
+           // tmp.sorted_v=tmp.sorted_v+1000;
             results.push_back(tmp);
         }
 
