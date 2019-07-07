@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.6.0
+# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.6.0\n"
+"Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-28 07:39-0600\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,338 +16,294 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: ../../build/doc/pgr_strongComponents.rst:11
+msgid "pgr_strongComponents"
+msgstr ""
+
 #: ../../build/doc/pgr_strongComponents.rst:13
-msgid "pgr_strongComponents - Experimental"
+msgid "``pgr_strongComponents`` — Strongly connected components of a directed graph using Tarjan's algorithm based on DFS."
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:15
-msgid "``pgr_strongComponents`` — Return the strongly connected components of a directed graph using Tarjan's algorithm based on DFS. In particular, the algorithm implemented by Boost.Graph."
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:21
+#: ../../build/doc/pgr_strongComponents.rst:18
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:3
-msgid "Experimental functions"
+#: ../../build/doc/pgr_strongComponents.rst:21
+msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:5
-msgid "They are not officially of the current release."
+#: ../../build/doc/pgr_strongComponents.rst:22
+msgid "On v3.0.0"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:6
-msgid "They likely will not be officially be part of the next release:"
+#: ../../build/doc/pgr_strongComponents.rst:24
+msgid "Set as `official`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:8
-msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+#: ../../build/doc/pgr_strongComponents.rst:25
+msgid "Return columns change: ``n_seq`` is removed"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:9
-msgid "Name might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:10
-msgid "Signature might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:11
-msgid "Functionality might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:12
-msgid "pgTap tests might be missing."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:13
-msgid "Might need c/c++ coding."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:14
-msgid "May lack documentation."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:15
-msgid "Documentation if any might need to be rewritten."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:16
-msgid "Documentation examples might need to be automatically generated."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:17
-msgid "Might need a lot of feedback from the comunity."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:18
-msgid "Might depend on a proposed function of pgRouting"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:19
-msgid "Might depend on a deprecated function of pgRouting"
+#: ../../build/doc/pgr_strongComponents.rst:27
+msgid "New as experimental on v2.5.0"
 msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:29
-msgid "Synopsis"
+msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_strongComponents.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/pgr_strongComponents.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_strongComponents.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:31
-msgid "A strongly connected component of a directed graph is a set of vertices that are all reachable from each other. This implementation can only be used with a directed graph."
+#: ../../build/doc/pgr_strongComponents.rst:35
+#: ../../build/doc/components-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_connectedComponents.rst:6
+msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:36
-msgid "Characteristics"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:38
-msgid "The main Characteristics are:"
+#: ../../build/doc/pgr_strongComponents.rst:37
+msgid "A strongly connected component of a directed graph is a set of vertices that are all reachable from each other."
 msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:40
-msgid "Components are described by vertices"
+msgid "**The main characteristics are:**"
 msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:42
-msgid "The returned values are ordered:"
+msgid "The signature is for a **directed** graph."
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:43
+msgid "Components are described by vertices"
 msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:44
+msgid "The returned values are ordered:"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:46
 msgid "`component` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:45
+#: ../../build/doc/pgr_strongComponents.rst:47
 msgid "`node` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:47
+#: ../../build/doc/pgr_strongComponents.rst:49
 msgid "Running time: :math:`O(V + E)`"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:50
+#: ../../build/doc/pgr_strongComponents.rst:52
 msgid "Signatures"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:62
-msgid "The signature is for a **directed** graph."
 msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:0
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:75
-msgid "Description of the Signatures"
+#: ../../build/doc/pgr_strongComponents.rst:64
+msgid "The strong components of the graph"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:71
+msgid "Parameters"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:4
-msgid "Description of the edges_sql query for components functions"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:0
-msgid "edges_sql"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:6
-msgid "an SQL query, which should return a set of rows with the following columns:"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:9
-#: ../../build/doc/components-family.rst:9
-msgid "Column"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:9
-#: ../../build/doc/components-family.rst:7
-#: ../../build/doc/components-family.rst:9
-msgid "Type"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:9
-#: ../../build/doc/components-family.rst:7
-msgid "Default"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:9
-#: ../../build/doc/components-family.rst:7
-#: ../../build/doc/components-family.rst:9
-msgid "Description"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:11
-msgid "**id**"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:11
-#: ../../build/doc/components-family.rst:12
-#: ../../build/doc/components-family.rst:13
-msgid "``ANY-INTEGER``"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:11
-msgid "Identifier of the edge."
-msgstr ""
-
-#: ../../build/doc/components-family.rst:12
-msgid "**source**"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:12
-msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/components-family.rst:13
-msgid "**target**"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:13
-msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/components-family.rst:14
-msgid "**cost**"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:14
-#: ../../build/doc/components-family.rst:18
-msgid "``ANY-NUMERICAL``"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:14
-msgid "Weight of the edge  `(source, target)`"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:16
-msgid "When negative: edge `(source, target)` does not exist, therefore it's not part of the graph."
-msgstr ""
-
-#: ../../build/doc/components-family.rst:18
-msgid "**reverse_cost**"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:18
-msgid "-1"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:18
-msgid "Weight of the edge `(target, source)`,"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:20
-msgid "When negative: edge `(target, source)` does not exist, therefore it's not part of the graph."
-msgstr ""
-
-#: ../../build/doc/components-family.rst:24
-msgid "Where:"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:0
-msgid "ANY-INTEGER"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:26
-msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:0
-msgid "ANY-NUMERICAL"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:27
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:4
-msgid "Description of the parameters of the signatures"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:7
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:9
-msgid "**edges_sql**"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:9
-msgid "``TEXT``"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:9
-msgid "SQL query as described above."
+#: ../../build/doc/components-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_connectedComponents.rst:6
+msgid "Type"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:4
-msgid "Description of the return values for connected components and strongly connected components"
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Default"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:6
-msgid "Returns set of ``(seq, component, n_seq, node)``"
+msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:11
+#: ../../build/doc/components-family.rst:6
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:6
+msgid "Inner query as described bellow."
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:79
+msgid "Inner query"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:0
+msgid "edges SQL"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:81
+msgid "an SQL query of a **directed** graph, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_connectedComponents.rst:6
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "**id**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "**source**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "**target**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "**cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``ANY-NUMERICAL``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Weight of the edge  `(source, target)`"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "When negative: edge `(source, target)` does not exist, therefore it's not part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**reverse_cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Weight of the edge `(target, source)`,"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid "When negative: edge `(target, source)` does not exist, therefore it's not part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ANY-INTEGER"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:89
+msgid "Result Columns"
+msgstr ""
+
+#: ../../build/doc/pgr_connectedComponents.rst:3
+msgid "Returns set of ``(seq, component, node)``"
+msgstr ""
+
+#: ../../build/doc/pgr_connectedComponents.rst:8
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:11
-#: ../../build/doc/components-family.rst:13
+#: ../../build/doc/pgr_connectedComponents.rst:8
 msgid "``INT``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:11
+#: ../../build/doc/pgr_connectedComponents.rst:8
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:12
+#: ../../build/doc/pgr_connectedComponents.rst:9
 msgid "**component**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:12
-#: ../../build/doc/components-family.rst:14
+#: ../../build/doc/pgr_connectedComponents.rst:9
+#: ../../build/doc/pgr_connectedComponents.rst:10
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:12
+#: ../../build/doc/pgr_connectedComponents.rst:9
 msgid "Component identifier. It is equal to the minimum node identifier in the component."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:13
-msgid "**n_seq**"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:13
-msgid "It is a sequential value starting from **1** in a component."
-msgstr ""
-
-#: ../../build/doc/components-family.rst:14
+#: ../../build/doc/pgr_connectedComponents.rst:10
 msgid "**node**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:14
-msgid "Identifier of the vertex."
+#: ../../build/doc/pgr_connectedComponents.rst:10
+msgid "Identifier of the vertex that belongs to **component**."
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:91
+#: ../../build/doc/pgr_strongComponents.rst:96
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:93
-msgid "http://en.wikipedia.org/wiki/Strongly_connected_component"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:94
-msgid "The queries use the :doc:`sampledata` network."
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:97
-msgid "Indices and tables"
-msgstr ""
-
 #: ../../build/doc/pgr_strongComponents.rst:98
-msgid ":ref:`genindex`"
+msgid ":doc:`components-family`"
 msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:99
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:100
+msgid "Boost: `Strong components <http://www.boost.org/libs/graph/doc/strong_components.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:101
+msgid "wikipedia: `Strongly connected component <http://en.wikipedia.org/wiki/Strongly_connected_component>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:104
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:105
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:106
 msgid ":ref:`search`"
 msgstr ""
 

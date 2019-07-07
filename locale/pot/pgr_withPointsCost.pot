@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.6.0
+# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.6.0\n"
+"Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-28 07:39-0600\n"
+"POT-Creation-Date: 2019-06-17 11:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,15 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_withPointsCost.rst:13
+#: ../../build/doc/pgr_withPointsCost.rst:11
 msgid "pgr_withPointsCost - Proposed"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:17
-msgid "Name"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:19
+#: ../../build/doc/pgr_withPointsCost.rst:13
 msgid "``pgr_withPointsCost`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given."
 msgstr ""
 
@@ -64,136 +60,128 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:30
+#: ../../build/doc/pgr_withPointsCost.rst:22
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:33
-msgid "Availability: 2.2.0"
+#: ../../build/doc/pgr_withPointsCost.rst:25
+msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:35
-msgid "Synopsis"
+#: ../../build/doc/pgr_withPointsCost.rst:26
+msgid "Proposed in v2.2"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:37
+#: ../../build/doc/pgr_withPointsCost.rst:29
+#: ../../build/doc/pgr_withPointsCost.rst:178
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_withPointsCost.rst:211
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:31
 msgid "Modify the graph to include points defined by points_sql. Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s) found."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:41
-msgid "Characteristics:"
+#: ../../build/doc/pgr_withPointsCost.rst:69
+msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:79
-msgid "The main Characteristics are:"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:44
+#: ../../build/doc/pgr_withPointsCost.rst:35
 msgid "It does not return a path."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:45
+#: ../../build/doc/pgr_withPointsCost.rst:36
 msgid "Returns the sum of the costs of the shortest path for pair combination of vertices in the modified graph."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:46
+#: ../../build/doc/pgr_withPointsCost.rst:37
 msgid "Vertices of the graph are:"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:48
+#: ../../build/doc/pgr_withPointsCost.rst:39
 msgid "**positive** when it belongs to the edges_sql"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:49
+#: ../../build/doc/pgr_withPointsCost.rst:40
 msgid "**negative** when it belongs to the points_sql"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:51
+#: ../../build/doc/pgr_withPointsCost.rst:42
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:52
+#: ../../build/doc/pgr_withPointsCost.rst:43
 msgid "Values are returned when there is a path."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:54
+#: ../../build/doc/pgr_withPointsCost.rst:45
 msgid "The returned values are in the form of a set of `(start_vid, end_vid, agg_cost)`."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:56
+#: ../../build/doc/pgr_withPointsCost.rst:47
 msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:58
+#: ../../build/doc/pgr_withPointsCost.rst:49
 msgid "The `agg_cost` in the non included values `(v, v)` is `0`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:60
+#: ../../build/doc/pgr_withPointsCost.rst:51
 msgid "When the starting vertex and ending vertex are the different and there is no path."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:62
+#: ../../build/doc/pgr_withPointsCost.rst:53
 msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:64
+#: ../../build/doc/pgr_withPointsCost.rst:55
 msgid "If the values returned are stored in a table, the unique index would be the pair: `(start_vid, end_vid)`."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:67
-msgid "For undirected graphs, the results are symmetric."
+#: ../../build/doc/pgr_withPointsCost.rst:58
+msgid "For **undirected** graphs, the results are **symmetric**."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:69
+#: ../../build/doc/pgr_withPointsCost.rst:60
 msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:71
+#: ../../build/doc/pgr_withPointsCost.rst:62
 msgid "For optimization purposes, any duplicated value in the `start_vids` or `end_vids` is ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:73
+#: ../../build/doc/pgr_withPointsCost.rst:64
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:75
+#: ../../build/doc/pgr_withPointsCost.rst:66
 msgid "`start_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:76
+#: ../../build/doc/pgr_withPointsCost.rst:67
 msgid "`end_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:78
+#: ../../build/doc/pgr_withPointsCost.rst:69
 msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:82
-msgid "Signature Summary"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:92
-msgid "There is no **details** flag, unlike the other members of the withPoints family of functions."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:96
+#: ../../build/doc/pgr_withPointsCost.rst:72
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:102
-msgid "Minimal Use"
+#: ../../build/doc/pgr_withPointsCost.rst:75
+msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:106
-msgid "The minimal signature:"
+#: ../../build/doc/pgr_withPointsCost.rst:84
+msgid "There is no **details** flag, unlike the other members of the withPoints family of functions."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:105
-msgid "Is for a **directed** graph."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:106
-msgid "The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction."
+#: ../../build/doc/pgr_withPointsCost.rst:90
+msgid "Using defaults"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:0
@@ -207,133 +195,248 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:124
+#: ../../build/doc/pgr_withPointsCost.rst:96
+msgid "From point :math:`1` to point :math:`3`"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:98
+msgid "For a **directed** graph."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:99
+msgid "The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:110
 msgid "One to One"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:145
+#: ../../build/doc/pgr_withPointsCost.rst:117
+msgid "From point :math:`1` to vertex :math:`3` on an **undirected** graph."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:127
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:166
+#: ../../build/doc/pgr_withPointsCost.rst:134
+msgid "From point :math:`1` to point :math:`3` and vertex :math:`5` on a **directed** graph."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:144
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:185
+#: ../../build/doc/pgr_withPointsCost.rst:151
+msgid "From point :math:`1` and vertex :math:`2` to point :math:`3` on a **directed** graph."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:161
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:204
-msgid "Description of the Signatures"
+#: ../../build/doc/pgr_withPointsCost.rst:168
+msgid "From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :math:`7` on a **directed** graph."
 msgstr ""
 
+#: ../../build/doc/pgr_withPointsCost.rst:175
+msgid "Parameters"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:178
+msgid "Parameter"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:178
 #: ../../build/doc/pgRouting-concepts.rst:4
-msgid "Description of the edges_sql query for dijkstra like functions"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "edges_sql"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "an SQL query, which should return a set of rows with the following columns:"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_withPointsCost.rst:246
-msgid "Column"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_withPointsCost.rst:223
-#: ../../build/doc/pgr_withPointsCost.rst:246
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_withPointsCost.rst:211
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Default"
+#: ../../build/doc/pgr_withPointsCost.rst:180
+msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_withPointsCost.rst:223
-#: ../../build/doc/pgr_withPointsCost.rst:246
-msgid "Description"
+#: ../../build/doc/pgr_withPointsCost.rst:180
+#: ../../build/doc/pgr_withPointsCost.rst:181
+msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
-msgid "**id**"
+#: ../../build/doc/pgr_withPointsCost.rst:180
+msgid "Edges SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:12
-#: ../../build/doc/pgRouting-concepts.rst:13
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:16
-#: ../../build/doc/pgr_withPointsCost.rst:227
-#: ../../build/doc/pgr_withPointsCost.rst:228
+#: ../../build/doc/pgr_withPointsCost.rst:181
+msgid "**points_sql**"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:181
+msgid "Points SQL query as described above."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:182
+#: ../../build/doc/pgr_withPointsCost.rst:213
+msgid "**start_vid**"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:182
+#: ../../build/doc/pgr_withPointsCost.rst:183
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgr_withPointsCost.rst:182
+msgid "Starting vertex identifier. When negative: is a point's pid."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:183
+#: ../../build/doc/pgr_withPointsCost.rst:214
+msgid "**end_vid**"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:183
+msgid "Ending vertex identifier. When negative: is a point's pid."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:184
+msgid "**start_vids**"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:184
+#: ../../build/doc/pgr_withPointsCost.rst:185
+msgid "``ARRAY[ANY-INTEGER]``"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:184
+msgid "Array of identifiers of starting vertices. When negative: is a point's pid."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:185
+msgid "**end_vids**"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:185
+msgid "Array of identifiers of ending vertices. When negative: is a point's pid."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:186
+msgid "**directed**"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:186
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:186
+msgid "(optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:187
+msgid "**driving_side**"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:187
+#: ../../build/doc/pgRouting-concepts.rst:17
+msgid "``CHAR``"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:190
+msgid "(optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:188
+msgid "In the right or left or"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:189
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "If it doesn't matter with 'b' or NULL."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:190
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "If column not present 'b' is considered."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:195
+msgid "Inner query"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_withPointsCost.rst:211
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "**id**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:7
 msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**cost**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:14
-#: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:16
 msgid "``ANY-NUMERICAL``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Weight of the edge  `(source, target)`"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "When negative: edge `(source, target)` does not exist, therefore it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**reverse_cost**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:13
 msgid "-1"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:13
 msgid "Weight of the edge `(target, source)`,"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "When negative: edge `(target, source)` does not exist, therefore it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
-#: ../../build/doc/pgRouting-concepts.rst:26
+#: ../../build/doc/pgRouting-concepts.rst:19
+#: ../../build/doc/pgRouting-concepts.rst:25
 msgid "Where:"
 msgstr ""
 
@@ -342,7 +445,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:26
+#: ../../build/doc/pgRouting-concepts.rst:21
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
@@ -351,7 +454,7 @@ msgstr ""
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:27
+#: ../../build/doc/pgRouting-concepts.rst:22
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
@@ -363,243 +466,128 @@ msgstr ""
 msgid "points_sql"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:5
+msgid "an SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "**pid**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "(optional) Identifier of the point."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:12
 msgid "If column present, it can not be NULL."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:13
 msgid "If column not present, a sequential identifier will be given automatically."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "**edge_id**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the \"closest\" edge to the point."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:16
 msgid "**fraction**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:16
 msgid "Value in <0,1> that indicates the relative postition from the first end point of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:17
 msgid "**side**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgr_withPointsCost.rst:232
-msgid "``CHAR``"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:17
 msgid "(optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgRouting-concepts.rst:19
 msgid "In the right, left of the edge or"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:21
-#: ../../build/doc/pgr_withPointsCost.rst:234
-msgid "If it doesn't matter with 'b' or NULL."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:22
-#: ../../build/doc/pgr_withPointsCost.rst:235
-msgid "If column not present 'b' is considered."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:28
+#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "smallint, int, bigint"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/pgRouting-concepts.rst:28
 msgid "smallint, int, bigint, real, float"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:219
-msgid "Description of the parameters of the signatures"
+#: ../../build/doc/pgr_withPointsCost.rst:208
+msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:223
-msgid "Parameter"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:225
-msgid "**edges_sql**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:225
-#: ../../build/doc/pgr_withPointsCost.rst:226
-msgid "``TEXT``"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:225
-msgid "Edges SQL query as described above."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:226
-msgid "**points_sql**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:226
-msgid "Points SQL query as described above."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:227
-#: ../../build/doc/pgr_withPointsCost.rst:248
-msgid "**start_vid**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:227
-msgid "Starting vertex identifier. When negative: is a point's pid."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:228
-#: ../../build/doc/pgr_withPointsCost.rst:249
-msgid "**end_vid**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:228
-msgid "Ending vertex identifier. When negative: is a point's pid."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:229
-msgid "**start_vids**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:229
-#: ../../build/doc/pgr_withPointsCost.rst:230
-msgid "``ARRAY[ANY-INTEGER]``"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:229
-msgid "Array of identifiers of starting vertices. When negative: is a point's pid."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:230
-msgid "**end_vids**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:230
-msgid "Array of identifiers of ending vertices. When negative: is a point's pid."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:231
-msgid "**directed**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:231
-msgid "``BOOLEAN``"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:231
-msgid "(optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:232
-msgid "**driving_side**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:235
-msgid "(optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:233
-msgid "In the right or left or"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:241
-msgid "Description of the return values"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:243
-msgid "Returns set of ``(start_vid, end_vid, agg_cost)``"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:248
-#: ../../build/doc/pgr_withPointsCost.rst:249
+#: ../../build/doc/pgr_withPointsCost.rst:213
+#: ../../build/doc/pgr_withPointsCost.rst:214
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:248
+#: ../../build/doc/pgr_withPointsCost.rst:213
 msgid "Identifier of the starting vertex. When negative: is a point's pid."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:249
+#: ../../build/doc/pgr_withPointsCost.rst:214
 msgid "Identifier of the ending point. When negative: is a point's pid."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:250
+#: ../../build/doc/pgr_withPointsCost.rst:215
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:250
+#: ../../build/doc/pgr_withPointsCost.rst:215
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:250
+#: ../../build/doc/pgr_withPointsCost.rst:215
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:256
-msgid "Examples"
+#: ../../build/doc/pgr_withPointsCost.rst:219
+msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:258
-msgid "With **right** side driving topology."
+#: ../../build/doc/pgr_withPointsCost.rst:221
+msgid "From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :math:`7`, with **right** side driving topology"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:264
-msgid "With **left** side driving topology."
+#: ../../build/doc/pgr_withPointsCost.rst:227
+msgid "From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :math:`7`, with **left** side driving topology"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:270
-msgid "Does not matter driving side."
+#: ../../build/doc/pgr_withPointsCost.rst:233
+msgid "From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :math:`7`, does not matter driving side."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:277
+#: ../../build/doc/pgr_withPointsCost.rst:239
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:282
-msgid "History"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:283
-msgid "Proposed in version 2.2"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCost.rst:287
+#: ../../build/doc/pgr_withPointsCost.rst:242
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:289
-msgid ":ref:`withPoints`"
+#: ../../build/doc/pgr_withPointsCost.rst:244
+msgid ":doc:`withPoints-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:292
+#: ../../build/doc/pgr_withPointsCost.rst:247
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:293
+#: ../../build/doc/pgr_withPointsCost.rst:248
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:294
+#: ../../build/doc/pgr_withPointsCost.rst:249
 msgid ":ref:`search`"
 msgstr ""
 

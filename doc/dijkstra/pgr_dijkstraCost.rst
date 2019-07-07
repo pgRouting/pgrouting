@@ -23,6 +23,7 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
 .. rubric:: Availability
 
 * New on v2.2.0
+
 **Supported versions:**
 current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_dijkstraCost.html>`__)
 `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__

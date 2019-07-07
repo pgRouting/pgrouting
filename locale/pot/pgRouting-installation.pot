@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.6.0
+# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.6.0\n"
+"Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-28 07:39-0600\n"
+"POT-Creation-Date: 2019-06-17 11:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,7 +125,7 @@ msgid "Upgrading the database"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:110
-msgid "To upgrade pgRouting in the database to version 2.6.0 use the following command:"
+msgid "To upgrade pgRouting in the database to version 3.0.0 use the following command:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:118
@@ -153,66 +153,70 @@ msgid "Postgresql version >= 9.3"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:133
-msgid "PostGIS version >= 2.2"
-msgstr ""
-
-#: ../../build/doc/pgRouting-installation.rst:134
 msgid "The Boost Graph Library (BGL). Version >= 1.53"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:135
+#: ../../build/doc/pgRouting-installation.rst:134
 msgid "CMake >= 3.2"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:140
+#: ../../build/doc/pgRouting-installation.rst:138
 msgid "optional dependencies"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:141
+#: ../../build/doc/pgRouting-installation.rst:139
 msgid "For user's documentation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:143
+#: ../../build/doc/pgRouting-installation.rst:141
 msgid "Sphinx >= 1.1"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:144
+#: ../../build/doc/pgRouting-installation.rst:142
 msgid "Latex"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:146
+#: ../../build/doc/pgRouting-installation.rst:144
 msgid "For developer's documentation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:148
+#: ../../build/doc/pgRouting-installation.rst:146
 msgid "Doxygen >= 1.7"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:150
+#: ../../build/doc/pgRouting-installation.rst:148
 msgid "For testing"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:152
+#: ../../build/doc/pgRouting-installation.rst:150
 msgid "pgtap"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:153
+#: ../../build/doc/pgRouting-installation.rst:151
 msgid "pg_prove"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:157
-msgid "Example: Installing dependencies on linux"
+#: ../../build/doc/pgRouting-installation.rst:153
+msgid "For using:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-installation.rst:155
+msgid "PostGIS version >= 2.2"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:158
+msgid "Example: Installing dependencies on linux"
+msgstr ""
+
+#: ../../build/doc/pgRouting-installation.rst:159
 msgid "Installing the compilation dependencies"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:161
+#: ../../build/doc/pgRouting-installation.rst:162
 msgid "Database dependencies"
 msgstr ""
 
-#: ../../build/doc/pgRouting-installation.rst:171
+#: ../../build/doc/pgRouting-installation.rst:172
 msgid "Build dependencies"
 msgstr ""
 

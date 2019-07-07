@@ -21,7 +21,7 @@ pgr_aStarCost
 
 * New in v2.4.0
 
-  **Supported versions:**
+**Supported versions:**
 current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_aStarCost.html>`__)
 `2.6 <http://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__
 `2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__
@@ -53,7 +53,7 @@ Signatures
     pgr_aStarCost(edges_sql, from_vid,  to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStarCost(edges_sql, from_vids, to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStarCost(edges_sql, from_vids, to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
-    
+
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 

@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.6.0
+# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.6.0\n"
+"Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-28 07:39-0600\n"
+"POT-Creation-Date: 2019-07-06 10:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,132 +16,178 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_aStar.rst:13
+#: ../../build/doc/pgr_aStar.rst:11
 msgid "pgr_aStar"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:16
-msgid "Name"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:18
+#: ../../build/doc/pgr_aStar.rst:13
 msgid "``pgr_aStar`` — Returns the shortest path using A* algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:23
+#: ../../build/doc/pgr_aStar.rst:18
 msgid "Boost Graph Inside"
 msgstr ""
 
+#: ../../build/doc/pgr_aStar.rst:21
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:22
+msgid "Official on v3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:23
+msgid "Proposed on v2.4.0:"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:25
+msgid "pgr_astar(One to Many)"
+msgstr ""
+
 #: ../../build/doc/pgr_aStar.rst:26
-msgid "Availability:"
+msgid "pgr_astar(Many to One)"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:27
-msgid "pgr_astar(one to one) 2.0.0, Signature changed 2.3.0"
+msgid "pgr_astar(Many to Many)"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:28
-msgid "pgr_astar(other signatures) 2.4.0"
+#: ../../build/doc/pgr_aStar.rst:29
+msgid "Signature change on v2.3.0:"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:31
+#: ../../build/doc/pgr_aStar.rst:35
+msgid "pgr_astar(One to One)"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:33
-msgid "Characteristics"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:35
-msgid "The main Characteristics are:"
+msgid "New on v2.0.0:"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:37
-msgid "Process is done only on edges with positive costs."
+msgid "**Supported versions:** current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_aStar.html>`__) `2.6 <http://docs.pgrouting.org/2.6/en/pgr_aStar.html>`__ `2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStar.html>`__ `2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStar.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:38
-msgid "Vertices of the graph are:"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:40
-msgid "**positive** when it belongs to the edges_sql"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:42
-msgid "Values are returned when there is a path."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:44
-msgid "When the starting vertex and ending vertex are the same, there is no path."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:46
-msgid "The agg_cost the non included values (v, v) is 0"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:48
-msgid "When the starting vertex and ending vertex are the different and there is no path:"
+#: ../../build/doc/pgr_aStar.rst:43
+msgid "**Unsupported versions:** `2.3 <http://docs.pgrouting.org/2.3/en/src/astar/doc/pgr_astar.html>`__ `2.2 <http://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html>`__ `2.1 <http://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__ `2.0 <http://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:50
-msgid "The agg_cost the non included values (u, v) is ∞"
+#: ../../build/doc/pgr_aStar.rst:176
+#: ../../build/doc/pgr_aStar.rst:209
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Description"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:52
+msgid "**The main characteristics are:**"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:3
+msgid "Default kind of graph is **directed**  when"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:5
+msgid "``directed`` flag is missing."
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:6
+msgid "``directed`` flag is set to true"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:8
+msgid "Unless specified otherwise, ordering is:"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:10
+msgid "first by ``start_vid`` (if exists)"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:11
+msgid "then by ``end_vid``"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:13
+msgid "Values are returned when there is a path"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:14
+msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:16
+msgid "If there is no path from :math:`v` to :math:`u`:"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:18
+#: ../../build/doc/aStar-family.rst:23
+msgid "no corresponding row is returned"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:19
+msgid "``agg_cost`` from :math:`v` to :math:`u` is :math:`\\infty`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:21
+msgid "There is no path when :math:`v = u` therefore"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:24
+msgid "``agg_cost`` from `v` to `u` is :math:`0`"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:26
+msgid "Edges with negative costs are not included in the graph."
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:27
 msgid "When (x,y) coordinates for the same vertex identifier differ:"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:54
+#: ../../build/doc/aStar-family.rst:29
 msgid "A random selection of the vertex's (x,y) coordinates is used."
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:56
+#: ../../build/doc/aStar-family.rst:31
 msgid "Running time: :math:`O((E + V) * \\log V)`"
 msgstr ""
 
+#: ../../build/doc/pgr_aStar.rst:58
+msgid "The results are equivalent to the union of the results of the `pgr_aStar(` `One to One`_ `)` on the:"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:60
+msgid "`pgr_aStar(` `One to Many`_ `)`"
+msgstr ""
+
 #: ../../build/doc/pgr_aStar.rst:61
-msgid "Signature Summary"
+msgid "`pgr_aStar(` `Many to One`_ `)`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:3
-msgid "Proposed functions for next mayor release."
+#: ../../build/doc/pgr_aStar.rst:62
+msgid "`pgr_aStar(` `Many to Many`_ `)`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:5
-msgid "They are not officially in the current release."
+#: ../../build/doc/pgr_aStar.rst:64
+msgid "``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:6
-msgid "They will likely officially be part of the next mayor release:"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:8
-msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:9
-msgid "Name might not change. (But still can)"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:10
-msgid "Signature might not change. (But still can)"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:11
-msgid "Functionality might not change. (But still can)"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:12
-msgid "pgTap tests have being done. But might need more."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:13
-msgid "Documentation might need refinement."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:84
+#: ../../build/doc/pgr_aStar.rst:67
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:92
-msgid "Minimal Signature"
+#: ../../build/doc/pgr_aStar.rst:70
+msgid "Summary"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:81
+msgid "Optional parameters are `named parameters` and have a default value."
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:84
+msgid "Using defaults"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:0
@@ -152,231 +198,349 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:99
-msgid "Using the defaults"
+#: ../../build/doc/pgr_aStar.rst:91
+msgid "From vertex :math:`2` to vertex :math:`12` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:112
+#: ../../build/doc/pgr_aStar.rst:101
 msgid "One to One"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:118
-msgid "Undirected using  Heuristic 2"
+#: ../../build/doc/pgr_aStar.rst:110
+msgid "From vertex :math:`2` to vertex  :math:`12` on an **undirected** graph using heuristic :math:`2`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:130
+#: ../../build/doc/pgr_aStar.rst:120
 msgid "One to many"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:139
-msgid "This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:"
+#: ../../build/doc/pgr_aStar.rst:128
+msgid "From vertex :math:`2` to vertices :math:`\\{3, 12\\}` on a **directed** graph using heuristic :math:`2`"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:138
-#: ../../build/doc/pgr_aStar.rst:165
-#: ../../build/doc/pgr_aStar.rst:194
-msgid "on a **directed** graph when ``directed`` flag is missing or is set to ``true``."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:139
-#: ../../build/doc/pgr_aStar.rst:166
-#: ../../build/doc/pgr_aStar.rst:195
-msgid "on an **undirected** graph when ``directed`` flag is set to ``false``."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:141
-msgid "Using this signature, will load once the graph and perform a one to one `pgr_astar` where the starting vertex is fixed, and stop when all ``end_vids`` are reached."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:144
-msgid "The result is equivalent to the union of the results of the one to one `pgr_astar`."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:145
-msgid "The extra ``end_vid`` in the result is used to distinguish to which path it belongs."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:157
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:166
-msgid "This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:"
+#: ../../build/doc/pgr_aStar.rst:146
+msgid "From vertices :math:`\\{7, 2\\}` to vertex :math:`12` on a **directed** graph using heuristic  :math:`0`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:168
-msgid "Using this signature, will load once the graph and perform several one to one `pgr_aStar` where the ending vertex is fixed."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:171
-msgid "The result is the union of the results of the one to one `pgr_aStar`."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:172
-#: ../../build/doc/pgr_aStar.rst:201
-msgid "The extra ``start_vid`` in the result is used to distinguish to which path it belongs."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:186
+#: ../../build/doc/pgr_aStar.rst:156
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:195
-msgid "This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:"
+#: ../../build/doc/pgr_aStar.rst:164
+msgid "From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 12\\}` on a **directed** graph using heuristic :math:`2`"
 msgstr ""
 
+#: ../../build/doc/pgr_aStar.rst:171
+msgid "Parameters"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:176
+#: ../../build/doc/pgr_aStar.rst:209
+msgid "Parameter"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:176
+#: ../../build/doc/pgr_aStar.rst:209
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:178
+msgid "**edges_sql**"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:178
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:178
+msgid "`edges_sql`_ inner query."
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:179
+msgid "**from_vid**"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:179
+#: ../../build/doc/pgr_aStar.rst:189
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:179
+msgid "Starting vertex identifier. Parameter in:"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:181
+#: ../../build/doc/pgr_aStar.rst:191
+msgid "`One to One`_"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:182
+#: ../../build/doc/pgr_aStar.rst:196
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "`One to Many`_"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:184
+msgid "**from_vids**"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:184
+#: ../../build/doc/pgr_aStar.rst:194
+msgid "``ARRAY[ANY-INTEGER]``"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:184
+msgid "Array of starting vertices identifiers. Parameter in:"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:186
+#: ../../build/doc/pgr_aStar.rst:192
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "`Many to One`_"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:187
 #: ../../build/doc/pgr_aStar.rst:197
-msgid "Using this signature, will load once the graph and perform several one to Many `pgr_dijkstra` for all ``start_vids``."
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "`Many to Many`_"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:200
-msgid "The result is the union of the results of the one to one `pgr_dijkstra`."
+#: ../../build/doc/pgr_aStar.rst:189
+msgid "**to_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:203
-msgid "The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs."
+#: ../../build/doc/pgr_aStar.rst:189
+msgid "Ending vertex identifier. Parameter in:"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:194
+msgid "**to_vids**"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:194
+msgid "Array of ending vertices identifiers. Parameter in:"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:204
+msgid "Optional Parameters"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:209
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:211
+msgid "**directed**"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:211
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:211
+msgid "``true``"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:211
+msgid "When ``true`` the graph is considered as Directed."
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:212
+msgid "When ``false`` the graph is considered as Undirected."
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:214
+msgid "**heuristic**"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:214
+msgid "``INTEGER``"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:214
+msgid "``5``"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:214
+msgid "Heuristic number. Current valid values 0~5. Default ``5``"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:216
+msgid "0: h(v) = 0 (Use this value to compare with pgr_dijkstra)"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:217
-msgid "Description of the Signatures"
+msgid "1: h(v) abs(max(dx, dy))"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4
-msgid "Description of the edges_sql query for astar like functions"
+#: ../../build/doc/pgr_aStar.rst:218
+msgid "2: h(v) abs(min(dx, dy))"
 msgstr ""
 
+#: ../../build/doc/pgr_aStar.rst:219
+msgid "3: h(v) = dx * dx + dy * dy"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:220
+msgid "4: h(v) = sqrt(dx * dx + dy * dy)"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:221
+msgid "5: h(v) = abs(dx) + abs(dy)"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:223
+msgid "**factor**"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:223
+#: ../../build/doc/pgr_aStar.rst:224
+#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:223
+#: ../../build/doc/pgr_aStar.rst:224
+msgid "``1``"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:223
+msgid "For units manipulation. :math:`factor > 0`.  See :ref:`astar_factor`"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:224
+msgid "**epsilon**"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:224
+msgid "For less restricted results. :math:`epsilon >= 1`."
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:230
+msgid "Inner query"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:233
 #: ../../build/doc/pgRouting-concepts.rst:0
 msgid "edges_sql"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:3
 msgid "an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_aStar.rst:231
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Type"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Default"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_aStar.rst:231
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Description"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:12
-#: ../../build/doc/pgRouting-concepts.rst:13
-#: ../../build/doc/pgr_aStar.rst:234
-#: ../../build/doc/pgr_aStar.rst:235
-msgid "``ANY-INTEGER``"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "**target**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:14
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:24
 msgid "**cost**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:14
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:19
+#: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgRouting-concepts.rst:21
 #: ../../build/doc/pgRouting-concepts.rst:22
-#: ../../build/doc/pgRouting-concepts.rst:23
-#: ../../build/doc/pgRouting-concepts.rst:24
-#: ../../build/doc/pgRouting-concepts.rst:25
 msgid "``ANY-NUMERICAL``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Weight of the edge  `(source, target)`"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgRouting-concepts.rst:13
 msgid "When negative: edge `(source, target)` does not exist, therefore it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "**reverse_cost**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "-1"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Weight of the edge `(target, source)`,"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgRouting-concepts.rst:17
 msgid "When negative: edge `(target, source)` does not exist, therefore it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:22
+#: ../../build/doc/pgRouting-concepts.rst:19
 msgid "**x1**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:22
+#: ../../build/doc/pgRouting-concepts.rst:19
 msgid "X coordinate of `source` vertex."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:23
+#: ../../build/doc/pgRouting-concepts.rst:20
 msgid "**y1**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:23
+#: ../../build/doc/pgRouting-concepts.rst:20
 msgid "Y coordinate of `source` vertex."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:21
 msgid "**x2**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:21
 msgid "X coordinate of `target` vertex."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:22
 msgid "**y2**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:22
 msgid "Y coordinate of `target` vertex."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:28
+#: ../../build/doc/pgRouting-concepts.rst:25
 msgid "Where:"
 msgstr ""
 
@@ -384,7 +548,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:30
+#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
@@ -392,237 +556,119 @@ msgstr ""
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:31
+#: ../../build/doc/pgRouting-concepts.rst:28
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:228
-msgid "Description of the parameters of the signatures"
+#: ../../build/doc/pgr_aStar.rst:240
+msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:231
-msgid "Parameter"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:233
-msgid "**edges_sql**"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:233
-msgid "``TEXT``"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:233
-msgid "Edges SQL query as described above."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:234
-#: ../../build/doc/pgRouting-concepts.rst:14
-msgid "**start_vid**"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:234
-msgid "Starting vertex identifier."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:235
-#: ../../build/doc/pgRouting-concepts.rst:15
-msgid "**end_vid**"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:235
-msgid "Ending vertex identifier."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:236
-msgid "**directed**"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:236
-msgid "``BOOLEAN``"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:236
-msgid "Optional."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:238
-msgid "When ``false`` the graph is considered as Undirected."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:239
-msgid "Default is ``true`` which considers the graph as Directed."
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:241
-msgid "**heuristic**"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:241
-msgid "``INTEGER``"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:241
-msgid "(optional). Heuristic number. Current valid values 0~5. Default ``5``"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:243
-msgid "0: h(v) = 0 (Use this value to compare with pgr_dijkstra)"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:244
-msgid "1: h(v) abs(max(dx, dy))"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:245
-msgid "2: h(v) abs(min(dx, dy))"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:246
-msgid "3: h(v) = dx * dx + dy * dy"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:247
-msgid "4: h(v) = sqrt(dx * dx + dy * dy)"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:248
-msgid "5: h(v) = abs(dx) + abs(dy)"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:250
-msgid "**factor**"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:250
-#: ../../build/doc/pgr_aStar.rst:251
-#: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgRouting-concepts.rst:19
-msgid "``FLOAT``"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:250
-msgid "(optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see :ref:`astar_factor`"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:251
-msgid "**epsilon**"
-msgstr ""
-
-#: ../../build/doc/pgr_aStar.rst:251
-msgid "(optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:4
-msgid "Description of the return values for a path"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:3
 msgid "Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:12
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "``INT``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:12
-msgid "**path_id**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:12
-msgid "Path identifier. Has value **1** for the first of a path. Used when there are multiple paths for the same ``start_vid`` to ``end_vid`` combination."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**path_seq**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Relative position in the path. Has value **1** for the beginning of a path."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:14
-#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "**start_vid**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:16
-#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:22
+#: ../../build/doc/pgRouting-concepts.rst:23
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:14
-msgid "Identifier of the starting vertex. Used when multiple starting vetrices are in the query."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:15
-msgid "Identifier of the ending vertex. Used when multiple ending vertices are in the query."
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Identifier of the starting vertex. Returned when multiple starting vetrices are in the query."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
+msgid "**end_vid**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "Identifier of the ending vertex. Returned when multiple ending vertices are in the query."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:22
 msgid "**node**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgRouting-concepts.rst:22
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:23
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:24
 msgid "Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:19
+#: ../../build/doc/pgRouting-concepts.rst:25
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:19
+#: ../../build/doc/pgRouting-concepts.rst:25
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:260
+#: ../../build/doc/pgr_aStar.rst:247
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:262
-msgid ":ref:`astar`"
+#: ../../build/doc/pgr_aStar.rst:249
+msgid ":doc:`aStar-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:263
+#: ../../build/doc/pgr_aStar.rst:250
 msgid ":doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:264
+#: ../../build/doc/pgr_aStar.rst:251
 msgid "http://www.boost.org/libs/graph/doc/astar_search.html"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:265
+#: ../../build/doc/pgr_aStar.rst:252
 msgid "http://en.wikipedia.org/wiki/A*_search_algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:268
+#: ../../build/doc/pgr_aStar.rst:255
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:269
+#: ../../build/doc/pgr_aStar.rst:256
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:270
+#: ../../build/doc/pgr_aStar.rst:257
 msgid ":ref:`search`"
 msgstr ""
 

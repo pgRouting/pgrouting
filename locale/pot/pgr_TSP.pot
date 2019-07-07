@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v2.6.0
+# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v2.6.0\n"
+"Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-28 07:39-0600\n"
+"POT-Creation-Date: 2019-06-17 11:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,205 +16,383 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_TSP.rst:13
+#: ../../build/doc/pgr_TSP.rst:11
 msgid "pgr_TSP"
 msgstr ""
 
+#: ../../build/doc/pgr_TSP.rst:13
+msgid "``pgr_TSP`` - Using *Simulated Annealing* approximation algorithm"
+msgstr ""
+
 #: ../../build/doc/pgr_TSP.rst:16
-msgid "Name"
-msgstr ""
-
-#: ../../build/doc/pgr_TSP.rst:18
-msgid "``pgr_TSP`` - Returns a route that visits all the nodes exactly once."
-msgstr ""
-
-#: ../../build/doc/pgr_TSP.rst:21
 msgid "Availability: 2.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:22
+#: ../../build/doc/pgr_TSP.rst:17
 msgid "Signature changed 2.3.0"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:26
-msgid "Synopsis"
+#: ../../build/doc/pgr_TSP.rst:20
+#: ../../build/doc/pgr_TSP.rst:56
+#: ../../build/doc/TSP-family.rst:4
+#: ../../build/doc/pgr_TSP.rst:74
+#: ../../build/doc/TSP-family.rst:6
+msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:28
+#: ../../build/doc/TSP-family.rst:3
 msgid "The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:30
-msgid "Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?"
+#: ../../build/doc/TSP-family.rst:6
+msgid "*Given a list of cities and the distances between each pair of cities, which is the shortest possible route that visits each city exactly once and returns to the origin city?*"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:32
-msgid "This implementation uses simulated annealing to return the approximate solution when the input is given in the form of matrix cell contents. The matrix information must be symmetrical."
+#: ../../build/doc/pgr_TSP.rst:26
+msgid "See :ref:`simulated-annealing` for a complete description of this implementation"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:37
-msgid "Signature Summary"
-msgstr ""
-
-#: ../../build/doc/pgr_TSP.rst:51
+#: ../../build/doc/pgr_TSP.rst:29
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:58
-msgid "Basic Use"
+#: ../../build/doc/pgr_TSP.rst:32
+msgid "Summary"
 msgstr ""
 
+#: ../../build/doc/pgr_TSP.rst:0
 #: ../../build/doc/pgr_TSP.rst:0
 #: ../../build/doc/pgr_TSP.rst:0
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:67
-msgid "Because the documentation examples are auto generated and tested for non changing results, and the default is to have random execution, the example is wrapping the actual call."
+#: ../../build/doc/pgr_TSP.rst:46
+msgid "Not having a random execution"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:81
-msgid "Complete Signature"
+#: ../../build/doc/pgr_TSP.rst:53
+msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:96
-msgid "Example:"
+#: ../../build/doc/pgr_TSP.rst:56
+#: ../../build/doc/TSP-family.rst:4
+msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:103
-msgid "Description of the Signatures"
+#: ../../build/doc/pgr_TSP.rst:58
+msgid "**Matrix SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:106
-msgid "Description of the Matrix Cell SQL query"
+#: ../../build/doc/pgr_TSP.rst:58
+msgid "an SQL query, described in the `Inner query`_"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:109
-msgid "Column"
+#: ../../build/doc/pgr_TSP.rst:62
+msgid "Optional Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:109
+#: ../../build/doc/TSP-family.rst:4
+#: ../../build/doc/pgr_TSP.rst:74
+#: ../../build/doc/TSP-family.rst:6
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:109
-msgid "Description"
+#: ../../build/doc/TSP-family.rst:4
+msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:111
+#: ../../build/doc/TSP-family.rst:6
+#: ../../build/doc/pgr_TSP.rst:76
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:111
-#: ../../build/doc/pgr_TSP.rst:112
+#: ../../build/doc/TSP-family.rst:6
+#: ../../build/doc/TSP-family.rst:7
+#: ../../build/doc/pgr_TSP.rst:76
+#: ../../build/doc/pgr_TSP.rst:77
+#: ../../build/doc/TSP-family.rst:9
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:111
-msgid "Identifier of the starting vertex."
+#: ../../build/doc/TSP-family.rst:6
+#: ../../build/doc/TSP-family.rst:7
+msgid "`0`"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:112
+#: ../../build/doc/TSP-family.rst:6
+msgid "The greedy part of the implementation will use this identifier."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:7
+#: ../../build/doc/pgr_TSP.rst:77
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:112
-msgid "Identifier of the ending vertex."
+#: ../../build/doc/TSP-family.rst:7
+msgid "Last visiting vertex before returning to start_vid."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:113
-msgid "**agg_cost**"
+#: ../../build/doc/TSP-family.rst:8
+msgid "**max_processing_time**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:113
+#: ../../build/doc/TSP-family.rst:8
+#: ../../build/doc/TSP-family.rst:12
+#: ../../build/doc/TSP-family.rst:13
+#: ../../build/doc/TSP-family.rst:14
+#: ../../build/doc/pgr_TSP.rst:78
+#: ../../build/doc/TSP-family.rst:10
+#: ../../build/doc/TSP-family.rst:13
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:113
+#: ../../build/doc/TSP-family.rst:8
+msgid "`+infinity`"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:8
+msgid "Stop the annealing processing when the value is reached."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "**tries_per_temperature**"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:9
+#: ../../build/doc/TSP-family.rst:10
+#: ../../build/doc/TSP-family.rst:11
+#: ../../build/doc/TSP-family.rst:8
+msgid "``INTEGER``"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "`500`"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "Maximum number of times a neighbor(s) is searched in each temperature."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "**max_changes_per_temperature**"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "`60`"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "Maximum number of times the solution is changed in each temperature."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:11
+msgid "**max_consecutive_non_changes**"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:11
+#: ../../build/doc/TSP-family.rst:12
+msgid "`100`"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:11
+msgid "Maximum number of consecutive times the solution is not changed in each temperature."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:12
+msgid "**initial_temperature**"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:12
+msgid "Starting temperature."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:13
+msgid "**final_temperature**"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:13
+msgid "`0.1`"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:13
+msgid "Ending temperature."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "**cooling_factor**"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "`0.9`"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "Value between between 0 and 1 (not including) used to calculate the next temperature."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "**randomize**"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "`true`"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "Choose the random seed"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:17
+msgid "true: Use current time as seed"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:18
+msgid "false: Use `1` as seed. Using this value will get the same results with the same data in each execution."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:69
+msgid "Inner query"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:71
+msgid "**Matrix SQL**: an SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:74
+#: ../../build/doc/TSP-family.rst:6
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:76
+msgid "Identifier of the starting vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:77
+msgid "Identifier of the ending vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:78
+#: ../../build/doc/TSP-family.rst:13
+msgid "**agg_cost**"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:78
 msgid "Cost for going from start_vid to end_vid"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:116
-msgid "Can be Used with:"
+#: ../../build/doc/pgr_TSP.rst:81
+msgid "Can be Used with :doc:`costMatrix-category` functions with `directed := false`."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:118
-msgid ":ref:`pgr_dijkstraCostmatrix`"
+#: ../../build/doc/pgr_TSP.rst:83
+msgid "If using `directed := true`, the resulting non symmetric matrix must be converted to symmetric by fixing the non symmetric values according to your application needs."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:119
-msgid ":ref:`pgr_withPointsCostmatrix`"
+#: ../../build/doc/pgr_TSP.rst:87
+msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:120
-msgid ":ref:`pgr_floydWarshall`"
+#: ../../build/doc/TSP-family.rst:3
+msgid "Returns SET OF ``(seq, node, cost, agg_cost)``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:121
-msgid ":ref:`pgr_johnson`"
+#: ../../build/doc/TSP-family.rst:8
+msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:123
-msgid "To generate a symmetric matrix"
+#: ../../build/doc/TSP-family.rst:8
+msgid "Row sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:125
-msgid "directed := false."
+#: ../../build/doc/TSP-family.rst:9
+msgid "**node**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:127
-msgid "If using directed := true, the resulting non symmetric matrix must be converted to symmetric by fixing the non symmetric values according to your application needs."
+#: ../../build/doc/TSP-family.rst:9
+msgid "Identifier of the node/coordinate/point."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:145
-msgid "Examples"
+#: ../../build/doc/TSP-family.rst:10
+msgid "**cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:147
+#: ../../build/doc/TSP-family.rst:11
+msgid "Cost to traverse from the current ``node`` to the next ``node`` in the path sequence."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:11
+msgid "``0`` for the last row in the path sequence."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "``0`` for the first row in the path sequence."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:94
+msgid "Additional Examples"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:96
+msgid "Start from vertex :math:`7`"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:102
 msgid "Using with points of interest."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:149
+#: ../../build/doc/pgr_TSP.rst:104
 msgid "To generate a symmetric matrix:"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:151
+#: ../../build/doc/pgr_TSP.rst:106
 msgid "the **side** information of pointsOfInterset is ignored by not including it in the query"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:152
+#: ../../build/doc/pgr_TSP.rst:107
 msgid "and **directed := false**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:158
+#: ../../build/doc/pgr_TSP.rst:113
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:163
+#: ../../build/doc/pgr_TSP.rst:116
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:165
-msgid ":ref:`tsp`"
+#: ../../build/doc/pgr_TSP.rst:118
+msgid ":doc:`TSP-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:166
-msgid "http://en.wikipedia.org/wiki/Traveling_salesman_problem"
+#: ../../build/doc/pgr_TSP.rst:119
+msgid "`Simulated annaeling algorithm for beginners <http://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:167
-msgid "http://en.wikipedia.org/wiki/Simulated_annealing"
+#: ../../build/doc/pgr_TSP.rst:120
+msgid "`Wikipedia: Traveling Salesman Problem <http://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:170
+#: ../../build/doc/pgr_TSP.rst:121
+msgid "`Wikipedia: Simulated annealing <http://en.wikipedia.org/wiki/Simulated_annealing>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:124
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:171
+#: ../../build/doc/pgr_TSP.rst:125
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:172
+#: ../../build/doc/pgr_TSP.rst:126
 msgid ":ref:`search`"
 msgstr ""
 
