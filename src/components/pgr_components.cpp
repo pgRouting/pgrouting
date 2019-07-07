@@ -157,7 +157,6 @@ bridges(pgrouting::UndirectedGraph &graph) {
 
     Identifiers<int64_t> bridge_edges;
     Identifiers<int64_t> processed_edges;
-    std::vector <pgr_components_rt> results;
     std::vector<V> components(num_vertices(graph.graph));
     size_t ini_comps;
     try {

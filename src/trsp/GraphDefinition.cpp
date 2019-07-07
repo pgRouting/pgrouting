@@ -65,7 +65,7 @@ void GraphDefinition::init() {
 // -------------------------------------------------------------------------
 void GraphDefinition::deleteall() {
     std::vector<GraphEdgeInfo*>::iterator it;
-    for (it = m_vecEdgeVector.begin(); it != m_vecEdgeVector.end(); it++) {
+    for (it = m_vecEdgeVector.begin(); it != m_vecEdgeVector.end(); ++it) {
         delete *it;
     }
     m_vecEdgeVector.clear();
