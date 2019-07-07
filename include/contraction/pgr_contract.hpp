@@ -126,8 +126,6 @@ class Pgr_contract {
             throw;
         }
     }
-
-
 };
 
 }  // namespace contraction

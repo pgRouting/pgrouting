@@ -127,12 +127,11 @@ class Pgr_linear {
              process_shortcut(graph, w, v, u);
 
          } else {
-             pgassert (graph.is_undirected());
+             pgassert(graph.is_undirected());
              /*
               * u - v - w
               */
              process_shortcut(graph, u, v, w);
-
          }
 
          graph[v].contracted_vertices().clear();

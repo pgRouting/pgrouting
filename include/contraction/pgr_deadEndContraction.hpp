@@ -47,16 +47,15 @@ class Pgr_deadend {
      using E = typename G::E;
 
  public:
+    Pgr_deadend() = default;
 
-	Pgr_deadend() = default;
-
-	void setForbiddenVertices(
-			Identifiers<V> forbidden_vertices) {
-		forbiddenVertices = forbidden_vertices;
-	}
+    void setForbiddenVertices(
+            Identifiers<V> forbidden_vertices) {
+        forbiddenVertices = forbidden_vertices;
+    }
 
 
-	void calculateVertices(G &graph) {
+    void calculateVertices(G &graph) {
         for (const auto v : boost::make_iterator_range(vertices(graph.graph))) {
             if (is_dead_end(graph, v) && !forbiddenVertices.has(v)) {
                 deadendVertices += v;
@@ -64,18 +63,18 @@ class Pgr_deadend {
         }
     }
 
-	bool is_dead_end(G &graph, V v) {
-		if (graph.is_undirected()) {
-			return graph.find_adjacent_vertices(v).size() == 1;
-		}
+    bool is_dead_end(G &graph, V v) {
+        if (graph.is_undirected()) {
+            return graph.find_adjacent_vertices(v).size() == 1;
+        }
 
-		pgassert(graph.is_directed());
+        pgassert(graph.is_directed());
 
-		return graph.find_adjacent_vertices(v).size() == 1
-			|| (graph.in_degree(v) > 0 && graph.out_degree(v) == 0);
-	}
+        return graph.find_adjacent_vertices(v).size() == 1
+            || (graph.in_degree(v) > 0 && graph.out_degree(v) == 0);
+    }
 
-	void doContraction(G &graph) {
+    void doContraction(G &graph) {
         calculateVertices(graph);
 
         while (!deadendVertices.empty()) {
@@ -85,13 +84,12 @@ class Pgr_deadend {
 
             Identifiers<V> local;
             for (auto u : graph.find_adjacent_vertices(v)) {
-
                 /*
                  * u{v1} --{v2}-> v{v3}
                  *
                  * u{v1 + v + v2 + v3}     v{}
                  */
-                auto v2(graph.get_min_cost_edge(u,v));
+                auto v2(graph.get_min_cost_edge(u, v));
                 graph[u].contracted_vertices() += std::get<1>(v2);
                 graph[u].contracted_vertices() += graph[v].id;
                 graph[u].contracted_vertices() += graph[v].contracted_vertices();
