@@ -55,7 +55,6 @@ bool CH_vertex::has_contracted_vertices() const {
 void CH_vertex::add_contracted_vertex(CH_vertex& v) {
     m_contracted_vertices += v.id;
     m_contracted_vertices += v.contracted_vertices();
-    //v.clear_contracted_vertices();
 }
 
 std::ostream& operator <<(std::ostream& os, const CH_vertex& v) {

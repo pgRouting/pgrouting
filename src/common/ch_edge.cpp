@@ -61,14 +61,12 @@ void
 CH_edge::add_contracted_vertex(CH_vertex& v) {
     m_contracted_vertices += v.id;
     m_contracted_vertices += v.contracted_vertices();
-    //v.clear_contracted_vertices();
 }
 
 void
 CH_edge::add_contracted_edge_vertices(CH_edge &e) {
     if (e.has_contracted_vertices())
         m_contracted_vertices += e.contracted_vertices();
-    //e.clear_contracted_vertices();
 }
 
 std::ostream& operator <<(std::ostream& os, const CH_edge& e) {

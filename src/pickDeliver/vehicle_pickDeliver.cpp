@@ -267,7 +267,6 @@ Vehicle_pickDeliver::do_while_feasable(
     msg.log << "m_feasable_orders" << m_feasable_orders << "\n";
 #endif
     auto current_feasable = m_feasable_orders * unassigned;
-    bool inserted = false;
 
     while (!current_feasable.empty()) {
 #if 0
@@ -291,18 +290,18 @@ Vehicle_pickDeliver::do_while_feasable(
                 push_back(order);
                 break;
             case BestInsert:
-                inserted = insert(order);
+                insert(order);
                 break;
             case BestBack:
                 order = m_orders[m_orders.find_best_J(current_feasable)];
-                inserted = insert(order);
+                insert(order);
                 break;
             case BestFront:
                 order = m_orders[m_orders.find_best_I(current_feasable)];
-                inserted = insert(order);
+                insert(order);
                 break;
             case OneDepot:
-                inserted = semiLIFO(order);
+                semiLIFO(order);
                 break;
             default: pgassert(false);
         }
@@ -467,7 +466,6 @@ Vehicle_pickDeliver::semiLIFO(const Order &order) {
             pgassert(has_order(order));
             invariant();
             return true;
-
         }
 
         /*

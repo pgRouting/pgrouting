@@ -214,10 +214,10 @@ bridges(pgrouting::UndirectedGraph &graph) {
 
             for ( ; ei != ei_end; ++ei) {
                 if (target(*ei, graph.graph) == v) ++parallel_count;
-            };
+            }
 
             if (parallel_count == 1) {
-                // TODO filter graph instead of removing edges
+                // TODO(vicky) filter graph instead of removing edges
                 size_t now_comps;
                 try {
                     boost::remove_edge(edge, graph.graph);
@@ -234,7 +234,6 @@ bridges(pgrouting::UndirectedGraph &graph) {
                 if (now_comps > ini_comps) {
                     bridge_edges += id;
                 }
-
             }
         }
     }
