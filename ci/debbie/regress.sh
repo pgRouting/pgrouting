@@ -37,7 +37,7 @@ state=`${PGPATH}/bin/pg_ctl status -D ${PGDATA} -l ${PGDATA}/logfile | grep "ser
 
 # start pg if not running
 if [ "0" == "0$state" ]; then
-  ${PGPATH}/bin/pg_ctl start -D ${PGDATA} -l ${PGDATA}/logfile >> ${PGSTARTLOG} 2>&1
+  "${PGPATH}/bin/pg_ctl" start -D "${PGDATA}" -l "${PGDATA}/logfile" >> "${PGSTARTLOG}" 2>&1
 fi
 echo "ok"
 
@@ -59,7 +59,7 @@ mkdir ${WORKSPACE}/build${BRANCH}
 cmake --version
 
 cd ../build${BRANCH}
-cmake ../${BRANCH}
+cmake "../${BRANCH}"
 
 make
 make install
@@ -76,11 +76,11 @@ fi
 
 #stop the postgres server
 state=`${PGPATH}/bin/pg_ctl status -D ${PGDATA} -l ${PGPATH}/data/logfile | grep "server is running"`
-echo $state
+echo "${state}"
 
 if [ "0" != "0$state" ]; then
   ${PGPATH}/bin/pg_ctl stop -D ${PGDATA} -l logfile -m fast
-  rm -rf ${PGDATA}
+  rm -rf "${PGDATA}"
 fi
 echo "done"
 
