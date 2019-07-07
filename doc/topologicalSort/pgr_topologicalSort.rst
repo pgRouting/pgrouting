@@ -79,31 +79,49 @@ One to One
 Parameters
 -------------------------------------------------------------------------------
 
-.. pgr_topologicalSort_parameters_start
+=================== ====================== ========= =================================================
+Parameter           Type                   Default   Description
+=================== ====================== ========= =================================================
+**edges_sql**       ``TEXT``                         SQL query as described above.
+=================== ====================== ========= =================================================
 
-.. rubric:: Description of the parameters of the signatures
-
-============== ================== ======== =================================================
-Parameter      Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**        ``TEXT``                    SQL query as described above.
-============== ================== ======== =================================================
-
-.. pgr_topologicalSort_parameters_end
-
-Inner Query
+Inner query
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
+:edges_sql: an SQL query, which should return a set of rows with the following columns:
 
-Results Columns
+================= =================== ======== =================================================
+Column            Type                 Default  Description
+================= =================== ======== =================================================
+**id**            ``ANY-INTEGER``                Identifier of the edge.
+**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
+**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
+
+                                                 - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+
+**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
+
+                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+
+================= =================== ======== =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+Result Columns
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
-    :start-after: return_path_short_start
-    :end-before: return_path_short_end
+Returns set of ``(seq, sorted_v)``
+
+===============  =========== ============================================================
+Column           Type        Description
+===============  =========== ============================================================
+**seq**          ``INT``     Sequential value starting from **1**.
+**sorted_v**     ``BIGINT``  Linear ordering of the vertices(ordered in topological order) 
+===============  =========== ============================================================
 
 See Also
 -------------------------------------------------------------------------------
