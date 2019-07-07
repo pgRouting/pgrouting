@@ -28,10 +28,10 @@ ERROR=0
 
 # Define alias function for psql command
 run_psql () {
-    PGOPTIONS='--client-min-messages=warning' psql -U $PGUSER  -d $PGDATABASE -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    PGOPTIONS='--client-min-messages=warning' psql -U "${PGUSER}"  -d "${PGDATABASE}" -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
     if [ "$?" -ne 0 ]
     then
-        echo "Test query failed: $@"
+        echo "Test query failed:" "$@"
         ERROR=1
     fi
 }
@@ -53,24 +53,24 @@ run_psql -c "SELECT pgr_version();"
 # ------------------------------------------------------------------------------
 # Regenerate the signature file & check if it was updated
 # ------------------------------------------------------------------------------
-VERSION=`grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt`
+VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
 FILE="sql/sigs/pgrouting--$VERSION.sig"
-echo "#VERSION pgrouting $VERSION" > $FILE
-echo "#TYPES" >> $FILE
-run_psql -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> $FILE
-echo "#FUNCTIONS" >> $FILE
-run_psql  -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> $FILE
+echo "#VERSION pgrouting $VERSION" > "${FILE}"
+echo "#TYPES" >> "${FILE}"
+run_psql -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> "${FILE}"
+echo "#FUNCTIONS" >> "${FILE}"
+run_psql  -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> "${FILE}"
 
-DIFF=`git diff sql/sigs/pgrouting--${VERSION}.sig`
+DIFF=$(git diff sql/sigs/pgrouting--${VERSION}.sig)
 
-if [[ !  -z  $DIFF  ]]
+if [[ !  -z  "${DIFF}"  ]]
 then
     echo Signature file not updated
-    echo $DIFF
+    echo "${DIFF}"
     ERROR=1
 fi
 
-./tools/testers/algorithm-tester.pl -pgver $POSTGRESQL_VERSION -pguser $PGUSER
+./tools/testers/algorithm-tester.pl -pgver "${POSTGRESQL_VERSION}" -pguser "${PGUSER}"
 
 if [ "$?" -ne 0 ]
 then
@@ -79,4 +79,4 @@ fi
 
 # Return success or failure
 # ------------------------------------------------------------------------------
-exit $ERROR
+exit "${ERROR}"
