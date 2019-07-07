@@ -121,7 +121,7 @@ ls ${PGPATHEDB}/share/extension/pgrouting*
 rm "${PGPATH}/lib/libpgrouting*"
 rm "${PGPATH}/share/extension/pgrouting*"
 rm "${PGPATHEDB}/lib/libpgrouting*"
-rm ${PGPATHEDB}/share/extension/pgrouting*
+rm "${PGPATHEDB}/share/extension/pgrouting*"
 
 #---------------
 echo
@@ -129,8 +129,8 @@ echo "***************************"
 echo "After removing in PGPATH ${PGPATH}"
 echo "***************************"
 #---------------
-ls ${PGPATH}/lib/libpgrouting*
-ls ${PGPATH}/share/extension/pgrouting*
+ls "${PGPATH}"/lib/libpgrouting*
+ls "${PGPATH}"/share/extension/pgrouting*
 
 #---------------
 echo
@@ -138,8 +138,8 @@ echo "***************************"
 echo "After removing in PGPATHEDB ${PGPATHEDB}"
 echo "***************************"
 #---------------
-ls ${PGPATHEDB}/lib/libpgrouting*
-ls ${PGPATHEDB}/share/extension/pgrouting*
+ls "${PGPATHEDB}"/lib/libpgrouting*
+ls "${PGPATHEDB}"/share/extension/pgrouting*
 cmake --version
 
 cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON \
@@ -181,8 +181,8 @@ echo "Current contents of PGPATHEDB ${PGPATHEDB}"
 echo Should be empty
 echo "***************************"
 #---------------
-ls ${PGPATHEDB}/lib/libpgrouting*
-ls ${PGPATHEDB}/share/extension/pgrouting*
+ls "${PGPATHEDB}"/lib/libpgrouting*
+ls "${PGPATHEDB}"/share/extension/pgrouting*
 
 
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions

@@ -1,3 +1,4 @@
+#!/bin/sh.exe
 # CHANGE THESE TO SUIT YOUR PROJECT
 #all these get passed in by jenkins
 #export OS_BUILD=64
@@ -85,7 +86,7 @@ echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER} $
 echo "PostgreSQL http://www.postgresql.org : ${PG_VER} ${OS_BUILD} ${GCC_TYPE}" >> "${verfile}"
 echo "CGAL http://www.cgal.org : ${CGAL_VER}" >> "${verfile}"
 echo "BOOST http://www.boost.org : ${BOOST_VER}" >> "${verfile}"
-date_built="`eval date +%Y%m%d`"
+date_built=$(eval date +%Y%m%d)
 echo "Built: ${date_built}" >> "${verfile}"
 
 cd "${RELDIR}"
