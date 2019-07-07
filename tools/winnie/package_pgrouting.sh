@@ -81,14 +81,14 @@ fi
 cp -r "${RELDIR}/packaging_notes/*" "${RELDIR}/${RELVERDIR}/"
 
 echo "The git commit is ${GIT_COMMIT}"
-echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER} ${GIT_COMMIT}" > $verfile
-echo "PostgreSQL http://www.postgresql.org : ${PG_VER} ${OS_BUILD} ${GCC_TYPE}" >> $verfile
-echo "CGAL http://www.cgal.org : ${CGAL_VER}" >> $verfile
-echo "BOOST http://www.boost.org : ${BOOST_VER}" >> $verfile
+echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER} ${GIT_COMMIT}" > "${verfile}"
+echo "PostgreSQL http://www.postgresql.org : ${PG_VER} ${OS_BUILD} ${GCC_TYPE}" >> "${verfile}"
+echo "CGAL http://www.cgal.org : ${CGAL_VER}" >> "${verfile}"
+echo "BOOST http://www.boost.org : ${BOOST_VER}" >> "${verfile}"
 date_built="`eval date +%Y%m%d`"
-echo "Built: ${date_built} >> ${verfile}"
+echo "Built: ${date_built}" >> "${verfile}"
 
-cd ${RELDIR}
+cd "${RELDIR}"
 zip -r "${package}" "${RELVERDIR}"
 
 cp "${package}" "${PROJECTS}/postgis/win_web/download/windows/pg${REL_PGVER}/buildbot"
