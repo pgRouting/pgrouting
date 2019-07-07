@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_details.h
+File: details.hpp
 
 Copyright (c) 2018 Vicky Vergara
 
@@ -18,8 +18,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MST_DETAILS_HPP_
-#define INCLUDE_MST_DETAILS_HPP_
+#ifndef INCLUDE_SPANNINGTREE_DETAILS_HPP_
+#define INCLUDE_SPANNINGTREE_DETAILS_HPP_
 #pragma once
 
 #include <vector>
@@ -39,4 +39,4 @@ get_no_edge_graph_result(
 }  // namespace details
 }  // namespace pgrouting
 
-#endif  // INCLUDE_MST_DETAILS_HPP_
+#endif  // INCLUDE_SPANNINGTREE_DETAILS_HPP_
