@@ -73,8 +73,6 @@ One to One
 :Example: From vertex :math:`1` to vertex :math:`6` 
 
 .. literalinclude:: doc-pgr_topologicalSort.queries
-   :start-after: -- q1
-   :end-before: -- q2
 
 Parameters
 -------------------------------------------------------------------------------
