@@ -10,81 +10,62 @@
 Chinese Postman Problem - Family of functions (Experimental)
 =============================================================
 
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
 .. index from here
 
-* :doc:`pgr_directedChPP`
-* :doc:`pgr_directedChPP_Cost`
+* :doc:`pgr_chinesePostman`
+* :doc:`pgr_chinesePostmanCost`
 
 .. index to here
 
 .. toctree::
   :hidden:
 
-  pgr_directedChPP
-  pgr_directedChPP_Cost
+  pgr_chinesePostman
+  pgr_chinesePostmanCost
 
 
+Description
+-------------------------------------------------------------------------------
 
-Given the following query:
+.. charactersistics-start
 
+The main characteristics are:
 
+- Process is done only on edges with **positive** costs.
+- Running time: :math:`O(E * (E + V * logV))`
+- Graph must be connected.
 
-pgr_directedChPP(:math:`sql`)
+.. charactersistics-end
 
-where  :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
+Parameters
+-------------------------------------------------------------------------------
 
-and
+.. parameters-start
 
-- :math:`source = \bigcup source_i`,
-- :math:`target = \bigcup target_i`,
+============== ================== ======== =================================================
+Column         Type               Default     Description
+============== ================== ======== =================================================
+**edges_sql**  ``TEXT``                    The edges SQL query as described in `Inner query`_.
+============== ================== ======== =================================================
 
-The graphs are defined as follows:
-
-.. rubric:: Directed graph
-
-The weighted directed graph, :math:`G(V,E)`, is definied by:
-
-* the set of vertices  :math:`V`
-
-  - :math:`V = source \cup target \cup {start_{vid}} \cup  {end_{vid}}`
-
-* the set of edges :math:`E`
-
-  - :math:`E = \begin{cases}
-    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \quad \text{if } reverse\_cost = \varnothing \\
-    \text{ }  \text{ }  & \quad \text{ } \\
-    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} &  \quad \text{ } \\
-    \cup      \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i>=0 \} & \quad \text{if } reverse\_cost \neq \varnothing \\
-    \end{cases}`
-
-.. rubric:: The problem
-
-Given:
-
-- :math:`G(V,E)`
-
-Then:
-
-     :math:`pgr\_directedChPP(edges\_sql) = \boldsymbol{\Phi}`
-
-     :math:`\boldsymbol{\Phi} = {(seq_i, node_i, edge\_i, cost_i, agg\_cost_i)}`
-
-Where:
-
-  - :math:`seq_i = i`
-  - :math:`node_i \in V`
-  - :math:`edge_i  = \begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &\quad  \text{when } i \neq | \pi | \\ -1 &\quad  \text{when } i = | \pi | \\ \end{cases}`
-  - :math:`cost_i = cost_{(node_i, node_{i+1})}`
-  - :math:`agg\_cost_i  = \begin{cases}  0   &\quad  \text{when } i = 1  \\ \displaystyle\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\quad  \text{when } i \neq 1 \\ \end{cases}`
+.. parameters-end
 
 
-In other words: The algorithm is to find the shortest path which contains every edge in a graph and starts and ends on the same node, if it exists, in terms of a sequence of nodes and of edges,
-  - :math:`seq` indicates the relative position in the path of the :math:`node` or :math:`edge`.
-  - :math:`cost` is the cost of the edge to be used to go to the next node.
-  - :math:`agg\_cost` is the cost from the start node up to the node.
+Inner query
+-------------------------------------------------------------------------------
 
+.. inner_query-start
 
-If there is no path, the resulting will be no path found error.
+An Edges SQL that represents a **directed** graph with the following columns
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+.. inner_query-end
 
 
 See Also

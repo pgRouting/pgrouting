@@ -1,8 +1,8 @@
 
 SET(LOCAL_FILES
     chinesePostmanProblem-family.rst
-    pgr_directedChPP.rst
-    pgr_directedChPP_Cost.rst
+    pgr_chinesePostmanCost.rst
+    pgr_chinesePostman.rst
     )
 
 foreach (f ${LOCAL_FILES})

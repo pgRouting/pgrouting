@@ -18,6 +18,8 @@ SET(LOCAL_FILES
     doc-pgr_biconnectedComponents.queries
     doc-pgr_boykovKolmogorov.queries
     doc-pgr_bridges.queries
+    doc-pgr_chinesePostman.queries
+    doc-pgr_chinesePostmanCost.queries
     doc-pgr_connectedComponents.queries
     doc-pgr_contraction.queries
     doc-pgr_createTopology.queries
@@ -26,8 +28,6 @@ SET(LOCAL_FILES
     doc-pgr_dijkstraCost.queries
     doc-pgr_dijkstra.queries
     doc-pgr_dijkstraVia.queries
-    doc-pgr_directedChPP_Cost.queries
-    doc-pgr_directedChPP.queries
     doc-pgr_drivingDistance.queries
     doc-pgr_edgeDisjointPaths.queries
     doc-pgr_edmondsKarp.queries

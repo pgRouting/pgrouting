@@ -7,11 +7,11 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_directedChPP - Experimental
+pgr_chinesePostmanCost - Experimental
 ============================================
 
-``pgr_directedChPP`` — Calculates the shortest circuit path which contains every edge in a directed graph and starts and ends on the same vertex.
-
+``pgr_chinesePostmanCost`` — Calculates the minimum costs of a circuit path which
+contains every edge in a directed graph and starts and ends on the same vertex.
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
@@ -24,57 +24,62 @@ pgr_directedChPP - Experimental
 
 .. rubric:: Availability
 
-* Experiemntal on v3.0.0
+* Experimental on v3.0.0
 
 **Supported versions**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_directedChPP.html>`__)
+current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_chinesePostmanCost.html>`__)
+
 
 Description
 -------------------------------------------------------------------------------
 
-**The main characteristics are:**
+.. include:: chinesePostmanProblem-family.rst
+    :start-after: charactersistics-start
+    :end-before: charactersistics-end
 
-- Process is done only on edges with **positive** costs.
-- There is no path when the graph is not connected.
-- We will return **no path found** error if there is no path.
-- Running time: :math:`O(E * (E + V * logV))`
+- [TBD] Return value when the graph if disconnected
 
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
+.. index::
+    single: chinesePostmanCost - Experimental
+
 .. code-block:: none
 
-    pgr_directedChPP(edges_sql)
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
-    OR EMPTY SET
+    pgr_chinesePostmanCost(edges_sql)
+    RETURNS FLOAT
 
 :Example:
 
-.. literalinclude:: doc-pgr_directedChPP.queries
+.. literalinclude:: doc-pgr_chinesePostmanCost.queries
    :start-after: -- q1
    :end-before: -- q2
 
-.. index::
-    single: directedChPP - Experimental
+Parameters
+-------------------------------------------------------------------------------
+
+.. include:: chinesePostmanProblem-family.rst
+    :start-after: parameters-start
+    :end-before: parameters-end
+
 
 Inner query
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
+.. include:: chinesePostmanProblem-family.rst
+    :start-after: inner_query-start
+    :end-before: inner_query-end
 
-.. include:: pgr_directedChPP_Cost.rst
-    :start-after: pgr_directedChPP_parameters_start
-    :end-before: pgr_directedChPP_parameters_end
 
 Result Columns
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
+====================== =================================================
+Type                   Description
+====================== =================================================
+``FLOAT``              Minimum costs of a circuit path.
+====================== =================================================
 
 See Also
 -------------------------------------------------------------------------------
