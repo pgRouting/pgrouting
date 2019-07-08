@@ -10,7 +10,8 @@
 pgr_chinesePostman - Experimental
 ============================================
 
-``pgr_chinesePostman`` — Calculates the shortest circuit path which contains every edge in a directed graph and starts and ends on the same vertex.
+``pgr_chinesePostman`` — Calculates the shortest circuit path which contains
+every edge in a directed graph and starts and ends on the same vertex.
 
 
 .. figure:: images/boost-inside.jpeg

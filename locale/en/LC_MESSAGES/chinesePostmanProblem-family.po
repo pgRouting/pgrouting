@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-08 09:21-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,169 +21,367 @@ msgstr ""
 msgid "Chinese Postman Problem - Family of functions (Experimental)"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:15
-msgid ":doc:`pgr_directedChPP`"
+#: ../../build/doc/proposed.rst:3
+msgid "Experimental functions"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:16
-msgid ":doc:`pgr_directedChPP_Cost`"
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially of the current release."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:28
-msgid "Given the following query:"
+#: ../../build/doc/proposed.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:14
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:19
+msgid ":doc:`pgr_chinesePostman`"
+msgstr ""
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:20
+msgid ":doc:`pgr_chinesePostmanCost`"
 msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:32
-msgid "pgr_directedChPP(:math:`sql`)"
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:34
-msgid ""
-"where  :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
-"reverse\\_cost_i)\\}`"
+#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Description"
 msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:36
-msgid "and"
+msgid "The main characteristics are:"
 msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:38
-msgid ":math:`source = \\bigcup source_i`,"
+msgid "Process is done only on edges with **positive** costs."
 msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:39
-msgid ":math:`target = \\bigcup target_i`,"
+msgid "Running time: :math:`O(E * (E + V * logV))`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:41
-msgid "The graphs are defined as follows:"
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:44
-msgid "Directed graph"
+#: ../../build/doc/chinesePostmanProblem-family.rst:40
+msgid "Graph must be connected."
 msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:45
-msgid "The weighted directed graph, :math:`G(V,E)`, is definied by:"
+msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:47
-msgid "the set of vertices  :math:`V`"
+#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Column"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:49
-msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
+#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Type"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:51
-msgid "the set of edges :math:`E`"
+#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Default"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:53
+#: ../../build/doc/chinesePostmanProblem-family.rst:52
+msgid "**edges_sql**"
+msgstr ""
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:52
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:52
+msgid "The edges SQL query as described in `Inner query`_."
+msgstr ""
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:59
+msgid "Inner query"
+msgstr ""
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:63
 msgid ""
-":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) "
-"\\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = "
-"\\varnothing \\\\ \\text{ }  \\text{ }  & \\quad \\text{ } \\\\ \\text{ }"
-"  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad "
-"\\text{ } \\\\ \\cup      \\{(target_i, source_i, reverse\\_cost_i) "
-"\\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } "
-"reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
+"An Edges SQL that represents a **directed** graph with the following "
+"columns"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:61
-msgid "The problem"
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:62
-msgid "Given:"
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:64
-msgid ":math:`G(V,E)`"
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:66
-msgid "Then:"
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:68
-msgid ":math:`pgr\\_directedChPP(edges\\_sql) = \\boldsymbol{\\Phi}`"
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:70
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "**target**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "**cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``ANY-NUMERICAL``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Weight of the edge  `(source, target)`"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-":math:`\\boldsymbol{\\Phi} = {(seq_i, node_i, edge\\_i, cost_i, "
-"agg\\_cost_i)}`"
+"When negative: edge `(source, target)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:72
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**reverse_cost**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Weight of the edge `(target, source)`,"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not"
+" part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:74
-msgid ":math:`seq_i = i`"
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:75
-msgid ":math:`node_i \\in V`"
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:76
-msgid ""
-":math:`edge_i  = \\begin{cases}  id_{(node_i, node_{i+1},cost_i)}  "
-"&\\quad  \\text{when } i \\neq | \\pi | \\\\ -1 &\\quad  \\text{when } i "
-"= | \\pi | \\\\ \\end{cases}`"
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:77
-msgid ":math:`cost_i = cost_{(node_i, node_{i+1})}`"
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:78
-msgid ""
-":math:`agg\\_cost_i  = \\begin{cases}  0   &\\quad  \\text{when } i = 1  "
-"\\\\ \\displaystyle\\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\\quad"
-"  \\text{when } i \\neq 1 \\\\ \\end{cases}`"
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:85
-msgid ""
-"In other words: The algorithm is to find the shortest path which contains"
-" every edge in a graph and starts and ends on the same node, if it "
-"exists, in terms of a sequence of nodes and of edges,"
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:82
-msgid ""
-":math:`seq` indicates the relative position in the path of the "
-":math:`node` or :math:`edge`."
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:83
-msgid ":math:`cost` is the cost of the edge to be used to go to the next node."
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:84
-msgid ":math:`agg\\_cost` is the cost from the start node up to the node."
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:87
-msgid "If there is no path, the resulting will be no path found error."
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:91
+#: ../../build/doc/chinesePostmanProblem-family.rst:72
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:94
+#: ../../build/doc/chinesePostmanProblem-family.rst:75
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:95
+#: ../../build/doc/chinesePostmanProblem-family.rst:76
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:96
+#: ../../build/doc/chinesePostmanProblem-family.rst:77
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid ":doc:`pgr_directedChPP`"
+#~ msgstr ""
+
+#~ msgid ":doc:`pgr_directedChPP_Cost`"
+#~ msgstr ""
+
+#~ msgid "Given the following query:"
+#~ msgstr ""
+
+#~ msgid "pgr_directedChPP(:math:`sql`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "where  :math:`sql = \\{(id_i, source_i, "
+#~ "target_i, cost_i, reverse\\_cost_i)\\}`"
+#~ msgstr ""
+
+#~ msgid "and"
+#~ msgstr ""
+
+#~ msgid ":math:`source = \\bigcup source_i`,"
+#~ msgstr ""
+
+#~ msgid ":math:`target = \\bigcup target_i`,"
+#~ msgstr ""
+
+#~ msgid "The graphs are defined as follows:"
+#~ msgstr ""
+
+#~ msgid "Directed graph"
+#~ msgstr ""
+
+#~ msgid "The weighted directed graph, :math:`G(V,E)`, is definied by:"
+#~ msgstr ""
+
+#~ msgid "the set of vertices  :math:`V`"
+#~ msgstr ""
+
+#~ msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
+#~ msgstr ""
+
+#~ msgid "the set of edges :math:`E`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":math:`E = \\begin{cases} \\text{ }  "
+#~ "\\{(source_i, target_i, cost_i) \\text{ when"
+#~ " } cost >=0 \\} & \\quad "
+#~ "\\text{if } reverse\\_cost = \\varnothing "
+#~ "\\\\ \\text{ }  \\text{ }  & "
+#~ "\\quad \\text{ } \\\\ \\text{ }  "
+#~ "\\{(source_i, target_i, cost_i) \\text{ when"
+#~ " } cost >=0 \\} &  \\quad "
+#~ "\\text{ } \\\\ \\cup      \\{(target_i, "
+#~ "source_i, reverse\\_cost_i) \\text{ when } "
+#~ "reverse\\_cost_i>=0 \\} & \\quad \\text{if "
+#~ "} reverse\\_cost \\neq \\varnothing \\\\ "
+#~ "\\end{cases}`"
+#~ msgstr ""
+
+#~ msgid "The problem"
+#~ msgstr ""
+
+#~ msgid "Given:"
+#~ msgstr ""
+
+#~ msgid ":math:`G(V,E)`"
+#~ msgstr ""
+
+#~ msgid "Then:"
+#~ msgstr ""
+
+#~ msgid ":math:`pgr\\_directedChPP(edges\\_sql) = \\boldsymbol{\\Phi}`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":math:`\\boldsymbol{\\Phi} = {(seq_i, node_i, "
+#~ "edge\\_i, cost_i, agg\\_cost_i)}`"
+#~ msgstr ""
+
+#~ msgid ":math:`seq_i = i`"
+#~ msgstr ""
+
+#~ msgid ":math:`node_i \\in V`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":math:`edge_i  = \\begin{cases}  id_{(node_i, "
+#~ "node_{i+1},cost_i)}  &\\quad  \\text{when } i"
+#~ " \\neq | \\pi | \\\\ -1 &\\quad"
+#~ "  \\text{when } i = | \\pi |"
+#~ " \\\\ \\end{cases}`"
+#~ msgstr ""
+
+#~ msgid ":math:`cost_i = cost_{(node_i, node_{i+1})}`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":math:`agg\\_cost_i  = \\begin{cases}  0   "
+#~ "&\\quad  \\text{when } i = 1  \\\\"
+#~ " \\displaystyle\\sum_{k=1}^{i}  cost_{(node_{k-1}, "
+#~ "node_k)}  &\\quad  \\text{when } i \\neq"
+#~ " 1 \\\\ \\end{cases}`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In other words: The algorithm is "
+#~ "to find the shortest path which "
+#~ "contains every edge in a graph and"
+#~ " starts and ends on the same "
+#~ "node, if it exists, in terms of"
+#~ " a sequence of nodes and of "
+#~ "edges,"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":math:`seq` indicates the relative position"
+#~ " in the path of the :math:`node` "
+#~ "or :math:`edge`."
+#~ msgstr ""
+
+#~ msgid ":math:`cost` is the cost of the edge to be used to go to the next node."
+#~ msgstr ""
+
+#~ msgid ":math:`agg\\_cost` is the cost from the start node up to the node."
+#~ msgstr ""
+
+#~ msgid "If there is no path, the resulting will be no path found error."
+#~ msgstr ""
 
