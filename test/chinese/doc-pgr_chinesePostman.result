@@ -3,12 +3,12 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT * FROM pgr_directedChPP(
+SELECT * FROM pgr_chinesePostman(
     'SELECT id,
      source, target,
      cost, reverse_cost FROM edge_table where id < 17'
 );
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |    4 |    3 |    1 |        0
    2 |    3 |    2 |    1 |        1
@@ -48,12 +48,12 @@ SELECT * FROM pgr_directedChPP(
 (35 rows)
 
 -- q2
-SELECT * FROM pgr_directedChPP(
+SELECT * FROM pgr_chinesePostman(
     'SELECT id,
      source, target,
      cost, reverse_cost FROM edge_table where id = 9 or id = 11 or id = 13 or id = 15'
 );
- seq | node | edge | cost | agg_cost 
+ seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
    1 |    9 |    9 |    1 |        0
    2 |    6 |    9 |    1 |        1
