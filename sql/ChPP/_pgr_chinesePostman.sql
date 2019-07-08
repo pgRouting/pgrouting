@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_directedChPP.sql
+File: _pgr_directedChPP.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -26,16 +26,16 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+----------
+----------
+-- ChPP
+----------
+----------
 
+CREATE OR REPLACE FUNCTION _pgr_chinesePostman(
+    edges_sql TEXT,
 
---------------------
--- pgr_directedChPP
---------------------
-
-
-
-CREATE OR REPLACE FUNCTION pgr_directedChPP(
-    TEXT, -- edges_sql (required)
+    only_cost BOOLEAN,
 
     OUT seq INTEGER,
     OUT node BIGINT,
@@ -44,20 +44,10 @@ CREATE OR REPLACE FUNCTION pgr_directedChPP(
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
-$BODY$
-    SELECT *
-    FROM _pgr_directedChPP(_pgr_get_statement($1), only_cost := false);
-$BODY$
-LANGUAGE SQL VOLATILE;
+'MODULE_PATHNAME', 'chinesePostman'
+LANGUAGE c IMMUTABLE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_directedChPP(TEXT) 
-IS 'pgr_directedChPP
-- EXPERIMENTAL
-- Directed graph
-- Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-- Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_directedChPP.html
-';
+COMMENT ON FUNCTION _pgr_chinesePostman(TEXT, BOOLEAN)
+IS 'pgRouting internal function';

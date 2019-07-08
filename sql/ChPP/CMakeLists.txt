@@ -1,8 +1,8 @@
 
 SET(LOCAL_FILES
-    _pgr_directedChPP.sql
-    pgr_directedChPP.sql
-    pgr_directedChPP_Cost.sql)
+    _pgr_chinesePostman.sql
+    pgr_chinesePostman.sql
+    pgr_chinesePostmancost.sql)
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})
