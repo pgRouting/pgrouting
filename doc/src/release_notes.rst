@@ -165,6 +165,11 @@ pgRouting 3.0.0 Release Notes
   * pgr_pickDeliverEuclidean
   * pgr_pickDeliver
 
+* Chinese Postman family
+
+  * pgr_chinesePostman
+  * pgr_chinesePostmanCost
+
 
 .. rubric:: Moved to legacy
 
