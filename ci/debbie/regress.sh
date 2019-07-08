@@ -30,14 +30,14 @@ PGSTARTLOG=${PGDATA}/start_log.log
 
 
 #initialize the database
-${PGPATH}/bin/initdb -U postgres -D ${PGDATA} -A trust
+"${PGPATH}"/bin/initdb -U postgres -D "${PGDATA}" -A trust
 
 # check to see if pg is already running
-state=`${PGPATH}/bin/pg_ctl status -D ${PGDATA} -l ${PGDATA}/logfile | grep "server is running" `
+state=$(${PGPATH}/bin/pg_ctl status -D "${PGDATA}" -l "${PGDATA}"/logfile | grep "server is running")
 
 # start pg if not running
 if [ "0" == "0$state" ]; then
-  ${PGPATH}/bin/pg_ctl start -D ${PGDATA} -l ${PGDATA}/logfile >> ${PGSTARTLOG} 2>&1
+  "${PGPATH}/bin/pg_ctl" start -D "${PGDATA}" -l "${PGDATA}/logfile" >> "${PGSTARTLOG}" 2>&1
 fi
 echo "ok"
 
@@ -49,38 +49,38 @@ echo "ok"
 # File used in Jenkins setup
 #-------------------------
 
-echo $PATH
+echo "$PATH"
 export PGUSER=postgres
-export PGROUTING_VER=$BRANCH
+export PGROUTING_VER="$BRANCH"
 
 rm -rf ${WORKSPACE}/build${BRANCH}
 mkdir ${WORKSPACE}/build${BRANCH}
 
 cmake --version
 
-cd ../build${BRANCH}
-cmake ../${BRANCH}
+cd ../build"${BRANCH}"
+cmake "../${BRANCH}"
 
 make
 make install
-cd ../${BRANCH}
+cd ../"${BRANCH}"
 export PERL5LIB=$(echo pwd)
 perl tools/testers/algorithm-tester.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
 #pgTap tests disable for now until we have installed
 if false; then
 psql -c "CREATE DATABASE ___pgr___test___"
-sh tools/testers/pg_prove_tests.sh ${PGUSER}
+sh tools/testers/pg_prove_tests.sh "${PGUSER}"
 psql -c "DROP DATABASE ___pgr___test___"
 fi
 
 #stop the postgres server
-state=`${PGPATH}/bin/pg_ctl status -D ${PGDATA} -l ${PGPATH}/data/logfile | grep "server is running"`
-echo $state
+state=$("${PGPATH}"/bin/pg_ctl status -D "${PGDATA}" -l "${PGPATH}"/data/logfile | grep "server is running")
+echo "${state}"
 
 if [ "0" != "0$state" ]; then
-  ${PGPATH}/bin/pg_ctl stop -D ${PGDATA} -l logfile -m fast
-  rm -rf ${PGDATA}
+  "${PGPATH}"/bin/pg_ctl stop -D "${PGDATA}" -l logfile -m fast
+  rm -rf "${PGDATA}"
 fi
 echo "done"
 

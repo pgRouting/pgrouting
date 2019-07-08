@@ -28,9 +28,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_COMPONENTS_COMPONENTSRESULT_H_
 #pragma once
 
+#include <vector>
+
 #include "c_types/pgr_components_rt.h"
 
-#include <vector>
 
 namespace pgrouting {
 namespace algorithms {

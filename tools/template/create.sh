@@ -20,8 +20,6 @@ if [  "$#" -lt 1 ] ; then
 fi
 }
 
-ACTION="$1"
-
 if [[  ! ( "$1" == "clean" || "$1" == "overwrite" || "$1" == "missing" ) ]] ; then
     usage
 fi
@@ -31,7 +29,7 @@ fi
 #dont put pgr_ on MY_FUNCTION_NAME that is done automatically
 MY_FUNCTION_NAME="funnyDijkstra"
 DEVELOPER_NAME="Celia Virginia Vergara Castillo"
-DEVELOPER_EMAIL="vicky_vergara\@hotmail.com"
+DEVELOPER_EMAIL="vicky_vergara@hotmail.com"
 YEAR="2017"
 
 # Note: the "\n     " (change line and four spaces) after each comma
@@ -45,17 +43,17 @@ MY_QUERY_LINE1="TEXT,\n    BIGINT,\n    BIGINT,\n    directed BOOLEAN DEFAULT tr
 MY_QUERY_LINE2="    OUT seq INTEGER,\n    OUT path_seq INTEGER,\n    OUT node BIGINT,\n    OUT edge BIGINT,\n    OUT cost FLOAT,\n    OUT agg_cost FLOAT"
 
 
-MY_FUNCTION_NAME_UPPER=$(echo $MY_FUNCTION_NAME | tr 'a-z' 'A-Z')
-MY_FUNCTION_NAME_LOWER=$(echo $MY_FUNCTION_NAME | tr 'A-Z' 'a-z')
+MY_FUNCTION_NAME_UPPER=$(echo $MY_FUNCTION_NAME | tr '[:upper:]' '[:lower:]')
+MY_FUNCTION_NAME_LOWER=$(echo $MY_FUNCTION_NAME | tr '[:upper:]' '[:lower:]')
 
 # Available types to store the edge information:
 #  http://docs.pgrouting.org/doxy/dev/structpgr__edge__t.html
 #  http://docs.pgrouting.org/doxy/dev/structPgr__edge__xy__t.html
 MY_RETURN_VALUE_TYPE="General_path_element_t"
-MY_RETURN_VALUE_FILE=$(echo $MY_RETURN_VALUE_TYPE | tr 'A-Z' 'a-z')
+MY_RETURN_VALUE_FILE=$(echo $MY_RETURN_VALUE_TYPE | tr '[:upper:]' '[:lower:]')
 
 MY_EDGE_TYPE="pgr_edge_t"
-MY_EDGE_FILE=$(echo $MY_EDGE_TYPE | tr 'A-Z' 'a-z')
+MY_EDGE_FILE=$(echo $MY_EDGE_TYPE | tr '[:upper:]' '[:lower:]')
 
 # Available functions that read the edge information:
 # http://docs.pgrouting.org/doxy/dev/edges__input_8h.html#

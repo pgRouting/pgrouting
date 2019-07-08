@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_MST_MST_COMMON_H_
-#define INCLUDE_DRIVERS_MST_MST_COMMON_H_
+#ifndef INCLUDE_DRIVERS_SPANNINGTREE_MST_COMMON_H_
+#define INCLUDE_DRIVERS_SPANNINGTREE_MST_COMMON_H_
 #pragma once
 
 #ifdef __cplusplus
@@ -51,4 +51,4 @@ get_name(int fn_id, char * fn_suffix, char ** err_msg);
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_MST_MST_COMMON_H_
+#endif  // INCLUDE_DRIVERS_SPANNINGTREE_MST_COMMON_H_

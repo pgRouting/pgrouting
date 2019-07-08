@@ -110,7 +110,6 @@ Optimize::inter_swap() {
             auto swapped = false;
 #endif
             swap_worse(to, from);
-            //swapped_f = swap_order() || swapped_f;
             move_reduce_cost(from, to);
 #if 0
             msg.log << "++++++++" << p_swaps;
@@ -190,7 +189,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
              * The orders might have being swapped before
              */
             if (!to_truck.has_order(to_order)) continue;
-            if (!from_truck.has_order(from_order)) break; // TODO delete line
+            // if (!from_truck.has_order(from_order)) break; // TODO delete line
 
             pgassert(from_truck.has_order(from_order));
             pgassert(to_truck.has_order(to_order));
@@ -252,7 +251,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
                     swapped = true;
                     break;
                 }
-            };
+            }
             /*
              * Can't swap, restore vehicles
              */
@@ -579,7 +578,7 @@ Optimize::move_reduce_cost(
             this->get_kind() == OneDepot?
                 from_truck.semiLIFO(order) :
                 from_truck.insert(order);
-        };
+        }
     }
     return moved;
 }
@@ -704,7 +703,7 @@ Optimize::decrease_truck(size_t cycle) {
                  */
                 fleet[position].erase(order);
                 break;
-            };
+            }
         }
     }
     return fleet[position].orders_in_vehicle().empty();
@@ -716,7 +715,7 @@ Optimize::save_if_best() {
         best_solution = (*this);
         msg.log << "\n*********** best by duration"
             << best_solution.cost_str();
-#ifndef NDEBUG
+#if 0
         msg.dbg_log << best_solution.tau("best by duration");
 #endif
     }
@@ -724,7 +723,7 @@ Optimize::save_if_best() {
         best_solution = (*this);
         msg.log << "\n*********** best by fleet size"
             << best_solution.cost_str();
-#ifndef NDEBUG
+#if 0
         msg.dbg_log << best_solution.tau("best by fleet size");
 #endif
     }

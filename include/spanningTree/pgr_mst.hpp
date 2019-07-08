@@ -18,8 +18,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MST_PGR_MST_HPP_
-#define INCLUDE_MST_PGR_MST_HPP_
+#ifndef INCLUDE_SPANNINGTREE_PGR_MST_HPP_
+#define INCLUDE_SPANNINGTREE_PGR_MST_HPP_
 #pragma once
 
 #include <visitors/dfs_visitor_with_root.hpp>
@@ -356,4 +356,4 @@ class Pgr_mst {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_MST_PGR_MST_HPP_
+#endif  // INCLUDE_SPANNINGTREE_PGR_MST_HPP_

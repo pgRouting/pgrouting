@@ -1,3 +1,4 @@
+#!/bin/sh.exe
 # CHANGE THESE TO SUIT YOUR PROJECT
 #all these get passed in by jenkins
 #export OS_BUILD=64
@@ -38,7 +39,7 @@ else
 fi;
 
 #cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}/build/lib
-cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
+cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}"
 
 export REL_PGVER=${PG_VER//./} #strip the period
 
@@ -56,39 +57,39 @@ outdir="${RELDIR}/${RELVERDIR}"
 package="${RELDIR}/${RELVERDIR}.zip"
 verfile="${RELDIR}/${RELVERDIR}/version.txt"
 
-rm -rf $outdir
-rm $package
-mkdir -p $outdir
-mkdir -p $outdir/share/extension
-mkdir $outdir/bin
-mkdir $outdir/lib
+rm -rf "${outdir}"
+rm "${package}"
+mkdir -p "${outdir}"
+mkdir -p "${outdir}/share/extension"
+mkdir "${outdir}/bin"
+mkdir "${outdir}/lib"
 
-cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/sql
-cp *.sql $outdir/share/extension
-cp ${PostgreSQL_ROOT}/share/extension/pgrouting.control $outdir/share/extension
+cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/sql"
+cp *.sql "${outdir}/share/extension"
+cp "${PostgreSQL_ROOT}/share/extension/pgrouting.control" "${outdir}/share/extension"
 
-cd ${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib
+cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib"
 strip *.dll
 
-cp -r *.dll $outdir/lib
+cp -r *.dll "${outdir}/lib"
 #newer gcc for some reason CGAL is not statically linked
 # so need to distribute
 if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
-	cp ${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/bin/libCGAL.dll $outdir/bin
+	cp "${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE}/bin/libCGAL.dll" "${outdir}/bin"
 fi
 #cp extensions/postgis_topology/sql/* ${RELDIR}/${RELVERDIR}/share/extension
 #cp extensions/postgis_topology/*.control ${RELDIR}/${RELVERDIR}/share/extension
-cp -r ${RELDIR}/packaging_notes/* ${RELDIR}/${RELVERDIR}/
+cp -r "${RELDIR}/packaging_notes/*" "${RELDIR}/${RELVERDIR}/"
 
 echo "The git commit is ${GIT_COMMIT}"
-echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER} ${GIT_COMMIT}" > $verfile
-echo "PostgreSQL http://www.postgresql.org : ${PG_VER} ${OS_BUILD} ${GCC_TYPE}" >> $verfile
-echo "CGAL http://www.cgal.org : ${CGAL_VER}" >> $verfile
-echo "BOOST http://www.boost.org : ${BOOST_VER}" >> $verfile
-date_built="`eval date +%Y%m%d`"
-echo "Built: ${date_built}" >> $verfile
+echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER} ${GIT_COMMIT}" > "${verfile}"
+echo "PostgreSQL http://www.postgresql.org : ${PG_VER} ${OS_BUILD} ${GCC_TYPE}" >> "${verfile}"
+echo "CGAL http://www.cgal.org : ${CGAL_VER}" >> "${verfile}"
+echo "BOOST http://www.boost.org : ${BOOST_VER}" >> "${verfile}"
+date_built=$(eval date +%Y%m%d)
+echo "Built: ${date_built}" >> "${verfile}"
 
-cd ${RELDIR}
-zip -r $package ${RELVERDIR}
+cd "${RELDIR}"
+zip -r "${package}" "${RELVERDIR}"
 
-cp $package ${PROJECTS}/postgis/win_web/download/windows/pg${REL_PGVER}/buildbot
+cp "${package}" "${PROJECTS}/postgis/win_web/download/windows/pg${REL_PGVER}/buildbot"

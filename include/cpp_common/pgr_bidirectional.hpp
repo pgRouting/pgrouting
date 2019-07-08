@@ -80,10 +80,9 @@ class Pgr_bidirectional {
     explicit Pgr_bidirectional(G &pgraph):
         graph(pgraph),
         INF((std::numeric_limits<double>::max)()),
-        best_cost(0)
-    {
+        best_cost(0) {
         m_log << "constructor\n";
-    };
+    }
 
     ~Pgr_bidirectional() = default;
 
