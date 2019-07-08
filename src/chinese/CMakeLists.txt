@@ -1,3 +1,3 @@
-ADD_LIBRARY(ChPP OBJECT
+ADD_LIBRARY(chinese OBJECT
     directedChPP.c
     directedChPP_driver.cpp)
