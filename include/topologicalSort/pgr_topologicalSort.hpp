@@ -29,8 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graph_traits.hpp>
-#include <boost/graph/one_bit_color_map.hpp>
-#include <boost/property_map/property_map.hpp>
 #include <boost/typeof/typeof.hpp>
 #include <boost/graph/topological_sort.hpp>
 
@@ -55,8 +53,6 @@ template < class G >
 class Pgr_topologicalSort {
  public:
      typedef typename G::V V;
-     typedef typename G::E E;
-     typedef typename G::E_i E_i;
 
      std::vector<pgr_topologicalSort_t> topologicalSort(
                  G &graph);
@@ -65,18 +61,11 @@ class Pgr_topologicalSort {
      std::vector< pgr_topologicalSort_t >
      generatetopologicalSort(
         const G &graph ) {
-        auto parities = boost::make_one_bit_color_map(
-                                num_vertices(graph.graph),
-                                get(boost::vertex_index, graph.graph));
 
         std::vector< pgr_topologicalSort_t > results;
 
         typedef typename std::vector< V > container;
         container c;
-        std::pair<int,int> pa;
-        std::vector< std::pair<int,int> > vpa;
-        vpa.push_back(std::make_pair(1,3));
-
 
         boost::topological_sort(graph.graph, std::back_inserter(c));
         
@@ -84,9 +73,7 @@ class Pgr_topologicalSort {
         for (ii=c.rbegin(); ii!=c.rend(); ++ii) {
             auto t=*ii;
             pgr_topologicalSort_t tmp;
-            tmp.sorted_v=t;
-           tmp.sorted_v=graph.graph[t].id;
-           // tmp.sorted_v=tmp.sorted_v+1000;
+            tmp.sorted_v=graph.graph[t].id;
             results.push_back(tmp);
         }
 
