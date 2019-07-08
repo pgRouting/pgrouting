@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_pgr_chinesePostmanCost.sql
+File: pgr_chinesePostmanCost.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-CREATE OR REPLACE FUNCTION pgr_pgr_chinesePostmanCost(
+CREATE OR REPLACE FUNCTION pgr_chinesePostmanCost(
     TEXT -- edges_sql (required)
 )
 RETURNS FLOAT AS
@@ -46,12 +46,12 @@ LANGUAGE SQL VOLATILE;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_pgr_chinesePostmanCost(TEXT)
-IS 'pgr_pgr_chinesePostmanCost
+COMMENT ON FUNCTION pgr_chinesePostmanCost(TEXT)
+IS 'pgr_chinesePostmanCost
 - EXPERIMENTAL
 - Directed graph
 - Parameters:
 	- Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-	- ${PGROUTING_DOC_LINK}/pgr_pgr_chinesePostmanCost.html
+	- ${PGROUTING_DOC_LINK}/pgr_chinesePostmanCost.html
 ';

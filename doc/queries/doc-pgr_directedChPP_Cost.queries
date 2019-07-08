@@ -8,22 +8,17 @@ SELECT * FROM pgr_directedChPP_Cost(
      source, target,
      cost, reverse_cost FROM edge_table where id < 17'
 );
- pgr_directedchpp_cost
------------------------
-                    34
-(1 row)
-
+ERROR:  function pgr_directedchpp_cost(unknown) does not exist
+LINE 1: SELECT * FROM pgr_directedChPP_Cost(
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 -- q2
 SELECT * FROM pgr_directedChPP_Cost(
     'SELECT id,
      source, target,
      cost, reverse_cost FROM edge_table where id = 9 or id = 11 or id = 13 or id = 15'
 );
- pgr_directedchpp_cost
------------------------
-                     8
-(1 row)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 -- q3
 ROLLBACK;
 ROLLBACK

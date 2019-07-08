@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/ChPP/directedChPP_driver.h"
+#include "drivers/chinese/chinesePostman_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 
 // work for only directed
-#include "ChPP/pgr_directedChPP.hpp"
+#include "chinese/pgr_chinesePostman.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"

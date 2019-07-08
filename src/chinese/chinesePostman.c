@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: directedChPP.c
+File: chinesePostman.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -28,43 +28,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/** @file directedChPP.c
- * @brief Connecting code with postgres.
- *
- * This file is fully documented for understanding
- *  how the postgres connectinon works
- *
- * TODO Remove unnecessary comments before submiting the function.
- * some comments are in form of PGR_DBG message
- */
+/** @file chinesePostman.c */
 
-/**
- *  postgres_connection.h
- *
- *  - should always be first in the C code
- */
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
 
-/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
-/* for functions to get edges information */
 #include "c_common/edges_input.h"
 
-#include "drivers/ChPP/directedChPP_driver.h"  // the link to the C++ code of the function
+#include "drivers/chinese/chinesePostman_driver.h"
 
-PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(directedChPP);
+PGDLLEXPORT Datum chinesePostman(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(chinesePostman);
 
 
 /******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
@@ -72,26 +54,18 @@ process(
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
-    /*
-     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
-     */
     pgr_SPI_connect();
 
-    PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
-    PGR_DBG("Total %ld edges in query:", total_edges);
-
     if (total_edges == 0) {
-        PGR_DBG("No edges found");
         pgr_SPI_finish();
         return;
     }
 
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
@@ -113,10 +87,7 @@ process(
         time_msg(" processing pgr_directedChPP", start_t, clock());
     }
 
-    PGR_DBG("Returning %ld tuples", *result_count);
-
-    if (edges)
-        pfree(edges);
+    if (edges) pfree(edges);
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -132,19 +103,15 @@ process(
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
-PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS) {
+
+PGDLLEXPORT Datum chinesePostman(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
     /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     General_path_element_t *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
     /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
@@ -154,22 +121,13 @@ PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-           TEXT,
-    BIGINT,
-    BIGINT,
-         **********************************************************************/
 
-
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_BOOL(1),
                 &result_tuples,
                 &result_count);
 
-        /*                                                                    */
         /**********************************************************************/
 
 #if PGSQL_VERSION > 94
@@ -214,7 +172,6 @@ PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
@@ -226,13 +183,6 @@ PGDLLEXPORT Datum directedChPP(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-
-        PGR_DBG("Clean up code");
-
-        /**********************************************************************/
-
         SRF_RETURN_DONE(funcctx);
     }
 }

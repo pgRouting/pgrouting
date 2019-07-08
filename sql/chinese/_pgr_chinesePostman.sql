@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: _pgr_directedChPP.sql
+File: _pgr_chinesePostman.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers

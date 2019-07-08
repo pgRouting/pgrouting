@@ -1,3 +1,3 @@
 ADD_LIBRARY(chinese OBJECT
-    directedChPP.c
-    directedChPP_driver.cpp)
+    chinesePostman.c
+    chinesePostman_driver.cpp)

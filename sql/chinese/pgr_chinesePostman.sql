@@ -46,18 +46,18 @@ CREATE OR REPLACE FUNCTION pgr_chinesePostman(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM __pgr_chinesePostman(_pgr_get_statement($1), only_cost := false);
+    FROM _pgr_chinesePostman(_pgr_get_statement($1), only_cost := false);
 $BODY$
 LANGUAGE SQL VOLATILE;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_chinesePostman(TEXT)
-IS '_pgr_chinesePostman
+COMMENT ON FUNCTION pgr_chinesePostman(TEXT)
+IS 'pgr_chinesePostman
 - EXPERIMENTAL
 - Directed graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/_pgr_chinesePostman.html
+    - ${PGROUTING_DOC_LINK}/pgr_chinesePostman.html
 ';
