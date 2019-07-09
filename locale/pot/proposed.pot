@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-06 10:03-0500\n"
+"POT-Creation-Date: 2019-07-08 09:21-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -214,11 +214,11 @@ msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:3
-msgid ":doc:`pgr_directedChPP`"
+msgid ":doc:`pgr_chinesePostman`"
 msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:4
-msgid ":doc:`pgr_directedChPP_Cost`"
+msgid ":doc:`pgr_chinesePostmanCost`"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:124

@@ -82,9 +82,9 @@ file_filter = locales/<lang>/LC_MESSAGES/components-family.po
 source_file = locale/pot/components-family.pot
 source_lang = en
 
-[pgrouting.pgr_directedChPP_Cost]
-file_filter = locales/<lang>/LC_MESSAGES/pgr_directedChPP_Cost.po
-source_file = locale/pot/pgr_directedChPP_Cost.pot
+[pgrouting.pgr_chinesePostmanCost]
+file_filter = locales/<lang>/LC_MESSAGES/pgr_chinesePostmanCost.po
+source_file = locale/pot/pgr_chinesePostmanCost.pot
 source_lang = en
 
 [pgrouting.pgr_withPointsKSP]
@@ -247,9 +247,9 @@ file_filter = locales/<lang>/LC_MESSAGES/pgr_nodeNetwork.po
 source_file = locale/pot/pgr_nodeNetwork.pot
 source_lang = en
 
-[pgrouting.pgr_directedChPP]
-file_filter = locales/<lang>/LC_MESSAGES/pgr_directedChPP.po
-source_file = locale/pot/pgr_directedChPP.pot
+[pgrouting.pgr_chinesePostman]
+file_filter = locales/<lang>/LC_MESSAGES/pgr_chinesePostman.po
+source_file = locale/pot/pgr_chinesePostman.pot
 source_lang = en
 
 [pgrouting.proposed]

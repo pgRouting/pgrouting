@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-08 09:21-0500\n"
+"POT-Creation-Date: 2019-07-08 10:30-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,8 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:11
-msgid "Chinese Postman Problem - Family of functions (Experimental)"
+#: ../../build/doc/pgr_chinesePostman.rst:11
+msgid "pgr_chinesePostman - Experimental"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:13
+msgid "``pgr_chinesePostman`` — Calculates the shortest circuit path which contains every edge in a directed graph and starts and ends on the same vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:20
+msgid "Boost Graph Inside"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -80,72 +88,91 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:19
-msgid ":doc:`pgr_chinesePostman`"
+#: ../../build/doc/pgr_chinesePostman.rst:27
+msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:20
-msgid ":doc:`pgr_chinesePostmanCost`"
+#: ../../build/doc/pgr_chinesePostman.rst:28
+msgid "Experiemntal on v3.0.0"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:32
-#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/pgr_chinesePostman.rst:30
+msgid "**Supported versions** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_chinesePostman.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:34
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_chinesePostman.rst:82
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:36
+#: ../../build/doc/chinesePostmanProblem-family.rst:3
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:38
+#: ../../build/doc/chinesePostmanProblem-family.rst:5
 msgid "Process is done only on edges with **positive** costs."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:39
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
 msgid "Running time: :math:`O(E * (E + V * logV))`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:40
+#: ../../build/doc/chinesePostmanProblem-family.rst:7
 msgid "Graph must be connected."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:45
+#: ../../build/doc/pgr_chinesePostman.rst:40
+msgid "Returns ``EMPTY SET`` on a disconnected graph"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:43
+msgid "Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:0
+msgid "Example"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:61
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_chinesePostman.rst:82
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_chinesePostman.rst:82
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:52
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:52
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:52
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
 msgid "The edges SQL query as described in `Inner query`_."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
+#: ../../build/doc/pgr_chinesePostman.rst:69
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:63
+#: ../../build/doc/chinesePostmanProblem-family.rst:3
 msgid "An Edges SQL that represents a **directed** graph with the following columns"
 msgstr ""
 
@@ -180,6 +207,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_chinesePostman.rst:87
 msgid "**cost**"
 msgstr ""
 
@@ -232,19 +260,81 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:72
+#: ../../build/doc/pgr_chinesePostman.rst:77
+msgid "Result Columns"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:79
+msgid "Returns set of ``(seq, node, edge, cost, agg_cost)``"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:84
+msgid "**seq**"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:84
+msgid "``INT``"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:84
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:85
+msgid "**node**"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:85
+#: ../../build/doc/pgr_chinesePostman.rst:86
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:85
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:86
+msgid "**edge**"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:86
+msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path."
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:87
+#: ../../build/doc/pgr_chinesePostman.rst:88
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:87
+msgid "Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence."
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:88
+msgid "**agg_cost**"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:88
+msgid "Aggregate cost from ``start_v`` to ``node``."
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:93
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:75
+#: ../../build/doc/pgr_chinesePostman.rst:95
+msgid ":doc:`chinesePostmanProblem-family`"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:98
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:76
+#: ../../build/doc/pgr_chinesePostman.rst:99
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:77
+#: ../../build/doc/pgr_chinesePostman.rst:100
 msgid ":ref:`search`"
 msgstr ""
 

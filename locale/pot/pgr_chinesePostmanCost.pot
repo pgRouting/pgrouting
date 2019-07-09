@@ -16,8 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:11
-msgid "Chinese Postman Problem - Family of functions (Experimental)"
+#: ../../build/doc/pgr_chinesePostmanCost.rst:11
+msgid "pgr_chinesePostmanCost - Experimental"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:13
+msgid "``pgr_chinesePostmanCost`` — Calculates the minimum costs of a circuit path which contains every edge in a directed graph and starts and ends on the same vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:19
+msgid "Boost Graph Inside"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -80,72 +88,90 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:19
-msgid ":doc:`pgr_chinesePostman`"
+#: ../../build/doc/pgr_chinesePostmanCost.rst:26
+msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:20
-msgid ":doc:`pgr_chinesePostmanCost`"
+#: ../../build/doc/pgr_chinesePostmanCost.rst:27
+msgid "Experimental on v3.0.0"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:32
-#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/pgr_chinesePostmanCost.rst:29
+msgid "**Supported versions** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_chinesePostmanCost.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:34
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_chinesePostmanCost.rst:79
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:36
+#: ../../build/doc/chinesePostmanProblem-family.rst:3
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:38
+#: ../../build/doc/chinesePostmanProblem-family.rst:5
 msgid "Process is done only on edges with **positive** costs."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:39
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
 msgid "Running time: :math:`O(E * (E + V * logV))`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:40
+#: ../../build/doc/chinesePostmanProblem-family.rst:7
 msgid "Graph must be connected."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:45
+#: ../../build/doc/pgr_chinesePostmanCost.rst:40
+msgid "[TBD] Return value when the graph if disconnected"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:43
+msgid "Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:0
+msgid "Example"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:60
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_chinesePostmanCost.rst:79
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:50
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:52
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:52
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:52
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
 msgid "The edges SQL query as described in `Inner query`_."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
+#: ../../build/doc/pgr_chinesePostmanCost.rst:68
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:63
+#: ../../build/doc/chinesePostmanProblem-family.rst:3
 msgid "An Edges SQL that represents a **directed** graph with the following columns"
 msgstr ""
 
@@ -232,19 +258,35 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:72
+#: ../../build/doc/pgr_chinesePostmanCost.rst:76
+msgid "Result Columns"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:81
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:81
+msgid "Minimum costs of a circuit path."
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:85
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:75
+#: ../../build/doc/pgr_chinesePostmanCost.rst:87
+msgid ":doc:`chinesePostmanProblem-family`"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:90
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:76
+#: ../../build/doc/pgr_chinesePostmanCost.rst:91
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:77
+#: ../../build/doc/pgr_chinesePostmanCost.rst:92
 msgid ":ref:`search`"
 msgstr ""
 
