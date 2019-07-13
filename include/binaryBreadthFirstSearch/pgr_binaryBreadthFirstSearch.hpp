@@ -105,20 +105,29 @@ public:
 
         while(dq.empty() == false) {
             int64_t head_vertex = dq.front();
+
             dq.pop_front();
+
             auto out_edges = boost::out_edges(head_vertex, graph.graph);
             E e;
-            EO_i out_i, out_end;
+            EO_i out_i;
+            EO_i out_end;
             V v_source, v_target;
+
             for (boost::tie(out_i, out_end) = out_edges;
                     out_i != out_end; ++out_i) {
+
                 e = *out_i;
                 v_target = graph.target(e);
                 v_source = graph.source(e);
                 double edge_cost = graph[e].cost;
-                if(std::isinf(current_cost[v_target]) or current_cost[v_source] + edge_cost < current_cost[v_target]){
+
+                if( std::isinf(current_cost[v_target]) or current_cost[v_source] + edge_cost < current_cost[v_target]){
+
                     current_cost[v_target] = current_cost[v_source] + edge_cost;
+
                     from_edge[v_target] = e;
+
                     if(edge_cost != 0 ){
                         dq.push_back(v_target);
                     }
@@ -129,32 +138,24 @@ public:
             }            
         }
 
-        // for(int i = 1; i<=graph.num_vertices();i++){
-        //     paths.push_back(Path(start_vertex, i));
-        //     paths.back().push_back({i, -i, -i, current_cost[graph.get_V(i)]});
-        //     // continue;
-        // }
-        // return paths;
 
         for(auto target : end_vertex){
-            // paths.push_back(Path(start_vertex, target));
-            // paths.back().push_back({start_vertex, 1, 0, current_cost[start_vertex]});
-            // continue;
             if(graph.has_vertex(target) == false) continue;
-            int64_t edge_id = -1, current_node = graph.get_V(target);
-            double edge_cost = 0;
+
+            int64_t current_node = graph.get_V(target);
+
             Path path = Path(graph[source_vertex].id, graph[current_node].id);
+
             path.push_back({target, -1, 0, current_cost[current_node]});
+
             if(from_edge.find(current_node) == from_edge.end()) continue;
+
             do{
                 E e = from_edge[current_node];
                 auto from = graph.source(e);
-                auto to = graph.target(e);
 
                 path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from]});
 
-                // edge_cost = graph[e].cost;
-                // edge_id = graph[e].id;
                 current_node = from;
             } while (from_edge.find(current_node) != from_edge.end());
 
@@ -164,11 +165,6 @@ public:
 
         }
 
-        // for(int i = 1; i<=graph.num_vertices();i++){
-        //     paths.push_back(Path(start_vertex, i));
-        //     paths.back().push_back({i, -i, -i, current_cost[graph.get_V(i)]});
-        //     // continue;
-        // }
 
         return paths;
     }
