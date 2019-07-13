@@ -129,10 +129,10 @@ public:
             }            
         }
 
-        // for(int i = 1; i<graph.num_vertices();i++){
+        // for(int i = 1; i<=graph.num_vertices();i++){
         //     paths.push_back(Path(start_vertex, i));
-        //     paths.back().push_back({i, 1, 0, current_cost[i]});
-        //     continue;
+        //     paths.back().push_back({i, -i, -i, current_cost[graph.get_V(i)]});
+        //     // continue;
         // }
         // return paths;
 
@@ -144,7 +144,7 @@ public:
             int64_t edge_id = -1, current_node = graph.get_V(target);
             double edge_cost = 0;
             Path path = Path(graph[source_vertex].id, graph[current_node].id);
-            path.push_back({target, -1, 0, current_cost[target]});
+            path.push_back({target, -1, 0, current_cost[current_node]});
             if(from_edge.find(current_node) == from_edge.end()) continue;
             do{
                 E e = from_edge[current_node];
@@ -153,7 +153,6 @@ public:
 
                 path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from]});
 
-
                 // edge_cost = graph[e].cost;
                 // edge_id = graph[e].id;
                 current_node = from;
@@ -161,12 +160,15 @@ public:
 
 
             std::reverse(path.begin(),path.end());
-
             paths.push_front(path);
 
         }
 
-
+        // for(int i = 1; i<=graph.num_vertices();i++){
+        //     paths.push_back(Path(start_vertex, i));
+        //     paths.back().push_back({i, -i, -i, current_cost[graph.get_V(i)]});
+        //     // continue;
+        // }
 
         return paths;
     }
