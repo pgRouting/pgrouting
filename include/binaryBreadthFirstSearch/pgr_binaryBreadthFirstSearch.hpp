@@ -98,10 +98,10 @@ public:
         std::map<int64_t, E> from_edge;
         std::deque<int64_t> dq;
 
-        int64_t source_vertex = graph.get_V(start_vertex);
+        int64_t bgl_start_vertex = graph.get_V(start_vertex);
 
-        current_cost[source_vertex] = 0;
-        dq.push_front(source_vertex);
+        current_cost[bgl_start_vertex] = 0;
+        dq.push_front(bgl_start_vertex);
 
         while(dq.empty() == false) {
             int64_t head_vertex = dq.front();
@@ -113,34 +113,51 @@ public:
         }
 
 
-        for(auto target : end_vertex){
-            if(graph.has_vertex(target) == false) continue;
+        for(auto target_vertex : end_vertex){
+            if(graph.has_vertex(target_vertex) == false){
+                continue;
+            }
 
-            int64_t current_node = graph.get_V(target);
+            int64_t bgl_target_vertex = graph.get_V(target_vertex);
+            
+            if(from_edge.find(bgl_target_vertex) == from_edge.end()){
+                continue;
+            }
 
-            Path path = Path(graph[source_vertex].id, graph[current_node].id);
-
-            path.push_back({target, -1, 0, current_cost[current_node]});
-
-            if(from_edge.find(current_node) == from_edge.end()) continue;
-
-            do{
-                E e = from_edge[current_node];
-                auto from = graph.source(e);
-
-                path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from]});
-
-                current_node = from;
-            } while (from_edge.find(current_node) != from_edge.end());
-
-
-            std::reverse(path.begin(),path.end());
-            paths.push_front(path);
-
+            paths.push_front(
+                getPath(graph, bgl_start_vertex, target_vertex, bgl_target_vertex, from_edge, current_cost));
         }
 
 
         return paths;
+    }
+
+    Path getPath(
+        G &graph,
+        int64_t bgl_start_vertex,
+        int64_t target,
+        int64_t bgl_target_vertex,
+        std::map<int64_t, E> &from_edge,
+        std::vector<double> &current_cost)
+    {
+        int64_t current_node = bgl_target_vertex;
+
+        Path path = Path(graph[bgl_start_vertex].id, graph[current_node].id);
+
+        path.push_back({target, -1, 0, current_cost[current_node]});
+
+        do
+        {
+            E e = from_edge[current_node];
+            auto from = graph.source(e);
+
+            path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from]});
+
+            current_node = from;
+        } while (from_edge.find(current_node) != from_edge.end());
+
+        std::reverse(path.begin(), path.end());
+        return path;
     }
 
     void updateVertexCosts(
