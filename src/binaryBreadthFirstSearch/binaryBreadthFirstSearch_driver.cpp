@@ -62,7 +62,9 @@ std::deque< Path >
 pgr_binaryBreadthFirstSearch(
         G &graph,
         std::vector < int64_t > sources,
-        std::vector < int64_t > targets) {
+        std::vector < int64_t > targets,
+        std::ostringstream &log) {
+
     std::sort(sources.begin(), sources.end());
     sources.erase(
             std::unique(sources.begin(), sources.end()),
@@ -76,7 +78,8 @@ pgr_binaryBreadthFirstSearch(
     pgrouting::functions::Pgr_binaryBreadthFirstSearch< G > fn_binaryBreadthFirstSearch;
     auto paths = fn_binaryBreadthFirstSearch.binaryBreadthFirstSearch(
             graph,
-            sources, targets);
+            sources, targets,
+            log);
 
     return paths;
 }
@@ -112,7 +115,7 @@ do_pgr_binaryBreadthFirstSearch(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        log << "Inserting vertices into a c++ vector structure";
+        // log << "Inserting vertices into a c++ vector structure";
         std::vector<int64_t>
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
@@ -121,22 +124,24 @@ do_pgr_binaryBreadthFirstSearch(
 
         std::deque< Path >paths;
         if (directed) {
-            log << "\nWorking with directed Graph";
+            // log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             paths = pgr_binaryBreadthFirstSearch(
                 digraph,
                 start_vertices,
-                end_vertices);
+                end_vertices,
+                log);
 
         } else {
-            log << "\nWorking with Undirected Graph";
+            // log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
             paths = pgr_binaryBreadthFirstSearch(
                 undigraph,
                 start_vertices,
-                end_vertices);
+                end_vertices,
+                log);
 
         }
 

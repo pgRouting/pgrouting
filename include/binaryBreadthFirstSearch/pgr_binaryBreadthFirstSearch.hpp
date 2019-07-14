@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/pgr_assert.h"
 //******************************************
 
 namespace pgrouting
@@ -46,11 +47,17 @@ public:
     typedef typename G::E E;
     typedef typename G::B_G B_G;
     typedef typename G::EO_i EO_i;
+    typedef typename G::E_i E_i;
 
     std::deque<Path> binaryBreadthFirstSearch(
         G &graph,
         std::vector<int64_t> start_vertex,
-        std::vector<int64_t> end_vertex) {
+        std::vector<int64_t> end_vertex,
+        std::ostringstream &log) {
+
+
+        bool result = costCheck(graph, log);
+        pgassert(result == true);
 
         std::deque<Path> paths;
 
@@ -81,7 +88,44 @@ public:
 
     private:
     //TODO : Use boost index values instead of graph ID values. Weight checks
-    E DEFAULT_EDGE;
+        const size_t MAX_UNIQUE_EDGE_COSTS = 2;
+        bool
+        costCheck(
+            G &graph,
+            std::ostringstream &log)
+        {
+            auto edges = boost::edges(graph.graph);
+            E e;
+            E_i out_i;
+            E_i out_end;
+            std::set<double> cost_set;
+            for (boost::tie(out_i, out_end) = edges;
+                 out_i != out_end; ++out_i)
+            {
+
+                e = *out_i;
+                cost_set.insert(graph[e].cost);
+
+                if (cost_set.size() > MAX_UNIQUE_EDGE_COSTS)
+                {
+                    log << "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! If there are two distinct edge costs, one of them must equal zero!";
+                    return false;
+                }
+            }
+
+            if (cost_set.size() == 2)
+            {
+                if (*cost_set.begin() != 0.0)
+                {
+                    log << "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! If there are two distinct edge costs, one of them must equal zero!";
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        E DEFAULT_EDGE;
 
         std::deque<Path> one_to_many_binaryBreadthFirstSearch(
             G &graph,
