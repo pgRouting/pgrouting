@@ -81,55 +81,59 @@ public:
 
     private:
     //TODO : Use boost index values instead of graph ID values. Weight checks
+    E DEFAULT_EDGE;
 
-    std::deque<Path> one_to_many_binaryBreadthFirstSearch(
-        G &graph,
-        int64_t start_vertex,
-        std::vector<int64_t> end_vertex) {
+        std::deque<Path> one_to_many_binaryBreadthFirstSearch(
+            G &graph,
+            int64_t start_vertex,
+            std::vector<int64_t> end_vertex)
+        {
 
-        std::deque<Path> paths;
+            std::deque<Path> paths;
 
+            if (graph.has_vertex(start_vertex) == false)
+            {
+                return paths;
+            }
 
-        if( graph.has_vertex(start_vertex) == false) {
+            std::vector<double> current_cost(graph.num_vertices(), std::numeric_limits<double>::infinity());
+            std::vector<E> from_edge(graph.num_vertices());
+            std::deque<int64_t> dq;
+            DEFAULT_EDGE = from_edge[0];
+
+            int64_t bgl_start_vertex = graph.get_V(start_vertex);
+
+            current_cost[bgl_start_vertex] = 0;
+            dq.push_front(bgl_start_vertex);
+
+            while (dq.empty() == false)
+            {
+                int64_t head_vertex = dq.front();
+
+                dq.pop_front();
+
+                updateVertexCosts(graph, current_cost, from_edge, dq, head_vertex);
+            }
+
+            for (auto target_vertex : end_vertex)
+            {
+                if (graph.has_vertex(target_vertex) == false)
+                {
+                    continue;
+                }
+
+                int64_t bgl_target_vertex = graph.get_V(target_vertex);
+
+                if (from_edge[bgl_target_vertex] == DEFAULT_EDGE)
+                {
+                    continue;
+                }
+
+                paths.push_front(
+                    getPath(graph, bgl_start_vertex, target_vertex, bgl_target_vertex, from_edge, current_cost));
+            }
+
             return paths;
-        }
-
-        std::vector<double> current_cost(graph.num_vertices(), std::numeric_limits<double>::infinity());
-        std::map<int64_t, E> from_edge;
-        std::deque<int64_t> dq;
-
-        int64_t bgl_start_vertex = graph.get_V(start_vertex);
-
-        current_cost[bgl_start_vertex] = 0;
-        dq.push_front(bgl_start_vertex);
-
-        while(dq.empty() == false) {
-            int64_t head_vertex = dq.front();
-
-            dq.pop_front();
-
-            updateVertexCosts(graph, current_cost, from_edge, dq, head_vertex);
-           
-        }
-
-
-        for(auto target_vertex : end_vertex){
-            if(graph.has_vertex(target_vertex) == false){
-                continue;
-            }
-
-            int64_t bgl_target_vertex = graph.get_V(target_vertex);
-            
-            if(from_edge.find(bgl_target_vertex) == from_edge.end()){
-                continue;
-            }
-
-            paths.push_front(
-                getPath(graph, bgl_start_vertex, target_vertex, bgl_target_vertex, from_edge, current_cost));
-        }
-
-
-        return paths;
     }
 
     Path getPath(
@@ -137,7 +141,7 @@ public:
         int64_t bgl_start_vertex,
         int64_t target,
         int64_t bgl_target_vertex,
-        std::map<int64_t, E> &from_edge,
+        std::vector<E> &from_edge,
         std::vector<double> &current_cost)
     {
         int64_t current_node = bgl_target_vertex;
@@ -154,7 +158,7 @@ public:
             path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from]});
 
             current_node = from;
-        } while (from_edge.find(current_node) != from_edge.end());
+        } while (from_edge[current_node] != DEFAULT_EDGE);
 
         std::reverse(path.begin(), path.end());
         return path;
@@ -163,7 +167,7 @@ public:
     void updateVertexCosts(
         G &graph,
         std::vector<double> &current_cost,
-        std::map<int64_t, E> &from_edge,
+        std::vector<E> &from_edge,
         std::deque<int64_t> &dq,
         int64_t &head_vertex)
     {
