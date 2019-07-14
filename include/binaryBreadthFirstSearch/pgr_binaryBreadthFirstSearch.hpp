@@ -87,7 +87,6 @@ public:
     }
 
     private:
-    //TODO : Use boost index values instead of graph ID values. Weight checks
         const size_t MAX_UNIQUE_EDGE_COSTS = 2;
         bool
         costCheck(

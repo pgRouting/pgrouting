@@ -36,23 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <limits>
 
-//TODO : Correct the headers
 #include "binaryBreadthFirstSearch/pgr_binaryBreadthFirstSearch.hpp"
-
-//TODO : Remove below
-
-#include <deque>
-#include <set>
-#include <vector>
-#include <algorithm>
-#include <sstream>
-#include <functional>
-#include <limits>
-#include <numeric>
-
-#include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
-// TODO : Remove above
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
