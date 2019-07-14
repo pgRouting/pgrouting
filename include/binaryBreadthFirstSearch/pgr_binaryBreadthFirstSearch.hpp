@@ -108,34 +108,8 @@ public:
 
             dq.pop_front();
 
-            auto out_edges = boost::out_edges(head_vertex, graph.graph);
-            E e;
-            EO_i out_i;
-            EO_i out_end;
-            V v_source, v_target;
-
-            for (boost::tie(out_i, out_end) = out_edges;
-                    out_i != out_end; ++out_i) {
-
-                e = *out_i;
-                v_target = graph.target(e);
-                v_source = graph.source(e);
-                double edge_cost = graph[e].cost;
-
-                if( std::isinf(current_cost[v_target]) or current_cost[v_source] + edge_cost < current_cost[v_target]){
-
-                    current_cost[v_target] = current_cost[v_source] + edge_cost;
-
-                    from_edge[v_target] = e;
-
-                    if(edge_cost != 0 ){
-                        dq.push_back(v_target);
-                    }
-                    else{
-                        dq.push_front(v_target);
-                    }
-                }
-            }            
+            updateVertexCosts(graph, current_cost, from_edge, dq, head_vertex);
+           
         }
 
 
@@ -167,6 +141,47 @@ public:
 
 
         return paths;
+    }
+
+    void updateVertexCosts(
+        G &graph,
+        std::vector<double> &current_cost,
+        std::map<int64_t, E> &from_edge,
+        std::deque<int64_t> &dq,
+        int64_t &head_vertex)
+    {
+        auto out_edges = boost::out_edges(head_vertex, graph.graph);
+        E e;
+        EO_i out_i;
+        EO_i out_end;
+        V v_source, v_target;
+
+        for (boost::tie(out_i, out_end) = out_edges;
+             out_i != out_end; ++out_i)
+        {
+
+            e = *out_i;
+            v_target = graph.target(e);
+            v_source = graph.source(e);
+            double edge_cost = graph[e].cost;
+
+            if (std::isinf(current_cost[v_target]) or current_cost[v_source] + edge_cost < current_cost[v_target])
+            {
+
+                current_cost[v_target] = current_cost[v_source] + edge_cost;
+
+                from_edge[v_target] = e;
+
+                if (edge_cost != 0)
+                {
+                    dq.push_back(v_target);
+                }
+                else
+                {
+                    dq.push_front(v_target);
+                }
+            }
+        }
     }
 };
 } // namespace functions
