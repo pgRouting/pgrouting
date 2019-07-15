@@ -13,18 +13,17 @@ pgr_chinesePostmanCost - Experimental
 ``pgr_chinesePostmanCost`` — Calculates the minimum costs of a circuit path which
 contains every edge in a directed graph and starts and ends on the same vertex.
 
-.. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
-
-   Boost Graph Inside
-
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
 .. rubric:: Availability
 
-* Experimental on v3.0.0
+* Version 3.0.0
+
+  * New **experimental** function
+
+.. rubric:: Support
 
 **Supported versions**
 current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_chinesePostmanCost.html>`__)
