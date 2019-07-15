@@ -10,7 +10,7 @@
 pgr_minCostMaxFlow_Cost - Experimental
 ============================================
 
-``pgr_minCostMaxFlow`` — Calculates the minmum cost maximum flow in a directed graph from the source(s) to the targets(s).
+``pgr_minCostMaxFlow_Cost`` — Calculates the minmum cost maximum flow in a directed graph from the source(s) to the targets(s).
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
@@ -23,7 +23,11 @@ pgr_minCostMaxFlow_Cost - Experimental
 
 .. rubric:: Availability
 
-* New as experimental on v3.0.0
+* Version 3.0.0
+
+  * New **experimental** function
+
+.. rubric:: Support
 
 **Supported versions:**
 current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_minCostMaxFlow_Cost.html>`__)
