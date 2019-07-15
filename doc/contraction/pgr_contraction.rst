@@ -19,16 +19,27 @@ pgr_contraction
 
 .. rubric:: Availability
 
-* On v3.0.0
+* Version 3.0.0
 
-  * Set as `official`
   * Return columns change: ``seq`` is removed
+  * Name change from ``pgr_contractGraph``
   * Bug fixes
+  * **Official** function
 
-* New as experimental on v2.3.0
+* Version 2.3.0
+
+  * New **experimental** function
+
+.. rubric:: Support
 
 **Supported versions:**
 current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_contraction.html>`__)
+
+**Unsupported versions:**
+`2.6 <https://docs.pgrouting.org/2.6/en/pgr_contractGraph.html>`__
+`2.5 <https://docs.pgrouting.org/2.5/en/pgr_contractGraph.html>`__
+`2.4 <https://docs.pgrouting.org/2.4/en/pgr_contractGraph.html>`__
+`2.3 <https://docs.pgrouting.org/2.3/en/src/contraction/doc/pgr_contractGraph.html>`__
 
 Description
 -------------------------------------------------------------------------------
