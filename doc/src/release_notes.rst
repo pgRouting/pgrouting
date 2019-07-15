@@ -160,6 +160,10 @@ pgRouting 3.0.0 Release Notes
 .. rubric:: New Experimental functions
 
 * pgr_extractVertices
+* pgr_turnRestrictedPath
+* pgr_bellmanFord
+* pgr_stoerWagner
+* pgr_dagShortestpath
 * VRP category
 
   * pgr_pickDeliverEuclidean
@@ -169,7 +173,6 @@ pgRouting 3.0.0 Release Notes
 
   * pgr_chinesePostman
   * pgr_chinesePostmanCost
-
 
 .. rubric:: Moved to legacy
 
