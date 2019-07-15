@@ -14,7 +14,24 @@ pgr_createTopology
 
 .. rubric:: Availability
 
-* Renamed in version 2.0.0
+* Version 2.0.0
+
+  * Renamed from version 1.x
+  * **Official** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_createTopology.html>`__)
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_createTopology.html>`__
+
+**Unsupported versions:**
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_createTopology.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_createTopology.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createTopology.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createTopology.html>`__
+`2.1 <http://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_topology.html>`__
+`2.0 <http://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_topology.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -208,7 +225,7 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
    :start-after: --q16
    :end-before: --q16.1
 
-Additional Examples 
+Additional Examples
 -------------------------------------------------------------------------------
 
 :Example:  With full output

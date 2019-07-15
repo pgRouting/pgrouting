@@ -16,7 +16,23 @@ This function analyzes oneway streets in a graph and identifies any flipped segm
 
 .. rubric:: Availability
 
-* New in version 2.0.0
+* Version 2.0.0
+
+  * **Official** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_analyzeOneWay.html>`__)
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_analyzeOneWay.html>`__
+
+**Unsupported versions:**
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_analyzeOneWay.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_analyzeOneWay.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeOneWay.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeOneWay.html>`__
+`2.1 <http://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_oneway.html>`__
+`2.0 <http://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_oneway.html>`__
 
 Description
 -------------------------------------------------------------------------------

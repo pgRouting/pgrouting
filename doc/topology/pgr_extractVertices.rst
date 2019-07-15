@@ -19,7 +19,15 @@ pgr_extractVertices -- Experimental
 
 .. rubric:: Availability
 
-* New as experimental on v3.0.0
+* Version 3.0.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_extractVertices.html>`__)
+
 
 Description
 -------------------------------------------------------------------------------
