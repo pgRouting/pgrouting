@@ -23,7 +23,18 @@ pgr_lineGraph - Experimental
 
 .. rubric:: Availability
 
-* **TBD**
+* Version 2.5.0
+
+  * New **Experimental** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_lineGraph.html>`__)
+
+**Unsupported versions:**
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_lineGraph.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_lineGraph.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -74,7 +85,7 @@ Complete Signature
    :start-after: -- q2
    :end-before: -- q3
 
-Parameters 
+Parameters
 -------------------------------------------------------------------------------
 
 ======================= ====================== =================================================
