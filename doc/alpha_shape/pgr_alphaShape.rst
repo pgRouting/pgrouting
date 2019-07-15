@@ -17,21 +17,27 @@ pgr_alphaShape
 * Version 3.0.0
 
   * Breaking change on signature
+  * Old signature no longer supported
 
 * Version 2.1.0
 
   * Added alpha argument with default 0 (use optimal value)
   * Support to return multiple outer/inner ring
 
-* Renamed in v2.0.0
+* Version 2.0.0
+
+  * **Official** function
+  * Renamed from version 1.x
+
+.. rubric:: Support
 
 **Supported versions:**
 current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_alphaShape.html>`__)
+
+**Unsupported versions:**
 `2.6 <http://docs.pgrouting.org/2.6/en/pgr_alphaShape.html>`__
 `2.5 <http://docs.pgrouting.org/2.5/en/pgr_alphaShape.html>`__
 `2.4 <http://docs.pgrouting.org/2.4/en/pgr_alphaShape.html>`__
-
-**Unsupported versions:**
 `2.3 <http://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html>`__
 `2.2 <http://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html>`__
 `2.1 <http://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__
