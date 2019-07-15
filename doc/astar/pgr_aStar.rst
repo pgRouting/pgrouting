@@ -10,7 +10,7 @@
 pgr_aStar
 ===============================================================================
 
-``pgr_aStar`` — Returns the shortest path using A* algorithm.
+``pgr_aStar`` — Shortest path using A* algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org//libs/graph/doc/astar_search.html
@@ -19,28 +19,37 @@ pgr_aStar
 
 .. rubric:: Availability
 
-* Official on v3.0.0
-* Proposed on v2.4.0:
+* Version 3.0.0
 
-  * pgr_astar(One to Many)
-  * pgr_astar(Many to One)
-  * pgr_astar(Many to Many)
+  * **Official** function
 
-* Signature change on v2.3.0:
+* Version 2.4.0
 
-  * pgr_astar(One to One)
+  * New **Proposed** functions:
 
-* New on v2.0.0:
+    * pgr_aStar(One to Many)
+    * pgr_aStar(Many to One)
+    * pgr_aStar(Many to Many)
 
-  * pgr_astar(One to One)
+* Version 2.3.0
+
+  * Signature change on pgr_astar(One to One)
+
+    * Old signature no longer supported
+
+* Version 2.0.0
+
+  * **Official** pgr_aStar(One to One)
+
+.. rubric:: Support
 
 **Supported versions:**
 current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_aStar.html>`__)
 `2.6 <http://docs.pgrouting.org/2.6/en/pgr_aStar.html>`__
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStar.html>`__
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStar.html>`__
 
 **Unsupported versions:**
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStar.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStar.html>`__
 `2.3 <http://docs.pgrouting.org/2.3/en/src/astar/doc/pgr_astar.html>`__
 `2.2 <http://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html>`__
 `2.1 <http://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__

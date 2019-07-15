@@ -19,11 +19,21 @@ pgr_aStarCost
 
 .. rubric:: Availability
 
-* New in v2.4.0
+* Version 3.0.0
+
+  * **Official** function
+
+* Version 2.4.0
+
+  * New **proposed** function
+
+.. rubric:: Support
 
 **Supported versions:**
 current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_aStarCost.html>`__)
 `2.6 <http://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__
+
+**Unsupported versions:**
 `2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__
 `2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__
 
