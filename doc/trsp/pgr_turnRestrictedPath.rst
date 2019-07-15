@@ -7,15 +7,10 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_turnRestrictedPath
+pgr_turnRestrictedPath - Experimental
 ===============================================================================
 
-``pgr_randomSpanTree`` — Random spanning tree of a graph using the algorithm implemented by Boost.Graph.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html
-
-   Boost Graph Inside
+``pgr_turnRestrictedPath``
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr
@@ -23,15 +18,18 @@ pgr_turnRestrictedPath
 
 .. rubric:: Availability
 
-* **TBD**
+* Version 3.0.0
+
+  * New **Experimental** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_turnRestrictedPath.html>`__)
+
 
 Description
 -------------------------------------------------------------------------------
-
-* TBD
-
-The main characteristics are:
-- **CRASHES THE SERVER**
 
 * TBD
 
@@ -40,7 +38,7 @@ Signatures
 
 * TBD
 
-Parameters 
+Parameters
 -------------------------------------------------------------------------------
 
 * TBD
@@ -50,7 +48,7 @@ Inner query
 
 * TBD
 
-Result Columns 
+Result Columns
 -------------------------------------------------------------------------------
 
 * TBD

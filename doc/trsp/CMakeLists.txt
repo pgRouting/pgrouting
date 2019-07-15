@@ -1,6 +1,7 @@
 
 SET(LOCAL_FILES
     pgr_trsp.rst
+    pgr_turnRestrictedPath.rst
     )
 
 foreach (f ${LOCAL_FILES})

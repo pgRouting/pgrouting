@@ -152,6 +152,7 @@ Experimental Functions
 - :doc:`pgr_bellmanFord`
 - :doc:`pgr_dagShortestPath`
 - :doc:`pgr_stoerWagner`
+- :doc:`pgr_turnRestrictedPath`
 
 .. toctree::
   :hidden:
@@ -159,13 +160,13 @@ Experimental Functions
   pgr_bellmanFord
   pgr_dagShortestPath
   pgr_stoerWagner
+  pgr_turnRestrictedPath
 
 :doc:`topology-functions`
 
 .. include:: topology-functions.rst
    :start-after: topology_proposed_start
    :end-before: topology_proposed_end
-
 
 
 See Also
