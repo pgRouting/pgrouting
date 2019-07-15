@@ -20,16 +20,24 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 
 .. rubric:: Availability
 
-* Signature change on v2.2.0
-* New on v2.0.0
+* Version 2.2.0
+
+  * Signature change
+  * Old signature no longer supported
+
+* Version 2.0.0
+
+  * **Official** function
+
+.. rubric:: Support
 
 **Supported versions:**
 current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_johnson.html>`__)
 `2.6 <http://docs.pgrouting.org/2.6/en/pgr_johnson.html>`__
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_johnson.html>`__
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_johnson.html>`__
 
 **Unsupported versions:**
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_johnson.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_johnson.html>`__
 `2.3 <http://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_johnson.html>`__
 `2.2 <http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_johnson.html>`__
 `2.1 <http://docs.pgrouting.org/2.1/en/src/apsp_johnson/doc/index.html>`__
@@ -60,7 +68,7 @@ The main characteristics are:
 
   - When  `start_vid` = `end_vid`, the `agg_cost` = 0.
 
-Signatures 
+Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
@@ -101,7 +109,7 @@ Complete Signature
    :start-after: -- q2
    :end-before: -- q3
 
-Parameters 
+Parameters
 -------------------------------------------------------------------------------
 
 ============= ============= =================================================
