@@ -23,15 +23,18 @@ pgr_withPointsCostMatrix - proposed
 
 .. rubric:: Availability
 
-* Proposed on v2.2.0
+* Version 2.2.0
+
+  * New **proposed** function
+
 
 **Supported versions:**
 current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_withPointsCostMatrix.html>`__)
+
+**Unsupported versions:**
 `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPointsCostMatrix.html>`__
 `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPointsCostMatrix.html>`__
 `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsCostMatrix.html>`__
-
-**Unsupported versions:**
 `2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_withPointsCostMatrix.html>`__
 
 Description

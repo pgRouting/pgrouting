@@ -20,18 +20,31 @@ pgr_bdDijkstraCostMatrix
 
 .. rubric:: Availability:
 
-* Official on v3.0.0
-* Proposed on v2.5.0
+* Version 3.0.0
+
+  * **Official** function
+
+* Version 2.5.0
+
+  * New **proposed** function
 
 **Supported versions:**
 current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bdDijkstraCostMatrix.html>`__)
+
+**Unsupported versions:**
 `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__
 `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__
 
 Description
 -------------------------------------------------------------------------------
 
-Using Dijkstra algorithm, calculate and return a cost matrix.
+**The main characteristics are:**
+
+.. include:: bdDijkstra-family.rst
+   :start-after: description start
+   :end-before: description end
+
+* Returns a cost matrix.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -73,7 +86,7 @@ Complete Signature
    :start-after: -- bdDijkstra q2
    :end-before: -- bdDijkstra q3
 
-Parameters 
+Parameters
 -------------------------------------------------------------------------------
 
 ================ ====================== =================================================

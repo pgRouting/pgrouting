@@ -19,16 +19,22 @@ pgr_dijkstraCostMatrix
 
 .. rubric:: Availability
 
-* Official on v3.0.0
-* Proposed on v2.3.0
+* Version 3.0.0
+
+  * **Official** function
+
+* Version 2.3.0
+
+  * New **proposed** function
+
 
 **Supported versions:**
 current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_dijkstraCostMatrix.html>`__)
+
+**Unsupported versions:**
 `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html>`__
 `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCostMatrix.html>`__
 `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html>`__
-
-**Unsupported versions:**
 `2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html>`__
 
 Description
@@ -62,7 +68,7 @@ Signatures
 
 .. index::
     single: dijkstraCostMatrix
-    
+
 Complete Signature
 ...............................................................................
 
