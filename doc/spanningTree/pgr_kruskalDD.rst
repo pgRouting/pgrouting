@@ -19,8 +19,14 @@ pgr_kruskalDD
 
 .. rubric:: Availability
 
-* New on v3.0.0
+* Version 3.0.0
 
+  * New **Official** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_kruskalDD.html>`__)
 
 Description
 -------------------------------------------------------------------------------
