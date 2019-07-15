@@ -20,15 +20,21 @@ In particular, the algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
-* On v3.0.0
+* Version 3.0.0
 
-  * Set as `official`
   * Return columns change: ``n_seq`` is removed
+  * **Official** function
 
-* New as experimental on v2.5.0
+* Version 2.5.0
+
+  * New **experimental** function
+
+.. rubric:: Support
 
 **Supported versions:**
 current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_biconnectedComponents.html>`__)
+
+**Unsupported versions:**
 `2.6 <https://docs.pgrouting.org/2.6/en/pgr_biconnectedComponents.html>`__
 `2.5 <https://docs.pgrouting.org/2.5/en/pgr_biconnectedComponents.html>`__
 
