@@ -12,14 +12,20 @@ pgr_pickDeliver - Experimental
 
 ``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
 
-.. rubric:: Availability
-
-* New as experimental in 3.0.0
-
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
+.. rubric:: Availability
+
+* Version 3.0.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_pickDeliver.html>`__)
 
 Synopsis
 -------------------------------------------------------------------------------
