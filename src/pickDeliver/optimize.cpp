@@ -615,7 +615,7 @@ Optimize::move_order(
     if (!from_truck.is_phony() && to_truck.is_phony()) return false;
 
     /*
-     * Dont move from a vehicle with more orders
+     * Don't move from a vehicle with more orders
      */
     if (from_truck.size() > to_truck.size()) return false;
 

@@ -58,7 +58,7 @@ In case of a directed graph, a node is considered a `dead end` node when
 * `The number of adjacent vertices is 1.`_
 
   * `There are no outgoing edges and has at least one incoming edge.`_
-  * `There are no incomming edges and has at least one outgoing edge.`_
+  * `There are no incoming edges and has at least one outgoing edge.`_
 
 
 When the conditions are true then the `Operation: Dead End Contraction`_ can be done.
@@ -123,7 +123,7 @@ There are no outgoing edges and has at least one incoming edge.
         v -> z;
     }
 
-There are no incomming edges and has at least one outgoing edge.
+There are no incoming edges and has at least one outgoing edge.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 - The green nodes are `dead end`_ nodes
@@ -210,7 +210,7 @@ In case of a directed graph, a node is considered a `linear` node when
 
 * `The number of adjacent vertices is 2.`_
 
-  * `Linearity is symetrical`_
+  * `Linearity is symmetrical`_
 
 The number of adjacent vertices is 2.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -248,7 +248,7 @@ The number of adjacent vertices is 2.
         u -- v -- w;
     }
 
-Linearity is symetrical
+Linearity is symmetrical
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Using a contra example, vertex ``v`` is not linear because it's not possible to

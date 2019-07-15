@@ -365,7 +365,7 @@ Pgr_alphaShape::operator() (double alpha) const {
     for (const auto t : m_adjacent_triangles) {
         EdgesFilter border_edges;
         /*
-         * Recurse thru the triangles to get the border sides
+         * Recurse through the triangles to get the border sides
          */
         recursive_build(t.first, used, border_edges.edges, alpha);
         /*
