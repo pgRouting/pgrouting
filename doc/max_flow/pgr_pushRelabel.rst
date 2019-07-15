@@ -19,11 +19,29 @@ pgr_pushRelabel
 
 .. Rubric:: Availability
 
-* Official on v3.0.0
-* Renamed on v2.5.0
-* Experimental on v2.3.0
+* Version 3.0.0
 
-  * pgr_maxFlowPushRelabel
+  * **Official** function
+
+* Version 2.5.0
+
+  * Renamed from ``pgr_maxFlowPushRelabel``
+  * **Proposed** function
+
+* Version 2.3.0
+
+  * New **Experimental** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_pushRelabel.html>`__)
+
+**Unsupported versions:**
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_pushRelabel.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_pushRelabel.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_maxFlowPushRelabel.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowPushRelabel.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -34,7 +52,7 @@ Description
 
 * Running time: :math:`O( V ^ 3)`
 
-Signatures 
+Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
@@ -98,7 +116,7 @@ Many to One
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11` 
+:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11`
 
 .. literalinclude:: doc-pgr_pushRelabel.queries
    :start-after: -- q3

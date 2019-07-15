@@ -20,7 +20,28 @@ pgr_edgeDisjointPaths
 
 .. Rubric:: Availability
 
-* New on v2.3.0
+* Version 3.0.0
+
+  * **Official** function
+
+* Version 2.5.0
+
+  * **Proposed** function
+
+* Version 2.3.0
+
+  * New **Experimental** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_edgeDisjointPaths.html>`__)
+
+**Unsupported versions:**
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_edgeDisjointPaths.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_edgeDisjointPaths.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_edgeDisjointPaths.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_edgeDisjointPaths.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -35,7 +56,7 @@ The main characterics are:
   - One to many, many to one, many to many versions are also supported.
   - Uses :doc:`pgr_boykovKolmogorov` to calculate the paths.
 
-Signatures 
+Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
@@ -59,7 +80,7 @@ Signatures
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`3` to vertex :math:`5` on a **directed** graph 
+:Example: From vertex :math:`3` to vertex :math:`5` on a **directed** graph
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q1
@@ -77,7 +98,7 @@ One to One
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`3` to vertex :math:`5` on an **undirected** graph 
+:Example: From vertex :math:`3` to vertex :math:`5` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q2
@@ -95,7 +116,7 @@ One to Many
     RETURNS SET OF (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`3` to vertices :math:`\{4, 5, 10\}` on a **directed** graph 
+:Example: From vertex :math:`3` to vertices :math:`\{4, 5, 10\}` on a **directed** graph
 
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
@@ -114,7 +135,7 @@ Many to One
     RETURNS SET OF (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{3, 6\}` to vertex :math:`5` on a **directed** graph 
+:Example: From vertices :math:`\{3, 6\}` to vertex :math:`5` on a **directed** graph
 
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
@@ -133,7 +154,7 @@ Many to Many
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{3, 6\}` to vertices :math:`\{4, 5, 10\}` on a **directed** graph 
+:Example: From vertices :math:`\{3, 6\}` to vertices :math:`\{4, 5, 10\}` on a **directed** graph
 
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries

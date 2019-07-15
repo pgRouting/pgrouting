@@ -20,11 +20,29 @@ pgr_edmondsKarp
 
 .. Rubric:: Availability
 
-* Official on v3.0.0
-* Renamed on v2.5.0
-* Experimental on v2.3.0
+* Version 3.0.0
 
-  * pgr_maxFlowEdmondsKarp
+  * **Official** function
+
+* Version 2.5.0
+
+  * Renamed from ``pgr_maxFlowEdmondsKarp``
+  * **Proposed** function
+
+* Version 2.3.0
+
+  * New **Experimental** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_edmondsKarp.html>`__)
+
+**Unsupported versions:**
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_edmondsKarp.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_edmondsKarp.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_maxFlowEdmondsKarp.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowEdmondsKarp.html>`__
 
 Description
 -------------------------------------------------------------------------------

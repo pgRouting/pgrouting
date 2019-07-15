@@ -19,11 +19,30 @@ pgr_boykovKolmogorov
 
 .. Rubric:: Availability:
 
-* Official on v3.0.0
-* Renamed on v2.5.0
-* Experimental on v2.3.0
+* Version 3.0.0
 
-  * pgr_maxFlowBoykovKolmogorov
+  * **Official** function
+
+* Version 2.5.0
+
+  * Renamed from ``pgr_maxFlowBoykovKolmogorov``
+  * **Proposed** function
+
+* Version 2.3.0
+
+  * New **Experimental** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_boykovKolmogorov.html>`__)
+
+**Unsupported versions:**
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_boykovKolmogorov.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_boykovKolmogorov.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_maxFlowBoykovKolmogorov.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html>`__
+
 
 Description
 -------------------------------------------------------------------------------
@@ -96,7 +115,7 @@ Many to One
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11` 
+:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11`
 
 .. literalinclude:: doc-pgr_boykovKolmogorov.queries
    :start-after: -- q3

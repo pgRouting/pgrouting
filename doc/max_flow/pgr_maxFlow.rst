@@ -19,7 +19,23 @@ pgr_maxFlow
 
 .. Rubric:: Availability
 
-* New on v2.4.0
+* Version 3.0.0
+
+  * **Official** function
+
+* Version 2.4.0
+
+  * New **Proposed** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_maxFlow.html>`__)
+
+**Unsupported versions:**
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_maxFlow.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_maxFlow.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_maxFlow.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -28,7 +44,7 @@ Description
 
 - The graph is **directed**.
 - Calculates the maximum flow from the `source(s)` to the `target(s)`.
-  
+
   - When the maximum flow is **0** then there is no flow and **0** is returned.
   - There is no flow when a **source** is the same as a **target**.
 
@@ -95,7 +111,7 @@ Many to One
     pgr_maxFlow(edges_sql, sources,  target)
     RETURNS BIGINT
 
-:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11` 
+:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11`
 
 .. literalinclude:: doc-pgr_maxFlow.queries
    :start-after: -- q3
