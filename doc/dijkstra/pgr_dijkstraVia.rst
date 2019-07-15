@@ -24,7 +24,22 @@ a list of vertices.
 
 .. rubric:: Availability
 
-* New on v2.2.0
+* Version 2.2.0
+
+  * New **proposed** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_dijkstraVia.html>`__)
+
+**Unsupported versions:**
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_dijkstraVia.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_dijkstraVia.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_dijkstraVia.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__
+
 
 Description
 -------------------------------------------------------------------------------
@@ -43,7 +58,7 @@ Signatures
 
     pgr_dijkstraVia(edges_sql, via_vertices [, directed] [, strict] [, U_turn_on_edge])
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost) 
+        node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
 .. rubric:: Using default
@@ -52,7 +67,7 @@ Signatures
 
     pgr_dijkstraVia(edges_sql, via_vertices)
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost) 
+        node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{ 1, 3, 9\}`  in that order
@@ -71,7 +86,7 @@ Complete Signature
 
     pgr_dijkstraVia(edges_sql, via_vertices [, directed] [, strict] [, U_turn_on_edge])
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost) 
+        node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{ 1, 3, 9\}` in that order on an **undirected** graph, avoiding U-turns when possible

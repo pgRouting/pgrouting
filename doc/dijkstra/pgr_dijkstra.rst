@@ -20,19 +20,40 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
-* New on v2.1.0:
+* Version 3.0.0
 
-  * pgr_dijkstra(One to Many)
-  * pgr_dijkstra(Many to One)
-  * pgr_dijkstra(Many to Many)
+  * **Official** functions
 
-* Signature change on v2.1.0:
+* Version 2.2.0
 
-  * pgr_dijkstra(One to One)
+  * New **proposed** functions:
 
-* New on v2.0.0:
+     * pgr_dijkstra(One to Many)
+     * pgr_dijkstra(Many to One)
+     * pgr_dijkstra(Many to Many)
 
-  * pgr_dijkstra(One to One)
+* Version 2.0.0
+
+  * Signature change on pgr_dijkstra(One to One)
+
+* Version 2.0.0
+
+  * **Official** pgr_dijkstra(One to One)
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_dijkstra.html>`__)
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_dijkstra.html>`__
+
+**Unsupported versions:**
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_dijkstra.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_dijkstra.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstra.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstra.html>`__
+`2.1 <http://docs.pgrouting.org/2.1/en/src/dijkstra/doc/index.html>`__
+`2.0 <http://docs.pgrouting.org/2.0/en/src/dijkstra/doc/index.html>`__
+
 
 Description
 -------------------------------------------------------------------------------
