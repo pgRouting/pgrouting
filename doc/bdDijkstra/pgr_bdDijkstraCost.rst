@@ -19,17 +19,32 @@ pgr_bdDijkstraCost
 
 .. rubric:: Availability:
 
-* Official on v3.0.0
-* Proposed on v2.5.0
+* Version 3.0.0
+
+  * **Official** function
+
+* Version 2.5.0
+
+  * New **proposed** function
+
+.. rubric:: Support
 
 **Supported versions:**
 current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdDijkstraCost.html>`__)
 `2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__
+
+**Unsupported versions:**
 `2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__
+
 
 Description
 -------------------------------------------------------------------------------
-* **TBD**
+
+**The main characteristics are:**
+
+.. include:: bdDijkstra-family.rst
+   :start-after: description start
+   :end-before: description end
 
 Signatures
 -------------------------------------------------------------------------------
@@ -42,7 +57,7 @@ Signatures
     pgr_bdDijkstraCost(edges_sql, from_vid,  to_vids [, directed])
     pgr_bdDijkstraCost(edges_sql, from_vids, to_vid  [, directed])
     pgr_bdDijkstraCost(edges_sql, from_vids, to_vids [, directed])
-    
+
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 

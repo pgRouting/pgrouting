@@ -39,7 +39,10 @@ This implementation can be used with a directed graph and an undirected graph.
 Characteristics
 -------------------------------------------------------------------------------
 
+
 The main Characteristics are:
+
+.. description start
 
 - Process is done only on edges with positive costs.
 - Values are returned when there is a path.
@@ -56,6 +59,8 @@ The main Characteristics are:
 - For large graphs where there is a path bewtween the starting vertex and ending vertex:
 
   - It is expected to terminate faster than pgr_dijkstra
+
+.. description end
 
 See Also
 -------------------------------------------------------------------------------

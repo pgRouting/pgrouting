@@ -19,38 +19,37 @@ pgr_bdDijkstra
 
 .. rubric:: Availability:
 
-* Official on v3.0.0
-* Proposed on v2.5.0:
+* Version 3.0.0
 
-  * pgr_bdDijkstra(One to Many)
-  * pgr_bdDijkstra(Many to One)
-  * pgr_bdDijkstra(Many to Many)
+  * **Official** function
 
-* Signature change on v2.4.0
+* Version 2.5.0
 
-  * pgr_bdDijkstra(One to One)
+  * New **Proposed** functions:
 
-* Proposed on v2.5.0:
+    * pgr_bdDijkstra(One to Many)
+    * pgr_bdDijkstra(Many to One)
+    * pgr_bdDijkstra(Many to Many)
 
-  * pgr_bdDijkstra(One to Many)
-  * pgr_bdDijkstra(Many to One)
-  * pgr_bdDijkstra(Many to Many)
+* Version 2.4.0
 
-* Signature change on v2.4.0:
+  * Signature change on pgr_bdDijsktra(One to One)
 
-  * pgr_bdDijkstra(One to One)
+    * Old signature no longer supported
 
-* New on v2.0.0:
+* Version 2.0.0
 
-  * pgr_bdDijkstra(One to One)
+  * **Official** pgr_bdDijkstra(One to One)
+
+.. rubric:: Support
 
 **Supported versions:**
 current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdDijkstra.html>`__)
 `2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html>`__
 
 **Unsupported versions:**
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html>`__
 `2.3 <http://docs.pgrouting.org/2.3/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__
 `2.2 <http://docs.pgrouting.org/2.2/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__
 `2.1 <http://docs.pgrouting.org/2.1/en/src/bd_dijkstra/doc/index.html>`__
@@ -58,7 +57,12 @@ current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdDijkstra.html>`__)
 
 Description
 -------------------------------------------------------------------------------
-* **TBD**
+
+**The main characteristics are:**
+
+.. include:: bdDijkstra-family.rst
+   :start-after: description start
+   :end-before: description end
 
 Signatures
 -------------------------------------------------------------------------------
@@ -71,7 +75,7 @@ Signatures
     pgr_bdDijkstra(edges_sql, start_vid,  end_vids [, directed])
     pgr_bdDijkstra(edges_sql, start_vids, end_vid  [, directed])
     pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
-    
+
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
