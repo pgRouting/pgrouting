@@ -19,12 +19,21 @@ pgr_bdAstarCostMatrix
 
 .. rubric:: Availability
 
-* Official on v3.0.0
-* Proposed on v2.5.0
+* Version 3.0.0
+
+  * **Official** function
+
+* Version 2.5.0
+
+  * New **Proposed** function
+
+.. rubric:: Support
 
 **Supported versions:**
 current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdAstarCostMatrix.html>`__)
 `2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html>`__
+
+**Unsupported versions:**
 `2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html>`__
 
 Description

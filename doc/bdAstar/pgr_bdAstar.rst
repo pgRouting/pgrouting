@@ -19,28 +19,35 @@ pgr_bdAstar
 
 .. rubric:: Availability:
 
-* Official on v3.0.0
-* Proposed on v2.5.0:
+* Version 3.0.0
 
-  * pgr_bdAstar(One to Many)
-  * pgr_bdAstar(Many to One)
-  * pgr_bdAstar(Many to Many)
+  * **Official** function
 
-* Signature change on v2.5.0:
+* Version 2.5.0
 
-  * pgr_bdAastar(One to One)
+  * Signature change on pgr_bdAstar(One to One)
 
-* New on v2.0.0:
+    * Old signature no longer supported
 
-  * pgr_bdAstar(One to One)
+  * New **Proposed** functions:
+
+    * pgr_bdAstar(One to Many)
+    * pgr_bdAstar(Many to One)
+    * pgr_bdAstar(Many to Many)
+
+* Version 2.0.0
+
+  * **Official** pgr_bdAstar(One to One)
+
+.. rubric:: Support
 
 **Supported versions:**
 current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdAstar.html>`__)
 `2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_bdAstar.html>`__
 
 **Unsupported versions:**
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_bdAstar.html>`__
 `2.3 <http://docs.pgrouting.org/2.3/en/src/bd_astar/doc/pgr_bdAstar.html>`__
 `2.2 <http://docs.pgrouting.org/2.2/en/src/bd_astar/doc/pgr_bdAstar.html>`__
 `2.1 <http://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__
@@ -154,7 +161,7 @@ Many to Many
 .. code-block:: none
 
     pgr_bdAstar(edges_sql, from_vids, to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 11\}` on a **directed** graph using factor :math:`0.5`
