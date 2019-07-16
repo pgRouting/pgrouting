@@ -36,6 +36,11 @@ Vehicle Routing Functions Category
   pgr_pickDeliverEuclidean
   pgr_vrpOneDepot
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/VRP-category.html>`__)
+
 
 Introduction
 -------------------------------------------------------------------------------

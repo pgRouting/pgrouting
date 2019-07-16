@@ -37,6 +37,16 @@ Cost Matrix - Category
     pgr_bdDijkstraCostMatrix
     pgr_withPointsCostMatrix
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/costMatrix-category.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/costMatrix-category.html>`__
+
+* **Unsupported versions:**
+  `2.5 <http://docs.pgrouting.org/2.5/en/costMatrix-category.html>`__
+  `2.4 <http://docs.pgrouting.org/2.4/en/costMatrix-category.html>`__
+
 
 General Information
 -------------------------------------------------------------------------------

@@ -29,6 +29,16 @@ Cost - Category
 
 .. index proposed to here
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/cost-category.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/cost-category.html>`__
+
+* **Unsupported versions:**
+  `2.5 <http://docs.pgrouting.org/2.5/en/cost-category.html>`__
+  `2.4 <http://docs.pgrouting.org/2.4/en/cost-category.html>`__
+
 
 General Information
 -------------------------------------------------------------------------------
