@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,11 +41,17 @@ msgstr ""
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/prim-family.rst:37
+#: ../../build/doc/prim-family.rst:35
+msgid ""
+"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
+"/prim-family.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/prim-family.rst:39
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:39
+#: ../../build/doc/prim-family.rst:41
 msgid ""
 "The prim algorithm was developed in 1930 by Czech mathematician Vojtěch "
 "Jarník. It is a greedy algorithm that finds a minimum spanning tree for a"
@@ -57,7 +63,7 @@ msgid ""
 "tree to another vertex."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:47
+#: ../../build/doc/prim-family.rst:49
 msgid ""
 "This algorithms find the minimum spanning forest in a possibly "
 "disconnected graph; in contrast, the most basic form of Prim's algorithm "
@@ -66,49 +72,49 @@ msgid ""
 "then it is called minimum spanning forest."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:53
+#: ../../build/doc/prim-family.rst:55
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:57
+#: ../../build/doc/prim-family.rst:59
 msgid "It's implementation is only on **undirected graph**."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:58
+#: ../../build/doc/prim-family.rst:60
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:59
+#: ../../build/doc/prim-family.rst:61
 msgid "When the graph is connected"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:61
+#: ../../build/doc/prim-family.rst:63
 msgid "The resulting edges make up a tree"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:63
+#: ../../build/doc/prim-family.rst:65
 msgid "When the graph is not connected,"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:65
+#: ../../build/doc/prim-family.rst:67
 msgid "Finds a minimum spanning tree for each connected component."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:66
+#: ../../build/doc/prim-family.rst:68
 msgid "The resulting edges make up a forest."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:68
+#: ../../build/doc/prim-family.rst:70
 msgid "Prim's running time: :math:`O(E*log V)`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:73
+#: ../../build/doc/prim-family.rst:75
 msgid ""
 "From boost Graph: \"The algorithm as implemented in Boost.Graph does not "
 "produce correct results on graphs with parallel edges.\""
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:77
+#: ../../build/doc/prim-family.rst:79
 msgid "Inner query"
 msgstr ""
 
@@ -211,35 +217,35 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:84
+#: ../../build/doc/prim-family.rst:86
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:86
+#: ../../build/doc/prim-family.rst:88
 msgid ":doc:`spanningTree-family`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:87
+#: ../../build/doc/prim-family.rst:89
 msgid ""
 "`Boost: Prim's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:88
+#: ../../build/doc/prim-family.rst:90
 msgid ""
 "`Wikipedia: Prim's algorithm "
 "<https://en.wikipedia.org/wiki/Prim'_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:91
+#: ../../build/doc/prim-family.rst:93
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:92
+#: ../../build/doc/prim-family.rst:94
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:93
+#: ../../build/doc/prim-family.rst:95
 msgid ":ref:`search`"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:13
 msgid ""
-"pgRouting is an extension of `PostGIS <http://postgis.net>`_ and "
+"pgRouting is an extension of `PostGIS <https://postgis.net>`_ and "
 "`PostgreSQL <http://postgresql.org>`_ geospatial database and adds "
 "routing and other network analysis functionality. A predecessor of "
 "pgRouting – pgDijkstra, written by Sylvain Pasche from `Camptocamp "
@@ -36,7 +36,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-introduction.rst:15
 msgid ""
 "pgRouting is part of `OSGeo Community Projects "
-"<http://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`_ from the `OSGeo "
+"<https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`_ from the `OSGeo "
 "Foundation <http://osgeo.org>`_ and included on `OSGeo Live "
 "<http://live.osgeo.org/>`_."
 msgstr ""
@@ -60,7 +60,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-introduction.rst:31
 msgid ""
 "Most features of pgRouting are available under `GNU General Public "
-"License, version 2 <http://www.gnu.org/licenses/gpl-2.0.html>`_."
+"License, version 2 <https://www.gnu.org/licenses/gpl-2.0.html>`_."
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:32
@@ -70,7 +70,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-introduction.rst:33
 msgid ""
 "Some Boost extensions are available under `Boost Software License - "
-"Version 1.0 <http://www.boost.org/LICENSE_1_0.txt>`_."
+"Version 1.0 <https://www.boost.org/LICENSE_1_0.txt>`_."
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:34
@@ -88,7 +88,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-introduction.rst:37
 msgid ""
 "The pgRouting Manual is licensed under a `Creative Commons Attribution-"
-"Share Alike 3.0 License <http://creativecommons.org/licenses/by-"
+"Share Alike 3.0 License <https://creativecommons.org/licenses/by-"
 "sa/3.0/>`_."
 msgstr ""
 
@@ -142,7 +142,7 @@ msgid "`Google Summer of Code <https://developers.google.com/open-source/gsoc/>`
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:62
-msgid "`iMaptools <http://imaptools.com>`__"
+msgid "`iMaptools <https://imaptools.com>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:63
@@ -150,7 +150,7 @@ msgid "`Leopark <https://www.leopark.mx/>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:64
-msgid "`Paragon Corporation <http://www.paragoncorporation.com/>`_"
+msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`_"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:67
@@ -208,21 +208,21 @@ msgstr ""
 #: ../../build/doc/pgRouting-introduction.rst:92
 msgid ""
 "The latest software, documentation and news items are available at the "
-"pgRouting web site http://pgrouting.org."
+"pgRouting web site https://pgrouting.org."
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:93
 msgid ""
 "PostgreSQL database server at the PostgreSQL main site "
-"http://www.postgresql.org."
+"https://www.postgresql.org."
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:94
-msgid "PostGIS extension at the PostGIS project web site http://postgis.net."
+msgid "PostGIS extension at the PostGIS project web site https://postgis.net."
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:95
-msgid "Boost C++ source libraries at http://www.boost.org."
+msgid "Boost C++ source libraries at https://www.boost.org."
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:96
@@ -230,4 +230,72 @@ msgid ""
 "The Migration guide can be found at "
 "https://github.com/pgRouting/pgrouting/wiki/Migration-Guide."
 msgstr ""
+
+#~ msgid ""
+#~ "pgRouting is an extension of `PostGIS"
+#~ " <http://postgis.net>`_ and `PostgreSQL "
+#~ "<http://postgresql.org>`_ geospatial database and"
+#~ " adds routing and other network "
+#~ "analysis functionality. A predecessor of "
+#~ "pgRouting – pgDijkstra, written by "
+#~ "Sylvain Pasche from `Camptocamp "
+#~ "<http://camptocamp.com>`_, was later extended "
+#~ "by `Orkney <http://www.orkney.co.jp>`_ and "
+#~ "renamed to pgRouting. The project is "
+#~ "now supported and maintained by "
+#~ "`Georepublic <http://georepublic.info>`_, `iMaptools "
+#~ "<http://imaptools.com/>`__ and a broad user"
+#~ " community."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "pgRouting is part of `OSGeo Community"
+#~ " Projects "
+#~ "<http://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`_ from "
+#~ "the `OSGeo Foundation <http://osgeo.org>`_ and"
+#~ " included on `OSGeo Live "
+#~ "<http://live.osgeo.org/>`_."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Most features of pgRouting are available"
+#~ " under `GNU General Public License, "
+#~ "version 2 <http://www.gnu.org/licenses/gpl-2.0.html>`_."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Some Boost extensions are available "
+#~ "under `Boost Software License - Version"
+#~ " 1.0 <http://www.boost.org/LICENSE_1_0.txt>`_."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The pgRouting Manual is licensed under"
+#~ " a `Creative Commons Attribution-Share "
+#~ "Alike 3.0 License "
+#~ "<http://creativecommons.org/licenses/by-sa/3.0/>`_."
+#~ msgstr ""
+
+#~ msgid "`iMaptools <http://imaptools.com>`__"
+#~ msgstr ""
+
+#~ msgid "`Paragon Corporation <http://www.paragoncorporation.com/>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The latest software, documentation and "
+#~ "news items are available at the "
+#~ "pgRouting web site http://pgrouting.org."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "PostgreSQL database server at the "
+#~ "PostgreSQL main site http://www.postgresql.org."
+#~ msgstr ""
+
+#~ msgid "PostGIS extension at the PostGIS project web site http://postgis.net."
+#~ msgstr ""
+
+#~ msgid "Boost C++ source libraries at http://www.boost.org."
+#~ msgstr ""
 

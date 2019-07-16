@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,35 +29,55 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:17
-msgid "Renamed in version 2.0.0"
+msgid "Version 2.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:19
+msgid "Renamed from version 1.x"
 msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:20
-msgid "Description"
+msgid "**Official** function"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:22
-#: ../../build/doc/pgr_createTopology.rst:66
-msgid "The function returns:"
+#: ../../build/doc/pgr_createTopology.rst:23
+msgid "Support"
 msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:24
-msgid "``OK`` after the network topology has been built and the vertices table created."
-msgstr ""
-
-#: ../../build/doc/pgr_createTopology.rst:25
-msgid "``FAIL`` when the network topology was not built due to an error."
+msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_createTopology.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/pgr_createTopology.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:28
+msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/pgr_createTopology.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_createTopology.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createTopology.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createTopology.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_topology.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_topology.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:37
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:39
+#: ../../build/doc/pgr_createTopology.rst:83
+msgid "The function returns:"
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:41
+msgid "``OK`` after the network topology has been built and the vertices table created."
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:42
+msgid "``FAIL`` when the network topology was not built due to an error."
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:45
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:38
+#: ../../build/doc/pgr_createTopology.rst:55
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:40
+#: ../../build/doc/pgr_createTopology.rst:57
 msgid "The topology creation function accepts the following parameters:"
 msgstr ""
 
@@ -65,7 +85,7 @@ msgstr ""
 msgid "edge_table"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:42
+#: ../../build/doc/pgr_createTopology.rst:59
 msgid "``text`` Network table name. (may contain the schema name AS well)"
 msgstr ""
 
@@ -73,7 +93,7 @@ msgstr ""
 msgid "tolerance"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:43
+#: ../../build/doc/pgr_createTopology.rst:60
 msgid "``float8`` Snapping tolerance of disconnected edges. (in projection unit)"
 msgstr ""
 
@@ -82,7 +102,7 @@ msgstr ""
 msgid "the_geom"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:44
+#: ../../build/doc/pgr_createTopology.rst:61
 msgid "``text``  Geometry column name of the network table. Default value is ``the_geom``."
 msgstr ""
 
@@ -91,7 +111,7 @@ msgstr ""
 msgid "id"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:45
+#: ../../build/doc/pgr_createTopology.rst:62
 msgid "``text``  Primary key column name of the network table. Default value is ``id``."
 msgstr ""
 
@@ -99,7 +119,7 @@ msgstr ""
 msgid "source"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:46
+#: ../../build/doc/pgr_createTopology.rst:63
 msgid "``text`` Source column name of the network table. Default value is ``source``."
 msgstr ""
 
@@ -107,7 +127,7 @@ msgstr ""
 msgid "target"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:47
+#: ../../build/doc/pgr_createTopology.rst:64
 msgid "``text``  Target column name of the network table.  Default value is ``target``."
 msgstr ""
 
@@ -115,7 +135,7 @@ msgstr ""
 msgid "rows_where"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:48
+#: ../../build/doc/pgr_createTopology.rst:65
 msgid "``text``   Condition to SELECT a subset or rows.  Default value is ``true`` to indicate all rows that where ``source`` or ``target`` have a null value, otherwise the condition is used."
 msgstr ""
 
@@ -123,91 +143,91 @@ msgstr ""
 msgid "clean"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:50
+#: ../../build/doc/pgr_createTopology.rst:67
 msgid "``boolean`` Clean any previous topology.  Default value is ``false``."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:54
+#: ../../build/doc/pgr_createTopology.rst:71
 msgid "The ``edge_table`` will be affected"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:56
+#: ../../build/doc/pgr_createTopology.rst:73
 msgid "The ``source`` column values will change."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:57
+#: ../../build/doc/pgr_createTopology.rst:74
 msgid "The ``target`` column values will change."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:59
+#: ../../build/doc/pgr_createTopology.rst:76
 msgid "An index will be created, if it doesn't exists, to speed up the process to the following columns:"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:61
+#: ../../build/doc/pgr_createTopology.rst:78
 msgid "``id``"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:62
+#: ../../build/doc/pgr_createTopology.rst:79
 msgid "``the_geom``"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:63
+#: ../../build/doc/pgr_createTopology.rst:80
 msgid "``source``"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:64
+#: ../../build/doc/pgr_createTopology.rst:81
 msgid "``target``"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:68
+#: ../../build/doc/pgr_createTopology.rst:85
 msgid "``OK`` after the network topology has been built."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:70
+#: ../../build/doc/pgr_createTopology.rst:87
 msgid "Creates a vertices table: <edge_table>_vertices_pgr."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:71
+#: ../../build/doc/pgr_createTopology.rst:88
 msgid "Fills ``id`` and ``the_geom`` columns of the vertices table."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:72
+#: ../../build/doc/pgr_createTopology.rst:89
 msgid "Fills the source and target columns of the edge table referencing the ``id`` of the vertices table."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:75
+#: ../../build/doc/pgr_createTopology.rst:92
 msgid "``FAIL`` when the network topology was not built due to an error:"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:77
+#: ../../build/doc/pgr_createTopology.rst:94
 msgid "A required column of the Network table is not found or is not of the appropriate type."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:78
+#: ../../build/doc/pgr_createTopology.rst:95
 msgid "The condition is not well formed."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:79
+#: ../../build/doc/pgr_createTopology.rst:96
 msgid "The names of source , target or id are the same."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:80
+#: ../../build/doc/pgr_createTopology.rst:97
 msgid "The SRID of the geometry could not be determined."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:83
+#: ../../build/doc/pgr_createTopology.rst:100
 msgid "The Vertices Table"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:84
+#: ../../build/doc/pgr_createTopology.rst:101
 msgid "The vertices table is a requirement of the :doc:`pgr_analyzeGraph <pgr_analyzeGraph>` and the :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>` functions."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:86
+#: ../../build/doc/pgr_createTopology.rst:103
 msgid "The structure of the vertices table is:"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:88
+#: ../../build/doc/pgr_createTopology.rst:105
 msgid "``bigint`` Identifier of the vertex."
 msgstr ""
 
@@ -215,7 +235,7 @@ msgstr ""
 msgid "cnt"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:89
+#: ../../build/doc/pgr_createTopology.rst:106
 msgid "``integer`` Number of vertices in the edge_table that reference this vertex. See :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
 msgstr ""
 
@@ -223,7 +243,7 @@ msgstr ""
 msgid "chk"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:90
+#: ../../build/doc/pgr_createTopology.rst:107
 msgid "``integer``  Indicator that the vertex might have a problem. See :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
 msgstr ""
 
@@ -231,7 +251,7 @@ msgstr ""
 msgid "ein"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:91
+#: ../../build/doc/pgr_createTopology.rst:108
 msgid "``integer`` Number of vertices in the edge_table that reference this vertex AS incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
 msgstr ""
 
@@ -239,27 +259,27 @@ msgstr ""
 msgid "eout"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:92
+#: ../../build/doc/pgr_createTopology.rst:109
 msgid "``integer`` Number of vertices in the edge_table that reference this vertex AS outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:93
+#: ../../build/doc/pgr_createTopology.rst:110
 msgid "``geometry`` Point geometry of the vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:96
+#: ../../build/doc/pgr_createTopology.rst:113
 msgid "Usage when the edge table's columns MATCH the default values:"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:98
+#: ../../build/doc/pgr_createTopology.rst:115
 msgid "The simplest way to use pgr_createTopology is:"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:105
+#: ../../build/doc/pgr_createTopology.rst:122
 msgid "When the arguments are given in the order described in the parameters:"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:106
+#: ../../build/doc/pgr_createTopology.rst:123
 msgid "We get the same result AS the simplest way to use the function."
 msgstr ""
 
@@ -275,50 +295,50 @@ msgstr ""
 msgid "and the geometry column ``the_geom`` is passed to the function as the id column."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:121
-#: ../../build/doc/pgr_createTopology.rst:185
+#: ../../build/doc/pgr_createTopology.rst:138
+#: ../../build/doc/pgr_createTopology.rst:202
 msgid "When using the named notation"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:122
+#: ../../build/doc/pgr_createTopology.rst:139
 msgid "Parameters defined with a default value can be omitted, as long as the value matches the default And The order of the parameters would not matter."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:138
-#: ../../build/doc/pgr_createTopology.rst:198
+#: ../../build/doc/pgr_createTopology.rst:155
+#: ../../build/doc/pgr_createTopology.rst:215
 msgid "Selecting rows using rows_where parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:139
+#: ../../build/doc/pgr_createTopology.rst:156
 msgid "Selecting rows based on the id."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:145
+#: ../../build/doc/pgr_createTopology.rst:162
 msgid "Selecting the rows where the geometry is near the geometry of row with ``id = 5``."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:151
-#: ../../build/doc/pgr_createTopology.rst:205
+#: ../../build/doc/pgr_createTopology.rst:168
+#: ../../build/doc/pgr_createTopology.rst:222
 msgid "Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:158
+#: ../../build/doc/pgr_createTopology.rst:175
 msgid "Usage when the edge table's columns DO NOT MATCH the default values:"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:160
+#: ../../build/doc/pgr_createTopology.rst:177
 msgid "For the following table"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:167
+#: ../../build/doc/pgr_createTopology.rst:184
 msgid "Using positional notation:"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:168
+#: ../../build/doc/pgr_createTopology.rst:185
 msgid "The arguments need to be given in the order described in the parameters."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:170
+#: ../../build/doc/pgr_createTopology.rst:187
 msgid "Note that this example uses clean flag. So it recreates the whole vertices table."
 msgstr ""
 
@@ -334,15 +354,15 @@ msgstr ""
 msgid "and the geometry column ``mygeom`` is passed to the function AS the id column."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:186
+#: ../../build/doc/pgr_createTopology.rst:203
 msgid "In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table. The order of the parameters do not matter:"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:199
+#: ../../build/doc/pgr_createTopology.rst:216
 msgid "Based on id:"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:212
+#: ../../build/doc/pgr_createTopology.rst:229
 msgid "Additional Examples"
 msgstr ""
 
@@ -350,43 +370,43 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:214
+#: ../../build/doc/pgr_createTopology.rst:231
 msgid "With full output"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:216
+#: ../../build/doc/pgr_createTopology.rst:233
 msgid "This example start a clean topology, with 5 edges, and then its incremented to the rest of the edges."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:222
+#: ../../build/doc/pgr_createTopology.rst:239
 msgid "The example uses the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:225
+#: ../../build/doc/pgr_createTopology.rst:242
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:227
+#: ../../build/doc/pgr_createTopology.rst:244
 msgid ":doc:`topology-functions` for an overview of a topology for routing algorithms."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:228
+#: ../../build/doc/pgr_createTopology.rst:245
 msgid ":doc:`pgr_createVerticesTable` to reconstruct the vertices table based on the source and target information."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:229
+#: ../../build/doc/pgr_createTopology.rst:246
 msgid ":doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:232
+#: ../../build/doc/pgr_createTopology.rst:249
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:233
+#: ../../build/doc/pgr_createTopology.rst:250
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:234
+#: ../../build/doc/pgr_createTopology.rst:251
 msgid ":ref:`search`"
 msgstr ""
 

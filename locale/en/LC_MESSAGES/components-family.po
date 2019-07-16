@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,15 +49,32 @@ msgstr ""
 msgid ":doc:`pgr_bridges` - Bridges of an undirected graph."
 msgstr ""
 
+#: ../../build/doc/components-family.rst:35
+msgid "Previous versions of this page"
+msgstr ""
+
 #: ../../build/doc/components-family.rst:36
+msgid ""
+"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
+"/components-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
+"/components-family.html>`__"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:40
+msgid ""
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
+"/components-family.html>`__"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:45
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:41
+#: ../../build/doc/components-family.rst:50
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:41
+#: ../../build/doc/components-family.rst:50
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_articulationPoints.rst:6
 #: ../../build/doc/pgr_biconnectedComponents.rst:6
@@ -66,12 +83,12 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:41
+#: ../../build/doc/components-family.rst:50
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:41
+#: ../../build/doc/components-family.rst:50
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_articulationPoints.rst:6
 #: ../../build/doc/pgr_biconnectedComponents.rst:6
@@ -80,19 +97,19 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:43
+#: ../../build/doc/components-family.rst:52
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:43
+#: ../../build/doc/components-family.rst:52
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:43
+#: ../../build/doc/components-family.rst:52
 msgid "Inner query as described bellow."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:49
+#: ../../build/doc/components-family.rst:58
 msgid "Inner query"
 msgstr ""
 
@@ -100,7 +117,7 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:51
+#: ../../build/doc/components-family.rst:60
 msgid "an SQL query which should return a set of rows with the following columns:"
 msgstr ""
 
@@ -200,11 +217,11 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:58
+#: ../../build/doc/components-family.rst:67
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:61
+#: ../../build/doc/components-family.rst:70
 msgid "pgr_connectedComponents & pgr_strongComponents"
 msgstr ""
 
@@ -256,7 +273,7 @@ msgstr ""
 msgid "Identifier of the vertex that belongs to **component**."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:69
+#: ../../build/doc/components-family.rst:78
 msgid "pgr_biconnectedComponents"
 msgstr ""
 
@@ -275,7 +292,7 @@ msgstr ""
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:76
+#: ../../build/doc/components-family.rst:85
 msgid "pgr_articulationPoints"
 msgstr ""
 
@@ -287,7 +304,7 @@ msgstr ""
 msgid "Identifier of the vertex."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:83
+#: ../../build/doc/components-family.rst:92
 msgid "pgr_bridges"
 msgstr ""
 
@@ -299,19 +316,19 @@ msgstr ""
 msgid "Identifier of the edge that is a bridge."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:91
+#: ../../build/doc/components-family.rst:100
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:94
+#: ../../build/doc/components-family.rst:103
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:95
+#: ../../build/doc/components-family.rst:104
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:96
+#: ../../build/doc/components-family.rst:105
 msgid ":ref:`search`"
 msgstr ""
 

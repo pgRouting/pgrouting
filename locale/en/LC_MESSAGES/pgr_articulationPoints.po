@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-06 10:03-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,37 +36,50 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_articulationPoints.rst:22
-msgid "On v3.0.0"
+msgid "Version 3.0.0"
 msgstr ""
 
 #: ../../build/doc/pgr_articulationPoints.rst:24
-msgid "Set as `official`"
-msgstr ""
-
-#: ../../build/doc/pgr_articulationPoints.rst:25
 msgid "Return columns change: ``seq`` is removed"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:27
-msgid "New as experimental on v2.5.0"
+#: ../../build/doc/pgr_articulationPoints.rst:25
+msgid "**Official** function"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:30
+#: ../../build/doc/pgr_articulationPoints.rst:27
+msgid "Version 2.5.0"
+msgstr ""
+
+#: ../../build/doc/pgr_articulationPoints.rst:29
+msgid "New **experimental** function"
+msgstr ""
+
+#: ../../build/doc/pgr_articulationPoints.rst:32
+msgid "Support"
+msgstr ""
+
+#: ../../build/doc/pgr_articulationPoints.rst:33
 msgid ""
 "**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_articulationPoints.html>`__) `2.6 "
+"<https://docs.pgrouting.org/dev/en/pgr_articulationPoints.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_articulationPoints.rst:36
+msgid ""
+"**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_articulationPoints.html>`__ `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_articulationPoints.html>`__"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_articulationPoints.rst:36
-#: ../../build/doc/pgr_articulationPoints.rst:96
+#: ../../build/doc/pgr_articulationPoints.rst:41
+#: ../../build/doc/pgr_articulationPoints.rst:101
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:38
+#: ../../build/doc/pgr_articulationPoints.rst:43
 msgid ""
 "Those vertices that belong to more than one biconnected component are "
 "called articulation points or, equivalently, cut vertices. Articulation "
@@ -75,27 +88,27 @@ msgid ""
 "undirected graph."
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:44
+#: ../../build/doc/pgr_articulationPoints.rst:49
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:46
+#: ../../build/doc/pgr_articulationPoints.rst:51
 msgid "The signature is for an **undirected** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:47
+#: ../../build/doc/pgr_articulationPoints.rst:52
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:49
+#: ../../build/doc/pgr_articulationPoints.rst:54
 msgid "`node` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:51
+#: ../../build/doc/pgr_articulationPoints.rst:56
 msgid "Running time: :math:`O(V + E)`"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:54
+#: ../../build/doc/pgr_articulationPoints.rst:59
 msgid "Signatures"
 msgstr ""
 
@@ -103,11 +116,11 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:66
+#: ../../build/doc/pgr_articulationPoints.rst:71
 msgid "The articulation points of the graph"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:73
+#: ../../build/doc/pgr_articulationPoints.rst:78
 msgid "Parameters"
 msgstr ""
 
@@ -117,7 +130,7 @@ msgstr ""
 
 #: ../../build/doc/components-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_articulationPoints.rst:96
+#: ../../build/doc/pgr_articulationPoints.rst:101
 msgid "Type"
 msgstr ""
 
@@ -138,7 +151,7 @@ msgstr ""
 msgid "Inner query as described bellow."
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:80
+#: ../../build/doc/pgr_articulationPoints.rst:85
 msgid "Inner query"
 msgstr ""
 
@@ -146,14 +159,14 @@ msgstr ""
 msgid "edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:82
+#: ../../build/doc/pgr_articulationPoints.rst:87
 msgid ""
 "an SQL query of an **undirected** graph, which should return a set of "
 "rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_articulationPoints.rst:96
+#: ../../build/doc/pgr_articulationPoints.rst:101
 msgid "Column"
 msgstr ""
 
@@ -244,59 +257,88 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:89
+#: ../../build/doc/pgr_articulationPoints.rst:94
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:93
+#: ../../build/doc/pgr_articulationPoints.rst:98
 msgid "Returns set of ``(node)``"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:98
+#: ../../build/doc/pgr_articulationPoints.rst:103
 msgid "**node**"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:98
+#: ../../build/doc/pgr_articulationPoints.rst:103
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:98
+#: ../../build/doc/pgr_articulationPoints.rst:103
 msgid "Identifier of the vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:104
+#: ../../build/doc/pgr_articulationPoints.rst:109
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:106
+#: ../../build/doc/pgr_articulationPoints.rst:111
 msgid ":doc:`components-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:107
+#: ../../build/doc/pgr_articulationPoints.rst:112
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:108
+#: ../../build/doc/pgr_articulationPoints.rst:113
 msgid ""
 "Boost: `Biconnected components & articulation points "
-"<http://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_articulationPoints.rst:109
-msgid ""
-"wikipedia: `Biconnected component "
-"<http://en.wikipedia.org/wiki/Biconnected_component>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_articulationPoints.rst:112
-msgid "Indices and tables"
-msgstr ""
-
-#: ../../build/doc/pgr_articulationPoints.rst:113
-msgid ":ref:`genindex`"
+"<https://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_articulationPoints.rst:114
+msgid ""
+"wikipedia: `Biconnected component "
+"<https://en.wikipedia.org/wiki/Biconnected_component>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_articulationPoints.rst:117
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_articulationPoints.rst:118
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_articulationPoints.rst:119
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "On v3.0.0"
+#~ msgstr ""
+
+#~ msgid "Set as `official`"
+#~ msgstr ""
+
+#~ msgid "New as experimental on v2.5.0"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_articulationPoints.html>`__)"
+#~ " `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_articulationPoints.html>`__ "
+#~ "`2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_articulationPoints.html>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Boost: `Biconnected components & articulation"
+#~ " points "
+#~ "<http://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "wikipedia: `Biconnected component "
+#~ "<http://en.wikipedia.org/wiki/Biconnected_component>`__"
+#~ msgstr ""
 

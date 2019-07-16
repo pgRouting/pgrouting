@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1162,7 +1162,7 @@ msgid "Adding Functionaity to pgRouting"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:862
-msgid "Consult the `developer's documentation <http://docs.pgrouting.org/doxy/2.4/index.html>`_"
+msgid "Consult the `developer's documentation <https://docs.pgrouting.org/doxy/2.4/index.html>`_"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:867

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgid "Instructions for downloading and installing binaries for different Operat
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:27
-msgid "To use pgRouting postGIS needs to be installed, please read the information about installation in this `Install Guide <http://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
+msgid "To use pgRouting postGIS needs to be installed, please read the information about installation in this `Install Guide <https://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:32

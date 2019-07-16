@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,74 +28,98 @@ msgstr ""
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:22
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:21
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:23
-msgid "Official on v3.0.0"
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:22
+msgid "Version 3.0.0"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:24
-msgid "Renamed on v2.5.0"
+msgid "**Official** function"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:25
-msgid "Experimental on v2.3.0"
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:26
+msgid "Version 2.5.0"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:27
-msgid "pgr_maximumCardinalityMatching"
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:28
+msgid "Renamed from ``pgr_maximumCardinalityMatching``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:30
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:95
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:113
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:131
-msgid "Description"
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:29
+msgid "**Proposed** function"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:32
-msgid "**The main characteristics are:**"
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:31
+msgid "Version 2.3.0"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:34
-msgid "A matching or independent edge set in a graph is a set of edges without common vertices."
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:33
+msgid "New **Experimental** function"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:35
-msgid "A maximum matching is a matching that contains the largest possible number of edges."
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:36
+msgid "Support"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:37
-msgid "There may be many maximum matchings."
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:38
-msgid "Calculates **one** possible maximum cardinality matching in a graph."
+msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_maxCardinalityMatch.html>`__)"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:40
-msgid "The graph can be **directed** or **undirected**."
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/pgr_maximumCardinalityMatching.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:42
-msgid "Running time: :math:`O( E*V * \\alpha(E,V))`"
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:48
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:113
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:131
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:149
+msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:44
-msgid ":math:`\\alpha(E,V)` is the inverse of the `Ackermann function`_."
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:49
-msgid "Signatures"
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:50
+msgid "**The main characteristics are:**"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:52
-msgid "Summary"
+msgid "A matching or independent edge set in a graph is a set of edges without common vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:53
+msgid "A maximum matching is a matching that contains the largest possible number of edges."
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:55
+msgid "There may be many maximum matchings."
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:56
+msgid "Calculates **one** possible maximum cardinality matching in a graph."
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:58
+msgid "The graph can be **directed** or **undirected**."
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:60
+msgid "Running time: :math:`O( E*V * \\alpha(E,V))`"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:62
+msgid ":math:`\\alpha(E,V)` is the inverse of the `Ackermann function`_."
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:67
+msgid "Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:70
+msgid "Summary"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:80
 msgid "Using defaults"
 msgstr ""
 
@@ -104,136 +128,136 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:68
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:86
 msgid "For a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:78
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:96
 msgid "Complete signature"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:85
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:103
 msgid "For an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:92
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:110
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:95
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:113
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:95
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:113
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:131
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:149
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:95
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:113
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:97
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:115
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:97
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:115
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:97
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:115
 msgid "SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:98
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:116
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:98
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:116
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:98
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:116
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:98
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:116
 msgid "Determines the type of the graph. - When ``true`` Graph is considered `Directed` - When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:105
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:123
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:108
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:126
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:0
 msgid "edges_sql"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:110
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:128
 msgid "an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:113
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:131
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:149
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:115
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:133
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:115
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:116
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:117
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:133
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:134
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:135
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:115
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:133
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:116
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:135
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:134
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:153
 msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:116
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:134
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:117
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:136
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:135
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:154
 msgid "**target**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:117
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:135
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:118
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:136
 msgid "**going**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:118
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:119
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:136
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:137
 msgid "``ANY-NUMERIC``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:118
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:136
 msgid "A positive value represents the existence of the edge (source, target)."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:119
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:137
 msgid "**coming**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:119
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:137
 msgid "A positive value represents the existence of the edge (target, source)."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:122
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:140
 msgid "Where:"
 msgstr ""
 
@@ -241,7 +265,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:124
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:142
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
@@ -249,77 +273,77 @@ msgstr ""
 msgid "ANY-NUMERIC"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:125
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:143
 msgid "SMALLINT, INTEGER, BIGINT, REAL FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:128
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:146
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:133
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:151
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:133
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:151
 msgid "``INT``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:133
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:151
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:134
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:152
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:134
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:135
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:136
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:152
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:153
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:154
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:134
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:152
 msgid "Identifier of the edge in the original query(edges_sql)."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:135
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:153
 msgid "Identifier of the first end point of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:136
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:154
 msgid "Identifier of the second end point of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:140
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:158
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:142
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:160
 msgid ":doc:`flow-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:143
-msgid "http://www.boost.org/libs/graph/doc/maximum_matching.html"
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:161
+msgid "https://www.boost.org/libs/graph/doc/maximum_matching.html"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:144
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:162
 msgid "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:145
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:163
 msgid "https://en.wikipedia.org/wiki/Ackermann_function"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:148
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:166
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:149
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:167
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:150
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:168
 msgid ":ref:`search`"
 msgstr ""
 

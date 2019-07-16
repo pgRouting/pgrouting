@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "Table of Contents"
 msgstr ""
 
 #: ../../build/doc/index.rst:16
-msgid "pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_ geospatial database to provide geospatial routing and other network analysis functionality."
+msgid "pgRouting extends the `PostGIS <https://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_ geospatial database to provide geospatial routing and other network analysis functionality."
 msgstr ""
 
 #: ../../build/doc/index.rst:18
@@ -29,7 +29,7 @@ msgid "This is the manual for pgRouting |release|."
 msgstr ""
 
 #: ../../build/doc/index.rst:24
-msgid "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to http://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page."
+msgid "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to http://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page."
 msgstr ""
 
 #: ../../build/doc/index.rst:27
@@ -293,14 +293,22 @@ msgid ":doc:`drivingDistance-category`"
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:3
-msgid ":doc:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra"
+msgid ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:4
-msgid "Post pocessing"
+msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
+msgstr ""
+
+#: ../../build/doc/drivingDistance-category.rst:5
+msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:6
+msgid "Post pocessing"
+msgstr ""
+
+#: ../../build/doc/drivingDistance-category.rst:8
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
 msgstr ""
 

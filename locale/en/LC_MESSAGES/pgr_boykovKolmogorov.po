@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,24 +37,56 @@ msgid "Availability:"
 msgstr ""
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:22
-msgid "Official on v3.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:23
-msgid "Renamed on v2.5.0"
+msgid "Version 3.0.0"
 msgstr ""
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:24
-msgid "Experimental on v2.3.0"
+msgid "**Official** function"
 msgstr ""
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:26
-msgid "pgr_maxFlowBoykovKolmogorov"
+msgid "Version 2.5.0"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:28
+msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:29
+msgid "**Proposed** function"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:31
+msgid "Version 2.3.0"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:33
+msgid "New **Experimental** function"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:36
+msgid "Support"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:37
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_boykovKolmogorov.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:40
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_boykovKolmogorov.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_boykovKolmogorov.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_maxFlowBoykovKolmogorov.html>`__ "
+"`2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_boykovKolmogorov.rst:29
+#: ../../build/doc/pgr_boykovKolmogorov.rst:48
 #: ../../build/doc/pgr_maxFlow.rst:4
 msgid "Description"
 msgstr ""
@@ -114,19 +146,19 @@ msgstr ""
 msgid "By aggregation of the incoming flow to the targets"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:35
+#: ../../build/doc/pgr_boykovKolmogorov.rst:54
 msgid "Running time: Polynomial"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:38
+#: ../../build/doc/pgr_boykovKolmogorov.rst:57
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:41
+#: ../../build/doc/pgr_boykovKolmogorov.rst:60
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:55
+#: ../../build/doc/pgr_boykovKolmogorov.rst:74
 msgid "One to One"
 msgstr ""
 
@@ -134,35 +166,35 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:63
+#: ../../build/doc/pgr_boykovKolmogorov.rst:82
 msgid "From vertex :math:`6` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:73
+#: ../../build/doc/pgr_boykovKolmogorov.rst:92
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:81
+#: ../../build/doc/pgr_boykovKolmogorov.rst:100
 msgid "From vertex :math:`6` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:91
+#: ../../build/doc/pgr_boykovKolmogorov.rst:110
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:99
+#: ../../build/doc/pgr_boykovKolmogorov.rst:118
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:109
+#: ../../build/doc/pgr_boykovKolmogorov.rst:128
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:117
+#: ../../build/doc/pgr_boykovKolmogorov.rst:136
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:124
+#: ../../build/doc/pgr_boykovKolmogorov.rst:143
 msgid "Parameters"
 msgstr ""
 
@@ -239,12 +271,12 @@ msgstr ""
 msgid "Array of identifiers of the ending vertices of the flow."
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:131
+#: ../../build/doc/pgr_boykovKolmogorov.rst:150
 msgid "Inner query"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
-#: ../../build/doc/pgr_boykovKolmogorov.rst:134
+#: ../../build/doc/pgr_boykovKolmogorov.rst:153
 msgid "edges_sql"
 msgstr ""
 
@@ -324,7 +356,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:141
+#: ../../build/doc/pgr_boykovKolmogorov.rst:160
 msgid "Result Columns"
 msgstr ""
 
@@ -364,27 +396,42 @@ msgstr ""
 msgid "Residual capacity of the edge in the direction (source, target)."
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:148
+#: ../../build/doc/pgr_boykovKolmogorov.rst:167
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:150
+#: ../../build/doc/pgr_boykovKolmogorov.rst:169
 msgid ":doc:`flow-family`, :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:151
-msgid "http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
+#: ../../build/doc/pgr_boykovKolmogorov.rst:170
+msgid "https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:154
+#: ../../build/doc/pgr_boykovKolmogorov.rst:173
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:155
+#: ../../build/doc/pgr_boykovKolmogorov.rst:174
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:156
+#: ../../build/doc/pgr_boykovKolmogorov.rst:175
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Official on v3.0.0"
+#~ msgstr ""
+
+#~ msgid "Renamed on v2.5.0"
+#~ msgstr ""
+
+#~ msgid "Experimental on v2.3.0"
+#~ msgstr ""
+
+#~ msgid "pgr_maxFlowBoykovKolmogorov"
+#~ msgstr ""
+
+#~ msgid "http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
+#~ msgstr ""
 
