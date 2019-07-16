@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_connectedComponents
@@ -13,7 +13,7 @@ pgr_connectedComponents
 ``pgr_connectedComponents`` — Connected components of an undirected graph using a DFS-based approach.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/connected_components.html
+   :target: https://www.boost.org/libs/graph/doc/connected_components.html
 
    Boost Graph Inside
 
@@ -113,8 +113,8 @@ See Also
 
 * :doc:`components-family`
 * The queries use the :doc:`sampledata` network.
-* Boost: `Connected components <http://www.boost.org/libs/graph/doc/connected_components.html>`__
-* wikipedia: `Connected component <http://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__
+* Boost: `Connected components <https://www.boost.org/libs/graph/doc/connected_components.html>`__
+* wikipedia: `Connected component <https://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__
 
 .. rubric:: Indices and tables
 

@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_KSP
@@ -14,7 +14,7 @@ pgr_KSP
 
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph
 
    Boost Graph Inside
 
@@ -33,16 +33,16 @@ pgr_KSP
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_KSP.html>`__)
-  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_KSP.html>`__
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_KSP.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_KSP.html>`__
 
 * **Unsupported versions:**
-  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_KSP.html>`__
-  `2.4 <http://docs.pgrouting.org/2.4/en/pgr_KSP.html>`__
-  `2.3 <http://docs.pgrouting.org/2.3/en/src/ksp/doc/pgr_ksp.html>`__
-  `2.2 <http://docs.pgrouting.org/2.2/en/src/ksp/doc/pgr_ksp.html>`__
-  `2.1 <http://docs.pgrouting.org/2.1/en/src/ksp/doc/index.html>`__
-  `2.0 <http://docs.pgrouting.org/2.0/en/src/ksp/doc/index.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_KSP.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_KSP.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/ksp/doc/pgr_ksp.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/ksp/doc/pgr_ksp.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/src/ksp/doc/index.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/src/ksp/doc/index.html>`__
 
 
 Description
@@ -168,7 +168,7 @@ The examples in this section use the following :ref:`fig4`
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/K_shortest_path_routing
+* https://en.wikipedia.org/wiki/K_shortest_path_routing
 * :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

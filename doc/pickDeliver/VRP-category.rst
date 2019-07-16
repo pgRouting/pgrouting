@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 Vehicle Routing Functions Category
@@ -39,7 +39,7 @@ Vehicle Routing Functions Category
 .. rubric:: Previous versions of this page
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/VRP-category.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/dev/en/VRP-category.html>`__)
 
 
 Introduction

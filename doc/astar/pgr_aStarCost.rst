@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_aStarCost
@@ -13,7 +13,7 @@ pgr_aStarCost
 ``pgr_aStarCost`` — Returns the aggregate cost shortest path using :doc:`pgr_aStar` algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org//libs/graph/doc/astar_search.html
+   :target: https://www.boost.org//libs/graph/doc/astar_search.html
 
    Boost Graph Inside
 
@@ -30,12 +30,12 @@ pgr_aStarCost
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_aStarCost.html>`__)
-  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_aStarCost.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__
 
 * **Unsupported versions:**
-  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__
-  `2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__
 
 Description
 -------------------------------------------------------------------------------

@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_dijkstraCost
@@ -16,7 +16,7 @@ Using Dijkstra algorithm implemented by Boost.Graph, and extract only the
 aggregate cost of the shortest path(s) found, for the combination of vertices given.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
+   :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside
 
@@ -217,7 +217,7 @@ Additional Examples
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 * :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

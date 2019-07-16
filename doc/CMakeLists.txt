@@ -1,7 +1,7 @@
 #
 # Find Sphinx
 # Find Sphinx executable to build documentation
-# Source: http://ericscottbarr.com/blog/2012/03/sphinx-and-cmake-beautiful-documentation-for-c-projects/
+# Source: https://ericscottbarr.com/blog/2012/03/sphinx-and-cmake-beautiful-documentation-for-c-projects/
 #
 # Daniel Kastl 03/2013
 #

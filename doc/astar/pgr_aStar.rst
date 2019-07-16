@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_aStar
@@ -13,7 +13,7 @@ pgr_aStar
 ``pgr_aStar`` — Shortest path using A* algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org//libs/graph/doc/astar_search.html
+   :target: https://www.boost.org//libs/graph/doc/astar_search.html
 
    Boost Graph Inside
 
@@ -44,16 +44,16 @@ pgr_aStar
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_aStar.html>`__)
-  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_aStar.html>`__
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_aStar.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_aStar.html>`__
 
 * **Unsupported versions:**
-  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStar.html>`__
-  `2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStar.html>`__
-  `2.3 <http://docs.pgrouting.org/2.3/en/src/astar/doc/pgr_astar.html>`__
-  `2.2 <http://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html>`__
-  `2.1 <http://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__
-  `2.0 <http://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_aStar.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_aStar.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/astar/doc/pgr_astar.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -257,8 +257,8 @@ See Also
 
 * :doc:`aStar-family`
 * :doc:`sampledata`
-* http://www.boost.org/libs/graph/doc/astar_search.html
-* http://en.wikipedia.org/wiki/A*_search_algorithm
+* https://www.boost.org/libs/graph/doc/astar_search.html
+* https://en.wikipedia.org/wiki/A*_search_algorithm
 
 .. rubric:: Indices and tables
 

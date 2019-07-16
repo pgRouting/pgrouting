@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_dagShortestPath - Experimental
@@ -14,7 +14,7 @@ pgr_dagShortestPath - Experimental
 In particular, the DAG shortest paths algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dag_shortest_paths.html
+   :target: https://www.boost.org/libs/graph/doc/dag_shortest_paths.html
 
    Boost Graph Inside
 
@@ -31,7 +31,7 @@ In particular, the DAG shortest paths algorithm implemented by Boost.Graph.
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_dagShortestPath.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_dagShortestPath.html>`__)
 
 Description
 -------------------------------------------------------------------------------

@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 Transformation - Family of functions (Experimental)
@@ -27,8 +27,8 @@ Transformation - Family of functions (Experimental)
 .. rubric:: Previous versions of this page
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/transformation-family.html>`__)
-  `2.6 <http://docs.pgrouting.org/2.6/en/transformation-family.html>`__
+  current(`3.0 <https://docs.pgrouting.org/dev/en/transformation-family.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/transformation-family.html>`__
 
 Introduction
 ------------------------

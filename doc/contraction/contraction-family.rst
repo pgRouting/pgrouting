@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 Contraction - Family of functions
@@ -650,8 +650,8 @@ Now, the routing graph has an edge connecting with node :math:`7`.
 See Also
 -------------
 
-* http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
-* http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
+* https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
+* https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
 * The queries use :doc:`pgr_contraction` function and the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

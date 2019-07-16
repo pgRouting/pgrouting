@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_bdAstar
@@ -13,7 +13,7 @@ pgr_bdAstar
 ``pgr_bdAstar`` — Returns the shortest path using Bidirectional A* algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org//libs/graph
+   :target: https://www.boost.org//libs/graph
 
    Boost Graph Inside
 
@@ -42,16 +42,16 @@ pgr_bdAstar
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdAstar.html>`__)
-  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bdAstar.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__
 
 * **Unsupported versions:**
-  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__
-  `2.4 <http://docs.pgrouting.org/2.4/en/pgr_bdAstar.html>`__
-  `2.3 <http://docs.pgrouting.org/2.3/en/src/bd_astar/doc/pgr_bdAstar.html>`__
-  `2.2 <http://docs.pgrouting.org/2.2/en/src/bd_astar/doc/pgr_bdAstar.html>`__
-  `2.1 <http://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__
-  `2.0 <http://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_bdAstar.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/bd_astar/doc/pgr_bdAstar.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/bd_astar/doc/pgr_bdAstar.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -208,8 +208,8 @@ See Also
 * :doc:`aStar-family`
 * :doc:`bdAstar-family`
 * :doc:`sampledata` network.
-* http://www.boost.org/libs/graph/doc/astar_search.html
-* http://en.wikipedia.org/wiki/A*_search_algorithm
+* https://www.boost.org/libs/graph/doc/astar_search.html
+* https://en.wikipedia.org/wiki/A*_search_algorithm
 
 .. rubric:: Indices and tables
 

@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_withPointsVia - Proposed
@@ -17,7 +17,7 @@ pgr_withPointsVia - Proposed
    :end-before: end-warning
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph
 
    Boost Graph Inside
 
@@ -30,7 +30,7 @@ pgr_withPointsVia - Proposed
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_withPointsVia.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_withPointsVia.html>`__)
 
 Description
 -------------------------------------------------------------------------------

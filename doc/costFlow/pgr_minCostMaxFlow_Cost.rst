@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_minCostMaxFlow_Cost - Experimental
@@ -13,7 +13,7 @@ pgr_minCostMaxFlow_Cost - Experimental
 ``pgr_minCostMaxFlow_Cost`` — Calculates the minmum cost maximum flow in a directed graph from the source(s) to the targets(s).
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
+   :target: https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 
    Boost Graph Inside
 

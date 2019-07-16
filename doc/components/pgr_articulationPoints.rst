@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_articulationPoints
@@ -13,7 +13,7 @@ pgr_articulationPoints
 ``pgr_articulationPoints`` - Return the articulation points of an undirected graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/biconnected_components.html
+   :target: https://www.boost.org/libs/graph/doc/biconnected_components.html
 
    Boost Graph Inside
 
@@ -110,8 +110,8 @@ See Also
 
 * :doc:`components-family`
 * The queries use the :doc:`sampledata` network.
-* Boost: `Biconnected components & articulation points <http://www.boost.org/libs/graph/doc/biconnected_components.html>`__
-* wikipedia: `Biconnected component <http://en.wikipedia.org/wiki/Biconnected_component>`__
+* Boost: `Biconnected components & articulation points <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__
+* wikipedia: `Biconnected component <https://en.wikipedia.org/wiki/Biconnected_component>`__
 
 .. rubric:: Indices and tables
 

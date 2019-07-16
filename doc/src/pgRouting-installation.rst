@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 .. _installation:
@@ -24,7 +24,7 @@ Installation
 
 Instructions for downloading and installing binaries for different Operative systems instructions and additional notes and corrections not included in this documentation can be found in `Installation wiki <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__
 
-To use pgRouting postGIS needs to be installed, please read the information about installation in this `Install Guide <http://www.postgis.us/presentations/postgis_install_guide_22.html>`__
+To use pgRouting postGIS needs to be installed, please read the information about installation in this `Install Guide <https://www.postgis.us/presentations/postgis_install_guide_22.html>`__
 
 .. _install-short:
 

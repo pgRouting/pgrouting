@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_johnson
@@ -14,7 +14,7 @@ pgr_johnson
 pair of nodes in the graph using Floyd-Warshall algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html
+   :target: https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html
 
    Boost Graph Inside
 
@@ -32,16 +32,16 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_johnson.html>`__)
-  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_johnson.html>`__
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_johnson.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_johnson.html>`__
 
 * **Unsupported versions:**
-  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_johnson.html>`__
-  `2.4 <http://docs.pgrouting.org/2.4/en/pgr_johnson.html>`__
-  `2.3 <http://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_johnson.html>`__
-  `2.2 <http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_johnson.html>`__
-  `2.1 <http://docs.pgrouting.org/2.1/en/src/apsp_johnson/doc/index.html>`__
-  `2.0 <http://docs.pgrouting.org/2.0/en/src/apsp_johnson/doc/index.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_johnson.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_johnson.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_johnson.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_johnson.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/src/apsp_johnson/doc/index.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/src/apsp_johnson/doc/index.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -143,7 +143,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`pgr_floydWarshall`
-* `Boost Johnson <http://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_ algorithm implementation.
+* `Boost Johnson <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_ algorithm implementation.
 * Queries uses the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

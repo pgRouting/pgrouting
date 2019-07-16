@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_maxCardinalityMatch
@@ -13,7 +13,7 @@ pgr_maxCardinalityMatch
 ``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/maximum_matching.html
+   :target: https://www.boost.org/libs/graph/doc/maximum_matching.html
 
    Boost Graph Inside
 
@@ -35,13 +35,13 @@ pgr_maxCardinalityMatch
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_maxCardinalityMatch.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_maxCardinalityMatch.html>`__)
 
 * **Unsupported versions:**
-  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__
-  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__
-  `2.4 <http://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__
-  `2.3 <http://docs.pgrouting.org/2.3/en/pgr_maximumCardinalityMatching.html>`__
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/pgr_maximumCardinalityMatching.html>`__
 
 
 Description
@@ -158,7 +158,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`flow-family`
-* http://www.boost.org/libs/graph/doc/maximum_matching.html
+* https://www.boost.org/libs/graph/doc/maximum_matching.html
 * https://en.wikipedia.org/wiki/Matching_%28graph_theory%29
 * https://en.wikipedia.org/wiki/Ackermann_function
 

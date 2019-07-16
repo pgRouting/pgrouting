@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_lineGraphFull - Experimental
@@ -25,10 +25,10 @@ pgr_lineGraphFull - Experimental
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_lineGraphFull.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_lineGraphFull.html>`__)
 
 * **Unsupported versions:**
-  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html>`__
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -188,8 +188,8 @@ If you cross reference the node column in the dijkstra results with the vertex i
 See Also
 -----------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Line_graph
-* http://en.wikipedia.org/wiki/Complete_graph
+* https://en.wikipedia.org/wiki/Line_graph
+* https://en.wikipedia.org/wiki/Complete_graph
 
 .. rubric:: Indices and tables
 

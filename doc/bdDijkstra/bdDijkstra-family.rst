@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 Bidirectional Dijkstra - Family of functions
@@ -28,11 +28,11 @@ Bidirectional Dijkstra - Family of functions
 .. rubric:: Previous versions of this page
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/bdDijkstra-family.html>`__)
-  `2.6 <http://docs.pgrouting.org/2.6/en/bdDijkstra-family.html>`__
+  current(`3.0 <https://docs.pgrouting.org/dev/en/bdDijkstra-family.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/bdDijkstra-family.html>`__
 
 * **Unsupported versions:**
-  `2.5 <http://docs.pgrouting.org/2.5/en/bdDijkstra-family.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/bdDijkstra-family.html>`__
 
 
 Synopsis

@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_bellmanFord - Experimental
@@ -14,7 +14,7 @@ pgr_bellmanFord - Experimental
 In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/bellman_ford_shortest.html
+   :target: https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html
 
    Boost Graph Inside
 

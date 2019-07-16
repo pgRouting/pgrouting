@@ -4,15 +4,15 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 Introduction
 ===============================================================================
 
-pgRouting is an extension of `PostGIS <http://postgis.net>`_ and `PostgreSQL <http://postgresql.org>`_ geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche from `Camptocamp <http://camptocamp.com>`_, was later extended by `Orkney <http://www.orkney.co.jp>`_ and renamed to pgRouting. The project is now supported and maintained by `Georepublic <http://georepublic.info>`_, `iMaptools <http://imaptools.com/>`__ and a broad user community.
+pgRouting is an extension of `PostGIS <https://postgis.net>`_ and `PostgreSQL <http://postgresql.org>`_ geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche from `Camptocamp <http://camptocamp.com>`_, was later extended by `Orkney <http://www.orkney.co.jp>`_ and renamed to pgRouting. The project is now supported and maintained by `Georepublic <http://georepublic.info>`_, `iMaptools <http://imaptools.com/>`__ and a broad user community.
 
-pgRouting is part of `OSGeo Community Projects <http://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`_ from the `OSGeo Foundation <http://osgeo.org>`_ and included on `OSGeo Live <http://live.osgeo.org/>`_.
+pgRouting is part of `OSGeo Community Projects <https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`_ from the `OSGeo Foundation <http://osgeo.org>`_ and included on `OSGeo Live <http://live.osgeo.org/>`_.
 
 
 .. _license:
@@ -28,13 +28,13 @@ The following licenses can be found in pgRouting:
    * - **License**
      -
    * - GNU General Public License, version 2
-     - Most features of pgRouting are available under `GNU General Public License, version 2 <http://www.gnu.org/licenses/gpl-2.0.html>`_.
+     - Most features of pgRouting are available under `GNU General Public License, version 2 <https://www.gnu.org/licenses/gpl-2.0.html>`_.
    * - Boost Software License - Version 1.0
-     - Some Boost extensions are available under `Boost Software License - Version 1.0 <http://www.boost.org/LICENSE_1_0.txt>`_.
+     - Some Boost extensions are available under `Boost Software License - Version 1.0 <https://www.boost.org/LICENSE_1_0.txt>`_.
    * - MIT-X License
      - Some code contributed by iMaptools.com is available under MIT-X license.
    * - Creative Commons Attribution-Share Alike 3.0 License
-     - The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_.
+     - The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_.
 
 In general license information should be included in the header of each source file.
 
@@ -59,9 +59,9 @@ These are corporate entities that have contributed developer time, hosting, or d
 
 - `Georepublic <https://georepublic.info/en/>`__
 - `Google Summer of Code <https://developers.google.com/open-source/gsoc/>`_
-- `iMaptools <http://imaptools.com>`__
+- `iMaptools <https://imaptools.com>`__
 - `Leopark <https://www.leopark.mx/>`__
-- `Paragon Corporation <http://www.paragoncorporation.com/>`_
+- `Paragon Corporation <https://www.paragoncorporation.com/>`_
 
 Contributors Past & Present:
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -89,9 +89,9 @@ These are corporate entities that have contributed developer time, hosting, or d
 More Information
 -------------------------------------------------------------------------------
 
-* The latest software, documentation and news items are available at the pgRouting web site http://pgrouting.org.
-* PostgreSQL database server at the PostgreSQL main site http://www.postgresql.org.
-* PostGIS extension at the PostGIS project web site http://postgis.net.
-* Boost C++ source libraries at http://www.boost.org.
+* The latest software, documentation and news items are available at the pgRouting web site https://pgrouting.org.
+* PostgreSQL database server at the PostgreSQL main site https://www.postgresql.org.
+* PostGIS extension at the PostGIS project web site https://postgis.net.
+* Boost C++ source libraries at https://www.boost.org.
 * The Migration guide can be found at https://github.com/pgRouting/pgrouting/wiki/Migration-Guide.
 

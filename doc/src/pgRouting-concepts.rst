@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 .. _pgrouting_concepts:
@@ -859,7 +859,7 @@ How to contribute
 .. rubric:: Adding Functionaity to pgRouting
 
 
-Consult the `developer's documentation <http://docs.pgrouting.org/doxy/2.4/index.html>`_
+Consult the `developer's documentation <https://docs.pgrouting.org/doxy/2.4/index.html>`_
 
 
 

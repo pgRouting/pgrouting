@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_createTopology
@@ -22,16 +22,16 @@ pgr_createTopology
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_createTopology.html>`__)
-  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_createTopology.html>`__
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_createTopology.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_createTopology.html>`__
 
 * **Unsupported versions:**
-  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_createTopology.html>`__
-  `2.4 <http://docs.pgrouting.org/2.4/en/pgr_createTopology.html>`__
-  `2.3 <http://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createTopology.html>`__
-  `2.2 <http://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createTopology.html>`__
-  `2.1 <http://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_topology.html>`__
-  `2.0 <http://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_topology.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_createTopology.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_createTopology.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createTopology.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createTopology.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_topology.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_topology.html>`__
 
 Description
 -------------------------------------------------------------------------------

@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 Spanning Tree - Families
@@ -31,7 +31,7 @@ consisting of a spanning tree of each connected component.
     prim-family
 
 * **Supported versions:**
-  current(`3.0 <http://docs.pgrouting.org/dev/en/spanningTree-family.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/dev/en/spanningTree-family.html>`__)
 
 See Also
 -------------------------------------------------------------------------------
