@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION _pgr_trspViaVertices
-    (sql text, 
-    vids integer[], 
+    (sql text,
+    vids integer[],
     directed boolean,
     has_rcost boolean,
     turn_restrict_sql text DEFAULT NULL,
@@ -279,14 +279,15 @@ IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_trspViaEdges(TEXT, INTEGER[], FLOAT[], BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trspViaEdges
- - Parameters
-   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - ARRAY[Via edge identifiers]
-   - ARRAY[fraction position on via edges]
-   - directed
-   - has reverse cost
- - Optional parameters
-   - turn_restrict_sql := NULL
+- PROTOTYPE
+- Parameters
+  - edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - ARRAY[Via edge identifiers]
+  - ARRAY[fraction position on via edges]
+  - directed
+  - has reverse cost
+- Optional parameters
+  - turn_restrict_sql := NULL
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_trspViaEdges.html
+  - ${PGROUTING_DOC_LINK}/pgr_trsp.html
 ';

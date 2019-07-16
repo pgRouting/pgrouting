@@ -32,7 +32,7 @@ pgr_TSPeuclidean
 * **Unsupported versions:**
   `2.5 <http://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__
   `2.4 <http://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html>`__
-  `2.3 <http://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP`__
+  `2.3 <http://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__
 
 Description
 -------------------------------------------------------------------------------
