@@ -15,7 +15,24 @@ pgr_TSPeuclidean
 
 .. rubric:: Availability
 
-* New in version 2.3.0
+* Version 3.0.0
+
+  * Name change from pgr_eucledianTSP
+
+* Version 2.3.0
+
+  * New **Official** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_TSPeuclidean.html>`__)
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_eucledianTSP.html>`__
+
+**Unsupported versions:**
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP`__
 
 Description
 -------------------------------------------------------------------------------

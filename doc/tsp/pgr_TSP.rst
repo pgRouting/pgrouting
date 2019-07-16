@@ -14,7 +14,29 @@ pgr_TSP
 
 .. rubric:: Availability: 2.0.0
 
-* Signature changed 2.3.0
+* Version 2.3.0
+
+  * Signature change
+
+    * Old signature no longer supported
+
+* Version 2.0.0
+
+  * **Official** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_TSP.html>`__)
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_TSP.html>`__
+
+**Unsupported versions:**
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_TSP.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_TSP.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_tsp.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html>`__
+`2.1 <http://docs.pgrouting.org/2.1/en/src/tsp/doc/index.html>`__
+`2.0 <http://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html>`__
 
 Description
 -------------------------------------------------------------------------------
