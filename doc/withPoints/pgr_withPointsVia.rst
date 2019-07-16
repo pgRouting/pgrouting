@@ -21,9 +21,16 @@ pgr_withPointsVia - Proposed
 
    Boost Graph Inside
 
-.. rubric:: Availability: 
+.. rubric:: Availability:
 
-* Proposed in v2.2
+* Version 3.0.0
+
+  * New **proposed** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_withPointsVia.html>`__)
 
 Description
 -------------------------------------------------------------------------------
@@ -46,7 +53,7 @@ Signatures
 .. index::
 	single: withPointsVia(edges_sql, points_sql, start_pid, distance) -- proposed
 
-.. rubric:: Using defaults 
+.. rubric:: Using defaults
 ...................................................
 
 .. code-block:: none
@@ -97,7 +104,7 @@ Inner query
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-Parameters 
+Parameters
 ...............................................................................
 
 ================ ================= =================================================

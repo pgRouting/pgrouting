@@ -23,7 +23,21 @@ pgr_withPointsDD - Proposed
 
 .. rubric:: Availability
 
-* Proposed in v2.2
+* Version 2.2.0
+
+  * New **proposed** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_withPointsDD.html>`__)
+
+**Unsupported versions:**
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_withPointsDD.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_withPointsDD.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_withPointsDD.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsDD.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html>`__
 
 Description
 -------------------------------------------------------------------------------

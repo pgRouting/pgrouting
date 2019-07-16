@@ -23,7 +23,21 @@ pgr_withPoints - Proposed
 
 .. rubric:: Availability
 
-* Proposed in v2.2
+* Version 2.2.0
+
+  * New **proposed** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_withPoints.html>`__)
+
+**Unsupported versions:**
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_withPoints.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_withPoints.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_withPoints.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPoints.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPoints.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -78,7 +92,7 @@ Signatures
 
     - For a **directed** graph.
     - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
-    - No **details** are given about distance of other points of points_sql query. 
+    - No **details** are given about distance of other points of points_sql query.
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e1
