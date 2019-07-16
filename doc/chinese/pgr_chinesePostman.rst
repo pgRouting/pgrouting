@@ -25,8 +25,8 @@ every edge in a directed graph and starts and ends on the same vertex.
 
 .. rubric:: Support
 
-**Supported versions**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_chinesePostman.html>`__)
+* **Supported versions**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_chinesePostman.html>`__)
 
 Description
 -------------------------------------------------------------------------------

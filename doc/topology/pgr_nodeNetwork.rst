@@ -33,17 +33,17 @@ The function reads edges from a not "noded" network table and writes the "noded"
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_nodeNetwork.html>`__)
-`2.6 <http://docs.pgrouting.org/2.6/en/pgr_nodeNetwork.html>`__
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_nodeNetwork.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_nodeNetwork.html>`__
 
-**Unsupported versions:**
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_nodeNetwork.html>`__
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_nodeNetwork.html>`__
-`2.3 <http://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_nodeNetwork.html>`__
-`2.2 <http://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_nodeNetwork.html>`__
-`2.1 <http://docs.pgrouting.org/2.1/en/src/common/doc/functions/node_network.html>`__
-`2.0 <http://docs.pgrouting.org/2.0/en/src/common/doc/functions/node_network.html>`__
+* **Unsupported versions:**
+  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_nodeNetwork.html>`__
+  `2.4 <http://docs.pgrouting.org/2.4/en/pgr_nodeNetwork.html>`__
+  `2.3 <http://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_nodeNetwork.html>`__
+  `2.2 <http://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_nodeNetwork.html>`__
+  `2.1 <http://docs.pgrouting.org/2.1/en/src/common/doc/functions/node_network.html>`__
+  `2.0 <http://docs.pgrouting.org/2.0/en/src/common/doc/functions/node_network.html>`__
 
 
 Description

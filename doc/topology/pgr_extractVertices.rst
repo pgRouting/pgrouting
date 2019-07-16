@@ -25,8 +25,8 @@ pgr_extractVertices -- Experimental
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_extractVertices.html>`__)
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_extractVertices.html>`__)
 
 
 Description

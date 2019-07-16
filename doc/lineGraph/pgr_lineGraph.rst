@@ -29,12 +29,12 @@ pgr_lineGraph - Experimental
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_lineGraph.html>`__)
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_lineGraph.html>`__)
 
-**Unsupported versions:**
-`2.6 <http://docs.pgrouting.org/2.6/en/pgr_lineGraph.html>`__
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_lineGraph.html>`__
+* **Unsupported versions:**
+  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_lineGraph.html>`__
+  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_lineGraph.html>`__
 
 Description
 -------------------------------------------------------------------------------

@@ -27,12 +27,12 @@ pgr_bdAstarCost
 
   * New **Proposed** function
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdAstarCost.html>`__)
-`2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdAstarCost.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__
 
-**Unsupported versions:**
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__
+* **Unsupported versions:**
+  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__
 
 Description
 -------------------------------------------------------------------------------

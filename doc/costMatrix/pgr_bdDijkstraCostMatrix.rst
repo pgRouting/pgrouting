@@ -28,12 +28,12 @@ pgr_bdDijkstraCostMatrix
 
   * New **proposed** function
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bdDijkstraCostMatrix.html>`__)
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bdDijkstraCostMatrix.html>`__)
 
-**Unsupported versions:**
-`2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__
-`2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__
 
 Description
 -------------------------------------------------------------------------------

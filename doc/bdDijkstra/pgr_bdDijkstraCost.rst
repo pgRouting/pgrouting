@@ -29,12 +29,12 @@ pgr_bdDijkstraCost
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdDijkstraCost.html>`__)
-`2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdDijkstraCost.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__
 
-**Unsupported versions:**
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__
+* **Unsupported versions:**
+  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__
 
 
 Description

@@ -30,12 +30,12 @@ pgr_bridges
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bridges.html>`__)
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bridges.html>`__)
 
-**Unsupported versions:**
-`2.6 <https://docs.pgrouting.org/2.6/en/pgr_bridges.html>`__
-`2.5 <https://docs.pgrouting.org/2.5/en/pgr_bridges.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bridges.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bridges.html>`__
 
 
 Description

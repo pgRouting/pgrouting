@@ -30,15 +30,15 @@ a list of vertices.
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_dijkstraVia.html>`__)
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_dijkstraVia.html>`__)
 
-**Unsupported versions:**
-`2.6 <http://docs.pgrouting.org/2.6/en/pgr_dijkstraVia.html>`__
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_dijkstraVia.html>`__
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_dijkstraVia.html>`__
-`2.3 <http://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__
-`2.2 <http://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__
+* **Unsupported versions:**
+  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_dijkstraVia.html>`__
+  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_dijkstraVia.html>`__
+  `2.4 <http://docs.pgrouting.org/2.4/en/pgr_dijkstraVia.html>`__
+  `2.3 <http://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__
+  `2.2 <http://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__
 
 
 Description

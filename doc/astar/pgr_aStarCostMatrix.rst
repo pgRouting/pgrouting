@@ -29,13 +29,13 @@ pgr_aStarCostMatrix
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_aStarCostMatrix.html>`__)
-`2.6 <http://docs.pgrouting.org/2.6/en/pgr_aStarCostMatrix.html>`__
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_aStarCostMatrix.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/pgr_aStarCostMatrix.html>`__
 
-**Unsupported versions:**
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStarCostMatrix.html>`__
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStarCostMatrix.html>`__
+* **Unsupported versions:**
+  `2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStarCostMatrix.html>`__
+  `2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStarCostMatrix.html>`__
 
 Description
 -------------------------------------------------------------------------------

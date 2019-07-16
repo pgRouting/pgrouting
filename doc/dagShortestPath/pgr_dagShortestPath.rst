@@ -30,8 +30,8 @@ In particular, the DAG shortest paths algorithm implemented by Boost.Graph.
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_dagShortestPath.html>`__)
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_dagShortestPath.html>`__)
 
 Description
 -------------------------------------------------------------------------------

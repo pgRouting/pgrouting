@@ -24,8 +24,8 @@ pgr_pickDeliver - Experimental
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_pickDeliver.html>`__)
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_pickDeliver.html>`__)
 
 Synopsis
 -------------------------------------------------------------------------------

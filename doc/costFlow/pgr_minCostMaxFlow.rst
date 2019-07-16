@@ -29,8 +29,8 @@ pgr_minCostMaxFlow - Experimental
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_minCostMaxFlow.html>`
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_minCostMaxFlow.html>`
 
 Description
 -------------------------------------------------------------------------------

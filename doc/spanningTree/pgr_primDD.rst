@@ -25,8 +25,8 @@ pgr_primDD
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_primDD.html>`__)
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_primDD.html>`__)
 
 Description
 -------------------------------------------------------------------------------

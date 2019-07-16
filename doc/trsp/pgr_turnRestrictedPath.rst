@@ -24,8 +24,8 @@ pgr_turnRestrictedPath - Experimental
 
 .. rubric:: Support
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_turnRestrictedPath.html>`__)
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_turnRestrictedPath.html>`__)
 
 
 Description
