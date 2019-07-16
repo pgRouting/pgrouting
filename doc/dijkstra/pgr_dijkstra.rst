@@ -32,7 +32,7 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
      * pgr_dijkstra(Many to One)
      * pgr_dijkstra(Many to Many)
 
-* Version 2.0.0
+* Version 2.1.0
 
   * Signature change on pgr_dijkstra(One to One)
 

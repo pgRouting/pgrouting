@@ -10,7 +10,6 @@
 pgr_vrpOneDepot - Experimental
 ===============================================================================
 
-
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
@@ -19,6 +18,25 @@ pgr_vrpOneDepot - Experimental
 
 .. rubric:: Availability
 
+* Version 2.1.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+**Supported versions:**
+current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_vrpOneDepot.html>`__)
+
+**Unsupported versions:**
+`2.6 <http://docs.pgrouting.org/2.6/en/pgr_vrpOneDepot.html>`__
+`2.5 <http://docs.pgrouting.org/2.5/en/pgr_vrpOneDepot.html>`__
+`2.4 <http://docs.pgrouting.org/2.4/en/pgr_vrpOneDepot.html>`__
+`2.3 <http://docs.pgrouting.org/2.3/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__
+`2.2 <http://docs.pgrouting.org/2.2/en/src/vrp_basic/doc/index.html>`__
+`2.1 <http://docs.pgrouting.org/2.1/en/src/vrp_basic/doc/index.html>`__
+
+
+
 * **TBD**
 
 Description
@@ -26,17 +44,8 @@ Description
 
 * TBD
 
-The main Characteristics are:
-  - **CRASHES THE SERVER**
-
-* TBD
-
 Signatures
 -------------------------------------------------------------------------------
-
-* TBD
-
-.. rubric:: Summary
 
 * TBD
 
@@ -48,27 +57,20 @@ Parameters
 Inner query
 -------------------------------------------------------------------------------
 
-*Description of the edges_sql query for pgr_randomSpanTree functions*
-
 * TBD
 
 Result Columns
 -------------------------------------------------------------------------------
 
-.. literalinclude:: doc-pgr_vrpOneDepot.queries
-
-*Description of the return values for pgr_randomSpanTree algorithms*
-
 * TBD
+
+Additional Example:
+-------------------------------------------------------------------------------
+.. literalinclude:: doc-pgr_vrpOneDepot.queries
 
 .. rubric:: Data
 
 .. literalinclude:: ../../tools/testers/solomon_100_rc101.data.sql
-
-Additional Example:
--------------------------------------------------------------------------------
-
-:Example:
 
 See Also
 -------------------------------------------------------------------------------
