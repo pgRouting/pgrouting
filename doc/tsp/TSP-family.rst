@@ -23,8 +23,20 @@ Traveling Sales Person - Family of functions
     pgr_TSP
     pgr_TSPeuclidean
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/TSP-family.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/TSP-family.html>`__
+
+* **Unsupported versions:**
+  `2.5 <http://docs.pgrouting.org/2.5/en/TSP-family.html>`__
+  `2.4 <http://docs.pgrouting.org/2.4/en/TSP-family.html>`__
+  `2.3 <http://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__
+
 .. contents:: Table of Contents
     :local:
+
 
 General Information
 -------------------------------------------------------------------------------

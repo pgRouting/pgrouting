@@ -27,6 +27,11 @@ Chinese Postman Problem - Family of functions (Experimental)
   pgr_chinesePostman
   pgr_chinesePostmanCost
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/chinesePostmanProblem-family.html>`__)
+
 
 Description
 -------------------------------------------------------------------------------

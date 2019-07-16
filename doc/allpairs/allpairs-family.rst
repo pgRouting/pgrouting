@@ -14,8 +14,8 @@ The following functions work on all vertices pair combinations
 
 .. index from here
 
-    - :doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm.
-    - :doc:`pgr_johnson` - Johnson's algorithm
+* :doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm.
+* :doc:`pgr_johnson` - Johnson's algorithm
 
 .. index to here
 
@@ -24,6 +24,19 @@ The following functions work on all vertices pair combinations
 
     pgr_floydWarshall
     pgr_johnson
+
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/allpairs-family.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/allpairs-family.html>`__
+
+* **Unsupported versions:**
+  `2.5 <http://docs.pgrouting.org/2.5/en/allpairs-family.html>`__
+  `2.4 <http://docs.pgrouting.org/2.4/en/allpairs-family.html>`__
+  `2.3 <http://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html>`__
+  `2.2 <http://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html>`__
+
 
 
 Performance

@@ -25,6 +25,15 @@ Bidirectional A* - Family of functions
     pgr_bdAstarCost
     pgr_bdAstarCostMatrix
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/bdAstar-family.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/bdAstar-family.html>`__
+
+* **Unsupported versions:**
+  `2.5 <http://docs.pgrouting.org/2.5/en/bdAstar-family.html>`__
+
 Description
 -------------------------------------------------------------------------------
 

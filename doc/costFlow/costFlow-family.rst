@@ -28,6 +28,10 @@ Minimum Cost Maximum FLow - Family of functions (Experimental)
     pgr_minCostMaxFlow_Cost
     pgr_minCostMaxFlow
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/costFlow-family.html>`__)
 
 Minimum Cost Maximum Flow Functions General Information
 -------------------------------------------------------------------------------

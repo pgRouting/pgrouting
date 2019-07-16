@@ -30,6 +30,8 @@ consisting of a spanning tree of each connected component.
     kruskal-family
     prim-family
 
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/spanningTree-family.html>`__)
 
 See Also
 -------------------------------------------------------------------------------

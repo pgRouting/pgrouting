@@ -24,6 +24,11 @@ Transformation - Family of functions (Experimental)
     pgr_lineGraph
     pgr_lineGraphFull
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/transformation-family.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/transformation-family.html>`__
 
 Introduction
 ------------------------

@@ -33,6 +33,11 @@ Kruskal - Family of functions
     pgr_kruskalDD
     pgr_kruskalDFS
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/kruskal-family.html>`__)
+
 Description
 -------------------------------------------------------------------------------
 

@@ -34,6 +34,17 @@ Flow - Family of functions
     pgr_maxCardinalityMatch
     pgr_edgeDisjointPaths
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/flow-family.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/flow-family.html>`__
+
+* **Unsupported versions:**
+  `2.5 <http://docs.pgrouting.org/2.5/en/flow-family.html>`__
+  `2.4 <http://docs.pgrouting.org/2.4/en/flow-family.html>`__
+  `2.3 <http://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__
+
 
 Flow Functions General Information
 -----------------------------------

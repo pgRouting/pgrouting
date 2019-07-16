@@ -32,6 +32,8 @@ Prim - Family of functions
     pgr_primDD
     pgr_primDFS
 
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/prim-family.html>`__)
 
 Description
 -------------------------------------------------------------------------------

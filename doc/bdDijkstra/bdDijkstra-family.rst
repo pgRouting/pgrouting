@@ -25,6 +25,14 @@ Bidirectional Dijkstra - Family of functions
     pgr_bdDijkstraCost
     pgr_bdDijkstraCostMatrix
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <http://docs.pgrouting.org/dev/en/bdDijkstra-family.html>`__)
+  `2.6 <http://docs.pgrouting.org/2.6/en/bdDijkstra-family.html>`__
+
+* **Unsupported versions:**
+  `2.5 <http://docs.pgrouting.org/2.5/en/bdDijkstra-family.html>`__
 
 
 Synopsis

@@ -31,6 +31,15 @@ Components - Family of functions
     pgr_articulationPoints
     pgr_bridges
 
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/components-family.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/components-family.html>`__
+
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/components-family.html>`__
+
 
 Parameters
 -------------------------------------------------------------------------------
