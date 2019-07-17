@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Release Notes" href="release_notes.html" />
+    <link rel="next" title="pgr_turnRestrictedPath - Experimental" href="pgr_turnRestrictedPath.html" />
     <link rel="prev" title="pgr_dagShortestPath - Experimental" href="pgr_dagShortestPath.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -118,7 +118,7 @@
     </a>
   </li>
   <li>
-    <a href="release_notes.html" title="Next Chapter: Release Notes"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Release Notes &raquo;</span>
+    <a href="pgr_turnRestrictedPath.html" title="Next Chapter: pgr_turnRestrictedPath - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_turnRestr... &raquo;</span>
     </a>
   </li>
               
@@ -154,9 +154,42 @@ Function determines a min-cut and the min-cut weight of a connected, undirected 
 <a class="reference external image-reference" href="https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/stoer_wagner_min_cut.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Experimental functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
 <p class="rubric">Availability</p>
+<ul>
+<li><p class="first">Version 2.3.0</p>
+<blockquote>
+<div><ul class="simple">
+<li>New <strong>Experimental</strong> function</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p class="rubric">Support</p>
 <ul class="simple">
-<li><strong>TBD</strong></li>
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pgr_stoerWagner.html">3.0</a>)</li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -425,7 +458,7 @@ $$
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 06, 2019.<br/>
+      Last updated on Jul 17, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

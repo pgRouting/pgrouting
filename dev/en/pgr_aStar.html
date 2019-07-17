@@ -159,39 +159,51 @@
       
   <div class="section" id="pgr-astar">
 <h1>pgr_aStar<a class="headerlink" href="#pgr-astar" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> — Returns the shortest path using A* algorithm.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> — Shortest path using A* algorithm.</p>
 <div class="figure" id="id1">
-<a class="reference external image-reference" href="http://www.boost.org//libs/graph/doc/astar_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<a class="reference external image-reference" href="https://www.boost.org//libs/graph/doc/astar_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>Official on v3.0.0</li>
-<li>Proposed on v2.4.0:<ul>
-<li>pgr_astar(One to Many)</li>
-<li>pgr_astar(Many to One)</li>
-<li>pgr_astar(Many to Many)</li>
+<li>Version 3.0.0<ul>
+<li><strong>Official</strong> function</li>
 </ul>
 </li>
-<li>Signature change on v2.3.0:<ul>
-<li>pgr_astar(One to One)</li>
-</ul>
-</li>
-<li>New on v2.0.0:<ul>
-<li>pgr_astar(One to One)</li>
+<li>Version 2.4.0<ul>
+<li>New <strong>Proposed</strong> functions:<ul>
+<li>pgr_aStar(One to Many)</li>
+<li>pgr_aStar(Many to One)</li>
+<li>pgr_aStar(Many to Many)</li>
 </ul>
 </li>
 </ul>
-<p><strong>Supported versions:</strong>
-current(<a class="reference external" href="http://docs.pgrouting.org/dev/en/pgr_aStar.html">3.0</a>)
-<a class="reference external" href="http://docs.pgrouting.org/2.6/en/pgr_aStar.html">2.6</a>
-<a class="reference external" href="http://docs.pgrouting.org/2.5/en/pgr_aStar.html">2.5</a>
-<a class="reference external" href="http://docs.pgrouting.org/2.4/en/pgr_aStar.html">2.4</a></p>
-<p><strong>Unsupported versions:</strong>
-<a class="reference external" href="http://docs.pgrouting.org/2.3/en/src/astar/doc/pgr_astar.html">2.3</a>
-<a class="reference external" href="http://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html">2.2</a>
-<a class="reference external" href="http://docs.pgrouting.org/2.1/en/src/astar/doc/index.html">2.1</a>
-<a class="reference external" href="http://docs.pgrouting.org/2.0/en/src/astar/doc/index.html">2.0</a></p>
+</li>
+<li>Version 2.3.0<ul>
+<li>Signature change on pgr_astar(One to One)<ul>
+<li>Old signature no longer supported</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Version 2.0.0<ul>
+<li><strong>Official</strong> pgr_aStar(One to One)</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Support</p>
+<ul class="simple">
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pgr_aStar.html">3.0</a>)
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_aStar.html">2.6</a></li>
+<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_aStar.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_aStar.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/astar/doc/pgr_astar.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html">2.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/astar/doc/index.html">2.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html">2.0</a></li>
+</ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><strong>The main characteristics are:</strong></p>
@@ -706,8 +718,8 @@ Returned when multiple ending vertices are in the query.</p>
 <ul class="simple">
 <li><a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Family of functions</span></a></li>
 <li><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></li>
-<li><a class="reference external" href="http://www.boost.org/libs/graph/doc/astar_search.html">http://www.boost.org/libs/graph/doc/astar_search.html</a></li>
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/A*_search_algorithm">http://en.wikipedia.org/wiki/A*_search_algorithm</a></li>
+<li><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">https://www.boost.org/libs/graph/doc/astar_search.html</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -730,7 +742,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 06, 2019.<br/>
+      Last updated on Jul 17, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

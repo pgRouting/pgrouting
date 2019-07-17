@@ -101,7 +101,7 @@
 <li><a class="reference internal" href="#dead-end">Dead end</a><ul>
 <li><a class="reference internal" href="#the-number-of-adjacent-vertices-is-1">The number of adjacent vertices is 1.</a></li>
 <li><a class="reference internal" href="#there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge">There are no outgoing edges and has at least one incoming edge.</a></li>
-<li><a class="reference internal" href="#there-are-no-incomming-edges-and-has-at-least-one-outgoing-edge">There are no incomming edges and has at least one outgoing edge.</a></li>
+<li><a class="reference internal" href="#there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge">There are no incoming edges and has at least one outgoing edge.</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#operation-dead-end-contraction">Operation: Dead End Contraction</a></li>
@@ -110,7 +110,7 @@
 <li><a class="reference internal" href="#linear-contraction">Linear contraction</a><ul>
 <li><a class="reference internal" href="#linear">Linear</a><ul>
 <li><a class="reference internal" href="#the-number-of-adjacent-vertices-is-2">The number of adjacent vertices is 2.</a></li>
-<li><a class="reference internal" href="#linearity-is-symetrical">Linearity is symetrical</a></li>
+<li><a class="reference internal" href="#linearity-is-symmetrical">Linearity is symmetrical</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#operation-linear-contraction">Operation: Linear Contraction</a></li>
@@ -189,6 +189,17 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
+<p class="rubric">Previous versions of this page</p>
+<ul class="simple">
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/contraction-family.html">3.0</a>)
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/contraction-family.html">2.6</a></li>
+<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/contraction-family.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/contraction-family.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/contraction/doc/contraction.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/contraction/doc/contraction.html">2.2</a></li>
+</ul>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In large graphs, like the road graphs, or electric networks, graph contraction
@@ -222,7 +233,7 @@ times they are to be executed.</li>
 <ul class="simple">
 <li><a class="reference internal" href="#the-number-of-adjacent-vertices-is-1">The number of adjacent vertices is 1.</a><ul>
 <li><a class="reference internal" href="#there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge">There are no outgoing edges and has at least one incoming edge.</a></li>
-<li><a class="reference internal" href="#there-are-no-incomming-edges-and-has-at-least-one-outgoing-edge">There are no incomming edges and has at least one outgoing edge.</a></li>
+<li><a class="reference internal" href="#there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge">There are no incoming edges and has at least one outgoing edge.</a></li>
 </ul>
 </li>
 </ul>
@@ -276,8 +287,8 @@ times they are to be executed.</li>
     v -&gt; z;
 }" class="graphviz" /></div>
 </div>
-<div class="section" id="there-are-no-incomming-edges-and-has-at-least-one-outgoing-edge">
-<h4>There are no incomming edges and has at least one outgoing edge.<a class="headerlink" href="#there-are-no-incomming-edges-and-has-at-least-one-outgoing-edge" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge">
+<h4>There are no incoming edges and has at least one outgoing edge.<a class="headerlink" href="#there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</li>
 <li>The blue nodes have an unlimited number of incoming and outgoing edges.</li>
@@ -343,7 +354,7 @@ For example from the following graph where <code class="docutils literal notrans
 <p>In case of a directed graph, a node is considered a <cite>linear</cite> node when</p>
 <ul class="simple">
 <li><a class="reference internal" href="#the-number-of-adjacent-vertices-is-2">The number of adjacent vertices is 2.</a><ul>
-<li><a class="reference internal" href="#linearity-is-symetrical">Linearity is symetrical</a></li>
+<li><a class="reference internal" href="#linearity-is-symmetrical">Linearity is symmetrical</a></li>
 </ul>
 </li>
 </ul>
@@ -376,8 +387,8 @@ For example from the following graph where <code class="docutils literal notrans
     u -- v -- w;
 }" class="graphviz" /></div>
 </div>
-<div class="section" id="linearity-is-symetrical">
-<h4>Linearity is symetrical<a class="headerlink" href="#linearity-is-symetrical" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="linearity-is-symmetrical">
+<h4>Linearity is symmetrical<a class="headerlink" href="#linearity-is-symmetrical" title="Permalink to this headline">¶</a></h4>
 <p>Using a contra example, vertex <code class="docutils literal notranslate"><span class="pre">v</span></code> is not linear because it’s not possible to
 go from <code class="docutils literal notranslate"><span class="pre">w</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code> via <code class="docutils literal notranslate"><span class="pre">v</span></code>.</p>
 <div class="graphviz"><img src="_images/graphviz-bc77587ebc527e97cf3403da611daafab99363d2.png" alt="digraph G {
@@ -1097,8 +1108,8 @@ to an edge subgraph, a path is still found.</p>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></li>
-<li><a class="reference external" href="http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf">http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf</a></li>
+<li><a class="reference external" href="https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></li>
+<li><a class="reference external" href="https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf">https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf</a></li>
 <li>The queries use <a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a> function and the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
@@ -1122,7 +1133,7 @@ to an edge subgraph, a path is still found.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 06, 2019.<br/>
+      Last updated on Jul 17, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

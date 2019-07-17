@@ -148,8 +148,23 @@
   <div class="section" id="all-pairs-family-of-functions">
 <h1>All Pairs - Family of Functions<a class="headerlink" href="#all-pairs-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <p>The following functions work on all vertices pair combinations</p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Floyd-Warshall’s algorithm.</li>
+<li><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Johnson’s algorithm</li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
+<p class="rubric">Previous versions of this page</p>
+<ul class="simple">
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/allpairs-family.html">3.0</a>)
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/allpairs-family.html">2.6</a></li>
+<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/allpairs-family.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/allpairs-family.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html">2.2</a></li>
+</ul>
 <div class="section" id="performance">
 <h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
@@ -167,7 +182,7 @@
 <h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>The following data was used</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BBOX=&quot;-122.8,45.4,-122.5,45.6&quot;
-wget --progress=dot:mega -O &quot;sampledata.osm&quot; &quot;http://www.overpass-api.de/api/xapi?*[bbox=][@meta]&quot;
+wget --progress=dot:mega -O &quot;sampledata.osm&quot; &quot;https://www.overpass-api.de/api/xapi?*[bbox=][@meta]&quot;
 </pre></div>
 </div>
 <p>Data processing was done with osm2pgrouting-alpha</p>
@@ -567,7 +582,7 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 <ul class="simple">
 <li><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></li>
 <li><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a></li>
-<li><a class="reference external" href="http://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Boost floyd-Warshall</a> algorithm</li>
+<li><a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Boost floyd-Warshall</a> algorithm</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -591,7 +606,7 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 06, 2019.<br/>
+      Last updated on Jul 17, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

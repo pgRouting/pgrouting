@@ -156,7 +156,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> — Returns the shortest path(s) using Bellman-Ford algorithm.
 In particular, the Bellman-Ford algorithm implemented by Boost.Graph.</p>
 <div class="figure" id="id1">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/bellman_ford_shortest.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
 <div class="admonition warning">
@@ -183,10 +183,16 @@ In particular, the Bellman-Ford algorithm implemented by Boost.Graph.</p>
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>Experiemntal on v3.0.0</li>
+<li>Version 3.0.0<ul>
+<li>New <strong>experimental</strong> function</li>
 </ul>
-<p><strong>Supported versions:</strong>
-current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pgr_bellmanFord.html">3.0</a>)</p>
+</li>
+</ul>
+<p class="rubric">Support</p>
+<ul class="simple">
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pgr_bellmanFord.html">3.0</a>)</li>
+</ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Bellman-Ford’s algorithm, is named after Richard Bellman and Lester Ford, who first published it in 1958 and 1956, respectively.
@@ -199,8 +205,8 @@ This implementation can be used with a directed graph and an undirected graph.</
 <li>Process is valid for edges with both positive and negative edge weights.</li>
 <li>Values are returned when there is a path.<ul>
 <li>When the start vertex and the end vertex are the same, there is no path. The agg_cost would be 0.</li>
-<li>When the start vertex and the end vertex are different, and there exists a path between them without having a ‘negative cycle’. The agg_cost would be some finite value denoting the shortest distance between them.</li>
-<li>When the start vertex and the end vertex are different, and there exists a path between them, but it contains a ‘negative cycle’. In such case, agg_cost for those vertices keep on decreasing furthermore, Hence agg_cost can’t be defined for them.</li>
+<li>When the start vertex and the end vertex are different, and there exists a path between them without having a <em>negative cycle</em>. The agg_cost would be some finite value denoting the shortest distance between them.</li>
+<li>When the start vertex and the end vertex are different, and there exists a path between them, but it contains a <em>negative cycle</em>. In such case, agg_cost for those vertices keep on decreasing furthermore, Hence agg_cost can’t be defined for them.</li>
 <li>When the start vertex and the end vertex are different, and there is no path. The agg_cost is <span class="math notranslate nohighlight">\(\infty\)</span>.</li>
 </ul>
 </li>
@@ -604,7 +610,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 06, 2019.<br/>
+      Last updated on Jul 17, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

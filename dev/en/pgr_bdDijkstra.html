@@ -155,51 +155,68 @@
 <h1>pgr_bdDijkstra<a class="headerlink" href="#pgr-bddijkstra" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> — Returns the shortest path(s) using Bidirectional Dijkstra algorithm.</p>
 <div class="figure" id="id1">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
 </div>
 <p class="rubric">Availability:</p>
 <ul class="simple">
-<li>Official on v3.0.0</li>
-<li>Proposed on v2.5.0:<ul>
+<li>Version 3.0.0<ul>
+<li><strong>Official</strong> function</li>
+</ul>
+</li>
+<li>Version 2.5.0<ul>
+<li>New <strong>Proposed</strong> functions:<ul>
 <li>pgr_bdDijkstra(One to Many)</li>
 <li>pgr_bdDijkstra(Many to One)</li>
 <li>pgr_bdDijkstra(Many to Many)</li>
 </ul>
 </li>
-<li>Signature change on v2.4.0<ul>
-<li>pgr_bdDijkstra(One to One)</li>
 </ul>
 </li>
-<li>Proposed on v2.5.0:<ul>
-<li>pgr_bdDijkstra(One to Many)</li>
-<li>pgr_bdDijkstra(Many to One)</li>
-<li>pgr_bdDijkstra(Many to Many)</li>
-</ul>
-</li>
-<li>Signature change on v2.4.0:<ul>
-<li>pgr_bdDijkstra(One to One)</li>
-</ul>
-</li>
-<li>New on v2.0.0:<ul>
-<li>pgr_bdDijkstra(One to One)</li>
+<li>Version 2.4.0<ul>
+<li>Signature change on pgr_bdDijsktra(One to One)<ul>
+<li>Old signature no longer supported</li>
 </ul>
 </li>
 </ul>
-<p><strong>Supported versions:</strong>
-current(<a class="reference external" href="http://docs.pgrouting.org/dev/en/pgr_bdDijkstra.html">3.0</a>)
-<a class="reference external" href="http://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html">2.6</a>
-<a class="reference external" href="http://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html">2.5</a>
-<a class="reference external" href="http://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html">2.4</a></p>
-<p><strong>Unsupported versions:</strong>
-<a class="reference external" href="http://docs.pgrouting.org/2.3/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html">2.3</a>
-<a class="reference external" href="http://docs.pgrouting.org/2.2/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html">2.2</a>
-<a class="reference external" href="http://docs.pgrouting.org/2.1/en/src/bd_dijkstra/doc/index.html">2.1</a>
-<a class="reference external" href="http://docs.pgrouting.org/2.0/en/src/bd_dijkstra/doc/index.html">2.0</a></p>
+</li>
+<li>Version 2.0.0<ul>
+<li><strong>Official</strong> pgr_bdDijkstra(One to One)</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Support</p>
+<ul class="simple">
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pgr_bdDijkstra.html">3.0</a>)
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html">2.6</a></li>
+<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html">2.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/bd_dijkstra/doc/index.html">2.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/bd_dijkstra/doc/index.html">2.0</a></li>
+</ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><strong>The main characteristics are:</strong></p>
 <ul class="simple">
-<li><strong>TBD</strong></li>
+<li>Process is done only on edges with positive costs.</li>
+<li>Values are returned when there is a path.</li>
+<li>When the starting vertex and ending vertex are the same, there is no path.<ul>
+<li>The <cite>agg_cost</cite> the non included values <cite>(v, v)</cite> is <cite>0</cite></li>
+</ul>
+</li>
+<li>When the starting vertex and ending vertex are the different and there is no path:<ul>
+<li>The <cite>agg_cost</cite> the non included values <cite>(u, v)</cite> is <span class="math notranslate nohighlight">\(\infty\)</span></li>
+</ul>
+</li>
+<li>Running time (worse case scenario): <span class="math notranslate nohighlight">\(O((V \log V + E))\)</span></li>
+<li>For large graphs where there is a path bewtween the starting vertex and ending vertex:<ul>
+<li>It is expected to terminate faster than pgr_dijkstra</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="signatures">
@@ -596,7 +613,7 @@ Returned when multiple ending vertices are in the query.</p>
 <ul class="simple">
 <li>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
 <li><a class="reference internal" href="bdDijkstra-family.html"><span class="doc">Bidirectional Dijkstra - Family of functions</span></a></li>
-<li><a class="reference external" href="http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf">http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf</a></li>
+<li><a class="reference external" href="https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf">https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf</a></li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Bidirectional_search">https://en.wikipedia.org/wiki/Bidirectional_search</a></li>
 </ul>
 <p class="rubric">Indices and tables</p>
@@ -620,7 +637,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 06, 2019.<br/>
+      Last updated on Jul 17, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

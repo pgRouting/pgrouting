@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="pgr_stoerWagner - Experimental" href="pgr_stoerWagner.html" />
+    <link rel="prev" title="pgr_turnRestrictedPath - Experimental" href="pgr_turnRestrictedPath.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -142,7 +142,7 @@
               
                 
   <li>
-    <a href="pgr_stoerWagner.html" title="Previous Chapter: pgr_stoerWagner - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_stoerWagn...</span>
+    <a href="pgr_turnRestrictedPath.html" title="Previous Chapter: pgr_turnRestrictedPath - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_turnRestr...</span>
     </a>
   </li>
               
@@ -313,9 +313,18 @@
 <p class="rubric">New Experimental functions</p>
 <ul class="simple">
 <li>pgr_extractVertices</li>
+<li>pgr_turnRestrictedPath</li>
+<li>pgr_bellmanFord</li>
+<li>pgr_stoerWagner</li>
+<li>pgr_dagShortestpath</li>
 <li>VRP category<ul>
 <li>pgr_pickDeliverEuclidean</li>
 <li>pgr_pickDeliver</li>
+</ul>
+</li>
+<li>Chinese Postman family<ul>
+<li>pgr_chinesePostman</li>
+<li>pgr_chinesePostmanCost</li>
 </ul>
 </li>
 </ul>
@@ -894,7 +903,7 @@ The main Goals for this release are:</p>
 <li>Support for table SCHEMA in function parameters</li>
 <li>Support for <code class="docutils literal notranslate"><span class="pre">st_</span></code> PostGIS function prefix</li>
 <li>Added <code class="docutils literal notranslate"><span class="pre">pgr_</span></code> prefix to functions and types</li>
-<li>Better documentation: <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></li>
+<li>Better documentation: <a class="reference external" href="https://docs.pgrouting.org">https://docs.pgrouting.org</a></li>
 <li>shooting_star is discontinued</li>
 </ul>
 </div>
@@ -981,7 +990,7 @@ The following release notes have been copied from the previous <code class="docu
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 06, 2019.<br/>
+      Last updated on Jul 17, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
