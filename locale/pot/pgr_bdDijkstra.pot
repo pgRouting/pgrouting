@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-06 10:03-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,56 +33,66 @@ msgid "Availability:"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:22
-msgid "Official on v3.0.0"
+msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:23
-#: ../../build/doc/pgr_bdDijkstra.rst:33
-msgid "Proposed on v2.5.0:"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstra.rst:25
-#: ../../build/doc/pgr_bdDijkstra.rst:35
-msgid "pgr_bdDijkstra(One to Many)"
+#: ../../build/doc/pgr_bdDijkstra.rst:24
+msgid "**Official** function"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:26
-#: ../../build/doc/pgr_bdDijkstra.rst:36
-msgid "pgr_bdDijkstra(Many to One)"
+msgid "Version 2.5.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:27
-#: ../../build/doc/pgr_bdDijkstra.rst:37
-msgid "pgr_bdDijkstra(Many to Many)"
+#: ../../build/doc/pgr_bdDijkstra.rst:28
+msgid "New **Proposed** functions:"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:29
-msgid "Signature change on v2.4.0"
+#: ../../build/doc/pgr_bdDijkstra.rst:30
+msgid "pgr_bdDijkstra(One to Many)"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:31
-#: ../../build/doc/pgr_bdDijkstra.rst:41
+msgid "pgr_bdDijkstra(Many to One)"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:32
+msgid "pgr_bdDijkstra(Many to Many)"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:34
+msgid "Version 2.4.0"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:36
+msgid "Signature change on pgr_bdDijsktra(One to One)"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:38
+msgid "Old signature no longer supported"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:40
+msgid "Version 2.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:42
+msgid "**Official** pgr_bdDijkstra(One to One)"
+msgstr ""
+
 #: ../../build/doc/pgr_bdDijkstra.rst:45
-msgid "pgr_bdDijkstra(One to One)"
+msgid "Support"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:39
-msgid "Signature change on v2.4.0:"
+#: ../../build/doc/pgr_bdDijkstra.rst:46
+msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bdDijkstra.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:43
-msgid "New on v2.0.0:"
+#: ../../build/doc/pgr_bdDijkstra.rst:50
+msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/bd_dijkstra/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/bd_dijkstra/doc/index.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:47
-msgid "**Supported versions:** current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdDijkstra.html>`__) `2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__ `2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__ `2.4 <http://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstra.rst:53
-msgid "**Unsupported versions:** `2.3 <http://docs.pgrouting.org/2.3/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__ `2.2 <http://docs.pgrouting.org/2.2/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__ `2.1 <http://docs.pgrouting.org/2.1/en/src/bd_dijkstra/doc/index.html>`__ `2.0 <http://docs.pgrouting.org/2.0/en/src/bd_dijkstra/doc/index.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstra.rst:60
+#: ../../build/doc/pgr_bdDijkstra.rst:59
 #: ../../build/doc/pgr_dijkstra.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -90,18 +100,54 @@ msgid "Description"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:61
-msgid "**TBD**"
+msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:64
+#: ../../build/doc/bdDijkstra-family.rst:3
+msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:4
+msgid "Values are returned when there is a path."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:6
+msgid "When the starting vertex and ending vertex are the same, there is no path."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:8
+msgid "The `agg_cost` the non included values `(v, v)` is `0`"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:10
+msgid "When the starting vertex and ending vertex are the different and there is no path:"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:12
+msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:14
+msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:15
+msgid "For large graphs where there is a path bewtween the starting vertex and ending vertex:"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:17
+msgid "It is expected to terminate faster than pgr_dijkstra"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:68
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:67
+#: ../../build/doc/pgr_bdDijkstra.rst:71
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:79
+#: ../../build/doc/pgr_bdDijkstra.rst:83
 msgid "Using defaults"
 msgstr ""
 
@@ -113,43 +159,43 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:86
+#: ../../build/doc/pgr_bdDijkstra.rst:90
 msgid "From vertex :math:`2` to vertex  :math:`3`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:96
+#: ../../build/doc/pgr_bdDijkstra.rst:100
 msgid "One to One"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:104
+#: ../../build/doc/pgr_bdDijkstra.rst:108
 msgid "From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:114
+#: ../../build/doc/pgr_bdDijkstra.rst:118
 msgid "One to many"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:122
+#: ../../build/doc/pgr_bdDijkstra.rst:126
 msgid "From vertex :math:`2` to vertices :math:`\\{3, 11\\}` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:132
+#: ../../build/doc/pgr_bdDijkstra.rst:136
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:140
+#: ../../build/doc/pgr_bdDijkstra.rst:144
 msgid "From vertices :math:`\\{2, 7\\}` to vertex :math:`3` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:150
+#: ../../build/doc/pgr_bdDijkstra.rst:154
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:158
+#: ../../build/doc/pgr_bdDijkstra.rst:162
 msgid "From vertices :math:`\\{2, 7\\}` to vertices :math:`\\{3, 11\\}` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:165
+#: ../../build/doc/pgr_bdDijkstra.rst:169
 msgid "Parameters"
 msgstr ""
 
@@ -253,7 +299,7 @@ msgstr ""
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:172
+#: ../../build/doc/pgr_bdDijkstra.rst:176
 msgid "Inner query"
 msgstr ""
 
@@ -346,7 +392,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:179
+#: ../../build/doc/pgr_bdDijkstra.rst:183
 msgid "Result Columns"
 msgstr ""
 
@@ -448,35 +494,35 @@ msgstr ""
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:186
+#: ../../build/doc/pgr_bdDijkstra.rst:190
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:188
+#: ../../build/doc/pgr_bdDijkstra.rst:192
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:189
+#: ../../build/doc/pgr_bdDijkstra.rst:193
 msgid ":doc:`bdDijkstra-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:190
-msgid "http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstra.rst:191
-msgid "https://en.wikipedia.org/wiki/Bidirectional_search"
-msgstr ""
-
 #: ../../build/doc/pgr_bdDijkstra.rst:194
-msgid "Indices and tables"
+msgid "https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:195
+msgid "https://en.wikipedia.org/wiki/Bidirectional_search"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:198
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:199
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:196
+#: ../../build/doc/pgr_bdDijkstra.rst:200
 msgid ":ref:`search`"
 msgstr ""
 

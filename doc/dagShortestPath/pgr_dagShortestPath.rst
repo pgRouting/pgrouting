@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_dagShortestPath - Experimental
@@ -14,7 +14,7 @@ pgr_dagShortestPath - Experimental
 In particular, the DAG shortest paths algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dag_shortest_paths.html
+   :target: https://www.boost.org/libs/graph/doc/dag_shortest_paths.html
 
    Boost Graph Inside
 
@@ -24,7 +24,14 @@ In particular, the DAG shortest paths algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
-* **TBD**
+* Version 3.0.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_dagShortestPath.html>`__)
 
 Description
 -------------------------------------------------------------------------------
@@ -33,9 +40,9 @@ Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm that s
 weighted directed acyclic graph, producing a shortest path from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
 
-This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph. 
+This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph.
 
-The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm. 
+The algorithm relies on topological sorting the dag to impose a linear ordering on the vertices, and thus is more efficient for DAG's than either the Dijkstra or Bellman-Ford algorithm.
 
 The main characteristics are:
   - Process is valid for weighted directed acyclic graphs only. otherwise it will throw warnings.
@@ -84,10 +91,10 @@ One to One
 .. code-block:: none
 
     pgr_dagShortestPath(edges_sql, from_vid,  to_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`1` to vertex :math:`6` 
+:Example: From vertex :math:`1` to vertex :math:`6`
 
 .. literalinclude:: doc-pgr_dagShortestPath.queries
    :start-after: -- q1
@@ -102,10 +109,10 @@ One to Many
 .. code-block:: none
 
     pgr_dagShortestPath(edges_sql, from_vid,  to_vids)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`1` to vertices :math:`\{ 5, 6\}` 
+:Example: From vertex :math:`1` to vertices :math:`\{ 5, 6\}`
 
 .. literalinclude:: doc-pgr_dagShortestPath.queries
    :start-after: -- q2
@@ -120,10 +127,10 @@ Many to One
 .. code-block:: none
 
     pgr_dagShortestPath(edges_sql, from_vids, to_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{1, 3\}` to vertex :math:`6` 
+:Example: From vertices :math:`\{1, 3\}` to vertex :math:`6`
 
 .. literalinclude:: doc-pgr_dagShortestPath.queries
    :start-after: -- q3
@@ -138,7 +145,7 @@ Many to Many
 .. code-block:: none
 
     pgr_dagShortestPath(edges_sql, from_vids, to_vids)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{1, 4\}` to vertices :math:`\{12, 6\}`

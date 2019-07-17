@@ -117,11 +117,10 @@ IS 'pgr_dijkstraNear(One to Many)
    - Stop at nth found
 - Optional Parameters
    - directed := true
-- Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
+- Documentation: None
 ';
 
-COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, BIGINT, BIGINT, BOOLEAN) 
+COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_dijkstraNear(Many to One)
 - PRE-EXPERIMENTAL
 - Parameters:
@@ -131,13 +130,12 @@ IS 'pgr_dijkstraNear(Many to One)
    - Stop at nth found
 - Optional Parameters
    - directed := true
-- Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
+- Documentation: None
 ';
 
-COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BIGINT, BOOLEAN) 
+COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_dijkstraNear(Many to Many)
-- PRE-EXPERIMENTAL 
+- PRE-EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
@@ -145,6 +143,5 @@ IS 'pgr_dijkstraNear(Many to Many)
    - Stop at nth found
 - Optional Parameters
    - directed := true
-- Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
-'; 
+- Documentation: None
+';

@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_boykovKolmogorov
@@ -13,17 +13,36 @@ pgr_boykovKolmogorov
 ``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
+   :target: https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
    Boost Graph Inside
 
 .. Rubric:: Availability:
 
-* Official on v3.0.0
-* Renamed on v2.5.0
-* Experimental on v2.3.0
+* Version 3.0.0
 
-  * pgr_maxFlowBoykovKolmogorov
+  * **Official** function
+
+* Version 2.5.0
+
+  * Renamed from ``pgr_maxFlowBoykovKolmogorov``
+  * **Proposed** function
+
+* Version 2.3.0
+
+  * New **Experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_boykovKolmogorov.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_boykovKolmogorov.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_boykovKolmogorov.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlowBoykovKolmogorov.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html>`__
+
 
 Description
 -------------------------------------------------------------------------------
@@ -96,7 +115,7 @@ Many to One
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11` 
+:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11`
 
 .. literalinclude:: doc-pgr_boykovKolmogorov.queries
    :start-after: -- q3
@@ -148,7 +167,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`flow-family`, :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`
-* http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
+* https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
 .. rubric:: Indices and tables
 

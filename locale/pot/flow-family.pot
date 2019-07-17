@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,179 +48,191 @@ msgstr ""
 msgid ":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching in a graph."
 msgstr ""
 
+#: ../../build/doc/flow-family.rst:38
+msgid "Previous versions of this page"
+msgstr ""
+
 #: ../../build/doc/flow-family.rst:39
-msgid "Flow Functions General Information"
+msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/flow-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/flow-family.html>`__"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:43
-msgid "**The main characteristics are:**"
+msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/flow-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/flow-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:45
-msgid "The graph is **directed**."
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:46
-msgid "Process is done only on edges with positive capacities."
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:47
-msgid "When the maximum flow is 0 then there is no flow and **EMPTY SET** is returned."
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:49
-msgid "There is no flow when a **source** is the same as a **target**."
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:51
-msgid "Any duplicated value in the source(s) or target(s) are ignored."
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:52
-msgid "Calculates the flow/residual capacity for each edge. In the output"
+#: ../../build/doc/flow-family.rst:50
+msgid "Flow Functions General Information"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:54
-msgid "Edges with zero flow are omitted."
+msgid "**The main characteristics are:**"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:56
-msgid "Creates a **super source** and edges to all the source(s), and a **super target** and the edges from all the targets(s)."
+msgid "The graph is **directed**."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:57
-msgid "The maximum flow through the graph is guaranteed to be the value returned by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and can be calculated:"
+msgid "Process is done only on edges with positive capacities."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:59
-msgid "By aggregation of the outgoing flow from the sources"
+#: ../../build/doc/flow-family.rst:58
+msgid "When the maximum flow is 0 then there is no flow and **EMPTY SET** is returned."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:60
-msgid "By aggregation of the incoming flow to the targets"
+msgid "There is no flow when a **source** is the same as a **target**."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:62
+msgid "Any duplicated value in the source(s) or target(s) are ignored."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:63
+msgid "Calculates the flow/residual capacity for each edge. In the output"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:65
-msgid ":doc:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, but the actual flow through each edge may vary."
+msgid "Edges with zero flow are omitted."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:67
+msgid "Creates a **super source** and edges to all the source(s), and a **super target** and the edges from all the targets(s)."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:68
+msgid "The maximum flow through the graph is guaranteed to be the value returned by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and can be calculated:"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:70
-msgid "Adcanced Documentation"
+msgid "By aggregation of the outgoing flow from the sources"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:72
-msgid "A flow network is a directed graph where each edge has a capacity and a flow. The flow through an edge must not exceed the capacity of the edge. Additionally, the incoming and outgoing flow of a node must be equal except the for source which only has outgoing flow, and the destination(sink) which only has incoming flow."
+#: ../../build/doc/flow-family.rst:71
+msgid "By aggregation of the incoming flow to the targets"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:76
-msgid "Maximum flow algorithms calculate the maximum flow through the graph and the flow of each edge."
+msgid ":doc:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, but the actual flow through each edge may vary."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:78
-msgid "The maximum flow through the graph is guaranteed to be the same with all implementations, but the actual flow through each edge may vary. Given the following query:"
+#: ../../build/doc/flow-family.rst:81
+msgid "Adcanced Documentation"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:82
-msgid "pgr_maxFlow :math:`(edges\\_sql, source\\_vertex, sink\\_vertex)`"
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:84
-msgid "where :math:`edges\\_sql = \\{(id_i, source_i, target_i, capacity_i, reverse\\_capacity_i)\\}`"
+#: ../../build/doc/flow-family.rst:83
+msgid "A flow network is a directed graph where each edge has a capacity and a flow. The flow through an edge must not exceed the capacity of the edge. Additionally, the incoming and outgoing flow of a node must be equal except the for source which only has outgoing flow, and the destination(sink) which only has incoming flow."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:87
+msgid "Maximum flow algorithms calculate the maximum flow through the graph and the flow of each edge."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:89
+msgid "The maximum flow through the graph is guaranteed to be the same with all implementations, but the actual flow through each edge may vary. Given the following query:"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:93
+msgid "pgr_maxFlow :math:`(edges\\_sql, source\\_vertex, sink\\_vertex)`"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:95
+msgid "where :math:`edges\\_sql = \\{(id_i, source_i, target_i, capacity_i, reverse\\_capacity_i)\\}`"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:98
 msgid "Graph definition"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:88
+#: ../../build/doc/flow-family.rst:99
 msgid "The weighted directed graph, :math:`G(V,E)`, is defined as:"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:90
+#: ../../build/doc/flow-family.rst:101
 msgid "the set of vertices  :math:`V`"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:92
+#: ../../build/doc/flow-family.rst:103
 msgid ":math:`source\\_vertex  \\cup  sink\\_vertex  \\bigcup  source_i  \\bigcup  target_i`"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:94
+#: ../../build/doc/flow-family.rst:105
 msgid "the set of edges :math:`E`"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:96
+#: ../../build/doc/flow-family.rst:107
 msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\quad  \\text{ if } reverse\\_capacity = \\varnothing \\\\ \\text{ } & \\quad \\text{ } \\\\ \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_capacity_i) \\text{ when } reverse\\_capacity_i > 0)\\} & \\quad \\text{ if } reverse\\_capacity \\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:104
+#: ../../build/doc/flow-family.rst:115
 msgid "Maximum flow problem"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:105
+#: ../../build/doc/flow-family.rst:116
 msgid "Given:"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:108
+#: ../../build/doc/flow-family.rst:119
 msgid ":math:`G(V,E)`"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:109
+#: ../../build/doc/flow-family.rst:120
 msgid ":math:`source\\_vertex \\in V` the source vertex"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:110
+#: ../../build/doc/flow-family.rst:121
 msgid ":math:`sink\\_vertex \\in V` the sink vertex"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:112
+#: ../../build/doc/flow-family.rst:123
 msgid "Then:"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:114
+#: ../../build/doc/flow-family.rst:125
 msgid ":math:`pgr\\_maxFlow(edges\\_sql, source, sink) = \\boldsymbol{\\Phi}`"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:116
+#: ../../build/doc/flow-family.rst:127
 msgid ":math:`\\boldsymbol{\\Phi} = {(id_i, edge\\_id_i, source_i, target_i, flow_i, residual\\_capacity_i)}`"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:118
+#: ../../build/doc/flow-family.rst:129
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:120
+#: ../../build/doc/flow-family.rst:131
 msgid ":math:`\\boldsymbol{\\Phi}` is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:122
+#: ../../build/doc/flow-family.rst:133
 msgid ":math:`id_i = i`"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:123
+#: ../../build/doc/flow-family.rst:134
 msgid ":math:`edge\\_id = id_i` in edges_sql"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:124
+#: ../../build/doc/flow-family.rst:135
 msgid ":math:`residual\\_capacity_i = capacity_i - flow_i`"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:128
+#: ../../build/doc/flow-family.rst:139
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:130
+#: ../../build/doc/flow-family.rst:141
 msgid "https://en.wikipedia.org/wiki/Maximum_flow_problem"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:133
+#: ../../build/doc/flow-family.rst:144
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:134
+#: ../../build/doc/flow-family.rst:145
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:135
+#: ../../build/doc/flow-family.rst:146
 msgid ":ref:`search`"
 msgstr ""
 

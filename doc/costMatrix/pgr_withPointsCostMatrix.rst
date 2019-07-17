@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_withPointsCostMatrix - proposed
@@ -17,22 +17,25 @@ pgr_withPointsCostMatrix - proposed
    :end-before: end-warning
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph
 
    Boost Graph Inside
 
 .. rubric:: Availability
 
-* Proposed on v2.2.0
+* Version 2.2.0
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_withPointsCostMatrix.html>`__)
-`2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPointsCostMatrix.html>`__
-`2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPointsCostMatrix.html>`__
-`2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsCostMatrix.html>`__
+  * New **proposed** function
 
-**Unsupported versions:**
-`2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_withPointsCostMatrix.html>`__
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_withPointsCostMatrix.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPointsCostMatrix.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPointsCostMatrix.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsCostMatrix.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_withPointsCostMatrix.html>`__
 
 Description
 -------------------------------------------------------------------------------

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-06 10:03-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,40 +36,56 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_johnson.rst:23
-msgid "Signature change on v2.2.0"
+msgid "Version 2.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:24
-msgid "New on v2.0.0"
+#: ../../build/doc/pgr_johnson.rst:25
+msgid "Signature change"
 msgstr ""
 
 #: ../../build/doc/pgr_johnson.rst:26
+msgid "Old signature no longer supported"
+msgstr ""
+
+#: ../../build/doc/pgr_johnson.rst:28
+msgid "Version 2.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_johnson.rst:30
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_johnson.rst:33
+msgid "Support"
+msgstr ""
+
+#: ../../build/doc/pgr_johnson.rst:34
 msgid ""
 "**Supported versions:** current(`3.0 "
-"<http://docs.pgrouting.org/dev/en/pgr_johnson.html>`__) `2.6 "
-"<http://docs.pgrouting.org/2.6/en/pgr_johnson.html>`__ `2.5 "
-"<http://docs.pgrouting.org/2.5/en/pgr_johnson.html>`__ `2.4 "
-"<http://docs.pgrouting.org/2.4/en/pgr_johnson.html>`__"
+"<https://docs.pgrouting.org/dev/en/pgr_johnson.html>`__) `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_johnson.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:32
+#: ../../build/doc/pgr_johnson.rst:38
 msgid ""
-"**Unsupported versions:** `2.3 "
-"<http://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_johnson.html>`__ "
+"**Unsupported versions:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_johnson.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_johnson.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_johnson.html>`__ "
 "`2.2 "
-"<http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_johnson.html>`__ "
+"<https://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_johnson.html>`__ "
 "`2.1 "
-"<http://docs.pgrouting.org/2.1/en/src/apsp_johnson/doc/index.html>`__ "
+"<https://docs.pgrouting.org/2.1/en/src/apsp_johnson/doc/index.html>`__ "
 "`2.0 "
-"<http://docs.pgrouting.org/2.0/en/src/apsp_johnson/doc/index.html>`__"
+"<https://docs.pgrouting.org/2.0/en/src/apsp_johnson/doc/index.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:39
-#: ../../build/doc/pgr_johnson.rst:108 ../../build/doc/pgr_johnson.rst:127
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:47
+#: ../../build/doc/pgr_johnson.rst:116 ../../build/doc/pgr_johnson.rst:135
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:41
+#: ../../build/doc/pgr_johnson.rst:49
 msgid ""
 "The Johnson algorithm, is a good choice to calculate the sum of the costs"
 " of the shortest path for each pair of nodes in the graph, for *sparse "
@@ -77,63 +93,63 @@ msgid ""
 "\\log V)` time,"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:61
+#: ../../build/doc/pgr_johnson.rst:69
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:46
+#: ../../build/doc/pgr_johnson.rst:54
 msgid "It does not return a path."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:47
+#: ../../build/doc/pgr_johnson.rst:55
 msgid ""
 "Returns the sum of the costs of the shortest path for each pair of nodes "
 "in the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:48
+#: ../../build/doc/pgr_johnson.rst:56
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:49
+#: ../../build/doc/pgr_johnson.rst:57
 msgid ""
 "Boost returns a :math:`V \\times V` matrix, where the infinity values. "
 "Represent the distance between vertices for which there is no path."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:52
+#: ../../build/doc/pgr_johnson.rst:60
 msgid ""
 "We return only the non infinity values in form of a set of `(start_vid, "
 "end_vid, agg_cost)`."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:54
+#: ../../build/doc/pgr_johnson.rst:62
 msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
 "index would be the pair: `(start_vid, end_vid)`."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:57
+#: ../../build/doc/pgr_johnson.rst:65
 msgid "For the undirected graph, the results are symmetric."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:59
+#: ../../build/doc/pgr_johnson.rst:67
 msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:61
+#: ../../build/doc/pgr_johnson.rst:69
 msgid "When  `start_vid` = `end_vid`, the `agg_cost` = 0."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:64
+#: ../../build/doc/pgr_johnson.rst:72
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:67
+#: ../../build/doc/pgr_johnson.rst:75
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:76
+#: ../../build/doc/pgr_johnson.rst:84
 msgid "Using default"
 msgstr ""
 
@@ -141,11 +157,11 @@ msgstr ""
 msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:83
+#: ../../build/doc/pgr_johnson.rst:91
 msgid "For vertices :math:`\\{1, 2, 3, 4\\}` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:90
+#: ../../build/doc/pgr_johnson.rst:98
 msgid "Complete Signature"
 msgstr ""
 
@@ -153,50 +169,50 @@ msgstr ""
 msgid "Example 2"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:98
+#: ../../build/doc/pgr_johnson.rst:106
 msgid "For vertices :math:`\\{1, 2, 3, 4\\}` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:105
+#: ../../build/doc/pgr_johnson.rst:113
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:108
+#: ../../build/doc/pgr_johnson.rst:116
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:108
-#: ../../build/doc/pgr_johnson.rst:127
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:116
+#: ../../build/doc/pgr_johnson.rst:135
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:110
+#: ../../build/doc/pgr_johnson.rst:118
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:110
+#: ../../build/doc/pgr_johnson.rst:118
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:110
+#: ../../build/doc/pgr_johnson.rst:118
 msgid "SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:111
+#: ../../build/doc/pgr_johnson.rst:119
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:111
+#: ../../build/doc/pgr_johnson.rst:119
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:111
+#: ../../build/doc/pgr_johnson.rst:119
 msgid ""
 "(optional) Default is true (is directed). When set to false the graph is "
 "considered as Undirected"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:115
+#: ../../build/doc/pgr_johnson.rst:123
 msgid "Inner query"
 msgstr ""
 
@@ -214,7 +230,7 @@ msgid ""
 "columns:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:127
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_johnson.rst:135
 msgid "Column"
 msgstr ""
 
@@ -300,74 +316,105 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:122
+#: ../../build/doc/pgr_johnson.rst:130
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:124
+#: ../../build/doc/pgr_johnson.rst:132
 msgid "Returns set of ``(start_vid, end_vid, agg_cost)``"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:129
+#: ../../build/doc/pgr_johnson.rst:137
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:129 ../../build/doc/pgr_johnson.rst:130
+#: ../../build/doc/pgr_johnson.rst:137 ../../build/doc/pgr_johnson.rst:138
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:129
+#: ../../build/doc/pgr_johnson.rst:137
 msgid "Identifier of the starting vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:130
+#: ../../build/doc/pgr_johnson.rst:138
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:130
+#: ../../build/doc/pgr_johnson.rst:138
 msgid "Identifier of the ending vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:131
+#: ../../build/doc/pgr_johnson.rst:139
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:131
+#: ../../build/doc/pgr_johnson.rst:139
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:131
+#: ../../build/doc/pgr_johnson.rst:139
 msgid "Total cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:135
+#: ../../build/doc/pgr_johnson.rst:143
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:137
+#: ../../build/doc/pgr_johnson.rst:145
 msgid ":doc:`pgr_floydWarshall`"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:138
+#: ../../build/doc/pgr_johnson.rst:146
 msgid ""
 "`Boost Johnson "
-"<http://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_ "
+"<https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_ "
 "algorithm implementation."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:139
+#: ../../build/doc/pgr_johnson.rst:147
 msgid "Queries uses the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:142
+#: ../../build/doc/pgr_johnson.rst:150
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:143
+#: ../../build/doc/pgr_johnson.rst:151
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_johnson.rst:144
+#: ../../build/doc/pgr_johnson.rst:152
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Signature change on v2.2.0"
+#~ msgstr ""
+
+#~ msgid "New on v2.0.0"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.0 "
+#~ "<http://docs.pgrouting.org/dev/en/pgr_johnson.html>`__) `2.6 "
+#~ "<http://docs.pgrouting.org/2.6/en/pgr_johnson.html>`__ `2.5 "
+#~ "<http://docs.pgrouting.org/2.5/en/pgr_johnson.html>`__ `2.4 "
+#~ "<http://docs.pgrouting.org/2.4/en/pgr_johnson.html>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.3 "
+#~ "<http://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_johnson.html>`__"
+#~ " `2.2 "
+#~ "<http://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_johnson.html>`__"
+#~ " `2.1 "
+#~ "<http://docs.pgrouting.org/2.1/en/src/apsp_johnson/doc/index.html>`__"
+#~ " `2.0 "
+#~ "<http://docs.pgrouting.org/2.0/en/src/apsp_johnson/doc/index.html>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`Boost Johnson "
+#~ "<http://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_"
+#~ " algorithm implementation."
+#~ msgstr ""
 

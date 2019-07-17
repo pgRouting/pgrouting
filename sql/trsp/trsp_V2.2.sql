@@ -393,6 +393,7 @@ IS 'pgr_trsp
 
 COMMENT ON FUNCTION pgr_trspViaVertices(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trspViaVertices
+- PROTOTYPE
 - Parameters
     - edges SQL with columns: id, source, target, cost [,reverse_cost]
     - ARRAY[Via vertices identifiers
@@ -401,7 +402,7 @@ IS 'pgr_trspViaVertices
 - Optional parameters
     - restrictions_sql := NULL
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_trspViaVertices.html
+    - ${PGROUTING_DOC_LINK}/pgr_trsp.html
 ';
 
 

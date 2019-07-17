@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_dijkstraCostMatrix
@@ -13,23 +13,29 @@ pgr_dijkstraCostMatrix
 ``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using pgr_dijktras.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph
 
    Boost Graph Inside
 
 .. rubric:: Availability
 
-* Official on v3.0.0
-* Proposed on v2.3.0
+* Version 3.0.0
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_dijkstraCostMatrix.html>`__)
-`2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html>`__
-`2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCostMatrix.html>`__
-`2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html>`__
+  * **Official** function
 
-**Unsupported versions:**
-`2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html>`__
+* Version 2.3.0
+
+  * New **proposed** function
+
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_dijkstraCostMatrix.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCostMatrix.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -62,7 +68,7 @@ Signatures
 
 .. index::
     single: dijkstraCostMatrix
-    
+
 Complete Signature
 ...............................................................................
 

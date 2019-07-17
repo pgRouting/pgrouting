@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_prim
@@ -19,7 +19,14 @@ pgr_prim
 
 .. rubric:: Availability
 
-* New on v3.0.0
+* Version 3.0.0
+
+  * New **Official** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_prim.html>`__)
 
 Description
 -------------------------------------------------------------------------------

@@ -4,12 +4,11 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_vrpOneDepot - Experimental
 ===============================================================================
-
 
 .. include:: proposed.rst
    :start-after: begin-warn-expr
@@ -19,6 +18,25 @@ pgr_vrpOneDepot - Experimental
 
 .. rubric:: Availability
 
+* Version 2.1.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_vrpOneDepot.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_vrpOneDepot.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_vrpOneDepot.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_vrpOneDepot.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/vrp_basic/doc/index.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/src/vrp_basic/doc/index.html>`__
+
+
+
 * **TBD**
 
 Description
@@ -26,17 +44,8 @@ Description
 
 * TBD
 
-The main Characteristics are:
-  - **CRASHES THE SERVER**
-
-* TBD
-
 Signatures
 -------------------------------------------------------------------------------
-
-* TBD
-
-.. rubric:: Summary
 
 * TBD
 
@@ -48,32 +57,25 @@ Parameters
 Inner query
 -------------------------------------------------------------------------------
 
-*Description of the edges_sql query for pgr_randomSpanTree functions*
-
 * TBD
 
 Result Columns
 -------------------------------------------------------------------------------
 
-.. literalinclude:: doc-pgr_vrpOneDepot.queries
-
-*Description of the return values for pgr_randomSpanTree algorithms*
-
 * TBD
+
+Additional Example:
+-------------------------------------------------------------------------------
+.. literalinclude:: doc-pgr_vrpOneDepot.queries
 
 .. rubric:: Data
 
 .. literalinclude:: ../../tools/testers/solomon_100_rc101.data.sql
 
-Additional Example:
--------------------------------------------------------------------------------
-
-:Example:
-
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Vehicle_routing_problem
+* https://en.wikipedia.org/wiki/Vehicle_routing_problem
 
 .. rubric:: Indices and tables
 

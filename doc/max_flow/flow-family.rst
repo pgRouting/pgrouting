@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 Flow - Family of functions
@@ -33,6 +33,17 @@ Flow - Family of functions
     pgr_boykovKolmogorov
     pgr_maxCardinalityMatch
     pgr_edgeDisjointPaths
+
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/flow-family.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/flow-family.html>`__
+
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/flow-family.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/flow-family.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__
 
 
 Flow Functions General Information

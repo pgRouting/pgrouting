@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_bdDijkstra
@@ -13,52 +13,56 @@ pgr_bdDijkstra
 ``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional Dijkstra algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc
+   :target: https://www.boost.org/libs/graph/doc
 
    Boost Graph Inside
 
 .. rubric:: Availability:
 
-* Official on v3.0.0
-* Proposed on v2.5.0:
+* Version 3.0.0
 
-  * pgr_bdDijkstra(One to Many)
-  * pgr_bdDijkstra(Many to One)
-  * pgr_bdDijkstra(Many to Many)
+  * **Official** function
 
-* Signature change on v2.4.0
+* Version 2.5.0
 
-  * pgr_bdDijkstra(One to One)
+  * New **Proposed** functions:
 
-* Proposed on v2.5.0:
+    * pgr_bdDijkstra(One to Many)
+    * pgr_bdDijkstra(Many to One)
+    * pgr_bdDijkstra(Many to Many)
 
-  * pgr_bdDijkstra(One to Many)
-  * pgr_bdDijkstra(Many to One)
-  * pgr_bdDijkstra(Many to Many)
+* Version 2.4.0
 
-* Signature change on v2.4.0:
+  * Signature change on pgr_bdDijsktra(One to One)
 
-  * pgr_bdDijkstra(One to One)
+    * Old signature no longer supported
 
-* New on v2.0.0:
+* Version 2.0.0
 
-  * pgr_bdDijkstra(One to One)
+  * **Official** pgr_bdDijkstra(One to One)
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdDijkstra.html>`__)
-`2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html>`__
+.. rubric:: Support
 
-**Unsupported versions:**
-`2.3 <http://docs.pgrouting.org/2.3/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__
-`2.2 <http://docs.pgrouting.org/2.2/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__
-`2.1 <http://docs.pgrouting.org/2.1/en/src/bd_dijkstra/doc/index.html>`__
-`2.0 <http://docs.pgrouting.org/2.0/en/src/bd_dijkstra/doc/index.html>`__
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bdDijkstra.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__
+
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/src/bd_dijkstra/doc/index.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/src/bd_dijkstra/doc/index.html>`__
 
 Description
 -------------------------------------------------------------------------------
-* **TBD**
+
+**The main characteristics are:**
+
+.. include:: bdDijkstra-family.rst
+   :start-after: description start
+   :end-before: description end
 
 Signatures
 -------------------------------------------------------------------------------
@@ -71,7 +75,7 @@ Signatures
     pgr_bdDijkstra(edges_sql, start_vid,  end_vids [, directed])
     pgr_bdDijkstra(edges_sql, start_vids, end_vid  [, directed])
     pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
-    
+
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -187,7 +191,7 @@ See Also
 
 * The queries use the :doc:`sampledata` network.
 * :doc:`bdDijkstra-family`
-* http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
+* https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
 * https://en.wikipedia.org/wiki/Bidirectional_search
 
 .. rubric:: Indices and tables

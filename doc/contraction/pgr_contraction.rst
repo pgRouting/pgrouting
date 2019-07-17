@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_contraction
@@ -13,22 +13,33 @@ pgr_contraction
 ``pgr_contraction`` — Performs graph contraction and returns the contracted vertices and edges.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph
 
    Boost Graph Inside
 
 .. rubric:: Availability
 
-* On v3.0.0
+* Version 3.0.0
 
-  * Set as `official`
   * Return columns change: ``seq`` is removed
+  * Name change from ``pgr_contractGraph``
   * Bug fixes
+  * **Official** function
 
-* New as experimental on v2.3.0
+* Version 2.3.0
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_contraction.html>`__)
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_contraction.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_contractGraph.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_contractGraph.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_contractGraph.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/contraction/doc/pgr_contractGraph.html>`__
 
 Description
 -------------------------------------------------------------------------------

@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_pickDeliverEuclidean - Experimental
@@ -12,16 +12,30 @@ pgr_pickDeliverEuclidean - Experimental
 
 ``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem
 
-.. rubric:: Availability
-
-* New as Experimental in 3.0.0
-
-  * Replaces pgr_gsoc_vrppdtw
-
-
 .. include:: proposed.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
+
+.. rubric:: Availability
+
+* Version 3.0.0
+
+  * Replaces ``pgr_gsoc_vrppdtw``
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_pickDeliverEuclidean.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_gsoc_vrppdtw.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_gsoc_vrppdtw.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/vrppdtw/doc/pgr_gsoc_vrppdtw.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__
+
 
 Synopsis
 -------------------------------------------------------------------------------

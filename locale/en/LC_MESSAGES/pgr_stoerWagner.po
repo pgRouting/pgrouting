@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,23 +32,96 @@ msgstr ""
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:22
-msgid "Availability"
+#: ../../build/doc/proposed.rst:3
+msgid "Experimental functions"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:23
-#: ../../build/doc/pgr_stoerWagner.rst:73
-msgid "**TBD**"
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:14
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
 #: ../../build/doc/pgr_stoerWagner.rst:26
-#: ../../build/doc/pgr_stoerWagner.rst:89
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_stoerWagner.rst:27
+msgid "Version 2.3.0"
+msgstr ""
+
+#: ../../build/doc/pgr_stoerWagner.rst:29
+msgid "New **Experimental** function"
+msgstr ""
+
+#: ../../build/doc/pgr_stoerWagner.rst:32
+msgid "Support"
+msgstr ""
+
+#: ../../build/doc/pgr_stoerWagner.rst:33
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_stoerWagner.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_stoerWagner.rst:37
 #: ../../build/doc/pgr_stoerWagner.rst:100
-#: ../../build/doc/pgr_stoerWagner.rst:126
+#: ../../build/doc/pgr_stoerWagner.rst:111
+#: ../../build/doc/pgr_stoerWagner.rst:137
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:28
+#: ../../build/doc/pgr_stoerWagner.rst:39
 msgid ""
 "In graph theory, the Stoer–Wagner algorithm is a recursive algorithm to "
 "solve the minimum cut problem in undirected weighted graphs with non-"
@@ -61,7 +134,7 @@ msgid ""
 "the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:37
+#: ../../build/doc/pgr_stoerWagner.rst:48
 msgid ""
 "A cut is a partition of the vertices of a graph into two disjoint "
 "subsets. A minimum cut is a cut for which the size or weight of the cut "
@@ -71,50 +144,50 @@ msgid ""
 "whether it is a minimum cut."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:43
+#: ../../build/doc/pgr_stoerWagner.rst:54
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:45
+#: ../../build/doc/pgr_stoerWagner.rst:56
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:46
+#: ../../build/doc/pgr_stoerWagner.rst:57
 msgid "It's implementation is only on **undirected** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:47
+#: ../../build/doc/pgr_stoerWagner.rst:58
 msgid "Sum of the weights of all edges between the two sets is mincut."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:49
+#: ../../build/doc/pgr_stoerWagner.rst:60
 msgid "A **mincut** is a cut having the least weight."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:51
+#: ../../build/doc/pgr_stoerWagner.rst:62
 msgid "Values are returned when graph is connected."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:53
+#: ../../build/doc/pgr_stoerWagner.rst:64
 msgid "When there is no edge in graph then EMPTY SET is return."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:54
+#: ../../build/doc/pgr_stoerWagner.rst:65
 msgid "When the graph is unconnected then EMPTY SET is return."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:56
+#: ../../build/doc/pgr_stoerWagner.rst:67
 msgid ""
 "Sometimes a graph has multiple min-cuts, but all have the same weight. "
 "The this function determines exactly one of the min-cuts as well as its "
 "weight."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:58
+#: ../../build/doc/pgr_stoerWagner.rst:69
 msgid "Running time: :math:`O(V*E + V^2*log V)`."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:61
+#: ../../build/doc/pgr_stoerWagner.rst:72
 msgid "Signatures"
 msgstr ""
 
@@ -122,38 +195,42 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:86
+#: ../../build/doc/pgr_stoerWagner.rst:84
+msgid "**TBD**"
+msgstr ""
+
+#: ../../build/doc/pgr_stoerWagner.rst:97
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:89
+#: ../../build/doc/pgr_stoerWagner.rst:100
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:89
 #: ../../build/doc/pgr_stoerWagner.rst:100
-#: ../../build/doc/pgr_stoerWagner.rst:126
+#: ../../build/doc/pgr_stoerWagner.rst:111
+#: ../../build/doc/pgr_stoerWagner.rst:137
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:89
 #: ../../build/doc/pgr_stoerWagner.rst:100
+#: ../../build/doc/pgr_stoerWagner.rst:111
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:91
+#: ../../build/doc/pgr_stoerWagner.rst:102
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:91
+#: ../../build/doc/pgr_stoerWagner.rst:102
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:91
+#: ../../build/doc/pgr_stoerWagner.rst:102
 msgid "SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:95
+#: ../../build/doc/pgr_stoerWagner.rst:106
 msgid "Inner query"
 msgstr ""
 
@@ -161,86 +238,86 @@ msgstr ""
 msgid "edges_sql"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:97
+#: ../../build/doc/pgr_stoerWagner.rst:108
 msgid ""
 "an SQL query, which should return a set of rows with the following "
 "columns:"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:100
-#: ../../build/doc/pgr_stoerWagner.rst:126
+#: ../../build/doc/pgr_stoerWagner.rst:111
+#: ../../build/doc/pgr_stoerWagner.rst:137
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:102
+#: ../../build/doc/pgr_stoerWagner.rst:113
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:102
-#: ../../build/doc/pgr_stoerWagner.rst:103
-#: ../../build/doc/pgr_stoerWagner.rst:104
+#: ../../build/doc/pgr_stoerWagner.rst:113
+#: ../../build/doc/pgr_stoerWagner.rst:114
+#: ../../build/doc/pgr_stoerWagner.rst:115
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:102
+#: ../../build/doc/pgr_stoerWagner.rst:113
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:103
+#: ../../build/doc/pgr_stoerWagner.rst:114
 msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:103
+#: ../../build/doc/pgr_stoerWagner.rst:114
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:104
+#: ../../build/doc/pgr_stoerWagner.rst:115
 msgid "**target**"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:104
+#: ../../build/doc/pgr_stoerWagner.rst:115
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:105
-#: ../../build/doc/pgr_stoerWagner.rst:130
+#: ../../build/doc/pgr_stoerWagner.rst:116
+#: ../../build/doc/pgr_stoerWagner.rst:141
 msgid "**cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:105
-#: ../../build/doc/pgr_stoerWagner.rst:109
+#: ../../build/doc/pgr_stoerWagner.rst:116
+#: ../../build/doc/pgr_stoerWagner.rst:120
 msgid "``ANY-NUMERICAL``"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:105
+#: ../../build/doc/pgr_stoerWagner.rst:116
 msgid "Weight of the edge  `(source, target)`"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:107
+#: ../../build/doc/pgr_stoerWagner.rst:118
 msgid ""
 "When negative: edge `(source, target)` does not exist, therefore it's not"
 " part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:109
+#: ../../build/doc/pgr_stoerWagner.rst:120
 msgid "**reverse_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:109
+#: ../../build/doc/pgr_stoerWagner.rst:120
 msgid "-1"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:109
+#: ../../build/doc/pgr_stoerWagner.rst:120
 msgid "Weight of the edge `(target, source)`,"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:111
+#: ../../build/doc/pgr_stoerWagner.rst:122
 msgid ""
 "When negative: edge `(target, source)` does not exist, therefore it's not"
 " part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:115
+#: ../../build/doc/pgr_stoerWagner.rst:126
 msgid "Where:"
 msgstr ""
 
@@ -248,7 +325,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:117
+#: ../../build/doc/pgr_stoerWagner.rst:128
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
@@ -256,89 +333,89 @@ msgstr ""
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:118
+#: ../../build/doc/pgr_stoerWagner.rst:129
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:121
+#: ../../build/doc/pgr_stoerWagner.rst:132
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:123
+#: ../../build/doc/pgr_stoerWagner.rst:134
 msgid "Returns set of ``(seq, edge, cost, mincut)``"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:128
+#: ../../build/doc/pgr_stoerWagner.rst:139
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:128
+#: ../../build/doc/pgr_stoerWagner.rst:139
 msgid "``INT``"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:128
+#: ../../build/doc/pgr_stoerWagner.rst:139
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:129
+#: ../../build/doc/pgr_stoerWagner.rst:140
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:129
+#: ../../build/doc/pgr_stoerWagner.rst:140
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:129
+#: ../../build/doc/pgr_stoerWagner.rst:140
 msgid "Edges which divides the set of vertices into two."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:130
-#: ../../build/doc/pgr_stoerWagner.rst:131
+#: ../../build/doc/pgr_stoerWagner.rst:141
+#: ../../build/doc/pgr_stoerWagner.rst:142
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:130
+#: ../../build/doc/pgr_stoerWagner.rst:141
 msgid "Cost to traverse of edge."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:131
+#: ../../build/doc/pgr_stoerWagner.rst:142
 msgid "**mincut**"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:131
+#: ../../build/doc/pgr_stoerWagner.rst:142
 msgid "Min-cut weight of a undirected graph."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:135
+#: ../../build/doc/pgr_stoerWagner.rst:146
 msgid "Additional Example:"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:141
+#: ../../build/doc/pgr_stoerWagner.rst:152
 msgid "Use pgr_connectedComponents( ) function in query:"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:148
+#: ../../build/doc/pgr_stoerWagner.rst:159
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:150
+#: ../../build/doc/pgr_stoerWagner.rst:161
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:151
+#: ../../build/doc/pgr_stoerWagner.rst:162
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:154
+#: ../../build/doc/pgr_stoerWagner.rst:165
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:155
+#: ../../build/doc/pgr_stoerWagner.rst:166
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_stoerWagner.rst:156
+#: ../../build/doc/pgr_stoerWagner.rst:167
 msgid ":ref:`search`"
 msgstr ""
 

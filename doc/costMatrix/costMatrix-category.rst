@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 Cost Matrix - Category
@@ -36,6 +36,16 @@ Cost Matrix - Category
     pgr_bdAstarCostMatrix
     pgr_bdDijkstraCostMatrix
     pgr_withPointsCostMatrix
+
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/costMatrix-category.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/costMatrix-category.html>`__
+
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/costMatrix-category.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/costMatrix-category.html>`__
 
 
 General Information

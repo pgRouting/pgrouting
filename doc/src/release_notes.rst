@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 .. _change_log:
@@ -160,6 +160,10 @@ pgRouting 3.0.0 Release Notes
 .. rubric:: New Experimental functions
 
 * pgr_extractVertices
+* pgr_turnRestrictedPath
+* pgr_bellmanFord
+* pgr_stoerWagner
+* pgr_dagShortestpath
 * VRP category
 
   * pgr_pickDeliverEuclidean
@@ -169,7 +173,6 @@ pgRouting 3.0.0 Release Notes
 
   * pgr_chinesePostman
   * pgr_chinesePostmanCost
-
 
 .. rubric:: Moved to legacy
 
@@ -834,7 +837,7 @@ As a result of this effort:
 * Support for table SCHEMA in function parameters
 * Support for ``st_`` PostGIS function prefix
 * Added ``pgr_`` prefix to functions and types
-* Better documentation: http://docs.pgrouting.org
+* Better documentation: https://docs.pgrouting.org
 * shooting_star is discontinued
 
 

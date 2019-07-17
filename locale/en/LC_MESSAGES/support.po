@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: ../../build/doc/support.rst:15
 msgid ""
 "pgRouting community support is available through the `pgRouting website "
-"<http://pgrouting.org/support.html>`_, `documentation "
+"<https://pgrouting.org/support.html>`_, `documentation "
 "<http://docs.pgrouting.org>`_, tutorials, mailing lists and others. If "
 "you’re looking for :ref:`commercial support <support_commercial>`, find "
 "below a list of companies providing pgRouting development and consulting "
@@ -91,12 +91,14 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/support.rst:43
-msgid "User mailing list: http://lists.osgeo.org/mailman/listinfo/pgrouting-users"
+msgid ""
+"User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-"
+"users"
 msgstr ""
 
 #: ../../build/doc/support.rst:44
 msgid ""
-"Developer mailing list: http://lists.osgeo.org/mailman/listinfo"
+"Developer mailing list: https://lists.osgeo.org/mailman/listinfo"
 "/pgrouting-dev"
 msgstr ""
 
@@ -108,8 +110,8 @@ msgstr ""
 
 #: ../../build/doc/support.rst:48
 msgid ""
-"You can also ask at `GIS StackExchange <http://gis.stackexchange.com/>`_ "
-"and tag the question with ``pgrouting``. Find all questions tagged with "
+"You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_"
+" and tag the question with ``pgrouting``. Find all questions tagged with "
 "``pgrouting`` under "
 "http://gis.stackexchange.com/questions/tagged/pgrouting or subscribe to "
 "the `pgRouting questions feed "
@@ -160,7 +162,7 @@ msgid "United States"
 msgstr ""
 
 #: ../../build/doc/support.rst:69
-msgid "http://imaptools.com"
+msgid "https://imaptools.com"
 msgstr ""
 
 #: ../../build/doc/support.rst:70
@@ -168,7 +170,7 @@ msgid "Paragon Corporation"
 msgstr ""
 
 #: ../../build/doc/support.rst:72
-msgid "http://www.paragoncorporation.com"
+msgid "https://www.paragoncorporation.com"
 msgstr ""
 
 #: ../../build/doc/support.rst:73
@@ -180,6 +182,49 @@ msgid "Switzerland, France"
 msgstr ""
 
 #: ../../build/doc/support.rst:75
-msgid "http://www.camptocamp.com"
+msgid "https://www.camptocamp.com"
 msgstr ""
+
+#~ msgid ""
+#~ "pgRouting community support is available "
+#~ "through the `pgRouting website "
+#~ "<http://pgrouting.org/support.html>`_, `documentation "
+#~ "<http://docs.pgrouting.org>`_, tutorials, mailing "
+#~ "lists and others. If you’re looking "
+#~ "for :ref:`commercial support <support_commercial>`,"
+#~ " find below a list of companies "
+#~ "providing pgRouting development and consulting"
+#~ " services."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "User mailing list: "
+#~ "http://lists.osgeo.org/mailman/listinfo/pgrouting-users"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Developer mailing list: "
+#~ "http://lists.osgeo.org/mailman/listinfo/pgrouting-dev"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can also ask at `GIS "
+#~ "StackExchange <http://gis.stackexchange.com/>`_ and "
+#~ "tag the question with ``pgrouting``. "
+#~ "Find all questions tagged with "
+#~ "``pgrouting`` under "
+#~ "http://gis.stackexchange.com/questions/tagged/pgrouting or "
+#~ "subscribe to the `pgRouting questions "
+#~ "feed "
+#~ "<http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
+#~ msgstr ""
+
+#~ msgid "http://imaptools.com"
+#~ msgstr ""
+
+#~ msgid "http://www.paragoncorporation.com"
+#~ msgstr ""
+
+#~ msgid "http://www.camptocamp.com"
+#~ msgstr ""
 

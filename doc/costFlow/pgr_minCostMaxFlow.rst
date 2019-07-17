@@ -4,16 +4,16 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_minCostMaxFlow - Experimental 
+pgr_minCostMaxFlow - Experimental
 ============================================
 
 ``pgr_minCostMaxFlow`` — Calculates the flow on the graph edges that maximizes the flow and minimizes the cost from the sources to the targets.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
+   :target: https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 
    Boost Graph Inside
 
@@ -23,10 +23,14 @@ pgr_minCostMaxFlow - Experimental
 
 .. rubric:: Availability
 
-* New as experimental on v3.0.0
+* Version 3.0.0
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_minCostMaxFlow.html>`
+* New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_minCostMaxFlow.html>`
 
 Description
 -------------------------------------------------------------------------------
@@ -52,7 +56,7 @@ Signatures
     OR EMPTY SET
 
 .. index::
-    single: minCostMaxFlow(One to One) - Experimental 
+    single: minCostMaxFlow(One to One) - Experimental
 
 One to One
 ...............................................................................
@@ -70,9 +74,9 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: minCostMaxFlow(One to Many) - Experimental 
+    single: minCostMaxFlow(One to Many) - Experimental
 
-One to Many 
+One to Many
 ...............................................................................
 
 .. code-block:: none
@@ -88,9 +92,9 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: minCostMaxFlow(Many to One) - Experimental 
+    single: minCostMaxFlow(Many to One) - Experimental
 
-Many to One 
+Many to One
 ...............................................................................
 
 .. code-block:: none
@@ -106,7 +110,7 @@ Many to One
    :end-before: -- q3
 
 .. index::
-    single: minCostMaxFlow(Many to Many) - Experimental 
+    single: minCostMaxFlow(Many to Many) - Experimental
 
 Many to Many
 ...............................................................................
@@ -114,7 +118,7 @@ Many to Many
 .. code-block:: none
 
     pgr_maxFlow(edges_sql, sources, targets)
-    RETURNS FLOAT 
+    RETURNS FLOAT
 
 :Example: From vertices :math:`\{7, 13\}` to vertices :math:`\{3, 9\}`
 

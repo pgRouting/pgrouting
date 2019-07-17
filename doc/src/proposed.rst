@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
 
 .. _stable:
 
@@ -152,6 +152,7 @@ Experimental Functions
 - :doc:`pgr_bellmanFord`
 - :doc:`pgr_dagShortestPath`
 - :doc:`pgr_stoerWagner`
+- :doc:`pgr_turnRestrictedPath`
 
 .. toctree::
   :hidden:
@@ -159,13 +160,13 @@ Experimental Functions
   pgr_bellmanFord
   pgr_dagShortestPath
   pgr_stoerWagner
+  pgr_turnRestrictedPath
 
 :doc:`topology-functions`
 
 .. include:: topology-functions.rst
    :start-after: topology_proposed_start
    :end-before: topology_proposed_end
-
 
 
 See Also

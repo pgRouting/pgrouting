@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_edmondsKarp
@@ -14,17 +14,35 @@ pgr_edmondsKarp
 
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
+   :target: https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 
    Boost Graph Inside
 
 .. Rubric:: Availability
 
-* Official on v3.0.0
-* Renamed on v2.5.0
-* Experimental on v2.3.0
+* Version 3.0.0
 
-  * pgr_maxFlowEdmondsKarp
+  * **Official** function
+
+* Version 2.5.0
+
+  * Renamed from ``pgr_maxFlowEdmondsKarp``
+  * **Proposed** function
+
+* Version 2.3.0
+
+  * New **Experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_edmondsKarp.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_edmondsKarp.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_edmondsKarp.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlowEdmondsKarp.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowEdmondsKarp.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -149,7 +167,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`flow-family`, :doc:`pgr_boykovKolmogorov`, :doc:`pgr_pushRelabel`
-* http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
+* https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
 * https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
 
 .. rubric:: Indices and tables

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,22 +33,34 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_kruskalDFS.rst:23
-msgid "New on v3.0.0"
+msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:26
-#: ../../build/doc/pgr_kruskalDFS.rst:93
-#: ../../build/doc/pgr_kruskalDFS.rst:114
+#: ../../build/doc/pgr_kruskalDFS.rst:25
+msgid "New **Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_kruskalDFS.rst:28
+msgid "Support"
+msgstr ""
+
+#: ../../build/doc/pgr_kruskalDFS.rst:29
+msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_kruskalDFS.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_kruskalDFS.rst:33
+#: ../../build/doc/pgr_kruskalDFS.rst:100
+#: ../../build/doc/pgr_kruskalDFS.rst:121
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_kruskalDD.rst:6
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:28
+#: ../../build/doc/pgr_kruskalDFS.rst:35
 msgid "Visits and extracts the nodes information in Depth First Search ordering of the Minimum Spanning Tree created using Kruskal's algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:31
+#: ../../build/doc/pgr_kruskalDFS.rst:38
 msgid "**The main Characteristics are:**"
 msgstr ""
 
@@ -88,19 +100,19 @@ msgstr ""
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:37
+#: ../../build/doc/pgr_kruskalDFS.rst:44
 msgid "Returned tree nodes from a root vertex are on Depth First Search order"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:38
+#: ../../build/doc/pgr_kruskalDFS.rst:45
 msgid "Depth First Search Running time: :math:`O(E + V)`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:41
+#: ../../build/doc/pgr_kruskalDFS.rst:48
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:54
+#: ../../build/doc/pgr_kruskalDFS.rst:61
 msgid "Single vertex"
 msgstr ""
 
@@ -109,52 +121,52 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:62
+#: ../../build/doc/pgr_kruskalDFS.rst:69
 msgid "The Minimum Spanning Tree starting on vertex :math:`2`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:72
+#: ../../build/doc/pgr_kruskalDFS.rst:79
 msgid "Multiple vertices"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:80
+#: ../../build/doc/pgr_kruskalDFS.rst:87
 msgid "The Minimum Spanning Tree starting on vertices :math:`\\{13, 2\\}` with :math:`depth <= 3`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:90
+#: ../../build/doc/pgr_kruskalDFS.rst:97
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:93
-#: ../../build/doc/pgr_kruskalDFS.rst:114
+#: ../../build/doc/pgr_kruskalDFS.rst:100
+#: ../../build/doc/pgr_kruskalDFS.rst:121
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:93
-#: ../../build/doc/pgr_kruskalDFS.rst:114
+#: ../../build/doc/pgr_kruskalDFS.rst:100
+#: ../../build/doc/pgr_kruskalDFS.rst:121
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_kruskalDD.rst:6
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:95
+#: ../../build/doc/pgr_kruskalDFS.rst:102
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:95
+#: ../../build/doc/pgr_kruskalDFS.rst:102
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:95
+#: ../../build/doc/pgr_kruskalDFS.rst:102
 msgid "SQL query described in `Inner query`_."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:96
+#: ../../build/doc/pgr_kruskalDFS.rst:103
 msgid "**Root vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:96
-#: ../../build/doc/pgr_kruskalDFS.rst:116
+#: ../../build/doc/pgr_kruskalDFS.rst:103
+#: ../../build/doc/pgr_kruskalDFS.rst:123
 #: ../../build/doc/pgr_kruskalDD.rst:8
 #: ../../build/doc/pgr_kruskalDD.rst:9
 #: ../../build/doc/pgr_kruskalDD.rst:13
@@ -163,68 +175,68 @@ msgstr ""
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:96
+#: ../../build/doc/pgr_kruskalDFS.rst:103
 msgid "Identifier of the root vertex of the tree."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:98
+#: ../../build/doc/pgr_kruskalDFS.rst:105
 msgid "Used on `Single vertex`_"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:99
+#: ../../build/doc/pgr_kruskalDFS.rst:106
 msgid "When value is :math:`0` then gets the spanning forest starting in aleatory nodes for each tree in the forest."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:102
+#: ../../build/doc/pgr_kruskalDFS.rst:109
 msgid "**Root vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:102
+#: ../../build/doc/pgr_kruskalDFS.rst:109
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:102
+#: ../../build/doc/pgr_kruskalDFS.rst:109
 msgid "Array of identifiers of the root vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:104
+#: ../../build/doc/pgr_kruskalDFS.rst:111
 msgid "Used on `Multiple vertices`_"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:105
+#: ../../build/doc/pgr_kruskalDFS.rst:112
 msgid ":math:`0` values are ignored"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:106
+#: ../../build/doc/pgr_kruskalDFS.rst:113
 msgid "For optimization purposes, any duplicated value is ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:110
+#: ../../build/doc/pgr_kruskalDFS.rst:117
 msgid "Optional Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:114
+#: ../../build/doc/pgr_kruskalDFS.rst:121
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:116
+#: ../../build/doc/pgr_kruskalDFS.rst:123
 msgid "**max_depth**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:116
+#: ../../build/doc/pgr_kruskalDFS.rst:123
 msgid ":math:`9223372036854775807`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:116
+#: ../../build/doc/pgr_kruskalDFS.rst:123
 msgid "Upper limit for depth of node in the tree"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:118
+#: ../../build/doc/pgr_kruskalDFS.rst:125
 msgid "When value is ``Negative`` then **throws error**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:122
+#: ../../build/doc/pgr_kruskalDFS.rst:129
 msgid "Inner query"
 msgstr ""
 
@@ -317,7 +329,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:131
+#: ../../build/doc/pgr_kruskalDFS.rst:138
 msgid "Result Columns"
 msgstr ""
 
@@ -394,39 +406,39 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:140
+#: ../../build/doc/pgr_kruskalDFS.rst:147
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:142
+#: ../../build/doc/pgr_kruskalDFS.rst:149
 msgid ":doc:`spanningTree-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:143
+#: ../../build/doc/pgr_kruskalDFS.rst:150
 msgid ":doc:`kruskal-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:144
+#: ../../build/doc/pgr_kruskalDFS.rst:151
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:145
+#: ../../build/doc/pgr_kruskalDFS.rst:152
 msgid "`Boost: Kruskal's algorithm documentation <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:146
+#: ../../build/doc/pgr_kruskalDFS.rst:153
 msgid "`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:149
+#: ../../build/doc/pgr_kruskalDFS.rst:156
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:150
+#: ../../build/doc/pgr_kruskalDFS.rst:157
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:151
+#: ../../build/doc/pgr_kruskalDFS.rst:158
 msgid ":ref:`search`"
 msgstr ""
 

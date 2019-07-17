@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,31 +41,37 @@ msgid ""
 "forest, consisting of a spanning tree of each connected component."
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:35
-msgid "See Also"
+#: ../../build/doc/spanningTree-family.rst:33
+msgid ""
+"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
+"/spanningTree-family.html>`__)"
 msgstr ""
 
 #: ../../build/doc/spanningTree-family.rst:37
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/spanningTree-family.rst:39
 msgid ""
 "`Boost: Prim's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:38
+#: ../../build/doc/spanningTree-family.rst:40
 msgid ""
 "`Wikipedia: Prim's algorithm "
 "<https://en.wikipedia.org/wiki/Prim'_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:41
+#: ../../build/doc/spanningTree-family.rst:43
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:42
+#: ../../build/doc/spanningTree-family.rst:44
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:43
+#: ../../build/doc/spanningTree-family.rst:45
 msgid ":ref:`search`"
 msgstr ""
 

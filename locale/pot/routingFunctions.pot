@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -233,14 +233,22 @@ msgid ":doc:`drivingDistance-category`"
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:3
-msgid ":doc:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra"
+msgid ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:4
-msgid "Post pocessing"
+msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
+msgstr ""
+
+#: ../../build/doc/drivingDistance-category.rst:5
+msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:6
+msgid "Post pocessing"
+msgstr ""
+
+#: ../../build/doc/drivingDistance-category.rst:8
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
 msgstr ""
 

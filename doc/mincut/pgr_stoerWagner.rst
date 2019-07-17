@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_stoerWagner - Experimental
@@ -18,9 +18,20 @@ Function determines a min-cut and the min-cut weight of a connected, undirected 
 
    Boost Graph Inside
 
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
 .. rubric:: Availability
 
-* **TBD**
+* Version 2.3.0
+
+   * New **Experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_stoerWagner.html>`__)
 
 Description
 -------------------------------------------------------------------------------
@@ -44,8 +55,8 @@ weight on the cut determines whether it is a minimum cut.
 
 - Process is done only on edges with positive costs.
 - It's implementation is only on **undirected** graph.
-- Sum of the weights of all edges between the two sets is mincut. 
-  
+- Sum of the weights of all edges between the two sets is mincut.
+
   - A **mincut** is a cut having the least weight.
 
 - Values are returned when graph is connected.
@@ -75,7 +86,7 @@ Signatures
 .. code-block:: none
 
     pgr_stoerWagner(TEXT edges_sql);
-    RETURNS SET OF (seq, edge, cost, mincut) 
+    RETURNS SET OF (seq, edge, cost, mincut)
     OR EMPTY SET
 
 .. literalinclude:: doc-pgr_stoerWagner.queries

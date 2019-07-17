@@ -58,7 +58,7 @@ COST 100
 ROWS 1000;
 
 
--- ONE to MANY 
+-- ONE to MANY
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql

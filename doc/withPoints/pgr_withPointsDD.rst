@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_withPointsDD - Proposed
@@ -17,13 +17,27 @@ pgr_withPointsDD - Proposed
    :end-before: end-warning
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph
 
    Boost Graph Inside
 
 .. rubric:: Availability
 
-* Proposed in v2.2
+* Version 2.2.0
+
+  * New **proposed** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_withPointsDD.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPointsDD.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPointsDD.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsDD.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsDD.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html>`__
 
 Description
 -------------------------------------------------------------------------------

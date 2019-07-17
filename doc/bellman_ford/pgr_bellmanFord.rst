@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_bellmanFord - Experimental
@@ -14,7 +14,7 @@ pgr_bellmanFord - Experimental
 In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/bellman_ford_shortest.html
+   :target: https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html
 
    Boost Graph Inside
 
@@ -24,10 +24,14 @@ In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
-* Experiemntal on v3.0.0
+* Version 3.0.0
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bellmanFord.html>`__)
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bellmanFord.html>`__)
 
 Description
 -------------------------------------------------------------------------------
@@ -43,8 +47,8 @@ The main characteristics are:
 
     - When the start vertex and the end vertex are the same, there is no path. The agg_cost would be 0.
 
-    - When the start vertex and the end vertex are different, and there exists a path between them without having a ‘negative cycle’. The agg_cost would be some finite value denoting the shortest distance between them.
-    - When the start vertex and the end vertex are different, and there exists a path between them, but it contains a ‘negative cycle’. In such case, agg_cost for those vertices keep on decreasing furthermore, Hence agg_cost can’t be defined for them.
+    - When the start vertex and the end vertex are different, and there exists a path between them without having a *negative cycle*. The agg_cost would be some finite value denoting the shortest distance between them.
+    - When the start vertex and the end vertex are different, and there exists a path between them, but it contains a *negative cycle*. In such case, agg_cost for those vertices keep on decreasing furthermore, Hence agg_cost can’t be defined for them.
 
     - When the start vertex and the end vertex are different, and there is no path. The agg_cost is :math:`\infty`.
 

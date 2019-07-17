@@ -69,7 +69,7 @@ class Pgr_randomSpanningTree {
 
          std::minstd_rand rng;
          // TODO(aps)
-         // This function is running in infinte loop
+         // This function is running in infinite loop
          try {
              boost::random_spanning_tree(
                      graph.graph,

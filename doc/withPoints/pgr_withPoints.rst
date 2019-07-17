@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_withPoints - Proposed
@@ -17,13 +17,27 @@ pgr_withPoints - Proposed
    :end-before: end-warning
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph
 
    Boost Graph Inside
 
 .. rubric:: Availability
 
-* Proposed in v2.2
+* Version 2.2.0
+
+  * New **proposed** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_withPoints.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPoints.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPoints.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPoints.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPoints.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPoints.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -78,7 +92,7 @@ Signatures
 
     - For a **directed** graph.
     - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
-    - No **details** are given about distance of other points of points_sql query. 
+    - No **details** are given about distance of other points of points_sql query.
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e1

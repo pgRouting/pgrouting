@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_dijkstra
@@ -14,25 +14,46 @@ pgr_dijkstra
 In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
+   :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside
 
 .. rubric:: Availability
 
-* New on v2.1.0:
+* Version 3.0.0
 
-  * pgr_dijkstra(One to Many)
-  * pgr_dijkstra(Many to One)
-  * pgr_dijkstra(Many to Many)
+  * **Official** functions
 
-* Signature change on v2.1.0:
+* Version 2.2.0
 
-  * pgr_dijkstra(One to One)
+  * New **proposed** functions:
 
-* New on v2.0.0:
+     * pgr_dijkstra(One to Many)
+     * pgr_dijkstra(Many to One)
+     * pgr_dijkstra(Many to Many)
 
-  * pgr_dijkstra(One to One)
+* Version 2.1.0
+
+  * Signature change on pgr_dijkstra(One to One)
+
+* Version 2.0.0
+
+  * **Official** pgr_dijkstra(One to One)
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_dijkstra.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstra.html>`__
+
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstra.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstra.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstra.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstra.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/src/dijkstra/doc/index.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/src/dijkstra/doc/index.html>`__
+
 
 Description
 -------------------------------------------------------------------------------
@@ -269,7 +290,7 @@ The examples in this section use the following:
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

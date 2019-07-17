@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-06 10:03-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,10 +97,18 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_minCostMaxFlow.rst:26
-msgid "New as experimental on v3.0.0"
+msgid "Version 3.0.0"
 msgstr ""
 
 #: ../../build/doc/pgr_minCostMaxFlow.rst:28
+msgid "New **experimental** function"
+msgstr ""
+
+#: ../../build/doc/pgr_minCostMaxFlow.rst:31
+msgid "Support"
+msgstr ""
+
+#: ../../build/doc/pgr_minCostMaxFlow.rst:32
 msgid ""
 "**Supported versions:** current(`3.0 "
 "<https://docs.pgrouting.org/dev/en/pgr_minCostMaxFlow.html>`"
@@ -108,7 +116,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_minCostMaxFlow.rst:32
+#: ../../build/doc/pgr_minCostMaxFlow.rst:36
 #: ../../build/doc/pgr_minCostMaxFlow_Cost.rst:7
 msgid "Description"
 msgstr ""
@@ -174,7 +182,7 @@ msgstr ""
 msgid "By aggregation of the incoming flow cost to the targets"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:38
+#: ../../build/doc/pgr_minCostMaxFlow.rst:42
 msgid ""
 "Running time: :math:`O(U * (E + V * logV))`, where :math:`U` is the value"
 " of the max flow. :math:`U` is upper bound on number of iteration. In "
@@ -182,15 +190,15 @@ msgid ""
 ":math:`U`."
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:41
+#: ../../build/doc/pgr_minCostMaxFlow.rst:45
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:44
+#: ../../build/doc/pgr_minCostMaxFlow.rst:48
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:58
+#: ../../build/doc/pgr_minCostMaxFlow.rst:62
 msgid "One to One"
 msgstr ""
 
@@ -198,31 +206,31 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:66
+#: ../../build/doc/pgr_minCostMaxFlow.rst:70
 msgid "From vertex :math:`2` to vertex :math:`3`"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:76
+#: ../../build/doc/pgr_minCostMaxFlow.rst:80
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:84
+#: ../../build/doc/pgr_minCostMaxFlow.rst:88
 msgid "From vertex :math:`13` to vertices :math:`\\{7, 1, 4\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:94
+#: ../../build/doc/pgr_minCostMaxFlow.rst:98
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:102
+#: ../../build/doc/pgr_minCostMaxFlow.rst:106
 msgid "From vertices :math:`\\{1, 7, 14\\}` to vertex :math:`12`"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:112
+#: ../../build/doc/pgr_minCostMaxFlow.rst:116
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:119
+#: ../../build/doc/pgr_minCostMaxFlow.rst:123
 msgid "From vertices :math:`\\{7, 13\\}` to vertices :math:`\\{3, 9\\}`"
 msgstr ""
 
@@ -308,7 +316,7 @@ msgstr ""
 msgid "Array of identifiers of the ending vertices of the flow."
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:130
+#: ../../build/doc/pgr_minCostMaxFlow.rst:134
 msgid "Inner query"
 msgstr ""
 
@@ -487,30 +495,33 @@ msgstr ""
 msgid "The aggregate cost."
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:141
+#: ../../build/doc/pgr_minCostMaxFlow.rst:145
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:143
+#: ../../build/doc/pgr_minCostMaxFlow.rst:147
 msgid ":doc:`costFlow-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:144
+#: ../../build/doc/pgr_minCostMaxFlow.rst:148
 msgid "https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:147
+#: ../../build/doc/pgr_minCostMaxFlow.rst:151
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:148
+#: ../../build/doc/pgr_minCostMaxFlow.rst:152
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_minCostMaxFlow.rst:149
+#: ../../build/doc/pgr_minCostMaxFlow.rst:153
 msgid ":ref:`search`"
 msgstr ""
 
 #~ msgid "**TBD**"
+#~ msgstr ""
+
+#~ msgid "New as experimental on v3.0.0"
 #~ msgstr ""
 

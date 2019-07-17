@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_lineGraph - Experimental
@@ -13,7 +13,7 @@ pgr_lineGraph - Experimental
 ``pgr_lineGraph`` — Transforms a given graph into its corresponding edge-based graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
+   :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside
 
@@ -23,7 +23,18 @@ pgr_lineGraph - Experimental
 
 .. rubric:: Availability
 
-* **TBD**
+* Version 2.5.0
+
+  * New **Experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_lineGraph.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_lineGraph.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_lineGraph.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -74,7 +85,7 @@ Complete Signature
    :start-after: -- q2
    :end-before: -- q3
 
-Parameters 
+Parameters
 -------------------------------------------------------------------------------
 
 ======================= ====================== =================================================

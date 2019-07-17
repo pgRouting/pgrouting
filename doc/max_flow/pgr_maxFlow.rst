@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_maxFlow
@@ -13,13 +13,29 @@ pgr_maxFlow
 ``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the source(s) to the targets(s) using the Push Relabel algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
+   :target: https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 
    Boost Graph Inside
 
 .. Rubric:: Availability
 
-* New on v2.4.0
+* Version 3.0.0
+
+  * **Official** function
+
+* Version 2.4.0
+
+  * New **Proposed** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_maxFlow.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_maxFlow.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_maxFlow.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlow.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -28,7 +44,7 @@ Description
 
 - The graph is **directed**.
 - Calculates the maximum flow from the `source(s)` to the `target(s)`.
-  
+
   - When the maximum flow is **0** then there is no flow and **0** is returned.
   - There is no flow when a **source** is the same as a **target**.
 
@@ -95,7 +111,7 @@ Many to One
     pgr_maxFlow(edges_sql, sources,  target)
     RETURNS BIGINT
 
-:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11` 
+:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11`
 
 .. literalinclude:: doc-pgr_maxFlow.queries
    :start-after: -- q3
@@ -158,7 +174,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`flow-family`
-* http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
+* https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 
 .. rubric:: Indices and tables

@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_withPointsVia - Proposed
@@ -17,13 +17,20 @@ pgr_withPointsVia - Proposed
    :end-before: end-warning
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph
 
    Boost Graph Inside
 
-.. rubric:: Availability: 
+.. rubric:: Availability:
 
-* Proposed in v2.2
+* Version 3.0.0
+
+  * New **proposed** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_withPointsVia.html>`__)
 
 Description
 -------------------------------------------------------------------------------
@@ -46,7 +53,7 @@ Signatures
 .. index::
 	single: withPointsVia(edges_sql, points_sql, start_pid, distance) -- proposed
 
-.. rubric:: Using defaults 
+.. rubric:: Using defaults
 ...................................................
 
 .. code-block:: none
@@ -97,7 +104,7 @@ Inner query
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-Parameters 
+Parameters
 ...............................................................................
 
 ================ ================= =================================================

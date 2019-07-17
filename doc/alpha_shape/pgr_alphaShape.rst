@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_alphaShape
@@ -17,25 +17,31 @@ pgr_alphaShape
 * Version 3.0.0
 
   * Breaking change on signature
+  * Old signature no longer supported
 
 * Version 2.1.0
 
   * Added alpha argument with default 0 (use optimal value)
   * Support to return multiple outer/inner ring
 
-* Renamed in v2.0.0
+* Version 2.0.0
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_alphaShape.html>`__)
-`2.6 <http://docs.pgrouting.org/2.6/en/pgr_alphaShape.html>`__
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_alphaShape.html>`__
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_alphaShape.html>`__
+  * **Official** function
+  * Renamed from version 1.x
 
-**Unsupported versions:**
-`2.3 <http://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html>`__
-`2.2 <http://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html>`__
-`2.1 <http://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__
-`2.0 <http://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_alphaShape.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_alphaShape.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_alphaShape.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_alphaShape.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__
 
 Description
 -------------------------------------------------------------------------------

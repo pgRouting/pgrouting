@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_lineGraphFull - Experimental
@@ -18,7 +18,17 @@ pgr_lineGraphFull - Experimental
 
 .. rubric:: Availability
 
-* **TBD**
+* Version 2.6.0
+
+  * New **Experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_lineGraphFull.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -46,7 +56,7 @@ Signatures
 .. code-block:: none
 
     pgr_lineGraphFull(edges_sql)
-    RETURNS SET OF (seq, source, target, cost, edge) 
+    RETURNS SET OF (seq, source, target, cost, edge)
         OR EMPTY SET
 
 .. rubric:: Using defaults
@@ -106,12 +116,12 @@ This example displays how this graph transformation works to create additional e
 
 .. code-block:: none
 
-    SELECT * FROM pgr_lineGraphFull('SELECT id, 
-                                            source, 
-                                            target, 
-                                            cost, 
-                                            reverse_cost 
-                                       FROM edge_table 
+    SELECT * FROM pgr_lineGraphFull('SELECT id,
+                                            source,
+                                            target,
+                                            cost,
+                                            reverse_cost
+                                       FROM edge_table
                                          WHERE id IN (4,7,8,10)');
 
 | |second|
@@ -122,7 +132,7 @@ This example displays how this graph transformation works to create additional e
 In the transformed graph, all of the edges from the original graph are still present (yellow), but we now have additional edges for every turn that could be made across vertex 6 (orange).
 
 :Example: For creating table that identifies transformed vertices
- 
+
 The vertices in the transformed graph are each created by splitting up the vertices in the original graph. Unless a vertex in the original graph is a leaf vertex, it will generate more than one vertex in the transformed graph. One of the newly created vertices in the transformed graph will be given the same vertex-id as the vertex that it was created from in the original graph, but the rest of the newly created vertices will have negative vertex ids. Following is an example of how to generate a table that maps the ids of the newly created vertices with the original vertex that they were created from
 
 The first step is to store your results graph into a table and then create the vertex mapping table with one row for each distinct vertex id in the results graph.
@@ -137,7 +147,7 @@ Next, we set the original_id of all of the vertices in the results graph that we
    :start-after: -- q3
    :end-before: -- q4
 
-Then, we cross reference all of the other newly created vertices that do not have the same original_id and set their original_id values. 
+Then, we cross reference all of the other newly created vertices that do not have the same original_id and set their original_id values.
 
 .. literalinclude:: doc-pgr_lineGraphFull.queries
    :start-after: -- q4
@@ -178,8 +188,8 @@ If you cross reference the node column in the dijkstra results with the vertex i
 See Also
 -----------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Line_graph
-* http://en.wikipedia.org/wiki/Complete_graph
+* https://en.wikipedia.org/wiki/Line_graph
+* https://en.wikipedia.org/wiki/Complete_graph
 
 .. rubric:: Indices and tables
 

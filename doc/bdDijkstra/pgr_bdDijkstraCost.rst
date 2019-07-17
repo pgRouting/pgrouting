@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_bdDijkstraCost
@@ -13,23 +13,38 @@ pgr_bdDijkstraCost
 ``pgr_bdDijkstraCost`` — Returns the shortest path(s)'s cost using Bidirectional Dijkstra algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc
+   :target: https://www.boost.org/libs/graph/doc
 
    Boost Graph Inside
 
 .. rubric:: Availability:
 
-* Official on v3.0.0
-* Proposed on v2.5.0
+* Version 3.0.0
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_bdDijkstraCost.html>`__)
-`2.6 <http://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__
+  * **Official** function
+
+* Version 2.5.0
+
+  * New **proposed** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bdDijkstraCost.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__
+
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__
+
 
 Description
 -------------------------------------------------------------------------------
-* **TBD**
+
+**The main characteristics are:**
+
+.. include:: bdDijkstra-family.rst
+   :start-after: description start
+   :end-before: description end
 
 Signatures
 -------------------------------------------------------------------------------
@@ -42,7 +57,7 @@ Signatures
     pgr_bdDijkstraCost(edges_sql, from_vid,  to_vids [, directed])
     pgr_bdDijkstraCost(edges_sql, from_vids, to_vid  [, directed])
     pgr_bdDijkstraCost(edges_sql, from_vids, to_vids [, directed])
-    
+
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -158,7 +173,7 @@ See Also
 
 * The queries use the :doc:`sampledata` network.
 * :doc:`pgr_bdDijkstra`
-* http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
+* https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
 * https://en.wikipedia.org/wiki/Bidirectional_search
 
 .. rubric:: Indices and tables

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,109 +73,127 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCost`"
 msgstr ""
 
+#: ../../build/doc/cost-category.rst:33
+msgid "Previous versions of this page"
+msgstr ""
+
 #: ../../build/doc/cost-category.rst:34
-msgid "General Information"
+msgid ""
+"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
+"/cost-category.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/cost-"
+"category.html>`__"
 msgstr ""
 
 #: ../../build/doc/cost-category.rst:38
-msgid "Characteristics"
-msgstr ""
-
-#: ../../build/doc/cost-category.rst:40
-msgid "The main Characteristics are:"
-msgstr ""
-
-#: ../../build/doc/cost-category.rst:42
-msgid "Each function works as part of the family it belongs to."
-msgstr ""
-
-#: ../../build/doc/cost-category.rst:43
-msgid "It does not return a path."
+msgid ""
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/cost-"
+"category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/cost-"
+"category.html>`__"
 msgstr ""
 
 #: ../../build/doc/cost-category.rst:44
+msgid "General Information"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:48
+msgid "Characteristics"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:50
+msgid "The main Characteristics are:"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:52
+msgid "Each function works as part of the family it belongs to."
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:53
+msgid "It does not return a path."
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:54
 msgid ""
 "Returns the sum of the costs of the resulting path(s) for pair "
 "combination of nodes in the graph."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:45
+#: ../../build/doc/cost-category.rst:55
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:46
+#: ../../build/doc/cost-category.rst:56
 msgid "Values are returned when there is a path."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:48
+#: ../../build/doc/cost-category.rst:58
 msgid ""
 "The returned values are in the form of a set of `(start_vid, end_vid, "
 "agg_cost)`."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:50
+#: ../../build/doc/cost-category.rst:60
 msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:52
+#: ../../build/doc/cost-category.rst:62
 msgid "The `agg_cost` int the non included values `(v, v)` is `0`."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:54
+#: ../../build/doc/cost-category.rst:64
 msgid ""
 "When the starting vertex and ending vertex are the different and there is"
 " no path."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:56
+#: ../../build/doc/cost-category.rst:66
 msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:58
+#: ../../build/doc/cost-category.rst:68
 msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
 "index would be the pair: `(start_vid, end_vid)`."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:60
+#: ../../build/doc/cost-category.rst:70
 msgid ""
 "Depending on the function and its parameters, the results can be "
 "symmetric."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:62
+#: ../../build/doc/cost-category.rst:72
 msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:64
+#: ../../build/doc/cost-category.rst:74
 msgid "Any duplicated value in the `start_vids` or in `end_vids` are ignored."
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:66
+#: ../../build/doc/cost-category.rst:76
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:68
+#: ../../build/doc/cost-category.rst:78
 msgid "`start_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:69
+#: ../../build/doc/cost-category.rst:79
 msgid "`end_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:74
+#: ../../build/doc/cost-category.rst:84
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:77
+#: ../../build/doc/cost-category.rst:87
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:78
+#: ../../build/doc/cost-category.rst:88
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/cost-category.rst:79
+#: ../../build/doc/cost-category.rst:89
 msgid ":ref:`search`"
 msgstr ""
 

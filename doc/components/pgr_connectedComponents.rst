@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_connectedComponents
@@ -13,23 +13,29 @@ pgr_connectedComponents
 ``pgr_connectedComponents`` — Connected components of an undirected graph using a DFS-based approach.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/connected_components.html
+   :target: https://www.boost.org/libs/graph/doc/connected_components.html
 
    Boost Graph Inside
 
 .. rubric:: Availability
 
-* On v3.0.0
+* Version 3.0.0
 
-  * Set as `official`
   * Return columns change: ``n_seq`` is removed
+  * **Official** function
 
-* New as experimental on v2.5.0
+* Version 2.5.0
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_connectedComponents.html>`__)
-`2.6 <https://docs.pgrouting.org/2.6/en/pgr_connectedComponents.html>`__
-`2.5 <https://docs.pgrouting.org/2.5/en/pgr_connectedComponents.html>`__
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_connectedComponents.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_connectedComponents.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_connectedComponents.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -107,8 +113,8 @@ See Also
 
 * :doc:`components-family`
 * The queries use the :doc:`sampledata` network.
-* Boost: `Connected components <http://www.boost.org/libs/graph/doc/connected_components.html>`__
-* wikipedia: `Connected component <http://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__
+* Boost: `Connected components <https://www.boost.org/libs/graph/doc/connected_components.html>`__
+* wikipedia: `Connected component <https://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__
 
 .. rubric:: Indices and tables
 

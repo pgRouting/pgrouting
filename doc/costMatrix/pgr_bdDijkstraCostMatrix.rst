@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_bdDijkstraCostMatrix
@@ -14,24 +14,37 @@ pgr_bdDijkstraCostMatrix
 
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph
 
    Boost Graph Inside
 
 .. rubric:: Availability:
 
-* Official on v3.0.0
-* Proposed on v2.5.0
+* Version 3.0.0
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bdDijkstraCostMatrix.html>`__)
-`2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__
-`2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__
+  * **Official** function
+
+* Version 2.5.0
+
+  * New **proposed** function
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_bdDijkstraCostMatrix.html>`__)
+
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__
 
 Description
 -------------------------------------------------------------------------------
 
-Using Dijkstra algorithm, calculate and return a cost matrix.
+**The main characteristics are:**
+
+.. include:: bdDijkstra-family.rst
+   :start-after: description start
+   :end-before: description end
+
+* Returns a cost matrix.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -73,7 +86,7 @@ Complete Signature
    :start-after: -- bdDijkstra q2
    :end-before: -- bdDijkstra q3
 
-Parameters 
+Parameters
 -------------------------------------------------------------------------------
 
 ================ ====================== =================================================

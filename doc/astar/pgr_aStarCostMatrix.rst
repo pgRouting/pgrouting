@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_aStarCostMatrix
@@ -13,19 +13,29 @@ pgr_aStarCostMatrix
 ``pgr_aStarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph
 
    Boost Graph Inside
 
 .. rubric:: Availability
 
-* New on v2.4.0
+* Version 3.0.0
 
-**Supported versions:**
-current(`3.0 <http://docs.pgrouting.org/dev/en/pgr_aStarCostMatrix.html>`__)
-`2.6 <http://docs.pgrouting.org/2.6/en/pgr_aStarCostMatrix.html>`__
-`2.5 <http://docs.pgrouting.org/2.5/en/pgr_aStarCostMatrix.html>`__
-`2.4 <http://docs.pgrouting.org/2.4/en/pgr_aStarCostMatrix.html>`__
+  * **Official** function
+
+* Version 2.4.0
+
+  * New **proposed** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_aStarCostMatrix.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_aStarCostMatrix.html>`__
+
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_aStarCostMatrix.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_aStarCostMatrix.html>`__
 
 Description
 -------------------------------------------------------------------------------

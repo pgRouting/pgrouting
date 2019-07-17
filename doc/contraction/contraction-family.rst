@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 Contraction - Family of functions
@@ -20,6 +20,20 @@ Contraction - Family of functions
     :hidden:
 
     pgr_contraction
+
+
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/contraction-family.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/contraction-family.html>`__
+
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/contraction-family.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/contraction-family.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/contraction/doc/contraction.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/contraction/doc/contraction.html>`__
+
 
 Introduction
 -------------------------------------------------------------------------------
@@ -58,7 +72,7 @@ In case of a directed graph, a node is considered a `dead end` node when
 * `The number of adjacent vertices is 1.`_
 
   * `There are no outgoing edges and has at least one incoming edge.`_
-  * `There are no incomming edges and has at least one outgoing edge.`_
+  * `There are no incoming edges and has at least one outgoing edge.`_
 
 
 When the conditions are true then the `Operation: Dead End Contraction`_ can be done.
@@ -123,7 +137,7 @@ There are no outgoing edges and has at least one incoming edge.
         v -> z;
     }
 
-There are no incomming edges and has at least one outgoing edge.
+There are no incoming edges and has at least one outgoing edge.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 - The green nodes are `dead end`_ nodes
@@ -210,7 +224,7 @@ In case of a directed graph, a node is considered a `linear` node when
 
 * `The number of adjacent vertices is 2.`_
 
-  * `Linearity is symetrical`_
+  * `Linearity is symmetrical`_
 
 The number of adjacent vertices is 2.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -248,7 +262,7 @@ The number of adjacent vertices is 2.
         u -- v -- w;
     }
 
-Linearity is symetrical
+Linearity is symmetrical
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Using a contra example, vertex ``v`` is not linear because it's not possible to
@@ -636,8 +650,8 @@ Now, the routing graph has an edge connecting with node :math:`7`.
 See Also
 -------------
 
-* http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
-* http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
+* https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
+* https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
 * The queries use :doc:`pgr_contraction` function and the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

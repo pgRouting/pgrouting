@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-08 09:21-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -277,7 +277,11 @@ msgstr ""
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:163
+#: ../../build/doc/proposed.rst:155
+msgid ":doc:`pgr_turnRestrictedPath`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:165
 msgid ":doc:`topology-functions`"
 msgstr ""
 
@@ -285,19 +289,19 @@ msgstr ""
 msgid ":doc:`pgr_extractVertices` - Extracts vertices information based on the source and target."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:172
+#: ../../build/doc/proposed.rst:173
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:175
+#: ../../build/doc/proposed.rst:176
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:176
+#: ../../build/doc/proposed.rst:177
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:177
+#: ../../build/doc/proposed.rst:178
 msgid ":ref:`search`"
 msgstr ""
 

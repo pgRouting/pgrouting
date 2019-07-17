@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,49 +34,73 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:22
-msgid "New on v2.1.0:"
+msgid "Version 2.1.0:"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:24
-msgid "pgr_drivingDistance(multiple vertices)"
+msgid "Signature change pgr_drivingDistance(single vertex)"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:26
-msgid "Signature change on v2.1.0:"
+#: ../../build/doc/pgr_drivingDistance.rst:25
+msgid "New **Official** pgr_drivingDistance(multiple vertices)"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:28
+#: ../../build/doc/pgr_drivingDistance.rst:27
+msgid "Version 2.0.0:"
+msgstr ""
+
+#: ../../build/doc/pgr_drivingDistance.rst:29
+msgid "**Official** pgr_drivingDistance(single vertex)"
+msgstr ""
+
 #: ../../build/doc/pgr_drivingDistance.rst:32
-msgid "pgr_drivingDistance(single vertex)"
+msgid "Support"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:30
-msgid "New on v2.0.0:"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_drivingDistance.rst:35
-#: ../../build/doc/pgr_drivingDistance.rst:90
-#: ../../build/doc/pgr_drivingDistance.rst:113
-msgid "Description"
+#: ../../build/doc/pgr_drivingDistance.rst:33
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_drivingDistance.html>`__) `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_drivingDistance.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:37
+msgid ""
+"**Unsupported versions:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_drivingDistance.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_drivingDistance.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/driving_distance/doc/pgr_drivingDistance.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/driving_distance/doc/pgr_drivingDistance.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_driving_distance_v3.html>`__"
+" `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_driving_distance.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_drivingDistance.rst:46
+#: ../../build/doc/pgr_drivingDistance.rst:101
+#: ../../build/doc/pgr_drivingDistance.rst:124
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_drivingDistance.rst:48
 msgid ""
 "Using the Dijkstra algorithm, extracts all the nodes that have costs less"
 " than or equal to the value ``distance``. The edges extracted will "
 "conform to the corresponding spanning tree."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:41
+#: ../../build/doc/pgr_drivingDistance.rst:52
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:44
+#: ../../build/doc/pgr_drivingDistance.rst:55
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:52
+#: ../../build/doc/pgr_drivingDistance.rst:63
 msgid "Using defaults"
 msgstr ""
 
@@ -84,117 +108,117 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:58
-#: ../../build/doc/pgr_drivingDistance.rst:71
-#: ../../build/doc/pgr_drivingDistance.rst:84
+#: ../../build/doc/pgr_drivingDistance.rst:69
+#: ../../build/doc/pgr_drivingDistance.rst:82
+#: ../../build/doc/pgr_drivingDistance.rst:95
 msgid "**TBD**"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:64
+#: ../../build/doc/pgr_drivingDistance.rst:75
 msgid "Single Vertex"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:77
+#: ../../build/doc/pgr_drivingDistance.rst:88
 msgid "Multiple Vertices"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:87
+#: ../../build/doc/pgr_drivingDistance.rst:98
 msgid "Parameters"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_drivingDistance.rst:90
-#: ../../build/doc/pgr_drivingDistance.rst:113
+#: ../../build/doc/pgr_drivingDistance.rst:101
+#: ../../build/doc/pgr_drivingDistance.rst:124
 msgid "Column"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_drivingDistance.rst:90
-#: ../../build/doc/pgr_drivingDistance.rst:113
+#: ../../build/doc/pgr_drivingDistance.rst:101
+#: ../../build/doc/pgr_drivingDistance.rst:124
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:92
+#: ../../build/doc/pgr_drivingDistance.rst:103
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:92
+#: ../../build/doc/pgr_drivingDistance.rst:103
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:92
+#: ../../build/doc/pgr_drivingDistance.rst:103
 msgid "SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:93
-#: ../../build/doc/pgr_drivingDistance.rst:116
+#: ../../build/doc/pgr_drivingDistance.rst:104
+#: ../../build/doc/pgr_drivingDistance.rst:127
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:93
-#: ../../build/doc/pgr_drivingDistance.rst:117
-#: ../../build/doc/pgr_drivingDistance.rst:118
+#: ../../build/doc/pgr_drivingDistance.rst:104
+#: ../../build/doc/pgr_drivingDistance.rst:128
+#: ../../build/doc/pgr_drivingDistance.rst:129
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:93
-#: ../../build/doc/pgr_drivingDistance.rst:116
+#: ../../build/doc/pgr_drivingDistance.rst:104
+#: ../../build/doc/pgr_drivingDistance.rst:127
 msgid "Identifier of the starting vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:94
+#: ../../build/doc/pgr_drivingDistance.rst:105
 msgid "**start_vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:94
+#: ../../build/doc/pgr_drivingDistance.rst:105
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:94
+#: ../../build/doc/pgr_drivingDistance.rst:105
 msgid "Array of identifiers of the starting vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:95
+#: ../../build/doc/pgr_drivingDistance.rst:106
 msgid "**distance**"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:95
-#: ../../build/doc/pgr_drivingDistance.rst:119
-#: ../../build/doc/pgr_drivingDistance.rst:120
+#: ../../build/doc/pgr_drivingDistance.rst:106
+#: ../../build/doc/pgr_drivingDistance.rst:130
+#: ../../build/doc/pgr_drivingDistance.rst:131
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:95
+#: ../../build/doc/pgr_drivingDistance.rst:106
 msgid "Upper limit for the inclusion of the node in the result."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:96
+#: ../../build/doc/pgr_drivingDistance.rst:107
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:96
-#: ../../build/doc/pgr_drivingDistance.rst:97
+#: ../../build/doc/pgr_drivingDistance.rst:107
+#: ../../build/doc/pgr_drivingDistance.rst:108
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:96
+#: ../../build/doc/pgr_drivingDistance.rst:107
 msgid ""
 "(optional). When ``false`` the graph is considered as Undirected. Default"
 " is ``true`` which considers the graph as Directed."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:97
+#: ../../build/doc/pgr_drivingDistance.rst:108
 msgid "**equicost**"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:97
+#: ../../build/doc/pgr_drivingDistance.rst:108
 msgid ""
 "(optional). When ``true`` the node will only appear in the closest "
 "``start_vid`` list.  Default is ``false`` which resembles several calls "
 "using the single starting point signatures. Tie brakes are arbitrary."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:101
+#: ../../build/doc/pgr_drivingDistance.rst:112
 msgid "Inner query"
 msgstr ""
 
@@ -233,7 +257,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_drivingDistance.rst:119
+#: ../../build/doc/pgr_drivingDistance.rst:130
 msgid "**cost**"
 msgstr ""
 
@@ -290,118 +314,133 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:108
+#: ../../build/doc/pgr_drivingDistance.rst:119
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:110
+#: ../../build/doc/pgr_drivingDistance.rst:121
 msgid "Returns set of ``(seq [, start_v], node, edge, cost, agg_cost)``"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:115
+#: ../../build/doc/pgr_drivingDistance.rst:126
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:115
-#: ../../build/doc/pgr_drivingDistance.rst:116
+#: ../../build/doc/pgr_drivingDistance.rst:126
+#: ../../build/doc/pgr_drivingDistance.rst:127
 msgid "``INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:115
+#: ../../build/doc/pgr_drivingDistance.rst:126
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:117
+#: ../../build/doc/pgr_drivingDistance.rst:128
 msgid "**node**"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:117
+#: ../../build/doc/pgr_drivingDistance.rst:128
 msgid "Identifier of the node in the path within the limits from ``start_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:118
+#: ../../build/doc/pgr_drivingDistance.rst:129
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:118
+#: ../../build/doc/pgr_drivingDistance.rst:129
 msgid ""
 "Identifier of the edge used to arrive to ``node``. ``0`` when the "
 "``node`` is the ``start_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:119
+#: ../../build/doc/pgr_drivingDistance.rst:130
 msgid "Cost to traverse ``edge``."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:120
+#: ../../build/doc/pgr_drivingDistance.rst:131
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:120
+#: ../../build/doc/pgr_drivingDistance.rst:131
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:124
+#: ../../build/doc/pgr_drivingDistance.rst:135
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:126
+#: ../../build/doc/pgr_drivingDistance.rst:137
 msgid ""
 "For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` "
 "columns"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:128
+#: ../../build/doc/pgr_drivingDistance.rst:139
 msgid "The examples in this section use the following :ref:`fig1`"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:134
+#: ../../build/doc/pgr_drivingDistance.rst:145
 msgid ""
 "For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` "
 "columns"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:136
+#: ../../build/doc/pgr_drivingDistance.rst:147
 msgid "The examples in this section use the following :ref:`fig2`"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:143
+#: ../../build/doc/pgr_drivingDistance.rst:154
 msgid "For queries marked as ``directed`` with ``cost`` column"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:145
+#: ../../build/doc/pgr_drivingDistance.rst:156
 msgid "The examples in this section use the following :ref:`fig3`"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:151
+#: ../../build/doc/pgr_drivingDistance.rst:162
 msgid "For queries marked as ``undirected`` with ``cost`` column"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:153
+#: ../../build/doc/pgr_drivingDistance.rst:164
 msgid "The examples in this section use the following :ref:`fig4`"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:160
+#: ../../build/doc/pgr_drivingDistance.rst:171
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:162
+#: ../../build/doc/pgr_drivingDistance.rst:173
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:163
+#: ../../build/doc/pgr_drivingDistance.rst:174
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:166
+#: ../../build/doc/pgr_drivingDistance.rst:177
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:167
+#: ../../build/doc/pgr_drivingDistance.rst:178
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:168
+#: ../../build/doc/pgr_drivingDistance.rst:179
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "New on v2.1.0:"
+#~ msgstr ""
+
+#~ msgid "pgr_drivingDistance(multiple vertices)"
+#~ msgstr ""
+
+#~ msgid "Signature change on v2.1.0:"
+#~ msgstr ""
+
+#~ msgid "pgr_drivingDistance(single vertex)"
+#~ msgstr ""
+
+#~ msgid "New on v2.0.0:"
+#~ msgstr ""
 

@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_TSPeuclidean
@@ -15,7 +15,24 @@ pgr_TSPeuclidean
 
 .. rubric:: Availability
 
-* New in version 2.3.0
+* Version 3.0.0
+
+  * Name change from pgr_eucledianTSP
+
+* Version 2.3.0
+
+  * New **Official** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_TSPeuclidean.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_eucledianTSP.html>`__
+
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -111,9 +128,9 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`TSP-family`
-* `Simulated annaeling algorithm for beginners <http://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__
-* `Wikipedia: Traveling Salesman Problem <http://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
-* `Wikipedia: Simulated annealing <http://en.wikipedia.org/wiki/Simulated_annealing>`__
+* `Simulated annaeling algorithm for beginners <https://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__
+* `Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
+* `Wikipedia: Simulated annealing <https://en.wikipedia.org/wiki/Simulated_annealing>`__
 
 .. rubric:: Indices and tables
 

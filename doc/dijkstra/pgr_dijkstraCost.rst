@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_dijkstraCost
@@ -16,23 +16,25 @@ Using Dijkstra algorithm implemented by Boost.Graph, and extract only the
 aggregate cost of the shortest path(s) found, for the combination of vertices given.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
+   :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside
 
 .. rubric:: Availability
 
-* New on v2.2.0
+* Version 2.2.0
 
-**Supported versions:**
-current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_dijkstraCost.html>`__)
-`2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__
-`2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__
-`2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__
+  * New **Official** function
 
-**Unsupported versions:**
-`2.3 <https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_dijkstraCost.html#pgr-dijkstraCost>`__
-`2.2 <https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_dijkstraCost.html#pgr-dijkstraCost>`__
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_dijkstraCost.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__
+
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_dijkstraCost.html#pgr-dijkstraCost>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_dijkstraCost.html#pgr-dijkstraCost>`__
 
 
 Description
@@ -215,7 +217,7 @@ Additional Examples
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 * :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

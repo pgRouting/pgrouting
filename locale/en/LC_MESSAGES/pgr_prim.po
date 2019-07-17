@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-07-16 11:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,21 +34,35 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_prim.rst:22
-msgid "New on v3.0.0"
+msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_kruskal.rst:7
-#: ../../build/doc/pgr_kruskal.rst:26 ../../build/doc/pgr_prim.rst:25
-msgid "Description"
+#: ../../build/doc/pgr_prim.rst:24
+msgid "New **Official** function"
 msgstr ""
 
 #: ../../build/doc/pgr_prim.rst:27
+msgid "Support"
+msgstr ""
+
+#: ../../build/doc/pgr_prim.rst:28
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_prim.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_kruskal.rst:7
+#: ../../build/doc/pgr_kruskal.rst:26 ../../build/doc/pgr_prim.rst:32
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_prim.rst:34
 msgid ""
 "This algorithm finds the minimum spanning forest in a possibly "
 "disconnected graph using Prim's algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:30
+#: ../../build/doc/pgr_prim.rst:37
 msgid "**The main characteristics are:**"
 msgstr ""
 
@@ -84,15 +98,15 @@ msgstr ""
 msgid "Prim's running time: :math:`O(E*log V)`"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:36
+#: ../../build/doc/pgr_prim.rst:43
 msgid "EMPTY SET is returned when there are no edges in the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:40
+#: ../../build/doc/pgr_prim.rst:47
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:46
+#: ../../build/doc/pgr_prim.rst:53
 msgid "Summary"
 msgstr ""
 
@@ -100,7 +114,7 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:55
+#: ../../build/doc/pgr_prim.rst:62
 msgid "Minimum Spanning Forest of a subgraph"
 msgstr ""
 
@@ -252,43 +266,46 @@ msgstr ""
 msgid "Cost to traverse the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:71
+#: ../../build/doc/pgr_prim.rst:78
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:73
+#: ../../build/doc/pgr_prim.rst:80
 msgid ":doc:`spanningTree-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:74
+#: ../../build/doc/pgr_prim.rst:81
 msgid ":doc:`prim-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:75
+#: ../../build/doc/pgr_prim.rst:82
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:76
+#: ../../build/doc/pgr_prim.rst:83
 msgid ""
 "`Boost: Prim's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:77
+#: ../../build/doc/pgr_prim.rst:84
 msgid ""
 "`Wikipedia: Prim's algorithm "
 "<https://en.wikipedia.org/wiki/Prim'_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:80
+#: ../../build/doc/pgr_prim.rst:87
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:81
+#: ../../build/doc/pgr_prim.rst:88
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:82
+#: ../../build/doc/pgr_prim.rst:89
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "New on v3.0.0"
+#~ msgstr ""
 

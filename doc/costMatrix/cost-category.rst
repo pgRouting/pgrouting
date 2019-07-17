@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 Cost - Category
@@ -28,6 +28,16 @@ Cost - Category
 * :doc:`pgr_withPointsCost`
 
 .. index proposed to here
+
+.. rubric:: Previous versions of this page
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/cost-category.html>`__)
+  `2.6 <https://docs.pgrouting.org/2.6/en/cost-category.html>`__
+
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/cost-category.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/cost-category.html>`__
 
 
 General Information
