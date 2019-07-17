@@ -52,12 +52,7 @@ public:
     std::deque<Path> binaryBreadthFirstSearch(
         G &graph,
         std::vector<int64_t> start_vertex,
-        std::vector<int64_t> end_vertex,
-        std::ostringstream &log) {
-
-
-        bool result = costCheck(graph, log);
-        pgassert(result == true);
+        std::vector<int64_t> end_vertex) {
 
         std::deque<Path> paths;
 
@@ -87,42 +82,6 @@ public:
     }
 
     private:
-        const size_t MAX_UNIQUE_EDGE_COSTS = 2;
-        bool
-        costCheck(
-            G &graph,
-            std::ostringstream &log)
-        {
-            auto edges = boost::edges(graph.graph);
-            E e;
-            E_i out_i;
-            E_i out_end;
-            std::set<double> cost_set;
-            for (boost::tie(out_i, out_end) = edges;
-                 out_i != out_end; ++out_i)
-            {
-
-                e = *out_i;
-                cost_set.insert(graph[e].cost);
-
-                if (cost_set.size() > MAX_UNIQUE_EDGE_COSTS)
-                {
-                    log << "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! If there are two distinct edge costs, one of them must equal zero!";
-                    return false;
-                }
-            }
-
-            if (cost_set.size() == 2)
-            {
-                if (*cost_set.begin() != 0.0)
-                {
-                    log << "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! If there are two distinct edge costs, one of them must equal zero!";
-                    return false;
-                }
-            }
-
-            return true;
-        }
 
         E DEFAULT_EDGE;
 

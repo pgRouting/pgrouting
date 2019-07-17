@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <algorithm>
-#include <limits>
 
 #include "binaryBreadthFirstSearch/pgr_binaryBreadthFirstSearch.hpp"
 
@@ -46,8 +45,7 @@ std::deque< Path >
 pgr_binaryBreadthFirstSearch(
         G &graph,
         std::vector < int64_t > sources,
-        std::vector < int64_t > targets,
-        std::ostringstream &log) {
+        std::vector < int64_t > targets) {
 
     std::sort(sources.begin(), sources.end());
     sources.erase(
@@ -62,10 +60,48 @@ pgr_binaryBreadthFirstSearch(
     pgrouting::functions::Pgr_binaryBreadthFirstSearch< G > fn_binaryBreadthFirstSearch;
     auto paths = fn_binaryBreadthFirstSearch.binaryBreadthFirstSearch(
             graph,
-            sources, targets,
-            log);
+            sources, targets);
 
     return paths;
+}
+
+const size_t MAX_UNIQUE_EDGE_COSTS = 2;
+const std::string COST_ERR_MSG = 
+    "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! If there are exactly two distinct edge costs, one of them must equal zero!";
+template < class G >
+bool
+costCheck(G &graph) 
+{
+    typedef typename G::E E;
+    typedef typename G::E_i E_i;
+
+    auto edges = boost::edges(graph.graph);
+    E e;
+    E_i out_i;
+    E_i out_end;
+    std::set<double> cost_set;
+    for (boost::tie(out_i, out_end) = edges;
+            out_i != out_end; ++out_i)
+    {
+
+        e = *out_i;
+        cost_set.insert(graph[e].cost);
+
+        if (cost_set.size() > MAX_UNIQUE_EDGE_COSTS)
+        {
+            return false;
+        }
+    }
+
+    if (cost_set.size() == 2)
+    {
+        if (*cost_set.begin() != 0.0)
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 
@@ -111,21 +147,33 @@ do_pgr_binaryBreadthFirstSearch(
             // log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
+
+            if(!(costCheck(digraph))){
+                err << COST_ERR_MSG;
+                *err_msg = pgr_msg(err.str().c_str());
+                return;
+            }
+            
             paths = pgr_binaryBreadthFirstSearch(
                 digraph,
                 start_vertices,
-                end_vertices,
-                log);
+                end_vertices);
 
         } else {
             // log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
+
+            if(!(costCheck(undigraph))){
+                err << COST_ERR_MSG;
+                *err_msg = pgr_msg(err.str().c_str());
+                return;
+            }
+
             paths = pgr_binaryBreadthFirstSearch(
                 undigraph,
                 start_vertices,
-                end_vertices,
-                log);
+                end_vertices);
 
         }
 
