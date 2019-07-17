@@ -1,5 +1,12 @@
 var NAVTREEINDEX5 =
 {
+"classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a38f58b850d81ba5c2b6ea4165cd56cc6":[5,0,0,6,3,3],
+"classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a47d90c66d212d0a023a79d2d6ab8262f":[5,0,0,6,3,40],
+"classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a48a8fcca210de9c079d8ebad5d1302db":[5,0,0,6,3,9],
+"classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a4a2d7dd0c6b73bf48037fcb4acd624e4":[5,0,0,6,3,10],
+"classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a51d3dae600843a57ab20c42accfb5db1":[5,0,0,6,3,0],
+"classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a55d28f24fac0d6355361a292d0d099cf":[5,0,0,6,3,58],
+"classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a57e35d02348e1c52c5de1940dbc181d9":[5,0,0,6,3,63],
 "classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a5a3eb1dbcdd63014d793456f82ad784f":[5,0,0,6,3,21],
 "classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a5b55a87445d1ef6d4d290ae36d8ac09b":[5,0,0,6,3,70],
 "classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a5c0edf7518daab90753cfc94759a8a26":[5,0,0,6,3,1],
@@ -242,12 +249,5 @@ var NAVTREEINDEX5 =
 "classpgrouting_1_1visitors_1_1Prim__dijkstra__visitor.html#afcc561425bf4f3cc527c1b14b6440ff7":[5,0,0,9,4,0],
 "classpgrouting_1_1visitors_1_1dijkstra__one__goal__visitor.html":[5,0,0,9,1],
 "classpgrouting_1_1visitors_1_1dijkstra__one__goal__visitor.html#a8adf39576e8d230986b9b04d4d876ba2":[5,0,0,9,1,2],
-"classpgrouting_1_1visitors_1_1dijkstra__one__goal__visitor.html#acb92c1017baa947fa3610fd12af583b6":[5,0,0,9,1,0],
-"classpgrouting_1_1visitors_1_1dijkstra__one__goal__visitor.html#aeee8b8a903b77ef4d53abc5343a1597e":[5,0,0,9,1,1],
-"classpgrouting_1_1vrp_1_1Base__node.html":[5,0,0,10,0],
-"classpgrouting_1_1vrp_1_1Base__node.html#a043d5d4c8f47cd545f3aac5caf742098":[5,0,0,10,0,2],
-"classpgrouting_1_1vrp_1_1Base__node.html#a147f029e589a2dd36b1edd638d7ac833":[5,0,0,10,0,3],
-"classpgrouting_1_1vrp_1_1Base__node.html#a160fc3bc299f823fef172025fb73311e":[5,0,0,10,0,7],
-"classpgrouting_1_1vrp_1_1Base__node.html#a47ee0a77c639428b6b46a8e9e4c8907e":[5,0,0,10,0,1],
-"classpgrouting_1_1vrp_1_1Base__node.html#a4d49b980895a00fe8fa6c001b84fff2f":[5,0,0,10,0,0]
+"classpgrouting_1_1visitors_1_1dijkstra__one__goal__visitor.html#acb92c1017baa947fa3610fd12af583b6":[5,0,0,9,1,0]
 };

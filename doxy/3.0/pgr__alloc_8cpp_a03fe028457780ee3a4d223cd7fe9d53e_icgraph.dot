@@ -31,7 +31,7 @@ digraph "pgr_msg"
   Node4 -> Node41 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node41 [label="do_pgr_dijkstraVia",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$dijkstraVia__driver_8h.html#a65bae4bd90fab026ee5f54f17655e776"];
   Node4 -> Node44 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node44 [label="do_pgr_directedChPP",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$directedChPP__driver_8h.html#ab8d9c0e3fcfcc59b1de51dfdf2d073fc"];
+  Node44 [label="do_pgr_directedChPP",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$chinesePostman__driver_8h.html#ab8d9c0e3fcfcc59b1de51dfdf2d073fc"];
   Node4 -> Node47 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node47 [label="do_pgr_driving_many\l_to_dist",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f"];
   Node4 -> Node50 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -98,12 +98,12 @@ digraph "pgr_msg"
   Node125 -> Node23 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node125 -> Node26 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node125 -> Node29 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node125 -> Node44 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node125 -> Node32 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node125 -> Node35 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node125 -> Node38 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node125 -> Node74 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node125 -> Node41 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node125 -> Node44 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node125 -> Node47 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node125 -> Node50 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node125 -> Node53 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

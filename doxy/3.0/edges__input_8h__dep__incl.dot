@@ -20,7 +20,7 @@ digraph "edges_input.h"
   Node9 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node17 [label="bellman_ford_neg.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bellman__ford__neg_8c.html"];
   Node9 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node18 [label="directedChPP.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$directedChPP_8c.html",tooltip="Connecting code with postgres. "];
+  Node18 [label="chinesePostman.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$chinesePostman_8c.html"];
   Node9 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node19 [label="edges_input.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$edges__input_8c.html"];
   Node9 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

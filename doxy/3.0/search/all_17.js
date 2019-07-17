@@ -2,7 +2,7 @@ var searchData=
 [
   ['wait_5ftime',['wait_time',['../classpgrouting_1_1vrp_1_1Solution.html#aeb1b32eb9b50566d73338b8e99a506f5',1,'pgrouting::vrp::Solution::wait_time()'],['../classpgrouting_1_1vrp_1_1Vehicle__node.html#a5f9af363a4804c1fb16c3af74d21702b',1,'pgrouting::vrp::Vehicle_node::wait_time()']]],
   ['waittime',['waitTime',['../structGeneral__vehicle__orders__t.html#ac35c6ff98a900b7637e8b525ba989942',1,'General_vehicle_orders_t']]],
-  ['weight',['weight',['../structEdgeProperties.html#af0d89ba8d7fc0fb4c3ede9bee5c521a3',1,'EdgeProperties::weight()'],['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ae6799b01ca0e52a49a89ab7692ccfcb5',1,'pgrouting::graph::PgrCostFlowGraph::weight()'],['../namespacepgrouting.html#a6c47b3b5f11edd5d80229182f3becd99',1,'pgrouting::Weight()']]],
+  ['weight',['weight',['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ae6799b01ca0e52a49a89ab7692ccfcb5',1,'pgrouting::graph::PgrCostFlowGraph::weight()'],['../namespacepgrouting.html#a6c47b3b5f11edd5d80229182f3becd99',1,'pgrouting::Weight()']]],
   ['what',['what',['../classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88',1,'AssertFailedException::what()'],['../classUserQuitException.html#aab6000490a81872716fa1da1ee46f0bc',1,'UserQuitException::what()']]],
   ['window_5flength',['window_length',['../classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1',1,'pgrouting::vrp::Tw_node']]],
   ['withpoints',['withPoints',['../withPoints_8c.html#aaab3ed3bcdef5263b2ac3bc56dcfe410',1,'withPoints.c']]],

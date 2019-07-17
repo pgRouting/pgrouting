@@ -1,5 +1,12 @@
 var NAVTREEINDEX6 =
 {
+"classpgrouting_1_1visitors_1_1dijkstra__one__goal__visitor.html#aeee8b8a903b77ef4d53abc5343a1597e":[5,0,0,9,1,1],
+"classpgrouting_1_1vrp_1_1Base__node.html":[5,0,0,10,0],
+"classpgrouting_1_1vrp_1_1Base__node.html#a043d5d4c8f47cd545f3aac5caf742098":[5,0,0,10,0,2],
+"classpgrouting_1_1vrp_1_1Base__node.html#a147f029e589a2dd36b1edd638d7ac833":[5,0,0,10,0,3],
+"classpgrouting_1_1vrp_1_1Base__node.html#a160fc3bc299f823fef172025fb73311e":[5,0,0,10,0,7],
+"classpgrouting_1_1vrp_1_1Base__node.html#a47ee0a77c639428b6b46a8e9e4c8907e":[5,0,0,10,0,1],
+"classpgrouting_1_1vrp_1_1Base__node.html#a4d49b980895a00fe8fa6c001b84fff2f":[5,0,0,10,0,0],
 "classpgrouting_1_1vrp_1_1Base__node.html#ac447a0a784cb863f908f3375e2ca9d1c":[5,0,0,10,0,6],
 "classpgrouting_1_1vrp_1_1Base__node.html#ad009e491cded70fc4c13f036db66ace2":[5,0,0,10,0,5],
 "classpgrouting_1_1vrp_1_1Base__node.html#ae0a3414bc65c1b67101b3f5944505447":[5,0,0,10,0,4],
@@ -242,12 +249,5 @@ var NAVTREEINDEX6 =
 "classpgrouting_1_1vrp_1_1Swap__info.html#a37d7351288e3cdca6642ab198c317ad5":[5,0,0,10,12,9],
 "classpgrouting_1_1vrp_1_1Swap__info.html#a4015899cce4cbeafa259e033ca5197e8":[5,0,0,10,12,2],
 "classpgrouting_1_1vrp_1_1Swap__info.html#a4d2d61f55c37d30ac6c7df414786a33b":[5,0,0,10,12,6],
-"classpgrouting_1_1vrp_1_1Swap__info.html#a50967480023bfeef9759538d3538a0fc":[5,0,0,10,12,8],
-"classpgrouting_1_1vrp_1_1Swap__info.html#a9cf2ffe12a5512776f19d43d11e5ee7b":[5,0,0,10,12,1],
-"classpgrouting_1_1vrp_1_1Swap__info.html#aa1bb9b594a402078037adf23b7ff8e7a":[5,0,0,10,12,4],
-"classpgrouting_1_1vrp_1_1Swap__info.html#aa6b84c80e3715a8c351c386a58b00e63":[5,0,0,10,12,7],
-"classpgrouting_1_1vrp_1_1Tw__node.html":[5,0,0,10,13],
-"classpgrouting_1_1vrp_1_1Tw__node.html#a0e4f84908b0ebbb71fe9888a5b421b7b":[5,0,0,10,13,24],
-"classpgrouting_1_1vrp_1_1Tw__node.html#a10b9b7e1b549b8a4f813ac15f6b46fc7":[5,0,0,10,13,3],
-"classpgrouting_1_1vrp_1_1Tw__node.html#a12d1d5cdfc3094df03a37df7ee99ea99":[5,0,0,10,13,26]
+"classpgrouting_1_1vrp_1_1Swap__info.html#a50967480023bfeef9759538d3538a0fc":[5,0,0,10,12,8]
 };

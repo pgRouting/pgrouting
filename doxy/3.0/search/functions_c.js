@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['main',['main',['../bellman__ford__testing_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'bellman_ford_testing.cpp']]],
-  ['make_5fedge_5fwriter',['make_edge_writer',['../bellman__ford__testing_8cpp.html#aa7ccc1f1c19123078db6695150f2380b',1,'bellman_ford_testing.cpp']]],
   ['make_5fmatrix',['make_matrix',['../classPgr__allpairs.html#af7ff7c1ce862ce6671208dbafcd78aed',1,'Pgr_allpairs']]],
   ['make_5fresult',['make_result',['../classPgr__allpairs.html#afe79da2fbe6d7c047790ad0fb2070674',1,'Pgr_allpairs::make_result(const G &amp;graph, const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;matrix, size_t &amp;result_tuple_count, Matrix_cell_t **postgres_rows) const'],['../classPgr__allpairs.html#a3978f56a3f11ee235fea38b2408ef8ac',1,'Pgr_allpairs::make_result(G &amp;graph, std::vector&lt; std::vector&lt; double &gt; &gt; &amp;matrix, std::vector&lt; Matrix_cell_t &gt; &amp;rows)']]],
   ['make_5ftriangles',['make_triangles',['../classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#ae7396720e0806b3984765eede95a313c',1,'pgrouting::alphashape::Pgr_alphaShape']]],

@@ -3,9 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node143 [label="default_astar_visitor",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node143 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 [label="pgrouting::algorithms\l::Pgr_astar\< G \>::astar\l_many_goals_visitor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__many__goals__visitor.html",tooltip="class for stopping when all targets are found "];
-  Node143 -> Node145 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node145 [label="pgrouting::algorithms\l::Pgr_astar\< G \>::astar\l_one_goal_visitor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html",tooltip="visitor that terminates when we find the goal "];
+  Node0 [label="pgrouting::algorithms\l::Pgr_astar\< G \>::found_goals",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structpgrouting_1_1algorithms_1_1Pgr__astar_1_1found__goals.html",tooltip="exception for termination "];
 }

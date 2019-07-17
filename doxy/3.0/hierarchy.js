@@ -31,8 +31,6 @@ var hierarchy =
     [ "edge", "structedge.html", null ],
     [ "edge_columns", "structedge__columns.html", null ],
     [ "edge_t", "structedge__t.html", null ],
-    [ "edge_writer< Graph, ParentMap >", "structedge__writer.html", null ],
-    [ "EdgeProperties", "structEdgeProperties.html", null ],
     [ "EventHandler", "classEventHandler.html", [
       [ "SIGINT_Handler", "classSIGINT__Handler.html", null ],
       [ "SIGQUIT_Handler", "classSIGQUIT__Handler.html", null ]

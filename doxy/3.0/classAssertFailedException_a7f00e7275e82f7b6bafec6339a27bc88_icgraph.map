@@ -12,7 +12,7 @@
 <area shape="rect" id="node12" href="$contractGraph__driver_8h.html#a20a03b3811bd108cfc729e9e22a92591" title="do_pgr_contractGraph" alt="" coords="237,512,388,539"/>
 <area shape="rect" id="node13" href="$dagShortestPath__driver_8h.html#af75ff8989dec243a6a194cb5c4d31727" title="do_pgr_dagShortestPath" alt="" coords="230,563,395,589"/>
 <area shape="rect" id="node14" href="$dijkstraVia__driver_8h.html#a65bae4bd90fab026ee5f54f17655e776" title="do_pgr_dijkstraVia" alt="" coords="248,613,377,640"/>
-<area shape="rect" id="node15" href="$directedChPP__driver_8h.html#ab8d9c0e3fcfcc59b1de51dfdf2d073fc" title="do_pgr_directedChPP" alt="" coords="238,664,387,691"/>
+<area shape="rect" id="node15" href="$chinesePostman__driver_8h.html#ab8d9c0e3fcfcc59b1de51dfdf2d073fc" title="do_pgr_directedChPP" alt="" coords="238,664,387,691"/>
 <area shape="rect" id="node16" href="$drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f" title="do_pgr_driving_many\l_to_dist" alt="" coords="240,715,385,757"/>
 <area shape="rect" id="node17" href="$edge__disjoint__paths__driver_8h.html#a44000649b71427312743cf85eae0a6b0" title="do_pgr_edge_disjoint\l_paths" alt="" coords="241,781,385,822"/>
 <area shape="rect" id="node18" href="$euclideanTSP__driver_8h.html#af4e1f6c629941d5e714aedc3855e839e" title="do_pgr_euclideanTSP" alt="" coords="238,847,387,873"/>

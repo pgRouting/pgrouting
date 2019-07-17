@@ -221,7 +221,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ch__edge_8h_source.html#l00045">45</a> of file <a class="el" href="ch__edge_8h_source.html">ch_edge.h</a>.</p>
 
-<p class="reference">References <a class="el" href="ch__edge_8cpp_source.html#l00068">add_contracted_edge_vertices()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00061">add_contracted_vertex()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00045">has_contracted_vertices()</a>.</p>
+<p class="reference">References <a class="el" href="ch__edge_8cpp_source.html#l00067">add_contracted_edge_vertices()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00061">add_contracted_vertex()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00045">has_contracted_vertices()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                                       :</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;         <a class="code" href="classpgrouting_1_1CH__edge.html#ada905eca5a9ee3b22849e26ddd4f943b">id</a>(eid), <a class="code" href="classpgrouting_1_1CH__edge.html#a91c7a1aa8e132f0e61ff51a0055920f2">source</a>(<a class="code" href="classpgrouting_1_1CH__edge.html#a91c7a1aa8e132f0e61ff51a0055920f2">source</a>),</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;         <a class="code" href="classpgrouting_1_1CH__edge.html#ad61775127863fedc718a9234a8bd7949">target</a>(<a class="code" href="classpgrouting_1_1CH__edge.html#ad61775127863fedc718a9234a8bd7949">target</a>), <a class="code" href="classpgrouting_1_1CH__edge.html#ac191fab511ca34d41e77dba5dfd44710">cost</a>(<a class="code" href="classpgrouting_1_1CH__edge.html#ac191fab511ca34d41e77dba5dfd44710">cost</a>) {}</div><div class="ttc" id="classpgrouting_1_1CH__edge_html_ad61775127863fedc718a9234a8bd7949"><div class="ttname"><a href="classpgrouting_1_1CH__edge.html#ad61775127863fedc718a9234a8bd7949">pgrouting::CH_edge::target</a></div><div class="ttdeci">int64_t target</div><div class="ttdef"><b>Definition:</b> <a href="ch__edge_8h_source.html#l00064">ch_edge.h:64</a></div></div>
 <div class="ttc" id="classpgrouting_1_1CH__edge_html_ada905eca5a9ee3b22849e26ddd4f943b"><div class="ttname"><a href="classpgrouting_1_1CH__edge.html#ada905eca5a9ee3b22849e26ddd4f943b">pgrouting::CH_edge::id</a></div><div class="ttdeci">int64_t id</div><div class="ttdef"><b>Definition:</b> <a href="ch__edge_8h_source.html#l00062">ch_edge.h:62</a></div></div>
 <div class="ttc" id="classpgrouting_1_1CH__edge_html_a91c7a1aa8e132f0e61ff51a0055920f2"><div class="ttname"><a href="classpgrouting_1_1CH__edge.html#a91c7a1aa8e132f0e61ff51a0055920f2">pgrouting::CH_edge::source</a></div><div class="ttdeci">int64_t source</div><div class="ttdef"><b>Definition:</b> <a href="ch__edge_8h_source.html#l00063">ch_edge.h:63</a></div></div>
@@ -257,12 +257,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ch__edge_8cpp_source.html#l00068">68</a> of file <a class="el" href="ch__edge_8cpp_source.html">ch_edge.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ch__edge_8cpp_source.html#l00067">67</a> of file <a class="el" href="ch__edge_8cpp_source.html">ch_edge.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="ch__edge_8cpp_source.html#l00050">contracted_vertices()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00045">has_contracted_vertices()</a>, and <a class="el" href="ch__edge_8h_source.html#l00068">m_contracted_vertices</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="ch__edge_8h_source.html#l00045">CH_edge()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                                {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (e.has_contracted_vertices())</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">m_contracted_vertices</a> += e.contracted_vertices();</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">//e.clear_contracted_vertices();</span></div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__edge_html_abb9fa90546910ecc608bed5782880d9d"><div class="ttname"><a href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">pgrouting::CH_edge::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__edge_8h_source.html#l00068">ch_edge.h:68</a></div></div>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                                {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (e.has_contracted_vertices())</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">m_contracted_vertices</a> += e.contracted_vertices();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__edge_html_abb9fa90546910ecc608bed5782880d9d"><div class="ttname"><a href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">pgrouting::CH_edge::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__edge_8h_source.html#l00068">ch_edge.h:68</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -304,7 +304,7 @@ Here is the caller graph for this function:</div>
 <p class="reference">References <a class="el" href="ch__vertex_8cpp_source.html#l00039">pgrouting::CH_vertex::contracted_vertices()</a>, <a class="el" href="ch__vertex_8h_source.html#l00042">pgrouting::CH_vertex::id</a>, and <a class="el" href="ch__edge_8h_source.html#l00068">m_contracted_vertices</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="ch__edge_8h_source.html#l00045">CH_edge()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                           {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">m_contracted_vertices</a> += v.id;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">m_contracted_vertices</a> += v.contracted_vertices();</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">//v.clear_contracted_vertices();</span></div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__edge_html_abb9fa90546910ecc608bed5782880d9d"><div class="ttname"><a href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">pgrouting::CH_edge::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__edge_8h_source.html#l00068">ch_edge.h:68</a></div></div>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                           {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">m_contracted_vertices</a> += v.id;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">m_contracted_vertices</a> += v.contracted_vertices();</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__edge_html_abb9fa90546910ecc608bed5782880d9d"><div class="ttname"><a href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">pgrouting::CH_edge::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__edge_8h_source.html#l00068">ch_edge.h:68</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -349,7 +349,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="ch__edge_8h_source.html#l00056">56</a> of file <a class="el" href="ch__edge_8h_source.html">ch_edge.h</a>.</p>
 
-<p class="reference">References <a class="el" href="identifiers_8hpp_source.html#l00083">Identifiers&lt; T &gt;::clear()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00050">contracted_vertices()</a>, <a class="el" href="ch__edge_8h_source.html#l00068">m_contracted_vertices</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00074">operator&lt;&lt;</a>.</p>
+<p class="reference">References <a class="el" href="identifiers_8hpp_source.html#l00083">Identifiers&lt; T &gt;::clear()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00050">contracted_vertices()</a>, <a class="el" href="ch__edge_8h_source.html#l00068">m_contracted_vertices</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00072">operator&lt;&lt;</a>.</p>
 <div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{<a class="code" href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">m_contracted_vertices</a>.<a class="code" href="classIdentifiers.html#a25c5b0e66e42636322e638e7583b3736">clear</a>();}</div><div class="ttc" id="classIdentifiers_html_a25c5b0e66e42636322e638e7583b3736"><div class="ttname"><a href="classIdentifiers.html#a25c5b0e66e42636322e638e7583b3736">Identifiers::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="identifiers_8hpp_source.html#l00083">identifiers.hpp:83</a></div></div>
 <div class="ttc" id="classpgrouting_1_1CH__edge_html_abb9fa90546910ecc608bed5782880d9d"><div class="ttname"><a href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">pgrouting::CH_edge::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__edge_8h_source.html#l00068">ch_edge.h:68</a></div></div>
 </div><!-- fragment --><div class="dynheader">
@@ -383,7 +383,7 @@ Here is the call graph for this function:</div>
 
 <p class="reference">References <a class="el" href="ch__edge_8h_source.html#l00068">m_contracted_vertices</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00068">add_contracted_edge_vertices()</a>, <a class="el" href="ch__edge_8h_source.html#l00056">clear_contracted_vertices()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00074">pgrouting::operator&lt;&lt;()</a>, and <a class="el" href="pgr__linearContraction_8hpp_source.html#l00167">pgrouting::contraction::Pgr_linear&lt; G &gt;::process_shortcut()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00067">add_contracted_edge_vertices()</a>, <a class="el" href="ch__edge_8h_source.html#l00056">clear_contracted_vertices()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00072">pgrouting::operator&lt;&lt;()</a>, and <a class="el" href="pgr__linearContraction_8hpp_source.html#l00166">pgrouting::contraction::Pgr_linear&lt; G &gt;::process_shortcut()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                   {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">m_contracted_vertices</a>;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1CH__edge_html_abb9fa90546910ecc608bed5782880d9d"><div class="ttname"><a href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">pgrouting::CH_edge::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__edge_8h_source.html#l00068">ch_edge.h:68</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -485,7 +485,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="identifiers_8hpp_source.html#l00078">Identifiers&lt; T &gt;::empty()</a>, and <a class="el" href="ch__edge_8h_source.html#l00068">m_contracted_vertices</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00068">add_contracted_edge_vertices()</a>, and <a class="el" href="ch__edge_8h_source.html#l00045">CH_edge()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00067">add_contracted_edge_vertices()</a>, and <a class="el" href="ch__edge_8h_source.html#l00045">CH_edge()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                       {</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> !<a class="code" href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">m_contracted_vertices</a>.<a class="code" href="classIdentifiers.html#a6d1a35df74df78a52e938c39dc64c640">empty</a>();</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div><div class="ttc" id="classIdentifiers_html_a6d1a35df74df78a52e938c39dc64c640"><div class="ttname"><a href="classIdentifiers.html#a6d1a35df74df78a52e938c39dc64c640">Identifiers::empty</a></div><div class="ttdeci">bool empty() const</div><div class="ttdef"><b>Definition:</b> <a href="identifiers_8hpp_source.html#l00078">identifiers.hpp:78</a></div></div>
 <div class="ttc" id="classpgrouting_1_1CH__edge_html_abb9fa90546910ecc608bed5782880d9d"><div class="ttname"><a href="classpgrouting_1_1CH__edge.html#abb9fa90546910ecc608bed5782880d9d">pgrouting::CH_edge::m_contracted_vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; m_contracted_vertices</div><div class="ttdef"><b>Definition:</b> <a href="ch__edge_8h_source.html#l00068">ch_edge.h:68</a></div></div>
 </div><!-- fragment --><div class="dynheader">
@@ -543,10 +543,10 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ch__edge_8cpp_source.html#l00074">74</a> of file <a class="el" href="ch__edge_8cpp_source.html">ch_edge.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ch__edge_8cpp_source.html#l00072">72</a> of file <a class="el" href="ch__edge_8cpp_source.html">ch_edge.cpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="ch__edge_8h_source.html#l00056">clear_contracted_vertices()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                                          {</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;{id: &quot;</span> &lt;&lt; e.id &lt;&lt; <span class="stringliteral">&quot;,\t&quot;</span></div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;source: &quot;</span> &lt;&lt; e.source &lt;&lt; <span class="stringliteral">&quot;,\t&quot;</span></div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;target: &quot;</span> &lt;&lt; e.target &lt;&lt; <span class="stringliteral">&quot;,\t&quot;</span></div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;cost: &quot;</span> &lt;&lt; e.cost &lt;&lt; <span class="stringliteral">&quot;,\t&quot;</span></div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;contracted vertices: &quot;</span></div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        &lt;&lt; e.contracted_vertices()</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;}&quot;</span>;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">return</span> os;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div></div><!-- fragment -->
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                          {</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;{id: &quot;</span> &lt;&lt; e.id &lt;&lt; <span class="stringliteral">&quot;,\t&quot;</span></div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;source: &quot;</span> &lt;&lt; e.source &lt;&lt; <span class="stringliteral">&quot;,\t&quot;</span></div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;target: &quot;</span> &lt;&lt; e.target &lt;&lt; <span class="stringliteral">&quot;,\t&quot;</span></div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;cost: &quot;</span> &lt;&lt; e.cost &lt;&lt; <span class="stringliteral">&quot;,\t&quot;</span></div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;contracted vertices: &quot;</span></div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        &lt;&lt; e.contracted_vertices()</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;}&quot;</span>;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> os;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -564,7 +564,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="ch__edge_8h_source.html#l00065">65</a> of file <a class="el" href="ch__edge_8h_source.html">ch_edge.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__contractionGraph_8hpp_source.html#l00169">pgrouting::graph::Pgr_contractionGraph&lt; G &gt;::add_shortcut()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00074">pgrouting::operator&lt;&lt;()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__contractionGraph_8hpp_source.html#l00170">pgrouting::graph::Pgr_contractionGraph&lt; G &gt;::add_shortcut()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00072">pgrouting::operator&lt;&lt;()</a>.</p>
 
 </div>
 </div>
@@ -582,7 +582,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="ch__edge_8h_source.html#l00062">62</a> of file <a class="el" href="ch__edge_8h_source.html">ch_edge.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00074">pgrouting::operator&lt;&lt;()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00072">pgrouting::operator&lt;&lt;()</a>.</p>
 
 </div>
 </div>
@@ -608,7 +608,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="ch__edge_8h_source.html#l00068">68</a> of file <a class="el" href="ch__edge_8h_source.html">ch_edge.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00068">add_contracted_edge_vertices()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00061">add_contracted_vertex()</a>, <a class="el" href="ch__edge_8h_source.html#l00056">clear_contracted_vertices()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00050">contracted_vertices()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00045">has_contracted_vertices()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00067">add_contracted_edge_vertices()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00061">add_contracted_vertex()</a>, <a class="el" href="ch__edge_8h_source.html#l00056">clear_contracted_vertices()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00050">contracted_vertices()</a>, <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00045">has_contracted_vertices()</a>.</p>
 
 </div>
 </div>
@@ -626,7 +626,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="ch__edge_8h_source.html#l00063">63</a> of file <a class="el" href="ch__edge_8h_source.html">ch_edge.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00074">pgrouting::operator&lt;&lt;()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00072">pgrouting::operator&lt;&lt;()</a>.</p>
 
 </div>
 </div>
@@ -644,7 +644,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="ch__edge_8h_source.html#l00064">64</a> of file <a class="el" href="ch__edge_8h_source.html">ch_edge.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00074">pgrouting::operator&lt;&lt;()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ch__edge_8cpp_source.html#l00035">cp_members()</a>, and <a class="el" href="ch__edge_8cpp_source.html#l00072">pgrouting::operator&lt;&lt;()</a>.</p>
 
 </div>
 </div>
@@ -658,7 +658,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1CH__edge.html">CH_edge</a></li>
-    <li class="footer">Generated on Sat Jul 6 2019 09:17:02 for PGROUTING by
+    <li class="footer">Generated on Wed Jul 17 2019 12:10:00 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

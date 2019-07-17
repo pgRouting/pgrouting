@@ -3,5 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="Pgr_point_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structPgr__point__t.html"];
+  Node0 [label="Pgr_randomSpanningTree\< G \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPgr__randomSpanningTree.html"];
 }

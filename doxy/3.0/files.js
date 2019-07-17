@@ -37,7 +37,6 @@ var files =
     [ "bellman_ford_neg.c", "bellman__ford__neg_8c.html", "bellman__ford__neg_8c" ],
     [ "bellman_ford_neg_driver.cpp", "bellman__ford__neg__driver_8cpp.html", "bellman__ford__neg__driver_8cpp" ],
     [ "bellman_ford_neg_driver.h", "bellman__ford__neg__driver_8h.html", "bellman__ford__neg__driver_8h" ],
-    [ "bellman_ford_testing.cpp", "bellman__ford__testing_8cpp.html", "bellman__ford__testing_8cpp" ],
     [ "biconnectedComponents.c", "biconnectedComponents_8c.html", "biconnectedComponents_8c" ],
     [ "biconnectedComponents_driver.cpp", "biconnectedComponents__driver_8cpp.html", "biconnectedComponents__driver_8cpp" ],
     [ "biconnectedComponents_driver.h", "biconnectedComponents__driver_8h.html", "biconnectedComponents__driver_8h" ],
@@ -62,6 +61,9 @@ var files =
     [ "ch_vertex.h", "ch__vertex_8h.html", "ch__vertex_8h" ],
     [ "check_parameters.c", "check__parameters_8c.html", "check__parameters_8c" ],
     [ "check_parameters.h", "check__parameters_8h.html", "check__parameters_8h" ],
+    [ "chinesePostman.c", "chinesePostman_8c.html", "chinesePostman_8c" ],
+    [ "chinesePostman_driver.cpp", "chinesePostman__driver_8cpp.html", "chinesePostman__driver_8cpp" ],
+    [ "chinesePostman_driver.h", "chinesePostman__driver_8h.html", "chinesePostman__driver_8h" ],
     [ "column_info_t.h", "column__info__t_8h.html", "column__info__t_8h" ],
     [ "componentsResult.cpp", "componentsResult_8cpp.html", "componentsResult_8cpp" ],
     [ "componentsResult.h", "componentsResult_8h.html", "componentsResult_8h" ],
@@ -106,9 +108,6 @@ var files =
     [ "dijkstraVia.c", "dijkstraVia_8c.html", "dijkstraVia_8c" ],
     [ "dijkstraVia_driver.cpp", "dijkstraVia__driver_8cpp.html", "dijkstraVia__driver_8cpp" ],
     [ "dijkstraVia_driver.h", "dijkstraVia__driver_8h.html", "dijkstraVia__driver_8h" ],
-    [ "directedChPP.c", "directedChPP_8c.html", "directedChPP_8c" ],
-    [ "directedChPP_driver.cpp", "directedChPP__driver_8cpp.html", "directedChPP__driver_8cpp" ],
-    [ "directedChPP_driver.h", "directedChPP__driver_8h.html", "directedChPP__driver_8h" ],
     [ "Dmatrix.cpp", "Dmatrix_8cpp.html", "Dmatrix_8cpp" ],
     [ "Dmatrix.h", "Dmatrix_8h.html", [
       [ "Dmatrix", "classpgrouting_1_1tsp_1_1Dmatrix.html", "classpgrouting_1_1tsp_1_1Dmatrix" ]
@@ -278,6 +277,9 @@ var files =
     [ "pgr_bidirectional.hpp", "pgr__bidirectional_8hpp.html", [
       [ "Pgr_bidirectional", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional" ]
     ] ],
+    [ "pgr_chinesePostman.hpp", "pgr__chinesePostman_8hpp.html", [
+      [ "PgrDirectedChPPGraph", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph" ]
+    ] ],
     [ "pgr_components.cpp", "pgr__components_8cpp.html", "pgr__components_8cpp" ],
     [ "pgr_components.hpp", "pgr__components_8hpp.html", "pgr__components_8hpp" ],
     [ "pgr_components_rt.h", "pgr__components__rt_8h.html", [
@@ -303,9 +305,6 @@ var files =
     ] ],
     [ "pgr_dijkstra.hpp", "pgr__dijkstra_8hpp.html", "pgr__dijkstra_8hpp" ],
     [ "pgr_dijkstraVia.hpp", "pgr__dijkstraVia_8hpp.html", "pgr__dijkstraVia_8hpp" ],
-    [ "pgr_directedChPP.hpp", "pgr__directedChPP_8hpp.html", [
-      [ "PgrDirectedChPPGraph", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph" ]
-    ] ],
     [ "pgr_edge_t.h", "pgr__edge__t_8h.html", [
       [ "pgr_edge_t", "structpgr__edge__t.html", "structpgr__edge__t" ]
     ] ],

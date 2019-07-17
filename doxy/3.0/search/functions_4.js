@@ -4,7 +4,6 @@ var searchData=
   ['edge_5fdisjoint_5fpaths_5fmany_5fto_5fmany',['edge_disjoint_paths_many_to_many',['../edge__disjoint__paths_8c.html#a428ef5f43c537f6aa69378581e302e65',1,'edge_disjoint_paths.c']]],
   ['edge_5fnot_5frelaxed',['edge_not_relaxed',['../classpgrouting_1_1Pgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a36916e85f49725b010d1ddb0a82ee63c',1,'pgrouting::Pgr_dijkstra::dijkstra_distance_visitor_no_init']]],
   ['edge_5frelaxed',['edge_relaxed',['../classpgrouting_1_1Pgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a3fc685ee18c362362cbb7a9ce1482d68',1,'pgrouting::Pgr_dijkstra::dijkstra_distance_visitor_no_init']]],
-  ['edge_5fwriter',['edge_writer',['../structedge__writer.html#a379b3da24fb4c8c2fb9c1fc11467e476',1,'edge_writer']]],
   ['edgeid',['edgeID',['../classpgrouting_1_1trsp_1_1EdgeInfo.html#abab33ba287aed7ae3e8515899bf2799a',1,'pgrouting::trsp::EdgeInfo']]],
   ['edgeinfo',['EdgeInfo',['../classpgrouting_1_1trsp_1_1EdgeInfo.html#a2c48035b97980ed30c1f1c6c07300bc9',1,'pgrouting::trsp::EdgeInfo::EdgeInfo()=default'],['../classpgrouting_1_1trsp_1_1EdgeInfo.html#adaf5b390317ed70ba4ec042702e8d51e',1,'pgrouting::trsp::EdgeInfo::EdgeInfo(pgr_edge_t edgeIn, size_t edgeIndex)']]],
   ['edges_5fof_5fpoints',['edges_of_points',['../classpgrouting_1_1Pg__points__graph.html#a58c0646d5e4712fb604144c10181f9ef',1,'pgrouting::Pg_points_graph']]],

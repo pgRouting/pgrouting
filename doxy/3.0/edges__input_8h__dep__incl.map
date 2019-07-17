@@ -7,32 +7,32 @@
 <area shape="rect" id="node7" href="$bdDijkstra_8c.html" title="bdDijkstra.c" alt="" coords="561,87,653,114"/>
 <area shape="rect" id="node8" href="$bellman__ford_8c.html" title="bellman_ford.c" alt="" coords="677,87,784,114"/>
 <area shape="rect" id="node9" href="$bellman__ford__neg_8c.html" title="bellman_ford_neg.c" alt="" coords="809,87,943,114"/>
-<area shape="rect" id="node10" href="$directedChPP_8c.html" title="Connecting code with postgres. " alt="" coords="968,87,1083,114"/>
-<area shape="rect" id="node11" href="$edges__input_8c.html" title="edges_input.c" alt="" coords="1107,87,1210,114"/>
-<area shape="rect" id="node12" href="$articulationPoints_8c.html" title="articulationPoints.c" alt="" coords="1235,87,1368,114"/>
-<area shape="rect" id="node13" href="$biconnectedComponents_8c.html" title="biconnectedComponents.c" alt="" coords="1393,87,1570,114"/>
-<area shape="rect" id="node14" href="$bridges_8c.html" title="bridges.c" alt="" coords="1595,87,1669,114"/>
-<area shape="rect" id="node15" href="$connectedComponents_8c.html" title="connectedComponents.c" alt="" coords="1694,87,1861,114"/>
-<area shape="rect" id="node16" href="$strongComponents_8c.html" title="strongComponents.c" alt="" coords="1885,87,2027,114"/>
-<area shape="rect" id="node17" href="$contractGraph_8c.html" title="contractGraph.c" alt="" coords="2052,87,2167,114"/>
-<area shape="rect" id="node18" href="$minCostMaxFlow_8c.html" title="Connecting code with postgres. " alt="" coords="2191,87,2326,114"/>
-<area shape="rect" id="node19" href="$dagShortestPath_8c.html" title="dagShortestPath.c" alt="" coords="2351,87,2481,114"/>
-<area shape="rect" id="node20" href="$dijkstra_8c.html" title="dijkstra.c" alt="" coords="2505,87,2580,114"/>
-<area shape="rect" id="node21" href="$dijkstraVia_8c.html" title="dijkstraVia.c" alt="" coords="2605,87,2699,114"/>
-<area shape="rect" id="node22" href="$many__to__dist__driving__distance_8c.html" title="many_to_dist_driving\l_distance.c" alt="" coords="2723,80,2869,121"/>
-<area shape="rect" id="node23" href="$many__to__dist__withPointsDD_8c.html" title="many_to_dist_withPointsDD.c" alt="" coords="2893,87,3091,114"/>
-<area shape="rect" id="node24" href="$ksp_8c.html" title="ksp.c" alt="" coords="3115,87,3170,114"/>
-<area shape="rect" id="node25" href="$turnRestrictedPath_8c.html" title="turnRestrictedPath.c" alt="" coords="3194,87,3337,114"/>
-<area shape="rect" id="node26" href="$withPoints__ksp_8c.html" title="withPoints_ksp.c" alt="" coords="3361,87,3484,114"/>
-<area shape="rect" id="node27" href="$lineGraph_8c.html" title="Connecting code with postgres. " alt="" coords="3508,87,3596,114"/>
-<area shape="rect" id="node28" href="$lineGraphFull_8c.html" title="lineGraphFull.c" alt="" coords="3620,87,3729,114"/>
-<area shape="rect" id="node29" href="$edge__disjoint__paths_8c.html" title="edge_disjoint_paths.c" alt="" coords="3754,87,3902,114"/>
-<area shape="rect" id="node30" href="$max__flow_8c.html" title="max_flow.c" alt="" coords="3926,87,4015,114"/>
-<area shape="rect" id="node31" href="$maximum__cardinality__matching_8c.html" title="maximum_cardinality\l_matching.c" alt="" coords="4039,80,4185,121"/>
-<area shape="rect" id="node32" href="$stoerWagner_8c.html" title="stoerWagner.c" alt="" coords="4209,87,4316,114"/>
-<area shape="rect" id="node33" href="$kruskal_8c.html" title="kruskal.c" alt="" coords="4340,87,4415,114"/>
-<area shape="rect" id="node34" href="$prim_8c.html" title="prim.c" alt="" coords="4439,87,4497,114"/>
-<area shape="rect" id="node35" href="$randomSpanningTree_8c.html" title="randomSpanningTree.c" alt="" coords="4522,87,4678,114"/>
-<area shape="rect" id="node36" href="$new__trsp_8c.html" title="new_trsp.c" alt="" coords="4702,87,4789,114"/>
-<area shape="rect" id="node37" href="$withPoints_8c.html" title="withPoints.c" alt="" coords="4813,87,4907,114"/>
+<area shape="rect" id="node10" href="$chinesePostman_8c.html" title="chinesePostman.c" alt="" coords="968,87,1099,114"/>
+<area shape="rect" id="node11" href="$edges__input_8c.html" title="edges_input.c" alt="" coords="1123,87,1226,114"/>
+<area shape="rect" id="node12" href="$articulationPoints_8c.html" title="articulationPoints.c" alt="" coords="1251,87,1384,114"/>
+<area shape="rect" id="node13" href="$biconnectedComponents_8c.html" title="biconnectedComponents.c" alt="" coords="1409,87,1586,114"/>
+<area shape="rect" id="node14" href="$bridges_8c.html" title="bridges.c" alt="" coords="1611,87,1685,114"/>
+<area shape="rect" id="node15" href="$connectedComponents_8c.html" title="connectedComponents.c" alt="" coords="1710,87,1877,114"/>
+<area shape="rect" id="node16" href="$strongComponents_8c.html" title="strongComponents.c" alt="" coords="1901,87,2043,114"/>
+<area shape="rect" id="node17" href="$contractGraph_8c.html" title="contractGraph.c" alt="" coords="2068,87,2183,114"/>
+<area shape="rect" id="node18" href="$minCostMaxFlow_8c.html" title="Connecting code with postgres. " alt="" coords="2207,87,2342,114"/>
+<area shape="rect" id="node19" href="$dagShortestPath_8c.html" title="dagShortestPath.c" alt="" coords="2367,87,2497,114"/>
+<area shape="rect" id="node20" href="$dijkstra_8c.html" title="dijkstra.c" alt="" coords="2521,87,2596,114"/>
+<area shape="rect" id="node21" href="$dijkstraVia_8c.html" title="dijkstraVia.c" alt="" coords="2621,87,2715,114"/>
+<area shape="rect" id="node22" href="$many__to__dist__driving__distance_8c.html" title="many_to_dist_driving\l_distance.c" alt="" coords="2739,80,2885,121"/>
+<area shape="rect" id="node23" href="$many__to__dist__withPointsDD_8c.html" title="many_to_dist_withPointsDD.c" alt="" coords="2909,87,3107,114"/>
+<area shape="rect" id="node24" href="$ksp_8c.html" title="ksp.c" alt="" coords="3131,87,3186,114"/>
+<area shape="rect" id="node25" href="$turnRestrictedPath_8c.html" title="turnRestrictedPath.c" alt="" coords="3210,87,3353,114"/>
+<area shape="rect" id="node26" href="$withPoints__ksp_8c.html" title="withPoints_ksp.c" alt="" coords="3377,87,3500,114"/>
+<area shape="rect" id="node27" href="$lineGraph_8c.html" title="Connecting code with postgres. " alt="" coords="3524,87,3612,114"/>
+<area shape="rect" id="node28" href="$lineGraphFull_8c.html" title="lineGraphFull.c" alt="" coords="3636,87,3745,114"/>
+<area shape="rect" id="node29" href="$edge__disjoint__paths_8c.html" title="edge_disjoint_paths.c" alt="" coords="3770,87,3918,114"/>
+<area shape="rect" id="node30" href="$max__flow_8c.html" title="max_flow.c" alt="" coords="3942,87,4031,114"/>
+<area shape="rect" id="node31" href="$maximum__cardinality__matching_8c.html" title="maximum_cardinality\l_matching.c" alt="" coords="4055,80,4201,121"/>
+<area shape="rect" id="node32" href="$stoerWagner_8c.html" title="stoerWagner.c" alt="" coords="4225,87,4332,114"/>
+<area shape="rect" id="node33" href="$kruskal_8c.html" title="kruskal.c" alt="" coords="4356,87,4431,114"/>
+<area shape="rect" id="node34" href="$prim_8c.html" title="prim.c" alt="" coords="4455,87,4513,114"/>
+<area shape="rect" id="node35" href="$randomSpanningTree_8c.html" title="randomSpanningTree.c" alt="" coords="4538,87,4694,114"/>
+<area shape="rect" id="node36" href="$new__trsp_8c.html" title="new_trsp.c" alt="" coords="4718,87,4805,114"/>
+<area shape="rect" id="node37" href="$withPoints_8c.html" title="withPoints.c" alt="" coords="4829,87,4923,114"/>
 </map>

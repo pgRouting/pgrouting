@@ -1,5 +1,12 @@
 var NAVTREEINDEX2 =
 {
+"classpgrouting_1_1CH__edge.html#ac191fab511ca34d41e77dba5dfd44710":[5,0,0,14,10],
+"classpgrouting_1_1CH__edge.html#ac288227d7127a19cbf4417baed1001ee":[5,0,0,14,0],
+"classpgrouting_1_1CH__edge.html#ad61775127863fedc718a9234a8bd7949":[5,0,0,14,14],
+"classpgrouting_1_1CH__edge.html#ada905eca5a9ee3b22849e26ddd4f943b":[5,0,0,14,11],
+"classpgrouting_1_1CH__edge.html#af527c8a6422a1aae13087aa00bbf9938":[5,0,0,14,5],
+"classpgrouting_1_1CH__edge.html#af68c93faa03b2b33ec9e588d7d4c160a":[5,0,0,14,3],
+"classpgrouting_1_1CH__vertex.html":[5,0,0,15],
 "classpgrouting_1_1CH__vertex.html#a08fd2adc15e6789453cdbe39a8b2f218":[5,0,0,15,8],
 "classpgrouting_1_1CH__vertex.html#a1603fa4678fac26711d5a44ca905c44b":[5,0,0,15,0],
 "classpgrouting_1_1CH__vertex.html#a33c437ad220a0deefedd3145f2dc6621":[5,0,0,15,9],
@@ -242,12 +249,5 @@ var NAVTREEINDEX2 =
 "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a22a2bb7dd453d52d4993dcf409a4366d":[5,0,0,2,1,31],
 "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a2b0e1f2337be7521b4847f27835ac79a":[5,0,0,2,1,1],
 "classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a311cb8c937c3f1372a334ad17f9513e3":[5,0,0,2,1,4],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a37377b5c42a9e163067b65d41d7fdd13":[5,0,0,2,1,3],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a3ef3052e2483b53309f9a9b99552b17e":[5,0,0,2,1,0],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a43a0a60c548e5d9b6b0e89aa809537f1":[5,0,0,2,1,21],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a4d8eb8fd150e8963800fd84d9bd5d524":[5,0,0,2,1,16],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a4ecb47d0dbeab63cd57721bc88cb13ad":[5,0,0,2,1,18],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a542d59dbc5f102daa94bb8687b45b75d":[5,0,0,2,1,22],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a58ff2aec087c8b4d339c756fa050b429":[5,0,0,2,1,27],
-"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a5ec4cc07272c3b59d5adaa4b788600ef":[5,0,0,2,1,14]
+"classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#a37377b5c42a9e163067b65d41d7fdd13":[5,0,0,2,1,3]
 };

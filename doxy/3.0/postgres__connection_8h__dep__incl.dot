@@ -20,7 +20,7 @@ digraph "postgres_connection.h"
   Node6 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 [label="bellman_ford_neg.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bellman__ford__neg_8c.html"];
   Node6 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node15 [label="directedChPP.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$directedChPP_8c.html",tooltip="Connecting code with postgres. "];
+  Node15 [label="chinesePostman.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$chinesePostman_8c.html"];
   Node6 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node16 [label="e_report.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$e__report_8c.html"];
   Node6 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

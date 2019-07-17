@@ -10,8 +10,6 @@ var annotated_dup =
     [ "edge", "structedge.html", "structedge" ],
     [ "edge_columns", "structedge__columns.html", "structedge__columns" ],
     [ "edge_t", "structedge__t.html", "structedge__t" ],
-    [ "edge_writer", "structedge__writer.html", "structedge__writer" ],
-    [ "EdgeProperties", "structEdgeProperties.html", "structEdgeProperties" ],
     [ "EventHandler", "classEventHandler.html", "classEventHandler" ],
     [ "General_path_element_t", "structGeneral__path__element__t.html", "structGeneral__path__element__t" ],
     [ "General_vehicle_orders_t", "structGeneral__vehicle__orders__t.html", "structGeneral__vehicle__orders__t" ],
