@@ -27,14 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/costFlow/minCostMaxFlow_driver.h"
+#include "drivers/max_flow/minCostMaxFlow_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <set>
 
-#include "costFlow/pgr_minCostMaxFlow.hpp"
+#include "max_flow/pgr_minCostMaxFlow.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"

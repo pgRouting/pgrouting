@@ -59,7 +59,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for functions to get array input */
 #include "c_common/arrays_input.h"
 
-#include "drivers/costFlow/minCostMaxFlow_driver.h"  // the link to the C++ code of the function
+#include "drivers/max_flow/minCostMaxFlow_driver.h"  // the link to the C++ code of the function
 
 PGDLLEXPORT Datum minCostMaxFlow_many_to_many(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(minCostMaxFlow_many_to_many);
