@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: minCostMaxFlow.sql
+File: _maxFlowMinCost.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -35,11 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 ------------------------
--- pgr_minCostMaxFlow
+-- _pgr_maxFlowMinCost
 ------------------------
 
 
-CREATE OR REPLACE FUNCTION _pgr_minCostMaxFlow(
+CREATE OR REPLACE FUNCTION _pgr_maxFlowMinCost(
     edges_sql TEXT,
     sources ANYARRAY,
     targets ANYARRAY,
@@ -60,7 +60,7 @@ LANGUAGE c IMMUTABLE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_minCostMaxFlow(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+COMMENT ON FUNCTION _pgr_maxFlowMinCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgRouting internal function';
-  
+
 
