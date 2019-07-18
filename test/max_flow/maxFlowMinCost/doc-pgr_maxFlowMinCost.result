@@ -3,14 +3,14 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,
      cost, reverse_cost FROM edge_table',
     2, 3
 );
- seq | edge | source | target | flow | residual_capacity | cost | agg_cost 
+ seq | edge | source | target | flow | residual_capacity | cost | agg_cost
 -----+------+--------+--------+------+-------------------+------+----------
    1 |    4 |      2 |      5 |   80 |                20 |   80 |       80
    2 |    3 |      4 |      3 |   80 |                50 |   80 |      160
@@ -20,14 +20,14 @@ SELECT * FROM pgr_minCostMaxFlow(
 (5 rows)
 
 -- q2
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,
      cost, reverse_cost FROM edge_table',
     ARRAY[1, 7, 14], 12
 );
- seq | edge | source | target | flow | residual_capacity | cost | agg_cost 
+ seq | edge | source | target | flow | residual_capacity | cost | agg_cost
 -----+------+--------+--------+------+-------------------+------+----------
    1 |    1 |      1 |      2 |   80 |                 0 |   80 |       80
    2 |    4 |      2 |      5 |   80 |                20 |   80 |      160
@@ -43,14 +43,14 @@ SELECT * FROM pgr_minCostMaxFlow(
 (11 rows)
 
 -- q3
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,
      cost, reverse_cost FROM edge_table',
     13, ARRAY[7, 1, 4]
 );
- seq | edge | source | target | flow | residual_capacity | cost | agg_cost 
+ seq | edge | source | target | flow | residual_capacity | cost | agg_cost
 -----+------+--------+--------+------+-------------------+------+----------
    1 |    1 |      2 |      1 |   50 |                80 |   50 |       50
    2 |    4 |      5 |      2 |   50 |                 0 |   50 |      100
@@ -63,14 +63,14 @@ SELECT * FROM pgr_minCostMaxFlow(
 (8 rows)
 
 -- q4
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,
      cost, reverse_cost FROM edge_table',
     ARRAY[7, 13], ARRAY[3, 9]
 );
- seq | edge | source | target | flow | residual_capacity | cost | agg_cost 
+ seq | edge | source | target | flow | residual_capacity | cost | agg_cost
 -----+------+--------+--------+------+-------------------+------+----------
    1 |    8 |      5 |      6 |  100 |                 0 |  100 |      100
    2 |    9 |      6 |      9 |  100 |                30 |  100 |      200

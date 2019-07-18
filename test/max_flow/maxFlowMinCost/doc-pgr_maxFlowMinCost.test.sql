@@ -1,6 +1,6 @@
 
 \echo -- q1
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,
@@ -9,7 +9,7 @@ SELECT * FROM pgr_minCostMaxFlow(
 );
 
 \echo -- q2
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,
@@ -18,7 +18,7 @@ SELECT * FROM pgr_minCostMaxFlow(
 );
 
 \echo -- q3
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,
@@ -27,7 +27,7 @@ SELECT * FROM pgr_minCostMaxFlow(
 );
 
 \echo -- q4
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,
