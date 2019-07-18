@@ -2,52 +2,52 @@
 
 SELECT plan(18);
 
-SELECT has_function('pgr_mincostmaxflow');
+SELECT has_function('pgr_maxflowmincost');
 
-SELECT has_function('pgr_mincostmaxflow', ARRAY['text', 'bigint', 'bigint']);
-SELECT has_function('pgr_mincostmaxflow', ARRAY['text', 'anyarray', 'bigint']);
-SELECT has_function('pgr_mincostmaxflow', ARRAY['text', 'bigint', 'anyarray']);
-SELECT has_function('pgr_mincostmaxflow', ARRAY['text', 'anyarray', 'anyarray']);
+SELECT has_function('pgr_maxflowmincost', ARRAY['text', 'bigint', 'bigint']);
+SELECT has_function('pgr_maxflowmincost', ARRAY['text', 'anyarray', 'bigint']);
+SELECT has_function('pgr_maxflowmincost', ARRAY['text', 'bigint', 'anyarray']);
+SELECT has_function('pgr_maxflowmincost', ARRAY['text', 'anyarray', 'anyarray']);
 
-SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'bigint', 'bigint'], 'setof record');
-SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'anyarray', 'bigint'], 'setof record');
-SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'bigint', 'anyarray'], 'setof record');
-SELECT function_returns('pgr_mincostmaxflow', ARRAY['text', 'anyarray', 'anyarray'], 'setof record');
+SELECT function_returns('pgr_maxflowmincost', ARRAY['text', 'bigint', 'bigint'], 'setof record');
+SELECT function_returns('pgr_maxflowmincost', ARRAY['text', 'anyarray', 'bigint'], 'setof record');
+SELECT function_returns('pgr_maxflowmincost', ARRAY['text', 'bigint', 'anyarray'], 'setof record');
+SELECT function_returns('pgr_maxflowmincost', ARRAY['text', 'anyarray', 'anyarray'], 'setof record');
 
 -- column names
 SELECT set_eq(
-    $$SELECT proargnames from pg_proc where proname = 'pgr_mincostmaxflow'$$,
+    $$SELECT proargnames from pg_proc where proname = 'pgr_maxflowmincost'$$,
     $$VALUES
         ('{"","","", "seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[])
     $$
 );
 
--- pgr_mincostmaxflow works
+-- pgr_maxflowmincost works
 PREPARE t1 AS
-SELECT * FROM pgr_mincostmaxflow(
+SELECT * FROM pgr_maxflowmincost(
     'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table',
     2, 3
 );
 PREPARE t2 AS
-SELECT * FROM pgr_mincostmaxflow(
+SELECT * FROM pgr_maxflowmincost(
     'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table',
     ARRAY[2], 3
 );
 PREPARE t3 AS
-SELECT * FROM pgr_mincostmaxflow(
+SELECT * FROM pgr_maxflowmincost(
     'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table',
     2, ARRAY[3]
 );
 PREPARE t4 AS
-SELECT * FROM pgr_mincostmaxflow(
+SELECT * FROM pgr_maxflowmincost(
     'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table',
     ARRAY[2], ARRAY[3]
 );
 
-SELECT lives_ok('t1', 'pgr_mincostmaxflow(one to one)');
-SELECT lives_ok('t2', 'pgr_mincostmaxflow(many to one)');
-SELECT lives_ok('t3', 'pgr_mincostmaxflow(one to many)');
-SELECT lives_ok('t4', 'pgr_mincostmaxflow(many to many)');
+SELECT lives_ok('t1', 'pgr_maxflowmincost(one to one)');
+SELECT lives_ok('t2', 'pgr_maxflowmincost(many to one)');
+SELECT lives_ok('t3', 'pgr_maxflowmincost(one to many)');
+SELECT lives_ok('t4', 'pgr_maxflowmincost(many to many)');
 
 -- prepare for testing return types
 PREPARE all_return AS
@@ -71,7 +71,7 @@ SELECT pg_typeof(seq)::text AS t1,
        pg_typeof(cost)::text AS t7,
        pg_typeof(agg_cost)::text AS t8
     FROM (
-        SELECT * FROM pgr_mincostmaxflow(
+        SELECT * FROM pgr_maxflowmincost(
             'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table',
             2, 3
         ) ) AS a
@@ -87,7 +87,7 @@ SELECT pg_typeof(seq)::text AS t1,
        pg_typeof(cost)::text AS t7,
        pg_typeof(agg_cost)::text AS t8
     FROM (
-        SELECT * FROM pgr_mincostmaxflow(
+        SELECT * FROM pgr_maxflowmincost(
             'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table',
             ARRAY[2], 3
         ) ) AS a
@@ -103,7 +103,7 @@ SELECT pg_typeof(seq)::text AS t1,
        pg_typeof(cost)::text AS t7,
        pg_typeof(agg_cost)::text AS t8
     FROM (
-        SELECT * FROM pgr_mincostmaxflow(
+        SELECT * FROM pgr_maxflowmincost(
             'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table',
             2, ARRAY[3]
         ) ) AS a
@@ -119,7 +119,7 @@ SELECT pg_typeof(seq)::text AS t1,
        pg_typeof(cost)::text AS t7,
        pg_typeof(agg_cost)::text AS t8
     FROM (
-        SELECT * FROM pgr_mincostmaxflow(
+        SELECT * FROM pgr_maxflowmincost(
             'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table',
             ARRAY[2], ARRAY[3]
         ) ) AS a
