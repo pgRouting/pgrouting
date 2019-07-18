@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,
@@ -20,7 +20,7 @@ SELECT * FROM pgr_minCostMaxFlow(
 (5 rows)
 
 -- q2
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,
@@ -43,7 +43,7 @@ SELECT * FROM pgr_minCostMaxFlow(
 (11 rows)
 
 -- q3
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,
@@ -63,7 +63,7 @@ SELECT * FROM pgr_minCostMaxFlow(
 (8 rows)
 
 -- q4
-SELECT * FROM pgr_minCostMaxFlow(
+SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
      capacity, reverse_capacity,

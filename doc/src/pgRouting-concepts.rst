@@ -321,68 +321,17 @@ Where:
 .. xy_edges_sql_end
 
 
-Description of the edges_sql query for Max-flow like functions
-...............................................................................
+.. rubric:: For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>` :
 
-.. flow_edges_sql_start
+.. include:: flow-family.rst
+   :start-after: flow_edges_sql_start
+   :end-before: flow_edges_sql_end
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+.. rubric:: For :doc:`pgr_maxFlowMinCost` and :doc:`pgr_maxFlowMinCost_Cost`:
 
-==================== =================== ======== =================================================
-Column               Type                Default  Description
-==================== =================== ======== =================================================
-**id**               ``ANY-INTEGER``              Identifier of the edge.
-**source**           ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
-**target**           ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
-**capacity**         ``ANY-INTEGER``              Weight of the edge  `(source, target)`
-
-                                                  - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-
-**reverse_capacity** ``ANY-INTEGER``       -1     Weight of the edge `(target, source)`,
-
-                                                  - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-
-==================== =================== ======== =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-
-
-.. flow_edges_sql_end
-
-
-.. costFlow_edges_sql_start
-
-.. rubric:: Description of the edges_sql query for Min-Cost Max-flow like functions
-
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
-
-==================== =================== ======== =================================================
-Column               Type                Default  Description
-==================== =================== ======== =================================================
-**id**               ``ANY-INTEGER``              Identifier of the edge.
-**source**           ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
-**target**           ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
-**capacity**         ``ANY-INTEGER``              Capacity of the edge  `(source, target)`
-
-                                                  - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-
-**reverse_capacity** ``ANY-INTEGER``       -1     Capacity of the edge `(target, source)`,
-
-                                                  - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-**cost**             ``ANY-NUMERICAL``            Weight of the edge  `(source, target)` if it exists.
-**reverse_cost**     ``ANY-NUMERICAL``     0      Weight of the edge `(target, source)` if it exists.
-==================== =================== ======== =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: smallint, int, bigint, real, float
-
-
-.. costFlow_edges_sql_end
-
+.. include:: flow-family.rst
+   :start-after: costFlow_edges_sql_start
+   :end-before: costFlow_edges_sql_end
 
 
 .. points_sql_start
@@ -487,9 +436,6 @@ Column         Type       Description
                           * `Many to Many`_
 
 **node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-**start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
-**end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
-**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
 **edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
 **cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
 **agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
@@ -520,42 +466,18 @@ Column         Type       Description
 Description of the Return Values
 .....................................................................
 
-.. result_flow_start
+.. rubric:: For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>` :
 
-=====================  ====================  =================================================
-Column                 Type                  Description
-=====================  ====================  =================================================
-**seq**                ``INT``               Sequential value starting from **1**.
-**edge_id**            ``BIGINT``            Identifier of the edge in the original query(edges_sql).
-**source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
-**target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
-**flow**               ``BIGINT``            Flow through the edge in the direction (source, target).
-**residual_capacity**  ``BIGINT``            Residual capacity of the edge in the direction (source, target).
-=====================  ====================  =================================================
+.. include:: flow-family.rst
+    :start-after: result_flow_start
+    :end-before: result_flow_end
 
-.. result_flow_end
+.. rubric:: For :doc:`pgr_maxFlowMinCost`
 
+.. include:: flow-family.rst
+    :start-after: result_costFlow_start
+    :end-before: result_costFlow_end
 
-
-.. result_costFlow_start
-
-Result Columns
--------------------------------------------------------------------------------
-
-=====================  ====================  =================================================
-Column                 Type                  Description
-=====================  ====================  =================================================
-**seq**                ``INT``               Sequential value starting from **1**.
-**edge**               ``BIGINT``            Identifier of the edge in the original query(edges_sql).
-**source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
-**target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
-**flow**               ``BIGINT``            Flow through the edge in the direction (source, target).
-**residual_capacity**  ``BIGINT``            Residual capacity of the edge in the direction (source, target).
-**cost**               ``FLOAT``             The cost of sending this flow through the edge in the direction (source, target).
-**agg_cost**           ``FLOAT``             The aggregate cost.
-=====================  ====================  =================================================
-
-.. result_costFlow_end
 
 .. _advanced_topics:
 

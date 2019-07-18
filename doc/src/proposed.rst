@@ -108,11 +108,11 @@ Experimental Functions
 
 .. rubric:: Families
 
-:doc:`costFlow-family`
+:doc:`flow-family`
 
-.. include:: costFlow-family.rst
-   :start-after: index from here
-   :end-before: index to here
+.. include:: flow-family.rst
+   :start-after: index experimental from here
+   :end-before: index experimental to here
 
 :doc:`chinesePostmanProblem-family`
 
@@ -130,7 +130,6 @@ Experimental Functions
 .. toctree::
    :hidden:
 
-   costFlow-family
    chinesePostmanProblem-family
    transformation-family
 
