@@ -107,11 +107,6 @@ file_filter = locales/<lang>/LC_MESSAGES/pgr_aStar.po
 source_file = locale/pot/pgr_aStar.pot
 source_lang = en
 
-[pgrouting.costFlow-family]
-file_filter = locales/<lang>/LC_MESSAGES/costFlow-family.po
-source_file = locale/pot/costFlow-family.pot
-source_lang = en
-
 [pgrouting.pgr_drivingDistance]
 file_filter = locales/<lang>/LC_MESSAGES/pgr_drivingDistance.po
 source_file = locale/pot/pgr_drivingDistance.pot
@@ -147,9 +142,9 @@ file_filter = locales/<lang>/LC_MESSAGES/pgr_primDD.po
 source_file = locale/pot/pgr_primDD.pot
 source_lang = en
 
-[pgrouting.pgr_minCostMaxFlow_Cost]
-file_filter = locales/<lang>/LC_MESSAGES/pgr_minCostMaxFlow_Cost.po
-source_file = locale/pot/pgr_minCostMaxFlow_Cost.pot
+[pgrouting.pgr_maxFlowMinCost_Cost]
+file_filter = locales/<lang>/LC_MESSAGES/pgr_maxFlowMinCost_Cost.po
+source_file = locale/pot/pgr_maxFlowMinCost_Cost.pot
 source_lang = en
 
 [pgrouting.pgr_lineGraphFull]
@@ -397,9 +392,9 @@ file_filter = locales/<lang>/LC_MESSAGES/pgr_KSP.po
 source_file = locale/pot/pgr_KSP.pot
 source_lang = en
 
-[pgrouting.pgr_minCostMaxFlow]
-file_filter = locales/<lang>/LC_MESSAGES/pgr_minCostMaxFlow.po
-source_file = locale/pot/pgr_minCostMaxFlow.pot
+[pgrouting.pgr_maxFlowMinCost]
+file_filter = locales/<lang>/LC_MESSAGES/pgr_maxFlowMinCost.po
+source_file = locale/pot/pgr_maxFlowMinCost.pot
 source_lang = en
 
 [pgrouting.pgr_analyzeOneWay]
