@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-07-18 11:26-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,15 +198,15 @@ msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:111
-msgid ":doc:`costFlow-family`"
+msgid ":doc:`flow-family`"
 msgstr ""
 
-#: ../../build/doc/costFlow-family.rst:3
-msgid ":doc:`pgr_minCostMaxFlow_Cost` - Only the Min Cost calculation."
+#: ../../build/doc/flow-family.rst:3
+msgid ":doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges."
 msgstr ""
 
-#: ../../build/doc/costFlow-family.rst:4
-msgid ":doc:`pgr_minCostMaxFlow` - Details of flow and cost on edges."
+#: ../../build/doc/flow-family.rst:4
+msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:117
@@ -233,11 +233,11 @@ msgstr ""
 msgid ":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line Graph out of each vertex in the input graph."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:138
+#: ../../build/doc/proposed.rst:137
 msgid "Others"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:139
+#: ../../build/doc/proposed.rst:138
 msgid ":doc:`VRP-category`"
 msgstr ""
 
@@ -261,27 +261,27 @@ msgstr ""
 msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:151
+#: ../../build/doc/proposed.rst:150
 msgid "Shortest Path Algorithms"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:152
+#: ../../build/doc/proposed.rst:151
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:153
+#: ../../build/doc/proposed.rst:152
 msgid ":doc:`pgr_dagShortestPath`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:154
+#: ../../build/doc/proposed.rst:153
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:155
+#: ../../build/doc/proposed.rst:154
 msgid ":doc:`pgr_turnRestrictedPath`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:165
+#: ../../build/doc/proposed.rst:164
 msgid ":doc:`topology-functions`"
 msgstr ""
 
@@ -289,19 +289,19 @@ msgstr ""
 msgid ":doc:`pgr_extractVertices` - Extracts vertices information based on the source and target."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:173
+#: ../../build/doc/proposed.rst:172
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:176
+#: ../../build/doc/proposed.rst:175
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:177
+#: ../../build/doc/proposed.rst:176
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:178
+#: ../../build/doc/proposed.rst:177
 msgid ":ref:`search`"
 msgstr ""
 

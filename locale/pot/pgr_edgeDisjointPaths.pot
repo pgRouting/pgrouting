@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-07-18 11:26-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -192,7 +192,6 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:25
 msgid "**start_vid**"
 msgstr ""
 
@@ -202,9 +201,6 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:25
-#: ../../build/doc/pgRouting-concepts.rst:26
-#: ../../build/doc/pgRouting-concepts.rst:27
-#: ../../build/doc/pgRouting-concepts.rst:28
 msgid "``BIGINT``"
 msgstr ""
 
@@ -227,7 +223,6 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgRouting-concepts.rst:26
 msgid "**end_vid**"
 msgstr ""
 
@@ -267,10 +262,6 @@ msgstr ""
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:175
-msgid "edges_sql"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Column"
@@ -307,7 +298,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/pgRouting-concepts.rst:26
 msgid "**cost**"
 msgstr ""
 
@@ -360,7 +351,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:182
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:179
 msgid "Return Columns"
 msgstr ""
 
@@ -420,65 +411,55 @@ msgid "`One to Many`_"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "**node**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:25
-msgid "Identifier of the starting vertex. Used when multiple starting vetrices are in the query."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:26
-msgid "Identifier of the ending vertex. Used when multiple ending vertices are in the query."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:28
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:28
+#: ../../build/doc/pgRouting-concepts.rst:25
 msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:29
-#: ../../build/doc/pgRouting-concepts.rst:30
+#: ../../build/doc/pgRouting-concepts.rst:26
+#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/pgRouting-concepts.rst:26
 msgid "Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:30
+#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:30
+#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:189
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:186
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:191
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:188
 msgid ":doc:`flow-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:194
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:191
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:195
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:192
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:196
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:193
 msgid ":ref:`search`"
 msgstr ""
 
