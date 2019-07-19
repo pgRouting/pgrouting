@@ -65,7 +65,7 @@ for my $file (sort @files) {
     my $f = basename($file);
     next if $exclude{$f};
     my $task = get_task($file);
-    print "\n\n PROCESSING '$file' --- task '$task' \n";
+    print "\n\n PROCESSING '$file' --- task '$task' \n" if $task != 0;
     next if $task == 0;
     update_license($task, $file) if $DOUPDATES;
 }
