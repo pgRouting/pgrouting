@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-07-18 11:26-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,8 +69,8 @@ msgid ""
 "<https://docs.pgrouting.org/2.4/en/pgr_maxFlow.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_maxFlow.rst:41
-#: ../../build/doc/pgr_maxFlow.rst:143 ../../build/doc/pgr_maxFlow.rst:168
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+#: ../../build/doc/pgr_maxFlow.rst:41 ../../build/doc/pgr_maxFlow.rst:155
 msgid "Description"
 msgstr ""
 
@@ -156,189 +156,186 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_maxFlow.rst:143
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_maxFlow.rst:143
-#: ../../build/doc/pgr_maxFlow.rst:168
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+#: ../../build/doc/pgr_maxFlow.rst:155
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_maxFlow.rst:143
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:145
-msgid "**edges_sql**"
+#: ../../build/doc/flow-family.rst:6
+msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:145
+#: ../../build/doc/flow-family.rst:6
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:145
-msgid "The edges SQL query as described above."
+#: ../../build/doc/flow-family.rst:6
+msgid "The edges SQL query as described in `Inner Query`_."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_maxFlow.rst:146
+#: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:9
 msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:146 ../../build/doc/pgr_maxFlow.rst:148
-#: ../../build/doc/pgr_maxFlow.rst:170
+#: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:9
+#: ../../build/doc/pgr_maxFlow.rst:157
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:146
+#: ../../build/doc/flow-family.rst:7
 msgid "Identifier of the starting vertex of the flow."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:147
+#: ../../build/doc/flow-family.rst:8
 msgid "**sources**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:147 ../../build/doc/pgr_maxFlow.rst:149
+#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:10
 msgid "``ARRAY[BIGINT]``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:147
+#: ../../build/doc/flow-family.rst:8
 msgid "Array of identifiers of the starting vertices of the flow."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgr_maxFlow.rst:148
+#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
 msgid "**target**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:148
+#: ../../build/doc/flow-family.rst:9
 msgid "Identifier of the ending vertex of the flow."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:149
+#: ../../build/doc/flow-family.rst:10
 msgid "**targets**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:149
+#: ../../build/doc/flow-family.rst:10
 msgid "Array of identifiers of the ending vertices of the flow."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:155
+#: ../../build/doc/pgr_maxFlow.rst:145
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst ../../build/doc/pgr_maxFlow.rst:158
-msgid "edges_sql"
+#: ../../build/doc/flow-family.rst
+msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:3
+#: ../../build/doc/flow-family.rst:3
 msgid ""
-"an SQL query, which should return a set of rows with the following "
-"columns:"
+"an SQL query of a directed graph of capacities, which should return a set"
+" of rows with the following columns:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/flow-family.rst:8
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
+#: ../../build/doc/flow-family.rst:10 ../../build/doc/flow-family.rst:11
+#: ../../build/doc/flow-family.rst:15
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/flow-family.rst:8
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/flow-family.rst:9
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/flow-family.rst:10
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/flow-family.rst:11
 msgid "**capacity**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/flow-family.rst:11
 msgid "Weight of the edge  `(source, target)`"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/flow-family.rst:13
 msgid ""
 "When negative: edge `(source, target)` does not exist, therefore it's not"
 " part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/flow-family.rst:15
 msgid "**reverse_capacity**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/flow-family.rst:15
 msgid "-1"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/flow-family.rst:15
 msgid "Weight of the edge `(target, source)`,"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/flow-family.rst:17
 msgid ""
 "When negative: edge `(target, source)` does not exist, therefore it's not"
 " part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:21
+#: ../../build/doc/flow-family.rst:21
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
+#: ../../build/doc/flow-family.rst
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:23
+#: ../../build/doc/flow-family.rst:23
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:165
+#: ../../build/doc/pgr_maxFlow.rst:152
 msgid "Return Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:170
+#: ../../build/doc/pgr_maxFlow.rst:157
 msgid "Maximum flow possible from the source(s) to the target(s)"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:174
+#: ../../build/doc/pgr_maxFlow.rst:161
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:176
+#: ../../build/doc/pgr_maxFlow.rst:163
 msgid ":doc:`flow-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:177
+#: ../../build/doc/pgr_maxFlow.rst:164
 msgid "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:178
+#: ../../build/doc/pgr_maxFlow.rst:165
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:181
+#: ../../build/doc/pgr_maxFlow.rst:168
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:182
+#: ../../build/doc/pgr_maxFlow.rst:169
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:183
+#: ../../build/doc/pgr_maxFlow.rst:170
 msgid ":ref:`search`"
 msgstr ""
 
@@ -346,5 +343,20 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
+#~ msgstr ""
+
+#~ msgid "**edges_sql**"
+#~ msgstr ""
+
+#~ msgid "The edges SQL query as described above."
+#~ msgstr ""
+
+#~ msgid "edges_sql"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "an SQL query, which should return "
+#~ "a set of rows with the following"
+#~ " columns:"
 #~ msgstr ""
 

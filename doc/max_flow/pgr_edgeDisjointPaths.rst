@@ -63,11 +63,11 @@ Signatures
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
-    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid [, directed])
-    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids [, directed])
-    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid [, directed])
-    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids [, directed])
+    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid)
+    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid [, directed])
+    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vids [, directed])
+    pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vid [, directed])
+    pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vids [, directed])
 
     RETURNS SET OF (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -76,7 +76,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
+    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -94,7 +94,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
+    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid, directed)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -112,7 +112,7 @@ One to Many
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
+    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vids, directed)
     RETURNS SET OF (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -131,7 +131,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
+    pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vid, directed)
     RETURNS SET OF (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -150,7 +150,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
+    pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vids, directed)
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -170,9 +170,6 @@ Parameters
 
 Inner query
 -------------------------------------------------------------------------------
-
-edges_sql
-...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start

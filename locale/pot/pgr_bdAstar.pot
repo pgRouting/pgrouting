@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-07-18 11:26-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -421,8 +421,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:18
 #: ../../build/doc/pgr_aStar.rst:19
-#: ../../build/doc/pgRouting-concepts.rst:29
-#: ../../build/doc/pgRouting-concepts.rst:30
+#: ../../build/doc/pgRouting-concepts.rst:26
+#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "``FLOAT``"
 msgstr ""
 
@@ -486,7 +486,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/pgRouting-concepts.rst:26
 msgid "**cost**"
 msgstr ""
 
@@ -614,7 +614,6 @@ msgid "Relative position in the path. Has value **1** for the beginning of a pat
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:25
 msgid "**start_vid**"
 msgstr ""
 
@@ -622,9 +621,6 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:25
-#: ../../build/doc/pgRouting-concepts.rst:26
-#: ../../build/doc/pgRouting-concepts.rst:27
-#: ../../build/doc/pgRouting-concepts.rst:28
 msgid "``BIGINT``"
 msgstr ""
 
@@ -633,7 +629,6 @@ msgid "Identifier of the starting vertex. Returned when multiple starting vetric
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgRouting-concepts.rst:26
 msgid "**end_vid**"
 msgstr ""
 
@@ -642,40 +637,30 @@ msgid "Identifier of the ending vertex. Returned when multiple ending vertices a
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "**node**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:25
-msgid "Identifier of the starting vertex. Used when multiple starting vetrices are in the query."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:26
-msgid "Identifier of the ending vertex. Used when multiple ending vertices are in the query."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:28
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:28
+#: ../../build/doc/pgRouting-concepts.rst:25
 msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/pgRouting-concepts.rst:26
 msgid "Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:30
+#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:30
+#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 

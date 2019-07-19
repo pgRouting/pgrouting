@@ -23,16 +23,31 @@ Flow - Family of functions
 
 .. index to here
 
+.. rubric:: Experimental
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
+.. index experimental from here
+
+* :doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges.
+* :doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation.
+
+.. index experimental to here
 
 .. toctree::
     :hidden:
 
     pgr_maxFlow
-    pgr_pushRelabel
-    pgr_edmondsKarp
     pgr_boykovKolmogorov
-    pgr_maxCardinalityMatch
+    pgr_edmondsKarp
+    pgr_pushRelabel
     pgr_edgeDisjointPaths
+    pgr_maxCardinalityMatch
+    pgr_maxFlowMinCost
+    pgr_maxFlowMinCost_Cost
+
 
 .. rubric:: Previous versions of this page
 
@@ -75,6 +90,121 @@ Flow Functions General Information
 
 :doc:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, but the actual flow through each edge may vary.
 
+Parameters
+-------------------------------------------------------------------------------
+
+.. pgr_flow_parameters_start
+
+============== ================== ======== =================================================
+Column         Type               Default     Description
+============== ================== ======== =================================================
+**Edges SQL**  ``TEXT``                    The edges SQL query as described in `Inner Query`_.
+**source**     ``BIGINT``                  Identifier of the starting vertex of the flow.
+**sources**    ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
+**target**     ``BIGINT``                  Identifier of the ending vertex of the flow.
+**targets**    ``ARRAY[BIGINT]``           Array of identifiers of the ending vertices of the flow.
+============== ================== ======== =================================================
+
+.. pgr_flow_parameters_end
+
+Inner query
+-------------------------------------------------------------------------------
+
+.. rubric:: For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>` :
+
+.. flow_edges_sql_start
+
+:Edges SQL: an SQL query of a directed graph of capacities, which should return a set of rows with the following columns:
+
+==================== =================== ======== =================================================
+Column               Type                Default  Description
+==================== =================== ======== =================================================
+**id**               ``ANY-INTEGER``              Identifier of the edge.
+**source**           ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
+**target**           ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
+**capacity**         ``ANY-INTEGER``              Weight of the edge  `(source, target)`
+
+                                                  - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+
+**reverse_capacity** ``ANY-INTEGER``       -1     Weight of the edge `(target, source)`,
+
+                                                  - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+
+==================== =================== ======== =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+
+.. flow_edges_sql_end
+
+For :doc:`pgr_maxFlowMinCost` and :doc:`pgr_maxFlowMinCost_Cost`:
+
+.. costFlow_edges_sql_start
+
+:Edges SQL: an SQL query of a directed graph of capacities, which should return a set of rows with the following columns:
+
+==================== =================== ======== =================================================
+Column               Type                Default  Description
+==================== =================== ======== =================================================
+**id**               ``ANY-INTEGER``              Identifier of the edge.
+**source**           ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
+**target**           ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
+**capacity**         ``ANY-INTEGER``              Capacity of the edge  `(source, target)`
+
+                                                  * When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_capacity** ``ANY-INTEGER``       -1     Capacity of the edge `(target, source)`,
+
+                                                  * When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+**cost**             ``ANY-NUMERICAL``            Weight of the edge  `(source, target)` if it exists.
+**reverse_cost**     ``ANY-NUMERICAL``     0      Weight of the edge `(target, source)` if it exists.
+==================== =================== ======== =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: smallint, int, bigint, real, float
+
+.. costFlow_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+
+.. rubric:: For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>` :
+
+.. result_flow_start
+
+=====================  ====================  =================================================
+Column                 Type                  Description
+=====================  ====================  =================================================
+**seq**                ``INT``               Sequential value starting from **1**.
+**edge**               ``BIGINT``            Identifier of the edge in the original query(edges_sql).
+**start_vid**          ``BIGINT``            Identifier of the first end point vertex of the edge.
+**end_vid**            ``BIGINT``            Identifier of the second end point vertex of the edge.
+**flow**               ``BIGINT``            Flow through the edge in the direction (``start_vid``, ``end_vid``).
+**residual_capacity**  ``BIGINT``            Residual capacity of the edge in the direction (``start_vid``, ``end_vid``).
+=====================  ====================  =================================================
+
+.. result_flow_end
+
+.. rubric:: For :doc:`pgr_maxFlowMinCost`
+
+.. result_costFlow_start
+
+=====================  ====================  =================================================
+Column                 Type                  Description
+=====================  ====================  =================================================
+**seq**                ``INT``               Sequential value starting from **1**.
+**edge**               ``BIGINT``            Identifier of the edge in the original query(edges_sql).
+**source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
+**target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
+**flow**               ``BIGINT``            Flow through the edge in the direction (source, target).
+**residual_capacity**  ``BIGINT``            Residual capacity of the edge in the direction (source, target).
+**cost**               ``FLOAT``             The cost of sending this flow through the edge in the direction (source, target).
+**agg_cost**           ``FLOAT``             The aggregate cost.
+=====================  ====================  =================================================
+
+.. result_costFlow_end
 
 
 Adcanced Documentation
@@ -82,7 +212,8 @@ Adcanced Documentation
 
 A flow network is a directed graph where each edge has a capacity and a flow.
 The flow through an edge must not exceed the capacity of the edge.
-Additionally, the incoming and outgoing flow of a node must be equal except the for source which only has outgoing flow, and the destination(sink) which only has incoming flow.
+Additionally, the incoming and outgoing flow of a node must be equal except
+for source which only has outgoing flow, and the destination(sink) which only has incoming flow.
 
 Maximum flow algorithms calculate the maximum flow through the graph and the flow of each edge.
 
@@ -128,7 +259,9 @@ Then:
 
 Where:
 
-:math:`\boldsymbol{\Phi}` is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:
+:math:`\boldsymbol{\Phi}` is a subset of the original edges with their residual capacity and flow.
+The maximum flow through the graph can be obtained by aggregating on the source or sink
+and summing the flow from/to it. In particular:
 
 - :math:`id_i = i`
 - :math:`edge\_id = id_i` in edges_sql

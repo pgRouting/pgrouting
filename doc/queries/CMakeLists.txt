@@ -41,8 +41,8 @@ SET(LOCAL_FILES
     doc-pgr_lineGraph.queries
     doc-pgr_maxCardinalityMatch.queries
     doc-pgr_maxFlow.queries
-    doc-pgr_minCostMaxFlow_Cost.queries
-    doc-pgr_minCostMaxFlow.queries
+    doc-pgr_maxFlowMinCost_Cost.queries
+    doc-pgr_maxFlowMinCost.queries
     doc-pgr_nodeNetwork.queries
     doc-pgr_primBFS.queries
     doc-pgr_primDD.queries

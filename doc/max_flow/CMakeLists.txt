@@ -7,6 +7,9 @@ SET(LOCAL_FILES
     pgr_edgeDisjointPaths.rst
     pgr_maxCardinalityMatch.rst
     pgr_pushRelabel.rst
+    pgr_maxFlowMinCost.rst
+    # TODO rename
+    pgr_maxFlowMinCost_Cost.rst
     )
 
 foreach (f ${LOCAL_FILES})

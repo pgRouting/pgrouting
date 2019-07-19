@@ -110,6 +110,8 @@ pgRouting 3.0.0 Release Notes
 
 *New Experimental functions*
 
+* pgr_maxFlowMinCost
+* pgr_maxFlowMinCost_Cost
 * pgr_extractVertices
 * pgr_turnRestrictedPath
 * pgr_bellmanFord
@@ -765,7 +767,7 @@ As a result of this effort:
 * Support for table SCHEMA in function parameters
 * Support for ``st_`` PostGIS function prefix
 * Added ``pgr_`` prefix to functions and types
-* Better documentation: http://docs.pgrouting.org
+* Better documentation: https://docs.pgrouting.org
 * shooting_star is discontinued
 
 

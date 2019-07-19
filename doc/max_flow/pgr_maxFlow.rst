@@ -60,10 +60,10 @@ Signatures
 
 .. code-block:: none
 
-    pgr_maxFlow(edges_sql, source,  target)
-    pgr_maxFlow(edges_sql, sources,  target)
-    pgr_maxFlow(edges_sql, source,  targets)
-    pgr_maxFlow(edges_sql, sources,  targets)
+    pgr_maxFlow(Edges SQL, source,  target)
+    pgr_maxFlow(Edges SQL, sources,  target)
+    pgr_maxFlow(Edges SQL, source,  targets)
+    pgr_maxFlow(Edges SQL, sources,  targets)
     RETURNS BIGINT
 
 .. index::
@@ -74,7 +74,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_maxFlow(edges_sql, source,  target)
+    pgr_maxFlow(Edges SQL, source,  target)
     RETURNS BIGINT
 
 :Example: From vertex :math:`6` to vertex :math:`11`
@@ -91,7 +91,7 @@ One to Many
 
 .. code-block:: none
 
-    pgr_maxFlow(edges_sql, source,  targets)
+    pgr_maxFlow(Edges SQL, source,  targets)
     RETURNS BIGINT
 
 :Example: From vertex :math:`6` to vertices :math:`\{11, 1, 13\}`
@@ -108,7 +108,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_maxFlow(edges_sql, sources,  target)
+    pgr_maxFlow(Edges SQL, sources,  target)
     RETURNS BIGINT
 
 :Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11`
@@ -125,7 +125,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_maxFlow(edges_sql, sources,  targets)
+    pgr_maxFlow(Edges SQL, sources,  targets)
     RETURNS BIGINT
 
 :Example: From vertices :math:`\{6, 8, 12\}` to vertices :math:`\{1, 3, 11\}`
@@ -137,27 +137,14 @@ Many to Many
 Parameters
 -------------------------------------------------------------------------------
 
-.. pgr_flow_parameters_start
-
-============== ================== ======== =================================================
-Column         Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**  ``TEXT``                    The edges SQL query as described above.
-**source**     ``BIGINT``                  Identifier of the starting vertex of the flow.
-**sources**    ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
-**target**     ``BIGINT``                  Identifier of the ending vertex of the flow.
-**targets**    ``ARRAY[BIGINT]``           Array of identifiers of the ending vertices of the flow.
-============== ================== ======== =================================================
-
-.. pgr_flow_parameters_end
+.. include:: flow-family.rst
+   :start-after: pgr_flow_parameters_start
+   :end-before: pgr_flow_parameters_end
 
 Inner query
 -------------------------------------------------------------------------------
 
-edges_sql
-...............................................................................
-
-.. include:: pgRouting-concepts.rst
+.. include:: flow-family.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 

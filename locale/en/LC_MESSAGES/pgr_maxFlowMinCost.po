@@ -1,0 +1,515 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-18 11:26-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:11
+msgid "pgr_maxFlowMinCost - Experimental"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:13
+msgid ""
+"``pgr_maxFlowMinCost`` — Calculates the flow on the graph edges that "
+"maximizes the flow and minimizes the cost from the sources to the "
+"targets."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:19
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:3
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:14
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:26
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:27
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:29
+msgid "New **experimental** function"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:32
+msgid "Support"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:33
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_maxFlowMinCost.html>`__)"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+#: ../../build/doc/pgr_maxFlowMinCost.rst:37
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:3
+msgid "**The main characteristics are:**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:5
+msgid "The graph is **directed**."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:6
+msgid "Process is done only on edges with positive capacities."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:7
+msgid ""
+"When the maximum flow is 0 then there is no flow and **EMPTY SET** is "
+"returned."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:9
+msgid "There is no flow when a **source** is the same as a **target**."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:11
+msgid "Any duplicated value in the source(s) or target(s) are ignored."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:12
+msgid "Calculates the flow/residual capacity for each edge. In the output"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:14
+msgid "Edges with zero flow are omitted."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:16
+msgid ""
+"Creates a **super source** and edges to all the source(s), and a **super "
+"target** and the edges from all the targets(s)."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:17
+msgid ""
+"The maximum flow through the graph is guaranteed to be the value returned"
+" by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same "
+"parameters and can be calculated:"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:19
+msgid "By aggregation of the outgoing flow from the sources"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:20
+msgid "By aggregation of the incoming flow to the targets"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:43
+msgid "**TODO** check which statement is true:"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:45
+msgid "The cost value of all input edges must be nonnegative."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:46
+msgid "Process is done when the cost value of all input edges is nonnegative."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:47
+msgid "Process is done on edges with nonnegative cost."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:49
+msgid "Running time: :math:`O(U * (E + V * logV))`"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:51
+msgid "where :math:`U` is the value of the max flow."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:52
+msgid ""
+":math:`U` is upper bound on number of iterations. In many real world "
+"cases number of iterations is much smaller than :math:`U`."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:56
+msgid "Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:59
+msgid "Summary"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:73
+msgid "One to One"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst
+msgid "Example"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:81
+msgid "From vertex :math:`2` to vertex :math:`3`"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:91
+msgid "One to Many"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:99
+msgid "From vertex :math:`13` to vertices :math:`\\{7, 1, 4\\}`"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:109
+msgid "Many to One"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:117
+msgid "From vertices :math:`\\{1, 7, 14\\}` to vertex :math:`12`"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:127
+msgid "Many to Many"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:135
+msgid "From vertices :math:`\\{7, 13\\}` to vertices :math:`\\{3, 9\\}`"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:142
+msgid "Parameters"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:6
+msgid "**Edges SQL**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:6
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:6
+msgid "The edges SQL query as described in `Inner Query`_."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:8
+#: ../../build/doc/flow-family.rst:9
+msgid "**source**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:8
+#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
+#: ../../build/doc/flow-family.rst:11
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:7
+msgid "Identifier of the starting vertex of the flow."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:8
+msgid "**sources**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:10
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:8
+msgid "Array of identifiers of the starting vertices of the flow."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
+msgid "**target**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:9
+msgid "Identifier of the ending vertex of the flow."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:10
+msgid "**targets**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:10
+msgid "Array of identifiers of the ending vertices of the flow."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:149
+msgid "Inner query"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst
+msgid "Edges SQL"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:3
+msgid ""
+"an SQL query of a directed graph of capacities, which should return a set"
+" of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:8
+msgid "**id**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
+#: ../../build/doc/flow-family.rst:10 ../../build/doc/flow-family.rst:11
+#: ../../build/doc/flow-family.rst:14
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:8
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:11
+msgid "**capacity**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:11
+msgid "Capacity of the edge  `(source, target)`"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:13
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not"
+" part of the graph."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:14
+msgid "**reverse_capacity**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:14
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:14
+msgid "Capacity of the edge `(target, source)`,"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:16
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not"
+" part of the graph."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:12 ../../build/doc/flow-family.rst:17
+msgid "**cost**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:17 ../../build/doc/flow-family.rst:18
+msgid "``ANY-NUMERICAL``"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:17
+msgid "Weight of the edge  `(source, target)` if it exists."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:18
+msgid "**reverse_cost**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:18
+msgid "0"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:18
+msgid "Weight of the edge `(target, source)` if it exists."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:21
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst
+msgid "ANY-INTEGER"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:23
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:24
+msgid "smallint, int, bigint, real, float"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:156
+msgid "Result Columns"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:6
+msgid "**seq**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:6
+msgid "``INT``"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:6
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:7
+msgid "**edge**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:7
+msgid "Identifier of the edge in the original query(edges_sql)."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:10
+msgid "**flow**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:10
+msgid "Flow through the edge in the direction (source, target)."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:11
+msgid "**residual_capacity**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:11
+msgid "Residual capacity of the edge in the direction (source, target)."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:12 ../../build/doc/flow-family.rst:13
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:12
+msgid ""
+"The cost of sending this flow through the edge in the direction (source, "
+"target)."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:13
+msgid "**agg_cost**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:13
+msgid "The aggregate cost."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:162
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:164
+msgid ":doc:`flow-family`"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:165
+msgid "https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:168
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:169
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost.rst:170
+msgid ":ref:`search`"
+msgstr ""
+

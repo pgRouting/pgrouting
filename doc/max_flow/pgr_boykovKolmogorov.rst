@@ -60,10 +60,10 @@ Signatures
 
 .. code-block:: none
 
-    pgr_boykovKolmogorov(edges_sql, source,  target)
-    pgr_boykovKolmogorov(edges_sql, sources, target)
-    pgr_boykovKolmogorov(edges_sql, source,  targets)
-    pgr_boykovKolmogorov(edges_sql, sources, targets)
+    pgr_boykovKolmogorov(Edges SQL, source,  target)
+    pgr_boykovKolmogorov(Edges SQL, sources, target)
+    pgr_boykovKolmogorov(Edges SQL, source,  targets)
+    pgr_boykovKolmogorov(Edges SQL, sources, targets)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -75,7 +75,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_boykovKolmogorov(edges_sql, source,  target)
+    pgr_boykovKolmogorov(Edges SQL, source,  target)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -93,7 +93,7 @@ One to Many
 
 .. code-block:: none
 
-    pgr_boykovKolmogorov(edges_sql, source,  targets)
+    pgr_boykovKolmogorov(Edges SQL, source,  targets)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -111,7 +111,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_boykovKolmogorov(edges_sql, sources,  target)
+    pgr_boykovKolmogorov(Edges SQL, sources,  target)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -129,7 +129,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_boykovKolmogorov(edges_sql, sources,  targets)
+    pgr_boykovKolmogorov(Edges SQL, sources,  targets)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -142,24 +142,21 @@ Many to Many
 Parameters
 -------------------------------------------------------------------------------
 
-.. include::  ./pgr_maxFlow.rst
+.. include:: flow-family.rst
     :start-after: pgr_flow_parameters_start
     :end-before: pgr_flow_parameters_end
 
 Inner query
 -------------------------------------------------------------------------------
 
-edges_sql
-...............................................................................
-
-.. include:: pgRouting-concepts.rst
+.. include:: flow-family.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
+.. include:: flow-family.rst
     :start-after: result_flow_start
     :end-before: result_flow_end
 

@@ -1,0 +1,59 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- q1
+SELECT * FROM pgr_MaxFlowMinCost_Cost(
+    'SELECT id,
+     source, target,
+     capacity, reverse_capacity,
+     cost, reverse_cost FROM edge_table',
+    2, 3
+);
+ pgr_maxflowmincost_cost
+-------------------------
+                     400
+(1 row)
+
+-- q2
+SELECT * FROM pgr_MaxFlowMinCost_Cost(
+    'SELECT id,
+     source, target,
+     capacity, reverse_capacity,
+     cost, reverse_cost FROM edge_table',
+    ARRAY[1, 7, 14], 12
+);
+ pgr_maxflowmincost_cost
+-------------------------
+                     650
+(1 row)
+
+-- q3
+SELECT * FROM pgr_MaxFlowMinCost_Cost(
+    'SELECT id,
+     source, target,
+     capacity, reverse_capacity,
+     cost, reverse_cost FROM edge_table',
+    13, ARRAY[7, 1, 4]
+);
+ pgr_maxflowmincost_cost
+-------------------------
+                     450
+(1 row)
+
+-- q4
+SELECT * FROM pgr_MaxFlowMinCost_Cost(
+    'SELECT id,
+     source, target,
+     capacity, reverse_capacity,
+     cost, reverse_cost FROM edge_table',
+    ARRAY[7, 13], ARRAY[3, 9]
+);
+ pgr_maxflowmincost_cost
+-------------------------
+                     600
+(1 row)
+
+-- q5
+ROLLBACK;
+ROLLBACK

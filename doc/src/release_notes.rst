@@ -159,6 +159,8 @@ pgRouting 3.0.0 Release Notes
 
 .. rubric:: New Experimental functions
 
+* pgr_maxFlowMinCost
+* pgr_maxFlowMinCost_Cost
 * pgr_extractVertices
 * pgr_turnRestrictedPath
 * pgr_bellmanFord

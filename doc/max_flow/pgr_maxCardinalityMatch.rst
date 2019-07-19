@@ -66,39 +66,15 @@ Description
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
+.. index::
+    single: MaximumCardinalityMatch
 
 .. code-block:: none
 
-    pgr_MaximumCardinalityMatching(edges_sql)
-    pgr_MaximumCardinalityMatching(edges_sql, directed)
+    pgr_maxCardinalityMatch(Edges SQL [, directed])
 
     RETURNS SET OF (seq, edge_id, source, target)
     OR EMPTY SET
-
-.. rubric:: Using defaults
-
-.. code-block:: none
-
-    pgr_MaximumCardinalityMatching(edges_sql)
-    RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
-
-:Example: For a **directed** graph
-
-.. literalinclude:: doc-pgr_maxCardinalityMatch.queries
-   :start-after: -- q1
-   :end-before: -- q2
-
-.. index::
-    single: MaximumCardinalityMatching(Complete Signature)
-
-Complete signature
-...............................................................................
-
-.. code-block:: none
-
-    pgr_MaximumCardinalityMatching(edges_sql, directed)
-    RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 
 :Example: For an **undirected** graph
 
@@ -112,7 +88,7 @@ Parameters
 ============== ================== ======== =========================================
 Parameter         Type            Default       Description
 ============== ================== ======== =========================================
-**edges_sql**     ``TEXT``                 SQL query as described above.
+**edges_sql**  ``TEXT``                    SQL query as described above.
 **directed**   ``BOOLEAN``        ``true`` Determines the type of the graph.
                                            - When ``true`` Graph is considered `Directed`
                                            - When ``false`` the graph is considered as `Undirected`.
@@ -122,10 +98,7 @@ Parameter         Type            Default       Description
 Inner query
 -------------------------------------------------------------------------------
 
-edges_sql
-...............................................................................
-
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+:Edges SQL: an SQL query, which should return a set of rows with the following columns:
 
 ====================  ===================   =================================================
 Column                Type                  Description
@@ -133,8 +106,8 @@ Column                Type                  Description
 **id**                ``ANY-INTEGER``       Identifier of the edge.
 **source**            ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
 **target**            ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**going**             ``ANY-NUMERIC``       A positive value represents the existence of the edge (source, target).
-**coming**            ``ANY-NUMERIC``       A positive value represents the existence of the edge (target, source).
+**going**             ``ANY-NUMERIC``       A positive value represents the existence of the edge (``source``, ``target``).
+**coming**            ``ANY-NUMERIC``       A positive value represents the existence of the edge (``target``, ``source``).
 ====================  ===================   =================================================
 
 Where:
@@ -149,7 +122,7 @@ Result Columns
 Column                 Type                  Description
 =====================  ====================  =================================================
 **seq**                ``INT``               Sequential value starting from **1**.
-**edge**               ``BIGINT``            Identifier of the edge in the original query(edges_sql).
+**edge**               ``BIGINT``            Identifier of the edge in the original query.
 **source**             ``BIGINT``            Identifier of the first end point of the edge.
 **target**             ``BIGINT``            Identifier of the second end point of the edge.
 =====================  ====================  =================================================
