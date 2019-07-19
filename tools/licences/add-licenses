@@ -65,7 +65,7 @@ for my $file (sort @files) {
     my $f = basename($file);
     next if $exclude{$f};
     my $task = get_task($file);
-    print "\n\n PROCESSING '$file' --- task '$task' \n" if $task != 0;
+    print "\n PROCESSING '$file' --- task '$task' \n" if $task == 1;
     next if $task == 0;
     update_license($task, $file) if $DOUPDATES;
 }
@@ -188,7 +188,7 @@ sub update_license {
 
     } else {
         #task = 2
-        print "  Changing Body of license\n";
+        #print "  Changing Body of license\n";
 
 
         # Find the dividing line

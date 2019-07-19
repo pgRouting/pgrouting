@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-File: identifiers.hpp
+FILE: identifiers.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -10,6 +10,7 @@ Function's developer:
 Copyright (c) 2016 Rohith Reddy
 Mail:
 
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
