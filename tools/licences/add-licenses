@@ -27,17 +27,17 @@ my @files = ();
 my %exclude = (
 );
 
-my $gnu_license = "GNU_license.txt";
+my $gnu_license = "tools/licences/GNU_license.txt";
 my @GNU_LICENSE = loadLicense($gnu_license);
 my @GNU_BODY = @GNU_LICENSE;
 splice @GNU_BODY, 0, 8;
 
-my $mit_license = "MIT_license.txt";
+my $mit_license = "tools/licences/MIT_license.txt";
 my @MIT_LICENSE = loadLicense($mit_license);
 my @MIT_BODY = @MIT_LICENSE;
 splice @MIT_BODY, 0, 6;
 
-my $ccm_license = "CCM_license.txt";
+my $ccm_license = "tools/licences/CCM_license.txt";
 my @CCM_LICENSE = loadLicense($ccm_license);
 my @CCM_BODY = @CCM_LICENSE;
 splice @CCM_BODY, 0, 1;
