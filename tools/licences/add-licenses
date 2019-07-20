@@ -27,17 +27,17 @@ my @files = ();
 my %exclude = (
 );
 
-my $gnu_license = "GNU_license.txt";
+my $gnu_license = "tools/licences/GNU_license.txt";
 my @GNU_LICENSE = loadLicense($gnu_license);
 my @GNU_BODY = @GNU_LICENSE;
 splice @GNU_BODY, 0, 8;
 
-my $mit_license = "MIT_license.txt";
+my $mit_license = "tools/licences/MIT_license.txt";
 my @MIT_LICENSE = loadLicense($mit_license);
 my @MIT_BODY = @MIT_LICENSE;
 splice @MIT_BODY, 0, 6;
 
-my $ccm_license = "CCM_license.txt";
+my $ccm_license = "tools/licences/CCM_license.txt";
 my @CCM_LICENSE = loadLicense($ccm_license);
 my @CCM_BODY = @CCM_LICENSE;
 splice @CCM_BODY, 0, 1;
@@ -65,7 +65,7 @@ for my $file (sort @files) {
     my $f = basename($file);
     next if $exclude{$f};
     my $task = get_task($file);
-    print "\n\n PROCESSING '$file' --- task '$task' \n";
+    print "\n PROCESSING '$file' --- task '$task' \n" if $task == 1;
     next if $task == 0;
     update_license($task, $file) if $DOUPDATES;
 }
@@ -188,7 +188,7 @@ sub update_license {
 
     } else {
         #task = 2
-        print "  Changing Body of license\n";
+        #print "  Changing Body of license\n";
 
 
         # Find the dividing line
