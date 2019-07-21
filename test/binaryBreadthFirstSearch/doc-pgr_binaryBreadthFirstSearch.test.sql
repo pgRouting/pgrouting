@@ -30,7 +30,11 @@ INSERT INTO roadworks(
   (16,  4,  9,  0,  0),  
   (17,  14,  15,  0,  0),  
   (18,  16,  17,  0,  0);
-  
+
+\echo -- data
+
+SELECT * FROM roadworks;
+
 \echo -- q1
 SELECT * FROM pgr_binaryBreadthFirstSearch(
     'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost FROM roadworks',
