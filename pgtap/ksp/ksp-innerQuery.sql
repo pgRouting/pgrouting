@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(47);
+SELECT plan(56);
 
 
 SELECT has_function('pgr_ksp',
