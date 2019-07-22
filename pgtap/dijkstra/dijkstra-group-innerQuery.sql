@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(212);
+SELECT plan(224);
 
 
 SELECT has_function('pgr_dijkstra',
