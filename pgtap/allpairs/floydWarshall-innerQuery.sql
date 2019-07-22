@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(82);
+SELECT plan(98);
 
 
 SELECT has_function('pgr_floydwarshall',
