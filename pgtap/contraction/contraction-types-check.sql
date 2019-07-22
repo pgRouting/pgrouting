@@ -1,5 +1,5 @@
 \i setup.sql
-SELECT plan(44);
+SELECT plan(49);
 SET client_min_messages TO WARNING;
 SELECT has_function('pgr_contraction');
 
@@ -68,6 +68,9 @@ end_sql = ' FROM edge_table $$, ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true)
 
     query := start_sql || parameter || '::TEXT ' || end_sql;
     RETURN query SELECT throws_ok(query);
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
+    RETURN query SELECT throws_ok(query);
 END;
 $BODY$ LANGUAGE plpgsql;
 
@@ -101,6 +104,9 @@ end_sql = ' FROM edge_table $$, ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true)
     RETURN query SELECT lives_ok(query);
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
+    RETURN query SELECT lives_ok(query);
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
     RETURN query SELECT lives_ok(query);
 END;
 $BODY$ LANGUAGE plpgsql;
