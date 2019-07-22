@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(548);
+SELECT plan(656);
 
 SELECT has_function('pgr_bddijkstra', ARRAY['text', 'bigint', 'bigint', 'boolean']);
 SELECT has_function('pgr_bddijkstra', ARRAY['text', 'bigint', 'anyarray', 'boolean']);
