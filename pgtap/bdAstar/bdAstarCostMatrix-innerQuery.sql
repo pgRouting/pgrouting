@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(172);
+SELECT plan(206);
 
 
 SELECT has_function('pgr_bdastarcostmatrix', ARRAY['text', 'anyarray', 'boolean', 'integer', 'numeric', 'numeric']);
