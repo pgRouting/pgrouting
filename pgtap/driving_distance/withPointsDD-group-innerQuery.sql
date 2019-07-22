@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(94);
+SELECT plan(112);
 
 
 SELECT has_function('pgr_withpointsdd',
