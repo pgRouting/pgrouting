@@ -40,7 +40,7 @@ NOTICE:
         ),
 
         the_out AS (
-          SELECT id AS out_edge, ST_StartPoint(geom) AS geom
+          SELECT id::BIGINT AS out_edge, ST_StartPoint(geom) AS geom
           FROM main_sql
         ),
 
@@ -51,7 +51,7 @@ NOTICE:
         ),
 
         the_in AS (
-          SELECT id AS in_edge, ST_EndPoint(geom) AS geom
+          SELECT id::BIGINT AS in_edge, ST_EndPoint(geom) AS geom
           FROM main_sql
         ),
 
