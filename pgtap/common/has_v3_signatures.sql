@@ -6,14 +6,14 @@ SELECT plan(90);
 SELECT todo_start();
 
 -- testing names only
-SELECT has_function('pgr_pickdeliver');
 SELECT has_function('pgr_distribution');
-SELECT has_function('pgr_euclideantsp');
 SELECT has_function('pgr_withpointsvia');
 
 SELECT todo_end();
 
 -- testing names only
+SELECT has_function('pgr_tspeuclidean');
+SELECT has_function('pgr_pickdeliver');
 SELECT has_function('pgr_floydwarshall');
 SELECT has_function('pgr_johnson');
 SELECT has_function('pgr_astar');
