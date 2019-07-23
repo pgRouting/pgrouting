@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION pgr_transitiveClosure(
     edges_sql TEXT, -- edges_sql (required)
 
     OUT seq INTEGER,
-    OUT target_array INTEGER[])
+    OUT target_array BIGINT[])
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
