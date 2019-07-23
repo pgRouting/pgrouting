@@ -38,7 +38,7 @@ SELECT lives_ok(
 PREPARE all_return AS
 SELECT
     'integer'::text AS t1,
-    'integer'::text AS t2;
+    'bigint'::text AS t2;
 
 PREPARE q1 AS
 SELECT pg_typeof(seq)::text AS t1,
