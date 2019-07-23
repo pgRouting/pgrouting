@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(548);
+SELECT plan(656);
 SET client_min_messages TO ERROR;
 
 

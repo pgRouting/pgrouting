@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(348);
+SELECT plan(416);
 
 
 SELECT has_function('pgr_astarcost',

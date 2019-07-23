@@ -3,7 +3,6 @@
 
 SELECT plan(30);
 
-SELECT todo_start();
 
 -- auxiliary
 SELECT hasnt_function('pgr_flipedges');
@@ -44,8 +43,6 @@ SELECT hasnt_function('pgr_maxflowboykovkolmogorov');
 SELECT hasnt_function('pgr_maxflowpushrelable');
 SELECT hasnt_function('pgr_maxflowedmondskarp');
 SELECT hasnt_function('pgr_maximumcardinalitymatching');
-
-SELECT todo_end();
 
 
 

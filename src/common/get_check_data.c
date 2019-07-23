@@ -151,7 +151,8 @@ void pgr_check_any_numerical_type(Column_info_t info) {
                 || info.type == INT4OID
                 || info.type == INT8OID
                 || info.type == FLOAT4OID
-                || info.type == FLOAT8OID)) {
+                || info.type == FLOAT8OID
+                || info.type == NUMERICOID)) {
         elog(ERROR,
                 "Unexpected Column '%s' type. Expected ANY-NUMERICAL",
                 info.name);
@@ -267,6 +268,10 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
         case FLOAT8OID:
             value = DatumGetFloat8(binval);
             break;
+        case NUMERICOID:
+             /* Note: out-of-range values will be clamped to +-HUGE_VAL */
+             value = (double) DatumGetFloat8(DirectFunctionCall1(numeric_float8_no_overflow, binval));
+             break;
         default:
             elog(ERROR,
                     "Unexpected Column type of %s. Expected ANY-NUMERICAL",

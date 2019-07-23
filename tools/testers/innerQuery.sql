@@ -30,6 +30,9 @@ BEGIN
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
     RETURN query SELECT throws_ok(query);
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
+    RETURN query SELECT throws_ok(query);
 END;
 $BODY$ LANGUAGE plpgsql;
 
@@ -63,6 +66,9 @@ BEGIN
     RETURN query SELECT lives_ok(query);
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
+    RETURN query SELECT lives_ok(query);
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
     RETURN query SELECT lives_ok(query);
 END;
 $BODY$ LANGUAGE plpgsql;
@@ -99,6 +105,9 @@ BEGIN
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
     RETURN query SELECT throws_ok(query);
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
+    RETURN query SELECT throws_ok(query);
 END;
 $BODY$ LANGUAGE plpgsql;
 
@@ -132,6 +141,9 @@ BEGIN
     RETURN query SELECT lives_ok(query);
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
+    RETURN query SELECT lives_ok(query);
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
     RETURN query SELECT lives_ok(query);
 END;
 $BODY$ LANGUAGE plpgsql;

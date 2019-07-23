@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(488);
+SELECT plan(584);
 
 
 SELECT has_function('pgr_maxflowmincost_cost',

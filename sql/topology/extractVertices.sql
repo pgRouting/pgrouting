@@ -49,6 +49,7 @@ DECLARE
     has_points BOOLEAN := TRUE;
     has_id BOOLEAN := TRUE;
     fnName TEXT;
+    rec RECORD;
 
 BEGIN
     fnName = 'pgr_extractVertices';
@@ -85,9 +86,19 @@ BEGIN
         query = 'SELECT id FROM ('||edges_sql||' ) AS __a__ limit 1';
         EXECUTE query;
 
+        query = 'SELECT pg_typeof(id) FROM ('||edges_sql||' ) AS __a__ limit 1';
+        EXECUTE query INTO rec;
+
         EXCEPTION WHEN OTHERS THEN
             has_id := FALSE;
     END;
+
+    IF NOT dryrun AND has_id THEN
+        IF  rec.pg_typeof NOT IN ('smallint','integer','bigint') THEN
+            RAISE EXCEPTION 'Expected type of column "id" is ANY-INTEGER'
+            USING HINT = 'Please check query: '|| $1;
+        END IF;
+    END IF;
 
     -- has geometry?
     BEGIN
@@ -112,10 +123,24 @@ BEGIN
       query = 'SELECT source, target FROM ('||edges_sql||' ) AS __a__ limit 1';
       EXECUTE query;
 
+      query = 'SELECT pg_typeof(source) s_t, pg_typeof(target) t_t  FROM ('||edges_sql||' ) AS __a__ limit 1';
+      EXECUTE query INTO rec;
+
       EXCEPTION WHEN OTHERS THEN
         has_source := FALSE;
     END;
 
+    IF NOT dryrun AND has_source THEN
+        IF  rec.s_t NOT IN ('smallint','integer','bigint') THEN
+            RAISE EXCEPTION 'Expected type of column "source" is ANY-INTEGER'
+            USING HINT = 'Please check query: '|| $1;
+        END IF;
+
+        IF  rec.t_t NOT IN ('smallint','integer','bigint') THEN
+            RAISE EXCEPTION 'Expected type of column "target" is ANY-INTEGER'
+            USING HINT = 'Please check query: '|| $1;
+        END IF;
+    END IF;
 
     IF has_geom AND has_id THEN
       -- SELECT id, geom
@@ -127,7 +152,7 @@ BEGIN
         ),
 
         the_out AS (
-          SELECT id AS out_edge, ST_StartPoint(geom) AS geom
+          SELECT id::BIGINT AS out_edge, ST_StartPoint(geom) AS geom
           FROM main_sql
         ),
 
@@ -138,7 +163,7 @@ BEGIN
         ),
 
         the_in AS (
-          SELECT id AS in_edge, ST_EndPoint(geom) AS geom
+          SELECT id::BIGINT AS in_edge, ST_EndPoint(geom) AS geom
           FROM main_sql
         ),
 
@@ -201,7 +226,7 @@ BEGIN
         ),
 
         the_out AS (
-          SELECT id AS out_edge, startpoint AS geom
+          SELECT id::BIGINT AS out_edge, startpoint AS geom
           FROM main_sql
         ),
 
@@ -212,7 +237,7 @@ BEGIN
         ),
 
         the_in AS (
-          SELECT id AS in_edge, endpoint AS geom
+          SELECT id::BIGINT AS in_edge, endpoint AS geom
           FROM main_sql
         ),
 
@@ -269,13 +294,13 @@ BEGIN
         ),
 
         agg_out AS (
-          SELECT source AS vid, array_agg(id) AS out_edges
+          SELECT source AS vid, array_agg(id::BIGINT) AS out_edges
           FROM main_sql
           GROUP BY source
         ),
 
         agg_in AS (
-          SELECT target AS vid, array_agg(id) AS in_edges
+          SELECT target AS vid, array_agg(id::BIGINT) AS in_edges
           FROM main_sql
           GROUP BY target
         ),

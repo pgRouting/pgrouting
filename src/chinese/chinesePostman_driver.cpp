@@ -77,7 +77,7 @@ do_pgr_directedChPP(
             (*return_count) = 0;
             notice <<
                 "No paths found";
-            *err_msg = pgr_msg(notice.str().c_str());
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 

@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(548);
+SELECT plan(656);
 
 SELECT has_function('pgr_bddijkstracost', ARRAY['text', 'bigint', 'bigint', 'boolean']);
 SELECT has_function('pgr_bddijkstracost', ARRAY['text', 'anyarray', 'bigint', 'boolean']);
