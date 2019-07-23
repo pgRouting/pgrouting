@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION _pgr_topologicalSort(
     edges_sql TEXT,
 
     OUT seq INTEGER,
-    OUT sorted_v INTEGER)
+    OUT sorted_v BIGINT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'topologicalSort'
 LANGUAGE c VOLATILE STRICT;
