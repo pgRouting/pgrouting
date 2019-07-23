@@ -162,7 +162,7 @@ topologicalSort(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].sorted_v);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].sorted_v);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

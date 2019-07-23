@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 typedef struct {
     int seq;
-    int sorted_v;
+    int64_t sorted_v;
 } pgr_topologicalSort_t;
 
 #endif  // INCLUDE_C_TYPES_PGR_TOPOLOGICALSORT_T_H_
