@@ -9,6 +9,8 @@ SET(LOCAL_FILES
     routingFunctions.rst
     sampledata.rst
     support.rst
+    cost-category.rst
+    costMatrix-category.rst
     )
 
 foreach (f ${LOCAL_FILES})

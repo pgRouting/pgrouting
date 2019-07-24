@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     bdDijkstra-family.rst
     pgr_bdDijkstraCost.rst
+    pgr_bdDijkstraCostMatrix.rst
     pgr_bdDijkstra.rst
     )
 
