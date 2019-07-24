@@ -10,7 +10,7 @@ SELECT * FROM pgr_chinesePostmanCost(
 );
  pgr_chinesepostmancost
 ------------------------
-                    34
+                     34
 (1 row)
 
 -- q2
@@ -21,7 +21,7 @@ SELECT * FROM pgr_chinesePostmanCost(
 );
  pgr_chinesepostmancost
 ------------------------
-                     8
+                      8
 (1 row)
 
 -- q3
