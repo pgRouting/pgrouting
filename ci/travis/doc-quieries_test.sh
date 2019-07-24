@@ -70,7 +70,7 @@ then
     ERROR=1
 fi
 
-./tools/testers/algorithm-tester.pl -pgver "${POSTGRESQL_VERSION}" -pguser "${PGUSER}"
+./tools/testers/doc_queries_generator.pl -pgver "${POSTGRESQL_VERSION}" -pguser "${PGUSER}"
 
 if [ "$?" -ne 0 ]
 then

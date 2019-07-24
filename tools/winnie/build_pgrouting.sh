@@ -203,16 +203,16 @@ ls "${PGPATHEDB}/share/extension/pgrouting*"
 cd "${PROJECTS}/pgrouting/branches/${PGROUTING_VER}"
 
 #perl tools/test-runner.pl   -pgver ${PG_VER} -pgport "${PGPORT}"  -clean
-#perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg common -clean -v
-#perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg dijkstra -clean -v
-#perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg contraction
+#perl tools/testers/doc_queries_generator.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg common -clean -v
+#perl tools/testers/doc_queries_generator.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg dijkstra -clean -v
+#perl tools/testers/doc_queries_generator.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg contraction
 
-#perl tools/testers/algorithm-tester.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
+#perl tools/testers/doc_queries_generator.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
 if [ "${OS_BUILD}" -eq 32 ]
 then
 
-    perl tools/testers/algorithm-tester.pl  -pgver "${PG_VER}" -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
+    perl tools/testers/doc_queries_generator.pl  -pgver "${PG_VER}" -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
 else
 

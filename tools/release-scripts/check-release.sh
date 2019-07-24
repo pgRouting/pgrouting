@@ -303,10 +303,10 @@ echo - [x] completed update testing
 echo "### execute the documentation queries"
 #---------------------------------------------------------------------
 echo "\`\`\`"
-echo tools/testers/algorithm-tester.pl -documentation
+echo tools/testers/doc_queries_generator.pl -documentation
 echo git status
 echo "\`\`\`"
-tools/testers/algorithm-tester.pl -documentation
+tools/testers/doc_queries_generator.pl -documentation
 if [[ $? != 0 ]]; then
     echo "FATAL errors found generating documentation result files"
     exit 1
