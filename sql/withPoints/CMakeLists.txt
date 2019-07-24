@@ -3,6 +3,7 @@ SET(LOCAL_FILES
     _withPoints.sql
     withPoints.sql
     withPointsCost.sql
+    withPointsCostMatrix.sql
     withPointsVia.sql
     )
 

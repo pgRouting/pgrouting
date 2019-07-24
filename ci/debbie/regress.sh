@@ -65,7 +65,7 @@ make
 make install
 cd ../"${BRANCH}"
 export PERL5LIB=$(echo pwd)
-perl tools/testers/algorithm-tester.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
+perl tools/testers/doc_queries_generator.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
 #pgTap tests disable for now until we have installed
 if false; then

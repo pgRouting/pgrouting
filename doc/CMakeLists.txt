@@ -185,8 +185,9 @@ message(STATUS "PGR_DOCUMENTATION_BUILD_DIR = ${PGR_DOCUMENTATION_BUILD_DIR}")
 #---------------------------------------------
 # Adding documentation directories
 #---------------------------------------------
-foreach (subdir ${PGROUTING_DOC_DIRECTORIES} "src" "queries")
-    add_subdirectory(${subdir})
+foreach (subdir ${PGROUTING_DOC_DIRECTORIES} "src")
+    add_subdirectory("${subdir}")
+    add_subdirectory("../docqueries/${subdir}" "build/doc/${subdir}")
 endforeach()
 
 add_subdirectory("images")

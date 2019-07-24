@@ -190,11 +190,11 @@ To do this:
 1. Move to the root directory.
 2. get the help of testing tool:
 ~~~~{.c}
-     tools/testers/algorithm-tester.pl -help
+     tools/testers/doc_queries_generator.pl -help
 ~~~~
 3. run all the tests
 ~~~~{.c}
-     tools/testers/algorithm-tester.pl
+     tools/testers/doc_queries_generator.pl
 ~~~~
 
 @section automate_process Make a run.sh

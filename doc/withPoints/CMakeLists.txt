@@ -4,6 +4,7 @@ SET(LOCAL_FILES
     pgr_withPoints.rst
     withPoints-family.rst
     pgr_withPointsCost.rst
+    pgr_withPointsCostMatrix.rst
     pgr_withPointsKSP.rst
     pgr_withPointsVia.rst
     )

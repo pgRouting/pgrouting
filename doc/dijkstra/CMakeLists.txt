@@ -1,6 +1,7 @@
 
 SET(LOCAL_FILES
     dijkstra-family.rst
+    pgr_dijkstraCostMatrix.rst
     pgr_dijkstraCost.rst
     pgr_dijkstra.rst
     pgr_dijkstraVia.rst

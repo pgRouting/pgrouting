@@ -25,7 +25,7 @@ cmake "../${BRANCH}"
 make
 sudo make install
 cd "../${BRANCH}"
-perl tools/testers/algorithm-tester.pl
+perl tools/testers/doc_queries_generator.pl
 
 psql -c "CREATE DATABASE ___pgr___test___"
 sh tools/testers/pg_prove_tests.sh "${PGUSER}"

@@ -64,7 +64,7 @@ cd ..
 
 echo "  - [x] Compilation"
 
-tools/testers/algorithm-tester.pl >> build/tmp_make.txt
+tools/testers/doc_queries_generator.pl >> build/tmp_make.txt
 echo "  - [x] Documentation tests"
 
 
@@ -75,7 +75,7 @@ dropdb  ___pgr___test___
 echo '  - [x] Pgtap tests OK'
 
 if [[ "$1" == "4.8" ]]; then
-    tools/testers/algorithm-tester.pl -documentation >> build/tmp_make.txt
+    tools/testers/doc_queries_generator.pl -documentation >> build/tmp_make.txt
     echo "  - [x] Regenerating Users documentation queries OK"
     cd build
     make doc >> tmp_make.txt

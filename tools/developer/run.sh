@@ -50,10 +50,10 @@ echo  Execute documentation queries for a particular directory
 echo --------------------------------------------
 
 # - when one postgres version is installed on the computer
-#tools/testers/algorithm-tester.pl  -alg withPoints -documentation
+#tools/testers/doc_queries_generator.pl  -alg withPoints -documentation
 
 # - when more than one postgres version is installed on the computer
-tools/testers/algorithm-tester.pl  -alg withPoints -documentation  -pgport $PGPORT
+tools/testers/doc_queries_generator.pl  -alg withPoints -documentation  -pgport $PGPORT
 
 
 echo
@@ -127,7 +127,7 @@ fi
 ########################################################
 #  Execute documentation queries for the whole project
 ########################################################
-tools/testers/algorithm-tester.pl  -documentation  -pgport $PGPORT
+tools/testers/doc_queries_generator.pl  -documentation  -pgport $PGPORT
 
 # update the trsp README.md file
 cp test/trsp/trsp_notes_v${VERSION}.result doc/trsp/README.md
@@ -143,7 +143,7 @@ fi
 
 
 
-tools/testers/algorithm-tester.pl -pgport $PGPORT
+tools/testers/doc_queries_generator.pl -pgport $PGPORT
 
 cd build
 #rm -rf doc/*
