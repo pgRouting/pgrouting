@@ -78,7 +78,7 @@ Signatures
 
 :Example: Cost matrix for vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
 
-.. literalinclude:: doc-pgr_fooDmatrix.queries
+.. literalinclude:: doc-aStarCostMatrix.queries
    :start-after: -- astar q1
    :end-before: -- astar q2
 
@@ -95,7 +95,7 @@ Complete Signature
 
 :Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph using heuristic :math:`2`
 
-.. literalinclude:: doc-pgr_fooDmatrix.queries
+.. literalinclude:: doc-aStarCostMatrix.queries
    :start-after: -- astar q2
    :end-before: -- astar q3
 
@@ -139,7 +139,7 @@ Additional Examples
 
 :Example: Use with :doc:`pgr_TSP`
 
-.. literalinclude:: doc-pgr_fooDmatrix.queries
+.. literalinclude:: doc-aStarCostMatrix.queries
    :start-after: -- astar q3
    :end-before: -- astar q4
 

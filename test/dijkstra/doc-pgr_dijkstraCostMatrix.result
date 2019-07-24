@@ -65,8 +65,6 @@ SELECT * FROM pgr_TSP(
    5 |    1 |    0 |        6
 (5 rows)
 
-echo
+-- dijkstra q4
 ROLLBACK;
-ERROR:  syntax error at or near "echo"
-LINE 1: echo
-        ^
+ROLLBACK

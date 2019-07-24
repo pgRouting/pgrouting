@@ -68,7 +68,7 @@ The minimal signature:
 :Example: Cost matrix for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on a **directed** graph
 
 
-.. literalinclude:: doc-pgr_fooDmatrix.queries
+.. literalinclude:: doc-pgr_withPointsCostMatrix.queries
    :start-after: -- withPoints q1
    :end-before: -- withPoints q2
 
@@ -90,7 +90,7 @@ Complete Signature
 * Using the default **side** value on the **points_sql** query
 * Using the default **driving_side** value
 
-.. literalinclude:: doc-pgr_fooDmatrix.queries
+.. literalinclude:: doc-pgr_withPointsCostMatrix.queries
    :start-after: -- withPoints q2
    :end-before: -- withPoints q3
 
@@ -134,7 +134,7 @@ Additional Examples
 
 :Example: :doc:`pgr_TSP` using ``pgr_withPointsCostMatrix`` for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on an **undirected** graph
 
-.. literalinclude:: doc-pgr_fooDmatrix.queries
+.. literalinclude:: doc-pgr_withPointsCostMatrix.queries
    :start-after: -- withPoints q3
    :end-before: -- withPoints q4
 

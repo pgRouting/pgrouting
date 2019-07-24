@@ -68,7 +68,7 @@ Signatures
 
 :Example: Cost matrix for vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
 
-.. literalinclude:: doc-pgr_fooDmatrix.queries
+.. literalinclude:: doc-pgr_bdDijkstraCostMatrix.queries
    :start-after: -- bdDijkstra q1
    :end-before: -- bdDijkstra q2
 
@@ -82,7 +82,7 @@ Complete Signature
 
 :Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph
 
-.. literalinclude:: doc-pgr_fooDmatrix.queries
+.. literalinclude:: doc-pgr_bdDijkstraCostMatrix.queries
    :start-after: -- bdDijkstra q2
    :end-before: -- bdDijkstra q3
 
@@ -116,7 +116,7 @@ Additional Examples
 
 :Example: Use with tsp
 
-.. literalinclude:: doc-pgr_fooDmatrix.queries
+.. literalinclude:: doc-pgr_bdDijkstraCostMatrix.queries
    :start-after: -- bdDijkstra q3
    :end-before: -- bdDijkstra q4
 

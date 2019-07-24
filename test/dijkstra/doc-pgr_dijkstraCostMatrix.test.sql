@@ -24,4 +24,4 @@ SELECT * FROM pgr_TSP(
     $$,
     randomize := false
 );
-echo -- dijkstra q4
+\echo -- dijkstra q4

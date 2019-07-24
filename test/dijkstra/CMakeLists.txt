@@ -1,5 +1,6 @@
 # Do not use extensions
 SET(LOCAL_FILES
+    doc-pgr_dijkstraCostMatrix
     doc-pgr_dijkstraCost
     doc-pgr_dijkstra
     doc-pgr_dijkstraVia
