@@ -39,7 +39,6 @@ project(PGROUTING VERSION 3.0.0
 set(PGROUTING_VERSION_DEV "-dev")
 
 include(pgr/GitInfo)
-add_definitions(-DPGROUTING_HASH="${PGROUTING_GIT_HASH}")
 
 include(pgr/Version)
 add_definitions(-DPGROUTING_VERSION="${PGROUTING_VERSION}${PGROUTING_VERSION_DEV}")

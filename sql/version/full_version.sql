@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_full_version(
     OUT version TEXT,
     OUT build_type TEXT,
+    OUT compile_date TEXT,
     OUT library TEXT,
     OUT PostgreSQL TEXT,
     OUT compiler TEXT,
@@ -39,6 +40,7 @@ RETURNS Record AS
 $BODY$
     SELECT pgr_version(),
         _pgr_build_type(),
+        _pgr_compilation_date(),
         _pgr_lib_version(),
         _pgr_pgsql_version(),
         _pgr_compiler_version(),

@@ -78,7 +78,7 @@ PG_FUNCTION_INFO_V1(_pgr_git_hash);
 PGDLLEXPORT Datum _pgr_git_hash(PG_FUNCTION_ARGS)
 {
     UNUSED(fcinfo);
-	char *ver = PGROUTING_HASH;
+	char *ver = PGROUTING_GIT_HASH;
 	text *result = cstring_to_text(ver);
 	PG_RETURN_TEXT_P(result);
 }
