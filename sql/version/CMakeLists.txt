@@ -1,13 +1,8 @@
 
 SET(LOCAL_FILES
-    pgRouting-header.sql
-    _point_toId.sql
-    _startPoint.sql
-    _endPoint.sql
-    pgrouting_utilities.sql
-    pgr_parameter_check.sql
-    utilities_pgr.sql
-    createIndex.sql
+    _version.sql
+    version.sql
+    full_version.sql
     )
 
 foreach (f ${LOCAL_FILES})
@@ -16,5 +11,3 @@ foreach (f ${LOCAL_FILES})
 endforeach()
 
 set(PGROUTING_SQL_FILES ${PGROUTING_SQL_FILES} ${PACKAGE_SQL_FILES} PARENT_SCOPE)
-
-configure_file(pgrouting.control pgrouting.control)

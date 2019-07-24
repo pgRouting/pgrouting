@@ -27,6 +27,7 @@ endif()
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(pgr/BuildType)
+add_definitions(-DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}")
 
 
 #---------------------------------------------
@@ -38,8 +39,14 @@ project(PGROUTING VERSION 3.0.0
 set(PGROUTING_VERSION_DEV "-dev")
 
 include(pgr/GitInfo)
-include(pgr/Version)
+add_definitions(-DPGROUTING_HASH="${PGROUTING_GIT_HASH}")
 
+include(pgr/Version)
+add_definitions(-DPGROUTING_VERSION="${PGROUTING_VERSION}${PGROUTING_VERSION_DEV}")
+add_definitions(-DPGROUTING_LIB_NAME="pgrouting-${PGROUTING_LIB_VERSION}")
+
+string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d")
+add_definitions(-DCOMPILATION_DATE="${COMPILATION_DATE}")
 
 
 
@@ -114,6 +121,7 @@ elseif(COMPILER_SUPPORTS_CXX0X)
 else()
     message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++0x or C++11 flags support.")
 endif()
+add_definitions(-DCOMPILER_VERSION="${CMAKE_CXX_COMPILER_ID}-${CMAKE_CXX_COMPILER_VERSION}")
 
 
 
@@ -205,9 +213,8 @@ if(WIN32)
     endif(MSVC)
 endif(WIN32)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
-set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DPGSQL_VERSION=${PGSQL_VERSION}")
-set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -DPGSQL_VERSION=${PGSQL_VERSION}")
+add_definitions(-DPGSQL_VERSION=${PGSQL_VERSION})
+add_definitions(-DPOSTGRES_VERSION="${POSTGRESQL_VERSION_STRING}")
 message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
 
 
@@ -223,6 +230,7 @@ if(Boost_FOUND)
 else()
     message(FATAL_ERROR " Please check your Boost installation ")
 endif()
+add_definitions(-DBOOST_VERSION="${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
 
 
 # Boost for Chinese postman needs 1.55 at least
