@@ -3,6 +3,7 @@ SET(LOCAL_FILES
     _bdDijkstra.sql
     bdDijkstra.sql
     bdDijkstraCost.sql
+    bdDijkstraCostMatrix.sql
     )
 
 foreach (f ${LOCAL_FILES})

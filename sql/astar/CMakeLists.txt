@@ -3,6 +3,7 @@ SET(LOCAL_FILES
     _astar.sql
     astar.sql
     astarCost.sql
+    astarCostMatrix.sql
     )
 
 foreach (f ${LOCAL_FILES})
