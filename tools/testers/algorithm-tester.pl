@@ -275,7 +275,7 @@ sub run_test {
         for my $x (@{$t->{documentation}}) {
             process_single_test($x, $dir,, $DBNAME, \%res);
             my $cmd = q(perl -pi -e 's/[ \t]+$//');
-            $cmd .= " doc/queries/$x.queries";
+            $cmd .= " $dir/$x.result";
             mysystem( $cmd );
         }
     }
@@ -323,8 +323,7 @@ sub process_single_test{
 
 
     if ($DOCUMENTATION) {
-        mysystem("mkdir -p 'doc/queries' "); # make sure the directory exists
-        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > doc/queries/$x.queries 2>\&1 ") || do {
+        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/$x.result 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             next;
         };
