@@ -1,0 +1,70 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- bdAstar q1
+SELECT * FROM pgr_bdAstarCostMatrix(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5)
+);
+ start_vid | end_vid | agg_cost
+-----------+---------+----------
+         1 |       2 |        1
+         1 |       3 |        6
+         1 |       4 |        5
+         2 |       1 |        1
+         2 |       3 |        5
+         2 |       4 |        4
+         3 |       1 |        2
+         3 |       2 |        1
+         3 |       4 |        3
+         4 |       1 |        3
+         4 |       2 |        2
+         4 |       3 |        1
+(12 rows)
+
+-- bdAstar q2
+SELECT * FROM pgr_bdAstarCostMatrix(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5),
+    false
+);
+ start_vid | end_vid | agg_cost
+-----------+---------+----------
+         1 |       2 |        1
+         1 |       3 |        2
+         1 |       4 |        3
+         2 |       1 |        1
+         2 |       3 |        1
+         2 |       4 |        2
+         3 |       1 |        2
+         3 |       2 |        1
+         3 |       4 |        1
+         4 |       1 |        3
+         4 |       2 |        2
+         4 |       3 |        1
+(12 rows)
+
+-- bdAstar q3
+SELECT * FROM pgr_TSP(
+    $$
+    SELECT * FROM pgr_bdAstarCostMatrix(
+        'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+        (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5),
+        false
+    )
+    $$,
+    randomize := false
+);
+ seq | node | cost | agg_cost
+-----+------+------+----------
+   1 |    1 |    1 |        0
+   2 |    2 |    1 |        1
+   3 |    3 |    1 |        2
+   4 |    4 |    3 |        3
+   5 |    1 |    0 |        6
+(5 rows)
+
+-- bdAstar q4
+ROLLBACK;
+ROLLBACK

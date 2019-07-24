@@ -87,7 +87,7 @@ print "RUNNING: algorithm-tester.pl " . join(" ", @ARGV) . "\n";
 
 my ($vpg, $postgis_ver, $vpgr, $psql);
 my $alg = '';
-my @testpath = ("test/");
+my @testpath = ("docqueries/");
 my @test_direcotry = ();
 my $clean;
 my $ignore;
