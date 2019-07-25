@@ -52,12 +52,14 @@ Pgrouting Concepts
 
 .. rubric:: Reference
 
-:doc:`pgr_version` - to get pgRouting's version information.
+:doc:`pgr_version` - Get pgRouting's version information.
+:doc:`pgr_full_version` - Get pgRouting's details of version.
 
 .. toctree::
    :hidden:
 
    pgr_version
+   pgr_full_version
 
 
 

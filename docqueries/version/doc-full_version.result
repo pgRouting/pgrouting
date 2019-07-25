@@ -3,10 +3,10 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT version FROM pgr_full_version();
-  version
------------
- 3.0.0-dev
+SELECT * FROM pgr_full_version();
+  version  | build_type | compile_date |    library    | system |    postgresql     | compiler  | boost  |   hash
+-----------+------------+--------------+---------------+--------+-------------------+-----------+--------+-----------
+ 3.0.0-dev | Debug      | 2019/07/24   | pgrouting-3.0 |        | PostgreSQL 9.5.16 | GNU-8.3.0 | 1.65.1 | f3b6a9177
 (1 row)
 
 -- q2
