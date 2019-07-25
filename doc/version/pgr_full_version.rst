@@ -38,7 +38,7 @@ Signatures
 .. code-block:: sql
 
 	pgr_full_version()
-   RETURNS RECORD OF {version, build_type, compile_date, library, system, PostgreSQL, compiler, boost, hash}
+   RETURNS RECORD OF (version, build_type, compile_date, library, system, PostgreSQL, compiler, boost, hash)
 
 
 :Example: Information when this documentation was build

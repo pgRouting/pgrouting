@@ -28,7 +28,7 @@ endif()
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(pgr/BuildType)
 add_definitions(-DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}")
-add_definitions(-DCMAKE_SYSTEM_NAME="${CMAKE_SYSTEM_NAME}")
+
 
 
 #---------------------------------------------
@@ -38,6 +38,7 @@ add_definitions(-DCMAKE_SYSTEM_NAME="${CMAKE_SYSTEM_NAME}")
 project(PGROUTING VERSION 3.0.0
     LANGUAGES C CXX )
 set(PGROUTING_VERSION_DEV "-dev")
+add_definitions(-DCMAKE_SYSTEM_NAME="${CMAKE_SYSTEM}")
 
 include(pgr/GitInfo)
 
