@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-07-25 09:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,119 +29,91 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_version.rst:17
-msgid "Version 2.0.0"
+msgid "Version 3.0.0"
 msgstr ""
 
 #: ../../build/doc/pgr_version.rst:19
-msgid "**Official** function"
+msgid "Breaking change on result columns"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:20
+msgid "Support for old signature ends"
 msgstr ""
 
 #: ../../build/doc/pgr_version.rst:22
+msgid "Version 2.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:24
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:27
 msgid "Support"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:23
+#: ../../build/doc/pgr_version.rst:28
 msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_version.html>`__)"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:26
+#: ../../build/doc/pgr_version.rst:31
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_version.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_version.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_version.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_version.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_version.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/utilities/version.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/utilities/version.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:36
-#: ../../build/doc/pgr_version.rst:50
+#: ../../build/doc/pgr_version.rst:41
+#: ../../build/doc/pgr_version.rst:65
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:38
-msgid "Returns a table with pgRouting version information."
+#: ../../build/doc/pgr_version.rst:43
+msgid "Returns pgRouting version information."
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:45
-msgid "Result Columns"
+#: ../../build/doc/pgr_version.rst:49
+msgid "Signature"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:47
-msgid "Returns a table with:"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:50
-msgid "Column"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:50
-msgid "Type"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:52
-msgid "**version**"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:52
-#: ../../build/doc/pgr_version.rst:53
-#: ../../build/doc/pgr_version.rst:54
-#: ../../build/doc/pgr_version.rst:55
-#: ../../build/doc/pgr_version.rst:56
-msgid "``varchar``"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:52
-msgid "pgRouting version"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:53
-msgid "**tag**"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:53
-msgid "Git tag of pgRouting build"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:54
-msgid "**hash**"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:54
-msgid "Git hash of pgRouting build"
+#: ../../build/doc/pgr_version.rst:0
+msgid "Example"
 msgstr ""
 
 #: ../../build/doc/pgr_version.rst:55
-msgid "**branch**"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:55
-msgid "Git branch of pgRouting build"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:56
-msgid "**boost**"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:56
-msgid "Boost version"
-msgstr ""
-
-#: ../../build/doc/pgr_version.rst:60
-msgid "Additional Examples"
+msgid "pgRouting Version for this documentatoin"
 msgstr ""
 
 #: ../../build/doc/pgr_version.rst:62
-msgid "Query for the version string"
+msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:69
+#: ../../build/doc/pgr_version.rst:65
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:67
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:67
+msgid "pgRouting version"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:71
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:72
+#: ../../build/doc/pgr_version.rst:73
+msgid ":doc:`pgr_full_version`"
+msgstr ""
+
+#: ../../build/doc/pgr_version.rst:76
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:73
+#: ../../build/doc/pgr_version.rst:77
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_version.rst:74
+#: ../../build/doc/pgr_version.rst:78
 msgid ":ref:`search`"
 msgstr ""
 
