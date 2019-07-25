@@ -47,7 +47,7 @@ run_psql  -c "CREATE EXTENSION pgrouting;"
 # ------------------------------------------------------------------------------
 run_psql -c "SELECT version();"
 run_psql -c "SELECT postgis_full_version();"
-run_psql -c "SELECT pgr_version();"
+run_psql -c "SELECT pgr_full_version();"
 
 
 # ------------------------------------------------------------------------------

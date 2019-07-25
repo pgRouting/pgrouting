@@ -1,0 +1,14 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- q1
+SELECT pgr_version();
+ pgr_version
+-------------
+ 3.0.0-dev
+(1 row)
+
+-- q2
+ROLLBACK;
+ROLLBACK

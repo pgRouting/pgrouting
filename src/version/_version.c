@@ -34,6 +34,7 @@ PGDLLEXPORT Datum _pgr_compilation_date(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum _pgr_compiler_version(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum _pgr_git_hash(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum _pgr_lib_version(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum _pgr_operating_system(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum _pgr_pgsql_version(PG_FUNCTION_ARGS);
 
 
@@ -91,6 +92,16 @@ PGDLLEXPORT Datum _pgr_lib_version(PG_FUNCTION_ARGS)
 	text *result = cstring_to_text(ver);
 	PG_RETURN_TEXT_P(result);
 }
+
+PG_FUNCTION_INFO_V1(_pgr_operating_system);
+PGDLLEXPORT Datum _pgr_operating_system(PG_FUNCTION_ARGS)
+{
+    UNUSED(fcinfo);
+	char *ver = CMAKE_SYSTEM_NAME;
+	text *result = cstring_to_text(ver);
+	PG_RETURN_TEXT_P(result);
+}
+
 
 PG_FUNCTION_INFO_V1(_pgr_pgsql_version);
 PGDLLEXPORT Datum _pgr_pgsql_version(PG_FUNCTION_ARGS)

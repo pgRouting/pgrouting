@@ -116,7 +116,7 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a eq '-alg') {
         $alg = shift @ARGV || Usage();
-        @testpath = ("test/$alg");
+        @testpath = ("docqueries/$alg");
     }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();

@@ -82,6 +82,16 @@ LANGUAGE C VOLATILE STRICT;
 COMMENT ON FUNCTION _pgr_lib_version() IS
 'pgRouting internal function';
 
+
+---
+
+CREATE OR REPLACE FUNCTION _pgr_operating_system()
+RETURNS TEXT AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
+
+COMMENT ON FUNCTION _pgr_operating_system() IS
+'pgRouting internal function';
 ---
 
 CREATE OR REPLACE FUNCTION _pgr_pgsql_version()

@@ -3,5 +3,5 @@
 --                pgr_version
 --------------------------------------------------------------------------------
 \echo -- q1
-SELECT version FROM pgr_version();
+SELECT version FROM pgr_full_version();
 \echo -- q2
