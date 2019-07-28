@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: contractGraph_driver.cpp
+File: transitiveClosure_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,62 +27,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/contraction/contractGraph_driver.h"
+#include "drivers/transitiveClosure/transitiveClosure_driver.h"
 
 #include <string.h>
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "contraction/pgr_contractionGraph.hpp"
-#include "contraction/pgr_contract.hpp"
+#include "transitiveClosure/pgr_transitiveClosure.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 
-static
-bool
-is_valid_contraction(int64_t number) {
-    switch (number) {
-        case 1:
-        case 2:
-            return true;
-            break;
-        default:
-            return false;
-            break;
-    }
-}
 
 
 template <typename G>
-static void process_contraction(
+static void process_transitiveClosure(
         G &graph,
         const std::vector< pgr_edge_t > &edges,
-        const std::vector< int64_t > &forbidden_vertices,
-        const std::vector< int64_t > &contraction_order,
-        int64_t max_cycles,
-        Identifiers<int64_t> &remaining_vertices,
-        std::vector< pgrouting::CH_edge > &shortcut_edges,
         std::ostringstream &log,
         std::ostringstream &err) {
     graph.insert_edges(edges);
     /*
      * this check does not ignore vertices ids that do not belong to the graph
      */
-    log << "Checking for valid forbidden vertices\n";
-    for (const auto vertex : forbidden_vertices) {
-        if (!graph.has_vertex(vertex)) {
-            err << "Invalid forbidden vertex: " << vertex << "\n";
-            return;
-        }
-    }
-
-    Identifiers<typename G::V> forbid_vertices;
-    for (const auto &vertex : forbidden_vertices) {
-        if (graph.has_vertex(vertex)) {
-            forbid_vertices += graph.get_V(vertex);
-        }
-    }
 
 #ifndef NDEBUG
     log << "Before contraction\n";
@@ -162,22 +129,12 @@ void get_postgres_result(
 
 
 /************************************************************
-  edges_sql TEXT,
-  contraction_order BIGINT[],
-  forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
-  max_cycles integer DEFAULT 1,
-  directed BOOLEAN DEFAULT true
+  edges_sql TEXT
  ***********************************************************/
 void
 do_pgr_contractGraph(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        int64_t *forbidden_vertices,
-        size_t size_forbidden_vertices,
-        int64_t *contraction_order,
-        size_t size_contraction_order,
-        int64_t max_cycles,
-        bool directed,
         contracted_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
@@ -188,8 +145,6 @@ do_pgr_contractGraph(
     std::ostringstream err;
     try {
         pgassert(total_edges != 0);
-        pgassert(size_contraction_order != 0);
-        pgassert(max_cycles != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
@@ -200,21 +155,6 @@ do_pgr_contractGraph(
          * Converting to C++ structures
          */
         std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
-        std::vector<int64_t> forbid(
-                forbidden_vertices,
-                forbidden_vertices + size_forbidden_vertices);
-        std::vector<int64_t> ordering(
-                contraction_order,
-                contraction_order + size_contraction_order);
-
-        for (const auto o : ordering) {
-            if (!is_valid_contraction(o)) {
-                *err_msg = pgr_msg("Invalid Contraction Type found");
-                log << "Contraction type " << o << " not valid";
-                *log_msg = pgr_msg(log.str().c_str());
-                return;
-            }
-        }
 
 
         /*
@@ -251,36 +191,17 @@ do_pgr_contractGraph(
         log << "directed " << directed << "\n";
 #endif
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
-        if (directed) {
-            log << "Working with directed Graph\n";
-            pgrouting::CHDirectedGraph digraph(gType);
+        graphType gType = DIRECTED;
+        log << "Working with directed Graph\n";
+        pgrouting::CHDirectedGraph digraph(gType);
 
-            process_contraction(digraph, edges, forbid, ordering,
-                    max_cycles,
-                    remaining_vertices, shortcut_edges,
-                    log, err);
+        process_transitiveClosure(digraph, edges,
+                log, err);
 
-            get_postgres_result(
-                    digraph,
-                    remaining_vertices,
-                    shortcut_edges,
-                    return_tuples);
-        } else {
-            log << "Working with Undirected Graph\n";
+        get_postgres_result(
+                digraph,
+                return_tuples);
 
-            pgrouting::CHUndirectedGraph undigraph(gType);
-            process_contraction(undigraph, edges, forbid, ordering,
-                    max_cycles,
-                    remaining_vertices, shortcut_edges,
-                    log, err);
-
-            get_postgres_result(
-                    undigraph,
-                    remaining_vertices,
-                    shortcut_edges,
-                    return_tuples);
-        }
 
         (*return_count) = remaining_vertices.size()+shortcut_edges.size();
 
