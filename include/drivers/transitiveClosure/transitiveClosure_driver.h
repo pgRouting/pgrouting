@@ -53,7 +53,7 @@ extern "C" {
                pgr_edge_t  *data_edges,
         size_t total_tuples,
  
-        contracted_rt **return_tuples,
+        transitiveClosure_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
