@@ -37,7 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/allpairs/johnson_driver.h"
 
-PGDLLEXPORT Datum johnson(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum _pgr_johnson(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_johnson);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -97,9 +98,8 @@ void process(
 /*                                                                            */
 /******************************************************************************/
 
-PG_FUNCTION_INFO_V1(johnson);
 PGDLLEXPORT Datum
-johnson(PG_FUNCTION_ARGS) {
+_pgr_johnson(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 

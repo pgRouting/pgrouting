@@ -40,7 +40,7 @@ CREATE OR REPLACE FUNCTION _pgr_floydWarshall(
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'floydWarshall'
+'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
 
 
@@ -65,11 +65,11 @@ LANGUAGE SQL VOLATILE STRICT;
 COMMENT ON FUNCTION _pgr_floydWarshall(TEXT, BOOLEAN)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION pgr_floydWarshall(TEXT, BOOLEAN) 
+COMMENT ON FUNCTION pgr_floydWarshall(TEXT, BOOLEAN)
 IS 'pgr_floydWarshall
 - Parameters:
-    - edges SQL with columns: source, target, cost [,reverse_cost]) 
-- Optional Parameters: 
+    - edges SQL with columns: source, target, cost [,reverse_cost])
+- Optional Parameters:
     - directed := true
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_floydWarshall.html
