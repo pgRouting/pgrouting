@@ -47,36 +47,14 @@ static void process_transitiveClosure(
         std::ostringstream &log,
         std::ostringstream &err) {
     graph.insert_edges(edges);
-    /*
-     * this check does not ignore vertices ids that do not belong to the graph
-     */
-
-#ifndef NDEBUG
-    log << "Before contraction\n";
-    graph.print_graph(log);
-#endif
 
     /*
      * Function call to get the contracted graph.
      */
-    pgrouting::contraction::Pgr_contract<G> result(graph,
-            forbid_vertices,
-            contraction_order,
-            max_cycles, remaining_vertices,
+    pgrouting::ransitiveClosure::Pgr_transitiveClosure<G> result(graph,
+            remaining_vertices,
             shortcut_edges, log);
 
-#ifndef NDEBUG
-    log << "After contraction\n";
-    log << graph;
-    log << "Remaining Vertices:" << "\n";
-    for (const auto vertex : remaining_vertices) {
-        log << vertex << "\n";
-    }
-    log << "Added Edges:" << "\n";
-    for (const auto edge : shortcut_edges) {
-        log << edge << "\n";
-    }
-#endif
 }
 
 template <typename G>
