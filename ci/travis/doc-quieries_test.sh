@@ -47,7 +47,7 @@ run_psql  -c "CREATE EXTENSION pgrouting;"
 # ------------------------------------------------------------------------------
 run_psql -c "SELECT version();"
 run_psql -c "SELECT postgis_full_version();"
-run_psql -c "SELECT pgr_version();"
+run_psql -c "SELECT pgr_full_version();"
 
 
 # ------------------------------------------------------------------------------
@@ -70,6 +70,7 @@ then
     ERROR=1
 fi
 
+./tools/testers/doc_queries_generator.pl -pgver "${POSTGRESQL_VERSION}" -pguser "${PGUSER}" -documentation
 ./tools/testers/doc_queries_generator.pl -pgver "${POSTGRESQL_VERSION}" -pguser "${PGUSER}"
 
 if [ "$?" -ne 0 ]

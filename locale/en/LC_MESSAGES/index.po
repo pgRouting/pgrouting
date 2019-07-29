@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-07-25 09:56-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,10 +59,12 @@ msgid "Reference"
 msgstr ""
 
 #: ../../build/doc/index.rst:55
-msgid ":doc:`pgr_version` - to get pgRouting's version information."
+msgid ""
+":doc:`pgr_version` - Get pgRouting's version information. "
+":doc:`pgr_full_version` - Get pgRouting's details of version."
 msgstr ""
 
-#: ../../build/doc/index.rst:65
+#: ../../build/doc/index.rst:67
 msgid ":doc:`topology-functions`"
 msgstr ""
 
@@ -90,7 +92,7 @@ msgstr ""
 msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
 msgstr ""
 
-#: ../../build/doc/index.rst:78
+#: ../../build/doc/index.rst:80
 msgid ":doc:`routingFunctions`"
 msgstr ""
 
@@ -362,19 +364,19 @@ msgstr ""
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
 msgstr ""
 
-#: ../../build/doc/index.rst:93
+#: ../../build/doc/index.rst:95
 msgid "Available Functions but not official pgRouting functions"
 msgstr ""
 
-#: ../../build/doc/index.rst:95
+#: ../../build/doc/index.rst:97
 msgid ":ref:`stable`"
 msgstr ""
 
-#: ../../build/doc/index.rst:96
+#: ../../build/doc/index.rst:98
 msgid ":ref:`proposed`"
 msgstr ""
 
-#: ../../build/doc/index.rst:106
+#: ../../build/doc/index.rst:108
 msgid ":doc:`release_notes`"
 msgstr ""
 
@@ -478,15 +480,15 @@ msgstr ""
 msgid ":ref:`changelog_1_x`"
 msgstr ""
 
-#: ../../build/doc/index.rst:120
+#: ../../build/doc/index.rst:122
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/index.rst:121
+#: ../../build/doc/index.rst:123
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/index.rst:122
+#: ../../build/doc/index.rst:124
 msgid ":ref:`search`"
 msgstr ""
 
@@ -513,5 +515,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ":doc:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra"
+#~ msgstr ""
+
+#~ msgid ":doc:`pgr_version` - to get pgRouting's version information."
 #~ msgstr ""
 

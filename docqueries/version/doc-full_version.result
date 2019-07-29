@@ -1,0 +1,14 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- q1
+SELECT * FROM pgr_full_version();
+  version  | build_type | compile_date |    library    |         system          |    postgresql     | compiler  | boost  |   hash
+-----------+------------+--------------+---------------+-------------------------+-------------------+-----------+--------+-----------
+ 3.0.0-dev | Debug      | 2019/07/24   | pgrouting-3.0 | Linux-4.15.0-54-generic | PostgreSQL 9.5.16 | GNU-8.3.0 | 1.65.1 | ec66aef5a
+(1 row)
+
+-- q2
+ROLLBACK;
+ROLLBACK

@@ -1,5 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
+    doc-version
+    doc-full_version
     )
 
 foreach (f ${LOCAL_FILES})

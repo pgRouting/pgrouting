@@ -14,6 +14,11 @@ pgr_version
 
 .. rubric:: Availability
 
+* Version 3.0.0
+
+  * Breaking change on result columns
+  * Support for old signature ends
+
 * Version 2.0.0
 
   * **Official** function
@@ -35,38 +40,37 @@ pgr_version
 Description
 -------------------------------------------------------------------------------
 
-Returns a table with pgRouting version information.
+Returns pgRouting version information.
+
+.. index::
+    single: version
+
+Signature
+-------------------------------------------------------------------------------
 
 .. code-block:: sql
 
-	table() pgr_version();
+	TEXT pgr_version();
+
+:Example: pgRouting Version for this documentatoin
+
+.. literalinclude:: doc-version.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns a table with:
-
-===========  =========== ===============================
-Column        Type       Description
-===========  =========== ===============================
-**version**  ``varchar`` pgRouting version
-**tag**      ``varchar`` Git tag of pgRouting build
-**hash**     ``varchar`` Git hash of pgRouting build
-**branch**   ``varchar`` Git branch of pgRouting build
-**boost**    ``varchar`` Boost version
-===========  =========== ===============================
-
-Additional Examples
--------------------------------------------------------------------------------
-
-* Query for the version string
-
-.. literalinclude:: doc-pgr_version.queries
-   :start-after: -- q1
-   :end-before: -- q2
+=========== ===============================
+ Type       Description
+=========== ===============================
+``TEXT``    pgRouting version
+=========== ===============================
 
 See Also
 -------------------------------------------------------------------------------
+
+* :doc:`pgr_full_version`
 
 .. rubric:: Indices and tables
 

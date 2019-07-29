@@ -116,7 +116,7 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a eq '-alg') {
         $alg = shift @ARGV || Usage();
-        @testpath = ("test/$alg");
+        @testpath = ("docqueries/$alg");
     }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
@@ -470,7 +470,7 @@ sub createTestDB {
 
     print `$psql $connopts -c "select version();" postgres `, "\n";
     print `$psql $connopts -c "select postgis_full_version();" $databaseName `, "\n";
-    print `$psql $connopts -c "select pgr_version();" $databaseName `, "\n";
+    print `$psql $connopts -c "select pgr_full_version();" $databaseName `, "\n";
 }
 
 sub dropTestDB {

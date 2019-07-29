@@ -1,9 +1,5 @@
 
-option(SET_VERSION_BRANCH
-    "Set ON|OFF (default=OFF) to build the version file" OFF)
-
-
-if ((CMAKE_BUILD_TYPE == "Debug") AND (EXISTS "${CMAKE_SOURCE_DIR}/.git"))
+if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
 
     # Get the current working branch
     execute_process(
@@ -35,24 +31,15 @@ if ((CMAKE_BUILD_TYPE == "Debug") AND (EXISTS "${CMAKE_SOURCE_DIR}/.git"))
 
 else()
 
-    #---------------------------------------------
-    # Taking info from file
-    #---------------------------------------------
-    file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
-
-    set(PGROUTING_GIT_HASH "")
-    string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
-    string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
+    set(PGROUTING_GIT_HASH "unknown")
 
 endif()
 
 
 
-add_definitions("-DPGROUTING_GIT_HASH=${PGROUTING_GIT_HASH}")
-add_definitions("-DPGROUTING_GIT_BRANCH=${PGROUTING_GIT_BRANCH}")
+add_definitions(-DPGROUTING_GIT_HASH="${PGROUTING_GIT_HASH}")
 
 if (PGROUTING_DEBUG)
-    message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
     message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
 endif()
 
