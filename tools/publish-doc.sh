@@ -6,7 +6,7 @@
 # Publish Documentation
 # ------------------------------------------------------------------------------
 
-if test a$1 = a ; then
+if test "a$1" = "a" ; then
     echo "Usage: publish-doc.sh dir"
     echo "       where dir might be dev or v2.0"
     exit 1
@@ -36,4 +36,4 @@ git add index.html
 git commit -m "Updated to commit $VERSION" . && git push origin gh-pages
 
 # Switch branch
-git checkout $BRANCH
+git checkout "$BRANCH"

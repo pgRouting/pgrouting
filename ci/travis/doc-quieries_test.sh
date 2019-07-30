@@ -61,7 +61,7 @@ run_psql -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> "${FI
 echo "#FUNCTIONS" >> "${FILE}"
 run_psql  -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> "${FILE}"
 
-DIFF=$(git diff sql/sigs/pgrouting--${VERSION}.sig)
+DIFF=$(git diff "sql/sigs/pgrouting--${VERSION}.sig")
 
 if [[ !  -z  "${DIFF}"  ]]
 then
@@ -70,7 +70,7 @@ then
     ERROR=1
 fi
 
-./tools/testers/doc_queries_generator.pl -pgver "${POSTGRESQL_VERSION}" -pguser "${PGUSER}" -alg version -documentation
+./tools/testers/doc_queries_generator.pl -pgver "${POSTGRESQL_VERSION}" -pguser "${PGUSER}" -documentation
 ./tools/testers/doc_queries_generator.pl -pgver "${POSTGRESQL_VERSION}" -pguser "${PGUSER}"
 
 if [ "$?" -ne 0 ]

@@ -79,8 +79,8 @@ else
         echo "------   C HEADER  ------"
         echo "--------------------"
         python code_linter/styleguide/cpplint/cpplint.py \
-            include/drivers/$DIRECTORY/*.h \
-            include/c_types/$DIRECTORY/*.h
+            include/drivers/"$DIRECTORY"/*.h \
+            include/c_types/"$DIRECTORY"/*.h
 
         echo "--------------------"
         echo "------ C++ HEADER  ------"
@@ -89,7 +89,7 @@ else
         echo "--------------------"
         echo "------ this shouild fail  ------"
         echo "--------------------"
-        python code_linter/styleguide/cpplint/cpplint.py src/$DIRECTORY/src/*.h*
+        python code_linter/styleguide/cpplint/cpplint.py src/"$DIRECTORY"/src/*.h*
     fi
 fi
 

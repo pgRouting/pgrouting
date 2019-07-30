@@ -38,7 +38,7 @@ function test_compile {
 
 echo
 echo
-echo Compiling with $1
+echo "Compiling with $1"
 echo ------------------------------------
 echo
 
@@ -90,6 +90,6 @@ fi
 #sudo rm -f /usr/lib/postgresql/9.3/lib/libpgrouting-$MINOR.so
 #sudo rm -f /usr/share/postgresql/9.3/extension/pgrouting*$FULL_VER*
 rm -rf build/*
-test_compile $CPPVERSION
+test_compile "$CPPVERSION"
 
 exit 0

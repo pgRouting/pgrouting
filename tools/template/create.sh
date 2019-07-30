@@ -97,33 +97,33 @@ substitute "MY_QUERY_LINE1" "$MY_QUERY_LINE1"
 substitute "MY_QUERY_LINE2" "$MY_QUERY_LINE2"
 substitute "DEVELOPER_NAME" "$DEVELOPER_NAME"
 substitute "DEVELOPER_EMAIL" "$DEVELOPER_EMAIL"
-substitute "MY_FUNCTION_NAME" $MY_FUNCTION_NAME
-substitute "MY_FUNCTION_NAME" $MY_FUNCTION_NAME
+substitute "MY_FUNCTION_NAME" "$MY_FUNCTION_NAME"
+substitute "MY_FUNCTION_NAME" "$MY_FUNCTION_NAME"
 substitute "YEAR" $YEAR
-substitute "MY_EDGE_TYPE" $MY_EDGE_TYPE
-substitute "MY_EDGE_FILE" $MY_EDGE_FILE
-substitute "MY_EDGE_FUNCTION" $MY_EDGE_FUNCTION
-substitute "MY_RETURN_VALUE_TYPE" $MY_RETURN_VALUE_TYPE
-substitute "MY_RETURN_VALUE_FILE" $MY_RETURN_VALUE_FILE
+substitute "MY_EDGE_TYPE" "$MY_EDGE_TYPE"
+substitute "MY_EDGE_FILE" "$MY_EDGE_FILE"
+substitute "MY_EDGE_FUNCTION" "$MY_EDGE_FUNCTION"
+substitute "MY_RETURN_VALUE_TYPE" "$MY_RETURN_VALUE_TYPE"
+substitute "MY_RETURN_VALUE_FILE" "$MY_RETURN_VALUE_FILE"
 
 
 
 #renaming the files
-mv $MY_FUNCTION_NAME/src/function1.c                       $MY_FUNCTION_NAME/src/$MY_FUNCTION_NAME.c
-mv $MY_FUNCTION_NAME/src/function1_driver.cpp              $MY_FUNCTION_NAME/src/"$MY_FUNCTION_NAME"_driver.cpp
-mv $MY_FUNCTION_NAME/src/function1_driver.h                $MY_FUNCTION_NAME/src/"$MY_FUNCTION_NAME"_driver.h
+mv "$MY_FUNCTION_NAME"/src/function1.c                       "$MY_FUNCTION_NAME"/src/"$MY_FUNCTION_NAME".c
+mv "$MY_FUNCTION_NAME"/src/function1_driver.cpp              "$MY_FUNCTION_NAME"/src/"$MY_FUNCTION_NAME"_driver.cpp
+mv "$MY_FUNCTION_NAME"/src/function1_driver.h                "$MY_FUNCTION_NAME"/src/"$MY_FUNCTION_NAME"_driver.h
 
-mv $MY_FUNCTION_NAME/doc/doc-pgr_function1.queries         $MY_FUNCTION_NAME/doc/doc-pgr_$MY_FUNCTION_NAME.queries
-mv $MY_FUNCTION_NAME/doc/pgr_function1.rst                 $MY_FUNCTION_NAME/doc/pgr_$MY_FUNCTION_NAME.rst
+mv "$MY_FUNCTION_NAME"/doc/doc-pgr_function1.queries         "$MY_FUNCTION_NAME"/doc/doc-pgr_"$MY_FUNCTION_NAME".queries
+mv "$MY_FUNCTION_NAME"/doc/pgr_function1.rst                 "$MY_FUNCTION_NAME"/doc/pgr_"$MY_FUNCTION_NAME".rst
 
-mv $MY_FUNCTION_NAME/test/doc-function1.test.sql           $MY_FUNCTION_NAME/test/doc-$MY_FUNCTION_NAME.test.sql
-mv $MY_FUNCTION_NAME/test/doc-function1.result             $MY_FUNCTION_NAME/test/doc-$MY_FUNCTION_NAME.result
+mv "$MY_FUNCTION_NAME"/test/doc-function1.test.sql           "$MY_FUNCTION_NAME"/test/doc-"$MY_FUNCTION_NAME".test.sql
+mv "$MY_FUNCTION_NAME"/test/doc-function1.result             "$MY_FUNCTION_NAME"/test/doc-"$MY_FUNCTION_NAME".result
 
-mv $MY_FUNCTION_NAME/sql/function1.sql                     $MY_FUNCTION_NAME/sql/$MY_FUNCTION_NAME.sql
+mv "$MY_FUNCTION_NAME"/sql/function1.sql                     "$MY_FUNCTION_NAME"/sql/"$MY_FUNCTION_NAME".sql
 
-mv $MY_FUNCTION_NAME/pgtap/function1-typesCheck.sql        $MY_FUNCTION_NAME/pgtap/$MY_FUNCTION_NAME-typesCheck.sql
-mv $MY_FUNCTION_NAME/pgtap/function1-compare-dijkstra.sql  $MY_FUNCTION_NAME/pgtap/$MY_FUNCTION_NAME-compare-dijkstra.sql
-mv $MY_FUNCTION_NAME/pgtap/function1-innerQuery.sql        $MY_FUNCTION_NAME/pgtap/$MY_FUNCTION_NAME-innerQuery.sql
+mv "$MY_FUNCTION_NAME"/pgtap/function1-typesCheck.sql        "$MY_FUNCTION_NAME"/pgtap/"$MY_FUNCTION_NAME"-typesCheck.sql
+mv "$MY_FUNCTION_NAME"/pgtap/function1-compare-dijkstra.sql  "$MY_FUNCTION_NAME"/pgtap/"$MY_FUNCTION_NAME"-compare-dijkstra.sql
+mv "$MY_FUNCTION_NAME"/pgtap/function1-innerQuery.sql        "$MY_FUNCTION_NAME"/pgtap/"$MY_FUNCTION_NAME"-innerQuery.sql
 
 
 

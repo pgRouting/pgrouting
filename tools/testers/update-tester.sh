@@ -57,10 +57,10 @@ function update_test {
 
 echo
 echo
-echo Updating from $1 to $2
+echo "Updating from $1 to $2"
 echo ------------------------------------
 
-INSTALLED=$(locate /usr/share/postgresql/9.3/extension/pgrouting--$1.sql)
+INSTALLED=$(locate "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql")
 
 if [ "$INSTALLED" == "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql" ]
 then
