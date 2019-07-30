@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-PGDLLEXPORT Datum newTSP(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum _pgr_tsp(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -151,9 +151,9 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PG_FUNCTION_INFO_V1(newTSP);
+PG_FUNCTION_INFO_V1(_pgr_tsp);
 PGDLLEXPORT Datum
-newTSP(PG_FUNCTION_ARGS) {
+_pgr_tsp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
