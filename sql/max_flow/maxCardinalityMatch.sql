@@ -38,7 +38,7 @@ CREATE OR REPLACE FUNCTION _pgr_maxCardinalityMatch(
     OUT source BIGINT,
     OUT target BIGINT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'maximum_cardinality_matching'
+'MODULE_PATHNAME'
 LANGUAGE c VOLATILE STRICT;
 
 
