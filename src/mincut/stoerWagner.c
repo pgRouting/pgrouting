@@ -37,8 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/mincut/stoerWagner_driver.h"
 
-PGDLLEXPORT Datum stoerWagner(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(stoerWagner);
+PGDLLEXPORT Datum _pgr_stoerwagner(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_stoerwagner);
 
 
 /******************************************************************************/
@@ -102,7 +102,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum stoerWagner(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_stoerwagner(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
