@@ -42,8 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/chinese/chinesePostman_driver.h"
 
-PGDLLEXPORT Datum chinesePostman(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(chinesePostman);
+PGDLLEXPORT Datum _pgr_chinesepostman(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_chinesepostman);
 
 
 /******************************************************************************/
@@ -105,7 +105,7 @@ process(
 }
 
 
-PGDLLEXPORT Datum chinesePostman(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_chinesepostman(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
