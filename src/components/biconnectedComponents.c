@@ -41,8 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/components/biconnectedComponents_driver.h"
 
-PGDLLEXPORT Datum biconnectedComponents(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(biconnectedComponents);
+PGDLLEXPORT Datum _pgr_biconnectedcomponents(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_biconnectedcomponents);
 
 
 static
@@ -95,7 +95,7 @@ process(
     pgr_SPI_finish();
 }
 
-PGDLLEXPORT Datum biconnectedComponents(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_biconnectedcomponents(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
