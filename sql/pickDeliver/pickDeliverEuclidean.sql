@@ -48,7 +48,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
     OUT service_time FLOAT,
     OUT departure_time FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'pickDeliverEuclidean'
+'MODULE_PATHNAME'
 LANGUAGE c VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_pickDeliverEuclidean(
