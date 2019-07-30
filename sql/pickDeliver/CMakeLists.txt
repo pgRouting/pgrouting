@@ -1,6 +1,8 @@
 
 SET(LOCAL_FILES
+    _pickDeliver.sql
     pickDeliver.sql
+    _pickDeliverEuclidean.sql
     pickDeliverEuclidean.sql
     )
 
