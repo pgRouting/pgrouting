@@ -5,7 +5,9 @@ SET(LOCAL_FILES
     edmondsKarp.sql
     boykovKolmogorov.sql
     pushRelabel.sql
+    _maxCardinalityMatch.sql
     maxCardinalityMatch.sql
+    _edgeDisjointPaths.sql
     edgeDisjointPaths.sql
     maxFlowMinCost.sql
     maxFlowMinCost_Cost.sql
