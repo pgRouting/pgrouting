@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-File: floydWarshall.sql
+File: _floydWarshall.sql
 
 Template:
 Copyright (c) 2015 pgRouting developers
@@ -28,30 +28,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_floydWarshall(
-    TEXT,    -- edges_sql (required)
-    directed BOOLEAN DEFAULT true,
+---------------------
+-- pgr_floydWarshall
+---------------------
+
+CREATE OR REPLACE FUNCTION _pgr_floydWarshall(
+    edges_sql TEXT,
+    directed BOOLEAN,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-$BODY$
-
-    SELECT *
-    FROM _pgr_floydWarshall(_pgr_get_statement($1), $2);
-
-$BODY$
-LANGUAGE SQL VOLATILE STRICT;
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_floydWarshall(TEXT, BOOLEAN)
-IS 'pgr_floydWarshall
-- Parameters:
-    - edges SQL with columns: source, target, cost [,reverse_cost])
-- Optional Parameters:
-    - directed := true
-- Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_floydWarshall.html
-';
+COMMENT ON FUNCTION _pgr_floydWarshall(TEXT, BOOLEAN)
+IS 'pgRouting internal function';

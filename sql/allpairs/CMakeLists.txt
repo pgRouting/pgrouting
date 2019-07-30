@@ -1,6 +1,8 @@
 
 SET(LOCAL_FILES
+    _johnson.sql
     johnson.sql
+    _floydWarshall.sql
     floydWarshall.sql
     )
 
