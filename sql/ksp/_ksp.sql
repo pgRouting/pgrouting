@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: ksp.sql
+File: _ksp.sql
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -21,15 +21,20 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+---------------
+---------------
+-- pgr_ksp
+---------------
+---------------
 
-CREATE OR REPLACE FUNCTION pgr_ksp(
-    TEXT, -- edges_sql (required)
-    BIGINT, -- from_vids (required)
-    BIGINT,   -- to_vids (required)
-    INTEGER, -- K (required)
+CREATE OR REPLACE FUNCTION _pgr_ksp(
+    edges_sql TEXT,
+    start_vid BIGINT,
+    end_vid BIGINT,
+    k INTEGER,
 
-    directed BOOLEAN DEFAULT true,
-    heap_paths BOOLEAN DEFAULT false,
+    directed BOOLEAN,
+    heap_paths BOOLEAN,
 
     OUT seq INTEGER,
     OUT path_id INTEGER,
@@ -39,26 +44,10 @@ CREATE OR REPLACE FUNCTION pgr_ksp(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-$BODY$
-    SELECT *
-    FROM _pgr_ksp(_pgr_get_statement($1), $2, $3, $4, $5, $6);
-$BODY$
-LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
-IS 'pgr_KSP
-- Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - From vertex identifier
-    - To vertex identifier
-    - K
-- Optional Parameters
-    - directed := true
-    - heap_paths := false
-- Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_KSP.html
-';
+COMMENT ON FUNCTION _pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
