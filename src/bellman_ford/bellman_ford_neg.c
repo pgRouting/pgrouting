@@ -41,8 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/bellman_ford/bellman_ford_neg_driver.h"  // the link to the C++ code of the function
 
-PGDLLEXPORT Datum bellman_ford_neg(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(bellman_ford_neg);
+PGDLLEXPORT Datum _pgr_bellmanfordneg(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_bellmanfordneg);
 
 static
 void
@@ -145,7 +145,7 @@ process(
 }
 
 
-PGDLLEXPORT Datum bellman_ford_neg(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_bellmanfordneg(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
