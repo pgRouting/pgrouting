@@ -36,8 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 #include "drivers/dijkstra/dijkstraVia_driver.h"
 
-PGDLLEXPORT Datum dijkstraVia(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(dijkstraVia);
+PGDLLEXPORT Datum _pgr_dijkstravia(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_dijkstravia);
 
 static
 void
@@ -99,7 +99,7 @@ process(char* edges_sql,
 
 
 PGDLLEXPORT Datum
-dijkstraVia(PG_FUNCTION_ARGS) {
+_pgr_dijkstravia(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
