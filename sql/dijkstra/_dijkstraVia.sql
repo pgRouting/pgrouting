@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraVia.sql
+File: _dijkstraVia.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -25,13 +25,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
-    TEXT,     -- edges_sql (required)
-    ANYARRAY, -- via_vids (required)
+------------------
+-- pgr_dijkstraVia
+------------------
 
-    directed BOOLEAN DEFAULT true,
-    strict BOOLEAN DEFAULT false,
-    U_turn_on_edge BOOLEAN DEFAULT true,
+CREATE OR REPLACE FUNCTION _pgr_dijkstraVia(
+    edges_sql TEXT,
+    via_vids ANYARRAY,
+    directed BOOLEAN,
+    strict BOOLEAN,
+    U_turn_on_edge BOOLEAN,
 
 
     OUT seq INTEGER,
@@ -45,26 +48,10 @@ CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     OUT agg_cost FLOAT,
     OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-$BODY$
-    SELECT *
-    FROM _pgr_dijkstraVia(_pgr_get_statement($1), $2, $3 , $4, $5);
-$BODY$
-LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+'MODULE_PATHNAME'
+LANGUAGE c VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
-IS 'pgr_dijkstraVia
-- PROPOSED
-- Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - ARRAY[via vertices identifiers]
-- Optional Parameters
-   - directed := true
-   - strict := false
-   - U_turn_on_edge := true
-- Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraVia.html
-';
+COMMENT ON FUNCTION _pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
