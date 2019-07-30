@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/driving_distance/withPoints_dd_driver.h"
 
 
-PGDLLEXPORT Datum many_withPointsDD(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(many_withPointsDD);
+PGDLLEXPORT Datum _pgr_withpointsdd(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_withpointsdd);
 
 static
 void process(
@@ -142,7 +142,7 @@ void process(
 
 
 PGDLLEXPORT Datum
-many_withPointsDD(PG_FUNCTION_ARGS) {
+_pgr_withpointsdd(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc               tuple_desc;
 
