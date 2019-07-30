@@ -41,7 +41,7 @@ echo "psql -f setup_db.sql"
 run_psql -f setup_db.sql
 
 
-pg_prove --recurse --ext .sql $PGPORT -d $PGDATABASE  -U $PGUSER  ../../pgtap/
+pg_prove --failures --quiet --recurse --ext .sql $PGPORT -d $PGDATABASE  -U $PGUSER  ../../pgtap/
 
 
 if [ "$?" -ne 0 ]
