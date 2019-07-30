@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: lineGraph.sql
+File: _lineGraph.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,10 +27,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_lineGraph(
-    TEXT, -- edges_sql (required)
+----------------------
+-- pgr_lineGraph
+----------------------
 
-    directed BOOLEAN DEFAULT true,
+
+CREATE OR REPLACE FUNCTION _pgr_lineGraph(
+    TEXT, -- edges_sql
+
+    directed BOOLEAN,
 
     OUT seq INTEGER,
     OUT source BIGINT,
@@ -38,23 +43,10 @@ CREATE OR REPLACE FUNCTION pgr_lineGraph(
     OUT cost FLOAT,
     OUT reverse_cost FLOAT)
 RETURNS SETOF RECORD AS
-$BODY$
-    SELECT *
-    FROM _pgr_lineGraph(_pgr_get_statement($1), $2)
-$BODY$
-LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+'MODULE_PATHNAME'
+LANGUAGE c IMMUTABLE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_lineGraph(TEXT, BOOLEAN)
-IS 'pgr_lineGraph
-- EXPERIMENTAL
-- Parameters:
-  - edges SQL with columns: id, source, target, cost [,reverse_cost]
-- Optional Parameters:
-  - directed := true
-- Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_lineGraph.html
-';
+COMMENT ON FUNCTION _pgr_lineGraph(TEXT, BOOLEAN)
+IS 'pgRouting internal function';

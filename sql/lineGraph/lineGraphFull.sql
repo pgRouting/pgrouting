@@ -27,29 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-----------------------
-----------------------
--- lineGraph
-----------------------
-----------------------
-
-
-----------------------
--- pgr_lineGraphFull
-----------------------
-
-CREATE OR REPLACE FUNCTION _pgr_lineGraphFull(
-    TEXT, -- edges_sql
-
-    OUT seq INTEGER,
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT cost FLOAT,
-    OUT edge BIGINT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE C IMMUTABLE STRICT;
-
 CREATE OR REPLACE FUNCTION pgr_lineGraphFull(
     TEXT, -- edges_sql (required)
 
@@ -69,9 +46,6 @@ ROWS 1000;
 
 
 -- COMMENTS
-
-COMMENT ON FUNCTION _pgr_lineGraphFull(TEXT)
-IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_lineGraphFull(TEXT)
 IS 'pgr_lineGraphFull
