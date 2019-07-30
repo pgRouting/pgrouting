@@ -57,8 +57,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/lineGraph/lineGraph_driver.h"  // the link to the C++ code of the function
 
-PGDLLEXPORT Datum lineGraph(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(lineGraph);
+PGDLLEXPORT Datum _pgr_linegraph(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_linegraph);
 
 
 /******************************************************************************/
@@ -130,7 +130,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum lineGraph(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_linegraph(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
