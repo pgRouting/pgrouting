@@ -41,8 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/yen/withPoints_ksp_driver.h"
 #include "c_common/debug_macro.h"
 
-PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(withPoints_ksp);
+PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_withpointsksp);
 
 
 static
@@ -162,7 +162,7 @@ process(
 
 
 
-PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 

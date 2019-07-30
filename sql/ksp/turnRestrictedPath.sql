@@ -52,7 +52,7 @@ CREATE OR REPLACE FUNCTION _pgr_turnRestrictedPath(
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'turnRestrictedPath'
+'MODULE_PATHNAME'
 LANGUAGE c IMMUTABLE STRICT;
 
 
@@ -92,7 +92,7 @@ IS 'pgRouting internal function';
 
 
 COMMENT ON FUNCTION pgr_turnRestrictedPath(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
-IS 'pgr_turnRestrictedPath 
+IS 'pgr_turnRestrictedPath
 - EXPERIMENTAL
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
