@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/trsp/trsp.h"
 
-PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum _pgr_trsp(PG_FUNCTION_ARGS);
 
 
 typedef struct edge_columns {
@@ -497,9 +497,9 @@ static int compute_trsp(
 }
 
 
-PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
+PG_FUNCTION_INFO_V1(_pgr_trsp);
 PGDLLEXPORT Datum
-turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS) {
+_pgr_trsp(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   TupleDesc            tuple_desc;
   path_element_tt      *path;

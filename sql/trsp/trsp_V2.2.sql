@@ -51,7 +51,7 @@ CREATE OR REPLACE FUNCTION _pgr_trsp(
     OUT cost FLOAT
 )
 RETURNS SETOF record
-AS 'MODULE_PATHNAME', 'turn_restrict_shortest_path_edge'
+AS 'MODULE_PATHNAME'
 LANGUAGE 'c' IMMUTABLE;
 
 
