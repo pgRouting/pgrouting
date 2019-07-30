@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: withPoints_dd.sql
+File: withPointsDD.sql
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
@@ -21,39 +21,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-
--------------------
--------------------
--- driving_distance
--------------------
--------------------
-
-
--------------------
--- pgr_withPointsDD
--------------------
-
-CREATE OR REPLACE FUNCTION _pgr_withPointsDD(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid ANYARRAY,
-    distance FLOAT,
-
-    directed BOOLEAN DEFAULT true,
-    driving_side CHAR DEFAULT 'b',
-    details BOOLEAN DEFAULT false,
-    equicost BOOLEAN DEFAULT false,
-
-    OUT seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
-
 
 -- SINGLE
 CREATE OR REPLACE FUNCTION pgr_withPointsDD(
@@ -109,10 +76,6 @@ ROWS 1000;
 
 
 -- COMMENTS
-
-COMMENT ON FUNCTION _pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function';
-
 
 COMMENT ON FUNCTION pgr_withPointsDD(TEXT, TEXT, BIGINT, FLOAT, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_withPointsDD(Single Vertex)
