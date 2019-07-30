@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: stoerWagner.sql
+File: _stoerWagner.sql
 
 Generated with Template by:
 Copyright (c) 2016 pgRouting developers
@@ -27,28 +27,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_stoerWagner(
-    edges_sql TEXT, -- edges_sql (required)
+---------------
+---------------
+-- mincut
+---------------
+---------------
+
+-------------------
+-- pgr_stoerWagner
+-------------------
+
+CREATE OR REPLACE FUNCTION _pgr_stoerWagner(
+    edges_sql TEXT,
 
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT mincut FLOAT)
 RETURNS SETOF RECORD AS
-$BODY$
-    SELECT *
-    FROM _pgr_stoerWagner(_pgr_get_statement($1));
-$BODY$
-LANGUAGE SQL VOLATILE STRICT;
+'MODULE_PATHNAME'
+LANGUAGE c VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_stoerWagner(TEXT)
-IS 'pgr_stoerWagner
-- EXPERIMENTAL
-- Undirected graph
-- Parameters:
-  - edges SQL with columns: id, source, target, cost [,reverse_cost]
-- Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_stoerWagner.html
-';
+COMMENT ON FUNCTION _pgr_stoerWagner(TEXT)
+IS 'pgRouting internal function';
