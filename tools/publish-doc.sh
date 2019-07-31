@@ -13,7 +13,7 @@ if test "a$1" = "a" ; then
 fi
 
 VERSION=$(git describe --tags --long)
-BRANCH=$(git branch | grep '*' | awk '{print $2}')
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 if test ! -d build ; then
     echo "Error 'build' directory does not exist."
