@@ -64,7 +64,8 @@ cmake "../${BRANCH}"
 make
 make install
 cd ../"${BRANCH}"
-export PERL5LIB=$(echo pwd)
+PERL5LIB=$(echo pwd)
+export PERL5LIB
 perl tools/testers/doc_queries_generator.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
 #pgTap tests disable for now until we have installed
