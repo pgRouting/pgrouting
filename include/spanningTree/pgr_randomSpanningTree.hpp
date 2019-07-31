@@ -89,6 +89,7 @@ class Pgr_randomSpanningTree {
 
          std::vector< pgr_randomSpanningTree_t > resul;
          return resul;
+#if 0
          std::vector< pgr_randomSpanningTree_t > results;
          double totalcost = 0;
          pgr_randomSpanningTree_t tmp;
@@ -125,6 +126,7 @@ class Pgr_randomSpanningTree {
          }
          return results;
     }
+#endif
 };
 
 template < class G >
