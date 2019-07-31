@@ -511,7 +511,7 @@ class Pgr_dijkstra {
       */
      std::deque< Path > drivingDistance_with_equicost(
              G &graph,
-             const std::vector< int64_t > start_vertex,
+             const std::vector< int64_t > &start_vertex,
              double distance) {
          clear();
          log << "Number of edges:" << boost::num_edges(graph.graph) << "\n";
