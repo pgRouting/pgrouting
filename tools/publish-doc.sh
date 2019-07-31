@@ -12,8 +12,8 @@ if test "a$1" = "a" ; then
     exit 1
 fi
 
-VERSION=`git describe --tags --long`
-BRANCH=`git branch | grep '*' | awk '{print $2}'`
+VERSION=$(git describe --tags --long)
+BRANCH=$(git branch | grep '*' | awk '{print $2}')
 
 if test ! -d build ; then
     echo "Error 'build' directory does not exist."
