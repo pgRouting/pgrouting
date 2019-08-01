@@ -41,8 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/spanningTree/mst_common.h"
 #include "drivers/spanningTree/kruskal_driver.h"
 
-PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(kruskal);
+PGDLLEXPORT Datum _pgr_kruskal(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_kruskal);
 
 
 static
@@ -108,7 +108,7 @@ process(
     pgr_SPI_finish();
 }
 
-PGDLLEXPORT Datum kruskal(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_kruskal(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 

@@ -7,7 +7,7 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function developer:
-Copyright (c) 2013 Vicky Vergara
+Copyright (c) 2015 Vicky Vergara
 vicky_vergara@hotmail.com
 
 ------
@@ -28,29 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
------------------
------------------
--- johnson
------------------
------------------
-
-
-------------------
--- pgr_johnson
-------------------
-
-
-CREATE OR REPLACE FUNCTION _pgr_johnson(
-    edges_sql TEXT,
-    directed BOOLEAN,
-
-    OUT start_vid BIGINT,
-    OUT end_vid BIGINT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'johnson'
-LANGUAGE C VOLATILE STRICT;
-
 CREATE OR REPLACE FUNCTION pgr_johnson(
     TEXT,    -- edges_sql (required)
     directed BOOLEAN DEFAULT true,
@@ -68,9 +45,6 @@ $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
-
-COMMENT ON FUNCTION _pgr_johnson(TEXT, BOOLEAN)
-IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_johnson(TEXT, BOOLEAN)
 IS 'pgr_johnson

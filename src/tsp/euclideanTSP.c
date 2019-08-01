@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-PGDLLEXPORT Datum euclideanTSP(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum _pgr_tspeuclidean(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -149,9 +149,9 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PG_FUNCTION_INFO_V1(euclideanTSP);
+PG_FUNCTION_INFO_V1(_pgr_tspeuclidean);
 PGDLLEXPORT Datum
-euclideanTSP(PG_FUNCTION_ARGS) {
+_pgr_tspeuclidean(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 

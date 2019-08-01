@@ -42,8 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/yen/turnRestrictedPath_driver.h"
 
-PGDLLEXPORT Datum turnRestrictedPath(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(turnRestrictedPath);
+PGDLLEXPORT Datum _pgr_turnrestrictedpath(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_turnrestrictedpath);
 
 
 static
@@ -137,7 +137,7 @@ process(
 }
 
 PGDLLEXPORT Datum
-turnRestrictedPath(PG_FUNCTION_ARGS) {
+_pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 

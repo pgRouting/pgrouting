@@ -41,8 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/bellman_ford/bellman_ford_driver.h"
 
-PGDLLEXPORT Datum bellman_ford(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(bellman_ford);
+PGDLLEXPORT Datum _pgr_bellmanford(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_bellmanford);
 
 static
 void
@@ -127,7 +127,7 @@ process(
 }
 
 
-PGDLLEXPORT Datum bellman_ford(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_bellmanford(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 

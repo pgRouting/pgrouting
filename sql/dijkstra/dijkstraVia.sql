@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraViaVertex.sql
+File: dijkstraVia.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -24,33 +24,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-
-------------------
--- pgr_dijkstraVia
-------------------
-
-CREATE OR REPLACE FUNCTION _pgr_dijkstraVia(
-    edges_sql TEXT,
-    via_vids ANYARRAY,
-    directed BOOLEAN,
-    strict BOOLEAN,
-    U_turn_on_edge BOOLEAN,
-
-
-    OUT seq INTEGER,
-    OUT path_id INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT end_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT,
-    OUT route_agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'dijkstraVia'
-LANGUAGE c VOLATILE STRICT;
-
 
 CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     TEXT,     -- edges_sql (required)
@@ -81,9 +54,6 @@ COST 100
 ROWS 1000;
 
 -- COMMENTS
-
-COMMENT ON FUNCTION _pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_dijkstraVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_dijkstraVia

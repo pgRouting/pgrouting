@@ -36,9 +36,6 @@ else()
 endif()
 
 
-
-add_definitions(-DPGROUTING_GIT_HASH="${PGROUTING_GIT_HASH}")
-
 if (PGROUTING_DEBUG)
     message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
 endif()

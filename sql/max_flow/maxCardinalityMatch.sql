@@ -1,4 +1,5 @@
 /*PGR-GNU*****************************************************************
+FILE: maxCardinalityMatch.sql
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -24,24 +25,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---------------------------
--- pgr_maxCardinalityMatch
----------------------------
-
-
-CREATE OR REPLACE FUNCTION _pgr_maxCardinalityMatch(
-    edges_sql TEXT,
-    directed BOOLEAN,
-
-    OUT seq INTEGER,
-    OUT edge BIGINT,
-    OUT source BIGINT,
-    OUT target BIGINT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'maximum_cardinality_matching'
-LANGUAGE c VOLATILE STRICT;
-
-
 CREATE OR REPLACE FUNCTION pgr_maxCardinalityMatch(
     TEXT, -- edges_sql (required)
 
@@ -60,13 +43,7 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-
 -- COMMENTS
-
-
-COMMENT ON FUNCTION _pgr_maxCardinalityMatch(TEXT, BOOLEAN)
-IS 'pgRouting internal function';
-
 
 COMMENT ON FUNCTION pgr_maxCardinalityMatch(TEXT, BOOLEAN)
 IS 'pgr_maxCardinalityMatch
@@ -77,4 +54,3 @@ IS 'pgr_maxCardinalityMatch
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_maxCardinalityMatch.html
 ';
-

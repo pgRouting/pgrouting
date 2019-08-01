@@ -71,7 +71,7 @@ EXCLUDED_FILES="$EXCLUDED_FILES,*/test/tsp/development/*"
 # libtiff
 #WORDS_WHITE_LIST="$WORDS_WHITE_LIST,THRESHHOLD_BILEVEL,THRESHHOLD_HALFTONE,THRESHHOLD_ERRORDIFFUSE"
 
-python3 fix_typos/codespell/codespell.py -w -i 3 -q 2 -S $EXCLUDED_FILES \
-    -x tools/scripts/typos_whitelist.txt --words-white-list=$WORDS_WHITE_LIST \
+python3 fix_typos/codespell/codespell.py -w -i 3 -q 2 -S "$EXCLUDED_FILES" \
+    -x tools/scripts/typos_whitelist.txt --words-white-list="$WORDS_WHITE_LIST" \
     -D fix_typos/gdal_dict.txt  .
 

@@ -33,8 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/yen/ksp_driver.h"
 
-PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(kshortest_path);
+PGDLLEXPORT Datum _pgr_ksp(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_ksp);
 
 static
 void compute(
@@ -117,7 +117,7 @@ void compute(
 
 
 PGDLLEXPORT Datum
-kshortest_path(PG_FUNCTION_ARGS) {
+_pgr_ksp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
     General_path_element_t      *path = NULL;

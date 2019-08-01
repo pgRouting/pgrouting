@@ -4,6 +4,7 @@ SET(LOCAL_FILES
     dijkstra.sql
     dijkstraCost.sql
     dijkstraCostMatrix.sql
+    _dijkstraVia.sql
     dijkstraVia.sql
     _dijkstraNear.sql
     )

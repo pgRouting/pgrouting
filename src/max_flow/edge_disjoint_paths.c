@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/max_flow/edge_disjoint_paths_driver.h"
 
 PGDLLEXPORT Datum
-edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS);
+_pgr_edgedisjointpaths(PG_FUNCTION_ARGS);
 
 static
 void
@@ -114,9 +114,9 @@ process(
     pgr_SPI_finish();
 }
 
-PG_FUNCTION_INFO_V1(edge_disjoint_paths_many_to_many);
+PG_FUNCTION_INFO_V1(_pgr_edgedisjointpaths);
 PGDLLEXPORT Datum
-edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
+_pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     TupleDesc tuple_desc;
 

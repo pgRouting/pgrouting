@@ -39,8 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 #include "drivers/dagShortestPath/dagShortestPath_driver.h"  // the link to the C++ code of the function
 
-PGDLLEXPORT Datum dagShortestPath(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(dagShortestPath);
+PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_dagshortestpath);
 
 
 /******************************************************************************/
@@ -134,7 +134,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum dagShortestPath(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 

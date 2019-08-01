@@ -1,4 +1,5 @@
 /*PGR-GNU*****************************************************************
+FILE: edgeDisjointPaths.sql
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -23,31 +24,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-
-------------------------
--- pgr_edgeDisjointPaths
-------------------------
-
-CREATE OR REPLACE FUNCTION _pgr_edgeDisjointPaths(
-    TEXT,
-    ANYARRAY,
-    ANYARRAY,
-
-    directed BOOLEAN,
-
-    OUT seq INTEGER,
-    OUT path_id INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT end_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SEtoF RECORD AS
-'MODULE_PATHNAME', 'edge_disjoint_paths_many_to_many'
-LANGUAGE C VOLATILE STRICT;
-
 
 -- ONE to ONE
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
@@ -148,11 +124,6 @@ LANGUAGE SQL VOLATILE STRICT;
 
 
 -- COMMENTS
-
-
-COMMENT ON FUNCTION _pgr_edgeDisjointPaths(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
-IS 'pgRouting internal function';
-
 
 COMMENT ON FUNCTION pgr_edgeDisjointPaths(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_edgeDisjointPaths(One to One)

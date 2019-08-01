@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/allpairs/floydWarshall_driver.h"
 
-PGDLLEXPORT Datum floydWarshall(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(floydWarshall);
+PGDLLEXPORT Datum _pgr_floydwarshall(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_floydwarshall);
 
 static
 void
@@ -98,7 +98,7 @@ process(
 
 
 PGDLLEXPORT Datum
-floydWarshall(PG_FUNCTION_ARGS) {
+_pgr_floydwarshall(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 

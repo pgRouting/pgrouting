@@ -6,14 +6,14 @@
 # Publish Documentation
 # ------------------------------------------------------------------------------
 
-if test a$1 = a ; then
+if test "a$1" = "a" ; then
     echo "Usage: publish-doc.sh dir"
     echo "       where dir might be dev or v2.0"
     exit 1
 fi
 
-VERSION=`git describe --tags --long`
-BRANCH=`git branch | grep '*' | awk '{print $2}'`
+VERSION=$(git describe --tags --long)
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 if test ! -d build ; then
     echo "Error 'build' directory does not exist."
@@ -36,4 +36,4 @@ git add index.html
 git commit -m "Updated to commit $VERSION" . && git push origin gh-pages
 
 # Switch branch
-git checkout $BRANCH
+git checkout "$BRANCH"

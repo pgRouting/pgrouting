@@ -40,8 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/astar/astar_driver.h"
 
-PGDLLEXPORT Datum astarManyToMany(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(astarManyToMany);
+PGDLLEXPORT Datum _pgr_astar(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_astar);
 
 #if 0
 void
@@ -161,7 +161,7 @@ process(char* edges_sql,
 }
 
 PGDLLEXPORT Datum
-astarManyToMany(PG_FUNCTION_ARGS) {
+_pgr_astar(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 

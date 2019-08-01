@@ -1,7 +1,14 @@
 /*PGR-GNU*****************************************************************
 
+File: _johnson.sql
+
+Template:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
+
+Function developer:
+Copyright (c) 2015 Vicky Vergara
+vicky_vergara@hotmail.com
 
 ------
 
@@ -20,30 +27,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
------------------------------------------------------------------------
--- Core function for vrp with sigle depot computation
--- See README for description
------------------------------------------------------------------------
 
+------------------
+-- pgr_johnson
+------------------
 
---------------------
--- pgr_vrpOneDepot
---------------------
+CREATE OR REPLACE FUNCTION _pgr_johnson(
+    edges_sql TEXT,
+    directed BOOLEAN,
 
--- TODO delete unused file
-CREATE OR REPLACE FUNCTION pgr_vrpOneDepot(
-	order_sql text,
-	vehicle_sql text,
-	cost_sql text,
-	depot_id integer,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
 
-	OUT oid integer,
-	OUT opos integer,
-	OUT vid integer,
-	OUT tarrival integer,
-	OUT tdepart integer)
-returns setof record as
-'MODULE_PATHNAME', 'vrp'
-LANGUAGE c VOLATILE STRICT;
+-- COMMENTS
 
-
+COMMENT ON FUNCTION _pgr_johnson(TEXT, BOOLEAN)
+IS 'pgRouting internal function';

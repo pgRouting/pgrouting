@@ -4,7 +4,7 @@ set -e
 
 
 # This run.sh is intended for 3.0.0
-if [ -z $1 ]; then
+if [ -z "$1" ]; then
     VERSION="3.0.0"
 else
     VERSION=$1
@@ -18,7 +18,7 @@ function test_compile {
 
 echo ------------------------------------
 echo ------------------------------------
-echo Compiling with $1
+echo Compiling with "$1"
 echo ------------------------------------
 
 # when more than one gcc compiler is installed on the computer
@@ -86,10 +86,10 @@ echo  Verify with signatures did not change
 echo --------------------------------------------
 
 # - when one postgres version is installed on the computer
-sh tools/release-scripts/get_signatures.sh $VERSION ____sigs_routing____ sql/sigs
+sh tools/release-scripts/get_signatures.sh "$VERSION" ____sigs_routing____ sql/sigs
 
 # when more than one postgres version is installed on the computer
-#sh tools/release-scripts/get_signatures.sh $VERSION ____sigs_routing____ sql/sigs -p $PGPORT
+#sh tools/release-scripts/get_signatures.sh "$VERSION" ____sigs_routing____ sql/sigs -p $PGPORT
 
 
 if [[ $(git status | grep 'pgrouting--') ]]; then
@@ -130,7 +130,7 @@ fi
 tools/testers/doc_queries_generator.pl  -documentation  -pgport $PGPORT
 
 # update the trsp README.md file
-cp test/trsp/trsp_notes_v${VERSION}.result doc/trsp/README.md
+cp test/trsp/trsp_notes_v"${VERSION}".result doc/trsp/README.md
 
 if [[ $(git status | grep 'trsp_notes') ]]; then
     echo "**************************************************"

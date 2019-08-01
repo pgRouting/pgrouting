@@ -27,35 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
--------------------------
--- pgr_turnRestrictedPath
--------------------------
-
-CREATE OR REPLACE FUNCTION _pgr_turnRestrictedPath(
-    TEXT,   -- edges_sql
-    TEXT,   -- restrictions_sql
-    BIGINT, -- start_vertex
-    BIGINT, -- end_vertex
-    INTEGER,-- K cycles
-
-    directed BOOLEAN,
-    heap_paths BOOLEAN,
-    stop_on_first BOOLEAN,
-    strict BOOLEAN,
-
-    OUT seq INTEGER,
-    OUT path_id INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'turnRestrictedPath'
-LANGUAGE c IMMUTABLE STRICT;
-
-
 CREATE OR REPLACE FUNCTION pgr_turnRestrictedPath(
     TEXT,   -- edges_sql (required)
     TEXT,   -- restrictions_sql (required)
@@ -87,12 +58,8 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_turnRestrictedPath(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function';
-
-
 COMMENT ON FUNCTION pgr_turnRestrictedPath(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
-IS 'pgr_turnRestrictedPath 
+IS 'pgr_turnRestrictedPath
 - EXPERIMENTAL
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -108,5 +75,3 @@ IS 'pgr_turnRestrictedPath
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_turnRestrictedPath.html
 ';
-
-

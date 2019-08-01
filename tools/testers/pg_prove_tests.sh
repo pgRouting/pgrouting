@@ -11,21 +11,21 @@ set -e
 PGUSER=$1
 PGPORT=$2
 RELEASE_TYPE="b$3"
-echo "RELEASE_TYPE" $RELEASE_TYPE
+echo "RELEASE_TYPE $RELEASE_TYPE"
 if [ "b$PGPORT" = "b" ]
 then
     PGPORT=""
 else
-    PGPORT=" -p $PGPORT"
+    PGPORT="-p $PGPORT"
 fi
 PGDATABASE="___pgr___test___"
-echo $PGPORT
+echo "$PGPORT"
 
 
 
 # Define alias function for psql command
 run_psql () {
-    PGOPTIONS='--client-min-messages=warning' psql $PGPORT -U $PGUSER  -d $PGDATABASE -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
+    PGOPTIONS='--client-min-messages=warning' psql "$PGPORT" -U "$PGUSER"  -d "$PGDATABASE" -X -q -v ON_ERROR_STOP=1 --pset pager=off "$@"
     if [ "$?" -ne 0 ]
     then
         echo "Test query failed: $*"
@@ -41,7 +41,7 @@ echo "psql -f setup_db.sql"
 run_psql -f setup_db.sql
 
 
-pg_prove --recurse --ext .sql $PGPORT -d $PGDATABASE  -U $PGUSER  ../../pgtap/
+pg_prove --failures --quiet --recurse --ext .sql "$PGPORT" -d "$PGDATABASE"  -U "$PGUSER"  ../../pgtap/
 
 
 if [ "$?" -ne 0 ]

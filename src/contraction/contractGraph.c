@@ -46,8 +46,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 #include "drivers/contraction/contractGraph_driver.h"
 
-PGDLLEXPORT Datum contractGraph(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(contractGraph);
+PGDLLEXPORT Datum _pgr_contraction(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_contraction);
 
 
 static
@@ -129,7 +129,7 @@ process(char* edges_sql,
 }
 
 PGDLLEXPORT Datum
-contractGraph(PG_FUNCTION_ARGS) {
+_pgr_contraction(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 

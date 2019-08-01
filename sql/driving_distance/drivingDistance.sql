@@ -1,4 +1,5 @@
 /*PGR-GNU*****************************************************************
+FILE: drivingDistance.sql
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: project@pgrouting.org
@@ -20,30 +21,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-
-----------------------
--- pgr_drivingDistance
-----------------------
-
-CREATE OR REPLACE FUNCTION _pgr_drivingDistance(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    distance FLOAT,
-    directed BOOLEAN DEFAULT TRUE,
-    equicost BOOLEAN DEFAULT FALSE,
-    OUT seq INTEGER,
-    OUT from_v  BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'driving_many_to_dist'
-LANGUAGE c VOLATILE STRICT;
-
-COMMENT ON FUNCTION _pgr_drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function';
-
 
 -- MULTIPLE
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(
@@ -118,5 +95,3 @@ IS 'pgr_drivingDistance(Multiple vertices)
 - Documentation:
    - ${PGROUTING_DOC_LINK}/pgr_drivingDistance.html
 ';
-
-

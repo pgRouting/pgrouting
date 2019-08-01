@@ -17,11 +17,12 @@ PGFLAGS=$*
 
 PGDATABASE="___pgr___test___"
 
-dropdb $PGFLAGS --if-exists ___pgr___test___
-createdb  $PGFLAGS  ___pgr___test___
+echo "$PGFLAGS"
+dropdb "$PGFLAGS" --if-exists ___pgr___test___
+createdb  "$PGFLAGS"  ___pgr___test___
 
 
 cd tools/testers/
-psql $PGFLAGS  -f setup_db.sql -d ___pgr___test___
-pg_prove --recurse --ext .sql $PGFLAGS  -d ___pgr___test___ ../../pgtap/$DIR
-dropdb $PGFLAGS  ___pgr___test___
+psql "$PGFLAGS"  -f setup_db.sql -d ___pgr___test___
+pg_prove --recurse --ext .sql "$PGFLAGS"  -d ___pgr___test___ "../../pgtap/$DIR"
+dropdb "$PGFLAGS"  ___pgr___test___

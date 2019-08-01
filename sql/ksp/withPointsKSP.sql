@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: withPoints_ksp.sql
+File: withPointsKSP.sql
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -21,29 +21,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-
---------------------
--- pgr_withPointsKSP
---------------------
-
-CREATE OR REPLACE FUNCTION _pgr_withPointsKSP(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid BIGINT,
-    end_pid BIGINT,
-    k INTEGER,
-
-    directed BOOLEAN,
-    heap_paths BOOLEAN,
-    driving_side CHAR,
-    details BOOLEAN,
-
-    OUT seq INTEGER, OUT path_id INTEGER, OUT path_seq INTEGER,
-    OUT node BIGINT, OUT edge BIGINT,
-    OUT cost FLOAT, OUT agg_cost FLOAT)
-  RETURNS SETOF RECORD AS
-    'MODULE_PATHNAME', 'withPoints_ksp'
-    LANGUAGE c STABLE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
     TEXT,    -- edges_sql (required)
@@ -70,9 +47,6 @@ COST 100
 ROWS 1000;
 
 -- COMMENTS
-
-COMMENT ON FUNCTION _pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
-IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_withPointsKSP

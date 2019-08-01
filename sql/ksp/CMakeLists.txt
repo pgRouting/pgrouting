@@ -1,7 +1,10 @@
 
 SET(LOCAL_FILES
+    _ksp.sql
     ksp.sql
+    _withPointsKSP.sql
     withPointsKSP.sql
+    _turnRestrictedPath.sql
     turnRestrictedPath.sql
     )
 

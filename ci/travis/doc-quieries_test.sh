@@ -61,7 +61,7 @@ run_psql -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> "${FI
 echo "#FUNCTIONS" >> "${FILE}"
 run_psql  -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> "${FILE}"
 
-DIFF=$(git diff sql/sigs/pgrouting--${VERSION}.sig)
+DIFF=$(git diff "sql/sigs/pgrouting--${VERSION}.sig")
 
 if [[ !  -z  "${DIFF}"  ]]
 then

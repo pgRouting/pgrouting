@@ -12,7 +12,7 @@ DOCDIR="doc/i18n"
 
 LANGUAGES='de es ja'
 
-if [ $1 ]; then
+if [ "$1" ]; then
 	LANGUAGES=$1
 fi
 
@@ -34,7 +34,7 @@ echo "*************************************************************************"
 echo "Build HTML documentation"
 echo "*************************************************************************"
 for i in ${LANGUAGES}; do
-	sphinx-build -b html -a -E -D language="${i}" -c "${CONFIG}" ${ROOT} build/doc/html/${i}
+	sphinx-build -b html -a -E -D language="${i}" -c "${CONFIG}" "${ROOT}" "build/doc/html/${i}"
 done
 
 echo "*************************************************************************"
@@ -42,7 +42,7 @@ echo "Build LATEX documentation"
 echo "*************************************************************************"
 for i in ${LANGUAGES}; do
 	DESTINATION="build/doc/latex/${i}"
-	sphinx-build -b html -a -E -D language="${i}" -c "${CONFIG}" ${ROOT} ${DESTINATION}
+	sphinx-build -b html -a -E -D language="${i}" -c "${CONFIG}" "${ROOT}" "${DESTINATION}"
 	cd "${DESTINATION}"
 	pdflatex -interaction=nonstopmode pgRoutingDocumentation.tex > /dev/null 2>&1
 	cd "${ROOT}"
@@ -52,5 +52,5 @@ echo "*************************************************************************"
 echo "Build MAN documentation"
 echo "*************************************************************************"
 for i in ${LANGUAGES}; do
-	sphinx-build -b html -a -E -D language="${i}" -c "${CONFIG}" ${ROOT} build/doc/man/${i}
+	sphinx-build -b html -a -E -D language="${i}" -c "${CONFIG}" "${ROOT}" "build/doc/man/${i}"
 done

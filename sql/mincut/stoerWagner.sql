@@ -27,28 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
----------------
----------------
--- mincut
----------------
----------------
-
--------------------
--- pgr_stoerWagner
--------------------
-
-
-CREATE OR REPLACE FUNCTION _pgr_stoerWagner(
-    edges_sql TEXT,
-
-    OUT seq INTEGER,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT mincut FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'stoerWagner'
-LANGUAGE c VOLATILE STRICT;
-
 CREATE OR REPLACE FUNCTION pgr_stoerWagner(
     edges_sql TEXT, -- edges_sql (required)
 
@@ -63,13 +41,7 @@ $BODY$
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
-
 -- COMMENTS
-
-
-COMMENT ON FUNCTION _pgr_stoerWagner(TEXT)
-IS 'pgRouting internal function';
-
 
 COMMENT ON FUNCTION pgr_stoerWagner(TEXT)
 IS 'pgr_stoerWagner

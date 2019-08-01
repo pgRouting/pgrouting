@@ -94,7 +94,7 @@ cmake --version
 
 echo "PATH ${PATH}"
 
-cd ${PROJECTS}/pgrouting
+cd "${PROJECTS}/pgrouting"
 rm -rf "build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}"
 mkdir "build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}"
 cd "build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}"
@@ -106,8 +106,8 @@ echo "***************************"
 echo "Current contents of PGPATH ${PGPATH}"
 echo "***************************"
 #---------------
-ls ${PGPATH}/lib/libpgrouting*
-ls ${PGPATH}/share/extension/pgrouting*
+ls "${PGPATH}/lib/libpgrouting*"
+ls "${PGPATH}/share/extension/pgrouting*"
 
 #---------------
 echo
@@ -115,8 +115,8 @@ echo "***************************"
 echo "Current contents of PGPATHEDB ${PGPATHEDB}"
 echo "***************************"
 #---------------
-ls ${PGPATHEDB}/lib/libpgrouting*
-ls ${PGPATHEDB}/share/extension/pgrouting*
+ls "${PGPATHEDB}/lib/libpgrouting*"
+ls "${PGPATHEDB}/share/extension/pgrouting*"
 
 rm "${PGPATH}/lib/libpgrouting*"
 rm "${PGPATH}/share/extension/pgrouting*"

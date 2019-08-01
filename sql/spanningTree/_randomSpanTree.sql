@@ -43,7 +43,7 @@ CREATE OR REPLACE FUNCTION _pgr_randomSpanTree(
     OUT cost FLOAT,             -- Cost of edge
     OUT tree_cost FLOAT)        -- Spanning tree cost
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'randomSpanningTree'
+'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
 
 

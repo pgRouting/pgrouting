@@ -10,7 +10,7 @@ export PGROUTING_VER=$BRANCH
 # File used in Jenkins setup
 #-------------------------
 export PATH=${PATH}:/usr/local::/usr/local/lib::/usr/local/bin
-echo $PATH
+echo "$PATH"
 export PGUSER=postgres
 export PGROUTING_VER=$BRANCH
 

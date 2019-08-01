@@ -2,8 +2,14 @@
 SET(LOCAL_FILES
     _trsp.sql
     trsp.sql
-    trsp_V2.2.sql
-    vias_trsp_V2.2.sql
+    _pgr_trsp.sql
+    _array_reverse.sql
+    pgr_trsp.sql
+
+    _pgr_trspViaVertices.sql
+    pgr_trspViaVertices.sql
+
+    pgr_trspViaEdges.sql
     )
 
 foreach (f ${LOCAL_FILES})

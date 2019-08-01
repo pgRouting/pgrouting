@@ -43,8 +43,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 PG_MODULE_MAGIC;
 
-PGDLLEXPORT Datum many_to_many_dijkstra(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(many_to_many_dijkstra);
+PGDLLEXPORT Datum _pgr_dijkstra(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_dijkstra);
 
 static
 void
@@ -136,7 +136,7 @@ process(
 }
 
 PGDLLEXPORT Datum
-many_to_many_dijkstra(PG_FUNCTION_ARGS) {
+_pgr_dijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 

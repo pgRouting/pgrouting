@@ -38,7 +38,7 @@ fi
 
 function test_file {
 
-if [ -f sql/sigs/pgrouting--$1.sig ]
+if [ -f "sql/sigs/pgrouting--$1.sig" ]
 then
     echo "- [x] sql/sigs/pgrouting--$1.sig"
 else

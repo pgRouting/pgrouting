@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliver.sql
+File: pickDeliverEuclidean.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -26,30 +26,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-
-CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
-    TEXT, -- orders_sql
-    TEXT, -- vehicles_sql
-
-    factor FLOAT DEFAULT 1,
-    max_cycles INTEGER DEFAULT 10,
-    initial_sol INTEGER DEFAULT 4,
-
-    OUT seq INTEGER,
-    OUT vehicle_seq INTEGER,
-    OUT vehicle_id BIGINT,
-    OUT stop_seq INTEGER,
-    OUT stop_type INTEGER,
-    OUT order_id BIGINT,
-    OUT cargo FLOAT,
-    OUT travel_time FLOAT,
-    OUT arrival_time FLOAT,
-    OUT wait_time FLOAT,
-    OUT service_time FLOAT,
-    OUT departure_time FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'pickDeliverEuclidean'
-LANGUAGE c VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_pickDeliverEuclidean(
     TEXT, -- orders_sql (required)
@@ -78,13 +54,7 @@ $BODY$
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
-
 -- COMMENTS
-
-
-COMMENT ON FUNCTION _pgr_pickDeliverEuclidean(TEXT, TEXT, FLOAT, INTEGER, INTEGER)
-IS 'pgRouting internal function';
-
 
 COMMENT ON FUNCTION pgr_pickDeliverEuclidean(TEXT, TEXT, FLOAT, INTEGER, INTEGER)
 IS 'pgr_pickDeliverEuclidean

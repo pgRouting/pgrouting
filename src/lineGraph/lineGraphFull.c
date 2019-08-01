@@ -36,8 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "drivers/lineGraph/lineGraphFull_driver.h"
 
-PGDLLEXPORT Datum lineGraphFull(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(lineGraphFull);
+PGDLLEXPORT Datum _pgr_linegraphfull(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_linegraphfull);
 
 static
 void
@@ -98,7 +98,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum lineGraphFull(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_linegraphfull(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 

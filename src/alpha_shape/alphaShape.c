@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/alpha_shape/alphaShape_driver.h"
 
-PGDLLEXPORT Datum alphaShape(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum _pgr_alphashape(PG_FUNCTION_ARGS);
 
 static void process(
         char* edges_sql,
@@ -100,10 +100,10 @@ static void process(
     pgr_SPI_finish();
 }
 
-PG_FUNCTION_INFO_V1(alphaShape);
+PG_FUNCTION_INFO_V1(_pgr_alphashape);
 
 PGDLLEXPORT
-Datum alphaShape(PG_FUNCTION_ARGS) {
+Datum _pgr_alphashape(PG_FUNCTION_ARGS) {
     FuncCallContext      *funcctx;
     TupleDesc            tuple_desc;
 

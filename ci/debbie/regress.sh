@@ -33,7 +33,7 @@ PGSTARTLOG=${PGDATA}/start_log.log
 "${PGPATH}"/bin/initdb -U postgres -D "${PGDATA}" -A trust
 
 # check to see if pg is already running
-state=$(${PGPATH}/bin/pg_ctl status -D "${PGDATA}" -l "${PGDATA}"/logfile | grep "server is running")
+state=$("${PGPATH}"/bin/pg_ctl status -D "${PGDATA}" -l "${PGDATA}"/logfile | grep "server is running")
 
 # start pg if not running
 if [ "0" == "0$state" ]; then
@@ -53,8 +53,8 @@ echo "$PATH"
 export PGUSER=postgres
 export PGROUTING_VER="$BRANCH"
 
-rm -rf ${WORKSPACE}/build${BRANCH}
-mkdir ${WORKSPACE}/build${BRANCH}
+rm -rf "${WORKSPACE}/build${BRANCH}"
+mkdir "${WORKSPACE}/build${BRANCH}"
 
 cmake --version
 
@@ -64,7 +64,8 @@ cmake "../${BRANCH}"
 make
 make install
 cd ../"${BRANCH}"
-export PERL5LIB=$(echo pwd)
+PERL5LIB=$(echo pwd)
+export PERL5LIB
 perl tools/testers/doc_queries_generator.pl -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
 
 #pgTap tests disable for now until we have installed
