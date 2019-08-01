@@ -1,4 +1,6 @@
 
+\i setup.sql
+
 SELECT plan(9);
 
 SELECT has_function('pgr_bellmanford');
