@@ -3,6 +3,7 @@ SELECT plan(9);
 
 SELECT has_function('pgr_bellmanford');
 
+SELECT todo_start('not implemented yet');
 SELECT function_returns('pgr_bellmanford', ARRAY['text','text','bigint','bigint','boolean'],'setof record');
 SELECT function_returns('pgr_bellmanford', ARRAY['text','text','bigint','anyarray','boolean'],'setof record');
 SELECT function_returns('pgr_bellmanford', ARRAY['text','text','anyarray','bigint','boolean'],'setof record');
@@ -29,3 +30,7 @@ SELECT bag_has(
     $$SELECT  '{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 
+SELECT todo_end();
+
+SELECT * FROM finish();
+ROLLBACK;

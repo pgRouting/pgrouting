@@ -139,7 +139,7 @@ IS 'pgr_bellmanFord(One to One)
   - Edges SQL with negative cost columns: id, source, target, cost [,reverse_cost]
   - From vertex identifier
   - To vertex identifier
-- Optional Parameters: 
+- Optional Parameters:
   - directed := true
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
