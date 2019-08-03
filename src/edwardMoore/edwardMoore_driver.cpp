@@ -34,8 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <algorithm>
-//TODO : Correct the headers
-// #include "edwardMoore/pgr_edwardMoore.hpp"
+
+#include "edwardMoore/pgr_edwardMoore.hpp"
 
 //TODO : Remove below
 
@@ -55,6 +55,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+
+template < class G >
+std::deque< Path >
+pgr_edwardMoore(
+        G &graph,
+        std::vector < int64_t > sources,
+        std::vector < int64_t > targets) {
+    std::sort(sources.begin(), sources.end());
+    sources.erase(
+            std::unique(sources.begin(), sources.end()),
+            sources.end());
+
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end());
+
+    pgrouting::functions::Pgr_edwardMoore< G > fn_edwardMoore;
+    auto paths = fn_edwardMoore.edwardMoore(
+            graph,
+            sources, targets);
+
+    return paths;
+}
 
 void
 do_pgr_edwardMoore(
@@ -98,20 +122,20 @@ do_pgr_edwardMoore(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             
-            // paths = pgr_edwardMoore(
-            //     digraph,
-            //     start_vertices,
-            //     end_vertices);
+            paths = pgr_edwardMoore(
+                digraph,
+                start_vertices,
+                end_vertices);
 
         } else {
             log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
 
-            // paths = pgr_edwardMoore(
-            //     undigraph,
-            //     start_vertices,
-            //     end_vertices);
+            paths = pgr_edwardMoore(
+                undigraph,
+                start_vertices,
+                end_vertices);
 
         }
 
