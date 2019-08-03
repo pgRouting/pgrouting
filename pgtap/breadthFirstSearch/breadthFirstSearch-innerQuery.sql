@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(360);
+SELECT plan(432);
 
 SELECT style_dijkstra('pgr_breadthFirstSearch', ', 5)');
 SELECT style_dijkstra('pgr_breadthFirstSearch', ', 5, 2)');
