@@ -41,8 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/bellman_ford/edwardMoore_driver.h"
 
-PGDLLEXPORT Datum edwardMoore(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(edwardMoore);
+PGDLLEXPORT Datum _pgr_edwardmoore(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_edwardmoore);
 
 static void
 process(
@@ -134,7 +134,7 @@ process(
     pgr_SPI_finish();
 }
 
-PGDLLEXPORT Datum edwardMoore(PG_FUNCTION_ARGS)
+PGDLLEXPORT Datum _pgr_edwardmoore(PG_FUNCTION_ARGS)
 {
     FuncCallContext *funcctx;
     TupleDesc tuple_desc;

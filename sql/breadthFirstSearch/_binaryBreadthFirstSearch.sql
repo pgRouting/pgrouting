@@ -46,7 +46,7 @@ CREATE OR REPLACE FUNCTION _pgr_binaryBreadthFirstSearch(
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'binaryBreadthFirstSearch'
+'MODULE_PATHNAME'
 LANGUAGE c IMMUTABLE STRICT;
 
 
