@@ -45,15 +45,12 @@ pgr_bellmanford(text,bigint,anyarray,boolean)
 pgr_bellmanford(text,bigint,bigint,boolean)
 _pgr_biconnectedcomponents(text)
 pgr_biconnectedcomponents(text)
-<<<<<<< 3172e2c3b9c2f0f2fd678d61a66a85aef2282016
-_pgr_boost_version()
-=======
 _pgr_binarybreadthfirstsearch(text,anyarray,anyarray,boolean)
 pgr_binarybreadthfirstsearch(text,anyarray,anyarray,boolean)
 pgr_binarybreadthfirstsearch(text,anyarray,bigint,boolean)
 pgr_binarybreadthfirstsearch(text,bigint,anyarray,boolean)
 pgr_binarybreadthfirstsearch(text,bigint,bigint,boolean)
->>>>>>> [binaryBreadthFirstSearch] Fixed typo in binaryBreadthFirstSearch_driver.cpp
+_pgr_boost_version()
 pgr_boykovkolmogorov(text,anyarray,anyarray)
 pgr_boykovkolmogorov(text,anyarray,bigint)
 pgr_boykovkolmogorov(text,bigint,anyarray)
