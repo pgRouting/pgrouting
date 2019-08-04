@@ -4,6 +4,8 @@ SET(LOCAL_FILES
     bellman_ford.sql
     #_bellman_ford_neg.sql
     #bellman_ford_neg.sql
+    _edwardMoore.sql
+    edwardMoore.sql
     )
 
 # Do not modify bellow this line

@@ -1,7 +1,9 @@
 
 SET(LOCAL_FILES
 	_breadthFirstSearch.sql
+	_binaryBreadthFirstSearch.sql
     breadthFirstSearch.sql
+    binaryBreadthFirstSearch.sql
     )
 
 foreach (f ${LOCAL_FILES})
