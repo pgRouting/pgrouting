@@ -28,14 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/binaryBreadthFirstSearch/binaryBreadthFirstSearch_driver.h"
+#include "drivers/breadthFirstSearch/binaryBreadthFirstSearch_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <algorithm>
 
-#include "binaryBreadthFirstSearch/pgr_binaryBreadthFirstSearch.hpp"
+#include "breadthFirstSearch/pgr_binaryBreadthFirstSearch.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"

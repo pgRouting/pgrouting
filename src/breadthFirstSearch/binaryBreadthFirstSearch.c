@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 
-#include "drivers/binaryBreadthFirstSearch/binaryBreadthFirstSearch_driver.h"
+#include "drivers/breadthFirstSearch/binaryBreadthFirstSearch_driver.h"
 
 PGDLLEXPORT Datum binaryBreadthFirstSearch(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(binaryBreadthFirstSearch);
