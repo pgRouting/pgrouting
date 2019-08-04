@@ -1,7 +1,6 @@
 #VERSION pgrouting 3.0.0
 #TYPES
 #FUNCTIONS
-<<<<<<< baa2f0fe9781e8d56b73b32f13eb1f59fb3510fb
 pgr_alphashape(geometry,double precision)
 _pgr_alphashape(text,double precision)
 pgr_analyzegraph(text,double precision,text,text,text,text,text)
@@ -235,5 +234,3 @@ pgr_withpoints(text,text,bigint,anyarray,boolean,character,boolean)
 pgr_withpoints(text,text,bigint,bigint,boolean,character,boolean)
 _pgr_withpointsvia(text,bigint[],double precision[],boolean)
 _trsp(text,text,anyarray,anyarray,boolean)
-=======
->>>>>>> Reorganised binaryBreadthFirstSearch files

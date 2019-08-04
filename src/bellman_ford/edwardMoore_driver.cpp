@@ -28,14 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/edwardMoore/edwardMoore_driver.h"
+#include "drivers/bellman_ford/edwardMoore_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <algorithm>
 
-#include "edwardMoore/pgr_edwardMoore.hpp"
+#include "bellman_ford/pgr_edwardMoore.hpp"
 
 //TODO : Remove below
 
