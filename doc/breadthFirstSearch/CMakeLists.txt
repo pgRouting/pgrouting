@@ -1,6 +1,7 @@
 
 SET(LOCAL_FILES
     pgr_breadthFirstSearch.rst
+    pgr_binaryBreadthFirstSearch.rst    
     )
 
 foreach (f ${LOCAL_FILES})
