@@ -18,25 +18,26 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MST_PGR_EDWARDMOORE_HPP_
-#define INCLUDE_MST_PGR_EDWARDMOORE_HPP_
+#ifndef INCLUDE_BELLMAN_FORD_PGR_EDWARDMOORE_HPP_
+#define INCLUDE_BELLMAN_FORD_PGR_EDWARDMOORE_HPP_
 #pragma once
 
+#include<limits>
+#include<algorithm>
+#include<vector>
 #include <deque>
+
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 //******************************************
 
-namespace pgrouting
-{
-namespace functions
-{
+namespace pgrouting {
+namespace functions {
 
 template <class G>
-class Pgr_edwardMoore
-{
-public:
+class Pgr_edwardMoore {
+ public:
     typedef typename G::V V;
     typedef typename G::E E;
     typedef typename G::B_G B_G;
@@ -46,13 +47,10 @@ public:
     std::deque<Path> edwardMoore(
         G &graph,
         std::vector<int64_t> start_vertex,
-        std::vector<int64_t> end_vertex)
-    {
-
+        std::vector<int64_t> end_vertex) {
         std::deque<Path> paths;
 
-        for (auto source : start_vertex)
-        {
+        for (auto source : start_vertex) {
             std::deque<Path> result_paths = one_to_many_edwardMoore(
                 graph,
                 source,
@@ -76,19 +74,16 @@ public:
         return paths;
     }
 
-private:
+ private:
     E DEFAULT_EDGE;
 
     std::deque<Path> one_to_many_edwardMoore(
         G &graph,
         int64_t start_vertex,
-        std::vector<int64_t> end_vertex)
-    {
-
+        std::vector<int64_t> end_vertex) {
         std::deque<Path> paths;
 
-        if (graph.has_vertex(start_vertex) == false)
-        {
+        if (graph.has_vertex(start_vertex) == false) {
             return paths;
         }
 
@@ -104,8 +99,7 @@ private:
         isInQ[bgl_start_vertex] = true;
         dq.push_front(bgl_start_vertex);
 
-        while (dq.empty() == false)
-        {
+        while (dq.empty() == false) {
             int64_t head_vertex = dq.front();
 
             dq.pop_front();
@@ -114,17 +108,14 @@ private:
             updateVertexCosts(graph, current_cost, isInQ, from_edge, dq, head_vertex);
         }
 
-        for (auto target_vertex : end_vertex)
-        {
-            if (graph.has_vertex(target_vertex) == false)
-            {
+        for (auto target_vertex : end_vertex) {
+            if (graph.has_vertex(target_vertex) == false) {
                 continue;
             }
 
             int64_t bgl_target_vertex = graph.get_V(target_vertex);
 
-            if (from_edge[bgl_target_vertex] == DEFAULT_EDGE)
-            {
+            if (from_edge[bgl_target_vertex] == DEFAULT_EDGE) {
                 continue;
             }
 
@@ -141,16 +132,14 @@ private:
         int64_t target,
         int64_t bgl_target_vertex,
         std::vector<E> &from_edge,
-        std::vector<double> &current_cost)
-    {
+        std::vector<double> &current_cost) {
         int64_t current_node = bgl_target_vertex;
 
         Path path = Path(graph[bgl_start_vertex].id, graph[current_node].id);
 
         path.push_back({target, -1, 0, current_cost[current_node]});
 
-        do
-        {
+        do {
             E e = from_edge[current_node];
             auto from = graph.source(e);
 
@@ -169,8 +158,7 @@ private:
         std::vector<bool> &isInQ,
         std::vector<E> &from_edge,
         std::deque<int64_t> &dq,
-        int64_t &head_vertex)
-    {
+        int64_t &head_vertex) {
         auto out_edges = boost::out_edges(head_vertex, graph.graph);
         E e;
         EO_i out_i;
@@ -178,23 +166,18 @@ private:
         V v_source, v_target;
 
         for (boost::tie(out_i, out_end) = out_edges;
-             out_i != out_end; ++out_i)
-        {
-
+             out_i != out_end; ++out_i) {
             e = *out_i;
             v_target = graph.target(e);
             v_source = graph.source(e);
             double edge_cost = graph[e].cost;
 
-            if (std::isinf(current_cost[v_target]) or current_cost[v_source] + edge_cost < current_cost[v_target])
-            {
-
+            if (std::isinf(current_cost[v_target]) || current_cost[v_source] + edge_cost < current_cost[v_target]) {
                 current_cost[v_target] = current_cost[v_source] + edge_cost;
 
                 from_edge[v_target] = e;
 
-                if (isInQ[v_target] == false)
-                {
+                if (isInQ[v_target] == false) {
                     dq.push_back(v_target);
                     isInQ[v_target] = true;
                 }
@@ -202,7 +185,7 @@ private:
         }
     }
 };
-} // namespace functions
-} // namespace pgrouting
+}  // namespace functions
+}  // namespace pgrouting
 
-#endif // INCLUDE_MST_PGR_EDWARDMOORE_HPP_
+#endif  // INCLUDE_BELLMAN_FORD_PGR_EDWARDMOORE_HPP_
