@@ -35,26 +35,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "bellman_ford/pgr_edwardMoore.hpp"
-
-//TODO : Remove below
-
-#include <deque>
 #include <set>
-#include <vector>
-#include <algorithm>
-#include <sstream>
 #include <functional>
 #include <limits>
 #include <numeric>
 
+#include "bellman_ford/pgr_edwardMoore.hpp"
+
+
+
+
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
-// TODO : Remove above
 
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+
 
 template < class G >
 std::deque< Path >
@@ -121,12 +118,10 @@ do_pgr_edwardMoore(
             log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            
             paths = pgr_edwardMoore(
                 digraph,
                 start_vertices,
                 end_vertices);
-
         } else {
             log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
@@ -136,7 +131,6 @@ do_pgr_edwardMoore(
                 undigraph,
                 start_vertices,
                 end_vertices);
-
         }
 
         size_t count(0);
