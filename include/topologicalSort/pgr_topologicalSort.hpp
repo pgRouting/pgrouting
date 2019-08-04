@@ -61,19 +61,18 @@ class Pgr_topologicalSort {
      std::vector< pgr_topologicalSort_t >
      generatetopologicalSort(
         const G &graph ) {
-
         std::vector< pgr_topologicalSort_t > results;
 
         typedef typename std::vector< V > container;
         container c;
 
         boost::topological_sort(graph.graph, std::back_inserter(c));
-        
+
         typename std::vector< V >::reverse_iterator ii;
-        for (ii=c.rbegin(); ii!=c.rend(); ++ii) {
-            auto t=*ii;
+        for (ii = c.rbegin(); ii != c.rend(); ++ii) {
+            auto t = *ii;
             pgr_topologicalSort_t tmp;
-            tmp.sorted_v=graph.graph[t].id;
+            tmp.sorted_v = graph.graph[t].id;
             results.push_back(tmp);
         }
 
@@ -85,7 +84,6 @@ template < class G >
 std::vector<pgr_topologicalSort_t>
 Pgr_topologicalSort< G >::topologicalSort(
                 G &graph) {
-    
       return generatetopologicalSort(
                              graph);
 }

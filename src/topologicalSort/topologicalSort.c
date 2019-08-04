@@ -57,7 +57,7 @@ process(
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
     pgr_get_edges(edges_sql, &edges, &total_edges);
-    
+
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
     char* log_msg = NULL;
@@ -65,10 +65,8 @@ process(
     char* err_msg = NULL;
     do_pgr_topologicalSort(
             edges, total_edges,
-            
             result_tuples,
             result_count,
-
             &log_msg,
             &notice_msg,
             &err_msg);

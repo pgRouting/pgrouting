@@ -85,7 +85,7 @@ class Pgr_transitiveClosure {
             Identifiers<int64_t> &remaining_vertices,
             std::vector<pgrouting::CH_edge> &shortcut_edges,
             std::ostringstream& debug) {
-        //std::deque<int64_t> contract_order;
+        // std::deque<int64_t> contract_order;
         //  push -1 to indicate the start of the queue
         // contract_order.push_back(-1);
         // contract_order.insert(
@@ -126,7 +126,6 @@ class Pgr_transitiveClosure {
         //     shortcut_edges.push_back(shortcut);
         // }
     }
-
 };
 
 }  // namespace transitiveClosure

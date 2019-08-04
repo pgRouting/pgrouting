@@ -56,7 +56,6 @@ process(char* edges_sql,
 
         transitiveClosure_rt **result_tuples,
         size_t *result_count) {
-
     pgr_SPI_connect();
 
 
@@ -89,7 +88,7 @@ process(char* edges_sql,
         (*result_tuples) = NULL;
         (*result_count) = 0;
     }
-    
+
     pgr_global_report(log_msg, notice_msg, err_msg);
 
     if (log_msg) pfree(log_msg);
@@ -211,7 +210,7 @@ transitiveClosure(PG_FUNCTION_ARGS) {
 
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = PointerGetDatum(arrayType);
-        
+
         /*********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
