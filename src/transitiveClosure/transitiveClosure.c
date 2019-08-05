@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/transitiveClosure_rt.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "drivers/contraction/transitiveClosure_driver.h"
+#include "drivers/transitiveClosure/transitiveClosure_driver.h"
 
 PGDLLEXPORT Datum transitiveClosure(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(transitiveClosure);
@@ -156,7 +156,7 @@ transitiveClosure(PG_FUNCTION_ARGS) {
         size_t      call_cntr = funcctx->call_cntr;
 
         /**********************************************************************/
-        size_t numb = 2;
+        size_t numb = 3;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
         size_t i;
@@ -205,12 +205,13 @@ transitiveClosure(PG_FUNCTION_ARGS) {
            int     attdim
            )
            */
-        TupleDescInitEntry(tuple_desc, (AttrNumber) 4, "target_array",
+        TupleDescInitEntry(tuple_desc, (AttrNumber) 3, "target_array",
                 INT8ARRAYOID, -1, 0);
 
         values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = PointerGetDatum(arrayType);
-
+        values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
+        values[2] = PointerGetDatum(arrayType);
+        
         /*********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

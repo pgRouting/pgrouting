@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION _pgr_transitiveClosure(
     edges_sql TEXT,
 
     OUT seq INTEGER,
-    OUT id BIGINT,
+    OUT vid BIGINT,
     OUT target_array BIGINT[])
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME', 'transitiveClosure'
