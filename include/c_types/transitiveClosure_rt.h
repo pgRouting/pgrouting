@@ -42,9 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * return type for contraction
  * ***********************************************************************/
 typedef struct {
-    int64_t id;
-    int64_t *transitiveClosure_vertices;
-    int transitiveClosure_vertices_size;
+    int seq;
+    int64_t vid;
+    int64_t *target_array;
+    int target_array_size;
 } transitiveClosure_rt;
 
 #endif  // INCLUDE_C_TYPES_TRANSITIVECLOSURE_RT_H_

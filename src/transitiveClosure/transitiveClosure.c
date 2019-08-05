@@ -58,7 +58,6 @@ process(char* edges_sql,
         size_t *result_count) {
     pgr_SPI_connect();
 
-
     size_t total_edges = 0;
     pgr_edge_t* edges = NULL;
     pgr_get_edges(edges_sql, &edges, &total_edges);
@@ -95,8 +94,6 @@ process(char* edges_sql,
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
     if (edges) pfree(edges);
-    if (forbidden_vertices) pfree(forbidden_vertices);
-    if (contraction_order) pfree(contraction_order);
     pgr_SPI_finish();
 }
 
@@ -211,7 +208,7 @@ transitiveClosure(PG_FUNCTION_ARGS) {
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
         values[2] = PointerGetDatum(arrayType);
-        
+
         /*********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
