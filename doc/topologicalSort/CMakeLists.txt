@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    pgr_toplogicalSort.rst
+    pgr_topologicalSort.rst
     )
 
 foreach (f ${LOCAL_FILES})

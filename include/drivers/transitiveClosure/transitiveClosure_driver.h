@@ -52,7 +52,6 @@ extern "C" {
         do_pgr_contractGraph(
                pgr_edge_t  *data_edges,
         size_t total_tuples,
- 
         transitiveClosure_rt **return_tuples,
         size_t *return_count,
         char **log_msg,

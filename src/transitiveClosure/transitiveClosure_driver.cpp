@@ -54,7 +54,6 @@ static void process_transitiveClosure(
     pgrouting::ransitiveClosure::Pgr_transitiveClosure<G> result(graph,
             remaining_vertices,
             shortcut_edges, log);
-
 }
 
 template <typename G>
