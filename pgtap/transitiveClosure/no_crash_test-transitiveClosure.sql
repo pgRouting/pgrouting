@@ -23,7 +23,7 @@ BEGIN
     'NULL::BIGINT[]'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_transitiveClosure', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_transitiveclosure', params, subs);
 
 END
 $BODY$
