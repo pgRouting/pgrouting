@@ -37,28 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-// namespace {
-
-/*! @brief vertices with at least one contracted vertex
-  @result The vids Identifiers with at least one contracted vertex
-*/
-// template <typename G>
-// Identifiers<int64_t> get_vertices(const G& graph) {
-//     Identifiers<int64_t> vids;
-//     for (auto v : boost::make_iterator_range(boost::vertices(graph.graph))) {
-//             vids += graph[v].id;
-//     }
-//     return vids;
-// }
-
-// template <typename G>
-// static void process_transitiveClosure(
-//         G &graph,
-//         const std::vector< pgr_edge_t > &edges) {
-//     graph.insert_edges(edges);
-//     pgrouting::transitiveClosure::Pgr_transitiveClosure<G>.get(graph);
-// }
-
 template < class G >
 static
 boost::adjacency_list <>
@@ -77,7 +55,6 @@ void get_postgres_result(
         size_t *count) {
     boost::adjacency_list <> TC;
     TC = pgr_transitiveClosure(graph);
-    
     (*count) = boost::num_vertices(TC);
     (*return_tuples) = pgr_alloc((*count), (*return_tuples));
     size_t sequence = 0;
@@ -106,27 +83,7 @@ void get_postgres_result(
 
          ++sequence;
     }
-    // for (const auto id : vertices) {
-    //     auto v = graph.get_V(id);
-    //     int64_t* target_array = NULL;
-    //     auto vids = graph[v].target_array();
-
-    //     target_array = pgr_alloc(vids.size(), target_array);
-
-    //     int count = 0;
-    //     for (const auto id : vids) {
-    //         target_array[count++] = id;
-    //     }
-    //     (*return_tuples)[sequence] = {
-    //         id,
-    //         target_array,
-    //         count};
-
-    //     ++sequence;
-    // }
 }
-
-//}  // namespace
 
 
 
@@ -162,8 +119,7 @@ do_pgr_transitiveClosure(
         graphType gType = DIRECTED;
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges);
-        // process_transitiveClosure(digraph, edges);
-
+        
         get_postgres_result(
                 digraph,
                 return_tuples,
