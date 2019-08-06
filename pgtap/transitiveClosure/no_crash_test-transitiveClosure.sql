@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(3);
+SELECT plan(4);
 -- flags
 -- error
 
@@ -18,29 +18,43 @@ SELECT lives_ok(
     )',
     '4: Documentation says works with no flags');
 
+CREATE TABLE edge_table1 (
+    id serial,
+    source integer,
+    target integer,
+    cost double precision,
+    reverse_cost double precision
+);
+INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (0,1,1,-1);
+INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (0,3,1,-1);
+INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (0,2,1,-1);
+INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (1,3,1,-1);
+INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (1,2,1,-1);
+INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (3,2,1,-1);
 
-CREATE OR REPLACE FUNCTION test_function()
-RETURNS SETOF TEXT AS
-$BODY$
-DECLARE
-params TEXT[];
-subs TEXT[];
-BEGIN
-    params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table WHERE id = 1 $$'
-    ]::TEXT[];
-    subs = ARRAY[
-    'NULL',
-    'NULL::BIGINT[]'
 
-    ]::TEXT[];
+PREPARE graphchain AS
+SELECT * FROM pgr_contraction(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table1 WHERE id = 1 or id = 4 or id = 6',
+    ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
 
-    RETURN query SELECT * FROM no_crash_test('pgr_transitiveclosure', params, subs);
+PREPARE graphall AS
+SELECT * FROM pgr_contraction(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table1',
+    ARRAY[1, 1]::integer[], 1, ARRAY[]::integer[], true);
 
-END
-$BODY$
-LANGUAGE plpgsql VOLATILE;
+PREPARE graphe1246 AS
+SELECT * FROM pgr_contraction(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table1 WHERE id = 1 or id =2 or id = 4 or id = 6',
+    ARRAY[1, 1]::integer[], 1, ARRAY[]::integer[], true);
 
-SELECT * FROM test_function();
+SELECT set_eq('graphchain', 'graphall', '1: Chain and complete graph');
+
+SELECT set_eq('graphchain', 'graphe1246', '2: Chain and subgraph');
+
+
+
+
+
 
 ROLLBACK;
