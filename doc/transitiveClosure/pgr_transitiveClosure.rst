@@ -7,14 +7,14 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_topologicalSort - Experimental
+pgr_transitiveClosure - Experimental
 ===============================================================================
 
-``pgr_topologicalSort`` — Returns the linear ordering of the vertices(s) for weighted directed acyclic graphs(DAG).
-In particular, the topological sort algorithm implemented by Boost.Graph.
+``pgr_transitiveClosure`` — Returns the transitive closure graph of the input graph.
+In particular, the transitive closure algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_65_1/libs/graph/doc/topological_sort.html
+   :target: https://www.boost.org/doc/libs/1_70_0/libs/graph/doc/transitive_closure.html
 
    Boost Graph Inside
 
@@ -29,17 +29,14 @@ In particular, the topological sort algorithm implemented by Boost.Graph.
 Description
 -------------------------------------------------------------------------------
 
-The topological sort algorithm creates a linear ordering of the vertices such that if edge (u,v) appears 
-in the graph, then v comes before u in the ordering.
+The transitive_closure() function transforms the input graph g into the transitive closure graph tc.
 
 This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph. 
 
 The main characteristics are:
   - Process is valid for directed acyclic graphs only. otherwise it will throw warnings.
-
-  - For optimization purposes, if there are more than one answer, the function will return one of them.
   
-  - The returned values are ordered in topological order:
+  - The returned values are not ordered:
 
   * Running time: :math:`O( (V + E))`
 
@@ -51,16 +48,27 @@ Signatures
 
 .. code-block:: none
 
-    pgr_topologicalSort(edges_sql)
+    pgr_transitiveClosure(edges_sql)
 
-    RETURNS SET OF (seq, sorted_v)
+    RETURNS SET OF (seq, vid, )
     OR EMPTY SET
 
-:Example: For a **directed** graph
 
-.. literalinclude:: doc-pgr_topologicalSort.queries
-   :start-after: -- q1
-   :end-before: -- q2
+.. index::
+    single: transitiveClosure(One to One) - Experimental
+
+One to One
+...............................................................................
+
+.. code-block:: none
+
+    pgr_dagShortestPath(edges_sql)
+    RETURNS SET OF (seq, sorted_v) 
+    OR EMPTY SET
+
+:Example: From vertex :math:`1` to vertex :math:`6` 
+
+.. literalinclude:: doc-pgr_transitiveClosure.queries
 
 Parameters
 -------------------------------------------------------------------------------
