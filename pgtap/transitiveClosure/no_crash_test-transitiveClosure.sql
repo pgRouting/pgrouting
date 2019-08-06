@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(7);
+SELECT plan(1);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
@@ -15,7 +15,7 @@ DECLARE
 params TEXT[];
 BEGIN
     params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table WHERE id = 2 $$',
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table WHERE id = 2 $$'
     ]::TEXT[];
     
     RETURN query SELECT * FROM no_crash_test('pgr_transitiveClosure', params);
