@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(1);
+SELECT plan(5);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
