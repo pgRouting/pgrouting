@@ -33,9 +33,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <deque>
 #include <vector>
+#include <utility>
 #include "cpp_common/pgr_assert.h"
 
 #include <boost/graph/transitive_closure.hpp>
+
 
 template < class G > class Pgr_transitiveClosure;
 
@@ -49,7 +51,6 @@ class Pgr_transitiveClosure {
      boost::no_property, boost::listS> transitiveClosure(G &graph);
 
  private:
-    
     boost::adjacency_list <boost::vecS, boost::vecS, boost::directedS, boost::no_property, boost::no_property,
     boost::no_property, boost::listS> generatetransitiveClosure(G &graph) {
         boost::adjacency_list <boost::vecS, boost::vecS, boost::directedS, boost::no_property, boost::no_property,
@@ -59,39 +60,39 @@ class Pgr_transitiveClosure {
     boost::graph_traits < boost::adjacency_list <> >::vertex_iterator i, end;
     boost::graph_traits < boost::adjacency_list <> >::adjacency_iterator ai, a_end;
 
-    std::vector< std::pair<G ,std::vector< G > > > result; 
+    std::vector< std::pair<G , std::vector< G > > > result;
     for (boost::tie(i, end) = vertices(TC); i != end; ++i) {
-        auto u=*i;
+        auto u = *i;
         std::vector< G > ve;
         boost::tie(ai, a_end) = adjacent_vertices(*i, TC);
         for (; ai != a_end; ++ai) {
-            auto v= *ai;
+            auto v = *ai;
         //    ve.push_back(v);
         }
-        //result.push_back(std::make_pair(u,ve) );
-    }    
+        // result.push_back(std::make_pair(u,ve) );
+    }
 
+#ifdef 0
+        typedef boost::adjacency_list <boost::vecS, boost::vecS, boost::directedS,
+        boost::no_property, boost::no_property,
+        boost::no_property, boost::listS> Graph;
+        graph_traits<Graph >::vertex_iterator vi, vi_end;
+        boost::tie(vi, vi_end) = vertices(TC);
+        for (boost::tie(vi, vi_end) = vertices(G); vi != vi_end; ++vi) {
+            graph_traits<adjacency_list>::adjacency_iterator it;
+            it.
+        }
 
-//        typedef boost::adjacency_list <boost::vecS, boost::vecS, boost::directedS, boost::no_property, boost::no_property,
-  //  boost::no_property, boost::listS> Graph;
-        // graph_traits<Graph >::vertex_iterator vi, vi_end;
-        // boost::tie(vi, vi_end) = vertices(TC);
+        std::pair<vertex_iterator, vertex_iterator> vertices(TC);
+#endif
 
-        // for (boost::tie(vi, vi_end) = vertices(G); vi != vi_end; ++vi){
-        //     graph_traits<adjacency_list>::adjacency_iterator it;
-        //     it.
-        // }
-
-        // std::pair<vertex_iterator, vertex_iterator> vertices(TC);
-
-
-        return TC;   
+        return TC;
     }
 };
 
 template < class G >
 boost::adjacency_list <boost::vecS, boost::vecS, boost::directedS, boost::no_property, boost::no_property,
-boost::no_property, boost::listS> 
+boost::no_property, boost::listS>
 Pgr_transitiveClosure< G >::transitiveClosure(
                 G &graph) {
       return generatetransitiveClosure(

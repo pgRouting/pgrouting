@@ -49,7 +49,7 @@ extern "C" {
  
      ********************************************************/
     void
-        do_pgr_contractGraph(
+        do_pgr_transitiveClosure(
                pgr_edge_t  *data_edges,
         size_t total_tuples,
         transitiveClosure_rt **return_tuples,

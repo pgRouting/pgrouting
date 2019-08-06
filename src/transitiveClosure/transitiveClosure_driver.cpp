@@ -75,9 +75,6 @@ void get_postgres_result(
         G &graph,
         transitiveClosure_rt **return_tuples,
         size_t *count) {
-         
-
-
     boost::adjacency_list <> TC;
     TC = pgr_transitiveClosure(graph);
 
@@ -86,18 +83,17 @@ void get_postgres_result(
     size_t sequence = 0;
     boost::graph_traits < boost::adjacency_list <> >::vertex_iterator i, end;
     boost::graph_traits < boost::adjacency_list <> >::adjacency_iterator ai, a_end;
-    int ii=1;
+    int ii = 1;
     for (boost::tie(i, end) = boost::vertices(TC); i != end; ++i) {
             auto u = *i;
             int64_t* target_array = NULL;
             int64_t uid = graph.get_V(u);
             boost::tie(ai, a_end) = adjacent_vertices(*i, TC);
-            
             auto adj_siz = a_end - ai;
             target_array = pgr_alloc(adj_siz , target_array);
             int count = 0;
             for (; ai != a_end; ++ai) {
-                auto v= *ai;
+                auto v = *ai;
                 target_array[count++] = graph.get_V(v);
             }
 
@@ -108,8 +104,7 @@ void get_postgres_result(
             count};
 
          ++sequence;
-    }    
-
+    }
     // for (const auto id : vertices) {
     //     auto v = graph.get_V(id);
     //     int64_t* target_array = NULL;
@@ -168,7 +163,6 @@ do_pgr_transitiveClosure(
         pgrouting::DirectedGraph digraph(gType);
 
         // process_transitiveClosure(digraph, edges);
-        
 
         get_postgres_result(
                 digraph,
