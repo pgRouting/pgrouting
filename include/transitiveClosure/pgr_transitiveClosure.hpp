@@ -72,7 +72,7 @@ class Pgr_transitiveClosure {
         // result.push_back(std::make_pair(u,ve) );
     }
 
-#ifdef 0
+/* 
         typedef boost::adjacency_list <boost::vecS, boost::vecS, boost::directedS,
         boost::no_property, boost::no_property,
         boost::no_property, boost::listS> Graph;
@@ -84,7 +84,7 @@ class Pgr_transitiveClosure {
         }
 
         std::pair<vertex_iterator, vertex_iterator> vertices(TC);
-#endif
+*/
 
         return TC;
     }
