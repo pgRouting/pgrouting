@@ -13,12 +13,17 @@ RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
 params TEXT[];
+subs TEXT[];
 BEGIN
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table WHERE id = 2 $$'
     ]::TEXT[];
-    
-    RETURN query SELECT * FROM no_crash_test('pgr_transitiveClosure', params);
+    subs = ARRAY[
+    'NULL',
+    'NULL::BIGINT[]'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_transitiveClosure', params, subs);
 
 END
 $BODY$
