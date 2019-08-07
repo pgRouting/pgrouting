@@ -43,8 +43,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if 0
 PG_MODULE_MAGIC;
 #endif
-PGDLLEXPORT Datum topologicalSort(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(topologicalSort);
+PGDLLEXPORT Datum _pgr_topologicalsort(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_topologicalsort);
 
 static
 void
