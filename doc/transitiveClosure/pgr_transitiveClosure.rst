@@ -4,10 +4,10 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_transitiveClosure - Experimental
+pgr_transitiveClosure
 ===============================================================================
 
 ``pgr_transitiveClosure`` — Returns the transitive closure graph of the input graph.
@@ -18,13 +18,7 @@ In particular, the transitive closure algorithm implemented by Boost.Graph.
 
    Boost Graph Inside
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 .. rubric:: Availability
-
-* **TBD**
 
 Description
 -------------------------------------------------------------------------------
@@ -38,7 +32,7 @@ The main characteristics are:
   
   - The returned values are not ordered:
 
-  * Running time: :math:`O( (V + E))`
+  * Running time: :math:`O(|V||E|)`
 
 
 Signatures
@@ -46,85 +40,70 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: none
-
-    pgr_transitiveClosure(edges_sql)
-
-    RETURNS SET OF (seq, vid, )
-    OR EMPTY SET
-
+The pgr_transitiveClosure function has the following signature:
 
 .. index::
-    single: transitiveClosure(One to One) - Experimental
-
-One to One
-...............................................................................
+   single: transitiveClosure
 
 .. code-block:: none
 
-    pgr_dagShortestPath(edges_sql)
-    RETURNS SET OF (seq, sorted_v) 
-    OR EMPTY SET
+    pgr_transitiveClosure(Edges SQL)
+    RETURNS SETOF (id, vid, target_array)
 
-:Example: From vertex :math:`1` to vertex :math:`6` 
+:Example: Complete Graph of 3 vertexs
 
 .. literalinclude:: doc-pgr_transitiveClosure.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
 Parameters
 -------------------------------------------------------------------------------
 
-=================== ====================== ========= =================================================
-Parameter           Type                   Default   Description
-=================== ====================== ========= =================================================
-**edges_sql**       ``TEXT``                         SQL query as described above.
-=================== ====================== ========= =================================================
+======================= ====================== =================================================
+Column                  Type                   Description
+======================= ====================== =================================================
+**Edges SQL**           ``TEXT``               SQL query as described in `Inner query`_
+======================= ====================== =================================================
 
 Inner query
 -------------------------------------------------------------------------------
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
-
-================= =================== ======== =================================================
-Column            Type                 Default  Description
-================= =================== ======== =================================================
-**id**            ``ANY-INTEGER``                Identifier of the edge.
-**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
-
-                                                 - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-
-**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
-
-                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-
-================= =================== ======== =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, sorted_v)``
+RETURNS SETOF  (seq, vid, target_array)
 
-===============  =========== ============================================================
-Column           Type        Description
-===============  =========== ============================================================
-**seq**          ``INT``     Sequential value starting from **1**.
-**sorted_v**     ``BIGINT``  Linear ordering of the vertices(ordered in topological order) 
-===============  =========== ============================================================
+The function returns a single row. The columns of the row are:
+
+============================ =================   ===================================================================
+Column                       Type                Description
+============================ =================   ===================================================================
+**seq**                      ``INTEGER``         Sequential value starting from **1**.
+**vid**                      ``BIGINT``          Identifier of the vertex. 
+**target_array**             ``ARRAY[BIGINT]``   Array of identifiers of the vertices that are reachable from vertex v.nodes v identifiers.
+============================ =================   ===================================================================
+
+Additional Examples
+-------------------------------------------------------------------------------
+
+:Example: Some sub graphs of the sample data
+
+.. literalinclude:: doc-pgr_transitiveClosure.queries
+   :start-after: -- q2
+   :end-before: -- q4
+
 
 See Also
 -------------------------------------------------------------------------------
 
-* https://en.wikipedia.org/wiki/Topological_sorting
+* https://en.wikipedia.org/wiki/Transitive_closure
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-
