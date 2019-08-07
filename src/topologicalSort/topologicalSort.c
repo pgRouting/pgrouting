@@ -90,7 +90,7 @@ process(
 }
 
 PGDLLEXPORT Datum
-topologicalSort(PG_FUNCTION_ARGS) {
+_pgr_topologicalsort(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
