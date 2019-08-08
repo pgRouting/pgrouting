@@ -21,14 +21,15 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MST_PGR_BREADTHFIRSTSEARCH_HPP_
-#define INCLUDE_MST_PGR_BREADTHFIRSTSEARCH_HPP_
+#ifndef INCLUDE_BREADTHFIRSTSEARCH_PGR_BREADTHFIRSTSEARCH_HPP_
+#define INCLUDE_BREADTHFIRSTSEARCH_PGR_BREADTHFIRSTSEARCH_HPP_
 #pragma once
 
-#include <vector>
 
 #include <visitors/edges_order_bfs_visitor.hpp>
 #include <boost/graph/breadth_first_search.hpp>
+
+#include <vector>
 
 #include "cpp_common/pgr_base_graph.hpp"
 //******************************************
@@ -38,7 +39,7 @@ namespace functions {
 
 template <class G>
 class Pgr_breadthFirstSearch {
-public:
+ public:
     typedef typename G::V V;
     typedef typename G::E E;
     typedef typename G::B_G B_G;
@@ -48,12 +49,10 @@ public:
         G &graph,
         std::vector<int64_t> start_vertex,
         int64_t depth) {
-
         std::vector<pgr_mst_rt> results;
         using bfs_visitor = visitors::Edges_order_bfs_visitor<E>;
 
         for (auto source : start_vertex) {
-
             std::vector<E> visited_order;
 
             if (graph.has_vertex(source)) {
@@ -65,15 +64,11 @@ public:
                 auto single_source_results = get_results(visited_order, source, depth, graph);
                 results.insert(results.end(), single_source_results.begin(), single_source_results.end());
             }
-
         }
-
         return results;
-        
         }
 
-private:
-
+ private:
      template <typename T>
      std::vector<pgr_mst_rt> get_results(
              T order,
@@ -105,9 +100,8 @@ private:
          }
          return results;
      }
-
 };
-} // namespace functions
-} // namespace pgrouting
+}  // namespace functions
+}  // namespace pgrouting
 
-#endif // INCLUDE_MST_PGR_BREADTHFIRSTSEARCH_HPP_
+#endif  // INCLUDE_BREADTHFIRSTSEARCH_PGR_BREADTHFIRSTSEARCH_HPP_
