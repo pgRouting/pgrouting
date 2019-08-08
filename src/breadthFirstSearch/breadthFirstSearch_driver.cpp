@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <algorithm>
+#include <string>
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -92,7 +93,6 @@ do_pgr_breadthFirstSearch(
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            
             results = pgr_breadthFirstSearch(
                     digraph,
                     start_vertices,
@@ -107,7 +107,6 @@ do_pgr_breadthFirstSearch(
                     undigraph,
                     start_vertices,
                     max_depth);
-
         }
 
         auto count = results.size();
@@ -123,7 +122,7 @@ do_pgr_breadthFirstSearch(
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "\nConverting a set of traversals into the tuples";
-        for(size_t i = 0; i < count; i++){
+        for (size_t i = 0; i < count; i++) {
             *((*return_tuples) + i) = results[i];
         }
         (*return_count) = count;
