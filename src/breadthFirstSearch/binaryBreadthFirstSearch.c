@@ -77,8 +77,7 @@ process(
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
-    if (total_edges == 0)
-    {
+    if (total_edges == 0) {
         if (start_vidsArr)
             pfree(start_vidsArr);
         if (end_vidsArr)
@@ -110,8 +109,7 @@ process(
     time_msg(" processing pgr_binaryBreadthFirstSearch", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
-    if (err_msg)
-    {
+    if (err_msg) {
         if (*result_tuples)
             pfree(*result_tuples);
     }
@@ -134,8 +132,7 @@ process(
     pgr_SPI_finish();
 }
 
-PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS)
-{
+PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     TupleDesc tuple_desc;
 
@@ -144,8 +141,7 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS)
     size_t result_count = 0;
     /**************************************************************************/
 
-    if (SRF_IS_FIRSTCALL())
-    {
+    if (SRF_IS_FIRSTCALL()) {
         MemoryContext oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
@@ -174,8 +170,7 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS)
         funcctx->max_calls = (uint32_t)result_count;
 #endif
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
-        {
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
@@ -190,8 +185,7 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS)
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (General_path_element_t *)funcctx->user_fctx;
 
-    if (funcctx->call_cntr < funcctx->max_calls)
-    {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;
         Datum result;
         Datum *values;
@@ -214,8 +208,7 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS)
         nulls = palloc(numb * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < numb; ++i)
-        {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
@@ -233,9 +226,7 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS)
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
-    }
-    else
-    {
+    } else {
         /**********************************************************************/
 
         PGR_DBG("Clean up code");

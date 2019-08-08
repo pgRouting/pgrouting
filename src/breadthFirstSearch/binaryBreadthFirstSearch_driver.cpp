@@ -34,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <algorithm>
+#include <string>
+#include <set>
 
 #include "breadthFirstSearch/pgr_binaryBreadthFirstSearch.hpp"
 
@@ -46,7 +48,6 @@ pgr_binaryBreadthFirstSearch(
         G &graph,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets) {
-
     std::sort(sources.begin(), sources.end());
     sources.erase(
             std::unique(sources.begin(), sources.end()),
@@ -66,12 +67,11 @@ pgr_binaryBreadthFirstSearch(
 }
 
 const size_t MAX_UNIQUE_EDGE_COSTS = 2;
-const std::string COST_ERR_MSG = 
-    "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! If there are exactly two distinct edge costs, one of them must equal zero!";
+const char COST_ERR_MSG[] =  "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs!"
+                             "If there are exactly two distinct edge costs, one of them must equal zero!";
 template < class G >
 bool
-costCheck(G &graph) 
-{
+costCheck(G &graph)  {
     typedef typename G::E E;
     typedef typename G::E_i E_i;
 
@@ -81,22 +81,17 @@ costCheck(G &graph)
     E_i out_end;
     std::set<double> cost_set;
     for (boost::tie(out_i, out_end) = edges;
-            out_i != out_end; ++out_i)
-    {
-
+            out_i != out_end; ++out_i) {
         e = *out_i;
         cost_set.insert(graph[e].cost);
 
-        if (cost_set.size() > MAX_UNIQUE_EDGE_COSTS)
-        {
+        if (cost_set.size() > MAX_UNIQUE_EDGE_COSTS) {
             return false;
         }
     }
 
-    if (cost_set.size() == 2)
-    {
-        if (*cost_set.begin() != 0.0)
-        {
+    if (cost_set.size() == 2) {
+        if (*cost_set.begin() != 0.0) {
             return false;
         }
     }
@@ -148,12 +143,11 @@ do_pgr_binaryBreadthFirstSearch(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
 
-            if(!(costCheck(digraph))){
+            if (!(costCheck(digraph))) {
                 err << COST_ERR_MSG;
                 *err_msg = pgr_msg(err.str().c_str());
                 return;
             }
-            
             paths = pgr_binaryBreadthFirstSearch(
                 digraph,
                 start_vertices,
@@ -164,7 +158,7 @@ do_pgr_binaryBreadthFirstSearch(
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
 
-            if(!(costCheck(undigraph))){
+            if (!(costCheck(undigraph))) {
                 err << COST_ERR_MSG;
                 *err_msg = pgr_msg(err.str().c_str());
                 return;
@@ -174,7 +168,6 @@ do_pgr_binaryBreadthFirstSearch(
                 undigraph,
                 start_vertices,
                 end_vertices);
-
         }
 
         size_t count(0);
