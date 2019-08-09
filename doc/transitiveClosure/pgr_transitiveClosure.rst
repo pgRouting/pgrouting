@@ -84,7 +84,7 @@ Column                       Type                Description
 ============================ =================   ===================================================================
 **seq**                      ``INTEGER``         Sequential value starting from **1**.
 **vid**                      ``BIGINT``          Identifier of the vertex. 
-**target_array**             ``ARRAY[BIGINT]``   Array of identifiers of the vertices that are reachable from vertex v.nodes v identifiers.
+**target_array**             ``ARRAY[BIGINT]``   Array of identifiers of the vertices that are reachable from vertex v.
 ============================ =================   ===================================================================
 
 Additional Examples
