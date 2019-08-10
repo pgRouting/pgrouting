@@ -148,7 +148,7 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         // OUT seq INTEGER,
-        // OUT sorted_v INTEGER)
+        // OUT sorted_v BIGINT)
 
         size_t numb = 2;
         values = palloc(numb * sizeof(Datum));
