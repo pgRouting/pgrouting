@@ -1,6 +1,7 @@
 
 SET(LOCAL_FILES
     pgr_bellmanFord.rst
+    pgr_edwardMoore.rst
     )
 
 foreach (f ${LOCAL_FILES})
