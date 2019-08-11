@@ -20,6 +20,15 @@ In particular, the transitive closure algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
+* Version 3.0.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_transitiveClosure.html>`__)
+
 Description
 -------------------------------------------------------------------------------
 
