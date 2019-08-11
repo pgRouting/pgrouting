@@ -18,6 +18,10 @@ In particular, the transitive closure algorithm implemented by Boost.Graph.
 
    Boost Graph Inside
 
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
 .. rubric:: Availability
 
 * Version 3.0.0
