@@ -182,10 +182,12 @@ Return Columns
     :end-before: return_path_end
 
 
-Additional Examples
+Example Data
 -------------------------------------------------------------------------------
 
-This algorithm is best applied when trying to answer queries such as the following:
+This type of data is used on the examples of this page.
+
+Edwards-Moore Algorithm is best applied when trying to answer queries such as the following:
 **“Find the path with the minimum number from Source to Destination”**
 Here:
 * *Source* = Source Vertex, *Destination* =  Any arbitrary destination vertex
