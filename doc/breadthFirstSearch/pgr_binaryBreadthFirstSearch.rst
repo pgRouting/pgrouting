@@ -215,8 +215,8 @@ The queries in the previous sections use the table 'roadworks'.
 The data of the table:
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
-   :start-after: --data
-   :end-before: --q1
+   :start-after: --data-start
+   :end-before: --data-end
 
 See Also
 -------------------------------------------------------------------------------
