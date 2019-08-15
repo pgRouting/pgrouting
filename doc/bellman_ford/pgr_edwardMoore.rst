@@ -10,7 +10,7 @@
 pgr_edwardMoore - Experimental
 ===============================================================================
 
-``pgr_breadthFirstSearch`` —  Returns the shortest path(s) using Edward-Moore algorithm.
+``pgr_edwardMoore`` —  Returns the shortest path(s) using Edward-Moore algorithm.
 Edward Moore’s ​ Algorithm is an improvement of the Bellman-Ford Algorithm.
 
 
