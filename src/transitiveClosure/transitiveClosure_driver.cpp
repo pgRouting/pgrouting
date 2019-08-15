@@ -1,30 +1,23 @@
 /*PGR-GNU*****************************************************************
 File: transitiveClosure_driver.cpp
-
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
-
 Function's developer:
 Copyright (c) 2019 Hang Wu
 mail: nike0good@gmail.com
-
 ------
-
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
-
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
-
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
  ********************************************************************PGR-GNU*/
 
 #include "drivers/transitiveClosure/transitiveClosure_driver.h"
@@ -33,75 +26,64 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <algorithm>
 
 #include "transitiveClosure/pgr_transitiveClosure.hpp"
 
+#include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/pgr_base_graph.hpp"
 
 
 
-template <typename G>
-static void process_transitiveClosure(
-        G &graph,
-        const std::vector< pgr_edge_t > &edges,
-        std::ostringstream &log,
-        std::ostringstream &err) {
-    graph.insert_edges(edges);
-
-    /*
-     * Function call to get the contracted graph.
-     */
-    pgrouting::ransitiveClosure::Pgr_transitiveClosure<G> result(graph,
-            remaining_vertices,
-            shortcut_edges, log);
+template < class G >
+static
+boost::adjacency_list <>
+pgr_transitiveClosure(
+        G &graph) {
+    Pgr_transitiveClosure< G > fn_transitiveClosure;
+    return fn_transitiveClosure.transitiveClosure(graph);
 }
+
 
 template <typename G>
 static
 void get_postgres_result(
         G &graph,
-        const Identifiers<int64_t> remaining_vertices,
-        const std::vector< pgrouting::CH_edge > &shortcut_edges,
-        contracted_rt **return_tuples) {
-    (*return_tuples) = pgr_alloc(
-            remaining_vertices.size() + shortcut_edges.size(),
-            (*return_tuples));
-
+        transitiveClosure_rt **return_tuples,
+        size_t *count) {
+    boost::adjacency_list <> TC;
+    TC = pgr_transitiveClosure(graph);
+    (*count) = boost::num_vertices(TC);
+    (*return_tuples) = pgr_alloc((*count), (*return_tuples));
     size_t sequence = 0;
+    boost::graph_traits < boost::adjacency_list <> >::vertex_iterator i, end;
+    boost::graph_traits < boost::adjacency_list <> >::adjacency_iterator ai, a_end;
+    int ii = 1;
+    for (boost::tie(i, end) = boost::vertices(TC); i != end; ++i) {
+            auto u = *i;
+            int64_t* target_array = NULL;
+            int64_t uid = graph.graph[u].id;
+            boost::tie(ai, a_end) = adjacent_vertices(*i, TC);
+            auto adj_siz = a_end - ai;
+            target_array = pgr_alloc(adj_siz , target_array);
+            int count = 0;
+            for (; ai != a_end; ++ai) {
+                auto v = *ai;
+                int64_t vid = graph.graph[v].id;
+                target_array[count++] = vid;
+            }
 
-    for (auto id : remaining_vertices) {
-        int64_t* contracted_vertices = NULL;
-        auto ids = graph.get_contracted_vertices(id);
-        contracted_vertices = pgr_alloc(
-                   ids.size(), contracted_vertices);
-        int count = 0;
-        for (const auto id : ids) {
-            contracted_vertices[count++] = id;
-        }
-        (*return_tuples)[sequence] = {id, const_cast<char*>("v"), -1, -1, -1.00,
-            contracted_vertices, count};
+        (*return_tuples)[sequence] = {
+            ii++,
+            uid,
+            target_array,
+            count};
 
-        ++sequence;
-    }
-
-    for (auto edge : shortcut_edges) {
-        int64_t* contracted_vertices = NULL;
-        auto ids = graph.get_ids(edge.contracted_vertices());
-
-        contracted_vertices = pgr_alloc(
-                   ids.size(), contracted_vertices);
-        int count = 0;
-        for (const auto id : ids) {
-            contracted_vertices[count++] = id;
-        }
-        (*return_tuples)[sequence] = {edge.id, const_cast<char*>("e"),
-            edge.source, edge.target, edge.cost,
-            contracted_vertices, count};
-
-        ++sequence;
+         ++sequence;
     }
 }
-
 
 
 
@@ -109,10 +91,10 @@ void get_postgres_result(
   edges_sql TEXT
  ***********************************************************/
 void
-do_pgr_contractGraph(
+do_pgr_transitiveClosure(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        contracted_rt **return_tuples,
+        transitiveClosure_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
@@ -134,54 +116,14 @@ do_pgr_contractGraph(
         std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
 
 
-        /*
-         * Extracting vertices of the graph
-         */
-        Identifiers<int64_t> remaining_vertices;
-        std::vector< pgrouting::CH_edge > shortcut_edges;
-
-#ifndef NDEBUG
-        log << "Original Graph: \n" <<
-            std::setprecision(32);
-        for (const auto edge : edges) {
-            log << "id = " << edge.id
-                << "\tsource = " << edge.source
-                << "\ttarget = " << edge.target
-                << "\tcost = " << edge.cost
-                << "\treverse_cost = " << edge.reverse_cost
-                << ")\n";
-        }
-        log << "size_contraction_order " << ordering.size() << "\n";
-        log << "contraction_order: " <<"{ ";
-        for (const auto o : ordering) {
-            log << o << ", ";
-        }
-        log << " }\n";
-
-        log << "size_forbidden_vertices " << forbid.size() << "\n";
-        log << "forbidden_vertices" << "{ ";
-        for (const auto vertex : forbid) {
-            log << vertex << ", ";
-        }
-        log << " }\n";
-        log << "max_cycles " << max_cycles << "\n";
-        log << "directed " << directed << "\n";
-#endif
-
         graphType gType = DIRECTED;
-        log << "Working with directed Graph\n";
-        pgrouting::CHDirectedGraph digraph(gType);
-
-        process_transitiveClosure(digraph, edges,
-                log, err);
-
+        pgrouting::DirectedGraph digraph(gType);
+        digraph.insert_edges(data_edges, total_edges);
+        
         get_postgres_result(
                 digraph,
-                return_tuples);
-
-
-        (*return_count) = remaining_vertices.size()+shortcut_edges.size();
-
+                return_tuples,
+                return_count);
 
         *log_msg = log.str().empty()?
             *log_msg :

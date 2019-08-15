@@ -24,6 +24,15 @@ In particular, the topological sort algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
+* Version 3.0.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_topologicalSort.html>`__)
+
 * **TBD**
 
 Description
@@ -35,8 +44,7 @@ in the graph, then v comes before u in the ordering.
 This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph. 
 
 The main characteristics are:
-  - Process is valid for weighted directed acyclic graphs only. otherwise it will throw warnings.
-  - Values are returned when there is a path.
+  - Process is valid for directed acyclic graphs only. otherwise it will throw warnings.
 
   - For optimization purposes, if there are more than one answer, the function will return one of them.
   
@@ -57,22 +65,11 @@ Signatures
     RETURNS SET OF (seq, sorted_v)
     OR EMPTY SET
 
-
-.. index::
-    single: topologicalSort(One to One) - Experimental
-
-One to One
-...............................................................................
-
-.. code-block:: none
-
-    pgr_dagShortestPath(edges_sql)
-    RETURNS SET OF (seq, sorted_v) 
-    OR EMPTY SET
-
-:Example: From vertex :math:`1` to vertex :math:`6` 
+:Example: For a **directed** graph
 
 .. literalinclude:: doc-pgr_topologicalSort.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
 Parameters
 -------------------------------------------------------------------------------

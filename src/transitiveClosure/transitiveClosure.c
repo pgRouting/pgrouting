@@ -46,8 +46,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 #include "drivers/transitiveClosure/transitiveClosure_driver.h"
 
-PGDLLEXPORT Datum transitiveClosure(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(transitiveClosure);
+PGDLLEXPORT Datum _pgr_transitiveclosure(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_transitiveclosure);
 
 
 static
@@ -57,7 +57,6 @@ process(char* edges_sql,
         transitiveClosure_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
-
 
     size_t total_edges = 0;
     pgr_edge_t* edges = NULL;
@@ -95,13 +94,11 @@ process(char* edges_sql,
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
     if (edges) pfree(edges);
-    if (forbidden_vertices) pfree(forbidden_vertices);
-    if (contraction_order) pfree(contraction_order);
     pgr_SPI_finish();
 }
 
 PGDLLEXPORT Datum
-transitiveClosure(PG_FUNCTION_ARGS) {
+_pgr_transitiveclosure(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
@@ -211,7 +208,7 @@ transitiveClosure(PG_FUNCTION_ARGS) {
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
         values[2] = PointerGetDatum(arrayType);
-        
+
         /*********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
