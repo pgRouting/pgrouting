@@ -49,9 +49,6 @@ Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Gudesa Venkata Sai Akhil, Hang Wu, Virginia Vergara
-=======
-Gudesa Venkata Sai Akhil, Virginia Vergara
->>>>>>> [doc] Fixed minor type in pgRouting-introduction.rst
 
 And all the people that give us a little of their time making comments, finding issues, making pull requests etc.
 
