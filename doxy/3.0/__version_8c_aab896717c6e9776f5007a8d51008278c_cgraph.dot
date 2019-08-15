@@ -1,0 +1,12 @@
+digraph "_pgr_git_hash"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node40 [label="_pgr_git_hash",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node40 -> Node41 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node41 [label="_pgr_lib_version",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$__version_8c.html#ac6c0aee50e512fe1b45357e08d68dfc4"];
+  Node41 -> Node42 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node42 [label="PG_FUNCTION_INFO_V1",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$__version_8c.html#ae1dda247b26ab9bba7d2f3331121f03f"];
+  Node40 -> Node42 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

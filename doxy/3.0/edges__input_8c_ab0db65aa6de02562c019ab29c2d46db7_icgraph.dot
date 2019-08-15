@@ -3,11 +3,11 @@ digraph "get_edges_5_columns"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node69 [label="get_edges_5_columns",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node69 -> Node70 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node70 [label="pgr_get_edges",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8h.html#af663e291b6bdfe777789be38b6bfcf76",tooltip="basic edge_sql "];
-  Node69 -> Node77 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node77 [label="pgr_get_edges_no_id",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8h.html#a723146f18c61ddd20c6574265e7bbb9e",tooltip="edges_sql without id parameter "];
-  Node69 -> Node80 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node80 [label="pgr_get_edges_reversed",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8h.html#a8b346503f2203a8bcda59fe43298ef9a"];
+  Node68 [label="get_edges_5_columns",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node68 -> Node69 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node69 [label="pgr_get_edges",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8h.html#af663e291b6bdfe777789be38b6bfcf76",tooltip="basic edge_sql "];
+  Node68 -> Node76 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node76 [label="pgr_get_edges_no_id",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8h.html#a723146f18c61ddd20c6574265e7bbb9e",tooltip="edges_sql without id parameter "];
+  Node68 -> Node79 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node79 [label="pgr_get_edges_reversed",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8h.html#a8b346503f2203a8bcda59fe43298ef9a"];
 }

@@ -3,7 +3,7 @@ digraph "pgrouting::graph::Pgr_base_graph::insert_negative_edges"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node169 [label="pgrouting::graph::Pgr\l_base_graph::insert_negative_edges",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node169 -> Node170 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node170 [label="do_pgr_bellman_ford_neg",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$bellman__ford__neg__driver_8h.html#ad2e8ba9a3b8e851eddb877d124d4c44c"];
+  Node175 [label="pgrouting::graph::Pgr\l_base_graph::insert_negative_edges",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node175 -> Node176 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node176 [label="do_pgr_bellman_ford_neg",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$bellman__ford__neg__driver_8h.html#ad2e8ba9a3b8e851eddb877d124d4c44c"];
 }

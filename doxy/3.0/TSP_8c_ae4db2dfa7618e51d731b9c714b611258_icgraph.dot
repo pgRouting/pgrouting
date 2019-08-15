@@ -5,6 +5,6 @@ digraph "process"
   rankdir="LR";
   Node98 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node98 -> Node99 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node99 [label="newTSP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$TSP_8c.html#a828abbb0dd60d155e407b9c264994cf1"];
+  Node99 [label="_pgr_tsp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$TSP_8c.html#ac74933e35014eb00b3948a6b15a5b38c"];
   Node99 -> Node98 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

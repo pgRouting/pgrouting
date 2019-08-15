@@ -5,5 +5,5 @@
 <area shape="rect" id="node7" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="581,87,739,114"/>
 <area shape="rect" id="node8" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="764,87,935,114"/>
 <area shape="rect" id="node9" href="$arrays__input_8h.html" title="c_common/arrays_input.h" alt="" coords="959,87,1131,114"/>
-<area shape="rect" id="node10" href="$minCostMaxFlow__driver_8h.html" title="drivers/costFlow/minCost\lMaxFlow_driver.h" alt="" coords="1156,80,1327,121"/>
+<area shape="rect" id="node10" href="$minCostMaxFlow__driver_8h.html" title="drivers/max_flow/minCost\lMaxFlow_driver.h" alt="" coords="1155,80,1330,121"/>
 </map>

@@ -1,8 +1,7 @@
 <map id="do_alphaShape" name="do_alphaShape">
-<area shape="rect" id="node2" href="$alphaShape_8c.html#a0234ebd01f295103ae2366338b035267" title="alphaShape" alt="" coords="200,5,291,32"/>
-<area shape="rect" id="node3" href="$namespaceanonymous__namespace_02alphaShape__driver_8cpp_03.html#a2f3e606828190b53ae873feba19b3993" title="anonymous_namespace\l\{alphaShape_driver::\lcpp\}::data_eq" alt="" coords="164,56,327,112"/>
-<area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="375,187,449,213"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="211,187,280,213"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="209,237,281,264"/>
-<area shape="rect" id="node7" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="169,289,322,330"/>
+<area shape="rect" id="node2" href="$namespaceanonymous__namespace_02alphaShape__driver_8cpp_03.html#a2f3e606828190b53ae873feba19b3993" title="anonymous_namespace\l\{alphaShape_driver::\lcpp\}::data_eq" alt="" coords="164,5,327,61"/>
+<area shape="rect" id="node3" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="375,136,449,163"/>
+<area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="211,136,280,163"/>
+<area shape="rect" id="node5" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="209,187,281,213"/>
+<area shape="rect" id="node6" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="169,238,322,279"/>
 </map>

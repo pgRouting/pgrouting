@@ -1,0 +1,27 @@
+digraph "PG_FUNCTION_INFO_V1"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node80 [label="PG_FUNCTION_INFO_V1",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node80 -> Node81 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node81 [label="_pgr_boost_version",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$__version_8c.html#a70b5d3314587f7a847186851bb373a64"];
+  Node80 -> Node82 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node82 [label="_pgr_build_type",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$__version_8c.html#aaac5c27c250f86b60b2db048a49e5e54"];
+  Node82 -> Node81 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node80 -> Node83 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node83 [label="_pgr_compilation_date",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$__version_8c.html#a36b9a2efdbcf56be2a28e4e493727697"];
+  Node83 -> Node82 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node80 -> Node84 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node84 [label="_pgr_compiler_version",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$__version_8c.html#aedbf88b79d861d9cca49480bf92e1f3f"];
+  Node84 -> Node83 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node80 -> Node85 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node85 [label="_pgr_git_hash",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$__version_8c.html#aab896717c6e9776f5007a8d51008278c"];
+  Node85 -> Node84 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node80 -> Node86 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node86 [label="_pgr_lib_version",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$__version_8c.html#ac6c0aee50e512fe1b45357e08d68dfc4"];
+  Node86 -> Node85 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node80 -> Node87 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node87 [label="_pgr_operating_system",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$__version_8c.html#afdfa69b9c1358add04bffb78eb092786"];
+  Node87 -> Node86 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

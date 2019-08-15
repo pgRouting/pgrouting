@@ -4,7 +4,6 @@ var searchData=
   ['name',['name',['../structColumn__info__t.html#ac166599b0a83f7da1a40e75cc1a955b9',1,'Column_info_t']]],
   ['new_5fedges',['new_edges',['../classpgrouting_1_1Pg__points__graph.html#abf6539687ac0b200502ff4d9a064f161',1,'pgrouting::Pg_points_graph']]],
   ['new_5ftrsp_2ec',['new_trsp.c',['../new__trsp_8c.html',1,'']]],
-  ['newtsp',['newTSP',['../TSP_8c.html#a828abbb0dd60d155e407b9c264994cf1',1,'TSP.c']]],
   ['no_5fneg_5fcosts',['no_neg_costs',['../classpgrouting_1_1functions_1_1Pgr__mst.html#a88e0bf30eb3c29af63b4cbde014c07b0',1,'pgrouting::functions::Pgr_mst']]],
   ['no_5forder',['no_order',['../classpgrouting_1_1functions_1_1Pgr__mst.html#a538c68c28266cb830f2c7f2dc9f310f0',1,'pgrouting::functions::Pgr_mst']]],
   ['no_5fordering',['no_ordering',['../classpgrouting_1_1functions_1_1Pgr__mst.html#aa6482247a2bc131a40bebff27fb7881d',1,'pgrouting::functions::Pgr_mst']]],

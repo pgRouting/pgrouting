@@ -3,7 +3,7 @@ digraph "pgr_get_costFlow_edges"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node198 [label="pgr_get_costFlow_edges",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node198 -> Node199 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node199 [label="process",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$minCostMaxFlow_8c.html#a7fe1c6d99b95e5d7d7119759ce62aae9"];
+  Node196 [label="pgr_get_costFlow_edges",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node196 -> Node197 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node197 [label="process",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$minCostMaxFlow_8c.html#a7fe1c6d99b95e5d7d7119759ce62aae9"];
 }

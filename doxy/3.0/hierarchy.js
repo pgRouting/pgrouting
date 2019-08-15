@@ -75,6 +75,9 @@ var hierarchy =
     [ "pgr_randomSpanningTree_t", "structpgr__randomSpanningTree__t.html", null ],
     [ "Pgr_stoerWagner< G >", "classPgr__stoerWagner.html", null ],
     [ "pgr_stoerWagner_t", "structpgr__stoerWagner__t.html", null ],
+    [ "Pgr_topologicalSort< G >", "classPgr__topologicalSort.html", null ],
+    [ "pgr_topologicalSort_t", "structpgr__topologicalSort__t.html", null ],
+    [ "Pgr_transitiveClosure< G >", "classPgr__transitiveClosure.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >", "classpgrouting_1_1algorithms_1_1Pgr__astar.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >::found_goals", "structpgrouting_1_1algorithms_1_1Pgr__astar_1_1found__goals.html", null ],
     [ "pgrouting::alphashape::anonymous_namespace{pgr_alphaShape.cpp}::CompareRadius", "structpgrouting_1_1alphashape_1_1anonymous__namespace_02pgr__alphaShape_8cpp_03_1_1CompareRadius.html", null ],
@@ -169,5 +172,6 @@ var hierarchy =
       [ "AssertFailedException", "classAssertFailedException.html", null ],
       [ "UserQuitException", "classUserQuitException.html", null ]
     ] ],
+    [ "transitiveClosure_rt", "structtransitiveClosure__rt.html", null ],
     [ "Vehicle_t", "structVehicle__t.html", null ]
 ];

@@ -5,5 +5,5 @@ digraph "process"
   rankdir="LR";
   Node78 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node78 -> Node79 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node79 [label="driving_many_to_dist",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$many__to__dist__driving__distance_8c.html#aa06bcbb9f84b2c97db4ff61efb2851f0"];
+  Node79 [label="_pgr_drivingdistance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$many__to__dist__driving__distance_8c.html#a64a80599a863c1d7551534b2286ea66a"];
 }

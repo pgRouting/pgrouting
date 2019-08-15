@@ -73,13 +73,17 @@ digraph "AssertFailedException::what"
   Node5 -> Node105 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node105 [label="do_pgr_strongComponents",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$strongComponents__driver_8h.html#a7f9041dbe45b9f72d7a42e6ed3a311ac"];
   Node5 -> Node108 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node108 [label="do_pgr_tsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$TSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29"];
+  Node108 [label="do_pgr_topologicalSort",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$topologicalSort__driver_8h.html#a7c8b7b11a3fd2ff2f5817abd91c766ab"];
   Node5 -> Node111 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node111 [label="do_pgr_turnRestrictedPath",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11"];
+  Node111 [label="do_pgr_transitiveClosure",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$transitiveClosure__driver_8h.html#a950595aea01b46e10ba69e670896af32"];
   Node5 -> Node114 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node114 [label="do_pgr_withPoints",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd"];
+  Node114 [label="do_pgr_tsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$TSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29"];
   Node5 -> Node117 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node117 [label="do_pgr_withPointsKsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a"];
+  Node117 [label="do_pgr_turnRestrictedPath",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11"];
   Node5 -> Node120 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node120 [label="do_trsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c"];
+  Node120 [label="do_pgr_withPoints",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd"];
+  Node5 -> Node123 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node123 [label="do_pgr_withPointsKsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a"];
+  Node5 -> Node126 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node126 [label="do_trsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c"];
 }

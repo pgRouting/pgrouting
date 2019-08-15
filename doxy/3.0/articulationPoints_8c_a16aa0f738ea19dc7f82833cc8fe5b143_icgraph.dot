@@ -5,5 +5,5 @@ digraph "process"
   rankdir="LR";
   Node66 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node66 -> Node67 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node67 [label="articulationPoints",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$articulationPoints_8c.html#a949aadbd044600898b8d57d7fb780591"];
+  Node67 [label="_pgr_articulationpoints",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$articulationPoints_8c.html#ac5545cf15ed05e83e1c4903aea5215d6"];
 }

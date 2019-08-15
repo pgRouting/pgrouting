@@ -1,0 +1,12 @@
+digraph "_pgr_build_type"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node10 [label="_pgr_build_type",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="_pgr_compilation_date",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$__version_8c.html#a36b9a2efdbcf56be2a28e4e493727697"];
+  Node11 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="PG_FUNCTION_INFO_V1",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$__version_8c.html#ae1dda247b26ab9bba7d2f3331121f03f"];
+  Node10 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

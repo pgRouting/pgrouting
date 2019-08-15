@@ -5,5 +5,5 @@ digraph "process"
   rankdir="LR";
   Node96 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node96 -> Node97 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node97 [label="bdDijkstra",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bdDijkstra_8c.html#a15c450e8b0f1fc7425706793227c48a5"];
+  Node97 [label="_pgr_bddijkstra",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bdDijkstra_8c.html#a8a57f139928f43b1bf690c91dbbfe8c8"];
 }

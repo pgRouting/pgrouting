@@ -5,5 +5,5 @@ digraph "process"
   rankdir="LR";
   Node80 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node80 -> Node81 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node81 [label="bellman_ford_neg",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bellman__ford__neg_8c.html#ae118dd73b7882364887c8b11b1196921"];
+  Node81 [label="_pgr_bellmanfordneg",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bellman__ford__neg_8c.html#ae3ac23239462a2ecaf7b39b7909ae477"];
 }

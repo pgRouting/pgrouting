@@ -5,12 +5,12 @@ digraph "process"
   rankdir="LR";
   Node53 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node53 -> Node54 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node54 [label="do_pgr_euclideanTSP",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$euclideanTSP__driver_8cpp.html#a7bcb54c40fcf199d7554ca10834fcb7b"];
-  Node53 -> Node80 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node80 [label="euclideanTSP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$euclideanTSP_8c.html#a59fbf90d46b035ee6fccffee861ff249"];
-  Node80 -> Node53 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node54 [label="_pgr_tspeuclidean",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$euclideanTSP_8c.html#a855d252f6bdcf6df5159d745f5ad0fef"];
+  Node54 -> Node53 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node53 -> Node55 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node55 [label="do_pgr_euclideanTSP",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$euclideanTSP__driver_8cpp.html#a7bcb54c40fcf199d7554ca10834fcb7b"];
   Node53 -> Node81 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node81 [label="PG_FUNCTION_INFO_V1",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$euclideanTSP_8c.html#ad07381b7ffd9b8f763188c91d89369a6"];
+  Node81 [label="PG_FUNCTION_INFO_V1",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$euclideanTSP_8c.html#acb3310b5c971a4d5b9eeb6169ee77d52"];
   Node53 -> Node82 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node82 [label="pgr_get_coordinates",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$coordinates__input_8c.html#a54deb1af794ff39f4589ca73b610b6d5",tooltip="bigint id, float x, float y, "];
   Node82 -> Node96 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

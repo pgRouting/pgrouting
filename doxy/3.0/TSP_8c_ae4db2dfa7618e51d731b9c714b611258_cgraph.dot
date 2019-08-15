@@ -5,12 +5,12 @@ digraph "process"
   rankdir="LR";
   Node52 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node52 -> Node53 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node53 [label="do_pgr_tsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$TSP__driver_8cpp.html#ae0f1d6878e76cba54bef84dbeba94973"];
-  Node52 -> Node78 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node78 [label="newTSP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$TSP_8c.html#a828abbb0dd60d155e407b9c264994cf1"];
-  Node78 -> Node52 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node53 [label="_pgr_tsp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$TSP_8c.html#ac74933e35014eb00b3948a6b15a5b38c"];
+  Node53 -> Node52 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node52 -> Node54 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node54 [label="do_pgr_tsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$TSP__driver_8cpp.html#ae0f1d6878e76cba54bef84dbeba94973"];
   Node52 -> Node79 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node79 [label="PG_FUNCTION_INFO_V1",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$TSP_8c.html#ada0a40596419a2d5ca75e8a0c5e4abc9"];
+  Node79 [label="PG_FUNCTION_INFO_V1",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$TSP_8c.html#a2bbe0f331bfa8a363589dbad6e3d89aa"];
   Node52 -> Node80 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node80 [label="pgr_get_matrixRows",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$matrixRows__input_8c.html#ae90bc21303e611d25fabb5a2b629c199",tooltip="bigint start_vid, bigint end_vid, float agg_cost, "];
   Node80 -> Node94 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

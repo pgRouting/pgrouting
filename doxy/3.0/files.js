@@ -1,5 +1,7 @@
 var files =
 [
+    [ "_version.c", "__version_8c.html", "__version_8c" ],
+    [ "_version.h", "__version_8h.html", "__version_8h" ],
     [ "alphaShape.c", "alphaShape_8c.html", "alphaShape_8c" ],
     [ "alphaShape_driver.cpp", "alphaShape__driver_8cpp.html", "alphaShape__driver_8cpp" ],
     [ "alphaShape_driver.h", "alphaShape__driver_8h.html", "alphaShape__driver_8h" ],
@@ -379,6 +381,17 @@ var files =
     [ "pgr_stoerWagner_t.h", "pgr__stoerWagner__t_8h.html", [
       [ "pgr_stoerWagner_t", "structpgr__stoerWagner__t.html", "structpgr__stoerWagner__t" ]
     ] ],
+    [ "pgr_topologicalSort.hpp", "pgr__topologicalSort_8hpp.html", [
+      [ "Pgr_topologicalSort", "classPgr__topologicalSort.html", "classPgr__topologicalSort" ],
+      [ "Pgr_topologicalSort", "classPgr__topologicalSort.html", "classPgr__topologicalSort" ]
+    ] ],
+    [ "pgr_topologicalSort_t.h", "pgr__topologicalSort__t_8h.html", [
+      [ "pgr_topologicalSort_t", "structpgr__topologicalSort__t.html", "structpgr__topologicalSort__t" ]
+    ] ],
+    [ "pgr_transitiveClosure.hpp", "pgr__transitiveClosure_8hpp.html", [
+      [ "Pgr_transitiveClosure", "classPgr__transitiveClosure.html", "classPgr__transitiveClosure" ],
+      [ "Pgr_transitiveClosure", "classPgr__transitiveClosure.html", "classPgr__transitiveClosure" ]
+    ] ],
     [ "pgr_trspHandler.cpp", "pgr__trspHandler_8cpp.html", null ],
     [ "pgr_trspHandler.h", "pgr__trspHandler_8h.html", [
       [ "Pgr_trspHandler", "classpgrouting_1_1trsp_1_1Pgr__trspHandler.html", "classpgrouting_1_1trsp_1_1Pgr__trspHandler" ],
@@ -448,9 +461,18 @@ var files =
     [ "strongComponents_driver.h", "strongComponents__driver_8h.html", "strongComponents__driver_8h" ],
     [ "time_msg.c", "time__msg_8c.html", "time__msg_8c" ],
     [ "time_msg.h", "time__msg_8h.html", "time__msg_8h" ],
+    [ "topologicalSort.c", "topologicalSort_8c.html", "topologicalSort_8c" ],
+    [ "topologicalSort_driver.cpp", "topologicalSort__driver_8cpp.html", "topologicalSort__driver_8cpp" ],
+    [ "topologicalSort_driver.h", "topologicalSort__driver_8h.html", "topologicalSort__driver_8h" ],
     [ "tour.cpp", "tour_8cpp.html", "tour_8cpp" ],
     [ "tour.h", "tour_8h.html", [
       [ "Tour", "classpgrouting_1_1tsp_1_1Tour.html", "classpgrouting_1_1tsp_1_1Tour" ]
+    ] ],
+    [ "transitiveClosure.c", "transitiveClosure_8c.html", "transitiveClosure_8c" ],
+    [ "transitiveClosure_driver.cpp", "transitiveClosure__driver_8cpp.html", "transitiveClosure__driver_8cpp" ],
+    [ "transitiveClosure_driver.h", "transitiveClosure__driver_8h.html", "transitiveClosure__driver_8h" ],
+    [ "transitiveClosure_rt.h", "transitiveClosure__rt_8h.html", [
+      [ "transitiveClosure_rt", "structtransitiveClosure__rt.html", "structtransitiveClosure__rt" ]
     ] ],
     [ "trsp.c", "trsp_8c.html", "trsp_8c" ],
     [ "trsp.h", "trsp_8h.html", "trsp_8h" ],
@@ -485,6 +507,7 @@ var files =
     ] ],
     [ "vehicles_input.c", "vehicles__input_8c.html", "vehicles__input_8c" ],
     [ "vehicles_input.h", "vehicles__input_8h.html", "vehicles__input_8h" ],
+    [ "version.c", "version_8c.html", "version_8c" ],
     [ "withPoints.c", "withPoints_8c.html", "withPoints_8c" ],
     [ "withPoints_dd_driver.cpp", "withPoints__dd__driver_8cpp.html", "withPoints__dd__driver_8cpp" ],
     [ "withPoints_dd_driver.h", "withPoints__dd__driver_8h.html", "withPoints__dd__driver_8h" ],

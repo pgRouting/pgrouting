@@ -16,7 +16,7 @@ digraph "pgr_minCostMaxFlow.hpp"
   Node0 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 [label="limits",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node0 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="costFlow/pgr_costFlowGraph.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__costFlowGraph_8hpp.html"];
+  Node7 [label="max_flow/pgr_costFlowGraph.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__costFlowGraph_8hpp.html"];
   Node0 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node10 [label="boost/successive_shortest\l_path_nonnegative_weights.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node0 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

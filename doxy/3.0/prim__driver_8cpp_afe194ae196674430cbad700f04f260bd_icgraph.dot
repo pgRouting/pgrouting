@@ -3,7 +3,7 @@ digraph "do_pgr_prim"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node55 [label="do_pgr_prim",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node55 -> Node56 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node56 [label="process",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$prim_8c.html#ac182b213958717758b28c33d5277822c"];
+  Node31 [label="do_pgr_prim",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node31 -> Node32 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node32 [label="process",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$prim_8c.html#ac182b213958717758b28c33d5277822c"];
 }

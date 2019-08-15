@@ -1,6 +1,6 @@
 var prim_8c =
 [
-    [ "PG_FUNCTION_INFO_V1", "prim_8c.html#a9b1754507dcc0b2ad7fdcf6079648be4", null ],
-    [ "prim", "prim_8c.html#aa7d8aaafc3d67bc89de8898b87ee9d84", null ],
+    [ "_pgr_prim", "prim_8c.html#afde6bb28471c94455fc9b9b431847087", null ],
+    [ "PG_FUNCTION_INFO_V1", "prim_8c.html#a8d0388742f1ecea5171d419e97c922b7", null ],
     [ "process", "prim_8c.html#ac182b213958717758b28c33d5277822c", null ]
 ];

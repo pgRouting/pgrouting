@@ -3,9 +3,9 @@ digraph "pgrouting::yen::Pgr_turnRestrictedPath::get_results"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node147 [label="pgrouting::yen::Pgr\l_turnRestrictedPath\l::get_results",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node147 -> Node148 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node148 [label="Path::countInfinityCost",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#ad61a1c96149ce7b7f6ccd696a346bbc3"];
-  Node147 -> Node149 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node149 [label="pgrouting::yen::Pgr\l_turnRestrictedPath\l::inf_cost_on_restriction",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1yen_1_1Pgr__turnRestrictedPath.html#a80314d26e09b58326cd260cce90fc953",tooltip="sets an inf value on agg_cost on the vertex/edge where the restriction begins "];
+  Node162 [label="pgrouting::yen::Pgr\l_turnRestrictedPath\l::get_results",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node162 -> Node163 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node163 [label="Path::countInfinityCost",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#ad61a1c96149ce7b7f6ccd696a346bbc3"];
+  Node162 -> Node164 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node164 [label="pgrouting::yen::Pgr\l_turnRestrictedPath\l::inf_cost_on_restriction",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1yen_1_1Pgr__turnRestrictedPath.html#a80314d26e09b58326cd260cce90fc953",tooltip="sets an inf value on agg_cost on the vertex/edge where the restriction begins "];
 }

@@ -1,6 +1,6 @@
 var pickDeliver_8c =
 [
-    [ "PG_FUNCTION_INFO_V1", "pickDeliver_8c.html#a76a2713722711aef10337e21fc50871d", null ],
-    [ "pickDeliver", "pickDeliver_8c.html#a7a053147dbbef85c2a19449d5300b785", null ],
+    [ "_pgr_pickdeliver", "pickDeliver_8c.html#ab37466b1a0a77566abb08a540081352f", null ],
+    [ "PG_FUNCTION_INFO_V1", "pickDeliver_8c.html#a0b3813800ecdfdde1597f73029aa5e2f", null ],
     [ "process", "pickDeliver_8c.html#a5983f32ed1c167732c4ace2700705810", null ]
 ];

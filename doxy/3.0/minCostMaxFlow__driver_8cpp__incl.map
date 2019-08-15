@@ -1,6 +1,6 @@
 <map id="minCostMaxFlow_driver.cpp" name="minCostMaxFlow_driver.cpp">
-<area shape="rect" id="node2" href="$minCostMaxFlow__driver_8h.html" title="drivers/costFlow/minCost\lMaxFlow_driver.h" alt="" coords="5,80,176,121"/>
-<area shape="rect" id="node7" href="$pgr__minCostMaxFlow_8hpp.html" title="costFlow/pgr_minCostMaxFlow.hpp" alt="" coords="427,87,658,114"/>
-<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="733,87,915,114"/>
-<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="939,87,1115,114"/>
+<area shape="rect" id="node2" href="$minCostMaxFlow__driver_8h.html" title="drivers/max_flow/minCost\lMaxFlow_driver.h" alt="" coords="5,80,180,121"/>
+<area shape="rect" id="node7" href="$pgr__minCostMaxFlow_8hpp.html" title="max_flow/pgr_minCostMaxFlow.hpp" alt="" coords="431,87,666,114"/>
+<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="741,87,922,114"/>
+<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="946,87,1122,114"/>
 </map>

@@ -1,6 +1,6 @@
 var many__to__dist__driving__distance_8c =
 [
-    [ "driving_many_to_dist", "many__to__dist__driving__distance_8c.html#aa06bcbb9f84b2c97db4ff61efb2851f0", null ],
-    [ "PG_FUNCTION_INFO_V1", "many__to__dist__driving__distance_8c.html#a58c5ee7d9291207074640cb7044a53cb", null ],
+    [ "_pgr_drivingdistance", "many__to__dist__driving__distance_8c.html#a64a80599a863c1d7551534b2286ea66a", null ],
+    [ "PG_FUNCTION_INFO_V1", "many__to__dist__driving__distance_8c.html#a9392a610a1bc4c75a909331e17074456", null ],
     [ "process", "many__to__dist__driving__distance_8c.html#a6a7f016973820d0c041c43d2e97edd1a", null ]
 ];

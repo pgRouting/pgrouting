@@ -5,7 +5,7 @@ digraph "pred"
   rankdir="LR";
   Node1 [label="pred",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="pgrouting::Pgr_dijkstra\l::drivingDistance_with\l_equicost",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pgr__dijkstra.html#a6f64fb0dcca638ee7995f6522d5ecf8d"];
+  Node2 [label="pgrouting::Pgr_dijkstra\l::drivingDistance_with\l_equicost",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pgr__dijkstra.html#a34494aafd83229a152a950079abb56df"];
   Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="pgrouting::Pgr_dijkstra\l::get_drivingDistance\l_with_equicost_paths",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pgr__dijkstra.html#a83ab7d02a7ef5ab2f5aa6b95d28627ea",tooltip="gets results in form of a container of paths "];
   Node4 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

@@ -28,14 +28,15 @@
 <area shape="rect" id="node28" href="$randomSpanningTree__driver_8h.html#aff2fec7737d2fae3f0248be44bbbb4f8" title="do_pgr_randomSpanningTree" alt="" coords="364,1387,555,1413"/>
 <area shape="rect" id="node29" href="$stoerWagner__driver_8h.html#ace6dcba77f5caac0c1bf464c0d5d6060" title="do_pgr_stoerWagner" alt="" coords="388,1437,531,1464"/>
 <area shape="rect" id="node30" href="$strongComponents__driver_8h.html#a7f9041dbe45b9f72d7a42e6ed3a311ac" title="do_pgr_strongComponents" alt="" coords="370,1488,549,1515"/>
-<area shape="rect" id="node31" href="$TSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29" title="do_pgr_tsp" alt="" coords="416,1539,503,1565"/>
-<area shape="rect" id="node32" href="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11" title="do_pgr_turnRestrictedPath" alt="" coords="371,1589,548,1616"/>
-<area shape="rect" id="node33" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="395,1640,524,1667"/>
-<area shape="rect" id="node34" href="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a" title="do_pgr_withPointsKsp" alt="" coords="383,1691,535,1717"/>
-<area shape="rect" id="node35" href="$trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c" title="do_trsp" alt="" coords="427,1741,492,1768"/>
-<area shape="rect" id="node36" href="$lineGraph__driver_8cpp.html#a6f7c6b35f9831bd5250675dbabf08921" title="get_postgres_result" alt="" coords="149,1784,285,1811"/>
-<area shape="rect" id="node37" href="$namespaceanonymous__namespace_02contractGraph__driver_8cpp_03.html#ab9b58b9dcbddf1d9d4f505f18e246394" title="anonymous_namespace\l\{contractGraph_driver\l::cpp\}::get_postgres_result" alt="" coords="128,1835,305,1891"/>
-<area shape="rect" id="node38" href="$lineGraphFull__driver_8cpp.html#a4f37f216dd6dae9c5065e548c6294026" title="get_turn_penalty_postgres\l_result" alt="" coords="129,1915,304,1957"/>
-<area shape="rect" id="node39" href="$classPgr__allpairs.html#afe79da2fbe6d7c047790ad0fb2070674" title="Pgr_allpairs::make\l_result" alt="" coords="151,1981,282,2022"/>
-<area shape="rect" id="node40" href="$pgr__alloc_8hpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="181,872,253,899"/>
+<area shape="rect" id="node31" href="$topologicalSort__driver_8h.html#a7c8b7b11a3fd2ff2f5817abd91c766ab" title="do_pgr_topologicalSort" alt="" coords="382,1539,537,1565"/>
+<area shape="rect" id="node32" href="$TSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29" title="do_pgr_tsp" alt="" coords="416,1589,503,1616"/>
+<area shape="rect" id="node33" href="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11" title="do_pgr_turnRestrictedPath" alt="" coords="371,1640,548,1667"/>
+<area shape="rect" id="node34" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="395,1691,524,1717"/>
+<area shape="rect" id="node35" href="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a" title="do_pgr_withPointsKsp" alt="" coords="383,1741,535,1768"/>
+<area shape="rect" id="node36" href="$trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c" title="do_trsp" alt="" coords="427,1792,492,1819"/>
+<area shape="rect" id="node37" href="$lineGraph__driver_8cpp.html#a6f7c6b35f9831bd5250675dbabf08921" title="get_postgres_result" alt="" coords="149,1839,285,1865"/>
+<area shape="rect" id="node38" href="$namespaceanonymous__namespace_02contractGraph__driver_8cpp_03.html#ab9b58b9dcbddf1d9d4f505f18e246394" title="anonymous_namespace\l\{contractGraph_driver\l::cpp\}::get_postgres_result" alt="" coords="128,1889,305,1945"/>
+<area shape="rect" id="node39" href="$lineGraphFull__driver_8cpp.html#a4f37f216dd6dae9c5065e548c6294026" title="get_turn_penalty_postgres\l_result" alt="" coords="129,1970,304,2011"/>
+<area shape="rect" id="node40" href="$classPgr__allpairs.html#afe79da2fbe6d7c047790ad0fb2070674" title="Pgr_allpairs::make\l_result" alt="" coords="151,2035,282,2077"/>
+<area shape="rect" id="node41" href="$pgr__alloc_8hpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="181,876,253,903"/>
 </map>

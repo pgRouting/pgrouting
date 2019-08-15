@@ -5,6 +5,6 @@ digraph "process"
   rankdir="LR";
   Node98 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node98 -> Node99 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node99 [label="max_flow_many_to_many",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$max__flow_8c.html#a681248d427de12e71817df02076246d9"];
+  Node99 [label="_pgr_maxflow",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$max__flow_8c.html#a0adef58a13e36d7d612bea49f5b45a71"];
   Node99 -> Node98 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

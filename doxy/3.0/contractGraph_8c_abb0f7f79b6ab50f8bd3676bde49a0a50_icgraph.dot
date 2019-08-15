@@ -5,5 +5,5 @@ digraph "process"
   rankdir="LR";
   Node74 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node74 -> Node75 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node75 [label="contractGraph",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$contractGraph_8c.html#a49d0cb0e1a6cc99c9e6cf4ecb9ba609b"];
+  Node75 [label="_pgr_contraction",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$contractGraph_8c.html#af1582ae4de476b13ff1e74bfb64f610e"];
 }

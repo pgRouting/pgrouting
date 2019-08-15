@@ -5,5 +5,5 @@ digraph "process"
   rankdir="LR";
   Node68 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node68 -> Node69 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node69 [label="biconnectedComponents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$biconnectedComponents_8c.html#abd0e2f6f4006b9bef24305df23ee66db"];
+  Node69 [label="_pgr_biconnectedcomponents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$biconnectedComponents_8c.html#a99f0531d176c513aabc860103efb54e9"];
 }

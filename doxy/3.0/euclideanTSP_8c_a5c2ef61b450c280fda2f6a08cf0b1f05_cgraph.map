@@ -1,7 +1,7 @@
 <map id="process" name="process">
-<area shape="rect" id="node2" href="$euclideanTSP__driver_8cpp.html#a7bcb54c40fcf199d7554ca10834fcb7b" title="do_pgr_euclideanTSP" alt="" coords="137,5,286,32"/>
-<area shape="rect" id="node3" href="$euclideanTSP_8c.html#a59fbf90d46b035ee6fccffee861ff249" title="euclideanTSP" alt="" coords="160,56,263,83"/>
-<area shape="rect" id="node4" href="$euclideanTSP_8c.html#ad07381b7ffd9b8f763188c91d89369a6" title="PG_FUNCTION_INFO_V1" alt="" coords="121,107,301,133"/>
+<area shape="rect" id="node2" href="$euclideanTSP_8c.html#a855d252f6bdcf6df5159d745f5ad0fef" title="_pgr_tspeuclidean" alt="" coords="148,5,275,32"/>
+<area shape="rect" id="node3" href="$euclideanTSP__driver_8cpp.html#a7bcb54c40fcf199d7554ca10834fcb7b" title="do_pgr_euclideanTSP" alt="" coords="137,56,286,83"/>
+<area shape="rect" id="node4" href="$euclideanTSP_8c.html#acb3310b5c971a4d5b9eeb6169ee77d52" title="PG_FUNCTION_INFO_V1" alt="" coords="121,107,301,133"/>
 <area shape="rect" id="node5" href="$coordinates__input_8c.html#a54deb1af794ff39f4589ca73b610b6d5" title="bigint id, float x, float y, " alt="" coords="142,157,281,184"/>
 <area shape="rect" id="node6" href="$time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe" title="time_msg" alt="" coords="349,183,428,209"/>
 <area shape="rect" id="node7" href="$e__report_8c.html#aa7833fe4baf65aa901e1129575e7deb2" title="notice &amp; error " alt="" coords="151,259,272,285"/>

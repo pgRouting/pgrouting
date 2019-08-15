@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['reg_5fsigint',['REG_SIGINT',['../signalhandler_8h.html#a1592d0e20d4fd61c988c4804318bc2ae',1,'signalhandler.h']]],
-  ['reg_5fsigquit',['REG_SIGQUIT',['../signalhandler_8h.html#a69353e989759136081dcd8cd58c267ef',1,'signalhandler.h']]]
+  ['max_5frule_5flength',['MAX_RULE_LENGTH',['../trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f',1,'trsp.h']]]
 ];

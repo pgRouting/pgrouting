@@ -40,6 +40,9 @@ var annotated_dup =
     [ "pgr_randomSpanningTree_t", "structpgr__randomSpanningTree__t.html", "structpgr__randomSpanningTree__t" ],
     [ "Pgr_stoerWagner", "classPgr__stoerWagner.html", "classPgr__stoerWagner" ],
     [ "pgr_stoerWagner_t", "structpgr__stoerWagner__t.html", "structpgr__stoerWagner__t" ],
+    [ "Pgr_topologicalSort", "classPgr__topologicalSort.html", "classPgr__topologicalSort" ],
+    [ "pgr_topologicalSort_t", "structpgr__topologicalSort__t.html", "structpgr__topologicalSort__t" ],
+    [ "Pgr_transitiveClosure", "classPgr__transitiveClosure.html", "classPgr__transitiveClosure" ],
     [ "PickDeliveryOrders_t", "structPickDeliveryOrders__t.html", "structPickDeliveryOrders__t" ],
     [ "Point_on_edge_t", "structPoint__on__edge__t.html", "structPoint__on__edge__t" ],
     [ "restrict_columns", "structrestrict__columns.html", "structrestrict__columns" ],
@@ -50,6 +53,7 @@ var annotated_dup =
     [ "SIGINT_Handler", "classSIGINT__Handler.html", "classSIGINT__Handler" ],
     [ "SignalHandler", "classSignalHandler.html", "classSignalHandler" ],
     [ "SIGQUIT_Handler", "classSIGQUIT__Handler.html", "classSIGQUIT__Handler" ],
+    [ "transitiveClosure_rt", "structtransitiveClosure__rt.html", "structtransitiveClosure__rt" ],
     [ "UserQuitException", "classUserQuitException.html", "classUserQuitException" ],
     [ "Vehicle_t", "structVehicle__t.html", "structVehicle__t" ]
 ];

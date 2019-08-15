@@ -5,5 +5,5 @@ digraph "process"
   rankdir="LR";
   Node96 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node96 -> Node97 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node97 [label="bd_astar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bdAstar_8c.html#a330536d15ec4a98cfcedec686dd1beca"];
+  Node97 [label="_pgr_bdastar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bdAstar_8c.html#a95ba2fc4cc7b5812f6432604116b77d9"];
 }

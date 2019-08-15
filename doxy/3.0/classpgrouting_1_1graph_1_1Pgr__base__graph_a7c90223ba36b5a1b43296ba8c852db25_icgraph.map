@@ -20,8 +20,10 @@
 <area shape="rect" id="node20" href="$randomSpanningTree__driver_8h.html#aff2fec7737d2fae3f0248be44bbbb4f8" title="do_pgr_randomSpanningTree" alt="" coords="243,949,433,976"/>
 <area shape="rect" id="node21" href="$stoerWagner__driver_8h.html#ace6dcba77f5caac0c1bf464c0d5d6060" title="do_pgr_stoerWagner" alt="" coords="267,1000,409,1027"/>
 <area shape="rect" id="node22" href="$strongComponents__driver_8h.html#a7f9041dbe45b9f72d7a42e6ed3a311ac" title="do_pgr_strongComponents" alt="" coords="249,1051,427,1077"/>
-<area shape="rect" id="node23" href="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11" title="do_pgr_turnRestrictedPath" alt="" coords="249,1101,427,1128"/>
-<area shape="rect" id="node24" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="273,1152,403,1179"/>
-<area shape="rect" id="node25" href="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a" title="do_pgr_withPointsKsp" alt="" coords="262,1203,414,1229"/>
-<area shape="rect" id="node26" href="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a0f1c6ca936a8acc9dbb8b1384ce9e40f" title="pgrouting::alphashape\l::Pgr_alphaShape::Pgr\l_alphaShape" alt="" coords="261,1253,415,1309"/>
+<area shape="rect" id="node23" href="$topologicalSort__driver_8h.html#a7c8b7b11a3fd2ff2f5817abd91c766ab" title="do_pgr_topologicalSort" alt="" coords="261,1101,415,1128"/>
+<area shape="rect" id="node24" href="$transitiveClosure__driver_8h.html#a950595aea01b46e10ba69e670896af32" title="do_pgr_transitiveClosure" alt="" coords="255,1152,421,1179"/>
+<area shape="rect" id="node25" href="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11" title="do_pgr_turnRestrictedPath" alt="" coords="249,1203,427,1229"/>
+<area shape="rect" id="node26" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="273,1253,403,1280"/>
+<area shape="rect" id="node27" href="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a" title="do_pgr_withPointsKsp" alt="" coords="262,1304,414,1331"/>
+<area shape="rect" id="node28" href="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a0f1c6ca936a8acc9dbb8b1384ce9e40f" title="pgrouting::alphashape\l::Pgr_alphaShape::Pgr\l_alphaShape" alt="" coords="261,1355,415,1411"/>
 </map>

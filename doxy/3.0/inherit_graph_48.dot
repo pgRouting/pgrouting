@@ -3,5 +3,9 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="pgrouting::alphashape\l::anonymous_namespace\l\{pgr_alphaShape.cpp\}::\lCompareRadius",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structpgrouting_1_1alphashape_1_1anonymous__namespace_02pgr__alphaShape_8cpp_03_1_1CompareRadius.html"];
+  Node145 [label="default_astar_visitor",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node145 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="pgrouting::algorithms\l::Pgr_astar\< G \>::astar\l_many_goals_visitor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__many__goals__visitor.html",tooltip="class for stopping when all targets are found "];
+  Node145 -> Node147 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node147 [label="pgrouting::algorithms\l::Pgr_astar\< G \>::astar\l_one_goal_visitor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html",tooltip="visitor that terminates when we find the goal "];
 }

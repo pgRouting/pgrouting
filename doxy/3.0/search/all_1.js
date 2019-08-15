@@ -19,7 +19,6 @@ var searchData=
   ['adjust_5fpids',['adjust_pids',['../classpgrouting_1_1Pg__points__graph.html#a66a8d1a0fef72e913ec6c2250c695346',1,'pgrouting::Pg_points_graph::adjust_pids(const std::vector&lt; Point_on_edge_t &gt; &amp;points, Path &amp;path)'],['../classpgrouting_1_1Pg__points__graph.html#a1daf3e5eb10e11a86029ba839cb3ec64',1,'pgrouting::Pg_points_graph::adjust_pids(const std::vector&lt; Point_on_edge_t &gt; &amp;points, const int64_t &amp;start_pid, const int64_t &amp;end_pid, Path &amp;path)']]],
   ['agg_5fcost',['agg_cost',['../structGeneral__path__element__t.html#ae56bc0763b498b1b5337b04605dbc8c1',1,'General_path_element_t::agg_cost()'],['../structpgr__flow__t.html#a252d3efaef6e55ef79a0d1be685f28f4',1,'pgr_flow_t::agg_cost()'],['../structpgr__mst__rt.html#a18f8c33587d9fbabb2a32234f7957878',1,'pgr_mst_rt::agg_cost()'],['../structpgr__prim__rt.html#a4e52373d6fd4b592de9fe940add6ee7e',1,'pgr_prim_rt::agg_cost()'],['../structRoutes__t.html#a75b0f3f7ade66580346bb41124d15644',1,'Routes_t::agg_cost()'],['../structPath__t.html#a4b0555b6ae7d83d981fe59ed971029ae',1,'Path_t::agg_cost()']]],
   ['all_5forders',['all_orders',['../classpgrouting_1_1vrp_1_1Initial__solution.html#a083c06cdefc5517696348a8d4f2a56f2',1,'pgrouting::vrp::Initial_solution']]],
-  ['alphashape',['alphaShape',['../alphaShape_8c.html#a0234ebd01f295103ae2366338b035267',1,'alphaShape.c']]],
   ['alphashape_2ec',['alphaShape.c',['../alphaShape_8c.html',1,'']]],
   ['alphashape_5fdriver_2ecpp',['alphaShape_driver.cpp',['../alphaShape__driver_8cpp.html',1,'']]],
   ['alphashape_5fdriver_2eh',['alphaShape_driver.h',['../alphaShape__driver_8h.html',1,'']]],
@@ -39,7 +38,7 @@ var searchData=
   ['arrival_5fj_5fopens_5fi',['arrival_j_opens_i',['../classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1',1,'pgrouting::vrp::Tw_node']]],
   ['arrival_5ftime',['arrival_time',['../classpgrouting_1_1vrp_1_1Vehicle__node.html#a23d1cfd02e19e0283a6fd90db1e4703b',1,'pgrouting::vrp::Vehicle_node']]],
   ['arrivaltime',['arrivalTime',['../structGeneral__vehicle__orders__t.html#a52c7ea7b69381ea76a8306c7dbbb2758',1,'General_vehicle_orders_t']]],
-  ['articulationpoints',['articulationPoints',['../articulationPoints_8c.html#a949aadbd044600898b8d57d7fb780591',1,'articulationPoints():&#160;articulationPoints.c'],['../namespacepgrouting_1_1algorithms.html#afd4956bd9d613360678844475d7b04d2',1,'pgrouting::algorithms::articulationPoints()']]],
+  ['articulationpoints',['articulationPoints',['../namespacepgrouting_1_1algorithms.html#afd4956bd9d613360678844475d7b04d2',1,'pgrouting::algorithms']]],
   ['articulationpoints_2ec',['articulationPoints.c',['../articulationPoints_8c.html',1,'']]],
   ['articulationpoints_5fdriver_2ecpp',['articulationPoints_driver.cpp',['../articulationPoints__driver_8cpp.html',1,'']]],
   ['articulationpoints_5fdriver_2eh',['articulationPoints_driver.h',['../articulationPoints__driver_8h.html',1,'']]],
@@ -52,6 +51,5 @@ var searchData=
   ['astar_5fdriver_2ecpp',['astar_driver.cpp',['../astar__driver_8cpp.html',1,'']]],
   ['astar_5fdriver_2eh',['astar_driver.h',['../astar__driver_8h.html',1,'']]],
   ['astar_5fmany_5fgoals_5fvisitor',['astar_many_goals_visitor',['../classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__many__goals__visitor.html',1,'pgrouting::algorithms::Pgr_astar&lt; G &gt;::astar_many_goals_visitor'],['../classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__many__goals__visitor.html#afd203b9807df53f7907e2f93dca87bdf',1,'pgrouting::algorithms::Pgr_astar::astar_many_goals_visitor::astar_many_goals_visitor()']]],
-  ['astar_5fone_5fgoal_5fvisitor',['astar_one_goal_visitor',['../classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html',1,'pgrouting::algorithms::Pgr_astar&lt; G &gt;::astar_one_goal_visitor'],['../classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html#a80ed5c36c3e0e54776457e1f12eccd32',1,'pgrouting::algorithms::Pgr_astar::astar_one_goal_visitor::astar_one_goal_visitor()']]],
-  ['astarmanytomany',['astarManyToMany',['../astar_8c.html#adbf9c70afae231caaa6d9fd3d343f47c',1,'astar.c']]]
+  ['astar_5fone_5fgoal_5fvisitor',['astar_one_goal_visitor',['../classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html',1,'pgrouting::algorithms::Pgr_astar&lt; G &gt;::astar_one_goal_visitor'],['../classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html#a80ed5c36c3e0e54776457e1f12eccd32',1,'pgrouting::algorithms::Pgr_astar::astar_one_goal_visitor::astar_one_goal_visitor()']]]
 ];

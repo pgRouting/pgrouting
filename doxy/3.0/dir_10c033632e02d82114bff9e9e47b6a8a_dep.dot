@@ -7,5 +7,5 @@ digraph "mincut" {
   dir_10c033632e02d82114bff9e9e47b6a8a [shape=box, label="mincut", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_10c033632e02d82114bff9e9e47b6a8a.html"];
   }
   dir_d5995d5871f728649bd47ea0d6428e03 [shape=box label="c_types" fillcolor="white" style="filled" color="red" URL="dir_d5995d5871f728649bd47ea0d6428e03.html"];
-  dir_10c033632e02d82114bff9e9e47b6a8a->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="2", labeldistance=1.5 headhref="dir_000073_000024.html"];
+  dir_10c033632e02d82114bff9e9e47b6a8a->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="2", labeldistance=1.5 headhref="dir_000073_000025.html"];
 }

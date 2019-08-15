@@ -1,7 +1,7 @@
 <map id="process" name="process">
-<area shape="rect" id="node2" href="$max__flow__driver_8cpp.html#a4b2cced234be4ae1ee4df7aa2f5c5c2b" title="do_pgr_max_flow" alt="" coords="149,5,273,32"/>
-<area shape="rect" id="node3" href="$max__flow_8c.html#a681248d427de12e71817df02076246d9" title="max_flow_many_to_many" alt="" coords="124,56,299,83"/>
-<area shape="rect" id="node4" href="$max__flow_8c.html#a5668fc9d77498da48b9225024d4c6568" title="PG_FUNCTION_INFO_V1" alt="" coords="121,107,301,133"/>
+<area shape="rect" id="node2" href="$max__flow_8c.html#a0adef58a13e36d7d612bea49f5b45a71" title="_pgr_maxflow" alt="" coords="160,5,263,32"/>
+<area shape="rect" id="node3" href="$max__flow__driver_8cpp.html#a4b2cced234be4ae1ee4df7aa2f5c5c2b" title="do_pgr_max_flow" alt="" coords="149,56,273,83"/>
+<area shape="rect" id="node4" href="$max__flow_8c.html#ab31d7ccffa701b8dc42ebcc78152df6e" title="PG_FUNCTION_INFO_V1" alt="" coords="121,107,301,133"/>
 <area shape="rect" id="node5" href="$arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1" title="enforces the input array to be NOT empty " alt="" coords="144,157,279,184"/>
 <area shape="rect" id="node6" href="$edges__input_8c.html#ac7adfa64fe69426a12eba52bcec214ca" title="read edges for flow " alt="" coords="142,208,281,235"/>
 <area shape="rect" id="node7" href="$e__report_8c.html#aa7833fe4baf65aa901e1129575e7deb2" title="notice &amp; error " alt="" coords="151,259,272,285"/>

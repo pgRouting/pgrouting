@@ -5,12 +5,12 @@ digraph "process"
   rankdir="LR";
   Node37 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node37 -> Node38 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node38 [label="do_pgr_maximum_cardinality\l_matching",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$maximum__cardinality__matching__driver_8cpp.html#ae79ee0d7d782af732538f8fe6b5d4518"];
-  Node37 -> Node47 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node47 [label="maximum_cardinality\l_matching",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$maximum__cardinality__matching_8c.html#abecab1857778932b653593abda4dde28"];
-  Node47 -> Node37 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node38 [label="_pgr_maxcardinalitymatch",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$maximum__cardinality__matching_8c.html#a5fd2a9ee064dd4f06a4e8f42cd113513"];
+  Node38 -> Node37 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node37 -> Node39 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node39 [label="do_pgr_maximum_cardinality\l_matching",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$maximum__cardinality__matching__driver_8cpp.html#ae79ee0d7d782af732538f8fe6b5d4518"];
   Node37 -> Node48 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node48 [label="PG_FUNCTION_INFO_V1",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$maximum__cardinality__matching_8c.html#a7e252642be9b64d1418e7312bb5507db"];
+  Node48 [label="PG_FUNCTION_INFO_V1",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$maximum__cardinality__matching_8c.html#a8024d715bc51e23ef0c8bc1ac159e045"];
   Node37 -> Node49 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node49 [label="pgr_get_basic_edges",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8c.html#a2185351317b6bfab35d0d6f971b98676",tooltip="read basic edges "];
   Node37 -> Node65 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

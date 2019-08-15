@@ -5,5 +5,5 @@ digraph "process"
   rankdir="LR";
   Node96 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node96 -> Node97 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node97 [label="chinesePostman",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$chinesePostman_8c.html#a89a659f4d0284f7aa1a4b32846221e58"];
+  Node97 [label="_pgr_chinesepostman",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$chinesePostman_8c.html#a88a6bbcacc152bfd9e30ba3c4112d7be"];
 }

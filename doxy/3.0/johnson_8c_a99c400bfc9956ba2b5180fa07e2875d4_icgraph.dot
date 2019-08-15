@@ -3,8 +3,7 @@ digraph "process"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node80 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node80 -> Node81 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node81 [label="johnson",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$johnson_8c.html#a0015d89bfe4db8a835ae5e01e5f582d5"];
-  Node81 -> Node80 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node74 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node74 -> Node75 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node75 [label="_pgr_johnson",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$johnson_8c.html#a88aa66e620cae7edb388ed84a9d6b8a3"];
 }

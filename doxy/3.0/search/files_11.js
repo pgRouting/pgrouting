@@ -1,21 +1,13 @@
 var searchData=
 [
-  ['time_5fmsg_2ec',['time_msg.c',['../time__msg_8c.html',1,'']]],
-  ['time_5fmsg_2eh',['time_msg.h',['../time__msg_8h.html',1,'']]],
-  ['tour_2ecpp',['tour.cpp',['../tour_8cpp.html',1,'']]],
-  ['tour_2eh',['tour.h',['../tour_8h.html',1,'']]],
-  ['trsp_2ec',['trsp.c',['../trsp_8c.html',1,'']]],
-  ['trsp_2eh',['trsp.h',['../trsp_8h.html',1,'']]],
-  ['trsp_5fcore_2ecpp',['trsp_core.cpp',['../trsp__core_8cpp.html',1,'']]],
-  ['trsp_5fdriver_2ecpp',['trsp_driver.cpp',['../trsp__driver_8cpp.html',1,'']]],
-  ['trsp_5fdriver_2eh',['trsp_driver.h',['../trsp__driver_8h.html',1,'']]],
-  ['trsp_5ftypes_2eh',['trsp_types.h',['../trsp__types_8h.html',1,'']]],
-  ['tsp_2ec',['TSP.c',['../TSP_8c.html',1,'']]],
-  ['tsp_5fdriver_2ecpp',['TSP_driver.cpp',['../TSP__driver_8cpp.html',1,'']]],
-  ['tsp_5fdriver_2eh',['TSP_driver.h',['../TSP__driver_8h.html',1,'']]],
-  ['turnrestrictedpath_2ec',['turnRestrictedPath.c',['../turnRestrictedPath_8c.html',1,'']]],
-  ['turnrestrictedpath_5fdriver_2ecpp',['turnRestrictedPath_driver.cpp',['../turnRestrictedPath__driver_8cpp.html',1,'']]],
-  ['turnrestrictedpath_5fdriver_2eh',['turnRestrictedPath_driver.h',['../turnRestrictedPath__driver_8h.html',1,'']]],
-  ['tw_5fnode_2ecpp',['tw_node.cpp',['../tw__node_8cpp.html',1,'']]],
-  ['tw_5fnode_2eh',['tw_node.h',['../tw__node_8h.html',1,'']]]
+  ['signalhandler_2ecpp',['signalhandler.cpp',['../signalhandler_8cpp.html',1,'']]],
+  ['signalhandler_2eh',['signalhandler.h',['../signalhandler_8h.html',1,'']]],
+  ['solution_2ecpp',['solution.cpp',['../solution_8cpp.html',1,'']]],
+  ['solution_2eh',['solution.h',['../solution_8h.html',1,'']]],
+  ['stoerwagner_2ec',['stoerWagner.c',['../stoerWagner_8c.html',1,'']]],
+  ['stoerwagner_5fdriver_2ecpp',['stoerWagner_driver.cpp',['../stoerWagner__driver_8cpp.html',1,'']]],
+  ['stoerwagner_5fdriver_2eh',['stoerWagner_driver.h',['../stoerWagner__driver_8h.html',1,'']]],
+  ['strongcomponents_2ec',['strongComponents.c',['../strongComponents_8c.html',1,'']]],
+  ['strongcomponents_5fdriver_2ecpp',['strongComponents_driver.cpp',['../strongComponents__driver_8cpp.html',1,'']]],
+  ['strongcomponents_5fdriver_2eh',['strongComponents_driver.h',['../strongComponents__driver_8h.html',1,'']]]
 ];

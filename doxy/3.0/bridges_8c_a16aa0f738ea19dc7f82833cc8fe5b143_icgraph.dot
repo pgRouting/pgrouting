@@ -5,5 +5,5 @@ digraph "process"
   rankdir="LR";
   Node70 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node70 -> Node71 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node71 [label="bridges",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bridges_8c.html#a5dbe44d5a42d734213825965d978b2b9"];
+  Node71 [label="_pgr_bridges",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bridges_8c.html#a01030b6371c719af3d8396ee2d7b0dc4"];
 }

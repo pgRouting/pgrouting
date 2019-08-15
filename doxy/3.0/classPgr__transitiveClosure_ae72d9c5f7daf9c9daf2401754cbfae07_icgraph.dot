@@ -1,0 +1,9 @@
+digraph "Pgr_transitiveClosure::generatetransitiveClosure"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Pgr_transitiveClosure\l::generatetransitiveClosure",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Pgr_transitiveClosure\l::transitiveClosure",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classPgr__transitiveClosure.html#a92b9c1c2f17cd5845cb067226edab24e"];
+}

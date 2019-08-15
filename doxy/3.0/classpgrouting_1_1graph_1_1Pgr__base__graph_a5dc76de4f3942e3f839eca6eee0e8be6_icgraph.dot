@@ -3,7 +3,7 @@ digraph "pgrouting::graph::Pgr_base_graph::out_degree"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node210 [label="pgrouting::graph::Pgr\l_base_graph::out_degree",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node210 -> Node211 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node211 [label="pgrouting::algorithms\l::bridges",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$namespacepgrouting_1_1algorithms.html#a761326bbc7445ba17d100dd39fa8c124",tooltip="Bridges Bridges are closely related to the concept of articulation vertices, vertices that belong to ..."];
+  Node216 [label="pgrouting::graph::Pgr\l_base_graph::out_degree",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node216 -> Node217 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node217 [label="pgrouting::algorithms\l::bridges",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$namespacepgrouting_1_1algorithms.html#a761326bbc7445ba17d100dd39fa8c124",tooltip="Bridges Bridges are closely related to the concept of articulation vertices, vertices that belong to ..."];
 }

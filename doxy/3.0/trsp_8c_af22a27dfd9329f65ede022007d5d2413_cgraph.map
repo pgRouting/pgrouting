@@ -1,10 +1,10 @@
 <map id="compute_trsp" name="compute_trsp">
-<area shape="rect" id="node2" href="$trsp_8c.html#abcd007a7a8d5408a84f9572afc0b13a0" title="fetch_edge" alt="" coords="201,5,288,32"/>
-<area shape="rect" id="node3" href="$trsp_8c.html#aa2255175b96837aebe5f2a28b57f72a7" title="fetch_edge_columns" alt="" coords="173,56,316,83"/>
-<area shape="rect" id="node4" href="$trsp_8c.html#a08bb74b6255b8a583fd953d6995723df" title="fetch_restrict" alt="" coords="195,107,294,133"/>
-<area shape="rect" id="node5" href="$trsp_8c.html#a7623760f545a367335141630d9e715ac" title="fetch_restrict_columns" alt="" coords="167,157,322,184"/>
-<area shape="rect" id="node6" href="$trsp_8c.html#adbf69d62298e4d47f81c749cebaad544" title="finish" alt="" coords="218,208,271,235"/>
-<area shape="rect" id="node7" href="$trsp_8c.html#adec7d5d9673f61fbf743dfec8a6ca581" title="PG_FUNCTION_INFO_V1" alt="" coords="155,259,335,285"/>
-<area shape="rect" id="node8" href="$trsp__core_8cpp.html#a9936d9f5cc903264889dd89eb99b219d" title="trsp_edge_wrapper" alt="" coords="179,309,311,336"/>
-<area shape="rect" id="node9" href="$trsp_8c.html#a938bf6c15c229413b975362c1bc510ce" title="turn_restrict_shortest\l_path_edge" alt="" coords="172,361,317,402"/>
+<area shape="rect" id="node2" href="$trsp_8c.html#ac62ff56bdac2d82541c7d48327b8ff62" title="_pgr_trsp" alt="" coords="207,5,283,32"/>
+<area shape="rect" id="node3" href="$trsp_8c.html#abcd007a7a8d5408a84f9572afc0b13a0" title="fetch_edge" alt="" coords="201,56,288,83"/>
+<area shape="rect" id="node4" href="$trsp_8c.html#aa2255175b96837aebe5f2a28b57f72a7" title="fetch_edge_columns" alt="" coords="173,107,316,133"/>
+<area shape="rect" id="node5" href="$trsp_8c.html#a08bb74b6255b8a583fd953d6995723df" title="fetch_restrict" alt="" coords="195,157,294,184"/>
+<area shape="rect" id="node6" href="$trsp_8c.html#a7623760f545a367335141630d9e715ac" title="fetch_restrict_columns" alt="" coords="167,208,322,235"/>
+<area shape="rect" id="node7" href="$trsp_8c.html#adbf69d62298e4d47f81c749cebaad544" title="finish" alt="" coords="218,259,271,285"/>
+<area shape="rect" id="node8" href="$trsp_8c.html#a8ace5e6e5847bde7f9cb33c5955639d3" title="PG_FUNCTION_INFO_V1" alt="" coords="155,309,335,336"/>
+<area shape="rect" id="node9" href="$trsp__core_8cpp.html#a9936d9f5cc903264889dd89eb99b219d" title="trsp_edge_wrapper" alt="" coords="179,360,311,387"/>
 </map>

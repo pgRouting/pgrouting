@@ -1,5 +1,5 @@
 <map id="pgrouting::Pgr_dijkstra::clear" name="pgrouting::Pgr_dijkstra::clear">
 <area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__dijkstra.html#a0489deb2399562b5631d9906f2225234" title="Dijkstra 1 to 1. " alt="" coords="216,5,368,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Pgr__dijkstra.html#a6f64fb0dcca638ee7995f6522d5ecf8d" title="pgrouting::Pgr_dijkstra\l::drivingDistance_with\l_equicost" alt="" coords="216,71,368,127"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1Pgr__dijkstra.html#a34494aafd83229a152a950079abb56df" title="pgrouting::Pgr_dijkstra\l::drivingDistance_with\l_equicost" alt="" coords="216,71,368,127"/>
 <area shape="rect" id="node4" href="$classpgrouting_1_1Pgr__dijkstra.html#a3b272d975a45bf50fe5d663ada76c8ef" title="to use with driving distance " alt="" coords="205,152,379,193"/>
 </map>

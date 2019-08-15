@@ -30,9 +30,11 @@
 <area shape="rect" id="node30" href="$randomSpanningTree__driver_8h.html#aff2fec7737d2fae3f0248be44bbbb4f8" title="do_pgr_randomSpanningTree" alt="" coords="133,1487,324,1513"/>
 <area shape="rect" id="node31" href="$stoerWagner__driver_8h.html#ace6dcba77f5caac0c1bf464c0d5d6060" title="do_pgr_stoerWagner" alt="" coords="157,1537,300,1564"/>
 <area shape="rect" id="node32" href="$strongComponents__driver_8h.html#a7f9041dbe45b9f72d7a42e6ed3a311ac" title="do_pgr_strongComponents" alt="" coords="139,1588,318,1615"/>
-<area shape="rect" id="node33" href="$TSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29" title="do_pgr_tsp" alt="" coords="185,1639,272,1665"/>
-<area shape="rect" id="node34" href="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11" title="do_pgr_turnRestrictedPath" alt="" coords="140,1689,317,1716"/>
-<area shape="rect" id="node35" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="164,1740,293,1767"/>
-<area shape="rect" id="node36" href="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a" title="do_pgr_withPointsKsp" alt="" coords="153,1791,305,1817"/>
-<area shape="rect" id="node37" href="$trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c" title="do_trsp" alt="" coords="196,1841,261,1868"/>
+<area shape="rect" id="node33" href="$topologicalSort__driver_8h.html#a7c8b7b11a3fd2ff2f5817abd91c766ab" title="do_pgr_topologicalSort" alt="" coords="151,1639,306,1665"/>
+<area shape="rect" id="node34" href="$transitiveClosure__driver_8h.html#a950595aea01b46e10ba69e670896af32" title="do_pgr_transitiveClosure" alt="" coords="145,1689,312,1716"/>
+<area shape="rect" id="node35" href="$TSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29" title="do_pgr_tsp" alt="" coords="185,1740,272,1767"/>
+<area shape="rect" id="node36" href="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11" title="do_pgr_turnRestrictedPath" alt="" coords="140,1791,317,1817"/>
+<area shape="rect" id="node37" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="164,1841,293,1868"/>
+<area shape="rect" id="node38" href="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a" title="do_pgr_withPointsKsp" alt="" coords="153,1892,305,1919"/>
+<area shape="rect" id="node39" href="$trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c" title="do_trsp" alt="" coords="196,1943,261,1969"/>
 </map>

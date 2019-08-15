@@ -3,7 +3,7 @@ digraph "pgrouting::graph::Pgr_base_graph::insert_min_edges_no_parallel"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node162 [label="pgrouting::graph::Pgr\l_base_graph::insert_min\l_edges_no_parallel",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node162 -> Node163 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node163 [label="do_pgr_prim",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$prim__driver_8h.html#afe194ae196674430cbad700f04f260bd"];
+  Node168 [label="pgrouting::graph::Pgr\l_base_graph::insert_min\l_edges_no_parallel",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node168 -> Node169 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node169 [label="do_pgr_prim",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$prim__driver_8h.html#afe194ae196674430cbad700f04f260bd"];
 }

@@ -1,9 +1,8 @@
 <map id="do_pgr_kruskal" name="do_pgr_kruskal">
 <area shape="rect" id="node2" href="$namespacepgrouting_1_1details.html#a7f81f342477361eb7eef2a4f1d9bbfea" title="pgrouting::details\l::get_no_edge_graph\l_result" alt="" coords="182,5,325,61"/>
 <area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25" title="Inserts count edges of type T into the graph. " alt="" coords="164,86,343,127"/>
-<area shape="rect" id="node4" href="$kruskal_8c.html#ae13be52df7d53ae0e308ea523444fd99" title="kruskal" alt="" coords="221,152,285,179"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="391,253,465,280"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="219,253,288,280"/>
-<area shape="rect" id="node7" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="217,304,289,331"/>
-<area shape="rect" id="node8" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="177,355,330,397"/>
+<area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="391,203,465,229"/>
+<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="219,203,288,229"/>
+<area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="217,253,289,280"/>
+<area shape="rect" id="node7" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="177,305,330,346"/>
 </map>

@@ -1,9 +1,9 @@
 <map id="process" name="process">
-<area shape="rect" id="node2" href="$alphaShape_8c.html#a0234ebd01f295103ae2366338b035267" title="alphaShape" alt="" coords="349,6,440,33"/>
-<area shape="rect" id="node3" href="$alphaShape__driver_8cpp.html#af9aa715057e2754a3726562e58a807e6" title="do_alphaShape" alt="" coords="156,69,267,96"/>
-<area shape="rect" id="node4" href="$alphaShape_8c.html#a502eb090f94863b9eef2be9a019a2e24" title="PG_FUNCTION_INFO_V1" alt="" coords="121,120,301,146"/>
-<area shape="rect" id="node5" href="$edges__input_8c.html#a68e9476cc43d0bcc87a9f60734f76b38" title="Edges with x, y vertices values. " alt="" coords="147,170,275,197"/>
-<area shape="rect" id="node6" href="$e__report_8c.html#aa7833fe4baf65aa901e1129575e7deb2" title="notice &amp; error " alt="" coords="151,221,272,248"/>
-<area shape="rect" id="node7" href="$postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64" title="pgr_SPI_connect" alt="" coords="150,272,273,298"/>
-<area shape="rect" id="node8" href="$postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f" title="pgr_SPI_finish" alt="" coords="158,322,265,349"/>
+<area shape="rect" id="node2" href="$alphaShape_8c.html#a99003016299091b81074e43d167c6188" title="_pgr_alphashape" alt="" coords="151,5,271,32"/>
+<area shape="rect" id="node3" href="$alphaShape__driver_8cpp.html#af9aa715057e2754a3726562e58a807e6" title="do_alphaShape" alt="" coords="156,56,267,83"/>
+<area shape="rect" id="node4" href="$alphaShape_8c.html#abb3914327ac741e5e8641d096c08d840" title="PG_FUNCTION_INFO_V1" alt="" coords="121,107,301,133"/>
+<area shape="rect" id="node5" href="$edges__input_8c.html#a68e9476cc43d0bcc87a9f60734f76b38" title="Edges with x, y vertices values. " alt="" coords="147,157,275,184"/>
+<area shape="rect" id="node6" href="$e__report_8c.html#aa7833fe4baf65aa901e1129575e7deb2" title="notice &amp; error " alt="" coords="151,208,272,235"/>
+<area shape="rect" id="node7" href="$postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64" title="pgr_SPI_connect" alt="" coords="150,259,273,285"/>
+<area shape="rect" id="node8" href="$postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f" title="pgr_SPI_finish" alt="" coords="158,309,265,336"/>
 </map>

@@ -1,6 +1,6 @@
 var max__flow_8c =
 [
-    [ "max_flow_many_to_many", "max__flow_8c.html#a681248d427de12e71817df02076246d9", null ],
-    [ "PG_FUNCTION_INFO_V1", "max__flow_8c.html#a5668fc9d77498da48b9225024d4c6568", null ],
+    [ "_pgr_maxflow", "max__flow_8c.html#a0adef58a13e36d7d612bea49f5b45a71", null ],
+    [ "PG_FUNCTION_INFO_V1", "max__flow_8c.html#ab31d7ccffa701b8dc42ebcc78152df6e", null ],
     [ "process", "max__flow_8c.html#a30c6eba3438c4eda085547701430c005", null ]
 ];

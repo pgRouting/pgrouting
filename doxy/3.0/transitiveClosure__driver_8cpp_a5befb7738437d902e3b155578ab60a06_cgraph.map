@@ -1,0 +1,7 @@
+<map id="do_pgr_transitiveClosure" name="do_pgr_transitiveClosure">
+<area shape="rect" id="node2" href="$transitiveClosure__driver_8cpp.html#aabe48115016799bcce5122c9d3ea59e6" title="get_postgres_result" alt="" coords="241,5,377,32"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25" title="Inserts count edges of type T into the graph. " alt="" coords="220,57,399,98"/>
+<area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="275,123,344,149"/>
+<area shape="rect" id="node5" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="273,173,345,200"/>
+<area shape="rect" id="node6" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="233,225,386,266"/>
+</map>

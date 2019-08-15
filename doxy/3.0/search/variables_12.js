@@ -14,6 +14,7 @@ var searchData=
   ['via',['via',['../structRestriction__t.html#a0bb9a58ce3d4de3f985675ca9e320f62',1,'Restriction_t::via()'],['../structrestrict__struct.html#a801368aaf308b32f87fa12692ad758e2',1,'restrict_struct::via()']]],
   ['via_5fpath',['via_path',['../structrestrict__columns.html#a30a7044878bb8cb05fd5e0bb03edabfc',1,'restrict_columns']]],
   ['via_5fsize',['via_size',['../structRestriction__t.html#a855477d6abce1b84b2e6224edf33007d',1,'Restriction_t']]],
+  ['vid',['vid',['../structtransitiveClosure__rt.html#a7328e171ae1ca35ee470918f9cbb5c4b',1,'transitiveClosure_rt']]],
   ['vtoid',['vToId',['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a85d3cd2f65fe2d27a8347a7c126d17b4',1,'pgrouting::graph::PgrCostFlowGraph']]],
   ['vtovecid',['VToVecid',['../classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a76e755cc5bedca565d92a2e1ac85dfcf',1,'pgrouting::graph::PgrDirectedChPPGraph']]]
 ];

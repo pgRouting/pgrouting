@@ -3,8 +3,8 @@ digraph "compute_trsp"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node21 [label="compute_trsp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node21 -> Node22 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node22 [label="turn_restrict_shortest\l_path_edge",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$trsp_8c.html#a938bf6c15c229413b975362c1bc510ce"];
-  Node22 -> Node21 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node44 [label="compute_trsp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node44 -> Node45 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node45 [label="_pgr_trsp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$trsp_8c.html#ac62ff56bdac2d82541c7d48327b8ff62"];
+  Node45 -> Node44 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html" title="pgrouting::graph::PgrFlow\lGraph" alt="" coords="5,5,176,47"/>
+<area shape="rect" id="node1" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, T_V, T_E \&gt;" alt="" coords="5,43,200,84"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html" title="pgrouting::graph::Pgr\l_lineGraph\&lt; G, T_V, T_E \&gt;" alt="" coords="248,5,431,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html" title="pgrouting::graph::Pgr\l_lineGraphFull\&lt; G, T\l_V, T_E \&gt;" alt="" coords="268,71,411,127"/>
 </map>

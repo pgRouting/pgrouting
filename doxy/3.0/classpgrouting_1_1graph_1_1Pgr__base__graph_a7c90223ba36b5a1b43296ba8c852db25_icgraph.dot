@@ -47,11 +47,15 @@ digraph "pgrouting::graph::Pgr_base_graph::insert_edges"
   Node75 -> Node136 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node136 [label="do_pgr_strongComponents",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$strongComponents__driver_8h.html#a7f9041dbe45b9f72d7a42e6ed3a311ac"];
   Node75 -> Node139 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node139 [label="do_pgr_turnRestrictedPath",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11"];
+  Node139 [label="do_pgr_topologicalSort",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$topologicalSort__driver_8h.html#a7c8b7b11a3fd2ff2f5817abd91c766ab"];
   Node75 -> Node142 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node142 [label="do_pgr_withPoints",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd"];
+  Node142 [label="do_pgr_transitiveClosure",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$transitiveClosure__driver_8h.html#a950595aea01b46e10ba69e670896af32"];
   Node75 -> Node145 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node145 [label="do_pgr_withPointsKsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a"];
+  Node145 [label="do_pgr_turnRestrictedPath",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11"];
   Node75 -> Node148 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node148 [label="pgrouting::alphashape\l::Pgr_alphaShape::Pgr\l_alphaShape",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a0f1c6ca936a8acc9dbb8b1384ce9e40f"];
+  Node148 [label="do_pgr_withPoints",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd"];
+  Node75 -> Node151 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node151 [label="do_pgr_withPointsKsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a"];
+  Node75 -> Node154 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node154 [label="pgrouting::alphashape\l::Pgr_alphaShape::Pgr\l_alphaShape",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a0f1c6ca936a8acc9dbb8b1384ce9e40f"];
 }

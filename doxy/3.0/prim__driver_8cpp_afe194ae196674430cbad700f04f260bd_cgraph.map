@@ -4,10 +4,9 @@
 <area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="359,216,433,243"/>
 <area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="194,216,263,243"/>
 <area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="193,267,265,293"/>
-<area shape="rect" id="node7" href="$prim_8c.html#aa7d8aaafc3d67bc89de8898b87ee9d84" title="prim" alt="" coords="205,317,252,344"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1functions_1_1Pgr__prim.html#a4059f778103f7fc52abfdc0023899eb8" title="pgrouting::functions\l::Pgr_prim::prim" alt="" coords="161,369,297,410"/>
-<area shape="rect" id="node9" href="$classpgrouting_1_1functions_1_1Pgr__prim.html#a23572ba432dcb4dfa97fbe75385f3bef" title="pgrouting::functions\l::Pgr_prim::primBFS" alt="" coords="158,434,299,475"/>
-<area shape="rect" id="node10" href="$classpgrouting_1_1functions_1_1Pgr__prim.html#a7827f9d5691930b5d2f55679fcf19f84" title="pgrouting::functions\l::Pgr_prim::primDD" alt="" coords="161,499,297,541"/>
-<area shape="rect" id="node11" href="$classpgrouting_1_1functions_1_1Pgr__prim.html#a7714d79f8338be894e283cbbfc82ed66" title="pgrouting::functions\l::Pgr_prim::primDFS" alt="" coords="157,565,300,606"/>
-<area shape="rect" id="node12" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="152,630,305,671"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1functions_1_1Pgr__prim.html#a4059f778103f7fc52abfdc0023899eb8" title="pgrouting::functions\l::Pgr_prim::prim" alt="" coords="161,318,297,359"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1functions_1_1Pgr__prim.html#a23572ba432dcb4dfa97fbe75385f3bef" title="pgrouting::functions\l::Pgr_prim::primBFS" alt="" coords="158,383,299,425"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1functions_1_1Pgr__prim.html#a7827f9d5691930b5d2f55679fcf19f84" title="pgrouting::functions\l::Pgr_prim::primDD" alt="" coords="161,449,297,490"/>
+<area shape="rect" id="node10" href="$classpgrouting_1_1functions_1_1Pgr__prim.html#a7714d79f8338be894e283cbbfc82ed66" title="pgrouting::functions\l::Pgr_prim::primDFS" alt="" coords="157,514,300,555"/>
+<area shape="rect" id="node11" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="152,579,305,621"/>
 </map>

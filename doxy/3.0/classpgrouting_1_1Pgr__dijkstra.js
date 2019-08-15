@@ -17,7 +17,7 @@ var classpgrouting_1_1Pgr__dijkstra =
     [ "drivingDistance", "classpgrouting_1_1Pgr__dijkstra.html#a464b88afbfccf1f764152ac31524aadc", null ],
     [ "drivingDistance", "classpgrouting_1_1Pgr__dijkstra.html#af6264eb454e95e77fd9fa98ace6936f1", null ],
     [ "drivingDistance_no_equicost", "classpgrouting_1_1Pgr__dijkstra.html#a9ba0c0b7c674a43f78068268b1ed6b06", null ],
-    [ "drivingDistance_with_equicost", "classpgrouting_1_1Pgr__dijkstra.html#a6f64fb0dcca638ee7995f6522d5ecf8d", null ],
+    [ "drivingDistance_with_equicost", "classpgrouting_1_1Pgr__dijkstra.html#a34494aafd83229a152a950079abb56df", null ],
     [ "execute_drivingDistance", "classpgrouting_1_1Pgr__dijkstra.html#a3b272d975a45bf50fe5d663ada76c8ef", null ],
     [ "execute_drivingDistance_no_init", "classpgrouting_1_1Pgr__dijkstra.html#a7b1c7f52dcd0f16fe06488f48b61ed3b", null ],
     [ "get_drivingDistance_with_equicost_paths", "classpgrouting_1_1Pgr__dijkstra.html#a83ab7d02a7ef5ab2f5aa6b95d28627ea", null ],
