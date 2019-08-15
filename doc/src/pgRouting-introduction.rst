@@ -48,7 +48,6 @@ This Release Contributors
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-<<<<<<< 5d593d9583a09e7405daa779e26b6055ce01d897
 Gudesa Venkata Sai Akhil, Hang Wu, Virginia Vergara
 =======
 Gudesa Venkata Sai Akhil, Virginia Vergara
