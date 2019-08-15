@@ -238,6 +238,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm  
+
 .. rubric:: Indices and tables
 
 * :ref:`genindex`

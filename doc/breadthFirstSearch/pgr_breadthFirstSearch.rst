@@ -180,7 +180,7 @@ Column           Type        Description
 
 **start_vid**    ``BIGINT``  Identifier of the root vertex.
 
-                             - In `Multiple Vertices`_ results are in ascending order.
+                             - In *Multiple Vertices* results are in ascending order.
 
 **node**         ``BIGINT``  Identifier of ``node`` reached using ``edge``.
 **edge**         ``BIGINT``  Identifier of the ``edge`` used to arrive to ``node``.
