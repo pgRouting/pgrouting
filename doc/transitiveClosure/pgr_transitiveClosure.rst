@@ -65,7 +65,7 @@ The pgr_transitiveClosure function has the following signature:
 
 :Example: Complete Graph of 3 vertexs
 
-.. literalinclude:: doc-pgr_transitiveClosure.queries
+.. literalinclude:: doc-transitiveClosure.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -105,7 +105,7 @@ Additional Examples
 
 :Example: Some sub graphs of the sample data
 
-.. literalinclude:: doc-pgr_transitiveClosure.queries
+.. literalinclude:: doc-transitiveClosure.queries
    :start-after: -- q2
    :end-before: -- q4
 
