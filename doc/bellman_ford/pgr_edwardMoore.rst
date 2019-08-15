@@ -206,7 +206,7 @@ undirected graph with and with out reverse_cost.
 
 The examples in this section use the following :ref:`fig1`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q7
    :end-before: -- q8
 
@@ -214,7 +214,7 @@ The examples in this section use the following :ref:`fig1`
 
 The examples in this section use the following :ref:`fig2`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q9
    :end-before: -- q10
 
@@ -222,7 +222,7 @@ The examples in this section use the following :ref:`fig2`
 
 The examples in this section use the following :ref:`fig3`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q11
    :end-before: -- q12
 
@@ -230,7 +230,7 @@ The examples in this section use the following :ref:`fig3`
 
 The examples in this section use the following :ref:`fig4`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q13
    :end-before: -- q14
 

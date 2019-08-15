@@ -83,7 +83,7 @@ SELECT * FROM pgr_edwardMoore(
 
 -- q6
 -- q7
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3
 );
@@ -97,7 +97,7 @@ SELECT * FROM pgr_dijkstra(
    6 |        6 |    3 |   -1 |    0 |        5
 (6 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 5
 );
@@ -107,7 +107,7 @@ SELECT * FROM pgr_dijkstra(
    2 |        2 |    5 |   -1 |    0 |        1
 (2 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, ARRAY[3,5]
 );
@@ -123,7 +123,7 @@ SELECT * FROM pgr_dijkstra(
    8 |        2 |       5 |    5 |   -1 |    0 |        1
 (8 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     11, 3
 );
@@ -136,7 +136,7 @@ SELECT * FROM pgr_dijkstra(
    5 |        5 |    3 |   -1 |    0 |        4
 (5 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     11, 5
 );
@@ -149,7 +149,7 @@ SELECT * FROM pgr_dijkstra(
    5 |        5 |    5 |   -1 |    0 |        4
 (5 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2,11], 5
 );
@@ -164,7 +164,7 @@ SELECT * FROM pgr_dijkstra(
    7 |        5 |        11 |    5 |   -1 |    0 |        4
 (7 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2, 11], ARRAY[3,5]
 );
@@ -192,7 +192,7 @@ SELECT * FROM pgr_dijkstra(
 
 -- q8
 -- q9
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3,
     FALSE
@@ -203,7 +203,7 @@ SELECT * FROM pgr_dijkstra(
    2 |        2 |    3 |   -1 |    0 |        1
 (2 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 5,
     FALSE
@@ -214,7 +214,7 @@ SELECT * FROM pgr_dijkstra(
    2 |        2 |    5 |   -1 |    0 |        1
 (2 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     11, 3,
     FALSE
@@ -226,7 +226,7 @@ SELECT * FROM pgr_dijkstra(
    3 |        3 |    3 |   -1 |    0 |        2
 (3 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     11, 5,
     FALSE
@@ -238,7 +238,7 @@ SELECT * FROM pgr_dijkstra(
    3 |        3 |    5 |   -1 |    0 |        2
 (3 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2,11], 5,
     FALSE
@@ -247,12 +247,12 @@ SELECT * FROM pgr_dijkstra(
 -----+----------+-----------+------+------+------+----------
    1 |        1 |         2 |    2 |    4 |    1 |        0
    2 |        2 |         2 |    5 |   -1 |    0 |        1
-   3 |        1 |        11 |   11 |   12 |    1 |        0
-   4 |        2 |        11 |   10 |   10 |    1 |        1
+   3 |        1 |        11 |   11 |   11 |    1 |        0
+   4 |        2 |        11 |    6 |    8 |    1 |        1
    5 |        3 |        11 |    5 |   -1 |    0 |        2
 (5 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, ARRAY[3,5],
     FALSE
@@ -265,7 +265,7 @@ SELECT * FROM pgr_dijkstra(
    4 |        2 |       5 |    5 |   -1 |    0 |        1
 (4 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2, 11], ARRAY[3,5],
     FALSE
@@ -286,7 +286,7 @@ SELECT * FROM pgr_dijkstra(
 
 -- q10
 -- q11
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, 3
 );
@@ -294,7 +294,7 @@ SELECT * FROM pgr_dijkstra(
 -----+----------+------+------+------+----------
 (0 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, 5
 );
@@ -304,7 +304,7 @@ SELECT * FROM pgr_dijkstra(
    2 |        2 |    5 |   -1 |    0 |        1
 (2 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     11, 3
 );
@@ -312,7 +312,7 @@ SELECT * FROM pgr_dijkstra(
 -----+----------+------+------+------+----------
 (0 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     11, 5
 );
@@ -320,7 +320,7 @@ SELECT * FROM pgr_dijkstra(
 -----+----------+------+------+------+----------
 (0 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     ARRAY[2,11], 5
 );
@@ -330,7 +330,7 @@ SELECT * FROM pgr_dijkstra(
    2 |        2 |         2 |    5 |   -1 |    0 |        1
 (2 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, ARRAY[3,5]
 );
@@ -340,7 +340,7 @@ SELECT * FROM pgr_dijkstra(
    2 |        2 |       5 |    5 |   -1 |    0 |        1
 (2 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     ARRAY[2, 11], ARRAY[3,5]
 );
@@ -352,7 +352,7 @@ SELECT * FROM pgr_dijkstra(
 
 -- q12
 -- q13
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, 3,
     FALSE
@@ -365,7 +365,7 @@ SELECT * FROM pgr_dijkstra(
    4 |        4 |    3 |   -1 |    0 |        3
 (4 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, 5,
     FALSE
@@ -376,7 +376,7 @@ SELECT * FROM pgr_dijkstra(
    2 |        2 |    5 |   -1 |    0 |        1
 (2 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     11, 3,
     FALSE
@@ -388,7 +388,7 @@ SELECT * FROM pgr_dijkstra(
    3 |        3 |    3 |   -1 |    0 |        2
 (3 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     11, 5,
     FALSE
@@ -400,7 +400,7 @@ SELECT * FROM pgr_dijkstra(
    3 |        3 |    5 |   -1 |    0 |        2
 (3 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     ARRAY[2,11], 5,
     FALSE
@@ -409,12 +409,12 @@ SELECT * FROM pgr_dijkstra(
 -----+----------+-----------+------+------+------+----------
    1 |        1 |         2 |    2 |    4 |    1 |        0
    2 |        2 |         2 |    5 |   -1 |    0 |        1
-   3 |        1 |        11 |   11 |   12 |    1 |        0
-   4 |        2 |        11 |   10 |   10 |    1 |        1
+   3 |        1 |        11 |   11 |   11 |    1 |        0
+   4 |        2 |        11 |    6 |    8 |    1 |        1
    5 |        3 |        11 |    5 |   -1 |    0 |        2
 (5 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, ARRAY[3,5],
     FALSE
@@ -429,7 +429,7 @@ SELECT * FROM pgr_dijkstra(
    6 |        2 |       5 |    5 |   -1 |    0 |        1
 (6 rows)
 
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     ARRAY[2, 11], ARRAY[3,5],
     FALSE

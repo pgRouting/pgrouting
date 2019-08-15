@@ -32,31 +32,31 @@ SELECT * FROM pgr_edwardMoore(
 -------------------------------------------------------------------------------
 
 \echo -- q7
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 5
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, ARRAY[3,5]
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     11, 3
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     11, 5
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2,11], 5
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2, 11], ARRAY[3,5]
 );
@@ -68,37 +68,37 @@ SELECT * FROM pgr_dijkstra(
 
 
 \echo -- q9
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3,
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 5,
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     11, 3,
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     11, 5,
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2,11], 5,
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, ARRAY[3,5],
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2, 11], ARRAY[3,5],
     FALSE
@@ -111,31 +111,31 @@ SELECT * FROM pgr_dijkstra(
 
 
 \echo -- q11
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, 3
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, 5
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     11, 3
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     11, 5
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     ARRAY[2,11], 5
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, ARRAY[3,5]
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     ARRAY[2, 11], ARRAY[3,5]
 );
@@ -146,37 +146,37 @@ SELECT * FROM pgr_dijkstra(
 -------------------------------------------------------------------------------
 
 \echo -- q13
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, 3,
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, 5,
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     11, 3,
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     11, 5,
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     ARRAY[2,11], 5,
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     2, ARRAY[3,5],
     FALSE
 );
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
     ARRAY[2, 11], ARRAY[3,5],
     FALSE
