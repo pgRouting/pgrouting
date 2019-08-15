@@ -135,6 +135,10 @@ Experimental Functions
 
 .. rubric:: Others
 
+:doc:`pgr_topologicalSort`
+
+:doc:`pgr_transitiveClosure`
+
 :doc:`VRP-category`
 
 .. include:: VRP-category.rst
@@ -144,6 +148,8 @@ Experimental Functions
 .. toctree::
   :hidden:
 
+  pgr_topologicalSort
+  pgr_transitiveClosure
   VRP-category
 
 .. rubric:: Shortest Path Algorithms

@@ -67,7 +67,7 @@ Signatures
 
 :Example: For a **directed** graph
 
-.. literalinclude:: doc-pgr_topologicalSort.queries
+.. literalinclude:: doc-topologicalSort.queries
    :start-after: -- q1
    :end-before: -- q2
 
