@@ -178,10 +178,12 @@ pgRouting 3.0.0 Release Notes
   * pgr_chinesePostmanCost
 
 * Breadth First Search family
+
   * pgr_breadthFirstSearch
   * pgr_binaryBreadthFirstSearch
 
 * Bellman Ford family
+
   * pgr_bellmanFord
   * pgr_edwardMoore
 
