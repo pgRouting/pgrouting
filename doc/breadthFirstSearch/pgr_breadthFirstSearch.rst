@@ -49,7 +49,7 @@ Signatures
 .. index::
     single: breadthFirstSearch(Single vertex) - Experimental
 
-Single vertex, Infinite depth
+Single Vertex
 ...............................................................................
 
 .. code-block:: none
@@ -67,7 +67,7 @@ Single vertex, Infinite depth
 .. index::
     single: breadthFirstSearch(Multiple vertices) - Experimental
 
-Multiple vertices, Finite Depth
+Multiple Vertices
 ...............................................................................
 
 .. code-block:: none
