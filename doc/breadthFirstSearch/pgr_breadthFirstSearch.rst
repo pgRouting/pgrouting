@@ -82,41 +82,6 @@ Multiple Vertices
    :start-after: --q2
    :end-before: --q3
 
-.. index::
-    single: breadthFirstSearch(Undirected Graph) - Experimental
-
-Undirected Graph
-...............................................................................
-
-.. code-block:: none
-
-    pgr_breadthFirstSearch(Edges SQL, Root vids [, max_depth] [, directed])
-
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-
-:Example: The Breadth First Search traverls starting on vertices :math:`\{11, 12\}` with :math:`depth <= 2` as well as considering the graph to be undirected.
-
-.. literalinclude:: doc-pgr_breadthFirstSearch.queries
-   :start-after: --q3
-   :end-before: --q4
-
-.. index::
-    single: breadthFirstSearch(Vertex Outside Of Graph) - Experimental
-
-Vertex Out Of Grapg
-...............................................................................
-
-.. code-block:: none
-
-    pgr_breadthFirstSearch(Edges SQL, Root vids [, max_depth] [, directed])
-
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-
-:Example: The output of the function when a vertex not present in the graph is passed as a parameter.
-
-.. literalinclude:: doc-pgr_breadthFirstSearch.queries
-   :start-after: --q4
-   :end-before: --q5     
 
 .. Parameters, Inner query & result columns
 
@@ -192,6 +157,30 @@ Column           Type        Description
 ===============  =========== ====================================================
 
 .. result columns end
+
+.. index::
+    single: Additional Examples
+
+Additional Examples
+...............................................................................
+
+**Undirected Graph**
+
+:Example: The Breadth First Search traverls starting on vertices :math:`\{11, 12\}` with :math:`depth <= 2` as well as considering the graph to be undirected.
+
+.. literalinclude:: doc-pgr_breadthFirstSearch.queries
+   :start-after: --q3
+   :end-before: --q4
+
+
+**Vertex Out Of Graph**
+
+:Example: The output of the function when a vertex not present in the graph is passed as a parameter.
+
+.. literalinclude:: doc-pgr_breadthFirstSearch.queries
+   :start-after: --q4
+   :end-before: --q5     
+
 
 
 See Also
