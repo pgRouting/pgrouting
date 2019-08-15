@@ -1,3 +1,4 @@
+\echo --data-start
 
 DROP TABLE IF EXISTS roadworks CASCADE;
 CREATE table roadworks (
@@ -31,9 +32,7 @@ INSERT INTO roadworks(
   (17,  14,  15,  0,  0),  
   (18,  16,  17,  0,  0);
 
-\echo -- data
-
-SELECT * FROM roadworks;
+\echo --data-end
 
 \echo -- q1
 SELECT * FROM pgr_binaryBreadthFirstSearch(

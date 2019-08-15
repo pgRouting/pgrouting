@@ -7,7 +7,7 @@ SELECT * FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     2
 );
- seq | depth | start_vid | node | edge | cost | agg_cost 
+ seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
    1 |     0 |         2 |    2 |   -1 |    0 |        0
    2 |     1 |         2 |    1 |    1 |    1 |        1
@@ -29,7 +29,7 @@ SELECT * FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     ARRAY[11,12], max_depth := 2
 );
- seq | depth | start_vid | node | edge | cost | agg_cost 
+ seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
    1 |     0 |        11 |   11 |   -1 |    0 |        0
    2 |     1 |        11 |   12 |   13 |    1 |        1
@@ -45,7 +45,7 @@ SELECT * FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     ARRAY[11,12], max_depth := 2, directed := false
 );
- seq | depth | start_vid | node | edge | cost | agg_cost 
+ seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
    1 |     0 |        11 |   11 |   -1 |    0 |        0
    2 |     1 |        11 |    6 |   11 |    1 |        1
@@ -68,7 +68,7 @@ SELECT * FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     -10
 );
- seq | depth | start_vid | node | edge | cost | agg_cost 
+ seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
 (0 rows)
 
