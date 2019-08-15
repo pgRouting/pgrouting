@@ -48,7 +48,11 @@ This Release Contributors
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+<<<<<<< 5d593d9583a09e7405daa779e26b6055ce01d897
 Gudesa Venkata Sai Akhil, Hang Wu, Virginia Vergara
+=======
+Gudesa Venkata Sai Akhil, Virginia Vergara
+>>>>>>> [doc] Fixed minor type in pgRouting-introduction.rst
 
 And all the people that give us a little of their time making comments, finding issues, making pull requests etc.
 
