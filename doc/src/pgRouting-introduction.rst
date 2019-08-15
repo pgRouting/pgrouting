@@ -48,7 +48,7 @@ This Release Contributors
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Hang Wu,Virginia Vergara
+Gudesa Venkata Sai Akhil, Hang Wu, Virginia Vergara
 
 And all the people that give us a little of their time making comments, finding issues, making pull requests etc.
 
