@@ -131,11 +131,11 @@ Parameter           Type                   Description
 **Edges SQL**       ``TEXT``               SQL query described in `Inner query`_.
 **Root vid**        ``BIGINT``             Identifier of the root vertex of the tree.
 
-                                           - Used on `Single vertex`_
+                                           - Used on *Single vertex*.
 
 **Root vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
 
-                                           - Used on `Multiple vertices`_
+                                           - Used on *Multiple vertices*.
                                            - For optimization purposes, any duplicated value is ignored.
 =================== ====================== =================================================
 
