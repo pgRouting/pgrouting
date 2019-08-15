@@ -182,7 +182,7 @@ Return Columns
     :end-before: return_path_end
 
 
-Example Application
+Additional Examples
 -------------------------------------------------------------------------------
 
 This algorithm is best applied when trying to answer queries such as the following:
