@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_pushRelabel" href="pgr_pushRelabel.html" />
+    <link rel="next" title="pgr_boykovKolmogorov" href="pgr_boykovKolmogorov.html" />
     <link rel="prev" title="Flow - Family of functions" href="flow-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -69,6 +69,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
@@ -105,10 +106,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
-<li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
 <li><a class="reference internal" href="#return-columns">Return Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
@@ -126,7 +124,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_pushRelabel.html" title="Next Chapter: pgr_pushRelabel"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_pushRelabel &raquo;</span>
+    <a href="pgr_boykovKolmogorov.html" title="Next Chapter: pgr_boykovKolmogorov"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_boykovKolmogorov &raquo;</span>
     </a>
   </li>
               
@@ -201,16 +199,16 @@ current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pg
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, source,  target)
-pgr_maxFlow(edges_sql, sources,  target)
-pgr_maxFlow(edges_sql, source,  targets)
-pgr_maxFlow(edges_sql, sources,  targets)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_maxFlow(Edges SQL, source,  target)
+pgr_maxFlow(Edges SQL, sources,  target)
+pgr_maxFlow(Edges SQL, source,  targets)
+pgr_maxFlow(Edges SQL, sources,  targets)
 RETURNS BIGINT
 </pre></div>
 </div>
 <div class="section" id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, source,  target)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_maxFlow(Edges SQL, source,  target)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -241,7 +239,7 @@ RETURNS BIGINT
 </div>
 <div class="section" id="one-to-many">
 <span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, source,  targets)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_maxFlow(Edges SQL, source,  targets)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -272,7 +270,7 @@ RETURNS BIGINT
 </div>
 <div class="section" id="many-to-one">
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, sources,  target)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_maxFlow(Edges SQL, sources,  target)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -303,7 +301,7 @@ RETURNS BIGINT
 </div>
 <div class="section" id="many-to-many">
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_maxFlow(edges_sql, sources,  targets)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_maxFlow(Edges SQL, sources,  targets)
 RETURNS BIGINT
 </pre></div>
 </div>
@@ -350,10 +348,10 @@ RETURNS BIGINT
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
+<tr class="row-even"><td><strong>Edges SQL</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
 <td>&#160;</td>
-<td>The edges SQL query as described above.</td>
+<td>The edges SQL query as described in <a class="reference internal" href="#inner-query">Inner Query</a>.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
@@ -380,13 +378,11 @@ RETURNS BIGINT
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="edges-sql">
-<h3>edges_sql<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+<tr class="field-odd field"><th class="field-name">Edges SQL:</th><td class="field-body">an SQL query of a directed graph of capacities, which should return a set of rows with the following columns:</td>
 </tr>
 </tbody>
 </table>
@@ -450,7 +446,6 @@ RETURNS BIGINT
 </tbody>
 </table>
 </div>
-</div>
 <div class="section" id="return-columns">
 <h2>Return Columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -498,7 +493,7 @@ RETURNS BIGINT
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 17, 2019.<br/>
+      Last updated on Aug 14, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

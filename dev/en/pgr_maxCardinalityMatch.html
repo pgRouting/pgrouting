@@ -21,8 +21,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_edgeDisjointPaths" href="pgr_edgeDisjointPaths.html" />
-    <link rel="prev" title="pgr_boykovKolmogorov" href="pgr_boykovKolmogorov.html" />
+    <link rel="next" title="pgr_maxFlowMinCost - Experimental" href="pgr_maxFlowMinCost.html" />
+    <link rel="prev" title="pgr_edgeDisjointPaths" href="pgr_edgeDisjointPaths.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -69,6 +69,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
@@ -97,15 +98,9 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_maxCardinalityMatch</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#complete-signature">Complete signature</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
-<li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
 <li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
@@ -119,11 +114,11 @@
               
                 
   <li>
-    <a href="pgr_boykovKolmogorov.html" title="Previous Chapter: pgr_boykovKolmogorov"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_boykovKolmogorov</span>
+    <a href="pgr_edgeDisjointPaths.html" title="Previous Chapter: pgr_edgeDisjointPaths"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_edgeDisjointPaths</span>
     </a>
   </li>
   <li>
-    <a href="pgr_edgeDisjointPaths.html" title="Next Chapter: pgr_edgeDisjointPaths"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_edgeDisjointPaths &raquo;</span>
+    <a href="pgr_maxFlowMinCost.html" title="Next Chapter: pgr_maxFlowMinCost - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_maxFlowMi... &raquo;</span>
     </a>
   </li>
               
@@ -203,48 +198,10 @@ current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pg
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">Summary</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_MaximumCardinalityMatching(edges_sql)
-pgr_MaximumCardinalityMatching(edges_sql, directed)
+<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_maxCardinalityMatch(Edges SQL [, directed])
 
 RETURNS SET OF (seq, edge_id, source, target)
 OR EMPTY SET
-</pre></div>
-</div>
-<p class="rubric">Using defaults</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_MaximumCardinalityMatching(edges_sql)
-RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
-</pre></div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">For a <strong>directed</strong> graph</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxCardinalityMatch</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;</span>
-<span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
-<span class="o">-----+------+--------+--------</span>
-   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>      <span class="mi">3</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">9</span>
-   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span>
-   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">13</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">12</span>
-   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span>     <span class="mi">15</span>
-   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span>
-<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<div class="section" id="complete-signature">
-<span id="index-0"></span><h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_MaximumCardinalityMatching(edges_sql, directed)
-RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -272,7 +229,6 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 <span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="parameters">
@@ -309,21 +265,19 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="edges-sql">
-<h3>edges_sql<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+<tr class="field-odd field"><th class="field-name">Edges SQL:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
 </tr>
 </tbody>
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="18%" />
 <col width="17%" />
-<col width="65%" />
+<col width="16%" />
+<col width="67%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
@@ -346,11 +300,11 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 </tr>
 <tr class="row-odd"><td><strong>going</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERIC</span></code></td>
-<td>A positive value represents the existence of the edge (source, target).</td>
+<td>A positive value represents the existence of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>).</td>
 </tr>
 <tr class="row-even"><td><strong>coming</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERIC</span></code></td>
-<td>A positive value represents the existence of the edge (target, source).</td>
+<td>A positive value represents the existence of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>).</td>
 </tr>
 </tbody>
 </table>
@@ -366,14 +320,13 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 </tbody>
 </table>
 </div>
-</div>
 <div class="section" id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
+<col width="23%" />
 <col width="22%" />
-<col width="21%" />
-<col width="58%" />
+<col width="54%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
@@ -388,7 +341,7 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 </tr>
 <tr class="row-odd"><td><strong>edge</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the edge in the original query(edges_sql).</td>
+<td>Identifier of the edge in the original query.</td>
 </tr>
 <tr class="row-even"><td><strong>source</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
@@ -430,7 +383,7 @@ RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 17, 2019.<br/>
+      Last updated on Aug 14, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

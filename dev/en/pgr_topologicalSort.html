@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Chinese Postman Problem - Family of functions (Experimental) &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>pgr_topologicalSort - Experimental &#8212; pgRouting Manual (3.0-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -21,8 +21,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_chinesePostman - Experimental" href="pgr_chinesePostman.html" />
-    <link rel="prev" title="KSP Category" href="KSP-category.html" />
+    <link rel="next" title="pgr_transitiveClosure" href="pgr_transitiveClosure.html" />
+    <link rel="prev" title="pgr_lineGraphFull - Experimental" href="pgr_lineGraphFull.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -96,10 +96,12 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Chinese Postman Problem - Family of functions (Experimental)</a><ul>
+<li><a class="reference internal" href="#">pgr_topologicalSort - Experimental</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -112,11 +114,11 @@
               
                 
   <li>
-    <a href="KSP-category.html" title="Previous Chapter: KSP Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; KSP Category</span>
+    <a href="pgr_lineGraphFull.html" title="Previous Chapter: pgr_lineGraphFull - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_chinesePostman.html" title="Next Chapter: pgr_chinesePostman - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_chinesePo... &raquo;</span>
+    <a href="pgr_transitiveClosure.html" title="Next Chapter: pgr_transitiveClosure"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_transitiveClosure &raquo;</span>
     </a>
   </li>
               
@@ -144,8 +146,14 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="chinese-postman-problem-family-of-functions-experimental">
-<h1>Chinese Postman Problem - Family of functions (Experimental)<a class="headerlink" href="#chinese-postman-problem-family-of-functions-experimental" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-topologicalsort-experimental">
+<h1>pgr_topologicalSort - Experimental<a class="headerlink" href="#pgr-topologicalsort-experimental" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_topologicalSort</span></code> — Returns the linear ordering of the vertices(s) for weighted directed acyclic graphs(DAG).
+In particular, the topological sort algorithm implemented by Boost.Graph.</p>
+<div class="figure" id="id1">
+<a class="reference external image-reference" href="https://www.boost.org/doc/libs/1_65_1/libs/graph/doc/topological_sort.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
+</div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>Experimental functions</p>
@@ -168,37 +176,79 @@
 </li>
 </ul>
 </div>
+<p class="rubric">Availability</p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_chinesePostman.html"><span class="doc">pgr_chinesePostman - Experimental</span></a></li>
-<li><a class="reference internal" href="pgr_chinesePostmanCost.html"><span class="doc">pgr_chinesePostmanCost - Experimental</span></a></li>
+<li>Version 3.0.0<ul>
+<li>New <strong>experimental</strong> function</li>
 </ul>
-<div class="toctree-wrapper compound">
-</div>
-<p class="rubric">Previous versions of this page</p>
+</li>
+</ul>
+<p class="rubric">Support</p>
 <ul class="simple">
 <li><strong>Supported versions:</strong>
-current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/chinesePostmanProblem-family.html">3.0</a>)</li>
+current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pgr_topologicalSort.html">3.0</a>)</li>
+<li><strong>TBD</strong></li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>The main characteristics are:</p>
-<ul class="simple">
-<li>Process is done only on edges with <strong>positive</strong> costs.</li>
-<li>Running time: <span class="math notranslate nohighlight">\(O(E * (E + V * logV))\)</span></li>
-<li>Graph must be connected.</li>
+<p>The topological sort algorithm creates a linear ordering of the vertices such that if edge (u,v) appears
+in the graph, then v comes before u in the ordering.</p>
+<p>This implementation can only be used with a <strong>directed</strong> graph with no cycles i.e. directed acyclic graph.</p>
+<dl class="docutils">
+<dt>The main characteristics are:</dt>
+<dd><ul class="first simple">
+<li>Process is valid for directed acyclic graphs only. otherwise it will throw warnings.</li>
+<li>For optimization purposes, if there are more than one answer, the function will return one of them.</li>
+<li>The returned values are ordered in topological order:</li>
 </ul>
+<ul class="last simple">
+<li>Running time: <span class="math notranslate nohighlight">\(O( (V + E))\)</span></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_topologicalSort(edges_sql)
+
+RETURNS SET OF (seq, sorted_v)
+OR EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">For a <strong>directed</strong> graph</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_topologicalsort</span><span class="p">(</span>
+  \<span class="s1">&#39;SELECT id,source,target,cost,reverse_cost FROM edge_table1</span><span class="se">\&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">sorted_v</span> 
+<span class="o">-----+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="15%" />
-<col width="20%" />
+<col width="19%" />
+<col width="22%" />
 <col width="9%" />
-<col width="56%" />
+<col width="49%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
+<tr class="row-odd"><th class="head">Parameter</th>
 <th class="head">Type</th>
 <th class="head">Default</th>
 <th class="head">Description</th>
@@ -208,14 +258,21 @@ current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/ch
 <tr class="row-even"><td><strong>edges_sql</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
 <td>&#160;</td>
-<td>The edges SQL query as described in <a class="reference internal" href="#inner-query">Inner query</a>.</td>
+<td>SQL query as described above.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<p>An Edges SQL that represents a <strong>directed</strong> graph with the following columns</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -278,8 +335,39 @@ current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/ch
 </tbody>
 </table>
 </div>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">sorted_v)</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="13%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
+<td>Sequential value starting from <strong>1</strong>.</td>
+</tr>
+<tr class="row-odd"><td><strong>sorted_v</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
+<td>Linear ordering of the vertices(ordered in topological order)</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Topological_sorting">https://en.wikipedia.org/wiki/Topological_sorting</a></li>
+<li>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
+</ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>

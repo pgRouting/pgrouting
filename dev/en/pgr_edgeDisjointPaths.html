@@ -21,8 +21,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Spanning Tree - Families" href="spanningTree-family.html" />
-    <link rel="prev" title="pgr_maxCardinalityMatch" href="pgr_maxCardinalityMatch.html" />
+    <link rel="next" title="pgr_maxCardinalityMatch" href="pgr_maxCardinalityMatch.html" />
+    <link rel="prev" title="pgr_pushRelabel" href="pgr_pushRelabel.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -69,6 +69,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
@@ -105,10 +106,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
-<li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
 <li><a class="reference internal" href="#return-columns">Return Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
@@ -122,11 +120,11 @@
               
                 
   <li>
-    <a href="pgr_maxCardinalityMatch.html" title="Previous Chapter: pgr_maxCardinalityMatch"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_maxCardin...</span>
+    <a href="pgr_pushRelabel.html" title="Previous Chapter: pgr_pushRelabel"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_pushRelabel</span>
     </a>
   </li>
   <li>
-    <a href="spanningTree-family.html" title="Next Chapter: Spanning Tree - Families"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Spanning Tree... &raquo;</span>
+    <a href="pgr_maxCardinalityMatch.html" title="Next Chapter: pgr_maxCardinalityMatch"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_maxCardin... &raquo;</span>
     </a>
   </li>
               
@@ -205,18 +203,18 @@ Utilizes underlying maximum flow algorithms to calculate the paths.</p>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
-pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid [, directed])
-pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids [, directed])
-pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid [, directed])
-pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids [, directed])
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid)
+pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid [, directed])
+pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vids [, directed])
+pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vid [, directed])
+pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vids [, directed])
 
 RETURNS SET OF (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
 <p class="rubric">Using defaults</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid)
 RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -247,7 +245,7 @@ OR EMPTY SET
 </div>
 <div class="section" id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid, directed)
 RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -287,7 +285,7 @@ OR EMPTY SET
 </div>
 <div class="section" id="one-to-many">
 <span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vids, directed)
 RETURNS SET OF (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -327,7 +325,7 @@ OR EMPTY SET
 </div>
 <div class="section" id="many-to-one">
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vid, directed)
 RETURNS SET OF (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -367,7 +365,7 @@ OR EMPTY SET
 </div>
 <div class="section" id="many-to-many">
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vids, directed)
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
@@ -476,8 +474,6 @@ OR EMPTY SET
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="edges-sql">
-<h3>edges_sql<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -540,7 +536,6 @@ OR EMPTY SET
 </tbody>
 </table>
 </div>
-</div>
 <div class="section" id="return-columns">
 <h2>Return Columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -593,27 +588,15 @@ Returned when multiple ending vertices are in the query.</p>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</td>
 </tr>
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the starting vertex. Used when multiple starting vetrices are in the query.</td>
-</tr>
-<tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the ending vertex. Used when multiple ending vertices are in the query.</td>
-</tr>
-<tr class="row-even"><td><strong>node</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</td>
-</tr>
-<tr class="row-odd"><td><strong>edge</strong></td>
+<tr class="row-even"><td><strong>edge</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence. <code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last node of the path.</td>
 </tr>
-<tr class="row-even"><td><strong>cost</strong></td>
+<tr class="row-odd"><td><strong>cost</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the path sequence.</td>
 </tr>
-<tr class="row-odd"><td><strong>agg_cost</strong></td>
+<tr class="row-even"><td><strong>agg_cost</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</td>
 </tr>
@@ -646,7 +629,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 17, 2019.<br/>
+      Last updated on Aug 14, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

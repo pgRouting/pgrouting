@@ -69,6 +69,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
@@ -383,7 +384,7 @@ sudo make install
 <span id="install-testing"></span><h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
 <p>Currently there is no <code class="code docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> and testing is done as follows</p>
 <p>The following instructions start from <em>path/to/pgrouting/</em></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tools/testers/algorithm-tester.pl
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tools/testers/doc_queries_generator.pl
 createdb  -U &lt;user&gt; ___pgr___test___
 sh ./tools/testers/pg_prove_tests.sh &lt;user&gt;
 dropdb  -U &lt;user&gt; ___pgr___test___
@@ -413,7 +414,7 @@ dropdb  -U &lt;user&gt; ___pgr___test___
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 17, 2019.<br/>
+      Last updated on Aug 14, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

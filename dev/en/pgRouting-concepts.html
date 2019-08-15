@@ -69,6 +69,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
@@ -117,7 +118,6 @@
 </li>
 <li><a class="reference internal" href="#parameters">Parameters</a><ul>
 <li><a class="reference internal" href="#edges-sql-query-for-astar-family-and-astar-family-functions">edges_sql query for <code class="docutils literal notranslate"><span class="pre">aStar-family</span></code> and <code class="docutils literal notranslate"><span class="pre">aStar-family</span></code> functions</a></li>
-<li><a class="reference internal" href="#description-of-the-edges-sql-query-for-max-flow-like-functions">Description of the edges_sql query for Max-flow like functions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#return-columns-values">Return columns &amp; values</a><ul>
@@ -127,7 +127,6 @@
 <li><a class="reference internal" href="#description-of-the-return-values">Description of the Return Values</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#advanced-topics">Advanced Topics</a><ul>
 <li><a class="reference internal" href="#routing-topology">Routing Topology</a></li>
 <li><a class="reference internal" href="#graph-analytics">Graph Analytics</a></li>
@@ -214,33 +213,31 @@
 </li>
 <li><a class="reference internal" href="#parameters" id="id27">Parameters</a><ul>
 <li><a class="reference internal" href="#edges-sql-query-for-astar-family-and-astar-family-functions" id="id28">edges_sql query for <a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Family of functions</span></a> and <a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Family of functions</span></a> functions</a></li>
-<li><a class="reference internal" href="#description-of-the-edges-sql-query-for-max-flow-like-functions" id="id29">Description of the edges_sql query for Max-flow like functions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#return-columns-values" id="id30">Return columns &amp; values</a><ul>
-<li><a class="reference internal" href="#return-values-for-a-path" id="id31">Return values for a path</a></li>
-<li><a class="reference internal" href="#return-values-for-multiple-paths-from-the-same-source-and-destination" id="id32">Return values for multiple paths from the same source and destination</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values-for-a-costmatrix-category-function" id="id33">Description of the return values for a <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a> function</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values" id="id34">Description of the Return Values</a></li>
+<li><a class="reference internal" href="#return-columns-values" id="id29">Return columns &amp; values</a><ul>
+<li><a class="reference internal" href="#return-values-for-a-path" id="id30">Return values for a path</a></li>
+<li><a class="reference internal" href="#return-values-for-multiple-paths-from-the-same-source-and-destination" id="id31">Return values for multiple paths from the same source and destination</a></li>
+<li><a class="reference internal" href="#description-of-the-return-values-for-a-costmatrix-category-function" id="id32">Description of the return values for a <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a> function</a></li>
+<li><a class="reference internal" href="#description-of-the-return-values" id="id33">Description of the Return Values</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns" id="id35">Result Columns</a></li>
-<li><a class="reference internal" href="#advanced-topics" id="id36">Advanced Topics</a><ul>
-<li><a class="reference internal" href="#routing-topology" id="id37">Routing Topology</a></li>
-<li><a class="reference internal" href="#graph-analytics" id="id38">Graph Analytics</a></li>
-<li><a class="reference internal" href="#analyze-a-graph" id="id39">Analyze a Graph</a></li>
-<li><a class="reference internal" href="#analyze-one-way-streets" id="id40">Analyze One Way Streets</a><ul>
-<li><a class="reference internal" href="#example" id="id41">Example</a></li>
+<li><a class="reference internal" href="#advanced-topics" id="id34">Advanced Topics</a><ul>
+<li><a class="reference internal" href="#routing-topology" id="id35">Routing Topology</a></li>
+<li><a class="reference internal" href="#graph-analytics" id="id36">Graph Analytics</a></li>
+<li><a class="reference internal" href="#analyze-a-graph" id="id37">Analyze a Graph</a></li>
+<li><a class="reference internal" href="#analyze-one-way-streets" id="id38">Analyze One Way Streets</a><ul>
+<li><a class="reference internal" href="#example" id="id39">Example</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#performance-tips" id="id42">Performance Tips</a><ul>
-<li><a class="reference internal" href="#for-the-routing-functions" id="id43">For the Routing functions</a></li>
-<li><a class="reference internal" href="#for-the-topology-functions" id="id44">For the topology functions:</a></li>
+<li><a class="reference internal" href="#performance-tips" id="id40">Performance Tips</a><ul>
+<li><a class="reference internal" href="#for-the-routing-functions" id="id41">For the Routing functions</a></li>
+<li><a class="reference internal" href="#for-the-topology-functions" id="id42">For the topology functions:</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#how-to-contribute" id="id45">How to contribute</a></li>
+<li><a class="reference internal" href="#how-to-contribute" id="id43">How to contribute</a></li>
 </ul>
 </li>
 </ul>
@@ -251,15 +248,15 @@
 with pgRouting. In this guide we will cover:</p>
 <div class="contents local topic" id="id3">
 <ul class="simple">
-<li><a class="reference internal" href="#create-a-routing-database" id="id46">Create a routing Database</a></li>
-<li><a class="reference internal" href="#load-data" id="id47">Load Data</a></li>
-<li><a class="reference internal" href="#build-a-routing-topology" id="id48">Build a Routing Topology</a></li>
-<li><a class="reference internal" href="#check-the-routing-topology" id="id49">Check the Routing Topology</a></li>
-<li><a class="reference internal" href="#compute-a-path" id="id50">Compute a Path</a></li>
+<li><a class="reference internal" href="#create-a-routing-database" id="id44">Create a routing Database</a></li>
+<li><a class="reference internal" href="#load-data" id="id45">Load Data</a></li>
+<li><a class="reference internal" href="#build-a-routing-topology" id="id46">Build a Routing Topology</a></li>
+<li><a class="reference internal" href="#check-the-routing-topology" id="id47">Check the Routing Topology</a></li>
+<li><a class="reference internal" href="#compute-a-path" id="id48">Compute a Path</a></li>
 </ul>
 </div>
 <div class="section" id="create-a-routing-database">
-<span id="create-database"></span><h3><a class="toc-backref" href="#id46">Create a routing Database</a><a class="headerlink" href="#create-a-routing-database" title="Permalink to this headline">¶</a></h3>
+<span id="create-database"></span><h3><a class="toc-backref" href="#id44">Create a routing Database</a><a class="headerlink" href="#create-a-routing-database" title="Permalink to this headline">¶</a></h3>
 <p>The first thing we need to do is create a database and load pgrouting in
 the database. Typically you will create a database for each project. Once
 you have a database to work in, your can load your data and build your
@@ -273,7 +270,7 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 </div>
 </div>
 <div class="section" id="load-data">
-<span id="id4"></span><h3><a class="toc-backref" href="#id47">Load Data</a><a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3><a class="toc-backref" href="#id45">Load Data</a><a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h3>
 <p>How you load your data will depend in what form it comes it. There are
 various OpenSource tools that can help you, like:</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -308,7 +305,7 @@ point you need to know a little about your data structure and content. One easy
 way to browse your new data table is with pgAdmin3 or phpPgAdmin.</p>
 </div>
 <div class="section" id="build-a-routing-topology">
-<span id="build-topology"></span><h3><a class="toc-backref" href="#id48">Build a Routing Topology</a><a class="headerlink" href="#build-a-routing-topology" title="Permalink to this headline">¶</a></h3>
+<span id="build-topology"></span><h3><a class="toc-backref" href="#id46">Build a Routing Topology</a><a class="headerlink" href="#build-a-routing-topology" title="Permalink to this headline">¶</a></h3>
 <p>Next we need to build a topology for our street data. What this means is that
 for any given edge in your street data the ends of that edge will be connected
 to a unique node and to other edges that are also connected to that same unique
@@ -326,7 +323,7 @@ used for routing with pgrouting. We provide a tool that will help with this:</p>
 </ul>
 </div>
 <div class="section" id="check-the-routing-topology">
-<span id="check-graph"></span><h3><a class="toc-backref" href="#id49">Check the Routing Topology</a><a class="headerlink" href="#check-the-routing-topology" title="Permalink to this headline">¶</a></h3>
+<span id="check-graph"></span><h3><a class="toc-backref" href="#id47">Check the Routing Topology</a><a class="headerlink" href="#check-the-routing-topology" title="Permalink to this headline">¶</a></h3>
 <p>There are lots of possible sources for errors in a graph. The data that you
 started with may not have been designed with routing in mind. A graph has some
 very specific requirements. One is that it is <em>NODED</em>, this means that except
@@ -350,7 +347,7 @@ but we have some basic tools that might help.</p>
 </ul>
 </div>
 <div class="section" id="compute-a-path">
-<span id="compute-path"></span><h3><a class="toc-backref" href="#id50">Compute a Path</a><a class="headerlink" href="#compute-a-path" title="Permalink to this headline">¶</a></h3>
+<span id="compute-path"></span><h3><a class="toc-backref" href="#id48">Compute a Path</a><a class="headerlink" href="#compute-a-path" title="Permalink to this headline">¶</a></h3>
 <p>Once you have all the preparation work done above, computing a route is fairly easy.
 We have a lot of different algorithms that can work with your prepared road
 network. The general form of a route query is:</p>
@@ -417,7 +414,7 @@ all functions.</p>
 <span id="id5"></span><h2><a class="toc-backref" href="#id25">Inner Queries</a><a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
 <div class="contents local topic" id="id6">
 <ul class="simple">
-<li><a class="reference internal" href="#description-of-the-edges-sql-query-for-dijkstra-like-functions" id="id51">Description of the edges_sql query for dijkstra like functions</a></li>
+<li><a class="reference internal" href="#description-of-the-edges-sql-query-for-dijkstra-like-functions" id="id49">Description of the edges_sql query for dijkstra like functions</a></li>
 </ul>
 </div>
 <p>There are several kinds of valid inner queries and also the columns returned are depending of the function.
@@ -435,7 +432,7 @@ To simplify variety of types, <code class="docutils literal notranslate"><span c
 </tbody>
 </table>
 <div class="section" id="description-of-the-edges-sql-query-for-dijkstra-like-functions">
-<h3><a class="toc-backref" href="#id51">Description of the edges_sql query for dijkstra like functions</a><a class="headerlink" href="#description-of-the-edges-sql-query-for-dijkstra-like-functions" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id49">Description of the edges_sql query for dijkstra like functions</a><a class="headerlink" href="#description-of-the-edges-sql-query-for-dijkstra-like-functions" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -711,14 +708,12 @@ To simplify variety of types, <code class="docutils literal notranslate"><span c
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="description-of-the-edges-sql-query-for-max-flow-like-functions">
-<h3><a class="toc-backref" href="#id29">Description of the edges_sql query for Max-flow like functions</a><a class="headerlink" href="#description-of-the-edges-sql-query-for-max-flow-like-functions" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">For <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> :</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+<tr class="field-odd field"><th class="field-name">Edges SQL:</th><td class="field-body">an SQL query of a directed graph of capacities, which should return a set of rows with the following columns:</td>
 </tr>
 </tbody>
 </table>
@@ -781,12 +776,12 @@ To simplify variety of types, <code class="docutils literal notranslate"><span c
 </tr>
 </tbody>
 </table>
-<p class="rubric">Description of the edges_sql query for Min-Cost Max-flow like functions</p>
+<p class="rubric">For <a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a> and <a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - Experimental</span></a>:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+<tr class="field-odd field"><th class="field-name">Edges SQL:</th><td class="field-body">an SQL query of a directed graph of capacities, which should return a set of rows with the following columns:</td>
 </tr>
 </tbody>
 </table>
@@ -926,18 +921,18 @@ To simplify variety of types, <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="section" id="return-columns-values">
-<span id="return-values"></span><h2><a class="toc-backref" href="#id30">Return columns &amp; values</a><a class="headerlink" href="#return-columns-values" title="Permalink to this headline">¶</a></h2>
+<span id="return-values"></span><h2><a class="toc-backref" href="#id29">Return columns &amp; values</a><a class="headerlink" href="#return-columns-values" title="Permalink to this headline">¶</a></h2>
 <div class="contents local topic" id="id7">
 <ul class="simple">
-<li><a class="reference internal" href="#return-values-for-a-path" id="id52">Return values for a path</a></li>
-<li><a class="reference internal" href="#return-values-for-multiple-paths-from-the-same-source-and-destination" id="id53">Return values for multiple paths from the same source and destination</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values-for-a-costmatrix-category-function" id="id54">Description of the return values for a <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a> function</a></li>
-<li><a class="reference internal" href="#description-of-the-return-values" id="id55">Description of the Return Values</a></li>
+<li><a class="reference internal" href="#return-values-for-a-path" id="id50">Return values for a path</a></li>
+<li><a class="reference internal" href="#return-values-for-multiple-paths-from-the-same-source-and-destination" id="id51">Return values for multiple paths from the same source and destination</a></li>
+<li><a class="reference internal" href="#description-of-the-return-values-for-a-costmatrix-category-function" id="id52">Description of the return values for a <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a> function</a></li>
+<li><a class="reference internal" href="#description-of-the-return-values" id="id53">Description of the Return Values</a></li>
 </ul>
 </div>
 <p>There are several kinds of columns returned are depending of the function.</p>
 <div class="section" id="return-values-for-a-path">
-<h3><a class="toc-backref" href="#id52">Return values for a path</a><a class="headerlink" href="#return-values-for-a-path" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id50">Return values for a path</a><a class="headerlink" href="#return-values-for-a-path" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1000,7 +995,7 @@ Returned when multiple ending vertices are in the query.</p>
 </table>
 </div>
 <div class="section" id="return-values-for-multiple-paths-from-the-same-source-and-destination">
-<h3><a class="toc-backref" href="#id53">Return values for multiple paths from the same source and destination</a><a class="headerlink" href="#return-values-for-multiple-paths-from-the-same-source-and-destination" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id51">Return values for multiple paths from the same source and destination</a><a class="headerlink" href="#return-values-for-multiple-paths-from-the-same-source-and-destination" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1051,27 +1046,15 @@ Returned when multiple ending vertices are in the query.</p>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</td>
 </tr>
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the starting vertex. Used when multiple starting vetrices are in the query.</td>
-</tr>
-<tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the ending vertex. Used when multiple ending vertices are in the query.</td>
-</tr>
-<tr class="row-even"><td><strong>node</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</td>
-</tr>
-<tr class="row-odd"><td><strong>edge</strong></td>
+<tr class="row-even"><td><strong>edge</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence. <code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last node of the path.</td>
 </tr>
-<tr class="row-even"><td><strong>cost</strong></td>
+<tr class="row-odd"><td><strong>cost</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the path sequence.</td>
 </tr>
-<tr class="row-odd"><td><strong>agg_cost</strong></td>
+<tr class="row-even"><td><strong>agg_cost</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</td>
 </tr>
@@ -1079,7 +1062,7 @@ Returned when multiple ending vertices are in the query.</p>
 </table>
 </div>
 <div class="section" id="description-of-the-return-values-for-a-costmatrix-category-function">
-<h3><a class="toc-backref" href="#id54">Description of the return values for a <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a> function</a><a class="headerlink" href="#description-of-the-return-values-for-a-costmatrix-category-function" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id52">Description of the return values for a <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a> function</a><a class="headerlink" href="#description-of-the-return-values-for-a-costmatrix-category-function" title="Permalink to this headline">¶</a></h3>
 <p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1110,12 +1093,13 @@ Returned when multiple ending vertices are in the query.</p>
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
-<h3><a class="toc-backref" href="#id55">Description of the Return Values</a><a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id53">Description of the Return Values</a><a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">For <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> :</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="20%" />
-<col width="19%" />
-<col width="61%" />
+<col width="18%" />
+<col width="17%" />
+<col width="65%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
@@ -1128,32 +1112,29 @@ Returned when multiple ending vertices are in the query.</p>
 <td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
 <td>Sequential value starting from <strong>1</strong>.</td>
 </tr>
-<tr class="row-odd"><td><strong>edge_id</strong></td>
+<tr class="row-odd"><td><strong>edge</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the edge in the original query(edges_sql).</td>
 </tr>
-<tr class="row-even"><td><strong>source</strong></td>
+<tr class="row-even"><td><strong>start_vid</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
-<tr class="row-odd"><td><strong>target</strong></td>
+<tr class="row-odd"><td><strong>end_vid</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>flow</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Flow through the edge in the direction (source, target).</td>
+<td>Flow through the edge in the direction (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</td>
 </tr>
 <tr class="row-odd"><td><strong>residual_capacity</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Residual capacity of the edge in the direction (source, target).</td>
+<td>Residual capacity of the edge in the direction (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="result-columns">
-<h2><a class="toc-backref" href="#id35">Result Columns</a><a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">For <a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -1202,21 +1183,22 @@ Returned when multiple ending vertices are in the query.</p>
 </tbody>
 </table>
 </div>
+</div>
 <div class="section" id="advanced-topics">
-<span id="id8"></span><h2><a class="toc-backref" href="#id36">Advanced Topics</a><a class="headerlink" href="#advanced-topics" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2><a class="toc-backref" href="#id34">Advanced Topics</a><a class="headerlink" href="#advanced-topics" title="Permalink to this headline">¶</a></h2>
 <div class="contents local topic" id="id9">
 <ul class="simple">
-<li><a class="reference internal" href="#routing-topology" id="id56">Routing Topology</a></li>
-<li><a class="reference internal" href="#graph-analytics" id="id57">Graph Analytics</a></li>
-<li><a class="reference internal" href="#analyze-a-graph" id="id58">Analyze a Graph</a></li>
-<li><a class="reference internal" href="#analyze-one-way-streets" id="id59">Analyze One Way Streets</a><ul>
-<li><a class="reference internal" href="#example" id="id60">Example</a></li>
+<li><a class="reference internal" href="#routing-topology" id="id54">Routing Topology</a></li>
+<li><a class="reference internal" href="#graph-analytics" id="id55">Graph Analytics</a></li>
+<li><a class="reference internal" href="#analyze-a-graph" id="id56">Analyze a Graph</a></li>
+<li><a class="reference internal" href="#analyze-one-way-streets" id="id57">Analyze One Way Streets</a><ul>
+<li><a class="reference internal" href="#example" id="id58">Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="routing-topology">
-<span id="topology"></span><h3><a class="toc-backref" href="#id56">Routing Topology</a><a class="headerlink" href="#routing-topology" title="Permalink to this headline">¶</a></h3>
+<span id="topology"></span><h3><a class="toc-backref" href="#id54">Routing Topology</a><a class="headerlink" href="#routing-topology" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">Overview</p>
 <p>Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information associated with them. To create a useful topology the data needs to be “noded”. This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection, assuming that you can navigate from any of these segments to any other segment via that intersection.</p>
 <p>You can use the <a class="reference internal" href="#analytics"><span class="std std-ref">graph analysis functions</span></a> to help you see where you might have topology problems in your data. If you need to node your data, we also have a function <a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork()</span></a> that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.</p>
@@ -1303,13 +1285,13 @@ Returned when multiple ending vertices are in the query.</p>
 <p>Now your database should be ready to use any (most?) of the pgRouting algorithms.</p>
 </div>
 <div class="section" id="graph-analytics">
-<span id="analytics"></span><h3><a class="toc-backref" href="#id57">Graph Analytics</a><a class="headerlink" href="#graph-analytics" title="Permalink to this headline">¶</a></h3>
+<span id="analytics"></span><h3><a class="toc-backref" href="#id55">Graph Analytics</a><a class="headerlink" href="#graph-analytics" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">Overview</p>
 <p>It is common to find problems with graphs that have not been constructed fully noded or in graphs with z-levels at intersection that have been entered incorrectly. An other problem is one way streets that have been entered in the wrong direction. We can not detect errors with respect to “ground” truth, but we can look for inconsistencies and some anomalies in a graph and report them for additional inspections.</p>
 <p>We do not current have any visualization tools for these problems, but I have used mapserver to render the graph and highlight potential problem areas. Someone familiar with graphviz might contribute tools for generating images with that.</p>
 </div>
 <div class="section" id="analyze-a-graph">
-<h3><a class="toc-backref" href="#id58">Analyze a Graph</a><a class="headerlink" href="#analyze-a-graph" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id56">Analyze a Graph</a><a class="headerlink" href="#analyze-a-graph" title="Permalink to this headline">¶</a></h3>
 <p>With <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> the graph can be checked for errors. For example for table “mytab” that has “mytab_vertices_pgr” as the vertices table:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000002</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span><span class="p">...</span>
@@ -1357,12 +1339,12 @@ Returned when multiple ending vertices are in the query.</p>
 <p>If you want to visualize these on a graphic image, then you can use something like mapserver to render the edges and the vertices and style based on <code class="docutils literal notranslate"><span class="pre">cnt</span></code> or if they are isolated, etc. You can also do this with a tool like graphviz, or geoserver or other similar tools.</p>
 </div>
 <div class="section" id="analyze-one-way-streets">
-<h3><a class="toc-backref" href="#id59">Analyze One Way Streets</a><a class="headerlink" href="#analyze-one-way-streets" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id57">Analyze One Way Streets</a><a class="headerlink" href="#analyze-one-way-streets" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> analyzes one way streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.</p>
 <p>This query will add two columns to the vertices_tmp table <code class="docutils literal notranslate"><span class="pre">ein</span> <span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">eout</span> <span class="pre">int</span></code> and populate it with the appropriate counts. After running this on a graph you can identify nodes with potential problems with the following query.</p>
 <p>The rules are defined as an array of text strings that if match the <code class="docutils literal notranslate"><span class="pre">col</span></code> value would be counted as true for the source or target in or out condition.</p>
 <div class="section" id="example">
-<h4><a class="toc-backref" href="#id60">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id58">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
 <p>Lets assume we have a table “st” of edges and a column “one_way” that might have values like:</p>
 <ul class="simple">
 <li>‘FT’    - oneway from the source to the target node.</li>
@@ -1394,15 +1376,15 @@ Returned when multiple ending vertices are in the query.</p>
 </div>
 </div>
 <div class="section" id="performance-tips">
-<span id="performance"></span><h2><a class="toc-backref" href="#id42">Performance Tips</a><a class="headerlink" href="#performance-tips" title="Permalink to this headline">¶</a></h2>
+<span id="performance"></span><h2><a class="toc-backref" href="#id40">Performance Tips</a><a class="headerlink" href="#performance-tips" title="Permalink to this headline">¶</a></h2>
 <div class="contents local topic" id="id10">
 <ul class="simple">
-<li><a class="reference internal" href="#for-the-routing-functions" id="id61">For the Routing functions</a></li>
-<li><a class="reference internal" href="#for-the-topology-functions" id="id62">For the topology functions:</a></li>
+<li><a class="reference internal" href="#for-the-routing-functions" id="id59">For the Routing functions</a></li>
+<li><a class="reference internal" href="#for-the-topology-functions" id="id60">For the topology functions:</a></li>
 </ul>
 </div>
 <div class="section" id="for-the-routing-functions">
-<h3><a class="toc-backref" href="#id61">For the Routing functions</a><a class="headerlink" href="#for-the-routing-functions" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id59">For the Routing functions</a><a class="headerlink" href="#for-the-routing-functions" title="Permalink to this headline">¶</a></h3>
 <p>To get faster results bound your queries to the area of interest of routing to have, for example, no more than one million rows.</p>
 <p>Use an inner query SQL that does not include some edges in the routing function</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span> <span class="k">from</span> <span class="n">edge_table</span> <span class="k">WHERE</span>
@@ -1420,7 +1402,7 @@ Returned when multiple ending vertices are in the query.</p>
 </div>
 </div>
 <div class="section" id="for-the-topology-functions">
-<h3><a class="toc-backref" href="#id62">For the topology functions:</a><a class="headerlink" href="#for-the-topology-functions" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id60">For the topology functions:</a><a class="headerlink" href="#for-the-topology-functions" title="Permalink to this headline">¶</a></h3>
 <p>When “you know” that you are going to remove a set of edges from the edges table, and without those edges you are going to use a routing function you can do the following:</p>
 <p>Analize the new topology based on the actual topology:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
@@ -1434,7 +1416,7 @@ Returned when multiple ending vertices are in the query.</p>
 </div>
 </div>
 <div class="section" id="how-to-contribute">
-<span id="how-contribute"></span><h2><a class="toc-backref" href="#id45">How to contribute</a><a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h2>
+<span id="how-contribute"></span><h2><a class="toc-backref" href="#id43">How to contribute</a><a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Wiki</p>
 <ul class="simple">
 <li>Edit an existing  <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">pgRouting Wiki</a> page.</li>
@@ -1468,7 +1450,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 17, 2019.<br/>
+      Last updated on Aug 14, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

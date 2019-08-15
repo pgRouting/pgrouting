@@ -69,6 +69,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
@@ -581,27 +582,15 @@ Returned when multiple ending vertices are in the query.</p>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</td>
 </tr>
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the starting vertex. Used when multiple starting vetrices are in the query.</td>
-</tr>
-<tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the ending vertex. Used when multiple ending vertices are in the query.</td>
-</tr>
-<tr class="row-even"><td><strong>node</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</td>
-</tr>
-<tr class="row-odd"><td><strong>edge</strong></td>
+<tr class="row-even"><td><strong>edge</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence. <code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last node of the path.</td>
 </tr>
-<tr class="row-even"><td><strong>cost</strong></td>
+<tr class="row-odd"><td><strong>cost</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the path sequence.</td>
 </tr>
-<tr class="row-odd"><td><strong>agg_cost</strong></td>
+<tr class="row-even"><td><strong>agg_cost</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
 <td>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</td>
 </tr>
@@ -637,7 +626,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Jul 17, 2019.<br/>
+      Last updated on Aug 14, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
