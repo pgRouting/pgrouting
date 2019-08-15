@@ -210,7 +210,7 @@ from the given source and destination.
 Thus, the queries used in the previous section can be interpreted in this manner. 
 
 Table Data
--------------------------------------------------------------------------------
+...............................................................................
 
 
 The queries in the previous sections use the table 'roadworks'.
