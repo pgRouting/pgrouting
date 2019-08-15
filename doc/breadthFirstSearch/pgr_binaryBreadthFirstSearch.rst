@@ -29,7 +29,7 @@ Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any non-nega
 Description
 -------------------------------------------------------------------------------
 
-It is well-known that the shortest paths between a single source and all other vertices can be found using Breadth First Search in :math:` O(|E|)` in an unweighted graph, i.e. the distance is the minimal number of edges that you need to traverse from the source to another vertex. We can interpret such a graph also as a weighted graph, where every edge has the weight 1. If not all edges in graph have the same weight, that we need a more general algorithm, like Dijkstra's Algorithm  which runs in :math:`O(|E|log|V|)` time.
+It is well-known that the shortest paths between a single source and all other vertices can be found using Breadth First Search in :math:`O(|E|)` in an unweighted graph, i.e. the distance is the minimal number of edges that you need to traverse from the source to another vertex. We can interpret such a graph also as a weighted graph, where every edge has the weight 1. If not all edges in graph have the same weight, that we need a more general algorithm, like Dijkstra's Algorithm  which runs in :math:`O(|E|log|V|)` time.
 
 However if the weights are more constrained, we can use a faster algorithm. This algorithm, termed as 'Binary Breadth First Search' aswell as '0-1 BFS', is a variation of the standard Breadth First Search problem to solve the SSSP (single-source shortest path) problem in :math:`O(|E|)`, if the weights of each edge belongs to the set {0,X}, where 'X' is any non-negative real integer.
 
