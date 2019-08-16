@@ -225,9 +225,9 @@ OR EMPTY SET
 </tbody>
 </table>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_topologicalsort</span><span class="p">(</span>
-  \<span class="s1">&#39;SELECT id,source,target,cost,reverse_cost FROM edge_table1</span><span class="se">\&#39;</span>
+  <span class="s1">&#39;SELECT id,source,target,cost,reverse_cost FROM edge_table1&#39;</span>
 <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">sorted_v</span> 
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">sorted_v</span>
 <span class="o">-----+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
@@ -389,7 +389,7 @@ OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Aug 14, 2019.<br/>
+      Last updated on Aug 16, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
