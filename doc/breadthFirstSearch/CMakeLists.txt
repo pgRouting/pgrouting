@@ -1,7 +1,7 @@
 
 SET(LOCAL_FILES
-    pgr_bellmanFord.rst
-    pgr_edwardMoore.rst
+    pgr_breadthFirstSearch.rst
+    pgr_binaryBreadthFirstSearch.rst    
     )
 
 foreach (f ${LOCAL_FILES})

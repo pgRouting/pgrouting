@@ -30,5 +30,6 @@ BEGIN;
     \i old_inner_styles.sql
     \i no_crash_test.sql
     \i alphaShapeTester.sql
+    \i binaryBreadthFirstSearch_pgtap_data.sql
 
 END;

@@ -1,14 +1,10 @@
 
 SET(LOCAL_FILES
-	_bellman_ford.sql
-    bellman_ford.sql
-    #_bellman_ford_neg.sql
-    #bellman_ford_neg.sql
-    _edwardMoore.sql
-    edwardMoore.sql
+	_breadthFirstSearch.sql
+	_binaryBreadthFirstSearch.sql
+    breadthFirstSearch.sql
+    binaryBreadthFirstSearch.sql
     )
-
-# Do not modify bellow this line
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})

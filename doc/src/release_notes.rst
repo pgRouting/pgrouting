@@ -163,9 +163,10 @@ pgRouting 3.0.0 Release Notes
 * pgr_maxFlowMinCost_Cost
 * pgr_extractVertices
 * pgr_turnRestrictedPath
-* pgr_bellmanFord
 * pgr_stoerWagner
 * pgr_dagShortestpath
+* pgr_topologicalSort
+* pgr_transitiveClosure
 * VRP category
 
   * pgr_pickDeliverEuclidean
@@ -175,6 +176,16 @@ pgRouting 3.0.0 Release Notes
 
   * pgr_chinesePostman
   * pgr_chinesePostmanCost
+
+* Breadth First Search family
+
+  * pgr_breadthFirstSearch
+  * pgr_binaryBreadthFirstSearch
+
+* Bellman Ford family
+
+  * pgr_bellmanFord
+  * pgr_edwardMoore
 
 .. rubric:: Moved to legacy
 
