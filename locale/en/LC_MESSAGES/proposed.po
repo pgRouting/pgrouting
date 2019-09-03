@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-18 11:26-0500\n"
+"POT-Creation-Date: 2019-09-03 15:28-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -242,6 +242,14 @@ msgid "Others"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:138
+msgid ":doc:`pgr_topologicalSort`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:140
+msgid ":doc:`pgr_transitiveClosure`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:142
 msgid ":doc:`VRP-category`"
 msgstr ""
 
@@ -267,27 +275,39 @@ msgstr ""
 msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:150
+#: ../../build/doc/proposed.rst:156
 msgid "Shortest Path Algorithms"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:151
+#: ../../build/doc/proposed.rst:157
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:152
+#: ../../build/doc/proposed.rst:158
+msgid ":doc:`pgr_binaryBreadthFirstSearch`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:159
+msgid ":doc:`pgr_breadthFirstSearch`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:160
 msgid ":doc:`pgr_dagShortestPath`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:153
+#: ../../build/doc/proposed.rst:161
+msgid ":doc:`pgr_edwardMoore`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:162
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:154
+#: ../../build/doc/proposed.rst:163
 msgid ":doc:`pgr_turnRestrictedPath`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:164
+#: ../../build/doc/proposed.rst:176
 msgid ":doc:`topology-functions`"
 msgstr ""
 
@@ -297,19 +317,19 @@ msgid ""
 "source and target."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:172
+#: ../../build/doc/proposed.rst:184
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:175
+#: ../../build/doc/proposed.rst:187
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:176
+#: ../../build/doc/proposed.rst:188
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:177
+#: ../../build/doc/proposed.rst:189
 msgid ":ref:`search`"
 msgstr ""
 
