@@ -487,3 +487,28 @@ file_filter = locale/<lang>/LC_MESSAGES/pgr_pickDeliverEuclidean.po
 source_file = locale/pot/pgr_pickDeliverEuclidean.pot
 source_lang = en
 
+[pgrouting.pgr_edwardMoore]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_edwardMoore.po
+source_file = locale/pot/pgr_edwardMoore.pot
+source_lang = en
+
+[pgrouting.pgr_binaryBreadthFirstSearch]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_binaryBreadthFirstSearch.po
+source_file = locale/pot/pgr_binaryBreadthFirstSearch.pot
+source_lang = en
+
+[pgrouting.pgr_topologicalSort]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_topologicalSort.po
+source_file = locale/pot/pgr_topologicalSort.pot
+source_lang = en
+
+[pgrouting.pgr_breadthFirstSearch]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_breadthFirstSearch.po
+source_file = locale/pot/pgr_breadthFirstSearch.pot
+source_lang = en
+
+[pgrouting.pgr_transitiveClosure]
+file_filter = locale/<lang>/LC_MESSAGES/pgr_transitiveClosure.po
+source_file = locale/pot/pgr_transitiveClosure.pot
+source_lang = en
+
