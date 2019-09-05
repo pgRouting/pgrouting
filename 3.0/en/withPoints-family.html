@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>withPoints - Family of functions &#8212; pgRouting Manual (3.0-alpha)</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_withPoints - Proposed" href="pgr_withPoints.html" />
+    <link rel="prev" title="Stable Proposed Functions" href="proposed.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-alpha</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">withPoints - Family of functions</a><ul>
+<li><a class="reference internal" href="#images">Images</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#graph-edges">Graph &amp; edges</a></li>
+<li><a class="reference internal" href="#point-definition">Point Definition</a></li>
+<li><a class="reference internal" href="#creating-temporary-vertices-in-the-graph">Creating Temporary Vertices in the Graph</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="proposed.html" title="Previous Chapter: Stable Proposed Functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Stable Propos...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_withPoints.html" title="Next Chapter: pgr_withPoints - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="withpoints-family-of-functions">
+<h1>withPoints - Family of functions<a class="headerlink" href="#withpoints-family-of-functions" title="Permalink to this headline">¶</a></h1>
+<p>When points are also given as input:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Proposed functions for next mayor release.</p>
+<ul class="last simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a> - Route from/to points anywhere on the graph.</li>
+<li><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost - Proposed</span></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - proposed</span></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Proposed</span></a> - K shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Proposed</span></a> - Driving distance.</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<p class="rubric">Previous versions of this page</p>
+<ul class="simple">
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/withPoints-family.html">3.0</a>)
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/withPoints-family.html">2.6</a></li>
+<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/withPoints-family.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/withPoints-family.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html">2.2</a></li>
+</ul>
+<div class="section" id="images">
+<h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
+<p>The squared vertices are the temporary vertices, The temporary vertices are added according to the
+driving side, The following images visually show the differences on how depending on the driving side the data is interpreted.</p>
+<p class="rubric">Right driving side</p>
+<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 445.5px; height: 427.0px;" /></a>
+<p class="rubric">Left driving side</p>
+<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 442.0px; height: 421.5px;" /></a>
+<p class="rubric">doesn’t matter the driving side</p>
+<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 453.5px; height: 432.0px;" /></a>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This family of functions was thought for routing vehicles, but might as well work
+for some other application that we can not think of.</p>
+<p>The with points family of function give you the ability to route between
+arbitrary points located outside the original graph.</p>
+<p>When given a point identified with a <cite>pid</cite> that its being mapped to and edge with
+an identifier <cite>edge_id</cite>, with a <cite>fraction</cite> along
+that edge (from the source to the target of the edge) and some additional
+information about which <cite>side</cite> of the edge the point is on, then routing
+from arbitrary points more accurately reflect routing vehicles in road networks,</p>
+<dl class="docutils">
+<dt>I talk about a family of functions because it includes different functionalities.</dt>
+<dd><ul class="first last simple">
+<li>pgr_withPoints is pgr_dijkstra based</li>
+<li>pgr_withPointsCost is pgr_dijkstraCost based</li>
+<li>pgr_withPointsKSP is pgr_ksp based</li>
+<li>pgr_withPointsDD is pgr_drivingDistance based</li>
+</ul>
+</dd>
+</dl>
+<p>In all this functions we have to take care of as many aspects as possible:</p>
+<ul class="simple">
+<li>Must work for routing:<ul>
+<li>Cars (directed graph)</li>
+<li>Pedestrians (undirected graph)</li>
+</ul>
+</li>
+<li>Arriving at the point:<ul>
+<li>In either side of the street.</li>
+<li>Compulsory arrival on the side of the street where the point is located.</li>
+</ul>
+</li>
+<li>Countries with:<ul>
+<li>Right side driving</li>
+<li>Left side driving</li>
+</ul>
+</li>
+<li>Some points are:<ul>
+<li>Permanent, for example the set of points of clients stored in a table in the data base</li>
+<li>Temporal, for example points given through a web application</li>
+</ul>
+</li>
+<li>The numbering of the points are handled with negative sign.<ul>
+<li>Original point identifiers are to be positive.</li>
+<li>Transformation to negative is done internally.</li>
+<li>For results for involving vertices identifiers<ul>
+<li>positive sign is a vertex of the original graph</li>
+<li>negative sign is a point of the temporary points</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.</p>
+</div>
+<div class="section" id="graph-edges">
+<h2>Graph &amp; edges<a class="headerlink" href="#graph-edges" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Let <span class="math notranslate nohighlight">\(G_d(V,E)\)</span> where <span class="math notranslate nohighlight">\(V\)</span> is the set of vertices and <span class="math notranslate nohighlight">\(E\)</span> is the set of edges be the original directed graph.<ul>
+<li>An edge of the original <cite>edges_sql</cite> is <span class="math notranslate nohighlight">\((id, source, target, cost, reverse\_cost)\)</span> will generate internally<ul>
+<li><span class="math notranslate nohighlight">\((id, source, target, cost)\)</span></li>
+<li><span class="math notranslate nohighlight">\((id, target, source, reverse\_cost)\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="point-definition">
+<h2>Point Definition<a class="headerlink" href="#point-definition" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>A point is defined by the quadruplet: <span class="math notranslate nohighlight">\((pid, eid, fraction, side)\)</span><ul>
+<li><strong>pid</strong> is the point identifier</li>
+<li><strong>eid</strong> is an edge id of the <cite>edges_sql</cite></li>
+<li><strong>fraction</strong> represents where the edge <cite>eid</cite> will be cut.</li>
+<li><strong>side</strong> Indicates the side of the edge where the point is located.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="creating-temporary-vertices-in-the-graph">
+<h2>Creating Temporary Vertices in the Graph<a class="headerlink" href="#creating-temporary-vertices-in-the-graph" title="Permalink to this headline">¶</a></h2>
+<p>For edge (15,  9,12  10, 20), &amp; lets insert point (2, 12, 0.3, r)</p>
+<p class="rubric">On a right hand side driving network</p>
+<p>From first image above:</p>
+<ul class="simple">
+<li>We can arrive to the point only via vertex 9.</li>
+<li>It only affects the edge (15, 9,12, 10) so that edge is removed.</li>
+<li>Edge (15, 12,9, 20) is kept.</li>
+<li>Create new edges:<ul>
+<li>(15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3</li>
+<li>(15, -1,12, 7) edge from point 1 to vertex 12 has cost 7</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">On a left hand side driving network</p>
+<p>From second image above:</p>
+<ul class="simple">
+<li>We can arrive to the point only via vertex 12.</li>
+<li>It only affects the edge (15, 12,9 20) so that edge is removed.</li>
+<li>Edge (15, 9,12, 10) is kept.</li>
+<li>Create new edges:<ul>
+<li>(15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14</li>
+<li>(15, -1,9, 6) edge from point 1 to vertex 9 has cost 6</li>
+</ul>
+</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Remember:</th><td class="field-body">that fraction is from vertex 9 to vertex 12</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">When driving side does not matter</p>
+<p>From third image above:</p>
+<ul class="simple">
+<li>We can arrive to the point either via vertex 12 or via vertex 9</li>
+<li>Edge (15, 12,9 20) is removed.</li>
+<li>Edge (15, 9,12, 10) is removed.</li>
+<li>Create new edges:<ul>
+<li>(15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14</li>
+<li>(15, -1,9, 6) edge from point 1 to vertex 9 has cost 6</li>
+<li>(15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3</li>
+<li>(15, -1,12, 7) edge from point 1 to vertex 12 has cost 7</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.0.0-alpha.<br/>
+      Last updated on Sep 05, 2019.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

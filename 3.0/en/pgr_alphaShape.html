@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pgr_alphaShape &#8212; pgRouting Manual (3.0-alpha)</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Stable Proposed Functions" href="proposed.html" />
+    <link rel="prev" title="Driving Distance - Category" href="drivingDistance-category.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-alpha</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_alphaShape</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#return-value">Return Value</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="drivingDistance-category.html" title="Previous Chapter: Driving Distance - Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Driving Dista...</span>
+    </a>
+  </li>
+  <li>
+    <a href="proposed.html" title="Next Chapter: Stable Proposed Functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Stable Propos... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="pgr-alphashape">
+<h1>pgr_alphaShape<a class="headerlink" href="#pgr-alphashape" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code> — Polygon part of an alpha shape.</p>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li>Version 3.0.0<ul>
+<li>Breaking change on signature</li>
+<li>Old signature no longer supported</li>
+</ul>
+</li>
+<li>Version 2.1.0<ul>
+<li>Added alpha argument with default 0 (use optimal value)</li>
+<li>Support to return multiple outer/inner ring</li>
+</ul>
+</li>
+<li>Version 2.0.0<ul>
+<li><strong>Official</strong> function</li>
+<li>Renamed from version 1.x</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Support</p>
+<ul class="simple">
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pgr_alphaShape.html">3.0</a>)</li>
+<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_alphaShape.html">2.6</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_alphaShape.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_alphaShape.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html">2.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html">2.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html">2.0</a></li>
+</ul>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Returns the polygon part of an alpha shape.</p>
+<p>Characteristics</p>
+<ul class="simple">
+<li>Input is a <em>geometry</em> and returns a <em>geometry</em></li>
+<li>Uses PostGis ST_DelaunyTriangles</li>
+<li>Instead of using CGAL’s definition of <cite>alpha</cite> it use the <code class="docutils literal notranslate"><span class="pre">spoon_radius</span></code><ul>
+<li><span class="math notranslate nohighlight">\(spoon\_radius = \sqrt alpha\)</span></li>
+</ul>
+</li>
+<li>A Triangle area is considered part of the alpha shape when <span class="math notranslate nohighlight">\(circumcenter\ radius &lt; spoon\_radius\)</span></li>
+<li>When the total number of points is less than 3, returns an EMPTY geometry</li>
+</ul>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
+<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_alphaShape(geometry,   [spoon_radius])
+RETURNS geometry
+</pre></div>
+</div>
+<p class="rubric">Example: passing a geometry collection with spoon radius <span class="math notranslate nohighlight">\(1.5\)</span> using the return variable <code class="docutils literal notranslate"><span class="pre">geom</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_alphaShape</span><span class="p">((</span><span class="n">SELECT</span> <span class="n">ST_Collect</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">));</span>
+ <span class="n">st_area</span>
+<span class="o">---------</span>
+    <span class="mf">9.75</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="20%" />
+<col width="9%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>geometry</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">geometry</span></code></td>
+<td>&#160;</td>
+<td>Geometry with at least <span class="math notranslate nohighlight">\(3\)</span> points</td>
+</tr>
+<tr class="row-odd"><td><strong>spoon_radius</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
+<td>&#160;</td>
+<td>The radius of the spoon</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="return-value">
+<h2>Return Value<a class="headerlink" href="#return-value" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Kind of geometry</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GEOMETRY COLLECTION</td>
+<td>A Geometry collection of Polygons</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a></li>
+<li><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
+<li><a class="reference external" href="https://postgis.net/docs/ST_ConcaveHull.html">ST_ConcaveHull</a></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.0.0-alpha.<br/>
+      Last updated on Sep 05, 2019.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
