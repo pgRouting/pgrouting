@@ -35,7 +35,7 @@ include(pgr/BuildType)
 
 project(PGROUTING VERSION 3.0.0
     LANGUAGES C CXX )
-set(PGROUTING_VERSION_DEV "-dev")
+set(PGROUTING_VERSION_DEV "-alpha")
 
 include(pgr/GitInfo)
 
