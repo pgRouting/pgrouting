@@ -160,6 +160,18 @@ pgRouting 3.0.0 Release Notes
 
 
 
+pgRouting 2.6.3 Release Notes
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the [Git closed milestone for 2.6.3 ](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20) on Github.
+
+*Bug fixes*
+
+* [#1219 ](https://github.com/pgRouting/pgrouting/pull/1219)_ Implicit cast for via_path integer to text
+* [#1193 ](https://github.com/pgRouting/pgrouting/pull/1193)_ Fixed pgr_pointsAsPolygon breaking when comparing strings in WHERE clause
+* [#1185 ](https://github.com/pgRouting/pgrouting/pull/1185)_ Improve FindPostgreSQL.cmake
+
+
 
 pgRouting 2.6.2 Release Notes
 -------------------------------------------------------------------------------
