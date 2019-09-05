@@ -48,9 +48,19 @@ This Release Contributors
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Gudesa Venkata Sai Akhil, Hang Wu, Virginia Vergara
+Aasheesh Tiwari,
+Cayetano Benavent,
+Gudesa Venkata Sai Akhil,
+Hang Wu,
+Martha Vergara,
+Regina Obe,
+Rohith Reddy,
+Sourabh Garg,
+Virginia Vergara
 
 And all the people that give us a little of their time making comments, finding issues, making pull requests etc.
+in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer.
+
 
 Corporate Sponsors (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -59,7 +69,7 @@ These are corporate entities that have contributed developer time, hosting, or d
 
 - `Georepublic <https://georepublic.info/en/>`__
 - `Google Summer of Code <https://developers.google.com/open-source/gsoc/>`_
-- `iMaptools <https://imaptools.com>`__
+- `iMaptools <http://imaptools.com>`__
 - `Leopark <https://www.leopark.mx/>`__
 - `Paragon Corporation <https://www.paragoncorporation.com/>`_
 
@@ -69,7 +79,20 @@ Contributors Past & Present:
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mukul Priya, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche, Vidhan Jain, Virginia Vergara
+Aasheesh Tiwari, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain,
+Cayetano Benavent, Christian Gonzalez,
+Daniel Kastl, Dave Potts, David Techer, Denis Rykov,
+Ema Miyawaki,
+Florian Thurkow, Frederic Junod,
+Gerald Fenoy, Gudesa Venkata Sai Akhil,
+Hang Wu,
+Jay Mahadeokar, Jinfu Leng,
+Kai Behncke, Kishore Kumar, Ko Nagase,
+Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mukul Priya,
+Razequl Islam,
+Regina Obe, Rohith Reddy,
+Sarthak Agarwal, Sourabh Garg, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche,
+Vidhan Jain, Virginia Vergara
 
 Corporate Sponsors (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

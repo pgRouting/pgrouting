@@ -19,46 +19,9 @@ https://github.com/pgRouting/pgrouting/releases
 * http://docs.pgrouting.org/
 * https://github.com/pgRouting/pgrouting
 
-<table>
-	<tr>
-		<td>Branch</td>
-		<td>Travis</td>
-		<td>Appveyor</td>
-		<td>Jenkins</td>
-		<td>Comments</td>
-	</tr>
-	<tr>
-		<td>master</td>
-		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=master" alt="Build Status"/></td>
-		<td><img src="https://ci.appveyor.com/api/projects/status/github/pgRouting/pgrouting?branch=master&svg=true" alt="Appveyor Status"/></td>
-        <td><img src="https://winnie.postgis.net:444/buildStatus/icon?job=pgRouting_matrix_master" alt="Jenkins Status"/></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>develop</td>
-		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop" alt="Build Status"/></td>
-		<td><img src="https://ci.appveyor.com/api/projects/status/github/pgRouting/pgrouting?branch=develop&svg=true" alt="Appveyor Status"/></td>
-        <td><img src="https://winnie.postgis.net:444/buildStatus/icon?job=pgRouting_matrix_branch_develop" alt="Jenkins Status"/></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>gh-pages</td>
-		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=gh-pages" alt="Build Status"/></td>
-		<td></td>
-		<td></td>
-		<td>not enabled</td>
-	</tr>
-</table>
+## STATUS
 
-* travis: Postgis 2.3.3 for  Postgres 9.5 & 9.6
-  * precise
-  * developed with Postgres 9.3 and  Postgis 2.3.3
-
-* jenkins: g++ 4.8 on 32 & 64 bits for Postgis 2.4.0dev and Postgres 9.5, 9.6, 10
-* appveyor: vs1013 Postgis 2.3.3 on Postgres 9.4
-
-
-
+Status of the project can be found [here](https://github.com/pgRouting/pgrouting/wiki#status)
 
 ## INTRODUCTION
 
@@ -66,24 +29,20 @@ pgRouting extends the PostGIS/PostgreSQL geospatial database to provide geospati
 
 This library contains following features:
 
-* All Pairs Shortest Path, Johnson’s Algorithm
-* All Pairs Shortest Path, Floyd-Warshall Algorithm
-* Shortest Path A*
-* Bi-directional Dijkstra Shortest Path
-* Bi-directional A* Shortest Path
-* Shortest Path Dijkstra Family of functions
-* Shortest Path Dijkstra Cost Family of functions
+* All Pairs Shortest Path Algorithms
+* A-star algorithm
+* Bi-directional algorithms
+* A variety of applications of dijkstra algorithms
+  * Cost functions
+  * With points
 * Driving Distance
-* K-Shortest Path, Multiple Alternative Paths (Yen's algorithm)
+  * With points
+* Yen's algorithm
 * Traveling Sales Person (TSP)
-* Turn Restriction Shortest Path (TRSP)
-* Shortest Path Dijkstra With Points Family of functions
-* Shortest Path Dijkstra Cost With Points Family of functions
-* Driving Distance With Points
-* K-Shortest Path With Points, Multiple Alternative Paths (Yen's algorithm)
-* Dijkstra Via (Vertices)
 
 and many more.
+
+The latest documentation: http://docs.pgrouting.org/latest
 
 ## REQUIREMENTS
 
@@ -102,11 +61,7 @@ Building requirements
 User's requirements
 --------------------
 
-* PostGIS  >= 2.0
-
-## INSTALLATION
-
-See online documentation: http://docs.pgrouting.org/
+* PostGIS
 
 ## COMPILATION
 
