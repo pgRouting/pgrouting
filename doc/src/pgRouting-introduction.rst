@@ -48,13 +48,12 @@ This Release Contributors
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Aasheesh Tiwari,
+Aasheesh Tiwari, Aditya Pratap Singh,
 Cayetano Benavent,
 Gudesa Venkata Sai Akhil,
 Hang Wu,
-Martha Vergara,
-Regina Obe,
-Rohith Reddy,
+Maoguang Wang, Martha Vergara,
+Regina Obe, Rohith Reddy,
 Sourabh Garg,
 Virginia Vergara
 
@@ -79,7 +78,7 @@ Contributors Past & Present:
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Aasheesh Tiwari, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain,
+Aasheesh Tiwari, Aditya Pratap Singh, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain,
 Cayetano Benavent, Christian Gonzalez,
 Daniel Kastl, Dave Potts, David Techer, Denis Rykov,
 Ema Miyawaki,
