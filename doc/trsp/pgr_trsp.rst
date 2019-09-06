@@ -324,8 +324,8 @@ in this case that code finds an unexpected path.
 User contradictions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-``pgr_trsp`` unlike other pgRouting functions does not autodectect the existance of
-``reverse_cost`` column. Therefor it has ``has_rcost`` parameter to check the existance
+``pgr_trsp`` unlike other pgRouting functions does not autodectect the existence of
+``reverse_cost`` column. Therefor it has ``has_rcost`` parameter to check the existence
 of ``reverse_cost`` column. Contradictions happen:
 
 - When the reverse_cost is missing, and the flag `has_rcost` is set to true
@@ -439,8 +439,8 @@ and will not have the row for the vertex :math:`-2`.
 User contradictions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-``pgr_trsp`` unlike other pgRouting functions does not autodectect the existance of
-``reverse_cost`` column. Therefor it has ``has_rcost`` parameter to check the existance
+``pgr_trsp`` unlike other pgRouting functions does not autodectect the existence of
+``reverse_cost`` column. Therefor it has ``has_rcost`` parameter to check the existence
 of ``reverse_cost`` column. Contradictions happen:
 
 - When the reverse_cost is missing, and the flag `has_rcost` is set to true
