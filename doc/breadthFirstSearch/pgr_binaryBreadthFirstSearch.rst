@@ -11,14 +11,14 @@ pgr_binaryBreadthFirstSearch - Experimental
 ===============================================================================
 
 ``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary graph.
-Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any non-negative real integer, is termed as a 'binary graph'. 
+Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any non-negative real integer, is termed as a 'binary graph'.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/breadth_first_search.html
 
    Boost Graph Inside
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
@@ -31,7 +31,7 @@ Description
 
 It is well-known that the shortest paths between a single source and all other vertices can be found using Breadth First Search in :math:`O(|E|)` in an unweighted graph, i.e. the distance is the minimal number of edges that you need to traverse from the source to another vertex. We can interpret such a graph also as a weighted graph, where every edge has the weight 1. If not all edges in graph have the same weight, that we need a more general algorithm, like Dijkstra's Algorithm  which runs in :math:`O(|E|log|V|)` time.
 
-However if the weights are more constrained, we can use a faster algorithm. This algorithm, termed as 'Binary Breadth First Search' aswell as '0-1 BFS', is a variation of the standard Breadth First Search problem to solve the SSSP (single-source shortest path) problem in :math:`O(|E|)`, if the weights of each edge belongs to the set {0,X}, where 'X' is any non-negative real integer.
+However if the weights are more constrained, we can use a faster algorithm. This algorithm, termed as 'Binary Breadth First Search' as well as '0-1 BFS', is a variation of the standard Breadth First Search problem to solve the SSSP (single-source shortest path) problem in :math:`O(|E|)`, if the weights of each edge belongs to the set {0,X}, where 'X' is any non-negative real integer.
 
 
 **The main Characteristics are:**
@@ -71,7 +71,7 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: binaryBreadthFirstSearch(One to One)
+    single: binaryBreadthFirstSearch(One to One) - Experimental
 
 One to One
 ...............................................................................
@@ -80,17 +80,17 @@ One to One
 
     pgr_binaryBreadthFirstSearch(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
     BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** binary graph 
+:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** binary graph
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
    :start-after: -- q2
    :end-before: -- q3
 
 .. index::
-    single: Binary Breadth First Search(One to Many)
+    single: Binary Breadth First Search(One to Many) - Experimental
 
 One to many
 ...............................................................................
@@ -99,7 +99,7 @@ One to many
 
     pgr_binaryBreadthFirstSearch(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
     BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertices :math:`\{3, 5\}` on an **undirected** binary graph
@@ -109,7 +109,7 @@ One to many
    :end-before: -- q4
 
 .. index::
-    single: Binary Breadth First Search(Many to One)
+    single: Binary Breadth First Search(Many to One) - Experimental
 
 Many to One
 ...............................................................................
@@ -118,7 +118,7 @@ Many to One
 
     pgr_binaryBreadthFirstSearch(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
         BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed** binary graph
@@ -128,7 +128,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: Binary Breadth First Search(Many to Many)
+    single: Binary Breadth First Search(Many to Many) - Experimental
 
 Many to Many
 ...............................................................................
@@ -137,7 +137,7 @@ Many to Many
 
     pgr_binaryBreadthFirstSearch(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
         BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** binary graph
@@ -195,10 +195,10 @@ Here:
 * Each edge  in the graph is either “*X*” or “*Not X*” .
 
 Example:
-“Find the path with the minimum number of road works from Source to Destination”  
+“Find the path with the minimum number of road works from Source to Destination”
 
 Here, a road under work(aka **road works**)  means that part of the road is occupied for
-construction work/maintenance. 
+construction work/maintenance.
 
 Here:
 * Edge ( *u* , *v* ) has weight = 0 if no road work is ongoing on the road from *u* to *v*.
@@ -207,7 +207,7 @@ Here:
 Then, upon running the algorithm, we obtain the path with the minimum number of road works
 from the given source and destination.
 
-Thus, the queries used in the previous section can be interpreted in this manner. 
+Thus, the queries used in the previous section can be interpreted in this manner.
 
 Table Data
 ...............................................................................
@@ -223,9 +223,9 @@ The data of the table:
 See Also
 -------------------------------------------------------------------------------
 
-* https://cp-algorithms.com/graph/01_bfs.html 
+* https://cp-algorithms.com/graph/01_bfs.html
 * https://codeforces.com/blog/entry/22276
-* https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants 
+* https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants
 
 .. rubric:: Indices and tables
 

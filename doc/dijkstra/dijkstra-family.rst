@@ -14,6 +14,7 @@ Dijkstra - Family of functions
 
 * :doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths.
 * :doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths.
+* :doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix.
 * :doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information.
 * :doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.
 
@@ -28,7 +29,6 @@ Dijkstra - Family of functions
 
 .. index proposed from here
 
-* :doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix.
 * :doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices.
 
 .. index proposed to here

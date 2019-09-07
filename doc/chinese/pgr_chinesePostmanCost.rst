@@ -13,7 +13,7 @@ pgr_chinesePostmanCost - Experimental
 ``pgr_chinesePostmanCost`` — Calculates the minimum costs of a circuit path which
 contains every edge in a directed graph and starts and ends on the same vertex.
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 

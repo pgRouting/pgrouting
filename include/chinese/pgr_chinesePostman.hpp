@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_CHPP_PGR_DIRECTEDCHPP_HPP_
-#define INCLUDE_CHPP_PGR_DIRECTEDCHPP_HPP_
+#ifndef INCLUDE_CHINESE_PGR_CHINESEPOSTMAN_HPP_
+#define INCLUDE_CHINESE_PGR_CHINESEPOSTMAN_HPP_
 #pragma once
 
 #include <map>
@@ -313,4 +313,4 @@ PgrDirectedChPPGraph::BuildResultGraph() {
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CHPP_PGR_DIRECTEDCHPP_HPP_
+#endif  // INCLUDE_CHINESE_PGR_CHINESEPOSTMAN_HPP_

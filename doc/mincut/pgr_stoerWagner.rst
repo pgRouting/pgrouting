@@ -18,7 +18,7 @@ Function determines a min-cut and the min-cut weight of a connected, undirected 
 
    Boost Graph Inside
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 

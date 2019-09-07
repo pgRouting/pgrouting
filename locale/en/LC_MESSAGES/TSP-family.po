@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -573,34 +573,4 @@ msgstr ""
 #: ../../build/doc/TSP-family.rst:277
 msgid ":ref:`search`"
 msgstr ""
-
-#~ msgid ""
-#~ "It is believed that the general "
-#~ "form of the TSP have been first"
-#~ " studied by Kalr Menger in Vienna "
-#~ "and Harvard. The problem was later "
-#~ "promoted by Hassler, Whitney & Merrill"
-#~ " at Princeton. A detailed description "
-#~ "about the connection between Menger &"
-#~ " Whitney, and the development of the"
-#~ " TSP can be found in `On the"
-#~ " history of combinatorial optimization "
-#~ "(till 1960) <http://www.cwi.nl/~lex/files/histco.ps>`_"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "`Simulated annaeling algorithm for beginners"
-#~ " <http://www.theprojectspot.com/tutorial-post/simulated-"
-#~ "annealing-algorithm-for-beginners/6>`__"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "`Wikipedia: Traveling Salesman Problem "
-#~ "<http://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "`Wikipedia: Simulated annealing "
-#~ "<http://en.wikipedia.org/wiki/Simulated_annealing>`__"
-#~ msgstr ""
 

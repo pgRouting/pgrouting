@@ -7,7 +7,7 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_transitiveClosure
+pgr_transitiveClosure - Experimental
 ===============================================================================
 
 ``pgr_transitiveClosure`` — Returns the transitive closure graph of the input graph.
@@ -18,7 +18,7 @@ In particular, the transitive closure algorithm implemented by Boost.Graph.
 
    Boost Graph Inside
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
@@ -38,11 +38,11 @@ Description
 
 The transitive_closure() function transforms the input graph g into the transitive closure graph tc.
 
-This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph. 
+This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph.
 
 The main characteristics are:
   - Process is valid for directed acyclic graphs only. otherwise it will throw warnings.
-  
+
   - The returned values are not ordered:
 
   * Running time: :math:`O(|V||E|)`
@@ -96,7 +96,7 @@ The function returns a single row. The columns of the row are:
 Column                       Type                Description
 ============================ =================   ===================================================================
 **seq**                      ``INTEGER``         Sequential value starting from **1**.
-**vid**                      ``BIGINT``          Identifier of the vertex. 
+**vid**                      ``BIGINT``          Identifier of the vertex.
 **target_array**             ``ARRAY[BIGINT]``   Array of identifiers of the vertices that are reachable from vertex v.
 ============================ =================   ===================================================================
 

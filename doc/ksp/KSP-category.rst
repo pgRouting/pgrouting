@@ -7,12 +7,12 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-KSP Category
+K shortest paths - Category
 ===============================================================================
 
 .. index from here
 
-* :doc:`pgr_KSP` - Driving Distance based on pgr_dijkstra
+* :doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra
 
 .. index to here
 
@@ -24,9 +24,10 @@ KSP Category
 
 .. index proposed from here
 
-* :doc:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra
+* :doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints
 
 .. index proposed to here
+
 
 .. rubric:: Previous versions of this page
 

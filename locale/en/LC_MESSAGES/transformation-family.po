@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,52 +21,117 @@ msgstr ""
 msgid "Transformation - Family of functions (Experimental)"
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:15
+#: ../../build/doc/experimental.rst:3
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:5
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:9
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:10
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:11
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:12
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:13
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:14
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/transformation-family.rst:19
 msgid ""
 ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line "
 "Graph."
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:16
+#: ../../build/doc/transformation-family.rst:20
 msgid ""
 ":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line"
 " Graph out of each vertex in the input graph."
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:28
+#: ../../build/doc/transformation-family.rst:32
 msgid "Previous versions of this page"
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:29
+#: ../../build/doc/transformation-family.rst:33
 msgid ""
 "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
-"/transformation-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
-"/transformation-family.html>`__"
-msgstr ""
-
-#: ../../build/doc/transformation-family.rst:34
-msgid "Introduction"
+"/transformation-family.html>`__)"
 msgstr ""
 
 #: ../../build/doc/transformation-family.rst:36
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/transformation-family.html>`__"
+msgstr ""
+
+#: ../../build/doc/transformation-family.rst:40
+msgid "Introduction"
+msgstr ""
+
+#: ../../build/doc/transformation-family.rst:42
 msgid ""
 "This family of functions is used for transforming a given input graph "
 ":math:`G(V,E)` into a new graph :math:`G'(V',E')`."
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:39
+#: ../../build/doc/transformation-family.rst:45
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:42
+#: ../../build/doc/transformation-family.rst:48
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:43
+#: ../../build/doc/transformation-family.rst:49
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:44
+#: ../../build/doc/transformation-family.rst:50
 msgid ":ref:`search`"
 msgstr ""
 

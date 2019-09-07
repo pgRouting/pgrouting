@@ -18,7 +18,7 @@ In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
 
    Boost Graph Inside
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 

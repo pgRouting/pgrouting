@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:28-0500\n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,64 +16,59 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/proposed.rst:12
-msgid "Stable Proposed Functions"
+#: ../../build/doc/proposed.rst:10
+msgid "Proposed Functions"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:16
+#: ../../build/doc/proposed.rst:14
 msgid "Proposed functions for next mayor release."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:18
+#: ../../build/doc/proposed.rst:16
 msgid "They are not officially in the current release."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:19
+#: ../../build/doc/proposed.rst:17
 msgid "They will likely officially be part of the next mayor release:"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:21
+#: ../../build/doc/proposed.rst:19
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:22
+#: ../../build/doc/proposed.rst:20
 msgid "Name might not change. (But still can)"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:23
+#: ../../build/doc/proposed.rst:21
 msgid "Signature might not change. (But still can)"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:24
+#: ../../build/doc/proposed.rst:22
 msgid "Functionality might not change. (But still can)"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:25
+#: ../../build/doc/proposed.rst:23
 msgid "pgTap tests have being done. But might need more."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:26
+#: ../../build/doc/proposed.rst:24
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:33
-#: ../../build/doc/proposed.rst:110
+#: ../../build/doc/proposed.rst:29
 msgid "Families"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:34
+#: ../../build/doc/proposed.rst:30
 msgid ":doc:`dijkstra-family`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:3
-msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
-msgstr ""
-
-#: ../../build/doc/dijkstra-family.rst:4
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:40
+#: ../../build/doc/proposed.rst:36
 msgid ":doc:`withPoints-family`"
 msgstr ""
 
@@ -97,11 +92,11 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` - Driving distance."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:47
+#: ../../build/doc/proposed.rst:43
 msgid "categories"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:48
+#: ../../build/doc/proposed.rst:44
 msgid ":doc:`cost-category`"
 msgstr ""
 
@@ -109,7 +104,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCost`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:54
+#: ../../build/doc/proposed.rst:50
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
@@ -117,7 +112,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCostMatrix`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:60
+#: ../../build/doc/proposed.rst:56
 msgid ":doc:`drivingDistance-category`"
 msgstr ""
 
@@ -125,203 +120,31 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:66
+#: ../../build/doc/proposed.rst:62
 msgid ":doc:`KSP-category`"
 msgstr ""
 
 #: ../../build/doc/KSP-category.rst:3
-msgid ":doc:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra"
+msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:84
-msgid "Experimental Functions"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:89
-msgid "Experimental functions"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:91
-msgid "They are not officially of the current release."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:92
-msgid "They likely will not be officially be part of the next release:"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:94
-msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:95
-msgid "Name might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:96
-msgid "Signature might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:97
-msgid "Functionality might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:98
-msgid "pgTap tests might be missing."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:99
-msgid "Might need c/c++ coding."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:100
-msgid "May lack documentation."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:101
-msgid "Documentation if any might need to be rewritten."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:102
-msgid "Documentation examples might need to be automatically generated."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:103
-msgid "Might need a lot of feedback from the comunity."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:104
-msgid "Might depend on a proposed function of pgRouting"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:105
-msgid "Might depend on a deprecated function of pgRouting"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:111
-msgid ":doc:`flow-family`"
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:3
-msgid ":doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges."
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:4
-msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:117
-msgid ":doc:`chinesePostmanProblem-family`"
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:3
-msgid ":doc:`pgr_chinesePostman`"
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:4
-msgid ":doc:`pgr_chinesePostmanCost`"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:124
-msgid ":doc:`transformation-family`"
-msgstr ""
-
-#: ../../build/doc/transformation-family.rst:3
-msgid ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
-msgstr ""
-
-#: ../../build/doc/transformation-family.rst:4
-msgid ":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line Graph out of each vertex in the input graph."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:137
-msgid "Others"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:138
-msgid ":doc:`pgr_topologicalSort`"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:140
-msgid ":doc:`pgr_transitiveClosure`"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:142
-msgid ":doc:`VRP-category`"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:3
-msgid "Pickup and delivery problem"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:5
-msgid ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:6
-msgid ":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:8
-msgid "Distribution problem"
-msgstr ""
-
-#: ../../build/doc/VRP-category.rst:10
-msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:156
-msgid "Shortest Path Algorithms"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:157
-msgid ":doc:`pgr_bellmanFord`"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:158
-msgid ":doc:`pgr_binaryBreadthFirstSearch`"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:159
-msgid ":doc:`pgr_breadthFirstSearch`"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:160
-msgid ":doc:`pgr_dagShortestPath`"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:161
-msgid ":doc:`pgr_edwardMoore`"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:162
-msgid ":doc:`pgr_stoerWagner`"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:163
-msgid ":doc:`pgr_turnRestrictedPath`"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:176
-msgid ":doc:`topology-functions`"
-msgstr ""
-
-#: ../../build/doc/topology-functions.rst:3
-msgid ":doc:`pgr_extractVertices` - Extracts vertices information based on the source and target."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:184
+#: ../../build/doc/proposed.rst:76
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:187
+#: ../../build/doc/proposed.rst:78
+msgid ":doc:`experimental`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:81
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:188
+#: ../../build/doc/proposed.rst:82
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:189
+#: ../../build/doc/proposed.rst:83
 msgid ":ref:`search`"
 msgstr ""
 

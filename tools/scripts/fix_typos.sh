@@ -40,36 +40,21 @@ if ! test -d fix_typos; then
     # Aggregate base dictionary + QGIS one + Debian Lintian one
     curl https://raw.githubusercontent.com/qgis/QGIS/master/scripts/spelling.dat | sed "s/:/->/" | grep -v "colour->" | grep -v "colours->" > qgis.txt
     curl https://anonscm.debian.org/cgit/lintian/lintian.git/plain/data/spelling/corrections| grep "||" | grep -v "#" | sed "s/||/->/" > debian.txt
-    cat codespell/data/dictionary.txt qgis.txt debian.txt | awk 'NF' > gdal_dict.txt
+    wget https://raw.githubusercontent.com/codespell-project/codespell/master/codespell_lib/data/dictionary.txt codespell -D originaldict.txt
+    cat codespell/data/dictionary.txt qgis.txt debian.txt originaldict.txt | awk 'NF' > gdal_dict.txt
     echo "difered->deferred" >> gdal_dict.txt
     echo "differed->deferred" >> gdal_dict.txt
     cd ..
 fi
 
-EXCLUDED_FILES="*/doc/i18n/*"
-EXCLUDED_FILES="$EXCLUDED_FILES,*/pgtap/*"
+EXCLUDED_FILES="*/code_linter/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/fix_typos/*"
-EXCLUDED_FILES="$EXCLUDED_FILES,*/build/*"
-EXCLUDED_FILES="$EXCLUDED_FILES,*/code_linter/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/.git/*"
+EXCLUDED_FILES="$EXCLUDED_FILES,*/pgtap/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/tools/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/locale/*"
-EXCLUDED_FILES="$EXCLUDED_FILES,*/doc/*.queries"
-EXCLUDED_FILES="$EXCLUDED_FILES,*/test/*.result"
-EXCLUDED_FILES="$EXCLUDED_FILES,*/test/*.data"
-EXCLUDED_FILES="$EXCLUDED_FILES,*/test/tsp/development/*"
 
-
-#WORDS_WHITE_LIST="poSession,FIDN,TRAFIC,HTINK,repID,oCurr,INTREST,oPosition"
-#WORDS_WHITE_LIST="$WORDS_WHITE_LIST,CPL_SUPRESS_CPLUSPLUS,SRP_NAM,ADRG_NAM,'SRP_NAM,AuxilaryTarget"
-# IRIS driver metadata item names: FIXME ?
-#WORDS_WHITE_LIST="$WORDS_WHITE_LIST,TOP_OF_HEIGTH_INTERVAL,BOTTOM_OF_HEIGTH_INTERVAL"
-# libjpeg
-#WORDS_WHITE_LIST="$WORDS_WHITE_LIST,JBUF_PASS_THRU"
-# libgif
-#WORDS_WHITE_LIST="$WORDS_WHITE_LIST,IS_WRITEABLE,E_GIF_ERR_NOT_WRITEABLE"
-# libtiff
-#WORDS_WHITE_LIST="$WORDS_WHITE_LIST,THRESHHOLD_BILEVEL,THRESHHOLD_HALFTONE,THRESHHOLD_ERRORDIFFUSE"
+WORDS_WHITE_LIST="404"
 
 python3 fix_typos/codespell/codespell.py -w -i 3 -q 2 -S "$EXCLUDED_FILES" \
     -x tools/scripts/typos_whitelist.txt --words-white-list="$WORDS_WHITE_LIST" \

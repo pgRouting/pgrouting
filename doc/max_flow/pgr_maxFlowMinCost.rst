@@ -18,7 +18,7 @@ the flow and minimizes the cost from the sources to the targets.
 
    Boost Graph Inside
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 

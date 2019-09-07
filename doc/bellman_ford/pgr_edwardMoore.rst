@@ -14,20 +14,22 @@ pgr_edwardMoore - Experimental
 Edward Moore’s ​ Algorithm is an improvement of the Bellman-Ford Algorithm.
 
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
 .. rubric:: Availability
 
-* To-be experimental on v3.0.0
+* Version 3.0.0
+
+  * New **experimental** function
 
 Description
 -------------------------------------------------------------------------------
 
 Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm. It can compute
 the shortest paths from a single source vertex to all other vertices in a weighted directed
-graph. The main difference between Edward Moore's Algorithm and Bellman Ford's Algorithm lies in the run time. 
+graph. The main difference between Edward Moore's Algorithm and Bellman Ford's Algorithm lies in the run time.
 
 The worst-case running time of the algorithm is :math:`O(| V | * | E |)` similar to the time complexity of
 Bellman-Ford algorithm.
@@ -83,7 +85,7 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: edwardMoore(One to One)
+    single: edwardMoore(One to One) - Experimental
 
 One to One
 ...............................................................................
@@ -92,17 +94,17 @@ One to One
 
     pgr_edwardMoore(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
     BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph 
+:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q2
    :end-before: -- q3
 
 .. index::
-    single: Edward Moore(One to Many)
+    single: edwardMoore(One to Many) - Experimental
 
 One to many
 ...............................................................................
@@ -111,7 +113,7 @@ One to many
 
     pgr_edwardMoore(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
     BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertices :math:`\{3, 5\}` on an **undirected** graph
@@ -121,7 +123,7 @@ One to many
    :end-before: -- q4
 
 .. index::
-    single: Edward Moore(Many to One)
+    single: edwardMoore(Many to One) - Experimental
 
 Many to One
 ...............................................................................
@@ -130,7 +132,7 @@ Many to One
 
     pgr_edwardMoore(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
         BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed** graph
@@ -140,7 +142,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: Edward Moore(Many to Many)
+    single: edwardMoore(Many to Many) - Experimental
 
 Many to Many
 ...............................................................................
@@ -149,7 +151,7 @@ Many to Many
 
     pgr_edwardMoore(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
         BOOLEAN directed:=true);
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) 
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** graph
@@ -237,7 +239,7 @@ The examples in this section use the following :ref:`fig4`
 See Also
 -------------------------------------------------------------------------------
 
-* https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm  
+* https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm
 
 .. rubric:: Indices and tables
 

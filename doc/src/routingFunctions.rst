@@ -8,7 +8,7 @@
    ****************************************************************************
 
 *******************************************************************************
-Routing Functions
+Function Families
 *******************************************************************************
 
 ..
@@ -17,8 +17,9 @@ Routing Functions
 
 :doc:`allpairs-family`
 
-- :doc:`pgr_floydWarshall` - Floyd-Warshall's Algorithm
-- :doc:`pgr_johnson`- Johnson’s Algorithm
+.. include:: allpairs-family.rst
+   :start-after: index from here
+   :end-before: index to here
 
 :doc:`aStar-family`
 
@@ -63,33 +64,64 @@ Routing Functions
    :start-after: index from here
    :end-before: index to here
 
-:doc:`spanningTree-family`
+:doc:`kruskal-family`
 
-* :doc:`kruskal-family`
-
-  .. include:: kruskal-family.rst
+.. include:: kruskal-family.rst
       :start-after: index from here
       :end-before: index to here
 
-* :doc:`prim-family`
+:doc:`prim-family`
 
-  .. include:: prim-family.rst
+.. include:: prim-family.rst
       :start-after: index from here
       :end-before: index to here
 
-:doc:`pgr_KSP` - K-Shortest Path
+:doc:`topology-functions`
 
-:doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)
+.. include:: topology-functions.rst
+   :start-after: topology_index_start
+   :end-before: topology_index_end
 
-:doc:`pgr_TSP`
+:doc:`TSP-family`
 
 .. include:: TSP-family.rst
    :start-after: index from here
    :end-before: index to here
 
+:doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)
+
+
+Functions by categories
+===============================================================================
+
+:doc:`cost-category`
+
+.. include:: cost-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:doc:`costMatrix-category`
+
+.. include:: costMatrix-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
+
 :doc:`drivingDistance-category`
 
 .. include:: drivingDistance-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:doc:`KSP-category`
+
+.. include:: KSP-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:doc:`spanningTree-family`
+
+.. include:: spanningTree-family.rst
    :start-after: index from here
    :end-before: index to here
 
@@ -106,11 +138,21 @@ Routing Functions
     contraction-family
     dijkstra-family
     flow-family
-    spanningTree-family
-    pgr_KSP
-    pgr_trsp
+    kruskal-family
+    prim-family
+    topology-functions
     TSP-family
+    spanningTree-family
+    KSP-category
+    pgr_trsp
+
+.. toctree::
+    :hidden:
+
+    cost-category
+    costMatrix-category
     drivingDistance-category
+    spanningTree-family
 
 See Also
 -------------------------------------------------------------------------------

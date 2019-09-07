@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-25 09:56-0500\n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,34 +49,14 @@ msgid "Reference"
 msgstr ""
 
 #: ../../build/doc/index.rst:55
-msgid ":doc:`pgr_version` - Get pgRouting's version information. :doc:`pgr_full_version` - Get pgRouting's details of version."
+msgid ":doc:`pgr_version` - Get pgRouting's version information."
 msgstr ""
 
-#: ../../build/doc/index.rst:67
-msgid ":doc:`topology-functions`"
+#: ../../build/doc/index.rst:56
+msgid ":doc:`pgr_full_version` - Get pgRouting's details of version."
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:3
-msgid ":doc:`pgr_createTopology` -  to create a topology based on the geometry."
-msgstr ""
-
-#: ../../build/doc/topology-functions.rst:4
-msgid ":doc:`pgr_createVerticesTable` - to reconstruct the vertices table based on the source and target information."
-msgstr ""
-
-#: ../../build/doc/topology-functions.rst:5
-msgid ":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge table."
-msgstr ""
-
-#: ../../build/doc/topology-functions.rst:6
-msgid ":doc:`pgr_analyzeOneWay` - to analyze directionality of the edges."
-msgstr ""
-
-#: ../../build/doc/topology-functions.rst:7
-msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
-msgstr ""
-
-#: ../../build/doc/index.rst:80
+#: ../../build/doc/index.rst:66
 msgid ":doc:`routingFunctions`"
 msgstr ""
 
@@ -84,15 +64,15 @@ msgstr ""
 msgid ":doc:`allpairs-family`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:6
-msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's Algorithm"
+#: ../../build/doc/allpairs-family.rst:3
+msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:7
-msgid ":doc:`pgr_johnson`- Johnson’s Algorithm"
+#: ../../build/doc/allpairs-family.rst:4
+msgid ":doc:`pgr_johnson` - Johnson's algorithm"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:9
+#: ../../build/doc/routingFunctions.rst:10
 msgid ":doc:`aStar-family`"
 msgstr ""
 
@@ -108,7 +88,7 @@ msgstr ""
 msgid ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:16
+#: ../../build/doc/routingFunctions.rst:17
 msgid ":doc:`bdAstar-family`"
 msgstr ""
 
@@ -124,7 +104,7 @@ msgstr ""
 msgid ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost matrix of paths."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:22
+#: ../../build/doc/routingFunctions.rst:23
 msgid ":doc:`bdDijkstra-family`"
 msgstr ""
 
@@ -140,7 +120,7 @@ msgstr ""
 msgid ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to create a matrix of costs of the shortest paths."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:28
+#: ../../build/doc/routingFunctions.rst:29
 msgid ":doc:`components-family`"
 msgstr ""
 
@@ -164,7 +144,7 @@ msgstr ""
 msgid ":doc:`pgr_bridges` - Bridges of an undirected graph."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:34
+#: ../../build/doc/routingFunctions.rst:35
 msgid ":doc:`contraction-family`"
 msgstr ""
 
@@ -172,7 +152,7 @@ msgstr ""
 msgid ":doc:`pgr_contraction`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:40
+#: ../../build/doc/routingFunctions.rst:41
 msgid ":doc:`dijkstra-family`"
 msgstr ""
 
@@ -185,14 +165,18 @@ msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:5
-msgid ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information."
+msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:6
+msgid ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information."
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:7
 msgid ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:46
+#: ../../build/doc/routingFunctions.rst:47
 msgid ":doc:`flow-family`"
 msgstr ""
 
@@ -224,11 +208,8 @@ msgstr ""
 msgid ":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching in a graph."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:52
-msgid ":doc:`spanningTree-family`"
-msgstr ""
-
-#: ../../build/doc/routingFunctions.rst:54
+#: ../../build/doc/routingFunctions.rst:53
+#: ../../build/doc/spanningTree-family.rst:3
 msgid ":doc:`kruskal-family`"
 msgstr ""
 
@@ -248,7 +229,8 @@ msgstr ""
 msgid ":doc:`pgr_kruskalDFS`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:60
+#: ../../build/doc/routingFunctions.rst:59
+#: ../../build/doc/spanningTree-family.rst:4
 msgid ":doc:`prim-family`"
 msgstr ""
 
@@ -268,16 +250,32 @@ msgstr ""
 msgid ":doc:`pgr_primDFS`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:66
-msgid ":doc:`pgr_KSP` - K-Shortest Path"
+#: ../../build/doc/routingFunctions.rst:65
+msgid ":doc:`topology-functions`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:68
-msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
+#: ../../build/doc/topology-functions.rst:3
+msgid ":doc:`pgr_createTopology` -  to create a topology based on the geometry."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:70
-msgid ":doc:`pgr_TSP`"
+#: ../../build/doc/topology-functions.rst:4
+msgid ":doc:`pgr_createVerticesTable` - to reconstruct the vertices table based on the source and target information."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:5
+msgid ":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge table."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:6
+msgid ":doc:`pgr_analyzeOneWay` - to analyze directionality of the edges."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:7
+msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:71
+msgid ":doc:`TSP-family`"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:3
@@ -288,7 +286,39 @@ msgstr ""
 msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:76
+#: ../../build/doc/routingFunctions.rst:77
+msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:81
+msgid "Functions by categories"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:83
+msgid ":doc:`cost-category`"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:3
+msgid ":doc:`pgr_aStarCost`"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:4
+msgid ":doc:`pgr_dijkstraCost`"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:89
+msgid ":doc:`costMatrix-category`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:3
+msgid ":doc:`pgr_aStarCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:4
+msgid ":doc:`pgr_dijkstraCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:96
 msgid ":doc:`drivingDistance-category`"
 msgstr ""
 
@@ -312,19 +342,31 @@ msgstr ""
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
 msgstr ""
 
-#: ../../build/doc/index.rst:95
+#: ../../build/doc/routingFunctions.rst:102
+msgid ":doc:`KSP-category`"
+msgstr ""
+
+#: ../../build/doc/KSP-category.rst:3
+msgid ":doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:108
+msgid ":doc:`spanningTree-family`"
+msgstr ""
+
+#: ../../build/doc/index.rst:80
 msgid "Available Functions but not official pgRouting functions"
 msgstr ""
 
-#: ../../build/doc/index.rst:97
-msgid ":ref:`stable`"
+#: ../../build/doc/index.rst:82
+msgid ":doc:`proposed`"
 msgstr ""
 
-#: ../../build/doc/index.rst:98
-msgid ":ref:`proposed`"
+#: ../../build/doc/index.rst:83
+msgid ":doc:`experimental`"
 msgstr ""
 
-#: ../../build/doc/index.rst:108
+#: ../../build/doc/index.rst:94
 msgid ":doc:`release_notes`"
 msgstr ""
 
@@ -333,110 +375,114 @@ msgid ":ref:`changelog_3_0_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:4
-msgid ":ref:`changelog_2_6_2`"
+msgid ":ref:`changelog_2_6_3`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:5
-msgid ":ref:`changelog_2_6_1`"
+msgid ":ref:`changelog_2_6_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:6
-msgid ":ref:`changelog_2_6_0`"
+msgid ":ref:`changelog_2_6_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:7
-msgid ":ref:`changelog_2_5_5`"
+msgid ":ref:`changelog_2_6_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:8
-msgid ":ref:`changelog_2_5_4`"
+msgid ":ref:`changelog_2_5_5`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:9
-msgid ":ref:`changelog_2_5_3`"
+msgid ":ref:`changelog_2_5_4`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:10
-msgid ":ref:`changelog_2_5_2`"
+msgid ":ref:`changelog_2_5_3`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:11
-msgid ":ref:`changelog_2_5_1`"
+msgid ":ref:`changelog_2_5_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:12
-msgid ":ref:`changelog_2_5_0`"
+msgid ":ref:`changelog_2_5_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:13
-msgid ":ref:`changelog_2_4_2`"
+msgid ":ref:`changelog_2_5_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:14
-msgid ":ref:`changelog_2_4_1`"
+msgid ":ref:`changelog_2_4_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:15
-msgid ":ref:`changelog_2_4_0`"
+msgid ":ref:`changelog_2_4_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:16
-msgid ":ref:`changelog_2_3_2`"
+msgid ":ref:`changelog_2_4_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:17
-msgid ":ref:`changelog_2_3_1`"
+msgid ":ref:`changelog_2_3_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:18
-msgid ":ref:`changelog_2_3_0`"
+msgid ":ref:`changelog_2_3_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:19
-msgid ":ref:`changelog_2_2_4`"
+msgid ":ref:`changelog_2_3_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:20
-msgid ":ref:`changelog_2_2_3`"
+msgid ":ref:`changelog_2_2_4`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:21
-msgid ":ref:`changelog_2_2_2`"
+msgid ":ref:`changelog_2_2_3`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:22
-msgid ":ref:`changelog_2_2_1`"
+msgid ":ref:`changelog_2_2_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:23
-msgid ":ref:`changelog_2_2_0`"
+msgid ":ref:`changelog_2_2_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:24
-msgid ":ref:`changelog_2_1_0`"
+msgid ":ref:`changelog_2_2_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:25
-msgid ":ref:`changelog_2_0_1`"
+msgid ":ref:`changelog_2_1_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:26
-msgid ":ref:`changelog_2_0_0`"
+msgid ":ref:`changelog_2_0_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:27
+msgid ":ref:`changelog_2_0_0`"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:28
 msgid ":ref:`changelog_1_x`"
 msgstr ""
 
-#: ../../build/doc/index.rst:122
+#: ../../build/doc/index.rst:108
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/index.rst:123
+#: ../../build/doc/index.rst:109
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/index.rst:124
+#: ../../build/doc/index.rst:110
 msgid ":ref:`search`"
 msgstr ""
 

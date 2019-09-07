@@ -17,13 +17,11 @@ pgr_breadthFirstSearch - Experimental
 
    Boost Graph Inside
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
 .. rubric:: Availability
-
-* To-be experimental on v3.0.0
 
 Description
 -------------------------------------------------------------------------------
@@ -116,7 +114,7 @@ Parameter           Type        Default                     Description
                                                             - When value is ``Negative`` then **throws error**
 
 **directed**        ``BOOLEAN`` ``true``                    - When ``true`` Graph is considered `Directed`
-                                                            - When ``false`` the graph is considered as `Undirected`.                                                         
+                                                            - When ``false`` the graph is considered as `Undirected`.
 =================== =========== =========================== =================================================
 
 Inner query
@@ -158,8 +156,6 @@ Column           Type        Description
 
 .. result columns end
 
-.. index::
-    single: Additional Examples
 
 Additional Examples
 ...............................................................................
@@ -179,7 +175,7 @@ Additional Examples
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
    :start-after: --q4
-   :end-before: --q5     
+   :end-before: --q5
 
 
 
