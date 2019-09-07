@@ -73,8 +73,6 @@ Stable Proposed Functions
     :hidden:
 
     withPoints-family
-    cost-category
-    costMatrix-category
     KSP-category
 
 
