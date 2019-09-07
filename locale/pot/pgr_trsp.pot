@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:28-0500\n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,12 +29,11 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:23
-#: ../../build/doc/pgr_trsp.rst:30
-msgid "Version 2.0.0"
+msgid "Version 2.1.0"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:25
-msgid "Added *Via* support **prototypes**"
+msgid "New *Via* **prototypes**"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:27
@@ -43,6 +42,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:28
 msgid "pgr_trspViaEdges"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:30
+msgid "Version 2.0.0"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:32
@@ -54,11 +57,11 @@ msgid "Support"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:36
-msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_trsp.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/pgr_trsp.html>`__"
+msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_trsp.html>`__)"
 msgstr ""
 
-#: ../../build/doc/pgr_trsp.rst:40
-msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/pgr_trsp.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_trsp.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/trsp/doc/pgr_trsp.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/trsp/doc/pgr_trsp.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html>`__"
+#: ../../build/doc/pgr_trsp.rst:39
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_trsp.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_trsp.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_trsp.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/trsp/doc/pgr_trsp.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/trsp/doc/pgr_trsp.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:50
@@ -537,7 +540,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:327
 #: ../../build/doc/pgr_trsp.rst:442
-msgid "``pgr_trsp`` unlike other pgRouting functions does not autodectect the existance of ``reverse_cost`` column. Therefor it has ``has_rcost`` parameter to check the existance of ``reverse_cost`` column. Contradictions happen:"
+msgid "``pgr_trsp`` unlike other pgRouting functions does not autodectect the existence of ``reverse_cost`` column. Therefor it has ``has_rcost`` parameter to check the existence of ``reverse_cost`` column. Contradictions happen:"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:331

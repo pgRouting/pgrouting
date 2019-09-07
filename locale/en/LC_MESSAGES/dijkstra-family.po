@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,18 +30,22 @@ msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:17
+msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:18
 msgid ""
 ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament "
 "information."
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:18
+#: ../../build/doc/dijkstra-family.rst:19
 msgid ""
 ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K "
 "shortest paths."
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:23
+#: ../../build/doc/dijkstra-family.rst:24
 msgid "proposed"
 msgstr ""
 
@@ -79,10 +83,6 @@ msgstr ""
 
 #: ../../build/doc/proposed.rst:13
 msgid "Documentation might need refinement."
-msgstr ""
-
-#: ../../build/doc/dijkstra-family.rst:31
-msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:32

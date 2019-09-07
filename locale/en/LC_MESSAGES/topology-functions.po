@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:55-0500\n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,28 +55,88 @@ msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:28
-msgid "Proposed"
+msgid "Experimental"
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:31
+#: ../../build/doc/experimental.rst:3
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:5
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:9
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:10
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:11
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:12
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:13
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:14
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:35
 msgid ""
 ":doc:`pgr_extractVertices` - Extracts vertices information based on the "
 "source and target."
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:46
+#: ../../build/doc/topology-functions.rst:50
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:49
+#: ../../build/doc/topology-functions.rst:53
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:50
+#: ../../build/doc/topology-functions.rst:54
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:51
+#: ../../build/doc/topology-functions.rst:55
 msgid ":ref:`search`"
 msgstr ""
 

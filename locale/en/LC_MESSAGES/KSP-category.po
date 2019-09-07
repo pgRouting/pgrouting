@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Generated-By: Babel 2.6.0\n"
 
 #: ../../build/doc/KSP-category.rst:11
-msgid "KSP Category"
+msgid "K shortest paths - Category"
 msgstr ""
 
 #: ../../build/doc/KSP-category.rst:15
-msgid ":doc:`pgr_KSP` - Driving Distance based on pgr_dijkstra"
+msgid ":doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra"
 msgstr ""
 
 #: ../../build/doc/KSP-category.rst:20
@@ -66,36 +66,36 @@ msgid "Documentation might need refinement."
 msgstr ""
 
 #: ../../build/doc/KSP-category.rst:27
-msgid ":doc:`pgr_withPointsKSP` - Driving Distance based on pgr_dijkstra"
-msgstr ""
-
-#: ../../build/doc/KSP-category.rst:32
-msgid "Previous versions of this page"
+msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
 
 #: ../../build/doc/KSP-category.rst:33
+msgid "Previous versions of this page"
+msgstr ""
+
+#: ../../build/doc/KSP-category.rst:34
 msgid ""
 "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
 "/KSP-category.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/KSP-"
 "category.html>`__"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:37
+#: ../../build/doc/KSP-category.rst:38
 msgid ""
 "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/KSP-"
 "category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/KSP-"
 "category.html>`__"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:42
+#: ../../build/doc/KSP-category.rst:43
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:43
+#: ../../build/doc/KSP-category.rst:44
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:44
+#: ../../build/doc/KSP-category.rst:45
 msgid ":ref:`search`"
 msgstr ""
 
