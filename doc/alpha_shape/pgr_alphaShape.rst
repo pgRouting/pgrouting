@@ -65,7 +65,7 @@ Signatures
 .. rubric:: Summary
 
 .. index::
-    single: alphaShape(geometry)
+    single: alphaShape
 
 .. code-block:: none
 

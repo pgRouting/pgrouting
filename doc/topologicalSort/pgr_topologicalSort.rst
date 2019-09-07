@@ -18,7 +18,7 @@ In particular, the topological sort algorithm implemented by Boost.Graph.
 
    Boost Graph Inside
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
@@ -38,16 +38,16 @@ In particular, the topological sort algorithm implemented by Boost.Graph.
 Description
 -------------------------------------------------------------------------------
 
-The topological sort algorithm creates a linear ordering of the vertices such that if edge (u,v) appears 
+The topological sort algorithm creates a linear ordering of the vertices such that if edge (u,v) appears
 in the graph, then v comes before u in the ordering.
 
-This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph. 
+This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph.
 
 The main characteristics are:
   - Process is valid for directed acyclic graphs only. otherwise it will throw warnings.
 
   - For optimization purposes, if there are more than one answer, the function will return one of them.
-  
+
   - The returned values are ordered in topological order:
 
   * Running time: :math:`O( (V + E))`
@@ -115,7 +115,7 @@ Returns set of ``(seq, sorted_v)``
 Column           Type        Description
 ===============  =========== ============================================================
 **seq**          ``INT``     Sequential value starting from **1**.
-**sorted_v**     ``BIGINT``  Linear ordering of the vertices(ordered in topological order) 
+**sorted_v**     ``BIGINT``  Linear ordering of the vertices(ordered in topological order)
 ===============  =========== ============================================================
 
 See Also

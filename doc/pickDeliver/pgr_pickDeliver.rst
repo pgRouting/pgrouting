@@ -12,7 +12,7 @@ pgr_pickDeliver - Experimental
 
 ``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 

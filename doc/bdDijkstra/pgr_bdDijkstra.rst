@@ -112,7 +112,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: bdDijkstra(One to Many) - Proposed
+    single: bdDijkstra(One to Many)
 
 One to many
 ...............................................................................
@@ -130,7 +130,7 @@ One to many
    :end-before: -- q4
 
 .. index::
-    single: bdDijkstra(Many to One) - Proposed
+    single: bdDijkstra(Many to One)
 
 Many to One
 ...............................................................................
@@ -148,7 +148,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: bdDijkstra(Many to Many) - Proposed
+    single: bdDijkstra(Many to Many)
 
 Many to Many
 ...............................................................................

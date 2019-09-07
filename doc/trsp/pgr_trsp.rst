@@ -13,16 +13,16 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 .. index::
 	single: trsp(text,integer,integer,boolean,boolean)
 	single: trsp(text,integer,integer,boolean,boolean,text)
-	single: trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)
-	single: trspViaEdges(text,integer,double precision,integer,double precision,boolean,boolean,text)
+	single: trspViaVertices - Prototype
+	single: trspViaEdges - Prototype
 
 ``pgr_trsp`` — Returns the shortest path with support for turn restrictions.
 
 .. rubric:: Availability
 
-* Version 2.0.0
+* Version 2.1.0
 
-  * Added *Via* support **prototypes**
+  * New *Via* **prototypes**
 
     * pgr_trspViaVertices
     * pgr_trspViaEdges
@@ -35,9 +35,9 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 
 * **Supported versions:**
   current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_trsp.html>`__)
-  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_trsp.html>`__
 
 * **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_trsp.html>`__
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_trsp.html>`__
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_trsp.html>`__
   `2.3 <https://docs.pgrouting.org/2.3/en/src/trsp/doc/pgr_trsp.html>`__

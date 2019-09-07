@@ -10,10 +10,6 @@
 Chinese Postman Problem - Family of functions (Experimental)
 =============================================================
 
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 .. index from here
 
 * :doc:`pgr_chinesePostman`
@@ -27,7 +23,11 @@ Chinese Postman Problem - Family of functions (Experimental)
   pgr_chinesePostman
   pgr_chinesePostmanCost
 
-.. rubric:: Previous versions of this page
+.. include:: experimental.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
+.. rubric:: Versions of this page
 
 * **Supported versions:**
   current(`3.0 <https://docs.pgrouting.org/dev/en/chinesePostmanProblem-family.html>`__)

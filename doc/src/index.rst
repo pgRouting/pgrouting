@@ -76,17 +76,17 @@ Pgrouting Concepts
    :end-before: to-here
 
 
-
 Available Functions but not official pgRouting functions
 ===============================================================================
 
-- :ref:`stable`
-- :ref:`proposed`
+* :doc:`proposed`
+* :doc:`experimental`
 
 .. toctree::
     :hidden:
 
     proposed
+    experimental
 
 
 

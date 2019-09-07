@@ -5,6 +5,7 @@ SET(LOCAL_FILES
     pgRouting-installation.rst
     pgRouting-introduction.rst
     proposed.rst
+    experimental.rst
     release_notes.rst
     routingFunctions.rst
     sampledata.rst

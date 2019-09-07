@@ -7,7 +7,7 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Yen - Family
+K shortest paths - Category
 ===============================================================================
 
 .. index from here
@@ -28,10 +28,6 @@ Yen - Family
 
 .. index proposed to here
 
-.. toctree::
-    :hidden:
-
-    pgr_KSP
 
 .. rubric:: Previous versions of this page
 

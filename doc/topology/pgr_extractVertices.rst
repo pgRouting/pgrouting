@@ -13,7 +13,7 @@ pgr_extractVertices -- Experimental
 ``pgr_extractVertices`` — Extracts the vertices information based on the source and target.
 
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 

@@ -7,10 +7,10 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Vehicle Routing Functions Category
+Vehicle Routing Functions - Category (Experimental)
 ===============================================================================
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 

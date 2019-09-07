@@ -42,7 +42,7 @@ The function returns:
 - ``FAIL`` when the analysis was not completed due to an error.
 
 .. index::
-	single: analyzeGraph(Complete Signature)
+	single: analyzeGraph
 
 .. code-block:: sql
 
