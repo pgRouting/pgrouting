@@ -1,0 +1,239 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"PO-Revision-Date: 2019-09-07 19:11+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/experimental.rst:10
+msgid "Experimental Functions"
+msgstr "Funciones Experimentales"
+
+#: ../../build/doc/experimental.rst:14
+msgid "Experimental functions"
+msgstr "Funciones experimentales"
+
+#: ../../build/doc/experimental.rst:16
+msgid "They are not officially of the current release."
+msgstr "No son oficialmente de la versión actual."
+
+#: ../../build/doc/experimental.rst:17
+msgid "They likely will not be officially be part of the next release:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
+
+#: ../../build/doc/experimental.rst:19
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
+
+#: ../../build/doc/experimental.rst:20
+msgid "Name might change."
+msgstr "El nombre puede cambiar."
+
+#: ../../build/doc/experimental.rst:21
+msgid "Signature might change."
+msgstr "La firma (declaración de funciones) podría cambiar."
+
+#: ../../build/doc/experimental.rst:22
+msgid "Functionality might change."
+msgstr "La funcionalidad puede cambiar."
+
+#: ../../build/doc/experimental.rst:23
+msgid "pgTap tests might be missing."
+msgstr "Las pruebas de pgTap pueden estar ausentes."
+
+#: ../../build/doc/experimental.rst:24
+msgid "Might need c/c++ coding."
+msgstr "Posiblemente necesite codificación c/c++."
+
+#: ../../build/doc/experimental.rst:25
+msgid "May lack documentation."
+msgstr "Puede haber carencia de documentación."
+
+#: ../../build/doc/experimental.rst:26
+msgid "Documentation if any might need to be rewritten."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
+
+#: ../../build/doc/experimental.rst:27
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+"Ejemplos de documentación que puede ser necesario generar automáticamente."
+
+#: ../../build/doc/experimental.rst:28
+msgid "Might need a lot of feedback from the comunity."
+msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+
+#: ../../build/doc/experimental.rst:29
+msgid "Might depend on a proposed function of pgRouting"
+msgstr "Puede depender de una función propuesta de pgRouting."
+
+#: ../../build/doc/experimental.rst:30
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr "Podría depender de una función obsoleta de pgRouting"
+
+#: ../../build/doc/experimental.rst:35
+msgid "Families"
+msgstr "Familias"
+
+#: ../../build/doc/experimental.rst:36
+msgid ":doc:`flow-family`"
+msgstr ":doc:`flow-family`"
+
+#: ../../build/doc/flow-family.rst:3
+msgid ":doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges."
+msgstr ""
+":doc:`pgr_maxFlowMinCost` - Detalles del flujo y el coste en los bordes."
+
+#: ../../build/doc/flow-family.rst:4
+msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
+msgstr ":doc:`pgr_maxFlowMinCost_Cost` - Solo el cálculo del Coste Mínimo."
+
+#: ../../build/doc/experimental.rst:42
+msgid ":doc:`chinesePostmanProblem-family`"
+msgstr ":doc:`chinesePostmanProblem-family`"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:3
+msgid ":doc:`pgr_chinesePostman`"
+msgstr ":doc:`pgr_chinesePostman`"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
+msgid ":doc:`pgr_chinesePostmanCost`"
+msgstr ":doc:`pgr_chinesePostmanCost`"
+
+#: ../../build/doc/experimental.rst:48
+msgid ":doc:`topology-functions`"
+msgstr ":doc:`topology-functions`"
+
+#: ../../build/doc/topology-functions.rst:3
+msgid ""
+":doc:`pgr_extractVertices` - Extracts vertices information based on the "
+"source and target."
+msgstr ""
+":doc:`pgr_extractVertices` - extrae información de vértices basada en el "
+"origen y el destino."
+
+#: ../../build/doc/experimental.rst:54
+msgid ":doc:`transformation-family`"
+msgstr ":doc:`transformation-family`"
+
+#: ../../build/doc/transformation-family.rst:3
+msgid ""
+":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
+msgstr ""
+":doc:`pgr_lineGraph` - Algoritmo de transformación para generar un grafo de "
+"líneas."
+
+#: ../../build/doc/transformation-family.rst:4
+msgid ""
+":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line "
+"Graph out of each vertex in the input graph."
+msgstr ""
+":doc:`pgr_lineGraphFull` -  Algoritmo de transformación para generar un "
+"grafo de líneas a partir de cada vértice en el grafo de entrada."
+
+#: ../../build/doc/experimental.rst:66
+msgid "categories"
+msgstr "Categorías"
+
+#: ../../build/doc/experimental.rst:67
+msgid ":doc:`VRP-category`"
+msgstr ":doc:`VRP-category`"
+
+#: ../../build/doc/VRP-category.rst:3
+msgid "Pickup and delivery problem"
+msgstr "Problema de recogida y entrega"
+
+#: ../../build/doc/VRP-category.rst:5
+msgid ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
+msgstr ""
+":doc:`pgr_pickDeliver` - Recogida y Entrega utilizando una Matriz de Costos."
+
+#: ../../build/doc/VRP-category.rst:6
+msgid ""
+":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
+msgstr ""
+":doc:`pgr_pickDeliverEuclidean` - Recogida y Entrega con distancias "
+"Euclideanas."
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "Distribution problem"
+msgstr "Problema de distribución"
+
+#: ../../build/doc/VRP-category.rst:10
+msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
+msgstr ""
+":doc:`pgr_vrpOneDepot` - Desde un único depósito, distribuye los pedidos"
+
+#: ../../build/doc/experimental.rst:79
+msgid "Not classified"
+msgstr "No clasificado"
+
+#: ../../build/doc/experimental.rst:80
+msgid ":doc:`pgr_bellmanFord`"
+msgstr ":doc:`pgr_bellmanFord`"
+
+#: ../../build/doc/experimental.rst:81
+msgid ":doc:`pgr_binaryBreadthFirstSearch`"
+msgstr ":doc:`pgr_binaryBreadthFirstSearch`"
+
+#: ../../build/doc/experimental.rst:82
+msgid ":doc:`pgr_breadthFirstSearch`"
+msgstr ":doc:`pgr_breadthFirstSearch`"
+
+#: ../../build/doc/experimental.rst:83
+msgid ":doc:`pgr_dagShortestPath`"
+msgstr ":doc:`pgr_dagShortestPath`"
+
+#: ../../build/doc/experimental.rst:84
+msgid ":doc:`pgr_edwardMoore`"
+msgstr ":doc:`pgr_edwardMoore`"
+
+#: ../../build/doc/experimental.rst:85
+msgid ":doc:`pgr_stoerWagner`"
+msgstr ":doc:`pgr_stoerWagner`"
+
+#: ../../build/doc/experimental.rst:86
+msgid ":doc:`pgr_topologicalSort`"
+msgstr ":doc:`pgr_topologicalSort`"
+
+#: ../../build/doc/experimental.rst:87
+msgid ":doc:`pgr_transitiveClosure`"
+msgstr ":doc:`pgr_transitiveClosure`"
+
+#: ../../build/doc/experimental.rst:88
+msgid ":doc:`pgr_turnRestrictedPath`"
+msgstr ":doc:`pgr_turnRestrictedPath`"
+
+#: ../../build/doc/experimental.rst:105
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/experimental.rst:108
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/experimental.rst:109
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/experimental.rst:110
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
