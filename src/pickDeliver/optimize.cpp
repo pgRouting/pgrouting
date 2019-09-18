@@ -74,9 +74,10 @@ Optimize::inter_swap(size_t times) {
     msg.log << tau("after sort by size");
 
     size_t i = 0;
-    while ((i++ < times) && inter_swap()) {
+    while (i++ < times) {
+        msg.log << "\n*************************** CYCLE" << i;
+        inter_swap();
         msg.log << tau("after inter swap");
-        msg.log << "\n***************************" << i;
         std::rotate(fleet.begin(), fleet.begin() + 1, fleet.end());
         msg.log << tau("before next cycle");
     }
