@@ -1,0 +1,325 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"PO-Revision-Date: 2019-09-07 11:56+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:11
+msgid "pgr_chinesePostmanCost - Experimental"
+msgstr "pgr_chinesePostmanCost - Experimental"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:13
+msgid ""
+"``pgr_chinesePostmanCost`` — Calculates the minimum costs of a circuit path "
+"which contains every edge in a directed graph and starts and ends on the "
+"same vertex."
+msgstr ""
+"``pgr_chinesePostmanCost`` — Calcula los costes mínimos de una ruta de "
+"circuito que contiene cada arista de un grafo dirigido y comienza y termina "
+"en el mismo vértice."
+
+#: ../../build/doc/experimental.rst:3
+msgid "Experimental functions"
+msgstr "Funciones experimentales"
+
+#: ../../build/doc/experimental.rst:5
+msgid "They are not officially of the current release."
+msgstr "No son oficialmente de la versión actual."
+
+#: ../../build/doc/experimental.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
+
+#: ../../build/doc/experimental.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
+
+#: ../../build/doc/experimental.rst:9
+msgid "Name might change."
+msgstr "El nombre puede cambiar."
+
+#: ../../build/doc/experimental.rst:10
+msgid "Signature might change."
+msgstr "La firma (declaración de funciones) podría cambiar."
+
+#: ../../build/doc/experimental.rst:11
+msgid "Functionality might change."
+msgstr "La funcionalidad puede cambiar."
+
+#: ../../build/doc/experimental.rst:12
+msgid "pgTap tests might be missing."
+msgstr "Las pruebas de pgTap pueden estar ausentes."
+
+#: ../../build/doc/experimental.rst:13
+msgid "Might need c/c++ coding."
+msgstr "Posiblemente necesite codificación c/c++."
+
+#: ../../build/doc/experimental.rst:14
+msgid "May lack documentation."
+msgstr "Puede haber carencia de documentación."
+
+#: ../../build/doc/experimental.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
+
+#: ../../build/doc/experimental.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+"Ejemplos de documentación que puede ser necesario generar automáticamente."
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+
+#: ../../build/doc/experimental.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr "Puede depender de una función propuesta de pgRouting."
+
+#: ../../build/doc/experimental.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr "Podría depender de una función obsoleta de pgRouting"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:21
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:22
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:24
+msgid "New **experimental** function"
+msgstr "Nueva función **experimental**"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:27
+msgid "Support"
+msgstr "Soporte"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:28
+msgid ""
+"**Supported versions** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_chinesePostmanCost.html>`__)"
+msgstr ""
+"**Versiones soportadas:** actual(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_chinesePostmanCost.html>`__)"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_chinesePostmanCost.rst:33
+#: ../../build/doc/pgr_chinesePostmanCost.rst:78
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:3
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:5
+msgid "Process is done only on edges with **positive** costs."
+msgstr "El proceso se realiza solo en bordes con costos **positivos**."
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
+msgid "Running time: :math:`O(E * (E + V * logV))`"
+msgstr "Tiempo de ejecución: :math:`O(E * (E + V * logV))`"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:7
+msgid "Graph must be connected."
+msgstr "El grafo debe estar conectado."
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:39
+msgid "[TBD] Return value when the graph if disconnected"
+msgstr "[TBD] Valor devuelto cuando el grafo está desconectado"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:42
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:59
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_chinesePostmanCost.rst:78
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
+msgid "**edges_sql**"
+msgstr "**edges_sql**"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:6
+msgid "The edges SQL query as described in `Inner query`_."
+msgstr "La consulta SQL de aristas como se describe en  `Inner query`_."
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:67
+msgid "Inner query"
+msgstr "Consulta interna"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:3
+msgid ""
+"An Edges SQL that represents a **directed** graph with the following columns"
+msgstr ""
+"Un SQL de Aristas que representa un grafo **dirigido** con las siguientes "
+"columnas"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "**id**"
+msgstr "**id**"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "``ANY-INTEGER``"
+msgstr "``ANY-INTEGER``"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "**source**"
+msgstr "**origen**"
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "**target**"
+msgstr "**objetivo**"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "**cost**"
+msgstr "**cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``ANY-NUMERICAL``"
+msgstr "``ANY-NUMERICAL``"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Weight of the edge  `(source, target)`"
+msgstr "Peso de la arista `(source, target)`"
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**reverse_cost**"
+msgstr "**reverse_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "-1"
+msgstr "-1"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Weight of the edge `(target, source)`,"
+msgstr "Peso de la arista `(target, source)`,"
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Where:"
+msgstr "Donde:"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-INTEGER"
+msgstr "ANY-INTEGER"
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
+msgstr "ANY-NUMERICAL"
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:75
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:80
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:80
+msgid "Minimum costs of a circuit path."
+msgstr "Costes mínimos de una trayectoria de circuito."
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:84
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:86
+msgid ":doc:`chinesePostmanProblem-family`"
+msgstr ":doc:`chinesePostmanProblem-family`"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:89
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:90
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:91
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
