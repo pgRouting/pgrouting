@@ -1,0 +1,481 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"PO-Revision-Date: 2019-09-07 11:57+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/withPoints-family.rst:11
+msgid "withPoints - Family of functions"
+msgstr "withPoints - Familia de funciones"
+
+#: ../../build/doc/withPoints-family.rst:13
+msgid "When points are also given as input:"
+msgstr "Cuando los puntos también se dan como entrada:"
+
+#: ../../build/doc/proposed.rst:3
+msgid "Proposed functions for next mayor release."
+msgstr "Funciones propuestas para el próximo lanzamineto."
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially in the current release."
+msgstr "No están oficialmente en la versión actual."
+
+#: ../../build/doc/proposed.rst:6
+msgid "They will likely officially be part of the next mayor release:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might not change. (But still can)"
+msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might not change. (But still can)"
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might not change. (But still can)"
+msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests have being done. But might need more."
+msgstr "Se han hecho pruebas de pgTap. Pero tal vez necesite más."
+
+#: ../../build/doc/proposed.rst:13
+msgid "Documentation might need refinement."
+msgstr "Es posible que la documentación necesite un refinamiento."
+
+#: ../../build/doc/withPoints-family.rst:21
+msgid ":doc:`pgr_withPoints` - Route from/to points anywhere on the graph."
+msgstr ""
+":doc:`pgr_withPoints` - Ruta desde/hacia puntos en cualquier parte del "
+"grafo."
+
+#: ../../build/doc/withPoints-family.rst:22
+msgid ":doc:`pgr_withPointsCost` - Costs of the shortest paths."
+msgstr ":doc:`pgr_withPointsCost` - Costos de las tutas más cortas."
+
+#: ../../build/doc/withPoints-family.rst:23
+msgid ":doc:`pgr_withPointsCostMatrix` - Costs of the shortest paths."
+msgstr ":doc:`pgr_withPointsCostMatrix` - Costos de las rutas más cortas."
+
+#: ../../build/doc/withPoints-family.rst:24
+msgid ":doc:`pgr_withPointsKSP` - K shortest paths."
+msgstr ":doc:`pgr_withPointsKSP` - rutas más cortas K."
+
+#: ../../build/doc/withPoints-family.rst:25
+msgid ":doc:`pgr_withPointsDD` - Driving distance."
+msgstr ":doc:`pgr_withPointsDD` - Distancia de conducción."
+
+#: ../../build/doc/withPoints-family.rst:41
+msgid "Previous versions of this page"
+msgstr "Versiones anteriores de esta página"
+
+#: ../../build/doc/withPoints-family.rst:42
+msgid ""
+"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
+"/withPoints-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
+"/withPoints-family.html>`__"
+msgstr ""
+"**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/dev/en"
+"/withPoints-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
+"/withPoints-family.html>`__"
+
+#: ../../build/doc/withPoints-family.rst:46
+msgid ""
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
+"/withPoints-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/withPoints-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en"
+"/withPoints-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/withPoints-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html>`__"
+
+#: ../../build/doc/withPoints-family.rst:56
+msgid "Images"
+msgstr "Imágenes"
+
+#: ../../build/doc/withPoints-family.rst:58
+msgid ""
+"The squared vertices are the temporary vertices, The temporary vertices are "
+"added according to the driving side, The following images visually show the "
+"differences on how depending on the driving side the data is interpreted."
+msgstr ""
+"Los vértices al cuadrado son los vértices temporales, los vértices "
+"temporales se añaden de acuerdo con el lado de conducción, Las siguientes "
+"imágenes muestran visualmente las diferencias sobre cómo dependiendo del "
+"lado de conducción se interpretan los datos."
+
+#: ../../build/doc/withPoints-family.rst:62
+msgid "Right driving side"
+msgstr "Lado de conducción derecho"
+
+#: ../../build/doc/withPoints-family.rst:67
+msgid "Left driving side"
+msgstr "Lado de conducción izquierdo"
+
+#: ../../build/doc/withPoints-family.rst:72
+msgid "doesn't matter the driving side"
+msgstr "no importa el lado de conducción"
+
+#: ../../build/doc/withPoints-family.rst:77
+msgid "Introduction"
+msgstr "Introducción"
+
+#: ../../build/doc/withPoints-family.rst:79
+msgid ""
+"This family of functions was thought for routing vehicles, but might as well"
+" work for some other application that we can not think of."
+msgstr ""
+"Esta familia de funciones fue pensada para el ruteo de vehículos, pero bien "
+"podría funcionar para alguna otra aplicación que no se nos haya ocurrido "
+"aún."
+
+#: ../../build/doc/withPoints-family.rst:82
+msgid ""
+"The with points family of function give you the ability to route between "
+"arbitrary points located outside the original graph."
+msgstr ""
+"La familia de funciones con puntos le da la capacidad de enrutar entre "
+"puntos arbitrarios situados fuera del grafo original."
+
+#: ../../build/doc/withPoints-family.rst:85
+msgid ""
+"When given a point identified with a `pid` that its being mapped to and edge"
+" with an identifier `edge_id`, with a `fraction` along that edge (from the "
+"source to the target of the edge) and some additional information about "
+"which `side` of the edge the point is on, then routing from arbitrary points"
+" more accurately reflect routing vehicles in road networks,"
+msgstr ""
+"Cuando se le da un punto identificado con un `pid` al que se está asignando "
+"y borde con un identificador `edge_id`, con una `fracción` a lo largo de ese"
+" borde (desde el origen hasta el destino del borde) y algo de información "
+"adicional sobre qué `lado` del borde se encuentra en el punto, a "
+"continuación, el ruteo desde puntos arbitrarios refleja con mayor precisión "
+"los vehículos de enrutamiento en las redes de carreteras,"
+
+#: ../../build/doc/withPoints-family.rst:96
+msgid ""
+"I talk about a family of functions because it includes different "
+"functionalities."
+msgstr ""
+"Hablo de una familia de funciones porque incluye diferentes funcionalidades."
+
+#: ../../build/doc/withPoints-family.rst:93
+msgid "pgr_withPoints is pgr_dijkstra based"
+msgstr "pgr_withPoints se basa en pgr_dijkstra"
+
+#: ../../build/doc/withPoints-family.rst:94
+msgid "pgr_withPointsCost is pgr_dijkstraCost based"
+msgstr "pgr_withPointsCost se basa en pgr_dijkstraCost"
+
+#: ../../build/doc/withPoints-family.rst:95
+msgid "pgr_withPointsKSP is pgr_ksp based"
+msgstr "pgr_withPointsKSP se basa en pgr_ksp"
+
+#: ../../build/doc/withPoints-family.rst:96
+msgid "pgr_withPointsDD is pgr_drivingDistance based"
+msgstr "pgr_withPointsDD se basa en pgr_drivingDistance"
+
+#: ../../build/doc/withPoints-family.rst:98
+msgid ""
+"In all this functions we have to take care of as many aspects as possible:"
+msgstr ""
+"En todas estas funciones tenemos que ocuparnos de tantos aspectos como sea "
+"posible:"
+
+#: ../../build/doc/withPoints-family.rst:100
+msgid "Must work for routing:"
+msgstr "Debe funcionar para el ruteo:"
+
+#: ../../build/doc/withPoints-family.rst:102
+msgid "Cars (directed graph)"
+msgstr "Coches (grafo dirigido)"
+
+#: ../../build/doc/withPoints-family.rst:103
+msgid "Pedestrians (undirected graph)"
+msgstr "Peatones (grafo no dirigido)"
+
+#: ../../build/doc/withPoints-family.rst:105
+msgid "Arriving at the point:"
+msgstr "Al llegar al punto:"
+
+#: ../../build/doc/withPoints-family.rst:107
+msgid "In either side of the street."
+msgstr "A ambos lados de la calle."
+
+#: ../../build/doc/withPoints-family.rst:108
+msgid ""
+"Compulsory arrival on the side of the street where the point is located."
+msgstr ""
+"Llegada obligatoria en el lado de la calle donde se encuentra el punto."
+
+#: ../../build/doc/withPoints-family.rst:110
+msgid "Countries with:"
+msgstr "Países con:"
+
+#: ../../build/doc/withPoints-family.rst:112
+msgid "Right side driving"
+msgstr "Conducción de lado derecho"
+
+#: ../../build/doc/withPoints-family.rst:113
+msgid "Left side driving"
+msgstr "Conducción de lado izquierdo"
+
+#: ../../build/doc/withPoints-family.rst:115
+msgid "Some points are:"
+msgstr "Algunos puntos son:"
+
+#: ../../build/doc/withPoints-family.rst:117
+msgid ""
+"Permanent, for example the set of points of clients stored in a table in the"
+" data base"
+msgstr ""
+"Permanente, por ejemplo, el conjunto de puntos de los clientes almacenados "
+"en una tabla en la base de datos"
+
+#: ../../build/doc/withPoints-family.rst:118
+msgid "Temporal, for example points given through a web application"
+msgstr "Temporal, por ejemplo, puntos dados a través de una aplicación web"
+
+#: ../../build/doc/withPoints-family.rst:120
+msgid "The numbering of the points are handled with negative sign."
+msgstr "La numeración de los puntos se maneja con signo negativo."
+
+#: ../../build/doc/withPoints-family.rst:122
+msgid "Original point identifiers are to be positive."
+msgstr "Los identificadores de punto originales deben ser positivos."
+
+#: ../../build/doc/withPoints-family.rst:123
+msgid "Transformation to negative is done internally."
+msgstr "La transformación a negativa se realiza internamente."
+
+#: ../../build/doc/withPoints-family.rst:124
+msgid "For results for involving vertices identifiers"
+msgstr ""
+"Para obtener resultados para la participación de identificadores de vértices"
+
+#: ../../build/doc/withPoints-family.rst:126
+msgid "positive sign is a vertex of the original graph"
+msgstr "signo positivo es un vértice del grafo original"
+
+#: ../../build/doc/withPoints-family.rst:127
+msgid "negative sign is a point of the temporary points"
+msgstr "signo negativo es un punto de los puntos temporales"
+
+#: ../../build/doc/withPoints-family.rst:129
+msgid ""
+"The reason for doing this is to avoid confusion when there is a vertex with "
+"the same number as identifier as the points identifier."
+msgstr ""
+"La razón para hacer esto es para evitar confusiones cuando hay un vértice "
+"con el mismo número identificador que el identificador de puntos."
+
+#: ../../build/doc/withPoints-family.rst:132
+msgid "Graph & edges"
+msgstr "Grafo & aristas"
+
+#: ../../build/doc/withPoints-family.rst:134
+msgid ""
+"Let :math:`G_d(V,E)` where :math:`V` is the set of vertices and :math:`E` is"
+" the set of edges be the original directed graph."
+msgstr ""
+"Permitir :math:`G_d(V,E)` donde :math:`V` es el conjunto de vértices y "
+":math:`E` es el conjunto de aristas sea el gráfico dirigido original."
+
+#: ../../build/doc/withPoints-family.rst:136
+msgid ""
+"An edge of the original `edges_sql` is :math:`(id, source, target, cost, "
+"reverse\\_cost)` will generate internally"
+msgstr ""
+"Un borde del `edges_sql` original es :math:`(id, source, target, cost, "
+"reverse\\_cost)` y se generará internamente"
+
+#: ../../build/doc/withPoints-family.rst:138
+msgid ":math:`(id, source, target, cost)`"
+msgstr ":math:`(id, source, target, cost)`"
+
+#: ../../build/doc/withPoints-family.rst:139
+msgid ":math:`(id, target, source, reverse\\_cost)`"
+msgstr ":math:`(id, target, source, reverse\\_cost)`"
+
+#: ../../build/doc/withPoints-family.rst:142
+msgid "Point Definition"
+msgstr "Definición de Punto"
+
+#: ../../build/doc/withPoints-family.rst:144
+msgid ""
+"A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)`"
+msgstr ""
+"Un punto se define por el cuadruplicado: :math:`(pid, eid, fraction, side)`"
+
+#: ../../build/doc/withPoints-family.rst:146
+msgid "**pid** is the point identifier"
+msgstr "**pid** es el identificador de punto"
+
+#: ../../build/doc/withPoints-family.rst:147
+msgid "**eid** is an edge id of the `edges_sql`"
+msgstr "**eid** es un identificador de aristas de `edges_sql`"
+
+#: ../../build/doc/withPoints-family.rst:148
+msgid "**fraction** represents where the edge `eid` will be cut."
+msgstr "**fracción** representa dónde se cortará el borde `eid`."
+
+#: ../../build/doc/withPoints-family.rst:149
+msgid "**side** Indicates the side of the edge where the point is located."
+msgstr "**lado** Indica el lado de la arista donde se encuentra el punto."
+
+#: ../../build/doc/withPoints-family.rst:153
+msgid "Creating Temporary Vertices in the Graph"
+msgstr "Creación de Vértices Temporales en el grafo"
+
+#: ../../build/doc/withPoints-family.rst:155
+msgid "For edge (15,  9,12  10, 20), & lets insert point (2, 12, 0.3, r)"
+msgstr ""
+"Para la arista (15,  9,12  10, 20), y permite instertar el punto (2, 12, "
+"0.3, r)"
+
+#: ../../build/doc/withPoints-family.rst:158
+msgid "On a right hand side driving network"
+msgstr "En una red de conducción del lado derecho"
+
+#: ../../build/doc/withPoints-family.rst:159
+msgid "From first image above:"
+msgstr "Desde la primera imagen de arriba:"
+
+#: ../../build/doc/withPoints-family.rst:161
+msgid "We can arrive to the point only via vertex 9."
+msgstr "Podemos llegar al punto sólo a través del vértice 9."
+
+#: ../../build/doc/withPoints-family.rst:162
+msgid "It only affects the edge (15, 9,12, 10) so that edge is removed."
+msgstr ""
+"Sólo afecta a la arista (15, 9,12, 10) por lo que esa arista se elimina."
+
+#: ../../build/doc/withPoints-family.rst:163
+msgid "Edge (15, 12,9, 20) is kept."
+msgstr "Se mantiene la arista (15, 12, 9, 20)."
+
+#: ../../build/doc/withPoints-family.rst:164
+#: ../../build/doc/withPoints-family.rst:176
+#: ../../build/doc/withPoints-family.rst:191
+msgid "Create new edges:"
+msgstr "Crear nuevas aristas:"
+
+#: ../../build/doc/withPoints-family.rst:166
+#: ../../build/doc/withPoints-family.rst:195
+msgid "(15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3"
+msgstr ""
+"(15, 9, -1, 3) arista desde el vértice 9 hasta el punto 1 cuyo costo es de 3"
+
+#: ../../build/doc/withPoints-family.rst:167
+#: ../../build/doc/withPoints-family.rst:196
+msgid "(15, -1,12, 7) edge from point 1 to vertex 12 has cost 7"
+msgstr ""
+"(15, -1,12, 7) arista desde el punto 1 hasta el vértice 12 cuyo costo es de "
+"7"
+
+#: ../../build/doc/withPoints-family.rst:170
+msgid "On a left hand side driving network"
+msgstr "En una red de conducción del lado izquierdo"
+
+#: ../../build/doc/withPoints-family.rst:171
+msgid "From second image above:"
+msgstr "Desde la segunda imagen de arriba:"
+
+#: ../../build/doc/withPoints-family.rst:173
+msgid "We can arrive to the point only via vertex 12."
+msgstr "Podemos llegar al punto sólo a través del vértice 12."
+
+#: ../../build/doc/withPoints-family.rst:174
+msgid "It only affects the edge (15, 12,9 20) so that edge is removed."
+msgstr ""
+"Sólo afecta a la arista (15, 12,9 20) por lo que esa arista se elimina."
+
+#: ../../build/doc/withPoints-family.rst:175
+msgid "Edge (15, 9,12, 10) is kept."
+msgstr "Se mantiene la arista (15, 9,12, 10)."
+
+#: ../../build/doc/withPoints-family.rst:178
+#: ../../build/doc/withPoints-family.rst:193
+msgid "(15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14"
+msgstr "(15, 12,-1, 14) arista del vértice 12 al punto 1 ha costado 14"
+
+#: ../../build/doc/withPoints-family.rst:179
+#: ../../build/doc/withPoints-family.rst:194
+msgid "(15, -1,9, 6) edge from point 1 to vertex 9 has cost 6"
+msgstr "(15, -1, 9, 6) arista el punto 1 hasta el vértice 9 ha costado 6"
+
+#: ../../build/doc/withPoints-family.rst
+msgid "Remember"
+msgstr "Recordar"
+
+#: ../../build/doc/withPoints-family.rst:181
+msgid "that fraction is from vertex 9 to vertex 12"
+msgstr "esa fracción es del vértice 9 al vértice 12"
+
+#: ../../build/doc/withPoints-family.rst:185
+msgid "When driving side does not matter"
+msgstr "Cuando el lado de conducción no importa"
+
+#: ../../build/doc/withPoints-family.rst:186
+msgid "From third image above:"
+msgstr "De la tercera imagen anterior:"
+
+#: ../../build/doc/withPoints-family.rst:188
+msgid "We can arrive to the point either via vertex 12 or via vertex 9"
+msgstr ""
+"Podemos llegar al punto ya sea a través del vértice 12 o a través del "
+"vértice 9"
+
+#: ../../build/doc/withPoints-family.rst:189
+msgid "Edge (15, 12,9 20) is removed."
+msgstr "Se elimina la arista (15, 12, 9, 20)."
+
+#: ../../build/doc/withPoints-family.rst:190
+msgid "Edge (15, 9,12, 10) is removed."
+msgstr "Se elimina la arista (15, 9, 12, 10)."
+
+#: ../../build/doc/withPoints-family.rst:199
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/withPoints-family.rst:202
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/withPoints-family.rst:203
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/withPoints-family.rst:204
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
