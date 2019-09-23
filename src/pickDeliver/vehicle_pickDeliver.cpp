@@ -141,6 +141,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
      * the pickup:
      *   - increase the upper limit position estimation
      */
+    ++deliver_pos.first;
     ++deliver_pos.second;
 
 
@@ -161,6 +162,8 @@ Vehicle_pickDeliver::insert(const Order &order) {
 #ifndef NDEBUG
         err_log << "\npickup inserted: " << tau();
 #endif
+
+        if (deliver_pos.first <= pick_pos.first) deliver_pos.first = pick_pos.first + 1;
 
         while (deliver_pos.first <= deliver_pos.second) {
             Vehicle::insert(deliver_pos.first, order.delivery());
