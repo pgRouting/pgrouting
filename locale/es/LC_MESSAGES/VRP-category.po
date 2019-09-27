@@ -1,0 +1,1374 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Sterling Quinn <sterling.quinn@gmail.com>, 2019
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"PO-Revision-Date: 2019-09-07 11:55+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/VRP-category.rst:11
+msgid "Vehicle Routing Functions - Category (Experimental)"
+msgstr "Funciones de Ruteo de Vehículos - Categoría (Experimental)"
+
+#: ../../build/doc/experimental.rst:3
+msgid "Experimental functions"
+msgstr "Funciones experimentales"
+
+#: ../../build/doc/experimental.rst:5
+msgid "They are not officially of the current release."
+msgstr "No son oficialmente de la versión actual."
+
+#: ../../build/doc/experimental.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
+
+#: ../../build/doc/experimental.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
+
+#: ../../build/doc/experimental.rst:9
+msgid "Name might change."
+msgstr "El nombre puede cambiar."
+
+#: ../../build/doc/experimental.rst:10
+msgid "Signature might change."
+msgstr "La firma (declaración de funciones) podría cambiar."
+
+#: ../../build/doc/experimental.rst:11
+msgid "Functionality might change."
+msgstr "La funcionalidad puede cambiar."
+
+#: ../../build/doc/experimental.rst:12
+msgid "pgTap tests might be missing."
+msgstr "Las pruebas de pgTap pueden estar ausentes."
+
+#: ../../build/doc/experimental.rst:13
+msgid "Might need c/c++ coding."
+msgstr "Posiblemente necesite codificación c/c++."
+
+#: ../../build/doc/experimental.rst:14
+msgid "May lack documentation."
+msgstr "Puede haber carencia de documentación."
+
+#: ../../build/doc/experimental.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
+
+#: ../../build/doc/experimental.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+"Ejemplos de documentación que puede ser necesario generar automáticamente."
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+
+#: ../../build/doc/experimental.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr "Puede depender de una función propuesta de pgRouting."
+
+#: ../../build/doc/experimental.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr "Podría depender de una función obsoleta de pgRouting"
+
+#: ../../build/doc/VRP-category.rst:19
+msgid "Pickup and delivery problem"
+msgstr "Problema de recogida y entrega"
+
+#: ../../build/doc/VRP-category.rst:21
+msgid ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
+msgstr ""
+":doc:`pgr_pickDeliver` - Recogida y Entrega utilizando una Matriz de Costos."
+
+#: ../../build/doc/VRP-category.rst:22
+msgid ""
+":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
+msgstr ""
+":doc:`pgr_pickDeliverEuclidean` - Recogida y Entrega con distancias "
+"Euclideanas."
+
+#: ../../build/doc/VRP-category.rst:24
+msgid "Distribution problem"
+msgstr "Problema de distribución"
+
+#: ../../build/doc/VRP-category.rst:26
+msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
+msgstr ""
+":doc:`pgr_vrpOneDepot` - Desde un único depósito, distribuye los pedidos"
+
+#: ../../build/doc/VRP-category.rst:30
+msgid "Contents"
+msgstr "Contenido"
+
+#: ../../build/doc/VRP-category.rst:40
+msgid "Previous versions of this page"
+msgstr "Versiones anteriores de esta página"
+
+#: ../../build/doc/VRP-category.rst:41
+msgid ""
+"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/VRP-"
+"category.html>`__)"
+msgstr ""
+"**versiones Soportadas:** actual(`3.0 <https://docs.pgrouting.org/dev/en"
+"/VRP-category.html>`__)"
+
+#: ../../build/doc/VRP-category.rst:46
+msgid "Introduction"
+msgstr "Introducción"
+
+#: ../../build/doc/VRP-category.rst:48
+msgid ""
+"Vehicle Routing Problems `VRP` are **NP-hard** optimization problem, it "
+"generalises the travelling salesman problem (TSP)."
+msgstr ""
+"Problemas de Ruteo de Vehículos `VRP` son problemas de optimización **NP-"
+"hard** , que generaliza el problema del vendedor viajante (TSP)."
+
+#: ../../build/doc/VRP-category.rst:50
+msgid "The objective of the VRP is to minimize the total route cost."
+msgstr "El objetivo del VRP es minimizar el costo total de la ruta."
+
+#: ../../build/doc/VRP-category.rst:51
+msgid "There are several variants of the VRP problem,"
+msgstr "Hay distintas variantes del problema VRP,"
+
+#: ../../build/doc/VRP-category.rst:53
+msgid "**pgRouting does not try to implement all variants.**"
+msgstr "**pgRouting no intenta implementar todas las variantes.**"
+
+#: ../../build/doc/VRP-category.rst:57
+msgid "Characteristics"
+msgstr "Características"
+
+#: ../../build/doc/VRP-category.rst:59
+msgid ""
+"Capacitated Vehicle Routing Problem `CVRP` where The vehicles have limited "
+"carrying capacity of the goods."
+msgstr ""
+"Problema de Ruteo de Vehículos Capacitados `CVRP` donde los vehículos tienen"
+" una capacidad de transporte limitada de las mercancías."
+
+#: ../../build/doc/VRP-category.rst:60
+msgid ""
+"Vehicle Routing Problem with Time Windows `VRPTW` where the locations have "
+"time windows within which the vehicle's visits must be made."
+msgstr ""
+"Problema de Ruteo del Vehículo con Ventanas de Tiempo  `VRPTW` donde las "
+"ubicaciones tienen ventanas de tiempo dentro de las cuales se deben realizar"
+" las visitas del vehículo."
+
+#: ../../build/doc/VRP-category.rst:61
+msgid ""
+"Vehicle Routing Problem with Pickup and Delivery `VRPPD` where a number of "
+"goods need to be moved from certain pickup locations to other delivery "
+"locations."
+msgstr ""
+"Problema de Ruteo de Vehículos con Recogida y Entrega `VRPPD` donde una "
+"serie de mercancías necesitan ser trasladadas de ciertas ubicaciones de "
+"recogida a otros lugares de entrega."
+
+#: ../../build/doc/VRP-category.rst:65
+msgid "Limitations"
+msgstr "Limitaciones"
+
+#: ../../build/doc/VRP-category.rst:66
+msgid "No multiple time windows for a location."
+msgstr "No hay varias ventanas de tiempo para una ubicación."
+
+#: ../../build/doc/VRP-category.rst:67
+msgid "Less vehicle used is considered better."
+msgstr "Menos vehículo utilizado se considera mejor."
+
+#: ../../build/doc/VRP-category.rst:68
+msgid "Less total duration is better."
+msgstr "Menos duración total es mejor."
+
+#: ../../build/doc/VRP-category.rst:69
+msgid "Less wait time is better."
+msgstr "Menos tiempo de espera es mejor."
+
+#: ../../build/doc/VRP-category.rst:73
+msgid "Pick & Delivery"
+msgstr "Recogida y Entrega"
+
+#: ../../build/doc/VRP-category.rst:75
+msgid ""
+"Problem: `CVRPPDTW` Capacitated Pick and Delivery Vehicle Routing problem "
+"with Time Windows"
+msgstr ""
+"Problema: `CVRPPDTW` Problema de Ruteo de vehículos de recogida y entrega "
+"capacitado con Ventanas de Tiempo"
+
+#: ../../build/doc/VRP-category.rst:77
+msgid "Times are relative to `0`"
+msgstr "Los tiempos son relativos a `0`"
+
+#: ../../build/doc/VRP-category.rst:78
+msgid "The vehicles"
+msgstr "Los vehículos"
+
+#: ../../build/doc/VRP-category.rst:80
+msgid "have start and ending service duration times."
+msgstr "tienen tiempos de duración del servicio de inicio y fin."
+
+#: ../../build/doc/VRP-category.rst:81
+msgid "have opening and closing times for the start and ending locations."
+msgstr ""
+"tienen horarios de apertura y cierre para las ubicaciones de inicio y "
+"finalización."
+
+#: ../../build/doc/VRP-category.rst:82
+msgid "have a capacity."
+msgstr "tienen cierta capacidad."
+
+#: ../../build/doc/VRP-category.rst:84
+msgid "The orders"
+msgstr "Las órdenes"
+
+#: ../../build/doc/VRP-category.rst:86
+msgid "Have pick up and delivery locations."
+msgstr "Tener lugares de recogida y entrega."
+
+#: ../../build/doc/VRP-category.rst:87
+msgid "Have opening and closing times for the pickup and delivery locations."
+msgstr ""
+"Tener horarios de apertura y cierre para las ubicaciones de recogida y "
+"entrega."
+
+#: ../../build/doc/VRP-category.rst:88
+msgid "Have pickup and delivery duration service times."
+msgstr "Tener tiempos de servicio de recogida y entrega."
+
+#: ../../build/doc/VRP-category.rst:89
+msgid ""
+"have a demand request for moving goods from the pickup location to the "
+"delivery location."
+msgstr ""
+"solicitar el traslado de mercancías desde el lugar de recogida hasta el "
+"lugar de entrega."
+
+#: ../../build/doc/VRP-category.rst:91
+msgid "Time based calculations:"
+msgstr "Cálculos basados en el tiempo:"
+
+#: ../../build/doc/VRP-category.rst:93
+msgid "Travel time between customers is :math:`distance / speed`"
+msgstr ""
+"El tiempo de viaje entre los clientes es :math:`distancia / velocidad`"
+
+#: ../../build/doc/VRP-category.rst:94
+msgid "Pickup and delivery order pair is done by the same vehicle."
+msgstr ""
+"El par de órdenes de recogida y entrega se realiza por el mismo vehículo."
+
+#: ../../build/doc/VRP-category.rst:95
+msgid "A pickup is done before the delivery."
+msgstr "La recogida se realiza antes de la entrega."
+
+#: ../../build/doc/VRP-category.rst:102
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/VRP-category.rst:106
+msgid "Pick & deliver"
+msgstr "Recogida y Entrega"
+
+#: ../../build/doc/VRP-category.rst:108
+msgid "Both implementations use the following same parameters:"
+msgstr "Ambas implementaciones utilizan los siguientes parámetros:"
+
+#: ../../build/doc/VRP-category.rst:18 ../../build/doc/VRP-category.rst:54
+#: ../../build/doc/VRP-category.rst:113 ../../build/doc/VRP-category.rst:134
+#: ../../build/doc/VRP-category.rst:164 ../../build/doc/VRP-category.rst:185
+#: ../../build/doc/VRP-category.rst:199 ../../build/doc/VRP-category.rst:226
+#: ../../build/doc/VRP-category.rst:248 ../../build/doc/VRP-category.rst:261
+#: ../../build/doc/VRP-category.rst:316 ../../build/doc/VRP-category.rst:352
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/VRP-category.rst:18 ../../build/doc/VRP-category.rst:54
+#: ../../build/doc/VRP-category.rst:113 ../../build/doc/VRP-category.rst:134
+#: ../../build/doc/VRP-category.rst:164 ../../build/doc/VRP-category.rst:185
+#: ../../build/doc/VRP-category.rst:199 ../../build/doc/VRP-category.rst:226
+#: ../../build/doc/VRP-category.rst:248 ../../build/doc/VRP-category.rst:261
+#: ../../build/doc/VRP-category.rst:316 ../../build/doc/VRP-category.rst:352
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/VRP-category.rst:113 ../../build/doc/VRP-category.rst:164
+#: ../../build/doc/VRP-category.rst:226 ../../build/doc/VRP-category.rst:248
+#: ../../build/doc/VRP-category.rst:261
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/VRP-category.rst:18 ../../build/doc/VRP-category.rst:54
+#: ../../build/doc/VRP-category.rst:113 ../../build/doc/VRP-category.rst:134
+#: ../../build/doc/VRP-category.rst:164 ../../build/doc/VRP-category.rst:185
+#: ../../build/doc/VRP-category.rst:199 ../../build/doc/VRP-category.rst:226
+#: ../../build/doc/VRP-category.rst:248 ../../build/doc/VRP-category.rst:261
+#: ../../build/doc/VRP-category.rst:316 ../../build/doc/VRP-category.rst:352
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/VRP-category.rst:115
+msgid "**orders_sql**"
+msgstr "**orders_sql**"
+
+#: ../../build/doc/VRP-category.rst:115 ../../build/doc/VRP-category.rst:116
+#: ../../build/doc/VRP-category.rst:136
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/VRP-category.rst:115
+msgid ""
+"`Pick & Deliver Orders SQL`_ query containing the orders to be processed."
+msgstr ""
+"`Pick & Deliver Orders SQL`_  consulta que contiene las órdenes que se van a"
+" procesar."
+
+#: ../../build/doc/VRP-category.rst:116
+msgid "**vehicles_sql**"
+msgstr "**vehicles_sql**"
+
+#: ../../build/doc/VRP-category.rst:116
+msgid ""
+"`Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used."
+msgstr ""
+"La consulta 'Pick & Deliver Vehicles SQL'_ contiene los vehículos que se van"
+" a utilizar."
+
+#: ../../build/doc/VRP-category.rst:117
+msgid "**factor**"
+msgstr "**factor**"
+
+#: ../../build/doc/VRP-category.rst:117
+msgid "``NUMERIC``"
+msgstr "``NUMERIC``"
+
+#: ../../build/doc/VRP-category.rst:117
+msgid "1"
+msgstr "1"
+
+#: ../../build/doc/VRP-category.rst:117
+msgid "(Optional) Travel time multiplier. See :ref:`pd_factor`"
+msgstr "(Opcional) Multiplicador de tiempo de viaje. Ver  :ref:`pd_factor`"
+
+#: ../../build/doc/VRP-category.rst:118
+msgid "**max_cycles**"
+msgstr "**max_cycles**"
+
+#: ../../build/doc/VRP-category.rst:118 ../../build/doc/VRP-category.rst:119
+msgid "``INTEGER``"
+msgstr "``INTEGER``"
+
+#: ../../build/doc/VRP-category.rst:118 ../../build/doc/VRP-category.rst:426
+msgid "10"
+msgstr "10"
+
+#: ../../build/doc/VRP-category.rst:118
+msgid "(Optional) Maximum number of cycles to perform on the optimization."
+msgstr "(Opcional) Número máximo de ciclos a realizar en la optimización."
+
+#: ../../build/doc/VRP-category.rst:119
+msgid "**initial_sol**"
+msgstr "**initial_sol**"
+
+#: ../../build/doc/VRP-category.rst:119
+msgid "4"
+msgstr "4"
+
+#: ../../build/doc/VRP-category.rst:119
+msgid "(Optional) Initial solution to be used."
+msgstr "(Opcional) Solución inicial a utilizar."
+
+#: ../../build/doc/VRP-category.rst:121
+msgid "``1`` One order per truck"
+msgstr "``1`` Un orden por camión"
+
+#: ../../build/doc/VRP-category.rst:122
+msgid "``2`` Push front order."
+msgstr "``2`` Empuje la orden delantera."
+
+#: ../../build/doc/VRP-category.rst:123
+msgid "``3`` Push back order."
+msgstr "``3`` Empuje la orden trasera."
+
+#: ../../build/doc/VRP-category.rst:124
+msgid "``4`` Optimize insert."
+msgstr "``4`` Optimizar inserción."
+
+#: ../../build/doc/VRP-category.rst:125
+msgid ""
+"``5`` Push back order that allows more orders to be inserted at the back"
+msgstr ""
+"``5`` Orden de retroceso que permite insertar más órdenes en la parte "
+"posterior"
+
+#: ../../build/doc/VRP-category.rst:126
+msgid ""
+"``6`` Push front order that allows more orders to be inserted at the front"
+msgstr ""
+"``6`` Orden de avance que permite insertar más órdenes en la parte frontal"
+
+#: ../../build/doc/VRP-category.rst:131
+msgid "The non euclidean implementation, additionally has:"
+msgstr "La implementación no euclidiana, además tiene:"
+
+#: ../../build/doc/VRP-category.rst:136
+msgid "**matrix_sql**"
+msgstr "**matrix_sql**"
+
+#: ../../build/doc/VRP-category.rst:136
+msgid ""
+"`Pick & Deliver Matrix SQL`_ query containing the distance or travel times."
+msgstr ""
+"La consulta `Matriz SQL de Recogida y Entrega`_ contiene la distancia o "
+"tiempos de viaje."
+
+#: ../../build/doc/VRP-category.rst:141
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+#: ../../build/doc/VRP-category.rst:143
+msgid "`Pick & Deliver Orders SQL`_"
+msgstr "`Órdenes SQL de Recogida y Entrega`_"
+
+#: ../../build/doc/VRP-category.rst:144
+msgid "`Pick & Deliver Vehicles SQL`_"
+msgstr "`Vehículos SQL de Recogida y Entrega`_"
+
+#: ../../build/doc/VRP-category.rst:145
+msgid "`Pick & Deliver Matrix SQL`_"
+msgstr "`Matriz SQL de Recogida y Entrega`_"
+
+#: ../../build/doc/VRP-category.rst:148
+msgid "return columns"
+msgstr "columnas de retorno"
+
+#: ../../build/doc/VRP-category.rst:149
+msgid ":ref:`Description of return columns <return_vrp_matrix_start>`"
+msgstr ""
+":ref:`Descripción de las columnas de retorno <return_vrp_matrix_start>`"
+
+#: ../../build/doc/VRP-category.rst:150
+msgid ""
+":ref:`Description of the return columns for Euclidean version "
+"<return_vrp_euclidean_start>`"
+msgstr ""
+":ref:`Descripción de las columnas de retorno para la versión Euclideana "
+"<return_vrp_euclidean_start>`"
+
+#: ../../build/doc/VRP-category.rst:157
+msgid "Pick & Deliver Orders SQL"
+msgstr "Pick & Deliver Orders SQL (Recoger y Entregar Pedidos)"
+
+#: ../../build/doc/VRP-category.rst:159
+msgid ""
+"In general, the columns for the orders SQL is the same in both "
+"implementation of pick and delivery:"
+msgstr ""
+"En general, las columnas para las órdenes SQL es la misma tanto en la "
+"implementación de recogida como de entrega:"
+
+#: ../../build/doc/VRP-category.rst:166 ../../build/doc/VRP-category.rst:228
+msgid "**id**"
+msgstr "**id**"
+
+#: ../../build/doc/VRP-category.rst:166 ../../build/doc/VRP-category.rst:187
+#: ../../build/doc/VRP-category.rst:188 ../../build/doc/VRP-category.rst:228
+#: ../../build/doc/VRP-category.rst:250 ../../build/doc/VRP-category.rst:251
+msgid "|ANY-INTEGER|"
+msgstr "|ANY-INTEGER|"
+
+#: ../../build/doc/VRP-category.rst:166 ../../build/doc/VRP-category.rst:228
+msgid "Identifier of the pick-delivery order pair."
+msgstr "Identificador del par de órdenes recogida-entrega."
+
+#: ../../build/doc/VRP-category.rst:167
+msgid "**demand**"
+msgstr "**demanda**"
+
+#: ../../build/doc/VRP-category.rst:167 ../../build/doc/VRP-category.rst:168
+#: ../../build/doc/VRP-category.rst:169 ../../build/doc/VRP-category.rst:170
+#: ../../build/doc/VRP-category.rst:171 ../../build/doc/VRP-category.rst:172
+#: ../../build/doc/VRP-category.rst:173 ../../build/doc/VRP-category.rst:201
+#: ../../build/doc/VRP-category.rst:202 ../../build/doc/VRP-category.rst:203
+#: ../../build/doc/VRP-category.rst:204 ../../build/doc/VRP-category.rst:229
+#: ../../build/doc/VRP-category.rst:230 ../../build/doc/VRP-category.rst:232
+#: ../../build/doc/VRP-category.rst:233 ../../build/doc/VRP-category.rst:234
+#: ../../build/doc/VRP-category.rst:236 ../../build/doc/VRP-category.rst:237
+#: ../../build/doc/VRP-category.rst:238 ../../build/doc/VRP-category.rst:263
+#: ../../build/doc/VRP-category.rst:264 ../../build/doc/VRP-category.rst:265
+#: ../../build/doc/VRP-category.rst:266
+msgid "|ANY-NUMERICAL|"
+msgstr "|ANY-NUMERICAL|"
+
+#: ../../build/doc/VRP-category.rst:167 ../../build/doc/VRP-category.rst:229
+msgid "Number of units in the order"
+msgstr "Número de unidades en la orden"
+
+#: ../../build/doc/VRP-category.rst:168
+msgid "**p_open**"
+msgstr "**p_open**"
+
+#: ../../build/doc/VRP-category.rst:168
+msgid "The time, relative to 0, when the pickup location opens."
+msgstr "La hora, en relación con 0, cuando se abre la ubicación de recogida."
+
+#: ../../build/doc/VRP-category.rst:169
+msgid "**p_close**"
+msgstr "**p_close**"
+
+#: ../../build/doc/VRP-category.rst:169
+msgid "The time, relative to 0, when the pickup location closes."
+msgstr ""
+"La hora, en relación con 0, cuando se cierra la ubicación de recogida."
+
+#: ../../build/doc/VRP-category.rst:170 ../../build/doc/VRP-category.rst:173
+msgid "**d_service**"
+msgstr "**d_service**"
+
+#: ../../build/doc/VRP-category.rst:170 ../../build/doc/VRP-category.rst:173
+#: ../../build/doc/VRP-category.rst:461 ../../build/doc/VRP-category.rst:463
+msgid "0"
+msgstr "0"
+
+#: ../../build/doc/VRP-category.rst:170
+msgid "The duration of the loading at the pickup location."
+msgstr "La duración de la carga en el lugar de recogida."
+
+#: ../../build/doc/VRP-category.rst:171
+msgid "**d_open**"
+msgstr "**d_open**"
+
+#: ../../build/doc/VRP-category.rst:171
+msgid "The time, relative to 0, when the delivery location opens."
+msgstr "La hora, en relación con 0, cuando se abre la ubicación de entrega."
+
+#: ../../build/doc/VRP-category.rst:172
+msgid "**d_close**"
+msgstr "**d_close**"
+
+#: ../../build/doc/VRP-category.rst:172
+msgid "The time, relative to 0, when the delivery location closes."
+msgstr "La hora, en relación con 0, cuando se cierra la ubicación de entrega."
+
+#: ../../build/doc/VRP-category.rst:173
+msgid "The duration of the loading at the delivery location."
+msgstr "La duración de la carga en el lugar de entrega."
+
+#: ../../build/doc/VRP-category.rst:182 ../../build/doc/VRP-category.rst:245
+msgid ""
+"For the non euclidean implementation, the starting and ending identifiers "
+"are needed:"
+msgstr ""
+"Para la implementación no euclidiana, se necesitan los identificadores "
+"inicial y final:"
+
+#: ../../build/doc/VRP-category.rst:187
+msgid "**p_node_id**"
+msgstr "**p_node_id**"
+
+#: ../../build/doc/VRP-category.rst:187
+msgid ""
+"The node identifier of the pickup, must match a node identifier in the "
+"matrix table."
+msgstr ""
+"El identificador de nodo de la recogida debe coincidir con un identificador "
+"de nodo en la tabla de matriz."
+
+#: ../../build/doc/VRP-category.rst:188
+msgid "**d_node_id**"
+msgstr "**d_node_id**"
+
+#: ../../build/doc/VRP-category.rst:188
+msgid ""
+"The node identifier of the delivery, must match a node identifier in the "
+"matrix table."
+msgstr ""
+"El identificador de nodo de la entrega debe coincidir con un identificador "
+"de nodo en la tabla de matriz."
+
+#: ../../build/doc/VRP-category.rst:196
+msgid ""
+"For the euclidean implementation, pick up and delivery  :math:`(x,y)` "
+"locations are needed:"
+msgstr ""
+"Para la implementación euclidiana, se necesitan ubicaciones :math:`(x,y)` de"
+" recogida y entrega:"
+
+#: ../../build/doc/VRP-category.rst:201
+msgid "**p_x**"
+msgstr "**p_x**"
+
+#: ../../build/doc/VRP-category.rst:201
+msgid ":math:`x` value of the pick up location"
+msgstr ":math:`x`  valor de la ubicación de recogida"
+
+#: ../../build/doc/VRP-category.rst:202
+msgid "**p_y**"
+msgstr "**p_y**"
+
+#: ../../build/doc/VRP-category.rst:202
+msgid ":math:`y` value of the pick up location"
+msgstr ":math:`y` valor de la ubicación de recogida"
+
+#: ../../build/doc/VRP-category.rst:203
+msgid "**d_x**"
+msgstr "**d_x**"
+
+#: ../../build/doc/VRP-category.rst:203
+msgid ":math:`x` value of the delivery location"
+msgstr "valor :math:`x` de la ubicación de entrega"
+
+#: ../../build/doc/VRP-category.rst:204
+msgid "**d_y**"
+msgstr "**d_y**"
+
+#: ../../build/doc/VRP-category.rst:204
+msgid ":math:`y` value of the delivery location"
+msgstr "valor :math:`y` del lugar de entrega"
+
+#: ../../build/doc/VRP-category.rst:219
+msgid "Pick & Deliver Vehicles SQL"
+msgstr "Pick & Deliver Vehicles SQL (Vehículos de Recogida y Entrega)"
+
+#: ../../build/doc/VRP-category.rst:221
+msgid ""
+"In general, the columns for the vehicles_sql is the same in both "
+"implementation of pick and delivery:"
+msgstr ""
+"En general, las columnas para vehicles_sql son las mismas tanto en la "
+"implementación de recogida como en la entrega:"
+
+#: ../../build/doc/VRP-category.rst:229
+msgid "**capacity**"
+msgstr "**capacidad**"
+
+#: ../../build/doc/VRP-category.rst:230
+msgid "**speed**"
+msgstr "**speed**"
+
+#: ../../build/doc/VRP-category.rst:230
+msgid "`1`"
+msgstr "`1`"
+
+#: ../../build/doc/VRP-category.rst:230
+msgid "Average speed of the vehicle."
+msgstr "Velocidad media del vehículo."
+
+#: ../../build/doc/VRP-category.rst:232
+msgid "**start_open**"
+msgstr "**start_open**"
+
+#: ../../build/doc/VRP-category.rst:232
+msgid "The time, relative to 0, when the starting location opens."
+msgstr "La hora, en relación con 0, cuando se abre la ubicación inicial."
+
+#: ../../build/doc/VRP-category.rst:233
+msgid "**start_close**"
+msgstr "**start_close**"
+
+#: ../../build/doc/VRP-category.rst:233
+msgid "The time, relative to 0, when the starting location closes."
+msgstr "La hora, en relación con 0, cuando se cierra la ubicación inicial."
+
+#: ../../build/doc/VRP-category.rst:234
+msgid "**start_service**"
+msgstr "**start_service**"
+
+#: ../../build/doc/VRP-category.rst:234
+msgid "`0`"
+msgstr "`0`"
+
+#: ../../build/doc/VRP-category.rst:234
+msgid "The duration of the loading at the starting location."
+msgstr "La duración de la carga en la ubicación inicial."
+
+#: ../../build/doc/VRP-category.rst:236
+msgid "**end_open**"
+msgstr "**end_open**"
+
+#: ../../build/doc/VRP-category.rst:236
+msgid "`start_open`"
+msgstr "`start_open`"
+
+#: ../../build/doc/VRP-category.rst:236
+msgid "The time, relative to 0, when the ending location opens."
+msgstr "La hora, en relación con 0, cuando se abre la ubicación final."
+
+#: ../../build/doc/VRP-category.rst:237
+msgid "**end_close**"
+msgstr "**end_close**"
+
+#: ../../build/doc/VRP-category.rst:237
+msgid "`start_close`"
+msgstr "`start_close`"
+
+#: ../../build/doc/VRP-category.rst:237
+msgid "The time, relative to 0, when the ending location closes."
+msgstr "La hora, en relación con 0, cuando se cierra la ubicación final."
+
+#: ../../build/doc/VRP-category.rst:238
+msgid "**end_service**"
+msgstr "**end_service**"
+
+#: ../../build/doc/VRP-category.rst:238
+msgid "`start_service`"
+msgstr "`start_service`"
+
+#: ../../build/doc/VRP-category.rst:238
+msgid "The duration of the loading at the ending location."
+msgstr "La duración de la carga en la ubicación final."
+
+#: ../../build/doc/VRP-category.rst:250
+msgid "**start_node_id**"
+msgstr "**start_node_id**"
+
+#: ../../build/doc/VRP-category.rst:250
+msgid ""
+"The node identifier of the starting location, must match a node identifier "
+"in the matrix table."
+msgstr ""
+"El identificador de nodo de la ubicación inicial debe coincidir con un "
+"identificador de nodo en la tabla de la matriz."
+
+#: ../../build/doc/VRP-category.rst:251
+msgid "**end_node_id**"
+msgstr "**end_node_id**"
+
+#: ../../build/doc/VRP-category.rst:251
+msgid "`start_node_id`"
+msgstr "`start_node_id`"
+
+#: ../../build/doc/VRP-category.rst:251
+msgid ""
+"The node identifier of the ending location, must match a node identifier in "
+"the matrix table."
+msgstr ""
+"El identificador de nodo de la ubicación final debe coincidir con un "
+"identificador de nodo en la tabla de matriz."
+
+#: ../../build/doc/VRP-category.rst:258
+msgid ""
+"For the euclidean implementation, starting and ending :math:`(x,y)` "
+"locations are needed:"
+msgstr ""
+"Para la implementación euclidiana, se necesitan ubicaciones :math:`(x,y)` de"
+" inicio y finalización:"
+
+#: ../../build/doc/VRP-category.rst:263
+msgid "**start_x**"
+msgstr "**start_x**"
+
+#: ../../build/doc/VRP-category.rst:263
+msgid ":math:`x` value of the coordinate of the starting location."
+msgstr "valor :math:`x` de la coordenada de la ubicación inicial."
+
+#: ../../build/doc/VRP-category.rst:264
+msgid "**start_y**"
+msgstr "**start_y**"
+
+#: ../../build/doc/VRP-category.rst:264
+msgid ":math:`y` value of the coordinate of the starting location."
+msgstr "valor :math:`y` de la coordenada de la ubicación de inicio."
+
+#: ../../build/doc/VRP-category.rst:265
+msgid "**end_x**"
+msgstr "**end_x**"
+
+#: ../../build/doc/VRP-category.rst:265
+msgid "`start_x`"
+msgstr "`start_x`"
+
+#: ../../build/doc/VRP-category.rst:265
+msgid ":math:`x` value of the coordinate of the ending location."
+msgstr "valor :math:`x` de la coordenada de la ubicación final."
+
+#: ../../build/doc/VRP-category.rst:266
+msgid "**end_y**"
+msgstr "**end_y**"
+
+#: ../../build/doc/VRP-category.rst:266
+msgid "`start_y`"
+msgstr "`start_y`"
+
+#: ../../build/doc/VRP-category.rst:266
+msgid ":math:`y` value of the coordinate of the ending location."
+msgstr ":math:`y` valor de la coordenada de la ubicación final."
+
+#: ../../build/doc/VRP-category.rst:273
+msgid "Pick & Deliver Matrix SQL"
+msgstr "Pick & Deliver Matrix SQL"
+
+#: ../../build/doc/VRP-category.rst:277 ../../build/doc/VRP-category.rst:473
+msgid "TODO"
+msgstr "TODO"
+
+#: ../../build/doc/VRP-category.rst:283
+msgid "Results"
+msgstr "Resultados"
+
+#: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:302
+msgid "Description of the result (TODO Disussion: Euclidean & Matrix)"
+msgstr "Descripción del resultado (TODO Disussion: Euclidean & Matrix)"
+
+#: ../../build/doc/VRP-category.rst:20 ../../build/doc/VRP-category.rst:56
+#: ../../build/doc/VRP-category.rst:318 ../../build/doc/VRP-category.rst:354
+msgid "**seq**"
+msgstr "**seq**"
+
+#: ../../build/doc/VRP-category.rst:20 ../../build/doc/VRP-category.rst:21
+#: ../../build/doc/VRP-category.rst:23 ../../build/doc/VRP-category.rst:24
+#: ../../build/doc/VRP-category.rst:56 ../../build/doc/VRP-category.rst:57
+#: ../../build/doc/VRP-category.rst:59 ../../build/doc/VRP-category.rst:60
+#: ../../build/doc/VRP-category.rst:318 ../../build/doc/VRP-category.rst:319
+#: ../../build/doc/VRP-category.rst:321 ../../build/doc/VRP-category.rst:322
+#: ../../build/doc/VRP-category.rst:354 ../../build/doc/VRP-category.rst:355
+#: ../../build/doc/VRP-category.rst:357 ../../build/doc/VRP-category.rst:358
+msgid "INTEGER"
+msgstr "INTEGER"
+
+#: ../../build/doc/VRP-category.rst:20 ../../build/doc/VRP-category.rst:318
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de ** 1 **."
+
+#: ../../build/doc/VRP-category.rst:21 ../../build/doc/VRP-category.rst:57
+#: ../../build/doc/VRP-category.rst:319 ../../build/doc/VRP-category.rst:355
+msgid "**vehicle_seq**"
+msgstr "**vehicle_seq**"
+
+#: ../../build/doc/VRP-category.rst:21 ../../build/doc/VRP-category.rst:319
+msgid ""
+"Sequential value starting from **1** for current vehicles. The "
+":math:`n_{th}` vehicle in the solution."
+msgstr ""
+"Valor secuencial a partir de **1** para vehículos actuales. El vehículo  "
+":math:`n_{th}` en la solución."
+
+#: ../../build/doc/VRP-category.rst:22 ../../build/doc/VRP-category.rst:58
+#: ../../build/doc/VRP-category.rst:320 ../../build/doc/VRP-category.rst:356
+msgid "**vehicle_id**"
+msgstr "**vehicle_id**"
+
+#: ../../build/doc/VRP-category.rst:22 ../../build/doc/VRP-category.rst:31
+#: ../../build/doc/VRP-category.rst:58 ../../build/doc/VRP-category.rst:61
+#: ../../build/doc/VRP-category.rst:320 ../../build/doc/VRP-category.rst:329
+#: ../../build/doc/VRP-category.rst:356 ../../build/doc/VRP-category.rst:359
+msgid "BIGINT"
+msgstr "BIGINT"
+
+#: ../../build/doc/VRP-category.rst:22 ../../build/doc/VRP-category.rst:320
+msgid "Current vehicle identifier."
+msgstr "Identificador actual del vehículo."
+
+#: ../../build/doc/VRP-category.rst:23 ../../build/doc/VRP-category.rst:59
+#: ../../build/doc/VRP-category.rst:321 ../../build/doc/VRP-category.rst:357
+msgid "**stop_seq**"
+msgstr "**stop_seq**"
+
+#: ../../build/doc/VRP-category.rst:23 ../../build/doc/VRP-category.rst:321
+msgid ""
+"Sequential value starting from **1** for the stops made by the current "
+"vehicle. The :math:`m_{th}` stop of the current vehicle."
+msgstr ""
+"Valor secuencial a partir de **1** para las paradas realizadas por el "
+"vehículo actual. La parada :math:`m_{th}` vdel vehículo actual."
+
+#: ../../build/doc/VRP-category.rst:24 ../../build/doc/VRP-category.rst:60
+#: ../../build/doc/VRP-category.rst:322 ../../build/doc/VRP-category.rst:358
+msgid "**stop_type**"
+msgstr "**stop_type**"
+
+#: ../../build/doc/VRP-category.rst:24 ../../build/doc/VRP-category.rst:322
+msgid "Kind of stop location the vehicle is at:"
+msgstr "Tipo de ubicación de parada en la que se encuentra el vehículo:"
+
+#: ../../build/doc/VRP-category.rst:26 ../../build/doc/VRP-category.rst:324
+msgid "``1``: Starting location"
+msgstr "``1``: Ubicación de inicio"
+
+#: ../../build/doc/VRP-category.rst:27 ../../build/doc/VRP-category.rst:325
+msgid "``2``: Pickup location"
+msgstr "``2``: Ubicación de recogida"
+
+#: ../../build/doc/VRP-category.rst:28 ../../build/doc/VRP-category.rst:326
+msgid "``3``: Delivery location"
+msgstr "``3``: Lugar de entrega"
+
+#: ../../build/doc/VRP-category.rst:29 ../../build/doc/VRP-category.rst:327
+msgid "``6``: Ending location"
+msgstr "``6``: Ubicación final"
+
+#: ../../build/doc/VRP-category.rst:31 ../../build/doc/VRP-category.rst:61
+#: ../../build/doc/VRP-category.rst:329 ../../build/doc/VRP-category.rst:359
+msgid "**order_id**"
+msgstr "**order_id**"
+
+#: ../../build/doc/VRP-category.rst:31 ../../build/doc/VRP-category.rst:329
+msgid "Pickup-Delivery order pair identifier."
+msgstr "Identificador de par de órdenes Recogida-Entrega."
+
+#: ../../build/doc/VRP-category.rst:33 ../../build/doc/VRP-category.rst:331
+msgid "``-1``: When no order is involved on the current stop location."
+msgstr ""
+"''-1'': Cuando no hay ningún pedido involucrado en la ubicación actual de la"
+" parada."
+
+#: ../../build/doc/VRP-category.rst:35 ../../build/doc/VRP-category.rst:62
+#: ../../build/doc/VRP-category.rst:333 ../../build/doc/VRP-category.rst:360
+msgid "**cargo**"
+msgstr "**cargo**"
+
+#: ../../build/doc/VRP-category.rst:35 ../../build/doc/VRP-category.rst:37
+#: ../../build/doc/VRP-category.rst:41 ../../build/doc/VRP-category.rst:42
+#: ../../build/doc/VRP-category.rst:43 ../../build/doc/VRP-category.rst:44
+#: ../../build/doc/VRP-category.rst:62 ../../build/doc/VRP-category.rst:63
+#: ../../build/doc/VRP-category.rst:64 ../../build/doc/VRP-category.rst:65
+#: ../../build/doc/VRP-category.rst:66 ../../build/doc/VRP-category.rst:67
+#: ../../build/doc/VRP-category.rst:333 ../../build/doc/VRP-category.rst:335
+#: ../../build/doc/VRP-category.rst:339 ../../build/doc/VRP-category.rst:340
+#: ../../build/doc/VRP-category.rst:341 ../../build/doc/VRP-category.rst:342
+#: ../../build/doc/VRP-category.rst:360 ../../build/doc/VRP-category.rst:361
+#: ../../build/doc/VRP-category.rst:362 ../../build/doc/VRP-category.rst:363
+#: ../../build/doc/VRP-category.rst:364 ../../build/doc/VRP-category.rst:365
+msgid "FLOAT"
+msgstr "FLOAT"
+
+#: ../../build/doc/VRP-category.rst:35 ../../build/doc/VRP-category.rst:333
+msgid "Cargo units of the vehicle when leaving the stop."
+msgstr "Unidades de carga del vehículo al salir de la parada."
+
+#: ../../build/doc/VRP-category.rst:37 ../../build/doc/VRP-category.rst:63
+#: ../../build/doc/VRP-category.rst:335 ../../build/doc/VRP-category.rst:361
+msgid "**travel_time**"
+msgstr "**travel_time**"
+
+#: ../../build/doc/VRP-category.rst:37 ../../build/doc/VRP-category.rst:335
+msgid "Travel time from previous ``stop_seq`` to current ``stop_seq``."
+msgstr ""
+"Tiempo de viaje desde el ``stop_seq`` anterior hasta el ``stop_seq`` actual."
+
+#: ../../build/doc/VRP-category.rst:39 ../../build/doc/VRP-category.rst:337
+msgid "``0`` When ``stop_type = 1``"
+msgstr "``0`` cuando ``stop_type = 1``"
+
+#: ../../build/doc/VRP-category.rst:41 ../../build/doc/VRP-category.rst:64
+#: ../../build/doc/VRP-category.rst:339 ../../build/doc/VRP-category.rst:362
+msgid "**arrival_time**"
+msgstr "**arrival_time**"
+
+#: ../../build/doc/VRP-category.rst:41 ../../build/doc/VRP-category.rst:339
+msgid "Previous ``departure_time`` plus current ``travel_time``."
+msgstr "Anterior ``departure_time`` más actual ``travel_time``."
+
+#: ../../build/doc/VRP-category.rst:42 ../../build/doc/VRP-category.rst:65
+#: ../../build/doc/VRP-category.rst:340 ../../build/doc/VRP-category.rst:363
+msgid "**wait_time**"
+msgstr "**wait_time**"
+
+#: ../../build/doc/VRP-category.rst:42 ../../build/doc/VRP-category.rst:340
+msgid "Time spent waiting for current `location` to open."
+msgstr "Tiempo dedicado a la apertura de `ubicación` actual."
+
+#: ../../build/doc/VRP-category.rst:43 ../../build/doc/VRP-category.rst:66
+#: ../../build/doc/VRP-category.rst:341 ../../build/doc/VRP-category.rst:364
+msgid "**service_time**"
+msgstr "**service_time**"
+
+#: ../../build/doc/VRP-category.rst:43 ../../build/doc/VRP-category.rst:341
+msgid "Service time at current `location`."
+msgstr "Tiempo de servicio en la `ubicación` actual."
+
+#: ../../build/doc/VRP-category.rst:44 ../../build/doc/VRP-category.rst:67
+#: ../../build/doc/VRP-category.rst:342 ../../build/doc/VRP-category.rst:365
+msgid "**departure_time**"
+msgstr "**departure_time**"
+
+#: ../../build/doc/VRP-category.rst:44 ../../build/doc/VRP-category.rst:342
+msgid ":math:`arrival\\_time + wait\\_time + service\\_time`."
+msgstr ":math:`arrival\\_time + wait\\_time + service\\_time`."
+
+#: ../../build/doc/VRP-category.rst:46 ../../build/doc/VRP-category.rst:344
+msgid ""
+"When ``stop_type = 6`` has the `total_time` used for the current vehicle."
+msgstr ""
+"Cuando ``stop_type = 6`` tiene el `total_time` utilizado para el vehículo "
+"actual."
+
+#: ../../build/doc/VRP-category.rst:50 ../../build/doc/VRP-category.rst:348
+msgid "Summary Row"
+msgstr "Fila de Resumen"
+
+#: ../../build/doc/VRP-category.rst:51 ../../build/doc/VRP-category.rst:349
+msgid "TODO: Review the summary"
+msgstr "TODO: Review the summary"
+
+#: ../../build/doc/VRP-category.rst:56 ../../build/doc/VRP-category.rst:354
+msgid "Continues the Sequential value"
+msgstr "Continúa el valor Secuencial"
+
+#: ../../build/doc/VRP-category.rst:57 ../../build/doc/VRP-category.rst:355
+msgid "``-2`` to indicate is a summary row"
+msgstr "``-2`` para indicar es una fila de resumen"
+
+#: ../../build/doc/VRP-category.rst:58 ../../build/doc/VRP-category.rst:356
+msgid "`Total Capacity Violations` in the solution."
+msgstr "`Total de Violaciones de Capacidad` en la solución."
+
+#: ../../build/doc/VRP-category.rst:59 ../../build/doc/VRP-category.rst:357
+msgid "`Total Time Window Violations` in the solution."
+msgstr "`Tiempo Total de Violaciones de la Ventana` en la solución."
+
+#: ../../build/doc/VRP-category.rst:60 ../../build/doc/VRP-category.rst:61
+#: ../../build/doc/VRP-category.rst:62 ../../build/doc/VRP-category.rst:64
+#: ../../build/doc/VRP-category.rst:358 ../../build/doc/VRP-category.rst:359
+#: ../../build/doc/VRP-category.rst:360 ../../build/doc/VRP-category.rst:362
+msgid "``-1``"
+msgstr "``-1``"
+
+#: ../../build/doc/VRP-category.rst:63 ../../build/doc/VRP-category.rst:361
+msgid "`total_travel_time` The sum of all the `travel_time`"
+msgstr "`total_travel_time` La suma de todo el `tiempo_de_viaje`"
+
+#: ../../build/doc/VRP-category.rst:65 ../../build/doc/VRP-category.rst:363
+msgid "`total_waiting_time` The sum of all the `wait_time`"
+msgstr "`total_waiting_time` La suma de todo el `tiempo_de_espera`"
+
+#: ../../build/doc/VRP-category.rst:66 ../../build/doc/VRP-category.rst:364
+msgid "`total_service_time` The sum of all the `service_time`"
+msgstr "`total_service_time` La suma de todo el `tiempo_de_servicio`"
+
+#: ../../build/doc/VRP-category.rst:67 ../../build/doc/VRP-category.rst:365
+msgid ""
+"`total_solution_time` = :math:`total\\_travel\\_time + total\\_wait\\_time +"
+" total\\_service\\_time`."
+msgstr ""
+"`total_solution_time` = :math:`total\\_travel\\_time + total\\_wait\\_time +"
+" total\\_service\\_time`."
+
+#: ../../build/doc/pgRouting-concepts.rst:3
+msgid "Where:"
+msgstr "Donde:"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-INTEGER"
+msgstr "ANY-INTEGER"
+
+#: ../../build/doc/pgRouting-concepts.rst:5
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
+msgstr "ANY-NUMERICAL"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#: ../../build/doc/VRP-category.rst:388
+msgid "Handling Parameters"
+msgstr "Parámetros de Manipulación"
+
+#: ../../build/doc/VRP-category.rst:390
+msgid ""
+"To define a problem, several considerations have to be done, to get "
+"consistent results. This section gives an insight of how parameters are to "
+"be considered."
+msgstr ""
+"Para definir un problema, hay que hacer varias consideraciones, para obtener"
+" resultados consistentes. En esta sección se proporciona una idea de cómo se"
+" deben considerar los parámetros."
+
+#: ../../build/doc/VRP-category.rst:393
+msgid "`Capacity and Demand Units Handling`_"
+msgstr "`Manejo de Unidades de Capacidad y Demanda`_"
+
+#: ../../build/doc/VRP-category.rst:394
+msgid "`Locations`_"
+msgstr "`Ubicaciones`_"
+
+#: ../../build/doc/VRP-category.rst:395
+msgid "`Time Handling`_"
+msgstr "`Manejo del tiempo`_"
+
+#: ../../build/doc/VRP-category.rst:396
+msgid "`Factor Handling`_"
+msgstr "`Manejo de Factor`_"
+
+#: ../../build/doc/VRP-category.rst:400
+msgid "Capacity and Demand Units Handling"
+msgstr "Manejo de Unidades de Capacidad y Demanda"
+
+#: ../../build/doc/VRP-category.rst:402
+msgid "The `capacity` of a vehicle, can be measured in:"
+msgstr "La `capacidad` de un vehículo, se puede medir en:"
+
+#: ../../build/doc/VRP-category.rst:404
+msgid "Volume units like :math:`m^3`."
+msgstr "Unidades de volumen como :math:`m^3`."
+
+#: ../../build/doc/VRP-category.rst:405
+msgid "Area units like :math:`m^2` (when no stacking is allowed)."
+msgstr ""
+"Unidades de área como :math:`m^2` (cuando no se permite el apilamiento)."
+
+#: ../../build/doc/VRP-category.rst:406
+msgid "Weight units like :math:`kg`."
+msgstr "Unidades de peso como :math:`kg`."
+
+#: ../../build/doc/VRP-category.rst:407
+msgid "Number of boxes that fit in the vehicle."
+msgstr "Número de cajas que caben en el vehículo."
+
+#: ../../build/doc/VRP-category.rst:408
+msgid "Number of seats in the vehicle"
+msgstr "Número de asientos en el vehículo"
+
+#: ../../build/doc/VRP-category.rst:410
+msgid ""
+"The `demand` request of the pickup-deliver orders must use the same units as"
+" the units used in the vehicle's `capacity`."
+msgstr ""
+"La solicitud de `demanda` de las órdenes de recogida-entrega debe utilizar "
+"las mismas unidades que las utilizadas en la `capacidad` del vehículo."
+
+#: ../../build/doc/VRP-category.rst:412
+msgid ""
+"To handle problems like:  10 (equal dimension) boxes of apples and 5 kg of "
+"feathers that are to be transported (not packed in boxes)."
+msgstr ""
+"Para manejar problemas como: 10 (dimensión igual) cajas de manzanas y 5 kg "
+"de plumas que se van a transportar (no embaladas en cajas)."
+
+#: ../../build/doc/VRP-category.rst:414
+msgid ""
+"If the vehicle's `capacity` is measured by `boxes`, a conversion of `kg of "
+"feathers` to `equivalent number of boxes` is needed. If the vehicle's "
+"`capacity` is measured by `kg`, a conversion of `box of apples` to "
+"`equivalent number of kg` is needed."
+msgstr ""
+"Si la `capacidad` del vehículo se mide mediante `cajas`, se necesita una "
+"conversión de `kg de plumas` a `número equivalente de cajas`. Si la "
+"`capacidad` del vehículo se mide por `kg`, se necesita una conversión de "
+"`caja de manzanas` a `número equivalente de kg`."
+
+#: ../../build/doc/VRP-category.rst:417
+msgid "Showing how the 2 possible conversions can be done"
+msgstr "Mostrar cómo se pueden hacer las 2 conversiones posibles"
+
+#: ../../build/doc/VRP-category.rst:419
+msgid ""
+"Let: - :math:`f_boxes`: number of boxes that would be used for `1` kg of "
+"feathers. - :math:`a_weight`: weight of `1` box of apples."
+msgstr ""
+"Sea: - :math:`f_boxes`: el número de cajas que se utilizarían para `1` kg de"
+" plumas. - :math:`a_weight`: peso de `1` caja de manzanas."
+
+#: ../../build/doc/VRP-category.rst:424
+msgid "Capacity Units"
+msgstr "Unidades de Capacidad"
+
+#: ../../build/doc/VRP-category.rst:424
+msgid "apples"
+msgstr "Manzanas"
+
+#: ../../build/doc/VRP-category.rst:424
+msgid "feathers"
+msgstr "plumas"
+
+#: ../../build/doc/VRP-category.rst:426
+msgid "boxes"
+msgstr "cajas"
+
+#: ../../build/doc/VRP-category.rst:426
+msgid ":math:`5 * f\\_boxes`"
+msgstr ":math:`5 * f\\_cajas`"
+
+#: ../../build/doc/VRP-category.rst:427
+msgid "kg"
+msgstr "kg"
+
+#: ../../build/doc/VRP-category.rst:427
+msgid ":math:`10 * a\\_weight`"
+msgstr ":math:`10 * a\\_peso`"
+
+#: ../../build/doc/VRP-category.rst:427
+msgid "5"
+msgstr "5"
+
+#: ../../build/doc/VRP-category.rst:433
+msgid "Locations"
+msgstr "Ubiaciones"
+
+#: ../../build/doc/VRP-category.rst:435
+msgid "When using the Euclidean signatures:"
+msgstr "Al utilizar las firmas Euclidianas:"
+
+#: ../../build/doc/VRP-category.rst:437
+msgid "The vehicles have :math:`(x, y)` pairs for start and ending locations."
+msgstr ""
+"Los vehículos tienen :math:`(x, y)` pares para las ubicaciones de inicio y "
+"fin."
+
+#: ../../build/doc/VRP-category.rst:438
+msgid ""
+"The orders Have :math:`(x, y)` pairs for pickup and delivery locations."
+msgstr ""
+"Los pedidos tienen :math:`(x, y)` pares para ubicaciones de recogida y "
+"entrega."
+
+#: ../../build/doc/VRP-category.rst:440
+msgid "When using a matrix:"
+msgstr "Cuando se utiliza una matriz:"
+
+#: ../../build/doc/VRP-category.rst:442
+msgid "The vehicles have identifiers for the start and ending locations."
+msgstr ""
+"Los vehículos tienen identificadores para las ubicaciones de inicio y "
+"finalización."
+
+#: ../../build/doc/VRP-category.rst:443
+msgid "The orders have identifiers for the pickup and delivery locations."
+msgstr ""
+"Los pedidos tienen identificadores para las ubicaciones de recogida y "
+"entrega."
+
+#: ../../build/doc/VRP-category.rst:444
+msgid "All the identifiers are indices to the given matrix."
+msgstr "Todos los identificadores son índices de la matriz dada."
+
+#: ../../build/doc/VRP-category.rst:448
+msgid "Time Handling"
+msgstr "Manejo del Tiempo"
+
+#: ../../build/doc/VRP-category.rst:450
+msgid "The times are relative to 0"
+msgstr "Los tiempos son relativos a 0"
+
+#: ../../build/doc/VRP-category.rst:452
+msgid ""
+"Suppose that a vehicle's driver starts the shift at 9:00 am and ends the "
+"shift at 4:30 pm and the service time duration is 10 minutes with 30 "
+"seconds."
+msgstr ""
+"Supongamos que el conductor de un vehículo comienza el turno a las 9:00 am y"
+" termina el turno a las 4:30 pm y la duración del tiempo de servicio es de "
+"10 minutos con 30 segundos."
+
+#: ../../build/doc/VRP-category.rst:455
+msgid "All time units have to be converted"
+msgstr "Todas las unidades de tiempo tienen que ser convertidas"
+
+#: ../../build/doc/VRP-category.rst:458
+msgid "Meaning of 0"
+msgstr "Significado de 0"
+
+#: ../../build/doc/VRP-category.rst:458
+msgid "time units"
+msgstr "unidades de tiempo"
+
+#: ../../build/doc/VRP-category.rst:458 ../../build/doc/VRP-category.rst:461
+#: ../../build/doc/VRP-category.rst:463
+msgid "9:00 am"
+msgstr "9:00 am"
+
+#: ../../build/doc/VRP-category.rst:458
+msgid "4:30 pm"
+msgstr "4:30 pm"
+
+#: ../../build/doc/VRP-category.rst:458
+msgid "10 min 30 secs"
+msgstr "10 min 30 seg"
+
+#: ../../build/doc/VRP-category.rst:460 ../../build/doc/VRP-category.rst:462
+msgid "0:00 am"
+msgstr "0:00 am"
+
+#: ../../build/doc/VRP-category.rst:460 ../../build/doc/VRP-category.rst:461
+msgid "hours"
+msgstr "horas"
+
+#: ../../build/doc/VRP-category.rst:460
+msgid "9"
+msgstr "9"
+
+#: ../../build/doc/VRP-category.rst:460
+msgid "16.5"
+msgstr "16.5"
+
+#: ../../build/doc/VRP-category.rst:460 ../../build/doc/VRP-category.rst:461
+msgid ":math:`10.5 / 60  = 0.175`"
+msgstr ":math:`10.5 / 60  = 0.175`"
+
+#: ../../build/doc/VRP-category.rst:461
+msgid "7.5"
+msgstr "7.5"
+
+#: ../../build/doc/VRP-category.rst:462 ../../build/doc/VRP-category.rst:463
+msgid "minutes"
+msgstr "minutos"
+
+#: ../../build/doc/VRP-category.rst:462
+msgid ":math:`9*60 = 54`"
+msgstr ":math:`9*60 = 54`"
+
+#: ../../build/doc/VRP-category.rst:462
+msgid ":math:`16.5*60 = 990`"
+msgstr ":math:`16.5*60 = 990`"
+
+#: ../../build/doc/VRP-category.rst:462 ../../build/doc/VRP-category.rst:463
+msgid "10.5"
+msgstr "10.5"
+
+#: ../../build/doc/VRP-category.rst:463
+msgid ":math:`7.5*60 = 540`"
+msgstr ":math:`7.5*60 = 540`"
+
+#: ../../build/doc/VRP-category.rst:470
+msgid "Factor Handling"
+msgstr "Manejo de Factores"
+
+#: ../../build/doc/VRP-category.rst:477
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/VRP-category.rst:479
+msgid "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
+msgstr "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
+
+#: ../../build/doc/VRP-category.rst:480
+msgid "The queries use the :doc:`sampledata` network."
+msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
+
+#: ../../build/doc/VRP-category.rst:483
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/VRP-category.rst:484
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/VRP-category.rst:485
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
