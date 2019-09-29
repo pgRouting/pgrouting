@@ -1,0 +1,551 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"PO-Revision-Date: 2019-09-07 11:57+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:11
+msgid "pgr_lineGraphFull - Experimental"
+msgstr "pgr_lineGraphFull - Experimental"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:13
+msgid ""
+"``pgr_lineGraphFull`` — Transforms a given graph into a new graph where all "
+"of the vertices from the original graph are converted to line graphs."
+msgstr ""
+"``pgr_lineGraphFull`` — Transforma un grafo dado en uno nuevo donde todos "
+"los vértices del grafo original se convierten en grafos de líneas."
+
+#: ../../build/doc/experimental.rst:3
+msgid "Experimental functions"
+msgstr "Funciones experimentales"
+
+#: ../../build/doc/experimental.rst:5
+msgid "They are not officially of the current release."
+msgstr "No son oficialmente de la versión actual."
+
+#: ../../build/doc/experimental.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
+
+#: ../../build/doc/experimental.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
+
+#: ../../build/doc/experimental.rst:9
+msgid "Name might change."
+msgstr "El nombre puede cambiar."
+
+#: ../../build/doc/experimental.rst:10
+msgid "Signature might change."
+msgstr "La firma (declaración de funciones) podría cambiar."
+
+#: ../../build/doc/experimental.rst:11
+msgid "Functionality might change."
+msgstr "La funcionalidad puede cambiar."
+
+#: ../../build/doc/experimental.rst:12
+msgid "pgTap tests might be missing."
+msgstr "Las pruebas de pgTap pueden estar ausentes."
+
+#: ../../build/doc/experimental.rst:13
+msgid "Might need c/c++ coding."
+msgstr "Posiblemente necesite codificación c/c++."
+
+#: ../../build/doc/experimental.rst:14
+msgid "May lack documentation."
+msgstr "Puede haber carencia de documentación."
+
+#: ../../build/doc/experimental.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
+
+#: ../../build/doc/experimental.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+"Ejemplos de documentación que puede ser necesario generar automáticamente."
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+
+#: ../../build/doc/experimental.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr "Puede depender de una función propuesta de pgRouting."
+
+#: ../../build/doc/experimental.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr "Podría depender de una función obsoleta de pgRouting"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:20
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:21
+msgid "Version 2.6.0"
+msgstr "Versión 2.6.0"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:23
+msgid "New **Experimental** function"
+msgstr "Nueva función **Experimental**"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:26
+msgid "Support"
+msgstr "Soporte"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:27
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_lineGraphFull.html>`__)"
+msgstr ""
+"**Versiones sustentadas:** actual(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_lineGraphFull.html>`__)"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:30
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html>`__"
+msgstr ""
+"**Versiones no sustentadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html>`__"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_lineGraphFull.rst:34
+#: ../../build/doc/pgr_lineGraphFull.rst:81
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:36
+msgid ""
+"pgr_lineGraphFull, converts original directed graph to a directed line graph"
+" by converting each vertex to a complete graph and keeping all the original "
+"edges. The new connecting edges have a cost 0 and go between the adjacent "
+"original edges, respecting the directionality."
+msgstr ""
+"pgr_lineGraphFull, convierte un grafo dirigido original a un grafo lineal "
+"dirigido, convirtiendo cada vértice en un grafo completo y manteniendo todas"
+" las aristas originales. Las nuevas aristas de conexión tienen un costo de 0"
+" y van entre las aristas originales adyacentes, respetando la "
+"direccionalidad."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:38
+msgid ""
+"A possible application of the resulting graph is **\"routing with two edge "
+"restrictions\"**:"
+msgstr ""
+"Una posible aplicación del grafo resultante es **\"ruteo con restricciones "
+"en dos aristas\"**:"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:40
+msgid ""
+"Setting a cost of using the vertex when routing between edges on the "
+"connecting edge"
+msgstr ""
+"Establecer un coste de uso del vértice al enrutar entre aristas en la arista"
+" de conexión"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:41
+msgid "Forbid the routing between two edges by removing the connecting edge"
+msgstr "Prohibir el ruteo entre dos aristas al quitar el arista de conexión"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:43
+msgid ""
+"This is possible because each of the intersections (vertices) in the "
+"original graph are now complete graphs that have a new edge for each "
+"possible turn across that intersection."
+msgstr ""
+"Esto es posible porque cada una de las intersecciones (vértices) en el grafo"
+" original ahora son grafos completos que tienen una nueva arista para cada "
+"posible giro a través de esa intersección."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:49
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:46
+msgid "This function is for **directed** graphs."
+msgstr "Esta función es para grafos **dirigidos**."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:47
+msgid ""
+"Results are undefined when a negative vertex id is used in the input graph."
+msgstr ""
+"Los resultados son indefinidos cuando se utiliza un identificador de vértice"
+" negativo en el grafo de entrada."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:48
+msgid ""
+"Results are undefined when a duplicated edge id is used in the input graph."
+msgstr ""
+"Los resultados son indefinidos cuando se utiliza un identificador de borde "
+"duplicado en el grafo de entrada."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:49
+msgid "Running time: TBD"
+msgstr "Tiempo de ejecución: TBD"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:52
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:55
+msgid "Summary"
+msgstr "Resumen"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:63
+msgid "Using defaults"
+msgstr "Uso de valores predeterminados"
+
+#: ../../build/doc/pgr_lineGraphFull.rst
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:69
+msgid "Full line graph of subgraph of edges :math:`\\{4, 7, 8, 10\\}`"
+msgstr ""
+"Grafo de línea completa del subgrafo de las aristas :math:`\\{4, 7, 8, "
+"10\\}`"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:78
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_lineGraphFull.rst:81
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_lineGraphFull.rst:81
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_lineGraphFull.rst:81
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:83
+msgid "**sql**"
+msgstr "**sql**"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:83
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:83
+msgid "SQL query as described above."
+msgstr "Consulta SQL como se describió anteriormente."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:89
+msgid "Inner query"
+msgstr "Consulta interna"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "**id**"
+msgstr "**id**"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "``ANY-INTEGER``"
+msgstr "``ANY-INTEGER``"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "**source**"
+msgstr "**origen**"
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "**target**"
+msgstr "**objetivo**"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "**cost**"
+msgstr "**cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``ANY-NUMERICAL``"
+msgstr "``ANY-NUMERICAL``"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Weight of the edge  `(source, target)`"
+msgstr "Peso de la arista `(source, target)`"
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**reverse_cost**"
+msgstr "**reverse_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "-1"
+msgstr "-1"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Weight of the edge `(target, source)`,"
+msgstr "Peso de la arista `(target, source)`,"
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Where:"
+msgstr "Donde:"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-INTEGER"
+msgstr "ANY-INTEGER"
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
+msgstr "ANY-NUMERICAL"
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:96
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:98
+msgid ""
+"The examples of this section are based on the :doc:`sampledata` network."
+msgstr "Los ejemplos de esta sección se basan en la red  :doc:`sampledata`."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:100
+msgid ""
+"The examples include the subgraph including edges 4, 7, 8, and 10 with "
+"reverse_cost."
+msgstr ""
+"Los ejemplos incluyen el subgrafo que incluye las aristas 4, 7, 8 y 10 con "
+"reverse_cost."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:102
+msgid "For generating the LineGraphFull"
+msgstr "Por generar el LineGraphFull"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:104
+msgid ""
+"This example displays how this graph transformation works to create "
+"additional edges for each possible turn in a graph."
+msgstr ""
+"En este ejemplo se muestra cómo funciona esta transformación de grafo para "
+"crear aristas adicionales para cada giro posible en un grafoáfico."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:112
+msgid "|first|"
+msgstr "|first|"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:127
+msgid "|second|"
+msgstr "|second|"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:132
+msgid ""
+"In the transformed graph, all of the edges from the original graph are still"
+" present (yellow), but we now have additional edges for every turn that "
+"could be made across vertex 6 (orange)."
+msgstr ""
+"En el grafo transformado, todas las aristas del grafo original siguen "
+"presentes (amarillos), pero ahora tenemos aristas adicionales para cada giro"
+" que se podría hacer a través del vértice 6 (naranja)."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:134
+msgid "For creating table that identifies transformed vertices"
+msgstr "Para crear una tabla que identifique vértices transformados"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:136
+msgid ""
+"The vertices in the transformed graph are each created by splitting up the "
+"vertices in the original graph. Unless a vertex in the original graph is a "
+"leaf vertex, it will generate more than one vertex in the transformed graph."
+" One of the newly created vertices in the transformed graph will be given "
+"the same vertex-id as the vertex that it was created from in the original "
+"graph, but the rest of the newly created vertices will have negative vertex "
+"ids. Following is an example of how to generate a table that maps the ids of"
+" the newly created vertices with the original vertex that they were created "
+"from"
+msgstr ""
+"Los vértices del grafo transformado se crean dividiendo los vértices en el "
+"grafo original. A menos que un vértice en el grafo original sea un vértice "
+"de hoja, generará más de un vértice en el grafo transformado. A uno de los "
+"vértices recién creados en el grafo transformado se le dará el mismo "
+"vértice-id que el vértice desde el que se creó en el grafo original, pero el"
+" resto de los vértices recién creados tendrán identificadores de vértices "
+"negativos. A continuación se muestra un ejemplo de cómo generar una tabla "
+"que mapea los identificadores de los vértices recién creados con el vértice "
+"original que se crearon a partir de"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:138
+msgid ""
+"The first step is to store your results graph into a table and then create "
+"the vertex mapping table with one row for each distinct vertex id in the "
+"results graph."
+msgstr ""
+"El primer paso es almacenar el grafo de resultados en una tabla y, a "
+"continuación, crear la tabla de asignación de vértices con una fila para "
+"cada identificador de vértice distinto en el grafo resultante."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:144
+msgid ""
+"Next, we set the original_id of all of the vertices in the results graph "
+"that were given the same vertex id as the vertex that it was created from in"
+" the original graph."
+msgstr ""
+"A continuación, establecemos el original_id de todos los vértices en el "
+"grafo de resultados a los que se les dio el mismo identificador de vértice "
+"que el vértice desde el que se creó en el grafo original."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:150
+msgid ""
+"Then, we cross reference all of the other newly created vertices that do not"
+" have the same original_id and set their original_id values."
+msgstr ""
+"A continuación, cruzamos la referencia a todos los otros vértices recién "
+"creados que no tienen el mismo original_id y establecemos sus valores "
+"original_id."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:156
+msgid ""
+"The only vertices left that have not been mapped are a few of the leaf "
+"vertices from the original graph. The following sql completes the mapping "
+"for these leaf vertices (in the case of this example graph there are no leaf"
+" vertices but this is necessary for larger graphs)."
+msgstr ""
+"Los únicos vértices que quedan que no se han asignado son algunos de los "
+"vértices de hoja del grafo original. El siguiente sql completa el mapeo para"
+" estos vértices hoja (en el caso de este grafo de ejemplo no hay vértices de"
+" hoja, pero esto es necesario para grafos más grandes)."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:162
+msgid "Now our vertex mapping table is complete:"
+msgstr "Ahora nuestra tabla de mapeo de vértices está completa:"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:168
+msgid "For running a dijkstra's shortest path with turn penalties"
+msgstr "Por ejecutar la ruta más corta dijkstra con penalizaciones de giro"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:170
+msgid ""
+"One use case for this graph transformation is to be able to run a shortest "
+"path search that takes into account the cost or limitation of turning. Below"
+" is an example of running a dijkstra's shortest path from vertex 2 to vertex"
+" 8 in the original graph, while adding a turn penalty cost of 100 to the "
+"turn from edge 4 to edge -7."
+msgstr ""
+"Un caso de uso para esta transformación de grafo es poder ejecutar una "
+"búsqueda de ruta más corta que tenga en cuenta el costo o la limitación del "
+"giro. A continuación se muestra un ejemplo de cómo ejecutar una ruta más "
+"corta dijkstra desde el vértice 2 hasta el vértice 8 en el grafo original, "
+"mientras que agrega un costo de penalización de giro de 100 al giro desde el"
+" borde 4 hasta el borde -7."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:172
+msgid "First we must increase set the cost of making the turn to 100:"
+msgstr "En primer lugar debemos aumentar el costo de hacer el turno a 100:"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:178
+msgid ""
+"Then we must run a dijkstra's shortest path search using all of the vertices"
+" in the new graph that were created from vertex 2 as the starting point, and"
+" all of the vertices in the new graph that were created from vertex 8 as the"
+" ending point."
+msgstr ""
+"A continuación, debemos ejecutar una búsqueda de ruta más corta dijkstra "
+"utilizando todos los vértices del nuevo grafo que se crearon a partir del "
+"vértice 2 como punto de partida, y todos los vértices del nuevo grafo que se"
+" crearon a partir del vértice 8 como punto final."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:184
+msgid ""
+"Normally the shortest path from vertex 2 to vertex 8 would have an aggregate"
+" cost of 2, but since there is a large penalty for making the turn needed to"
+" get this cost, the route goes through vertex 6 to avoid this turn."
+msgstr ""
+"Normalmente la ruta más corta desde el vértice 2 hasta el vértice 8 tendría "
+"un costo agregado de 2, pero como hay una gran penalización por hacer el "
+"giro necesario para obtener este costo, la ruta pasa por el vértice 6 para "
+"evitar este giro."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:186
+msgid ""
+"If you cross reference the node column in the dijkstra results with the "
+"vertex id mapping table, this will show you that the path goes from v2 -> v5"
+" -> v6 -> v5 -> v8 in the original graph."
+msgstr ""
+"Si hace referencia cruzada a la columna de nodo en los resultados de "
+"dijkstra con la tabla de mapeo de id de vértices, esto le mostrará que la "
+"ruta va desde v2 -> v5 -> v6 -> v5 -> v8 en el grafo original."
+
+#: ../../build/doc/pgr_lineGraphFull.rst:189
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:191
+msgid "https://en.wikipedia.org/wiki/Line_graph"
+msgstr "https://en.wikipedia.org/wiki/Line_graph"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:192
+msgid "https://en.wikipedia.org/wiki/Complete_graph"
+msgstr "https://en.wikipedia.org/wiki/Complete_graph"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:195
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:196
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_lineGraphFull.rst:197
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
