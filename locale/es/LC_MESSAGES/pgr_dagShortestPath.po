@@ -1,0 +1,585 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"PO-Revision-Date: 2019-09-07 11:56+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:11
+msgid "pgr_dagShortestPath - Experimental"
+msgstr "pgr_dagShortestPath - Experimental"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:13
+msgid ""
+"``pgr_dagShortestPath`` — Returns the shortest path(s) for weighted directed"
+" acyclic graphs(DAG). In particular, the DAG shortest paths algorithm "
+"implemented by Boost.Graph."
+msgstr ""
+"``pgr_dagShortestPath`` —  Devuelve las rutas más cortas para los grafos "
+"acíclicos dirigidos ponderados (DAG). En particular, el algoritmo de rutas "
+"más cortas de DAG implementado por Boost.Graph."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:19
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+#: ../../build/doc/experimental.rst:3
+msgid "Experimental functions"
+msgstr "Funciones experimentales"
+
+#: ../../build/doc/experimental.rst:5
+msgid "They are not officially of the current release."
+msgstr "No son oficialmente de la versión actual."
+
+#: ../../build/doc/experimental.rst:6
+msgid "They likely will not be officially be part of the next release:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
+
+#: ../../build/doc/experimental.rst:8
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
+
+#: ../../build/doc/experimental.rst:9
+msgid "Name might change."
+msgstr "El nombre puede cambiar."
+
+#: ../../build/doc/experimental.rst:10
+msgid "Signature might change."
+msgstr "La firma (declaración de funciones) podría cambiar."
+
+#: ../../build/doc/experimental.rst:11
+msgid "Functionality might change."
+msgstr "La funcionalidad puede cambiar."
+
+#: ../../build/doc/experimental.rst:12
+msgid "pgTap tests might be missing."
+msgstr "Las pruebas de pgTap pueden estar ausentes."
+
+#: ../../build/doc/experimental.rst:13
+msgid "Might need c/c++ coding."
+msgstr "Posiblemente necesite codificación c/c++."
+
+#: ../../build/doc/experimental.rst:14
+msgid "May lack documentation."
+msgstr "Puede haber carencia de documentación."
+
+#: ../../build/doc/experimental.rst:15
+msgid "Documentation if any might need to be rewritten."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
+
+#: ../../build/doc/experimental.rst:16
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+"Ejemplos de documentación que puede ser necesario generar automáticamente."
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need a lot of feedback from the comunity."
+msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+
+#: ../../build/doc/experimental.rst:18
+msgid "Might depend on a proposed function of pgRouting"
+msgstr "Puede depender de una función propuesta de pgRouting."
+
+#: ../../build/doc/experimental.rst:19
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr "Podría depender de una función obsoleta de pgRouting"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:26
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:27
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:29
+msgid "New **experimental** function"
+msgstr "Nueva función **experimental**"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:32
+msgid "Support"
+msgstr "Soporte"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:33
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_dagShortestPath.html>`__)"
+msgstr ""
+"**Versiones soportadas:** actual(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_dagShortestPath.html>`__)"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgr_dagShortestPath.rst:37
+#: ../../build/doc/pgr_dagShortestPath.rst:166
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:39
+msgid ""
+"Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm "
+"that solves the shortest path problem for weighted directed acyclic graph, "
+"producing a shortest path from a starting vertex (``start_vid``) to an "
+"ending vertex (``end_vid``)."
+msgstr ""
+"Ruta Más Corta para grafos acíclicos dirigidos (DAG) es un algoritmo de "
+"búsqueda de grafos que resuelve el problema de ruta más corta para el grafo "
+"acíclico dirigido ponderado, produciendo una ruta más corta desde un vértice"
+" inicial (``start_vid``) a un vértice final (``end_vid``)."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:43
+msgid ""
+"This implementation can only be used with a **directed** graph with no "
+"cycles i.e. directed acyclic graph."
+msgstr ""
+"Esta implementación solo se puede utilizar con un grafo **dirigido** sin "
+"ciclos i.e., es decir, un grafo acíclico dirigido."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:45
+msgid ""
+"The algorithm relies on topological sorting the dag to impose a linear "
+"ordering on the vertices, and thus is more efficient for DAG's than either "
+"the Dijkstra or Bellman-Ford algorithm."
+msgstr ""
+"El algoritmo se basa en la ordenación topológica del dag para imponer un "
+"orden lineal en los vértices, y por lo tanto es más eficaz para DAG que el "
+"algoritmo Dijkstra o Bellman-Ford."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:67
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:48
+msgid ""
+"Process is valid for weighted directed acyclic graphs only. otherwise it "
+"will throw warnings."
+msgstr ""
+"El proceso solo es válido para grafos acíclicos dirigidos ponderados, de lo "
+"contrario lanzará advertencias."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:49
+msgid "Values are returned when there is a path."
+msgstr "Valores son regresados cuando hay un camino."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:51
+msgid ""
+"When the starting vertex and ending vertex are the same, there is no path."
+msgstr ""
+"Cuando el vértice inicial y el vértice final son iguales, no hay camino."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:53
+msgid "The `agg_cost` the non included values `(v, v)` is `0`"
+msgstr "El `agg_cost` de los valores no incluídos `(v, v)` es `0`"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:55
+msgid ""
+"When the starting vertex and ending vertex are the different and there is no"
+" path:"
+msgstr ""
+"Cuando el vértice inicial y el vértice final son diferentes y no hay camino:"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:57
+msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
+msgstr "El  'agg_cost' de los valores no incluídos '(u, v)' es :math: `\\infty`"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:59
+msgid ""
+"For optimization purposes, any duplicated value in the `start_vids` or "
+"`end_vids` are ignored."
+msgstr ""
+"Para fines de optimización, se omite cualquier valor duplicado en "
+"`start_vids` o `end_vids`."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:61
+msgid "The returned values are ordered:"
+msgstr "Los valores regresados se ordenan:"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:63
+msgid "`start_vid` ascending"
+msgstr "`start_vid` ascendente"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:64
+msgid "`end_vid` ascending"
+msgstr "`end_vid` ascendente"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:66
+msgid "Running time: :math:`O(| start\\_vids | * (V + E))`"
+msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * (V + E))`"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:70
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:73
+msgid "Summary"
+msgstr "Resumen"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:89
+msgid "One to One"
+msgstr "Uno a Uno"
+
+#: ../../build/doc/pgr_dagShortestPath.rst
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:97
+msgid "From vertex :math:`1` to vertex :math:`6`"
+msgstr "Desde el vértice :math:`1` al vértice :math:`6`"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:107
+msgid "One to Many"
+msgstr "Uno a Muchos"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:115
+msgid "From vertex :math:`1` to vertices :math:`\\{ 5, 6\\}`"
+msgstr "Desde el vértice :math:`1` a los vértices :math:`\\{ 5, 6\\}`"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:125
+msgid "Many to One"
+msgstr "Muchos a Uno"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:133
+msgid "From vertices :math:`\\{1, 3\\}` to vertex :math:`6`"
+msgstr "Desde los vértices :math:`\\{1, 3\\}` al vértice :math:`6`"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:143
+msgid "Many to Many"
+msgstr "Muchos a Muchos"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:151
+msgid "From vertices :math:`\\{1, 4\\}` to vertices :math:`\\{12, 6\\}`"
+msgstr "Desde los vértices :`\\{1, 4\\}` a los vértices :math:`\\{12, 6\\}`"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:159
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:164
+msgid "Description of the parameters of the signatures"
+msgstr ""
+"Descripción de los parámetros de las firmas (declaraciones de funciones)"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:166
+msgid "Parameter"
+msgstr "Parámetro"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgr_dagShortestPath.rst:166
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_dagShortestPath.rst:166
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:168
+msgid "**edges_sql**"
+msgstr "**edges_sql**"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:168
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:168
+msgid "SQL query as described above."
+msgstr "Consulta SQL como se describió anteriormente."
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgr_dagShortestPath.rst:169
+msgid "**start_vid**"
+msgstr "**start_vid**"
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgRouting-concepts.rst:22
+#: ../../build/doc/pgRouting-concepts.rst:23
+#: ../../build/doc/pgr_dagShortestPath.rst:169
+#: ../../build/doc/pgr_dagShortestPath.rst:171
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:169
+msgid "Identifier of the starting vertex of the path."
+msgstr "Identificador del vértice inicial de la ruta."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:170
+msgid "**start_vids**"
+msgstr "**start_vids**"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:170
+#: ../../build/doc/pgr_dagShortestPath.rst:172
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:170
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgr_dagShortestPath.rst:171
+msgid "**end_vid**"
+msgstr "**end_vid**"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:171
+msgid "Identifier of the ending vertex of the path."
+msgstr "Identificador del vértice final de la ruta."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:172
+msgid "**end_vids**"
+msgstr "**end_vids**"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:172
+msgid "Array of identifiers of ending vertices."
+msgstr "Arreglo de identificadores de vértices finales."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:178
+msgid "Inner Query"
+msgstr "Consulta interna"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "**id**"
+msgstr "**id**"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "``ANY-INTEGER``"
+msgstr "``ANY-INTEGER``"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "**source**"
+msgstr "**origen**"
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "**target**"
+msgstr "**objetivo**"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "**cost**"
+msgstr "**cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``ANY-NUMERICAL``"
+msgstr "``ANY-NUMERICAL``"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Weight of the edge  `(source, target)`"
+msgstr "Peso de la arista `(source, target)`"
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**reverse_cost**"
+msgstr "**reverse_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "-1"
+msgstr "-1"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Weight of the edge `(target, source)`,"
+msgstr "Peso de la arista `(target, source)`,"
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Where:"
+msgstr "Donde:"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-INTEGER"
+msgstr "ANY-INTEGER"
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
+msgstr "ANY-NUMERICAL"
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:185
+msgid "Results Columns"
+msgstr "Columnas de Resultados"
+
+#: ../../build/doc/pgRouting-concepts.rst:3
+msgid ""
+"Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost,"
+" agg_cost)``"
+msgstr ""
+"Devuelve el conjunto de ``(seq, path_seq [, start_vid] [, end_vid], node, "
+"edge, cost, agg_cost)``"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "**seq**"
+msgstr "**seq**"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "``INT``"
+msgstr "``INT``"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de ** 1 **."
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "**path_seq**"
+msgstr "**path_seq**"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid ""
+"Relative position in the path. Has value **1** for the beginning of a path."
+msgstr ""
+"Posición relativa en la ruta. Tiene el valor **1** para el principio de una "
+"ruta."
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid ""
+"Identifier of the starting vertex. Returned when multiple starting vetrices "
+"are in the query."
+msgstr ""
+"Identificador del vértice inicial. Se devuelve cuando hay varias vetrices "
+"iniciales en la consulta."
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "`Many to One`_"
+msgstr "`Many to One`_"
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "`Many to Many`_"
+msgstr "`Many to Many`_"
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid ""
+"Identifier of the ending vertex. Returned when multiple ending vertices are "
+"in the query."
+msgstr ""
+"Identificador del vértice final. Se devuelve cuando hay varios vértices "
+"finales en la consulta."
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "`One to Many`_"
+msgstr "`One to Many`_"
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "**node**"
+msgstr "**node**"
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
+msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
+
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "**edge**"
+msgstr "**edge**"
+
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid ""
+"Identifier of the edge used to go from ``node`` to the next node in the path"
+" sequence. ``-1`` for the last node of the path."
+msgstr ""
+"Identificador del borde utilizado para ir del ``nodo`` al siguiente nodo de "
+"la secuencia de ruta. ``-1``  para el último nodo de la ruta."
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid ""
+"Cost to traverse from ``node`` using ``edge`` to the next node in the path "
+"sequence."
+msgstr ""
+"Costo de desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
+"nodo en la secuencia de ruta."
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "**agg_cost**"
+msgstr "**agg_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "Aggregate cost from ``start_v`` to ``node``."
+msgstr "Coste agregado de ``start_v`` to ``node``."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:192
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:194
+msgid "https://en.wikipedia.org/wiki/Topological_sorting"
+msgstr "https://en.wikipedia.org/wiki/Topological_sorting"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:195
+msgid "The queries use the :doc:`sampledata` network."
+msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
+
+#: ../../build/doc/pgr_dagShortestPath.rst:198
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:199
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_dagShortestPath.rst:200
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
