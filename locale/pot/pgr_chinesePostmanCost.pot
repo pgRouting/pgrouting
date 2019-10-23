@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"POT-Creation-Date: 2019-10-23 13:42-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_chinesePostmanCost.rst:13
 msgid "``pgr_chinesePostmanCost`` — Calculates the minimum costs of a circuit path which contains every edge in a directed graph and starts and ends on the same vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:16
+msgid "Possible server crash"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostmanCost.rst:18
+msgid "These functions might create a server crash"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:3
@@ -84,30 +92,30 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:21
+#: ../../build/doc/pgr_chinesePostmanCost.rst:25
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:22
+#: ../../build/doc/pgr_chinesePostmanCost.rst:26
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:24
+#: ../../build/doc/pgr_chinesePostmanCost.rst:28
 msgid "New **experimental** function"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:27
+#: ../../build/doc/pgr_chinesePostmanCost.rst:31
 msgid "Support"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:28
+#: ../../build/doc/pgr_chinesePostmanCost.rst:32
 msgid "**Supported versions** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_chinesePostmanCost.html>`__)"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:33
+#: ../../build/doc/pgr_chinesePostmanCost.rst:37
 #: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_chinesePostmanCost.rst:78
+#: ../../build/doc/pgr_chinesePostmanCost.rst:82
 msgid "Description"
 msgstr ""
 
@@ -127,11 +135,11 @@ msgstr ""
 msgid "Graph must be connected."
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:39
+#: ../../build/doc/pgr_chinesePostmanCost.rst:43
 msgid "[TBD] Return value when the graph if disconnected"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:42
+#: ../../build/doc/pgr_chinesePostmanCost.rst:46
 msgid "Signatures"
 msgstr ""
 
@@ -139,7 +147,7 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:59
+#: ../../build/doc/pgr_chinesePostmanCost.rst:63
 msgid "Parameters"
 msgstr ""
 
@@ -150,7 +158,7 @@ msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_chinesePostmanCost.rst:78
+#: ../../build/doc/pgr_chinesePostmanCost.rst:82
 msgid "Type"
 msgstr ""
 
@@ -171,7 +179,7 @@ msgstr ""
 msgid "The edges SQL query as described in `Inner query`_."
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:67
+#: ../../build/doc/pgr_chinesePostmanCost.rst:71
 msgid "Inner query"
 msgstr ""
 
@@ -262,35 +270,35 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:75
+#: ../../build/doc/pgr_chinesePostmanCost.rst:79
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:80
+#: ../../build/doc/pgr_chinesePostmanCost.rst:84
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:80
+#: ../../build/doc/pgr_chinesePostmanCost.rst:84
 msgid "Minimum costs of a circuit path."
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:84
+#: ../../build/doc/pgr_chinesePostmanCost.rst:88
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:86
+#: ../../build/doc/pgr_chinesePostmanCost.rst:90
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:89
+#: ../../build/doc/pgr_chinesePostmanCost.rst:93
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:90
+#: ../../build/doc/pgr_chinesePostmanCost.rst:94
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:91
+#: ../../build/doc/pgr_chinesePostmanCost.rst:95
 msgid ":ref:`search`"
 msgstr ""
 
