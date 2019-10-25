@@ -1,0 +1,392 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"PO-Revision-Date: 2019-09-07 11:57+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/dijkstra-family.rst:11
+msgid "Dijkstra - Family of functions"
+msgstr "Dijkstra - Familia de funciones"
+
+#: ../../build/doc/dijkstra-family.rst:15
+msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
+msgstr ""
+":doc:`pgr_dijkstra` - Algoritmo de Dijkstra para las rutas más cortas."
+
+#: ../../build/doc/dijkstra-family.rst:16
+msgid ""
+":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
+msgstr ""
+":doc:`pgr_dijkstraCost` - Obtenga el costo agrgado de las rutas más cortas."
+
+#: ../../build/doc/dijkstra-family.rst:17
+msgid ""
+":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
+msgstr ""
+":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra para crear una matriz de "
+"costos."
+
+#: ../../build/doc/dijkstra-family.rst:18
+msgid ""
+":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament "
+"information."
+msgstr ""
+":doc:`pgr_drivingDistance` - Use pgr_dijkstra para calcular información de "
+"captación."
+
+#: ../../build/doc/dijkstra-family.rst:19
+msgid ""
+":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest "
+"paths."
+msgstr ""
+":doc:`pgr_KSP` - Use el algoritmo Yen con pgr_dijkstra para obtener las "
+"rutas más cortas K."
+
+#: ../../build/doc/dijkstra-family.rst:24
+msgid "proposed"
+msgstr "propuesta"
+
+#: ../../build/doc/proposed.rst:3
+msgid "Proposed functions for next mayor release."
+msgstr "Funciones propuestas para el próximo lanzamineto."
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially in the current release."
+msgstr "No están oficialmente en la versión actual."
+
+#: ../../build/doc/proposed.rst:6
+msgid "They will likely officially be part of the next mayor release:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might not change. (But still can)"
+msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might not change. (But still can)"
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might not change. (But still can)"
+msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests have being done. But might need more."
+msgstr "Se han hecho pruebas de pgTap. Pero tal vez necesite más."
+
+#: ../../build/doc/proposed.rst:13
+msgid "Documentation might need refinement."
+msgstr "Es posible que la documentación necesite un refinamiento."
+
+#: ../../build/doc/dijkstra-family.rst:32
+msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
+msgstr ""
+":doc:`pgr_dijkstraVia` - Obtenga una ruta a partir de una secuencia de "
+"vértices."
+
+#: ../../build/doc/dijkstra-family.rst:47
+msgid "Previous versions of this page"
+msgstr "Versiones anteriores de esta página"
+
+#: ../../build/doc/dijkstra-family.rst:48
+msgid ""
+"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
+"/dijkstra-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-"
+"family.html>`__"
+msgstr ""
+"**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/dev/en"
+"/dijkstra-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-"
+"family.html>`__"
+
+#: ../../build/doc/dijkstra-family.rst:52
+msgid ""
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/dijkstra-"
+"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/dijkstra-"
+"family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en"
+"/dijkstra-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/dijkstra-"
+"family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
+
+#: ../../build/doc/dijkstra-family.rst:60
+msgid "The problem definition (Advanced documentation)"
+msgstr "La definición de problema (Documentación avanzada)"
+
+#: ../../build/doc/dijkstra-family.rst:63
+msgid "Given the following query:"
+msgstr "Dada la siguiente consulta:"
+
+#: ../../build/doc/dijkstra-family.rst:66
+msgid "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#: ../../build/doc/dijkstra-family.rst:68
+msgid ""
+"where  :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
+"reverse\\_cost_i)\\}`"
+msgstr ""
+"Donde :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
+"reverse\\_cost_i)\\}`"
+
+#: ../../build/doc/dijkstra-family.rst:70
+msgid "and"
+msgstr "y"
+
+#: ../../build/doc/dijkstra-family.rst:72
+msgid ":math:`source = \\bigcup source_i`,"
+msgstr ":math:`source = \\bigcup source_i`,"
+
+#: ../../build/doc/dijkstra-family.rst:73
+msgid ":math:`target = \\bigcup target_i`,"
+msgstr ":math:`target = \\bigcup target_i`,"
+
+#: ../../build/doc/dijkstra-family.rst:75
+msgid "The graphs are defined as follows:"
+msgstr "Los gráficos se definen como sigue:"
+
+#: ../../build/doc/dijkstra-family.rst:78
+msgid "Directed graph"
+msgstr "Grafo dirigido"
+
+#: ../../build/doc/dijkstra-family.rst:79
+msgid "The weighted directed graph, :math:`G_d(V,E)`, is definied by:"
+msgstr "El gráfico dirigido ponderado, :math:`G_d(V,E)`, se define por:"
+
+#: ../../build/doc/dijkstra-family.rst:81
+#: ../../build/doc/dijkstra-family.rst:100
+msgid "the set of vertices  :math:`V`"
+msgstr "Conjunto de vértices :math:`V`"
+
+#: ../../build/doc/dijkstra-family.rst:83
+msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
+msgstr ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
+
+#: ../../build/doc/dijkstra-family.rst:85
+#: ../../build/doc/dijkstra-family.rst:105
+msgid "the set of edges :math:`E`"
+msgstr "El conjunto de aristas :math:`E`"
+
+#: ../../build/doc/dijkstra-family.rst:87
+msgid ""
+":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) \\text{"
+" when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = \\varnothing \\\\"
+" \\text{ }  \\text{ }  & \\quad \\text{ } \\\\ \\text{ }  \\{(source_i, "
+"target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad \\text{ } \\\\ \\cup"
+"      \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } "
+"reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost \\neq "
+"\\varnothing \\\\ \\end{cases}`"
+msgstr ""
+":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) \\text{"
+" when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = \\varnothing \\\\"
+" \\text{ }  \\text{ }  & \\quad \\text{ } \\\\ \\text{ }  \\{(source_i, "
+"target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad \\text{ } \\\\ \\cup"
+"      \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } "
+"reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost \\neq "
+"\\varnothing \\\\ \\end{cases}`"
+
+#: ../../build/doc/dijkstra-family.rst:97
+msgid "Undirected graph"
+msgstr "Grafo no dirigido"
+
+#: ../../build/doc/dijkstra-family.rst:98
+msgid "The weighted undirected graph, :math:`G_u(V,E)`, is definied by:"
+msgstr "El grafo ponderado no dirigido :math:`G_u(V,E)`, es definido por:"
+
+#: ../../build/doc/dijkstra-family.rst:102
+msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
+msgstr ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
+
+#: ../../build/doc/dijkstra-family.rst:107
+msgid ""
+":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) \\text{"
+" when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup      \\{(target_i, "
+"source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } "
+"reverse\\_cost = \\varnothing \\\\ \\text{ }  \\text{ }  & \\text{ } \\\\ "
+"\\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & "
+"\\text{ } \\\\ \\cup  \\{(target_i, source_i, cost_i) \\text{ when } cost "
+">=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, reverse\\_cost_i) "
+"\\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup  "
+"\\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i "
+">=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ "
+"\\end{cases}`"
+msgstr ""
+":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) \\text{"
+" when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup      \\{(target_i, "
+"source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } "
+"reverse\\_cost = \\varnothing \\\\ \\text{ }  \\text{ }  & \\text{ } \\\\ "
+"\\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & "
+"\\text{ } \\\\ \\cup  \\{(target_i, source_i, cost_i) \\text{ when } cost "
+">=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, reverse\\_cost_i) "
+"\\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup  "
+"\\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i "
+">=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ "
+"\\end{cases}`"
+
+#: ../../build/doc/dijkstra-family.rst:120
+msgid "The problem"
+msgstr "El problema"
+
+#: ../../build/doc/dijkstra-family.rst:121
+msgid "Given:"
+msgstr "Dado:"
+
+#: ../../build/doc/dijkstra-family.rst:123
+msgid ":math:`start_{vid} \\in V` a starting vertex"
+msgstr ":math:`start_{vid} \\in V` a starting vertex"
+
+#: ../../build/doc/dijkstra-family.rst:124
+msgid ":math:`end_{vid} \\in V` an ending vertex"
+msgstr ":math:`end_{vid} \\in V` un vértice final"
+
+#: ../../build/doc/dijkstra-family.rst:125
+msgid ""
+":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed = "
+"true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ "
+"\\end{cases}`"
+msgstr ""
+":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed = "
+"true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ "
+"\\end{cases}`"
+
+#: ../../build/doc/dijkstra-family.rst:130
+msgid "Then:"
+msgstr "Entonces:"
+
+#: ../../build/doc/dijkstra-family.rst:139
+msgid ""
+":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, "
+"agg\\_cost_i)\\}`"
+msgstr ""
+":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, "
+"agg\\_cost_i)\\}`"
+
+#: ../../build/doc/dijkstra-family.rst:152
+msgid "where:"
+msgstr "Donde:"
+
+#: ../../build/doc/dijkstra-family.rst:142
+msgid ":math:`path\\_seq_i = i`"
+msgstr ":math:`path\\_seq_i = i`"
+
+#: ../../build/doc/dijkstra-family.rst:143
+msgid ":math:`path\\_seq_{| \\pi |} = | \\pi |`"
+msgstr ":math:`path\\_seq_{| \\pi |} = | \\pi |`"
+
+#: ../../build/doc/dijkstra-family.rst:144
+msgid ":math:`node_i \\in V`"
+msgstr ":math:`node_i \\in V`"
+
+#: ../../build/doc/dijkstra-family.rst:145
+msgid ":math:`node_1 = start_{vid}`"
+msgstr ":math:`node_1 = start_{vid}`"
+
+#: ../../build/doc/dijkstra-family.rst:146
+msgid ":math:`node_{| \\pi |}  = end_{vid}`"
+msgstr ":math:`node_{| \\pi |}  = end_{vid}`"
+
+#: ../../build/doc/dijkstra-family.rst:147
+msgid ":math:`\\forall i \\neq | \\pi |, \\quad (node_i, node_{i+1}, cost_i) \\in E`"
+msgstr ":math:`\\forall i \\neq | \\pi |, \\quad (node_i, node_{i+1}, cost_i) \\in E`"
+
+#: ../../build/doc/dijkstra-family.rst:148
+msgid ""
+":math:`edge_i  = \\begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &\\quad  "
+"\\text{when } i \\neq | \\pi | \\\\ -1 &\\quad  \\text{when } i = | \\pi | "
+"\\\\ \\end{cases}`"
+msgstr ""
+":math:`edge_i  = \\begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &\\quad  "
+"\\text{when } i \\neq | \\pi | \\\\ -1 &\\quad  \\text{when } i = | \\pi | "
+"\\\\ \\end{cases}`"
+
+#: ../../build/doc/dijkstra-family.rst:149
+msgid ":math:`cost_i = cost_{(node_i, node_{i+1})}`"
+msgstr ":math:`cost_i = cost_{(node_i, node_{i+1})}`"
+
+#: ../../build/doc/dijkstra-family.rst:150
+msgid ""
+":math:`agg\\_cost_i  = \\begin{cases}  0   &\\quad  \\text{when } i = 1  "
+"\\\\ \\displaystyle\\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\\quad  "
+"\\text{when } i \\neq 1 \\\\ \\end{cases}`"
+msgstr ""
+":math:`agg\\_cost_i  = \\begin{cases}  0   &\\quad  \\text{when } i = 1  "
+"\\\\ \\displaystyle\\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\\quad  "
+"\\text{when } i \\neq 1 \\\\ \\end{cases}`"
+
+#: ../../build/doc/dijkstra-family.rst:158
+msgid ""
+"In other words: The algorithm returns a the shortest path between "
+":math:`start_{vid}` and :math:`end_{vid}` , if it exists, in terms of a "
+"sequence of nodes  and of edges,"
+msgstr ""
+"En otras palabras: El algoritmo devuelve una ruta más corta entre "
+":math:`start_{vid}` y :math:`end_{vid}`, si es que existe, en términos de "
+"una secuencia de nodos y de aristas,"
+
+#: ../../build/doc/dijkstra-family.rst:155
+msgid ""
+":math:`path\\_seq` indicates the relative position in the path of the "
+":math:`node` or :math:`edge`."
+msgstr ""
+":math:`path\\_seq` indica la posición relativa en el camino de  :math:`node`"
+" o :math:`edge`."
+
+#: ../../build/doc/dijkstra-family.rst:156
+msgid ""
+":math:`cost` is the cost of the edge to be used to go to the next node."
+msgstr ""
+":math:`cost` es el coste del borde que se utilizará para ir al siguiente "
+"nodo."
+
+#: ../../build/doc/dijkstra-family.rst:157
+msgid ""
+":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the node."
+msgstr ""
+":math:`agg\\_cost` es el costo desde el :math:`start_{vid}` hasta el nodo."
+
+#: ../../build/doc/dijkstra-family.rst:160
+msgid "If there is no path, the resulting set is empty."
+msgstr "Si no hay ruta, el conjunto resultante estará vacío."
+
+#: ../../build/doc/dijkstra-family.rst:164
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/dijkstra-family.rst:167
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/dijkstra-family.rst:168
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/dijkstra-family.rst:169
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
