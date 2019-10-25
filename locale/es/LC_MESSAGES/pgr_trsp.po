@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 # 
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -108,13 +108,13 @@ msgid ""
 " edges rather than the nodes of the network. Returns a set of (seq, id1, "
 "id2, cost) or (seq, id1, id2, id3, cost) rows, that make up a path."
 msgstr ""
-"La ruta más corta restringida por giro (TRAP) es un algoritmo de ruta más "
+"La ruta más corta restringida por giro (TRSP) es un algoritmo de ruta más "
 "corta que opcionalmente puede tener en cuenta restricciones de giro "
 "complicadas como las que se encuentran en las redes de carreteras del mundo "
-"real. En cuanto al rendimiento, es casi tan rápido como la búsqueda A *, "
-"pero tiene muchas características adicionales, como funciona con bordes en "
-"lugar de los nodos de la red. Devuelve un conjunto de filas (seq, id1, id2, "
-"cost) o (seq, id1, id2, id3, cost), que forman una ruta."
+"real. En cuanto al rendimiento, es casi tan rápido como la búsqueda A* pero "
+"tiene muchas características adicionales, como funcionar con bordes en lugar"
+" de los nodos de la red. Devuelve un conjunto de filas (seq, id1, id2, cost)"
+" o (seq, id1, id2, id3, cost) que forman una ruta."
 
 #: ../../build/doc/pgr_trsp.rst:82
 msgid "**The main characteristics are:**"
