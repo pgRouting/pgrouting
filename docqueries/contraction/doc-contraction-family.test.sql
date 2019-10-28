@@ -67,7 +67,8 @@ vertices_in_graph AS (
 SELECT id, source, target, cost, reverse_cost, contracted_vertices
 FROM edge_table
 WHERE source IN (SELECT * FROM vertices_in_graph)
-AND target IN (SELECT * FROM vertices_in_graph);
+AND target IN (SELECT * FROM vertices_in_graph)
+ORDER BY id;
 
 
 \echo -- case1
