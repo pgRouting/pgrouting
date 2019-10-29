@@ -23,10 +23,6 @@ Chinese Postman Problem - Family of functions (Experimental)
   pgr_chinesePostman
   pgr_chinesePostmanCost
 
-.. warning:: Possible server crash
-
-  - These functions might create a server crash
-
 .. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr

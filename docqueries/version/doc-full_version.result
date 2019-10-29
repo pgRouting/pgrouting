@@ -6,7 +6,7 @@ SET
 SELECT * FROM pgr_full_version();
   version  | build_type | compile_date |    library    |         system          |    postgresql     | compiler  | boost  |   hash
 -----------+------------+--------------+---------------+-------------------------+-------------------+-----------+--------+-----------
- 3.0.0-rc1 | Debug      | 2019/10/23   | pgrouting-3.0 | Linux-4.15.0-66-generic | PostgreSQL 9.5.19 | GNU-8.3.0 | 1.65.1 | 77d65c560
+ 3.0.0-rc1 | Debug      | 2019/10/28   | pgrouting-3.0 | Linux-4.15.0-66-generic | PostgreSQL 9.5.19 | GNU-8.3.0 | 1.65.1 | 1ef823ff1
 (1 row)
 
 -- q2

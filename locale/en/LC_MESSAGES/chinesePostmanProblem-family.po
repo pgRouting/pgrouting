@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-23 13:42-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,142 +29,142 @@ msgstr ""
 msgid ":doc:`pgr_chinesePostmanCost`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:26
+#: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:28
+#: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:3
+#: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:5
+#: ../../build/doc/experimental.rst:9
 msgid "They are not officially of the current release."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:6
+#: ../../build/doc/experimental.rst:10
 msgid "They likely will not be officially be part of the next release:"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:8
+#: ../../build/doc/experimental.rst:12
 msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:9
+#: ../../build/doc/experimental.rst:13
 msgid "Name might change."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:10
+#: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:11
+#: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:12
+#: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:13
+#: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:14
+#: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:15
+#: ../../build/doc/experimental.rst:19
 msgid "Documentation if any might need to be rewritten."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:16
+#: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:17
+#: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:18
+#: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:19
+#: ../../build/doc/experimental.rst:23
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:35
+#: ../../build/doc/chinesePostmanProblem-family.rst:31
 msgid "Versions of this page"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:36
+#: ../../build/doc/chinesePostmanProblem-family.rst:32
 msgid ""
 "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
 "/chinesePostmanProblem-family.html>`__)"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:41
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
+#: ../../build/doc/chinesePostmanProblem-family.rst:37
+#: ../../build/doc/chinesePostmanProblem-family.rst:55
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:45
+#: ../../build/doc/chinesePostmanProblem-family.rst:41
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:47
+#: ../../build/doc/chinesePostmanProblem-family.rst:43
 msgid "Process is done only on edges with **positive** costs."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:48
+#: ../../build/doc/chinesePostmanProblem-family.rst:44
 msgid "Running time: :math:`O(E * (E + V * logV))`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:49
+#: ../../build/doc/chinesePostmanProblem-family.rst:45
 msgid "Graph must be connected."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:54
+#: ../../build/doc/chinesePostmanProblem-family.rst:50
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
+#: ../../build/doc/chinesePostmanProblem-family.rst:55
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
+#: ../../build/doc/chinesePostmanProblem-family.rst:55
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
+#: ../../build/doc/chinesePostmanProblem-family.rst:55
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:61
+#: ../../build/doc/chinesePostmanProblem-family.rst:57
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:61
+#: ../../build/doc/chinesePostmanProblem-family.rst:57
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:61
+#: ../../build/doc/chinesePostmanProblem-family.rst:57
 msgid "The edges SQL query as described in `Inner query`_."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:68
+#: ../../build/doc/chinesePostmanProblem-family.rst:64
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:72
+#: ../../build/doc/chinesePostmanProblem-family.rst:68
 msgid ""
 "An Edges SQL that represents a **directed** graph with the following "
 "columns"
@@ -257,19 +257,19 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:81
+#: ../../build/doc/chinesePostmanProblem-family.rst:77
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:84
+#: ../../build/doc/chinesePostmanProblem-family.rst:80
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:85
+#: ../../build/doc/chinesePostmanProblem-family.rst:81
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:86
+#: ../../build/doc/chinesePostmanProblem-family.rst:82
 msgid ":ref:`search`"
 msgstr ""
 

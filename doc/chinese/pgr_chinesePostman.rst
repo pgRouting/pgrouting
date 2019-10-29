@@ -13,10 +13,6 @@ pgr_chinesePostman - Experimental
 ``pgr_chinesePostman`` — Calculates the shortest circuit path which contains
 every edge in a directed graph and starts and ends on the same vertex.
 
-.. warning:: Possible server crash
-
-  - These functions might create a server crash
-
 .. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
