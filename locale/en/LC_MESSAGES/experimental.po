@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,70 +22,78 @@ msgid "Experimental Functions"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:14
-msgid "Experimental functions"
+msgid "Possible server crash"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:16
-msgid "They are not officially of the current release."
+msgid "These functions might create a server crash"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:17
-msgid "They likely will not be officially be part of the next release:"
-msgstr ""
-
-#: ../../build/doc/experimental.rst:19
-msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+#: ../../build/doc/experimental.rst:18
+msgid "Experimental functions"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:20
-msgid "Name might change."
+msgid "They are not officially of the current release."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:21
-msgid "Signature might change."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:22
-msgid "Functionality might change."
+msgid "They likely will not be officially be part of the next release:"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:23
-msgid "pgTap tests might be missing."
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:24
-msgid "Might need c/c++ coding."
+msgid "Name might change."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:25
-msgid "May lack documentation."
+msgid "Signature might change."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:26
-msgid "Documentation if any might need to be rewritten."
+msgid "Functionality might change."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:27
-msgid "Documentation examples might need to be automatically generated."
+msgid "pgTap tests might be missing."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:28
-msgid "Might need a lot of feedback from the comunity."
+msgid "Might need c/c++ coding."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:29
-msgid "Might depend on a proposed function of pgRouting"
+msgid "May lack documentation."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:30
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:31
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:32
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:33
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:34
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:35
+#: ../../build/doc/experimental.rst:39
 msgid "Families"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:36
+#: ../../build/doc/experimental.rst:40
 msgid ":doc:`flow-family`"
 msgstr ""
 
@@ -97,7 +105,7 @@ msgstr ""
 msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:42
+#: ../../build/doc/experimental.rst:46
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ""
 
@@ -109,7 +117,7 @@ msgstr ""
 msgid ":doc:`pgr_chinesePostmanCost`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:48
+#: ../../build/doc/experimental.rst:52
 msgid ":doc:`topology-functions`"
 msgstr ""
 
@@ -119,7 +127,7 @@ msgid ""
 "source and target."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:54
+#: ../../build/doc/experimental.rst:58
 msgid ":doc:`transformation-family`"
 msgstr ""
 
@@ -135,11 +143,11 @@ msgid ""
 " Graph out of each vertex in the input graph."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:66
+#: ../../build/doc/experimental.rst:70
 msgid "categories"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:67
+#: ../../build/doc/experimental.rst:71
 msgid ":doc:`VRP-category`"
 msgstr ""
 
@@ -165,59 +173,59 @@ msgstr ""
 msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:79
+#: ../../build/doc/experimental.rst:83
 msgid "Not classified"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:80
+#: ../../build/doc/experimental.rst:84
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:81
+#: ../../build/doc/experimental.rst:85
 msgid ":doc:`pgr_binaryBreadthFirstSearch`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:82
+#: ../../build/doc/experimental.rst:86
 msgid ":doc:`pgr_breadthFirstSearch`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:83
+#: ../../build/doc/experimental.rst:87
 msgid ":doc:`pgr_dagShortestPath`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:84
+#: ../../build/doc/experimental.rst:88
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:85
+#: ../../build/doc/experimental.rst:89
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:86
+#: ../../build/doc/experimental.rst:90
 msgid ":doc:`pgr_topologicalSort`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:87
+#: ../../build/doc/experimental.rst:91
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:88
+#: ../../build/doc/experimental.rst:92
 msgid ":doc:`pgr_turnRestrictedPath`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:105
+#: ../../build/doc/experimental.rst:109
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:108
+#: ../../build/doc/experimental.rst:112
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:109
+#: ../../build/doc/experimental.rst:113
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:110
+#: ../../build/doc/experimental.rst:114
 msgid ":ref:`search`"
 msgstr ""
 

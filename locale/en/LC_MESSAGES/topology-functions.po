@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,62 +59,70 @@ msgid "Experimental"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:3
-msgid "Experimental functions"
+msgid "Possible server crash"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:5
-msgid "They are not officially of the current release."
+msgid "These functions might create a server crash"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:6
-msgid "They likely will not be officially be part of the next release:"
-msgstr ""
-
-#: ../../build/doc/experimental.rst:8
-msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+#: ../../build/doc/experimental.rst:7
+msgid "Experimental functions"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:9
-msgid "Name might change."
+msgid "They are not officially of the current release."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:10
-msgid "Signature might change."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:11
-msgid "Functionality might change."
+msgid "They likely will not be officially be part of the next release:"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:12
-msgid "pgTap tests might be missing."
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:13
-msgid "Might need c/c++ coding."
+msgid "Name might change."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:14
-msgid "May lack documentation."
+msgid "Signature might change."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:15
-msgid "Documentation if any might need to be rewritten."
+msgid "Functionality might change."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:16
-msgid "Documentation examples might need to be automatically generated."
+msgid "pgTap tests might be missing."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:17
-msgid "Might need a lot of feedback from the comunity."
+msgid "Might need c/c++ coding."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:18
-msgid "Might depend on a proposed function of pgRouting"
+msgid "May lack documentation."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:19
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:20
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:21
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:22
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:23
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
