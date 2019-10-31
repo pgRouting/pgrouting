@@ -1,0 +1,452 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:56+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:11
+msgid "pgr_boykovKolmogorov"
+msgstr "pgr_boykovKolmogorov"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:13
+msgid ""
+"``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that "
+"maximizes the flow from the sources to the targets using Boykov Kolmogorov "
+"algorithm."
+msgstr ""
+"``pgr_boykovKolmogorov`` — Calcula el flujo en las aristas del grafo que "
+"maximiza el flujo de las fuentes a los objetivos utilizando el algoritmo "
+"Boykov Kolmogorov."
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:18
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:21
+msgid "Availability:"
+msgstr "Disponibilidad:"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:22
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:24
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:26
+msgid "Version 2.5.0"
+msgstr "Versión 2.5.0"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:28
+msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
+msgstr "Renombrado de ``pgr_maxFlowBoykovKolmogorov``"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:29
+msgid "**Proposed** function"
+msgstr "Función **propuesta**"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:31
+msgid "Version 2.3.0"
+msgstr "Versión 2.3.0"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:33
+msgid "New **Experimental** function"
+msgstr "Nueva función **Experimental**"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:36
+msgid "Support"
+msgstr "Soporte"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:37
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_boykovKolmogorov.html>`__)"
+msgstr ""
+"**Versiones soportadas:** actual(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_boykovKolmogorov.html>`__)"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:40
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_boykovKolmogorov.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_boykovKolmogorov.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_maxFlowBoykovKolmogorov.html>`__ `2.3"
+" "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_boykovKolmogorov.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_boykovKolmogorov.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_maxFlowBoykovKolmogorov.html>`__ `2.3"
+" "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html>`__"
+
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+#: ../../build/doc/pgr_boykovKolmogorov.rst:48
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/flow-family.rst:3
+msgid "**The main characteristics are:**"
+msgstr "**Las características principales son:**"
+
+#: ../../build/doc/flow-family.rst:5
+msgid "The graph is **directed**."
+msgstr "El grafo es **dirigido**."
+
+#: ../../build/doc/flow-family.rst:6
+msgid "Process is done only on edges with positive capacities."
+msgstr "El proceso se realiza sólo en aristas con capacidades positivas."
+
+#: ../../build/doc/flow-family.rst:7
+msgid ""
+"When the maximum flow is 0 then there is no flow and **EMPTY SET** is "
+"returned."
+msgstr ""
+"Cuando el flujo máximo es 0 entonces no hay flujo, se devolverá: **EMPTY "
+"SET**."
+
+#: ../../build/doc/flow-family.rst:9
+msgid "There is no flow when a **source** is the same as a **target**."
+msgstr ""
+"No hay ningún flujo cuando el  **orígen** es el mismo que el **destino**."
+
+#: ../../build/doc/flow-family.rst:11
+msgid "Any duplicated value in the source(s) or target(s) are ignored."
+msgstr ""
+"Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) será "
+"ignorado."
+
+#: ../../build/doc/flow-family.rst:12
+msgid "Calculates the flow/residual capacity for each edge. In the output"
+msgstr "Calcula la capacidad de flujo/residuo para cada arista. En la salida"
+
+#: ../../build/doc/flow-family.rst:14
+msgid "Edges with zero flow are omitted."
+msgstr "Se omiten las aristas con flujo cero."
+
+#: ../../build/doc/flow-family.rst:16
+msgid ""
+"Creates a **super source** and edges to all the source(s), and a **super "
+"target** and the edges from all the targets(s)."
+msgstr ""
+"Crea una **súper origen**, con aristas para todos los orígenes, y un **súper"
+" destino** con aristas para todos los destinos."
+
+#: ../../build/doc/flow-family.rst:17
+msgid ""
+"The maximum flow through the graph is guaranteed to be the value returned by"
+" :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and"
+" can be calculated:"
+msgstr ""
+"Se garantiza que el flujo máximo a través del grafo es el valor devuelto por"
+"  :doc:`pgr_maxFlow <pgr_maxFlow>` cuando es ejecutado con los mismos "
+"parámetros y se puede calcular:"
+
+#: ../../build/doc/flow-family.rst:19
+msgid "By aggregation of the outgoing flow from the sources"
+msgstr "Mediante la agregación del flujo saliente de los orígenes"
+
+#: ../../build/doc/flow-family.rst:20
+msgid "By aggregation of the incoming flow to the targets"
+msgstr "Mediante la agregación del flujo entrante a los destinos"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:54
+msgid "Running time: Polynomial"
+msgstr "Tiempo de ejecución: Polinomio"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:57
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:60
+msgid "Summary"
+msgstr "Resumen"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:74
+msgid "One to One"
+msgstr "Uno a Uno"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:82
+msgid "From vertex :math:`6` to vertex :math:`11`"
+msgstr "Del vértice :math:`6` al vértice :math:`11`"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:92
+msgid "One to Many"
+msgstr "Uno a Muchos"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:100
+msgid "From vertex :math:`6` to vertices :math:`\\{1, 3, 11\\}`"
+msgstr "Del vértice :math:`6` a los vértices :math:`\\{1, 3, 11\\}`"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:110
+msgid "Many to One"
+msgstr "Muchos a Uno"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:118
+msgid "From vertices :math:`\\{6, 8, 12\\}` to vertex :math:`11`"
+msgstr "De los vértices vertices :math:`\\{6, 8, 12\\}` al vértice :math:`11`"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:128
+msgid "Many to Many"
+msgstr "Muchos a Muchos"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:136
+msgid "From vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`"
+msgstr "De los vértices :math:`\\{6, 8, 12\\}` a los vértices :math:`\\{1, 3, 11\\}`"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:143
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/flow-family.rst:6
+msgid "**Edges SQL**"
+msgstr "**Edges SQL**"
+
+#: ../../build/doc/flow-family.rst:6
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/flow-family.rst:6
+msgid "The edges SQL query as described in `Inner Query`_."
+msgstr "La consulta SQL de aristas como se describe en `Inner Query`_."
+
+#: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:9
+msgid "**source**"
+msgstr "**origen**"
+
+#: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:8
+#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
+#: ../../build/doc/flow-family.rst:11
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../build/doc/flow-family.rst:7
+msgid "Identifier of the starting vertex of the flow."
+msgstr "Identificador del vértice inicial del flujo."
+
+#: ../../build/doc/flow-family.rst:8
+msgid "**sources**"
+msgstr "**orígenes**"
+
+#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:10
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+#: ../../build/doc/flow-family.rst:8
+msgid "Array of identifiers of the starting vertices of the flow."
+msgstr "Conjunto de identificadores de los vértices iniciales del flujo."
+
+#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
+msgid "**target**"
+msgstr "**objetivo**"
+
+#: ../../build/doc/flow-family.rst:9
+msgid "Identifier of the ending vertex of the flow."
+msgstr "Identificador del vértice final del flujo."
+
+#: ../../build/doc/flow-family.rst:10
+msgid "**targets**"
+msgstr "**destinos**"
+
+#: ../../build/doc/flow-family.rst:10
+msgid "Array of identifiers of the ending vertices of the flow."
+msgstr "Conjunto de identificadores de los vértices finales del flujo."
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:150
+msgid "Inner query"
+msgstr "Consulta interna"
+
+#: ../../build/doc/flow-family.rst
+msgid "Edges SQL"
+msgstr "Edges SQL"
+
+#: ../../build/doc/flow-family.rst:3
+msgid ""
+"an SQL query of a directed graph of capacities, which should return a set of"
+" rows with the following columns:"
+msgstr ""
+"Consulta SQL de un grafo dirigido de capacidades, que debe devolver un "
+"conjunto de filas con las siguientes columnas:"
+
+#: ../../build/doc/flow-family.rst:8
+msgid "**id**"
+msgstr "**id**"
+
+#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
+#: ../../build/doc/flow-family.rst:10 ../../build/doc/flow-family.rst:11
+#: ../../build/doc/flow-family.rst:15
+msgid "``ANY-INTEGER``"
+msgstr "``ANY-INTEGER``"
+
+#: ../../build/doc/flow-family.rst:8
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer punto final en el vértice de la arista."
+
+#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
+
+#: ../../build/doc/flow-family.rst:11
+msgid "**capacity**"
+msgstr "**capacidad**"
+
+#: ../../build/doc/flow-family.rst:11
+msgid "Weight of the edge  `(source, target)`"
+msgstr "Peso de la arista `(source, target)`"
+
+#: ../../build/doc/flow-family.rst:13
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/flow-family.rst:15
+msgid "**reverse_capacity**"
+msgstr "**reverse_capacity** (**capacidad inversa**)"
+
+#: ../../build/doc/flow-family.rst:15
+msgid "-1"
+msgstr "-1"
+
+#: ../../build/doc/flow-family.rst:15
+msgid "Weight of the edge `(target, source)`,"
+msgstr "Peso de la arista `(target, source)`,"
+
+#: ../../build/doc/flow-family.rst:17
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/flow-family.rst:21
+msgid "Where:"
+msgstr "Donde:"
+
+#: ../../build/doc/flow-family.rst
+msgid "ANY-INTEGER"
+msgstr "ANY-INTEGER"
+
+#: ../../build/doc/flow-family.rst:23
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:157
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+#: ../../build/doc/flow-family.rst:6
+msgid "**seq**"
+msgstr "**seq**"
+
+#: ../../build/doc/flow-family.rst:6
+msgid "``INT``"
+msgstr "``INT``"
+
+#: ../../build/doc/flow-family.rst:6
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de **1**."
+
+#: ../../build/doc/flow-family.rst:7
+msgid "**edge**"
+msgstr "**arista**"
+
+#: ../../build/doc/flow-family.rst:7
+msgid "Identifier of the edge in the original query(edges_sql)."
+msgstr "Identificador de la arista en la consulta original(edges_sql)."
+
+#: ../../build/doc/flow-family.rst:8
+msgid "**start_vid**"
+msgstr "**start_vid**"
+
+#: ../../build/doc/flow-family.rst:9
+msgid "**end_vid**"
+msgstr "**end_vid**"
+
+#: ../../build/doc/flow-family.rst:10
+msgid "**flow**"
+msgstr "**flujo**"
+
+#: ../../build/doc/flow-family.rst:10
+msgid "Flow through the edge in the direction (``start_vid``, ``end_vid``)."
+msgstr ""
+"Flujo a través del arista en la dirección  (``start_vid``, ``end_vid``)."
+
+#: ../../build/doc/flow-family.rst:11
+msgid "**residual_capacity**"
+msgstr "**residual_capacity** (**capacidad residual**)"
+
+#: ../../build/doc/flow-family.rst:11
+msgid ""
+"Residual capacity of the edge in the direction (``start_vid``, ``end_vid``)."
+msgstr ""
+"Capacidad residual del arista en la dirección (``start_vid``, ``end_vid``)."
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:164
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:166
+msgid ":doc:`flow-family`, :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`"
+msgstr ":doc:`flow-family`, :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:167
+msgid "https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
+msgstr "https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:170
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:171
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:172
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
