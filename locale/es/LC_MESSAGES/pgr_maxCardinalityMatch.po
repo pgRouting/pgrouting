@@ -325,11 +325,11 @@ msgstr "``INT``"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:124
 msgid "Sequential value starting from **1**."
-msgstr "Valor secuencial a partir de ** 1 **."
+msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:125
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:125
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:126
