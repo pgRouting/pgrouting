@@ -1,19 +1,19 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 # 
 # Translators:
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
 # MarPetra <mvergaratrejo@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -36,63 +36,71 @@ msgstr ""
 "Entrega"
 
 #: ../../build/doc/experimental.rst:3
+msgid "Possible server crash"
+msgstr "Posible bloqueo del servidor"
+
+#: ../../build/doc/experimental.rst:5
+msgid "These functions might create a server crash"
+msgstr "Estas funciones pueden crear un bloqueo del servidor"
+
+#: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
 msgstr "Funciones experimentales"
 
-#: ../../build/doc/experimental.rst:5
+#: ../../build/doc/experimental.rst:9
 msgid "They are not officially of the current release."
 msgstr "No son oficialmente de la versión actual."
 
-#: ../../build/doc/experimental.rst:6
+#: ../../build/doc/experimental.rst:10
 msgid "They likely will not be officially be part of the next release:"
 msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
 
-#: ../../build/doc/experimental.rst:8
+#: ../../build/doc/experimental.rst:12
 msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
 
-#: ../../build/doc/experimental.rst:9
+#: ../../build/doc/experimental.rst:13
 msgid "Name might change."
 msgstr "El nombre puede cambiar."
 
-#: ../../build/doc/experimental.rst:10
+#: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
 msgstr "La firma (declaración de funciones) podría cambiar."
 
-#: ../../build/doc/experimental.rst:11
+#: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
 msgstr "La funcionalidad puede cambiar."
 
-#: ../../build/doc/experimental.rst:12
+#: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
 msgstr "Las pruebas de pgTap pueden estar ausentes."
 
-#: ../../build/doc/experimental.rst:13
+#: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
 msgstr "Posiblemente necesite codificación c/c++."
 
-#: ../../build/doc/experimental.rst:14
+#: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
 msgstr "Puede haber carencia de documentación."
 
-#: ../../build/doc/experimental.rst:15
+#: ../../build/doc/experimental.rst:19
 msgid "Documentation if any might need to be rewritten."
 msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
-#: ../../build/doc/experimental.rst:16
+#: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
 msgstr ""
 "Ejemplos de documentación que puede ser necesario generar automáticamente."
 
-#: ../../build/doc/experimental.rst:17
+#: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
 msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
 
-#: ../../build/doc/experimental.rst:18
+#: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
 msgstr "Puede depender de una función propuesta de pgRouting."
 
-#: ../../build/doc/experimental.rst:19
+#: ../../build/doc/experimental.rst:23
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
@@ -309,7 +317,7 @@ msgstr "**vehicles_sql**"
 msgid ""
 "`Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used."
 msgstr ""
-"La consulta 'Pick & Deliver Vehicles SQL'_ contiene los vehículos que se van"
+"La consulta `Pick & Deliver Vehicles SQL`_ contiene los vehículos que se van"
 " a utilizar."
 
 #: ../../build/doc/VRP-category.rst:8
@@ -513,7 +521,7 @@ msgstr "valor :math:`y` del lugar de entrega"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:161
 msgid "Pick & Deliver Vehicles SQL"
-msgstr "Pick & Deliver Vehicles SQL (Vehículos de Recogida y Entrega)"
+msgstr "SQL de Vehículos de Recogida y Entrega"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:171
 msgid "where:"
@@ -664,7 +672,7 @@ msgstr "INTEGER"
 
 #: ../../build/doc/VRP-category.rst:20
 msgid "Sequential value starting from **1**."
-msgstr "Valor secuencial a partir de ** 1 **."
+msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/VRP-category.rst:21 ../../build/doc/VRP-category.rst:57
 msgid "**vehicle_seq**"
