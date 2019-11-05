@@ -207,11 +207,11 @@ sub generate_upgrade_script {
     push @commands, components($old_version, $new_version);
     push @commands, version($old_version, $new_version);
     push @commands, drivingDistance($old_version, $new_version);
+    push @commands, vrp($old_version, $new_version);
     #push @commands, underscored($old_version, $new_version);
     #push @commands, deprecated_on_2_1($old_version, $new_version);
     #push @commands, deprecated_on_2_2($old_version, $new_version);
     #push @commands, pgr_trsp($old_version, $new_version);
-    #push @commands, pgr_gsoc_vrppdtw($old_version, $new_version);
 
     #------------------------------------
     # analyze types
@@ -711,23 +711,17 @@ sub underscored {
 }
 
 
-sub pgr_gsoc_vrppdtw {
+sub vrp {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    # too long ago
-    # dropping
-
-    if ($old_version =~ /$version_2_1|$version_2_2/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--   New function: 2.1\n";
-        push @commands,  "-- (types) change: 2.3\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, drop_special_case_function("pgr_gsoc_vrppdtw(text,integer,integer)", $old_version, $new_version);
+    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+        my $update_command =  update_pg_proc(
+            'pgr_vrponedepot',
+             'order_sql,vehicle_sql,cost_sql,depot_id,oid,opos,vid,tarrival,tdepart',
+             '"","","","",oid,opos,vid,tarrival,tdepart');
+        push @commands, $update_command;
     }
-
-
     return @commands;
 }
 
