@@ -500,23 +500,30 @@ sub withpoints {
         # pgr_withPointsCost
         my $update_command =  update_pg_proc(
             'pgr_withpointscost',
-             'edges_sql,points_sql,start_pid,end_pid,directed,driving_side,details,seq,path_seq,node,edge,cost,agg_cost',
+             'edges_sql,points_sql,"","",directed,driving_side,start_pid,end_pid,agg_cost',
              '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
         push @commands, $update_command;
         $update_command =  update_pg_proc(
             'pgr_withpointscost',
-             'edges_sql,points_sql,start_pid,end_pids,directed,driving_side,details,seq,path_seq,end_pid,node,edge,cost,agg_cost',
+             'edges_sql,points_sql,"",end_pids,directed,driving_side,start_pid,end_pid,agg_cost',
              '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
         push @commands, $update_command;
         $update_command =  update_pg_proc(
             'pgr_withpointscost',
-             'edges_sql,points_sql,start_pids,end_pid,directed,driving_side,details,seq,path_seq,start_pid,node,edge,cost,agg_cost',
+             'edges_sql,points_sql,start_pids,"",directed,driving_side,start_pid,end_pid,agg_cost',
              '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
         push @commands, $update_command;
         $update_command =  update_pg_proc(
             'pgr_withpointscost',
-             'edges_sql,points_sql,start_pids,end_pids,directed,driving_side,details,seq,path_seq,start_pid,end_pid,node,edge,cost,agg_cost',
+             'edges_sql,points_sql,start_pids,end_pids,directed,driving_side,start_pid,end_pid,agg_cost',
              '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
+        push @commands, $update_command;
+
+        #pgr_withPointsCostMatrix
+        $update_command =  update_pg_proc(
+            'pgr_withpointscostmatrix',
+             'edges_sql,points_sql,pids,directed,driving_side,start_vid,end_vid,agg_cost',
+             '"","","",directed,driving_side,start_vid,end_vid,agg_cost');
         push @commands, $update_command;
 
         # pgr_withPointsDD
