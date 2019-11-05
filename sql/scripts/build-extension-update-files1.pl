@@ -211,7 +211,6 @@ sub generate_upgrade_script {
     #push @commands, pgr_version($old_version, $new_version);
     #push @commands, pgr_trsp($old_version, $new_version);
     #push @commands, pgr_gsoc_vrppdtw($old_version, $new_version);
-    #push @commands, pgr_drivingdistance($old_version, $new_version);
 
     #------------------------------------
     # analyze types
@@ -796,85 +795,6 @@ sub astar {
         push @commands, $update_command;
     }
 
-    return @commands;
-}
-
-
-
-sub pgr_drivingdistance {
-    my ($old_version, $new_version) = @_;
-    my @commands = ();
-
-
-    if ($old_version =~ /$version_2_1/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--       New functions:  2.0\n";
-        push @commands,  "--    Signature change:  2.1\n";
-        push @commands,  "------------------------------------------\n";
-        push @commands, "-- $old_version: {sql,source,distance,directed,has_rcost}\n";
-        push @commands, "-- $new_version: {edges_sql,source,distance,directed,has_rcost}\n";
-
-        my $update_command = "
-UPDATE pg_proc SET
-proargnames = '{\"edges_sql\",\"source\",\"distance\",\"directed\",\"has_rcost\"}'
-WHERE proname = 'pgr_drivingdistance'
-    AND proargnames = '{\"sql\",\"source\",\"distance\",\"directed\",\"has_rcost\"}';
-";
-
-        push @commands, $update_command;
-
-        #push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean,boolean)",  $old_version, $new_version);
-    }
-
-
-    if ($old_version =~ /$version_2_1|$version_2_2|$version_2_3/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--       New functions:  2.1\n";
-        push @commands,  "--    Signature change:  2.4\n";
-        push @commands,  "------------------------------------------\n";
-        push @commands, "-- $old_version: {      sql,start_v,  distance,directed,seq,node,edge,cost,agg_cost}\n" if $old_version =~ /$version_2_1/;
-        push @commands, "-- $old_version: {edges_sql,start_v,  distance,directed,seq,node,edge,cost,agg_cost}\n" if $old_version =~ /$version_2_2|$version_2_3/;
-        push @commands, "-- $new_version: {edges_sql,start_vid,distance,directed,seq,node,edge,cost,agg_cost}\n";
-
-        my $update_command = "
-UPDATE pg_proc SET
-proargnames = '{\"edges_sql\",\"start_vid\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'
-WHERE proname = 'pgr_drivingdistance'";
-        push @commands, $update_command;
-
-        $update_command = "
-    AND proargnames = '{\"sql\",\"start_v\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}';
-" if $old_version =~ /$version_2_1/;
-
-        $update_command = "
-    AND proargnames = '{\"edges_sql\",\"start_v\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}';
-" if $old_version =~ /$version_2_2|$version_2_3/;
-
-        push @commands, $update_command;
-
-        #push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  $old_version, $new_version);
-    }
-
-
-    if ($old_version =~ /$version_2_1|$version_2_2|$version_2_3/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--       New functions:  2.1\n";
-        push @commands,  "--    Signature change:  2.4\n";
-        push @commands,  "------------------------------------------\n";
-        push @commands, "-- $old_version: {sql,      start_v,   distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}\n";
-        push @commands, "-- $new_version: {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}\n";
-
-        my $update_command = "
-UPDATE pg_proc SET
-proargnames = '{\"edges_sql\",\"start_vids\",\"distance\",\"directed\",\"equicost\",\"seq\",\"from_v\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'
-WHERE proname = 'pgr_drivingdistance'
-    AND proargnames = '{\"sql\",\"start_v\",\"distance\",\"directed\",\"equicost\",\"seq\",\"from_v\",\"node\",\"edge\",\"cost\",\"agg_cost\"}';
-";
-
-        push @commands, $update_command;
-
-        #push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  $old_version, $new_version);
-    }
     return @commands;
 }
 
