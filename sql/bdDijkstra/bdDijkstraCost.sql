@@ -33,8 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
     TEXT,   -- edges_sql (required)
-    BIGINT, -- from_vid (requiered)
-    BIGINT, -- to_vid (requiered)
+    BIGINT, -- from_vid (required)
+    BIGINT, -- to_vid (required)
 
     directed BOOLEAN DEFAULT true,
 
@@ -53,9 +53,9 @@ ROWS 1000;
 
 -- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
-    TEXT,     -- edges_sql (requiered)
-    BIGINT,   -- from_vid (requiered)
-    ANYARRAY, -- to_vids (requiered)
+    TEXT,     -- edges_sql (required)
+    BIGINT,   -- from_vid (required)
+    ANYARRAY, -- to_vids (required)
 
     directed BOOLEAN DEFAULT true,
 
@@ -74,9 +74,9 @@ ROWS 1000;
 
 -- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
-    TEXT,     -- edges_sql (requiered)
-    ANYARRAY, -- from_vids (requiered)
-    BIGINT,   -- to_vid (requiered)
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    BIGINT,   -- to_vid (required)
 
     directed BOOLEAN DEFAULT true,
 
@@ -95,9 +95,9 @@ ROWS 1000;
 
 -- MANY TO MANY
 CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
-    TEXT,     -- edges_sql (requiered)
-    ANYARRAY, -- from_vids (requiered)
-    ANYARRAY, -- to_vids (requiered)
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- from_vids (required)
+    ANYARRAY, -- to_vids (required)
 
     directed BOOLEAN DEFAULT true,
 
