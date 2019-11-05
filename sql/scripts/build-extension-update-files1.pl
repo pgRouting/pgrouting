@@ -205,11 +205,11 @@ sub generate_upgrade_script {
     push @commands, ksp($old_version, $new_version);
     push @commands, flow($old_version, $new_version);
     push @commands, components($old_version, $new_version);
+    push @commands, version($old_version, $new_version);
     push @commands, drivingDistance($old_version, $new_version);
     #push @commands, underscored($old_version, $new_version);
     #push @commands, deprecated_on_2_1($old_version, $new_version);
     #push @commands, deprecated_on_2_2($old_version, $new_version);
-    #push @commands, pgr_version($old_version, $new_version);
     #push @commands, pgr_trsp($old_version, $new_version);
     #push @commands, pgr_gsoc_vrppdtw($old_version, $new_version);
 
@@ -338,18 +338,15 @@ sub deprecated_on_2_2 {
 
 
 
-sub pgr_version {
+sub version {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    # Out parameter changes:
-    # Dropping
-
-    push @commands, drop_special_case_function("pgr_version()",  $old_version, $new_version);
-
+    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+        push @commands, drop_special_case_function("pgr_version()",  $old_version, $new_version);
+    }
     return @commands;
 }
-
 
 sub pgr_trsp {
     my ($old_version, $new_version) = @_;
@@ -547,16 +544,9 @@ sub drivingDistance {
     my @commands = ();
 
     if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
-        my $update_command =  update_pg_proc(
-            'pgr_drivingdistance',
-             'edges_sql,start_vid,distance,directed,seq,node,edge,cost,agg_cost',
-             '"","","",distance,directed,seq,node,edge,cost,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_drivingdistance',
-             'edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost',
-             '"","","",directed,equicost,seq,from_v,node,edge,cost,agg_cost');
-        push @commands, $update_command;
+
+        push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  $old_version, $new_version);
+        push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  $old_version, $new_version);
     }
     return @commands;
 }
@@ -580,6 +570,7 @@ sub allpairs {
     }
     return @commands;
 }
+
 
 
 sub components {
