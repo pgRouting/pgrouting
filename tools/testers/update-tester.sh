@@ -26,28 +26,42 @@
 
 set -e
 
-# ----------------------
-#
-echo **All pgRouting versions to be updated must be installed before calling**
-echo
-echo
-#
-# USAGE
-#
-#  bash tools/testers/update-tester.sh
-#
+CURRENT=3.0.0
+TWEAK="-rc1"
+PGSQL_VER="9.5"
+PGPORT=5432
+PGUSER="vicky"
+DB="___pgr___test___"
 
-CURRENT=2.6.0
+function info {
 
-if [ ! -f build/sql/pgrouting--$CURRENT.sql ]; then
-   echo "Not testing the current version, file not found:  build/lib/pgrouting--$CURRENT.sql "
-   exit 1
+    # ----------------------
+    #
+    echo **pgRouting version must be installed before calling**
+    echo "$1"
+    echo "$2"
+
+    echo # EXAMPLE USAGE
+
+    echo  bash tools/testers/update-tester.sh $2
+
+}
+
+
+if [[ -z  "$1" ]]; then
+    echo missing version to upgrade
+    info $CURRENT 2.6.3
+    exit 1
 fi
 
-dropdb --if-exists ___test_update
+FROM_PGR="$1"
+
+dropdb --if-exists "$DB"
 
 
 cd build
+cmake -DPGROUTING_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug ..
+make -j 4
 sudo make install
 cd ..
 
@@ -60,53 +74,50 @@ echo
 echo "Updating from $1 to $2"
 echo ------------------------------------
 
-INSTALLED=$(locate "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql")
+INSTALLED=$(locate "/usr/share/postgresql/$PGSQL_VER/extension/pgrouting--$1.sql")
 
-if [ "$INSTALLED" == "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql" ]
+if [ "$INSTALLED" == "/usr/share/postgresql/$PGSQL_VER/extension/pgrouting--$1.sql" ]
 then
-    echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql found"
+    echo "/usr/share/postgresql/$PGSQL_VER/extension/pgrouting--$1.sql found"
 else
-    echo "FATAL: /usr/share/postgresql/9.3/extension/pgrouting--$1.sql Not found"
+    echo "FATAL: /usr/share/postgresql/$PGSQL_VER/extension/pgrouting--$1.sql Not found"
     exit 1
 fi
 
 
-createdb  ___test_update
-psql  ___test_update  <<EOF
+createdb  "$DB"
+psql  "$DB"  <<EOF
 CREATE extension postgis;
 CREATE extension pgrouting with version '$1';
 EOF
 
-OLD_VERSION=$(psql ___test_update -t -c 'SELECT version FROM pgr_version()')
+OLD_VERSION=$(psql "$DB" -t -c 'SELECT * FROM pgr_version()')
+echo "$OLD_VERSION"
 
 
-if [ "b$OLD_VERSION" != "b $1" ]
-then
-    echo "ERROR: Version $1 not found on the system"
-    dropdb ___test_update
-    exit 1
-fi
+psql "$DB" -e -c "ALTER extension pgrouting update to '$2'"
 
 
-
-psql ___test_update -c "ALTER extension pgrouting update to '$2'"
-
-
-NEW_VERSION=$(psql ___test_update -t -c 'SELECT version FROM pgr_version()')
+NEW_VERSION=$(psql "$DB" -t -c 'SELECT * FROM pgr_version()')
 
 echo "$OLD_VERSION ->> $NEW_VERSION"
 
-if [ "b$NEW_VERSION" != "b $2" ]
+if [ "b$NEW_VERSION" != "b $2$TWEAK" ]
 then
     echo "FAIL: Could not update from version $1 to version $2"
     dropdb ___test_update
     exit 1
 fi
 
-dropdb ___test_update
+
+sh ./tools/testers/pg_prove_tests.sh $PGUSER $PGPORT Release
+dropdb "$DB"
 
 } # end of function
 
+
+update_test $FROM_PGR $CURRENT
+exit
 #------------------------------------
 ### updates from 2.5
 #------------------------------------
