@@ -208,6 +208,7 @@ sub generate_upgrade_script {
     push @commands, version($old_version, $new_version);
     push @commands, drivingDistance($old_version, $new_version);
     push @commands, vrp($old_version, $new_version);
+    push @commands, topology($old_version, $new_version);
     #push @commands, underscored($old_version, $new_version);
     #push @commands, deprecated_on_2_1($old_version, $new_version);
     #push @commands, deprecated_on_2_2($old_version, $new_version);
@@ -547,6 +548,41 @@ sub drivingDistance {
 
         push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  $old_version, $new_version);
         push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  $old_version, $new_version);
+    }
+    return @commands;
+}
+
+
+sub topology {
+    my ($old_version, $new_version) = @_;
+    my @commands = ();
+
+    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+        my $update_command =  update_pg_proc(
+            'pgr_nodenetwork',
+             'edge_table,tolerance,id,the_geom,table_ending,rows_where,outall',
+             '"","",id,the_geom,table_ending,rows_where,outall');
+        push @commands, $update_command;
+        my $update_command =  update_pg_proc(
+            'pgr_createverticestable',
+             'edge_table,the_geom,source,target,rows_where',
+             '"",the_geom,source,target,rows_where');
+        push @commands, $update_command;
+        my $update_command =  update_pg_proc(
+            'pgr_createtopology',
+             'edge_table,tolerance,the_geom,id,source,target,rows_where,clean',
+             '"","",the_geom,id,source,target,rows_where,clean');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_analyzegraph',
+             'edge_table,tolerance,the_geom,id,source,target,rows_where',
+             '"","",the_geom,id,source,target,rows_where');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_analyzeoneway',
+             'edge_table,s_in_rules,s_out_rules,t_in_rules,t_out_rules,two_way_if_null,oneway,source,target',
+             '"","","","","",two_way_if_null,oneway,source,target');
+        push @commands, $update_command;
     }
     return @commands;
 }
