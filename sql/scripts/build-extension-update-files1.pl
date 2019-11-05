@@ -90,18 +90,6 @@ exit 0;
 # generate_upgrade_script
 #
 # Special case functions
-# underscored($old_version, $new_version);
-# deprecated_on_2_1($old_version, $new_version);
-# deprecated_on_2_2($old_version, $new_version);
-# pgr_version($old_version, $new_version);
-# pgr_trsp($old_version, $new_version);
-# pgr_bddijkstra($old_version, $new_version);
-# pgr_gsoc_vrppdtw($old_version, $new_version);
-# pgr_astar($old_version, $new_version);
-# pgr_ksp($old_version, $new_version);
-# pgr_drivingdistance($old_version, $new_version);
-# pgr_edgedisjointpaths($old_version, $new_version);
-
 
 # read and parse the .sig file and store the results in a hash
 sub read_and_parse_signature_file {
@@ -208,7 +196,8 @@ sub generate_upgrade_script {
     # Special cases
     #------------------------------------
 
-    push @commands, pgr_dijkstra($old_version, $new_version);
+    push @commands, dijkstra($old_version, $new_version);
+    push @commands, allpairs($old_version, $new_version);
     #push @commands, underscored($old_version, $new_version);
     #push @commands, deprecated_on_2_1($old_version, $new_version);
     #push @commands, deprecated_on_2_2($old_version, $new_version);
@@ -449,12 +438,31 @@ AND proargnames = '{$old_sig}';
     return $update_command;
 }
 
-sub pgr_dijkstra {
+sub allpairs {
+    my ($old_version, $new_version) = @_;
+    my @commands = ();
+
+    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+        my $update_command =  update_pg_proc(
+            'pgr_johnson',
+             'edges_sql,directed,start_vid,end_vid,agg_cost',
+             '"",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+        my $update_command =  update_pg_proc(
+            'pgr_floydwarshall',
+             'edges_sql,directed,start_vid,end_vid,agg_cost',
+             '"",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+    }
+    return @commands;
+}
+
+
+sub dijkstra {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
 =pod
-    function _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean)
     function pgr_dijkstra(text,anyarray,anyarray,boolean)
     function pgr_dijkstra(text,anyarray,bigint,boolean)
     function pgr_dijkstra(text,bigint,anyarray,boolean)
