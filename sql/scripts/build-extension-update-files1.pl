@@ -203,6 +203,7 @@ sub generate_upgrade_script {
     push @commands, bdastar($old_version, $new_version);
     push @commands, withpoints($old_version, $new_version);
     push @commands, ksp($old_version, $new_version);
+    push @commands, flow($old_version, $new_version);
     push @commands, drivingDistance($old_version, $new_version);
     #push @commands, underscored($old_version, $new_version);
     #push @commands, deprecated_on_2_1($old_version, $new_version);
@@ -211,7 +212,6 @@ sub generate_upgrade_script {
     #push @commands, pgr_trsp($old_version, $new_version);
     #push @commands, pgr_gsoc_vrppdtw($old_version, $new_version);
     #push @commands, pgr_drivingdistance($old_version, $new_version);
-    #push @commands, pgr_edgedisjointpaths($old_version, $new_version);
 
     #------------------------------------
     # analyze types
@@ -874,23 +874,21 @@ WHERE proname = 'pgr_drivingdistance'
 
 
 
-sub pgr_edgedisjointpaths {
+sub flow {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_3|$version_2_4/
-            and $new_version !~ /$version_2_3|$version_2_4/) {
-
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--       New functions:  2.3\n";
-        push @commands,  "--    Signature change:  2.5\n";
-        push @commands,  "-- Inner query changed:  2.5\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,bigint,boolean)",     $old_version, $new_version);
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,anyarray,boolean)",   $old_version, $new_version);
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,bigint,boolean)",   $old_version, $new_version);
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,anyarray,boolean)", $old_version, $new_version);
+    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+        my $update_command =  update_pg_proc(
+            'pgr_maxcardinalitymatch',
+             'edges_sql,directed,seq,edge,source,target',
+             '"",directed,seq,edge,source,target');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_maxflow',
+             'edges_sql,source_vertices,sink_vertices',
+             '"","",""');
+        push @commands, $update_command;
     }
 
     return @commands;
