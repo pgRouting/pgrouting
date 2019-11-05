@@ -197,8 +197,10 @@ sub generate_upgrade_script {
     #------------------------------------
 
     push @commands, dijkstra($old_version, $new_version);
+    push @commands, bddijkstra($old_version, $new_version);
     push @commands, allpairs($old_version, $new_version);
     push @commands, astar($old_version, $new_version);
+    push @commands, bdastar($old_version, $new_version);
     push @commands, withpoints($old_version, $new_version);
     push @commands, ksp($old_version, $new_version);
     push @commands, drivingDistance($old_version, $new_version);
@@ -207,7 +209,6 @@ sub generate_upgrade_script {
     #push @commands, deprecated_on_2_2($old_version, $new_version);
     #push @commands, pgr_version($old_version, $new_version);
     #push @commands, pgr_trsp($old_version, $new_version);
-    #push @commands, pgr_bddijkstra($old_version, $new_version);
     #push @commands, pgr_gsoc_vrppdtw($old_version, $new_version);
     #push @commands, pgr_drivingdistance($old_version, $new_version);
     #push @commands, pgr_edgedisjointpaths($old_version, $new_version);
@@ -396,33 +397,63 @@ WHERE proname = 'pgr_trsp'
 }
 
 
-sub pgr_bddijkstra {
+sub bddijkstra {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    # too recent, updating
+    push @commands, drop_special_case_function("_pgr_bddijkstra(text,anyarray,anyarray,boolean,boolean)",  $old_version, $new_version);
+    push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,anyarray,boolean)",  $old_version, $new_version);
 
-    if ($old_version =~ /$version_2_0|$version_2_1|$version_2_2|$version_2_3/
-            and $new_version !~ /$version_2_0|$version_2_1|$version_2_2|$version_2_3/
-            and $new_version =~ /$version_2/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--    New functions:  2.0\n";
-        push @commands,  "-- Signature change:  2.4\n";
-        push @commands,  "--       Deprecated:  2.4\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, "-- pgr_bddijkstra\n";
-        push @commands, "-- $old_version: {      sql, source_vid, target_vid, directed, has_reverse_cost}   \n";
-        push @commands, "-- $new_version: {edges_sql,  start_vid,    end_vid, directed, has_rcost}\n";
-        my $update_command = "
-UPDATE pg_proc SET
-proargnames = '{\"edges_sql\",\"start_vid\",\"end_vid\",\"directed\",\"has_rcost\"}'
-WHERE proname = 'pgr_bddijkstra'
-    AND proargnames = '{\"sql\",\"source_vid\",\"target_vid\",\"directed\",\"has_reverse_cost\"}';
-";
-
+    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+        my $update_command =  update_pg_proc(
+            'pgr_bddijkstra',
+             'edges_sql,start_vid,end_vid,directed,seq,path_seq,node,edge,cost,agg_cost',
+             '"","","",directed,seq,path_seq,node,edge,cost,agg_cost');
         push @commands, $update_command;
-        #push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  $old_version, $new_version);
+        $update_command =  update_pg_proc(
+            'pgr_bddijkstra',
+             'edges_sql,start_vid,end_vids,directed,seq,path_seq,end_vid,node,edge,cost,agg_cost',
+             '"","","",directed,seq,path_seq,node,end_vid,edge,cost,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_bddijkstra',
+             'edges_sql,start_vids,end_vid,directed,seq,path_seq,start_vid,node,edge,cost,agg_cost',
+             '"","","",directed,seq,path_seq,start_vid,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_bddijkstra',
+             'edges_sql,start_vids,end_vids,directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost',
+             '"","","",directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+
+        # pgr_BDdijkstraCost
+        $update_command =  update_pg_proc(
+            'pgr_bddijkstracost',
+             'edges_sql,"","",directed,start_vid,end_vid,agg_cost',
+             '"","","",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_bddijkstracost',
+             'edges_sql,"",end_vids,directed,start_vid,end_vid,agg_cost',
+             '"","","",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_bddijkstracost',
+             'edges_sql,start_vids,"",directed,start_vid,end_vid,agg_cost',
+             '"","","",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_bddijkstracost',
+             'edges_sql,start_vids,end_vids,directed,start_vid,end_vid,agg_cost',
+             '"","","",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+
+        # pgr_BDdijkstraCostMatrix
+        $update_command =  update_pg_proc(
+            'pgr_bddijkstracostmatrix',
+             'edges_sql,vids,directed,start_vid,end_vid,agg_cost',
+             '"","",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
     }
 
     return @commands;
@@ -682,6 +713,22 @@ sub pgr_gsoc_vrppdtw {
         push @commands, drop_special_case_function("pgr_gsoc_vrppdtw(text,integer,integer)", $old_version, $new_version);
     }
 
+
+    return @commands;
+}
+
+sub bdastar {
+    my ($old_version, $new_version) = @_;
+    my @commands = ();
+
+    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+        #pgr_BDaStarCostMatrix
+        my $update_command =  update_pg_proc(
+            'pgr_bdastarcostmatrix',
+             'edges_sql,vids,directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost',
+             '"","",directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+    }
 
     return @commands;
 }
