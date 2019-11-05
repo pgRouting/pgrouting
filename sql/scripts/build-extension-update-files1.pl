@@ -199,6 +199,9 @@ sub generate_upgrade_script {
     push @commands, dijkstra($old_version, $new_version);
     push @commands, allpairs($old_version, $new_version);
     push @commands, astar($old_version, $new_version);
+    push @commands, withpoints($old_version, $new_version);
+    push @commands, ksp($old_version, $new_version);
+    push @commands, drivingDistance($old_version, $new_version);
     #push @commands, underscored($old_version, $new_version);
     #push @commands, deprecated_on_2_1($old_version, $new_version);
     #push @commands, deprecated_on_2_2($old_version, $new_version);
@@ -206,7 +209,6 @@ sub generate_upgrade_script {
     #push @commands, pgr_trsp($old_version, $new_version);
     #push @commands, pgr_bddijkstra($old_version, $new_version);
     #push @commands, pgr_gsoc_vrppdtw($old_version, $new_version);
-    #push @commands, pgr_ksp($old_version, $new_version);
     #push @commands, pgr_drivingdistance($old_version, $new_version);
     #push @commands, pgr_edgedisjointpaths($old_version, $new_version);
 
@@ -438,6 +440,90 @@ AND proargnames = '{$old_sig}';
     return $update_command;
 }
 
+sub withpoints {
+    my ($old_version, $new_version) = @_;
+    my @commands = ();
+
+    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+        my $update_command =  update_pg_proc(
+            'pgr_withpoints',
+             'edges_sql,points_sql,start_pid,end_pid,directed,driving_side,details,seq,path_seq,node,edge,cost,agg_cost',
+             '"","","","",directed,driving_side,details,seq,path_seq,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_withpoints',
+             'edges_sql,points_sql,start_pid,end_pids,directed,driving_side,details,seq,path_seq,end_pid,node,edge,cost,agg_cost',
+             '"","","","",directed,driving_side,details,seq,path_seq,end_pid,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_withpoints',
+             'edges_sql,points_sql,start_pids,end_pid,directed,driving_side,details,seq,path_seq,start_pid,node,edge,cost,agg_cost',
+             '"","","","",directed,driving_side,details,seq,path_seq,start_pid,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_withpoints',
+             'edges_sql,points_sql,start_pids,end_pids,directed,driving_side,details,seq,path_seq,start_pid,end_pid,node,edge,cost,agg_cost',
+             '"","","","",directed,driving_side,details,seq,path_seq,start_pid,end_pid,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+
+        # pgr_withPointsCost
+        my $update_command =  update_pg_proc(
+            'pgr_withpointscost',
+             'edges_sql,points_sql,start_pid,end_pid,directed,driving_side,details,seq,path_seq,node,edge,cost,agg_cost',
+             '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_withpointscost',
+             'edges_sql,points_sql,start_pid,end_pids,directed,driving_side,details,seq,path_seq,end_pid,node,edge,cost,agg_cost',
+             '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_withpointscost',
+             'edges_sql,points_sql,start_pids,end_pid,directed,driving_side,details,seq,path_seq,start_pid,node,edge,cost,agg_cost',
+             '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_withpointscost',
+             'edges_sql,points_sql,start_pids,end_pids,directed,driving_side,details,seq,path_seq,start_pid,end_pid,node,edge,cost,agg_cost',
+             '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
+        push @commands, $update_command;
+
+        # pgr_withPointsDD
+        my $update_command =  update_pg_proc(
+            'pgr_withpointsdd',
+             'edges_sql,points_sql,start_pid,distance,directed,driving_side,details,equicost,seq,start_vid,node,edge,cost,agg_cost',
+             '"","","","",directed,driving_side,details,equicost,seq,start_vid,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_withpointsdd',
+             'edges_sql,points_sql,start_pid,distance,directed,driving_side,details,seq,node,edge,cost,agg_cost',
+             '"","","","",directed,driving_side,details,seq,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+    }
+    return @commands;
+}
+
+
+sub drivingDistance {
+    my ($old_version, $new_version) = @_;
+    my @commands = ();
+
+    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+        my $update_command =  update_pg_proc(
+            'pgr_drivingdistance',
+             'edges_sql,start_vid,distance,directed,seq,node,edge,cost,agg_cost',
+             '"","","",distance,directed,seq,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_drivingdistance',
+             'edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost',
+             '"","","",directed,equicost,seq,from_v,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+    }
+    return @commands;
+}
+
+
 sub allpairs {
     my ($old_version, $new_version) = @_;
     my @commands = ();
@@ -448,7 +534,7 @@ sub allpairs {
              'edges_sql,directed,start_vid,end_vid,agg_cost',
              '"",directed,start_vid,end_vid,agg_cost');
         push @commands, $update_command;
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_floydwarshall',
              'edges_sql,directed,start_vid,end_vid,agg_cost',
              '"",directed,start_vid,end_vid,agg_cost');
@@ -461,15 +547,6 @@ sub allpairs {
 sub dijkstra {
     my ($old_version, $new_version) = @_;
     my @commands = ();
-
-=pod
-    function pgr_dijkstra(text,anyarray,anyarray,boolean)
-    function pgr_dijkstra(text,anyarray,bigint,boolean)
-    function pgr_dijkstra(text,bigint,anyarray,boolean)
-    function pgr_dijkstra(text,bigint,bigint,boolean)
-    function pgr_dijkstra(text,bigint,bigint) -- drop
-    function pgr_dijkstra(text,integer,integer,boolean,boolean) -- drop
-=cut
 
     push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,anyarray,boolean)",  $old_version, $new_version);
 
@@ -496,36 +573,36 @@ sub dijkstra {
         push @commands, $update_command;
 
         # pgr_dijkstraCost
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_dijkstracost',
              'edges_sql,"","",directed,start_vid,end_vid,agg_cost',
              '"","","",directed,start_vid,end_vid,agg_cost');
         push @commands, $update_command;
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_dijkstracost',
              'edges_sql,"",end_vids,directed,start_vid,end_vid,agg_cost',
              '"","","",directed,start_vid,end_vid,agg_cost');
         push @commands, $update_command;
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_dijkstracost',
              'edges_sql,start_vids,"",directed,start_vid,end_vid,agg_cost',
              '"","","",directed,start_vid,end_vid,agg_cost');
         push @commands, $update_command;
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_dijkstracost',
              'edges_sql,start_vids,end_vids,directed,start_vid,end_vid,agg_cost',
              '"","","",directed,start_vid,end_vid,agg_cost');
         push @commands, $update_command;
 
         # pgr_dijkstraCostMatrix
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_dijkstracostmatrix',
              'edges_sql,vids,directed,start_vid,end_vid,agg_cost',
              '"","",directed,start_vid,end_vid,agg_cost');
         push @commands, $update_command;
 
         # pgr_dijkstraVia
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_dijkstravia',
              'edges_sql,via_vertices,directed,strict,u_turn_on_edge,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost,route_agg_cost',
              '"","",directed,strict,u_turn_on_edge,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost,route_agg_cost');
@@ -536,20 +613,21 @@ sub dijkstra {
 
 
 
-sub pgr_ksp {
+sub ksp {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_1/ and $new_version !~ /$version_2_1/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--    New functions:  2.1\n";
-        push @commands,  "-- Signature change:  2.2\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, "-- pgr_ksp\n";
-        push @commands, "-- $old_version:  {      sql, start_vid, end_vid, k, directed, heap_paths, seq, path_id, path_seq, node,edge, cost, agg_cost}\n";
-        push @commands, "-- $new_version:  {edges_sql, start_vid, end_vid, k, directed, heap_paths, seq, path_id, path_seq, node,edge, cost, agg_cost}\n";
-        push @commands, drop_special_case_function("pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  $old_version, $new_version);
+    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+        my $update_command =  update_pg_proc(
+            'pgr_ksp',
+             'edges_sql,start_vid,end_vid,k,directed,heap_paths,seq,path_id,path_seq,node,edge,cost,agg_cost',
+             '"","","","",directed,heap_paths,seq,path_id,path_seq,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_withpointsksp',
+             'edges_sql,points_sql,start_pid,end_pid,k,directed,heap_paths,driving_side,details,seq,path_id,path_seq,node,edge,cost,agg_cost',
+             '"","","","","",directed,heap_paths,driving_side,details,seq,path_id,path_seq,node,edge,cost,agg_cost');
+        push @commands, $update_command;
     }
 
     return @commands;
@@ -635,7 +713,7 @@ sub astar {
         push @commands, $update_command;
 
         #pgr_astarCost
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_astarcost',
              'edges_sql,start_vid,end_vid,directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost',
              '"","","",directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost');
@@ -655,8 +733,9 @@ sub astar {
              'edges_sql,start_vids,end_vids,directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost',
              '"","","",directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost');
         push @commands, $update_command;
+
         #pgr_astarCostMatrix
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_astarcostmatrix',
              'edges_sql,vids,directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost',
              '"","",directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost');
