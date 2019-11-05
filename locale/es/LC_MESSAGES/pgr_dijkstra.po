@@ -405,7 +405,7 @@ msgstr "Identificador del segundo punto final en el vértice de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -488,7 +488,7 @@ msgstr "``INT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Sequential value starting from **1**."
-msgstr "Valor secuencial a partir de ** 1 **."
+msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**path_id**"
@@ -545,7 +545,7 @@ msgstr "`One to Many`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "**node**"
-msgstr "**node**"
+msgstr "**nodo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
@@ -553,7 +553,7 @@ msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 msgid ""

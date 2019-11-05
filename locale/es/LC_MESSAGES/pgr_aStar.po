@@ -420,7 +420,7 @@ msgstr "Cuando ``false`` el gráfico se considera como No Dirigido"
 
 #: ../../build/doc/pgr_aStar.rst:223
 msgid "**heuristic**"
-msgstr "**heuristic**"
+msgstr "**heurística**"
 
 #: ../../build/doc/pgr_aStar.rst:223
 msgid "``INTEGER``"
@@ -531,7 +531,7 @@ msgstr "Identificador del segundo punto final en el vértice de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -695,7 +695,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "**node**"
-msgstr "**node**"
+msgstr "**nodo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
@@ -703,7 +703,7 @@ msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid ""
