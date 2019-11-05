@@ -651,7 +651,7 @@ msgstr "``INT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Sequential value starting from **1**."
-msgstr "Valor secuencial a partir de ** 1 **."
+msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**path_id**"
