@@ -168,6 +168,7 @@ sub generate_upgrade_script {
     my $new_version = $new->{VERSION};
     my $old_version = $old->{VERSION};
 
+
     #------------------------------------
     # analyze function signatures
     #------------------------------------
@@ -207,20 +208,22 @@ sub generate_upgrade_script {
     # Special cases
     #------------------------------------
 
-    push @commands, underscored($old_version, $new_version);
-    push @commands, deprecated_on_2_1($old_version, $new_version);
-    push @commands, deprecated_on_2_2($old_version, $new_version);
-    push @commands, pgr_version($old_version, $new_version);
-    push @commands, pgr_trsp($old_version, $new_version);
-    push @commands, pgr_bddijkstra($old_version, $new_version);
-    push @commands, pgr_gsoc_vrppdtw($old_version, $new_version);
-    push @commands, pgr_astar($old_version, $new_version);
-    push @commands, pgr_ksp($old_version, $new_version);
-    push @commands, pgr_drivingdistance($old_version, $new_version);
-    push @commands, pgr_edgedisjointpaths($old_version, $new_version);
+    push @commands, pgr_dijkstra($old_version, $new_version);
+    #push @commands, underscored($old_version, $new_version);
+    #push @commands, deprecated_on_2_1($old_version, $new_version);
+    #push @commands, deprecated_on_2_2($old_version, $new_version);
+    #push @commands, pgr_version($old_version, $new_version);
+    #push @commands, pgr_trsp($old_version, $new_version);
+    #push @commands, pgr_bddijkstra($old_version, $new_version);
+    #push @commands, pgr_gsoc_vrppdtw($old_version, $new_version);
+    #push @commands, pgr_astar($old_version, $new_version);
+    #push @commands, pgr_ksp($old_version, $new_version);
+    #push @commands, pgr_drivingdistance($old_version, $new_version);
+    #push @commands, pgr_edgedisjointpaths($old_version, $new_version);
 
-
+    #------------------------------------
     # analyze types
+    #------------------------------------
 
     my $ntype = $new->{types};
     my $otype = $old->{types};
@@ -238,7 +241,7 @@ sub generate_upgrade_script {
         if (!exists $ntype_h{$name}) {
             #types no longer used are dropped form the extension
             push @commands, "ALTER EXTENSION pgrouting DROP TYPE $name;\n";
-            push @commands, "DROP TYPE $name;\n";
+            push @commands, "DROP TYPE $name CASCADE;\n";
         } else {
             push @types2remove, $name;
         }
@@ -249,6 +252,7 @@ sub generate_upgrade_script {
     # on the old TYPE so we can DROP TYPE <type> CASCADE; or we might drop
     # a user's function. So juse DIE and maybe someone can resolve this
     die "ERROR: pgrouting TYPE changed! Cannot continue!\n" if $err;
+
 
     write_script($old_version, $new_version, \@types2remove, join('', @commands));
 }
@@ -349,18 +353,7 @@ sub pgr_version {
     # Out parameter changes:
     # Dropping
 
-    if ($old_version =~ /$version_2_0|$version_2_1/
-            and $new_version !~ /$version_2_0|$version_2_1/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--    New functions:  2.0\n";
-        push @commands,  "-- Signature change:  2.2\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, "-- pgr_version\n";
-        push @commands, "-- $old_version:  {version,tag,build,hash,branch,boost}\n";
-        push @commands, "-- $new_version:  {version,tag,hash,branch,boost}\n";
-        push @commands, drop_special_case_function("pgr_version()",  $old_version, $new_version);
-    }
+    push @commands, drop_special_case_function("pgr_version()",  $old_version, $new_version);
 
     return @commands;
 }
@@ -441,6 +434,95 @@ WHERE proname = 'pgr_bddijkstra'
         #push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  $old_version, $new_version);
     }
 
+    return @commands;
+}
+
+sub update_pg_proc {
+    my ($func_name, $old_sig, $new_sig) = @_;
+    my $update_command = "
+UPDATE pg_proc SET
+proargnames = '{$new_sig}'
+WHERE proname = '$func_name'
+AND proargnames = '{$old_sig}';
+
+    ";
+    return $update_command;
+}
+
+sub pgr_dijkstra {
+    my ($old_version, $new_version) = @_;
+    my @commands = ();
+
+=pod
+    function _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean)
+    function pgr_dijkstra(text,anyarray,anyarray,boolean)
+    function pgr_dijkstra(text,anyarray,bigint,boolean)
+    function pgr_dijkstra(text,bigint,anyarray,boolean)
+    function pgr_dijkstra(text,bigint,bigint,boolean)
+    function pgr_dijkstra(text,bigint,bigint) -- drop
+    function pgr_dijkstra(text,integer,integer,boolean,boolean) -- drop
+=cut
+
+    push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,anyarray,boolean)",  $old_version, $new_version);
+
+    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+        my $update_command =  update_pg_proc(
+            'pgr_dijkstra',
+             'edges_sql,start_vid,end_vid,directed,seq,path_seq,node,edge,cost,agg_cost',
+             '"","","",directed,seq,path_seq,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_dijkstra',
+             'edges_sql,start_vid,end_vids,directed,seq,path_seq,end_vid,node,edge,cost,agg_cost',
+             '"","","",directed,seq,path_seq,node,end_vid,edge,cost,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_dijkstra',
+             'edges_sql,start_vids,end_vid,directed,seq,path_seq,start_vid,node,edge,cost,agg_cost',
+             '"","","",directed,seq,path_seq,start_vid,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+        $update_command =  update_pg_proc(
+            'pgr_dijkstra',
+             'edges_sql,start_vids,end_vids,directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost',
+             '"","","",directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost');
+        push @commands, $update_command;
+
+        # pgr_dijkstraCost
+        my $update_command =  update_pg_proc(
+            'pgr_dijkstracost',
+             'edges_sql,"","",directed,start_vid,end_vid,agg_cost',
+             '"","","",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+        my $update_command =  update_pg_proc(
+            'pgr_dijkstracost',
+             'edges_sql,"",end_vids,directed,start_vid,end_vid,agg_cost',
+             '"","","",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+        my $update_command =  update_pg_proc(
+            'pgr_dijkstracost',
+             'edges_sql,start_vids,"",directed,start_vid,end_vid,agg_cost',
+             '"","","",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+        my $update_command =  update_pg_proc(
+            'pgr_dijkstracost',
+             'edges_sql,start_vids,end_vids,directed,start_vid,end_vid,agg_cost',
+             '"","","",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+
+        # pgr_dijkstraCostMatrix
+        my $update_command =  update_pg_proc(
+            'pgr_dijkstracostmatrix',
+             'edges_sql,vids,directed,start_vid,end_vid,agg_cost',
+             '"","",directed,start_vid,end_vid,agg_cost');
+        push @commands, $update_command;
+
+        # pgr_dijkstraVia
+        my $update_command =  update_pg_proc(
+            'pgr_dijkstravia',
+             'edges_sql,via_vertices,directed,strict,u_turn_on_edge,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost,route_agg_cost',
+             '"","",directed,strict,u_turn_on_edge,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost,route_agg_cost');
+        push @commands, $update_command;
+    }
     return @commands;
 }
 
