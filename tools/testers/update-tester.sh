@@ -26,10 +26,9 @@
 
 set -e
 
-CURRENT=3.0.0
 TWEAK="-rc1"
-PGSQL_VER="9.5"
 PGPORT=5432
+#sorry this only works on vicky's computer
 PGUSER="vicky"
 DB="___pgr___test___"
 
@@ -41,9 +40,11 @@ function info {
     echo "$1"
     echo "$2"
 
-    echo # EXAMPLE USAGE
-
-    echo  bash tools/testers/update-tester.sh $2
+    echo EXAMPLE USAGE
+    echo - Short execution
+    echo  bash tools/testers/update-tester.sh $1 $2
+    echo - For running pgtap tests:
+    echo  bash tools/testers/update-tester.sh $1 $2 long
 
 }
 
@@ -54,15 +55,23 @@ if [[ -z  "$1" ]]; then
     exit 1
 fi
 
+if [[ -z  "$2" ]]; then
+    echo missing current version
+    info 2.6.3 3.0.0
+    exit 1
+fi
+
 FROM_PGR="$1"
+CURRENT="$2"
+LONG=$3
 
 dropdb --if-exists "$DB"
 
 
 cd build
-cmake -DPGROUTING_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug ..
-make -j 4
-sudo make install
+cmake -DPGROUTING_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug .. > /tmp/foo.txt
+make -j 4 > /tmp/foo.txt
+sudo make install > /tmp/foo.txt
 cd ..
 
 
@@ -73,16 +82,6 @@ echo
 echo
 echo "Updating from $1 to $2"
 echo ------------------------------------
-
-INSTALLED=$(locate "/usr/share/postgresql/$PGSQL_VER/extension/pgrouting--$1.sql")
-
-if [ "$INSTALLED" == "/usr/share/postgresql/$PGSQL_VER/extension/pgrouting--$1.sql" ]
-then
-    echo "/usr/share/postgresql/$PGSQL_VER/extension/pgrouting--$1.sql found"
-else
-    echo "FATAL: /usr/share/postgresql/$PGSQL_VER/extension/pgrouting--$1.sql Not found"
-    exit 1
-fi
 
 
 createdb  "$DB"
@@ -110,7 +109,11 @@ then
 fi
 
 
-sh ./tools/testers/pg_prove_tests.sh $PGUSER $PGPORT Release
+if [ -n "$LONG" ]
+then
+    sh ./tools/testers/pg_prove_tests.sh $PGUSER $PGPORT Release
+fi
+
 dropdb "$DB"
 
 } # end of function
@@ -118,55 +121,5 @@ dropdb "$DB"
 
 update_test $FROM_PGR $CURRENT
 exit
-#------------------------------------
-### updates from 2.5
-#------------------------------------
-
-update_test 2.5.3 $CURRENT
-update_test 2.5.2 $CURRENT
-update_test 2.5.1 $CURRENT
-update_test 2.5.0 $CURRENT
-
-#------------------------------------
-### updates from 2.4
-#------------------------------------
-
-update_test 2.4.2 $CURRENT
-update_test 2.4.1 $CURRENT
-update_test 2.4.0 $CURRENT
-
-#------------------------------------
-### updates from 2.3.0
-#------------------------------------
-
-update_test 2.3.2 $CURRENT
-update_test 2.3.1 $CURRENT
-update_test 2.3.0 $CURRENT
-
-#------------------------------------
-### updates from 2.2.x
-#------------------------------------
-
-update_test 2.2.4 $CURRENT
-update_test 2.2.3 $CURRENT
-update_test 2.2.2 $CURRENT
-update_test 2.2.1 $CURRENT
-update_test 2.2.0 $CURRENT
-
-
-#------------------------------------
-### updates from 2.1.x
-#------------------------------------
-
-update_test 2.1.0 $CURRENT
-
-#------------------------------------
-### updates from 2.0.x
-#------------------------------------
-
-update_test 2.0.0 $CURRENT
-
-echo Reached end of test, all tests passed
-# CAN NOT BE Update test from 2.0.1  to $CURRENT;
 
 exit 0
