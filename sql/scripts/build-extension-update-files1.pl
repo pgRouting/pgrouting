@@ -425,24 +425,8 @@ sub bddijkstra {
         push @commands, $update_command;
 
         # pgr_BDdijkstraCost
-        $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc_short(
             'pgr_bddijkstracost',
-             'edges_sql,"","",directed,start_vid,end_vid,agg_cost',
-             '"","","",directed,start_vid,end_vid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_bddijkstracost',
-             'edges_sql,"",end_vids,directed,start_vid,end_vid,agg_cost',
-             '"","","",directed,start_vid,end_vid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_bddijkstracost',
-             'edges_sql,start_vids,"",directed,start_vid,end_vid,agg_cost',
-             '"","","",directed,start_vid,end_vid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_bddijkstracost',
-             'edges_sql,start_vids,end_vids,directed,start_vid,end_vid,agg_cost',
              '"","","",directed,start_vid,end_vid,agg_cost');
         push @commands, $update_command;
 
@@ -455,6 +439,17 @@ sub bddijkstra {
     }
 
     return @commands;
+}
+
+sub update_pg_proc_short {
+    my ($func_name, $new_sig) = @_;
+    my $update_command = "
+UPDATE pg_proc SET
+proargnames = '{$new_sig}'
+WHERE proname = '$func_name';
+
+    ";
+    return $update_command;
 }
 
 sub update_pg_proc {
@@ -496,24 +491,8 @@ sub withpoints {
         push @commands, $update_command;
 
         # pgr_withPointsCost
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc_short(
             'pgr_withpointscost',
-             'edges_sql,points_sql,"","",directed,driving_side,start_pid,end_pid,agg_cost',
-             '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_withpointscost',
-             'edges_sql,points_sql,"",end_pids,directed,driving_side,start_pid,end_pid,agg_cost',
-             '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_withpointscost',
-             'edges_sql,points_sql,start_pids,"",directed,driving_side,start_pid,end_pid,agg_cost',
-             '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_withpointscost',
-             'edges_sql,points_sql,start_pids,end_pids,directed,driving_side,start_pid,end_pid,agg_cost',
              '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
         push @commands, $update_command;
 
@@ -525,7 +504,7 @@ sub withpoints {
         push @commands, $update_command;
 
         # pgr_withPointsDD
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_withpointsdd',
              'edges_sql,points_sql,start_pid,distance,directed,driving_side,details,equicost,seq,start_vid,node,edge,cost,agg_cost',
              '"","","","",directed,driving_side,details,equicost,seq,start_vid,node,edge,cost,agg_cost');
@@ -563,12 +542,12 @@ sub topology {
              'edge_table,tolerance,id,the_geom,table_ending,rows_where,outall',
              '"","",id,the_geom,table_ending,rows_where,outall');
         push @commands, $update_command;
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_createverticestable',
              'edge_table,the_geom,source,target,rows_where',
              '"",the_geom,source,target,rows_where');
         push @commands, $update_command;
-        my $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc(
             'pgr_createtopology',
              'edge_table,tolerance,the_geom,id,source,target,rows_where,clean',
              '"","",the_geom,id,source,target,rows_where,clean');
@@ -654,24 +633,8 @@ sub dijkstra {
         push @commands, $update_command;
 
         # pgr_dijkstraCost
-        $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc_short(
             'pgr_dijkstracost',
-             'edges_sql,"","",directed,start_vid,end_vid,agg_cost',
-             '"","","",directed,start_vid,end_vid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_dijkstracost',
-             'edges_sql,"",end_vids,directed,start_vid,end_vid,agg_cost',
-             '"","","",directed,start_vid,end_vid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_dijkstracost',
-             'edges_sql,start_vids,"",directed,start_vid,end_vid,agg_cost',
-             '"","","",directed,start_vid,end_vid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_dijkstracost',
-             'edges_sql,start_vids,end_vids,directed,start_vid,end_vid,agg_cost',
              '"","","",directed,start_vid,end_vid,agg_cost');
         push @commands, $update_command;
 
@@ -804,24 +767,8 @@ sub astar {
         push @commands, $update_command;
 
         #pgr_astarCost
-        $update_command =  update_pg_proc(
+        $update_command =  update_pg_proc_short(
             'pgr_astarcost',
-             'edges_sql,start_vid,end_vid,directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost',
-             '"","","",directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_astarcost',
-             'edges_sql,start_vid,end_vids,directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost',
-             '"","","",directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_astarcost',
-             'edges_sql,start_vids,end_vid,directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost',
-             '"","","",directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost');
-        push @commands, $update_command;
-        $update_command =  update_pg_proc(
-            'pgr_astarcost',
-             'edges_sql,start_vids,end_vids,directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost',
              '"","","",directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost');
         push @commands, $update_command;
 
