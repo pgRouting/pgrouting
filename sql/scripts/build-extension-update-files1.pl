@@ -343,7 +343,7 @@ sub version {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
         push @commands, drop_special_case_function("pgr_version()",  $old_version, $new_version);
     }
     return @commands;
@@ -399,29 +399,29 @@ sub bddijkstra {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    push @commands, drop_special_case_function("_pgr_bddijkstra(text,anyarray,anyarray,boolean,boolean)",  $old_version, $new_version);
-    push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,anyarray,boolean)",  $old_version, $new_version);
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
+        push @commands, drop_special_case_function("_pgr_bddijkstra(text,anyarray,anyarray,boolean,boolean)",  $old_version, $new_version);
+        push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,anyarray,boolean)",  $old_version, $new_version);
         my $update_command =  update_pg_proc(
             'pgr_bddijkstra',
-             'edges_sql,start_vid,end_vid,directed,seq,path_seq,node,edge,cost,agg_cost',
-             '"","","",directed,seq,path_seq,node,edge,cost,agg_cost');
+            'edges_sql,start_vid,end_vid,directed,seq,path_seq,node,edge,cost,agg_cost',
+            '"","","",directed,seq,path_seq,node,edge,cost,agg_cost');
         push @commands, $update_command;
         $update_command =  update_pg_proc(
             'pgr_bddijkstra',
-             'edges_sql,start_vid,end_vids,directed,seq,path_seq,end_vid,node,edge,cost,agg_cost',
-             '"","","",directed,seq,path_seq,node,end_vid,edge,cost,agg_cost');
+            'edges_sql,start_vid,end_vids,directed,seq,path_seq,end_vid,node,edge,cost,agg_cost',
+            '"","","",directed,seq,path_seq,node,end_vid,edge,cost,agg_cost');
         push @commands, $update_command;
         $update_command =  update_pg_proc(
             'pgr_bddijkstra',
-             'edges_sql,start_vids,end_vid,directed,seq,path_seq,start_vid,node,edge,cost,agg_cost',
-             '"","","",directed,seq,path_seq,start_vid,node,edge,cost,agg_cost');
+            'edges_sql,start_vids,end_vid,directed,seq,path_seq,start_vid,node,edge,cost,agg_cost',
+            '"","","",directed,seq,path_seq,start_vid,node,edge,cost,agg_cost');
         push @commands, $update_command;
         $update_command =  update_pg_proc(
             'pgr_bddijkstra',
-             'edges_sql,start_vids,end_vids,directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost',
-             '"","","",directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost');
+            'edges_sql,start_vids,end_vids,directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost',
+            '"","","",directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost');
         push @commands, $update_command;
 
         # pgr_BDdijkstraCost
@@ -468,7 +468,7 @@ sub withpoints {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_withpoints',
              'edges_sql,points_sql,start_pid,end_pid,directed,driving_side,details,seq,path_seq,node,edge,cost,agg_cost',
@@ -523,7 +523,7 @@ sub drivingDistance {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
 
         push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  $old_version, $new_version);
         push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  $old_version, $new_version);
@@ -536,7 +536,7 @@ sub topology {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_nodenetwork',
              'edge_table,tolerance,id,the_geom,table_ending,rows_where,outall',
@@ -571,7 +571,7 @@ sub allpairs {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_johnson',
              'edges_sql,directed,start_vid,end_vid,agg_cost',
@@ -592,7 +592,7 @@ sub components {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
         push @commands, drop_special_case_function("pgr_connectedcomponents(text)",  $old_version, $new_version);
         push @commands, drop_special_case_function("pgr_strongcomponents(text)",  $old_version, $new_version);
         push @commands, drop_special_case_function("pgr_biconnectedcomponents(text)",  $old_version, $new_version);
@@ -608,7 +608,7 @@ sub dijkstra {
     my @commands = ();
 
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
         push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,anyarray,boolean)",  $old_version, $new_version);
 
         my $update_command =  update_pg_proc(
@@ -661,7 +661,7 @@ sub ksp {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_ksp',
              'edges_sql,start_vid,end_vid,k,directed,heap_paths,seq,path_id,path_seq,node,edge,cost,agg_cost',
@@ -714,7 +714,7 @@ sub vrp {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_vrponedepot',
              'order_sql,vehicle_sql,cost_sql,depot_id,oid,opos,vid,tarrival,tdepart',
@@ -728,7 +728,7 @@ sub bdastar {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
         #pgr_BDaStarCostMatrix
         my $update_command =  update_pg_proc(
             'pgr_bdastarcostmatrix',
@@ -744,7 +744,7 @@ sub astar {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_astar',
              'edges_sql,start_vid,end_vid,directed,heuristic,factor,epsilon,seq,path_seq,node,edge,cost,agg_cost',
@@ -790,7 +790,7 @@ sub flow {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_maxcardinalitymatch',
              'edges_sql,directed,seq,edge,source,target',
