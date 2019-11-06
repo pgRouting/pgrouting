@@ -343,7 +343,7 @@ sub version {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3|$version_2_2/ and $new_version  =~ /$version_3/) {
         push @commands, drop_special_case_function("pgr_version()",  $old_version, $new_version);
     }
     return @commands;
@@ -470,7 +470,7 @@ sub withpoints {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3|$version_2_2/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_withpoints',
              'edges_sql,points_sql,start_pid,end_pid,directed,driving_side,details,seq,path_seq,node,edge,cost,agg_cost',
@@ -525,7 +525,7 @@ sub drivingDistance {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_3/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_3|$version_2_2/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             '_pgr_drivingdistance',
              'edges_sql,start_vids,distance,directed,equicost,seq,start_v,node,edge,cost,agg_cost',
@@ -556,7 +556,7 @@ sub topology {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3|$version_2_2/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_nodenetwork',
              'edge_table,tolerance,id,the_geom,table_ending,rows_where,outall',
@@ -591,7 +591,7 @@ sub allpairs {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3|$version_2_2/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_johnson',
              'edges_sql,directed,start_vid,end_vid,agg_cost',
@@ -628,7 +628,7 @@ sub dijkstra {
     my @commands = ();
 
 
-    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3|$version_2_2/ and $new_version  =~ /$version_3/) {
         push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,anyarray,boolean)",  $old_version, $new_version);
 
         my $update_command =  update_pg_proc(
@@ -681,7 +681,7 @@ sub ksp {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3|$version_2_2/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_ksp',
              'edges_sql,start_vid,end_vid,k,directed,heap_paths,seq,path_id,path_seq,node,edge,cost,agg_cost',
@@ -734,7 +734,7 @@ sub vrp {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3/ and $new_version  =~ /$version_3/) {
+    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3|$version_2_2/ and $new_version  =~ /$version_3/) {
         my $update_command =  update_pg_proc(
             'pgr_vrponedepot',
              'order_sql,vehicle_sql,cost_sql,depot_id,oid,opos,vid,tarrival,tdepart',
