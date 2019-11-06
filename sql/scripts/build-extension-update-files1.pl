@@ -209,6 +209,7 @@ sub generate_upgrade_script {
     push @commands, drivingDistance($old_version, $new_version);
     push @commands, vrp($old_version, $new_version);
     push @commands, topology($old_version, $new_version);
+    push @commands, tsp($old_version, $new_version);
     #push @commands, underscored($old_version, $new_version);
     #push @commands, deprecated_on_2_1($old_version, $new_version);
     #push @commands, deprecated_on_2_2($old_version, $new_version);
@@ -622,6 +623,22 @@ sub components {
     return @commands;
 }
 
+
+sub tsp {
+    my ($old_version, $new_version) = @_;
+    my @commands = ();
+
+
+    if ($old_version =~ /$version_2_6|$version_2_5|$version_2_4|$version_2_3|$version_2_2/ and $new_version  =~ /$version_3/) {
+
+        my $update_command =  update_pg_proc(
+            'pgr_tsp',
+            'matrix_row_sql,start_id,end_id,max_processing_time,tries_per_temperature,max_changes_per_temperature,max_consecutive_non_changes,initial_temperature,final_temperature,cooling_factor,randomize,seq,node,cost,agg_cost',
+            '"",start_id,end_id,max_processing_time,tries_per_temperature,max_changes_per_temperature,max_consecutive_non_changes,initial_temperature,final_temperature,cooling_factor,randomize,seq,node,cost,agg_cost');
+        push @commands, $update_command;
+    }
+    return @commands;
+}
 
 sub dijkstra {
     my ($old_version, $new_version) = @_;
