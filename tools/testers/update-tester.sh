@@ -109,6 +109,24 @@ then
 fi
 
 
+DIR="sql/sigs"
+FILE="$DIR/pgrouting--$2.sig"
+
+echo "#VERSION pgrouting $2" > "$FILE"
+echo "#TYPES" >> $FILE
+psql $DB -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> $FILE
+echo "#FUNCTIONS" >> "$FILE"
+psql $DB -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> $FILE
+
+DIFF=$(git diff "$FILE")
+if [ -n "$DIFF" ]
+then
+    echo "$DIFF"
+else
+    echo "$2 sigunatures are OK"
+fi
+
+
 if [ -n "$LONG" ]
 then
     sh ./tools/testers/pg_prove_tests.sh $PGUSER $PGPORT Release

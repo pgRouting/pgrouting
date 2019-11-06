@@ -56,7 +56,16 @@ MINOR=0
 MICRO=0
 RC="-rc1"
 PREV_REL=2.6.3
-PREV_RELS="2.6.3 2.6.2 2.6.1 2.6.0 2.5.4 2.5.3 2.5.2 2.5.1 2.5.0 2.4.2 2.4.1 2.4.0 2.3.2 2.3.1 2.3.0 2.2.4 2.2.3 2.2.2 2.2.1 2.2.0 2.1.0 2.0.1 2.0.0  "
+PREV_RELS="
+    2.6.3 2.6.2 2.6.1 2.6.0
+    2.5.4 2.5.3 2.5.2 2.5.1 2.5.0
+    2.4.2 2.4.1 2.4.0
+    2.3.2 2.3.1 2.3.0
+    2.2.4 2.2.3 2.2.2 2.2.1 2.2.0"
+# These releases are not for update
+OLD_RELS="
+    2.1.0
+    2.0.1 2.0.0"
 DEBUG=$1
 BRANCH="release/$MAYOR.$MINOR"
 
@@ -117,13 +126,16 @@ else
 fi
 
 
-OLDNEWS=$(grep $PREV_REL doc/src/release_notes.rst | grep ref)
-if [[ $? != 0 ]]; then
-    error_msg "Section $PREV_REL in release_notes.rst file is missing"
-    exit 1
-else
-    echo "- [x] release_notes.rst section $PREV_REL exists"
-fi
+for r in $PREV_RELS $OLD_RELS
+do
+    OLDNEWS=$(grep $r doc/src/release_notes.rst | grep ref)
+    if [[ $? != 0 ]]; then
+        error_msg "Section $r in release_notes.rst file is missing"
+        exit 1
+    else
+        echo "- [x] release_notes.rst section $r exists"
+    fi
+done
 
 
 tools/release-scripts/notes2news.pl
@@ -221,11 +233,15 @@ echo "### Locally run the update tester"
 echo "\`\`\`"
 echo bash tools/testers/update-tester.sh
 echo "\`\`\`"
-bash tools/testers/update-tester.sh
-if [[ $? != 0 ]]; then
-    echo "FATAL on the update-tester"
-    exit 1
-fi
+
+for r in $PREV_RELS
+do
+    bash tools/testers/update-tester.sh "$r" "$MAYOR.$MINOR.$MICRO"
+    if [[ $? != 0 ]]; then
+        echo "FATAL on the update-tester"
+        exit 1
+    fi
+done
 echo - [x] completed update testing
 
 
