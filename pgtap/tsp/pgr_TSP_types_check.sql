@@ -26,7 +26,7 @@ SELECT function_returns('pgr_tsp', ARRAY[
 
 PREPARE parameters AS
 SELECT array[
-'matrix_row_sql',
+'',
 'start_id','end_id','max_processing_time',
 'tries_per_temperature',
 'max_changes_per_temperature',
