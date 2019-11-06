@@ -210,10 +210,6 @@ sub generate_upgrade_script {
     push @commands, vrp($old_version, $new_version);
     push @commands, topology($old_version, $new_version);
     push @commands, tsp($old_version, $new_version);
-    #push @commands, underscored($old_version, $new_version);
-    #push @commands, deprecated_on_2_1($old_version, $new_version);
-    #push @commands, deprecated_on_2_2($old_version, $new_version);
-    #push @commands, pgr_trsp($old_version, $new_version);
 
     #------------------------------------
     # analyze types
@@ -252,94 +248,6 @@ sub generate_upgrade_script {
 }
 
 
-sub deprecated_on_2_1 {
-    my ($old_version, $new_version) = @_;
-    my @commands = ();
-
-    # This deprecated functions from so long ago should not being used by now
-    # Dropping
-
-    # file tested for 2.4 & 2.5
-    if ($old_version =~ /$version_2_0/
-            and $new_version !~ /$version_2_0/
-            and $new_version =~ /$version_2/) {
-        push @commands,  "\n\n ------------------------------------------\n";
-        push @commands,  "--    New functions:  2.0\n";
-        push @commands,  "-- Signature change:  2.1\n";
-        push @commands,  "--       Deprecated:  2.1\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, "-- pgr_dijkstra:\n";
-        push @commands, "-- $old_version: {      sql, source_id, target_id, directed, has_reverse_cost}\n";
-        push @commands, "-- $new_version: {edges_sql, start_vid,   end_vid, directed, has_rcost}\n";
-        push @commands, drop_special_case_function("pgr_dijkstra(text,integer,integer,boolean,boolean)",  $old_version, $new_version);
-    }
-
-
-    if ($old_version =~ /$version_2_0|$version_2_1/
-            and $new_version !~ /$version_2_0|$version_2_1/
-            and $new_version =~ /$version_2/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--    New functions:  2.0\n";
-        push @commands,  "--       Deprecated:  2.1\n";
-        push @commands,  "--       Deprecated:  2.1 & 2.2\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, "-- pgr_ksp\n";
-        push @commands, "-- $old_version: {      sql, source_id, target_id, no_paths,has_reverse_cost}\n" if $old_version  =~ /$version_2_0/;
-        push @commands, "-- $old_version: {      sql, start_vid,   end_vid, k,       has_rcost}\n"        if $old_version  =~ /$version_2_1/;
-        push @commands, "-- $new_version: {edges_sql, start_vid,   end_vid, k,       has_rcost}\n";
-        push @commands, drop_special_case_function("pgr_ksp(text,integer,integer,integer,boolean)",  $old_version, $new_version);
-    }
-
-    return @commands;
-}
-
-
-
-sub deprecated_on_2_2 {
-    my ($old_version, $new_version) = @_;
-    my @commands = ();
-
-    # This deprecated functions from so long ago should not being used by now
-    # Dropping
-
-    if ($old_version =~ /$version_2_0|$version_2_1/
-            and $new_version !~ /$version_2_0|$version_2_1/
-            and $new_version =~ /$version_2/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--    New functions:  2.0\n";
-        push @commands,  "-- Signature change:  2.2\n";
-        push @commands,  "--       Deprecated:  2.2\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, "-- pgr_apspjohnson\n";
-        push @commands, "-- $old_version: {      sql}\n";
-        push @commands, "-- $new_version: {edges_sql}\n";
-        push @commands, drop_special_case_function("pgr_apspjohnson(text)", $old_version, $new_version);
-
-        push @commands, "-- pgr_apspwarshall\n";
-        push @commands, "-- $old_version: {      sql, directed, has_reverse_cost}\n";
-        push @commands, "-- $new_version: {edges_sql, directed, has_rcost}\n";
-        push @commands, drop_special_case_function("pgr_apspwarshall(text,boolean,boolean)",  $old_version, $new_version);
-
-        push @commands, "-- pgr_kdijkstrapath\n";
-        push @commands, "-- $old_version: {sql,source_vid, target_vid, directed, has_reverse_cost}\n";
-        push @commands, "-- $new_version: {sql,    source,    targets, directed, has_rcost} \n";
-        push @commands, drop_special_case_function("pgr_kdijkstrapath(text,integer,integer[],boolean,boolean)",  $old_version, $new_version);
-
-        push @commands, "-- pgr_kdijkstracost\n";
-        push @commands, "-- $old_version: {sql,source_vid, target_vid, directed, has_reverse_cost}\n";
-        push @commands, "-- $new_version: {sql,    source,    targets, directed, has_rcost} \n";
-        push @commands, drop_special_case_function("pgr_kdijkstracost(text,integer,integer[],boolean,boolean)",  $old_version, $new_version);
-    }
-
-
-    return @commands;
-}
-
-
-
 sub version {
     my ($old_version, $new_version) = @_;
     my @commands = ();
@@ -349,52 +257,6 @@ sub version {
     }
     return @commands;
 }
-
-sub pgr_trsp {
-    my ($old_version, $new_version) = @_;
-    my @commands = ();
-
-    # changes were so long ago and trsp is going to be deprecated eventually
-
-    if ($old_version =~ /$version_2_0|$version_2_1/
-            and $new_version !~ /$version_2_0|$version_2_1/
-            and $new_version =~ /$version_2/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--    New functions:  2.0\n";
-        push @commands,  "-- Signature change:  2.2\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, "-- pgr_trsp\n";
-        push @commands, "-- $old_version:  {      sql, source_vid, target_vid, directed, has_reverse_cost, turn_restrict_sql}\n";
-        push @commands, "-- $new_version:  {edges_sql,  start_vid,    end_vid, directed, has_rcost,        restrictions_sql}\n";
-        my $update_command = "
-UPDATE pg_proc SET
-proargnames = '{\"edges_sql\",\"start_vid\",\"end_vid\",\"directed\",\"has_rcost\",\"restrictions_sql\"}'
-WHERE proname = 'pgr_trsp'
-    AND proargnames = '{\"sql\",\"source_vid\",\"target_vid\",\"directed\",\"has_reverse_cost\",\"turn_restrict_sql\"}';
-";
-
-        push @commands, $update_command;
-        #push @commands, drop_special_case_function("pgr_trsp(text,integer,integer,boolean,boolean,text)",  $old_version, $new_version);
-    }
-
-    if ($old_version =~ /$version_2_1/
-            and $new_version !~ /$version_2_1/
-            and $new_version =~ /$version_2/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--    New functions:  2.0\n";
-        push @commands,  "-- Signature (types) change:  2.2\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, "-- pgr_trspviaedges\n";
-        push @commands, "-- $old_version:  {sql, eids, pcts, directed, has_reverse_cost,turn_restrict_sql} \n";
-        push @commands, "-- $new_version:  {sql, eids, pcts, directed, has_rcost,       turn_restrict_sql}\n";
-        push @commands, drop_special_case_function("pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)", $old_version, $new_version);
-    }
-
-    return @commands;
-}
-
 
 sub bddijkstra {
     my ($old_version, $new_version) = @_;
@@ -713,39 +575,6 @@ sub ksp {
 
     return @commands;
 }
-
-
-sub underscored {
-    my ($old_version, $new_version) = @_;
-    my @commands = ();
-
-    # underscored are dropped
-    # Users should not be using this functions
-
-    if ($old_version =~ /$version_2_1/ and $new_version !~ /$version_2_1/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--    New functions:  2.1\n";
-        push @commands,  "-- Signature change:  2.2\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, drop_special_case_function("_pgr_ksp(text,bigint,bigint,integer,boolean,boolean)", $old_version, $new_version);
-    }
-
-    if ($old_version =~ /$version_2_1/ and $new_version =~ /$version_2_4/) {
-        push @commands,  "\n\n------------------------------------------\n";
-        push @commands,  "--    New functions:  2.1\n";
-        push @commands,  "-- Signature change:  2.4\n";
-        push @commands,  "------------------------------------------\n";
-        push @commands, drop_special_case_function("_pgr_dijkstra(text,bigint,bigint,boolean,boolean)",    $old_version, $new_version);
-        push @commands, drop_special_case_function("_pgr_dijkstra(text,bigint,anyarray,boolean,boolean)",  $old_version, $new_version);
-        push @commands, drop_special_case_function("_pgr_dijkstra(text,anyarray,bigint,boolean,boolean)",  $old_version, $new_version);
-        push @commands, drop_special_case_function("_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean)",$old_version, $new_version);
-    }
-
-
-    return @commands;
-}
-
 
 sub vrp {
     my ($old_version, $new_version) = @_;
