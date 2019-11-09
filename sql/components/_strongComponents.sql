@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION _pgr_strongComponents(
     edges_sql TEXT,
 
-    OUT seq INTEGER,
+    OUT seq BIGINT,
     OUT component BIGINT,
     OUT node BIGINT)
 

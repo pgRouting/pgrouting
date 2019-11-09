@@ -9,8 +9,8 @@ export OS_BUILD=64
 export PG_VER=11
 export PGSQL_VERSION=110
 export PGPORT=5411
-export GEOS_VER=3.7.0dev
-export GDAL_VER=2.2
+export GEOS_VER=3.8
+export GDAL_VER=2.3
 export PROJECTS=${JENKINS_HOME}/workspace
 export PGPATH=${PROJECTS}/pg/rel/pg${PG_VER}w${OS_BUILD}
 export PGDATA=${PGPATH}/data_${PGPORT}
@@ -18,7 +18,7 @@ export PGDATABASE=postgres
 export PGUSER=postgres
 export LD_LIBRARY_PATH="${PROJECTS}/gdal/rel-${GDAL_VER}w${OS_BUILD}/lib:${PROJECTS}/geos/rel-${GEOS_VER}w${OS_BUILD}/lib:${PGPATH}/lib"
 export PATH="${PATH}:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
-export POSTGIS_VER=2.5.0dev
+export POSTGIS_VER=3.1.0dev
 
 #---
 # start the pg sever

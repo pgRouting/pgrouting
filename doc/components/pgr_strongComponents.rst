@@ -21,7 +21,11 @@ pgr_strongComponents
 
 * Version 3.0.0
 
-  * Return columns change: ``n_seq`` is removed
+  * Return columns change:
+
+    *  ``n_seq`` is removed
+    * ``seq`` changed type to ``BIGINT``
+
   * **Official** function
 
 * Version 2.5.0

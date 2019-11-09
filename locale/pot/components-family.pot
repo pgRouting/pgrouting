@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -217,8 +217,14 @@ msgid "**seq**"
 msgstr ""
 
 #: ../../build/doc/pgr_connectedComponents.rst:8
+#: ../../build/doc/pgr_connectedComponents.rst:9
+#: ../../build/doc/pgr_connectedComponents.rst:10
 #: ../../build/doc/pgr_biconnectedComponents.rst:8
-msgid "``INT``"
+#: ../../build/doc/pgr_biconnectedComponents.rst:9
+#: ../../build/doc/pgr_biconnectedComponents.rst:10
+#: ../../build/doc/pgr_articulationPoints.rst:8
+#: ../../build/doc/pgr_bridges.rst:8
+msgid "``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/pgr_connectedComponents.rst:8
@@ -229,15 +235,6 @@ msgstr ""
 #: ../../build/doc/pgr_connectedComponents.rst:9
 #: ../../build/doc/pgr_biconnectedComponents.rst:9
 msgid "**component**"
-msgstr ""
-
-#: ../../build/doc/pgr_connectedComponents.rst:9
-#: ../../build/doc/pgr_connectedComponents.rst:10
-#: ../../build/doc/pgr_biconnectedComponents.rst:9
-#: ../../build/doc/pgr_biconnectedComponents.rst:10
-#: ../../build/doc/pgr_articulationPoints.rst:8
-#: ../../build/doc/pgr_bridges.rst:8
-msgid "``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/pgr_connectedComponents.rst:9
