@@ -30,7 +30,7 @@
 #include <boost/geometry/algorithms/detail/distance/segment_to_segment.hpp>
 #include <boost/geometry/algorithms/detail/distance/segment_to_box.hpp>
 #include <boost/geometry/algorithms/detail/distance/box_to_box.hpp>
-#include <boost/geometry/algorithms/detail/distance/backward_compatibility.hpp>
+// #include <boost/geometry/algorithms/detail/distance/backward_compatibility.hpp>
 #else
 #include <boost/bgeometry/algorithms/detail/distance/point_to_geometry.hpp>
 #include <boost/bgeometry/algorithms/detail/distance/multipoint_to_geometry.hpp>
@@ -40,7 +40,7 @@
 #include <boost/bgeometry/algorithms/detail/distance/segment_to_segment.hpp>
 #include <boost/bgeometry/algorithms/detail/distance/segment_to_box.hpp>
 #include <boost/bgeometry/algorithms/detail/distance/box_to_box.hpp>
-#include <boost/bgeometry/algorithms/detail/distance/backward_compatibility.hpp>
+// #include <boost/bgeometry/algorithms/detail/distance/backward_compatibility.hpp>
 #endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_IMPLEMENTATION_HPP
