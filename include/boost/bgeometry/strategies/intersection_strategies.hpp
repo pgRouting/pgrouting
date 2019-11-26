@@ -17,9 +17,9 @@
 #if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/geometries/segment.hpp>
-// #include <boost/geometry/policies/relate/intersection_points.hpp>
-// #include <boost/geometry/policies/relate/direction.hpp>
-// #include <boost/geometry/policies/relate/tupled.hpp>
+#include <boost/geometry/policies/relate/intersection_points.hpp>
+#include <boost/geometry/policies/relate/direction.hpp>
+#include <boost/geometry/policies/relate/tupled.hpp>
 #include <boost/geometry/strategies/intersection.hpp>
 #include <boost/geometry/strategies/intersection_result.hpp>
 #include <boost/geometry/strategies/side.hpp>
@@ -31,9 +31,9 @@
 #else
 #include <boost/bgeometry/core/point_type.hpp>
 #include <boost/bgeometry/geometries/segment.hpp>
-// #include <boost/bgeometry/policies/relate/intersection_points.hpp>
-// #include <boost/bgeometry/policies/relate/direction.hpp>
-// #include <boost/bgeometry/policies/relate/tupled.hpp>
+#include <boost/bgeometry/policies/relate/intersection_points.hpp>
+#include <boost/bgeometry/policies/relate/direction.hpp>
+#include <boost/bgeometry/policies/relate/tupled.hpp>
 #include <boost/bgeometry/strategies/intersection.hpp>
 #include <boost/bgeometry/strategies/intersection_result.hpp>
 #include <boost/bgeometry/strategies/side.hpp>
