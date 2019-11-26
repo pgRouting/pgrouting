@@ -23,23 +23,23 @@
 // the implementation details
 #if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/distance/point_to_geometry.hpp>
-#include <boost/geometry/algorithms/detail/distance/multipoint_to_geometry.hpp>
-#include <boost/geometry/algorithms/detail/distance/linear_to_linear.hpp>
-#include <boost/geometry/algorithms/detail/distance/linear_or_areal_to_areal.hpp>
-#include <boost/geometry/algorithms/detail/distance/geometry_to_segment_or_box.hpp>
-#include <boost/geometry/algorithms/detail/distance/segment_to_segment.hpp>
-#include <boost/geometry/algorithms/detail/distance/segment_to_box.hpp>
-#include <boost/geometry/algorithms/detail/distance/box_to_box.hpp>
+// #include <boost/geometry/algorithms/detail/distance/multipoint_to_geometry.hpp>
+// #include <boost/geometry/algorithms/detail/distance/linear_to_linear.hpp>
+// #include <boost/geometry/algorithms/detail/distance/linear_or_areal_to_areal.hpp>
+// #include <boost/geometry/algorithms/detail/distance/geometry_to_segment_or_box.hpp>
+// #include <boost/geometry/algorithms/detail/distance/segment_to_segment.hpp>
+// #include <boost/geometry/algorithms/detail/distance/segment_to_box.hpp>
+// #include <boost/geometry/algorithms/detail/distance/box_to_box.hpp>
 // #include <boost/geometry/algorithms/detail/distance/backward_compatibility.hpp>
 #else
 #include <boost/bgeometry/algorithms/detail/distance/point_to_geometry.hpp>
-#include <boost/bgeometry/algorithms/detail/distance/multipoint_to_geometry.hpp>
-#include <boost/bgeometry/algorithms/detail/distance/linear_to_linear.hpp>
-#include <boost/bgeometry/algorithms/detail/distance/linear_or_areal_to_areal.hpp>
-#include <boost/bgeometry/algorithms/detail/distance/geometry_to_segment_or_box.hpp>
-#include <boost/bgeometry/algorithms/detail/distance/segment_to_segment.hpp>
-#include <boost/bgeometry/algorithms/detail/distance/segment_to_box.hpp>
-#include <boost/bgeometry/algorithms/detail/distance/box_to_box.hpp>
+// #include <boost/bgeometry/algorithms/detail/distance/multipoint_to_geometry.hpp>
+// #include <boost/bgeometry/algorithms/detail/distance/linear_to_linear.hpp>
+// #include <boost/bgeometry/algorithms/detail/distance/linear_or_areal_to_areal.hpp>
+// #include <boost/bgeometry/algorithms/detail/distance/geometry_to_segment_or_box.hpp>
+// #include <boost/bgeometry/algorithms/detail/distance/segment_to_segment.hpp>
+// #include <boost/bgeometry/algorithms/detail/distance/segment_to_box.hpp>
+// #include <boost/bgeometry/algorithms/detail/distance/box_to_box.hpp>
 // #include <boost/bgeometry/algorithms/detail/distance/backward_compatibility.hpp>
 #endif
 
