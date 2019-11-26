@@ -38,7 +38,7 @@
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/select_coordinate_type.hpp>
 #include <boost/geometry/util/select_most_precise.hpp>
-#include <boost/geometry/algorithms/detail/equals/collect_vectors.hpp>
+// #include <boost/geometry/algorithms/detail/equals/collect_vectors.hpp>
 #include <boost/geometry/algorithms/detail/equals/interface.hpp>
 #include <boost/geometry/algorithms/detail/relate/relate_impl.hpp>
 #include <boost/geometry/algorithms/relate.hpp>
@@ -53,7 +53,7 @@
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/util/select_coordinate_type.hpp>
 #include <boost/bgeometry/util/select_most_precise.hpp>
-#include <boost/bgeometry/algorithms/detail/equals/collect_vectors.hpp>
+// #include <boost/bgeometry/algorithms/detail/equals/collect_vectors.hpp>
 #include <boost/bgeometry/algorithms/detail/equals/interface.hpp>
 #include <boost/bgeometry/algorithms/detail/relate/relate_impl.hpp>
 #include <boost/bgeometry/algorithms/relate.hpp>
