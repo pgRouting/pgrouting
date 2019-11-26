@@ -30,7 +30,7 @@
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/promote_integral.hpp>
 #include <boost/geometry/util/select_calculation_type.hpp>
-#include <boost/geometry/strategies/agnostic/point_in_poly_winding.hpp>
+// #include <boost/geometry/strategies/agnostic/point_in_poly_winding.hpp>
 #include <boost/geometry/strategies/cartesian/area_surveyor.hpp>
 #include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
 #include <boost/geometry/strategies/cartesian/envelope_segment.hpp>
@@ -55,7 +55,7 @@
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/util/promote_integral.hpp>
 #include <boost/bgeometry/util/select_calculation_type.hpp>
-#include <boost/bgeometry/strategies/agnostic/point_in_poly_winding.hpp>
+// #include <boost/bgeometry/strategies/agnostic/point_in_poly_winding.hpp>
 #include <boost/bgeometry/strategies/cartesian/area_surveyor.hpp>
 #include <boost/bgeometry/strategies/cartesian/distance_pythagoras.hpp>
 #include <boost/bgeometry/strategies/cartesian/envelope_segment.hpp>
