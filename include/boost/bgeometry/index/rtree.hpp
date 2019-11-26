@@ -22,17 +22,17 @@
 // Boost.Geometry
 #if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/comparable_distance/interface.hpp>
-#include <boost/geometry/algorithms/detail/covered_by/interface.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/interface.hpp>
-#include <boost/geometry/algorithms/detail/equals/interface.hpp>
+// #include <boost/geometry/algorithms/detail/covered_by/interface.hpp>
+// #include <boost/geometry/algorithms/detail/disjoint/interface.hpp>
+// #include <boost/geometry/algorithms/detail/equals/interface.hpp>
 #include <boost/geometry/algorithms/detail/intersects/interface.hpp>
 #include <boost/geometry/algorithms/detail/overlaps/interface.hpp>
 #include <boost/geometry/algorithms/detail/touches/interface.hpp>
-#include <boost/geometry/algorithms/detail/within/interface.hpp>
+// #include <boost/geometry/algorithms/detail/within/interface.hpp>
 #include <boost/geometry/algorithms/centroid.hpp>
 
 #include <boost/geometry/geometries/point.hpp>
-#include <boost/geometry/geometries/box.hpp>
+// #include <boost/geometry/geometries/box.hpp>
 
 // Boost.Geometry.Index
 #include <boost/geometry/index/detail/config_begin.hpp>
@@ -67,7 +67,7 @@
 #include <boost/geometry/index/detail/rtree/visitors/count.hpp>
 #include <boost/geometry/index/detail/rtree/visitors/children_box.hpp>
 
-#include <boost/geometry/index/detail/rtree/linear/linear.hpp>
+// #include <boost/geometry/index/detail/rtree/linear/linear.hpp>
 // #include <boost/geometry/index/detail/rtree/quadratic/quadratic.hpp>
 #include <boost/geometry/index/detail/rtree/rstar/rstar.hpp>
 //#include <boost/geometry/extensions/index/detail/rtree/kmeans/kmeans.hpp>
@@ -83,22 +83,17 @@
 
 #ifdef BOOST_GEOMETRY_INDEX_DETAIL_EXPERIMENTAL
 // serialization
-#include <boost/geometry/index/detail/serialization.hpp>
+// #include <boost/geometry/index/detail/serialization.hpp>
 #endif
 
 #else
 #include <boost/bgeometry/algorithms/detail/comparable_distance/interface.hpp>
-#include <boost/bgeometry/algorithms/detail/covered_by/interface.hpp>
-#include <boost/bgeometry/algorithms/detail/disjoint/interface.hpp>
-#include <boost/bgeometry/algorithms/detail/equals/interface.hpp>
 #include <boost/bgeometry/algorithms/detail/intersects/interface.hpp>
 #include <boost/bgeometry/algorithms/detail/overlaps/interface.hpp>
 #include <boost/bgeometry/algorithms/detail/touches/interface.hpp>
-#include <boost/bgeometry/algorithms/detail/within/interface.hpp>
 #include <boost/bgeometry/algorithms/centroid.hpp>
 
 #include <boost/bgeometry/geometries/point.hpp>
-#include <boost/bgeometry/geometries/box.hpp>
 
 // Boost.Geometry.Index
 #include <boost/bgeometry/index/detail/config_begin.hpp>
@@ -133,10 +128,7 @@
 #include <boost/bgeometry/index/detail/rtree/visitors/count.hpp>
 #include <boost/bgeometry/index/detail/rtree/visitors/children_box.hpp>
 
-#include <boost/bgeometry/index/detail/rtree/linear/linear.hpp>
-//#include <boost/bgeometry/index/detail/rtree/quadratic/quadratic.hpp>
 #include <boost/bgeometry/index/detail/rtree/rstar/rstar.hpp>
-//#include <boost/geometry/extensions/index/detail/rtree/kmeans/kmeans.hpp>
 
 #include <boost/bgeometry/index/detail/rtree/pack_create.hpp>
 
@@ -149,7 +141,6 @@
 
 #ifdef BOOST_GEOMETRY_INDEX_DETAIL_EXPERIMENTAL
 // serialization
-// #include <boost/bgeometry/index/detail/serialization.hpp>
 #endif
 
 #endif
