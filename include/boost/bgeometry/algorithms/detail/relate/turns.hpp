@@ -20,14 +20,14 @@
 #include <boost/geometry/algorithms/detail/overlay/do_reverse.hpp>
 #include <boost/geometry/algorithms/detail/overlay/get_turns.hpp>
 #include <boost/geometry/algorithms/detail/overlay/get_turn_info.hpp>
-#include <boost/geometry/policies/robustness/get_rescale_policy.hpp>
+// #include <boost/geometry/policies/robustness/get_rescale_policy.hpp>
 #include <boost/geometry/policies/robustness/no_rescale_policy.hpp>
 #else
 #include <boost/bgeometry/strategies/distance.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/do_reverse.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/get_turns.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/get_turn_info.hpp>
-#include <boost/bgeometry/policies/robustness/get_rescale_policy.hpp>
+// #include <boost/bgeometry/policies/robustness/get_rescale_policy.hpp>
 #include <boost/bgeometry/policies/robustness/no_rescale_policy.hpp>
 #endif
 #include <boost/type_traits/is_base_of.hpp>
@@ -90,6 +90,7 @@ struct get_turns
         apply(turns, geometry1, geometry2, interrupt_policy, intersection_strategy);
     }
 
+#if 0
     template <typename Turns, typename InterruptPolicy, typename IntersectionStrategy>
     static inline void apply(Turns & turns,
                              Geometry1 const& geometry1,
@@ -104,6 +105,7 @@ struct get_turns
 
         apply(turns, geometry1, geometry2, interrupt_policy, intersection_strategy, robust_policy);
     }
+#endif
 
     template <typename Turns, typename InterruptPolicy, typename IntersectionStrategy>
     static inline void apply(Turns & turns,
