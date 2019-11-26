@@ -100,6 +100,7 @@ struct cartesian_segments
         return side_strategy_type();
     }
 
+#if 0
     template <typename Geometry1, typename Geometry2>
     struct point_in_geometry_strategy
     {
@@ -122,6 +123,7 @@ struct cartesian_segments
             >::type strategy_type;
         return strategy_type();
     }
+#endif
 
     template <typename Geometry>
     struct area_strategy
