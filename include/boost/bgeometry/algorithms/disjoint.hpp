@@ -23,10 +23,10 @@
 
 #if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/disjoint/interface.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/implementation.hpp>
+// #include <boost/geometry/algorithms/detail/disjoint/implementation.hpp>
 #else
 #include <boost/bgeometry/algorithms/detail/disjoint/interface.hpp>
-#include <boost/bgeometry/algorithms/detail/disjoint/implementation.hpp>
+// #include <boost/bgeometry/algorithms/detail/disjoint/implementation.hpp>
 #endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DISJOINT_HPP

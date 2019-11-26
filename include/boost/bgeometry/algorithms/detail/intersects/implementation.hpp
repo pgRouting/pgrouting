@@ -24,7 +24,7 @@
 #include <deque>
 #if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/intersects/interface.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/implementation.hpp>
+// #include <boost/geometry/algorithms/detail/disjoint/implementation.hpp>
 #include <boost/geometry/algorithms/detail/overlay/self_turn_points.hpp>
 #include <boost/geometry/policies/disjoint_interrupt_policy.hpp>
 #include <boost/geometry/policies/robustness/no_rescale_policy.hpp>
@@ -32,7 +32,7 @@
 #include <boost/geometry/strategies/relate.hpp>
 #else
 #include <boost/bgeometry/algorithms/detail/intersects/interface.hpp>
-#include <boost/bgeometry/algorithms/detail/disjoint/implementation.hpp>
+// #include <boost/bgeometry/algorithms/detail/disjoint/implementation.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/self_turn_points.hpp>
 #include <boost/bgeometry/policies/disjoint_interrupt_policy.hpp>
 #include <boost/bgeometry/policies/robustness/no_rescale_policy.hpp>
