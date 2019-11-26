@@ -34,7 +34,7 @@
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/geometries/helper_geometry.hpp>
-#include <boost/geometry/formulas/vertex_latitude.hpp>
+//#include <boost/geometry/formulas/vertex_latitude.hpp>
 #include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
 #include <boost/geometry/algorithms/detail/envelope/point.hpp>
 #include <boost/geometry/algorithms/detail/envelope/transform_units.hpp>
@@ -51,7 +51,7 @@
 #include <boost/bgeometry/core/tags.hpp>
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/geometries/helper_geometry.hpp>
-#include <boost/bgeometry/formulas/vertex_latitude.hpp>
+//#include <boost/bgeometry/formulas/vertex_latitude.hpp>
 #include <boost/bgeometry/algorithms/detail/assign_indexed_point.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/point.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/transform_units.hpp>
@@ -66,6 +66,7 @@ namespace boost { namespace geometry
 namespace detail { namespace envelope
 {
 
+#if 0
 template <typename CalculationType, typename CS_Tag>
 struct envelope_segment_call_vertex_latitude
 {
@@ -91,6 +92,7 @@ struct envelope_segment_call_vertex_latitude<CalculationType, geographic_tag>
             ::apply(lat1, alp1, strategy.model());
     }
 };
+#endif
 
 template <typename CS_Tag>
 class envelope_segment_impl
@@ -136,6 +138,7 @@ private:
         return math::abs(lon1 - lon2) > constants::half_period(); // > pi
     }
 
+#if 0
     // degrees or radians
     template <typename Units, typename CalculationType, typename Strategy>
     static inline void compute_box_corners(CalculationType& lon1,
@@ -197,6 +200,7 @@ private:
             }
         }
     }
+#endif
 
     template <typename Units, typename CalculationType>
     static inline void special_cases(CalculationType& lon1,
@@ -304,6 +308,7 @@ private:
     }
 
 
+#if 0
     template <typename Units, typename CalculationType, typename Strategy>
     static inline void apply(CalculationType& lon1,
                              CalculationType& lat1,
@@ -343,6 +348,7 @@ private:
 
         compute_box_corners<Units>(lon1, lat1, lon2, lat2, alp1, alp2, strategy);
     }
+#endif
 
 public:
     template
