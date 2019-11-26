@@ -37,7 +37,7 @@
 #include <boost/geometry/util/select_coordinate_type.hpp>
 #include <boost/geometry/strategies/compare.hpp>
 #include <boost/geometry/policies/compare.hpp>
-#include <boost/geometry/algorithms/detail/normalize.hpp>
+// #include <boost/geometry/algorithms/detail/normalize.hpp>
 #include <boost/geometry/algorithms/detail/envelope/transform_units.hpp>
 #include <boost/geometry/algorithms/dispatch/expand.hpp>
 #else
@@ -50,7 +50,7 @@
 #include <boost/bgeometry/util/select_coordinate_type.hpp>
 #include <boost/bgeometry/strategies/compare.hpp>
 #include <boost/bgeometry/policies/compare.hpp>
-#include <boost/bgeometry/algorithms/detail/normalize.hpp>
+// #include <boost/bgeometry/algorithms/detail/normalize.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/transform_units.hpp>
 #include <boost/bgeometry/algorithms/dispatch/expand.hpp>
 #endif
@@ -128,6 +128,7 @@ struct point_loop
 };
 
 
+#if 0
 // implementation for the spherical equatorial and geographic coordinate systems
 template
 <
@@ -243,6 +244,7 @@ struct point_loop_on_spheroid
             >::apply(box, point, strategy);
     }
 };
+#endif
 
 
 }} // namespace detail::expand
@@ -276,6 +278,7 @@ struct expand
                          (types<CSTagOut, CSTag>()));
 };
 
+#if 0
 template
 <
     typename BoxOut, typename Point,
@@ -309,6 +312,7 @@ struct expand
             StrategyLess, StrategyGreater, dimension<Point>::value
         >
 {};
+#endif
 
 } // namespace dispatch
 #endif // DOXYGEN_NO_DISPATCH

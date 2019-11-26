@@ -66,7 +66,9 @@ struct segment
             >::apply(p[0], p[1], mbrs[0], strategy);
 
         // normalize the box
+#if 0
         detail::envelope::envelope_box_on_spheroid::apply(box, mbrs[1], strategy);
+#endif
 
         // compute the envelope of the two boxes
         detail::envelope::envelope_range_of_boxes::apply(mbrs, box, strategy);

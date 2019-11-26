@@ -38,7 +38,7 @@
 #include <boost/geometry/strategies/strategy_transform.hpp>
 #include <boost/geometry/geometries/helper_geometry.hpp>
 #include <boost/geometry/algorithms/transform.hpp>
-#include <boost/geometry/algorithms/detail/normalize.hpp>
+// #include <boost/geometry/algorithms/detail/normalize.hpp>
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
 #else
 #include <boost/bgeometry/core/access.hpp>
@@ -53,7 +53,7 @@
 #include <boost/bgeometry/strategies/strategy_transform.hpp>
 #include <boost/bgeometry/geometries/helper_geometry.hpp>
 #include <boost/bgeometry/algorithms/transform.hpp>
-#include <boost/bgeometry/algorithms/detail/normalize.hpp>
+// #include <boost/bgeometry/algorithms/detail/normalize.hpp>
 #include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
 #endif
 
@@ -99,6 +99,7 @@ struct point_point_generic<DimensionCount, DimensionCount>
 };
 
 
+#if 0
 class point_point_on_spheroid
 {
 private:
@@ -173,6 +174,7 @@ public:
             >::apply(point1, point2);
     }
 };
+#endif
 
 
 template
@@ -186,6 +188,7 @@ struct point_point
     : point_point<Point1, Point2, Dimension, DimensionCount, cartesian_tag>
 {};
 
+#if 0
 template
 <
     typename Point1, typename Point2,
@@ -207,6 +210,7 @@ struct point_point
         Point1, Point2, Dimension, DimensionCount, geographic_tag
     > : point_point_on_spheroid
 {};
+#endif
 
 template
 <

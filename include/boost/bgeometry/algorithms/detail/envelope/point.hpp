@@ -27,7 +27,7 @@
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/views/detail/indexed_point_view.hpp>
 #include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
-#include <boost/geometry/algorithms/detail/normalize.hpp>
+// #include <boost/geometry/algorithms/detail/normalize.hpp>
 #include <boost/geometry/algorithms/detail/envelope/transform_units.hpp>
 #include <boost/geometry/algorithms/dispatch/envelope.hpp>
 #else
@@ -38,7 +38,7 @@
 #include <boost/bgeometry/core/tags.hpp>
 #include <boost/bgeometry/views/detail/indexed_point_view.hpp>
 #include <boost/bgeometry/algorithms/detail/convert_point_to_point.hpp>
-#include <boost/bgeometry/algorithms/detail/normalize.hpp>
+// #include <boost/bgeometry/algorithms/detail/normalize.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/transform_units.hpp>
 #include <boost/bgeometry/algorithms/dispatch/envelope.hpp>
 #endif
@@ -77,6 +77,7 @@ struct envelope_one_point
 };
 
 
+#if 0
 struct envelope_point_on_spheroid
 {
     template<typename Point, typename Box, typename Strategy>
@@ -101,6 +102,7 @@ struct envelope_point_on_spheroid
             >::apply(normalized_point, mbr, strategy);
     }
 };
+#endif
 
 
 }} // namespace detail::envelope
@@ -117,6 +119,7 @@ struct envelope<Point, point_tag, CS_Tag>
 {};
 
 
+#if 0
 template <typename Point>
 struct envelope<Point, point_tag, spherical_equatorial_tag>
     : detail::envelope::envelope_point_on_spheroid
@@ -127,7 +130,7 @@ template <typename Point>
 struct envelope<Point, point_tag, geographic_tag>
     : detail::envelope::envelope_point_on_spheroid
 {};
-
+#endif
 
 } // namespace dispatch
 #endif // DOXYGEN_NO_DISPATCH

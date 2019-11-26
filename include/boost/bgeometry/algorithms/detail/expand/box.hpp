@@ -49,6 +49,7 @@ namespace detail { namespace expand
 {
 
 
+#if 0
 struct box_on_spheroid
 {
     template <typename BoxOut, typename BoxIn, typename Strategy>
@@ -65,6 +66,7 @@ struct box_on_spheroid
         detail::envelope::envelope_range_of_boxes::apply(mbrs, box_out, strategy);
     }
 };
+#endif
 
 
 }} // namespace detail::expand
@@ -98,6 +100,7 @@ struct expand
                          (types<CSTagOut, CSTag>()));
 };
 
+#if 0
 template
 <
     typename BoxOut, typename BoxIn,
@@ -125,7 +128,7 @@ struct expand
         geographic_tag, geographic_tag
     > : detail::expand::box_on_spheroid
 {};
-
+#endif
 
 } // namespace dispatch
 #endif // DOXYGEN_NO_DISPATCH

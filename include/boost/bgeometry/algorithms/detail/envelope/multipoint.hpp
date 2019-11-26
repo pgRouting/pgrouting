@@ -29,7 +29,7 @@
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/range.hpp>
 #include <boost/geometry/geometries/helper_geometry.hpp>
-#include <boost/geometry/algorithms/detail/normalize.hpp>
+// #include <boost/geometry/algorithms/detail/normalize.hpp>
 #include <boost/geometry/algorithms/detail/envelope/box.hpp>
 #include <boost/geometry/algorithms/detail/envelope/initialize.hpp>
 #include <boost/geometry/algorithms/detail/envelope/range.hpp>
@@ -44,7 +44,7 @@
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/util/range.hpp>
 #include <boost/bgeometry/geometries/helper_geometry.hpp>
-#include <boost/bgeometry/algorithms/detail/normalize.hpp>
+// #include <boost/bgeometry/algorithms/detail/normalize.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/box.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/initialize.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/range.hpp>
@@ -61,6 +61,7 @@ namespace detail { namespace envelope
 {
 
 
+#if 0
 class envelope_multipoint_on_spheroid
 {
 private:
@@ -355,6 +356,7 @@ public:
         }
     }
 };
+#endif
 
 
 }} // namespace detail::envelope
@@ -372,6 +374,7 @@ struct envelope<MultiPoint, multi_point_tag, CSTag>
     : detail::envelope::envelope_range
 {};
 
+#if 0
 template <typename MultiPoint>
 struct envelope<MultiPoint, multi_point_tag, spherical_equatorial_tag>
     : detail::envelope::envelope_multipoint_on_spheroid
@@ -381,7 +384,7 @@ template <typename MultiPoint>
 struct envelope<MultiPoint, multi_point_tag, geographic_tag>
     : detail::envelope::envelope_multipoint_on_spheroid
 {};
-
+#endif
 
 } // namespace dispatch
 #endif // DOXYGEN_NO_DISPATCH
