@@ -39,7 +39,7 @@
 #include <boost/geometry/algorithms/assign.hpp>
 #include <boost/geometry/algorithms/covered_by.hpp>
 #include <boost/geometry/algorithms/within.hpp>
-#include <boost/geometry/algorithms/detail/closest_feature/geometry_to_range.hpp>
+// #include <boost/geometry/algorithms/detail/closest_feature/geometry_to_range.hpp>
 #include <boost/geometry/algorithms/detail/closest_feature/point_to_range.hpp>
 #include <boost/geometry/algorithms/detail/distance/is_comparable.hpp>
 #include <boost/geometry/algorithms/detail/distance/iterator_selector.hpp>
@@ -57,7 +57,7 @@
 #include <boost/bgeometry/algorithms/assign.hpp>
 #include <boost/bgeometry/algorithms/covered_by.hpp>
 #include <boost/bgeometry/algorithms/within.hpp>
-#include <boost/bgeometry/algorithms/detail/closest_feature/geometry_to_range.hpp>
+// #include <boost/bgeometry/algorithms/detail/closest_feature/geometry_to_range.hpp>
 #include <boost/bgeometry/algorithms/detail/closest_feature/point_to_range.hpp>
 #include <boost/bgeometry/algorithms/detail/distance/is_comparable.hpp>
 #include <boost/bgeometry/algorithms/detail/distance/iterator_selector.hpp>
@@ -263,6 +263,7 @@ public:
 };
 
 
+#if 0
 template
 <
     typename Point,
@@ -356,6 +357,7 @@ struct point_to_multigeometry<Point, MultiPolygon, Strategy, true>
             >::apply(point, multipolygon, strategy);
     }
 };
+#endif
 
 
 }} // namespace detail::distance
@@ -459,6 +461,7 @@ struct distance
 };
 
 
+#if 0
 template<typename Point, typename MultiPoint, typename Strategy>
 struct distance
     <
@@ -469,7 +472,6 @@ struct distance
             Point, MultiPoint, Strategy
         >
 {};
-
 
 template<typename Point, typename MultiLinestring, typename Strategy>
 struct distance
@@ -493,6 +495,7 @@ struct distance
             Point, MultiPolygon, Strategy
         >
 {};
+#endif
 
 
 template <typename Point, typename Linear, typename Strategy>
