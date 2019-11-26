@@ -18,17 +18,14 @@
 #include <boost/range.hpp>
 #include <boost/mpl/assert.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/geometries/box.hpp>
-
 #include <boost/geometry/iterators/segment_iterator.hpp>
-
 #include <boost/geometry/algorithms/envelope.hpp>
 #include <boost/geometry/algorithms/expand.hpp>
-
 #include <boost/geometry/algorithms/detail/check_iterator_range.hpp>
 #include <boost/geometry/algorithms/detail/partition.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
@@ -37,8 +34,25 @@
 #include <boost/geometry/algorithms/detail/disjoint/point_point.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/point_geometry.hpp>
 #include <boost/geometry/algorithms/detail/relate/less.hpp>
-
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/geometries/box.hpp>
+#include <boost/bgeometry/iterators/segment_iterator.hpp>
+#include <boost/bgeometry/algorithms/envelope.hpp>
+#include <boost/bgeometry/algorithms/expand.hpp>
+#include <boost/bgeometry/algorithms/detail/check_iterator_range.hpp>
+#include <boost/bgeometry/algorithms/detail/partition.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/box_box.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/multirange_geometry.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/point_box.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/point_point.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/point_geometry.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/less.hpp>
+#include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -260,7 +274,7 @@ public:
         typedef typename point_type<MultiPoint>::type point1_type;
         typedef typename point_type<SingleGeometry>::type point2_type;
         typedef model::box<point2_type> box2_type;
-        
+
         box2_type box2;
         geometry::envelope(single_geometry, box2, strategy.get_envelope_strategy());
         geometry::detail::expand_by_epsilon(box2);
@@ -377,7 +391,7 @@ public:
 
         typename Strategy::envelope_strategy_type const
             envelope_strategy = strategy.get_envelope_strategy();
-        
+
         std::size_t count2 = boost::size(multi_geometry);
         std::vector<box_pair_type> boxes(count2);
         for (std::size_t i = 0 ; i < count2 ; ++i)
@@ -478,7 +492,7 @@ struct disjoint
                 <
                     MultiPoint2, MultiPoint1
                 >::apply(multipoint2, multipoint1);
-        } 
+        }
 
         return detail::disjoint::multipoint_multipoint
             <

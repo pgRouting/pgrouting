@@ -14,17 +14,27 @@
 
 #include <boost/numeric/conversion/cast.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/core/coordinate_system.hpp>
 #include <boost/geometry/core/coordinate_type.hpp>
 #include <boost/geometry/core/cs.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/util/normalize_spheroidal_coordinates.hpp>
 #include <boost/geometry/util/normalize_spheroidal_box_coordinates.hpp>
-
 #include <boost/geometry/views/detail/indexed_point_view.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/coordinate_system.hpp>
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/util/normalize_spheroidal_coordinates.hpp>
+#include <boost/bgeometry/util/normalize_spheroidal_box_coordinates.hpp>
+#include <boost/bgeometry/views/detail/indexed_point_view.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -120,6 +130,7 @@ struct assign_loop<1, DimensionCount>
 };
 
 
+#if 0
 template <typename PointIn, typename PointOut>
 struct normalize_point
 {
@@ -142,8 +153,10 @@ struct normalize_point
             >::apply(longitude, latitude, point_in, point_out);
     }
 };
+#endif
 
 
+#if 0
 template <typename BoxIn, typename BoxOut>
 class normalize_box
 {
@@ -203,6 +216,7 @@ public:
             >(lon_min, lat_min, lon_max, lat_max, box_in, box_out);
     }
 };
+#endif
 
 
 }} // namespace detail::normalization
@@ -225,6 +239,7 @@ struct normalize : detail::normalization::do_nothing
 {};
 
 
+#if 0
 template <typename PointIn, typename PointOut>
 struct normalize
     <
@@ -232,16 +247,19 @@ struct normalize
         spherical_equatorial_tag, spherical_equatorial_tag
     > : detail::normalization::normalize_point<PointIn, PointOut>
 {};
+#endif
 
-
+#if 0
 template <typename PointIn, typename PointOut>
 struct normalize
     <
         PointIn, PointOut, point_tag, point_tag, geographic_tag, geographic_tag
     > : detail::normalization::normalize_point<PointIn, PointOut>
 {};
+#endif
 
 
+#if 0
 template <typename BoxIn, typename BoxOut>
 struct normalize
     <
@@ -249,14 +267,16 @@ struct normalize
         spherical_equatorial_tag, spherical_equatorial_tag
     > : detail::normalization::normalize_box<BoxIn, BoxOut>
 {};
+#endif
 
-
+#if 0
 template <typename BoxIn, typename BoxOut>
 struct normalize
     <
         BoxIn, BoxOut, box_tag, box_tag, geographic_tag, geographic_tag
     > : detail::normalization::normalize_box<BoxIn, BoxOut>
 {};
+#endif
 
 
 } // namespace dispatch

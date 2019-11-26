@@ -12,9 +12,13 @@
 #define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_PATH_INTERSECTION_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/algorithms/segment_intersection.hpp>
-
 #include <boost/geometry/strategies/default_length_result.hpp>
+#else
+#include <boost/bgeometry/index/detail/algorithms/segment_intersection.hpp>
+#include <boost/bgeometry/strategies/default_length_result.hpp>
+#endif
 
 
 namespace boost { namespace geometry { namespace index { namespace detail {
@@ -55,9 +59,9 @@ struct path_intersection<Indexable, Linestring, box_tag, linestring_tag>
     static inline bool apply(Indexable const& b, Linestring const& path, comparable_distance_type & comparable_distance)
     {
         typedef typename ::boost::range_value<Linestring>::type point_type;
-        typedef typename ::boost::range_const_iterator<Linestring>::type const_iterator;        
+        typedef typename ::boost::range_const_iterator<Linestring>::type const_iterator;
         typedef typename ::boost::range_size<Linestring>::type size_type;
-        
+
         const size_type count = ::boost::size(path);
 
         if ( count == 2 )

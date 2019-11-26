@@ -21,11 +21,19 @@
 #define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BOX_IN_BOX_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/core/coordinate_dimension.hpp>
 #include <boost/geometry/strategies/covered_by.hpp>
 #include <boost/geometry/strategies/within.hpp>
 #include <boost/geometry/util/normalize_spheroidal_coordinates.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#include <boost/bgeometry/strategies/covered_by.hpp>
+#include <boost/bgeometry/strategies/within.hpp>
+#include <boost/bgeometry/util/normalize_spheroidal_coordinates.hpp>
+#endif
 
 
 namespace boost { namespace geometry { namespace strategy
@@ -93,6 +101,7 @@ struct box_covered_by_longitude_diff
     }
 };
 
+#if 0
 template <typename Geometry,
           typename CoordCheck,
           typename InteriorCheck>
@@ -120,7 +129,7 @@ struct box_longitude_range
         // min <= max <=> diff >= 0
         calc_t const diff_ed = bed_max - bed_min;
         calc_t const diff_ing = bing_max - bing_min;
-        
+
         // if containing covers the whole globe it contains all
         if (diff_ing >= constants::period())
         {
@@ -142,19 +151,24 @@ struct box_longitude_range
             /*|| bing_max - diff_min - diff_ed >= bing_min*/;
     }
 };
+#endif
 
 
+#if 0
 // spherical_equatorial_tag, spherical_polar_tag and geographic_cat are casted to spherical_tag
 template <typename Geometry>
 struct box_within_range<Geometry, 0, spherical_tag>
     : box_longitude_range<Geometry, box_within_coord, box_within_longitude_diff>
 {};
+#endif
 
 
+#if 0
 template <typename Geometry>
 struct box_covered_by_range<Geometry, 0, spherical_tag>
     : box_longitude_range<Geometry, box_covered_by_coord, box_covered_by_longitude_diff>
 {};
+#endif
 
 
 template

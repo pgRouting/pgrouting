@@ -32,9 +32,13 @@
 #include <boost/type_traits/is_fundamental.hpp>
 #include <boost/type_traits/is_integral.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/cs.hpp>
-
 #include <boost/geometry/util/select_most_precise.hpp>
+#else
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/util/select_most_precise.hpp>
+#endif
 
 namespace boost { namespace geometry
 {
@@ -220,7 +224,7 @@ struct smaller<Type, true>
         {
             return false;
         }
-        
+
         return ! equals<Type, true>::apply(b, a, equals_default_policy());
     }
 };

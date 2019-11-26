@@ -14,7 +14,11 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_TURN_INFO_HELPERS_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_TURN_INFO_HELPERS_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/policies/robustness/no_rescale_policy.hpp>
+#else
+#include <boost/bgeometry/policies/robustness/no_rescale_policy.hpp>
+#endif
 
 namespace boost { namespace geometry {
 
@@ -113,7 +117,7 @@ public:
 
     typedef typename IntersectionStrategy::side_strategy_type side_strategy_type;
     typedef side_calculator<cs_tag, robust_point1_type, robust_point2_type, side_strategy_type> side_calculator_type;
-    
+
     intersection_info_base(Point1 const& pi, Point1 const& pj, Point1 const& pk,
                            Point2 const& qi, Point2 const& qj, Point2 const& qk,
                            IntersectionStrategy const& intersection_strategy,
@@ -143,7 +147,7 @@ public:
     inline robust_point2_type const& rqk() const { return base::m_rqk; }
 
     inline side_calculator_type const& sides() const { return m_side_calc; }
-    
+
 private:
     side_calculator_type m_side_calc;
 
@@ -169,7 +173,7 @@ public:
 
     typedef typename IntersectionStrategy::side_strategy_type side_strategy_type;
     typedef side_calculator<cs_tag, Point1, Point2, side_strategy_type> side_calculator_type;
-    
+
     intersection_info_base(Point1 const& pi, Point1 const& pj, Point1 const& pk,
                            Point2 const& qi, Point2 const& qj, Point2 const& qk,
                            IntersectionStrategy const& intersection_strategy,
@@ -195,7 +199,7 @@ public:
     inline Point2 const& rqk() const { return qk(); }
 
     inline side_calculator_type const& sides() const { return m_side_calc; }
-    
+
 private:
     side_calculator_type m_side_calc;
 };
@@ -240,7 +244,7 @@ public:
     typedef model::referring_segment<Point1 const> segment_type1;
     typedef model::referring_segment<Point2 const> segment_type2;
     typedef typename base::side_calculator_type side_calculator_type;
-    
+
     typedef typename intersection_policy_type::return_type result_type;
     typedef typename boost::tuples::element<0, result_type>::type i_info_type; // intersection_info
     typedef typename boost::tuples::element<1, result_type>::type d_info_type; // dir_info
@@ -287,7 +291,7 @@ public:
 
             int const qk_p1 = base::sides().qk_wrt_p1();
             int const qk_p2 = base::sides().qk_wrt_p2();
-                
+
             if (qk_p1 == -qk_p2)
             {
                 if (qk_p1 == 0)
@@ -295,11 +299,11 @@ public:
                     return is_spike_of_collinear(base::pi(), base::pj(),
                                                  base::pk());
                 }
-                        
+
                 return true;
             }
         }
-        
+
         return false;
     }
 
@@ -315,7 +319,7 @@ public:
 
             int const pk_q1 = base::sides().pk_wrt_q1();
             int const pk_q2 = base::sides().pk_wrt_q2();
-                
+
             if (pk_q1 == -pk_q2)
             {
                 if (pk_q1 == 0)
@@ -323,11 +327,11 @@ public:
                     return is_spike_of_collinear(base::qi(), base::qj(),
                                                  base::qk());
                 }
-                        
+
                 return true;
             }
         }
-        
+
         return false;
     }
 
@@ -348,7 +352,7 @@ private:
             = m_intersection_strategy.apply(seg(i, j), seg(j, k),
                                             policy_type(),
                                             m_robust_policy);
-        
+
         return result.count == 2;
     }
 

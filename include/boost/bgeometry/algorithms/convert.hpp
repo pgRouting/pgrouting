@@ -27,6 +27,7 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/arithmetic/arithmetic.hpp>
 #include <boost/geometry/algorithms/not_implemented.hpp>
 #include <boost/geometry/algorithms/append.hpp>
@@ -50,6 +51,31 @@
 #include <boost/geometry/core/tags.hpp>
 
 #include <boost/geometry/geometries/concepts/check.hpp>
+#else
+#include <boost/bgeometry/arithmetic/arithmetic.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/algorithms/append.hpp>
+#include <boost/bgeometry/algorithms/clear.hpp>
+#include <boost/bgeometry/algorithms/for_each.hpp>
+#include <boost/bgeometry/algorithms/detail/assign_values.hpp>
+#include <boost/bgeometry/algorithms/detail/assign_box_corners.hpp>
+#include <boost/bgeometry/algorithms/detail/assign_indexed_point.hpp>
+#include <boost/bgeometry/algorithms/detail/convert_point_to_point.hpp>
+#include <boost/bgeometry/algorithms/detail/convert_indexed_to_indexed.hpp>
+#include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
+
+#include <boost/bgeometry/views/closeable_view.hpp>
+#include <boost/bgeometry/views/reversible_view.hpp>
+
+#include <boost/bgeometry/util/range.hpp>
+
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/core/closure.hpp>
+#include <boost/bgeometry/core/point_order.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#endif
 
 
 namespace boost { namespace geometry

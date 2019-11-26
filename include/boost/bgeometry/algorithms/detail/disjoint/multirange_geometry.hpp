@@ -13,8 +13,13 @@
 
 #include <boost/range.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/check_iterator_range.hpp>
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/check_iterator_range.hpp>
+#include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
+#endif
 
 
 namespace boost { namespace geometry

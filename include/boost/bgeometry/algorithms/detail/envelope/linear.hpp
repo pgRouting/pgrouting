@@ -17,14 +17,19 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_LINEAR_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_LINEAR_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/cs.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/iterators/segment_iterator.hpp>
-
 #include <boost/geometry/algorithms/detail/envelope/range.hpp>
-
 #include <boost/geometry/algorithms/dispatch/envelope.hpp>
+#else
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/iterators/segment_iterator.hpp>
+#include <boost/bgeometry/algorithms/detail/envelope/range.hpp>
+#include <boost/bgeometry/algorithms/dispatch/envelope.hpp>
+#endif
 
 
 namespace boost { namespace geometry

@@ -11,11 +11,17 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_PACK_CREATE_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_PACK_CREATE_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/expand.hpp>
 #include <boost/geometry/index/detail/algorithms/bounds.hpp>
 #include <boost/geometry/index/detail/algorithms/nth_element.hpp>
-
 #include <boost/geometry/algorithms/detail/expand_by_epsilon.hpp>
+#else
+#include <boost/bgeometry/algorithms/expand.hpp>
+#include <boost/bgeometry/index/detail/algorithms/bounds.hpp>
+#include <boost/bgeometry/index/detail/algorithms/nth_element.hpp>
+#include <boost/bgeometry/algorithms/detail/expand_by_epsilon.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail { namespace rtree {
 
@@ -152,7 +158,7 @@ public:
                        parameters_type const& parameters, Translator const& translator, Allocators & allocators)
     {
         typedef typename std::iterator_traits<InIt>::difference_type diff_type;
-            
+
         diff_type diff = std::distance(first, last);
         if ( diff <= 0 )
             return node_pointer(0);
@@ -162,7 +168,7 @@ public:
 
         values_count = static_cast<size_type>(diff);
         entries.reserve(values_count);
-        
+
         expandable_box<Box> hint_box;
         for ( ; first != last ; ++first )
         {
@@ -318,7 +324,7 @@ private:
         rtree::elements(in).reserve(nodes_count);                                                           // MAY THROW (A)
         // calculate values box and copy values
         expandable_box<Box> elements_box;
-        
+
         per_level_packets(first, last, hint_box, values_count, subtree_counts, next_subtree_counts,
                           rtree::elements(in), elements_box,
                           parameters, translator, allocators);
@@ -359,7 +365,7 @@ private:
             elements_box.expand(el.first);
             return;
         }
-        
+
         std::size_t median_count = calculate_median_count(values_count, subtree_counts);
         EIt median = first + median_count;
 
@@ -369,7 +375,7 @@ private:
         Box left, right;
         pack_utils::nth_element_and_half_boxes<0, dimension>
             ::apply(first, median, last, hint_box, left, right, greatest_dim_index);
-        
+
         per_level_packets(first, median, left,
                           median_count, subtree_counts, next_subtree_counts,
                           elements, elements_box,

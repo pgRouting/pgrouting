@@ -11,10 +11,15 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_INTERSECTION_CONTENT_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_INTERSECTION_CONTENT_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
 #include <boost/geometry/algorithms/detail/overlay/intersection_box_box.hpp>
-
 #include <boost/geometry/index/detail/algorithms/content.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/disjoint/box_box.hpp>
+#include <boost/bgeometry/algorithms/detail/overlay/intersection_box_box.hpp>
+#include <boost/bgeometry/index/detail/algorithms/content.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 

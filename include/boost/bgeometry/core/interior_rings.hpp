@@ -20,9 +20,15 @@
 #include <boost/range/value_type.hpp>
 #include <boost/type_traits/remove_const.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/core/interior_type.hpp>
+#else
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/core/interior_type.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

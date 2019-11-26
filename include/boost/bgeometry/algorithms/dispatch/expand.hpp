@@ -20,13 +20,19 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DISPATCH_EXPAND_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DISPATCH_EXPAND_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/cs.hpp>
 #include <boost/geometry/core/tag.hpp>
-
 #include <boost/geometry/strategies/compare.hpp>
 #include <boost/geometry/policies/compare.hpp>
-
 #include <boost/geometry/algorithms/not_implemented.hpp>
+#else
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/strategies/compare.hpp>
+#include <boost/bgeometry/policies/compare.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#endif
 
 
 namespace boost { namespace geometry

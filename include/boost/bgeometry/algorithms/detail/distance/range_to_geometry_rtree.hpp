@@ -13,18 +13,25 @@
 #include <iterator>
 #include <utility>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/core/point_type.hpp>
-
 #include <boost/geometry/iterators/has_one_element.hpp>
-
 #include <boost/geometry/strategies/distance.hpp>
-
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
-
 #include <boost/geometry/algorithms/detail/closest_feature/range_to_range.hpp>
 #include <boost/geometry/algorithms/detail/distance/is_comparable.hpp>
 #include <boost/geometry/algorithms/detail/distance/iterator_selector.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/iterators/has_one_element.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/algorithms/dispatch/distance.hpp>
+#include <boost/bgeometry/algorithms/detail/closest_feature/range_to_range.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/is_comparable.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/iterator_selector.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -108,7 +115,7 @@ public:
             :
             dispatch::distance
                 <
-                    point_or_segment_type,                    
+                    point_or_segment_type,
                     typename std::iterator_traits
                         <
                             typename selector_type::iterator_type

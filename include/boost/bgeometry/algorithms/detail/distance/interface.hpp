@@ -27,19 +27,27 @@
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/vector.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_type.hpp>
-
 #include <boost/geometry/geometries/concepts/check.hpp>
-
 #include <boost/geometry/strategies/default_strategy.hpp>
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/strategies/default_distance_result.hpp>
 #include <boost/geometry/strategies/distance_result.hpp>
-
 #include <boost/geometry/algorithms/detail/throw_on_empty_input.hpp>
 #include <boost/geometry/algorithms/detail/distance/default_strategies.hpp>
-
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
+#else
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/strategies/default_strategy.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/strategies/default_distance_result.hpp>
+#include <boost/bgeometry/strategies/distance_result.hpp>
+#include <boost/bgeometry/algorithms/detail/throw_on_empty_input.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/default_strategies.hpp>
+#include <boost/bgeometry/algorithms/dispatch/distance.hpp>
+#endif
 
 
 namespace boost { namespace geometry

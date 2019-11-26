@@ -27,12 +27,17 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/relate/interface.hpp>
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
-
 #include <boost/geometry/geometries/concepts/check.hpp>
-
 #include <boost/geometry/strategies/disjoint.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/relate/interface.hpp>
+#include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/strategies/disjoint.hpp>
+#endif
 
 
 namespace boost { namespace geometry

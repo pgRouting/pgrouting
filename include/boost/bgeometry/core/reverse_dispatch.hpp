@@ -21,7 +21,11 @@
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/geometry_id.hpp>
+#else
+#include <boost/bgeometry/core/geometry_id.hpp>
+#endif
 
 
 namespace boost { namespace geometry

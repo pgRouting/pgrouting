@@ -18,11 +18,18 @@
 
 #include <cstddef>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/policies/robustness/segment_ratio.hpp>
 #include <boost/geometry/policies/robustness/segment_ratio_type.hpp>
 #include <boost/geometry/policies/robustness/robust_point_type.hpp>
-
 #include <boost/geometry/util/math.hpp>
+#else
+#include <boost/bgeometry/policies/robustness/segment_ratio.hpp>
+#include <boost/bgeometry/policies/robustness/segment_ratio_type.hpp>
+#include <boost/bgeometry/policies/robustness/robust_point_type.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#endif
+
 
 namespace boost { namespace geometry
 {

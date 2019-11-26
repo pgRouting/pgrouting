@@ -14,15 +14,23 @@
 
 #include <boost/math/constants/constants.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/radius.hpp>
 #include <boost/geometry/core/srs.hpp>
-
 #include <boost/geometry/util/condition.hpp>
 #include <boost/geometry/util/math.hpp>
-
 #include <boost/geometry/formulas/differential_quantities.hpp>
 #include <boost/geometry/formulas/flattening.hpp>
 #include <boost/geometry/formulas/result_inverse.hpp>
+#else
+#include <boost/bgeometry/core/radius.hpp>
+#include <boost/bgeometry/core/srs.hpp>
+#include <boost/bgeometry/util/condition.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/formulas/differential_quantities.hpp>
+#include <boost/bgeometry/formulas/flattening.hpp>
+#include <boost/bgeometry/formulas/result_inverse.hpp>
+#endif
 
 
 namespace boost { namespace geometry { namespace formula
@@ -136,7 +144,7 @@ public:
 
         CT const f_sqr = math::sqr(f);
         CT const f_sqr_per_64 = f_sqr / CT(64);
-    
+
         if ( BOOST_GEOMETRY_CONDITION(EnableDistance) )
         {
             CT const n1 = X * (A + C*X);
@@ -151,7 +159,7 @@ public:
             //result.distance = a * sin_d * (T - delta1d);
             result.distance = a * sin_d * (T - delta1d + delta2d);
         }
-    
+
         if ( BOOST_GEOMETRY_CONDITION(CalcAzimuths) )
         {
             // NOTE: if both cos_latX == 0 then below we'd have 0 * INF
@@ -162,7 +170,7 @@ public:
             CT const F = c2*Y-E*(c4-X);
             CT const M = CT(32)*T-(CT(20)*T-A)*X-(B+c4)*Y;
             CT const G = f*T/c2 + f_sqr_per_64 * M;
-            
+
             // TODO:
             // If d_lambda is close to 90 or -90 deg then tan(d_lambda) is big
             // and F is small. The result is not accurate.

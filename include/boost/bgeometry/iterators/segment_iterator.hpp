@@ -14,14 +14,21 @@
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/range.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/exterior_ring.hpp>
 #include <boost/geometry/core/interior_rings.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/iterators/detail/point_iterator/inner_range_type.hpp>
 #include <boost/geometry/iterators/detail/segment_iterator/iterator_type.hpp>
-
 #include <boost/geometry/iterators/dispatch/segment_iterator.hpp>
+#else
+#include <boost/bgeometry/core/exterior_ring.hpp>
+#include <boost/bgeometry/core/interior_rings.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/iterators/detail/point_iterator/inner_range_type.hpp>
+#include <boost/bgeometry/iterators/detail/segment_iterator/iterator_type.hpp>
+#include <boost/bgeometry/iterators/dispatch/segment_iterator.hpp>
+#endif
 
 
 namespace boost { namespace geometry

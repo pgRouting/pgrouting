@@ -10,8 +10,13 @@
 #ifndef BOOST_GEOMETRY_ITERATORS_DISPATCH_POINT_ITERATOR_HPP
 #define BOOST_GEOMETRY_ITERATORS_DISPATCH_POINT_ITERATOR_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/algorithms/not_implemented.hpp>
+#else
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

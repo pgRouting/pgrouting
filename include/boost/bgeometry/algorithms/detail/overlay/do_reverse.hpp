@@ -10,7 +10,11 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_DO_REVERSE_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_DO_REVERSE_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_order.hpp>
+#else
+#include <boost/bgeometry/core/point_order.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

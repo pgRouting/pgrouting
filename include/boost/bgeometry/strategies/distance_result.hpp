@@ -27,16 +27,23 @@
 
 #include <boost/variant/variant_fwd.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_type.hpp>
-
 #include <boost/geometry/strategies/default_strategy.hpp>
 #include <boost/geometry/strategies/distance.hpp>
-
 #include <boost/geometry/util/compress_variant.hpp>
 #include <boost/geometry/util/transform_variant.hpp>
 #include <boost/geometry/util/combine_if.hpp>
-
 #include <boost/geometry/algorithms/detail/distance/default_strategies.hpp>
+#else
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/strategies/default_strategy.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/util/compress_variant.hpp>
+#include <boost/bgeometry/util/transform_variant.hpp>
+#include <boost/bgeometry/util/combine_if.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/default_strategies.hpp>
+#endif
 
 
 namespace boost { namespace geometry

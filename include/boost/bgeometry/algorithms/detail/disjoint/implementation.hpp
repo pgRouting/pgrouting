@@ -22,6 +22,7 @@
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_IMPLEMENTATION_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/disjoint/areal_areal.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/linear_areal.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/linear_linear.hpp>
@@ -32,6 +33,18 @@
 #include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/segment_box.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/linear_segment_or_box.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/disjoint/areal_areal.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/linear_areal.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/linear_linear.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/point_geometry.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/multipoint_geometry.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/point_point.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/point_box.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/box_box.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/segment_box.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/linear_segment_or_box.hpp>
+#endif
 
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_IMPLEMENTATION_HPP

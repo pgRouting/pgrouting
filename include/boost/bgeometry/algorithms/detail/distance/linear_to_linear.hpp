@@ -10,19 +10,25 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_LINEAR_TO_LINEAR_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_LINEAR_TO_LINEAR_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_type.hpp>
-
 #include <boost/geometry/strategies/distance.hpp>
-
 #include <boost/geometry/iterators/point_iterator.hpp>
 #include <boost/geometry/iterators/segment_iterator.hpp>
-
 #include <boost/geometry/algorithms/num_points.hpp>
 #include <boost/geometry/algorithms/num_segments.hpp>
-
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
-
 #include <boost/geometry/algorithms/detail/distance/range_to_geometry_rtree.hpp>
+#else
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/iterators/point_iterator.hpp>
+#include <boost/bgeometry/iterators/segment_iterator.hpp>
+#include <boost/bgeometry/algorithms/num_points.hpp>
+#include <boost/bgeometry/algorithms/num_segments.hpp>
+#include <boost/bgeometry/algorithms/dispatch/distance.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/range_to_geometry_rtree.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -107,7 +113,7 @@ template <typename Linear1, typename Linear2, typename Strategy>
 struct distance
     <
         Linear1, Linear2, Strategy,
-        linear_tag, linear_tag, 
+        linear_tag, linear_tag,
         strategy_tag_distance_point_segment, false
     > : detail::distance::linear_to_linear
         <

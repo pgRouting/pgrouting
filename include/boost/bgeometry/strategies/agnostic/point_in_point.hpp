@@ -12,10 +12,15 @@
 #ifndef BOOST_GEOMETRY_STRATEGY_AGNOSTIC_POINT_IN_POINT_HPP
 #define BOOST_GEOMETRY_STRATEGY_AGNOSTIC_POINT_IN_POINT_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-
 #include <boost/geometry/strategies/covered_by.hpp>
 #include <boost/geometry/strategies/within.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/equals/point_point.hpp>
+#include <boost/bgeometry/strategies/covered_by.hpp>
+#include <boost/bgeometry/strategies/within.hpp>
+#endif
 
 
 namespace boost { namespace geometry

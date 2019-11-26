@@ -11,9 +11,13 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_REMOVE_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_REMOVE_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/rtree/visitors/is_leaf.hpp>
-
 #include <boost/geometry/algorithms/detail/covered_by/interface.hpp>
+#else
+#include <boost/bgeometry/index/detail/rtree/visitors/is_leaf.hpp>
+#include <boost/bgeometry/algorithms/detail/covered_by/interface.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index {
 

@@ -12,9 +12,15 @@
 #ifndef BOOST_GEOMETRY_FORMULAS_MAXIMUM_LONGITUDE_HPP
 #define BOOST_GEOMETRY_FORMULAS_MAXIMUM_LONGITUDE_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/formulas/spherical.hpp>
 #include <boost/geometry/formulas/flattening.hpp>
 #include <boost/geometry/core/srs.hpp>
+#else
+#include <boost/bgeometry/formulas/spherical.hpp>
+#include <boost/bgeometry/formulas/flattening.hpp>
+#include <boost/bgeometry/core/srs.hpp>
+#endif
 #include <boost/mpl/assert.hpp>
 
 #include <boost/math/special_functions/hypot.hpp>

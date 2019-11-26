@@ -23,25 +23,35 @@
 
 #include <boost/numeric/conversion/cast.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/interior_iterator.hpp>
 #include <boost/geometry/algorithms/detail/normalize.hpp>
 #include <boost/geometry/algorithms/not_implemented.hpp>
-
 #include <boost/geometry/core/cs.hpp>
 #include <boost/geometry/core/interior_rings.hpp>
 #include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/formulas/spherical.hpp>
-
+// #include <boost/geometry/formulas/spherical.hpp>
 #include <boost/geometry/geometries/concepts/check.hpp>
-
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/range.hpp>
-
 #include <boost/geometry/views/detail/normalized_view.hpp>
-
 #include <boost/geometry/strategies/cartesian/side_by_triangle.hpp>
-#include <boost/geometry/strategies/spherical/ssf.hpp>
+// #include <boost/geometry/strategies/spherical/ssf.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
+#include <boost/bgeometry/algorithms/detail/normalize.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/core/interior_rings.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+// #include <boost/bgeometry/formulas/spherical.hpp>
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/util/range.hpp>
+#include <boost/bgeometry/views/detail/normalized_view.hpp>
+#include <boost/bgeometry/strategies/cartesian/side_by_triangle.hpp>
+// #include <boost/bgeometry/strategies/spherical/ssf.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -71,7 +81,7 @@ struct collected_vector
     >
 {
     typedef T type;
-    
+
     inline collected_vector()
     {}
 
@@ -158,6 +168,7 @@ private:
     //T dx_0, dy_0;
 };
 
+#if 0
 // Compatible with spherical_side_formula which currently
 // is the default spherical and geographical strategy
 template <typename T, typename Geometry, typename CT, typename CSTag>
@@ -167,7 +178,7 @@ struct collected_vector
     >
 {
     typedef T type;
-    
+
     typedef typename coordinate_system<Geometry>::type cs_type;
     typedef model::point<T, 2, cs_type> point_type;
     typedef model::point<T, 3, cs::cartesian> vector_type;
@@ -245,7 +256,7 @@ private:
         return formula::sph_side_value(direction, other.prev) == 0
             && formula::sph_side_value(direction, other.next) == 0;
     }
-    
+
     /*bool same_direction(collected_vector const& other) const
     {
         return math::equals_with_epsilon(get<0>(direction), get<0>(other.direction))
@@ -258,7 +269,9 @@ private:
     vector_type prev; // used for collinearity check, only in operator==
     vector_type next; // used for collinearity check
 };
+#endif
 
+#if 0
 // Specialization for spherical polar
 template <typename T, typename Geometry, typename CT>
 struct collected_vector
@@ -307,6 +320,7 @@ private:
         return res;
     }
 };
+#endif
 
 
 #ifndef DOXYGEN_NO_DETAIL

@@ -58,13 +58,13 @@ namespace boost { namespace geometry { namespace index { namespace detail { name
 template <typename I>
 struct are_elements_contiguous : boost::is_pointer<I>
 {};
-    
+
 // EXPERIMENTAL - not finished
 // Conditional setup - mark vector iterators defined in known implementations
 // as iterators pointing to contiguous ranges
 
 #if defined(BOOST_GEOMETRY_INDEX_DETAIL_VARRAY_ENABLE_VECTOR_OPTIMIZATION) && !defined(BOOST_NO_EXCEPTIONS)
-    
+
 template <typename Pointer>
 struct are_elements_contiguous<
     boost::container::container_detail::vector_const_iterator<Pointer>
@@ -78,7 +78,7 @@ struct are_elements_contiguous<
 {};
 
 #if defined(BOOST_DINKUMWARE_STDLIB)
-    
+
 template <typename T>
 struct are_elements_contiguous<
     std::_Vector_const_iterator<T>
@@ -111,7 +111,7 @@ struct are_elements_contiguous<
 #else // OTHER_STDLIB
 
 // TODO - add other iterators implementations
-    
+
 #endif // STDLIB
 
 #endif // BOOST_GEOMETRY_INDEX_DETAIL_VARRAY_ENABLE_VECTOR_OPTIMIZATION && !BOOST_NO_EXCEPTIONS
@@ -220,7 +220,7 @@ inline O copy(I first, I last, O dst)
         >
     >::type
     use_memmove;
-    
+
     return copy_dispatch(first, last, dst, use_memmove());                       // may throw
 }
 

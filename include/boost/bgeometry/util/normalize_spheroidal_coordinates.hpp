@@ -11,15 +11,21 @@
 #ifndef BOOST_GEOMETRY_UTIL_NORMALIZE_SPHEROIDAL_COORDINATES_HPP
 #define BOOST_GEOMETRY_UTIL_NORMALIZE_SPHEROIDAL_COORDINATES_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/core/cs.hpp>
 #include <boost/geometry/util/math.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#endif
 
 
 namespace boost { namespace geometry
 {
 
-namespace math 
+namespace math
 {
 
 #ifndef DOXYGEN_NO_DETAIL
@@ -109,14 +115,14 @@ protected:
     {
         return
             math::mod(value + constants::half_period(), constants::period())
-            - constants::half_period();            
+            - constants::half_period();
     }
 
     static inline CoordinateType normalize_down(CoordinateType const& value)
     {
         return
             math::mod(value - constants::half_period(), constants::period())
-            + constants::half_period();            
+            + constants::half_period();
     }
 
 public:
@@ -310,7 +316,7 @@ inline CoordinateType longitude_interval_distance_signed(CoordinateType const& l
         dist_a12 = -dist_a12;
         dist_a1b = -dist_a1b;
     }
-    
+
     return dist_a1b < c0 ? dist_a1b
          : dist_a1b > dist_a12 ? dist_a1b - dist_a12
          : c0;

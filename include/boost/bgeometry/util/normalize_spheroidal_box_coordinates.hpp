@@ -10,15 +10,21 @@
 #ifndef BOOST_GEOMETRY_UTIL_NORMALIZE_SPHEROIDAL_BOX_COORDINATES_HPP
 #define BOOST_GEOMETRY_UTIL_NORMALIZE_SPHEROIDAL_BOX_COORDINATES_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/normalize_spheroidal_coordinates.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/util/normalize_spheroidal_coordinates.hpp>
+#endif
 
 
 namespace boost { namespace geometry
 {
 
-namespace math 
+namespace math
 {
 
 #ifndef DOXYGEN_NO_DETAIL

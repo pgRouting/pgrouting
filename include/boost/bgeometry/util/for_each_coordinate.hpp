@@ -15,8 +15,13 @@
 #define BOOST_GEOMETRY_UTIL_FOR_EACH_COORDINATE_HPP
 
 #include <boost/concept/requires.hpp>
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/geometries/concepts/point_concept.hpp>
 #include <boost/geometry/util/add_const_if_c.hpp>
+#else
+#include <boost/bgeometry/geometries/concepts/point_concept.hpp>
+#include <boost/bgeometry/util/add_const_if_c.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

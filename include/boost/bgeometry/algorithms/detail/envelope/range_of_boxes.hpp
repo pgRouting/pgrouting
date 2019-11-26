@@ -19,17 +19,27 @@
 
 #include <boost/range.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/core/coordinate_system.hpp>
 #include <boost/geometry/core/coordinate_type.hpp>
-
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/range.hpp>
-
 #include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
 #include <boost/geometry/algorithms/detail/max_interval_gap.hpp>
 #include <boost/geometry/algorithms/detail/expand/indexed.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/core/coordinate_system.hpp>
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/util/range.hpp>
+#include <boost/bgeometry/algorithms/detail/convert_point_to_point.hpp>
+#include <boost/bgeometry/algorithms/detail/max_interval_gap.hpp>
+#include <boost/bgeometry/algorithms/detail/expand/indexed.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -52,7 +62,7 @@ public:
     longitude_interval(T const& left, T const& right)
     {
         m_end[0] = left;
-        m_end[1] = right;        
+        m_end[1] = right;
     }
 
     template <std::size_t Index>
@@ -277,7 +287,7 @@ struct envelope_range_of_boxes
                 // if the box degenerates to the south or north pole
                 // just ignore it
                 continue;
-            }                             
+            }
 
             coordinate_type lon_left = geometry::get<min_corner, 0>(*it);
             coordinate_type lon_right = geometry::get<max_corner, 0>(*it);

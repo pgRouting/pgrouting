@@ -24,19 +24,29 @@
 
 #include <cstddef>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/core/radian_access.hpp>
-
 #include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/point_box.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
 #include <boost/geometry/algorithms/detail/envelope/segment.hpp>
 #include <boost/geometry/algorithms/detail/normalize.hpp>
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
-
 #include <boost/geometry/formulas/vertex_longitude.hpp>
-
 #include <boost/geometry/geometries/box.hpp>
+#else
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/core/radian_access.hpp>
+#include <boost/bgeometry/algorithms/detail/assign_indexed_point.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/point_box.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/box_box.hpp>
+#include <boost/bgeometry/algorithms/detail/envelope/segment.hpp>
+#include <boost/bgeometry/algorithms/detail/normalize.hpp>
+#include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
+#include <boost/bgeometry/formulas/vertex_longitude.hpp>
+#include <boost/bgeometry/geometries/box.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

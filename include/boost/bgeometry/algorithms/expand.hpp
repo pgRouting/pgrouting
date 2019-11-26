@@ -20,7 +20,12 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_EXPAND_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_EXPAND_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/expand/interface.hpp>
 #include <boost/geometry/algorithms/detail/expand/implementation.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/expand/interface.hpp>
+#include <boost/bgeometry/algorithms/detail/expand/implementation.hpp>
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_EXPAND_HPP

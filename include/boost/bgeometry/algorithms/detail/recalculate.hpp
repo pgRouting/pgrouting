@@ -26,6 +26,7 @@
 #include <boost/range/iterator.hpp>
 #include <boost/range/size.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/arithmetic/arithmetic.hpp>
 #include <boost/geometry/algorithms/append.hpp>
 #include <boost/geometry/algorithms/clear.hpp>
@@ -33,8 +34,17 @@
 #include <boost/geometry/core/interior_rings.hpp>
 #include <boost/geometry/core/exterior_ring.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/geometries/concepts/check.hpp>
+#else
+#include <boost/bgeometry/arithmetic/arithmetic.hpp>
+#include <boost/bgeometry/algorithms/append.hpp>
+#include <boost/bgeometry/algorithms/clear.hpp>
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/interior_rings.hpp>
+#include <boost/bgeometry/core/exterior_ring.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#endif
 
 
 namespace boost { namespace geometry

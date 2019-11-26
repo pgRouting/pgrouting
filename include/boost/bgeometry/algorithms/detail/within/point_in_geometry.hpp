@@ -27,18 +27,27 @@
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
-
 #include <boost/geometry/algorithms/detail/equals/point_point.hpp>
 #include <boost/geometry/algorithms/detail/interior_iterator.hpp>
-
 #include <boost/geometry/geometries/concepts/check.hpp>
 #include <boost/geometry/strategies/concepts/within_concept.hpp>
 #include <boost/geometry/strategies/default_strategy.hpp>
 #include <boost/geometry/strategies/relate.hpp>
-
 #include <boost/geometry/util/range.hpp>
 #include <boost/geometry/views/detail/normalized_view.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/algorithms/detail/equals/point_point.hpp>
+#include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/strategies/concepts/within_concept.hpp>
+#include <boost/bgeometry/strategies/default_strategy.hpp>
+#include <boost/bgeometry/strategies/relate.hpp>
+#include <boost/bgeometry/util/range.hpp>
+#include <boost/bgeometry/views/detail/normalized_view.hpp>
+#endif
 
 namespace boost { namespace geometry {
 
@@ -218,7 +227,7 @@ struct point_in_geometry<Polygon, polygon_tag>
         {
             typename interior_return_type<Polygon const>::type
                 rings = interior_rings(polygon);
-            
+
             for (typename detail::interior_iterator<Polygon const>::type
                  it = boost::begin(rings);
                  it != boost::end(rings);

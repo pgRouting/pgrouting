@@ -14,6 +14,7 @@
 
 #include <boost/range.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/point_box.hpp>
 #include <boost/geometry/algorithms/detail/expand_by_epsilon.hpp>
@@ -21,13 +22,23 @@
 #include <boost/geometry/algorithms/detail/relate/topology_check.hpp>
 #include <boost/geometry/algorithms/detail/within/point_in_geometry.hpp>
 #include <boost/geometry/algorithms/envelope.hpp>
-
 #include <boost/geometry/core/is_areal.hpp>
 #include <boost/geometry/core/point_type.hpp>
-
 #include <boost/geometry/geometries/box.hpp>
-
 #include <boost/geometry/index/rtree.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/disjoint/box_box.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/point_box.hpp>
+#include <boost/bgeometry/algorithms/detail/expand_by_epsilon.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/result.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/topology_check.hpp>
+#include <boost/bgeometry/algorithms/detail/within/point_in_geometry.hpp>
+#include <boost/bgeometry/algorithms/envelope.hpp>
+#include <boost/bgeometry/core/is_areal.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/geometries/box.hpp>
+#include <boost/bgeometry/index/rtree.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -165,7 +176,7 @@ struct multi_point_single_geometry
     {
         typedef typename point_type<SingleGeometry>::type point2_type;
         typedef model::box<point2_type> box2_type;
-        
+
         box2_type box2;
         geometry::envelope(single_geometry, box2, strategy.get_envelope_strategy());
         geometry::detail::expand_by_epsilon(box2);
@@ -463,7 +474,7 @@ struct multi_point_multi_geometry
 
         typename Strategy::envelope_strategy_type const
             envelope_strategy = strategy.get_envelope_strategy();
-        
+
         std::size_t count2 = boost::size(multi_geometry);
         std::vector<box_pair_type> boxes(count2);
         for (std::size_t i = 0 ; i < count2 ; ++i)

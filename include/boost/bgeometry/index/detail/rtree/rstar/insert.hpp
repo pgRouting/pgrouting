@@ -11,7 +11,11 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_INSERT_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_INSERT_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/algorithms/content.hpp>
+#else
+#include <boost/bgeometry/index/detail/algorithms/content.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index {
 
@@ -71,7 +75,7 @@ public:
         sorted_elements_type sorted_elements;
         // If constructor is used instead of resize() MS implementation leaks here
         sorted_elements.reserve(elements_count);                                                         // MAY THROW, STRONG (V, E: alloc, copy)
-        
+
         for ( typename elements_type::const_iterator it = elements.begin() ;
               it != elements.end() ; ++it )
         {
@@ -134,7 +138,7 @@ private:
     {
         return d1.first < d2.first;
     }
-    
+
     template <typename Distance, typename El>
     static inline bool distances_dsc(
         std::pair<Distance, El> const& d1,
@@ -376,7 +380,7 @@ struct level_insert<InsertIndex, Value, Value, Options, Translator, Box, Allocat
         base::traverse(*this, n);                                                                       // MAY THROW (V, E: alloc, copy, N: alloc)
 
         BOOST_GEOMETRY_INDEX_ASSERT(0 < base::m_level, "illegal level value, level shouldn't be the root level for 0 < InsertIndex");
-        
+
         if ( base::m_traverse_data.current_level == base::m_level - 1 )
         {
             base::handle_possible_reinsert_or_split_of_root(n);                                         // MAY THROW (E: alloc, copy, N: alloc)
@@ -392,7 +396,7 @@ struct level_insert<InsertIndex, Value, Value, Options, Translator, Box, Allocat
         BOOST_GEOMETRY_INDEX_ASSERT(base::m_level == base::m_traverse_data.current_level ||
                                     base::m_level == (std::numeric_limits<size_t>::max)(),
                                     "unexpected level");
-        
+
         rtree::elements(n).push_back(base::m_element);                                                  // MAY THROW, STRONG (V: alloc, copy)
 
         base::handle_possible_split(n);                                                                 // MAY THROW (V: alloc, copy, N: alloc)
@@ -447,7 +451,7 @@ struct level_insert<0, Value, Value, Options, Translator, Box, Allocators>
         rtree::elements(n).push_back(base::m_element);                                                  // MAY THROW, STRONG (V: alloc, copy)
 
         base::handle_possible_reinsert_or_split_of_root(n);                                             // MAY THROW (V: alloc, copy, N: alloc)
-        
+
         base::recalculate_aabb_if_necessary(n);
     }
 };
@@ -507,7 +511,7 @@ public:
             visitors::insert<Element, Value, Options, Translator, Box, Allocators, insert_default_tag> ins_v(
                 m_root, m_leafs_level, m_element, m_parameters, m_translator, m_allocators, m_relative_level);
 
-            rtree::apply_visitor(ins_v, *m_root); 
+            rtree::apply_visitor(ins_v, *m_root);
         }
     }
 
@@ -532,7 +536,7 @@ public:
             visitors::insert<Element, Value, Options, Translator, Box, Allocators, insert_default_tag> ins_v(
                 m_root, m_leafs_level, m_element, m_parameters, m_translator, m_allocators, m_relative_level);
 
-            rtree::apply_visitor(ins_v, *m_root); 
+            rtree::apply_visitor(ins_v, *m_root);
         }
     }
 

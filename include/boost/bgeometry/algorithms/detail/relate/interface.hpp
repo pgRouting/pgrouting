@@ -20,16 +20,27 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/coordinate_dimension.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/core/topological_dimension.hpp>
-
 #include <boost/geometry/algorithms/detail/relate/de9im.hpp>
 #include <boost/geometry/algorithms/not_implemented.hpp>
 #include <boost/geometry/geometries/concepts/check.hpp>
 #include <boost/geometry/strategies/default_strategy.hpp>
 #include <boost/geometry/strategies/relate.hpp>
+#else
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/core/topological_dimension.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/de9im.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/strategies/default_strategy.hpp>
+#include <boost/bgeometry/strategies/relate.hpp>
+#endif
 
 
 namespace boost { namespace geometry {
@@ -219,7 +230,7 @@ struct relate
                 Geometry1,
                 Geometry2
             >::type strategy_type;
-        
+
         dispatch::relate
             <
                 Geometry1,

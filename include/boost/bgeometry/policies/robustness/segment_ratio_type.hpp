@@ -12,7 +12,11 @@
 #ifndef BOOST_GEOMETRY_POLICIES_ROBUSTNESS_SEGMENT_RATIO_TYPE_HPP
 #define BOOST_GEOMETRY_POLICIES_ROBUSTNESS_SEGMENT_RATIO_TYPE_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/not_implemented.hpp>
+#else
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

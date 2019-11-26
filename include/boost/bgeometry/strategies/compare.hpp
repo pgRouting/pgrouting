@@ -20,10 +20,15 @@
 
 #include <boost/mpl/if.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/cs.hpp>
 #include <boost/geometry/core/coordinate_type.hpp>
-
 #include <boost/geometry/strategies/tags.hpp>
+#else
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/strategies/tags.hpp>
+#endif
 
 
 namespace boost { namespace geometry

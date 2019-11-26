@@ -14,10 +14,17 @@
 
 #include <stddef.h>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/coordinate_type.hpp>
 #include <boost/geometry/policies/robustness/robust_point_type.hpp>
 #include <boost/geometry/policies/robustness/segment_ratio.hpp>
 #include <boost/geometry/policies/robustness/segment_ratio_type.hpp>
+#else
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/policies/robustness/robust_point_type.hpp>
+#include <boost/bgeometry/policies/robustness/segment_ratio.hpp>
+#include <boost/bgeometry/policies/robustness/segment_ratio_type.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

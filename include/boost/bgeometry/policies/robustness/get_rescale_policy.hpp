@@ -24,23 +24,35 @@
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/type_traits/is_same.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/core/tag_cast.hpp>
-
 #include <boost/geometry/algorithms/envelope.hpp>
 #include <boost/geometry/algorithms/expand.hpp>
 #include <boost/geometry/algorithms/is_empty.hpp>
 #include <boost/geometry/algorithms/detail/recalculate.hpp>
 #include <boost/geometry/algorithms/detail/get_max_size.hpp>
 #include <boost/geometry/policies/robustness/robust_type.hpp>
-
 #include <boost/geometry/geometries/point.hpp>
 #include <boost/geometry/geometries/box.hpp>
-
 #include <boost/geometry/policies/robustness/no_rescale_policy.hpp>
 #include <boost/geometry/policies/robustness/rescale_policy.hpp>
-
 #include <boost/geometry/util/promote_floating_point.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/core/tag_cast.hpp>
+#include <boost/bgeometry/algorithms/envelope.hpp>
+#include <boost/bgeometry/algorithms/expand.hpp>
+#include <boost/bgeometry/algorithms/is_empty.hpp>
+#include <boost/bgeometry/algorithms/detail/recalculate.hpp>
+#include <boost/bgeometry/algorithms/detail/get_max_size.hpp>
+#include <boost/bgeometry/policies/robustness/robust_type.hpp>
+#include <boost/bgeometry/geometries/point.hpp>
+#include <boost/bgeometry/geometries/box.hpp>
+#include <boost/bgeometry/policies/robustness/no_rescale_policy.hpp>
+#include <boost/bgeometry/policies/robustness/rescale_policy.hpp>
+#include <boost/bgeometry/util/promote_floating_point.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

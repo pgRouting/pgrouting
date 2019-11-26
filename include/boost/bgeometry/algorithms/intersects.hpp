@@ -21,8 +21,12 @@
 #define BOOST_GEOMETRY_ALGORITHMS_INTERSECTS_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/intersects/interface.hpp>
 #include <boost/geometry/algorithms/detail/intersects/implementation.hpp>
-
+#else
+#include <boost/bgeometry/algorithms/detail/intersects/interface.hpp>
+#include <boost/bgeometry/algorithms/detail/intersects/implementation.hpp>
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_INTERSECTS_HPP

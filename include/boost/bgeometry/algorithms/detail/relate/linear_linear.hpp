@@ -19,19 +19,29 @@
 #include <boost/core/ignore_unused.hpp>
 #include <boost/range/size.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
-
 #include <boost/geometry/util/condition.hpp>
 #include <boost/geometry/util/range.hpp>
-
 #include <boost/geometry/algorithms/detail/sub_range.hpp>
 #include <boost/geometry/algorithms/detail/single_geometry.hpp>
-
 #include <boost/geometry/algorithms/detail/relate/point_geometry.hpp>
 #include <boost/geometry/algorithms/detail/relate/result.hpp>
 #include <boost/geometry/algorithms/detail/relate/turns.hpp>
 #include <boost/geometry/algorithms/detail/relate/boundary_checker.hpp>
 #include <boost/geometry/algorithms/detail/relate/follow_helpers.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/util/condition.hpp>
+#include <boost/bgeometry/util/range.hpp>
+#include <boost/bgeometry/algorithms/detail/sub_range.hpp>
+#include <boost/bgeometry/algorithms/detail/single_geometry.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/point_geometry.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/result.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/turns.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/boundary_checker.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/follow_helpers.hpp>
+#endif
 
 namespace boost { namespace geometry
 {
@@ -68,7 +78,7 @@ public:
         }
 
         std::size_t const count = boost::size(linestring);
-        
+
         // invalid input
         if ( count < 2 )
         {
@@ -156,7 +166,7 @@ struct linear_linear
         for_each_disjoint_geometry_if<1, Geometry2>::apply(turns.begin(), turns.end(), geometry2, pred2);
         if ( BOOST_GEOMETRY_CONDITION( result.interrupt ) )
             return;
-        
+
         if ( turns.empty() )
             return;
 
@@ -182,7 +192,7 @@ struct linear_linear
 
         if ( BOOST_GEOMETRY_CONDITION( result.interrupt ) )
             return;
-        
+
         if ( may_update<interior, interior, '1', true>(result)
           || may_update<interior, boundary, '0', true>(result)
           || may_update<interior, exterior, '1', true>(result)
@@ -217,7 +227,7 @@ struct linear_linear
         inline bool apply(Range const& turns)
         {
             typedef typename boost::range_iterator<Range const>::type iterator;
-            
+
             for (iterator it = boost::begin(turns) ; it != boost::end(turns) ; ++it)
             {
                 if ( it->operations[0].operation == overlay::operation_intersection
@@ -288,8 +298,8 @@ struct linear_linear
                 // degenerated turn
                 if ( op == overlay::operation_continue
                   && it->method == overlay::method_none
-                  && m_exit_watcher.is_outside(*it) 
-                  /*&& ( m_exit_watcher.get_exit_operation() == overlay::operation_none 
+                  && m_exit_watcher.is_outside(*it)
+                  /*&& ( m_exit_watcher.get_exit_operation() == overlay::operation_none
                     || ! turn_on_the_same_ip<op_id>(m_exit_watcher.get_exit_turn(), *it) )*/ )
                 {
                     // TODO: rewrite the above condition
@@ -326,7 +336,7 @@ struct linear_linear
                 if ( ! turn_on_the_same_ip<op_id>(m_exit_watcher.get_exit_turn(), *it) )
                 {
                     m_exit_watcher.reset_detected_exit();
-                    
+
                     // not the last IP
                     update<interior, exterior, '1', transpose_result>(res);
                 }
@@ -512,7 +522,7 @@ struct linear_linear
                                                                              it->operations[other_op_id],
                                                                              other_boundary_checker,
                                                                              other_id);
-                        
+
                         // if current IP is on boundary of the geometry
                         if ( this_b )
                         {
@@ -558,7 +568,7 @@ struct linear_linear
                                 update<boundary, exterior, '0', transpose_result>(res);
                             }
                         }
-                            
+
                     }
                 }
             }
@@ -601,7 +611,7 @@ struct linear_linear
                     turn_ptr = m_degenerated_turn_ptr;
                 else if ( m_previous_turn_ptr )
                     turn_ptr = m_previous_turn_ptr;
-                
+
                 if ( turn_ptr )
                 {
                     segment_identifier const& prev_seg_id = turn_ptr->operations[op_id].seg_id;

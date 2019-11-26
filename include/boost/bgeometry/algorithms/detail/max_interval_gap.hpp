@@ -20,9 +20,15 @@
 #include <boost/type_traits/remove_const.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/algorithms/detail/sweep.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/algorithms/detail/sweep.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -233,7 +239,7 @@ maximum_gap(RangeOfIntervals const& range_of_intervals,
     std::priority_queue
         <
             event_type,
-            std::vector<event_type>, 
+            std::vector<event_type>,
             detail::max_interval_gap::event_greater<event_type>
         > queue;
 

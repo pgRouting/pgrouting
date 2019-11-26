@@ -24,8 +24,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "vrp/node.h"
+#include <cmath>
+#include <limits>
 
 #include "cpp_common/pgr_assert.h"
+
+namespace {
+
+template<typename T>
+typename std::enable_if<!std::numeric_limits<T>::is_integer, bool>::type
+    almost_equal(T x, T y, int ulp) {
+    // the machine epsilon has to be scaled to the magnitude of the values used
+    // and multiplied by the desired precision in ULPs (units in the last place)
+    return std::abs(x-y) <= std::numeric_limits<T>::epsilon() * std::abs(x+y) * ulp
+        // unless the result is subnormal
+        || std::abs(x-y) < std::numeric_limits<T>::min();
+}
+
+}
 
 namespace pgrouting {
 namespace vrp {
@@ -76,7 +92,8 @@ Node::operator ==(const Node &rhs) const {
     return
         (idx() == rhs.idx())
          && (id() == rhs.id())
-         && boost::geometry::equals(m_point, rhs.m_point);
+         && almost_equal(m_point.x(), rhs.m_point.x(), 2)
+         && almost_equal(m_point.y(), rhs.m_point.y(), 2);
 }
 
 }  //  namespace vrp

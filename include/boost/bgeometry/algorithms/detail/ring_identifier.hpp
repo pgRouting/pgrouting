@@ -15,7 +15,11 @@
 #endif
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/signed_size_type.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/signed_size_type.hpp>
+#endif
 
 
 namespace boost { namespace geometry

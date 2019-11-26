@@ -12,10 +12,17 @@
 
 #include <boost/array.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/coordinate_type.hpp>
 #include <boost/geometry/algorithms/detail/signed_size_type.hpp>
 #include <boost/geometry/algorithms/detail/overlay/segment_identifier.hpp>
 #include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
+#else
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/algorithms/detail/signed_size_type.hpp>
+#include <boost/bgeometry/algorithms/detail/overlay/segment_identifier.hpp>
+#include <boost/bgeometry/algorithms/detail/overlay/overlay_type.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

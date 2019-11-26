@@ -11,8 +11,13 @@
 #ifndef BOOST_GEOMETRY_INDEX_PREDICATES_HPP
 #define BOOST_GEOMETRY_INDEX_PREDICATES_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/predicates.hpp>
 #include <boost/geometry/index/detail/tuples.hpp>
+#else
+#include <boost/bgeometry/index/detail/predicates.hpp>
+#include <boost/bgeometry/index/detail/tuples.hpp>
+#endif
 
 /*!
 \defgroup predicates Predicates (boost::geometry::index::)
@@ -413,7 +418,7 @@ operator&&(boost::tuples::cons<Head, Tail> const& t, Pred const& p)
         bt::cons<Head, Tail>, Pred
     >::apply(t, p);
 }
-    
+
 }} // namespace detail::predicates
 
 }}} // namespace boost::geometry::index

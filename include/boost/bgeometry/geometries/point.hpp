@@ -26,15 +26,27 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/mpl/int.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/core/coordinate_type.hpp>
 #include <boost/geometry/core/coordinate_system.hpp>
 #include <boost/geometry/core/coordinate_dimension.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/core/coordinate_system.hpp>
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#endif
 
 #if defined(BOOST_GEOMETRY_ENABLE_ACCESS_DEBUGGING)
 #include <algorithm>
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#endif
 #endif
 
 namespace boost { namespace geometry

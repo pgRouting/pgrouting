@@ -19,10 +19,17 @@
 
 #include <boost/range/empty.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/equals/point_point.hpp>
 #include <boost/geometry/algorithms/detail/within/point_in_geometry.hpp>
 #include <boost/geometry/algorithms/detail/relate/less.hpp>
 #include <boost/geometry/algorithms/detail/relate/result.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/equals/point_point.hpp>
+#include <boost/bgeometry/algorithms/detail/within/point_in_geometry.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/less.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/result.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

@@ -21,7 +21,11 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_EQUALS_POINT_POINT_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_EQUALS_POINT_POINT_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/disjoint/point_point.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/disjoint/point_point.hpp>
+#endif
 
 
 namespace boost { namespace geometry

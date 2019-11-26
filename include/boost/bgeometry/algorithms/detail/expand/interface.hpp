@@ -25,16 +25,23 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/geometries/concepts/check.hpp>
-
 #include <boost/geometry/algorithms/dispatch/expand.hpp>
-
 #include <boost/geometry/strategies/default_strategy.hpp>
-
 #include <boost/geometry/strategies/envelope.hpp>
 #include <boost/geometry/strategies/cartesian/envelope_segment.hpp>
-#include <boost/geometry/strategies/spherical/envelope_segment.hpp>
-#include <boost/geometry/strategies/geographic/envelope_segment.hpp>
+// #include <boost/geometry/strategies/spherical/envelope_segment.hpp>
+// #include <boost/geometry/strategies/geographic/envelope_segment.hpp>
+#else
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/algorithms/dispatch/expand.hpp>
+#include <boost/bgeometry/strategies/default_strategy.hpp>
+#include <boost/bgeometry/strategies/envelope.hpp>
+#include <boost/bgeometry/strategies/cartesian/envelope_segment.hpp>
+// #include <boost/bgeometry/strategies/spherical/envelope_segment.hpp>
+// #include <boost/bgeometry/strategies/geographic/envelope_segment.hpp>
+#endif
 
 namespace boost { namespace geometry
 {
@@ -76,7 +83,7 @@ struct expand
 
 namespace resolve_variant
 {
-    
+
 template <typename Geometry>
 struct expand
 {
@@ -88,7 +95,7 @@ struct expand
         concepts::check<Box>();
         concepts::check<Geometry const>();
         concepts::check_concepts_and_equal_dimensions<Box, Geometry const>();
-        
+
         resolve_strategy::expand<Geometry>::apply(box, geometry, strategy);
     }
 };
@@ -101,19 +108,19 @@ struct expand<boost::variant<BOOST_VARIANT_ENUM_PARAMS(T)> >
     {
         Box& m_box;
         Strategy const& m_strategy;
-        
+
         visitor(Box& box, Strategy const& strategy)
             : m_box(box)
             , m_strategy(strategy)
         {}
-        
+
         template <typename Geometry>
         void operator()(Geometry const& geometry) const
         {
             return expand<Geometry>::apply(m_box, geometry, m_strategy);
         }
     };
-    
+
     template <class Box, typename Strategy>
     static inline void
     apply(Box& box,
@@ -124,10 +131,10 @@ struct expand<boost::variant<BOOST_VARIANT_ENUM_PARAMS(T)> >
                                     geometry);
     }
 };
-    
+
 } // namespace resolve_variant
-    
-    
+
+
 /***
 *!
 \brief Expands a box using the extend (envelope) of another geometry (box, point)

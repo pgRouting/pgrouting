@@ -12,12 +12,19 @@
 
 #include <iterator>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/util/math.hpp>
-
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/algorithms/dispatch/distance.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -92,7 +99,7 @@ public:
         typename RangeIterator,
         typename Strategy,
         typename Distance
-    >    
+    >
     static inline RangeIterator apply(Geometry const& geometry,
                                       RangeIterator first,
                                       RangeIterator last,
@@ -111,7 +118,7 @@ public:
         typename Geometry,
         typename RangeIterator,
         typename Strategy
-    >    
+    >
     static inline RangeIterator apply(Geometry const& geometry,
                                       RangeIterator first,
                                       RangeIterator last,

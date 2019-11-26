@@ -13,7 +13,11 @@
 #include <boost/type_traits/is_const.hpp>
 #include <boost/mpl/if.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_type.hpp>
+#else
+#include <boost/bgeometry/core/point_type.hpp>
+#endif
 
 
 namespace boost { namespace geometry

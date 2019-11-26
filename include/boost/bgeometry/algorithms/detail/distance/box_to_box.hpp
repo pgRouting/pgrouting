@@ -11,14 +11,19 @@
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_BOX_TO_BOX_HPP
 
 #include <boost/core/ignore_unused.hpp>
-
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/strategies/tags.hpp>
-
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
+#else
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/strategies/tags.hpp>
+#include <boost/bgeometry/algorithms/dispatch/distance.hpp>
+#endif
 
 
 namespace boost { namespace geometry

@@ -15,8 +15,13 @@
 #define BOOST_GEOMETRY_CORE_TAG_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/util/bare_type.hpp>
+#else
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/util/bare_type.hpp>
+#endif
 
 
 namespace boost { namespace geometry

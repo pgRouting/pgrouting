@@ -14,23 +14,35 @@
 #define BOOST_GEOMETRY_STRATEGIES_INTERSECTION_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/geometries/segment.hpp>
-
 #include <boost/geometry/policies/relate/intersection_points.hpp>
 #include <boost/geometry/policies/relate/direction.hpp>
 #include <boost/geometry/policies/relate/tupled.hpp>
-
 #include <boost/geometry/strategies/intersection.hpp>
 #include <boost/geometry/strategies/intersection_result.hpp>
 #include <boost/geometry/strategies/side.hpp>
-
 #include <boost/geometry/strategies/cartesian/intersection.hpp>
 #include <boost/geometry/strategies/cartesian/side_by_triangle.hpp>
-#include <boost/geometry/strategies/spherical/intersection.hpp>
-#include <boost/geometry/strategies/spherical/ssf.hpp>
-
+// #include <boost/geometry/strategies/spherical/intersection.hpp>
+// #include <boost/geometry/strategies/spherical/ssf.hpp>
 #include <boost/geometry/policies/robustness/segment_ratio_type.hpp>
+#else
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/geometries/segment.hpp>
+#include <boost/bgeometry/policies/relate/intersection_points.hpp>
+#include <boost/bgeometry/policies/relate/direction.hpp>
+#include <boost/bgeometry/policies/relate/tupled.hpp>
+#include <boost/bgeometry/strategies/intersection.hpp>
+#include <boost/bgeometry/strategies/intersection_result.hpp>
+#include <boost/bgeometry/strategies/side.hpp>
+#include <boost/bgeometry/strategies/cartesian/intersection.hpp>
+#include <boost/bgeometry/strategies/cartesian/side_by_triangle.hpp>
+// #include <boost/bgeometry/strategies/spherical/intersection.hpp>
+// #include <boost/bgeometry/strategies/spherical/ssf.hpp>
+#include <boost/bgeometry/policies/robustness/segment_ratio_type.hpp>
+#endif
 
 
 namespace boost { namespace geometry

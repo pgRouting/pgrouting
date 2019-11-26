@@ -14,8 +14,13 @@
 #ifndef BOOST_GEOMETRY_UTIL_ORDER_AS_DIRECTION_HPP
 #define BOOST_GEOMETRY_UTIL_ORDER_AS_DIRECTION_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_order.hpp>
 #include <boost/geometry/views/reversible_view.hpp>
+#else
+#include <boost/bgeometry/core/point_order.hpp>
+#include <boost/bgeometry/views/reversible_view.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

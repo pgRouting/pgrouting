@@ -14,10 +14,15 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_FOLLOW_HELPERS_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_FOLLOW_HELPERS_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
-
 #include <boost/geometry/util/condition.hpp>
 #include <boost/geometry/util/range.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/util/condition.hpp>
+#include <boost/bgeometry/util/range.hpp>
+#endif
 //#include <boost/geometry/algorithms/detail/sub_range.hpp>
 
 namespace boost { namespace geometry
@@ -82,7 +87,7 @@ struct for_each_disjoint_geometry_if<OpId, Geometry, Tag, true>
             if ( !cont )
                 break;
         }
-        
+
         return !boost::empty(geometry);
     }
 
@@ -125,7 +130,7 @@ struct for_each_disjoint_geometry_if<OpId, Geometry, Tag, true>
                     break;
             }
         }
-        
+
         return found;
     }
 };
@@ -174,7 +179,7 @@ public:
 
     bool operator()(segment_identifier const& sid) const
     {
-        return sid.multi_index == sid_ptr->multi_index;                
+        return sid.multi_index == sid_ptr->multi_index;
     }
 
     template <typename Point>
@@ -391,7 +396,7 @@ static inline bool is_ip_on_boundary(IntersectionPoint const& ip,
         // check if this point is a boundary
         res = boundary_checker.template is_endpoint_boundary<boundary_front>(ip);
     }
-            
+
     return res;
 }
 

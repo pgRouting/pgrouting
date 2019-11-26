@@ -12,11 +12,17 @@
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_TOPOLOGY_CHECK_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/equals/point_point.hpp>
 #include <boost/geometry/algorithms/detail/relate/less.hpp>
-
 #include <boost/geometry/util/has_nan_coordinate.hpp>
 #include <boost/geometry/util/range.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/equals/point_point.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/less.hpp>
+#include <boost/bgeometry/util/has_nan_coordinate.hpp>
+#include <boost/bgeometry/util/range.hpp>
+#endif
 
 
 namespace boost { namespace geometry {
@@ -186,7 +192,7 @@ private:
                     <
                         typename boost::range_value<MultiLinestring const>::type const
                     >::type point_reference;
-                
+
                 point_reference front_pt = range::front(ls);
                 point_reference back_pt = range::back(ls);
 
@@ -314,7 +320,7 @@ struct topology_check<Polygon, polygon_tag>
 {
     static const char interior = '2';
     static const char boundary = '1';
-    
+
     topology_check(Polygon const&) {}
 
     static bool has_interior() { return true; }
@@ -326,7 +332,7 @@ struct topology_check<MultiPolygon, multi_polygon_tag>
 {
     static const char interior = '2';
     static const char boundary = '1';
-    
+
     topology_check(MultiPolygon const&) {}
 
     static bool has_interior() { return true; }

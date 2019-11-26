@@ -11,7 +11,11 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_BOUNDS_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_BOUNDS_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/bounded_view.hpp>
+#else
+#include <boost/bgeometry/index/detail/bounded_view.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 

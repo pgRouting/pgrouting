@@ -27,6 +27,7 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/num_interior_rings.hpp>
 #include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
 #include <boost/geometry/core/access.hpp>
@@ -36,6 +37,17 @@
 #include <boost/geometry/geometries/concepts/check.hpp>
 #include <boost/geometry/geometries/variant.hpp>
 #include <boost/geometry/util/range.hpp>
+#else
+#include <boost/bgeometry/algorithms/num_interior_rings.hpp>
+#include <boost/bgeometry/algorithms/detail/convert_point_to_point.hpp>
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/mutable_range.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/geometries/variant.hpp>
+#include <boost/bgeometry/util/range.hpp>
+#endif
 
 
 namespace boost { namespace geometry

@@ -10,11 +10,17 @@
 #ifndef BOOST_GEOMETRY_ALGORITHS_DETAIL_DISTANCE_ITERATOR_SELECTOR_HPP
 #define BOOST_GEOMETRY_ALGORITHS_DETAIL_DISTANCE_ITERATOR_SELECTOR_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/iterators/point_iterator.hpp>
 #include <boost/geometry/iterators/segment_iterator.hpp>
+#else
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/iterators/point_iterator.hpp>
+#include <boost/bgeometry/iterators/segment_iterator.hpp>
+#endif
 
 
 namespace boost { namespace geometry

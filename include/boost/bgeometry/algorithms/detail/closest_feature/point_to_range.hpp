@@ -14,10 +14,17 @@
 
 #include <boost/range.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/core/closure.hpp>
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/util/math.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/core/closure.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -183,7 +190,7 @@ private:
             it_min1 = it_back;
             it_min2 = first;
         }
-    }    
+    }
 
 public:
     typedef typename std::pair<iterator_type, iterator_type> return_type;

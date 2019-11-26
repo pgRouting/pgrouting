@@ -18,21 +18,18 @@
 
 #include <algorithm>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/exception.hpp>
-
 #include <boost/geometry/geometries/concepts/point_concept.hpp>
 #include <boost/geometry/geometries/concepts/segment_concept.hpp>
-
 #include <boost/geometry/arithmetic/determinant.hpp>
 #include <boost/geometry/algorithms/detail/assign_values.hpp>
 #include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
 #include <boost/geometry/algorithms/detail/equals/point_point.hpp>
 #include <boost/geometry/algorithms/detail/recalculate.hpp>
-
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/promote_integral.hpp>
 #include <boost/geometry/util/select_calculation_type.hpp>
-
 #include <boost/geometry/strategies/agnostic/point_in_poly_winding.hpp>
 #include <boost/geometry/strategies/cartesian/area_surveyor.hpp>
 #include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
@@ -44,9 +41,34 @@
 #include <boost/geometry/strategies/side.hpp>
 #include <boost/geometry/strategies/side_info.hpp>
 #include <boost/geometry/strategies/within.hpp>
-
 #include <boost/geometry/policies/robustness/robust_point_type.hpp>
 #include <boost/geometry/policies/robustness/segment_ratio_type.hpp>
+#else
+#include <boost/bgeometry/core/exception.hpp>
+#include <boost/bgeometry/geometries/concepts/point_concept.hpp>
+#include <boost/bgeometry/geometries/concepts/segment_concept.hpp>
+#include <boost/bgeometry/arithmetic/determinant.hpp>
+#include <boost/bgeometry/algorithms/detail/assign_values.hpp>
+#include <boost/bgeometry/algorithms/detail/assign_indexed_point.hpp>
+#include <boost/bgeometry/algorithms/detail/equals/point_point.hpp>
+#include <boost/bgeometry/algorithms/detail/recalculate.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/util/promote_integral.hpp>
+#include <boost/bgeometry/util/select_calculation_type.hpp>
+#include <boost/bgeometry/strategies/agnostic/point_in_poly_winding.hpp>
+#include <boost/bgeometry/strategies/cartesian/area_surveyor.hpp>
+#include <boost/bgeometry/strategies/cartesian/distance_pythagoras.hpp>
+#include <boost/bgeometry/strategies/cartesian/envelope_segment.hpp>
+#include <boost/bgeometry/strategies/cartesian/side_by_triangle.hpp>
+#include <boost/bgeometry/strategies/covered_by.hpp>
+#include <boost/bgeometry/strategies/intersection.hpp>
+#include <boost/bgeometry/strategies/intersection_result.hpp>
+#include <boost/bgeometry/strategies/side.hpp>
+#include <boost/bgeometry/strategies/side_info.hpp>
+#include <boost/bgeometry/strategies/within.hpp>
+#include <boost/bgeometry/policies/robustness/robust_point_type.hpp>
+#include <boost/bgeometry/policies/robustness/segment_ratio_type.hpp>
+#endif
 
 
 #if defined(BOOST_GEOMETRY_DEBUG_ROBUSTNESS)
@@ -299,7 +321,7 @@ struct cartesian_segments
 
         sides.set<1>(side_strategy_type::apply(robust_a1, robust_a2, robust_b1),
                      side_strategy_type::apply(robust_a1, robust_a2, robust_b2));
-        
+
         if (sides.same<1>())
         {
             // Both points are at same side of other segment, we can leave
@@ -537,7 +559,7 @@ private:
         int const a2_wrt_b = position_value(oa_2, ob_1, ob_2);
         int const b1_wrt_a = position_value(ob_1, oa_1, oa_2);
         int const b2_wrt_a = position_value(ob_2, oa_1, oa_2);
-        
+
         // fix the ratios if necessary
         // CONSIDER: fixing ratios also in other cases, if they're inconsistent
         // e.g. if ratio == 1 or 0 (so IP at the endpoint)
@@ -554,7 +576,7 @@ private:
         {
             ra_from.assign(1, 1);
             rb_to.assign(0, 1);
-        } 
+        }
 
         if (a2_wrt_b == 1)
         {

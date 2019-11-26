@@ -12,10 +12,17 @@
 #define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_ENVELOPE_SEGMENT_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/envelope/segment.hpp>
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/strategies/envelope.hpp>
 #include <boost/geometry/util/select_calculation_type.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/envelope/segment.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/strategies/envelope.hpp>
+#include <boost/bgeometry/util/select_calculation_type.hpp>
+#endif
 
 
 namespace boost { namespace geometry

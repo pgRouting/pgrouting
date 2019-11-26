@@ -17,13 +17,21 @@
 
 #include <boost/range.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/closure.hpp>
 #include <boost/geometry/core/ring_type.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/iterators/closing_iterator.hpp>
-
 #include <boost/geometry/views/identity_view.hpp>
+#else
+#include <boost/bgeometry/core/closure.hpp>
+#include <boost/bgeometry/core/ring_type.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/iterators/closing_iterator.hpp>
+#include <boost/bgeometry/views/identity_view.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

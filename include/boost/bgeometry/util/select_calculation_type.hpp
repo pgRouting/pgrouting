@@ -23,7 +23,11 @@
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_void.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/util/select_coordinate_type.hpp>
+#else
+#include <boost/bgeometry/util/select_coordinate_type.hpp>
+#endif
 
 
 namespace boost { namespace geometry

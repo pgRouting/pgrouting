@@ -18,8 +18,13 @@
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_THROW_ON_EMPTY_INPUT_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/exception.hpp>
 #include <boost/geometry/algorithms/is_empty.hpp>
+#else
+#include <boost/bgeometry/core/exception.hpp>
+#include <boost/bgeometry/algorithms/is_empty.hpp>
+#endif
 
 #include <boost/throw_exception.hpp>
 

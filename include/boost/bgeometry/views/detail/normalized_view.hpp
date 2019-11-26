@@ -25,10 +25,17 @@
 #include <boost/range/iterator.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/views/detail/range_type.hpp>
 #include <boost/geometry/views/reversible_view.hpp>
 #include <boost/geometry/views/closeable_view.hpp>
 #include <boost/geometry/util/order_as_direction.hpp>
+#else
+#include <boost/bgeometry/views/detail/range_type.hpp>
+#include <boost/bgeometry/views/reversible_view.hpp>
+#include <boost/bgeometry/views/closeable_view.hpp>
+#include <boost/bgeometry/util/order_as_direction.hpp>
+#endif
 
 namespace boost { namespace geometry {
 
@@ -86,7 +93,7 @@ struct normalized_view
                 closeable_type const,
                 closeable_type
             >::type closeable;
-    
+
     explicit inline normalized_view(range & r)
         : m_reversible(r)
         , m_closeable(m_reversible)

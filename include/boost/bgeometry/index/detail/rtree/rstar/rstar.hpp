@@ -11,8 +11,14 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_RSTAR_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_RSTAR_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/rtree/rstar/insert.hpp>
 #include <boost/geometry/index/detail/rtree/rstar/choose_next_node.hpp>
 #include <boost/geometry/index/detail/rtree/rstar/redistribute_elements.hpp>
+#else
+#include <boost/bgeometry/index/detail/rtree/rstar/insert.hpp>
+#include <boost/bgeometry/index/detail/rtree/rstar/choose_next_node.hpp>
+#include <boost/bgeometry/index/detail/rtree/rstar/redistribute_elements.hpp>
+#endif
 
 #endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_RSTAR_HPP

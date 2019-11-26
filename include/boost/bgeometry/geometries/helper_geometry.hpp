@@ -10,6 +10,7 @@
 #ifndef BOOST_GEOMETRY_GEOMETRIES_HELPER_GEOMETRY_HPP
 #define BOOST_GEOMETRY_GEOMETRIES_HELPER_GEOMETRY_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/cs.hpp>
 #include <boost/geometry/core/coordinate_dimension.hpp>
 #include <boost/geometry/core/coordinate_type.hpp>
@@ -21,6 +22,19 @@
 #include <boost/geometry/geometries/point.hpp>
 
 #include <boost/geometry/algorithms/not_implemented.hpp>
+#else
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+
+#include <boost/bgeometry/geometries/box.hpp>
+#include <boost/bgeometry/geometries/point.hpp>
+
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#endif
 
 
 namespace boost { namespace geometry

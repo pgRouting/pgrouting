@@ -12,29 +12,41 @@
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_NODE_HPP
 
 #include <boost/container/vector.hpp>
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/varray.hpp>
-
 #include <boost/geometry/index/detail/rtree/node/concept.hpp>
-#include <boost/geometry/index/detail/rtree/node/pairs.hpp>
+// #include <boost/geometry/index/detail/rtree/node/pairs.hpp>
 #include <boost/geometry/index/detail/rtree/node/node_elements.hpp>
 #include <boost/geometry/index/detail/rtree/node/scoped_deallocator.hpp>
-
 //#include <boost/geometry/index/detail/rtree/node/weak_visitor.hpp>
 //#include <boost/geometry/index/detail/rtree/node/weak_dynamic.hpp>
 //#include <boost/geometry/index/detail/rtree/node/weak_static.hpp>
-
 #include <boost/geometry/index/detail/rtree/node/variant_visitor.hpp>
-#include <boost/geometry/index/detail/rtree/node/variant_dynamic.hpp>
-#include <boost/geometry/index/detail/rtree/node/variant_static.hpp>
-
+// #include <boost/geometry/index/detail/rtree/node/variant_dynamic.hpp>
+// #include <boost/geometry/index/detail/rtree/node/variant_static.hpp>
 #include <boost/geometry/index/detail/rtree/node/subtree_destroyer.hpp>
-
 #include <boost/geometry/algorithms/expand.hpp>
-
 #include <boost/geometry/index/detail/rtree/visitors/is_leaf.hpp>
-
 #include <boost/geometry/index/detail/algorithms/bounds.hpp>
-#include <boost/geometry/index/detail/is_bounding_geometry.hpp>
+// #include <boost/geometry/index/detail/is_bounding_geometry.hpp>
+#else
+#include <boost/bgeometry/index/detail/varray.hpp>
+#include <boost/bgeometry/index/detail/rtree/node/concept.hpp>
+// #include <boost/bgeometry/index/detail/rtree/node/pairs.hpp>
+#include <boost/bgeometry/index/detail/rtree/node/node_elements.hpp>
+#include <boost/bgeometry/index/detail/rtree/node/scoped_deallocator.hpp>
+//#include <boost/bgeometry/index/detail/rtree/node/weak_visitor.hpp>
+//#include <boost/bgeometry/index/detail/rtree/node/weak_dynamic.hpp>
+//#include <boost/bgeometry/index/detail/rtree/node/weak_static.hpp>
+#include <boost/bgeometry/index/detail/rtree/node/variant_visitor.hpp>
+// #include <boost/bgeometry/index/detail/rtree/node/variant_dynamic.hpp>
+// #include <boost/bgeometry/index/detail/rtree/node/variant_static.hpp>
+#include <boost/bgeometry/index/detail/rtree/node/subtree_destroyer.hpp>
+#include <boost/bgeometry/algorithms/expand.hpp>
+#include <boost/bgeometry/index/detail/rtree/visitors/is_leaf.hpp>
+#include <boost/bgeometry/index/detail/algorithms/bounds.hpp>
+// #include <boost/bgeometry/index/detail/is_bounding_geometry.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index {
 
@@ -46,7 +58,7 @@ template <typename Box, typename FwdIter, typename Translator>
 inline Box elements_box(FwdIter first, FwdIter last, Translator const& tr)
 {
     Box result;
-    
+
     // Only here to suppress 'uninitialized local variable used' warning
     // until the suggestion below is not implemented
     geometry::assign_inverse(result);

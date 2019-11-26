@@ -11,13 +11,19 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_BOUNDARY_CHECKER_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_BOUNDARY_CHECKER_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/util/range.hpp>
 #include <boost/geometry/algorithms/num_points.hpp>
 #include <boost/geometry/algorithms/detail/sub_range.hpp>
-
 #include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-
 #include <boost/geometry/util/has_nan_coordinate.hpp>
+#else
+#include <boost/bgeometry/util/range.hpp>
+#include <boost/bgeometry/algorithms/num_points.hpp>
+#include <boost/bgeometry/algorithms/detail/sub_range.hpp>
+#include <boost/bgeometry/algorithms/detail/equals/point_point.hpp>
+#include <boost/bgeometry/util/has_nan_coordinate.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

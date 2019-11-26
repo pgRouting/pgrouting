@@ -16,13 +16,19 @@
 
 #include <boost/type_traits/is_floating_point.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/core/coordinate_dimension.hpp>
 #include <boost/geometry/core/coordinate_type.hpp>
-
 #include <boost/geometry/util/math.hpp>
-
 #include <boost/geometry/views/detail/indexed_point_view.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/views/detail/indexed_point_view.hpp>
+#endif
 
 namespace boost { namespace geometry
 {
@@ -49,7 +55,7 @@ struct corner_by_epsilon
         typedef typename coordinate_type<Point>::type coord_type;
         coord_type const coord = get<I>(point);
         coord_type const eps = math::scaled_epsilon(coord);
-        
+
         set<I>(point, PlusOrMinus<coord_type>()(coord, eps));
 
         corner_by_epsilon<Point, PlusOrMinus, I+1>::apply(point);

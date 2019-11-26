@@ -18,9 +18,15 @@
 #include <boost/mpl/or.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/relate/interface.hpp>
 #include <boost/geometry/algorithms/not_implemented.hpp>
 #include <boost/geometry/core/tag.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/relate/interface.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#endif
 
 namespace boost { namespace geometry {
 

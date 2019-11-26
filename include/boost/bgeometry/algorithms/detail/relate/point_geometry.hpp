@@ -14,14 +14,17 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_POINT_GEOMETRY_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_POINT_GEOMETRY_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/within/point_in_geometry.hpp>
-//#include <boost/geometry/algorithms/within.hpp>
-//#include <boost/geometry/algorithms/covered_by.hpp>
-
 #include <boost/geometry/algorithms/detail/relate/result.hpp>
 #include <boost/geometry/algorithms/detail/relate/topology_check.hpp>
-
 #include <boost/geometry/util/condition.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/within/point_in_geometry.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/result.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/topology_check.hpp>
+#include <boost/bgeometry/util/condition.hpp>
+#endif
 
 namespace boost { namespace geometry
 {
@@ -167,7 +170,7 @@ struct geometry_point
 //            //}
 //            return result("F0FFFF**T");
 //        }
-//        else 
+//        else
 //        {
 //            /*if ( box_has_interior<Box>::apply(box) )
 //            {
@@ -193,7 +196,7 @@ struct geometry_point
 //            return result("0FTFFTFFT");
 //        else if ( geometry::covered_by(point, box) )
 //            return result("FF*0F*FFT");
-//        else 
+//        else
 //            return result("FF*FFT0FT");
 //    }
 //};

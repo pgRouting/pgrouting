@@ -21,16 +21,23 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/type_traits/is_same.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/coordinate_dimension.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/algorithms/detail/envelope/box.hpp>
 #include <boost/geometry/algorithms/detail/envelope/range_of_boxes.hpp>
 #include <boost/geometry/algorithms/detail/envelope/segment.hpp>
-
 #include <boost/geometry/algorithms/detail/expand/indexed.hpp>
-
 #include <boost/geometry/algorithms/dispatch/expand.hpp>
+#else
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/algorithms/detail/envelope/box.hpp>
+#include <boost/bgeometry/algorithms/detail/envelope/range_of_boxes.hpp>
+#include <boost/bgeometry/algorithms/detail/envelope/segment.hpp>
+#include <boost/bgeometry/algorithms/detail/expand/indexed.hpp>
+#include <boost/bgeometry/algorithms/dispatch/expand.hpp>
+#endif
 
 
 namespace boost { namespace geometry

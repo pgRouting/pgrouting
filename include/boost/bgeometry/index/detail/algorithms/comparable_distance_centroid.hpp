@@ -11,8 +11,13 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_COMPARABLE_DISTANCE_CENTROID_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_COMPARABLE_DISTANCE_CENTROID_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/algorithms/sum_for_indexable.hpp>
 #include <boost/geometry/index/detail/algorithms/diff_abs.hpp>
+#else
+#include <boost/bgeometry/index/detail/algorithms/sum_for_indexable.hpp>
+#include <boost/bgeometry/index/detail/algorithms/diff_abs.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 
@@ -48,7 +53,7 @@ struct sum_for_indexable_dimension<Point, BoxIndexable, box_tag, comparable_dist
         point_coord_t pt_c = geometry::get<DimensionIndex>(pt);
         indexable_coord_t ind_c_min = geometry::get<geometry::min_corner, DimensionIndex>(i);
         indexable_coord_t ind_c_max = geometry::get<geometry::max_corner, DimensionIndex>(i);
-        
+
         indexable_coord_t ind_c_avg = ind_c_min + (ind_c_max - ind_c_min) / 2;
         // TODO: awulkiew - is (ind_c_min + ind_c_max) / 2 safe?
 

@@ -20,32 +20,49 @@
 #include <boost/numeric/conversion/cast.hpp>
 #include <boost/type_traits/is_same.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/core/closure.hpp>
 #include <boost/geometry/core/coordinate_dimension.hpp>
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/util/calculation_type.hpp>
 #include <boost/geometry/util/condition.hpp>
 #include <boost/geometry/util/math.hpp>
-
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/strategies/tags.hpp>
-
 #include <boost/geometry/policies/compare.hpp>
-
 #include <boost/geometry/algorithms/equals.hpp>
 #include <boost/geometry/algorithms/intersects.hpp>
 #include <boost/geometry/algorithms/not_implemented.hpp>
-
 #include <boost/geometry/algorithms/detail/assign_box_corners.hpp>
 #include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
 #include <boost/geometry/algorithms/detail/distance/default_strategies.hpp>
 #include <boost/geometry/algorithms/detail/distance/is_comparable.hpp>
-
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/core/closure.hpp>
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/util/calculation_type.hpp>
+#include <boost/bgeometry/util/condition.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/strategies/tags.hpp>
+#include <boost/bgeometry/policies/compare.hpp>
+#include <boost/bgeometry/algorithms/equals.hpp>
+#include <boost/bgeometry/algorithms/intersects.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/algorithms/detail/assign_box_corners.hpp>
+#include <boost/bgeometry/algorithms/detail/assign_indexed_point.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/default_strategies.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/is_comparable.hpp>
+#include <boost/bgeometry/algorithms/dispatch/distance.hpp>
+#endif
 
 
 
@@ -88,7 +105,7 @@ private:
         <
             comparable_strategy, segment_point, box_point
         >::type comparable_return_type;
-    
+
 public:
     typedef typename strategy::distance::services::return_type
         <
@@ -119,7 +136,7 @@ public:
         // get box points
         std::vector<box_point> box_points(4);
         detail::assign_box_corners_oriented<true>(box, box_points);
- 
+
         comparable_return_type cd[6];
         for (unsigned int i = 0; i < 4; ++i)
         {
@@ -235,7 +252,7 @@ public:
         // get box points
         std::vector<box_point> box_points(4);
         detail::assign_box_corners_oriented<true>(box, box_points);
- 
+
         comparable_return_type cd[6];
         for (unsigned int i = 0; i < 4; ++i)
         {

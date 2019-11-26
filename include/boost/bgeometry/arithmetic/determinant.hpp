@@ -14,9 +14,15 @@
 
 #include <cstddef>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/geometries/concepts/point_concept.hpp>
 #include <boost/geometry/util/select_coordinate_type.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/geometries/concepts/point_concept.hpp>
+#include <boost/bgeometry/util/select_coordinate_type.hpp>
+#endif
 
 #include <boost/numeric/conversion/cast.hpp>
 

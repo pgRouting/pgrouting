@@ -23,10 +23,17 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/range/value_type.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/ring_type.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/util/bare_type.hpp>
+#else
+#include <boost/bgeometry/core/ring_type.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/util/bare_type.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

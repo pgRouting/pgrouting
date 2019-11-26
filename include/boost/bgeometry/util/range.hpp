@@ -32,8 +32,13 @@
 #include <boost/range/value_type.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/core/mutable_range.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/core/mutable_range.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace range {
 
@@ -325,7 +330,7 @@ erase(Range & rng,
 
     std::size_t const count = static_cast<std::size_t>(diff);
     BOOST_GEOMETRY_ASSERT(count <= boost::size(rng));
-    
+
     if ( count > 0 )
     {
         typename boost::range_difference<Range>::type const

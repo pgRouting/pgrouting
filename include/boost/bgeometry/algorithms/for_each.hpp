@@ -27,6 +27,7 @@
 #include <boost/type_traits/is_const.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/interior_iterator.hpp>
 #include <boost/geometry/algorithms/not_implemented.hpp>
 #include <boost/geometry/core/closure.hpp>
@@ -42,6 +43,23 @@
 
 #include <boost/geometry/util/add_const_if_c.hpp>
 #include <boost/geometry/util/range.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/core/closure.hpp>
+#include <boost/bgeometry/core/exterior_ring.hpp>
+#include <boost/bgeometry/core/interior_rings.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/tag_cast.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+
+#include <boost/bgeometry/geometries/segment.hpp>
+
+#include <boost/bgeometry/util/add_const_if_c.hpp>
+#include <boost/bgeometry/util/range.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -125,7 +143,7 @@ struct fe_range_per_segment_with_closure<open>
 {
     template <typename Range, typename Functor>
     static inline void apply(Range& range, Functor& f)
-    {    
+    {
         fe_range_per_segment_with_closure<closed>::apply(range, f);
 
         model::referring_segment

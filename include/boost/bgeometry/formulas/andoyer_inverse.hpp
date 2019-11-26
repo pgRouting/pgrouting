@@ -14,15 +14,23 @@
 
 #include <boost/math/constants/constants.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/radius.hpp>
 #include <boost/geometry/core/srs.hpp>
-
 #include <boost/geometry/util/condition.hpp>
 #include <boost/geometry/util/math.hpp>
-
 #include <boost/geometry/formulas/differential_quantities.hpp>
 #include <boost/geometry/formulas/flattening.hpp>
 #include <boost/geometry/formulas/result_inverse.hpp>
+#else
+#include <boost/bgeometry/core/radius.hpp>
+#include <boost/bgeometry/core/srs.hpp>
+#include <boost/bgeometry/util/condition.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/formulas/differential_quantities.hpp>
+#include <boost/bgeometry/formulas/flattening.hpp>
+#include <boost/bgeometry/formulas/result_inverse.hpp>
+#endif
 
 
 namespace boost { namespace geometry { namespace formula
@@ -214,7 +222,7 @@ private:
     static inline void normalize_azimuth(CT & azimuth, CT const& A, CT const& dA)
     {
         CT const c0 = 0;
-        
+
         if (A >= c0) // A indicates Eastern hemisphere
         {
             if (dA >= c0) // A altered towards 0

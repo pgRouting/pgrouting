@@ -21,11 +21,17 @@
 #include <boost/type_traits/remove_const.hpp>
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/ring_type.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/util/add_const_if_c.hpp>
-
+#else
+#include <boost/bgeometry/core/ring_type.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/util/add_const_if_c.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

@@ -16,8 +16,13 @@
 
 #include <boost/mpl/if.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/util/range.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/util/range.hpp>
+#endif
 
 namespace boost { namespace geometry {
 

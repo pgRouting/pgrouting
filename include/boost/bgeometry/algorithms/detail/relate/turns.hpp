@@ -15,14 +15,21 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_TURNS_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_TURNS_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/algorithms/detail/overlay/do_reverse.hpp>
 #include <boost/geometry/algorithms/detail/overlay/get_turns.hpp>
 #include <boost/geometry/algorithms/detail/overlay/get_turn_info.hpp>
-
 #include <boost/geometry/policies/robustness/get_rescale_policy.hpp>
 #include <boost/geometry/policies/robustness/no_rescale_policy.hpp>
-
+#else
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/algorithms/detail/overlay/do_reverse.hpp>
+#include <boost/bgeometry/algorithms/detail/overlay/get_turns.hpp>
+#include <boost/bgeometry/algorithms/detail/overlay/get_turn_info.hpp>
+#include <boost/bgeometry/policies/robustness/get_rescale_policy.hpp>
+#include <boost/bgeometry/policies/robustness/no_rescale_policy.hpp>
+#endif
 #include <boost/type_traits/is_base_of.hpp>
 
 
@@ -242,7 +249,7 @@ struct less_op_areal_areal
                     else if ( right_operation.operation == overlay::operation_intersection )
                         return false;
                 }
-                
+
                 return op_to_int_iuxc(left_operation) < op_to_int_iuxc(right_operation);
             }
         }

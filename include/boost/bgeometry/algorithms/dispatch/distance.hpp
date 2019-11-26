@@ -21,12 +21,21 @@
 #define BOOST_GEOMETRY_ALGORITHMS_DISPATCH_DISTANCE_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/reverse_dispatch.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tag_cast.hpp>
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/algorithms/not_implemented.hpp>
+#else
+#include <boost/bgeometry/core/reverse_dispatch.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tag_cast.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#endif
 
 
 namespace boost { namespace geometry

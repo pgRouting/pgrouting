@@ -20,20 +20,29 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_BACKWARD_COMPATIBILITY_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_BACKWARD_COMPATIBILITY_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/closure.hpp>
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/strategies/tags.hpp>
-
 #include <boost/geometry/algorithms/assign.hpp>
-
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
-
 #include <boost/geometry/algorithms/detail/distance/default_strategies.hpp>
 #include <boost/geometry/algorithms/detail/distance/point_to_geometry.hpp>
 #include <boost/geometry/algorithms/detail/distance/multipoint_to_geometry.hpp>
+#else
+#include <boost/bgeometry/core/closure.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/strategies/tags.hpp>
+#include <boost/bgeometry/algorithms/assign.hpp>
+#include <boost/bgeometry/algorithms/dispatch/distance.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/default_strategies.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/point_to_geometry.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/multipoint_to_geometry.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -228,7 +237,7 @@ struct distance
                 typename point_type<MultiGeometry>::type,
                 Strategy
             >::type ps_strategy_type;
-    
+
         return distance
             <
                 Point, MultiGeometry, ps_strategy_type,
@@ -270,7 +279,7 @@ struct distance
                 typename point_type<Geometry>::type,
                 Strategy
             >::type ps_strategy_type;
-    
+
         return distance
             <
                 Geometry, MultiPoint, ps_strategy_type,
@@ -298,7 +307,7 @@ struct distance
     typedef typename strategy::distance::services::return_type
         <
             Strategy,
-            typename point_type<MultiPoint>::type, 
+            typename point_type<MultiPoint>::type,
             typename point_type<MultiGeometry>::type
         >::type return_type;
 
@@ -312,7 +321,7 @@ struct distance
                 typename point_type<MultiGeometry>::type,
                 Strategy
             >::type ps_strategy_type;
-    
+
         return distance
             <
                 MultiPoint, MultiGeometry, ps_strategy_type,

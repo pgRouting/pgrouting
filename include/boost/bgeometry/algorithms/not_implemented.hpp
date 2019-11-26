@@ -23,7 +23,11 @@
 
 #include <boost/mpl/assert.hpp>
 #include <boost/mpl/identity.hpp>
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/tags.hpp>
+#else
+#include <boost/bgeometry/core/tags.hpp>
+#endif
 
 
 namespace boost { namespace geometry

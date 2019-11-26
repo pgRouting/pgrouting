@@ -11,6 +11,10 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_LINEAR_LINEAR_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_LINEAR_LINEAR_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/rtree/linear/redistribute_elements.hpp>
+#else
+#include <boost/bgeometry/index/detail/rtree/linear/redistribute_elements.hpp>
+#endif
 
 #endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_LINEAR_LINEAR_HPP

@@ -15,11 +15,19 @@
 #include <iterator>
 #include <utility>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
 #include <boost/geometry/index/rtree.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/algorithms/dispatch/distance.hpp>
+#include <boost/bgeometry/index/rtree.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -144,7 +152,7 @@ public:
         apply(rtree_first, rtree_last, queries_first, queries_last,
               strategy, rtree_min, qit_min, dist_min);
 
-        return std::make_pair(rtree_min, qit_min);        
+        return std::make_pair(rtree_min, qit_min);
     }
 
 

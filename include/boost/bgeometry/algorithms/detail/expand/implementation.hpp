@@ -20,8 +20,14 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_IMPLEMENTATION_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_IMPLEMENTATION_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/expand/point.hpp>
 #include <boost/geometry/algorithms/detail/expand/segment.hpp>
 #include <boost/geometry/algorithms/detail/expand/box.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/expand/point.hpp>
+#include <boost/bgeometry/algorithms/detail/expand/segment.hpp>
+#include <boost/bgeometry/algorithms/detail/expand/box.hpp>
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_IMPLEMENTATION_HPP

@@ -22,10 +22,17 @@
 #include <boost/type_traits/is_pointer.hpp>
 #include <boost/type_traits/remove_pointer.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/coordinate_type.hpp>
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/util/bare_type.hpp>
+#else
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/util/bare_type.hpp>
+#endif
 
 
 namespace boost { namespace geometry

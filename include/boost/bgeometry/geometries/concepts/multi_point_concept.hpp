@@ -21,7 +21,11 @@
 #include <boost/range/metafunctions.hpp>
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/geometries/concepts/point_concept.hpp>
+#else
+#include <boost/bgeometry/geometries/concepts/point_concept.hpp>
+#endif
 
 
 namespace boost { namespace geometry { namespace concepts

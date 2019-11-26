@@ -11,16 +11,25 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_REDISTRIBUTE_ELEMENTS_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_REDISTRIBUTE_ELEMENTS_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/algorithms/intersection_content.hpp>
 #include <boost/geometry/index/detail/algorithms/margin.hpp>
 #include <boost/geometry/index/detail/algorithms/nth_element.hpp>
 #include <boost/geometry/index/detail/algorithms/union_content.hpp>
-
 #include <boost/geometry/index/detail/bounded_view.hpp>
-
 #include <boost/geometry/index/detail/rtree/node/node.hpp>
 #include <boost/geometry/index/detail/rtree/visitors/insert.hpp>
 #include <boost/geometry/index/detail/rtree/visitors/is_leaf.hpp>
+#else
+#include <boost/bgeometry/index/detail/algorithms/intersection_content.hpp>
+#include <boost/bgeometry/index/detail/algorithms/margin.hpp>
+#include <boost/bgeometry/index/detail/algorithms/nth_element.hpp>
+#include <boost/bgeometry/index/detail/algorithms/union_content.hpp>
+#include <boost/bgeometry/index/detail/bounded_view.hpp>
+#include <boost/bgeometry/index/detail/rtree/node/node.hpp>
+#include <boost/bgeometry/index/detail/rtree/visitors/insert.hpp>
+#include <boost/bgeometry/index/detail/rtree/visitors/is_leaf.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index {
 
@@ -113,7 +122,7 @@ struct choose_split_axis_and_index_for_corner
 
         // copy elements
         Elements elements_copy(elements);                                                                       // MAY THROW, STRONG (alloc, copy)
-        
+
         size_t const index_first = parameters.get_min_elements();
         size_t const index_last = parameters.get_max_elements() - parameters.get_min_elements() + 2;
 
@@ -143,7 +152,7 @@ struct choose_split_axis_and_index_for_corner
 
             Box box1 = rtree::elements_box<Box>(elements_copy.begin(), elements_copy.begin() + i, translator);
             Box box2 = rtree::elements_box<Box>(elements_copy.begin() + i, elements_copy.end(), translator);
-            
+
             sum_of_margins += index::detail::comparable_margin(box1) + index::detail::comparable_margin(box2);
 
             content_type ovl = index::detail::intersection_content(box1, box2);
@@ -392,7 +401,7 @@ struct redistribute_elements<Value, Options, Translator, Box, Allocators, rstar_
     {
         typedef typename rtree::elements_type<Node>::type elements_type;
         typedef typename elements_type::value_type element_type;
-        
+
         elements_type & elements1 = rtree::elements(n);
         elements_type & elements2 = rtree::elements(second_node);
 

@@ -21,11 +21,17 @@
 
 #include <boost/variant/variant_fwd.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/coordinate_type.hpp>
-
 #include <boost/geometry/util/compress_variant.hpp>
 #include <boost/geometry/util/select_most_precise.hpp>
 #include <boost/geometry/util/transform_variant.hpp>
+#else
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/util/compress_variant.hpp>
+#include <boost/bgeometry/util/select_most_precise.hpp>
+#include <boost/bgeometry/util/transform_variant.hpp>
+#endif
 
 
 namespace boost { namespace geometry

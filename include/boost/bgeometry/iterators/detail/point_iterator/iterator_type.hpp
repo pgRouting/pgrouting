@@ -12,18 +12,25 @@
 
 #include <boost/range.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/algorithms/not_implemented.hpp>
-
 #include <boost/geometry/iterators/flatten_iterator.hpp>
 #include <boost/geometry/iterators/concatenate_iterator.hpp>
-
 #include <boost/geometry/iterators/detail/point_iterator/inner_range_type.hpp>
 #include <boost/geometry/iterators/detail/point_iterator/value_type.hpp>
-
 #include <boost/geometry/iterators/dispatch/point_iterator.hpp>
+#else
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/iterators/flatten_iterator.hpp>
+#include <boost/bgeometry/iterators/concatenate_iterator.hpp>
+#include <boost/bgeometry/iterators/detail/point_iterator/inner_range_type.hpp>
+#include <boost/bgeometry/iterators/detail/point_iterator/value_type.hpp>
+#include <boost/bgeometry/iterators/dispatch/point_iterator.hpp>
+#endif
 
 
 namespace boost { namespace geometry

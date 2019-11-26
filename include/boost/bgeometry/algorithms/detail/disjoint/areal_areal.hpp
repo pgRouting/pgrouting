@@ -21,14 +21,19 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_AREAL_AREAL_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_AREAL_AREAL_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_type.hpp>
-
 #include <boost/geometry/algorithms/covered_by.hpp>
 #include <boost/geometry/algorithms/detail/for_each_range.hpp>
 #include <boost/geometry/algorithms/detail/point_on_border.hpp>
-
 #include <boost/geometry/algorithms/detail/disjoint/linear_linear.hpp>
-
+#else
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/algorithms/covered_by.hpp>
+#include <boost/bgeometry/algorithms/detail/for_each_range.hpp>
+#include <boost/bgeometry/algorithms/detail/point_on_border.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/linear_linear.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

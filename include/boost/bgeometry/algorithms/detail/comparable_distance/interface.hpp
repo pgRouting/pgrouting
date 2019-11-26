@@ -19,13 +19,19 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_COMPARABLE_DISTANCE_INTERFACE_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_COMPARABLE_DISTANCE_INTERFACE_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/geometries/concepts/check.hpp>
-
 #include <boost/geometry/strategies/comparable_distance_result.hpp>
 #include <boost/geometry/strategies/default_comparable_distance_result.hpp>
 #include <boost/geometry/strategies/distance.hpp>
-
 #include <boost/geometry/algorithms/detail/distance/interface.hpp>
+#else
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/strategies/comparable_distance_result.hpp>
+#include <boost/bgeometry/strategies/default_comparable_distance_result.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/interface.hpp>
+#endif
 
 
 namespace boost { namespace geometry

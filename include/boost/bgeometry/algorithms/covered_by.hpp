@@ -20,8 +20,13 @@
 #define BOOST_GEOMETRY_ALGORITHMS_COVERED_BY_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/covered_by/interface.hpp>
 #include <boost/geometry/algorithms/detail/covered_by/implementation.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/covered_by/interface.hpp>
+#include <boost/bgeometry/algorithms/detail/covered_by/implementation.hpp>
+#endif
 
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_COVERED_BY_HPP

@@ -25,6 +25,7 @@
 
 #include <boost/type_traits/is_same.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/core/radian_access.hpp>
 #include <boost/geometry/core/coordinate_dimension.hpp>
@@ -32,19 +33,29 @@
 #include <boost/geometry/core/coordinate_type.hpp>
 #include <boost/geometry/core/cs.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/select_most_precise.hpp>
-
 #include <boost/geometry/strategies/strategy_transform.hpp>
-
 #include <boost/geometry/geometries/helper_geometry.hpp>
-
 #include <boost/geometry/algorithms/transform.hpp>
-
 #include <boost/geometry/algorithms/detail/normalize.hpp>
-
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/radian_access.hpp>
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#include <boost/bgeometry/core/coordinate_system.hpp>
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/util/select_most_precise.hpp>
+#include <boost/bgeometry/strategies/strategy_transform.hpp>
+#include <boost/bgeometry/geometries/helper_geometry.hpp>
+#include <boost/bgeometry/algorithms/transform.hpp>
+#include <boost/bgeometry/algorithms/detail/normalize.hpp>
+#include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
+#endif
 
 
 namespace boost { namespace geometry

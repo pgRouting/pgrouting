@@ -34,11 +34,15 @@
 #include <boost/iterator/reverse_iterator.hpp>
 #include <boost/iterator/iterator_concepts.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/assert.hpp>
 #include <boost/geometry/index/detail/exception.hpp>
-
 #include <boost/geometry/index/detail/varray_detail.hpp>
-
+#else
+#include <boost/bgeometry/index/detail/assert.hpp>
+#include <boost/bgeometry/index/detail/exception.hpp>
+#include <boost/bgeometry/index/detail/varray_detail.hpp>
+#endif
 #include <boost/concept_check.hpp>
 
 /*!
@@ -46,7 +50,7 @@
 */
 
 namespace boost { namespace geometry { namespace index { namespace detail {
-    
+
 namespace varray_detail {
 
 template <typename Value, std::size_t Capacity>
@@ -99,7 +103,7 @@ struct checker
     static inline void check_not_empty(Varray const& v)
     {
         BOOST_GEOMETRY_INDEX_ASSERT(!v.empty(), "the container is empty");
-        
+
         ::boost::ignore_unused_variable_warning(v);
     }
 
@@ -129,12 +133,12 @@ varray is a sequence container like boost::container::vector with contiguous sto
 change in size, along with the static allocation, low overhead, and fixed capacity of boost::array.
 
 A varray is a sequence that supports random access to elements, constant time insertion and
-removal of elements at the end, and linear time insertion and removal of elements at the beginning or 
+removal of elements at the end, and linear time insertion and removal of elements at the beginning or
 in the middle. The number of elements in a varray may vary dynamically up to a fixed capacity
-because elements are stored within the object itself similarly to an array. However, objects are 
+because elements are stored within the object itself similarly to an array. However, objects are
 initialized as they are inserted into varray unlike C arrays or std::array which must construct
 all elements on instantiation. The behavior of varray enables the use of statically allocated
-elements in cases with complex object lifetime requirements that would otherwise not be trivially 
+elements in cases with complex object lifetime requirements that would otherwise not be trivially
 possible.
 
 \par Error Handling
@@ -286,7 +290,7 @@ public:
         : m_size(0)
     {
         BOOST_CONCEPT_ASSERT((boost_concepts::ForwardTraversal<Iterator>)); // Make sure you passed a ForwardIterator
-        
+
         this->assign(first, last);                                                    // may throw
     }
 
@@ -325,7 +329,7 @@ public:
         : m_size(other.size())
     {
         errh::check_capacity(*this, other.size());                                  // may throw
-        
+
         namespace sv = varray_detail;
         sv::uninitialized_copy(other.begin(), other.end(), this->begin());          // may throw
     }
@@ -537,7 +541,7 @@ public:
         typedef typename
         vt::use_optimized_swap use_optimized_swap;
 
-        this->swap_dispatch(other, use_optimized_swap()); 
+        this->swap_dispatch(other, use_optimized_swap());
     }
 
     //! @pre <tt>count <= capacity()</tt>
@@ -599,7 +603,7 @@ public:
         else
         {
             errh::check_capacity(*this, count);                                     // may throw
-            
+
             std::uninitialized_fill(this->end(), this->begin() + count, value);     // may throw
         }
         m_size = count; // update end
@@ -643,7 +647,7 @@ public:
         typedef typename vt::disable_trivial_init dti;
 
         errh::check_capacity(*this, m_size + 1);                                    // may throw
-        
+
         namespace sv = varray_detail;
         sv::construct(dti(), this->end(), value);                                          // may throw
         ++m_size; // update end
@@ -813,7 +817,7 @@ public:
             namespace sv = varray_detail;
 
             difference_type to_move = std::distance(position, this->end());
-            
+
             // TODO - should following lines check for exception and revert to the old size?
 
             if ( count < static_cast<size_type>(to_move) )
@@ -914,9 +918,9 @@ public:
 
         errh::check_iterator_end_eq(*this, first);
         errh::check_iterator_end_eq(*this, last);
-        
+
         difference_type n = std::distance(first, last);
-        
+
         //TODO - add invalid range check?
         //BOOST_GEOMETRY_INDEX_ASSERT(0 <= n, "invalid range");
         //TODO - add this->size() check?
@@ -1111,7 +1115,7 @@ public:
                                                                                                     \
         return position;                                                                            \
     }                                                                                               \
-    
+
     BOOST_MOVE_ITERATE_0TO9(BOOST_GEOMETRY_INDEX_DETAIL_VARRAY_EMPLACE)
     #undef BOOST_GEOMETRY_INDEX_DETAIL_VARRAY_EMPLACE
 
@@ -1311,7 +1315,7 @@ public:
         return boost::addressof(*(this->ptr()));
     }
 
-    
+
     //! @brief Returns iterator to the first element.
     //!
     //! @return iterator to the first element contained in the vector.
@@ -1571,7 +1575,7 @@ private:
             typename varray<value_type, C>::aligned_storage_type
         >::type
         storage_type;
-        
+
         storage_type temp;
         Value * temp_ptr = reinterpret_cast<Value*>(temp.address());
 
@@ -1660,9 +1664,9 @@ private:
     void insert_dispatch(iterator position, Iterator first, Iterator last, boost::random_access_traversal_tag const&)
     {
         BOOST_CONCEPT_ASSERT((boost_concepts::RandomAccessTraversal<Iterator>)); // Make sure you passed a RandomAccessIterator
-        
+
         errh::check_iterator_end_eq(*this, position);
-        
+
         typename boost::iterator_difference<Iterator>::type
             count = std::distance(first, last);
 
@@ -1697,7 +1701,7 @@ private:
 
             std::ptrdiff_t d = std::distance(position, this->begin() + Capacity);
             std::size_t count = sv::uninitialized_copy_s(first, last, position, d);                     // may throw
-            
+
             errh::check_capacity(*this, count <= static_cast<std::size_t>(d) ? m_size + count : Capacity + 1);  // may throw
 
             m_size += count;
@@ -1706,7 +1710,7 @@ private:
         {
             typename boost::iterator_difference<Iterator>::type
                 count = std::distance(first, last);
-            
+
             errh::check_capacity(*this, m_size + count);                                                // may throw
 
             this->insert_in_the_middle(position, first, last, count);                                   // may throw
@@ -1904,7 +1908,7 @@ public:
         errh::check_capacity(*this, count);                                         // may throw
     }
 
-    
+
     // nothrow
     void reserve(size_type count)
     {

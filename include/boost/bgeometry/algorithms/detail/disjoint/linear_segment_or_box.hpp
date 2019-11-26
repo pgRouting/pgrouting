@@ -22,18 +22,23 @@
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_LINEAR_SEGMENT_OR_BOX_HPP
 
 #include <boost/range.hpp>
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/util/range.hpp>
-
 #include <boost/geometry/core/closure.hpp>
-
 #include <boost/geometry/geometries/segment.hpp>
-
 #include <boost/geometry/algorithms/not_implemented.hpp>
-
 #include <boost/geometry/views/closeable_view.hpp>
-
 #include <boost/geometry/algorithms/detail/disjoint/multirange_geometry.hpp>
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
+#else
+#include <boost/bgeometry/util/range.hpp>
+#include <boost/bgeometry/core/closure.hpp>
+#include <boost/bgeometry/geometries/segment.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/views/closeable_view.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/multirange_geometry.hpp>
+#include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
+#endif
 
 
 namespace boost { namespace geometry

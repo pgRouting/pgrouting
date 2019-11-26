@@ -21,11 +21,15 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_POINT_GEOMETRY_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_POINT_GEOMETRY_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/covered_by.hpp>
-
 #include <boost/geometry/algorithms/detail/disjoint/linear_linear.hpp>
-
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
+#else
+#include <boost/bgeometry/algorithms/covered_by.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/linear_linear.hpp>
+#include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
+#endif
 
 
 namespace boost { namespace geometry

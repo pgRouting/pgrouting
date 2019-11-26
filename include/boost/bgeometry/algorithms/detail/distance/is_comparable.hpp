@@ -12,7 +12,11 @@
 
 #include <boost/type_traits/is_same.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/strategies/distance.hpp>
+#else
+#include <boost/bgeometry/strategies/distance.hpp>
+#endif
 
 
 namespace boost { namespace geometry

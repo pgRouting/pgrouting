@@ -32,6 +32,7 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/closure.hpp>
 #include <boost/geometry/core/cs.hpp>
 #include <boost/geometry/core/coordinate_dimension.hpp>
@@ -60,6 +61,36 @@
 #include <boost/geometry/algorithms/is_empty.hpp>
 
 #include <boost/geometry/algorithms/detail/centroid/translating_transformer.hpp>
+#else
+#include <boost/bgeometry/core/closure.hpp>
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#include <boost/bgeometry/core/exception.hpp>
+#include <boost/bgeometry/core/exterior_ring.hpp>
+#include <boost/bgeometry/core/interior_rings.hpp>
+#include <boost/bgeometry/core/tag_cast.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+
+#include <boost/bgeometry/algorithms/assign.hpp>
+#include <boost/bgeometry/algorithms/convert.hpp>
+#include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
+#include <boost/bgeometry/algorithms/detail/point_on_border.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/strategies/centroid.hpp>
+#include <boost/bgeometry/strategies/concepts/centroid_concept.hpp>
+#include <boost/bgeometry/strategies/default_strategy.hpp>
+#include <boost/bgeometry/views/closeable_view.hpp>
+
+#include <boost/bgeometry/util/for_each_coordinate.hpp>
+#include <boost/bgeometry/util/select_coordinate_type.hpp>
+
+#include <boost/bgeometry/algorithms/is_empty.hpp>
+
+#include <boost/bgeometry/algorithms/detail/centroid/translating_transformer.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -252,11 +283,11 @@ struct centroid_range
         {
             // prepare translation transformer
             translating_transformer<Range> transformer(*boost::begin(range));
-            
+
             typename Strategy::state_type state;
             centroid_range_state<Closure>::apply(range, transformer,
                                                  strategy, state);
-            
+
             if ( strategy.result(state, centroid) )
             {
                 // translate the result back
@@ -310,10 +341,10 @@ struct centroid_polygon
             // prepare translation transformer
             translating_transformer<Polygon>
                 transformer(*boost::begin(exterior_ring(poly)));
-            
+
             typename Strategy::state_type state;
             centroid_polygon_state::apply(poly, transformer, strategy, state);
-            
+
             if ( strategy.result(state, centroid) )
             {
                 // translate the result back
@@ -390,7 +421,7 @@ struct centroid_multi
             transformer.apply_reverse(centroid);
             return true;
         }
-        
+
         return false;
     }
 };

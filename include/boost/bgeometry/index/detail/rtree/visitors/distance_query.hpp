@@ -138,7 +138,7 @@ public:
 
         active_branch_list_type active_branch_list;
         active_branch_list.reserve(m_parameters.get_max_elements());
-        
+
         elements_type const& elements = rtree::elements(n);
 
         // fill array of nodes meeting predicates
@@ -172,7 +172,7 @@ public:
         // if there aren't any nodes in ABL - return
         if ( active_branch_list.empty() )
             return;
-        
+
         // sort array
         std::sort(active_branch_list.begin(), active_branch_list.end(), abl_less);
 
@@ -220,7 +220,7 @@ public:
     {
         typedef typename rtree::elements_type<leaf>::type elements_type;
         elements_type const& elements = rtree::elements(n);
-        
+
         // search leaf for closest value meeting predicates
         for (typename elements_type::const_iterator it = elements.begin();
             it != elements.end(); ++it)
@@ -300,7 +300,7 @@ public:
     typedef index::detail::predicates_element<DistancePredicateIndex, Predicates> nearest_predicate_access;
     typedef typename nearest_predicate_access::type nearest_predicate_type;
     typedef typename indexable_type<Translator>::type indexable_type;
-    
+
     typedef index::detail::calculate_distance<nearest_predicate_type, indexable_type, value_tag> calculate_value_distance;
     typedef index::detail::calculate_distance<nearest_predicate_type, Box, bounds_tag> calculate_node_distance;
     typedef typename calculate_value_distance::result_type value_distance_type;
@@ -497,7 +497,7 @@ public:
         // store distance to the furthest neighbour
         bool not_enough_neighbors = neighbors.size() < max_count();
         value_distance_type greatest_distance = !not_enough_neighbors ? neighbors.back().first : (std::numeric_limits<value_distance_type>::max)();
-        
+
         // search leaf for closest value meeting predicates
         for ( typename elements_type::const_iterator it = elements.begin() ; it != elements.end() ; ++it)
         {

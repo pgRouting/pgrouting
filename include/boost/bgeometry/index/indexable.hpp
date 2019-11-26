@@ -12,7 +12,11 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/tuple/tuple.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/is_indexable.hpp>
+#else
+#include <boost/bgeometry/index/detail/is_indexable.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 
@@ -40,7 +44,7 @@ struct indexable
 
     /*!
     \brief Return indexable extracted from the value.
-    
+
     \param v The value.
     \return The indexable.
     */
@@ -72,7 +76,7 @@ struct indexable<std::pair<Indexable, T2>, false>
 
     /*!
     \brief Return indexable extracted from the value.
-    
+
     \param v The value.
     \return The indexable.
     */
@@ -106,7 +110,7 @@ struct indexable<boost::tuple<Indexable, T1, T2, T3, T4, T5, T6, T7, T8, T9>, fa
 
     /*!
     \brief Return indexable extracted from the value.
-    
+
     \param v The value.
     \return The indexable.
     */
@@ -148,7 +152,7 @@ struct indexable<std::tuple<Indexable, Args...>, false>
 
     /*!
     \brief Return indexable extracted from the value.
-    
+
     \param v The value.
     \return The indexable.
     */
@@ -182,7 +186,7 @@ struct indexable
 
     /*!
     \brief Return indexable extracted from the value.
-    
+
     \param v The value.
     \return The indexable.
     */

@@ -112,7 +112,7 @@ public:
     {
         return r.m_visitor.is_end();
     }
-    
+
 private:
     visitor_type m_visitor;
 };

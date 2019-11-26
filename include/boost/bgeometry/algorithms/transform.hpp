@@ -25,6 +25,7 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/assign.hpp>
 #include <boost/geometry/algorithms/clear.hpp>
 #include <boost/geometry/algorithms/detail/interior_iterator.hpp>
@@ -40,6 +41,23 @@
 #include <boost/geometry/geometries/concepts/check.hpp>
 #include <boost/geometry/strategies/default_strategy.hpp>
 #include <boost/geometry/strategies/transform.hpp>
+#else
+#include <boost/bgeometry/algorithms/assign.hpp>
+#include <boost/bgeometry/algorithms/clear.hpp>
+#include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
+#include <boost/bgeometry/algorithms/num_interior_rings.hpp>
+
+#include <boost/bgeometry/core/cs.hpp>
+#include <boost/bgeometry/core/exterior_ring.hpp>
+#include <boost/bgeometry/core/interior_rings.hpp>
+#include <boost/bgeometry/core/mutable_range.hpp>
+#include <boost/bgeometry/core/ring_type.hpp>
+#include <boost/bgeometry/core/tag_cast.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/strategies/default_strategy.hpp>
+#include <boost/bgeometry/strategies/transform.hpp>
+#endif
 
 
 namespace boost { namespace geometry

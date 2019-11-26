@@ -14,7 +14,11 @@
 #include <deque>
 #include <boost/static_assert.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/adaptors/query.hpp>
+#else
+#include <boost/bgeometry/index/adaptors/query.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index {
 

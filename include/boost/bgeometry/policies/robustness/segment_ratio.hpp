@@ -16,9 +16,15 @@
 #include <boost/config.hpp>
 #include <boost/rational.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/promote_floating_point.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/util/promote_floating_point.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

@@ -20,7 +20,11 @@
 #include <boost/range/concepts.hpp>
 #include <boost/range/metafunctions.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/geometries/concepts/polygon_concept.hpp>
+#else
+#include <boost/bgeometry/geometries/concepts/polygon_concept.hpp>
+#endif
 
 
 namespace boost { namespace geometry { namespace concepts

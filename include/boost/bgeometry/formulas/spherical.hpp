@@ -11,21 +11,30 @@
 #ifndef BOOST_GEOMETRY_FORMULAS_SPHERICAL_HPP
 #define BOOST_GEOMETRY_FORMULAS_SPHERICAL_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/coordinate_system.hpp>
 #include <boost/geometry/core/coordinate_type.hpp>
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/core/radian_access.hpp>
-
-//#include <boost/geometry/arithmetic/arithmetic.hpp>
 #include <boost/geometry/arithmetic/cross_product.hpp>
 #include <boost/geometry/arithmetic/dot_product.hpp>
-
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/normalize_spheroidal_coordinates.hpp>
 #include <boost/geometry/util/select_coordinate_type.hpp>
+#else
+#include <boost/bgeometry/core/coordinate_system.hpp>
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/radian_access.hpp>
+#include <boost/bgeometry/arithmetic/cross_product.hpp>
+#include <boost/bgeometry/arithmetic/dot_product.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/util/normalize_spheroidal_coordinates.hpp>
+#include <boost/bgeometry/util/select_coordinate_type.hpp>
+#endif
 
 namespace boost { namespace geometry {
-    
+
 namespace formula {
 
 template <typename T>

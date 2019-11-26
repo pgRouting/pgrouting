@@ -23,12 +23,19 @@
 
 #include <cstddef>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/core/coordinate_dimension.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
 #include <boost/geometry/strategies/disjoint.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
+#include <boost/bgeometry/strategies/disjoint.hpp>
+#endif
 
 namespace boost { namespace geometry
 {

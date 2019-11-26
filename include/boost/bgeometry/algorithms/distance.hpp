@@ -20,7 +20,12 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DISTANCE_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DISTANCE_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/distance/interface.hpp>
 #include <boost/geometry/algorithms/detail/distance/implementation.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/distance/interface.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/implementation.hpp>
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DISTANCE_HPP

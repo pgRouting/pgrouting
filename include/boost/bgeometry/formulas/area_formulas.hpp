@@ -11,7 +11,11 @@
 #ifndef BOOST_GEOMETRY_FORMULAS_AREA_FORMULAS_HPP
 #define BOOST_GEOMETRY_FORMULAS_AREA_FORMULAS_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/formulas/flattening.hpp>
+#else
+#include <boost/bgeometry/formulas/flattening.hpp>
+#endif
 #include <boost/math/special_functions/hypot.hpp>
 
 namespace boost { namespace geometry { namespace formula

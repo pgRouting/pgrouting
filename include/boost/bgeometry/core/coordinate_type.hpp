@@ -17,10 +17,17 @@
 
 #include <boost/mpl/assert.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/util/bare_type.hpp>
 #include <boost/geometry/util/promote_floating_point.hpp>
+#else
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/util/bare_type.hpp>
+#include <boost/bgeometry/util/promote_floating_point.hpp>
+#endif
 
 
 namespace boost { namespace geometry

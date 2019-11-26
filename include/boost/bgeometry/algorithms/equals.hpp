@@ -22,8 +22,13 @@
 #define BOOST_GEOMETRY_ALGORITHMS_EQUALS_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/equals/interface.hpp>
 #include <boost/geometry/algorithms/detail/equals/implementation.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/equals/interface.hpp>
+#include <boost/bgeometry/algorithms/detail/equals/implementation.hpp>
+#endif
 
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_EQUALS_HPP

@@ -20,8 +20,13 @@
 #define BOOST_GEOMETRY_ALGORITHMS_WITHIN_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/within/interface.hpp>
 #include <boost/geometry/algorithms/detail/within/implementation.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/within/interface.hpp>
+#include <boost/bgeometry/algorithms/detail/within/implementation.hpp>
+#endif
 
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_WITHIN_HPP

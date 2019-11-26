@@ -12,7 +12,11 @@
 #include <boost/range/iterator.hpp>
 #include <boost/range/value_type.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/interior_type.hpp>
+#else
+#include <boost/bgeometry/core/interior_type.hpp>
+#endif
 
 namespace boost { namespace geometry
 {
@@ -31,7 +35,7 @@ struct interior_iterator
 {
     typedef typename boost::range_iterator
         <
-            typename geometry::interior_type<Geometry>::type        
+            typename geometry::interior_type<Geometry>::type
         >::type type;
 };
 

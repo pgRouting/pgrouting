@@ -26,28 +26,43 @@
 #include <boost/range.hpp>
 #include <boost/type_traits/is_same.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/closure.hpp>
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/core/exterior_ring.hpp>
 #include <boost/geometry/core/interior_rings.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/util/math.hpp>
-
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/strategies/tags.hpp>
-
 #include <boost/geometry/algorithms/assign.hpp>
 #include <boost/geometry/algorithms/covered_by.hpp>
 #include <boost/geometry/algorithms/within.hpp>
-
 #include <boost/geometry/algorithms/detail/closest_feature/geometry_to_range.hpp>
 #include <boost/geometry/algorithms/detail/closest_feature/point_to_range.hpp>
 #include <boost/geometry/algorithms/detail/distance/is_comparable.hpp>
 #include <boost/geometry/algorithms/detail/distance/iterator_selector.hpp>
-
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
+#else
+#include <boost/bgeometry/core/closure.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/exterior_ring.hpp>
+#include <boost/bgeometry/core/interior_rings.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/strategies/tags.hpp>
+#include <boost/bgeometry/algorithms/assign.hpp>
+#include <boost/bgeometry/algorithms/covered_by.hpp>
+#include <boost/bgeometry/algorithms/within.hpp>
+#include <boost/bgeometry/algorithms/detail/closest_feature/geometry_to_range.hpp>
+#include <boost/bgeometry/algorithms/detail/closest_feature/point_to_range.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/is_comparable.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/iterator_selector.hpp>
+#include <boost/bgeometry/algorithms/dispatch/distance.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -391,7 +406,7 @@ struct distance
 template <typename Point, typename Polygon, typename Strategy>
 struct distance
     <
-        Point, Polygon, Strategy, point_tag, polygon_tag, 
+        Point, Polygon, Strategy, point_tag, polygon_tag,
         strategy_tag_distance_point_segment, false
     > : detail::distance::point_to_polygon
         <

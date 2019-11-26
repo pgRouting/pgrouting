@@ -24,17 +24,25 @@
 #include <boost/range.hpp>
 #include <boost/static_assert.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/core/ring_type.hpp>
-
 #include <boost/geometry/geometries/concepts/check.hpp>
-
 #include <boost/geometry/algorithms/assign.hpp>
 #include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
 #include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-
 #include <boost/geometry/util/condition.hpp>
+#else
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/ring_type.hpp>
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/algorithms/assign.hpp>
+#include <boost/bgeometry/algorithms/detail/convert_point_to_point.hpp>
+#include <boost/bgeometry/algorithms/detail/equals/point_point.hpp>
+#include <boost/bgeometry/util/condition.hpp>
+#endif
 
 
 namespace boost { namespace geometry

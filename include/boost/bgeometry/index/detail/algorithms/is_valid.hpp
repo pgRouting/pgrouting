@@ -12,7 +12,11 @@
 #define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_IS_VALID_HPP
 
 #include <cstddef>
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 

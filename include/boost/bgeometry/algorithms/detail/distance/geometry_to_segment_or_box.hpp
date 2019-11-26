@@ -14,28 +14,39 @@
 
 #include <boost/range.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/strategies/tags.hpp>
-
 #include <boost/geometry/algorithms/assign.hpp>
 #include <boost/geometry/algorithms/intersects.hpp>
 #include <boost/geometry/algorithms/num_points.hpp>
-
 #include <boost/geometry/iterators/point_iterator.hpp>
 #include <boost/geometry/iterators/segment_iterator.hpp>
-
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
-
 #include <boost/geometry/algorithms/detail/closest_feature/geometry_to_range.hpp>
 #include <boost/geometry/algorithms/detail/closest_feature/point_to_range.hpp>
-
 #include <boost/geometry/algorithms/detail/distance/is_comparable.hpp>
-
 #include <boost/geometry/util/condition.hpp>
+#else
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/strategies/tags.hpp>
+#include <boost/bgeometry/algorithms/assign.hpp>
+#include <boost/bgeometry/algorithms/intersects.hpp>
+#include <boost/bgeometry/algorithms/num_points.hpp>
+#include <boost/bgeometry/iterators/point_iterator.hpp>
+#include <boost/bgeometry/iterators/segment_iterator.hpp>
+#include <boost/bgeometry/algorithms/dispatch/distance.hpp>
+#include <boost/bgeometry/algorithms/detail/closest_feature/geometry_to_range.hpp>
+#include <boost/bgeometry/algorithms/detail/closest_feature/point_to_range.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/is_comparable.hpp>
+#include <boost/bgeometry/util/condition.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -54,7 +65,7 @@ template
 >
 struct segment_or_box_point_range_closure
     : not_implemented<SegmentOrBox>
-{};    
+{};
 
 template <typename Segment>
 struct segment_or_box_point_range_closure<Segment, segment_tag>
@@ -211,7 +222,7 @@ public:
 
         assign_segment_or_box_points
             <
-                SegmentOrBox, 
+                SegmentOrBox,
                 std::vector<segment_or_box_point>
             >::apply(segment_or_box, seg_or_box_points);
 
@@ -298,7 +309,7 @@ public:
 
 
     static inline return_type
-    apply(SegmentOrBox const& segment_or_box, Geometry const& geometry, 
+    apply(SegmentOrBox const& segment_or_box, Geometry const& geometry,
           Strategy const& strategy, bool check_intersection = true)
     {
         return apply(geometry, segment_or_box, strategy, check_intersection);

@@ -28,15 +28,21 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/coordinate_dimension.hpp>
 #include <boost/geometry/core/reverse_dispatch.hpp>
-
 #include <boost/geometry/geometries/concepts/check.hpp>
-
 #include <boost/geometry/algorithms/not_implemented.hpp>
-
 #include <boost/geometry/strategies/default_strategy.hpp>
 #include <boost/geometry/strategies/relate.hpp>
+#else
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#include <boost/bgeometry/core/reverse_dispatch.hpp>
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/strategies/default_strategy.hpp>
+#include <boost/bgeometry/strategies/relate.hpp>
+#endif
 
 
 namespace boost { namespace geometry

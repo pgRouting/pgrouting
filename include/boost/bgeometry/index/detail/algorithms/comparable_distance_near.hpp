@@ -11,7 +11,11 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_COMPARABLE_DISTANCE_NEAR_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_COMPARABLE_DISTANCE_NEAR_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/index/detail/algorithms/sum_for_indexable.hpp>
+#else
+#include <boost/bgeometry/index/detail/algorithms/sum_for_indexable.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 

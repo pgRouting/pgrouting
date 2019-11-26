@@ -16,7 +16,11 @@
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/iterator/iterator_categories.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/assert.hpp>
+#else
+#include <boost/bgeometry/core/assert.hpp>
+#endif
 
 namespace boost { namespace geometry
 {
@@ -216,7 +220,7 @@ private:
             }
             while ( empty(m_outer_it) );
             m_inner_it = AccessInnerEnd::apply(*m_outer_it);
-        }        
+        }
         --m_inner_it;
     }
 };

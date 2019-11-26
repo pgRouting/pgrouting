@@ -30,6 +30,7 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/interior_iterator.hpp>
 #include <boost/geometry/algorithms/assign.hpp>
 #include <boost/geometry/algorithms/convert.hpp>
@@ -44,6 +45,22 @@
 #include <boost/geometry/geometries/ring.hpp>
 
 #include <boost/geometry/io/wkt/detail/prefix.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
+#include <boost/bgeometry/algorithms/assign.hpp>
+#include <boost/bgeometry/algorithms/convert.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/point_point.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/core/exterior_ring.hpp>
+#include <boost/bgeometry/core/interior_rings.hpp>
+#include <boost/bgeometry/core/ring_type.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+
+#include <boost/bgeometry/geometries/concepts/check.hpp>
+#include <boost/bgeometry/geometries/ring.hpp>
+
+#include <boost/bgeometry/io/wkt/detail/prefix.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -51,8 +68,8 @@ namespace boost { namespace geometry
 
 // Silence warning C4512: 'boost::geometry::wkt_manipulator<Geometry>' : assignment operator could not be generated
 #if defined(_MSC_VER)
-#pragma warning(push)  
-#pragma warning(disable : 4512)  
+#pragma warning(push)
+#pragma warning(disable : 4512)
 #endif
 
 #ifndef DOXYGEN_NO_DETAIL
@@ -153,7 +170,7 @@ struct wkt_range
         }
 
         // optionally, close range to ring by repeating the first point
-        if (force_closed 
+        if (force_closed
             && boost::size(range) > 1
             && detail::disjoint::disjoint_point_point(*begin, *(end - 1)))
         {
@@ -507,7 +524,7 @@ inline wkt_manipulator<Geometry> wkt(Geometry const& geometry)
 }
 
 #if defined(_MSC_VER)
-#pragma warning(pop)  
+#pragma warning(pop)
 #endif
 
 }} // namespace boost::geometry

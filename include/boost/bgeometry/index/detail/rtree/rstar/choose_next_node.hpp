@@ -13,15 +13,23 @@
 
 #include <algorithm>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/expand.hpp>
-
 #include <boost/geometry/index/detail/algorithms/content.hpp>
 #include <boost/geometry/index/detail/algorithms/intersection_content.hpp>
 #include <boost/geometry/index/detail/algorithms/nth_element.hpp>
 #include <boost/geometry/index/detail/algorithms/union_content.hpp>
-
 #include <boost/geometry/index/detail/rtree/node/node.hpp>
 #include <boost/geometry/index/detail/rtree/visitors/is_leaf.hpp>
+#else
+#include <boost/bgeometry/algorithms/expand.hpp>
+#include <boost/bgeometry/index/detail/algorithms/content.hpp>
+#include <boost/bgeometry/index/detail/algorithms/intersection_content.hpp>
+#include <boost/bgeometry/index/detail/algorithms/nth_element.hpp>
+#include <boost/bgeometry/index/detail/algorithms/union_content.hpp>
+#include <boost/bgeometry/index/detail/rtree/node/node.hpp>
+#include <boost/bgeometry/index/detail/rtree/visitors/is_leaf.hpp>
+#endif
 
 namespace boost { namespace geometry { namespace index {
 
@@ -51,7 +59,7 @@ public:
         ::boost::ignore_unused_variable_warning(parameters);
 
         children_type & children = rtree::elements(n);
-        
+
         // children are leafs
         if ( node_relative_level <= 1 )
         {

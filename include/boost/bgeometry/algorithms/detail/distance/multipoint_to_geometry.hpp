@@ -12,18 +12,25 @@
 
 #include <boost/range.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/strategies/tags.hpp>
-
 #include <boost/geometry/algorithms/covered_by.hpp>
-
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
-
 #include <boost/geometry/algorithms/detail/check_iterator_range.hpp>
 #include <boost/geometry/algorithms/detail/distance/range_to_geometry_rtree.hpp>
+#else
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/strategies/tags.hpp>
+#include <boost/bgeometry/algorithms/covered_by.hpp>
+#include <boost/bgeometry/algorithms/dispatch/distance.hpp>
+#include <boost/bgeometry/algorithms/detail/check_iterator_range.hpp>
+#include <boost/bgeometry/algorithms/detail/distance/range_to_geometry_rtree.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -42,7 +49,7 @@ struct multipoint_to_multipoint
             Strategy,
             typename point_type<MultiPoint1>::type,
             typename point_type<MultiPoint2>::type
-        >::type return_type;   
+        >::type return_type;
 
     static inline return_type apply(MultiPoint1 const& multipoint1,
                                     MultiPoint2 const& multipoint2,

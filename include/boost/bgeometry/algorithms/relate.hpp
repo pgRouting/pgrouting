@@ -11,7 +11,12 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_RELATE_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_RELATE_HPP
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/algorithms/detail/relate/interface.hpp>
 #include <boost/geometry/algorithms/detail/relate/implementation.hpp>
+#else
+#include <boost/bgeometry/algorithms/detail/relate/interface.hpp>
+#include <boost/bgeometry/algorithms/detail/relate/implementation.hpp>
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_RELATE_HPP

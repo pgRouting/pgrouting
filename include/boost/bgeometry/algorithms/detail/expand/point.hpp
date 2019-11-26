@@ -27,22 +27,33 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/type_traits/is_same.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/core/coordinate_dimension.hpp>
 #include <boost/geometry/core/coordinate_system.hpp>
 #include <boost/geometry/core/coordinate_type.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/select_coordinate_type.hpp>
-
 #include <boost/geometry/strategies/compare.hpp>
 #include <boost/geometry/policies/compare.hpp>
-
 #include <boost/geometry/algorithms/detail/normalize.hpp>
 #include <boost/geometry/algorithms/detail/envelope/transform_units.hpp>
-
 #include <boost/geometry/algorithms/dispatch/expand.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/core/coordinate_dimension.hpp>
+#include <boost/bgeometry/core/coordinate_system.hpp>
+#include <boost/bgeometry/core/coordinate_type.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/util/select_coordinate_type.hpp>
+#include <boost/bgeometry/strategies/compare.hpp>
+#include <boost/bgeometry/policies/compare.hpp>
+#include <boost/bgeometry/algorithms/detail/normalize.hpp>
+#include <boost/bgeometry/algorithms/detail/envelope/transform_units.hpp>
+#include <boost/bgeometry/algorithms/dispatch/expand.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -172,7 +183,7 @@ struct point_loop_on_spheroid
             && math::equals(math::abs(b_lat_min), constants::max_latitude()))
         {
             // the box degenerates to either the north or the south pole;
-            // the only important coordinate here is the pole's latitude, 
+            // the only important coordinate here is the pole's latitude,
             // as the longitude can be anything;
             // we thus take into account the box's latitude only and return
             geometry::set<min_corner, 0>(box, p_lon);
@@ -298,7 +309,6 @@ struct expand
             StrategyLess, StrategyGreater, dimension<Point>::value
         >
 {};
-
 
 } // namespace dispatch
 #endif // DOXYGEN_NO_DISPATCH

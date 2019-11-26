@@ -15,12 +15,17 @@
 #define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_DISTANCE_PYTHAGORAS_HPP
 
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/access.hpp>
-
 #include <boost/geometry/strategies/distance.hpp>
-
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/calculation_type.hpp>
+#else
+#include <boost/bgeometry/core/access.hpp>
+#include <boost/bgeometry/strategies/distance.hpp>
+#include <boost/bgeometry/util/math.hpp>
+#include <boost/bgeometry/util/calculation_type.hpp>
+#endif
 
 
 namespace boost { namespace geometry

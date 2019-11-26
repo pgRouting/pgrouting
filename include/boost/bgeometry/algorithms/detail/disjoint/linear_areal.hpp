@@ -25,6 +25,7 @@
 
 #include <boost/range.hpp>
 
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/core/closure.hpp>
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/core/ring_type.hpp>
@@ -33,20 +34,36 @@
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tag_cast.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/algorithms/covered_by.hpp>
 #include <boost/geometry/algorithms/not_implemented.hpp>
-
 #include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
 #include <boost/geometry/algorithms/detail/check_iterator_range.hpp>
 #include <boost/geometry/algorithms/detail/point_on_border.hpp>
-
 #include <boost/geometry/algorithms/detail/disjoint/multirange_geometry.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/linear_segment_or_box.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/point_box.hpp>
 #include <boost/geometry/algorithms/detail/disjoint/segment_box.hpp>
-
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
+#else
+#include <boost/bgeometry/core/closure.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/ring_type.hpp>
+#include <boost/bgeometry/core/exterior_ring.hpp>
+#include <boost/bgeometry/core/interior_rings.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tag_cast.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/algorithms/covered_by.hpp>
+#include <boost/bgeometry/algorithms/not_implemented.hpp>
+#include <boost/bgeometry/algorithms/detail/assign_indexed_point.hpp>
+#include <boost/bgeometry/algorithms/detail/check_iterator_range.hpp>
+#include <boost/bgeometry/algorithms/detail/point_on_border.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/multirange_geometry.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/linear_segment_or_box.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/point_box.hpp>
+#include <boost/bgeometry/algorithms/detail/disjoint/segment_box.hpp>
+#include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
+#endif
 
 
 namespace boost { namespace geometry
@@ -158,7 +175,7 @@ private:
                         ring_type, closure<ring_type>::value, Segment
                     >
             > unary_predicate_type;
-                
+
         return check_iterator_range
             <
                 unary_predicate_type

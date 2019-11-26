@@ -25,21 +25,31 @@
 #include <deque>
 
 #include <boost/range.hpp>
+#if BOOST_Geometry_VERSION_OK
 #include <boost/geometry/util/range.hpp>
-
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/core/tag.hpp>
 #include <boost/geometry/core/tags.hpp>
-
 #include <boost/geometry/algorithms/detail/overlay/turn_info.hpp>
 #include <boost/geometry/algorithms/detail/overlay/get_turns.hpp>
 #include <boost/geometry/algorithms/detail/overlay/do_reverse.hpp>
-
 #include <boost/geometry/policies/disjoint_interrupt_policy.hpp>
 #include <boost/geometry/policies/robustness/no_rescale_policy.hpp>
 #include <boost/geometry/policies/robustness/segment_ratio_type.hpp>
-
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
+#else
+#include <boost/bgeometry/util/range.hpp>
+#include <boost/bgeometry/core/point_type.hpp>
+#include <boost/bgeometry/core/tag.hpp>
+#include <boost/bgeometry/core/tags.hpp>
+#include <boost/bgeometry/algorithms/detail/overlay/turn_info.hpp>
+#include <boost/bgeometry/algorithms/detail/overlay/get_turns.hpp>
+#include <boost/bgeometry/algorithms/detail/overlay/do_reverse.hpp>
+#include <boost/bgeometry/policies/disjoint_interrupt_policy.hpp>
+#include <boost/bgeometry/policies/robustness/no_rescale_policy.hpp>
+#include <boost/bgeometry/policies/robustness/segment_ratio_type.hpp>
+#include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
+#endif
 
 
 namespace boost { namespace geometry
