@@ -39,8 +39,6 @@
 #include <boost/geometry/algorithms/assign.hpp>
 #include <boost/geometry/algorithms/covered_by.hpp>
 #include <boost/geometry/algorithms/within.hpp>
-// #include <boost/geometry/algorithms/detail/closest_feature/geometry_to_range.hpp>
-#include <boost/geometry/algorithms/detail/closest_feature/point_to_range.hpp>
 #include <boost/geometry/algorithms/detail/distance/is_comparable.hpp>
 #include <boost/geometry/algorithms/detail/distance/iterator_selector.hpp>
 #include <boost/geometry/algorithms/dispatch/distance.hpp>
@@ -57,8 +55,6 @@
 #include <boost/bgeometry/algorithms/assign.hpp>
 #include <boost/bgeometry/algorithms/covered_by.hpp>
 #include <boost/bgeometry/algorithms/within.hpp>
-// #include <boost/bgeometry/algorithms/detail/closest_feature/geometry_to_range.hpp>
-#include <boost/bgeometry/algorithms/detail/closest_feature/point_to_range.hpp>
 #include <boost/bgeometry/algorithms/detail/distance/is_comparable.hpp>
 #include <boost/bgeometry/algorithms/detail/distance/iterator_selector.hpp>
 #include <boost/bgeometry/algorithms/dispatch/distance.hpp>
@@ -86,6 +82,7 @@ struct point_to_point
 };
 
 
+#if 0
 template
 <
     typename Point,
@@ -263,7 +260,6 @@ public:
 };
 
 
-#if 0
 template
 <
     typename Point,
@@ -381,6 +377,7 @@ struct distance
 {};
 
 
+#if 0
 // Point-line version 2, where point-segment strategy is specified
 template <typename Point, typename Linestring, typename Strategy>
 struct distance
@@ -415,6 +412,7 @@ struct distance
             Point, Polygon, closure<Polygon>::value, Strategy
         >
 {};
+#endif
 
 
 // Point-segment version 2, with point-segment strategy
