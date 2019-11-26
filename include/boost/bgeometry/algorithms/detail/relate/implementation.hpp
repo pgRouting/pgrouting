@@ -19,24 +19,24 @@
 #include <boost/geometry/core/tags.hpp>
 #include <boost/geometry/algorithms/detail/relate/interface.hpp>
 #include <boost/geometry/algorithms/detail/relate/point_point.hpp>
-#include <boost/geometry/algorithms/detail/relate/point_geometry.hpp>
-#include <boost/geometry/algorithms/detail/relate/linear_linear.hpp>
-#include <boost/geometry/algorithms/detail/relate/linear_areal.hpp>
-#include <boost/geometry/algorithms/detail/relate/multi_point_geometry.hpp>
-#include <boost/geometry/algorithms/detail/relate/areal_areal.hpp>
-#include <boost/geometry/strategies/intersection.hpp>
-#include <boost/geometry/strategies/within.hpp>
+// #include <boost/geometry/algorithms/detail/relate/point_geometry.hpp>
+// #include <boost/geometry/algorithms/detail/relate/linear_linear.hpp>
+// #include <boost/geometry/algorithms/detail/relate/linear_areal.hpp>
+// #include <boost/geometry/algorithms/detail/relate/multi_point_geometry.hpp>
+// #include <boost/geometry/algorithms/detail/relate/areal_areal.hpp>
+// #include <boost/geometry/strategies/intersection.hpp>
+// #include <boost/geometry/strategies/within.hpp>
 #else
 #include <boost/bgeometry/core/tags.hpp>
 #include <boost/bgeometry/algorithms/detail/relate/interface.hpp>
 #include <boost/bgeometry/algorithms/detail/relate/point_point.hpp>
-#include <boost/bgeometry/algorithms/detail/relate/point_geometry.hpp>
-#include <boost/bgeometry/algorithms/detail/relate/linear_linear.hpp>
-#include <boost/bgeometry/algorithms/detail/relate/linear_areal.hpp>
-#include <boost/bgeometry/algorithms/detail/relate/multi_point_geometry.hpp>
-#include <boost/bgeometry/algorithms/detail/relate/areal_areal.hpp>
-#include <boost/bgeometry/strategies/intersection.hpp>
-#include <boost/bgeometry/strategies/within.hpp>
+// #include <boost/bgeometry/algorithms/detail/relate/point_geometry.hpp>
+// #include <boost/bgeometry/algorithms/detail/relate/linear_linear.hpp>
+// #include <boost/bgeometry/algorithms/detail/relate/linear_areal.hpp>
+// #include <boost/bgeometry/algorithms/detail/relate/multi_point_geometry.hpp>
+// #include <boost/bgeometry/algorithms/detail/relate/areal_areal.hpp>
+// #include <boost/bgeometry/strategies/intersection.hpp>
+// #include <boost/bgeometry/strategies/within.hpp>
 #endif
 
 namespace boost { namespace geometry {
@@ -81,6 +81,7 @@ struct relate<MultiPoint1, MultiPoint2, multi_point_tag, multi_point_tag, 0, 0, 
 //{};
 
 
+#if 0
 template <typename Point, typename Geometry, typename Tag2, int TopDim2>
 struct relate<Point, Geometry, point_tag, Tag2, 0, TopDim2, true>
     : detail::relate::point_geometry<Point, Geometry>
@@ -107,7 +108,6 @@ struct relate<Linear1, Linear2, Tag1, Tag2, 1, 1, true>
     : detail::relate::linear_linear<Linear1, Linear2>
 {};
 
-
 template <typename Linear, typename Areal, typename Tag1, typename Tag2>
 struct relate<Linear, Areal, Tag1, Tag2, 1, 2, true>
     : detail::relate::linear_areal<Linear, Areal>
@@ -123,6 +123,7 @@ template <typename Areal1, typename Areal2, typename Tag1, typename Tag2>
 struct relate<Areal1, Areal2, Tag1, Tag2, 2, 2, true>
     : detail::relate::areal_areal<Areal1, Areal2>
 {};
+#endif
 
 } // namespace dispatch
 #endif // DOXYGEN_NO_DISPATCH
