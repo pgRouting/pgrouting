@@ -13,15 +13,10 @@
 
 #include <boost/type_traits/is_same.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/expand_by_epsilon.hpp>
-#include <boost/geometry/util/condition.hpp>
-#include <boost/geometry/index/detail/algorithms/content.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/expand_by_epsilon.hpp>
 #include <boost/bgeometry/util/condition.hpp>
+
 #include <boost/bgeometry/index/detail/algorithms/content.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index {
 

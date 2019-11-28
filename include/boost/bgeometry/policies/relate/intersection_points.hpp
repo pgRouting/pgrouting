@@ -17,17 +17,10 @@
 #include <algorithm>
 #include <string>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/strategies/side_info.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/assign_indexed_point.hpp>
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/assert.hpp>
 #include <boost/bgeometry/strategies/side_info.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

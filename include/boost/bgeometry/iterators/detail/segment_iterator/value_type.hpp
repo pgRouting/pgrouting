@@ -15,17 +15,10 @@
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_reference.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/iterators/point_iterator.hpp>
-#include <boost/geometry/util/bare_type.hpp>
-#include <boost/geometry/geometries/segment.hpp>
-#include <boost/geometry/geometries/pointing_segment.hpp>
-#else
 #include <boost/bgeometry/iterators/point_iterator.hpp>
 #include <boost/bgeometry/util/bare_type.hpp>
 #include <boost/bgeometry/geometries/segment.hpp>
 #include <boost/bgeometry/geometries/pointing_segment.hpp>
-#endif
 
 
 namespace boost { namespace geometry

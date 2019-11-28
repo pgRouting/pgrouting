@@ -16,15 +16,9 @@
 
 #include <boost/type_traits/is_floating_point.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/coordinate_dimension.hpp>
 #include <boost/bgeometry/core/coordinate_type.hpp>
-#endif
 
 #include <boost/math/special_functions/fpclassify.hpp>
 

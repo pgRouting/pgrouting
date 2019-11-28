@@ -20,31 +20,20 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_IMPLEMENTATION_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_IMPLEMENTATION_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/algorithms/is_empty.hpp>
-#include <boost/geometry/algorithms/detail/envelope/box.hpp>
-#include <boost/geometry/algorithms/detail/envelope/linear.hpp>
-#include <boost/geometry/algorithms/detail/envelope/multipoint.hpp>
-#include <boost/geometry/algorithms/detail/envelope/point.hpp>
-#include <boost/geometry/algorithms/detail/envelope/range.hpp>
-#include <boost/geometry/algorithms/detail/envelope/segment.hpp>
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-#else
 #include <boost/bgeometry/core/exterior_ring.hpp>
 #include <boost/bgeometry/core/interior_rings.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/algorithms/is_empty.hpp>
+
 #include <boost/bgeometry/algorithms/detail/envelope/box.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/linear.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/multipoint.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/point.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/range.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/segment.hpp>
+
 #include <boost/bgeometry/algorithms/dispatch/envelope.hpp>
-#endif
 
 
 namespace boost { namespace geometry

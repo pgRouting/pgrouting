@@ -18,32 +18,6 @@
 
 #include <algorithm>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/exception.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-#include <boost/geometry/geometries/concepts/segment_concept.hpp>
-#include <boost/geometry/arithmetic/determinant.hpp>
-#include <boost/geometry/algorithms/detail/assign_values.hpp>
-#include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
-#include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-#include <boost/geometry/algorithms/detail/recalculate.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/promote_integral.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-// #include <boost/geometry/strategies/agnostic/point_in_poly_winding.hpp>
-#include <boost/geometry/strategies/cartesian/area_surveyor.hpp>
-#include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
-#include <boost/geometry/strategies/cartesian/envelope_segment.hpp>
-#include <boost/geometry/strategies/cartesian/side_by_triangle.hpp>
-#include <boost/geometry/strategies/covered_by.hpp>
-#include <boost/geometry/strategies/intersection.hpp>
-#include <boost/geometry/strategies/intersection_result.hpp>
-#include <boost/geometry/strategies/side.hpp>
-#include <boost/geometry/strategies/side_info.hpp>
-#include <boost/geometry/strategies/within.hpp>
-#include <boost/geometry/policies/robustness/robust_point_type.hpp>
-#include <boost/geometry/policies/robustness/segment_ratio_type.hpp>
-#else
 #include <boost/bgeometry/core/exception.hpp>
 #include <boost/bgeometry/geometries/concepts/point_concept.hpp>
 #include <boost/bgeometry/geometries/concepts/segment_concept.hpp>
@@ -55,7 +29,6 @@
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/util/promote_integral.hpp>
 #include <boost/bgeometry/util/select_calculation_type.hpp>
-// #include <boost/bgeometry/strategies/agnostic/point_in_poly_winding.hpp>
 #include <boost/bgeometry/strategies/cartesian/area_surveyor.hpp>
 #include <boost/bgeometry/strategies/cartesian/distance_pythagoras.hpp>
 #include <boost/bgeometry/strategies/cartesian/envelope_segment.hpp>
@@ -68,12 +41,6 @@
 #include <boost/bgeometry/strategies/within.hpp>
 #include <boost/bgeometry/policies/robustness/robust_point_type.hpp>
 #include <boost/bgeometry/policies/robustness/segment_ratio_type.hpp>
-#endif
-
-
-#if defined(BOOST_GEOMETRY_DEBUG_ROBUSTNESS)
-#  include <boost/geometry/io/wkt/write.hpp>
-#endif
 
 
 namespace boost { namespace geometry

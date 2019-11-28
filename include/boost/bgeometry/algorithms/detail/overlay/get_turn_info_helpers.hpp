@@ -14,11 +14,7 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_TURN_INFO_HELPERS_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_TURN_INFO_HELPERS_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/policies/robustness/no_rescale_policy.hpp>
-#else
 #include <boost/bgeometry/policies/robustness/no_rescale_policy.hpp>
-#endif
 
 namespace boost { namespace geometry {
 

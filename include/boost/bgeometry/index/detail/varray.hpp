@@ -34,15 +34,11 @@
 #include <boost/iterator/reverse_iterator.hpp>
 #include <boost/iterator/iterator_concepts.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/assert.hpp>
-#include <boost/geometry/index/detail/exception.hpp>
-#include <boost/geometry/index/detail/varray_detail.hpp>
-#else
 #include <boost/bgeometry/index/detail/assert.hpp>
 #include <boost/bgeometry/index/detail/exception.hpp>
+
 #include <boost/bgeometry/index/detail/varray_detail.hpp>
-#endif
+
 #include <boost/concept_check.hpp>
 
 /*!

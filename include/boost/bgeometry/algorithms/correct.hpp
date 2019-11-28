@@ -32,24 +32,6 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/interior_iterator.hpp>
-
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/mutable_range.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-
-#include <boost/geometry/algorithms/area.hpp>
-#include <boost/geometry/algorithms/disjoint.hpp>
-#include <boost/geometry/algorithms/detail/multi_modify.hpp>
-#include <boost/geometry/util/order_as_direction.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
 
 #include <boost/bgeometry/core/closure.hpp>
@@ -66,7 +48,6 @@
 #include <boost/bgeometry/algorithms/disjoint.hpp>
 #include <boost/bgeometry/algorithms/detail/multi_modify.hpp>
 #include <boost/bgeometry/util/order_as_direction.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

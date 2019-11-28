@@ -24,25 +24,17 @@
 #include <boost/numeric/conversion/bounds.hpp>
 #include <boost/numeric/conversion/cast.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-#include <boost/geometry/algorithms/append.hpp>
-#include <boost/geometry/algorithms/clear.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/util/for_each_coordinate.hpp>
-#else
 #include <boost/bgeometry/arithmetic/arithmetic.hpp>
 #include <boost/bgeometry/algorithms/append.hpp>
 #include <boost/bgeometry/algorithms/clear.hpp>
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/exterior_ring.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/geometries/concepts/check.hpp>
+
+
 #include <boost/bgeometry/util/for_each_coordinate.hpp>
-#endif
 
 
 namespace boost { namespace geometry

@@ -25,27 +25,16 @@
 
 #include <boost/numeric/conversion/cast.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/convert.hpp>
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/strategies/transform.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/promote_floating_point.hpp>
-#include <boost/geometry/util/select_coordinate_type.hpp>
-#else
 #include <boost/bgeometry/algorithms/convert.hpp>
 #include <boost/bgeometry/arithmetic/arithmetic.hpp>
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/radian_access.hpp>
 #include <boost/bgeometry/core/coordinate_dimension.hpp>
 #include <boost/bgeometry/strategies/transform.hpp>
+
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/util/promote_floating_point.hpp>
 #include <boost/bgeometry/util/select_coordinate_type.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

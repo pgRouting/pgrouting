@@ -11,11 +11,7 @@
 #ifndef BOOST_GEOMETRY_INDEX_DISTANCE_PREDICATES_HPP
 #define BOOST_GEOMETRY_INDEX_DISTANCE_PREDICATES_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/distance_predicates.hpp>
-#else
 #include <boost/bgeometry/index/detail/distance_predicates.hpp>
-#endif
 
 /*!
 \defgroup nearest_relations Nearest relations (boost::geometry::index::)

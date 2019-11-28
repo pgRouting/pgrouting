@@ -20,23 +20,14 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_DEFAULT_STRATEGIES_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_DEFAULT_STRATEGIES_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/reverse_dispatch.hpp>
-#include <boost/geometry/strategies/distance.hpp>
-#else
 #include <boost/bgeometry/core/cs.hpp>
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tag_cast.hpp>
 #include <boost/bgeometry/core/tags.hpp>
 #include <boost/bgeometry/core/point_type.hpp>
 #include <boost/bgeometry/core/reverse_dispatch.hpp>
+
 #include <boost/bgeometry/strategies/distance.hpp>
-#endif
 
 
 namespace boost { namespace geometry

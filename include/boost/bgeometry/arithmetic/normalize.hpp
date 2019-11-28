@@ -11,17 +11,11 @@
 #define BOOST_GEOMETRY_ARITHMETIC_NORMALIZE_HPP
 
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-#include <boost/geometry/arithmetic/dot_product.hpp>
-#include <boost/geometry/util/math.hpp>
-#else
 #include <boost/bgeometry/core/coordinate_type.hpp>
+
 #include <boost/bgeometry/arithmetic/arithmetic.hpp>
 #include <boost/bgeometry/arithmetic/dot_product.hpp>
 #include <boost/bgeometry/util/math.hpp>
-#endif
 
 
 namespace boost { namespace geometry

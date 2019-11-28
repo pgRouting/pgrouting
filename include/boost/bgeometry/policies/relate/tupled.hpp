@@ -13,11 +13,7 @@
 #include <string>
 
 #include <boost/tuple/tuple.hpp>
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/strategies/side_info.hpp>
-#else
 #include <boost/bgeometry/strategies/side_info.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

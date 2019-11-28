@@ -32,36 +32,6 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/exception.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-
-#include <boost/geometry/algorithms/assign.hpp>
-#include <boost/geometry/algorithms/convert.hpp>
-#include <boost/geometry/algorithms/detail/interior_iterator.hpp>
-#include <boost/geometry/algorithms/detail/point_on_border.hpp>
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#include <boost/geometry/strategies/centroid.hpp>
-#include <boost/geometry/strategies/concepts/centroid_concept.hpp>
-#include <boost/geometry/strategies/default_strategy.hpp>
-#include <boost/geometry/views/closeable_view.hpp>
-
-#include <boost/geometry/util/for_each_coordinate.hpp>
-#include <boost/geometry/util/select_coordinate_type.hpp>
-
-#include <boost/geometry/algorithms/is_empty.hpp>
-
-#include <boost/geometry/algorithms/detail/centroid/translating_transformer.hpp>
-#else
 #include <boost/bgeometry/core/closure.hpp>
 #include <boost/bgeometry/core/cs.hpp>
 #include <boost/bgeometry/core/coordinate_dimension.hpp>
@@ -90,7 +60,6 @@
 #include <boost/bgeometry/algorithms/is_empty.hpp>
 
 #include <boost/bgeometry/algorithms/detail/centroid/translating_transformer.hpp>
-#endif
 
 
 namespace boost { namespace geometry

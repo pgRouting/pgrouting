@@ -19,18 +19,11 @@
 #include <boost/range.hpp>
 #include <boost/range/adaptor/reversed.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/views/identity_view.hpp>
-#else
 #include <boost/bgeometry/core/ring_type.hpp>
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tags.hpp>
-#include <boost/bgeometry/views/identity_view.hpp>
-#endif
 
+#include <boost/bgeometry/views/identity_view.hpp>
 
 namespace boost { namespace geometry
 {

@@ -19,12 +19,7 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_ENVELOPE_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_ENVELOPE_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/envelope/interface.hpp>
-#include <boost/geometry/algorithms/detail/envelope/implementation.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/envelope/interface.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/implementation.hpp>
-#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_ENVELOPE_HPP

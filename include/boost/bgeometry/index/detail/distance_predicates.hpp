@@ -12,19 +12,12 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_DISTANCE_PREDICATES_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_DISTANCE_PREDICATES_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/algorithms/comparable_distance_near.hpp>
-#include <boost/geometry/index/detail/algorithms/comparable_distance_far.hpp>
-#include <boost/geometry/index/detail/algorithms/comparable_distance_centroid.hpp>
-#include <boost/geometry/index/detail/algorithms/path_intersection.hpp>
-#include <boost/geometry/index/detail/tags.hpp>
-#else
 #include <boost/bgeometry/index/detail/algorithms/comparable_distance_near.hpp>
 #include <boost/bgeometry/index/detail/algorithms/comparable_distance_far.hpp>
 #include <boost/bgeometry/index/detail/algorithms/comparable_distance_centroid.hpp>
 #include <boost/bgeometry/index/detail/algorithms/path_intersection.hpp>
+
 #include <boost/bgeometry/index/detail/tags.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 

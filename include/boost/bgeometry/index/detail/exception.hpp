@@ -16,11 +16,7 @@
 #include <boost/throw_exception.hpp>
 #else
 #include <cstdlib>
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/assert.hpp>
-#else
 #include <boost/bgeometry/index/detail/assert.hpp>
-#endif
 #endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {

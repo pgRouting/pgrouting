@@ -21,17 +21,10 @@
 #include <boost/concept/assert.hpp>
 #include <boost/range.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-#else
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tags.hpp>
 
 #include <boost/bgeometry/geometries/concepts/point_concept.hpp>
-#endif
 
 #include <boost/config.hpp>
 #ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST

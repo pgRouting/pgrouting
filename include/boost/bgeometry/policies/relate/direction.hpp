@@ -15,19 +15,12 @@
 
 #include <boost/concept_check.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/arithmetic/determinant.hpp>
-#include <boost/geometry/strategies/side_info.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-#else
 #include <boost/bgeometry/arithmetic/determinant.hpp>
 #include <boost/bgeometry/strategies/side_info.hpp>
+
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/util/select_calculation_type.hpp>
 #include <boost/bgeometry/util/select_most_precise.hpp>
-#endif
 
 
 namespace boost { namespace geometry

@@ -21,13 +21,9 @@
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERSECTS_INTERFACE_HPP
 
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/interface.hpp>
-#else
 #include <boost/bgeometry/geometries/concepts/check.hpp>
+
 #include <boost/bgeometry/algorithms/detail/disjoint/interface.hpp>
-#endif
 
 
 namespace boost { namespace geometry

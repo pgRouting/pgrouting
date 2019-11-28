@@ -17,19 +17,11 @@
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/assert.hpp>
 #include <boost/bgeometry/core/coordinate_type.hpp>
 
 #include <boost/bgeometry/geometries/concepts/point_concept.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

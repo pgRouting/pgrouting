@@ -15,13 +15,8 @@
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_INTERSECTION_BOX_BOX_HPP
 
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/coordinate_type.hpp>
-#endif
 
 
 namespace boost { namespace geometry

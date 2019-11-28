@@ -18,22 +18,6 @@
 #include <boost/range.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/point_box.hpp>
-#include <boost/geometry/algorithms/detail/expand_by_epsilon.hpp>
-#include <boost/geometry/algorithms/detail/relate/less.hpp>
-#include <boost/geometry/algorithms/detail/within/point_in_geometry.hpp>
-#include <boost/geometry/algorithms/envelope.hpp>
-#include <boost/geometry/algorithms/detail/partition.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/geometries/box.hpp>
-#include <boost/geometry/index/rtree.hpp>
-#include <boost/geometry/strategies/covered_by.hpp>
-#include <boost/geometry/strategies/disjoint.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/disjoint/box_box.hpp>
 #include <boost/bgeometry/algorithms/detail/disjoint/point_box.hpp>
 #include <boost/bgeometry/algorithms/detail/expand_by_epsilon.hpp>
@@ -44,11 +28,13 @@
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tag_cast.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/geometries/box.hpp>
+
 #include <boost/bgeometry/index/rtree.hpp>
+
 #include <boost/bgeometry/strategies/covered_by.hpp>
 #include <boost/bgeometry/strategies/disjoint.hpp>
-#endif
 
 
 namespace boost { namespace geometry {

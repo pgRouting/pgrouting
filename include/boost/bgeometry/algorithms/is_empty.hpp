@@ -16,18 +16,6 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/not_implemented.hpp>
-
-#include <boost/geometry/algorithms/detail/check_iterator_range.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-#else
 #include <boost/bgeometry/core/exterior_ring.hpp>
 #include <boost/bgeometry/core/interior_rings.hpp>
 #include <boost/bgeometry/core/tag.hpp>
@@ -38,7 +26,6 @@
 #include <boost/bgeometry/algorithms/detail/check_iterator_range.hpp>
 
 #include <boost/bgeometry/geometries/concepts/check.hpp>
-#endif
 
 
 namespace boost { namespace geometry

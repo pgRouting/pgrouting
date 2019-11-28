@@ -9,13 +9,8 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_IS_INDEXABLE_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_IS_INDEXABLE_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#else
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tags.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 

@@ -19,13 +19,8 @@
 #include <boost/config.hpp>
 #include <boost/mpl/int.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/geometries/point.hpp>
-#else
 #include <boost/bgeometry/core/cs.hpp>
 #include <boost/bgeometry/geometries/point.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

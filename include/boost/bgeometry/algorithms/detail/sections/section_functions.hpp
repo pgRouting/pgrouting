@@ -15,15 +15,9 @@
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_SECTIONS_FUNCTIONS_HPP
 
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/algorithms/detail/recalculate.hpp>
-#include <boost/geometry/policies/robustness/robust_point_type.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/algorithms/detail/recalculate.hpp>
 #include <boost/bgeometry/policies/robustness/robust_point_type.hpp>
-#endif
 
 
 namespace boost { namespace geometry

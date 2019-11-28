@@ -17,15 +17,9 @@
 
 #include <boost/range.hpp>
 
-#if BOOST_GeometrYy_VERSION_OK
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/views/detail/points_view.hpp>
-#include <boost/geometry/algorithms/assign.hpp>
-#else
 #include <boost/bgeometry/core/point_type.hpp>
 #include <boost/bgeometry/views/detail/points_view.hpp>
 #include <boost/bgeometry/algorithms/assign.hpp>
-#endif
 
 
 namespace boost { namespace geometry

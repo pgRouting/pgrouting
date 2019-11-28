@@ -245,7 +245,6 @@ if ("${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}" VE
 else()
     set(BOOST_Geometry_VERSION_OK "1")
 endif()
-    set(BOOST_Geometry_VERSION_OK "0")
 
 
 

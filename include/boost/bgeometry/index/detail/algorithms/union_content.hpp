@@ -12,13 +12,8 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_UNION_CONTENT_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_UNION_CONTENT_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/expand.hpp>
-#include <boost/geometry/index/detail/algorithms/content.hpp>
-#else
 #include <boost/bgeometry/algorithms/expand.hpp>
 #include <boost/bgeometry/index/detail/algorithms/content.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 

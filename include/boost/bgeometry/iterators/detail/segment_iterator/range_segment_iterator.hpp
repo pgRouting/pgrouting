@@ -17,13 +17,8 @@
 #include <boost/iterator/iterator_categories.hpp>
 #include <boost/range.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/iterators/closing_iterator.hpp>
-#else
 #include <boost/bgeometry/core/closure.hpp>
 #include <boost/bgeometry/iterators/closing_iterator.hpp>
-#endif
 
 
 namespace boost { namespace geometry

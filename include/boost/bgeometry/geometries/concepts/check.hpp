@@ -21,22 +21,6 @@
 #include <boost/type_traits/is_const.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/geometries/concepts/box_concept.hpp>
-#include <boost/geometry/geometries/concepts/linestring_concept.hpp>
-#include <boost/geometry/geometries/concepts/multi_point_concept.hpp>
-#include <boost/geometry/geometries/concepts/multi_linestring_concept.hpp>
-#include <boost/geometry/geometries/concepts/multi_polygon_concept.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-#include <boost/geometry/geometries/concepts/polygon_concept.hpp>
-#include <boost/geometry/geometries/concepts/ring_concept.hpp>
-#include <boost/geometry/geometries/concepts/segment_concept.hpp>
-
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#else
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tags.hpp>
 
@@ -51,7 +35,6 @@
 #include <boost/bgeometry/geometries/concepts/segment_concept.hpp>
 
 #include <boost/bgeometry/algorithms/not_implemented.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

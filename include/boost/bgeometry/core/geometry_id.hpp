@@ -19,13 +19,8 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/mpl/int.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#else
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tags.hpp>
-#endif
 
 
 namespace boost { namespace geometry

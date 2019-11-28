@@ -16,11 +16,7 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/tuple/tuple.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/tags.hpp>
-#else
 #include <boost/bgeometry/index/detail/tags.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 

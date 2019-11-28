@@ -26,30 +26,12 @@
 #include <boost/range.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-// #include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/point_type.hpp>
-// #include <boost/geometry/core/exterior_ring.hpp>
-// #include <boost/geometry/core/interior_rings.hpp>
-// #include <boost/geometry/core/tag.hpp>
-// #include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/strategies/distance.hpp>
-// #include <boost/geometry/strategies/tags.hpp>
-#include <boost/geometry/algorithms/assign.hpp>
-#include <boost/geometry/algorithms/covered_by.hpp>
-// #include <boost/geometry/algorithms/within.hpp>
-// #include <boost/geometry/algorithms/detail/distance/is_comparable.hpp>
-// #include <boost/geometry/algorithms/detail/distance/iterator_selector.hpp>
-#include <boost/geometry/algorithms/dispatch/distance.hpp>
-#else
 #include <boost/bgeometry/core/point_type.hpp>
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/strategies/distance.hpp>
 #include <boost/bgeometry/algorithms/assign.hpp>
 #include <boost/bgeometry/algorithms/covered_by.hpp>
 #include <boost/bgeometry/algorithms/dispatch/distance.hpp>
-#endif
 
 
 namespace boost { namespace geometry

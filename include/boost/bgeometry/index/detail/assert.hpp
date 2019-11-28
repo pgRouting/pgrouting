@@ -9,11 +9,7 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_ASSERT_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_ASSERT_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/assert.hpp>
-#else
 #include <boost/bgeometry/core/assert.hpp>
-#endif
 
 #undef BOOST_GEOMETRY_INDEX_ASSERT
 

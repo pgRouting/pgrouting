@@ -19,11 +19,7 @@
 #ifndef BOOST_GEOMETRY_STRATEGIES_DEFAULT_DISTANCE_RESULT_HPP
 #define BOOST_GEOMETRY_STRATEGIES_DEFAULT_DISTANCE_RESULT_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/strategies/distance_result.hpp>
-#else
 #include <boost/bgeometry/strategies/distance_result.hpp>
-#endif
 
 
 namespace boost { namespace geometry

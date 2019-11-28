@@ -19,11 +19,7 @@
 #include <boost/iterator/iterator_adaptor.hpp>
 #include <boost/iterator/iterator_categories.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/iterators/base.hpp>
-#else
 #include <boost/bgeometry/iterators/base.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

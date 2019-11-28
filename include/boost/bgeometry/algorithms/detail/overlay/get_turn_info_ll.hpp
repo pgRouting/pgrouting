@@ -17,17 +17,12 @@
 
 #include <boost/throw_exception.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_turn_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_turn_info_for_endpoint.hpp>
-#include <boost/geometry/util/condition.hpp>
-#else
 #include <boost/bgeometry/core/assert.hpp>
+
 #include <boost/bgeometry/algorithms/detail/overlay/get_turn_info.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/get_turn_info_for_endpoint.hpp>
+
 #include <boost/bgeometry/util/condition.hpp>
-#endif
 
 namespace boost { namespace geometry {
 

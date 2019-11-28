@@ -24,19 +24,12 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/within/interface.hpp>
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#include <boost/geometry/strategies/cartesian/point_in_box.hpp>
-#include <boost/geometry/strategies/cartesian/box_in_box.hpp>
-#include <boost/geometry/strategies/default_strategy.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/within/interface.hpp>
 #include <boost/bgeometry/algorithms/not_implemented.hpp>
+
 #include <boost/bgeometry/strategies/cartesian/point_in_box.hpp>
 #include <boost/bgeometry/strategies/cartesian/box_in_box.hpp>
 #include <boost/bgeometry/strategies/default_strategy.hpp>
-#endif
 
 
 namespace boost { namespace geometry

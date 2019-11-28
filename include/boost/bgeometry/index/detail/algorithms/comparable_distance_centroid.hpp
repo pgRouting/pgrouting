@@ -11,13 +11,8 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_COMPARABLE_DISTANCE_CENTROID_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_COMPARABLE_DISTANCE_CENTROID_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/algorithms/sum_for_indexable.hpp>
-#include <boost/geometry/index/detail/algorithms/diff_abs.hpp>
-#else
 #include <boost/bgeometry/index/detail/algorithms/sum_for_indexable.hpp>
 #include <boost/bgeometry/index/detail/algorithms/diff_abs.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 

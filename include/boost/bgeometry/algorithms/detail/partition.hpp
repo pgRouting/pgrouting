@@ -19,15 +19,9 @@
 #include <cstddef>
 #include <vector>
 #include <boost/range.hpp>
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/algorithms/assign.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/coordinate_type.hpp>
 #include <boost/bgeometry/algorithms/assign.hpp>
-#endif
 
 
 namespace boost { namespace geometry

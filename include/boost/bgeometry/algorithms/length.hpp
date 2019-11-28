@@ -40,20 +40,6 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-
-#include <boost/geometry/algorithms/assign.hpp>
-#include <boost/geometry/algorithms/detail/calculate_null.hpp>
-#include <boost/geometry/algorithms/detail/multi_sum.hpp>
-#include <boost/geometry/views/closeable_view.hpp>
-#include <boost/geometry/strategies/distance.hpp>
-#include <boost/geometry/strategies/default_length_result.hpp>
-#else
 #include <boost/bgeometry/core/cs.hpp>
 #include <boost/bgeometry/core/closure.hpp>
 #include <boost/bgeometry/core/tags.hpp>
@@ -63,10 +49,10 @@
 #include <boost/bgeometry/algorithms/assign.hpp>
 #include <boost/bgeometry/algorithms/detail/calculate_null.hpp>
 #include <boost/bgeometry/algorithms/detail/multi_sum.hpp>
+// #include <boost/bgeometry/algorithms/detail/throw_on_empty_input.hpp>
 #include <boost/bgeometry/views/closeable_view.hpp>
 #include <boost/bgeometry/strategies/distance.hpp>
 #include <boost/bgeometry/strategies/default_length_result.hpp>
-#endif
 
 
 namespace boost { namespace geometry

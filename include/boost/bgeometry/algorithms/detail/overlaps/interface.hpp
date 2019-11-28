@@ -22,17 +22,13 @@
 
 #include <cstddef>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/algorithms/detail/relate/relate_impl.hpp>
-#include <boost/geometry/strategies/relate.hpp>
-#else
 #include <boost/bgeometry/algorithms/not_implemented.hpp>
+
 #include <boost/bgeometry/geometries/concepts/check.hpp>
+
 #include <boost/bgeometry/algorithms/detail/relate/relate_impl.hpp>
+
 #include <boost/bgeometry/strategies/relate.hpp>
-#endif
 
 
 namespace boost { namespace geometry

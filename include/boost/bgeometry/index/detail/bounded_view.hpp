@@ -12,11 +12,7 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_BOUNDED_VIEW_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_BOUNDED_VIEW_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/envelope.hpp>
-#else
 #include <boost/bgeometry/algorithms/envelope.hpp>
-#endif
 
 namespace boost { namespace geometry {
 

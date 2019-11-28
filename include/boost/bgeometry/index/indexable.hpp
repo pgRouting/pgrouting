@@ -12,11 +12,7 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/tuple/tuple.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/is_indexable.hpp>
-#else
 #include <boost/bgeometry/index/detail/is_indexable.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 

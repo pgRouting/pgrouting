@@ -29,17 +29,10 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/exception.hpp>
-#include <boost/geometry/util/condition.hpp>
-#else
 #include <boost/bgeometry/core/assert.hpp>
 #include <boost/bgeometry/core/coordinate_dimension.hpp>
 #include <boost/bgeometry/core/exception.hpp>
 #include <boost/bgeometry/util/condition.hpp>
-#endif
 
 namespace boost { namespace geometry {
 

@@ -30,22 +30,6 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/interior_iterator.hpp>
-#include <boost/geometry/algorithms/assign.hpp>
-#include <boost/geometry/algorithms/convert.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/point_point.hpp>
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/geometries/ring.hpp>
-
-#include <boost/geometry/io/wkt/detail/prefix.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
 #include <boost/bgeometry/algorithms/assign.hpp>
 #include <boost/bgeometry/algorithms/convert.hpp>
@@ -60,7 +44,6 @@
 #include <boost/bgeometry/geometries/ring.hpp>
 
 #include <boost/bgeometry/io/wkt/detail/prefix.hpp>
-#endif
 
 
 namespace boost { namespace geometry

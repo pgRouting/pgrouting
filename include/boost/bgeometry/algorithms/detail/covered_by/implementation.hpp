@@ -22,13 +22,8 @@
 
 #include <cstddef>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/covered_by/interface.hpp>
-#include <boost/geometry/algorithms/detail/within/implementation.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/covered_by/interface.hpp>
 #include <boost/bgeometry/algorithms/detail/within/implementation.hpp>
-#endif
 
 
 namespace boost { namespace geometry

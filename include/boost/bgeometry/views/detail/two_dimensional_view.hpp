@@ -15,16 +15,6 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/mpl/int.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/coordinate_type.hpp>
 #include <boost/bgeometry/core/coordinate_system.hpp>
@@ -32,8 +22,8 @@
 #include <boost/bgeometry/core/point_type.hpp>
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/algorithms/not_implemented.hpp>
-#endif
 
 
 namespace boost { namespace geometry

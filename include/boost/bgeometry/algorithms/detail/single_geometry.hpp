@@ -17,15 +17,9 @@
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/util/range.hpp>
-#else
 #include <boost/bgeometry/core/assert.hpp>
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/util/range.hpp>
-#endif
 
 namespace boost { namespace geometry {
 

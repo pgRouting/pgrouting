@@ -24,13 +24,8 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/tags.hpp>
-#else
 #include <boost/bgeometry/core/coordinate_system.hpp>
 #include <boost/bgeometry/core/tags.hpp>
-#endif
 
 
 namespace boost { namespace geometry

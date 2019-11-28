@@ -16,19 +16,13 @@
 
 #include <boost/type_traits/is_floating_point.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/views/detail/indexed_point_view.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/coordinate_dimension.hpp>
 #include <boost/bgeometry/core/coordinate_type.hpp>
+
 #include <boost/bgeometry/util/math.hpp>
+
 #include <boost/bgeometry/views/detail/indexed_point_view.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

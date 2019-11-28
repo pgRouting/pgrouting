@@ -20,22 +20,6 @@
 #include <boost/algorithm/minmax_element.hpp>
 #include <boost/range.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/range.hpp>
-#include <boost/geometry/geometries/helper_geometry.hpp>
-// #include <boost/geometry/algorithms/detail/normalize.hpp>
-#include <boost/geometry/algorithms/detail/envelope/box.hpp>
-#include <boost/geometry/algorithms/detail/envelope/initialize.hpp>
-#include <boost/geometry/algorithms/detail/envelope/range.hpp>
-#include <boost/geometry/algorithms/detail/expand/point.hpp>
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/assert.hpp>
 #include <boost/bgeometry/core/coordinate_system.hpp>
@@ -44,13 +28,11 @@
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/util/range.hpp>
 #include <boost/bgeometry/geometries/helper_geometry.hpp>
-// #include <boost/bgeometry/algorithms/detail/normalize.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/box.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/initialize.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/range.hpp>
 #include <boost/bgeometry/algorithms/detail/expand/point.hpp>
 #include <boost/bgeometry/algorithms/dispatch/envelope.hpp>
-#endif
 
 
 namespace boost { namespace geometry

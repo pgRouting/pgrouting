@@ -22,17 +22,6 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/range.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/util/range.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/assert.hpp>
 #include <boost/bgeometry/core/closure.hpp>
@@ -42,7 +31,6 @@
 #include <boost/bgeometry/core/tags.hpp>
 #include <boost/bgeometry/geometries/concepts/check.hpp>
 #include <boost/bgeometry/util/range.hpp>
-#endif
 
 
 namespace boost { namespace geometry

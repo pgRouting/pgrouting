@@ -23,24 +23,6 @@
 
 #include <boost/numeric/conversion/cast.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/srs.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/geometries/helper_geometry.hpp>
-//#include <boost/geometry/formulas/vertex_latitude.hpp>
-#include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
-#include <boost/geometry/algorithms/detail/envelope/point.hpp>
-#include <boost/geometry/algorithms/detail/envelope/transform_units.hpp>
-#include <boost/geometry/algorithms/detail/expand/point.hpp>
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-#else
 #include <boost/bgeometry/core/assert.hpp>
 #include <boost/bgeometry/core/coordinate_system.hpp>
 #include <boost/bgeometry/core/coordinate_type.hpp>
@@ -49,15 +31,19 @@
 #include <boost/bgeometry/core/point_type.hpp>
 #include <boost/bgeometry/core/radian_access.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/util/math.hpp>
+
 #include <boost/bgeometry/geometries/helper_geometry.hpp>
-//#include <boost/bgeometry/formulas/vertex_latitude.hpp>
+
 #include <boost/bgeometry/algorithms/detail/assign_indexed_point.hpp>
+
 #include <boost/bgeometry/algorithms/detail/envelope/point.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/transform_units.hpp>
+
 #include <boost/bgeometry/algorithms/detail/expand/point.hpp>
+
 #include <boost/bgeometry/algorithms/dispatch/envelope.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

@@ -24,28 +24,8 @@
 
 #include <boost/range.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/within/interface.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/point_order.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/order_as_direction.hpp>
-#include <boost/geometry/views/closeable_view.hpp>
-#include <boost/geometry/views/reversible_view.hpp>
-#include <boost/geometry/algorithms/detail/within/multi_point.hpp>
-#include <boost/geometry/algorithms/detail/within/point_in_geometry.hpp>
-#include <boost/geometry/algorithms/relate.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_turns.hpp>
-#include <boost/geometry/algorithms/detail/overlay/do_reverse.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/within/interface.hpp>
+
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/closure.hpp>
 #include <boost/bgeometry/core/cs.hpp>
@@ -55,16 +35,18 @@
 #include <boost/bgeometry/core/ring_type.hpp>
 #include <boost/bgeometry/core/interior_rings.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/util/order_as_direction.hpp>
 #include <boost/bgeometry/views/closeable_view.hpp>
 #include <boost/bgeometry/views/reversible_view.hpp>
+
 #include <boost/bgeometry/algorithms/detail/within/multi_point.hpp>
 #include <boost/bgeometry/algorithms/detail/within/point_in_geometry.hpp>
 #include <boost/bgeometry/algorithms/relate.hpp>
+
 #include <boost/bgeometry/algorithms/detail/overlay/get_turns.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/do_reverse.hpp>
-#endif
 #include <deque>
 
 
@@ -319,10 +301,6 @@ struct within<MultiPolygon1, MultiPolygon2, multi_polygon_tag, multi_polygon_tag
 
 }} // namespace boost::geometry
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/rtree.hpp>
-#else
 #include <boost/bgeometry/index/rtree.hpp>
-#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_WITHIN_IMPLEMENTATION_HPP

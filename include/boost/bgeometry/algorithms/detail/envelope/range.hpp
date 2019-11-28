@@ -25,27 +25,20 @@
 
 #include <boost/range.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/util/range.hpp>
-#include <boost/geometry/algorithms/is_empty.hpp>
-#include <boost/geometry/algorithms/detail/envelope/initialize.hpp>
-#include <boost/geometry/algorithms/detail/envelope/range_of_boxes.hpp>
-#include <boost/geometry/algorithms/detail/expand/box.hpp>
-#include <boost/geometry/algorithms/detail/expand/point.hpp>
-#include <boost/geometry/algorithms/detail/expand/segment.hpp>
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-#else
 #include <boost/bgeometry/core/coordinate_dimension.hpp>
+
 #include <boost/bgeometry/util/range.hpp>
+
 #include <boost/bgeometry/algorithms/is_empty.hpp>
+
 #include <boost/bgeometry/algorithms/detail/envelope/initialize.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/range_of_boxes.hpp>
+
 #include <boost/bgeometry/algorithms/detail/expand/box.hpp>
 #include <boost/bgeometry/algorithms/detail/expand/point.hpp>
 #include <boost/bgeometry/algorithms/detail/expand/segment.hpp>
+
 #include <boost/bgeometry/algorithms/dispatch/envelope.hpp>
-#endif
 
 
 namespace boost { namespace geometry

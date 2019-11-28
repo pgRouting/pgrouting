@@ -20,19 +20,11 @@
 #define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_POINT_IN_BOX_HPP
 
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/strategies/covered_by.hpp>
-#include <boost/geometry/strategies/within.hpp>
-#include <boost/geometry/util/normalize_spheroidal_coordinates.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/coordinate_dimension.hpp>
 #include <boost/bgeometry/strategies/covered_by.hpp>
 #include <boost/bgeometry/strategies/within.hpp>
 #include <boost/bgeometry/util/normalize_spheroidal_coordinates.hpp>
-#endif
 
 
 namespace boost { namespace geometry { namespace strategy
@@ -97,7 +89,6 @@ struct covered_by_longitude_diff
 };
 
 
-#if 0
 template <typename Geometry,
           typename CoordCheck,
           typename DiffCheck>
@@ -133,25 +124,19 @@ struct longitude_range
         return DiffCheck::template apply<calc_t>(diff_min, min_value, max_value);
     }
 };
-#endif
 
 
-#if 0
 // spherical_equatorial_tag, spherical_polar_tag and geographic_cat are casted to spherical_tag
 template <typename Geometry>
 struct within_range<Geometry, 0, spherical_tag>
     : longitude_range<Geometry, within_coord, within_longitude_diff>
 {};
-#endif
 
 
-
-#if 0
 template <typename Geometry>
 struct covered_by_range<Geometry, 0, spherical_tag>
     : longitude_range<Geometry, covered_by_coord, covered_by_longitude_diff>
 {};
-#endif
 
 
 template

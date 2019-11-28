@@ -19,25 +19,17 @@
 #include <boost/core/ignore_unused.hpp>
 #include <boost/throw_exception.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/algorithms/convert.hpp>
-#include <boost/geometry/algorithms/detail/overlay/turn_info.hpp>
-#include <boost/geometry/algorithms/detail/recalculate.hpp>
-#include <boost/geometry/geometries/segment.hpp>
-#include <boost/geometry/policies/robustness/robust_point_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_turn_info_helpers.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/assert.hpp>
+
 #include <boost/bgeometry/algorithms/convert.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/turn_info.hpp>
 #include <boost/bgeometry/algorithms/detail/recalculate.hpp>
+
 #include <boost/bgeometry/geometries/segment.hpp>
+
 #include <boost/bgeometry/policies/robustness/robust_point_type.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/get_turn_info_helpers.hpp>
-#endif
 
 // Silence warning C4127: conditional expression is constant
 #if defined(_MSC_VER)

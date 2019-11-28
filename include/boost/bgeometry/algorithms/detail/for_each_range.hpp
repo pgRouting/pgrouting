@@ -21,19 +21,12 @@
 #include <boost/type_traits/is_const.hpp>
 #include <boost/type_traits/remove_const.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/util/add_const_if_c.hpp>
-#include <boost/geometry/views/box_view.hpp>
-#else
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tag_cast.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/util/add_const_if_c.hpp>
 #include <boost/bgeometry/views/box_view.hpp>
-#endif
 
 
 namespace boost { namespace geometry

@@ -32,13 +32,8 @@
 #include <boost/range/value_type.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/mutable_range.hpp>
-#else
 #include <boost/bgeometry/core/assert.hpp>
 #include <boost/bgeometry/core/mutable_range.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace range {
 

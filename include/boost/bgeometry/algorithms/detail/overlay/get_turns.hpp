@@ -25,38 +25,6 @@
 #include <boost/mpl/vector_c.hpp>
 #include <boost/range.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/reverse_dispatch.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/views/closeable_view.hpp>
-#include <boost/geometry/views/reversible_view.hpp>
-#include <boost/geometry/views/detail/range_type.hpp>
-#include <boost/geometry/geometries/box.hpp>
-#include <boost/geometry/geometries/segment.hpp>
-#include <boost/geometry/iterators/ever_circling_iterator.hpp>
-#include <boost/geometry/strategies/intersection_strategies.hpp>
-#include <boost/geometry/strategies/intersection_result.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/point_point.hpp>
-#include <boost/geometry/algorithms/detail/interior_iterator.hpp>
-#include <boost/geometry/algorithms/detail/partition.hpp>
-#include <boost/geometry/algorithms/detail/recalculate.hpp>
-#include <boost/geometry/algorithms/detail/sections/section_box_policies.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_turn_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_turn_info_ll.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_turn_info_la.hpp>
-#include <boost/geometry/algorithms/detail/overlay/segment_identifier.hpp>
-#include <boost/geometry/algorithms/detail/sections/range_by_section.hpp>
-#include <boost/geometry/algorithms/detail/sections/sectionalize.hpp>
-#include <boost/geometry/algorithms/detail/sections/section_functions.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/coordinate_dimension.hpp>
 #include <boost/bgeometry/core/exterior_ring.hpp>
@@ -64,38 +32,42 @@
 #include <boost/bgeometry/core/reverse_dispatch.hpp>
 #include <boost/bgeometry/core/ring_type.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/geometries/concepts/check.hpp>
+
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/views/closeable_view.hpp>
 #include <boost/bgeometry/views/reversible_view.hpp>
 #include <boost/bgeometry/views/detail/range_type.hpp>
+
 #include <boost/bgeometry/geometries/box.hpp>
 #include <boost/bgeometry/geometries/segment.hpp>
+
 #include <boost/bgeometry/iterators/ever_circling_iterator.hpp>
+
 #include <boost/bgeometry/strategies/intersection_strategies.hpp>
 #include <boost/bgeometry/strategies/intersection_result.hpp>
+
 #include <boost/bgeometry/algorithms/detail/disjoint/box_box.hpp>
 #include <boost/bgeometry/algorithms/detail/disjoint/point_point.hpp>
+
 #include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
 #include <boost/bgeometry/algorithms/detail/partition.hpp>
 #include <boost/bgeometry/algorithms/detail/recalculate.hpp>
 #include <boost/bgeometry/algorithms/detail/sections/section_box_policies.hpp>
+
 #include <boost/bgeometry/algorithms/detail/overlay/get_turn_info.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/get_turn_info_ll.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/get_turn_info_la.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/segment_identifier.hpp>
+
 #include <boost/bgeometry/algorithms/detail/sections/range_by_section.hpp>
 #include <boost/bgeometry/algorithms/detail/sections/sectionalize.hpp>
 #include <boost/bgeometry/algorithms/detail/sections/section_functions.hpp>
-#endif
 
 #ifdef BOOST_GEOMETRY_DEBUG_INTERSECTION
 #  include <sstream>
-#if BOOST_Geometry_VERSION_OK
-#  include <boost/geometry/io/dsv/write.hpp>
-#else
 #  include <boost/bgeometry/io/dsv/write.hpp>
-#endif
 #endif
 
 

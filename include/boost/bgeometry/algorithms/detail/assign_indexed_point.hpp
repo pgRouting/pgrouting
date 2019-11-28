@@ -17,13 +17,8 @@
 
 #include <cstddef>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/algorithms/detail/assign_values.hpp>
-#else
 #include <boost/bgeometry/geometries/concepts/check.hpp>
 #include <boost/bgeometry/algorithms/detail/assign_values.hpp>
-#endif
 
 
 namespace boost { namespace geometry

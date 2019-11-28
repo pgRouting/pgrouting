@@ -28,37 +28,24 @@
 #include <boost/range.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-// For trivial checks
-#include <boost/geometry/algorithms/area.hpp>
-#include <boost/geometry/algorithms/length.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_coordinate_type.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-// #include <boost/geometry/algorithms/detail/equals/collect_vectors.hpp>
-#include <boost/geometry/algorithms/detail/equals/interface.hpp>
-#include <boost/geometry/algorithms/detail/relate/relate_impl.hpp>
-#include <boost/geometry/algorithms/relate.hpp>
-#include <boost/geometry/views/detail/indexed_point_view.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/algorithms/detail/equals/point_point.hpp>
+
 // For trivial checks
 #include <boost/bgeometry/algorithms/area.hpp>
 #include <boost/bgeometry/algorithms/length.hpp>
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/util/select_coordinate_type.hpp>
 #include <boost/bgeometry/util/select_most_precise.hpp>
-// #include <boost/bgeometry/algorithms/detail/equals/collect_vectors.hpp>
+
+#include <boost/bgeometry/algorithms/detail/equals/collect_vectors.hpp>
 #include <boost/bgeometry/algorithms/detail/equals/interface.hpp>
 #include <boost/bgeometry/algorithms/detail/relate/relate_impl.hpp>
 #include <boost/bgeometry/algorithms/relate.hpp>
+
 #include <boost/bgeometry/views/detail/indexed_point_view.hpp>
-#endif
 
 
 namespace boost { namespace geometry

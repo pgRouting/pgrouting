@@ -21,21 +21,13 @@
 #include <boost/static_assert.hpp>
 #include <boost/tuple/tuple.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/relate/result.hpp>
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#include <boost/geometry/core/topological_dimension.hpp>
-#include <boost/geometry/core/tag.hpp>
-// TEMP - move this header to geometry/detail
-#include <boost/geometry/index/detail/tuples.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/relate/result.hpp>
 #include <boost/bgeometry/algorithms/not_implemented.hpp>
 #include <boost/bgeometry/core/topological_dimension.hpp>
 #include <boost/bgeometry/core/tag.hpp>
+
 // TEMP - move this header to geometry/detail
 #include <boost/bgeometry/index/detail/tuples.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

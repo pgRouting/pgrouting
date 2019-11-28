@@ -20,15 +20,9 @@
 #include <boost/type_traits/remove_const.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/algorithms/detail/sweep.hpp>
-#else
 #include <boost/bgeometry/core/assert.hpp>
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/algorithms/detail/sweep.hpp>
-#endif
 
 
 namespace boost { namespace geometry

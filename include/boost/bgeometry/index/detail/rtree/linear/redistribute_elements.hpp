@@ -14,19 +14,12 @@
 
 #include <boost/type_traits/is_unsigned.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/algorithms/content.hpp>
-#include <boost/geometry/index/detail/bounded_view.hpp>
-#include <boost/geometry/index/detail/rtree/node/node.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/insert.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/is_leaf.hpp>
-#else
 #include <boost/bgeometry/index/detail/algorithms/content.hpp>
 #include <boost/bgeometry/index/detail/bounded_view.hpp>
+
 #include <boost/bgeometry/index/detail/rtree/node/node.hpp>
 #include <boost/bgeometry/index/detail/rtree/visitors/insert.hpp>
 #include <boost/bgeometry/index/detail/rtree/visitors/is_leaf.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index {
 

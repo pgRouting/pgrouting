@@ -27,31 +27,6 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/point_order.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-
-#include <boost/geometry/algorithms/detail/calculate_null.hpp>
-#include <boost/geometry/algorithms/detail/calculate_sum.hpp>
-#include <boost/geometry/algorithms/detail/multi_sum.hpp>
-
-#include <boost/geometry/strategies/area.hpp>
-#include <boost/geometry/strategies/default_area_result.hpp>
-
-#include <boost/geometry/strategies/concepts/area_concept.hpp>
-
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/order_as_direction.hpp>
-#include <boost/geometry/views/closeable_view.hpp>
-#include <boost/geometry/views/reversible_view.hpp>
-#else
 #include <boost/bgeometry/core/closure.hpp>
 #include <boost/bgeometry/core/exterior_ring.hpp>
 #include <boost/bgeometry/core/interior_rings.hpp>
@@ -64,6 +39,7 @@
 
 #include <boost/bgeometry/algorithms/detail/calculate_null.hpp>
 #include <boost/bgeometry/algorithms/detail/calculate_sum.hpp>
+// #include <boost/bgeometry/algorithms/detail/throw_on_empty_input.hpp>
 #include <boost/bgeometry/algorithms/detail/multi_sum.hpp>
 
 #include <boost/bgeometry/strategies/area.hpp>
@@ -75,7 +51,6 @@
 #include <boost/bgeometry/util/order_as_direction.hpp>
 #include <boost/bgeometry/views/closeable_view.hpp>
 #include <boost/bgeometry/views/reversible_view.hpp>
-#endif
 
 
 namespace boost { namespace geometry

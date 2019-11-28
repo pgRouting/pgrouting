@@ -9,13 +9,8 @@
 #ifndef BOOST_GEOMETRY_INDEX_EQUAL_TO_HPP
 #define BOOST_GEOMETRY_INDEX_EQUAL_TO_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/equals/interface.hpp>
-#include <boost/geometry/index/indexable.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/equals/interface.hpp>
 #include <boost/bgeometry/index/indexable.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail {
 

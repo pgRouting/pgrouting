@@ -23,19 +23,13 @@
 
 #include <cstddef>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/algorithms/dispatch/disjoint.hpp>
-#include <boost/geometry/util/normalize_spheroidal_coordinates.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/algorithms/dispatch/disjoint.hpp>
+
 #include <boost/bgeometry/util/normalize_spheroidal_coordinates.hpp>
 #include <boost/bgeometry/util/select_most_precise.hpp>
-#endif
 
 
 namespace boost { namespace geometry
@@ -93,7 +87,6 @@ struct box_box<Box1, Box2, DimensionCount, DimensionCount, CSTag>
 };
 
 
-#if 0
 template <typename Box1, typename Box2, std::size_t DimensionCount>
 struct box_box<Box1, Box2, 0, DimensionCount, spherical_tag>
 {
@@ -152,7 +145,6 @@ struct box_box<Box1, Box2, 0, DimensionCount, spherical_tag>
             >::apply(box1, box2);
     }
 };
-#endif
 
 
 /*!

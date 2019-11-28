@@ -27,31 +27,6 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#include <boost/geometry/algorithms/append.hpp>
-#include <boost/geometry/algorithms/clear.hpp>
-#include <boost/geometry/algorithms/for_each.hpp>
-#include <boost/geometry/algorithms/detail/assign_values.hpp>
-#include <boost/geometry/algorithms/detail/assign_box_corners.hpp>
-#include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
-#include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
-#include <boost/geometry/algorithms/detail/convert_indexed_to_indexed.hpp>
-#include <boost/geometry/algorithms/detail/interior_iterator.hpp>
-
-#include <boost/geometry/views/closeable_view.hpp>
-#include <boost/geometry/views/reversible_view.hpp>
-
-#include <boost/geometry/util/range.hpp>
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/point_order.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-#else
 #include <boost/bgeometry/arithmetic/arithmetic.hpp>
 #include <boost/bgeometry/algorithms/not_implemented.hpp>
 #include <boost/bgeometry/algorithms/append.hpp>
@@ -75,7 +50,6 @@
 #include <boost/bgeometry/core/tags.hpp>
 
 #include <boost/bgeometry/geometries/concepts/check.hpp>
-#endif
 
 
 namespace boost { namespace geometry

@@ -32,41 +32,21 @@
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/assign.hpp>
-#include <boost/geometry/algorithms/envelope.hpp>
-#include <boost/geometry/algorithms/expand.hpp>
-#include <boost/geometry/algorithms/detail/interior_iterator.hpp>
-#include <boost/geometry/algorithms/detail/recalculate.hpp>
-#include <boost/geometry/algorithms/detail/ring_identifier.hpp>
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/point_order.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/policies/robustness/no_rescale_policy.hpp>
-#include <boost/geometry/policies/robustness/robust_point_type.hpp>
-#include <boost/geometry/views/closeable_view.hpp>
-#include <boost/geometry/views/reversible_view.hpp>
-#include <boost/geometry/geometries/segment.hpp>
-#include <boost/geometry/algorithms/detail/expand_by_epsilon.hpp>
-#include <boost/geometry/strategies/envelope.hpp>
-#else
 #include <boost/bgeometry/algorithms/assign.hpp>
 #include <boost/bgeometry/algorithms/envelope.hpp>
 #include <boost/bgeometry/algorithms/expand.hpp>
+
 #include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
 #include <boost/bgeometry/algorithms/detail/recalculate.hpp>
 #include <boost/bgeometry/algorithms/detail/ring_identifier.hpp>
 #include <boost/bgeometry/algorithms/detail/signed_size_type.hpp>
+
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/closure.hpp>
 #include <boost/bgeometry/core/exterior_ring.hpp>
 #include <boost/bgeometry/core/point_order.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/geometries/concepts/check.hpp>
 #include <boost/bgeometry/util/math.hpp>
 #include <boost/bgeometry/policies/robustness/no_rescale_policy.hpp>
@@ -74,9 +54,9 @@
 #include <boost/bgeometry/views/closeable_view.hpp>
 #include <boost/bgeometry/views/reversible_view.hpp>
 #include <boost/bgeometry/geometries/segment.hpp>
+
 #include <boost/bgeometry/algorithms/detail/expand_by_epsilon.hpp>
 #include <boost/bgeometry/strategies/envelope.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

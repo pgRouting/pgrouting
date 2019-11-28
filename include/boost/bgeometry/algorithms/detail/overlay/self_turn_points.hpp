@@ -21,33 +21,22 @@
 #include <boost/mpl/vector_c.hpp>
 #include <boost/range.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/point_order.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
-#include <boost/geometry/algorithms/detail/partition.hpp>
-#include <boost/geometry/algorithms/detail/overlay/do_reverse.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_turns.hpp>
-#include <boost/geometry/algorithms/detail/sections/section_box_policies.hpp>
-#include <boost/geometry/geometries/box.hpp>
-#include <boost/geometry/util/condition.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/coordinate_dimension.hpp>
 #include <boost/bgeometry/core/point_order.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/geometries/concepts/check.hpp>
+
 #include <boost/bgeometry/algorithms/detail/disjoint/box_box.hpp>
 #include <boost/bgeometry/algorithms/detail/partition.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/do_reverse.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/get_turns.hpp>
 #include <boost/bgeometry/algorithms/detail/sections/section_box_policies.hpp>
+
 #include <boost/bgeometry/geometries/box.hpp>
+
 #include <boost/bgeometry/util/condition.hpp>
-#endif
 
 
 namespace boost { namespace geometry

@@ -20,13 +20,8 @@
 #define BOOST_GEOMETRY_UTIL_SELECT_COORDINATE_TYPE_HPP
 
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-#else
 #include <boost/bgeometry/core/coordinate_type.hpp>
 #include <boost/bgeometry/util/select_most_precise.hpp>
-#endif
 
 
 namespace boost { namespace geometry

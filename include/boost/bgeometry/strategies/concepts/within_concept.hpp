@@ -19,11 +19,7 @@
 #include <boost/concept_check.hpp>
 #include <boost/function_types/result_type.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/util/parameter_type_of.hpp>
-#else
 #include <boost/bgeometry/util/parameter_type_of.hpp>
-#endif
 
 
 namespace boost { namespace geometry { namespace concepts

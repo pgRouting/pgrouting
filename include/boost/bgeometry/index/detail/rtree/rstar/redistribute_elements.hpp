@@ -11,25 +11,16 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_REDISTRIBUTE_ELEMENTS_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_REDISTRIBUTE_ELEMENTS_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/algorithms/intersection_content.hpp>
-#include <boost/geometry/index/detail/algorithms/margin.hpp>
-#include <boost/geometry/index/detail/algorithms/nth_element.hpp>
-#include <boost/geometry/index/detail/algorithms/union_content.hpp>
-#include <boost/geometry/index/detail/bounded_view.hpp>
-#include <boost/geometry/index/detail/rtree/node/node.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/insert.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/is_leaf.hpp>
-#else
 #include <boost/bgeometry/index/detail/algorithms/intersection_content.hpp>
 #include <boost/bgeometry/index/detail/algorithms/margin.hpp>
 #include <boost/bgeometry/index/detail/algorithms/nth_element.hpp>
 #include <boost/bgeometry/index/detail/algorithms/union_content.hpp>
+
 #include <boost/bgeometry/index/detail/bounded_view.hpp>
+
 #include <boost/bgeometry/index/detail/rtree/node/node.hpp>
 #include <boost/bgeometry/index/detail/rtree/visitors/insert.hpp>
 #include <boost/bgeometry/index/detail/rtree/visitors/is_leaf.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index {
 

@@ -16,11 +16,7 @@
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/iterator/iterator_categories.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/assert.hpp>
-#else
 #include <boost/bgeometry/core/assert.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

@@ -14,16 +14,11 @@
 #ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_FOLLOW_HELPERS_HPP
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_FOLLOW_HELPERS_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/util/condition.hpp>
-#include <boost/geometry/util/range.hpp>
-#else
 #include <boost/bgeometry/core/assert.hpp>
+
 #include <boost/bgeometry/util/condition.hpp>
 #include <boost/bgeometry/util/range.hpp>
-#endif
-//#include <boost/geometry/algorithms/detail/sub_range.hpp>
+//#include <boost/bgeometry/algorithms/detail/sub_range.hpp>
 
 namespace boost { namespace geometry
 {

@@ -13,23 +13,16 @@
 
 #include <cstddef>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/strategies/strategy_transform.hpp>
-#include <boost/geometry/views/detail/indexed_point_view.hpp>
-#include <boost/geometry/views/detail/two_dimensional_view.hpp>
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#include <boost/geometry/algorithms/transform.hpp>
-#else
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/strategies/strategy_transform.hpp>
+
 #include <boost/bgeometry/views/detail/indexed_point_view.hpp>
 #include <boost/bgeometry/views/detail/two_dimensional_view.hpp>
+
 #include <boost/bgeometry/algorithms/not_implemented.hpp>
 #include <boost/bgeometry/algorithms/transform.hpp>
-#endif
 
 
 namespace boost { namespace geometry

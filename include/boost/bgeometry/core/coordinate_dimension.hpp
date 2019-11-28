@@ -20,13 +20,8 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/static_assert.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/util/bare_type.hpp>
-#else
 #include <boost/bgeometry/core/point_type.hpp>
 #include <boost/bgeometry/util/bare_type.hpp>
-#endif
 
 namespace boost { namespace geometry
 {

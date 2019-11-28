@@ -26,23 +26,15 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/strategies/concepts/within_concept.hpp>
-#include <boost/geometry/strategies/default_strategy.hpp>
-#include <boost/geometry/strategies/within.hpp>
-#else
 #include <boost/bgeometry/algorithms/not_implemented.hpp>
+
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tag_cast.hpp>
+
 #include <boost/bgeometry/geometries/concepts/check.hpp>
 #include <boost/bgeometry/strategies/concepts/within_concept.hpp>
 #include <boost/bgeometry/strategies/default_strategy.hpp>
 #include <boost/bgeometry/strategies/within.hpp>
-#endif
 
 
 namespace boost { namespace geometry

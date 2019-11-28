@@ -15,29 +15,9 @@
 #define BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_IMPLEMENTATION_HPP
 
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/algorithms/detail/relate/interface.hpp>
-#include <boost/geometry/algorithms/detail/relate/point_point.hpp>
-// #include <boost/geometry/algorithms/detail/relate/point_geometry.hpp>
-// #include <boost/geometry/algorithms/detail/relate/linear_linear.hpp>
-// #include <boost/geometry/algorithms/detail/relate/linear_areal.hpp>
-// #include <boost/geometry/algorithms/detail/relate/multi_point_geometry.hpp>
-// #include <boost/geometry/algorithms/detail/relate/areal_areal.hpp>
-// #include <boost/geometry/strategies/intersection.hpp>
-// #include <boost/geometry/strategies/within.hpp>
-#else
 #include <boost/bgeometry/core/tags.hpp>
 #include <boost/bgeometry/algorithms/detail/relate/interface.hpp>
 #include <boost/bgeometry/algorithms/detail/relate/point_point.hpp>
-// #include <boost/bgeometry/algorithms/detail/relate/point_geometry.hpp>
-// #include <boost/bgeometry/algorithms/detail/relate/linear_linear.hpp>
-// #include <boost/bgeometry/algorithms/detail/relate/linear_areal.hpp>
-// #include <boost/bgeometry/algorithms/detail/relate/multi_point_geometry.hpp>
-// #include <boost/bgeometry/algorithms/detail/relate/areal_areal.hpp>
-// #include <boost/bgeometry/strategies/intersection.hpp>
-// #include <boost/bgeometry/strategies/within.hpp>
-#endif
 
 namespace boost { namespace geometry {
 

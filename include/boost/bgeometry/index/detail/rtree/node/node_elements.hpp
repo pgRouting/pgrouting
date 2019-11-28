@@ -12,15 +12,9 @@
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_NODE_ELEMENTS_HPP
 
 #include <boost/container/vector.hpp>
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/expand_by_epsilon.hpp>
-#include <boost/geometry/index/detail/varray.hpp>
-#include <boost/geometry/index/detail/rtree/node/pairs.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/expand_by_epsilon.hpp>
 #include <boost/bgeometry/index/detail/varray.hpp>
 #include <boost/bgeometry/index/detail/rtree/node/pairs.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index {
 

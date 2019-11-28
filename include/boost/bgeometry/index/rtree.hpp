@@ -20,73 +20,6 @@
 #include <boost/move/move.hpp>
 
 // Boost.Geometry
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/comparable_distance/interface.hpp>
-// #include <boost/geometry/algorithms/detail/covered_by/interface.hpp>
-// #include <boost/geometry/algorithms/detail/disjoint/interface.hpp>
-// #include <boost/geometry/algorithms/detail/equals/interface.hpp>
-#include <boost/geometry/algorithms/detail/intersects/interface.hpp>
-#include <boost/geometry/algorithms/detail/overlaps/interface.hpp>
-#include <boost/geometry/algorithms/detail/touches/interface.hpp>
-// #include <boost/geometry/algorithms/detail/within/interface.hpp>
-#include <boost/geometry/algorithms/centroid.hpp>
-
-#include <boost/geometry/geometries/point.hpp>
-// #include <boost/geometry/geometries/box.hpp>
-
-// Boost.Geometry.Index
-#include <boost/geometry/index/detail/config_begin.hpp>
-
-#include <boost/geometry/index/detail/assert.hpp>
-#include <boost/geometry/index/detail/exception.hpp>
-
-#include <boost/geometry/index/detail/rtree/options.hpp>
-
-#include <boost/geometry/index/indexable.hpp>
-#include <boost/geometry/index/equal_to.hpp>
-
-#include <boost/geometry/index/detail/translator.hpp>
-
-#include <boost/geometry/index/predicates.hpp>
-#include <boost/geometry/index/distance_predicates.hpp>
-#include <boost/geometry/index/detail/rtree/adaptors.hpp>
-
-#include <boost/geometry/index/detail/meta.hpp>
-#include <boost/geometry/index/detail/utilities.hpp>
-#include <boost/geometry/index/detail/rtree/node/node.hpp>
-
-#include <boost/geometry/index/detail/algorithms/is_valid.hpp>
-
-#include <boost/geometry/index/detail/rtree/visitors/insert.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/iterator.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/remove.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/copy.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/destroy.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/spatial_query.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/distance_query.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/count.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/children_box.hpp>
-
-// #include <boost/geometry/index/detail/rtree/linear/linear.hpp>
-// #include <boost/geometry/index/detail/rtree/quadratic/quadratic.hpp>
-#include <boost/geometry/index/detail/rtree/rstar/rstar.hpp>
-//#include <boost/geometry/extensions/index/detail/rtree/kmeans/kmeans.hpp>
-
-#include <boost/geometry/index/detail/rtree/pack_create.hpp>
-
-#include <boost/geometry/index/inserter.hpp>
-
-#include <boost/geometry/index/detail/rtree/utilities/view.hpp>
-
-#include <boost/geometry/index/detail/rtree/iterators.hpp>
-#include <boost/geometry/index/detail/rtree/query_iterators.hpp>
-
-#ifdef BOOST_GEOMETRY_INDEX_DETAIL_EXPERIMENTAL
-// serialization
-// #include <boost/geometry/index/detail/serialization.hpp>
-#endif
-
-#else
 #include <boost/bgeometry/algorithms/detail/comparable_distance/interface.hpp>
 #include <boost/bgeometry/algorithms/detail/intersects/interface.hpp>
 #include <boost/bgeometry/algorithms/detail/overlaps/interface.hpp>
@@ -141,8 +74,6 @@
 
 #ifdef BOOST_GEOMETRY_INDEX_DETAIL_EXPERIMENTAL
 // serialization
-#endif
-
 #endif
 
 // TODO change the name to bounding_tree
@@ -2281,10 +2212,6 @@ struct range_mutable_iterator
 
 } // namespace boost
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/config_end.hpp>
-#else
 #include <boost/bgeometry/index/detail/config_end.hpp>
-#endif
 
 #endif // BOOST_GEOMETRY_INDEX_RTREE_HPP

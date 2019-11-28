@@ -11,17 +11,11 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_PACK_CREATE_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_PACK_CREATE_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/expand.hpp>
-#include <boost/geometry/index/detail/algorithms/bounds.hpp>
-#include <boost/geometry/index/detail/algorithms/nth_element.hpp>
-#include <boost/geometry/algorithms/detail/expand_by_epsilon.hpp>
-#else
 #include <boost/bgeometry/algorithms/expand.hpp>
 #include <boost/bgeometry/index/detail/algorithms/bounds.hpp>
 #include <boost/bgeometry/index/detail/algorithms/nth_element.hpp>
+
 #include <boost/bgeometry/algorithms/detail/expand_by_epsilon.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index { namespace detail { namespace rtree {
 

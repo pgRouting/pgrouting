@@ -24,17 +24,12 @@
 
 #include <boost/range.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/util/range.hpp>
-#include <boost/geometry/algorithms/detail/interior_iterator.hpp>
-#else
 #include <boost/bgeometry/core/exterior_ring.hpp>
 #include <boost/bgeometry/core/interior_rings.hpp>
+
 #include <boost/bgeometry/util/range.hpp>
+
 #include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
-#endif
 
 
 namespace boost { namespace geometry

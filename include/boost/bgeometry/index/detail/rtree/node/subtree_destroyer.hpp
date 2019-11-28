@@ -11,11 +11,7 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_SUBTREE_DESTROYED_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_SUBTREE_DESTROYED_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/rtree/visitors/destroy.hpp>
-#else
 #include <boost/bgeometry/index/detail/rtree/visitors/destroy.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index {
 

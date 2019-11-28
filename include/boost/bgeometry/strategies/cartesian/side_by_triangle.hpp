@@ -23,25 +23,16 @@
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/type_traits/is_void.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/arithmetic/determinant.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/util/select_coordinate_type.hpp>
-#include <boost/geometry/strategies/cartesian/disjoint_segment_box.hpp>
-#include <boost/geometry/strategies/cartesian/envelope_segment.hpp>
-#include <boost/geometry/strategies/side.hpp>
-#include <boost/geometry/algorithms/detail/relate/less.hpp>
-#include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-#else
 #include <boost/bgeometry/arithmetic/determinant.hpp>
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/util/select_coordinate_type.hpp>
+
 #include <boost/bgeometry/strategies/cartesian/disjoint_segment_box.hpp>
 #include <boost/bgeometry/strategies/cartesian/envelope_segment.hpp>
 #include <boost/bgeometry/strategies/side.hpp>
+
 #include <boost/bgeometry/algorithms/detail/relate/less.hpp>
 #include <boost/bgeometry/algorithms/detail/equals/point_point.hpp>
-#endif
 
 
 namespace boost { namespace geometry

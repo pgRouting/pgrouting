@@ -17,20 +17,15 @@
 
 #include <boost/throw_exception.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/util/condition.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_turn_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_turn_info_for_endpoint.hpp>
-#else
 #include <boost/bgeometry/core/assert.hpp>
+
 #include <boost/bgeometry/util/condition.hpp>
+
 #include <boost/bgeometry/algorithms/detail/overlay/get_turn_info.hpp>
 #include <boost/bgeometry/algorithms/detail/overlay/get_turn_info_for_endpoint.hpp>
-#endif
 
 // TEMP, for spikes detector
-//#include <boost/geometry/algorithms/detail/overlay/get_turn_info_ll.hpp>
+//#include <boost/bgeometry/algorithms/detail/overlay/get_turn_info_ll.hpp>
 
 namespace boost { namespace geometry {
 

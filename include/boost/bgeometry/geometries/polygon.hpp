@@ -20,21 +20,12 @@
 
 #include <boost/concept/assert.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-#include <boost/geometry/geometries/ring.hpp>
-#else
 #include <boost/bgeometry/core/exterior_ring.hpp>
 #include <boost/bgeometry/core/interior_rings.hpp>
 #include <boost/bgeometry/core/point_type.hpp>
 #include <boost/bgeometry/core/ring_type.hpp>
 #include <boost/bgeometry/geometries/concepts/point_concept.hpp>
 #include <boost/bgeometry/geometries/ring.hpp>
-#endif
 
 #include <boost/config.hpp>
 #ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST

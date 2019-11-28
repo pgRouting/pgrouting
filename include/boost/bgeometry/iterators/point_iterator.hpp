@@ -15,20 +15,12 @@
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/range.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/iterators/dispatch/point_iterator.hpp>
-#include <boost/geometry/iterators/detail/point_iterator/iterator_type.hpp>
-#else
 #include <boost/bgeometry/core/exterior_ring.hpp>
 #include <boost/bgeometry/core/interior_rings.hpp>
 #include <boost/bgeometry/core/tags.hpp>
+
 #include <boost/bgeometry/iterators/dispatch/point_iterator.hpp>
 #include <boost/bgeometry/iterators/detail/point_iterator/iterator_type.hpp>
-#endif
-
 
 
 namespace boost { namespace geometry

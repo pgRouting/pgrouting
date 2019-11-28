@@ -22,21 +22,15 @@
 
 #include <boost/core/addressof.hpp>
 #include <boost/core/ref.hpp>
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-#include <boost/geometry/iterators/point_iterator.hpp>
-#else
+
 #include <boost/bgeometry/core/cs.hpp>
 #include <boost/bgeometry/core/tag_cast.hpp>
 #include <boost/bgeometry/core/tags.hpp>
 #include <boost/bgeometry/core/point_type.hpp>
+
 #include <boost/bgeometry/arithmetic/arithmetic.hpp>
+
 #include <boost/bgeometry/iterators/point_iterator.hpp>
-#endif
 
 
 namespace boost { namespace geometry

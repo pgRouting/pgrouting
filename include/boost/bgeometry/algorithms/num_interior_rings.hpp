@@ -28,16 +28,6 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant_fwd.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/core/interior_rings.hpp>
-
-#include <boost/geometry/algorithms/detail/counting.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-#else
 #include <boost/bgeometry/core/tag.hpp>
 #include <boost/bgeometry/core/tags.hpp>
 
@@ -46,7 +36,6 @@
 #include <boost/bgeometry/algorithms/detail/counting.hpp>
 
 #include <boost/bgeometry/geometries/concepts/check.hpp>
-#endif
 
 
 namespace boost { namespace geometry

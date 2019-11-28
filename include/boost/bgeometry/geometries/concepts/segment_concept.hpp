@@ -17,17 +17,10 @@
 
 #include <boost/concept_check.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#else
 #include <boost/bgeometry/geometries/concepts/point_concept.hpp>
 
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/point_type.hpp>
-#endif
 
 
 namespace boost { namespace geometry { namespace concepts

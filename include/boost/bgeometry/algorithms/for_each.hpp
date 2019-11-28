@@ -27,23 +27,6 @@
 #include <boost/type_traits/is_const.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/detail/interior_iterator.hpp>
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-
-#include <boost/geometry/geometries/segment.hpp>
-
-#include <boost/geometry/util/add_const_if_c.hpp>
-#include <boost/geometry/util/range.hpp>
-#else
 #include <boost/bgeometry/algorithms/detail/interior_iterator.hpp>
 #include <boost/bgeometry/algorithms/not_implemented.hpp>
 #include <boost/bgeometry/core/closure.hpp>
@@ -59,7 +42,6 @@
 
 #include <boost/bgeometry/util/add_const_if_c.hpp>
 #include <boost/bgeometry/util/range.hpp>
-#endif
 
 
 namespace boost { namespace geometry

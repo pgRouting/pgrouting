@@ -19,20 +19,11 @@
 #include <boost/concept/assert.hpp>
 #include <boost/config.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/algorithms/convert.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-
-#if defined(BOOST_GEOMETRY_ENABLE_ACCESS_DEBUGGING)
-#include <boost/geometry/core/assert.hpp>
-#endif
-#else
 #include <boost/bgeometry/algorithms/convert.hpp>
 #include <boost/bgeometry/geometries/concepts/point_concept.hpp>
 
 #if defined(BOOST_GEOMETRY_ENABLE_ACCESS_DEBUGGING)
 #include <boost/bgeometry/core/assert.hpp>
-#endif
 #endif
 
 

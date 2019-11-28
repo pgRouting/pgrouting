@@ -11,15 +11,9 @@
 #ifndef BOOST_GEOMETRY_UTIL_NORMALIZE_SPHEROIDAL_COORDINATES_HPP
 #define BOOST_GEOMETRY_UTIL_NORMALIZE_SPHEROIDAL_COORDINATES_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/util/math.hpp>
-#else
 #include <boost/bgeometry/core/assert.hpp>
 #include <boost/bgeometry/core/cs.hpp>
 #include <boost/bgeometry/util/math.hpp>
-#endif
 
 
 namespace boost { namespace geometry

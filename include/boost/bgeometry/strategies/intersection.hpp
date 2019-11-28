@@ -11,11 +11,7 @@
 #define BOOST_GEOMETRY_STRATEGIES_SEGMENT_INTERSECTION_HPP
 
 
-#if BOOST_GeometrYy_VERSION_OK
-#include <boost/geometry/strategies/tags.hpp>
-#else
 #include <boost/bgeometry/strategies/tags.hpp>
-#endif
 
 
 #include <boost/mpl/assert.hpp>

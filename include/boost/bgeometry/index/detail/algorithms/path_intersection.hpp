@@ -12,13 +12,9 @@
 #define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_PATH_INTERSECTION_HPP
 
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/algorithms/segment_intersection.hpp>
-#include <boost/geometry/strategies/default_length_result.hpp>
-#else
 #include <boost/bgeometry/index/detail/algorithms/segment_intersection.hpp>
+
 #include <boost/bgeometry/strategies/default_length_result.hpp>
-#endif
 
 
 namespace boost { namespace geometry { namespace index { namespace detail {

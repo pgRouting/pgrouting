@@ -14,21 +14,13 @@
 #include <boost/mpl/assert.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/topological_dimension.hpp>
-#include <boost/geometry/strategies/covered_by.hpp>
-#include <boost/geometry/strategies/intersection.hpp>
-#include <boost/geometry/strategies/within.hpp>
-#else
 #include <boost/bgeometry/core/cs.hpp>
 #include <boost/bgeometry/core/point_type.hpp>
 #include <boost/bgeometry/core/topological_dimension.hpp>
+
 #include <boost/bgeometry/strategies/covered_by.hpp>
 #include <boost/bgeometry/strategies/intersection.hpp>
 #include <boost/bgeometry/strategies/within.hpp>
-#endif
 
 
 namespace boost { namespace geometry

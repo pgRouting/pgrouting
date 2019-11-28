@@ -11,11 +11,7 @@
 #ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_INSERT_HPP
 #define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_INSERT_HPP
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/index/detail/algorithms/content.hpp>
-#else
 #include <boost/bgeometry/index/detail/algorithms/content.hpp>
-#endif
 
 namespace boost { namespace geometry { namespace index {
 

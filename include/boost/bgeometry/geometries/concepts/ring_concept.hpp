@@ -20,19 +20,11 @@
 #include <boost/range/concepts.hpp>
 #include <boost/type_traits/remove_const.hpp>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/mutable_range.hpp>
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-#else
 #include <boost/bgeometry/core/access.hpp>
 #include <boost/bgeometry/core/mutable_range.hpp>
 #include <boost/bgeometry/core/point_type.hpp>
 
 #include <boost/bgeometry/geometries/concepts/point_concept.hpp>
-#endif
 
 
 namespace boost { namespace geometry { namespace concepts

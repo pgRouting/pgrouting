@@ -19,27 +19,14 @@
 
 #include <cstddef>
 
-#if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/views/detail/indexed_point_view.hpp>
-#include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
-// #include <boost/geometry/algorithms/detail/normalize.hpp>
-#include <boost/geometry/algorithms/detail/envelope/transform_units.hpp>
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-#else
 #include <boost/bgeometry/core/cs.hpp>
 #include <boost/bgeometry/core/coordinate_dimension.hpp>
 #include <boost/bgeometry/core/coordinate_system.hpp>
 #include <boost/bgeometry/core/tags.hpp>
 #include <boost/bgeometry/views/detail/indexed_point_view.hpp>
 #include <boost/bgeometry/algorithms/detail/convert_point_to_point.hpp>
-// #include <boost/bgeometry/algorithms/detail/normalize.hpp>
 #include <boost/bgeometry/algorithms/detail/envelope/transform_units.hpp>
 #include <boost/bgeometry/algorithms/dispatch/envelope.hpp>
-#endif
 
 
 namespace boost { namespace geometry
