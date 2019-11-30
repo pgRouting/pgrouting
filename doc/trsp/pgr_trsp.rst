@@ -267,7 +267,7 @@ Different ways to represent 'no path found`
    :end-before: --place4
 
 pgr_trsp calls :doc:`pgr_dijkstra` when there are no restrictions which returns
-`EMTPY SET` when a path is not found
+`EMPTY SET` when a path is not found
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place4
@@ -345,7 +345,7 @@ An EXCEPTION is thrown.
    :start-after: --place10
    :end-before: --place11
 
-The ``reverse_cost`` column will be efectively removed and will cost execution time
+The ``reverse_cost`` column will be effectively removed and will cost execution time
 
 The "Edges" signature version
 .........................................................................
@@ -369,7 +369,7 @@ Different ways to represent 'no path found`
    :end-before: --place12
 
 pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which returns
-`EMTPY SET` when a path is not found
+`EMPTY SET` when a path is not found
 
 .. rubric:: Throwing EXCEPTION to represent no path found
 
@@ -460,7 +460,7 @@ An EXCEPTION is thrown.
    :start-after: --place18
    :end-before: --place19
 
-The ``reverse_cost`` column will be efectively removed and will cost execution time
+The ``reverse_cost`` column will be effectively removed and will cost execution time
 
 Using a points of interest table
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

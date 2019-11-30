@@ -26,29 +26,52 @@
 
 set -e
 
-# ----------------------
-#
-echo **All pgRouting versions to be updated must be installed before calling**
-echo
-echo
-#
-# USAGE
-#
-#  bash tools/testers/update-tester.sh
-#
+TWEAK="-rc1"
+PGPORT=5432
+#sorry this only works on vicky's computer
+PGUSER="vicky"
+DB="___pgr___test___"
 
-CURRENT=2.6.0
+function info {
 
-if [ ! -f build/sql/pgrouting--$CURRENT.sql ]; then
-   echo "Not testing the current version, file not found:  build/lib/pgrouting--$CURRENT.sql "
-   exit 1
+    # ----------------------
+    #
+    echo **pgRouting version must be installed before calling**
+    echo "$1"
+    echo "$2"
+
+    echo EXAMPLE USAGE
+    echo - Short execution
+    echo  bash tools/testers/update-tester.sh $1 $2
+    echo - For running pgtap tests:
+    echo  bash tools/testers/update-tester.sh $1 $2 long
+
+}
+
+
+if [[ -z  "$1" ]]; then
+    echo missing version to upgrade
+    info $CURRENT 2.6.3
+    exit 1
 fi
 
-dropdb --if-exists ___test_update
+if [[ -z  "$2" ]]; then
+    echo missing current version
+    info 2.6.3 3.0.0
+    exit 1
+fi
+
+FROM_PGR="$1"
+CURRENT="$2"
+LONG=$3
+
+dropdb --if-exists "$DB"
 
 
 cd build
-sudo make install
+cmake -DPGROUTING_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug .. > /tmp/foo.txt
+make -j 4 > /tmp/foo.txt
+sudo make install > /tmp/foo.txt
 cd ..
 
 
@@ -60,102 +83,61 @@ echo
 echo "Updating from $1 to $2"
 echo ------------------------------------
 
-INSTALLED=$(locate "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql")
 
-if [ "$INSTALLED" == "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql" ]
-then
-    echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql found"
-else
-    echo "FATAL: /usr/share/postgresql/9.3/extension/pgrouting--$1.sql Not found"
-    exit 1
-fi
-
-
-createdb  ___test_update
-psql  ___test_update  <<EOF
+createdb  "$DB"
+psql  "$DB"  <<EOF
 CREATE extension postgis;
 CREATE extension pgrouting with version '$1';
 EOF
 
-OLD_VERSION=$(psql ___test_update -t -c 'SELECT version FROM pgr_version()')
+OLD_VERSION=$(psql "$DB" -t -c 'SELECT * FROM pgr_version()')
+echo "$OLD_VERSION"
 
 
-if [ "b$OLD_VERSION" != "b $1" ]
-then
-    echo "ERROR: Version $1 not found on the system"
-    dropdb ___test_update
-    exit 1
-fi
+psql "$DB" -e -c "ALTER extension pgrouting update to '$2'"
 
 
-
-psql ___test_update -c "ALTER extension pgrouting update to '$2'"
-
-
-NEW_VERSION=$(psql ___test_update -t -c 'SELECT version FROM pgr_version()')
+NEW_VERSION=$(psql "$DB" -t -c 'SELECT * FROM pgr_version()')
 
 echo "$OLD_VERSION ->> $NEW_VERSION"
 
-if [ "b$NEW_VERSION" != "b $2" ]
+if [ "b$NEW_VERSION" != "b $2$TWEAK" ]
 then
     echo "FAIL: Could not update from version $1 to version $2"
     dropdb ___test_update
     exit 1
 fi
 
-dropdb ___test_update
+
+DIR="sql/sigs"
+FILE="$DIR/pgrouting--$2.sig"
+
+echo "#VERSION pgrouting $2" > "$FILE"
+echo "#TYPES" >> $FILE
+psql $DB -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> $FILE
+echo "#FUNCTIONS" >> "$FILE"
+psql $DB -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> $FILE
+
+DIFF=$(git diff "$FILE")
+if [ -n "$DIFF" ]
+then
+    echo "$DIFF"
+else
+    echo "$2 sigunatures are OK"
+fi
+
+
+if [ -n "$LONG" ]
+then
+    sh ./tools/testers/pg_prove_tests.sh $PGUSER $PGPORT Release
+fi
+
+dropdb "$DB"
 
 } # end of function
 
-#------------------------------------
-### updates from 2.5
-#------------------------------------
 
-update_test 2.5.3 $CURRENT
-update_test 2.5.2 $CURRENT
-update_test 2.5.1 $CURRENT
-update_test 2.5.0 $CURRENT
-
-#------------------------------------
-### updates from 2.4
-#------------------------------------
-
-update_test 2.4.2 $CURRENT
-update_test 2.4.1 $CURRENT
-update_test 2.4.0 $CURRENT
-
-#------------------------------------
-### updates from 2.3.0
-#------------------------------------
-
-update_test 2.3.2 $CURRENT
-update_test 2.3.1 $CURRENT
-update_test 2.3.0 $CURRENT
-
-#------------------------------------
-### updates from 2.2.x
-#------------------------------------
-
-update_test 2.2.4 $CURRENT
-update_test 2.2.3 $CURRENT
-update_test 2.2.2 $CURRENT
-update_test 2.2.1 $CURRENT
-update_test 2.2.0 $CURRENT
-
-
-#------------------------------------
-### updates from 2.1.x
-#------------------------------------
-
-update_test 2.1.0 $CURRENT
-
-#------------------------------------
-### updates from 2.0.x
-#------------------------------------
-
-update_test 2.0.0 $CURRENT
-
-echo Reached end of test, all tests passed
-# CAN NOT BE Update test from 2.0.1  to $CURRENT;
+update_test $FROM_PGR $CURRENT
+exit
 
 exit 0

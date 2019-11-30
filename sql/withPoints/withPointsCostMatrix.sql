@@ -65,7 +65,7 @@ IS'pgr_withPointsCostMatrix
 - PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - Points SQL with colums: [pid], edge_id, fraction[,side]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
     - ARRAY [points identifiers], 
 - Optional Parameters
     - directed := true

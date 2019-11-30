@@ -63,7 +63,7 @@ IS 'pgr_turnRestrictedPath
 - EXPERIMENTAL
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - Restrictions SQL with colums: id, cost, path
+    - Restrictions SQL with columns: id, cost, path
     - From vertex identifier
     - To vertex identifier
     - K

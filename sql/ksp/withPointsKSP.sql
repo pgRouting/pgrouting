@@ -53,7 +53,7 @@ IS 'pgr_withPointsKSP
 - PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - Points SQL with colums: [pid], edge_id, fraction[,side]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
     - From vertex identifier
     - To vertex identifier
     - K

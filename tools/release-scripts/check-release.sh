@@ -54,8 +54,18 @@ fi
 MAYOR=3
 MINOR=0
 MICRO=0
-RC="-dev"
-PREV_REL=2.6.0
+RC="-rc1"
+PREV_REL=2.6.3
+PREV_RELS="
+    2.6.3 2.6.2 2.6.1 2.6.0
+    2.5.4 2.5.3 2.5.2 2.5.1 2.5.0
+    2.4.2 2.4.1 2.4.0
+    2.3.2 2.3.1 2.3.0
+    2.2.4 2.2.3 2.2.2 2.2.1 2.2.0"
+# These releases are not for update
+OLD_RELS="
+    2.1.0
+    2.0.1 2.0.0"
 DEBUG=$1
 BRANCH="release/$MAYOR.$MINOR"
 
@@ -116,13 +126,16 @@ else
 fi
 
 
-OLDNEWS=$(grep $PREV_REL doc/src/release_notes.rst | grep ref)
-if [[ $? != 0 ]]; then
-    error_msg "Section $PREV_REL in release_notes.rst file is missing"
-    exit 1
-else
-    echo "- [x] release_notes.rst section $PREV_REL exists"
-fi
+for r in $PREV_RELS $OLD_RELS
+do
+    OLDNEWS=$(grep $r doc/src/release_notes.rst | grep ref)
+    if [[ $? != 0 ]]; then
+        error_msg "Section $r in release_notes.rst file is missing"
+        exit 1
+    else
+        echo "- [x] release_notes.rst section $r exists"
+    fi
+done
 
 
 tools/release-scripts/notes2news.pl
@@ -147,34 +160,18 @@ echo "- CMakeLists"
 
 if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
-    echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MAJOR \"$MAYOR\")'"
-    echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_MINOR \"$MINOR\")'"
-    echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_PATCH \"$MICRO\")'"
+    echo "grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt"
     echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_DEV \"$RC\")'"
     echo "\`\`\`"
 fi
 
-if [[ $(grep 'set(PGROUTING_VERSION_MAJOR' CMakeLists.txt | grep $MAYOR) != "set(PGROUTING_VERSION_MAJOR \"$MAYOR\")" ]]; then
-    error_msg "FATAL: PGROUTING_VERSION_MAJOR is not '$MAYOR' ... Verify CMakeLists.txt"
+if [[ $(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt) != "$MAYOR.$MINOR.$MICRO" ]]; then
+    error_msg "FATAL: PGROUTING_VERSION is not '$MAYOR.$MINOR.$MICRO' ... Verify CMakeLists.txt"
     exit 1
 else
-    echo "  - [x] mayor information is OK"
+    echo "  - [x] $MAYOR.$MINOR.$MICRO information is OK"
 fi
 
-
-if [[ $(grep 'set(PGROUTING_VERSION_MINOR' CMakeLists.txt | grep $MINOR) !=  "set(PGROUTING_VERSION_MINOR \"$MINOR\")" ]]; then
-    error_msg "FATAL: PGROUTING_VERSION_MINOR is not '$MINOR' ... Verify CMakeLists.txt"
-    exit 1
-else
-    echo "  - [x] Check minor information is OK"
-fi
-
-if [[ $(grep 'set(PGROUTING_VERSION_PATCH' CMakeLists.txt | grep $MICRO) !=  "set(PGROUTING_VERSION_PATCH \"$MICRO\")" ]]; then
-    error_msg "FATAL: PGROUTING_VERSION_PATCH is not '$MICRO' ... Verify CMakeLists.txt"
-    exit 1
-else
-    echo "  - [x] Check patch information is OK"
-fi
 
 if [[ $(grep 'set(PGROUTING_VERSION_DEV' CMakeLists.txt ) !=  "set(PGROUTING_VERSION_DEV \"$RC\")" ]]; then
     error_msg "FATAL: PGROUTING_VERSION_DEV is not '$RC' ... Verify CMakeLists.txt"
@@ -186,103 +183,48 @@ fi
 
 #---------------------------------------------------------------------
 
-echo "- src/common/test/doc-pgr_version.result"
+echo "- "docqueries/version/doc-version.result
 
 #---------------------------------------------------------------------
 
 if [[ -n $DEBUG ]]; then
     echo "\`\`\`"
-    echo "cat test/common/doc-pgr_version.result | grep \"$MAYOR.$MINOR.$MICRO\""
+    echo "grep '$MAYOR.$MINOR.$MICRO$RC' docqueries/version/doc-version.result"
     echo "\`\`\`"
 fi
 
-if [[ $(grep "$MAYOR.$MINOR.$MICRO" test/common/doc-pgr_version.result) != " $MAYOR.$MINOR.$MICRO" ]]; then
-    error_msg "test/common/doc-pgr_version.result is not $MAYOR.$MINOR.$MICRO"
+if [[ $(grep "$MAYOR.$MINOR.$MICRO$RC" docqueries/version/doc-version.result) != " $MAYOR.$MINOR.$MICRO$RC" ]]; then
+    error_msg "test/common/doc-pgr_version.result is not $MAYOR.$MINOR.$MICRO$RC"
     exit 1
 else
-    echo "  - [x]  src/common/test/doc-pgr_version.result"
+    echo "  - [x]  $MAYOR.$MINOR.$MICRO$RC in test/common/doc-pgr_version.result"
 fi
 
-#---------------------------------------------------------------------
-
-echo "- VERSION"
-
-#---------------------------------------------------------------------
-
-if [[ -n $DEBUG ]]; then
-    echo "\`\`\`"
-    echo "grep \"release/$MAYOR.$MINOR\" VERSION"
-    echo "\`\`\`"
-fi
-
-if [[ $(grep "release/$MAYOR.$MINOR" VERSION) != *"release/$MAYOR.$MINOR" ]]; then
-    error_msg "VERSION should have 'release/$MAYOR.$MINOR'"
-    exit 1
-fi
-echo "  -[x] VERSION file branch: OK"
 
 #---------------------------------------------------------------------
 echo
 echo "### Checking signature files exist"
 echo
 #---------------------------------------------------------------------
-test_file 3.0.0
-#test_file 2.6.1
-test_file 2.6.0
-test_file 2.5.3
-test_file 2.5.2
-test_file 2.5.1
-test_file 2.5.0
-test_file 2.4.2
-test_file 2.4.1
-test_file 2.4.0
-test_file 2.3.2
-test_file 2.3.1
-test_file 2.3.0
-test_file 2.2.4
-test_file 2.2.3
-test_file 2.2.2
-test_file 2.2.1
-test_file 2.2.0
-test_file 2.1.0
-test_file 2.0.1
-test_file 2.0.0
+test_file "$MAYOR.$MINOR.$MICRO"
+for r in $PREV_RELS
+do
+    test_file $r
+done
 
-
-#---------------------------------------------------------------------
-echo
-echo "### Locally make a clean build as Release"
-echo
-#---------------------------------------------------------------------
-
-echo "\`\`\`"
-
-if [[ -z  "$DEBUG" ]]; then
-    echo "bash tools/release-scripts/compile-release.sh 5   $MAYOR.$MINOR $MICRO"
-    echo "bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO"
-    echo "bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO"
-    bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO
-    bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO
-    bash tools/release-scripts/compile-release.sh 5 $MAYOR.$MINOR $MICRO
-fi
-echo "bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO"
-echo "\`\`\`"
-bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO
-
-echo - [x] completed local builds
 
 #---------------------------------------------------------------------
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
-sh tools/release-scripts/get_signatures.sh $MAYOR.$MINOR.$MICRO ___sig_generate___ sql/sigs >> build/tmp_sigs.txt
-
-if [[ -z  "$DEBUG" ]]; then
-    git_no_change
+bash tools/release-scripts/compile-release.sh
+bash tools/release-scripts/get_signatures.sh
+if [[ -z $(git diff "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig") ]]; then
+    echo signature changed at: "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig"
 fi
 
 echo
-echo - [x] completed check: OK
+echo - [x] signature file "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig" is OK
 echo
 
 #---------------------------------------------------------------------
@@ -291,11 +233,15 @@ echo "### Locally run the update tester"
 echo "\`\`\`"
 echo bash tools/testers/update-tester.sh
 echo "\`\`\`"
-bash tools/testers/update-tester.sh
-if [[ $? != 0 ]]; then
-    echo "FATAL on the update-tester"
-    exit 1
-fi
+
+for r in $PREV_RELS
+do
+    bash tools/testers/update-tester.sh "$r" "$MAYOR.$MINOR.$MICRO"
+    if [[ $? != 0 ]]; then
+        echo "FATAL on the update-tester"
+        exit 1
+    fi
+done
 echo - [x] completed update testing
 
 
@@ -322,5 +268,20 @@ fi
 
 echo - [x] No files changed
 
+#---------------------------------------------------------------------
+echo
+echo "### Locally make a clean build as Release"
+echo
+#---------------------------------------------------------------------
+
+
+if [[ -z  "$DEBUG" ]]; then
+    echo "\`\`\`"
+    echo "bash tools/release-scripts/compile-release.sh"
+    echo "\`\`\`"
+fi
+bash tools/release-scripts/compile-release.sh
+
+echo - [x] completed local builds
 
 echo "End of check"

@@ -2,94 +2,45 @@
 
 set -e
 
-if [[ -z  $1 ]]; then
-    echo "Cpp version missing";
-    echo "Usage:"
-    echo "tools/release-scripts/compile-release.sh Cpp Minor Micro [Debug]";
-    exit 1;
-fi
+echo $1
 
-if [[ -z  $2 ]]; then
-    echo "Minor missing";
-    echo "Usage:"
-    echo "tools/release-scripts/compile-release.sh Cpp Minor Micro [Debug]";
-    exit 1;
-fi
-
-if [[ -z  $3 ]]; then
-    echo "Micro missing";
-    echo "Usage:"
-    echo "tools/release-scripts/compile-release.sh Cpp Minor Micro [Debug]";
-    exit 1;
-fi
-
-if [[ -z  $4 ]]; then
-    DEBUG="Release"
+if [ -z $1 ]; then
+    COMPILER="8"
+    PGSQL_VER="9.5"
 else
-    DEBUG="Debug"
+    COMPILER="4.8 4.9 5 6 7 8"
+    PGSQL_VER="9.5 10"
 fi
 
-CPPVERSION=$1
-MINOR=$2
-MICRO=$3
-FULL_VER="$MINOR.$MICRO"
+echo "$COMPILER"
+echo "$PGSQL_VER"
+
 
 function test_compile {
 
-echo
-echo
-echo "Compiling with $1"
 echo ------------------------------------
-echo
+echo ------------------------------------
+echo Compiling with $1
+echo ------------------------------------
 
-#sudo update-alternatives --set gcc /usr/bin/gcc-$1
-
+sudo update-alternatives --set gcc /usr/bin/gcc-$1
 cd build/
-touch tmp_make.txt
-touch tmp_make_err.txt
-cmake  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=$DEBUG .. >> tmp_make.txt
-
-#if [[ "$1" == "4.8" ]]; then
-#    make doc >> tmp_make.txt
-#    echo "  - [x] Build Users documentation"
-#    make doxy >> tmp_make.txt
-#    echo "  - [x] Build developers documentation"
-#fi
-
-make >> tmp_make.txt 2>>tmp_make_err.txt
-
-sudo make install >> tmp_make.txt
-
+echo "../tmp_make_$1_$2_$3.txt"
+cmake  "-DPOSTGRESQL_BIN=/usr/lib/postgresql/$2/bin" "-DCMAKE_BUILD_TYPE=$3" .. >> "../tmp_make_$1_$2_$3.txt"
+make -j 4 >> "../tmp_make_$1_$2_$3.txt"
+sudo make install
 cd ..
-
-echo "  - [x] Compilation"
-
-tools/testers/doc_queries_generator.pl >> build/tmp_make.txt
-echo "  - [x] Documentation tests"
-
-
-dropdb --if-exists ___pgr___test___
-createdb  ___pgr___test___
-sh ./tools/testers/pg_prove_tests.sh vicky >> build/tmp_make.txt
-dropdb  ___pgr___test___
-echo '  - [x] Pgtap tests OK'
-
-if [[ "$1" == "4.8" ]]; then
-    tools/testers/doc_queries_generator.pl -documentation >> build/tmp_make.txt
-    echo "  - [x] Regenerating Users documentation queries OK"
-    cd build
-    make doc >> tmp_make.txt
-    echo "  - [x] Build Users documentation OK"
-    make doxy >> tmp_make.txt
-    echo "  - [x] Build developers documentation OK"
-    cd ..
-fi
-
 }
 
-#sudo rm -f /usr/lib/postgresql/9.3/lib/libpgrouting-$MINOR.so
-#sudo rm -f /usr/share/postgresql/9.3/extension/pgrouting*$FULL_VER*
-rm -rf build/*
-test_compile "$CPPVERSION"
-
-exit 0
+for v in $COMPILER
+do
+    for p in $PGSQL_VER
+    do
+        #rm -rf build/*
+        test_compile $v $p Debug
+        echo "$v on $p Debug completed"
+        #rm -rf build/*
+        #test_compile $v $p Release
+        #echo "$v on $p Release completed"
+    done
+done

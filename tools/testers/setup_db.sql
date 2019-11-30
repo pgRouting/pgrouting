@@ -13,9 +13,9 @@
 
 SET client_min_messages = WARNING;
 
-CREATE EXTENSION postgis;
-CREATE EXTENSION pgtap;
-CREATE EXTENSION pgrouting;
+CREATE EXTENSION IF NOT EXISTS postgis;
+CREATE EXTENSION IF NOT EXISTS pgtap;
+CREATE EXTENSION IF NOT EXISTS pgrouting;
 
 --    i vrppdtw_data.sql
 --    i pickDeliver_pgtap_data.sql

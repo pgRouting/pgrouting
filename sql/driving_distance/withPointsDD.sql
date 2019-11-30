@@ -82,7 +82,7 @@ IS 'pgr_withPointsDD(Single Vertex)
 - PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - Points SQL with colums: [pid], edge_id, fraction[,side]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
     - From vertex identifier
     - Distance
 - Optional Parameters
@@ -99,7 +99,7 @@ IS 'pgr_withPointsDD(Multiple Vertices)
 - PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - Points SQL with colums: [pid], edge_id, fraction[,side]
+    - Points SQL with columns: [pid], edge_id, fraction[,side]
     - From ARRAY[vertices identifiers]
     - Distance
 - Optional Parameters
