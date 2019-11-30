@@ -35,6 +35,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #include <boost/graph/filtered_graph.hpp>
 
+#if BOOST_Geometry_VERSION_OK
+#include <boost/geometry/algorithms/num_points.hpp>
+#include <boost/geometry/algorithms/append.hpp>
+#include <boost/geometry/algorithms/area.hpp>
+#include <boost/geometry/strategies/agnostic/point_in_point.hpp>
+#include <boost/geometry/algorithms/correct.hpp>
+#include <boost/geometry/algorithms/distance.hpp>
+#else
+#include <boost/bgeometry/algorithms/num_points.hpp>
+#include <boost/bgeometry/algorithms/append.hpp>
+#include <boost/bgeometry/algorithms/area.hpp>
+#include <boost/bgeometry/strategies/agnostic/point_in_point.hpp>
+#include <boost/bgeometry/algorithms/correct.hpp>
+#include <boost/bgeometry/algorithms/distance.hpp>
+#endif
+
+
 #include <sstream>
 #include <set>
 #include <vector>

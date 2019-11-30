@@ -28,14 +28,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_BLINE_HPP_
 #pragma once
 
-#include <boost/geometry.hpp>
-
 #if BOOST_Geometry_VERSION_OK
-#include <boost/geometry/geometries/geometries.hpp>
+#include <boost/geometry/geometries/multi_point.hpp>
+#include <boost/geometry/geometries/linestring.hpp>
+#include <boost/geometry/geometries/multi_linestring.hpp>
+#include <boost/geometry/geometries/polygon.hpp>
+#include <boost/geometry/geometries/multi_polygon.hpp>
 #else
-#include <boost/geometry/multi/geometries/multi_point.hpp>
-#include <boost/geometry/multi/geometries/multi_linestring.hpp>
-#include <boost/geometry/multi/geometries/multi_polygon.hpp>
+#include <boost/bgeometry/geometries/multi_point.hpp>
+#include <boost/bgeometry/geometries/linestring.hpp>
+#include <boost/bgeometry/geometries/multi_linestring.hpp>
+#include <boost/bgeometry/geometries/polygon.hpp>
+#include <boost/bgeometry/geometries/multi_polygon.hpp>
 #endif
 
 namespace bg = boost::geometry;
