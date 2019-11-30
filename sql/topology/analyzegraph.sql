@@ -192,12 +192,12 @@ BEGIN
        SELECT * INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
        SELECT * INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
-       perform _pgr_onError(sourcetype NOT in('INTEGER','smallint','bigint') , 2,
-                       'pgr_analyzeGraph',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint or bigint but '||sourcetype||' was found',
+       perform _pgr_onError(sourcetype NOT in('integer','smallint','bigint') , 2,
+                       'pgr_analyzeGraph',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer, smallint or bigint but '||sourcetype||' was found',
                        'Type of Column '|| sourcename || ' is ' || sourcetype);
 
-       perform _pgr_onError(targettype NOT in('INTEGER','smallint','bigint') , 2,
-                       'pgr_analyzeGraph',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or biginti but '||targettype||' was found',
+       perform _pgr_onError(targettype NOT in('integer','smallint','bigint') , 2,
+                       'pgr_analyzeGraph',  'Wrong type of Column '|| targetname, ' Expected type of '|| targetname || ' is integer, smallint or bigint but '||targettype||' was found',
                        'Type of Column '|| targetname || ' is ' || targettype);
 
        RAISE DEBUG '     --> OK';
