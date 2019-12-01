@@ -4,9 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 # 
 # Translators:
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
 # MarPetra <mvergaratrejo@gmail.com>, 2019
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: 2019-09-07 11:55+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,15 +62,15 @@ msgstr "Nuevas funciones **Propuestas**:"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:30
 msgid "pgr_bdDijkstra(One to Many)"
-msgstr "pgr_bdDijkstra(One to Many)"
+msgstr "pgr_bdDijkstra(Uno a Muchos)"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:31
 msgid "pgr_bdDijkstra(Many to One)"
-msgstr "pgr_bdDijkstra(Many to One)"
+msgstr "pgr_bdDijkstra(Muchos a Uno)"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:32
 msgid "pgr_bdDijkstra(Many to Many)"
-msgstr "pgr_bdDijkstra(Many to Many)"
+msgstr "pgr_bdDijkstra(Muchos a Muchos)"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:34
 msgid "Version 2.4.0"
@@ -78,7 +78,7 @@ msgstr "Versión 2.4.0"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:36
 msgid "Signature change on pgr_bdDijsktra(One to One)"
-msgstr "La firma cambió en pgr_bdDijsktra(One to One)"
+msgstr "La firma cambió en pgr_bdDijsktra(Uno a Uno)"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:38
 msgid "Old signature no longer supported"
@@ -90,7 +90,7 @@ msgstr "Versión 2.0.0"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:42
 msgid "**Official** pgr_bdDijkstra(One to One)"
-msgstr "**Oficial** pgr_bdDijkstra(One to One)"
+msgstr "**Oficial** pgr_bdDijkstra(Uno a Uno)"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:45
 msgid "Support"
@@ -212,7 +212,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:118
 msgid "One to many"
-msgstr "Uno a muchos"
+msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:126
 msgid ""
@@ -501,12 +501,12 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "`Many to One`_"
-msgstr "`Many to One`_"
+msgstr "`Muchos a Uno`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "`Many to Many`_"
-msgstr "`Many to Many`_"
+msgstr "`Muchos a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid ""
@@ -518,7 +518,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "`One to Many`_"
-msgstr "`One to Many`_"
+msgstr "`Uno a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "**node**"

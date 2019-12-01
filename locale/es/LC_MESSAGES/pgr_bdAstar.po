@@ -4,9 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 # 
 # Translators:
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
 # MarPetra <mvergaratrejo@gmail.com>, 2019
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: 2019-09-07 11:55+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,7 +58,7 @@ msgstr "Versión 2.5.0"
 
 #: ../../build/doc/pgr_bdAstar.rst:28
 msgid "Signature change on pgr_bdAstar(One to One)"
-msgstr "Cambio de firma en pgr_bdAstar(One to One)"
+msgstr "Cambio de firma en pgr_bdAstar(Uno a Uno)"
 
 #: ../../build/doc/pgr_bdAstar.rst:30
 msgid "Old signature no longer supported"
@@ -70,15 +70,15 @@ msgstr "Nuevas funciones **Propuestas**:"
 
 #: ../../build/doc/pgr_bdAstar.rst:34
 msgid "pgr_bdAstar(One to Many)"
-msgstr "pgr_bdAstar(One to Many)"
+msgstr "pgr_bdAstar(Uno a Muchos)"
 
 #: ../../build/doc/pgr_bdAstar.rst:35
 msgid "pgr_bdAstar(Many to One)"
-msgstr "pgr_bdAstar(Many to One)"
+msgstr "pgr_bdAstar(Muchos a Uno)"
 
 #: ../../build/doc/pgr_bdAstar.rst:36
 msgid "pgr_bdAstar(Many to Many)"
-msgstr "pgr_bdAstar(Many to Many)"
+msgstr "pgr_bdAstar(Muchos a Muchos)"
 
 #: ../../build/doc/pgr_bdAstar.rst:38
 msgid "Version 2.0.0"
@@ -86,7 +86,7 @@ msgstr "Versión 2.0.0"
 
 #: ../../build/doc/pgr_bdAstar.rst:40
 msgid "**Official** pgr_bdAstar(One to One)"
-msgstr "**Oficial** pgr_bdAstar(One to One)"
+msgstr "**Oficial** pgr_bdAstar(Uno a Uno)"
 
 #: ../../build/doc/pgr_bdAstar.rst:43
 msgid "Support"
@@ -208,19 +208,19 @@ msgid ""
 " `One to One`_ `)` on the:"
 msgstr ""
 "Los resultados son equivalentes a la unión de los resultados de "
-"`pgr_bdAStar(` `One to One`_ `)` en:"
+"`pgr_bdAStar(` `Uno a Uno`_ `)` en:"
 
 #: ../../build/doc/pgr_bdAstar.rst:67
 msgid "`pgr_bdAstar(` `One to Many`_ `)`"
-msgstr "`pgr_bdAstar(` `One to Many`_ `)`"
+msgstr "`pgr_bdAstar(` `Uno a Muchos`_ `)`"
 
 #: ../../build/doc/pgr_bdAstar.rst:68
 msgid "`pgr_bdAstar(` `Many to One`_ `)`"
-msgstr "`pgr_bdAstar(` `Many to One`_ `)`"
+msgstr "`pgr_bdAstar(` `Muchos a Uno`_ `)`"
 
 #: ../../build/doc/pgr_bdAstar.rst:69
 msgid "`pgr_bdAstar(` `Many to Many`_ `)`"
-msgstr "`pgr_bdAstar(` `Many to Many`_ `)`"
+msgstr "`pgr_bdAstar(` `Muchos a Muchos`_ `)`"
 
 #: ../../build/doc/pgr_bdAstar.rst:71
 msgid ""
@@ -270,7 +270,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_bdAstar.rst:123
 msgid "One to many"
-msgstr "Uno a muchos"
+msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_bdAstar.rst:131
 msgid ""
@@ -345,12 +345,12 @@ msgstr "Identificador de vértice inicial. Parámetro en:"
 
 #: ../../build/doc/pgr_aStar.rst:9 ../../build/doc/pgr_aStar.rst:19
 msgid "`One to One`_"
-msgstr "'Uno a uno'_"
+msgstr "`Uno a Uno`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:21 ../../build/doc/pgr_aStar.rst:10
 #: ../../build/doc/pgr_aStar.rst:24
 msgid "`One to Many`_"
-msgstr "`One to Many`_"
+msgstr "`Uno a Muchos`_"
 
 #: ../../build/doc/pgr_aStar.rst:12
 msgid "**from_vids**"
@@ -367,13 +367,13 @@ msgstr "Arreglo de identificadores de vértices iniciales. Parámetro en:"
 #: ../../build/doc/pgRouting-concepts.rst:14 ../../build/doc/pgr_aStar.rst:14
 #: ../../build/doc/pgr_aStar.rst:20
 msgid "`Many to One`_"
-msgstr "`Many to One`_"
+msgstr "`Muchos a Uno`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:22 ../../build/doc/pgr_aStar.rst:15
 #: ../../build/doc/pgr_aStar.rst:25
 msgid "`Many to Many`_"
-msgstr "`Many to Many`_"
+msgstr "`Muchos a Muchos`_"
 
 #: ../../build/doc/pgr_aStar.rst:17
 msgid "**to_vid**"

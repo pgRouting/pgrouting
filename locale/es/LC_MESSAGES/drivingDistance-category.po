@@ -25,23 +25,24 @@ msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:11
 msgid "Driving Distance - Category"
-msgstr "Driving Distance - Categoría"
+msgstr "Distancia Manejando - Categoría"
 
 #: ../../build/doc/drivingDistance-category.rst:15
 msgid ""
 ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
 msgstr ""
-":doc:`pgr_drivingDistance` - Driving Distance basada en el algoritmo de "
+":doc:`pgr_drivingDistance` - Distancia Manejando basada en el algoritmo de "
 "Dijkstra."
 
 #: ../../build/doc/drivingDistance-category.rst:16
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
-msgstr ":doc:`pgr_primDD` - Driving Distance basada en el algoritmo de Prim"
+msgstr ""
+":doc:`pgr_primDD` - Distancia Manejando basada en el algoritmo de Prim"
 
 #: ../../build/doc/drivingDistance-category.rst:17
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
-":doc:`pgr_kruskalDD` - Driving Distance basada en el algoritmo de Kruskal"
+":doc:`pgr_kruskalDD` - Distancia Manejando basada en el algoritmo de Kruskal"
 
 #: ../../build/doc/drivingDistance-category.rst:18
 msgid "Post pocessing"
@@ -49,7 +50,7 @@ msgstr "Post procesamiento"
 
 #: ../../build/doc/drivingDistance-category.rst:20
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
-msgstr ":doc:`pgr_alphaShape` - Cálculo del Alpha Shape"
+msgstr ":doc:`pgr_alphaShape` - Cálculo de la forma Alpha"
 
 #: ../../build/doc/drivingDistance-category.rst:25
 msgid "Proposed"
@@ -93,7 +94,8 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/drivingDistance-category.rst:32
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
-msgstr ":doc:`pgr_withPointsDD` - Driving Distance basada en pgr_withPoints"
+msgstr ""
+":doc:`pgr_withPointsDD` - Distancia Manejando basada en pgr_withPoints"
 
 #: ../../build/doc/drivingDistance-category.rst:42
 msgid "Previous versions of this page"
@@ -121,7 +123,7 @@ msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:53
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/drivingDistance-category.rst:56
 msgid "Indices and tables"
@@ -129,8 +131,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/drivingDistance-category.rst:57
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/drivingDistance-category.rst:58
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`Búsqueda <search>`"

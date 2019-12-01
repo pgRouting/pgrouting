@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 # 
 # Translators:
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
 # MarPetra <mvergaratrejo@gmail.com>, 2019
 # 
 #, fuzzy
@@ -34,7 +34,7 @@ msgstr "``pgr_aStar`` — La ruta más corta utilizando el algoritmo A*."
 
 #: ../../build/doc/pgr_aStar.rst:18
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr "Boost Graph Interno"
 
 #: ../../build/doc/pgr_aStar.rst:21
 msgid "Availability"
@@ -139,7 +139,7 @@ msgstr "Falta la el indicador de ``directed``."
 
 #: ../../build/doc/aStar-family.rst:6
 msgid "``directed`` flag is set to true"
-msgstr "El indicador de ``directed`` se configura a \"true\"."
+msgstr "El indicador de ``directed`` se configura a verdadero."
 
 #: ../../build/doc/aStar-family.rst:8
 msgid "Unless specified otherwise, ordering is:"
@@ -205,8 +205,8 @@ msgid ""
 "The results are equivalent to the union of the results of the `pgr_aStar(` "
 "`One to One`_ `)` on the:"
 msgstr ""
-"Los resultados son equivalentes a la unión de los resultados de `pgr_aStar(`"
-" `Uno a Uno`_ `)` en:"
+"Los resultados son equivalentes a la unión de los resultados de pgr_aStar( "
+"`Uno a Uno`_ ) en:"
 
 #: ../../build/doc/pgr_aStar.rst:69
 msgid "`pgr_aStar(` `One to Many`_ `)`"

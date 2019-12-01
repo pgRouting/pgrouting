@@ -554,7 +554,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "`One to Many`_"
-msgstr "`One to Many`_"
+msgstr "`Uno a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "**node**"

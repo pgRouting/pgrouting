@@ -75,7 +75,7 @@ msgid ""
 msgstr ""
 "Usando el algoritmo de Kruskal, extraerá los nodos que tienen costos "
 "agregados menores o iguales al valor ``Distance`` de un vértice (o vértices)"
-" raíz dentro del árbol de expansión mínimo calculado."
+" **raíz** dentro del árbol de expansión mínimo calculado."
 
 #: ../../build/doc/pgr_kruskalDD.rst:39
 msgid "**The main Characteristics are:**"
@@ -185,7 +185,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/pgr_kruskalDD.rst:102
 msgid "SQL query described in `Inner query`_."
-msgstr "Consulta SQL descrita en `Inner query`_."
+msgstr "Consulta SQL descrita en `Consulta Interna`_."
 
 #: ../../build/doc/pgr_kruskalDD.rst:103
 msgid "**Root vid**"

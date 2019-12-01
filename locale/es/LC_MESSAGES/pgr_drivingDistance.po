@@ -37,7 +37,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:18
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr "Boost Graph Interno"
 
 #: ../../build/doc/pgr_drivingDistance.rst:21
 msgid "Availability"
@@ -115,7 +115,7 @@ msgid ""
 " the corresponding spanning tree."
 msgstr ""
 "Usando el algoritmo Dijkstra, se extraen todos los nodos que tienen costes "
-"menores o iguales al valor ''distancia''. Los bordes extraídos se ajustarán "
+"menores o iguales al valor ``distance``. Los bordes extraídos se ajustarán "
 "al árbol de expansión correspondiente."
 
 #: ../../build/doc/pgr_drivingDistance.rst:52

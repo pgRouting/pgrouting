@@ -78,7 +78,7 @@ msgstr "Versión 2.1.0"
 
 #: ../../build/doc/pgr_dijkstra.rst:37
 msgid "Signature change on pgr_dijkstra(One to One)"
-msgstr "Cambio de firma en  pgr_dijkstra(One to One)"
+msgstr "Cambio de firma en  pgr_dijkstra(Uno a Uno)"
 
 #: ../../build/doc/pgr_dijkstra.rst:39
 msgid "Version 2.0.0"
@@ -86,7 +86,7 @@ msgstr "Versión 2.0.0"
 
 #: ../../build/doc/pgr_dijkstra.rst:41
 msgid "**Official** pgr_dijkstra(One to One)"
-msgstr "**Oficial** pgr_dijkstra(One to One)"
+msgstr "**Oficial** pgr_dijkstra(Uno a Uno)"
 
 #: ../../build/doc/pgr_dijkstra.rst:44
 msgid "Support"
@@ -524,7 +524,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "`Many to One`_"
-msgstr "`Many to One`_"
+msgstr "`Muchos a Uno`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:22
@@ -541,7 +541,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "`One to Many`_"
-msgstr "`One to Many`_"
+msgstr "`Uno a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "**node**"

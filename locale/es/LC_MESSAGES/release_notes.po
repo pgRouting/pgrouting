@@ -254,7 +254,7 @@ msgstr " Familia aStar"
 
 #: ../../build/doc/release_notes.rst:86
 msgid "pgr_aStar(one to many)"
-msgstr "pgr_aStar(one to many)"
+msgstr "pgr_aStar(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:87
 msgid "pgr_aStar(many to one)"
@@ -266,11 +266,11 @@ msgstr "pgr_aStar(many to many)"
 
 #: ../../build/doc/release_notes.rst:89
 msgid "pgr_aStarCost(one to one)"
-msgstr "pgr_aStarCost(one to one)"
+msgstr "pgr_aStarCost(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:90
 msgid "pgr_aStarCost(one to many)"
-msgstr "pgr_aStarCost(one to many)"
+msgstr "pgr_aStarCost(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:91
 msgid "pgr_aStarCost(many to one)"
@@ -282,11 +282,11 @@ msgstr "pgr_aStarCost(many to many)"
 
 #: ../../build/doc/release_notes.rst:93
 msgid "pgr_aStarCostMatrix(one to one)"
-msgstr "pgr_aStarCostMatrix(one to one)"
+msgstr "pgr_aStarCostMatrix(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:94
 msgid "pgr_aStarCostMatrix(one to many)"
-msgstr "pgr_aStarCostMatrix(one to many)"
+msgstr "pgr_aStarCostMatrix(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:95
 msgid "pgr_aStarCostMatrix(many to one)"
@@ -302,7 +302,7 @@ msgstr "Familia bdAstar"
 
 #: ../../build/doc/release_notes.rst:100 ../../build/doc/release_notes.rst:427
 msgid "pgr_bdAstar(one to many)"
-msgstr "pgr_bdAstar(one to many)"
+msgstr "pgr_bdAstar(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:101 ../../build/doc/release_notes.rst:428
 msgid "pgr_bdAstar(many to one)"
@@ -314,11 +314,11 @@ msgstr "pgr_bdAstar(many to many)"
 
 #: ../../build/doc/release_notes.rst:103 ../../build/doc/release_notes.rst:430
 msgid "pgr_bdAstarCost(one to one)"
-msgstr "pgr_bdAstarCost(one to one)"
+msgstr "pgr_bdAstarCost(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:104 ../../build/doc/release_notes.rst:431
 msgid "pgr_bdAstarCost(one to many)"
-msgstr "pgr_bdAstarCost(one to many)"
+msgstr "pgr_bdAstarCost(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:105 ../../build/doc/release_notes.rst:432
 msgid "pgr_bdAstarCost(many to one)"
@@ -330,11 +330,11 @@ msgstr "pgr_bdAstarCost(many to many)"
 
 #: ../../build/doc/release_notes.rst:107
 msgid "pgr_bdAstarCostMatrix(one to one)"
-msgstr "pgr_bdAstarCostMatrix(uno a uno)"
+msgstr "pgr_bdAstarCostMatrix(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:108
 msgid "pgr_bdAstarCostMatrix(one to many)"
-msgstr "pgr_bdAstarCostMatrix(one to many)"
+msgstr "pgr_bdAstarCostMatrix(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:109
 msgid "pgr_bdAstarCostMatrix(many to one)"
@@ -350,7 +350,7 @@ msgstr "bdDijkstra Familia"
 
 #: ../../build/doc/release_notes.rst:114 ../../build/doc/release_notes.rst:435
 msgid "pgr_bdDijkstra(one to many)"
-msgstr "pgr_bdDijkstra(one to many)"
+msgstr "pgr_bdDijkstra(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:115 ../../build/doc/release_notes.rst:436
 msgid "pgr_bdDijkstra(many to one)"
@@ -362,11 +362,11 @@ msgstr "pgr_bdDijkstra(many to many)"
 
 #: ../../build/doc/release_notes.rst:117 ../../build/doc/release_notes.rst:438
 msgid "pgr_bdDijkstraCost(one to one)"
-msgstr "pgr_bdDijkstraCost(one to one)"
+msgstr "pgr_bdDijkstraCost(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:118 ../../build/doc/release_notes.rst:439
 msgid "pgr_bdDijkstraCost(one to many)"
-msgstr "pgr_bdDijkstraCost(one to many)"
+msgstr "pgr_bdDijkstraCost(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:119 ../../build/doc/release_notes.rst:440
 msgid "pgr_bdDijkstraCost(many to one)"
@@ -378,11 +378,11 @@ msgstr "pgr_bdDijkstraCost(many to many)"
 
 #: ../../build/doc/release_notes.rst:121
 msgid "pgr_bdDijkstraCostMatrix(one to one)"
-msgstr "pgr_bdDijkstraCostMatrix(one to one)"
+msgstr "pgr_bdDijkstraCostMatrix(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:122
 msgid "pgr_bdDijkstraCostMatrix(one to many)"
-msgstr "pgr_bdDijkstraCostMatrix(one to many)"
+msgstr "pgr_bdDijkstraCostMatrix(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:123
 msgid "pgr_bdDijkstraCostMatrix(many to one)"
@@ -398,11 +398,11 @@ msgstr "Familia Flow"
 
 #: ../../build/doc/release_notes.rst:128
 msgid "pgr_pushRelabel(one to one)"
-msgstr "pgr_pushRelabel(one to one)"
+msgstr "pgr_pushRelabel(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:129
 msgid "pgr_pushRelabel(one to many)"
-msgstr "pgr_pushRelabel(one to many)"
+msgstr "pgr_pushRelabel(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:130
 msgid "pgr_pushRelabel(many to one)"
@@ -414,11 +414,11 @@ msgstr "pgr_pushRelabel(many to many)"
 
 #: ../../build/doc/release_notes.rst:132
 msgid "pgr_edmondsKarp(one to one)"
-msgstr "pgr_edmondsKarp(one to one)"
+msgstr "pgr_edmondsKarp(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:133
 msgid "pgr_edmondsKarp(one to many)"
-msgstr "pgr_edmondsKarp(one to many)"
+msgstr "pgr_edmondsKarp(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:134
 msgid "pgr_edmondsKarp(many to one)"
@@ -430,11 +430,11 @@ msgstr "pgr_edmondsKarp(many to many)"
 
 #: ../../build/doc/release_notes.rst:136
 msgid "pgr_boykovKolmogorov (one to one)"
-msgstr "pgr_boykovKolmogorov (one to one)"
+msgstr "pgr_boykovKolmogorov(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:137
 msgid "pgr_boykovKolmogorov (one to many)"
-msgstr "pgr_boykovKolmogorov (one to many)"
+msgstr "pgr_boykovKolmogorov(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:138
 msgid "pgr_boykovKolmogorov (many to one)"
@@ -454,11 +454,11 @@ msgstr "pgr_maxFlow"
 
 #: ../../build/doc/release_notes.rst:142 ../../build/doc/release_notes.rst:601
 msgid "pgr_edgeDisjointPaths(one to one)"
-msgstr "pgr_edgeDisjointPaths(one to one)"
+msgstr "pgr_edgeDisjointPaths(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:143 ../../build/doc/release_notes.rst:602
 msgid "pgr_edgeDisjointPaths(one to many)"
-msgstr "pgr_edgeDisjointPaths(one to many)"
+msgstr "pgr_edgeDisjointPaths(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:144 ../../build/doc/release_notes.rst:603
 msgid "pgr_edgeDisjointPaths(many to one)"
@@ -1115,7 +1115,7 @@ msgstr "Nombres de parámetros cambiados"
 #: ../../build/doc/release_notes.rst:419
 msgid "The many version results are the union of the one to one version"
 msgstr ""
-"Los muchos resultados de la versión son la unión de la versión uno a uno"
+"Los muchos resultados de la versión son la unión de la versión Uno a Uno"
 
 #: ../../build/doc/release_notes.rst:422
 msgid "New Signatures:"
@@ -1123,7 +1123,7 @@ msgstr "Nuevas Firmas:"
 
 #: ../../build/doc/release_notes.rst:423
 msgid "pgr_bdAstar(one to one)"
-msgstr "pgr_bdAstar(uno a uno)"
+msgstr "pgr_bdAstar(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:426 ../../build/doc/release_notes.rst:585
 msgid "New Proposed functions"
@@ -1272,7 +1272,7 @@ msgstr "Nuevas Firmas Propuestas"
 
 #: ../../build/doc/release_notes.rst:512
 msgid "pgr_astar(one to many)"
-msgstr "pgr_astar(uno a muchos)"
+msgstr "pgr_astar(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:513
 msgid "pgr_astar(many to one)"
@@ -1284,7 +1284,7 @@ msgstr "pgr_astar(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:515
 msgid "pgr_astarCost(one to one)"
-msgstr "pgr_astarCost(uno a uno)"
+msgstr "pgr_astarCost(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:516
 msgid "pgr_astarCost(one to many)"
@@ -1430,7 +1430,7 @@ msgstr "pgr_withPointsCostMatrix"
 
 #: ../../build/doc/release_notes.rst:588
 msgid "pgr_maxFlowPushRelabel(one to one)"
-msgstr "pgr_maxFlowPushRelabel(uno a uno)"
+msgstr "pgr_maxFlowPushRelabel(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:589
 msgid "pgr_maxFlowPushRelabel(one to many)"
@@ -1446,7 +1446,7 @@ msgstr "pgr_maxFlowPushRelabel(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:592
 msgid "pgr_maxFlowEdmondsKarp(one to one)"
-msgstr "pgr_maxFlowEdmondsKarp(uno a uno)"
+msgstr "pgr_maxFlowEdmondsKarp(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:593
 msgid "pgr_maxFlowEdmondsKarp(one to many)"
@@ -1462,7 +1462,7 @@ msgstr "pgr_maxFlowEdmondsKarp(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:596
 msgid "pgr_maxFlowBoykovKolmogorov (one to one)"
-msgstr "pgr_maxFlowBoykovKolmogorov (uno a uno)"
+msgstr "pgr_maxFlowBoykovKolmogorov(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:597
 msgid "pgr_maxFlowBoykovKolmogorov (one to many)"
@@ -1642,7 +1642,7 @@ msgstr "pgr_Johnson"
 
 #: ../../build/doc/release_notes.rst:695
 msgid "pgr_dijkstraCost(one to one)"
-msgstr "pgr_dijkstraCost(uno a uno)"
+msgstr "pgr_dijkstraCost(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:696
 msgid "pgr_dijkstraCost(one to many)"
@@ -1662,7 +1662,7 @@ msgstr "Funcionalidad propuesta"
 
 #: ../../build/doc/release_notes.rst:702
 msgid "pgr_withPoints(one to one)"
-msgstr "pgr_withPoints(uno a uno)"
+msgstr "pgr_withPoints(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:703
 msgid "pgr_withPoints(one to many)"
@@ -1678,7 +1678,7 @@ msgstr "pgr_withPoints(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:706
 msgid "pgr_withPointsCost(one to one)"
-msgstr "pgr_withPointsCost(uno a uno)"
+msgstr "pgr_withPointsCost(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:707
 msgid "pgr_withPointsCost(one to many)"
@@ -1774,7 +1774,7 @@ msgstr "Refactorizado"
 
 #: ../../build/doc/release_notes.rst:744
 msgid "pgr_dijkstra(one to one)"
-msgstr "pgr_dijkstra(uno a uno)"
+msgstr "pgr_dijkstra(Uno a Uno)"
 
 #: ../../build/doc/release_notes.rst:745
 msgid "pgr_ksp"

@@ -522,7 +522,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "`Many to One`_"
-msgstr "`Many to One`_"
+msgstr "`Muchos a Uno`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:22
@@ -539,7 +539,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "`One to Many`_"
-msgstr "`One to Many`_"
+msgstr "`Uno a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "**node**"

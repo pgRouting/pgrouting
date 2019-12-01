@@ -410,7 +410,7 @@ msgstr "(Opcional) Solución inicial a utilizar."
 
 #: ../../build/doc/VRP-category.rst:121
 msgid "``1`` One order per truck"
-msgstr "``1`` Un orden por camión"
+msgstr "``1`` Una orden por camión"
 
 #: ../../build/doc/VRP-category.rst:122
 msgid "``2`` Push front order."

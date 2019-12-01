@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2019-11-30 21:22-0600\n"
 "PO-Revision-Date: 2019-09-07 11:55+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -186,7 +186,7 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/components-family.rst:6
-msgid "Inner query as described bellow."
+msgid "Inner query as described below."
 msgstr "Consulta interna como se describe a continuación."
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:91
@@ -379,3 +379,6 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_biconnectedComponents.rst:127
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "Inner query as described bellow."
+#~ msgstr "Consulta interna como se describe a continuación."
