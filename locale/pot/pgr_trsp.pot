@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2019-11-30 21:22-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -475,7 +475,7 @@ msgid "Returning EMPTY SET to represent no path found"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:269
-msgid "pgr_trsp calls :doc:`pgr_dijkstra` when there are no restrictions which returns `EMTPY SET` when a path is not found"
+msgid "pgr_trsp calls :doc:`pgr_dijkstra` when there are no restrictions which returns `EMPTY SET` when a path is not found"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:277
@@ -567,7 +567,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:348
 #: ../../build/doc/pgr_trsp.rst:463
-msgid "The ``reverse_cost`` column will be efectively removed and will cost execution time"
+msgid "The ``reverse_cost`` column will be effectively removed and will cost execution time"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:351
@@ -579,7 +579,7 @@ msgid "Sometimes represents with EXCEPTION a no path found"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:371
-msgid "pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which returns `EMTPY SET` when a path is not found"
+msgid "pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which returns `EMPTY SET` when a path is not found"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:384
