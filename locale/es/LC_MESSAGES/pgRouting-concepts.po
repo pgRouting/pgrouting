@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 # 
 # Translators:
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
 # MarPetra <mvergaratrejo@gmail.com>, 2019
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -250,7 +250,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:142
 msgid "`One to One`_"
-msgstr "'Uno a uno'_"
+msgstr "`Uno a Uno`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:143
 #: ../../build/doc/pgRouting-concepts.rst:400
@@ -336,8 +336,8 @@ msgid ""
 msgstr ""
 "Hay varios tipos de consultas internas válidas y también las columnas "
 "devueltas dependen de la función. El tipo de consulta interna dependerá de "
-"los requisitos de las funciones. Para simplificar la variedad de tipos, se "
-"utiliza ``ANY-INTEGER`` y ``ANY-NUMERICAL``."
+"los requisitos de las funcion(es). Para simplificar la variedad de tipos, se"
+" utiliza ``ANY-INTEGER`` y ``ANY-NUMERICAL``."
 
 #: ../../build/doc/flow-family.rst:21
 #: ../../build/doc/pgRouting-concepts.rst:199
@@ -878,7 +878,7 @@ msgstr "``INT``"
 #: ../../build/doc/pgRouting-concepts.rst:389
 #: ../../build/doc/pgRouting-concepts.rst:422
 msgid "Sequential value starting from **1**."
-msgstr "Valor secuencial a partir de ** 1 **."
+msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgRouting-concepts.rst:390
 #: ../../build/doc/pgRouting-concepts.rst:424
@@ -1143,10 +1143,10 @@ msgid ""
 "crossing segments and nodes them. There are some cases where this might NOT "
 "be the right thing to do."
 msgstr ""
-"Puedes utilizar :`graph analysis functions <analytics>` para ayudarte a "
+"Puedes utilizar :ref:`graph analysis functions <analytics>` para ayudarte a "
 "visualizar dónde podría haber problemas de topología en tus datos. Si "
-"necesitas crear nodos a partir de tus datos, también tenemos una función: "
-"doc: `pgr_nodeNetwork () <pgr_nodeNetwork>` que deberían funcionarte. Esta "
+"necesitas crear nodos a partir de tus datos, también tenemos una función "
+":doc:`pgr_nodeNetwork () <pgr_nodeNetwork>` que deberían funcionarte. Esta "
 "función divide TODOS los segmentos cruzados y los une. Hay algunos casos en "
 "los que esto podría NO ser lo correcto."
 
@@ -1261,7 +1261,7 @@ msgstr "En la tabla de vértices \"mytab_vertices_pgr\":"
 
 #: ../../build/doc/pgRouting-concepts.rst:632
 msgid "Deadends are identified by ``cnt=1``"
-msgstr "Los callejones están identificados por ``cnt'1``"
+msgstr "Los callejones están identificados por ``cnt=1``"
 
 #: ../../build/doc/pgRouting-concepts.rst:633
 msgid "Potencial gap problems are identified with ``chk=1``."

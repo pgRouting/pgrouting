@@ -717,7 +717,7 @@ msgid ""
 "`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes driving"
 " distance when vertex is not part of the graph"
 msgstr ""
-"`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__Corrige la "
+"`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Corrige la "
 "distancia de conducción cuando el vértice no forma parte del grafo"
 
 #: ../../build/doc/release_notes.rst:236
@@ -1031,7 +1031,7 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:380
 msgid "pgRouting 2.5.2 Release Notes"
-msgstr " Notas de la versión de pgRouting 2.5.2"
+msgstr "Notas de la versión de pgRouting 2.5.2"
 
 #: ../../build/doc/release_notes.rst:382
 #, python-format

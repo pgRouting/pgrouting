@@ -35,8 +35,8 @@ msgid ""
 "given."
 msgstr ""
 "``pgr_withPointsCost`` - Calcula la ruta más corta y devuelve solo el costo "
-"agregado de las rutas más cortas encontradas, para la combinación de puntos "
-"dados."
+"agregado de la(s) rutas más cortas encontradas, para la combinación de "
+"puntos dados."
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
@@ -76,7 +76,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_withPointsCost.rst:22
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr "Boost Graph Interno"
 
 #: ../../build/doc/pgr_withPointsCost.rst:25
 msgid "Availability"
@@ -99,7 +99,7 @@ msgid ""
 "**Supported versions:** current(`3.0 "
 "<https://docs.pgrouting.org/dev/en/pgr_withPointsCost.html>`__)"
 msgstr ""
-"**Versiones sustentadas:** actual(`3.0 "
+"**Versiones soportadas:** actual(`3.0 "
 "<https://docs.pgrouting.org/dev/en/pgr_withPointsCost.html>`__)"
 
 #: ../../build/doc/pgr_withPointsCost.rst:35
@@ -112,7 +112,7 @@ msgid ""
 " `2.2 "
 "<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsCost.html>`__"
 msgstr ""
-"**Versiones no sustentadas:**`2.6 "
+"**Versiones no sustentadas:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_withPointsCost.html>`__ `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_withPointsCost.html>`__ `2.4 "
 "<https://docs.pgrouting.org/2.4/en/pgr_withPointsCost.html>`__ `2.3 "
@@ -134,8 +134,8 @@ msgid ""
 "algorithm, return only the aggregate cost of the shortest path(s) found."
 msgstr ""
 "Modifica el grafo para incluir puntos definidos por points_sql. Con el "
-"algoritmo Dijkstra, devuelva solo el costo agregado de las rutas más cortas "
-"encontradas."
+"algoritmo Dijkstra, devuelva solo el costo agregado de la(s) rutas más "
+"cortas encontradas."
 
 #: ../../build/doc/pgr_withPointsCost.rst:83
 msgid "The main characteristics are:"
