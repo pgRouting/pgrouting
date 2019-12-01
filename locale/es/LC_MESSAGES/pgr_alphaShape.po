@@ -1,0 +1,259 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:57+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_alphaShape.rst:11
+msgid "pgr_alphaShape"
+msgstr "pgr_alphaShape"
+
+#: ../../build/doc/pgr_alphaShape.rst:13
+msgid "``pgr_alphaShape`` — Polygon part of an alpha shape."
+msgstr "``pgr_alphaShape`` —Parte poligonal de una forma alfa."
+
+#: ../../build/doc/pgr_alphaShape.rst:16
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#: ../../build/doc/pgr_alphaShape.rst:17
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+#: ../../build/doc/pgr_alphaShape.rst:19
+msgid "Breaking change on signature"
+msgstr "Cambio de ruptura en la firma"
+
+#: ../../build/doc/pgr_alphaShape.rst:20
+msgid "Old signature no longer supported"
+msgstr "Firma antigua ya no soportada"
+
+#: ../../build/doc/pgr_alphaShape.rst:22
+msgid "Version 2.1.0"
+msgstr "Versión 2.1.0"
+
+#: ../../build/doc/pgr_alphaShape.rst:24
+msgid "Added alpha argument with default 0 (use optimal value)"
+msgstr ""
+"Añadido argumento alfa con valor predeterminado 0 (usar el valor óptimo)"
+
+#: ../../build/doc/pgr_alphaShape.rst:25
+msgid "Support to return multiple outer/inner ring"
+msgstr "Soporte para devolver múltiples anillos exteriores/interiores"
+
+#: ../../build/doc/pgr_alphaShape.rst:27
+msgid "Version 2.0.0"
+msgstr "Versión 2.0.0"
+
+#: ../../build/doc/pgr_alphaShape.rst:29
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+#: ../../build/doc/pgr_alphaShape.rst:30
+msgid "Renamed from version 1.x"
+msgstr "Renombrado desde la versión 1.x"
+
+#: ../../build/doc/pgr_alphaShape.rst:33
+msgid "Support"
+msgstr "Soporte"
+
+#: ../../build/doc/pgr_alphaShape.rst:34
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_alphaShape.html>`__)"
+msgstr ""
+"**Versiones soportadas:** actual(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_alphaShape.html>`__)"
+
+#: ../../build/doc/pgr_alphaShape.rst:37
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_alphaShape.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_alphaShape.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_alphaShape.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__"
+" `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_alphaShape.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_alphaShape.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_alphaShape.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__"
+" `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__"
+
+#: ../../build/doc/pgr_alphaShape.rst:47 ../../build/doc/pgr_alphaShape.rst:87
+#: ../../build/doc/pgr_alphaShape.rst:97
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/pgr_alphaShape.rst:49
+msgid "Returns the polygon part of an alpha shape."
+msgstr "Devuelve la parte poligonal de una forma alfa."
+
+#: ../../build/doc/pgr_alphaShape.rst:51
+msgid "Characteristics"
+msgstr "Características"
+
+#: ../../build/doc/pgr_alphaShape.rst:53
+msgid "Input is a *geometry* and returns a *geometry*"
+msgstr "La entrada es una *geometría* y devuelve una *geometría*"
+
+#: ../../build/doc/pgr_alphaShape.rst:54
+msgid "Uses PostGis ST_DelaunyTriangles"
+msgstr "Usa PostGis ST_DelaunyTriangles"
+
+#: ../../build/doc/pgr_alphaShape.rst:55
+msgid ""
+"Instead of using CGAL's definition of `alpha` it use the ``spoon_radius``"
+msgstr ""
+"En lugar de utilizar la definición de CGAL de  `alpha` utiliza "
+"``spoon_radius`` el ''spoon_radius''"
+
+#: ../../build/doc/pgr_alphaShape.rst:57
+msgid ":math:`spoon\\_radius = \\sqrt alpha`"
+msgstr ":math:`spoon\\_radius = \\sqrt alpha`"
+
+#: ../../build/doc/pgr_alphaShape.rst:59
+msgid ""
+"A Triangle area is considered part of the alpha shape when "
+":math:`circumcenter\\ radius < spoon\\_radius`"
+msgstr ""
+"Un área de triángulo se considera parte de la forma alfa cuando "
+":math:`circumcenter\\ radius < spoon\\_radius`"
+
+#: ../../build/doc/pgr_alphaShape.rst:60
+msgid ""
+"When the total number of points is less than 3, returns an EMPTY geometry"
+msgstr ""
+"Cuando el número total de puntos es menor que 3, devuelve una geometría "
+"EMPTY"
+
+#: ../../build/doc/pgr_alphaShape.rst:64
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_alphaShape.rst:66
+msgid "Summary"
+msgstr "Resumen"
+
+#: ../../build/doc/pgr_alphaShape.rst:77
+msgid ""
+"Example: passing a geometry collection with spoon radius :math:`1.5` using "
+"the return variable ``geom``"
+msgstr ""
+"Ejemplo: pasar una colección de geometría con radio de cuchara :math:'1.5' "
+"usando la variable de retorno ``geom``"
+
+#: ../../build/doc/pgr_alphaShape.rst:84
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/pgr_alphaShape.rst:87
+msgid "Parameter"
+msgstr "Parámetro"
+
+#: ../../build/doc/pgr_alphaShape.rst:87
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/pgr_alphaShape.rst:87
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/pgr_alphaShape.rst:89
+msgid "**geometry**"
+msgstr "**geometría**"
+
+#: ../../build/doc/pgr_alphaShape.rst:89
+msgid "``geometry``"
+msgstr "''geometría''"
+
+#: ../../build/doc/pgr_alphaShape.rst:89
+msgid "Geometry with at least :math:`3` points"
+msgstr "Geometría con al menos :math:`3` puntos"
+
+#: ../../build/doc/pgr_alphaShape.rst:90
+msgid "**spoon_radius**"
+msgstr "**spoon_radius**"
+
+#: ../../build/doc/pgr_alphaShape.rst:90
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+#: ../../build/doc/pgr_alphaShape.rst:90
+msgid "The radius of the spoon"
+msgstr "El radio de la cuchara"
+
+#: ../../build/doc/pgr_alphaShape.rst:94
+msgid "Return Value"
+msgstr "Valor de Devolución"
+
+#: ../../build/doc/pgr_alphaShape.rst:97
+msgid "Kind of geometry"
+msgstr "Tipo de geometría"
+
+#: ../../build/doc/pgr_alphaShape.rst:99
+msgid "GEOMETRY COLLECTION"
+msgstr "COLECCIÓN  DE GEOMETRÍA"
+
+#: ../../build/doc/pgr_alphaShape.rst:99
+msgid "A Geometry collection of Polygons"
+msgstr "Una colección de Geometría de Polígonos"
+
+#: ../../build/doc/pgr_alphaShape.rst:107
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_alphaShape.rst:109
+msgid ":doc:`pgr_drivingDistance`"
+msgstr ":doc:`pgr_drivingDistance`"
+
+#: ../../build/doc/pgr_alphaShape.rst:110
+msgid ":doc:`sampledata` network."
+msgstr "Red :doc:`sampledata` ."
+
+#: ../../build/doc/pgr_alphaShape.rst:111
+msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
+msgstr "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
+
+#: ../../build/doc/pgr_alphaShape.rst:114
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_alphaShape.rst:115
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_alphaShape.rst:116
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
