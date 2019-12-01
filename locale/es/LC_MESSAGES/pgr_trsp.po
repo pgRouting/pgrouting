@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 # 
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-07 12:09-0500\n"
+"POT-Creation-Date: 2019-11-30 21:22-0600\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -108,13 +108,13 @@ msgid ""
 " edges rather than the nodes of the network. Returns a set of (seq, id1, "
 "id2, cost) or (seq, id1, id2, id3, cost) rows, that make up a path."
 msgstr ""
-"La ruta más corta restringida por giro (TRAP) es un algoritmo de ruta más "
+"La ruta más corta restringida por giro (TRSP) es un algoritmo de ruta más "
 "corta que opcionalmente puede tener en cuenta restricciones de giro "
 "complicadas como las que se encuentran en las redes de carreteras del mundo "
-"real. En cuanto al rendimiento, es casi tan rápido como la búsqueda A *, "
-"pero tiene muchas características adicionales, como funciona con bordes en "
-"lugar de los nodos de la red. Devuelve un conjunto de filas (seq, id1, id2, "
-"cost) o (seq, id1, id2, id3, cost), que forman una ruta."
+"real. En cuanto al rendimiento, es casi tan rápido como la búsqueda A* pero "
+"tiene muchas características adicionales, como funcionar con bordes en lugar"
+" de los nodos de la red. Devuelve un conjunto de filas (seq, id1, id2, cost)"
+" o (seq, id1, id2, id3, cost) que forman una ruta."
 
 #: ../../build/doc/pgr_trsp.rst:82
 msgid "**The main characteristics are:**"
@@ -584,10 +584,10 @@ msgstr "Se devuelve EMPTY SET para representar ninguna ruta encontrada"
 #: ../../build/doc/pgr_trsp.rst:269
 msgid ""
 "pgr_trsp calls :doc:`pgr_dijkstra` when there are no restrictions which "
-"returns `EMTPY SET` when a path is not found"
+"returns `EMPTY SET` when a path is not found"
 msgstr ""
-"pgr_trsp convoca :doc:`pgr_dijkstra` cuando no hay restricciones que "
-"devuelvan `EMTPY SET` cuando ninguna ruta es encontrada"
+"pgr_trsp invoca :doc:`pgr_dijkstra` cuando no hay restricciones que "
+"devuelvan `EMPTY SET` cuando no se encuentra una ruta"
 
 #: ../../build/doc/pgr_trsp.rst:277 ../../build/doc/pgr_trsp.rst:375
 msgid "Throwing EXCEPTION to represent no path found"
@@ -716,11 +716,11 @@ msgstr "Se produce una EXCEPCIÓN."
 
 #: ../../build/doc/pgr_trsp.rst:348 ../../build/doc/pgr_trsp.rst:463
 msgid ""
-"The ``reverse_cost`` column will be efectively removed and will cost "
+"The ``reverse_cost`` column will be effectively removed and will cost "
 "execution time"
 msgstr ""
-"La columna ``reverse_cost`` se eliminará efectivamente y costará tiempo de "
-"ejecución"
+"La columna de ``reverse_cost`` será eliminada efectivamente y costará tiempo"
+" de ejecución"
 
 #: ../../build/doc/pgr_trsp.rst:351
 msgid "The \"Edges\" signature version"
@@ -733,10 +733,10 @@ msgstr "A veces se representa con EXCEPCIÓN ninguna ruta encontrada"
 #: ../../build/doc/pgr_trsp.rst:371
 msgid ""
 "pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which "
-"returns `EMTPY SET` when a path is not found"
+"returns `EMPTY SET` when a path is not found"
 msgstr ""
-"pgr_trsp convoca a :doc:`pgr_withPoints` cuando no hay restricciones que "
-"devuelvan  `EMTPY SET` cuando ninguna ruta es encontrada"
+"pgr_trsp invoca :doc:`pgr_withPoints` cuando no hay restricciones que "
+"devuelvan `EMPTY SET` cuando no se encuentra una ruta"
 
 #: ../../build/doc/pgr_trsp.rst:384
 msgid "Paths with equal number of vertices and edges"
@@ -945,3 +945,24 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_trsp.rst:552
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid ""
+#~ "pgr_trsp calls :doc:`pgr_dijkstra` when there are no restrictions which "
+#~ "returns `EMTPY SET` when a path is not found"
+#~ msgstr ""
+#~ "pgr_trsp convoca :doc:`pgr_dijkstra` cuando no hay restricciones que "
+#~ "devuelvan `EMTPY SET` cuando ninguna ruta es encontrada"
+
+#~ msgid ""
+#~ "The ``reverse_cost`` column will be efectively removed and will cost "
+#~ "execution time"
+#~ msgstr ""
+#~ "La columna ``reverse_cost`` se eliminará efectivamente y costará tiempo de "
+#~ "ejecución"
+
+#~ msgid ""
+#~ "pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which "
+#~ "returns `EMTPY SET` when a path is not found"
+#~ msgstr ""
+#~ "pgr_trsp convoca a :doc:`pgr_withPoints` cuando no hay restricciones que "
+#~ "devuelvan  `EMTPY SET` cuando ninguna ruta es encontrada"
