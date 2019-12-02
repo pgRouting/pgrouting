@@ -1,0 +1,686 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:54+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_pickDeliver.rst:11
+msgid "pgr_pickDeliver - Experimental"
+msgstr "pgr_pickDeliver - Experimental"
+
+#: ../../build/doc/pgr_pickDeliver.rst:13
+msgid "``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem"
+msgstr ""
+"``pgr_pickDeliver`` - Problema de enrutamiento del vehículo de recogida y "
+"entrega"
+
+#: ../../build/doc/experimental.rst:3
+msgid "Possible server crash"
+msgstr "Posible bloqueo del servidor"
+
+#: ../../build/doc/experimental.rst:5
+msgid "These functions might create a server crash"
+msgstr "Estas funciones pueden crear un bloqueo del servidor"
+
+#: ../../build/doc/experimental.rst:7
+msgid "Experimental functions"
+msgstr "Funciones experimentales"
+
+#: ../../build/doc/experimental.rst:9
+msgid "They are not officially of the current release."
+msgstr "No son oficialmente de la versión actual."
+
+#: ../../build/doc/experimental.rst:10
+msgid "They likely will not be officially be part of the next release:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
+
+#: ../../build/doc/experimental.rst:12
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
+
+#: ../../build/doc/experimental.rst:13
+msgid "Name might change."
+msgstr "El nombre puede cambiar."
+
+#: ../../build/doc/experimental.rst:14
+msgid "Signature might change."
+msgstr "La firma (declaración de funciones) podría cambiar."
+
+#: ../../build/doc/experimental.rst:15
+msgid "Functionality might change."
+msgstr "La funcionalidad puede cambiar."
+
+#: ../../build/doc/experimental.rst:16
+msgid "pgTap tests might be missing."
+msgstr "Las pruebas de pgTap pueden estar ausentes."
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need c/c++ coding."
+msgstr "Posiblemente necesite codificación c/c++."
+
+#: ../../build/doc/experimental.rst:18
+msgid "May lack documentation."
+msgstr "Puede haber carencia de documentación."
+
+#: ../../build/doc/experimental.rst:19
+msgid "Documentation if any might need to be rewritten."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
+
+#: ../../build/doc/experimental.rst:20
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+"Ejemplos de documentación que puede ser necesario generar automáticamente."
+
+#: ../../build/doc/experimental.rst:21
+msgid "Might need a lot of feedback from the comunity."
+msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+
+#: ../../build/doc/experimental.rst:22
+msgid "Might depend on a proposed function of pgRouting"
+msgstr "Puede depender de una función propuesta de pgRouting."
+
+#: ../../build/doc/experimental.rst:23
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr "Podría depender de una función obsoleta de pgRouting"
+
+#: ../../build/doc/pgr_pickDeliver.rst:20
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#: ../../build/doc/pgr_pickDeliver.rst:21
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+#: ../../build/doc/pgr_pickDeliver.rst:23
+msgid "New **experimental** function"
+msgstr "Nueva función **experimental**"
+
+#: ../../build/doc/pgr_pickDeliver.rst:26
+msgid "Support"
+msgstr "Soporte"
+
+#: ../../build/doc/pgr_pickDeliver.rst:27
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_pickDeliver.html>`__)"
+msgstr ""
+"**Versiones Soportadas:** actual(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_pickDeliver.html>`__)"
+
+#: ../../build/doc/pgr_pickDeliver.rst:31
+msgid "Synopsis"
+msgstr "Sinopsis"
+
+#: ../../build/doc/pgr_pickDeliver.rst:33
+msgid ""
+"Problem: Distribute and optimize the pickup-delivery pairs into a fleet of "
+"vehicles."
+msgstr ""
+"Problema: Distribuya y optimice los pares de recogida-entrega en una flota "
+"de vehículos."
+
+#: ../../build/doc/pgr_pickDeliver.rst:35
+msgid "Optimization problem is NP-hard."
+msgstr "El problema de optimización es NP-hard."
+
+#: ../../build/doc/pgr_pickDeliver.rst:36
+msgid "pickup and Delivery with time windows."
+msgstr "recogida y Entrega con ventanas de tiempo."
+
+#: ../../build/doc/pgr_pickDeliver.rst:37
+msgid "All vehicles are equal."
+msgstr "Todos los vehículos son iguales."
+
+#: ../../build/doc/pgr_pickDeliver.rst:39
+msgid "Same Starting location."
+msgstr "La misma ubicación de Inicio."
+
+#: ../../build/doc/pgr_pickDeliver.rst:40
+msgid "Same Ending location which is the same as Starting location."
+msgstr "La misma ubicación Final que es la misma que la ubicación de Inicio."
+
+#: ../../build/doc/pgr_pickDeliver.rst:41
+msgid "All vehicles travel at the same speed."
+msgstr "Todos los vehículos viajan a la misma velocidad."
+
+#: ../../build/doc/pgr_pickDeliver.rst:43
+msgid "A customer is for doing a pickup or doing a deliver."
+msgstr "Un cliente es para hacer una recogida o hacer una entrega."
+
+#: ../../build/doc/pgr_pickDeliver.rst:45
+msgid "has an open time."
+msgstr "tiene un tiempo abierto."
+
+#: ../../build/doc/pgr_pickDeliver.rst:46
+msgid "has a closing time."
+msgstr "tiene tiempo de cierre."
+
+#: ../../build/doc/pgr_pickDeliver.rst:47
+msgid "has a service time."
+msgstr "tiene un tiempo de servicio."
+
+#: ../../build/doc/pgr_pickDeliver.rst:48
+msgid "has an (x, y) location."
+msgstr "tiene una ubicación (x, y)."
+
+#: ../../build/doc/pgr_pickDeliver.rst:50
+msgid "There is a customer where to deliver a pickup."
+msgstr "Hay un cliente donde entregar una recogida."
+
+#: ../../build/doc/pgr_pickDeliver.rst:52
+msgid "travel time between customers is distance / speed"
+msgstr "tiempo de viaje entre los clientes es distancia / velocidad"
+
+#: ../../build/doc/pgr_pickDeliver.rst:53
+msgid "pickup and delivery pair is done with the same vehicle."
+msgstr "La recogida y entrega se realizan con el mismo vehículo."
+
+#: ../../build/doc/pgr_pickDeliver.rst:54
+msgid "A pickup is done before the delivery."
+msgstr "La recogida se realiza antes de la entrega."
+
+#: ../../build/doc/pgr_pickDeliver.rst:58
+msgid "Characteristics"
+msgstr "Características"
+
+#: ../../build/doc/pgr_pickDeliver.rst:60
+msgid "All trucks depart at time 0."
+msgstr "Todos los camiones salen en el momento 0."
+
+#: ../../build/doc/pgr_pickDeliver.rst:61
+msgid "No multiple time windows for a location."
+msgstr "No hay varias ventanas de tiempo para una ubicación."
+
+#: ../../build/doc/pgr_pickDeliver.rst:62
+msgid "Less vehicle used is considered better."
+msgstr "Menos vehículo utilizado se considera mejor."
+
+#: ../../build/doc/pgr_pickDeliver.rst:63
+msgid "Less total duration is better."
+msgstr "Menos duración total es mejor."
+
+#: ../../build/doc/pgr_pickDeliver.rst:64
+msgid "Less wait time is better."
+msgstr "Menos tiempo de espera es mejor."
+
+#: ../../build/doc/pgr_pickDeliver.rst:65
+msgid "the algorithm will raise an exception when"
+msgstr "el algoritmo generará una excepción cuando"
+
+#: ../../build/doc/pgr_pickDeliver.rst:67
+msgid "If there is a pickup-deliver pair than violates time window"
+msgstr "Si hay un par de recogida-entrega que viola la ventana de tiempo"
+
+#: ../../build/doc/pgr_pickDeliver.rst:68
+msgid "The speed, max_cycles, ma_capacity have illegal values"
+msgstr "La velocidad, max_cycles, max_capacity tienen valores ilegales"
+
+#: ../../build/doc/pgr_pickDeliver.rst:70
+msgid ""
+"Six different initial will be optimized - the best solution found will be "
+"result"
+msgstr ""
+"Seoptimizarán seis iniciales diferentes - la mejor solución encontrada será "
+"el resultado"
+
+#: ../../build/doc/pgr_pickDeliver.rst:77
+msgid "Signature"
+msgstr "Firma"
+
+#: ../../build/doc/pgr_pickDeliver.rst:110
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/pgr_pickDeliver.rst:112
+msgid "The parameters are:"
+msgstr "Los parámetros son:"
+
+#: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:6
+#: ../../build/doc/pgr_pickDeliver.rst:120
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:6
+#: ../../build/doc/pgr_pickDeliver.rst:120
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:6
+#: ../../build/doc/pgr_pickDeliver.rst:120
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:6
+#: ../../build/doc/pgr_pickDeliver.rst:120
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/pgr_pickDeliver.rst:122
+msgid "**orders_sql**"
+msgstr "**orders_sql**"
+
+#: ../../build/doc/pgr_pickDeliver.rst:122
+#: ../../build/doc/pgr_pickDeliver.rst:123
+#: ../../build/doc/pgr_pickDeliver.rst:124
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/pgr_pickDeliver.rst:122
+msgid ""
+"`Pick & Deliver Orders SQL`_ query contianing the orders to be processed."
+msgstr ""
+"`Pick & Deliver Orders SQL`_ consulta que contianing los pedidos que se van "
+"a procesar."
+
+#: ../../build/doc/pgr_pickDeliver.rst:123
+msgid "**vehicles_sql**"
+msgstr "**vehicles_sql**"
+
+#: ../../build/doc/pgr_pickDeliver.rst:123
+msgid ""
+"`Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used."
+msgstr ""
+"La consulta `SQL de Vehículos de Recogida y Entrega`_ contiene los vehículos"
+" que se van a utilizar."
+
+#: ../../build/doc/pgr_pickDeliver.rst:124
+msgid "**matrix_sql**"
+msgstr "**matrix_sql**"
+
+#: ../../build/doc/pgr_pickDeliver.rst:124
+msgid ""
+"`Pick & Deliver Matrix SQL`_ query containing the distance or travel times."
+msgstr ""
+"La consulta `Matriz SQL de Recogida y Entrega`_ contiene la distancia o "
+"tiempos de viaje."
+
+#: ../../build/doc/pgr_pickDeliver.rst:125
+msgid "**factor**"
+msgstr "**factor**"
+
+#: ../../build/doc/pgr_pickDeliver.rst:125
+msgid "``NUMERIC``"
+msgstr "``NUMERIC``"
+
+#: ../../build/doc/pgr_pickDeliver.rst:125
+msgid "1"
+msgstr "1"
+
+#: ../../build/doc/pgr_pickDeliver.rst:125
+msgid "Travel time multiplier. See :ref:`pd_factor`"
+msgstr "Multiplicador de tiempo de viaje. Ver :ref:`pd_factor`"
+
+#: ../../build/doc/pgr_pickDeliver.rst:126
+msgid "**max_cycles**"
+msgstr "**max_cycles**"
+
+#: ../../build/doc/pgr_pickDeliver.rst:126
+#: ../../build/doc/pgr_pickDeliver.rst:127
+msgid "``INTEGER``"
+msgstr "``INTEGER``"
+
+#: ../../build/doc/pgr_pickDeliver.rst:126
+msgid "10"
+msgstr "10"
+
+#: ../../build/doc/pgr_pickDeliver.rst:126
+msgid "Maximum number of cycles to perform on the optimization."
+msgstr "Número máximo de ciclos a realizar en la optimización."
+
+#: ../../build/doc/pgr_pickDeliver.rst:127
+msgid "**initial_sol**"
+msgstr "**initial_sol**"
+
+#: ../../build/doc/pgr_pickDeliver.rst:127
+msgid "4"
+msgstr "4"
+
+#: ../../build/doc/pgr_pickDeliver.rst:127
+msgid "Initial solution to be used."
+msgstr "Solución inicial a utilizar."
+
+#: ../../build/doc/pgr_pickDeliver.rst:129
+msgid "``1`` One order per truck"
+msgstr "``1`` Un orden por camión"
+
+#: ../../build/doc/pgr_pickDeliver.rst:130
+msgid "``2`` Push front order."
+msgstr "``2`` Empuje la orden delantera."
+
+#: ../../build/doc/pgr_pickDeliver.rst:131
+msgid "``3`` Push back order."
+msgstr "``3`` Empuje la orden trasera."
+
+#: ../../build/doc/pgr_pickDeliver.rst:132
+msgid "``4`` Optimize insert."
+msgstr "``4`` Optimizar inserción."
+
+#: ../../build/doc/pgr_pickDeliver.rst:133
+msgid ""
+"``5`` Push back order that allows more orders to be inserted at the back"
+msgstr ""
+"``5`` Orden de retroceso que permite insertar más órdenes en la parte "
+"posterior"
+
+#: ../../build/doc/pgr_pickDeliver.rst:134
+msgid ""
+"``6`` Push front order that allows more orders to be inserted at the front"
+msgstr ""
+"``6`` Orden de avance que permite insertar más órdenes en la parte frontal"
+
+#: ../../build/doc/pgr_pickDeliver.rst:140
+msgid "Pick & Deliver Orders SQL"
+msgstr "Pick & Deliver Orders SQL (Recoger y Entregar Pedidos)"
+
+#: ../../build/doc/pgr_pickDeliver.rst:142
+#: ../../build/doc/pgr_pickDeliver.rst:164
+#: ../../build/doc/pgr_pickDeliver.rst:188
+msgid "A `SELECT` statement that returns the following columns:"
+msgstr "Una instrucción `SELECT` que devuelve las siguientes columnas:"
+
+#: ../../build/doc/pgr_pickDeliver.rst:150
+#: ../../build/doc/pgr_pickDeliver.rst:172
+msgid "where:"
+msgstr "Donde:"
+
+#: ../../build/doc/VRP-category.rst:6
+msgid "**id**"
+msgstr "**id**"
+
+#: ../../build/doc/VRP-category.rst:6 ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:9
+msgid "|ANY-INTEGER|"
+msgstr "|ANY-INTEGER|"
+
+#: ../../build/doc/VRP-category.rst:6
+msgid "Identifier of the pick-delivery order pair."
+msgstr "Identificador del par de órdenes recogida-entrega."
+
+#: ../../build/doc/VRP-category.rst:7
+msgid "**demand**"
+msgstr "**demanda**"
+
+#: ../../build/doc/VRP-category.rst:7 ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:9 ../../build/doc/VRP-category.rst:10
+#: ../../build/doc/VRP-category.rst:11 ../../build/doc/VRP-category.rst:12
+#: ../../build/doc/VRP-category.rst:13 ../../build/doc/VRP-category.rst:14
+#: ../../build/doc/VRP-category.rst:15 ../../build/doc/VRP-category.rst:16
+msgid "|ANY-NUMERICAL|"
+msgstr "|ANY-NUMERICAL|"
+
+#: ../../build/doc/VRP-category.rst:7
+msgid "Number of units in the order"
+msgstr "Número de unidades en la orden"
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "**p_open**"
+msgstr "**p_open**"
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "The time, relative to 0, when the pickup location opens."
+msgstr "La hora, en relación con 0, cuando se abre la ubicación de recogida."
+
+#: ../../build/doc/VRP-category.rst:9
+msgid "**p_close**"
+msgstr "**p_close**"
+
+#: ../../build/doc/VRP-category.rst:9
+msgid "The time, relative to 0, when the pickup location closes."
+msgstr ""
+"La hora, en relación con 0, cuando se cierra la ubicación de recogida."
+
+#: ../../build/doc/VRP-category.rst:10 ../../build/doc/VRP-category.rst:13
+msgid "**d_service**"
+msgstr "**d_service**"
+
+#: ../../build/doc/VRP-category.rst:10 ../../build/doc/VRP-category.rst:13
+msgid "0"
+msgstr "0"
+
+#: ../../build/doc/VRP-category.rst:10
+msgid "The duration of the loading at the pickup location."
+msgstr "La duración de la carga en el lugar de recogida."
+
+#: ../../build/doc/VRP-category.rst:11
+msgid "**d_open**"
+msgstr "**d_open**"
+
+#: ../../build/doc/VRP-category.rst:11
+msgid "The time, relative to 0, when the delivery location opens."
+msgstr "La hora, en relación con 0, cuando se abre la ubicación de entrega."
+
+#: ../../build/doc/VRP-category.rst:12
+msgid "**d_close**"
+msgstr "**d_close**"
+
+#: ../../build/doc/VRP-category.rst:12
+msgid "The time, relative to 0, when the delivery location closes."
+msgstr "La hora, en relación con 0, cuando se cierra la ubicación de entrega."
+
+#: ../../build/doc/VRP-category.rst:13
+msgid "The duration of the loading at the delivery location."
+msgstr "La duración de la carga en el lugar de entrega."
+
+#: ../../build/doc/VRP-category.rst:3
+msgid ""
+"For the non euclidean implementation, the starting and ending identifiers "
+"are needed:"
+msgstr ""
+"Para la implementación no euclidiana, se necesitan los identificadores "
+"inicial y final:"
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "**p_node_id**"
+msgstr "**p_node_id**"
+
+#: ../../build/doc/VRP-category.rst:8
+msgid ""
+"The node identifier of the pickup, must match a node identifier in the "
+"matrix table."
+msgstr ""
+"El identificador de nodo de la recogida debe coincidir con un identificador "
+"de nodo en la tabla de matriz."
+
+#: ../../build/doc/VRP-category.rst:9
+msgid "**d_node_id**"
+msgstr "**d_node_id**"
+
+#: ../../build/doc/VRP-category.rst:9
+msgid ""
+"The node identifier of the delivery, must match a node identifier in the "
+"matrix table."
+msgstr ""
+"El identificador de nodo de la entrega debe coincidir con un identificador "
+"de nodo en la tabla de matriz."
+
+#: ../../build/doc/pgr_pickDeliver.rst:162
+msgid "Pick & Deliver Vehicles SQL"
+msgstr "SQL de Vehículos de Recogida y Entrega"
+
+#: ../../build/doc/VRP-category.rst:7
+msgid "**capacity**"
+msgstr "**capacidad**"
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "**speed**"
+msgstr "**speed**"
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "`1`"
+msgstr "`1`"
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "Average speed of the vehicle."
+msgstr "Velocidad media del vehículo."
+
+#: ../../build/doc/VRP-category.rst:10
+msgid "**start_open**"
+msgstr "**start_open**"
+
+#: ../../build/doc/VRP-category.rst:10
+msgid "The time, relative to 0, when the starting location opens."
+msgstr "La hora, en relación con 0, cuando se abre la ubicación inicial."
+
+#: ../../build/doc/VRP-category.rst:11
+msgid "**start_close**"
+msgstr "**start_close**"
+
+#: ../../build/doc/VRP-category.rst:11
+msgid "The time, relative to 0, when the starting location closes."
+msgstr "La hora, en relación con 0, cuando se cierra la ubicación inicial."
+
+#: ../../build/doc/VRP-category.rst:12
+msgid "**start_service**"
+msgstr "**start_service**"
+
+#: ../../build/doc/VRP-category.rst:12
+msgid "`0`"
+msgstr "`0`"
+
+#: ../../build/doc/VRP-category.rst:12
+msgid "The duration of the loading at the starting location."
+msgstr "La duración de la carga en la ubicación inicial."
+
+#: ../../build/doc/VRP-category.rst:14
+msgid "**end_open**"
+msgstr "**end_open**"
+
+#: ../../build/doc/VRP-category.rst:14
+msgid "`start_open`"
+msgstr "`start_open`"
+
+#: ../../build/doc/VRP-category.rst:14
+msgid "The time, relative to 0, when the ending location opens."
+msgstr "La hora, en relación con 0, cuando se abre la ubicación final."
+
+#: ../../build/doc/VRP-category.rst:15
+msgid "**end_close**"
+msgstr "**end_close**"
+
+#: ../../build/doc/VRP-category.rst:15
+msgid "`start_close`"
+msgstr "`start_close`"
+
+#: ../../build/doc/VRP-category.rst:15
+msgid "The time, relative to 0, when the ending location closes."
+msgstr "La hora, en relación con 0, cuando se cierra la ubicación final."
+
+#: ../../build/doc/VRP-category.rst:16
+msgid "**end_service**"
+msgstr "**end_service**"
+
+#: ../../build/doc/VRP-category.rst:16
+msgid "`start_service`"
+msgstr "`start_service`"
+
+#: ../../build/doc/VRP-category.rst:16
+msgid "The duration of the loading at the ending location."
+msgstr "La duración de la carga en la ubicación final."
+
+#: ../../build/doc/VRP-category.rst:8
+msgid "**start_node_id**"
+msgstr "**start_node_id**"
+
+#: ../../build/doc/VRP-category.rst:8
+msgid ""
+"The node identifier of the starting location, must match a node identifier "
+"in the matrix table."
+msgstr ""
+"El identificador de nodo de la ubicación inicial debe coincidir con un "
+"identificador de nodo en la tabla de la matriz."
+
+#: ../../build/doc/VRP-category.rst:9
+msgid "**end_node_id**"
+msgstr "**end_node_id**"
+
+#: ../../build/doc/VRP-category.rst:9
+msgid "`start_node_id`"
+msgstr "`start_node_id`"
+
+#: ../../build/doc/VRP-category.rst:9
+msgid ""
+"The node identifier of the ending location, must match a node identifier in "
+"the matrix table."
+msgstr ""
+"El identificador de nodo de la ubicación final debe coincidir con un "
+"identificador de nodo en la tabla de matriz."
+
+#: ../../build/doc/pgr_pickDeliver.rst:186
+msgid "Pick & Deliver Matrix SQL"
+msgstr "Pick & Deliver Matrix SQL"
+
+#: ../../build/doc/pgr_pickDeliver.rst:192
+msgid "TODO"
+msgstr "TODO"
+
+#: ../../build/doc/pgRouting-concepts.rst:3
+msgid "Where:"
+msgstr "Donde:"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-INTEGER"
+msgstr "ANY-INTEGER"
+
+#: ../../build/doc/pgRouting-concepts.rst:5
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
+msgstr "ANY-NUMERICAL"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#: ../../build/doc/pgr_pickDeliver.rst:203
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_pickDeliver.rst:207
+msgid "This example use the following data: TODO put link"
+msgstr "En este ejemplo se utilizan los siguientes datos: TODO put link"
+
+#: ../../build/doc/pgr_pickDeliver.rst:215
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_pickDeliver.rst:217
+msgid ":doc:`VRP-category`"
+msgstr ":doc:`VRP-category`"
+
+#: ../../build/doc/pgr_pickDeliver.rst:218
+msgid "The queries use the :doc:`sampledata` network."
+msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
+
+#: ../../build/doc/pgr_pickDeliver.rst:221
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_pickDeliver.rst:222
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_pickDeliver.rst:223
+msgid ":ref:`search`"
+msgstr ":ref:`search`"

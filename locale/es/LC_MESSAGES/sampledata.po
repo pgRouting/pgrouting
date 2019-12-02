@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:54+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/sampledata.rst:11
+msgid "Sample Data"
+msgstr "Datos Muestra"
+
+#: ../../build/doc/sampledata.rst:13
+msgid ""
+"The documentation provides very simple example queries based on a small "
+"sample network. To be able to execute the sample queries, run the following "
+"SQL commands to create a table with a small network data set."
+msgstr ""
+"La documentación proporciona consultas de ejemplo muy simples basadas en una"
+" red muestra pequeña. Para ser capaz de ejecutar las consultas de la "
+"muestra, ejecute los siguientes comandos SQL para crear una tabla con el "
+"conjunto de datos de la red."
+
+#: ../../build/doc/sampledata.rst:18
+msgid "Create table"
+msgstr "Crear tabla"
+
+#: ../../build/doc/sampledata.rst:25
+msgid "Insert data"
+msgstr "Insertar datos"
+
+#: ../../build/doc/sampledata.rst:32
+msgid "Updating geometry"
+msgstr "Actualización de la geometría"
+
+#: ../../build/doc/sampledata.rst:39
+msgid "Topology"
+msgstr "Topología"
+
+#: ../../build/doc/sampledata.rst:40
+msgid ""
+"Before you test a routing function use this query to create a topology "
+"(fills the ``source`` and ``target`` columns)."
+msgstr ""
+"Antes de probar una función de ruteo, utiliza esta consulta para crear una "
+"topología (rellena las columnas ``source`` y ``target``)."
+
+#: ../../build/doc/sampledata.rst:47
+msgid "Points of interest"
+msgstr "Puntos de interés"
+
+#: ../../build/doc/sampledata.rst:48
+msgid "When points outside of the graph."
+msgstr "Cuando hay puntos fuera del grafo."
+
+#: ../../build/doc/sampledata.rst:49
+msgid "Used with the :doc:`withPoints-family` functions."
+msgstr "Se utiliza con las funciones de :doc:`withPoints-family`"
+
+#: ../../build/doc/sampledata.rst:56
+msgid "Restrictions"
+msgstr "Restricciones"
+
+#: ../../build/doc/sampledata.rst:57
+msgid "Used with the :doc:`pgr_trsp` functions."
+msgstr "Se utiliza con las funciones :doc:`pgr_trsp`"
+
+#: ../../build/doc/sampledata.rst:64
+msgid "Images"
+msgstr "Imágenes"
+
+#: ../../build/doc/sampledata.rst:66
+msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
+msgstr ""
+"Las flechas rojas corresponden cuando ``cost`` > 0 en la tabla de aristas."
+
+#: ../../build/doc/sampledata.rst:67
+msgid "Blue arrows correspond when ``reverse_cost`` > 0 in the edge table."
+msgstr ""
+"Las flechas azules corresponden cuando  ``reverse_cost`` > 0 en la tabla de "
+"aristas."
+
+#: ../../build/doc/sampledata.rst:68
+msgid "Points are outside the graph."
+msgstr "Los puntos están fuera del grafo."
+
+#: ../../build/doc/sampledata.rst:69
+msgid "Click on the graph to enlarge."
+msgstr "Haga clic en el grafo para ampliarlo."
+
+#: ../../build/doc/sampledata.rst:74
+msgid ""
+"Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost``"
+" columns are used"
+msgstr ""
+"Se utilizan redes para consultas marcadas como ``directed`` , ``cost`` y  "
+"``reverse_cost``"
+
+#: ../../build/doc/sampledata.rst:76
+msgid ""
+"When working with city networks, this is recommended for point of view of "
+"vehicles."
+msgstr ""
+"Cuando se trabaja con redes de ciudades, esto se recomienda para el punto de"
+" vista de los vehículos."
+
+#: ../../build/doc/sampledata.rst:81
+msgid "**Graph 1: Directed, with cost and reverse cost**"
+msgstr "**Grafo 1: Dirigido, con costo y costo inverso**"
+
+#: ../../build/doc/sampledata.rst:86
+msgid ""
+"Network for queries marked as ``undirected`` and ``cost`` and "
+"``reverse_cost`` columns are used"
+msgstr ""
+"Se utiliza la red para consultas marcadas como ``undirected`` , ``cost`` y  "
+"``reverse_cost`` "
+
+#: ../../build/doc/sampledata.rst:88
+msgid ""
+"When working with city networks, this is recommended for point of view of "
+"pedestrians."
+msgstr ""
+"Cuando se trabaja con redes de ciudades, esto se recomienda para el punto de"
+" vista de los peatones."
+
+#: ../../build/doc/sampledata.rst:94
+msgid "**Graph 2: Undirected, with cost and reverse cost**"
+msgstr "**Grafo 2: No dirigido, con costo y costo inverso**"
+
+#: ../../build/doc/sampledata.rst:99
+msgid ""
+"Network for queries marked as ``directed`` and only ``cost`` column is used"
+msgstr ""
+"Red para consultas marcadas como ``directed`` y sólo se utiliza la columna "
+"``cost``"
+
+#: ../../build/doc/sampledata.rst:106
+msgid "**Graph 3: Directed, with cost**"
+msgstr "**Grafo 3: Dirigido, con costo**"
+
+#: ../../build/doc/sampledata.rst:111
+msgid ""
+"Network for queries marked as ``undirected`` and only ``cost`` column is "
+"used"
+msgstr ""
+"Red para consultas marcadas como ``undirected`` y solo se utiliza la columna"
+" ``cost``"
+
+#: ../../build/doc/sampledata.rst:117
+msgid "**Graph 4: Undirected, with cost**"
+msgstr "**Grafo 4: No dirigido, con costo**"
+
+#: ../../build/doc/sampledata.rst:124
+msgid "Pick & Deliver Data"
+msgstr "Datos de Recogida y Entrega"

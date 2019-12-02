@@ -1,0 +1,681 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:55+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_edwardMoore.rst:11
+msgid "pgr_edwardMoore - Experimental"
+msgstr "pgr_edwardMoore - Experimental"
+
+#: ../../build/doc/pgr_edwardMoore.rst:13
+msgid ""
+"``pgr_edwardMoore`` —  Returns the shortest path(s) using Edward-Moore "
+"algorithm. Edward Moore’s ​ Algorithm is an improvement of the Bellman-Ford "
+"Algorithm."
+msgstr ""
+"``pgr_edwardMoore`` — Devuelve las rutas más cortas mediante el algoritmo "
+"Edward-Moore. El algoritmo de Edward Moore es una mejora del algoritmo "
+"Bellman-Ford."
+
+#: ../../build/doc/experimental.rst:3
+msgid "Possible server crash"
+msgstr "Posible bloqueo del servidor"
+
+#: ../../build/doc/experimental.rst:5
+msgid "These functions might create a server crash"
+msgstr "Estas funciones pueden crear un bloqueo del servidor"
+
+#: ../../build/doc/experimental.rst:7
+msgid "Experimental functions"
+msgstr "Funciones experimentales"
+
+#: ../../build/doc/experimental.rst:9
+msgid "They are not officially of the current release."
+msgstr "No son oficialmente de la versión actual."
+
+#: ../../build/doc/experimental.rst:10
+msgid "They likely will not be officially be part of the next release:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
+
+#: ../../build/doc/experimental.rst:12
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
+
+#: ../../build/doc/experimental.rst:13
+msgid "Name might change."
+msgstr "El nombre puede cambiar."
+
+#: ../../build/doc/experimental.rst:14
+msgid "Signature might change."
+msgstr "La firma (declaración de funciones) podría cambiar."
+
+#: ../../build/doc/experimental.rst:15
+msgid "Functionality might change."
+msgstr "La funcionalidad puede cambiar."
+
+#: ../../build/doc/experimental.rst:16
+msgid "pgTap tests might be missing."
+msgstr "Las pruebas de pgTap pueden estar ausentes."
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need c/c++ coding."
+msgstr "Posiblemente necesite codificación c/c++."
+
+#: ../../build/doc/experimental.rst:18
+msgid "May lack documentation."
+msgstr "Puede haber carencia de documentación."
+
+#: ../../build/doc/experimental.rst:19
+msgid "Documentation if any might need to be rewritten."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
+
+#: ../../build/doc/experimental.rst:20
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+"Ejemplos de documentación que puede ser necesario generar automáticamente."
+
+#: ../../build/doc/experimental.rst:21
+msgid "Might need a lot of feedback from the comunity."
+msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+
+#: ../../build/doc/experimental.rst:22
+msgid "Might depend on a proposed function of pgRouting"
+msgstr "Puede depender de una función propuesta de pgRouting."
+
+#: ../../build/doc/experimental.rst:23
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr "Podría depender de una función obsoleta de pgRouting"
+
+#: ../../build/doc/pgr_edwardMoore.rst:22
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#: ../../build/doc/pgr_edwardMoore.rst:23
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+#: ../../build/doc/pgr_edwardMoore.rst:25
+msgid "New **experimental** function"
+msgstr "Nueva función **experimental**"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgr_edwardMoore.rst:28
+#: ../../build/doc/pgr_edwardMoore.rst:169
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/pgr_edwardMoore.rst:30
+msgid ""
+"Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm. It"
+" can compute the shortest paths from a single source vertex to all other "
+"vertices in a weighted directed graph. The main difference between Edward "
+"Moore's Algorithm and Bellman Ford's Algorithm lies in the run time."
+msgstr ""
+"Algoritmo de Edward Moore es una mejora del algoritmo Bellman-Ford. Puede "
+"calcular las rutas más cortas desde un único vértice de origen a todos los "
+"demás vértices de un grafo dirigido ponderado. La principal diferencia entre"
+" algoritmo de Edward Moore y algoritmo de Bellman Ford radica en el tiempo "
+"de ejecución."
+
+#: ../../build/doc/pgr_edwardMoore.rst:34
+msgid ""
+"The worst-case running time of the algorithm is :math:`O(| V | * | E |)` "
+"similar to the time complexity of Bellman-Ford algorithm. However, "
+"experiments suggest that this algorithm has an average running time "
+"complexity of :math:`O( | E | )` for random graphs. This is significantly "
+"faster in terms of computation speed."
+msgstr ""
+"El peor de los casos de funcionamiento del algoritmo es  :math:`O(| V | * | "
+"E |)` similar a la complejidad temporal del algoritmo Bellman-Ford. Sin "
+"embargo, los experimentos sugieren que este algoritmo tiene una complejidad "
+"de tiempo de ejecución promedio de :math:`O( | E | )` para grafos "
+"aleatorios. Esto es significativamente más rápido en términos de velocidad "
+"de cálculo."
+
+#: ../../build/doc/pgr_edwardMoore.rst:39
+msgid ""
+"Thus, the algorithm is at-best, significantly faster than Bellman-Ford "
+"algorithm and is at-worst, as good as Bellman-Ford algorithm"
+msgstr ""
+"Por lo tanto, el algoritmo es en el mejor de los casos, significativamente "
+"más rápido que el algoritmo Bellman-Ford y es en el peor de los casos, tan "
+"bueno como el algoritmo Bellman-Ford"
+
+#: ../../build/doc/pgr_edwardMoore.rst:62
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+#: ../../build/doc/pgr_edwardMoore.rst:43
+msgid "Values are returned when there is a path."
+msgstr "Valores son regresados cuando hay un camino."
+
+#: ../../build/doc/pgr_edwardMoore.rst:45
+msgid ""
+"When the starting vertex and ending vertex are the same, there is no path."
+msgstr ""
+"Cuando el vértice inicial y el vértice final son iguales, no hay camino."
+
+#: ../../build/doc/pgr_edwardMoore.rst:47
+msgid "The `agg_cost` the non included values `(v, v)` is `0`"
+msgstr "El `agg_cost` de los valores no incluídos `(v, v)` es `0`"
+
+#: ../../build/doc/pgr_edwardMoore.rst:49
+msgid ""
+"When the starting vertex and ending vertex are the different and there is no"
+" path:"
+msgstr ""
+"Cuando el vértice inicial y el vértice final son diferentes y no hay camino:"
+
+#: ../../build/doc/pgr_edwardMoore.rst:51
+msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
+msgstr "El  'agg_cost' de los valores no incluídos '(u, v)' es :math: `\\infty`"
+
+#: ../../build/doc/pgr_edwardMoore.rst:53
+msgid ""
+"For optimization purposes, any duplicated value in the `start_vids` or "
+"`end_vids` are ignored."
+msgstr ""
+"Para fines de optimización, se omite cualquier valor duplicado en "
+"`start_vids` o `end_vids`."
+
+#: ../../build/doc/pgr_edwardMoore.rst:55
+msgid "The returned values are ordered:"
+msgstr "Los valores regresados se ordenan:"
+
+#: ../../build/doc/pgr_edwardMoore.rst:57
+msgid "`start_vid` ascending"
+msgstr "`start_vid` ascendente"
+
+#: ../../build/doc/pgr_edwardMoore.rst:58
+msgid "`end_vid` ascending"
+msgstr "`end_vid` ascendente"
+
+#: ../../build/doc/pgr_edwardMoore.rst:60
+msgid ""
+"Running time: - Worst case: :math:`O(| V | * | E |)` - Average case: "
+":math:`O( | E | )`"
+msgstr ""
+"Tiempo de ejecución: - En el peor de los casos: :math:`O(| V | * | E |)` - "
+"Caso promedio: :math:`O( | E | )`"
+
+#: ../../build/doc/pgr_edwardMoore.rst:65
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_edwardMoore.rst
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_edwardMoore.rst:81
+msgid "From vertex :math:`2` to vertex  :math:`3` on a **directed** graph"
+msgstr "Del vértice :math:`2` al vértice :math:`3` en un grafo **dirigido**"
+
+#: ../../build/doc/pgr_edwardMoore.rst:91
+msgid "One to One"
+msgstr "Uno a Uno"
+
+#: ../../build/doc/pgr_edwardMoore.rst:100
+msgid "From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph"
+msgstr ""
+"Del vértice :math:`2` al vértice :math:`3` en un grafo **no dirigido**"
+
+#: ../../build/doc/pgr_edwardMoore.rst:110
+msgid "One to many"
+msgstr "Uno a muchos"
+
+#: ../../build/doc/pgr_edwardMoore.rst:119
+msgid ""
+"From vertex :math:`2` to vertices :math:`\\{3, 5\\}` on an **undirected** "
+"graph"
+msgstr ""
+"Del vértice :math:`2` a los vértices :math:`\\{3, 5\\}` en un grafo **no "
+"dirigido**"
+
+#: ../../build/doc/pgr_edwardMoore.rst:129
+msgid "Many to One"
+msgstr "Muchos a Uno"
+
+#: ../../build/doc/pgr_edwardMoore.rst:138
+msgid ""
+"From vertices :math:`\\{2, 11\\}` to vertex :math:`5` on a **directed** "
+"graph"
+msgstr ""
+"De los vértices :math:`\\{2, 11\\}` to vertex :math:`5` on a **directed** "
+"graph"
+
+#: ../../build/doc/pgr_edwardMoore.rst:148
+msgid "Many to Many"
+msgstr "Muchos a Muchos"
+
+#: ../../build/doc/pgr_edwardMoore.rst:157
+msgid ""
+"From vertices :math:`\\{2, 11\\}` to vertices :math:`\\{3, 5\\}` on an "
+"**undirected** graph"
+msgstr ""
+"De los vértices​ :math:`\\{2, 11\\}`  a los vértices :math:`\\{3, 5\\}` en "
+"un grafo **no dirigido**"
+
+#: ../../build/doc/pgr_edwardMoore.rst:164
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/pgr_edwardMoore.rst:169
+msgid "Parameter"
+msgstr "Parámetro"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgr_edwardMoore.rst:169
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_edwardMoore.rst:169
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/pgr_edwardMoore.rst:171
+msgid "**edges_sql**"
+msgstr "**edges_sql**"
+
+#: ../../build/doc/pgr_edwardMoore.rst:171
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/pgr_edwardMoore.rst:171
+msgid "Inner SQL query as described below."
+msgstr "Consulta SQL interna como se describe a continuación."
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgr_edwardMoore.rst:172
+msgid "**start_vid**"
+msgstr "**start_vid**"
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgr_edwardMoore.rst:172
+#: ../../build/doc/pgr_edwardMoore.rst:174
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../build/doc/pgr_edwardMoore.rst:172
+msgid "Identifier of the starting vertex of the path."
+msgstr "Identificador del vértice inicial de la ruta."
+
+#: ../../build/doc/pgr_edwardMoore.rst:173
+msgid "**start_vids**"
+msgstr "**start_vids**"
+
+#: ../../build/doc/pgr_edwardMoore.rst:173
+#: ../../build/doc/pgr_edwardMoore.rst:175
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+#: ../../build/doc/pgr_edwardMoore.rst:173
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgr_edwardMoore.rst:174
+msgid "**end_vid**"
+msgstr "**end_vid**"
+
+#: ../../build/doc/pgr_edwardMoore.rst:174
+msgid "Identifier of the ending vertex of the path."
+msgstr "Identificador del vértice final de la ruta."
+
+#: ../../build/doc/pgr_edwardMoore.rst:175
+msgid "**end_vids**"
+msgstr "**end_vids**"
+
+#: ../../build/doc/pgr_edwardMoore.rst:175
+msgid "Array of identifiers of ending vertices."
+msgstr "Arreglo de identificadores de vértices finales."
+
+#: ../../build/doc/pgr_edwardMoore.rst:176
+msgid "**directed**"
+msgstr "**dirigido**"
+
+#: ../../build/doc/pgr_edwardMoore.rst:176
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+#: ../../build/doc/pgr_edwardMoore.rst:176
+msgid "``true``"
+msgstr "``true``"
+
+#: ../../build/doc/pgr_edwardMoore.rst:176
+msgid "When ``true`` Graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+#: ../../build/doc/pgr_edwardMoore.rst:177
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
+
+#: ../../build/doc/pgr_edwardMoore.rst:183
+msgid "Inner query"
+msgstr "Consulta interna"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "**id**"
+msgstr "**id**"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "``ANY-INTEGER``"
+msgstr "``ANY-INTEGER``"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "**source**"
+msgstr "**origen**"
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "**target**"
+msgstr "**objetivo**"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:26
+msgid "**cost**"
+msgstr "**cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``ANY-NUMERICAL``"
+msgstr "``ANY-NUMERICAL``"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Weight of the edge  `(source, target)`"
+msgstr "Peso de la arista `(source, target)`"
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**reverse_cost**"
+msgstr "**reverse_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "-1"
+msgstr "-1"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Weight of the edge `(target, source)`,"
+msgstr "Peso de la arista `(target, source)`,"
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Where:"
+msgstr "Donde:"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-INTEGER"
+msgstr "ANY-INTEGER"
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
+msgstr "ANY-NUMERICAL"
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#: ../../build/doc/pgr_edwardMoore.rst:192
+msgid "Return Columns"
+msgstr "Columnas de Devoluciones"
+
+#: ../../build/doc/pgRouting-concepts.rst:3
+msgid ""
+"Returns set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, "
+"edge, cost, agg_cost)``"
+msgstr ""
+"Devuelve el conjunto de ``(seq, path_id, path_seq [, start_vid] [, end_vid],"
+" node, edge, cost, agg_cost)``"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "**seq**"
+msgstr "**seq**"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "``INT``"
+msgstr "``INT``"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de **1**."
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "**path_id**"
+msgstr "**path_id**"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid ""
+"Path identifier. Has value **1** for the first of a path. Used when there "
+"are multiple paths for the same ``start_vid`` to ``end_vid`` combination."
+msgstr ""
+"Identificador de ruta. Tiene el valor **1** para el primero de una ruta. Se "
+"utiliza cuando hay varias rutas  para la misma combinación de ``start_vid`` "
+"a ``end_vid``."
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "**path_seq**"
+msgstr "**path_seq**"
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid ""
+"Relative position in the path. Has value **1** for the beginning of a path."
+msgstr ""
+"Posición relativa en la ruta. Tiene el valor **1** para el principio de una "
+"ruta."
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid ""
+"Identifier of the starting vertex. Returned when multiple starting vetrices "
+"are in the query."
+msgstr ""
+"Identificador del vértice inicial. Se devuelve cuando hay varias vetrices "
+"iniciales en la consulta."
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "`Many to One`_"
+msgstr "`Many to One`_"
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "`Many to Many`_"
+msgstr "`Many to Many`_"
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid ""
+"Identifier of the ending vertex. Returned when multiple ending vertices are "
+"in the query."
+msgstr ""
+"Identificador del vértice final. Se devuelve cuando hay varios vértices "
+"finales en la consulta."
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "`One to Many`_"
+msgstr "`Uno a Muchos`_"
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "**node**"
+msgstr "**node**"
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
+msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "**edge**"
+msgstr "**edge**"
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid ""
+"Identifier of the edge used to go from ``node`` to the next node in the path"
+" sequence. ``-1`` for the last node of the path."
+msgstr ""
+"Identificador del borde utilizado para ir del ``nodo`` al siguiente nodo de "
+"la secuencia de ruta. ``-1``  para el último nodo de la ruta."
+
+#: ../../build/doc/pgRouting-concepts.rst:26
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+#: ../../build/doc/pgRouting-concepts.rst:26
+msgid ""
+"Cost to traverse from ``node`` using ``edge`` to the next node in the path "
+"sequence."
+msgstr ""
+"Costo de desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
+"nodo en la secuencia de ruta."
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "**agg_cost**"
+msgstr "**agg_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Aggregate cost from ``start_v`` to ``node``."
+msgstr "Coste agregado de ``start_v`` to ``node``."
+
+#: ../../build/doc/pgr_edwardMoore.rst:200
+msgid "Example Application"
+msgstr "Ejemplo de aplicación"
+
+#: ../../build/doc/pgr_edwardMoore.rst:202
+msgid ""
+"The examples of this section are based on the :doc:`sampledata` network."
+msgstr "Los ejemplos de esta sección se basan en la red  :doc:`sampledata`."
+
+#: ../../build/doc/pgr_edwardMoore.rst:204
+msgid ""
+"The examples include combinations from starting vertices 2 and 11 to ending "
+"vertices 3 and 5 in a directed and undirected graph with and with out "
+"reverse_cost."
+msgstr ""
+"Los ejemplos incluyen combinaciones desde los vértices iniciales 2 y 11 "
+"hasta los vértices finales 3 y 5 en un grafo dirigido y no dirigido con y "
+"sin reverse_cost."
+
+#: ../../build/doc/pgr_edwardMoore.rst
+msgid "Examples"
+msgstr "Ejemplos"
+
+#: ../../build/doc/pgr_edwardMoore.rst:207
+msgid ""
+"For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` "
+"columns"
+msgstr ""
+"Para consultas marcadas como ``directed`` con columnas ``cost`` and "
+"``reverse_cost``"
+
+#: ../../build/doc/pgr_edwardMoore.rst:209
+msgid "The examples in this section use the following :ref:`fig1`"
+msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig1`"
+
+#: ../../build/doc/pgr_edwardMoore.rst:215
+msgid ""
+"For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` "
+"columns"
+msgstr ""
+"Para consultas marcadas como  ``undirected`` con columnas ``cost`` y "
+"``reverse_cost`` "
+
+#: ../../build/doc/pgr_edwardMoore.rst:217
+msgid "The examples in this section use the following :ref:`fig2`"
+msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig2`"
+
+#: ../../build/doc/pgr_edwardMoore.rst:223
+msgid "For queries marked as ``directed`` with ``cost`` column"
+msgstr "Para consultas marcadas como  ``directed`` con columna``cost``"
+
+#: ../../build/doc/pgr_edwardMoore.rst:225
+msgid "The examples in this section use the following :ref:`fig3`"
+msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig3`"
+
+#: ../../build/doc/pgr_edwardMoore.rst:231
+msgid "For queries marked as ``undirected`` with ``cost`` column"
+msgstr "Para consultas marcadas como  ``undirected`` con columna ``cost``"
+
+#: ../../build/doc/pgr_edwardMoore.rst:233
+msgid "The examples in this section use the following :ref:`fig4`"
+msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig4`"
+
+#: ../../build/doc/pgr_edwardMoore.rst:240
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_edwardMoore.rst:242
+msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
+msgstr "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
+
+#: ../../build/doc/pgr_edwardMoore.rst:245
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_edwardMoore.rst:246
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_edwardMoore.rst:247
+msgid ":ref:`search`"
+msgstr ":ref:`search`"

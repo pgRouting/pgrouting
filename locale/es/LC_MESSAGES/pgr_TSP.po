@@ -1,0 +1,494 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:54+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_TSP.rst:11
+msgid "pgr_TSP"
+msgstr "pgr_TSP"
+
+#: ../../build/doc/pgr_TSP.rst:13
+msgid "``pgr_TSP`` - Using *Simulated Annealing* approximation algorithm"
+msgstr "''pgr_TSP'' - Uso del algoritmo de aproximación *Simulated Annealing*"
+
+#: ../../build/doc/pgr_TSP.rst:16
+msgid "Availability: 2.0.0"
+msgstr "Disponibilidad: 2.0.0"
+
+#: ../../build/doc/pgr_TSP.rst:17
+msgid "Version 2.3.0"
+msgstr "Versión 2.3.0"
+
+#: ../../build/doc/pgr_TSP.rst:19
+msgid "Signature change"
+msgstr "Cambio de firma"
+
+#: ../../build/doc/pgr_TSP.rst:21
+msgid "Old signature no longer supported"
+msgstr "Firma antigua ya no soportada"
+
+#: ../../build/doc/pgr_TSP.rst:23
+msgid "Version 2.0.0"
+msgstr "Versión 2.0.0"
+
+#: ../../build/doc/pgr_TSP.rst:25
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+#: ../../build/doc/pgr_TSP.rst:28
+msgid "Support"
+msgstr "Soporte"
+
+#: ../../build/doc/pgr_TSP.rst:29
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_TSP.html>`__) `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_TSP.html>`__"
+msgstr ""
+"**Versiones soportadas:** actual(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_TSP.html>`__) `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_TSP.html>`__"
+
+#: ../../build/doc/pgr_TSP.rst:33
+msgid ""
+"**Unsupported versions:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_TSP.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_TSP.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_tsp.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/tsp/doc/index.html>`__ `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_TSP.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_TSP.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_tsp.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/tsp/doc/index.html>`__ `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html>`__"
+
+#: ../../build/doc/TSP-family.rst:4 ../../build/doc/TSP-family.rst:6
+#: ../../build/doc/pgr_TSP.rst:42 ../../build/doc/pgr_TSP.rst:78
+#: ../../build/doc/pgr_TSP.rst:96
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/TSP-family.rst:3
+msgid ""
+"The travelling salesman problem (TSP) or travelling salesperson problem asks"
+" the following question:"
+msgstr ""
+"En el problema del vendedor viajante (TSP) se hace la siguiente pregunta:"
+
+#: ../../build/doc/TSP-family.rst:6
+msgid ""
+"*Given a list of cities and the distances between each pair of cities, which"
+" is the shortest possible route that visits each city exactly once and "
+"returns to the origin city?*"
+msgstr ""
+"*Dada una lista de ciudades y las distancias entre cada par de ciudades, que"
+" corresponde con la ruta más corta posible que para visite cada ciudad "
+"exactamente una vez y regrese a la ciudad de origen?*"
+
+#: ../../build/doc/pgr_TSP.rst:48
+msgid ""
+"See :ref:`simulated-annealing` for a complete description of this "
+"implementation"
+msgstr ""
+"Consulte :ref:`simulated-annealing` para obtener una descripción completa de"
+" esta implementación"
+
+#: ../../build/doc/pgr_TSP.rst:51
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_TSP.rst:54
+msgid "Summary"
+msgstr "Resumen"
+
+#: ../../build/doc/pgr_TSP.rst
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_TSP.rst:68
+msgid "Not having a random execution"
+msgstr "No tener una ejecución aleatoria"
+
+#: ../../build/doc/pgr_TSP.rst:75
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/TSP-family.rst:4 ../../build/doc/pgr_TSP.rst:78
+msgid "Parameter"
+msgstr "Parámetro"
+
+#: ../../build/doc/pgr_TSP.rst:80
+msgid "**Matrix SQL**"
+msgstr "**Matrix SQL**"
+
+#: ../../build/doc/pgr_TSP.rst:80
+msgid "an SQL query, described in the `Inner query`_"
+msgstr "una consulta SQL, descrita en `Inner query`_"
+
+#: ../../build/doc/pgr_TSP.rst:84
+msgid "Optional Parameters"
+msgstr "Parámetros opcionales"
+
+#: ../../build/doc/TSP-family.rst:4 ../../build/doc/TSP-family.rst:6
+#: ../../build/doc/pgr_TSP.rst:96
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/TSP-family.rst:4
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/TSP-family.rst:6 ../../build/doc/pgr_TSP.rst:98
+msgid "**start_vid**"
+msgstr "**start_vid**"
+
+#: ../../build/doc/TSP-family.rst:6 ../../build/doc/TSP-family.rst:7
+#: ../../build/doc/TSP-family.rst:9 ../../build/doc/pgr_TSP.rst:98
+#: ../../build/doc/pgr_TSP.rst:99
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../build/doc/TSP-family.rst:6 ../../build/doc/TSP-family.rst:7
+msgid "`0`"
+msgstr "`0`"
+
+#: ../../build/doc/TSP-family.rst:6
+msgid "The greedy part of the implementation will use this identifier."
+msgstr "La parte ambiciosa de la implementación utilizará este identificador."
+
+#: ../../build/doc/TSP-family.rst:7 ../../build/doc/pgr_TSP.rst:99
+msgid "**end_vid**"
+msgstr "**end_vid**"
+
+#: ../../build/doc/TSP-family.rst:7
+msgid "Last visiting vertex before returning to start_vid."
+msgstr "El último vértice de visita antes de volver a start_vid."
+
+#: ../../build/doc/TSP-family.rst:8
+msgid "**max_processing_time**"
+msgstr "**max_processing_time**"
+
+#: ../../build/doc/TSP-family.rst:8 ../../build/doc/TSP-family.rst:10
+#: ../../build/doc/TSP-family.rst:12 ../../build/doc/TSP-family.rst:13
+#: ../../build/doc/TSP-family.rst:14 ../../build/doc/pgr_TSP.rst:100
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+#: ../../build/doc/TSP-family.rst:8
+msgid "`+infinity`"
+msgstr "`+infinity`"
+
+#: ../../build/doc/TSP-family.rst:8
+msgid "Stop the annealing processing when the value is reached."
+msgstr "Detenga el proceso de recocido cuando se alcance el valor."
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "**tries_per_temperature**"
+msgstr "**tries_per_temperature**"
+
+#: ../../build/doc/TSP-family.rst:8 ../../build/doc/TSP-family.rst:9
+#: ../../build/doc/TSP-family.rst:10 ../../build/doc/TSP-family.rst:11
+msgid "``INTEGER``"
+msgstr "``INTEGER``"
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "`500`"
+msgstr "`500`"
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "Maximum number of times a neighbor(s) is searched in each temperature."
+msgstr ""
+"Número máximo de veces que se busca a un(os) vecino(s) en cada temperatura."
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "**max_changes_per_temperature**"
+msgstr "**max_changes_per_temperature**"
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "`60`"
+msgstr "`60`"
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "Maximum number of times the solution is changed in each temperature."
+msgstr "Número máximo de veces que se cambia la solución en cada temperatura."
+
+#: ../../build/doc/TSP-family.rst:11
+msgid "**max_consecutive_non_changes**"
+msgstr "**max_consecutive_non_changes**"
+
+#: ../../build/doc/TSP-family.rst:11 ../../build/doc/TSP-family.rst:12
+msgid "`100`"
+msgstr "`100`"
+
+#: ../../build/doc/TSP-family.rst:11
+msgid ""
+"Maximum number of consecutive times the solution is not changed in each "
+"temperature."
+msgstr ""
+"Número máximo de veces consecutivas que la solución no cambia en cada "
+"temperatura."
+
+#: ../../build/doc/TSP-family.rst:12
+msgid "**initial_temperature**"
+msgstr "**initial_temperature**"
+
+#: ../../build/doc/TSP-family.rst:12
+msgid "Starting temperature."
+msgstr "Temperatura de inicio."
+
+#: ../../build/doc/TSP-family.rst:13
+msgid "**final_temperature**"
+msgstr "**temperatura_final**"
+
+#: ../../build/doc/TSP-family.rst:13
+msgid "`0.1`"
+msgstr "`0.1`"
+
+#: ../../build/doc/TSP-family.rst:13
+msgid "Ending temperature."
+msgstr "Temperatura final."
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "**cooling_factor**"
+msgstr "**factor_de_enfriamiento**"
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "`0.9`"
+msgstr "`0.9`"
+
+#: ../../build/doc/TSP-family.rst:14
+msgid ""
+"Value between between 0 and 1 (not including) used to calculate the next "
+"temperature."
+msgstr ""
+"Valor entre 0 y 1 (sin incluir) utilizado para calcular la siguiente "
+"temperatura."
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "**randomize**"
+msgstr "**aleatorizar**"
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "`true`"
+msgstr "`true`"
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "Choose the random seed"
+msgstr "Elija la semilla aleatoria"
+
+#: ../../build/doc/TSP-family.rst:17
+msgid "true: Use current time as seed"
+msgstr "true: Utilice el tiempo actual como semilla"
+
+#: ../../build/doc/TSP-family.rst:18
+msgid ""
+"false: Use `1` as seed. Using this value will get the same results with the "
+"same data in each execution."
+msgstr ""
+"falso: Use `1` como semilla. Usando este valor obtendrá los mismos "
+"resultados con los mismos datos en cada ejecución."
+
+#: ../../build/doc/pgr_TSP.rst:91
+msgid "Inner query"
+msgstr "Consulta interna"
+
+#: ../../build/doc/pgr_TSP.rst:93
+msgid ""
+"**Matrix SQL**: an SQL query, which should return a set of rows with the "
+"following columns:"
+msgstr ""
+"**Matrix SQL**: una consulta SQL, que debe devolver un conjunto de filas con"
+" las siguientes columnas:"
+
+#: ../../build/doc/TSP-family.rst:6 ../../build/doc/pgr_TSP.rst:96
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/pgr_TSP.rst:98
+msgid "Identifier of the starting vertex."
+msgstr "Identificador del vértice inicial."
+
+#: ../../build/doc/pgr_TSP.rst:99
+msgid "Identifier of the ending vertex."
+msgstr "Identificador del vértice final."
+
+#: ../../build/doc/TSP-family.rst:13 ../../build/doc/pgr_TSP.rst:100
+msgid "**agg_cost**"
+msgstr "**agg_cost**"
+
+#: ../../build/doc/pgr_TSP.rst:100
+msgid "Cost for going from start_vid to end_vid"
+msgstr "Costo para pasar de start_vid a end_vid"
+
+#: ../../build/doc/pgr_TSP.rst:103
+msgid ""
+"Can be Used with :doc:`costMatrix-category` functions with `directed := "
+"false`."
+msgstr ""
+"Se puede utilizar con las funciones :doc:`costMatrix-category`, con el valor"
+" `directed := false`."
+
+#: ../../build/doc/pgr_TSP.rst:105
+msgid ""
+"If using `directed := true`, the resulting non symmetric matrix must be "
+"converted to symmetric by fixing the non symmetric values according to your "
+"application needs."
+msgstr ""
+"Si se utiliza  `directed := true`, la matriz no simétrica resultante debe "
+"convertirse a simétrica mediante la corrección de los valores no simétricos "
+"de acuerdo con las necesidades de la aplicación."
+
+#: ../../build/doc/pgr_TSP.rst:109
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+#: ../../build/doc/TSP-family.rst:3
+msgid "Returns SET OF ``(seq, node, cost, agg_cost)``"
+msgstr "Devuelve el CONJUNTO DE ``(seq, node, cost, agg_cost)``"
+
+#: ../../build/doc/TSP-family.rst:8
+msgid "**seq**"
+msgstr "**seq**"
+
+#: ../../build/doc/TSP-family.rst:8
+msgid "Row sequence."
+msgstr "Secuencia de filas."
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "**node**"
+msgstr "**node**"
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "Identifier of the node/coordinate/point."
+msgstr "Identificador del nodo/coordenada/punto."
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "**cost**"
+msgstr "**cost**"
+
+#: ../../build/doc/TSP-family.rst:11
+msgid ""
+"Cost to traverse from the current ``node`` to the next ``node`` in the path "
+"sequence."
+msgstr ""
+"Coste que se debe recorrer desde el ``nodo`` al siguiente ``nodo``  en la "
+"secuencia de ruta."
+
+#: ../../build/doc/TSP-family.rst:11
+msgid "``0`` for the last row in the path sequence."
+msgstr "``0`` para la última fila de la secuencia de ruta."
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
+msgstr "Costo agregado del ``nodo`` en  ``seq = 1`` hacia el nodo actual."
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "``0`` for the first row in the path sequence."
+msgstr "``0`` para la primera fila de la secuencia de ruta."
+
+#: ../../build/doc/pgr_TSP.rst:116
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+#: ../../build/doc/pgr_TSP.rst:118
+msgid "Start from vertex :math:`7`"
+msgstr "Inicio en el vértice :math:`7`"
+
+#: ../../build/doc/pgr_TSP.rst:124
+msgid "Using with points of interest."
+msgstr "Uso con puntos de interés."
+
+#: ../../build/doc/pgr_TSP.rst:126
+msgid "To generate a symmetric matrix:"
+msgstr "Para generar una matriz simétrica:"
+
+#: ../../build/doc/pgr_TSP.rst:128
+msgid ""
+"the **side** information of pointsOfInterset is ignored by not including it "
+"in the query"
+msgstr ""
+"la información del **lado** de pointsOfInterset se omite al no incluirla en "
+"la consulta"
+
+#: ../../build/doc/pgr_TSP.rst:129
+msgid "and **directed := false**"
+msgstr "y  **directed := false**"
+
+#: ../../build/doc/pgr_TSP.rst:135
+msgid "The queries use the :doc:`sampledata` network."
+msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
+
+#: ../../build/doc/pgr_TSP.rst:138
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_TSP.rst:140
+msgid ":doc:`TSP-family`"
+msgstr ":doc:`TSP-family`"
+
+#: ../../build/doc/pgr_TSP.rst:141
+msgid ""
+"`Simulated annaeling algorithm for beginners <https://www.theprojectspot.com"
+"/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__"
+msgstr ""
+"`Algoritmo de Recocido Simulado para principiantes "
+"<https://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-"
+"for-beginners/6>`__"
+
+#: ../../build/doc/pgr_TSP.rst:142
+msgid ""
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
+msgstr ""
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
+
+#: ../../build/doc/pgr_TSP.rst:143
+msgid ""
+"`Wikipedia: Simulated annealing "
+"<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
+msgstr ""
+"`Wikipedia: Simulated annealing "
+"<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
+
+#: ../../build/doc/pgr_TSP.rst:146
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_TSP.rst:147
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_TSP.rst:148
+msgid ":ref:`search`"
+msgstr ":ref:`search`"

@@ -1,0 +1,548 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:57+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_contraction.rst:11
+msgid "pgr_contraction"
+msgstr "pgr_contraction"
+
+#: ../../build/doc/pgr_contraction.rst:13
+msgid ""
+"``pgr_contraction`` — Performs graph contraction and returns the contracted "
+"vertices and edges."
+msgstr ""
+"``pgr_contraction`` — Realiza la contracción del grafo y devuelve los "
+"vértices y aristas contraídos.."
+
+#: ../../build/doc/pgr_contraction.rst:18
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+#: ../../build/doc/pgr_contraction.rst:21
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#: ../../build/doc/pgr_contraction.rst:22
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+#: ../../build/doc/pgr_contraction.rst:24
+msgid "Return columns change: ``seq`` is removed"
+msgstr "Cambio de columnas de retorno: ``seq`` se elimina"
+
+#: ../../build/doc/pgr_contraction.rst:25
+msgid "Name change from ``pgr_contractGraph``"
+msgstr "Cambio de nombre de  ``pgr_contractGraph``"
+
+#: ../../build/doc/pgr_contraction.rst:26
+msgid "Bug fixes"
+msgstr "Correcciones"
+
+#: ../../build/doc/pgr_contraction.rst:27
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+#: ../../build/doc/pgr_contraction.rst:29
+msgid "Version 2.3.0"
+msgstr "Versión 2.3.0"
+
+#: ../../build/doc/pgr_contraction.rst:31
+msgid "New **experimental** function"
+msgstr "Nueva función **experimental**"
+
+#: ../../build/doc/pgr_contraction.rst:34
+msgid "Support"
+msgstr "Soporte"
+
+#: ../../build/doc/pgr_contraction.rst:35
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_contraction.html>`__)"
+msgstr ""
+"**Versiones soportadas:** actual(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_contraction.html>`__)"
+
+#: ../../build/doc/pgr_contraction.rst:38
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_contractGraph.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_contractGraph.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_contractGraph.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/contraction/doc/pgr_contractGraph.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_contractGraph.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_contractGraph.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_contractGraph.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/contraction/doc/pgr_contractGraph.html>`__"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_contraction.rst:45
+#: ../../build/doc/pgr_contraction.rst:98
+#: ../../build/doc/pgr_contraction.rst:110
+#: ../../build/doc/pgr_contraction.rst:133
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/pgr_contraction.rst:47
+msgid ""
+"Contraction reduces the size of the graph by removing some of the vertices "
+"and edges and, for example, might add edges that represent a sequence of "
+"original edges decreasing the total time and space used in graph algorithms."
+msgstr ""
+"La contracción reduce el tamaño del grafo eliminando algunos de los vértices"
+" y aristas, también por ejemplo, podría agregar aristas que representan una "
+"secuencia de aristas originales disminuyendo el tiempo total y el espacio "
+"utilizados en los algoritmos de grafo."
+
+#: ../../build/doc/pgr_contraction.rst:71
+msgid "The main Characteristics are:"
+msgstr "Las características principales son:"
+
+#: ../../build/doc/pgr_contraction.rst:52
+msgid "Process is done only on edges with positive costs."
+msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+
+#: ../../build/doc/pgr_contraction.rst:53
+msgid "Does not return the full contracted graph"
+msgstr "No devuelve el grafo completo contraído"
+
+#: ../../build/doc/pgr_contraction.rst:55
+msgid "Only changes on the graph are returned"
+msgstr "Solo se devuelven los cambios en el gráfico"
+
+#: ../../build/doc/pgr_contraction.rst:57
+msgid "Currnetly there are two types of contraction methods"
+msgstr "Actualmente hay dos tipos de métodos de contracción"
+
+#: ../../build/doc/pgr_contraction.rst:59
+msgid "Dead End Contraction"
+msgstr "Contracción Sin Salida"
+
+#: ../../build/doc/pgr_contraction.rst:60
+msgid "Linear Contraction"
+msgstr "Contracción Lineal"
+
+#: ../../build/doc/pgr_contraction.rst:62
+msgid "The returned values include"
+msgstr "Los valores devueltos incluyen"
+
+#: ../../build/doc/pgr_contraction.rst:64
+msgid "the added edges by linear contraction."
+msgstr "las aristas añadidas por contracción lineal."
+
+#: ../../build/doc/pgr_contraction.rst:65
+msgid "the modified vertices by dead end contraction."
+msgstr "los vértices modificados por contracción sin salida."
+
+#: ../../build/doc/pgr_contraction.rst:67
+msgid "The returned values are ordered as follows:"
+msgstr "Los valores devueltos se ordenan de la siguiente manera:"
+
+#: ../../build/doc/pgr_contraction.rst:69
+msgid "column `id` ascending when type = `v`"
+msgstr "columna `id` ascendente cuando el tipo = `v`"
+
+#: ../../build/doc/pgr_contraction.rst:70
+msgid "column `id` descending when type = `e`"
+msgstr "columna `id` descendente cuando el tipo = `e`"
+
+#: ../../build/doc/pgr_contraction.rst:74
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_contraction.rst:77
+msgid "Summary"
+msgstr "Resumen"
+
+#: ../../build/doc/pgr_contraction.rst:78
+msgid "The pgr_contraction function has the following signature:"
+msgstr "La función  pgr_contraction tiene la siguiente firma:"
+
+#: ../../build/doc/pgr_contraction.rst
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_contraction.rst:88
+msgid ""
+"Making a dead end contraction and a linear contraction with vertex 2 "
+"forbidden from being contracted"
+msgstr ""
+"Hacer una contracción sin salida y una contracción lineal con el vértice 2 "
+"cuya contracción está prohibida"
+
+#: ../../build/doc/pgr_contraction.rst:95
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_contraction.rst:98
+#: ../../build/doc/pgr_contraction.rst:110
+#: ../../build/doc/pgr_contraction.rst:133
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_contraction.rst:98
+#: ../../build/doc/pgr_contraction.rst:110
+#: ../../build/doc/pgr_contraction.rst:133
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/pgr_contraction.rst:100
+msgid "**Edges SQL**"
+msgstr "**Edges SQL**"
+
+#: ../../build/doc/pgr_contraction.rst:100
+#: ../../build/doc/pgr_contraction.rst:135
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/pgr_contraction.rst:100
+msgid "SQL query as described in `Inner query`_"
+msgstr "Consulta SQL como se describe en `Inner query`_"
+
+#: ../../build/doc/pgr_contraction.rst:101
+msgid "**Ccontraction Order**"
+msgstr "**Orden de Contracciones**"
+
+#: ../../build/doc/pgr_contraction.rst:101
+#: ../../build/doc/pgr_contraction.rst:112
+msgid "``ARRAY[ANY-INTEGER]``"
+msgstr "``ARRAY[ANY-INTEGER]``"
+
+#: ../../build/doc/pgr_contraction.rst:102
+msgid "Ordered contraction operations."
+msgstr "Operaciones de contracción ordenadas."
+
+#: ../../build/doc/pgr_contraction.rst:102
+msgid "1 = Dead end contraction"
+msgstr "1 = Contracción sin salida"
+
+#: ../../build/doc/pgr_contraction.rst:103
+msgid "2 = Linear contraction"
+msgstr "2 - Contracción lineal"
+
+#: ../../build/doc/pgr_contraction.rst:107
+msgid "Optional Parameters"
+msgstr "Parámetros opcionales"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_contraction.rst:110
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/pgr_contraction.rst:112
+msgid "**forbidden_vertices**"
+msgstr "**forbidden_vertices**"
+
+#: ../../build/doc/pgr_contraction.rst:112
+msgid "Empty"
+msgstr "Vacío"
+
+#: ../../build/doc/pgr_contraction.rst:112
+msgid "Identifiers of vertices forbidden from contraction."
+msgstr "Identificadores de vértices prohibidos de contracción."
+
+#: ../../build/doc/pgr_contraction.rst:113
+msgid "**max_cycles**"
+msgstr "**max_cycles**"
+
+#: ../../build/doc/pgr_contraction.rst:113
+msgid "``INTEGER``"
+msgstr "``INTEGER``"
+
+#: ../../build/doc/pgr_contraction.rst:113
+msgid ":math:`1`"
+msgstr ":math:`1`"
+
+#: ../../build/doc/pgr_contraction.rst:113
+msgid ""
+"Number of times the contraction operations on `contraction_order` will be "
+"performed."
+msgstr ""
+"Número de veces que se realizarán las operaciones de contracción en "
+"`contraction_order` "
+
+#: ../../build/doc/pgr_contraction.rst:114
+msgid "**directed**"
+msgstr "**dirigido**"
+
+#: ../../build/doc/pgr_contraction.rst:114
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+#: ../../build/doc/pgr_contraction.rst:114
+msgid "``true``"
+msgstr "``true``"
+
+#: ../../build/doc/pgr_contraction.rst:114
+msgid "When ``true`` the graph is considered as `Directed`."
+msgstr "En caso de ''true'' el grafo se considera como `Dirigido`."
+
+#: ../../build/doc/pgr_contraction.rst:115
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
+
+#: ../../build/doc/pgr_contraction.rst:119
+msgid "Inner query"
+msgstr "Consulta interna"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgr_contraction.rst:138
+msgid "**id**"
+msgstr "**id**"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "``ANY-INTEGER``"
+msgstr "``ANY-INTEGER``"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgr_contraction.rst:148
+msgid "**source**"
+msgstr "**origen**"
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_contraction.rst:150
+msgid "**target**"
+msgstr "**objetivo**"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_contraction.rst:152
+msgid "**cost**"
+msgstr "**costo**"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``ANY-NUMERICAL``"
+msgstr "``ANY-NUMERICAL``"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Weight of the edge  `(source, target)`"
+msgstr "Peso de la arista `(source, target)`"
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**reverse_cost**"
+msgstr "**reverse_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "-1"
+msgstr "-1"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Weight of the edge `(target, source)`,"
+msgstr "Peso de la arista `(target, source)`,"
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Where:"
+msgstr "Donde:"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-INTEGER"
+msgstr "ANY-INTEGER"
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
+msgstr "ANY-NUMERICAL"
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#: ../../build/doc/pgr_contraction.rst:126
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+#: ../../build/doc/pgr_contraction.rst:128
+msgid "RETURNS SETOF  (type, id, contracted_vertices, source, target, cost)"
+msgstr ""
+"DEVOLUCION DE CONJUNTOS (type, id, contracted_vertices, source, target, "
+"cost)"
+
+#: ../../build/doc/pgr_contraction.rst:130
+msgid "The function returns a single row. The columns of the row are:"
+msgstr "La función devuelve una sola fila. Las columnas de la fila son:"
+
+#: ../../build/doc/pgr_contraction.rst:135
+msgid "**type**"
+msgstr "**tipo**"
+
+#: ../../build/doc/pgr_contraction.rst:136
+msgid "Type of the `id`."
+msgstr "Tipo del `id`."
+
+#: ../../build/doc/pgr_contraction.rst:136
+msgid "**'v'** when the row is a vertex."
+msgstr "**'v'** cuando la fila es un vértice."
+
+#: ../../build/doc/pgr_contraction.rst:137
+msgid "**'e'** when the row is an edge."
+msgstr "**'e'** cuando la fila es una arista."
+
+#: ../../build/doc/pgr_contraction.rst:138
+#: ../../build/doc/pgr_contraction.rst:148
+#: ../../build/doc/pgr_contraction.rst:150
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../build/doc/pgr_contraction.rst:145
+msgid "All numbers on this column are ``DISTINCT``"
+msgstr "Todos los números de esta columna son ''DISTINTOS''"
+
+#: ../../build/doc/pgr_contraction.rst:139
+msgid "When ``type`` = **'v'**."
+msgstr "En caso de ``type`` = **'v'**."
+
+#: ../../build/doc/pgr_contraction.rst:141
+msgid "Identifier of the modified vertex."
+msgstr "Identificador del vértice modificado."
+
+#: ../../build/doc/pgr_contraction.rst:142
+msgid "When ``type`` = **'e'**."
+msgstr "En caso de  ``type`` = **'e'**."
+
+#: ../../build/doc/pgr_contraction.rst:144
+msgid "Decreasing sequence starting from **-1**."
+msgstr "Disminución de la secuencia a partir de **-1**."
+
+#: ../../build/doc/pgr_contraction.rst:146
+msgid ""
+"Representing a pseudo `id` as is not incorporated in the set of original "
+"edges."
+msgstr ""
+"Representando un pseudo `id` como no incorporado en el conjunto de aristas "
+"originales."
+
+#: ../../build/doc/pgr_contraction.rst:147
+msgid "**contracted_vertices**"
+msgstr "**contracted_vertices**"
+
+#: ../../build/doc/pgr_contraction.rst:147
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+#: ../../build/doc/pgr_contraction.rst:147
+msgid "Array of contracted vertex identifiers."
+msgstr "Arreglo de identificadores de vértices contraídos."
+
+#: ../../build/doc/pgr_contraction.rst:148
+#: ../../build/doc/pgr_contraction.rst:150
+#: ../../build/doc/pgr_contraction.rst:152
+msgid "When ``type`` = **'v'**: :math:`-1`"
+msgstr "En caso de ``type`` = **'v'**: :math:`-1`"
+
+#: ../../build/doc/pgr_contraction.rst:149
+msgid ""
+"When ``type`` = **'e'**: Identifier of the source vertex of the current edge"
+" (``source``, ``target``)."
+msgstr ""
+"En caso de  ``type`` = **'e'**: Identificador del vétice de la arista actual"
+" (``source``, ``target``)."
+
+#: ../../build/doc/pgr_contraction.rst:151
+msgid ""
+"When ``type`` = **'e'**: Identifier of the target vertex of the current edge"
+" (``source``, ``target``)."
+msgstr ""
+"En caso de ``type`` = **'e'**: Identificador del vértice objetivo de la "
+"arista actual (``source``, ``target``)."
+
+#: ../../build/doc/pgr_contraction.rst:152
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+#: ../../build/doc/pgr_contraction.rst:153
+msgid ""
+"When ``type`` = **'e'**: Weight of the current edge (``source``, "
+"``target``)."
+msgstr ""
+"En caso de ``type`` = **'e'**: Peso de la arista actual (``source``, "
+"``target``)."
+
+#: ../../build/doc/pgr_contraction.rst:157
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+#: ../../build/doc/pgr_contraction.rst:159
+msgid "Only dead end contraction"
+msgstr "Sólo contracción sin salida"
+
+#: ../../build/doc/pgr_contraction.rst:165
+msgid "Only linear contraction"
+msgstr "Sólo contracción lineal"
+
+#: ../../build/doc/pgr_contraction.rst:172
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_contraction.rst:174
+msgid ":doc:`contraction-family`"
+msgstr ":doc:`contraction-family`"
+
+#: ../../build/doc/pgr_contraction.rst:177
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_contraction.rst:178
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_contraction.rst:179
+msgid ":ref:`search`"
+msgstr ":ref:`search`"

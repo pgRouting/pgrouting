@@ -1,0 +1,440 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:56+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_floydWarshall.rst:11
+msgid "pgr_floydWarshall"
+msgstr "pgr_floydWarshall"
+
+#: ../../build/doc/pgr_floydWarshall.rst:13
+msgid ""
+"``pgr_floydWarshall`` - Returns the sum of the costs of the shortest path "
+"for each pair of nodes in the graph using Floyd-Warshall algorithm."
+msgstr ""
+"``pgr_floydWarshall`` - Devuelve la suma de los costos de la ruta más corta "
+"para cada par de nodos en el grafo mediante el algoritmo Floyd-Warshall."
+
+#: ../../build/doc/pgr_floydWarshall.rst:19
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+#: ../../build/doc/pgr_floydWarshall.rst:22
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#: ../../build/doc/pgr_floydWarshall.rst:23
+msgid "Version 2.2.0"
+msgstr "Version 2.2.0"
+
+#: ../../build/doc/pgr_floydWarshall.rst:25
+msgid "Signature change"
+msgstr "Cambio de firma"
+
+#: ../../build/doc/pgr_floydWarshall.rst:26
+msgid "Old signature no longer supported"
+msgstr "Firma antigua ya no soportada"
+
+#: ../../build/doc/pgr_floydWarshall.rst:28
+msgid "Version 2.0.0"
+msgstr "Versión 2.0.0"
+
+#: ../../build/doc/pgr_floydWarshall.rst:30
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+#: ../../build/doc/pgr_floydWarshall.rst:33
+msgid "Support"
+msgstr "Soporte"
+
+#: ../../build/doc/pgr_floydWarshall.rst:34
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_floydWarshall.html>`__) `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_floydWarshall.html>`__"
+msgstr ""
+"**Versiones sustentadas:** actual(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_floydWarshall.html>`__) `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_floydWarshall.html>`__"
+
+#: ../../build/doc/pgr_floydWarshall.rst:38
+msgid ""
+"**Unsupported versions:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_floydWarshall.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_floydWarshall.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_floydWarshall.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_floydWarshall.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/apsp_warshall/doc/index.html>`__ `2.0"
+" <https://docs.pgrouting.org/2.0/en/src/apsp_warshall/doc/index.html>`__"
+msgstr ""
+"**Versiones no sustentadas:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_floydWarshall.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_floydWarshall.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_floydWarshall.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_floydWarshall.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/apsp_warshall/doc/index.html>`__ `2.0"
+" <https://docs.pgrouting.org/2.0/en/src/apsp_warshall/doc/index.html>`__"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_floydWarshall.rst:47
+#: ../../build/doc/pgr_floydWarshall.rst:118
+#: ../../build/doc/pgr_floydWarshall.rst:137
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/pgr_floydWarshall.rst:49
+msgid ""
+"The Floyd-Warshall algorithm, also known as Floyd's algorithm, is a good "
+"choice to calculate the sum of the costs of the shortest path for each pair "
+"of nodes in the graph, for *dense graphs*. We use Boost's implementation "
+"which runs in :math:`\\Theta(V^3)` time,"
+msgstr ""
+"El algoritmo Floyd-Warshall, también conocido como algoritmo de Floyd, es "
+"una buena opción para calcular la suma de los costos de la ruta más corta "
+"para cada par de nodos en el grafo, para *grafos densos*. Usamos la "
+"implementación de Boost que se ejecuta en :math:`\\Theta(V^3)` tiempo,"
+
+#: ../../build/doc/pgr_floydWarshall.rst:72
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+#: ../../build/doc/pgr_floydWarshall.rst:55
+msgid "It does not return a path."
+msgstr "No devuelve una ruta."
+
+#: ../../build/doc/pgr_floydWarshall.rst:56
+msgid ""
+"Returns the sum of the costs of the shortest path for each pair of nodes in "
+"the graph."
+msgstr ""
+"Devuelve la suma de los costos de la ruta más corta para cada par de nodos "
+"del grafo."
+
+#: ../../build/doc/pgr_floydWarshall.rst:57
+msgid "Process is done only on edges with positive costs."
+msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+
+#: ../../build/doc/pgr_floydWarshall.rst:58
+msgid ""
+"Boost returns a :math:`V \\times V` matrix, where the infinity values. "
+"Represent the distance between vertices for which there is no path."
+msgstr ""
+"Boost devuelve una matriz:math:`V \\times V`  donde los valores son "
+"infinitos. Representar la distancia entre vértices para los que no hay ruta."
+
+#: ../../build/doc/pgr_floydWarshall.rst:61
+msgid ""
+"We return only the non infinity values in form of a set of `(start_vid, "
+"end_vid, agg_cost)`."
+msgstr ""
+"Solo devolvemos los valores no infinitos en forma de un conjunto de "
+"`(start_vid, end_vid, agg_cost)`."
+
+#: ../../build/doc/pgr_floydWarshall.rst:63
+msgid ""
+"Let be the case the values returned are stored in a table, so the unique "
+"index would be the pair: `(start_vid, end_vid)`."
+msgstr ""
+"Sea el caso, los valores devueltos se almacenan en una tabla, por lo que el "
+"índice único sería el par: '(start_vid, end_vid)'."
+
+#: ../../build/doc/pgr_floydWarshall.rst:66
+msgid "For the undirected graph, the results are symmetric."
+msgstr "Para el grafo no dirigido, los resultados son simétricos."
+
+#: ../../build/doc/pgr_floydWarshall.rst:68
+msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
+msgstr "El  `agg_cost` de `(u, v)`  es el mismo que para `(v, u)`."
+
+#: ../../build/doc/pgr_floydWarshall.rst:70
+msgid "When  `start_vid` = `end_vid`, the `agg_cost` = 0."
+msgstr "En caso de `start_vid` = `end_vid`, el  `agg_cost` = 0."
+
+#: ../../build/doc/pgr_floydWarshall.rst:72
+msgid "**Recommended, use a bounding box of no more than 3500 edges.**"
+msgstr ""
+"**Recomendación: utilice un cuadro delimitador de no más de 3500 aristas.**"
+
+#: ../../build/doc/pgr_floydWarshall.rst:75
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_floydWarshall.rst:78
+msgid "Summary"
+msgstr "Resumen"
+
+#: ../../build/doc/pgr_floydWarshall.rst:86
+msgid "Using defaults"
+msgstr "Uso de valores predeterminados"
+
+#: ../../build/doc/pgr_floydWarshall.rst
+msgid "Example 1"
+msgstr "Ejemplo 1"
+
+#: ../../build/doc/pgr_floydWarshall.rst:93
+msgid "For vertices :math:`\\{1, 2, 3, 4\\}` on a **directed** graph"
+msgstr "Para vértices :math:`\\{1, 2, 3, 4\\}` en un grafo **dirigido**"
+
+#: ../../build/doc/pgr_floydWarshall.rst:100
+msgid "Complete Signature"
+msgstr "Firma completa"
+
+#: ../../build/doc/pgr_floydWarshall.rst
+msgid "Example 2"
+msgstr "Ejemplo 2"
+
+#: ../../build/doc/pgr_floydWarshall.rst:108
+msgid "For vertices :math:`\\{1, 2, 3, 4\\}` on an **undirected** graph"
+msgstr "Para vértices :math:`\\{1, 2, 3, 4\\}` en un grafo **no dirigido**"
+
+#: ../../build/doc/pgr_floydWarshall.rst:115
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/pgr_floydWarshall.rst:118
+msgid "Parameter"
+msgstr "Parámetro"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_floydWarshall.rst:118
+#: ../../build/doc/pgr_floydWarshall.rst:137
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/pgr_floydWarshall.rst:120
+msgid "**edges_sql**"
+msgstr "**edges_sql**"
+
+#: ../../build/doc/pgr_floydWarshall.rst:120
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/pgr_floydWarshall.rst:120
+msgid "SQL query as described above."
+msgstr "Consulta SQL como se describió anteriormente."
+
+#: ../../build/doc/pgr_floydWarshall.rst:121
+msgid "**directed**"
+msgstr "**dirigido**"
+
+#: ../../build/doc/pgr_floydWarshall.rst:121
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+#: ../../build/doc/pgr_floydWarshall.rst:121
+msgid ""
+"(optional) Default is true (is directed). When set to false the graph is "
+"considered as Undirected"
+msgstr ""
+"(opcional) El valor predeterminado es verdadero (es Dirigido). Cuando se "
+"establece en falso, el grafo se considera como No Dirigido"
+
+#: ../../build/doc/pgr_floydWarshall.rst:125
+msgid "Inner query"
+msgstr "Consulta interna"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Description of the edges_sql query (id is not necessary)"
+msgstr "Descripción de la consulta edges_sql (no es necesarioun id)"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "edges_sql"
+msgstr "edges_sql"
+
+#: ../../build/doc/pgRouting-concepts.rst:5
+msgid ""
+"an SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+"Una consulta SQL, que debe regresar un conjunto de filas con las siguientes "
+"columnas:"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_floydWarshall.rst:137
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "**source**"
+msgstr "**origen**"
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "``ANY-INTEGER``"
+msgstr "``ANY-INTEGER``"
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "**target**"
+msgstr "**objetivo**"
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "**cost**"
+msgstr "**cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "``ANY-NUMERICAL``"
+msgstr "``ANY-NUMERICAL``"
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "Weight of the edge  `(source, target)`"
+msgstr "Peso de la arista `(source, target)`"
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "**reverse_cost**"
+msgstr "**reverse_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "-1"
+msgstr "-1"
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "Weight of the edge `(target, source)`,"
+msgstr "Peso de la arista `(target, source)`,"
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "Where:"
+msgstr "Donde:"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-INTEGER"
+msgstr "ANY-INTEGER"
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
+msgstr "ANY-NUMERICAL"
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#: ../../build/doc/pgr_floydWarshall.rst:132
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+#: ../../build/doc/pgr_floydWarshall.rst:134
+msgid "Returns set of ``(start_vid, end_vid, agg_cost)``"
+msgstr "Devuelve un conjunto de ``(start_vid, end_vid, agg_cost)``"
+
+#: ../../build/doc/pgr_floydWarshall.rst:139
+msgid "**start_vid**"
+msgstr "**start_vid**"
+
+#: ../../build/doc/pgr_floydWarshall.rst:139
+#: ../../build/doc/pgr_floydWarshall.rst:140
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../build/doc/pgr_floydWarshall.rst:139
+msgid "Identifier of the starting vertex."
+msgstr "Identificador del vértice inicial."
+
+#: ../../build/doc/pgr_floydWarshall.rst:140
+msgid "**end_vid**"
+msgstr "**end_vid**"
+
+#: ../../build/doc/pgr_floydWarshall.rst:140
+msgid "Identifier of the ending vertex."
+msgstr "Identificador del vértice final."
+
+#: ../../build/doc/pgr_floydWarshall.rst:141
+msgid "**agg_cost**"
+msgstr "**agg_cost**"
+
+#: ../../build/doc/pgr_floydWarshall.rst:141
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+#: ../../build/doc/pgr_floydWarshall.rst:141
+msgid "Total cost from ``start_vid`` to ``end_vid``."
+msgstr "Costo total de ``start_vid`` a ``end_vid``."
+
+#: ../../build/doc/pgr_floydWarshall.rst:145
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_floydWarshall.rst:147
+msgid ":doc:`pgr_johnson`"
+msgstr ":doc:`pgr_johnson`"
+
+#: ../../build/doc/pgr_floydWarshall.rst:148
+msgid ""
+"`Boost floyd-Warshall "
+"<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ "
+"algorithm"
+msgstr ""
+"`Algoritmo floyd-Warshall "
+"<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ en "
+"Boost"
+
+#: ../../build/doc/pgr_floydWarshall.rst:149
+msgid "Queries uses the :doc:`sampledata` network."
+msgstr "Queries utiliza la red :doc:`sampledata`"
+
+#: ../../build/doc/pgr_floydWarshall.rst:152
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_floydWarshall.rst:153
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_floydWarshall.rst:154
+msgid ":ref:`search`"
+msgstr ":ref:`search`"

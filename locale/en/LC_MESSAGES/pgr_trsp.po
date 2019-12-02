@@ -800,23 +800,3 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
-#~ msgid ""
-#~ "pgr_trsp calls :doc:`pgr_dijkstra` when there"
-#~ " are no restrictions which returns "
-#~ "`EMTPY SET` when a path is not "
-#~ "found"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The ``reverse_cost`` column will be "
-#~ "efectively removed and will cost "
-#~ "execution time"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "pgr_trsp calls :doc:`pgr_withPoints` when "
-#~ "there are no restrictions which returns"
-#~ " `EMTPY SET` when a path is not"
-#~ " found"
-#~ msgstr ""
-
