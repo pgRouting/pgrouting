@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>KSP Category &#8212; pgRouting Manual (3.0-alpha)</title>
+    <title>K shortest paths - Category &#8212; pgRouting Manual (3.0-rc1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -21,8 +21,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chinese Postman Problem - Family of functions (Experimental)" href="chinesePostmanProblem-family.html" />
-    <link rel="prev" title="Cost Matrix - Category" href="costMatrix-category.html" />
+    <link rel="next" title="pgr_trsp - Turn Restriction Shortest Path (TRSP)" href="pgr_trsp.html" />
+    <link rel="prev" title="Spanning Tree - Category" href="spanningTree-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-alpha</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-rc1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -71,15 +71,12 @@
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -96,7 +93,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">KSP Category</a></li>
+<li><a class="reference internal" href="#">K shortest paths - Category</a></li>
 </ul>
 </ul>
 </li>
@@ -106,11 +103,11 @@
               
                 
   <li>
-    <a href="costMatrix-category.html" title="Previous Chapter: Cost Matrix - Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Cost Matrix -...</span>
+    <a href="spanningTree-family.html" title="Previous Chapter: Spanning Tree - Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Spanning Tree...</span>
     </a>
   </li>
   <li>
-    <a href="chinesePostmanProblem-family.html" title="Next Chapter: Chinese Postman Problem - Family of functions (Experimental)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Chinese Postm... &raquo;</span>
+    <a href="pgr_trsp.html" title="Next Chapter: pgr_trsp - Turn Restriction Shortest Path (TRSP)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_trsp - Tu... &raquo;</span>
     </a>
   </li>
               
@@ -138,10 +135,10 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="ksp-category">
-<h1>KSP Category<a class="headerlink" href="#ksp-category" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="k-shortest-paths-category">
+<h1>K shortest paths - Category<a class="headerlink" href="#k-shortest-paths-category" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Driving Distance based on pgr_dijkstra</li>
+<li><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Yen’s algorithm based on pgr_dijkstra</li>
 </ul>
 <p class="rubric">Proposed</p>
 <div class="admonition warning">
@@ -161,7 +158,7 @@
 </ul>
 </div>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Proposed</span></a> - Driving Distance based on pgr_dijkstra</li>
+<li><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Proposed</span></a> - Yen’s algorithm based on pgr_withPoints</li>
 </ul>
 <p class="rubric">Previous versions of this page</p>
 <ul class="simple">
@@ -191,8 +188,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/KS
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.0-alpha.<br/>
-      Last updated on Sep 05, 2019.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.0-rc1.<br/>
+      Last updated on Dec 02, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

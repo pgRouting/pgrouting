@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pgr_analyzeOneWay &#8212; pgRouting Manual (3.0-rc1)</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_nodeNetwork" href="pgr_nodeNetwork.html" />
+    <link rel="prev" title="pgr_analyzeGraph" href="pgr_analyzeGraph.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-rc1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_analyzeOneWay</a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_analyzeGraph.html" title="Previous Chapter: pgr_analyzeGraph"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_analyzeGraph</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_nodeNetwork.html" title="Next Chapter: pgr_nodeNetwork"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_nodeNetwork &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="pgr-analyzeoneway">
+<h1>pgr_analyzeOneWay<a class="headerlink" href="#pgr-analyzeoneway" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code> — Analiza las calles de sentido unidireccional e identifica los segmentos volteados.</p>
+<p>Esta función analiza las calles unidireccionales en un gráfico e identifica cualquier segmentos invertido.</p>
+<p class="rubric">Disponibilidad</p>
+<ul class="simple">
+<li>Versión 2.0.0<ul>
+<li>Función <strong>oficial</strong></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Soporte</p>
+<ul class="simple">
+<li><strong>Versiones soportadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pgr_analyzeOneWay.html">3.0</a>) <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_analyzeOneWay.html">2.6</a></li>
+<li><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_analyzeOneWay.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_analyzeOneWay.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeOneWay.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeOneWay.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_oneway.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_oneway.html">2.0</a></li>
+</ul>
+<div class="section" id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El análisis de segmentos que tienen un solo sentido es bastante simple, pero a la vez  ser una herramienta poderosa para identificar algunos problemas potenciales que son creados al establecer la dirección de un segmento de la manera equivocada. Un nodo es un <cite>source</cite> si tiene bordes que salen de ese nodo y no hay bordes que entren a  ese nodo. Por el contrario, un nodo es un`sink` si todos los bordes entran al nodo pero ninguno sale de ese nodo. Para un nodo <cite>source</cite> es lógicamente imposible existir porque ningún vehículo puede salir del nodo o si algún vehículo logró entrar en el nodo. Asimismo, si tuvieras un nodo <cite>sink</cite> tienes un número infinito de vehículos que se van  acumulando en este nodo porque no pueden salir de el.</p>
+<p>Así que ¿por qué nos importa si no es factibles? Si la dirección de un borde se revirtió por error podríamos generar exactamente en estas condiciones. Pensar en una carretera dividida y en el carril que va al norte un segmento o varios segmentos fueron introducidos al revés, o tal vez esto sucedió en una glorieta. El resultado sería potencialmente un nodo <cite>source</cite> y/o a <cite>sink</cite> node.</p>
+<p>Así contando el número de aristas entrantes y salientes de cada nodo podemos identificar los nodos <cite>source</cite> y <cite>sink</cite>, así que usted puede mirar esas áreas de su red para hacer reparaciones o informar del problema a su proveedor de datos.</p>
+<p class="rubric">Pre-requisitos</p>
+<p>La tabla de bordes debe ser analizada debe contener una columna de origen y una columna de destino llena con los identificadores de los vértices de los segmentos y los vértices correspondientes de la tabla &lt;edge_table&gt;_vertices_pgr que almacena la información de los vértices.</p>
+<ul class="simple">
+<li>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> para crear la tabla de vértices.</li>
+<li>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear la topología y los vértices.</li>
+</ul>
+</div>
+<div class="section" id="signatures">
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="nb">text</span> <span class="n">pgr_analyzeOneWay</span><span class="p">(</span><span class="n">geom_table</span> <span class="nb">text</span><span class="p">,</span>
+                       <span class="nb">text</span><span class="p">[]</span> <span class="n">s_in_rules</span><span class="p">,</span> <span class="nb">text</span><span class="p">[]</span> <span class="n">s_out_rules</span><span class="p">,</span>
+                       <span class="nb">text</span><span class="p">[]</span> <span class="n">t_in_rules</span><span class="p">,</span> <span class="nb">text</span><span class="p">[]</span> <span class="n">t_out_rules</span><span class="p">,</span>
+                       <span class="nb">text</span> <span class="n">oneway</span><span class="o">=</span><span class="s1">&#39;oneway&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="k">source</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span>
+                       <span class="nb">boolean</span> <span class="n">two_way_if_null</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> La tabla de la red. (puede contener el nombre del esquema)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">s_in_rules:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text[]</span></code> reglas de <strong>entrada</strong> del nodo inicial</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">s_out_rules:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text[]</span></code> reglas de <strong>salida</strong> del nodo inicial</td>
+</tr>
+<tr class="field-even field"><th class="field-name">t_in_rules:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text[]</span></code> reglas de <strong>entrada</strong> del nodo final</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">t_out_rules:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text[]</span></code> reglas de <strong>salida</strong> del nodo final</td>
+</tr>
+<tr class="field-even field"><th class="field-name">oneway:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> El nombre de la columna del sentido. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">oneway</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">id``Nombre</span> <span class="pre">de</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">origen</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">El</span> <span class="pre">valor</span> <span class="pre">predeterminado</span> <span class="pre">es``source</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>  El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">two_way_if_null:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><code class="docutils literal notranslate"><span class="pre">boolean</span></code>  bandera para tratar los valores NULL de oneway como bidireccional.  Valor predeterminado es``true``.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Es ampliamente recomendable usar la notación nombrada como en los siguientes ejemplos:  <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> o  <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
+</div>
+<p>La función devuelve:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">OK</span></code> Cuando el análisis ha terminado.<ul>
+<li>Utiliza la tabla de los vértices: &lt;edge_table&gt;_vertices_pgr.</li>
+<li>Se llena completamente las columnas de la tabla de vértices <code class="docutils literal notranslate"><span class="pre">ein</span></code> y <code class="docutils literal notranslate"><span class="pre">eout</span></code>.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> cuando el análisis no se completó debido a un error.<ul>
+<li>No se encuentra en la tabla de los vértices.</li>
+<li>Una columna de la tabla de red requerida no se encuentra o no es del tipo apropiado.</li>
+<li>Los nombres de origen, destino o oneway son las mismos.</li>
+</ul>
+</li>
+</ul>
+<p>Las reglas se definen como un conjunto de textos que si encajan con el valor de <code class="docutils literal notranslate"><span class="pre">oneway</span></code> se contara como <code class="docutils literal notranslate"><span class="pre">true</span></code> para las condiciones de el origen o destino <strong>in</strong> o <strong>out</strong> .</p>
+<p class="rubric">La tabla de vértices</p>
+<p>Los vértices pueden ser creados con <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> o <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
+<p>La estructura de la tabla de los vértices es:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador del vértice.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que hacen referencia a este vértice. Consulte  <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGgraph</span></a>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice podría tener un problema. Consulte  <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> número de vértices en la edge_table que hacen referencia a este vértice como entrante.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> número de vértices en la edge_table que hacen referencia a este vértice como saliente.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Valor de la geometría POINT del vértice.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="additional-examples">
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzeOneWay</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>
+        <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
+        <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
+        <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
+        <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
+        <span class="n">oneway</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;dir&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,TF}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,FT}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,FT}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,TF}&#39;</span><span class="p">,</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="n">graph</span> <span class="k">for</span> <span class="n">one</span> <span class="n">way</span> <span class="n">street</span> <span class="n">errors</span><span class="o">.</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">25</span><span class="o">%</span> <span class="n">complete</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">50</span><span class="o">%</span> <span class="n">complete</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">75</span><span class="o">%</span> <span class="n">complete</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">100</span><span class="o">%</span> <span class="n">complete</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Found</span> <span class="mi">0</span> <span class="n">potential</span> <span class="n">problems</span> <span class="ow">in</span> <span class="n">directionality</span>
+ <span class="n">pgr_analyzeoneway</span>
+<span class="o">-------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p>
+</div>
+<div class="section" id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a> para obtener una visión general de una topología para algoritmos de ruteo.</li>
+<li><a class="reference internal" href="pgRouting-concepts.html#analytics"><span class="std std-ref">Análisis de gráficas</span></a> para tener una visión general del análisis de un gráfico.</li>
+<li><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> para analizar los bordes y vértices de la tabla de bordes.</li>
+<li><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> para reconstruir la tabla de vértices en función de la información de origen y de destino.</li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.0.0-rc1.<br/>
+      Actualizado por última vez en dic. 02, 2019.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

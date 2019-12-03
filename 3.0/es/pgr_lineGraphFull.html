@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (3.0-rc1)</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-rc1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_lineGraphFull - Experimental</a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#inner-query">Consulta interna</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="pgr-linegraphfull-experimental">
+<h1>pgr_lineGraphFull - Experimental<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> — Transforma un grafo dado en uno nuevo donde todos los vértices del grafo original se convierten en grafos de líneas.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p>Posible bloqueo del servidor</p>
+<ul class="last simple">
+<li>Estas funciones pueden crear un bloqueo del servidor</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p>Funciones experimentales</p>
+<ul class="last simple">
+<li>No son oficialmente de la versión actual.</li>
+<li>Es probable que oficialmente no formen parte de la siguiente versión:<ul>
+<li>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</li>
+<li>El nombre puede cambiar.</li>
+<li>La firma (declaración de funciones) podría cambiar.</li>
+<li>La funcionalidad puede cambiar.</li>
+<li>Las pruebas de pgTap pueden estar ausentes.</li>
+<li>Posiblemente necesite codificación c/c++.</li>
+<li>Puede haber carencia de documentación.</li>
+<li>Hay documentación que, en dado caso, podría ser necesario reescribir.</li>
+<li>Ejemplos de documentación que puede ser necesario generar automáticamente.</li>
+<li>Puede ser necesaria más retroalimentación por parte de la comunidad.</li>
+<li>Puede depender de una función propuesta de pgRouting.</li>
+<li>Podría depender de una función obsoleta de pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<p class="rubric">Disponibilidad</p>
+<ul class="simple">
+<li>Versión 2.6.0<ul>
+<li>Nueva función <strong>Experimental</strong></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Soporte</p>
+<ul class="simple">
+<li><strong>Versiones sustentadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pgr_lineGraphFull.html">3.0</a>)</li>
+<li><strong>Versiones no sustentadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html">2.6</a></li>
+</ul>
+<div class="section" id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>pgr_lineGraphFull, convierte un grafo dirigido original a un grafo lineal dirigido, convirtiendo cada vértice en un grafo completo y manteniendo todas las aristas originales. Las nuevas aristas de conexión tienen un costo de 0 y van entre las aristas originales adyacentes, respetando la direccionalidad.</p>
+<p>Una posible aplicación del grafo resultante es <strong>«ruteo con restricciones en dos aristas»</strong>:</p>
+<ul class="simple">
+<li>Establecer un coste de uso del vértice al enrutar entre aristas en la arista de conexión</li>
+<li>Prohibir el ruteo entre dos aristas al quitar el arista de conexión</li>
+</ul>
+<p>Esto es posible porque cada una de las intersecciones (vértices) en el grafo original ahora son grafos completos que tienen una nueva arista para cada posible giro a través de esa intersección.</p>
+<dl class="docutils">
+<dt>Las principales características son:</dt>
+<dd><ul class="first last simple">
+<li>Esta función es para grafos <strong>dirigidos</strong>.</li>
+<li>Los resultados son indefinidos cuando se utiliza un identificador de vértice negativo en el grafo de entrada.</li>
+<li>Los resultados son indefinidos cuando se utiliza un identificador de borde duplicado en el grafo de entrada.</li>
+<li>Tiempo de ejecución: TBD</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="signatures">
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
+<p class="rubric">Resumen</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_lineGraphFull(edges_sql)
+RETURNS SET OF (seq, source, target, cost, edge)
+    OR EMPTY SET
+</pre></div>
+</div>
+<p class="rubric">Uso de valores predeterminados</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_lineGraphFull(TEXT edges_sql)
+RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Grafo de línea completa del subgrafo de las aristas <span class="math notranslate nohighlight">\(\{4, 7, 8, 10\}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraphFull</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+      <span class="n">FROM</span> <span class="n">edge_table</span>
+      <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="s1">&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">edge</span>
+<span class="o">-----+--------+--------+------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">4</span>
+   <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">7</span>
+   <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+   <span class="mi">7</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">9</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">10</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">11</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">12</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">13</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">14</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">15</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">16</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">17</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">18</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">19</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">20</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">21</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">22</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">23</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+  <span class="mi">24</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">25</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">8</span>
+  <span class="mi">26</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+  <span class="mi">27</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="o">-</span><span class="mi">10</span>
+  <span class="mi">28</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+<span class="p">(</span><span class="mi">28</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="20%" />
+<col width="9%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Columna</th>
+<th class="head">Tipo</th>
+<th class="head">Valores predeterminados</th>
+<th class="head">Descripción</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>sql</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
+<td>&#160;</td>
+<td>Consulta SQL como se describió anteriormente.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="inner-query">
+<h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="14%" />
+<col width="6%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Columna</th>
+<th class="head">Tipo</th>
+<th class="head">Valores predeterminados</th>
+<th class="head">Descripción</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identificador de la arista.</td>
+</tr>
+<tr class="row-odd"><td><strong>origen</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identificador del primer punto final en el vértice de la arista.</td>
+</tr>
+<tr class="row-even"><td><strong>objetivo</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identificador del segundo punto final en el vértice de la arista.</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td>&#160;</td>
+<td><p class="first">Peso de la arista <cite>(source, target)</cite></p>
+<ul class="last simple">
+<li>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>reverse_cost</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td>-1</td>
+<td><p class="first">Peso de la arista <cite>(target, source)</cite>,</p>
+<ul class="last simple">
+<li>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="additional-examples">
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los ejemplos de esta sección se basan en la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>.</p>
+<p>Los ejemplos incluyen el subgrafo que incluye las aristas 4, 7, 8 y 10 con reverse_cost.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Por generar el LineGraphFull</td>
+</tr>
+</tbody>
+</table>
+<p>En este ejemplo se muestra cómo funciona esta transformación de grafo para crear aristas adicionales para cada giro posible en un grafoáfico.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SELECT id, source, target, cost, reverse_cost
+  FROM edge_table
+  WHERE id IN (4,7,8,10);
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><img alt="first" class="align-middle" src="_images/original.png" /></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(&#39;SELECT id,
+                                        source,
+                                        target,
+                                        cost,
+                                        reverse_cost
+                                   FROM edge_table
+                                     WHERE id IN (4,7,8,10)&#39;);
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><img alt="second" class="align-middle" src="_images/transformation.png" /></div>
+</div>
+<p>En el grafo transformado, todas las aristas del grafo original siguen presentes (amarillos), pero ahora tenemos aristas adicionales para cada giro que se podría hacer a través del vértice 6 (naranja).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Para crear una tabla que identifique vértices transformados</td>
+</tr>
+</tbody>
+</table>
+<p>Los vértices del grafo transformado se crean dividiendo los vértices en el grafo original. A menos que un vértice en el grafo original sea un vértice de hoja, generará más de un vértice en el grafo transformado. A uno de los vértices recién creados en el grafo transformado se le dará el mismo vértice-id que el vértice desde el que se creó en el grafo original, pero el resto de los vértices recién creados tendrán identificadores de vértices negativos. A continuación se muestra un ejemplo de cómo generar una tabla que mapea los identificadores de los vértices recién creados con el vértice original que se crearon a partir de</p>
+<p>El primer paso es almacenar el grafo de resultados en una tabla y, a continuación, crear la tabla de asignación de vértices con una fila para cada identificador de vértice distinto en el grafo resultante.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CREATE TABLE lineGraph_edges AS SELECT * FROM pgr_lineGraphFull(
+    $$SELECT id, source, target, cost, reverse_cost
+    FROM edge_table WHERE id IN (4,7,8,10)$$
+);
+SELECT 28
+CREATE TABLE lineGraph_vertices AS
+SELECT *, NULL::BIGINT AS original_id
+FROM (SELECT source AS id FROM lineGraph_edges
+    UNION
+    SELECT target FROM lineGraph_edges) as foo
+ORDER BY id;
+SELECT 16
+</pre></div>
+</div>
+<p>A continuación, establecemos el original_id de todos los vértices en el grafo de resultados a los que se les dio el mismo identificador de vértice que el vértice desde el que se creó en el grafo original.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">r</span>
+  <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span>
+  <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">AS</span> <span class="n">v</span>
+  <span class="n">WHERE</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>A continuación, cruzamos la referencia a todos los otros vértices recién creados que no tienen el mismo original_id y establecemos sus valores original_id.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">unassignedVertices</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">original_id</span>
+       <span class="n">FROM</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">e</span>
+       <span class="n">WHERE</span> <span class="n">original_id</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">),</span>
+<span class="n">edgesWithUnassignedSource</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+        <span class="n">WHERE</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">source</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertices</span><span class="p">)),</span>
+<span class="n">edgesWithUnassignedSourcePlusVertices</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span>
+        <span class="n">FROM</span> <span class="n">edgesWithUnassignedSource</span>
+        <span class="n">JOIN</span> <span class="n">lineGraph_vertices</span>
+        <span class="n">ON</span><span class="p">(</span><span class="n">source</span> <span class="o">=</span> <span class="nb">id</span><span class="p">)),</span>
+<span class="n">verticesFromEdgesWithUnassignedSource</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">edgesWithUnassignedSourcePlusVertices</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+                      <span class="n">edgesWithUnassignedSourcePlusVertices</span><span class="o">.</span><span class="n">original_id</span>
+        <span class="n">FROM</span> <span class="n">edgesWithUnassignedSourcePlusVertices</span>
+        <span class="n">JOIN</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">r</span>
+        <span class="n">ON</span><span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">r</span><span class="o">.</span><span class="n">original_id</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span>
+  <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="n">verticesFromEdgesWithUnassignedSource</span><span class="o">.</span><span class="n">original_id</span>
+  <span class="n">FROM</span> <span class="n">verticesFromEdgesWithUnassignedSource</span>
+  <span class="n">WHERE</span> <span class="n">verticesFromEdgesWithUnassignedSource</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="nb">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">8</span>
+<span class="n">WITH</span>
+<span class="n">unassignedVertices</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">original_id</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">e</span>
+        <span class="n">WHERE</span> <span class="n">original_id</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">),</span>
+<span class="n">edgesWithUnassignedTarget</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+        <span class="n">WHERE</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">target</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertices</span><span class="p">)),</span>
+<span class="n">edgesWithUnassignedTargetPlusVertices</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span>
+        <span class="n">FROM</span> <span class="n">edgesWithUnassignedTarget</span>
+        <span class="n">JOIN</span> <span class="n">lineGraph_vertices</span>
+        <span class="n">ON</span><span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="nb">id</span><span class="p">)),</span>
+<span class="n">verticesFromEdgesWithUnassignedTarget</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">edgesWithUnassignedTargetPlusVertices</span><span class="o">.</span><span class="n">source</span><span class="p">,</span>
+                     <span class="n">edgesWithUnassignedTargetPlusVertices</span><span class="o">.</span><span class="n">original_id</span>
+        <span class="n">FROM</span> <span class="n">edgesWithUnassignedTargetPlusVertices</span>
+        <span class="n">JOIN</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">r</span>
+        <span class="n">ON</span><span class="p">(</span><span class="n">source</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">r</span><span class="o">.</span><span class="n">original_id</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span>
+  <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="n">verticesFromEdgesWithUnassignedTarget</span><span class="o">.</span><span class="n">original_id</span>
+  <span class="n">FROM</span> <span class="n">verticesFromEdgesWithUnassignedTarget</span>
+  <span class="n">WHERE</span> <span class="n">verticesFromEdgesWithUnassignedTarget</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="nb">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Los únicos vértices que quedan que no se han asignado son algunos de los vértices de hoja del grafo original. El siguiente sql completa el mapeo para estos vértices hoja (en el caso de este grafo de ejemplo no hay vértices de hoja, pero esto es necesario para grafos más grandes).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">unassignedVertexIds</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_vertices</span>
+        <span class="n">WHERE</span> <span class="n">original_id</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">),</span>
+<span class="n">edgesWithUnassignedSource</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span><span class="n">edge</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+        <span class="n">WHERE</span> <span class="n">source</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertexIds</span><span class="p">)),</span>
+<span class="n">originalEdgesWithUnassignedSource</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span><span class="n">source</span>
+        <span class="n">FROM</span> <span class="n">edge_table</span>
+        <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">edge</span> <span class="n">FROM</span> <span class="n">edgesWithUnassignedSource</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">d</span>
+  <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">source</span>
+                       <span class="n">FROM</span> <span class="n">originalEdgesWithUnassignedSource</span>
+                       <span class="n">WHERE</span> <span class="n">originalEdgesWithUnassignedSource</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span>
+                         <span class="p">(</span><span class="n">SELECT</span> <span class="n">edge</span>
+                            <span class="n">FROM</span> <span class="n">edgesWithUnassignedSource</span>
+                            <span class="n">WHERE</span> <span class="n">edgesWithUnassignedSource</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+  <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertexIds</span><span class="p">);</span>
+<span class="n">UPDATE</span> <span class="mi">0</span>
+<span class="n">WITH</span>
+<span class="n">unassignedVertexIds</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_vertices</span>
+        <span class="n">WHERE</span> <span class="n">original_id</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">),</span>
+<span class="n">edgesWithUnassignedTarget</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">target</span><span class="p">,</span><span class="n">edge</span>
+        <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+        <span class="n">WHERE</span> <span class="n">target</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertexIds</span><span class="p">)),</span>
+<span class="n">originalEdgesWithUnassignedTarget</span>
+  <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span><span class="n">target</span>
+        <span class="n">FROM</span> <span class="n">edge_table</span>
+        <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">edge</span> <span class="n">FROM</span> <span class="n">edgesWithUnassignedTarget</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_vertices</span> <span class="n">AS</span> <span class="n">d</span>
+  <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">target</span>
+                       <span class="n">FROM</span> <span class="n">originalEdgesWithUnassignedTarget</span>
+                       <span class="n">WHERE</span> <span class="n">originalEdgesWithUnassignedTarget</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span>
+                         <span class="p">(</span><span class="n">SELECT</span> <span class="n">edge</span>
+                            <span class="n">FROM</span> <span class="n">edgesWithUnassignedTarget</span>
+                            <span class="n">WHERE</span> <span class="n">edgesWithUnassignedTarget</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+  <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">unassignedVertexIds</span><span class="p">);</span>
+<span class="n">UPDATE</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Ahora nuestra tabla de mapeo de vértices está completa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lineGraph_vertices</span><span class="p">;</span>
+ <span class="nb">id</span>  <span class="o">|</span> <span class="n">original_id</span>
+<span class="o">-----+-------------</span>
+   <span class="mi">2</span> <span class="o">|</span>           <span class="mi">2</span>
+   <span class="mi">5</span> <span class="o">|</span>           <span class="mi">5</span>
+   <span class="mi">6</span> <span class="o">|</span>           <span class="mi">6</span>
+   <span class="mi">8</span> <span class="o">|</span>           <span class="mi">8</span>
+  <span class="mi">10</span> <span class="o">|</span>          <span class="mi">10</span>
+ <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>          <span class="mi">10</span>
+ <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>           <span class="mi">6</span>
+  <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>           <span class="mi">8</span>
+  <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">2</span>
+  <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>           <span class="mi">5</span>
+  <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>           <span class="mi">5</span>
+<span class="p">(</span><span class="mi">16</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Por ejecutar la ruta más corta dijkstra con penalizaciones de giro</td>
+</tr>
+</tbody>
+</table>
+<p>Un caso de uso para esta transformación de grafo es poder ejecutar una búsqueda de ruta más corta que tenga en cuenta el costo o la limitación del giro. A continuación se muestra un ejemplo de cómo ejecutar una ruta más corta dijkstra desde el vértice 2 hasta el vértice 8 en el grafo original, mientras que agrega un costo de penalización de giro de 100 al giro desde el borde 4 hasta el borde -7.</p>
+<p>En primer lugar debemos aumentar el costo de hacer el turno a 100:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">lineGraph_edges</span>
+  <span class="n">SET</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">100</span>
+  <span class="n">WHERE</span> <span class="n">source</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">target</span>
+                     <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+                     <span class="n">WHERE</span> <span class="n">edge</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="n">AND</span> <span class="n">target</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">source</span>
+                                                      <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+                                                      <span class="n">WHERE</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span><span class="p">);</span>
+<span class="n">UPDATE</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>A continuación, debemos ejecutar una búsqueda de ruta más corta dijkstra utilizando todos los vértices del nuevo grafo que se crearon a partir del vértice 2 como punto de partida, y todos los vértices del nuevo grafo que se crearon a partir del vértice 8 como punto final.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM
+  (SELECT * FROM
+    (SELECT * FROM pgr_dijkstra($$SELECT seq AS id, * FROM lineGraph_edges$$,
+      (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 2),
+      (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 8)
+    )) as shortestPaths
+  WHERE start_vid = 2 AND end_vid = 8 AND (cost != 0 OR edge = -1)) as b;
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+  29 |        2 |         2 |       8 |   -1 |    1 |    1 |        0
+  31 |        4 |         2 |       8 |   -4 |    5 |    1 |        1
+  33 |        6 |         2 |       8 |  -10 |   25 |    1 |        2
+  35 |        8 |         2 |       8 |   -3 |    4 |    1 |        3
+  36 |        9 |         2 |       8 |    8 |   -1 |    0 |        4
+(5 rows)
+
+</pre></div>
+</div>
+<p>Normalmente la ruta más corta desde el vértice 2 hasta el vértice 8 tendría un costo agregado de 2, pero como hay una gran penalización por hacer el giro necesario para obtener este costo, la ruta pasa por el vértice 6 para evitar este giro.</p>
+<p>Si hace referencia cruzada a la columna de nodo en los resultados de dijkstra con la tabla de mapeo de id de vértices, esto le mostrará que la ruta va desde v2 -&gt; v5 -&gt; v6 -&gt; v5 -&gt; v8 en el grafo original.</p>
+</div>
+<div class="section" id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Line_graph">https://en.wikipedia.org/wiki/Line_graph</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Complete_graph">https://en.wikipedia.org/wiki/Complete_graph</a></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.0.0-rc1.<br/>
+      Actualizado por última vez en dic. 02, 2019.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
