@@ -1,0 +1,456 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Daniel Kastl, 2019
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# Ko Nagase <nagase@georepublic.co.jp>, 2019
+# Taro Matsuzawa <taro@georepublic.co.jp>, 2019
+# Jin Igarashi <wushilan0623@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:57+0000\n"
+"Last-Translator: Jin Igarashi <wushilan0623@gmail.com>, 2019\n"
+"Language-Team: Japanese (https://www.transifex.com/pgrouting/teams/1219/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:11
+msgid "pgr_TSPeuclidean"
+msgstr "pgr_TSPeuclidean"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:13
+msgid ""
+"``pgr_TSPeuclidean`` - Using *Simulated Annealing* approximation algorithm"
+msgstr "``pgr_TSPeuclidean`` - Using *焼きなまし* 近似アルゴリズムを使う"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:17
+msgid "Availability"
+msgstr "使用可能なバージョン"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:18
+msgid "Version 3.0.0"
+msgstr "バージョン 3.0.0"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:20
+msgid "Name change from pgr_eucledianTSP"
+msgstr "名称が pgr_eucledianTSP から変わりました"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:22
+msgid "Version 2.3.0"
+msgstr "バージョン 2.3.0"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:24
+msgid "New **Official** function"
+msgstr "新しい **公式** 機能"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:27
+msgid "Support"
+msgstr "サポート"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:28
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_TSPeuclidean.html>`__) `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_eucledianTSP.html>`__"
+msgstr ""
+"**サポートされるバージョン:** 最新(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_TSPeuclidean.html>`__) `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_eucledianTSP.html>`__"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:32
+msgid ""
+"**Unsupported versions:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__"
+msgstr ""
+"**サポートされないバージョン:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__"
+
+#: ../../build/doc/TSP-family.rst:4 ../../build/doc/TSP-family.rst:6
+#: ../../build/doc/pgr_TSPeuclidean.rst:38
+#: ../../build/doc/pgr_TSPeuclidean.rst:74
+#: ../../build/doc/pgr_TSPeuclidean.rst:92
+msgid "Description"
+msgstr "説明"
+
+#: ../../build/doc/TSP-family.rst:3
+msgid ""
+"The travelling salesman problem (TSP) or travelling salesperson problem asks"
+" the following question:"
+msgstr "巡回セールスマン問題（TSP）は次のような問題を問います。"
+
+#: ../../build/doc/TSP-family.rst:6
+msgid ""
+"*Given a list of cities and the distances between each pair of cities, which"
+" is the shortest possible route that visits each city exactly once and "
+"returns to the origin city?*"
+msgstr "*都市の一覧と各都市間の距離を指定し、どの都市も必ず一回訪問し元の都市に戻ってくるための最短ルートはどうなるか?*"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:44
+msgid ""
+"See :ref:`simulated-annealing` for a complete description of this "
+"implementation"
+msgstr "この実装のより詳細な説明については :ref:`simulated-annealing` をご覧ください。"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:47
+msgid "Signatures"
+msgstr "機能"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:50
+msgid "Summary"
+msgstr "概要"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst
+msgid "Example"
+msgstr "例"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:64
+msgid "Not having a random execution"
+msgstr "ランダムな実行はありません"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:71
+msgid "Parameters"
+msgstr "パラメータ"
+
+#: ../../build/doc/TSP-family.rst:4 ../../build/doc/pgr_TSPeuclidean.rst:74
+msgid "Parameter"
+msgstr "パラメータ"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:76
+msgid "**Coordinates SQL**"
+msgstr "**座標のSQL**"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:76
+msgid "an SQL query, described in the `Inner query`_"
+msgstr "SQLクエリを指定します。 `Inner query`_ の解説を参照。"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:80
+msgid "Optional Parameters"
+msgstr "オプションとなるパラメータ"
+
+#: ../../build/doc/TSP-family.rst:4 ../../build/doc/TSP-family.rst:6
+#: ../../build/doc/pgr_TSPeuclidean.rst:92
+msgid "Type"
+msgstr "データ型"
+
+#: ../../build/doc/TSP-family.rst:4
+msgid "Default"
+msgstr "デフォルト値"
+
+#: ../../build/doc/TSP-family.rst:6
+msgid "**start_vid**"
+msgstr "**start_vid**"
+
+#: ../../build/doc/TSP-family.rst:6 ../../build/doc/TSP-family.rst:7
+#: ../../build/doc/TSP-family.rst:9 ../../build/doc/pgr_TSPeuclidean.rst:94
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../build/doc/TSP-family.rst:6 ../../build/doc/TSP-family.rst:7
+msgid "`0`"
+msgstr "`0`"
+
+#: ../../build/doc/TSP-family.rst:6
+msgid "The greedy part of the implementation will use this identifier."
+msgstr "実装の大部分はこの識別子を使用します。"
+
+#: ../../build/doc/TSP-family.rst:7
+msgid "**end_vid**"
+msgstr "**end_vid**"
+
+#: ../../build/doc/TSP-family.rst:7
+msgid "Last visiting vertex before returning to start_vid."
+msgstr "start_vidに戻ってくる前に最後に訪れる端点です。"
+
+#: ../../build/doc/TSP-family.rst:8
+msgid "**max_processing_time**"
+msgstr "**max_processing_time**"
+
+#: ../../build/doc/TSP-family.rst:8 ../../build/doc/TSP-family.rst:10
+#: ../../build/doc/TSP-family.rst:12 ../../build/doc/TSP-family.rst:13
+#: ../../build/doc/TSP-family.rst:14 ../../build/doc/pgr_TSPeuclidean.rst:98
+#: ../../build/doc/pgr_TSPeuclidean.rst:99
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+#: ../../build/doc/TSP-family.rst:8
+msgid "`+infinity`"
+msgstr "`+infinity`"
+
+#: ../../build/doc/TSP-family.rst:8
+msgid "Stop the annealing processing when the value is reached."
+msgstr "指定された時間に達したらアルゴリズムの処理を停止します。"
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "**tries_per_temperature**"
+msgstr "**tries_per_temperature**"
+
+#: ../../build/doc/TSP-family.rst:8 ../../build/doc/TSP-family.rst:9
+#: ../../build/doc/TSP-family.rst:10 ../../build/doc/TSP-family.rst:11
+msgid "``INTEGER``"
+msgstr "``INTEGER``"
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "`500`"
+msgstr "`500`"
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "Maximum number of times a neighbor(s) is searched in each temperature."
+msgstr "各温度ごとに隣が検索される最大数"
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "**max_changes_per_temperature**"
+msgstr "**max_changes_per_temperature**"
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "`60`"
+msgstr "`60`"
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "Maximum number of times the solution is changed in each temperature."
+msgstr "各温度ごとに変更される解の最大数"
+
+#: ../../build/doc/TSP-family.rst:11
+msgid "**max_consecutive_non_changes**"
+msgstr "**max_consecutive_non_changes**"
+
+#: ../../build/doc/TSP-family.rst:11 ../../build/doc/TSP-family.rst:12
+msgid "`100`"
+msgstr "`100`"
+
+#: ../../build/doc/TSP-family.rst:11
+msgid ""
+"Maximum number of consecutive times the solution is not changed in each "
+"temperature."
+msgstr "各温度ごとに変更されない解の連続した最大数"
+
+#: ../../build/doc/TSP-family.rst:12
+msgid "**initial_temperature**"
+msgstr "**initial_temperature**"
+
+#: ../../build/doc/TSP-family.rst:12
+msgid "Starting temperature."
+msgstr "開始温度"
+
+#: ../../build/doc/TSP-family.rst:13
+msgid "**final_temperature**"
+msgstr "終了時温度"
+
+#: ../../build/doc/TSP-family.rst:13
+msgid "`0.1`"
+msgstr "`0.1`"
+
+#: ../../build/doc/TSP-family.rst:13
+msgid "Ending temperature."
+msgstr "終了時温度"
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "**cooling_factor**"
+msgstr "**cooling_factor**"
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "`0.9`"
+msgstr "`0.9`"
+
+#: ../../build/doc/TSP-family.rst:14
+msgid ""
+"Value between between 0 and 1 (not including) used to calculate the next "
+"temperature."
+msgstr "次の温度の計算に使用される0から1（含まれない）の間の値"
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "**randomize**"
+msgstr "**randomize**"
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "`true`"
+msgstr "`true`"
+
+#: ../../build/doc/TSP-family.rst:15
+msgid "Choose the random seed"
+msgstr "疑似乱数を使う"
+
+#: ../../build/doc/TSP-family.rst:17
+msgid "true: Use current time as seed"
+msgstr "true: 現在時刻を乱数として使用する"
+
+#: ../../build/doc/TSP-family.rst:18
+msgid ""
+"false: Use `1` as seed. Using this value will get the same results with the "
+"same data in each execution."
+msgstr "false: 「1」を乱数として使用する。この値を使うと同じデータを使った場合に同じ結果を毎回得られるようになります。"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:87
+msgid "Inner query"
+msgstr "内部クエリ"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:89
+msgid ""
+"**Coordinates SQL**: an SQL query, which should return a set of rows with "
+"the following columns:"
+msgstr "**座標のSQL**: 次のカラムを含む行列を返すSQLクエリ:"
+
+#: ../../build/doc/TSP-family.rst:6 ../../build/doc/pgr_TSPeuclidean.rst:92
+msgid "Column"
+msgstr "カラム"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:94
+msgid "**id**"
+msgstr "**id**"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:94
+msgid "(optional) Identifier of the coordinate."
+msgstr "(オプション) 座標の識別子。"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:96
+msgid ""
+"When missing the coordinates will receive an **id** starting from 1, in the "
+"order given."
+msgstr "座標が欠落している場合、1から始まる **id** を指定された順序で受け取ります。"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:98
+msgid "**x**"
+msgstr "**x**"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:98
+msgid "X value of the coordinate."
+msgstr "座標のX値"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:99
+msgid "**y**"
+msgstr "**y**"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:99
+msgid "Y value of the coordinate."
+msgstr "座標のY値"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:104
+msgid "Result Columns"
+msgstr "結果として返却されるカラム"
+
+#: ../../build/doc/TSP-family.rst:3
+msgid "Returns SET OF ``(seq, node, cost, agg_cost)``"
+msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します。"
+
+#: ../../build/doc/TSP-family.rst:8
+msgid "**seq**"
+msgstr "**seq**"
+
+#: ../../build/doc/TSP-family.rst:8
+msgid "Row sequence."
+msgstr "行番号"
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "**node**"
+msgstr "**node**"
+
+#: ../../build/doc/TSP-family.rst:9
+msgid "Identifier of the node/coordinate/point."
+msgstr "ノード/座標/ポイントの識別子"
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "**cost**"
+msgstr "**cost**"
+
+#: ../../build/doc/TSP-family.rst:11
+msgid ""
+"Cost to traverse from the current ``node`` to the next ``node`` in the path "
+"sequence."
+msgstr "現在の ``ノード`` から次の ``ノード`` まで移動する際の経路にかかるコスト"
+
+#: ../../build/doc/TSP-family.rst:11
+msgid "``0`` for the last row in the path sequence."
+msgstr "``0`` は経路の最後の行を示します。"
+
+#: ../../build/doc/TSP-family.rst:13
+msgid "**agg_cost**"
+msgstr "**agg_cost**"
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
+msgstr "``seq = 1`` の ``ノード`` から現在のノードまでの総コスト"
+
+#: ../../build/doc/TSP-family.rst:14
+msgid "``0`` for the first row in the path sequence."
+msgstr "``0`` は経路の最初の行を意味します。"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:111
+msgid "Additional Examples"
+msgstr "追加の具体例"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:113
+msgid ""
+"Try :math:`3` times per temperature with cooling factor of :math:`0.5`, not "
+"having a random execution"
+msgstr "冷却係数 :math:`0.5` として、温度ごとに :math:`3` 回試行します。ランダムには実行されません。"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:119
+msgid "Skipping the Simulated Annealing & showing some process information"
+msgstr "焼きなまし法のスキップとプロセス情報の表示をする"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:125
+msgid "The queries use the :doc:`sampledata` network."
+msgstr "クエリは :doc:`sampledata` ネットワークを使用します。"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:128
+msgid "See Also"
+msgstr "参照"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:130
+msgid ":doc:`TSP-family`"
+msgstr ":doc:`TSP-family`"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:131
+msgid ""
+"`Simulated annaeling algorithm for beginners <https://www.theprojectspot.com"
+"/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__"
+msgstr ""
+"`初心者のための焼きなまし法アルゴリズム <https://www.theprojectspot.com/tutorial-post"
+"/simulated-annealing-algorithm-for-beginners/6>`__"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:132
+msgid ""
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
+msgstr ""
+"`Wikipedia: 巡回セールスマン問題 "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:133
+msgid ""
+"`Wikipedia: Simulated annealing "
+"<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
+msgstr ""
+"`Wikipedia: 焼きなましシミュレーション "
+"<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:136
+msgid "Indices and tables"
+msgstr "索引とテーブル"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:137
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:138
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
