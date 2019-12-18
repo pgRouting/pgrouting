@@ -248,12 +248,14 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCost</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -273,13 +275,15 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span>
-    <span class="n">directed</span> <span class="p">:</span><span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCost</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">true</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span>
+<span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -300,13 +304,16 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCost</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+    <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">factor</span> <span class="p">:</span><span class="o">=</span> <span class="mf">3.5</span>
+<span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">3</span>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -327,13 +334,16 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">12</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCost</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">4</span>
+<span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
-         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">5</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -354,15 +364,18 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCost</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+    <span class="n">factor</span> <span class="p">:</span><span class="o">=</span> <span class="mf">0.5</span>
+<span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">3</span>
          <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
-         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">5</span>
+         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">4</span>
 <span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -635,7 +648,7 @@ OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.0.0-rc1.<br/>
-      Last updated on Dec 02, 2019.<br/>
+      Last updated on Dec 18, 2019.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
