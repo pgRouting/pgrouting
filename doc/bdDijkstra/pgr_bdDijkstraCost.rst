@@ -89,7 +89,7 @@ One to One
 
 :Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
 
-.. literalinclude:: doc-pgr_bdDijkstra.queries
+.. literalinclude:: doc-pgr_bdDijkstraCost.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -125,7 +125,7 @@ Many to One
 
 :Example: From vertices :math:`\{2, 7\}` to vertex :math:`3` on a **directed** graph
 
-.. literalinclude:: doc-pgr_bdDijkstra.queries
+.. literalinclude:: doc-pgr_bdDijkstraCost.queries
    :start-after: -- q4
    :end-before: -- q5
 
@@ -137,13 +137,13 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
+    pgr_bdDijkstraCost(edges_sql, start_vids, end_vids [, directed])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 11\}` on a **directed** graph
 
-.. literalinclude:: doc-pgr_bdDijkstra.queries
+.. literalinclude:: doc-pgr_bdDijkstraCost.queries
    :start-after: -- q5
    :end-before: -- q6
 
