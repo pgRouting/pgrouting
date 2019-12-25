@@ -74,9 +74,9 @@ Optional parameters are `named parameters` and have a default value.
 
 :Example: From vertex :math:`2` to vertex :math:`12` on a **directed** graph
 
-.. literalinclude:: doc-aStarCost.queries
-   :start-after: --q1
-   :end-before: --q2
+.. literalinclude:: doc-pgr_bdAstarCost.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: bdAstarCost(One to One)
@@ -92,9 +92,9 @@ One to One
 
 :Example: From vertex :math:`2` to vertex :math:`12` on an **undirected** graph using heuristic :math:`2`
 
-.. literalinclude:: doc-aStarCost.queries
-   :start-after: --q2
-   :end-before: --q3
+.. literalinclude:: doc-pgr_bdAstarCost.queries
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. index::
     single: bdAstarCost(One to Many)
@@ -110,9 +110,9 @@ One to many
 
 :Example: From vertex `2` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic `2`
 
-.. literalinclude:: doc-aStarCost.queries
-   :start-after: --q3
-   :end-before: --q4
+.. literalinclude:: doc-pgr_bdAstarCost.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. index::
     single: bdAstarCost(Many to One)
@@ -128,9 +128,9 @@ Many to One
 
 :Example: From vertices :math:`\{7, 2\}` to vertex :math:`12` on a **directed** graph using heuristic :math:`0`
 
-.. literalinclude:: doc-aStarCost.queries
-   :start-after: --q4
-   :end-before: --q5
+.. literalinclude:: doc-pgr_bdAstarCost.queries
+   :start-after: -- q4
+   :end-before: -- q5
 
 .. index::
     single: bdAstarCost(Many to Many)
@@ -146,9 +146,9 @@ Many to Many
 
 :Example: From vertices :math:`\{7, 2\}` to vertices :math:`\{3, 12\}` on a **directed** using heuristic :math:`2`
 
-.. literalinclude:: doc-aStarCost.queries
-   :start-after: --q5
-   :end-before: --q6
+.. literalinclude:: doc-pgr_bdAstarCost.queries
+   :start-after: -- q5
+   :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
