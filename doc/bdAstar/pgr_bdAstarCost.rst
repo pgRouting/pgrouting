@@ -1,4 +1,4 @@
-..
+﻿..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -72,7 +72,7 @@ Optional parameters are `named parameters` and have a default value.
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex :math:`12` on a **directed** graph
+:Example: From vertex :math:`2` to vertex :math:`3` on a **directed** graph
 
 .. literalinclude:: doc-pgr_bdAstarCost.queries
    :start-after: -- q1
@@ -90,7 +90,7 @@ One to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex :math:`12` on an **undirected** graph using heuristic :math:`2`
+:Example: From vertex :math:`2` to vertex :math:`3` on an **directed** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-pgr_bdAstarCost.queries
    :start-after: -- q2
@@ -108,7 +108,7 @@ One to many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex `2` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic `2`
+:Example: From vertex `2` to vertices :math:`\{3, 11\}` on a **directed** graph using heuristic `3` and factor :math:`3.5`
 
 .. literalinclude:: doc-pgr_bdAstarCost.queries
    :start-after: -- q3
@@ -126,7 +126,7 @@ Many to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{7, 2\}` to vertex :math:`12` on a **directed** graph using heuristic :math:`0`
+:Example: From vertices :math:`\{7, 2\}` to vertex :math:`3` on a **undirected** graph using heuristic :math:`4`
 
 .. literalinclude:: doc-pgr_bdAstarCost.queries
    :start-after: -- q4
@@ -144,7 +144,7 @@ Many to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{7, 2\}` to vertices :math:`\{3, 12\}` on a **directed** using heuristic :math:`2`
+:Example: From vertices :math:`\{7, 2\}` to vertices :math:`\{3, 11\}` on a **directed** using heuristic :math:`5` and factor :math:`0.5`
 
 .. literalinclude:: doc-pgr_bdAstarCost.queries
    :start-after: -- q5
