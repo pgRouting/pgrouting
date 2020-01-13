@@ -44,7 +44,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=RELEASE -DWITH_DOC=OFF ..
+          cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
 
       - name: Build
         run: |
