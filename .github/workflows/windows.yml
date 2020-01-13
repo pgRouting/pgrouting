@@ -43,8 +43,8 @@ jobs:
       #       postgresql-server-dev-${{ matrix.psql }} \
       #       python-sphinx 
 
-      # - name: Checkout repository
-      #   uses: actions/checkout@v1
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       # - name: Prepare
       #   run: |
