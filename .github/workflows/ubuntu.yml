@@ -1,0 +1,58 @@
+name: CI for pgRouting
+
+on: 
+  push:
+    branches:
+      - master
+      - develop
+      - ftr/gh-actions
+
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  build:
+    name: Build pgRouting
+    runs-on: ${{ matrix.os }}
+
+    strategy: 
+        matrix: 
+          psql: [10]
+          os: [ubuntu-latest]
+
+    steps:
+      - name: Add PostgreSQL APT repository
+        run: |
+          sudo apt-get install curl ca-certificates gnupg
+          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
+            $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libboost-graph-dev python-sphinx \
+            postgresql-${{ matrix.psql }} \
+            postgresql-server-dev-${{ matrix.psql }} \
+
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Configure
+        run: |
+          mkdir build
+          cd build
+          cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=RELEASE -DWITH_DOC=OFF ..
+
+      - name: Build
+        run: |
+          make
+          sudo make install
+
+      # - name: make check
+      #   run: make check
+
+      # - name: make distcheck
+      #   run: make distcheck
