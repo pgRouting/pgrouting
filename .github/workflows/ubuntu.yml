@@ -1,4 +1,4 @@
-name: Build & test pgRouting
+name: Build for Ubuntu
 
 on: 
   push:
@@ -19,7 +19,7 @@ jobs:
 
     strategy: 
         matrix: 
-          psql: [10]
+          psql: [9.5,9.6,10,11,12]
           os: [ubuntu-latest]
 
     steps:
@@ -33,11 +33,12 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libboost-graph-dev python-sphinx \
+          sudo apt-get install -y \
+            libboost-graph-dev python-sphinx \
             postgresql-${{ matrix.psql }} \
             postgresql-server-dev-${{ matrix.psql }} \
 
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v1
 
       - name: Configure
@@ -51,9 +52,3 @@ jobs:
           cd build
           make 
           sudo make install
-
-      # - name: make check
-      #   run: make check
-
-      # - name: make distcheck
-      #   run: make distcheck
