@@ -1,4 +1,4 @@
-name: CI for pgRouting
+name: Build & test pgRouting
 
 on: 
   push:
@@ -14,7 +14,7 @@ on:
 
 jobs:
   build:
-    name: Build pgRouting
+    name: Build
     runs-on: ${{ matrix.os }}
 
     strategy: 
@@ -48,8 +48,8 @@ jobs:
 
       - name: Build
         run: |
-          ls -la
-          make
+          cd build
+          make 
           sudo make install
 
       # - name: make check
