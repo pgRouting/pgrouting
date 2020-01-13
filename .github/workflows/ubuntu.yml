@@ -48,6 +48,7 @@ jobs:
 
       - name: Build
         run: |
+          ls -la
           make
           sudo make install
 
