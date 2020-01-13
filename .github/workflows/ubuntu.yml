@@ -20,6 +20,7 @@ jobs:
     strategy: 
         matrix: 
           psql: [9.5,9.6,10,11,12]
+          postgis: [2.5,3]
           os: [ubuntu-latest]
 
     steps:
@@ -34,12 +35,25 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            libboost-graph-dev python-sphinx \
+            libboost-graph-dev \
+            libtap-parser-sourcehandler-pgtap-perl \
             postgresql-${{ matrix.psql }} \
+            postgresql-${{ matrix.psql }}-pgtap \
+            postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }} \
+            postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }}-scripts \
             postgresql-server-dev-${{ matrix.psql }} \
+            python-sphinx 
 
       - name: Checkout repository
         uses: actions/checkout@v1
+
+      - name: Prepare
+        run: |
+          sphinx-build --version
+          psql -p 5432 -U postgres -c "CREATE EXTENSION postgis"
+          export PATH=/usr/lib/postgresql/${{ matrix.psql }}/bin:$PATH
+          createdb -U postgres ___pgr___test___
+          createdb -U postgres pgr_test__db__test
 
       - name: Configure
         run: |
@@ -52,3 +66,7 @@ jobs:
           cd build
           make 
           sudo make install
+
+      - name: Test
+        run: |
+          bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release
