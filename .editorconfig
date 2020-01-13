@@ -1,37 +1,10 @@
-# http://editorconfig.org
-
-# top-most EditorConfig file
+# editorconfig.org
 root = true
 
-# Defaults if not specified later
-[*]
-indent_size = 4
+[.github/workflow/*.yml]
 indent_style = space
-charset = utf-8
+indent_size = 2
 end_of_line = lf
-insert_final_newline = true
+charset = utf-8
 trim_trailing_whitespace = true
-
-# C++ files want tab indentation
-[*.{c,h,cpp,hpp,inl}]
-indent_style = space
-indent_size = 4
-
-# Makefiles want tab indentation
-[Makefile]
-indent_style = tab
-indent_size = 8
-
-# YML files want space indentation
-[*.yml]
-indent_style = space
-
-# CMake configuration files
-[CMakeLists.txt,*.cmake]
-indent_style = space
-indent_size = 4
-
-# RST files
-[*.rst]
-indent_size = 3
-indent_style = space
+insert_final_newline = true
