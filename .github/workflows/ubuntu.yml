@@ -19,7 +19,7 @@ jobs:
 
     strategy: 
         matrix: 
-          psql: [9.5,9.6,10]
+          psql: [9.5,9.6,10,11,12]
           postgis: [2.5,3]
           os: [ubuntu-latest]
 
