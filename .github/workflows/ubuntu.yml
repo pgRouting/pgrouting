@@ -50,10 +50,10 @@ jobs:
       - name: Prepare
         run: |
           sphinx-build --version
-          psql -p 5432 -U postgres -c "CREATE EXTENSION postgis"
+          sudo -u postgres psql -p 5432 -c "CREATE EXTENSION postgis"
           export PATH=/usr/lib/postgresql/${{ matrix.psql }}/bin:$PATH
-          createdb -U postgres ___pgr___test___
-          createdb -U postgres pgr_test__db__test
+          sudo -u postgres createdb ___pgr___test___
+          sudo -u postgres createdb pgr_test__db__test
 
       - name: Configure
         run: |
@@ -68,5 +68,5 @@ jobs:
           sudo make install
 
       - name: Test
-        run: |
-          bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release
+        # run: |
+        #   bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release
