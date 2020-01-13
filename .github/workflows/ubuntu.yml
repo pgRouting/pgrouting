@@ -67,6 +67,6 @@ jobs:
           make 
           sudo make install
 
-      - name: Test
-        # run: |
-        #   bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release
+      # - name: Test
+      #   run: |
+      #     bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release
