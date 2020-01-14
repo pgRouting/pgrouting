@@ -4,7 +4,7 @@
 -- create 4x4 grid of overlapping lines horizontal and vertical
 -- set the even numbered ones with dir='FT' and the odd ones 'TF'
 
-SELECT plan(41);
+SELECT plan(61);
 
 SET client_min_messages = WARNING;
 CREATE TABLE original (
