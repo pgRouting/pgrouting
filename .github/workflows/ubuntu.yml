@@ -1,24 +1,14 @@
 name: Build for Ubuntu
 
-on: 
-  push:
-    branches:
-      - master
-      - develop
-      - ftr/gh-actions
-
-  pull_request:
-    branches:
-      - master
-      - develop
+on: [push, pull_request]
 
 jobs:
   build:
     name: Build
     runs-on: ${{ matrix.os }}
 
-    strategy: 
-        matrix: 
+    strategy:
+        matrix:
           psql: [9.5,9.6,10,11,12]
           postgis: [2.5,3]
           os: [ubuntu-latest]
@@ -42,7 +32,7 @@ jobs:
             postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }} \
             postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }}-scripts \
             postgresql-server-dev-${{ matrix.psql }} \
-            python-sphinx 
+            python-sphinx
 
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -64,7 +54,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          make 
+          make
           sudo make install
 
       - name: Test
