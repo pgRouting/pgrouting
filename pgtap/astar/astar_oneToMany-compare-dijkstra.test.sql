@@ -39,7 +39,7 @@ astar_sql TEXT;
 vids TEXT;
 data TEXT;
 BEGIN
-    data = ' seq, end_vid, cost::text, agg_cost::text ';
+    data = ' seq, end_vid, round(cost::numeric,8) AS cost, round(agg_cost::numeric,8) AS agg_cost ';
     vids = ' ARRAY[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18] ';
 
     FOR i IN 1.. cant LOOP
