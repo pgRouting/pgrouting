@@ -10,6 +10,7 @@ SELECT function_returns('pgr_chinesepostmancost',
     ARRAY['text'],
     'double precision');
 
+DELETE FROM edge_table WHERE id > 10;
 
 SELECT style_dijkstra('pgr_chinesepostmancost', ')');
 
