@@ -1,6 +1,8 @@
 name: Build for Ubuntu
 
+
 on: [push, pull_request]
+
 
 jobs:
   build:
@@ -33,6 +35,7 @@ jobs:
             postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }}-scripts \
             postgresql-server-dev-${{ matrix.psql }} \
             python-sphinx
+
 
       - name: Checkout repository
         uses: actions/checkout@v2
