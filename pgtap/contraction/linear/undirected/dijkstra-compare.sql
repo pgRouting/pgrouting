@@ -39,7 +39,7 @@ FROM (VALUES
     ('e', -1, ARRAY[4], 3, 9, '2.265')
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq($$SELECT type, id, contracted_vertices, source, target, cost::TEXT FROM contraction_info$$, 'c_info');
+SELECT set_eq($$SELECT type, id, contracted_vertices, source, target, round(cost::numeric,3)::TEXT FROM contraction_info$$, 'c_info');
 
 -- add the new edges
 INSERT INTO edge_table(source, target, cost, reverse_cost, contracted_vertices, is_contracted)
@@ -76,7 +76,7 @@ SELECT set_eq($$SELECT id
 
 -- the contracted graph
 PREPARE c_graph AS
-SELECT source, target, cost::TEXT, reverse_cost::TEXT FROM edge_table
+SELECT source, target, round(cost::numeric, 3)::TEXT AS cost, round(reverse_cost::numeric, 3)::TEXT FROM edge_table
 WHERE
     EXISTS (SELECT id FROM edge_table_vertices_pgr AS v WHERE NOT is_contracted AND v.id = edge_table.source)
     AND
@@ -91,15 +91,15 @@ FROM (VALUES
     (  3,    6,   '1.025',   '-0.975'),
     (  5,    6,   '1.064',   '1.064'),
     (  6,    9,   '1.081',   '1.081'),
-    (  5,   10,   '1.1',     '1.1'),
+    (  5,   10,   '1.100',     '1.100'),
     (  6,   11,   '1.121',   '-0.879'),
     ( 10,   11,   '1.144',   '-0.856'),
     ( 10,   13,   '1.196',   '1.196'),
     ( 14,   15,   '1.289',   '1.289'),
     ( 16,   17,   '1.324',   '1.324'),
-    (  9,   11,   '2.394',   '-1'),
-    (  3,    9,   '2.265',   '-1'),
-    (  5,    7,   '2.085',   '-1'))
+    (  9,   11,   '2.394',   '-1.000'),
+    (  3,    9,   '2.265',   '-1.000'),
+    (  5,    7,   '2.085',   '-1.000'))
 AS t(source, target, cost, reverse_cost);
 
 SELECT set_eq('c_graph', 'c_expected_graph');
