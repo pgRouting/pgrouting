@@ -6,7 +6,7 @@ SELECT PLAN(7);
 
 
 PREPARE q1 AS
-SELECT  path_seq, node, agg_cost::text FROM pgr_withPoints(
+SELECT  path_seq, node, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1], -5,
@@ -15,7 +15,7 @@ SELECT  path_seq, node, agg_cost::text FROM pgr_withPoints(
     details := true);
 
 PREPARE q2 AS
-SELECT path_seq, node, agg_cost::text FROM pgr_withPoints(
+SELECT path_seq, node, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -5,
@@ -26,7 +26,7 @@ SELECT path_seq, node, agg_cost::text FROM pgr_withPoints(
 SELECT set_eq('q1', 'q2', '1: Right: from point ARRAY[-1] to -5 same as one to one');
 
 PREPARE q3 AS
-SELECT path_seq, node, agg_cost::text FROM pgr_withPoints(
+SELECT path_seq, node, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-4], -5,
@@ -35,7 +35,7 @@ SELECT path_seq, node, agg_cost::text FROM pgr_withPoints(
     details := true);
 
 PREPARE q4 AS
-SELECT path_seq, node, agg_cost::text FROM pgr_withPoints(
+SELECT path_seq, node, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -4, -5,
@@ -46,7 +46,7 @@ SELECT path_seq, node, agg_cost::text FROM pgr_withPoints(
 SELECT set_eq('q3','q4','2: Right: from ARRAY[-4] to -5 same as one to one');
 
 PREPARE q5 AS
-SELECT path_seq, node, agg_cost::text FROM pgr_withPoints(
+SELECT path_seq, node, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1, -4], -5,
@@ -62,7 +62,7 @@ SELECT set_has('q5', 'q4', '6: Right: from point ARRAY[-1,-4] to -5 has results 
 
 
 PREPARE q9 AS
-SELECT  -1 AS start_vid, -5 AS end_vid,  agg_cost::text FROM pgr_withPoints(
+SELECT  -1 AS start_vid, -5 AS end_vid,  round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1], -5,
@@ -72,7 +72,7 @@ SELECT  -1 AS start_vid, -5 AS end_vid,  agg_cost::text FROM pgr_withPoints(
 
 
 PREPARE q10 AS
-SELECT start_pid, end_pid, agg_cost::text  FROM pgr_withPointsCost(
+SELECT start_pid, end_pid, round(agg_cost::numeric, 12) AS agg_cost  FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -5,
