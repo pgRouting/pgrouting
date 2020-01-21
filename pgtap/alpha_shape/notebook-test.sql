@@ -60,8 +60,8 @@ SELECT alphaShape_tester('e_test', 'geom', 0.22969, false, 0.5178261889305, 26);
 
 -- best alpha
 SELECT set_eq(
-    $$SELECT st_area(pgr_alphaShape)::TEXT FROM pgr_alphaShape((SELECT ST_Collect(geom) FROM e_test))$$,
-    $$SELECT st_area(pgr_alphaShape)::TEXT FROM pgr_alphaShape((SELECT ST_Collect(geom) FROM e_test), 0)$$,
+    $$SELECT round(st_area(pgr_alphaShape)::numeric, 12) FROM pgr_alphaShape((SELECT ST_Collect(geom) FROM e_test))$$,
+    $$SELECT round(st_area(pgr_alphaShape)::numeric, 12) FROM pgr_alphaShape((SELECT ST_Collect(geom) FROM e_test), 0)$$,
     'SHOULD BE: best alpha obtined with spoon radius 0'
 );
 
