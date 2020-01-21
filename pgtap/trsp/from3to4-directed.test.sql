@@ -12,18 +12,18 @@ SELECT * from pgr_trsp(
     true, true);
 
 PREPARE q21 AS
-SELECT seq, id1, id2, cost::text from pgr_trsp(
+SELECT seq, id1, id2, round(cost::numeric, 12) from pgr_trsp(
     'select id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost from edge_table',
     3, 4,
     true, true);
 
 PREPARE q22 AS
-SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text from pgr_dijkstra(
+SELECT seq-1, node::INTEGER, edge::INTEGER, round(cost::numeric, 12) from pgr_dijkstra(
     'select id, source, target, cost, reverse_cost from edge_table',
     3, 4, true);
 
 PREPARE q31 AS
-SELECT seq, id1, id2, cost::text from pgr_trsp(
+SELECT seq, id1, id2, round(cost::numeric, 12) from pgr_trsp(
     'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table',
     3, 4,
     true, true,
@@ -31,7 +31,7 @@ SELECT seq, id1, id2, cost::text from pgr_trsp(
 
 PREPARE q32 AS
 SELECT (row_number() over() -1)::INTEGER, node::INTEGER,
-(CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
+(CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, round(cost::numeric, 12)
 FROM pgr_dijkstraVia(
     'select id, source, target, cost, reverse_cost from edge_table',
     ARRAY[3, 2, 4],
