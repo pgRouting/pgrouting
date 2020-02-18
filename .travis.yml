@@ -116,6 +116,8 @@ matrix:
 
 
 before_install:
+  - sudo updatedb
+  - locate pg_config
   - PGR_VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
   - echo "Building for $PGR_VERSION"
   - sudo service postgresql stop
@@ -128,8 +130,8 @@ install:
   - if [ "$DOCUMENTATION" == "ON" ]; then  sphinx-build --version; fi
 
 before_script:
-  - if [ "$DOCUMENTATION" == "OFF" ]; then psql -p 5432 -U postgres -c "CREATE EXTENSION postgis"; fi
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
+  - if [ "$DOCUMENTATION" == "OFF" ]; then /usr/lib/postgresql/$POSTGRESQL_VERSION/bin/psql -p 5432 -U postgres -c "CREATE EXTENSION postgis"; fi
   # initialize databases
   - createdb  -U postgres ___pgr___test___
   - createdb  -U postgres pgr_test__db__test
@@ -138,7 +140,7 @@ before_script:
   - cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWITH_DOC=$DOCUMENTATION ..
 
 script:
-  - if [ "$DOCUMENTATION" == "OFF" ]; then make; sudo make install; fi
+  - if [ "$DOCUMENTATION" == "OFF" ]; then make; sudo make install; sudo cp  /usr/lib/postgresql/11/lib/libpgrouting-3.0.so /usr/lib/postgresql/$POSTGRESQL_VERSION/lib/libpgrouting-3.0.so; sudo cp /usr/share/postgresql/11/extension/pgrouting* /usr/share/postgresql/$POSTGRESQL_VERSION/extension; fi
   - if [ "$DOCUMENTATION" == "ON" ]; then make doc; fi
 
   # tests as part of script so if a test fails the build fails
