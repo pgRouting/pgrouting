@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     _contraction.sql
     contraction.sql
+    funnyContraction.sql
     )
 
 foreach (f ${LOCAL_FILES})
