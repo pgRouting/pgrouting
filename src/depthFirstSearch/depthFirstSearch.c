@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pgr_mst_rt.h"
 
 #include "drivers/spanningTree/mst_common.h"
-#include "drivers/spanningTree/prim_driver.h"
+#include "drivers/depthFirstSearch/depthFirstSearch_driver.h"
 
 PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_depthfirstsearch);
@@ -80,8 +80,7 @@ process(
 
 
     clock_t start_t = clock();
-#if 0
-    do_pgr_prim(
+    do_pgr_depthFirstSearch(
             edges, total_edges,
             rootsArr, size_rootsArr,
 
@@ -95,7 +94,6 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-#endif
 
 
     time_msg(fn_name, start_t, clock());
