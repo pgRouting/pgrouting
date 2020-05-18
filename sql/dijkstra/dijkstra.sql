@@ -51,7 +51,6 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-
 -- ONE to MANY
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
     TEXT,     -- edges_sql (required)
@@ -75,7 +74,6 @@ $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
-
 
 -- MANY to ONE
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
@@ -101,7 +99,6 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
-
 -- MANY to MANY
 CREATE OR REPLACE FUNCTION pgr_dijkstra(
     TEXT,     -- edges_sql (required)
@@ -126,6 +123,31 @@ $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
+
+-- Combinations SQL signature
+CREATE OR REPLACE FUNCTION pgr_dijkstra(
+    TEXT,     -- edges_sql (required)
+    TEXT,     -- combinations_sql (required)
+
+    directed BOOLEAN DEFAULT true,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), $3, false, true) AS a;
+$BODY$
+LANGUAGE sql VOLATILE STRICT
+COST 100
+ROWS 1000;
+
 
 -- COMMENTS
 
@@ -171,6 +193,17 @@ IS 'pgr_dijkstra(Many to Many)
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
    - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstra.html
+';
+
+COMMENT ON FUNCTION pgr_dijkstra(TEXT, TEXT, BOOLEAN)
+IS 'pgr_dijkstra(One to One)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - Combinations SQL with columns: source, target
 - Optional Parameters
    - directed := true
 - Documentation:
