@@ -33,6 +33,7 @@ CREATE OR REPLACE FUNCTION pgr_depthFirstSearch(
     BIGINT, -- root_vid (required)
 
     max_depth BIGINT DEFAULT 9223372036854775807,
+    directed BOOLEAN DEFAULT true,
 
     OUT seq BIGINT,
     OUT depth BIGINT,
@@ -52,7 +53,7 @@ BEGIN
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3);
+    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], max_depth, directed);
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -64,6 +65,7 @@ CREATE OR REPLACE FUNCTION pgr_depthFirstSearch(
     ANYARRAY, -- root_vids (required)
 
     max_depth BIGINT DEFAULT 9223372036854775807,
+    directed BOOLEAN DEFAULT true,
 
     OUT seq BIGINT,
     OUT depth BIGINT,
@@ -83,7 +85,7 @@ BEGIN
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), $2, $3);
+    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), $2, max_depth, directed);
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -92,26 +94,26 @@ LANGUAGE plpgsql VOLATILE STRICT;
 -- COMMENTS
 
 
-COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, BIGINT, BIGINT)
+COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_depthFirstSearch(Single Vertex)
-- Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - From root vertex identifier
 - Optional parameters
     - max_depth := 9223372036854775807
+    - directed := true
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_depthFirstSearch.html
 ';
 
-COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, ANYARRAY, BIGINT)
+COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_depthFirstSearch(Multiple Vertices)
-- Undirected graph
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - From ARRAY[root vertices identifiers]
 - Optional parameters
     - max_depth := 9223372036854775807
+    - directed := true
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_depthFirstSearch.html
 ';

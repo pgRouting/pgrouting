@@ -53,6 +53,7 @@ void do_pgr_depthFirstSearch(
         size_t size_rootsArr,
 
         int64_t max_depth,
+        bool directed,
 
         pgr_mst_rt **return_tuples,
         size_t *return_count,
