@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-05-17 10:04-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -778,6 +778,16 @@ msgstr ""
 msgid "Description of the result (TODO Disussion: Euclidean & Matrix)"
 msgstr ""
 
+#: ../../build/doc/VRP-category.rst:304
+#: ../../build/doc/VRP-category.rst:6
+msgid "Todo"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:304
+#: ../../build/doc/VRP-category.rst:6
+msgid "fix when everything below is fixed"
+msgstr ""
+
 #: ../../build/doc/VRP-category.rst:318
 #: ../../build/doc/VRP-category.rst:354
 #: ../../build/doc/VRP-category.rst:20
@@ -1345,4 +1355,3 @@ msgstr ""
 #: ../../build/doc/VRP-category.rst:485
 msgid ":ref:`search`"
 msgstr ""
-
