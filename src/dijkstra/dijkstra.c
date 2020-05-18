@@ -154,6 +154,12 @@ process_combinations(
         size_t *result_count) {
     pgr_SPI_connect();
 
+    int64_t* start_vidsArr = NULL;
+    size_t size_start_vidsArr = 0;
+
+    int64_t* end_vidsArr = NULL;
+    size_t size_end_vidsArr = 0;
+
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
@@ -165,17 +171,20 @@ process_combinations(
     } else {
         pgr_get_edges_reversed(edges_sql, &edges, &total_edges);
     }
+    //end_vidsArr = (int64_t*)
+    //    pgr_get_bigIntArray(&size_end_vidsArr, starts);
+    //start_vidsArr = (int64_t*)
+    //    pgr_get_bigIntArray(&size_start_vidsArr, ends);
 
-    if (total_edges == 0 ) {
+
+    if (total_edges == 0) {
+        if (end_vidsArr) pfree(end_vidsArr);
+        if (start_vidsArr) pfree(start_vidsArr);
         pgr_SPI_finish();
         return;
     } else {
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
-        if(total_combinations == 0){
-            if (edges) pfree(edges);
-            pgr_SPI_finish();
-            return;
-        }
+
     }
 
     PGR_DBG("Starting timer");
@@ -183,12 +192,15 @@ process_combinations(
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-    do_pgr_combinations_dijkstra(
+    do_pgr_many_to_many_dijkstra(
             edges, total_edges,
-            combinations, total_combinations,
+            start_vidsArr, size_start_vidsArr,
+            end_vidsArr, size_end_vidsArr,
+
             directed,
             only_cost,
             normal,
+            3,
 
             result_tuples,
             result_count,
@@ -216,7 +228,8 @@ process_combinations(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
     if (edges) pfree(edges);
-    if (combinations) pfree(combinations);
+    if (start_vidsArr) pfree(start_vidsArr);
+    if (end_vidsArr) pfree(end_vidsArr);
     pgr_SPI_finish();
 }
 
