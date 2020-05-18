@@ -17,11 +17,11 @@ PGFLAGS=$*
 
 PGDATABASE="___cti___test___"
 
-dropdb "${PGFLAGS}" --if-exists "${PGDATABASE}"
-createdb "${PGFLAGS}" "${PGDATABASE}"
+dropdb --if-exists ${PGFLAGS} ${PGDATABASE}
+createdb ${PGFLAGS} ${PGDATABASE}
 
 
 cd tools/testers/
 psql "$PGFLAGS"  -f setup_db.sql -d "${PGDATABASE}"
-pg_prove --recurse --ext .sql "${PGFLAGS}"  -d "${PGDATABASE}" "../../pgtap/${DIR}"
-dropdb "${PGFLAGS}"  "${PGDATABASE}"
+pg_prove --recurse --ext .sql ${PGFLAGS}  -d ${PGDATABASE} ../../pgtap/${DIR}
+dropdb --if-exists ${PGFLAGS} ${PGDATABASE}
