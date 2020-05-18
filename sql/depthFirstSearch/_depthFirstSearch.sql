@@ -37,6 +37,7 @@ CREATE OR REPLACE FUNCTION _pgr_depthFirstSearch(
     edges_sql TEXT,
     root_vids ANYARRAY,
     max_depth BIGINT,
+    directed BOOLEAN,
 
     OUT seq BIGINT,
     OUT depth BIGINT,
@@ -53,6 +54,6 @@ LANGUAGE C VOLATILE STRICT;
 -- COMMENTS
 
 
-COMMENT ON FUNCTION _pgr_depthFirstSearch(TEXT, ANYARRAY, BIGINT)
+COMMENT ON FUNCTION _pgr_depthFirstSearch(TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgRouting internal function';
 

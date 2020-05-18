@@ -50,6 +50,7 @@ process(
         char* edges_sql,
         ArrayType *roots,
         int64_t max_depth,
+        bool directed,
 
         pgr_mst_rt **result_tuples,
         size_t *result_count) {
@@ -75,13 +76,14 @@ process(
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
-
+    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     do_pgr_depthFirstSearch(
             edges, total_edges,
             rootsArr, size_rootsArr,
 
             max_depth,
+            directed,
 
             result_tuples,
             result_count,
@@ -89,8 +91,8 @@ process(
             &notice_msg,
             &err_msg);
 
-
     time_msg("processing pgr_depthFirstSearch", start_t, clock());
+    PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
@@ -111,21 +113,37 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
+    /**********************************************************************/
     pgr_mst_rt *result_tuples = NULL;
     size_t result_count = 0;
+    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        /* Edge sql, tree roots, max_depth */
+        /**********************************************************************/
+        /*
+        pgr_depthFirstSearch(
+            edges_sql TEXT,
+            root_vids ANYARRAY,
+            max_depth BIGINT DEFAULT 9223372036854775807,
+            directed BOOLEAN DEFAULT true
+        );
+        */
+        /**********************************************************************/
+
+        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_INT64(2),
+                PG_GETARG_BOOL(3),
                 &result_tuples,
                 &result_count);
+
+        /**********************************************************************/
 
 
 #if PGSQL_VERSION > 95
@@ -155,6 +173,18 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
+
+        /**********************************************************************/
+        /*
+            OUT seq BIGINT,
+            OUT depth BIGINT,
+            OUT start_vid BIGINT,
+            OUT node BIGINT,
+            OUT edge BIGINT,
+            OUT cost FLOAT,
+            OUT agg_cost FLOAT
+        */
+        /**********************************************************************/
 
         size_t num  = 7;
         values = palloc(num * sizeof(Datum));
