@@ -48,10 +48,7 @@ do_pgr_depthFirstSearch(
         int64_t *rootsArr,
         size_t size_rootsArr,
 
-        char* fn_suffix,
-
         int64_t max_depth,
-        double distance,
 
         pgr_mst_rt **return_tuples,
         size_t *return_count,
@@ -70,7 +67,6 @@ do_pgr_depthFirstSearch(
         pgassert(*return_count == 0);
 
         std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
-        std::string suffix(fn_suffix);
 
         std::vector<pgr_mst_rt> results;
 
@@ -80,19 +76,7 @@ do_pgr_depthFirstSearch(
             pgrouting::UndirectedGraph undigraph(UNDIRECTED);
             undigraph.insert_min_edges_no_parallel(data_edges, total_edges);
             pgrouting::functions::Pgr_prim<pgrouting::UndirectedGraph> prim;
-            if (suffix == "") {
-                results = prim.prim(undigraph);
-            } else if (suffix == "BFS") {
-                results = prim.primBFS(undigraph, roots, max_depth);
-            } else if (suffix == "DFS") {
-                results = prim.primDFS(undigraph, roots, max_depth);
-            } else if (suffix == "DD") {
-                results = prim.primDD(undigraph, roots, distance);
-            } else {
-                err << "Unknown Prim function";
-                *err_msg = pgr_msg(err.str().c_str());
-                return;
-            }
+            results = prim.primDFS(undigraph, roots, max_depth);
         }
 
         auto count = results.size();

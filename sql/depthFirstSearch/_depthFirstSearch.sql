@@ -34,11 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION _pgr_depthFirstSearch(
-    TEXT,             -- Edge sql
-    ANYARRAY,         -- tree root for traversal
-    order_by TEXT,
+    edges_sql TEXT,
+    root_vids ANYARRAY,
     max_depth BIGINT,
-    distance FLOAT,
 
     OUT seq BIGINT,
     OUT depth BIGINT,
@@ -55,6 +53,6 @@ LANGUAGE C VOLATILE STRICT;
 -- COMMENTS
 
 
-COMMENT ON FUNCTION _pgr_depthFirstSearch(TEXT, ANYARRAY, TEXT, BIGINT, FLOAT)
+COMMENT ON FUNCTION _pgr_depthFirstSearch(TEXT, ANYARRAY, BIGINT)
 IS 'pgRouting internal function';
 

@@ -52,10 +52,7 @@ void do_pgr_depthFirstSearch(
         int64_t *rootsArr,
         size_t size_rootsArr,
 
-        char* fn_suffix,
-
         int64_t max_depth,
-        double distance,
 
         pgr_mst_rt **return_tuples,
         size_t *return_count,

@@ -49,9 +49,7 @@ void
 process(
         char* edges_sql,
         ArrayType *roots,
-        char * fn_suffix,
         int64_t max_depth,
-        double distance,
 
         pgr_mst_rt **result_tuples,
         size_t *result_count) {
@@ -61,7 +59,6 @@ process(
     char *notice_msg = NULL;
     char *err_msg = NULL;
 
-    char * fn_name = get_name(1, fn_suffix, &err_msg);
     if (err_msg) {
         pgr_global_report(log_msg, notice_msg, err_msg);
         return;
@@ -84,10 +81,7 @@ process(
             edges, total_edges,
             rootsArr, size_rootsArr,
 
-            fn_suffix,
-
             max_depth,
-            distance,
 
             result_tuples,
             result_count,
@@ -96,7 +90,7 @@ process(
             &err_msg);
 
 
-    time_msg(fn_name, start_t, clock());
+    time_msg("processing pgr_depthFirstSearch", start_t, clock());
 
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
@@ -125,13 +119,11 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        /* Edge sql, tree roots, fn_suffix, max_depth, distance */
+        /* Edge sql, tree roots, max_depth */
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
-                text_to_cstring(PG_GETARG_TEXT_P(2)),
-                PG_GETARG_INT64(3),
-                PG_GETARG_FLOAT8(4),
+                PG_GETARG_INT64(2),
                 &result_tuples,
                 &result_count);
 

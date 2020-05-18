@@ -29,8 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 -- SINGLE VERTEX
 CREATE OR REPLACE FUNCTION pgr_depthFirstSearch(
-    TEXT,   -- Edge sql
-    BIGINT, -- root vertex
+    TEXT,   -- edges_sql (required)
+    BIGINT, -- root_vid (required)
 
     max_depth BIGINT DEFAULT 9223372036854775807,
 
@@ -52,7 +52,7 @@ BEGIN
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', $3, -1);
+    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3);
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -60,8 +60,8 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 -- MULTIPLE VERTICES
 CREATE OR REPLACE FUNCTION pgr_depthFirstSearch(
-    TEXT,     -- Edge sql
-    ANYARRAY, -- root vertices
+    TEXT,     -- edges_sql (required)
+    ANYARRAY, -- root_vids (required)
 
     max_depth BIGINT DEFAULT 9223372036854775807,
 
@@ -83,7 +83,7 @@ BEGIN
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), $2, 'DFS', $3, -1);
+    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), $2, $3);
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
