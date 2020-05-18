@@ -1,4 +1,4 @@
-
+SET extra_float_digits=-3;
 CREATE TABLE four_edges (
     id BIGINT,
     source BIGINT,
@@ -26,7 +26,7 @@ SELECT * FROM pgr_trsp(
   718, 0,
   true, true, NULL);
 
- 
+
 SELECT * FROM pgr_trsp(
   $$SELECT
     id::int, source::int, target::int, cost::float, reverse_cost::float
@@ -41,7 +41,7 @@ SELECT * FROM pgr_trsp(
   (SELECT source::int  FROM four_edges WHERE id = 718),
   true, true, NULL);
 
- 
+
 SELECT * FROM pgr_trsp(
   $$SELECT
     id::int, source::int, target::int, cost::float, reverse_cost::float

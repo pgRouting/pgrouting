@@ -43,7 +43,12 @@ NOTICE:                      Ring geometries: 0
 --q3
 SELECT pgr_nodeNetwork('edge_table', 0.001);
 NOTICE:  PROCESSING:
-NOTICE:  pgr_nodeNetwork('edge_table', 0.001, 'id', 'the_geom', 'noded', '<NULL>',  f)
+NOTICE:  id: id
+NOTICE:  the_geom: the_geom
+NOTICE:  table_ending: noded
+NOTICE:  rows_where:
+NOTICE:  outall: f
+NOTICE:  pgr_nodeNetwork('edge_table', 0.001, 'id', 'the_geom', 'noded', '',  f)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Processing, please wait .....
 NOTICE:    Split Edges: 3

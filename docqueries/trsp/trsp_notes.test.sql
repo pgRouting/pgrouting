@@ -1,4 +1,6 @@
 ROLLBACK;
+SET extra_float_digits=-3;
+
 \set VERBOSITY terse
 \echo --place1
 SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path;
