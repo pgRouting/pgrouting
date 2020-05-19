@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: pgr_edge_t.h
+File: combinations_input.h
 
-Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky_vergara@hotmail.com
 
 ------
 
@@ -21,25 +21,30 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-/*! @file */
-
-#ifndef INCLUDE_C_TYPES_PGR_EDGE_T_H_
-#define INCLUDE_C_TYPES_PGR_EDGE_T_H_
+#ifndef INCLUDE_C_COMMON_COMBINATIONS_INPUT_H_
+#define INCLUDE_C_COMMON_COMBINATIONS_INPUT_H_
 #pragma once
 
-/* for int64_t */
-#ifdef __cplusplus
-#   include <cstdint>
-#else
-#   include <stdint.h>
-#endif
+/* for size-t */
+#include <stddef.h>
+#include "c_types/pgr_combination_t.h"
 
-typedef struct {
-    int64_t id;
-    int64_t source;
-    int64_t target;
-    double cost;
-    double reverse_cost;
-} pgr_edge_t;
 
-#endif  // INCLUDE_C_TYPES_PGR_COMBINATION_T_H_
+/*! @brief combinations_sql
+
+~~~~{.c}
+SELECT source, target
+FROM combinations_table;
+~~~~
+
+
+@param[in] combinations_sql
+@param[out] combinations
+@param[out] combinations_edges
+*/
+void pgr_get_combinations(
+        char *combinations_sql,
+        pgr_combination_t **combinations,
+        size_t *total_combinations);
+
+#endif  // INCLUDE_C_COMMON_COMBINATIONS_INPUT_H_
