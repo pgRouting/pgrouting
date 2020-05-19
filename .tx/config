@@ -252,6 +252,11 @@ file_filter = locale/<lang>/LC_MESSAGES/proposed.po
 source_file = locale/pot/proposed.pot
 source_lang = en
 
+[pgrouting.experimental-po--master]
+file_filter = locale/<lang>/LC_MESSAGES/experimental.po
+source_file = locale/pot/experimental.pot
+source_lang = en
+
 [pgrouting.pgrouting-installation-po--master]
 file_filter = locale/<lang>/LC_MESSAGES/pgRouting-installation.po
 source_file = locale/pot/pgRouting-installation.pot

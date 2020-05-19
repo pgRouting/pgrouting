@@ -308,7 +308,7 @@ sub process_single_test{
     my $res = shift;
     #each tests will use clean data
 
-    print "Processing test: $dir/$x";
+    print "Processing queries $dir/$x";
     my $t0 = [gettimeofday];
     #TIN = test_input_file
     open(TIN, "$dir/$x.test.sql") || do {

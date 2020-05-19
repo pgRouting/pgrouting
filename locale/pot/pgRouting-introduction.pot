@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-05-17 10:04-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,7 +90,7 @@ msgid "Individuals (in alphabetical order)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:51
-msgid "Aasheesh Tiwari, Aditya Pratap Singh, Cayetano Benavent, Gudesa Venkata Sai Akhil, Hang Wu, Maoguang Wang, Martha Vergara, Regina Obe, Rohith Reddy, Sourabh Garg, Virginia Vergara"
+msgid "Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Cayetano Benavent, Gudesa Venkata Sai Akhil, Hang Wu, Maoguang Wang, Martha Vergara, Regina Obe, Rohith Reddy, Sourabh Garg, Virginia Vergara"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:60
@@ -132,7 +132,7 @@ msgid "Contributors Past & Present:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:81
-msgid "Aasheesh Tiwari, Aditya Pratap Singh, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mukul Priya, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Sourabh Garg, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche, Vidhan Jain, Virginia Vergara"
+msgid "Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mukul Priya, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Sourabh Garg, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche, Vidhan Jain, Virginia Vergara"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:101
@@ -190,4 +190,3 @@ msgstr ""
 #: ../../build/doc/pgRouting-introduction.rst:118
 msgid "The Migration guide can be found at https://github.com/pgRouting/pgrouting/wiki/Migration-Guide."
 msgstr ""
-

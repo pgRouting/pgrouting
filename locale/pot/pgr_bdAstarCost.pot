@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-05-17 10:04-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -174,7 +174,7 @@ msgid "Example"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:75
-msgid "From vertex :math:`2` to vertex :math:`12` on a **directed** graph"
+msgid "From vertex :math:`2` to vertex :math:`3` on a **directed** graph"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:85
@@ -182,7 +182,7 @@ msgid "One to One"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:93
-msgid "From vertex :math:`2` to vertex :math:`12` on an **undirected** graph using heuristic :math:`2`"
+msgid "From vertex :math:`2` to vertex :math:`3` on an **directed** graph using heuristic :math:`2`"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:103
@@ -190,7 +190,7 @@ msgid "One to many"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:111
-msgid "From vertex `2` to vertices :math:`\\{3, 12\\}` on a **directed** graph using heuristic `2`"
+msgid "From vertex `2` to vertices :math:`\\{3, 11\\}` on a **directed** graph using heuristic `3` and factor :math:`3.5`"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:121
@@ -198,7 +198,7 @@ msgid "Many to One"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:129
-msgid "From vertices :math:`\\{7, 2\\}` to vertex :math:`12` on a **directed** graph using heuristic :math:`0`"
+msgid "From vertices :math:`\\{7, 2\\}` to vertex :math:`3` on a **undirected** graph using heuristic :math:`4`"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:139
@@ -206,7 +206,7 @@ msgid "Many to Many"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:147
-msgid "From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 12\\}` on a **directed** using heuristic :math:`2`"
+msgid "From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 11\\}` on a **directed** using heuristic :math:`5` and factor :math:`0.5`"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:154
@@ -597,4 +597,3 @@ msgstr ""
 #: ../../build/doc/pgr_bdAstarCost.rst:196
 msgid ":ref:`search`"
 msgstr ""
-

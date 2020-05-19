@@ -2,6 +2,8 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
+SET extra_float_digits=-3;
+SET
 CREATE TABLE four_edges (
     id BIGINT,
     source BIGINT,
@@ -28,7 +30,7 @@ SELECT * FROM pgr_trsp(
   719, 0,
   718, 0,
   true, true, NULL);
- seq |  id1  | id2 |    cost    
+ seq |  id1  | id2 |    cost
 -----+-------+-----+------------
    0 | 52163 | 717 | 977.000001
    1 | 52222 | 718 | 961.000001
@@ -48,7 +50,7 @@ SELECT * FROM pgr_trsp(
   (SELECT source::int  FROM four_edges WHERE id = 719),
   (SELECT source::int  FROM four_edges WHERE id = 718),
   true, true, NULL);
- seq |  id1  | id2 | cost 
+ seq |  id1  | id2 | cost
 -----+-------+-----+------
    0 | 52163 | 717 |  977
    1 | 52222 | 718 |  961
@@ -62,7 +64,7 @@ SELECT * FROM pgr_trsp(
   719, 0,
   718, 0,
   true, true, NULL);
- seq |  id1  | id2 |    cost    
+ seq |  id1  | id2 |    cost
 -----+-------+-----+------------
    0 | 52163 | 717 | 977.000001
    1 | 52222 | 718 | 961.000001
@@ -76,7 +78,7 @@ SELECT * FROM pgr_dijkstra(
   52163,
   52220,
   false);
- seq | path_seq | node  | edge |    cost    |  agg_cost   
+ seq | path_seq | node  | edge |    cost    |  agg_cost
 -----+----------+-------+------+------------+-------------
    1 |        1 | 52163 |  717 | 977.000001 |           0
    2 |        2 | 52222 |  718 | 961.000001 |  977.000001
@@ -90,7 +92,7 @@ SELECT * FROM pgr_dijkstra(
   (SELECT source  FROM four_edges WHERE id = 719),
   (SELECT source  FROM four_edges WHERE id = 718),
   true);
- seq | path_seq | node  | edge |    cost    |  agg_cost   
+ seq | path_seq | node  | edge |    cost    |  agg_cost
 -----+----------+-------+------+------------+-------------
    1 |        1 | 52163 |  717 | 977.000001 |           0
    2 |        2 | 52222 |  718 | 961.000001 |  977.000001
@@ -105,12 +107,12 @@ SELECT * FROM pgr_trsp(
   719, 0.5,
   718, 0,
   true, true, NULL);
- seq |  id1  | id2 |       cost       
------+-------+-----+------------------
-   0 |    -1 | 719 | 89.7000005000001
-   1 | 52163 | 717 |       977.000001
-   2 | 52222 | 718 |       961.000001
-   3 | 52220 |  -1 |                0
+ seq |  id1  | id2 |    cost
+-----+-------+-----+------------
+   0 |    -1 | 719 | 89.7000005
+   1 | 52163 | 717 | 977.000001
+   2 | 52222 | 718 | 961.000001
+   3 | 52220 |  -1 |          0
 (4 rows)
 
 SELECT * FROM pgr_withPoints(
@@ -122,12 +124,12 @@ SELECT * FROM pgr_withPoints(
   /* selecting source because we have 0 */
   (SELECT source  FROM four_edges WHERE id = 718),
   true);
- seq | path_seq | node  | edge |       cost       |     agg_cost     
------+----------+-------+------+------------------+------------------
-   1 |        1 |    -1 |  719 | 89.7000005000001 |                0
-   2 |        2 | 52163 |  717 |       977.000001 | 89.7000005000001
-   3 |        3 | 52222 |  718 |       961.000001 |     1066.7000015
-   4 |        4 | 52220 |   -1 |                0 |     2027.7000025
+ seq | path_seq | node  | edge |    cost    |   agg_cost
+-----+----------+-------+------+------------+--------------
+   1 |        1 |    -1 |  719 | 89.7000005 |            0
+   2 |        2 | 52163 |  717 | 977.000001 |   89.7000005
+   3 |        3 | 52222 |  718 | 961.000001 | 1066.7000015
+   4 |        4 | 52220 |   -1 |          0 | 2027.7000025
 (4 rows)
 
 /* TODO should give result more or less the same as above*/
@@ -140,7 +142,7 @@ SELECT * FROM pgr_withPoints(
   (SELECT 718, 0)$$,
   -1, -2,
   true);
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
@@ -151,7 +153,7 @@ SELECT * FROM pgr_trsp(
   719, 0,
   718, 0.5,
   true, true, NULL);
- seq |  id1  | id2 |    cost     
+ seq |  id1  | id2 |    cost
 -----+-------+-----+-------------
    0 | 52163 | 717 |  977.000001
    1 | 52222 | 718 | 480.5000005
@@ -167,7 +169,7 @@ SELECT * FROM pgr_withPoints(
   (SELECT source  FROM four_edges WHERE id = 719),
   -1,
   true);
- seq | path_seq | node  | edge |    cost     |   agg_cost   
+ seq | path_seq | node  | edge |    cost     |   agg_cost
 -----+----------+-------+------+-------------+--------------
    1 |        1 | 52163 |  717 |  977.000001 |            0
    2 |        2 | 52222 |  718 | 480.5000005 |   977.000001
@@ -184,7 +186,7 @@ SELECT * FROM pgr_withPoints(
   (SELECT 718, 0.5)$$,
   -1, -2,
   true);
- seq | path_seq | node | edge | cost | agg_cost 
+ seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
@@ -195,12 +197,12 @@ SELECT * FROM pgr_trsp(
   719, 0.5,
   718, 0.5,
   true, true, NULL);
- seq |  id1  | id2 |       cost       
------+-------+-----+------------------
-   0 |    -1 | 719 | 89.7000005000001
-   1 | 52163 | 717 |       977.000001
-   2 | 52222 | 718 |      480.5000005
-   3 |    -2 |  -1 |                0
+ seq |  id1  | id2 |    cost
+-----+-------+-----+-------------
+   0 |    -1 | 719 |  89.7000005
+   1 | 52163 | 717 |  977.000001
+   2 | 52222 | 718 | 480.5000005
+   3 |    -2 |  -1 |           0
 (4 rows)
 
 SELECT * FROM pgr_withPoints(
@@ -212,7 +214,7 @@ SELECT * FROM pgr_withPoints(
   (SELECT 718, 0.5)$$,
   -1, -2,
   true);
- seq | path_seq | node  | edge |    cost     |   agg_cost   
+ seq | path_seq | node  | edge |    cost     |   agg_cost
 -----+----------+-------+------+-------------+--------------
    1 |        1 |    -1 |  718 | 480.5000005 |            0
    2 |        2 | 52222 |  717 |  977.000001 |  480.5000005

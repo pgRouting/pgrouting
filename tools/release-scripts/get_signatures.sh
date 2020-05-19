@@ -11,8 +11,8 @@ if [  "$1" = "--help" ] ; then
     exit 0
 fi
 
-VERSION=$(grep 'project(PGROUTING VERSION' CMakeLists.txt)
-VERSION=$(echo "${VERSION:26}")
+VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
+
 DB_NAME="____sigs_routing____"
 DIR="sql/sigs"
 

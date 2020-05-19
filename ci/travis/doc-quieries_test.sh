@@ -70,7 +70,12 @@ then
     ERROR=1
 fi
 
-./tools/testers/doc_queries_generator.pl -pgver "${POSTGRESQL_VERSION}" -pguser "${PGUSER}" -documentation
+TESTDIRS="version"
+for d in ${TESTDIRS}
+do
+    ./tools/testers/doc_queries_generator.pl -pgver "${POSTGRESQL_VERSION}" -pguser "${PGUSER}" -documentation -alg "${d}"
+done
+
 ./tools/testers/doc_queries_generator.pl -pgver "${POSTGRESQL_VERSION}" -pguser "${PGUSER}"
 
 if [ "$?" -ne 0 ]
