@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 #include <limits>
+#include <c_types/pgr_combination_t.h>
 
 #include "dijkstra/pgr_dijkstra.hpp"
 
@@ -71,6 +72,35 @@ pgr_dijkstra(
         }
     }
     return paths;
+}
+
+
+bool cmp_combination(const pgr_combination_t &a, const pgr_combination_t &b){
+    return (a.source < b.source);
+}
+
+template < class G >
+std::deque< Path >
+pgr_dijkstra(
+        G &graph,
+        std::vector < pgr_combination_t > combinations,
+        bool only_cost,
+        bool normal) {
+    std::sort(combinations.begin(), combinations.end(), cmp_combination );
+
+    pgrouting::Pgr_dijkstra< G > fn_dijkstra;
+    auto paths = fn_dijkstra.dijkstra(
+            graph,
+            combinations,
+            only_cost);
+
+    if (!normal) {
+        for (auto &path : paths) {
+            path.reverse();
+        }
+    }
+    return paths;
+
 }
 
 
@@ -181,3 +211,107 @@ do_pgr_many_to_many_dijkstra(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
+
+
+// CREATE OR REPLACE FUNCTION pgr_dijkstra(
+// sql text,
+// combinations sql text,
+// directed boolean default true,
+void
+do_pgr_parallel_dijkstra(
+        pgr_edge_t  *data_edges,
+        size_t total_edges,
+        pgr_combination_t *combinations,
+        size_t total_combinations,
+        bool directed,
+        bool only_cost,
+        bool normal,
+
+        General_path_element_t **return_tuples,
+        size_t *return_count,
+        char ** log_msg,
+        char ** notice_msg,
+        char ** err_msg) {
+    std::ostringstream log;
+    std::ostringstream err;
+    std::ostringstream notice;
+
+    try {
+        pgassert(total_edges != 0);
+        pgassert(total_combinations != 0);
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
+
+        graphType gType = directed? DIRECTED: UNDIRECTED;
+
+
+        log << "Inserting vertices into a c++ vector structure";
+        std::vector<pgr_combination_t>
+                combinations_vector(combinations, combinations + total_combinations);
+
+        std::deque< Path >paths;
+        if (directed) {
+            log << "\nWorking with directed Graph";
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(data_edges, total_edges);
+            paths = pgr_dijkstra(
+                    digraph,
+                    combinations_vector,
+                    only_cost, normal);
+        } else {
+            log << "\nWorking with Undirected Graph";
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(data_edges, total_edges);
+            paths = pgr_dijkstra(
+                    undigraph,
+                    combinations_vector,
+                    only_cost, normal);
+        }
+
+        size_t count(0);
+        count = count_tuples(paths);
+
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            notice <<
+                   "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
+            return;
+        }
+
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        log << "\nConverting a set of paths into the tuples";
+        (*return_count) = (collapse_paths(return_tuples, paths));
+
+        *log_msg = log.str().empty()?
+                   *log_msg :
+                   pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+                      *notice_msg :
+                      pgr_msg(notice.str().c_str());
+    } catch (AssertFailedException &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch(...) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    }
+}
+
+
