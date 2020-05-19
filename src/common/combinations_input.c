@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "c_common/edges_input.h"
+#include "c_common/combinations_input.h"
 
 #include <math.h>
 #include <float.h>
@@ -35,39 +35,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/column_info_t.h"
-
+#include "c_types/pgr_combination_t.h"
 #include "c_common/debug_macro.h"
 #include "c_common/get_check_data.h"
 #include "c_common/time_msg.h"
 
-static
-void fetch_basic_edge(
-    HeapTuple *tuple,
-    TupleDesc *tupdesc,
-    Column_info_t info[5],
-    int64_t *default_id,
-    pgr_basic_edge_t *edge,
-    size_t *valid_edges) {
-    if (column_found(info[0].colNumber)) {
-        edge->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    } else {
-        edge->id = *default_id;
-        ++(*default_id);
-    }
-
-    edge->source = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
-    edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
-    edge->going = pgr_SPI_getFloat8(tuple, tupdesc, info[3]) > 0 ?
-        true : false;
-    edge->coming = (column_found(info[4].colNumber)
-            && pgr_SPI_getFloat8(tuple, tupdesc, info[4]) > 0) ?
-        true : false;
-
-    (*valid_edges)++;
-}
 
 static
-void fetch_edge(
+void fetch_combination(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[2],
@@ -76,7 +51,7 @@ void fetch_edge(
     combination->source = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     combination->target = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
 
-    *valid_edges = *valid_edges + 1;
+    *valid_combinations = *valid_combinations + 1;
 }
 
 
@@ -85,14 +60,14 @@ static
 void
 get_combinations_2_columns(
         char *sql,
-        pgr_combinations_t **combinations,
+        pgr_combination_t **combinations,
         size_t *totalTuples) {
     clock_t start_t = clock();
 
     const int tuple_limit = 1000000;
 
     size_t total_tuples;
-    size_t valid_edges;
+    size_t valid_combinations;
 
     Column_info_t info[2];
 
@@ -116,8 +91,6 @@ get_combinations_2_columns(
     bool moredata = true;
     (*totalTuples) = total_tuples = valid_combinations = 0;
 
-
-    int64_t default_id = 0;
     while (moredata == true) {
         SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
