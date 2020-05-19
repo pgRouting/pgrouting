@@ -5,22 +5,22 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-05-17 10:04-0500\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019\n"
+"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.5.3\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -197,8 +197,8 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:75
-msgid "From vertex :math:`2` to vertex :math:`12` on a **directed** graph"
-msgstr "De vértice :math:`2` a vértice :math:`12` en un grafo**dirigido**"
+msgid "From vertex :math:`2` to vertex :math:`3` on a **directed** graph"
+msgstr "Del vértice :math:`2` al :`3` en un grafo **dirigido** "
 
 #: ../../build/doc/pgr_bdAstarCost.rst:85
 msgid "One to One"
@@ -206,11 +206,11 @@ msgstr "Uno a Uno"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:93
 msgid ""
-"From vertex :math:`2` to vertex :math:`12` on an **undirected** graph using "
+"From vertex :math:`2` to vertex :math:`3` on an **directed** graph using "
 "heuristic :math:`2`"
 msgstr ""
-"De vértice :math:`2` al vértice :math:`12` en un grafo **no dirigido** "
-"usando la heurística :math:`2`"
+"Del vértice :math:`2` al vértice :math:`3` en un grafo **dirigido** usando "
+"la heurística :math:`2`"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:103
 msgid "One to many"
@@ -218,11 +218,11 @@ msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:111
 msgid ""
-"From vertex `2` to vertices :math:`\\{3, 12\\}` on a **directed** graph "
-"using heuristic `2`"
+"From vertex `2` to vertices :math:`\\{3, 11\\}` on a **directed** graph "
+"using heuristic `3` and factor :math:`3.5`"
 msgstr ""
-"Del vértice `2` a los vértices :math:`\\{3, 12\\}` en un grafo **dirigido** "
-"usando la heurística `2`"
+"Del vértice :math:`2` a los vértices :math:`\\{3, 11\\}` en un grafo "
+"**dirigido** usando la heurística  :math:`3` y el factor :math:`3.5`"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:121
 msgid "Many to One"
@@ -230,11 +230,11 @@ msgstr "Muchos a Uno"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:129
 msgid ""
-"From vertices :math:`\\{7, 2\\}` to vertex :math:`12` on a **directed** "
-"graph using heuristic :math:`0`"
+"From vertices :math:`\\{7, 2\\}` to vertex :math:`3` on a **undirected** "
+"graph using heuristic :math:`4`"
 msgstr ""
-"De los vértices :math:`\\{7, 2\\}` al vértice :math:`12` en un grafo "
-"**dirigido** usando la heurística  :math:`0`"
+"De los vértices :math:`\\{2, 7\\}` al vértice :math:`3` en un grafo **no "
+"dirigido** usando la heurística  :math:`4`"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:139
 msgid "Many to Many"
@@ -242,11 +242,11 @@ msgstr "Muchos a Muchos"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:147
 msgid ""
-"From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 12\\}` on a "
-"**directed** using heuristic :math:`2`"
+"From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 11\\}` on a "
+"**directed** using heuristic :math:`5` and factor :math:`0.5`"
 msgstr ""
-"De los vértices :math:`\\{7, 2\\}` ta los vértices :math:`\\{3, 12\\}` en un"
-" grafo **dirigido** usando la  heurística :math:`2`"
+"Del vértice :math:`2` a los vértices :math:`\\{3, 11\\}` en un grafo "
+"**dirigido** usando la heurística  :math:`5` y el factor :math:`0.5`"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:154
 msgid "Parameters"
@@ -642,3 +642,34 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_bdAstarCost.rst:196
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "From vertex :math:`2` to vertex :math:`12` on a **directed** graph"
+#~ msgstr "De vértice :math:`2` a vértice :math:`12` en un grafo**dirigido**"
+
+#~ msgid ""
+#~ "From vertex :math:`2` to vertex :math:`12` on an **undirected** graph using "
+#~ "heuristic :math:`2`"
+#~ msgstr ""
+#~ "De vértice :math:`2` al vértice :math:`12` en un grafo **no dirigido** "
+#~ "usando la heurística :math:`2`"
+
+#~ msgid ""
+#~ "From vertex `2` to vertices :math:`\\{3, 12\\}` on a **directed** graph "
+#~ "using heuristic `2`"
+#~ msgstr ""
+#~ "Del vértice `2` a los vértices :math:`\\{3, 12\\}` en un grafo **dirigido** "
+#~ "usando la heurística `2`"
+
+#~ msgid ""
+#~ "From vertices :math:`\\{7, 2\\}` to vertex :math:`12` on a **directed** "
+#~ "graph using heuristic :math:`0`"
+#~ msgstr ""
+#~ "De los vértices :math:`\\{7, 2\\}` al vértice :math:`12` en un grafo "
+#~ "**dirigido** usando la heurística  :math:`0`"
+
+#~ msgid ""
+#~ "From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 12\\}` on a "
+#~ "**directed** using heuristic :math:`2`"
+#~ msgstr ""
+#~ "De los vértices :math:`\\{7, 2\\}` ta los vértices :math:`\\{3, 12\\}` en un"
+#~ " grafo **dirigido** usando la  heurística :math:`2`"
