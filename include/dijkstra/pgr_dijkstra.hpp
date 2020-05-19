@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
+#include "c_types/pgr_combination_t.h"
 
 #if BOOST_VERSION_OK
 #include <boost/graph/dijkstra_shortest_paths.hpp>
@@ -298,6 +299,47 @@ class Pgr_dijkstra {
                  });
          return paths;
      }
+
+    // preparation for parallel arrays
+    std::deque<Path> dijkstra(
+            G &graph,
+            const std::vector< pgr_combination_t > &combinations,
+            bool only_cost,
+            size_t n_goals = std::numeric_limits<size_t>::max()) {
+        // a call to 1 to many is faster for each of the sources
+        std::deque<Path> paths;
+
+        // group targets per distinct source
+        std::map<int64_t , std::vector<int64_t> > vertex_map;
+        for (const pgr_combination_t &comb : combinations){
+            std::map< int64_t , std::vector<int64_t> >::iterator it= vertex_map.find(comb.source);
+            if (it != vertex_map.end()) {
+                it->second.push_back(comb.target);
+            } else {
+                std::vector<int64_t > targets{comb.target};
+                vertex_map[comb.source] = targets;
+            }
+        }
+
+        for (const auto &start_ends : vertex_map) {
+            auto r_paths = dijkstra(
+                    graph,
+                    start_ends.first, start_ends.second,
+                    only_cost, n_goals);
+            paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
+        }
+
+        std::sort(paths.begin(), paths.end(),
+                  [](const Path &e1, const Path &e2)->bool {
+                      return e1.end_id() < e2.end_id();
+                  });
+        std::stable_sort(paths.begin(), paths.end(),
+                         [](const Path &e1, const Path &e2)->bool {
+                             return e1.start_id() < e2.start_id();
+                         });
+
+        return paths;
+    }
 
      //@}
 
