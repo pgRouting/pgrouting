@@ -1,6 +1,11 @@
 /*PGR-GNU*****************************************************************
 File: depthFirstSearch.sql
 
+Generated with Template by:
+Copyright (c) 2020 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
 Copyright (c) 2020 Ashish Kumar
 Mail: ashishkr23438@gmail.com
 

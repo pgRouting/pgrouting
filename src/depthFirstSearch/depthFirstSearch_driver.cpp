@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: prim_driver.cpp
+File: depthFirstSearch_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2020 pgRouting developers

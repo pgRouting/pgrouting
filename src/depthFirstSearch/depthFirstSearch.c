@@ -33,11 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
+
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "c_types/pgr_mst_rt.h"
 
-#include "drivers/spanningTree/mst_common.h"
 #include "drivers/depthFirstSearch/depthFirstSearch_driver.h"
 
 PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS);
@@ -56,28 +55,27 @@ process(
         size_t *result_count) {
     pgr_SPI_connect();
 
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
-
-    if (err_msg) {
-        pgr_global_report(log_msg, notice_msg, err_msg);
-        return;
-    }
-
+    PGR_DBG("Initializing arrays");
     size_t size_rootsArr = 0;
-    int64_t* rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
+    int64_t* rootsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_rootsArr, roots);
+    PGR_DBG("rootsArr size %ld", size_rootsArr);
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
+    PGR_DBG("Loading the edges");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
+    PGR_DBG("Total edges in query %ld", total_edges);
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
+    char *log_msg = NULL;
+    char *notice_msg = NULL;
+    char *err_msg = NULL;
     do_pgr_depthFirstSearch(
             edges, total_edges,
             rootsArr, size_rootsArr,
@@ -97,6 +95,7 @@ process(
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
     }
+
     pgr_global_report(log_msg, notice_msg, err_msg);
 
     if (edges) pfree(edges);
@@ -210,6 +209,7 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
+        PGR_DBG("Returning done");
         SRF_RETURN_DONE(funcctx);
     }
 }
