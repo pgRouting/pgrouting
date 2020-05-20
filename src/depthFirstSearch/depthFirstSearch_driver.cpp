@@ -67,6 +67,7 @@ do_pgr_depthFirstSearch(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+        pgassert(total_edges != 0);
 
         std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
 
