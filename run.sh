@@ -1,4 +1,5 @@
 cd build
+rm -rf build/*
 cmake ..
-make -j 4
+make
 sudo make install
