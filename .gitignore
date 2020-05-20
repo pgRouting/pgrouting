@@ -8,5 +8,5 @@ src/version/_version.h
 .vagrant
 .directory
 notUsed
-*.swp
+*.swp  
 run.sh
