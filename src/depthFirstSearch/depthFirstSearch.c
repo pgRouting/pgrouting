@@ -71,6 +71,12 @@ process(
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total edges in query %ld", total_edges);
 
+    if (total_edges == 0) {
+        if (rootsArr) pfree(rootsArr);
+        pgr_SPI_finish();
+        return;
+    }
+
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;
