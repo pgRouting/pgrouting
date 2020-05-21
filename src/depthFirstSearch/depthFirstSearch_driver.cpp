@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "spanningTree/details.hpp"
 
 
-// TODO(krashish8): Use the directed parameter below.
+// TODO(krashish8): Use the data_edges, max_depth and directed parameter below.
 void
 do_pgr_depthFirstSearch(
         pgr_edge_t  *data_edges,

@@ -20,7 +20,8 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-    -- primDFS
+    PERFORM todo_start('Modify the no crash test');
+    -- depthFirstSearch
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
     '5'
@@ -30,15 +31,15 @@ BEGIN
     '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     params[1] := '$$edges$$';
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     subs[2] := 'NULL::INTEGER';
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
-    -- primDFS with depth
+    -- depthFirstSearch with depth
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
     '5',
@@ -50,15 +51,15 @@ BEGIN
     'NULL::INTEGER'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     params[1] := '$$edges$$';
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     subs[2] := 'NULL::BIGINT';
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
-    -- primDFS Multiple vertices
+    -- depthFirstSearch Multiple vertices
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
     'ARRAY[5,3]'
@@ -68,15 +69,15 @@ BEGIN
     '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     params[1] := '$$edges$$';
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     subs[2] := 'NULL::BIGINT';
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
-    -- primDFS with depth Multiple vertices
+    -- depthFirstSearch with depth Multiple vertices
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
     'ARRAY[5,3]',
@@ -88,14 +89,14 @@ BEGIN
     'NULL::INTEGER'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     params[1] := '$$edges$$';
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     subs[2] := 'NULL::BIGINT[]';
-    RETURN query SELECT * FROM no_crash_test('pgr_primDFS', params, subs);
-
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
+    PERFORM todo_end();
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
