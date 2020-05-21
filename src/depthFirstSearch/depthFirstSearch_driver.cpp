@@ -73,21 +73,20 @@ do_pgr_depthFirstSearch(
 
         std::vector<pgr_mst_rt> results;
 
-        if (total_edges == 0) {
-            results = pgrouting::details::get_no_edge_graph_result(roots);
-        } else {
-            pgrouting::UndirectedGraph undigraph(UNDIRECTED);
-            undigraph.insert_min_edges_no_parallel(data_edges, total_edges);
-            pgrouting::functions::Pgr_prim<pgrouting::UndirectedGraph> prim;
-            results = prim.primDFS(undigraph, roots, max_depth);
-        }
+#if 0
+        pgrouting::UndirectedGraph undigraph(UNDIRECTED);
+        undigraph.insert_min_edges_no_parallel(data_edges, total_edges);
+        pgrouting::functions::Pgr_prim<pgrouting::UndirectedGraph> prim;
+        results = prim.primDFS(undigraph, roots, max_depth);
+#endif
 
         auto count = results.size();
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice << "No spanning tree found";
+            notice << "No traversal found";
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
