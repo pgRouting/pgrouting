@@ -193,7 +193,7 @@ struct ring_type<multi_polygon_tag, MultiPolygon>
     and zero or more interior rings (holes).
     This metafunction retrieves the type of the rings.
     Exterior ring and each of the interior rings all have the same ring_type.
-\tparam Geometry A type fullfilling the Ring, Polygon or MultiPolygon concept.
+\tparam Geometry A type fulfilling the Ring, Polygon or MultiPolygon concept.
 \ingroup core
 
 \qbk{[include reference/core/ring_type.qbk]}

@@ -202,7 +202,7 @@ struct polygon_to_polygon
         per_ring::apply(geometry::exterior_ring(source),
             geometry::exterior_ring(destination));
 
-        // Container should be resizeable
+        // Container should be resizable
         traits::resize
             <
                 typename boost::remove_reference

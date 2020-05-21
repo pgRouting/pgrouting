@@ -204,7 +204,7 @@ private:
 // The algorithm proceeds for performing a sweep: the left endpoints
 // are inserted into a min-priority queue with the priority being the
 // value of the endpoint. The sweep algorithm maintains an "overlap
-// counter" that counts the number of overlaping intervals at any
+// counter" that counts the number of overlapping intervals at any
 // specific sweep-time value.
 // There are two types of events encountered during the sweep:
 // (a) a start event: the left endpoint of an interval is found.

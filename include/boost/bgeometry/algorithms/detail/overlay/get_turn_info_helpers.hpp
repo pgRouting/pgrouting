@@ -338,7 +338,7 @@ private:
     {
         typedef model::referring_segment<Point const> seg;
 
-        // no need to calcualte direction info
+        // no need to calculate direction info
         typedef policies::relate::segments_intersection_points
                 <
                     intersection_point_type

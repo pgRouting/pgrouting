@@ -439,7 +439,7 @@ struct get_turn_info_linear_areal
             if ( qk_q1 < 0 ) // Q turning R
             {
                 // spike on the edge point
-                // if it's already known that the spike is going out this musn't be checked
+                // if it's already known that the spike is going out this mustn't be checked
                 if ( ! going_out
                   && equals::equals_point_point(inters.rpj(), inters.rqj()) )
                 {
@@ -451,7 +451,7 @@ struct get_turn_info_linear_areal
             else if ( qk_q1 > 0 ) // Q turning L
             {
                 // spike on the edge point
-                // if it's already known that the spike is going in this musn't be checked
+                // if it's already known that the spike is going in this mustn't be checked
                 if ( ! going_in
                   && equals::equals_point_point(inters.rpj(), inters.rqj()) )
                 {

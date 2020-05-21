@@ -167,7 +167,7 @@ struct transform_polygon
             return false;
         }
 
-        // Note: here a resizeable container is assumed.
+        // Note: here a resizable container is assumed.
         traits::resize
             <
                 typename boost::remove_reference

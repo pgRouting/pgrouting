@@ -26,7 +26,7 @@ namespace boost { namespace geometry { namespace index { namespace detail {
 //
 //
 //    BOOST_MPL_ASSERT_MSG((!::boost::is_unsigned<type>::value),
-//        THIS_TYPE_SHOULDNT_BE_UNSIGNED, (type));
+//        THIS_TYPE_SHOULDN'T_BE_UNSIGNED, (type));
 //};
 
 namespace dispatch {

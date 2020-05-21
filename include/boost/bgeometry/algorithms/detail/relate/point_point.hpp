@@ -237,7 +237,7 @@ struct multipoint_multipoint
         if ( found_inside ) // some point of MP2 is equal to some of MP1
         {
 // TODO: if I/I is set for one MPt, this won't be changed when the other one in analysed
-//       so if e.g. only I/I must be analysed we musn't check the other MPt
+//       so if e.g. only I/I must be analysed we mustn't check the other MPt
 
             relate::set<interior, interior, '0', Transpose>(result);
 
@@ -252,7 +252,7 @@ struct multipoint_multipoint
             relate::set<exterior, interior, '0', Transpose>(result);
         }
 
-        // if no point is intersecting the other MPt then we musn't analyse the reversed case
+        // if no point is intersecting the other MPt then we mustn't analyse the reversed case
         return ! found_inside;
     }
 };

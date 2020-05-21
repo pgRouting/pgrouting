@@ -76,7 +76,7 @@ public:
 
 // Commented out for now in order to support Boost.Assign
 // Without this assignment operator first the object should be created
-//   from initializer list, then it shoudl be moved.
+//   from initializer list, then it should be moved.
 //// Without this workaround in MSVC the assignment operator is ambiguous
 //#ifndef BOOST_MSVC
 //    /// \assignment_initializer_list{multi_polygon}

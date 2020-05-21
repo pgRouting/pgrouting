@@ -52,7 +52,7 @@ namespace detail { namespace overlay {
 // <----|
 
 // |------->         2   0   0   1  -1   F   and        i/i x/u
-//     |------->     2   0   0  -1   1   F   symetric   i/i u/x
+//     |------->     2   0   0  -1   1   F   symmetric   i/i u/x
 // |------->
 //
 //     |------->     2   0   0  -1  -1   T              i/u u/i
@@ -71,7 +71,7 @@ namespace detail { namespace overlay {
 // <-----|
 //
 //       |----->     1  -1   0  -1   0   F   and        u/x
-// |----->           1   0  -1   0  -1   F   symetric   x/u
+// |----->           1   0  -1   0  -1   F   symmetric   x/u
 //       |----->
 
 // D0 or D1 != 0
@@ -79,7 +79,7 @@ namespace detail { namespace overlay {
 //          ^
 //          |
 //          +        1  -1   1  -1   1   F   and        u/x  (P is vertical)
-// |-------->        1   1  -1   1  -1   F   symetric   x/u  (P is horizontal)
+// |-------->        1   1  -1   1  -1   F   symmetric   x/u  (P is horizontal)
 // ^
 // |
 // +

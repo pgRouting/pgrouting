@@ -132,7 +132,7 @@ struct interior_type<polygon_tag, Polygon>
     (std::vector, std::deque, boost::array) with
     Boost.Range support. This metafunction defines the type
     of the container.
-\tparam Geometry A type fullfilling the Polygon or MultiPolygon concept.
+\tparam Geometry A type fulfilling the Polygon or MultiPolygon concept.
 \ingroup core
 
 \qbk{[include reference/core/interior_type.qbk]}

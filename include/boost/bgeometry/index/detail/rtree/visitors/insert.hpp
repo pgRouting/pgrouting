@@ -57,7 +57,7 @@ public:
         content_type smallest_content_diff = (std::numeric_limits<content_type>::max)();
         content_type smallest_content = (std::numeric_limits<content_type>::max)();
 
-        // caculate areas and areas of all nodes' boxes
+        // calculate areas and areas of all nodes' boxes
         for ( size_t i = 0 ; i < children_count ; ++i )
         {
             typedef typename children_type::value_type child_type;

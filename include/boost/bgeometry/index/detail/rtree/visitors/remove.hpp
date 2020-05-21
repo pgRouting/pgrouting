@@ -90,7 +90,7 @@ public:
             typedef typename elements_type::iterator element_iterator;
             elements_type & elements = rtree::elements(n);
 
-            // underflow occured - child node should be removed
+            // underflow occurred - child node should be removed
             if ( m_is_underflow )
             {
                 element_iterator underfl_el_it = elements.begin() + child_node_index;

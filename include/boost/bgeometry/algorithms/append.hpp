@@ -345,7 +345,7 @@ struct append<boost::variant<BOOST_VARIANT_ENUM_PARAMS(T)> >
 \brief Appends one or more points to a linestring, ring, polygon, multi-geometry
 \ingroup append
 \tparam Geometry \tparam_geometry
-\tparam RangeOrPoint Either a range or a point, fullfilling Boost.Range concept or Boost.Geometry Point Concept
+\tparam RangeOrPoint Either a range or a point, fulfilling Boost.Range concept or Boost.Geometry Point Concept
 \param geometry \param_geometry
 \param range_or_point The point or range to add
 \param ring_index The index of the ring in case of a polygon:

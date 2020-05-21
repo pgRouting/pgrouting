@@ -73,7 +73,7 @@ public:
     {
         for (;;)
         {
-            // if leaf is choosen, move to the next value in leaf
+            // if leaf is chosen, move to the next value in leaf
             if ( m_values )
             {
                 // there are more values in the current leaf
@@ -87,7 +87,7 @@ public:
                     m_values = 0;
                 }
             }
-            // if leaf isn't choosen, move to the next leaf
+            // if leaf isn't chosen, move to the next leaf
             else
             {
                 // return if there is no more nodes to traverse

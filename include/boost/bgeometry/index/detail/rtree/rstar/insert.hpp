@@ -235,7 +235,7 @@ struct level_insert_base
     {
         if ( !result_elements.empty() && !base::m_traverse_data.current_is_root() )
         {
-            // calulate node's new box
+            // calculate node's new box
             recalculate_aabb(n);
         }
     }

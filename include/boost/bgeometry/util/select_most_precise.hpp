@@ -111,7 +111,7 @@ struct select_floating_point<false, true, T1, T2>
         class promotes e.g. a (one) float to a double. This class selects a
         type from two types. It takes the most accurate, but does not promote
         afterwards.
-    \note This traits class is completely independant from GGL and might be a
+    \note This traits class is completely independent from GGL and might be a
         separate addition to Boost
     \note If the input is a non-fundamental type, it might be a calculation
         type such as a GMP-value or another high precision value. Therefore,

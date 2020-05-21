@@ -37,7 +37,7 @@ namespace boost { namespace geometry
     \tparam Direction direction to compare on: 1 for less (-> ascending order)
         and -1 for greater (-> descending order)
     \tparam Point point-type
-    \tparam CoordinateSystem coordinate sytem of point
+    \tparam CoordinateSystem coordinate system of point
     \tparam Dimension: the dimension to compare on
 */
 template

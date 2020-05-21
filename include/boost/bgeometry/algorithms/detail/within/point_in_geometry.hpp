@@ -97,7 +97,7 @@ namespace detail_dispatch { namespace within {
 
 // checks the relation between a point P and geometry G
 // returns 1 if P is in the interior of G
-// returns 0 if P is on the boundry of G
+// returns 0 if P is on the boundary of G
 // returns -1 if P is in the exterior of G
 
 template <typename Geometry,
@@ -356,7 +356,7 @@ struct point_in_geometry<Geometry, multi_polygon_tag>
 namespace detail { namespace within {
 
 // 1 - in the interior
-// 0 - in the boundry
+// 0 - in the boundary
 // -1 - in the exterior
 template <typename Point, typename Geometry, typename Strategy>
 inline int point_in_geometry(Point const& point, Geometry const& geometry, Strategy const& strategy)
