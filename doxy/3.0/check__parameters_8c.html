@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -140,15 +140,7 @@ Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="check__parameters_8c_source.html#l00034">34</a> of file <a class="el" href="check__parameters_8c_source.html">check_parameters.c</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="astar_8c_source.html#l00072">process()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        {</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span> (heuristic &gt; 5 || heuristic &lt; 0) {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        ereport(ERROR,</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                (errmsg(<span class="stringliteral">&quot;Unknown heuristic&quot;</span>),</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                 errhint(<span class="stringliteral">&quot;Valid values: 0~5&quot;</span>)));</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">if</span> (factor &lt;= 0) {</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        ereport(ERROR,</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                (errmsg(<span class="stringliteral">&quot;Factor value out of range&quot;</span>),</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                 errhint(<span class="stringliteral">&quot;Valid values: positive non zero&quot;</span>)));</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (epsilon &lt; 1) {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        ereport(ERROR,</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                (errmsg(<span class="stringliteral">&quot;Epsilon value out of range&quot;</span>),</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                 errhint(<span class="stringliteral">&quot;Valid values: 1 or greater than 1&quot;</span>)));</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div></div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="check__parameters_8c_a9b179d766a96381033bc243068a2b880_icgraph.png" border="0" usemap="#check__parameters_8c_a9b179d766a96381033bc243068a2b880_icgraph" alt=""/></div>
-<map name="check__parameters_8c_a9b179d766a96381033bc243068a2b880_icgraph" id="check__parameters_8c_a9b179d766a96381033bc243068a2b880_icgraph">
-<area shape="rect" id="node2" href="astar_8c.html#aaaf7184e9c115d16cd3d635bdaadf808" title="process" alt="" coords="183,5,251,32"/>
-</map>
-</div>
-
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        {</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span> (heuristic &gt; 5 || heuristic &lt; 0) {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        ereport(ERROR,</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                (errmsg(<span class="stringliteral">&quot;Unknown heuristic&quot;</span>),</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                 errhint(<span class="stringliteral">&quot;Valid values: 0~5&quot;</span>)));</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">if</span> (factor &lt;= 0) {</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        ereport(ERROR,</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                (errmsg(<span class="stringliteral">&quot;Factor value out of range&quot;</span>),</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                 errhint(<span class="stringliteral">&quot;Valid values: positive non zero&quot;</span>)));</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (epsilon &lt; 1) {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        ereport(ERROR,</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                (errmsg(<span class="stringliteral">&quot;Epsilon value out of range&quot;</span>),</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                 errhint(<span class="stringliteral">&quot;Valid values: 1 or greater than 1&quot;</span>)));</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
@@ -157,7 +149,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="check__parameters_8c.html">check_parameters.c</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:44 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:37 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

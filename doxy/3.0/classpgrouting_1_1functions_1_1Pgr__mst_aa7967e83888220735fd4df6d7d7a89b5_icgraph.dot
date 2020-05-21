@@ -1,9 +1,0 @@
-digraph "pgrouting::functions::Pgr_mst::dfs_ordering"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node77 [label="pgrouting::functions\l::Pgr_mst::dfs_ordering",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node77 -> Node78 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node78 [label="pgrouting::functions\l::Pgr_mst::dfs_order",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1functions_1_1Pgr__mst.html#aa34e0a020776107d2015e43dd47cac06"];
-}

@@ -12,14 +12,14 @@ digraph "pgr_contract.hpp"
   Node0 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 [label="contraction/pgr_contraction\lGraph.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__contractionGraph_8hpp.html"];
   Node6 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 -> Node34 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node34 [label="contraction/ch_graphs.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$ch__graphs_8hpp.html"];
+  Node34 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node34 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node0 -> Node35 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node35 [label="contraction/ch_graphs.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$ch__graphs_8hpp.html"];
+  Node35 [label="contraction/pgr_linearContraction.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__linearContraction_8hpp.html"];
   Node35 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node35 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 -> Node36 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node36 [label="contraction/pgr_linearContraction.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__linearContraction_8hpp.html"];
-  Node36 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 -> Node40 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node40 [label="contraction/pgr_deadEndContraction.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__deadEndContraction_8hpp.html"];
-  Node40 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 -> Node39 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node39 [label="contraction/pgr_deadEndContraction.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__deadEndContraction_8hpp.html"];
+  Node39 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

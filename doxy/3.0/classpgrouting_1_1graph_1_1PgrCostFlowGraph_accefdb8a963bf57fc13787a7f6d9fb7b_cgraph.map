@@ -1,4 +1,0 @@
-<map id="pgrouting::graph::PgrCostFlowGraph::PgrCostFlowGraph" name="pgrouting::graph::PgrCostFlowGraph::PgrCostFlowGraph">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a5b3d68bbd6e999a34a040b7027994b36" title="pgrouting::graph::PgrCost\lFlowGraph::AddVertices" alt="" coords="257,5,428,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a75bb666c3a7dbddbcf9e1b8fa9100b3b" title="pgrouting::graph::PgrCost\lFlowGraph::InsertEdges" alt="" coords="257,71,428,112"/>
-</map>

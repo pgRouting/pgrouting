@@ -1,7 +1,0 @@
-<map id="pgrouting::trsp::Pgr_trspHandler::explore" name="pgrouting::trsp::Pgr_trspHandler::explore">
-<area shape="rect" id="node2" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a08f8116952de134836abdc50a73e8d58" title="pgrouting::trsp::Pgr\l_trspHandler::add_to_que" alt="" coords="221,5,392,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#abd840dabd48d2aa120f26be3cc22f3dd" title="pgrouting::trsp::EdgeInfo\l::get_idx" alt="" coords="224,71,389,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a45d35952fc73fd46ae67c3c138f420a7" title="pgrouting::trsp::Pgr\l_trspHandler::get_tot_cost" alt="" coords="219,136,395,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#abced4bd03a174bb525b04e91fad18d21" title="pgrouting::trsp::Pgr\l_trspHandler::getRestrictionCost" alt="" coords="200,201,413,243"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1trsp_1_1EdgeInfo.html#adec99afe13f3695d327d6be7c67e4faf" title="pgrouting::trsp::EdgeInfo::idx" alt="" coords="211,267,402,294"/>
-</map>

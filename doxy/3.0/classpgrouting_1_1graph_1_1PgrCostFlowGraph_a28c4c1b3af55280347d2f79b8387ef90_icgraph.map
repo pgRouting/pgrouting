@@ -1,4 +1,0 @@
-<map id="pgrouting::graph::PgrCostFlowGraph::MinCostMaxFlow" name="pgrouting::graph::PgrCostFlowGraph::MinCostMaxFlow">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#afaac34c3c700a7eb36ba9bd27ea2ca59" title="pgrouting::graph::PgrDirected\lChPPGraph::DirectedChPP" alt="" coords="248,5,440,47"/>
-<area shape="rect" id="node3" href="$minCostMaxFlow__driver_8h.html#acd74794505635d387a4eebe8eb657bad" title="do_pgr_minCostMaxFlow" alt="" coords="259,71,429,98"/>
-</map>

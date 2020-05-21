@@ -1,9 +1,0 @@
-digraph "pgrouting::vrp::Vehicle::size"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node1137 [label="pgrouting::vrp::Vehicle\l::size",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node1137 -> Node1138 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1138 [label="pgrouting::vrp::Vehicle\l::invariant",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle.html#a29bf7e33dfb519d7abb8648c2d631d30",tooltip="Invariant The path must: "];
-}

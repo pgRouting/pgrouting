@@ -1,5 +1,0 @@
-<map id="pgrouting::functions::Pgr_mst::mst" name="pgrouting::functions::Pgr_mst::mst">
-<area shape="rect" id="node2" href="$classpgrouting_1_1functions_1_1Pgr__mst.html#a07e00ae343f44b13b1c57ee5f13f90d2" title="pgrouting::functions\l::Pgr_mst::bfs_ordering" alt="" coords="189,5,348,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1functions_1_1Pgr__kruskal.html#a560dbc7a6adab8a6ff4b39fb57e9f3d2" title="pgrouting::functions\l::Pgr_kruskal::kruskal" alt="" coords="194,71,343,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1functions_1_1Pgr__prim.html#a4059f778103f7fc52abfdc0023899eb8" title="pgrouting::functions\l::Pgr_prim::prim" alt="" coords="201,136,337,177"/>
-</map>

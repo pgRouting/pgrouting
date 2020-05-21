@@ -2,9 +2,9 @@ digraph "pgr_bidirectional.hpp"
 {
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node38 [label="pgr_bidirectional.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node38 -> Node39 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node39 [label="pgr_bdAstar.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__bdAstar_8hpp.html"];
-  Node38 -> Node41 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node41 [label="pgr_bdDijkstra.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__bdDijkstra_8hpp.html"];
+  Node37 [label="pgr_bidirectional.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node37 -> Node38 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node38 [label="pgr_bdAstar.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__bdAstar_8hpp.html"];
+  Node37 -> Node40 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node40 [label="pgr_bdDijkstra.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__bdDijkstra_8hpp.html"];
 }

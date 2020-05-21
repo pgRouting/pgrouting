@@ -1,8 +1,0 @@
-<map id="do_pgr_contractGraph" name="do_pgr_contractGraph">
-<area shape="rect" id="node2" href="$lineGraph__driver_8cpp.html#a6f7c6b35f9831bd5250675dbabf08921" title="get_postgres_result" alt="" coords="226,5,362,32"/>
-<area shape="rect" id="node3" href="$namespacepgrouting_1_1contraction.html#ab334ab6d564c01f7907cf525cfbfd962" title="pgrouting::contraction\l::is_valid_contraction" alt="" coords="221,57,367,98"/>
-<area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="259,123,329,149"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="258,173,330,200"/>
-<area shape="rect" id="node6" href="$namespaceanonymous__namespace_02contractGraph__driver_8cpp_03.html#a5441aaff1cc25e60c14470f678f38e86" title="anonymous_namespace\l\{contractGraph_driver\l::cpp\}::process_contraction" alt="" coords="204,224,384,280"/>
-<area shape="rect" id="node7" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="217,305,371,346"/>
-</map>

@@ -78,20 +78,20 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Contraction.html",
-"ch__graphs_8hpp.html#af597e60f1aa5b252e6c56db3a53c22f9",
-"classSignalHandler.html#a228b8bc652635979dfcfc094d805540f",
-"classpgrouting_1_1bidirectional_1_1Pgr__bdAstar.html#a433bd6180a5bf479b4747ad7704bf5b3",
-"classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ac0ba9a33bf9941d74d883bd55f529d5c",
-"classpgrouting_1_1graph_1_1Pgr__lineGraph.html#ab837f9e86a8c3a7eb1ed70831a57a964",
-"classpgrouting_1_1tsp_1_1TSP.html#af4e102e4b65796a3a9532040bedca946",
-"classpgrouting_1_1vrp_1_1Solution.html#a9e2dd7a7a1252e40ace284d9847bb281",
-"classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a43b1afad2e0d74af5b5d79dbd6829446",
-"drivedist__driver_8cpp.html",
-"globals_func_t.html",
-"path__t_8h_source.html",
-"postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f",
-"structmatrix__cell.html#a938fb9d685bbcd6ca9f1e85e525fdefe",
-"xy__vertex_8cpp.html#a57bb0ee39e4b594716e69db5ef7c6729"
+"breadthFirstSearch_8c.html#afa0c02a3108191d4f9c2707b5e24ee53",
+"classPgr__randomSpanningTree.html#ab40d8e152a6c3989f64505b91be30d7a",
+"classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a13e014076090379b6962e548dd41528c",
+"classpgrouting_1_1functions_1_1Pgr__mst.html#ab06a325ad7fca538de63d895ecec928b",
+"classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#ae777a5260ebe3fd4b03d3c4360e50f64",
+"classpgrouting_1_1tsp_1_1Dmatrix.html#a7f5f415372021300072d1c85a63e1239",
+"classpgrouting_1_1vrp_1_1PD__Orders.html#a5377cfa430d05ce284df7e3136bc7608",
+"classpgrouting_1_1vrp_1_1Vehicle__node.html#a96eded9edb9449d6d60d28607cd738e6",
+"debug__macro_8h.html",
+"functions_y.html",
+"namespaceanonymous__namespace_02xy__vertex_8cpp_03.html",
+"pgr__prim_8hpp.html",
+"structPickDeliveryOrders__t.html#ac87aa232a209e11ef41e030ab1232661",
+"turnRestrictedPath_8c.html#aee78cab7e921a7d41f17f31d9b56985a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

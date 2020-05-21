@@ -1,9 +1,0 @@
-digraph "pgrouting::Pgr_dijkstra::get_drivingDistance_with_equicost_paths"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node171 [label="pgrouting::Pgr_dijkstra\l::get_drivingDistance\l_with_equicost_paths",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node171 -> Node172 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node172 [label="pred",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pgr__tsp_8cpp.html#ae0eace0f5ad927638e3f80c3efb3411e"];
-}

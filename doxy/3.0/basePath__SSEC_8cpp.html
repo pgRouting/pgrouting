@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -151,27 +151,9 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="basePath__SSEC_8hpp_source.html#l00052">Path::path</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="astar__driver_8cpp_source.html#l00084">do_pgr_astarManyToMany()</a>, <a class="el" href="bdAstar__driver_8cpp_source.html#l00097">do_pgr_bdAstar()</a>, <a class="el" href="bdDijkstra__driver_8cpp_source.html#l00087">do_pgr_bdDijkstra()</a>, <a class="el" href="bellman__ford__driver_8cpp_source.html#l00078">do_pgr_bellman_ford()</a>, <a class="el" href="bellman__ford__neg__driver_8cpp_source.html#l00078">do_pgr_bellman_ford_neg()</a>, <a class="el" href="dagShortestPath__driver_8cpp_source.html#l00080">do_pgr_dagShortestPath()</a>, <a class="el" href="drivedist__driver_8cpp_source.html#l00082">do_pgr_driving_many_to_dist()</a>, <a class="el" href="dijkstra__driver_8cpp_source.html#l00084">do_pgr_many_to_many_dijkstra()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00059">do_pgr_many_withPointsDD()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>, and <a class="el" href="trsp__driver_8cpp_source.html#l00041">do_trsp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="astar__driver_8cpp_source.html#l00084">do_pgr_astarManyToMany()</a>, <a class="el" href="bdAstar__driver_8cpp_source.html#l00097">do_pgr_bdAstar()</a>, <a class="el" href="bdDijkstra__driver_8cpp_source.html#l00087">do_pgr_bdDijkstra()</a>, <a class="el" href="bellman__ford__driver_8cpp_source.html#l00078">do_pgr_bellman_ford()</a>, <a class="el" href="bellman__ford__neg__driver_8cpp_source.html#l00078">do_pgr_bellman_ford_neg()</a>, <a class="el" href="binaryBreadthFirstSearch__driver_8cpp_source.html#l00105">do_pgr_binaryBreadthFirstSearch()</a>, <a class="el" href="dagShortestPath__driver_8cpp_source.html#l00080">do_pgr_dagShortestPath()</a>, <a class="el" href="drivedist__driver_8cpp_source.html#l00082">do_pgr_driving_many_to_dist()</a>, <a class="el" href="edwardMoore__driver_8cpp_source.html#l00081">do_pgr_edwardMoore()</a>, <a class="el" href="dijkstra__driver_8cpp_source.html#l00084">do_pgr_many_to_many_dijkstra()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00059">do_pgr_many_withPointsDD()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>, and <a class="el" href="trsp__driver_8cpp_source.html#l00041">do_trsp()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                                       {</div><div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordtype">size_t</span> sequence = 0;</div><div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;path : paths) {</div><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <span class="keywordflow">if</span> (path.path.size() &gt; 0)</div><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            path.generate_postgres_data(ret_path, sequence);</div><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    }</div><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">return</span> sequence;</div><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div><div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00047">basePath_SSEC.hpp:47</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="basePath__SSEC_8cpp_a19c6d298dcf1b394bb1d0269055f45f0_icgraph.png" border="0" usemap="#basePath__SSEC_8cpp_a19c6d298dcf1b394bb1d0269055f45f0_icgraph" alt=""/></div>
-<map name="basePath__SSEC_8cpp_a19c6d298dcf1b394bb1d0269055f45f0_icgraph" id="basePath__SSEC_8cpp_a19c6d298dcf1b394bb1d0269055f45f0_icgraph">
-<area shape="rect" id="node2" href="astar__driver_8h.html#a9d704ded9944c8b035f5f37e42e587cb" title="do_pgr_astarManyToMany" alt="" coords="169,5,345,32"/>
-<area shape="rect" id="node3" href="bdAstar__driver_8h.html#aaa83efe9d05a08432a2f0bff6fd8ccd0" title="do_pgr_bdAstar" alt="" coords="200,56,313,83"/>
-<area shape="rect" id="node4" href="bdDijkstra__driver_8h.html#a3130ae6176d30a4071dd3293517df04b" title="do_pgr_bdDijkstra" alt="" coords="193,107,320,133"/>
-<area shape="rect" id="node5" href="bellman__ford__driver_8h.html#a5eb504d4fc7f6f04ff82b652a8eed767" title="do_pgr_bellman_ford" alt="" coords="185,157,328,184"/>
-<area shape="rect" id="node6" href="bellman__ford__neg__driver_8h.html#ad2e8ba9a3b8e851eddb877d124d4c44c" title="do_pgr_bellman_ford_neg" alt="" coords="171,208,342,235"/>
-<area shape="rect" id="node7" href="dagShortestPath__driver_8h.html#af75ff8989dec243a6a194cb5c4d31727" title="do_pgr_dagShortestPath" alt="" coords="174,259,339,285"/>
-<area shape="rect" id="node8" href="drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f" title="do_pgr_driving_many\l_to_dist" alt="" coords="184,310,329,351"/>
-<area shape="rect" id="node9" href="dijkstra__driver_8h.html#a7632002dbc92c191f16181769635f393" title="do_pgr_many_to_many\l_dijkstra" alt="" coords="178,375,335,417"/>
-<area shape="rect" id="node10" href="withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580" title="do_pgr_many_withPointsDD" alt="" coords="163,441,351,468"/>
-<area shape="rect" id="node11" href="withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="192,492,321,519"/>
-<area shape="rect" id="node12" href="trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c" title="do_trsp" alt="" coords="224,543,289,569"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a704d92207109d41b1df3e14e14579ba1"></a>
@@ -192,31 +174,9 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00390">390</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="astar__driver_8cpp_source.html#l00084">do_pgr_astarManyToMany()</a>, <a class="el" href="bdAstar__driver_8cpp_source.html#l00097">do_pgr_bdAstar()</a>, <a class="el" href="bdDijkstra__driver_8cpp_source.html#l00087">do_pgr_bdDijkstra()</a>, <a class="el" href="bellman__ford__driver_8cpp_source.html#l00078">do_pgr_bellman_ford()</a>, <a class="el" href="bellman__ford__neg__driver_8cpp_source.html#l00078">do_pgr_bellman_ford_neg()</a>, <a class="el" href="dagShortestPath__driver_8cpp_source.html#l00080">do_pgr_dagShortestPath()</a>, <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00087">do_pgr_dijkstraVia()</a>, <a class="el" href="drivedist__driver_8cpp_source.html#l00082">do_pgr_driving_many_to_dist()</a>, <a class="el" href="ksp__driver_8cpp_source.html#l00043">do_pgr_ksp()</a>, <a class="el" href="dijkstra__driver_8cpp_source.html#l00084">do_pgr_many_to_many_dijkstra()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00059">do_pgr_many_withPointsDD()</a>, <a class="el" href="turnRestrictedPath__driver_8cpp_source.html#l00077">do_pgr_turnRestrictedPath()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>, <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00054">do_pgr_withPointsKsp()</a>, and <a class="el" href="trsp__driver_8cpp_source.html#l00041">do_trsp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="astar__driver_8cpp_source.html#l00084">do_pgr_astarManyToMany()</a>, <a class="el" href="bdAstar__driver_8cpp_source.html#l00097">do_pgr_bdAstar()</a>, <a class="el" href="bdDijkstra__driver_8cpp_source.html#l00087">do_pgr_bdDijkstra()</a>, <a class="el" href="bellman__ford__driver_8cpp_source.html#l00078">do_pgr_bellman_ford()</a>, <a class="el" href="bellman__ford__neg__driver_8cpp_source.html#l00078">do_pgr_bellman_ford_neg()</a>, <a class="el" href="binaryBreadthFirstSearch__driver_8cpp_source.html#l00105">do_pgr_binaryBreadthFirstSearch()</a>, <a class="el" href="dagShortestPath__driver_8cpp_source.html#l00080">do_pgr_dagShortestPath()</a>, <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00087">do_pgr_dijkstraVia()</a>, <a class="el" href="drivedist__driver_8cpp_source.html#l00082">do_pgr_driving_many_to_dist()</a>, <a class="el" href="edwardMoore__driver_8cpp_source.html#l00081">do_pgr_edwardMoore()</a>, <a class="el" href="ksp__driver_8cpp_source.html#l00043">do_pgr_ksp()</a>, <a class="el" href="dijkstra__driver_8cpp_source.html#l00084">do_pgr_many_to_many_dijkstra()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00059">do_pgr_many_withPointsDD()</a>, <a class="el" href="turnRestrictedPath__driver_8cpp_source.html#l00077">do_pgr_turnRestrictedPath()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00083">do_pgr_withPoints()</a>, <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00054">do_pgr_withPointsKsp()</a>, and <a class="el" href="trsp__driver_8cpp_source.html#l00041">do_trsp()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                                            {</div><div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordtype">size_t</span> count(0);</div><div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;e : paths) {</div><div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        count += e.path.size();</div><div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    }</div><div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">return</span> count;</div><div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;}</div><div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00047">basePath_SSEC.hpp:47</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="basePath__SSEC_8cpp_a704d92207109d41b1df3e14e14579ba1_icgraph.png" border="0" usemap="#basePath__SSEC_8cpp_a704d92207109d41b1df3e14e14579ba1_icgraph" alt=""/></div>
-<map name="basePath__SSEC_8cpp_a704d92207109d41b1df3e14e14579ba1_icgraph" id="basePath__SSEC_8cpp_a704d92207109d41b1df3e14e14579ba1_icgraph">
-<area shape="rect" id="node2" href="astar__driver_8h.html#a9d704ded9944c8b035f5f37e42e587cb" title="do_pgr_astarManyToMany" alt="" coords="155,5,331,32"/>
-<area shape="rect" id="node3" href="bdAstar__driver_8h.html#aaa83efe9d05a08432a2f0bff6fd8ccd0" title="do_pgr_bdAstar" alt="" coords="187,56,300,83"/>
-<area shape="rect" id="node4" href="bdDijkstra__driver_8h.html#a3130ae6176d30a4071dd3293517df04b" title="do_pgr_bdDijkstra" alt="" coords="180,107,307,133"/>
-<area shape="rect" id="node5" href="bellman__ford__driver_8h.html#a5eb504d4fc7f6f04ff82b652a8eed767" title="do_pgr_bellman_ford" alt="" coords="172,157,315,184"/>
-<area shape="rect" id="node6" href="bellman__ford__neg__driver_8h.html#ad2e8ba9a3b8e851eddb877d124d4c44c" title="do_pgr_bellman_ford_neg" alt="" coords="158,208,329,235"/>
-<area shape="rect" id="node7" href="dagShortestPath__driver_8h.html#af75ff8989dec243a6a194cb5c4d31727" title="do_pgr_dagShortestPath" alt="" coords="161,259,326,285"/>
-<area shape="rect" id="node8" href="dijkstraVia__driver_8h.html#a65bae4bd90fab026ee5f54f17655e776" title="do_pgr_dijkstraVia" alt="" coords="179,309,308,336"/>
-<area shape="rect" id="node9" href="drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f" title="do_pgr_driving_many\l_to_dist" alt="" coords="171,361,316,402"/>
-<area shape="rect" id="node10" href="ksp__driver_8h.html#a0fdd4a3e42a7ba0199d94cbf1058dd28" title="do_pgr_ksp" alt="" coords="199,427,288,453"/>
-<area shape="rect" id="node11" href="dijkstra__driver_8h.html#a7632002dbc92c191f16181769635f393" title="do_pgr_many_to_many\l_dijkstra" alt="" coords="165,478,322,519"/>
-<area shape="rect" id="node12" href="withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580" title="do_pgr_many_withPointsDD" alt="" coords="149,544,337,571"/>
-<area shape="rect" id="node13" href="turnRestrictedPath__driver_8h.html#a4d73fa921412c3dadebf6b5894cc2f11" title="do_pgr_turnRestrictedPath" alt="" coords="155,595,332,621"/>
-<area shape="rect" id="node14" href="withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="179,645,308,672"/>
-<area shape="rect" id="node15" href="withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a" title="do_pgr_withPointsKsp" alt="" coords="167,696,319,723"/>
-<area shape="rect" id="node16" href="trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c" title="do_trsp" alt="" coords="211,747,276,773"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a5ec42f9cedce93c209092bc259b9c56c"></a>
@@ -243,16 +203,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="structPath__t_html_a4446f5f95052373312fd971ff4ee73c7"><div class="ttname"><a href="structPath__t.html#a4446f5f95052373312fd971ff4ee73c7">Path_t::node</a></div><div class="ttdeci">int64_t node</div><div class="ttdef"><b>Definition:</b> <a href="path__t_8h_source.html#l00037">path_t.h:37</a></div></div>
 <div class="ttc" id="structPath__t_html"><div class="ttname"><a href="structPath__t.html">Path_t</a></div><div class="ttdef"><b>Definition:</b> <a href="path__t_8h_source.html#l00036">path_t.h:36</a></div></div>
 <div class="ttc" id="classPath_html_a969ad8937eb448f350193fd203ad97d2"><div class="ttname"><a href="classPath.html#a969ad8937eb448f350193fd203ad97d2">Path::start_id</a></div><div class="ttdeci">int64_t start_id() const</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00065">basePath_SSEC.hpp:65</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_cgraph.png" border="0" usemap="#basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_cgraph" alt=""/></div>
-<map name="basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_cgraph" id="basePath__SSEC_8cpp_a5ec42f9cedce93c209092bc259b9c56c_cgraph">
-<area shape="rect" id="node2" href="classPath.html#a3a0311765e131697250e7b45964c0510" title="Path::size" alt="" coords="141,5,223,32"/>
-<area shape="rect" id="node3" href="classPath.html#a969ad8937eb448f350193fd203ad97d2" title="Path::start_id" alt="" coords="132,56,232,83"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aa16afa1050f3d97fc530c0ec237c1216"></a>
@@ -286,16 +237,7 @@ Here is the call graph for this function:</div>
 <p class="reference">References <a class="el" href="basePath__SSEC_8hpp_source.html#l00067">Path::end_id()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00065">Path::start_id()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                                          {</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;Path: &quot;</span> &lt;&lt; path.<a class="code" href="classPath.html#a969ad8937eb448f350193fd203ad97d2">start_id</a>() &lt;&lt; <span class="stringliteral">&quot; -&gt; &quot;</span> &lt;&lt; path.<a class="code" href="classPath.html#ad7eff4c127cba19f2052398089ac3b42">end_id</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span></div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;seq\tnode\tedge\tcost\tagg_cost\n&quot;</span>;</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    int64_t i = 0;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e : path) {</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        log &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            &lt;&lt; e.node &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            &lt;&lt; e.edge &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            &lt;&lt; e.cost &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            &lt;&lt; e.agg_cost &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        ++i;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">return</span> log;</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div><div class="ttc" id="classPath_html_ad7eff4c127cba19f2052398089ac3b42"><div class="ttname"><a href="classPath.html#ad7eff4c127cba19f2052398089ac3b42">Path::end_id</a></div><div class="ttdeci">int64_t end_id() const</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00067">basePath_SSEC.hpp:67</a></div></div>
 <div class="ttc" id="classPath_html_a969ad8937eb448f350193fd203ad97d2"><div class="ttname"><a href="classPath.html#a969ad8937eb448f350193fd203ad97d2">Path::start_id</a></div><div class="ttdeci">int64_t start_id() const</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00065">basePath_SSEC.hpp:65</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="basePath__SSEC_8cpp_aa16afa1050f3d97fc530c0ec237c1216_cgraph.png" border="0" usemap="#basePath__SSEC_8cpp_aa16afa1050f3d97fc530c0ec237c1216_cgraph" alt=""/></div>
-<map name="basePath__SSEC_8cpp_aa16afa1050f3d97fc530c0ec237c1216_cgraph" id="basePath__SSEC_8cpp_aa16afa1050f3d97fc530c0ec237c1216_cgraph">
-<area shape="rect" id="node2" href="classPath.html#ad7eff4c127cba19f2052398089ac3b42" title="Path::end_id" alt="" coords="141,5,236,32"/>
-<area shape="rect" id="node3" href="classPath.html#a969ad8937eb448f350193fd203ad97d2" title="Path::start_id" alt="" coords="139,56,239,83"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
@@ -304,7 +246,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="basePath__SSEC_8cpp.html">basePath_SSEC.cpp</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:44 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:37 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

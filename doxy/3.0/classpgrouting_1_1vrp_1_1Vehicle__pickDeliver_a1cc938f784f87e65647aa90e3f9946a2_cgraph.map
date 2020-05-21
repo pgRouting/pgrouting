@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Vehicle_pickDeliver::pop_back" name="pgrouting::vrp::Vehicle_pickDeliver::pop_back">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a65bf4bc2763295f93cfed232690c4e6c" title="return true when no nodes are in the truck " alt="" coords="212,5,364,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a29bf7e33dfb519d7abb8648c2d631d30" title="Invariant The path must: " alt="" coords="412,64,564,105"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3824b3c3af974687c0bdcc9aab615350" title="pgrouting::vrp::Vehicle\l_pickDeliver::erase" alt="" coords="212,123,364,164"/>
-</map>

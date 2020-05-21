@@ -1,7 +1,0 @@
-<map id="pgrouting::graph::PgrDirectedChPPGraph::GetPathEdges" name="pgrouting::graph::PgrDirectedChPPGraph::GetPathEdges">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a298efb71dc048afcc3857697fc534026" title="pgrouting::graph::PgrDirected\lChPPGraph::BuildResultGraph" alt="" coords="262,5,465,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a3b08e91d586a9b864af7c559575ffb15" title="pgrouting::graph::PgrDirected\lChPPGraph::BuildResultPath" alt="" coords="266,71,461,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a00bc38726520c0c1e5524a821ce70eb0" title="pgrouting::graph::PgrDirected\lChPPGraph::EulerCircuitDFS" alt="" coords="266,136,461,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a1a9475396cc368cde13dd664316c853a" title="pgrouting::graph::PgrCost\lFlowGraph::GetFlowEdges" alt="" coords="274,201,453,243"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a4523844c89d1eaf7fa6a3f468476bd95" title="pgrouting::graph::PgrDirected\lChPPGraph::JudgeCoveredAllEdges" alt="" coords="245,267,481,308"/>
-</map>

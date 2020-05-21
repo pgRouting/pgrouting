@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Tw_node::type" name="pgrouting::vrp::Tw_node::type">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="355,5,483,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="180,35,307,76"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a1c5acc57671c2486a3acf9a2ef868dff" title="pgrouting::vrp::Tw\l_node::type_str" alt="" coords="180,100,307,141"/>
-</map>

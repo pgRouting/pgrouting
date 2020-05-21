@@ -1,4 +1,0 @@
-<map id="pgrouting::Pgr_dijkstra::drivingDistance" name="pgrouting::Pgr_dijkstra::drivingDistance">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__dijkstra.html#a9ba0c0b7c674a43f78068268b1ed6b06" title="pgrouting::Pgr_dijkstra\l::drivingDistance_no_equicost" alt="" coords="205,5,403,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Pgr__dijkstra.html#a34494aafd83229a152a950079abb56df" title="pgrouting::Pgr_dijkstra\l::drivingDistance_with\l_equicost" alt="" coords="228,71,380,127"/>
-</map>

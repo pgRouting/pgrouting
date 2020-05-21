@@ -1,5 +1,0 @@
-<map id="pgrouting::functions::Pgr_mst::mst" name="pgrouting::functions::Pgr_mst::mst">
-<area shape="rect" id="node2" href="$classpgrouting_1_1functions_1_1Pgr__mst.html#a392d9d410e879704966e0b79cc7c8b39" title="pgrouting::functions\l::Pgr_mst::generate_mst" alt="" coords="190,5,357,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1functions_1_1Pgr__mst.html#a88e0bf30eb3c29af63b4cbde014c07b0" title="pgrouting::functions\l::Pgr_mst::no_neg_costs" alt="" coords="189,71,357,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1functions_1_1Pgr__mst.html#a538c68c28266cb830f2c7f2dc9f310f0" title="pgrouting::functions\l::Pgr_mst::no_order" alt="" coords="205,136,342,177"/>
-</map>

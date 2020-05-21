@@ -1,9 +1,0 @@
-digraph "pgrouting::flow::PgrCardinalityGraph::get_vertex_id"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node14 [label="pgrouting::flow::PgrCardinality\lGraph::get_vertex_id",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node14 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node15 [label="pgrouting::flow::PgrCardinality\lGraph::get_matched_vertices",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#a4678073e8ae646b7682b7830354f535b"];
-}

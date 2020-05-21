@@ -1,4 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::drop_position_limits" name="pgrouting::vrp::Vehicle::drop_position_limits">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#ae1ed768d6cabc552f29b2d33d86ff386" title="pgrouting::vrp::Vehicle\l::capacity" alt="" coords="209,5,361,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a59a88f45361f562c3c7b2391539de7b0" title="Inserts an order In semi&#45;Lifo order. " alt="" coords="205,71,364,112"/>
-</map>

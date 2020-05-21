@@ -3,6 +3,7 @@ var searchData=
   ['data',['data',['../classpgrouting_1_1functions_1_1Pgr__prim.html#a304270a87b1b46b56dc8946089c5591f',1,'pgrouting::functions::Pgr_prim']]],
   ['dbg_5flog',['dbg_log',['../classpgrouting_1_1Pgr__messages.html#a421c5233d8bb92914197836950abf360',1,'pgrouting::Pgr_messages']]],
   ['deadendvertices',['deadendVertices',['../classpgrouting_1_1contraction_1_1Pgr__deadend.html#a999531a34bb650c8419b31ed004f8f57',1,'pgrouting::contraction::Pgr_deadend']]],
+  ['default_5fedge',['DEFAULT_EDGE',['../classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a8caf5a3c8fa0abf97e630b5c490c7ad8',1,'pgrouting::functions::Pgr_edwardMoore::DEFAULT_EDGE()'],['../classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch.html#a5830bf95cf7a8ab9252c2c13755a7d13',1,'pgrouting::functions::Pgr_binaryBreadthFirstSearch::DEFAULT_EDGE()']]],
   ['deliver_5fclose_5ft',['deliver_close_t',['../structPickDeliveryOrders__t.html#a353af6b268cf3e4c4c47a0b244fd7928',1,'PickDeliveryOrders_t']]],
   ['deliver_5fnode_5fid',['deliver_node_id',['../structPickDeliveryOrders__t.html#ae1c604516b9f8439bdd3f15a2442d67f',1,'PickDeliveryOrders_t']]],
   ['deliver_5fopen_5ft',['deliver_open_t',['../structPickDeliveryOrders__t.html#a7f04597b7a43c58984e9815b604246b8',1,'PickDeliveryOrders_t']]],

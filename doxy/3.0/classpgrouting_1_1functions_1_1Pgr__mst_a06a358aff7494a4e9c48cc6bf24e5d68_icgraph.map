@@ -1,6 +1,0 @@
-<map id="pgrouting::functions::Pgr_mst::get_results" name="pgrouting::functions::Pgr_mst::get_results">
-<area shape="rect" id="node2" href="$classpgrouting_1_1functions_1_1Pgr__mst.html#a07e00ae343f44b13b1c57ee5f13f90d2" title="pgrouting::functions\l::Pgr_mst::bfs_ordering" alt="" coords="204,5,363,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1functions_1_1Pgr__mst.html#ab4f0f705b64841c414f5bd28c69ac046" title="pgrouting::functions\l::Pgr_mst::dfs_forest" alt="" coords="211,71,356,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1functions_1_1Pgr__mst.html#aa7967e83888220735fd4df6d7d7a89b5" title="pgrouting::functions\l::Pgr_mst::dfs_ordering" alt="" coords="411,100,569,141"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1functions_1_1Pgr__mst.html#aa6482247a2bc131a40bebff27fb7881d" title="pgrouting::functions\l::Pgr_mst::no_ordering" alt="" coords="206,188,361,229"/>
-</map>

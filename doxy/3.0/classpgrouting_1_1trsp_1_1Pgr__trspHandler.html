@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -317,17 +317,7 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_af7aa55cc3fedf3cd6f1ce2e801b20116"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#af7aa55cc3fedf3cd6f1ce2e801b20116">pgrouting::trsp::Pgr_trspHandler::renumber_edges</a></div><div class="ttdeci">int64_t renumber_edges(pgr_edge_t *edges, const size_t edge_count) const</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8cpp_source.html#l00062">pgr_trspHandler.cpp:62</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a258d73744b2d5ecfb11264fcea3a89e4"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a258d73744b2d5ecfb11264fcea3a89e4">pgrouting::trsp::Pgr_trspHandler::initialize_restrictions</a></div><div class="ttdeci">int initialize_restrictions(const std::vector&lt; Rule &gt; &amp;ruleList)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8cpp_source.html#l00235">pgr_trspHandler.cpp:235</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a2133ef643340fa3a54755c5ebaddf18f"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2133ef643340fa3a54755c5ebaddf18f">pgrouting::trsp::Pgr_trspHandler::m_ruleTable</a></div><div class="ttdeci">std::map&lt; int64_t, std::vector&lt; Rule &gt; &gt; m_ruleTable</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00207">pgr_trspHandler.h:207</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_aaf0d27f8b8c115993da6c4f431c11da0_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_aaf0d27f8b8c115993da6c4f431c11da0_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_aaf0d27f8b8c115993da6c4f431c11da0_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_aaf0d27f8b8c115993da6c4f431c11da0_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2701b63975585e090716e99e3d353e27" title="pgrouting::trsp::Pgr\l_trspHandler::construct_graph" alt="" coords="253,5,451,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a258d73744b2d5ecfb11264fcea3a89e4" title="pgrouting::trsp::Pgr\l_trspHandler::initialize\l_restrictions" alt="" coords="277,71,427,127"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#af7aa55cc3fedf3cd6f1ce2e801b20116" title="pgrouting::trsp::Pgr\l_trspHandler::renumber_edges" alt="" coords="252,152,452,193"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae3b972bc1e2025d1e5435fb461a92543"></a>
@@ -429,16 +419,7 @@ Here is the call graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="pgr__trspHandler_8cpp_source.html#l00184">explore()</a>, and <a class="el" href="pgr__trspHandler_8cpp_source.html#l00327">initialize_que()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                      {</div><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a7e7c69650ab730c4db7d44a8bf793bed">que</a>.push(std::make_pair(cost,</div><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                std::make_pair(e_idx, isStart)));</div><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a7e7c69650ab730c4db7d44a8bf793bed"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a7e7c69650ab730c4db7d44a8bf793bed">pgrouting::trsp::Pgr_trspHandler::que</a></div><div class="ttdeci">std::priority_queue&lt; PDP, std::vector&lt; PDP &gt;, std::greater&lt; PDP &gt; &gt; que</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00212">pgr_trspHandler.h:212</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a08f8116952de134836abdc50a73e8d58_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a08f8116952de134836abdc50a73e8d58_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a08f8116952de134836abdc50a73e8d58_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a08f8116952de134836abdc50a73e8d58_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#ab89370f920c03be06ba6daddb523c16b" title="pgrouting::trsp::Pgr\l_trspHandler::explore" alt="" coords="240,5,387,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a9f286e7c5e226a50bfe0e47e08eed2dd" title="pgrouting::trsp::Pgr\l_trspHandler::initialize_que" alt="" coords="224,71,403,112"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a5e621263225f8e2c3240df97949d52c1"></a>
@@ -479,25 +460,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="structpgr__edge__t_html_a3258c31bdcbd1c071129cf92e5e46191"><div class="ttname"><a href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">pgr_edge_t::id</a></div><div class="ttdeci">int64_t id</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00038">pgr_edge_t.h:38</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_aa9f557cd83e51e34020e5c09627f578b"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aa9f557cd83e51e34020e5c09627f578b">pgrouting::trsp::Pgr_trspHandler::m_adjacency</a></div><div class="ttdeci">std::map&lt; int64_t, std::vector&lt; size_t &gt; &gt; m_adjacency</div><div class="ttdoc">m_adjacency[vertex] = {edges} </div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00189">pgr_trspHandler.h:189</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a1dd6929e821030d7dbb290e0aeca1900"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a1dd6929e821030d7dbb290e0aeca1900">pgrouting::trsp::Pgr_trspHandler::m_edges</a></div><div class="ttdeci">std::vector&lt; EdgeInfo &gt; m_edges</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00178">pgr_trspHandler.h:178</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5e621263225f8e2c3240df97949d52c1_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5e621263225f8e2c3240df97949d52c1_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5e621263225f8e2c3240df97949d52c1_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5e621263225f8e2c3240df97949d52c1_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a125a7eac894d46e06b83d574f6b3bdc2" title="pgrouting::trsp::Pgr\l_trspHandler::connectEndEdge" alt="" coords="211,5,413,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#ad9cb3be3a38069b030ddee9255b42069" title="pgrouting::trsp::Pgr\l_trspHandler::connectStartEdge" alt="" coords="208,71,416,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#adec99afe13f3695d327d6be7c67e4faf" title="pgrouting::trsp::EdgeInfo::idx" alt="" coords="217,137,407,163"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5e621263225f8e2c3240df97949d52c1_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5e621263225f8e2c3240df97949d52c1_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5e621263225f8e2c3240df97949d52c1_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5e621263225f8e2c3240df97949d52c1_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2701b63975585e090716e99e3d353e27" title="pgrouting::trsp::Pgr\l_trspHandler::construct_graph" alt="" coords="208,5,405,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a63bed2396318bb2c8704203f6a81361a"></a>
@@ -524,23 +487,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a20f5e9139cdf71168a00eecbd2bb6dbd"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a20f5e9139cdf71168a00eecbd2bb6dbd">pgrouting::trsp::Pgr_trspHandler::m_dCost</a></div><div class="ttdeci">std::vector&lt; CostHolder &gt; m_dCost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00205">pgr_trspHandler.h:205</a></div></div>
 <div class="ttc" id="classPath_html_a3e94fc24f7c713442f3d52478d0772fb"><div class="ttname"><a href="classPath.html#a3e94fc24f7c713442f3d52478d0772fb">Path::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00087">basePath_SSEC.cpp:87</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a2bde6d87467141ad5d86af569effcaa2"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2bde6d87467141ad5d86af569effcaa2">pgrouting::trsp::Pgr_trspHandler::m_parent</a></div><div class="ttdeci">std::vector&lt; Predecessor &gt; m_parent</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00204">pgr_trspHandler.h:204</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a63bed2396318bb2c8704203f6a81361a_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a63bed2396318bb2c8704203f6a81361a_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a63bed2396318bb2c8704203f6a81361a_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a63bed2396318bb2c8704203f6a81361a_cgraph">
-<area shape="rect" id="node2" href="classPath.html#a3e94fc24f7c713442f3d52478d0772fb" title="Path::clear" alt="" coords="187,13,272,39"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a63bed2396318bb2c8704203f6a81361a_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a63bed2396318bb2c8704203f6a81361a_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a63bed2396318bb2c8704203f6a81361a_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a63bed2396318bb2c8704203f6a81361a_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a009a1e7a265748859119283365a51d7a" title="process " alt="" coords="187,5,337,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a125a7eac894d46e06b83d574f6b3bdc2"></a>
@@ -583,28 +530,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="pgr__trspHandler_8cpp_source.html#l00506">addEdge()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;                               {</div><div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    EdgeInfo &amp;firstEdge = <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a1dd6929e821030d7dbb290e0aeca1900">m_edges</a>[firstEdge_idx];</div><div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    EdgeInfo &amp;secondEdge = <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a1dd6929e821030d7dbb290e0aeca1900">m_edges</a>[secondEdge_idx];</div><div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;</div><div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    <span class="keywordflow">if</span> (firstEdge.cost() &gt;= 0.0) {</div><div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        firstEdge.connect_endEdge(secondEdge_idx);</div><div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    }</div><div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;</div><div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    <span class="keywordflow">if</span> (firstEdge.endNode() == secondEdge.startNode()</div><div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;            &amp;&amp; secondEdge.r_cost() &gt;= 0.0) {</div><div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        secondEdge.connect_startEdge(firstEdge_idx);</div><div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    }</div><div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;</div><div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    <span class="keywordflow">if</span> (firstEdge.endNode() == secondEdge.endNode()</div><div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            &amp;&amp; secondEdge.cost() &gt;= 0.0) {</div><div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        secondEdge.connect_endEdge(firstEdge_idx);</div><div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    }</div><div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a1dd6929e821030d7dbb290e0aeca1900"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a1dd6929e821030d7dbb290e0aeca1900">pgrouting::trsp::Pgr_trspHandler::m_edges</a></div><div class="ttdeci">std::vector&lt; EdgeInfo &gt; m_edges</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00178">pgr_trspHandler.h:178</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a125a7eac894d46e06b83d574f6b3bdc2_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a125a7eac894d46e06b83d574f6b3bdc2_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a125a7eac894d46e06b83d574f6b3bdc2_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a125a7eac894d46e06b83d574f6b3bdc2_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#ae3f8018e6f5a2df2f770ebf421564014" title="pgrouting::trsp::EdgeInfo\l::connect_endEdge" alt="" coords="256,5,421,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a2b3cf786ca17e22b755ea478e4b3668b" title="pgrouting::trsp::EdgeInfo\l::connect_startEdge" alt="" coords="256,71,421,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#af6ed9c842a0b93075d68592b8b95f8cd" title="pgrouting::trsp::EdgeInfo\l::cost" alt="" coords="256,136,421,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a15862ce110860af066ab71280d168e0f" title="pgrouting::trsp::EdgeInfo\l::endNode" alt="" coords="256,201,421,243"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a609ab38adc34b2fa5849a2619b327366" title="pgrouting::trsp::EdgeInfo\l::r_cost" alt="" coords="256,267,421,308"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a85be094bf38430760f77bbff308fcc17" title="pgrouting::trsp::EdgeInfo\l::startNode" alt="" coords="256,332,421,373"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a125a7eac894d46e06b83d574f6b3bdc2_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a125a7eac894d46e06b83d574f6b3bdc2_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a125a7eac894d46e06b83d574f6b3bdc2_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a125a7eac894d46e06b83d574f6b3bdc2_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5e621263225f8e2c3240df97949d52c1" title="pgrouting::trsp::Pgr\l_trspHandler::addEdge" alt="" coords="256,5,411,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad9cb3be3a38069b030ddee9255b42069"></a>
@@ -647,28 +573,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="pgr__trspHandler_8cpp_source.html#l00506">addEdge()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                               {</div><div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    EdgeInfo &amp;firstEdge = <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a1dd6929e821030d7dbb290e0aeca1900">m_edges</a>[firstEdge_idx];</div><div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    EdgeInfo &amp;secondEdge = <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a1dd6929e821030d7dbb290e0aeca1900">m_edges</a>[secondEdge_idx];</div><div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;</div><div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    <span class="keywordflow">if</span> (firstEdge.r_cost() &gt;= 0.0) {</div><div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        firstEdge.connect_startEdge(secondEdge_idx);</div><div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    }</div><div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;</div><div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="keywordflow">if</span> (firstEdge.startNode() == secondEdge.startNode()</div><div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            &amp;&amp; secondEdge.r_cost() &gt;= 0.0) {</div><div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            secondEdge.connect_startEdge(firstEdge_idx);</div><div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    }</div><div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;</div><div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="keywordflow">if</span> (firstEdge.startNode() == secondEdge.endNode()</div><div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            &amp;&amp;secondEdge.cost() &gt;= 0.0) {</div><div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        secondEdge.connect_endEdge(firstEdge_idx);</div><div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    }</div><div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a1dd6929e821030d7dbb290e0aeca1900"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a1dd6929e821030d7dbb290e0aeca1900">pgrouting::trsp::Pgr_trspHandler::m_edges</a></div><div class="ttdeci">std::vector&lt; EdgeInfo &gt; m_edges</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00178">pgr_trspHandler.h:178</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ad9cb3be3a38069b030ddee9255b42069_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_ad9cb3be3a38069b030ddee9255b42069_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ad9cb3be3a38069b030ddee9255b42069_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ad9cb3be3a38069b030ddee9255b42069_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#ae3f8018e6f5a2df2f770ebf421564014" title="pgrouting::trsp::EdgeInfo\l::connect_endEdge" alt="" coords="261,5,427,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a2b3cf786ca17e22b755ea478e4b3668b" title="pgrouting::trsp::EdgeInfo\l::connect_startEdge" alt="" coords="261,71,427,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#af6ed9c842a0b93075d68592b8b95f8cd" title="pgrouting::trsp::EdgeInfo\l::cost" alt="" coords="261,136,427,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a15862ce110860af066ab71280d168e0f" title="pgrouting::trsp::EdgeInfo\l::endNode" alt="" coords="261,201,427,243"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a609ab38adc34b2fa5849a2619b327366" title="pgrouting::trsp::EdgeInfo\l::r_cost" alt="" coords="261,267,427,308"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a85be094bf38430760f77bbff308fcc17" title="pgrouting::trsp::EdgeInfo\l::startNode" alt="" coords="261,332,427,373"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ad9cb3be3a38069b030ddee9255b42069_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_ad9cb3be3a38069b030ddee9255b42069_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ad9cb3be3a38069b030ddee9255b42069_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ad9cb3be3a38069b030ddee9255b42069_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5e621263225f8e2c3240df97949d52c1" title="pgrouting::trsp::Pgr\l_trspHandler::addEdge" alt="" coords="261,5,416,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a2701b63975585e090716e99e3d353e27"></a>
@@ -718,23 +623,7 @@ Here is the caller graph for this function:</div>
 <p class="reference">Referenced by <a class="el" href="pgr__trspHandler_8cpp_source.html#l00043">Pgr_trspHandler()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                             {</div><div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; edge_count; i++) {</div><div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <span class="keyword">auto</span> current_edge = &amp;edges[i];</div><div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;</div><div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        <span class="comment">/*</span></div><div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="comment">         * making all costs &gt; 0</span></div><div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="comment">         */</span></div><div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        <span class="keywordflow">if</span> (current_edge-&gt;cost &lt; 0 &amp;&amp; current_edge-&gt;reverse_cost &gt; 0) {</div><div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            std::swap(current_edge-&gt;cost, current_edge-&gt;reverse_cost);</div><div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            std::swap(current_edge-&gt;source, current_edge-&gt;target);</div><div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        }</div><div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;</div><div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        <span class="keywordflow">if</span> (!directed) {</div><div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            <span class="keywordflow">if</span> (current_edge-&gt;reverse_cost &lt; 0) {</div><div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                current_edge-&gt;reverse_cost = current_edge-&gt;cost;</div><div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            }</div><div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        }</div><div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5e621263225f8e2c3240df97949d52c1">addEdge</a>(*current_edge);</div><div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    }</div><div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a978c3fa3ca9b5701930d7cac40bd4a1b">m_mapEdgeId2Index</a>.clear();</div><div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a5e621263225f8e2c3240df97949d52c1"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5e621263225f8e2c3240df97949d52c1">pgrouting::trsp::Pgr_trspHandler::addEdge</a></div><div class="ttdeci">bool addEdge(const pgr_edge_t edgeIn)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8cpp_source.html#l00506">pgr_trspHandler.cpp:506</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a978c3fa3ca9b5701930d7cac40bd4a1b"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a978c3fa3ca9b5701930d7cac40bd4a1b">pgrouting::trsp::Pgr_trspHandler::m_mapEdgeId2Index</a></div><div class="ttdeci">std::map&lt; int64_t, int64_t &gt; m_mapEdgeId2Index</div><div class="ttdoc">Used only to veryfy that there are no reppetitions inserted the way it orks, repeating edges id is no...</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00184">pgr_trspHandler.h:184</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a2701b63975585e090716e99e3d353e27_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a2701b63975585e090716e99e3d353e27_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a2701b63975585e090716e99e3d353e27_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a2701b63975585e090716e99e3d353e27_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5e621263225f8e2c3240df97949d52c1" title="pgrouting::trsp::Pgr\l_trspHandler::addEdge" alt="" coords="251,5,405,47"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a2701b63975585e090716e99e3d353e27_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a2701b63975585e090716e99e3d353e27_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a2701b63975585e090716e99e3d353e27_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a2701b63975585e090716e99e3d353e27_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aaf0d27f8b8c115993da6c4f431c11da0" title="pgrouting::trsp::Pgr\l_trspHandler::Pgr_trspHandler" alt="" coords="251,5,449,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="afb0d7e7d3049ca1c2a003b0571fcc02d"></a>
@@ -791,24 +680,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classPath_html_a969ad8937eb448f350193fd203ad97d2"><div class="ttname"><a href="classPath.html#a969ad8937eb448f350193fd203ad97d2">Path::start_id</a></div><div class="ttdeci">int64_t start_id() const</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00065">basePath_SSEC.hpp:65</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a4b2f103768fbe8c13167d531d335f173af81a4f4016aa481d88a747fab239e6f3"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a4b2f103768fbe8c13167d531d335f173af81a4f4016aa481d88a747fab239e6f3">pgrouting::trsp::Pgr_trspHandler::ILLEGAL</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00068">pgr_trspHandler.h:68</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a2bde6d87467141ad5d86af569effcaa2"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2bde6d87467141ad5d86af569effcaa2">pgrouting::trsp::Pgr_trspHandler::m_parent</a></div><div class="ttdeci">std::vector&lt; Predecessor &gt; m_parent</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00204">pgr_trspHandler.h:204</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_afb0d7e7d3049ca1c2a003b0571fcc02d_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_afb0d7e7d3049ca1c2a003b0571fcc02d_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_afb0d7e7d3049ca1c2a003b0571fcc02d_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_afb0d7e7d3049ca1c2a003b0571fcc02d_cgraph">
-<area shape="rect" id="node2" href="classPath.html#a5b5d58e304f85ef96637a260917c30ac" title="Path::push_back" alt="" coords="244,5,364,32"/>
-<area shape="rect" id="node3" href="classPath.html#a969ad8937eb448f350193fd203ad97d2" title="Path::start_id" alt="" coords="254,56,354,83"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_afb0d7e7d3049ca1c2a003b0571fcc02d_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_afb0d7e7d3049ca1c2a003b0571fcc02d_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_afb0d7e7d3049ca1c2a003b0571fcc02d_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_afb0d7e7d3049ca1c2a003b0571fcc02d_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320" title="pgrouting::trsp::Pgr\l_trspHandler::process_trsp" alt="" coords="244,5,423,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a50129ef8113261ab2e159b00bd939ee7"></a>
@@ -846,27 +718,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a19c1746eb6a72507be0c6889f1188387"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a19c1746eb6a72507be0c6889f1188387">pgrouting::trsp::Pgr_trspHandler::current_node</a></div><div class="ttdeci">int64_t current_node</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00198">pgr_trspHandler.h:198</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a1dd6929e821030d7dbb290e0aeca1900"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a1dd6929e821030d7dbb290e0aeca1900">pgrouting::trsp::Pgr_trspHandler::m_edges</a></div><div class="ttdeci">std::vector&lt; EdgeInfo &gt; m_edges</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00178">pgr_trspHandler.h:178</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a19e30cc05b6699487784283000d9fa6c"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a19e30cc05b6699487784283000d9fa6c">pgrouting::trsp::Pgr_trspHandler::m_end_vertex</a></div><div class="ttdeci">int64_t m_end_vertex</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00193">pgr_trspHandler.h:193</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a50129ef8113261ab2e159b00bd939ee7_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a50129ef8113261ab2e159b00bd939ee7_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a50129ef8113261ab2e159b00bd939ee7_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a50129ef8113261ab2e159b00bd939ee7_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#af6ed9c842a0b93075d68592b8b95f8cd" title="pgrouting::trsp::EdgeInfo\l::cost" alt="" coords="200,5,365,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a15862ce110860af066ab71280d168e0f" title="pgrouting::trsp::EdgeInfo\l::endNode" alt="" coords="200,71,365,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#ab89370f920c03be06ba6daddb523c16b" title="pgrouting::trsp::Pgr\l_trspHandler::explore" alt="" coords="209,136,356,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a609ab38adc34b2fa5849a2619b327366" title="pgrouting::trsp::EdgeInfo\l::r_cost" alt="" coords="200,201,365,243"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a85be094bf38430760f77bbff308fcc17" title="pgrouting::trsp::EdgeInfo\l::startNode" alt="" coords="200,267,365,308"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a50129ef8113261ab2e159b00bd939ee7_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a50129ef8113261ab2e159b00bd939ee7_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a50129ef8113261ab2e159b00bd939ee7_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a50129ef8113261ab2e159b00bd939ee7_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320" title="pgrouting::trsp::Pgr\l_trspHandler::process_trsp" alt="" coords="200,13,379,54"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab89370f920c03be06ba6daddb523c16b"></a>
@@ -924,27 +776,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a1dd6929e821030d7dbb290e0aeca1900"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a1dd6929e821030d7dbb290e0aeca1900">pgrouting::trsp::Pgr_trspHandler::m_edges</a></div><div class="ttdeci">std::vector&lt; EdgeInfo &gt; m_edges</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00178">pgr_trspHandler.h:178</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a2bde6d87467141ad5d86af569effcaa2"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2bde6d87467141ad5d86af569effcaa2">pgrouting::trsp::Pgr_trspHandler::m_parent</a></div><div class="ttdeci">std::vector&lt; Predecessor &gt; m_parent</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00204">pgr_trspHandler.h:204</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a4b2f103768fbe8c13167d531d335f173a3934c8990f796a36bbaf5bf16b7f9655"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a4b2f103768fbe8c13167d531d335f173a3934c8990f796a36bbaf5bf16b7f9655">pgrouting::trsp::Pgr_trspHandler::C_EDGE</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00068">pgr_trspHandler.h:68</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ab89370f920c03be06ba6daddb523c16b_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_ab89370f920c03be06ba6daddb523c16b_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ab89370f920c03be06ba6daddb523c16b_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ab89370f920c03be06ba6daddb523c16b_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a08f8116952de134836abdc50a73e8d58" title="pgrouting::trsp::Pgr\l_trspHandler::add_to_que" alt="" coords="221,5,392,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#abd840dabd48d2aa120f26be3cc22f3dd" title="pgrouting::trsp::EdgeInfo\l::get_idx" alt="" coords="224,71,389,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a45d35952fc73fd46ae67c3c138f420a7" title="pgrouting::trsp::Pgr\l_trspHandler::get_tot_cost" alt="" coords="219,136,395,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#abced4bd03a174bb525b04e91fad18d21" title="pgrouting::trsp::Pgr\l_trspHandler::getRestrictionCost" alt="" coords="200,201,413,243"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#adec99afe13f3695d327d6be7c67e4faf" title="pgrouting::trsp::EdgeInfo::idx" alt="" coords="211,267,402,294"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ab89370f920c03be06ba6daddb523c16b_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_ab89370f920c03be06ba6daddb523c16b_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ab89370f920c03be06ba6daddb523c16b_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_ab89370f920c03be06ba6daddb523c16b_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a50129ef8113261ab2e159b00bd939ee7" title="pgrouting::trsp::Pgr\l_trspHandler::dijkstra\l_exploration" alt="" coords="200,5,347,61"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a45d35952fc73fd46ae67c3c138f420a7"></a>
@@ -993,15 +825,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="pgr__trspHandler_8cpp_source.html#l00184">explore()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                      {</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">if</span> (isStart) {</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a20f5e9139cdf71168a00eecbd2bb6dbd">m_dCost</a>[edge_idx].startCost +</div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            cost;</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a20f5e9139cdf71168a00eecbd2bb6dbd">m_dCost</a>[edge_idx].endCost +</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        cost;</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a20f5e9139cdf71168a00eecbd2bb6dbd"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a20f5e9139cdf71168a00eecbd2bb6dbd">pgrouting::trsp::Pgr_trspHandler::m_dCost</a></div><div class="ttdeci">std::vector&lt; CostHolder &gt; m_dCost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00205">pgr_trspHandler.h:205</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a45d35952fc73fd46ae67c3c138f420a7_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a45d35952fc73fd46ae67c3c138f420a7_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a45d35952fc73fd46ae67c3c138f420a7_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a45d35952fc73fd46ae67c3c138f420a7_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#ab89370f920c03be06ba6daddb523c16b" title="pgrouting::trsp::Pgr\l_trspHandler::explore" alt="" coords="229,5,376,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="abced4bd03a174bb525b04e91fad18d21"></a>
@@ -1056,23 +880,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a2133ef643340fa3a54755c5ebaddf18f"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2133ef643340fa3a54755c5ebaddf18f">pgrouting::trsp::Pgr_trspHandler::m_ruleTable</a></div><div class="ttdeci">std::map&lt; int64_t, std::vector&lt; Rule &gt; &gt; m_ruleTable</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00207">pgr_trspHandler.h:207</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a2bde6d87467141ad5d86af569effcaa2"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2bde6d87467141ad5d86af569effcaa2">pgrouting::trsp::Pgr_trspHandler::m_parent</a></div><div class="ttdeci">std::vector&lt; Predecessor &gt; m_parent</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00204">pgr_trspHandler.h:204</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a4b2f103768fbe8c13167d531d335f173a3934c8990f796a36bbaf5bf16b7f9655"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a4b2f103768fbe8c13167d531d335f173a3934c8990f796a36bbaf5bf16b7f9655">pgrouting::trsp::Pgr_trspHandler::C_EDGE</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00068">pgr_trspHandler.h:68</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_abced4bd03a174bb525b04e91fad18d21_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_abced4bd03a174bb525b04e91fad18d21_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_abced4bd03a174bb525b04e91fad18d21_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_abced4bd03a174bb525b04e91fad18d21_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#abab33ba287aed7ae3e8515899bf2799a" title="pgrouting::trsp::EdgeInfo\l::edgeID" alt="" coords="267,5,432,47"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_abced4bd03a174bb525b04e91fad18d21_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_abced4bd03a174bb525b04e91fad18d21_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_abced4bd03a174bb525b04e91fad18d21_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_abced4bd03a174bb525b04e91fad18d21_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#ab89370f920c03be06ba6daddb523c16b" title="pgrouting::trsp::Pgr\l_trspHandler::explore" alt="" coords="267,5,413,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a9f286e7c5e226a50bfe0e47e08eed2dd"></a>
@@ -1110,28 +918,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a1dd6929e821030d7dbb290e0aeca1900"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a1dd6929e821030d7dbb290e0aeca1900">pgrouting::trsp::Pgr_trspHandler::m_edges</a></div><div class="ttdeci">std::vector&lt; EdgeInfo &gt; m_edges</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00178">pgr_trspHandler.h:178</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a4b2f103768fbe8c13167d531d335f173af81a4f4016aa481d88a747fab239e6f3"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a4b2f103768fbe8c13167d531d335f173af81a4f4016aa481d88a747fab239e6f3">pgrouting::trsp::Pgr_trspHandler::ILLEGAL</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00068">pgr_trspHandler.h:68</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a2bde6d87467141ad5d86af569effcaa2"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2bde6d87467141ad5d86af569effcaa2">pgrouting::trsp::Pgr_trspHandler::m_parent</a></div><div class="ttdeci">std::vector&lt; Predecessor &gt; m_parent</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00204">pgr_trspHandler.h:204</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a9f286e7c5e226a50bfe0e47e08eed2dd_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a9f286e7c5e226a50bfe0e47e08eed2dd_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a9f286e7c5e226a50bfe0e47e08eed2dd_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a9f286e7c5e226a50bfe0e47e08eed2dd_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a08f8116952de134836abdc50a73e8d58" title="pgrouting::trsp::Pgr\l_trspHandler::add_to_que" alt="" coords="242,5,413,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#af6ed9c842a0b93075d68592b8b95f8cd" title="pgrouting::trsp::EdgeInfo\l::cost" alt="" coords="245,71,410,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a15862ce110860af066ab71280d168e0f" title="pgrouting::trsp::EdgeInfo\l::endNode" alt="" coords="245,136,410,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#adec99afe13f3695d327d6be7c67e4faf" title="pgrouting::trsp::EdgeInfo::idx" alt="" coords="232,202,423,229"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a609ab38adc34b2fa5849a2619b327366" title="pgrouting::trsp::EdgeInfo\l::r_cost" alt="" coords="245,253,410,295"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1trsp_1_1EdgeInfo.html#a85be094bf38430760f77bbff308fcc17" title="pgrouting::trsp::EdgeInfo\l::startNode" alt="" coords="245,319,410,360"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a9f286e7c5e226a50bfe0e47e08eed2dd_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a9f286e7c5e226a50bfe0e47e08eed2dd_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a9f286e7c5e226a50bfe0e47e08eed2dd_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a9f286e7c5e226a50bfe0e47e08eed2dd_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320" title="pgrouting::trsp::Pgr\l_trspHandler::process_trsp" alt="" coords="232,5,411,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a258d73744b2d5ecfb11264fcea3a89e4"></a>
@@ -1164,15 +951,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="pgr__trspHandler_8cpp_source.html#l00043">Pgr_trspHandler()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                                         {</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> rule : ruleList) {</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keyword">auto</span> dest_edge_id = rule.dest_id();</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2133ef643340fa3a54755c5ebaddf18f">m_ruleTable</a>.find(dest_edge_id) != <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2133ef643340fa3a54755c5ebaddf18f">m_ruleTable</a>.end()) {</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2133ef643340fa3a54755c5ebaddf18f">m_ruleTable</a>[dest_edge_id].push_back(rule);</div><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            std::vector&lt;Rule&gt; r;</div><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            r.push_back(rule);</div><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <a class="code" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2133ef643340fa3a54755c5ebaddf18f">m_ruleTable</a>.insert(std::make_pair(dest_edge_id, r));</div><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        }</div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a2133ef643340fa3a54755c5ebaddf18f"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2133ef643340fa3a54755c5ebaddf18f">pgrouting::trsp::Pgr_trspHandler::m_ruleTable</a></div><div class="ttdeci">std::map&lt; int64_t, std::vector&lt; Rule &gt; &gt; m_ruleTable</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00207">pgr_trspHandler.h:207</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a258d73744b2d5ecfb11264fcea3a89e4_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a258d73744b2d5ecfb11264fcea3a89e4_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a258d73744b2d5ecfb11264fcea3a89e4_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a258d73744b2d5ecfb11264fcea3a89e4_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aaf0d27f8b8c115993da6c4f431c11da0" title="pgrouting::trsp::Pgr\l_trspHandler::Pgr_trspHandler" alt="" coords="204,13,403,54"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a009a1e7a265748859119283365a51d7a"></a>
@@ -1218,25 +997,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a1dd6929e821030d7dbb290e0aeca1900"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a1dd6929e821030d7dbb290e0aeca1900">pgrouting::trsp::Pgr_trspHandler::m_edges</a></div><div class="ttdeci">std::vector&lt; EdgeInfo &gt; m_edges</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00178">pgr_trspHandler.h:178</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a63bed2396318bb2c8704203f6a81361a"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a63bed2396318bb2c8704203f6a81361a">pgrouting::trsp::Pgr_trspHandler::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8cpp_source.html#l00087">pgr_trspHandler.cpp:87</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a19e30cc05b6699487784283000d9fa6c"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a19e30cc05b6699487784283000d9fa6c">pgrouting::trsp::Pgr_trspHandler::m_end_vertex</a></div><div class="ttdeci">int64_t m_end_vertex</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00193">pgr_trspHandler.h:193</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a009a1e7a265748859119283365a51d7a_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a009a1e7a265748859119283365a51d7a_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a009a1e7a265748859119283365a51d7a_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a009a1e7a265748859119283365a51d7a_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a63bed2396318bb2c8704203f6a81361a" title="pgrouting::trsp::Pgr\l_trspHandler::clear" alt="" coords="227,5,360,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a5d3b1ce02215d5c0ea5519e678b9c320" title="pgrouting::trsp::Pgr\l_trspHandler::process_trsp" alt="" coords="204,71,383,112"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a009a1e7a265748859119283365a51d7a_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a009a1e7a265748859119283365a51d7a_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a009a1e7a265748859119283365a51d7a_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a009a1e7a265748859119283365a51d7a_icgraph">
-<area shape="rect" id="node2" href="trsp__driver_8h.html#add2f6bfeba454f45dc4c47d13723563c" title="do_trsp" alt="" coords="247,5,312,32"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aa9906883b4fdee00762ac1866329d0c2" title="process " alt="" coords="204,57,355,98"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aa9906883b4fdee00762ac1866329d0c2"></a>
@@ -1275,17 +1036,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classPath_html_ad7eff4c127cba19f2052398089ac3b42"><div class="ttname"><a href="classPath.html#ad7eff4c127cba19f2052398089ac3b42">Path::end_id</a></div><div class="ttdeci">int64_t end_id() const</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00067">basePath_SSEC.hpp:67</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a009a1e7a265748859119283365a51d7a"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a009a1e7a265748859119283365a51d7a">pgrouting::trsp::Pgr_trspHandler::process</a></div><div class="ttdeci">Path process(const int64_t start_vertex, const int64_t end_vertex)</div><div class="ttdoc">process </div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8cpp_source.html#l00257">pgr_trspHandler.cpp:257</a></div></div>
 <div class="ttc" id="classPath_html_a969ad8937eb448f350193fd203ad97d2"><div class="ttname"><a href="classPath.html#a969ad8937eb448f350193fd203ad97d2">Path::start_id</a></div><div class="ttdeci">int64_t start_id() const</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00065">basePath_SSEC.hpp:65</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_aa9906883b4fdee00762ac1866329d0c2_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_aa9906883b4fdee00762ac1866329d0c2_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_aa9906883b4fdee00762ac1866329d0c2_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_aa9906883b4fdee00762ac1866329d0c2_cgraph">
-<area shape="rect" id="node2" href="classPath.html#ad7eff4c127cba19f2052398089ac3b42" title="Path::end_id" alt="" coords="232,5,327,32"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a009a1e7a265748859119283365a51d7a" title="process " alt="" coords="204,57,355,98"/>
-<area shape="rect" id="node4" href="classPath.html#a969ad8937eb448f350193fd203ad97d2" title="Path::start_id" alt="" coords="229,123,329,149"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a5d3b1ce02215d5c0ea5519e678b9c320"></a>
@@ -1337,29 +1088,7 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="classPath_html_a969ad8937eb448f350193fd203ad97d2"><div class="ttname"><a href="classPath.html#a969ad8937eb448f350193fd203ad97d2">Path::start_id</a></div><div class="ttdeci">int64_t start_id() const</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00065">basePath_SSEC.hpp:65</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a2bde6d87467141ad5d86af569effcaa2"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2bde6d87467141ad5d86af569effcaa2">pgrouting::trsp::Pgr_trspHandler::m_parent</a></div><div class="ttdeci">std::vector&lt; Predecessor &gt; m_parent</div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00204">pgr_trspHandler.h:204</a></div></div>
 <div class="ttc" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_html_a4b2f103768fbe8c13167d531d335f173a3934c8990f796a36bbaf5bf16b7f9655"><div class="ttname"><a href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a4b2f103768fbe8c13167d531d335f173a3934c8990f796a36bbaf5bf16b7f9655">pgrouting::trsp::Pgr_trspHandler::C_EDGE</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__trspHandler_8h_source.html#l00068">pgr_trspHandler.h:68</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5d3b1ce02215d5c0ea5519e678b9c320_cgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5d3b1ce02215d5c0ea5519e678b9c320_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5d3b1ce02215d5c0ea5519e678b9c320_cgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5d3b1ce02215d5c0ea5519e678b9c320_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#afb0d7e7d3049ca1c2a003b0571fcc02d" title="pgrouting::trsp::Pgr\l_trspHandler::construct_path" alt="" coords="232,41,423,82"/>
-<area shape="rect" id="node3" href="classPath.html#a5b5d58e304f85ef96637a260917c30ac" title="Path::push_back" alt="" coords="471,22,591,48"/>
-<area shape="rect" id="node4" href="classPath.html#a969ad8937eb448f350193fd203ad97d2" title="Path::start_id" alt="" coords="481,76,581,103"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a50129ef8113261ab2e159b00bd939ee7" title="pgrouting::trsp::Pgr\l_trspHandler::dijkstra\l_exploration" alt="" coords="254,158,401,214"/>
-<area shape="rect" id="node6" href="classPath.html#ad7eff4c127cba19f2052398089ac3b42" title="Path::end_id" alt="" coords="280,238,375,264"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a9f286e7c5e226a50bfe0e47e08eed2dd" title="pgrouting::trsp::Pgr\l_trspHandler::initialize_que" alt="" coords="238,289,417,330"/>
-<area shape="rect" id="node8" href="classPath.html#a2a39623954fa27c2ec079c9ac1ace66d" title="Path::renumber_vertices" alt="" coords="245,355,409,382"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5d3b1ce02215d5c0ea5519e678b9c320_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5d3b1ce02215d5c0ea5519e678b9c320_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5d3b1ce02215d5c0ea5519e678b9c320_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_a5d3b1ce02215d5c0ea5519e678b9c320_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a009a1e7a265748859119283365a51d7a" title="process " alt="" coords="232,5,383,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af7aa55cc3fedf3cd6f1ce2e801b20116"></a>
@@ -1403,15 +1132,7 @@ Here is the caller graph for this function:</div>
 <p class="reference">Referenced by <a class="el" href="pgr__trspHandler_8cpp_source.html#l00043">Pgr_trspHandler()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                  {</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        int64_t v_min_id = UINT64_MAX;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">size_t</span> z;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">for</span> (z = 0; z &lt; total_edges; z++) {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">if</span> (edges[z].source &lt; v_min_id)</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                v_min_id = edges[z].<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a>;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">if</span> (edges[z].target &lt; v_min_id)</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                v_min_id = edges[z].<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a>;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">for</span> (z = 0; z &lt; total_edges; z++) {</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            edges[z].<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> -= v_min_id;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            edges[z].<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> -= v_min_id;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> v_min_id;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div><div class="ttc" id="structpgr__edge__t_html_a04a67da786054e84776d9e8d4b434f27"><div class="ttname"><a href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">pgr_edge_t::source</a></div><div class="ttdeci">int64_t source</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00039">pgr_edge_t.h:39</a></div></div>
 <div class="ttc" id="structpgr__edge__t_html_a46e9fc03e52f0b84da533d63b7bbce1d"><div class="ttname"><a href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">pgr_edge_t::target</a></div><div class="ttdeci">int64_t target</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00040">pgr_edge_t.h:40</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1trsp_1_1Pgr__trspHandler_af7aa55cc3fedf3cd6f1ce2e801b20116_icgraph.png" border="0" usemap="#classpgrouting_1_1trsp_1_1Pgr__trspHandler_af7aa55cc3fedf3cd6f1ce2e801b20116_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1trsp_1_1Pgr__trspHandler_af7aa55cc3fedf3cd6f1ce2e801b20116_icgraph" id="classpgrouting_1_1trsp_1_1Pgr__trspHandler_af7aa55cc3fedf3cd6f1ce2e801b20116_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aaf0d27f8b8c115993da6c4f431c11da0" title="pgrouting::trsp::Pgr\l_trspHandler::Pgr_trspHandler" alt="" coords="253,5,452,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -1741,7 +1462,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1trsp.html">trsp</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1trsp_1_1Pgr__trspHandler.html">Pgr_trspHandler</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:46 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:38 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

@@ -1,9 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::evaluate" name="pgrouting::vrp::Vehicle::evaluate">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#ae1ed768d6cabc552f29b2d33d86ff386" title="pgrouting::vrp::Vehicle\l::capacity" alt="" coords="419,45,571,87"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a163d32b8d5c8e0444e4fa432b680a784" title="pgrouting::vrp::Vehicle\l::Vehicle" alt="" coords="619,16,771,57"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#ad1920dd6aed04b9381b9b2ec78dddc47" title="Erase node.id() " alt="" coords="212,96,364,137"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#af98de97049075d4db58f3e97dc9185aa" title="@ { " alt="" coords="212,161,364,203"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa894fd15242682756ea30cc1bbd6aa42" title="puts an order at the end of the truck " alt="" coords="205,227,371,268"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69" title="Puts an order at the end front of the truck. " alt="" coords="207,292,369,333"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0d79d716f770c845cfb2e811688fc350" title="Swap two nodes in the path. " alt="" coords="212,357,364,399"/>
-</map>

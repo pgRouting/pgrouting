@@ -1,6 +1,0 @@
-<map id="fetch_restriction" name="fetch_restriction">
-<area shape="rect" id="node2" href="$get__check__data_8c.html#a242b8e2225de6f8c47cf3133c440588e" title="Function will check whether the colNumber represent any specific column or NULL (SPI_ERROR_NOATTRIBUT..." alt="" coords="189,5,292,32"/>
-<area shape="rect" id="node3" href="$get__check__data_8c.html#ab4e654806d1a43314c3e7fa692705448" title="Function returns the value of specified column in integer type. " alt="" coords="177,56,305,83"/>
-<area shape="rect" id="node4" href="$get__check__data_8c.html#a565f26aa924fff943c074855fea04d59" title="Function returns the values of specified columns in array. " alt="" coords="168,107,313,133"/>
-<area shape="rect" id="node5" href="$get__check__data_8c.html#a6d8da632b86bd8f4e0f84f2a4219c887" title="Function returns the value of specified column in double type. " alt="" coords="175,157,306,184"/>
-</map>

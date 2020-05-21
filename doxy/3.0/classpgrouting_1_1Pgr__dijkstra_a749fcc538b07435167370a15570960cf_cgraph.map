@@ -1,6 +1,0 @@
-<map id="pgrouting::Pgr_dijkstra::dijkstra" name="pgrouting::Pgr_dijkstra::dijkstra">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__dijkstra.html#a05e8e51c93fc5c30771c6e31eac4542a" title="pgrouting::Pgr_dijkstra\l::clear" alt="" coords="205,5,357,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Pgr__dijkstra.html#a38e59d67fcff0ff3bd2cd94c73caa07c" title="Dijkstra 1 source to many targets. " alt="" coords="205,71,357,112"/>
-<area shape="rect" id="node4" href="$classPath.html#ad7eff4c127cba19f2052398089ac3b42" title="Path::end_id" alt="" coords="234,137,329,163"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1Pgr__dijkstra.html#a2c8b97f730d692e2f21219b4889c2bf4" title="pgrouting::Pgr_dijkstra\l::get_paths" alt="" coords="205,188,357,229"/>
-</map>

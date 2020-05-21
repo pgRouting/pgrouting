@@ -1,9 +1,0 @@
-digraph "pgr_check_any_numerical_type"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node244 [label="pgr_check_any_numerical_type",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node244 -> Node245 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node245 [label="pgr_fetch_column_info",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$get__check__data_8h.html#ae6967f852e7bc95d5d5131b06131de46",tooltip="Function tells expected type of each column and then check the correspondence type of each column..."];
-}

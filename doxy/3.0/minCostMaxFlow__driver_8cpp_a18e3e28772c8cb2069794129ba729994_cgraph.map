@@ -1,8 +1,0 @@
-<map id="do_pgr_minCostMaxFlow" name="do_pgr_minCostMaxFlow">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a1a9475396cc368cde13dd664316c853a" title="pgrouting::graph::PgrCost\lFlowGraph::GetFlowEdges" alt="" coords="467,14,645,56"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a28c4c1b3af55280347d2f79b8387ef90" title="pgrouting::graph::PgrCost\lFlowGraph::MinCostMaxFlow" alt="" coords="224,40,419,81"/>
-<area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="519,131,593,158"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="287,156,356,183"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="285,207,357,234"/>
-<area shape="rect" id="node7" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="245,258,398,300"/>
-</map>

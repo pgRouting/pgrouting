@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::getPosHighLimit" name="pgrouting::vrp::Vehicle::getPosHighLimit">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#ae1ed768d6cabc552f29b2d33d86ff386" title="pgrouting::vrp::Vehicle\l::capacity" alt="" coords="405,25,557,66"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a17be5b5bea2071f1e44b594f45019ef4" title="pgrouting::vrp::Vehicle\l::drop_position_limits" alt="" coords="205,25,357,66"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aa1928ca2eea11f43f5ad021a22c9a5e6" title="pgrouting::vrp::Vehicle\l::position_limits" alt="" coords="205,90,357,131"/>
-</map>

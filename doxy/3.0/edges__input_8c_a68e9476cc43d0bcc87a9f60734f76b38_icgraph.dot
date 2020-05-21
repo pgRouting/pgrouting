@@ -1,9 +1,0 @@
-digraph "pgr_get_edges_xy"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node276 [label="pgr_get_edges_xy",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node276 -> Node277 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node277 [label="process",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$alphaShape_8c.html#a8ec83502f132f54704db628d7ac7bd03"];
-}

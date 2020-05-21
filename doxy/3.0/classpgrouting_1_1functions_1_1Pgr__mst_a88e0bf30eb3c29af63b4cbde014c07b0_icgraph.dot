@@ -1,9 +1,0 @@
-digraph "pgrouting::functions::Pgr_mst::no_neg_costs"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node192 [label="pgrouting::functions\l::Pgr_mst::no_neg_costs",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node192 -> Node193 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node193 [label="pgrouting::functions\l::Pgr_mst::mst",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1functions_1_1Pgr__mst.html#a02ba33c4967775b2848e81aac3b20f28"];
-}

@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -196,23 +196,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="structpath__element_html_a2814cf3cb27dbf80d96b10f10de939fc"><div class="ttname"><a href="structpath__element.html#a2814cf3cb27dbf80d96b10f10de939fc">path_element::edge_id</a></div><div class="ttdeci">int64 edge_id</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00058">trsp.h:58</a></div></div>
 <div class="ttc" id="trsp_8c_html_af22a27dfd9329f65ede022007d5d2413"><div class="ttname"><a href="trsp_8c.html#af22a27dfd9329f65ede022007d5d2413">compute_trsp</a></div><div class="ttdeci">static int compute_trsp(char *sql, int dovertex, int64_t start_id, double start_pos, int64_t end_id, double end_pos, bool directed, bool has_reverse_cost, char *restrict_sql, path_element_tt **path, size_t *path_count)</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00236">trsp.c:236</a></div></div>
 <div class="ttc" id="structpath__element_html_a5c0c1a19b0ac59fc428dd0b7f2cea5fd"><div class="ttname"><a href="structpath__element.html#a5c0c1a19b0ac59fc428dd0b7f2cea5fd">path_element::vertex_id</a></div><div class="ttdeci">int64 vertex_id</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00057">trsp.h:57</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="trsp_8c_ac62ff56bdac2d82541c7d48327b8ff62_cgraph.png" border="0" usemap="#trsp_8c_ac62ff56bdac2d82541c7d48327b8ff62_cgraph" alt=""/></div>
-<map name="trsp_8c_ac62ff56bdac2d82541c7d48327b8ff62_cgraph" id="trsp_8c_ac62ff56bdac2d82541c7d48327b8ff62_cgraph">
-<area shape="rect" id="node2" href="trsp_8c.html#af22a27dfd9329f65ede022007d5d2413" title="compute_trsp" alt="" coords="129,5,231,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="trsp_8c_ac62ff56bdac2d82541c7d48327b8ff62_icgraph.png" border="0" usemap="#trsp_8c_ac62ff56bdac2d82541c7d48327b8ff62_icgraph" alt=""/></div>
-<map name="trsp_8c_ac62ff56bdac2d82541c7d48327b8ff62_icgraph" id="trsp_8c_ac62ff56bdac2d82541c7d48327b8ff62_icgraph">
-<area shape="rect" id="node2" href="trsp_8c.html#af22a27dfd9329f65ede022007d5d2413" title="compute_trsp" alt="" coords="129,5,231,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af22a27dfd9329f65ede022007d5d2413"></a>
@@ -323,30 +307,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="structrestrict__columns_html_a469abbb030bb630db6a1080f6f353db0"><div class="ttname"><a href="structrestrict__columns.html#a469abbb030bb630db6a1080f6f353db0">restrict_columns::target_id</a></div><div class="ttdeci">int target_id</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00047">trsp.c:47</a></div></div>
 <div class="ttc" id="trsp_8c_html_a08bb74b6255b8a583fd953d6995723df"><div class="ttname"><a href="trsp_8c.html#a08bb74b6255b8a583fd953d6995723df">fetch_restrict</a></div><div class="ttdeci">static void fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc, restrict_columns_t *restrict_columns, restrict_t *rest)</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00197">trsp.c:197</a></div></div>
 <div class="ttc" id="structrestrict__struct_html"><div class="ttname"><a href="structrestrict__struct.html">restrict_struct</a></div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00049">trsp.h:49</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="trsp_8c_af22a27dfd9329f65ede022007d5d2413_cgraph.png" border="0" usemap="#trsp_8c_af22a27dfd9329f65ede022007d5d2413_cgraph" alt=""/></div>
-<map name="trsp_8c_af22a27dfd9329f65ede022007d5d2413_cgraph" id="trsp_8c_af22a27dfd9329f65ede022007d5d2413_cgraph">
-<area shape="rect" id="node2" href="trsp_8c.html#ac62ff56bdac2d82541c7d48327b8ff62" title="_pgr_trsp" alt="" coords="207,5,283,32"/>
-<area shape="rect" id="node3" href="trsp_8c.html#abcd007a7a8d5408a84f9572afc0b13a0" title="fetch_edge" alt="" coords="201,56,288,83"/>
-<area shape="rect" id="node4" href="trsp_8c.html#aa2255175b96837aebe5f2a28b57f72a7" title="fetch_edge_columns" alt="" coords="173,107,316,133"/>
-<area shape="rect" id="node5" href="trsp_8c.html#a08bb74b6255b8a583fd953d6995723df" title="fetch_restrict" alt="" coords="195,157,294,184"/>
-<area shape="rect" id="node6" href="trsp_8c.html#a7623760f545a367335141630d9e715ac" title="fetch_restrict_columns" alt="" coords="167,208,322,235"/>
-<area shape="rect" id="node7" href="trsp_8c.html#adbf69d62298e4d47f81c749cebaad544" title="finish" alt="" coords="218,259,271,285"/>
-<area shape="rect" id="node8" href="trsp_8c.html#a8ace5e6e5847bde7f9cb33c5955639d3" title="PG_FUNCTION_INFO_V1" alt="" coords="155,309,335,336"/>
-<area shape="rect" id="node9" href="trsp__core_8cpp.html#a9936d9f5cc903264889dd89eb99b219d" title="trsp_edge_wrapper" alt="" coords="179,360,311,387"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="trsp_8c_af22a27dfd9329f65ede022007d5d2413_icgraph.png" border="0" usemap="#trsp_8c_af22a27dfd9329f65ede022007d5d2413_icgraph" alt=""/></div>
-<map name="trsp_8c_af22a27dfd9329f65ede022007d5d2413_icgraph" id="trsp_8c_af22a27dfd9329f65ede022007d5d2413_icgraph">
-<area shape="rect" id="node2" href="trsp_8c.html#ac62ff56bdac2d82541c7d48327b8ff62" title="_pgr_trsp" alt="" coords="155,5,231,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="abcd007a7a8d5408a84f9572afc0b13a0"></a>
@@ -410,15 +371,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="structedge__columns_html_a0dbd47d0cad2708a57aa189af858d5f2"><div class="ttname"><a href="structedge__columns.html#a0dbd47d0cad2708a57aa189af858d5f2">edge_columns::target</a></div><div class="ttdeci">int target</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00041">trsp.c:41</a></div></div>
 <div class="ttc" id="structedge__t_html_a459219b7f2784c65d892d12360721d56"><div class="ttname"><a href="structedge__t.html#a459219b7f2784c65d892d12360721d56">edge_t::reverse_cost</a></div><div class="ttdeci">double reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="trsp__types_8h_source.html#l00042">trsp_types.h:42</a></div></div>
 <div class="ttc" id="structedge__t_html_a12b3db2123a975c24f49a01b09ea70d8"><div class="ttname"><a href="structedge__t.html#a12b3db2123a975c24f49a01b09ea70d8">edge_t::id</a></div><div class="ttdeci">int64_t id</div><div class="ttdef"><b>Definition:</b> <a href="trsp__types_8h_source.html#l00038">trsp_types.h:38</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="trsp_8c_abcd007a7a8d5408a84f9572afc0b13a0_icgraph.png" border="0" usemap="#trsp_8c_abcd007a7a8d5408a84f9572afc0b13a0_icgraph" alt=""/></div>
-<map name="trsp_8c_abcd007a7a8d5408a84f9572afc0b13a0_icgraph" id="trsp_8c_abcd007a7a8d5408a84f9572afc0b13a0_icgraph">
-<area shape="rect" id="node2" href="trsp_8c.html#af22a27dfd9329f65ede022007d5d2413" title="compute_trsp" alt="" coords="140,5,241,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aa2255175b96837aebe5f2a28b57f72a7"></a>
@@ -472,15 +425,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="structedge__columns_html_ae543a17157037d95212232b9688d29aa"><div class="ttname"><a href="structedge__columns.html#ae543a17157037d95212232b9688d29aa">edge_columns::cost</a></div><div class="ttdeci">int cost</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00042">trsp.c:42</a></div></div>
 <div class="ttc" id="structedge__columns_html_ab56450475f6dbbc6f05b6a01e6c4b62d"><div class="ttname"><a href="structedge__columns.html#ab56450475f6dbbc6f05b6a01e6c4b62d">edge_columns::source</a></div><div class="ttdeci">int source</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00040">trsp.c:40</a></div></div>
 <div class="ttc" id="structedge__columns_html_a0dbd47d0cad2708a57aa189af858d5f2"><div class="ttname"><a href="structedge__columns.html#a0dbd47d0cad2708a57aa189af858d5f2">edge_columns::target</a></div><div class="ttdeci">int target</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00041">trsp.c:41</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="trsp_8c_aa2255175b96837aebe5f2a28b57f72a7_icgraph.png" border="0" usemap="#trsp_8c_aa2255175b96837aebe5f2a28b57f72a7_icgraph" alt=""/></div>
-<map name="trsp_8c_aa2255175b96837aebe5f2a28b57f72a7_icgraph" id="trsp_8c_aa2255175b96837aebe5f2a28b57f72a7_icgraph">
-<area shape="rect" id="node2" href="trsp_8c.html#af22a27dfd9329f65ede022007d5d2413" title="compute_trsp" alt="" coords="196,5,297,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a08bb74b6255b8a583fd953d6995723df"></a>
@@ -541,15 +486,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="structrestrict__struct_html_a031fb0e31f95ccff997607c94c8174be"><div class="ttname"><a href="structrestrict__struct.html#a031fb0e31f95ccff997607c94c8174be">restrict_struct::to_cost</a></div><div class="ttdeci">float8 to_cost</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00051">trsp.h:51</a></div></div>
 <div class="ttc" id="structrestrict__columns_html_a469abbb030bb630db6a1080f6f353db0"><div class="ttname"><a href="structrestrict__columns.html#a469abbb030bb630db6a1080f6f353db0">restrict_columns::target_id</a></div><div class="ttdeci">int target_id</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00047">trsp.c:47</a></div></div>
 <div class="ttc" id="trsp_8h_html_a2b2d1b8288abf80b6781151bdde6101f"><div class="ttname"><a href="trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a></div><div class="ttdeci">#define MAX_RULE_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00029">trsp.h:29</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="trsp_8c_a08bb74b6255b8a583fd953d6995723df_icgraph.png" border="0" usemap="#trsp_8c_a08bb74b6255b8a583fd953d6995723df_icgraph" alt=""/></div>
-<map name="trsp_8c_a08bb74b6255b8a583fd953d6995723df_icgraph" id="trsp_8c_a08bb74b6255b8a583fd953d6995723df_icgraph">
-<area shape="rect" id="node2" href="trsp_8c.html#af22a27dfd9329f65ede022007d5d2413" title="compute_trsp" alt="" coords="152,5,253,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7623760f545a367335141630d9e715ac"></a>
@@ -594,15 +531,7 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                             {</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  restrict_columns-&gt;<a class="code" href="structrestrict__columns.html#a469abbb030bb630db6a1080f6f353db0">target_id</a> = SPI_fnumber(tuptable-&gt;tupdesc, <span class="stringliteral">&quot;target_id&quot;</span>);</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  restrict_columns-&gt;<a class="code" href="structrestrict__columns.html#a30a7044878bb8cb05fd5e0bb03edabfc">via_path</a> = SPI_fnumber(tuptable-&gt;tupdesc, <span class="stringliteral">&quot;via_path&quot;</span>);</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  restrict_columns-&gt;<a class="code" href="structrestrict__columns.html#ade7bb1824c15fbde7f49c8e5e71fdf2c">to_cost</a> =  SPI_fnumber(tuptable-&gt;tupdesc, <span class="stringliteral">&quot;to_cost&quot;</span>);</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">if</span> (restrict_columns-&gt;<a class="code" href="structrestrict__columns.html#a469abbb030bb630db6a1080f6f353db0">target_id</a> == SPI_ERROR_NOATTRIBUTE ||</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      restrict_columns-&gt;<a class="code" href="structrestrict__columns.html#a30a7044878bb8cb05fd5e0bb03edabfc">via_path</a> == SPI_ERROR_NOATTRIBUTE ||</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      restrict_columns-&gt;<a class="code" href="structrestrict__columns.html#ade7bb1824c15fbde7f49c8e5e71fdf2c">to_cost</a> == SPI_ERROR_NOATTRIBUTE) {</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    elog(ERROR, <span class="stringliteral">&quot;Error, restriction query must return columns &quot;</span></div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="stringliteral">&quot;&#39;target_id&#39;, &#39;via_path&#39; and &#39;to_cost&#39;&quot;</span>);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  }</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">if</span> (SPI_gettypeid(tuptable-&gt;tupdesc,</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;       restrict_columns-&gt;<a class="code" href="structrestrict__columns.html#a469abbb030bb630db6a1080f6f353db0">target_id</a>) != INT4OID ||</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;     SPI_gettypeid(tuptable-&gt;tupdesc, restrict_columns-&gt;<a class="code" href="structrestrict__columns.html#a30a7044878bb8cb05fd5e0bb03edabfc">via_path</a>) != TEXTOID ||</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;     SPI_gettypeid(tuptable-&gt;tupdesc, restrict_columns-&gt;<a class="code" href="structrestrict__columns.html#ade7bb1824c15fbde7f49c8e5e71fdf2c">to_cost</a>) != FLOAT8OID) {</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    elog(ERROR, <span class="stringliteral">&quot;Error, restriction columns &#39;target_id&#39; must be of type int4,&quot;</span></div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;     <span class="stringliteral">&quot;&#39;via_path&#39; must be of type text, &#39;to_cost&#39; must be of type float8&quot;</span>);</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  }</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div><div class="ttc" id="structrestrict__columns_html_ade7bb1824c15fbde7f49c8e5e71fdf2c"><div class="ttname"><a href="structrestrict__columns.html#ade7bb1824c15fbde7f49c8e5e71fdf2c">restrict_columns::to_cost</a></div><div class="ttdeci">int to_cost</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00049">trsp.c:49</a></div></div>
 <div class="ttc" id="structrestrict__columns_html_a30a7044878bb8cb05fd5e0bb03edabfc"><div class="ttname"><a href="structrestrict__columns.html#a30a7044878bb8cb05fd5e0bb03edabfc">restrict_columns::via_path</a></div><div class="ttdeci">int via_path</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00048">trsp.c:48</a></div></div>
 <div class="ttc" id="structrestrict__columns_html_a469abbb030bb630db6a1080f6f353db0"><div class="ttname"><a href="structrestrict__columns.html#a469abbb030bb630db6a1080f6f353db0">restrict_columns::target_id</a></div><div class="ttdeci">int target_id</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00047">trsp.c:47</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="trsp_8c_a7623760f545a367335141630d9e715ac_icgraph.png" border="0" usemap="#trsp_8c_a7623760f545a367335141630d9e715ac_icgraph" alt=""/></div>
-<map name="trsp_8c_a7623760f545a367335141630d9e715ac_icgraph" id="trsp_8c_a7623760f545a367335141630d9e715ac_icgraph">
-<area shape="rect" id="node2" href="trsp_8c.html#af22a27dfd9329f65ede022007d5d2413" title="compute_trsp" alt="" coords="208,5,309,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="adbf69d62298e4d47f81c749cebaad544"></a>
@@ -645,15 +574,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="trsp_8c_source.html#l00236">compute_trsp()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                          {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;In finish, trying to disconnect from spi %d&quot;</span>, ret);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  code = SPI_finish();</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">if</span> (code != SPI_OK_FINISH) {</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    elog(ERROR, <span class="stringliteral">&quot;couldn&#39;t disconnect from SPI&quot;</span>);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">return</span> ret;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div><div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00034">debug_macro.h:34</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="trsp_8c_adbf69d62298e4d47f81c749cebaad544_icgraph.png" border="0" usemap="#trsp_8c_adbf69d62298e4d47f81c749cebaad544_icgraph" alt=""/></div>
-<map name="trsp_8c_adbf69d62298e4d47f81c749cebaad544_icgraph" id="trsp_8c_adbf69d62298e4d47f81c749cebaad544_icgraph">
-<area shape="rect" id="node2" href="trsp_8c.html#af22a27dfd9329f65ede022007d5d2413" title="compute_trsp" alt="" coords="107,5,208,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a8ace5e6e5847bde7f9cb33c5955639d3"></a>
@@ -673,14 +594,6 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p class="reference">Referenced by <a class="el" href="trsp_8c_source.html#l00236">compute_trsp()</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="trsp_8c_a8ace5e6e5847bde7f9cb33c5955639d3_icgraph.png" border="0" usemap="#trsp_8c_a8ace5e6e5847bde7f9cb33c5955639d3_icgraph" alt=""/></div>
-<map name="trsp_8c_a8ace5e6e5847bde7f9cb33c5955639d3_icgraph" id="trsp_8c_a8ace5e6e5847bde7f9cb33c5955639d3_icgraph">
-<area shape="rect" id="node2" href="trsp_8c.html#af22a27dfd9329f65ede022007d5d2413" title="compute_trsp" alt="" coords="233,5,335,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -690,7 +603,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3ff9a90ff40b28e0f207f5cd80dcba32.html">trsp</a></li><li class="navelem"><a class="el" href="trsp_8c.html">trsp.c</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:45 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:37 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

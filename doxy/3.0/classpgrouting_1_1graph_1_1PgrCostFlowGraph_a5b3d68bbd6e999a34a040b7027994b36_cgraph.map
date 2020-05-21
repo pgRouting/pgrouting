@@ -1,4 +1,0 @@
-<map id="pgrouting::graph::PgrCostFlowGraph::AddVertices" name="pgrouting::graph::PgrCostFlowGraph::AddVertices">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a13441d5ae80f761e9207df65372ed43b" title="pgrouting::graph::PgrCost\lFlowGraph::SetSupersink" alt="" coords="232,5,403,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ac0ba9a33bf9941d74d883bd55f529d5c" title="pgrouting::graph::PgrCost\lFlowGraph::SetSupersource" alt="" coords="224,71,411,112"/>
-</map>

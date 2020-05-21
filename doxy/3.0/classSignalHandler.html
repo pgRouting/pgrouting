@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -163,15 +163,7 @@ Static Private Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="signalhandler_8h_source.html#l00087">87</a> of file <a class="el" href="signalhandler_8h_source.html">signalhandler.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="signalhandler_8cpp_source.html#l00038">instance()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{}</div></div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classSignalHandler_a228b8bc652635979dfcfc094d805540f_icgraph.png" border="0" usemap="#classSignalHandler_a228b8bc652635979dfcfc094d805540f_icgraph" alt=""/></div>
-<map name="classSignalHandler_a228b8bc652635979dfcfc094d805540f_icgraph" id="classSignalHandler_a228b8bc652635979dfcfc094d805540f_icgraph">
-<area shape="rect" id="node2" href="classSignalHandler.html#ac9a307bf2b20263020913657b094db9e" title="SignalHandler::instance" alt="" coords="245,5,405,32"/>
-</map>
-</div>
-
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -206,23 +198,7 @@ Here is the caller graph for this function:</div>
 <p class="reference">Referenced by <a class="el" href="signalhandler_8cpp_source.html#l00047">registerHandler()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                         {</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="comment">// Perform a sanity check...</span></div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">SignalHandler::signalHandlers_</a>[signum] != 0)</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// Dispatch the handler&#39;s hook method.</span></div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">SignalHandler::signalHandlers_</a>[signum]-&gt;<a class="code" href="classEventHandler.html#a17b6884e258561bbdf6da050800a6483">handleSignal</a>(signum);</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div><div class="ttc" id="classEventHandler_html_a17b6884e258561bbdf6da050800a6483"><div class="ttname"><a href="classEventHandler.html#a17b6884e258561bbdf6da050800a6483">EventHandler::handleSignal</a></div><div class="ttdeci">virtual void handleSignal(int signum)=0</div></div>
 <div class="ttc" id="classSignalHandler_html_ab0b19876ed234cbe79099ea84fb434af"><div class="ttname"><a href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">SignalHandler::signalHandlers_</a></div><div class="ttdeci">static EventHandler * signalHandlers_[NSIG]</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00100">signalhandler.h:100</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classSignalHandler_a6fda8c0c9ed5c64411ffa35d26b238d1_cgraph.png" border="0" usemap="#classSignalHandler_a6fda8c0c9ed5c64411ffa35d26b238d1_cgraph" alt=""/></div>
-<map name="classSignalHandler_a6fda8c0c9ed5c64411ffa35d26b238d1_cgraph" id="classSignalHandler_a6fda8c0c9ed5c64411ffa35d26b238d1_cgraph">
-<area shape="rect" id="node2" href="classEventHandler.html#a17b6884e258561bbdf6da050800a6483" title="EventHandler::handleSignal" alt="" coords="224,5,407,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classSignalHandler_a6fda8c0c9ed5c64411ffa35d26b238d1_icgraph.png" border="0" usemap="#classSignalHandler_a6fda8c0c9ed5c64411ffa35d26b238d1_icgraph" alt=""/></div>
-<map name="classSignalHandler_a6fda8c0c9ed5c64411ffa35d26b238d1_icgraph" id="classSignalHandler_a6fda8c0c9ed5c64411ffa35d26b238d1_icgraph">
-<area shape="rect" id="node2" href="classSignalHandler.html#af11376ff56c905f739de1700e6891476" title="SignalHandler::registerHandler" alt="" coords="224,5,423,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ac9a307bf2b20263020913657b094db9e"></a>
@@ -254,15 +230,7 @@ Here is the caller graph for this function:</div>
 <p class="reference">References <a class="el" href="signalhandler_8h_source.html#l00090">instance_</a>, and <a class="el" href="signalhandler_8h_source.html#l00087">SignalHandler()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classSignalHandler.html#a3892f07508212faacb36468072311020">instance_</a>) <a class="code" href="classSignalHandler.html#a3892f07508212faacb36468072311020">instance_</a> = <span class="keyword">new</span> <a class="code" href="classSignalHandler.html#a228b8bc652635979dfcfc094d805540f">SignalHandler</a>;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="comment">// assert(instance_ != NULL);</span></div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classSignalHandler.html#a3892f07508212faacb36468072311020">instance_</a>;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div><div class="ttc" id="classSignalHandler_html_a3892f07508212faacb36468072311020"><div class="ttname"><a href="classSignalHandler.html#a3892f07508212faacb36468072311020">SignalHandler::instance_</a></div><div class="ttdeci">static SignalHandler * instance_</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00090">signalhandler.h:90</a></div></div>
 <div class="ttc" id="classSignalHandler_html_a228b8bc652635979dfcfc094d805540f"><div class="ttname"><a href="classSignalHandler.html#a228b8bc652635979dfcfc094d805540f">SignalHandler::SignalHandler</a></div><div class="ttdeci">SignalHandler(void)</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00087">signalhandler.h:87</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classSignalHandler_ac9a307bf2b20263020913657b094db9e_cgraph.png" border="0" usemap="#classSignalHandler_ac9a307bf2b20263020913657b094db9e_cgraph" alt=""/></div>
-<map name="classSignalHandler_ac9a307bf2b20263020913657b094db9e_cgraph" id="classSignalHandler_ac9a307bf2b20263020913657b094db9e_cgraph">
-<area shape="rect" id="node2" href="classSignalHandler.html#a228b8bc652635979dfcfc094d805540f" title="SignalHandler::SignalHandler" alt="" coords="213,5,405,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af11376ff56c905f739de1700e6891476"></a>
@@ -297,15 +265,7 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                           {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// Copy the &lt;old_eh&gt; from the &lt;signum&gt; slot in</span></div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">// the &lt;signalHandlers_&gt; table.</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classEventHandler.html">EventHandler</a> *old_eh = <a class="code" href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">signalHandlers_</a>[signum];</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// Store &lt;eh&gt; into the &lt;signum&gt; slot in the</span></div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment">// &lt;signalHandlers_&gt; table.</span></div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">SignalHandler::signalHandlers_</a>[signum] = eh;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// Register the &lt;dispatcher&gt; to handle this</span></div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// &lt;signum&gt;.</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">struct </span>sigaction sa;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  sa.sa_handler = <a class="code" href="classSignalHandler.html#a6fda8c0c9ed5c64411ffa35d26b238d1">SignalHandler::dispatcher</a>;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  sigemptyset(&amp;sa.sa_mask);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  sa.sa_flags = 0;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  sigaction(signum, &amp;sa, 0);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">return</span> old_eh;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div><div class="ttc" id="classEventHandler_html"><div class="ttname"><a href="classEventHandler.html">EventHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00059">signalhandler.h:59</a></div></div>
 <div class="ttc" id="classSignalHandler_html_ab0b19876ed234cbe79099ea84fb434af"><div class="ttname"><a href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">SignalHandler::signalHandlers_</a></div><div class="ttdeci">static EventHandler * signalHandlers_[NSIG]</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00100">signalhandler.h:100</a></div></div>
 <div class="ttc" id="classSignalHandler_html_a6fda8c0c9ed5c64411ffa35d26b238d1"><div class="ttname"><a href="classSignalHandler.html#a6fda8c0c9ed5c64411ffa35d26b238d1">SignalHandler::dispatcher</a></div><div class="ttdeci">static void dispatcher(int signum)</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8cpp_source.html#l00073">signalhandler.cpp:73</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classSignalHandler_af11376ff56c905f739de1700e6891476_cgraph.png" border="0" usemap="#classSignalHandler_af11376ff56c905f739de1700e6891476_cgraph" alt=""/></div>
-<map name="classSignalHandler_af11376ff56c905f739de1700e6891476_cgraph" id="classSignalHandler_af11376ff56c905f739de1700e6891476_cgraph">
-<area shape="rect" id="node2" href="classSignalHandler.html#a6fda8c0c9ed5c64411ffa35d26b238d1" title="SignalHandler::dispatcher" alt="" coords="252,5,423,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ade885c58ad79e979187db6eb77e456b4"></a>
@@ -395,7 +355,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classSignalHandler.html">SignalHandler</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:45 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:37 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

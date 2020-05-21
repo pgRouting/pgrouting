@@ -1,8 +1,0 @@
-<map id="pgrouting::yen::Pgr_ksp::doNextCycle" name="pgrouting::yen::Pgr_ksp::doNextCycle">
-<area shape="rect" id="node2" href="$classPath.html#a9cb45e3a413a03f1c4224b840af1fe83" title="Path::appendPath" alt="" coords="203,5,329,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Pgr__dijkstra.html#a0489deb2399562b5631d9906f2225234" title="Dijkstra 1 to 1. " alt="" coords="190,57,342,98"/>
-<area shape="rect" id="node4" href="$classPath.html#a6e915a3786eccd377d84a284b3152e2b" title="Path::getSubpath" alt="" coords="205,123,327,149"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1yen_1_1Pgr__ksp_1_1Visitor.html#a377b18dcaeb190e30fb6b2d7c1ab8760" title="pgrouting::yen::Pgr\l_ksp::Visitor::on_insert\l_to_heap" alt="" coords="188,173,344,229"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html#a3eddf903bcd9f64fc7f51dd14430bff6" title="stores in subPath the first i elements of path " alt="" coords="191,254,341,295"/>
-<area shape="rect" id="node7" href="$classPath.html#a3a0311765e131697250e7b45964c0510" title="Path::size" alt="" coords="225,320,307,347"/>
-</map>

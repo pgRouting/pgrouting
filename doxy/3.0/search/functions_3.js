@@ -33,6 +33,7 @@ var searchData=
   ['cost',['cost',['../classpgrouting_1_1trsp_1_1Rule.html#ad812893751e2faa620bcda8fb2f45686',1,'pgrouting::trsp::Rule::cost()'],['../classpgrouting_1_1trsp_1_1EdgeInfo.html#af6ed9c842a0b93075d68592b8b95f8cd',1,'pgrouting::trsp::EdgeInfo::cost()'],['../classpgrouting_1_1vrp_1_1Solution.html#aacb1d3beb12b28c3fc0d8bcb76357838',1,'pgrouting::vrp::Solution::cost()'],['../classpgrouting_1_1vrp_1_1Vehicle.html#a446393c0863473ebf3f6db060ddae597',1,'pgrouting::vrp::Vehicle::cost()']]],
   ['cost_5fcompare',['cost_compare',['../classpgrouting_1_1vrp_1_1Vehicle.html#abc30f9df7e203ce3f72c6dcc964510f1',1,'pgrouting::vrp::Vehicle']]],
   ['cost_5fstr',['cost_str',['../classpgrouting_1_1vrp_1_1Solution.html#adc126f5e5e435301696b12ec9afa638f',1,'pgrouting::vrp::Solution']]],
+  ['costcheck',['costCheck',['../binaryBreadthFirstSearch__driver_8cpp.html#a32985970b9b65ea3dfa3f96814b4d22d',1,'binaryBreadthFirstSearch_driver.cpp']]],
   ['costholder',['CostHolder',['../classpgrouting_1_1trsp_1_1Pgr__trspHandler_1_1CostHolder.html#a1ce8216bf7c33108bdd44ba8fd8cb45a',1,'pgrouting::trsp::Pgr_trspHandler::CostHolder']]],
   ['count_5frows',['count_rows',['../classPgr__allpairs.html#a516d778ba8b6fbb66a6b7138293b9773',1,'Pgr_allpairs']]],
   ['count_5ftuples',['count_tuples',['../basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1',1,'basePath_SSEC.cpp']]],

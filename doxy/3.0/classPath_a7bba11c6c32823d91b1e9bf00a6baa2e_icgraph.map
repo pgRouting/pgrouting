@@ -1,6 +1,0 @@
-<map id="Path::reverse" name="Path::reverse">
-<area shape="rect" id="node2" href="$classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a0a1519de1a666bdfff7584037388e5f9" title="pgrouting::bidirectional\l::Pgr_bidirectional::bidirectional" alt="" coords="153,5,356,47"/>
-<area shape="rect" id="node3" href="$classPath.html#a6fc87e41a998bdfe9fd94c3647e6f2ba" title="Path::front" alt="" coords="213,71,296,98"/>
-<area shape="rect" id="node4" href="$astar__driver_8cpp.html#a1e8d0064b04fcec0509ec834a85b8787" title="pgr_astar" alt="" coords="217,122,293,149"/>
-<area shape="rect" id="node5" href="$dijkstra__driver_8cpp.html#a7ceb0f6116b3c1eae05e68414954079f" title="pgr_dijkstra" alt="" coords="210,173,299,199"/>
-</map>

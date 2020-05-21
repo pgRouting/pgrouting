@@ -1,9 +1,0 @@
-digraph "pgrouting::algorithms::articulationPoints"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node1 [label="pgrouting::algorithms\l::articulationPoints",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="do_pgr_articulationPoints",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$articulationPoints__driver_8h.html#a881000d06a98fddaa3e85b890b766f83"];
-}

@@ -146,6 +146,7 @@ var searchData=
   ['max_5fflow_5fdriver_2eh',['max_flow_driver.h',['../max__flow__driver_8h.html',1,'']]],
   ['max_5fnode_5fid',['max_node_id',['../classGraphDefinition.html#adf2b1ba5cf296302318e397545d4ec45',1,'GraphDefinition']]],
   ['max_5frule_5flength',['MAX_RULE_LENGTH',['../trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f',1,'trsp.h']]],
+  ['max_5funique_5fedge_5fcosts',['MAX_UNIQUE_EDGE_COSTS',['../binaryBreadthFirstSearch__driver_8cpp.html#a11d9dfb760fe2db0da8e7ad35982defe',1,'binaryBreadthFirstSearch_driver.cpp']]],
   ['maximum_5fcardinality_5fmatching',['maximum_cardinality_matching',['../classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#a8400b1f3f77de81fdffc433d5522fa26',1,'pgrouting::flow::PgrCardinalityGraph']]],
   ['maximum_5fcardinality_5fmatching_2ec',['maximum_cardinality_matching.c',['../maximum__cardinality__matching_8c.html',1,'']]],
   ['maximum_5fcardinality_5fmatching_5fdriver_2ecpp',['maximum_cardinality_matching_driver.cpp',['../maximum__cardinality__matching__driver_8cpp.html',1,'']]],

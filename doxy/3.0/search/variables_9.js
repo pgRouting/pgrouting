@@ -130,6 +130,7 @@ var searchData=
   ['mapindex',['mapIndex',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a5b55a87445d1ef6d4d290ae36d8ac09b',1,'pgrouting::graph::Pgr_base_graph']]],
   ['max_5fedge_5fid',['max_edge_id',['../classGraphDefinition.html#a899743fe9907044a1aa4034653437708',1,'GraphDefinition']]],
   ['max_5fnode_5fid',['max_node_id',['../classGraphDefinition.html#adf2b1ba5cf296302318e397545d4ec45',1,'GraphDefinition']]],
+  ['max_5funique_5fedge_5fcosts',['MAX_UNIQUE_EDGE_COSTS',['../binaryBreadthFirstSearch__driver_8cpp.html#a11d9dfb760fe2db0da8e7ad35982defe',1,'binaryBreadthFirstSearch_driver.cpp']]],
   ['mincut',['mincut',['../structpgr__stoerWagner__t.html#af0196b763b517e0ad061e8a04b14195a',1,'pgr_stoerWagner_t']]],
   ['msg',['msg',['../classpgrouting_1_1vrp_1_1PD__problem.html#a7ea35b02b812474d4b0c19da2784fc5f',1,'pgrouting::vrp::PD_problem']]]
 ];

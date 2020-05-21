@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -198,15 +198,7 @@ template&lt;class G &gt; </div>
 
 <p class="reference">References <a class="el" href="pgr__contract_8hpp_source.html#l00081">pgrouting::contraction::Pgr_contract&lt; G &gt;::one_cycle()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;              {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        std::deque&lt;int64_t&gt; contract_order;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">//  push -1 to indicate the start of the queue</span></div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        contract_order.push_back(-1);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        contract_order.insert(</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                contract_order.end(),</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                contraction_order.begin(), contraction_order.end());</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">for</span> (int64_t i = 0; i &lt; max_cycles; ++i) {</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            int64_t front = contract_order.front();</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            contract_order.pop_front();</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            contract_order.push_back(front);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">auto</span> kind = contract_order.front();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">while</span> (kind != -1) {</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <a class="code" href="classpgrouting_1_1contraction_1_1Pgr__contract.html#a8560ad7ae83b69486212cbb7cf3abd71">one_cycle</a>(graph, kind, forbidden_vertices);</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                contract_order.pop_front();</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                contract_order.push_back(front);</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                kind = contract_order.front();</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            }</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div><div class="ttc" id="classpgrouting_1_1contraction_1_1Pgr__contract_html_a8560ad7ae83b69486212cbb7cf3abd71"><div class="ttname"><a href="classpgrouting_1_1contraction_1_1Pgr__contract.html#a8560ad7ae83b69486212cbb7cf3abd71">pgrouting::contraction::Pgr_contract::one_cycle</a></div><div class="ttdeci">void one_cycle(G &amp;graph, int64_t kind, Identifiers&lt; V &gt; &amp;forbidden_vertices)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__contract_8hpp_source.html#l00081">pgr_contract.hpp:81</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1contraction_1_1Pgr__contract_a25aa45c7d8fd2bf03dc347a940229b46_cgraph.png" border="0" usemap="#classpgrouting_1_1contraction_1_1Pgr__contract_a25aa45c7d8fd2bf03dc347a940229b46_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1contraction_1_1Pgr__contract_a25aa45c7d8fd2bf03dc347a940229b46_cgraph" id="classpgrouting_1_1contraction_1_1Pgr__contract_a25aa45c7d8fd2bf03dc347a940229b46_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1contraction_1_1Pgr__contract.html#a8560ad7ae83b69486212cbb7cf3abd71" title="pgrouting::contraction\l::Pgr_contract::one_cycle" alt="" coords="240,5,411,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -260,24 +252,7 @@ template&lt;class G &gt; </div>
 <div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                                {</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">switch</span> (kind) {</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">case</span> -1:</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(<span class="keyword">false</span>);</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">break</span>;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">case</span> 1:</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <a class="code" href="classpgrouting_1_1contraction_1_1Pgr__contract.html#a30b97482fb16a30a9d8b631e91c10488">perform_deadEnd</a>(graph, forbidden_vertices);</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keywordflow">break</span>;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">case</span> 2:</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <a class="code" href="classpgrouting_1_1contraction_1_1Pgr__contract.html#af4d2adde800700bbc4fd64f39a10d22d">perform_linear</a>(graph, forbidden_vertices);</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">break</span>;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">default</span>:</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(<span class="keyword">false</span>);</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="keywordflow">break</span>;</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div><div class="ttc" id="classpgrouting_1_1contraction_1_1Pgr__contract_html_a30b97482fb16a30a9d8b631e91c10488"><div class="ttname"><a href="classpgrouting_1_1contraction_1_1Pgr__contract.html#a30b97482fb16a30a9d8b631e91c10488">pgrouting::contraction::Pgr_contract::perform_deadEnd</a></div><div class="ttdeci">void perform_deadEnd(G &amp;graph, Identifiers&lt; V &gt; forbidden_vertices)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__contract_8hpp_source.html#l00104">pgr_contract.hpp:104</a></div></div>
 <div class="ttc" id="pgr__assert_8h_html_a09250239ca707f56bc1bbfdd04a635b1"><div class="ttname"><a href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a></div><div class="ttdeci">#define pgassert(expr)</div><div class="ttdoc">Uses the standard assert syntax. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00094">pgr_assert.h:94</a></div></div>
 <div class="ttc" id="classpgrouting_1_1contraction_1_1Pgr__contract_html_af4d2adde800700bbc4fd64f39a10d22d"><div class="ttname"><a href="classpgrouting_1_1contraction_1_1Pgr__contract.html#af4d2adde800700bbc4fd64f39a10d22d">pgrouting::contraction::Pgr_contract::perform_linear</a></div><div class="ttdeci">void perform_linear(G &amp;graph, Identifiers&lt; V &gt; &amp;forbidden_vertices)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__contract_8hpp_source.html#l00119">pgr_contract.hpp:119</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1contraction_1_1Pgr__contract_a8560ad7ae83b69486212cbb7cf3abd71_cgraph.png" border="0" usemap="#classpgrouting_1_1contraction_1_1Pgr__contract_a8560ad7ae83b69486212cbb7cf3abd71_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1contraction_1_1Pgr__contract_a8560ad7ae83b69486212cbb7cf3abd71_cgraph" id="classpgrouting_1_1contraction_1_1Pgr__contract_a8560ad7ae83b69486212cbb7cf3abd71_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1contraction_1_1Pgr__contract.html#a30b97482fb16a30a9d8b631e91c10488" title="pgrouting::contraction\l::Pgr_contract::perform\l_deadEnd" alt="" coords="224,5,380,61"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1contraction_1_1Pgr__contract.html#af4d2adde800700bbc4fd64f39a10d22d" title="pgrouting::contraction\l::Pgr_contract::perform\l_linear" alt="" coords="224,85,380,141"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1contraction_1_1Pgr__contract_a8560ad7ae83b69486212cbb7cf3abd71_icgraph.png" border="0" usemap="#classpgrouting_1_1contraction_1_1Pgr__contract_a8560ad7ae83b69486212cbb7cf3abd71_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1contraction_1_1Pgr__contract_a8560ad7ae83b69486212cbb7cf3abd71_icgraph" id="classpgrouting_1_1contraction_1_1Pgr__contract_a8560ad7ae83b69486212cbb7cf3abd71_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1contraction_1_1Pgr__contract.html#a25aa45c7d8fd2bf03dc347a940229b46" title="pgrouting::contraction\l::Pgr_contract::Pgr_contract" alt="" coords="224,5,411,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a30b97482fb16a30a9d8b631e91c10488"></a>
@@ -321,25 +296,7 @@ template&lt;class G &gt; </div>
 <p class="reference">References <a class="el" href="pgr__deadEndContraction_8hpp_source.html#l00058">pgrouting::contraction::Pgr_deadend&lt; G &gt;::calculateVertices()</a>, <a class="el" href="pgr__deadEndContraction_8hpp_source.html#l00077">pgrouting::contraction::Pgr_deadend&lt; G &gt;::doContraction()</a>, and <a class="el" href="pgr__deadEndContraction_8hpp_source.html#l00052">pgrouting::contraction::Pgr_deadend&lt; G &gt;::setForbiddenVertices()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="pgr__contract_8hpp_source.html#l00081">pgrouting::contraction::Pgr_contract&lt; G &gt;::one_cycle()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                               {</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        Pgr_deadend&lt;G&gt; deadendContractor;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        deadendContractor.setForbiddenVertices(forbidden_vertices);</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        deadendContractor.calculateVertices(graph);</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">try</span> {</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            deadendContractor.doContraction(graph);</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">catch</span> ( ... ) {</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">throw</span>;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div></div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1contraction_1_1Pgr__contract_a30b97482fb16a30a9d8b631e91c10488_cgraph.png" border="0" usemap="#classpgrouting_1_1contraction_1_1Pgr__contract_a30b97482fb16a30a9d8b631e91c10488_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1contraction_1_1Pgr__contract_a30b97482fb16a30a9d8b631e91c10488_cgraph" id="classpgrouting_1_1contraction_1_1Pgr__contract_a30b97482fb16a30a9d8b631e91c10488_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1contraction_1_1Pgr__deadend.html#aed46c6193e522fa638e46d87d0174ebb" title="pgrouting::contraction\l::Pgr_deadend::calculateVertices" alt="" coords="495,5,709,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1contraction_1_1Pgr__deadend.html#ac53c67c279159a0bc491513d3de4a20b" title="pgrouting::contraction\l::Pgr_deadend::doContraction" alt="" coords="231,35,425,76"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1contraction_1_1Pgr__deadend.html#a9548b3c6a1b8384acb4f97dc3188bab5" title="pgrouting::contraction\l::Pgr_deadend::setForbiddenVertices" alt="" coords="209,100,447,141"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1contraction_1_1Pgr__contract_a30b97482fb16a30a9d8b631e91c10488_icgraph.png" border="0" usemap="#classpgrouting_1_1contraction_1_1Pgr__contract_a30b97482fb16a30a9d8b631e91c10488_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1contraction_1_1Pgr__contract_a30b97482fb16a30a9d8b631e91c10488_icgraph" id="classpgrouting_1_1contraction_1_1Pgr__contract_a30b97482fb16a30a9d8b631e91c10488_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1contraction_1_1Pgr__contract.html#a8560ad7ae83b69486212cbb7cf3abd71" title="pgrouting::contraction\l::Pgr_contract::one_cycle" alt="" coords="209,13,380,54"/>
-</map>
-</div>
-
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                               {</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        Pgr_deadend&lt;G&gt; deadendContractor;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        deadendContractor.setForbiddenVertices(forbidden_vertices);</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        deadendContractor.calculateVertices(graph);</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">try</span> {</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            deadendContractor.doContraction(graph);</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">catch</span> ( ... ) {</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">throw</span>;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="af4d2adde800700bbc4fd64f39a10d22d"></a>
@@ -381,15 +338,7 @@ template&lt;class G &gt; </div>
 <p class="definition">Definition at line <a class="el" href="pgr__contract_8hpp_source.html#l00119">119</a> of file <a class="el" href="pgr__contract_8hpp_source.html">pgr_contract.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="pgr__contract_8hpp_source.html#l00081">pgrouting::contraction::Pgr_contract&lt; G &gt;::one_cycle()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                                {</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        Pgr_linear&lt;G&gt; linearContractor;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">try</span> {</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            linearContractor(graph, forbidden_vertices);</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">catch</span> ( ... ) {</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">throw</span>;</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div></div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1contraction_1_1Pgr__contract_af4d2adde800700bbc4fd64f39a10d22d_icgraph.png" border="0" usemap="#classpgrouting_1_1contraction_1_1Pgr__contract_af4d2adde800700bbc4fd64f39a10d22d_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1contraction_1_1Pgr__contract_af4d2adde800700bbc4fd64f39a10d22d_icgraph" id="classpgrouting_1_1contraction_1_1Pgr__contract_af4d2adde800700bbc4fd64f39a10d22d_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1contraction_1_1Pgr__contract.html#a8560ad7ae83b69486212cbb7cf3abd71" title="pgrouting::contraction\l::Pgr_contract::one_cycle" alt="" coords="209,13,380,54"/>
-</map>
-</div>
-
+<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                                {</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        Pgr_linear&lt;G&gt; linearContractor;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">try</span> {</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            linearContractor(graph, forbidden_vertices);</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">catch</span> ( ... ) {</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">throw</span>;</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
@@ -401,7 +350,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1contraction.html">contraction</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1contraction_1_1Pgr__contract.html">Pgr_contract</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:46 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:38 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

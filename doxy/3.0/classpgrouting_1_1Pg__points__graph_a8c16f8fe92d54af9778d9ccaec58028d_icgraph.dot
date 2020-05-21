@@ -1,9 +1,0 @@
-digraph "pgrouting::Pg_points_graph::Pg_points_graph"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node1 [label="pgrouting::Pg_points\l_graph::Pg_points_graph",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="pgrouting::Pg_points\l_graph::pointCompare\l::operator()",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structpgrouting_1_1Pg__points__graph_1_1pointCompare.html#a18ff9880dbee6894b73cd08512570123"];
-}

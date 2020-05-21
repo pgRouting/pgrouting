@@ -1,5 +1,0 @@
-<map id="fetch_basic_edge" name="fetch_basic_edge">
-<area shape="rect" id="node2" href="$get__check__data_8c.html#a242b8e2225de6f8c47cf3133c440588e" title="Function will check whether the colNumber represent any specific column or NULL (SPI_ERROR_NOATTRIBUT..." alt="" coords="191,5,294,32"/>
-<area shape="rect" id="node3" href="$get__check__data_8c.html#ab4e654806d1a43314c3e7fa692705448" title="Function returns the value of specified column in integer type. " alt="" coords="179,56,307,83"/>
-<area shape="rect" id="node4" href="$get__check__data_8c.html#a6d8da632b86bd8f4e0f84f2a4219c887" title="Function returns the value of specified column in double type. " alt="" coords="177,107,308,133"/>
-</map>

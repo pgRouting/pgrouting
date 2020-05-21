@@ -1,8 +1,0 @@
-<map id="do_pgr_directedChPP" name="do_pgr_directedChPP">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#afaac34c3c700a7eb36ba9bd27ea2ca59" title="pgrouting::graph::PgrDirected\lChPPGraph::DirectedChPP" alt="" coords="203,5,395,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ac675204cca5c10ceeccfada49321ca8c" title="pgrouting::graph::PgrDirected\lChPPGraph::GetPathEdges" alt="" coords="443,37,635,79"/>
-<area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="501,150,576,177"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="264,173,333,199"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="263,223,335,250"/>
-<area shape="rect" id="node7" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="222,275,375,316"/>
-</map>

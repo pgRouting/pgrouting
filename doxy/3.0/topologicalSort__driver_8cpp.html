@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -190,28 +190,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html">pgrouting::graph::Pgr_base_graph</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00168">pgr_base_graph.hpp:168</a></div></div>
 <div class="ttc" id="classAssertFailedException_html_a7f00e7275e82f7b6bafec6339a27bc88"><div class="ttname"><a href="classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const</div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00067">pgr_assert.cpp:67</a></div></div>
 <div class="ttc" id="graph__enum_8h_html_a3f8f7b519e692469f867b0af0ce0490e"><div class="ttname"><a href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a></div><div class="ttdeci">graphType</div><div class="ttdef"><b>Definition:</b> <a href="graph__enum_8h_source.html#l00030">graph_enum.h:30</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="topologicalSort__driver_8cpp_ad6b92b5217bae1537c691c35198a403b_cgraph.png" border="0" usemap="#topologicalSort__driver_8cpp_ad6b92b5217bae1537c691c35198a403b_cgraph" alt=""/></div>
-<map name="topologicalSort__driver_8cpp_ad6b92b5217bae1537c691c35198a403b_cgraph" id="topologicalSort__driver_8cpp_ad6b92b5217bae1537c691c35198a403b_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25" title="Inserts count edges of type T into the graph. " alt="" coords="208,5,387,47"/>
-<area shape="rect" id="node3" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="435,122,509,149"/>
-<area shape="rect" id="node4" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="263,122,332,149"/>
-<area shape="rect" id="node5" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="261,173,333,199"/>
-<area shape="rect" id="node6" href="topologicalSort__driver_8cpp.html#a7b7a864874be9b88aed76091197f7f97" title="pgr_topologicalSort" alt="" coords="231,223,364,250"/>
-<area shape="rect" id="node7" href="classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="221,275,374,316"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="topologicalSort__driver_8cpp_ad6b92b5217bae1537c691c35198a403b_icgraph.png" border="0" usemap="#topologicalSort__driver_8cpp_ad6b92b5217bae1537c691c35198a403b_icgraph" alt=""/></div>
-<map name="topologicalSort__driver_8cpp_ad6b92b5217bae1537c691c35198a403b_icgraph" id="topologicalSort__driver_8cpp_ad6b92b5217bae1537c691c35198a403b_icgraph">
-<area shape="rect" id="node2" href="topologicalSort_8c.html#a1bcfdab998b7ac9881877476c6005299" title="process" alt="" coords="208,5,276,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7b7a864874be9b88aed76091197f7f97"></a>
@@ -247,23 +226,7 @@ template&lt;class G &gt; </div>
 <p class="reference">Referenced by <a class="el" href="topologicalSort__driver_8cpp_source.html#l00057">do_pgr_topologicalSort()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                  {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classPgr__topologicalSort.html">Pgr_topologicalSort&lt; G &gt;</a> fn_topologicalSort;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> fn_topologicalSort.<a class="code" href="classPgr__topologicalSort.html#a682b6846370bf54d0fd1b9b584022b27">topologicalSort</a>(graph);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div><div class="ttc" id="classPgr__topologicalSort_html_a682b6846370bf54d0fd1b9b584022b27"><div class="ttname"><a href="classPgr__topologicalSort.html#a682b6846370bf54d0fd1b9b584022b27">Pgr_topologicalSort::topologicalSort</a></div><div class="ttdeci">std::vector&lt; pgr_topologicalSort_t &gt; topologicalSort(G &amp;graph)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__topologicalSort_8hpp_source.html#l00085">pgr_topologicalSort.hpp:85</a></div></div>
 <div class="ttc" id="classPgr__topologicalSort_html"><div class="ttname"><a href="classPgr__topologicalSort.html">Pgr_topologicalSort</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__topologicalSort_8hpp_source.html#l00046">pgr_topologicalSort.hpp:46</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="topologicalSort__driver_8cpp_a7b7a864874be9b88aed76091197f7f97_cgraph.png" border="0" usemap="#topologicalSort__driver_8cpp_a7b7a864874be9b88aed76091197f7f97_cgraph" alt=""/></div>
-<map name="topologicalSort__driver_8cpp_a7b7a864874be9b88aed76091197f7f97_cgraph" id="topologicalSort__driver_8cpp_a7b7a864874be9b88aed76091197f7f97_cgraph">
-<area shape="rect" id="node2" href="classPgr__topologicalSort.html#a682b6846370bf54d0fd1b9b584022b27" title="Pgr_topologicalSort\l::topologicalSort" alt="" coords="187,5,321,47"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="topologicalSort__driver_8cpp_a7b7a864874be9b88aed76091197f7f97_icgraph.png" border="0" usemap="#topologicalSort__driver_8cpp_a7b7a864874be9b88aed76091197f7f97_icgraph" alt=""/></div>
-<map name="topologicalSort__driver_8cpp_a7b7a864874be9b88aed76091197f7f97_icgraph" id="topologicalSort__driver_8cpp_a7b7a864874be9b88aed76091197f7f97_icgraph">
-<area shape="rect" id="node2" href="topologicalSort__driver_8h.html#a7c8b7b11a3fd2ff2f5817abd91c766ab" title="do_pgr_topologicalSort" alt="" coords="187,5,341,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
@@ -272,7 +235,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c67d0281cfb9e58839b902b44f843be.html">topologicalSort</a></li><li class="navelem"><a class="el" href="topologicalSort__driver_8cpp.html">topologicalSort_driver.cpp</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:45 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:37 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

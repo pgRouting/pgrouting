@@ -1,9 +1,0 @@
-digraph "Path::get_pg_turn_restricted_path"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node263 [label="Path::get_pg_turn_restricted_path",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node263 -> Node264 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node264 [label="Path::end_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPath.html#ad7eff4c127cba19f2052398089ac3b42"];
-}

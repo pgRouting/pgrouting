@@ -1,6 +1,0 @@
-<map id="pgrouting::graph::PgrCostFlowGraph::GetEdgeId" name="pgrouting::graph::PgrCostFlowGraph::GetEdgeId">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ae332714d0cac50310333a89b2912954b" title="pgrouting::graph::PgrCost\lFlowGraph::AddEdge" alt="" coords="459,66,629,107"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a75bb666c3a7dbddbcf9e1b8fa9100b3b" title="pgrouting::graph::PgrCost\lFlowGraph::InsertEdges" alt="" coords="232,32,403,74"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a13441d5ae80f761e9207df65372ed43b" title="pgrouting::graph::PgrCost\lFlowGraph::SetSupersink" alt="" coords="232,98,403,139"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ac0ba9a33bf9941d74d883bd55f529d5c" title="pgrouting::graph::PgrCost\lFlowGraph::SetSupersource" alt="" coords="224,163,411,204"/>
-</map>

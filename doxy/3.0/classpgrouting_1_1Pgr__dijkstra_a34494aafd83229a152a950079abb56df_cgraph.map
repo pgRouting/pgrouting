@@ -1,6 +1,0 @@
-<map id="pgrouting::Pgr_dijkstra::drivingDistance_with_equicost" name="pgrouting::Pgr_dijkstra::drivingDistance_with_equicost">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__dijkstra.html#a05e8e51c93fc5c30771c6e31eac4542a" title="pgrouting::Pgr_dijkstra\l::clear" alt="" coords="216,5,368,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Pgr__dijkstra.html#a7b1c7f52dcd0f16fe06488f48b61ed3b" title="to use with driving distance " alt="" coords="205,71,379,127"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1Pgr__dijkstra.html#a83ab7d02a7ef5ab2f5aa6b95d28627ea" title="gets results in form of a container of paths " alt="" coords="216,151,368,207"/>
-<area shape="rect" id="node5" href="$pgr__tsp_8cpp.html#ae0eace0f5ad927638e3f80c3efb3411e" title="pred" alt="" coords="427,199,473,226"/>
-</map>

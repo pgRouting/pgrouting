@@ -1,9 +1,0 @@
-digraph "pgrouting::contraction::Pgr_linear::get_next_id"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node25 [label="pgrouting::contraction\l::Pgr_linear::get_next_id",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node25 -> Node26 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node26 [label="pgrouting::contraction\l::Pgr_linear::process\l_shortcut",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a2a6359a7c4cc0fb4727d7864f54fca21",tooltip="u -—e1{v1}-—> v -—e2{v2}-—> w "];
-}

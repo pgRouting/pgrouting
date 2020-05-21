@@ -1,5 +1,0 @@
-<map id="pgrouting::alphashape::Pgr_alphaShape::make_triangles" name="pgrouting::alphashape::Pgr_alphaShape::make_triangles">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a0b33ae3fd10642c323595a472b0da25b" title="pgrouting::graph::Pgr\l_base_graph::adjacent" alt="" coords="219,5,372,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad98fd25cf17ce36de3f4e7799c5fcf63" title="pgrouting::graph::Pgr\l_base_graph::source" alt="" coords="224,71,367,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a6c9df228fe6c9c49d49d303ad9871234" title="pgrouting::graph::Pgr\l_base_graph::target" alt="" coords="224,136,367,177"/>
-</map>

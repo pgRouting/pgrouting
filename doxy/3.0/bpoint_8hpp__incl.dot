@@ -4,7 +4,5 @@ digraph "bpoint.hpp"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node0 [label="bpoint.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="boost/geometry.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="boost/geometry/geometries\l/point_xy.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 [label="boost/bgeometry/geometries\l/point_xy.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }

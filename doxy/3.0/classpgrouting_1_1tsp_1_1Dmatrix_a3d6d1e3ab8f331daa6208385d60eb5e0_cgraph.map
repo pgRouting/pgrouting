@@ -1,5 +1,0 @@
-<map id="pgrouting::tsp::Dmatrix::set" name="pgrouting::tsp::Dmatrix::set">
-<area shape="rect" id="node2" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a6ab28b03bce8234b17d021a88997937b" title="idx &#45;&gt; original id " alt="" coords="235,5,389,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#acd3455be4c2e72e6877163b3c317c063" title="original id &#45;&gt; idx " alt="" coords="235,71,389,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a09895e26fdb2c72ce8acad8251a69123" title="original id &#45;&gt; true " alt="" coords="235,136,389,177"/>
-</map>

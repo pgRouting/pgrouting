@@ -1,8 +1,0 @@
-<map id="GraphDefinition::my_dijkstra3" name="GraphDefinition::my_dijkstra3">
-<area shape="rect" id="node2" href="$classGraphDefinition.html#a1aa3daf43141bf0ad05ed930b3442e50" title="GraphDefinition::construct\l_graph" alt="" coords="208,5,383,47"/>
-<area shape="rect" id="node3" href="$classGraphDefinition.html#a01ad124fbb08139fb8b1653081c4e0a7" title="GraphDefinition::construct_path" alt="" coords="192,71,399,98"/>
-<area shape="rect" id="node4" href="$classGraphDefinition.html#af4332db6712526c0107fccec9b0bfe28" title="GraphDefinition::deleteall" alt="" coords="211,122,379,149"/>
-<area shape="rect" id="node5" href="$classGraphDefinition.html#a824ae79f965718b509bf9810c38f953a" title="GraphDefinition::explore" alt="" coords="214,173,377,199"/>
-<area shape="rect" id="node6" href="$classGraphDefinition.html#a36a9e3ad4ef4fffea80a2d5abe2ff87a" title="GraphDefinition::get\l_single_cost" alt="" coords="226,224,365,265"/>
-<area shape="rect" id="node7" href="$classGraphDefinition.html#a7318fb4906c06f0cb4417ea1c09f665a" title="GraphDefinition::init" alt="" coords="227,290,364,317"/>
-</map>

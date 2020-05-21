@@ -1,9 +1,0 @@
-digraph "pgrouting::algorithms::strongComponents"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node24 [label="pgrouting::algorithms\l::strongComponents",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node24 -> Node25 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node25 [label="pgrouting::algorithms\l::detail::componentsResult",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacepgrouting_1_1algorithms_1_1detail.html#ace3eeb81519c94f876edd7ccc147c01e"];
-}

@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -154,15 +154,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="structpgr__mst__rt_html_a5562112a77c6bd5575a9fb49044ea5be"><div class="ttname"><a href="structpgr__mst__rt.html#a5562112a77c6bd5575a9fb49044ea5be">pgr_mst_rt::edge</a></div><div class="ttdeci">int64_t edge</div><div class="ttdef"><b>Definition:</b> <a href="pgr__mst__rt_8h_source.html#l00040">pgr_mst_rt.h:40</a></div></div>
 <div class="ttc" id="kruskal_8c_html_ac182b213958717758b28c33d5277822c"><div class="ttname"><a href="kruskal_8c.html#ac182b213958717758b28c33d5277822c">process</a></div><div class="ttdeci">static void process(char *edges_sql, ArrayType *roots, char *fn_suffix, int64_t max_depth, double distance, pgr_mst_rt **result_tuples, size_t *result_count)</div><div class="ttdef"><b>Definition:</b> <a href="kruskal_8c_source.html#l00050">kruskal.c:50</a></div></div>
 <div class="ttc" id="structpgr__mst__rt_html_aa0448b47fef49a4b70ae54239f7cddb9"><div class="ttname"><a href="structpgr__mst__rt.html#aa0448b47fef49a4b70ae54239f7cddb9">pgr_mst_rt::depth</a></div><div class="ttdeci">int64_t depth</div><div class="ttdef"><b>Definition:</b> <a href="pgr__mst__rt_8h_source.html#l00038">pgr_mst_rt.h:38</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="kruskal_8c_a4cf023d8c46b3878861de650c68ce077_cgraph.png" border="0" usemap="#kruskal_8c_a4cf023d8c46b3878861de650c68ce077_cgraph" alt=""/></div>
-<map name="kruskal_8c_a4cf023d8c46b3878861de650c68ce077_cgraph" id="kruskal_8c_a4cf023d8c46b3878861de650c68ce077_cgraph">
-<area shape="rect" id="node2" href="kruskal_8c.html#ac182b213958717758b28c33d5277822c" title="process" alt="" coords="149,5,217,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a5589691f655ae6cbaed346aed142294b"></a>
@@ -261,30 +253,7 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="postgres__connection_8c_html_ae36e7862564b5e72c25c9e26ae8e355f"><div class="ttname"><a href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a></div><div class="ttdeci">void pgr_SPI_finish(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00071">postgres_connection.c:71</a></div></div>
 <div class="ttc" id="postgres__connection_8c_html_aef5deb780b1cf78c56b1794ab826ac64"><div class="ttname"><a href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a></div><div class="ttdeci">void pgr_SPI_connect(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00082">postgres_connection.c:82</a></div></div>
 <div class="ttc" id="mst__common_8cpp_html_aa8b6a423015785e0753d58db232b5ebb"><div class="ttname"><a href="mst__common_8cpp.html#aa8b6a423015785e0753d58db232b5ebb">get_name</a></div><div class="ttdeci">char * get_name(int fn_id, char *fn_suffix, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="mst__common_8cpp_source.html#l00054">mst_common.cpp:54</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="kruskal_8c_ac182b213958717758b28c33d5277822c_cgraph.png" border="0" usemap="#kruskal_8c_ac182b213958717758b28c33d5277822c_cgraph" alt=""/></div>
-<map name="kruskal_8c_ac182b213958717758b28c33d5277822c_cgraph" id="kruskal_8c_ac182b213958717758b28c33d5277822c_cgraph">
-<area shape="rect" id="node2" href="kruskal__driver_8cpp.html#adbb101b4e480e0b42b72179803e7179d" title="do_pgr_kruskal" alt="" coords="133,5,244,32"/>
-<area shape="rect" id="node3" href="mst__common_8cpp.html#aa8b6a423015785e0753d58db232b5ebb" title="get_name" alt="" coords="149,56,228,83"/>
-<area shape="rect" id="node4" href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1" title="enforces the input array to be NOT empty " alt="" coords="121,107,256,133"/>
-<area shape="rect" id="node5" href="edges__input_8c.html#af663e291b6bdfe777789be38b6bfcf76" title="basic edge_sql " alt="" coords="135,157,242,184"/>
-<area shape="rect" id="node6" href="e__report_8c.html#aa7833fe4baf65aa901e1129575e7deb2" title="notice &amp; error " alt="" coords="128,208,249,235"/>
-<area shape="rect" id="node7" href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64" title="pgr_SPI_connect" alt="" coords="127,259,250,285"/>
-<area shape="rect" id="node8" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f" title="pgr_SPI_finish" alt="" coords="135,309,242,336"/>
-<area shape="rect" id="node9" href="time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe" title="time_msg" alt="" coords="149,360,228,387"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="kruskal_8c_ac182b213958717758b28c33d5277822c_icgraph.png" border="0" usemap="#kruskal_8c_ac182b213958717758b28c33d5277822c_icgraph" alt=""/></div>
-<map name="kruskal_8c_ac182b213958717758b28c33d5277822c_icgraph" id="kruskal_8c_ac182b213958717758b28c33d5277822c_icgraph">
-<area shape="rect" id="node2" href="kruskal_8c.html#a4cf023d8c46b3878861de650c68ce077" title="_pgr_kruskal" alt="" coords="121,5,217,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
@@ -293,7 +262,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_48f024be59dcde80115f431c77ff572d.html">spanningTree</a></li><li class="navelem"><a class="el" href="kruskal_8c.html">kruskal.c</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:44 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:37 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

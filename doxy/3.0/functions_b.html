@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -87,13 +87,16 @@ $(document).ready(function(){initNavTree('functions_b.html','');});
 <li>B_G
 : <a class="el" href="classpgrouting_1_1algorithms_1_1Pgr__astar.html#a7428d73c9fae0c55c6e001b31c03df5a">pgrouting::algorithms::Pgr_astar&lt; G &gt;</a>
 , <a class="el" href="classpgrouting_1_1contraction_1_1Pgr__linear.html#ac979261248e489c80200db98abe894a2">pgrouting::contraction::Pgr_linear&lt; G &gt;</a>
+, <a class="el" href="classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch.html#ad8698473ba4a37c9b7c7ca2dbe331e8e">pgrouting::functions::Pgr_binaryBreadthFirstSearch&lt; G &gt;</a>
+, <a class="el" href="classpgrouting_1_1functions_1_1Pgr__breadthFirstSearch.html#aed40958667637b9829159a40d4a7afa2">pgrouting::functions::Pgr_breadthFirstSearch&lt; G &gt;</a>
+, <a class="el" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a322d9f1d2e7e5fb08a77b03de4756f73">pgrouting::functions::Pgr_edwardMoore&lt; G &gt;</a>
 , <a class="el" href="classpgrouting_1_1functions_1_1Pgr__kruskal.html#a4ace1164328da193d7543328ff1dfe1c">pgrouting::functions::Pgr_kruskal&lt; G &gt;</a>
 , <a class="el" href="classpgrouting_1_1functions_1_1Pgr__mst.html#a7a68d2fe93ce1d15c391e435a1638b7d">pgrouting::functions::Pgr_mst&lt; G &gt;</a>
 , <a class="el" href="classpgrouting_1_1functions_1_1Pgr__prim.html#a6c2042fad6ba5710a66420e204bfc3f3">pgrouting::functions::Pgr_prim&lt; G &gt;</a>
 , <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a51d3dae600843a57ab20c42accfb5db1">pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;</a>
 </li>
 <li>back()
-: <a class="el" href="classPath.html#a7cec8cc626f16ea03c5b9d004b2c6105">Path</a>
+: <a class="el" href="classPath.html#a16c8797588b1aa077a772112f4a2a307">Path</a>
 </li>
 <li>backward_cost
 : <a class="el" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adf12f52fa9cd644c77a6acbcca8fc9f8">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;</a>
@@ -121,10 +124,10 @@ $(document).ready(function(){initNavTree('functions_b.html','');});
 , <a class="el" href="classPath.html#a79263f46d8f986d822fb5b656a94fd9a">Path</a>
 , <a class="el" href="classpgrouting_1_1trsp_1_1Rule.html#aca937285f5c43c06ee71870fd1c27e32">pgrouting::trsp::Rule</a>
 , <a class="el" href="classpgrouting_1_1vrp_1_1Fleet.html#aba34b88e102410b6aea23fbf9f2d7d54">pgrouting::vrp::Fleet</a>
-, <a class="el" href="classpgrouting_1_1vrp_1_1PD__Orders.html#adb56204cebdc0cdf82fbe5f56af3d397">pgrouting::vrp::PD_Orders</a>
+, <a class="el" href="classpgrouting_1_1vrp_1_1PD__Orders.html#a5307fadd0ab6795355197e85a73b9e26">pgrouting::vrp::PD_Orders</a>
 </li>
 <li>bellman_ford()
-: <a class="el" href="classPgr__bellman__ford.html#a921a1036e58da34ca0a10b00ade3c393">Pgr_bellman_ford&lt; G &gt;</a>
+: <a class="el" href="classPgr__bellman__ford.html#a8db85c0d6ce87dc8c9998ebe0bb58024">Pgr_bellman_ford&lt; G &gt;</a>
 </li>
 <li>bellman_ford_1_to_1()
 : <a class="el" href="classPgr__bellman__ford.html#aa0470cbbac60b412d3df0bae2aae0fdf">Pgr_bellman_ford&lt; G &gt;</a>
@@ -153,11 +156,17 @@ $(document).ready(function(){initNavTree('functions_b.html','');});
 <li>bidirectional()
 : <a class="el" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a0a1519de1a666bdfff7584037388e5f9">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;</a>
 </li>
+<li>binaryBreadthFirstSearch()
+: <a class="el" href="classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch.html#a8182d82eea9aafb3a367557f2212e346">pgrouting::functions::Pgr_binaryBreadthFirstSearch&lt; G &gt;</a>
+</li>
 <li>boost_graph
 : <a class="el" href="classpgrouting_1_1flow_1_1PgrCardinalityGraph.html#af740b57d54f4b1678fda2e89254b5f2a">pgrouting::flow::PgrCardinalityGraph&lt; G &gt;</a>
 </li>
 <li>boykov_kolmogorov()
 : <a class="el" href="classpgrouting_1_1graph_1_1PgrFlowGraph.html#a5928ee304759464fa5da7706115d4f1e">pgrouting::graph::PgrFlowGraph</a>
+</li>
+<li>breadthFirstSearch()
+: <a class="el" href="classpgrouting_1_1functions_1_1Pgr__breadthFirstSearch.html#a95312b02a65bf5a64c7dd509057016a0">pgrouting::functions::Pgr_breadthFirstSearch&lt; G &gt;</a>
 </li>
 <li>build_best_alpha()
 : <a class="el" href="classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#ab3e348fc5e207a8ec49b46d0771f33ca">pgrouting::alphashape::Pgr_alphaShape</a>
@@ -180,7 +189,7 @@ $(document).ready(function(){initNavTree('functions_b.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:47 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:39 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

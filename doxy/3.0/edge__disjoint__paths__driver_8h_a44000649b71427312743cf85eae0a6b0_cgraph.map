@@ -1,7 +1,0 @@
-<map id="do_pgr_edge_disjoint_paths" name="do_pgr_edge_disjoint_paths">
-<area shape="rect" id="node2" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="399,29,473,55"/>
-<area shape="rect" id="node3" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="239,29,309,55"/>
-<area shape="rect" id="node4" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="238,79,310,106"/>
-<area shape="rect" id="node5" href="$edge__disjoint__paths__driver_8cpp.html#a3ae1820e3682c1381b23bb41ff2fd6d6" title="single_execution" alt="" coords="215,130,333,157"/>
-<area shape="rect" id="node6" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="197,181,351,223"/>
-</map>

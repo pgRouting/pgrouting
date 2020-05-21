@@ -1,4 +1,0 @@
-<map id="pgrouting::trsp::Rule::begin" name="pgrouting::trsp::Rule::begin">
-<area shape="rect" id="node2" href="$classPath.html#a98b4f4769d6dfa08de9efe13bfa604d3" title="get the iterator of the path where the (restriction) rule starts " alt="" coords="216,5,359,32"/>
-<area shape="rect" id="node3" href="$classPath.html#aaf958c0083bb91143a36c25cda1ebeb4" title="Path::inf_cost_on_restriction" alt="" coords="193,56,381,83"/>
-</map>

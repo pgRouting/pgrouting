@@ -1,7 +1,0 @@
-<map id="pgrouting::Pgr_dijkstra::dijkstra" name="pgrouting::Pgr_dijkstra::dijkstra">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__dijkstra.html#a94e3a8e5a18c2130c8c7aa69b40d29e6" title="pgrouting::Pgr_dijkstra\l::dijkstra" alt="" coords="205,5,357,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html#a1ff5255c35221d033252cb9360929c97" title="Performs the next cycle of the algorithm. " alt="" coords="214,71,349,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html#ab1e74052fcc8f94169073d3cbde15bd1" title="Performs the first Dijkstra of the algorithm. " alt="" coords="207,136,356,177"/>
-<area shape="rect" id="node5" href="$dijkstra__driver_8cpp.html#a7ceb0f6116b3c1eae05e68414954079f" title="pgr_dijkstra" alt="" coords="237,202,326,229"/>
-<area shape="rect" id="node6" href="$namespacepgrouting.html#a551a5a7a12fda176276029e803c6fe45" title="pgrouting::pgr_dijkstra" alt="" coords="206,253,357,279"/>
-</map>

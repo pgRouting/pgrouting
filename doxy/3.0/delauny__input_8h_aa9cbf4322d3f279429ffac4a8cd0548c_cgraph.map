@@ -1,7 +1,0 @@
-<map id="pgr_get_delauny" name="pgr_get_delauny">
-<area shape="rect" id="node2" href="$get__check__data_8c.html#ae6967f852e7bc95d5d5131b06131de46" title="Function tells expected type of each column and then check the correspondence type of each column..." alt="" coords="171,5,324,32"/>
-<area shape="rect" id="node3" href="$delauny__input_8c.html#a9cde62eaf7b4cb0b79a276d1df65d1d5" title="pgr_fetch_row" alt="" coords="195,56,299,83"/>
-<area shape="rect" id="node4" href="$postgres__connection_8c.html#a85cec439f5e567ec736a2a77a0533d9d" title="pgr_SPI_cursor_open" alt="" coords="174,107,321,133"/>
-<area shape="rect" id="node5" href="$postgres__connection_8c.html#aeb63bcfc2ca89c02b30317112bae5f12" title="pgr_SPI_prepare" alt="" coords="188,157,307,184"/>
-<area shape="rect" id="node6" href="$time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe" title="time_msg" alt="" coords="208,208,287,235"/>
-</map>

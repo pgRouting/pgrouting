@@ -1,5 +1,0 @@
-<map id="pgrouting::tsp::Tour::slide" name="pgrouting::tsp::Tour::slide">
-<area shape="rect" id="node2" href="$classpgrouting_1_1tsp_1_1TSP.html#ae67a4b7c607af81b7123b7cf5298081e" title="pgrouting::tsp::TSP\l::find_closest_city" alt="" coords="371,5,505,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1tsp_1_1TSP.html#afddb5fa01d43c8aa277add2af2953a82" title="pgrouting::tsp::TSP\l::getDeltaSlide" alt="" coords="188,35,323,76"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1tsp_1_1Tour.html#a2bb38439f03bb69bc736bdef825d0d9a" title="pgrouting::tsp::Tour\l::size" alt="" coords="188,100,323,141"/>
-</map>

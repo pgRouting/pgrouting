@@ -1,5 +1,0 @@
-<map id="pgrouting::graph::PgrFlowGraph::edge_disjoint_paths" name="pgrouting::graph::PgrFlowGraph::edge_disjoint_paths">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a71db8d3b386fc612bfa9b1e28fb399fb" title="pgrouting::graph::PgrFlow\lGraph::get_edge_disjoint_paths" alt="" coords="233,5,439,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a863bfa5fd356156ab49c97e809ff9681" title="pgrouting::graph::PgrFlow\lGraph::get_flow_edges" alt="" coords="251,71,421,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a615920406276925d5b81e1fc2bec32a5" title="pgrouting::graph::PgrFlow\lGraph::PgrFlowGraph" alt="" coords="251,136,421,177"/>
-</map>

@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -241,31 +241,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html">pgrouting::graph::Pgr_base_graph</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00168">pgr_base_graph.hpp:168</a></div></div>
 <div class="ttc" id="classAssertFailedException_html_a7f00e7275e82f7b6bafec6339a27bc88"><div class="ttname"><a href="classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const</div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00067">pgr_assert.cpp:67</a></div></div>
 <div class="ttc" id="graph__enum_8h_html_a3f8f7b519e692469f867b0af0ce0490e"><div class="ttname"><a href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a></div><div class="ttdeci">graphType</div><div class="ttdef"><b>Definition:</b> <a href="graph__enum_8h_source.html#l00030">graph_enum.h:30</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="bellman__ford__neg__driver_8cpp_ad2e8ba9a3b8e851eddb877d124d4c44c_cgraph.png" border="0" usemap="#bellman__ford__neg__driver_8cpp_ad2e8ba9a3b8e851eddb877d124d4c44c_cgraph" alt=""/></div>
-<map name="bellman__ford__neg__driver_8cpp_ad2e8ba9a3b8e851eddb877d124d4c44c_cgraph" id="bellman__ford__neg__driver_8cpp_ad2e8ba9a3b8e851eddb877d124d4c44c_cgraph">
-<area shape="rect" id="node2" href="basePath__SSEC_8cpp.html#a19c6d298dcf1b394bb1d0269055f45f0" title="collapse_paths" alt="" coords="287,5,396,32"/>
-<area shape="rect" id="node3" href="basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1" title="count_tuples" alt="" coords="293,56,389,83"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25" title="Inserts count edges of type T into the graph. " alt="" coords="252,107,431,149"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a9b92b808b2e4ca69bd21fdfda34a6ad7" title="pgrouting::graph::Pgr\l_base_graph::insert_negative_edges" alt="" coords="224,173,459,214"/>
-<area shape="rect" id="node6" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="507,315,581,341"/>
-<area shape="rect" id="node7" href="bellman__ford__neg__driver_8cpp.html#aa7f05e5242a5574c24679a552f25993e" title="pgr_bellman_ford" alt="" coords="281,289,402,316"/>
-<area shape="rect" id="node8" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="307,340,376,367"/>
-<area shape="rect" id="node9" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="305,391,377,417"/>
-<area shape="rect" id="node10" href="classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="265,442,418,483"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="bellman__ford__neg__driver_8cpp_ad2e8ba9a3b8e851eddb877d124d4c44c_icgraph.png" border="0" usemap="#bellman__ford__neg__driver_8cpp_ad2e8ba9a3b8e851eddb877d124d4c44c_icgraph" alt=""/></div>
-<map name="bellman__ford__neg__driver_8cpp_ad2e8ba9a3b8e851eddb877d124d4c44c_icgraph" id="bellman__ford__neg__driver_8cpp_ad2e8ba9a3b8e851eddb877d124d4c44c_icgraph">
-<area shape="rect" id="node2" href="bellman__ford__neg_8c.html#a388968e4f6dc47760889140b37d62439" title="process" alt="" coords="224,5,292,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aa7f05e5242a5574c24679a552f25993e"></a>
@@ -322,24 +298,7 @@ template&lt;class G &gt; </div>
 <div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                {</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::sort(sources.begin(), sources.end());</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    sources.erase(</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            std::unique(sources.begin(), sources.end()),</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            sources.end());</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::sort(targets.begin(), targets.end());</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    targets.erase(</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            std::unique(targets.begin(), targets.end()),</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            targets.end());</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classPgr__bellman__ford.html">Pgr_bellman_ford&lt; G &gt;</a> fn_bellman_ford;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">auto</span> paths = fn_bellman_ford.<a class="code" href="classPgr__bellman__ford.html#a8db85c0d6ce87dc8c9998ebe0bb58024">bellman_ford</a>(</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            graph, sources, targets, only_cost);</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    log += fn_bellman_ford.<a class="code" href="classpgrouting_1_1Pgr__messages.html#ad58fe923de5b229f4630b857cc34359b">get_log</a>();</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> paths;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div><div class="ttc" id="classPgr__bellman__ford_html_a8db85c0d6ce87dc8c9998ebe0bb58024"><div class="ttname"><a href="classPgr__bellman__ford.html#a8db85c0d6ce87dc8c9998ebe0bb58024">Pgr_bellman_ford::bellman_ford</a></div><div class="ttdeci">Path bellman_ford(G &amp;graph, int64_t start_vertex, int64_t end_vertex, bool only_cost=false)</div><div class="ttdoc">BellmanFord 1 to 1. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__bellman__ford_8hpp_source.html#l00060">pgr_bellman_ford.hpp:60</a></div></div>
 <div class="ttc" id="classPgr__bellman__ford_html"><div class="ttname"><a href="classPgr__bellman__ford.html">Pgr_bellman_ford</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__bellman__ford_8hpp_source.html#l00051">pgr_bellman_ford.hpp:51</a></div></div>
 <div class="ttc" id="classpgrouting_1_1Pgr__messages_html_ad58fe923de5b229f4630b857cc34359b"><div class="ttname"><a href="classpgrouting_1_1Pgr__messages.html#ad58fe923de5b229f4630b857cc34359b">pgrouting::Pgr_messages::get_log</a></div><div class="ttdeci">std::string get_log() const</div><div class="ttdoc">get_log </div><div class="ttdef"><b>Definition:</b> <a href="pgr__messages_8cpp_source.html#l00036">pgr_messages.cpp:36</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="bellman__ford__neg__driver_8cpp_aa7f05e5242a5574c24679a552f25993e_cgraph.png" border="0" usemap="#bellman__ford__neg__driver_8cpp_aa7f05e5242a5574c24679a552f25993e_cgraph" alt=""/></div>
-<map name="bellman__ford__neg__driver_8cpp_aa7f05e5242a5574c24679a552f25993e_cgraph" id="bellman__ford__neg__driver_8cpp_aa7f05e5242a5574c24679a552f25993e_cgraph">
-<area shape="rect" id="node2" href="classPgr__bellman__ford.html#a8db85c0d6ce87dc8c9998ebe0bb58024" title="BellmanFord 1 to 1. " alt="" coords="175,5,380,32"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1Pgr__messages.html#ad58fe923de5b229f4630b857cc34359b" title="get_log " alt="" coords="192,57,363,98"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="bellman__ford__neg__driver_8cpp_aa7f05e5242a5574c24679a552f25993e_icgraph.png" border="0" usemap="#bellman__ford__neg__driver_8cpp_aa7f05e5242a5574c24679a552f25993e_icgraph" alt=""/></div>
-<map name="bellman__ford__neg__driver_8cpp_aa7f05e5242a5574c24679a552f25993e_icgraph" id="bellman__ford__neg__driver_8cpp_aa7f05e5242a5574c24679a552f25993e_icgraph">
-<area shape="rect" id="node2" href="bellman__ford__neg__driver_8h.html#ad2e8ba9a3b8e851eddb877d124d4c44c" title="do_pgr_bellman_ford_neg" alt="" coords="175,5,345,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
@@ -348,7 +307,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_762e7e224ab5a7615d8c08e2cd437628.html">bellman_ford</a></li><li class="navelem"><a class="el" href="bellman__ford__neg__driver_8cpp.html">bellman_ford_neg_driver.cpp</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:44 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:37 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

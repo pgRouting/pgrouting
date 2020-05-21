@@ -16,6 +16,7 @@ var searchData=
   ['addvertices',['AddVertices',['../classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a5b3d68bbd6e999a34a040b7027994b36',1,'pgrouting::graph::PgrCostFlowGraph']]],
   ['adjacent',['adjacent',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a0b33ae3fd10642c323595a472b0da25b',1,'pgrouting::graph::Pgr_base_graph']]],
   ['adjust_5fpids',['adjust_pids',['../classpgrouting_1_1Pg__points__graph.html#a66a8d1a0fef72e913ec6c2250c695346',1,'pgrouting::Pg_points_graph::adjust_pids(const std::vector&lt; Point_on_edge_t &gt; &amp;points, Path &amp;path)'],['../classpgrouting_1_1Pg__points__graph.html#a1daf3e5eb10e11a86029ba839cb3ec64',1,'pgrouting::Pg_points_graph::adjust_pids(const std::vector&lt; Point_on_edge_t &gt; &amp;points, const int64_t &amp;start_pid, const int64_t &amp;end_pid, Path &amp;path)']]],
+  ['almost_5fequal',['almost_equal',['../namespaceanonymous__namespace_02xy__vertex_8cpp_03.html#aa1a478ab47fcf15cbfb6741222c8065b',1,'anonymous_namespace{xy_vertex.cpp}::almost_equal()'],['../namespaceanonymous__namespace_02node_8cpp_03.html#aa2c878af3761459f93021494c7f6773a',1,'anonymous_namespace{node.cpp}::almost_equal()']]],
   ['annealing',['annealing',['../classpgrouting_1_1tsp_1_1TSP.html#a5231755a0284953740e1d3d9b4b0d23a',1,'pgrouting::tsp::TSP']]],
   ['append',['append',['../classPath.html#a81dda9b296131350ee5be51a13e095b7',1,'Path']]],
   ['appendpath',['appendPath',['../classPath.html#a9cb45e3a413a03f1c4224b840af1fe83',1,'Path']]],

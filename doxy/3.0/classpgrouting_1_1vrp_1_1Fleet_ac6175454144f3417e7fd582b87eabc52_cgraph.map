@@ -1,8 +1,0 @@
-<map id="pgrouting::vrp::Fleet::add_vehicle" name="pgrouting::vrp::Fleet::add_vehicle">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a87ba9f138cb87373726d87a88a3f264b" title="pgrouting::vrp::Pgr\l_pickDeliver::add_base_node" alt="" coords="192,5,385,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a29ac4c9f908dc5a106f360e97660b6d1" title="pgrouting::vrp::Pgr\l_pickDeliver::add_node" alt="" coords="209,71,368,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267" title="Returns the closing time. " alt="" coords="433,188,560,229"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e" title="is_end " alt="" coords="225,188,352,229"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="433,253,560,295"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483" title="@ { " alt="" coords="225,253,352,295"/>
-</map>

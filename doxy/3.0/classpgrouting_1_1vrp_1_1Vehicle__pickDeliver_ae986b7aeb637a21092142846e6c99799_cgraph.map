@@ -1,7 +1,0 @@
-<map id="pgrouting::vrp::Vehicle_pickDeliver::get_worse_order" name="pgrouting::vrp::Vehicle_pickDeliver::get_worse_order">
-<area shape="rect" id="node2" href="$classIdentifiers.html#a86a7dfb403d49326e8cbf8b6450dfe3f" title="Identifiers::begin" alt="" coords="269,5,387,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a0d65e9efcf78078f3b914b12f61ebf75" title="pgrouting::vrp::Vehicle\l::duration" alt="" coords="252,57,404,98"/>
-<area shape="rect" id="node4" href="$classIdentifiers.html#a6d1a35df74df78a52e938c39dc64c640" title="Identifiers::empty" alt="" coords="267,123,389,149"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a65bf4bc2763295f93cfed232690c4e6c" title="return true when no nodes are in the truck " alt="" coords="252,174,404,215"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a29bf7e33dfb519d7abb8648c2d631d30" title="Invariant The path must: " alt="" coords="452,203,604,245"/>
-</map>

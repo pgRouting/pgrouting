@@ -1,9 +1,0 @@
-digraph "pgr_bellman_ford"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node21 [label="pgr_bellman_ford",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node21 -> Node22 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node22 [label="do_pgr_bellman_ford",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$bellman__ford__driver_8h.html#a5eb504d4fc7f6f04ff82b652a8eed767"];
-}

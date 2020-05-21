@@ -1,4 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::swap" name="pgrouting::vrp::Vehicle::swap">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#ae1ed768d6cabc552f29b2d33d86ff386" title="pgrouting::vrp::Vehicle\l::capacity" alt="" coords="205,5,357,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aa22d65f920e996e3497bff86876b181f" title="Insert node in best position of the position_limits. " alt="" coords="205,71,357,112"/>
-</map>

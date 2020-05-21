@@ -3,9 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node140 [label="default_dfs_visitor",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node140 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 [label="pgrouting::visitors\l::Dfs_visitor_with_root\l\< V, E \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1visitors_1_1Dfs__visitor__with__root.html"];
-  Node140 -> Node142 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node142 [label="pgrouting::visitors\l::Edges_order_dfs_visitor\< E \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1visitors_1_1Edges__order__dfs__visitor.html"];
+  Node0 [label="pgrouting::tsp::Euclidean\lDmatrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1tsp_1_1EuclideanDmatrix.html"];
 }

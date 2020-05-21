@@ -1,9 +1,0 @@
-<map id="process" name="process">
-<area shape="rect" id="node2" href="$minCostMaxFlow__driver_8cpp.html#a18e3e28772c8cb2069794129ba729994" title="do_pgr_minCostMaxFlow" alt="" coords="121,5,292,32"/>
-<area shape="rect" id="node3" href="$arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1" title="enforces the input array to be NOT empty " alt="" coords="139,56,274,83"/>
-<area shape="rect" id="node4" href="$edges__input_8c.html#a2c0f5e0d133f4f924f660c0c7f3ad537" title="read edges for cost flow " alt="" coords="123,107,290,133"/>
-<area shape="rect" id="node5" href="$e__report_8c.html#aa7833fe4baf65aa901e1129575e7deb2" title="notice &amp; error " alt="" coords="146,157,267,184"/>
-<area shape="rect" id="node6" href="$postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64" title="pgr_SPI_connect" alt="" coords="145,208,268,235"/>
-<area shape="rect" id="node7" href="$postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f" title="pgr_SPI_finish" alt="" coords="153,259,260,285"/>
-<area shape="rect" id="node8" href="$time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe" title="time_msg" alt="" coords="167,309,246,336"/>
-</map>

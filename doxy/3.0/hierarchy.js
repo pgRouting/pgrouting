@@ -96,6 +96,9 @@ var hierarchy =
     [ "pgrouting::contraction::Pgr_linear< G >", "classpgrouting_1_1contraction_1_1Pgr__linear.html", null ],
     [ "pgrouting::flow::PgrCardinalityGraph< G >", "classpgrouting_1_1flow_1_1PgrCardinalityGraph.html", null ],
     [ "pgrouting::found_goals", "structpgrouting_1_1found__goals.html", null ],
+    [ "pgrouting::functions::Pgr_binaryBreadthFirstSearch< G >", "classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch.html", null ],
+    [ "pgrouting::functions::Pgr_breadthFirstSearch< G >", "classpgrouting_1_1functions_1_1Pgr__breadthFirstSearch.html", null ],
+    [ "pgrouting::functions::Pgr_edwardMoore< G >", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html", null ],
     [ "pgrouting::functions::Pgr_mst< G >", "classpgrouting_1_1functions_1_1Pgr__mst.html", [
       [ "pgrouting::functions::Pgr_kruskal< G >", "classpgrouting_1_1functions_1_1Pgr__kruskal.html", null ],
       [ "pgrouting::functions::Pgr_prim< G >", "classpgrouting_1_1functions_1_1Pgr__prim.html", null ]

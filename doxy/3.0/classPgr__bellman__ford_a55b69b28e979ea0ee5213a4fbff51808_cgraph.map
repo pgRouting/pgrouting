@@ -1,6 +1,0 @@
-<map id="Pgr_bellman_ford::bellman_ford" name="Pgr_bellman_ford::bellman_ford">
-<area shape="rect" id="node2" href="$classPgr__bellman__ford.html#a900118b5011bf73abedaa990a2ed6ae2" title="Call to BellmanFord 1 source to many targets. " alt="" coords="259,5,435,47"/>
-<area shape="rect" id="node3" href="$classPgr__bellman__ford.html#a2a3e48f0f2323dd90a558cb715232348" title="Pgr_bellman_ford::clear" alt="" coords="267,71,426,98"/>
-<area shape="rect" id="node4" href="$classPath.html#ad7eff4c127cba19f2052398089ac3b42" title="Path::end_id" alt="" coords="299,122,394,149"/>
-<area shape="rect" id="node5" href="$classPgr__bellman__ford.html#a2f5ffb017ca163d8a1dab7a110bb6354" title="Pgr_bellman_ford::get\l_paths" alt="" coords="272,173,421,215"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="pgrouting::graph::Pgr_contractionGraph::get_min_cost_edge" name="pgrouting::graph::Pgr_contractionGraph::get_min_cost_edge">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a0b33ae3fd10642c323595a472b0da25b" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, CH_vertex,\l CH_edge \&gt;::adjacent" alt="" coords="208,5,401,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#ac3b50334ff014ad8a9723c667423637b" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, CH_vertex,\l CH_edge \&gt;::is_directed" alt="" coords="208,85,401,141"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#acd124cc2a584b032d34f5006cd339b1b" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, CH_vertex,\l CH_edge \&gt;::is_undirected" alt="" coords="208,165,401,221"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a6c9df228fe6c9c49d49d303ad9871234" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, CH_vertex,\l CH_edge \&gt;::target" alt="" coords="208,245,401,301"/>
-</map>

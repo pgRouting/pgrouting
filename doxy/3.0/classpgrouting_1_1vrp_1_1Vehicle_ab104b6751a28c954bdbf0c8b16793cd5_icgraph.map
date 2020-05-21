@@ -1,4 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::getDropPosLowLimit" name="pgrouting::vrp::Vehicle::getDropPosLowLimit">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#ae1ed768d6cabc552f29b2d33d86ff386" title="pgrouting::vrp::Vehicle\l::capacity" alt="" coords="405,5,557,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a17be5b5bea2071f1e44b594f45019ef4" title="pgrouting::vrp::Vehicle\l::drop_position_limits" alt="" coords="205,35,357,76"/>
-</map>

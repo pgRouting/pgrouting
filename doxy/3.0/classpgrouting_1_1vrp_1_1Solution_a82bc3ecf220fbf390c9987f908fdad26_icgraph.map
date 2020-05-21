@@ -1,7 +1,0 @@
-<map id="pgrouting::vrp::Solution::get_kind" name="pgrouting::vrp::Solution::get_kind">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Optimize.html#a6725291140d233df975eb07df5b1ba0b" title="moves an order to an non empty vehicle " alt="" coords="209,5,371,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Optimize.html#a39173d526079577d40c59371bcfcc680" title="pgrouting::vrp::Optimize\l::swap_worse" alt="" coords="419,35,580,76"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Optimize.html#a18e362ade6f898d3b1cbba0505e5abcf" title="pgrouting::vrp::Optimize\l::move_reduce_cost" alt="" coords="209,123,371,164"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Solution.html#ab21af677ebe47f2fcfee71e93ab30ed3" title="pgrouting::vrp::Solution\l::operator=" alt="" coords="212,188,368,229"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Optimize.html#a3d0a917f2993449c45ce0febbff2e13f" title="pgrouting::vrp::Optimize\l::swap_order" alt="" coords="209,253,371,295"/>
-</map>

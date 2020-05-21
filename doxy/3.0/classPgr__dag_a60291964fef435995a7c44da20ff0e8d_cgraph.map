@@ -1,6 +1,0 @@
-<map id="Pgr_dag::dag" name="Pgr_dag::dag">
-<area shape="rect" id="node2" href="$classPgr__dag.html#a156ee37a0e992ae4b8696110d4481aed" title="Pgr_dag::clear" alt="" coords="184,5,291,32"/>
-<area shape="rect" id="node3" href="$classPgr__dag.html#a962d66849e2d2f878fe8d43f8ff77107" title="Dijkstra 1 source to many targets. " alt="" coords="152,56,323,83"/>
-<area shape="rect" id="node4" href="$classPath.html#ad7eff4c127cba19f2052398089ac3b42" title="Path::end_id" alt="" coords="190,107,285,133"/>
-<area shape="rect" id="node5" href="$classPgr__dag.html#aa8656201328dc172d941ad3bceee69d0" title="Pgr_dag::get_paths" alt="" coords="170,157,305,184"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="pgrouting::vrp::Tw_node::is_late_arrival" name="pgrouting::vrp::Tw_node::is_late_arrival">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a8bf5659717b9bec7078bed1ae9c864c5" title="True when arrival_time + delta_time generates TWV. " alt="" coords="199,5,381,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a926b499e318cee7a768721da337965ce" title="True when at this node does not violate time windows. " alt="" coords="214,71,366,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="209,188,371,229"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="672,217,800,259"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a259954cf5ed111fb3b6ea7bb4f689b1c" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="463,115,590,171"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a0e4f84908b0ebbb71fe9888a5b421b7b" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="429,247,624,288"/>
-</map>

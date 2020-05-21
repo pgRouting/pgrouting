@@ -29,8 +29,8 @@ digraph "pgr_base_graph.hpp"
   Node0 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node15 [label="cpp_common/xy_vertex.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$xy__vertex_8h.html"];
   Node15 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="cpp_common/basic_edge.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$basic__edge_8h.html"];
   Node0 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node20 [label="cpp_common/basic_edge.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$basic__edge_8h.html"];
-  Node0 -> Node21 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node21 [label="cpp_common/pgr_assert.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__assert_8h.html",tooltip="Assertions Handling. "];
+  Node20 [label="cpp_common/pgr_assert.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__assert_8h.html",tooltip="Assertions Handling. "];
 }

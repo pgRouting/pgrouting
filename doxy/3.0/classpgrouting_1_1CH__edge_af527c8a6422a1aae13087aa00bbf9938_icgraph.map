@@ -1,7 +1,0 @@
-<map id="pgrouting::CH_edge::contracted_vertices" name="pgrouting::CH_edge::contracted_vertices">
-<area shape="rect" id="node2" href="$classpgrouting_1_1CH__edge.html#a2bff292b91e87794f3454a7666611b6d" title="pgrouting::CH_edge\l::add_contracted_edge\l_vertices" alt="" coords="209,5,364,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1CH__edge.html#a85a95ffdce7847255759af3e2d2c1637" title="pgrouting::CH_edge\l::clear_contracted_vertices" alt="" coords="197,86,376,127"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1CH__edge.html#a22dc23aab2ffd1dedfb4b8e3b0a1175b" title="pgrouting::CH_edge\l::cp_members" alt="" coords="217,151,356,193"/>
-<area shape="rect" id="node5" href="$namespacepgrouting.html#a6745e8ab189ff8de72b34539da11dbe1" title="pgrouting::operator\&lt;\&lt;" alt="" coords="213,217,360,244"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a2a6359a7c4cc0fb4727d7864f54fca21" title="u &#45;—e1{v1}&#45;—&gt; v &#45;—e2{v2}&#45;—&gt; w " alt="" coords="213,268,360,324"/>
-</map>

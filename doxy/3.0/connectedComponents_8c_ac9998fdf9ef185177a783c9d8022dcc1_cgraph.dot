@@ -1,9 +1,0 @@
-digraph "_pgr_connectedcomponents"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node0 [label="_pgr_connectedcomponents",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="process",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$connectedComponents_8c.html#aea8088be2729b7f76f6fa2affe628168"];
-}

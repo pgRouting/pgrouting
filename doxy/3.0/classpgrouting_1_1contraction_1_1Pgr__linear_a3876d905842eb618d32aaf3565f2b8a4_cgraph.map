@@ -1,7 +1,0 @@
-<map id="pgrouting::contraction::Pgr_linear::doContraction" name="pgrouting::contraction::Pgr_linear::doContraction">
-<area shape="rect" id="node2" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a1bae6a3ec231a3048e243ff087997853" title="pgrouting::contraction\l::Pgr_linear::calculateVertices" alt="" coords="231,5,427,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a89ef11cb70d5180b441cc29d67865858" title="pgrouting::contraction\l::Pgr_linear::is_contractible" alt="" coords="475,64,655,105"/>
-<area shape="rect" id="node4" href="$classIdentifiers.html#a6d1a35df74df78a52e938c39dc64c640" title="Identifiers::empty" alt="" coords="267,122,390,149"/>
-<area shape="rect" id="node5" href="$classIdentifiers.html#affc6862074203a87d8e80223b555d86b" title="Identifiers::front" alt="" coords="508,210,621,237"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a08a15b441c762cc2e217f839618697d1" title="pgrouting::contraction\l::Pgr_linear::one_cycle" alt="" coords="251,173,406,215"/>
-</map>

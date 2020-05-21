@@ -1,9 +1,0 @@
-digraph "pgrouting::trsp::EdgeInfo::endConnectedEdge"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node46 [label="pgrouting::trsp::EdgeInfo\l::endConnectedEdge",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node46 -> Node47 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node47 [label="pgrouting::trsp::EdgeInfo\l::get_idx",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1trsp_1_1EdgeInfo.html#abd840dabd48d2aa120f26be3cc22f3dd"];
-}

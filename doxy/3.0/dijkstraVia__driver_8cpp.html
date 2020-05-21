@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -222,30 +222,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html">pgrouting::graph::Pgr_base_graph</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00168">pgr_base_graph.hpp:168</a></div></div>
 <div class="ttc" id="classAssertFailedException_html_a7f00e7275e82f7b6bafec6339a27bc88"><div class="ttname"><a href="classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const</div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00067">pgr_assert.cpp:67</a></div></div>
 <div class="ttc" id="graph__enum_8h_html_a3f8f7b519e692469f867b0af0ce0490e"><div class="ttname"><a href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a></div><div class="ttdeci">graphType</div><div class="ttdef"><b>Definition:</b> <a href="graph__enum_8h_source.html#l00030">graph_enum.h:30</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="dijkstraVia__driver_8cpp_a65bae4bd90fab026ee5f54f17655e776_cgraph.png" border="0" usemap="#dijkstraVia__driver_8cpp_a65bae4bd90fab026ee5f54f17655e776_cgraph" alt=""/></div>
-<map name="dijkstraVia__driver_8cpp_a65bae4bd90fab026ee5f54f17655e776_cgraph" id="dijkstraVia__driver_8cpp_a65bae4bd90fab026ee5f54f17655e776_cgraph">
-<area shape="rect" id="node2" href="basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1" title="count_tuples" alt="" coords="224,5,320,32"/>
-<area shape="rect" id="node3" href="dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be" title="get_route" alt="" coords="234,56,310,83"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25" title="Inserts count edges of type T into the graph. " alt="" coords="183,107,361,149"/>
-<area shape="rect" id="node5" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="409,249,484,276"/>
-<area shape="rect" id="node6" href="namespacepgRouting.html#a1673fcc0a4422aafab10a9ec9ae73fdf" title="pgRouting::pgr_dijkstraVia" alt="" coords="185,224,359,251"/>
-<area shape="rect" id="node7" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="237,275,307,301"/>
-<area shape="rect" id="node8" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="236,325,308,352"/>
-<area shape="rect" id="node9" href="classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="195,377,349,418"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="dijkstraVia__driver_8cpp_a65bae4bd90fab026ee5f54f17655e776_icgraph.png" border="0" usemap="#dijkstraVia__driver_8cpp_a65bae4bd90fab026ee5f54f17655e776_icgraph" alt=""/></div>
-<map name="dijkstraVia__driver_8cpp_a65bae4bd90fab026ee5f54f17655e776_icgraph" id="dijkstraVia__driver_8cpp_a65bae4bd90fab026ee5f54f17655e776_icgraph">
-<area shape="rect" id="node2" href="dijkstraVia_8c.html#aaf342c02654faaeb5d0ab587eb345578" title="process" alt="" coords="183,5,251,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad4e2c3a96abf0877e03725f4dbc993ec"></a>
@@ -309,15 +286,7 @@ Here is the caller graph for this function:</div>
 <p class="definition">Definition at line <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00042">42</a> of file <a class="el" href="dijkstraVia__driver_8cpp_source.html">dijkstraVia_driver.cpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00071">get_route()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                          {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> i = 0;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> e : path) {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        (*postgres_data)[sequence] = {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            route_id,</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            path_id,</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            i,</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            path.start_id(),</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            path.end_id(),</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            e.node,</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            e.edge,</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            e.cost,</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            e.agg_cost,</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            route_cost};</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        route_cost += path[i].cost;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        ++i;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        ++sequence;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div></div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="dijkstraVia__driver_8cpp_ad4e2c3a96abf0877e03725f4dbc993ec_icgraph.png" border="0" usemap="#dijkstraVia__driver_8cpp_ad4e2c3a96abf0877e03725f4dbc993ec_icgraph" alt=""/></div>
-<map name="dijkstraVia__driver_8cpp_ad4e2c3a96abf0877e03725f4dbc993ec_icgraph" id="dijkstraVia__driver_8cpp_ad4e2c3a96abf0877e03725f4dbc993ec_icgraph">
-<area shape="rect" id="node2" href="dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be" title="get_route" alt="" coords="125,5,201,32"/>
-</map>
-</div>
-
+<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                          {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> i = 0;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> e : path) {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        (*postgres_data)[sequence] = {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            route_id,</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            path_id,</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            i,</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            path.start_id(),</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            path.end_id(),</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            e.node,</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            e.edge,</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            e.cost,</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            e.agg_cost,</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            route_cost};</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        route_cost += path[i].cost;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        ++i;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        ++sequence;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a0f5d7eba38afe637689f28e6a51761be"></a>
@@ -361,23 +330,7 @@ Here is the caller graph for this function:</div>
 <p class="reference">Referenced by <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00087">do_pgr_dijkstraVia()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                       {</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">size_t</span> sequence = 0;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">int</span> path_id = 1;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">int</span> route_id = 1;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">double</span> route_cost = 0;  <span class="comment">// routes_agg_cost</span></div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;path : paths) {</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">if</span> (path.size() &gt; 0)</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <a class="code" href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec">get_path</a>(route_id, path_id, path, ret_path, route_cost, sequence);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        ++path_id;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> sequence;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div><div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00047">basePath_SSEC.hpp:47</a></div></div>
 <div class="ttc" id="dijkstraVia__driver_8cpp_html_ad4e2c3a96abf0877e03725f4dbc993ec"><div class="ttname"><a href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec">get_path</a></div><div class="ttdeci">static void get_path(int route_id, int path_id, const Path &amp;path, Routes_t **postgres_data, double &amp;route_cost, size_t &amp;sequence)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstraVia__driver_8cpp_source.html#l00042">dijkstraVia_driver.cpp:42</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="dijkstraVia__driver_8cpp_a0f5d7eba38afe637689f28e6a51761be_cgraph.png" border="0" usemap="#dijkstraVia__driver_8cpp_a0f5d7eba38afe637689f28e6a51761be_cgraph" alt=""/></div>
-<map name="dijkstraVia__driver_8cpp_a0f5d7eba38afe637689f28e6a51761be_cgraph" id="dijkstraVia__driver_8cpp_a0f5d7eba38afe637689f28e6a51761be_cgraph">
-<area shape="rect" id="node2" href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec" title="get_path" alt="" coords="129,5,201,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="dijkstraVia__driver_8cpp_a0f5d7eba38afe637689f28e6a51761be_icgraph.png" border="0" usemap="#dijkstraVia__driver_8cpp_a0f5d7eba38afe637689f28e6a51761be_icgraph" alt=""/></div>
-<map name="dijkstraVia__driver_8cpp_a0f5d7eba38afe637689f28e6a51761be_icgraph" id="dijkstraVia__driver_8cpp_a0f5d7eba38afe637689f28e6a51761be_icgraph">
-<area shape="rect" id="node2" href="dijkstraVia__driver_8h.html#a65bae4bd90fab026ee5f54f17655e776" title="do_pgr_dijkstraVia" alt="" coords="129,5,259,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
@@ -386,7 +339,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dijkstraVia__driver_8cpp.html">dijkstraVia_driver.cpp</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:44 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:37 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

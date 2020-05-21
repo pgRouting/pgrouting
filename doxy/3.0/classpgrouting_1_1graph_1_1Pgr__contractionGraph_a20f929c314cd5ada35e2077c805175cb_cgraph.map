@@ -1,4 +1,0 @@
-<map id="pgrouting::graph::Pgr_contractionGraph::is_linear" name="pgrouting::graph::Pgr_contractionGraph::is_linear">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a54b195b2e1f8bf490531f9bdbc1ed56c" title="get the vertex descriptors of adjacent vertices of v " alt="" coords="200,5,357,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#aa8e87f4262331e87f514a3947c899804" title="Possibility of a shortcut from left vertex to right vertex v* should be a linear vertex u &lt;&#45;&gt; v &#45;&gt; w:..." alt="" coords="205,85,352,141"/>
-</map>

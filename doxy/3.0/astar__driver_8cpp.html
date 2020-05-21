@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -253,31 +253,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html">pgrouting::graph::Pgr_base_graph</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00168">pgr_base_graph.hpp:168</a></div></div>
 <div class="ttc" id="classAssertFailedException_html_a7f00e7275e82f7b6bafec6339a27bc88"><div class="ttname"><a href="classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const</div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00067">pgr_assert.cpp:67</a></div></div>
 <div class="ttc" id="graph__enum_8h_html_a3f8f7b519e692469f867b0af0ce0490e"><div class="ttname"><a href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a></div><div class="ttdeci">graphType</div><div class="ttdef"><b>Definition:</b> <a href="graph__enum_8h_source.html#l00030">graph_enum.h:30</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="astar__driver_8cpp_a828b045826e6d6fa823646b017f8fa58_cgraph.png" border="0" usemap="#astar__driver_8cpp_a828b045826e6d6fa823646b017f8fa58_cgraph" alt=""/></div>
-<map name="astar__driver_8cpp_a828b045826e6d6fa823646b017f8fa58_cgraph" id="astar__driver_8cpp_a828b045826e6d6fa823646b017f8fa58_cgraph">
-<area shape="rect" id="node2" href="basePath__SSEC_8cpp.html#a19c6d298dcf1b394bb1d0269055f45f0" title="collapse_paths" alt="" coords="264,5,373,32"/>
-<area shape="rect" id="node3" href="basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1" title="count_tuples" alt="" coords="271,56,367,83"/>
-<area shape="rect" id="node4" href="namespacepgrouting.html#a7f6c592f35e628f82429127580ed29fb" title="pgrouting::extract\l_vertices" alt="" coords="257,107,380,149"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25" title="Inserts count edges of type T into the graph. " alt="" coords="229,173,408,214"/>
-<area shape="rect" id="node6" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="456,315,531,341"/>
-<area shape="rect" id="node7" href="astar__driver_8cpp.html#a1e8d0064b04fcec0509ec834a85b8787" title="pgr_astar" alt="" coords="281,289,357,316"/>
-<area shape="rect" id="node8" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="284,340,353,367"/>
-<area shape="rect" id="node9" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="283,391,355,417"/>
-<area shape="rect" id="node10" href="classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="242,442,395,483"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="astar__driver_8cpp_a828b045826e6d6fa823646b017f8fa58_icgraph.png" border="0" usemap="#astar__driver_8cpp_a828b045826e6d6fa823646b017f8fa58_icgraph" alt=""/></div>
-<map name="astar__driver_8cpp_a828b045826e6d6fa823646b017f8fa58_icgraph" id="astar__driver_8cpp_a828b045826e6d6fa823646b017f8fa58_icgraph">
-<area shape="rect" id="node2" href="astar_8c.html#aaaf7184e9c115d16cd3d635bdaadf808" title="process" alt="" coords="229,5,297,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1e8d0064b04fcec0509ec834a85b8787"></a>
@@ -352,24 +328,7 @@ template&lt;class G &gt; </div>
 <div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                     {</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::sort(sources.begin(), sources.end());</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    sources.erase(</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            std::unique(sources.begin(), sources.end()),</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            sources.end());</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::sort(targets.begin(), targets.end());</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    targets.erase(</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            std::unique(targets.begin(), targets.end()),</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            targets.end());</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classpgrouting_1_1algorithms_1_1Pgr__astar.html">pgrouting::algorithms::Pgr_astar&lt; G &gt;</a> fn_astar;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">auto</span> paths = fn_astar.<a class="code" href="classpgrouting_1_1algorithms_1_1Pgr__astar.html#a556ce53d0181fdf27d13f6e39d109c09">astar</a>(graph, sources, targets,</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            heuristic, factor, epsilon, only_cost);</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (!normal) {</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;path : paths) {</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            path.<a class="code" href="classPath.html#a7bba11c6c32823d91b1e9bf00a6baa2e">reverse</a>();</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> paths;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1algorithms_1_1Pgr__astar_html_a556ce53d0181fdf27d13f6e39d109c09"><div class="ttname"><a href="classpgrouting_1_1algorithms_1_1Pgr__astar.html#a556ce53d0181fdf27d13f6e39d109c09">pgrouting::algorithms::Pgr_astar::astar</a></div><div class="ttdeci">Path astar(G &amp;graph, int64_t start_vertex, int64_t end_vertex, int heuristic, double factor, double epsilon, bool only_cost)</div><div class="ttdoc">one to one astar 1 to 1 </div><div class="ttdef"><b>Definition:</b> <a href="pgr__astar_8hpp_source.html#l00067">pgr_astar.hpp:67</a></div></div>
 <div class="ttc" id="classPath_html_a7bba11c6c32823d91b1e9bf00a6baa2e"><div class="ttname"><a href="classPath.html#a7bba11c6c32823d91b1e9bf00a6baa2e">Path::reverse</a></div><div class="ttdeci">void reverse()</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00057">basePath_SSEC.cpp:57</a></div></div>
 <div class="ttc" id="classpgrouting_1_1algorithms_1_1Pgr__astar_html"><div class="ttname"><a href="classpgrouting_1_1algorithms_1_1Pgr__astar.html">pgrouting::algorithms::Pgr_astar</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__astar_8hpp_source.html#l00052">pgr_astar.hpp:52</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="astar__driver_8cpp_a1e8d0064b04fcec0509ec834a85b8787_cgraph.png" border="0" usemap="#astar__driver_8cpp_a1e8d0064b04fcec0509ec834a85b8787_cgraph" alt=""/></div>
-<map name="astar__driver_8cpp_a1e8d0064b04fcec0509ec834a85b8787_cgraph" id="astar__driver_8cpp_a1e8d0064b04fcec0509ec834a85b8787_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1algorithms_1_1Pgr__astar.html#a556ce53d0181fdf27d13f6e39d109c09" title="one to one astar 1 to 1 " alt="" coords="129,5,272,47"/>
-<area shape="rect" id="node3" href="classPath.html#a7bba11c6c32823d91b1e9bf00a6baa2e" title="Path::reverse" alt="" coords="151,71,251,98"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="astar__driver_8cpp_a1e8d0064b04fcec0509ec834a85b8787_icgraph.png" border="0" usemap="#astar__driver_8cpp_a1e8d0064b04fcec0509ec834a85b8787_icgraph" alt=""/></div>
-<map name="astar__driver_8cpp_a1e8d0064b04fcec0509ec834a85b8787_icgraph" id="astar__driver_8cpp_a1e8d0064b04fcec0509ec834a85b8787_icgraph">
-<area shape="rect" id="node2" href="astar__driver_8h.html#a9d704ded9944c8b035f5f37e42e587cb" title="do_pgr_astarManyToMany" alt="" coords="129,5,305,32"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
@@ -378,7 +337,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c6e37fc9835c6783ca7f74105e7ae7b1.html">astar</a></li><li class="navelem"><a class="el" href="astar__driver_8cpp.html">astar_driver.cpp</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:44 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:37 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

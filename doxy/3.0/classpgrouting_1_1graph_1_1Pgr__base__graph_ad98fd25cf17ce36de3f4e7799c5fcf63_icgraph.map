@@ -1,8 +1,0 @@
-<map id="pgrouting::graph::Pgr_base_graph::source" name="pgrouting::graph::Pgr_base_graph::source">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#ae03853a505783f37f22636ea3e97b4f3" title="pgrouting::graph::Pgr\l_lineGraphFull::apply\l_transformation" alt="" coords="432,90,576,146"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#af0cf958391c3a94623de1e3c010f274d" title="pgrouting::graph::Pgr\l_lineGraphFull::get_postgres\l_results_directed" alt="" coords="196,42,384,98"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html#a32640e84c6abe522dcbeef889481a21b" title="pgrouting::graph::Pgr\l_lineGraph::get_postgres\l_results_directed" alt="" coords="207,122,373,178"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#aa6f37d724f89d29cc1ad0612de7cd73e" title="pgrouting::graph::Pgr\l_lineGraphFull::graph\l_add_edge" alt="" coords="217,202,363,258"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#ae7396720e0806b3984765eede95a313c" title="pgrouting::alphashape\l::Pgr_alphaShape::make\l_triangles" alt="" coords="207,282,373,338"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a62d1dff3070311554ae6ce2765c1b077" title="pgrouting::alphashape\l::Pgr_alphaShape::radius" alt="" coords="206,363,374,404"/>
-</map>

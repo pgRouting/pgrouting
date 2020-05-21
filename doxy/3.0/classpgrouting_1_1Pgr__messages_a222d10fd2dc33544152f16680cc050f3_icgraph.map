@@ -1,6 +1,0 @@
-<map id="pgrouting::Pgr_messages::has_error" name="pgrouting::Pgr_messages::has_error">
-<area shape="rect" id="node2" href="$withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580" title="do_pgr_many_withPointsDD" alt="" coords="224,5,412,32"/>
-<area shape="rect" id="node3" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="253,56,383,83"/>
-<area shape="rect" id="node4" href="$withPoints__ksp__driver_8h.html#ad523d2aea4f9d3d885f6b23b835a660a" title="do_pgr_withPointsKsp" alt="" coords="242,107,394,133"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1Pgr__messages.html#aeef4a61000c045a6fe05a39abf673393" title="pgrouting::Pgr_messages\l::operator=" alt="" coords="233,158,403,199"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="pgrouting::graph::PgrCostFlowGraph::GetFlowEdges" name="pgrouting::graph::PgrCostFlowGraph::GetFlowEdges">
-<area shape="rect" id="node2" href="$minCostMaxFlow__driver_8h.html#acd74794505635d387a4eebe8eb657bad" title="do_pgr_minCostMaxFlow" alt="" coords="475,38,645,64"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ac675204cca5c10ceeccfada49321ca8c" title="pgrouting::graph::PgrDirected\lChPPGraph::GetPathEdges" alt="" coords="233,26,425,68"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a28c4c1b3af55280347d2f79b8387ef90" title="pgrouting::graph::PgrCost\lFlowGraph::MinCostMaxFlow" alt="" coords="232,92,427,133"/>
-</map>

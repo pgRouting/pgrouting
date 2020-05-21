@@ -1,8 +1,0 @@
-<map id="pgrouting::contraction::Pgr_deadend::doContraction" name="pgrouting::contraction::Pgr_deadend::doContraction">
-<area shape="rect" id="node2" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#aed46c6193e522fa638e46d87d0174ebb" title="pgrouting::contraction\l::Pgr_deadend::calculateVertices" alt="" coords="248,46,463,87"/>
-<area shape="rect" id="node3" href="$classIdentifiers.html#abc73ed57af79c12963989657f99d4662" title="true ids() has element " alt="" coords="550,9,658,36"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ad86d555801d7bcdc29209f75dae1d83f" title="pgrouting::contraction\l::Pgr_deadend::is_dead_end" alt="" coords="511,75,697,117"/>
-<area shape="rect" id="node5" href="$classIdentifiers.html#a25c5b0e66e42636322e638e7583b3736" title="Identifiers::clear" alt="" coords="298,163,413,189"/>
-<area shape="rect" id="node6" href="$classIdentifiers.html#a6d1a35df74df78a52e938c39dc64c640" title="Identifiers::empty" alt="" coords="294,213,417,240"/>
-<area shape="rect" id="node7" href="$classIdentifiers.html#affc6862074203a87d8e80223b555d86b" title="Identifiers::front" alt="" coords="299,264,412,291"/>
-</map>

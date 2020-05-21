@@ -1,6 +1,0 @@
-<map id="pgrouting::vrp::Vehicle_pickDeliver::semiLIFO" name="pgrouting::vrp::Vehicle_pickDeliver::semiLIFO">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aedf5f30b753fed6af792b114ec804636" title="pgrouting::vrp::Vehicle\l_pickDeliver::do_while\l_feasable" alt="" coords="216,5,369,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a5c9706adba6b67df27506b64815f4d8d" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_in\l_vehicle" alt="" coords="421,39,576,95"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Optimize.html#a6725291140d233df975eb07df5b1ba0b" title="moves an order to an non empty vehicle " alt="" coords="212,137,373,178"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Optimize.html#a3d0a917f2993449c45ce0febbff2e13f" title="pgrouting::vrp::Optimize\l::swap_order" alt="" coords="212,202,373,243"/>
-</map>

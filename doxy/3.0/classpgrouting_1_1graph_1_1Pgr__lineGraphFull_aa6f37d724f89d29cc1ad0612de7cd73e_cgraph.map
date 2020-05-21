@@ -1,5 +1,0 @@
-<map id="pgrouting::graph::Pgr_lineGraphFull::graph_add_edge" name="pgrouting::graph::Pgr_lineGraphFull::graph_add_edge">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab7723cc4953bdf4319e1201d3eb921bd" title="get the vertex descriptor of the vertex When the vertex does not exist " alt="" coords="199,5,341,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad98fd25cf17ce36de3f4e7799c5fcf63" title="pgrouting::graph::Pgr\l_base_graph::source" alt="" coords="199,71,341,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a6c9df228fe6c9c49d49d303ad9871234" title="pgrouting::graph::Pgr\l_base_graph::target" alt="" coords="199,136,341,177"/>
-</map>

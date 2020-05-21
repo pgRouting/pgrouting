@@ -1,9 +1,0 @@
-digraph "pgrouting::contraction::Pgr_linear::doContraction"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node22 [label="pgrouting::contraction\l::Pgr_linear::doContraction",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node22 -> Node23 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node23 [label="pgrouting::contraction\l::Pgr_linear::operator()",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a010d908c09e9dc7d1ccf4b84dfb1e5aa"];
-}

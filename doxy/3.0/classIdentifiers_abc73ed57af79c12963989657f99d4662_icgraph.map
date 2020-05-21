@@ -1,9 +1,0 @@
-<map id="Identifiers::has" name="Identifiers::has">
-<area shape="rect" id="node2" href="$namespacepgrouting_1_1algorithms.html#a761326bbc7445ba17d100dd39fa8c124" title="Bridges Bridges are closely related to the concept of articulation vertices, vertices that belong to ..." alt="" coords="197,5,340,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#aed46c6193e522fa638e46d87d0174ebb" title="pgrouting::contraction\l::Pgr_deadend::calculateVertices" alt="" coords="161,71,376,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ac53c67c279159a0bc491513d3de4a20b" title="pgrouting::contraction\l::Pgr_deadend::doContraction" alt="" coords="424,100,619,141"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="189,188,348,229"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#adb870b4b7089194de06de8471eba0767" title="pgrouting::vrp::Vehicle\l_pickDeliver::has_order" alt="" coords="189,253,348,295"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a89ef11cb70d5180b441cc29d67865858" title="pgrouting::contraction\l::Pgr_linear::is_contractible" alt="" coords="179,319,359,360"/>
-<area shape="rect" id="node8" href="$classIdentifiers.html#a215e031fe598cdb9d75d407db30f0555" title="compund set INTERSECTION element " alt="" coords="205,384,332,425"/>
-</map>

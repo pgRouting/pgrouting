@@ -1,5 +1,0 @@
-<map id="pgrouting::graph::Pgr_contractionGraph::is_shortcut_possible" name="pgrouting::graph::Pgr_contractionGraph::is_shortcut_possible">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a51cf5f536406a5b8e6ecd5d22c777c4f" title="pgrouting::graph::Pgr\l_contractionGraph::has_u_v_w" alt="" coords="200,5,403,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#ac3b50334ff014ad8a9723c667423637b" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, CH_vertex,\l CH_edge \&gt;::is_directed" alt="" coords="205,71,398,127"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#acd124cc2a584b032d34f5006cd339b1b" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, CH_vertex,\l CH_edge \&gt;::is_undirected" alt="" coords="205,151,398,207"/>
-</map>

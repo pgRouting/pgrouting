@@ -1,9 +1,0 @@
-digraph "pgr_randomSpanningTree"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node19 [label="pgr_randomSpanningTree",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node19 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node20 [label="do_pgr_randomSpanningTree",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$randomSpanningTree__driver_8h.html#aff2fec7737d2fae3f0248be44bbbb4f8"];
-}

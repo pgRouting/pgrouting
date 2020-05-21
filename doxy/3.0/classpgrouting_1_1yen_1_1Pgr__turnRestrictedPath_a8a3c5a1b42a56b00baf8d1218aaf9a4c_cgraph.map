@@ -1,4 +1,0 @@
-<map id="pgrouting::yen::Pgr_turnRestrictedPath::get_results" name="pgrouting::yen::Pgr_turnRestrictedPath::get_results">
-<area shape="rect" id="node2" href="$classPath.html#ad61a1c96149ce7b7f6ccd696a346bbc3" title="Path::countInfinityCost" alt="" coords="195,5,351,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1yen_1_1Pgr__turnRestrictedPath.html#a80314d26e09b58326cd260cce90fc953" title="sets an inf value on agg_cost on the vertex/edge where the restriction begins " alt="" coords="192,56,353,112"/>
-</map>

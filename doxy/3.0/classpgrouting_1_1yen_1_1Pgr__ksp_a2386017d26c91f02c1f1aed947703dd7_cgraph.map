@@ -1,6 +1,0 @@
-<map id="pgrouting::yen::Pgr_ksp::executeYen" name="pgrouting::yen::Pgr_ksp::executeYen">
-<area shape="rect" id="node2" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html#a8470bb127988ca006a2a3596caee022c" title="pgrouting::yen::Pgr\l_ksp::clear" alt="" coords="197,5,329,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html#a1ff5255c35221d033252cb9360929c97" title="Performs the next cycle of the algorithm. " alt="" coords="196,71,331,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html#ab1e74052fcc8f94169073d3cbde15bd1" title="Performs the first Dijkstra of the algorithm. " alt="" coords="189,136,338,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1yen_1_1Pgr__ksp_1_1Visitor.html#a7fc9da8e45c0e4d88705504e38a646a0" title="pgrouting::yen::Pgr\l_ksp::Visitor::on_insert\l_first_solution" alt="" coords="185,202,341,258"/>
-</map>

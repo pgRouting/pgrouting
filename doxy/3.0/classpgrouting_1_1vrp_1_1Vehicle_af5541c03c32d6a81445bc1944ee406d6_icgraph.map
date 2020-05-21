@@ -1,7 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::has_cv" name="pgrouting::vrp::Vehicle::has_cv">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae10bef610549433ababadd20411a5e84" title="Inserts an order. " alt="" coords="422,5,574,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#af03e827c78c15067dd25279ed354150a" title="pgrouting::vrp::Vehicle\l::is_feasable" alt="" coords="212,51,364,92"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a59a88f45361f562c3c7b2391539de7b0" title="Inserts an order In semi&#45;Lifo order. " alt="" coords="419,84,577,125"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa894fd15242682756ea30cc1bbd6aa42" title="puts an order at the end of the truck " alt="" coords="205,168,371,209"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69" title="Puts an order at the end front of the truck. " alt="" coords="207,233,369,275"/>
-</map>

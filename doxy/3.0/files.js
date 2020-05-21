@@ -42,6 +42,9 @@ var files =
     [ "biconnectedComponents.c", "biconnectedComponents_8c.html", "biconnectedComponents_8c" ],
     [ "biconnectedComponents_driver.cpp", "biconnectedComponents__driver_8cpp.html", "biconnectedComponents__driver_8cpp" ],
     [ "biconnectedComponents_driver.h", "biconnectedComponents__driver_8h.html", "biconnectedComponents__driver_8h" ],
+    [ "binaryBreadthFirstSearch.c", "binaryBreadthFirstSearch_8c.html", "binaryBreadthFirstSearch_8c" ],
+    [ "binaryBreadthFirstSearch_driver.cpp", "binaryBreadthFirstSearch__driver_8cpp.html", "binaryBreadthFirstSearch__driver_8cpp" ],
+    [ "binaryBreadthFirstSearch_driver.h", "binaryBreadthFirstSearch__driver_8h.html", "binaryBreadthFirstSearch__driver_8h" ],
     [ "bline.hpp", "bline_8hpp.html", "bline_8hpp" ],
     [ "book_keeping.cpp", "book__keeping_8cpp.html", "book__keeping_8cpp" ],
     [ "book_keeping.h", "book__keeping_8h.html", [
@@ -51,6 +54,9 @@ var files =
     ] ],
     [ "bpoint.cpp", "bpoint_8cpp.html", null ],
     [ "bpoint.hpp", "bpoint_8hpp.html", null ],
+    [ "breadthFirstSearch.c", "breadthFirstSearch_8c.html", "breadthFirstSearch_8c" ],
+    [ "breadthFirstSearch_driver.cpp", "breadthFirstSearch__driver_8cpp.html", "breadthFirstSearch__driver_8cpp" ],
+    [ "breadthFirstSearch_driver.h", "breadthFirstSearch__driver_8h.html", "breadthFirstSearch__driver_8h" ],
     [ "bridges.c", "bridges_8c.html", "bridges_8c" ],
     [ "bridges_driver.cpp", "bridges__driver_8cpp.html", "bridges__driver_8cpp" ],
     [ "bridges_driver.h", "bridges__driver_8h.html", "bridges__driver_8h" ],
@@ -137,6 +143,9 @@ var files =
     [ "edges_order_dfs_visitor.hpp", "edges__order__dfs__visitor_8hpp.html", [
       [ "Edges_order_dfs_visitor", "classpgrouting_1_1visitors_1_1Edges__order__dfs__visitor.html", "classpgrouting_1_1visitors_1_1Edges__order__dfs__visitor" ]
     ] ],
+    [ "edwardMoore.c", "edwardMoore_8c.html", "edwardMoore_8c" ],
+    [ "edwardMoore_driver.cpp", "edwardMoore__driver_8cpp.html", "edwardMoore__driver_8cpp" ],
+    [ "edwardMoore_driver.h", "edwardMoore__driver_8h.html", "edwardMoore__driver_8h" ],
     [ "euclideanDmatrix.cpp", "euclideanDmatrix_8cpp.html", "euclideanDmatrix_8cpp" ],
     [ "euclideanDmatrix.h", "euclideanDmatrix_8h.html", [
       [ "EuclideanDmatrix", "classpgrouting_1_1tsp_1_1EuclideanDmatrix.html", "classpgrouting_1_1tsp_1_1EuclideanDmatrix" ]
@@ -279,6 +288,12 @@ var files =
     [ "pgr_bidirectional.hpp", "pgr__bidirectional_8hpp.html", [
       [ "Pgr_bidirectional", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html", "classpgrouting_1_1bidirectional_1_1Pgr__bidirectional" ]
     ] ],
+    [ "pgr_binaryBreadthFirstSearch.hpp", "pgr__binaryBreadthFirstSearch_8hpp.html", [
+      [ "Pgr_binaryBreadthFirstSearch", "classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch.html", "classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch" ]
+    ] ],
+    [ "pgr_breadthFirstSearch.hpp", "pgr__breadthFirstSearch_8hpp.html", [
+      [ "Pgr_breadthFirstSearch", "classpgrouting_1_1functions_1_1Pgr__breadthFirstSearch.html", "classpgrouting_1_1functions_1_1Pgr__breadthFirstSearch" ]
+    ] ],
     [ "pgr_chinesePostman.hpp", "pgr__chinesePostman_8hpp.html", [
       [ "PgrDirectedChPPGraph", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph" ]
     ] ],
@@ -312,6 +327,9 @@ var files =
     ] ],
     [ "pgr_edge_xy_t.h", "pgr__edge__xy__t_8h.html", [
       [ "Pgr_edge_xy_t", "structPgr__edge__xy__t.html", "structPgr__edge__xy__t" ]
+    ] ],
+    [ "pgr_edwardMoore.hpp", "pgr__edwardMoore_8hpp.html", [
+      [ "Pgr_edwardMoore", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html", "classpgrouting_1_1functions_1_1Pgr__edwardMoore" ]
     ] ],
     [ "pgr_flow_t.h", "pgr__flow__t_8h.html", [
       [ "pgr_flow_t", "structpgr__flow__t.html", "structpgr__flow__t" ]

@@ -1,8 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::erase" name="pgrouting::vrp::Vehicle::erase">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3824b3c3af974687c0bdcc9aab615350" title="pgrouting::vrp::Vehicle\l_pickDeliver::erase" alt="" coords="209,5,361,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae10bef610549433ababadd20411a5e84" title="Inserts an order. " alt="" coords="209,71,361,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a7b949a1e2f1c3cc36648c6224e9c8083" title="pgrouting::vrp::Vehicle\l::is_phony" alt="" coords="412,188,564,229"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aac46d18126e93540a1d7321281a1fc02" title="Evaluated: pop_back a node to the path. " alt="" coords="209,188,361,229"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aa7d6e872a8ac0e52f899827a52b6ffcc" title="Evaluated: pop_front a node to the path. " alt="" coords="209,253,361,295"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a59a88f45361f562c3c7b2391539de7b0" title="Inserts an order In semi&#45;Lifo order. " alt="" coords="205,319,364,360"/>
-</map>

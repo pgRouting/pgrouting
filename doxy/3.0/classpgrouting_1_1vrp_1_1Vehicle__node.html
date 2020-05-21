@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">3.0-dev</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
   </td>
  </tr>
@@ -544,25 +544,7 @@ Friends</h2></td></tr>
 <p class="reference">References <a class="el" href="vehicle__node_8h_source.html#l00065">arrival_time()</a>, <a class="el" href="tw__node_8h_source.html#l00086">pgrouting::vrp::Tw_node::service_time()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00040">pgrouting::vrp::Tw_node::travel_time_to()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8h_source.html#l00132">has_cv()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                            {</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">return</span> other.arrival_time()</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        + other.service_time()</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        + other.travel_time_to(*<span class="keyword">this</span>, speed);</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div></div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a810f8e5e0deea10816247439a890a2a1_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a810f8e5e0deea10816247439a890a2a1_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a810f8e5e0deea10816247439a890a2a1_cgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a810f8e5e0deea10816247439a890a2a1_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a23d1cfd02e19e0283a6fd90db1e4703b" title="Truck&#39;s arrival_time to this node. " alt="" coords="220,5,372,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="227,71,365,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7e5b1bdfeb746da922a2863bfe7ae718" title="time = distance / speed. " alt="" coords="223,136,369,177"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a810f8e5e0deea10816247439a890a2a1_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a810f8e5e0deea10816247439a890a2a1_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a810f8e5e0deea10816247439a890a2a1_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a810f8e5e0deea10816247439a890a2a1_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ab2033c2764f192da405b9877ac441772" title="True when not violation. " alt="" coords="220,5,372,47"/>
-</map>
-</div>
-
+<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                            {</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">return</span> other.arrival_time()</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        + other.service_time()</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        + other.travel_time_to(*<span class="keyword">this</span>, speed);</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="aa1a22978cc7674504dcdc570bcb5f354"></a>
@@ -608,27 +590,7 @@ Here is the caller graph for this function:</div>
 <p class="reference">Referenced by <a class="el" href="tw__node_8h_source.html#l00196">pgrouting::vrp::Tw_node::is_on_time()</a>, <a class="el" href="tw__node_8cpp_source.html#l00087">pgrouting::vrp::Tw_node::is_partially_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00095">pgrouting::vrp::Tw_node::is_tight_compatible_IJ()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                                                {</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>) <span class="keywordflow">return</span>  (std::numeric_limits&lt;double&gt;::max)();</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> I.closes() + I.service_time() + I.travel_time_to(*<span class="keyword">this</span>, speed);</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">pgrouting::vrp::Tw_node::kStart</a></div><div class="ttdoc">starting site </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00060">tw_node.h:60</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aba4a921c9d3f8e05911b584223bc0469"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node::m_type</a></div><div class="ttdeci">NodeType m_type</div><div class="ttdoc">The demand for the Node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00278">tw_node.h:278</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_aa1a22978cc7674504dcdc570bcb5f354_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_aa1a22978cc7674504dcdc570bcb5f354_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_aa1a22978cc7674504dcdc570bcb5f354_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_aa1a22978cc7674504dcdc570bcb5f354_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267" title="Returns the closing time. " alt="" coords="229,5,355,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="223,71,361,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7e5b1bdfeb746da922a2863bfe7ae718" title="time = distance / speed. " alt="" coords="219,136,365,177"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_aa1a22978cc7674504dcdc570bcb5f354_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_aa1a22978cc7674504dcdc570bcb5f354_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_aa1a22978cc7674504dcdc570bcb5f354_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_aa1a22978cc7674504dcdc570bcb5f354_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="461,35,589,76"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a259954cf5ed111fb3b6ea7bb4f689b1c" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="253,28,379,84"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a0e4f84908b0ebbb71fe9888a5b421b7b" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="219,108,413,150"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a3cf23e97726fbef9a8ffba6952a2aba1"></a>
@@ -675,30 +637,7 @@ Here is the caller graph for this function:</div>
 <p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00073">pgrouting::vrp::Tw_node::is_compatible_IJ()</a>, <a class="el" href="tw__node_8h_source.html#l00196">pgrouting::vrp::Tw_node::is_on_time()</a>, <a class="el" href="tw__node_8cpp_source.html#l00087">pgrouting::vrp::Tw_node::is_partially_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00103">pgrouting::vrp::Tw_node::is_partially_waitTime_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00095">pgrouting::vrp::Tw_node::is_tight_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00112">pgrouting::vrp::Tw_node::is_waitTime_compatible_IJ()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                                               {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>) <span class="keywordflow">return</span> (std::numeric_limits&lt;double&gt;::max)();</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> I.opens() + I.service_time() + I.travel_time_to(*<span class="keyword">this</span>, speed);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">pgrouting::vrp::Tw_node::kStart</a></div><div class="ttdoc">starting site </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00060">tw_node.h:60</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aba4a921c9d3f8e05911b584223bc0469"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node::m_type</a></div><div class="ttdeci">NodeType m_type</div><div class="ttdoc">The demand for the Node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00278">tw_node.h:278</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a3cf23e97726fbef9a8ffba6952a2aba1_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a3cf23e97726fbef9a8ffba6952a2aba1_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a3cf23e97726fbef9a8ffba6952a2aba1_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a3cf23e97726fbef9a8ffba6952a2aba1_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="226,5,353,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="220,71,359,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7e5b1bdfeb746da922a2863bfe7ae718" title="time = distance / speed. " alt="" coords="216,136,363,177"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a3cf23e97726fbef9a8ffba6952a2aba1_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a3cf23e97726fbef9a8ffba6952a2aba1_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a3cf23e97726fbef9a8ffba6952a2aba1_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a3cf23e97726fbef9a8ffba6952a2aba1_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="216,191,379,232"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="697,163,825,204"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a259954cf5ed111fb3b6ea7bb4f689b1c" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="475,42,601,98"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a40f5fc0f770bd56b0db41be2187b12fe" title="pgrouting::vrp::Tw\l_node::is_partially\l_waitTime_compatible_IJ" alt="" coords="453,122,623,178"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#a0e4f84908b0ebbb71fe9888a5b421b7b" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="441,253,635,295"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Tw__node.html#a12d1d5cdfc3094df03a37df7ee99ea99" title="pgrouting::vrp::Tw\l_node::is_waitTime_compatible_IJ" alt="" coords="427,319,649,360"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a23d1cfd02e19e0283a6fd90db1e4703b"></a>
@@ -732,17 +671,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00151">arrival_i_arrives_j()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00038">evaluate()</a>, and <a class="el" href="vehicle__node_8cpp_source.html#l00101">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a96eded9edb9449d6d60d28607cd738e6">m_arrival_time</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a96eded9edb9449d6d60d28607cd738e6"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a96eded9edb9449d6d60d28607cd738e6">pgrouting::vrp::Vehicle_node::m_arrival_time</a></div><div class="ttdeci">double m_arrival_time</div><div class="ttdoc">Arrival time at this node. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00167">vehicle_node.h:167</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a23d1cfd02e19e0283a6fd90db1e4703b_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a23d1cfd02e19e0283a6fd90db1e4703b_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a23d1cfd02e19e0283a6fd90db1e4703b_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a23d1cfd02e19e0283a6fd90db1e4703b_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a810f8e5e0deea10816247439a890a2a1" title="@ { " alt="" coords="208,5,375,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba" title="@ { " alt="" coords="215,71,367,112"/>
-<area shape="rect" id="node4" href="namespacepgrouting_1_1vrp.html#ae1e6219461754c35aa23e53c6dc3e6bb" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="205,137,377,163"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0b562a9b9dc6684066cbc052bc42d748"></a>
@@ -776,16 +705,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">evaluate()</a>, and <a class="el" href="vehicle__node_8cpp_source.html#l00101">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a225b08c26ec489a5afc5218bed1ec5a7">m_cargo</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a225b08c26ec489a5afc5218bed1ec5a7"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a225b08c26ec489a5afc5218bed1ec5a7">pgrouting::vrp::Vehicle_node::m_cargo</a></div><div class="ttdeci">double m_cargo</div><div class="ttdoc">@ { </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00177">vehicle_node.h:177</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a0b562a9b9dc6684066cbc052bc42d748_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a0b562a9b9dc6684066cbc052bc42d748_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a0b562a9b9dc6684066cbc052bc42d748_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a0b562a9b9dc6684066cbc052bc42d748_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="215,5,367,47"/>
-<area shape="rect" id="node3" href="namespacepgrouting_1_1vrp.html#ae1e6219461754c35aa23e53c6dc3e6bb" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="205,71,377,98"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae8ca4c6b1e2031591b3cc872c8ae3267"></a>
@@ -819,25 +739,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="tw__node_8cpp_source.html#l00064">pgrouting::vrp::Tw_node::arrival_j_closes_i()</a>, <a class="el" href="vehicle_8cpp_source.html#l00188">pgrouting::vrp::Vehicle::deltaTime()</a>, <a class="el" href="tw__node_8cpp_source.html#l00150">pgrouting::vrp::Tw_node::is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00159">pgrouting::vrp::Tw_node::is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00177">pgrouting::vrp::Tw_node::is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00168">pgrouting::vrp::Tw_node::is_load()</a>, <a class="el" href="vehicle_8cpp_source.html#l00505">pgrouting::vrp::Vehicle::is_ok()</a>, <a class="el" href="tw__node_8cpp_source.html#l00141">pgrouting::vrp::Tw_node::is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00132">pgrouting::vrp::Tw_node::is_start()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a7fabac7b3b61a57df767711a144aef05"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">pgrouting::vrp::Tw_node::m_closes</a></div><div class="ttdeci">double m_closes</div><div class="ttdoc">closing time of the node </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00275">tw_node.h:275</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_ae8ca4c6b1e2031591b3cc872c8ae3267_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_ae8ca4c6b1e2031591b3cc872c8ae3267_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_ae8ca4c6b1e2031591b3cc872c8ae3267_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_ae8ca4c6b1e2031591b3cc872c8ae3267_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Fleet.html#ac6175454144f3417e7fd582b87eabc52" title="pgrouting::vrp::Fleet\l::add_vehicle" alt="" coords="393,311,532,352"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="180,49,345,91"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Vehicle.html#af16bda121ef322dc50702241a9b20985" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="187,115,339,156"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76" title="is_delivery " alt="" coords="199,180,326,221"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262" title="is_dump " alt="" coords="199,245,326,287"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e" title="is_end " alt="" coords="199,311,326,352"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Tw__node.html#a69aa3b00665b1cc9be2549c7dde0e05f" title="is_Load " alt="" coords="199,376,326,417"/>
-<area shape="rect" id="node9" href="classpgrouting_1_1vrp_1_1Vehicle.html#a0923a9c16a3fa7b95123fcc76bd7c499" title="pgrouting::vrp::Vehicle\l::is_ok" alt="" coords="187,441,339,483"/>
-<area shape="rect" id="node10" href="classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b" title="is_pickup " alt="" coords="199,507,326,548"/>
-<area shape="rect" id="node11" href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483" title="@ { " alt="" coords="199,572,326,613"/>
-<area shape="rect" id="node12" href="classpgrouting_1_1vrp_1_1Vehicle.html#a163d32b8d5c8e0444e4fa432b680a784" title="pgrouting::vrp::Vehicle\l::Vehicle" alt="" coords="187,637,339,679"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a413e253dcc19fd4a514bf6fdaba28e77"></a>
@@ -871,16 +773,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">evaluate()</a>, and <a class="el" href="vehicle__node_8cpp_source.html#l00101">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a4d2386f02c5339b0f2b20026712bec90">m_cvTot</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a4d2386f02c5339b0f2b20026712bec90"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a4d2386f02c5339b0f2b20026712bec90">pgrouting::vrp::Vehicle_node::m_cvTot</a></div><div class="ttdeci">int m_cvTot</div><div class="ttdoc">Total count of CV. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00179">vehicle_node.h:179</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a413e253dcc19fd4a514bf6fdaba28e77_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a413e253dcc19fd4a514bf6fdaba28e77_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a413e253dcc19fd4a514bf6fdaba28e77_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a413e253dcc19fd4a514bf6fdaba28e77_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="215,5,367,47"/>
-<area shape="rect" id="node3" href="namespacepgrouting_1_1vrp.html#ae1e6219461754c35aa23e53c6dc3e6bb" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="205,71,377,98"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="abce60831cb1120c995ba641019d15484"></a>
@@ -914,15 +807,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8h_source.html#l00105">total_service_time()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a95267d8a431b058eed5892e645573d45">m_delta_time</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a95267d8a431b058eed5892e645573d45"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a95267d8a431b058eed5892e645573d45">pgrouting::vrp::Vehicle_node::m_delta_time</a></div><div class="ttdeci">double m_delta_time</div><div class="ttdoc">Departure time - last nodes departure time. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00170">vehicle_node.h:170</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_abce60831cb1120c995ba641019d15484_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_abce60831cb1120c995ba641019d15484_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_abce60831cb1120c995ba641019d15484_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_abce60831cb1120c995ba641019d15484_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#aaa660090fd3474250c8b9de26972c539" title="_time spent by the truck servicing the nodes " alt="" coords="205,5,376,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a8bf5659717b9bec7078bed1ae9c864c5"></a>
@@ -951,23 +836,7 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                                                       {</div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">is_late_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a96eded9edb9449d6d60d28607cd738e6">m_arrival_time</a> + <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#abce60831cb1120c995ba641019d15484">delta_time</a>);</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a96eded9edb9449d6d60d28607cd738e6"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a96eded9edb9449d6d60d28607cd738e6">pgrouting::vrp::Vehicle_node::m_arrival_time</a></div><div class="ttdeci">double m_arrival_time</div><div class="ttdoc">Arrival time at this node. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00167">vehicle_node.h:167</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a1e121d629694b7809b4515645ebf1576"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">pgrouting::vrp::Tw_node::is_late_arrival</a></div><div class="ttdeci">bool is_late_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is after it closes. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00192">tw_node.h:192</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_abce60831cb1120c995ba641019d15484"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#abce60831cb1120c995ba641019d15484">pgrouting::vrp::Vehicle_node::delta_time</a></div><div class="ttdeci">double delta_time() const</div><div class="ttdoc">delta_time = departure_time(this) - departure_time(previous) </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00074">vehicle_node.h:74</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a8bf5659717b9bec7078bed1ae9c864c5_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a8bf5659717b9bec7078bed1ae9c864c5_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a8bf5659717b9bec7078bed1ae9c864c5_cgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a8bf5659717b9bec7078bed1ae9c864c5_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576" title="True when arrivalTime is after it closes. " alt="" coords="236,5,381,47"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a8bf5659717b9bec7078bed1ae9c864c5_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a8bf5659717b9bec7078bed1ae9c864c5_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a8bf5659717b9bec7078bed1ae9c864c5_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a8bf5659717b9bec7078bed1ae9c864c5_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#aaa660090fd3474250c8b9de26972c539" title="_time spent by the truck servicing the nodes " alt="" coords="236,5,407,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab8978d7806edaa8dbd62fdd52c7f43fd"></a>
@@ -1001,21 +870,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00038">evaluate()</a>, <a class="el" href="tw__node_8cpp_source.html#l00150">pgrouting::vrp::Tw_node::is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00159">pgrouting::vrp::Tw_node::is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00177">pgrouting::vrp::Tw_node::is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00168">pgrouting::vrp::Tw_node::is_load()</a>, <a class="el" href="tw__node_8cpp_source.html#l00141">pgrouting::vrp::Tw_node::is_pickup()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00132">pgrouting::vrp::Tw_node::is_start()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a795138a0068571b76c6678335081f2e4">m_demand</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a795138a0068571b76c6678335081f2e4"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a795138a0068571b76c6678335081f2e4">pgrouting::vrp::Tw_node::m_demand</a></div><div class="ttdeci">double m_demand</div><div class="ttdoc">The demand for the Node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00277">tw_node.h:277</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_ab8978d7806edaa8dbd62fdd52c7f43fd_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_ab8978d7806edaa8dbd62fdd52c7f43fd_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_ab8978d7806edaa8dbd62fdd52c7f43fd_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_ab8978d7806edaa8dbd62fdd52c7f43fd_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba" title="@ { " alt="" coords="355,172,507,213"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76" title="is_delivery " alt="" coords="180,37,307,79"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262" title="is_dump " alt="" coords="180,103,307,144"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e" title="is_end " alt="" coords="180,168,307,209"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#a69aa3b00665b1cc9be2549c7dde0e05f" title="is_Load " alt="" coords="180,233,307,275"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b" title="is_pickup " alt="" coords="180,299,307,340"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483" title="@ { " alt="" coords="180,364,307,405"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="acfed3664d81aa73633e0aec086146a6e"></a>
@@ -1080,16 +935,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">evaluate()</a>, and <a class="el" href="vehicle__node_8cpp_source.html#l00101">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a63763d05f8e877eeacad5ad9655364e5">m_departure_time</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a63763d05f8e877eeacad5ad9655364e5"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a63763d05f8e877eeacad5ad9655364e5">pgrouting::vrp::Vehicle_node::m_departure_time</a></div><div class="ttdeci">double m_departure_time</div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00169">vehicle_node.h:169</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a688aa10a19db9a74d799cd9a63c638c0_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a688aa10a19db9a74d799cd9a63c638c0_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a688aa10a19db9a74d799cd9a63c638c0_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a688aa10a19db9a74d799cd9a63c638c0_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="215,5,367,47"/>
-<area shape="rect" id="node3" href="namespacepgrouting_1_1vrp.html#ae1e6219461754c35aa23e53c6dc3e6bb" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="205,71,377,98"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0afbf88acfd0da17b5745a7199c3e9ba"></a>
@@ -1139,28 +985,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_aac47aad86f27148a22654122afc124cc"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#aac47aad86f27148a22654122afc124cc">pgrouting::vrp::Vehicle_node::m_travel_time</a></div><div class="ttdeci">double m_travel_time</div><div class="ttdoc">@ { </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00166">vehicle_node.h:166</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_acf38aa5cd9a368f40d80c66b2e6a5095"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#acf38aa5cd9a368f40d80c66b2e6a5095">pgrouting::vrp::Vehicle_node::m_wait_time</a></div><div class="ttdeci">double m_wait_time</div><div class="ttdoc">Wait time at this node when early arrival. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00168">vehicle_node.h:168</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a4d2386f02c5339b0f2b20026712bec90"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a4d2386f02c5339b0f2b20026712bec90">pgrouting::vrp::Vehicle_node::m_cvTot</a></div><div class="ttdeci">int m_cvTot</div><div class="ttdoc">Total count of CV. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00179">vehicle_node.h:179</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a0afbf88acfd0da17b5745a7199c3e9ba_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a0afbf88acfd0da17b5745a7199c3e9ba_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a0afbf88acfd0da17b5745a7199c3e9ba_cgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a0afbf88acfd0da17b5745a7199c3e9ba_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a23d1cfd02e19e0283a6fd90db1e4703b" title="Truck&#39;s arrival_time to this node. " alt="" coords="205,5,357,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd" title="Returns the demand associated with this node. " alt="" coords="586,92,713,133"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ab2033c2764f192da405b9877ac441772" title="True when not violation. " alt="" coords="205,173,357,215"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483" title="@ { " alt="" coords="405,173,532,215"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="586,185,713,227"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="580,261,719,303"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a0afbf88acfd0da17b5745a7199c3e9ba_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a0afbf88acfd0da17b5745a7199c3e9ba_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a0afbf88acfd0da17b5745a7199c3e9ba_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a0afbf88acfd0da17b5745a7199c3e9ba_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ab2033c2764f192da405b9877ac441772" title="True when not violation. " alt="" coords="205,5,357,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae31aa1d703cda83218f673c0a9a21340"></a>
@@ -1229,32 +1054,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_aac47aad86f27148a22654122afc124cc"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#aac47aad86f27148a22654122afc124cc">pgrouting::vrp::Vehicle_node::m_travel_time</a></div><div class="ttdeci">double m_travel_time</div><div class="ttdoc">@ { </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00166">vehicle_node.h:166</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_acf38aa5cd9a368f40d80c66b2e6a5095"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#acf38aa5cd9a368f40d80c66b2e6a5095">pgrouting::vrp::Vehicle_node::m_wait_time</a></div><div class="ttdeci">double m_wait_time</div><div class="ttdoc">Wait time at this node when early arrival. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00168">vehicle_node.h:168</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a4d2386f02c5339b0f2b20026712bec90"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a4d2386f02c5339b0f2b20026712bec90">pgrouting::vrp::Vehicle_node::m_cvTot</a></div><div class="ttdeci">int m_cvTot</div><div class="ttdoc">Total count of CV. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00179">vehicle_node.h:179</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_ae31aa1d703cda83218f673c0a9a21340_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_ae31aa1d703cda83218f673c0a9a21340_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_ae31aa1d703cda83218f673c0a9a21340_cgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_ae31aa1d703cda83218f673c0a9a21340_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a23d1cfd02e19e0283a6fd90db1e4703b" title="Truck&#39;s arrival_time to this node. " alt="" coords="215,5,367,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a0b562a9b9dc6684066cbc052bc42d748" title="Truck&#39;s total cargo after the node was served. " alt="" coords="215,71,367,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a413e253dcc19fd4a514bf6fdaba28e77" title="Truck&#39;s total times it has violated cargo limits. " alt="" coords="215,136,367,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd" title="Returns the demand associated with this node. " alt="" coords="430,200,557,241"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a688aa10a19db9a74d799cd9a63c638c0" title="Truck&#39;s departure_time from this node. " alt="" coords="215,421,367,463"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ab2033c2764f192da405b9877ac441772" title="True when not violation. " alt="" coords="215,487,367,528"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a926b499e318cee7a768721da337965ce" title="True when at this node does not violate time windows. " alt="" coords="215,552,367,593"/>
-<area shape="rect" id="node9" href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262" title="is_dump " alt="" coords="227,253,354,295"/>
-<area shape="rect" id="node10" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="430,269,557,311"/>
-<area shape="rect" id="node11" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="424,344,563,385"/>
-<area shape="rect" id="node12" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece" title="True when arrivalTime is before it opens. " alt="" coords="215,617,367,659"/>
-<area shape="rect" id="node13" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#aaa660090fd3474250c8b9de26972c539" title="_time spent by the truck servicing the nodes " alt="" coords="205,683,376,724"/>
-<area shape="rect" id="node14" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a72c956c8c8d451f246165d23662cf2aa" title="_time spent moving between nodes by the truck " alt="" coords="210,748,371,789"/>
-<area shape="rect" id="node15" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae29e089eb72f9b085c43a038ce53789d" title="_time spent by the truck waiting for nodes to open " alt="" coords="214,813,367,855"/>
-<area shape="rect" id="node16" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a927a13bba6a92c3beef51c9c0cba0d54" title="@ { " alt="" coords="215,879,367,920"/>
-<area shape="rect" id="node17" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7e5b1bdfeb746da922a2863bfe7ae718" title="time = distance / speed. " alt="" coords="217,944,364,985"/>
-<area shape="rect" id="node18" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a7e6d740ceb7d0e7d236a91ea0ae40f9d" title="@ { " alt="" coords="215,1009,367,1051"/>
-<area shape="rect" id="node19" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a5f9af363a4804c1fb16c3af74d21702b" title="Truck&#39;s wait_time at this node. " alt="" coords="215,1075,367,1116"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a314d018ef188137d71653a3025fba002"></a>
@@ -1290,15 +1090,7 @@ Here is the call graph for this function:</div>
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8h_source.html#l00119">feasible()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a50b3b2272c60ccbd570c12374e6f4293">m_twvTot</a> == 0 &amp;&amp;  <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a4d2386f02c5339b0f2b20026712bec90">m_cvTot</a> == 0;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a50b3b2272c60ccbd570c12374e6f4293"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a50b3b2272c60ccbd570c12374e6f4293">pgrouting::vrp::Vehicle_node::m_twvTot</a></div><div class="ttdeci">int m_twvTot</div><div class="ttdoc">Total count of TWV. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00178">vehicle_node.h:178</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a4d2386f02c5339b0f2b20026712bec90"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a4d2386f02c5339b0f2b20026712bec90">pgrouting::vrp::Vehicle_node::m_cvTot</a></div><div class="ttdeci">int m_cvTot</div><div class="ttdoc">Total count of CV. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00179">vehicle_node.h:179</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a314d018ef188137d71653a3025fba002_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a314d018ef188137d71653a3025fba002_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a314d018ef188137d71653a3025fba002_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a314d018ef188137d71653a3025fba002_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a671e29dcfd2783091b588bdbc8ef55f8" title="True doesn&#39;t have twc nor cv (including total counts) " alt="" coords="205,5,357,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a671e29dcfd2783091b588bdbc8ef55f8"></a>
@@ -1333,17 +1125,7 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                            {</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;         <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a314d018ef188137d71653a3025fba002">feasible</a>() &amp;&amp;  !<a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a926b499e318cee7a768721da337965ce">has_twv</a>() &amp;&amp;  !<a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ab2033c2764f192da405b9877ac441772">has_cv</a>(cargoLimit);</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;     }</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a314d018ef188137d71653a3025fba002"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a314d018ef188137d71653a3025fba002">pgrouting::vrp::Vehicle_node::feasible</a></div><div class="ttdeci">bool feasible() const</div><div class="ttdoc">@ { </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00116">vehicle_node.h:116</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_ab2033c2764f192da405b9877ac441772"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ab2033c2764f192da405b9877ac441772">pgrouting::vrp::Vehicle_node::has_cv</a></div><div class="ttdeci">bool has_cv(double cargoLimit) const</div><div class="ttdoc">True when not violation. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00132">vehicle_node.h:132</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a926b499e318cee7a768721da337965ce"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a926b499e318cee7a768721da337965ce">pgrouting::vrp::Vehicle_node::has_twv</a></div><div class="ttdeci">bool has_twv() const</div><div class="ttdoc">True when at this node does not violate time windows. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00124">vehicle_node.h:124</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a671e29dcfd2783091b588bdbc8ef55f8_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a671e29dcfd2783091b588bdbc8ef55f8_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a671e29dcfd2783091b588bdbc8ef55f8_cgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a671e29dcfd2783091b588bdbc8ef55f8_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a314d018ef188137d71653a3025fba002" title="@ { " alt="" coords="205,5,357,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ab2033c2764f192da405b9877ac441772" title="True when not violation. " alt="" coords="205,71,357,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a926b499e318cee7a768721da337965ce" title="True when at this node does not violate time windows. " alt="" coords="205,136,357,177"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab2033c2764f192da405b9877ac441772"></a>
@@ -1381,28 +1163,7 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                          {</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;         <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e">is_end</a>() ||  <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483">is_start</a>() ? <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a225b08c26ec489a5afc5218bed1ec5a7">m_cargo</a> != 0</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;             : <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a225b08c26ec489a5afc5218bed1ec5a7">m_cargo</a> &gt; cargoLimit ||  <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a225b08c26ec489a5afc5218bed1ec5a7">m_cargo</a> &lt; 0;</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;     }</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_ad78f19fca930a7754678d57e1e252483"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483">pgrouting::vrp::Tw_node::is_start</a></div><div class="ttdeci">bool is_start() const</div><div class="ttdoc">@ { </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00132">tw_node.cpp:132</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a225b08c26ec489a5afc5218bed1ec5a7"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a225b08c26ec489a5afc5218bed1ec5a7">pgrouting::vrp::Vehicle_node::m_cargo</a></div><div class="ttdeci">double m_cargo</div><div class="ttdoc">@ { </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00177">vehicle_node.h:177</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a73dc73078ab5135d9269cb0115de898e"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e">pgrouting::vrp::Tw_node::is_end</a></div><div class="ttdeci">bool is_end() const</div><div class="ttdoc">is_end </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00177">tw_node.cpp:177</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_ab2033c2764f192da405b9877ac441772_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_ab2033c2764f192da405b9877ac441772_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_ab2033c2764f192da405b9877ac441772_cgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_ab2033c2764f192da405b9877ac441772_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a810f8e5e0deea10816247439a890a2a1" title="@ { " alt="" coords="205,5,372,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba" title="@ { " alt="" coords="213,71,365,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483" title="@ { " alt="" coords="420,100,547,141"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e" title="is_end " alt="" coords="225,188,352,229"/>
-<area shape="rect" id="node6" href="pgr__tsp_8cpp.html#ae0eace0f5ad927638e3f80c3efb3411e" title="pred" alt="" coords="265,254,312,281"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_ab2033c2764f192da405b9877ac441772_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_ab2033c2764f192da405b9877ac441772_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_ab2033c2764f192da405b9877ac441772_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_ab2033c2764f192da405b9877ac441772_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba" title="@ { " alt="" coords="205,5,357,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a671e29dcfd2783091b588bdbc8ef55f8" title="True doesn&#39;t have twc nor cv (including total counts) " alt="" coords="205,71,357,112"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a926b499e318cee7a768721da337965ce"></a>
@@ -1437,25 +1198,7 @@ Here is the caller graph for this function:</div>
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">evaluate()</a>, <a class="el" href="vehicle__node_8h_source.html#l00119">feasible()</a>, and <a class="el" href="vehicle__node_8cpp_source.html#l00101">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                          {</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;         <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">is_late_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a96eded9edb9449d6d60d28607cd738e6">m_arrival_time</a>);</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;     }</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a96eded9edb9449d6d60d28607cd738e6"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a96eded9edb9449d6d60d28607cd738e6">pgrouting::vrp::Vehicle_node::m_arrival_time</a></div><div class="ttdeci">double m_arrival_time</div><div class="ttdoc">Arrival time at this node. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00167">vehicle_node.h:167</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a1e121d629694b7809b4515645ebf1576"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">pgrouting::vrp::Tw_node::is_late_arrival</a></div><div class="ttdeci">bool is_late_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is after it closes. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00192">tw_node.h:192</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a926b499e318cee7a768721da337965ce_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a926b499e318cee7a768721da337965ce_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a926b499e318cee7a768721da337965ce_cgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a926b499e318cee7a768721da337965ce_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576" title="True when arrivalTime is after it closes. " alt="" coords="205,5,351,47"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a926b499e318cee7a768721da337965ce_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a926b499e318cee7a768721da337965ce_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a926b499e318cee7a768721da337965ce_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a926b499e318cee7a768721da337965ce_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="215,5,367,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a671e29dcfd2783091b588bdbc8ef55f8" title="True doesn&#39;t have twc nor cv (including total counts) " alt="" coords="215,71,367,112"/>
-<area shape="rect" id="node4" href="namespacepgrouting_1_1vrp.html#ae1e6219461754c35aa23e53c6dc3e6bb" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="205,137,377,163"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a147f029e589a2dd36b1edd638d7ac833"></a>
@@ -1485,26 +1228,9 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="identifier_8h_source.html#l00053">pgrouting::Identifier::m_id</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dnode_8cpp_source.html#l00042">pgrouting::vrp::Dnode::distance()</a>, <a class="el" href="vehicle_8cpp_source.html#l00135">pgrouting::vrp::Vehicle::get_postgres_result()</a>, <a class="el" href="vehicle_8h_source.html#l00101">pgrouting::vrp::Vehicle::is_phony()</a>, <a class="el" href="base__node_8cpp_source.html#l00033">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="identifier_8cpp_source.html#l00051">pgrouting::operator&lt;&lt;()</a>, <a class="el" href="node_8cpp_source.html#l00074">pgrouting::vrp::Node::operator==()</a>, <a class="el" href="base__node_8cpp_source.html#l00043">pgrouting::vrp::Base_node::operator==()</a>, <a class="el" href="node_8cpp_source.html#l00039">pgrouting::vrp::Node::print()</a>, <a class="el" href="vehicle_8cpp_source.html#l00567">pgrouting::vrp::Vehicle::tau()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dnode_8cpp_source.html#l00042">pgrouting::vrp::Dnode::distance()</a>, <a class="el" href="vehicle_8cpp_source.html#l00135">pgrouting::vrp::Vehicle::get_postgres_result()</a>, <a class="el" href="vehicle_8h_source.html#l00101">pgrouting::vrp::Vehicle::is_phony()</a>, <a class="el" href="base__node_8cpp_source.html#l00033">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="identifier_8cpp_source.html#l00051">pgrouting::operator&lt;&lt;()</a>, <a class="el" href="node_8cpp_source.html#l00090">pgrouting::vrp::Node::operator==()</a>, <a class="el" href="base__node_8cpp_source.html#l00043">pgrouting::vrp::Base_node::operator==()</a>, <a class="el" href="node_8cpp_source.html#l00055">pgrouting::vrp::Node::print()</a>, <a class="el" href="vehicle_8cpp_source.html#l00567">pgrouting::vrp::Vehicle::tau()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                     {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1Identifier.html#a45b5bbbc6c8c0ec6fd3b61f87e7113f1">m_id</a>;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1Identifier_html_a45b5bbbc6c8c0ec6fd3b61f87e7113f1"><div class="ttname"><a href="classpgrouting_1_1Identifier.html#a45b5bbbc6c8c0ec6fd3b61f87e7113f1">pgrouting::Identifier::m_id</a></div><div class="ttdeci">int64_t m_id</div><div class="ttdef"><b>Definition:</b> <a href="identifier_8h_source.html#l00053">identifier.h:53</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1Identifier_a147f029e589a2dd36b1edd638d7ac833_icgraph.png" border="0" usemap="#classpgrouting_1_1Identifier_a147f029e589a2dd36b1edd638d7ac833_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1Identifier_a147f029e589a2dd36b1edd638d7ac833_icgraph" id="classpgrouting_1_1Identifier_a147f029e589a2dd36b1edd638d7ac833_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Dnode.html#a84b2f1f5665898cc60e4d45a36259fb4" title="pgrouting::vrp::Dnode\l::distance" alt="" coords="220,5,367,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle.html#a14878c4eeaba4e341f0f9a1f140b9007" title="pgrouting::vrp::Vehicle\l::get_postgres_result" alt="" coords="431,252,583,293"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Vehicle.html#a7b949a1e2f1c3cc36648c6224e9c8083" title="pgrouting::vrp::Vehicle\l::is_phony" alt="" coords="217,123,369,164"/>
-<area shape="rect" id="node5" href="namespacepgrouting_1_1vrp.html#ad800d01b090f794983667d591a559d64" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="207,189,379,215"/>
-<area shape="rect" id="node6" href="namespacepgrouting.html#a1c8b6dbb6aca870e491d897cf57d89c6" title="pgrouting::operator\&lt;\&lt;" alt="" coords="220,239,367,266"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Base__node.html#ad009e491cded70fc4c13f036db66ace2" title="pgrouting::vrp::Base\l_node::operator==" alt="" coords="224,291,363,332"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Node.html#a1598bb3ef9284f2626967a829b978e7c" title="pgrouting::vrp::Node\l::operator==" alt="" coords="223,356,363,397"/>
-<area shape="rect" id="node9" href="classpgrouting_1_1vrp_1_1Node.html#a4b817f14f0624f2e0ca1819488416984" title="pgrouting::vrp::Node\l::print" alt="" coords="223,421,363,463"/>
-<area shape="rect" id="node10" href="classpgrouting_1_1vrp_1_1Vehicle.html#a8c24ca81fed1ec1d0e2a9e9a327cd91b" title="pgrouting::vrp::Vehicle::tau" alt="" coords="204,487,383,514"/>
-<area shape="rect" id="node11" href="classpgrouting_1_1vrp_1_1Vehicle.html#a163d32b8d5c8e0444e4fa432b680a784" title="pgrouting::vrp::Vehicle\l::Vehicle" alt="" coords="431,505,583,547"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae0a3414bc65c1b67101b3f5944505447"></a>
@@ -1534,36 +1260,9 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">References <a class="el" href="identifier_8h_source.html#l00052">pgrouting::Identifier::m_idx</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00338">pgrouting::vrp::Vehicle_pickDeliver::erase()</a>, <a class="el" href="vehicle_8cpp_source.html#l00238">pgrouting::vrp::Vehicle::erase()</a>, <a class="el" href="fleet_8cpp_source.html#l00117">pgrouting::vrp::Fleet::get_truck()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00103">pgrouting::vrp::Vehicle_pickDeliver::has_order()</a>, <a class="el" href="vehicle_8cpp_source.html#l00054">pgrouting::vrp::Vehicle::insert()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00109">pgrouting::vrp::Vehicle_pickDeliver::insert()</a>, <a class="el" href="base__node_8cpp_source.html#l00033">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="identifier_8cpp_source.html#l00051">pgrouting::operator&lt;&lt;()</a>, <a class="el" href="base__node_8cpp_source.html#l00043">pgrouting::vrp::Base_node::operator==()</a>, <a class="el" href="node_8cpp_source.html#l00074">pgrouting::vrp::Node::operator==()</a>, <a class="el" href="tw__node_8cpp_source.html#l00186">pgrouting::vrp::Tw_node::operator==()</a>, <a class="el" href="node_8cpp_source.html#l00039">pgrouting::vrp::Node::print()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00224">pgrouting::vrp::Vehicle_pickDeliver::push_back()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00242">pgrouting::vrp::Vehicle_pickDeliver::push_front()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00423">pgrouting::vrp::Vehicle_pickDeliver::semiLIFO()</a>, <a class="el" href="order_8cpp_source.html#l00111">pgrouting::vrp::Order::set_compatibles()</a>, <a class="el" href="solution_8cpp_source.html#l00166">pgrouting::vrp::Solution::sort_by_id()</a>, <a class="el" href="vehicle_8cpp_source.html#l00567">pgrouting::vrp::Vehicle::tau()</a>, <a class="el" href="tw__node_8cpp_source.html#l00040">pgrouting::vrp::Tw_node::travel_time_to()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00341">pgrouting::vrp::Vehicle_pickDeliver::erase()</a>, <a class="el" href="vehicle_8cpp_source.html#l00238">pgrouting::vrp::Vehicle::erase()</a>, <a class="el" href="fleet_8cpp_source.html#l00117">pgrouting::vrp::Fleet::get_truck()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00103">pgrouting::vrp::Vehicle_pickDeliver::has_order()</a>, <a class="el" href="vehicle_8cpp_source.html#l00054">pgrouting::vrp::Vehicle::insert()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00109">pgrouting::vrp::Vehicle_pickDeliver::insert()</a>, <a class="el" href="base__node_8cpp_source.html#l00033">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="identifier_8cpp_source.html#l00051">pgrouting::operator&lt;&lt;()</a>, <a class="el" href="base__node_8cpp_source.html#l00043">pgrouting::vrp::Base_node::operator==()</a>, <a class="el" href="node_8cpp_source.html#l00090">pgrouting::vrp::Node::operator==()</a>, <a class="el" href="tw__node_8cpp_source.html#l00186">pgrouting::vrp::Tw_node::operator==()</a>, <a class="el" href="node_8cpp_source.html#l00055">pgrouting::vrp::Node::print()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00227">pgrouting::vrp::Vehicle_pickDeliver::push_back()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00245">pgrouting::vrp::Vehicle_pickDeliver::push_front()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00426">pgrouting::vrp::Vehicle_pickDeliver::semiLIFO()</a>, <a class="el" href="order_8cpp_source.html#l00111">pgrouting::vrp::Order::set_compatibles()</a>, <a class="el" href="solution_8cpp_source.html#l00166">pgrouting::vrp::Solution::sort_by_id()</a>, <a class="el" href="vehicle_8cpp_source.html#l00567">pgrouting::vrp::Vehicle::tau()</a>, <a class="el" href="tw__node_8cpp_source.html#l00040">pgrouting::vrp::Tw_node::travel_time_to()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                      {</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1Identifier.html#ae4187b538a8f40969e11943f2d3ddfc5">m_idx</a>;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1Identifier_html_ae4187b538a8f40969e11943f2d3ddfc5"><div class="ttname"><a href="classpgrouting_1_1Identifier.html#ae4187b538a8f40969e11943f2d3ddfc5">pgrouting::Identifier::m_idx</a></div><div class="ttdeci">size_t m_idx</div><div class="ttdef"><b>Definition:</b> <a href="identifier_8h_source.html#l00052">identifier.h:52</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1Identifier_ae0a3414bc65c1b67101b3f5944505447_icgraph.png" border="0" usemap="#classpgrouting_1_1Identifier_ae0a3414bc65c1b67101b3f5944505447_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1Identifier_ae0a3414bc65c1b67101b3f5944505447_icgraph" id="classpgrouting_1_1Identifier_ae0a3414bc65c1b67101b3f5944505447_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3824b3c3af974687c0bdcc9aab615350" title="pgrouting::vrp::Vehicle\l_pickDeliver::erase" alt="" coords="445,22,597,63"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle.html#ad1920dd6aed04b9381b9b2ec78dddc47" title="Erase node.id() " alt="" coords="225,85,377,126"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae10bef610549433ababadd20411a5e84" title="Inserts an order. " alt="" coords="445,157,597,198"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a59a88f45361f562c3c7b2391539de7b0" title="Inserts an order In semi&#45;Lifo order. " alt="" coords="442,87,601,129"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Fleet.html#aad8bcbd9e8c956ab8dc73f0b40873ea0" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="232,470,371,511"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#adb870b4b7089194de06de8471eba0767" title="pgrouting::vrp::Vehicle\l_pickDeliver::has_order" alt="" coords="222,150,381,191"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa894fd15242682756ea30cc1bbd6aa42" title="puts an order at the end of the truck " alt="" coords="439,229,604,270"/>
-<area shape="rect" id="node9" href="classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69" title="Puts an order at the end front of the truck. " alt="" coords="440,309,603,350"/>
-<area shape="rect" id="node10" href="classpgrouting_1_1vrp_1_1Vehicle.html#aa22d65f920e996e3497bff86876b181f" title="Insert node in best position of the position_limits. " alt="" coords="225,535,377,577"/>
-<area shape="rect" id="node11" href="namespacepgrouting_1_1vrp.html#ad800d01b090f794983667d591a559d64" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="215,601,387,628"/>
-<area shape="rect" id="node12" href="namespacepgrouting.html#a1c8b6dbb6aca870e491d897cf57d89c6" title="pgrouting::operator\&lt;\&lt;" alt="" coords="228,652,375,679"/>
-<area shape="rect" id="node13" href="classpgrouting_1_1vrp_1_1Base__node.html#ad009e491cded70fc4c13f036db66ace2" title="pgrouting::vrp::Base\l_node::operator==" alt="" coords="232,703,371,745"/>
-<area shape="rect" id="node14" href="classpgrouting_1_1vrp_1_1Node.html#a1598bb3ef9284f2626967a829b978e7c" title="pgrouting::vrp::Node\l::operator==" alt="" coords="231,769,371,810"/>
-<area shape="rect" id="node15" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab2f1204fba2644d6c0a0edef5305645f" title="pgrouting::vrp::Tw\l_node::operator==" alt="" coords="237,834,365,875"/>
-<area shape="rect" id="node16" href="classpgrouting_1_1vrp_1_1Node.html#a4b817f14f0624f2e0ca1819488416984" title="pgrouting::vrp::Node\l::print" alt="" coords="231,899,371,941"/>
-<area shape="rect" id="node17" href="classpgrouting_1_1vrp_1_1Order.html#a55f9df9e8695ad727381ceeeddd63ad8" title="pgrouting::vrp::Order\l::set_compatibles" alt="" coords="231,965,372,1006"/>
-<area shape="rect" id="node18" href="classpgrouting_1_1vrp_1_1Solution.html#aeee2388e51cb0460bcbf8637f97d2aec" title="pgrouting::vrp::Solution\l::sort_by_id" alt="" coords="223,1030,379,1071"/>
-<area shape="rect" id="node19" href="classpgrouting_1_1vrp_1_1Vehicle.html#a8c24ca81fed1ec1d0e2a9e9a327cd91b" title="pgrouting::vrp::Vehicle::tau" alt="" coords="212,368,391,395"/>
-<area shape="rect" id="node20" href="classpgrouting_1_1vrp_1_1Vehicle.html#a163d32b8d5c8e0444e4fa432b680a784" title="pgrouting::vrp::Vehicle\l::Vehicle" alt="" coords="445,391,597,433"/>
-<area shape="rect" id="node21" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7e5b1bdfeb746da922a2863bfe7ae718" title="time = distance / speed. " alt="" coords="228,1095,375,1137"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a3e15d2c8670445bb3ba13aa605ba980a"></a>
@@ -1610,31 +1309,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">pgrouting::vrp::Tw_node::kStart</a></div><div class="ttdoc">starting site </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00060">tw_node.h:60</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a1e121d629694b7809b4515645ebf1576"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">pgrouting::vrp::Tw_node::is_late_arrival</a></div><div class="ttdeci">bool is_late_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is after it closes. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00192">tw_node.h:192</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aba4a921c9d3f8e05911b584223bc0469"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node::m_type</a></div><div class="ttdeci">NodeType m_type</div><div class="ttdoc">The demand for the Node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00278">tw_node.h:278</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a3e15d2c8670445bb3ba13aa605ba980a_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a3e15d2c8670445bb3ba13aa605ba980a_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a3e15d2c8670445bb3ba13aa605ba980a_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a3e15d2c8670445bb3ba13aa605ba980a_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="216,5,379,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576" title="True when arrivalTime is after it closes. " alt="" coords="225,71,370,112"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a3e15d2c8670445bb3ba13aa605ba980a_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a3e15d2c8670445bb3ba13aa605ba980a_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a3e15d2c8670445bb3ba13aa605ba980a_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a3e15d2c8670445bb3ba13aa605ba980a_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle.html#a50ba2513d8130e34f95a6a1d98253767" title="pgrouting::vrp::Vehicle\l::getPosHighLimit" alt="" coords="251,5,403,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="487,209,615,251"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a259954cf5ed111fb3b6ea7bb4f689b1c" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="264,122,391,178"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a40f5fc0f770bd56b0db41be2187b12fe" title="pgrouting::vrp::Tw\l_node::is_partially\l_waitTime_compatible_IJ" alt="" coords="242,202,413,258"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#a0e4f84908b0ebbb71fe9888a5b421b7b" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="230,283,425,324"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Order.html#a56eaa0604abebc289e5a58af278793ef" title="validate a pickup/delivery order " alt="" coords="257,348,398,389"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Tw__node.html#a12d1d5cdfc3094df03a37df7ee99ea99" title="pgrouting::vrp::Tw\l_node::is_waitTime_compatible_IJ" alt="" coords="216,413,439,455"/>
-<area shape="rect" id="node9" href="classpgrouting_1_1vrp_1_1Order.html#a5043789d42f56a9c2dfafd5bda4ea835" title="Can order I be placed before this order? " alt="" coords="257,479,398,520"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7bf5d9502d5d99627b3b7dba5b1a3b76"></a>
@@ -1677,28 +1352,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_ae64feb6a6fc092fdc590ee0db579b1e8"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">pgrouting::vrp::Tw_node::opens</a></div><div class="ttdeci">double opens() const</div><div class="ttdoc">Returns the opening time. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00076">tw_node.h:76</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a9f94f8b0ed3f6552e13780a7d548de7a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">pgrouting::vrp::Tw_node::service_time</a></div><div class="ttdeci">double service_time() const</div><div class="ttdoc">Returns the service time for this node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00086">tw_node.h:86</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aba4a921c9d3f8e05911b584223bc0469"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node::m_type</a></div><div class="ttdeci">NodeType m_type</div><div class="ttdoc">The demand for the Node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00278">tw_node.h:278</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a7bf5d9502d5d99627b3b7dba5b1a3b76_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a7bf5d9502d5d99627b3b7dba5b1a3b76_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a7bf5d9502d5d99627b3b7dba5b1a3b76_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a7bf5d9502d5d99627b3b7dba5b1a3b76_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267" title="Returns the closing time. " alt="" coords="186,5,313,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd" title="Returns the demand associated with this node. " alt="" coords="186,71,313,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="186,136,313,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="180,201,319,243"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a7bf5d9502d5d99627b3b7dba5b1a3b76_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a7bf5d9502d5d99627b3b7dba5b1a3b76_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a7bf5d9502d5d99627b3b7dba5b1a3b76_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a7bf5d9502d5d99627b3b7dba5b1a3b76_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Order.html#a56eaa0604abebc289e5a58af278793ef" title="validate a pickup/delivery order " alt="" coords="185,5,326,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="192,71,319,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="180,136,331,177"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a70c9b8184eec7eb4e981f040f36c9262"></a>
@@ -1741,28 +1395,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_ae64feb6a6fc092fdc590ee0db579b1e8"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">pgrouting::vrp::Tw_node::opens</a></div><div class="ttdeci">double opens() const</div><div class="ttdoc">Returns the opening time. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00076">tw_node.h:76</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a9f94f8b0ed3f6552e13780a7d548de7a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">pgrouting::vrp::Tw_node::service_time</a></div><div class="ttdeci">double service_time() const</div><div class="ttdoc">Returns the service time for this node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00086">tw_node.h:86</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aba4a921c9d3f8e05911b584223bc0469"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node::m_type</a></div><div class="ttdeci">NodeType m_type</div><div class="ttdoc">The demand for the Node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00278">tw_node.h:278</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a70c9b8184eec7eb4e981f040f36c9262_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a70c9b8184eec7eb4e981f040f36c9262_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a70c9b8184eec7eb4e981f040f36c9262_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a70c9b8184eec7eb4e981f040f36c9262_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267" title="Returns the closing time. " alt="" coords="186,5,313,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd" title="Returns the demand associated with this node. " alt="" coords="186,71,313,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="186,136,313,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="180,201,319,243"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a70c9b8184eec7eb4e981f040f36c9262_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a70c9b8184eec7eb4e981f040f36c9262_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a70c9b8184eec7eb4e981f040f36c9262_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a70c9b8184eec7eb4e981f040f36c9262_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="180,5,332,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="193,71,319,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="181,136,331,177"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="afcb1d8e727a133b58aa3e75e33abfece"></a>
@@ -1797,21 +1430,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle_8cpp_source.html#l00188">pgrouting::vrp::Vehicle::deltaTime()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00068">evaluate()</a>, <a class="el" href="tw__node_8h_source.html#l00196">pgrouting::vrp::Tw_node::is_on_time()</a>, <a class="el" href="tw__node_8cpp_source.html#l00087">pgrouting::vrp::Tw_node::is_partially_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00103">pgrouting::vrp::Tw_node::is_partially_waitTime_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00095">pgrouting::vrp::Tw_node::is_tight_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00112">pgrouting::vrp::Tw_node::is_waitTime_compatible_IJ()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                                             {</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;         <span class="keywordflow">return</span> arrival_time &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a>;</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;     }</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_acf00cf1c32828c02fab3caeac6e857f5"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">pgrouting::vrp::Tw_node::m_opens</a></div><div class="ttdeci">double m_opens</div><div class="ttdoc">opening time of the node </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00274">tw_node.h:274</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_afcb1d8e727a133b58aa3e75e33abfece_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_afcb1d8e727a133b58aa3e75e33abfece_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_afcb1d8e727a133b58aa3e75e33abfece_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_afcb1d8e727a133b58aa3e75e33abfece_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle.html#af16bda121ef322dc50702241a9b20985" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="241,5,393,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="241,71,393,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="476,275,604,316"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a259954cf5ed111fb3b6ea7bb4f689b1c" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="253,187,380,243"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#a40f5fc0f770bd56b0db41be2187b12fe" title="pgrouting::vrp::Tw\l_node::is_partially\l_waitTime_compatible_IJ" alt="" coords="231,267,402,323"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Tw__node.html#a0e4f84908b0ebbb71fe9888a5b421b7b" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="219,348,414,389"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Tw__node.html#a12d1d5cdfc3094df03a37df7ee99ea99" title="pgrouting::vrp::Tw\l_node::is_waitTime_compatible_IJ" alt="" coords="205,413,428,455"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a73dc73078ab5135d9269cb0115de898e"></a>
@@ -1854,29 +1473,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_ae64feb6a6fc092fdc590ee0db579b1e8"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">pgrouting::vrp::Tw_node::opens</a></div><div class="ttdeci">double opens() const</div><div class="ttdoc">Returns the opening time. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00076">tw_node.h:76</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a9f94f8b0ed3f6552e13780a7d548de7a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">pgrouting::vrp::Tw_node::service_time</a></div><div class="ttdeci">double service_time() const</div><div class="ttdoc">Returns the service time for this node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00086">tw_node.h:86</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aba4a921c9d3f8e05911b584223bc0469"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node::m_type</a></div><div class="ttdeci">NodeType m_type</div><div class="ttdoc">The demand for the Node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00278">tw_node.h:278</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a73dc73078ab5135d9269cb0115de898e_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a73dc73078ab5135d9269cb0115de898e_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a73dc73078ab5135d9269cb0115de898e_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a73dc73078ab5135d9269cb0115de898e_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267" title="Returns the closing time. " alt="" coords="186,5,313,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd" title="Returns the demand associated with this node. " alt="" coords="186,71,313,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="186,136,313,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="180,201,319,243"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a73dc73078ab5135d9269cb0115de898e_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a73dc73078ab5135d9269cb0115de898e_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a73dc73078ab5135d9269cb0115de898e_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a73dc73078ab5135d9269cb0115de898e_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Fleet.html#ac6175454144f3417e7fd582b87eabc52" title="pgrouting::vrp::Fleet\l::add_vehicle" alt="" coords="187,5,325,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ab2033c2764f192da405b9877ac441772" title="True when not violation. " alt="" coords="180,71,332,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="193,136,319,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="181,201,331,243"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1e121d629694b7809b4515645ebf1576"></a>
@@ -1911,20 +1508,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00140">deltaGeneratesTWV()</a>, <a class="el" href="vehicle__node_8h_source.html#l00124">has_twv()</a>, <a class="el" href="tw__node_8cpp_source.html#l00073">pgrouting::vrp::Tw_node::is_compatible_IJ()</a>, <a class="el" href="tw__node_8h_source.html#l00196">pgrouting::vrp::Tw_node::is_on_time()</a>, <a class="el" href="tw__node_8cpp_source.html#l00087">pgrouting::vrp::Tw_node::is_partially_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00095">pgrouting::vrp::Tw_node::is_tight_compatible_IJ()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                                                            {</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;         <span class="keywordflow">return</span> arrival_time &gt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a>;</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;     }</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a7fabac7b3b61a57df767711a144aef05"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">pgrouting::vrp::Tw_node::m_closes</a></div><div class="ttdeci">double m_closes</div><div class="ttdoc">closing time of the node </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00275">tw_node.h:275</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a1e121d629694b7809b4515645ebf1576_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a1e121d629694b7809b4515645ebf1576_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a1e121d629694b7809b4515645ebf1576_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a1e121d629694b7809b4515645ebf1576_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a8bf5659717b9bec7078bed1ae9c864c5" title="True when arrival_time + delta_time generates TWV. " alt="" coords="199,5,381,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a926b499e318cee7a768721da337965ce" title="True when at this node does not violate time windows. " alt="" coords="214,71,366,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="209,188,371,229"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="672,217,800,259"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#a259954cf5ed111fb3b6ea7bb4f689b1c" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="463,115,590,171"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Tw__node.html#a0e4f84908b0ebbb71fe9888a5b421b7b" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="429,247,624,288"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a69aa3b00665b1cc9be2549c7dde0e05f"></a>
@@ -1967,27 +1551,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_ae64feb6a6fc092fdc590ee0db579b1e8"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">pgrouting::vrp::Tw_node::opens</a></div><div class="ttdeci">double opens() const</div><div class="ttdoc">Returns the opening time. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00076">tw_node.h:76</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a9f94f8b0ed3f6552e13780a7d548de7a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">pgrouting::vrp::Tw_node::service_time</a></div><div class="ttdeci">double service_time() const</div><div class="ttdoc">Returns the service time for this node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00086">tw_node.h:86</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aba4a921c9d3f8e05911b584223bc0469"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node::m_type</a></div><div class="ttdeci">NodeType m_type</div><div class="ttdoc">The demand for the Node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00278">tw_node.h:278</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a69aa3b00665b1cc9be2549c7dde0e05f_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a69aa3b00665b1cc9be2549c7dde0e05f_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a69aa3b00665b1cc9be2549c7dde0e05f_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a69aa3b00665b1cc9be2549c7dde0e05f_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267" title="Returns the closing time. " alt="" coords="186,5,313,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd" title="Returns the demand associated with this node. " alt="" coords="186,71,313,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="186,136,313,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="180,201,319,243"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a69aa3b00665b1cc9be2549c7dde0e05f_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a69aa3b00665b1cc9be2549c7dde0e05f_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a69aa3b00665b1cc9be2549c7dde0e05f_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a69aa3b00665b1cc9be2549c7dde0e05f_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="192,5,319,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="180,71,331,112"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7879cfdd27e409f8b364eaaa06375656"></a>
@@ -2021,26 +1585,7 @@ Here is the caller graph for this function:</div>
 <p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00064">pgrouting::vrp::Tw_node::arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00058">pgrouting::vrp::Tw_node::arrival_j_opens_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00073">pgrouting::vrp::Tw_node::is_compatible_IJ()</a>, <a class="el" href="tw__node_8h_source.html#l00187">pgrouting::vrp::Tw_node::is_early_arrival()</a>, <a class="el" href="tw__node_8h_source.html#l00192">pgrouting::vrp::Tw_node::is_late_arrival()</a>, <a class="el" href="tw__node_8cpp_source.html#l00087">pgrouting::vrp::Tw_node::is_partially_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00103">pgrouting::vrp::Tw_node::is_partially_waitTime_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00095">pgrouting::vrp::Tw_node::is_tight_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00197">pgrouting::vrp::Tw_node::is_valid()</a>, <a class="el" href="tw__node_8cpp_source.html#l00112">pgrouting::vrp::Tw_node::is_waitTime_compatible_IJ()</a>, <a class="el" href="classpgrouting_1_1vrp_1_1Tw__node.html#af07b99965410fcea8e5fdf8f46b7c2ee">pgrouting::vrp::Tw_node::Tw_node()</a>, and <a class="el" href="tw__node_8h_source.html#l00089">pgrouting::vrp::Tw_node::type()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                                                       {</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;         <span class="keywordflow">return</span> !<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">is_early_arrival</a>(arrival_time)</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;             &amp;&amp; !<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">is_late_arrival</a>(arrival_time);</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;     }</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_afcb1d8e727a133b58aa3e75e33abfece"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">pgrouting::vrp::Tw_node::is_early_arrival</a></div><div class="ttdeci">bool is_early_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is before it opens. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00187">tw_node.h:187</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a1e121d629694b7809b4515645ebf1576"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">pgrouting::vrp::Tw_node::is_late_arrival</a></div><div class="ttdeci">bool is_late_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is after it closes. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00192">tw_node.h:192</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a7879cfdd27e409f8b364eaaa06375656_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a7879cfdd27e409f8b364eaaa06375656_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a7879cfdd27e409f8b364eaaa06375656_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a7879cfdd27e409f8b364eaaa06375656_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="452,82,617,124"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="665,362,828,404"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="453,301,616,342"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576" title="True when arrivalTime is after it closes. " alt="" coords="674,82,819,124"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece" title="True when arrivalTime is before it opens. " alt="" coords="459,366,611,408"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Tw__node.html#a259954cf5ed111fb3b6ea7bb4f689b1c" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="229,140,356,196"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Tw__node.html#a40f5fc0f770bd56b0db41be2187b12fe" title="pgrouting::vrp::Tw\l_node::is_partially\l_waitTime_compatible_IJ" alt="" coords="207,338,378,394"/>
-<area shape="rect" id="node9" href="classpgrouting_1_1vrp_1_1Tw__node.html#a0e4f84908b0ebbb71fe9888a5b421b7b" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="195,221,390,262"/>
-<area shape="rect" id="node10" href="classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="229,637,356,678"/>
-<area shape="rect" id="node11" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3" title="Returns the type of this node. " alt="" coords="471,612,598,653"/>
-<area shape="rect" id="node12" href="classpgrouting_1_1vrp_1_1Tw__node.html#a12d1d5cdfc3094df03a37df7ee99ea99" title="pgrouting::vrp::Tw\l_node::is_waitTime_compatible_IJ" alt="" coords="181,469,404,510"/>
-<area shape="rect" id="node13" href="classpgrouting_1_1vrp_1_1Tw__node.html#af07b99965410fcea8e5fdf8f46b7c2ee" title="pgrouting::vrp::Tw\l_node::Tw_node" alt="" coords="229,702,356,744"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a259954cf5ed111fb3b6ea7bb4f689b1c"></a>
@@ -2087,27 +1632,7 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aa1a22978cc7674504dcdc570bcb5f354"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354">pgrouting::vrp::Tw_node::arrival_j_closes_i</a></div><div class="ttdeci">double arrival_j_closes_i(const Tw_node &amp;I, double speed) const</div><div class="ttdoc">The actual arrival time at this node, given that: this node is visited directly after other node and ...</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00064">tw_node.cpp:64</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_afcb1d8e727a133b58aa3e75e33abfece"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">pgrouting::vrp::Tw_node::is_early_arrival</a></div><div class="ttdeci">bool is_early_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is before it opens. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00187">tw_node.h:187</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a1e121d629694b7809b4515645ebf1576"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">pgrouting::vrp::Tw_node::is_late_arrival</a></div><div class="ttdeci">bool is_late_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is after it closes. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00192">tw_node.h:192</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a259954cf5ed111fb3b6ea7bb4f689b1c_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a259954cf5ed111fb3b6ea7bb4f689b1c_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a259954cf5ed111fb3b6ea7bb4f689b1c_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a259954cf5ed111fb3b6ea7bb4f689b1c_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="180,5,345,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="393,77,556,119"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="181,123,344,164"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576" title="True when arrivalTime is after it closes. " alt="" coords="402,156,547,197"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece" title="True when arrivalTime is before it opens. " alt="" coords="187,240,339,281"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a259954cf5ed111fb3b6ea7bb4f689b1c_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a259954cf5ed111fb3b6ea7bb4f689b1c_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a259954cf5ed111fb3b6ea7bb4f689b1c_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a259954cf5ed111fb3b6ea7bb4f689b1c_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="180,13,308,54"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a40f5fc0f770bd56b0db41be2187b12fe"></a>
@@ -2152,25 +1677,7 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                            {</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span></div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">is_compatible_IJ</a>(I, speed)</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">is_early_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed));</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a3cf23e97726fbef9a8ffba6952a2aba1"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">pgrouting::vrp::Tw_node::arrival_j_opens_i</a></div><div class="ttdeci">double arrival_j_opens_i(const Tw_node &amp;I, double speed) const</div><div class="ttdoc">@ { </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00058">tw_node.cpp:58</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a3e15d2c8670445bb3ba13aa605ba980a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">pgrouting::vrp::Tw_node::is_compatible_IJ</a></div><div class="ttdeci">bool is_compatible_IJ(const Tw_node &amp;I, double speed) const</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00073">tw_node.cpp:73</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_afcb1d8e727a133b58aa3e75e33abfece"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">pgrouting::vrp::Tw_node::is_early_arrival</a></div><div class="ttdeci">bool is_early_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is before it opens. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00187">tw_node.h:187</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a40f5fc0f770bd56b0db41be2187b12fe_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a40f5fc0f770bd56b0db41be2187b12fe_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a40f5fc0f770bd56b0db41be2187b12fe_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a40f5fc0f770bd56b0db41be2187b12fe_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="435,5,597,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="224,35,387,76"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece" title="True when arrivalTime is before it opens. " alt="" coords="229,100,381,141"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a40f5fc0f770bd56b0db41be2187b12fe_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a40f5fc0f770bd56b0db41be2187b12fe_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a40f5fc0f770bd56b0db41be2187b12fe_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a40f5fc0f770bd56b0db41be2187b12fe_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="224,13,352,54"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aff8cddd6a076cc519b695ef4be2dca6b"></a>
@@ -2213,28 +1720,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_ae64feb6a6fc092fdc590ee0db579b1e8"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">pgrouting::vrp::Tw_node::opens</a></div><div class="ttdeci">double opens() const</div><div class="ttdoc">Returns the opening time. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00076">tw_node.h:76</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a9f94f8b0ed3f6552e13780a7d548de7a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">pgrouting::vrp::Tw_node::service_time</a></div><div class="ttdeci">double service_time() const</div><div class="ttdoc">Returns the service time for this node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00086">tw_node.h:86</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aba4a921c9d3f8e05911b584223bc0469"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node::m_type</a></div><div class="ttdeci">NodeType m_type</div><div class="ttdoc">The demand for the Node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00278">tw_node.h:278</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_aff8cddd6a076cc519b695ef4be2dca6b_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_aff8cddd6a076cc519b695ef4be2dca6b_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_aff8cddd6a076cc519b695ef4be2dca6b_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_aff8cddd6a076cc519b695ef4be2dca6b_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267" title="Returns the closing time. " alt="" coords="186,5,313,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd" title="Returns the demand associated with this node. " alt="" coords="186,71,313,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="186,136,313,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="180,201,319,243"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_aff8cddd6a076cc519b695ef4be2dca6b_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_aff8cddd6a076cc519b695ef4be2dca6b_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_aff8cddd6a076cc519b695ef4be2dca6b_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_aff8cddd6a076cc519b695ef4be2dca6b_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Order.html#a56eaa0604abebc289e5a58af278793ef" title="validate a pickup/delivery order " alt="" coords="185,5,326,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="192,71,319,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="180,136,331,177"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad78f19fca930a7754678d57e1e252483"></a>
@@ -2278,30 +1764,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_ae64feb6a6fc092fdc590ee0db579b1e8"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">pgrouting::vrp::Tw_node::opens</a></div><div class="ttdeci">double opens() const</div><div class="ttdoc">Returns the opening time. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00076">tw_node.h:76</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a9f94f8b0ed3f6552e13780a7d548de7a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">pgrouting::vrp::Tw_node::service_time</a></div><div class="ttdeci">double service_time() const</div><div class="ttdoc">Returns the service time for this node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00086">tw_node.h:86</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aba4a921c9d3f8e05911b584223bc0469"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node::m_type</a></div><div class="ttdeci">NodeType m_type</div><div class="ttdoc">The demand for the Node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00278">tw_node.h:278</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_ad78f19fca930a7754678d57e1e252483_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_ad78f19fca930a7754678d57e1e252483_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_ad78f19fca930a7754678d57e1e252483_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_ad78f19fca930a7754678d57e1e252483_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267" title="Returns the closing time. " alt="" coords="186,5,313,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd" title="Returns the demand associated with this node. " alt="" coords="186,71,313,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8" title="Returns the opening time. " alt="" coords="186,136,313,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a" title="Returns the service time for this node. " alt="" coords="180,201,319,243"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_ad78f19fca930a7754678d57e1e252483_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_ad78f19fca930a7754678d57e1e252483_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_ad78f19fca930a7754678d57e1e252483_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_ad78f19fca930a7754678d57e1e252483_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Fleet.html#ac6175454144f3417e7fd582b87eabc52" title="pgrouting::vrp::Fleet\l::add_vehicle" alt="" coords="187,5,325,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba" title="@ { " alt="" coords="180,71,332,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ab2033c2764f192da405b9877ac441772" title="True when not violation. " alt="" coords="380,71,532,112"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="193,188,319,229"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="181,253,331,295"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0e4f84908b0ebbb71fe9888a5b421b7b"></a>
@@ -2348,27 +1811,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aa1a22978cc7674504dcdc570bcb5f354"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354">pgrouting::vrp::Tw_node::arrival_j_closes_i</a></div><div class="ttdeci">double arrival_j_closes_i(const Tw_node &amp;I, double speed) const</div><div class="ttdoc">The actual arrival time at this node, given that: this node is visited directly after other node and ...</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00064">tw_node.cpp:64</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_afcb1d8e727a133b58aa3e75e33abfece"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">pgrouting::vrp::Tw_node::is_early_arrival</a></div><div class="ttdeci">bool is_early_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is before it opens. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00187">tw_node.h:187</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a1e121d629694b7809b4515645ebf1576"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">pgrouting::vrp::Tw_node::is_late_arrival</a></div><div class="ttdeci">bool is_late_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is after it closes. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00192">tw_node.h:192</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a0e4f84908b0ebbb71fe9888a5b421b7b_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a0e4f84908b0ebbb71fe9888a5b421b7b_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a0e4f84908b0ebbb71fe9888a5b421b7b_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a0e4f84908b0ebbb71fe9888a5b421b7b_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="248,5,413,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="461,77,624,119"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="249,123,412,164"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576" title="True when arrivalTime is after it closes. " alt="" coords="470,156,615,197"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece" title="True when arrivalTime is before it opens. " alt="" coords="255,240,407,281"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a0e4f84908b0ebbb71fe9888a5b421b7b_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a0e4f84908b0ebbb71fe9888a5b421b7b_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a0e4f84908b0ebbb71fe9888a5b421b7b_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a0e4f84908b0ebbb71fe9888a5b421b7b_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="248,5,376,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af2bd2274eae6e957d8054af1d6d55e8a"></a>
@@ -2412,29 +1855,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63">pgrouting::vrp::Tw_node::kDelivery</a></div><div class="ttdoc">delivery site </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00062">tw_node.h:62</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a73dc73078ab5135d9269cb0115de898e"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e">pgrouting::vrp::Tw_node::is_end</a></div><div class="ttdeci">bool is_end() const</div><div class="ttdoc">is_end </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00177">tw_node.cpp:177</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a70c9b8184eec7eb4e981f040f36c9262"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262">pgrouting::vrp::Tw_node::is_dump</a></div><div class="ttdeci">bool is_dump() const</div><div class="ttdoc">is_dump </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00159">tw_node.cpp:159</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_af2bd2274eae6e957d8054af1d6d55e8a_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_af2bd2274eae6e957d8054af1d6d55e8a_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_af2bd2274eae6e957d8054af1d6d55e8a_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_af2bd2274eae6e957d8054af1d6d55e8a_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76" title="is_delivery " alt="" coords="180,5,307,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262" title="is_dump " alt="" coords="180,71,307,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e" title="is_end " alt="" coords="180,136,307,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a69aa3b00665b1cc9be2549c7dde0e05f" title="is_Load " alt="" coords="180,201,307,243"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b" title="is_pickup " alt="" coords="180,267,307,308"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483" title="@ { " alt="" coords="180,332,307,373"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3" title="Returns the type of this node. " alt="" coords="180,397,307,439"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_af2bd2274eae6e957d8054af1d6d55e8a_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_af2bd2274eae6e957d8054af1d6d55e8a_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_af2bd2274eae6e957d8054af1d6d55e8a_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_af2bd2274eae6e957d8054af1d6d55e8a_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="180,5,308,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a12d1d5cdfc3094df03a37df7ee99ea99"></a>
@@ -2479,25 +1900,7 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                                                       {</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">return</span></div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">is_compatible_IJ</a>(I, speed)</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">is_early_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed));</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a3cf23e97726fbef9a8ffba6952a2aba1"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">pgrouting::vrp::Tw_node::arrival_j_opens_i</a></div><div class="ttdeci">double arrival_j_opens_i(const Tw_node &amp;I, double speed) const</div><div class="ttdoc">@ { </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00058">tw_node.cpp:58</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a3e15d2c8670445bb3ba13aa605ba980a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">pgrouting::vrp::Tw_node::is_compatible_IJ</a></div><div class="ttdeci">bool is_compatible_IJ(const Tw_node &amp;I, double speed) const</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00073">tw_node.cpp:73</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_afcb1d8e727a133b58aa3e75e33abfece"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">pgrouting::vrp::Tw_node::is_early_arrival</a></div><div class="ttdeci">bool is_early_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is before it opens. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00187">tw_node.h:187</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a12d1d5cdfc3094df03a37df7ee99ea99_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a12d1d5cdfc3094df03a37df7ee99ea99_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a12d1d5cdfc3094df03a37df7ee99ea99_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a12d1d5cdfc3094df03a37df7ee99ea99_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="487,5,649,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a" title="pgrouting::vrp::Tw\l_node::is_compatible_IJ" alt="" coords="276,35,439,76"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece" title="True when arrivalTime is before it opens. " alt="" coords="281,100,433,141"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a12d1d5cdfc3094df03a37df7ee99ea99_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a12d1d5cdfc3094df03a37df7ee99ea99_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a12d1d5cdfc3094df03a37df7ee99ea99_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a12d1d5cdfc3094df03a37df7ee99ea99_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="276,5,404,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae64feb6a6fc092fdc590ee0db579b1e8"></a>
@@ -2531,25 +1934,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="tw__node_8cpp_source.html#l00058">pgrouting::vrp::Tw_node::arrival_j_opens_i()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00038">evaluate()</a>, <a class="el" href="tw__node_8cpp_source.html#l00150">pgrouting::vrp::Tw_node::is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00159">pgrouting::vrp::Tw_node::is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00177">pgrouting::vrp::Tw_node::is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00168">pgrouting::vrp::Tw_node::is_load()</a>, <a class="el" href="vehicle_8cpp_source.html#l00505">pgrouting::vrp::Vehicle::is_ok()</a>, <a class="el" href="tw__node_8cpp_source.html#l00141">pgrouting::vrp::Tw_node::is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00132">pgrouting::vrp::Tw_node::is_start()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_acf00cf1c32828c02fab3caeac6e857f5"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">pgrouting::vrp::Tw_node::m_opens</a></div><div class="ttdeci">double m_opens</div><div class="ttdoc">opening time of the node </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00274">tw_node.h:274</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_ae64feb6a6fc092fdc590ee0db579b1e8_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_ae64feb6a6fc092fdc590ee0db579b1e8_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_ae64feb6a6fc092fdc590ee0db579b1e8_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_ae64feb6a6fc092fdc590ee0db579b1e8_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Fleet.html#ac6175454144f3417e7fd582b87eabc52" title="pgrouting::vrp::Fleet\l::add_vehicle" alt="" coords="397,129,536,171"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="180,71,343,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba" title="@ { " alt="" coords="391,445,543,487"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76" title="is_delivery " alt="" coords="198,188,325,229"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262" title="is_dump " alt="" coords="198,253,325,295"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e" title="is_end " alt="" coords="198,5,325,47"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Tw__node.html#a69aa3b00665b1cc9be2549c7dde0e05f" title="is_Load " alt="" coords="198,384,325,425"/>
-<area shape="rect" id="node9" href="classpgrouting_1_1vrp_1_1Vehicle.html#a0923a9c16a3fa7b95123fcc76bd7c499" title="pgrouting::vrp::Vehicle\l::is_ok" alt="" coords="185,449,337,491"/>
-<area shape="rect" id="node10" href="classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b" title="is_pickup " alt="" coords="198,515,325,556"/>
-<area shape="rect" id="node11" href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483" title="@ { " alt="" coords="198,319,325,360"/>
-<area shape="rect" id="node12" href="classpgrouting_1_1vrp_1_1Vehicle.html#a163d32b8d5c8e0444e4fa432b680a784" title="pgrouting::vrp::Vehicle\l::Vehicle" alt="" coords="185,632,337,673"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab2f1204fba2644d6c0a0edef5305645f"></a>
@@ -2584,23 +1969,7 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                                               {</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">if</span> (&amp;other == <span class="keyword">this</span>) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keyword">auto</span> lhs = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>Node&amp;<span class="keyword">&gt;</span>(</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            *<a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#abdcfb492078e10e4d72b04c37c151c99">m_base_nodes</a>[<a class="code" href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447">idx</a>()].get());</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keyword">auto</span> rhs = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>Node&amp;<span class="keyword">&gt;</span>(</div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            *<a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#abdcfb492078e10e4d72b04c37c151c99">m_base_nodes</a>[other.idx()].get());</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">return</span> lhs == rhs;</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1PD__problem_html_aa6625d4f26aeb5f8d43e2e9ac23ed621"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">pgrouting::vrp::PD_problem::problem</a></div><div class="ttdeci">static Pgr_pickDeliver * problem</div><div class="ttdef"><b>Definition:</b> <a href="pd__problem_8h_source.html#l00052">pd_problem.h:52</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Pgr__pickDeliver_html_abdcfb492078e10e4d72b04c37c151c99"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#abdcfb492078e10e4d72b04c37c151c99">pgrouting::vrp::Pgr_pickDeliver::m_base_nodes</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; Base_node &gt; &gt; m_base_nodes</div><div class="ttdef"><b>Definition:</b> <a href="pgr__pickDeliver_8h_source.html#l00114">pgr_pickDeliver.h:114</a></div></div>
 <div class="ttc" id="classpgrouting_1_1Identifier_html_ae0a3414bc65c1b67101b3f5944505447"><div class="ttname"><a href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447">pgrouting::Identifier::idx</a></div><div class="ttdeci">size_t idx() const</div><div class="ttdef"><b>Definition:</b> <a href="identifier_8cpp_source.html#l00037">identifier.cpp:37</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_ab2f1204fba2644d6c0a0edef5305645f_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_ab2f1204fba2644d6c0a0edef5305645f_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_ab2f1204fba2644d6c0a0edef5305645f_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_ab2f1204fba2644d6c0a0edef5305645f_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447" title="pgrouting::Identifier::idx" alt="" coords="181,13,340,39"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_ab2f1204fba2644d6c0a0edef5305645f_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_ab2f1204fba2644d6c0a0edef5305645f_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_ab2f1204fba2644d6c0a0edef5305645f_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_ab2f1204fba2644d6c0a0edef5305645f_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="181,5,332,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a3a4981ecc46053d2c8e74b91aeefc1b1"></a>
@@ -2666,15 +2035,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00232">pgrouting::vrp::Tw_node::Tw_node()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classpgrouting_1_1Identifier.html#a45b5bbbc6c8c0ec6fd3b61f87e7113f1">m_id</a> = _id;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div><div class="ttc" id="classpgrouting_1_1Identifier_html_a45b5bbbc6c8c0ec6fd3b61f87e7113f1"><div class="ttname"><a href="classpgrouting_1_1Identifier.html#a45b5bbbc6c8c0ec6fd3b61f87e7113f1">pgrouting::Identifier::m_id</a></div><div class="ttdeci">int64_t m_id</div><div class="ttdef"><b>Definition:</b> <a href="identifier_8h_source.html#l00053">identifier.h:53</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1Identifier_ac447a0a784cb863f908f3375e2ca9d1c_icgraph.png" border="0" usemap="#classpgrouting_1_1Identifier_ac447a0a784cb863f908f3375e2ca9d1c_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1Identifier_ac447a0a784cb863f908f3375e2ca9d1c_icgraph" id="classpgrouting_1_1Identifier_ac447a0a784cb863f908f3375e2ca9d1c_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a10b9b7e1b549b8a4f813ac15f6b46fc7" title="pgrouting::vrp::Tw\l_node::Tw_node" alt="" coords="187,5,313,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a9f94f8b0ed3f6552e13780a7d548de7a"></a>
@@ -2711,26 +2072,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00151">arrival_i_arrives_j()</a>, <a class="el" href="tw__node_8cpp_source.html#l00064">pgrouting::vrp::Tw_node::arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00058">pgrouting::vrp::Tw_node::arrival_j_opens_i()</a>, <a class="el" href="vehicle_8cpp_source.html#l00188">pgrouting::vrp::Vehicle::deltaTime()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00038">evaluate()</a>, <a class="el" href="tw__node_8cpp_source.html#l00150">pgrouting::vrp::Tw_node::is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00159">pgrouting::vrp::Tw_node::is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00177">pgrouting::vrp::Tw_node::is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00168">pgrouting::vrp::Tw_node::is_load()</a>, <a class="el" href="tw__node_8cpp_source.html#l00141">pgrouting::vrp::Tw_node::is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00132">pgrouting::vrp::Tw_node::is_start()</a>, and <a class="el" href="vehicle__node_8cpp_source.html#l00101">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">m_service_time</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_ae6a4dc8aa1ccc17fd81cf0989f31a36c"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">pgrouting::vrp::Tw_node::m_service_time</a></div><div class="ttdeci">double m_service_time</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00276">tw_node.h:276</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a9f94f8b0ed3f6552e13780a7d548de7a_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a9f94f8b0ed3f6552e13780a7d548de7a_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a9f94f8b0ed3f6552e13780a7d548de7a_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a9f94f8b0ed3f6552e13780a7d548de7a_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a810f8e5e0deea10816247439a890a2a1" title="@ { " alt="" coords="195,5,361,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="195,71,361,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="197,136,359,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Vehicle.html#af16bda121ef322dc50702241a9b20985" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="202,201,354,243"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba" title="@ { " alt="" coords="412,453,564,495"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76" title="is_delivery " alt="" coords="215,319,341,360"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262" title="is_dump " alt="" coords="215,384,341,425"/>
-<area shape="rect" id="node9" href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e" title="is_end " alt="" coords="215,449,341,491"/>
-<area shape="rect" id="node10" href="classpgrouting_1_1vrp_1_1Tw__node.html#a69aa3b00665b1cc9be2549c7dde0e05f" title="is_Load " alt="" coords="215,515,341,556"/>
-<area shape="rect" id="node11" href="classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b" title="is_pickup " alt="" coords="215,580,341,621"/>
-<area shape="rect" id="node12" href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483" title="@ { " alt="" coords="215,645,341,687"/>
-<area shape="rect" id="node13" href="namespacepgrouting_1_1vrp.html#ae1e6219461754c35aa23e53c6dc3e6bb" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="192,711,364,738"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aaa660090fd3474250c8b9de26972c539"></a>
@@ -2764,24 +2106,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">evaluate()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ac083952034519ae5860654e71c83d7c4">m_tot_service_time</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_ac083952034519ae5860654e71c83d7c4"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ac083952034519ae5860654e71c83d7c4">pgrouting::vrp::Vehicle_node::m_tot_service_time</a></div><div class="ttdeci">double m_tot_service_time</div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00182">vehicle_node.h:182</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_aaa660090fd3474250c8b9de26972c539_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_aaa660090fd3474250c8b9de26972c539_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_aaa660090fd3474250c8b9de26972c539_cgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_aaa660090fd3474250c8b9de26972c539_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#abce60831cb1120c995ba641019d15484" title="delta_time = departure_time(this) &#45; departure_time(previous) " alt="" coords="239,5,391,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a8bf5659717b9bec7078bed1ae9c864c5" title="True when arrival_time + delta_time generates TWV. " alt="" coords="224,71,407,112"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_aaa660090fd3474250c8b9de26972c539_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_aaa660090fd3474250c8b9de26972c539_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_aaa660090fd3474250c8b9de26972c539_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_aaa660090fd3474250c8b9de26972c539_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="224,5,376,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aee95f7c9e4e914517ce7aeacf4bd7450"></a>
@@ -2847,15 +2172,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">evaluate()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a61a1b9fd625924fc4d3d13634df66ceb">m_tot_travel_time</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a61a1b9fd625924fc4d3d13634df66ceb"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a61a1b9fd625924fc4d3d13634df66ceb">pgrouting::vrp::Vehicle_node::m_tot_travel_time</a></div><div class="ttdeci">double m_tot_travel_time</div><div class="ttdoc">Accumulated travel time. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00181">vehicle_node.h:181</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a72c956c8c8d451f246165d23662cf2aa_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a72c956c8c8d451f246165d23662cf2aa_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a72c956c8c8d451f246165d23662cf2aa_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a72c956c8c8d451f246165d23662cf2aa_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="215,5,367,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae29e089eb72f9b085c43a038ce53789d"></a>
@@ -2889,15 +2206,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">evaluate()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a9cdc6582cd8b7ba43d8e09a53f9aa959">m_tot_wait_time</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a9cdc6582cd8b7ba43d8e09a53f9aa959"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a9cdc6582cd8b7ba43d8e09a53f9aa959">pgrouting::vrp::Vehicle_node::m_tot_wait_time</a></div><div class="ttdeci">double m_tot_wait_time</div><div class="ttdoc">Accumulated wait time. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00180">vehicle_node.h:180</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_ae29e089eb72f9b085c43a038ce53789d_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_ae29e089eb72f9b085c43a038ce53789d_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_ae29e089eb72f9b085c43a038ce53789d_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_ae29e089eb72f9b085c43a038ce53789d_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="207,5,359,47"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a927a13bba6a92c3beef51c9c0cba0d54"></a>
@@ -2932,16 +2241,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">evaluate()</a>, and <a class="el" href="vehicle__node_8cpp_source.html#l00101">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#aac47aad86f27148a22654122afc124cc">m_travel_time</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_aac47aad86f27148a22654122afc124cc"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#aac47aad86f27148a22654122afc124cc">pgrouting::vrp::Vehicle_node::m_travel_time</a></div><div class="ttdeci">double m_travel_time</div><div class="ttdoc">@ { </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00166">vehicle_node.h:166</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a927a13bba6a92c3beef51c9c0cba0d54_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a927a13bba6a92c3beef51c9c0cba0d54_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a927a13bba6a92c3beef51c9c0cba0d54_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a927a13bba6a92c3beef51c9c0cba0d54_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="215,5,367,47"/>
-<area shape="rect" id="node3" href="namespacepgrouting_1_1vrp.html#ae1e6219461754c35aa23e53c6dc3e6bb" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="205,71,377,98"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7e5b1bdfeb746da922a2863bfe7ae718"></a>
@@ -2991,29 +2291,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Pgr__pickDeliver_html_abdcfb492078e10e4d72b04c37c151c99"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#abdcfb492078e10e4d72b04c37c151c99">pgrouting::vrp::Pgr_pickDeliver::m_base_nodes</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; Base_node &gt; &gt; m_base_nodes</div><div class="ttdef"><b>Definition:</b> <a href="pgr__pickDeliver_8h_source.html#l00114">pgr_pickDeliver.h:114</a></div></div>
 <div class="ttc" id="classpgrouting_1_1Identifier_html_ae0a3414bc65c1b67101b3f5944505447"><div class="ttname"><a href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447">pgrouting::Identifier::idx</a></div><div class="ttdeci">size_t idx() const</div><div class="ttdef"><b>Definition:</b> <a href="identifier_8cpp_source.html#l00037">identifier.cpp:37</a></div></div>
 <div class="ttc" id="pgr__assert_8h_html_a09250239ca707f56bc1bbfdd04a635b1"><div class="ttname"><a href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a></div><div class="ttdeci">#define pgassert(expr)</div><div class="ttdoc">Uses the standard assert syntax. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00094">pgr_assert.h:94</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a7e5b1bdfeb746da922a2863bfe7ae718_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a7e5b1bdfeb746da922a2863bfe7ae718_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a7e5b1bdfeb746da922a2863bfe7ae718_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a7e5b1bdfeb746da922a2863bfe7ae718_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447" title="pgrouting::Identifier::idx" alt="" coords="200,13,359,39"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a7e5b1bdfeb746da922a2863bfe7ae718_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a7e5b1bdfeb746da922a2863bfe7ae718_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a7e5b1bdfeb746da922a2863bfe7ae718_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a7e5b1bdfeb746da922a2863bfe7ae718_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a810f8e5e0deea10816247439a890a2a1" title="@ { " alt="" coords="203,5,369,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="203,71,369,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="205,136,367,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Vehicle.html#af16bda121ef322dc50702241a9b20985" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="210,201,362,243"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="210,267,362,308"/>
-<area shape="rect" id="node7" href="namespacepgrouting_1_1vrp.html#ad6fdaacceafff2916f80fb6855c58135" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="200,333,372,359"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="211,384,361,425"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7e6d740ceb7d0e7d236a91ea0ae40f9d"></a>
@@ -3048,16 +2326,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">evaluate()</a>, and <a class="el" href="vehicle__node_8cpp_source.html#l00101">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a50b3b2272c60ccbd570c12374e6f4293">m_twvTot</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_a50b3b2272c60ccbd570c12374e6f4293"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a50b3b2272c60ccbd570c12374e6f4293">pgrouting::vrp::Vehicle_node::m_twvTot</a></div><div class="ttdeci">int m_twvTot</div><div class="ttdoc">Total count of TWV. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00178">vehicle_node.h:178</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a7e6d740ceb7d0e7d236a91ea0ae40f9d_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a7e6d740ceb7d0e7d236a91ea0ae40f9d_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a7e6d740ceb7d0e7d236a91ea0ae40f9d_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a7e6d740ceb7d0e7d236a91ea0ae40f9d_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="215,5,367,47"/>
-<area shape="rect" id="node3" href="namespacepgrouting_1_1vrp.html#ae1e6219461754c35aa23e53c6dc3e6bb" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="205,71,377,98"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af0f855ca0fef0d717e5402230db3cbc3"></a>
@@ -3094,17 +2363,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="tw__node_8h_source.html#l00196">pgrouting::vrp::Tw_node::is_on_time()</a>, <a class="el" href="tw__node_8cpp_source.html#l00197">pgrouting::vrp::Tw_node::is_valid()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00119">pgrouting::vrp::Tw_node::type_str()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_aba4a921c9d3f8e05911b584223bc0469"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node::m_type</a></div><div class="ttdeci">NodeType m_type</div><div class="ttdoc">The demand for the Node. </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00278">tw_node.h:278</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_af0f855ca0fef0d717e5402230db3cbc3_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_af0f855ca0fef0d717e5402230db3cbc3_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_af0f855ca0fef0d717e5402230db3cbc3_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_af0f855ca0fef0d717e5402230db3cbc3_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="355,5,483,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="180,35,307,76"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1c5acc57671c2486a3acf9a2ef868dff" title="pgrouting::vrp::Tw\l_node::type_str" alt="" coords="180,100,307,141"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1c5acc57671c2486a3acf9a2ef868dff"></a>
@@ -3142,24 +2401,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4a1cac02b77057f76ebbf69348aea584b8"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a1cac02b77057f76ebbf69348aea584b8">pgrouting::vrp::Tw_node::kDump</a></div><div class="ttdoc">dump site, empties truck </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00063">tw_node.h:63</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc">pgrouting::vrp::Tw_node::kLoad</a></div><div class="ttdoc">load site, fills the truck </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00064">tw_node.h:64</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63">pgrouting::vrp::Tw_node::kDelivery</a></div><div class="ttdoc">delivery site </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00062">tw_node.h:62</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a1c5acc57671c2486a3acf9a2ef868dff_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a1c5acc57671c2486a3acf9a2ef868dff_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a1c5acc57671c2486a3acf9a2ef868dff_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a1c5acc57671c2486a3acf9a2ef868dff_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3" title="Returns the type of this node. " alt="" coords="180,5,307,47"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_a1c5acc57671c2486a3acf9a2ef868dff_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_a1c5acc57671c2486a3acf9a2ef868dff_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_a1c5acc57671c2486a3acf9a2ef868dff_icgraph" id="classpgrouting_1_1vrp_1_1Tw__node_a1c5acc57671c2486a3acf9a2ef868dff_icgraph">
-<area shape="rect" id="node2" href="namespacepgrouting_1_1vrp.html#aa9c24d8cacf37d936cd899f2afd34780" title="Print the contents of a Twnode object. " alt="" coords="180,5,352,32"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="191,57,341,98"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a5f9af363a4804c1fb16c3af74d21702b"></a>
@@ -3193,16 +2435,7 @@ Here is the caller graph for this function:</div>
 
 <p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">evaluate()</a>, and <a class="el" href="vehicle__node_8cpp_source.html#l00101">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#acf38aa5cd9a368f40d80c66b2e6a5095">m_wait_time</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Vehicle__node_html_acf38aa5cd9a368f40d80c66b2e6a5095"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Vehicle__node.html#acf38aa5cd9a368f40d80c66b2e6a5095">pgrouting::vrp::Vehicle_node::m_wait_time</a></div><div class="ttdeci">double m_wait_time</div><div class="ttdoc">Wait time at this node when early arrival. </div><div class="ttdef"><b>Definition:</b> <a href="vehicle__node_8h_source.html#l00168">vehicle_node.h:168</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Vehicle__node_a5f9af363a4804c1fb16c3af74d21702b_icgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Vehicle__node_a5f9af363a4804c1fb16c3af74d21702b_icgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Vehicle__node_a5f9af363a4804c1fb16c3af74d21702b_icgraph" id="classpgrouting_1_1vrp_1_1Vehicle__node_a5f9af363a4804c1fb16c3af74d21702b_icgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="215,5,367,47"/>
-<area shape="rect" id="node3" href="namespacepgrouting_1_1vrp.html#ae1e6219461754c35aa23e53c6dc3e6bb" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="205,71,377,98"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae32d27ea7a2dfcb283dd104129d402b1"></a>
@@ -3235,23 +2468,7 @@ Here is the caller graph for this function:</div>
 <p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00150">pgrouting::vrp::Tw_node::is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00159">pgrouting::vrp::Tw_node::is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00177">pgrouting::vrp::Tw_node::is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00168">pgrouting::vrp::Tw_node::is_load()</a>, <a class="el" href="tw__node_8cpp_source.html#l00141">pgrouting::vrp::Tw_node::is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00132">pgrouting::vrp::Tw_node::is_start()</a>, <a class="el" href="tw__node_8h_source.html#l00275">pgrouting::vrp::Tw_node::m_closes</a>, <a class="el" href="tw__node_8h_source.html#l00274">pgrouting::vrp::Tw_node::m_opens</a>, <a class="el" href="tw__node_8cpp_source.html#l00272">pgrouting::vrp::Tw_node::operator&lt;&lt;</a>, <a class="el" href="tw__node_8cpp_source.html#l00186">pgrouting::vrp::Tw_node::operator==()</a>, <a class="el" href="tw__node_8cpp_source.html#l00040">pgrouting::vrp::Tw_node::travel_time_to()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00119">pgrouting::vrp::Tw_node::type_str()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a> - <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a>;}</div><div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_acf00cf1c32828c02fab3caeac6e857f5"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">pgrouting::vrp::Tw_node::m_opens</a></div><div class="ttdeci">double m_opens</div><div class="ttdoc">opening time of the node </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00274">tw_node.h:274</a></div></div>
 <div class="ttc" id="classpgrouting_1_1vrp_1_1Tw__node_html_a7fabac7b3b61a57df767711a144aef05"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">pgrouting::vrp::Tw_node::m_closes</a></div><div class="ttdeci">double m_closes</div><div class="ttdoc">closing time of the node </div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00275">tw_node.h:275</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node_ae32d27ea7a2dfcb283dd104129d402b1_cgraph.png" border="0" usemap="#classpgrouting_1_1vrp_1_1Tw__node_ae32d27ea7a2dfcb283dd104129d402b1_cgraph" alt=""/></div>
-<map name="classpgrouting_1_1vrp_1_1Tw__node_ae32d27ea7a2dfcb283dd104129d402b1_cgraph" id="classpgrouting_1_1vrp_1_1Tw__node_ae32d27ea7a2dfcb283dd104129d402b1_cgraph">
-<area shape="rect" id="node2" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76" title="is_delivery " alt="" coords="214,5,341,47"/>
-<area shape="rect" id="node3" href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262" title="is_dump " alt="" coords="214,71,341,112"/>
-<area shape="rect" id="node4" href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e" title="is_end " alt="" coords="214,136,341,177"/>
-<area shape="rect" id="node5" href="classpgrouting_1_1vrp_1_1Tw__node.html#a69aa3b00665b1cc9be2549c7dde0e05f" title="is_Load " alt="" coords="214,201,341,243"/>
-<area shape="rect" id="node6" href="classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b" title="is_pickup " alt="" coords="214,267,341,308"/>
-<area shape="rect" id="node7" href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483" title="@ { " alt="" coords="214,332,341,373"/>
-<area shape="rect" id="node8" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab2f1204fba2644d6c0a0edef5305645f" title="pgrouting::vrp::Tw\l_node::operator==" alt="" coords="213,397,341,439"/>
-<area shape="rect" id="node9" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7e5b1bdfeb746da922a2863bfe7ae718" title="time = distance / speed. " alt="" coords="204,463,351,504"/>
-<area shape="rect" id="node10" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1c5acc57671c2486a3acf9a2ef868dff" title="pgrouting::vrp::Tw\l_node::type_str" alt="" coords="214,528,341,569"/>
-</map>
-</div>
-
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
@@ -3624,7 +2841,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="pd__problem_8h_source.html#l00049">49</a> of file <a class="el" href="pd__problem_8h_source.html">pd_problem.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="fleet_8cpp_source.html#l00179">pgrouting::vrp::Fleet::build_fleet()</a>, <a class="el" href="pd__orders_8cpp_source.html#l00069">pgrouting::vrp::PD_Orders::build_orders()</a>, <a class="el" href="optimize_8cpp_source.html#l00419">pgrouting::vrp::Optimize::delete_empty_truck()</a>, <a class="el" href="pickDeliver__driver_8cpp_source.html#l00047">do_pgr_pickDeliver()</a>, <a class="el" href="pickDeliverEuclidean__driver_8cpp_source.html#l00052">do_pgr_pickDeliverEuclidean()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00260">pgrouting::vrp::Vehicle_pickDeliver::do_while_feasable()</a>, <a class="el" href="initial__solution_8cpp_source.html#l00078">pgrouting::vrp::Initial_solution::do_while_foo()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00127">pgrouting::vrp::Pgr_pickDeliver::get_postgres_result()</a>, <a class="el" href="vehicle_8cpp_source.html#l00135">pgrouting::vrp::Vehicle::get_postgres_result()</a>, <a class="el" href="fleet_8cpp_source.html#l00059">pgrouting::vrp::Fleet::get_truck()</a>, <a class="el" href="optimize_8cpp_source.html#l00067">pgrouting::vrp::Optimize::inter_swap()</a>, <a class="el" href="fleet_8cpp_source.html#l00320">pgrouting::vrp::Fleet::is_fleet_ok()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00052">pgrouting::vrp::Pgr_pickDeliver::nodesOK()</a>, <a class="el" href="initial__solution_8cpp_source.html#l00142">pgrouting::vrp::Initial_solution::one_truck_all_orders()</a>, <a class="el" href="optimize_8cpp_source.html#l00051">pgrouting::vrp::Optimize::Optimize()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00068">pgrouting::vrp::Pgr_pickDeliver::optimize()</a>, <a class="el" href="pd__problem_8cpp_source.html#l00035">pgrouting::vrp::PD_problem::PD_problem()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00163">pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver()</a>, <a class="el" href="optimize_8cpp_source.html#l00713">pgrouting::vrp::Optimize::save_if_best()</a>, <a class="el" href="solution_8cpp_source.html#l00239">pgrouting::vrp::Solution::Solution()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00084">pgrouting::vrp::Pgr_pickDeliver::solve()</a>, <a class="el" href="optimize_8cpp_source.html#l00273">pgrouting::vrp::Optimize::swap_order()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="fleet_8cpp_source.html#l00179">pgrouting::vrp::Fleet::build_fleet()</a>, <a class="el" href="pd__orders_8cpp_source.html#l00069">pgrouting::vrp::PD_Orders::build_orders()</a>, <a class="el" href="optimize_8cpp_source.html#l00420">pgrouting::vrp::Optimize::delete_empty_truck()</a>, <a class="el" href="pickDeliver__driver_8cpp_source.html#l00047">do_pgr_pickDeliver()</a>, <a class="el" href="pickDeliverEuclidean__driver_8cpp_source.html#l00052">do_pgr_pickDeliverEuclidean()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00263">pgrouting::vrp::Vehicle_pickDeliver::do_while_feasable()</a>, <a class="el" href="initial__solution_8cpp_source.html#l00078">pgrouting::vrp::Initial_solution::do_while_foo()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00127">pgrouting::vrp::Pgr_pickDeliver::get_postgres_result()</a>, <a class="el" href="vehicle_8cpp_source.html#l00135">pgrouting::vrp::Vehicle::get_postgres_result()</a>, <a class="el" href="fleet_8cpp_source.html#l00059">pgrouting::vrp::Fleet::get_truck()</a>, <a class="el" href="optimize_8cpp_source.html#l00067">pgrouting::vrp::Optimize::inter_swap()</a>, <a class="el" href="fleet_8cpp_source.html#l00320">pgrouting::vrp::Fleet::is_fleet_ok()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00052">pgrouting::vrp::Pgr_pickDeliver::nodesOK()</a>, <a class="el" href="initial__solution_8cpp_source.html#l00142">pgrouting::vrp::Initial_solution::one_truck_all_orders()</a>, <a class="el" href="optimize_8cpp_source.html#l00051">pgrouting::vrp::Optimize::Optimize()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00068">pgrouting::vrp::Pgr_pickDeliver::optimize()</a>, <a class="el" href="pd__problem_8cpp_source.html#l00035">pgrouting::vrp::PD_problem::PD_problem()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00163">pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver()</a>, <a class="el" href="optimize_8cpp_source.html#l00714">pgrouting::vrp::Optimize::save_if_best()</a>, <a class="el" href="solution_8cpp_source.html#l00239">pgrouting::vrp::Solution::Solution()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00084">pgrouting::vrp::Pgr_pickDeliver::solve()</a>, <a class="el" href="optimize_8cpp_source.html#l00274">pgrouting::vrp::Optimize::swap_order()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
 
 </div>
 </div>
@@ -3664,7 +2881,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1vrp.html">vrp</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1vrp_1_1Vehicle__node.html">Vehicle_node</a></li>
-    <li class="footer">Generated on Wed Aug 14 2019 23:58:47 for PGROUTING by
+    <li class="footer">Generated on Wed May 20 2020 18:58:38 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
