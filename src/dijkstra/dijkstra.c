@@ -183,7 +183,7 @@ process_combinations(
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-    do_pgr_parallel_dijkstra(
+    do_pgr_combinations_dijkstra(
             edges, total_edges,
             combinations, total_combinations,
             directed,
