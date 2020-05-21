@@ -76,7 +76,7 @@ extern "C" {
     //  sql text,
     //  combinations_sql text,
     //  directed boolean default true,
-    void do_pgr_parallel_dijkstra(
+    void do_pgr_combinations_dijkstra(
             pgr_edge_t  *data_edges,
             size_t total_tuples,
             pgr_combination_t  *combinations,
