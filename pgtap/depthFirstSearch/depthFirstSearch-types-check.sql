@@ -2,34 +2,29 @@
 
 SELECT plan(7);
 
-----------------------------------
--- tests for all
--- prefix:  pgr_prim
-----------------------------------
 
-SELECT has_function('pgr_primdfs');
+SELECT has_function('pgr_depthfirstsearch');
 
-SELECT has_function('pgr_primdfs', ARRAY['text','bigint','bigint']);
-SELECT has_function('pgr_primdfs', ARRAY['text','anyarray','bigint']);
-SELECT function_returns('pgr_primdfs', ARRAY['text','bigint','bigint'],  'setof record');
-SELECT function_returns('pgr_primdfs', ARRAY['text','anyarray','bigint'],  'setof record');
+SELECT has_function('pgr_depthfirstsearch', ARRAY['text','bigint','bigint','boolean']);
+SELECT has_function('pgr_depthfirstsearch', ARRAY['text','anyarray','bigint','boolean']);
+SELECT function_returns('pgr_depthfirstsearch', ARRAY['text','bigint','bigint','boolean'],  'setof record');
+SELECT function_returns('pgr_depthfirstsearch', ARRAY['text','anyarray','bigint','boolean'],  'setof record');
 
-
--- pgr_primdfs
+-- pgr_depthfirstsearch
 -- parameter names
 SELECT set_eq(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_primdfs'$$,
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_depthfirstsearch'$$,
     $$VALUES
-        ('{"","","max_depth","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
+        ('{"","","max_depth","directed","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
     $$
 );
 
 -- parameter types
 SELECT set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_primdfs'$$,
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_depthfirstsearch'$$,
     $$VALUES
-        ('{25,20,20,20,20,20,20,20,701,701}'::OID[]),
-        ('{25,2277,20,20,20,20,20,20,701,701}'::OID[])
+        ('{25,20,20,16,20,20,20,20,20,701,701}'::OID[]),
+        ('{25,2277,20,16,20,20,20,20,20,701,701}'::OID[])
     $$
 );
 
