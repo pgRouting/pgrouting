@@ -323,13 +323,13 @@ class Pgr_dijkstra {
         }
 
         for (const auto &start_ends : vertex_map) {
-            auto r_paths = dijkstra(
+        	auto r_paths = dijkstra(
                     graph,
                     start_ends.first, start_ends.second,
                     only_cost, n_goals);
             paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
         }
-
+		vertex_map.clear();
         std::sort(paths.begin(), paths.end(),
                   [](const Path &e1, const Path &e2)->bool {
                       return e1.end_id() < e2.end_id();

@@ -75,18 +75,13 @@ pgr_dijkstra(
 }
 
 
-bool cmp_combination(const pgr_combination_t &a, const pgr_combination_t &b){
-    return (a.source < b.source);
-}
-
 template < class G >
 std::deque< Path >
 pgr_dijkstra(
         G &graph,
-        std::vector < pgr_combination_t > combinations,
+        std::vector < pgr_combination_t > &combinations,
         bool only_cost,
         bool normal) {
-    std::sort(combinations.begin(), combinations.end(), cmp_combination );
 
     pgrouting::Pgr_dijkstra< G > fn_dijkstra;
     auto paths = fn_dijkstra.dijkstra(
@@ -218,7 +213,7 @@ do_pgr_many_to_many_dijkstra(
 // combinations sql text,
 // directed boolean default true,
 void
-do_pgr_parallel_dijkstra(
+do_pgr_combinations_dijkstra(
         pgr_edge_t  *data_edges,
         size_t total_edges,
         pgr_combination_t *combinations,
@@ -248,7 +243,7 @@ do_pgr_parallel_dijkstra(
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
 
-        log << "Inserting vertices into a c++ vector structure";
+        log << "Inserting combinations into a c++ vector structure";
         std::vector<pgr_combination_t>
                 combinations_vector(combinations, combinations + total_combinations);
 
@@ -270,7 +265,7 @@ do_pgr_parallel_dijkstra(
                     combinations_vector,
                     only_cost, normal);
         }
-
+		combinations_vector.clear();
         size_t count(0);
         count = count_tuples(paths);
 
