@@ -30,7 +30,7 @@ a particular depth.
 
 - Works on both Undirected and Directed Graphs.
 - Provides the Depth First Search traversal order from a source node to
-a particular max depth level.
+  a particular max depth level.
 - Depth First Search Running time: :math:`O(E + V)`
 
 Signatures
@@ -73,7 +73,7 @@ Multiple vertices
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: 
+:Example:
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: --q2
