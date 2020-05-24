@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/kargersContraction/kargersContraction_driver.h"
+// #include "drivers/kargersContraction/kargersContraction_driver.h"
 
 #include <string.h>
 #include <sstream>
@@ -35,8 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "kargersContraction/ch_graphs.hpp"
-#include "kargersContraction/pgr_kargersContraction.hpp"
+// #include "kargersContraction/ch_graphs.hpp"
+// #include "kargersContraction/pgr_kargersContraction.hpp"
 
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
@@ -174,7 +174,7 @@ void get_postgres_result(
   directed BOOLEAN DEFAULT true
  ***********************************************************/
 void
-do_pgr_contractGraph(
+do_pgr_kargersContraction(
         pgr_edge_t  *data_edges,
         size_t total_edges,
         int64_t *forbidden_vertices,
