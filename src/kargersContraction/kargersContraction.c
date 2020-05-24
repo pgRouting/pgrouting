@@ -97,7 +97,7 @@ process(char* edges_sql,
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-    do_pgr_contractGraph(
+    do_pgr_kargersContraction(
             edges, total_edges,
             forbidden_vertices, size_forbidden_vertices,
             contraction_order, size_contraction_order,
