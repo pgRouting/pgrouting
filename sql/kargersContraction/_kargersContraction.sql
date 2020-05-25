@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: _contraction.sql
+File: _prim.sql
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2020 Himanshu Raj
-Mail:
+Copyright (c) 2020 Himanshu raj
+Mail: raj.himanshu2@gmail.com
 
 ------
 
@@ -27,30 +27,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---------------------
---------------------
+----------
+----------
 -- contraction
---------------------
---------------------
+----------
+----------
 
-CREATE OR REPLACE FUNCTION _pgr_contraction(
-    edges_sql TEXT,
-    contraction_order BIGINT[],
-    max_cycles INTEGER DEFAULT 1,
-    forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
-    directed BOOLEAN DEFAULT true,
 
-    OUT type TEXT,
-    OUT id BIGINT,
-    OUT contracted_vertices BIGINT[],
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT cost FLOAT)
+----------------
+-- _pgr_kargersContraction
+----------------
+
+
+CREATE OR REPLACE FUNCTION _pgr_kargersContraction(
+    TEXT,             -- Edge sql
+    ANYARRAY,         -- tree root for traversal
+    order_by TEXT,
+    max_depth BIGINT,
+    distance FLOAT,
+
+    OUT seq BIGINT,
+    OUT depth BIGINT,
+    OUT start_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
 
+
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_contraction(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
+
+COMMENT ON FUNCTION _pgr_kargersContraction(TEXT, ANYARRAY, TEXT, BIGINT, FLOAT)
 IS 'pgRouting internal function';

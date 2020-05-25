@@ -37,36 +37,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/contracted_rt.h"
 #include "c_types/pgr_edge_t.h"
+#include "c_types/pgr_mst_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    /*********************************************************
-        edges_sql TEXT,
-        contraction_order BIGINT[],
-        forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
-        max_cycles integer DEFAULT 1,
-        directed BOOLEAN DEFAULT true
-     ********************************************************/
-    void
-        do_pgr_kargersContraction(
-               pgr_edge_t  *data_edges,
-        size_t total_tuples,
-        int64_t *forbidden_vertices,
-        size_t size_forbidden_vertices,
-        int64_t *contraction_order,
-        size_t size_contraction_order,
-        int64_t max_cycles,
-        bool directed,
-        contracted_rt **return_tuples,
-        size_t *return_count,
-        char **log_msg,
-        char **notice_msg,
-        char **err_msg);
+void do_pgr_kargersContraction(
+        pgr_edge_t  *data_edges,
+        size_t total_edges,
 
+        int64_t *rootsArr,
+        size_t size_rootsArr,
+
+        char* fn_suffix,
+
+        int64_t max_depth,
+        double distance,
+
+        pgr_mst_rt **return_tuples,
+        size_t *return_count,
+
+        char ** log_msg,
+        char ** notice_msg,
+        char ** err_msg);
 
 #ifdef __cplusplus
 }

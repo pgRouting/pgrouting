@@ -1,13 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: contraction.sql
+File: kargersContraction.sql
 
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-Function's developer:
-Copyright (c) 2020 Himanshu Raj
-Mail:
+Copyright (c) 2018 Vicky Vergara
+Mail: vicky at georepublic dot de
 
 ------
 
@@ -27,49 +22,96 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---------------------
---------------------
--- kargersContraction
---------------------
---------------------
-
---------------------
+-----------------
 -- pgr_kargersContraction
---------------------
---
---
--- CREATE OR REPLACE FUNCTION pgr_kargersContraction(
---     TEXT,     -- edges_sql (required)
---     BIGINT[], -- contraction_order (required)
---
---     max_cycles INTEGER DEFAULT 1,
---     forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
---     directed BOOLEAN DEFAULT true,
---
---     OUT type TEXT,
---     OUT id BIGINT,
---     OUT contracted_vertices BIGINT[],
---     OUT source BIGINT,
---     OUT target BIGINT,
---     OUT cost FLOAT)
--- RETURNS SETOF RECORD AS
--- $BODY$
---     SELECT *
---     FROM _pgr_kargersContraction(_pgr_get_statement($1), $2::BIGINT[],  $3, $4, $5);
--- $BODY$
--- LANGUAGE SQL VOLATILE STRICT;
---
--- -- COMMENTS
---
--- COMMENT ON FUNCTION pgr_kargersContraction(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
--- IS 'pgr_kargersContraction
--- - Parameters:
---     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
---     - ARRAY [Contraction order]
--- - Optional Parameters
---     - max_cycles := 1
---     - forbidden_vertices := ARRAY[]::BIGINT[]
---     - directed := true
--- - Documentation:
---     - ${PGROUTING_DOC_LINK}/pgr_kargersContraction.html
--- ';
+-----------------
+
+
+-- SINGLE VERTEX
+CREATE OR REPLACE FUNCTION pgr_kargersContraction(
+    TEXT,   -- Edge sql
+    BIGINT, -- root vertex
+
+    max_depth BIGINT DEFAULT 9223372036854775807,
+
+    OUT seq BIGINT,
+    OUT depth BIGINT,
+    OUT start_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''max_depth'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+
+    RETURN QUERY
+    SELECT *
+    FROM _pgr_kargersContraction(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', $3, -1);
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+
+
+-- MULTIPLE VERTICES
+CREATE OR REPLACE FUNCTION pgr_kargersContraction(
+    TEXT,     -- Edge sql
+    ANYARRAY, -- root vertices
+
+    max_depth BIGINT DEFAULT 9223372036854775807,
+
+    OUT seq BIGINT,
+    OUT depth BIGINT,
+    OUT start_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+    IF $3 < 0 THEN
+        RAISE EXCEPTION 'Negative value found on ''max_depth'''
+        USING HINT = format('Value found: %s', $3);
+    END IF;
+
+
+    RETURN QUERY
+    SELECT *
+    FROM _pgr_kargersContraction(_pgr_get_statement($1), $2, 'DFS', $3, -1);
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION pgr_kargersContraction(TEXT, BIGINT, BIGINT)
+IS 'pgr_kargersContraction(Single Vertex)
+- Undirected graph
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From root vertex identifier
+- Optional parameters
+    - max_depth := 9223372036854775807
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_kargersContraction.html
+';
+
+COMMENT ON FUNCTION pgr_kargersContraction(TEXT, ANYARRAY, BIGINT)
+IS 'pgr_kargersContraction(Multiple Vertices)
+- Undirected graph
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - From ARRAY[root vertices identifiers]
+- Optional parameters
+    - max_depth := 9223372036854775807
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_kargersContraction.html
+';
