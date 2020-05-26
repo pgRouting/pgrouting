@@ -9,6 +9,10 @@ Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
+Copyright (c) 2020 The combinations_sql signature is added by Mahmoud SAKR
+and Esteban ZIMANYI
+mail: m_attia_sakr@yahoo.com, estebanzimanyi@gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify
