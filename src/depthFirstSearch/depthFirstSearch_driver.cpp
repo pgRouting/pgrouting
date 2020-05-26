@@ -39,6 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "spanningTree/pgr_prim.hpp"
 #include "spanningTree/details.hpp"
 
+#include "depthFirstSearch/pgr_depthFirstSearch.hpp"
+
 
 // TODO(krashish8): Use the data_edges, max_depth and directed parameter below.
 void
