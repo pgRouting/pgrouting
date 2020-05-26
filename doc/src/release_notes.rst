@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_3_1_0`
 * :ref:`changelog_3_0_1`
 * :ref:`changelog_3_0_0`
 * :ref:`changelog_2_6_3`
@@ -47,6 +48,13 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_1_x`
 
 .. changelog end
+
+.. _changelog_3_1_0:
+
+pgRouting 3.1.0 Release Notes
+-------------------------------------------------------------------------------
+
+** No changes yet **
 
 .. _changelog_3_0_1:
 

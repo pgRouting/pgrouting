@@ -33,9 +33,9 @@ include(pgr/BuildType)
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING VERSION 3.0.1
+project(PGROUTING VERSION 3.1.0
     LANGUAGES C CXX )
-set(PGROUTING_VERSION_DEV "")
+set(PGROUTING_VERSION_DEV "-dev")
 
 include(pgr/GitInfo)
 
