@@ -40,8 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/spanningTree/mst_common.h"
 #include "drivers/kargersContraction/kargersContraction_driver.h"
 
-PGDLLEXPORT Datum _pgr_kargersContraction(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_kargersContraction);
+PGDLLEXPORT Datum _pgr_kargerscontraction(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_kargerscontraction);
 
 
 static
@@ -113,7 +113,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PGDLLEXPORT Datum _pgr_kargersContraction(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_kargerscontraction(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
