@@ -1,8 +1,14 @@
 /*PGR-GNU*****************************************************************
 File: pgr_combination_t.h
 
-Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2020 Mahmoud SAKR and Esteban ZIMANYI
+mail: m_attia_sakr@yahoo.com, estebanzimanyi@gmail.com
 
 ------
 
