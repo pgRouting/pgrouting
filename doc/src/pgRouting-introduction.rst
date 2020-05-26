@@ -53,9 +53,11 @@ Cayetano Benavent,
 Gudesa Venkata Sai Akhil,
 Hang Wu,
 Maoguang Wang, Martha Vergara,
+Mahmoud SAKR, Esteban Zimanyi
 Regina Obe, Rohith Reddy,
 Sourabh Garg,
 Virginia Vergara
+
 
 And all the people that give us a little of their time making comments, finding issues, making pull requests etc.
 in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer.
@@ -87,6 +89,7 @@ Gerald Fenoy, Gudesa Venkata Sai Akhil,
 Hang Wu,
 Jay Mahadeokar, Jinfu Leng,
 Kai Behncke, Kishore Kumar, Ko Nagase,
+Mahmoud SAKR, Esteban Zimanyi
 Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mukul Priya,
 Razequl Islam,
 Regina Obe, Rohith Reddy,
