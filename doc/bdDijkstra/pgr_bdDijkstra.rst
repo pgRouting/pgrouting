@@ -19,6 +19,11 @@ pgr_bdDijkstra
 
 .. rubric:: Availability:
 
+* Version 3.1.?
+
+  * New **Proposed** functions:
+    * pgr_bdDijkstra(combinations sql)
+
 * Version 3.0.0
 
   * **Official** function
@@ -75,6 +80,7 @@ Signatures
     pgr_bdDijkstra(edges_sql, start_vid,  end_vids [, directed])
     pgr_bdDijkstra(edges_sql, start_vids, end_vid  [, directed])
     pgr_bdDijkstra(edges_sql, start_vids, end_vids [, directed])
+    pgr_bdDijkstra(edges_sql, combinations_sql [, directed])
 
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
