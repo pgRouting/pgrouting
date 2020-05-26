@@ -197,3 +197,27 @@ INSERT INTO orders
 
 
 --ORDERS TABLE END
+
+--COMBINATIONS CREATE start
+CREATE TABLE combinations_table (
+    source BIGINT,
+    target BIGINT
+);
+
+INSERT INTO combinations_table (
+    source, target) VALUES
+(1, 2),
+(1, 17),
+(2, 12),
+(2, 4),
+(6, 13),
+(13, 6),
+(10, 4),
+(4, 10),
+(15, 4),
+(6, 11),
+(11,6),
+(9, 12),
+(12, 9),
+(7, 17);
+--COMBINATIONS CREATE end

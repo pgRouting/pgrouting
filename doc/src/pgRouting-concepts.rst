@@ -365,6 +365,25 @@ Where:
 
 .. points_sql_end
 
+Description of the combinations_sql query for dijkstra like functions
+...............................................................................
+
+.. basic_combinations_sql_start
+
+================= =================== ======== =================================================
+Column            Type                 Default  Description
+================= =================== ======== =================================================
+**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
+
+================= =================== ======== =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+
+.. basic_combinations_sql_end
+
 
 .. _return_values:
 
@@ -427,6 +446,7 @@ Column         Type       Description
 
                           * `Many to One`_
                           * `Many to Many`_
+                          * `Combinations Query`_
 
 
 **end_vid**    ``BIGINT`` Identifier of the ending vertex.
@@ -434,6 +454,7 @@ Column         Type       Description
 
                           * `One to Many`_
                           * `Many to Many`_
+                          * `Combinations Query`_
 
 **node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
 **edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
