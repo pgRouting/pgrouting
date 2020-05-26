@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 
 -- ONE to ONE
-CREATE OR REPLACE FUNCTION pgr_funnyDijkstra(
+CREATE OR REPLACE FUNCTION pgr_funnydijkstra(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid (required)
     BIGINT, -- to_vid (required)
@@ -53,7 +53,7 @@ ROWS 1000;
 
 
 -- ONE to MANY
-CREATE OR REPLACE FUNCTION pgr_funnyDijkstra(
+CREATE OR REPLACE FUNCTION pgr_funnydijkstra(
     TEXT,     -- edges_sql (required)
     BIGINT,   -- from_vid (required)
     ANYARRAY, -- to_vids (required)
@@ -78,7 +78,7 @@ ROWS 1000;
 
 
 -- MANY to ONE
-CREATE OR REPLACE FUNCTION pgr_funnyDijkstra(
+CREATE OR REPLACE FUNCTION pgr_funnydijkstra(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     BIGINT,   -- to_vid (required)
@@ -103,7 +103,7 @@ ROWS 1000;
 
 
 -- MANY to MANY
-CREATE OR REPLACE FUNCTION pgr_funnyDijkstra(
+CREATE OR REPLACE FUNCTION pgr_funnydijkstra(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     ANYARRAY, -- to_vids (required)
