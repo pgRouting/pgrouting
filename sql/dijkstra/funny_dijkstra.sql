@@ -129,8 +129,8 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_funnyDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
-IS 'pgr_funnyDijkstra(One to One)
+COMMENT ON FUNCTION pgr_funnydijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
+IS 'pgr_funnydijkstra(One to One)
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From vertex identifier
@@ -138,11 +138,11 @@ IS 'pgr_funnyDijkstra(One to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_funnyDijkstra.html
+   - ${PGROUTING_DOC_LINK}/pgr_funnydijkstra.html
 ';
 
-COMMENT ON FUNCTION pgr_funnyDijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN)
-IS 'pgr_funnyDijkstra(One to Many)
+COMMENT ON FUNCTION pgr_funnydijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN)
+IS 'pgr_funnydijkstra(One to Many)
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From vertex identifier
@@ -150,11 +150,11 @@ IS 'pgr_funnyDijkstra(One to Many)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_funnyDijkstra.html
+   - ${PGROUTING_DOC_LINK}/pgr_funnydijkstra.html
 ';
 
-COMMENT ON FUNCTION pgr_funnyDijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN)
-IS 'pgr_funnyDijkstra(Many to One)
+COMMENT ON FUNCTION pgr_funnydijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN)
+IS 'pgr_funnydijkstra(Many to One)
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
@@ -162,11 +162,11 @@ IS 'pgr_funnyDijkstra(Many to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_funnyDijkstra.html
+   - ${PGROUTING_DOC_LINK}/pgr_funnydijkstra.html
 ';
 
-COMMENT ON FUNCTION pgr_funnyDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
-IS 'pgr_funnyDijkstra(Many to Many)
+COMMENT ON FUNCTION pgr_funnydijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgr_funnydijkstra(Many to Many)
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
