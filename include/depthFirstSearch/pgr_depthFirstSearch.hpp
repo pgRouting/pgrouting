@@ -26,12 +26,80 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
+#include <visitors/dfs_visitor_with_root.hpp>
+#include <boost/graph/depth_first_search.hpp>
+
+#include <vector>
+
+#include "cpp_common/pgr_base_graph.hpp"
+
 namespace pgrouting {
 namespace functions {
 
 template <class G>
 class Pgr_depthFirstSearch {
+ public:
+    typedef typename G::V V;
+    typedef typename G::E E;
 
+    // TODO(ashish): Use both boost::depth_first_search and boost::undirected_dfs below,
+    //               for directed and undirected graphs.
+
+    std::vector<pgr_mst_rt> depthFirstSearch(
+            G &graph,
+            std::vector<int64_t> root_vertex,
+            int64_t depth) {
+
+        std::vector<pgr_mst_rt> results;
+
+        for (auto root : root_vertex) {
+            std::vector<E> visited_order;
+            using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
+
+            if (graph.has_vertex(root)) {
+                boost::depth_first_search(graph.graph,
+                                         visitor(dfs_visitor(graph.get_V(root), visited_order))
+                                         .root_vertex(graph.get_V(root)));
+                auto result = get_results(visited_order, root, graph);
+                results.insert(results.end(), result.begin(), result.end());
+            }
+        }
+
+        return results;
+    }
+
+ private:
+    template <typename T>
+    std::vector<pgr_mst_rt> get_results(
+            T order,
+            int64_t source,
+            int64_t max_depth,
+            const G &graph) {
+        std::vector<pgr_mst_rt> results;
+
+        std::vector<double> agg_cost(graph.num_vertices(), 0);
+        std::vector<int64_t> depth(graph.num_vertices(), 0);
+
+        for (const auto edge : order) {
+            auto u = graph.source(edge);
+            auto v = graph.target(edge);
+
+            agg_cost[v] = agg_cost[u] + graph[edge].cost;
+            depth[v] = depth[u] + 1;
+
+            if (max_depth >= depth[v]) {
+                results.push_back({
+                    source,
+                        depth[v],
+                        graph[v].id,
+                        graph[edge].id,
+                        graph[edge].cost,
+                        agg_cost[v]
+                });
+            }
+        }
+        return results;
+    }
 };
 }  // namespace functions
 }  // namespace pgrouting
