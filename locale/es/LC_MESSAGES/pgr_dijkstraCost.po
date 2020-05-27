@@ -1,0 +1,532 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:57+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:11
+msgid "pgr_dijkstraCost"
+msgstr "pgr_dijkstraCost"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:13
+msgid "``pgr_dijkstraCost``"
+msgstr "``pgr_dijkstraCost``"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:15
+msgid ""
+"Using Dijkstra algorithm implemented by Boost.Graph, and extract only the "
+"aggregate cost of the shortest path(s) found, for the combination of "
+"vertices given."
+msgstr ""
+"Usando el algoritmo Dijkstra implementado por Boost.Graph, extraiga solo el "
+"costo agregado de la(s) ruta(s) más corta(s) encontrada(s), para la "
+"combinación de vértices dada."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:21
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:24
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:25
+msgid "Version 2.2.0"
+msgstr "Version 2.2.0"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:27
+msgid "New **Official** function"
+msgstr "Nueva función **Oficial**"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:29
+msgid ""
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_dijkstraCost.html>`__) `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__"
+msgstr ""
+"**Versiones soportadas:** actual(`3.0 "
+"<https://docs.pgrouting.org/dev/en/pgr_dijkstraCost.html>`__) `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:33
+msgid ""
+"**Unsupported versions:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
+"dijkstraCost>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
+"dijkstraCost>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
+"dijkstraCost>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
+"dijkstraCost>`__"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_dijkstra.rst:4
+#: ../../build/doc/pgr_dijkstraCost.rst:41
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:43
+msgid ""
+"The ``pgr_dijkstraCost`` algorithm, is a good choice to calculate the sum of"
+" the costs of the shortest path for a subset of pairs of nodes of the graph."
+" We make use of the Boost's implementation of dijkstra which runs in "
+":math:`O(V \\log V + E)` time."
+msgstr ""
+"El algoritmo ``pgr_dijkstraCost`` es una buena opción para calcular la suma "
+"de los costos de la ruta más corta para un subconjunto de pares de nodos del"
+" grafo. Hacemos uso de la implementación de dijkstra del Boost cuyo tiempo "
+"de ejecución es :math:`O(V \\log V + E)`"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:78
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:49
+msgid "It does not return a path."
+msgstr "No devuelve una ruta."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:50
+msgid ""
+"Returns the sum of the costs of the shortest path for pair combination of "
+"nodes in the graph."
+msgstr ""
+"Devuelve la suma de los costos de la ruta más corta para la combinación de "
+"pares de nodos en el grafo."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:51
+msgid "Process is done only on edges with positive costs."
+msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:52
+msgid "Values are returned when there is a path."
+msgstr "Valores son regresados cuando hay un camino."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:54
+msgid ""
+"The returned values are in the form of a set of `(start_vid, end_vid, "
+"agg_cost)`."
+msgstr ""
+"Los valores devueltos tienen la forma de un conjunto de `(start_vid, "
+"end_vid, agg_cost)`."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:56
+msgid ""
+"When the starting vertex and ending vertex are the same, there is no path."
+msgstr ""
+"Cuando el vértice inicial y el vértice final son iguales, no hay camino."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:58
+msgid "The `agg_cost` int the non included values `(v, v)` is `0`"
+msgstr "El `agg_cost` en los valores no incluidos `(v, v)` es `0`"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:60
+msgid ""
+"When the starting vertex and ending vertex are the different and there is no"
+" path."
+msgstr ""
+"Cuando el vértice inicial y el vértice final son diferentes y no hay ninguna"
+" ruta."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:62
+msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`"
+msgstr "El `agg_cost` en los valores no incluidos `(u, v)` es :math:`\\infty`"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:64
+msgid ""
+"Let be the case the values returned are stored in a table, so the unique "
+"index would be the pair: `(start_vid, end_vid)`."
+msgstr ""
+"Sea el caso, los valores devueltos se almacenan en una tabla, por lo que el "
+"índice único sería el par: '(start_vid, end_vid)'."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:67
+msgid "For undirected graphs, the results are symmetric."
+msgstr "Para grafos no dirigidos, los resultados son simétricos."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:69
+msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
+msgstr "El  `agg_cost` de `(u, v)`  es el mismo que para `(v, u)`."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:71
+msgid "Any duplicated value in the `start_vids` or `end_vids` is ignored."
+msgstr "Se omite cualquier valor duplicado en `start_vids` o `end_vids`."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:73
+msgid "The returned values are ordered:"
+msgstr "Los valores regresados se ordenan:"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:75
+msgid "`start_vid` ascending"
+msgstr "`start_vid` ascendente"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:76
+msgid "`end_vid` ascending"
+msgstr "`end_vid` ascendente"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:78
+msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
+msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * (V \\log V + E))`"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:81
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:84
+msgid "Summary"
+msgstr "Resumen"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:95
+msgid "Using defaults"
+msgstr "Uso de valores predeterminados"
+
+#: ../../build/doc/pgr_dijkstraCost.rst
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:102
+msgid "From vertex :math:`2` to vertex  :math:`3` on a **directed** graph"
+msgstr "Del vértice :math:`2` al vértice :math:`3` en un grafo **dirigido**"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:112
+msgid "One to One"
+msgstr "Uno a Uno"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:120
+msgid "From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph"
+msgstr ""
+"Del vértice :math:`2` al vértice :math:`3` en un grafo **no dirigido**"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:130
+msgid "One to Many"
+msgstr "Uno a Muchos"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:138
+msgid ""
+"From vertex :math:`2` to vertices :math:`\\{3, 11\\}` on a **directed** "
+"graph"
+msgstr ""
+"Del vértice :math:`2` a los vértices :math:`\\{3, 11\\}` en un grafo "
+"**dirigido**"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:148
+msgid "Many to One"
+msgstr "Muchos a Uno"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:156
+msgid ""
+"From vertices :math:`\\{2, 7\\}` to vertex :math:`3` on a **directed** graph"
+msgstr ""
+"De los vértices :math:`\\{2, 7\\}` al vértice :math:`3`  en un grafo "
+"**dirigido**"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:166
+msgid "Many to Many"
+msgstr "Muchos a Muchos"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:174
+msgid ""
+"From vertices :math:`\\{2, 7\\}` to vertices :math:`\\{3, 11\\}` on a "
+"**directed** graph"
+msgstr ""
+"De los vértice​s :math:`\\{2, 7\\}` a los vértice​s :math:`\\{3, 11\\}` en "
+"un grafo **dirigido**"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:181
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/pgr_dijkstra.rst:4
+msgid "Parameter"
+msgstr "Parámetro"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_dijkstra.rst:4
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_dijkstra.rst:4
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/pgr_dijkstra.rst:6
+msgid "**edges_sql**"
+msgstr "**edges_sql**"
+
+#: ../../build/doc/pgr_dijkstra.rst:6
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/pgr_dijkstra.rst:6
+msgid "Inner SQL query as described below."
+msgstr "Consulta SQL interna como se describe a continuación."
+
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_dijkstra.rst:7
+msgid "**start_vid**"
+msgstr "**start_vid**"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
+#: ../../build/doc/pgr_dijkstra.rst:9
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../build/doc/pgr_dijkstra.rst:7
+msgid "Identifier of the starting vertex of the path."
+msgstr "Identificador del vértice inicial de la ruta."
+
+#: ../../build/doc/pgr_dijkstra.rst:8
+msgid "**start_vids**"
+msgstr "**start_vids**"
+
+#: ../../build/doc/pgr_dijkstra.rst:8 ../../build/doc/pgr_dijkstra.rst:10
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+#: ../../build/doc/pgr_dijkstra.rst:8
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:9
+msgid "**end_vid**"
+msgstr "**end_vid**"
+
+#: ../../build/doc/pgr_dijkstra.rst:9
+msgid "Identifier of the ending vertex of the path."
+msgstr "Identificador del vértice final de la ruta."
+
+#: ../../build/doc/pgr_dijkstra.rst:10
+msgid "**end_vids**"
+msgstr "**end_vids**"
+
+#: ../../build/doc/pgr_dijkstra.rst:10
+msgid "Array of identifiers of ending vertices."
+msgstr "Arreglo de identificadores de vértices finales."
+
+#: ../../build/doc/pgr_dijkstra.rst:11
+msgid "**directed**"
+msgstr "**dirigido**"
+
+#: ../../build/doc/pgr_dijkstra.rst:11
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+#: ../../build/doc/pgr_dijkstra.rst:11
+msgid "``true``"
+msgstr "``true``"
+
+#: ../../build/doc/pgr_dijkstra.rst:11
+msgid "When ``true`` Graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+#: ../../build/doc/pgr_dijkstra.rst:12
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:188
+msgid "Inner query"
+msgstr "Consulta interna"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "**id**"
+msgstr "**id**"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "``ANY-INTEGER``"
+msgstr "``ANY-INTEGER``"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "**source**"
+msgstr "**origen**"
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "**target**"
+msgstr "**objetivo**"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "**cost**"
+msgstr "**cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``ANY-NUMERICAL``"
+msgstr "``ANY-NUMERICAL``"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Weight of the edge  `(source, target)`"
+msgstr "Peso de la arista `(source, target)`"
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**reverse_cost**"
+msgstr "**reverse_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "-1"
+msgstr "-1"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Weight of the edge `(target, source)`,"
+msgstr "Peso de la arista `(target, source)`,"
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Where:"
+msgstr "Donde:"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-INTEGER"
+msgstr "ANY-INTEGER"
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
+msgstr "ANY-NUMERICAL"
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:195
+msgid "Return Columns"
+msgstr "Columnas de Devoluciones"
+
+#: ../../build/doc/pgRouting-concepts.rst:3
+msgid "Returns SET OF ``(start_vid, end_vid, agg_cost)``"
+msgstr "Devuelve SET OF ``(start_vid, end_vid, agg_cost)``"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid ""
+"Identifier of the starting vertex. Used when multiple starting vetrices are "
+"in the query."
+msgstr ""
+"Identificador del vértice inicial. Se utiliza cuando hay varias vetrices "
+"iniciales en la consulta."
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid ""
+"Identifier of the ending vertex. Used when multiple ending vertices are in "
+"the query."
+msgstr ""
+"Identificador del vértice final. Se utiliza cuando hay varios vértices "
+"finales en la consulta."
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "**agg_cost**"
+msgstr "**agg_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
+msgstr "Coste agregado de ``start_vid`` a ``end_vid``."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:203
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+#: ../../build/doc/pgr_dijkstraCost.rst
+msgid "Example 1"
+msgstr "Ejemplo 1"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:205
+msgid "Demonstration of repeated values are ignored, and result is sorted."
+msgstr ""
+"La demostración de valores repetidos se omite y el resultado se ordena."
+
+#: ../../build/doc/pgr_dijkstraCost.rst
+msgid "Example 2"
+msgstr "Ejemplo 2"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:211
+msgid "Making `start_vids` the same as `end_vids`"
+msgstr "Haciendo `start_vids` igual que `end_vids`"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:218
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:220
+#, python-format
+msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+msgstr "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:221
+msgid ":doc:`sampledata` network."
+msgstr "Red :doc:`sampledata` ."
+
+#: ../../build/doc/pgr_dijkstraCost.rst:224
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:225
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_dijkstraCost.rst:226
+msgid ":ref:`search`"
+msgstr ":ref:`search`"

@@ -77,7 +77,7 @@ Signatures
     :end-before: -- q0
 
 .. index::
-    single: dijkstraVia(Full signature) - proposed
+    single: dijkstraVia - Proposed
 
 Complete Signature
 ...............................................................................

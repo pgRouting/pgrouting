@@ -17,7 +17,6 @@ if (BUILD_DOXY AND WITH_DOC)
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             COMMENT "Generating API documentation with Doxygen" VERBATIM
             )
-        message(".....OK")
     endif()
 
 endif()

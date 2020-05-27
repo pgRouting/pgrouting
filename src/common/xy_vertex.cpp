@@ -23,12 +23,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "cpp_common/xy_vertex.h"
+#if BOOST_Geometry_VERSION_OK
+#include <boost/geometry/io/wkt/write.hpp>
+#else
+#include <boost/bgeometry/io/wkt/write.hpp>
+#endif
 
 #include <vector>
 #include <algorithm>
 
 #include "cpp_common/pgr_assert.h"
 
+namespace {
+
+template<typename T>
+typename std::enable_if<!std::numeric_limits<T>::is_integer, bool>::type
+    almost_equal(T x, T y, int ulp) {
+    // the machine epsilon has to be scaled to the magnitude of the values used
+    // and multiplied by the desired precision in ULPs (units in the last place)
+    return std::abs(x-y) <= std::numeric_limits<T>::epsilon() * std::abs(x+y) * ulp
+        // unless the result is subnormal
+        || std::abs(x-y) < std::numeric_limits<T>::min();
+}
+
+}
 
 namespace pgrouting {
 
@@ -41,7 +59,8 @@ std::ostream& operator<<(std::ostream& log, const XY_vertex &v) {
 bool
 XY_vertex::operator==(const XY_vertex &rhs) const {
     if (&rhs == this) return true;
-    return this->id == rhs.id && boost::geometry::equals(point, rhs.point);
+    return this->id == rhs.id &&
+        almost_equal(point.x(), rhs.point.x(), 2) && almost_equal(point.y(), rhs.point.y(), 2);
 }
 
 

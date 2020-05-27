@@ -31,10 +31,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum pgr_version(PG_FUNCTION_ARGS);
 
 PG_FUNCTION_INFO_V1(pgr_version);
-PGDLLEXPORT Datum pgr_version(PG_FUNCTION_ARGS)
-{
+PGDLLEXPORT Datum pgr_version(PG_FUNCTION_ARGS) {
     UNUSED(fcinfo);
-	char *ver = PGROUTING_VERSION;
-	text *result = cstring_to_text(ver);
-	PG_RETURN_TEXT_P(result);
+    char *ver = PGROUTING_VERSION;
+    text *result = cstring_to_text(ver);
+    PG_RETURN_TEXT_P(result);
 }

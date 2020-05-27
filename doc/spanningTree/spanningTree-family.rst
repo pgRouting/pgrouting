@@ -7,7 +7,7 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-Spanning Tree - Families
+Spanning Tree - Category
 ===============================================================================
 
 

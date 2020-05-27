@@ -36,7 +36,7 @@ dijkstra_sql TEXT;
 astar_sql TEXT;
 result_columns TEXT;
 BEGIN
-    result_columns := ' seq, path_seq, cost::TEXT, agg_cost::TEXT ';
+    result_columns := ' seq, path_seq, round(cost::numeric,8) AS cost, round(agg_cost::numeric,8) AS agg_cost ';
 
     FOR i IN 1.. cant BY 2 LOOP
         FOR j IN 1.. cant LOOP

@@ -106,9 +106,14 @@ endforeach()
 foreach(lang ${PGROUTING_SUPPORTED_LANGUAGES})
     string(TOUPPER ${lang} opt)
     if (${opt} OR WITH_ALL_LANG)
+        set (langFound  "1")
         list(APPEND PGROUTING_BUILD_LANGUAGES ${lang})
     endif()
 endforeach()
+
+if (langFound)
+    set(PGROUTING_ENGLISH "")
+endif()
 
 #---------------------------------------------
 # All languages po files are to be generated

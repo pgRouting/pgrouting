@@ -24,7 +24,11 @@ We also provide a function to node an unoded network.
 
 .. topology_index_end
 
-.. rubric:: Proposed
+.. rubric:: Experimental
+
+.. include:: experimental.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 .. topology_proposed_start
 

@@ -128,13 +128,13 @@ BEGIN
     select * INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1, fnName);
 
 
-    err = sourcetype not in('INTEGER','smallint','bigint');
+    err = sourcetype not in('integer','smallint','bigint');
     perform _pgr_onError(err, 2, fnName,
-        'Wrong type of Column source: '|| sourcename, ' Expected type of '|| sourcename || ' is INTEGER,smallint or bigint but '||sourcetype||' was found');
+        'Wrong type of Column source: '|| sourcename, ' Expected type of '|| sourcename || ' is integer, smallint or bigint but '||sourcetype||' was found');
 
-    err = targettype not in('INTEGER','smallint','bigint');
+    err = targettype not in('integer','smallint','bigint');
     perform _pgr_onError(err, 2, fnName,
-        'Wrong type of Column target: '|| targetname, ' Expected type of '|| targetname || ' is INTEGER,smallint or biginti but '||targettype||' was found');
+        'Wrong type of Column target: '|| targetname, ' Expected type of '|| targetname || ' is integer, smallint or bigint but '||targettype||' was found');
 
   RAISE DEBUG '-->Column types:OK';
 

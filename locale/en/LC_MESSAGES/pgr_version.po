@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-25 09:56-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,71 +129,4 @@ msgstr ""
 #: ../../build/doc/pgr_version.rst:78
 msgid ":ref:`search`"
 msgstr ""
-
-#~ msgid "New in version 2.0.0"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_version.html>`__) `2.6"
-#~ " <https://docs.pgrouting.org/2.6/en/pgr_version.html>`__ `2.5"
-#~ " <https://docs.pgrouting.org/2.5/en/pgr_version.html>`__ `2.4"
-#~ " <https://docs.pgrouting.org/2.4/en/pgr_version.html>`__"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "**Unsupported versions:** `2.3 "
-#~ "<https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_version.html>`__"
-#~ " `2.2 "
-#~ "<https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_version.html>`__"
-#~ " `2.1 "
-#~ "<https://docs.pgrouting.org/2.1/en/src/common/doc/utilities/version.html>`__"
-#~ " `2.0 "
-#~ "<https://docs.pgrouting.org/2.0/en/src/common/doc/utilities/version.html>`__"
-#~ msgstr ""
-
-#~ msgid "Returns a table with pgRouting version information."
-#~ msgstr ""
-
-#~ msgid "Returns a table with:"
-#~ msgstr ""
-
-#~ msgid "Column"
-#~ msgstr ""
-
-#~ msgid "**version**"
-#~ msgstr ""
-
-#~ msgid "``varchar``"
-#~ msgstr ""
-
-#~ msgid "**tag**"
-#~ msgstr ""
-
-#~ msgid "Git tag of pgRouting build"
-#~ msgstr ""
-
-#~ msgid "**hash**"
-#~ msgstr ""
-
-#~ msgid "Git hash of pgRouting build"
-#~ msgstr ""
-
-#~ msgid "**branch**"
-#~ msgstr ""
-
-#~ msgid "Git branch of pgRouting build"
-#~ msgstr ""
-
-#~ msgid "**boost**"
-#~ msgstr ""
-
-#~ msgid "Boost version"
-#~ msgstr ""
-
-#~ msgid "Additional Examples"
-#~ msgstr ""
-
-#~ msgid "Query for the version string"
-#~ msgstr ""
 

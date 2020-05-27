@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-18 11:26-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -352,43 +352,4 @@ msgstr ""
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:141
 msgid ":ref:`search`"
 msgstr ""
-
-#~ msgid "Official on v3.0.0"
-#~ msgstr ""
-
-#~ msgid "Renamed on v2.5.0"
-#~ msgstr ""
-
-#~ msgid "Experimental on v2.3.0"
-#~ msgstr ""
-
-#~ msgid "pgr_maximumCardinalityMatching"
-#~ msgstr ""
-
-#~ msgid "http://www.boost.org/libs/graph/doc/maximum_matching.html"
-#~ msgstr ""
-
-#~ msgid "Summary"
-#~ msgstr ""
-
-#~ msgid "Using defaults"
-#~ msgstr ""
-
-#~ msgid "For a **directed** graph"
-#~ msgstr ""
-
-#~ msgid "Complete signature"
-#~ msgstr ""
-
-#~ msgid "edges_sql"
-#~ msgstr ""
-
-#~ msgid "A positive value represents the existence of the edge (source, target)."
-#~ msgstr ""
-
-#~ msgid "A positive value represents the existence of the edge (target, source)."
-#~ msgstr ""
-
-#~ msgid "Identifier of the edge in the original query(edges_sql)."
-#~ msgstr ""
 

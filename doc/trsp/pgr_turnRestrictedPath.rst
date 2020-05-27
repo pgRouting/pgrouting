@@ -12,7 +12,7 @@ pgr_turnRestrictedPath - Experimental
 
 ``pgr_turnRestrictedPath``
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 

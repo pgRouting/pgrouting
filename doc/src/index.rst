@@ -52,28 +52,14 @@ Pgrouting Concepts
 
 .. rubric:: Reference
 
-:doc:`pgr_version` - Get pgRouting's version information.
-:doc:`pgr_full_version` - Get pgRouting's details of version.
+* :doc:`pgr_version` - Get pgRouting's version information.
+* :doc:`pgr_full_version` - Get pgRouting's details of version.
 
 .. toctree::
    :hidden:
 
    pgr_version
    pgr_full_version
-
-
-
-:doc:`topology-functions`
-===============================================================================
-
-.. include:: topology-functions.rst
-   :start-after: topology_index_start
-   :end-before: topology_index_end
-
-.. toctree::
-   :hidden:
-
-   topology-functions
 
 
 :doc:`routingFunctions`
@@ -90,17 +76,17 @@ Pgrouting Concepts
    :end-before: to-here
 
 
-
 Available Functions but not official pgRouting functions
 ===============================================================================
 
-- :ref:`stable`
-- :ref:`proposed`
+* :doc:`proposed`
+* :doc:`experimental`
 
 .. toctree::
     :hidden:
 
     proposed
+    experimental
 
 
 

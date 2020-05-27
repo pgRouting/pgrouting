@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -385,22 +385,4 @@ msgstr ""
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:134
 msgid ":ref:`search`"
 msgstr ""
-
-#~ msgid "Official on v3.0.0"
-#~ msgstr ""
-
-#~ msgid "Proposed on v2.5.0"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_bdDijkstraCostMatrix.html>`__)"
-#~ " `2.6 "
-#~ "<https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__"
-#~ " `2.5 "
-#~ "<https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__"
-#~ msgstr ""
-
-#~ msgid "Using Dijkstra algorithm, calculate and return a cost matrix."
-#~ msgstr ""
 

@@ -10,6 +10,10 @@
 Transformation - Family of functions (Experimental)
 ===============================================================================
 
+.. include:: experimental.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
 .. index from here
 
 * :doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph.
@@ -28,6 +32,8 @@ Transformation - Family of functions (Experimental)
 
 * **Supported versions:**
   current(`3.0 <https://docs.pgrouting.org/dev/en/transformation-family.html>`__)
+
+* **Unsupported versions:**
   `2.6 <https://docs.pgrouting.org/2.6/en/transformation-family.html>`__
 
 Introduction

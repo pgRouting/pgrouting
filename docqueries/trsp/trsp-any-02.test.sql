@@ -1,3 +1,4 @@
+SET extra_float_digits=-3;
 
 CREATE TABLE restrictions2 (
     rid integer NOT NULL,

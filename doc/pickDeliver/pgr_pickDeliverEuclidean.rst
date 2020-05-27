@@ -12,7 +12,7 @@ pgr_pickDeliverEuclidean - Experimental
 
 ``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 

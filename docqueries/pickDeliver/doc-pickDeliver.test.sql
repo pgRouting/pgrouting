@@ -1,5 +1,6 @@
+SET extra_float_digits=-3;
 \echo --q1
-SELECT * FROM _pgr_pickDeliver(
+SELECT * FROM pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles',
     -- matrix query
@@ -17,7 +18,7 @@ SELECT * FROM _pgr_pickDeliver(
 
 \echo --q2
 
-SELECT * FROM _pgr_pickDeliver(
+SELECT * FROM pgr_pickDeliver(
     $$ SELECT * FROM orders ORDER BY id $$,
     $$ SELECT * FROM vehicles $$,
     $$ SELECT * from pgr_dijkstraCostMatrix(

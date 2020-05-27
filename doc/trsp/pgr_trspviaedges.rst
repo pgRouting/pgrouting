@@ -17,7 +17,7 @@ pgr_trspviaedges
 
    Boost Graph Inside
 
-.. include:: proposed.rst
+.. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
@@ -40,7 +40,7 @@ Signatures
 
 * TBD
 
-Parameters 
+Parameters
 -------------------------------------------------------------------------------
 
 * TBD
@@ -50,7 +50,7 @@ Inner query
 
 * TBD
 
-Result Columns 
+Result Columns
 -------------------------------------------------------------------------------
 
 * TBD

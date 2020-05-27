@@ -49,7 +49,7 @@ Parameters
 =================== ====================== ========= =========================================
 Parameter           Type                   Default   Description
 =================== ====================== ========= =========================================
-**Edges SQL**       ``TEXT``                         Inner query as described bellow.
+**Edges SQL**       ``TEXT``                         Inner query as described below.
 =================== ====================== ========= =========================================
 
 .. components_parameters_end

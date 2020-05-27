@@ -1,0 +1,657 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:55+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/TSP-family.rst:11
+msgid "Traveling Sales Person - Family of functions"
+msgstr "Vendedor Viajante - Familia de funciones"
+
+#: ../../build/doc/TSP-family.rst:15
+msgid ":doc:`pgr_TSP` - When input is given as matrix cell information."
+msgstr ""
+":doc:`pgr_TSP` -Cuando la entrada se da como información de una celda de "
+"matriz."
+
+#: ../../build/doc/TSP-family.rst:16
+msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
+msgstr ":doc:`pgr_TSPeuclidean` - Cuando lo que entra son coordenadas."
+
+#: ../../build/doc/TSP-family.rst:27
+msgid "Previous versions of this page"
+msgstr "Versiones anteriores de esta página"
+
+#: ../../build/doc/TSP-family.rst:28
+msgid ""
+"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/TSP-"
+"family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/TSP-family.html>`__"
+msgstr ""
+"**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/dev/en"
+"/TSP-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/TSP-"
+"family.html>`__"
+
+#: ../../build/doc/TSP-family.rst:32
+msgid ""
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/TSP-"
+"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/TSP-family.html>`__ "
+"`2.3 <https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en/TSP-"
+"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/TSP-family.html>`__ "
+"`2.3 <https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
+
+#: ../../build/doc/TSP-family.rst:39
+msgid "Table of Contents"
+msgstr "Contenido"
+
+#: ../../build/doc/TSP-family.rst:42
+msgid "General Information"
+msgstr "Información general"
+
+#: ../../build/doc/TSP-family.rst:45
+msgid "Problem Definition"
+msgstr "Definición del Problema"
+
+#: ../../build/doc/TSP-family.rst:49
+msgid ""
+"The travelling salesman problem (TSP) or travelling salesperson problem asks"
+" the following question:"
+msgstr ""
+"En el problema del vendedor viajante (TSP) se hace la siguiente pregunta:"
+
+#: ../../build/doc/TSP-family.rst:52
+msgid ""
+"*Given a list of cities and the distances between each pair of cities, which"
+" is the shortest possible route that visits each city exactly once and "
+"returns to the origin city?*"
+msgstr ""
+"*Dada una lista de ciudades y las distancias entre cada par de ciudades, que"
+" corresponde con la ruta más corta posible que para visite cada ciudad "
+"exactamente una vez y regrese a la ciudad de origen?*"
+
+#: ../../build/doc/TSP-family.rst:58
+msgid "Origin"
+msgstr "Origen"
+
+#: ../../build/doc/TSP-family.rst:61
+msgid ""
+"The traveling sales person problem was studied in the 18th century by "
+"mathematicians"
+msgstr ""
+"El problema de los vendedores ambulantes fue estudiado en el siglo XVIII por"
+" matemáticos"
+
+#: ../../build/doc/TSP-family.rst:61
+msgid "**Sir William Rowam Hamilton** and **Thomas Penyngton  Kirkman**."
+msgstr "**Sir William Rowam Hamilton** y **Thomas Penyngton  Kirkman**."
+
+#: ../../build/doc/TSP-family.rst:63
+msgid ""
+"A discussion about the work of Hamilton & Kirkman can be found in the book "
+"**Graph Theory (Biggs et  al. 1976)**."
+msgstr ""
+"Una discusión sobre el trabajo de Hamilton & Kirkman se puede encontrar en "
+"el libro **Graph Theory (Biggs et al. 1976)**."
+
+#: ../../build/doc/TSP-family.rst:66
+msgid "ISBN-13: 978-0198539162"
+msgstr "ISBN-13: 978-0198539162"
+
+#: ../../build/doc/TSP-family.rst:67
+msgid "ISBN-10: 0198539169"
+msgstr "ISBN-10: 0198539169"
+
+#: ../../build/doc/TSP-family.rst:69
+msgid ""
+"It is believed that the general form of the TSP have been first studied by "
+"Kalr Menger in Vienna and Harvard. The problem was later promoted by "
+"Hassler, Whitney & Merrill at Princeton. A detailed description about the "
+"connection between Menger & Whitney, and the development of the TSP can be "
+"found in `On the history of combinatorial optimization (till 1960) "
+"<https://www.cwi.nl/~lex/files/histco.ps>`_"
+msgstr ""
+"Se cree que la forma general del TSP ha sido estudiada por primera vez por "
+"Kalr Menger en Viena y Harvard. El problema fue promovido más tarde por "
+"Hassler, Whitney & Merrill en Princeton. Una descripción detallada sobre la "
+"conexión entre Menger & Whitney, y el desarrollo del TSP se puede encontrar "
+"en  `On the history of combinatorial optimization (till 1960) "
+"<https://www.cwi.nl/~lex/files/histco.ps>`_"
+
+#: ../../build/doc/TSP-family.rst:75
+msgid "Characteristics"
+msgstr "Características"
+
+#: ../../build/doc/TSP-family.rst:77
+msgid "The travel costs are symmetric:"
+msgstr "Los costes de viaje son simétricos:"
+
+#: ../../build/doc/TSP-family.rst:79
+msgid ""
+"traveling costs from city A to city B are just as much as traveling from B "
+"to A."
+msgstr ""
+"los costos de viaje de la ciudad A a la ciudad B son tanto como viajar de B "
+"a A."
+
+#: ../../build/doc/TSP-family.rst:81
+msgid "This problem is an NP-hard optimization problem."
+msgstr "Este problema es un problema de optimización NP-duro."
+
+#: ../../build/doc/TSP-family.rst:83
+msgid "To calculate the number of different tours through :math:`n` cities:"
+msgstr ""
+"Para calcular el número de recorridos diferentes a través de :math:`n` "
+"ciudades:"
+
+#: ../../build/doc/TSP-family.rst:85
+msgid "Given a starting city,"
+msgstr "Dada una ciudad de partida,"
+
+#: ../../build/doc/TSP-family.rst:86
+msgid "There are :math:`n-1` choices for the second city,"
+msgstr "Hay  :math:`n-1` opción para la segunda ciudad,"
+
+#: ../../build/doc/TSP-family.rst:87
+msgid "And  :math:`n-2` choices for the third city, etc."
+msgstr "Y :math:`n-2` opciones para la tercera ciudad, etc."
+
+#: ../../build/doc/TSP-family.rst:88
+msgid ""
+"Multiplying these together we get :math:`(n-1)!  = (n-1) (n-2) . .  1`."
+msgstr ""
+"Multiplicando estos juntos obtenemos :math:`(n-1)! = (n-1) (n-2) . . 1`."
+
+#: ../../build/doc/TSP-family.rst:89
+msgid ""
+"Now since our travel costs do not depend on the direction we take around the"
+" tour:"
+msgstr ""
+"Ahora bien, dado que nuestros costos de viaje no dependen de la dirección "
+"que tomemos alrededor del recorrido:"
+
+#: ../../build/doc/TSP-family.rst:91
+msgid "this number by 2"
+msgstr "este número por 2"
+
+#: ../../build/doc/TSP-family.rst:92
+msgid ":math:`(n-1)!/2`."
+msgstr ":math:`(n-1)!/2`."
+
+#: ../../build/doc/TSP-family.rst:97
+msgid "Simulated Annealing Algorithm"
+msgstr "Algoritmo de Recocido Simulado"
+
+#: ../../build/doc/TSP-family.rst:99
+msgid ""
+"The simulated annealing algorithm was originally inspired from the process "
+"of annealing in metal work."
+msgstr ""
+"El algoritmo de recocido simulado se inspiró originalmente en el proceso de "
+"recocido en el trabajo de metal."
+
+#: ../../build/doc/TSP-family.rst:102
+msgid ""
+"Annealing involves heating and cooling a material to alter its physical "
+"properties due to the changes in its internal structure. As the metal cools "
+"its new structure becomes fixed, consequently causing the metal to retain "
+"its newly obtained properties."
+msgstr ""
+"El recocido implica calentar y enfriar un material para alterar sus "
+"propiedades físicas debido a los cambios en su estructura interna. A medida "
+"que el metal se enfría, su nueva estructura se fija, haciendo que el metal "
+"conserve sus propiedades recién obtenidas."
+
+#: ../../build/doc/TSP-family.rst:109
+msgid "Pseudocode"
+msgstr "Pseudocódigo"
+
+#: ../../build/doc/TSP-family.rst:110
+msgid ""
+"Given an initial solution, the simulated annealing process, will start with "
+"a high temperature and gradually cool down until the desired temperature is "
+"reached."
+msgstr ""
+"Dada una solución inicial, el proceso de recocido simulado, comenzará con "
+"una alta temperatura y se enfriará gradualmente hasta que se alcance la "
+"temperatura deseada."
+
+#: ../../build/doc/TSP-family.rst:113
+msgid ""
+"For each temperature, a neighbouring new solution **newSolution** is "
+"calculated. The higher the temperature the higher the probability of "
+"accepting the new solution as a possible bester solution."
+msgstr ""
+"Para cada temperatura, se calcula una nueva solución vecina **newSolution**."
+" Cuanto mayor sea la temperatura, mayor será la probabilidad de aceptar la "
+"nueva solución como posible mejor solución."
+
+#: ../../build/doc/TSP-family.rst:116
+msgid ""
+"Once the desired temperature is reached, the best solution found is returned"
+msgstr ""
+"Una vez alcanzada la temperatura deseada, se devuelve la mejor solución "
+"encontrada"
+
+#: ../../build/doc/TSP-family.rst:139
+msgid "pgRouting Implementation"
+msgstr "Implementación de pgRouting"
+
+#: ../../build/doc/TSP-family.rst:141
+msgid ""
+"pgRouting's implementation adds some extra parameters to allow some exit "
+"controls within the simulated annealing process."
+msgstr ""
+"La implementación de pgRouting agrega algunos parámetros adicionales para "
+"permitir algunos controles de salida dentro del proceso de recocido "
+"simulado."
+
+#: ../../build/doc/TSP-family.rst:144
+msgid "``max_changes_per_temperature``:"
+msgstr "``max_changes_per_temperature``:"
+
+#: ../../build/doc/TSP-family.rst:146
+msgid "Limits the number of changes in the solution per temperature"
+msgstr "Limita el número de cambios en la solución por temperatura"
+
+#: ../../build/doc/TSP-family.rst:147
+msgid "Count is reset to :math:`0` when **temperature** changes"
+msgstr ""
+"El recuento se restablece a :math:`0` cuando la **temperatura** cambia"
+
+#: ../../build/doc/TSP-family.rst:148 ../../build/doc/TSP-family.rst:154
+msgid "Count is increased by :math: `1` when **solution** changes"
+msgstr "El recuento aumenta en :math: `1` cuando la **solución** cambia"
+
+#: ../../build/doc/TSP-family.rst:150
+msgid "``max_consecutive_non_changes``:"
+msgstr "``max_consecutive_non_changes``:"
+
+#: ../../build/doc/TSP-family.rst:152
+msgid "Limits the number of consecutive non changes per temperature"
+msgstr "Limita el número de no cambios consecutivos por temperatura"
+
+#: ../../build/doc/TSP-family.rst:153
+msgid "Count is reset to :math:`0` when **solution** changes"
+msgstr "El recuento se restablece a :math:`0` cuando la **solución** cambia"
+
+#: ../../build/doc/TSP-family.rst:156
+msgid "``max_processing_time``:"
+msgstr "``max_processing_time``:"
+
+#: ../../build/doc/TSP-family.rst:158
+msgid "Limits the time the simulated annealing is performed."
+msgstr "Limita el tiempo en que se realiza el recocido simulado."
+
+#: ../../build/doc/TSP-family.rst:187
+msgid "Choosing parameters"
+msgstr "Selección de parámetros"
+
+#: ../../build/doc/TSP-family.rst:189
+msgid ""
+"There is no exact rule on how the parameters have to be chose, it will "
+"depend on the special characteristics of the problem."
+msgstr ""
+"No hay una regla exacta sobre cómo se deben elegir los parámetros, dependerá"
+" de las características especiales del problema."
+
+#: ../../build/doc/TSP-family.rst:192
+msgid ""
+"If the computational time is crucial, then limit execution time with "
+"**max_processing_time**."
+msgstr ""
+"Si el tiempo de cálculo es crucial, entonces limite el tiempo de ejecución "
+"con **max_processing_time**."
+
+#: ../../build/doc/TSP-family.rst:193
+msgid ""
+"Make the **tries_per_temperture** depending on the number of cities "
+"(:math:`n`), for example:"
+msgstr ""
+"Haga el **tries_per_temperture** dependiendo del número de ciudades "
+"(:math:`n`), por ejemplo:"
+
+#: ../../build/doc/TSP-family.rst:195
+msgid "Useful to estimate the time it takes to do one cycle: use `1`"
+msgstr ""
+"Es útil para estimar el tiempo que se tarda en hacer un ciclo: use `1`"
+
+#: ../../build/doc/TSP-family.rst:197
+msgid "this will help to set a reasonable **max_processing_time**"
+msgstr "esto ayudará a establecer un **max_processing_time** razonable"
+
+#: ../../build/doc/TSP-family.rst:199
+msgid ":math:`n * (n-1)`"
+msgstr ":math:`n * (n-1)`"
+
+#: ../../build/doc/TSP-family.rst:200
+msgid ":math:`500 * n`"
+msgstr ":math:`500 * n`"
+
+#: ../../build/doc/TSP-family.rst:202
+msgid ""
+"For a faster decreasing the temperature set **cooling_factor** to a smaller "
+"number, and set to a higher number for a slower decrease."
+msgstr ""
+"Para una disminución más rápida de la temperatura, establezca "
+"**cooling_factor** en un número menor y establezca un número mayor para una "
+"disminución más lenta."
+
+#: ../../build/doc/TSP-family.rst:205
+msgid ""
+"When for the same given data the same results are needed, set **randomize** "
+"to `false`."
+msgstr ""
+"Cuando para los mismos datos dados se necesitan los mismos resultados, "
+"establezca **randomize** en `falso`."
+
+#: ../../build/doc/TSP-family.rst:207
+msgid "When estimating how long it takes to do one cycle: use `false`"
+msgstr "Al estimar cuánto tiempo se tarda en hacer un ciclo: use `false`"
+
+#: ../../build/doc/TSP-family.rst:210
+msgid ""
+"A recommendation is to play with the values and see what fits to the "
+"particular data."
+msgstr ""
+"Una recomendación es jugar con los valores y ver lo que se ajusta a los "
+"datos en particular."
+
+#: ../../build/doc/TSP-family.rst:214
+msgid "Description of the Control Parameters"
+msgstr "Descripción de los Parámetros de Control"
+
+#: ../../build/doc/TSP-family.rst:216
+msgid "The control parameters are optional, and have a default value."
+msgstr ""
+"Los parámetros de control son opcionales y tienen un valor predeterminado."
+
+#: ../../build/doc/TSP-family.rst:221
+msgid "Parameter"
+msgstr "Parámetro"
+
+#: ../../build/doc/TSP-family.rst:221 ../../build/doc/TSP-family.rst:251
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/TSP-family.rst:221
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/TSP-family.rst:221 ../../build/doc/TSP-family.rst:251
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/TSP-family.rst:223
+msgid "**start_vid**"
+msgstr "**start_vid**"
+
+#: ../../build/doc/TSP-family.rst:223 ../../build/doc/TSP-family.rst:224
+#: ../../build/doc/TSP-family.rst:254
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../build/doc/TSP-family.rst:223 ../../build/doc/TSP-family.rst:224
+msgid "`0`"
+msgstr "`0`"
+
+#: ../../build/doc/TSP-family.rst:223
+msgid "The greedy part of the implementation will use this identifier."
+msgstr "La parte ambiciosa de la implementación utilizará este identificador."
+
+#: ../../build/doc/TSP-family.rst:224
+msgid "**end_vid**"
+msgstr "**end_vid**"
+
+#: ../../build/doc/TSP-family.rst:224
+msgid "Last visiting vertex before returning to start_vid."
+msgstr "El último vértice de visita antes de volver a start_vid."
+
+#: ../../build/doc/TSP-family.rst:225
+msgid "**max_processing_time**"
+msgstr "**max_processing_time**"
+
+#: ../../build/doc/TSP-family.rst:225 ../../build/doc/TSP-family.rst:229
+#: ../../build/doc/TSP-family.rst:230 ../../build/doc/TSP-family.rst:231
+#: ../../build/doc/TSP-family.rst:255 ../../build/doc/TSP-family.rst:258
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+#: ../../build/doc/TSP-family.rst:225
+msgid "`+infinity`"
+msgstr "`+infinity`"
+
+#: ../../build/doc/TSP-family.rst:225
+msgid "Stop the annealing processing when the value is reached."
+msgstr "Detenga el proceso de recocido cuando se alcance el valor."
+
+#: ../../build/doc/TSP-family.rst:226
+msgid "**tries_per_temperature**"
+msgstr "**tries_per_temperature**"
+
+#: ../../build/doc/TSP-family.rst:226 ../../build/doc/TSP-family.rst:227
+#: ../../build/doc/TSP-family.rst:228 ../../build/doc/TSP-family.rst:253
+msgid "``INTEGER``"
+msgstr "``INTEGER``"
+
+#: ../../build/doc/TSP-family.rst:226
+msgid "`500`"
+msgstr "`500`"
+
+#: ../../build/doc/TSP-family.rst:226
+msgid "Maximum number of times a neighbor(s) is searched in each temperature."
+msgstr ""
+"Número máximo de veces que se busca a un(os) vecino(s) en cada temperatura."
+
+#: ../../build/doc/TSP-family.rst:227
+msgid "**max_changes_per_temperature**"
+msgstr "**max_changes_per_temperature**"
+
+#: ../../build/doc/TSP-family.rst:227
+msgid "`60`"
+msgstr "`60`"
+
+#: ../../build/doc/TSP-family.rst:227
+msgid "Maximum number of times the solution is changed in each temperature."
+msgstr "Número máximo de veces que se cambia la solución en cada temperatura."
+
+#: ../../build/doc/TSP-family.rst:228
+msgid "**max_consecutive_non_changes**"
+msgstr "**max_consecutive_non_changes**"
+
+#: ../../build/doc/TSP-family.rst:228 ../../build/doc/TSP-family.rst:229
+msgid "`100`"
+msgstr "`100`"
+
+#: ../../build/doc/TSP-family.rst:228
+msgid ""
+"Maximum number of consecutive times the solution is not changed in each "
+"temperature."
+msgstr ""
+"Número máximo de veces consecutivas que la solución no cambia en cada "
+"temperatura."
+
+#: ../../build/doc/TSP-family.rst:229
+msgid "**initial_temperature**"
+msgstr "**initial_temperature**"
+
+#: ../../build/doc/TSP-family.rst:229
+msgid "Starting temperature."
+msgstr "Temperatura de inicio."
+
+#: ../../build/doc/TSP-family.rst:230
+msgid "**final_temperature**"
+msgstr "**temperatura_final**"
+
+#: ../../build/doc/TSP-family.rst:230
+msgid "`0.1`"
+msgstr "`0.1`"
+
+#: ../../build/doc/TSP-family.rst:230
+msgid "Ending temperature."
+msgstr "Temperatura final."
+
+#: ../../build/doc/TSP-family.rst:231
+msgid "**cooling_factor**"
+msgstr "**factor_de_enfriamiento**"
+
+#: ../../build/doc/TSP-family.rst:231
+msgid "`0.9`"
+msgstr "`0.9`"
+
+#: ../../build/doc/TSP-family.rst:231
+msgid ""
+"Value between between 0 and 1 (not including) used to calculate the next "
+"temperature."
+msgstr ""
+"Valor entre 0 y 1 (sin incluir) utilizado para calcular la siguiente "
+"temperatura."
+
+#: ../../build/doc/TSP-family.rst:232
+msgid "**randomize**"
+msgstr "**aleatorizar**"
+
+#: ../../build/doc/TSP-family.rst:232
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+#: ../../build/doc/TSP-family.rst:232
+msgid "`true`"
+msgstr "`true`"
+
+#: ../../build/doc/TSP-family.rst:232
+msgid "Choose the random seed"
+msgstr "Elija la semilla aleatoria"
+
+#: ../../build/doc/TSP-family.rst:234
+msgid "true: Use current time as seed"
+msgstr "true: Utilice el tiempo actual como semilla"
+
+#: ../../build/doc/TSP-family.rst:235
+msgid ""
+"false: Use `1` as seed. Using this value will get the same results with the "
+"same data in each execution."
+msgstr ""
+"falso: Use `1` como semilla. Usando este valor obtendrá los mismos "
+"resultados con los mismos datos en cada ejecución."
+
+#: ../../build/doc/TSP-family.rst:244
+msgid "Description of the return columns"
+msgstr "Descripción de las columnas de devolución"
+
+#: ../../build/doc/TSP-family.rst:248
+msgid "Returns SET OF ``(seq, node, cost, agg_cost)``"
+msgstr "Devuelve el CONJUNTO DE ``(seq, node, cost, agg_cost)``"
+
+#: ../../build/doc/TSP-family.rst:251
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/TSP-family.rst:253
+msgid "**seq**"
+msgstr "**seq**"
+
+#: ../../build/doc/TSP-family.rst:253
+msgid "Row sequence."
+msgstr "Secuencia de filas."
+
+#: ../../build/doc/TSP-family.rst:254
+msgid "**node**"
+msgstr "**node**"
+
+#: ../../build/doc/TSP-family.rst:254
+msgid "Identifier of the node/coordinate/point."
+msgstr "Identificador del nodo/coordenada/punto."
+
+#: ../../build/doc/TSP-family.rst:255
+msgid "**cost**"
+msgstr "**cost**"
+
+#: ../../build/doc/TSP-family.rst:256
+msgid ""
+"Cost to traverse from the current ``node`` to the next ``node`` in the path "
+"sequence."
+msgstr ""
+"Coste que se debe recorrer desde el ``nodo`` al siguiente ``nodo``  en la "
+"secuencia de ruta."
+
+#: ../../build/doc/TSP-family.rst:256
+msgid "``0`` for the last row in the path sequence."
+msgstr "``0`` para la última fila de la secuencia de ruta."
+
+#: ../../build/doc/TSP-family.rst:258
+msgid "**agg_cost**"
+msgstr "**agg_cost**"
+
+#: ../../build/doc/TSP-family.rst:259
+msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
+msgstr "Costo agregado del ``nodo`` en  ``seq = 1`` hacia el nodo actual."
+
+#: ../../build/doc/TSP-family.rst:259
+msgid "``0`` for the first row in the path sequence."
+msgstr "``0`` para la primera fila de la secuencia de ruta."
+
+#: ../../build/doc/TSP-family.rst:266
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/TSP-family.rst:269
+msgid "References"
+msgstr "Referencias"
+
+#: ../../build/doc/TSP-family.rst:270
+msgid ""
+"`Simulated annaeling algorithm for beginners <https://www.theprojectspot.com"
+"/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__"
+msgstr ""
+"`Algoritmo de Recocido Simulado para principiantes "
+"<https://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-"
+"for-beginners/6>`__"
+
+#: ../../build/doc/TSP-family.rst:271
+msgid ""
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
+msgstr ""
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
+
+#: ../../build/doc/TSP-family.rst:272
+msgid ""
+"`Wikipedia: Simulated annealing "
+"<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
+msgstr ""
+"`Wikipedia: Simulated annealing "
+"<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
+
+#: ../../build/doc/TSP-family.rst:275
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/TSP-family.rst:276
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/TSP-family.rst:277
+msgid ":ref:`search`"
+msgstr ":ref:`search`"

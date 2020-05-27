@@ -13,16 +13,16 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 .. index::
 	single: trsp(text,integer,integer,boolean,boolean)
 	single: trsp(text,integer,integer,boolean,boolean,text)
-	single: trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)
-	single: trspViaEdges(text,integer,double precision,integer,double precision,boolean,boolean,text)
+	single: trspViaVertices - Prototype
+	single: trspViaEdges - Prototype
 
 ``pgr_trsp`` — Returns the shortest path with support for turn restrictions.
 
 .. rubric:: Availability
 
-* Version 2.0.0
+* Version 2.1.0
 
-  * Added *Via* support **prototypes**
+  * New *Via* **prototypes**
 
     * pgr_trspViaVertices
     * pgr_trspViaEdges
@@ -35,9 +35,9 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 
 * **Supported versions:**
   current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_trsp.html>`__)
-  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_trsp.html>`__
 
 * **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_trsp.html>`__
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_trsp.html>`__
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_trsp.html>`__
   `2.3 <https://docs.pgrouting.org/2.3/en/src/trsp/doc/pgr_trsp.html>`__
@@ -267,7 +267,7 @@ Different ways to represent 'no path found`
    :end-before: --place4
 
 pgr_trsp calls :doc:`pgr_dijkstra` when there are no restrictions which returns
-`EMTPY SET` when a path is not found
+`EMPTY SET` when a path is not found
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place4
@@ -324,8 +324,8 @@ in this case that code finds an unexpected path.
 User contradictions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-``pgr_trsp`` unlike other pgRouting functions does not autodectect the existance of
-``reverse_cost`` column. Therefor it has ``has_rcost`` parameter to check the existance
+``pgr_trsp`` unlike other pgRouting functions does not autodectect the existence of
+``reverse_cost`` column. Therefor it has ``has_rcost`` parameter to check the existence
 of ``reverse_cost`` column. Contradictions happen:
 
 - When the reverse_cost is missing, and the flag `has_rcost` is set to true
@@ -345,7 +345,7 @@ An EXCEPTION is thrown.
    :start-after: --place10
    :end-before: --place11
 
-The ``reverse_cost`` column will be efectively removed and will cost execution time
+The ``reverse_cost`` column will be effectively removed and will cost execution time
 
 The "Edges" signature version
 .........................................................................
@@ -369,7 +369,7 @@ Different ways to represent 'no path found`
    :end-before: --place12
 
 pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which returns
-`EMTPY SET` when a path is not found
+`EMPTY SET` when a path is not found
 
 .. rubric:: Throwing EXCEPTION to represent no path found
 
@@ -439,8 +439,8 @@ and will not have the row for the vertex :math:`-2`.
 User contradictions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-``pgr_trsp`` unlike other pgRouting functions does not autodectect the existance of
-``reverse_cost`` column. Therefor it has ``has_rcost`` parameter to check the existance
+``pgr_trsp`` unlike other pgRouting functions does not autodectect the existence of
+``reverse_cost`` column. Therefor it has ``has_rcost`` parameter to check the existence
 of ``reverse_cost`` column. Contradictions happen:
 
 - When the reverse_cost is missing, and the flag `has_rcost` is set to true
@@ -460,7 +460,7 @@ An EXCEPTION is thrown.
    :start-after: --place18
    :end-before: --place19
 
-The ``reverse_cost`` column will be efectively removed and will cost execution time
+The ``reverse_cost`` column will be effectively removed and will cost execution time
 
 Using a points of interest table
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -1,0 +1,71 @@
+name: Build for Windows
+
+on: 
+  push:
+    branches:
+      # - master
+      # - develop
+      - ftr/gh-actions
+
+  pull_request:
+    branches:
+      # - master
+      # - develop
+
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+
+    strategy: 
+        matrix: 
+          psql: [10]
+          os: [windows-latest]
+
+    steps:
+      # - name: Add PostgreSQL APT repository
+      #   run: |
+      #     sudo apt-get install curl ca-certificates gnupg
+      #     curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+      #     sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
+      #       $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y \
+      #       libboost-graph-dev \
+      #       libtap-parser-sourcehandler-pgtap-perl \
+      #       postgresql-${{ matrix.psql }} \
+      #       postgresql-${{ matrix.psql }}-pgtap \
+      #       postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }} \
+      #       postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }}-scripts \
+      #       postgresql-server-dev-${{ matrix.psql }} \
+      #       python-sphinx 
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # - name: Prepare
+      #   run: |
+      #     sphinx-build --version
+      #     sudo -u postgres psql -p 5432 -c "CREATE EXTENSION postgis"
+      #     export PATH=/usr/lib/postgresql/${{ matrix.psql }}/bin:$PATH
+      #     sudo -u postgres createdb ___pgr___test___
+      #     sudo -u postgres createdb pgr_test__db__test
+
+      # - name: Configure
+      #   run: |
+      #     mkdir build
+      #     cd build
+      #     cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
+
+      # - name: Build
+      #   run: |
+      #     cd build
+      #     make 
+      #     sudo make install
+
+      # - name: Test
+      #   run: |
+      #     sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release

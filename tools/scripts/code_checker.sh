@@ -36,6 +36,7 @@ if ! test -d code_linter; then
     cd styleguide
     git checkout gh-pages
     cd ../..
+    echo code_linter installed
 fi
 
 DIRECTORY="$1"

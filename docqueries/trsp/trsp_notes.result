@@ -4,6 +4,8 @@ SET client_min_messages TO NOTICE;
 SET
 ROLLBACK;
 ROLLBACK
+SET extra_float_digits=-3;
+SET
 --place1
 SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path;
  to_cost | target_id | via_path

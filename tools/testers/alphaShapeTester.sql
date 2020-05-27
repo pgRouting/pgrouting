@@ -22,8 +22,8 @@ BEGIN
 
     RETURN QUERY
     SELECT results_eq(
-        $$SELECT ST_Area(geom)::TEXT FROM newquery$$,
-        $$SELECT $$ || area || '::TEXT',
+        $$SELECT round(ST_Area(geom)::numeric,12)::TEXT FROM newquery$$,
+        $$SELECT $$ || round(area::numeric,12) || '::TEXT',
         'SHOULD BE: ' || area || ' with spoon radius = ' || alpha);
 
 

@@ -73,4 +73,7 @@ For users who require professional support, development and consulting services,
    * - Camptocamp
      - Switzerland, France
      - https://www.camptocamp.com
+   * - Netlab
+     - Capranica, Italy
+     - https://www.osgeo.org/service-providers/netlab/
 

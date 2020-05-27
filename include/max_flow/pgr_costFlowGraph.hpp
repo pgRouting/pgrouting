@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_COSTFLOW_PGR_COSTFLOWGRAPH_HPP_
-#define INCLUDE_COSTFLOW_PGR_COSTFLOWGRAPH_HPP_
+#ifndef INCLUDE_MAX_FLOW_PGR_COSTFLOWGRAPH_HPP_
+#define INCLUDE_MAX_FLOW_PGR_COSTFLOWGRAPH_HPP_
 #pragma once
 
 #include <boost/config.hpp>
@@ -58,4 +58,4 @@ typedef boost::property_map < CostFlowGraph,
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_COSTFLOW_PGR_COSTFLOWGRAPH_HPP_
+#endif  // INCLUDE_MAX_FLOW_PGR_COSTFLOWGRAPH_HPP_

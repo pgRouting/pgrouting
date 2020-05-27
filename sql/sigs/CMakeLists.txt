@@ -1,4 +1,6 @@
 SET(OLD_SIGNATURES
+    3.0.0
+
     2.6.3
     2.6.2
     2.6.1
@@ -23,12 +25,7 @@ SET(OLD_SIGNATURES
     2.2.3
     2.2.2
     2.2.1
-
     2.2.0
-    2.1.0
-
-    2.0.1
-    2.0.0
     )
 
 foreach (f ${OLD_SIGNATURES})

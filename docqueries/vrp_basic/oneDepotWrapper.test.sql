@@ -1,3 +1,4 @@
+SET extra_float_digits=-3;
 
 SELECT * FROM _pgr_vrpOneDepot(
     'SELECT * FROM solomon_100_RC_101',

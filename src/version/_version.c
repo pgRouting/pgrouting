@@ -41,75 +41,66 @@ PGDLLEXPORT Datum _pgr_pgsql_version(PG_FUNCTION_ARGS);
 
 
 PG_FUNCTION_INFO_V1(_pgr_boost_version);
-PGDLLEXPORT Datum _pgr_boost_version(PG_FUNCTION_ARGS)
-{
+PGDLLEXPORT Datum _pgr_boost_version(PG_FUNCTION_ARGS) {
     UNUSED(fcinfo);
-	char *ver = BOOST_VERSION;
-	text *result = cstring_to_text(ver);
-	PG_RETURN_TEXT_P(result);
+    char *ver = BOOST_VERSION;
+    text *result = cstring_to_text(ver);
+    PG_RETURN_TEXT_P(result);
 }
 
 PG_FUNCTION_INFO_V1(_pgr_build_type);
-PGDLLEXPORT Datum _pgr_build_type(PG_FUNCTION_ARGS)
-{
+PGDLLEXPORT Datum _pgr_build_type(PG_FUNCTION_ARGS) {
     UNUSED(fcinfo);
-	char *ver = CMAKE_BUILD_TYPE;
-	text *result = cstring_to_text(ver);
-	PG_RETURN_TEXT_P(result);
+    char *ver = CMAKE_BUILD_TYPE;
+    text *result = cstring_to_text(ver);
+    PG_RETURN_TEXT_P(result);
 }
 
 PG_FUNCTION_INFO_V1(_pgr_compilation_date);
-PGDLLEXPORT Datum _pgr_compilation_date(PG_FUNCTION_ARGS)
-{
+PGDLLEXPORT Datum _pgr_compilation_date(PG_FUNCTION_ARGS) {
     UNUSED(fcinfo);
-	char *ver = COMPILATION_DATE;
-	text *result = cstring_to_text(ver);
-	PG_RETURN_TEXT_P(result);
+    char *ver = COMPILATION_DATE;
+    text *result = cstring_to_text(ver);
+    PG_RETURN_TEXT_P(result);
 }
 
 PG_FUNCTION_INFO_V1(_pgr_compiler_version);
-PGDLLEXPORT Datum _pgr_compiler_version(PG_FUNCTION_ARGS)
-{
+PGDLLEXPORT Datum _pgr_compiler_version(PG_FUNCTION_ARGS) {
     UNUSED(fcinfo);
-	char *ver = COMPILER_VERSION;
-	text *result = cstring_to_text(ver);
-	PG_RETURN_TEXT_P(result);
+    char *ver = COMPILER_VERSION;
+    text *result = cstring_to_text(ver);
+    PG_RETURN_TEXT_P(result);
 }
 
 PG_FUNCTION_INFO_V1(_pgr_git_hash);
-PGDLLEXPORT Datum _pgr_git_hash(PG_FUNCTION_ARGS)
-{
+PGDLLEXPORT Datum _pgr_git_hash(PG_FUNCTION_ARGS) {
     UNUSED(fcinfo);
-	char *ver = PGROUTING_GIT_HASH;
-	text *result = cstring_to_text(ver);
-	PG_RETURN_TEXT_P(result);
+    char *ver = PGROUTING_GIT_HASH;
+    text *result = cstring_to_text(ver);
+    PG_RETURN_TEXT_P(result);
 }
 
 PG_FUNCTION_INFO_V1(_pgr_lib_version);
-PGDLLEXPORT Datum _pgr_lib_version(PG_FUNCTION_ARGS)
-{
+PGDLLEXPORT Datum _pgr_lib_version(PG_FUNCTION_ARGS) {
     UNUSED(fcinfo);
-	char *ver = PGROUTING_LIB_NAME;
-	text *result = cstring_to_text(ver);
-	PG_RETURN_TEXT_P(result);
+    char *ver = PGROUTING_LIB_NAME;
+    text *result = cstring_to_text(ver);
+    PG_RETURN_TEXT_P(result);
 }
 
 PG_FUNCTION_INFO_V1(_pgr_operating_system);
-PGDLLEXPORT Datum _pgr_operating_system(PG_FUNCTION_ARGS)
-{
+PGDLLEXPORT Datum _pgr_operating_system(PG_FUNCTION_ARGS) {
     UNUSED(fcinfo);
-	char *ver = CMAKE_SYSTEM_NAME;
-	text *result = cstring_to_text(ver);
-	PG_RETURN_TEXT_P(result);
+    char *ver = CMAKE_SYSTEM_NAME;
+    text *result = cstring_to_text(ver);
+    PG_RETURN_TEXT_P(result);
 }
 
 
 PG_FUNCTION_INFO_V1(_pgr_pgsql_version);
-PGDLLEXPORT Datum _pgr_pgsql_version(PG_FUNCTION_ARGS)
-{
+PGDLLEXPORT Datum _pgr_pgsql_version(PG_FUNCTION_ARGS) {
     UNUSED(fcinfo);
-	char *ver = POSTGRES_VERSION;
-	text *result = cstring_to_text(ver);
-	PG_RETURN_TEXT_P(result);
+    char *ver = POSTGRES_VERSION;
+    text *result = cstring_to_text(ver);
+    PG_RETURN_TEXT_P(result);
 }
-

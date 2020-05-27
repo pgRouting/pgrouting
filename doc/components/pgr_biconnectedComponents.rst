@@ -22,7 +22,11 @@ In particular, the algorithm implemented by Boost.Graph.
 
 * Version 3.0.0
 
-  * Return columns change: ``n_seq`` is removed
+  * Return columns change:
+
+    *  ``n_seq`` is removed
+    * ``seq`` changed type to ``BIGINT``
+
   * **Official** function
 
 * Version 2.5.0
@@ -102,7 +106,7 @@ Returns set of ``(seq, component, edge)``
 ============== ========== =================================================
 Column         Type       Description
 ============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
+**seq**        ``BIGINT``    Sequential value starting from **1**.
 **component**  ``BIGINT`` Component identifier. It is equal to the minimum edge identifier in the component.
 **edge**       ``BIGINT`` Identifier of the edge.
 ============== ========== =================================================

@@ -25,14 +25,14 @@ BEGIN
                 sql_Many := sql_Many ||', ';
     END IF;
     sql_OneToOne := sql_OneToOne ||
-    '( SELECT seq, ' || j || 'as start_vid, ' || i || 'as end_vid, node, edge, cost::text, agg_cost::text  FROM pgr_dijkstra(
+    '( SELECT seq, ' || j || 'as start_vid, ' || i || 'as end_vid, node, edge, round(cost::numeric,8) AS cost, round(agg_cost::numeric,8) AS agg_cost   FROM pgr_dijkstra(
             ''SELECT id, source, target, cost, reverse_cost FROM edge_table'', '
             || j || ', ' || i ||
             ') )';
     sql_Many := sql_Many || j ;
 END LOOP;
 sql_Many :=
-' SELECT path_seq, start_vid, ' || i || ' as end_vid, node, edge, cost::text, agg_cost::text FROM pgr_dijkstra(
+' SELECT path_seq, start_vid, ' || i || ' as end_vid, node, edge, round(cost::numeric,8) AS cost, round(agg_cost::numeric,8) AS agg_cost  FROM pgr_dijkstra(
     ''SELECT id, source, target, cost, reverse_cost FROM edge_table'', '
     ' ARRAY[' || sql_Many || '], ' || i ||
     ' ) ';

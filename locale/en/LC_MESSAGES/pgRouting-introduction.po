@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:28-0500\n"
+"POT-Creation-Date: 2020-05-17 10:04-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.5.3\n"
 
 #: ../../build/doc/pgRouting-introduction.rst:11
 msgid "Introduction"
@@ -107,216 +107,161 @@ msgid "This Release Contributors"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:49
-#: ../../build/doc/pgRouting-introduction.rst:70
+#: ../../build/doc/pgRouting-introduction.rst:79
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:51
-msgid "Gudesa Venkata Sai Akhil, Hang Wu, Virginia Vergara"
+msgid ""
+"Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Cayetano Benavent, "
+"Gudesa Venkata Sai Akhil, Hang Wu, Maoguang Wang, Martha Vergara, Regina "
+"Obe, Rohith Reddy, Sourabh Garg, Virginia Vergara"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:53
+#: ../../build/doc/pgRouting-introduction.rst:60
 msgid ""
 "And all the people that give us a little of their time making comments, "
-"finding issues, making pull requests etc."
+"finding issues, making pull requests etc. in any of our products: "
+"osm2pgrouting, pgRouting, pgRoutingLayer."
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:56
-#: ../../build/doc/pgRouting-introduction.rst:75
+#: ../../build/doc/pgRouting-introduction.rst:65
+#: ../../build/doc/pgRouting-introduction.rst:97
 msgid "Corporate Sponsors (in alphabetical order)"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:58
-#: ../../build/doc/pgRouting-introduction.rst:77
+#: ../../build/doc/pgRouting-introduction.rst:67
+#: ../../build/doc/pgRouting-introduction.rst:99
 msgid ""
 "These are corporate entities that have contributed developer time, "
 "hosting, or direct monetary funding to the pgRouting project:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:60
+#: ../../build/doc/pgRouting-introduction.rst:69
 msgid "`Georepublic <https://georepublic.info/en/>`__"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:61
+#: ../../build/doc/pgRouting-introduction.rst:70
 msgid "`Google Summer of Code <https://developers.google.com/open-source/gsoc/>`_"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:62
-msgid "`iMaptools <https://imaptools.com>`__"
-msgstr ""
-
-#: ../../build/doc/pgRouting-introduction.rst:63
-msgid "`Leopark <https://www.leopark.mx/>`__"
-msgstr ""
-
-#: ../../build/doc/pgRouting-introduction.rst:64
-msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`_"
-msgstr ""
-
-#: ../../build/doc/pgRouting-introduction.rst:67
-msgid "Contributors Past & Present:"
+#: ../../build/doc/pgRouting-introduction.rst:71
+msgid "`iMaptools <http://imaptools.com>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:72
+msgid "`Leopark <https://www.leopark.mx/>`__"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:73
+msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`_"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:76
+msgid "Contributors Past & Present:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-introduction.rst:81
 msgid ""
-"Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf "
-"Hossain, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, "
+"Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea"
+" Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain, Cayetano "
+"Benavent, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, "
 "Denis Rykov, Ema Miyawaki, Florian Thurkow, Frederic Junod, Gerald Fenoy,"
 " Gudesa Venkata Sai Akhil, Hang Wu, Jay Mahadeokar, Jinfu Leng, Kai "
 "Behncke, Kishore Kumar, Ko Nagase, Manikata Kondeti, Mario Basa, Martin "
 "Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mukul Priya, "
-"Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Stephen "
-"Woodbridge, Sylvain Housseman, Sylvain Pasche, Vidhan Jain, Virginia "
-"Vergara"
+"Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Sourabh Garg, "
+"Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche, Vidhan Jain, "
+"Virginia Vergara"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:79
+#: ../../build/doc/pgRouting-introduction.rst:101
 msgid "Camptocamp"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:80
+#: ../../build/doc/pgRouting-introduction.rst:102
 msgid "CSIS (University of Tokyo)"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:81
+#: ../../build/doc/pgRouting-introduction.rst:103
 msgid "Georepublic"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:82
+#: ../../build/doc/pgRouting-introduction.rst:104
 msgid "Google Summer of Code"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:83
+#: ../../build/doc/pgRouting-introduction.rst:105
 msgid "iMaptools"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:84
+#: ../../build/doc/pgRouting-introduction.rst:106
 msgid "Orkney"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:85
+#: ../../build/doc/pgRouting-introduction.rst:107
 msgid "Paragon Corporation"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:86
+#: ../../build/doc/pgRouting-introduction.rst:108
 msgid "Versaterm Inc."
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:90
+#: ../../build/doc/pgRouting-introduction.rst:112
 msgid "More Information"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:92
+#: ../../build/doc/pgRouting-introduction.rst:114
 msgid ""
 "The latest software, documentation and news items are available at the "
 "pgRouting web site https://pgrouting.org."
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:93
+#: ../../build/doc/pgRouting-introduction.rst:115
 msgid ""
 "PostgreSQL database server at the PostgreSQL main site "
 "https://www.postgresql.org."
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:94
+#: ../../build/doc/pgRouting-introduction.rst:116
 msgid "PostGIS extension at the PostGIS project web site https://postgis.net."
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:95
+#: ../../build/doc/pgRouting-introduction.rst:117
 msgid "Boost C++ source libraries at https://www.boost.org."
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:96
+#: ../../build/doc/pgRouting-introduction.rst:118
 msgid ""
 "The Migration guide can be found at "
 "https://github.com/pgRouting/pgrouting/wiki/Migration-Guide."
 msgstr ""
 
 #~ msgid ""
-#~ "pgRouting is an extension of `PostGIS"
-#~ " <http://postgis.net>`_ and `PostgreSQL "
-#~ "<http://postgresql.org>`_ geospatial database and"
-#~ " adds routing and other network "
-#~ "analysis functionality. A predecessor of "
-#~ "pgRouting – pgDijkstra, written by "
-#~ "Sylvain Pasche from `Camptocamp "
-#~ "<http://camptocamp.com>`_, was later extended "
-#~ "by `Orkney <http://www.orkney.co.jp>`_ and "
-#~ "renamed to pgRouting. The project is "
-#~ "now supported and maintained by "
-#~ "`Georepublic <http://georepublic.info>`_, `iMaptools "
-#~ "<http://imaptools.com/>`__ and a broad user"
-#~ " community."
+#~ "Aasheesh Tiwari, Aditya Pratap Singh, "
+#~ "Cayetano Benavent, Gudesa Venkata Sai "
+#~ "Akhil, Hang Wu, Maoguang Wang, Martha"
+#~ " Vergara, Regina Obe, Rohith Reddy, "
+#~ "Sourabh Garg, Virginia Vergara"
 #~ msgstr ""
 
 #~ msgid ""
-#~ "pgRouting is part of `OSGeo Community"
-#~ " Projects "
-#~ "<http://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`_ from "
-#~ "the `OSGeo Foundation <http://osgeo.org>`_ and"
-#~ " included on `OSGeo Live "
-#~ "<http://live.osgeo.org/>`_."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Most features of pgRouting are available"
-#~ " under `GNU General Public License, "
-#~ "version 2 <http://www.gnu.org/licenses/gpl-2.0.html>`_."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Some Boost extensions are available "
-#~ "under `Boost Software License - Version"
-#~ " 1.0 <http://www.boost.org/LICENSE_1_0.txt>`_."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The pgRouting Manual is licensed under"
-#~ " a `Creative Commons Attribution-Share "
-#~ "Alike 3.0 License "
-#~ "<http://creativecommons.org/licenses/by-sa/3.0/>`_."
-#~ msgstr ""
-
-#~ msgid "`iMaptools <http://imaptools.com>`__"
-#~ msgstr ""
-
-#~ msgid "`Paragon Corporation <http://www.paragoncorporation.com/>`_"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The latest software, documentation and "
-#~ "news items are available at the "
-#~ "pgRouting web site http://pgrouting.org."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "PostgreSQL database server at the "
-#~ "PostgreSQL main site http://www.postgresql.org."
-#~ msgstr ""
-
-#~ msgid "PostGIS extension at the PostGIS project web site http://postgis.net."
-#~ msgstr ""
-
-#~ msgid "Boost C++ source libraries at http://www.boost.org."
-#~ msgstr ""
-
-#~ msgid "Virginia Vergara"
-#~ msgstr ""
-
-#~ msgid ""
+#~ "Aasheesh Tiwari, Aditya Pratap Singh, "
 #~ "Akio Takubo, Andrea Nardelli, Anthony "
 #~ "Tasca, Anton Patrushev, Ashraf Hossain, "
-#~ "Christian Gonzalez, Daniel Kastl, Dave "
-#~ "Potts, David Techer, Denis Rykov, Ema"
-#~ " Miyawaki, Florian Thurkow, Frederic Junod,"
-#~ " Gerald Fenoy, Jay Mahadeokar, Jinfu "
-#~ "Leng, Kai Behncke, Kishore Kumar, Ko "
-#~ "Nagase, Manikata Kondeti, Mario Basa, "
-#~ "Martin Wiesenhaan,  Maxim Dubinin, Maoguang"
-#~ " Wang, Mohamed Zia, Mukul Priya, "
-#~ "Razequl Islam, Regina Obe, Rohith Reddy,"
-#~ " Sarthak Agarwal, Stephen Woodbridge, "
-#~ "Sylvain Housseman, Sylvain Pasche, Vidhan "
-#~ "Jain, Virginia Vergara"
+#~ "Cayetano Benavent, Christian Gonzalez, Daniel"
+#~ " Kastl, Dave Potts, David Techer, "
+#~ "Denis Rykov, Ema Miyawaki, Florian "
+#~ "Thurkow, Frederic Junod, Gerald Fenoy, "
+#~ "Gudesa Venkata Sai Akhil, Hang Wu, "
+#~ "Jay Mahadeokar, Jinfu Leng, Kai Behncke,"
+#~ " Kishore Kumar, Ko Nagase, Manikata "
+#~ "Kondeti, Mario Basa, Martin Wiesenhaan,  "
+#~ "Maxim Dubinin, Maoguang Wang, Mohamed "
+#~ "Zia, Mukul Priya, Razequl Islam, Regina"
+#~ " Obe, Rohith Reddy, Sarthak Agarwal, "
+#~ "Sourabh Garg, Stephen Woodbridge, Sylvain "
+#~ "Housseman, Sylvain Pasche, Vidhan Jain, "
+#~ "Virginia Vergara"
 #~ msgstr ""
 

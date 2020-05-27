@@ -1,3 +1,4 @@
+SET extra_float_digits=-3;
 
 \echo --e1
 SELECT * FROM pgr_withPointsCost(

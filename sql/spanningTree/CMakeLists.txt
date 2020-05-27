@@ -16,7 +16,7 @@ SET(LOCAL_FILES
     #randomSpanTree.sql
     )
 
-# Do not modify bellow this line
+# Do not modify below this line
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})

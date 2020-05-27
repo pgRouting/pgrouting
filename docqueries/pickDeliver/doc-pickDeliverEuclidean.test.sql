@@ -1,5 +1,6 @@
+SET extra_float_digits=-3;
 \echo --q1
-SELECT * FROM _pgr_pickDeliverEuclidean(
+SELECT * FROM pgr_pickDeliverEuclidean(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles'
 );

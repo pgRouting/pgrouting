@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-16 11:53-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,76 +21,84 @@ msgstr ""
 msgid "Chinese Postman Problem - Family of functions (Experimental)"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:3
-msgid "Experimental functions"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:5
-msgid "They are not officially of the current release."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:6
-msgid "They likely will not be officially be part of the next release:"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:8
-msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:9
-msgid "Name might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:10
-msgid "Signature might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:11
-msgid "Functionality might change."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:12
-msgid "pgTap tests might be missing."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:13
-msgid "Might need c/c++ coding."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:14
-msgid "May lack documentation."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:15
-msgid "Documentation if any might need to be rewritten."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:16
-msgid "Documentation examples might need to be automatically generated."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:17
-msgid "Might need a lot of feedback from the comunity."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:18
-msgid "Might depend on a proposed function of pgRouting"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:19
-msgid "Might depend on a deprecated function of pgRouting"
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:19
+#: ../../build/doc/chinesePostmanProblem-family.rst:15
 msgid ":doc:`pgr_chinesePostman`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:20
+#: ../../build/doc/chinesePostmanProblem-family.rst:16
 msgid ":doc:`pgr_chinesePostmanCost`"
 msgstr ""
 
+#: ../../build/doc/experimental.rst:3
+msgid "Possible server crash"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:5
+msgid "These functions might create a server crash"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:7
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:9
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:10
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:12
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:13
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:14
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:15
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:16
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:18
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:19
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:20
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:21
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:22
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:23
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
 #: ../../build/doc/chinesePostmanProblem-family.rst:31
-msgid "Previous versions of this page"
+msgid "Versions of this page"
 msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:32
@@ -264,134 +272,4 @@ msgstr ""
 #: ../../build/doc/chinesePostmanProblem-family.rst:82
 msgid ":ref:`search`"
 msgstr ""
-
-#~ msgid ":doc:`pgr_directedChPP`"
-#~ msgstr ""
-
-#~ msgid ":doc:`pgr_directedChPP_Cost`"
-#~ msgstr ""
-
-#~ msgid "Given the following query:"
-#~ msgstr ""
-
-#~ msgid "pgr_directedChPP(:math:`sql`)"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "where  :math:`sql = \\{(id_i, source_i, "
-#~ "target_i, cost_i, reverse\\_cost_i)\\}`"
-#~ msgstr ""
-
-#~ msgid "and"
-#~ msgstr ""
-
-#~ msgid ":math:`source = \\bigcup source_i`,"
-#~ msgstr ""
-
-#~ msgid ":math:`target = \\bigcup target_i`,"
-#~ msgstr ""
-
-#~ msgid "The graphs are defined as follows:"
-#~ msgstr ""
-
-#~ msgid "Directed graph"
-#~ msgstr ""
-
-#~ msgid "The weighted directed graph, :math:`G(V,E)`, is definied by:"
-#~ msgstr ""
-
-#~ msgid "the set of vertices  :math:`V`"
-#~ msgstr ""
-
-#~ msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
-#~ msgstr ""
-
-#~ msgid "the set of edges :math:`E`"
-#~ msgstr ""
-
-#~ msgid ""
-#~ ":math:`E = \\begin{cases} \\text{ }  "
-#~ "\\{(source_i, target_i, cost_i) \\text{ when"
-#~ " } cost >=0 \\} & \\quad "
-#~ "\\text{if } reverse\\_cost = \\varnothing "
-#~ "\\\\ \\text{ }  \\text{ }  & "
-#~ "\\quad \\text{ } \\\\ \\text{ }  "
-#~ "\\{(source_i, target_i, cost_i) \\text{ when"
-#~ " } cost >=0 \\} &  \\quad "
-#~ "\\text{ } \\\\ \\cup      \\{(target_i, "
-#~ "source_i, reverse\\_cost_i) \\text{ when } "
-#~ "reverse\\_cost_i>=0 \\} & \\quad \\text{if "
-#~ "} reverse\\_cost \\neq \\varnothing \\\\ "
-#~ "\\end{cases}`"
-#~ msgstr ""
-
-#~ msgid "The problem"
-#~ msgstr ""
-
-#~ msgid "Given:"
-#~ msgstr ""
-
-#~ msgid ":math:`G(V,E)`"
-#~ msgstr ""
-
-#~ msgid "Then:"
-#~ msgstr ""
-
-#~ msgid ":math:`pgr\\_directedChPP(edges\\_sql) = \\boldsymbol{\\Phi}`"
-#~ msgstr ""
-
-#~ msgid ""
-#~ ":math:`\\boldsymbol{\\Phi} = {(seq_i, node_i, "
-#~ "edge\\_i, cost_i, agg\\_cost_i)}`"
-#~ msgstr ""
-
-#~ msgid ":math:`seq_i = i`"
-#~ msgstr ""
-
-#~ msgid ":math:`node_i \\in V`"
-#~ msgstr ""
-
-#~ msgid ""
-#~ ":math:`edge_i  = \\begin{cases}  id_{(node_i, "
-#~ "node_{i+1},cost_i)}  &\\quad  \\text{when } i"
-#~ " \\neq | \\pi | \\\\ -1 &\\quad"
-#~ "  \\text{when } i = | \\pi |"
-#~ " \\\\ \\end{cases}`"
-#~ msgstr ""
-
-#~ msgid ":math:`cost_i = cost_{(node_i, node_{i+1})}`"
-#~ msgstr ""
-
-#~ msgid ""
-#~ ":math:`agg\\_cost_i  = \\begin{cases}  0   "
-#~ "&\\quad  \\text{when } i = 1  \\\\"
-#~ " \\displaystyle\\sum_{k=1}^{i}  cost_{(node_{k-1}, "
-#~ "node_k)}  &\\quad  \\text{when } i \\neq"
-#~ " 1 \\\\ \\end{cases}`"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "In other words: The algorithm is "
-#~ "to find the shortest path which "
-#~ "contains every edge in a graph and"
-#~ " starts and ends on the same "
-#~ "node, if it exists, in terms of"
-#~ " a sequence of nodes and of "
-#~ "edges,"
-#~ msgstr ""
-
-#~ msgid ""
-#~ ":math:`seq` indicates the relative position"
-#~ " in the path of the :math:`node` "
-#~ "or :math:`edge`."
-#~ msgstr ""
-
-#~ msgid ":math:`cost` is the cost of the edge to be used to go to the next node."
-#~ msgstr ""
-
-#~ msgid ":math:`agg\\_cost` is the cost from the start node up to the node."
-#~ msgstr ""
-
-#~ msgid "If there is no path, the resulting will be no path found error."
-#~ msgstr ""
 

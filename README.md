@@ -27,12 +27,12 @@ Status of the project can be found [here](https://github.com/pgRouting/pgrouting
 
 pgRouting extends the PostGIS/PostgreSQL geospatial database to provide geospatial routing and other network analysis functionality.
 
-This library contains following features:
+This library contains the following features:
 
 * All Pairs Shortest Path Algorithms
 * A-star algorithm
 * Bi-directional algorithms
-* A variety of applications of dijkstra algorithms
+* A variety of applications of Dijkstra algorithms
   * Cost functions
   * With points
 * Driving Distance
@@ -102,6 +102,5 @@ See online documentation: http://docs.pgrouting.org/dev/en/index.html
 * Most features are available under GPLv2.
 * Some Boost extensions are available under Boost license (see LICENSE_1_0.txt)
 * Some code contributed by iMaptools.com is available under MIT-X license.
-
 
 

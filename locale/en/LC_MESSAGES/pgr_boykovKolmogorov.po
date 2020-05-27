@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-dev\n"
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-18 11:26-0500\n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -415,43 +415,4 @@ msgstr ""
 #: ../../build/doc/pgr_boykovKolmogorov.rst:172
 msgid ":ref:`search`"
 msgstr ""
-
-#~ msgid "Official on v3.0.0"
-#~ msgstr ""
-
-#~ msgid "Renamed on v2.5.0"
-#~ msgstr ""
-
-#~ msgid "Experimental on v2.3.0"
-#~ msgstr ""
-
-#~ msgid "pgr_maxFlowBoykovKolmogorov"
-#~ msgstr ""
-
-#~ msgid "http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
-#~ msgstr ""
-
-#~ msgid "**edges_sql**"
-#~ msgstr ""
-
-#~ msgid "The edges SQL query as described above."
-#~ msgstr ""
-
-#~ msgid "edges_sql"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "an SQL query, which should return "
-#~ "a set of rows with the following"
-#~ " columns:"
-#~ msgstr ""
-
-#~ msgid "**edge_id**"
-#~ msgstr ""
-
-#~ msgid "Flow through the edge in the direction (source, target)."
-#~ msgstr ""
-
-#~ msgid "Residual capacity of the edge in the direction (source, target)."
-#~ msgstr ""
 

@@ -1,0 +1,691 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+# Translators:
+# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"PO-Revision-Date: 2019-09-07 11:55+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:11
+msgid "pgr_binaryBreadthFirstSearch - Experimental"
+msgstr "pgr_binaryBreadthFirstSearch - Experimental"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:13
+msgid ""
+"``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary "
+"graph. Any graph whose edge-weights belongs to the set {0,X}, where 'X' is "
+"any non-negative real integer, is termed as a 'binary graph'."
+msgstr ""
+"``pgr_binaryBreadthFirstSearch`` — Devuelve la(s) ruta(s) más cortas en un "
+"grafo binario. Cualquier gráfico cuyos pesos de borde pertenecen al conjunto"
+" {0, X}, donde 'X' es cualquier número entero real no negativo, se denomina "
+"como 'grafo binario'."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:19
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+#: ../../build/doc/experimental.rst:3
+msgid "Possible server crash"
+msgstr "Posible bloqueo del servidor"
+
+#: ../../build/doc/experimental.rst:5
+msgid "These functions might create a server crash"
+msgstr "Estas funciones pueden crear un bloqueo del servidor"
+
+#: ../../build/doc/experimental.rst:7
+msgid "Experimental functions"
+msgstr "Funciones experimentales"
+
+#: ../../build/doc/experimental.rst:9
+msgid "They are not officially of the current release."
+msgstr "No son oficialmente de la versión actual."
+
+#: ../../build/doc/experimental.rst:10
+msgid "They likely will not be officially be part of the next release:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
+
+#: ../../build/doc/experimental.rst:12
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
+
+#: ../../build/doc/experimental.rst:13
+msgid "Name might change."
+msgstr "El nombre puede cambiar."
+
+#: ../../build/doc/experimental.rst:14
+msgid "Signature might change."
+msgstr "La firma (declaración de funciones) podría cambiar."
+
+#: ../../build/doc/experimental.rst:15
+msgid "Functionality might change."
+msgstr "La funcionalidad puede cambiar."
+
+#: ../../build/doc/experimental.rst:16
+msgid "pgTap tests might be missing."
+msgstr "Las pruebas de pgTap pueden estar ausentes."
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need c/c++ coding."
+msgstr "Posiblemente necesite codificación c/c++."
+
+#: ../../build/doc/experimental.rst:18
+msgid "May lack documentation."
+msgstr "Puede haber carencia de documentación."
+
+#: ../../build/doc/experimental.rst:19
+msgid "Documentation if any might need to be rewritten."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
+
+#: ../../build/doc/experimental.rst:20
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+"Ejemplos de documentación que puede ser necesario generar automáticamente."
+
+#: ../../build/doc/experimental.rst:21
+msgid "Might need a lot of feedback from the comunity."
+msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+
+#: ../../build/doc/experimental.rst:22
+msgid "Might depend on a proposed function of pgRouting"
+msgstr "Puede depender de una función propuesta de pgRouting."
+
+#: ../../build/doc/experimental.rst:23
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr "Podría depender de una función obsoleta de pgRouting"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:26
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:27
+msgid "To-be experimental on v3.0.0"
+msgstr "Para ser experimental en v3.0.0"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:30
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:155
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:32
+msgid ""
+"It is well-known that the shortest paths between a single source and all "
+"other vertices can be found using Breadth First Search in :math:`O(|E|)` in "
+"an unweighted graph, i.e. the distance is the minimal number of edges that "
+"you need to traverse from the source to another vertex. We can interpret "
+"such a graph also as a weighted graph, where every edge has the weight 1. If"
+" not all edges in graph have the same weight, that we need a more general "
+"algorithm, like Dijkstra's Algorithm  which runs in :math:`O(|E|log|V|)` "
+"time."
+msgstr ""
+"Es bien sabido que las rutas más cortas entre una sola fuente y todos los "
+"demás vértices se pueden encontrar usando Breadth First Search en "
+":math:`O(|E|)` en un grafo no ponderado, es decir, la distancia es el número"
+" mínimo de aristas que necesita atravesar desde el origen a otro vértice. "
+"Podemos interpretar tal grafo también como un grafo ponderado, donde cada "
+"arista tiene el peso 1. Si no todas las aristas del grafo tienen el mismo "
+"peso, que necesitamos un algoritmo más general, como el Algoritmo de "
+"Dijkstra que se ejecuta en :math:`O(|E|log|V|)` tiempo."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:34
+msgid ""
+"However if the weights are more constrained, we can use a faster algorithm. "
+"This algorithm, termed as 'Binary Breadth First Search' as well as '0-1 "
+"BFS', is a variation of the standard Breadth First Search problem to solve "
+"the SSSP (single-source shortest path) problem in :math:`O(|E|)`, if the "
+"weights of each edge belongs to the set {0,X}, where 'X' is any non-negative"
+" real integer."
+msgstr ""
+"Sin embargo, si los pesos están más restringidos, podemos usar un algoritmo "
+"más rápido. Este algoritmo, llamado 'Binary Breadth First Search' así como "
+"'0-1 BFS', es una variación del problema estándar de Breadth First Search "
+"para resolver el problema SSSP (ruta más corta de una sola fuente) en "
+":math:`O(|E|)`,  si los pesos de cada arista pertenecen al conjunto de "
+"caracteres de {0,X}, donde 'X' es cualquier entero real no negativo."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:37
+msgid "**The main Characteristics are:**"
+msgstr "**Las características principales son:**"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:39
+msgid ""
+"Process is done only on 'binary graphs'. ('Binary Graph': Any graph whose "
+"edge-weights belongs to the set {0,X}, where 'X' is any non-negative real "
+"integer.)"
+msgstr ""
+"El proceso se realiza sólo en 'grafos binarios'. ('Grafo binario': Cualquier"
+" grafo  cuyos pesos de aristas pertenezcan al conjunto {0, X}, donde 'X' es "
+"cualquier entero real no negativo)."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:41
+msgid ""
+"For optimization purposes, any duplicated value in the `start_vids` or "
+"`end_vids` are ignored."
+msgstr ""
+"Para fines de optimización, se omite cualquier valor duplicado en "
+"`start_vids` o `end_vids`."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:43
+msgid "The returned values are ordered:"
+msgstr "Los valores regresados se ordenan:"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:45
+msgid "`start_vid` ascending"
+msgstr "`start_vid` ascendente"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:46
+msgid "`end_vid` ascending"
+msgstr "`end_vid` ascendente"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:48
+msgid "Running time: :math:`O(| start\\_vids | * |E|)`"
+msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * |E|)`"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:51
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:67
+msgid ""
+"From vertex :math:`2` to vertex  :math:`3` on a **directed** binary graph"
+msgstr ""
+"Del vértice :math:`2` al vértice :math:`3` en un grafo binario **dirigido** "
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:77
+msgid "One to One"
+msgstr "Uno a Uno"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:86
+msgid ""
+"From vertex :math:`2` to vertex  :math:`3` on an **undirected** binary graph"
+msgstr ""
+"Del vértice :math:`2` al vértice :math:`3` en un grafo binario **no "
+"dirigido** "
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:96
+msgid "One to many"
+msgstr "Uno a muchos"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:105
+msgid ""
+"From vertex :math:`2` to vertices :math:`\\{3, 5\\}` on an **undirected** "
+"binary graph"
+msgstr ""
+"Del vértice :math:`2`  a los vértices :math:`\\{3, 5\\}` en un grafo binario"
+"  **no dirigido**"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:115
+msgid "Many to One"
+msgstr "Muchos a Uno"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:124
+msgid ""
+"From vertices :math:`\\{2, 11\\}` to vertex :math:`5` on a **directed** "
+"binary graph"
+msgstr ""
+"De los vértices :math:`\\{2, 11\\}` al vértice :math:`5` en un grafo binario"
+" **dirigido**"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:134
+msgid "Many to Many"
+msgstr "Muchos a Muchos"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:143
+msgid ""
+"From vertices :math:`\\{2, 11\\}` to vertices :math:`\\{3, 5\\}` on an "
+"**undirected** binary graph"
+msgstr ""
+"De los vértices :math:`\\{2, 11\\}` a los vértices :math:`\\{3, 5\\}` en un "
+"grafo binario **no dirigido**"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:150
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:155
+msgid "Parameter"
+msgstr "Parámetro"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:155
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:155
+msgid "Default"
+msgstr "Valores predeterminados"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:157
+msgid "**edges_sql**"
+msgstr "**edges_sql**"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:157
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:157
+msgid "Inner SQL query as described below."
+msgstr "Consulta SQL interna como se describe a continuación."
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:158
+msgid "**start_vid**"
+msgstr "**start_vid**"
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:158
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:160
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:158
+msgid "Identifier of the starting vertex of the path."
+msgstr "Identificador del vértice inicial de la ruta."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:159
+msgid "**start_vids**"
+msgstr "**start_vids**"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:159
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:161
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:159
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:160
+msgid "**end_vid**"
+msgstr "**end_vid**"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:160
+msgid "Identifier of the ending vertex of the path."
+msgstr "Identificador del vértice final de la ruta."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:161
+msgid "**end_vids**"
+msgstr "**end_vids**"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:161
+msgid "Array of identifiers of ending vertices."
+msgstr "Arreglo de identificadores de vértices finales."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:162
+msgid "**directed**"
+msgstr "**dirigido**"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:162
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:162
+msgid "``true``"
+msgstr "``true``"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:162
+msgid "When ``true`` Graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:163
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:169
+msgid "Inner query"
+msgstr "Consulta interna"
+
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "**id**"
+msgstr "**id**"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "``ANY-INTEGER``"
+msgstr "``ANY-INTEGER``"
+
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "**source**"
+msgstr "**origen**"
+
+#: ../../build/doc/pgRouting-concepts.rst:7
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "**target**"
+msgstr "**objetivo**"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:26
+msgid "**cost**"
+msgstr "**costo**"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``ANY-NUMERICAL``"
+msgstr "``ANY-NUMERICAL``"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "Weight of the edge  `(source, target)`"
+msgstr "Peso de la arista `(source, target)`"
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid ""
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "**reverse_cost**"
+msgstr "**reverse_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "-1"
+msgstr "-1"
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Weight of the edge `(target, source)`,"
+msgstr "Peso de la arista `(target, source)`,"
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid ""
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
+msgstr ""
+"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
+"es parte del grafo."
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Where:"
+msgstr "Donde:"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-INTEGER"
+msgstr "ANY-INTEGER"
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "SMALLINT, INTEGER, BIGINT"
+
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
+msgstr "ANY-NUMERICAL"
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:178
+msgid "Return Columns"
+msgstr "Columnas de Devoluciones"
+
+#: ../../build/doc/pgRouting-concepts.rst:3
+msgid ""
+"Returns set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, "
+"edge, cost, agg_cost)``"
+msgstr ""
+"Devuelve el conjunto de ``(seq, path_id, path_seq [, start_vid] [, end_vid],"
+" node, edge, cost, agg_cost)``"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "**seq**"
+msgstr "**seq**"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "``INT``"
+msgstr "``INT``"
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de **1**."
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid "**path_id**"
+msgstr "**path_id**"
+
+#: ../../build/doc/pgRouting-concepts.rst:9
+msgid ""
+"Path identifier. Has value **1** for the first of a path. Used when there "
+"are multiple paths for the same ``start_vid`` to ``end_vid`` combination."
+msgstr ""
+"Identificador de ruta. Tiene el valor **1** para el primero de una ruta. Se "
+"utiliza cuando hay varias rutas  para la misma combinación de ``start_vid`` "
+"a ``end_vid``."
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "**path_seq**"
+msgstr "**path_seq**"
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid ""
+"Relative position in the path. Has value **1** for the beginning of a path."
+msgstr ""
+"Posición relativa en la ruta. Tiene el valor **1** para el principio de una "
+"ruta."
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid ""
+"Identifier of the starting vertex. Returned when multiple starting vetrices "
+"are in the query."
+msgstr ""
+"Identificador del vértice inicial. Se devuelve cuando hay varias vetrices "
+"iniciales en la consulta."
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "`Many to One`_"
+msgstr "`Muchos a Uno`_"
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "`Many to Many`_"
+msgstr "`Many to Many`_"
+
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid ""
+"Identifier of the ending vertex. Returned when multiple ending vertices are "
+"in the query."
+msgstr ""
+"Identificador del vértice final. Se devuelve cuando hay varios vértices "
+"finales en la consulta."
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "`One to Many`_"
+msgstr "`Uno a Muchos`_"
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "**node**"
+msgstr "**nodo**"
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
+msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "**edge**"
+msgstr "**arista**"
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid ""
+"Identifier of the edge used to go from ``node`` to the next node in the path"
+" sequence. ``-1`` for the last node of the path."
+msgstr ""
+"Identificador del borde utilizado para ir del ``nodo`` al siguiente nodo de "
+"la secuencia de ruta. ``-1``  para el último nodo de la ruta."
+
+#: ../../build/doc/pgRouting-concepts.rst:26
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+#: ../../build/doc/pgRouting-concepts.rst:26
+msgid ""
+"Cost to traverse from ``node`` using ``edge`` to the next node in the path "
+"sequence."
+msgstr ""
+"Costo de desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
+"nodo en la secuencia de ruta."
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "**agg_cost**"
+msgstr "**agg_cost**"
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Aggregate cost from ``start_v`` to ``node``."
+msgstr "Coste agregado de ``start_v`` to ``node``."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:186
+msgid "Example Data"
+msgstr "Datos de ejemplo"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:188
+msgid "This type of data is used on the examples of this page."
+msgstr "Este tipo de datos se utiliza en los ejemplos de esta página."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:190
+msgid ""
+"Edwards-Moore Algorithm is best applied when trying to answer queries such "
+"as the following: **“Find the path with the minimum number from Source to "
+"Destination”** Here: * *Source* = Source Vertex, *Destination* =  Any "
+"arbitrary destination vertex * *X* is an event/property * Each edge  in the "
+"graph is either “*X*” or “*Not X*” ."
+msgstr ""
+"El Algoritmo Edwards-Moore se aplica mejor cuando se intenta responder a "
+"consultas como las siguientes: **“Encuentra la ruta con el número mínimo de "
+"Origen a Destino”** Aquí: * *Fuente* = Vértice de origen, *Destino* = "
+"Cualquier vértice de destino arbitrario * *X* es un evento/propiedad * Cada "
+"arista del grafo es “*X*” o “*Not X*” ."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:197
+msgid ""
+"Example: “Find the path with the minimum number of road works from Source to"
+" Destination”"
+msgstr ""
+"Ejemplo: \"Encuentra la ruta con el número mínimo de obras de carretera de "
+"Origen a Destino\""
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:200
+msgid ""
+"Here, a road under work(aka **road works**)  means that part of the road is "
+"occupied for construction work/maintenance."
+msgstr ""
+"Aquí, una carretera en obras (también conocida como **obras viales**) "
+"significa que parte de la carretera está ocupada para trabajos de "
+"construcción/mantenimiento."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:203
+msgid ""
+"Here: * Edge ( *u* , *v* ) has weight = 0 if no road work is ongoing on the "
+"road from *u* to *v*. * Edge ( *u*, *v*) has weight = 1 if road work is "
+"ongoing on the road from *u* to *v*."
+msgstr ""
+"Aquí: * Arista ( *u* , *v* ) pesa = 0 si no hay obras viales en ese momento "
+"en la carreterea desde *u* a *v*. * Arista ( *u*, *v*) pesa = 1 si hay obras"
+" viales en ese momento desde *u* a *v*."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:207
+msgid ""
+"Then, upon running the algorithm, we obtain the path with the minimum number"
+" of road works from the given source and destination."
+msgstr ""
+"Luego, al ejecutar el algoritmo, obtenemos la ruta con el número mínimo de "
+"obras viales desde el origen y el destino dados."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:210
+msgid ""
+"Thus, the queries used in the previous section can be interpreted in this "
+"manner."
+msgstr ""
+"Por lo tanto, las consultas utilizadas en la sección anterior se pueden "
+"interpretar de esta manera."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:213
+msgid "Table Data"
+msgstr "Datos de la Tabla"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:216
+msgid ""
+"The queries in the previous sections use the table 'roadworks'. The data of "
+"the table:"
+msgstr ""
+"Las consultas de las secciones anteriores utilizan la tabla 'roadworks'. Los"
+" datos de la tabla:"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:224
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:226
+msgid "https://cp-algorithms.com/graph/01_bfs.html"
+msgstr "https://cp-algorithms.com/graph/01_bfs.html"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:227
+msgid "https://codeforces.com/blog/entry/22276"
+msgstr "https://codeforces.com/blog/entry/22276"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:228
+#, python-format
+msgid ""
+"https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
+msgstr ""
+"https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:231
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:232
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:233
+msgid ":ref:`search`"
+msgstr ":ref:`search`"

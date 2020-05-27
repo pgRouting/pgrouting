@@ -35,10 +35,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 -- ONE TO ONE
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid BIGINT,
-    end_pid BIGINT,
+    TEXT, -- edges_sql (required)
+    TEXT, -- points_sql (required)
+    BIGINT, -- end_pid (required)
+    BIGINT, -- end_pid (required)
 
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
@@ -58,10 +58,10 @@ ROWS 1000;
 
 -- ONE TO MANY
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid BIGINT,
-    end_pids ANYARRAY,
+    TEXT, -- edges_sql (required)
+    TEXT, -- points_sql (required)
+    BIGINT, -- end_pid (required)
+    ANYARRAY, -- end_pid (required)
 
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
@@ -81,10 +81,10 @@ ROWS 1000;
 
 -- MANY TO ONE
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pids ANYARRAY,
-    end_pid BIGINT,
+    TEXT, -- edges_sql (required)
+    TEXT, -- points_sql (required)
+    ANYARRAY, -- end_pid (required)
+    BIGINT, -- end_pid (required)
 
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
@@ -104,10 +104,10 @@ ROWS 1000;
 
 -- MANY TO MANY
 CREATE OR REPLACE FUNCTION pgr_withPointsCost(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pids ANYARRAY,
-    end_pids ANYARRAY,
+    TEXT, -- edges_sql (required)
+    TEXT, -- points_sql (required)
+    ANYARRAY, -- end_pid (required)
+    ANYARRAY, -- end_pid (required)
 
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
