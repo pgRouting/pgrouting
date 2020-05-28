@@ -42,6 +42,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "depthFirstSearch/pgr_depthFirstSearch.hpp"
 
 
+/**********************************************************************/
+/*
+pgr_depthFirstSearch(
+    edges_sql TEXT,
+    root_vids ANYARRAY,
+    max_depth BIGINT DEFAULT 9223372036854775807,
+    directed BOOLEAN DEFAULT true
+);
+*/
+/**********************************************************************/
+
+template < class G >
+std::vector<pgr_mst_rt>
+pgr_depthFirstSearch(
+        G &graph,
+        std::vector < int64_t > roots,
+        int64_t max_depth) {
+    std::sort(roots.begin(), roots.end());
+    roots.erase(
+            std::unique(roots.begin(), roots.end()),
+            roots.end());
+
+
+    pgrouting::functions::Pgr_depthFirstSearch< G > fn_depthFirstSearch;
+    auto results = fn_depthFirstSearch.depthFirstSearch(
+            graph, roots, max_depth);
+    return results;
+}
+
+
 // TODO(krashish8): Use the data_edges, max_depth and directed parameter below.
 void
 do_pgr_depthFirstSearch(
@@ -78,13 +108,13 @@ do_pgr_depthFirstSearch(
         graphType gType = directed ? DIRECTED : UNDIRECTED;
 
         if (directed) {
-            log << "Graph is directed";
-            typedef typename pgrouting::DirectedGraph G;
-            G digraph(gType);
+            log << "Working with directed Graph\n";
+            pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            pgrouting::functions::Pgr_depthFirstSearch< G > fn_depthFirstSearch;
-            results = fn_depthFirstSearch.depthFirstSearch(
-                    digraph, roots, max_depth);
+            results = pgr_depthFirstSearch(
+                    digraph,
+                    roots,
+                    max_depth);
         }
 
 #if 0
