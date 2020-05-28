@@ -75,6 +75,18 @@ do_pgr_depthFirstSearch(
 
         std::vector<pgr_mst_rt> results;
 
+        graphType gType = directed ? DIRECTED : UNDIRECTED;
+
+        if (directed) {
+            log << "Graph is directed";
+            typedef typename pgrouting::DirectedGraph G;
+            G digraph(gType);
+            digraph.insert_edges(data_edges, total_edges);
+            pgrouting::functions::Pgr_depthFirstSearch< G > fn_depthFirstSearch;
+            results = fn_depthFirstSearch.depthFirstSearch(
+                    digraph, roots, max_depth);
+        }
+
 #if 0
         pgrouting::UndirectedGraph undigraph(UNDIRECTED);
         undigraph.insert_min_edges_no_parallel(data_edges, total_edges);
