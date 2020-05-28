@@ -71,8 +71,6 @@ pgr_depthFirstSearch(
     return results;
 }
 
-
-// TODO(krashish8): Use the data_edges, max_depth and directed parameter below.
 void
 do_pgr_depthFirstSearch(
         pgr_edge_t  *data_edges,
