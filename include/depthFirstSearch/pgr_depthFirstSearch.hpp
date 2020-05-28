@@ -57,6 +57,7 @@ class Pgr_depthFirstSearch {
             using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
 
             if (graph.has_vertex(root)) {
+                results.push_back({root, 0, root, -1, 0.0, 0.0});
                 boost::depth_first_search(graph.graph,
                                          visitor(dfs_visitor(graph.get_V(root), visited_order))
                                          .root_vertex(graph.get_V(root)));
