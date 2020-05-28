@@ -49,7 +49,6 @@ class Pgr_depthFirstSearch {
             G &graph,
             std::vector<int64_t> roots,
             int64_t depth) {
-
         std::vector<pgr_mst_rt> results;
 
         for (auto root : roots) {
