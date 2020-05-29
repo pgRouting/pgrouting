@@ -32,12 +32,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/pgr_messages.h"
 
 namespace pgrouting {
 namespace functions {
 
 template <class G>
-class Pgr_depthFirstSearch {
+class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
  public:
     typedef typename G::V V;
     typedef typename G::E E;
@@ -50,16 +51,29 @@ class Pgr_depthFirstSearch {
             std::vector<int64_t> roots,
             int64_t depth) {
         std::vector<pgr_mst_rt> results;
+        using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
 
         for (auto root : roots) {
             std::vector<E> visited_order;
-            using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
 
             if (graph.has_vertex(root)) {
                 results.push_back({root, 0, root, -1, 0.0, 0.0});
-                boost::depth_first_search(graph.graph,
-                                         visitor(dfs_visitor(graph.get_V(root), visited_order))
-                                         .root_vertex(graph.get_V(root)));
+                try {
+                    boost::depth_first_search(
+                            graph.graph,
+                            visitor(dfs_visitor(graph.get_V(root), visited_order))
+                            .root_vertex(graph.get_V(root)));
+                } catch(found_goals &) {
+                    {}
+                } catch (boost::exception const& ex) {
+                    (void)ex;
+                    throw;
+                } catch (std::exception &e) {
+                    (void)e;
+                    throw;
+                } catch (...) {
+                    throw;
+                }
                 auto result = get_results(visited_order, root, depth, graph);
                 results.insert(results.end(), result.begin(), result.end());
             }
@@ -90,11 +104,11 @@ class Pgr_depthFirstSearch {
             if (max_depth >= depth[v]) {
                 results.push_back({
                     source,
-                        depth[v],
-                        graph[v].id,
-                        graph[edge].id,
-                        graph[edge].cost,
-                        agg_cost[v]
+                    depth[v],
+                    graph[v].id,
+                    graph[edge].id,
+                    graph[edge].cost,
+                    agg_cost[v]
                 });
             }
         }
