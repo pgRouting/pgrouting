@@ -30,8 +30,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <algorithm>
+#include <string>
 
 #include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
 
 #include "depthFirstSearch/pgr_depthFirstSearch.hpp"
 
@@ -52,16 +54,17 @@ std::vector<pgr_mst_rt>
 pgr_depthFirstSearch(
         G &graph,
         std::vector < int64_t > roots,
-        int64_t max_depth) {
+        int64_t max_depth,
+        std::string &log) {
     std::sort(roots.begin(), roots.end());
     roots.erase(
             std::unique(roots.begin(), roots.end()),
             roots.end());
 
-
     pgrouting::functions::Pgr_depthFirstSearch< G > fn_depthFirstSearch;
     auto results = fn_depthFirstSearch.depthFirstSearch(
             graph, roots, max_depth);
+    log += fn_depthFirstSearch.get_log();
     return results;
 }
 
@@ -99,6 +102,7 @@ do_pgr_depthFirstSearch(
 
         graphType gType = directed ? DIRECTED : UNDIRECTED;
 
+        std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
@@ -106,8 +110,20 @@ do_pgr_depthFirstSearch(
             results = pgr_depthFirstSearch(
                     digraph,
                     roots,
-                    max_depth);
+                    max_depth,
+                    logstr);
+        } else {
+            log << "Working with Undirected Graph\n";
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(data_edges, total_edges);
+
+            results = pgr_depthFirstSearch(
+                    undigraph,
+                    roots,
+                    max_depth,
+                    logstr);
         }
+        log << logstr;
 
 #if 0
         pgrouting::UndirectedGraph undigraph(UNDIRECTED);
