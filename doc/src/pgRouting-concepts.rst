@@ -456,7 +456,6 @@ Column         Type       Description
 
                           * `Many to One`_
                           * `Many to Many`_
-                          * `Combinations SQL`_
 
 
 **end_vid**    ``BIGINT`` Identifier of the ending vertex.
@@ -464,7 +463,6 @@ Column         Type       Description
 
                           * `One to Many`_
                           * `Many to Many`_
-                          * `Combinations SQL`_
 
 **node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
 **edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
