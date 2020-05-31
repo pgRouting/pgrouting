@@ -26,22 +26,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#include "c_common/postgres_connection.h"
-
-
-/* for macro PGR_DBG */
-#include "c_common/debug_macro.h"
-/* for pgr_global_report */
-#include "c_common/e_report.h"
-/* for time_msg & clock */
-#include "c_common/time_msg.h"
-/* for functions to get edges informtion */
-#include "c_common/edges_input.h"
-
-#include "drivers/LTDTree/LTDTree_driver.h"  // the link to the C++ code of the function
-
-PGDLLEXPORT Datum _pgr_LTDTree(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_LTDTree);
 
 
 /******************************************************************************/
