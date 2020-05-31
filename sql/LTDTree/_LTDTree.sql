@@ -29,5 +29,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 -- pgr_LTDTree
 ---------------
+CREATE OR REPLACE FUNCTION _pgr_LTDTree(
+    edges_sql TEXT,
+    root_vertex BIGINT
 
+/**TODO**
+specify the output columns and how it returns
+******/
+
+    --OUT seq INTEGER,
+    --OUT sorted_v BIGINT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE c VOLATILE STRICT;
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_LTDTree(TEXT)
+IS 'pgRouting internal function';
 
