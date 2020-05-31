@@ -26,18 +26,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-********************************************************************PGR-GNU*/
 
-#include "drivers/LTDTree/LTDTree_driver.h"
-#include "pgr_LTDTree_driver.hpp"
-#include <sstream>
-#include <deque>
-#include <vector>
 
-#include "dijkstra/pgr_dijkstra.hpp"
 
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.h"
 
 /**TODO**
 Look from template
