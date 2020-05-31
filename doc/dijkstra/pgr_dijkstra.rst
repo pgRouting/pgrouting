@@ -195,6 +195,9 @@ Many to Many
    :start-after: -- q5
    :end-before: -- q6
 
+.. index::
+    single: dijkstra(Combinations)
+
 Combinations SQL
 ...............................................................................
 
