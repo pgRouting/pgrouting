@@ -143,6 +143,7 @@ Across this documentation, to indicate which overload we use the following terms
 * `One to Many`_
 * `Many to One`_
 * `Many to Many`_
+* `Combinations SQL`_
 
 Depending on the overload are the parameters used, keeping consistency across
 all functions.
@@ -179,6 +180,15 @@ When routing from:
 * From **many** starting vertices
 * to **many** ending vertices
 
+Combinations SQL
+...............................................................................
+
+When routing from:
+
+* From **many** different starting vertices
+* to **many** different ending vertices
+* Every tuple specifies a pair of a start vertex and an end vertex
+* Users can define the combinations as desired.
 
 
 
@@ -446,7 +456,7 @@ Column         Type       Description
 
                           * `Many to One`_
                           * `Many to Many`_
-                          * `Combinations Query`_
+                          * `Combinations SQL`_
 
 
 **end_vid**    ``BIGINT`` Identifier of the ending vertex.
@@ -454,7 +464,7 @@ Column         Type       Description
 
                           * `One to Many`_
                           * `Many to Many`_
-                          * `Combinations Query`_
+                          * `Combinations SQL`_
 
 **node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
 **edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
