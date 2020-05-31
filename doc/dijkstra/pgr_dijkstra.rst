@@ -20,7 +20,7 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
-* Version 3.1.?
+* Version 3.1.0
 
   * New **Proposed** functions:
 
@@ -208,8 +208,8 @@ Combinations SQL
 
 
 .. literalinclude:: doc-pgr_dijkstra.queries
-   :start-after: -- q6
-   :end-before: -- q7
+   :start-after: -- q19
+   :end-before: -- q20
 
 Parameters
 -------------------------------------------------------------------------------
@@ -239,9 +239,6 @@ Inner query
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
-
-Combinations query
--------------------------------------------------------------------------------
 
 .. rubric::combinations_sql
 
