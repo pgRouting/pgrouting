@@ -250,3 +250,17 @@ SELECT * FROM pgr_dijkstra(
 );
 
 \echo -- q18
+
+-- pgr_dijkstra combinations SQL
+-------------------------------------------------------------------------------
+
+\echo -- q19
+
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT * FROM combinations_table LIMIT 3',
+    FALSE
+);
+
+\echo -- q20
+
