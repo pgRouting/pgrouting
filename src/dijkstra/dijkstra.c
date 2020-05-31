@@ -166,12 +166,12 @@ process_combinations(
         pgr_get_edges_reversed(edges_sql, &edges, &total_edges);
     }
 
-    if (total_edges == 0 ) {
+    if (total_edges == 0) {
         pgr_SPI_finish();
         return;
     } else {
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
-        if(total_combinations == 0){
+        if (total_combinations == 0) {
             if (edges) pfree(edges);
             pgr_SPI_finish();
             return;
@@ -238,7 +238,7 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        if(PG_NARGS() == 7) {
+        if (PG_NARGS() == 7) {
             /**********************************************************************/
             // pgr_dijkstra(
             // sql TEXT,
@@ -260,8 +260,7 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     &result_count);
 
             /**********************************************************************/
-        }
-        else if(PG_NARGS() == 5){
+        } else if (PG_NARGS() == 5) {
             /**********************************************************************/
             // pgr_dijkstra(
             // edge_sql TEXT,
@@ -279,7 +278,6 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     &result_count);
 
             /**********************************************************************/
-
         }
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
