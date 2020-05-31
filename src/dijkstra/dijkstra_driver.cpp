@@ -32,13 +32,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "drivers/dijkstra/dijkstra_driver.h"
+#include <c_types/pgr_combination_t.h>
 
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <algorithm>
 #include <limits>
-#include <c_types/pgr_combination_t.h>
 
 #include "dijkstra/pgr_dijkstra.hpp"
 
@@ -86,7 +86,6 @@ pgr_dijkstra(
         std::vector < pgr_combination_t > &combinations,
         bool only_cost,
         bool normal) {
-
     pgrouting::Pgr_dijkstra< G > fn_dijkstra;
     auto paths = fn_dijkstra.dijkstra(
             graph,
@@ -99,7 +98,6 @@ pgr_dijkstra(
         }
     }
     return paths;
-
 }
 
 
@@ -269,7 +267,7 @@ do_pgr_combinations_dijkstra(
                     combinations_vector,
                     only_cost, normal);
         }
-		combinations_vector.clear();
+        combinations_vector.clear();
         size_t count(0);
         count = count_tuples(paths);
 
