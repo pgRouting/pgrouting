@@ -207,17 +207,9 @@ CREATE TABLE combinations_table (
 INSERT INTO combinations_table (
     source, target) VALUES
 (1, 2),
-(1, 17),
-(2, 12),
+(1, 4),
+(2, 1),
 (2, 4),
-(6, 13),
-(13, 6),
-(10, 4),
-(4, 10),
-(15, 4),
-(6, 11),
-(11,6),
-(9, 12),
-(12, 9),
-(7, 17);
+(2, 17);
+
 --COMBINATIONS CREATE end
