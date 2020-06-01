@@ -2,7 +2,7 @@
 pgRouting 3.1.0 Release Notes
 -------------------------------------------------------------------------------
 
-*New functions*
+*New proposed functions*
 
 * pgr_dijkstra(combinations)
 

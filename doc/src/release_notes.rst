@@ -54,7 +54,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 3.1.0 Release Notes
 -------------------------------------------------------------------------------
 
-.. rubric:: New functions
+.. rubric:: New proposed functions
 
 * pgr_dijkstra(combinations)
 

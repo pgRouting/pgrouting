@@ -24,7 +24,7 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
   * New **Proposed** functions:
 
-    * pgr_bdDijkstra(combinations sql)
+    * pgr_dijkstra(combinations sql)
 
 * Version 3.0.0
 
