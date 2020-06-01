@@ -128,13 +128,6 @@ do_pgr_depthFirstSearch(
         }
         log << logstr;
 
-#if 0
-        pgrouting::UndirectedGraph undigraph(UNDIRECTED);
-        undigraph.insert_min_edges_no_parallel(data_edges, total_edges);
-        pgrouting::functions::Pgr_prim<pgrouting::UndirectedGraph> prim;
-        results = prim.primDFS(undigraph, roots, max_depth);
-#endif
-
         auto count = results.size();
 
         if (count == 0) {
