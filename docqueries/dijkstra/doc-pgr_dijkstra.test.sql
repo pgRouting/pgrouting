@@ -62,6 +62,10 @@ SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2, 11], ARRAY[3,5]
 );
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT * FROM (VALUES (2, 3), (2, 5), (11, 3), (11, 5)) AS combinations (source, target)'
+);
 \echo -- q8
 
 
@@ -105,6 +109,11 @@ SELECT * FROM pgr_dijkstra(
     ARRAY[2, 11], ARRAY[3,5],
     FALSE
 );
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT * FROM (VALUES (2, 3), (2, 5), (11, 3), (11, 5)) AS combinations (source, target)',
+    FALSE
+);
 \echo -- q10
 
 
@@ -140,6 +149,10 @@ SELECT * FROM pgr_dijkstra(
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost FROM edge_table',
     ARRAY[2, 11], ARRAY[3,5]
+);
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost FROM edge_table',
+    'SELECT * FROM (VALUES (2, 3), (2, 5), (11, 3), (11, 5)) AS combinations (source, target)'
 );
 \echo -- q12
 
@@ -183,6 +196,11 @@ SELECT * FROM pgr_dijkstra(
     ARRAY[2, 11], ARRAY[3,5],
     FALSE
 );
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost FROM edge_table',
+    'SELECT * FROM (VALUES (2, 3), (2, 5), (11, 3), (11, 5)) AS combinations (source, target)',
+    FALSE
+);
 \echo -- q14
 
 
@@ -219,7 +237,10 @@ SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2], ARRAY[3]
 );
-
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT * FROM (VALUES(2, 3)) AS combinations (source, target)'
+);
 \echo -- q16
 
 
@@ -248,5 +269,23 @@ SELECT * FROM pgr_dijkstra(
     ARRAY[2], ARRAY[3],
     FALSE
 );
-
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT * FROM (VALUES(2, 3)) AS combinations (source, target)',
+    FALSE
+);
 \echo -- q18
+
+-- pgr_dijkstra combinations SQL
+-------------------------------------------------------------------------------
+
+\echo -- q19
+
+SELECT * FROM pgr_dijkstra(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT * FROM combinations_table',
+    FALSE
+);
+
+\echo -- q20
+

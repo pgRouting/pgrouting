@@ -20,6 +20,12 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
+* Version 3.1.0
+
+  * New **Proposed** functions:
+
+    * pgr_dijkstra(combinations sql)
+
 * Version 3.0.0
 
   * **Official** functions
@@ -96,6 +102,7 @@ Signatures
     pgr_dijkstra(edges_sql, start_vid,  end_vids [, directed])
     pgr_dijkstra(edges_sql, start_vids, end_vid  [, directed])
     pgr_dijkstra(edges_sql, start_vids, end_vids [, directed])
+    pgr_dijkstra(edges_sql, combinations_sql [, directed])
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -188,22 +195,42 @@ Many to Many
    :start-after: -- q5
    :end-before: -- q6
 
+.. index::
+    single: dijkstra(Combinations)
+
+Combinations SQL
+...............................................................................
+
+.. code-block:: none
+
+    pgr_dijkstra(TEXT edges_sql, TEXT combination_sql, BOOLEAN directed:=true);
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
+
+:Example: Three (source, target) vertex combinaitons: (from :math:`1` to :math:`2`), (form :math:`1` to :math:`17` -no route-), and (form :math:`2` to :math:`12`) on an **undirected** graph
+
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q19
+   :end-before: -- q20
+
 Parameters
 -------------------------------------------------------------------------------
 
 .. pgr_dijkstra_parameters_start
 
-============== ================== ======== =================================================
-Parameter      Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**  ``TEXT``                    Inner SQL query as described below.
-**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
-**directed**   ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
-                                           - When ``false`` the graph is considered as `Undirected`.
-============== ================== ======== =================================================
+====================== ================== ======== =================================================
+Parameter              Type               Default     Description
+====================== ================== ======== =================================================
+**edges_sql**          ``TEXT``                    Inner SQL query as described below.
+**start_vid**          ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids**         ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**            ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**           ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+**combinations_sql**   ``TEXT``                    Inner SQL query producing pairs of starting and ending vertices as described below.
+**directed**           ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
+                                                   - When ``false`` the graph is considered as `Undirected`.
+====================== ================== ======== =================================================
 
 .. pgr_dijkstra_parameters_end
 
@@ -215,6 +242,12 @@ Inner query
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
+
+.. rubric::combinations_sql
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Return Columns
 -------------------------------------------------------------------------------

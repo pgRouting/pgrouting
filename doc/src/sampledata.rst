@@ -43,6 +43,14 @@ To be able to execute the sample queries, run the following SQL commands to crea
    :start-after: --EDGE TABLE TOPOLOGY start
    :end-before: --EDGE TABLE TOPOLOGY end
 
+.. rubric:: Combinations of start and end vertices
+
+- Used to test the combinations_sql signature in dijkstra-like functions.
+
+.. literalinclude:: ../../tools/testers/sampledata.sql
+   :start-after: --COMBINATIONS CREATE start
+   :end-before: --COMBINATIONS CREATE end
+
 .. rubric:: Points of interest
 
 - When points outside of the graph.

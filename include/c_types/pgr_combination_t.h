@@ -1,8 +1,14 @@
 /*PGR-GNU*****************************************************************
-File: pgr_edge_t.h
+File: pgr_combination_t.h
 
-Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2020 Mahmoud SAKR and Esteban ZIMANYI
+mail: m_attia_sakr@yahoo.com, estebanzimanyi@gmail.com
 
 ------
 
@@ -23,8 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_EDGE_T_H_
-#define INCLUDE_C_TYPES_PGR_EDGE_T_H_
+#ifndef INCLUDE_C_TYPES_PGR_COMBINATION_T_H_
+#define INCLUDE_C_TYPES_PGR_COMBINATION_T_H_
 #pragma once
 
 /* for int64_t */
@@ -35,11 +41,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct {
-    int64_t id;
     int64_t source;
     int64_t target;
-    double cost;
-    double reverse_cost;
-} pgr_edge_t;
+} pgr_combination_t;
+
 
 #endif  // INCLUDE_C_TYPES_PGR_COMBINATION_T_H_
