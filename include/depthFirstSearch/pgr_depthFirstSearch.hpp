@@ -45,9 +45,6 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
     typedef typename G::V V;
     typedef typename G::E E;
 
-    // TODO(ashish): Use both boost::depth_first_search and boost::undirected_dfs below,
-    //               for directed and undirected graphs.
-
     std::vector<pgr_mst_rt> depthFirstSearch(
             G &graph,
             std::vector<int64_t> roots,
