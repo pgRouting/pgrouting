@@ -55,6 +55,7 @@ pgr_depthFirstSearch(
         G &graph,
         std::vector < int64_t > roots,
         int64_t max_depth,
+        bool directed,
         std::string &log) {
     std::sort(roots.begin(), roots.end());
     roots.erase(
@@ -63,7 +64,7 @@ pgr_depthFirstSearch(
 
     pgrouting::functions::Pgr_depthFirstSearch< G > fn_depthFirstSearch;
     auto results = fn_depthFirstSearch.depthFirstSearch(
-            graph, roots, max_depth);
+            graph, roots, max_depth, directed);
     log += fn_depthFirstSearch.get_log();
     return results;
 }
@@ -111,6 +112,7 @@ do_pgr_depthFirstSearch(
                     digraph,
                     roots,
                     max_depth,
+                    directed,
                     logstr);
         } else {
             log << "Working with Undirected Graph\n";
@@ -121,6 +123,7 @@ do_pgr_depthFirstSearch(
                     undigraph,
                     roots,
                     max_depth,
+                    directed,
                     logstr);
         }
         log << logstr;

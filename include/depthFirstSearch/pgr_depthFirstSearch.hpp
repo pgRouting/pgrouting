@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <visitors/dfs_visitor_with_root.hpp>
 #include <boost/graph/depth_first_search.hpp>
+#include <boost/graph/undirected_dfs.hpp>
 
 #include <vector>
 
@@ -49,7 +50,8 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
     std::vector<pgr_mst_rt> depthFirstSearch(
             G &graph,
             std::vector<int64_t> roots,
-            int64_t depth) {
+            int64_t depth,
+            bool directed) {
         std::vector<pgr_mst_rt> results;
         using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
 
@@ -59,10 +61,19 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
             if (graph.has_vertex(root)) {
                 results.push_back({root, 0, root, -1, 0.0, 0.0});
                 try {
-                    boost::depth_first_search(
+                    if (directed) {
+                        boost::depth_first_search(
                             graph.graph,
                             visitor(dfs_visitor(graph.get_V(root), visited_order))
                             .root_vertex(graph.get_V(root)));
+                    } else {
+                        std::map<E, boost::default_color_type> edge_color;
+                        boost::undirected_dfs(
+                            graph.graph,
+                            visitor(dfs_visitor(graph.get_V(root), visited_order))
+                            .edge_color_map(boost::make_assoc_property_map(edge_color))
+                            .root_vertex(graph.get_V(root)));
+                    }
                 } catch(found_goals &) {
                     {}
                 } catch (boost::exception const& ex) {
