@@ -6,8 +6,8 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2018 Aditya Pratap Singh
-Mail: adityapratap.singh28@gmail.com
+Copyright (c) 2020 Himanshu Raj
+Mail: raj.himanshu2@gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
