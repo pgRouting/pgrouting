@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
 File: kargersContraction.sql
 
-Copyright (c) 2018 Vicky Vergara
-Mail: vicky at georepublic dot de
+Copyright (c) 2020 Himanshu Raj
+Mail: raj.himanshu2@gmail.com
 
 ------
 
