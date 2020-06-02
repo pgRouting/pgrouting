@@ -24,14 +24,21 @@ pgr_depthFirstSearch - Experimental
 Description
 -------------------------------------------------------------------------------
 
-Visits the nodes in Depth First Search ordering from a root vertex to
-a particular depth.
+Depth First Search algorithm is a well known traversal algorithm which starts
+from a root vertex (``start_vid``) and visits all the nodes in a graph in the
+depth-first search traversal order. An optional non-negative maximum depth
+parameter (``max_depth``) can be specified to get the results upto a particular
+depth.
 
 **The main Characteristics are:**
 
 - The implementation works for both undirected and directed graphs.
 - Provides the Depth First Search traversal order from a source node to
-  a particular max depth level.
+  a particular maximum depth level.
+- For optimization purposes, any duplicated values in the `start_vids` are
+  ignored.
+- The returned values are ordered in ascending order of `start_vid`.
+- If the starting vertex does not exist, empty row is returned.
 - Depth First Search Running time: :math:`O(E + V)`
 
 Signatures
@@ -56,8 +63,9 @@ Single vertex
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree having as root vertex :math:`2`
+:Example: From start vertex :math:`2` on a **directed** graph
 
+.. TODO:
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: --q1
    :end-before: --q2
@@ -74,8 +82,10 @@ Multiple vertices
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example:
+:Example: From start vertices :math:`\{11, 12\}` with :math:`depth <= 2`
+          on a **directed** graph
 
+.. TODO:
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: --q2
    :end-before: --q3
@@ -83,6 +93,7 @@ Multiple vertices
 .. Parameters, Inner query & result columns
 
 .. depthFirstSearch-information-start
+
 
 
 
