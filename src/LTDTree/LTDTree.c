@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_types/pgr_ltdtree_rt .h"
+#include "c_types/pgr_ltdtree_rt.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 #include "drivers/LTDTree/LTDTree_driver.h"
@@ -135,7 +135,7 @@ _pgr_LTDTree(PG_FUNCTION_ARGS) {
         funcctx->max_calls = (uint32_t)result_count;
 #endif
         funcctx->user_fctx = result_tuples; //
-        if (get_call_result_type(fcinfo, NULL, &t uple_desc)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),

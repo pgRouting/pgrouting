@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
-#include <c_types/pgr_ltdtree_rt .h>
+#include <c_types/pgr_ltdtree_rt.h>
 
 #else
 #   include <stddef.h>
