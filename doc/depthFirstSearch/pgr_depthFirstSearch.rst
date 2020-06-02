@@ -7,11 +7,12 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_depthFirstSearch
+pgr_depthFirstSearch - Experimental
 ===============================================================================
 
 ``pgr_depthFirstSearch`` — Returns the traversal order(s) using Depth
-First Search algorithm.
+  First Search algorithm. In particular, the Depth First Search algorithm
+  and the Undirected DFS algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/depth_first_search.html
@@ -28,7 +29,7 @@ a particular depth.
 
 **The main Characteristics are:**
 
-- Works on both Undirected and Directed Graphs.
+- The implementation works for both undirected and directed graphs.
 - Provides the Depth First Search traversal order from a source node to
   a particular max depth level.
 - Depth First Search Running time: :math:`O(E + V)`
