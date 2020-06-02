@@ -165,6 +165,73 @@ Column           Type        Description
 .. result columns end
 
 
+Additional Examples
+-------------------------------------------------------------------------------
+
+The examples of this section are based on the :doc:`sampledata` network.
+
+.. TODO: CHANGE THIS
+   The examples include combinations ... in a directed and undirected graph.
+
+**Directed Graph**
+
+:Examples: For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
+
+The examples in this section use the following:
+
+* :ref:`fig1`
+
+.. TODO
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+**Undirected Graph**
+
+:Examples: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
+
+The examples in this section use the following:
+
+* :ref:`fig2`
+
+.. TODO
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
+**Vertex Out Of Graph**
+
+:Example: For queries in which starting vertex is not present in the graph
+
+.. TODO:
+.. literalinclude:: doc-pgr_depthFirstSearch.queries
+   :start-after: --q5
+   :end-before: --q6
+
+Equivalences between signatures
+...............................................................................
+
+:Examples: For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
+
+The examples in this section use the following:
+
+* :ref:`fig1`
+
+.. TODO
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q6
+   :end-before: -- q7
+
+:Examples: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
+
+The examples in this section use the following:
+
+* :ref:`fig2`
+
+.. TODO
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q7
+   :end-before: -- q8
 
 
 See Also
