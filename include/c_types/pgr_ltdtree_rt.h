@@ -34,12 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct {
-    int64_t from_v;
-    int64_t depth;
-    int64_t node;
-    int64_t edge;
-    double cost;
-    double agg_cost;
+    int64_t seq;
+    int64_t vid;
+    int64_t idom;
+    //int64_t sdom;
+
 } pgr_ltdtree_rt;
 
 #endif  // INCLUDE_C_TYPES_PGR_MST_RT_H_
