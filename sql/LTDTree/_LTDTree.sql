@@ -30,15 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_LTDTree
 ---------------
 CREATE OR REPLACE FUNCTION _pgr_LTDTree(
-    edges_sql TEXT,
-    root_vertex BIGINT
+    IN TEXT, -- edges_sql (required)
+    IN BIGINT , -- vertex (required)
+    OUT seq integer,
+    OUT vid BIGINT,
+    OUT idom BIGINT)
 
-/**TODO**
-specify the output columns and how it returns
-******/
-
-    --OUT seq INTEGER,
-    --OUT sorted_v BIGINT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c VOLATILE STRICT;
