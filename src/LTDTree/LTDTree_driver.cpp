@@ -73,7 +73,7 @@ do_pgr_LTDTree(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    std::cout<<"Chedcking.................... "<<data_edges->cost<<" \n";
+
     /*
     try {
         pgassert(total_edges != 0);

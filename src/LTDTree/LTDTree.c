@@ -57,9 +57,11 @@ PG_FUNCTION_INFO_V1(_pgr_LTDTree);
 static
 void
 process(char* edges_sql,
-
+        int64_t root_vertex,
         pgr_ltdtree_rt **result_tuples,
         size_t *result_count) {
+    //result_count is a pointer it means we do not need to return
+    // but it will count, initially it is 0
     pgr_SPI_connect();
 
     size_t total_edges = 0;
@@ -77,13 +79,13 @@ process(char* edges_sql,
     char* err_msg = NULL;
     do_pgr_LTDTree(
             edges, total_edges,
-
+            root_vertex,
             result_tuples, result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
 
-    time_msg("processing pgr_transitiveClosure()", start_t, clock());
+    time_msg("processing pgr_LTDTree()", start_t, clock());
 
 
     if (err_msg && (*result_tuples)) {
@@ -107,7 +109,7 @@ _pgr_LTDTree(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**********************************************************************/
-    //transitiveClosure_rt  *result_tuples = NULL;
+
     pgr_ltdtree_rt *result_tuples =NULL;
     size_t result_count = 0;
     /**********************************************************************/
@@ -121,106 +123,57 @@ _pgr_LTDTree(PG_FUNCTION_ARGS) {
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)), //Converting sql to string
+                PG_GETARG_INT64(1), //2nd parameter //BIGINT to int_64
                 &result_tuples,
                 &result_count);
 
 
         /**********************************************************************/
 #if PGSQL_VERSION > 95
-        funcctx->max_calls = result_count;
+        funcctx->max_calls = result_count; //result_count is updated in process function call
 #else
         funcctx->max_calls = (uint32_t)result_count;
 #endif
-        funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+        funcctx->user_fctx = result_tuples; //
+        if (get_call_result_type(fcinfo, NULL, &t uple_desc)
                 != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
-        funcctx->tuple_desc = tuple_desc;
+        funcctx->tuple_desc = tuple_desc; //contains tuple description
         MemoryContextSwitchTo(oldcontext);
     }
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_ltdtree_rt*) funcctx->user_fctx;
+    result_tuples = (pgr_ltdtree_rt*) funcctx->user_fctx; //converting structure
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple   tuple;
+        HeapTuple   tuple; //We will set all the values
         Datum       result;
         Datum       *values;
         bool        *nulls;
         int16 typlen;
-        size_t      call_cntr = funcctx->call_cntr;
+        size_t call_cntr = funcctx->call_cntr;
 
 
-        size_t numb = 3;
+        size_t numb = 3; //Number of columns in outputs
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
         size_t i;
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-/*
-        size_t target_array_size =
-            (size_t)result_tuples[call_cntr].target_array_size;
-
-        Datum* target_array_array;
-        target_array_array = (Datum*) palloc(sizeof(Datum) *
-                (size_t)target_array_size);
-
-        for (i = 0; i < target_array_size; ++i) {
-            PGR_DBG("Storing target_array vertex %ld",
-                    result_tuples[call_cntr].target_array[i]);
-            target_array_array[i] =
-                Int64GetDatum(result_tuples[call_cntr].target_array[i]);
+            //Set your outputs from result_tuple
+            values[0] = Int32GetDatum(call_cntr + 1); /*TODO Chek for the sequence*/
+            values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
+	    values[1] = Int64GetDatum(result_tuples[call_cntr].idom);
+            tuple = heap_form_tuple(tuple_desc, values, nulls);
+            result = HeapTupleGetDatum(tuple);
+            SRF_RETURN_NEXT(funcctx, result);
+        }else {   /* do when there is no more left */
+            SRF_RETURN_DONE(funcctx);
         }
 
-        bool typbyval;
-        char typalign;
-        get_typlenbyvalalign(INT8OID, &typlen, &typbyval, &typalign);
-        ArrayType* arrayType;
-        /*
-         * https://doxygen.postgresql.org/arrayfuncs_8c.html
-
-         ArrayType* construct_array(
-         Datum*     elems,
-         int     nelems,
-         Oid     elmtype, int elmlen, bool elmbyval, char elmalign
-         )
-         */
-    /*    arrayType =  construct_array(
-                target_array_array,
-                (int)target_array_size,
-                INT8OID,  typlen, typbyval, typalign);
-
-           void TupleDescInitEntry(
-           TupleDesc   desc,
-           AttrNumber      attributeNumber,
-           const char *    attributeName,
-           Oid     oidtypeid,
-           int32   typmod,
-           int     attdim
-           )
-
-        TupleDescInitEntry(tuple_desc, (AttrNumber) 3, "target_array",
-                INT8ARRAYOID, -1, 0);
-
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
-        values[2] = PointerGetDatum(arrayType);
-
-
-        tuple = heap_form_tuple(tuple_desc, values, nulls);
-        result = HeapTupleGetDatum(tuple);
-
-
-        if (result_tuples[funcctx->call_cntr].target_array) {
-            pfree(result_tuples[funcctx->call_cntr].target_array);
-        }
-        SRF_RETURN_NEXT(funcctx, result);
-    } else {   */
-        SRF_RETURN_DONE(funcctx);
-    }
 }
