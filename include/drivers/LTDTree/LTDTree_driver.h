@@ -31,4 +31,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_LTDTREE_LTDTREE_DRIVER_H_
 
 
-#endif  // INCLUDE_DRIVERS_TOPOLOGICALSORT_TOPOLOGICALSORT_DRIVER_H_
+/* for size-t */
+#ifdef __cplusplus
+#   include <cstddef>
+#include <c_types/pgr_ltdtree_rt .h>
+
+#else
+#   include <stddef.h>
+#endif
+
+
+#include "c_types/pgr_edge_t.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/*********************************************************
+    edges_sql TEXT,
+
+ ********************************************************/
+void
+do_pgr_LTDTree(
+        pgr_edge_t  *data_edges,
+        size_t total_tuples,
+        pgr_ltdtree_rt **return_tuples,
+        size_t *return_count,
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // INCLUDE_DRIVERS_LTDTREE_LTDTREE_DRIVER_H_
