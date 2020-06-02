@@ -36,7 +36,7 @@ Look from template
 
 #include "drivers/LTDTree/LTDTree_driver.h"
 #include "LTDTree/pgr_LTDTree_driver.hpp"
-#include "c_types/pgr_ltdtree_rt .h"
+#include "c_types/pgr_ltdtree_rt.h"
 
 
 #include <string.h>
