@@ -94,6 +94,76 @@ Multiple vertices
 
 .. depthFirstSearch-information-start
 
+Parameters
+-------------------------------------------------------------------------------
+
+=================== ====================== =================================================
+Parameter           Type                   Description
+=================== ====================== =================================================
+**Edges SQL**       ``TEXT``               SQL query described in `Inner query`_.
+**Root vid**        ``BIGINT``             Identifier of the root vertex of the tree.
+
+                                           - Used on `Single Vertex`_.
+
+**Root vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
+
+                                           - Used on `Multiple Vertices`_.
+                                           - For optimization purposes, any duplicated value is ignored.
+=================== ====================== =================================================
+
+Optional Parameters
+...............................................................................
+
+=================== =========== =========================== =================================================
+Parameter           Type        Default                     Description
+=================== =========== =========================== =================================================
+**max_depth**       ``BIGINT``  :math:`9223372036854775807` Upper limit for depth of node in the tree
+
+                                                            - When value is ``Negative`` then **throws error**
+
+**directed**        ``BOOLEAN`` ``true``                    - When ``true`` Graph is considered `Directed`
+                                                            - When ``false`` the graph is considered as `Undirected`.
+=================== =========== =========================== =================================================
+
+Inner query
+-------------------------------------------------------------------------------
+
+.. rubric::Edges SQL
+
+.. include:: pgRouting-concepts.rst
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+
+.. result columns start
+
+Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
+
+===============  =========== ====================================================
+Column           Type        Description
+===============  =========== ====================================================
+**seq**          ``BIGINT``  Sequential value starting from :math:`1`.
+**depth**        ``BIGINT``  Depth of the ``node``.
+
+                             - :math:`0`  when ``node`` = ``start_vid``.
+
+**start_vid**    ``BIGINT``  Identifier of the root vertex.
+
+                             - In `Multiple Vertices`_ results are in ascending order.
+
+**node**         ``BIGINT``  Identifier of ``node`` reached using ``edge``.
+**edge**         ``BIGINT``  Identifier of the ``edge`` used to arrive to ``node``.
+
+                             - :math:`-1`  when ``node`` = ``start_vid``.
+
+**cost**         ``FLOAT``   Cost to traverse ``edge``.
+**agg_cost**     ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
+===============  =========== ====================================================
+
+.. result columns end
+
 
 
 
