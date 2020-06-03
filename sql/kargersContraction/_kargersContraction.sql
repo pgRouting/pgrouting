@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ----------------
 
 
-CREATE OR REPLACE FUNCTION _pgr_kargerContraction(
+CREATE OR REPLACE FUNCTION _pgr_kargersContraction(
     edges_sql TEXT,
 
     OUT seq INTEGER,
@@ -52,5 +52,5 @@ LANGUAGE c VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_kargerContraction(TEXT)
+COMMENT ON FUNCTION _pgr_kargersContraction(TEXT)
 IS 'pgRouting internal function';
