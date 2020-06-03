@@ -68,8 +68,7 @@ do_pgr_stoerWagner(
 
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        //results = _pgr_kargersContraction(
-                    undigraph);
+        //results = _pgr_kargersContraction(undigraph);
 
         auto count = results.size();
 
