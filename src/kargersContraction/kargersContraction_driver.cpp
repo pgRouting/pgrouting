@@ -35,13 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-
+#include "c_types/pgr_stoerWagner_t.h"
 #include "spanningTree/pgr_prim.hpp"
 #include "spanningTree/details.hpp"
 
 
 void
-do_pgr_stoerWagner(
+do_pgr_kargersContraction(
         pgr_edge_t  *data_edges,
         size_t total_edges,
         pgr_stoerWagner_t **return_tuples,
