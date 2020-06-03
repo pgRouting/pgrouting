@@ -160,6 +160,15 @@ SELECT * FROM pgr_depthFirstSearch(
    6 |     1 |        15 |   14 |   17 |    1 |        1
 (6 rows)
 
---q5
+-- q5
+SELECT * FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    ARRAY[-10,20]
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+(0 rows)
+
+--q6
 ROLLBACK;
 ROLLBACK
