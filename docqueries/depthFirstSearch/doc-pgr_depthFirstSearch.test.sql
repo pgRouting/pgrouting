@@ -61,3 +61,20 @@ SELECT * FROM pgr_depthFirstSearch(
     ARRAY[16], max_depth := 5
 );
 \echo --q7
+SELECT * FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    16, directed := false
+);
+SELECT * FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    ARRAY[16], directed := false
+);
+SELECT * FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    16, max_depth := 1, directed := false
+);
+SELECT * FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    ARRAY[16], max_depth := 5, directed := false
+);
+\echo --q8
