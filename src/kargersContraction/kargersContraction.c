@@ -37,66 +37,58 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 #include "c_types/pgr_mst_rt.h"
 
-#include "drivers/spanningTree/mst_common.h"
+#include "drivers/mincut/stoerWagner_driver.h"
 #include "drivers/kargersContraction/kargersContraction_driver.h"
 
 PGDLLEXPORT Datum _pgr_kargerscontraction(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_kargerscontraction);
 
 
+/******************************************************************************/
+/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
         char* edges_sql,
-        ArrayType *roots,
-        char * fn_suffix,
-        int64_t max_depth,
-        double distance,
-
-        pgr_mst_rt **result_tuples,
+        pgr_stoerWagner_t **result_tuples,
         size_t *result_count) {
+    /*
+     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
+     */
     pgr_SPI_connect();
-
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
-
-    char * fn_name = get_name(1, fn_suffix, &err_msg);
-    if (err_msg) {
-        pgr_global_report(log_msg, notice_msg, err_msg);
-        return;
-    }
-
-    size_t size_rootsArr = 0;
-    int64_t* rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
+    PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
+    PGR_DBG("Total %ld edges in query:", total_edges);
 
+    if (total_edges == 0) {
+        PGR_DBG("No edges found");
+        pgr_SPI_finish();
+        return;
+    }
 
+    PGR_DBG("Starting processing");
     clock_t start_t = clock();
+    char *log_msg = NULL;
+    char *notice_msg = NULL;
+    char *err_msg = NULL;
     do_pgr_kargersContraction(
-            edges, total_edges,
-            rootsArr, size_rootsArr,
-
-            fn_suffix,
-
-            max_depth,
-            distance,
-
+            edges,
+            total_edges,
             result_tuples,
             result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
 
-
-    time_msg(fn_name, start_t, clock());
+    time_msg(" processing pgr_stoerWagner", start_t, clock());
+    PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
@@ -116,31 +108,35 @@ process(
 PGDLLEXPORT Datum _pgr_kargerscontraction(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
-
-    pgr_mst_rt *result_tuples = NULL;
+    /**************************************************************************/
+    /*                          MODIFY AS NEEDED                              */
+    /*                                                                        */
+    pgr_stoerWagner_t *result_tuples = NULL;
     size_t result_count = 0;
+    /*                                                                        */
+    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        /* Edge sql, tree roots, fn_suffix, max_depth, distance */
+
+        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_ARRAYTYPE_P(1),
-                text_to_cstring(PG_GETARG_TEXT_P(2)),
-                PG_GETARG_INT64(3),
-                PG_GETARG_FLOAT8(4),
                 &result_tuples,
                 &result_count);
 
 
-#if PGSQL_VERSION > 95
-        funcctx->max_calls = result_count;
-#else
+        /*                                                                    */
+        /**********************************************************************/
+
+    #if PGSQL_VERSION > 94
         funcctx->max_calls = (uint32_t)result_count;
-#endif
+    #else
+        funcctx->max_calls = (uint32_t)result_count;
+    #endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -156,7 +152,7 @@ PGDLLEXPORT Datum _pgr_kargerscontraction(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_mst_rt*) funcctx->user_fctx;
+    result_tuples = (pgr_stoerWagner_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -164,30 +160,33 @@ PGDLLEXPORT Datum _pgr_kargerscontraction(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        size_t num  = 7;
-        values = palloc(num * sizeof(Datum));
-        nulls = palloc(num * sizeof(bool));
+        values = palloc(4 * sizeof(Datum));
+        nulls = palloc(4 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < num; ++i) {
+        for (i = 0; i < 4; ++i) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-
+        // postgres starts counting from 1
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].mincut);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
+        /**********************************************************************/
+        /*                          MODIFY AS NEEDED                          */
+
+        PGR_DBG("Clean up code");
+
+        /**********************************************************************/
+
         SRF_RETURN_DONE(funcctx);
     }
 }
