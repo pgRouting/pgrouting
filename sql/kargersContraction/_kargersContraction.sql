@@ -39,27 +39,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ----------------
 
 
-CREATE OR REPLACE FUNCTION _pgr_kargersContraction(
-    TEXT,             -- Edge sql
-    ANYARRAY,         -- tree root for traversal
-    order_by TEXT,
-    max_depth BIGINT,
-    distance FLOAT,
+CREATE OR REPLACE FUNCTION _pgr_kargerContraction(
+    edges_sql TEXT,
 
-    OUT seq BIGINT,
-    OUT depth BIGINT,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
+    OUT seq INTEGER,
     OUT edge BIGINT,
     OUT cost FLOAT,
-    OUT agg_cost FLOAT)
+    OUT mincut FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
-
+LANGUAGE c VOLATILE STRICT;
 
 -- COMMENTS
 
-
-COMMENT ON FUNCTION _pgr_kargersContraction(TEXT, ANYARRAY, TEXT, BIGINT, FLOAT)
+COMMENT ON FUNCTION _pgr_kargerContraction(TEXT)
 IS 'pgRouting internal function';

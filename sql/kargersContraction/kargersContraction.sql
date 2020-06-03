@@ -27,91 +27,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------
 
 
--- SINGLE VERTEX
 CREATE OR REPLACE FUNCTION pgr_kargersContraction(
-    TEXT,   -- Edge sql
-    BIGINT, -- root vertex
+    TEXT, -- edges_sql (required)
 
-    max_depth BIGINT DEFAULT 9223372036854775807,
-
-    OUT seq BIGINT,
-    OUT depth BIGINT,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
+    OUT seq INTEGER,
     OUT edge BIGINT,
     OUT cost FLOAT,
-    OUT agg_cost FLOAT)
+    OUT mincut FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    IF $3 < 0 THEN
-        RAISE EXCEPTION 'Negative value found on ''max_depth'''
-        USING HINT = format('Value found: %s', $3);
-    END IF;
-
-
-    RETURN QUERY
     SELECT *
-    FROM _pgr_kargersContraction(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DFS', $3, -1);
-END;
+    FROM _pgr_kargersContraction(_pgr_get_statement($1));
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
-
-
--- MULTIPLE VERTICES
-CREATE OR REPLACE FUNCTION pgr_kargersContraction(
-    TEXT,     -- Edge sql
-    ANYARRAY, -- root vertices
-
-    max_depth BIGINT DEFAULT 9223372036854775807,
-
-    OUT seq BIGINT,
-    OUT depth BIGINT,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-BEGIN
-    IF $3 < 0 THEN
-        RAISE EXCEPTION 'Negative value found on ''max_depth'''
-        USING HINT = format('Value found: %s', $3);
-    END IF;
-
-
-    RETURN QUERY
-    SELECT *
-    FROM _pgr_kargersContraction(_pgr_get_statement($1), $2, 'DFS', $3, -1);
-END;
-$BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
-
+LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
-
-COMMENT ON FUNCTION pgr_kargersContraction(TEXT, BIGINT, BIGINT)
-IS 'pgr_kargersContraction(Single Vertex)
+COMMENT ON FUNCTION pgr_kargersContraction(TEXT)
+IS 'pgr_kargersContraction
+- EXPERIMENTAL
 - Undirected graph
 - Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - From root vertex identifier
-- Optional parameters
-    - max_depth := 9223372036854775807
+  - edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_kargersContraction.html
-';
-
-COMMENT ON FUNCTION pgr_kargersContraction(TEXT, ANYARRAY, BIGINT)
-IS 'pgr_kargersContraction(Multiple Vertices)
-- Undirected graph
-- Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - From ARRAY[root vertices identifiers]
-- Optional parameters
-    - max_depth := 9223372036854775807
-- Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_kargersContraction.html
+  - ${PGROUTING_DOC_LINK}/pgr_kargersContraction.html
 ';
