@@ -65,7 +65,6 @@ Single vertex
 
 :Example: From start vertex :math:`2` on a **directed** graph
 
-.. TODO:
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: --q1
    :end-before: --q2
@@ -85,7 +84,6 @@ Multiple vertices
 :Example: From start vertices :math:`\{11, 12\}` with :math:`depth <= 2`
           on a **directed** graph
 
-.. TODO:
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: --q2
    :end-before: --q3
@@ -170,8 +168,8 @@ Additional Examples
 
 The examples of this section are based on the :doc:`sampledata` network.
 
-.. TODO: CHANGE THIS
-   The examples include combinations ... in a directed and undirected graph.
+The examples include the traversal with starting vertices as 6, 8 and 15 in a
+directed and undirected graph, for both single vertex and multiple vertices.
 
 **Directed Graph**
 
@@ -181,7 +179,6 @@ The examples in this section use the following:
 
 * :ref:`fig1`
 
-.. TODO
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q3
    :end-before: -- q4
@@ -194,7 +191,6 @@ The examples in this section use the following:
 
 * :ref:`fig2`
 
-.. TODO
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q4
    :end-before: -- q5
@@ -203,7 +199,6 @@ The examples in this section use the following:
 
 :Example: For queries in which starting vertex is not present in the graph
 
-.. TODO:
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: --q5
    :end-before: --q6
@@ -217,7 +212,6 @@ The examples in this section use the following:
 
 * :ref:`fig1`
 
-.. TODO
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q6
    :end-before: -- q7
@@ -228,7 +222,6 @@ The examples in this section use the following:
 
 * :ref:`fig2`
 
-.. TODO
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q7
    :end-before: -- q8
