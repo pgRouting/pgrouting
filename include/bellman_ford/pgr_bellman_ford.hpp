@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 
 
 
@@ -188,7 +189,8 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
                  V source,
                  V target) {
          log << std::string(__FUNCTION__) << "\n";
-
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              bool negative = boost::bellman_ford_shortest_paths(
                      graph.graph,
@@ -213,6 +215,8 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              G &graph,
              V source) {
         log << std::string(__FUNCTION__) << "\n";
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::bellman_ford_shortest_paths(
                      graph.graph,
