@@ -309,7 +309,7 @@ class Pgr_dijkstra {
                  V source,
                  V target) {
          try {
-             /* abort in case of cancellation */
+             /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
              CHECK_FOR_INTERRUPTS();
 
              boost::dijkstra_shortest_paths(graph.graph, source,
@@ -343,7 +343,7 @@ class Pgr_dijkstra {
              V source,
              double distance) {
          try {
-             /* abort in case of cancellation */
+             /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
              CHECK_FOR_INTERRUPTS();
 
              boost::dijkstra_shortest_paths(graph.graph, source,
@@ -380,7 +380,7 @@ class Pgr_dijkstra {
          distances[source] = 0;
          std::vector<boost::default_color_type> color_map(graph.num_vertices());
          try {
-             /* abort in case of cancellation */
+             /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
              CHECK_FOR_INTERRUPTS();
 
              boost::dijkstra_shortest_paths_no_init(graph.graph, source,
@@ -680,7 +680,7 @@ class Pgr_dijkstra {
              const std::vector< V > &targets,
              size_t n_goals = std::numeric_limits<size_t>::max()) {
          try {
-             /* abort in case of cancellation */
+             /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
              CHECK_FOR_INTERRUPTS();
 
              boost::dijkstra_shortest_paths(graph.graph, source,
