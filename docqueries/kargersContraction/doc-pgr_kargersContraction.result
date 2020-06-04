@@ -8,10 +8,9 @@ SELECT * FROM pgr_kargersContraction(
         FROM edge_table
      WHERE id < 17'
 );
-seq | edge | cost | mincut
+ seq | edge | cost | mincut
 -----+------+------+--------
 (0 rows)
-
 
 -- q2
 SELECT * FROM pgr_kargersContraction(
@@ -19,10 +18,9 @@ SELECT * FROM pgr_kargersContraction(
         FROM edge_table
      WHERE id = 18'
 );
-seq | edge | cost | mincut
+ seq | edge | cost | mincut
 -----+------+------+--------
 (0 rows)
-
 
 -- q3
 SELECT * FROM pgr_kargersContraction(
@@ -42,7 +40,6 @@ $$
  seq | edge | cost | mincut
 -----+------+------+--------
 (0 rows)
-
 
 -- q4
 ROLLBACK;
