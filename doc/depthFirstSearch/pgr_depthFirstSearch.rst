@@ -29,7 +29,7 @@ Description
 -------------------------------------------------------------------------------
 
 Depth First Search algorithm is a well known traversal algorithm which starts
-from a root vertex (``start_vid``) and visits all the nodes in a graph in the
+from a start vertex (``start_vid``) and visits all the nodes in a graph in the
 depth-first search traversal order. An optional non-negative maximum depth
 parameter (``max_depth``) can be specified to get the results upto a particular
 depth.
@@ -48,12 +48,24 @@ depth.
 Signatures
 -------------------------------------------------------------------------------
 
+.. rubric:: Summary
+
 .. code-block:: none
 
-    pgr_depthFirstSearch(Edges SQL, Root vid [, max_depth] [, directed])
-    pgr_depthFirstSearch(Edges SQL, Root vids [, max_depth] [, directed])
+    pgr_depthFirstSearch(edges_sql, start_vid [, max_depth] [, directed])
+    pgr_depthFirstSearch(edges_sql, start_vids [, max_depth] [, directed])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
+
+.. rubric:: Using defaults
+
+.. code-block:: none
+
+    pgr_depthFirstSearch(TEXT edges_sql, BIGINT start_vid)
+
+    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 .. index::
     single: depthFirstSearch(Single vertex)
@@ -63,9 +75,11 @@ Single vertex
 
 .. code-block:: none
 
-    pgr_depthFirstSearch(Edges SQL, Root vid [, max_depth] [, directed])
+    pgr_depthFirstSearch(TEXT edges_sql, BIGINT start_vid,
+    BIGINT max_depth := 9223372036854775807, BOOLEAN directed := true)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example: From start vertex :math:`2` on a **directed** graph
 
@@ -81,9 +95,11 @@ Multiple vertices
 
 .. code-block:: none
 
-    pgr_depthFirstSearch(Edges SQL, Root vids [, max_depth] [, directed])
+    pgr_depthFirstSearch(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids,
+    BIGINT max_depth := 9223372036854775807, BOOLEAN directed := true)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example: From start vertices :math:`\{11, 12\}` with :math:`depth <= 2`
           on a **directed** graph
@@ -102,12 +118,12 @@ Parameters
 =================== ====================== =================================================
 Parameter           Type                   Description
 =================== ====================== =================================================
-**Edges SQL**       ``TEXT``               SQL query described in `Inner query`_.
-**Root vid**        ``BIGINT``             Identifier of the root vertex of the tree.
+**edges_sql**       ``TEXT``               SQL query described in `Inner query`_.
+**start_vid**       ``BIGINT``             Identifier of the start vertex of the tree.
 
                                            - Used on `Single Vertex`_.
 
-**Root vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
+**start_vids**      ``ARRAY[ANY-INTEGER]`` Array of identifiers of the start vertices.
 
                                            - Used on `Multiple Vertices`_.
                                            - For optimization purposes, any duplicated value is ignored.
@@ -130,7 +146,7 @@ Parameter           Type        Default                     Description
 Inner query
 -------------------------------------------------------------------------------
 
-.. rubric::Edges SQL
+.. rubric:: edges_sql
 
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start
@@ -151,7 +167,7 @@ Column           Type        Description
 
                              - :math:`0`  when ``node`` = ``start_vid``.
 
-**start_vid**    ``BIGINT``  Identifier of the root vertex.
+**start_vid**    ``BIGINT``  Identifier of the start vertex.
 
                              - In `Multiple Vertices`_ results are in ascending order.
 
