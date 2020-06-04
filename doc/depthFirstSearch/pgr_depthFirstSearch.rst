@@ -183,7 +183,7 @@ The examples in this section use the following:
 
 * :ref:`fig1`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -195,7 +195,7 @@ The examples in this section use the following:
 
 * :ref:`fig2`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q4
    :end-before: -- q5
 
@@ -216,7 +216,7 @@ The examples in this section use the following:
 
 * :ref:`fig1`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q6
    :end-before: -- q7
 
@@ -226,7 +226,7 @@ The examples in this section use the following:
 
 * :ref:`fig2`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q7
    :end-before: -- q8
 
