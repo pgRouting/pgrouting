@@ -67,6 +67,12 @@ Signatures
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
+:Example: From start vertex :math:`2` on a **directed** graph
+
+.. literalinclude:: doc-pgr_depthFirstSearch.queries
+   :start-after: -- q1
+   :end-before: -- q2
+
 .. index::
     single: depthFirstSearch(Single vertex)
 
@@ -81,11 +87,11 @@ Single vertex
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From start vertex :math:`2` on a **directed** graph
+:Example: From start vertex :math:`2` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q1
-   :end-before: -- q2
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. index::
     single: depthFirstSearch(Multiple vertices)
@@ -105,8 +111,8 @@ Multiple vertices
           on a **directed** graph
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. Parameters, Inner query & result columns
 
@@ -200,8 +206,8 @@ The examples in this section use the following:
 * :ref:`fig1`
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q3
-   :end-before: -- q4
+   :start-after: -- q5
+   :end-before: -- q6
 
 **Undirected Graph**
 
@@ -212,16 +218,16 @@ The examples in this section use the following:
 * :ref:`fig2`
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q4
-   :end-before: -- q5
+   :start-after: -- q7
+   :end-before: -- q8
 
 **Vertex Out Of Graph**
 
 :Example: For queries in which starting vertex is not present in the graph
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q5
-   :end-before: -- q6
+   :start-after: -- q9
+   :end-before: -- q10
 
 Equivalences between signatures
 ...............................................................................
@@ -233,8 +239,8 @@ The examples in this section use the following:
 * :ref:`fig1`
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q6
-   :end-before: -- q7
+   :start-after: -- q11
+   :end-before: -- q12
 
 :Examples: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
 
@@ -243,8 +249,8 @@ The examples in this section use the following:
 * :ref:`fig2`
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q7
-   :end-before: -- q8
+   :start-after: -- q13
+   :end-before: -- q14
 
 
 See Also
