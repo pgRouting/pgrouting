@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: prim.c
+File: kargersContraction.c
 Generated with Template by:
 
 Copyright (c) 2015 pgRouting developers
