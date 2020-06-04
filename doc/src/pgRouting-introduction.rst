@@ -55,6 +55,7 @@ This Release Contributors
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Ashish Kumar,
 Cayetano Benavent,
 Daniel Kastl,
 Martha Vergara,
@@ -83,6 +84,7 @@ Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain,
+Ashish Kumar,
 Cayetano Benavent, Christian Gonzalez,
 Daniel Kastl, Dave Potts, David Techer, Denis Rykov,
 Ema Miyawaki,
