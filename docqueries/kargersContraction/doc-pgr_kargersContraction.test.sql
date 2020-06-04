@@ -1,19 +1,19 @@
 \echo -- q1
-SELECT * FROM _pgr_kargersContraction(
+SELECT * FROM pgr_kargersContraction(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table
      WHERE id < 17'
 );
 
 \echo -- q2
-SELECT * FROM _pgr_kargersContraction(
+SELECT * FROM pgr_kargersContraction(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table
      WHERE id = 18'
 );
 
 \echo -- q3
-SELECT * FROM _pgr_kargersContraction(
+SELECT * FROM pgr_kargersContraction(
 $$
  SELECT id, source, target, cost, reverse_cost FROM edge_table
     where source = any (ARRAY(SELECT node FROM pgr_connectedComponents(
