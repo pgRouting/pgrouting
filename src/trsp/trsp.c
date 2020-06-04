@@ -313,8 +313,11 @@ static int compute_trsp(
                 return finish(SPIcode, ret);
       }
 
+      /* Suppress the -Wconversion warning temporarily */
+      #pragma GCC diagnostic push
+      #pragma GCC diagnostic ignored "-Wconversion"
       ntuples = SPI_processed;
-
+      #pragma GCC diagnostic pop
 
       total_tuples += ntuples;
 
@@ -431,7 +434,12 @@ static int compute_trsp(
               }
           }
 
+          /* Suppress the -Wconversion warning temporarily */
+          #pragma GCC diagnostic push
+          #pragma GCC diagnostic ignored "-Wconversion"
           ntuples = SPI_processed;
+          #pragma GCC diagnostic pop
+
           total_restrict_tuples += ntuples;
 
           if (ntuples > 0) {

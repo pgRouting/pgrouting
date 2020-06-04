@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 
 #include "spanningTree/pgr_mst.hpp"
+#include "cpp_common/interruption.h"
 
 //******************************************
 
@@ -103,6 +104,10 @@ Pgr_prim<G>::primTree(
     auto v_root(graph.get_V(root_vertex));
 
     using prim_visitor = visitors::Prim_dijkstra_visitor<V>;
+
+    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+    CHECK_FOR_INTERRUPTS();
+
     boost::prim_minimum_spanning_tree(
             graph.graph,
             &predecessors[0],

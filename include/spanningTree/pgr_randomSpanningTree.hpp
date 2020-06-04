@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 
 template < class G > class Pgr_randomSpanningTree;
 // user's functions
@@ -72,6 +73,10 @@ class Pgr_randomSpanningTree {
          auto v_root(graph.get_V(root_vertex));
 
          std::minstd_rand rng;
+
+          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+          CHECK_FOR_INTERRUPTS();
+
          // TODO(aps)
          // This function is running in infinite loop
          try {

@@ -48,6 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 #include "visitors/dijkstra_one_goal_visitor.hpp"
 
 #if 0
@@ -307,6 +308,8 @@ class Pgr_dijkstra {
                  G &graph,
                  V source,
                  V target) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
@@ -338,6 +341,8 @@ class Pgr_dijkstra {
              G &graph,
              V source,
              double distance) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
@@ -372,6 +377,8 @@ class Pgr_dijkstra {
          pgassert(distances.size() == graph.num_vertices());
          distances[source] = 0;
          std::vector<boost::default_color_type> color_map(graph.num_vertices());
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::dijkstra_shortest_paths_no_init(graph.graph, source,
                      make_iterator_property_map(
@@ -669,6 +676,8 @@ class Pgr_dijkstra {
              V source,
              const std::vector< V > &targets,
              size_t n_goals = std::numeric_limits<size_t>::max()) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])

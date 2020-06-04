@@ -2,6 +2,10 @@
 pgRouting 3.0.1 Release Notes
 -------------------------------------------------------------------------------
 
+*Bug fixes*
+
+* [#1361 ](https://github.com/pgRouting/pgrouting/pull/1361)_: Add code to interrupt the execution
+
 
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
