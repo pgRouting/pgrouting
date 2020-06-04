@@ -19,6 +19,10 @@ pgr_depthFirstSearch - Experimental
 
    Boost Graph Inside
 
+.. include:: experimental.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-exp
+
 .. rubric:: Availability
 
 Description
