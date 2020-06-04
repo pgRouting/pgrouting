@@ -10,9 +10,9 @@
 pgr_depthFirstSearch - Experimental
 ===============================================================================
 
-``pgr_depthFirstSearch`` — Returns the traversal order(s) using Depth
-  First Search algorithm. In particular, the Depth First Search algorithm
-  and the Undirected DFS algorithm implemented by Boost.Graph.
+``pgr_depthFirstSearch`` — Returns the traversal order(s) using Depth First
+Search algorithm. In particular, the Depth First Search algorithm and the
+Undirected DFS algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/depth_first_search.html
