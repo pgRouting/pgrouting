@@ -70,8 +70,8 @@ Single vertex
 :Example: From start vertex :math:`2` on a **directed** graph
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: depthFirstSearch(Multiple vertices)
@@ -89,8 +89,8 @@ Multiple vertices
           on a **directed** graph
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. Parameters, Inner query & result columns
 
