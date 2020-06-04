@@ -204,8 +204,8 @@ The examples in this section use the following:
 :Example: For queries in which starting vertex is not present in the graph
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: --q5
-   :end-before: --q6
+   :start-after: -- q5
+   :end-before: -- q6
 
 Equivalences between signatures
 ...............................................................................
