@@ -1,13 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: kargersContraction_driver.h
+File: pgr_stoerWagner_t.h
 
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-Function's developer:
-Copyright (c) 2020 Himanshu Raj
-Mail:
-
+Copyright (c) 2015 Aditya Pratap Singh
+Mail: adityapratap.singh28@gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -25,36 +20,24 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+/*! @file */
 
-#ifndef INCLUDE_DRIVERS_KARGERSCONTRACTION_KARGERSCONTRACTION_DRIVER_H_
-#define INCLUDE_DRIVERS_KARGERSCONTRACTION_KARGERSCONTRACTION_DRIVER_H_
+#ifndef INCLUDE_C_TYPES_PGR_KARGERSCONTRACTION_T_H_
+#define INCLUDE_C_TYPES_PGR_KARGERSCONTRACTION_T_H_
 #pragma once
 
-/* for size-t */
+/* for int64_t */
 #ifdef __cplusplus
-#   include <cstddef>
+#   include <cstdint>
 #else
-#   include <stddef.h>
+#   include <stdint.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_kargersContraction_t.h"
+typedef struct {
+    int seq;
+    int64_t edge;
+    double cost;
+    double mincut;
+} pgr_kargersContraction_t;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void do_pgr_kargersContraction(
-  pgr_edge_t  *data_edges,
-  size_t total_edges,
-  pgr_kargersContraction_t **return_tuples,
-  size_t *return_count,
-  char ** log_msg,
-  char ** notice_msg,
-  char ** err_msg);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif  // INCLUDE_DRIVERS_KARGERSCONTRACTION_KARGERSCONTRACTION_DRIVER_H_
+#endif  // INCLUDE_C_TYPES_PGR_STOERWAGNER_T_H_
