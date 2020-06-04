@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <functional>
 #include <vector>
 #include "cpp_common/identifiers.hpp"
+#include "cpp_common/interruption.h"
 
 namespace pgrouting {
 namespace contraction {
@@ -100,6 +101,10 @@ class Pgr_deadend {
 
             graph[v].contracted_vertices().clear();
             boost::clear_vertex(v, graph.graph);
+
+            /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+            CHECK_FOR_INTERRUPTS();
+
             for (const auto u : local) {
                 if (is_dead_end(graph, u) && !forbiddenVertices.has(u)) {
                     deadendVertices += u;
