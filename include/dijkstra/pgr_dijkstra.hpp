@@ -308,10 +308,9 @@ class Pgr_dijkstra {
                  G &graph,
                  V source,
                  V target) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
-             /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-             CHECK_FOR_INTERRUPTS();
-
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
@@ -342,10 +341,9 @@ class Pgr_dijkstra {
              G &graph,
              V source,
              double distance) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
-             /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-             CHECK_FOR_INTERRUPTS();
-
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
@@ -379,10 +377,9 @@ class Pgr_dijkstra {
          pgassert(distances.size() == graph.num_vertices());
          distances[source] = 0;
          std::vector<boost::default_color_type> color_map(graph.num_vertices());
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
-             /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-             CHECK_FOR_INTERRUPTS();
-
              boost::dijkstra_shortest_paths_no_init(graph.graph, source,
                      make_iterator_property_map(
                          predecessors.begin(),
@@ -679,10 +676,9 @@ class Pgr_dijkstra {
              V source,
              const std::vector< V > &targets,
              size_t n_goals = std::numeric_limits<size_t>::max()) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
-             /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-             CHECK_FOR_INTERRUPTS();
-
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
