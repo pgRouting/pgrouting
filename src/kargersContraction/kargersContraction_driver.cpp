@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: prim_driver.cpp
+File: kargersContraction_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -35,16 +35,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-#include "c_types/pgr_stoerWagner_t.h"
-#include "spanningTree/pgr_prim.hpp"
-#include "spanningTree/details.hpp"
+#include "c_types/pgr_kargersContraction_t.h"
 
 
 void
 do_pgr_kargersContraction(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        pgr_stoerWagner_t **return_tuples,
+        pgr_kargersContraction_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -62,7 +60,7 @@ do_pgr_kargersContraction(
 
         graphType gType = UNDIRECTED;
 
-        std::vector<pgr_stoerWagner_t> results;
+        std::vector<pgr_kargersContraction_t> results;
 
         log << "Working with Undirected Graph\n";
 
