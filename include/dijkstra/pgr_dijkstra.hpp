@@ -48,6 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 #include "visitors/dijkstra_one_goal_visitor.hpp"
 
 #if 0
@@ -308,6 +309,9 @@ class Pgr_dijkstra {
                  V source,
                  V target) {
          try {
+             /* abort in case of cancellation */
+             CHECK_FOR_INTERRUPTS();
+
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
@@ -339,6 +343,9 @@ class Pgr_dijkstra {
              V source,
              double distance) {
          try {
+             /* abort in case of cancellation */
+             CHECK_FOR_INTERRUPTS();
+
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
@@ -373,6 +380,9 @@ class Pgr_dijkstra {
          distances[source] = 0;
          std::vector<boost::default_color_type> color_map(graph.num_vertices());
          try {
+             /* abort in case of cancellation */
+             CHECK_FOR_INTERRUPTS();
+
              boost::dijkstra_shortest_paths_no_init(graph.graph, source,
                      make_iterator_property_map(
                          predecessors.begin(),
@@ -670,6 +680,9 @@ class Pgr_dijkstra {
              const std::vector< V > &targets,
              size_t n_goals = std::numeric_limits<size_t>::max()) {
          try {
+             /* abort in case of cancellation */
+             CHECK_FOR_INTERRUPTS();
+
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))

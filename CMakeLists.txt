@@ -448,7 +448,7 @@ LINK_LIBRARIES(${BOOST_THREAD_LIBRARIES})
 # pgRouting objects to be linked
 #-------------------
 foreach (subdir ${PGROUTING_SOURCE_NAMES} )
-    set(PGROUTING_OBJECTS ${PGROUTING_OBJECTS} "$<TARGET_OBJECTS:${subdir}>")
+    set(PGROUTING_OBJECTS ${PGROUTING_OBJECTS} "$<TARGET_OBJECTS:${subdir}>" include/cpp_common/interruption.h)
 endforeach()
 
 
