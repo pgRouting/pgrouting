@@ -50,8 +50,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 #include "drivers/LTDTree/LTDTree_driver.h"
 
-PGDLLEXPORT Datum _pgr_LTDTree(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_LTDTree);
+PGDLLEXPORT Datum _pgr_ltdtree(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_ltdtree);
 
 
 static
@@ -104,7 +104,7 @@ process(char* edges_sql,
 }
 
 PGDLLEXPORT Datum
-_pgr_LTDTree(PG_FUNCTION_ARGS) {
+_pgr_ltdtree(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
@@ -168,7 +168,7 @@ _pgr_LTDTree(PG_FUNCTION_ARGS) {
             //Set your outputs from result_tuple
             values[0] = Int32GetDatum(call_cntr + 1); /*TODO Chek for the sequence*/
             values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
-	    values[1] = Int64GetDatum(result_tuples[call_cntr].idom);
+	    values[2] = Int64GetDatum(result_tuples[call_cntr].idom);
             tuple = heap_form_tuple(tuple_desc, values, nulls);
             result = HeapTupleGetDatum(tuple);
             SRF_RETURN_NEXT(funcctx, result);
