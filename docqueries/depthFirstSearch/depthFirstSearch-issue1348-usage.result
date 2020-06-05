@@ -1,0 +1,127 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- SAMPLE TABLE CREATE start
+CREATE TABLE sample_table (
+    id BIGSERIAL,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT
+);
+CREATE TABLE
+-- SAMPLE TABLE CREATE end
+-- SAMPLE TABLE ADD DATA start
+INSERT INTO sample_table (source, target, cost, reverse_cost) VALUES
+    (3, 6, 20, 15),
+    (3, 8, 10, -10),
+    (6, 8, -1, 12);
+INSERT 0 3
+-- SAMPLE TABLE ADD DATA end
+-- q0
+SELECT * FROM sample_table ORDER BY id;
+ id | source | target | cost | reverse_cost
+----+--------+--------+------+--------------
+  1 |      3 |      6 |   20 |           15
+  2 |      3 |      8 |   10 |          -10
+  3 |      6 |      8 |   -1 |           12
+(3 rows)
+
+-- q1
+SELECT * FROM pgr_depthFirstSearch (
+    'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
+    3
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+   1 |     0 |         3 |    3 |   -1 |    0 |        0
+   2 |     1 |         3 |    6 |    1 |   20 |       20
+   3 |     1 |         3 |    8 |    2 |   10 |       10
+(3 rows)
+
+-- q2
+SELECT * FROM pgr_depthFirstSearch (
+    'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
+    6
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+   1 |     0 |         6 |    6 |   -1 |    0 |        0
+   2 |     1 |         6 |    3 |    1 |   15 |       15
+   3 |     2 |         6 |    8 |    2 |   10 |       25
+(3 rows)
+
+-- q3
+SELECT * FROM pgr_depthFirstSearch (
+    'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
+    6, max_depth := 1
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+   1 |     0 |         6 |    6 |   -1 |    0 |        0
+   2 |     1 |         6 |    3 |    1 |   15 |       15
+(2 rows)
+
+-- q4
+SELECT * FROM pgr_depthFirstSearch (
+    'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
+    2
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+(0 rows)
+
+-- q5
+SELECT * FROM pgr_depthFirstSearch (
+    'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
+    3, directed := false
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+   1 |     0 |         3 |    3 |   -1 |    0 |        0
+   2 |     1 |         3 |    6 |    1 |   20 |       20
+   3 |     2 |         3 |    8 |    3 |   12 |       32
+(3 rows)
+
+-- q6
+SELECT * FROM pgr_depthFirstSearch (
+    'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
+    6, directed := false
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+   1 |     0 |         6 |    6 |   -1 |    0 |        0
+   2 |     1 |         6 |    3 |    1 |   20 |       20
+   3 |     2 |         6 |    8 |    2 |   10 |       30
+(3 rows)
+
+-- q7
+SELECT * FROM pgr_depthFirstSearch (
+    'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
+    6, max_depth := 1, directed := false
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+   1 |     0 |         6 |    6 |   -1 |    0 |        0
+   2 |     1 |         6 |    3 |    1 |   20 |       20
+(2 rows)
+
+-- q8
+SELECT * FROM pgr_depthFirstSearch (
+    'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
+    ARRAY[6, 3, 6]
+);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+   1 |     0 |         3 |    3 |   -1 |    0 |        0
+   2 |     1 |         3 |    6 |    1 |   20 |       20
+   3 |     1 |         3 |    8 |    2 |   10 |       10
+   4 |     0 |         6 |    6 |   -1 |    0 |        0
+   5 |     1 |         6 |    3 |    1 |   15 |       15
+   6 |     2 |         6 |    8 |    2 |   10 |       25
+(6 rows)
+
+-- q9
+ROLLBACK;
+ROLLBACK
