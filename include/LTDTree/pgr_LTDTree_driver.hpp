@@ -30,8 +30,34 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef INCLUDE_LTDTREE_PGR_LTDTREE_HPP
 #define INCLUDE_LTDTREE_PGR_LTDTREE_HPP
+#pragma once
+#include <vector>
+
+#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/pgr_messages.h"
+
+namespace pgrouting {
+    namespace functions {
+
+        template<class G>
+        class Pgr_LTDTree {
+        public:
+            //To calculate dominator tree
+            std::vector <pgr_ltdtree_rt> lengauer_tarjan_dominator_tree(
+                    G &graph,
+                    int64_t root
+                    ){
+
+                std::vector<pgr_ltdtree_rt> results;
+                return results;
 
 
+            }
+
+
+        };
+    }
+}
 
 
 #endif  // INCLUDE_LTDTREE_PGR_LTDTREE_HPP
