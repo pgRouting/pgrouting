@@ -64,6 +64,7 @@ Look from template
 void
 do_pgr_LTDTree(
         pgr_edge_t  *data_edges,
+        int64_t root_vertex,
         size_t total_edges,
         pgr_ltdtree_rt **return_tuples,
         size_t *return_count,
@@ -74,7 +75,7 @@ do_pgr_LTDTree(
     std::ostringstream notice;
     std::ostringstream err;
 
-    /*
+
     try {
         pgassert(total_edges != 0);
         pgassert(!(*log_msg));
@@ -84,21 +85,39 @@ do_pgr_LTDTree(
         pgassert(*return_count == 0);
 
 
-        std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
-
-
+        //std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
+        log << "Working with directed Graph\n";
         graphType gType = DIRECTED;
         pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges);
+        digraph.insert_edges(data_edges, total_edges); //Creating graph using data_edges
+        std::vector<pgr_ltdtree_rt> results;
+        pgrouting::functions::Pgr_LTDTree<pgrouting::DirectedGraph> fn_LTDTree;
+        results=fn_LTDTree.lengauer_tarjan_dominator_tree(digraph,root_vertex);
+               //Call a function to work with that
+        //Todo Here we will assign result into return tuple
+        auto count = results.size();
 
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            notice << "No result found";
+            *log_msg = pgr_msg(notice.str().c_str());
+            return;
+        }
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        for (size_t i = 0; i < count; i++) {
+            *((*return_tuples) + i) = results[i];
+        }
+        (*return_count) = count;
 
-
+        pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
                    *log_msg :
                    pgr_msg(log.str().c_str());
         *notice_msg = notice.str().empty()?
                       *notice_msg :
                       pgr_msg(notice.str().c_str());
+
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -118,7 +137,7 @@ do_pgr_LTDTree(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-    */
+
 
 }
 
