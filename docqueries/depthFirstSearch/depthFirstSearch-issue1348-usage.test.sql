@@ -7,6 +7,7 @@ CREATE TABLE sample_table (
     reverse_cost FLOAT
 );
 \echo -- SAMPLE TABLE CREATE end
+\echo
 
 \echo -- SAMPLE TABLE ADD DATA start
 INSERT INTO sample_table (source, target, cost, reverse_cost) VALUES
@@ -14,6 +15,7 @@ INSERT INTO sample_table (source, target, cost, reverse_cost) VALUES
     (3, 8, 10, -10),
     (6, 8, -1, 12);
 \echo -- SAMPLE TABLE ADD DATA end
+\echo
 
 -- SELECT query on SAMPLE TABLE
 \echo -- q0

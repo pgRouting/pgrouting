@@ -12,6 +12,7 @@ CREATE TABLE sample_table (
 );
 CREATE TABLE
 -- SAMPLE TABLE CREATE end
+
 -- SAMPLE TABLE ADD DATA start
 INSERT INTO sample_table (source, target, cost, reverse_cost) VALUES
     (3, 6, 20, 15),
@@ -19,6 +20,7 @@ INSERT INTO sample_table (source, target, cost, reverse_cost) VALUES
     (6, 8, -1, 12);
 INSERT 0 3
 -- SAMPLE TABLE ADD DATA end
+
 -- q0
 SELECT * FROM sample_table ORDER BY id;
  id | source | target | cost | reverse_cost
