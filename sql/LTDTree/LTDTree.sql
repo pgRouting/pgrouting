@@ -30,8 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_LTDTree
 ---------------
 CREATE OR REPLACE FUNCTION pgr_LTDTree(
-    IN TEXT, -- edges_sql (required)
-    IN BIGINT , -- vertex (required)
+    TEXT, -- edges_sql (required)
+    BIGINT , -- vertex (required)
     OUT seq integer,
     OUT vid BIGINT,
     OUT idom BIGINT
