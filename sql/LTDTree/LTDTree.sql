@@ -39,7 +39,7 @@ CREATE OR REPLACE FUNCTION pgr_LTDTree(
 RETURNS SETOF RECORD AS 
 $BODY$
    SELECT *
-    FROM _pgr_LTDTree(_pgr_get_statement($1),BIGINT);
+    FROM _pgr_LTDTree(_pgr_get_statement($1),$2);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
