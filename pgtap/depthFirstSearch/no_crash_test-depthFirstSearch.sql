@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(44);
+SELECT plan(62);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
@@ -21,7 +21,7 @@ params TEXT[];
 subs TEXT[];
 BEGIN
     PERFORM todo_start('Complete the no crash test');
-    -- depthFirstSearch Single Vertex
+    -- depthFirstSearch Single vertex
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
     '5::BIGINT'
@@ -39,7 +39,7 @@ BEGIN
     subs[2] := 'NULL::BIGINT';
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
-    -- depthFirstSearch Single Vertex with depth
+    -- depthFirstSearch Single vertex with depth
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
     '5::BIGINT',
@@ -57,6 +57,24 @@ BEGIN
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     subs[2] := 'NULL::BIGINT';
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
+
+    -- depthFirstSearch Multiple vertices
+    params = ARRAY[
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    'ARRAY[5,3]'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
+
+    params[1] := '$$edges$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
+
+    subs[2] := 'NULL::BIGINT[]';
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
     PERFORM todo_end();
 END
