@@ -49,6 +49,8 @@ namespace pgrouting {
                     ){
 
                 std::vector<pgr_ltdtree_rt> results;
+                results[0].idom=7;
+                results[0].vid=3;
                 return results;
 
 
