@@ -20,7 +20,6 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-    PERFORM todo_start('Complete the no crash test');
     -- depthFirstSearch Single vertex
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
@@ -96,7 +95,7 @@ BEGIN
 
     subs[2] := 'NULL::BIGINT[]';
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
-    PERFORM todo_end();
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
