@@ -43,12 +43,9 @@ void
 do_pgr_boyerMyrvold(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
-                int64_t  *start_vidsArr,
-                size_t size_start_vidsArr,
-                int64_t  max_depth,
                 bool directed,
 
-                pgr_mst_rt **return_tuples,
+                pgr_edge_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,
@@ -66,11 +63,11 @@ do_pgr_boyerMyrvold(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        log << "Inserting vertices into a c++ vector structure";
-        std::vector<int64_t>
-            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
+        // log << "Inserting vertices into a c++ vector structure";
+        // std::vector<int64_t>
+        //     start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
 
-        std::vector<pgr_mst_rt> results;
+        std::vector<pgr_edge_t> results;
         std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
