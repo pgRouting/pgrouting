@@ -57,7 +57,6 @@ BEGIN
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     subs[2] := 'NULL::BIGINT';
-    subs[3] := '$$null_vertex$$';
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
     PERFORM todo_end();
 END
