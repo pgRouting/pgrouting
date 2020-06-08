@@ -34,10 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --ONE TO DEPTH
 CREATE OR REPLACE FUNCTION pgr_boyerMyrvold(
     TEXT,   -- edges_sql (required)
-
-    directed BOOLEAN DEFAULT false,
-
-    -- OUT planar BIGINT,
     OUT id BIGINT,
     OUT source BIGINT,
     OUT target BIGINT,
@@ -47,13 +43,13 @@ CREATE OR REPLACE FUNCTION pgr_boyerMyrvold(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_boyerMyrvold(_pgr_get_statement($1),directed) AS a;
+    FROM _pgr_boyerMyrvold(_pgr_get_statement($1)) AS a;
 $BODY$
-LANGUAGE sql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_boyerMyrvold(TEXT,BOOLEAN)
+COMMENT ON FUNCTION pgr_boyerMyrvold(TEXT)
 IS 'pgr_boyerMyrvold(One to Depth)
 - EXPERIMENTAL
 - Parameters:

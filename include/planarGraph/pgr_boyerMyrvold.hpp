@@ -36,76 +36,106 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/is_kuratowski_subgraph.hpp>
 
 #include "cpp_common/pgr_base_graph.hpp"
+#include "c_types/pgr_edge_t.h"
 //******************************************
 
-namespace pgrouting {
-namespace functions {
-
-template <class G>
-class Pgr_breadthFirstSearch {
+template < class G >
+class Pgr_stoerWagner {
  public:
-    typedef typename G::V V;
-    typedef typename G::E E;
-    typedef typename G::B_G B_G;
+     typedef typename G::V V;
+     typedef typename G::E E;
+     typedef typename G::E_i E_i;
 
-
-    std::vector<pgr_mst_rt> breadthFirstSearch(
-        G &graph,
-        std::vector<int64_t> start_vertex,
-        int64_t depth) {
-        std::vector<pgr_mst_rt> results;
-        using bfs_visitor = visitors::Edges_order_bfs_visitor<E>;
-
-        for (auto source : start_vertex) {
-            std::vector<E> visited_order;
-
-            if (graph.has_vertex(source)) {
-                results.push_back({source, 0, source, -1, 0.0, 0.0});
-                boost::breadth_first_search(graph.graph,
-                                            graph.get_V(source),
-                                            visitor(bfs_visitor(visited_order)));
-
-                auto single_source_results = get_results(visited_order, source, depth, graph);
-                results.insert(results.end(), single_source_results.begin(), single_source_results.end());
-            }
-        }
-        return results;
-        }
+     std::vector<pgr_edges_t> boyerMyrvold(
+                 G &graph);
 
  private:
-     template <typename T>
-     std::vector<pgr_mst_rt> get_results(
-             T order,
-             int64_t source,
-             int64_t max_depth,
-             const G &graph) {
-         std::vector<pgr_mst_rt> results;
-
-         std::vector<double> agg_cost(graph.num_vertices(), 0);
-         std::vector<int64_t> depth(graph.num_vertices(), 0);
-
-         for (const auto edge : order) {
-             auto u = graph.source(edge);
-             auto v = graph.target(edge);
-
-             agg_cost[v] = agg_cost[u] + graph[edge].cost;
-             depth[v] = depth[u] + 1;
-
-             if (max_depth >= depth[v]) {
-                 results.push_back({
-                     source,
-                         depth[v],
-                         graph[v].id,
-                         graph[edge].id,
-                         graph[edge].cost,
-                         agg_cost[v]
-                 });
-             }
-         }
-         return results;
-     }
+     std::vector< pgr_edges_t >
+     generateboyerMyrvold(
+        const G &graph ) {
+       std::vector< pgr_edges_t > results;
 };
-}  // namespace functions
-}  // namespace pgrouting
 
-#endif  // INCLUDE_BREADTHFIRSTSEARCH_PGR_BREADTHFIRSTSEARCH_HPP_
+template < class G >
+std::vector<pgr_edges_t>
+Pgr_stoerWagner< G >::boyerMyrvold(
+                G &graph) {
+      pgassert(num_vertices(graph.graph) > 1);
+      return generateboyerMyrvold(
+                             graph);
+}
+
+
+
+
+// namespace pgrouting {
+// namespace functions {
+//
+// template <class G>
+// class Pgr_breadthFirstSearch {
+//  public:
+//     typedef typename G::V V;
+//     typedef typename G::E E;
+//     typedef typename G::B_G B_G;
+//
+//
+//     std::vector<pgr_mst_rt> breadthFirstSearch(
+//         G &graph,
+//         std::vector<int64_t> start_vertex,
+//         int64_t depth) {
+//         std::vector<pgr_mst_rt> results;
+//         using bfs_visitor = visitors::Edges_order_bfs_visitor<E>;
+//
+//         for (auto source : start_vertex) {
+//             std::vector<E> visited_order;
+//
+//             if (graph.has_vertex(source)) {
+//                 results.push_back({source, 0, source, -1, 0.0, 0.0});
+//                 boost::breadth_first_search(graph.graph,
+//                                             graph.get_V(source),
+//                                             visitor(bfs_visitor(visited_order)));
+//
+//                 auto single_source_results = get_results(visited_order, source, depth, graph);
+//                 results.insert(results.end(), single_source_results.begin(), single_source_results.end());
+//             }
+//         }
+//         return results;
+//         }
+//
+//  private:
+//      template <typename T>
+//      std::vector<pgr_mst_rt> get_results(
+//              T order,
+//              int64_t source,
+//              int64_t max_depth,
+//              const G &graph) {
+//          std::vector<pgr_mst_rt> results;
+//
+//          std::vector<double> agg_cost(graph.num_vertices(), 0);
+//          std::vector<int64_t> depth(graph.num_vertices(), 0);
+//
+//          for (const auto edge : order) {
+//              auto u = graph.source(edge);
+//              auto v = graph.target(edge);
+//
+//              agg_cost[v] = agg_cost[u] + graph[edge].cost;
+//              depth[v] = depth[u] + 1;
+//
+//              if (max_depth >= depth[v]) {
+//                  results.push_back({
+//                      source,
+//                          depth[v],
+//                          graph[v].id,
+//                          graph[edge].id,
+//                          graph[edge].cost,
+//                          agg_cost[v]
+//                  });
+//              }
+//          }
+//          return results;
+//      }
+// };
+// }  // namespace functions
+// }  // namespace pgrouting
+//
+// #endif  // INCLUDE_BREADTHFIRSTSEARCH_PGR_BREADTHFIRSTSEARCH_HPP_

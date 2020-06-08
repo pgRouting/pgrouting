@@ -56,7 +56,6 @@ extern "C" {
     void do_pgr_boyerMyrvold(
                 pgr_edge_t  *data_edges,
                 size_t total_tuples,
-                bool directed,
                 pgr_edge_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
