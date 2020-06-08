@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/breadthFirstSearch/breadthFirstSearch_driver.h"
+// #include "drivers/breadthFirstSearch/breadthFirstSearch_driver.h"
 #include "drivers/planarGraph/boyerMyrvold_driver.h"
 
 #include <vector>
@@ -36,14 +36,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "c_types/pgr_edge_t.h"
 
-#include "breadthFirstSearch/pgr_breadthFirstSearch.hpp"
+#include "cpp_common/pgr_base_graph.hpp"
+// #include "breadthFirstSearch/pgr_breadthFirstSearch.hpp"
 
 void
 do_pgr_boyerMyrvold(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
-                bool directed,
+                // bool directed,
 
                 pgr_edge_t **return_tuples,
                 size_t *return_count,
@@ -61,7 +63,7 @@ do_pgr_boyerMyrvold(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+        // graphType gType = directed? DIRECTED: UNDIRECTED;
 
         // log << "Inserting vertices into a c++ vector structure";
         // std::vector<int64_t>
@@ -69,16 +71,16 @@ do_pgr_boyerMyrvold(
 
         std::vector<pgr_edge_t> results;
         std::string logstr;
-        if (directed) {
-            log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-
-        } else {
-            log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-        }
+        // if (directed) {
+        //     log << "Working with directed Graph\n";
+        //     pgrouting::DirectedGraph digraph(gType);
+        //     digraph.insert_edges(data_edges, total_edges);
+        //
+        // } else {
+        //     log << "Working with Undirected Graph\n";
+        //     pgrouting::UndirectedGraph undigraph(gType);
+        //     undigraph.insert_edges(data_edges, total_edges);
+        // }
 
         auto count = results.size();
 

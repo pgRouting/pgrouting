@@ -47,7 +47,6 @@ PG_FUNCTION_INFO_V1(_pgr_boyermyrvold);
 static void
 process(
     char *edges_sql,
-    bool directed,
 
     pgr_edge_t **result_tuples,
     size_t *result_count) {
@@ -81,7 +80,6 @@ process(
     do_pgr_boyerMyrvold(
         edges,
         total_edges,
-        directed,
 
         result_tuples,
         result_count,
@@ -140,10 +138,10 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling process");
         process(
-            text_to_cstring(PG_GETARG_TEXT_P(1)),
+            text_to_cstring(PG_GETARG_TEXT_P(0)),
             // PG_GETARG_ARRAYTYPE_P(1),
             // PG_GETARG_INT64(3),
-            PG_GETARG_BOOL(1),
+            // PG_GETARG_BOOL(1),
             &result_tuples,
             &result_count);
 
@@ -178,7 +176,7 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*
-            OUT planar BIGINT
+
             OUT id BIGINT,
             OUT source BIGINT,
             OUT target_vid BIGINT,

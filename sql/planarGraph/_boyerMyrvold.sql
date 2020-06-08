@@ -32,10 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION _pgr_boyerMyrvold(
   TEXT,   -- edges_sql (required)
-
-  directed BOOLEAN DEFAULT false,
-
-  -- OUT planar BIGINT,
+  
   OUT id BIGINT,
   OUT source BIGINT,
   OUT target BIGINT,
@@ -49,5 +46,5 @@ LANGUAGE c IMMUTABLE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_boyerMyrvold(TEXT,BOOLEAN)
+COMMENT ON FUNCTION _pgr_boyerMyrvold(TEXT)
 IS 'pgRouting internal function';
