@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(2);
+SELECT plan(32);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
@@ -21,7 +21,23 @@ params TEXT[];
 subs TEXT[];
 BEGIN
     PERFORM todo_start('Complete the no crash test');
+    -- depthFirstSearch
+    params = ARRAY[
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    '5'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+    ]::TEXT[];
 
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
+
+    params[1] := '$$edges$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
+
+    subs[2] := 'NULL::INTEGER';
+    RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
     PERFORM todo_end();
 END
 $BODY$
