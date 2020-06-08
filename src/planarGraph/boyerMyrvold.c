@@ -39,28 +39,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 
-#include "drivers/breadthFirstSearch/breadthFirstSearch_driver.h"
-
+// #include "drivers/breadthFirstSearch/breadthFirstSearch_driver.h"
+#include "drivers/planarGraph/boyerMyrvold_driver.h"
 PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_boyermyrvold);
 
 static void
 process(
     char *edges_sql,
-    ArrayType *starts,
-    int64_t max_depth,
     bool directed,
 
-    pgr_mst_rt **result_tuples,
+    pgr_edge_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
     PGR_DBG("Initializing arrays");
-
-    size_t size_start_vidsArr = 0;
-    int64_t *start_vidsArr = (int64_t *)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
-    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
 
 
     (*result_tuples) = NULL;
@@ -74,8 +67,8 @@ process(
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
-        if (start_vidsArr)
-            pfree(start_vidsArr);
+        // if (start_vidsArr)
+        //     pfree(start_vidsArr);
         pgr_SPI_finish();
         return;
     }
@@ -88,8 +81,6 @@ process(
     do_pgr_boyerMyrvold(
         edges,
         total_edges,
-        start_vidsArr, size_start_vidsArr,
-        max_depth,
         directed,
 
         result_tuples,
@@ -118,8 +109,8 @@ process(
     if (err_msg)
         pfree(err_msg);
 
-    if (start_vidsArr)
-        pfree(start_vidsArr);
+    // if (start_vidsArr)
+    //     pfree(start_vidsArr);
     pgr_SPI_finish();
 }
 
@@ -128,7 +119,7 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    pgr_mst_rt *result_tuples = NULL;
+    pgr_edge_t *result_tuples = NULL;
     size_t result_count = 0;
     /**************************************************************************/
 
@@ -149,10 +140,10 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling process");
         process(
-            text_to_cstring(PG_GETARG_TEXT_P(0)),
-            PG_GETARG_ARRAYTYPE_P(1),
-            PG_GETARG_INT64(2),
-            PG_GETARG_BOOL(3),
+            text_to_cstring(PG_GETARG_TEXT_P(1)),
+            // PG_GETARG_ARRAYTYPE_P(1),
+            // PG_GETARG_INT64(3),
+            PG_GETARG_BOOL(1),
             &result_tuples,
             &result_count);
 
@@ -177,7 +168,7 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_mst_rt *)funcctx->user_fctx;
+    result_tuples = (pgr_edge_t *)funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;
@@ -187,16 +178,15 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*
-            OUT seq BIGINT,
-            OUT depth BIGINT,
-            OUT start_vid BIGINT,
-            OUT node BIGINT,
-            OUT edge BIGINT,
+            OUT planar BIGINT
+            OUT id BIGINT,
+            OUT source BIGINT,
+            OUT target_vid BIGINT,
             OUT cost FLOAT,
-            OUT agg_cost FLOAT
+            OUT reverse_cost FLOAT
         */
         /**********************************************************************/
-        size_t numb = 7;
+        size_t numb = 6;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
@@ -206,12 +196,12 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        // values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].planar);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].id);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
 
         /**********************************************************************/
 
