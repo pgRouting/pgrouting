@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_breadthFirstSearch.hpp
+File: pgr_boyerMyrvold.hpp
 
 Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
@@ -40,25 +40,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //******************************************
 
 template < class G >
-class Pgr_stoerWagner {
+class Pgr_boyerMyrvold {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
      typedef typename G::E_i E_i;
 
-     std::vector<pgr_edges_t> boyerMyrvold(
+     std::vector<pgr_edge_t> boyerMyrvold(
                  G &graph);
 
  private:
-     std::vector< pgr_edges_t >
+     std::vector< pgr_edge_t >
      generateboyerMyrvold(
         const G &graph ) {
-       std::vector< pgr_edges_t > results;
+       std::vector< pgr_edge_t > results;
 };
 
 template < class G >
-std::vector<pgr_edges_t>
-Pgr_stoerWagner< G >::boyerMyrvold(
+std::vector<pgr_edge_t>
+Pgr_boyerMyrvold< G >::boyerMyrvold(
                 G &graph) {
       pgassert(num_vertices(graph.graph) > 1);
       return generateboyerMyrvold(
@@ -66,7 +66,7 @@ Pgr_stoerWagner< G >::boyerMyrvold(
 }
 
 
-
+#endif INCLUDE_PLANARGRAPH_PGR_BOYERMYRVOLD_HPP_
 
 // namespace pgrouting {
 // namespace functions {
