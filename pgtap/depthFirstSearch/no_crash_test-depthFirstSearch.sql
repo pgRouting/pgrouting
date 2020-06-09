@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(86);
+SELECT plan(59);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
@@ -65,7 +65,7 @@ BEGIN
     -- depthFirstSearch Multiple vertices
     params = ARRAY[
     '$$edges$$',
-    'ARRAY[5,3]'
+    'ARRAY[5,3]::BIGINT[]'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
@@ -76,27 +76,27 @@ BEGIN
 
     subs = ARRAY[
     'NULL',
-    'NULL::BIGINT'
+    'NULL::BIGINT[]'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     -- depthFirstSearch Multiple vertices with depth
     params = ARRAY[
     '$$edges$$',
-    'ARRAY[5,3]',
-    '3'
+    'ARRAY[5,3]::BIGINT[]',
+    '3::BIGINT'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
     '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    'NULL::BIGINT'
+    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
     subs = ARRAY[
     'NULL',
-    'NULL::BIGINT',
+    'NULL::BIGINT[]',
     'NULL::BIGINT'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
