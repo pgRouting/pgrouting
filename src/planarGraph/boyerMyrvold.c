@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: breadthFirstSearch.c
+File: boyerMyrvold.c
 
 Generated with Template by:
 Copyright (c) 2019 pgRouting developers
@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 
-// #include "drivers/breadthFirstSearch/breadthFirstSearch_driver.h"
 #include "drivers/planarGraph/boyerMyrvold_driver.h"
 PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_boyermyrvold);
@@ -66,8 +65,6 @@ process(
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
-        // if (start_vidsArr)
-        //     pfree(start_vidsArr);
         pgr_SPI_finish();
         return;
     }
@@ -107,8 +104,6 @@ process(
     if (err_msg)
         pfree(err_msg);
 
-    // if (start_vidsArr)
-    //     pfree(start_vidsArr);
     pgr_SPI_finish();
 }
 
@@ -194,7 +189,6 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        // values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].planar);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].id);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
