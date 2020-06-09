@@ -39,6 +39,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pgr_edge_t.h"
 //******************************************
 
+namespace pgrouting {
+namespace functions {
+
 template < class G >
 class Pgr_boyerMyrvold {
  public:
@@ -47,7 +50,10 @@ class Pgr_boyerMyrvold {
      typedef typename G::E_i E_i;
 
      std::vector<pgr_edge_t> boyerMyrvold(
-                 G &graph);
+                 G &graph){
+                   return generateboyerMyrvold(
+                                          graph);
+                 }
 
  private:
      std::vector< pgr_edge_t >
@@ -58,39 +64,19 @@ class Pgr_boyerMyrvold {
        if(boost::boyer_myrvold_planarity_test(graph.graph)){
 
       E_i ei, ei_end;
-      for (tie(ei, ei_end) = edges(graph); ei != ei_end; ++ei){
+      for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
            pgr_edge_t tmp;
            tmp.id = graph[*ei].id;
-           tmp.source = graph[index[source(*ei,graph)]];
-           tmp.target = graph[index[target(*ei,graph)]];
+           tmp.source = graph.source(*ei);
+           tmp.target = graph.target(*ei);
            tmp.cost = graph[*ei].cost;
-           tmp.reverse_cost = graph[*ei].reverse_cost;
+           tmp.reverse_cost = graph[*ei].cost;
            results.push_back(tmp);
       }
-       //     std::cout << "(" << index[source(*ei, g)]
-       //               << "," << index[target(*ei, g)] << ") ";
-       // std::cout << std::endl;
-
-
-       // typename std::vector< V >::reverse_iterator ii;
-       // for (ii = c.rbegin(); ii != c.rend(); ++ii) {
-       //     auto t = *ii;
-       //     pgr_edge_t tmp;
-       //     tmp.sorted_v = graph.graph[t].id;
-       //     results.push_back(tmp);
-       // }
-
+    }
        return results;
 };
-
-template < class G >
-std::vector<pgr_edge_t>
-Pgr_boyerMyrvold< G >::boyerMyrvold(
-                G &graph) {
-      pgassert(num_vertices(graph.graph) >= 1);
-      return generateboyerMyrvold(
-                             graph);
+}
 }
 
-
-#endif INCLUDE_PLANARGRAPH_PGR_BOYERMYRVOLD_HPP_
+#endif //INCLUDE_PLANARGRAPH_PGR_BOYERMYRVOLD_HPP_

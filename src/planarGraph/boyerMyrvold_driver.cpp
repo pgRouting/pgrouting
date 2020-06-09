@@ -38,16 +38,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "c_types/pgr_edge_t.h"
 
+#include "planarGraph/pgr_boyerMyrvold.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 
-// template < class G >
-// static
-// std::vector<pgr_edge_t>
-// pgr_boyerMyrvold(
-//         G &graph) {
-//     pgr_boyerMyrvold< G > fn_boyerMyrvold;
-//     return fn_boyerMyrvold.boyerMyrvold(graph);
-// }
+
+template < class G >
+std::vector<pgr_edge_t>
+pgr_boyerMyrvold(
+        G &graph) {
+    pgrouting::functions::Pgr_boyerMyrvold< G > fn_boyerMyrvold;
+    auto results = fn_boyerMyrvold.boyerMyrvold(
+            graph);
+    return results;
+}
 
 void
 do_pgr_boyerMyrvold(
@@ -70,30 +73,15 @@ do_pgr_boyerMyrvold(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
+        std::vector<pgr_edge_t> results;
+        std::string logstr;
+
         graphType gType = UNDIRECTED;
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
+        results = pgr_boyerMyrvold(undigraph);
 
-
-        // graphType gType = directed? DIRECTED: UNDIRECTED;
-
-        // log << "Inserting vertices into a c++ vector structure";
-        // std::vector<int64_t>
-        //     start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-
-        std::vector<pgr_edge_t> results;
-        std::string logstr;
-        // if (directed) {
-        //     log << "Working with directed Graph\n";
-        //     pgrouting::DirectedGraph digraph(gType);
-        //     digraph.insert_edges(data_edges, total_edges);
-        //
-        // } else {
-        //     log << "Working with Undirected Graph\n";
-        //     pgrouting::UndirectedGraph undigraph(gType);
-        //     undigraph.insert_edges(data_edges, total_edges);
-        // }
 
         auto count = results.size();
 
