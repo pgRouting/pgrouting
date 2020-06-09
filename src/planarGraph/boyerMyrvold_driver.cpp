@@ -2,7 +2,7 @@
 File: boyerMyrvold_driver.cpp
 
 Generated with Template by:
-Copyright (c) 2019 pgRouting developers
+Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -39,13 +39,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pgr_edge_t.h"
 
 #include "cpp_common/pgr_base_graph.hpp"
-// #include "breadthFirstSearch/pgr_breadthFirstSearch.hpp"
+
+// template < class G >
+// static
+// std::vector<pgr_edge_t>
+// pgr_boyerMyrvold(
+//         G &graph) {
+//     pgr_boyerMyrvold< G > fn_boyerMyrvold;
+//     return fn_boyerMyrvold.boyerMyrvold(graph);
+// }
 
 void
 do_pgr_boyerMyrvold(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
-                // bool directed,
 
                 pgr_edge_t **return_tuples,
                 size_t *return_count,
@@ -62,6 +69,12 @@ do_pgr_boyerMyrvold(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
+
+        graphType gType = UNDIRECTED;
+        log << "Working with Undirected Graph\n";
+        pgrouting::UndirectedGraph undigraph(gType);
+        undigraph.insert_edges(data_edges, total_edges);
+
 
         // graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -88,7 +101,7 @@ do_pgr_boyerMyrvold(
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice <<
-                "No traversal found";
+                "No Vertices";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
