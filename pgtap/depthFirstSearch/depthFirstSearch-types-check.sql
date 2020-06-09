@@ -12,11 +12,9 @@ SELECT function_returns('pgr_depthfirstsearch', ARRAY['text','anyarray','bigint'
 
 -- pgr_depthfirstsearch
 -- parameter names
-SELECT set_eq(
+SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_depthfirstsearch'$$,
-    $$VALUES
-        ('{"","","max_depth","directed","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
-    $$
+    $$SELECT  '{"","","max_depth","directed","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 
 -- parameter types
