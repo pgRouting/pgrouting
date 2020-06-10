@@ -39,12 +39,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace functions {
 
+//*************************************************************
+
 template <class G>
 class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
  public:
     typedef typename G::V V;
     typedef typename G::E E;
-    //@}
 
     //! @name DepthFirstSearch
     //@{
@@ -62,11 +63,13 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
             if (graph.has_vertex(root)) {
                 results.push_back({root, 0, root, -1, 0.0, 0.0});
 
+                // get the graph root vertex
                 auto v_root(graph.get_V(root));
 
                 // perform the algorithm
                 depthFirstSearch_single_vertex(graph, v_root, visited_order, directed);
 
+                // get the results
                 auto result = get_results(visited_order, root, depth, graph);
                 results.insert(results.end(), result.begin(), result.end());
             }
@@ -74,6 +77,8 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
 
         return results;
     }
+
+    //@}
 
  private:
     //! Call to DepthFirstSearch
