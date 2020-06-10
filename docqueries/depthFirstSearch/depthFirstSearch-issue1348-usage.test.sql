@@ -39,7 +39,7 @@ SELECT * FROM pgr_depthFirstSearch (
 \echo -- q3
 SELECT * FROM pgr_depthFirstSearch (
     'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
-    6, max_depth := 1
+    6, max_depth => 1
 );
 
 -- start_vid does not exist in the Graph
@@ -53,21 +53,21 @@ SELECT * FROM pgr_depthFirstSearch (
 \echo -- q5
 SELECT * FROM pgr_depthFirstSearch (
     'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
-    3, directed := false
+    3, directed => false
 );
 
 -- Undirected Graph with start_vid 6
 \echo -- q6
 SELECT * FROM pgr_depthFirstSearch (
     'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
-    6, directed := false
+    6, directed => false
 );
 
 -- Undirected Graph with start_vid 6 and max_depth 1
 \echo -- q7
 SELECT * FROM pgr_depthFirstSearch (
     'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
-    6, max_depth := 1, directed := false
+    6, max_depth => 1, directed => false
 );
 
 -- Directed Graph with multiple start_vids
