@@ -98,16 +98,19 @@ process(
     time_msg("processing pgr_depthFirstSearch", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
-    if (err_msg) {
-        if (*result_tuples) pfree(*result_tuples);
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
 
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges) pfree(edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
+    if (edges) pfree(edges);
+    if (rootsArr) pfree(rootsArr);
 
     pgr_SPI_finish();
 }
