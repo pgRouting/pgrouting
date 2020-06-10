@@ -44,45 +44,29 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
  public:
     typedef typename G::V V;
     typedef typename G::E E;
+    //@}
 
+    //! @name DepthFirstSearch
+    //@{
+    //! DepthFirstSearch
     std::vector<pgr_mst_rt> depthFirstSearch(
             G &graph,
             std::vector<int64_t> roots,
             int64_t depth,
             bool directed) {
         std::vector<pgr_mst_rt> results;
-        using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
 
         for (auto root : roots) {
             std::vector<E> visited_order;
 
             if (graph.has_vertex(root)) {
                 results.push_back({root, 0, root, -1, 0.0, 0.0});
-                try {
-                    if (directed) {
-                        boost::depth_first_search(
-                            graph.graph,
-                            visitor(dfs_visitor(graph.get_V(root), visited_order))
-                            .root_vertex(graph.get_V(root)));
-                    } else {
-                        std::map<E, boost::default_color_type> edge_color;
-                        boost::undirected_dfs(
-                            graph.graph,
-                            visitor(dfs_visitor(graph.get_V(root), visited_order))
-                            .edge_color_map(boost::make_assoc_property_map(edge_color))
-                            .root_vertex(graph.get_V(root)));
-                    }
-                } catch(found_goals &) {
-                    {}
-                } catch (boost::exception const& ex) {
-                    (void)ex;
-                    throw;
-                } catch (std::exception &e) {
-                    (void)e;
-                    throw;
-                } catch (...) {
-                    throw;
-                }
+
+                auto v_root(graph.get_V(root));
+
+                // perform the algorithm
+                depthFirstSearch_single_vertex(graph, v_root, visited_order, directed);
+
                 auto result = get_results(visited_order, root, depth, graph);
                 results.insert(results.end(), result.begin(), result.end());
             }
@@ -92,6 +76,44 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
     }
 
  private:
+    //! Call to DepthFirstSearch
+    bool depthFirstSearch_single_vertex(
+                G &graph,
+                V root,
+                std::vector<E> &visited_order,
+                bool directed) {
+
+        using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
+
+        try {
+            if (directed) {
+                boost::depth_first_search(
+                    graph.graph,
+                    visitor(dfs_visitor(root, visited_order))
+                    .root_vertex(root));
+            } else {
+                std::map<E, boost::default_color_type> edge_color;
+                boost::undirected_dfs(
+                    graph.graph,
+                    visitor(dfs_visitor(root, visited_order))
+                    .edge_color_map(boost::make_assoc_property_map(edge_color))
+                    .root_vertex(root));
+            }
+        } catch(found_goals &) {
+            {}
+        } catch (boost::exception const& ex) {
+            (void)ex;
+            throw;
+        } catch (std::exception &e) {
+            (void)e;
+            throw;
+        } catch (...) {
+            throw;
+        }
+        return true;
+    }
+
+    // to get the results
     template <typename T>
     std::vector<pgr_mst_rt> get_results(
             T order,
