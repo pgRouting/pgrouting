@@ -82,7 +82,7 @@ Single vertex
 .. code-block:: none
 
     pgr_depthFirstSearch(TEXT edges_sql, BIGINT start_vid,
-    BIGINT max_depth := 9223372036854775807, BOOLEAN directed := true)
+    BIGINT max_depth => 9223372036854775807, BOOLEAN directed => true)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -102,7 +102,7 @@ Multiple vertices
 .. code-block:: none
 
     pgr_depthFirstSearch(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids,
-    BIGINT max_depth := 9223372036854775807, BOOLEAN directed := true)
+    BIGINT max_depth => 9223372036854775807, BOOLEAN directed => true)
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET

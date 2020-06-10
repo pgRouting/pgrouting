@@ -57,7 +57,7 @@ SELECT * FROM pgr_depthFirstSearch (
 -- q3
 SELECT * FROM pgr_depthFirstSearch (
     'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
-    6, max_depth := 1
+    6, max_depth => 1
 );
  seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
@@ -77,7 +77,7 @@ SELECT * FROM pgr_depthFirstSearch (
 -- q5
 SELECT * FROM pgr_depthFirstSearch (
     'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
-    3, directed := false
+    3, directed => false
 );
  seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
@@ -89,7 +89,7 @@ SELECT * FROM pgr_depthFirstSearch (
 -- q6
 SELECT * FROM pgr_depthFirstSearch (
     'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
-    6, directed := false
+    6, directed => false
 );
  seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
@@ -101,7 +101,7 @@ SELECT * FROM pgr_depthFirstSearch (
 -- q7
 SELECT * FROM pgr_depthFirstSearch (
     'SELECT id, source, target, cost, reverse_cost FROM sample_table ORDER BY id',
-    6, max_depth := 1, directed := false
+    6, max_depth => 1, directed => false
 );
  seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
