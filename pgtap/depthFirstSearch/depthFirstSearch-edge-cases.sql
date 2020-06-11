@@ -1,10 +1,10 @@
 \i setup.sql
 
-SELECT plan(24);
+SELECT plan(30);
 
 SELECT todo_start('Must add all edge cases');
 
--- 0 edge, 0 vertex (directed)
+-- 0 edge, 0 vertex tests (directed)
 
 PREPARE depthFirstSearch1 AS
 SELECT *
@@ -67,7 +67,7 @@ SELECT is_empty('depthFirstSearch4', '4: Graph with 0 edge and 0 vertex -> Empty
 SELECT is_empty('depthFirstSearch5', '5: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch6', '6: Graph with 0 edge and 0 vertex -> Empty row is returned');
 
--- 0 edge, 0 vertex (undirected)
+-- 0 edge, 0 vertex tests (undirected)
 
 PREPARE depthFirstSearch7 AS
 SELECT *
@@ -130,7 +130,7 @@ SELECT is_empty('depthFirstSearch10', '10: Graph with 0 edge and 0 vertex -> Emp
 SELECT is_empty('depthFirstSearch11', '11: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch12', '12: Graph with 0 edge and 0 vertex -> Empty row is returned');
 
--- vertex not present in graph (directed)
+-- vertex not present in graph tests (directed)
 
 PREPARE depthFirstSearch13 AS
 SELECT *
@@ -187,7 +187,7 @@ SELECT is_empty('depthFirstSearch16', '16: Vertex not present in graph -> Empty 
 SELECT is_empty('depthFirstSearch17', '17: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch18', '18: Vertex not present in graph -> Empty row is returned');
 
--- vertex not present in graph (undirected)
+-- vertex not present in graph tests (undirected)
 
 PREPARE depthFirstSearch19 AS
 SELECT *
@@ -244,6 +244,62 @@ SELECT is_empty('depthFirstSearch22', '22: Vertex not present in graph -> Empty 
 SELECT is_empty('depthFirstSearch23', '23: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch24', '24: Vertex not present in graph -> Empty row is returned');
 
+-- negative depth tests
+
+PREPARE depthFirstSearch25 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    4, max_depth => -3
+);
+
+PREPARE depthFirstSearch26 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    ARRAY[4], max_depth => -3
+);
+
+PREPARE depthFirstSearch27 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    ARRAY[4, 20], max_depth => -3
+);
+
+PREPARE depthFirstSearch28 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    4, max_depth => -3, directed => false
+);
+
+PREPARE depthFirstSearch29 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    ARRAY[4], max_depth => -3, directed => false
+);
+
+PREPARE depthFirstSearch30 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    ARRAY[4, 20], max_depth => -3, directed => false
+);
+
+SELECT throws_ok('depthFirstSearch25', 'P0001', 'Negative value found on ''max_depth''', '25: Negative max_depth throws');
+SELECT throws_ok('depthFirstSearch26', 'P0001', 'Negative value found on ''max_depth''', '26: Negative max_depth throws');
+SELECT throws_ok('depthFirstSearch27', 'P0001', 'Negative value found on ''max_depth''', '27: Negative max_depth throws');
+SELECT throws_ok('depthFirstSearch28', 'P0001', 'Negative value found on ''max_depth''', '28: Negative max_depth throws');
+SELECT throws_ok('depthFirstSearch29', 'P0001', 'Negative value found on ''max_depth''', '29: Negative max_depth throws');
+SELECT throws_ok('depthFirstSearch30', 'P0001', 'Negative value found on ''max_depth''', '30: Negative max_depth throws');
 
 SELECT todo_end();
 
