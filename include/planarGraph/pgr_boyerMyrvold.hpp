@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "c_types/pgr_edge_t.h"
 //******************************************
-
+using namespace boost;
 namespace pgrouting {
 namespace functions {
 
@@ -48,7 +48,6 @@ class Pgr_boyerMyrvold {
      typedef typename G::V V;
      typedef typename G::E E;
      typedef typename G::E_i E_i;
-
      std::vector<pgr_edge_t> boyerMyrvold(
                  G &graph){
                    return generateboyerMyrvold(
@@ -61,16 +60,19 @@ class Pgr_boyerMyrvold {
         const G &graph ) {
        std::vector< pgr_edge_t > results;
 
-       if(boost::boyer_myrvold_planarity_test(graph.graph)){
-
+       auto check = boyer_myrvold_planarity_test(graph.graph);
+       if(check){
       E_i ei, ei_end;
       for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
            pgr_edge_t tmp;
-           tmp.id = graph[*ei].id;
-           tmp.source = graph.source(*ei);
-           tmp.target = graph.target(*ei);
-           tmp.cost = graph[*ei].cost;
-           tmp.reverse_cost = graph[*ei].cost;
+
+           tmp.id = graph.graph[*ei].id;
+           tmp.source = graph[graph.source(*ei)].id;
+           tmp.target = graph[graph.target(*ei)].id;
+           // tmp.source = source(*ei,graph.graph);
+           // tmp.target = target(*ei,graph.graph);
+           tmp.cost = graph.graph[*ei].cost;
+           tmp.reverse_cost = graph.graph[*ei].cost;
            results.push_back(tmp);
       }
     }
