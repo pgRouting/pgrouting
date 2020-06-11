@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(18);
+SELECT plan(24);
 
 SELECT todo_start('Must add all edge cases');
 
@@ -102,7 +102,7 @@ FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id > 18',
-    5, directed => false, max_depth => 2
+    5, max_depth => 2, directed => false
 );
 
 PREPARE depthFirstSearch11 AS
@@ -111,7 +111,7 @@ FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id > 18',
-    ARRAY[5], directed => false, max_depth => 2
+    ARRAY[5], max_depth => 2, directed => false
 );
 
 PREPARE depthFirstSearch12 AS
@@ -120,7 +120,7 @@ FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id > 18',
-    ARRAY[2, 5], directed => false, max_depth => 2
+    ARRAY[2, 5], max_depth => 2, directed => false
 );
 
 SELECT is_empty('depthFirstSearch7', '7: Graph with 0 edge and 0 vertex -> Empty row is returned');
@@ -186,6 +186,63 @@ SELECT is_empty('depthFirstSearch15', '15: Vertex not present in graph -> Empty 
 SELECT is_empty('depthFirstSearch16', '16: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch17', '17: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch18', '18: Vertex not present in graph -> Empty row is returned');
+
+-- vertex not present in graph (undirected)
+
+PREPARE depthFirstSearch19 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    -10, directed => false
+);
+
+PREPARE depthFirstSearch20 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    ARRAY[-10], directed => false
+);
+
+PREPARE depthFirstSearch21 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    ARRAY[20, -10], directed => false
+);
+
+PREPARE depthFirstSearch22 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    -10, max_depth => 2, directed => false
+);
+
+PREPARE depthFirstSearch23 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    ARRAY[-10], max_depth => 2, directed => false
+);
+
+PREPARE depthFirstSearch24 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table',
+    ARRAY[20, -10], max_depth => 2, directed => false
+);
+
+SELECT is_empty('depthFirstSearch19', '19: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('depthFirstSearch20', '20: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('depthFirstSearch21', '21: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('depthFirstSearch22', '22: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('depthFirstSearch23', '23: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('depthFirstSearch24', '24: Vertex not present in graph -> Empty row is returned');
 
 
 SELECT todo_end();
