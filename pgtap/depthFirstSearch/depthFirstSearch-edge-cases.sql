@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(53);
+SELECT plan(54);
 
 SELECT todo_start('Must add all edge cases');
 
@@ -542,6 +542,35 @@ SELECT set_eq('depthFirstSearch47', $$VALUES (1, 0, 6, 6, -1, 0, 0), (2, 1, 6, 3
 SELECT set_eq('depthFirstSearch48', $$VALUES (1, 0, 6, 6, -1, 0, 0), (2, 1, 6, 3, 5, 1, 1)$$, '48: Two rows are returned');
 SELECT set_eq('depthFirstSearch49', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '49: Two rows are returned');
 SELECT set_eq('depthFirstSearch50', $$VALUES (1, 0, 3, 3, -1, 0, 0)$$, '50: One row is returned');
+
+-- 3 vertices tests
+
+CREATE TABLE three_vertices_table (
+    id BIGSERIAL,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT
+);
+
+INSERT INTO three_vertices_table (source, target, cost, reverse_cost) VALUES
+    (3, 6, 20, 15),
+    (3, 8, 10, -10),
+    (6, 8, -1, 12);
+
+PREPARE q4 AS
+SELECT id, source, target, cost, reverse_cost
+FROM three_vertices_table;
+
+-- Cyclic Graph with three vertices 3, 6 and 8
+SELECT set_eq('q4',
+    $$VALUES
+        (1, 3, 6, 20, 15),
+        (2, 3, 8, 10, -10),
+        (3, 6, 8, -1, 12)
+    $$,
+    'q4: Cyclic Graph with three vertices 3, 6 and 8'
+);
 
 
 SELECT todo_end();
