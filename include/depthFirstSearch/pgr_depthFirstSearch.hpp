@@ -36,6 +36,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/pgr_messages.h"
 
+
+/** @file pgr_depthFirstSearch.hpp
+ * @brief The main file which calls the respective boost function.
+ *
+ * Contains actual implementation of the function and the calling
+ * of the respective boost function.
+ */
+
+
 namespace pgrouting {
 namespace functions {
 

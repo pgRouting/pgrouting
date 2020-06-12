@@ -26,15 +26,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+/** @file depthFirstSearch.c
+ * @brief Connecting code with postgres.
+ *
+ */
+
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
+/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
+/* for pgr_global_report */
 #include "c_common/e_report.h"
+/* for time_msg & clock */
 #include "c_common/time_msg.h"
 
+/* for functions to get edges informtion */
 #include "c_common/edges_input.h"
+/* for handling array related stuffs */
 #include "c_common/arrays_input.h"
 
 #include "drivers/depthFirstSearch/depthFirstSearch_driver.h"
@@ -42,7 +52,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_depthfirstsearch);
 
-
+/** @brief Static function, loads the data from postgres to C types for further processing.
+ *
+ * It first connects the C function to the SPI manager. Then converts
+ * the postgres array to C array and loads the edges belonging to the graph
+ * in C types. Then it calls the function `do_pgr_depthFirstSearch` defined
+ * in the `depthFirstSearch_driver.h` file for further processing.
+ * Finally, it frees the memory and disconnects the C function to the SPI manager.
+ *
+ * @param edges_sql      the edges of the SQL query
+ * @param roots          the starting vertices
+ * @param max_depth      the maximum depth of traversal
+ * @param directed       whether the graph is directed or undirected
+ * @param result_tuples  the rows in the result
+ * @param result_count   the count of rows in the result
+ *
+ * @returns void
+ */
 static
 void
 process(
@@ -53,10 +79,13 @@ process(
 
         pgr_mst_rt **result_tuples,
         size_t *result_count) {
+    // https://www.postgresql.org/docs/current/static/spi-spi-connect.html
     pgr_SPI_connect();
 
     PGR_DBG("Initializing arrays");
     size_t size_rootsArr = 0;
+
+    // converting the postgres array to C array
     int64_t* rootsArr = (int64_t*)
         pgr_get_bigIntArray(&size_rootsArr, roots);
     PGR_DBG("rootsArr size %ld", size_rootsArr);
@@ -68,6 +97,7 @@ process(
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
+    // load the edges belonging to the graph
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total edges in query %ld", total_edges);
 
@@ -117,6 +147,10 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
+/** @brief Helps in converting postgres variables to C variables, and returns the result.
+ *
+ */
+
 PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
@@ -131,16 +165,16 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        /**********************************************************************/
-        /*
-        pgr_depthFirstSearch(
-            edges_sql TEXT,
-            root_vids ANYARRAY,
-            max_depth BIGINT DEFAULT 9223372036854775807,
-            directed BOOLEAN DEFAULT true
-        );
-        */
-        /**********************************************************************/
+        /***********************************************************************
+         *
+         *   pgr_depthFirstSearch(
+         *       edges_sql TEXT,
+         *       root_vids ANYARRAY,
+         *       max_depth BIGINT DEFAULT 9223372036854775807,
+         *       directed BOOLEAN DEFAULT true
+         *   );
+         *
+         **********************************************************************/
 
         PGR_DBG("Calling process");
         process(
@@ -182,17 +216,17 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        /**********************************************************************/
-        /*
-            OUT seq BIGINT,
-            OUT depth BIGINT,
-            OUT start_vid BIGINT,
-            OUT node BIGINT,
-            OUT edge BIGINT,
-            OUT cost FLOAT,
-            OUT agg_cost FLOAT
-        */
-        /**********************************************************************/
+        /***********************************************************************
+         *
+         *   OUT seq BIGINT,
+         *   OUT depth BIGINT,
+         *   OUT start_vid BIGINT,
+         *   OUT node BIGINT,
+         *   OUT edge BIGINT,
+         *   OUT cost FLOAT,
+         *   OUT agg_cost FLOAT
+         *
+         **********************************************************************/
 
         size_t num  = 7;
         values = palloc(num * sizeof(Datum));
