@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(63);
+SELECT plan(67);
 
 SELECT todo_start('Must add all edge cases');
 
@@ -620,7 +620,7 @@ SELECT set_eq('depthFirstSearch55',
         (2, 1, 3, 6, 1, 20, 20),
         (3, 1, 3, 8, 2, 10, 10)
     $$,
-    '55'
+    '55: 3 vertices tests (directed)'
 );
 
 SELECT set_eq('depthFirstSearch56',
@@ -629,7 +629,7 @@ SELECT set_eq('depthFirstSearch56',
         (2, 1, 6, 3, 1, 15, 15),
         (3, 2, 6, 8, 2, 10, 25)
     $$,
-    '56'
+    '56: 3 vertices tests (directed)'
 );
 
 SELECT set_eq('depthFirstSearch57',
@@ -637,7 +637,7 @@ SELECT set_eq('depthFirstSearch57',
         (1, 0, 6, 6, -1, 0, 0),
         (2, 1, 6, 3, 1, 15, 15)
     $$,
-    '57'
+    '57: 3 vertices tests (directed)'
 );
 
 SELECT is_empty('depthFirstSearch58',
@@ -653,7 +653,7 @@ SELECT set_eq('depthFirstSearch59',
         (5, 1, 6, 3, 1, 15, 15),
         (6, 2, 6, 8, 2, 10, 25)
     $$,
-    '59'
+    '59: 3 vertices tests (directed)'
 );
 
 -- 3 vertices tests (undirected)
@@ -688,7 +688,7 @@ SELECT set_eq('depthFirstSearch60',
         (2, 1, 3, 6, 1, 20, 20),
         (3, 2, 3, 8, 3, 12, 32)
     $$,
-    '60'
+    '60: 3 vertices tests (undirected)'
 );
 
 SELECT set_eq('depthFirstSearch61',
@@ -697,7 +697,7 @@ SELECT set_eq('depthFirstSearch61',
         (2, 1, 6, 3, 1, 20, 20),
         (3, 2, 6, 8, 2, 10, 30)
     $$,
-    '61'
+    '61: 3 vertices tests (undirected)'
 );
 
 SELECT set_eq('depthFirstSearch62',
@@ -705,7 +705,7 @@ SELECT set_eq('depthFirstSearch62',
         (1, 0, 6, 6, -1, 0, 0),
         (2, 1, 6, 3, 1, 20, 20)
     $$,
-    '62'
+    '62: 3 vertices tests (undirected)'
 );
 
 -- 4 vertices tests
@@ -714,7 +714,7 @@ PREPARE q63 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE (id >= 10 AND id <= 12)
-OR id = 8;
+    OR id = 8;
 
 -- Graph with vertices 5, 6, 10, 11
 SELECT set_eq('q63',
@@ -727,8 +727,84 @@ SELECT set_eq('q63',
     '63: Graph with vertices 5, 6, 10 and 11'
 );
 
+-- 4 vertices tests (directed)
 
+PREPARE depthFirstSearch64 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE (id >= 10 AND id <= 12)
+        OR id = 8',
+    5
+);
 
+PREPARE depthFirstSearch65 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE (id >= 10 AND id <= 12)
+        OR id = 8',
+    6
+);
+
+PREPARE depthFirstSearch66 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE (id >= 10 AND id <= 12)
+        OR id = 8',
+    10
+);
+
+PREPARE depthFirstSearch67 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE (id >= 10 AND id <= 12)
+        OR id = 8',
+    11
+);
+
+SELECT set_eq('depthFirstSearch64',
+    $$VALUES
+        (1, 0, 5, 5, -1, 0, 0),
+        (2, 1, 5, 6, 8, 1, 1),
+        (3, 2, 5, 11, 11, 1, 2),
+        (4, 1, 5, 10, 10, 1, 1)
+    $$,
+    '64: 4 vertices tests (directed)'
+);
+
+SELECT set_eq('depthFirstSearch65',
+    $$VALUES
+        (1, 0, 6, 6, -1, 0, 0),
+        (2, 1, 6, 5, 8, 1, 1),
+        (3, 2, 6, 10, 10, 1, 2),
+        (4, 3, 6, 11, 12, 1, 3)
+    $$,
+    '65: 4 vertices tests (directed)'
+);
+
+SELECT set_eq('depthFirstSearch66',
+    $$VALUES
+        (1, 0, 10, 10, -1, 0, 0),
+        (2, 1, 10, 5, 10, 1, 1),
+        (3, 2, 10, 6, 8, 1, 2),
+        (4, 3, 10, 11, 11, 1, 3)
+    $$,
+    '66: 4 vertices tests (directed)'
+);
+
+SELECT set_eq('depthFirstSearch67',
+    $$VALUES
+        (1, 0, 11, 11, -1, 0, 0)
+    $$,
+    '67: 4 vertices tests (directed)'
+);
 
 SELECT todo_end();
 
