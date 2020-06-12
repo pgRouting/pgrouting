@@ -63,8 +63,8 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
       *
       * @returns results, when results are found
       *
-      * @see depthFirstSearch_single_vertex
-      * @see get_results
+      * @see [boost::depth_first_search](https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/depth_first_search.html)
+      * @see [boost::undirected_dfs](https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/undirected_dfs.html)
       */
      std::vector<pgr_mst_rt> depthFirstSearch(
              G &graph,
@@ -110,9 +110,6 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
       * @param directed       tells whether the graph is directed or undirected
       *
       * @returns bool  @b true, when results are found
-      *
-      * @see depthFirstSearch
-      * @see get_results
       */
      bool depthFirstSearch_single_vertex(
                  G &graph,
@@ -161,9 +158,6 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
       * @param graph          the graph containing the edges
       *
       * @returns bool  @b True, when results are found
-      *
-      * @see depthFirstSearch
-      * @see depthFirstSearch_single_vertex
       */
      template <typename T>
      std::vector<pgr_mst_rt> get_results(
