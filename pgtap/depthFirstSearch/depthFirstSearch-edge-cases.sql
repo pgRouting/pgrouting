@@ -16,7 +16,7 @@ SELECT is_empty('q1', 'q1: Graph with 0 edge and 0 vertex');
 
 -- 0 edge, 0 vertex tests (directed)
 
-PREPARE depthFirstSearch1 AS
+PREPARE depthFirstSearch2 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -25,7 +25,7 @@ FROM pgr_depthFirstSearch(
     5
 );
 
-PREPARE depthFirstSearch2 AS
+PREPARE depthFirstSearch3 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -34,7 +34,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[5]
 );
 
-PREPARE depthFirstSearch3 AS
+PREPARE depthFirstSearch4 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -43,7 +43,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[2, 5]
 );
 
-PREPARE depthFirstSearch4 AS
+PREPARE depthFirstSearch5 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -52,7 +52,7 @@ FROM pgr_depthFirstSearch(
     5, max_depth => 2
 );
 
-PREPARE depthFirstSearch5 AS
+PREPARE depthFirstSearch6 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -61,7 +61,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[5], max_depth => 2
 );
 
-PREPARE depthFirstSearch6 AS
+PREPARE depthFirstSearch7 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -70,16 +70,16 @@ FROM pgr_depthFirstSearch(
     ARRAY[2, 5], max_depth => 2
 );
 
-SELECT is_empty('depthFirstSearch1', '1: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch2', '2: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch3', '3: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch4', '4: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch5', '5: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch6', '6: Graph with 0 edge and 0 vertex -> Empty row is returned');
+SELECT is_empty('depthFirstSearch7', '7: Graph with 0 edge and 0 vertex -> Empty row is returned');
 
 -- 0 edge, 0 vertex tests (undirected)
 
-PREPARE depthFirstSearch7 AS
+PREPARE depthFirstSearch8 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -88,7 +88,7 @@ FROM pgr_depthFirstSearch(
     5, directed => false
 );
 
-PREPARE depthFirstSearch8 AS
+PREPARE depthFirstSearch9 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -97,7 +97,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[5], directed => false
 );
 
-PREPARE depthFirstSearch9 AS
+PREPARE depthFirstSearch10 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -106,7 +106,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[2, 5], directed => false
 );
 
-PREPARE depthFirstSearch10 AS
+PREPARE depthFirstSearch11 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -115,7 +115,7 @@ FROM pgr_depthFirstSearch(
     5, max_depth => 2, directed => false
 );
 
-PREPARE depthFirstSearch11 AS
+PREPARE depthFirstSearch12 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -124,7 +124,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[5], max_depth => 2, directed => false
 );
 
-PREPARE depthFirstSearch12 AS
+PREPARE depthFirstSearch13 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -133,16 +133,16 @@ FROM pgr_depthFirstSearch(
     ARRAY[2, 5], max_depth => 2, directed => false
 );
 
-SELECT is_empty('depthFirstSearch7', '7: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch8', '8: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch9', '9: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch10', '10: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch11', '11: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch12', '12: Graph with 0 edge and 0 vertex -> Empty row is returned');
+SELECT is_empty('depthFirstSearch13', '13: Graph with 0 edge and 0 vertex -> Empty row is returned');
 
 -- vertex not present in graph tests (directed)
 
-PREPARE depthFirstSearch13 AS
+PREPARE depthFirstSearch14 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -150,7 +150,7 @@ FROM pgr_depthFirstSearch(
     -10
 );
 
-PREPARE depthFirstSearch14 AS
+PREPARE depthFirstSearch15 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -158,7 +158,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[-10]
 );
 
-PREPARE depthFirstSearch15 AS
+PREPARE depthFirstSearch16 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -166,7 +166,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[20, -10]
 );
 
-PREPARE depthFirstSearch16 AS
+PREPARE depthFirstSearch17 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -174,7 +174,7 @@ FROM pgr_depthFirstSearch(
     -10, max_depth => 2
 );
 
-PREPARE depthFirstSearch17 AS
+PREPARE depthFirstSearch18 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -182,7 +182,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[-10], max_depth => 2
 );
 
-PREPARE depthFirstSearch18 AS
+PREPARE depthFirstSearch19 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -190,16 +190,16 @@ FROM pgr_depthFirstSearch(
     ARRAY[20, -10], max_depth => 2
 );
 
-SELECT is_empty('depthFirstSearch13', '13: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch14', '14: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch15', '15: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch16', '16: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch17', '17: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch18', '18: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('depthFirstSearch19', '19: Vertex not present in graph -> Empty row is returned');
 
 -- vertex not present in graph tests (undirected)
 
-PREPARE depthFirstSearch19 AS
+PREPARE depthFirstSearch20 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -207,7 +207,7 @@ FROM pgr_depthFirstSearch(
     -10, directed => false
 );
 
-PREPARE depthFirstSearch20 AS
+PREPARE depthFirstSearch21 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -215,7 +215,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[-10], directed => false
 );
 
-PREPARE depthFirstSearch21 AS
+PREPARE depthFirstSearch22 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -223,7 +223,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[20, -10], directed => false
 );
 
-PREPARE depthFirstSearch22 AS
+PREPARE depthFirstSearch23 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -231,7 +231,7 @@ FROM pgr_depthFirstSearch(
     -10, max_depth => 2, directed => false
 );
 
-PREPARE depthFirstSearch23 AS
+PREPARE depthFirstSearch24 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -239,7 +239,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[-10], max_depth => 2, directed => false
 );
 
-PREPARE depthFirstSearch24 AS
+PREPARE depthFirstSearch25 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -247,16 +247,16 @@ FROM pgr_depthFirstSearch(
     ARRAY[20, -10], max_depth => 2, directed => false
 );
 
-SELECT is_empty('depthFirstSearch19', '19: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch20', '20: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch21', '21: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch22', '22: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch23', '23: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch24', '24: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('depthFirstSearch25', '25: Vertex not present in graph -> Empty row is returned');
 
 -- negative depth tests
 
-PREPARE depthFirstSearch25 AS
+PREPARE depthFirstSearch26 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -264,7 +264,7 @@ FROM pgr_depthFirstSearch(
     4, max_depth => -3
 );
 
-PREPARE depthFirstSearch26 AS
+PREPARE depthFirstSearch27 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -272,7 +272,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[4], max_depth => -3
 );
 
-PREPARE depthFirstSearch27 AS
+PREPARE depthFirstSearch28 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -280,7 +280,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[4, 20], max_depth => -3
 );
 
-PREPARE depthFirstSearch28 AS
+PREPARE depthFirstSearch29 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -288,7 +288,7 @@ FROM pgr_depthFirstSearch(
     4, max_depth => -3, directed => false
 );
 
-PREPARE depthFirstSearch29 AS
+PREPARE depthFirstSearch30 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -296,7 +296,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[4], max_depth => -3, directed => false
 );
 
-PREPARE depthFirstSearch30 AS
+PREPARE depthFirstSearch31 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -304,26 +304,26 @@ FROM pgr_depthFirstSearch(
     ARRAY[4, 20], max_depth => -3, directed => false
 );
 
-SELECT throws_ok('depthFirstSearch25', 'P0001', 'Negative value found on ''max_depth''', '25: Negative max_depth throws');
 SELECT throws_ok('depthFirstSearch26', 'P0001', 'Negative value found on ''max_depth''', '26: Negative max_depth throws');
 SELECT throws_ok('depthFirstSearch27', 'P0001', 'Negative value found on ''max_depth''', '27: Negative max_depth throws');
 SELECT throws_ok('depthFirstSearch28', 'P0001', 'Negative value found on ''max_depth''', '28: Negative max_depth throws');
 SELECT throws_ok('depthFirstSearch29', 'P0001', 'Negative value found on ''max_depth''', '29: Negative max_depth throws');
 SELECT throws_ok('depthFirstSearch30', 'P0001', 'Negative value found on ''max_depth''', '30: Negative max_depth throws');
+SELECT throws_ok('depthFirstSearch31', 'P0001', 'Negative value found on ''max_depth''', '31: Negative max_depth throws');
 
 -- 1 vertex tests
 
-PREPARE q2 AS
+PREPARE q32 AS
 SELECT id, source, 2 AS target, cost, reverse_cost
 FROM edge_table
 WHERE id = 2;
 
 -- Graph with only vertex 2
-SELECT set_eq('q2', $$VALUES (2, 2, 2, -1, 1)$$, 'q2: Graph with only vertex 2');
+SELECT set_eq('q32', $$VALUES (2, 2, 2, -1, 1)$$, 'q32: Graph with only vertex 2');
 
 -- 1 vertex tests (directed)
 
-PREPARE depthFirstSearch31 AS
+PREPARE depthFirstSearch33 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, 2 AS target, cost, reverse_cost
@@ -332,7 +332,7 @@ FROM pgr_depthFirstSearch(
     2
 );
 
-PREPARE depthFirstSearch32 AS
+PREPARE depthFirstSearch34 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, 2 AS target, cost, reverse_cost
@@ -341,7 +341,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[2]
 );
 
-PREPARE depthFirstSearch33 AS
+PREPARE depthFirstSearch35 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, 2 AS target, cost, reverse_cost
@@ -350,7 +350,7 @@ FROM pgr_depthFirstSearch(
     2, max_depth => 2
 );
 
-PREPARE depthFirstSearch34 AS
+PREPARE depthFirstSearch36 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, 2 AS target, cost, reverse_cost
@@ -359,14 +359,14 @@ FROM pgr_depthFirstSearch(
     ARRAY[2], max_depth => 2
 );
 
-SELECT set_eq('depthFirstSearch31', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '31: One row with node 2 is returned');
-SELECT set_eq('depthFirstSearch32', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '32: One row with node 2 is returned');
 SELECT set_eq('depthFirstSearch33', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '33: One row with node 2 is returned');
 SELECT set_eq('depthFirstSearch34', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '34: One row with node 2 is returned');
+SELECT set_eq('depthFirstSearch35', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '35: One row with node 2 is returned');
+SELECT set_eq('depthFirstSearch36', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '36: One row with node 2 is returned');
 
 -- 1 vertex tests (undirected)
 
-PREPARE depthFirstSearch35 AS
+PREPARE depthFirstSearch37 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, 2 AS target, cost, reverse_cost
@@ -375,7 +375,7 @@ FROM pgr_depthFirstSearch(
     2, directed => false
 );
 
-PREPARE depthFirstSearch36 AS
+PREPARE depthFirstSearch38 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, 2 AS target, cost, reverse_cost
@@ -384,7 +384,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[2], directed => false
 );
 
-PREPARE depthFirstSearch37 AS
+PREPARE depthFirstSearch39 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, 2 AS target, cost, reverse_cost
@@ -393,7 +393,7 @@ FROM pgr_depthFirstSearch(
     2, max_depth => 2, directed => false
 );
 
-PREPARE depthFirstSearch38 AS
+PREPARE depthFirstSearch40 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, 2 AS target, cost, reverse_cost
@@ -402,24 +402,24 @@ FROM pgr_depthFirstSearch(
     ARRAY[2], max_depth => 2, directed => false
 );
 
-SELECT set_eq('depthFirstSearch35', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '35: One row with node 2 is returned');
-SELECT set_eq('depthFirstSearch36', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '36: One row with node 2 is returned');
 SELECT set_eq('depthFirstSearch37', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '37: One row with node 2 is returned');
 SELECT set_eq('depthFirstSearch38', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '38: One row with node 2 is returned');
+SELECT set_eq('depthFirstSearch39', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '39: One row with node 2 is returned');
+SELECT set_eq('depthFirstSearch40', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '40: One row with node 2 is returned');
 
 -- 2 vertices tests
 
-PREPARE q3 AS
+PREPARE q41 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE id = 5;
 
 -- Graph with vertices 3 and 6 and edge from 3 to 6
-SELECT set_eq('q3', $$VALUES (5, 3, 6, 1, -1)$$, 'q3: Graph with two vertices 3 and 6 and edge from 3 to 6');
+SELECT set_eq('q41', $$VALUES (5, 3, 6, 1, -1)$$, 'q41: Graph with two vertices 3 and 6 and edge from 3 to 6');
 
 -- 2 vertices tests (directed)
 
-PREPARE depthFirstSearch39 AS
+PREPARE depthFirstSearch42 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -428,7 +428,7 @@ FROM pgr_depthFirstSearch(
     3
 );
 
-PREPARE depthFirstSearch40 AS
+PREPARE depthFirstSearch43 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -437,7 +437,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[3]
 );
 
-PREPARE depthFirstSearch41 AS
+PREPARE depthFirstSearch44 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -446,7 +446,7 @@ FROM pgr_depthFirstSearch(
     6
 );
 
-PREPARE depthFirstSearch42 AS
+PREPARE depthFirstSearch45 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -455,7 +455,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[6]
 );
 
-PREPARE depthFirstSearch43 AS
+PREPARE depthFirstSearch46 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -464,7 +464,7 @@ FROM pgr_depthFirstSearch(
     3, max_depth => 1
 );
 
-PREPARE depthFirstSearch44 AS
+PREPARE depthFirstSearch47 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -473,16 +473,16 @@ FROM pgr_depthFirstSearch(
     3, max_depth => 0
 );
 
-SELECT set_eq('depthFirstSearch39', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '39: Two rows are returned');
-SELECT set_eq('depthFirstSearch40', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '40: Two rows are returned');
-SELECT set_eq('depthFirstSearch41', $$VALUES (1, 0, 6, 6, -1, 0, 0)$$, '41: One row is returned');
-SELECT set_eq('depthFirstSearch42', $$VALUES (1, 0, 6, 6, -1, 0, 0)$$, '42: One row is returned');
+SELECT set_eq('depthFirstSearch42', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '42: Two rows are returned');
 SELECT set_eq('depthFirstSearch43', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '43: Two rows are returned');
-SELECT set_eq('depthFirstSearch44', $$VALUES (1, 0, 3, 3, -1, 0, 0)$$, '44: One row is returned');
+SELECT set_eq('depthFirstSearch44', $$VALUES (1, 0, 6, 6, -1, 0, 0)$$, '44: One row is returned');
+SELECT set_eq('depthFirstSearch45', $$VALUES (1, 0, 6, 6, -1, 0, 0)$$, '45: One row is returned');
+SELECT set_eq('depthFirstSearch46', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '46: Two rows are returned');
+SELECT set_eq('depthFirstSearch47', $$VALUES (1, 0, 3, 3, -1, 0, 0)$$, '47: One row is returned');
 
 -- 2 vertices tests (undirected)
 
-PREPARE depthFirstSearch45 AS
+PREPARE depthFirstSearch48 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -491,7 +491,7 @@ FROM pgr_depthFirstSearch(
     3, directed => false
 );
 
-PREPARE depthFirstSearch46 AS
+PREPARE depthFirstSearch49 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -500,7 +500,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[3], directed => false
 );
 
-PREPARE depthFirstSearch47 AS
+PREPARE depthFirstSearch50 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -509,7 +509,7 @@ FROM pgr_depthFirstSearch(
     6, directed => false
 );
 
-PREPARE depthFirstSearch48 AS
+PREPARE depthFirstSearch51 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -518,7 +518,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[6], directed => false
 );
 
-PREPARE depthFirstSearch49 AS
+PREPARE depthFirstSearch52 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -527,7 +527,7 @@ FROM pgr_depthFirstSearch(
     3, max_depth => 1, directed => false
 );
 
-PREPARE depthFirstSearch50 AS
+PREPARE depthFirstSearch53 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -536,12 +536,12 @@ FROM pgr_depthFirstSearch(
     3, max_depth => 0, directed => false
 );
 
-SELECT set_eq('depthFirstSearch45', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '45: Two rows are returned');
-SELECT set_eq('depthFirstSearch46', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '46: Two rows are returned');
-SELECT set_eq('depthFirstSearch47', $$VALUES (1, 0, 6, 6, -1, 0, 0), (2, 1, 6, 3, 5, 1, 1)$$, '47: Two rows are returned');
-SELECT set_eq('depthFirstSearch48', $$VALUES (1, 0, 6, 6, -1, 0, 0), (2, 1, 6, 3, 5, 1, 1)$$, '48: Two rows are returned');
+SELECT set_eq('depthFirstSearch48', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '48: Two rows are returned');
 SELECT set_eq('depthFirstSearch49', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '49: Two rows are returned');
-SELECT set_eq('depthFirstSearch50', $$VALUES (1, 0, 3, 3, -1, 0, 0)$$, '50: One row is returned');
+SELECT set_eq('depthFirstSearch50', $$VALUES (1, 0, 6, 6, -1, 0, 0), (2, 1, 6, 3, 5, 1, 1)$$, '50: Two rows are returned');
+SELECT set_eq('depthFirstSearch51', $$VALUES (1, 0, 6, 6, -1, 0, 0), (2, 1, 6, 3, 5, 1, 1)$$, '51: Two rows are returned');
+SELECT set_eq('depthFirstSearch52', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '52: Two rows are returned');
+SELECT set_eq('depthFirstSearch53', $$VALUES (1, 0, 3, 3, -1, 0, 0)$$, '53: One row is returned');
 
 -- 3 vertices tests
 
@@ -558,23 +558,23 @@ INSERT INTO three_vertices_table (source, target, cost, reverse_cost) VALUES
     (3, 8, 10, -10),
     (6, 8, -1, 12);
 
-PREPARE q4 AS
+PREPARE q54 AS
 SELECT id, source, target, cost, reverse_cost
 FROM three_vertices_table;
 
 -- Cyclic Graph with three vertices 3, 6 and 8
-SELECT set_eq('q4',
+SELECT set_eq('q54',
     $$VALUES
         (1, 3, 6, 20, 15),
         (2, 3, 8, 10, -10),
         (3, 6, 8, -1, 12)
     $$,
-    'q4: Cyclic Graph with three vertices 3, 6 and 8'
+    'q54: Cyclic Graph with three vertices 3, 6 and 8'
 );
 
 -- 3 vertices tests (directed)
 
-PREPARE depthFirstSearch51 AS
+PREPARE depthFirstSearch55 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -582,7 +582,7 @@ FROM pgr_depthFirstSearch(
     3
 );
 
-PREPARE depthFirstSearch52 AS
+PREPARE depthFirstSearch56 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -590,7 +590,7 @@ FROM pgr_depthFirstSearch(
     6
 );
 
-PREPARE depthFirstSearch53 AS
+PREPARE depthFirstSearch57 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -598,7 +598,7 @@ FROM pgr_depthFirstSearch(
     6, max_depth => 1
 );
 
-PREPARE depthFirstSearch54 AS
+PREPARE depthFirstSearch58 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -606,7 +606,7 @@ FROM pgr_depthFirstSearch(
     2
 );
 
-PREPARE depthFirstSearch55 AS
+PREPARE depthFirstSearch59 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -614,37 +614,37 @@ FROM pgr_depthFirstSearch(
     ARRAY[6, 3, 6]
 );
 
-SELECT set_eq('depthFirstSearch51',
+SELECT set_eq('depthFirstSearch55',
     $$VALUES
         (1, 0, 3, 3, -1, 0, 0),
         (2, 1, 3, 6, 1, 20, 20),
         (3, 1, 3, 8, 2, 10, 10)
     $$,
-    '51'
+    '55'
 );
 
-SELECT set_eq('depthFirstSearch52',
+SELECT set_eq('depthFirstSearch56',
     $$VALUES
         (1, 0, 6, 6, -1, 0, 0),
         (2, 1, 6, 3, 1, 15, 15),
         (3, 2, 6, 8, 2, 10, 25)
     $$,
-    '52'
+    '56'
 );
 
-SELECT set_eq('depthFirstSearch53',
+SELECT set_eq('depthFirstSearch57',
     $$VALUES
         (1, 0, 6, 6, -1, 0, 0),
         (2, 1, 6, 3, 1, 15, 15)
     $$,
-    '53'
+    '57'
 );
 
-SELECT is_empty('depthFirstSearch54',
-    '54: Vertex not present in graph -> Empty row is returned'
+SELECT is_empty('depthFirstSearch58',
+    '58: Vertex not present in graph -> Empty row is returned'
 );
 
-SELECT set_eq('depthFirstSearch55',
+SELECT set_eq('depthFirstSearch59',
     $$VALUES
         (1, 0, 3, 3, -1, 0, 0),
         (2, 1, 3, 6, 1, 20, 20),
@@ -653,12 +653,12 @@ SELECT set_eq('depthFirstSearch55',
         (5, 1, 6, 3, 1, 15, 15),
         (6, 2, 6, 8, 2, 10, 25)
     $$,
-    '55'
+    '59'
 );
 
 -- 3 vertices tests (undirected)
 
-PREPARE depthFirstSearch56 AS
+PREPARE depthFirstSearch60 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -666,7 +666,7 @@ FROM pgr_depthFirstSearch(
     3, directed => false
 );
 
-PREPARE depthFirstSearch57 AS
+PREPARE depthFirstSearch61 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -674,7 +674,7 @@ FROM pgr_depthFirstSearch(
     6, directed => false
 );
 
-PREPARE depthFirstSearch58 AS
+PREPARE depthFirstSearch62 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost
@@ -682,30 +682,30 @@ FROM pgr_depthFirstSearch(
     6, max_depth => 1, directed => false
 );
 
-SELECT set_eq('depthFirstSearch56',
+SELECT set_eq('depthFirstSearch60',
     $$VALUES
         (1, 0, 3, 3, -1, 0, 0),
         (2, 1, 3, 6, 1, 20, 20),
         (3, 2, 3, 8, 3, 12, 32)
     $$,
-    '56'
+    '60'
 );
 
-SELECT set_eq('depthFirstSearch57',
+SELECT set_eq('depthFirstSearch61',
     $$VALUES
         (1, 0, 6, 6, -1, 0, 0),
         (2, 1, 6, 3, 1, 20, 20),
         (3, 2, 6, 8, 2, 10, 30)
     $$,
-    '57'
+    '61'
 );
 
-SELECT set_eq('depthFirstSearch58',
+SELECT set_eq('depthFirstSearch62',
     $$VALUES
         (1, 0, 6, 6, -1, 0, 0),
         (2, 1, 6, 3, 1, 20, 20)
     $$,
-    '58'
+    '62'
 );
 
 
