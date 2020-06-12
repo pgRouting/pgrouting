@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for time_msg & clock */
 #include "c_common/time_msg.h"
 
-/* for functions to get edges informtion */
+/* for functions to get edges information */
 #include "c_common/edges_input.h"
 /* for handling array related stuffs */
 #include "c_common/arrays_input.h"
