@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(40);
+SELECT plan(47);
 
 SELECT todo_start('Must add all edge cases');
 
@@ -11,6 +11,7 @@ SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE id > 18;
 
+-- Graph is empty - it has 0 edge and 0 vertex
 SELECT is_empty('q1', 'q1: Graph with 0 edge and 0 vertex');
 
 -- 0 edge, 0 vertex tests (directed)
@@ -317,6 +318,7 @@ SELECT id, source, 2 AS target, cost, reverse_cost
 FROM edge_table
 WHERE id = 2;
 
+-- Graph with only vertex 2
 SELECT set_eq('q2', $$VALUES (2, 2, 2, -1, 1)$$, 'q2: Graph with only vertex 2');
 
 -- 1 vertex tests (directed)
@@ -405,6 +407,78 @@ SELECT set_eq('depthFirstSearch36', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '36: One 
 SELECT set_eq('depthFirstSearch37', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '37: One row with node 2 is returned');
 SELECT set_eq('depthFirstSearch38', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '38: One row with node 2 is returned');
 
+-- 2 vertices tests
+
+PREPARE q3 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id = 5;
+
+-- Graph with vertices 3 and 6 and edge from 3 to 6
+SELECT set_eq('q3', $$VALUES (5, 3, 6, 1, -1)$$, 'q3: Graph with two vertices 3 and 6 and edge from 3 to 6');
+
+-- 2 vertices tests (directed)
+
+PREPARE depthFirstSearch39 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    3
+);
+
+PREPARE depthFirstSearch40 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    ARRAY[3]
+);
+
+PREPARE depthFirstSearch41 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    6
+);
+
+PREPARE depthFirstSearch42 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    ARRAY[6]
+);
+
+PREPARE depthFirstSearch43 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    3, max_depth => 1
+);
+
+PREPARE depthFirstSearch44 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    3, max_depth => 0
+);
+
+SELECT set_eq('depthFirstSearch39', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '39: Two rows are returned');
+SELECT set_eq('depthFirstSearch40', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '40: Two rows are returned');
+SELECT set_eq('depthFirstSearch41', $$VALUES (1, 0, 6, 6, -1, 0, 0)$$, '41: One row is returned');
+SELECT set_eq('depthFirstSearch42', $$VALUES (1, 0, 6, 6, -1, 0, 0)$$, '42: One row is returned');
+SELECT set_eq('depthFirstSearch43', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '43: Two rows are returned');
+SELECT set_eq('depthFirstSearch44', $$VALUES (1, 0, 3, 3, -1, 0, 0)$$, '44: One row is returned');
 
 SELECT todo_end();
 
