@@ -1,8 +1,17 @@
 \i setup.sql
 
-SELECT plan(30);
+SELECT plan(36);
 
 SELECT todo_start('Must add all edge cases');
+
+-- 0 edge, 0 vertex tests
+
+PREPARE q1 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id > 18;
+
+SELECT is_empty('q1', 'q1: Graph with 0 edge and 0 vertex');
 
 -- 0 edge, 0 vertex tests (directed)
 
@@ -300,6 +309,59 @@ SELECT throws_ok('depthFirstSearch27', 'P0001', 'Negative value found on ''max_d
 SELECT throws_ok('depthFirstSearch28', 'P0001', 'Negative value found on ''max_depth''', '28: Negative max_depth throws');
 SELECT throws_ok('depthFirstSearch29', 'P0001', 'Negative value found on ''max_depth''', '29: Negative max_depth throws');
 SELECT throws_ok('depthFirstSearch30', 'P0001', 'Negative value found on ''max_depth''', '30: Negative max_depth throws');
+
+-- 1 vertex tests
+
+PREPARE q2 AS
+SELECT id, source, 2 AS target, cost, reverse_cost
+FROM edge_table
+WHERE id = 2;
+
+SELECT set_eq('q2', $$VALUES (2, 2, 2, -1, 1)$$, 'q2: Graph with only vertex 2');
+
+-- 1 vertex tests (directed)
+
+PREPARE depthFirstSearch31 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, 2 AS target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 2',
+    2
+);
+
+PREPARE depthFirstSearch32 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, 2 AS target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 2',
+    ARRAY[2]
+);
+
+PREPARE depthFirstSearch33 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, 2 AS target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 2',
+    2, max_depth => 2
+);
+
+PREPARE depthFirstSearch34 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, 2 AS target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 2',
+    ARRAY[2], max_depth => 2
+);
+
+SELECT set_eq('depthFirstSearch31', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '31: One row with node 2 is returned');
+SELECT set_eq('depthFirstSearch32', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '32: One row with node 2 is returned');
+SELECT set_eq('depthFirstSearch33', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '33: One row with node 2 is returned');
+SELECT set_eq('depthFirstSearch34', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '34: One row with node 2 is returned');
+
 
 SELECT todo_end();
 
