@@ -56,10 +56,10 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
       *
       * It does all the processing and returns the results.
       *
-      * @param graph     the graph containing the edges
-      * @param roots     the starting vertices
-      * @param depth     the maximum depth of traversal
-      * @param directed  tells whether the graph is directed or undirected
+      * @param graph      the graph containing the edges
+      * @param roots      the starting vertices
+      * @param max_depth  the maximum depth of traversal
+      * @param directed   whether the graph is directed or undirected
       *
       * @returns results, when results are found
       *
@@ -69,7 +69,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
      std::vector<pgr_mst_rt> depthFirstSearch(
              G &graph,
              std::vector<int64_t> roots,
-             int64_t depth,
+             int64_t max_depth,
              bool directed) {
          std::vector<pgr_mst_rt> results;
 
@@ -86,7 +86,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
                  depthFirstSearch_single_vertex(graph, v_root, visited_order, directed);
 
                  // get the results
-                 auto result = get_results(visited_order, root, depth, graph);
+                 auto result = get_results(visited_order, root, max_depth, graph);
                  results.insert(results.end(), result.begin(), result.end());
              }
          }
@@ -99,7 +99,6 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
  private:
      /** @brief Calls the Boost function
       *
-      *
       * Calls [boost::depth_first_search](https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/depth_first_search.html)
       * and [boost::undirected_dfs](https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/undirected_dfs.html)
       * for directed graphs and undirected graphs, respectively.
@@ -107,7 +106,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
       * @param graph          the graph containing the edges
       * @param root           the starting vertex
       * @param visited_order  vector which will contain the edges of the resulting traversal
-      * @param directed       tells whether the graph is directed or undirected
+      * @param directed       whether the graph is directed or undirected
       *
       * @returns bool  @b true, when results are found
       */
@@ -148,9 +147,9 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
 
      /** @brief to get the results
       *
-      * Uses the visited_order of vertices to get the results.
-      * Also makes sure to consider only those nodes whose
-      * depth is less than the max_depth.
+      * Uses the `visited_order` of vertices to get the results.
+      * Selects only those nodes in the final result whose
+      * depth is less than the `max_depth`.
       *
       * @param visited_order  vector which contains the edges of the resulting traversal
       * @param source         the starting vertex
