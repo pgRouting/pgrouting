@@ -47,9 +47,25 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
      typedef typename G::V V;
      typedef typename G::E E;
 
-     //! @name DepthFirstSearch
-     //@{
-     //! DepthFirstSearch
+     /** @name DepthFirstSearch
+      * @{
+      * 
+      */
+
+     /** @brief depthFirstSearch function
+      *
+      * It does all the processing and returns the results.
+      *
+      * @param graph     the graph containing the edges
+      * @param roots     the starting vertices
+      * @param depth     the maximum depth of traversal
+      * @param directed  tells whether the graph is directed or undirected
+      *
+      * @returns results, when results are found
+      *
+      * @see depthFirstSearch_single_vertex
+      * @see get_results
+      */
      std::vector<pgr_mst_rt> depthFirstSearch(
              G &graph,
              std::vector<int64_t> roots,
@@ -81,7 +97,23 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
      //@}
 
  private:
-     //! Call to DepthFirstSearch
+     /** @brief Calls the Boost function
+      *
+      *
+      * Calls [boost::depth_first_search](https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/depth_first_search.html)
+      * and [boost::undirected_dfs](https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/undirected_dfs.html)
+      * for directed graphs and undirected graphs, respectively.
+      *
+      * @param graph          the graph containing the edges
+      * @param root           the starting vertex
+      * @param visited_order  vector which will contain the edges of the resulting traversal
+      * @param directed       tells whether the graph is directed or undirected
+      *
+      * @returns bool  @b true, when results are found
+      *
+      * @see depthFirstSearch
+      * @see get_results
+      */
      bool depthFirstSearch_single_vertex(
                  G &graph,
                  V root,
@@ -117,10 +149,25 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
          return true;
      }
 
-     // to get the results
+     /** @brief to get the results
+      *
+      * Uses the visited_order of vertices to get the results.
+      * Also makes sure to consider only those nodes whose
+      * depth is less than the max_depth.
+      *
+      * @param visited_order  vector which contains the edges of the resulting traversal
+      * @param source         the starting vertex
+      * @param max_depth      the maximum depth of traversal
+      * @param graph          the graph containing the edges
+      *
+      * @returns bool  @b True, when results are found
+      *
+      * @see depthFirstSearch
+      * @see depthFirstSearch_single_vertex
+      */
      template <typename T>
      std::vector<pgr_mst_rt> get_results(
-             T order,
+             T visited_order,
              int64_t source,
              int64_t max_depth,
              const G &graph) {
@@ -129,7 +176,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
          std::vector<double> agg_cost(graph.num_vertices(), 0);
          std::vector<int64_t> depth(graph.num_vertices(), 0);
 
-         for (const auto edge : order) {
+         for (const auto edge : visited_order) {
              auto u = graph.source(edge);
              auto v = graph.target(edge);
 
