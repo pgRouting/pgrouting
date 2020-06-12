@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(54);
+SELECT plan(58);
 
 SELECT todo_start('Must add all edge cases');
 
@@ -570,6 +570,70 @@ SELECT set_eq('q4',
         (3, 6, 8, -1, 12)
     $$,
     'q4: Cyclic Graph with three vertices 3, 6 and 8'
+);
+
+-- 3 vertices tests (directed)
+
+PREPARE depthFirstSearch51 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM three_vertices_table',
+    3
+);
+
+PREPARE depthFirstSearch52 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM three_vertices_table',
+    6
+);
+
+PREPARE depthFirstSearch53 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM three_vertices_table',
+    6, max_depth => 1
+);
+
+PREPARE depthFirstSearch54 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM three_vertices_table',
+    2
+);
+
+SELECT set_eq('depthFirstSearch51',
+    $$VALUES
+        (1, 0, 3, 3, -1, 0, 0),
+        (2, 1, 3, 6, 1, 20, 20),
+        (3, 1, 3, 8, 2, 10, 10)
+    $$,
+    '51'
+);
+
+SELECT set_eq('depthFirstSearch52',
+    $$VALUES
+        (1, 0, 6, 6, -1, 0, 0),
+        (2, 1, 6, 3, 1, 15, 15),
+        (3, 2, 6, 8, 2, 10, 25)
+    $$,
+    '52'
+);
+
+SELECT set_eq('depthFirstSearch53',
+    $$VALUES
+        (1, 0, 6, 6, -1, 0, 0),
+        (2, 1, 6, 3, 1, 15, 15)
+    $$,
+    '53'
+);
+
+SELECT is_empty('depthFirstSearch54',
+    '54: Vertex not present in graph -> Empty row is returned'
 );
 
 
