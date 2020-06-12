@@ -31,7 +31,7 @@ Description
 Depth First Search algorithm is a well known traversal algorithm which starts
 from a start vertex (``start_vid``) and visits all the nodes in a graph in the
 depth-first search traversal order. An optional non-negative maximum depth
-parameter (``max_depth``) can be specified to get the results upto a particular
+parameter (``max_depth``) can be specified to get the results up to a particular
 depth.
 
 **The main Characteristics are:**
