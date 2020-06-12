@@ -87,7 +87,6 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
                  V root,
                  std::vector<E> &visited_order,
                  bool directed) {
-
          using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
 
          try {
