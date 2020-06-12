@@ -2,7 +2,7 @@
 
 SELECT plan(71);
 
-SELECT todo_start('Must add all edge cases');
+
 
 -- 0 edge, 0 vertex tests
 
@@ -140,6 +140,10 @@ SELECT is_empty('depthFirstSearch11', '11: Graph with 0 edge and 0 vertex -> Emp
 SELECT is_empty('depthFirstSearch12', '12: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('depthFirstSearch13', '13: Graph with 0 edge and 0 vertex -> Empty row is returned');
 
+
+
+
+
 -- vertex not present in graph tests (directed)
 
 PREPARE depthFirstSearch14 AS
@@ -254,6 +258,11 @@ SELECT is_empty('depthFirstSearch23', '23: Vertex not present in graph -> Empty 
 SELECT is_empty('depthFirstSearch24', '24: Vertex not present in graph -> Empty row is returned');
 SELECT is_empty('depthFirstSearch25', '25: Vertex not present in graph -> Empty row is returned');
 
+
+
+
+
+
 -- negative depth tests
 
 PREPARE depthFirstSearch26 AS
@@ -310,6 +319,10 @@ SELECT throws_ok('depthFirstSearch28', 'P0001', 'Negative value found on ''max_d
 SELECT throws_ok('depthFirstSearch29', 'P0001', 'Negative value found on ''max_depth''', '29: Negative max_depth throws');
 SELECT throws_ok('depthFirstSearch30', 'P0001', 'Negative value found on ''max_depth''', '30: Negative max_depth throws');
 SELECT throws_ok('depthFirstSearch31', 'P0001', 'Negative value found on ''max_depth''', '31: Negative max_depth throws');
+
+
+
+
 
 -- 1 vertex tests
 
@@ -406,6 +419,10 @@ SELECT set_eq('depthFirstSearch37', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '37: One 
 SELECT set_eq('depthFirstSearch38', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '38: One row with node 2 is returned');
 SELECT set_eq('depthFirstSearch39', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '39: One row with node 2 is returned');
 SELECT set_eq('depthFirstSearch40', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '40: One row with node 2 is returned');
+
+
+
+
 
 -- 2 vertices tests
 
@@ -542,6 +559,10 @@ SELECT set_eq('depthFirstSearch50', $$VALUES (1, 0, 6, 6, -1, 0, 0), (2, 1, 6, 3
 SELECT set_eq('depthFirstSearch51', $$VALUES (1, 0, 6, 6, -1, 0, 0), (2, 1, 6, 3, 5, 1, 1)$$, '51: Two rows are returned');
 SELECT set_eq('depthFirstSearch52', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '52: Two rows are returned');
 SELECT set_eq('depthFirstSearch53', $$VALUES (1, 0, 3, 3, -1, 0, 0)$$, '53: One row is returned');
+
+
+
+
 
 -- 3 vertices tests
 
@@ -707,6 +728,10 @@ SELECT set_eq('depthFirstSearch62',
     $$,
     '62: 3 vertices tests (undirected)'
 );
+
+
+
+
 
 -- 4 vertices tests
 
@@ -888,7 +913,6 @@ SELECT set_eq('depthFirstSearch71',
     '71: 4 vertices tests (undirected)'
 );
 
-SELECT todo_end();
 
 SELECT * FROM finish();
 ROLLBACK;
