@@ -36,18 +36,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/pgr_messages.h"
 
+//#include <boost/test/minimal.hpp>
+#include <iostream>
+#include <algorithm>
+
+#include <boost/graph/dominator_tree.hpp>
+using namespace boost;
+using namespace  std;
+
 namespace pgrouting {
     namespace functions {
 
         template<class G>
         class Pgr_LTDTree {
         public:
+            typedef typename G::V Vertex; //Note here G is base_graph
+
+            typedef typename G::E_i i;
+            typedef typename G::vertIndex IndexMap;
+
+
             //To calculate dominator tree
             std::vector <pgr_ltdtree_rt> lengauer_tarjan_dominator_tree(
                     G &graph,
                     int64_t root
                     ){
+                /***************Calculating******************/
+               typedef typename boost::property_map<G, boost::vertex_index_t>::type IndexMap2; //using boost
+                //typedef typename property_map<G, vertex_index_t>::const_type IndexMap;
 
+/*************************************************************/
                 std::vector<pgr_ltdtree_rt> results;
                 results[0].idom=7;
                 results[0].vid=3;
