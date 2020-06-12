@@ -38,22 +38,37 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "depthFirstSearch/pgr_depthFirstSearch.hpp"
 
 
-/**********************************************************************/
-/*
-pgr_depthFirstSearch(
-    edges_sql TEXT,
-    root_vids ANYARRAY,
-    max_depth BIGINT DEFAULT 9223372036854775807,
-    directed BOOLEAN DEFAULT true
-);
-*/
-/**********************************************************************/
+/***********************************************************************
+ *
+ *   pgr_depthFirstSearch(
+ *       edges_sql TEXT,
+ *       root_vids ANYARRAY,
+ *       max_depth BIGINT DEFAULT 9223372036854775807,
+ *       directed BOOLEAN DEFAULT true
+ *   );
+ *
+ ***********************************************************************/
+
+/** @brief Calls the main function defined in the C++ Header file.
+ *
+ * Also sorts the starting vertices in an increasing order,
+ * and removes the duplicated vertices. Then calls the function
+ * defined in the C++ Header file - `pgr_depthFirstSearch.hpp`
+ *
+ * @param graph      the graph containing the edges
+ * @param roots      the starting vertices
+ * @param max_depth  the maximum depth of traversal
+ * @param directed   whether the graph is directed or undirected
+ * @param log        stores the log message
+ *
+ * @returns results, when results are found
+ */
 
 template < class G >
 std::vector<pgr_mst_rt>
 pgr_depthFirstSearch(
         G &graph,
-        std::vector < int64_t > roots,
+        std::vector< int64_t > roots,
         int64_t max_depth,
         bool directed,
         std::string &log) {
@@ -69,6 +84,29 @@ pgr_depthFirstSearch(
     return results;
 }
 
+/** @brief Performs exception handling and converts the results to postgres.
+ *
+ * It first asserts the variables, then builds the graph using the `data_edges`,
+ * depending on whether the graph is directed or undirected. It also converts
+ * the C types to the C++ types, such as the `rootsArr` to `roots`
+ * vector and passes these variables to the template function `pgr_depthFirstSearch`
+ * which calls the main function defined in the C++ Header file. It also does
+ * exception handling.
+ * 
+ * @param data_edges     the set of edges from the SQL query
+ * @param total_edges    the total number of edges in the SQL query
+ * @param rootsArr       the array containing the starting vertices
+ * @param size_rootsArr  the size of the array containing the starting vertices
+ * @param max_depth      the maximum depth of traversal
+ * @param directed       whether the graph is directed or undirected
+ * @param return_tuples  the rows in the result
+ * @param return_count   the count of rows in the result
+ * @param log_msg        stores the log message
+ * @param notice_msg     stores the notice message
+ * @param err_msg        stores the error message
+ *
+ * @returns void
+ */
 void
 do_pgr_depthFirstSearch(
         pgr_edge_t  *data_edges,
@@ -104,10 +142,14 @@ do_pgr_depthFirstSearch(
         graphType gType = directed ? DIRECTED : UNDIRECTED;
 
         std::string logstr;
+
         if (directed) {
+            // If the graph is directed
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
+
+            // calls the template function
             results = pgr_depthFirstSearch(
                     digraph,
                     roots,
@@ -115,10 +157,12 @@ do_pgr_depthFirstSearch(
                     directed,
                     logstr);
         } else {
+            // If the graph is undirected
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
 
+            // calls the template function
             results = pgr_depthFirstSearch(
                     undigraph,
                     roots,
@@ -126,8 +170,10 @@ do_pgr_depthFirstSearch(
                     directed,
                     logstr);
         }
+
         log << logstr;
 
+        // the count of rows in the result
         auto count = results.size();
 
         if (count == 0) {
