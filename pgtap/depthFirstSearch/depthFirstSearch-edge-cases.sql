@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(67);
+SELECT plan(71);
 
 SELECT todo_start('Must add all edge cases');
 
@@ -804,6 +804,88 @@ SELECT set_eq('depthFirstSearch67',
         (1, 0, 11, 11, -1, 0, 0)
     $$,
     '67: 4 vertices tests (directed)'
+);
+
+-- 4 vertices tests (undirected)
+
+PREPARE depthFirstSearch68 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE (id >= 10 AND id <= 12)
+        OR id = 8',
+    5, directed => false
+);
+
+PREPARE depthFirstSearch69 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE (id >= 10 AND id <= 12)
+        OR id = 8',
+    6, directed => false
+);
+
+PREPARE depthFirstSearch70 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE (id >= 10 AND id <= 12)
+        OR id = 8',
+    10, directed => false
+);
+
+PREPARE depthFirstSearch71 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE (id >= 10 AND id <= 12)
+        OR id = 8',
+    11, directed => false
+);
+
+SELECT set_eq('depthFirstSearch68',
+    $$VALUES
+        (1, 0, 5, 5, -1, 0, 0),
+        (2, 1, 5, 6, 8, 1, 1),
+        (3, 2, 5, 11, 11, 1, 2),
+        (4, 3, 5, 10, 12, 1, 3)
+    $$,
+    '68: 4 vertices tests (undirected)'
+);
+
+SELECT set_eq('depthFirstSearch69',
+    $$VALUES
+        (1, 0, 6, 6, -1, 0, 0),
+        (2, 1, 6, 5, 8, 1, 1),
+        (3, 2, 6, 10, 10, 1, 2),
+        (4, 3, 6, 11, 12, 1, 3)
+    $$,
+    '69: 4 vertices tests (undirected)'
+);
+
+SELECT set_eq('depthFirstSearch70',
+    $$VALUES
+        (1, 0, 10, 10, -1, 0, 0),
+        (2, 1, 10, 5, 10, 1, 1),
+        (3, 2, 10, 6, 8, 1, 2),
+        (4, 3, 10, 11, 11, 1, 3)
+    $$,
+    '70: 4 vertices tests (undirected)'
+);
+
+SELECT set_eq('depthFirstSearch71',
+    $$VALUES
+        (1, 0, 11, 11, -1, 0, 0),
+        (2, 1, 11, 6, 11, 1, 1),
+        (3, 2, 11, 5, 8, 1, 2),
+        (4, 3, 11, 10, 10, 1, 3)
+    $$,
+    '71: 4 vertices tests (undirected)'
 );
 
 SELECT todo_end();
