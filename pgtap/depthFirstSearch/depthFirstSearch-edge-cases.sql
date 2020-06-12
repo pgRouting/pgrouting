@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(36);
+SELECT plan(40);
 
 SELECT todo_start('Must add all edge cases');
 
@@ -361,6 +361,49 @@ SELECT set_eq('depthFirstSearch31', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '31: One 
 SELECT set_eq('depthFirstSearch32', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '32: One row with node 2 is returned');
 SELECT set_eq('depthFirstSearch33', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '33: One row with node 2 is returned');
 SELECT set_eq('depthFirstSearch34', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '34: One row with node 2 is returned');
+
+-- 1 vertex tests (undirected)
+
+PREPARE depthFirstSearch35 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, 2 AS target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 2',
+    2, directed => false
+);
+
+PREPARE depthFirstSearch36 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, 2 AS target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 2',
+    ARRAY[2], directed => false
+);
+
+PREPARE depthFirstSearch37 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, 2 AS target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 2',
+    2, max_depth => 2, directed => false
+);
+
+PREPARE depthFirstSearch38 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, 2 AS target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 2',
+    ARRAY[2], max_depth => 2, directed => false
+);
+
+SELECT set_eq('depthFirstSearch35', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '35: One row with node 2 is returned');
+SELECT set_eq('depthFirstSearch36', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '36: One row with node 2 is returned');
+SELECT set_eq('depthFirstSearch37', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '37: One row with node 2 is returned');
+SELECT set_eq('depthFirstSearch38', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '38: One row with node 2 is returned');
 
 
 SELECT todo_end();
