@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(47);
+SELECT plan(53);
 
 SELECT todo_start('Must add all edge cases');
 
@@ -479,6 +479,70 @@ SELECT set_eq('depthFirstSearch41', $$VALUES (1, 0, 6, 6, -1, 0, 0)$$, '41: One 
 SELECT set_eq('depthFirstSearch42', $$VALUES (1, 0, 6, 6, -1, 0, 0)$$, '42: One row is returned');
 SELECT set_eq('depthFirstSearch43', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '43: Two rows are returned');
 SELECT set_eq('depthFirstSearch44', $$VALUES (1, 0, 3, 3, -1, 0, 0)$$, '44: One row is returned');
+
+-- 2 vertices tests (undirected)
+
+PREPARE depthFirstSearch45 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    3, directed => false
+);
+
+PREPARE depthFirstSearch46 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    ARRAY[3], directed => false
+);
+
+PREPARE depthFirstSearch47 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    6, directed => false
+);
+
+PREPARE depthFirstSearch48 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    ARRAY[6], directed => false
+);
+
+PREPARE depthFirstSearch49 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    3, max_depth => 1, directed => false
+);
+
+PREPARE depthFirstSearch50 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 5',
+    3, max_depth => 0, directed => false
+);
+
+SELECT set_eq('depthFirstSearch45', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '45: Two rows are returned');
+SELECT set_eq('depthFirstSearch46', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '46: Two rows are returned');
+SELECT set_eq('depthFirstSearch47', $$VALUES (1, 0, 6, 6, -1, 0, 0), (2, 1, 6, 3, 5, 1, 1)$$, '47: Two rows are returned');
+SELECT set_eq('depthFirstSearch48', $$VALUES (1, 0, 6, 6, -1, 0, 0), (2, 1, 6, 3, 5, 1, 1)$$, '48: Two rows are returned');
+SELECT set_eq('depthFirstSearch49', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '49: Two rows are returned');
+SELECT set_eq('depthFirstSearch50', $$VALUES (1, 0, 3, 3, -1, 0, 0)$$, '50: One row is returned');
+
 
 SELECT todo_end();
 
