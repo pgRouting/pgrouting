@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(62);
+SELECT plan(63);
 
 SELECT todo_start('Must add all edge cases');
 
@@ -707,6 +707,27 @@ SELECT set_eq('depthFirstSearch62',
     $$,
     '62'
 );
+
+-- 4 vertices tests
+
+PREPARE q63 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE (id >= 10 AND id <= 12)
+OR id = 8;
+
+-- Graph with vertices 5, 6, 10, 11
+SELECT set_eq('q63',
+    $$VALUES
+        (8, 5, 6, 1, 1),
+        (10, 5, 10, 1, 1),
+        (11, 6, 11, 1, -1),
+        (12, 10, 11, 1, -1)
+    $$,
+    '63: Graph with vertices 5, 6, 10 and 11'
+);
+
+
 
 
 SELECT todo_end();
