@@ -37,6 +37,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "depthFirstSearch/pgr_depthFirstSearch.hpp"
 
+/** @file depthFirstSearch_driver.cpp
+ * @brief Handles actual calling of function in the `pgr_depthFirstSearch.hpp` file.
+ *
+ */
 
 /***********************************************************************
  *
