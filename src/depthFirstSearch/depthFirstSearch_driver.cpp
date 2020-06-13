@@ -68,11 +68,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * @returns results, when results are found
  */
 
-template < class G >
+template <class G>
 std::vector<pgr_mst_rt>
 pgr_depthFirstSearch(
         G &graph,
-        std::vector< int64_t > roots,
+        std::vector<int64_t> roots,
         int64_t max_depth,
         bool directed,
         std::string &log) {
@@ -81,7 +81,7 @@ pgr_depthFirstSearch(
             std::unique(roots.begin(), roots.end()),
             roots.end());
 
-    pgrouting::functions::Pgr_depthFirstSearch< G > fn_depthFirstSearch;
+    pgrouting::functions::Pgr_depthFirstSearch<G> fn_depthFirstSearch;
     auto results = fn_depthFirstSearch.depthFirstSearch(
             graph, roots, max_depth, directed);
     log += fn_depthFirstSearch.get_log();
