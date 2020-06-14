@@ -12,82 +12,93 @@
 pgr_LTDTree
 ===============================================================================
 
-``pgr_MY_FUNCTION_NAME`` — Returns the shortest path(s) using Dijkstra algorithm.
-In particular, the Dijkstra algorithm implemented by Boost.Graph.
+``pgr_LTDTree`` — Returns the immediate dominator of all vertices.
+In particular, the Lengauer Tarjan Dominator Tree algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
-
+   :target: https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/lengauer_tarjan_dominator.htm
    Boost Graph Inside
+.. rubric:: Availability
 
 
-Synopsis
+Description
 -------------------------------------------------------------------------------
-
-Characteristics
--------------------------------------------------------------------------------
-
-The main Characteristics are:
-/***TODO***
-1.Make use of pgr/tools/templates
-/
-  - 
-  - 
-
-    - 
-
-     
-
-Signature Summary
------------------
-
-
+Lengauer Tarjan Dominator Tree algorithm is used to make dominator tree of any graph. It calculates the immidiate dominator of each vertex called idom, once idom of each vertex is calculated then by making every idom of each vertex as its parent, the dominator tree can be built.
 
 Signatures
 -------------------------------------------------------------------------------
 
+.. rubric:: Summary
+
+.. code-block:: sql
+
+    pgr_LTDTree(edges_sql,root )
+    RETURNS SET OF (id,vid,idom)
+
+.. rubric:: Using defaults
+
+.. code-block:: sql
+
+:Example: **TBD**
+
 .. index::
-  
-
-Minimal signature
-.......................................
-
-.. code-block:: none
-
-    
-
-:Example:
-
+    single: LTDTree
 
 Complete Signature
-.......................................
+...............................................................................
 
-.. code-block:: none
+.. code-block:: sql
 
+:Example: **TBD**
 
-
-:Example:
-
-.. literalinclude:: doc-pgr_MY_FUNCTION_NAME.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-
-
-Description of the Signatures
+Parameters
 -------------------------------------------------------------------------------
 
+============== ============ =================================================
+Column         Type           Description
+============== ============ =================================================
+**edges_sql**   ``TEXT``    SQL query as described above.
+**root_vid**   ``BIGINT``  Identifier of the starting vertex.
+============== ============ =================================================
 
 
+Inner query
+-------------------------------------------------------------------------------
 
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+
+Returns set of ``(seq, vid,idom)``
+
+============== =========== =================================================
+Column         Type        Description
+============== =========== =================================================
+**seq**        ``INTEGER`` Sequential value starting from **1**.
+**vid**        ``BIGINT``  Identifier of vertex .
+**idom**       ``BIGINT``  Immediate dominator of vertex.
+============== =========== =================================================
+
+Additional Examples
+------------------------------------------------------------------------------------------
+
+:Example: To handle the one flag to choose signatures
+
+The examples in this section use the following :ref:`fig1`
+
+.. literalinclude:: doc-LTDTree.queries
+    :start-after: --q1
+    :end-before: --q2
 See Also
 -------------------------------------------------------------------------------
 
-
+* https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/lengauer_tarjan_dominator.htm
+* :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-
-
