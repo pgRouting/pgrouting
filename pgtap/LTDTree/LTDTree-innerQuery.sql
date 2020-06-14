@@ -1,12 +1,15 @@
 \i setup.sql
 
-SELECT plan(1);
+SELECT plan(56);
 
-SELECT todo_start('Complete the inner query tests');
 
-SELECT pass('Sample Test');
+SELECT has_function('pgr_LTDTree',
+    ARRAY['text', 'bigint']);
 
-SELECT todo_end();
+SELECT function_returns('pgr_LTDTree',
+    ARRAY['bigint', 'bigint'],
+    'setof record');
+
 
 SELECT finish();
 ROLLBACK;
