@@ -92,7 +92,7 @@ do_pgr_LTDTree(
         digraph.insert_edges(data_edges, total_edges); //Creating graph using data_edges
         std::vector<pgr_ltdtree_rt> results;
         pgrouting::functions::Pgr_LTDTree<pgrouting::DirectedGraph> fn_LTDTree;
-        results=fn_LTDTree.lengauer_tarjan_dominator_tree(digraph,root_vertex);
+        results=fn_LTDTree.llengauer_tarjan_dominator_tree(digraph,root_vertex);
                //Call a function to work with that
         //Todo Here we will assign result into return tuple
         auto count = results.size();
