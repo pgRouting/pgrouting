@@ -34,11 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --ONE TO DEPTH
 CREATE OR REPLACE FUNCTION pgr_boyerMyrvold(
     TEXT,   -- edges_sql (required)
-    OUT id BIGINT,
+    OUT seq BIGINT,
     OUT source BIGINT,
     OUT target BIGINT,
-    OUT cost FLOAT,
-    OUT reverse_cost FLOAT)
+    OUT cost FLOAT)
 
 RETURNS SETOF RECORD AS
 $BODY$
