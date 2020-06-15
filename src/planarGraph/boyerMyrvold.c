@@ -47,7 +47,7 @@ static void
 process(
     char *edges_sql,
 
-    pgr_edge_t **result_tuples,
+    pgr_boyer_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
@@ -112,7 +112,7 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    pgr_edge_t *result_tuples = NULL;
+    pgr_boyer_t *result_tuples = NULL;
     size_t result_count = 0;
     /**************************************************************************/
 
@@ -161,7 +161,7 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_edge_t *)funcctx->user_fctx;
+    result_tuples = (pgr_boyer_t *)funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;
@@ -179,7 +179,7 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
             OUT reverse_cost FLOAT
         */
         /**********************************************************************/
-        size_t numb = 6;
+        size_t numb = 5;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
@@ -189,11 +189,11 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].id);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
+        // values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].id);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
+        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
 
         /**********************************************************************/
 
