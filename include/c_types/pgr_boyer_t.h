@@ -1,11 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: _boyerMyrvold.sql
+File: pgr_edge_t.h
 
-Copyright (c) 2019 pgRouting developers
-Mail: project@pgrouting.org
-
-Copyright (c) 2020 Himanshu Raj
-Mail: raj.himanshu2@gmail.com
+Copyright (c) 2017 Celia Virginia Vergara Castillo
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -23,28 +20,25 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
--------------------------
--------------------------
--- _breadthFirstSearch
--------------------------
--------------------------
+ ********************************************************************PGR-GNU*/
+/*! @file */
 
-CREATE OR REPLACE FUNCTION _pgr_boyerMyrvold(
-  TEXT,   -- edges_sql (required)
+#ifndef INCLUDE_C_TYPES_PGR_BOYER_T_H_
+#define INCLUDE_C_TYPES_PGR_BOYER_T_H_
+#pragma once
 
-  OUT id BIGINT,
-  OUT source BIGINT,
-  OUT target BIGINT,
-  OUT cost FLOAT,
-  OUT reverse_cost FLOAT)
+/* for int64_t */
+#ifdef __cplusplus
+#   include <cstdint>
+#else
+#   include <stdint.h>
+#endif
 
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE c IMMUTABLE STRICT;
+typedef struct {
+    int64_t source;
+    int64_t target;
+    double cost;
+    double reverse_cost;
+} pgr_boyer_t;
 
-
--- COMMENTS
-
-COMMENT ON FUNCTION _pgr_boyerMyrvold(TEXT)
-IS 'pgRouting internal function';
+#endif  // INCLUDE_C_TYPES_PGR_EDGE_T_H_
