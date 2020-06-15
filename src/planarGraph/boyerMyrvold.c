@@ -189,11 +189,9 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        // values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].id);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].reverse_cost);
 
         /**********************************************************************/
 

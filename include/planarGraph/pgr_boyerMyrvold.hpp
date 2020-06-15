@@ -59,39 +59,17 @@ class Pgr_boyerMyrvold {
      generateboyerMyrvold(
         const G &graph ) {
        std::vector< pgr_boyer_t > results(num_edges(graph.graph));
-       // results[0].id = 0;
-       // results[0].source = 1;
-       // results[0].target = 2;
-       // results[0].cost = 3;
-       // results[0].reverse_cost = 4;
        auto check = boyer_myrvold_planarity_test(graph.graph);
        if(check){
-         // pgr_boyer_t him;
       E_i ei, ei_end;
       int i;
       for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i){
-           int64_t id = graph[*ei].id;
            int64_t source = graph[graph.source(*ei)].id;
            int64_t target = graph[graph.target(*ei)].id;
            double cost = graph[*ei].cost;
-           // double reverse_cost = graph[*ei].reverse_cost;
-           // results[i].id = id;
            results[i].source = source;
            results[i].target = target;
            results[i].cost = cost;
-           results[i].reverse_cost = cost;
-           // him.id = id;
-           // tmp.id = graph.graph[*ei].id;
-           // him.source = source;
-           // him.target = target;
-           // tmp.target = graph[graph.target(*ei)].id;
-           // tmp.source = source(*ei,graph.graph);
-           // tmp.target = target(*ei,graph.graph);
-           // him.cost = cost;
-           // tmp.id = 1;
-           // tmp.cost = graph.graph[*ei].cost;
-           // tmp.reverse_cost = graph.graph[*ei].cost;
-           // results.push_back(him);
       }
 
     }
