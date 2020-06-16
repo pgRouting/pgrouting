@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /**
  *  postgres_connection.h
  *
- *  - should allways be first in the C code
+ *  - should always be first in the C code
  */
 #include "c_common/postgres_connection.h"
 

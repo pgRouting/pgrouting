@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/sequentialVertexColoring/sequentialVertexColoring_driver.h"
+#include "drivers/graphColoring/sequentialVertexColoring_driver.h"
 
 #include <sstream>
 #include <deque>
