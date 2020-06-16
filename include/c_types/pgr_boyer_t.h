@@ -38,7 +38,6 @@ typedef struct {
     int64_t source;
     int64_t target;
     double cost;
-    double reverse_cost;
 } pgr_boyer_t;
 
 #endif  // INCLUDE_C_TYPES_PGR_EDGE_T_H_
