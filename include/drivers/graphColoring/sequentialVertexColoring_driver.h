@@ -25,41 +25,52 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_sequentialvertexcoloring_sequentialvertexcoloring_DRIVER_H_
-#define INCLUDE_DRIVERS_sequentialvertexcoloring_sequentialvertexcoloring_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_GRAPHCOLORING_SEQUENTIALVERTEXCOLORING_DRIVER_H_
+#define INCLUDE_DRIVERS_GRAPHCOLORING_SEQUENTIALVERTEXCOLORING_DRIVER_H_
 #pragma once
 
+/* for size-t */
+#ifdef __cplusplus
+#   include <cstddef>
+#else
+#   include <stddef.h>
+#endif
+
 #include "c_types/pgr_edge_t.h"
-#include "c_types/general_path_element_t.h"
+#include "c_types/pgr_mst_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    /*********************************************************
-      TEXT,
-     ********************************************************/
+    /**************************************************
+     *
+     *   pgr_sequentialVertexColoring(
+     *      edges_sql TEXT,
+     *   );
+     *
+     *************************************************/
+    void do_pgr_sequentialVertexColoring(
+            pgr_edge_t  *data_edges,
+            size_t total_edges,
 
+            int64_t *rootsArr,
+            size_t size_rootsArr,
 
-    void
-        do_pgr_sequentialVertexColoring(
-                pgr_edge_t  *data_edges,
-                size_t total_edges,
-                int64_t start_vid,
-                int64_t end_vid,
-                bool directed,
-                bool only_cost,
-                General_path_element_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+            int64_t max_depth,
+            bool directed,
 
+            pgr_mst_rt **return_tuples,
+            size_t *return_count,
+
+            char ** log_msg,
+            char ** notice_msg,
+            char ** err_msg);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_sequentialvertexcoloring_sequentialvertexcoloring_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_sequentialVertexColoring_sequentialVertexColoring_DRIVER_H_
