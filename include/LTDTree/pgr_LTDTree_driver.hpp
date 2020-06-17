@@ -86,7 +86,6 @@ namespace pgrouting {
                     int64_t root
                     ){
 
-
                 /***********************Typedefs of pfRouting**************/
 /*
                 auto IndexMap =graph.vertIndex;
@@ -149,10 +148,11 @@ namespace pgrouting {
                 /***************Calculating******************/
 
 
-                // Tarjan's paper
+                // Tarjan's paper//Week 3 work
                 typedef DominatorCorrectnessTestSet::edge edge;
 
                 DominatorCorrectnessTestSet testSet[1];
+
 
                 testSet[0].numOfVertices = 13;
                 testSet[0].edges.push_back(edge(0, 1));
@@ -203,12 +203,13 @@ namespace pgrouting {
 
                     typedef graph_traits<G>::vertex_descriptor Vertex;
                     typedef property_map<G, vertex_index_t>::type IndexMap;
+                    IndexMap indexMap(boost::get(vertex_index, g));
                     typedef
                     iterator_property_map<vector<Vertex>::iterator, IndexMap>
                             PredMap;
 
                     vector<Vertex> domTreePredVector, domTreePredVector2;
-                    IndexMap indexMap(get(vertex_index, g));
+                    //IndexMap indexMap(get(vertex_index, g));
                     graph_traits<G>::vertex_iterator uItr, uEnd;
                     int j = 0;
                     for (boost::tie(uItr, uEnd) = vertices(g); uItr != uEnd; ++uItr, ++j)
