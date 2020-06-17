@@ -45,16 +45,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-    /*************************************************/
-    /*
-    pgr_depthFirstSearch(
-        edges_sql TEXT,
-        root_vids ANYARRAY,
-        max_depth BIGINT DEFAULT 9223372036854775807,
-        directed BOOLEAN DEFAULT true
-    );
-    */
-    /*************************************************/
+    /**************************************************
+     *
+     *   pgr_depthFirstSearch(
+     *      edges_sql TEXT,
+     *      root_vids ANYARRAY,
+     *      max_depth BIGINT DEFAULT 9223372036854775807,
+     *      directed BOOLEAN DEFAULT true
+     *   );
+     *
+     *************************************************/
     void do_pgr_depthFirstSearch(
             pgr_edge_t  *data_edges,
             size_t total_edges,
