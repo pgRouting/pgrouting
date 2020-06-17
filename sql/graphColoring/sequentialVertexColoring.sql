@@ -27,19 +27,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
----------------------------
--- _pgr_depthFirstSearch
----------------------------
+----------------------------------
+-- pgr_sequentialVertexColoring
+----------------------------------
 
 
 CREATE OR REPLACE FUNCTION pgr_sequentialVertexColoring(
-    TEXT,
+    TEXT,    -- edges_sql (required)
     
     OUT seq BIGINT,
     OUT node BIGINT,
     OUT color BIGINT)
-
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'sequentialVertexColoring'
-LANGUAGE c IMMUTABLE STRICT;
+$BODY$
+BEGIN
+    RETURN QUERY
+    SELECT *
+    FROM _pgr_sequentialVertexColoring(_pgr_get_statement($1));
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
 
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_sequentialVertexColoring(TEXT)
+IS 'pgr_sequentialVertexColoring
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Documentation:
+    - ${PGROUTING_DOC_LINK}/pgr_sequentialVertexColoring.html
+';
