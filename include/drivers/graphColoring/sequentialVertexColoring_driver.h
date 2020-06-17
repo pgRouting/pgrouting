@@ -48,7 +48,7 @@ extern "C" {
     /**************************************************
      *
      *   pgr_sequentialVertexColoring(
-     *      edges_sql TEXT,
+     *      edges_sql TEXT
      *   );
      *
      *************************************************/
