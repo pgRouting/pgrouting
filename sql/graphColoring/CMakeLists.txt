@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+    _sequentialVertexColoring.sql
     sequentialVertexColoring.sql
     )
 

@@ -27,19 +27,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
----------------------------
--- _pgr_depthFirstSearch
----------------------------
+----------------------------------
+-- _pgr_sequentialVertexColoring
+----------------------------------
 
 
-CREATE OR REPLACE FUNCTION pgr_sequentialVertexColoring(
-    TEXT,
+CREATE OR REPLACE FUNCTION _pgr_sequentialVertexColoring(
+    edges_sql TEXT,
     
     OUT seq BIGINT,
     OUT node BIGINT,
     OUT color BIGINT)
 
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME', 'sequentialVertexColoring'
-LANGUAGE c IMMUTABLE STRICT;
+'MODULE_PATHNAME'
+LANGUAGE C IMMUTABLE STRICT;
 
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_sequentialVertexColoring(TEXT)
+IS 'pgRouting internal function';
