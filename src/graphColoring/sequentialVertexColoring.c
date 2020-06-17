@@ -76,14 +76,6 @@ process(
     // https://www.postgresql.org/docs/current/static/spi-spi-connect.html
     pgr_SPI_connect();
 
-    PGR_DBG("Initializing arrays");
-    size_t size_rootsArr = 0;
-
-    // converting the postgres array to C array
-    int64_t* rootsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_rootsArr, roots);
-    PGR_DBG("rootsArr size %ld", size_rootsArr);
-
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
@@ -94,12 +86,6 @@ process(
     // load the edges belonging to the graph
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total edges in query %ld", total_edges);
-
-    if (total_edges == 0) {
-        if (rootsArr) pfree(rootsArr);
-        pgr_SPI_finish();
-        return;
-    }
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
