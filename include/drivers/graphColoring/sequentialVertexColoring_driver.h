@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_mst_rt.h"
+#include "c_types/pgr_vertex_color_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -56,13 +56,7 @@ extern "C" {
             pgr_edge_t  *data_edges,
             size_t total_edges,
 
-            int64_t *rootsArr,
-            size_t size_rootsArr,
-
-            int64_t max_depth,
-            bool directed,
-
-            pgr_mst_rt **return_tuples,
+            pgr_vertex_color_rt **return_tuples,
             size_t *return_count,
 
             char ** log_msg,
@@ -73,4 +67,4 @@ extern "C" {
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_sequentialVertexColoring_sequentialVertexColoring_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_GRAPHCOLORING_SEQUENTIALVERTEXCOLORING_DRIVER_H_
