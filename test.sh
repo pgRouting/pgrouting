@@ -101,12 +101,6 @@ echo --------------------------------------------
 
 
 # choose what is going to be tested while developing
-# for d in ${TESTDIRS}
-# do
-#     #tools/testers/doc_queries_generator.pl  -alg ${d} -documentation  -pgport ${PGPORT}
-#     tools/testers/doc_queries_generator.pl  -alg ${d} -pgport ${PGPORT}
-#     tools/developer/taptest.sh  ${d}/* -p ${PGPORT}
-# done
 
 
 
@@ -155,6 +149,7 @@ fi
 ########################################################
 #  Execute documentation queries for the whole project
 ########################################################
+<<<<<<< HEAD
 # tools/testers/doc_queries_generator.pl  -documentation  -pgport $PGPORT
 #
 # tools/testers/doc_queries_generator.pl -pgport $PGPORT
@@ -165,6 +160,18 @@ fi
 # #rm -rf doxygen/*
 # make doxy
 # cd ..
+=======
+tools/testers/doc_queries_generator.pl  -documentation  -pgport $PGPORT
+
+tools/testers/doc_queries_generator.pl -pgport $PGPORT
+
+cd build
+#rm -rf doc/*
+make doc
+#rm -rf doxygen/*
+make doxy
+cd ..
+>>>>>>> [planarGraph] No Crash Test Added
 
 ########################################################
 # pgTap test all
@@ -173,7 +180,11 @@ fi
 dropdb --if-exists -p $PGPORT ___pgr___test___
 createdb  -p $PGPORT ___pgr___test___
 echo $PGPORT
+<<<<<<< HEAD
 sh ./tools/testers/pg_prove_tests.sh himanshu $PGPORT
+=======
+sh ./tools/testers/pg_prove_tests.sh vicky $PGPORT
+>>>>>>> [planarGraph] No Crash Test Added
 dropdb  -p $PGPORT ___pgr___test___
 
 #tools/testers/update-tester.sh
