@@ -66,7 +66,6 @@ std::vector<pgr_vertex_color_rt>
 pgr_sequentialVertexColoring(
         G &graph,
         std::string &log) {
-
     pgrouting::functions::Pgr_sequentialVertexColoring<G> fn_sequentialVertexColoring;
     auto results = fn_sequentialVertexColoring.sequentialVertexColoring(
             graph);
