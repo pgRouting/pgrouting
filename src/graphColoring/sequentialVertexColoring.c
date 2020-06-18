@@ -116,7 +116,6 @@ process(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
     if (edges) pfree(edges);
-    if (rootsArr) pfree(rootsArr);
 
     pgr_SPI_finish();
 }
