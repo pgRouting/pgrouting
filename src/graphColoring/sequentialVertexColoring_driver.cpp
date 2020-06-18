@@ -8,7 +8,6 @@ Mail: project@pgrouting.org
 Function's developer:
 Copyright (c) 2020 Ashish Kumar
 Mail: ashishkr23438@gmail.com
-
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -25,51 +24,80 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #include "drivers/graphColoring/sequentialVertexColoring_driver.h"
 
-#include <sstream>
-#include <deque>
 #include <vector>
-
-#include "dijkstra/pgr_dijkstra.hpp"
+#include <algorithm>
+#include <string>
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "graphColoring/pgr_sequentialVertexColoring.hpp"
 
+/** @file sequentialVertexColoring_driver.cpp
+ * @brief Handles actual calling of function in the `pgr_sequentialVertexColoring.hpp` file.
+ *
+ */
 
+/***********************************************************************
+ *
+ *   pgr_sequentialVertexColoring(
+ *       edges_sql TEXT
+ *   );
+ *
+ ***********************************************************************/
 
+/** @brief Calls the main function defined in the C++ Header file.
+ *
+ * @param graph      the graph containing the edges
+ * @param log        stores the log message
+ *
+ * @returns results, when results are found
+ */
 
-/************************************************************
-  TEXT,
- ***********************************************************/
-
-template < class G >
-static
-Path
+template <class G>
+std::vector<pgr_vertex_color_rt>
 pgr_sequentialVertexColoring(
         G &graph,
-        int64_t source,
-        int64_t target,
-        bool only_cost = false) {
-    Path path;
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, source, target, only_cost);
+        std::string &log) {
+
+    pgrouting::functions::Pgr_sequentialVertexColoring<G> fn_sequentialVertexColoring;
+    auto results = fn_sequentialVertexColoring.sequentialVertexColoring(
+            graph);
+    log += fn_sequentialVertexColoring.get_log();
+    return results;
 }
 
-
+/** @brief Performs exception handling and converts the results to postgres.
+ *
+ * It first asserts the variables, then builds the graph using the `data_edges`,
+ * depending on whether the graph is directed or undirected. It also converts
+ * the C types to the C++ types, such as the `rootsArr` to `roots`
+ * vector and passes these variables to the template function `pgr_sequentialVertexColoring`
+ * which calls the main function defined in the C++ Header file. It also does
+ * exception handling.
+ * 
+ * @param data_edges     the set of edges from the SQL query
+ * @param total_edges    the total number of edges in the SQL query
+ * @param return_tuples  the rows in the result
+ * @param return_count   the count of rows in the result
+ * @param log_msg        stores the log message
+ * @param notice_msg     stores the notice message
+ * @param err_msg        stores the error message
+ *
+ * @returns void
+ */
 void
 do_pgr_sequentialVertexColoring(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        int64_t start_vid,
-        int64_t end_vid,
-        bool directed,
-        bool only_cost,
-        General_path_element_t **return_tuples,
+
+        pgr_vertex_color_rt **return_tuples,
         size_t *return_count,
+
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -82,45 +110,31 @@ do_pgr_sequentialVertexColoring(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+        std::vector<pgr_vertex_color_rt> results;
 
-        Path path;
+        // string variable to store the log messages
+        std::string logstr;
 
-        if (directed) {
-            log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            path = pgr_sequentialVertexColoring(digraph,
-                    start_vid,
-                    end_vid,
-                    only_cost);
-        } else {
-            log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-            path = pgr_sequentialVertexColoring(
-                    undigraph,
-                    start_vid,
-                    end_vid,
-                    only_cost);
-        }
+        log << logstr;
 
-        auto count = path.size();
+        // the count of rows in the result
+        auto count = results.size();
 
+        // returns directly in case of empty rows in the results
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No paths found between start_vid and end_vid vertices";
+            notice << "No traversal found";
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        size_t sequence = 0;
-        path.generate_postgres_data(return_tuples, sequence);
-        (*return_count) = sequence;
+        for (size_t i = 0; i < count; i++) {
+            *((*return_tuples) + i) = results[i];
+        }
+        (*return_count) = count;
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
