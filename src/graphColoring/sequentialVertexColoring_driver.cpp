@@ -94,6 +94,10 @@ pgr_sequentialVertexColoring(
  *
  * @returns void
  */
+
+// TODO (ashish): Use the data_edges and total_edges parameter below.
+//                Call the function in HPP file which calls the boost function.
+
 void
 do_pgr_sequentialVertexColoring(
         pgr_edge_t  *data_edges,
