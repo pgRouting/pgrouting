@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/graphColoring/sequentialVertexColoring_driver.h"
 
+#include <sstream>
 #include <vector>
 #include <algorithm>
 #include <string>
