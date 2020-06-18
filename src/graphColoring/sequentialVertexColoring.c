@@ -71,7 +71,7 @@ void
 process(
         char* edges_sql,
 
-        pgr_mst_rt **result_tuples,
+        pgr_vertex_color_rt **result_tuples,
         size_t *result_count) {
     // https://www.postgresql.org/docs/current/static/spi-spi-connect.html
     pgr_SPI_connect();
@@ -132,7 +132,7 @@ PGDLLEXPORT Datum _pgr_sequentialVertexColoring(PG_FUNCTION_ARGS) {
     TupleDesc           tuple_desc;
 
     /**********************************************************************/
-    pgr_mst_rt *result_tuples = NULL;
+    pgr_vertex_color_rt *result_tuples = NULL;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -178,7 +178,7 @@ PGDLLEXPORT Datum _pgr_sequentialVertexColoring(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_mst_rt*) funcctx->user_fctx;
+    result_tuples = (pgr_vertex_color_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
