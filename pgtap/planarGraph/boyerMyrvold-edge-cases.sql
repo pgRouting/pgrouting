@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(7);
+SELECT plan(13);
 
 
 
@@ -70,6 +70,59 @@ SELECT is_empty('boyerMyrvold', '4: Graph with 0 edge and 0 vertex -> Empty row 
 SELECT is_empty('boyerMyrvold5', '5: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('boyerMyrvold6', '6: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('boyerMyrvold7', '7: Graph with 0 edge and 0 vertex -> Empty row is returned');
+
+-- vertex not present in graph tests
+
+PREPARE boyerMyrvold8 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table WHERE id = -10'
+);
+
+PREPARE boyerMyrvold9 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table WHERE id IN (-10,50)',
+);
+
+PREPARE boyerMyrvold10 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table WHERE id IN (-10,-20,-30)',
+);
+
+PREPARE boyerMyrvold11 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table WHERE id IN (-10,33,39)',
+);
+
+PREPARE boyerMyrvold12 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table WHERE id = 36',
+);
+
+PREPARE boyerMyrvold13 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table WHERE id IN (36,45,34)',
+);
+
+SELECT is_empty('boyerMyrvold8', '8: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('boyerMyrvold9', '9: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('boyerMyrvold10', '10: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('boyerMyrvold11', '11: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('boyerMyrvold12', '12: Vertex not present in graph -> Empty row is returned');
+SELECT is_empty('boyerMyrvold13', '13: Vertex not present in graph -> Empty row is returned');
+
+
 
 SELECT * FROM finish();
 ROLLBACK;
