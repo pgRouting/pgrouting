@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(18);
+SELECT plan(27);
 
 
 
@@ -230,6 +230,64 @@ SELECT set_eq('boyerMyrvold22', $$VALUES (1, 7, 8, 1)$$, '22: Two rows are retur
 SELECT set_eq('boyerMyrvold23', $$VALUES (1, 8, 5, 1)$$, '23: Two rows are returned');
 SELECT set_eq('boyerMyrvold24', $$VALUES (1, 5, 6, 1)$$, '24: Two rows are returned');
 
+
+
+-- 3 vertices tests
+
+CREATE TABLE three_vertices_table (
+    id BIGSERIAL,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT
+);
+
+INSERT INTO three_vertices_table (source, target, cost, reverse_cost) VALUES
+    (3, 6, 20, -1),
+    (3, 8, 10, -1),
+    (6, 8, -1, 12);
+
+PREPARE q25 AS
+SELECT id, source, target, cost, reverse_cost
+FROM three_vertices_table;
+
+-- Cyclic Graph with three vertices 3, 6 and 8
+SELECT set_eq('q25',
+    $$VALUES
+        (1, 3, 6, 20, -1),
+        (2, 3, 8, 10, -1),
+        (3, 6, 8, -1, 12)
+    $$,
+    'q25: Cyclic Graph with three vertices 3, 6 and 8'
+);
+
+-- 3 vertices tests
+
+PREPARE boyerMyrvold26 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM three_vertices_table'
+);
+
+PREPARE boyerMyrvold27 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM three_vertices_table WHERE id > 4'
+);
+
+SELECT set_eq('boyerMyrvold26',
+    $$VALUES
+        (1, 3, 6, 20),
+        (2, 3, 8, 10),
+        (3, 8, 6, 12)
+    $$,
+    '26: 3 vertices tests'
+);
+SELECT is_empty('boyerMyrvold27',
+    '27: Vertex not present in graph -> Empty row is returned'
+);
 
 
 SELECT * FROM finish();
