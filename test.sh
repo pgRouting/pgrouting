@@ -101,12 +101,12 @@ echo --------------------------------------------
 
 
 # choose what is going to be tested while developing
-for d in ${TESTDIRS}
-do
-    #tools/testers/doc_queries_generator.pl  -alg ${d} -documentation  -pgport ${PGPORT}
-    tools/testers/doc_queries_generator.pl  -alg ${d} -pgport ${PGPORT}
-    tools/developer/taptest.sh  ${d}/* -p ${PGPORT}
-done
+# for d in ${TESTDIRS}
+# do
+#     #tools/testers/doc_queries_generator.pl  -alg ${d} -documentation  -pgport ${PGPORT}
+#     tools/testers/doc_queries_generator.pl  -alg ${d} -pgport ${PGPORT}
+#     tools/developer/taptest.sh  ${d}/* -p ${PGPORT}
+# done
 
 
 
@@ -155,16 +155,16 @@ fi
 ########################################################
 #  Execute documentation queries for the whole project
 ########################################################
-tools/testers/doc_queries_generator.pl  -documentation  -pgport $PGPORT
-
-tools/testers/doc_queries_generator.pl -pgport $PGPORT
-
-cd build
-#rm -rf doc/*
-make doc
-#rm -rf doxygen/*
-make doxy
-cd ..
+# tools/testers/doc_queries_generator.pl  -documentation  -pgport $PGPORT
+#
+# tools/testers/doc_queries_generator.pl -pgport $PGPORT
+#
+# cd build
+# #rm -rf doc/*
+# make doc
+# #rm -rf doxygen/*
+# make doxy
+# cd ..
 
 ########################################################
 # pgTap test all
@@ -173,7 +173,7 @@ cd ..
 dropdb --if-exists -p $PGPORT ___pgr___test___
 createdb  -p $PGPORT ___pgr___test___
 echo $PGPORT
-sh ./tools/testers/pg_prove_tests.sh vicky $PGPORT
+sh ./tools/testers/pg_prove_tests.sh himanshu $PGPORT
 dropdb  -p $PGPORT ___pgr___test___
 
 #tools/testers/update-tester.sh
