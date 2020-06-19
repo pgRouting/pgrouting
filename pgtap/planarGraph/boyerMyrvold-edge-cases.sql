@@ -173,6 +173,63 @@ SELECT set_eq('boyerMyrvold17', $$VALUES (1, 6, 6, 1)$$, '17: One row is returne
 SELECT set_eq('boyerMyrvold18', $$VALUES (1, 6, 6, 1)$$, '18: One row is returned');
 
 
+-- 2 vertices tests
+
+PREPARE boyerMyrvold19 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 1'
+);
+
+PREPARE boyerMyrvold20 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 4'
+);
+
+PREPARE boyerMyrvold21 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 9'
+);
+
+PREPARE boyerMyrvold22 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 6'
+);
+
+PREPARE boyerMyrvold23 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 7'
+);
+
+PREPARE boyerMyrvold24 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 8'
+);
+
+SELECT set_eq('boyerMyrvold19', $$VALUES (1, 1, 2, 1)$$, '19: Two rows are returned');
+SELECT set_eq('boyerMyrvold20', $$VALUES (1, 2, 5, 1)$$, '20: Two rows are returned');
+SELECT set_eq('boyerMyrvold21', $$VALUES (1, 6, 9, 1)$$, '21: Two rows are returned');
+SELECT set_eq('boyerMyrvold22', $$VALUES (1, 7, 8, 1)$$, '22: Two rows are returned');
+SELECT set_eq('boyerMyrvold23', $$VALUES (1, 8, 5, 1)$$, '23: Two rows are returned');
+SELECT set_eq('boyerMyrvold24', $$VALUES (1, 5, 6, 1)$$, '24: Two rows are returned');
+
 
 
 SELECT * FROM finish();
