@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(27);
+SELECT plan(30);
 
 
 
@@ -287,6 +287,63 @@ SELECT set_eq('boyerMyrvold26',
 );
 SELECT is_empty('boyerMyrvold27',
     '27: Vertex not present in graph -> Empty row is returned'
+);
+
+-- 4 vertices tests
+
+PREPARE q28 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE (id >= 10 AND id <= 12)
+    OR id = 8;
+
+-- Graph with vertices 5, 6, 10, 11
+SELECT set_eq('q28',
+    $$VALUES
+        (8, 5, 6, 1, 1),
+        (10, 5, 10, 1, 1),
+        (11, 6, 11, 1, -1),
+        (12, 10, 11, 1, -1)
+    $$,
+    '28: Graph with vertices 5, 6, 10 and 11'
+);
+
+-- 4 vertices tests
+
+PREPARE boyerMyrvold29 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE (id >= 10 AND id <= 12)
+        OR id = 8'
+);
+
+PREPARE boyerMyrvold30 AS
+SELECT *
+FROM pgr_boyerMyrvold(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE (id >= 2 AND id <= 4)'
+);
+
+SELECT set_eq('boyerMyrvold29',
+    $$VALUES
+        (1, 5, 6, 1),
+        (2, 5, 10, 1),
+        (3, 6, 11, 1),
+        (4, 10, 11, 1)
+    $$,
+    '29: 4 vertices tests,4 rows returned'
+);
+
+SELECT set_eq('boyerMyrvold30',
+    $$VALUES
+        (1, 3, 2, 1),
+        (2, 4, 3, 1),
+        (3, 2, 5, 1),
+    $$,
+    '30: 4 vertices tests,3 rows returned'
 );
 
 
