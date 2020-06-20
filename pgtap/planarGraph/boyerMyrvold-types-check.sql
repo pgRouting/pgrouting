@@ -1,37 +1,50 @@
 \i setup.sql
 
-SELECT plan(7);
+SELECT plan(5);
 
-----------------------------------
--- tests for all
--- prefix:  pgr_prim
-----------------------------------
+SELECT has_function('pgr_boyermyrvold');
 
-SELECT has_function('pgr_primdfs');
-
-SELECT has_function('pgr_primdfs', ARRAY['text','bigint','bigint']);
-SELECT has_function('pgr_primdfs', ARRAY['text','anyarray','bigint']);
-SELECT function_returns('pgr_primdfs', ARRAY['text','bigint','bigint'],  'setof record');
-SELECT function_returns('pgr_primdfs', ARRAY['text','anyarray','bigint'],  'setof record');
+SELECT function_returns('pgr_boyermyrvold', ARRAY['text'], 'setof record');
 
 
--- pgr_primdfs
--- parameter names
-SELECT set_eq(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_primdfs'$$,
-    $$VALUES
-        ('{"","","max_depth","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
-    $$
-);
+-- flags
+-- error
 
--- parameter types
-SELECT set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_primdfs'$$,
-    $$VALUES
-        ('{25,20,20,20,20,20,20,20,701,701}'::OID[]),
-        ('{25,2277,20,20,20,20,20,20,701,701}'::OID[])
-    $$
-);
+SELECT lives_ok(
+    'SELECT * FROM pgr_boyerMyrvold(
+        ''SELECT id, source, target, cost, reverse_cost FROM edge_table''
+    )',
+    '3: Documentation says works with no flags');
+
+SELECT throws_ok(
+    'SELECT * FROM pgr_boyerMyrvold(
+        ''SELECT id, source, target, cost, reverse_cost FROM edge_table id < 17'',
+        3
+    )','42883','function pgr_boyermyrvold(unknown, integer) does not exist',
+    '4: Documentation says it does not work with 1 flags');
+
+
+-- prepare for testing return types
+
+PREPARE all_return AS
+SELECT
+    'bigint'::text AS t1,
+    'bigint'::text AS t2,
+    'bigint'::text AS t3,
+    'double precision'::text AS t4;
+
+PREPARE q5 AS
+SELECT pg_typeof(seq)::text AS t1,
+       pg_typeof(source)::text AS t2,
+       pg_typeof(target)::text AS t3,
+       pg_typeof(cost)::text AS t4
+    FROM (
+        SELECT * FROM pgr_boyerMyrvold(
+            'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id < 17'
+        ) ) AS a LIMIT 1;
+
+
+SELECT set_eq('q5', 'all_return', 'Expected returning, columns names & types');
 
 SELECT * FROM finish();
 ROLLBACK;
