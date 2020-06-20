@@ -29,15 +29,15 @@ SELECT *
 FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
-    WHERE id > 18'
+    WHERE id IN (20,22)'
 );
 
-PREPARE boyerMyrvold AS
+PREPARE boyerMyrvold4 AS
 SELECT *
 FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
-    WHERE id > 18'
+    WHERE id > 25'
 );
 
 PREPARE boyerMyrvold5 AS
@@ -45,7 +45,7 @@ SELECT *
 FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
-    WHERE id > 18'
+    WHERE id IN (40,60,-10)'
 );
 
 PREPARE boyerMyrvold6 AS
@@ -61,12 +61,12 @@ SELECT *
 FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
-    WHERE id > 18'
+    WHERE id > 22'
 );
 
 SELECT is_empty('boyerMyrvold2', '2: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('boyerMyrvold3', '3: Graph with 0 edge and 0 vertex -> Empty row is returned');
-SELECT is_empty('boyerMyrvold', '4: Graph with 0 edge and 0 vertex -> Empty row is returned');
+SELECT is_empty('boyerMyrvold4', '4: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('boyerMyrvold5', '5: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('boyerMyrvold6', '6: Graph with 0 edge and 0 vertex -> Empty row is returned');
 SELECT is_empty('boyerMyrvold7', '7: Graph with 0 edge and 0 vertex -> Empty row is returned');
@@ -146,31 +146,31 @@ FROM pgr_boyerMyrvold(
 PREPARE boyerMyrvold16 AS
 SELECT *
 FROM pgr_boyerMyrvold(
-    'SELECT id, source, 6 AS target, cost, reverse_cost
+    'SELECT id, source, 2 AS target, cost, reverse_cost
     FROM edge_table
-    WHERE id = 9'
+    WHERE id = 2'
 );
 
 PREPARE boyerMyrvold17 AS
 SELECT *
 FROM pgr_boyerMyrvold(
-    'SELECT id, source, 6 AS target, cost, reverse_cost
+    'SELECT id, source, 3 AS target, cost, reverse_cost
     FROM edge_table
-    WHERE id = 9'
+    WHERE id = 3'
 );
 
 PREPARE boyerMyrvold18 AS
 SELECT *
 FROM pgr_boyerMyrvold(
-    'SELECT id, source, 6 AS target, cost, reverse_cost
+    'SELECT id, source, 7 AS target, cost, reverse_cost
     FROM edge_table
-    WHERE id = 9'
+    WHERE id = 6'
 );
 
 SELECT set_eq('boyerMyrvold15', $$VALUES (1, 6, 6, 1)$$, '15: One row is returned');
-SELECT set_eq('boyerMyrvold16', $$VALUES (1, 6, 6, 1)$$, '16: One row is returned');
-SELECT set_eq('boyerMyrvold17', $$VALUES (1, 6, 6, 1)$$, '17: One row is returned');
-SELECT set_eq('boyerMyrvold18', $$VALUES (1, 6, 6, 1)$$, '18: One row is returned');
+SELECT set_eq('boyerMyrvold16', $$VALUES (1, 2, 2, 1)$$, '16: One row is returned');
+SELECT set_eq('boyerMyrvold17', $$VALUES (1, 3, 3, 1)$$, '17: One row is returned');
+SELECT set_eq('boyerMyrvold18', $$VALUES (1, 7, 7, 1)$$, '18: One row is returned');
 
 
 -- 2 vertices tests
@@ -341,7 +341,7 @@ SELECT set_eq('boyerMyrvold30',
     $$VALUES
         (1, 3, 2, 1),
         (2, 4, 3, 1),
-        (3, 2, 5, 1),
+        (3, 2, 5, 1)
     $$,
     '30: 4 vertices tests,3 rows returned'
 );
