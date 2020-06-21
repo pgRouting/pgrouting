@@ -84,10 +84,61 @@ namespace pgrouting {
                     int64_t target = graph[graph.target(*ei)].id;
                     edgeList.push_back(edge (source,target));
                 }
+                const auto numOfVertices=graph.num_vertices();
+                G g(
+                        edgeList.begin(), edgeList.end(),
+                        numOfVertices);
 
+                typedef graph_traits<G>::vertex_descriptor Vertex;
+                typedef property_map<G, vertex_index_t>::type IndexMap;
+                typedef
+                iterator_property_map<vector<Vertex>::iterator, IndexMap>
+                        PredMap;
+
+                vector<Vertex> domTreePredVector, domTreePredVector2;
+                IndexMap indexMap(get(vertex_index, g));
+                graph_traits<G>::vertex_iterator uItr, uEnd;
+                int j = 0;
+                for (boost::tie(uItr, uEnd) = vertices(g); uItr != uEnd; ++uItr, ++j)
+                {
+                    put(indexMap, *uItr, j);
+                }
+
+                // Lengauer-Tarjan dominator tree algorithm
+
+                domTreePredVector =
+                        vector<Vertex>(num_vertices(g), graph_traits<G>::null_vertex());
+                PredMap domTreePredMap =
+                        make_iterator_property_map(domTreePredVector.begin(), indexMap);
+
+                lengauer_tarjan_dominator_tree(g, vertex(root, g), domTreePredMap);
+
+                vector<int> idom(num_vertices(g));
+                for (boost::tie(uItr, uEnd) = vertices(g); uItr != uEnd; ++uItr)
+                {
+                    if (get(domTreePredMap, *uItr) != graph_traits<G>::null_vertex())
+                        idom[get(indexMap, *uItr)] =
+                                get(indexMap, get(domTreePredMap, *uItr));
+                    else
+                        idom[get(indexMap, *uItr)] = (numeric_limits<int>::max)();
+                }
+
+                ///
+                boost::tie(uItr, uEnd) = vertices(g);
                 std::vector<pgr_ltdtree_rt> results;
-                results[0].idom=7;
-                results[0].vid=3;
+                int x=0;
+                for(int i: idom)
+                {
+                    //cout<<"idom of "<<get(indexMap, *uItr)<<"  is "<<i<<endl;
+                    results[x].idom=i;
+                    results[x].vid=get(indexMap, *uItr);
+                    x++;
+                    ++uItr;
+                }
+
+
+              //  results[0].idom=7;
+               // results[0].vid=3;
                 return results;
 
 
