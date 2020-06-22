@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT * FROM pgr_kargersContraction(
+SELECT * FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table
      WHERE id > 18'
@@ -13,7 +13,7 @@ SELECT * FROM pgr_kargersContraction(
 (0 rows)
 
 -- q2
-SELECT * FROM pgr_kargersContraction(
+SELECT * FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table
      WHERE id > 18'
@@ -23,7 +23,7 @@ SELECT * FROM pgr_kargersContraction(
 (0 rows)
 
 -- q3
-SELECT * FROM pgr_kargersContraction(
+SELECT * FROM pgr_boyerMyrvold(
 $$
  SELECT id, source, target, cost, reverse_cost FROM edge_table
     where source = any (ARRAY(SELECT node FROM pgr_connectedComponents(
