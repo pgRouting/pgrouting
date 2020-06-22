@@ -36,9 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#if 0
 #include "graphColoring/pgr_sequentialVertexColoring.hpp"
-#endif
 
 /** @file sequentialVertexColoring_driver.cpp
  * @brief Handles actual calling of function in the `pgr_sequentialVertexColoring.hpp` file.
@@ -61,7 +59,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * @returns results, when results are found
  */
 
-#if 0
 template <class G>
 std::vector<pgr_vertex_color_rt>
 pgr_sequentialVertexColoring(
@@ -73,7 +70,6 @@ pgr_sequentialVertexColoring(
     log += fn_sequentialVertexColoring.get_log();
     return results;
 }
-#endif
 
 /** @brief Performs exception handling and converts the results to postgres.
  *
@@ -123,6 +119,15 @@ do_pgr_sequentialVertexColoring(
 
         // string variable to store the log messages
         std::string logstr;
+
+        graphType gType = UNDIRECTED;
+        pgrouting::UndirectedGraph undigraph(gType);
+        undigraph.insert_edges(data_edges, total_edges);
+
+        // calls the template function
+        results = pgr_sequentialVertexColoring(
+                undigraph,
+                logstr);
 
         log << logstr;
 
