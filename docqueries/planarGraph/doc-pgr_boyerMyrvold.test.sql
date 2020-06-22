@@ -2,7 +2,7 @@
 SELECT * FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table
-     WHERE id IN (9,16,15)'
+     WHERE id > 18'
 );
 
 \echo -- q2
@@ -18,12 +18,12 @@ $$
  SELECT id, source, target, cost, reverse_cost FROM edge_table
     where source = any (ARRAY(SELECT node FROM pgr_connectedComponents(
                             'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
-                        WHERE component = 14)
+                        WHERE component = 18)
                        )
                    OR
           target = any (ARRAY(SELECT node FROM pgr_connectedComponents(
                             'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
-                        WHERE component = 14)
+                        WHERE component = 18)
                        )
 $$
  );
