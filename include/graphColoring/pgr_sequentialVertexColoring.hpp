@@ -26,6 +26,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
+#include <boost/property_map/property_map.hpp>
+#include <boost/graph/graph_traits.hpp>
+#include <boost/property_map/vector_property_map.hpp>
+#include <boost/type_traits.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/sequential_vertex_coloring.hpp>
 
 #include <vector>
 #include <map>
@@ -40,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * Contains actual implementation of the function and the calling
  * of the respective boost function.
  */
-
+using namespace boost;
 
 namespace pgrouting {
 namespace functions {
@@ -52,6 +58,10 @@ class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
 public:
     typedef typename G::V V;
     typedef typename G::E E;
+    typedef adjacency_list<listS, vecS, undirectedS> Graph;
+    typedef graph_traits<Graph>::vertex_descriptor vertex_descriptor;
+    typedef graph_traits<Graph>::vertices_size_type vertices_size_type;
+    typedef property_map<Graph, vertex_index_t>::const_type vertex_index_map;
 
     /** @name SequentialVertexColoring
      * @{
@@ -73,7 +83,19 @@ public:
             G &graph) {
         std::vector<pgr_vertex_color_rt> results;
 
+        typedef std::pair<int, int> Edge;
+          enum nodes {A, B, C, D, E, n};
+          Edge edge_array[] = { Edge(A, C), Edge(B, B), Edge(B, D), Edge(B, E), 
+                                Edge(C, B), Edge(C, D), Edge(D, E), Edge(E, A), 
+                                Edge(E, B) };
+          int m = sizeof(edge_array) / sizeof(Edge);
+          Graph g(edge_array, edge_array + m, n);
 
+          // Test with the normal order
+          std::vector<vertices_size_type> color_vec(num_vertices(g));
+          iterator_property_map<vertices_size_type*, vertex_index_map>
+            color(&color_vec.front(), get(vertex_index, g));
+          vertices_size_type num_colors = sequential_vertex_coloring(g, color);
 
         return results;
     }
