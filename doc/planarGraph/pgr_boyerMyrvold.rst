@@ -43,8 +43,6 @@ A graph is planar if it can be drawn in two-dimensional space with no two of its
 The main characteristics are:
   - It works with any undirected graph.
 
-  - For optimization purposes, if there are more than one answer, the function will return one of them.
-
   - The returned values are the set of source and target of edges with their costs.
 
   * Running time: Assuming that both the vertex index and edge index supplied take time O(1) to return an index and there are O(n) total self-loops and parallel edges in the graph, most combinations of arguments given to boyer_myrvold_planarity_test result in an algorithm that runs in time O(n) for a graph with n vertices and m edges
@@ -59,12 +57,12 @@ Signatures
 
     pgr_boyerMyrvold(edges_sql)
 
-    RETURNS SET OF (seq, sorted_v)
+    RETURNS SET OF (seq, source, target, cost)
     OR EMPTY SET
 
-:Example: For a **directed** graph
+:Example: Query done on :doc:`sampledata` network gives.
 
-.. literalinclude:: doc-topologicalSort.queries
+.. literalinclude:: doc-pgr_boyerMyrvold.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -106,7 +104,7 @@ Where:
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, sorted_v)``
+Returns set of ``(seq, source, target, cost)``
 
 ===============  =========== ============================================================
 Column           Type        Description
@@ -114,7 +112,8 @@ Column           Type        Description
 **seq**          ``INT``     Sequential value starting from **1**.
 **source**       ``BIGINT``  Identifier of the first end point vertex of the edge.
 **target**       ``BIGINT``  Identifier of the second end point vertex of the edge.
-**cost**          ``FLOAT``  Weight of the edge  `(source, target)`
+**cost**         ``FLOAT``   Weight of the edge  `(source, target)`
+
                              - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
 ===============  =========== ============================================================
 
