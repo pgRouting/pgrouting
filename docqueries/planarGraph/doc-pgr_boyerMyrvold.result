@@ -9,7 +9,7 @@ SELECT * FROM pgr_boyerMyrvold(
      WHERE id > 18'
 );
  seq | source | target | cost
------+------+------+--------
+-----+--------+--------+------
 (0 rows)
 
 -- q2
@@ -18,8 +18,8 @@ SELECT * FROM pgr_boyerMyrvold(
         FROM edge_table
      WHERE id > 18'
 );
-seq | source | target | cost
------+------+------+--------
+ seq | source | target | cost
+-----+--------+--------+------
 (0 rows)
 
 -- q3
@@ -38,7 +38,7 @@ $$
 $$
  );
  seq | source | target | cost
------+------+------+--------
+-----+--------+--------+------
 (0 rows)
 
 -- q4
