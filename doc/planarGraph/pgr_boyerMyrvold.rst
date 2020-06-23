@@ -112,13 +112,17 @@ Returns set of ``(seq, sorted_v)``
 Column           Type        Description
 ===============  =========== ============================================================
 **seq**          ``INT``     Sequential value starting from **1**.
-**sorted_v**     ``BIGINT``  Linear ordering of the vertices(ordered in topological order)
+**source**       ``BIGINT``  Identifier of the first end point vertex of the edge.
+**target**       ``BIGINT``  Identifier of the second end point vertex of the edge.
+**cost**          ``FLOAT``  Weight of the edge  `(source, target)`
+                             - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
 ===============  =========== ============================================================
 
 See Also
 -------------------------------------------------------------------------------
 
-* https://en.wikipedia.org/wiki/Topological_sorting
+* https://en.wikipedia.org/wiki/Planarity_testing
+* https://www.boost.org/doc/libs/1_53_0/libs/graph/doc/boyer_myrvold.html
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
