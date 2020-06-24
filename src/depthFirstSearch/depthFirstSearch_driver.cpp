@@ -187,7 +187,12 @@ do_pgr_depthFirstSearch(
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice << "No traversal found";
-            *log_msg = pgr_msg(notice.str().c_str());
+            *log_msg = log.str().empty()?
+                *log_msg :
+                pgr_msg(log.str().c_str());
+            *notice_msg = notice.str().empty()?
+                *notice_msg :
+                pgr_msg(notice.str().c_str());
             return;
         }
 
