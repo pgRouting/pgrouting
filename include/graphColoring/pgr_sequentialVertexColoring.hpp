@@ -59,9 +59,7 @@ public:
     typedef typename G::V V;
     typedef typename G::E E;
     typedef adjacency_list<listS, vecS, undirectedS> Graph;
-    typedef graph_traits<Graph>::vertex_descriptor vertex_descriptor;
     typedef graph_traits<Graph>::vertices_size_type vertices_size_type;
-    typedef property_map<Graph, vertex_index_t>::const_type vertex_index_map;
 
     /** @name SequentialVertexColoring
      * @{
@@ -83,12 +81,8 @@ public:
             G &graph) {
         std::vector<pgr_vertex_color_rt> results;
 
-          // std::vector<vertices_size_type> color_vec(num_vertices(graph.graph));
-          // std::vector<default_color_type> color_map(graph.num_vertices());
-
           std::vector<vertices_size_type> colors(boost::num_vertices(graph.graph));
 
-          // create a ColorMap object (cpp_version < 17)
           auto color_map = boost::make_iterator_property_map(colors.begin(),
               boost::get(boost::vertex_index, graph.graph));
 
