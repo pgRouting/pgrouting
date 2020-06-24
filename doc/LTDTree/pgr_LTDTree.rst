@@ -102,6 +102,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/lengauer_tarjan_dominator.htm
+* https://www.cs.princeton.edu/courses/archive/fall03/cs528/handouts/a%20fast%20algorithm%20for%20finding.pdf
+* https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/two_graphs_common_spanning_trees.html
 * :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
