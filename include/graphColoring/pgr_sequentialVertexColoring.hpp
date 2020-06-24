@@ -58,10 +58,6 @@ class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
 public:
     typedef typename G::V V;
     typedef typename G::E E;
-    typedef adjacency_list<listS, vecS, undirectedS> Graph;
-    typedef graph_traits<Graph>::vertex_descriptor vertex_descriptor;
-    typedef graph_traits<Graph>::vertices_size_type vertices_size_type;
-    typedef property_map<Graph, vertex_index_t>::const_type vertex_index_map;
 
     /** @name SequentialVertexColoring
      * @{
@@ -83,19 +79,16 @@ public:
             G &graph) {
         std::vector<pgr_vertex_color_rt> results;
 
-        typedef std::pair<int, int> Edge;
-          enum nodes {A, B, C, D, E, n};
-          Edge edge_array[] = { Edge(A, C), Edge(B, B), Edge(B, D), Edge(B, E), 
-                                Edge(C, B), Edge(C, D), Edge(D, E), Edge(E, A), 
-                                Edge(E, B) };
-          int m = sizeof(edge_array) / sizeof(Edge);
-          Graph g(edge_array, edge_array + m, n);
+          // std::vector<vertices_size_type> color_vec(num_vertices(graph.graph));
+          // std::vector<default_color_type> color_map(graph.num_vertices());
 
-          // Test with the normal order
-          std::vector<vertices_size_type> color_vec(num_vertices(g));
-          iterator_property_map<vertices_size_type*, vertex_index_map>
-            color(&color_vec.front(), get(vertex_index, g));
-          vertices_size_type num_colors = sequential_vertex_coloring(g, color);
+          std::vector<boost::default_color_type> colors(boost::num_vertices(graph.graph));
+
+          // create a ColorMap object (cpp_version < 17)
+          auto color_map = boost::make_iterator_property_map(colors.begin(),
+              boost::get(boost::vertex_index, graph.graph));
+
+          sequential_vertex_coloring(graph.graph, color_map);
 
         return results;
     }
