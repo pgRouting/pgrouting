@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * Contains actual implementation of the function and the calling
  * of the respective boost function.
  */
-using namespace boost;
+
 
 namespace pgrouting {
 namespace functions {
@@ -58,8 +58,8 @@ class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
 public:
     typedef typename G::V V;
     typedef typename G::E E;
-    typedef adjacency_list<listS, vecS, undirectedS> Graph;
-    typedef graph_traits<Graph>::vertices_size_type vertices_size_type;
+    typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS> Graph;
+    typedef boost::graph_traits<Graph>::vertices_size_type vertices_size_type;
 
     /** @name SequentialVertexColoring
      * @{
@@ -86,7 +86,7 @@ public:
           auto color_map = boost::make_iterator_property_map(colors.begin(),
               boost::get(boost::vertex_index, graph.graph));
 
-          sequential_vertex_coloring(graph.graph, color_map);
+          boost::sequential_vertex_coloring(graph.graph, color_map);
 
         return results;
     }
