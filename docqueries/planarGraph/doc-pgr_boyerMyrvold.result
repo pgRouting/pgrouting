@@ -15,7 +15,6 @@ SELECT * FROM pgr_boyerMyrvold(
    3 |      4 |      9 |    1
 (3 rows)
 
-
 -- q2
 SELECT * FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
@@ -45,7 +44,6 @@ $$
 -----+--------+--------+------
    1 |     14 |     15 |    1
 (1 row)
-
 
 -- q4
 ROLLBACK;
