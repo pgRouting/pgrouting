@@ -81,12 +81,23 @@ public:
             G &graph) {
         std::vector<pgr_vertex_color_rt> results;
 
-          std::vector<vertices_size_type> colors(boost::num_vertices(graph.graph));
+        std::vector<vertices_size_type> colors(boost::num_vertices(graph.graph));
 
-          auto color_map = boost::make_iterator_property_map(colors.begin(),
-              boost::get(boost::vertex_index, graph.graph));
+        auto color_map = boost::make_iterator_property_map(colors.begin(),
+            boost::get(boost::vertex_index, graph.graph));
 
-          boost::sequential_vertex_coloring(graph.graph, color_map);
+        try {
+            boost::sequential_vertex_coloring(
+                graph.graph, color_map);
+        } catch (boost::exception const& ex) {
+            (void)ex;
+            throw;
+        } catch (std::exception &e) {
+            (void)e;
+            throw;
+        } catch (...) {
+            throw;
+        }
 
         return results;
     }
