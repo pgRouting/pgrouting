@@ -61,11 +61,6 @@ public:
     typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS> Graph;
     typedef boost::graph_traits<Graph>::vertices_size_type vertices_size_type;
 
-    typedef typename graph_traits<Graph>::vertex_descriptor
-          vertex_descriptor;
-        typedef typename graph_traits<Graph>::vertex_iterator
-          vertex_iterator;
-
     /** @name SequentialVertexColoring
      * @{
      * 
@@ -115,9 +110,6 @@ public:
     //@}
 
 private:
-
-    
-
     /** @brief to get the results
      *
      * Uses the `colors` vector to get the results i.e. the color of every vertex.
@@ -129,27 +121,13 @@ private:
      *
      * @returns bool  @b True, when results are found
      */
-    // template <typename T>
     std::vector<pgr_vertex_color_rt> get_results(
             std::vector<vertices_size_type> &colors,
             const G &graph) {
         std::vector<pgr_vertex_color_rt> results;
 
-        // auto v = vertices(graph.graph);
-        // std::vector<vertex_descriptor> order;
-        // order.reserve(std::distance(v.first, v.second));
-        // while (v.first != v.second)
-        //     order.push_back(*v.first++);
-
-        // const size_t V = num_vertices(graph.graph);
-
-        // for ( size_t i = 0; i < V; i++) {
-        //       auto current = order[i];
-        //       log << current << " ";
-        //   }
-
-
         typename graph_traits<Graph>::vertex_iterator v, vend;
+
         for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
             int64_t node = graph[*v].id;
             int64_t color = colors[*v];
@@ -159,21 +137,6 @@ private:
             });
         }
 
-        // std::vector<double> agg_cost(graph.num_vertices(), 0);
-        // std::vector<int64_t> depth(graph.num_vertices(), 0);
-
-        // for (const auto edge : visited_order) {
-        //     auto u = graph.source(edge);
-        //     auto v = graph.target(edge);
-
-        //     agg_cost[v] = agg_cost[u] + graph[edge].cost;
-        //     depth[v] = depth[u] + 1;
-
-        //     results.push_back({
-        //         node,
-        //         color
-        //     });
-        // }
         return results;
     }
 
