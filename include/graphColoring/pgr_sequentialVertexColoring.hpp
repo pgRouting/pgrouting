@@ -114,12 +114,10 @@ private:
      *
      * Uses the `colors` vector to get the results i.e. the color of every vertex.
      *
-     * @param visited_order  vector which contains the edges of the resulting traversal
-     * @param source         the starting vertex
-     * @param max_depth      the maximum depth of traversal
-     * @param graph          the graph containing the edges
+     * @param colors      vector which contains the color of every vertex
+     * @param graph       the graph containing the edges
      *
-     * @returns bool  @b True, when results are found
+     * @returns `results` vector
      */
     std::vector<pgr_vertex_color_rt> get_results(
             std::vector<vertices_size_type> &colors,
@@ -133,7 +131,7 @@ private:
             int64_t node = graph[*v].id;
             int64_t color = colors[*v];
 
-            // push the vertex id and the color of the vertex in `results` vector
+            // push the vertex id and the color of the vertex in the `results` vector
             results.push_back({
                 node,
                 color
