@@ -165,7 +165,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
       * @param max_depth      the maximum depth of traversal
       * @param graph          the graph containing the edges
       *
-      * @returns bool  @b True, when results are found
+      * @returns `results` vector
       */
      template <typename T>
      std::vector<pgr_mst_rt> get_results(
