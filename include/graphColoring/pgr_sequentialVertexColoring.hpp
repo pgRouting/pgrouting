@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * Contains actual implementation of the function and the calling
  * of the respective boost function.
  */
-using namespace boost;
+
 
 namespace pgrouting {
 namespace functions {
@@ -124,7 +124,7 @@ private:
             const G &graph) {
         std::vector<pgr_vertex_color_rt> results;
 
-        typename graph_traits<Graph>::vertex_iterator v, vend;
+        typename boost::graph_traits<Graph>::vertex_iterator v, vend;
 
         // iterate through every vertex in the graph
         for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
