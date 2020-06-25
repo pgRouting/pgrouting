@@ -128,9 +128,12 @@ private:
 
         typename graph_traits<Graph>::vertex_iterator v, vend;
 
+        // iterate through every vertex in the graph
         for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
             int64_t node = graph[*v].id;
             int64_t color = colors[*v];
+
+            // push the vertex id and the color of the vertex in `results` vector
             results.push_back({
                 node,
                 color
