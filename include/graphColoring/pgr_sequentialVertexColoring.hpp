@@ -81,12 +81,15 @@ public:
             G &graph) {
         std::vector<pgr_vertex_color_rt> results;
 
+        // vector which will store the color of all the vertices in the graph
         std::vector<vertices_size_type> colors(boost::num_vertices(graph.graph));
 
+        // An iterator property map which records the colors of each vertex
         auto color_map = boost::make_iterator_property_map(colors.begin(),
             boost::get(boost::vertex_index, graph.graph));
 
         try {
+            // calling the boost function
             boost::sequential_vertex_coloring(
                 graph.graph, color_map);
         } catch (boost::exception const& ex) {
