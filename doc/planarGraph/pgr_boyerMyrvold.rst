@@ -117,6 +117,19 @@ Column           Type        Description
                              - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
 ===============  =========== ============================================================
 
+Additional Example:
+-------------------------------------------------------------------------------
+
+.. literalinclude:: doc-pgr_boyerMyrvold.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+Use pgr_connectedComponents( ) function in query:
+
+.. literalinclude:: doc-pgr_boyerMyrvold.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
 See Also
 -------------------------------------------------------------------------------
 
