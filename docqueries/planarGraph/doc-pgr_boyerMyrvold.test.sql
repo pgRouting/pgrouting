@@ -2,7 +2,7 @@
 SELECT * FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table
-     WHERE id > 18'
+     WHERE id IN (9,16,15)'
 );
 
 \echo -- q2
