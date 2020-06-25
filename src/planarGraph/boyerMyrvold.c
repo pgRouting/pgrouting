@@ -179,7 +179,7 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
             OUT reverse_cost FLOAT
         */
         /**********************************************************************/
-        size_t numb = 5;
+        size_t numb = 4;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
