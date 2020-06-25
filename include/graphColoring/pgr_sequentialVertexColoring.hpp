@@ -55,92 +55,91 @@ namespace functions {
 
 template <class G>
 class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
-public:
-    typedef typename G::V V;
-    typedef typename G::E E;
-    typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS> Graph;
-    typedef boost::graph_traits<Graph>::vertices_size_type vertices_size_type;
+ public:
+     typedef typename G::V V;
+     typedef typename G::E E;
+     typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS> Graph;
+     typedef boost::graph_traits<Graph>::vertices_size_type vertices_size_type;
 
-    /** @name SequentialVertexColoring
-     * @{
-     * 
-     */
+     /** @name SequentialVertexColoring
+      * @{
+      * 
+      */
 
-    /** @brief sequentialVertexColoring function
-     *
-     * It does all the processing and returns the results.
-     *
-     * @param graph      the graph containing the edges
-     *
-     * @returns results, when results are found
-     *
-     * @see [boost::sequential_vertex_coloring]
-     * (https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/sequential_vertex_coloring.html)
-     */
-    std::vector<pgr_vertex_color_rt> sequentialVertexColoring(
-            G &graph) {
-        std::vector<pgr_vertex_color_rt> results;
+     /** @brief sequentialVertexColoring function
+      *
+      * It does all the processing and returns the results.
+      *
+      * @param graph      the graph containing the edges
+      *
+      * @returns results, when results are found
+      *
+      * @see [boost::sequential_vertex_coloring]
+      * (https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/sequential_vertex_coloring.html)
+      */
+     std::vector<pgr_vertex_color_rt> sequentialVertexColoring(
+             G &graph) {
+         std::vector<pgr_vertex_color_rt> results;
 
-        // vector which will store the color of all the vertices in the graph
-        std::vector<vertices_size_type> colors(boost::num_vertices(graph.graph));
+         // vector which will store the color of all the vertices in the graph
+         std::vector<vertices_size_type> colors(boost::num_vertices(graph.graph));
 
-        // An iterator property map which records the colors of each vertex
-        auto color_map = boost::make_iterator_property_map(colors.begin(),
-            boost::get(boost::vertex_index, graph.graph));
+         // An iterator property map which records the colors of each vertex
+         auto color_map = boost::make_iterator_property_map(colors.begin(),
+             boost::get(boost::vertex_index, graph.graph));
 
-        try {
-            // calling the boost function
-            boost::sequential_vertex_coloring(
-                graph.graph, color_map);
-        } catch (boost::exception const& ex) {
-            (void)ex;
-            throw;
-        } catch (std::exception &e) {
-            (void)e;
-            throw;
-        } catch (...) {
-            throw;
-        }
+         try {
+             // calling the boost function
+             boost::sequential_vertex_coloring(
+                 graph.graph, color_map);
+         } catch (boost::exception const& ex) {
+             (void)ex;
+             throw;
+         } catch (std::exception &e) {
+             (void)e;
+             throw;
+         } catch (...) {
+             throw;
+         }
 
-        results = get_results(colors, graph);
+         results = get_results(colors, graph);
 
-        return results;
-    }
+         return results;
+     }
 
-    //@}
+     //@}
 
-private:
-    /** @brief to get the results
-     *
-     * Uses the `colors` vector to get the results i.e. the color of every vertex.
-     *
-     * @param colors      vector which contains the color of every vertex
-     * @param graph       the graph containing the edges
-     *
-     * @returns `results` vector
-     */
-    std::vector<pgr_vertex_color_rt> get_results(
-            std::vector<vertices_size_type> &colors,
-            const G &graph) {
-        std::vector<pgr_vertex_color_rt> results;
+ private:
+     /** @brief to get the results
+      *
+      * Uses the `colors` vector to get the results i.e. the color of every vertex.
+      *
+      * @param colors      vector which contains the color of every vertex
+      * @param graph       the graph containing the edges
+      *
+      * @returns `results` vector
+      */
+     std::vector<pgr_vertex_color_rt> get_results(
+             std::vector<vertices_size_type> &colors,
+             const G &graph) {
+         std::vector<pgr_vertex_color_rt> results;
 
-        typename boost::graph_traits<Graph>::vertex_iterator v, vend;
+         typename boost::graph_traits<Graph>::vertex_iterator v, vend;
 
-        // iterate through every vertex in the graph
-        for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
-            int64_t node = graph[*v].id;
-            int64_t color = colors[*v];
+         // iterate through every vertex in the graph
+         for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
+             int64_t node = graph[*v].id;
+             int64_t color = colors[*v];
 
-            // push the vertex id and the color of the vertex in the `results` vector
-            results.push_back({
-                node,
-                color
-            });
-        }
+             // push the vertex id and the color of the vertex in the `results` vector
+             results.push_back({
+                 node,
+                 color
+             });
+         }
 
-        return results;
-    }
-
+         return results;
+     }
 };
 }  // namespace functions
 }  // namespace pgrouting
