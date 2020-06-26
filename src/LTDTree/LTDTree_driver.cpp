@@ -64,8 +64,8 @@ Look from template
 void
 do_pgr_LTDTree(
         pgr_edge_t  *data_edges,
-        int64_t root_vertex,
         size_t total_edges,
+        int64_t root_vertex,
         pgr_ltdtree_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
@@ -84,7 +84,7 @@ do_pgr_LTDTree(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-
+        std::string logstr;
         //std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
         log << "Working with directed Graph\n";
         graphType gType = DIRECTED;
@@ -93,6 +93,9 @@ do_pgr_LTDTree(
         std::vector<pgr_ltdtree_rt> results;
         pgrouting::functions::Pgr_LTDTree<pgrouting::DirectedGraph> fn_LTDTree;
         results=fn_LTDTree.llengauer_tarjan_dominator_tree(digraph,root_vertex);
+
+        logstr += fn_LTDTree.get_log();
+        log << logstr;
                //Call a function to work with that
         //Todo Here we will assign result into return tuple
         auto count = results.size();
@@ -101,7 +104,12 @@ do_pgr_LTDTree(
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice << "No result found";
-            *log_msg = pgr_msg(notice.str().c_str());
+            *log_msg = log.str().empty()?
+                       *log_msg :
+                       pgr_msg(log.str().c_str());
+            *notice_msg = notice.str().empty()?
+                          *notice_msg :
+                          pgr_msg(notice.str().c_str());
             return;
         }
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
