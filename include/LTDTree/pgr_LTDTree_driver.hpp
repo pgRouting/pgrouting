@@ -79,100 +79,100 @@ namespace pgrouting {
                 typedef pair<int64_t , int64_t> edge;
                 vector<edge> edgeList;
               //  std::vector<pgr_ltdtree_rt> results(graph.num_vertices());
-/*
+                std::vector<pgr_ltdtree_rt> results;
+
                 E_i ei, ei_end;
                 int i;
                 for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i) {
                     int64_t source = graph[graph.source(*ei)].id;
                     int64_t target = graph[graph.target(*ei)].id;
                     edgeList.push_back(edge (source,target));
-                    results[i].idom=source;
-                    results[i].vid=source;
+                     pgr_ltdtree_rt temp;
+                    temp.vid=source;
+                    temp.idom=target;
+                    results.push_back(temp);
                 }
-                results[3].idom=graph.num_vertices();
-                results[3].vid=graph.num_vertices();
+                /*   results[3].idom=graph.num_vertices();
+                   results[3].vid=graph.num_vertices();
 
 
-                const auto numOfVertices=graph.num_vertices();
+                   const auto numOfVertices=graph.num_vertices();
 
-                const auto numOfVertices = 8;
-                edges.push_back(edge(0, 1));
-                edges.push_back(edge(1, 2));
-                edges.push_back(edge(1, 3));
-                edges.push_back(edge(2, 7));
-                edges.push_back(edge(3, 4));
-                edges.push_back(edge(4, 5));
-                edges.push_back(edge(4, 6));
-                edges.push_back(edge(6, 4));
-                edges.push_back(edge(5, 7));
-                G g(
-                        edges.begin(), edges.end(),
-                        numOfVertices);
+                   const auto numOfVertices = 8;
+                   edges.push_back(edge(0, 1));
+                   edges.push_back(edge(1, 2));
+                   edges.push_back(edge(1, 3));
+                   edges.push_back(edge(2, 7));
+                   edges.push_back(edge(3, 4));
+                   edges.push_back(edge(4, 5));
+                   edges.push_back(edge(4, 6));
+                   edges.push_back(edge(6, 4));
+                   edges.push_back(edge(5, 7));
+                   G g(
+                           edges.begin(), edges.end(),
+                           numOfVertices);
 
-                typedef graph_traits<G>::vertex_descriptor Vertex;
-                typedef property_map<G, vertex_index_t>::type IndexMap;
-                typedef
-                iterator_property_map<vector<Vertex>::iterator, IndexMap>
-                        PredMap;
+                   typedef graph_traits<G>::vertex_descriptor Vertex;
+                   typedef property_map<G, vertex_index_t>::type IndexMap;
+                   typedef
+                   iterator_property_map<vector<Vertex>::iterator, IndexMap>
+                           PredMap;
 
-                vector<Vertex> domTreePredVector, domTreePredVector2;
-                IndexMap indexMap(get(vertex_index, g));
-                graph_traits<G>::vertex_iterator uItr, uEnd;
-                int j = 0;
-                for (boost::tie(uItr, uEnd) = vertices(g); uItr != uEnd; ++uItr, ++j)
-                {
-                    put(indexMap, *uItr, j);
-                }
+                   vector<Vertex> domTreePredVector, domTreePredVector2;
+                   IndexMap indexMap(get(vertex_index, g));
+                   graph_traits<G>::vertex_iterator uItr, uEnd;
+                   int j = 0;
+                   for (boost::tie(uItr, uEnd) = vertices(g); uItr != uEnd; ++uItr, ++j)
+                   {
+                       put(indexMap, *uItr, j);
+                   }
 
-                // Lengauer-Tarjan dominator tree algorithm
+                   // Lengauer-Tarjan dominator tree algorithm
 
-                domTreePredVector =
-                        vector<Vertex>(num_vertices(g), graph_traits<G>::null_vertex());
-                PredMap domTreePredMap =
-                        make_iterator_property_map(domTreePredVector.begin(), indexMap);
+                   domTreePredVector =
+                           vector<Vertex>(num_vertices(g), graph_traits<G>::null_vertex());
+                   PredMap domTreePredMap =
+                           make_iterator_property_map(domTreePredVector.begin(), indexMap);
 
-                lengauer_tarjan_dominator_tree(g, vertex(root, g), domTreePredMap);
+                   lengauer_tarjan_dominator_tree(g, vertex(root, g), domTreePredMap);
 
-                vector<int> idom(num_vertices(g));
-                for (boost::tie(uItr, uEnd) = vertices(g); uItr != uEnd; ++uItr)
-                {
-                    if (get(domTreePredMap, *uItr) != graph_traits<G>::null_vertex())
-                        idom[get(indexMap, *uItr)] =
-                                get(indexMap, get(domTreePredMap, *uItr));
-                    else
-                        idom[get(indexMap, *uItr)] = (numeric_limits<int>::max)();
-                }
+                   vector<int> idom(num_vertices(g));
+                   for (boost::tie(uItr, uEnd) = vertices(g); uItr != uEnd; ++uItr)
+                   {
+                       if (get(domTreePredMap, *uItr) != graph_traits<G>::null_vertex())
+                           idom[get(indexMap, *uItr)] =
+                                   get(indexMap, get(domTreePredMap, *uItr));
+                       else
+                           idom[get(indexMap, *uItr)] = (numeric_limits<int>::max)();
+                   }
 
-                ///
-                boost::tie(uItr, uEnd) = vertices(g);
-                std::vector<pgr_ltdtree_rt> results;
-                /*
-                int x=0;
-                for(int i: idom)
-                {
-                    //cout<<"idom of "<<get(indexMap, *uItr)<<"  is "<<i<<endl;
-                    if(i!=(numeric_limits<int>::max)())
-                    {
-                        results[x].idom=i+1;
-                        results[x].vid=x+1;
-                    }
-                    else
-                    {
-                        results[x].idom=0;
-                        results[x].vid=x+1;
-                    }
+                   ///
+                   boost::tie(uItr, uEnd) = vertices(g);
+                   std::vector<pgr_ltdtree_rt> results;
+                 
+                   int x=0;
+                   for(int i: idom)
+                   {
+                       //cout<<"idom of "<<get(indexMap, *uItr)<<"  is "<<i<<endl;
+                       if(i!=(numeric_limits<int>::max)())
+                       {
+                           results[x].idom=i+1;
+                           results[x].vid=x+1;
+                       }
+                       else
+                       {
+                           results[x].idom=0;
+                           results[x].vid=x+1;
+                       }
 
-                    x++;
+                       x++;
 
 
 
-                }
-*/
-            std::vector<pgr_ltdtree_rt> results;
-            pgr_ltdtree_rt temp;
-            temp.vid=graph.num_vertices();
-            temp.idom=num_edges(graph.graph);
-            results.push_back(temp);
+                   }
+   */
+           // std::vector<pgr_ltdtree_rt> results;
+
 
               //  results[0].idom=7;
                // results[0].vid=3;
