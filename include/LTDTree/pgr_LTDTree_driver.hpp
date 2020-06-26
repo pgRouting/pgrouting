@@ -53,7 +53,7 @@ namespace pgrouting {
     namespace functions {
 
         template<class Graph>
-        class Pgr_LTDTree {
+        class Pgr_LTDTree : public pgrouting::Pgr_messages {
         public:
             typedef typename Graph::V Vertex; //Note here G is base_graph
             typedef typename Graph::E_i E_i;
@@ -75,7 +75,7 @@ namespace pgrouting {
 
 
 /*************************************************************/
-
+                log << "here";
                 typedef pair<int64_t , int64_t> edge;
                 vector<edge> edgeList;
               //  std::vector<pgr_ltdtree_rt> results(graph.num_vertices());
@@ -92,6 +92,7 @@ namespace pgrouting {
                     temp.idom=target;
                     results.push_back(temp);
                 }
+
                 /*   results[3].idom=graph.num_vertices();
                    results[3].vid=graph.num_vertices();
 
@@ -149,7 +150,7 @@ namespace pgrouting {
                    ///
                    boost::tie(uItr, uEnd) = vertices(g);
                    std::vector<pgr_ltdtree_rt> results;
-                 
+
                    int x=0;
                    for(int i: idom)
                    {
