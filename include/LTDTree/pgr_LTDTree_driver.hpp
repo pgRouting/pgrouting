@@ -78,8 +78,6 @@ namespace pgrouting {
                 log << "root vid "<<root;
                 typedef pair<int64_t , int64_t> edge;
                 vector<edge> edgeList;
-              //  std::vector<pgr_ltdtree_rt> results(graph.num_vertices());
-             //   std::vector<pgr_ltdtree_rt> results;
 
                 E_i ei, ei_end;
                 int i;
@@ -87,33 +85,16 @@ namespace pgrouting {
                     int64_t source = graph[graph.source(*ei)].id;
                     int64_t target = graph[graph.target(*ei)].id;
                     edgeList.push_back(edge (source-1,target-1));
+                    log<<"("<<source-1<<","<<target-1<<") \n"<<endl;
                      /*pgr_ltdtree_rt temp;
                     temp.vid=source;
                     temp.idom=target;
                     results.push_back(temp);
                       */
                 }
-              //  log<<"graph.num_vertices() "<<graph.num_vertices();
-               // log<<"graph.num_vertices()) "<<graph.num_vertices();
-
-             // results[3].idom=graph.num_vertices();
-               //    results[3].vid=graph.num_vertices();
-
 
                    const auto numOfVertices=graph.num_vertices();
-/*
-                   const auto numOfVertices = 8;
-                   edges.push_back(edge(0, 1));
-                   edges.push_back(edge(1, 2));
-                   edges.push_back(edge(1, 3));
-                   edges.push_back(edge(2, 7));
-                   edges.push_back(edge(3, 4));
-                   edges.push_back(edge(4, 5));
-                   edges.push_back(edge(4, 6));
-                   edges.push_back(edge(6, 4));
 
-                   edges.push_back(edge(5, 7));
-                   */
                    G g(
                            edgeList.begin(), edgeList.end(),
                            numOfVertices);
@@ -160,15 +141,11 @@ namespace pgrouting {
                    for(int i: idom)
                    {
                        pgr_ltdtree_rt temp;
-
-                       //cout<<"idom of "<<get(indexMap, *uItr)<<"  is "<<i<<endl;
                        if(i!=(numeric_limits<int>::max)())
                        {
                            temp.vid=x+1;
                            temp.idom=i+1;
                            results.push_back(temp);
-                          // results[x].idom=i;
-                          // results[x].vid=x;
                        }
                        else
                        {
@@ -179,8 +156,6 @@ namespace pgrouting {
                        }
 
                        x++;
-
-
 
                    }
 
