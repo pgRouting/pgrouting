@@ -76,7 +76,8 @@ namespace pgrouting {
 
 /*************************************************************/
                 typedef pair<int64_t , int64_t> edge;
-                vector<edge> edgeList;
+                vector<edge> edges;
+                /*
                 E_i ei, ei_end;
                 int i;
                 for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i) {
@@ -85,8 +86,19 @@ namespace pgrouting {
                     edgeList.push_back(edge (source-1,target-1));
                 }
                 const auto numOfVertices=graph.num_vertices();
-               G g(
-                        edgeList.begin(), edgeList.end(),
+                */
+                const auto numOfVertices = 8;
+                edges.push_back(edge(0, 1));
+                edges.push_back(edge(1, 2));
+                edges.push_back(edge(1, 3));
+                edges.push_back(edge(2, 7));
+                edges.push_back(edge(3, 4));
+                edges.push_back(edge(4, 5));
+                edges.push_back(edge(4, 6));
+                edges.push_back(edge(6, 4));
+                edges.push_back(edge(5, 7));
+                G g(
+                        edges.begin(), edges.end(),
                         numOfVertices);
 
                 typedef graph_traits<G>::vertex_descriptor Vertex;
