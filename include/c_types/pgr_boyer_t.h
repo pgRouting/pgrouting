@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_edge_t.h
+File: pgr_boyer_t.h
 
 Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
@@ -40,4 +40,4 @@ typedef struct {
     double cost;
 } pgr_boyer_t;
 
-#endif  // INCLUDE_C_TYPES_PGR_EDGE_T_H_
+#endif  // INCLUDE_C_TYPES_PGR_BOYER_T_H_
