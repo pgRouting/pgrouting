@@ -82,10 +82,10 @@ namespace pgrouting {
                 for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i) {
                     int64_t source = graph[graph.source(*ei)].id;
                     int64_t target = graph[graph.target(*ei)].id;
-                    edgeList.push_back(edge (source,target));
+                    edgeList.push_back(edge (source-1,target-1));
                 }
                 const auto numOfVertices=graph.num_vertices();
-                G g(
+               G g(
                         edgeList.begin(), edgeList.end(),
                         numOfVertices);
 
@@ -130,15 +130,25 @@ namespace pgrouting {
                 for(int i: idom)
                 {
                     //cout<<"idom of "<<get(indexMap, *uItr)<<"  is "<<i<<endl;
-                    results[x].idom=i;
-                    results[x].vid=get(indexMap, *uItr);
+                    if(i!=(numeric_limits<int>::max)())
+                    {
+                        results[x].idom=i+1;
+                        results[x].vid=x+1;
+                    }
+                    else
+                    {
+                        results[x].idom=0;
+                        results[x].vid=x+1;
+                    }
+
                     x++;
-                    ++uItr;
+
                 }
 
 
               //  results[0].idom=7;
                // results[0].vid=3;
+                //std::vector<pgr_ltdtree_rt> results;
                 return results;
 
 
