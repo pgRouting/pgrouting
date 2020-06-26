@@ -75,7 +75,7 @@ namespace pgrouting {
 
 
 /*************************************************************/
-                log << "here";
+                log << "root vid "<<root;
                 typedef pair<int64_t , int64_t> edge;
                 vector<edge> edgeList;
               //  std::vector<pgr_ltdtree_rt> results(graph.num_vertices());
