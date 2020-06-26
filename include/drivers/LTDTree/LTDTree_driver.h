@@ -54,8 +54,8 @@ extern "C" {
 void
 do_pgr_LTDTree(
         pgr_edge_t  *data_edges,
-        int64_t root_vertex,
         size_t total_tuples,
+        int64_t root_vertex,
         pgr_ltdtree_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
