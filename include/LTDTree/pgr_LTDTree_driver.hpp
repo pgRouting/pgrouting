@@ -79,26 +79,29 @@ namespace pgrouting {
                 typedef pair<int64_t , int64_t> edge;
                 vector<edge> edgeList;
               //  std::vector<pgr_ltdtree_rt> results(graph.num_vertices());
-                std::vector<pgr_ltdtree_rt> results;
+             //   std::vector<pgr_ltdtree_rt> results;
 
                 E_i ei, ei_end;
                 int i;
                 for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i) {
                     int64_t source = graph[graph.source(*ei)].id;
                     int64_t target = graph[graph.target(*ei)].id;
-                    edgeList.push_back(edge (source,target));
-                     pgr_ltdtree_rt temp;
+                    edgeList.push_back(edge (source-1,target-1));
+                     /*pgr_ltdtree_rt temp;
                     temp.vid=source;
                     temp.idom=target;
                     results.push_back(temp);
+                      */
                 }
+              //  log<<"graph.num_vertices() "<<graph.num_vertices();
+               // log<<"graph.num_vertices()) "<<graph.num_vertices();
 
-                /*   results[3].idom=graph.num_vertices();
-                   results[3].vid=graph.num_vertices();
+             // results[3].idom=graph.num_vertices();
+               //    results[3].vid=graph.num_vertices();
 
 
                    const auto numOfVertices=graph.num_vertices();
-
+/*
                    const auto numOfVertices = 8;
                    edges.push_back(edge(0, 1));
                    edges.push_back(edge(1, 2));
@@ -108,9 +111,11 @@ namespace pgrouting {
                    edges.push_back(edge(4, 5));
                    edges.push_back(edge(4, 6));
                    edges.push_back(edge(6, 4));
+
                    edges.push_back(edge(5, 7));
+                   */
                    G g(
-                           edges.begin(), edges.end(),
+                           edgeList.begin(), edgeList.end(),
                            numOfVertices);
 
                    typedef graph_traits<G>::vertex_descriptor Vertex;
@@ -154,16 +159,23 @@ namespace pgrouting {
                    int x=0;
                    for(int i: idom)
                    {
+                       pgr_ltdtree_rt temp;
+
                        //cout<<"idom of "<<get(indexMap, *uItr)<<"  is "<<i<<endl;
                        if(i!=(numeric_limits<int>::max)())
                        {
-                           results[x].idom=i+1;
-                           results[x].vid=x+1;
+                           temp.vid=x+1;
+                           temp.idom=i+1;
+                           results.push_back(temp);
+                          // results[x].idom=i;
+                          // results[x].vid=x;
                        }
                        else
                        {
-                           results[x].idom=0;
-                           results[x].vid=x+1;
+                           temp.vid=x+1;
+                           temp.idom=0;
+                           results.push_back(temp);
+
                        }
 
                        x++;
@@ -171,15 +183,6 @@ namespace pgrouting {
 
 
                    }
-   */
-           // std::vector<pgr_ltdtree_rt> results;
-
-
-              //  results[0].idom=7;
-               // results[0].vid=3;
-                //std::vector<pgr_ltdtree_rt> results;
-
-
 
                 return results;
             }
