@@ -85,7 +85,7 @@ process(
         &notice_msg,
         &err_msg);
 
-    time_msg(" processing pgr_breadthFirstSearch", start_t, clock());
+    time_msg(" processing pgr_boyerMyrvold", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
@@ -123,20 +123,14 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*
-        pgr_breadthFirstSearch(
-            edge_sql TEXT,
-            start_vids ANYARRAY,
-            max_depth BIGINT DEFAULT 9223372036854775807,
-            directed BOOLEAN DEFAULT true)
+        pgr_boyerMyrvold(
+            edge_sql TEXT)
         */
         /**********************************************************************/
 
         PGR_DBG("Calling process");
         process(
             text_to_cstring(PG_GETARG_TEXT_P(0)),
-            // PG_GETARG_ARRAYTYPE_P(1),
-            // PG_GETARG_INT64(3),
-            // PG_GETARG_BOOL(1),
             &result_tuples,
             &result_count);
 
@@ -171,12 +165,9 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*
-
-            OUT id BIGINT,
             OUT source BIGINT,
             OUT target_vid BIGINT,
             OUT cost FLOAT,
-            OUT reverse_cost FLOAT
         */
         /**********************************************************************/
         size_t numb = 4;
