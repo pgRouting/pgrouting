@@ -75,18 +75,26 @@ namespace pgrouting {
 
 
 /*************************************************************/
+
                 typedef pair<int64_t , int64_t> edge;
-                vector<edge> edges;
-                /*
+                vector<edge> edgeList;
+              //  std::vector<pgr_ltdtree_rt> results(graph.num_vertices());
+/*
                 E_i ei, ei_end;
                 int i;
                 for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i) {
                     int64_t source = graph[graph.source(*ei)].id;
                     int64_t target = graph[graph.target(*ei)].id;
-                    edgeList.push_back(edge (source-1,target-1));
+                    edgeList.push_back(edge (source,target));
+                    results[i].idom=source;
+                    results[i].vid=source;
                 }
+                results[3].idom=graph.num_vertices();
+                results[3].vid=graph.num_vertices();
+
+
                 const auto numOfVertices=graph.num_vertices();
-                */
+
                 const auto numOfVertices = 8;
                 edges.push_back(edge(0, 1));
                 edges.push_back(edge(1, 2));
@@ -138,6 +146,7 @@ namespace pgrouting {
                 ///
                 boost::tie(uItr, uEnd) = vertices(g);
                 std::vector<pgr_ltdtree_rt> results;
+                /*
                 int x=0;
                 for(int i: idom)
                 {
@@ -155,15 +164,23 @@ namespace pgrouting {
 
                     x++;
 
-                }
 
+
+                }
+*/
+            std::vector<pgr_ltdtree_rt> results;
+            pgr_ltdtree_rt temp;
+            temp.vid=graph.num_vertices();
+            temp.idom=num_edges(graph.graph);
+            results.push_back(temp);
 
               //  results[0].idom=7;
                // results[0].vid=3;
                 //std::vector<pgr_ltdtree_rt> results;
+
+
+
                 return results;
-
-
             }
 
 
