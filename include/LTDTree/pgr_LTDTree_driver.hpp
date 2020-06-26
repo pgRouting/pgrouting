@@ -72,7 +72,12 @@ namespace pgrouting {
                     ){
 
                 /***********************Typedefs of pfRouting**************/
-
+/******TODO******
+ * check log for only cost column and run query for that
+ * What if id>5, not starting from 0
+ * make test when id>18,<0 and also for 0 cloumn (s)
+ *
+ * **/
 
 /*************************************************************/
                 log << "root vid "<<root;
@@ -115,14 +120,11 @@ namespace pgrouting {
                    }
 
                    // Lengauer-Tarjan dominator tree algorithm
-
                    domTreePredVector =
                            vector<Vertex>(num_vertices(g), graph_traits<G>::null_vertex());
                    PredMap domTreePredMap =
                            make_iterator_property_map(domTreePredVector.begin(), indexMap);
-
                    lengauer_tarjan_dominator_tree(g, vertex(root, g), domTreePredMap);
-
                    vector<int> idom(num_vertices(g));
                    for (boost::tie(uItr, uEnd) = vertices(g); uItr != uEnd; ++uItr)
                    {
@@ -132,7 +134,6 @@ namespace pgrouting {
                        else
                            idom[get(indexMap, *uItr)] = (numeric_limits<int>::max)();
                    }
-
                    ///
                    boost::tie(uItr, uEnd) = vertices(g);
                    std::vector<pgr_ltdtree_rt> results;
@@ -152,17 +153,12 @@ namespace pgrouting {
                            temp.vid=x+1;
                            temp.idom=0;
                            results.push_back(temp);
-
                        }
-
                        x++;
-
                    }
 
                 return results;
             }
-
-
         };
     }
 }
