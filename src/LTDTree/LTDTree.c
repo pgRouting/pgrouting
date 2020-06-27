@@ -166,13 +166,13 @@ _pgr_ltdtree(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
             //Set your outputs from result_tuple
-            values[0] = Int32GetDatum(call_cntr + 1); /*TODO Chek for the sequence*/
+            values[0] = Int32GetDatum(call_cntr + 1);
             values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
-	    values[2] = Int64GetDatum(result_tuples[call_cntr].idom);
+	        values[2] = Int64GetDatum(result_tuples[call_cntr].idom);
             tuple = heap_form_tuple(tuple_desc, values, nulls);
             result = HeapTupleGetDatum(tuple);
             SRF_RETURN_NEXT(funcctx, result);
-        }else {   /* do when there is no more left */
+        }else {
             SRF_RETURN_DONE(funcctx);
         }
 
