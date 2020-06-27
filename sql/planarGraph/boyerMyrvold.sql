@@ -30,8 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_boyerMyrvold
 ------------------
 
-
---ONE TO DEPTH
 CREATE OR REPLACE FUNCTION pgr_boyerMyrvold(
     TEXT,   -- edges_sql (required)
     OUT seq BIGINT,
@@ -49,14 +47,11 @@ LANGUAGE SQL VOLATILE STRICT;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_boyerMyrvold(TEXT)
-IS 'pgr_boyerMyrvold(One to Depth)
+IS 'pgr_boyerMyrvold
 - EXPERIMENTAL
+- Undirected graph
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - From vertex identifier
-- Optional Parameters:
-  - Maximum Depth := 9223372036854775807
-  - directed := true
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_boyerMyrvold.html
 ';

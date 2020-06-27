@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: _boyerMyrvold.sql
 
-Copyright (c) 2019 pgRouting developers
+Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2020 Himanshu Raj
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 -------------------------
 -------------------------
--- _breadthFirstSearch
+-- _boyerMyrvold
 -------------------------
 -------------------------
 
