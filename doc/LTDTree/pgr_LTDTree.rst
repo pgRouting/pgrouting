@@ -93,11 +93,6 @@ The examples in this section use the following :ref:`fig1`
     :start-after: --q1
     :end-before: --q2
 
-The examples in this section use the following :ref:`fig1`
-
-.. literalinclude:: doc-LTDTree.queries
-    :start-after: --q2
-    :end-before: --q3
 See Also
 -------------------------------------------------------------------------------
 
