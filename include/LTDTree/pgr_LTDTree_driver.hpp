@@ -44,12 +44,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/type_traits.hpp>
 using namespace boost;
 using namespace  std;
-/******TODO******
- * check log for only cost column and run query for that
- * What if id>5, not starting from 0
- * make test when id>18,<0 and also for 0 cloumn (s)
- *
- * **/
 
 namespace pgrouting {
     namespace functions {
@@ -68,27 +62,24 @@ namespace pgrouting {
             typedef pair<int64_t , int64_t> edge; //For making edge list to be used in extract vertices
             vector<edge> edgeList;
             std::vector<pgr_ltdtree_rt> results;
-/****************Start valiadation******************************/
-
-            std::set<int64_t > s;
+            std::set<int64_t > vertex_set;
             int64_t min_vertex, max_vertex;
-            void extract_vertices(Graph &graph, int64_t numVertices)
-            {
+
+
+            void extract_vertices(
+                    Graph &graph,
+                    int64_t numVertices){
 
                 E_i ei, ei_end;
                 int i;
                 for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i) {
                     int64_t source = graph[graph.source(*ei)].id;
-                    s.insert(source);
-                    // log<<"("<<source<<","<<target<<") \n"<<endl;
+                    vertex_set.insert(source);
+                }
 
-                }
-                for (auto it :s)
-                {
-                        log<< it << " ";
-                }
-                min_vertex=*(s.begin());
-                max_vertex=min_vertex+numVertices-1;
+                min_vertex = *(vertex_set.begin());
+                max_vertex = min_vertex+numVertices-1;
+
                 log<<"\n max: "<<max_vertex<<" min: "<<min_vertex;
                 log<<"\n mapping started"<<endl;
 
@@ -96,20 +87,19 @@ namespace pgrouting {
                     int64_t source = graph[graph.source(*ei)].id;
                     int64_t target = graph[graph.target(*ei)].id;
                     edgeList.push_back(edge (source-min_vertex,target-min_vertex));
-                    log<<"\n ("<<source-min_vertex<<","<<target-min_vertex<<") ";
-                   // s.insert(source);
-                    // log<<"("<<source<<","<<target<<") \n"<<endl;
 
                 }
 
             }
 
+/************************************* To check validity of root vertex****************************************/
             bool is_valid_root(int64_t root)
             {
                 if(root < min_vertex) return false;
                 if(root > max_vertex) return false;
                 return true;
             }
+
 
 /******************** Method to calculate dominator tree and returns result vector ***************************/
             std::vector <pgr_ltdtree_rt> pgr_ltdtree(
@@ -146,11 +136,7 @@ namespace pgrouting {
 
 
 /*****************************************Making result vector*************************************/
-
-
                    pgr_ltdtree_rt temp;
-
-
                    for (boost::tie(uItr, uEnd) = vertices(g); uItr != uEnd; ++uItr)
                    {
                        if (get(domTreePredMap, *uItr) != graph_traits<G>::null_vertex())
