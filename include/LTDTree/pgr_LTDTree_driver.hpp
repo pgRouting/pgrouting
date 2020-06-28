@@ -67,21 +67,48 @@ namespace pgrouting {
 
             typedef pair<int64_t , int64_t> edge; //For making edge list to be used in extract vertices
             vector<edge> edgeList;
+            std::vector<pgr_ltdtree_rt> results;
+/****************Start valiadation******************************/
 
-
-
-            void extract_vertices(Graph &graph)
+            std::set<int64_t > s;
+            int64_t min_vertex, max_vertex;
+            void extract_vertices(Graph &graph, int64_t numVertices)
             {
 
                 E_i ei, ei_end;
                 int i;
                 for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i) {
                     int64_t source = graph[graph.source(*ei)].id;
-                    int64_t target = graph[graph.target(*ei)].id;
-                    edgeList.push_back(edge (source-1,target-1));
+                    s.insert(source);
                     // log<<"("<<source<<","<<target<<") \n"<<endl;
 
                 }
+                for (auto it :s)
+                {
+                        log<< it << " ";
+                }
+                min_vertex=*(s.begin());
+                max_vertex=min_vertex+numVertices-1;
+                log<<"\n max: "<<max_vertex<<" min: "<<min_vertex;
+                log<<"\n mapping started"<<endl;
+
+                for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i) {
+                    int64_t source = graph[graph.source(*ei)].id;
+                    int64_t target = graph[graph.target(*ei)].id;
+                    edgeList.push_back(edge (source-min_vertex,target-min_vertex));
+                    log<<"\n ("<<source-min_vertex<<","<<target-min_vertex<<") ";
+                   // s.insert(source);
+                    // log<<"("<<source<<","<<target<<") \n"<<endl;
+
+                }
+
+            }
+
+            bool is_valid_root(int64_t root)
+            {
+                if(root < min_vertex) return false;
+                if(root > max_vertex) return false;
+                return true;
             }
 
 /******************** Method to calculate dominator tree and returns result vector ***************************/
@@ -89,13 +116,18 @@ namespace pgrouting {
                     Graph &graph,
                     int64_t root
                     ){
-
-                   extract_vertices(graph);
+                   const int64_t numOfVertices=graph.num_vertices();
+                   extract_vertices(graph,numOfVertices);
+                   if(!is_valid_root(root))
+                   {
+                       notice<<"Invalid root "<<root<<"\n";
+                       return results;
+                   }
 
                    typedef graph_traits<G>::vertex_descriptor Vertex;
                    typedef property_map<G, vertex_index_t>::type IndexMap;
                    typedef iterator_property_map<vector<Vertex>::iterator, IndexMap> PredMap;
-                   const auto numOfVertices=graph.num_vertices();
+
                    G g(edgeList.begin(), edgeList.end(),numOfVertices);
                    vector<Vertex> domTreePredVector, domTreePredVector2;
                    IndexMap indexMap(get(vertex_index, g));
@@ -110,12 +142,12 @@ namespace pgrouting {
                            vector<Vertex>(num_vertices(g), graph_traits<G>::null_vertex());
                    PredMap domTreePredMap =
                            make_iterator_property_map(domTreePredVector.begin(), indexMap);
-                   lengauer_tarjan_dominator_tree(g, vertex(root-1, g), domTreePredMap);
+                   lengauer_tarjan_dominator_tree(g, vertex(root-min_vertex, g), domTreePredMap);
 
 
 /*****************************************Making result vector*************************************/
 
-                   std::vector<pgr_ltdtree_rt> results;
+
                    pgr_ltdtree_rt temp;
 
 
@@ -123,14 +155,14 @@ namespace pgrouting {
                    {
                        if (get(domTreePredMap, *uItr) != graph_traits<G>::null_vertex())
                        {
-                           temp.vid=(get(indexMap, *uItr)+1);
-                           temp.idom=get(indexMap, get(domTreePredMap, *uItr))+1;
+                           temp.vid=(get(indexMap, *uItr)+min_vertex);
+                           temp.idom=get(indexMap, get(domTreePredMap, *uItr))+min_vertex;
                            results.push_back(temp);
                        }
                        else
                        {
 
-                           temp.vid=(get(indexMap, *uItr)+1);
+                           temp.vid=(get(indexMap, *uItr)+min_vertex);
                            temp.idom=0;
                            results.push_back(temp);
                        }
