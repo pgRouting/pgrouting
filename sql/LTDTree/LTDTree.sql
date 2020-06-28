@@ -31,17 +31,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 CREATE OR REPLACE FUNCTION pgr_LTDTree(
     TEXT, -- edges_sql (required)
-    BIGINT , -- vertex (required)
+    root_vertex BIGINT , -- vertex (required)
     OUT seq integer,
     OUT vid BIGINT,
     OUT idom BIGINT
     )
 RETURNS SETOF RECORD AS 
 $BODY$
-   SELECT *
+BEGIN
+    IF $2 < 1 THEN
+        RAISE EXCEPTION 'Negative value found on ''root_vertex'''
+        USING HINT = format('Value found: %s', $2);
+    END IF;
+
+    RETURN QUERY
+    SELECT *
     FROM _pgr_LTDTree(_pgr_get_statement($1),$2);
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
+LANGUAGE  plpgsql VOLATILE STRICT;
 
 
 -- COMMENTS
