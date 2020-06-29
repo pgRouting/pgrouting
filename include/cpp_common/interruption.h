@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_CPP_COMMON_INTERRUPTION_H
-#define INCLUDE_CPP_COMMON_INTERRUPTION_H
+#ifndef INCLUDE_CPP_COMMON_INTERRUPTION_H_
+#define INCLUDE_CPP_COMMON_INTERRUPTION_H_
 /*
  * Suppress the -Wpedantic warning temporarily about the postgres file
  */
@@ -36,4 +36,4 @@ extern "C" {
 #include "miscadmin.h"
 }
 #pragma GCC diagnostic pop
-#endif //INCLUDE_CPP_COMMON_INTERRUPTION_H
+#endif //INCLUDE_CPP_COMMON_INTERRUPTION_H_
