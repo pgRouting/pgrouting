@@ -10,6 +10,9 @@
 pgr_sequentialVertexColoring - Experimental
 ===============================================================================
 
+``pgr_sequentialVertexColoring`` — Assigns labels to the vertices of graph
+such that no edge connects two identically labeled vertices. In particular,
+the Sequential Vertex Coloring algorithm implemented by Boost.Graph.
 
 Description
 -------------------------------------------------------------------------------
