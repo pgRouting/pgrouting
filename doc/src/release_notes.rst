@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_3_0_1`
 * :ref:`changelog_3_0_0`
 * :ref:`changelog_2_6_3`
 * :ref:`changelog_2_6_2`
