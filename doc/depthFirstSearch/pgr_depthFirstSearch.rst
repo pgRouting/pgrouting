@@ -74,7 +74,7 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: depthFirstSearch(Single vertex)
+    single: depthFirstSearch(Single vertex) - Experimental
 
 Single vertex
 ...............................................................................
@@ -94,7 +94,7 @@ Single vertex
    :end-before: -- q3
 
 .. index::
-    single: depthFirstSearch(Multiple vertices)
+    single: depthFirstSearch(Multiple vertices) - Experimental
 
 Multiple vertices
 ...............................................................................
