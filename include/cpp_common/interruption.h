@@ -36,4 +36,4 @@ extern "C" {
 #include <miscadmin.h>
 }
 #pragma GCC diagnostic pop
-#endif // INCLUDE_CPP_COMMON_INTERRUPTION_H_
+#endif  // INCLUDE_CPP_COMMON_INTERRUPTION_H_
