@@ -56,6 +56,25 @@ each vertex.
 Signatures
 ------------------------------------------------------------------------------
 
+.. code-block:: none
+
+    pgr_sequentialVertexColoring(TEXT edges_sql)
+
+    RETURNS SET OF (seq, node, color)
+    OR EMPTY SET
+
+:Example: Graph coloring of pgRouting :doc:`sampledata`
+
+.. literalinclude:: doc-pgr_sequentialVertexColoring.queries
+   :start-after: -- q1
+   :end-before: -- q2
+
+.. index::
+    single: sequentialVertexColoring - Experimental
+
+.. Parameters, Inner query & result columns
+
+.. sequentialVertexColoring-information-start
 
 Parameters
 -------------------------------------------------------------------------------
