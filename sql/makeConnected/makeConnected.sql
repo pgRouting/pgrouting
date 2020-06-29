@@ -1,11 +1,11 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2019 Hang Wu
-mail: nike0good@gmail.com
+Copyright (c) 2020 Himanshu Raj
+mail: raj.himanshu2@gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
