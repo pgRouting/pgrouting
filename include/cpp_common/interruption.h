@@ -32,8 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpedantic"
 extern "C" {
-#include "postgres.h"
-#include "miscadmin.h"
+#include <postgres.h>
+#include <miscadmin.h>
 }
 #pragma GCC diagnostic pop
 #endif //INCLUDE_CPP_COMMON_INTERRUPTION_H_
