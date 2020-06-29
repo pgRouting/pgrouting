@@ -14,6 +14,17 @@ pgr_sequentialVertexColoring - Experimental
 such that no edge connects two identically labeled vertices. In particular,
 the Sequential Vertex Coloring algorithm implemented by Boost.Graph.
 
+.. figure:: images/boost-inside.jpeg
+   :target: https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html
+
+   Boost Graph Inside
+
+.. include:: experimental.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-exp
+
+.. rubric:: Availability
+
 Description
 -------------------------------------------------------------------------------
 
