@@ -3,12 +3,12 @@
 File: topologicalSort_driver.h
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2019 Hang Wu
-mail: nike0good@gmail.com
+Copyright (c) 2020 Himanshu Raj
+mail: raj.himanshu2@gmail.com
 
 ------
 
@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_TOPOLOGICALSORT_TOPOLOGICALSORT_DRIVER_H_
-#define INCLUDE_DRIVERS_TOPOLOGICALSORT_TOPOLOGICALSORT_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_MAKECONNECTED_MAKECONNECTED_DRIVER_H_
+#define INCLUDE_DRIVERS_MAKECONNECTED_MAKECONNECTED_DRIVER_H_
 
 /* for size-t */
 #ifdef __cplusplus
@@ -39,14 +39,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_topologicalSort_t.h"
 #include "c_types/pgr_makeConnected_t.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    //  CREATE OR REPLACE FUNCTION pgr_topologicalSort(
+    //  CREATE OR REPLACE FUNCTION pgr_makeConnected(
     //  sql text,
     void do_pgr_makeConnected(
             pgr_edge_t  *data_edges,
@@ -63,4 +62,4 @@ extern "C" {
     }
 #endif
 
-#endif  // INCLUDE_DRIVERS_TOPOLOGICALSORT_TOPOLOGICALSORT_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_MAKECONNECTED_MAKECONNECTED_DRIVER_H_

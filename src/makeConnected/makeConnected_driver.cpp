@@ -35,11 +35,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <limits>
 
-#include "topologicalSort/pgr_topologicalSort.hpp"
+// #include "topologicalSort/pgr_topologicalSort.hpp"
 
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_base_graph.hpp"
 
 
 // CREATE OR REPLACE FUNCTION pgr_topologicalSort(
