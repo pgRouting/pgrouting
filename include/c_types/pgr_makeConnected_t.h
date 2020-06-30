@@ -5,8 +5,8 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2019 Hang Wu
-mail: nike0good@gmail.com
+Copyright (c) 2020 Himanshu Raj
+mail: raj.himanshu2@gmail.com
 
 ------
 This program is free software; you can redistribute it and/or modify
@@ -35,8 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct {
-    int seq;
-    int64_t sorted_v;
-} pgr_topologicalSort_t;
+    int64_t nodeA;
+    int64_t nodeB;
+} pgr_makeConnected_t;
 
 #endif  // INCLUDE_C_TYPES_PGR_MAKECONNECTED_T_H_
