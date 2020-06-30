@@ -88,6 +88,11 @@ Parameter           Type                   Description
 Inner query
 -------------------------------------------------------------------------------
 
+.. rubric:: edges_sql
+
+.. include:: pgRouting-concepts.rst
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
