@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/topologicalSort/topologicalSort_driver.h"
+#include "drivers/makeConnected/makeConnected_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -41,25 +41,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-template < class G >
-static
-std::vector<pgr_topologicalSort_t>
-pgr_topologicalSort(
-        G &graph) {
-    Pgr_topologicalSort< G > fn_topologicalSort;
-    return fn_topologicalSort.topologicalSort(graph);
-}
-
 
 // CREATE OR REPLACE FUNCTION pgr_topologicalSort(
 // sql text,
 void
-do_pgr_topologicalSort(
+do_pgr_makeConnected(
         pgr_edge_t  *data_edges,
         size_t total_edges,
 
 
-        pgr_topologicalSort_t **return_tuples,
+        pgr_makeConnected_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -76,15 +67,13 @@ do_pgr_topologicalSort(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType =  DIRECTED;
+        graphType gType =  UNDIRECTED;
 
-        std::vector<pgr_topologicalSort_t> results;
+        std::vector<pgr_makeConnected_t> results;
 
-        log << "Working with Directed Graph\n";
-        pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges);
-        results = pgr_topologicalSort(
-                digraph);
+        // log << "Working with Directed Graph\n";
+        // pgrouting::DirectedGraph digraph(gType);
+        // digraph.insert_edges(data_edges, total_edges);
 
         auto count = results.size();
 
