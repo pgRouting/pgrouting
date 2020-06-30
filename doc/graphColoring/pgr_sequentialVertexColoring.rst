@@ -46,7 +46,7 @@ each vertex.
   the direction of the edge has no significance to this algorithm.
 - Provides the color to be assigned to all the nodes present in the graph.
 - The returned rows are ordered in ascending order of the node value.
-- The range of color lies from `0` to `(total number of nodes - 1)`. Higher
+- The range of color lies from :math:`0` to :math:`(total number of nodes - 1)`. Higher
   color values are used only if required, i.e. the algorithm tries to assign
   the least possible color to every vertex.
 - Sequential Vertex Coloring Running Time: :math:`O(|V|*(|d| + |k|))`, where
@@ -96,6 +96,23 @@ Inner query
 
 Result Columns
 -------------------------------------------------------------------------------
+
+.. result columns start
+
+Returns SET OF ``(seq, node, color)``
+
+===============  =========== ====================================================
+Column           Type        Description
+===============  =========== ====================================================
+**seq**          ``BIGINT``  Sequential value starting from :math:`1`.
+**node**         ``BIGINT``  Identifier of all the ``nodes`` in the graph.
+**color**        ``BIGINT``  Identifier of the ``color`` of the ``node``.
+
+                             - Ranges from :math:`0` to :math:`(total number of nodes - 1)`.
+
+===============  =========== ====================================================
+
+.. result columns end
 
 
 Aditional Examples 
