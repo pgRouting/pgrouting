@@ -96,7 +96,7 @@ _pgr_makeconnected(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**********************************************************************/
-    pgr_topologicalSort_t *result_tuples = NULL;
+    pgr_makeConnected_t *result_tuples = NULL;
     size_t result_count = 0;
     /**********************************************************************/
 
