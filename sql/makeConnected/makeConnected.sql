@@ -32,8 +32,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_makeConnected(
     TEXT, -- edges_sql (required)
 
-    OUT seq INTEGER,
-    OUT sorted_v BIGINT)
+    OUT seq BIGINT,
+    OUT nodeA BIGINT,
+    OUT nodeB BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
