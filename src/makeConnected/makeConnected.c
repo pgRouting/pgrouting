@@ -51,7 +51,7 @@ static
 void
 process(
         char* edges_sql,
-        pgr_topologicalSort_t **result_tuples,
+        pgr_makeConnected_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
@@ -64,7 +64,7 @@ process(
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-    do_pgr_topologicalSort(
+    do_pgr_makeConnected(
             edges, total_edges,
             result_tuples,
             result_count,
@@ -138,7 +138,7 @@ _pgr_makeconnected(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_topologicalSort_t*) funcctx->user_fctx;
+    result_tuples = (pgr_makeConnected_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -151,7 +151,7 @@ _pgr_makeconnected(PG_FUNCTION_ARGS) {
         // OUT seq INTEGER,
         // OUT sorted_v BIGINT)
 
-        size_t numb = 2;
+        size_t numb = 3;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
@@ -161,7 +161,8 @@ _pgr_makeconnected(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].sorted_v);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].nodeA);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].nodeB);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
