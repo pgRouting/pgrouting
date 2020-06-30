@@ -257,10 +257,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * The queries use the :doc:`sampledata` network.
-* `Boost: Depth First Search algorithm documentation <https://www.boost.org/
-libs/graph/doc/depth_first_search.html>`__
-* `Boost: Undirected DFS algorithm documentation <https://www.boost.org/
-libs/graph/doc/undirected_dfs.html>`__
+* `Boost: Depth First Search algorithm documentation <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__
+* `Boost: Undirected DFS algorithm documentation <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__
 * `Wikipedia: Depth First Search algorithm <https://en.wikipedia.org/wiki/Depth-first_search>`__
 
 .. rubric:: Indices and tables
