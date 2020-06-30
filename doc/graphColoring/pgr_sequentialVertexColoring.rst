@@ -122,7 +122,9 @@ Aditional Examples
 See Also
 -------------------------------------------------------------------------------
 
-* The queries use the :ref:`sampledata` network.
+* The queries use the :doc:`sampledata` network.
+* `Boost: Sequential Vertex Coloring algorithm documentation <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__
+* `Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__
 
 .. rubric:: Indices and tables
 
