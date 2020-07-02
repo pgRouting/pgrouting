@@ -57,7 +57,7 @@ SELECT * FROM pgr_depthFirstSearch(
 -- Equivalences for :ref:`fig1-direct-Cost-Reverse`
 -------------------------------------------------------------------------------
 
-\echo -- q11
+\echo -- q9
 SELECT * FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     16
@@ -78,13 +78,13 @@ SELECT * FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     ARRAY[16], max_depth => 5
 );
-\echo -- q12
+\echo -- q10
 
 
 -- Equivalences for :ref:`fig2-undirect-Cost-Reverse`
 -------------------------------------------------------------------------------
 
-\echo -- q13
+\echo -- q11
 SELECT * FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     16, directed => false
@@ -101,4 +101,4 @@ SELECT * FROM pgr_depthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     ARRAY[16], max_depth => 5, directed => false
 );
-\echo -- q14
+\echo -- q12
