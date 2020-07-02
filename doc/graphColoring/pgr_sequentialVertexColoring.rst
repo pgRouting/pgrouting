@@ -60,7 +60,7 @@ Signatures
 
     pgr_sequentialVertexColoring(TEXT edges_sql)
 
-    RETURNS SET OF (seq, node, color)
+    RETURNS SET OF (node, color)
     OR EMPTY SET
 
 :Example: Graph coloring of pgRouting :doc:`sampledata`
@@ -99,12 +99,11 @@ Result Columns
 
 .. result columns start
 
-Returns SET OF ``(seq, node, color)``
+Returns SET OF ``(node, color)``
 
 ===============  =========== ====================================================
 Column           Type        Description
 ===============  =========== ====================================================
-**seq**          ``BIGINT``  Sequential value starting from :math:`1`.
 **node**         ``BIGINT``  Identifier of all the ``nodes`` in the graph.
 **color**        ``BIGINT``  Identifier of the ``color`` of the ``node``.
 
