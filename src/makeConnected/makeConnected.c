@@ -7,8 +7,8 @@ Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2019 Hang Wu
-mail: nike0good@gmail.com
+Copyright (c) 2020 Himanshu Raj
+mail: raj.himanshu2@gmail.com
 
 ------
 
@@ -161,8 +161,8 @@ _pgr_makeconnected(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].nodeA);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].nodeB);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].node_from);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].node_to);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
