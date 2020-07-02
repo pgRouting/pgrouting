@@ -6,25 +6,25 @@ SET
 SELECT * FROM pgr_sequentialVertexColoring(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id'
 );
- seq | node | color 
------+------+-------
-   1 |    1 |    0  
-   2 |    2 |    1  
-   3 |    3 |    0  
-   4 |    4 |    1  
-   5 |    5 |    0  
-   6 |    6 |    1  
-   7 |    7 |    0  
-   8 |    8 |    1  
-   9 |    9 |    0  
-  10 |   10 |    1  
-  11 |   11 |    0  
-  12 |   12 |    1  
-  13 |   13 |    0  
-  14 |   14 |    0  
-  15 |   15 |    1  
-  16 |   16 |    0  
-  17 |   17 |    1  
+ node | color
+------+-------
+    1 |     0
+    2 |     1
+    3 |     0
+    4 |     1
+    5 |     0
+    6 |     1
+    7 |     0
+    8 |     1
+    9 |     0
+   10 |     1
+   11 |     0
+   12 |     1
+   13 |     0
+   14 |     0
+   15 |     1
+   16 |     0
+   17 |     1
 (17 rows)
 
 -- q2
