@@ -187,7 +187,6 @@ PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
 
         /***********************************************************************
          *
-         *   OUT seq BIGINT,
          *   OUT node BIGINT,
          *   OUT color BIGINT,
          *
@@ -203,9 +202,8 @@ PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].color);
+        values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].color);
 
         /**********************************************************************/
 
