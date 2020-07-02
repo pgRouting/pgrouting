@@ -221,14 +221,6 @@ The examples in this section use the following:
    :start-after: -- q7
    :end-before: -- q8
 
-**Vertex Out Of Graph**
-
-:Example: For queries in which starting vertex is not present in the graph
-
-.. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q9
-   :end-before: -- q10
-
 Equivalences between signatures
 ...............................................................................
 
