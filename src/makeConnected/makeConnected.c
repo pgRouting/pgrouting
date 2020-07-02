@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "drivers/topologicalSort/topologicalSort_driver.h"
 #include "drivers/makeConnected/makeConnected_driver.h"
 #if 0
 PG_MODULE_MAGIC;
