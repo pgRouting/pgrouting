@@ -231,8 +231,8 @@ The examples in this section use the following:
 * :ref:`fig1`
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q11
-   :end-before: -- q12
+   :start-after: -- q9
+   :end-before: -- q10
 
 :Examples: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
 
@@ -241,8 +241,8 @@ The examples in this section use the following:
 * :ref:`fig2`
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q13
-   :end-before: -- q14
+   :start-after: -- q11
+   :end-before: -- q12
 
 
 See Also
