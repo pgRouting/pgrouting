@@ -149,6 +149,13 @@ do_pgr_depthFirstSearch(
         // string variable to store the log messages
         std::string logstr;
 
+        // sorting the edges in an ascending order of their id, before creating the graph
+        std::sort(data_edges, data_edges + total_edges,
+            [](const pgr_edge_t &edge1, const pgr_edge_t &edge2) -> bool
+            {
+                return edge1.id < edge2.id;
+            });
+
         if (directed) {
             // If the graph is directed
             log << "Working with directed Graph\n";
