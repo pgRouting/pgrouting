@@ -54,17 +54,6 @@ SELECT * FROM pgr_depthFirstSearch(
 \echo -- q8
 
 
--- Example for Vertex Out of Graph
--------------------------------------------------------------------------------
-
-\echo -- q9
-SELECT * FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
-    ARRAY[-10,20]
-);
-\echo -- q10
-
-
 -- Equivalences for :ref:`fig1-direct-Cost-Reverse`
 -------------------------------------------------------------------------------
 
