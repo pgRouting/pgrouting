@@ -33,8 +33,8 @@ CREATE OR REPLACE FUNCTION pgr_makeConnected(
     TEXT, -- edges_sql (required)
 
     OUT seq BIGINT,
-    OUT nodeA BIGINT,
-    OUT nodeB BIGINT)
+    OUT node_from BIGINT,
+    OUT node_to BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *

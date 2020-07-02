@@ -33,8 +33,8 @@ CREATE OR REPLACE FUNCTION _pgr_makeConnected(
     edges_sql TEXT,
 
     OUT seq BIGINT,
-    OUT nodeA BIGINT,
-    OUT nodeB BIGINT)
+    OUT node_from BIGINT,
+    OUT node_to BIGINT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c VOLATILE STRICT;
