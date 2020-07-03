@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/sequential_vertex_coloring.hpp>
 
+#include <algorithm>
 #include <vector>
 #include <map>
 
@@ -141,7 +142,7 @@ class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
          // ordering the results in an increasing order of the node id
          std::sort(results.begin(), results.end(),
              [](const pgr_vertex_color_rt row1, const pgr_vertex_color_rt row2) {
-                 return row1.node < row2.node; 
+                 return row1.node < row2.node;
              });
 
          return results;
