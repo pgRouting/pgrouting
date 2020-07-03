@@ -75,7 +75,7 @@ class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
       * @returns results, when results are found
       *
       * @see [boost::sequential_vertex_coloring]
-      * (https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/sequential_vertex_coloring.html)
+      * (https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html)
       */
      std::vector<pgr_vertex_color_rt> sequentialVertexColoring(
              G &graph) {
