@@ -8,12 +8,14 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
+        fail-fast: false
         matrix:
           psql: [9.5,9.6,10,11,12]
           postgis: [2.5,3]
           os: [ubuntu-latest]
 
     steps:
+
       - name: Add PostgreSQL APT repository
         run: |
           sudo apt-get install curl ca-certificates gnupg
@@ -37,16 +39,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Prepare
-        run: |
-          sphinx-build --version
-          sudo -u postgres psql -p 5432 -c "CREATE EXTENSION postgis"
-          export PATH=/usr/lib/postgresql/${{ matrix.psql }}/bin:$PATH
-          sudo -u postgres createdb ___pgr___test___
-          sudo -u postgres createdb pgr_test__db__test
-
       - name: Configure
         run: |
+          export PATH=/usr/lib/postgresql/${{ matrix.psql }}/bin:$PATH
           mkdir build
           cd build
           cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
@@ -54,9 +49,15 @@ jobs:
       - name: Build
         run: |
           cd build
-          make
+          make -j 4
           sudo make install
 
       - name: Test
         run: |
-          sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release
+          sudo service postgresql start
+          PGPORT=5433
+          if [ "${{ matrix.psql }}" == "12" ]; then PGPORT=5432; fi
+          echo "${PGPORT}"
+          sudo -u postgres createdb -p ${PGPORT}  ___pgr___test___
+          #sudo -u postgres psql -p ${PGPORT}  -c "CREATE EXTENSION postgis"
+          sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres ${PGPORT}  Release
