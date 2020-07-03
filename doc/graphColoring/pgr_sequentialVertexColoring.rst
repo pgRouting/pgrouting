@@ -107,7 +107,7 @@ Column           Type        Description
 **node**         ``BIGINT``  Identifier of all the ``nodes`` in the graph.
 **color**        ``BIGINT``  Identifier of the ``color`` of the ``node``.
 
-                             - Ranges from :math:`0` to :math:`(total number of nodes - 1)`.
+                             - Ranges from `0` to `(total number of nodes - 1)`.
 
 ===============  =========== ====================================================
 
