@@ -73,12 +73,10 @@ pgr_sequentialVertexColoring(
 
 /** @brief Performs exception handling and converts the results to postgres.
  *
- * It first asserts the variables, then builds the graph using the `data_edges`,
- * depending on whether the graph is directed or undirected. It also converts
- * the C types to the C++ types, such as the `rootsArr` to `roots`
- * vector and passes these variables to the template function `pgr_sequentialVertexColoring`
- * which calls the main function defined in the C++ Header file. It also does
- * exception handling.
+ * It first asserts the variables, then builds the undirected graph using the
+ * `data_edges` variable. Then, it passes the required variables to the
+ * template function `pgr_sequentialVertexColoring` which calls the main function
+ * defined in the C++ Header file. It also does exception handling.
  * 
  * @param data_edges     the set of edges from the SQL query
  * @param total_edges    the total number of edges in the SQL query
