@@ -138,6 +138,12 @@ class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
              });
          }
 
+         // ordering the results in an increasing order of the node id
+         std::sort(results.begin(), results.end(),
+             [](const pgr_vertex_color_rt row1, const pgr_vertex_color_rt row2) {
+                 return row1.node < row2.node; 
+             });
+
          return results;
      }
 };
