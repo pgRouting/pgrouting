@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 
 #include "cpp_common/identifiers.hpp"
+#include "cpp_common/interruption.h"
 
 namespace pgrouting {
 namespace algorithms {
@@ -47,6 +48,8 @@ pgr_connectedComponents(pgrouting::UndirectedGraph &graph) {
     // perform the algorithm
     std::vector< int > components(num_vertices(graph.graph));
     size_t num_comps;
+    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+    CHECK_FOR_INTERRUPTS();
     try {
         num_comps = boost::connected_components(graph.graph, &components[0]);
     } catch (...) {
@@ -69,6 +72,8 @@ strongComponents(
     // perform the algorithm
     std::vector< int > components(num_vertices(graph.graph));
     size_t num_comps;
+    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+    CHECK_FOR_INTERRUPTS();
     try {
         num_comps = boost::strong_components(
                 graph.graph,
@@ -120,6 +125,8 @@ articulationPoints(
         pgrouting::UndirectedGraph &graph) {
     using G = pgrouting::UndirectedGraph;
     using V =  G::V;
+    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+    CHECK_FOR_INTERRUPTS();
 
     // perform the algorithm
     std::vector<V> art_points;
@@ -159,12 +166,15 @@ bridges(pgrouting::UndirectedGraph &graph) {
     Identifiers<int64_t> processed_edges;
     std::vector<V> components(num_vertices(graph.graph));
     size_t ini_comps;
+    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+    CHECK_FOR_INTERRUPTS();
     try {
         ini_comps = boost::connected_components(graph.graph, &components[0]);
     } catch (...) {
         throw;
     }
-
+    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+    CHECK_FOR_INTERRUPTS();
     std::vector<V> art_points;
     try {
         boost::articulation_points(graph.graph, std::back_inserter(art_points));

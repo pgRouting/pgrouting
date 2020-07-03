@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 #include "spanningTree/details.hpp"
 
 namespace pgrouting {
@@ -257,6 +258,8 @@ class Pgr_mst {
              std::vector<E> visited_order;
 
              using dfs_visitor = visitors::Edges_order_dfs_visitor<E>;
+             /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+             CHECK_FOR_INTERRUPTS();
              try {
                  boost::depth_first_search(mstGraph, visitor(dfs_visitor(visited_order)));
              } catch (boost::exception const& ex) {
@@ -287,6 +290,8 @@ class Pgr_mst {
 
                      using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
                      if (graph.has_vertex(root)) {
+                         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+                         CHECK_FOR_INTERRUPTS();
                          try {
                              boost::depth_first_search(
                                      mstGraph,
@@ -344,6 +349,8 @@ class Pgr_mst {
              } else {
                  results.push_back({root, 0, root, -1, 0.0, 0.0});
              }
+             /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+             CHECK_FOR_INTERRUPTS();
          }
 
          return results;
