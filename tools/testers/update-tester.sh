@@ -26,7 +26,6 @@
 
 set -e
 
-TWEAK="-rc1"
 PGPORT=5432
 #sorry this only works on vicky's computer
 PGUSER="vicky"
@@ -38,32 +37,25 @@ function info {
     #
     echo **pgRouting version must be installed before calling**
     echo "$1"
-    echo "$2"
 
     echo EXAMPLE USAGE
     echo - Short execution
-    echo  bash tools/testers/update-tester.sh $1 $2
+    echo  bash tools/testers/update-tester.sh $1
     echo - For running pgtap tests:
-    echo  bash tools/testers/update-tester.sh $1 $2 long
+    echo  bash tools/testers/update-tester.sh $1 long
 
 }
 
 
 if [[ -z  "$1" ]]; then
-    echo missing version to upgrade
-    info $CURRENT 2.6.3
-    exit 1
-fi
-
-if [[ -z  "$2" ]]; then
-    echo missing current version
-    info 2.6.3 3.0.0
+    echo missing version example:
+    info 2.6.3
     exit 1
 fi
 
 FROM_PGR="$1"
-CURRENT="$2"
-LONG=$3
+CURRENT=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
+LONG=$2
 
 dropdb --if-exists "$DB"
 
@@ -104,7 +96,7 @@ echo "$OLD_VERSION ->> $NEW_VERSION"
 if [ "b$NEW_VERSION" != "b $2$TWEAK" ]
 then
     echo "FAIL: Could not update from version $1 to version $2"
-    dropdb ___test_update
+    dropdb "${DB}"
     exit 1
 fi
 
