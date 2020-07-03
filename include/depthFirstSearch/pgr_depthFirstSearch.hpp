@@ -72,8 +72,10 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
       *
       * @returns results, when results are found
       *
-      * @see [boost::depth_first_search](https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/depth_first_search.html)
-      * @see [boost::undirected_dfs](https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/undirected_dfs.html)
+      * @see [boost::depth_first_search]
+      * (https://www.boost.org/libs/graph/doc/depth_first_search.html)
+      * @see [boost::undirected_dfs]
+      * (https://www.boost.org/libs/graph/doc/undirected_dfs.html)
       */
      std::vector<pgr_mst_rt> depthFirstSearch(
              G &graph,
@@ -108,8 +110,10 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
  private:
      /** @brief Calls the Boost function
       *
-      * Calls [boost::depth_first_search](https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/depth_first_search.html)
-      * and [boost::undirected_dfs](https://www.boost.org/doc/libs/1_73_0/libs/graph/doc/undirected_dfs.html)
+      * Calls [boost::depth_first_search]
+      * (https://www.boost.org/libs/graph/doc/depth_first_search.html)
+      * and [boost::undirected_dfs]
+      * (https://www.boost.org/libs/graph/doc/undirected_dfs.html)
       * for directed graphs and undirected graphs, respectively.
       *
       * @param graph          the graph containing the edges
