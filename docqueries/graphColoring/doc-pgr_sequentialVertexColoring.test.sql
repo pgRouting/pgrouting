@@ -26,12 +26,12 @@ SELECT * FROM pgr_sequentialVertexColoring(
 );
 SELECT * FROM pgr_sequentialVertexColoring(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE id in (8, 10, 11, 12)
+    WHERE id IN (8, 10, 11, 12)
     ORDER BY id'
 );
 SELECT * FROM pgr_sequentialVertexColoring(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE id in (5, 8, 9, 11)
+    WHERE id IN (5, 8, 9, 11)
     ORDER BY id'
 );
 \echo -- q4
