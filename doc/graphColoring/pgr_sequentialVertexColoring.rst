@@ -117,6 +117,16 @@ Column           Type        Description
 Additional Examples 
 -------------------------------------------------------------------------------
 
+The examples of this section are based on the :doc:`sampledata` network.
+
+The examples include a subgraph extracted from the original undirected graph,
+containing the vertices in a linear, cyclic or cross-like arrangement.
+
+* :ref:`fig2`
+
+.. literalinclude:: doc-pgr_sequentialVertexColoring.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 See Also
 -------------------------------------------------------------------------------
