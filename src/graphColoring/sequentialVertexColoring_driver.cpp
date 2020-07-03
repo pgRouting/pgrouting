@@ -91,9 +91,6 @@ pgr_sequentialVertexColoring(
  * @returns void
  */
 
-// TODO (ashish): Use the data_edges and total_edges parameter below.
-//                Call the function in HPP file which calls the boost function.
-
 void
 do_pgr_sequentialVertexColoring(
         pgr_edge_t  *data_edges,
@@ -125,8 +122,7 @@ do_pgr_sequentialVertexColoring(
 
         // sorting the edges in an ascending order of their id, before creating the graph
         std::sort(data_edges, data_edges + total_edges,
-            [](const pgr_edge_t &edge1, const pgr_edge_t &edge2) -> bool
-            {
+            [](const pgr_edge_t &edge1, const pgr_edge_t &edge2) -> bool {
                 return edge1.id < edge2.id;
             });
 
