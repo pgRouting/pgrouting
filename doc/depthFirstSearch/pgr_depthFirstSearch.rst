@@ -34,6 +34,10 @@ depth-first search traversal order. An optional non-negative maximum depth
 parameter (``max_depth``) can be specified to get the results up to a particular
 depth.
 
+**Note**: If two or more vertices are at the same depth from the current vertex,
+then to resolve the clash, out of all the edges joining the current vertex and
+the next vertex, the edge having the smallest id will be traversed first.
+
 **The main Characteristics are:**
 
 - The implementation works for both undirected and directed graphs.
@@ -43,6 +47,9 @@ depth.
   ignored.
 - The returned values are ordered in ascending order of `start_vid`.
 - If the starting vertex does not exist, empty row is returned.
+- The depth first search traversal does not always produce the shortest
+  path from a source vertex to a given target vertex. So, the aggregate cost
+  of traversal may not always be minimal.
 - Depth First Search Running time: :math:`O(E + V)`
 
 Signatures
