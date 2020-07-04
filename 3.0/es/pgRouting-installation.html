@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -166,8 +166,8 @@
 <div class="section" id="short-version">
 <span id="install-short"></span><h2>Versión corta<a class="headerlink" href="#short-version" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Extraer la bola de alquitrán</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvfz pgrouting-3.0.0.tar.gz
-<span class="nb">cd</span> pgrouting-3.0.0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvfz pgrouting-3.0.1.tar.gz
+<span class="nb">cd</span> pgrouting-3.0.1
 </pre></div>
 </div>
 <p>Para compilar suponiendo que tiene todas las dependencias en su ruta de búsqueda:</p>
@@ -190,7 +190,7 @@ psql routing -c <span class="s1">&#39;CREATE EXTENSION pgRouting&#39;</span>
 <p>La última versión de pgRouting se puede encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a></p>
 <p class="rubric">Wget</p>
 <p>Para descargar esta versión:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget -O pgrouting-3.0.0.tar.gz https://github.com/pgRouting/pgrouting/archive/v3.0.0.tar.gz
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget -O pgrouting-3.0.1.tar.gz https://github.com/pgRouting/pgrouting/archive/v3.0.1.tar.gz
 </pre></div>
 </div>
 <p>Ir al extracto de <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> y compilar instrucciones.</p>
@@ -198,7 +198,7 @@ psql routing -c <span class="s1">&#39;CREATE EXTENSION pgRouting&#39;</span>
 <p>Para descargar el repositorio</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git://github.com/pgRouting/pgrouting.git
 <span class="nb">cd</span> pgrouting
-git checkout v3.0.0
+git checkout v3.0.1
 </pre></div>
 </div>
 <p>Ir a <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> a las instrucciones de compilación (no hay bola de alquitrán).</p>
@@ -212,8 +212,8 @@ git checkout v3.0.0
 </pre></div>
 </div>
 <p class="rubric">Actualización de la base de datos</p>
-<p>Para actualizar pgRouting en la base de datos a la versión 3.0.0, utilice el siguiente comando:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;3.0.0&quot;</span><span class="p">;</span>
+<p>To upgrade pgRouting in the database to version 3.0.1 use the following command:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;3.0.1&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Puede encontrar más información en <a class="reference external" href="https://www.postgresql.org/docs/current/static/sql-createextension.html">https://www.postgresql.org/docs/current/static/sql-createextension.html</a></p>
@@ -409,8 +409,8 @@ dropdb  -U &lt;user&gt; ___pgr___test___
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.0.<br/>
-      Actualizado por última vez en may. 19, 2020.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.1.<br/>
+      Actualizado por última vez en jul. 04, 2020.<br/>
       Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
