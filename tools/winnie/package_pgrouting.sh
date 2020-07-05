@@ -31,11 +31,15 @@ if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	BOOST_VER=1.59.0
 	BOOST_VER_WU=1_59_0
 	BOOST_VER_WUM=1_59
+    echo "$BOOST_VER_WU"
+    echo "$BOOST_VER_WUM"
 else
   GMP_VER=5.1.2
 	MPFR_VER=3.1.2
 	CGAL_VER=3.9
 	BOOST_VER=1.46.1
+    echo "$GMP_VER"
+    echo "$MPFR_VER"
 fi;
 
 #cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}/build/lib
@@ -65,13 +69,13 @@ mkdir "${outdir}/bin"
 mkdir "${outdir}/lib"
 
 cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/sql"
-cp *.sql "${outdir}/share/extension"
+cp ./*.sql "${outdir}/share/extension"
 cp "${PostgreSQL_ROOT}/share/extension/pgrouting.control" "${outdir}/share/extension"
 
 cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib"
-strip *.dll
+strip ./*.dll
 
-cp -r *.dll "${outdir}/lib"
+cp -r ./*.dll "${outdir}/lib"
 #newer gcc for some reason CGAL is not statically linked
 # so need to distribute
 if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
@@ -83,11 +87,13 @@ cp -r "${RELDIR}/packaging_notes/*" "${RELDIR}/${RELVERDIR}/"
 
 echo "The git commit is ${GIT_COMMIT}"
 echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER} ${GIT_COMMIT}" > "${verfile}"
-echo "PostgreSQL http://www.postgresql.org : ${PG_VER} ${OS_BUILD} ${GCC_TYPE}" >> "${verfile}"
-echo "CGAL http://www.cgal.org : ${CGAL_VER}" >> "${verfile}"
-echo "BOOST http://www.boost.org : ${BOOST_VER}" >> "${verfile}"
-date_built=$(eval date +%Y%m%d)
-echo "Built: ${date_built}" >> "${verfile}"
+{
+    echo "PostgreSQL http://www.postgresql.org : ${PG_VER} ${OS_BUILD} ${GCC_TYPE}"
+    echo "CGAL http://www.cgal.org : ${CGAL_VER}"
+    echo "BOOST http://www.boost.org : ${BOOST_VER}"
+    date_built=$(eval date +%Y%m%d)
+    echo "Built: ${date_built}"
+} >> "${verfile}"
 
 cd "${RELDIR}"
 zip -r "${package}" "${RELVERDIR}"
