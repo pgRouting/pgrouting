@@ -222,7 +222,6 @@ void Path::generate_postgres_data(
         General_path_element_t **postgres_data,
         size_t &sequence) const {
     int i = 1;
-    double total_cost = 0;
     for (const auto e : path) {
         auto agg_cost = std::fabs(
                 e.agg_cost - std::numeric_limits<double>::max()) < 1?
@@ -230,9 +229,7 @@ void Path::generate_postgres_data(
         auto cost = std::fabs(e.cost - std::numeric_limits<double>::max()) < 1?
             std::numeric_limits<double>::infinity() : e.cost;
 
-        (*postgres_data)[sequence] =
-        {i, start_id(), end_id(), e.node, e.edge, cost, agg_cost};
-        total_cost += cost;
+        (*postgres_data)[sequence] = {i, start_id(), end_id(), e.node, e.edge, cost, agg_cost};
         ++i;
         ++sequence;
     }
