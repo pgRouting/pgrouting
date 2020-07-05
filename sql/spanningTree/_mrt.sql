@@ -29,3 +29,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 -- _pgr_mrt
 ---------------
+
+CREATE OR REPLACE FUNCTION _pgr_LTDTree(
+    edges_sql1 TEXT, -- edges_sql1 (required)
+    edges_sql2 TEXT, -- edges_sql2 (required)
+    directed BOOLEAN DEFAULT true,
+
+    OUT seq integer,
+    OUT tree_edges BIGINT[] --contains list of edegs of spanning tree
+   )
+
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE c VOLATILE STRICT;
+
+-- COMMENTS
+
+
+COMMENT ON FUNCTION _pgr_mrt(TEXT,TEXT,BOOLEAN)
+IS 'pgRouting internal function';
+
