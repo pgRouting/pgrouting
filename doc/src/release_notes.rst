@@ -57,6 +57,7 @@ pgRouting 3.1.0 Release Notes
 .. rubric:: New proposed functions
 
 * pgr_dijkstra(combinations)
+* pgr_dijkstraCost(combinations)
 
 .. _changelog_3_0_1:
 
