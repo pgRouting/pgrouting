@@ -1,10 +1,10 @@
 /*PGR-GNU*****************************************************************
 
-File: _version.h.in
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2020 Mohamed Bakli, Esteban Zimányi, Mahmoud Sakr
+mohamed_bakli@ulb.ac.be, estebanzimanyi@gmail.com, m_attia_sakr@yahoo.com
 
 ------
 
@@ -24,12 +24,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#define	BOOST_VERSION "@BOOST_VERSION@";
-#define CMAKE_BUILD_TYPE "@CMAKE_BUILD_TYPE@";
-#define COMPILER_VERSION "@COMPILER_VERSION@";
-#define COMPILATION_DATE "@COMPILATION_DATE@";
-#define PGROUTING_GIT_HASH "@PGROUTING_GIT_HASH@";
-#define PGROUTING_LIB_NAME "pgrouting-@PGROUTING_VERSION@";
-#define CMAKE_SYSTEM_NAME "@CMAKE_SYSTEM@";
-#define POSTGRES_VERSION "@POSTGRESQL_VERSION_STRING@";
-
+#ifndef INCLUDE_CPP_COMMON_INTERRUPTION_H_
+#define INCLUDE_CPP_COMMON_INTERRUPTION_H_
+/*
+ * Suppress the -Wpedantic warning temporarily about the postgres file
+ */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+extern "C" {
+#include <postgres.h>
+#include <miscadmin.h>
+}
+#pragma GCC diagnostic pop
+#endif  // INCLUDE_CPP_COMMON_INTERRUPTION_H_

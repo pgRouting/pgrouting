@@ -26,8 +26,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION pgr_version()
 RETURNS TEXT AS
-'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
+$BODY$
+    SELECT '${PGROUTING_VERSION}'::varchar AS pgr_version;
+$BODY$
+LANGUAGE sql IMMUTABLE;
 
 COMMENT ON FUNCTION pgr_version() IS
 'pgr_version

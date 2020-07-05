@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 //******************************************
 
 namespace pgrouting {
@@ -159,6 +160,9 @@ class Pgr_edwardMoore {
         std::vector<E> &from_edge,
         std::deque<int64_t> &dq,
         int64_t &head_vertex) {
+        /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+        CHECK_FOR_INTERRUPTS();
+
         auto out_edges = boost::out_edges(head_vertex, graph.graph);
         E e;
         EO_i out_i;

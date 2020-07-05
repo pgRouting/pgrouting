@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 
 // TODO(vicky) don't keep it here
 #include "cpp_common/pgr_alloc.hpp"
@@ -99,6 +100,10 @@ class Pgr_allpairs {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
          inf_plus<double> combine;
+
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
+
          boost::floyd_warshall_all_pairs_shortest_paths(
                  graph.graph,
                  matrix,
@@ -116,6 +121,10 @@ class Pgr_allpairs {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
          inf_plus<double> combine;
+
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
+
          boost::floyd_warshall_all_pairs_shortest_paths(
                  graph.graph,
                  matrix,
@@ -134,6 +143,10 @@ class Pgr_allpairs {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
          inf_plus<double> combine;
+
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
+
          boost::johnson_all_pairs_shortest_paths(
                  graph.graph,
                  matrix,
@@ -152,6 +165,10 @@ class Pgr_allpairs {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
          inf_plus<double> combine;
+
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
+
          boost::johnson_all_pairs_shortest_paths(
                  graph.graph,
                  matrix,

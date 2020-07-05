@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 
 namespace pgrouting {
 namespace algorithms {
@@ -293,6 +294,8 @@ class Pgr_astar {
              double factor,
              double epsilon) {
          bool found = false;
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              // Call A* named parameter interface
              boost::astar_search(
@@ -320,6 +323,8 @@ class Pgr_astar {
              double factor,
              double epsilon) {
          bool found = false;
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::astar_search(
                      graph.graph, source,

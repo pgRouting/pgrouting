@@ -53,17 +53,19 @@ fi
 
 MAYOR=3
 MINOR=0
-MICRO=0
-RC="-rc1"
-PREV_REL=2.6.3
+MICRO=1
+RC=""
+PREV_REL=3.0.0
 PREV_RELS="
+    3.0.0
     2.6.3 2.6.2 2.6.1 2.6.0
+    "
+# These releases are not for update
+OLD_RELS="
     2.5.4 2.5.3 2.5.2 2.5.1 2.5.0
     2.4.2 2.4.1 2.4.0
     2.3.2 2.3.1 2.3.0
-    2.2.4 2.2.3 2.2.2 2.2.1 2.2.0"
-# These releases are not for update
-OLD_RELS="
+    2.2.4 2.2.3 2.2.2 2.2.1 2.2.0
     2.1.0
     2.0.1 2.0.0"
 DEBUG=$1
@@ -236,7 +238,7 @@ echo "\`\`\`"
 
 for r in $PREV_RELS
 do
-    bash tools/testers/update-tester.sh "$r" "$MAYOR.$MINOR.$MICRO"
+    bash tools/testers/update-tester.sh "$r"
     if [[ $? != 0 ]]; then
         echo "FATAL on the update-tester"
         exit 1
