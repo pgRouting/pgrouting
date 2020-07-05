@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <functional>
 #include <limits>
+#include <map>
 #include <numeric>
 
 #include "cpp_common/basePath_SSEC.hpp"
@@ -137,7 +138,7 @@ class Pgr_dijkstra {
      // preparation for many to distance
      std::deque< Path > drivingDistance(
              G &graph,
-             const std::vector< int64_t > start_vertex,
+             const std::vector< int64_t > &start_vertex,
              double distance,
              bool equicost,
              std::ostringstream &the_log) {
