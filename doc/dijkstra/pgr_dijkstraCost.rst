@@ -21,6 +21,11 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
    Boost Graph Inside
 
 .. rubric:: Availability
+* Version 3.1.0
+
+  * New **Proposed** functions:
+
+    * pgr_dijkstraCost(combinations sql)
 
 * Version 2.2.0
 
@@ -88,6 +93,7 @@ Signatures
      pgr_dijkstraCost(edges_sql, from_vid,  to_vids [, directed])
      pgr_dijkstraCost(edges_sql, from_vids, to_vid  [, directed])
      pgr_dijkstraCost(edges_sql, from_vids, to_vids [, directed])
+     pgr_dijkstraCost(edges_sql, combinations_sql   [, directed])
      RETURNS SET OF (start_vid, end_vid, agg_cost)
      OR EMPTY SET
 
@@ -176,6 +182,26 @@ Many to Many
 .. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q5
    :end-before: --q6
+
+.. index::
+    single: dijkstraCost(Combinations)
+
+Combinations SQL
+...............................................................................
+
+.. code-block:: none
+
+    pgr_dijkstraCost(TEXT edges_sql, TEXT combination_sql, BOOLEAN directed:=true);
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
+    OR EMPTY SET
+
+:Example: Three (source, target) vertex combinaitons: (from :math:`1` to :math:`2`), (form :math:`1` to :math:`17` -no route-), and (form :math:`2` to :math:`12`) on an **undirected** graph
+
+
+.. literalinclude:: doc-pgr_dijkstraCost.queries
+   :start-after: -- q8
+   :end-before: -- q9
+
 
 Parameters
 -------------------------------------------------------------------------------

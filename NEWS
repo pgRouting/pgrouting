@@ -5,6 +5,7 @@ pgRouting 3.1.0 Release Notes
 *New proposed functions*
 
 * pgr_dijkstra(combinations)
+* pgr_dijkstraCost(combinations)
 
 
 pgRouting 3.0.1 Release Notes
