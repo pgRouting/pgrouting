@@ -8,6 +8,7 @@ set -e
 
 # This run.sh is intended for 3.0.0
 VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
+echo "pgRouting VERSION ${VERSION}"
 
 # set up your postgres version and port
 PGVERSION="12"
@@ -66,7 +67,7 @@ echo "Compiling with G++-$1"
 echo ------------------------------------
 
 if [ ! -z "$1" ]; then
-    update-alternatives --set gcc /usr/bin/gcc-$1
+    update-alternatives --set gcc "/usr/bin/gcc-$1"
 fi
 
 
@@ -105,7 +106,7 @@ for d in ${TESTDIRS}
 do
     #tools/testers/doc_queries_generator.pl  -alg ${d} -documentation  -pgport ${PGPORT}
     tools/testers/doc_queries_generator.pl  -alg ${d} -pgport ${PGPORT}
-    tools/developer/taptest.sh  ${d}/* -p ${PGPORT}
+    tools/developer/taptest.sh  ${d} -p ${PGPORT}
 done
 
 
@@ -181,11 +182,11 @@ dropdb  -p $PGPORT ___pgr___test___
 }
 
 # Uncomment what you need
-for compiler in GCC
+for compiler in ${GCC}
 do
     if [ ! -z "$1" ]; then
         echo "Fresh build"
         rm -rf build/*
     fi
-    test_compile ${GCC}
+    test_compile ${compiler}
 done

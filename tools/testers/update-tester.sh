@@ -26,6 +26,7 @@
 
 set -e
 
+TWEAK=""
 PGPORT=5432
 #sorry this only works on vicky's computer
 PGUSER="vicky"
@@ -35,14 +36,14 @@ function info {
 
     # ----------------------
     #
-    echo **pgRouting version must be installed before calling**
+    echo "**pgRouting version must be installed before calling**"
     echo "$1"
 
-    echo EXAMPLE USAGE
-    echo - Short execution
-    echo  bash tools/testers/update-tester.sh $1
-    echo - For running pgtap tests:
-    echo  bash tools/testers/update-tester.sh $1 long
+    echo "EXAMPLE USAGE"
+    echo "- Short execution"
+    echo  "bash tools/testers/update-tester.sh $1"
+    echo "- For running pgtap tests:"
+    echo  "bash tools/testers/update-tester.sh $1 long"
 
 }
 
@@ -61,9 +62,9 @@ dropdb --if-exists "$DB"
 
 
 cd build
-cmake -DPGROUTING_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug .. > /tmp/foo.txt
-make -j 4 > /tmp/foo.txt
-sudo make install > /tmp/foo.txt
+cmake -DPGROUTING_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug ..
+make -j 4
+sudo make install
 cd ..
 
 
@@ -105,10 +106,13 @@ DIR="sql/sigs"
 FILE="$DIR/pgrouting--$2.sig"
 
 echo "#VERSION pgrouting $2" > "$FILE"
-echo "#TYPES" >> $FILE
-psql $DB -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> $FILE
-echo "#FUNCTIONS" >> "$FILE"
-psql $DB -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> $FILE
+{
+    echo "#TYPES"
+    psql "${DB}" -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2-
+    echo "#FUNCTIONS"
+    psql ${DB} -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2-
+} >> "${FILE}"
+
 
 DIFF=$(git diff "$FILE")
 if [ -n "$DIFF" ]
@@ -129,7 +133,4 @@ dropdb "$DB"
 } # end of function
 
 
-update_test $FROM_PGR $CURRENT
-exit
-
-exit 0
+update_test "${FROM_PGR}" "${CURRENT}"
