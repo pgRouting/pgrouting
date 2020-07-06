@@ -53,9 +53,10 @@ extern "C" {
  ********************************************************/
 void
 do_pgr_mrt(
-        pgr_edge_t  *data_edges,
+        pgr_edge_t  *data_edges1,
         size_t total_tuples,
-        int64_t root_vertex,
+        pgr_edge_t  *data_edges2,
+        size_t total_tuples2,
         pgr_ltdtree_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
