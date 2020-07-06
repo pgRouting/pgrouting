@@ -40,8 +40,16 @@ SELECT * FROM pgr_dijkstraCost(
 
 SELECT * FROM pgr_dijkstraCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT * FROM combinations_table',
+    'SELECT source, target FROM combinations_table',
     FALSE
 );
 
 \echo -- q9
+
+SELECT * FROM pgr_dijkstraCost(
+    'SELECT id, source, target, cost FROM edge_table',
+    'SELECT * FROM (VALUES (2, 3), (2, 5), (11, 3), (11, 5)) AS combinations (source, target)',
+    FALSE
+);
+
+\echo -- q10
