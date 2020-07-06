@@ -29,11 +29,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
  * Suppress the -Wpedantic warning temporarily about the postgres file
  */
-#pragma GCC diagnostic push
+#ifdef __GNUC__
+#if __GNUC__ > 5
 #pragma GCC diagnostic ignored "-Wpedantic"
+#else
+#pragma GCC diagnostic ignored "-pedantic"
+#endif
+#endif
+
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-pedantic"
+#endif
+
+#ifdef __MSVC__
+#pragma warning(disable : 4200)
+#endif
+
 extern "C" {
 #include <postgres.h>
 #include <miscadmin.h>
 }
+
+#ifdef __GNUC__
 #pragma GCC diagnostic pop
+#endif
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+
+#ifdef __MSVC__
+#pragma warning(default : 4200)
+#endif
+
 #endif  // INCLUDE_CPP_COMMON_INTERRUPTION_H_

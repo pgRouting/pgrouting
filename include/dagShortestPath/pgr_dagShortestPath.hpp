@@ -99,7 +99,7 @@ class Pgr_dag {
              bool only_cost) {
          // adjust predecessors and distances vectors
          clear();
-         size_t n_goals = std::numeric_limits<size_t>::max();
+         size_t n_goals = (std::numeric_limits<size_t>::max)();
          predecessors.resize(graph.num_vertices());
          distances.resize(
                  graph.num_vertices(),
@@ -218,7 +218,7 @@ class Pgr_dag {
              G &graph,
              V source,
              const std::vector< V > &targets,
-             size_t n_goals = std::numeric_limits<size_t>::max()) {
+             size_t n_goals = (std::numeric_limits<size_t>::max)()) {
          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
          try {
