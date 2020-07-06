@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/make_connected.hpp>
 
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/pgr_messages.h"
 #include "c_types/pgr_makeConnected_t.h"
 
 //******************************************
@@ -44,7 +45,7 @@ namespace pgrouting {
 namespace functions {
 
   template < class G >
-  class Pgr_makeConnected : public pgrouting::Pgr_messages {
+  class Pgr_makeConnected : public pgrouting::Pgr_messages{
    public:
        typedef typename G::V V;
        typedef typename G::E E;
@@ -58,12 +59,13 @@ namespace functions {
      std::vector< pgr_makeConnected_t >
      generatemakeConnected(
         const G &graph ) {
-       std::vector< pgr_makeConnected_t > results(1);
+       std::vector< pgr_makeConnected_t > results(num_edges(graph.graph));
       E_i ei, ei_end;
-      int i;
-
-           results[0].node_from = 1;
-           results[0].node_to = 2;
+      int i=0;
+            log << "here:\n"<< i;
+            // std::cout << i <<" ";
+           results[0].node_from = results.size();
+           results[0].node_to = results.size();
 
        return results;
     }

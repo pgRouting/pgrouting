@@ -39,7 +39,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_base_graph.hpp"
 
+#include "makeConnected/pgr_makeConnected.hpp"
 
+template < class G >
+std::vector<pgr_makeConnected_t>
+pgr_makeConnected(
+        G &graph) {
+    pgrouting::functions::Pgr_makeConnected< G > fn_makeConnected;
+    auto results = fn_makeConnected.makeConnected(
+            graph);
+    return results;
+}
 // CREATE OR REPLACE FUNCTION pgr_topologicalSort(
 // sql text,
 void
@@ -65,13 +75,19 @@ do_pgr_makeConnected(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType =  UNDIRECTED;
+        // graphType gType =  UNDIRECTED;
 
         std::vector<pgr_makeConnected_t> results;
-
+        std::string logstr;
         // log << "Working with Directed Graph\n";
         // pgrouting::DirectedGraph digraph(gType);
         // digraph.insert_edges(data_edges, total_edges);
+
+        graphType gType = UNDIRECTED;
+        log << "Working with Undirected Graph\n";
+        pgrouting::UndirectedGraph undigraph(gType);
+        undigraph.insert_edges(data_edges, total_edges);
+        results = pgr_makeConnected(undigraph);
 
         auto count = results.size();
 
