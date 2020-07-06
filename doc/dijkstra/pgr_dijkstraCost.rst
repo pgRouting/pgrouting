@@ -195,12 +195,17 @@ Combinations SQL
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: Three (source, target) vertex combinaitons: (from :math:`1` to :math:`2`), (form :math:`1` to :math:`17` -no route-), and (form :math:`2` to :math:`12`) on an **undirected** graph
-
+:Example: Five (source, target) vertex combinations from table: one of them has no route (form :math:`1` to :math:`17` -no route-)
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: -- q8
    :end-before: -- q9
+
+:Example: Four (source, target) vertex combinations
+
+.. literalinclude:: doc-pgr_dijkstraCost.queries
+   :start-after: -- q9
+   :end-before: -- q10
 
 
 Parameters
