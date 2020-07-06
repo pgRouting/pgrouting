@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/make_connected.hpp>
 
 #include "cpp_common/pgr_base_graph.hpp"
-#include "c_types/pgr_boyer_t.h"
+#include "c_types/pgr_makeConnected_t.h"
 
 //******************************************
 using namespace boost;
@@ -49,7 +49,11 @@ namespace functions {
        typedef typename G::V V;
        typedef typename G::E E;
        typedef typename G::E_i E_i;
-
+       std::vector<pgr_makeConnected_t> makeConnected(
+                   G &graph){
+                     return generatemakeConnected(
+                                            graph);
+                   }
    private:
 }
 }
