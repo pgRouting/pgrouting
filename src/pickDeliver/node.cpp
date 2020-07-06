@@ -41,7 +41,7 @@ typename std::enable_if<!std::numeric_limits<T>::is_integer, bool>::type
         || std::abs(x-y) < std::numeric_limits<T>::min();
 }
 
-}
+}  // namespace
 
 namespace pgrouting {
 namespace vrp {

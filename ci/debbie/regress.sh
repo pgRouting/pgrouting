@@ -27,6 +27,7 @@ export PGLOCALEDIR=${PGPATH}/share/locale
 
 DAEMON=${PGPATH}/bin/postmaster
 PGSTARTLOG=${PGDATA}/start_log.log
+echo "${DAEMON}"
 
 
 #initialize the database
