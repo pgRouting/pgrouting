@@ -55,6 +55,19 @@ namespace functions {
                                             graph);
                    }
    private:
+     std::vector< pgr_makeConnected_t >
+     generatemakeConnected(
+        const G &graph ) {
+       std::vector< pgr_makeConnected_t > results(1);
+      E_i ei, ei_end;
+      int i;
+
+           results[0].node_from = 1;
+           results[0].node_to = 2;
+
+       return results;
+    }
+  };
 }
 }
 
