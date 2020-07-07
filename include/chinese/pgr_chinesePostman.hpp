@@ -87,7 +87,8 @@ class PgrDirectedChPPGraph {
 
 PgrDirectedChPPGraph::PgrDirectedChPPGraph(
         const pgr_edge_t *dataEdges,
-        const size_t totalEdges) {
+        const size_t totalEdges) :
+    totalCost(0) {
     resultEdges.clear();
     for (size_t i = 0; i < totalEdges; i++) {
         pgr_edge_t edge;

@@ -49,10 +49,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <functional>
 #include <limits>
+#include <map>
 #include <numeric>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 #include "visitors/dijkstra_one_goal_visitor.hpp"
 
 #if 0
@@ -141,7 +143,7 @@ class Pgr_dijkstra {
      // preparation for many to distance
      std::deque< Path > drivingDistance(
              G &graph,
-             const std::vector< int64_t > start_vertex,
+             const std::vector< int64_t > &start_vertex,
              double distance,
              bool equicost,
              std::ostringstream &the_log) {
@@ -315,8 +317,8 @@ class Pgr_dijkstra {
 
         // group targets per distinct source
         std::map<int64_t , std::vector<int64_t> > vertex_map;
-        for (const pgr_combination_t &comb : combinations){
-            std::map< int64_t , std::vector<int64_t> >::iterator it= vertex_map.find(comb.source);
+        for (const pgr_combination_t &comb : combinations) {
+            std::map< int64_t , std::vector<int64_t> >::iterator it = vertex_map.find(comb.source);
             if (it != vertex_map.end()) {
                 it->second.push_back(comb.target);
             } else {
@@ -326,21 +328,21 @@ class Pgr_dijkstra {
         }
 
         for (const auto &start_ends : vertex_map) {
-        	auto r_paths = dijkstra(
+            auto r_paths = dijkstra(
                     graph,
                     start_ends.first, start_ends.second,
                     only_cost, n_goals);
             paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
         }
-		vertex_map.clear();
+        vertex_map.clear();
         std::sort(paths.begin(), paths.end(),
-                  [](const Path &e1, const Path &e2)->bool {
-                      return e1.end_id() < e2.end_id();
-                  });
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.end_id() < e2.end_id();
+                });
         std::stable_sort(paths.begin(), paths.end(),
-                         [](const Path &e1, const Path &e2)->bool {
-                             return e1.start_id() < e2.start_id();
-                         });
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.start_id() < e2.start_id();
+                });
 
         return paths;
     }
@@ -353,6 +355,8 @@ class Pgr_dijkstra {
                  G &graph,
                  V source,
                  V target) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
@@ -384,6 +388,8 @@ class Pgr_dijkstra {
              G &graph,
              V source,
              double distance) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
@@ -418,6 +424,8 @@ class Pgr_dijkstra {
          pgassert(distances.size() == graph.num_vertices());
          distances[source] = 0;
          std::vector<boost::default_color_type> color_map(graph.num_vertices());
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::dijkstra_shortest_paths_no_init(graph.graph, source,
                      make_iterator_property_map(
@@ -715,6 +723,8 @@ class Pgr_dijkstra {
              V source,
              const std::vector< V > &targets,
              size_t n_goals = std::numeric_limits<size_t>::max()) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::dijkstra_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])

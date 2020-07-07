@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 //******************************************
 
 namespace pgrouting {
@@ -63,6 +64,9 @@ class Pgr_breadthFirstSearch {
 
                 auto single_source_results = get_results(visited_order, source, depth, graph);
                 results.insert(results.end(), single_source_results.begin(), single_source_results.end());
+
+                /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+                CHECK_FOR_INTERRUPTS();
             }
         }
         return results;

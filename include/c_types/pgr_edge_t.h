@@ -42,4 +42,4 @@ typedef struct {
     double reverse_cost;
 } pgr_edge_t;
 
-#endif  // INCLUDE_C_TYPES_PGR_COMBINATION_T_H_
+#endif  // INCLUDE_C_TYPES_PGR_EDGE_T_H_

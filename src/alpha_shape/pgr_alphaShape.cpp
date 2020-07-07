@@ -58,7 +58,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <utility>
 #include <map>
-
+#include "cpp_common/interruption.h"
 
 namespace bg = boost::geometry;
 
@@ -107,6 +107,9 @@ get_predecessors(V source, V target,  const B_G &subg) {
     std::vector<double> distances(num_vertices(subg));
     pgassert(predecessors.size() == boost::num_vertices(subg));
     pgassert(distances.size() == boost::num_vertices(subg));
+
+    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+    CHECK_FOR_INTERRUPTS();
 
     try {
         boost::dijkstra_shortest_paths(subg, source,

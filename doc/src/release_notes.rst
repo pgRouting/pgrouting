@@ -19,6 +19,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 .. changelog start
 
 * :ref:`changelog_3_1_0`
+* :ref:`changelog_3_0_1`
 * :ref:`changelog_3_0_0`
 * :ref:`changelog_2_6_3`
 * :ref:`changelog_2_6_2`
@@ -56,6 +57,15 @@ pgRouting 3.1.0 Release Notes
 .. rubric:: New proposed functions
 
 * pgr_dijkstra(combinations)
+
+.. _changelog_3_0_1:
+
+pgRouting 3.0.1 Release Notes
+-------------------------------------------------------------------------------
+
+.. rubric:: Bug fixes
+
+* `#1361 <https://github.com/pgRouting/pgrouting/pull/1361>`__: Add code to interrupt the execution
 
 .. _changelog_3_0_0:
 

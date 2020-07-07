@@ -46,6 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 
 template < class G >
 class Pgr_dag {
@@ -190,6 +191,8 @@ class Pgr_dag {
                  G &graph,
                  V source,
                  V target) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::dag_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])
@@ -216,6 +219,8 @@ class Pgr_dag {
              V source,
              const std::vector< V > &targets,
              size_t n_goals = std::numeric_limits<size_t>::max()) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
          try {
              boost::dag_shortest_paths(graph.graph, source,
                      boost::predecessor_map(&predecessors[0])

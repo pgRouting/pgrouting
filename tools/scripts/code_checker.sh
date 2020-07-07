@@ -45,15 +45,15 @@ if test -z "$DIRECTORY"; then
     echo "--------------------"
     echo "------   *.c  ------"
     echo "--------------------"
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=c  --linelength=120 --filter=-readability/casting src/*/*.c
+    python2 code_linter/styleguide/cpplint/cpplint.py --extensions=c  --linelength=120 --filter=-readability/casting src/*/*.c
     echo "--------------------"
     echo "------ *.cpp  ------"
     echo "--------------------"
-    python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references  --linelength=120 src/*/*.cpp
+    python2 code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references  --linelength=120 src/*/*.cpp
     echo "--------------------"
     echo "------ HEADERS  ------"
     echo "--------------------"
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references \
+    python2 code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references \
         include/*/*.h* \
         include/*/*/*.h*
 
@@ -63,7 +63,7 @@ else
     echo "--------------------"
     echo "------ IN PLACE HEADERS  ------"
     echo "--------------------"
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references \
+    python2 code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references \
         include/*/*.h* \
         include/*/*/*.h*
 
@@ -71,26 +71,26 @@ else
         echo "--------------------"
         echo "------   *.c  ------"
         echo "--------------------"
-        python code_linter/styleguide/cpplint/cpplint.py --extensions=c  --linelength=120 --filter=-readability/casting src/"$DIRECTORY"/*.c
+        python2 code_linter/styleguide/cpplint/cpplint.py --extensions=c  --linelength=120 --filter=-readability/casting src/"$DIRECTORY"/*.c
         echo "--------------------"
         echo "------ *.cpp  ------"
         echo "--------------------"
-        python code_linter/styleguide/cpplint/cpplint.py  --linelength=120 --filter=-runtime/references src/"$DIRECTORY"/*.cpp
+        python2 code_linter/styleguide/cpplint/cpplint.py  --linelength=120 --filter=-runtime/references src/"$DIRECTORY"/*.cpp
         echo "--------------------"
         echo "------   C HEADER  ------"
         echo "--------------------"
-        python code_linter/styleguide/cpplint/cpplint.py \
+        python2 code_linter/styleguide/cpplint/cpplint.py \
             include/drivers/"$DIRECTORY"/*.h \
             include/c_types/"$DIRECTORY"/*.h
 
         echo "--------------------"
         echo "------ C++ HEADER  ------"
         echo "--------------------"
-        python code_linter/styleguide/cpplint/cpplint.py  --extensions=hpp,h --headers=hpp  --linelength=120 --filter=-runtime/references include/"$DIRECTORY"/*.h*
+        python2 code_linter/styleguide/cpplint/cpplint.py  --extensions=hpp,h --headers=hpp  --linelength=120 --filter=-runtime/references include/"$DIRECTORY"/*.h*
         echo "--------------------"
         echo "------ this shouild fail  ------"
         echo "--------------------"
-        python code_linter/styleguide/cpplint/cpplint.py src/"$DIRECTORY"/src/*.h*
+        python2 code_linter/styleguide/cpplint/cpplint.py src/"$DIRECTORY"/src/*.h*
     fi
 fi
 
