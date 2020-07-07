@@ -1,11 +1,12 @@
 /*PGR-GNU*****************************************************************
+File: _makeConnected.sql
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2019 Hang Wu
-mail: nike0good@gmail.com
+Copyright (c) 2020 Himanshu Raj
+Mail: raj.himanshu2@gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -23,24 +24,25 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-
----------------
--- _pgr_makeConnected
----------------
-
+-------------------------
+-------------------------
+-- _makeConnected
+-------------------------
+-------------------------
 
 CREATE OR REPLACE FUNCTION _pgr_makeConnected(
-    edges_sql TEXT,
+  TEXT,   -- edges_sql (required)
 
-    OUT seq BIGINT,
-    OUT node_from BIGINT,
-    OUT node_to BIGINT)
+  OUT seq BIGINT,
+  OUT node_fro BIGINT,
+  OUT node_to BIGINT)
+
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE c VOLATILE STRICT;
+LANGUAGE c IMMUTABLE STRICT;
+
 
 -- COMMENTS
-
 
 COMMENT ON FUNCTION _pgr_makeConnected(TEXT)
 IS 'pgRouting internal function';
