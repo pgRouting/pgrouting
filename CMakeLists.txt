@@ -33,7 +33,7 @@ include(pgr/BuildType)
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING VERSION 3.0.1
+project(PGROUTING VERSION 3.0.2
     LANGUAGES C CXX )
 set(PGROUTING_VERSION_DEV "")
 

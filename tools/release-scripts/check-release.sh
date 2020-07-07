@@ -53,11 +53,11 @@ fi
 
 MAYOR=3
 MINOR=0
-MICRO=1
+MICRO=2
 RC=""
 PREV_REL=3.0.0
 PREV_RELS="
-    3.0.0
+    3.0.1 3.0.0
     2.6.3 2.6.2 2.6.1 2.6.0
     "
 # These releases are not for update

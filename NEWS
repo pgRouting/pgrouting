@@ -1,14 +1,31 @@
 
+pgRouting 3.0.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.2
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github.
+
+*Issues fixes*
+
+* [#1378 ](https://github.com/pgRouting/pgrouting/issues/1378)_: Visual Studio build failing
+
+
 pgRouting 3.0.1 Release Notes
 -------------------------------------------------------------------------------
 
-*Bug fixes*
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github.
 
-* [#1361 ](https://github.com/pgRouting/pgrouting/pull/1361)_: Add code to interrupt the execution
+*Issues fixes*
+
+* [#232 ](https://github.com/pgRouting/pgrouting/issues/232)_:  Honor client cancel requests in C /C++ code
 
 
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github.
 
 *Fixed Issues*
 
