@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(4);
+SELECT plan(5);
 
 SELECT todo_start('Complete the types check');
 
@@ -16,6 +16,13 @@ SELECT bag_has(
     $$SELECT  '{"","node","color"}'::TEXT[] $$
 );
 
+-- parameter types
+SELECT set_eq(
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_sequentialvertexcoloring'$$,
+    $$VALUES
+        ('{25,20,20}'::OID[])
+    $$
+);
 
 SELECT todo_end();
 
