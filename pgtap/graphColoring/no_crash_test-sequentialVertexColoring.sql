@@ -2,8 +2,6 @@
 
 SELECT plan(7);
 
-SELECT todo_start('Complete the no crash tests');
-
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
 
@@ -41,7 +39,5 @@ LANGUAGE plpgsql VOLATILE;
 
 
 SELECT * FROM test_function();
-
-SELECT todo_end();
 
 ROLLBACK;
