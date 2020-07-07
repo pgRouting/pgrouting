@@ -145,7 +145,7 @@ do_pgr_many_to_many_dijkstra(
         std::vector< int64_t >
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 
-        auto n = n_goals <= 0? std::numeric_limits<size_t>::max() : n_goals;
+        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : n_goals;
 
         std::deque< Path >paths;
         if (directed) {
