@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(3);
+SELECT plan(7);
 
 SELECT todo_start('Complete the no crash tests');
 
@@ -17,7 +17,31 @@ SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
 SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
 SELECT set_eq('null_ret_arr', 'SELECT NULL::BIGINT[]', 'Should be empty to tests be meaningful');
 
+
+CREATE OR REPLACE FUNCTION test_function()
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+params TEXT[];
+subs TEXT[];
+BEGIN
+    -- sequentialVertexColoring
+    params = ARRAY[
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_sequentialVertexColoring', params, subs);
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+
+SELECT * FROM test_function();
+
 SELECT todo_end();
 
-SELECT * FROM finish();
 ROLLBACK;
