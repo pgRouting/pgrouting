@@ -33,8 +33,8 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
 * **Unsupported versions:**
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__
-  `2.3 <https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_dijkstraCost.html#pgr-dijkstraCost>`__
-  `2.2 <https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_dijkstraCost.html#pgr-dijkstraCost>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost>`__
+  `2.3 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost>`__
 
 
 Description

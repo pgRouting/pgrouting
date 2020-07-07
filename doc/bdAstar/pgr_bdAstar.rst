@@ -13,7 +13,7 @@ pgr_bdAstar
 ``pgr_bdAstar`` — Returns the shortest path using Bidirectional A* algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org//libs/graph
+   :target: https://www.boost.org//libs/graph/doc/table_of_contents.html
 
    Boost Graph Inside
 
