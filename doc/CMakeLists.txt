@@ -34,6 +34,9 @@ option(BUILD_HTML
 option(BUILD_MAN
     "Set ON|OFF (default=OFF) to build Documentation library tree as MAN page" OFF)
 
+option(LINKCHECK
+    "Set ON|OFF (default=OFF) to build Documentation library tree as LINKCHECK page" OFF)
+
 option(EPUB
     "Set ON|OFF (default=OFF) to build Documentation library tree as EPUB page" OFF)
 
@@ -48,7 +51,7 @@ if (NOT WITH_DOC)
     return()
 endif()
 
-foreach(opt BUILD_HTML BUILD_LATEX BUILD_MAN SINGLEHTML EPUB DUMMY)
+foreach(opt BUILD_HTML BUILD_LATEX BUILD_MAN SINGLEHTML EPUB DUMMY LINKCHECK)
     if (${${opt}} OR WITH_ALL_DOC)
         string(TOLOWER ${opt} val)
         string(REPLACE "build_" "" val ${val})
@@ -111,9 +114,6 @@ foreach(lang ${PGROUTING_SUPPORTED_LANGUAGES})
     endif()
 endforeach()
 
-if (langFound)
-    set(PGROUTING_ENGLISH "")
-endif()
 
 #---------------------------------------------
 # All languages po files are to be generated
