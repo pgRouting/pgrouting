@@ -21,6 +21,7 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
    Boost Graph Inside
 
 .. rubric:: Availability
+
 * Version 3.1.0
 
   * New **Proposed** functions:
@@ -198,14 +199,14 @@ Combinations SQL
 :Example: Five (source, target) vertex combinations from table: one of them has no route (form :math:`1` to :math:`17` -no route-)
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: -- q8
-   :end-before: -- q9
+   :start-after: --q8
+   :end-before: --q9
 
 :Example: Four (source, target) vertex combinations
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: -- q9
-   :end-before: -- q10
+   :start-after: --q9
+   :end-before: --q10
 
 
 Parameters
