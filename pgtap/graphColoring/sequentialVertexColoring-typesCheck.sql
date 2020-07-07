@@ -1,10 +1,13 @@
 \i setup.sql
 
-SELECT plan(1);
+SELECT plan(3);
 
 SELECT todo_start('Complete the types check');
 
-SELECT pass( 'A sample test' );
+SELECT has_function('pgr_sequentialvertexcoloring');
+
+SELECT has_function('pgr_sequentialvertexcoloring', ARRAY['text']);
+SELECT function_returns('pgr_sequentialvertexcoloring', ARRAY['text'],  'setof record');
 
 SELECT todo_end();
 
