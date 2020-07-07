@@ -1,10 +1,10 @@
 \i setup.sql
 
-SELECT plan(1);
+SELECT plan(54);
 
 SELECT todo_start('Complete the inner query tests');
 
-SELECT pass( 'A sample test' );
+SELECT style_dijkstra('pgr_sequentialVertexColoring', ')');
 
 SELECT todo_end();
 
