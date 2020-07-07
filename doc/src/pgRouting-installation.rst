@@ -115,7 +115,7 @@ To upgrade pgRouting in the database to version ${PGROUTING_VERSION} use the fol
 
    ALTER EXTENSION pgrouting UPDATE TO "${PGROUTING_VERSION}";
 
-More information can be found in https://www.postgresql.org/docs/current/static/sql-createextension.html
+More information can be found in https://www.postgresql.org/docs/current/sql-createextension.html
 
 
 .. _install_dependencies:
