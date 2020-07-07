@@ -1,11 +1,13 @@
 /*PGR-GNU*****************************************************************
+File: makeConnected.sql
 
 Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2020 Himanshu Raj
-mail: raj.himanshu2@gmail.com
+Mail: raj.himanshu2@gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -24,32 +26,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
----------------
+------------------
 -- pgr_makeConnected
----------------
-
+------------------
 
 CREATE OR REPLACE FUNCTION pgr_makeConnected(
-    TEXT, -- edges_sql (required)
-
+    TEXT,   -- edges_sql (required)
     OUT seq BIGINT,
-    OUT node_from BIGINT,
+    OUT node_fro BIGINT,
     OUT node_to BIGINT)
+
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_makeConnected(_pgr_get_statement($1));
+    FROM _pgr_makeConnected(_pgr_get_statement($1)) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
-
 -- COMMENTS
-
 
 COMMENT ON FUNCTION pgr_makeConnected(TEXT)
 IS 'pgr_makeConnected
 - EXPERIMENTAL
-- Directed graph
+- Undirected graph
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
