@@ -32,7 +32,7 @@ pgr_vrpOneDepot - Experimental
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_vrpOneDepot.html>`__
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_vrpOneDepot.html>`__
   `2.3 <https://docs.pgrouting.org/2.3/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__
-  `2.2 <https://docs.pgrouting.org/2.2/en/src/vrp_basic/doc/index.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__
   `2.1 <https://docs.pgrouting.org/2.1/en/src/vrp_basic/doc/index.html>`__
 
 

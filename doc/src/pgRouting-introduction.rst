@@ -10,9 +10,16 @@
 Introduction
 ===============================================================================
 
-pgRouting is an extension of `PostGIS <https://postgis.net>`_ and `PostgreSQL <http://postgresql.org>`_ geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche from `Camptocamp <http://camptocamp.com>`_, was later extended by `Orkney <http://www.orkney.co.jp>`_ and renamed to pgRouting. The project is now supported and maintained by `Georepublic <http://georepublic.info>`_, `iMaptools <http://imaptools.com/>`__ and a broad user community.
+pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `PostgreSQL
+<https://www.postgresql.org>`__ geospatial database and adds routing and other
+network analysis functionality. A predecessor of pgRouting – pgDijkstra, written
+by Sylvain Pasche from `Camptocamp <http://camptocamp.com>`__, was later extended
+by `Orkney <http://www.orkney.co.jp>`_ and renamed to pgRouting. The project is
+now supported and maintained by `Georepublic <https://georepublic.info>`__,
+`Paragon Corporation <https://www.paragoncorporation.com/>`__ and a broad user community.
 
-pgRouting is part of `OSGeo Community Projects <https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`_ from the `OSGeo Foundation <http://osgeo.org>`_ and included on `OSGeo Live <http://live.osgeo.org/>`_.
+pgRouting is part of `OSGeo Community Projects <https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`__
+from the `OSGeo Foundation <https://osgeo.org>`__ and included on `OSGeoLive <http://live.osgeo.org/>`__.
 
 
 .. _license:
@@ -71,10 +78,9 @@ Corporate Sponsors (in alphabetical order)
 These are corporate entities that have contributed developer time, hosting, or direct monetary funding to the pgRouting project:
 
 - `Georepublic <https://georepublic.info/en/>`__
-- `Google Summer of Code <https://developers.google.com/open-source/gsoc/>`_
-- `iMaptools <http://imaptools.com>`__
+- `Google Summer of Code <https://summerofcode.withgoogle.com>`__
 - `Leopark <https://www.leopark.mx/>`__
-- `Paragon Corporation <https://www.paragoncorporation.com/>`_
+- `Paragon Corporation <https://www.paragoncorporation.com/>`__
 
 Contributors Past & Present:
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -109,6 +115,7 @@ These are corporate entities that have contributed developer time, hosting, or d
 - Georepublic
 - Google Summer of Code
 - iMaptools
+- Leopark
 - Orkney
 - Paragon Corporation
 - Versaterm Inc.

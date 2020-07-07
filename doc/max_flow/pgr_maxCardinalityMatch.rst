@@ -41,7 +41,7 @@ pgr_maxCardinalityMatch
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__
-  `2.3 <https://docs.pgrouting.org/2.3/en/pgr_maximumCardinalityMatching.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching>`__
 
 
 Description

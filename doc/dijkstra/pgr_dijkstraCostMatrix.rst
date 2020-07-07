@@ -13,7 +13,7 @@ pgr_dijkstraCostMatrix
 ``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using pgr_dijktras.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
 
    Boost Graph Inside
 

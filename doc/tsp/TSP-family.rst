@@ -69,7 +69,7 @@ can be found in the book **Graph Theory (Biggs et  al. 1976)**.
 It is believed that the general form of the TSP have been first studied by Kalr Menger in Vienna and Harvard.
 The problem was later promoted by Hassler, Whitney & Merrill at Princeton.
 A detailed description about the connection between Menger & Whitney, and the development of the
-TSP can be found in `On the history of combinatorial optimization (till 1960) <https://www.cwi.nl/~lex/files/histco.ps>`_
+TSP can be found in `On the history of combinatorial optimization (till 1960) <https://homepages.cwi.nl/~lex/files/histco.ps>`__
 
 Characteristics
 ...............................................................................

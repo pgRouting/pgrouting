@@ -13,7 +13,7 @@ pgr_contraction
 ``pgr_contraction`` — Performs graph contraction and returns the contracted vertices and edges.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
 
    Boost Graph Inside
 
