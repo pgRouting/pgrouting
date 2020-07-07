@@ -2,8 +2,6 @@
 
 SELECT plan(5);
 
-SELECT todo_start('Complete the types check');
-
 SELECT has_function('pgr_sequentialvertexcoloring');
 
 SELECT has_function('pgr_sequentialvertexcoloring', ARRAY['text']);
@@ -23,8 +21,6 @@ SELECT set_eq(
         ('{25,20,20}'::OID[])
     $$
 );
-
-SELECT todo_end();
 
 SELECT * FROM finish();
 ROLLBACK;
