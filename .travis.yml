@@ -35,6 +35,7 @@ jobs:
         POSTGRESQL_VERSION: 9.5
         BUILD_TYPE: "Debug"
         DOCUMENTATION: "OFF"
+        LINKCHECK: "OFF"
 
     - addons:
         postgresql: "9.6"
@@ -50,6 +51,7 @@ jobs:
         POSTGRESQL_VERSION: 9.6
         BUILD_TYPE: "Debug"
         DOCUMENTATION: "OFF"
+        LINKCHECK: "OFF"
 
     - addons:
         postgresql: "10"
@@ -65,6 +67,7 @@ jobs:
         POSTGRESQL_VERSION: 10
         BUILD_TYPE: "Debug"
         DOCUMENTATION: "OFF"
+        LINKCHECK: "OFF"
 
     - addons:
         postgresql: "11"
@@ -84,6 +87,8 @@ jobs:
         POSTGRESQL_VERSION: 11
         BUILD_TYPE: "Debug"
         DOCUMENTATION: "OFF"
+        LINKCHECK: "OFF"
+
     - addons:
         postgresql: "12"
         apt:
@@ -102,6 +107,8 @@ jobs:
         POSTGRESQL_VERSION: 12
         BUILD_TYPE: "Debug"
         DOCUMENTATION: "OFF"
+        LINKCHECK: "OFF"
+
     - addons:
         postgresql: "12"
         apt:
@@ -121,6 +128,28 @@ jobs:
         POSTGRESQL_VERSION: 12
         BUILD_TYPE: "Release"
         DOCUMENTATION: "ON"
+        LINKCHECK: "OFF"
+
+    - addons:
+        postgresql: "12"
+        apt:
+          packages:
+            - postgresql-12-postgis-3
+            - postgresql-server-dev-12
+            - postgresql-12-pgtap
+            - postgresql-client-12
+            - postgresql-client-common
+            - postgresql-common
+            - libtap-parser-sourcehandler-pgtap-perl
+            - libboost-graph-dev
+            - graphviz
+      env:
+        PGPORT: "5433"
+        PGVERSION: 12
+        POSTGRESQL_VERSION: 12
+        BUILD_TYPE: "Release"
+        DOCUMENTATION: "ON"
+        LINKCHECK: "ON"
 
 services:
   - postgresql
@@ -142,11 +171,14 @@ before_script:
   - psql -U postgres -c "CREATE EXTENSION postgis"  -d ___pgr___test___
   - mkdir build
   - cd build
-  - cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWITH_DOC=$DOCUMENTATION ..
+  - if [ "$DOCUMENTATION" == "OFF" ]; then cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE .. ; fi
+  - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "OFF" ] ; then cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWITH_DOC=ON -DES=ON .. ; fi
+  - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "ON" ] ; then cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWITH_DOC=ON -DES=ON -DLINKCHECK="ON" .. ; fi
 
 script:
   - if [ "$DOCUMENTATION" == "OFF" ]; then make -j 4; sudo make install; fi
-  - if [ "$DOCUMENTATION" == "ON" ]; then make doc; fi
+  - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "OFF" ] ; then make doc; fi
+  - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "ON" ] ; then make linkcheck-en; fi
 
   # tests as part of script so if a test fails the build fails
   - cd ..
