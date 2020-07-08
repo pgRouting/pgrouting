@@ -43,15 +43,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 
 
+#include "drivers/spanningTree/mrt_driver.h"
+#include "c_types/pgr_mrt_rt.h"
+#include "spanningTree/pgr_mrt_driver.hpp"
 /************************************************************
   edges_sql TEXT
  ***********************************************************/
 void
 do_pgr_mrt(
-        pgr_edge_t  *data_edges,
-        size_t total_edges,
-        int64_t root_vertex,
-        pgr_ltdtree_rt **return_tuples,
+        pgr_edge_t  *data_edges_1,
+        size_t total_edges_1,
+
+
+        pgr_edge_t *data_edges_2,
+        size_t total_edges_2,
+
+        bool directed,
+        pgr_mrt_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
@@ -62,7 +70,8 @@ do_pgr_mrt(
 
 
     try {
-        pgassert(total_edges != 0);
+        pgassert(total_edges_1 != 0);
+        pgassert(total_edges_2 != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
@@ -72,17 +81,26 @@ do_pgr_mrt(
         std::string logstr;
 
 /***********************Working with graph**************************/
+        graphType gType = directed ? DIRECTED : UNDIRECTED;
 
-        log << "Working with directed Graph\n";
-        graphType gType = DIRECTED;
-        pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges); //Creating graph using data_edges
-        std::vector<pgr_ltdtree_rt> results;
-        pgrouting::functions::Pgr_LTDTree<pgrouting::DirectedGraph> fn_LTDTree;
-        results=fn_LTDTree.pgr_ltdtree(digraph,root_vertex);
+        std::vector<pgr_mrt_rt> results;
 
-        logstr += fn_LTDTree.get_log();
-        log << logstr;
+        if(directed)
+        {
+            log << "Working with directed Graph\n";
+            pgrouting::DirectedGraph digraph_1(gType);
+            digraph_1.insert_edges(data_edges_1, total_edges_1);
+
+            pgrouting::DirectedGraph digraph_2(gType);
+            digraph_2.insert_edges(data_edges_2,total_edges_2);
+            pgrouting::functions::Pgr_mrt<pgrouting::DirectedGraph> fn_mrt;
+            results =fn_mrt.pgr_mrt(digraph_1,digraph_2);
+            logstr += fn_mrt.get_log();
+            log << logstr;
+        }
+
+
+
 
         auto count = results.size();
 
