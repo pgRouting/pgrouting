@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.0.2
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-07-07 20:36-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgid "Search the tickets to see if your problem has already been reported. If s
 msgstr ""
 
 #: ../../build/doc/support.rst:24
-msgid "If your problem is unreported, create a `new issue <https://github.com/pgRouting/pgrouting/issues/new>`_ for it."
+msgid "If your problem is unreported, create a `new issue <https://github.com/pgRouting/pgrouting/issues/new>`__ for it."
 msgstr ""
 
 #: ../../build/doc/support.rst:25
@@ -77,56 +77,47 @@ msgid "For general questions and topics about how to use pgRouting, please write
 msgstr ""
 
 #: ../../build/doc/support.rst:48
-msgid "You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_ and tag the question with ``pgrouting``. Find all questions tagged with ``pgrouting`` under http://gis.stackexchange.com/questions/tagged/pgrouting or subscribe to the `pgRouting questions feed <http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
+msgid "You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_ and tag the question with ``pgrouting``. Find all questions tagged with ``pgrouting`` under https://gis.stackexchange.com/questions/tagged/pgrouting or subscribe to the `pgRouting questions feed <https://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
 msgstr ""
 
-#: ../../build/doc/support.rst:54
+#: ../../build/doc/support.rst:57
 msgid "Commercial Support"
 msgstr ""
 
-#: ../../build/doc/support.rst:56
+#: ../../build/doc/support.rst:59
 msgid "For users who require professional support, development and consulting services, consider contacting any of the following organizations, which have significantly contributed to the development of pgRouting:"
 msgstr ""
 
-#: ../../build/doc/support.rst:61
+#: ../../build/doc/support.rst:64
 msgid "**Company**"
 msgstr ""
 
-#: ../../build/doc/support.rst:62
+#: ../../build/doc/support.rst:65
 msgid "**Offices in**"
 msgstr ""
 
-#: ../../build/doc/support.rst:63
+#: ../../build/doc/support.rst:66
 msgid "**Website**"
 msgstr ""
 
-#: ../../build/doc/support.rst:64
+#: ../../build/doc/support.rst:67
 msgid "Georepublic"
 msgstr ""
 
-#: ../../build/doc/support.rst:65
+#: ../../build/doc/support.rst:68
 msgid "Germany, Japan"
 msgstr ""
 
-#: ../../build/doc/support.rst:66
-msgid "https://georepublic.info"
-msgstr ""
-
-#: ../../build/doc/support.rst:67
-msgid "iMaptools"
-msgstr ""
-
-#: ../../build/doc/support.rst:68
-#: ../../build/doc/support.rst:71
-msgid "United States"
-msgstr ""
-
 #: ../../build/doc/support.rst:69
-msgid "https://imaptools.com"
+msgid "https://georepublic.info"
 msgstr ""
 
 #: ../../build/doc/support.rst:70
 msgid "Paragon Corporation"
+msgstr ""
+
+#: ../../build/doc/support.rst:71
+msgid "United States"
 msgstr ""
 
 #: ../../build/doc/support.rst:72
