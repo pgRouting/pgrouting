@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: topologicalSort_driver.cpp
+File: makeConnected_driver.cpp
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2019 Hang Wu
-mail: nike0good@gmail.com
+Copyright (c) 2020 Himanshu Raj
+Mail: raj.himanshu2@gmail.com
 
 ------
 
@@ -29,17 +29,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/makeConnected/makeConnected_driver.h"
 
-#include <sstream>
-#include <deque>
 #include <vector>
 #include <algorithm>
-#include <limits>
+#include <string>
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "c_types/pgr_makeConnected_t.h"
 
 #include "makeConnected/pgr_makeConnected.hpp"
+#include "cpp_common/pgr_base_graph.hpp"
+
 
 template < class G >
 std::vector<pgr_makeConnected_t>
@@ -50,38 +50,30 @@ pgr_makeConnected(
             graph);
     return results;
 }
-// CREATE OR REPLACE FUNCTION pgr_topologicalSort(
-// sql text,
+
 void
 do_pgr_makeConnected(
-        pgr_edge_t  *data_edges,
-        size_t total_edges,
+                pgr_edge_t  *data_edges,
+                size_t total_edges,
 
-
-        pgr_makeConnected_t **return_tuples,
-        size_t *return_count,
-        char ** log_msg,
-        char ** notice_msg,
-        char ** err_msg) {
+                pgr_makeConnected_t **return_tuples,
+                size_t *return_count,
+                char ** log_msg,
+                char ** notice_msg,
+                char ** err_msg) {
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-
-        // graphType gType =  UNDIRECTED;
+        pgassert(total_edges != 0);
 
         std::vector<pgr_makeConnected_t> results;
         std::string logstr;
-        // log << "Working with Directed Graph\n";
-        // pgrouting::DirectedGraph digraph(gType);
-        // digraph.insert_edges(data_edges, total_edges);
 
         graphType gType = UNDIRECTED;
         log << "Working with Undirected Graph\n";
@@ -89,17 +81,20 @@ do_pgr_makeConnected(
         undigraph.insert_edges(data_edges, total_edges);
         results = pgr_makeConnected(undigraph);
 
+
         auto count = results.size();
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice <<
-                "No vertices";
+                "No Vertices";
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        log << "\nConverting a set of traversals into the tuples";
         for (size_t i = 0; i < count; i++) {
             *((*return_tuples) + i) = results[i];
         }
