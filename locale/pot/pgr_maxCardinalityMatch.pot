@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.0.2
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-07-07 20:36-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/p
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:40
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/pgr_maximumCardinalityMatching.html>`__"
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:48
