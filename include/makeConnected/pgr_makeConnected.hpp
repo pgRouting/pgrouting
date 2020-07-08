@@ -31,15 +31,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/property_map/property_map.hpp>
 #include <boost/ref.hpp>
 #include <vector>
+#include <set>
+#include <map>
 
 #include <boost/graph/boyer_myrvold_planar_test.hpp>
 #include <boost/graph/is_kuratowski_subgraph.hpp>
 
+#include <boost/graph/connected_components.hpp>
+#include <boost/graph/make_connected.hpp>
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "c_types/pgr_makeConnected_t.h"
 //******************************************
 using namespace boost;
+using namespace std;
 namespace pgrouting {
 namespace functions {
 
@@ -49,6 +54,8 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
      typedef typename G::V V;
      typedef typename G::E E;
      typedef typename G::E_i E_i;
+     typedef adjacency_list< vecS, vecS, undirectedS, property<vertex_index_t, int>>adj;
+     typedef boost::graph_traits< adj >::edge_iterator  E_it;
      std::vector<pgr_makeConnected_t> makeConnected(
                  G &graph){
                    return generatemakeConnected(
@@ -58,24 +65,70 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
  private:
      std::vector< pgr_makeConnected_t >
      generatemakeConnected(
-        const G &graph ) {
-       std::vector< pgr_makeConnected_t > results(num_edges(graph.graph));
-       auto check = 1;
-       if(check){
-      E_i ei, ei_end;
-      int i;
-      for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i){
-           int64_t source = graph[graph.source(*ei)].id;
-           int64_t target = graph[graph.target(*ei)].id;
-           // double cost = graph[*ei].cost;
-           log <<"here: " << source<<"\n";
-           results[i].node_fro = source;
-           results[i].node_to = target;
-           // results[i].cost = cost;
+      const G &graph ) {
+
+      adj g;
+      // std::vector< graph_traits<Graph>::vertices_size_type >component(num_vertices(graph.graph));
+      int64_t i=0;
+      // make_connected(graph.graph);
+      E_i  ei, ei_end;
+      map<int64_t,int64_t>mp;
+      for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
+        int64_t src = graph[graph.source(*ei)].id;
+        int64_t tgt = graph[graph.target(*ei)].id;
+        if(mp.find(src)==mp.end()){
+          mp[src] = i;
+          log<<"ye i hai pehla"<<i<<"\n";
+          i++;
+        }if(mp.find(tgt)==mp.end()) {
+          mp[tgt] = i;
+          log<<"ye i hai dusra"<<i<<"\n";
+          i++;
+        }
+        int64_t u = mp[src];
+        int64_t v = mp[tgt];
+        log <<"source "<<src<<" "<<"target "<<tgt<<":::"<<"u "<<u<<" v "<<v<<"\n";
+        add_edge(u,v,g);
       }
 
-    }
-       return results;
+      make_connected(g);
+      E_it e,e_end;
+      std::vector< pgr_makeConnected_t > results(num_edges(g));
+      i=0;
+      for (boost::tie(e, e_end) = edges(g); e != e_end; ++e){
+           auto src = source(*e,g);
+           auto tgt = target(*e,g);
+           log <<"src:"<<src<<" "<<"tgt:"<<tgt<<"\n";
+           results[i].node_fro = src;
+           results[i].node_to = tgt;
+           i++;
+      }
+      return results;
+  // E_1  ei, ei_end;
+  // set<pair<int64_t,int64_t>>st,st2;
+  // for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
+  //          int64_t src = source(*ei,graph.graph);
+  //          int64_t tgt = target(*ei,graph.graph);
+  //          st.insert({src,tgt});
+  //          log<<"src:"<<src<<"tgt:"<<tgt<<"\n";
+  //     }
+  // for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
+  //     if(st.find({source(*ei,graph.graph),target(*ei,graph.graph)})==st.end()){
+  //       st2.insert({source(*ei,graph.graph),target(*ei,graph.graph)});
+  //     }
+  // }
+  // std::vector< pgr_makeConnected_t > results(st2.size());
+  // if(st.size()>0){
+  //   for(auto it :st2) {
+  //     // cout<<it.first<<" "<<it.second<<"\n";
+  //     results[i].node_fro = it.first;
+  //     results[i].node_to = it.second;
+  //     i++;
+  //   }
+  // } else {
+  //
+  // }
+  //  return results;
     }
 };
 }
