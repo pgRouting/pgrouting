@@ -1,14 +1,13 @@
 /*PGR-GNU*****************************************************************
-
-File: topologicalSort_driver.h
+File: makeConnected_driver.h
 
 Generated with Template by:
-Copyright (c) 2020 pgRouting developers
+Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2020 Himanshu Raj
-mail: raj.himanshu2@gmail.com
+Mail: raj.himanshu2@gmail.com
 
 ------
 
@@ -30,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef INCLUDE_DRIVERS_MAKECONNECTED_MAKECONNECTED_DRIVER_H_
 #define INCLUDE_DRIVERS_MAKECONNECTED_MAKECONNECTED_DRIVER_H_
+#pragma once
 
 /* for size-t */
 #ifdef __cplusplus
@@ -40,26 +40,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/pgr_edge_t.h"
 #include "c_types/pgr_makeConnected_t.h"
+#include "c_types/pgr_mst_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    //  CREATE OR REPLACE FUNCTION pgr_makeConnected(
-    //  sql text,
+    /*********************************************************
+    TEXT,
+    ANYARRAY,
+    max_depth BIGINT DEFAULT 9223372036854775807,
+    directed BOOLEAN DEFAULT true
+     ********************************************************/
+
+
     void do_pgr_makeConnected(
-            pgr_edge_t  *data_edges,
-            size_t total_tuples,
+                pgr_edge_t  *data_edges,
+                size_t total_tuples,
+                pgr_makeConnected_t **return_tuples,
+                size_t *return_count,
+                char ** log_msg,
+                char ** notice_msg,
+                char ** err_msg);
 
-            pgr_makeConnected_t **return_tuples,
-            size_t *return_count,
-
-            char** log_msg,
-            char** notice_msg,
-            char** err_msg);
 
 #ifdef __cplusplus
-    }
+}
 #endif
 
 #endif  // INCLUDE_DRIVERS_MAKECONNECTED_MAKECONNECTED_DRIVER_H_
