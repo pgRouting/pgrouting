@@ -5,7 +5,15 @@ name: Check Documentation Links
 # - postgres 12
 # - postgis 3
 
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore:
+      - 'translations_*'
+    tags: []
+  pull_request:
+    paths-ignore:
+      - '**.po'
+
 
 jobs:
   build:

@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 # 
 # Translators:
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-07-07 20:36-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -167,19 +167,19 @@ msgstr "Actualización de la base de datos"
 
 #: ../../build/doc/pgRouting-installation.rst:110
 msgid ""
-"To upgrade pgRouting in the database to version 3.0.0 use the following "
+"To upgrade pgRouting in the database to version 3.0.2 use the following "
 "command:"
 msgstr ""
-"Para actualizar pgRouting en la base de datos a la versión 3.0.0, utilice el"
+"Para actualizar pgRouting en la base de datos a la versión 3.0.2, utilice el"
 " siguiente comando:"
 
 #: ../../build/doc/pgRouting-installation.rst:118
 msgid ""
-"More information can be found in "
-"https://www.postgresql.org/docs/current/static/sql-createextension.html"
+"More information can be found in https://www.postgresql.org/docs/current"
+"/sql-createextension.html"
 msgstr ""
-"Puede encontrar más información en "
-"https://www.postgresql.org/docs/current/static/sql-createextension.html"
+"Puede hallar más información en https://www.postgresql.org/docs/current/sql-"
+"createextension.html"
 
 #: ../../build/doc/pgRouting-installation.rst:124
 msgid "Dependencies"
@@ -479,3 +479,17 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgRouting-installation.rst:318
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid ""
+#~ "To upgrade pgRouting in the database to version 3.0.0 use the following "
+#~ "command:"
+#~ msgstr ""
+#~ "Para actualizar pgRouting en la base de datos a la versión 3.0.0, utilice el"
+#~ " siguiente comando:"
+
+#~ msgid ""
+#~ "More information can be found in "
+#~ "https://www.postgresql.org/docs/current/static/sql-createextension.html"
+#~ msgstr ""
+#~ "Puede encontrar más información en "
+#~ "https://www.postgresql.org/docs/current/static/sql-createextension.html"
