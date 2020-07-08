@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_3_0_2`
 * :ref:`changelog_3_0_1`
 * :ref:`changelog_3_0_0`
 * :ref:`changelog_2_6_3`
@@ -48,19 +49,37 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog end
 
+.. _changelog_3_0_2:
+
+pgRouting 3.0.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.2
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github.
+
+.. rubric:: Issues fixes
+
+* `#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual Studio build failing
+
 .. _changelog_3_0_1:
 
 pgRouting 3.0.1 Release Notes
 -------------------------------------------------------------------------------
 
-.. rubric:: Bug fixes
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github.
 
-* `#1361 <https://github.com/pgRouting/pgrouting/pull/1361>`__: Add code to interrupt the execution
+.. rubric:: Issues fixes
+
+* `#232 <https://github.com/pgRouting/pgrouting/issues/232>`__:  Honor client cancel requests in C /C++ code
 
 .. _changelog_3_0_0:
 
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github.
 
 .. rubric:: Fixed Issues
 

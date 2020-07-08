@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include <vector>
+#include <limits>
 #include <algorithm>
 
 #include "cpp_common/pgr_assert.h"
@@ -46,7 +47,7 @@ typename std::enable_if<!std::numeric_limits<T>::is_integer, bool>::type
         || std::abs(x-y) < std::numeric_limits<T>::min();
 }
 
-}
+}  // namespace
 
 namespace pgrouting {
 

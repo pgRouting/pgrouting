@@ -88,7 +88,6 @@ do_pgr_breadthFirstSearch(
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
 
         std::vector<pgr_mst_rt> results;
-        std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);

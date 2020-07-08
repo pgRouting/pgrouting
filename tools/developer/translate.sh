@@ -4,7 +4,7 @@ set -e
 
 
 cd build/
-rm -rf *
+rm -rf ./*
 cmake -DHTML=ON -DDOC_USE_BOOTSTRAP=ON ..
 make doc
 cd ..

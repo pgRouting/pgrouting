@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <functional>
 #include <limits>
+#include <map>
 #include <numeric>
 
 #include "cpp_common/basePath_SSEC.hpp"
@@ -137,7 +138,7 @@ class Pgr_dijkstra {
      // preparation for many to distance
      std::deque< Path > drivingDistance(
              G &graph,
-             const std::vector< int64_t > start_vertex,
+             const std::vector< int64_t > &start_vertex,
              double distance,
              bool equicost,
              std::ostringstream &the_log) {
@@ -212,7 +213,7 @@ class Pgr_dijkstra {
              int64_t start_vertex,
              const std::vector< int64_t > &end_vertex,
              bool only_cost,
-             size_t n_goals = std::numeric_limits<size_t>::max()) {
+             size_t n_goals = (std::numeric_limits<size_t>::max)()) {
          // adjust predecessors and distances vectors
          clear();
 
@@ -277,7 +278,7 @@ class Pgr_dijkstra {
              const std::vector< int64_t > &start_vertex,
              const std::vector< int64_t > &end_vertex,
              bool only_cost,
-             size_t n_goals = std::numeric_limits<size_t>::max()) {
+             size_t n_goals = (std::numeric_limits<size_t>::max)()) {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
 
@@ -675,7 +676,7 @@ class Pgr_dijkstra {
              G &graph,
              V source,
              const std::vector< V > &targets,
-             size_t n_goals = std::numeric_limits<size_t>::max()) {
+             size_t n_goals = (std::numeric_limits<size_t>::max)()) {
          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
          try {

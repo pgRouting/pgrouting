@@ -13,7 +13,7 @@ pgr_aStar
 ``pgr_aStar`` — Shortest path using A* algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org//libs/graph/doc/astar_search.html
+   :target: https://www.boost.org/libs/graph/doc/astar_search.html
 
    Boost Graph Inside
 

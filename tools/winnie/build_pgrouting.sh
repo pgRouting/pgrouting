@@ -70,6 +70,7 @@ BOOST_VER=1.59.0
 BOOST_VER_WU=1_59_0
 BOOST_VER_WUM=1_59
 ZLIB_VER=1.2.8
+echo "${BOOST_VER}"
 
 if [ $JENKINS_DEBUG -eq 1 ]
 then
@@ -223,4 +224,4 @@ else
 fi
 
 cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib"
-strip *.dll
+strip ./*.dll

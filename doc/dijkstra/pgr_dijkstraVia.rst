@@ -18,7 +18,7 @@ a list of vertices.
    :end-before: stable-end-warning
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph
+   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
 
    Boost Graph Inside
 

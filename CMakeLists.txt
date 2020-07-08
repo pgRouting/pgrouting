@@ -33,7 +33,7 @@ include(pgr/BuildType)
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING VERSION 3.0.1
+project(PGROUTING VERSION 3.0.2
     LANGUAGES C CXX )
 set(PGROUTING_VERSION_DEV "")
 
@@ -370,23 +370,24 @@ if(WIN32 AND MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}")
 endif()
 
-CHECK_C_COMPILER_FLAG("-frounding-math" C_COMPILER_SUPPORTS_ROUNDING_MATH)
-CHECK_CXX_COMPILER_FLAG("-frounding-math" CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
-if(C_COMPILER_SUPPORTS_ROUNDING_MATH)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -frounding-math ")
-endif()
-if(CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frounding-math ")
-endif()
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    CHECK_C_COMPILER_FLAG("-frounding-math" C_COMPILER_SUPPORTS_ROUNDING_MATH)
+    CHECK_CXX_COMPILER_FLAG("-frounding-math" CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
+    if(C_COMPILER_SUPPORTS_ROUNDING_MATH)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -frounding-math ")
+    endif()
+    if(CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frounding-math ")
+    endif()
 
-# TODO use -Werror when TRSP gets rewritten
-set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -Wmissing-prototypes -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
-if(BOOST_Geometry_VERSION_OK)
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wconversion -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
-else()
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+    # TODO use -Werror when TRSP gets rewritten
+    set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -Wmissing-prototypes -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+    if(BOOST_Geometry_VERSION_OK)
+        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wconversion -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+    else()
+        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+    endif()
 endif()
-
 
 
 
