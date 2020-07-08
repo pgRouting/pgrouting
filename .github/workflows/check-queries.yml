@@ -6,6 +6,8 @@ on:
       - 'translations_*'
     tags: []
   pull_request:
+    paths-ignore:
+      - '**.po'
 
 jobs:
   build:
