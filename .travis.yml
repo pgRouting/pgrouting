@@ -178,7 +178,7 @@ before_script:
 script:
   - if [ "$DOCUMENTATION" == "OFF" ]; then make -j 4; sudo make install; fi
   - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "OFF" ] ; then make doc; fi
-  - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "ON" ] ; then make linkcheck-en; fi
+  - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "ON" ] ; then make linkcheck-en; make linkcheck-es; fi
 
   # tests as part of script so if a test fails the build fails
   - cd ..
