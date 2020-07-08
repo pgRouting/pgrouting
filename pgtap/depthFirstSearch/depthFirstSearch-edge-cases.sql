@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(71);
+SELECT plan(72);
 
 
 
@@ -19,54 +19,42 @@ SELECT is_empty('q1', 'q1: Graph with 0 edge and 0 vertex');
 PREPARE depthFirstSearch2 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     5
 );
 
 PREPARE depthFirstSearch3 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     ARRAY[5]
 );
 
 PREPARE depthFirstSearch4 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     ARRAY[2, 5]
 );
 
 PREPARE depthFirstSearch5 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     5, max_depth => 2
 );
 
 PREPARE depthFirstSearch6 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     ARRAY[5], max_depth => 2
 );
 
 PREPARE depthFirstSearch7 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     ARRAY[2, 5], max_depth => 2
 );
 
@@ -82,54 +70,42 @@ SELECT is_empty('depthFirstSearch7', '7: Graph with 0 edge and 0 vertex -> Empty
 PREPARE depthFirstSearch8 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     5, directed => false
 );
 
 PREPARE depthFirstSearch9 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     ARRAY[5], directed => false
 );
 
 PREPARE depthFirstSearch10 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     ARRAY[2, 5], directed => false
 );
 
 PREPARE depthFirstSearch11 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     5, max_depth => 2, directed => false
 );
 
 PREPARE depthFirstSearch12 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     ARRAY[5], max_depth => 2, directed => false
 );
 
 PREPARE depthFirstSearch13 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id > 18',
+    'q1',
     ARRAY[2, 5], max_depth => 2, directed => false
 );
 
@@ -144,53 +120,56 @@ SELECT is_empty('depthFirstSearch13', '13: Graph with 0 edge and 0 vertex -> Emp
 
 
 
+-- vertex not present in graph tests
+
+PREPARE q14 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table;
+
+-- pgRouting Sample Data
+SELECT isnt_empty('q14', 'q14: pgRouting Sample Data');
+
 -- vertex not present in graph tests (directed)
 
 PREPARE depthFirstSearch14 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     -10
 );
 
 PREPARE depthFirstSearch15 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[-10]
 );
 
 PREPARE depthFirstSearch16 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[20, -10]
 );
 
 PREPARE depthFirstSearch17 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     -10, max_depth => 2
 );
 
 PREPARE depthFirstSearch18 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[-10], max_depth => 2
 );
 
 PREPARE depthFirstSearch19 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[20, -10], max_depth => 2
 );
 
@@ -206,48 +185,42 @@ SELECT is_empty('depthFirstSearch19', '19: Vertex not present in graph -> Empty 
 PREPARE depthFirstSearch20 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     -10, directed => false
 );
 
 PREPARE depthFirstSearch21 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[-10], directed => false
 );
 
 PREPARE depthFirstSearch22 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[20, -10], directed => false
 );
 
 PREPARE depthFirstSearch23 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     -10, max_depth => 2, directed => false
 );
 
 PREPARE depthFirstSearch24 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[-10], max_depth => 2, directed => false
 );
 
 PREPARE depthFirstSearch25 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[20, -10], max_depth => 2, directed => false
 );
 
@@ -268,48 +241,42 @@ SELECT is_empty('depthFirstSearch25', '25: Vertex not present in graph -> Empty 
 PREPARE depthFirstSearch26 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     4, max_depth => -3
 );
 
 PREPARE depthFirstSearch27 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[4], max_depth => -3
 );
 
 PREPARE depthFirstSearch28 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[4, 20], max_depth => -3
 );
 
 PREPARE depthFirstSearch29 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     4, max_depth => -3, directed => false
 );
 
 PREPARE depthFirstSearch30 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[4], max_depth => -3, directed => false
 );
 
 PREPARE depthFirstSearch31 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'q14',
     ARRAY[4, 20], max_depth => -3, directed => false
 );
 
@@ -339,36 +306,28 @@ SELECT set_eq('q32', $$VALUES (2, 2, 2, -1, 1)$$, 'q32: Graph with only vertex 2
 PREPARE depthFirstSearch33 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, 2 AS target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 2',
+    'q32',
     2
 );
 
 PREPARE depthFirstSearch34 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, 2 AS target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 2',
+    'q32',
     ARRAY[2]
 );
 
 PREPARE depthFirstSearch35 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, 2 AS target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 2',
+    'q32',
     2, max_depth => 2
 );
 
 PREPARE depthFirstSearch36 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, 2 AS target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 2',
+    'q32',
     ARRAY[2], max_depth => 2
 );
 
@@ -382,36 +341,28 @@ SELECT set_eq('depthFirstSearch36', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '36: One 
 PREPARE depthFirstSearch37 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, 2 AS target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 2',
+    'q32',
     2, directed => false
 );
 
 PREPARE depthFirstSearch38 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, 2 AS target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 2',
+    'q32',
     ARRAY[2], directed => false
 );
 
 PREPARE depthFirstSearch39 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, 2 AS target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 2',
+    'q32',
     2, max_depth => 2, directed => false
 );
 
 PREPARE depthFirstSearch40 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, 2 AS target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 2',
+    'q32',
     ARRAY[2], max_depth => 2, directed => false
 );
 
@@ -439,54 +390,42 @@ SELECT set_eq('q41', $$VALUES (5, 3, 6, 1, -1)$$, 'q41: Graph with two vertices 
 PREPARE depthFirstSearch42 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     3
 );
 
 PREPARE depthFirstSearch43 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     ARRAY[3]
 );
 
 PREPARE depthFirstSearch44 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     6
 );
 
 PREPARE depthFirstSearch45 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     ARRAY[6]
 );
 
 PREPARE depthFirstSearch46 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     3, max_depth => 1
 );
 
 PREPARE depthFirstSearch47 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     3, max_depth => 0
 );
 
@@ -502,54 +441,42 @@ SELECT set_eq('depthFirstSearch47', $$VALUES (1, 0, 3, 3, -1, 0, 0)$$, '47: One 
 PREPARE depthFirstSearch48 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     3, directed => false
 );
 
 PREPARE depthFirstSearch49 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     ARRAY[3], directed => false
 );
 
 PREPARE depthFirstSearch50 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     6, directed => false
 );
 
 PREPARE depthFirstSearch51 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     ARRAY[6], directed => false
 );
 
 PREPARE depthFirstSearch52 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     3, max_depth => 1, directed => false
 );
 
 PREPARE depthFirstSearch53 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 5',
+    'q41',
     3, max_depth => 0, directed => false
 );
 
@@ -598,40 +525,35 @@ SELECT set_eq('q54',
 PREPARE depthFirstSearch55 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM three_vertices_table',
+    'q54',
     3
 );
 
 PREPARE depthFirstSearch56 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM three_vertices_table',
+    'q54',
     6
 );
 
 PREPARE depthFirstSearch57 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM three_vertices_table',
+    'q54',
     6, max_depth => 1
 );
 
 PREPARE depthFirstSearch58 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM three_vertices_table',
+    'q54',
     2
 );
 
 PREPARE depthFirstSearch59 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM three_vertices_table',
+    'q54',
     ARRAY[6, 3, 6]
 );
 
@@ -682,24 +604,21 @@ SELECT set_eq('depthFirstSearch59',
 PREPARE depthFirstSearch60 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM three_vertices_table',
+    'q54',
     3, directed => false
 );
 
 PREPARE depthFirstSearch61 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM three_vertices_table',
+    'q54',
     6, directed => false
 );
 
 PREPARE depthFirstSearch62 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM three_vertices_table',
+    'q54',
     6, max_depth => 1, directed => false
 );
 
@@ -757,40 +676,28 @@ SELECT set_eq('q63',
 PREPARE depthFirstSearch64 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE (id >= 10 AND id <= 12)
-        OR id = 8',
+    'q63',
     5
 );
 
 PREPARE depthFirstSearch65 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE (id >= 10 AND id <= 12)
-        OR id = 8',
+    'q63',
     6
 );
 
 PREPARE depthFirstSearch66 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE (id >= 10 AND id <= 12)
-        OR id = 8',
+    'q63',
     10
 );
 
 PREPARE depthFirstSearch67 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE (id >= 10 AND id <= 12)
-        OR id = 8',
+    'q63',
     11
 );
 
@@ -836,40 +743,28 @@ SELECT set_eq('depthFirstSearch67',
 PREPARE depthFirstSearch68 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE (id >= 10 AND id <= 12)
-        OR id = 8',
+    'q63',
     5, directed => false
 );
 
 PREPARE depthFirstSearch69 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE (id >= 10 AND id <= 12)
-        OR id = 8',
+    'q63',
     6, directed => false
 );
 
 PREPARE depthFirstSearch70 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE (id >= 10 AND id <= 12)
-        OR id = 8',
+    'q63',
     10, directed => false
 );
 
 PREPARE depthFirstSearch71 AS
 SELECT *
 FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE (id >= 10 AND id <= 12)
-        OR id = 8',
+    'q63',
     11, directed => false
 );
 
