@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 -- pgr_mrt
 ---------------
-CREATE OR REPLACE FUNCTION pgr_LTDTree(
+CREATE OR REPLACE FUNCTION pgr_mrt(
     edges_sql1 TEXT, -- edges_sql1 (required)
     edges_sql2 TEXT, -- edges_sql2 (required)
     directed BOOLEAN DEFAULT true,
