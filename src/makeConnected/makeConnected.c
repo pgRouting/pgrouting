@@ -84,9 +84,8 @@ process(
         &log_msg,
         &notice_msg,
         &err_msg);
-
+    // log <<"here\n";
     time_msg(" processing pgr_makeConnected", start_t, clock());
-    time_msg(" processing pgr_makeConnghftthddected", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
