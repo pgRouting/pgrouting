@@ -45,20 +45,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_types/pgr_mrt_rt.h"
+
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 
-#include "drivers/LTDTree/LTDTree_driver.h"
-
-PGDLLEXPORT Datum _pgr_ltdtree(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_ltdtree);
+#include "drivers/spanningTree/mrt_driver.h"
+#include "c_types/pgr_mrt_rt.h"
+PGDLLEXPORT Datum _pgr_mrt(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_mrt);
 
 
 static
 void
-process(char* edges_sql1,
-        char* edges_sql2,
+process(char* edges_sql_1,
+        char* edges_sql_2,
         bool directed,
         pgr_mrt_rt **result_tuples,
         size_t *result_count) {
@@ -66,22 +66,29 @@ process(char* edges_sql1,
     // but it will count, initially it is 0
     pgr_SPI_connect();
 
-    size_t total_edges = 0;
-    pgr_edge_t* edges = NULL;
-    pgr_get_edges(edges_sql, &edges, &total_edges);
-    if (total_edges == 0) {
+    size_t total_edges_1 = 0;
+    pgr_edge_t* edges_1 = NULL;
+    pgr_get_edges(edges_sql_1, &edges_1, &total_edges_1);
+    if (total_edges_1 == 0) {
         pgr_SPI_finish();
         return;
     }
-
+    size_t total_edges_2 = 0;
+    pgr_edge_t* edges_2 = NULL;
+    pgr_get_edges(edges_sql_2, &edges_2, &total_edges_2);
+    if (total_edges_2 == 0) {
+        pgr_SPI_finish();
+        return;
+    }
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
     do_pgr_mrt(
-            edges, total_edges,
-            root_vertex,
+            edges_1, total_edges_1,
+            edges_2,total_edges_2,
+            directed,
             result_tuples, result_count,
             &log_msg,
             &notice_msg,
@@ -101,12 +108,13 @@ process(char* edges_sql1,
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
+    if (edges_1) pfree(edges_1);
+    if(edges_2) pfree(edges_2);
     pgr_SPI_finish();
 }
 
 PGDLLEXPORT Datum
-_pgr_ltdtree(PG_FUNCTION_ARGS) {
+_pgr_mrt(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
