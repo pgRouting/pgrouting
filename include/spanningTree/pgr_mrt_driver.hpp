@@ -37,11 +37,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_messages.h"
 #include <iostream>
 #include <algorithm>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/dominator_tree.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/property_map/vector_property_map.hpp>
-#include <boost/type_traits.hpp>
+
+#include "c_types/pgr_mrt_rt.h"
+
+using namespace boost;
+using namespace  std;
+
+namespace pgrouting {
+    namespace functions {
+
+        template<class Graph>
+        class Pgr_mrt : public pgrouting::Pgr_messages {
+        public:
+            std::vector<pgr_mrt_rt> results;
+
+            std::vector<pgr_mrt_rt> pgr_mrt(
+                Graph &graph_1,
+                Graph &graph_2
+
+                    ){
+                log<<"Inside main boost driver"<<endl;
+                return results;
+
+            }
+        };
+    }
+}
+
 
 
 #endif  // INCLUDE_PGR_MRT_DRIVER_HPP
