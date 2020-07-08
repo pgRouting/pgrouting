@@ -171,7 +171,10 @@ before_script:
   - psql -U postgres -c "CREATE EXTENSION postgis"  -d ___pgr___test___
   - mkdir build
   - cd build
-  - if [ "$TRAVIS_COMMIT_MESSAGE" != *"translation completed for the source file"* ]; then DOCUMENTATION=ON; fi
+  - MSGREGEXP="^.*translation completed for the source file.*$"
+  - if [[ $TRAVIS_COMMIT_MESSAGE =~ $MSGREGEXP ]]; then DOCUMENTATION=ON; fi
+  - echo "msg $TRAVIS_COMMIT_MESSAGE"
+  # Doing the work
   - if [ "$DOCUMENTATION" == "OFF" ]; then cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE .. ; fi
   - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "OFF" ] ; then cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWITH_DOC=ON -DES=ON .. ; fi
   - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "ON" ] ; then cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWITH_DOC=ON -DES=ON -DLINKCHECK="ON" .. ; fi
