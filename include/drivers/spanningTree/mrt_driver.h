@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "c_types/pgr_edge_t.h"
+#include "c_types/pgr_mrt_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -53,11 +54,14 @@ extern "C" {
  ********************************************************/
 void
 do_pgr_mrt(
-        pgr_edge_t  *data_edges1,
-        size_t total_tuples,
-        pgr_edge_t  *data_edges2,
-        size_t total_tuples2,
-        pgr_ltdtree_rt **return_tuples,
+        pgr_edge_t  *data_edges_1,
+        size_t total_tuples_1,
+
+        pgr_edge_t  *data_edges_2,
+        size_t total_tuples_2,
+
+        bool directed,
+        pgr_mrt_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
