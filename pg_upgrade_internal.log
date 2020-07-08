@@ -1,0 +1,6 @@
+
+-----------------------------------------------------------------
+  pg_upgrade run on Tue Jul  7 17:27:27 2020
+-----------------------------------------------------------------
+
+could not open version file "/var/lib/postgresql/10/main/PG_VERSION": Permission denied

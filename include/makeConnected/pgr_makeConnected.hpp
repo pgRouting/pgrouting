@@ -32,44 +32,52 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/ref.hpp>
 #include <vector>
 
-#include <boost/graph/connected_components.hpp>
-#include <boost/graph/make_connected.hpp>
+#include <boost/graph/boyer_myrvold_planar_test.hpp>
+#include <boost/graph/is_kuratowski_subgraph.hpp>
 
-#include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/pgr_messages.h"
+#include "cpp_common/pgr_base_graph.hpp"
 #include "c_types/pgr_makeConnected_t.h"
-
 //******************************************
 using namespace boost;
 namespace pgrouting {
 namespace functions {
 
-  template < class G >
-  class Pgr_makeConnected : public pgrouting::Pgr_messages{
-   public:
-       typedef typename G::V V;
-       typedef typename G::E E;
-       typedef typename G::E_i E_i;
-       std::vector<pgr_makeConnected_t> makeConnected(
-                   G &graph){
-                     return generatemakeConnected(
-                                            graph);
-                   }
-   private:
+template < class G >
+class Pgr_makeConnected : public pgrouting::Pgr_messages {
+ public:
+     typedef typename G::V V;
+     typedef typename G::E E;
+     typedef typename G::E_i E_i;
+     std::vector<pgr_makeConnected_t> makeConnected(
+                 G &graph){
+                   return generatemakeConnected(
+                                          graph);
+                 }
+
+ private:
      std::vector< pgr_makeConnected_t >
      generatemakeConnected(
         const G &graph ) {
        std::vector< pgr_makeConnected_t > results(num_edges(graph.graph));
+       auto check = 1;
+       if(check){
       E_i ei, ei_end;
-      int i=0;
-            log << "here:\n"<< i;
-            // std::cout << i <<" ";
-           results[0].node_from = results.size();
-           results[0].node_to = results.size();
+      int i;
+      for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i){
+           int64_t source = graph[graph.source(*ei)].id;
+           int64_t target = graph[graph.target(*ei)].id;
+           // double cost = graph[*ei].cost;
+           log <<"here: " << source<<"\n";
+           results[i].node_fro = source;
+           results[i].node_to = target;
+           // results[i].cost = cost;
+      }
 
+    }
        return results;
     }
-  };
+};
 }
 }
 
