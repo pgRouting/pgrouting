@@ -94,7 +94,20 @@ do_pgr_mrt(
             pgrouting::DirectedGraph digraph_2(gType);
             digraph_2.insert_edges(data_edges_2,total_edges_2);
             pgrouting::functions::Pgr_mrt<pgrouting::DirectedGraph> fn_mrt;
-            results =fn_mrt.pgr_mrt(digraph_1,digraph_2);
+            results =fn_mrt.pgr_mrt(digraph_1,digraph_2,directed);
+            logstr += fn_mrt.get_log();
+            log << logstr;
+        }
+        else
+        {
+            log << "Working with directed Graph\n";
+            pgrouting::UndirectedGraph undigraph_1(gType);
+            undigraph_1.insert_edges(data_edges_1, total_edges_1);
+
+            pgrouting::UndirectedGraph undigraph_2(gType);
+            undigraph_2.insert_edges(data_edges_2,total_edges_2);
+            pgrouting::functions::Pgr_mrt<pgrouting::UndirectedGraph> fn_mrt;
+            results =fn_mrt.pgr_mrt(undigraph_1,undigraph_2,directed);
             logstr += fn_mrt.get_log();
             log << logstr;
         }
