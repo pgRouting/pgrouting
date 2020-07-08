@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-07-07 20:36-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,14 +143,14 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:110
 msgid ""
-"To upgrade pgRouting in the database to version 3.0.0 use the following "
+"To upgrade pgRouting in the database to version 3.0.2 use the following "
 "command:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:118
 msgid ""
-"More information can be found in "
-"https://www.postgresql.org/docs/current/static/sql-createextension.html"
+"More information can be found in https://www.postgresql.org/docs/current"
+"/sql-createextension.html"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:124
@@ -434,4 +434,16 @@ msgstr ""
 #: ../../build/doc/pgRouting-installation.rst:318
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid ""
+#~ "To upgrade pgRouting in the database "
+#~ "to version 3.0.0 use the following "
+#~ "command:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "More information can be found in "
+#~ "https://www.postgresql.org/docs/current/static/sql-"
+#~ "createextension.html"
+#~ msgstr ""
 

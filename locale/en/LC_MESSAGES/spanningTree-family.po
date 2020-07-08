@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-07-07 20:36-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,9 +58,10 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/spanningTree-family.rst:40
+#, python-format
 msgid ""
 "`Wikipedia: Prim's algorithm "
-"<https://en.wikipedia.org/wiki/Prim'_algorithm>`__"
+"<https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr ""
 
 #: ../../build/doc/spanningTree-family.rst:43
@@ -74,4 +75,9 @@ msgstr ""
 #: ../../build/doc/spanningTree-family.rst:45
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid ""
+#~ "`Wikipedia: Prim's algorithm "
+#~ "<https://en.wikipedia.org/wiki/Prim'_algorithm>`__"
+#~ msgstr ""
 
