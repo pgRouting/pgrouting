@@ -23,7 +23,7 @@ This function analyzes oneway streets in a graph and identifies any flipped segm
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_analyzeOneWay.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_analyzeOneWay.html>`__)
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_analyzeOneWay.html>`__
 
 * **Unsupported versions:**

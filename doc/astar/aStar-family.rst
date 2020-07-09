@@ -30,7 +30,7 @@ The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a h
 .. rubric:: Previous versions of this page
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/aStar-family.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/3.0/en/aStar-family.html>`__)
   `2.6 <https://docs.pgrouting.org/2.6/en/aStar-family.html>`__
 
 * **Unsupported versions:**

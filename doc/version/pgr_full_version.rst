@@ -21,7 +21,7 @@ pgr_full_version
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_full_version.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_full_version.html>`__)
 
 
 Description

@@ -31,7 +31,7 @@ the flow and minimizes the cost from the sources to the targets.
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_maxFlowMinCost.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxFlowMinCost.html>`__)
 
 Description
 -------------------------------------------------------------------------------

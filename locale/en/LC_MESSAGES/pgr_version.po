@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-07-09 09:02-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgstr ""
 #: ../../build/doc/pgr_version.rst:28
 msgid ""
 "**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_version.html>`__)"
+"<https://docs.pgrouting.org/3.0/en/pgr_version.html>`__)"
 msgstr ""
 
 #: ../../build/doc/pgr_version.rst:31
@@ -129,4 +129,9 @@ msgstr ""
 #: ../../build/doc/pgr_version.rst:78
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_version.html>`__)"
+#~ msgstr ""
 

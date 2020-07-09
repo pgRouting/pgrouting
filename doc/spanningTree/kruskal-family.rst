@@ -36,7 +36,7 @@ Kruskal - Family of functions
 .. rubric:: Previous versions of this page
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/kruskal-family.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/3.0/en/kruskal-family.html>`__)
 
 Description
 -------------------------------------------------------------------------------

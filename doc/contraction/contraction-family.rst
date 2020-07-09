@@ -25,7 +25,7 @@ Contraction - Family of functions
 .. rubric:: Previous versions of this page
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/contraction-family.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html>`__)
   `2.6 <https://docs.pgrouting.org/2.6/en/contraction-family.html>`__
 
 * **Unsupported versions:**
