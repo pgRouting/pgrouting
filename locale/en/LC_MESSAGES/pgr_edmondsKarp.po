@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-07-09 09:02-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,7 +71,7 @@ msgstr ""
 #: ../../build/doc/pgr_edmondsKarp.rst:38
 msgid ""
 "**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_edmondsKarp.html>`__)"
+"<https://docs.pgrouting.org/3.0/en/pgr_edmondsKarp.html>`__)"
 msgstr ""
 
 #: ../../build/doc/pgr_edmondsKarp.rst:41
@@ -419,4 +419,9 @@ msgstr ""
 #: ../../build/doc/pgr_edmondsKarp.rst:173
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_edmondsKarp.html>`__)"
+#~ msgstr ""
 

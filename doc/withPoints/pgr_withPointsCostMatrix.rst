@@ -29,7 +29,7 @@ pgr_withPointsCostMatrix - proposed
 
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_withPointsCostMatrix.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsCostMatrix.html>`__)
 
 * **Unsupported versions:**
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPointsCostMatrix.html>`__
