@@ -4,18 +4,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 # 
 # Translators:
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
 # MarPetra <mvergaratrejo@gmail.com>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-07-09 09:02-0500\n"
 "PO-Revision-Date: 2019-09-07 11:57+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,11 +61,11 @@ msgstr "Nueva función **Oficial**"
 #: ../../build/doc/pgr_dijkstraCost.rst:29
 msgid ""
 "**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_dijkstraCost.html>`__) `2.6 "
+"<https://docs.pgrouting.org/3.0/en/pgr_dijkstraCost.html>`__) `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__"
 msgstr ""
 "**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_dijkstraCost.html>`__) `2.6 "
+"<https://docs.pgrouting.org/3.0/es/pgr_dijkstraCost.html>`__) `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:33
@@ -73,18 +73,18 @@ msgid ""
 "**Unsupported versions:** `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__ `2.4 "
 "<https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
-"dijkstraCost>`__ `2.2 "
-"<https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
-"dijkstraCost>`__"
+"<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraCost.html"
+"#pgr-dijkstracost>`__ `2.3 "
+"<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraCost.html"
+"#pgr-dijkstracost>`__"
 msgstr ""
 "**Versiones no soportadas:** `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__ `2.4 "
 "<https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
-"dijkstraCost>`__ `2.2 "
-"<https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
-"dijkstraCost>`__"
+"<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraCost.html"
+"#pgr-dijkstracost>`__ `2.3 "
+"<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraCost.html"
+"#pgr-dijkstracost>`__"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_dijkstra.rst:4
@@ -530,3 +530,29 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_dijkstraCost.rst:226
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__ `2.4 "
+#~ "<https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__ `2.3 "
+#~ "<https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
+#~ "dijkstraCost>`__ `2.2 "
+#~ "<https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
+#~ "dijkstraCost>`__"
+#~ msgstr ""
+#~ "**Versiones no soportadas:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__ `2.4 "
+#~ "<https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__ `2.3 "
+#~ "<https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
+#~ "dijkstraCost>`__ `2.2 "
+#~ "<https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_dijkstraCost.html#pgr-"
+#~ "dijkstraCost>`__"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_dijkstraCost.html>`__) `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_dijkstraCost.html>`__) `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__"
