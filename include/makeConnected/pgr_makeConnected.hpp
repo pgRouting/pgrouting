@@ -54,8 +54,8 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
      typedef typename G::V V;
      typedef typename G::E E;
      typedef typename G::E_i E_i;
-     typedef adjacency_list< vecS, vecS, undirectedS, property<vertex_index_t, int>>adj;
-     typedef boost::graph_traits< adj >::edge_iterator  E_it;
+     typedef adjacency_list< vecS, vecS, undirectedS, property<vertex_index_t, int>>Graph;
+     typedef boost::graph_traits< Graph >::edge_iterator  E_it;
      std::vector<pgr_makeConnected_t> makeConnected(
                  G &graph){
                    return generatemakeConnected(
@@ -66,20 +66,29 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
      std::vector< pgr_makeConnected_t >
      generatemakeConnected(
        G &graph ) {
-      // std::vector< graph_traits<Graph>::vertices_size_type >component(num_vertices(graph.graph));
+      std::vector< int >component(num_vertices(graph.graph));
+      size_t comp = connected_components(graph.graph,&component[0]);
+      comp--;
+      int64_t edgeCount = num_edges(graph.graph);
+      int64_t newEdge = 0;
+      log <<"Number of Components before: "<< connected_components(graph.graph,&component[0])<<"\n";
       int64_t i=0;
       make_connected(graph.graph);
+      log <<"Number of Components after: "<< connected_components(graph.graph,&component[0])<<"\n";
       E_i  ei, ei_end;
   set<pair<int64_t,int64_t>>st,st2;
-  std::vector< pgr_makeConnected_t > results(num_edges(graph.graph));
+  std::vector< pgr_makeConnected_t > results(comp);
   for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
           int64_t src = graph[graph.source(*ei)].id;
           int64_t tgt = graph[graph.target(*ei)].id;
            st.insert({src,tgt});
            log<<"src:"<<src<<"tgt:"<<tgt<<"\n";
-           results[i].node_fro = src;
-           results[i].node_to = tgt;
-           i++;
+           if(newEdge>=edgeCount){
+               results[i].node_fro = src;
+               results[i].node_to = tgt;
+               i++;
+            }
+            newEdge++;
       }
   for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
       if(st.find({source(*ei,graph.graph),target(*ei,graph.graph)})==st.end()){
