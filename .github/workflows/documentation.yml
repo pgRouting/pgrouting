@@ -1,12 +1,11 @@
-name: Build for Ubuntu
+name: Check Documentation Links
 
-on:
-  push:
-    branches-ignore:
-      - 'translations_*'
-    tag:
-    pull_request:
+# documentation is tested only on:
+# - ubuntu
+# - postgres 12
+# - postgis 3
 
+on: [push, pull_request]
 
 jobs:
   build:
@@ -16,8 +15,8 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          psql: [9.5,9.6,10,11,12]
-          postgis: [2.5,3]
+          psql: [12]
+          postgis: [3]
           os: [ubuntu-latest]
 
     steps:
@@ -39,30 +38,25 @@ jobs:
             postgresql-${{ matrix.psql }}-pgtap \
             postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }} \
             postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }}-scripts \
-            postgresql-server-dev-${{ matrix.psql }}
+            postgresql-server-dev-${{ matrix.psql }} \
+            python-sphinx
 
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Configure
+      - name: Configure link checks
         run: |
           export PATH=/usr/lib/postgresql/${{ matrix.psql }}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
+          cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=ON -DES=ON -DLINKCHECK="ON" ..
 
-      - name: Build
+      - name: Check English Links
         run: |
           cd build
-          make -j 4
-          sudo make install
+          make linkcheck-en
 
-      - name: Test
+      - name: Build Documentation
         run: |
-          sudo service postgresql start
-          PGPORT=5433
-          if [ "${{ matrix.psql }}" == "12" ]; then PGPORT=5432; fi
-          echo "${PGPORT}"
-          sudo -u postgres createdb -p ${PGPORT}  ___pgr___test___
-          #sudo -u postgres psql -p ${PGPORT}  -c "CREATE EXTENSION postgis"
-          sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres ${PGPORT}  Release
+          cd build
+          make html
