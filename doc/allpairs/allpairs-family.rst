@@ -28,7 +28,7 @@ The following functions work on all vertices pair combinations
 .. rubric:: Previous versions of this page
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/allpairs-family.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/3.0/en/allpairs-family.html>`__)
   `2.6 <https://docs.pgrouting.org/2.6/en/allpairs-family.html>`__
 
 * **Unsupported versions:**

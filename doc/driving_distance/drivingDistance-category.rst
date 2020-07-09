@@ -41,7 +41,7 @@ Driving Distance - Category
 .. rubric:: Previous versions of this page
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/drivingDistance-category.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/3.0/en/drivingDistance-category.html>`__)
   `2.6 <https://docs.pgrouting.org/2.6/en/drivingDistance-category.html>`__
 
 * **Unsupported versions:**

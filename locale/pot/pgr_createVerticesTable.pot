@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 20:36-0500\n"
+"POT-Creation-Date: 2020-07-09 09:02-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgid "Support"
 msgstr ""
 
 #: ../../build/doc/pgr_createVerticesTable.rst:24
-msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_createVerticesTable.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/pgr_createVerticesTable.html>`__"
+msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_createVerticesTable.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/pgr_createVerticesTable.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_createVerticesTable.rst:28

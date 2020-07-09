@@ -31,7 +31,7 @@ consisting of a spanning tree of each connected component.
     prim-family
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/spanningTree-family.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/3.0/en/spanningTree-family.html>`__)
 
 See Also
 -------------------------------------------------------------------------------
