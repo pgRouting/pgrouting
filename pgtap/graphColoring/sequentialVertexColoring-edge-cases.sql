@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(10);
+SELECT plan(12);
 
 -- 0 edge, 0 vertex test
 
@@ -100,8 +100,44 @@ FROM pgr_sequentialVertexColoring(
     'q9'
 );
 
-SELECT set_eq('sequentialVertexColoring10', $$VALUES (1, 0), (2, 1), (3, 0)$$, '10: 2 colors are required');
+SELECT set_eq('sequentialVertexColoring10', $$VALUES (1, 0), (2, 1), (3, 0)$$, '10: Two colors are required');
 
+
+-- 3 vertices tests (cyclic)
+
+CREATE TABLE three_vertices_table (
+    id BIGSERIAL,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT
+);
+
+INSERT INTO three_vertices_table (source, target, cost, reverse_cost) VALUES
+    (3, 6, 20, 15),
+    (3, 8, 10, -10),
+    (6, 8, -1, 12);
+
+PREPARE q11 AS
+SELECT id, source, target, cost, reverse_cost
+FROM three_vertices_table;
+
+SELECT set_eq('q11',
+    $$VALUES
+        (1, 3, 6, 20, 15),
+        (2, 3, 8, 10, -10),
+        (3, 6, 8, -1, 12)
+    $$,
+    'q11: Cyclic Graph with three vertices 3, 6 and 8'
+);
+
+PREPARE sequentialVertexColoring12 AS
+SELECT *
+FROM pgr_sequentialVertexColoring(
+    'q11'
+);
+
+SELECT set_eq('sequentialVertexColoring12', $$VALUES (3, 0), (6, 1), (8, 2)$$, '12: Three colors are required');
 
 SELECT * FROM finish();
 ROLLBACK;
