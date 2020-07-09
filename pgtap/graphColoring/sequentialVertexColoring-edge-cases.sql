@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(8);
+SELECT plan(10);
 
 -- 0 edge, 0 vertex test
 
@@ -83,6 +83,24 @@ FROM pgr_sequentialVertexColoring(
 );
 
 SELECT set_eq('sequentialVertexColoring8', $$VALUES (1, 0), (2, 0)$$, '8: Both vertices have same color');
+
+
+-- 3 vertices test
+
+PREPARE q9 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id <= 2;
+
+SELECT set_eq('q9', $$VALUES (1, 1, 2, 1, 1), (2, 2, 3, -1, 1)$$, 'q9: Graph with three vertices 1, 2 and 3');
+
+PREPARE sequentialVertexColoring10 AS
+SELECT *
+FROM pgr_sequentialVertexColoring(
+    'q9'
+);
+
+SELECT set_eq('sequentialVertexColoring10', $$VALUES (1, 0), (2, 1), (3, 0)$$, '10: 2 colors are required');
 
 
 SELECT * FROM finish();
