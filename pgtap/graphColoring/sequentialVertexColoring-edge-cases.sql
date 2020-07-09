@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(6);
+SELECT plan(8);
 
 -- 0 edge, 0 vertex test
 
@@ -38,14 +38,14 @@ FROM pgr_sequentialVertexColoring(
 SELECT set_eq('sequentialVertexColoring4', $$VALUES (2, 0)$$, '4: Node 2 with color 0 is returned');
 
 
--- 2 vertices test
+-- 2 vertices test (connected)
 
 PREPARE q5 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edge_table
-WHERE id = 5;
+WHERE id = 7;
 
-SELECT set_eq('q5', $$VALUES (5, 3, 6, 1, -1)$$, 'q5: Graph with two vertices 3 and 6 and edge from 3 to 6');
+SELECT set_eq('q5', $$VALUES (7, 8, 5, 1, 1)$$, 'q5: Graph with two connected vertices 8 and 5');
 
 PREPARE sequentialVertexColoring6 AS
 SELECT *
@@ -53,7 +53,36 @@ FROM pgr_sequentialVertexColoring(
     'q5'
 );
 
-SELECT set_eq('sequentialVertexColoring6', $$VALUES (3, 0), (6, 1)$$, '6: Both vertices have different color');
+SELECT set_eq('sequentialVertexColoring6', $$VALUES (5, 1), (8, 0)$$, '6: Both vertices have different color');
+
+
+-- 2 vertices test (isolated)
+
+CREATE TABLE two_isolated_vertices_table (
+    id BIGSERIAL,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT
+);
+
+INSERT INTO two_isolated_vertices_table (source, target, cost, reverse_cost) VALUES
+    (2, 2, -1, 1),
+    (1, 1, 1, -1);
+
+PREPARE q7 AS
+SELECT id, source, target, cost, reverse_cost
+FROM two_isolated_vertices_table;
+
+SELECT set_eq('q7', $$VALUES (1, 2, 2, -1, 1), (2, 1, 1, 1, -1)$$, 'q7: Graph with two isolated vertices 1 and 2');
+
+PREPARE sequentialVertexColoring8 AS
+SELECT *
+FROM pgr_sequentialVertexColoring(
+    'q7'
+);
+
+SELECT set_eq('sequentialVertexColoring8', $$VALUES (1, 0), (2, 0)$$, '8: Both vertices have same color');
 
 
 SELECT * FROM finish();
