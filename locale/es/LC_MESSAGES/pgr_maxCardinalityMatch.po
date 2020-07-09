@@ -4,18 +4,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 # 
 # Translators:
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2019
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-07-09 09:02-0500\n"
 "PO-Revision-Date: 2019-09-07 11:55+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,10 +79,10 @@ msgstr "Soporte"
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:37
 msgid ""
 "**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_maxCardinalityMatch.html>`__)"
+"<https://docs.pgrouting.org/3.0/en/pgr_maxCardinalityMatch.html>`__)"
 msgstr ""
 "**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_maxCardinalityMatch.html>`__)"
+"<https://docs.pgrouting.org/3.0/es/pgr_maxCardinalityMatch.html>`__)"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:40
 msgid ""
@@ -91,14 +91,16 @@ msgid ""
 "<https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 "
 "<https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__ "
 "`2.3 "
-"<https://docs.pgrouting.org/2.3/en/pgr_maximumCardinalityMatching.html>`__"
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html"
+"#pgr-maximumcardinalitymatching>`__"
 msgstr ""
 "**Versiones no soportadas:** `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__ "
+"<https://docs.pgrouting.org/2.6/es/pgr_maxCardinalityMatch.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/es/pgr_maxCardinalityMatch.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/es/pgr_maximumCardinalityMatching.html>`__ "
 "`2.3 "
-"<https://docs.pgrouting.org/2.3/en/pgr_maximumCardinalityMatching.html>`__"
+"<https://docs.pgrouting.org/2.3/es/src/max_flow/doc/pgr_maximumCardinalityMatching.html"
+"#pgr-maximumcardinalitymatching>`__"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:48
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:89
@@ -381,3 +383,25 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:141
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 "
+#~ "<https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__ "
+#~ "`2.3 "
+#~ "<https://docs.pgrouting.org/2.3/en/pgr_maximumCardinalityMatching.html>`__"
+#~ msgstr ""
+#~ "**Versiones no soportadas:** `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 "
+#~ "<https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__ "
+#~ "`2.3 "
+#~ "<https://docs.pgrouting.org/2.3/en/pgr_maximumCardinalityMatching.html>`__"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_maxCardinalityMatch.html>`__)"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_maxCardinalityMatch.html>`__)"
