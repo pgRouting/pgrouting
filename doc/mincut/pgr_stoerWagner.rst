@@ -31,7 +31,7 @@ Function determines a min-cut and the min-cut weight of a connected, undirected 
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_stoerWagner.html>`__)
+  current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_stoerWagner.html>`__)
 
 Description
 -------------------------------------------------------------------------------

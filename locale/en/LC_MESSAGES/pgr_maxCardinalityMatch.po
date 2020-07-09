@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 20:36-0500\n"
+"POT-Creation-Date: 2020-07-09 09:02-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,7 +70,7 @@ msgstr ""
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:37
 msgid ""
 "**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_maxCardinalityMatch.html>`__)"
+"<https://docs.pgrouting.org/3.0/en/pgr_maxCardinalityMatch.html>`__)"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:40
@@ -363,5 +363,10 @@ msgstr ""
 #~ "<https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__"
 #~ " `2.3 "
 #~ "<https://docs.pgrouting.org/2.3/en/pgr_maximumCardinalityMatching.html>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_maxCardinalityMatch.html>`__)"
 #~ msgstr ""
 
