@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(12);
+SELECT plan(18);
 
 -- 0 edge, 0 vertex test
 
@@ -85,7 +85,7 @@ FROM pgr_sequentialVertexColoring(
 SELECT set_eq('sequentialVertexColoring8', $$VALUES (1, 0), (2, 0)$$, '8: Both vertices have same color');
 
 
--- 3 vertices test
+-- 3 vertices test (linear)
 
 PREPARE q9 AS
 SELECT id, source, target, cost, reverse_cost
@@ -103,7 +103,7 @@ FROM pgr_sequentialVertexColoring(
 SELECT set_eq('sequentialVertexColoring10', $$VALUES (1, 0), (2, 1), (3, 0)$$, '10: Two colors are required');
 
 
--- 3 vertices tests (cyclic)
+-- 3 vertices test (cyclic)
 
 CREATE TABLE three_vertices_table (
     id BIGSERIAL,
@@ -138,6 +138,101 @@ FROM pgr_sequentialVertexColoring(
 );
 
 SELECT set_eq('sequentialVertexColoring12', $$VALUES (3, 0), (6, 1), (8, 2)$$, '12: Three colors are required');
+
+
+-- 4 vertices test (linear)
+
+PREPARE q13 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id <= 3;
+
+SELECT set_eq('q13',
+    $$VALUES
+        (1, 1, 2, 1, 1),
+        (2, 2, 3, -1, 1),
+        (3, 3, 4, -1, 1)
+    $$,
+    'q13: Graph with four vertices 1, 2, 3 and 4'
+);
+
+PREPARE sequentialVertexColoring14 AS
+SELECT *
+FROM pgr_sequentialVertexColoring(
+    'q13'
+);
+
+SELECT set_eq('sequentialVertexColoring14', $$VALUES (1, 0), (2, 1), (3, 0), (4, 1)$$, '14: Two colors are required');
+
+
+-- 4 vertices test (cyclic)
+
+PREPARE q15 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id IN (8, 10, 11, 12);
+
+SELECT set_eq('q15',
+    $$VALUES
+        (8, 5, 6, 1, 1),
+        (10, 5, 10, 1, 1),
+        (11, 6, 11, 1, -1),
+        (12, 10, 11, 1, -1)
+    $$,
+    'q15: Graph with four vertices 5, 6, 10 and 11 (cyclic)'
+);
+
+PREPARE sequentialVertexColoring16 AS
+SELECT *
+FROM pgr_sequentialVertexColoring(
+    'q15'
+);
+
+SELECT set_eq('sequentialVertexColoring16', $$VALUES (5, 0), (6, 1), (10, 1), (11, 0)$$, '16: Two colors are required');
+
+
+-- 4 vertices test (all connected)
+
+CREATE TABLE four_vertices_table (
+    id BIGSERIAL,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT
+);
+
+INSERT INTO four_vertices_table (source, target, cost, reverse_cost) VALUES
+    (1, 2, 1, 1),
+    (2, 3, 1, -1),
+    (3, 4, -1, 1),
+    (4, 1, 1, 1),
+    (1, 3, 1, -1),
+    (2, 4, -1, 1);
+
+PREPARE q17 AS
+SELECT id, source, target, cost, reverse_cost
+FROM four_vertices_table;
+
+SELECT set_eq('q17',
+    $$VALUES
+        (1, 1, 2, 1, 1),
+        (2, 2, 3, 1, -1),
+        (3, 3, 4, -1, 1),
+        (4, 4, 1, 1, 1),
+        (5, 1, 3, 1, -1),
+        (6, 2, 4, -1, 1)
+    $$,
+    'q17: Graph with four vertices 1, 2, 3 and 4 (all connected)'
+);
+
+PREPARE sequentialVertexColoring18 AS
+SELECT *
+FROM pgr_sequentialVertexColoring(
+    'q17'
+);
+
+SELECT set_eq('sequentialVertexColoring18', $$VALUES (1, 0), (2, 1), (3, 2), (4, 3)$$, '18: Four colors are required');
+
 
 SELECT * FROM finish();
 ROLLBACK;
