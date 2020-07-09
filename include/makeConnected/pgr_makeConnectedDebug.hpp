@@ -65,27 +65,58 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
  private:
      std::vector< pgr_makeConnected_t >
      generatemakeConnected(
-       G &graph ) {
+      const G &graph ) {
+
+      adj g;
       // std::vector< graph_traits<Graph>::vertices_size_type >component(num_vertices(graph.graph));
       int64_t i=0;
-      make_connected(graph.graph);
+      // make_connected(graph.graph);
       E_i  ei, ei_end;
-  set<pair<int64_t,int64_t>>st,st2;
-  std::vector< pgr_makeConnected_t > results(num_edges(graph.graph));
-  for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
-          int64_t src = graph[graph.source(*ei)].id;
-          int64_t tgt = graph[graph.target(*ei)].id;
-           st.insert({src,tgt});
-           log<<"src:"<<src<<"tgt:"<<tgt<<"\n";
-           results[i].node_fro = src;
-           results[i].node_to = tgt;
+      map<int64_t,int64_t>mp;
+      for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
+        int64_t src = graph[graph.source(*ei)].id;
+        int64_t tgt = graph[graph.target(*ei)].id;
+        if(mp.find(src)==mp.end()){
+          mp[src] = i;
+          log<<"ye i hai pehla"<<i<<"\n";
+          i++;
+        }if(mp.find(tgt)==mp.end()) {
+          mp[tgt] = i;
+          log<<"ye i hai dusra"<<i<<"\n";
+          i++;
+        }
+        int64_t u = mp[src];
+        int64_t v = mp[tgt];
+        log <<"source "<<src<<" "<<"target "<<tgt<<":::"<<"u "<<u<<" v "<<v<<"\n";
+        add_edge(u,v,g);
+      }
+
+      make_connected(g);
+      E_it e,e_end;
+      std::vector< pgr_makeConnected_t > results(num_edges(g));
+      i=0;
+      for (boost::tie(e, e_end) = edges(g); e != e_end; ++e){
+           auto src = source(*e,g);
+           auto tgt = target(*e,g);
+           log <<"src:"<<src<<" "<<"tgt:"<<tgt<<"\n";
+           results[i].node_fro = mp[src];
+           results[i].node_to = mp[tgt];
            i++;
       }
-  for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
-      if(st.find({source(*ei,graph.graph),target(*ei,graph.graph)})==st.end()){
-        st2.insert({source(*ei,graph.graph),target(*ei,graph.graph)});
-      }
-  }
+      return results;
+  // E_1  ei, ei_end;
+  // set<pair<int64_t,int64_t>>st,st2;
+  // for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
+  //          int64_t src = source(*ei,graph.graph);
+  //          int64_t tgt = target(*ei,graph.graph);
+  //          st.insert({src,tgt});
+  //          log<<"src:"<<src<<"tgt:"<<tgt<<"\n";
+  //     }
+  // for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
+  //     if(st.find({source(*ei,graph.graph),target(*ei,graph.graph)})==st.end()){
+  //       st2.insert({source(*ei,graph.graph),target(*ei,graph.graph)});
+  //     }
+  // }
   // std::vector< pgr_makeConnected_t > results(st2.size());
   // if(st.size()>0){
   //   for(auto it :st2) {
@@ -97,7 +128,7 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
   // } else {
   //
   // }
-   return results;
+  //  return results;
     }
 };
 }
