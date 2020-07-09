@@ -107,48 +107,6 @@ jobs:
         POSTGRESQL_VERSION: 12
         BUILD_TYPE: "Debug"
         DOCUMENTATION: "OFF"
-        LINKCHECK: "OFF"
-
-    - addons:
-        postgresql: "12"
-        apt:
-          packages:
-            - postgresql-12-postgis-3
-            - postgresql-server-dev-12
-            - postgresql-12-pgtap
-            - postgresql-client-12
-            - postgresql-client-common
-            - postgresql-common
-            - libtap-parser-sourcehandler-pgtap-perl
-            - libboost-graph-dev
-            - graphviz
-      env:
-        PGPORT: "5433"
-        PGVERSION: 12
-        POSTGRESQL_VERSION: 12
-        BUILD_TYPE: "Release"
-        DOCUMENTATION: "ON"
-        LINKCHECK: "OFF"
-
-    - addons:
-        postgresql: "12"
-        apt:
-          packages:
-            - postgresql-12-postgis-3
-            - postgresql-server-dev-12
-            - postgresql-12-pgtap
-            - postgresql-client-12
-            - postgresql-client-common
-            - postgresql-common
-            - libtap-parser-sourcehandler-pgtap-perl
-            - libboost-graph-dev
-            - graphviz
-      env:
-        PGPORT: "5433"
-        PGVERSION: 12
-        POSTGRESQL_VERSION: 12
-        BUILD_TYPE: "Release"
-        DOCUMENTATION: "ON"
         LINKCHECK: "ON"
 
 services:
