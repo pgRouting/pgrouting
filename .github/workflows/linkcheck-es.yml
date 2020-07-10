@@ -5,13 +5,6 @@ name: Check Spanish Documentation Links
 # - postgres 12
 # - postgis 3
 
-on:
-  push:
-    branch: 'translations_*_es$'
-  pull_request:
-    branch: 'translations_*_es$'
-
-
 jobs:
   build:
     name: Build
