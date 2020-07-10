@@ -4,6 +4,8 @@ name: Check Spanish Documentation Links
 # - ubuntu
 # - postgres 12
 # - postgis 3
+#
+on: [push,pull_request]
 
 jobs:
   build:
