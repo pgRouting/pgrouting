@@ -4,13 +4,8 @@ name: Check Spanish Documentation Links
 # - ubuntu
 # - postgres 12
 # - postgis 3
-
-on:
-  push:
-    branch: 'translations_*_es$'
-  pull_request:
-    branch: 'translations_*_es$'
-
+#
+on: [push,pull_request]
 
 jobs:
   build:

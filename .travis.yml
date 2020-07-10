@@ -138,13 +138,9 @@ before_script:
   - echo "msg $TRAVIS_COMMIT_MESSAGE branch $TRAVIS_PULL_REQUEST_BRANCH"
   # Doing the work
   - if [ "$DOCUMENTATION" == "OFF" ]; then cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE .. ; fi
-  - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "OFF" ] ; then cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWITH_DOC=ON -DES=ON .. ; fi
-  - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "ON" ] ; then cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DWITH_DOC=ON -DES=ON -DLINKCHECK="ON" .. ; fi
 
 script:
   - if [ "$DOCUMENTATION" == "OFF" ]; then make -j 4; sudo make install; fi
-  - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "OFF" ] ; then make doc; fi
-  - if [ "$DOCUMENTATION" == "ON" ] && [ "$LINKCHECK" == "ON" ] ; then make linkcheck-en; fi
 
   # tests as part of script so if a test fails the build fails
   - cd ..
