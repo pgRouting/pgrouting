@@ -5,17 +5,17 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-07-09 09:02-0500\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -111,10 +111,10 @@ msgstr "Versiones de esta página"
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:32
 msgid ""
-"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
+"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en"
 "/chinesePostmanProblem-family.html>`__)"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/dev/en"
+"**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
 "/chinesePostmanProblem-family.html>`__)"
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:37
@@ -287,3 +287,10 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/chinesePostmanProblem-family.rst:82
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
+#~ "/chinesePostmanProblem-family.html>`__)"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
+#~ "/chinesePostmanProblem-family.html>`__)"
