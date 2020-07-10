@@ -58,18 +58,20 @@ class Pgr_boyerMyrvold {
      std::vector< pgr_boyer_t >
      generateboyerMyrvold(
         const G &graph ) {
-       std::vector< pgr_boyer_t > results(num_edges(graph.graph));
+       std::vector< pgr_boyer_t > results;
        auto check = boyer_myrvold_planarity_test(graph.graph);
        if(check){
       E_i ei, ei_end;
       int i;
       for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i){
-           int64_t source = graph[graph.source(*ei)].id;
-           int64_t target = graph[graph.target(*ei)].id;
+           int64_t src = graph[graph.source(*ei)].id;
+           int64_t tgt = graph[graph.target(*ei)].id;
            double cost = graph[*ei].cost;
-           results[i].source = source;
-           results[i].target = target;
-           results[i].cost = cost;
+           pgr_boyer_t tmp;
+           tmp.source = src;
+           tmp.target = tgt;
+           tmp.cost = cost;
+           results.push_back(tmp);
       }
 
     }
