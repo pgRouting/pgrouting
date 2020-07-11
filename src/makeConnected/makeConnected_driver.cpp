@@ -40,17 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "makeConnected/pgr_makeConnected.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 
-
-// template < class G >
-// std::vector<pgr_makeConnected_t>
-// pgr_makeConnected(
-//         G &graph) {
-//     pgrouting::functions::Pgr_makeConnected< G > fn_makeConnected;
-//     auto results = fn_makeConnected.makeConnected(
-//             graph);
-//     return results;
-// }
-
 void
 do_pgr_makeConnected(
                 pgr_edge_t  *data_edges,
@@ -83,7 +72,6 @@ do_pgr_makeConnected(
         results=fn_makeConnected.makeConnected(undigraph);
         logstr += fn_makeConnected.get_log();
         log << logstr;
-        // results = pgr_makeConnected(undigraph);
 
         auto count = results.size();
 
