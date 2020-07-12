@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 
 #include "c_types/pgr_mrt_rt.h"
+#include <boost/graph/two_graphs_common_spanning_trees.hpp>
 
 using namespace boost;
 using namespace  std;
@@ -50,20 +51,49 @@ namespace pgrouting {
         class Pgr_mrt : public pgrouting::Pgr_messages {
         public:
             std::vector<pgr_mrt_rt> results;
+            typedef typename Graph::E E;
+            typedef typename Graph::E_i E_i;
 
             std::vector<pgr_mrt_rt> pgr_mrt(
                 Graph &graph_1,
-                Graph &graph_2
+                Graph &graph_2,
+                bool directed
 
                     ){
                 log<<"Inside main boost driver"<<endl;
+                if(directed)
+                {
+                    //log<<"Edge "<<E<<endl;
+
+
+                    log<<"In directed graph total edges G1 "<<graph_1.num_edges()<<endl;
+                    log<<"In directed graph total edges G2 "<<graph_2.num_edges()<<endl;
+                    log<<"Need coding"<<endl;
+                }
+                else
+                {
+                    log<<"Working with undirected graph"<<endl;
+
+                    vector<bool> inL(graph_1.num_edges(), false);
+
+                    std::vector< std::vector<bool> > coll;
+                    boost::tree_collector<
+                            std::vector< std::vector<bool> >,
+                            std::vector<bool>
+                    > tree_collector(coll);
+                    boost::two_graphs_common_spanning_trees
+                            (
+                                    graph_1,
+                                    graph_2,
+                                    tree_collector,
+                                    inL
+                            );
+                }
                 return results;
 
             }
         };
     }
 }
-
-
 
 #endif  // INCLUDE_PGR_MRT_DRIVER_HPP
