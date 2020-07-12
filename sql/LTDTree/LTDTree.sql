@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 -- pgr_LTDTree
 ---------------
-CREATE OR REPLACE FUNCTION pgr_LTDTree(
+CREATE OR REPLACE FUNCTION pgr_lengauer_tarjan_dominator_tree (
     TEXT, -- edges_sql (required)
     root_vertex BIGINT , -- vertex (required)
     OUT seq integer,
@@ -46,7 +46,7 @@ BEGIN
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_LTDTree(_pgr_get_statement($1),$2);
+    FROM _pgr_lengauer_tarjan_dominator_tree (_pgr_get_statement($1),$2);
 END;
 $BODY$
 LANGUAGE  plpgsql VOLATILE STRICT;
@@ -55,13 +55,13 @@ LANGUAGE  plpgsql VOLATILE STRICT;
 -- COMMENTS
 
 
-COMMENT ON FUNCTION pgr_LTDTree(TEXT,BIGINT)
+COMMENT ON FUNCTION pgr_lengauer_tarjan_dominator_tree (TEXT,BIGINT)
 IS 'pgr_LTDTree
 - EXPERIMENTAL
 - Directed graph
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_LTDTree.html
+  - ${PGROUTING_DOC_LINK}/pgr_lengauer_tarjan_dominator_tree .html
 ';
 
