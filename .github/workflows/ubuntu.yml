@@ -6,7 +6,7 @@ on:
       - 'translations_*'
     tags: []
   pull_request:
-    if: github.actor != 'transifex-integration[bot]'
+    if: "!github.actor == 'transifex-integration[bot]'"
 
 jobs:
   build:
