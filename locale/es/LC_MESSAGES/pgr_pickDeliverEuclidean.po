@@ -5,22 +5,22 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
 # Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-17 10:04-0500\n"
+"POT-Creation-Date: 2020-07-09 09:02-0500\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.3\n"
+"Generated-By: Babel 2.6.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -127,10 +127,10 @@ msgstr "Soporte"
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:28
 msgid ""
 "**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_pickDeliverEuclidean.html>`__)"
+"<https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__)"
 msgstr ""
-"**Versiones Soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_pickDeliverEuclidean.html>`__)"
+"**Versiones soportadas:** current(`3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_pickDeliverEuclidean.html>`__)"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:31
 msgid ""
@@ -659,14 +659,6 @@ msgstr ":math:`y` valor de la coordenada de la ubicación final."
 msgid "Description of the result (TODO Disussion: Euclidean & Matrix)"
 msgstr "Descripción del resultado (TODO Disussion: Euclidean & Matrix)"
 
-#: ../../build/doc/VRP-category.rst:6
-msgid "Todo"
-msgstr "Por hacer"
-
-#: ../../build/doc/VRP-category.rst:6
-msgid "fix when everything below is fixed"
-msgstr "Arreglar cuando todo abajo esté arreglado"
-
 #: ../../build/doc/VRP-category.rst:20 ../../build/doc/VRP-category.rst:56
 msgid "**seq**"
 msgstr "**seq**"
@@ -922,3 +914,16 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:214
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "Todo"
+#~ msgstr "Por hacer"
+
+#~ msgid "fix when everything below is fixed"
+#~ msgstr "Arreglar cuando todo abajo esté arreglado"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_pickDeliverEuclidean.html>`__)"
+#~ msgstr ""
+#~ "**Versiones Soportadas:** actual(`3.0 "
+#~ "<https://docs.pgrouting.org/3.0/es/pgr_pickDeliverEuclidean.html>`__)"
