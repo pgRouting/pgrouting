@@ -5,7 +5,7 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
-# Vicky Vergara <vicky@georepublic.de>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 20:36-0500\n"
+"POT-Creation-Date: 2020-07-09 09:02-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -57,10 +57,10 @@ msgstr "Soporte"
 #: ../../build/doc/pgr_prim.rst:28
 msgid ""
 "**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_prim.html>`__)"
+"<https://docs.pgrouting.org/3.0/en/pgr_prim.html>`__)"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/dev/es/pgr_prim.html>`__)"
+"**Supported versions:** current(`3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_prim.html>`__)"
 
 #: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_kruskal.rst:7
 #: ../../build/doc/pgr_kruskal.rst:26 ../../build/doc/pgr_prim.rst:32
@@ -335,3 +335,10 @@ msgstr ":ref:`search`"
 #~ msgstr ""
 #~ "Wikipedia: `Algoritmo de Prim "
 #~ "<https://en.wikipedia.org/wiki/Prim'_algorithm>`__"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_prim.html>`__)"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.0 "
+#~ "<https://docs.pgrouting.org/3.0/es/pgr_prim.html>`__)"
