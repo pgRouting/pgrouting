@@ -3,30 +3,30 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 --q1
-   SELECT * FROM pgr_LTDTree(
+SELECT * FROM pgr_LTDTree(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       1
    );
-seq | vid | idom
------+-----+------
-   1 |   1 |    0
-   2 |   2 |    1
-   3 |   3 |    4
-   4 |   4 |    9
-   5 |   5 |    2
-   6 |   6 |    5
-   7 |   7 |    8
-   8 |   8 |    5
-   9 |   9 |    5
-  10 |  10 |    5
-  11 |  11 |    5
-  12 |  12 |    5
-  13 |  13 |   10
-  14 |  14 |    0
-  15 |  15 |    0
-  16 |  16 |    0
-  17 |  17 |    0
-(17 rows)
+      seq | vid | idom
+     -----+-----+------
+        1 |   1 |    0
+        2 |   2 |    1
+        3 |   3 |    4
+        4 |   4 |    9
+        5 |   5 |    2
+        6 |   6 |    5
+        7 |   7 |    8
+        8 |   8 |    5
+        9 |   9 |    5
+       10 |  10 |    5
+       11 |  11 |    5
+       12 |  12 |    5
+       13 |  13 |   10
+       14 |  14 |    0
+       15 |  15 |    0
+       16 |  16 |    0
+       17 |  17 |    0
+     (17 rows)
 
 --q2
 
