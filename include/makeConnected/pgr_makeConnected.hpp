@@ -90,22 +90,6 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
             }
             newEdge++;
       }
-  for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
-      if(st.find({source(*ei,graph.graph),target(*ei,graph.graph)})==st.end()){
-        st2.insert({source(*ei,graph.graph),target(*ei,graph.graph)});
-      }
-  }
-  // std::vector< pgr_makeConnected_t > results(st2.size());
-  // if(st.size()>0){
-  //   for(auto it :st2) {
-  //     // cout<<it.first<<" "<<it.second<<"\n";
-  //     results[i].node_fro = it.first;
-  //     results[i].node_to = it.second;
-  //     i++;
-  //   }
-  // } else {
-  //
-  // }
    return results;
     }
 };
