@@ -4,8 +4,8 @@ on:
   push:
     branches-ignore:
       - 'translations_*'
-    tag:
-    pull_request:
+    tags: []
+  pull_request: 
 
 jobs:
   build:
@@ -19,10 +19,8 @@ jobs:
           os: [ubuntu-latest]
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v2
-
 
       - name: Signature files do not change within same minor
         run: |
