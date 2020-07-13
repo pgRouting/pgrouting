@@ -1,4 +1,4 @@
-name: Build for Ubuntu
+name: Check queries
 
 on:
   push:
@@ -15,12 +15,11 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          psql: [9.5,9.6,10,11,12]
-          postgis: [2.5,3]
+          psql: [12]
+          postgis: [3]
           os: [ubuntu-latest]
 
     steps:
-
       - name: Add PostgreSQL APT repository
         run: |
           sudo apt-get install curl ca-certificates gnupg
@@ -48,7 +47,7 @@ jobs:
           export PATH=/usr/lib/postgresql/${{ matrix.psql }}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
+          cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=Debug ..
 
       - name: Build
         run: |
@@ -56,12 +55,28 @@ jobs:
           make -j 4
           sudo make install
 
-      - name: Test
+      - name: Test signature is up to date
         run: |
           sudo service postgresql start
           PGPORT=5433
           if [ "${{ matrix.psql }}" == "12" ]; then PGPORT=5432; fi
-          echo "${PGPORT}"
-          sudo -u postgres createdb -p ${PGPORT}  ___pgr___test___
-          #sudo -u postgres psql -p ${PGPORT}  -c "CREATE EXTENSION postgis"
-          sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres ${PGPORT}  Release
+          sudo -u postgres createdb -p ${PGPORT}  ____sigs_routing____
+          sudo -u postgres psql -c "CREATE ROLE runner SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN" -d ____sigs_routing____
+          sh tools/release-scripts/get_signatures.sh -p ${PGPORT}
+          git diff --exit-code --quiet sql/sigs/*.sig
+
+      - name: Test documentation queries are up to date
+        run: |
+          #sudo service postgresql start
+          #PGPORT=5433
+          #if [ "${{ matrix.psql }}" == "12" ]; then PGPORT=5432; fi
+          PGPORT=5433
+          if [ "${{ matrix.psql }}" == "12" ]; then PGPORT=5432; fi
+          sudo -u postgres createdb -p ${PGPORT}  pgr_test__db__test
+          TESTDIRS="version"
+          for d in ${TESTDIRS}
+          do
+            ./tools/testers/doc_queries_generator.pl -pgver "${{ matrix.psql }}" -pguser runner -documentation -alg "${d}"
+          done
+
+          ./tools/testers/doc_queries_generator.pl -pgver "${{ matrix.psql }}"
