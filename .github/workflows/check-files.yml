@@ -5,7 +5,9 @@ on:
     branches-ignore:
       - 'translations_*'
     tags: []
-  pull_request: 
+  pull_request:
+    paths-ignore:
+      - '**.po'
 
 jobs:
   build:
