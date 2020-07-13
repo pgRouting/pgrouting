@@ -5,17 +5,17 @@
 # 
 # Translators:
 # Minerva Durán Martínez <mine_tod@yahoo.com.mx>, 2019
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-30 21:22-0600\n"
+"POT-Creation-Date: 2020-07-09 09:02-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,10 +70,10 @@ msgstr "Soporte"
 #: ../../build/doc/pgr_trsp.rst:36
 msgid ""
 "**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_trsp.html>`__)"
+"<https://docs.pgrouting.org/3.0/en/pgr_trsp.html>`__)"
 msgstr ""
-"**Versiones Soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_trsp.html>`__)"
+"**Versiones soportadas:** actual(`3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_trsp.html>`__)"
 
 #: ../../build/doc/pgr_trsp.rst:39
 msgid ""
@@ -86,7 +86,7 @@ msgid ""
 "<https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html>`__ `2.0 "
 "<https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html>`__"
 msgstr ""
-"**Versiones No Soportadas:** `2.6 "
+"**Versiones no soportadas:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_trsp.html>`__ `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_trsp.html>`__ `2.4 "
 "<https://docs.pgrouting.org/2.4/en/pgr_trsp.html>`__ `2.3 "
@@ -947,22 +947,8 @@ msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
 #~ msgid ""
-#~ "pgr_trsp calls :doc:`pgr_dijkstra` when there are no restrictions which "
-#~ "returns `EMTPY SET` when a path is not found"
+#~ "**Supported versions:** current(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_trsp.html>`__)"
 #~ msgstr ""
-#~ "pgr_trsp convoca :doc:`pgr_dijkstra` cuando no hay restricciones que "
-#~ "devuelvan `EMPTY SET` cuando ninguna ruta es encontrada"
-
-#~ msgid ""
-#~ "The ``reverse_cost`` column will be efectively removed and will cost "
-#~ "execution time"
-#~ msgstr ""
-#~ "La columna ``reverse_cost`` se eliminará efectivamente y costará tiempo de "
-#~ "ejecución"
-
-#~ msgid ""
-#~ "pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which "
-#~ "returns `EMTPY SET` when a path is not found"
-#~ msgstr ""
-#~ "pgr_trsp convoca a :doc:`pgr_withPoints` cuando no hay restricciones que "
-#~ "devuelvan  `EMPTY SET` cuando ninguna ruta es encontrada"
+#~ "**Versiones soportadas:** actual(`3.0 "
+#~ "<https://docs.pgrouting.org/3.0/es/pgr_trsp.html>`__)"
