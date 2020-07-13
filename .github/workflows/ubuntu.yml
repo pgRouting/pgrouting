@@ -23,6 +23,10 @@ jobs:
 
       - name: Add PostgreSQL APT repository
         run: |
+          echo "gihub actor $GITHUB_ACTOR"
+          echo "gihub repository $GITHUB_REPOSITORY"
+          echo "github ref $GITHUB_REF"
+
           sudo apt-get install curl ca-certificates gnupg
           curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
           sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
