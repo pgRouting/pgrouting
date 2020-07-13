@@ -2,25 +2,25 @@
 # Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
-# 
+#
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2020
-# 
+# MarPetra <mvergaratrejo@gmail.com>, 2020
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-17 10:04-0500\n"
+"POT-Creation-Date: 2020-07-09 09:02-0500\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.3\n"
+"Generated-By: Babel 2.6.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -63,11 +63,11 @@ msgstr "Nueva función **Propuesta**"
 #: ../../build/doc/pgr_bdAstarCost.rst:30
 msgid ""
 "**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_bdAstarCost.html>`__) `2.6 "
+"<https://docs.pgrouting.org/3.0/en/pgr_bdAstarCost.html>`__) `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__"
 msgstr ""
 "**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/dev/en/pgr_bdAstarCost.html>`__) `2.6 "
+"<https://docs.pgrouting.org/3.0/es/pgr_bdAstarCost.html>`__) `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:34
@@ -233,7 +233,7 @@ msgid ""
 "From vertices :math:`\\{7, 2\\}` to vertex :math:`3` on a **undirected** "
 "graph using heuristic :math:`4`"
 msgstr ""
-"De los vértices :math:`\\{2, 7\\}` al vértice :math:`3` en un grafo **no "
+"De los vértices :math:`\\{7, 2\\}` al vértice :math:`3` en un grafo **no "
 "dirigido** usando la heurística  :math:`4`"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:139
@@ -245,8 +245,8 @@ msgid ""
 "From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 11\\}` on a "
 "**directed** using heuristic :math:`5` and factor :math:`0.5`"
 msgstr ""
-"Del vértice :math:`2` a los vértices :math:`\\{3, 11\\}` en un grafo "
-"**dirigido** usando la heurística  :math:`5` y el factor :math:`0.5`"
+"Del vértice :math:\\`{7,2\\}` a los vértices :math:`\\{3, 11\\}` en un grafo"
+" **dirigido** usando la heurística  :math:`5` y el factor :math:`0.5`"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:154
 msgid "Parameters"
@@ -673,3 +673,12 @@ msgstr ":ref:`search`"
 #~ msgstr ""
 #~ "De los vértices :math:`\\{7, 2\\}` ta los vértices :math:`\\{3, 12\\}` en un"
 #~ " grafo **dirigido** usando la  heurística :math:`2`"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.0 "
+#~ "<https://docs.pgrouting.org/dev/en/pgr_bdAstarCost.html>`__) `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.0 "
+#~ "<https://docs.pgrouting.org/3.0/es/pgr_bdAstarCost.html>`__) `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__"
