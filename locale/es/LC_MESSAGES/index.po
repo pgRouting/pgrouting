@@ -2,11 +2,11 @@
 # Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
-# 
+#
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -50,9 +50,8 @@ msgid ""
 "https://pgrouting.org. For other licenses used in pgRouting see the "
 ":ref:`license` page."
 msgstr ""
-"El Manual de pgRouting está bajo licencia `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. \n"
-"\n"
-"Siéntase libre de usar este material de la manera que desee, pero le pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que sea posible, visite https://pgrouting.org. Para otras licencias utilizadas en pgRouting, consulte la página :ref:`license` ."
+"El Manual de pgRouting está bajo licencia `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. "
+"Siéntase libre de usar este material de la manera que desee, pero le pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que sea posible, visite https://pgrouting.org. Para otras licencias utilizadas en pgRouting, consulte la página :ref:`license`."
 
 #: ../../build/doc/index.rst:32
 msgid "General"
