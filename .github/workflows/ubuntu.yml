@@ -4,9 +4,8 @@ on:
   push:
     branches-ignore:
       - 'translations_*'
-    tag:
-    pull_request:
-
+    tags: []
+  pull_request:
 
 jobs:
   build:
