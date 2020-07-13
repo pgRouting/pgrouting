@@ -6,7 +6,10 @@ on:
       - 'translations_*'
     tags: []
   pull_request:
-    if: "!github.actor == 'transifex-integration[bot]'"
+    paths-ignore:
+      - '**.po'
+      - '.github/workflows/ubuntu.yml'
+
 
 jobs:
   build:
