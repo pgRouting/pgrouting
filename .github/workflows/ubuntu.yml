@@ -8,7 +8,6 @@ on:
   pull_request:
     paths-ignore:
       - '**.po'
-      - '.github/workflows/ubuntu.yml'
 
 
 jobs:
