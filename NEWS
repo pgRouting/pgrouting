@@ -7,6 +7,7 @@ pgRouting 3.1.0 Release Notes
 * pgr_dijkstra(combinations)
 * pgr_dijkstraCost(combinations)
 
+
 pgRouting 3.0.2 Release Notes
 -------------------------------------------------------------------------------
 
@@ -16,6 +17,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 *Issues fixes*
 
 * [#1378 ](https://github.com/pgRouting/pgrouting/issues/1378)_: Visual Studio build failing
+
 
 pgRouting 3.0.1 Release Notes
 -------------------------------------------------------------------------------
