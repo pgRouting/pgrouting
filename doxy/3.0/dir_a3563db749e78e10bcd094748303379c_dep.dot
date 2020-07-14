@@ -7,5 +7,5 @@ digraph "bellman_ford" {
   dir_a3563db749e78e10bcd094748303379c [shape=box, label="bellman_ford", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_a3563db749e78e10bcd094748303379c.html"];
   }
   dir_f413d2883acb285bdeb0fac3ae939ed0 [shape=box label="cpp_common" URL="dir_f413d2883acb285bdeb0fac3ae939ed0.html"];
-  dir_a3563db749e78e10bcd094748303379c->dir_f413d2883acb285bdeb0fac3ae939ed0 [headlabel="5", labeldistance=1.5 headhref="dir_000062_000014.html"];
+  dir_a3563db749e78e10bcd094748303379c->dir_f413d2883acb285bdeb0fac3ae939ed0 [headlabel="7", labeldistance=1.5 headhref="dir_000062_000014.html"];
 }

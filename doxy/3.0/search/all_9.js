@@ -45,6 +45,7 @@ var searchData=
   ['instance_5f',['instance_',['../classSignalHandler.html#a3892f07508212faacb36468072311020',1,'SignalHandler']]],
   ['int8arrayoid',['INT8ARRAYOID',['../contractGraph_8c.html#acaf704d7b041882edfbce47b53c1090f',1,'INT8ARRAYOID():&#160;contractGraph.c'],['../transitiveClosure_8c.html#acaf704d7b041882edfbce47b53c1090f',1,'INT8ARRAYOID():&#160;transitiveClosure.c']]],
   ['inter_5fswap',['inter_swap',['../classpgrouting_1_1vrp_1_1Optimize.html#a8c70bf0623e2f035e5a17c44f65a182a',1,'pgrouting::vrp::Optimize::inter_swap(size_t times)'],['../classpgrouting_1_1vrp_1_1Optimize.html#ad1d48cf5916df017926e6d0d7b1fd987',1,'pgrouting::vrp::Optimize::inter_swap()']]],
+  ['interruption_2eh',['interruption.h',['../interruption_8h.html',1,'']]],
   ['invariant',['invariant',['../classpgrouting_1_1tsp_1_1TSP.html#a9f0e49a6a9b57d8e5456c1fc5d512382',1,'pgrouting::tsp::TSP::invariant()'],['../classpgrouting_1_1vrp_1_1Initial__solution.html#ac2b7f0f11fe094e0a6964ce847542811',1,'pgrouting::vrp::Initial_solution::invariant()'],['../classpgrouting_1_1vrp_1_1Vehicle.html#a29bf7e33dfb519d7abb8648c2d631d30',1,'pgrouting::vrp::Vehicle::invariant()']]],
   ['is_5fcompatible_5fij',['is_compatible_IJ',['../classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a',1,'pgrouting::vrp::Tw_node']]],
   ['is_5fcontractible',['is_contractible',['../classpgrouting_1_1contraction_1_1Pgr__linear.html#a89ef11cb70d5180b441cc29d67865858',1,'pgrouting::contraction::Pgr_linear']]],

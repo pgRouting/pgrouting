@@ -110,6 +110,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a73147390bae998d9954d58169e8e2856"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="version_8c.html#a73147390bae998d9954d58169e8e2856">PG_FUNCTION_INFO_V1</a> (<a class="el" href="version_8c.html#a43b98e1ae5c9f1e7f501708ca332220d">pgr_version</a>)</td></tr>
 <tr class="separator:a73147390bae998d9954d58169e8e2856"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43b98e1ae5c9f1e7f501708ca332220d"><td class="memItemLeft" align="right" valign="top">PGDLLEXPORT Datum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="version_8c.html#a43b98e1ae5c9f1e7f501708ca332220d">pgr_version</a> (PG_FUNCTION_ARGS)</td></tr>
+<tr class="memdesc:a43b98e1ae5c9f1e7f501708ca332220d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns v3.0.0 Function called only on v3.0.0 Deprecated C on v3.0.1.  <a href="#a43b98e1ae5c9f1e7f501708ca332220d">More...</a><br /></td></tr>
 <tr class="separator:a43b98e1ae5c9f1e7f501708ca332220d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -131,7 +132,7 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="version_8c_source.html#l00029">29</a> of file <a class="el" href="version_8c_source.html">version.c</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="version_8c_source.html#l00034">pgr_version()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="version_8c_source.html#l00039">pgr_version()</a>.</p>
 
 </div>
 </div>
@@ -170,10 +171,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="version_8c_source.html#l00034">34</a> of file <a class="el" href="version_8c_source.html">version.c</a>.</p>
+<p>Returns v3.0.0 Function called only on v3.0.0 Deprecated C on v3.0.1. </p>
+
+<p class="definition">Definition at line <a class="el" href="version_8c_source.html#l00039">39</a> of file <a class="el" href="version_8c_source.html">version.c</a>.</p>
 
 <p class="reference">References <a class="el" href="version_8c_source.html#l00029">UNUSED</a>.</p>
-<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                {</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="version_8c.html#a86d500a34c624c2cae56bc25a31b12f3">UNUSED</a>(fcinfo);</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">char</span> *ver = PGROUTING_VERSION;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    text *result = cstring_to_text(ver);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    PG_RETURN_TEXT_P(result);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div><div class="ttc" id="version_8c_html_a86d500a34c624c2cae56bc25a31b12f3"><div class="ttname"><a href="version_8c.html#a86d500a34c624c2cae56bc25a31b12f3">UNUSED</a></div><div class="ttdeci">#define UNUSED(x)</div><div class="ttdef"><b>Definition:</b> <a href="version_8c_source.html#l00029">version.c:29</a></div></div>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                                {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="version_8c.html#a86d500a34c624c2cae56bc25a31b12f3">UNUSED</a>(fcinfo);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">char</span> *ver = <span class="stringliteral">&quot;3.0.0&quot;</span>;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    text *result = cstring_to_text(ver);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    PG_RETURN_TEXT_P(result);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div><div class="ttc" id="version_8c_html_a86d500a34c624c2cae56bc25a31b12f3"><div class="ttname"><a href="version_8c.html#a86d500a34c624c2cae56bc25a31b12f3">UNUSED</a></div><div class="ttdeci">#define UNUSED(x)</div><div class="ttdef"><b>Definition:</b> <a href="version_8c_source.html#l00029">version.c:29</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -183,7 +186,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f208d550dbffb9fb7a9061b68ff675d7.html">version</a></li><li class="navelem"><a class="el" href="version_8c.html">version.c</a></li>
-    <li class="footer">Generated on Wed May 20 2020 18:58:37 for PGROUTING by
+    <li class="footer">Generated on Tue Jul 14 2020 07:42:55 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
