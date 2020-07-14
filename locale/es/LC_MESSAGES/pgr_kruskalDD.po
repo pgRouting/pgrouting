@@ -58,7 +58,7 @@ msgid ""
 "**Supported versions:** current(`3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_kruskalDD.html>`__)"
 msgstr ""
-"**Versiones soportadas:** current(`3.0 "
+"**Versiones soportadas:** actual(`3.0 "
 "<https://docs.pgrouting.org/3.0/es/pgr_kruskalDD.html>`__)"
 
 #: ../../build/doc/pgRouting-concepts.rst:4

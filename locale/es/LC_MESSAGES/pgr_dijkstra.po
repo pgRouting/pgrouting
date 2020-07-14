@@ -98,7 +98,7 @@ msgid ""
 "<https://docs.pgrouting.org/3.0/en/pgr_dijkstra.html>`__) `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_dijkstra.html>`__"
 msgstr ""
-"**Versiones soportadas:** current(`3.0 "
+"**Versiones soportadas:** actual(`3.0 "
 "<https://docs.pgrouting.org/3.0/es/pgr_dijkstra.html>`__) `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_dijkstra.html>`__"
 
