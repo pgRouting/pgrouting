@@ -129,7 +129,7 @@ msgid ""
 "**Supported versions:** current(`3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__)"
 msgstr ""
-"**Versiones soportadas:** current(`3.0 "
+"**Versiones soportadas:** actual(`3.0 "
 "<https://docs.pgrouting.org/3.0/es/pgr_pickDeliverEuclidean.html>`__)"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:31

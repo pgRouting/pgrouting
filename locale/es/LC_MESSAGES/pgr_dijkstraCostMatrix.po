@@ -65,7 +65,7 @@ msgid ""
 "**Supported versions:** current(`3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_dijkstraCostMatrix.html>`__)"
 msgstr ""
-"**Versiones soportadas:** current(`3.0 "
+"**Versiones soportadas:** actual(`3.0 "
 "<https://docs.pgrouting.org/3.0/es/pgr_dijkstraCostMatrix.html>`__)"
 
 #: ../../build/doc/pgr_dijkstraCostMatrix.rst:34
