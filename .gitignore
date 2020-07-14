@@ -9,5 +9,3 @@ src/version/_version.h
 .directory
 notUsed
 *.swp
-run.sh
-test.sh
