@@ -39,7 +39,8 @@ Vehicle Routing Functions - Category (Experimental)
 .. rubric:: Previous versions of this page
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/3.0/en/VRP-category.html>`__)
+  current(`3.1 <https://docs.pgrouting.org/3.1/en/VRP-category.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/VRP-category.html>`__
 
 
 Introduction
