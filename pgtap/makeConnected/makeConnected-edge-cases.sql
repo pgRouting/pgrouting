@@ -36,11 +36,34 @@ SELECT is_empty('q3', 'q3: Vertex Not present in the graph');
 PREPARE makeConnected4 AS
 SELECT *
 FROM pgr_makeConnected(
-    'q4'
+    'q3'
 );
 
 SELECT is_empty('makeConnected4', '4: Vertex Not present in the graph -> Empty row is returned');
 
+-- 1 vertex tests
+
+PREPARE makeConnected5 AS
+SELECT *
+FROM pgr_makeConnected(
+    'SELECT id, source, 6 AS target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 9'
+);
+
+SELECT is_empty('makeConnected5', '5: Graph is already Connected -> Empty row is returned');
+
+-- 2 vertices tests
+
+PREPARE makeConnected6 AS
+SELECT *
+FROM pgr_makeConnected(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id = 1'
+);
+
+SELECT is_empty('makeConnected6', '6: Graph is already Connected -> Empty row is returned');
 
 
 
