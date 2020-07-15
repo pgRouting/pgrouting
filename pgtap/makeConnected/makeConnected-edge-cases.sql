@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(4);
+SELECT plan(7);
 
 
 
@@ -53,7 +53,7 @@ FROM pgr_makeConnected(
 
 SELECT is_empty('makeConnected5', '5: Graph is already Connected -> Empty row is returned');
 
--- 2 vertices tests
+-- 2 vertices tests ===> Connected
 
 PREPARE makeConnected6 AS
 SELECT *
@@ -63,7 +63,17 @@ FROM pgr_makeConnected(
     WHERE id = 1'
 );
 
-SELECT is_empty('makeConnected6', '6: Graph is already Connected -> Empty row is returned');
+-- 2 vertices tests ===> Not Connected
+PREPARE makeConnected7 AS
+SELECT *
+FROM pgr_makeConnected('SELECT id, source, 2 AS target, cost, reverse_cost
+                              FROM edge_table WHERE id = 2
+                                          UNION
+                        SELECT id, source, 6 AS target, cost, reverse_cost
+                              FROM edge_table WHERE id = 9'
+);
+
+SELECT set_eq('makeConnected7', $$VALUES (1, 2, 6)$$, '19: One row is returned');
 
 
 
