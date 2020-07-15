@@ -40,7 +40,8 @@ Cost Matrix - Category
 .. rubric:: Previous versions of this page
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/3.0/en/costMatrix-category.html>`__)
+  current(`3.1 <https://docs.pgrouting.org/3.1/en/costMatrix-category.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/costMatrix-category.html>`__
   `2.6 <https://docs.pgrouting.org/2.6/en/costMatrix-category.html>`__
 
 * **Unsupported versions:**
