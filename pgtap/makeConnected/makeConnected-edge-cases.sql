@@ -118,9 +118,6 @@ SELECT set_eq('q9',
 );
 
 
-
-
-
 PREPARE makeConnected10 AS
 SELECT *
 FROM pgr_makeConnected(
@@ -142,8 +139,41 @@ SELECT is_empty('makeConnected11',
     '11: Vertex not present in graph -> Empty row is returned'
 );
 
+-- 3 vertices tests ====> Not Connnected
+PREPARE makeConnected12 AS
+SELECT *
+FROM pgr_makeConnected('SELECT id,  source, target, cost, reverse_cost
+                                FROM edge_table WHERE id = 2
+                                        UNION
+                        SELECT id, source, 6 AS target, cost, reverse_cost
+                                FROM edge_table WHERE id = 9'
+);
 
+PREPARE makeConnected13 AS
+SELECT *
+FROM pgr_makeConnected('SELECT id,  source, target, cost, reverse_cost
+                                FROM edge_table WHERE id = 2
+                                    UNION
+                        SELECT id, source, 6 AS target, cost, reverse_cost
+                                FROM edge_table WHERE id = 9
+                                    UNION
+                        SELECT id,  source, 7 AS target, cost, reverse_cost
+                                FROM edge_table WHERE id = 6'
+);
 
+SELECT set_eq('makeConnected12',
+    $$VALUES
+        (1, 3, 6)
+    $$,
+    '12:Graph with three vertices 1, 2 and 6'
+);
 
+SELECT set_eq('makeConnected13',
+    $$VALUES
+        (1, 6, 2),
+        (2, 2, 7)
+    $$,
+    '13:Graph with three vertices 2, 6 and 7'
+);
 SELECT * FROM finish();
 ROLLBACK;
