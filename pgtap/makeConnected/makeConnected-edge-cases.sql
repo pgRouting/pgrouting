@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(15);
+SELECT plan(16);
 
 
 
@@ -151,7 +151,7 @@ FROM pgr_makeConnected('SELECT id,  source, target, cost, reverse_cost
 
 PREPARE makeConnected13 AS
 SELECT *
-FROM pgr_makeConnected('SELECT id,  source, target, cost, reverse_cost
+FROM pgr_makeConnected('SELECT id,  source, 2 AS target, cost, reverse_cost
                                 FROM edge_table WHERE id = 2
                                     UNION
                         SELECT id, source, 6 AS target, cost, reverse_cost
@@ -189,6 +189,9 @@ FROM pgr_makeConnected(
 SELECT is_empty('makeConnected14', '14: Graph is already Connected -> Empty row is returned');
 
 -- 4 vertex tests ===> Not Connected
+
+
+
 PREPARE makeConnected15 AS
 SELECT *
 FROM pgr_makeConnected(
@@ -197,11 +200,31 @@ FROM pgr_makeConnected(
     WHERE id IN (1,6)'
 );
 
+PREPARE makeConnected16 AS
+SELECT *
+FROM pgr_makeConnected('SELECT id,  source, 2 AS target, cost, reverse_cost
+                                FROM edge_table WHERE id = 2
+                                    UNION
+                        SELECT id, source, 6 AS target, cost, reverse_cost
+                                FROM edge_table WHERE id = 9
+                                    UNION
+                        SELECT id,  source, target, cost, reverse_cost
+                                FROM edge_table WHERE id = 14'
+);
+
 SELECT set_eq('makeConnected15',
     $$VALUES
         (1, 2, 7)
     $$,
-    '12:One row is returned'
+    '15:Two Connected Components. One row is returned'
+);
+
+SELECT set_eq('makeConnected16',
+    $$VALUES
+        (1, 6, 10),
+        (2, 13, 2)
+    $$,
+    '16:Three Connected Components. Two rows are returned'
 );
 
 SELECT * FROM finish();
