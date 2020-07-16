@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(8);
+SELECT plan(11);
 
 
 
@@ -53,7 +53,7 @@ FROM pgr_makeConnected(
 
 SELECT is_empty('makeConnected5', '5: Graph is already Connected -> Empty row is returned');
 
--- 2 vertices tests ===> Connected
+-- 2 vertices tests ===> Already Connected
 
 PREPARE makeConnected6 AS
 SELECT *
@@ -65,6 +65,7 @@ FROM pgr_makeConnected(
 
 SELECT is_empty('makeConnected6', '6: Graph is already Connected -> Empty row is returned');
 -- 2 vertices tests ===> Not Connected
+
 PREPARE makeConnected7 AS
 SELECT *
 FROM pgr_makeConnected('SELECT id, source, 2 AS target, cost, reverse_cost
@@ -78,7 +79,7 @@ SELECT set_eq('makeConnected7', $$VALUES (1, 2, 6)$$, '7: One row is returned');
 
 PREPARE makeConnected8 AS
 SELECT *
-SELECT * FROM pgr_makeConnected('SELECT id,  source, 7 AS target, cost, reverse_cost
+FROM pgr_makeConnected('SELECT id,  source, 7 AS target, cost, reverse_cost
                                       FROM edge_table WHERE id = 6
                                           UNION
                                 SELECT id, source, 6 AS target, cost, reverse_cost
@@ -87,6 +88,59 @@ SELECT * FROM pgr_makeConnected('SELECT id,  source, 7 AS target, cost, reverse_
 SELECT set_eq('makeConnected8', $$VALUES (1, 7, 6)$$, '8: One row is returned');
 
 
+-- 3 vertices tests ====> Already Connnected
+
+CREATE TABLE three_vertices_table (
+    id BIGSERIAL,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT
+);
+
+INSERT INTO three_vertices_table (source, target, cost, reverse_cost) VALUES
+    (3, 6, 20, -1),
+    (3, 8, 10, -1),
+    (6, 8, -1, 12);
+
+PREPARE q9 AS
+SELECT id, source, target, cost, reverse_cost
+FROM three_vertices_table;
+
+-- Cyclic Graph with three vertices 3, 6 and 8
+SELECT set_eq('q9',
+    $$VALUES
+        (1, 3, 6, 20, -1),
+        (2, 3, 8, 10, -1),
+        (3, 6, 8, -1, 12)
+    $$,
+    'q9: Cyclic Graph with three vertices 3, 6 and 8'
+);
+
+
+
+
+
+PREPARE makeConnected10 AS
+SELECT *
+FROM pgr_makeConnected(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM three_vertices_table'
+);
+
+PREPARE makeConnected11 AS
+SELECT *
+FROM pgr_makeConnected(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM three_vertices_table WHERE id > 4'
+);
+
+SELECT is_empty('makeConnected10',
+    '10: Graph Already Connected -> Empty row is returned'
+);
+SELECT is_empty('makeConnected11',
+    '11: Vertex not present in graph -> Empty row is returned'
+);
 
 
 
