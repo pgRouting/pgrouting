@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.2
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.2\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 20:36-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,7 +125,7 @@ msgid "Upgrading the database"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:110
-msgid "To upgrade pgRouting in the database to version 3.0.2 use the following command:"
+msgid "To upgrade pgRouting in the database to version 3.1.0 use the following command:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:118

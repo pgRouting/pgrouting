@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:13
 msgid ""
-"``pgr_strongComponents`` — Strongly connected components of a directed "
-"graph using Tarjan's algorithm based on DFS."
+"``pgr_strongComponents`` — Strongly connected components of a directed graph "
+"using Tarjan's algorithm based on DFS."
 msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:18
@@ -69,59 +69,60 @@ msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:37
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_strongComponents.html>`__)"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
+"pgr_strongComponents.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
+"pgr_strongComponents.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:40
+#: ../../build/doc/pgr_strongComponents.rst:41
 msgid ""
-"**Unsupported versions:** `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_strongComponents.html>`__ `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_strongComponents.html>`__"
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
+"pgr_strongComponents.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
+"pgr_strongComponents.html>`__"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_connectedComponents.rst:6
-#: ../../build/doc/pgr_strongComponents.rst:45
+#: ../../build/doc/pgr_strongComponents.rst:46
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:47
+#: ../../build/doc/pgr_strongComponents.rst:48
 msgid ""
-"A strongly connected component of a directed graph is a set of vertices "
-"that are all reachable from each other."
+"A strongly connected component of a directed graph is a set of vertices that "
+"are all reachable from each other."
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:50
+#: ../../build/doc/pgr_strongComponents.rst:51
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:52
+#: ../../build/doc/pgr_strongComponents.rst:53
 msgid "The signature is for a **directed** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:53
+#: ../../build/doc/pgr_strongComponents.rst:54
 msgid "Components are described by vertices"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:54
+#: ../../build/doc/pgr_strongComponents.rst:55
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:56
+#: ../../build/doc/pgr_strongComponents.rst:57
 msgid "`component` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:57
+#: ../../build/doc/pgr_strongComponents.rst:58
 msgid "`node` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:59
+#: ../../build/doc/pgr_strongComponents.rst:60
 msgid "Running time: :math:`O(V + E)`"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:62
+#: ../../build/doc/pgr_strongComponents.rst:63
 msgid "Signatures"
 msgstr ""
 
@@ -129,11 +130,11 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:74
+#: ../../build/doc/pgr_strongComponents.rst:75
 msgid "The strong components of the graph"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:81
+#: ../../build/doc/pgr_strongComponents.rst:82
 msgid "Parameters"
 msgstr ""
 
@@ -164,7 +165,7 @@ msgstr ""
 msgid "Inner query as described below."
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:89
+#: ../../build/doc/pgr_strongComponents.rst:90
 msgid "Inner query"
 msgstr ""
 
@@ -172,10 +173,10 @@ msgstr ""
 msgid "edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:91
+#: ../../build/doc/pgr_strongComponents.rst:92
 msgid ""
-"an SQL query of a **directed** graph, which should return a set of rows "
-"with the following columns:"
+"an SQL query of a **directed** graph, which should return a set of rows with "
+"the following columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
@@ -228,8 +229,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -246,8 +247,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
@@ -270,7 +271,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:99
+#: ../../build/doc/pgr_strongComponents.rst:100
 msgid "Result Columns"
 msgstr ""
 
@@ -310,47 +311,38 @@ msgstr ""
 msgid "Identifier of the vertex that belongs to **component**."
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:106
+#: ../../build/doc/pgr_strongComponents.rst:107
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:108
+#: ../../build/doc/pgr_strongComponents.rst:109
 msgid ":doc:`components-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:109
-msgid "The queries use the :doc:`sampledata` network."
-msgstr ""
-
 #: ../../build/doc/pgr_strongComponents.rst:110
-msgid ""
-"Boost: `Strong components "
-"<https://www.boost.org/libs/graph/doc/strong_components.html>`__"
+msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:111
 msgid ""
-"wikipedia: `Strongly connected component "
-"<https://en.wikipedia.org/wiki/Strongly_connected_component>`__"
+"Boost: `Strong components <https://www.boost.org/libs/graph/doc/"
+"strong_components.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:114
-msgid "Indices and tables"
+#: ../../build/doc/pgr_strongComponents.rst:112
+msgid ""
+"wikipedia: `Strongly connected component <https://en.wikipedia.org/wiki/"
+"Strongly_connected_component>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:115
-msgid ":ref:`genindex`"
+msgid "Indices and tables"
 msgstr ""
 
 #: ../../build/doc/pgr_strongComponents.rst:116
-msgid ":ref:`search`"
+msgid ":ref:`genindex`"
 msgstr ""
 
-#~ msgid "Inner query as described bellow."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_strongComponents.html>`__)"
-#~ msgstr ""
-
+#: ../../build/doc/pgr_strongComponents.rst:117
+msgid ":ref:`search`"
+msgstr ""

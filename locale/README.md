@@ -31,6 +31,20 @@ for f in `grep '\.pot' .tx/config | sed 's/^.*pot\/\(.*\)$/\1/' | grep '\.pot'` 
 
 commit changes and push
 
+## Cleanup unused messages
+
+Hint
+```
+for f in ${FILE}
+do
+    echo one ${f}
+    grep '#~' ${f}
+    msgattrib --output-file=${f} --no-obsolete ${f}
+    echo two
+    grep '#~' ${f}
+done
+```
+
 
 ## MANAGERS: Interaction with transifex:
 

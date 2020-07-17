@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.2
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.2\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,53 +113,53 @@ msgid "Support"
 msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:33
-msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_topologicalSort.html>`__)"
+msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_topologicalSort.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_topologicalSort.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:36
+#: ../../build/doc/pgr_topologicalSort.rst:37
 msgid "**TBD**"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:39
-#: ../../build/doc/pgr_topologicalSort.rst:78
-#: ../../build/doc/pgr_topologicalSort.rst:89
-#: ../../build/doc/pgr_topologicalSort.rst:115
+#: ../../build/doc/pgr_topologicalSort.rst:40
+#: ../../build/doc/pgr_topologicalSort.rst:79
+#: ../../build/doc/pgr_topologicalSort.rst:90
+#: ../../build/doc/pgr_topologicalSort.rst:116
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:41
+#: ../../build/doc/pgr_topologicalSort.rst:42
 msgid "The topological sort algorithm creates a linear ordering of the vertices such that if edge (u,v) appears in the graph, then v comes before u in the ordering."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:44
+#: ../../build/doc/pgr_topologicalSort.rst:45
 msgid "This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:54
+#: ../../build/doc/pgr_topologicalSort.rst:55
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:47
+#: ../../build/doc/pgr_topologicalSort.rst:48
 msgid "Process is valid for directed acyclic graphs only. otherwise it will throw warnings."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:49
+#: ../../build/doc/pgr_topologicalSort.rst:50
 msgid "For optimization purposes, if there are more than one answer, the function will return one of them."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:51
+#: ../../build/doc/pgr_topologicalSort.rst:52
 msgid "The returned values are ordered in topological order:"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:53
+#: ../../build/doc/pgr_topologicalSort.rst:54
 msgid "Running time: :math:`O( (V + E))`"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:57
+#: ../../build/doc/pgr_topologicalSort.rst:58
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:60
+#: ../../build/doc/pgr_topologicalSort.rst:61
 msgid "Summary"
 msgstr ""
 
@@ -167,42 +167,42 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:68
+#: ../../build/doc/pgr_topologicalSort.rst:69
 msgid "For a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:75
+#: ../../build/doc/pgr_topologicalSort.rst:76
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:78
+#: ../../build/doc/pgr_topologicalSort.rst:79
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:78
-#: ../../build/doc/pgr_topologicalSort.rst:89
-#: ../../build/doc/pgr_topologicalSort.rst:115
+#: ../../build/doc/pgr_topologicalSort.rst:79
+#: ../../build/doc/pgr_topologicalSort.rst:90
+#: ../../build/doc/pgr_topologicalSort.rst:116
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:78
-#: ../../build/doc/pgr_topologicalSort.rst:89
+#: ../../build/doc/pgr_topologicalSort.rst:79
+#: ../../build/doc/pgr_topologicalSort.rst:90
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:80
+#: ../../build/doc/pgr_topologicalSort.rst:81
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:80
+#: ../../build/doc/pgr_topologicalSort.rst:81
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:80
+#: ../../build/doc/pgr_topologicalSort.rst:81
 msgid "SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:84
+#: ../../build/doc/pgr_topologicalSort.rst:85
 msgid "Inner query"
 msgstr ""
 
@@ -210,79 +210,79 @@ msgstr ""
 msgid "edges_sql"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:86
+#: ../../build/doc/pgr_topologicalSort.rst:87
 msgid "an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:89
-#: ../../build/doc/pgr_topologicalSort.rst:115
+#: ../../build/doc/pgr_topologicalSort.rst:90
+#: ../../build/doc/pgr_topologicalSort.rst:116
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:91
+#: ../../build/doc/pgr_topologicalSort.rst:92
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:91
 #: ../../build/doc/pgr_topologicalSort.rst:92
 #: ../../build/doc/pgr_topologicalSort.rst:93
+#: ../../build/doc/pgr_topologicalSort.rst:94
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:91
+#: ../../build/doc/pgr_topologicalSort.rst:92
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:92
+#: ../../build/doc/pgr_topologicalSort.rst:93
 msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:92
+#: ../../build/doc/pgr_topologicalSort.rst:93
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:93
+#: ../../build/doc/pgr_topologicalSort.rst:94
 msgid "**target**"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:93
+#: ../../build/doc/pgr_topologicalSort.rst:94
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:94
+#: ../../build/doc/pgr_topologicalSort.rst:95
 msgid "**cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:94
-#: ../../build/doc/pgr_topologicalSort.rst:98
+#: ../../build/doc/pgr_topologicalSort.rst:95
+#: ../../build/doc/pgr_topologicalSort.rst:99
 msgid "``ANY-NUMERICAL``"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:94
+#: ../../build/doc/pgr_topologicalSort.rst:95
 msgid "Weight of the edge  `(source, target)`"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:96
+#: ../../build/doc/pgr_topologicalSort.rst:97
 msgid "When negative: edge `(source, target)` does not exist, therefore it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:98
+#: ../../build/doc/pgr_topologicalSort.rst:99
 msgid "**reverse_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:98
+#: ../../build/doc/pgr_topologicalSort.rst:99
 msgid "-1"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:98
+#: ../../build/doc/pgr_topologicalSort.rst:99
 msgid "Weight of the edge `(target, source)`,"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:100
+#: ../../build/doc/pgr_topologicalSort.rst:101
 msgid "When negative: edge `(target, source)` does not exist, therefore it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:104
+#: ../../build/doc/pgr_topologicalSort.rst:105
 msgid "Where:"
 msgstr ""
 
@@ -290,7 +290,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:106
+#: ../../build/doc/pgr_topologicalSort.rst:107
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
@@ -298,63 +298,63 @@ msgstr ""
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:107
+#: ../../build/doc/pgr_topologicalSort.rst:108
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:110
+#: ../../build/doc/pgr_topologicalSort.rst:111
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:112
+#: ../../build/doc/pgr_topologicalSort.rst:113
 msgid "Returns set of ``(seq, sorted_v)``"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:117
+#: ../../build/doc/pgr_topologicalSort.rst:118
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:117
+#: ../../build/doc/pgr_topologicalSort.rst:118
 msgid "``INT``"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:117
+#: ../../build/doc/pgr_topologicalSort.rst:118
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:118
+#: ../../build/doc/pgr_topologicalSort.rst:119
 msgid "**sorted_v**"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:118
+#: ../../build/doc/pgr_topologicalSort.rst:119
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:118
+#: ../../build/doc/pgr_topologicalSort.rst:119
 msgid "Linear ordering of the vertices(ordered in topological order)"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:122
+#: ../../build/doc/pgr_topologicalSort.rst:123
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:124
+#: ../../build/doc/pgr_topologicalSort.rst:125
 msgid "https://en.wikipedia.org/wiki/Topological_sorting"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:125
+#: ../../build/doc/pgr_topologicalSort.rst:126
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:128
+#: ../../build/doc/pgr_topologicalSort.rst:129
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:129
+#: ../../build/doc/pgr_topologicalSort.rst:130
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_topologicalSort.rst:130
+#: ../../build/doc/pgr_topologicalSort.rst:131
 msgid ":ref:`search`"
 msgstr ""
 

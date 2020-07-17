@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.2
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.2\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,14 +53,14 @@ msgid "Support"
 msgstr ""
 
 #: ../../build/doc/pgr_aStarCost.rst:32
-msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_aStarCost.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__"
+msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_aStarCost.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_aStarCost.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:36
+#: ../../build/doc/pgr_aStarCost.rst:37
 msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:41
+#: ../../build/doc/pgr_aStarCost.rst:42
 #: ../../build/doc/pgr_aStar.rst:4
 #: ../../build/doc/pgr_aStar.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:43
+#: ../../build/doc/pgr_aStarCost.rst:44
 msgid "**The main characteristics are:**"
 msgstr ""
 
@@ -141,35 +141,35 @@ msgstr ""
 msgid "Running time: :math:`O((E + V) * \\log V)`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:49
+#: ../../build/doc/pgr_aStarCost.rst:50
 msgid "The results are equivalent to the union of the results of the `pgr_aStarCost(` `One to One`_ `)` on the:"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:51
+#: ../../build/doc/pgr_aStarCost.rst:52
 msgid "`pgr_aStarCost(` `One to Many`_ `)`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:52
+#: ../../build/doc/pgr_aStarCost.rst:53
 msgid "`pgr_aStarCost(` `Many to One`_ `)`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:53
+#: ../../build/doc/pgr_aStarCost.rst:54
 msgid "`pgr_aStarCost(` `Many to Many`_ `)`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:56
+#: ../../build/doc/pgr_aStarCost.rst:57
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:59
+#: ../../build/doc/pgr_aStarCost.rst:60
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:70
+#: ../../build/doc/pgr_aStarCost.rst:71
 msgid "Optional parameters are `named parameters` and have a default value."
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:73
+#: ../../build/doc/pgr_aStarCost.rst:74
 msgid "Using defaults"
 msgstr ""
 
@@ -181,43 +181,43 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:80
+#: ../../build/doc/pgr_aStarCost.rst:81
 msgid "From vertex :math:`2` to vertex  :math:`12` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:90
+#: ../../build/doc/pgr_aStarCost.rst:91
 msgid "One to One"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:98
+#: ../../build/doc/pgr_aStarCost.rst:99
 msgid "From vertex :math:`2` to vertex  :math:`12` on an **undirected** graph using heuristic :math:`2`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:108
+#: ../../build/doc/pgr_aStarCost.rst:109
 msgid "One to many"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:116
+#: ../../build/doc/pgr_aStarCost.rst:117
 msgid "From vertex :math:`2` to vertices :math:`\\{3, 12\\}` on a **directed** graph using heuristic :math:`2`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:126
+#: ../../build/doc/pgr_aStarCost.rst:127
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:134
+#: ../../build/doc/pgr_aStarCost.rst:135
 msgid "From vertices :math:`\\{7, 2\\}` to vertex :math:`12` on a **directed** graph using heuristic :math:`0`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:144
+#: ../../build/doc/pgr_aStarCost.rst:145
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:152
+#: ../../build/doc/pgr_aStarCost.rst:153
 msgid "From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 12\\}` on a **directed** graph using heuristic :math:`2`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:159
+#: ../../build/doc/pgr_aStarCost.rst:160
 msgid "Parameters"
 msgstr ""
 
@@ -310,7 +310,7 @@ msgstr ""
 msgid "Array of ending vertices identifiers. Parameter in:"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:166
+#: ../../build/doc/pgr_aStarCost.rst:167
 msgid "Optional Parameters"
 msgstr ""
 
@@ -406,11 +406,11 @@ msgstr ""
 msgid "For less restricted results. :math:`epsilon >= 1`."
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:173
+#: ../../build/doc/pgr_aStarCost.rst:174
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:176
+#: ../../build/doc/pgr_aStarCost.rst:177
 #: ../../build/doc/pgRouting-concepts.rst:0
 msgid "edges_sql"
 msgstr ""
@@ -537,7 +537,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:183
+#: ../../build/doc/pgr_aStarCost.rst:184
 msgid "Result Columns"
 msgstr ""
 
@@ -574,35 +574,35 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:190
+#: ../../build/doc/pgr_aStarCost.rst:191
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:192
+#: ../../build/doc/pgr_aStarCost.rst:193
 msgid ":doc:`aStar-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:193
+#: ../../build/doc/pgr_aStarCost.rst:194
 msgid ":doc:`cost-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:194
+#: ../../build/doc/pgr_aStarCost.rst:195
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:195
+#: ../../build/doc/pgr_aStarCost.rst:196
 msgid "Examples use :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:198
+#: ../../build/doc/pgr_aStarCost.rst:199
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:199
+#: ../../build/doc/pgr_aStarCost.rst:200
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_aStarCost.rst:200
+#: ../../build/doc/pgr_aStarCost.rst:201
 msgid ":ref:`search`"
 msgstr ""
 

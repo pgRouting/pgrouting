@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.2
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.2\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,64 +37,64 @@ msgid "Previous versions of this page"
 msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:30
-msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-family.html>`__"
+msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/bdAstar-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-family.html>`__"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:34
+#: ../../build/doc/bdAstar-family.rst:35
 msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/bdAstar-family.html>`__"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:38
+#: ../../build/doc/bdAstar-family.rst:39
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/bdAstar-family.rst:77
+#: ../../build/doc/bdAstar-family.rst:78
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:40
+#: ../../build/doc/bdAstar-family.rst:41
 msgid "Based on A* algorithm, the bidirectional search finds a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``). It runs two simultaneous searches: one forward from the ``start_vid``, and one backward from the ``end_vid``, stopping when the two meet in the middle. This implementation can be used with a directed graph and an undirected graph."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:46
+#: ../../build/doc/bdAstar-family.rst:47
 msgid "The main Characteristics are:"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:48
+#: ../../build/doc/bdAstar-family.rst:49
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:49
+#: ../../build/doc/bdAstar-family.rst:50
 msgid "Values are returned when there is a path."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:51
+#: ../../build/doc/bdAstar-family.rst:52
 msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:53
+#: ../../build/doc/bdAstar-family.rst:54
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:55
+#: ../../build/doc/bdAstar-family.rst:56
 msgid "When the starting vertex and ending vertex are the different and there is no path:"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:57
+#: ../../build/doc/bdAstar-family.rst:58
 msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:59
+#: ../../build/doc/bdAstar-family.rst:60
 msgid "Running time (worse case scenario): :math:`O((E + V) * \\log V)`"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:60
+#: ../../build/doc/bdAstar-family.rst:61
 msgid "For large graphs where there is a path bewtween the starting vertex and ending vertex:"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:62
+#: ../../build/doc/bdAstar-family.rst:63
 msgid "It is expected to terminate faster than pgr_astar"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:65
+#: ../../build/doc/bdAstar-family.rst:66
 msgid "Signatures"
 msgstr ""
 
@@ -111,7 +111,7 @@ msgid "Column"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/bdAstar-family.rst:77
+#: ../../build/doc/bdAstar-family.rst:78
 msgid "Type"
 msgstr ""
 
@@ -126,8 +126,8 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/bdAstar-family.rst:80
-#: ../../build/doc/bdAstar-family.rst:82
+#: ../../build/doc/bdAstar-family.rst:81
+#: ../../build/doc/bdAstar-family.rst:83
 msgid "``ANY-INTEGER``"
 msgstr ""
 
@@ -240,153 +240,153 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:74
+#: ../../build/doc/bdAstar-family.rst:75
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:77
+#: ../../build/doc/bdAstar-family.rst:78
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:79
+#: ../../build/doc/bdAstar-family.rst:80
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:79
+#: ../../build/doc/bdAstar-family.rst:80
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:79
+#: ../../build/doc/bdAstar-family.rst:80
 msgid "Edges SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:80
+#: ../../build/doc/bdAstar-family.rst:81
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:80
+#: ../../build/doc/bdAstar-family.rst:81
 msgid "Starting vertex identifier."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:81
+#: ../../build/doc/bdAstar-family.rst:82
 msgid "**start_vids**"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:81
-#: ../../build/doc/bdAstar-family.rst:83
+#: ../../build/doc/bdAstar-family.rst:82
+#: ../../build/doc/bdAstar-family.rst:84
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:81
+#: ../../build/doc/bdAstar-family.rst:82
 msgid "Starting vertices identifierers."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:82
+#: ../../build/doc/bdAstar-family.rst:83
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:82
+#: ../../build/doc/bdAstar-family.rst:83
 msgid "Ending vertex identifier."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:83
+#: ../../build/doc/bdAstar-family.rst:84
 msgid "**end_vids**"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:83
+#: ../../build/doc/bdAstar-family.rst:84
 msgid "Ending vertices identifiers."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:84
+#: ../../build/doc/bdAstar-family.rst:85
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:84
+#: ../../build/doc/bdAstar-family.rst:85
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:84
+#: ../../build/doc/bdAstar-family.rst:85
 msgid "Optional."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:86
+#: ../../build/doc/bdAstar-family.rst:87
 msgid "When ``false`` the graph is considered as Undirected."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:87
+#: ../../build/doc/bdAstar-family.rst:88
 msgid "Default is ``true`` which considers the graph as Directed."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:89
+#: ../../build/doc/bdAstar-family.rst:90
 msgid "**heuristic**"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:89
+#: ../../build/doc/bdAstar-family.rst:90
 msgid "``INTEGER``"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:89
+#: ../../build/doc/bdAstar-family.rst:90
 msgid "(optional). Heuristic number. Current valid values 0~5. Default ``5``"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:91
+#: ../../build/doc/bdAstar-family.rst:92
 msgid "0: h(v) = 0 (Use this value to compare with pgr_dijkstra)"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:92
+#: ../../build/doc/bdAstar-family.rst:93
 msgid "1: h(v) abs(max(dx, dy))"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:93
+#: ../../build/doc/bdAstar-family.rst:94
 msgid "2: h(v) abs(min(dx, dy))"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:94
+#: ../../build/doc/bdAstar-family.rst:95
 msgid "3: h(v) = dx * dx + dy * dy"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:95
+#: ../../build/doc/bdAstar-family.rst:96
 msgid "4: h(v) = sqrt(dx * dx + dy * dy)"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:96
+#: ../../build/doc/bdAstar-family.rst:97
 msgid "5: h(v) = abs(dx) + abs(dy)"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:98
+#: ../../build/doc/bdAstar-family.rst:99
 msgid "**factor**"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:98
 #: ../../build/doc/bdAstar-family.rst:99
+#: ../../build/doc/bdAstar-family.rst:100
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:98
+#: ../../build/doc/bdAstar-family.rst:99
 msgid "(optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see :ref:`astar_factor`"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:99
+#: ../../build/doc/bdAstar-family.rst:100
 msgid "**epsilon**"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:99
+#: ../../build/doc/bdAstar-family.rst:100
 msgid "(optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``."
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:105
+#: ../../build/doc/bdAstar-family.rst:106
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:108
+#: ../../build/doc/bdAstar-family.rst:109
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:109
+#: ../../build/doc/bdAstar-family.rst:110
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/bdAstar-family.rst:110
+#: ../../build/doc/bdAstar-family.rst:111
 msgid ":ref:`search`"
 msgstr ""
 

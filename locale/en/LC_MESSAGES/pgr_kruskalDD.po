@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,24 +47,25 @@ msgstr ""
 
 #: ../../build/doc/pgr_kruskalDD.rst:28
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_kruskalDD.html>`__)"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
+"pgr_kruskalDD.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
+"pgr_kruskalDD.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_kruskalDD.rst:32 ../../build/doc/pgr_kruskalDD.rst:100
-#: ../../build/doc/pgr_kruskalDD.rst:142
+#: ../../build/doc/pgr_kruskalDD.rst:33 ../../build/doc/pgr_kruskalDD.rst:101
+#: ../../build/doc/pgr_kruskalDD.rst:143
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:34
+#: ../../build/doc/pgr_kruskalDD.rst:35
 msgid ""
-"Using Kruskal's algorithm, extracts the nodes that have aggregate costs "
-"less than or equal to the value ``Distance`` from a **root** vertex (or "
-"vertices) within the calculated minimum spanning tree."
+"Using Kruskal's algorithm, extracts the nodes that have aggregate costs less "
+"than or equal to the value ``Distance`` from a **root** vertex (or vertices) "
+"within the calculated minimum spanning tree."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:39
+#: ../../build/doc/pgr_kruskalDD.rst:40
 msgid "**The main Characteristics are:**"
 msgstr ""
 
@@ -104,19 +105,19 @@ msgstr ""
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:45
+#: ../../build/doc/pgr_kruskalDD.rst:46
 msgid "Returned tree nodes from a root vertex are on Depth First Search order."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:46
+#: ../../build/doc/pgr_kruskalDD.rst:47
 msgid "Depth First Search running time: :math:`O(E + V)`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:49
+#: ../../build/doc/pgr_kruskalDD.rst:50
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:62
+#: ../../build/doc/pgr_kruskalDD.rst:63
 msgid "Single vertex"
 msgstr ""
 
@@ -124,113 +125,113 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:70
+#: ../../build/doc/pgr_kruskalDD.rst:71
 msgid ""
-"The Minimum Spanning Tree starting on vertex :math:`2` with "
-":math:`agg\\_cost <= 3.5`"
+"The Minimum Spanning Tree starting on vertex :math:`2` with :math:`agg"
+"\\_cost <= 3.5`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:80
+#: ../../build/doc/pgr_kruskalDD.rst:81
 msgid "Multiple vertices"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:88
+#: ../../build/doc/pgr_kruskalDD.rst:89
 msgid ""
-"The Minimum Spanning Tree starting on vertices :math:`\\{13, 2\\}` with "
-":math:`agg\\_cost <= 3.5`;"
+"The Minimum Spanning Tree starting on vertices :math:`\\{13, 2\\}` with :"
+"math:`agg\\_cost <= 3.5`;"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:97
+#: ../../build/doc/pgr_kruskalDD.rst:98
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:100
+#: ../../build/doc/pgr_kruskalDD.rst:101
 msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_kruskalDD.rst:100 ../../build/doc/pgr_kruskalDD.rst:142
+#: ../../build/doc/pgr_kruskalDD.rst:101 ../../build/doc/pgr_kruskalDD.rst:143
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:102
+#: ../../build/doc/pgr_kruskalDD.rst:103
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:102
+#: ../../build/doc/pgr_kruskalDD.rst:103
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:102
+#: ../../build/doc/pgr_kruskalDD.rst:103
 msgid "SQL query described in `Inner query`_."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:103
+#: ../../build/doc/pgr_kruskalDD.rst:104
 msgid "**Root vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:103 ../../build/doc/pgr_kruskalDD.rst:144
-#: ../../build/doc/pgr_kruskalDD.rst:145 ../../build/doc/pgr_kruskalDD.rst:149
-#: ../../build/doc/pgr_kruskalDD.rst:153 ../../build/doc/pgr_kruskalDD.rst:154
+#: ../../build/doc/pgr_kruskalDD.rst:104 ../../build/doc/pgr_kruskalDD.rst:145
+#: ../../build/doc/pgr_kruskalDD.rst:146 ../../build/doc/pgr_kruskalDD.rst:150
+#: ../../build/doc/pgr_kruskalDD.rst:154 ../../build/doc/pgr_kruskalDD.rst:155
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:103
+#: ../../build/doc/pgr_kruskalDD.rst:104
 msgid "Identifier of the root vertex of the tree."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:105
+#: ../../build/doc/pgr_kruskalDD.rst:106
 msgid "Used on `Single vertex`_"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:106
+#: ../../build/doc/pgr_kruskalDD.rst:107
 msgid ""
-"When :math:`0` gets the spanning forest starting in aleatory nodes for "
-"each tree."
+"When :math:`0` gets the spanning forest starting in aleatory nodes for each "
+"tree."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:109
+#: ../../build/doc/pgr_kruskalDD.rst:110
 msgid "**Root vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:109
+#: ../../build/doc/pgr_kruskalDD.rst:110
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:109
+#: ../../build/doc/pgr_kruskalDD.rst:110
 msgid "Array of identifiers of the root vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:111
+#: ../../build/doc/pgr_kruskalDD.rst:112
 msgid "Used on `Multiple vertices`_"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:112
+#: ../../build/doc/pgr_kruskalDD.rst:113
 msgid ":math:`0` values are ignored"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:113
+#: ../../build/doc/pgr_kruskalDD.rst:114
 msgid "For optimization purposes, any duplicated value is ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:115
+#: ../../build/doc/pgr_kruskalDD.rst:116
 msgid "**Distance**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:115
+#: ../../build/doc/pgr_kruskalDD.rst:116
 msgid "``ANY-NUMERIC``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:115
+#: ../../build/doc/pgr_kruskalDD.rst:116
 msgid "Upper limit for the inclusion of the node in the result."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:117
+#: ../../build/doc/pgr_kruskalDD.rst:118
 msgid "When the value is Negative **throws error**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
-#: ../../build/doc/pgr_kruskalDD.rst:120
+#: ../../build/doc/pgr_kruskalDD.rst:121
 msgid "Where:"
 msgstr ""
 
@@ -239,7 +240,7 @@ msgid "ANY-INTEGER"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:21
-#: ../../build/doc/pgr_kruskalDD.rst:122
+#: ../../build/doc/pgr_kruskalDD.rst:123
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
@@ -247,16 +248,16 @@ msgstr ""
 msgid "ANY-NUMERIC"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:123
+#: ../../build/doc/pgr_kruskalDD.rst:124
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:126
+#: ../../build/doc/pgr_kruskalDD.rst:127
 msgid "Inner query"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_kruskalDD.rst:142
+#: ../../build/doc/pgr_kruskalDD.rst:143
 msgid "Column"
 msgstr ""
 
@@ -295,7 +296,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_kruskalDD.rst:158
+#: ../../build/doc/pgr_kruskalDD.rst:159
 msgid "**cost**"
 msgstr ""
 
@@ -310,8 +311,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -328,8 +329,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
@@ -340,124 +341,118 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:135
+#: ../../build/doc/pgr_kruskalDD.rst:136
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:139
+#: ../../build/doc/pgr_kruskalDD.rst:140
 msgid "Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:144
+#: ../../build/doc/pgr_kruskalDD.rst:145
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:144
+#: ../../build/doc/pgr_kruskalDD.rst:145
 msgid "Sequential value starting from :math:`1`."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:145
+#: ../../build/doc/pgr_kruskalDD.rst:146
 msgid "**depth**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:145
+#: ../../build/doc/pgr_kruskalDD.rst:146
 msgid "Depth of the ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:147
+#: ../../build/doc/pgr_kruskalDD.rst:148
 msgid ":math:`0`  when ``node`` = ``start_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:149
+#: ../../build/doc/pgr_kruskalDD.rst:150
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:149
+#: ../../build/doc/pgr_kruskalDD.rst:150
 msgid "Identifier of the root vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:151
+#: ../../build/doc/pgr_kruskalDD.rst:152
 msgid "In `Multiple Vertices`_ results are in ascending order."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:153
+#: ../../build/doc/pgr_kruskalDD.rst:154
 msgid "**node**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:153
+#: ../../build/doc/pgr_kruskalDD.rst:154
 msgid "Identifier of ``node`` reached using ``edge``."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:154
+#: ../../build/doc/pgr_kruskalDD.rst:155
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:154
+#: ../../build/doc/pgr_kruskalDD.rst:155
 msgid "Identifier of the ``edge`` used to arrive to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:156
+#: ../../build/doc/pgr_kruskalDD.rst:157
 msgid ":math:`-1`  when ``node`` = ``start_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:158 ../../build/doc/pgr_kruskalDD.rst:159
+#: ../../build/doc/pgr_kruskalDD.rst:159 ../../build/doc/pgr_kruskalDD.rst:160
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:158
+#: ../../build/doc/pgr_kruskalDD.rst:159
 msgid "Cost to traverse ``edge``."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:159
+#: ../../build/doc/pgr_kruskalDD.rst:160
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:159
+#: ../../build/doc/pgr_kruskalDD.rst:160
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:167
+#: ../../build/doc/pgr_kruskalDD.rst:168
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:169
+#: ../../build/doc/pgr_kruskalDD.rst:170
 msgid ":doc:`spanningTree-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:170
+#: ../../build/doc/pgr_kruskalDD.rst:171
 msgid ":doc:`kruskal-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:171
-msgid "The queries use the :doc:`sampledata` network."
-msgstr ""
-
 #: ../../build/doc/pgr_kruskalDD.rst:172
-msgid ""
-"`Boost: Kruskal's algorithm documentation "
-"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
 #: ../../build/doc/pgr_kruskalDD.rst:173
 msgid ""
-"`Wikipedia: Kruskal's algorithm "
-"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
+"`Boost: Kruskal's algorithm documentation <https://www.boost.org/libs/graph/"
+"doc/kruskal_min_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDD.rst:176
-msgid "Indices and tables"
+#: ../../build/doc/pgr_kruskalDD.rst:174
+msgid ""
+"`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/"
+"Kruskal's_algorithm>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_kruskalDD.rst:177
-msgid ":ref:`genindex`"
+msgid "Indices and tables"
 msgstr ""
 
 #: ../../build/doc/pgr_kruskalDD.rst:178
-msgid ":ref:`search`"
+msgid ":ref:`genindex`"
 msgstr ""
 
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_kruskalDD.html>`__)"
-#~ msgstr ""
-
+#: ../../build/doc/pgr_kruskalDD.rst:179
+msgid ":ref:`search`"
+msgstr ""
