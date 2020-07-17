@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Todos los Pares - Familia de Funciones &#8212; pgRouting Manual (3.1)</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_floydWarshall" href="pgr_floydWarshall.html" />
+    <link rel="prev" title="Familias de Funciones" href="routingFunctions.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Todos los Pares - Familia de Funciones</a><ul>
+<li><a class="reference internal" href="#performance">Rendimiento</a><ul>
+<li><a class="reference internal" href="#data">Datos</a></li>
+<li><a class="reference internal" href="#results">Resultados</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="routingFunctions.html" title="Previous Chapter: Familias de Funciones"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Familias de Funciones</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_floydWarshall.html" title="Next Chapter: pgr_floydWarshall"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_floydWarshall &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="all-pairs-family-of-functions">
+<h1>Todos los Pares - Familia de Funciones<a class="headerlink" href="#all-pairs-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Las siguientes funciones funcionan en todas las combinaciones de pares de vértices</p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Algoritmo de Floyd-Warshall</li>
+<li><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Algoritmo de Johnson</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<p class="rubric">Versiones anteriores de esta página</p>
+<ul class="simple">
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/allpairs-family.html">3.1</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/allpairs-family.html">3.0</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/allpairs-family.html">2.6</a></li>
+<li><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/allpairs-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/allpairs-family.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html">2.2</a></li>
+</ul>
+<div class="section" id="performance">
+<h2>Rendimiento<a class="headerlink" href="#performance" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="docutils">
+<dt>Las siguientes pruebas:</dt>
+<dd><ul class="first last simple">
+<li>computadora que no sea servidor</li>
+<li>con unidad de procesamiento central AMD 64</li>
+<li>memoria 4G</li>
+<li>trusty</li>
+<li>postgreSQL versión 9.3</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="data">
+<h3>Datos<a class="headerlink" href="#data" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Se usaron los siguientes datos</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BBOX=&quot;-122.8,45.4,-122.5,45.6&quot;
+wget --progress=dot:mega -O &quot;sampledata.osm&quot; &quot;https://www.overpass-api.de/api/xapi?*[bbox=][@meta]&quot;
+</pre></div>
+</div>
+<p>El procesamiento de datos se llevó a cabo con osm2pgrouting-alpha</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>createdb portland
+psql -c &quot;create extension postgis&quot; portland
+psql -c &quot;create extension pgrouting&quot; portland
+osm2pgrouting -f sampledata.osm -d portland -s 0
+</pre></div>
+</div>
+</div>
+<div class="section" id="results">
+<h3>Resultados<a class="headerlink" href="#results" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Prueba:</th><td class="field-body">Uno</td>
+</tr>
+</tbody>
+</table>
+<p>Esta prueba no se hace con cuadro delimitador. La densidad del gráfico que se pasa es extremadamente baja. Para cada &lt;SIZE&gt; se ejecutaron 30 pruebas para obtener el medio. La consulta probada es:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SELECT count(*) FROM pgr_floydWarshall(
+   &#39;SELECT gid as id, source, target, cost, reverse_cost FROM ways where id &lt;=  &lt;SIZE&gt;&#39;);
+
+SELECT count(*) FROM pgr_johnson(
+   &#39;SELECT gid as id, source, target, cost, reverse_cost FROM ways where id &lt;=  &lt;SIZE&gt;&#39;);
+</pre></div>
+</div>
+<p>Los resultados de la prueba son:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">TAMAÑO:</th><td class="field-body">es el número de aristas entradas</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ARISTAS:</th><td class="field-body">es el numero de registros en la consulta</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">DENSIDAD:</th><td class="field-body">es la densidad de los datos <span class="math notranslate nohighlight">\(\dfrac{E}{V \times (V-1)}\)</span>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">REGISTROS DEVUELTOS:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">es el número de registros devueltos por las consultas.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Floyd-Warshall:</th><td class="field-body">es el tiempo promedio de ejecución en segundos de pgr_floydWarshall.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Johnson:</th><td class="field-body">es el tiempo promedio de ejecución en segundos de pgr_johnson.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="11%" />
+<col width="18%" />
+<col width="14%" />
+<col width="25%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">TAMAÑO</th>
+<th class="head">ARISTAS</th>
+<th class="head">DENSIDAD</th>
+<th class="head">REGISTROS DEVUELTOS</th>
+<th class="head">Floyd-Warshall</th>
+<th class="head">Johnson</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>500</td>
+<td>500</td>
+<td>0.18E-7</td>
+<td>1346</td>
+<td>0.14</td>
+<td>0.13</td>
+</tr>
+<tr class="row-odd"><td>1000</td>
+<td>1000</td>
+<td>0.36E-7</td>
+<td>2655</td>
+<td>0.23</td>
+<td>0.18</td>
+</tr>
+<tr class="row-even"><td>1500</td>
+<td>1500</td>
+<td>0.55E-7</td>
+<td>4110</td>
+<td>0.37</td>
+<td>0.34</td>
+</tr>
+<tr class="row-odd"><td>2000</td>
+<td>2000</td>
+<td>0.73E-7</td>
+<td>5676</td>
+<td>0.56</td>
+<td>0.37</td>
+</tr>
+<tr class="row-even"><td>2500</td>
+<td>2500</td>
+<td>0.89E-7</td>
+<td>7177</td>
+<td>0.84</td>
+<td>0.51</td>
+</tr>
+<tr class="row-odd"><td>3000</td>
+<td>3000</td>
+<td>1.07E-7</td>
+<td>8778</td>
+<td>1.28</td>
+<td>0.68</td>
+</tr>
+<tr class="row-even"><td>3500</td>
+<td>3500</td>
+<td>1.24E-7</td>
+<td>10526</td>
+<td>2.08</td>
+<td>0.95</td>
+</tr>
+<tr class="row-odd"><td>4000</td>
+<td>4000</td>
+<td>1.41E-7</td>
+<td>12484</td>
+<td>3.16</td>
+<td>1.24</td>
+</tr>
+<tr class="row-even"><td>4500</td>
+<td>4500</td>
+<td>1.58E-7</td>
+<td>14354</td>
+<td>4.49</td>
+<td>1.47</td>
+</tr>
+<tr class="row-odd"><td>5000</td>
+<td>5000</td>
+<td>1.76E-7</td>
+<td>16503</td>
+<td>6.05</td>
+<td>1.78</td>
+</tr>
+<tr class="row-even"><td>5500</td>
+<td>5500</td>
+<td>1.93E-7</td>
+<td>18623</td>
+<td>7.53</td>
+<td>2.03</td>
+</tr>
+<tr class="row-odd"><td>6000</td>
+<td>6000</td>
+<td>2.11E-7</td>
+<td>20710</td>
+<td>8.47</td>
+<td>2.37</td>
+</tr>
+<tr class="row-even"><td>6500</td>
+<td>6500</td>
+<td>2.28E-7</td>
+<td>22752</td>
+<td>9.99</td>
+<td>2.68</td>
+</tr>
+<tr class="row-odd"><td>7000</td>
+<td>7000</td>
+<td>2.46E-7</td>
+<td>24687</td>
+<td>11.82</td>
+<td>3.12</td>
+</tr>
+<tr class="row-even"><td>7500</td>
+<td>7500</td>
+<td>2.64E-7</td>
+<td>26861</td>
+<td>13.94</td>
+<td>3.60</td>
+</tr>
+<tr class="row-odd"><td>8000</td>
+<td>8000</td>
+<td>2.83E-7</td>
+<td>29050</td>
+<td>15.61</td>
+<td>4.09</td>
+</tr>
+<tr class="row-even"><td>8500</td>
+<td>8500</td>
+<td>3.01E-7</td>
+<td>31693</td>
+<td>17.43</td>
+<td>4.63</td>
+</tr>
+<tr class="row-odd"><td>9000</td>
+<td>9000</td>
+<td>3.17E-7</td>
+<td>33879</td>
+<td>19.19</td>
+<td>5.34</td>
+</tr>
+<tr class="row-even"><td>9500</td>
+<td>9500</td>
+<td>3.35E-7</td>
+<td>36287</td>
+<td>20.77</td>
+<td>6.24</td>
+</tr>
+<tr class="row-odd"><td>10000</td>
+<td>10000</td>
+<td>3.52E-7</td>
+<td>38491</td>
+<td>23.26</td>
+<td>6.51</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Prueba:</th><td class="field-body">Dos</td>
+</tr>
+</tbody>
+</table>
+<p>Esta prueba se hace con cuadro delimitador. La densidad del gráfico que se pasa es superior a la de la prueba 1. Para cada &lt;SIZE&gt; se ejecutaron 30 pruebas para obtener el medio. La consulta de arista que se prueba es:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WITH
+    buffer AS (SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)), SIZE) AS geom FROM ways),
+    bbox AS (SELECT ST_Envelope(ST_Extent(geom)) as box from buffer)
+SELECT gid as id, source, target, cost, reverse_cost FROM ways where the_geom &amp;&amp; (SELECT box from bbox);
+</pre></div>
+</div>
+<p>Las consultas probadas</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SELECT count(*) FROM pgr_floydWarshall(&lt;edge query&gt;)
+SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
+</pre></div>
+</div>
+<p>Los resultados de la prueba son:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">TAMAÑO:</th><td class="field-body">es el tamaño del cuadro delimitador.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ARISTAS:</th><td class="field-body">es el numero de registros en la consulta</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">DENSIDAD:</th><td class="field-body">es la densidad de los datos <span class="math notranslate nohighlight">\(\dfrac{E}{V \times (V-1)}\)</span>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">REGISTROS DEVUELTOS:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">es el número de registros devueltos por las consultas.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Floyd-Warshall:</th><td class="field-body">es el tiempo promedio de ejecución en segundos de pgr_floydWarshall.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Johnson:</th><td class="field-body">es el tiempo promedio de ejecución en segundos de pgr_johnson.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="9%" />
+<col width="15%" />
+<col width="15%" />
+<col width="26%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">TAMAÑO</th>
+<th class="head">ARISTAS</th>
+<th class="head">DENSIDAD</th>
+<th class="head">REGISTROS DEVUELTOS</th>
+<th class="head">Floyd-Warshall</th>
+<th class="head">Johnson</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0.001</td>
+<td>44</td>
+<td>0.0608</td>
+<td>1197</td>
+<td>0.10</td>
+<td>0.10</td>
+</tr>
+<tr class="row-odd"><td>0.002</td>
+<td>99</td>
+<td>0.0251</td>
+<td>4330</td>
+<td>0.10</td>
+<td>0.10</td>
+</tr>
+<tr class="row-even"><td>0.003</td>
+<td>223</td>
+<td>0.0122</td>
+<td>18849</td>
+<td>0.12</td>
+<td>0.12</td>
+</tr>
+<tr class="row-odd"><td>0.004</td>
+<td>358</td>
+<td>0.0085</td>
+<td>71834</td>
+<td>0.16</td>
+<td>0.16</td>
+</tr>
+<tr class="row-even"><td>0.005</td>
+<td>470</td>
+<td>0.0070</td>
+<td>116290</td>
+<td>0.22</td>
+<td>0.19</td>
+</tr>
+<tr class="row-odd"><td>0.006</td>
+<td>639</td>
+<td>0.0055</td>
+<td>207030</td>
+<td>0.37</td>
+<td>0.27</td>
+</tr>
+<tr class="row-even"><td>0.007</td>
+<td>843</td>
+<td>0.0043</td>
+<td>346930</td>
+<td>0.64</td>
+<td>0.38</td>
+</tr>
+<tr class="row-odd"><td>0.008</td>
+<td>996</td>
+<td>0.0037</td>
+<td>469936</td>
+<td>0.90</td>
+<td>0.49</td>
+</tr>
+<tr class="row-even"><td>0.009</td>
+<td>1146</td>
+<td>0.0032</td>
+<td>613135</td>
+<td>1.26</td>
+<td>0.62</td>
+</tr>
+<tr class="row-odd"><td>0.010</td>
+<td>1360</td>
+<td>0.0027</td>
+<td>849304</td>
+<td>1.87</td>
+<td>0.82</td>
+</tr>
+<tr class="row-even"><td>0.011</td>
+<td>1573</td>
+<td>0.0024</td>
+<td>1147101</td>
+<td>2.65</td>
+<td>1.04</td>
+</tr>
+<tr class="row-odd"><td>0.012</td>
+<td>1789</td>
+<td>0.0021</td>
+<td>1483629</td>
+<td>3.72</td>
+<td>1.35</td>
+</tr>
+<tr class="row-even"><td>0.013</td>
+<td>1975</td>
+<td>0.0019</td>
+<td>1846897</td>
+<td>4.86</td>
+<td>1.68</td>
+</tr>
+<tr class="row-odd"><td>0.014</td>
+<td>2281</td>
+<td>0.0017</td>
+<td>2438298</td>
+<td>7.08</td>
+<td>2.28</td>
+</tr>
+<tr class="row-even"><td>0.015</td>
+<td>2588</td>
+<td>0.0015</td>
+<td>3156007</td>
+<td>10.28</td>
+<td>2.80</td>
+</tr>
+<tr class="row-odd"><td>0.016</td>
+<td>2958</td>
+<td>0.0013</td>
+<td>4090618</td>
+<td>14.67</td>
+<td>3.76</td>
+</tr>
+<tr class="row-even"><td>0.017</td>
+<td>3247</td>
+<td>0.0012</td>
+<td>4868919</td>
+<td>18.12</td>
+<td>4.48</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="see-also">
+<h3>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></li>
+<li><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a></li>
+<li><a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Algoritmo floyd-Warshall</a> en Boost</li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
+      Actualizado por última vez en jul. 17, 2020.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pgr_withPointsKSP - Proposed &#8212; pgRouting Manual (3.1)</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_withPointsDD - Proposed" href="pgr_withPointsDD.html" />
+    <link rel="prev" title="pgr_withPointsCost - Proposed" href="pgr_withPointsCost.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_withPointsKSP - Proposed</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a><ul>
+<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_withPointsCost.html" title="Previous Chapter: pgr_withPointsCost - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoint...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_withPointsDD.html" title="Next Chapter: pgr_withPointsDD - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="pgr-withpointsksp-proposed">
+<h1>pgr_withPointsKSP - Proposed<a class="headerlink" href="#pgr-withpointsksp-proposed" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> - Find the K shortest paths using Yen’s algorithm.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Proposed functions for next mayor release.</p>
+<ul class="last simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="figure" id="id1">
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
+</div>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li>Version 2.2.0<ul>
+<li>New <strong>proposed</strong> function</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Support</p>
+<ul class="simple">
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_withPointsKSP.html">3.1</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_withPointsKSP.html">3.0</a></li>
+<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_withPointsKSP.html">2.6</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_withPointsKSP.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_withPointsKSP.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsKSP.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsKSP.html">2.2</a></li>
+</ul>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Modifies the graph to include the points defined in the <code class="docutils literal notranslate"><span class="pre">points_sql</span></code> and
+using Yen algorithm, finds the <span class="math notranslate nohighlight">\(K\)</span> shortest paths.</p>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K [, directed] [, heap_paths] [, driving_side] [, details])
+RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+<p class="rubric">Using defaults</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K)
+RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point <span class="math notranslate nohighlight">\(1\)</span> to point <span class="math notranslate nohighlight">\(2\)</span> in <span class="math notranslate nohighlight">\(2\)</span> cycles</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>For a <strong>directed</strong> graph.</li>
+<li>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</li>
+<li>No <strong>details</strong> are given about distance of other points of the query.</li>
+<li>No <strong>heap paths</strong> are returned.</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+---------+----------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.6</span>
+   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.6</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>      <span class="mf">3.6</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">7</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.6</span>
+   <span class="mi">9</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.6</span>
+  <span class="mi">10</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
+  <span class="mi">11</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
+  <span class="mi">12</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">4.6</span>
+  <span class="mi">13</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">7</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mf">5.2</span>
+<span class="p">(</span><span class="mi">13</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="section" id="complete-signature">
+<h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<p>Finds the <span class="math notranslate nohighlight">\(K\)</span> shortest paths depending on the optional parameters setup.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K [, directed] [, heap_paths] [, driving_side] [, details])
+RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(6\)</span> in <span class="math notranslate nohighlight">\(2\)</span> cycles with details.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+---------+----------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">0.6</span>
+   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">1.3</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.6</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mf">2.6</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">7</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">0.6</span>
+   <span class="mi">8</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">1.3</span>
+   <span class="mi">9</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.6</span>
+  <span class="mi">10</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">2.6</span>
+  <span class="mi">11</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>      <span class="mf">3.2</span>
+  <span class="mi">12</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">7</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
+  <span class="mi">13</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">8</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">4.6</span>
+  <span class="mi">14</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">9</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>      <span class="mf">5.2</span>
+  <span class="mi">15</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>       <span class="mi">10</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">5.6</span>
+  <span class="mi">16</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>       <span class="mi">11</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mf">6.6</span>
+<span class="p">(</span><span class="mi">16</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="9%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
+<td>Edges SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>points_sql</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
+<td>Points SQL query as described above.</td>
+</tr>
+<tr class="row-even"><td><strong>start_pid</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
+<td>Starting point id.</td>
+</tr>
+<tr class="row-odd"><td><strong>end_pid</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
+<td>Ending point id.</td>
+</tr>
+<tr class="row-even"><td><strong>K</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
+<td>Number of shortest paths.</td>
+</tr>
+<tr class="row-odd"><td><strong>directed</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
+<td>(optional). When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected. Default is <code class="docutils literal notranslate"><span class="pre">true</span></code> which considers the graph as Directed.</td>
+</tr>
+<tr class="row-even"><td><strong>heap_paths</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
+<td>(optional). When <code class="docutils literal notranslate"><span class="pre">true</span></code> the paths calculated to get the shortests paths will be returned also. Default is <code class="docutils literal notranslate"><span class="pre">false</span></code> only the K shortest paths are returned.</td>
+</tr>
+<tr class="row-odd"><td><strong>driving_side</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></td>
+<td><dl class="first last docutils">
+<dt>(optional) Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the driving side is:</dt>
+<dd><ul class="first last simple">
+<li>In the right or left or</li>
+<li>If it doesn’t matter with ‘b’ or NULL.</li>
+<li>If column not present ‘b’ is considered.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><strong>details</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
+<td>(optional). When <code class="docutils literal notranslate"><span class="pre">true</span></code> the results will include the driving distance to the points with in the <code class="docutils literal notranslate"><span class="pre">distance</span></code>.
+Default is <code class="docutils literal notranslate"><span class="pre">false</span></code> which ignores other points of the points_sql.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="14%" />
+<col width="6%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-even"><td><strong>target</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
+<td>&#160;</td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td>&#160;</td>
+<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="last simple">
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>reverse_cost</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td>-1</td>
+<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="last simple">
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Description of the Points SQL query</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">points_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="14%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>pid</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
+<td><p class="first">(optional) Identifier of the point.</p>
+<ul class="last simple">
+<li>If column present, it can not be NULL.</li>
+<li>If column not present, a sequential identifier will be given automatically.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>edge_id</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
+<td>Identifier of the “closest” edge to the point.</td>
+</tr>
+<tr class="row-even"><td><strong>fraction</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
+<td>Value in &lt;0,1&gt; that indicates the relative postition from the first end point of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>side</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></td>
+<td><p class="first">(optional) Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the point is:</p>
+<ul class="last simple">
+<li>In the right, left of the edge or</li>
+<li>If it doesn’t matter with ‘b’ or NULL.</li>
+<li>If column not present ‘b’ is considered.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">smallint, int, bigint</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">smallint, int, bigint, real, float</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
+<td>Row sequence.</td>
+</tr>
+<tr class="row-odd"><td><strong>path_seq</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
+<td>Relative position in the path of node and edge. Has value 1 for the beginning of a path.</td>
+</tr>
+<tr class="row-even"><td><strong>path_id</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
+<td>Path identifier. The ordering of the paths: For two paths i, j if i &lt; j then agg_cost(i) &lt;= agg_cost(j).</td>
+</tr>
+<tr class="row-odd"><td><strong>node</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
+<td>Identifier of the node in the path. Negative values are the identifiers of a point.</td>
+</tr>
+<tr class="row-even"><td><strong>edge</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
+<td><dl class="first last docutils">
+<dt>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence.</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
+<td><dl class="first last docutils">
+<dt>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next <code class="docutils literal notranslate"><span class="pre">node</span></code> in the path sequence.</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><strong>agg_cost</strong></td>
+<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
+<td><dl class="first last docutils">
+<dt>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Left side driving topology from point <span class="math notranslate nohighlight">\(1\)</span> to point <span class="math notranslate nohighlight">\(2\)</span> in <span class="math notranslate nohighlight">\(2\)</span> cycles, with details</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">driving_side</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+---------+----------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">0.6</span>
+   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">1.3</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.6</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
+   <span class="mi">7</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">7</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">4.6</span>
+   <span class="mi">8</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">8</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mf">5.2</span>
+   <span class="mi">9</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
+  <span class="mi">10</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">0.6</span>
+  <span class="mi">11</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">1.3</span>
+  <span class="mi">12</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.6</span>
+  <span class="mi">13</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
+  <span class="mi">14</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.6</span>
+  <span class="mi">15</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">7</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">4.6</span>
+  <span class="mi">16</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">8</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mf">5.2</span>
+<span class="p">(</span><span class="mi">16</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Right side driving topology from point <span class="math notranslate nohighlight">\(1\)</span> to point <span class="math notranslate nohighlight">\(2\)</span> in <span class="math notranslate nohighlight">\(2\)</span> cycles, with heap paths and details</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">heap_paths</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">,</span> <span class="n">driving_side</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+---------+----------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.4</span>
+   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">1.4</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">2.1</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.4</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.4</span>
+   <span class="mi">7</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">7</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>      <span class="mf">4.4</span>
+   <span class="mi">8</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">8</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mf">4.8</span>
+   <span class="mi">9</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>        <span class="mi">0</span>
+  <span class="mi">10</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.4</span>
+  <span class="mi">11</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">1.4</span>
+  <span class="mi">12</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">2.1</span>
+  <span class="mi">13</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.4</span>
+  <span class="mi">14</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">3.4</span>
+  <span class="mi">15</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">7</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">4.4</span>
+  <span class="mi">16</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">8</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">5.4</span>
+  <span class="mi">17</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>      <span class="mf">6.4</span>
+  <span class="mi">18</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>       <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mf">6.8</span>
+  <span class="mi">19</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>        <span class="mi">0</span>
+  <span class="mi">20</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.4</span>
+  <span class="mi">21</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.7</span> <span class="o">|</span>      <span class="mf">1.4</span>
+  <span class="mi">22</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>  <span class="mf">0.3</span> <span class="o">|</span>      <span class="mf">2.1</span>
+  <span class="mi">23</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.4</span>
+  <span class="mi">24</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">3.4</span>
+  <span class="mi">25</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">7</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>        <span class="mi">4</span>
+  <span class="mi">26</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">8</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">4.4</span>
+  <span class="mi">27</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">9</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">5.4</span>
+  <span class="mi">28</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>       <span class="mi">10</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>      <span class="mf">6.4</span>
+  <span class="mi">29</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>       <span class="mi">11</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mf">6.8</span>
+<span class="p">(</span><span class="mi">29</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Family of functions</span></a></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
+      Last updated on Jul 17, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

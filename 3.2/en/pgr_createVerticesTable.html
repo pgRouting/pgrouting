@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pgr_createVerticesTable &#8212; pgRouting Manual (3.1)</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_analyzeGraph" href="pgr_analyzeGraph.html" />
+    <link rel="prev" title="pgr_extractVertices – Experimental" href="pgr_extractVertices.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_createVerticesTable</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
+<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values">Usage when the edge table’s columns DO NOT MATCH the default values:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_extractVertices.html" title="Previous Chapter: pgr_extractVertices – Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_extractVe...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_analyzeGraph.html" title="Next Chapter: pgr_analyzeGraph"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_analyzeGraph &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="pgr-createverticestable">
+<h1>pgr_createVerticesTable<a class="headerlink" href="#pgr-createverticestable" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_createVerticesTable</span></code> — Reconstructs the vertices table based on the source and target information.</p>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li>Version 2.0.0<ul>
+<li>Renamed from version 1.x</li>
+<li><strong>Official</strong> function</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Support</p>
+<ul class="simple">
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_createVerticesTable.html">3.1</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_createVerticesTable.html">3.0</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_createVerticesTable.html">2.6</a></li>
+<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_createVerticesTable.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_createVerticesTable.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createVerticesTable.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createVerticesTable.html">2.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_vert_table.html">2.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_vert_table.html">2.0</a></li>
+</ul>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The function returns:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the vertices table has been reconstructed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the vertices table was not reconstructed due to an error.</li>
+</ul>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>    <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">)</span>
+<span class="k">RETURNS</span> <span class="nb">VARCHAR</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>The reconstruction of the vertices table  function accepts the following parameters:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name as well)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>  Geometry column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> Source column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">source</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>  Target column name of the network table.  Default value is <code class="docutils literal notranslate"><span class="pre">target</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">rows_where:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condition to SELECT a subset or rows.  Default value is <code class="docutils literal notranslate"><span class="pre">true</span></code> to indicate all rows.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">edge_table</span></code> will be affected</p>
+<ul class="last simple">
+<li>An index will be created, if it doesn’t exists, to speed up the process to the following columns:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">the_geom</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">source</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">target</span></code></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>The function returns:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the vertices table has been reconstructed.<ul>
+<li>Creates a vertices table: &lt;edge_table&gt;_vertices_pgr.</li>
+<li>Fills <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> columns of the vertices table based on the source and target columns of the edge table.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the vertices table was not reconstructed due to an error.<ul>
+<li>A required column of the Network table is not found or is not of the appropriate type.</li>
+<li>The condition is not well formed.</li>
+<li>The names of source, target are the same.</li>
+<li>The SRID of the geometry could not be determined.</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">The Vertices Table</p>
+<p>The vertices table is a requierment of the <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> and the <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> functions.</p>
+<p>The structure of the vertices table is:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Identifier of the vertex.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex. See <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem. See <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Point geometry of the vertex.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example 1:</th><td class="field-body">The simplest way to use pgr_createVerticesTable</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">17</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">18</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">18</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 2:</th><td class="field-body">When the arguments are given in the order described in the parameters:</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">17</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">18</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">18</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>We get the same result as the simplest way to use the function.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>An error would occur when the arguments are not given in the appropriate order: In this example, the column source column <code class="docutils literal notranslate"><span class="pre">source</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> is passed to the function as the source column.</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----&gt;</span> <span class="n">PGR</span> <span class="n">ERROR</span> <span class="ow">in</span> <span class="n">pgr_createVerticesTable</span><span class="p">:</span> <span class="n">Wrong</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">Column</span> <span class="n">source</span><span class="p">:</span> <span class="n">the_geom</span>
+<span class="n">HINT</span><span class="p">:</span>    <span class="o">----&gt;</span> <span class="n">Expected</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">the_geom</span> <span class="ow">is</span> <span class="n">integer</span><span class="p">,</span> <span class="n">smallint</span> <span class="ow">or</span> <span class="n">bigint</span> <span class="n">but</span> <span class="n">USER</span><span class="o">-</span><span class="n">DEFINED</span> <span class="n">was</span> <span class="n">found</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Unexpected</span> <span class="n">error</span> <span class="n">raise_exception</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">FAIL</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<p class="rubric">When using the named notation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 3:</th><td class="field-body">The order of the parameters do not matter:</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">17</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">18</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">18</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 4:</th><td class="field-body">Using a different ordering</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">17</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">18</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">18</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 5:</th><td class="field-body">Parameters defined with a default value can be omitted, as long as the value matches the default:</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">17</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">18</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">18</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="rubric">Selecting rows using rows_where parameter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 6:</th><td class="field-body">Selecting rows based on the id.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">9</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">10</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">10</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 7:</th><td class="field-body">Selecting the rows where the geometry is near the geometry of row with <code class="docutils literal notranslate"><span class="pre">id</span></code> =5 .</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">9</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">9</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">9</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 8:</th><td class="field-body">Selecting the rows where the geometry is near the geometry of the row with <code class="docutils literal notranslate"><span class="pre">gid</span></code> =100 of the table <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">otherTable</span><span class="p">;</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table</span> <span class="s2">&quot;othertable&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
+<span class="n">DROP</span> <span class="n">TABLE</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">otherTable</span> <span class="n">AS</span>  <span class="p">(</span><span class="n">SELECT</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span> <span class="n">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
+<span class="n">SELECT</span> <span class="mi">1</span>
+<span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">10</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">12</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">12</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="section" id="usage-when-the-edge-table-s-columns-do-not-match-the-default-values">
+<h3>Usage when the edge table’s columns DO NOT MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Permalink to this headline">¶</a></h3>
+<p>Using the following table</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">mytable</span><span class="p">;</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table</span> <span class="s2">&quot;mytable&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
+<span class="n">DROP</span> <span class="n">TABLE</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">mytable</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">the_geom</span> <span class="n">AS</span> <span class="n">mygeom</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">src</span> <span class="p">,</span><span class="n">target</span> <span class="n">AS</span> <span class="n">tgt</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="p">)</span> <span class="p">;</span>
+<span class="n">SELECT</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p class="rubric">Using positional notation:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 9:</th><td class="field-body">The arguments need to be given in the order described in the parameters:</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">17</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">18</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">18</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <code class="docutils literal notranslate"><span class="pre">src</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal notranslate"><span class="pre">mygeom</span></code> is passed to the function as the source column.</div>
+</div>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----&gt;</span> <span class="n">PGR</span> <span class="n">ERROR</span> <span class="ow">in</span> <span class="n">pgr_createVerticesTable</span><span class="p">:</span> <span class="n">Wrong</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">Column</span> <span class="n">source</span><span class="p">:</span> <span class="n">mygeom</span>
+<span class="n">HINT</span><span class="p">:</span>    <span class="o">----&gt;</span> <span class="n">Expected</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">mygeom</span> <span class="ow">is</span> <span class="n">integer</span><span class="p">,</span> <span class="n">smallint</span> <span class="ow">or</span> <span class="n">bigint</span> <span class="n">but</span> <span class="n">USER</span><span class="o">-</span><span class="n">DEFINED</span> <span class="n">was</span> <span class="n">found</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Unexpected</span> <span class="n">error</span> <span class="n">raise_exception</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">FAIL</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<p class="rubric">When using the named notation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 10:</th><td class="field-body">The order of the parameters do not matter:</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">17</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">18</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">18</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 11:</th><td class="field-body">Using a different ordering</td>
+</tr>
+</tbody>
+</table>
+<p>In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
+    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
+    <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">17</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">18</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">18</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="rubric">Selecting rows using rows_where parameter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 12:</th><td class="field-body">Selecting rows based on the gid. (positional notation)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
+    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">9</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">10</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">10</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 13:</th><td class="field-body">Selecting rows based on the gid. (named notation)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
+    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Populating</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable_vertices_pgr</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="o">-----&gt;</span>   <span class="n">VERTICES</span> <span class="n">TABLE</span> <span class="n">CREATED</span> <span class="n">WITH</span>  <span class="mi">9</span> <span class="n">VERTICES</span>
+<span class="n">NOTICE</span><span class="p">:</span>                                         <span class="n">FOR</span>   <span class="mi">10</span>  <span class="n">EDGES</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Edges</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span><span class="p">,</span><span class="n">source</span> <span class="ow">or</span> <span class="n">target</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                              <span class="n">Edges</span> <span class="n">processed</span><span class="p">:</span> <span class="mi">10</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">mytable_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 14:</th><td class="field-body">Selecting the rows where the geometry is near the geometry of row with <code class="docutils literal notranslate"><span class="pre">gid</span></code> = 5.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
+    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Got</span> <span class="n">column</span> <span class="s2">&quot;the_geom&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">ERROR</span><span class="p">:</span> <span class="n">Condition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">correct</span><span class="p">,</span> <span class="n">please</span> <span class="n">execute</span> <span class="n">the</span> <span class="n">following</span> <span class="n">query</span> <span class="n">to</span> <span class="n">test</span> <span class="n">your</span> <span class="n">condition</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">public.mytable</span> <span class="n">WHERE</span> <span class="n">true</span> <span class="n">AND</span> <span class="p">(</span><span class="n">the_geom</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">mygeom</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">mytable</span> <span class="n">WHERE</span> <span class="n">gid</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span> <span class="n">limit</span> <span class="mi">1</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">FAIL</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 15:</th><td class="field-body">TBD</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
+    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE id=5)&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE id=5)&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Got</span> <span class="n">column</span> <span class="s2">&quot;id&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">ERROR</span><span class="p">:</span> <span class="n">Condition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">correct</span><span class="p">,</span> <span class="n">please</span> <span class="n">execute</span> <span class="n">the</span> <span class="n">following</span> <span class="n">query</span> <span class="n">to</span> <span class="n">test</span> <span class="n">your</span> <span class="n">condition</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">public.mytable</span> <span class="n">WHERE</span> <span class="n">true</span> <span class="n">AND</span> <span class="p">(</span><span class="n">mygeom</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">mygeom</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">mytable</span> <span class="n">WHERE</span> <span class="nb">id</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span> <span class="n">limit</span> <span class="mi">1</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">FAIL</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 16:</th><td class="field-body">Selecting the rows where the geometry is near the geometry of the row with <code class="docutils literal notranslate"><span class="pre">gid</span></code> =100 of the table <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">otherTable</span><span class="p">;</span>
+<span class="n">DROP</span> <span class="n">TABLE</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">otherTable</span> <span class="n">AS</span>  <span class="p">(</span><span class="n">SELECT</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span> <span class="n">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
+<span class="n">SELECT</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
+    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Got</span> <span class="n">column</span> <span class="s2">&quot;the_geom&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">ERROR</span><span class="p">:</span> <span class="n">Condition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">correct</span><span class="p">,</span> <span class="n">please</span> <span class="n">execute</span> <span class="n">the</span> <span class="n">following</span> <span class="n">query</span> <span class="n">to</span> <span class="n">test</span> <span class="n">your</span> <span class="n">condition</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">public.mytable</span> <span class="n">WHERE</span> <span class="n">true</span> <span class="n">AND</span> <span class="p">(</span><span class="n">the_geom</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">othergeom</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">otherTable</span> <span class="n">WHERE</span> <span class="n">gid</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span> <span class="n">limit</span> <span class="mi">1</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">FAIL</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 17:</th><td class="field-body">TBD</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
+    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Got</span> <span class="n">column</span> <span class="s2">&quot;the_geom&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">ERROR</span><span class="p">:</span> <span class="n">Condition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">correct</span><span class="p">,</span> <span class="n">please</span> <span class="n">execute</span> <span class="n">the</span> <span class="n">following</span> <span class="n">query</span> <span class="n">to</span> <span class="n">test</span> <span class="n">your</span> <span class="n">condition</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">public.mytable</span> <span class="n">WHERE</span> <span class="n">true</span> <span class="n">AND</span> <span class="p">(</span><span class="n">the_geom</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">othergeom</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">otherTable</span> <span class="n">WHERE</span> <span class="n">gid</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span> <span class="n">limit</span> <span class="mi">1</span>
+ <span class="n">pgr_createverticestable</span>
+<span class="o">-------------------------</span>
+ <span class="n">FAIL</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The example uses the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a>  for an overview of a topology for routing algorithms.</li>
+<li><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> &lt;pgr_create_topology&gt;` to create a topology based on the geometry.</li>
+<li><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> to analyze the edges and vertices of the edge table.</li>
+<li><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> to analyze directionality of the edges.</li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
+      Last updated on Jul 17, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
