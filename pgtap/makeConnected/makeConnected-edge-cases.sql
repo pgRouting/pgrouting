@@ -170,8 +170,8 @@ SELECT set_eq('makeConnected12',
 
 SELECT set_eq('makeConnected13',
     $$VALUES
-        (1, 6, 2),
-        (2, 2, 7)
+        (1, 2, 7),
+        (2, 7, 6)
     $$,
     '13:Graph with three vertices 2, 6 and 7'
 );
@@ -221,8 +221,8 @@ SELECT set_eq('makeConnected15',
 
 SELECT set_eq('makeConnected16',
     $$VALUES
-        (1, 6, 10),
-        (2, 13, 2)
+        (1, 2, 6),
+        (2, 6, 10)
     $$,
     '16:Three Connected Components. Two rows are returned'
 );
