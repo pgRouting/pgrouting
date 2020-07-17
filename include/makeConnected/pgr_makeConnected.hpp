@@ -84,7 +84,7 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
            st.insert({src,tgt});
            log<<"src:"<<src<<"tgt:"<<tgt<<"\n";
            if(newEdge>=edgeCount){
-               results[i].node_fro = src;
+               results[i].node_from = src;
                results[i].node_to = tgt;
                i++;
             }
