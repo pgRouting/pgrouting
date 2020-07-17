@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_makeConnected(
     TEXT,   -- edges_sql (required)
     OUT seq BIGINT,
-    OUT node_fro BIGINT,
+    OUT node_from BIGINT,
     OUT node_to BIGINT)
 
 RETURNS SETOF RECORD AS

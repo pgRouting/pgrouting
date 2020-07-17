@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct {
-    int64_t node_fro;
+    int64_t node_from;
     int64_t node_to;
 } pgr_makeConnected_t;
 

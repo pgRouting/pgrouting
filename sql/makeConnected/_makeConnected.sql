@@ -34,7 +34,7 @@ CREATE OR REPLACE FUNCTION _pgr_makeConnected(
   TEXT,   -- edges_sql (required)
 
   OUT seq BIGINT,
-  OUT node_fro BIGINT,
+  OUT node_from BIGINT,
   OUT node_to BIGINT)
 
 RETURNS SETOF RECORD AS

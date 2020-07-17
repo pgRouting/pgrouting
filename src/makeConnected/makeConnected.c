@@ -84,7 +84,6 @@ process(
         &log_msg,
         &notice_msg,
         &err_msg);
-    // log <<"here\n";
     time_msg(" processing pgr_makeConnected", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
 
@@ -165,9 +164,8 @@ PGDLLEXPORT Datum _pgr_makeconnected(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*
-            OUT source BIGINT,
-            OUT target_vid BIGINT,
-            OUT cost FLOAT,
+            OUT node_from BIGINT,
+            OUT node_to BIGINT
         */
         /**********************************************************************/
         size_t numb = 3;
@@ -180,7 +178,7 @@ PGDLLEXPORT Datum _pgr_makeconnected(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node_fro);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node_from);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node_to);
 
         /**********************************************************************/
