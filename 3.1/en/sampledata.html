@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Sample Data &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>Sample Data &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -72,14 +72,11 @@
 <li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -214,6 +211,25 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <li>Before you test a routing function use this query to create a topology (fills the <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> columns).</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">);</span>
+</pre></div>
+</div>
+<p class="rubric">Combinations of start and end vertices</p>
+<ul class="simple">
+<li>Used to test the combinations_sql signature in dijkstra-like functions.</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">combinations_table</span> <span class="p">(</span>
+    <span class="n">source</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">target</span> <span class="n">BIGINT</span>
+<span class="p">);</span>
+
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">combinations_table</span> <span class="p">(</span>
+    <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">17</span><span class="p">);</span>
+
 </pre></div>
 </div>
 <p class="rubric">Points of interest</p>
@@ -463,8 +479,8 @@ To be able to execute the sample queries, run the following SQL commands to crea
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Aug 16, 2019.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
+      Last updated on Jul 17, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

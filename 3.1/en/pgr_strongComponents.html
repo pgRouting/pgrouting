@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_strongComponents &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>pgr_strongComponents &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -71,15 +71,12 @@
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -156,7 +153,11 @@
 <p class="rubric">Availability</p>
 <ul class="simple">
 <li>Version 3.0.0<ul>
-<li>Return columns change: <code class="docutils literal notranslate"><span class="pre">n_seq</span></code> is removed</li>
+<li>Return columns change:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">n_seq</span></code> is removed</li>
+<li><code class="docutils literal notranslate"><span class="pre">seq</span></code> changed type to <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></li>
+</ul>
+</li>
 <li><strong>Official</strong> function</li>
 </ul>
 </li>
@@ -168,7 +169,8 @@
 <p class="rubric">Support</p>
 <ul class="simple">
 <li><strong>Supported versions:</strong>
-current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pgr_strongComponents.html">3.0</a>)</li>
+current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_strongComponents.html">3.1</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_strongComponents.html">3.0</a></li>
 <li><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_strongComponents.html">2.6</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_strongComponents.html">2.5</a></li>
@@ -252,7 +254,7 @@ OR EMPTY SET
 <tr class="row-even"><td><strong>Edges SQL</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
 <td>&#160;</td>
-<td>Inner query as described bellow.</td>
+<td>Inner query as described below.</td>
 </tr>
 </tbody>
 </table>
@@ -346,7 +348,7 @@ OR EMPTY SET
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td>Sequential value starting from <strong>1</strong>.</td>
 </tr>
 <tr class="row-odd"><td><strong>component</strong></td>
@@ -388,8 +390,8 @@ OR EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Aug 16, 2019.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
+      Last updated on Jul 17, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

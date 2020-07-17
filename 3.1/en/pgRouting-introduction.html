@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Introduction &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>Introduction &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -72,14 +72,11 @@
 <li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -157,8 +154,14 @@
       
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>pgRouting is an extension of <a class="reference external" href="https://postgis.net">PostGIS</a> and <a class="reference external" href="http://postgresql.org">PostgreSQL</a> geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche from <a class="reference external" href="http://camptocamp.com">Camptocamp</a>, was later extended by <a class="reference external" href="http://www.orkney.co.jp">Orkney</a> and renamed to pgRouting. The project is now supported and maintained by <a class="reference external" href="http://georepublic.info">Georepublic</a>, <a class="reference external" href="http://imaptools.com/">iMaptools</a> and a broad user community.</p>
-<p>pgRouting is part of <a class="reference external" href="https://wiki.osgeo.org/wiki/OSGeo_Community_Projects">OSGeo Community Projects</a> from the <a class="reference external" href="http://osgeo.org">OSGeo Foundation</a> and included on <a class="reference external" href="http://live.osgeo.org/">OSGeo Live</a>.</p>
+<p>pgRouting is an extension of <a class="reference external" href="https://postgis.net">PostGIS</a> and <a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> geospatial database and adds routing and other
+network analysis functionality. A predecessor of pgRouting – pgDijkstra, written
+by Sylvain Pasche from <a class="reference external" href="http://camptocamp.com">Camptocamp</a>, was later extended
+by <a class="reference external" href="http://www.orkney.co.jp">Orkney</a> and renamed to pgRouting. The project is
+now supported and maintained by <a class="reference external" href="https://georepublic.info">Georepublic</a>,
+<a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a> and a broad user community.</p>
+<p>pgRouting is part of <a class="reference external" href="https://wiki.osgeo.org/wiki/OSGeo_Community_Projects">OSGeo Community Projects</a>
+from the <a class="reference external" href="https://osgeo.org">OSGeo Foundation</a> and included on <a class="reference external" href="http://live.osgeo.org/">OSGeoLive</a>.</p>
 <div class="section" id="licensing">
 <span id="license"></span><h2>Licensing<a class="headerlink" href="#licensing" title="Permalink to this headline">¶</a></h2>
 <p>The following licenses can be found in pgRouting:</p>
@@ -193,16 +196,26 @@
 <h3>This Release Contributors<a class="headerlink" href="#this-release-contributors" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="individuals-in-alphabetical-order">
 <h4>Individuals (in alphabetical order)<a class="headerlink" href="#individuals-in-alphabetical-order" title="Permalink to this headline">¶</a></h4>
-<p>Gudesa Venkata Sai Akhil, Hang Wu, Virginia Vergara</p>
-<p>And all the people that give us a little of their time making comments, finding issues, making pull requests etc.</p>
+<p>Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet,
+Cayetano Benavent,
+Gudesa Venkata Sai Akhil,
+Hang Wu,
+Imre Samu,
+Maoguang Wang, Martha Vergara,
+Mohamed Bakli,
+Mahmoud SAKR, Esteban Zimanyi
+Regina Obe, Rohith Reddy,
+Sourabh Garg,
+Virginia Vergara</p>
+<p>And all the people that give us a little of their time making comments, finding issues, making pull requests etc.
+in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer.</p>
 </div>
 <div class="section" id="corporate-sponsors-in-alphabetical-order">
 <h4>Corporate Sponsors (in alphabetical order)<a class="headerlink" href="#corporate-sponsors-in-alphabetical-order" title="Permalink to this headline">¶</a></h4>
 <p>These are corporate entities that have contributed developer time, hosting, or direct monetary funding to the pgRouting project:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://georepublic.info/en/">Georepublic</a></li>
-<li><a class="reference external" href="https://developers.google.com/open-source/gsoc/">Google Summer of Code</a></li>
-<li><a class="reference external" href="https://imaptools.com">iMaptools</a></li>
+<li><a class="reference external" href="https://summerofcode.withgoogle.com">Google Summer of Code</a></li>
 <li><a class="reference external" href="https://www.leopark.mx/">Leopark</a></li>
 <li><a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a></li>
 </ul>
@@ -212,7 +225,22 @@
 <h3>Contributors Past &amp; Present:<a class="headerlink" href="#contributors-past-present" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id1">
 <h4>Individuals (in alphabetical order)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mukul Priya, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche, Vidhan Jain, Virginia Vergara</p>
+<p>Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain,
+Cayetano Benavent, Christian Gonzalez,
+Daniel Kastl, Dave Potts, David Techer, Denis Rykov,
+Ema Miyawaki,
+Florian Thurkow, Frederic Junod,
+Gerald Fenoy, Gudesa Venkata Sai Akhil,
+Hang Wu,
+Imre Samu,
+Jay Mahadeokar, Jinfu Leng,
+Kai Behncke, Kishore Kumar, Ko Nagase,
+Mahmoud SAKR, Esteban Zimanyi
+Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mohamed Bakli, Mukul Priya,
+Razequl Islam,
+Regina Obe, Rohith Reddy,
+Sarthak Agarwal, Sourabh Garg, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche,
+Vidhan Jain, Virginia Vergara</p>
 </div>
 <div class="section" id="id2">
 <h4>Corporate Sponsors (in alphabetical order)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
@@ -223,6 +251,7 @@
 <li>Georepublic</li>
 <li>Google Summer of Code</li>
 <li>iMaptools</li>
+<li>Leopark</li>
 <li>Orkney</li>
 <li>Paragon Corporation</li>
 <li>Versaterm Inc.</li>
@@ -254,8 +283,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Aug 16, 2019.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
+      Last updated on Jul 17, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

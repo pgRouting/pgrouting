@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pgr_createTopology &#8212; pgRouting Manual (3.1)</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_extractVertices – Experimental" href="pgr_extractVertices.html" />
+    <link rel="prev" title="Topología - Familia de Funciones" href="topology-functions.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_createTopology</a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-match-the-default-values">Uso cuando las columnas de la tabla de borde coinciden con los valores por defecto:</a></li>
+<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values">Uso cuando las columnas de la tabla de borde NO COINCIDEN con los valores por defecto:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="topology-functions.html" title="Previous Chapter: Topología - Familia de Funciones"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Topología - F...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_extractVertices.html" title="Next Chapter: pgr_extractVertices – Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_extractVe... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="pgr-createtopology">
+<h1>pgr_createTopology<a class="headerlink" href="#pgr-createtopology" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code> — Construye una topología de red basada en la información de geometría.</p>
+<p class="rubric">Disponibilidad</p>
+<ul class="simple">
+<li>Versión 2.0.0<ul>
+<li>Renombrado desde la versión 1.x</li>
+<li>Función <strong>oficial</strong></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Soporte</p>
+<ul class="simple">
+<li><strong>Supported versions:</strong>
+current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_createTopology.html">3.1</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_createTopology.html">3.0</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_createTopology.html">2.6</a></li>
+<li><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_createTopology.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_createTopology.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createTopology.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createTopology.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_topology.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_topology.html">2.0</a></li>
+</ul>
+<div class="section" id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La función devuelve:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">OK</span></code>  después de que se ha construido la topología de red y la tabla de vértices.</li>
+<li><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> cuando el la red topológica no se no se completó debido a un error.</li>
+</ul>
+</div>
+<div class="section" id="signatures">
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>varchar pgr_createTopology(text edge_table, double precision tolerance,
+                       text the_geom:=&#39;the_geom&#39;, text id:=&#39;id&#39;,
+                       text source:=&#39;source&#39;,text target:=&#39;target&#39;,
+                       text rows_where:=&#39;true&#39;, boolean clean:=false)
+</pre></div>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La función de creación de topología requiere los siguientes parámetros:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> La tabla de la red. (puede contener el nombre del esquema)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">tolerancia:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">float8</span></code> ajuste tolerancia de bordes desconectados. (en la unidad de proyección)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>  nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">the_geom</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text``Nombre</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">clave</span> <span class="pre">principal</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">Valor</span> <span class="pre">por</span> <span class="pre">defecto</span> <span class="pre">es</span> <span class="pre">``id</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">id``Nombre</span> <span class="pre">de</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">origen</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">El</span> <span class="pre">valor</span> <span class="pre">predeterminado</span> <span class="pre">es``source</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>  El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">rows_where:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condición para SELECCIONAR un subconjunto de filas.  El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> para indicar todas las filas donde <code class="docutils literal notranslate"><span class="pre">source</span></code> o <code class="docutils literal notranslate"><span class="pre">target</span></code> tienen un valor nulo, de lo contrario se utiliza la condición.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">limpio:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">boolean</span></code> Limpie cualquier topología previa. El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">false</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p>La <code class="docutils literal notranslate"><span class="pre">edge_table</span></code> se verán afectados</p>
+<ul class="last simple">
+<li>Los valores de la columna``source`` va a cambiar.</li>
+<li>Cambian los valores de la columna``target``.<ul>
+<li>Un índice será creado, si no existe, para acelerar el proceso para las columnas siguientes:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">the_geom</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">source</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">target</span></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>La función devuelve:</p>
+<ul class="simple">
+<li>“” OK”” después de que se ha construido la topología de red.<ul>
+<li>Crea una tabla de vértices: &lt;edge_table&gt;_vertices_pgr.</li>
+<li>Llena las columnas <code class="docutils literal notranslate"><span class="pre">id</span></code> y <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> de la tabla de vértices.</li>
+<li>Llena las columnas los origen y destino  de la tabla de borde haciendo referencia al <code class="docutils literal notranslate"><span class="pre">id</span></code>  de la tabla de los vértices.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> cuando la topología de red no se construyó debido a un error:<ul>
+<li>Una columna de la tabla de red requerida no se encuentra o no es del tipo apropiado.</li>
+<li>La condición no está bien formada.</li>
+<li>Los nombres de origen, destino o id son las mismos.</li>
+<li>No pudo determinarse el SRID de la geometría.</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">La tabla de vértices</p>
+<p>La tabla de vértices es un requerimiento de las funciones <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> y   <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
+<p>La estructura de la tabla de los vértices es:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador del vértice.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en the edge_table que referencian este vértice. Ver <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice podría tener un problema. Consulte  <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que referencian a este vértice como (AS) entrante. Ver <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que referencian este vértice como (AS) saliente. Ver <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Valor de la geometría POINT del vértice.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="usage-when-the-edge-table-s-columns-match-the-default-values">
+<h3>Uso cuando las columnas de la tabla de borde coinciden con los valores por defecto:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La forma más sencilla de utilizar pgr_createTopology es:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="p">:</span><span class="o">=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">18</span> <span class="n">edges</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="rubric">Cuando los argumentos se escriben en el orden descrito en los parámetros:</p>
+<p>Obtenemos el mismo resultado que la forma más sencilla de utilizar la función.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="p">:</span><span class="o">=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">18</span> <span class="n">edges</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<div class="line-block">
+<div class="line">Se produciría un error cuando los argumentos no se dan en el orden adecuado:</div>
+<div class="line">En este ejemplo, la columna <code class="docutils literal notranslate"><span class="pre">id</span></code> de la tabla <code class="docutils literal notranslate"><span class="pre">ege_table</span></code> se pasa a la función como la columna de geometría,</div>
+<div class="line">y la columna de geometría <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> se pasa a la función como la columna <code class="docutils literal notranslate"><span class="pre">id</span></code>.</div>
+</div>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="p">:</span><span class="o">=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----&gt;</span> <span class="n">PGR</span> <span class="n">ERROR</span> <span class="ow">in</span> <span class="n">pgr_createTopology</span><span class="p">:</span> <span class="n">Wrong</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">Column</span> <span class="nb">id</span><span class="p">:</span><span class="n">the_geom</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Unexpected</span> <span class="n">error</span> <span class="n">raise_exception</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">FAIL</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<p class="rubric">Cuando se utiliza la notación por nombre</p>
+<p>Los parámetros definidos con un valor predeterminado se pueden omitir, siempre que el valor coincida con el valor predeterminado y el orden de los parámetros no importaría.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="rubric">Seleccionar filas utilizando el parámetro rows_where</p>
+<p>La selección de filas basadas en el id.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Selección de las filas en las que la geometría está cerca de la geometría de la fila con <code class="docutils literal notranslate"><span class="pre">id</span> <span class="pre">=</span> <span class="pre">5</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(the_geom, 0.05) FROM edge_table WHERE id=5)&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100  de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">otherTable</span> <span class="n">AS</span>  <span class="p">(</span><span class="n">SELECT</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span>  <span class="n">st_point</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span> <span class="n">AS</span> <span class="n">other_geom</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">1</span>
+<span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage-when-the-edge-table-s-columns-do-not-match-the-default-values">
+<h3>Uso cuando las columnas de la tabla de borde NO COINCIDEN con los valores por defecto:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para la siguiente tabla</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">mytable</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span>  <span class="n">the_geom</span> <span class="n">AS</span> <span class="n">mygeom</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">src</span> <span class="p">,</span> <span class="n">target</span> <span class="n">AS</span> <span class="n">tgt</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="p">)</span> <span class="p">;</span>
+<span class="n">SELECT</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p class="rubric">Usando notación posicional:</p>
+<p>Los argumentos deben darse en el orden descrito en los parámetros.</p>
+<p>Tenga en cuenta que en este ejemplo se utiliza la marca clean. Así que recrea toda la tabla de vértices.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="p">:</span><span class="o">=</span> <span class="n">TRUE</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<div class="line-block">
+<div class="line">Se produciría un error cuando los argumentos no se dan en el orden apropiado:</div>
+<div class="line">En este ejemplo, la columna <code class="docutils literal notranslate"><span class="pre">gid</span></code> de la tabla <code class="docutils literal notranslate"><span class="pre">mytable</span></code> pasó a la función como (AS) la columna de geometría,</div>
+<div class="line">y la columna de geometría <code class="docutils literal notranslate"><span class="pre">mygeom</span></code> se pasa a la función como (AS) la columna id.</div>
+</div>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="p">:</span><span class="o">=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----&gt;</span> <span class="n">PGR</span> <span class="n">ERROR</span> <span class="ow">in</span> <span class="n">pgr_createTopology</span><span class="p">:</span> <span class="n">Wrong</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">Column</span> <span class="nb">id</span><span class="p">:</span><span class="n">mygeom</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Unexpected</span> <span class="n">error</span> <span class="n">raise_exception</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">FAIL</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<p class="rubric">Cuando se utiliza la notación por nombre</p>
+<p>En este escenario omitir un parámetro crearía un error porque los valores predeterminados para los nombres de columna no coinciden con los nombres de columna de la tabla. El orden de los parámetros no importa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="rubric">Seleccionar filas utilizando el parámetro rows_where</p>
+<p>Basado en id:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+<span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+<span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+<span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100  de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+<span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="additional-examples">
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Con salida completa</td>
+</tr>
+</tbody>
+</table>
+<p>En este ejemplo se inicia una topología limpia, con 5 aristas y, a continuación, se incrementa al resto de los bordes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>  <span class="mf">0.001</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 6&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;id &lt; 6&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="p">:</span><span class="o">=</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">5</span> <span class="n">edges</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+<span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>  <span class="mf">0.001</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="p">:</span><span class="o">=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">13</span> <span class="n">edges</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>En el ejemplo se utiliza la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>.</p>
+</div>
+<div class="section" id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a> para obtener una visión general de una topología para algoritmos de ruteo.</li>
+<li><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> para reconstruir la tabla de vértices en función de la información de origen y de destino.</li>
+<li><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> para analizar los bordes y vértices de la tabla de bordes.</li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
+      Actualizado por última vez en jul. 17, 2020.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

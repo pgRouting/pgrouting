@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_bdAstarCost &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>pgr_bdAstarCost &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -71,15 +71,12 @@
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -176,7 +173,8 @@
 </ul>
 </li>
 <li><strong>Supported versions:</strong>
-current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/pgr_bdAstarCost.html">3.0</a>)
+current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_bdAstarCost.html">3.1</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_bdAstarCost.html">3.0</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html">2.6</a></li>
 <li><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_bdAstar.html">2.5</a></li>
@@ -247,16 +245,18 @@ OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertex <span class="math notranslate nohighlight">\(12\)</span> on a <strong>directed</strong> graph</td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertex <span class="math notranslate nohighlight">\(3\)</span> on a <strong>directed</strong> graph</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCost</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -272,17 +272,19 @@ OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertex <span class="math notranslate nohighlight">\(12\)</span> on an <strong>undirected</strong> graph using heuristic <span class="math notranslate nohighlight">\(2\)</span></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertex <span class="math notranslate nohighlight">\(3\)</span> on an <strong>directed</strong> graph using heuristic <span class="math notranslate nohighlight">\(2\)</span></td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span>
-    <span class="n">directed</span> <span class="p">:</span><span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCost</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">true</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span>
+<span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -299,17 +301,20 @@ OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <cite>2</cite> to vertices <span class="math notranslate nohighlight">\(\{3, 12\}\)</span> on a <strong>directed</strong> graph using heuristic <cite>2</cite></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <cite>2</cite> to vertices <span class="math notranslate nohighlight">\(\{3, 11\}\)</span> on a <strong>directed</strong> graph using heuristic <cite>3</cite> and factor <span class="math notranslate nohighlight">\(3.5\)</span></td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCost</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+    <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">factor</span> <span class="p">:</span><span class="o">=</span> <span class="mf">3.5</span>
+<span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">3</span>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -326,17 +331,20 @@ OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertices <span class="math notranslate nohighlight">\(\{7, 2\}\)</span> to vertex <span class="math notranslate nohighlight">\(12\)</span> on a <strong>directed</strong> graph using heuristic <span class="math notranslate nohighlight">\(0\)</span></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertices <span class="math notranslate nohighlight">\(\{7, 2\}\)</span> to vertex <span class="math notranslate nohighlight">\(3\)</span> on a <strong>undirected</strong> graph using heuristic <span class="math notranslate nohighlight">\(4\)</span></td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">12</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCost</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">4</span>
+<span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
-         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">5</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -353,19 +361,22 @@ OR EMPTY SET
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertices <span class="math notranslate nohighlight">\(\{7, 2\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 12\}\)</span> on a <strong>directed</strong> using heuristic <span class="math notranslate nohighlight">\(2\)</span></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertices <span class="math notranslate nohighlight">\(\{7, 2\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 11\}\)</span> on a <strong>directed</strong> using heuristic <span class="math notranslate nohighlight">\(5\)</span> and factor <span class="math notranslate nohighlight">\(0.5\)</span></td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCost</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+    <span class="n">factor</span> <span class="p">:</span><span class="o">=</span> <span class="mf">0.5</span>
+<span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">3</span>
          <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
-         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">5</span>
+         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">4</span>
 <span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -637,8 +648,8 @@ OR EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Aug 16, 2019.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
+      Last updated on Jul 17, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

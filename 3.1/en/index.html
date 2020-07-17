@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Table of Contents &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>Table of Contents &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -40,7 +40,7 @@
         </button>
         <a class="navbar-brand" href="#"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -71,14 +71,11 @@
 <li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -102,8 +99,8 @@
 <li><a class="reference internal" href="#pgrouting-concepts">Pgrouting Concepts</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#topology-functions"><code class="docutils literal notranslate"><span class="pre">topology-functions</span></code></a></li>
 <li><a class="reference internal" href="#routingfunctions"><code class="docutils literal notranslate"><span class="pre">routingFunctions</span></code></a></li>
+<li><a class="reference internal" href="#functions-by-categories">Functions by categories</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Available Functions but not official pgRouting functions</a></li>
 <li><a class="reference internal" href="#release-notes"><code class="docutils literal notranslate"><span class="pre">release_notes</span></code></a></li>
 </ul>
@@ -147,10 +144,14 @@
       
   <div class="section" id="table-of-contents">
 <span id="index"></span><h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
-<p>pgRouting extends the <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="http://postgresql.org">PostgreSQL</a> geospatial database to provide geospatial routing and other network analysis functionality.</p>
-<p>This is the manual for pgRouting v3.0.0-dev.</p>
+<p>pgRouting extends the <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a>
+geospatial database to provide geospatial routing and other network analysis functionality.</p>
+<p>This is the manual for pgRouting v3.1.0.</p>
 <img alt="Creative Commons Attribution-Share Alike 3.0 License" class="align-left" src="_images/ccbysa.png" />
-<p>The pgRouting Manual is licensed under a <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to <a class="reference external" href="http://pgrouting.org">http://pgrouting.org</a>. For other licenses used in pgRouting see the <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">Licensing</span></a> page.</p>
+<p>The pgRouting Manual is licensed under a <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>.
+Feel free to use this material any way you like, but we ask that you attribute credit to
+the pgRouting Project and wherever possible, a link back to <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>.
+For other licenses used in pgRouting see the <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">Licensing</span></a> page.</p>
 <div class="section" id="general">
 <h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -204,31 +205,21 @@
 </ul>
 </div>
 <p class="rubric">Reference</p>
-<p><a class="reference internal" href="pgr_version.html"><span class="doc">pgr_version</span></a> - Get pgRouting’s version information.
-<a class="reference internal" href="pgr_full_version.html"><span class="doc">pgr_full_version</span></a> - Get pgRouting’s details of version.</p>
-<div class="toctree-wrapper compound">
-</div>
-</div>
-<div class="section" id="topology-functions">
-<h2><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a><a class="headerlink" href="#topology-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> -  to create a topology based on the geometry.</li>
-<li><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> - to reconstruct the vertices table based on the source and target information.</li>
-<li><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>  - to analyze the edges and vertices of the edge table.</li>
-<li><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> - to analyze directionality of the edges.</li>
-<li><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a>  -to create nodes to a not noded edge table.</li>
+<li><a class="reference internal" href="pgr_version.html"><span class="doc">pgr_version</span></a> - Get pgRouting’s version information.</li>
+<li><a class="reference internal" href="pgr_full_version.html"><span class="doc">pgr_full_version</span></a> - Get pgRouting’s details of version.</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 </div>
 <div class="section" id="routingfunctions">
-<h2><a class="reference internal" href="routingFunctions.html"><span class="doc">Routing Functions</span></a><a class="headerlink" href="#routingfunctions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference internal" href="routingFunctions.html"><span class="doc">Function Families</span></a><a class="headerlink" href="#routingfunctions" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 </div>
 <p><a class="reference internal" href="allpairs-family.html"><span class="doc">All Pairs - Family of Functions</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Floyd-Warshall’s Algorithm</li>
-<li><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a>- Johnson’s Algorithm</li>
+<li><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Floyd-Warshall’s algorithm.</li>
+<li><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Johnson’s algorithm</li>
 </ul>
 <p><a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Family of functions</span></a></p>
 <ul class="simple">
@@ -264,6 +255,7 @@
 <ul class="simple">
 <li><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> - Dijkstra’s algorithm for the shortest paths.</li>
 <li><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a> - Get the aggregate cost of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> - Use pgr_dijkstra to create a costs matrix.</li>
 <li><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Use pgr_dijkstra to calculate catchament information.</li>
 <li><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.</li>
 </ul>
@@ -279,29 +271,46 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Spanning Tree - Families</span></a></p>
+<p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Family of functions</span></a></p>
 <ul class="simple">
-<li><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Family of functions</span></a><ul>
 <li><a class="reference internal" href="pgr_kruskal.html"><span class="doc">pgr_kruskal</span></a></li>
 <li><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></li>
 <li><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a></li>
 <li><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></li>
 </ul>
-</li>
-<li><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Family of functions</span></a><ul>
+<p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Family of functions</span></a></p>
+<ul class="simple">
 <li><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></li>
 <li><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></li>
 <li><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a></li>
 <li><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></li>
 </ul>
-</li>
+<p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> -  to create a topology based on the geometry.</li>
+<li><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> - to reconstruct the vertices table based on the source and target information.</li>
+<li><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>  - to analyze the edges and vertices of the edge table.</li>
+<li><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> - to analyze directionality of the edges.</li>
+<li><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a>  -to create nodes to a not noded edge table.</li>
 </ul>
-<p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - K-Shortest Path</p>
-<p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Turn Restriction Shortest Path (TRSP)</span></a> - Turn Restriction Shortest Path (TRSP)</p>
-<p><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a></p>
+<p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - Family of functions</span></a></p>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> - When input is given as matrix cell information.</li>
 <li><a class="reference internal" href="pgr_TSPeuclidean.html"><span class="doc">pgr_TSPeuclidean</span></a> - When input are coordinates.</li>
+</ul>
+<p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Turn Restriction Shortest Path (TRSP)</span></a> - Turn Restriction Shortest Path (TRSP)</p>
+</div>
+<div class="section" id="functions-by-categories">
+<h2>Functions by categories<a class="headerlink" href="#functions-by-categories" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="cost-category.html"><span class="doc">Cost - Category</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></li>
+<li><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a></li>
+</ul>
+<p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a></li>
+<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a></li>
 </ul>
 <p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">Driving Distance - Category</span></a></p>
 <ul class="simple">
@@ -313,12 +322,21 @@
 </ul>
 </li>
 </ul>
+<p><a class="reference internal" href="KSP-category.html"><span class="doc">K shortest paths - Category</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Yen’s algorithm based on pgr_dijkstra</li>
+</ul>
+<p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Spanning Tree - Category</span></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Family of functions</span></a></li>
+<li><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Family of functions</span></a></li>
+</ul>
 </div>
 <div class="section" id="available-functions-but-not-official-pgrouting-functions">
 <h2>Available Functions but not official pgRouting functions<a class="headerlink" href="#available-functions-but-not-official-pgrouting-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="proposed.html#stable"><span class="std std-ref">Stable Proposed Functions</span></a></li>
-<li><a class="reference internal" href="proposed.html#proposed"><span class="std std-ref">Experimental Functions</span></a></li>
+<li><a class="reference internal" href="proposed.html"><span class="doc">Proposed Functions</span></a></li>
+<li><a class="reference internal" href="experimental.html"><span class="doc">Experimental Functions</span></a></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -326,7 +344,11 @@
 <div class="section" id="release-notes">
 <h2><a class="reference internal" href="release_notes.html"><span class="doc">Release Notes</span></a><a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><a class="reference internal" href="release_notes.html#changelog-3-1-0"><span class="std std-ref">pgRouting 3.1.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="release_notes.html#changelog-3-0-2"><span class="std std-ref">pgRouting 3.0.2 Release Notes</span></a></li>
+<li><a class="reference internal" href="release_notes.html#changelog-3-0-1"><span class="std std-ref">pgRouting 3.0.1 Release Notes</span></a></li>
 <li><a class="reference internal" href="release_notes.html#changelog-3-0-0"><span class="std std-ref">pgRouting 3.0.0 Release Notes</span></a></li>
+<li><a class="reference internal" href="release_notes.html#changelog-2-6-3"><span class="std std-ref">pgRouting 2.6.3 Release Notes</span></a></li>
 <li><a class="reference internal" href="release_notes.html#changelog-2-6-2"><span class="std std-ref">pgRouting 2.6.2 Release Notes</span></a></li>
 <li><a class="reference internal" href="release_notes.html#changelog-2-6-1"><span class="std std-ref">pgRouting 2.6.1 Release Notes</span></a></li>
 <li><a class="reference internal" href="release_notes.html#changelog-2-6-0"><span class="std std-ref">pgRouting 2.6.0 Release Notes</span></a></li>
@@ -374,8 +396,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Aug 16, 2019.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
+      Last updated on Jul 17, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

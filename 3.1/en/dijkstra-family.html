@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Dijkstra - Family of functions &#8212; pgRouting Manual (3.0-dev)</title>
+    <title>Dijkstra - Family of functions &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -71,15 +71,12 @@
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable Proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-functions">Experimental Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -147,6 +144,7 @@
 <ul class="simple">
 <li><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> - Dijkstra’s algorithm for the shortest paths.</li>
 <li><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a> - Get the aggregate cost of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> - Use pgr_dijkstra to create a costs matrix.</li>
 <li><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Use pgr_dijkstra to calculate catchament information.</li>
 <li><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.</li>
 </ul>
@@ -168,7 +166,6 @@
 </ul>
 </div>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> - Use pgr_dijkstra to create a costs matrix.</li>
 <li><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> - Get a route of a seuence of vertices.</li>
 </ul>
 <div class="toctree-wrapper compound">
@@ -176,7 +173,8 @@
 <p class="rubric">Previous versions of this page</p>
 <ul class="simple">
 <li><strong>Supported versions:</strong>
-current(<a class="reference external" href="https://docs.pgrouting.org/dev/en/dijkstra-family.html">3.0</a>)
+current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/dijkstra-family.html">3.1</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/dijkstra-family.html">3.0</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.6/en/dijkstra-family.html">2.6</a></li>
 <li><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/dijkstra-family.html">2.5</a>
@@ -292,8 +290,8 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.0-dev.<br/>
-      Last updated on Aug 16, 2019.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
+      Last updated on Jul 17, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
