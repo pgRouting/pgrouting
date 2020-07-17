@@ -26,7 +26,7 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
 
   * New **Proposed** functions:
 
-    * pgr_dijkstraCost(combinations sql)
+    * pgr_dijkstraCost(combinations)
 
 * Version 2.2.0
 
@@ -95,7 +95,7 @@ Signatures
      pgr_dijkstraCost(edges_sql, from_vid,  to_vids [, directed])
      pgr_dijkstraCost(edges_sql, from_vids, to_vid  [, directed])
      pgr_dijkstraCost(edges_sql, from_vids, to_vids [, directed])
-     pgr_dijkstraCost(edges_sql, combinations_sql   [, directed])
+     pgr_dijkstraCost(edges_sql, combinations_sql   [, directed]) -- Proposed on v3.1
      RETURNS SET OF (start_vid, end_vid, agg_cost)
      OR EMPTY SET
 
@@ -157,7 +157,7 @@ Many to One
 
 .. code-block:: none
 
-     pgr_dijkstraCost(edges_sql, from_vids, to_vid  [, directed])
+    pgr_dijkstraCost(edges_sql, from_vids, to_vid  [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -186,9 +186,9 @@ Many to Many
    :end-before: --q6
 
 .. index::
-    single: dijkstraCost(Combinations)
+    single: dijkstraCost(Combinations) -- Proposed on v3.1
 
-Combinations SQL
+Combinations
 ...............................................................................
 
 .. code-block:: none
@@ -197,17 +197,12 @@ Combinations SQL
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: Five (source, target) vertex combinations from table: one of them has no route (form :math:`1` to :math:`17` -no route-)
+:Example: Using a combinations table on an **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q8
    :end-before: --q9
 
-:Example: Four (source, target) vertex combinations
-
-.. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: --q9
-   :end-before: --q10
 
 
 Parameters
@@ -220,9 +215,19 @@ Parameters
 Inner query
 -------------------------------------------------------------------------------
 
+Edges query
+...............................................................................
+
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Return Columns
 -------------------------------------------------------------------------------
@@ -246,6 +251,12 @@ Additional Examples
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q7
     :end-before: --q8
+
+:Example 3: Four manually assigned (source, target) vertex combinations
+
+.. literalinclude:: doc-pgr_dijkstraCost.queries
+   :start-after: --q9
+   :end-before: --q10
 
 See Also
 -------------------------------------------------------------------------------

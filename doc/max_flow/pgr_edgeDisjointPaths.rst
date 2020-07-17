@@ -165,14 +165,17 @@ Many to Many
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: pgr_dijkstra.rst
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
+.. include:: pgr_bdDijkstra.rst
+    :start-after: bdDijkstra_parameters_start
+    :end-before: bdDijkstra_parameters_end
 
 Inner query
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
+Edges query
+...............................................................................
+
+.. include::  pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 

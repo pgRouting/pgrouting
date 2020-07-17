@@ -36,7 +36,7 @@ SELECT * FROM pgr_dijkstraCost(
 -- pgr_dijkstra combinations SQL
 -------------------------------------------------------------------------------
 
-\echo -- q8
+\echo --q8
 
 SELECT * FROM pgr_dijkstraCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -44,7 +44,7 @@ SELECT * FROM pgr_dijkstraCost(
     FALSE
 );
 
-\echo -- q9
+\echo --q9
 
 SELECT * FROM pgr_dijkstraCost(
     'SELECT id, source, target, cost FROM edge_table',
@@ -52,4 +52,4 @@ SELECT * FROM pgr_dijkstraCost(
     FALSE
 );
 
-\echo -- q10
+\echo --q10

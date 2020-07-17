@@ -169,12 +169,27 @@ Many to Many
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: pgr_dijkstra.rst
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
+.. bdDijkstra_parameters_start
+
+====================== ================== ======== =================================================
+Parameter              Type               Default     Description
+====================== ================== ======== =================================================
+**Edges SQL**          ``TEXT``                    `Edges query`_ as described below
+**start_vid**          ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids**         ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**            ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**           ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+**directed**           ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
+                                                   - When ``false`` the graph is considered as `Undirected`.
+====================== ================== ======== =================================================
+
+.. bdDijkstra_parameters_end
 
 Inner query
 -------------------------------------------------------------------------------
+
+Edges query
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
