@@ -200,8 +200,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
       v [color=green];
       v -- left;
       v -- right;
-      u - a0;
-      w - a1;
+      u -- a0;
+      w -- a1;
       }
       @enddot
       */

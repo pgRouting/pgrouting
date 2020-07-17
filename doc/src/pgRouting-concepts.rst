@@ -143,7 +143,7 @@ Across this documentation, to indicate which overload we use the following terms
 * `One to Many`_
 * `Many to One`_
 * `Many to Many`_
-* `Combinations SQL`_
+* `Combinations`_
 
 Depending on the overload are the parameters used, keeping consistency across
 all functions.
@@ -180,7 +180,7 @@ When routing from:
 * From **many** starting vertices
 * to **many** ending vertices
 
-Combinations SQL
+Combinations
 ...............................................................................
 
 When routing from:
