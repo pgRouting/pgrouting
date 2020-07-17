@@ -60,6 +60,10 @@ pgRouting 3.1.0 Release Notes
 * pgr_dijkstra(combinations)
 * pgr_dijkstraCost(combinations)
 
+.. rubric:: Build changes
+
+* Minimal requirement for Sphinx: version 1.8
+
 .. _changelog_3_0_2:
 
 pgRouting 3.0.2 Release Notes
