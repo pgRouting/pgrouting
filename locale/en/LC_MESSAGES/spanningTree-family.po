@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,46 +43,36 @@ msgstr ""
 
 #: ../../build/doc/spanningTree-family.rst:33
 msgid ""
-"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en"
-"/spanningTree-family.html>`__)"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
+"spanningTree-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
+"spanningTree-family.html>`__"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:37
+#: ../../build/doc/spanningTree-family.rst:38
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:39
+#: ../../build/doc/spanningTree-family.rst:40
 msgid ""
-"`Boost: Prim's algorithm documentation "
-"<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+"`Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/"
+"prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:40
+#: ../../build/doc/spanningTree-family.rst:41
 #, python-format
 msgid ""
-"`Wikipedia: Prim's algorithm "
-"<https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
-msgstr ""
-
-#: ../../build/doc/spanningTree-family.rst:43
-msgid "Indices and tables"
+"`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim"
+"%27s_algorithm>`__"
 msgstr ""
 
 #: ../../build/doc/spanningTree-family.rst:44
-msgid ":ref:`genindex`"
+msgid "Indices and tables"
 msgstr ""
 
 #: ../../build/doc/spanningTree-family.rst:45
-msgid ":ref:`search`"
+msgid ":ref:`genindex`"
 msgstr ""
 
-#~ msgid ""
-#~ "`Wikipedia: Prim's algorithm "
-#~ "<https://en.wikipedia.org/wiki/Prim'_algorithm>`__"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/spanningTree-family.html>`__)"
-#~ msgstr ""
-
+#: ../../build/doc/spanningTree-family.rst:46
+msgid ":ref:`search`"
+msgstr ""

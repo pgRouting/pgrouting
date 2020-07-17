@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.2
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.2\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,17 +49,17 @@ msgid "Support"
 msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:28
-msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/pgr_eucledianTSP.html>`__"
+msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/pgr_eucledianTSP.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:32
+#: ../../build/doc/pgr_TSPeuclidean.rst:33
 msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:38
-#: ../../build/doc/pgr_TSPeuclidean.rst:74
+#: ../../build/doc/pgr_TSPeuclidean.rst:39
+#: ../../build/doc/pgr_TSPeuclidean.rst:75
 #: ../../build/doc/TSP-family.rst:4
-#: ../../build/doc/pgr_TSPeuclidean.rst:92
+#: ../../build/doc/pgr_TSPeuclidean.rst:93
 #: ../../build/doc/TSP-family.rst:6
 msgid "Description"
 msgstr ""
@@ -72,15 +72,15 @@ msgstr ""
 msgid "*Given a list of cities and the distances between each pair of cities, which is the shortest possible route that visits each city exactly once and returns to the origin city?*"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:44
+#: ../../build/doc/pgr_TSPeuclidean.rst:45
 msgid "See :ref:`simulated-annealing` for a complete description of this implementation"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:47
+#: ../../build/doc/pgr_TSPeuclidean.rst:48
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:50
+#: ../../build/doc/pgr_TSPeuclidean.rst:51
 msgid "Summary"
 msgstr ""
 
@@ -90,33 +90,33 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:64
+#: ../../build/doc/pgr_TSPeuclidean.rst:65
 msgid "Not having a random execution"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:71
+#: ../../build/doc/pgr_TSPeuclidean.rst:72
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:74
+#: ../../build/doc/pgr_TSPeuclidean.rst:75
 #: ../../build/doc/TSP-family.rst:4
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:76
+#: ../../build/doc/pgr_TSPeuclidean.rst:77
 msgid "**Coordinates SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:76
+#: ../../build/doc/pgr_TSPeuclidean.rst:77
 msgid "an SQL query, described in the `Inner query`_"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:80
+#: ../../build/doc/pgr_TSPeuclidean.rst:81
 msgid "Optional Parameters"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:4
-#: ../../build/doc/pgr_TSPeuclidean.rst:92
+#: ../../build/doc/pgr_TSPeuclidean.rst:93
 #: ../../build/doc/TSP-family.rst:6
 msgid "Type"
 msgstr ""
@@ -131,7 +131,7 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:6
 #: ../../build/doc/TSP-family.rst:7
-#: ../../build/doc/pgr_TSPeuclidean.rst:94
+#: ../../build/doc/pgr_TSPeuclidean.rst:95
 #: ../../build/doc/TSP-family.rst:9
 msgid "``BIGINT``"
 msgstr ""
@@ -161,8 +161,8 @@ msgstr ""
 #: ../../build/doc/TSP-family.rst:12
 #: ../../build/doc/TSP-family.rst:13
 #: ../../build/doc/TSP-family.rst:14
-#: ../../build/doc/pgr_TSPeuclidean.rst:98
 #: ../../build/doc/pgr_TSPeuclidean.rst:99
+#: ../../build/doc/pgr_TSPeuclidean.rst:100
 #: ../../build/doc/TSP-family.rst:10
 #: ../../build/doc/TSP-family.rst:13
 msgid "``FLOAT``"
@@ -276,48 +276,48 @@ msgstr ""
 msgid "false: Use `1` as seed. Using this value will get the same results with the same data in each execution."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:87
+#: ../../build/doc/pgr_TSPeuclidean.rst:88
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:89
+#: ../../build/doc/pgr_TSPeuclidean.rst:90
 msgid "**Coordinates SQL**: an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:92
+#: ../../build/doc/pgr_TSPeuclidean.rst:93
 #: ../../build/doc/TSP-family.rst:6
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:94
+#: ../../build/doc/pgr_TSPeuclidean.rst:95
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:94
+#: ../../build/doc/pgr_TSPeuclidean.rst:95
 msgid "(optional) Identifier of the coordinate."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:96
+#: ../../build/doc/pgr_TSPeuclidean.rst:97
 msgid "When missing the coordinates will receive an **id** starting from 1, in the order given."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:98
+#: ../../build/doc/pgr_TSPeuclidean.rst:99
 msgid "**x**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:98
+#: ../../build/doc/pgr_TSPeuclidean.rst:99
 msgid "X value of the coordinate."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:99
+#: ../../build/doc/pgr_TSPeuclidean.rst:100
 msgid "**y**"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:99
+#: ../../build/doc/pgr_TSPeuclidean.rst:100
 msgid "Y value of the coordinate."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:104
+#: ../../build/doc/pgr_TSPeuclidean.rst:105
 msgid "Result Columns"
 msgstr ""
 
@@ -365,51 +365,51 @@ msgstr ""
 msgid "``0`` for the first row in the path sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:111
+#: ../../build/doc/pgr_TSPeuclidean.rst:112
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:113
+#: ../../build/doc/pgr_TSPeuclidean.rst:114
 msgid "Try :math:`3` times per temperature with cooling factor of :math:`0.5`, not having a random execution"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:119
+#: ../../build/doc/pgr_TSPeuclidean.rst:120
 msgid "Skipping the Simulated Annealing & showing some process information"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:125
+#: ../../build/doc/pgr_TSPeuclidean.rst:126
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:128
+#: ../../build/doc/pgr_TSPeuclidean.rst:129
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:130
+#: ../../build/doc/pgr_TSPeuclidean.rst:131
 msgid ":doc:`TSP-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:131
+#: ../../build/doc/pgr_TSPeuclidean.rst:132
 msgid "`Simulated annaeling algorithm for beginners <https://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:132
+#: ../../build/doc/pgr_TSPeuclidean.rst:133
 msgid "`Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:133
+#: ../../build/doc/pgr_TSPeuclidean.rst:134
 msgid "`Wikipedia: Simulated annealing <https://en.wikipedia.org/wiki/Simulated_annealing>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:136
+#: ../../build/doc/pgr_TSPeuclidean.rst:137
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:137
+#: ../../build/doc/pgr_TSPeuclidean.rst:138
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:138
+#: ../../build/doc/pgr_TSPeuclidean.rst:139
 msgid ":ref:`search`"
 msgstr ""
 

@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.2
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.2\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,49 +81,49 @@ msgid "Support"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:32
-msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsDD.html>`__)"
+msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPointsDD.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsDD.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:35
+#: ../../build/doc/pgr_withPointsDD.rst:36
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPointsDD.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPointsDD.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsDD.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsDD.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:43
-#: ../../build/doc/pgr_withPointsDD.rst:118
+#: ../../build/doc/pgr_withPointsDD.rst:44
+#: ../../build/doc/pgr_withPointsDD.rst:119
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_withPointsDD.rst:153
+#: ../../build/doc/pgr_withPointsDD.rst:154
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:45
+#: ../../build/doc/pgr_withPointsDD.rst:46
 msgid "Modify the graph to include points and using Dijkstra algorithm, extracts all the nodes and points that have costs less than or equal to the value ``distance`` from the starting point. The edges extracted will conform the corresponding spanning tree."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:51
+#: ../../build/doc/pgr_withPointsDD.rst:52
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:54
+#: ../../build/doc/pgr_withPointsDD.rst:55
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:61
-msgid "Using defaults"
-msgstr ""
-
 #: ../../build/doc/pgr_withPointsDD.rst:62
-#: ../../build/doc/pgr_withPointsDD.rst:73
-msgid "For a **directed** graph."
+msgid "Using defaults"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:63
 #: ../../build/doc/pgr_withPointsDD.rst:74
-msgid "The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction."
+msgid "For a **directed** graph."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:64
 #: ../../build/doc/pgr_withPointsDD.rst:75
+msgid "The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsDD.rst:65
+#: ../../build/doc/pgr_withPointsDD.rst:76
 msgid "No **details** are given about distance of other points of the query."
 msgstr ""
 
@@ -134,68 +134,68 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:71
+#: ../../build/doc/pgr_withPointsDD.rst:72
 msgid "From point :math:`1` with :math:`agg\\_cost <= 3.8`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:86
+#: ../../build/doc/pgr_withPointsDD.rst:87
 msgid "Single vertex"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:88
-#: ../../build/doc/pgr_withPointsDD.rst:107
+#: ../../build/doc/pgr_withPointsDD.rst:89
+#: ../../build/doc/pgr_withPointsDD.rst:108
 msgid "Finds the driving distance depending on the optional parameters setup."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:95
+#: ../../build/doc/pgr_withPointsDD.rst:96
 msgid "Right side driving topology, from point :math:`1` with :math:`agg\\_cost <= 3.8`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:105
+#: ../../build/doc/pgr_withPointsDD.rst:106
 msgid "Multiple vertices"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:115
+#: ../../build/doc/pgr_withPointsDD.rst:116
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:118
+#: ../../build/doc/pgr_withPointsDD.rst:119
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:118
+#: ../../build/doc/pgr_withPointsDD.rst:119
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_withPointsDD.rst:153
+#: ../../build/doc/pgr_withPointsDD.rst:154
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:120
+#: ../../build/doc/pgr_withPointsDD.rst:121
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:120
 #: ../../build/doc/pgr_withPointsDD.rst:121
+#: ../../build/doc/pgr_withPointsDD.rst:122
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:120
+#: ../../build/doc/pgr_withPointsDD.rst:121
 msgid "Edges SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:121
+#: ../../build/doc/pgr_withPointsDD.rst:122
 msgid "**points_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:121
+#: ../../build/doc/pgr_withPointsDD.rst:122
 msgid "Points SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:122
+#: ../../build/doc/pgr_withPointsDD.rst:123
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:122
+#: ../../build/doc/pgr_withPointsDD.rst:123
 #: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
@@ -204,89 +204,89 @@ msgstr ""
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:122
+#: ../../build/doc/pgr_withPointsDD.rst:123
 msgid "Starting point id"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:123
+#: ../../build/doc/pgr_withPointsDD.rst:124
 msgid "**distance**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:123
+#: ../../build/doc/pgr_withPointsDD.rst:124
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "``ANY-NUMERICAL``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:123
+#: ../../build/doc/pgr_withPointsDD.rst:124
 msgid "Distance from the start_pid"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:124
+#: ../../build/doc/pgr_withPointsDD.rst:125
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:124
-#: ../../build/doc/pgr_withPointsDD.rst:130
-#: ../../build/doc/pgr_withPointsDD.rst:132
+#: ../../build/doc/pgr_withPointsDD.rst:125
+#: ../../build/doc/pgr_withPointsDD.rst:131
+#: ../../build/doc/pgr_withPointsDD.rst:133
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:124
+#: ../../build/doc/pgr_withPointsDD.rst:125
 msgid "(optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:125
+#: ../../build/doc/pgr_withPointsDD.rst:126
 msgid "**driving_side**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:125
+#: ../../build/doc/pgr_withPointsDD.rst:126
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``CHAR``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:128
+#: ../../build/doc/pgr_withPointsDD.rst:129
 msgid "(optional). Value in ['b', 'r', 'l', NULL] indicating if the driving side is:"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:126
+#: ../../build/doc/pgr_withPointsDD.rst:127
 msgid "In the right or left or"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:127
+#: ../../build/doc/pgr_withPointsDD.rst:128
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "If it doesn't matter with 'b' or NULL."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:128
+#: ../../build/doc/pgr_withPointsDD.rst:129
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "If column not present 'b' is considered."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:130
+#: ../../build/doc/pgr_withPointsDD.rst:131
 msgid "**details**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:130
+#: ../../build/doc/pgr_withPointsDD.rst:131
 msgid "(optional). When ``true`` the results will include the driving distance to the points with in the ``distance``. Default is ``false`` which ignores other points of the points_sql."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:132
+#: ../../build/doc/pgr_withPointsDD.rst:133
 msgid "**equicost**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:132
+#: ../../build/doc/pgr_withPointsDD.rst:133
 msgid "(optional). When ``true`` the nodes will only appear in the closest start_v list. Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:136
+#: ../../build/doc/pgr_withPointsDD.rst:137
 msgid "Inner query"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_withPointsDD.rst:153
+#: ../../build/doc/pgr_withPointsDD.rst:154
 msgid "Column"
 msgstr ""
 
@@ -319,7 +319,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_withPointsDD.rst:160
+#: ../../build/doc/pgr_withPointsDD.rst:161
 msgid "**cost**"
 msgstr ""
 
@@ -434,114 +434,114 @@ msgstr ""
 msgid "smallint, int, bigint, real, float"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:150
+#: ../../build/doc/pgr_withPointsDD.rst:151
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:155
+#: ../../build/doc/pgr_withPointsDD.rst:156
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:155
+#: ../../build/doc/pgr_withPointsDD.rst:156
 msgid "``INT``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:155
+#: ../../build/doc/pgr_withPointsDD.rst:156
 msgid "row sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:156
+#: ../../build/doc/pgr_withPointsDD.rst:157
 msgid "**node**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:156
 #: ../../build/doc/pgr_withPointsDD.rst:157
+#: ../../build/doc/pgr_withPointsDD.rst:158
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:156
+#: ../../build/doc/pgr_withPointsDD.rst:157
 msgid "Identifier of the node within the Distance from ``start_pid``. If ``details =: true`` a negative value is the identifier of a point."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:157
+#: ../../build/doc/pgr_withPointsDD.rst:158
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:158
+#: ../../build/doc/pgr_withPointsDD.rst:159
 msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:158
+#: ../../build/doc/pgr_withPointsDD.rst:159
 msgid "``-1`` when ``start_vid`` = ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:160
-#: ../../build/doc/pgr_withPointsDD.rst:163
+#: ../../build/doc/pgr_withPointsDD.rst:161
+#: ../../build/doc/pgr_withPointsDD.rst:164
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:161
+#: ../../build/doc/pgr_withPointsDD.rst:162
 msgid "Cost to traverse ``edge``."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:161
-#: ../../build/doc/pgr_withPointsDD.rst:164
+#: ../../build/doc/pgr_withPointsDD.rst:162
+#: ../../build/doc/pgr_withPointsDD.rst:165
 msgid "``0`` when ``start_vid`` = ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:163
+#: ../../build/doc/pgr_withPointsDD.rst:164
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:164
+#: ../../build/doc/pgr_withPointsDD.rst:165
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:169
+#: ../../build/doc/pgr_withPointsDD.rst:170
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:172
+#: ../../build/doc/pgr_withPointsDD.rst:173
 msgid "Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:173
+#: ../../build/doc/pgr_withPointsDD.rst:174
 msgid "The examples in this section use the following :ref:`fig1`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:175
+#: ../../build/doc/pgr_withPointsDD.rst:176
 msgid "Left side driving topology from point :math:`1` with :math:`agg\\_cost <= 3.8`, with details"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:181
+#: ../../build/doc/pgr_withPointsDD.rst:182
 msgid "From point :math:`1` with :math:`agg\\_cost <= 3.8`, does not matter driving side, with details"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:187
+#: ../../build/doc/pgr_withPointsDD.rst:188
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:190
+#: ../../build/doc/pgr_withPointsDD.rst:191
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:192
+#: ../../build/doc/pgr_withPointsDD.rst:193
 msgid ":doc:`pgr_drivingDistance` - Driving distance using dijkstra."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:193
+#: ../../build/doc/pgr_withPointsDD.rst:194
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:196
+#: ../../build/doc/pgr_withPointsDD.rst:197
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:197
+#: ../../build/doc/pgr_withPointsDD.rst:198
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:198
+#: ../../build/doc/pgr_withPointsDD.rst:199
 msgid ":ref:`search`"
 msgstr ""
 

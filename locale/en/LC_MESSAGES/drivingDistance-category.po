@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,7 @@ msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:15
 msgid ""
-":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's "
-"algorithm"
+":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:16
@@ -93,38 +92,31 @@ msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:43
 msgid ""
-"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en"
-"/drivingDistance-category.html>`__) `2.6 "
-"<https://docs.pgrouting.org/2.6/en/drivingDistance-category.html>`__"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
+"drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
+"drivingDistance-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/"
+"drivingDistance-category.html>`__"
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:47
+#: ../../build/doc/drivingDistance-category.rst:48
 msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
-"/drivingDistance-category.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/drivingDistance-category.html>`__"
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/"
+"drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
+"drivingDistance-category.html>`__"
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:53
+#: ../../build/doc/drivingDistance-category.rst:54
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:56
+#: ../../build/doc/drivingDistance-category.rst:57
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:57
+#: ../../build/doc/drivingDistance-category.rst:58
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:58
+#: ../../build/doc/drivingDistance-category.rst:59
 msgid ":ref:`search`"
 msgstr ""
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/drivingDistance-"
-#~ "category.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
-#~ "/drivingDistance-category.html>`__"
-#~ msgstr ""
-

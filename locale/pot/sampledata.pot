@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.2
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.2\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 20:36-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,86 +45,94 @@ msgid "Before you test a routing function use this query to create a topology (f
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:47
-msgid "Points of interest"
+msgid "Combinations of start and end vertices"
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:48
-msgid "When points outside of the graph."
+msgid "Used to test the combinations_sql signature in dijkstra-like functions."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:49
-msgid "Used with the :doc:`withPoints-family` functions."
+#: ../../build/doc/sampledata.rst:55
+msgid "Points of interest"
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:56
-msgid "Restrictions"
+msgid "When points outside of the graph."
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:57
-msgid "Used with the :doc:`pgr_trsp` functions."
+msgid "Used with the :doc:`withPoints-family` functions."
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:64
+msgid "Restrictions"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:65
+msgid "Used with the :doc:`pgr_trsp` functions."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:72
 msgid "Images"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:66
+#: ../../build/doc/sampledata.rst:74
 msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:67
+#: ../../build/doc/sampledata.rst:75
 msgid "Blue arrows correspond when ``reverse_cost`` > 0 in the edge table."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:68
+#: ../../build/doc/sampledata.rst:76
 msgid "Points are outside the graph."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:69
+#: ../../build/doc/sampledata.rst:77
 msgid "Click on the graph to enlarge."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:74
+#: ../../build/doc/sampledata.rst:82
 msgid "Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:76
+#: ../../build/doc/sampledata.rst:84
 msgid "When working with city networks, this is recommended for point of view of vehicles."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:81
+#: ../../build/doc/sampledata.rst:89
 msgid "**Graph 1: Directed, with cost and reverse cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:86
+#: ../../build/doc/sampledata.rst:94
 msgid "Network for queries marked as ``undirected`` and ``cost`` and ``reverse_cost`` columns are used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:88
+#: ../../build/doc/sampledata.rst:96
 msgid "When working with city networks, this is recommended for point of view of pedestrians."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:94
+#: ../../build/doc/sampledata.rst:102
 msgid "**Graph 2: Undirected, with cost and reverse cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:99
+#: ../../build/doc/sampledata.rst:107
 msgid "Network for queries marked as ``directed`` and only ``cost`` column is used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:106
+#: ../../build/doc/sampledata.rst:114
 msgid "**Graph 3: Directed, with cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:111
+#: ../../build/doc/sampledata.rst:119
 msgid "Network for queries marked as ``undirected`` and only ``cost`` column is used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:117
+#: ../../build/doc/sampledata.rst:125
 msgid "**Graph 4: Undirected, with cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:124
+#: ../../build/doc/sampledata.rst:132
 msgid "Pick & Deliver Data"
 msgstr ""
 

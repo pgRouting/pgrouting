@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 20:36-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,9 +23,9 @@ msgstr ""
 
 #: ../../build/doc/index.rst:16
 msgid ""
-"pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL "
-"<https://www.postgresql.org>`__ geospatial database to provide geospatial"
-" routing and other network analysis functionality."
+"pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL <https://"
+"www.postgresql.org>`__ geospatial database to provide geospatial routing and "
+"other network analysis functionality."
 msgstr ""
 
 #: ../../build/doc/index.rst:19
@@ -34,12 +34,12 @@ msgstr ""
 
 #: ../../build/doc/index.rst:25
 msgid ""
-"The pgRouting Manual is licensed under a `Creative Commons Attribution-"
-"Share Alike 3.0 License <https://creativecommons.org/licenses/by-"
-"sa/3.0/>`_. Feel free to use this material any way you like, but we ask "
-"that you attribute credit to the pgRouting Project and wherever possible,"
-" a link back to https://pgrouting.org. For other licenses used in "
-"pgRouting see the :ref:`license` page."
+"The pgRouting Manual is licensed under a `Creative Commons Attribution-Share "
+"Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel "
+"free to use this material any way you like, but we ask that you attribute "
+"credit to the pgRouting Project and wherever possible, a link back to "
+"https://pgrouting.org. For other licenses used in pgRouting see the :ref:"
+"`license` page."
 msgstr ""
 
 #: ../../build/doc/index.rst:32
@@ -108,8 +108,8 @@ msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:4
 msgid ""
-":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost"
-" of the paths."
+":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of "
+"the paths."
 msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:5
@@ -124,14 +124,14 @@ msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:3
 msgid ""
-":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest"
-" paths."
+":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest "
+"paths."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:4
 msgid ""
-":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost "
-"of the shortest paths"
+":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of "
+"the shortest paths"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:5
@@ -146,26 +146,24 @@ msgstr ""
 
 #: ../../build/doc/components-family.rst:3
 msgid ""
-":doc:`pgr_connectedComponents` - Connected components of an undirected "
-"graph."
+":doc:`pgr_connectedComponents` - Connected components of an undirected graph."
 msgstr ""
 
 #: ../../build/doc/components-family.rst:4
 msgid ""
-":doc:`pgr_strongComponents` - Strongly connected components of a directed"
-" graph."
+":doc:`pgr_strongComponents` - Strongly connected components of a directed "
+"graph."
 msgstr ""
 
 #: ../../build/doc/components-family.rst:5
 msgid ""
-":doc:`pgr_biconnectedComponents` - Biconnected components of an "
-"undirected graph."
+":doc:`pgr_biconnectedComponents` - Biconnected components of an undirected "
+"graph."
 msgstr ""
 
 #: ../../build/doc/components-family.rst:6
 msgid ""
-":doc:`pgr_articulationPoints` - Articulation points of an undirected "
-"graph."
+":doc:`pgr_articulationPoints` - Articulation points of an undirected graph."
 msgstr ""
 
 #: ../../build/doc/components-family.rst:7
@@ -193,7 +191,8 @@ msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:5
-msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
+msgid ""
+":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:6
@@ -204,8 +203,8 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:7
 msgid ""
-":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K "
-"shortest paths."
+":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest "
+"paths."
 msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:47
@@ -214,26 +213,26 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:3
 msgid ""
-":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel"
-" algorithm."
+":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel "
+"algorithm."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4
 msgid ""
-":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow "
-"on edges."
+":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:5
 msgid ""
-":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow "
-"on edges."
+":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:6
 msgid ""
-":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow "
-"on edges."
+":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:7
@@ -242,14 +241,14 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:9
 msgid ""
-":doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two"
-" groups of vertices."
+":doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two "
+"groups of vertices."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:10
 msgid ""
-":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality "
-"matching in a graph."
+":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching "
+"in a graph."
 msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:53
@@ -299,13 +298,14 @@ msgid ":doc:`topology-functions`"
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:3
-msgid ":doc:`pgr_createTopology` -  to create a topology based on the geometry."
+msgid ""
+":doc:`pgr_createTopology` -  to create a topology based on the geometry."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:4
 msgid ""
-":doc:`pgr_createVerticesTable` - to reconstruct the vertices table based "
-"on the source and target information."
+":doc:`pgr_createVerticesTable` - to reconstruct the vertices table based on "
+"the source and target information."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:5
@@ -372,8 +372,7 @@ msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:3
 msgid ""
-":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's "
-"algorithm"
+":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:4
@@ -421,114 +420,118 @@ msgid ":doc:`release_notes`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:3
-msgid ":ref:`changelog_3_0_2`"
+msgid ":ref:`changelog_3_1_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:4
-msgid ":ref:`changelog_3_0_1`"
+msgid ":ref:`changelog_3_0_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:5
-msgid ":ref:`changelog_3_0_0`"
+msgid ":ref:`changelog_3_0_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:6
-msgid ":ref:`changelog_2_6_3`"
+msgid ":ref:`changelog_3_0_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:7
-msgid ":ref:`changelog_2_6_2`"
+msgid ":ref:`changelog_2_6_3`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:8
-msgid ":ref:`changelog_2_6_1`"
+msgid ":ref:`changelog_2_6_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:9
-msgid ":ref:`changelog_2_6_0`"
+msgid ":ref:`changelog_2_6_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:10
-msgid ":ref:`changelog_2_5_5`"
+msgid ":ref:`changelog_2_6_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:11
-msgid ":ref:`changelog_2_5_4`"
+msgid ":ref:`changelog_2_5_5`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:12
-msgid ":ref:`changelog_2_5_3`"
+msgid ":ref:`changelog_2_5_4`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:13
-msgid ":ref:`changelog_2_5_2`"
+msgid ":ref:`changelog_2_5_3`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:14
-msgid ":ref:`changelog_2_5_1`"
+msgid ":ref:`changelog_2_5_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:15
-msgid ":ref:`changelog_2_5_0`"
+msgid ":ref:`changelog_2_5_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:16
-msgid ":ref:`changelog_2_4_2`"
+msgid ":ref:`changelog_2_5_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:17
-msgid ":ref:`changelog_2_4_1`"
+msgid ":ref:`changelog_2_4_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:18
-msgid ":ref:`changelog_2_4_0`"
+msgid ":ref:`changelog_2_4_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:19
-msgid ":ref:`changelog_2_3_2`"
+msgid ":ref:`changelog_2_4_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:20
-msgid ":ref:`changelog_2_3_1`"
+msgid ":ref:`changelog_2_3_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:21
-msgid ":ref:`changelog_2_3_0`"
+msgid ":ref:`changelog_2_3_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:22
-msgid ":ref:`changelog_2_2_4`"
+msgid ":ref:`changelog_2_3_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:23
-msgid ":ref:`changelog_2_2_3`"
+msgid ":ref:`changelog_2_2_4`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:24
-msgid ":ref:`changelog_2_2_2`"
+msgid ":ref:`changelog_2_2_3`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:25
-msgid ":ref:`changelog_2_2_1`"
+msgid ":ref:`changelog_2_2_2`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:26
-msgid ":ref:`changelog_2_2_0`"
+msgid ":ref:`changelog_2_2_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:27
-msgid ":ref:`changelog_2_1_0`"
+msgid ":ref:`changelog_2_2_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:28
-msgid ":ref:`changelog_2_0_1`"
+msgid ":ref:`changelog_2_1_0`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:29
-msgid ":ref:`changelog_2_0_0`"
+msgid ":ref:`changelog_2_0_1`"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:30
+msgid ":ref:`changelog_2_0_0`"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:31
 msgid ":ref:`changelog_1_x`"
 msgstr ""
 
@@ -543,26 +546,3 @@ msgstr ""
 #: ../../build/doc/index.rst:115
 msgid ":ref:`search`"
 msgstr ""
-
-#~ msgid ""
-#~ "pgRouting extends the `PostGIS "
-#~ "<https://postgis.net>`_/`PostgreSQL <http://postgresql.org>`_"
-#~ " geospatial database to provide geospatial"
-#~ " routing and other network analysis "
-#~ "functionality."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The pgRouting Manual is licensed under"
-#~ " a `Creative Commons Attribution-Share "
-#~ "Alike 3.0 License "
-#~ "<https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel"
-#~ " free to use this material any "
-#~ "way you like, but we ask that "
-#~ "you attribute credit to the pgRouting"
-#~ " Project and wherever possible, a "
-#~ "link back to http://pgrouting.org. For "
-#~ "other licenses used in pgRouting see "
-#~ "the :ref:`license` page."
-#~ msgstr ""
-
