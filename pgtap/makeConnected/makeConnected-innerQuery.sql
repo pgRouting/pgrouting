@@ -1,8 +1,13 @@
 \i setup.sql
 
-SELECT plan(54);
+SELECT plan(56);
 
-SELECT style_dijkstra('pgr_primDFS', ', 5)');
+SET client_min_messages TO ERROR;
+
+SELECT has_function('pgr_makeConnected');
+
+SELECT function_returns('pgr_makeConnected',ARRAY['text'],'setof record');
+SELECT style_dijkstra('pgr_makeConnected', ')');
 
 SELECT finish();
 ROLLBACK;
