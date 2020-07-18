@@ -2,9 +2,9 @@
 
 SELECT plan(5);
 
-SELECT has_function('pgr_makeConnected');
+SELECT has_function('pgr_makeconnected');
 
-SELECT function_returns('pgr_makeConnected', ARRAY['text'], 'setof record');
+SELECT function_returns('pgr_makeconnected', ARRAY['text'], 'setof record');
 
 
 -- flags

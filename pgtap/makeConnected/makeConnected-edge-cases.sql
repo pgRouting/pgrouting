@@ -227,5 +227,7 @@ SELECT set_eq('makeConnected16',
     '16:Three Connected Components. Two rows are returned'
 );
 
+-- Rows Consistency Check
+
 SELECT * FROM finish();
 ROLLBACK;
