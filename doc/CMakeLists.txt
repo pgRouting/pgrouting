@@ -270,7 +270,7 @@ foreach (target ${PGROUTING_DOC_TARGETS})
             -v   # increase verbosity
             -W
             --keep-going
-            -j auto
+            #-j auto
             #-E  # don't use a saved environment, always read all file
             #-a  # write all files; default is to only write new and changed files
             -b ${target}
