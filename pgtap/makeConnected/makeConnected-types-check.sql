@@ -30,7 +30,7 @@ PREPARE all_return AS
 SELECT
     'bigint'::text AS t1,
     'bigint'::text AS t2,
-    'bigint'::text AS t3
+    'bigint'::text AS t3;
 
 PREPARE q5 AS
 SELECT pg_typeof(seq)::text AS t1,
