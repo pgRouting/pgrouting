@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+    Alike 3.1 License: http://creativecommons.org/licenses/by-sa/3.1/
    ****************************************************************************
 
 pgr_boyerMyrvold - Experimental
@@ -14,7 +14,7 @@ pgr_boyerMyrvold - Experimental
 In particular, the boyer_myrvold_planarity_test algorithm is implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_53_0/libs/graph/doc/boyer_myrvold.html
+   :target: https://www.boost.org/libs/graph/doc/boyer_myrvold.html
 
    Boost Graph Inside
 
@@ -24,14 +24,14 @@ In particular, the boyer_myrvold_planarity_test algorithm is implemented by Boos
 
 .. rubric:: Availability
 
-* Version 3.0.0
+* Version 3.1.0
 
   * New **experimental** function
 
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/dev/en/pgr_boyerMyrvold.html>`__)
+  current(`3.1 <https://docs.pgrouting.org/dev/en/pgr_boyerMyrvold.html>`__) and above
 
 * **TBD**
 
@@ -45,7 +45,7 @@ The main characteristics are:
 
   - The returned values are the set of source and target of edges with their costs.
 
-  * Running time: Assuming that both the vertex index and edge index supplied take time O(1) to return an index and there are O(n) total self-loops and parallel edges in the graph, most combinations of arguments given to boyer_myrvold_planarity_test result in an algorithm that runs in time O(n) for a graph with n vertices and m edges
+  - **Running time:** Assuming that both the vertex index and edge index supplied take time O(1) to return an index and there are O(n) total self-loops and parallel edges in the graph, most combinations of arguments given to boyer_myrvold_planarity_test result in an algorithm that runs in time O(n) for a graph with n vertices and m edges
 
 
 Signatures
@@ -120,21 +120,37 @@ Column           Type        Description
 Additional Example:
 -------------------------------------------------------------------------------
 
+
+Now, let's add some edges to make the graph non-planar. We will be adding edges between every pair in this list of vertices **1**, **2**, **3**, **4**, **5**.
+
+
 .. literalinclude:: doc-pgr_boyerMyrvold.queries
    :start-after: -- q2
    :end-before: -- q3
 
-Use pgr_connectedComponents( ) function in query:
+
+Now, let's check our graph is planar or not. If it is non-planar then it will return an empty set of rows.
+
 
 .. literalinclude:: doc-pgr_boyerMyrvold.queries
    :start-after: -- q3
    :end-before: -- q4
 
+There can be some cases where we only want to check whether a particular connected component of a graph is planar or not. So the below example
+will illustrate the way to do it.
+
+  - Use pgr_connectedComponents( ) function in query:
+
+
+.. literalinclude:: doc-pgr_boyerMyrvold.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
 See Also
 -------------------------------------------------------------------------------
 
 * https://en.wikipedia.org/wiki/Planarity_testing
-* https://www.boost.org/doc/libs/1_53_0/libs/graph/doc/boyer_myrvold.html
+* https://www.boost.org/libs/graph/doc/boyer_myrvold.html
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
