@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: pgr_kruskal_t.h
+File: pgr_ltdtree_rt.h
 
-Copyright (c) 2015 Aditya Pratap Singh
-Mail: adityapratap.singh28@gmail.com
+Copyright (c) 2020 Prakash Tiwari
+Mail: 85prakash2017@gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_MST_RT_H_
-#define INCLUDE_C_TYPES_PGR_MST_RT_H_
+#ifndef INCLUDE_C_TYPES_PGR_LTDTREE_RT_H_
+#define INCLUDE_C_TYPES_PGR_LTDTREE_RT_H_
 #pragma once
 
 /* for int64_t */
