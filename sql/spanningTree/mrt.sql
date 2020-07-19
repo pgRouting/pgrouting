@@ -27,9 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 ---------------
--- pgr_mrt
+-- pgr_two_graphs_common_spanning_trees
 ---------------
-CREATE OR REPLACE FUNCTION pgr_mrt(
+CREATE OR REPLACE FUNCTION pgr_two_graphs_common_spanning_trees(
     edges_sql1 TEXT, -- edges_sql1 (required)
     edges_sql2 TEXT, -- edges_sql2 (required)
     directed BOOLEAN DEFAULT true,
@@ -43,7 +43,7 @@ BEGIN
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_mrt(_pgr_get_statement($1),_pgr_get_statement($2),$3);
+    FROM _pgr_two_graphs_common_spanning_trees(_pgr_get_statement($1),_pgr_get_statement($2),$3);
 END;
 $BODY$
 LANGUAGE  plpgsql VOLATILE STRICT;
@@ -52,7 +52,7 @@ LANGUAGE  plpgsql VOLATILE STRICT;
 -- COMMENTS
 
 
-COMMENT ON FUNCTION pgr_mrt(TEXT,TEXT,BOOLEAN)
+COMMENT ON FUNCTION pgr_two_graphs_common_spanning_trees(TEXT,TEXT,BOOLEAN)
 IS 'pgr_mrt
 - EXPERIMENTAL
 - Directed graph
