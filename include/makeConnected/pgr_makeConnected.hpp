@@ -34,8 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <map>
 
-#include <boost/graph/boyer_myrvold_planar_test.hpp>
-#include <boost/graph/is_kuratowski_subgraph.hpp>
 
 #include <boost/graph/connected_components.hpp>
 #include <boost/graph/make_connected.hpp>
@@ -63,8 +61,8 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
                  }
 
  private:
-     std::vector< pgr_makeConnected_t >
-     generatemakeConnected(
+      std::vector< pgr_makeConnected_t >
+      generatemakeConnected(
        G &graph ) {
       std::vector< int >component(num_vertices(graph.graph));
       size_t comp = connected_components(graph.graph,&component[0]);
@@ -76,22 +74,20 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
       make_connected(graph.graph);
       log <<"Number of Components after: "<< connected_components(graph.graph,&component[0])<<"\n";
       E_i  ei, ei_end;
-  set<pair<int64_t,int64_t>>st,st2;
-  std::vector< pgr_makeConnected_t > results(comp);
-  for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
-          int64_t src = graph[graph.source(*ei)].id;
-          int64_t tgt = graph[graph.target(*ei)].id;
-           st.insert({src,tgt});
-           log<<"src:"<<src<<"tgt:"<<tgt<<"\n";
-           if(newEdge>=edgeCount){
-               results[i].node_from = src;
-               results[i].node_to = tgt;
-               i++;
-            }
-            newEdge++;
+      std::vector< pgr_makeConnected_t > results(comp);
+      for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
+              int64_t src = graph[graph.source(*ei)].id;
+              int64_t tgt = graph[graph.target(*ei)].id;
+               log<<"src:"<<src<<"tgt:"<<tgt<<"\n";
+               if(newEdge>=edgeCount){
+                   results[i].node_from = src;
+                   results[i].node_to = tgt;
+                   i++;
+                }
+                newEdge++;
+          }
+       return results;
       }
-   return results;
-    }
 };
 }
 }
