@@ -51,8 +51,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/spanningTree/mrt_driver.h"
 #include "c_types/pgr_mrt_rt.h"
-PGDLLEXPORT Datum _pgr_mrt(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_mrt);
+PGDLLEXPORT Datum _pgr_two_graphs_common_spanning_trees(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_two_graphs_common_spanning_trees);
 
 
 static
@@ -114,7 +114,7 @@ process(char* edges_sql_1,
 }
 
 PGDLLEXPORT Datum
-_pgr_mrt(PG_FUNCTION_ARGS) {
+_pgr_two_graphs_common_spanning_trees(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
