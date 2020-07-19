@@ -1,8 +1,8 @@
 \i setup.sql
 
-SELECT plan(16);
+SELECT plan(21);
 
-
+SET extra_float_digits = -3;
 
 -- 0 edge, 0 vertex tests
 
@@ -227,7 +227,36 @@ SELECT set_eq('makeConnected16',
     '16:Three Connected Components. Two rows are returned'
 );
 
--- Rows Consistency Check
+-- Check whether the same set of rows are returned always
+
+PREPARE expectedOutput AS
+SELECT * FROM pgr_makeConnected(
+    'SELECT id, source, target, cost
+    FROM edge_table
+    ORDER BY id'
+);
+
+PREPARE descendingOrder AS
+SELECT * FROM pgr_makeConnected(
+    'SELECT id, source, target, cost
+    FROM edge_table
+    ORDER BY id DESC'
+);
+
+PREPARE randomOrder AS
+SELECT * FROM pgr_makeConnected(
+    'SELECT id, source, target, cost
+    FROM edge_table
+    ORDER BY RANDOM()'
+);
+
+
+SELECT set_eq('expectedOutput', 'descendingOrder', '16: Should return same set of rows');
+SELECT set_eq('expectedOutput', 'randomOrder', '17: Should return same set of rows');
+SELECT set_eq('expectedOutput', 'randomOrder', '18: Should return same set of rows');
+SELECT set_eq('expectedOutput', 'randomOrder', '19: Should return same set of rows');
+SELECT set_eq('expectedOutput', 'randomOrder', '20: Should return same set of rows');
+
 
 SELECT * FROM finish();
 ROLLBACK;

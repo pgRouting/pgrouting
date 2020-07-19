@@ -20,7 +20,7 @@ SELECT throws_ok(
     'SELECT * FROM pgr_makeConnected(
         ''SELECT id, source, target, cost, reverse_cost FROM edge_table id < 17'',
         3
-    )','42883','function pgr_makeConnected(unknown, integer) does not exist',
+    )','42883','function pgr_makeconnected(unknown, integer) does not exist',
     '4: Documentation says it does not work with 1 flags');
 
 
@@ -38,7 +38,7 @@ SELECT pg_typeof(seq)::text AS t1,
        pg_typeof(node_to)::text AS t3
     FROM (
         SELECT * FROM pgr_makeConnected(
-            'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id < 17'
+            'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id <= 18'
         ) ) AS a LIMIT 1;
 
 
