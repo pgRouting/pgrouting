@@ -26,7 +26,8 @@ pgr_kruskalDD
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_kruskalDD.html>`__)
+  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_kruskalDD.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_kruskalDD.html>`__
 
 Description
 -------------------------------------------------------------------------------

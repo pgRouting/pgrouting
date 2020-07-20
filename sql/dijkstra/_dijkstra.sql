@@ -6,6 +6,10 @@ Mail: project@pgrouting.org
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 mail: vicky_vergara@hotmail.com
 
+Copyright (c) 2020 The combinations_sql signature is added by Mahmoud SAKR
+and Esteban ZIMANYI
+mail: m_attia_sakr@yahoo.com, estebanzimanyi@gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -51,7 +55,30 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
 
+
+CREATE OR REPLACE FUNCTION _pgr_dijkstra(
+    edges_sql TEXT,
+    combinations_sql TEXT,
+    directed BOOLEAN DEFAULT true,
+    only_cost BOOLEAN DEFAULT false,
+    normal BOOLEAN DEFAULT true,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
+
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_dijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, BIGINT)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_dijkstra(TEXT, TEXT, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';

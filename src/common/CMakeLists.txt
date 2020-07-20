@@ -8,6 +8,7 @@ ADD_LIBRARY(common OBJECT
     matrixRows_input.c
     get_check_data.c
     edges_input.c
+    combinations_input.c
     orders_input.c
     orders_input.c
     vehicles_input.c

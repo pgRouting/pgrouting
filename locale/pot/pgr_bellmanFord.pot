@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.2
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.2\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,77 +113,77 @@ msgid "Support"
 msgstr ""
 
 #: ../../build/doc/pgr_bellmanFord.rst:33
-msgid "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_bellmanFord.html>`__)"
+msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_bellmanFord.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bellmanFord.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:37
-#: ../../build/doc/pgr_bellmanFord.rst:174
+#: ../../build/doc/pgr_bellmanFord.rst:38
+#: ../../build/doc/pgr_bellmanFord.rst:175
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:39
+#: ../../build/doc/pgr_bellmanFord.rst:40
 msgid "Bellman-Ford's algorithm, is named after Richard Bellman and Lester Ford, who first published it in 1958 and 1956, respectively. It is a graph search algorithm that computes shortest paths from a starting vertex (``start_vid``) to an ending vertex (``end_vid``) in a graph where some of the edge weights may be negative number. Though it is more versatile, it is slower than Dijkstra's algorithm/ This implementation can be used with a directed graph and an undirected graph."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:63
+#: ../../build/doc/pgr_bellmanFord.rst:64
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:45
+#: ../../build/doc/pgr_bellmanFord.rst:46
 msgid "Process is valid for edges with both positive and negative edge weights."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:46
+#: ../../build/doc/pgr_bellmanFord.rst:47
 msgid "Values are returned when there is a path."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:48
+#: ../../build/doc/pgr_bellmanFord.rst:49
 msgid "When the start vertex and the end vertex are the same, there is no path. The agg_cost would be 0."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:50
+#: ../../build/doc/pgr_bellmanFord.rst:51
 msgid "When the start vertex and the end vertex are different, and there exists a path between them without having a *negative cycle*. The agg_cost would be some finite value denoting the shortest distance between them."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:51
+#: ../../build/doc/pgr_bellmanFord.rst:52
 msgid "When the start vertex and the end vertex are different, and there exists a path between them, but it contains a *negative cycle*. In such case, agg_cost for those vertices keep on decreasing furthermore, Hence agg_cost can’t be defined for them."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:53
+#: ../../build/doc/pgr_bellmanFord.rst:54
 msgid "When the start vertex and the end vertex are different, and there is no path. The agg_cost is :math:`\\infty`."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:55
+#: ../../build/doc/pgr_bellmanFord.rst:56
 msgid "For optimization purposes, any duplicated value in the `start_vids` or `end_vids` are ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:57
+#: ../../build/doc/pgr_bellmanFord.rst:58
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:59
+#: ../../build/doc/pgr_bellmanFord.rst:60
 msgid "`start_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:60
+#: ../../build/doc/pgr_bellmanFord.rst:61
 msgid "`end_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:62
+#: ../../build/doc/pgr_bellmanFord.rst:63
 msgid "Running time: :math:`O(| start\\_vids | * ( V * E))`"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:66
+#: ../../build/doc/pgr_bellmanFord.rst:67
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:69
+#: ../../build/doc/pgr_bellmanFord.rst:70
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:81
+#: ../../build/doc/pgr_bellmanFord.rst:82
 msgid "Using defaults"
 msgstr ""
 
@@ -195,84 +195,84 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:88
+#: ../../build/doc/pgr_bellmanFord.rst:89
 msgid "From vertex :math:`2` to vertex :math:`3` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:98
+#: ../../build/doc/pgr_bellmanFord.rst:99
 msgid "One to One"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:106
+#: ../../build/doc/pgr_bellmanFord.rst:107
 msgid "From vertex :math:`2` to vertex :math:`3` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:116
+#: ../../build/doc/pgr_bellmanFord.rst:117
 msgid "One to many"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:124
+#: ../../build/doc/pgr_bellmanFord.rst:125
 msgid "From vertex :math:`2` to vertices :math:`\\{ 3, 5\\}` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:134
+#: ../../build/doc/pgr_bellmanFord.rst:135
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:142
+#: ../../build/doc/pgr_bellmanFord.rst:143
 msgid "From vertices :math:`\\{2, 11\\}` to vertex :math:`5` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:152
+#: ../../build/doc/pgr_bellmanFord.rst:153
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:160
+#: ../../build/doc/pgr_bellmanFord.rst:161
 msgid "From vertices :math:`\\{2, 11\\}` to vertices :math:`\\{3, 5\\}` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:167
+#: ../../build/doc/pgr_bellmanFord.rst:168
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:172
+#: ../../build/doc/pgr_bellmanFord.rst:173
 msgid "Description of the parameters of the signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:174
+#: ../../build/doc/pgr_bellmanFord.rst:175
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:174
+#: ../../build/doc/pgr_bellmanFord.rst:175
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:174
+#: ../../build/doc/pgr_bellmanFord.rst:175
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:176
+#: ../../build/doc/pgr_bellmanFord.rst:177
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:176
+#: ../../build/doc/pgr_bellmanFord.rst:177
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:176
+#: ../../build/doc/pgr_bellmanFord.rst:177
 msgid "SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:177
+#: ../../build/doc/pgr_bellmanFord.rst:178
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:177
-#: ../../build/doc/pgr_bellmanFord.rst:179
+#: ../../build/doc/pgr_bellmanFord.rst:178
+#: ../../build/doc/pgr_bellmanFord.rst:180
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:16
 #: ../../build/doc/pgRouting-concepts.rst:22
@@ -280,61 +280,61 @@ msgstr ""
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:177
+#: ../../build/doc/pgr_bellmanFord.rst:178
 msgid "Identifier of the starting vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:178
+#: ../../build/doc/pgr_bellmanFord.rst:179
 msgid "**start_vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:178
-#: ../../build/doc/pgr_bellmanFord.rst:180
+#: ../../build/doc/pgr_bellmanFord.rst:179
+#: ../../build/doc/pgr_bellmanFord.rst:181
 msgid "``ARRAY[BIGINT]``"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:178
+#: ../../build/doc/pgr_bellmanFord.rst:179
 msgid "Array of identifiers of starting vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:179
+#: ../../build/doc/pgr_bellmanFord.rst:180
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:179
+#: ../../build/doc/pgr_bellmanFord.rst:180
 msgid "Identifier of the ending vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:180
+#: ../../build/doc/pgr_bellmanFord.rst:181
 msgid "**end_vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:180
+#: ../../build/doc/pgr_bellmanFord.rst:181
 msgid "Array of identifiers of ending vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:181
+#: ../../build/doc/pgr_bellmanFord.rst:182
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:181
+#: ../../build/doc/pgr_bellmanFord.rst:182
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:181
+#: ../../build/doc/pgr_bellmanFord.rst:182
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:181
+#: ../../build/doc/pgr_bellmanFord.rst:182
 msgid "When ``true`` Graph is considered `Directed`"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:182
+#: ../../build/doc/pgr_bellmanFord.rst:183
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:188
+#: ../../build/doc/pgr_bellmanFord.rst:189
 msgid "Inner Query"
 msgstr ""
 
@@ -427,7 +427,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:195
+#: ../../build/doc/pgr_bellmanFord.rst:196
 msgid "Results Columns"
 msgstr ""
 
@@ -510,27 +510,27 @@ msgstr ""
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:202
+#: ../../build/doc/pgr_bellmanFord.rst:203
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:204
+#: ../../build/doc/pgr_bellmanFord.rst:205
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:205
+#: ../../build/doc/pgr_bellmanFord.rst:206
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:208
+#: ../../build/doc/pgr_bellmanFord.rst:209
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:209
+#: ../../build/doc/pgr_bellmanFord.rst:210
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bellmanFord.rst:210
+#: ../../build/doc/pgr_bellmanFord.rst:211
 msgid ":ref:`search`"
 msgstr ""
 

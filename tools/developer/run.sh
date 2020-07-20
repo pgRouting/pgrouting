@@ -6,7 +6,7 @@ set -e
 # copy this file into the root of your repository
 # adjust to your needs
 
-# This run.sh is intended for 3.0.0
+# This run.sh is intended for 3.x.x
 VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
 echo "pgRouting VERSION ${VERSION}"
 

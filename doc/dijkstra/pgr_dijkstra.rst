@@ -20,6 +20,12 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
+* Version 3.1.0
+
+  * New **Proposed** functions:
+
+    * pgr_dijkstra(combinations)
+
 * Version 3.0.0
 
   * **Official** functions
@@ -28,9 +34,9 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
   * New **proposed** functions:
 
-     * pgr_dijkstra(One to Many)
-     * pgr_dijkstra(Many to One)
-     * pgr_dijkstra(Many to Many)
+    * pgr_dijkstra(One to Many)
+    * pgr_dijkstra(Many to One)
+    * pgr_dijkstra(Many to Many)
 
 * Version 2.1.0
 
@@ -43,7 +49,8 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstra.html>`__)
+  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstra.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstra.html>`__
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstra.html>`__
 
 * **Unsupported versions:**
@@ -92,10 +99,11 @@ Signatures
 
 .. code-block:: none
 
-    pgr_dijkstra(edges_sql, start_vid,  end_vid  [, directed])
-    pgr_dijkstra(edges_sql, start_vid,  end_vids [, directed])
-    pgr_dijkstra(edges_sql, start_vids, end_vid  [, directed])
-    pgr_dijkstra(edges_sql, start_vids, end_vids [, directed])
+    pgr_dijkstra(Edges SQL, start_vid,  end_vid  [, directed])
+    pgr_dijkstra(Edges SQL, start_vid,  end_vids [, directed])
+    pgr_dijkstra(Edges SQL, start_vids, end_vid  [, directed])
+    pgr_dijkstra(Edges SQL, start_vids, end_vids [, directed])
+    pgr_dijkstra(Edges SQL, Combinations SQL [, directed]) -- Proposed on v3.1
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -103,7 +111,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
+    pgr_dijkstra(Edges SQL, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 :Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
@@ -120,8 +128,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
-    BOOLEAN directed:=true);
+    pgr_dijkstra(Edges SQL, start_vid,  end_vid  [, directed])
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -139,8 +146,7 @@ One to many
 
 .. code-block:: none
 
-    pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
-    BOOLEAN directed:=true);
+    pgr_dijkstra(Edges SQL, start_vid, end_vids, [, directed])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -158,8 +164,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
-        BOOLEAN directed:=true);
+    pgr_dijkstra(Edges SQL, start_vids, end_vid, [, directed])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -177,8 +182,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
-        BOOLEAN directed:=true);
+    pgr_dijkstra(Edges SQL, start_vids, end_vids, [, directed])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -188,33 +192,61 @@ Many to Many
    :start-after: -- q5
    :end-before: -- q6
 
+.. index::
+    single: dijkstra(Combinations) -- Proposed on v3.1
+
+Combinations
+...............................................................................
+
+.. code-block:: none
+
+    pgr_dijkstra(Edges SQL, Combinations SQL, end_vids, [, directed])
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
+
+:Example: Using a combinations table on an **undirected** graph
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q19
+   :end-before: -- q20
+
+
 Parameters
 -------------------------------------------------------------------------------
 
 .. pgr_dijkstra_parameters_start
 
-============== ================== ======== =================================================
-Parameter      Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**  ``TEXT``                    Inner SQL query as described below.
-**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
-**directed**   ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
-                                           - When ``false`` the graph is considered as `Undirected`.
-============== ================== ======== =================================================
+====================== ================== ======== =================================================
+Parameter              Type               Default     Description
+====================== ================== ======== =================================================
+**Edges SQL**          ``TEXT``                    `Edges query`_ as described below
+**Combinations SQL**   ``TEXT``                    `Combinations query`_ as described below
+**start_vid**          ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids**         ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**            ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**           ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+**directed**           ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
+                                                   - When ``false`` the graph is considered as `Undirected`.
+====================== ================== ======== =================================================
 
 .. pgr_dijkstra_parameters_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
-.. rubric::edges_sql
+Edges query
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Return Columns
 -------------------------------------------------------------------------------

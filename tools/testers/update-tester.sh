@@ -29,6 +29,7 @@ set -e
 TWEAK=""
 PGPORT=5432
 #sorry this only works on vicky's computer
+# TODO make it more general
 PGUSER="vicky"
 DB="___pgr___test___"
 

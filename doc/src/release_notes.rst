@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_3_1_0`
 * :ref:`changelog_3_0_2`
 * :ref:`changelog_3_0_1`
 * :ref:`changelog_3_0_0`
@@ -48,6 +49,20 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_1_x`
 
 .. changelog end
+
+.. _changelog_3_1_0:
+
+pgRouting 3.1.0 Release Notes
+-------------------------------------------------------------------------------
+
+.. rubric:: New proposed functions
+
+* pgr_dijkstra(combinations)
+* pgr_dijkstraCost(combinations)
+
+.. rubric:: Build changes
+
+* Minimal requirement for Sphinx: version 1.8
 
 .. _changelog_3_0_2:
 

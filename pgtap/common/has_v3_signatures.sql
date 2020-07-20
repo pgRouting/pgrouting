@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(90);
+SELECT plan(92);
 
 SELECT todo_start();
 
@@ -49,11 +49,13 @@ SELECT has_function('pgr_dijkstra', ARRAY['text', 'bigint', 'bigint', 'boolean']
 SELECT has_function('pgr_dijkstra', ARRAY['text', 'anyarray', 'bigint', 'boolean']);
 SELECT has_function('pgr_dijkstra', ARRAY['text', 'bigint', 'anyarray', 'boolean']);
 SELECT has_function('pgr_dijkstra', ARRAY['text', 'anyarray', 'anyarray', 'boolean']);
+SELECT has_function('pgr_dijkstra', ARRAY['text', 'text', 'boolean']);
 
 SELECT has_function('pgr_dijkstracost', ARRAY['text', 'bigint', 'bigint', 'boolean']);
 SELECT has_function('pgr_dijkstracost', ARRAY['text', 'anyarray', 'bigint', 'boolean']);
 SELECT has_function('pgr_dijkstracost', ARRAY['text', 'bigint', 'anyarray', 'boolean']);
 SELECT has_function('pgr_dijkstracost', ARRAY['text', 'anyarray', 'anyarray', 'boolean']);
+SELECT has_function('pgr_dijkstracost', ARRAY['text', 'text', 'boolean']);
 
 SELECT has_function('pgr_dijkstracostmatrix', ARRAY['text', 'anyarray', 'boolean']);
 

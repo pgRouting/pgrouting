@@ -55,15 +55,16 @@ This Release Contributors
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet,
 Cayetano Benavent,
-Gudesa Venkata Sai Akhil,
-Hang Wu,
-Maoguang Wang, Martha Vergara,
+Daniel Kastl,
+Esteban Zimanyi,
+Imre Samu,
+Martha Vergara,
 Mohamed Bakli,
-Regina Obe, Rohith Reddy,
-Sourabh Garg,
+Mahmoud Sakr,
+Regina Obe,
 Virginia Vergara
+
 
 And all the people that give us a little of their time making comments, finding issues, making pull requests etc.
 in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer.
@@ -89,12 +90,15 @@ Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardel
 Cayetano Benavent, Christian Gonzalez,
 Daniel Kastl, Dave Potts, David Techer, Denis Rykov,
 Ema Miyawaki,
+Esteban Zimanyi,
 Florian Thurkow, Frederic Junod,
 Gerald Fenoy, Gudesa Venkata Sai Akhil,
 Hang Wu,
+Imre Samu,
 Jay Mahadeokar, Jinfu Leng,
 Kai Behncke, Kishore Kumar, Ko Nagase,
-Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Zia, Mohamed Bakli, Mukul Priya,
+Mahmoud Sakr,
+Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya,
 Razequl Islam,
 Regina Obe, Rohith Reddy,
 Sarthak Agarwal, Sourabh Garg, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche,

@@ -33,7 +33,7 @@ include(pgr/BuildType)
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING VERSION 3.0.2
+project(PGROUTING VERSION 3.1.0
     LANGUAGES C CXX )
 set(PGROUTING_VERSION_DEV "")
 
@@ -61,7 +61,7 @@ include(pgr/Configure)
 # minimum versions
 #---------------------------------------------
 set(DOXYGEN_MINIMUM_VERSION "1.7")
-set(SPHINX_MINIMUM_VERSION "1.1")
+set(SPHINX_MINIMUM_VERSION "1.8")
 set(POSTGRESQL_MINIMUM_VERSION "9.2.0")
 set(BOOST_MINIMUM_VERSION "1.53")
 set(POSTGIS_MINIMUM_VERSION "2.0.0")

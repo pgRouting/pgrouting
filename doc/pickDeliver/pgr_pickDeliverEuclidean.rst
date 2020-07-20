@@ -26,7 +26,8 @@ pgr_pickDeliverEuclidean - Experimental
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__)
+  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__
 
 * **Unsupported versions:**
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html>`__

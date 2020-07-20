@@ -143,6 +143,7 @@ Across this documentation, to indicate which overload we use the following terms
 * `One to Many`_
 * `Many to One`_
 * `Many to Many`_
+* `Combinations`_
 
 Depending on the overload are the parameters used, keeping consistency across
 all functions.
@@ -179,6 +180,15 @@ When routing from:
 * From **many** starting vertices
 * to **many** ending vertices
 
+Combinations
+...............................................................................
+
+When routing from:
+
+* From **many** different starting vertices
+* to **many** different ending vertices
+* Every tuple specifies a pair of a start vertex and an end vertex
+* Users can define the combinations as desired.
 
 
 
@@ -364,6 +374,25 @@ Where:
 :ANY-NUMERICAL: smallint, int, bigint, real, float
 
 .. points_sql_end
+
+Description of the combinations_sql query for dijkstra like functions
+...............................................................................
+
+.. basic_combinations_sql_start
+
+================= =================== ======== =================================================
+Column            Type                 Default  Description
+================= =================== ======== =================================================
+**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
+
+================= =================== ======== =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+
+.. basic_combinations_sql_end
 
 
 .. _return_values:

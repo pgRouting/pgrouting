@@ -116,6 +116,26 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+-- Combinations SQL signature
+CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
+    TEXT,     -- edges_sql (required)
+    TEXT,     -- combinations_sql (required)
+
+    directed BOOLEAN DEFAULT true,
+
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT start_vid, end_vid, agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), $3, true, true);
+$BODY$
+LANGUAGE sql VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, BIGINT, BIGINT, BOOLEAN)
@@ -160,6 +180,17 @@ IS 'pgr_dijkstraCost(Many to Many)
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
    - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+';
+
+COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, TEXT, BOOLEAN)
+IS 'pgr_dijkstraCost(Combinations SQL)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - Combinations SQL with columns: source, target
 - Optional Parameters
    - directed := true
 - Documentation:

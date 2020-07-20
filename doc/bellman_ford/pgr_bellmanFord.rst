@@ -31,7 +31,8 @@ In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_bellmanFord.html>`__)
+  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_bellmanFord.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bellmanFord.html>`__
 
 Description
 -------------------------------------------------------------------------------

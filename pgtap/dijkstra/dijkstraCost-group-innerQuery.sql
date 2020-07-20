@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(224);
+SELECT plan(226);
 
 
 SELECT has_function('pgr_dijkstracost',
@@ -11,6 +11,8 @@ SELECT has_function('pgr_dijkstracost',
     ARRAY['text', 'anyarray', 'bigint', 'boolean']);
 SELECT has_function('pgr_dijkstracost',
     ARRAY['text', 'anyarray', 'anyarray', 'boolean']);
+SELECT has_function('pgr_dijkstracost',
+    ARRAY['text', 'text', 'boolean']);
 
 SELECT function_returns('pgr_dijkstracost',
     ARRAY['text', 'bigint', 'bigint', 'boolean'],
@@ -23,6 +25,9 @@ SELECT function_returns('pgr_dijkstracost',
     'setof record');
 SELECT function_returns('pgr_dijkstracost',
     ARRAY['text', 'anyarray', 'anyarray', 'boolean'],
+    'setof record');
+SELECT function_returns('pgr_dijkstracost',
+    ARRAY['text', 'text','boolean'],
     'setof record');
 
 

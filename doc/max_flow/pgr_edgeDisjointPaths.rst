@@ -35,7 +35,8 @@ pgr_edgeDisjointPaths
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.0 <https://docs.pgrouting.org/3.0/en/pgr_edgeDisjointPaths.html>`__)
+  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_edgeDisjointPaths.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_edgeDisjointPaths.html>`__
 
 * **Unsupported versions:**
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_edgeDisjointPaths.html>`__
@@ -164,14 +165,17 @@ Many to Many
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: pgr_dijkstra.rst
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
+.. include:: pgr_bdDijkstra.rst
+    :start-after: bdDijkstra_parameters_start
+    :end-before: bdDijkstra_parameters_end
 
 Inner query
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
+Edges query
+...............................................................................
+
+.. include::  pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 

@@ -10,6 +10,10 @@ Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
+Copyright (c) 2020 The combinations_sql signature is added by Mahmoud SAKR
+and Esteban ZIMANYI
+mail: m_attia_sakr@yahoo.com, estebanzimanyi@gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -39,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
+#include "c_common/combinations_input.h"
 #include "drivers/dijkstra/dijkstra_driver.h"
 
 PG_MODULE_MAGIC;
@@ -135,6 +140,89 @@ process(
     pgr_SPI_finish();
 }
 
+
+
+static
+void
+process_combinations(
+        char* edges_sql,
+        char* combinations_sql,
+        bool directed,
+        bool only_cost,
+        bool normal,
+        General_path_element_t **result_tuples,
+        size_t *result_count) {
+    pgr_SPI_connect();
+
+    pgr_edge_t *edges = NULL;
+    size_t total_edges = 0;
+
+    pgr_combination_t *combinations = NULL;
+    size_t total_combinations = 0;
+
+    if (normal) {
+        pgr_get_edges(edges_sql, &edges, &total_edges);
+    } else {
+        pgr_get_edges_reversed(edges_sql, &edges, &total_edges);
+    }
+
+    if (total_edges == 0) {
+        pgr_SPI_finish();
+        return;
+    } else {
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        if (total_combinations == 0) {
+            if (edges) pfree(edges);
+            pgr_SPI_finish();
+            return;
+        }
+    }
+
+    PGR_DBG("Starting timer");
+    clock_t start_t = clock();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
+    do_pgr_combinations_dijkstra(
+            edges, total_edges,
+            combinations, total_combinations,
+            directed,
+            only_cost,
+            normal,
+
+            result_tuples,
+            result_count,
+
+            &log_msg,
+            &notice_msg,
+            &err_msg);
+
+    if (only_cost) {
+        time_msg("processing pgr_dijkstraCost", start_t, clock());
+    } else {
+        time_msg("processing pgr_dijkstra", start_t, clock());
+    }
+
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (edges) pfree(edges);
+    if (combinations) pfree(combinations);
+    pgr_SPI_finish();
+}
+
+
+
+
 PGDLLEXPORT Datum
 _pgr_dijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -150,29 +238,47 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
+        if (PG_NARGS() == 7) {
+            /**********************************************************************/
+            // pgr_dijkstra(
+            // sql TEXT,
+            // start_vids ANYARRAY,
+            // end_vids ANYARRAY,
+            // directed BOOLEAN default true,
+            // only_cost BOOLEAN default false
+            // normal BOOLEAN default true
 
-        /**********************************************************************/
-        // pgr_dijkstra(
-        // sql TEXT,
-        // start_vids ANYARRAY,
-        // end_vids ANYARRAY,
-        // directed BOOLEAN default true,
-        // only_cost BOOLEAN default false
-        // normal BOOLEAN default true
+            process(
+                    text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    PG_GETARG_ARRAYTYPE_P(1),
+                    PG_GETARG_ARRAYTYPE_P(2),
+                    PG_GETARG_BOOL(3),
+                    PG_GETARG_BOOL(4),
+                    PG_GETARG_BOOL(5),
+                    PG_GETARG_INT64(6),
+                    &result_tuples,
+                    &result_count);
 
-        process(
-                text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_ARRAYTYPE_P(1),
-                PG_GETARG_ARRAYTYPE_P(2),
-                PG_GETARG_BOOL(3),
-                PG_GETARG_BOOL(4),
-                PG_GETARG_BOOL(5),
-                PG_GETARG_INT64(6),
-                &result_tuples,
-                &result_count);
+            /**********************************************************************/
+        } else if (PG_NARGS() == 5) {
+            /**********************************************************************/
+            // pgr_dijkstra(
+            // edge_sql TEXT,
+            // combinations_sql TEXT,
+            // directed BOOLEAN default true,
+            // only_cost BOOLEAN default false
 
-        /**********************************************************************/
+            process_combinations(
+                    text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    text_to_cstring(PG_GETARG_TEXT_P(1)),
+                    PG_GETARG_BOOL(2),
+                    PG_GETARG_BOOL(3),
+                    PG_GETARG_BOOL(4),
+                    &result_tuples,
+                    &result_count);
 
+            /**********************************************************************/
+        }
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
 #else

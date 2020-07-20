@@ -3,7 +3,7 @@
 
 SET client_min_messages TO WARNING;
 
-SELECT plan(41);
+SELECT plan(43);
 
 
 --V2.2+
@@ -16,6 +16,10 @@ SELECT function_returns('pgr_dijkstracost', ARRAY['text','bigint','bigint','bool
 SELECT function_returns('pgr_dijkstracost', ARRAY['text','bigint','anyarray','boolean'],'setof record');
 SELECT function_returns('pgr_dijkstracost', ARRAY['text','anyarray','bigint','boolean'],'setof record');
 SELECT function_returns('pgr_dijkstracost', ARRAY['text','anyarray','anyarray','boolean'],'setof record');
+
+-- V3.1+
+SELECT has_function('pgr_dijkstracost', ARRAY['text','text','boolean']);
+SELECT function_returns('pgr_dijkstracost', ARRAY['text','text','boolean'],'setof record');
 
 -- testing for the 4 signatures that they return the correct names & columns
 -- Preparing

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.0.0-rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-17 10:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,9 +23,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_pushRelabel.rst:13
 msgid ""
-"``pgr_pushRelabel`` — Calculates the flow on the graph edges that "
-"maximizes the flow from the sources to the targets using Push Relabel "
-"Algorithm."
+"``pgr_pushRelabel`` — Calculates the flow on the graph edges that maximizes "
+"the flow from the sources to the targets using Push Relabel Algorithm."
 msgstr ""
 
 #: ../../build/doc/pgr_pushRelabel.rst:18
@@ -70,21 +69,22 @@ msgstr ""
 
 #: ../../build/doc/pgr_pushRelabel.rst:37
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_pushRelabel.html>`__)"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
+"pgr_pushRelabel.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
+"pgr_pushRelabel.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:40
+#: ../../build/doc/pgr_pushRelabel.rst:41
 msgid ""
-"**Unsupported versions:** `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_pushRelabel.html>`__ `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_pushRelabel.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_maxFlowPushRelabel.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowPushRelabel.html>`__"
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
+"pgr_pushRelabel.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
+"pgr_pushRelabel.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
+"pgr_maxFlowPushRelabel.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/"
+"max_flow/doc/pgr_maxFlowPushRelabel.html>`__"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgr_pushRelabel.rst:47
+#: ../../build/doc/pgr_pushRelabel.rst:48
 msgid "Description"
 msgstr ""
 
@@ -130,9 +130,9 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:17
 msgid ""
-"The maximum flow through the graph is guaranteed to be the value returned"
-" by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same "
-"parameters and can be calculated:"
+"The maximum flow through the graph is guaranteed to be the value returned "
+"by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters "
+"and can be calculated:"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:19
@@ -143,19 +143,19 @@ msgstr ""
 msgid "By aggregation of the incoming flow to the targets"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:53
+#: ../../build/doc/pgr_pushRelabel.rst:54
 msgid "Running time: :math:`O( V ^ 3)`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:56
+#: ../../build/doc/pgr_pushRelabel.rst:57
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:59
+#: ../../build/doc/pgr_pushRelabel.rst:60
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:73
+#: ../../build/doc/pgr_pushRelabel.rst:74
 msgid "One to One"
 msgstr ""
 
@@ -163,41 +163,41 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:81
+#: ../../build/doc/pgr_pushRelabel.rst:82
 msgid "From vertex :math:`6` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:91
+#: ../../build/doc/pgr_pushRelabel.rst:92
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:93
+#: ../../build/doc/pgr_pushRelabel.rst:94
 msgid ""
 "Calculates the flow on the graph edges that maximizes the flow from the "
 "`source` to all of the `targets`."
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:101
+#: ../../build/doc/pgr_pushRelabel.rst:102
 msgid "From vertex :math:`6` to vertices :math:`\\{11, 1, 13\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:111
+#: ../../build/doc/pgr_pushRelabel.rst:112
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:119
+#: ../../build/doc/pgr_pushRelabel.rst:120
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:129
+#: ../../build/doc/pgr_pushRelabel.rst:130
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:137
+#: ../../build/doc/pgr_pushRelabel.rst:138
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:144
+#: ../../build/doc/pgr_pushRelabel.rst:145
 msgid "Parameters"
 msgstr ""
 
@@ -267,7 +267,7 @@ msgstr ""
 msgid "Array of identifiers of the ending vertices of the flow."
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:151
+#: ../../build/doc/pgr_pushRelabel.rst:152
 msgid "Inner query"
 msgstr ""
 
@@ -277,8 +277,8 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:3
 msgid ""
-"an SQL query of a directed graph of capacities, which should return a set"
-" of rows with the following columns:"
+"an SQL query of a directed graph of capacities, which should return a set of "
+"rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:8
@@ -313,8 +313,8 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:13
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:15
@@ -331,8 +331,8 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:17
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not "
+"part of the graph."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:21
@@ -347,7 +347,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:158
+#: ../../build/doc/pgr_pushRelabel.rst:159
 msgid "Result Columns"
 msgstr ""
 
@@ -393,41 +393,35 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:11
 msgid ""
-"Residual capacity of the edge in the direction (``start_vid``, "
-"``end_vid``)."
+"Residual capacity of the edge in the direction (``start_vid``, ``end_vid``)."
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:165
+#: ../../build/doc/pgr_pushRelabel.rst:166
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:167
+#: ../../build/doc/pgr_pushRelabel.rst:168
 msgid ":doc:`flow-family`, :doc:`pgr_boykovKolmogorov`, :doc:`pgr_edmondsKarp`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:168
+#: ../../build/doc/pgr_pushRelabel.rst:169
 msgid "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:169
+#: ../../build/doc/pgr_pushRelabel.rst:170
 #, python-format
-msgid "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:172
-msgid "Indices and tables"
+msgid ""
+"https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
 msgstr ""
 
 #: ../../build/doc/pgr_pushRelabel.rst:173
-msgid ":ref:`genindex`"
+msgid "Indices and tables"
 msgstr ""
 
 #: ../../build/doc/pgr_pushRelabel.rst:174
-msgid ":ref:`search`"
+msgid ":ref:`genindex`"
 msgstr ""
 
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_pushRelabel.html>`__)"
-#~ msgstr ""
-
+#: ../../build/doc/pgr_pushRelabel.rst:175
+msgid ":ref:`search`"
+msgstr ""
