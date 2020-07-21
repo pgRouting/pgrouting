@@ -48,6 +48,10 @@ using namespace  std;
 
 namespace pgrouting {
     namespace functions {
+    /**TODO***
+    1. Return proper results
+    2. SOlve all the errors
+    *******/
         
 
         template<class Graph>
