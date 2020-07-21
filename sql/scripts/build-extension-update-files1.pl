@@ -22,10 +22,14 @@ my $version_2_5 = qr/(2.5.[\d+])/;
 my $version_2_6 = qr/(2.6.[\d+])/;
 my $version_3_0 = qr/(3.0.[\d+])/;
 my $version_3_1 = qr/(3.1.[\d+])/;
+my $version_3_2 = qr/(3.2.[\d+])/;
+# add minor here
+
 my $version_2 = qr/(2.[\d+].[\d+])/;
 my $version_3 = qr/(3.[\d+].[\d+])/;
+# add mayor here
 
-my $current = $version_3_1;
+my $current = $version_3_2;
 
 
 sub Usage {
@@ -50,7 +54,7 @@ my $curr_sql_file_name = "$output_directory/pgrouting--$version.sql";
 
 # Verify Currently accepted old and new versions
 die "ERROR: 'build-extension-update-files1.pl' expected old version: 2.0.x ~~ 2.6.x\nHINT: Please check:\n  file: sql/CMakeLists.txt\n  Section: 'TARGET: update_files'"
-    unless $old_version =~ /$version_2_0|$version_2_1|$version_2_2|$version_2_3|$version_2_4|$version_2_5|$version_2_6|$version_3_0|$version_3_1/;
+    unless $old_version =~ /$version_2_0|$version_2_1|$version_2_2|$version_2_3|$version_2_4|$version_2_5|$version_2_6|$version_3_0|$version_3_1|$version_3_2/;
 
 die "ERROR: 'build-extension-update-files1.pl' expected version: 3.0.x\nHINT: ERROR on PGROUTING_VERSION variable\nor File sql/scripts/build-extension-update-files1.pl needs to be reviewed"
     unless $version =~ /$current/;

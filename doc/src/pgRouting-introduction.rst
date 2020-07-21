@@ -57,11 +57,7 @@ Individuals (in alphabetical order)
 
 Cayetano Benavent,
 Daniel Kastl,
-Esteban Zimanyi,
-Imre Samu,
 Martha Vergara,
-Mohamed Bakli,
-Mahmoud Sakr,
 Regina Obe,
 Virginia Vergara
 
