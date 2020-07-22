@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.2 License: http://creativecommons.org/licenses/by-sa/3.2/
+    Alike 3.1 License: http://creativecommons.org/licenses/by-sa/3.1/
    ****************************************************************************
 
 pgr_makeConnected - Experimental
@@ -24,28 +24,33 @@ which will make the graph connected. In particular, the boost::make_connected( )
 
 .. rubric:: Availability
 
-* Version 3.2.0
+* Version 3.1.0
 
   * New **experimental** function
 
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.2 <https://docs.pgrouting.org/dev/en/pgr_boyerMyrvold.html>`__) and above
+  current(`3.1 <https://docs.pgrouting.org/dev/en/pgr_makeConnected.html>`__) and above
 
 * **TBD**
 
 Description
 -------------------------------------------------------------------------------
 
-A graph is planar if it can be drawn in two-dimensional space with no two of its edges crossing. Such a drawing of a planar graph is called a plane drawing. Every planar graph also admits a straight-line drawing, which is a plane drawing where each edge is represented by a line segment.
+Adds the minimum number of edges needed to make the input graph connected. The algorithm first identifies
+all of the connected components in the graph, then adds edges to connect those components together in a path.
+For example, if a graph contains three connected components A, B, and C, make_connected will add two edges.
+The two edges added might consist of one connecting a vertex in A with a vertex in B and one connecting a vertex in B with a vertex in C.
 
 The main characteristics are:
-  - It works with any undirected graph.
+  - It will give the minimum list of all edges which are needed in the graph to make the graph connected.
 
-  - The returned values are the set of source and target of edges with their costs.
+  - Applicable only for undirected graphs.
 
-  - **Running time:** Assuming that both the vertex index and edge index supplied take time O(1) to return an index and there are O(n) total self-loops and parallel edges in the graph, most combinations of arguments given to boyer_myrvold_planarity_test result in an algorithm that runs in time O(n) for a graph with n vertices and m edges
+  - The graph can be either weighted or unweighted.
+
+  - **Running time:** On a graph with n vertices and m edges, make_connected runs in time O(n + m).
 
 
 Signatures
@@ -55,14 +60,14 @@ Signatures
 
 .. code-block:: none
 
-    pgr_boyerMyrvold(edges_sql)
+    pgr_makeConnected(edges_sql)
 
     RETURNS SET OF (seq, source, target, cost)
     OR EMPTY SET
 
 :Example: Query done on :doc:`sampledata` network gives.
 
-.. literalinclude:: doc-pgr_boyerMyrvold.queries
+.. literalinclude:: doc-pgr_makeConnected.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -124,7 +129,7 @@ Additional Example:
 Now, let's add some edges to make the graph non-planar. We will be adding edges between every pair in this list of vertices **1**, **2**, **3**, **4**, **5**.
 
 
-.. literalinclude:: doc-pgr_boyerMyrvold.queries
+.. literalinclude:: doc-pgr_makeConnected.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -132,7 +137,7 @@ Now, let's add some edges to make the graph non-planar. We will be adding edges 
 Now, let's check our graph is planar or not. If it is non-planar then it will return an empty set of rows.
 
 
-.. literalinclude:: doc-pgr_boyerMyrvold.queries
+.. literalinclude:: doc-pgr_makeConnected.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -142,7 +147,7 @@ will illustrate the way to do it.
   - Use pgr_connectedComponents( ) function in query:
 
 
-.. literalinclude:: doc-pgr_boyerMyrvold.queries
+.. literalinclude:: doc-pgr_makeConnected.queries
    :start-after: -- q4
    :end-before: -- q5
 
