@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: LTDTree_driver.h
+File: bipartite_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,21 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_LTDTREE_DRIVER_H_
-#define INCLUDE_DRIVERS_LTDTREE_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_BIPARTITE_DRIVER_H_
+#define INCLUDE_DRIVERS_BIPARTITE_DRIVER_H_
 
 
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
-#include <c_types/pgr_ltdtree_rt.h>
-
 #else
 #   include <stddef.h>
 #endif
-
-
 #include "c_types/pgr_edge_t.h"
+#include <c_types/pgr_bipartite_rt.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -52,11 +49,10 @@ extern "C" {
 
  ********************************************************/
 void
-do_pgr_LTDTree(
+do_pgr_bipartite(
         pgr_edge_t  *data_edges,
         size_t total_tuples,
-        int64_t root_vertex,
-        pgr_ltdtree_rt **return_tuples,
+        pgr_bipartite_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
@@ -67,4 +63,4 @@ do_pgr_LTDTree(
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_LTDTREE_LTDTREE_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_BIPARTITE_DRIVER_H_
