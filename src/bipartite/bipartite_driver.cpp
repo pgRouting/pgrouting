@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: LTDTree_driver.pp
+File: bipartite_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -28,9 +28,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "drivers/LTDTree/LTDTree_driver.h"
-#include "LTDTree/pgr_LTDTree_driver.hpp"
-#include "c_types/pgr_ltdtree_rt.h"
+/************************************************************
+  edges_sql TEXT
+ ***********************************************************/
+#include "drivers/bipartite/bipartie_driver.h"
+#include "bipartite/pgr_bipartite_driver.hpp"
+#include "c_types/pgr_bipartite_rt.h"
 #include <string.h>
 #include <sstream>
 #include <deque>
@@ -46,11 +49,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   edges_sql TEXT
  ***********************************************************/
 void
-do_pgr_LTDTree(
+do_pgr_bipartite(
         pgr_edge_t  *data_edges,
         size_t total_edges,
-        int64_t root_vertex,
-        pgr_ltdtree_rt **return_tuples,
+        pgr_bipartite_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
@@ -72,8 +74,8 @@ do_pgr_LTDTree(
 
 /***********************Working with graph**************************/
 
-        log << "Working with directed Graph\n";
-        graphType gType = DIRECTED;
+        log << "Working with undirected Graph\n";
+        graphType gType = UNDIRECTED;
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges); //Creating graph using data_edges
         std::vector<pgr_ltdtree_rt> results;
@@ -84,7 +86,7 @@ do_pgr_LTDTree(
         log << logstr;
 
         auto count = results.size();
-
+/****************************************************/
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
@@ -133,5 +135,4 @@ do_pgr_LTDTree(
 
 
 }
-
 
