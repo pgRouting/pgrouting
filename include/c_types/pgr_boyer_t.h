@@ -38,6 +38,7 @@ typedef struct {
     int64_t source;
     int64_t target;
     double cost;
+    bool planarity;
 } pgr_boyer_t;
 
 #endif  // INCLUDE_C_TYPES_PGR_BOYER_T_H_
