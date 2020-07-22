@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: _boyerMyrvold.sql
+File: _boyerMyrvold_1.sql
 
 Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
@@ -26,11 +26,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 -------------------------
 -------------------------
--- _boyerMyrvold
+-- _boyerMyrvold_1
 -------------------------
 -------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_boyerMyrvold(
+CREATE OR REPLACE FUNCTION _pgr_boyerMyrvold_1(
   TEXT,   -- edges_sql (required)
 
   OUT seq BIGINT,
@@ -45,5 +45,5 @@ LANGUAGE c IMMUTABLE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_boyerMyrvold(TEXT)
+COMMENT ON FUNCTION _pgr_boyerMyrvold_1(TEXT)
 IS 'pgRouting internal function';
