@@ -1,5 +1,5 @@
 \echo -- q1
-SELECT * FROM pgr_boyerMyrvold(
+SELECT * FROM pgr_boyerMyrvold_1(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table'
 );
@@ -10,13 +10,13 @@ INSERT INTO edge_table (source, target, cost, reverse_cost) VALUES
 
 \echo -- q3
 
-SELECT * FROM pgr_boyerMyrvold(
+SELECT * FROM pgr_boyerMyrvold_1(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table'
 );
 
 \echo -- q4
-SELECT * FROM pgr_boyerMyrvold(
+SELECT * FROM pgr_boyerMyrvold_1(
 $$
  SELECT id, source, target, cost, reverse_cost FROM edge_table
     where source = any (ARRAY(SELECT node FROM pgr_connectedComponents(
