@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 20:36-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -188,29 +188,4 @@ msgstr ""
 #: ../../build/doc/support.rst:78
 msgid "https://www.osgeo.org/service-providers/netlab/"
 msgstr ""
-
-#~ msgid ""
-#~ "If your problem is unreported, create"
-#~ " a `new issue "
-#~ "<https://github.com/pgRouting/pgrouting/issues/new>`_ for "
-#~ "it."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "You can also ask at `GIS "
-#~ "StackExchange <https://gis.stackexchange.com/>`_ and "
-#~ "tag the question with ``pgrouting``. "
-#~ "Find all questions tagged with "
-#~ "``pgrouting`` under "
-#~ "http://gis.stackexchange.com/questions/tagged/pgrouting or "
-#~ "subscribe to the `pgRouting questions "
-#~ "feed "
-#~ "<http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
-#~ msgstr ""
-
-#~ msgid "iMaptools"
-#~ msgstr ""
-
-#~ msgid "https://imaptools.com"
-#~ msgstr ""
 

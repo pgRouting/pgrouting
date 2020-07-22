@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,18 +55,18 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:25
 msgid ""
-"Instructions for downloading and installing binaries for different Operative "
-"systems instructions and additional notes and corrections not included in "
-"this documentation can be found in `Installation wiki <https://github.com/"
-"pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-"
-"pgRouting>`__"
+"Instructions for downloading and installing binaries for different "
+"Operative systems instructions and additional notes and corrections not "
+"included in this documentation can be found in `Installation wiki "
+"<https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-"
+"Installation-and-building-pgRouting>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:27
 msgid ""
-"To use pgRouting postGIS needs to be installed, please read the information "
-"about installation in this `Install Guide <https://www.postgis.us/"
-"presentations/postgis_install_guide_22.html>`__"
+"To use pgRouting postGIS needs to be installed, please read the "
+"information about installation in this `Install Guide "
+"<https://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:32
@@ -93,8 +93,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:67
 msgid ""
-"The pgRouting latest release can be found in https://github.com/pgRouting/"
-"pgrouting/releases/latest"
+"The pgRouting latest release can be found in "
+"https://github.com/pgRouting/pgrouting/releases/latest"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:70
@@ -119,7 +119,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:89
 msgid ""
-"Goto :ref:`install-short` to the compile instructions (there is no tar ball)."
+"Goto :ref:`install-short` to the compile instructions (there is no tar "
+"ball)."
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:96
@@ -132,8 +133,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:100
 msgid ""
-"pgRouting is an extension and depends on postGIS. Enabling postGIS before "
-"enabling pgRouting in the database"
+"pgRouting is an extension and depends on postGIS. Enabling postGIS before"
+" enabling pgRouting in the database"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:109
@@ -148,8 +149,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:118
 msgid ""
-"More information can be found in https://www.postgresql.org/docs/current/sql-"
-"createextension.html"
+"More information can be found in https://www.postgresql.org/docs/current"
+"/sql-createextension.html"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:124
@@ -162,8 +163,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:128
 msgid ""
-"To be able to compile pgRouting, make sure that the following dependencies "
-"are met:"
+"To be able to compile pgRouting, make sure that the following "
+"dependencies are met:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:130
@@ -280,8 +281,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:222
 msgid ""
-"Most of the effort of the documentation has being on the HTML files. Some "
-"variables for the documentation:"
+"Most of the effort of the documentation has being on the HTML files. Some"
+" variables for the documentation:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:226
@@ -378,8 +379,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:261
 msgid ""
-"We have tested on several platforms, For installing or reinstalling all the "
-"steps are needed."
+"We have tested on several platforms, For installing or reinstalling all "
+"the steps are needed."
 msgstr ""
 
 #: ../../build/doc/pgRouting-installation.rst:263
@@ -433,3 +434,4 @@ msgstr ""
 #: ../../build/doc/pgRouting-installation.rst:318
 msgid ":ref:`search`"
 msgstr ""
+

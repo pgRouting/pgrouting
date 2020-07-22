@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,7 @@ msgid "pgr_withPointsDD - Proposed"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:13
-msgid ""
-"``pgr_withPointsDD`` - Returns the driving distance from a starting point."
+msgid "``pgr_withPointsDD`` - Returns the driving distance from a starting point."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -84,19 +83,20 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:32
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_withPointsDD.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_withPointsDD.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_withPointsDD.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_withPointsDD.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:36
 msgid ""
-"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
-"pgr_withPointsDD.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
-"pgr_withPointsDD.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
-"pgr_withPointsDD.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/"
-"withPoints/doc/pgr_withPointsDD.html>`__ `2.2 <https://docs.pgrouting."
-"org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html>`__"
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_withPointsDD.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_withPointsDD.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_withPointsDD.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsDD.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
@@ -109,10 +109,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:46
 msgid ""
-"Modify the graph to include points and using Dijkstra algorithm, extracts "
-"all the nodes and points that have costs less than or equal to the value "
-"``distance`` from the starting point. The edges extracted will conform the "
-"corresponding spanning tree."
+"Modify the graph to include points and using Dijkstra algorithm, extracts"
+" all the nodes and points that have costs less than or equal to the value"
+" ``distance`` from the starting point. The edges extracted will conform "
+"the corresponding spanning tree."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:52
@@ -163,8 +163,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:96
 msgid ""
-"Right side driving topology, from point :math:`1` with :math:`agg\\_cost <= "
-"3.8`"
+"Right side driving topology, from point :math:`1` with :math:`agg\\_cost "
+"<= 3.8`"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:106
@@ -251,8 +251,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:125
 msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default is "
-"``true`` which considers the graph as Directed."
+"(optional). When ``false`` the graph is considered as Undirected. Default"
+" is ``true`` which considers the graph as Directed."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:126
@@ -266,7 +266,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:129
 msgid ""
-"(optional). Value in ['b', 'r', 'l', NULL] indicating if the driving side is:"
+"(optional). Value in ['b', 'r', 'l', NULL] indicating if the driving side"
+" is:"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:127
@@ -289,9 +290,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:131
 msgid ""
-"(optional). When ``true`` the results will include the driving distance to "
-"the points with in the ``distance``. Default is ``false`` which ignores "
-"other points of the points_sql."
+"(optional). When ``true`` the results will include the driving distance "
+"to the points with in the ``distance``. Default is ``false`` which "
+"ignores other points of the points_sql."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:133
@@ -300,9 +301,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:133
 msgid ""
-"(optional). When ``true`` the nodes will only appear in the closest start_v "
-"list. Default is ``false`` which resembles several calls using the single "
-"starting point signatures. Tie brakes are arbitrary."
+"(optional). When ``true`` the nodes will only appear in the closest "
+"start_v list. Default is ``false`` which resembles several calls using "
+"the single starting point signatures. Tie brakes are arbitrary."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:137
@@ -354,8 +355,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -372,8 +373,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
@@ -407,7 +408,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:5
 msgid ""
-"an SQL query, which should return a set of rows with the following columns:"
+"an SQL query, which should return a set of rows with the following "
+"columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -424,7 +426,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid ""
-"If column not present, a sequential identifier will be given automatically."
+"If column not present, a sequential identifier will be given "
+"automatically."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -492,8 +495,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:157
 msgid ""
-"Identifier of the node within the Distance from ``start_pid``. If ``details "
-"=: true`` a negative value is the identifier of a point."
+"Identifier of the node within the Distance from ``start_pid``. If "
+"``details =: true`` a negative value is the identifier of a point."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:158
@@ -502,8 +505,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:159
 msgid ""
-"Identifier of the edge used to go from ``node`` to the next node in the path "
-"sequence."
+"Identifier of the edge used to go from ``node`` to the next node in the "
+"path sequence."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:159
@@ -548,14 +551,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:176
 msgid ""
-"Left side driving topology from point :math:`1` with :math:`agg\\_cost <= "
-"3.8`, with details"
+"Left side driving topology from point :math:`1` with :math:`agg\\_cost <="
+" 3.8`, with details"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:182
 msgid ""
-"From point :math:`1` with :math:`agg\\_cost <= 3.8`, does not matter driving "
-"side, with details"
+"From point :math:`1` with :math:`agg\\_cost <= 3.8`, does not matter "
+"driving side, with details"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:188
@@ -585,3 +588,4 @@ msgstr ""
 #: ../../build/doc/pgr_withPointsDD.rst:199
 msgid ":ref:`search`"
 msgstr ""
+

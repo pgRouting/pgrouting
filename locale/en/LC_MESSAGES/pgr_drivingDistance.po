@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,7 @@ msgid "pgr_drivingDistance"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:13
-msgid ""
-"``pgr_drivingDistance`` - Returns the driving distance from a start node."
+msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:18
@@ -60,22 +59,24 @@ msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:33
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_drivingDistance.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_drivingDistance.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/"
-"pgr_drivingDistance.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_drivingDistance.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_drivingDistance.html>`__ `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_drivingDistance.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:38
 msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/"
-"pgr_drivingDistance.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
-"pgr_drivingDistance.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/"
-"driving_distance/doc/pgr_drivingDistance.html>`__ `2.2 <https://docs."
-"pgrouting.org/2.2/en/src/driving_distance/doc/pgr_drivingDistance.html>`__ "
-"`2.1 <https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/"
-"dd_driving_distance_v3.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/"
-"driving_distance/doc/dd_driving_distance.html>`__"
+"**Unsupported versions:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_drivingDistance.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_drivingDistance.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/driving_distance/doc/pgr_drivingDistance.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/driving_distance/doc/pgr_drivingDistance.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_driving_distance_v3.html>`__"
+" `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_driving_distance.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
@@ -87,9 +88,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:49
 msgid ""
-"Using the Dijkstra algorithm, extracts all the nodes that have costs less "
-"than or equal to the value ``distance``. The edges extracted will conform to "
-"the corresponding spanning tree."
+"Using the Dijkstra algorithm, extracts all the nodes that have costs less"
+" than or equal to the value ``distance``. The edges extracted will "
+"conform to the corresponding spanning tree."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:53
@@ -203,8 +204,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:108
 msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default is "
-"``true`` which considers the graph as Directed."
+"(optional). When ``false`` the graph is considered as Undirected. Default"
+" is ``true`` which considers the graph as Directed."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:109
@@ -272,8 +273,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -290,8 +291,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
@@ -340,8 +341,7 @@ msgid "**node**"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:129
-msgid ""
-"Identifier of the node in the path within the limits from ``start_vid``."
+msgid "Identifier of the node in the path within the limits from ``start_vid``."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:130
@@ -350,8 +350,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:130
 msgid ""
-"Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` "
-"is the ``start_vid``."
+"Identifier of the edge used to arrive to ``node``. ``0`` when the "
+"``node`` is the ``start_vid``."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:131
@@ -372,7 +372,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:138
 msgid ""
-"For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns"
+"For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` "
+"columns"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:140
@@ -428,3 +429,4 @@ msgstr ""
 #: ../../build/doc/pgr_drivingDistance.rst:180
 msgid ":ref:`search`"
 msgstr ""
+

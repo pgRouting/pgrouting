@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,7 @@ msgid "pgr_TSPeuclidean"
 msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:13
-msgid ""
-"``pgr_TSPeuclidean`` - Using *Simulated Annealing* approximation algorithm"
+msgid "``pgr_TSPeuclidean`` - Using *Simulated Annealing* approximation algorithm"
 msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:17
@@ -52,18 +51,18 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:28
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_TSPeuclidean.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_TSPeuclidean.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/"
-"pgr_eucledianTSP.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html>`__ `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_eucledianTSP.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:33
 msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/"
-"pgr_eucledianTSP.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
-"pgr_eucledianTSP.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/tsp/"
-"doc/pgr_eucledianTSP>`__"
+"**Unsupported versions:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:4 ../../build/doc/TSP-family.rst:6
@@ -75,15 +74,15 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:3
 msgid ""
-"The travelling salesman problem (TSP) or travelling salesperson problem asks "
-"the following question:"
+"The travelling salesman problem (TSP) or travelling salesperson problem "
+"asks the following question:"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:6
 msgid ""
-"*Given a list of cities and the distances between each pair of cities, which "
-"is the shortest possible route that visits each city exactly once and "
-"returns to the origin city?*"
+"*Given a list of cities and the distances between each pair of cities, "
+"which is the shortest possible route that visits each city exactly once "
+"and returns to the origin city?*"
 msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:45
@@ -280,8 +279,8 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:18
 msgid ""
-"false: Use `1` as seed. Using this value will get the same results with the "
-"same data in each execution."
+"false: Use `1` as seed. Using this value will get the same results with "
+"the same data in each execution."
 msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:88
@@ -290,8 +289,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:90
 msgid ""
-"**Coordinates SQL**: an SQL query, which should return a set of rows with "
-"the following columns:"
+"**Coordinates SQL**: an SQL query, which should return a set of rows with"
+" the following columns:"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:6 ../../build/doc/pgr_TSPeuclidean.rst:93
@@ -308,8 +307,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:97
 msgid ""
-"When missing the coordinates will receive an **id** starting from 1, in the "
-"order given."
+"When missing the coordinates will receive an **id** starting from 1, in "
+"the order given."
 msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:99
@@ -358,8 +357,8 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:11
 msgid ""
-"Cost to traverse from the current ``node`` to the next ``node`` in the path "
-"sequence."
+"Cost to traverse from the current ``node`` to the next ``node`` in the "
+"path sequence."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:11
@@ -384,8 +383,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:114
 msgid ""
-"Try :math:`3` times per temperature with cooling factor of :math:`0.5`, not "
-"having a random execution"
+"Try :math:`3` times per temperature with cooling factor of :math:`0.5`, "
+"not having a random execution"
 msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:120
@@ -406,20 +405,21 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:132
 msgid ""
-"`Simulated annaeling algorithm for beginners <https://www.theprojectspot.com/"
-"tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__"
+"`Simulated annaeling algorithm for beginners "
+"<https://www.theprojectspot.com/tutorial-post/simulated-annealing-"
+"algorithm-for-beginners/6>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:133
 msgid ""
-"`Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/"
-"Traveling_salesman_problem>`__"
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:134
 msgid ""
-"`Wikipedia: Simulated annealing <https://en.wikipedia.org/wiki/"
-"Simulated_annealing>`__"
+"`Wikipedia: Simulated annealing "
+"<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:137
@@ -433,3 +433,4 @@ msgstr ""
 #: ../../build/doc/pgr_TSPeuclidean.rst:139
 msgid ":ref:`search`"
 msgstr ""
+
