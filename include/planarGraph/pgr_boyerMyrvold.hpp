@@ -63,9 +63,6 @@ class Pgr_boyerMyrvold {
        if(check){
       E_i ei, ei_end;
       int i;
-      //TODO :: Work on changing the output to be true/false as it is pretty inefficient to
-     // get the input graph back as result if its plannar, we have the data in the database.
-
       for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i){
            int64_t src = graph[graph.source(*ei)].id;
            int64_t tgt = graph[graph.target(*ei)].id;
@@ -74,7 +71,6 @@ class Pgr_boyerMyrvold {
            tmp.source = src;
            tmp.target = tgt;
            tmp.cost = cost;
-           tmp.planarity = true;
            results.push_back(tmp);
       }
 

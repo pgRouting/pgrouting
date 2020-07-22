@@ -35,9 +35,7 @@ CREATE OR REPLACE FUNCTION pgr_boyerMyrvold(
     OUT seq BIGINT,
     OUT source BIGINT,
     OUT target BIGINT,
-    OUT cost FLOAT,
-    OUT planarity BOOLEAN
-  )
+    OUT cost FLOAT)
 
 RETURNS SETOF RECORD AS
 $BODY$
