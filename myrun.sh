@@ -91,7 +91,7 @@ cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DO
 
 make -j 4
 sudo make install
-# exit 0
+exit 0
 cd ..
 
 
