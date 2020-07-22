@@ -36,9 +36,7 @@ CREATE OR REPLACE FUNCTION _pgr_boyerMyrvold(
   OUT seq BIGINT,
   OUT source BIGINT,
   OUT target BIGINT,
-  OUT cost FLOAT,
-  OUT planarity BOOLEAN
-  )
+  OUT cost FLOAT)
 
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
