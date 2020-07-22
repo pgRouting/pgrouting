@@ -46,7 +46,8 @@ jobs:
             postgresql-${{ matrix.psql }}-pgtap \
             postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }} \
             postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }}-scripts \
-            postgresql-server-dev-${{ matrix.psql }}
+            postgresql-server-dev-${{ matrix.psql }} \
+            graphviz
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip list
