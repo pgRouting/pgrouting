@@ -74,6 +74,7 @@ class Pgr_boyerMyrvold {
            tmp.source = src;
            tmp.target = tgt;
            tmp.cost = cost;
+           tmp.planarity = true;
            results.push_back(tmp);
       }
 
