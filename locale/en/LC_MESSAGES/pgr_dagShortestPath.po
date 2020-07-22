@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,9 +23,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_dagShortestPath.rst:13
 msgid ""
-"``pgr_dagShortestPath`` — Returns the shortest path(s) for weighted directed "
-"acyclic graphs(DAG). In particular, the DAG shortest paths algorithm "
-"implemented by Boost.Graph."
+"``pgr_dagShortestPath`` — Returns the shortest path(s) for weighted "
+"directed acyclic graphs(DAG). In particular, the DAG shortest paths "
+"algorithm implemented by Boost.Graph."
 msgstr ""
 
 #: ../../build/doc/pgr_dagShortestPath.rst:19
@@ -118,9 +118,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_dagShortestPath.rst:33
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_dagShortestPath.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_dagShortestPath.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
@@ -132,10 +132,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_dagShortestPath.rst:40
 msgid ""
-"Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm "
-"that solves the shortest path problem for weighted directed acyclic graph, "
-"producing a shortest path from a starting vertex (``start_vid``) to an "
-"ending vertex (``end_vid``)."
+"Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm"
+" that solves the shortest path problem for weighted directed acyclic "
+"graph, producing a shortest path from a starting vertex (``start_vid``) "
+"to an ending vertex (``end_vid``)."
 msgstr ""
 
 #: ../../build/doc/pgr_dagShortestPath.rst:44
@@ -147,8 +147,8 @@ msgstr ""
 #: ../../build/doc/pgr_dagShortestPath.rst:46
 msgid ""
 "The algorithm relies on topological sorting the dag to impose a linear "
-"ordering on the vertices, and thus is more efficient for DAG's than either "
-"the Dijkstra or Bellman-Ford algorithm."
+"ordering on the vertices, and thus is more efficient for DAG's than "
+"either the Dijkstra or Bellman-Ford algorithm."
 msgstr ""
 
 #: ../../build/doc/pgr_dagShortestPath.rst:68
@@ -166,8 +166,7 @@ msgid "Values are returned when there is a path."
 msgstr ""
 
 #: ../../build/doc/pgr_dagShortestPath.rst:52
-msgid ""
-"When the starting vertex and ending vertex are the same, there is no path."
+msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
 #: ../../build/doc/pgr_dagShortestPath.rst:54
@@ -176,8 +175,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_dagShortestPath.rst:56
 msgid ""
-"When the starting vertex and ending vertex are the different and there is no "
-"path:"
+"When the starting vertex and ending vertex are the different and there is"
+" no path:"
 msgstr ""
 
 #: ../../build/doc/pgr_dagShortestPath.rst:58
@@ -388,8 +387,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -406,8 +405,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
@@ -436,8 +435,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:3
 msgid ""
-"Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, "
-"agg_cost)``"
+"Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, "
+"cost, agg_cost)``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:8
@@ -459,13 +458,14 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid ""
-"Relative position in the path. Has value **1** for the beginning of a path."
+"Relative position in the path. Has value **1** for the beginning of a "
+"path."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid ""
-"Identifier of the starting vertex. Returned when multiple starting vetrices "
-"are in the query."
+"Identifier of the starting vertex. Returned when multiple starting "
+"vetrices are in the query."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -479,8 +479,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid ""
-"Identifier of the ending vertex. Returned when multiple ending vertices are "
-"in the query."
+"Identifier of the ending vertex. Returned when multiple ending vertices "
+"are in the query."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
@@ -501,8 +501,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid ""
-"Identifier of the edge used to go from ``node`` to the next node in the path "
-"sequence. ``-1`` for the last node of the path."
+"Identifier of the edge used to go from ``node`` to the next node in the "
+"path sequence. ``-1`` for the last node of the path."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
@@ -512,8 +512,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid ""
-"Cost to traverse from ``node`` using ``edge`` to the next node in the path "
-"sequence."
+"Cost to traverse from ``node`` using ``edge`` to the next node in the "
+"path sequence."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:25
@@ -547,3 +547,4 @@ msgstr ""
 #: ../../build/doc/pgr_dagShortestPath.rst:201
 msgid ":ref:`search`"
 msgstr ""
+

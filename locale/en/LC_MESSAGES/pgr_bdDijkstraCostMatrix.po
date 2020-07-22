@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:13
 msgid ""
-"``pgr_bdDijkstraCostMatrix`` - Calculates the a cost matrix using :doc:"
-"`pgr_bdDijkstra`."
+"``pgr_bdDijkstraCostMatrix`` - Calculates the a cost matrix using "
+":doc:`pgr_bdDijkstra`."
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:19
@@ -53,16 +53,16 @@ msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:31
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_bdDijkstraCostMatrix.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_bdDijkstraCostMatrix.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCostMatrix.html>`__) "
+"`3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCostMatrix.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:35
 msgid ""
-"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
-"pgr_bdDijkstraCostMatrix.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
-"pgr_bdDijkstraCostMatrix.html>`__"
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__ `2.5"
+" <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
@@ -85,8 +85,7 @@ msgid "Values are returned when there is a path."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:6
-msgid ""
-"When the starting vertex and ending vertex are the same, there is no path."
+msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:8
@@ -95,8 +94,8 @@ msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:10
 msgid ""
-"When the starting vertex and ending vertex are the different and there is no "
-"path:"
+"When the starting vertex and ending vertex are the different and there is"
+" no path:"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:12
@@ -138,8 +137,7 @@ msgid "Example"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:70
-msgid ""
-"Cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on a **directed** graph"
+msgid "Cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on a **directed** graph"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:77
@@ -200,8 +198,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:98
 msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default is "
-"``true`` which considers the graph as Directed."
+"(optional). When ``false`` the graph is considered as Undirected. Default"
+" is ``true`` which considers the graph as Directed."
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:102
@@ -262,8 +260,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -280,8 +278,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
@@ -323,8 +321,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid ""
-"Identifier of the starting vertex. Used when multiple starting vetrices are "
-"in the query."
+"Identifier of the starting vertex. Used when multiple starting vetrices "
+"are in the query."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
@@ -333,8 +331,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid ""
-"Identifier of the ending vertex. Used when multiple ending vertices are in "
-"the query."
+"Identifier of the ending vertex. Used when multiple ending vertices are "
+"in the query."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -388,3 +386,4 @@ msgstr ""
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:135
 msgid ":ref:`search`"
 msgstr ""
+

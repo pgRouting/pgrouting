@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,19 +39,20 @@ msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:30
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"allpairs-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/allpairs-"
-"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/allpairs-family."
-"html>`__"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/allpairs-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+"/allpairs-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
+"/allpairs-family.html>`__"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:35
 msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/allpairs-"
-"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/allpairs-family."
-"html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs."
-"html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs."
-"html>`__"
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
+"/allpairs-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/allpairs-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html>`__"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:44
@@ -109,8 +110,8 @@ msgstr ""
 #: ../../build/doc/allpairs-family.rst:81
 msgid ""
 "This test is not with a bounding box The density of the passed graph is "
-"extremely low. For each <SIZE> 30 tests were executed to get the average The "
-"tested query is:"
+"extremely low. For each <SIZE> 30 tests were executed to get the average "
+"The tested query is:"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:94
@@ -581,9 +582,9 @@ msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:132
 msgid ""
-"This test is with a bounding box The density of the passed graph higher than "
-"of the Test One. For each <SIZE> 30 tests were executed to get the average "
-"The tested edge query is:"
+"This test is with a bounding box The density of the passed graph higher "
+"than of the Test One. For each <SIZE> 30 tests were executed to get the "
+"average The tested edge query is:"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:144
@@ -993,8 +994,9 @@ msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:189
 msgid ""
-"`Boost floyd-Warshall <https://www.boost.org/libs/graph/doc/"
-"floyd_warshall_shortest.html>`_ algorithm"
+"`Boost floyd-Warshall "
+"<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ "
+"algorithm"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:192
@@ -1008,3 +1010,4 @@ msgstr ""
 #: ../../build/doc/allpairs-family.rst:194
 msgid ":ref:`search`"
 msgstr ""
+

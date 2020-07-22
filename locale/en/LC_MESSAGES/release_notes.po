@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,8 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:15
 msgid ""
-"To see the full list of changes check the list of `Git commits <https://"
-"github.com/pgRouting/pgrouting/commits>`_ on Github."
+"To see the full list of changes check the list of `Git commits "
+"<https://github.com/pgRouting/pgrouting/commits>`_ on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:18
@@ -178,9 +178,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:72
 #, python-format
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Git "
+"closed milestone for 3.0.2 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:76 ../../build/doc/release_notes.rst:88
@@ -200,15 +201,16 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:84
 #, python-format
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Git "
+"closed milestone for 3.0.1 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:89
 msgid ""
-"`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__:  Honor client "
-"cancel requests in C /C++ code"
+"`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__:  Honor "
+"client cancel requests in C /C++ code"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:94
@@ -218,9 +220,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:96
 #, python-format
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github."
+"To see all issues & pull requests closed by this release see the `Git "
+"closed milestone for 3.0.0 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:100
@@ -235,8 +238,8 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:102
 msgid ""
-"`#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Removed CGAL "
-"dependency"
+"`#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Removed "
+"CGAL dependency"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:103
@@ -247,20 +250,20 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:105
 msgid ""
-"`#1004 <https://github.com/pgRouting/pgrouting/issues/1004>`__: Contracts "
-"when forbidden vertices do not belong to graph"
+"`#1004 <https://github.com/pgRouting/pgrouting/issues/1004>`__: Contracts"
+" when forbidden vertices do not belong to graph"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:106
 msgid ""
-"`#1005 <https://github.com/pgRouting/pgrouting/issues/1005>`__: Intermideate "
-"results eliminated"
+"`#1005 <https://github.com/pgRouting/pgrouting/issues/1005>`__: "
+"Intermideate results eliminated"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:107
 msgid ""
-"`#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No loss of "
-"information"
+"`#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No loss "
+"of information"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:110
@@ -714,9 +717,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:261
 #, python-format
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.6.3%22%20>`_ on Github."
+"To see the issues closed by this release see the `Git closed milestone "
+"for 2.6.3 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:264 ../../build/doc/release_notes.rst:278
@@ -731,8 +735,8 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:265
 msgid ""
-"`#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ Implicit cast "
-"for via_path integer to text"
+"`#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ Implicit "
+"cast for via_path integer to text"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:266
@@ -754,27 +758,28 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:275
 #, python-format
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.6.2%22%20>`_ on Github."
+"To see the issues closed by this release see the `Git closed milestone "
+"for 2.6.2 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:279
 msgid ""
-"`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes driving "
-"distance when vertex is not part of the graph"
+"`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes "
+"driving distance when vertex is not part of the graph"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:280
 msgid ""
-"`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes windows "
-"test"
+"`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes "
+"windows test"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:281
 msgid ""
-"`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes build "
-"for python3 and perl5"
+"`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes "
+"build for python3 and perl5"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:286
@@ -784,9 +789,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:288
 #, python-format
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github."
+"To see the issues closed by this release see the `Git closed milestone "
+"for 2.6.1 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:290 ../../build/doc/release_notes.rst:377
@@ -918,9 +924,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:328
 #, python-format
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github."
+"To see the issues closed by this release see the `Git closed milestone "
+"for 2.6.0 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:332
@@ -933,8 +940,8 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:337
 msgid ""
-"Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
-"boolean[,text])"
+"Fix pgr_trsp(text,integer,double precision,integer,double "
+"precision,boolean,boolean[,text])"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:339
@@ -963,8 +970,8 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:350
 msgid ""
-"Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [, "
-"text])"
+"Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [,"
+" text])"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:352
@@ -986,9 +993,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:362
 #, python-format
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github."
+"To see the issues closed by this release see the `Git closed milestone "
+"for 2.5.5 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:366
@@ -1010,9 +1018,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:375
 #, python-format
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github."
+"To see the issues closed by this release see the `Git closed milestone "
+"for 2.5.4 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:413
@@ -1022,9 +1031,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:415
 #, python-format
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github."
+"To see the issues closed by this release see the `Git closed milestone "
+"for 2.5.3 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:419
@@ -1040,9 +1050,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:426
 #, python-format
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github."
+"To see the issues closed by this release see the `Git closed milestone "
+"for 2.5.2 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:430
@@ -1056,9 +1067,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:438
 #, python-format
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.5.1%22%20>`_ on Github."
+"To see the issues closed by this release see the `Git closed milestone "
+"for 2.5.1 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:442
@@ -1072,8 +1084,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:450
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.5.0%22+is%3Aclosed>`_ on Github."
+"2.5.0 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:454
@@ -1172,9 +1185,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:516
 #, python-format
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github."
+"To see the issues closed by this release see the `Git closed milestone "
+"for 2.4.2 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:519
@@ -1190,8 +1204,7 @@ msgid "Fixed: Unexpected error column \"cname\""
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:525
-msgid ""
-"Replace __linux__ with __GLIBC__ for glibc-specific headers and functions"
+msgid "Replace __linux__ with __GLIBC__ for glibc-specific headers and functions"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:532
@@ -1201,9 +1214,10 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:534
 #, python-format
 msgid ""
-"To see the issues closed by this release see the `Git closed milestone for "
-"2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github."
+"To see the issues closed by this release see the `Git closed milestone "
+"for 2.4.1 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:538
@@ -1221,8 +1235,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:546
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.4.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.4.0%22+is%3Aclosed>`_ on Github."
+"2.4.0 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:549 ../../build/doc/release_notes.rst:619
@@ -1301,8 +1316,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:586
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.3.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.3.2%22+is%3Aclosed>`_ on Github."
+"2.3.2 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:590
@@ -1328,8 +1344,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:602
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.3.1%22+is%3Aclosed>`_ on Github."
+"2.3.1 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:606
@@ -1351,8 +1368,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:616
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.3.0%22+is%3Aclosed>`_ on Github."
+"2.3.0 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:620
@@ -1462,8 +1480,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:672
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.2.4%22+is%3Aclosed>`_ on Github."
+"2.2.4 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:676
@@ -1485,8 +1504,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:685
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.2.3%22+is%3Aclosed>`_ on Github."
+"2.2.3 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:689
@@ -1500,8 +1520,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:696
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.2.2%22+is%3Aclosed>`_ on Github."
+"2.2.2 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:700
@@ -1515,8 +1536,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:708
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.2.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is"
-"%3Aclosed>`_ on Github."
+"2.2.1 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:712
@@ -1534,8 +1556,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:721
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.2.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.2.0%22+is%3Aclosed>`_ on Github."
+"2.2.0 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:725 ../../build/doc/release_notes.rst:793
@@ -1665,8 +1688,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:777
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone"
-"%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github."
+"2.1.0 "
+"<https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:781
@@ -1703,14 +1727,14 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:794
 msgid ""
-"pgr_alphaShape function now can generate better (multi)polygon with holes "
-"and alpha parameter."
+"pgr_alphaShape function now can generate better (multi)polygon with holes"
+" and alpha parameter."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:798
 msgid ""
-"Proposed functions from Steve Woodbridge, (Classified as Convenience by the "
-"author.)"
+"Proposed functions from Steve Woodbridge, (Classified as Convenience by "
+"the author.)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:800
@@ -1721,8 +1745,8 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:801
 msgid ""
-"pgr_flipEdges - flip the edges in an array of geometries so the connect end "
-"to end."
+"pgr_flipEdges - flip the edges in an array of geometries so the connect "
+"end to end."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:802
@@ -1732,8 +1756,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:803
-msgid ""
-"pgr_pointsToVids - convert an array of point geometries into vertex ids."
+msgid "pgr_pointsToVids - convert an array of point geometries into vertex ids."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:804
@@ -1741,8 +1764,7 @@ msgid "pgr_pointsToDMatrix - Create a distance matrix from an array of points."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:805 ../../build/doc/release_notes.rst:806
-msgid ""
-"pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id."
+msgid "pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:808
@@ -1843,8 +1865,8 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:847
 msgid ""
-"Instead of generating many libraries: - All functions are encapsulated in "
-"one library - The library has the prefix 2-1-0"
+"Instead of generating many libraries: - All functions are encapsulated in"
+" one library - The library has the prefix 2-1-0"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:856
@@ -1866,8 +1888,9 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:870
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.0.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.0.0%22+is%3Aclosed>`_ on Github."
+"2.0.0 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_"
+" on Github."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:872
@@ -1919,8 +1942,8 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:890
 msgid ""
-"Graph Analytics - tools for detecting and fixing connection some problems in "
-"a graph"
+"Graph Analytics - tools for detecting and fixing connection some problems"
+" in a graph"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:891
@@ -1929,7 +1952,8 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:892
 msgid ""
-"Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)"
+"Two new All Pairs Short Path algorithms (pgr_apspJohnson, "
+"pgr_apspWarshall)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:893
@@ -1968,8 +1992,8 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:900
 msgid ""
-"Tested and fixed most all of the outstanding bugs reported against 1.x that "
-"existing in the 2.0-dev code base."
+"Tested and fixed most all of the outstanding bugs reported against 1.x "
+"that existing in the 2.0-dev code base."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:901
@@ -1977,8 +2001,7 @@ msgid "Improved build process for Windows"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:902
-msgid ""
-"Automated testing on Linux and Windows platforms trigger by every commit"
+msgid "Automated testing on Linux and Windows platforms trigger by every commit"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:903
@@ -2027,10 +2050,11 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:921
 msgid ""
-"To see the issues closed by this release see the `Git closed issues for 1.x "
-"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x"
-"%22+is%3Aclosed>`_ on Github. The following release notes have been copied "
-"from the previous ``RELEASE_NOTES`` file and are kept as a reference."
+"To see the issues closed by this release see the `Git closed issues for "
+"1.x "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed>`_"
+" on Github. The following release notes have been copied from the "
+"previous ``RELEASE_NOTES`` file and are kept as a reference."
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:926
@@ -2103,7 +2127,8 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:977
 msgid ""
-"Shortest path functions return empty result if they could not find any path"
+"Shortest path functions return empty result if they could not find any "
+"path"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:981
@@ -2121,3 +2146,4 @@ msgstr ""
 #: ../../build/doc/release_notes.rst:985
 msgid "routing_postgis.sql was modified to use dijkstra in TSP search"
 msgstr ""
+

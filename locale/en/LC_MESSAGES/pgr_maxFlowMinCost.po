@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,8 @@ msgstr ""
 #: ../../build/doc/pgr_maxFlowMinCost.rst:13
 msgid ""
 "``pgr_maxFlowMinCost`` — Calculates the flow on the graph edges that "
-"maximizes the flow and minimizes the cost from the sources to the targets."
+"maximizes the flow and minimizes the cost from the sources to the "
+"targets."
 msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost.rst:19
@@ -117,9 +118,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost.rst:33
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_maxFlowMinCost.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_maxFlowMinCost.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_maxFlowMinCost.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_maxFlowMinCost.html>`__"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
@@ -169,9 +170,9 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:17
 msgid ""
-"The maximum flow through the graph is guaranteed to be the value returned "
-"by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters "
-"and can be calculated:"
+"The maximum flow through the graph is guaranteed to be the value returned"
+" by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same "
+"parameters and can be calculated:"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:19
@@ -208,8 +209,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost.rst:53
 msgid ""
-":math:`U` is upper bound on number of iterations. In many real world cases "
-"number of iterations is much smaller than :math:`U`."
+":math:`U` is upper bound on number of iterations. In many real world "
+"cases number of iterations is much smaller than :math:`U`."
 msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost.rst:57
@@ -337,8 +338,8 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:3
 msgid ""
-"an SQL query of a directed graph of capacities, which should return a set of "
-"rows with the following columns:"
+"an SQL query of a directed graph of capacities, which should return a set"
+" of rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:8
@@ -373,8 +374,8 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:13
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:14
@@ -391,8 +392,8 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:16
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:12 ../../build/doc/flow-family.rst:17
@@ -506,9 +507,7 @@ msgid ":doc:`flow-family`"
 msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost.rst:166
-msgid ""
-"https://www.boost.org/libs/graph/doc/"
-"successive_shortest_path_nonnegative_weights.html"
+msgid "https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html"
 msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost.rst:169
@@ -522,3 +521,4 @@ msgstr ""
 #: ../../build/doc/pgr_maxFlowMinCost.rst:171
 msgid ":ref:`search`"
 msgstr ""
+

@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,9 +113,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:28
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_extractVertices.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_extractVertices.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_extractVertices.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:34
@@ -129,14 +129,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:36
 msgid ""
-"This is an auxiliary function for extracting the vertex information of the "
-"set of edges of a graph."
+"This is an auxiliary function for extracting the vertex information of "
+"the set of edges of a graph."
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:39
 msgid ""
-"When the edge identifier is given, then it will also calculate the in and "
-"out edges"
+"When the edge identifier is given, then it will also calculate the in and"
+" out edges"
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:43
@@ -177,8 +177,7 @@ msgid "``TEXT``"
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:66
-msgid ""
-"The set of edges of the graph. It is an `Inner Query`_ as described below."
+msgid "The set of edges of the graph. It is an `Inner Query`_ as described below."
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:67
@@ -239,8 +238,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:82
 msgid ""
-"This inner query takes precedence over the next two inner query, therefore "
-"other columns are ignored when ``geom`` column appears."
+"This inner query takes precedence over the next two inner query, "
+"therefore other columns are ignored when ``geom`` column appears."
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:84
@@ -272,8 +271,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:95
 msgid ""
-"To use this inner query the column ``geom`` should not be part of the set of "
-"columns."
+"To use this inner query the column ``geom`` should not be part of the set"
+" of columns."
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:101
@@ -300,8 +299,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:105
 msgid ""
-"This inner query takes precedence over the next inner query, therefore other "
-"columns are ignored when ``startpoint`` and ``endpoint``  columns appears."
+"This inner query takes precedence over the next inner query, therefore "
+"other columns are ignored when ``startpoint`` and ``endpoint``  columns "
+"appears."
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:114
@@ -355,8 +355,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:135
 msgid ""
-"Array of identifiers of the edges that have the vertex ``id`` as *first end "
-"point*."
+"Array of identifiers of the edges that have the vertex ``id`` as *first "
+"end point*."
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:136
@@ -370,8 +370,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:137
 msgid ""
-"Array of identifiers of the edges that have the vertex ``id`` as *second end "
-"point*."
+"Array of identifiers of the edges that have the vertex ``id`` as *second "
+"end point*."
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:139
@@ -419,8 +419,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:153
 msgid ""
-"To get the query generated used to get the vertex information, use ``dryrun :"
-"= true``."
+"To get the query generated used to get the vertex information, use "
+"``dryrun := true``."
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:155
@@ -480,8 +480,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:211
-msgid ""
-":doc:`pgr_createVerticesTable` to create a topology based on the geometry."
+msgid ":doc:`pgr_createVerticesTable` to create a topology based on the geometry."
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:214
@@ -495,3 +494,4 @@ msgstr ""
 #: ../../build/doc/pgr_extractVertices.rst:216
 msgid ":ref:`search`"
 msgstr ""
+
