@@ -1,24 +1,17 @@
 name: Build for Windows
 
-on: 
+on:
   push:
-    branches:
-      # - master
-      # - develop
-      - ftr/gh-actions
-
-  pull_request:
-    branches:
-      # - master
-      # - develop
+    branches-ignore:
+        - '**'
 
 jobs:
   build:
     name: Build
     runs-on: ${{ matrix.os }}
 
-    strategy: 
-        matrix: 
+    strategy:
+        matrix:
           psql: [10]
           os: [windows-latest]
 
@@ -41,7 +34,7 @@ jobs:
       #       postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }} \
       #       postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }}-scripts \
       #       postgresql-server-dev-${{ matrix.psql }} \
-      #       python-sphinx 
+      #       python-sphinx
 
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -63,7 +56,7 @@ jobs:
       # - name: Build
       #   run: |
       #     cd build
-      #     make 
+      #     make
       #     sudo make install
 
       # - name: Test
