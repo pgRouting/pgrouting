@@ -292,6 +292,20 @@ pdf_stylesheets = ['sphinx','kerning','a4']
 # A list of folders to search for stylesheets. Example:
 pdf_style_path = ['.', '_styles']
 
+# Linkcheck configuration, see https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-the-linkcheck-builder
+
+# cases to ignore during link checking
+linkcheck_ignore = [
+    # might not exist yet (we are generating it!)
+
+    # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
+    #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
+    "https://github.com/pgRouting/pgrouting/issues/*",    # limit only pgrouting
+]
+
+linkcheck_timeout = 20
+linkcheck_retries = 5
+linkcheck_anchors = False
 
 rst_epilog="""
 .. |ANY-INTEGER| replace:: :abbr:`ANY-INTEGER(SMALLINT, INTEGER, BIGINT)`
