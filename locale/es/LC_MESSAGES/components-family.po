@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
+# Vicky Vergara <vicky@georepublic.de>, 2019
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
-# Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:57+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,15 +69,17 @@ msgstr "Versiones anteriores de esta página"
 
 #: ../../build/doc/components-family.rst:36
 msgid ""
-"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en"
-"/components-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/components-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+"/components-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
 "/components-family.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-"/components-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
+"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
+"/components-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es"
+"/components-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
 "/components-family.html>`__"
 
-#: ../../build/doc/components-family.rst:40
+#: ../../build/doc/components-family.rst:41
 msgid ""
 "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
 "/components-family.html>`__"
@@ -85,15 +87,15 @@ msgstr ""
 "**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en"
 "/components-family.html>`__"
 
-#: ../../build/doc/components-family.rst:45
+#: ../../build/doc/components-family.rst:46
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/components-family.rst:50
+#: ../../build/doc/components-family.rst:51
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/components-family.rst:50
+#: ../../build/doc/components-family.rst:51
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_articulationPoints.rst:6
 #: ../../build/doc/pgr_biconnectedComponents.rst:6
@@ -102,12 +104,12 @@ msgstr "Parámetro"
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/components-family.rst:50
+#: ../../build/doc/components-family.rst:51
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr "Valores predeterminados"
 
-#: ../../build/doc/components-family.rst:50
+#: ../../build/doc/components-family.rst:51
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_articulationPoints.rst:6
 #: ../../build/doc/pgr_biconnectedComponents.rst:6
@@ -116,19 +118,19 @@ msgstr "Valores predeterminados"
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/components-family.rst:52
+#: ../../build/doc/components-family.rst:53
 msgid "**Edges SQL**"
 msgstr "**Edges SQL**"
 
-#: ../../build/doc/components-family.rst:52
+#: ../../build/doc/components-family.rst:53
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/components-family.rst:52
+#: ../../build/doc/components-family.rst:53
 msgid "Inner query as described below."
 msgstr "Consulta interna como se describe a continuación."
 
-#: ../../build/doc/components-family.rst:58
+#: ../../build/doc/components-family.rst:59
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -136,7 +138,7 @@ msgstr "Consulta interna"
 msgid "Edges SQL"
 msgstr "Edges SQL"
 
-#: ../../build/doc/components-family.rst:60
+#: ../../build/doc/components-family.rst:61
 msgid ""
 "an SQL query which should return a set of rows with the following columns:"
 msgstr ""
@@ -243,11 +245,11 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/components-family.rst:67
+#: ../../build/doc/components-family.rst:68
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/components-family.rst:70
+#: ../../build/doc/components-family.rst:71
 msgid "pgr_connectedComponents & pgr_strongComponents"
 msgstr "pgr_connectedComponents & pgr_strongComponents"
 
@@ -298,7 +300,7 @@ msgstr "**node**"
 msgid "Identifier of the vertex that belongs to **component**."
 msgstr "Identificador del vértice que pertenece a **componente**."
 
-#: ../../build/doc/components-family.rst:78
+#: ../../build/doc/components-family.rst:79
 msgid "pgr_biconnectedComponents"
 msgstr "pgr_biconnectedComponents"
 
@@ -319,7 +321,7 @@ msgstr ""
 msgid "**edge**"
 msgstr "**edge**"
 
-#: ../../build/doc/components-family.rst:85
+#: ../../build/doc/components-family.rst:86
 msgid "pgr_articulationPoints"
 msgstr "pgr_articulationPoints"
 
@@ -331,7 +333,7 @@ msgstr "Devuelve el conjunto de ``(node)``"
 msgid "Identifier of the vertex."
 msgstr "Identificador del vértice."
 
-#: ../../build/doc/components-family.rst:92
+#: ../../build/doc/components-family.rst:93
 msgid "pgr_bridges"
 msgstr "pgr_bridges"
 
@@ -343,30 +345,18 @@ msgstr "Devuelve el conjunto de ``(edge)``"
 msgid "Identifier of the edge that is a bridge."
 msgstr "Identificador del borde que es un puente."
 
-#: ../../build/doc/components-family.rst:100
+#: ../../build/doc/components-family.rst:101
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/components-family.rst:103
+#: ../../build/doc/components-family.rst:104
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/components-family.rst:104
+#: ../../build/doc/components-family.rst:105
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/components-family.rst:105
+#: ../../build/doc/components-family.rst:106
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "Inner query as described bellow."
-#~ msgstr "Consulta interna como se describe a continuación."
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
-#~ "/components-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
-#~ "/components-family.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-#~ "/components-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
-#~ "/components-family.html>`__"
