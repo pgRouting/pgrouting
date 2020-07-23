@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -58,15 +58,17 @@ msgstr "Versiones anteriores de esta página"
 
 #: ../../build/doc/bdDijkstra-family.rst:30
 msgid ""
-"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en"
-"/bdDijkstra-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/bdDijkstra-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+"/bdDijkstra-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
 "/bdDijkstra-family.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-"/bdDijkstra-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
+"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
+"/bdDijkstra-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es"
+"/bdDijkstra-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
 "/bdDijkstra-family.html>`__"
 
-#: ../../build/doc/bdDijkstra-family.rst:34
+#: ../../build/doc/bdDijkstra-family.rst:35
 msgid ""
 "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
 "/bdDijkstra-family.html>`__"
@@ -74,11 +76,11 @@ msgstr ""
 "**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en"
 "/bdDijkstra-family.html>`__"
 
-#: ../../build/doc/bdDijkstra-family.rst:39
+#: ../../build/doc/bdDijkstra-family.rst:40
 msgid "Synopsis"
 msgstr "Sinopsis"
 
-#: ../../build/doc/bdDijkstra-family.rst:41
+#: ../../build/doc/bdDijkstra-family.rst:42
 msgid ""
 "Based on Dijkstra's algorithm, the bidirectional search finds a shortest "
 "path a starting vertex (``start_vid``) to an ending vertex (``end_vid``). It"
@@ -93,48 +95,48 @@ msgstr ""
 " el medio. Esta implementación puede utilizarse con un gráfico dirigido y "
 "uno no dirigido."
 
-#: ../../build/doc/bdDijkstra-family.rst:48
+#: ../../build/doc/bdDijkstra-family.rst:49
 msgid "Characteristics"
 msgstr "Características"
 
-#: ../../build/doc/bdDijkstra-family.rst:51
+#: ../../build/doc/bdDijkstra-family.rst:52
 msgid "The main Characteristics are:"
 msgstr "Las características principales son:"
 
-#: ../../build/doc/bdDijkstra-family.rst:55
+#: ../../build/doc/bdDijkstra-family.rst:56
 msgid "Process is done only on edges with positive costs."
 msgstr "El proceso se realiza sólo en las aristas con costos positivos."
 
-#: ../../build/doc/bdDijkstra-family.rst:56
+#: ../../build/doc/bdDijkstra-family.rst:57
 msgid "Values are returned when there is a path."
 msgstr "Valores son regresados cuando hay un camino."
 
-#: ../../build/doc/bdDijkstra-family.rst:58
+#: ../../build/doc/bdDijkstra-family.rst:59
 msgid ""
 "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 "Cuando el vértice inicial y el vértice final son iguales, no hay camino."
 
-#: ../../build/doc/bdDijkstra-family.rst:60
+#: ../../build/doc/bdDijkstra-family.rst:61
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
 msgstr "El `agg_cost` de los valores no incluídos `(v, v)` es `0`"
 
-#: ../../build/doc/bdDijkstra-family.rst:62
+#: ../../build/doc/bdDijkstra-family.rst:63
 msgid ""
 "When the starting vertex and ending vertex are the different and there is no"
 " path:"
 msgstr ""
 "Cuando el vértice inicial y el vértice final son diferentes y no hay camino:"
 
-#: ../../build/doc/bdDijkstra-family.rst:64
+#: ../../build/doc/bdDijkstra-family.rst:65
 msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
 msgstr "El  'agg_cost' de los valores no incluídos '(u, v)' es :math: `\\infty`"
 
-#: ../../build/doc/bdDijkstra-family.rst:66
+#: ../../build/doc/bdDijkstra-family.rst:67
 msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
 msgstr "Tiempo de ejecución (peor de los casos): :math:`O((V \\log V + E))`"
 
-#: ../../build/doc/bdDijkstra-family.rst:67
+#: ../../build/doc/bdDijkstra-family.rst:68
 msgid ""
 "For large graphs where there is a path bewtween the starting vertex and "
 "ending vertex:"
@@ -142,31 +144,22 @@ msgstr ""
 "Para grandes gráficos donde hay un camino entre el vértice inicial y el "
 "vértice final:"
 
-#: ../../build/doc/bdDijkstra-family.rst:69
+#: ../../build/doc/bdDijkstra-family.rst:70
 msgid "It is expected to terminate faster than pgr_dijkstra"
 msgstr "Se espera que termine más rápido que pgr_dijkstra"
 
-#: ../../build/doc/bdDijkstra-family.rst:74
+#: ../../build/doc/bdDijkstra-family.rst:75
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/bdDijkstra-family.rst:77
+#: ../../build/doc/bdDijkstra-family.rst:78
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/bdDijkstra-family.rst:78
+#: ../../build/doc/bdDijkstra-family.rst:79
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/bdDijkstra-family.rst:79
+#: ../../build/doc/bdDijkstra-family.rst:80
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
-#~ "/bdDijkstra-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
-#~ "/bdDijkstra-family.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-#~ "/bdDijkstra-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en"
-#~ "/bdDijkstra-family.html>`__"
