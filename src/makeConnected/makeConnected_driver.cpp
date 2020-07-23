@@ -64,19 +64,6 @@ do_pgr_makeConnected(
         std::vector<pgr_makeConnected_t> results;
         std::string logstr;
 
-        // sorting the edges in an ascending order of their id, before creating the graph
-        std::sort(data_edges, data_edges + total_edges,
-          [](const pgr_edge_t &lhs, const pgr_edge_t &rhs) -> bool {
-              return lhs.target < rhs.target;
-          });
-        std::stable_sort(data_edges, data_edges + total_edges,
-            [](const pgr_edge_t &lhs, const pgr_edge_t &rhs) -> bool {
-                return lhs.source < rhs.source;
-            });
-        std::stable_sort(data_edges, data_edges + total_edges,
-            [](const pgr_edge_t &lhs, const pgr_edge_t &rhs) -> bool {
-                return lhs.id < rhs.id;
-            });
 
         graphType gType = UNDIRECTED;
         log << "Working with Undirected Graph\n";
