@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -86,15 +86,17 @@ msgstr "Versiones anteriores de esta página"
 
 #: ../../build/doc/cost-category.rst:34
 msgid ""
-"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en"
-"/cost-category.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/cost-"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/cost-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/cost-"
+"category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/cost-"
 "category.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-"/cost-category.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/cost-"
+"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
+"/cost-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es/cost-"
+"category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/cost-"
 "category.html>`__"
 
-#: ../../build/doc/cost-category.rst:38
+#: ../../build/doc/cost-category.rst:39
 msgid ""
 "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/cost-"
 "category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/cost-"
@@ -104,27 +106,27 @@ msgstr ""
 "category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/cost-"
 "category.html>`__"
 
-#: ../../build/doc/cost-category.rst:44
+#: ../../build/doc/cost-category.rst:45
 msgid "General Information"
 msgstr "Información general"
 
-#: ../../build/doc/cost-category.rst:48
+#: ../../build/doc/cost-category.rst:49
 msgid "Characteristics"
 msgstr "Características"
 
-#: ../../build/doc/cost-category.rst:50
+#: ../../build/doc/cost-category.rst:51
 msgid "The main Characteristics are:"
 msgstr "Las características principales son:"
 
-#: ../../build/doc/cost-category.rst:52
+#: ../../build/doc/cost-category.rst:53
 msgid "Each function works as part of the family it belongs to."
 msgstr "Cada función funciona como parte de la familia a la que pertenece."
 
-#: ../../build/doc/cost-category.rst:53
+#: ../../build/doc/cost-category.rst:54
 msgid "It does not return a path."
 msgstr "No devuelve una ruta."
 
-#: ../../build/doc/cost-category.rst:54
+#: ../../build/doc/cost-category.rst:55
 msgid ""
 "Returns the sum of the costs of the resulting path(s) for pair combination "
 "of nodes in the graph."
@@ -132,15 +134,15 @@ msgstr ""
 "Devuelve la suma de los costos de las rutas resultantes para la combinación "
 "de pares de nodos en el grafo.."
 
-#: ../../build/doc/cost-category.rst:55
+#: ../../build/doc/cost-category.rst:56
 msgid "Process is done only on edges with positive costs."
 msgstr "El proceso se realiza sólo en las aristas con costos positivos."
 
-#: ../../build/doc/cost-category.rst:56
+#: ../../build/doc/cost-category.rst:57
 msgid "Values are returned when there is a path."
 msgstr "Valores son regresados cuando hay un camino."
 
-#: ../../build/doc/cost-category.rst:58
+#: ../../build/doc/cost-category.rst:59
 msgid ""
 "The returned values are in the form of a set of `(start_vid, end_vid, "
 "agg_cost)`."
@@ -148,17 +150,17 @@ msgstr ""
 "Los valores devueltos tienen la forma de un conjunto de `(start_vid, "
 "end_vid, agg_cost)`."
 
-#: ../../build/doc/cost-category.rst:60
+#: ../../build/doc/cost-category.rst:61
 msgid ""
 "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 "Cuando el vértice inicial y el vértice final son iguales, no hay camino."
 
-#: ../../build/doc/cost-category.rst:62
+#: ../../build/doc/cost-category.rst:63
 msgid "The `agg_cost` int the non included values `(v, v)` is `0`."
 msgstr "El `agg_cost` en los valores no incluidos de `(v, v)` es `0`."
 
-#: ../../build/doc/cost-category.rst:64
+#: ../../build/doc/cost-category.rst:65
 msgid ""
 "When the starting vertex and ending vertex are the different and there is no"
 " path."
@@ -166,12 +168,12 @@ msgstr ""
 "Cuando el vértice inicial y el vértice final son diferentes y no hay ninguna"
 " ruta."
 
-#: ../../build/doc/cost-category.rst:66
+#: ../../build/doc/cost-category.rst:67
 msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`."
 msgstr ""
 "El '`agg_cost`' en los valores no incluidos de `(u, v)` es :math:`\\infty`."
 
-#: ../../build/doc/cost-category.rst:68
+#: ../../build/doc/cost-category.rst:69
 msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
 "index would be the pair: `(start_vid, end_vid)`."
@@ -179,54 +181,45 @@ msgstr ""
 "Sea el caso, los valores devueltos se almacenan en una tabla, por lo que el "
 "índice único sería el par: '(start_vid, end_vid)'."
 
-#: ../../build/doc/cost-category.rst:70
+#: ../../build/doc/cost-category.rst:71
 msgid ""
 "Depending on the function and its parameters, the results can be symmetric."
 msgstr ""
 "Dependiendo de la función y sus parámetros, los resultados pueden ser "
 "simétricos."
 
-#: ../../build/doc/cost-category.rst:72
+#: ../../build/doc/cost-category.rst:73
 msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
 msgstr "El  `agg_cost` de `(u, v)`  es el mismo que para `(v, u)`."
 
-#: ../../build/doc/cost-category.rst:74
+#: ../../build/doc/cost-category.rst:75
 msgid "Any duplicated value in the `start_vids` or in `end_vids` are ignored."
 msgstr "Se omite cualquier valor duplicado en  `start_vids` o `end_vids`."
 
-#: ../../build/doc/cost-category.rst:76
+#: ../../build/doc/cost-category.rst:77
 msgid "The returned values are ordered:"
 msgstr "Los valores regresados se ordenan:"
 
-#: ../../build/doc/cost-category.rst:78
+#: ../../build/doc/cost-category.rst:79
 msgid "`start_vid` ascending"
 msgstr "`start_vid` ascendente"
 
-#: ../../build/doc/cost-category.rst:79
+#: ../../build/doc/cost-category.rst:80
 msgid "`end_vid` ascending"
 msgstr "`end_vid` ascendente"
 
-#: ../../build/doc/cost-category.rst:84
+#: ../../build/doc/cost-category.rst:85
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/cost-category.rst:87
+#: ../../build/doc/cost-category.rst:88
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/cost-category.rst:88
+#: ../../build/doc/cost-category.rst:89
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/cost-category.rst:89
+#: ../../build/doc/cost-category.rst:90
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
-#~ "/cost-category.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/cost-"
-#~ "category.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-#~ "/cost-category.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/cost-"
-#~ "category.html>`__"
