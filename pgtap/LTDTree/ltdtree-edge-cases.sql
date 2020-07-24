@@ -1,5 +1,5 @@
 \i setup.sql
-SELECT plan(8);
+SELECT plan(6);
 
 -- 0 edge 0 vertex tests
 PREPARE q1 AS
@@ -41,6 +41,7 @@ SELECT is_empty('lengauer_tarjan_dominator_tree_test3', 'lengauer_tarjan_dominat
 
 
 --root not present tests
+/*
 PREPARE lengauer_tarjan_dominator_tree_test4 AS
 SELECT *
 FROM pgr_lengauer_tarjan_dominator_tree(
@@ -60,7 +61,7 @@ WHERE id > 2',1
 
 SELECT is_empty('lengauer_tarjan_dominator_tree_test4', 'lengauer_tarjan_dominator_tree_test4: Root not present in the Graph');
 SELECT is_empty('lengauer_tarjan_dominator_tree_test5', 'lengauer_tarjan_dominator_tree_test5: Root not present in the Graph');
-
+*/
 --vertex not present in the graph tests
 
 
@@ -75,7 +76,7 @@ FROM pgr_lengauer_tarjan_dominator_tree(
 FROM edge_table
 WHERE id > 0',1
 );
-SELECT isnt_empty('q2', 'q1: Graph with 0 edge and 0 vertex');
+SELECT isnt_empty('q2', 'q2: Graph with 0 edge and 0 vertex');
 
 -- Negative root tests
 PREPARE q3 AS
