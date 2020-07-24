@@ -30,3 +30,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- _pgr_bipartite
 ---------------
 
+CREATE OR REPLACE FUNCTION _pgr_bipartite(
+    edges_sql TEXT,
+
+    OUT node BIGINT,
+    OUT color BIGINT)
+
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C IMMUTABLE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _bipartite(TEXT)
+IS 'pgRouting internal function';
