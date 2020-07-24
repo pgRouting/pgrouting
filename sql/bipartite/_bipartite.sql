@@ -42,5 +42,5 @@ LANGUAGE C IMMUTABLE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _bipartite(TEXT)
+COMMENT ON FUNCTION _pgr_bipartite(TEXT)
 IS 'pgRouting internal function';
