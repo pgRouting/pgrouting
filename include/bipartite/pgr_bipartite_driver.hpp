@@ -37,13 +37,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_messages.h"
 #include <iostream>
 #include <algorithm>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/dominator_tree.hpp>
-#include <boost/property_map/property_map.hpp>
 #include <boost/property_map/vector_property_map.hpp>
 #include <boost/type_traits.hpp>
 
 
+namespace pgrouting {
+    namespace functions {
+
+        template<class G>
+        class Pgr_Bipartite : public pgrouting::Pgr_messages {
+            std::vector<pgr_bipartite_rt> pgr_bipartite(
+                G &graph ){
+                    log<<"Started readiing"<<endl;
+
+
+                }
+
+        
+        };
+    }
+}
 
 
 #endif  // INCLUDE_PGR_BIPARTITE_DRIVER_HPP
