@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/boyer_myrvold_planar_test.hpp>
 #include <boost/graph/is_kuratowski_subgraph.hpp>
 
+#include "cpp_common/pgr_messages.h"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "c_types/pgr_boyer_t.h"
 //******************************************
@@ -43,7 +44,7 @@ namespace pgrouting {
 namespace functions {
 
 template < class G >
-class Pgr_boyerMyrvold {
+class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
