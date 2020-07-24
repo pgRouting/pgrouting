@@ -41,15 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 
 
-template < class G >
-std::vector<pgr_boyer_t>
-pgr_boyerMyrvold(
-        G &graph) {
-    pgrouting::functions::Pgr_boyerMyrvold< G > fn_boyerMyrvold;
-    auto results = fn_boyerMyrvold.boyerMyrvold(
-            graph);
-    return results;
-}
 
 void
 do_pgr_boyerMyrvold(
@@ -79,7 +70,10 @@ do_pgr_boyerMyrvold(
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        results = pgr_boyerMyrvold(undigraph);
+        pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_boyerMyrvold;
+        results=fn_boyerMyrvold.boyerMyrvold(undigraph);
+        logstr += fn_boyerMyrvold.get_log();
+        log << logstr;
 
 
         auto count = results.size();
