@@ -75,14 +75,16 @@ do_pgr_bipartite(
 /***********************Working with graph**************************/
 
         log << "Working with undirected Graph\n";
-        graphType gType = UNDIRECTED;
-        pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges); //Creating graph using data_edges
-        std::vector<pgr_ltdtree_rt> results;
-        pgrouting::functions::Pgr_LTDTree<pgrouting::DirectedGraph> fn_LTDTree;
-        results=fn_LTDTree.pgr_ltdtree(digraph,root_vertex);
+        graphType gType = directed ? DIRECTED : UNDIRECTED;
+        /****TODO***/
+        //Check if directed then return 0 rows
+        pgrouting::UndirectedGraph undigraph(gType);
+        undigraph.insert_edges(data_edges, total_edges);//Creating graph using data_edges
+        std::vector<pgr_bipartite_rt> results;
+        pgrouting::functions::Pgr_Bipartite <pgrouting::UndirectedGraph> fn_Bipartite;
+        results=fn_Bipartite.pgr_bipartite(undigraph);
 
-        logstr += fn_LTDTree.get_log();
+        logstr += fn_Bipartite.get_log();
         log << logstr;
 
         auto count = results.size();
