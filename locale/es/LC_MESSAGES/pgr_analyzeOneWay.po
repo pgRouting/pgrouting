@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -10,9 +10,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:55+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -61,15 +61,17 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:25
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_analyzeOneWay.html>`__) `2.6 "
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_analyzeOneWay.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_analyzeOneWay.html>`__ `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_analyzeOneWay.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_analyzeOneWay.html>`__) `2.6 "
+"****Versiones soportadas:** actual​(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_analyzeOneWay.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_analyzeOneWay.html>`__ `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_analyzeOneWay.html>`__"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:29
+#: ../../build/doc/pgr_analyzeOneWay.rst:30
 msgid ""
 "**Unsupported versions:** `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_analyzeOneWay.html>`__ `2.4 "
@@ -93,11 +95,11 @@ msgstr ""
 " `2.0 "
 "<https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_oneway.html>`__"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:38
+#: ../../build/doc/pgr_analyzeOneWay.rst:39
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:40
+#: ../../build/doc/pgr_analyzeOneWay.rst:41
 msgid ""
 "The analyses of one way segments is pretty simple but can be a powerful "
 "tools to identifying some the potential problems created by setting the "
@@ -120,7 +122,7 @@ msgstr ""
 "Asimismo, si tuvieras un nodo `sink` tienes un número infinito de vehículos "
 "que se van  acumulando en este nodo porque no pueden salir de el."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:42
+#: ../../build/doc/pgr_analyzeOneWay.rst:43
 msgid ""
 "So why do we care if the are not feasible? Well if the direction of an edge "
 "was reversed by mistake we could generate exactly these conditions. Think "
@@ -136,7 +138,7 @@ msgstr ""
 "una glorieta. El resultado sería potencialmente un nodo `source` y/o a "
 "`sink` node."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:44
+#: ../../build/doc/pgr_analyzeOneWay.rst:45
 msgid ""
 "So by counting the number of edges entering and exiting each node we can "
 "identify both `source` and `sink` nodes so that you can look at those areas "
@@ -148,11 +150,11 @@ msgstr ""
 "áreas de su red para hacer reparaciones o informar del problema a su "
 "proveedor de datos."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:47
+#: ../../build/doc/pgr_analyzeOneWay.rst:48
 msgid "Prerequisites"
 msgstr "Pre-requisitos"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:48
+#: ../../build/doc/pgr_analyzeOneWay.rst:49
 msgid ""
 "The  edge table to be analyzed must contain a source column and a target "
 "column filled with id's of the vertices of the segments and the "
@@ -164,7 +166,7 @@ msgstr ""
 "segmentos y los vértices correspondientes de la tabla "
 "<edge_table>_vertices_pgr que almacena la información de los vértices."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:50
+#: ../../build/doc/pgr_analyzeOneWay.rst:51
 msgid ""
 "Use :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` to create the "
 "vertices table."
@@ -172,7 +174,7 @@ msgstr ""
 "Use :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` para crear la "
 "tabla de vértices."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:51
+#: ../../build/doc/pgr_analyzeOneWay.rst:52
 msgid ""
 "Use :doc:`pgr_createTopology <pgr_createTopology>` to create the topology "
 "and the vertices table."
@@ -180,11 +182,11 @@ msgstr ""
 "Use :doc:`pgr_createTopology <pgr_createTopology>` para crear la topología y"
 " los vértices."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:54
+#: ../../build/doc/pgr_analyzeOneWay.rst:55
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:65
+#: ../../build/doc/pgr_analyzeOneWay.rst:66
 msgid "Parameters"
 msgstr "Parámetros"
 
@@ -192,7 +194,7 @@ msgstr "Parámetros"
 msgid "edge_table"
 msgstr "edge_table"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:67
+#: ../../build/doc/pgr_analyzeOneWay.rst:68
 msgid "``text`` Network table name. (may contain the schema name as well)"
 msgstr "``text`` La tabla de la red. (puede contener el nombre del esquema)"
 
@@ -200,7 +202,7 @@ msgstr "``text`` La tabla de la red. (puede contener el nombre del esquema)"
 msgid "s_in_rules"
 msgstr "s_in_rules"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:68
+#: ../../build/doc/pgr_analyzeOneWay.rst:69
 msgid "``text[]`` source node **in** rules"
 msgstr "``text[]`` reglas de **entrada** del nodo inicial"
 
@@ -208,7 +210,7 @@ msgstr "``text[]`` reglas de **entrada** del nodo inicial"
 msgid "s_out_rules"
 msgstr "s_out_rules"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:69
+#: ../../build/doc/pgr_analyzeOneWay.rst:70
 msgid "``text[]`` source node **out** rules"
 msgstr "``text[]`` reglas de **salida** del nodo inicial"
 
@@ -216,7 +218,7 @@ msgstr "``text[]`` reglas de **salida** del nodo inicial"
 msgid "t_in_rules"
 msgstr "t_in_rules"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:70
+#: ../../build/doc/pgr_analyzeOneWay.rst:71
 msgid "``text[]`` target node **in** rules"
 msgstr "``text[]`` reglas de **entrada** del nodo final"
 
@@ -224,7 +226,7 @@ msgstr "``text[]`` reglas de **entrada** del nodo final"
 msgid "t_out_rules"
 msgstr "t_out_rules"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:71
+#: ../../build/doc/pgr_analyzeOneWay.rst:72
 msgid "``text[]`` target node **out** rules"
 msgstr "``text[]`` reglas de **salida** del nodo final"
 
@@ -232,7 +234,7 @@ msgstr "``text[]`` reglas de **salida** del nodo final"
 msgid "oneway"
 msgstr "oneway"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:72
+#: ../../build/doc/pgr_analyzeOneWay.rst:73
 msgid ""
 "``text`` oneway column name name of the network table. Default value is "
 "``oneway``."
@@ -244,7 +246,7 @@ msgstr ""
 msgid "source"
 msgstr "source"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:73
+#: ../../build/doc/pgr_analyzeOneWay.rst:74
 msgid ""
 "``text`` Source column name of the network table. Default value is "
 "``source``."
@@ -256,7 +258,7 @@ msgstr ""
 msgid "target"
 msgstr "target"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:74
+#: ../../build/doc/pgr_analyzeOneWay.rst:75
 msgid ""
 "``text``  Target column name of the network table.  Default value is "
 "``target``."
@@ -268,7 +270,7 @@ msgstr ""
 msgid "two_way_if_null"
 msgstr "two_way_if_null"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:75
+#: ../../build/doc/pgr_analyzeOneWay.rst:76
 msgid ""
 "``boolean`` flag to treat oneway NULL values as bi-directional.  Default "
 "value is ``true``."
@@ -276,7 +278,7 @@ msgstr ""
 "``boolean``  bandera para tratar los valores NULL de oneway como "
 "bidireccional.  Valor predeterminado es``true``."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:77
+#: ../../build/doc/pgr_analyzeOneWay.rst:78
 msgid ""
 "It is strongly recommended to use the named notation. See "
 ":doc:`pgr_createVerticesTable <pgr_createVerticesTable>` or "
@@ -286,34 +288,34 @@ msgstr ""
 " ejemplos:  :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` o  "
 ":doc:`pgr_createTopology <pgr_createTopology>` "
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:79
+#: ../../build/doc/pgr_analyzeOneWay.rst:80
 msgid "The function returns:"
 msgstr "La función devuelve:"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:81
+#: ../../build/doc/pgr_analyzeOneWay.rst:82
 msgid "``OK`` after the analysis has finished."
 msgstr "``OK`` Cuando el análisis ha terminado."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:83
+#: ../../build/doc/pgr_analyzeOneWay.rst:84
 msgid "Uses the vertices table: <edge_table>_vertices_pgr."
 msgstr "Utiliza la tabla de los vértices: <edge_table>_vertices_pgr."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:84
+#: ../../build/doc/pgr_analyzeOneWay.rst:85
 msgid ""
 "Fills completely the ``ein`` and ``eout`` columns of the vertices table."
 msgstr ""
 "Se llena completamente las columnas de la tabla de vértices ``ein`` y "
 "``eout``."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:86
+#: ../../build/doc/pgr_analyzeOneWay.rst:87
 msgid "``FAIL`` when the analysis was not completed due to an error."
 msgstr "``FAIL`` cuando el análisis no se completó debido a un error."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:88
+#: ../../build/doc/pgr_analyzeOneWay.rst:89
 msgid "The vertices table is not found."
 msgstr "No se encuentra en la tabla de los vértices."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:89
+#: ../../build/doc/pgr_analyzeOneWay.rst:90
 msgid ""
 "A required column of the Network table is not found or is not of the "
 "appropriate type."
@@ -321,11 +323,11 @@ msgstr ""
 "Una columna de la tabla de red requerida no se encuentra o no es del tipo "
 "apropiado."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:90
+#: ../../build/doc/pgr_analyzeOneWay.rst:91
 msgid "The names of source , target or oneway are the same."
 msgstr "Los nombres de origen, destino o oneway son las mismos."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:92
+#: ../../build/doc/pgr_analyzeOneWay.rst:93
 msgid ""
 "The rules are defined as an array of text strings that if match the "
 "``oneway`` value would be counted as ``true`` for the source or target "
@@ -335,11 +337,11 @@ msgstr ""
 " de ``oneway`` se contara como ``true`` para las condiciones de el origen o "
 "destino **in** o **out** ."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:95
+#: ../../build/doc/pgr_analyzeOneWay.rst:96
 msgid "The Vertices Table"
 msgstr "La tabla de vértices"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:96
+#: ../../build/doc/pgr_analyzeOneWay.rst:97
 msgid ""
 "The vertices table can be created with :doc:`pgr_createVerticesTable "
 "<pgr_createVerticesTable>` or :doc:`pgr_createTopology <pgr_createTopology>`"
@@ -347,7 +349,7 @@ msgstr ""
 "Los vértices pueden ser creados con :doc:`pgr_createVerticesTable "
 "<pgr_createVerticesTable>` o :doc:`pgr_createTopology <pgr_createTopology>`"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:98
+#: ../../build/doc/pgr_analyzeOneWay.rst:99
 msgid "The structure of the vertices table is:"
 msgstr "La estructura de la tabla de los vértices es:"
 
@@ -355,7 +357,7 @@ msgstr "La estructura de la tabla de los vértices es:"
 msgid "id"
 msgstr "id"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:100
+#: ../../build/doc/pgr_analyzeOneWay.rst:101
 msgid "``bigint`` Identifier of the vertex."
 msgstr "``bigint`` identificador del vértice."
 
@@ -363,7 +365,7 @@ msgstr "``bigint`` identificador del vértice."
 msgid "cnt"
 msgstr "cnt"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:101
+#: ../../build/doc/pgr_analyzeOneWay.rst:102
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex."
 " See :doc:`pgr_analyzeGgraph <pgr_analyzeGraph>`."
@@ -375,7 +377,7 @@ msgstr ""
 msgid "chk"
 msgstr "chk"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:102
+#: ../../build/doc/pgr_analyzeOneWay.rst:103
 msgid ""
 "``integer``  Indicator that the vertex might have a problem. See "
 ":doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
@@ -387,7 +389,7 @@ msgstr ""
 msgid "ein"
 msgstr "ein"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:103
+#: ../../build/doc/pgr_analyzeOneWay.rst:104
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
 "as incoming."
@@ -399,7 +401,7 @@ msgstr ""
 msgid "eout"
 msgstr "eout"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:104
+#: ../../build/doc/pgr_analyzeOneWay.rst:105
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
 "as outgoing."
@@ -411,23 +413,23 @@ msgstr ""
 msgid "the_geom"
 msgstr "the_geom"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:105
+#: ../../build/doc/pgr_analyzeOneWay.rst:106
 msgid "``geometry`` Point geometry of the vertex."
 msgstr "``geometry`` Valor de la geometría POINT del vértice."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:108
+#: ../../build/doc/pgr_analyzeOneWay.rst:109
 msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:114
+#: ../../build/doc/pgr_analyzeOneWay.rst:115
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:117
+#: ../../build/doc/pgr_analyzeOneWay.rst:118
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:119
+#: ../../build/doc/pgr_analyzeOneWay.rst:120
 msgid ""
 ":doc:`topology-functions`  for an overview of a topology for routing "
 "algorithms."
@@ -435,19 +437,19 @@ msgstr ""
 ":doc:`topology-functions` para obtener una visión general de una topología "
 "para algoritmos de ruteo."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:120
+#: ../../build/doc/pgr_analyzeOneWay.rst:121
 msgid ":ref:`analytics` for an overview of the analysis of a graph."
 msgstr ""
 ":ref:`analytics` para tener una visión general del análisis de un gráfico."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:121
+#: ../../build/doc/pgr_analyzeOneWay.rst:122
 msgid ""
 ":doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table."
 msgstr ""
 ":doc:`pgr_analyzeGraph` para analizar los bordes y vértices de la tabla de "
 "bordes."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:122
+#: ../../build/doc/pgr_analyzeOneWay.rst:123
 msgid ""
 ":doc:`pgr_createVerticesTable` to reconstruct the vertices table based on "
 "the source and target information."
@@ -455,23 +457,14 @@ msgstr ""
 ":doc:`pgr_createVerticesTable` para reconstruir la tabla de vértices en "
 "función de la información de origen y de destino."
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:125
+#: ../../build/doc/pgr_analyzeOneWay.rst:126
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:126
+#: ../../build/doc/pgr_analyzeOneWay.rst:127
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:127
+#: ../../build/doc/pgr_analyzeOneWay.rst:128
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_analyzeOneWay.html>`__) `2.6 "
-#~ "<https://docs.pgrouting.org/2.6/en/pgr_analyzeOneWay.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_analyzeOneWay.html>`__) `2.6 "
-#~ "<https://docs.pgrouting.org/2.6/en/pgr_analyzeOneWay.html>`__"
