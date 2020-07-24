@@ -68,12 +68,12 @@ namespace pgrouting {
                log <<"numOfVertices "<<numOfVertices;
                
                    // Lengauer-Tarjan dominator tree algorithm
-                   auto v_root(graph.get_V(root));
-                  vector<Vertex> domTreePredVector =  vector<Vertex>(num_vertices(graph.graph));
+                   //auto v_root(graph.get_V(root));
+                  vector<Vertex> domTreePredVector =  vector<Vertex>(num_vertices(graph.graph),-1);
                   auto domTreePredMap =
                            make_iterator_property_map(domTreePredVector.begin(), boost::get(boost::vertex_index, graph.graph));
                    
-                   lengauer_tarjan_dominator_tree(graph.graph, v_root, domTreePredMap);
+                   lengauer_tarjan_dominator_tree(graph.graph, graph.get_V(root), domTreePredMap);
 
 
 
@@ -84,7 +84,17 @@ namespace pgrouting {
          // iterate through every vertex in the graph
          for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
              int64_t vid = graph[*v].id;
-             int64_t idom = domTreePredVector[*v];
+              int64_t idom;
+             if(domTreePredVector[*v]!=-1)
+             {
+                 idom = domTreePredVector[*v]+1;
+             }
+             else
+             {
+                 idom = 0;
+             }
+             
+             
             // log<<"\n"<<node<<" "<<color<<" ";
              results.push_back(
                  {
