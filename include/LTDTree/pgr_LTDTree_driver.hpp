@@ -59,11 +59,6 @@ namespace pgrouting {
             std::vector<pgr_ltdtree_rt> results;
             
 
-
-/************************************* To check validity of root vertex****************************************/
-           
-
-/******************** Method to calculate dominator tree and returns result vector ***************************/
             std::vector <pgr_ltdtree_rt> pgr_ltdtree(
                     G &graph,
                     int64_t root
