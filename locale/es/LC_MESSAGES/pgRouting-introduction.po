@@ -2,11 +2,11 @@
 # Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# 
+#
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
 # MarPetra <mvergaratrejo@gmail.com>, 2020
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -40,12 +40,12 @@ msgid ""
 "user community."
 msgstr ""
 "pgRouting es una extensión de `PostGIS <https://postgis.net>`_ y de la base "
-"de datos geoespacial de `PostgreSQL <http://postgresql.org>`_ , agrega ruteo"
+"de datos geoespacial de `PostgreSQL <https://www.postgresql.org>`_ , agrega ruteo"
 " y otras funcionalidades de análisis de red. Un ancestro de pgRouting – "
 "pgDijkstra, escrito por Sylvain Pasche desde `Camptocamp "
 "<http://camptocamp.com>`_ más tarde fue ampliado por `Orkney  "
 "<http://www.orkney.co.jp>`_ y renombrado como pgRouting. Ahora el proyecto "
-"es soportado y mantenido por `Georepublic <http://georepublic.info>`_, "
+"es soportado y mantenido por `Georepublic <https://georepublic.info>`_, "
 "`Paragon Corporation <https://www.paragoncorporation.com/>`__ y una amplia "
 "comunidad de usuarios."
 

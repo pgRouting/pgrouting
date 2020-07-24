@@ -2,11 +2,11 @@
 # Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# 
+#
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
 # MarPetra <mvergaratrejo@gmail.com>, 2020
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -137,4 +137,4 @@ msgstr ":ref:`genindex`"
 
 #: ../../build/doc/drivingDistance-category.rst:59
 msgid ":ref:`search`"
-msgstr ":ref:`búsqueda`"
+msgstr ":ref:`búsqueda <search>`"
