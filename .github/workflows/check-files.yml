@@ -30,7 +30,11 @@ jobs:
           RELEASE=(${tempvar//[\(\)]/})
           for value in "${RELEASE[@]}"; do
             if [ "$value" == "${RELEASE[0]}" ]; then continue; fi
-            diff "sql/sigs/pgrouting--${value}.sig" "sql/sigs/pgrouting--${RELEASE[0]}.sig" | wc -l | grep 4
+            if [ $(diff "sql/sigs/pgrouting--${value}.sig" "sql/sigs/pgrouting--${RELEASE[0]}.sig" | wc -l) != "4" ] ;
+            then
+              echo "sql/sigs/pgrouting--${value}.sig sql/sigs/pgrouting--${RELEASE[0]}.sig are different";
+              exit 1;
+            fi
           done
 
       - name: News file up to date
