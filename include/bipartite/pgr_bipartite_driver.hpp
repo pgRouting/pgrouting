@@ -43,12 +43,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
     namespace functions {
-
         template<class G>
         class Pgr_Bipartite : public pgrouting::Pgr_messages {
+            public:
             std::vector<pgr_bipartite_rt> pgr_bipartite(
                 G &graph ){
-                    log<<"Started readiing"<<endl;
+                    log<<"Started reading"<<std::endl;
+                    std::vector<pgr_bipartite_rt> results(graph.num_vertices());
+                    return results;
+
+                    /***Todo 
+                     * we might need to define sequance in pgr_.sql file
+                     * 
+
+
 
 
                 }
