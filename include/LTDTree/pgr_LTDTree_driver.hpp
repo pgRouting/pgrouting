@@ -81,26 +81,6 @@ namespace pgrouting {
                    lengauer_tarjan_dominator_tree(graph.graph, v_root, domTreePredMap);
 
 
-/*****************************************Making result vector*************************************/
-                  /* pgr_ltdtree_rt temp;
-                   for (boost::tie(uItr, uEnd) = vertices(g); uItr != uEnd; ++uItr)
-                   {
-                       if (get(domTreePredMap, *uItr) != graph_traits<G>::null_vertex())
-                       {
-                           temp.vid=(get(indexMap, *uItr)+min_vertex);
-                           temp.idom=get(indexMap, get(domTreePredMap, *uItr))+min_vertex;
-                           results.push_back(temp);
-                       }
-                       else
-                       {
-
-                           temp.vid=(get(indexMap, *uItr)+min_vertex);
-                           temp.idom=0;
-                           results.push_back(temp);
-                       }
-
-                   }
-                   */
 
                 return results;
             }
