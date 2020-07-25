@@ -52,21 +52,39 @@ namespace pgrouting {
             typedef typename G::V_i V_i;
             void print_Bipartite(std::vector<pgr_bipartite_rt> &results, G &graph)
             {
-                typedef std::vector <boost::default_color_type> partition_t;
+                std::vector <boost::default_color_type> partition (graph.num_vertices());
     
-                partition_t partition;
+                 
                 auto partition_map = make_iterator_property_map(partition.begin (), boost::get (boost::vertex_index, graph.graph));
+                
+                
+                try {
+             // calling the boost function
                 is_bipartite (graph.graph, boost::get (boost::vertex_index, graph.graph), partition_map);
+                     } catch (boost::exception const& ex) {
+                          (void)ex;
+                             throw;
+                     } catch (std::exception &e) {
+                         (void)e;
+                         throw;
+                      } catch (...) {
+                          throw;
+                      }
+              //  
                 
                 V_i vertex_iter, vertex_end;
-/*
-                for (boost::tie (vertex_iter, vertex_end) = vertices (graph.graph); vertex_iter != vertex_end; ++vertex_iter)
-                {
-                    log << "Vertex " << *vertex_iter << " has color " << (boost::get (partition_map, *vertex_iter) == boost::color_traits <
-                    boost::default_color_type>::white () ? "white" : "black") << std::endl;
+                
+            V_i v, vend;
+
+         // iterate through every vertex in the graph
+                for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
+
+                     int64_t vid = graph[*v].id;
+                     auto color =(boost::get (partition_map, *v) == boost::color_traits <boost::default_color_type>::white () ? "white" : "black");
+                     log<<vid<<" "<<color<<"\n";
+
                 }
-                */
-               return
+               
             }
 
 
