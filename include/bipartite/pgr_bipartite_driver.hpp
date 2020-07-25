@@ -37,8 +37,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_messages.h"
 #include <iostream>
 #include <algorithm>
+#include <boost/property_map/property_map.hpp>
 #include <boost/property_map/vector_property_map.hpp>
 #include <boost/type_traits.hpp>
+#include <boost/graph/bipartite.hpp>
 
 
 namespace pgrouting {
@@ -46,15 +48,28 @@ namespace pgrouting {
         template<class G>
         class Pgr_Bipartite : public pgrouting::Pgr_messages {
             public:
+
+            typedef typename G::V_i V_i;
+           
+
+
+
             std::vector<pgr_bipartite_rt> pgr_bipartite(
                 G &graph ){
                     log<<"Started reading"<<std::endl;
                     std::vector<pgr_bipartite_rt> results(graph.num_vertices());
-                    return results;
+                    
 
                     /***Todo 
                      * we might need to define sequance in pgr_.sql file
-                     * 
+                     * */
+                    bool bipartite = is_bipartite (graph.graph);
+                    if(bipartite)
+                    {
+                        //print_Bipartite(results,graph);
+                    }
+                    return results;
+                     
 
 
 
