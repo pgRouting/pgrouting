@@ -104,7 +104,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#inner-query">Consulta interna</a></li>
+<li><a class="reference internal" href="#inner-query">Consulta interna</a><ul>
+<li><a class="reference internal" href="#edges-query">Consulta de aristas</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
@@ -170,10 +173,7 @@
 </ul>
 <p class="rubric">Soporte</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
-current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html">3.0</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html">2.6</a></li>
+<li><strong>Versiones soportadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_bdDijkstraCost.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_bdDijkstraCost.html">3.0</a> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html">2.6</a></li>
 <li><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html">2.5</a></li>
 </ul>
 <div class="section" id="description">
@@ -350,10 +350,10 @@ OR EMPTY SET
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
+<col width="21%" />
 <col width="17%" />
-<col width="14%" />
-<col width="6%" />
-<col width="63%" />
+<col width="8%" />
+<col width="54%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parámetro</th>
@@ -363,10 +363,10 @@ OR EMPTY SET
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
+<tr class="row-even"><td><strong>Edges SQL</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
 <td>&#160;</td>
-<td>Consulta SQL interna como se describe a continuación.</td>
+<td><a class="reference internal" href="#edges-query">Edges query</a> como se describe a continuación</td>
 </tr>
 <tr class="row-odd"><td><strong>start_vid</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
@@ -388,12 +388,7 @@ OR EMPTY SET
 <td>&#160;</td>
 <td>Arreglo de identificadores de vértices finales.</td>
 </tr>
-<tr class="row-odd"><td><strong>combinations_sql</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>Inner SQL query producing pairs of starting and ending vertices as described below.</td>
-</tr>
-<tr class="row-even"><td><strong>dirigido</strong></td>
+<tr class="row-odd"><td><strong>dirigido</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
 <td><ul class="first last simple">
@@ -407,6 +402,8 @@ OR EMPTY SET
 </div>
 <div class="section" id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="edges-query">
+<h3>Consulta de aristas<a class="headerlink" href="#edges-query" title="Enlazar permanentemente con este título">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -469,6 +466,7 @@ OR EMPTY SET
 </tbody>
 </table>
 </div>
+</div>
 <div class="section" id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Devuelve SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
@@ -529,7 +527,7 @@ OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Actualizado por última vez en jul. 17, 2020.<br/>
+      Actualizado por última vez en jul. 24, 2020.<br/>
       Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

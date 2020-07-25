@@ -103,7 +103,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#edges-query">Edges query</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#return-columns">Return Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
@@ -420,10 +423,10 @@ OR EMPTY SET
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
+<col width="21%" />
 <col width="17%" />
-<col width="14%" />
-<col width="6%" />
-<col width="63%" />
+<col width="8%" />
+<col width="54%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -433,10 +436,10 @@ OR EMPTY SET
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
+<tr class="row-even"><td><strong>Edges SQL</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
 <td>&#160;</td>
-<td>Inner SQL query as described below.</td>
+<td><a class="reference internal" href="#edges-query">Edges query</a> as described below</td>
 </tr>
 <tr class="row-odd"><td><strong>start_vid</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
@@ -458,12 +461,7 @@ OR EMPTY SET
 <td>&#160;</td>
 <td>Array of identifiers of ending vertices.</td>
 </tr>
-<tr class="row-odd"><td><strong>combinations_sql</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>Inner SQL query producing pairs of starting and ending vertices as described below.</td>
-</tr>
-<tr class="row-even"><td><strong>directed</strong></td>
+<tr class="row-odd"><td><strong>directed</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
 <td><ul class="first last simple">
@@ -477,6 +475,8 @@ OR EMPTY SET
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="edges-query">
+<h3>Edges query<a class="headerlink" href="#edges-query" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -538,6 +538,7 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="section" id="return-columns">
 <h2>Return Columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
@@ -632,7 +633,7 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Last updated on Jul 17, 2020.<br/>
+      Last updated on Jul 24, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
