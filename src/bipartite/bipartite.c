@@ -153,11 +153,11 @@ _pgr_bipartite(PG_FUNCTION_ARGS) {
         Datum       result;
         Datum       *values;
         bool        *nulls;
-        int16 typlen;
+       // int16 typlen;
         size_t call_cntr = funcctx->call_cntr;
 
 
-        size_t numb = 3; //Number of columns in outputs
+        size_t numb = 2; //Number of columns in outputs
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
         size_t i;
@@ -166,9 +166,9 @@ _pgr_bipartite(PG_FUNCTION_ARGS) {
         }
             //Set your outputs from result_tuple
             
-            values[0] = Int32GetDatum(call_cntr + 1);
-            values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
-	        values[2] = Int64GetDatum(result_tuples[call_cntr].color);
+            //values[0] = Int32GetDatum(call_cntr + 1);
+            values[0] = Int64GetDatum(result_tuples[call_cntr].vid);
+	        values[1] = Int64GetDatum(result_tuples[call_cntr].color);
             tuple = heap_form_tuple(tuple_desc, values, nulls);
             result = HeapTupleGetDatum(tuple);
             SRF_RETURN_NEXT(funcctx, result);
