@@ -64,7 +64,7 @@ class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
 
      /** @name SequentialVertexColoring
       * @{
-      * 
+      *
       */
 
      /** @brief sequentialVertexColoring function

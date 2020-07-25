@@ -96,7 +96,7 @@ pgr_depthFirstSearch(
  * vector and passes these variables to the template function `pgr_depthFirstSearch`
  * which calls the main function defined in the C++ Header file. It also does
  * exception handling.
- * 
+ *
  * @param data_edges     the set of edges from the SQL query
  * @param total_edges    the total number of edges in the SQL query
  * @param rootsArr       the array containing the starting vertices
@@ -148,12 +148,6 @@ do_pgr_depthFirstSearch(
 
         // string variable to store the log messages
         std::string logstr;
-
-        // sorting the edges in an ascending order of their id, before creating the graph
-        std::sort(data_edges, data_edges + total_edges,
-            [](const pgr_edge_t &edge1, const pgr_edge_t &edge2) -> bool {
-                return edge1.id < edge2.id;
-            });
 
         if (directed) {
             // If the graph is directed
