@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.1 License: http://creativecommons.org/licenses/by-sa/3.1/
+    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_makeConnected - Experimental
@@ -24,16 +24,6 @@ which will make the graph connected. In particular, the boost::make_connected( )
 
 .. rubric:: Availability
 
-* Version 3.1.0
-
-  * New **experimental** function
-
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/dev/en/pgr_makeConnected.html>`__) and above
-
-* **TBD**
 
 Description
 -------------------------------------------------------------------------------
@@ -109,53 +99,25 @@ Where:
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, source, target, cost)``
+Returns set of ``(seq, node_from, node_to)``
 
 ===============  =========== ============================================================
 Column           Type        Description
 ===============  =========== ============================================================
 **seq**          ``INT``     Sequential value starting from **1**.
-**source**       ``BIGINT``  Identifier of the first end point vertex of the edge.
-**target**       ``BIGINT``  Identifier of the second end point vertex of the edge.
-**cost**         ``FLOAT``   Weight of the edge  `(source, target)`
-
-                             - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**node_from**    ``BIGINT``  Identifier of the first end point vertex of the edge.
+**node_to**      ``BIGINT``  Identifier of the second end point vertex of the edge.
 ===============  =========== ============================================================
 
 Additional Example:
 -------------------------------------------------------------------------------
 
 
-Now, let's add some edges to make the graph non-planar. We will be adding edges between every pair in this list of vertices **1**, **2**, **3**, **4**, **5**.
-
-
-.. literalinclude:: doc-pgr_makeConnected.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-
-Now, let's check our graph is planar or not. If it is non-planar then it will return an empty set of rows.
-
-
-.. literalinclude:: doc-pgr_makeConnected.queries
-   :start-after: -- q3
-   :end-before: -- q4
-
-There can be some cases where we only want to check whether a particular connected component of a graph is planar or not. So the below example
-will illustrate the way to do it.
-
-  - Use pgr_connectedComponents( ) function in query:
-
-
-.. literalinclude:: doc-pgr_makeConnected.queries
-   :start-after: -- q4
-   :end-before: -- q5
 
 See Also
 -------------------------------------------------------------------------------
 
-* https://en.wikipedia.org/wiki/Planarity_testing
-* https://www.boost.org/libs/graph/doc/boyer_myrvold.html
+* https://www.boost.org/libs/graph/doc/make_connected.html
 * The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

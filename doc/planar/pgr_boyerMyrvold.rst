@@ -4,7 +4,7 @@
     Copyright(c) pgRouting Contributors
 
     This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.1 License: http://creativecommons.org/licenses/by-sa/3.1/
+    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
 pgr_boyerMyrvold - Experimental
@@ -24,16 +24,6 @@ In particular, the boyer_myrvold_planarity_test algorithm is implemented by Boos
 
 .. rubric:: Availability
 
-* Version 3.1.0
-
-  * New **experimental** function
-
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/dev/en/pgr_boyerMyrvold.html>`__) and above
-
-* **TBD**
 
 Description
 -------------------------------------------------------------------------------
