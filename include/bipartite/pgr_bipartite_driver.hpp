@@ -50,12 +50,14 @@ namespace pgrouting {
             public:
 
             typedef typename G::V_i V_i;
-            void print_Bipartite(std::vector<pgr_bipartite_rt> &results, G &graph)
+            std::vector<pgr_bipartite_rt> print_Bipartite( G &graph)
             {
+                std::vector<pgr_bipartite_rt> results;
                 std::vector <boost::default_color_type> partition (graph.num_vertices());
-    
+
                  
                 auto partition_map = make_iterator_property_map(partition.begin (), boost::get (boost::vertex_index, graph.graph));
+
                 
                 
                 try {
@@ -72,7 +74,7 @@ namespace pgrouting {
                       }
               //  
                 
-                V_i vertex_iter, vertex_end;
+                
                 
             V_i v, vend;
 
@@ -81,9 +83,26 @@ namespace pgrouting {
 
                      int64_t vid = graph[*v].id;
                      auto color =(boost::get (partition_map, *v) == boost::color_traits <boost::default_color_type>::white () ? "white" : "black");
+                     if(color=="white")
+                     {
+                         results.push_back(
+                             {
+                                 vid,0
+                             }
+                         );
+                     }
+                     else
+                     {
+                         results.push_back(
+                             {
+                                 vid,1
+                             }
+                         );
+                     }
                      log<<vid<<" "<<color<<"\n";
 
                 }
+                return results;
                
             }
 
@@ -101,7 +120,7 @@ namespace pgrouting {
                     bool bipartite = is_bipartite (graph.graph);
                     if(bipartite)
                     {
-                        print_Bipartite(results,graph);
+                        results=print_Bipartite(graph);
                     }
                     return results;
                      
