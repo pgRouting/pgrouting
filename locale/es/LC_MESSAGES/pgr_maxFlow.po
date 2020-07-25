@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -66,13 +66,15 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_maxFlow.rst:32
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_maxFlow.html>`__)"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_maxFlow.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_maxFlow.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_maxFlow.html>`__)"
+"**Versiones soportadas:** actual(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_maxFlow.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_maxFlow.html>`__"
 
-#: ../../build/doc/pgr_maxFlow.rst:35
+#: ../../build/doc/pgr_maxFlow.rst:36
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_maxFlow.html>`__ `2.5 "
@@ -85,56 +87,56 @@ msgstr ""
 "<https://docs.pgrouting.org/2.4/en/pgr_maxFlow.html>`__"
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgr_maxFlow.rst:41 ../../build/doc/pgr_maxFlow.rst:155
+#: ../../build/doc/pgr_maxFlow.rst:42 ../../build/doc/pgr_maxFlow.rst:156
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_maxFlow.rst:43
+#: ../../build/doc/pgr_maxFlow.rst:44
 msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
-#: ../../build/doc/pgr_maxFlow.rst:45
+#: ../../build/doc/pgr_maxFlow.rst:46
 msgid "The graph is **directed**."
 msgstr "El grafo es **dirigido**."
 
-#: ../../build/doc/pgr_maxFlow.rst:46
+#: ../../build/doc/pgr_maxFlow.rst:47
 msgid "Calculates the maximum flow from the `source(s)` to the `target(s)`."
 msgstr "Calcula el flujo máximo desde `source(s)` a `target(s)`."
 
-#: ../../build/doc/pgr_maxFlow.rst:48
+#: ../../build/doc/pgr_maxFlow.rst:49
 msgid ""
 "When the maximum flow is **0** then there is no flow and **0** is returned."
 msgstr ""
 "Cuando el flujo máximo es **0**, entonces no hay flujo y se devuelve **0**."
 
-#: ../../build/doc/pgr_maxFlow.rst:49
+#: ../../build/doc/pgr_maxFlow.rst:50
 msgid "There is no flow when a **source** is the same as a **target**."
 msgstr ""
 "No hay ningún flujo cuando el  **orígen** es el mismo que el **destino**."
 
-#: ../../build/doc/pgr_maxFlow.rst:51
+#: ../../build/doc/pgr_maxFlow.rst:52
 msgid "Any duplicated value in the source(s) or target(s) are ignored."
 msgstr ""
 "Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) será "
 "ignorado."
 
-#: ../../build/doc/pgr_maxFlow.rst:52
+#: ../../build/doc/pgr_maxFlow.rst:53
 msgid "Uses the :doc:`pgr_pushRelabel <pgr_pushRelabel>` algorithm."
 msgstr "Use el algoritmo :doc:`pgr_pushRelabel <pgr_pushRelabel>` ."
 
-#: ../../build/doc/pgr_maxFlow.rst:54
+#: ../../build/doc/pgr_maxFlow.rst:55
 msgid "Running time: :math:`O( V ^ 3)`"
 msgstr "Tiempo de ejecución: :math:`O( V ^ 3)`"
 
-#: ../../build/doc/pgr_maxFlow.rst:57
+#: ../../build/doc/pgr_maxFlow.rst:58
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_maxFlow.rst:60
+#: ../../build/doc/pgr_maxFlow.rst:61
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_maxFlow.rst:73
+#: ../../build/doc/pgr_maxFlow.rst:74
 msgid "One to One"
 msgstr "Uno a Uno"
 
@@ -142,35 +144,35 @@ msgstr "Uno a Uno"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_maxFlow.rst:80
+#: ../../build/doc/pgr_maxFlow.rst:81
 msgid "From vertex :math:`6` to vertex :math:`11`"
 msgstr "Del vértice :math:`6` al vértice :math:`11`"
 
-#: ../../build/doc/pgr_maxFlow.rst:90
+#: ../../build/doc/pgr_maxFlow.rst:91
 msgid "One to Many"
 msgstr "Uno a Muchos"
 
-#: ../../build/doc/pgr_maxFlow.rst:97
+#: ../../build/doc/pgr_maxFlow.rst:98
 msgid "From vertex :math:`6` to vertices :math:`\\{11, 1, 13\\}`"
 msgstr "Del vértice :math:`6` a los vértices :math:`\\{11, 1, 13\\}`"
 
-#: ../../build/doc/pgr_maxFlow.rst:107
+#: ../../build/doc/pgr_maxFlow.rst:108
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
-#: ../../build/doc/pgr_maxFlow.rst:114
+#: ../../build/doc/pgr_maxFlow.rst:115
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertex :math:`11`"
 msgstr "De los vértices vertices :math:`\\{6, 8, 12\\}` al vértice :math:`11`"
 
-#: ../../build/doc/pgr_maxFlow.rst:124
+#: ../../build/doc/pgr_maxFlow.rst:125
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
-#: ../../build/doc/pgr_maxFlow.rst:131
+#: ../../build/doc/pgr_maxFlow.rst:132
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr "De los vértices :math:`\\{6, 8, 12\\}` a los vértices :math:`\\{1, 3, 11\\}`"
 
-#: ../../build/doc/pgr_maxFlow.rst:138
+#: ../../build/doc/pgr_maxFlow.rst:139
 msgid "Parameters"
 msgstr "Parámetros"
 
@@ -179,7 +181,7 @@ msgid "Column"
 msgstr "Columna"
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgr_maxFlow.rst:155
+#: ../../build/doc/pgr_maxFlow.rst:156
 msgid "Type"
 msgstr "Tipo"
 
@@ -204,7 +206,7 @@ msgid "**source**"
 msgstr "**origen**"
 
 #: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:9
-#: ../../build/doc/pgr_maxFlow.rst:157
+#: ../../build/doc/pgr_maxFlow.rst:158
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
@@ -240,7 +242,7 @@ msgstr "**destinos**"
 msgid "Array of identifiers of the ending vertices of the flow."
 msgstr "Conjunto de identificadores de los vértices finales del flujo."
 
-#: ../../build/doc/pgr_maxFlow.rst:145
+#: ../../build/doc/pgr_maxFlow.rst:146
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -326,48 +328,41 @@ msgstr "ANY-INTEGER"
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr "SMALLINT, INTEGER, BIGINT"
 
-#: ../../build/doc/pgr_maxFlow.rst:152
+#: ../../build/doc/pgr_maxFlow.rst:153
 msgid "Return Columns"
 msgstr "Columnas de Devoluciones"
 
-#: ../../build/doc/pgr_maxFlow.rst:157
+#: ../../build/doc/pgr_maxFlow.rst:158
 msgid "Maximum flow possible from the source(s) to the target(s)"
 msgstr "Flujo máximo posible desde el/los orígen(es) hacia el/los destino(s)"
 
-#: ../../build/doc/pgr_maxFlow.rst:161
+#: ../../build/doc/pgr_maxFlow.rst:162
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_maxFlow.rst:163
+#: ../../build/doc/pgr_maxFlow.rst:164
 msgid ":doc:`flow-family`"
 msgstr ":doc:`flow-family`"
 
-#: ../../build/doc/pgr_maxFlow.rst:164
+#: ../../build/doc/pgr_maxFlow.rst:165
 msgid "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
 msgstr "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
 
-#: ../../build/doc/pgr_maxFlow.rst:165
+#: ../../build/doc/pgr_maxFlow.rst:166
 #, python-format
 msgid ""
 "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
 msgstr ""
 "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
 
-#: ../../build/doc/pgr_maxFlow.rst:168
+#: ../../build/doc/pgr_maxFlow.rst:169
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_maxFlow.rst:169
+#: ../../build/doc/pgr_maxFlow.rst:170
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_maxFlow.rst:170
+#: ../../build/doc/pgr_maxFlow.rst:171
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_maxFlow.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_maxFlow.html>`__)"
