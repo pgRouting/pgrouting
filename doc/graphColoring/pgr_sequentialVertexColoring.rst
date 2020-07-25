@@ -114,7 +114,7 @@ Column           Type        Description
 .. result columns end
 
 
-Additional Examples 
+Additional Examples
 -------------------------------------------------------------------------------
 
 The examples of this section are based on the :doc:`sampledata` network.

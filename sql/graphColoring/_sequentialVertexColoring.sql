@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION _pgr_sequentialVertexColoring(
     edges_sql TEXT,
-    
+
     OUT node BIGINT,
     OUT color BIGINT)
 

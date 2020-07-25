@@ -77,7 +77,7 @@ pgr_sequentialVertexColoring(
  * `data_edges` variable. Then, it passes the required variables to the
  * template function `pgr_sequentialVertexColoring` which calls the main function
  * defined in the C++ Header file. It also does exception handling.
- * 
+ *
  * @param data_edges     the set of edges from the SQL query
  * @param total_edges    the total number of edges in the SQL query
  * @param return_tuples  the rows in the result
@@ -117,12 +117,6 @@ do_pgr_sequentialVertexColoring(
 
         graphType gType = UNDIRECTED;
         pgrouting::UndirectedGraph undigraph(gType);
-
-        // sorting the edges in an ascending order of their id, before creating the graph
-        std::sort(data_edges, data_edges + total_edges,
-            [](const pgr_edge_t &edge1, const pgr_edge_t &edge2) -> bool {
-                return edge1.id < edge2.id;
-            });
 
         undigraph.insert_edges(data_edges, total_edges);
 

@@ -58,7 +58,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
 
      /** @name DepthFirstSearch
       * @{
-      * 
+      *
       */
 
      /** @brief depthFirstSearch function
