@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -253,26 +253,30 @@ msgid "`One to One`_"
 msgstr "`Uno a Uno`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:143
-#: ../../build/doc/pgRouting-concepts.rst:400
-#: ../../build/doc/pgRouting-concepts.rst:435
+#: ../../build/doc/pgRouting-concepts.rst:429
+#: ../../build/doc/pgRouting-concepts.rst:464
 msgid "`One to Many`_"
 msgstr "`Uno a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:144
-#: ../../build/doc/pgRouting-concepts.rst:394
-#: ../../build/doc/pgRouting-concepts.rst:428
+#: ../../build/doc/pgRouting-concepts.rst:423
+#: ../../build/doc/pgRouting-concepts.rst:457
 msgid "`Many to One`_"
 msgstr "`Muchos a Uno`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:145
-#: ../../build/doc/pgRouting-concepts.rst:395
-#: ../../build/doc/pgRouting-concepts.rst:401
-#: ../../build/doc/pgRouting-concepts.rst:429
-#: ../../build/doc/pgRouting-concepts.rst:436
+#: ../../build/doc/pgRouting-concepts.rst:424
+#: ../../build/doc/pgRouting-concepts.rst:430
+#: ../../build/doc/pgRouting-concepts.rst:458
+#: ../../build/doc/pgRouting-concepts.rst:465
 msgid "`Many to Many`_"
 msgstr "`Muchos a Muchos`_"
 
-#: ../../build/doc/pgRouting-concepts.rst:147
+#: ../../build/doc/pgRouting-concepts.rst:146
+msgid "`Combinations`_"
+msgstr "`Combinaciones`_"
+
+#: ../../build/doc/pgRouting-concepts.rst:148
 msgid ""
 "Depending on the overload are the parameters used, keeping consistency "
 "across all functions."
@@ -280,54 +284,75 @@ msgstr ""
 "Dependiendo de la sobrecarga son los parámetros utilizados, manteniendo la "
 "coherencia en todas las funciones."
 
-#: ../../build/doc/pgRouting-concepts.rst:151
+#: ../../build/doc/pgRouting-concepts.rst:152
 msgid "One to One"
 msgstr "Uno a Uno"
 
-#: ../../build/doc/pgRouting-concepts.rst:153
-#: ../../build/doc/pgRouting-concepts.rst:161
-#: ../../build/doc/pgRouting-concepts.rst:169
-#: ../../build/doc/pgRouting-concepts.rst:177
+#: ../../build/doc/pgRouting-concepts.rst:154
+#: ../../build/doc/pgRouting-concepts.rst:162
+#: ../../build/doc/pgRouting-concepts.rst:170
+#: ../../build/doc/pgRouting-concepts.rst:178
+#: ../../build/doc/pgRouting-concepts.rst:186
 msgid "When routing from:"
 msgstr "Cuando se rutea desde:"
 
-#: ../../build/doc/pgRouting-concepts.rst:155
-#: ../../build/doc/pgRouting-concepts.rst:163
+#: ../../build/doc/pgRouting-concepts.rst:156
+#: ../../build/doc/pgRouting-concepts.rst:164
 msgid "From **one** starting vertex"
 msgstr "Desde el vértice inicial **one** "
 
-#: ../../build/doc/pgRouting-concepts.rst:156
-#: ../../build/doc/pgRouting-concepts.rst:172
+#: ../../build/doc/pgRouting-concepts.rst:157
+#: ../../build/doc/pgRouting-concepts.rst:173
 msgid "to **one** ending vertex"
 msgstr "al  vértice final **one**"
 
-#: ../../build/doc/pgRouting-concepts.rst:159
+#: ../../build/doc/pgRouting-concepts.rst:160
 msgid "One to Many"
 msgstr "Uno a Muchos"
 
-#: ../../build/doc/pgRouting-concepts.rst:164
-#: ../../build/doc/pgRouting-concepts.rst:180
+#: ../../build/doc/pgRouting-concepts.rst:165
+#: ../../build/doc/pgRouting-concepts.rst:181
 msgid "to **many** ending vertices"
 msgstr "a los vértices finales **many**"
 
-#: ../../build/doc/pgRouting-concepts.rst:167
+#: ../../build/doc/pgRouting-concepts.rst:168
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
-#: ../../build/doc/pgRouting-concepts.rst:171
-#: ../../build/doc/pgRouting-concepts.rst:179
+#: ../../build/doc/pgRouting-concepts.rst:172
+#: ../../build/doc/pgRouting-concepts.rst:180
 msgid "From **many** starting vertices"
 msgstr "Desde  vértices iniciales **many**"
 
-#: ../../build/doc/pgRouting-concepts.rst:175
+#: ../../build/doc/pgRouting-concepts.rst:176
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
+#: ../../build/doc/pgRouting-concepts.rst:184
+msgid "Combinations"
+msgstr "Combinaciones"
+
 #: ../../build/doc/pgRouting-concepts.rst:188
+msgid "From **many** different starting vertices"
+msgstr "A partir de **muchos** diferentes vértices de inicio"
+
+#: ../../build/doc/pgRouting-concepts.rst:189
+msgid "to **many** different ending vertices"
+msgstr "a **muchos** diferentes vértices finales"
+
+#: ../../build/doc/pgRouting-concepts.rst:190
+msgid "Every tuple specifies a pair of a start vertex and an end vertex"
+msgstr "Cada tupla especifica un par de vértices iniciales y un vértice final"
+
+#: ../../build/doc/pgRouting-concepts.rst:191
+msgid "Users can define the combinations as desired."
+msgstr "Los usuarios pueden definir las combinaciones como deseen."
+
+#: ../../build/doc/pgRouting-concepts.rst:198
 msgid "Inner Queries"
 msgstr "Consultas Internas"
 
-#: ../../build/doc/pgRouting-concepts.rst:193
+#: ../../build/doc/pgRouting-concepts.rst:203
 msgid ""
 "There are several kinds of valid inner queries and also the columns returned"
 " are depending of the function. Which kind of inner query will depend on the"
@@ -340,11 +365,12 @@ msgstr ""
 " utiliza ``ANY-INTEGER`` y ``ANY-NUMERICAL``."
 
 #: ../../build/doc/flow-family.rst:21
-#: ../../build/doc/pgRouting-concepts.rst:199
-#: ../../build/doc/pgRouting-concepts.rst:228
-#: ../../build/doc/pgRouting-concepts.rst:257
-#: ../../build/doc/pgRouting-concepts.rst:315
-#: ../../build/doc/pgRouting-concepts.rst:361
+#: ../../build/doc/pgRouting-concepts.rst:209
+#: ../../build/doc/pgRouting-concepts.rst:238
+#: ../../build/doc/pgRouting-concepts.rst:267
+#: ../../build/doc/pgRouting-concepts.rst:325
+#: ../../build/doc/pgRouting-concepts.rst:371
+#: ../../build/doc/pgRouting-concepts.rst:391
 msgid "Where:"
 msgstr "Donde:"
 
@@ -353,10 +379,11 @@ msgid "ANY-INTEGER"
 msgstr "ANY-INTEGER"
 
 #: ../../build/doc/flow-family.rst:23
-#: ../../build/doc/pgRouting-concepts.rst:201
-#: ../../build/doc/pgRouting-concepts.rst:230
-#: ../../build/doc/pgRouting-concepts.rst:259
-#: ../../build/doc/pgRouting-concepts.rst:317
+#: ../../build/doc/pgRouting-concepts.rst:211
+#: ../../build/doc/pgRouting-concepts.rst:240
+#: ../../build/doc/pgRouting-concepts.rst:269
+#: ../../build/doc/pgRouting-concepts.rst:327
+#: ../../build/doc/pgRouting-concepts.rst:393
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr "SMALLINT, INTEGER, BIGINT"
 
@@ -364,152 +391,162 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 msgid "ANY-NUMERICAL"
 msgstr "ANY-NUMERICAL"
 
-#: ../../build/doc/pgRouting-concepts.rst:202
-#: ../../build/doc/pgRouting-concepts.rst:231
-#: ../../build/doc/pgRouting-concepts.rst:260
-#: ../../build/doc/pgRouting-concepts.rst:318
+#: ../../build/doc/pgRouting-concepts.rst:212
+#: ../../build/doc/pgRouting-concepts.rst:241
+#: ../../build/doc/pgRouting-concepts.rst:270
+#: ../../build/doc/pgRouting-concepts.rst:328
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgRouting-concepts.rst:208
+#: ../../build/doc/pgRouting-concepts.rst:218
 msgid "Description of the edges_sql query for dijkstra like functions"
 msgstr ""
 "Descripción de la consulta edges_sql para funciones similares a dijkstra"
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:213
-#: ../../build/doc/pgRouting-concepts.rst:243
-#: ../../build/doc/pgRouting-concepts.rst:296
-#: ../../build/doc/pgRouting-concepts.rst:344
-#: ../../build/doc/pgRouting-concepts.rst:387
-#: ../../build/doc/pgRouting-concepts.rst:420
-#: ../../build/doc/pgRouting-concepts.rst:455
+#: ../../build/doc/pgRouting-concepts.rst:223
+#: ../../build/doc/pgRouting-concepts.rst:253
+#: ../../build/doc/pgRouting-concepts.rst:306
+#: ../../build/doc/pgRouting-concepts.rst:354
+#: ../../build/doc/pgRouting-concepts.rst:384
+#: ../../build/doc/pgRouting-concepts.rst:416
+#: ../../build/doc/pgRouting-concepts.rst:449
+#: ../../build/doc/pgRouting-concepts.rst:484
 msgid "Column"
 msgstr "Columna"
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:213
-#: ../../build/doc/pgRouting-concepts.rst:243
-#: ../../build/doc/pgRouting-concepts.rst:272
-#: ../../build/doc/pgRouting-concepts.rst:296
-#: ../../build/doc/pgRouting-concepts.rst:344
-#: ../../build/doc/pgRouting-concepts.rst:387
-#: ../../build/doc/pgRouting-concepts.rst:420
-#: ../../build/doc/pgRouting-concepts.rst:455
+#: ../../build/doc/pgRouting-concepts.rst:223
+#: ../../build/doc/pgRouting-concepts.rst:253
+#: ../../build/doc/pgRouting-concepts.rst:282
+#: ../../build/doc/pgRouting-concepts.rst:306
+#: ../../build/doc/pgRouting-concepts.rst:354
+#: ../../build/doc/pgRouting-concepts.rst:384
+#: ../../build/doc/pgRouting-concepts.rst:416
+#: ../../build/doc/pgRouting-concepts.rst:449
+#: ../../build/doc/pgRouting-concepts.rst:484
 msgid "Type"
 msgstr "Tipo"
 
 #: ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:213
-#: ../../build/doc/pgRouting-concepts.rst:243
-#: ../../build/doc/pgRouting-concepts.rst:272
-#: ../../build/doc/pgRouting-concepts.rst:296
+#: ../../build/doc/pgRouting-concepts.rst:223
+#: ../../build/doc/pgRouting-concepts.rst:253
+#: ../../build/doc/pgRouting-concepts.rst:282
+#: ../../build/doc/pgRouting-concepts.rst:306
+#: ../../build/doc/pgRouting-concepts.rst:384
 msgid "Default"
 msgstr "Valores predeterminados"
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:213
-#: ../../build/doc/pgRouting-concepts.rst:243
-#: ../../build/doc/pgRouting-concepts.rst:272
-#: ../../build/doc/pgRouting-concepts.rst:296
-#: ../../build/doc/pgRouting-concepts.rst:344
-#: ../../build/doc/pgRouting-concepts.rst:387
-#: ../../build/doc/pgRouting-concepts.rst:420
-#: ../../build/doc/pgRouting-concepts.rst:455
+#: ../../build/doc/pgRouting-concepts.rst:223
+#: ../../build/doc/pgRouting-concepts.rst:253
+#: ../../build/doc/pgRouting-concepts.rst:282
+#: ../../build/doc/pgRouting-concepts.rst:306
+#: ../../build/doc/pgRouting-concepts.rst:354
+#: ../../build/doc/pgRouting-concepts.rst:384
+#: ../../build/doc/pgRouting-concepts.rst:416
+#: ../../build/doc/pgRouting-concepts.rst:449
+#: ../../build/doc/pgRouting-concepts.rst:484
 msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/flow-family.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:215
-#: ../../build/doc/pgRouting-concepts.rst:298
+#: ../../build/doc/pgRouting-concepts.rst:225
+#: ../../build/doc/pgRouting-concepts.rst:308
 msgid "**id**"
 msgstr "**id**"
 
 #: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
 #: ../../build/doc/flow-family.rst:10 ../../build/doc/flow-family.rst:11
 #: ../../build/doc/flow-family.rst:14 ../../build/doc/flow-family.rst:15
-#: ../../build/doc/pgRouting-concepts.rst:215
-#: ../../build/doc/pgRouting-concepts.rst:216
-#: ../../build/doc/pgRouting-concepts.rst:217
-#: ../../build/doc/pgRouting-concepts.rst:245
-#: ../../build/doc/pgRouting-concepts.rst:246
-#: ../../build/doc/pgRouting-concepts.rst:298
-#: ../../build/doc/pgRouting-concepts.rst:299
-#: ../../build/doc/pgRouting-concepts.rst:300
-#: ../../build/doc/pgRouting-concepts.rst:346
-#: ../../build/doc/pgRouting-concepts.rst:351
+#: ../../build/doc/pgRouting-concepts.rst:225
+#: ../../build/doc/pgRouting-concepts.rst:226
+#: ../../build/doc/pgRouting-concepts.rst:227
+#: ../../build/doc/pgRouting-concepts.rst:255
+#: ../../build/doc/pgRouting-concepts.rst:256
+#: ../../build/doc/pgRouting-concepts.rst:308
+#: ../../build/doc/pgRouting-concepts.rst:309
+#: ../../build/doc/pgRouting-concepts.rst:310
+#: ../../build/doc/pgRouting-concepts.rst:356
+#: ../../build/doc/pgRouting-concepts.rst:361
+#: ../../build/doc/pgRouting-concepts.rst:386
+#: ../../build/doc/pgRouting-concepts.rst:387
 msgid "``ANY-INTEGER``"
 msgstr "``ANY-INTEGER``"
 
 #: ../../build/doc/flow-family.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:215
-#: ../../build/doc/pgRouting-concepts.rst:298
+#: ../../build/doc/pgRouting-concepts.rst:225
+#: ../../build/doc/pgRouting-concepts.rst:308
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
 #: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:216
-#: ../../build/doc/pgRouting-concepts.rst:245
-#: ../../build/doc/pgRouting-concepts.rst:299
+#: ../../build/doc/pgRouting-concepts.rst:226
+#: ../../build/doc/pgRouting-concepts.rst:255
+#: ../../build/doc/pgRouting-concepts.rst:309
+#: ../../build/doc/pgRouting-concepts.rst:386
 msgid "**source**"
 msgstr "**origen**"
 
 #: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:216
-#: ../../build/doc/pgRouting-concepts.rst:245
-#: ../../build/doc/pgRouting-concepts.rst:299
+#: ../../build/doc/pgRouting-concepts.rst:226
+#: ../../build/doc/pgRouting-concepts.rst:255
+#: ../../build/doc/pgRouting-concepts.rst:309
+#: ../../build/doc/pgRouting-concepts.rst:386
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer punto final en el vértice de la arista."
 
 #: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:217
-#: ../../build/doc/pgRouting-concepts.rst:246
-#: ../../build/doc/pgRouting-concepts.rst:300
+#: ../../build/doc/pgRouting-concepts.rst:227
+#: ../../build/doc/pgRouting-concepts.rst:256
+#: ../../build/doc/pgRouting-concepts.rst:310
+#: ../../build/doc/pgRouting-concepts.rst:387
 msgid "**target**"
 msgstr "**objetivo**"
 
 #: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:217
-#: ../../build/doc/pgRouting-concepts.rst:246
-#: ../../build/doc/pgRouting-concepts.rst:300
+#: ../../build/doc/pgRouting-concepts.rst:227
+#: ../../build/doc/pgRouting-concepts.rst:256
+#: ../../build/doc/pgRouting-concepts.rst:310
+#: ../../build/doc/pgRouting-concepts.rst:387
 msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/flow-family.rst:12 ../../build/doc/flow-family.rst:17
-#: ../../build/doc/pgRouting-concepts.rst:218
-#: ../../build/doc/pgRouting-concepts.rst:247
-#: ../../build/doc/pgRouting-concepts.rst:301
-#: ../../build/doc/pgRouting-concepts.rst:405
-#: ../../build/doc/pgRouting-concepts.rst:440
+#: ../../build/doc/pgRouting-concepts.rst:228
+#: ../../build/doc/pgRouting-concepts.rst:257
+#: ../../build/doc/pgRouting-concepts.rst:311
+#: ../../build/doc/pgRouting-concepts.rst:434
+#: ../../build/doc/pgRouting-concepts.rst:469
 msgid "**cost**"
 msgstr "**cost**"
 
 #: ../../build/doc/flow-family.rst:17 ../../build/doc/flow-family.rst:18
-#: ../../build/doc/pgRouting-concepts.rst:218
-#: ../../build/doc/pgRouting-concepts.rst:222
-#: ../../build/doc/pgRouting-concepts.rst:247
-#: ../../build/doc/pgRouting-concepts.rst:251
-#: ../../build/doc/pgRouting-concepts.rst:301
-#: ../../build/doc/pgRouting-concepts.rst:305
-#: ../../build/doc/pgRouting-concepts.rst:309
-#: ../../build/doc/pgRouting-concepts.rst:310
+#: ../../build/doc/pgRouting-concepts.rst:228
+#: ../../build/doc/pgRouting-concepts.rst:232
+#: ../../build/doc/pgRouting-concepts.rst:257
+#: ../../build/doc/pgRouting-concepts.rst:261
 #: ../../build/doc/pgRouting-concepts.rst:311
-#: ../../build/doc/pgRouting-concepts.rst:312
-#: ../../build/doc/pgRouting-concepts.rst:352
+#: ../../build/doc/pgRouting-concepts.rst:315
+#: ../../build/doc/pgRouting-concepts.rst:319
+#: ../../build/doc/pgRouting-concepts.rst:320
+#: ../../build/doc/pgRouting-concepts.rst:321
+#: ../../build/doc/pgRouting-concepts.rst:322
+#: ../../build/doc/pgRouting-concepts.rst:362
 msgid "``ANY-NUMERICAL``"
 msgstr "``ANY-NUMERICAL``"
 
 #: ../../build/doc/flow-family.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:218
-#: ../../build/doc/pgRouting-concepts.rst:247
-#: ../../build/doc/pgRouting-concepts.rst:301
+#: ../../build/doc/pgRouting-concepts.rst:228
+#: ../../build/doc/pgRouting-concepts.rst:257
+#: ../../build/doc/pgRouting-concepts.rst:311
 msgid "Weight of the edge  `(source, target)`"
 msgstr "Peso de la arista `(source, target)`"
 
 #: ../../build/doc/flow-family.rst:13
-#: ../../build/doc/pgRouting-concepts.rst:220
-#: ../../build/doc/pgRouting-concepts.rst:249
-#: ../../build/doc/pgRouting-concepts.rst:303
+#: ../../build/doc/pgRouting-concepts.rst:230
+#: ../../build/doc/pgRouting-concepts.rst:259
+#: ../../build/doc/pgRouting-concepts.rst:313
 msgid ""
 "When negative: edge `(source, target)` does not exist, therefore it's not "
 "part of the graph."
@@ -518,30 +555,30 @@ msgstr ""
 "es parte del grafo."
 
 #: ../../build/doc/flow-family.rst:18
-#: ../../build/doc/pgRouting-concepts.rst:222
-#: ../../build/doc/pgRouting-concepts.rst:251
-#: ../../build/doc/pgRouting-concepts.rst:305
+#: ../../build/doc/pgRouting-concepts.rst:232
+#: ../../build/doc/pgRouting-concepts.rst:261
+#: ../../build/doc/pgRouting-concepts.rst:315
 msgid "**reverse_cost**"
 msgstr "**reverse_cost**"
 
 #: ../../build/doc/flow-family.rst:14 ../../build/doc/flow-family.rst:15
-#: ../../build/doc/pgRouting-concepts.rst:222
-#: ../../build/doc/pgRouting-concepts.rst:251
-#: ../../build/doc/pgRouting-concepts.rst:305
+#: ../../build/doc/pgRouting-concepts.rst:232
+#: ../../build/doc/pgRouting-concepts.rst:261
+#: ../../build/doc/pgRouting-concepts.rst:315
 msgid "-1"
 msgstr "-1"
 
 #: ../../build/doc/flow-family.rst:15
-#: ../../build/doc/pgRouting-concepts.rst:222
-#: ../../build/doc/pgRouting-concepts.rst:251
-#: ../../build/doc/pgRouting-concepts.rst:305
+#: ../../build/doc/pgRouting-concepts.rst:232
+#: ../../build/doc/pgRouting-concepts.rst:261
+#: ../../build/doc/pgRouting-concepts.rst:315
 msgid "Weight of the edge `(target, source)`,"
 msgstr "Peso de la arista `(target, source)`,"
 
 #: ../../build/doc/flow-family.rst:16 ../../build/doc/flow-family.rst:17
-#: ../../build/doc/pgRouting-concepts.rst:224
-#: ../../build/doc/pgRouting-concepts.rst:253
-#: ../../build/doc/pgRouting-concepts.rst:307
+#: ../../build/doc/pgRouting-concepts.rst:234
+#: ../../build/doc/pgRouting-concepts.rst:263
+#: ../../build/doc/pgRouting-concepts.rst:317
 msgid ""
 "When negative: edge `(target, source)` does not exist, therefore it's not "
 "part of the graph."
@@ -549,7 +586,7 @@ msgstr ""
 "En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
 "es parte del grafo."
 
-#: ../../build/doc/pgRouting-concepts.rst:239
+#: ../../build/doc/pgRouting-concepts.rst:249
 msgid "Description of the edges_sql query (id is not necessary)"
 msgstr "Descripción de la consulta edges_sql (no es necesarioun id)"
 
@@ -557,95 +594,95 @@ msgstr "Descripción de la consulta edges_sql (no es necesarioun id)"
 msgid "edges_sql"
 msgstr "edges_sql"
 
-#: ../../build/doc/pgRouting-concepts.rst:240
-#: ../../build/doc/pgRouting-concepts.rst:293
-#: ../../build/doc/pgRouting-concepts.rst:341
+#: ../../build/doc/pgRouting-concepts.rst:250
+#: ../../build/doc/pgRouting-concepts.rst:303
+#: ../../build/doc/pgRouting-concepts.rst:351
 msgid ""
 "an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 "Una consulta SQL, que debe regresar un conjunto de filas con las siguientes "
 "columnas:"
 
-#: ../../build/doc/pgRouting-concepts.rst:269
+#: ../../build/doc/pgRouting-concepts.rst:279
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgRouting-concepts.rst:272
+#: ../../build/doc/pgRouting-concepts.rst:282
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/pgRouting-concepts.rst:274
+#: ../../build/doc/pgRouting-concepts.rst:284
 msgid "**edges_sql**"
 msgstr "**edges_sql**"
 
-#: ../../build/doc/pgRouting-concepts.rst:274
+#: ../../build/doc/pgRouting-concepts.rst:284
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgRouting-concepts.rst:274
+#: ../../build/doc/pgRouting-concepts.rst:284
 msgid "SQL query as described above."
 msgstr "Consulta SQL como se describió anteriormente."
 
-#: ../../build/doc/pgRouting-concepts.rst:275
+#: ../../build/doc/pgRouting-concepts.rst:285
 msgid "**via_vertices**"
 msgstr "**via_vertices**"
 
-#: ../../build/doc/pgRouting-concepts.rst:275
+#: ../../build/doc/pgRouting-concepts.rst:285
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr "``ARRAY[ANY-INTEGER]``"
 
-#: ../../build/doc/pgRouting-concepts.rst:275
+#: ../../build/doc/pgRouting-concepts.rst:285
 msgid "Array of ordered vertices identifiers that are going to be visited."
 msgstr "Arreglo de identificadores de vértices ordenados que serán visitados."
 
-#: ../../build/doc/pgRouting-concepts.rst:276
+#: ../../build/doc/pgRouting-concepts.rst:286
 msgid "**directed**"
 msgstr "**dirigido**"
 
-#: ../../build/doc/pgRouting-concepts.rst:276
-#: ../../build/doc/pgRouting-concepts.rst:278
-#: ../../build/doc/pgRouting-concepts.rst:280
+#: ../../build/doc/pgRouting-concepts.rst:286
+#: ../../build/doc/pgRouting-concepts.rst:288
+#: ../../build/doc/pgRouting-concepts.rst:290
 msgid "``BOOLEAN``"
 msgstr "``BOOLEAN``"
 
-#: ../../build/doc/pgRouting-concepts.rst:276
-#: ../../build/doc/pgRouting-concepts.rst:280
+#: ../../build/doc/pgRouting-concepts.rst:286
+#: ../../build/doc/pgRouting-concepts.rst:290
 msgid "``true``"
 msgstr "``true``"
 
-#: ../../build/doc/pgRouting-concepts.rst:276
+#: ../../build/doc/pgRouting-concepts.rst:286
 msgid "When ``true`` Graph is considered `Directed`"
 msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
-#: ../../build/doc/pgRouting-concepts.rst:277
+#: ../../build/doc/pgRouting-concepts.rst:287
 msgid "When ``false`` the graph is considered as Undirected."
 msgstr "Cuando ``false`` el gráfico se considera como No Dirigido"
 
-#: ../../build/doc/pgRouting-concepts.rst:278
+#: ../../build/doc/pgRouting-concepts.rst:288
 msgid "**strict**"
 msgstr "**strict**"
 
-#: ../../build/doc/pgRouting-concepts.rst:278
+#: ../../build/doc/pgRouting-concepts.rst:288
 msgid "``false``"
 msgstr "``false``"
 
-#: ../../build/doc/pgRouting-concepts.rst:278
+#: ../../build/doc/pgRouting-concepts.rst:288
 msgid "When ``false`` ignores missing paths returning all paths found"
 msgstr ""
 "En caso de ``false``, ignora las rutas faltantes y devuelve todas las rutas "
 "encontradas"
 
-#: ../../build/doc/pgRouting-concepts.rst:279
+#: ../../build/doc/pgRouting-concepts.rst:289
 msgid "When ``true`` if a path is missing stops and returns `EMPTY SET`"
 msgstr ""
 "en caso de ``true`` si falta una ruta de acceso se detiene y devuelve `EMPTY"
 " SET`"
 
-#: ../../build/doc/pgRouting-concepts.rst:280
+#: ../../build/doc/pgRouting-concepts.rst:290
 msgid "**U_turn_on_edge**"
 msgstr "**U_turn_on_edge**"
 
-#: ../../build/doc/pgRouting-concepts.rst:280
+#: ../../build/doc/pgRouting-concepts.rst:290
 msgid ""
 "When ``true`` departing from a visited vertex will not try to avoid using "
 "the edge used to reach it.  In other words, U turn using the edge with same "
@@ -655,7 +692,7 @@ msgstr ""
 "uso de la arista utilizada para alcanzarlo.  En otras palabras, se permite "
 "el giro U utilizando la arista con el mismo 'id'."
 
-#: ../../build/doc/pgRouting-concepts.rst:281
+#: ../../build/doc/pgRouting-concepts.rst:291
 msgid ""
 "When ``false`` when a departing from a visited vertex tries to avoid using "
 "the edge used to reach it.  In other words, U turn using the edge with same "
@@ -666,47 +703,47 @@ msgstr ""
 "utiliza el giro U utilizando el borde con el mismo `id` cuando no se "
 "encuentra ninguna otra ruta."
 
-#: ../../build/doc/pgRouting-concepts.rst:289
+#: ../../build/doc/pgRouting-concepts.rst:299
 msgid ""
 "edges_sql query for :doc:`aStar-family` and :doc:`aStar-family` functions"
 msgstr ""
 "consulta edges_sql para las funciones :doc:`aStar-family` y :doc:`aStar-"
 "family`"
 
-#: ../../build/doc/pgRouting-concepts.rst:309
+#: ../../build/doc/pgRouting-concepts.rst:319
 msgid "**x1**"
 msgstr "**x1**"
 
-#: ../../build/doc/pgRouting-concepts.rst:309
+#: ../../build/doc/pgRouting-concepts.rst:319
 msgid "X coordinate of `source` vertex."
 msgstr "Coordenada X del vértice `source`."
 
-#: ../../build/doc/pgRouting-concepts.rst:310
+#: ../../build/doc/pgRouting-concepts.rst:320
 msgid "**y1**"
 msgstr "**y1**"
 
-#: ../../build/doc/pgRouting-concepts.rst:310
+#: ../../build/doc/pgRouting-concepts.rst:320
 msgid "Y coordinate of `source` vertex."
 msgstr "Coordenada Y del vértice `source`."
 
-#: ../../build/doc/pgRouting-concepts.rst:311
+#: ../../build/doc/pgRouting-concepts.rst:321
 msgid "**x2**"
 msgstr "**x2**"
 
-#: ../../build/doc/pgRouting-concepts.rst:311
+#: ../../build/doc/pgRouting-concepts.rst:321
 msgid "X coordinate of `target` vertex."
 msgstr "Coordenada X del vértice `objetivo`."
 
-#: ../../build/doc/pgRouting-concepts.rst:312
+#: ../../build/doc/pgRouting-concepts.rst:322
 msgid "**y2**"
 msgstr "**y2**"
 
-#: ../../build/doc/pgRouting-concepts.rst:312
+#: ../../build/doc/pgRouting-concepts.rst:322
 msgid "Y coordinate of `target` vertex."
 msgstr "Coordenada Y del vértice `target`."
 
-#: ../../build/doc/pgRouting-concepts.rst:325
-#: ../../build/doc/pgRouting-concepts.rst:470
+#: ../../build/doc/pgRouting-concepts.rst:335
+#: ../../build/doc/pgRouting-concepts.rst:499
 msgid ""
 "For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp "
 "<pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>` :"
@@ -734,7 +771,7 @@ msgstr "**capacidad**"
 msgid "**reverse_capacity**"
 msgstr "**reverse_capacity** (**capacidad inversa**)"
 
-#: ../../build/doc/pgRouting-concepts.rst:331
+#: ../../build/doc/pgRouting-concepts.rst:341
 msgid "For :doc:`pgr_maxFlowMinCost` and :doc:`pgr_maxFlowMinCost_Cost`:"
 msgstr "Para :doc:`pgr_maxFlowMinCost` and :doc:`pgr_maxFlowMinCost_Cost`:"
 
@@ -759,11 +796,11 @@ msgid "Weight of the edge `(target, source)` if it exists."
 msgstr "Peso de la arista `(destino, origen)` si existe."
 
 #: ../../build/doc/flow-family.rst:24
-#: ../../build/doc/pgRouting-concepts.rst:364
+#: ../../build/doc/pgRouting-concepts.rst:374
 msgid "smallint, int, bigint, real, float"
 msgstr "smallint, int, bigint, real, float"
 
-#: ../../build/doc/pgRouting-concepts.rst:340
+#: ../../build/doc/pgRouting-concepts.rst:350
 msgid "Description of the Points SQL query"
 msgstr "Descripción de la consulta SSQL de Puntos"
 
@@ -771,38 +808,38 @@ msgstr "Descripción de la consulta SSQL de Puntos"
 msgid "points_sql"
 msgstr "points_sql"
 
-#: ../../build/doc/pgRouting-concepts.rst:346
+#: ../../build/doc/pgRouting-concepts.rst:356
 msgid "**pid**"
 msgstr "**pid**"
 
-#: ../../build/doc/pgRouting-concepts.rst:346
+#: ../../build/doc/pgRouting-concepts.rst:356
 msgid "(optional) Identifier of the point."
 msgstr "(opcional) Identificador del punto."
 
-#: ../../build/doc/pgRouting-concepts.rst:348
+#: ../../build/doc/pgRouting-concepts.rst:358
 msgid "If column present, it can not be NULL."
 msgstr "Si la columna está presente, no puede ser NULL."
 
-#: ../../build/doc/pgRouting-concepts.rst:349
+#: ../../build/doc/pgRouting-concepts.rst:359
 msgid ""
 "If column not present, a sequential identifier will be given automatically."
 msgstr ""
 "Si la columna no está presente, se proporcionará automáticamente un "
 "identificador secuencial."
 
-#: ../../build/doc/pgRouting-concepts.rst:351
+#: ../../build/doc/pgRouting-concepts.rst:361
 msgid "**edge_id**"
 msgstr "**edge_id**"
 
-#: ../../build/doc/pgRouting-concepts.rst:351
+#: ../../build/doc/pgRouting-concepts.rst:361
 msgid "Identifier of the \"closest\" edge to the point."
 msgstr "Identificador de la arista \"más cercano\" al punto."
 
-#: ../../build/doc/pgRouting-concepts.rst:352
+#: ../../build/doc/pgRouting-concepts.rst:362
 msgid "**fraction**"
 msgstr "**fraction**"
 
-#: ../../build/doc/pgRouting-concepts.rst:352
+#: ../../build/doc/pgRouting-concepts.rst:362
 msgid ""
 "Value in <0,1> that indicates the relative postition from the first end "
 "point of the edge."
@@ -810,48 +847,54 @@ msgstr ""
 "El valor en <0,1> que indica la posición relativa desde el primer punto "
 "final de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:353
+#: ../../build/doc/pgRouting-concepts.rst:363
 msgid "**side**"
 msgstr "**side**"
 
-#: ../../build/doc/pgRouting-concepts.rst:353
+#: ../../build/doc/pgRouting-concepts.rst:363
 msgid "``CHAR``"
 msgstr "``CHAR``"
 
-#: ../../build/doc/pgRouting-concepts.rst:353
+#: ../../build/doc/pgRouting-concepts.rst:363
 msgid "(optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:"
 msgstr "(opcional) Valor en ['b', 'r', 'l', NULL] que indica si el punto es:"
 
-#: ../../build/doc/pgRouting-concepts.rst:355
+#: ../../build/doc/pgRouting-concepts.rst:365
 msgid "In the right, left of the edge or"
 msgstr "A la derecha, a la izquierda del borde o"
 
-#: ../../build/doc/pgRouting-concepts.rst:356
+#: ../../build/doc/pgRouting-concepts.rst:366
 msgid "If it doesn't matter with 'b' or NULL."
 msgstr "Si no importa con 'b' o NULL."
 
-#: ../../build/doc/pgRouting-concepts.rst:357
+#: ../../build/doc/pgRouting-concepts.rst:367
 msgid "If column not present 'b' is considered."
 msgstr "Si  la columna no presente 'b' es considerada"
 
-#: ../../build/doc/pgRouting-concepts.rst:363
+#: ../../build/doc/pgRouting-concepts.rst:373
 msgid "smallint, int, bigint"
 msgstr "smallint, int, bigint"
 
-#: ../../build/doc/pgRouting-concepts.rst:372
+#: ../../build/doc/pgRouting-concepts.rst:379
+msgid "Description of the combinations_sql query for dijkstra like functions"
+msgstr ""
+"Descripción de la consulta de combinaciones_sql para funciones similares a "
+"dijkstra"
+
+#: ../../build/doc/pgRouting-concepts.rst:401
 msgid "Return columns & values"
 msgstr "Devolución de columnas y valores"
 
-#: ../../build/doc/pgRouting-concepts.rst:377
+#: ../../build/doc/pgRouting-concepts.rst:406
 msgid ""
 "There are several kinds of columns returned are depending of the function."
 msgstr "Hay varios tipos de columnas devueltas que dependen de la función."
 
-#: ../../build/doc/pgRouting-concepts.rst:380
+#: ../../build/doc/pgRouting-concepts.rst:409
 msgid "Return values for a path"
 msgstr "Valores devueltos para una ruta"
 
-#: ../../build/doc/pgRouting-concepts.rst:384
+#: ../../build/doc/pgRouting-concepts.rst:413
 msgid ""
 "Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost,"
 " agg_cost)``"
@@ -860,33 +903,33 @@ msgstr ""
 "edge, cost, agg_cost)``"
 
 #: ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:389
-#: ../../build/doc/pgRouting-concepts.rst:422
+#: ../../build/doc/pgRouting-concepts.rst:418
+#: ../../build/doc/pgRouting-concepts.rst:451
 msgid "**seq**"
 msgstr "**seq**"
 
 #: ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:389
-#: ../../build/doc/pgRouting-concepts.rst:390
-#: ../../build/doc/pgRouting-concepts.rst:422
-#: ../../build/doc/pgRouting-concepts.rst:423
-#: ../../build/doc/pgRouting-concepts.rst:424
+#: ../../build/doc/pgRouting-concepts.rst:418
+#: ../../build/doc/pgRouting-concepts.rst:419
+#: ../../build/doc/pgRouting-concepts.rst:451
+#: ../../build/doc/pgRouting-concepts.rst:452
+#: ../../build/doc/pgRouting-concepts.rst:453
 msgid "``INT``"
 msgstr "``INT``"
 
 #: ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:389
-#: ../../build/doc/pgRouting-concepts.rst:422
+#: ../../build/doc/pgRouting-concepts.rst:418
+#: ../../build/doc/pgRouting-concepts.rst:451
 msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
-#: ../../build/doc/pgRouting-concepts.rst:390
-#: ../../build/doc/pgRouting-concepts.rst:424
+#: ../../build/doc/pgRouting-concepts.rst:419
+#: ../../build/doc/pgRouting-concepts.rst:453
 msgid "**path_seq**"
 msgstr "**path_seq**"
 
-#: ../../build/doc/pgRouting-concepts.rst:390
-#: ../../build/doc/pgRouting-concepts.rst:424
+#: ../../build/doc/pgRouting-concepts.rst:419
+#: ../../build/doc/pgRouting-concepts.rst:453
 msgid ""
 "Relative position in the path. Has value **1** for the beginning of a path."
 msgstr ""
@@ -894,30 +937,30 @@ msgstr ""
 "ruta."
 
 #: ../../build/doc/flow-family.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:391
-#: ../../build/doc/pgRouting-concepts.rst:425
-#: ../../build/doc/pgRouting-concepts.rst:457
+#: ../../build/doc/pgRouting-concepts.rst:420
+#: ../../build/doc/pgRouting-concepts.rst:454
+#: ../../build/doc/pgRouting-concepts.rst:486
 msgid "**start_vid**"
 msgstr "**start_vid**"
 
 #: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:8
 #: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
 #: ../../build/doc/flow-family.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:391
-#: ../../build/doc/pgRouting-concepts.rst:397
-#: ../../build/doc/pgRouting-concepts.rst:403
-#: ../../build/doc/pgRouting-concepts.rst:404
-#: ../../build/doc/pgRouting-concepts.rst:425
+#: ../../build/doc/pgRouting-concepts.rst:420
+#: ../../build/doc/pgRouting-concepts.rst:426
 #: ../../build/doc/pgRouting-concepts.rst:432
-#: ../../build/doc/pgRouting-concepts.rst:438
-#: ../../build/doc/pgRouting-concepts.rst:439
-#: ../../build/doc/pgRouting-concepts.rst:457
-#: ../../build/doc/pgRouting-concepts.rst:458
+#: ../../build/doc/pgRouting-concepts.rst:433
+#: ../../build/doc/pgRouting-concepts.rst:454
+#: ../../build/doc/pgRouting-concepts.rst:461
+#: ../../build/doc/pgRouting-concepts.rst:467
+#: ../../build/doc/pgRouting-concepts.rst:468
+#: ../../build/doc/pgRouting-concepts.rst:486
+#: ../../build/doc/pgRouting-concepts.rst:487
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgRouting-concepts.rst:391
-#: ../../build/doc/pgRouting-concepts.rst:425
+#: ../../build/doc/pgRouting-concepts.rst:420
+#: ../../build/doc/pgRouting-concepts.rst:454
 msgid ""
 "Identifier of the starting vertex. Returned when multiple starting vetrices "
 "are in the query."
@@ -926,14 +969,14 @@ msgstr ""
 "iniciales en la consulta."
 
 #: ../../build/doc/flow-family.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:397
-#: ../../build/doc/pgRouting-concepts.rst:432
-#: ../../build/doc/pgRouting-concepts.rst:458
+#: ../../build/doc/pgRouting-concepts.rst:426
+#: ../../build/doc/pgRouting-concepts.rst:461
+#: ../../build/doc/pgRouting-concepts.rst:487
 msgid "**end_vid**"
 msgstr "**end_vid**"
 
-#: ../../build/doc/pgRouting-concepts.rst:397
-#: ../../build/doc/pgRouting-concepts.rst:432
+#: ../../build/doc/pgRouting-concepts.rst:426
+#: ../../build/doc/pgRouting-concepts.rst:461
 msgid ""
 "Identifier of the ending vertex. Returned when multiple ending vertices are "
 "in the query."
@@ -941,24 +984,24 @@ msgstr ""
 "Identificador del vértice final. Se devuelve cuando hay varios vértices "
 "finales en la consulta."
 
-#: ../../build/doc/pgRouting-concepts.rst:403
-#: ../../build/doc/pgRouting-concepts.rst:438
+#: ../../build/doc/pgRouting-concepts.rst:432
+#: ../../build/doc/pgRouting-concepts.rst:467
 msgid "**node**"
 msgstr "**node**"
 
-#: ../../build/doc/pgRouting-concepts.rst:403
-#: ../../build/doc/pgRouting-concepts.rst:438
+#: ../../build/doc/pgRouting-concepts.rst:432
+#: ../../build/doc/pgRouting-concepts.rst:467
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/flow-family.rst:7
-#: ../../build/doc/pgRouting-concepts.rst:404
-#: ../../build/doc/pgRouting-concepts.rst:439
+#: ../../build/doc/pgRouting-concepts.rst:433
+#: ../../build/doc/pgRouting-concepts.rst:468
 msgid "**edge**"
 msgstr "**edge**"
 
-#: ../../build/doc/pgRouting-concepts.rst:404
-#: ../../build/doc/pgRouting-concepts.rst:439
+#: ../../build/doc/pgRouting-concepts.rst:433
+#: ../../build/doc/pgRouting-concepts.rst:468
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the path"
 " sequence. ``-1`` for the last node of the path."
@@ -967,16 +1010,16 @@ msgstr ""
 "la secuencia de ruta. ``-1``  para el último nodo de la ruta."
 
 #: ../../build/doc/flow-family.rst:12 ../../build/doc/flow-family.rst:13
-#: ../../build/doc/pgRouting-concepts.rst:405
-#: ../../build/doc/pgRouting-concepts.rst:406
-#: ../../build/doc/pgRouting-concepts.rst:440
-#: ../../build/doc/pgRouting-concepts.rst:441
-#: ../../build/doc/pgRouting-concepts.rst:459
+#: ../../build/doc/pgRouting-concepts.rst:434
+#: ../../build/doc/pgRouting-concepts.rst:435
+#: ../../build/doc/pgRouting-concepts.rst:469
+#: ../../build/doc/pgRouting-concepts.rst:470
+#: ../../build/doc/pgRouting-concepts.rst:488
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
-#: ../../build/doc/pgRouting-concepts.rst:405
-#: ../../build/doc/pgRouting-concepts.rst:440
+#: ../../build/doc/pgRouting-concepts.rst:434
+#: ../../build/doc/pgRouting-concepts.rst:469
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the path "
 "sequence."
@@ -985,22 +1028,22 @@ msgstr ""
 "nodo en la secuencia de ruta."
 
 #: ../../build/doc/flow-family.rst:13
-#: ../../build/doc/pgRouting-concepts.rst:406
-#: ../../build/doc/pgRouting-concepts.rst:441
-#: ../../build/doc/pgRouting-concepts.rst:459
+#: ../../build/doc/pgRouting-concepts.rst:435
+#: ../../build/doc/pgRouting-concepts.rst:470
+#: ../../build/doc/pgRouting-concepts.rst:488
 msgid "**agg_cost**"
 msgstr "**agg_cost**"
 
-#: ../../build/doc/pgRouting-concepts.rst:406
-#: ../../build/doc/pgRouting-concepts.rst:441
+#: ../../build/doc/pgRouting-concepts.rst:435
+#: ../../build/doc/pgRouting-concepts.rst:470
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr "Coste agregado de ``start_v`` to ``node``."
 
-#: ../../build/doc/pgRouting-concepts.rst:413
+#: ../../build/doc/pgRouting-concepts.rst:442
 msgid "Return values for multiple paths from the same source and destination"
 msgstr "Valores devueltos para varias rutas desde el mismo origen y destino"
 
-#: ../../build/doc/pgRouting-concepts.rst:417
+#: ../../build/doc/pgRouting-concepts.rst:446
 msgid ""
 "Returns set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, "
 "edge, cost, agg_cost)``"
@@ -1008,11 +1051,11 @@ msgstr ""
 "Devuelve el conjunto de ``(seq, path_id, path_seq [, start_vid] [, end_vid],"
 " node, edge, cost, agg_cost)``"
 
-#: ../../build/doc/pgRouting-concepts.rst:423
+#: ../../build/doc/pgRouting-concepts.rst:452
 msgid "**path_id**"
 msgstr "**path_id**"
 
-#: ../../build/doc/pgRouting-concepts.rst:423
+#: ../../build/doc/pgRouting-concepts.rst:452
 msgid ""
 "Path identifier. Has value **1** for the first of a path. Used when there "
 "are multiple paths for the same ``start_vid`` to ``end_vid`` combination."
@@ -1021,18 +1064,18 @@ msgstr ""
 "utiliza cuando hay varias rutas  para la misma combinación de ``start_vid`` "
 "a ``end_vid``."
 
-#: ../../build/doc/pgRouting-concepts.rst:448
+#: ../../build/doc/pgRouting-concepts.rst:477
 msgid ""
 "Description of the return values for a :doc:`costMatrix-category` function"
 msgstr ""
 "Descripción de los valores devueltos para una función :doc:`costMatrix-"
 "category`"
 
-#: ../../build/doc/pgRouting-concepts.rst:452
+#: ../../build/doc/pgRouting-concepts.rst:481
 msgid "Returns SET OF ``(start_vid, end_vid, agg_cost)``"
 msgstr "Devuelve SET OF ``(start_vid, end_vid, agg_cost)``"
 
-#: ../../build/doc/pgRouting-concepts.rst:457
+#: ../../build/doc/pgRouting-concepts.rst:486
 msgid ""
 "Identifier of the starting vertex. Used when multiple starting vetrices are "
 "in the query."
@@ -1040,7 +1083,7 @@ msgstr ""
 "Identificador del vértice inicial. Se utiliza cuando hay varias vetrices "
 "iniciales en la consulta."
 
-#: ../../build/doc/pgRouting-concepts.rst:458
+#: ../../build/doc/pgRouting-concepts.rst:487
 msgid ""
 "Identifier of the ending vertex. Used when multiple ending vertices are in "
 "the query."
@@ -1048,11 +1091,11 @@ msgstr ""
 "Identificador del vértice final. Se utiliza cuando hay varios vértices "
 "finales en la consulta."
 
-#: ../../build/doc/pgRouting-concepts.rst:459
+#: ../../build/doc/pgRouting-concepts.rst:488
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr "Coste agregado de ``start_vid`` a ``end_vid``."
 
-#: ../../build/doc/pgRouting-concepts.rst:467
+#: ../../build/doc/pgRouting-concepts.rst:496
 msgid "Description of the Return Values"
 msgstr "Descripción de los valores devueltos"
 
@@ -1079,7 +1122,7 @@ msgid ""
 msgstr ""
 "Capacidad residual del arista en la dirección (``start_vid``, ``end_vid``)."
 
-#: ../../build/doc/pgRouting-concepts.rst:476
+#: ../../build/doc/pgRouting-concepts.rst:505
 msgid "For :doc:`pgr_maxFlowMinCost`"
 msgstr "Para :doc:`pgr_maxFlowMinCost`"
 
@@ -1103,20 +1146,20 @@ msgstr ""
 msgid "The aggregate cost."
 msgstr "El costo agregado."
 
-#: ../../build/doc/pgRouting-concepts.rst:485
+#: ../../build/doc/pgRouting-concepts.rst:514
 msgid "Advanced Topics"
 msgstr "Tópicos avanzados"
 
-#: ../../build/doc/pgRouting-concepts.rst:493
+#: ../../build/doc/pgRouting-concepts.rst:522
 msgid "Routing Topology"
 msgstr "Topología para Ruteo"
 
-#: ../../build/doc/pgRouting-concepts.rst:497
-#: ../../build/doc/pgRouting-concepts.rst:598
+#: ../../build/doc/pgRouting-concepts.rst:526
+#: ../../build/doc/pgRouting-concepts.rst:627
 msgid "Overview"
 msgstr "Resumen"
 
-#: ../../build/doc/pgRouting-concepts.rst:498
+#: ../../build/doc/pgRouting-concepts.rst:527
 msgid ""
 "Typically when GIS files are loaded into the data database for use with "
 "pgRouting they do not have topology information associated with them. To "
@@ -1134,7 +1177,7 @@ msgstr ""
 "suponiendo que puede navegar a cualquier otro segmento mediante la "
 "intersección de cualquiera de estos segmentos."
 
-#: ../../build/doc/pgRouting-concepts.rst:500
+#: ../../build/doc/pgRouting-concepts.rst:529
 msgid ""
 "You can use the :ref:`graph analysis functions <analytics>` to help you see "
 "where you might have topology problems in your data. If you need to node "
@@ -1150,7 +1193,7 @@ msgstr ""
 "función divide TODOS los segmentos cruzados y los une. Hay algunos casos en "
 "los que esto podría NO ser lo correcto."
 
-#: ../../build/doc/pgRouting-concepts.rst:502
+#: ../../build/doc/pgRouting-concepts.rst:531
 msgid ""
 "For example, when you have an overpass and underpass intersection, you do "
 "not want these noded, but pgr_nodeNetwork does not know that is the case and"
@@ -1168,7 +1211,7 @@ msgstr ""
 "intersecciones o para otros casos en donde crear el nodo de la intersección "
 "no sea lo correcto."
 
-#: ../../build/doc/pgRouting-concepts.rst:504
+#: ../../build/doc/pgRouting-concepts.rst:533
 msgid ""
 "For those cases where topology needs to be added the following functions may"
 " be useful. One way to prep the data for pgRouting is to add the following "
@@ -1186,7 +1229,7 @@ msgstr ""
 "contienen valores de datos específicos. Esto es sólo para darle una idea de "
 "lo que se puede hacer con los datos."
 
-#: ../../build/doc/pgRouting-concepts.rst:525
+#: ../../build/doc/pgRouting-concepts.rst:554
 msgid ""
 "The function :doc:`pgr_createTopology <pgr_createTopology>` will create the "
 "``vertices_tmp`` table and populate the ``source`` and ``target`` columns. "
@@ -1200,7 +1243,7 @@ msgstr ""
 "contiene código de clase de entidad y las declaraciones ``CASE`` lo "
 "convierten a una velocidad promedio."
 
-#: ../../build/doc/pgRouting-concepts.rst:588
+#: ../../build/doc/pgRouting-concepts.rst:617
 msgid ""
 "Now your database should be ready to use any (most?) of the pgRouting "
 "algorithms."
@@ -1208,11 +1251,11 @@ msgstr ""
 "Ahora su base de datos debe estar lista para usarse en cualquiera (mayoría?)"
 " de los algoritmos de pgRouting."
 
-#: ../../build/doc/pgRouting-concepts.rst:594
+#: ../../build/doc/pgRouting-concepts.rst:623
 msgid "Graph Analytics"
 msgstr "Análisis de gráficas"
 
-#: ../../build/doc/pgRouting-concepts.rst:599
+#: ../../build/doc/pgRouting-concepts.rst:628
 msgid ""
 "It is common to find problems with graphs that have not been constructed "
 "fully noded or in graphs with z-levels at intersection that have been "
@@ -1229,7 +1272,7 @@ msgstr ""
 "podemos buscar inconsistencias y algunas anomalías en un gráfico y les "
 "reportarlas para inspecciones adicionales."
 
-#: ../../build/doc/pgRouting-concepts.rst:601
+#: ../../build/doc/pgRouting-concepts.rst:630
 msgid ""
 "We do not current have any visualization tools for these problems, but I "
 "have used mapserver to render the graph and highlight potential problem "
@@ -1241,11 +1284,11 @@ msgstr ""
 " áreas con problemas potenciales. Alguien familiarizado con graphviz podría "
 "contribuir con herramientas para generar imágenes para este propósito."
 
-#: ../../build/doc/pgRouting-concepts.rst:605
+#: ../../build/doc/pgRouting-concepts.rst:634
 msgid "Analyze a Graph"
 msgstr "Analizar un gráfico"
 
-#: ../../build/doc/pgRouting-concepts.rst:607
+#: ../../build/doc/pgRouting-concepts.rst:636
 msgid ""
 "With :doc:`pgr_analyzeGraph` the graph can be checked for errors. For "
 "example for table \"mytab\" that has \"mytab_vertices_pgr\" as the vertices "
@@ -1255,19 +1298,19 @@ msgstr ""
 "Por ejemplo, para la tabla \"mytab\" que incluye a \"mytab_vertices_pgr\" "
 "como la tabla de vértices:"
 
-#: ../../build/doc/pgRouting-concepts.rst:630
+#: ../../build/doc/pgRouting-concepts.rst:659
 msgid "In the vertices table \"mytab_vertices_pgr\":"
 msgstr "En la tabla de vértices \"mytab_vertices_pgr\":"
 
-#: ../../build/doc/pgRouting-concepts.rst:632
+#: ../../build/doc/pgRouting-concepts.rst:661
 msgid "Deadends are identified by ``cnt=1``"
 msgstr "Los callejones están identificados por ``cnt=1``"
 
-#: ../../build/doc/pgRouting-concepts.rst:633
+#: ../../build/doc/pgRouting-concepts.rst:662
 msgid "Potencial gap problems are identified with ``chk=1``."
 msgstr "Se identifican problemas potenciales brecha con``chk=1``."
 
-#: ../../build/doc/pgRouting-concepts.rst:651
+#: ../../build/doc/pgRouting-concepts.rst:680
 msgid ""
 "For isolated road segments, for example, a segment where both ends are "
 "deadends. you can find these with the following query:"
@@ -1276,7 +1319,7 @@ msgstr ""
 "cual los dos extremos son callejones sin salida, se pueden encontrar con la "
 "siguiente consulta:"
 
-#: ../../build/doc/pgRouting-concepts.rst:660
+#: ../../build/doc/pgRouting-concepts.rst:689
 msgid ""
 "If you want to visualize these on a graphic image, then you can use "
 "something like mapserver to render the edges and the vertices and style "
@@ -1289,11 +1332,11 @@ msgstr ""
 " esto con una herramienta como graphviz o geoserver u otras herramientas "
 "similares."
 
-#: ../../build/doc/pgRouting-concepts.rst:664
+#: ../../build/doc/pgRouting-concepts.rst:693
 msgid "Analyze One Way Streets"
 msgstr "Analizar las calles unidireccionales"
 
-#: ../../build/doc/pgRouting-concepts.rst:666
+#: ../../build/doc/pgRouting-concepts.rst:695
 msgid ""
 ":doc:`pgr_analyzeOneWay` analyzes one way streets in a graph and identifies "
 "any flipped segments. Basically if you count the edges coming into a node "
@@ -1304,7 +1347,7 @@ msgstr ""
 "entran en un nodo y las aristas bordes que salen de un nodo, el número tiene"
 " que ser mayor que uno."
 
-#: ../../build/doc/pgRouting-concepts.rst:668
+#: ../../build/doc/pgRouting-concepts.rst:697
 msgid ""
 "This query will add two columns to the vertices_tmp table ``ein int`` and "
 "``eout int`` and populate it with the appropriate counts. After running this"
@@ -1317,7 +1360,7 @@ msgstr ""
 "pueden identificar los nodos con  problemas potenciales utilizando la "
 "siguiente consulta.  "
 
-#: ../../build/doc/pgRouting-concepts.rst:671
+#: ../../build/doc/pgRouting-concepts.rst:700
 msgid ""
 "The rules are defined as an array of text strings that if match the ``col`` "
 "value would be counted as true for the source or target in or out condition."
@@ -1326,11 +1369,11 @@ msgstr ""
 "con el valor de ``col`` se considera como válido para el origen o destino "
 "dentro o fuera de la condición."
 
-#: ../../build/doc/pgRouting-concepts.rst:675
+#: ../../build/doc/pgRouting-concepts.rst:704
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgRouting-concepts.rst:677
+#: ../../build/doc/pgRouting-concepts.rst:706
 msgid ""
 "Lets assume we have a table \"st\" of edges and a column \"one_way\" that "
 "might have values like:"
@@ -1338,30 +1381,30 @@ msgstr ""
 "Supongamos que tenemos una tabla \"st\" de bordes y una columna \"one_way\" "
 "que podría tener valores como:"
 
-#: ../../build/doc/pgRouting-concepts.rst:679
+#: ../../build/doc/pgRouting-concepts.rst:708
 msgid "'FT'    - oneway from the source to the target node."
 msgstr "'FT' - dirección unidireccional de la fuente para el nodo de destino."
 
-#: ../../build/doc/pgRouting-concepts.rst:680
+#: ../../build/doc/pgRouting-concepts.rst:709
 msgid "'TF'    - oneway from the target to the source node."
 msgstr ""
 "'TF' - dirección unidireccional  desde el nodo destino hasta el nodo fuente."
 
-#: ../../build/doc/pgRouting-concepts.rst:681
+#: ../../build/doc/pgRouting-concepts.rst:710
 msgid "'B'     - two way street."
 msgstr "'B' - calle de doble sentido."
 
-#: ../../build/doc/pgRouting-concepts.rst:682
+#: ../../build/doc/pgRouting-concepts.rst:711
 msgid "''      - empty field, assume twoway."
 msgstr "''- campo vacío, suponer doble sentido."
 
-#: ../../build/doc/pgRouting-concepts.rst:683
+#: ../../build/doc/pgRouting-concepts.rst:712
 msgid "<NULL>  - NULL field, use two_way_if_null flag."
 msgstr ""
 "<NULL> - Campo NULL, usar bandera de two_way_if_null, es decir, doble "
 "sentido cuando nulo."
 
-#: ../../build/doc/pgRouting-concepts.rst:685
+#: ../../build/doc/pgRouting-concepts.rst:714
 msgid ""
 "Then we could form the following query to analyze the oneway streets for "
 "errors."
@@ -1369,7 +1412,7 @@ msgstr ""
 "Entonces se puede  formar la siguiente consulta para analizar las calles "
 "unidireccionales para errores."
 
-#: ../../build/doc/pgRouting-concepts.rst:704
+#: ../../build/doc/pgRouting-concepts.rst:733
 msgid ""
 "Typically these problems are generated by a break in the network, the one "
 "way direction set wrong, maybe an error related to z-levels or a network "
@@ -1379,7 +1422,7 @@ msgstr ""
 "dirección un camino equivocado, quizás un error relacionado con niveles z o "
 "una red que no esté debidamente indicada con nodos."
 
-#: ../../build/doc/pgRouting-concepts.rst:706
+#: ../../build/doc/pgRouting-concepts.rst:735
 msgid ""
 "The above tools do not detect all network issues, but they will identify "
 "some common problems. There are other problems that are hard to detect "
@@ -1394,15 +1437,15 @@ msgstr ""
 "está conectada a la red del continente porque faltan las rutas del puente o "
 "del ferry."
 
-#: ../../build/doc/pgRouting-concepts.rst:714
+#: ../../build/doc/pgRouting-concepts.rst:743
 msgid "Performance Tips"
 msgstr "Consejos de Rendimiento"
 
-#: ../../build/doc/pgRouting-concepts.rst:721
+#: ../../build/doc/pgRouting-concepts.rst:750
 msgid "For the Routing functions"
 msgstr "Para las funciones de Ruteo"
 
-#: ../../build/doc/pgRouting-concepts.rst:723
+#: ../../build/doc/pgRouting-concepts.rst:752
 msgid ""
 "To get faster results bound your queries to the area of interest of routing "
 "to have, for example, no more than one million rows."
@@ -1410,7 +1453,7 @@ msgstr ""
 "Para obtener resultados más rápidos, las consultas enlazan el área de "
 "interés para tener, por ejemplo, no más de un millón de filas."
 
-#: ../../build/doc/pgRouting-concepts.rst:725
+#: ../../build/doc/pgRouting-concepts.rst:754
 msgid ""
 "Use an inner query SQL that does not include some edges in the routing "
 "function"
@@ -1418,15 +1461,15 @@ msgstr ""
 "Utilice una consulta SQL interna que no incluya algunas aristas en la "
 "función de ruteo"
 
-#: ../../build/doc/pgRouting-concepts.rst:733
+#: ../../build/doc/pgRouting-concepts.rst:762
 msgid "Integrating the inner query to the pgRouting function:"
 msgstr "Integración de la consulta interna a la función pgRouting:"
 
-#: ../../build/doc/pgRouting-concepts.rst:747
+#: ../../build/doc/pgRouting-concepts.rst:776
 msgid "For the topology functions:"
 msgstr "Para las funciones de topología:"
 
-#: ../../build/doc/pgRouting-concepts.rst:749
+#: ../../build/doc/pgRouting-concepts.rst:778
 msgid ""
 "When \"you know\" that you are going to remove a set of edges from the edges"
 " table, and without those edges you are going to use a routing function you "
@@ -1436,23 +1479,23 @@ msgstr ""
 "bordes, y sin esos bordes va a utilizar una función de enrrutamiento puede "
 "hacer el siguiente:"
 
-#: ../../build/doc/pgRouting-concepts.rst:751
+#: ../../build/doc/pgRouting-concepts.rst:780
 msgid "Analize the new topology based on the actual topology:"
 msgstr "Analizar la topología nueva basada en la topología actual:"
 
-#: ../../build/doc/pgRouting-concepts.rst:757
+#: ../../build/doc/pgRouting-concepts.rst:786
 msgid "Or create a new topology if the change is permanent:"
 msgstr "O crear una nueva topología si el cambio es permanente:"
 
-#: ../../build/doc/pgRouting-concepts.rst:768
+#: ../../build/doc/pgRouting-concepts.rst:797
 msgid "How to contribute"
 msgstr "Cómo contribuir"
 
-#: ../../build/doc/pgRouting-concepts.rst:771
+#: ../../build/doc/pgRouting-concepts.rst:800
 msgid "Wiki"
 msgstr "Wiki"
 
-#: ../../build/doc/pgRouting-concepts.rst:772
+#: ../../build/doc/pgRouting-concepts.rst:801
 msgid ""
 "Edit an existing  `pgRouting Wiki "
 "<https://github.com/pgRouting/pgrouting/wiki>`_ page."
@@ -1460,11 +1503,11 @@ msgstr ""
 "Edita una página existente `pgRouting Wiki "
 "<https://github.com/pgRouting/pgrouting/wiki>`_"
 
-#: ../../build/doc/pgRouting-concepts.rst:773
+#: ../../build/doc/pgRouting-concepts.rst:802
 msgid "Or create a new Wiki page"
 msgstr "O crea una nueva página Wiki"
 
-#: ../../build/doc/pgRouting-concepts.rst:775
+#: ../../build/doc/pgRouting-concepts.rst:804
 msgid ""
 "Create a page on the `pgRouting Wiki "
 "<https://github.com/pgRouting/pgrouting/wiki>`_"
@@ -1472,11 +1515,11 @@ msgstr ""
 "Crear una página en el `pgRouting Wiki "
 "<https://github.com/pgRouting/pgrouting/wiki>`_"
 
-#: ../../build/doc/pgRouting-concepts.rst:776
+#: ../../build/doc/pgRouting-concepts.rst:805
 msgid "Give the title an appropriate name"
 msgstr "Asigne al título un nombre apropiado"
 
-#: ../../build/doc/pgRouting-concepts.rst:779
+#: ../../build/doc/pgRouting-concepts.rst:808
 msgid ""
 "`Example <https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-"
 "parallel-edges-(KSP)>`_"
@@ -1484,11 +1527,11 @@ msgstr ""
 "`Example <https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-"
 "parallel-edges-(KSP)>`_"
 
-#: ../../build/doc/pgRouting-concepts.rst:783
+#: ../../build/doc/pgRouting-concepts.rst:812
 msgid "Adding Functionaity to pgRouting"
 msgstr "Agregar funcionalidad a pgRouting"
 
-#: ../../build/doc/pgRouting-concepts.rst:784
+#: ../../build/doc/pgRouting-concepts.rst:813
 msgid ""
 "Consult the `developer's documentation "
 "<https://docs.pgrouting.org/doxy/2.4/index.html>`_"
@@ -1496,14 +1539,14 @@ msgstr ""
 "Consultar `developer's documentation "
 "<https://docs.pgrouting.org/doxy/2.4/index.html>`_"
 
-#: ../../build/doc/pgRouting-concepts.rst:789
+#: ../../build/doc/pgRouting-concepts.rst:818
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgRouting-concepts.rst:790
+#: ../../build/doc/pgRouting-concepts.rst:819
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgRouting-concepts.rst:791
+#: ../../build/doc/pgRouting-concepts.rst:820
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
