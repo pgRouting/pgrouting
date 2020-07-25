@@ -50,7 +50,24 @@ namespace pgrouting {
             public:
 
             typedef typename G::V_i V_i;
-           
+            void print_Bipartite(std::vector<pgr_bipartite_rt> &results, G &graph)
+            {
+                typedef std::vector <boost::default_color_type> partition_t;
+    
+                partition_t partition;
+                auto partition_map = make_iterator_property_map(partition.begin (), boost::get (boost::vertex_index, graph.graph));
+                is_bipartite (graph.graph, boost::get (boost::vertex_index, graph.graph), partition_map);
+                
+                V_i vertex_iter, vertex_end;
+/*
+                for (boost::tie (vertex_iter, vertex_end) = vertices (graph.graph); vertex_iter != vertex_end; ++vertex_iter)
+                {
+                    log << "Vertex " << *vertex_iter << " has color " << (boost::get (partition_map, *vertex_iter) == boost::color_traits <
+                    boost::default_color_type>::white () ? "white" : "black") << std::endl;
+                }
+                */
+               return
+            }
 
 
 
@@ -66,7 +83,7 @@ namespace pgrouting {
                     bool bipartite = is_bipartite (graph.graph);
                     if(bipartite)
                     {
-                        //print_Bipartite(results,graph);
+                        print_Bipartite(results,graph);
                     }
                     return results;
                      
