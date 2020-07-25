@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -74,13 +74,15 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:37
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_edgeDisjointPaths.html>`__)"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_edgeDisjointPaths.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_edgeDisjointPaths.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_edgeDisjointPaths.html>`__)"
+"**Versiones soportadas:** actual(​`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_edgeDisjointPaths.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_edgeDisjointPaths.html>`__"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:40
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:41
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_edgeDisjointPaths.html>`__ `2.5 "
@@ -95,12 +97,13 @@ msgstr ""
 "<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_edgeDisjointPaths.html>`__"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_dijkstra.rst:4
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:47
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgr_bdDijkstra.rst:4
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:48
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:49
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:50
 msgid ""
 "Calculates the edge disjoint paths between two groups of vertices. Utilizes "
 "underlying maximum flow algorithms to calculate the paths."
@@ -108,17 +111,17 @@ msgstr ""
 "Calcula las rutas de aristas desarticuladas entre dos grupos de vértices. "
 "Utiliza algoritmos de flujo máximo subyacentes para calcular las rutas."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:57
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:58
 msgid "The main characterics are:"
 msgstr "Los principales características son:"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:53
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:54
 msgid "Calculates the edge disjoint paths between any two groups of vertices."
 msgstr ""
 "Calcula las rutas de aristas desarticuladas entre dos grupos de vértices "
 "cualquiera."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:54
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:55
 msgid ""
 "Returns EMPTY SET when source and destination are the same, or cannot be "
 "reached."
@@ -126,29 +129,29 @@ msgstr ""
 "Devuelve un conjunto vacío EMPTY SET cuando el origen y el destino son los "
 "mismos o no se puede llegar."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:55
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:56
 msgid "The graph can be directed or undirected."
 msgstr "El gráfico puede dirigido o no."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:56
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:57
 msgid "One to many, many to one, many to many versions are also supported."
 msgstr ""
 "Una a muchas, muchas a una, muchas a muchas, versiones que también son "
 "soportadas."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:57
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:58
 msgid "Uses :doc:`pgr_boykovKolmogorov` to calculate the paths."
 msgstr "Utiliza :doc:`pgr_boykovKolmogorov` para calcular las rutas."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:60
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:61
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:63
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:64
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:76
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:77
 msgid "Using defaults"
 msgstr "Uso de valores predeterminados"
 
@@ -156,24 +159,24 @@ msgstr "Uso de valores predeterminados"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:83
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:84
 msgid "From vertex :math:`3` to vertex :math:`5` on a **directed** graph"
 msgstr "Del vértice :math:`3` al vértice :math:`5` en un grafo **dirigido**"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:93
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:94
 msgid "One to One"
 msgstr "Uno a Uno"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:101
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:102
 msgid "From vertex :math:`3` to vertex :math:`5` on an **undirected** graph"
 msgstr ""
 "Del vértice :math:`3` al vértice :math:`5` en un grafo **no dirigido**"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:111
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:112
 msgid "One to Many"
 msgstr "Uno a Muchos"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:119
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:120
 msgid ""
 "From vertex :math:`3` to vertices :math:`\\{4, 5, 10\\}` on a **directed** "
 "graph"
@@ -181,22 +184,22 @@ msgstr ""
 "Del vértice :math:`3` a los vértices :math:`\\{4, 5, 10\\}` en un grafo "
 "**dirigido** graph"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:130
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:131
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:138
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:139
 msgid ""
 "From vertices :math:`\\{3, 6\\}` to vertex :math:`5` on a **directed** graph"
 msgstr ""
 "De los vértices :math:`\\{3, 6\\}` al vértice :math:`5` en un grafo "
 "**dirigido**"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:149
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:150
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:157
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:158
 msgid ""
 "From vertices :math:`\\{3, 6\\}` to vertices :math:`\\{4, 5, 10\\}` on a "
 "**directed** graph"
@@ -204,37 +207,39 @@ msgstr ""
 "De los vértices :math:`\\{3, 6\\}` a los vértices :math:`\\{4, 5, 10\\}` en "
 "un grafo **dirigido**"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:165
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:166
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_dijkstra.rst:4
+#: ../../build/doc/pgr_bdDijkstra.rst:4
 msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_dijkstra.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgr_bdDijkstra.rst:4
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_dijkstra.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_bdDijkstra.rst:4
 msgid "Default"
 msgstr "Valores predeterminados"
 
-#: ../../build/doc/pgr_dijkstra.rst:6
-msgid "**edges_sql**"
-msgstr "**edges_sql**"
+#: ../../build/doc/pgr_bdDijkstra.rst:6
+msgid "**Edges SQL**"
+msgstr "**Edges SQL**"
 
-#: ../../build/doc/pgr_dijkstra.rst:6
+#: ../../build/doc/pgr_bdDijkstra.rst:6
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_dijkstra.rst:6
-msgid "Inner SQL query as described below."
-msgstr "Consulta SQL interna como se describe a continuación."
+#: ../../build/doc/pgr_bdDijkstra.rst:6
+msgid "`Edges query`_ as described below"
+msgstr "`Edges query`_ como se describe a continuación"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_dijkstra.rst:7
+#: ../../build/doc/pgr_bdDijkstra.rst:7
 msgid "**start_vid**"
 msgstr "**start_vid**"
 
@@ -242,66 +247,70 @@ msgstr "**start_vid**"
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:25
-#: ../../build/doc/pgr_dijkstra.rst:7 ../../build/doc/pgr_dijkstra.rst:9
+#: ../../build/doc/pgr_bdDijkstra.rst:7 ../../build/doc/pgr_bdDijkstra.rst:9
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_dijkstra.rst:7
+#: ../../build/doc/pgr_bdDijkstra.rst:7
 msgid "Identifier of the starting vertex of the path."
 msgstr "Identificador del vértice inicial de la ruta."
 
-#: ../../build/doc/pgr_dijkstra.rst:8
+#: ../../build/doc/pgr_bdDijkstra.rst:8
 msgid "**start_vids**"
 msgstr "**start_vids**"
 
-#: ../../build/doc/pgr_dijkstra.rst:8 ../../build/doc/pgr_dijkstra.rst:10
+#: ../../build/doc/pgr_bdDijkstra.rst:8 ../../build/doc/pgr_bdDijkstra.rst:10
 msgid "``ARRAY[BIGINT]``"
 msgstr "``ARRAY[BIGINT]``"
 
-#: ../../build/doc/pgr_dijkstra.rst:8
+#: ../../build/doc/pgr_bdDijkstra.rst:8
 msgid "Array of identifiers of starting vertices."
 msgstr "Arreglo de identificadores de vértices iniciales."
 
 #: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgr_dijkstra.rst:9
+#: ../../build/doc/pgr_bdDijkstra.rst:9
 msgid "**end_vid**"
 msgstr "**end_vid**"
 
-#: ../../build/doc/pgr_dijkstra.rst:9
+#: ../../build/doc/pgr_bdDijkstra.rst:9
 msgid "Identifier of the ending vertex of the path."
 msgstr "Identificador del vértice final de la ruta."
 
-#: ../../build/doc/pgr_dijkstra.rst:10
+#: ../../build/doc/pgr_bdDijkstra.rst:10
 msgid "**end_vids**"
 msgstr "**end_vids**"
 
-#: ../../build/doc/pgr_dijkstra.rst:10
+#: ../../build/doc/pgr_bdDijkstra.rst:10
 msgid "Array of identifiers of ending vertices."
 msgstr "Arreglo de identificadores de vértices finales."
 
-#: ../../build/doc/pgr_dijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:11
 msgid "**directed**"
 msgstr "**dirigido**"
 
-#: ../../build/doc/pgr_dijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:11
 msgid "``BOOLEAN``"
 msgstr "``BOOLEAN``"
 
-#: ../../build/doc/pgr_dijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:11
 msgid "``true``"
 msgstr "``true``"
 
-#: ../../build/doc/pgr_dijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:11
 msgid "When ``true`` Graph is considered `Directed`"
 msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
-#: ../../build/doc/pgr_dijkstra.rst:12
+#: ../../build/doc/pgr_bdDijkstra.rst:12
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:172
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:173
 msgid "Inner query"
 msgstr "Consulta interna"
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:176
+msgid "Edges query"
+msgstr "Consulta de aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -400,7 +409,7 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:179
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:183
 msgid "Return Columns"
 msgstr "Columnas de Devoluciones"
 
@@ -520,29 +529,22 @@ msgstr "**agg_cost**"
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr "Coste agregado de ``start_v`` to ``node``."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:186
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:190
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:188
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:192
 msgid ":doc:`flow-family`"
 msgstr ":doc:`flow-family`"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:191
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:195
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:192
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:196
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:193
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:197
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_edgeDisjointPaths.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_edgeDisjointPaths.html>`__)"
