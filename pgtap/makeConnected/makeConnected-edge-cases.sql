@@ -1,8 +1,6 @@
 \i setup.sql
 
-SELECT plan(16);
-
-SET extra_float_digits = -3;
+SELECT plan(17);
 
 -- 0 edge, 0 vertex tests
 
@@ -154,11 +152,8 @@ SELECT *
 FROM pgr_makeConnected('SELECT id,  source, 2 AS target, cost, reverse_cost
                                 FROM edge_table WHERE id = 2
                                     UNION
-                        SELECT id, source, 6 AS target, cost, reverse_cost
-                                FROM edge_table WHERE id = 9
-                                    UNION
-                        SELECT id,  source, 7 AS target, cost, reverse_cost
-                                FROM edge_table WHERE id = 6'
+                        SELECT id, source, target, cost, reverse_cost
+                                FROM edge_table WHERE id = 17'
 );
 
 SELECT set_eq('makeConnected12',
@@ -170,10 +165,9 @@ SELECT set_eq('makeConnected12',
 
 SELECT set_eq('makeConnected13',
     $$VALUES
-        (1, 6, 2),
-        (2, 2, 7)
+        (1, 2, 14)
     $$,
-    '13:Graph with three vertices 2, 6 and 7'
+    '13:Graph with three vertices 2, 14 and 15'
 );
 
 -- 4 vertex tests ===> Already Connected
@@ -202,14 +196,18 @@ FROM pgr_makeConnected(
 
 PREPARE makeConnected16 AS
 SELECT *
-FROM pgr_makeConnected('SELECT id,  source, 2 AS target, cost, reverse_cost
-                                FROM edge_table WHERE id = 2
-                                    UNION
-                        SELECT id, source, 6 AS target, cost, reverse_cost
-                                FROM edge_table WHERE id = 9
-                                    UNION
-                        SELECT id,  source, target, cost, reverse_cost
-                                FROM edge_table WHERE id = 14'
+FROM pgr_makeConnected(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id IN (2,9)'
+);
+
+PREPARE makeConnected17 AS
+SELECT *
+FROM pgr_makeConnected(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table
+    WHERE id IN (17,18)'
 );
 
 SELECT set_eq('makeConnected15',
@@ -221,10 +219,16 @@ SELECT set_eq('makeConnected15',
 
 SELECT set_eq('makeConnected16',
     $$VALUES
-        (1, 6, 10),
-        (2, 13, 2)
+        (1, 3, 6)
     $$,
-    '16:Three Connected Components. Two rows are returned'
+    '16:Two Connected Components. One row is returned'
+);
+
+SELECT set_eq('makeConnected17',
+    $$VALUES
+        (1, 15, 16)
+    $$,
+    '16:Two Connected Components. One row is returned'
 );
 
 
