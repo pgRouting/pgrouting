@@ -76,22 +76,17 @@ process(
         size_t *result_count) {
     pgr_SPI_connect();
 
-    PGR_DBG("Initializing arrays");
     size_t size_rootsArr = 0;
 
-    int64_t* rootsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_rootsArr, roots);
-    PGR_DBG("rootsArr size %ld", size_rootsArr);
+    int64_t* rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Loading the edges");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
-    PGR_DBG("Total edges in query %ld", total_edges);
 
     if (total_edges == 0) {
         if (rootsArr) pfree(rootsArr);
@@ -99,7 +94,6 @@ process(
         return;
     }
 
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
@@ -118,7 +112,6 @@ process(
             &err_msg);
 
     time_msg("processing pgr_depthFirstSearch", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -168,7 +161,6 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
          *
          **********************************************************************/
 
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
@@ -244,7 +236,6 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        PGR_DBG("Returning done");
         SRF_RETURN_DONE(funcctx);
     }
 }
