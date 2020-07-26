@@ -112,7 +112,6 @@ do_pgr_sequentialVertexColoring(
 
         std::vector<pgr_vertex_color_rt> results;
 
-        // string variable to store the log messages
         std::string logstr;
 
         graphType gType = UNDIRECTED;
@@ -120,17 +119,14 @@ do_pgr_sequentialVertexColoring(
 
         undigraph.insert_edges(data_edges, total_edges);
 
-        // calls the template function
         results = pgr_sequentialVertexColoring(
                 undigraph,
                 logstr);
 
         log << logstr;
 
-        // the count of rows in the result
         auto count = results.size();
 
-        // returns directly in case of empty rows in the results
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;

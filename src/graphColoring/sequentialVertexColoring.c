@@ -35,16 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
-/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
 
-/* for functions to get edges information */
 #include "c_common/edges_input.h"
-/* for handling array related stuffs */
 #include "c_common/arrays_input.h"
 
 #include "drivers/graphColoring/sequentialVertexColoring_driver.h"
@@ -73,7 +68,6 @@ process(
 
         pgr_vertex_color_rt **result_tuples,
         size_t *result_count) {
-    // https://www.postgresql.org/docs/current/static/spi-spi-connect.html
     pgr_SPI_connect();
 
     (*result_tuples) = NULL;
@@ -83,7 +77,6 @@ process(
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    // load the edges belonging to the graph
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total edges in query %ld", total_edges);
 
