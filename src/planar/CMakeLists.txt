@@ -1,4 +1,4 @@
-ADD_LIBRARY(planarGraph OBJECT
+ADD_LIBRARY(planar OBJECT
     boyerMyrvold.c
     boyerMyrvold_driver.cpp
     )

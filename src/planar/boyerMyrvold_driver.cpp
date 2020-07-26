@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/planarGraph/boyerMyrvold_driver.h"
+#include "drivers/planar/boyerMyrvold_driver.h"
 
 #include <vector>
 #include <algorithm>
@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "c_types/pgr_boyer_t.h"
 
-#include "planarGraph/pgr_boyerMyrvold.hpp"
+#include "planar/pgr_boyerMyrvold.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 
 
