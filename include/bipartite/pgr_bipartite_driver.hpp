@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/property_map/vector_property_map.hpp>
 #include <boost/type_traits.hpp>
 #include <boost/graph/bipartite.hpp>
+#include "cpp_common/interruption.h"
 
 
 namespace pgrouting {
@@ -60,21 +61,11 @@ namespace pgrouting {
 
                 
                 
-                try {
-             // calling the boost function
+               /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+            CHECK_FOR_INTERRUPTS();
                 is_bipartite (graph.graph, boost::get (boost::vertex_index, graph.graph), partition_map);
-                     } catch (boost::exception const& ex) {
-                          (void)ex;
-                             throw;
-                     } catch (std::exception &e) {
-                         (void)e;
-                         throw;
-                      } catch (...) {
-                          throw;
-                      }
-              //  
-                
-                
+                    
+        
                 
             V_i v, vend;
 
