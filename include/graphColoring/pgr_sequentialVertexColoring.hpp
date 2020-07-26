@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 
 
 /** @file pgr_sequentialVertexColoring.hpp
@@ -87,6 +88,9 @@ class Pgr_sequentialVertexColoring {
          // An iterator property map which records the colors of each vertex
          auto color_map = boost::make_iterator_property_map(colors.begin(),
              boost::get(boost::vertex_index, graph.graph));
+
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
 
          try {
              boost::sequential_vertex_coloring(
