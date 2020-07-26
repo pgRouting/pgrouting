@@ -89,13 +89,11 @@ class Pgr_depthFirstSearch {
              if (graph.has_vertex(root)) {
                  results.push_back({root, 0, root, -1, 0.0, 0.0});
 
-                 // get the graph root vertex
                  auto v_root(graph.get_V(root));
 
                  // perform the algorithm
                  depthFirstSearch_single_vertex(graph, v_root, visited_order, max_depth, directed);
 
-                 // get the results
                  auto result = get_results(visited_order, root, max_depth, graph);
                  results.insert(results.end(), result.begin(), result.end());
              }
