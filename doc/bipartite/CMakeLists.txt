@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    pgr_LTDTree.rst
+    pgr_bipartite.rst
     )
 
 foreach (f ${LOCAL_FILES})
