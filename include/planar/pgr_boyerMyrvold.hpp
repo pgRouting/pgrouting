@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_PLANARGRAPH_PGR_BOYERMYRVOLD_HPP_
-#define INCLUDE_PLANARGRAPH_PGR_BOYERMYRVOLD_HPP_
+#ifndef INCLUDE_PLANAR_PGR_BOYERMYRVOLD_HPP_
+#define INCLUDE_PLANAR_PGR_BOYERMYRVOLD_HPP_
 #pragma once
 
 #include <boost/graph/adjacency_list.hpp>
@@ -82,4 +82,4 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
 }
 }
 
-#endif //INCLUDE_PLANARGRAPH_PGR_BOYERMYRVOLD_HPP_
+#endif //INCLUDE_PLANAR_PGR_BOYERMYRVOLD_HPP_
