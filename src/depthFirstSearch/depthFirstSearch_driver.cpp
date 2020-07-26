@@ -74,8 +74,7 @@ pgr_depthFirstSearch(
         G &graph,
         std::vector<int64_t> roots,
         int64_t max_depth,
-        bool directed,
-        std::string &log) {
+        bool directed) {
     std::sort(roots.begin(), roots.end());
     roots.erase(
             std::unique(roots.begin(), roots.end()),
@@ -84,7 +83,6 @@ pgr_depthFirstSearch(
     pgrouting::functions::Pgr_depthFirstSearch<G> fn_depthFirstSearch;
     auto results = fn_depthFirstSearch.depthFirstSearch(
             graph, roots, max_depth, directed);
-    log += fn_depthFirstSearch.get_log();
     return results;
 }
 
@@ -145,10 +143,7 @@ do_pgr_depthFirstSearch(
 
         graphType gType = directed ? DIRECTED : UNDIRECTED;
 
-        std::string logstr;
-
         if (directed) {
-            log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
 
@@ -156,10 +151,8 @@ do_pgr_depthFirstSearch(
                     digraph,
                     roots,
                     max_depth,
-                    directed,
-                    logstr);
+                    directed);
         } else {
-            log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
 
@@ -167,11 +160,8 @@ do_pgr_depthFirstSearch(
                     undigraph,
                     roots,
                     max_depth,
-                    directed,
-                    logstr);
+                    directed);
         }
-
-        log << logstr;
 
         auto count = results.size();
 

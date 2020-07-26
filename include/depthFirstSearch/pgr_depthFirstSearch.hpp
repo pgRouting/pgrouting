@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 
 #include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/pgr_messages.h"
 
 
 /** @file pgr_depthFirstSearch.hpp
@@ -51,7 +50,7 @@ namespace functions {
 //*************************************************************
 
 template <class G>
-class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
+class Pgr_depthFirstSearch {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
