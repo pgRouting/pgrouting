@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/property_map/property_map.hpp>
 #include <boost/property_map/vector_property_map.hpp>
 #include <boost/type_traits.hpp>
+#include "cpp_common/interruption.h"
 using namespace boost;
 using namespace  std;
 
@@ -73,6 +74,9 @@ namespace pgrouting {
                   auto domTreePredMap =
                            make_iterator_property_map(domTreePredVector.begin(), boost::get(boost::vertex_index, graph.graph));
                    
+                    
+               /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+                   CHECK_FOR_INTERRUPTS();
                    lengauer_tarjan_dominator_tree(graph.graph, graph.get_V(root), domTreePredMap);
 
 
