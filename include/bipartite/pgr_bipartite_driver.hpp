@@ -46,82 +46,58 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
     namespace functions {
+
         template<class G>
         class Pgr_Bipartite : public pgrouting::Pgr_messages {
+            
             public:
-
             typedef typename G::V_i V_i;
-            std::vector<pgr_bipartite_rt> print_Bipartite( G &graph)
-            {
+            
+            std::vector<pgr_bipartite_rt> print_Bipartite(
+                    G &graph){
                 std::vector<pgr_bipartite_rt> results;
-                std::vector <boost::default_color_type> partition (graph.num_vertices());
+                std::vector <boost::default_color_type> partition (graph.num_vertices());    
+                auto partition_map =
+                    make_iterator_property_map(partition.begin (), boost::get (boost::vertex_index, graph.graph));
 
-                 
-                auto partition_map = make_iterator_property_map(partition.begin (), boost::get (boost::vertex_index, graph.graph));
-
-                
-                
                /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-            CHECK_FOR_INTERRUPTS();
-                is_bipartite (graph.graph, boost::get (boost::vertex_index, graph.graph), partition_map);
-                    
-        
-                
-            V_i v, vend;
-
-         // iterate through every vertex in the graph
+                CHECK_FOR_INTERRUPTS();
+                boost::is_bipartite (graph.graph, boost::get (boost::vertex_index, graph.graph), partition_map);
+                         
+                V_i v, vend;
                 for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
-
-                     int64_t vid = graph[*v].id;
-                     auto color =(boost::get (partition_map, *v) == boost::color_traits <boost::default_color_type>::white () ? "white" : "black");
-                     if(color=="white")
-                     {
-                         results.push_back(
-                             {
+                    int64_t vid = graph[*v].id;
+                    auto color =(boost::get (partition_map, *v) == boost::color_traits <boost::default_color_type>::white () ? "white" : "black");
+                    if(color=="white"){
+                        results.push_back({
                                  vid,0
-                             }
-                         );
-                     }
-                     else
-                     {
-                         results.push_back(
-                             {
+                             });
+                    }
+                    else{
+                        results.push_back({
                                  vid,1
-                             }
-                         );
-                     }
-                     log<<vid<<" "<<color<<"\n";
-
+                             });
+                    }
                 }
                 return results;
                
             }
 
 
-
             std::vector<pgr_bipartite_rt> pgr_bipartite(
-                G &graph ){
-                    log<<"Started reading"<<std::endl;
-                    std::vector<pgr_bipartite_rt> results(graph.num_vertices());
-                    
+                    G &graph ){
 
-                    /***Todo 
-                     * we might need to define sequance in pgr_.sql file
-                     * */
-                    bool bipartite = is_bipartite (graph.graph);
-                    if(bipartite)
-                    {
-                        results=print_Bipartite(graph);
-                    }
-                    return results;
-                     
-
-
-
-
+                std::vector<pgr_bipartite_rt> results(graph.num_vertices());
+                  
+                bool bipartite = boost::is_bipartite (graph.graph);
+                if(bipartite)
+                {
+                    results=print_Bipartite(graph);
                 }
+                return results;
+           
+            }
 
-        
         };
     }
 }
