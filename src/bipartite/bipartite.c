@@ -29,18 +29,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 /******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 
 #include <stdbool.h>
 
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
-#include "catalog/pg_type.h"
-#include "utils/lsyscache.h"
 
-#ifndef INT8ARRAYOID
-#define INT8ARRAYOID    1016
-#endif
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
@@ -49,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 #include "drivers/bipartite/bipartite_driver.h"
-//#include "drivers/bipartite/bipartie_driver.h"
+
 
 
 PGDLLEXPORT Datum _pgr_bipartite (PG_FUNCTION_ARGS);
@@ -61,8 +54,7 @@ void
 process(char* edges_sql,
         pgr_bipartite_rt **result_tuples,
         size_t *result_count) {
-    //result_count is a pointer it means we do not need to return
-    // but it will count, initially it is 0
+    
     pgr_SPI_connect();
 
     size_t total_edges = 0;
@@ -122,51 +114,49 @@ _pgr_bipartite(PG_FUNCTION_ARGS) {
 
 
         process(
-                text_to_cstring(PG_GETARG_TEXT_P(0)), //Converting sql to string
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
                 &result_tuples,
                 &result_count);
 
 
         /**********************************************************************/
 #if PGSQL_VERSION > 95
-        funcctx->max_calls = result_count; //result_count is updated in process function call
+        funcctx->max_calls = result_count; 
 #else
         funcctx->max_calls = (uint32_t)result_count;
 #endif
-        funcctx->user_fctx = result_tuples; //
+        funcctx->user_fctx = result_tuples; 
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
-        funcctx->tuple_desc = tuple_desc; //contains tuple description
+        funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_bipartite_rt*) funcctx->user_fctx; //converting structure
+    result_tuples = (pgr_bipartite_rt*) funcctx->user_fctx; 
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple   tuple; //We will set all the values
+        HeapTuple   tuple; 
         Datum       result;
         Datum       *values;
         bool        *nulls;
-       // int16 typlen;
+       
         size_t call_cntr = funcctx->call_cntr;
 
-
-        size_t numb = 2; //Number of columns in outputs
+        size_t numb = 2; 
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
         size_t i;
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-            //Set your outputs from result_tuple
-            
-            //values[0] = Int32GetDatum(call_cntr + 1);
+
+        
             values[0] = Int64GetDatum(result_tuples[call_cntr].vid);
 	        values[1] = Int64GetDatum(result_tuples[call_cntr].color);
             tuple = heap_form_tuple(tuple_desc, values, nulls);
