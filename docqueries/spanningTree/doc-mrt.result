@@ -1,6 +1,0 @@
-BEGIN;
-BEGIN
-SET client_min_messages TO NOTICE;
-SET
-ROLLBACK;
-ROLLBACK
