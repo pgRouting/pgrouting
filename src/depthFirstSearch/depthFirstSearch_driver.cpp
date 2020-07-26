@@ -143,19 +143,15 @@ do_pgr_depthFirstSearch(
 
         std::vector<pgr_mst_rt> results;
 
-        // the type of the graph (whether directed or undirected)
         graphType gType = directed ? DIRECTED : UNDIRECTED;
 
-        // string variable to store the log messages
         std::string logstr;
 
         if (directed) {
-            // If the graph is directed
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
 
-            // calls the template function
             results = pgr_depthFirstSearch(
                     digraph,
                     roots,
@@ -163,12 +159,10 @@ do_pgr_depthFirstSearch(
                     directed,
                     logstr);
         } else {
-            // If the graph is undirected
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
 
-            // calls the template function
             results = pgr_depthFirstSearch(
                     undigraph,
                     roots,
@@ -179,10 +173,8 @@ do_pgr_depthFirstSearch(
 
         log << logstr;
 
-        // the count of rows in the result
         auto count = results.size();
 
-        // returns directly in case of empty rows in the results
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
