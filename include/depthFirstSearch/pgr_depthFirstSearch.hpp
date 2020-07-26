@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 
 
 /** @file pgr_depthFirstSearch.hpp
@@ -134,6 +135,10 @@ class Pgr_depthFirstSearch {
          auto i_map = get(boost::vertex_index, graph.graph);
          auto vertex_color_map = boost::make_iterator_property_map(colors.begin(), i_map);
          auto edge_color_map = boost::make_assoc_property_map(edge_color);
+
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
+
          try {
              if (directed) {
                  boost::depth_first_search(graph.graph, vis, vertex_color_map, root);
