@@ -39,16 +39,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace  visitors {
 
-template <typename V, typename E>
+template <typename V, typename E, typename G>
 class Dfs_visitor : public boost::default_dfs_visitor {
  public:
      Dfs_visitor(
              std::ostringstream &p_log,
              V root,
-             std::vector<E> &data) :
+             std::vector<E> &data,
+             G &graph) :
          log(p_log),
          m_data(data),
-         m_roots(root) {}
+         m_roots(root),
+         m_graph(graph),
+         time(0) {}
      template <typename B_G>
          void initialize_vertex(V v, const B_G&) {
              log << "initialize vertex " << v << "\n";
@@ -60,26 +63,27 @@ class Dfs_visitor : public boost::default_dfs_visitor {
      template <typename B_G>
          void discover_vertex(V v, const B_G&) {
              log << "discover vertex " << v << "\n";
+             log << "time " << time++ << "\n";
          }
      template <typename B_G>
          void examine_edge(E e, const B_G&) {
-             log << "examine edge " << e << "\n";
+             log << "examine edge " << e << " : ID " << m_graph[e].id << "\n";
          }
      template <typename B_G>
          void tree_edge(E e, const B_G&) {
-             log << "tree edge " << e << "\n";
+             log << "tree edge " << e << " : ID " << m_graph[e].id << "\n";
          }
      template <typename B_G>
          void back_edge(E e, const B_G&) {
-             log << "back edge " << e << "\n";
+             log << "back edge " << e << " : ID " << m_graph[e].id << "\n";
          }
      template <typename B_G>
          void forward_or_cross_edge(E e, const B_G&) {
-             log << "forward or cross edge " << e << "\n";
+             log << "forward or cross edge " << e << " : ID " << m_graph[e].id << "\n";
          }
      template <typename B_G>
          void finish_edge(E e, const B_G&) {
-             log << "finish edge " << e << "\n";
+             log << "finish edge " << e << " : ID " << m_graph[e].id << "\n";
          }
      template <typename B_G>
          void finish_vertex(V v, const B_G&) {
@@ -90,6 +94,8 @@ class Dfs_visitor : public boost::default_dfs_visitor {
      std::ostringstream &log;
      std::vector<E> &m_data;
      V m_roots;
+     int64_t time;
+     G &m_graph;
 };
 
 
