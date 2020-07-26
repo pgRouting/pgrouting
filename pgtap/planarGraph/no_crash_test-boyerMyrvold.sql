@@ -19,7 +19,7 @@ BEGIN
     'NULL'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_boyerMyrvold_1', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_boyerMyrvold', params, subs);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;

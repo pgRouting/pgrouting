@@ -18,7 +18,7 @@ SELECT is_empty('q1', 'q1: Graph with 0 edge and 0 vertex');
 
 PREPARE boyerMyrvold_12 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id > 18'
@@ -26,7 +26,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_13 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id IN (20,22)'
@@ -34,7 +34,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_14 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id > 25'
@@ -42,7 +42,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_15 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id IN (40,60,-10)'
@@ -50,7 +50,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_16 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id > 18'
@@ -58,7 +58,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_17 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id > 22'
@@ -75,42 +75,42 @@ SELECT is_empty('boyerMyrvold_17', '7: Graph with 0 edge and 0 vertex -> Empty r
 
 PREPARE boyerMyrvold_18 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id = -10'
 );
 
 PREPARE boyerMyrvold_19 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id IN (-10,50)'
 );
 
 PREPARE boyerMyrvold_110 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id IN (-10,-20,-30)'
 );
 
 PREPARE boyerMyrvold_111 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id IN (-10,33,39)'
 );
 
 PREPARE boyerMyrvold_112 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id = 36'
 );
 
 PREPARE boyerMyrvold_113 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id IN (36,45,34)'
 );
@@ -137,7 +137,7 @@ SELECT set_eq('q14', $$VALUES (9, 6, 6, 1, 1)$$, 'q14: Graph with only vertex 6'
 
 PREPARE boyerMyrvold_115 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, 6 AS target, cost, reverse_cost
     FROM edge_table
     WHERE id = 9'
@@ -145,7 +145,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_116 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, 2 AS target, cost, reverse_cost
     FROM edge_table
     WHERE id = 2'
@@ -153,7 +153,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_117 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, 3 AS target, cost, reverse_cost
     FROM edge_table
     WHERE id = 3'
@@ -161,7 +161,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_118 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, 7 AS target, cost, reverse_cost
     FROM edge_table
     WHERE id = 6'
@@ -177,7 +177,7 @@ SELECT set_eq('boyerMyrvold_118', $$VALUES (1, 7, 7, 1)$$, '18: One row is retur
 
 PREPARE boyerMyrvold_119 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id = 1'
@@ -185,7 +185,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_120 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id = 4'
@@ -193,7 +193,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_121 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id = 9'
@@ -201,7 +201,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_122 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id = 6'
@@ -209,7 +209,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_123 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id = 7'
@@ -217,7 +217,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_124 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE id = 8'
@@ -265,14 +265,14 @@ SELECT set_eq('q25',
 
 PREPARE boyerMyrvold_126 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM three_vertices_table'
 );
 
 PREPARE boyerMyrvold_127 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM three_vertices_table WHERE id > 4'
 );
@@ -312,7 +312,7 @@ SELECT set_eq('q28',
 
 PREPARE boyerMyrvold_129 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE (id >= 10 AND id <= 12)
@@ -321,7 +321,7 @@ FROM pgr_boyerMyrvold_1(
 
 PREPARE boyerMyrvold_130 AS
 SELECT *
-FROM pgr_boyerMyrvold_1(
+FROM pgr_boyerMyrvold(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
     WHERE (id >= 2 AND id <= 4)'
