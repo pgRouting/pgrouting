@@ -90,7 +90,6 @@ class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
              boost::get(boost::vertex_index, graph.graph));
 
          try {
-             // calling the boost function
              boost::sequential_vertex_coloring(
                  graph.graph, color_map);
          } catch (boost::exception const& ex) {
@@ -127,12 +126,10 @@ class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
 
          typename boost::graph_traits<Graph>::vertex_iterator v, vend;
 
-         // iterate through every vertex in the graph
          for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
              int64_t node = graph[*v].id;
              int64_t color = colors[*v];
 
-             // push the vertex id and the color of the vertex in the `results` vector
              results.push_back({
                  node,
                  color
