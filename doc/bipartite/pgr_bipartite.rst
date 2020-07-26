@@ -6,18 +6,15 @@
     This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
-.. index::
-    single: pgr_lengauer_tarjan_dominator_tree -Experimental (Complete Doc)
-.. _pgr_lengauer_tarjan_dominator_tree:
-
-pgr_lengauer_tarjan_dominator_tree -Experimental
+   
+pgr_bipartite -Experimental
 ===============================================================================
 
-``pgr_lengauer_tarjan_dominator_tree`` — Returns the immediate dominator of all vertices.
-In particular, the Lengauer Tarjan Dominator Tree algorithm implemented by Boost.Graph.
+``pgr_bipartite`` — If graph is bipartite then function returns the vertex id along with color (0 and 1) else it will return an empty set.
+In particular, the is_bipartite() algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/lengauer_tarjan_dominator.htm
+   :target: https://www.boost.org/doc/libs/1_53_0/libs/graph/doc/is_bipartite.html
    
    Boost Graph Inside
 
@@ -30,7 +27,9 @@ In particular, the Lengauer Tarjan Dominator Tree algorithm implemented by Boost
 
 Description
 -------------------------------------------------------------------------------
-Lengauer Tarjan Dominator Tree algorithm is used to make dominator tree of any graph. It calculates the immidiate dominator of each vertex called idom, once idom of each vertex is calculated then by making every idom of each vertex as its parent, the dominator tree can be built.
+A bipartite graph is a graph with two sets of vertices which are connected to each other, but not within themselves.
+A bipartite graph is possible if the graph coloring is possible using two colors such that vertices in a set are colored with the same color.
+
 
 Signatures
 -------------------------------------------------------------------------------
@@ -39,14 +38,14 @@ Signatures
 
 .. code-block:: sql
 
-    pgr_lengauer_tarjan_dominator_tree(edges_sql,root)
-    RETURNS SET OF (id,vid,idom)
+    pgr_bipartite(edges_sql)
+    RETURNS SET OF (vid,color)
 
 
 :Example: **TBD**
 
 .. index::
-    single: LTDTree
+    single: pgr_bipartaite
 
 Complete Signature
 ...............................................................................
@@ -54,11 +53,11 @@ Complete Signature
 .. code-block:: sql
 
 
-:Example: The lengauer_tarjan_dominator_tree with root vertex :math:`2`
+:Example: The pgr_bipartite algorithm with and edge_sql as a parameter when graph is bipartite:
 
-.. literalinclude:: doc-LTDTree.queries
-   :start-after: -- q1
-   :end-before: -- q2
+.. literalinclude:: doc-bipartite.queries
+   :start-after: --q1
+   :end-before: --q2
 
 Parameters
 -------------------------------------------------------------------------------
@@ -67,7 +66,6 @@ Parameters
 Column         Type           Description
 ============== ============ =================================================
 **edges_sql**   ``TEXT``    SQL query as described above.
-**root_vid**   ``BIGINT``  Identifier of the starting vertex.
 ============== ============ =================================================
 
 
@@ -81,14 +79,13 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, vid,idom)``
+Returns set of ``(vid,color)``
 
 ============== =========== =================================================
 Column         Type        Description
 ============== =========== =================================================
-**seq**        ``INTEGER`` Sequential value starting from **1**.
 **vid**        ``BIGINT``  Identifier of vertex .
-**idom**       ``BIGINT``  Immediate dominator of vertex.
+**color**      ``BIGINT``  ``0``: White, ``1``:Black
 ============== =========== =================================================
 
 Additional Examples
@@ -98,16 +95,16 @@ Additional Examples
 
 The examples in this section use the following :ref:`fig1`
 
-.. literalinclude:: doc-LTDTree.queries
+.. literalinclude:: doc-bipartite.queries
     :start-after: --q1
     :end-before: --q2
 
 See Also
 -------------------------------------------------------------------------------
 
-* https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/lengauer_tarjan_dominator.htm
-* https://www.cs.princeton.edu/courses/archive/fall03/cs528/handouts/a%20fast%20algorithm%20for%20finding.pdf
-* https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/two_graphs_common_spanning_trees.html
+* https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/is_bipartite.html
+* https://en.wikipedia.org/wiki/Bipartite_graph
+* https://www.cs.cmu.edu/afs/cs/academic/class/15210-f11/www/lectures/16/lecture16.pdf
 * :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
