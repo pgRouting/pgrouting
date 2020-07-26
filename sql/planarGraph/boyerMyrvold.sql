@@ -27,10 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 ------------------
--- pgr_boyerMyrvold_1
+-- pgr_boyerMyrvold
 ------------------
 
-CREATE OR REPLACE FUNCTION pgr_boyerMyrvold_1(
+CREATE OR REPLACE FUNCTION pgr_boyerMyrvold(
     TEXT,   -- edges_sql (required)
     OUT seq BIGINT,
     OUT source BIGINT,
@@ -40,13 +40,13 @@ CREATE OR REPLACE FUNCTION pgr_boyerMyrvold_1(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT *
-    FROM _pgr_boyerMyrvold_1(_pgr_get_statement($1)) AS a;
+    FROM _pgr_boyerMyrvold(_pgr_get_statement($1)) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_boyerMyrvold_1(TEXT)
+COMMENT ON FUNCTION pgr_boyerMyrvold(TEXT)
 IS 'pgr_boyerMyrvold
 - EXPERIMENTAL
 - Undirected graph

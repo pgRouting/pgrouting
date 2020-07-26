@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -------------------------
 -------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_boyerMyrvold_1(
+CREATE OR REPLACE FUNCTION _pgr_boyerMyrvold(
   TEXT,   -- edges_sql (required)
 
   OUT seq BIGINT,
@@ -45,5 +45,5 @@ LANGUAGE c IMMUTABLE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_boyerMyrvold_1(TEXT)
+COMMENT ON FUNCTION _pgr_boyerMyrvold(TEXT)
 IS 'pgRouting internal function';

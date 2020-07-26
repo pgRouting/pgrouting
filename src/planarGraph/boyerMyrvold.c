@@ -40,8 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 
 #include "drivers/planarGraph/boyerMyrvold_driver.h"
-PGDLLEXPORT Datum _pgr_boyermyrvold_1(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_boyermyrvold_1);
+PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_boyermyrvold);
 
 static void
 process(
@@ -107,7 +107,7 @@ process(
     pgr_SPI_finish();
 }
 
-PGDLLEXPORT Datum _pgr_boyermyrvold_1(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     TupleDesc tuple_desc;
 
