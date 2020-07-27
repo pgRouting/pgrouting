@@ -116,6 +116,7 @@ process(
 }
 
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
+#if 0
     FuncCallContext *funcctx;
     TupleDesc tuple_desc;
 
@@ -128,7 +129,7 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
         MemoryContext oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
+#endif
         /**********************************************************************/
         /*
         pgr_isPlanar(
@@ -156,14 +157,14 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
 
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
-#endif
     }
+#endif
 #if 0
     funcctx = SRF_PERCALL_SETUP();
-#endif
+
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (pgr_boyer_t *)funcctx->user_fctx;
-
+#endif
 #if 0
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;
