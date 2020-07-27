@@ -70,9 +70,6 @@ process(
         edges,
         total_edges,
 
-        result_tuples,
-        result_count,
-
         &log_msg,
         &notice_msg,
         &err_msg);
