@@ -68,7 +68,6 @@ class Dfs_visitor : public boost::default_dfs_visitor {
      template <typename B_G>
          void discover_vertex(V v, const B_G&) {
              log << "\ntime " << time++ << "\n";
-             // log << "depth " << depth << "\n";
              log << "discover vertex id " << m_graph[v].id << "\n";
          }
      template <typename B_G>
