@@ -77,8 +77,7 @@ process(
         &notice_msg,
         &err_msg);
 #endif
-    return planarity;
-#if 0
+
 
     if (err_msg) {
         if (*result_tuples)
@@ -97,6 +96,9 @@ process(
         pfree(err_msg);
 
     pgr_SPI_finish();
+
+    return planarity;
+#if 0
     return (*result_count != 0);     //Returning bool Here
 #endif
 }
