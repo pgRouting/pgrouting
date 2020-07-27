@@ -54,48 +54,53 @@ class Dfs_visitor : public boost::default_dfs_visitor {
          time(0) {}
      template <typename B_G>
          void initialize_vertex(V v, const B_G&) {
-             log << "initialize vertex " << v << "\n";
+             log << "initialize vertex " << v << "\t : id " << m_graph[v].id << "\n";
          }
      template <typename B_G>
          void start_vertex(V v, const B_G&) {
-             log << "start vertex " << v << "\n";
+             log << "start vertex " << v << "\t : id " << m_graph[v].id << "\n";
          }
      template <typename B_G>
          void discover_vertex(V v, const B_G&) {
-             log << "discover vertex " << v << "\n";
-             log << "time " << time++ << "\n";
+             log << "\ntime " << time++ << "\n";
+             log << "discover vertex " << v << "\t : id " << m_graph[v].id << "\n";
          }
      template <typename B_G>
          void examine_edge(E e, const B_G&) {
-             log << "examine edge " << e << " : ID " << m_graph[e].id << "\n";
+             log << "examine edge " << e << "\t : id " << m_graph[e].id << " ("
+                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
          }
      template <typename B_G>
          void tree_edge(E e, const B_G&) {
-             log << "tree edge " << e << " : ID " << m_graph[e].id << "\n";
+             log << "tree edge " << e << "\t\t : id " << m_graph[e].id << " ("
+                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
          }
      template <typename B_G>
          void back_edge(E e, const B_G&) {
-             log << "back edge " << e << " : ID " << m_graph[e].id << "\n";
+             log << "back edge " << e << "\t\t : id " << m_graph[e].id << " ("
+                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
          }
      template <typename B_G>
          void forward_or_cross_edge(E e, const B_G&) {
-             log << "forward or cross edge " << e << " : ID " << m_graph[e].id << "\n";
+             log << "forward or cross edge " << e << "\t : id " << m_graph[e].id << " ("
+                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
          }
      template <typename B_G>
          void finish_edge(E e, const B_G&) {
-             log << "finish edge " << e << " : ID " << m_graph[e].id << "\n";
+             log << "finish edge " << e << "\t : id " << m_graph[e].id << " ("
+                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
          }
      template <typename B_G>
          void finish_vertex(V v, const B_G&) {
-             log << "finish vertex " << v << "\n";
+             log << "finish vertex " << v << "\t : id " << m_graph[v].id << "\n";
          }
 
  private:
      std::ostringstream &log;
      std::vector<E> &m_data;
      V m_roots;
-     int64_t time;
      G &m_graph;
+     int64_t time;
 };
 
 
