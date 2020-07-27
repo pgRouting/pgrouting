@@ -52,6 +52,8 @@ process(
 #endif
   ) {
     return true;
+    pgr_boyer_t *result_tuples = NULL;
+    size_t result_count = 0;
     pgr_SPI_connect();
 
     PGR_DBG("Initializing arrays");
