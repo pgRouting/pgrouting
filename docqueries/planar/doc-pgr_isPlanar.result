@@ -7,10 +7,11 @@ SELECT * FROM pgr_isPlanar(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table'
 );
-pgr_isplanar
+ pgr_isplanar
 --------------
-f
+ f
 (1 row)
 
+-- q5
 ROLLBACK;
 ROLLBACK
