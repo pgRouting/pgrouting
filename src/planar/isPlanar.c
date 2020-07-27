@@ -58,14 +58,14 @@ process(
         pgr_SPI_finish();
         return (false);
     }
-    return planarity;
-
-#if 0
 
     clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
+    return planarity;
+
+#if 0
     do_pgr_boyerMyrvold(
         edges,
         total_edges,
