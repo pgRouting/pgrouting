@@ -158,6 +158,7 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (pgr_boyer_t *)funcctx->user_fctx;
 
+#if 0
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;
         Datum result;
@@ -199,4 +200,5 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
 
         SRF_RETURN_DONE(funcctx);
     }
+#endif
 }
