@@ -51,9 +51,6 @@ process(
     return planarity;
 
 #if 0
-    pgr_boyer_t *result_tuples = NULL;
-    size_t result_count = 0;
-
     pgr_boyer_t **result_tuples,
     size_t *result_count
     (*result_tuples) = NULL;
