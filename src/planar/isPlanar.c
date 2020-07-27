@@ -37,7 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 
 #include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
 
 #include "drivers/planar/boyerMyrvold_driver.h"
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS);
@@ -46,20 +45,16 @@ PG_FUNCTION_INFO_V1(_pgr_isplanar);
 static bool
 process(
     char *edges_sql
-#if 0
-    pgr_boyer_t **result_tuples,
-    size_t *result_count
-#endif
   ) {
-    return true;
+    bool planarity = false;
+    return planarity;
 #if 0
     pgr_boyer_t *result_tuples = NULL;
     size_t result_count = 0;
     pgr_SPI_connect();
 
-    PGR_DBG("Initializing arrays");
-
-
+    pgr_boyer_t **result_tuples,
+    size_t *result_count
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
