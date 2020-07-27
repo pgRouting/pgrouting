@@ -133,7 +133,7 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
             text_to_cstring(PG_GETARG_TEXT_P(0)),
             &result_tuples,
             &result_count);
-
+        PG_RETURN_BOOL(result_count != 0)
         /**********************************************************************/
 
 #if PGSQL_VERSION > 95
