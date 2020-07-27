@@ -39,11 +39,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 
-#include "drivers/planar/isPlanar_driver.h"
+#include "drivers/planar/boyerMyrvold_driver.h"
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_isplanar);
 
-static void
+static bool
 process(
     char *edges_sql,
 
@@ -66,7 +66,7 @@ process(
 
     if (total_edges == 0) {
         pgr_SPI_finish();
-        return;
+        return (*result_count != 0); //Returning bool here
     }
 
     PGR_DBG("Starting processing");
@@ -74,7 +74,7 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_isPlanar(
+    do_pgr_boyerMyrvold(
         edges,
         total_edges,
 
@@ -105,6 +105,7 @@ process(
         pfree(err_msg);
 
     pgr_SPI_finish();
+    return (*result_count != 0);     //Returning bool Here
 }
 
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
@@ -129,11 +130,11 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
         /**********************************************************************/
 
         PGR_DBG("Calling process");
-        process(
+        PG_RETURN_BOOL(process(
             text_to_cstring(PG_GETARG_TEXT_P(0)),
             &result_tuples,
-            &result_count);
-        PG_RETURN_BOOL(result_count != 0)
+            &result_count));
+        // PG_RETURN_BOOL(result_count != 0);
         /**********************************************************************/
 
 #if PGSQL_VERSION > 95
