@@ -1,11 +1,18 @@
-name: Check Spanish Documentation Links
+name: "Check documentation links"
 
 # documentation is tested only on:
 # - ubuntu
 # - postgres 12
 # - postgis 3
-#
-on: [push,pull_request]
+
+on:
+  push:
+    branches-ignore:
+      - 'translations_*'
+    tags: []
+  pull_request:
+    paths-ignore:
+      - '**.po'
 
 jobs:
   build:
@@ -13,14 +20,14 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
-        fail-fast: false
-        matrix:
-          psql: [12]
-          postgis: [3]
-          os: [ubuntu-latest]
+      fail-fast: false
+      matrix:
+        psql: [12]
+        postgis: [3]
+        os: [ubuntu-latest]
+        i18n: [en,es]
 
     steps:
-
       - name: Add PostgreSQL APT repository
         run: |
           sudo apt-get install curl ca-certificates gnupg
@@ -59,7 +66,12 @@ jobs:
           cd build
           cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=ON -DES=ON -DLINKCHECK="ON" ..
 
-      - name: Check Spanish Links
+      - name: Check Links for ${{ matrix.i18n }}
         run: |
           cd build
-          make linkcheck-es
+          make linkcheck-${{ matrix.i18n }}
+
+      - name: Build Documentation
+        run: |
+          cd build
+          make html

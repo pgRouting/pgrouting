@@ -15,11 +15,11 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
-        fail-fast: false
-        matrix:
-          psql: [12]
-          postgis: [3]
-          os: [ubuntu-latest]
+      fail-fast: false
+      matrix:
+        psql: [12]
+        postgis: [3]
+        os: [ubuntu-latest]
 
     steps:
       - name: Add PostgreSQL APT repository
