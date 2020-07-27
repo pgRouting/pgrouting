@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <set>
+#include <map>
 
 #include "visitors/found_goals.hpp"
 #include "cpp_common/pgr_messages.h"
@@ -47,10 +48,12 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              std::ostringstream &p_log,
              V root,
              std::vector<E> &data,
+             boost::associative_property_map<std::map<E, boost::default_color_type>> &colors,
              G &graph) :
          log(p_log),
          m_data(data),
          m_roots(root),
+         m_colors(colors),
          m_graph(graph),
          time(0),
          depth(0) {}
@@ -77,28 +80,30 @@ class Dfs_visitor : public boost::default_dfs_visitor {
          void tree_edge(E e, const B_G&) {
              log << "tree edge id " << m_graph[e].id << " ("
                  << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+             log << "color " << m_colors[e] << "\n";
              depth++;
              edge_set.insert(e);
              log << "depth " << depth << "\n";
          }
+#if 0
      template <typename B_G>
          void back_edge(E e, const B_G&) {
-#if 0
              log << "back edge " << e << "\t\t : id " << m_graph[e].id << " ("
                  << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
-#endif
          }
+#endif
+#if 0
      template <typename B_G>
          void forward_or_cross_edge(E e, const B_G&) {
-#if 0
              log << "forward or cross edge " << e << "\t : id " << m_graph[e].id << " ("
                  << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
-#endif
          }
+#endif
      template <typename B_G>
          void finish_edge(E e, const B_G&) {
              log << "finish edge id " << m_graph[e].id << " ("
                  << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+             log << "color " << m_colors[e] << "\n";
              if (edge_set.find(e) != edge_set.end()) {
                  depth--;
                  log << "depth " << depth << "\n";
@@ -113,6 +118,7 @@ class Dfs_visitor : public boost::default_dfs_visitor {
      std::ostringstream &log;
      std::vector<E> &m_data;
      V m_roots;
+     boost::associative_property_map<std::map<E, boost::default_color_type>> m_colors;
      G &m_graph;
      int64_t time;
      int64_t depth;
