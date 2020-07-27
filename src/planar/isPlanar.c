@@ -201,4 +201,5 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 #endif
+SRF_RETURN_DONE(funcctx);
 }
