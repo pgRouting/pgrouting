@@ -55,13 +55,13 @@ process(
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
+    if (total_edges == 0) {
+        pgr_SPI_finish();
+        return (false); 
+    }
     return planarity;
 
 #if 0
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return (*result_count != 0); //Returning bool here
-    }
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
