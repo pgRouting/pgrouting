@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -------------------------
 
 CREATE OR REPLACE FUNCTION _pgr_isPlanar(
-  TEXT,   -- edges_sql (required)
+  TEXT   -- edges_sql (required)
      )
 
 RETURNS BOOLEAN AS
