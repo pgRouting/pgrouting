@@ -66,7 +66,7 @@ process(
 
 
 #if 0
-    do_pgr_boyerMyrvold(
+    do_pgr_isPlanar(
         edges,
         total_edges,
 
