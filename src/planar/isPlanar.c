@@ -51,11 +51,6 @@ process(
     return planarity;
 
 #if 0
-    pgr_boyer_t **result_tuples,
-    size_t *result_count
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
