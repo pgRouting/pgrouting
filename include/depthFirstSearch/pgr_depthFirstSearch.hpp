@@ -136,7 +136,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
                  boost::depth_first_search(
                      graph.graph,
                      visitor(dfs_visitor(log, root, visited_order, colors, graph))
-                     .edge_color_map(colors)
+                     .edge_color_map(&colors)
                      .root_vertex(root));
              } else {
                  boost::undirected_dfs(
