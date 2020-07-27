@@ -49,7 +49,6 @@ process(
     bool planarity = false;
     pgr_SPI_connect();
 
-    PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
@@ -57,13 +56,12 @@ process(
 
     if (total_edges == 0) {
         pgr_SPI_finish();
-        return (false); 
+        return (false);
     }
     return planarity;
 
 #if 0
 
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
