@@ -112,7 +112,7 @@ process(
 
     pgr_SPI_finish();
     return (*result_count != 0);     //Returning bool Here
-#end if
+#endif
 }
 
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
