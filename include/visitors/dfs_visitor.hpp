@@ -72,6 +72,7 @@ class Dfs_visitor : public boost::default_dfs_visitor {
          }
      template <typename B_G>
          void examine_edge(E e, const B_G&) {
+             log << "color " << m_colors[e] << "\n";
              log << "examine edge id " << m_graph[e].id << " ("
                  << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
          }
