@@ -63,7 +63,7 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-    return planarity;
+
 
 #if 0
     do_pgr_boyerMyrvold(
@@ -76,9 +76,9 @@ process(
         &log_msg,
         &notice_msg,
         &err_msg);
-
-    time_msg(" processing pgr_isPlanar", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
+#endif
+    return planarity;
+#if 0
 
     if (err_msg) {
         if (*result_tuples)
