@@ -103,8 +103,6 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
             edge_sql TEXT)
         */
         /**********************************************************************/
-
-        PGR_DBG("Calling process");
         PG_RETURN_BOOL(process(text_to_cstring(PG_GETARG_TEXT_P(0))));
         /**********************************************************************/
 
