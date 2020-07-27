@@ -26,7 +26,7 @@ indent_size = 8
 [*.yml]
 indent_style = space
 
-[.github/workflow/*.yml]
+[.github/**/*.yml]
 indent_style = space
 indent_size = 2
 end_of_line = lf
