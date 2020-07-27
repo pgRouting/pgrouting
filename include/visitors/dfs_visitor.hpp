@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/depth_first_search.hpp>
 
 #include <vector>
+#include <set>
 
 #include "visitors/found_goals.hpp"
 #include "cpp_common/pgr_messages.h"
@@ -51,48 +52,57 @@ class Dfs_visitor : public boost::default_dfs_visitor {
          m_data(data),
          m_roots(root),
          m_graph(graph),
-         time(0) {}
+         time(0),
+         depth(0) {}
      template <typename B_G>
          void initialize_vertex(V v, const B_G&) {
-             log << "initialize vertex " << v << "\t : id " << m_graph[v].id << "\n";
+             log << "initialize vertex id " << m_graph[v].id << "\n";
          }
      template <typename B_G>
          void start_vertex(V v, const B_G&) {
-             log << "start vertex " << v << "\t : id " << m_graph[v].id << "\n";
+             log << "start vertex id " << m_graph[v].id << "\n";
          }
      template <typename B_G>
          void discover_vertex(V v, const B_G&) {
              log << "\ntime " << time++ << "\n";
-             log << "discover vertex " << v << "\t : id " << m_graph[v].id << "\n";
+             // log << "depth " << depth << "\n";
+             log << "discover vertex id " << m_graph[v].id << "\n";
          }
      template <typename B_G>
          void examine_edge(E e, const B_G&) {
-             log << "examine edge " << e << "\t : id " << m_graph[e].id << " ("
+             log << "examine edge id " << m_graph[e].id << " ("
                  << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
          }
      template <typename B_G>
          void tree_edge(E e, const B_G&) {
-             log << "tree edge " << e << "\t\t : id " << m_graph[e].id << " ("
+             log << "tree edge id " << m_graph[e].id << " ("
                  << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+             depth++;
+             edge_set.insert(e);
+             log << "depth " << depth << "\n";
          }
      template <typename B_G>
          void back_edge(E e, const B_G&) {
-             log << "back edge " << e << "\t\t : id " << m_graph[e].id << " ("
-                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+             // log << "back edge " << e << "\t\t : id " << m_graph[e].id << " ("
+             //     << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
          }
      template <typename B_G>
          void forward_or_cross_edge(E e, const B_G&) {
-             log << "forward or cross edge " << e << "\t : id " << m_graph[e].id << " ("
-                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+             // log << "forward or cross edge " << e << "\t : id " << m_graph[e].id << " ("
+             //     << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
          }
      template <typename B_G>
          void finish_edge(E e, const B_G&) {
-             log << "finish edge " << e << "\t : id " << m_graph[e].id << " ("
+             log << "finish edge id " << m_graph[e].id << " ("
                  << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+             if (edge_set.find(e) != edge_set.end()) {
+                 depth--;
+                 log << "depth " << depth << "\n";
+             }
          }
      template <typename B_G>
          void finish_vertex(V v, const B_G&) {
-             log << "finish vertex " << v << "\t : id " << m_graph[v].id << "\n";
+             log << "finish vertex id " << m_graph[v].id << "\n";
          }
 
  private:
@@ -101,6 +111,8 @@ class Dfs_visitor : public boost::default_dfs_visitor {
      V m_roots;
      G &m_graph;
      int64_t time;
+     int64_t depth;
+     std::set<E> edge_set;
 };
 
 
