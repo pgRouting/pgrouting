@@ -119,8 +119,6 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
           &result_tuples,
           &result_count);
     PG_RETURN_BOOL(true);
-//Commenting the previous code.
-#if 0
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext oldcontext;
@@ -205,5 +203,4 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 
-#endif
 }
