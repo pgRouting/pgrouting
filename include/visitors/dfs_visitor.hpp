@@ -83,13 +83,17 @@ class Dfs_visitor : public boost::default_dfs_visitor {
          }
      template <typename B_G>
          void back_edge(E e, const B_G&) {
-             // log << "back edge " << e << "\t\t : id " << m_graph[e].id << " ("
-             //     << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+#if 0
+             log << "back edge " << e << "\t\t : id " << m_graph[e].id << " ("
+                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+#endif
          }
      template <typename B_G>
          void forward_or_cross_edge(E e, const B_G&) {
-             // log << "forward or cross edge " << e << "\t : id " << m_graph[e].id << " ("
-             //     << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+#if 0
+             log << "forward or cross edge " << e << "\t : id " << m_graph[e].id << " ("
+                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+#endif
          }
      template <typename B_G>
          void finish_edge(E e, const B_G&) {
