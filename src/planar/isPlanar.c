@@ -52,6 +52,7 @@ process(
 #endif
   ) {
     return true;
+#if 0
     pgr_boyer_t *result_tuples = NULL;
     size_t result_count = 0;
     pgr_SPI_connect();
@@ -111,6 +112,7 @@ process(
 
     pgr_SPI_finish();
     return (*result_count != 0);     //Returning bool Here
+#end if
 }
 
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
@@ -137,6 +139,7 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         PG_RETURN_BOOL(process(text_to_cstring(PG_GETARG_TEXT_P(0))));
         /**********************************************************************/
+#if 0
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
@@ -153,9 +156,11 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
 
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
+#endif
     }
-
+#if 0
     funcctx = SRF_PERCALL_SETUP();
+#endif
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (pgr_boyer_t *)funcctx->user_fctx;
 
