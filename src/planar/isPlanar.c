@@ -78,11 +78,7 @@ process(
         &err_msg);
 #endif
 
-
-    if (err_msg) {
-        if (*result_tuples)
-            pfree(*result_tuples);
-    }
+    time_msg(" processing pgr_isPlanar", start_t, clock());
 
     pgr_global_report(log_msg, notice_msg, err_msg);
 
