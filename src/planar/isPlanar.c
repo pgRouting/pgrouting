@@ -108,17 +108,13 @@ process(
 }
 
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
+    FuncCallContext *funcctx;
+    TupleDesc tuple_desc;
 
     /**************************************************************************/
     pgr_boyer_t *result_tuples = NULL;
     size_t result_count = 0;
     /**************************************************************************/
-    PGR_DBG("Calling process");
-      process(
-          text_to_cstring(PG_GETARG_TEXT_P(0)),
-          &result_tuples,
-          &result_count);
-    PG_RETURN_BOOL(true);
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext oldcontext;
@@ -127,7 +123,7 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*
-        pgr_boyerMyrvold(
+        pgr_isPlanar(
             edge_sql TEXT)
         */
         /**********************************************************************/
@@ -140,11 +136,11 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
 
-    #if PGSQL_VERSION > 95
+#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-    #else
+#else
         funcctx->max_calls = (uint32_t)result_count;
-    #endif
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
@@ -202,5 +198,4 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
 
         SRF_RETURN_DONE(funcctx);
     }
-
 }
