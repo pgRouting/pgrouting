@@ -1,5 +1,5 @@
 # default build directory
-build
+/build
 fix_typos
 code_linter
 src/version/_version.h
