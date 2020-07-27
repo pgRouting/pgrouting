@@ -45,10 +45,12 @@ PG_FUNCTION_INFO_V1(_pgr_isplanar);
 
 static bool
 process(
-    char *edges_sql,
-
+    char *edges_sql
+#if 0
     pgr_boyer_t **result_tuples,
-    size_t *result_count) {
+    size_t *result_count
+#endif
+  ) {
     return true;
     pgr_SPI_connect();
 
