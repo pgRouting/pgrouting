@@ -48,16 +48,16 @@ process(
   ) {
     bool planarity = false;
     pgr_SPI_connect();
-    return planarity;
 
-#if 0
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
-    PGR_DBG("Total %ld edges in query:", total_edges);
 
+    return planarity;
+
+#if 0
     if (total_edges == 0) {
         pgr_SPI_finish();
         return (*result_count != 0); //Returning bool here
