@@ -47,11 +47,12 @@ process(
     char *edges_sql
   ) {
     bool planarity = false;
+    pgr_SPI_connect();
     return planarity;
+
 #if 0
     pgr_boyer_t *result_tuples = NULL;
     size_t result_count = 0;
-    pgr_SPI_connect();
 
     pgr_boyer_t **result_tuples,
     size_t *result_count
