@@ -51,5 +51,8 @@ SELECT * FROM pgr_makeConnected(
 (2 rows)
 
 -- q4
+INSERT INTO edge_table (source,target,cost,reverse_cost) VALUES (13,14,1,-1), (15,16,1,-1);
+INSERT 0 2
+-- q5
 ROLLBACK;
 ROLLBACK

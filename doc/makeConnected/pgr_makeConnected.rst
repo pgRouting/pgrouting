@@ -118,6 +118,21 @@ Using pgr_connectedComponents() to check the number of connected components in t
    :start-after: -- q2
    :end-before: -- q3
 
+So there are 3 connected components in :doc:`sampledata` namely 1, 14, 16.
+
+
+Now, the list of edges that are needed in the graph to make it connected.
+
+.. literalinclude:: doc-pgr_stoerWagner.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+Inserting the above edges in the edge_table.
+
+.. literalinclude:: doc-pgr_stoerWagner.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
 
 
 See Also

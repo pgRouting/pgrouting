@@ -18,3 +18,7 @@ SELECT * FROM pgr_makeConnected(
 );
 
 \echo -- q4
+
+INSERT INTO edge_table (source,target,cost,reverse_cost) VALUES (13,14,1,-1), (15,16,1,-1);
+
+\echo -- q5
