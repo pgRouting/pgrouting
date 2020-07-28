@@ -64,27 +64,30 @@ namespace pgrouting {
                     ){
                 std::vector<pgr_ltdtree_rt> results;
                 std::vector<Vertex> domTreePredVector = std::vector<Vertex>(boost::num_vertices(graph.graph),-1);
-                auto domTreePredMap =
-                           make_iterator_property_map(domTreePredVector.begin(), boost::get(boost::vertex_index, graph.graph));
+                auto domTreePredMap = make_iterator_property_map(domTreePredVector.begin(), boost::get(boost::vertex_index, graph.graph));
                    
                     
                /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
                 CHECK_FOR_INTERRUPTS();
+                try {
+             // calling the boost function
                 boost::lengauer_tarjan_dominator_tree(graph.graph, graph.get_V(root), domTreePredMap);
+                     } catch (boost::exception const& ex) {
+                          (void)ex;
+                             throw;
+                     } catch (std::exception &e) {
+                         (void)e;
+                         throw;
+                      } catch (...) {
+                          throw;
+                      }
+                
 
                 V_i v, vend;
                 for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
                     int64_t vid = graph[*v].id;
-                    int64_t idom;
-                    if(domTreePredVector[*v]!=-1){
-                      idom = domTreePredVector[*v]+1;
-                    }
-                    else{
-                      idom = 0;
-                    }
-                    results.push_back({
-                      vid,idom
-                    });
+                    results.push_back ({vid, (domTreePredVector[*v]!=-1 ? (domTreePredVector[*v]+1) : 0) });
+                    
                 }
             
 
