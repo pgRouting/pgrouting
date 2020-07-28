@@ -69,12 +69,11 @@ do_pgr_isPlanar(
         undigraph.insert_edges(data_edges, total_edges);
 
 #if 0
-        pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_boyerMyrvold;
-        results=fn_boyerMyrvold.boyerMyrvold(undigraph);
-        logstr += fn_boyerMyrvold.get_log();
-        log << logstr;
-
+        pgrouting::functions::Pgr_isPlanar<pgrouting::UndirectedGraph> fn_isPlanar;
+        result = fn_isPlanar.isPlanar(undigraph);
+        logstr += fn_isPlanar.get_log();
 #endif
+        log << logstr;
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
