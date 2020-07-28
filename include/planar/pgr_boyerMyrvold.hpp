@@ -49,34 +49,30 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
      typedef typename G::V V;
      typedef typename G::E E;
      typedef typename G::E_i E_i;
-     std::vector<pgr_boyer_t> boyerMyrvold(
-                 G &graph){
-                   return generateboyerMyrvold(
-                                          graph);
-                 }
-     bool isPlanar(
-                 G &graph){
-                   return (boyer_myrvold_planarity_test(graph.graph));
-                 }
+     std::vector<pgr_boyer_t> boyerMyrvold(G &graph){
+          return generateboyerMyrvold(graph);
+     }
+
+     bool isPlanar(G &graph){
+          return (boyer_myrvold_planarity_test(graph.graph));
+     }
 
  private:
-     std::vector< pgr_boyer_t >
-     generateboyerMyrvold(
-        const G &graph ) {
-       std::vector< pgr_boyer_t > results;
-       auto check = boyer_myrvold_planarity_test(graph.graph);
-       if(check){
+     std::vector< pgr_boyer_t >generateboyerMyrvold(const G &graph ) {
+     std::vector< pgr_boyer_t > results;
+     auto check = boyer_myrvold_planarity_test(graph.graph);
+     if(check){
          E_i ei, ei_end;
          int i;
-       for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i){
-           int64_t src = graph[graph.source(*ei)].id;
-           int64_t tgt = graph[graph.target(*ei)].id;
-           double cost = graph[*ei].cost;
-           pgr_boyer_t tmp;
-           tmp.source = src;
-           tmp.target = tgt;
-           tmp.cost = cost;
-           results.push_back(tmp);
+     for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i){
+         int64_t src = graph[graph.source(*ei)].id;
+         int64_t tgt = graph[graph.target(*ei)].id;
+         double cost = graph[*ei].cost;
+         pgr_boyer_t tmp;
+         tmp.source = src;
+         tmp.target = tgt;
+         tmp.cost = cost;
+         results.push_back(tmp);
       }
 
     }
