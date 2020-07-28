@@ -54,13 +54,13 @@ do_pgr_isPlanar(
     std::ostringstream notice;
     try {
 
-      return false;
-#if 0
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(total_edges != 0);
 
+    return false;
+#if 0
         std::vector<pgr_boyer_t> results;
         std::string logstr;
 
