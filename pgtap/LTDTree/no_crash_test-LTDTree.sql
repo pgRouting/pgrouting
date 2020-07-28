@@ -30,7 +30,7 @@ params = ARRAY[
     '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_lengauer_tarjan_dominator_tree', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_lengauerTarjanDominatorTree', params, subs);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
