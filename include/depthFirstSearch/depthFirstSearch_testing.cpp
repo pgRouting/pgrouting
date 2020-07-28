@@ -13,15 +13,11 @@ int main() {
     typedef typename boost::graph_traits <G>::vertex_descriptor V;
     typedef typename boost::graph_traits <G>::edge_descriptor E;
 
-    enum { v1, v2, v3, v4, v5, v6, v7, v8, v9, N };
+    enum { v1, v2, v3, v4, N };
 
 
     typedef std::pair < V, V > Edge;
-    Edge edge_array[] = { Edge(v1, v2), Edge(v2, v1), Edge(v3, v2), Edge(v4, v3),
-                          Edge(v2, v5), Edge(v5, v2), Edge(v3, v6), Edge(v7, v8),
-                          Edge(v8, v7), Edge(v5, v8), Edge(v8, v5), Edge(v5, v6),
-                          Edge(v6, v5), Edge(v6, v9), Edge(v9, v6), Edge(v9, v4),
-                          Edge(v4, v9), Edge(v6, v8)
+    Edge edge_array[] = { Edge(v1, v2), Edge(v2, v3), Edge(v3, v4), Edge(v1, v4)
                         };
 
     G graph(N);
@@ -30,7 +26,7 @@ int main() {
 
     using dfs_visitor = pgrouting::visitors::Dfs_visitor<V, E, G>;
 
-    V root = v2;
+    V root = v1;
 
     // Here we use std::vector as exterior property storage.
     std::vector<boost::default_color_type> colors(boost::num_vertices(graph));
