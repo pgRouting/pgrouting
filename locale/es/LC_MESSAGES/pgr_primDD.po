@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:57+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -54,19 +54,21 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_primDD.rst:28
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_primDD.html>`__)"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_primDD.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_primDD.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_primDD.html>`__)"
+"**Versiones soportadas:** actual​(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_primDD.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_primDD.html>`__"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_kruskalDD.rst:7 ../../build/doc/pgr_kruskalDD.rst:49
-#: ../../build/doc/pgr_primDD.rst:32
+#: ../../build/doc/pgr_primDD.rst:33
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_primDD.rst:34
+#: ../../build/doc/pgr_primDD.rst:35
 msgid ""
 "Using Prim algorithm, extracts the nodes that have aggregate costs less than"
 " or equal to the value ``Distance`` within the calculated minimum spanning "
@@ -76,7 +78,7 @@ msgstr ""
 " menores o iguales que el valor ``Distancia`` dentro del árbol de expansión "
 "mínimo calculado."
 
-#: ../../build/doc/pgr_primDD.rst:37
+#: ../../build/doc/pgr_primDD.rst:38
 msgid "**The main Characteristics are:**"
 msgstr "**Las características principales son:**"
 
@@ -113,27 +115,27 @@ msgstr "Las aristas resultantes conforman un bosque."
 msgid "Prim's running time: :math:`O(E*log V)`"
 msgstr "Tiempo de ejecución de Prim:  :math:`O(E*log V)`"
 
-#: ../../build/doc/pgr_primDD.rst:43
+#: ../../build/doc/pgr_primDD.rst:44
 msgid ""
 "Returned tree nodes from a root vertex are on Depth First Search order."
 msgstr ""
 "Los nodos de árbol devueltos de un vértice raíz están en el orden de Primera"
 " Búsqueda de Profundidad."
 
-#: ../../build/doc/pgr_primDD.rst:44
+#: ../../build/doc/pgr_primDD.rst:45
 msgid "Depth First Search running time: :math:`O(E + V)`"
 msgstr ""
 " Primera Búsqueda de Profundidad, tiempo de ejecución: :math:`O(E + V)`"
 
-#: ../../build/doc/pgr_primDD.rst:47
+#: ../../build/doc/pgr_primDD.rst:48
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_primDD.rst:50
+#: ../../build/doc/pgr_primDD.rst:51
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_primDD.rst:62
+#: ../../build/doc/pgr_primDD.rst:63
 msgid "Single vertex"
 msgstr "Un solo vértice"
 
@@ -141,7 +143,7 @@ msgstr "Un solo vértice"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_primDD.rst:70
+#: ../../build/doc/pgr_primDD.rst:71
 msgid ""
 "The Minimum Spanning Tree starting on vertex :math:`2` with "
 ":math:`agg\\_cost <= 3.5`"
@@ -149,11 +151,11 @@ msgstr ""
 "El árbol de expansión mínimo que comienza en el vértice:math:`2` con  "
 ":math:`agg\\_cost <= 3.5`"
 
-#: ../../build/doc/pgr_primDD.rst:80
+#: ../../build/doc/pgr_primDD.rst:81
 msgid "Multiple vertices"
 msgstr "Múltiples Vértices"
 
-#: ../../build/doc/pgr_primDD.rst:88
+#: ../../build/doc/pgr_primDD.rst:89
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{13, 2\\}` with "
 ":math:`agg\\_cost <= 3.5`;"
@@ -445,23 +447,23 @@ msgstr "**agg_cost**"
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr "Costo agregado de ``start_vid`` a ``node``."
 
-#: ../../build/doc/pgr_primDD.rst:103
+#: ../../build/doc/pgr_primDD.rst:104
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_primDD.rst:105
+#: ../../build/doc/pgr_primDD.rst:106
 msgid ":doc:`spanningTree-family`"
 msgstr ":doc:`spanningTree-family`"
 
-#: ../../build/doc/pgr_primDD.rst:106
+#: ../../build/doc/pgr_primDD.rst:107
 msgid ":doc:`prim-family`"
 msgstr ":doc:`prim-family`"
 
-#: ../../build/doc/pgr_primDD.rst:107
+#: ../../build/doc/pgr_primDD.rst:108
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_primDD.rst:108
+#: ../../build/doc/pgr_primDD.rst:109
 msgid ""
 "`Boost: Prim's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
@@ -469,7 +471,7 @@ msgstr ""
 "`Boost: Prim's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 
-#: ../../build/doc/pgr_primDD.rst:109
+#: ../../build/doc/pgr_primDD.rst:110
 #, python-format
 msgid ""
 "`Wikipedia: Prim's algorithm "
@@ -478,28 +480,14 @@ msgstr ""
 "`Wikipedia: algoritmo de Prim "
 "<https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 
-#: ../../build/doc/pgr_primDD.rst:112
+#: ../../build/doc/pgr_primDD.rst:113
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_primDD.rst:113
+#: ../../build/doc/pgr_primDD.rst:114
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_primDD.rst:114
+#: ../../build/doc/pgr_primDD.rst:115
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "`Wikipedia: Prim's algorithm "
-#~ "<https://en.wikipedia.org/wiki/Prim'_algorithm>`__"
-#~ msgstr ""
-#~ "Wikipedia: `Algoritmo de Prim "
-#~ "<https://en.wikipedia.org/wiki/Prim'_algorithm>`__"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_primDD.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_primDD.html>`__)"
