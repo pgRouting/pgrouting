@@ -35,18 +35,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-#include "c_types/pgr_boyer_t.h"
 
 #include "planar/pgr_boyerMyrvold.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 
 
 
-void
+bool
 do_pgr_isPlanar(
                 pgr_edge_t  *data_edges,
                 size_t total_edges,
-                
+
                 char ** log_msg,
                 char ** notice_msg,
                 char ** err_msg) {
