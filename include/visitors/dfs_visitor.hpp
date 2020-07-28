@@ -85,14 +85,12 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              int64_t source = boost::source(e, m_graph), target = boost::target(e, m_graph);
              std::cout << "back edge " << e << "\t" << "vertex " << source << " color " << m_colors[source]
                        << " vertex " << target << " color " << m_colors[target] << "\n";
-             // std::cout << "back edge " << e << "\n";
          }
      template <typename B_G>
          void forward_or_cross_edge(E e, const B_G&) {
              int64_t source = boost::source(e, m_graph), target = boost::target(e, m_graph);
              std::cout << "forward or cross edge " << e << "\t" << "vertex " << source << " color " << m_colors[source]
                        << " vertex " << target << " color " << m_colors[target] << "\n";
-             // std::cout << "forward or cross edge " << e << "\n";
          }
 #endif
      template <typename B_G>
