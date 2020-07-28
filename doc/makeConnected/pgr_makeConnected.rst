@@ -52,7 +52,7 @@ Signatures
 
     pgr_makeConnected(edges_sql)
 
-    RETURNS SET OF (seq, source, target, cost)
+    RETURNS SET OF (seq, node_from, node_to)
     OR EMPTY SET
 
 :Example: Query done on :doc:`sampledata` network gives.
@@ -111,6 +111,12 @@ Column           Type        Description
 
 Additional Example:
 -------------------------------------------------------------------------------
+
+Using pgr_connectedComponents() to check the number of connected components in the graph.
+
+.. literalinclude:: doc-pgr_stoerWagner.queries
+   :start-after: -- q2
+   :end-before: -- q3
 
 
 
