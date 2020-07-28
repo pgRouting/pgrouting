@@ -44,22 +44,22 @@ namespace pgrouting {
 namespace functions {
 
 template < class G >
-class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
+class Pgr_isPlanar : public pgrouting::Pgr_messages {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
      typedef typename G::E_i E_i;
-     bool boyerMyrvold(
+     bool isPlanar(
                  G &graph){
                    return false;
 #if 0
-                   return generateboyerMyrvold(
+                   return generateisPlanar(
                                           graph);
 #endif
                  }
 
  private:
-     bool generateboyerMyrvold(
+     bool generateisPlanar(
         const G &graph ) {
        return false;
 #if 0
