@@ -21,7 +21,7 @@ int main() {
                           Edge(v2, v5), Edge(v5, v2), Edge(v3, v6), Edge(v7, v8),
                           Edge(v8, v7), Edge(v5, v8), Edge(v8, v5), Edge(v5, v6),
                           Edge(v6, v5), Edge(v6, v9), Edge(v9, v6), Edge(v9, v4),
-                          Edge(v4, v9)
+                          Edge(v4, v9), Edge(v6, v8)
                         };
 
     G graph(N);
@@ -30,12 +30,12 @@ int main() {
 
     using dfs_visitor = pgrouting::visitors::Dfs_visitor<V, E, G>;
 
-    V root = v1;
+    V root = v2;
 
     // Here we use std::vector as exterior property storage.
     std::vector<boost::default_color_type> colors(boost::num_vertices(graph));
 
-    auto vis =  dfs_visitor(root, colors, graph);
+    auto vis =  dfs_visitor(root, 2, colors, graph);
     auto i_map = get(boost::vertex_index, graph);
     auto color_map = boost::make_iterator_property_map(colors.begin(), i_map);
 
