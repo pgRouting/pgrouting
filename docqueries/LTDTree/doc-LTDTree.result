@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-select * from pgr_lengauer_tarjan_dominator_tree($$select * from edge_table$$,1);
+select * from pgr_lengauerTarjanDominatorTree($$select * from edge_table$$,1);
  seq | vid | idom
 -----+-----+------
    1 |   1 |    0
