@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: boyerMyrvold_driver.cpp
+File: isPlanar_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2020 pgRouting developers
