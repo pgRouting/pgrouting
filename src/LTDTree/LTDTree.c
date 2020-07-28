@@ -40,8 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/LTDTree/LTDTree_driver.h"
 
 
-PGDLLEXPORT Datum _pgr_lengauer_tarjan_dominator_tree (PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_lengauer_tarjan_dominator_tree );
+PGDLLEXPORT Datum _pgr_lengauertarjandominatortree (PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_lengauertarjandominatortree );
 
 
 static
@@ -93,7 +93,7 @@ process(char* edges_sql,
 }
 
 PGDLLEXPORT Datum
-_pgr_lengauer_tarjan_dominator_tree(PG_FUNCTION_ARGS) {
+_pgr_lengauertarjandominatortree(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
