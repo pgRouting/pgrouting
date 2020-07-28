@@ -35,9 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <map>
 
-#include "visitors/found_goals.hpp"
-#include "cpp_common/pgr_messages.h"
-
 namespace pgrouting {
 namespace  visitors {
 
@@ -45,13 +42,9 @@ template <typename V, typename E, typename G>
 class Dfs_visitor : public boost::default_dfs_visitor {
  public:
      Dfs_visitor(
-             std::ostringstream &p_log,
              V root,
-             std::vector<E> &data,
-             boost::associative_property_map<std::map<E, boost::default_color_type>> &colors,
+             std::vector<boost::default_color_type> &colors,
              G &graph) :
-         log(p_log),
-         m_data(data),
          m_roots(root),
          m_colors(colors),
          m_graph(graph),
@@ -59,66 +52,55 @@ class Dfs_visitor : public boost::default_dfs_visitor {
          depth(0) {}
      template <typename B_G>
          void initialize_vertex(V v, const B_G&) {
-             log << "initialize vertex id " << m_graph[v].id << "\n";
+             std::cout << "initialize vertex " << v << "\n";
          }
      template <typename B_G>
          void start_vertex(V v, const B_G&) {
-             log << "start vertex id " << m_graph[v].id << "\n";
+             std::cout << "color " << m_colors[v] << "\n";
+             std::cout << "start vertex " << v << "\n";
          }
      template <typename B_G>
          void discover_vertex(V v, const B_G&) {
-             log << "\ntime " << time++ << "\n";
-             log << "discover vertex id " << m_graph[v].id << "\n";
+             std::cout << "color " << m_colors[v] << "\n";
+             std::cout << "\ntime " << time++ << "\n";
+             std::cout << "discover vertex " << v << "\n";
          }
      template <typename B_G>
          void examine_edge(E e, const B_G&) {
-             log << "color " << m_colors[e] << "\n";
-             log << "examine edge id " << m_graph[e].id << " ("
-                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+             std::cout << "examine edge " << e << "\n";
          }
      template <typename B_G>
          void tree_edge(E e, const B_G&) {
-             log << "tree edge id " << m_graph[e].id << " ("
-                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
-             log << "color " << m_colors[e] << "\n";
+             std::cout << "tree edge " << e << "\n";
              depth++;
              edge_set.insert(e);
-             log << "depth " << depth << "\n";
+             std::cout << "depth " << depth << "\n";
          }
-#if 0
      template <typename B_G>
          void back_edge(E e, const B_G&) {
-             log << "back edge " << e << "\t\t : id " << m_graph[e].id << " ("
-                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+             std::cout << "back edge " << e << "\n";
          }
-#endif
-#if 0
      template <typename B_G>
          void forward_or_cross_edge(E e, const B_G&) {
-             log << "forward or cross edge " << e << "\t : id " << m_graph[e].id << " ("
-                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
+             std::cout << "forward or cross edge " << e << "\n";
          }
-#endif
      template <typename B_G>
          void finish_edge(E e, const B_G&) {
-             log << "finish edge id " << m_graph[e].id << " ("
-                 << m_graph[m_graph.source(e)].id << ", " << m_graph[m_graph.target(e)].id << ")" << "\n";
-             log << "color " << m_colors[e] << "\n";
+             std::cout << "finish edge " << e << "\n";
              if (edge_set.find(e) != edge_set.end()) {
                  depth--;
-                 log << "depth " << depth << "\n";
+                 std::cout << "depth " << depth << "\n";
              }
          }
      template <typename B_G>
          void finish_vertex(V v, const B_G&) {
-             log << "finish vertex id " << m_graph[v].id << "\n";
+             std::cout << "color " << m_colors[v] << "\n";
+             std::cout << "finish vertex " << v << "\n";
          }
 
  private:
-     std::ostringstream &log;
-     std::vector<E> &m_data;
      V m_roots;
-     boost::associative_property_map<std::map<E, boost::default_color_type>> m_colors;
+     std::vector<boost::default_color_type> &m_colors;
      G &m_graph;
      int64_t time;
      int64_t depth;
