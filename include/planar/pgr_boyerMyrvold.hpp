@@ -56,8 +56,7 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
                  }
      bool isPlanar(
                  G &graph){
-                   return generateisPlanar(
-                                          graph);
+                   return (boyer_myrvold_planarity_test(graph.graph));
                  }
 
  private:
@@ -83,16 +82,6 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
     }
        return results;
     }
-
-     bool
-     generateisPlanar(
-       const G &graph ) {
-      return (boyer_myrvold_planarity_test(graph.graph));
-
-    }
-      return results;
-    }
-
 
 };
 }
