@@ -60,20 +60,17 @@ do_pgr_isPlanar(
         pgassert(!(*err_msg));
         pgassert(total_edges != 0);
 
-
         std::string logstr;
 
         graphType gType = UNDIRECTED;
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-
-#if 0
         pgrouting::functions::Pgr_isPlanar<pgrouting::UndirectedGraph> fn_isPlanar;
         result = fn_isPlanar.isPlanar(undigraph);
         logstr += fn_isPlanar.get_log();
-#endif
         log << logstr;
+
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
