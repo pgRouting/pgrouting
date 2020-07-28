@@ -65,7 +65,6 @@ process(
     char *err_msg = NULL;
 
 
-#if 0
     planarity = do_pgr_isPlanar(
         edges,
         total_edges,
@@ -73,7 +72,6 @@ process(
         &log_msg,
         &notice_msg,
         &err_msg);
-#endif
 
     time_msg(" processing pgr_isPlanar", start_t, clock());
 
