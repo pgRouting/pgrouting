@@ -49,17 +49,16 @@ do_pgr_isPlanar(
                 char ** log_msg,
                 char ** notice_msg,
                 char ** err_msg) {
-    return false;
-#if 0
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
     try {
+
+      return false;
+#if 0
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
-        pgassert(!(*return_tuples));
-        pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
         std::vector<pgr_boyer_t> results;
@@ -75,23 +74,6 @@ do_pgr_isPlanar(
         log << logstr;
 
 
-        auto count = results.size();
-
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice <<
-                "No Vertices";
-            *log_msg = pgr_msg(notice.str().c_str());
-            return;
-        }
-
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of traversals into the tuples";
-        for (size_t i = 0; i < count; i++) {
-            *((*return_tuples) + i) = results[i];
-        }
-        (*return_count) = count;
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
@@ -100,6 +82,7 @@ do_pgr_isPlanar(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
+#endif
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -119,5 +102,5 @@ do_pgr_isPlanar(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-#endif
+
 }
