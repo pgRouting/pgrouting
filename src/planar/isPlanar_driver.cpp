@@ -59,10 +59,10 @@ do_pgr_isPlanar(
         pgassert(!(*err_msg));
         pgassert(total_edges != 0);
 
-    return false;
-#if 0
         std::vector<pgr_boyer_t> results;
         std::string logstr;
+        return false;
+  #if 0
 
         graphType gType = UNDIRECTED;
         log << "Working with Undirected Graph\n";
