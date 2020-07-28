@@ -67,7 +67,7 @@ Parameters
 Column         Type           Description
 ============== ============ =================================================
 **edges_sql**   ``TEXT``    SQL query as described above.
-**root_vid**   ``BIGINT``  Identifier of the starting vertex.
+**root_vid**   ``BIGINT``   Identifier of the starting vertex.
 ============== ============ =================================================
 
 
@@ -99,8 +99,8 @@ Additional Examples
 The examples in this section use the following :ref:`fig1`
 
 .. literalinclude:: doc-LTDTree.queries
-    :start-after: --q1
-    :end-before: --q2
+    :start-after: -- q1
+    :end-before: -- q2
 
 See Also
 -------------------------------------------------------------------------------
