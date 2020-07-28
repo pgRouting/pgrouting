@@ -57,7 +57,7 @@ class Dfs_visitor : public boost::default_dfs_visitor {
          }
      template <typename B_G>
          void start_vertex(V v, const B_G&) {
-             m_depth.resize(boost::num_vertices(m_graph));
+             m_depth.resize(boost::num_vertices(m_graph), 0);
              m_depth[v] = 0;
              std::cout << "start vertex " << v << "\t\t" << "color " << m_colors[v];
              std::cout << "\tVertex depth " << m_depth[v] << "\n";
