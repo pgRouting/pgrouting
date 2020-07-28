@@ -17,7 +17,7 @@ int main() {
 
 
     typedef std::pair < V, V > Edge;
-    Edge edge_array[] = { Edge(v1, v2), Edge(v2, v3), Edge(v3, v4), Edge(v1, v4)
+    Edge edge_array[] = { Edge(v1, v2), Edge(v2, v3), Edge(v3, v4), Edge(v1, v3)
                         };
 
     G graph(N);

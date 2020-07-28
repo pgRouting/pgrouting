@@ -94,7 +94,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
                  auto v_root(graph.get_V(root));
 
                  // perform the algorithm
-                 depthFirstSearch_single_vertex(graph, v_root, visited_order, directed);
+                 depthFirstSearch_single_vertex(graph, v_root, visited_order, max_depth, directed);
 
                  // get the results
                  auto result = get_results(visited_order, root, max_depth, graph);
@@ -127,23 +127,25 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
                  G &graph,
                  V root,
                  std::vector<E> &visited_order,
+                 int64_t max_depth,
                  bool directed) {
          using dfs_visitor = visitors::Dfs_visitor<V, E, G>;
-         std::map<E, boost::default_color_type> edge_color;
-         boost::associative_property_map<std::map<E, boost::default_color_type>> colors(boost::make_assoc_property_map(edge_color));
+
+         std::vector<boost::default_color_type> colors(boost::num_vertices(graph.graph));
+         auto vis =  dfs_visitor(log, root, visited_order, max_depth, colors, graph);
+         auto i_map = get(boost::vertex_index, graph.graph);
+         auto color_map = boost::make_iterator_property_map(colors.begin(), i_map);
          try {
              if (directed) {
-                 boost::depth_first_search(
-                     graph.graph,
-                     visitor(dfs_visitor(log, root, visited_order, colors, graph))
-                     .edge_color_map(&colors)
-                     .root_vertex(root));
+                 boost::depth_first_search(graph.graph, vis, color_map, root);
              } else {
+#if 0
                  boost::undirected_dfs(
                      graph.graph,
-                     visitor(dfs_visitor(log, root, visited_order, colors, graph))
+                     visitor(dfs_visitor(root, visited_order, max_depth, colors, graph))
                      .edge_color_map(colors)
                      .root_vertex(root));
+#endif
              }
          } catch(found_goals &) {
              {}
