@@ -59,7 +59,7 @@ do_pgr_isPlanar(
         pgassert(!(*err_msg));
         pgassert(total_edges != 0);
 
-        std::bool result = false;
+        bool result = false;
         std::string logstr;
 
         graphType gType = UNDIRECTED;
@@ -73,8 +73,7 @@ do_pgr_isPlanar(
         logstr += fn_boyerMyrvold.get_log();
         log << logstr;
 
-
-
+#endif
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
@@ -82,7 +81,6 @@ do_pgr_isPlanar(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
-#endif
     } catch (AssertFailedException &except) {
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
