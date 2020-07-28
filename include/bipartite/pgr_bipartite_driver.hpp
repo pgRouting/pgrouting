@@ -62,23 +62,27 @@ namespace pgrouting {
 
                /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
                 CHECK_FOR_INTERRUPTS();
+                try {
+             // calling the boost function
                 boost::is_bipartite (graph.graph, boost::get (boost::vertex_index, graph.graph), partition_map);
+                     } catch (boost::exception const& ex) {
+                          (void)ex;
+                             throw;
+                     } catch (std::exception &e) {
+                         (void)e;
+                         throw;
+                      } catch (...) {
+                          throw;
+                      }
+                
                          
                 V_i v, vend;
                 for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
                     int64_t vid = graph[*v].id;
-                    auto color =(boost::get (partition_map, *v) == boost::color_traits <boost::default_color_type>::white () ? "white" : "black");
-                    if(color=="white"){
-                        results.push_back({
-                                 vid,0
-                             });
-                    }
-                    else{
-                        results.push_back({
-                                 vid,1
-                             });
-                    }
+                    boost::get (partition_map, *v) == boost::color_traits <boost::default_color_type>::white () ? results.push_back({vid,0}) :results.push_back({vid,1});
+                    
                 }
+                
                 return results;
                
             }
@@ -90,10 +94,7 @@ namespace pgrouting {
                 std::vector<pgr_bipartite_rt> results(graph.num_vertices());
                   
                 bool bipartite = boost::is_bipartite (graph.graph);
-                if(bipartite)
-                {
-                    results=print_Bipartite(graph);
-                }
+                if(bipartite) results=print_Bipartite(graph);
                 return results;
            
             }
