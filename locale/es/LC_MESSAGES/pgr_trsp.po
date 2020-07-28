@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Minerva Durán Martínez <mine_tod@yahoo.com.mx>, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -69,13 +69,15 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_trsp.rst:36
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_trsp.html>`__)"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_trsp.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_trsp.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_trsp.html>`__)"
+"**Versiones soportadas:** actual(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_trsp.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_trsp.html>`__"
 
-#: ../../build/doc/pgr_trsp.rst:39
+#: ../../build/doc/pgr_trsp.rst:40
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_trsp.html>`__ `2.5 "
@@ -95,11 +97,11 @@ msgstr ""
 "<https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html>`__ `2.0 "
 "<https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html>`__"
 
-#: ../../build/doc/pgr_trsp.rst:50
+#: ../../build/doc/pgr_trsp.rst:51
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_trsp.rst:52
+#: ../../build/doc/pgr_trsp.rst:53
 msgid ""
 "The turn restricted shorthest path (TRSP) is a shortest path algorithm that "
 "can optionally take into account complicated turn restrictions like those "
@@ -116,11 +118,11 @@ msgstr ""
 " de los nodos de la red. Devuelve un conjunto de filas (seq, id1, id2, cost)"
 " o (seq, id1, id2, id3, cost) que forman una ruta."
 
-#: ../../build/doc/pgr_trsp.rst:82
+#: ../../build/doc/pgr_trsp.rst:83
 msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
-#: ../../build/doc/pgr_trsp.rst:84
+#: ../../build/doc/pgr_trsp.rst:85
 msgid ""
 "The Turn Restricted Shortest Path algorithm (TRSP) is similar to the "
 "shooting star in that you can specify turn restrictions."
@@ -128,7 +130,7 @@ msgstr ""
 "El algoritmo de la ruta más corta restringida por giro (TRSP) es similar a "
 "la estrella fugaz en que puede especificar restricciones de giro."
 
-#: ../../build/doc/pgr_trsp.rst:86
+#: ../../build/doc/pgr_trsp.rst:87
 msgid ""
 "The TRSP setup is mostly the same as :doc:`Dijkstra shortest path "
 "<pgr_dijkstra>` with the addition of an optional turn restriction table. "
@@ -144,7 +146,7 @@ msgstr ""
 msgid "sql"
 msgstr "sql"
 
-#: ../../build/doc/pgr_trsp.rst:89 ../../build/doc/pgr_trsp.rst:139
+#: ../../build/doc/pgr_trsp.rst:90 ../../build/doc/pgr_trsp.rst:140
 msgid ""
 "a SQL query, which should return a set of rows with the following columns:"
 msgstr ""
@@ -155,7 +157,7 @@ msgstr ""
 msgid "id"
 msgstr "id"
 
-#: ../../build/doc/pgr_trsp.rst:96 ../../build/doc/pgr_trsp.rst:146
+#: ../../build/doc/pgr_trsp.rst:97 ../../build/doc/pgr_trsp.rst:147
 msgid "``int4`` identifier of the edge"
 msgstr "``int4`` Identificador del borde"
 
@@ -163,7 +165,7 @@ msgstr "``int4`` Identificador del borde"
 msgid "source"
 msgstr "source"
 
-#: ../../build/doc/pgr_trsp.rst:97 ../../build/doc/pgr_trsp.rst:147
+#: ../../build/doc/pgr_trsp.rst:98 ../../build/doc/pgr_trsp.rst:148
 msgid "``int4`` identifier of the source vertex"
 msgstr "``int4`` Identificador del vértice inicial del borde"
 
@@ -171,7 +173,7 @@ msgstr "``int4`` Identificador del vértice inicial del borde"
 msgid "target"
 msgstr "target"
 
-#: ../../build/doc/pgr_trsp.rst:98 ../../build/doc/pgr_trsp.rst:148
+#: ../../build/doc/pgr_trsp.rst:99 ../../build/doc/pgr_trsp.rst:149
 msgid "``int4`` identifier of the target vertex"
 msgstr "``int4`` Identificador del vértice final del borde"
 
@@ -179,7 +181,7 @@ msgstr "``int4`` Identificador del vértice final del borde"
 msgid "cost"
 msgstr "Costo"
 
-#: ../../build/doc/pgr_trsp.rst:99 ../../build/doc/pgr_trsp.rst:149
+#: ../../build/doc/pgr_trsp.rst:100 ../../build/doc/pgr_trsp.rst:150
 msgid ""
 "``float8`` value, of the edge traversal cost. A negative cost will prevent "
 "the edge from being inserted in the graph."
@@ -191,7 +193,7 @@ msgstr ""
 msgid "reverse_cost"
 msgstr "reverse_cost"
 
-#: ../../build/doc/pgr_trsp.rst:100 ../../build/doc/pgr_trsp.rst:150
+#: ../../build/doc/pgr_trsp.rst:101 ../../build/doc/pgr_trsp.rst:151
 msgid ""
 "(optional) the cost for the reverse traversal of the edge. This is only used"
 " when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the "
@@ -201,11 +203,11 @@ msgstr ""
 "utiliza cuando los parámetros ``directed`` y ``has_rcost``  son ``True`` "
 "(ver el comentario anterior sobre los costos negativos)."
 
-#: ../../build/doc/pgr_trsp.rst:102
+#: ../../build/doc/pgr_trsp.rst:103
 msgid "``int4`` **NODE id** of the start point"
 msgstr "``int4`` **identificador** del nodo de partida"
 
-#: ../../build/doc/pgr_trsp.rst:103
+#: ../../build/doc/pgr_trsp.rst:104
 msgid "``int4`` **NODE id** of the end point"
 msgstr "``int4`` **identificador** del nodo de llegada"
 
@@ -213,7 +215,7 @@ msgstr "``int4`` **identificador** del nodo de llegada"
 msgid "directed"
 msgstr "dirigido"
 
-#: ../../build/doc/pgr_trsp.rst:104 ../../build/doc/pgr_trsp.rst:153
+#: ../../build/doc/pgr_trsp.rst:105 ../../build/doc/pgr_trsp.rst:154
 msgid "``true`` if the graph is directed"
 msgstr "``true`` Si la gráfica es direccionada"
 
@@ -221,7 +223,7 @@ msgstr "``true`` Si la gráfica es direccionada"
 msgid "has_rcost"
 msgstr "has_rcost"
 
-#: ../../build/doc/pgr_trsp.rst:105 ../../build/doc/pgr_trsp.rst:154
+#: ../../build/doc/pgr_trsp.rst:106 ../../build/doc/pgr_trsp.rst:155
 msgid ""
 "if ``true``, the ``reverse_cost`` column of the SQL generated set of rows "
 "will be used for the cost of the traversal of the edge in the opposite "
@@ -235,7 +237,7 @@ msgstr ""
 msgid "restrict_sql"
 msgstr "restrict_sql"
 
-#: ../../build/doc/pgr_trsp.rst:107 ../../build/doc/pgr_trsp.rst:156
+#: ../../build/doc/pgr_trsp.rst:108 ../../build/doc/pgr_trsp.rst:157
 msgid ""
 "(optional) a SQL query, which should return a set of rows with the following"
 " columns:"
@@ -247,7 +249,7 @@ msgstr ""
 msgid "to_cost"
 msgstr "to_cost"
 
-#: ../../build/doc/pgr_trsp.rst:113 ../../build/doc/pgr_trsp.rst:162
+#: ../../build/doc/pgr_trsp.rst:114 ../../build/doc/pgr_trsp.rst:163
 msgid "``float8`` turn restriction cost"
 msgstr "``float8`` restricción del costo de giro"
 
@@ -255,7 +257,7 @@ msgstr "``float8`` restricción del costo de giro"
 msgid "target_id"
 msgstr "target_id"
 
-#: ../../build/doc/pgr_trsp.rst:114 ../../build/doc/pgr_trsp.rst:163
+#: ../../build/doc/pgr_trsp.rst:115 ../../build/doc/pgr_trsp.rst:164
 msgid "``int4`` target id"
 msgstr "``int4`` identificador del borde donde se aplica la restricción"
 
@@ -263,14 +265,14 @@ msgstr "``int4`` identificador del borde donde se aplica la restricción"
 msgid "via_path"
 msgstr "via_path"
 
-#: ../../build/doc/pgr_trsp.rst:115
+#: ../../build/doc/pgr_trsp.rst:116
 msgid ""
 "``text`` comma separated list of edges in the reverse order of ``rule``"
 msgstr ""
 "Lista de aristas ``text`` separadas por comas en el orden inverso de "
 "``rule``"
 
-#: ../../build/doc/pgr_trsp.rst:117
+#: ../../build/doc/pgr_trsp.rst:118
 msgid ""
 "Another variant of TRSP allows to specify **EDGE id** of source and target "
 "together with a fraction to interpolate the position:"
@@ -282,7 +284,7 @@ msgstr ""
 msgid "source_edge"
 msgstr "source_edge"
 
-#: ../../build/doc/pgr_trsp.rst:119
+#: ../../build/doc/pgr_trsp.rst:120
 msgid "``int4`` **EDGE id** of the start edge"
 msgstr "``int4`` **identificador del borde** de partida"
 
@@ -290,7 +292,7 @@ msgstr "``int4`` **identificador del borde** de partida"
 msgid "source_pos"
 msgstr "source_pos"
 
-#: ../../build/doc/pgr_trsp.rst:120
+#: ../../build/doc/pgr_trsp.rst:121
 msgid "``float8`` fraction of 1 defines the position on the start edge"
 msgstr ""
 "``float8`` fracción de 1 que define la posición del sobre el borde de "
@@ -300,7 +302,7 @@ msgstr ""
 msgid "target_edge"
 msgstr "target_edge"
 
-#: ../../build/doc/pgr_trsp.rst:121
+#: ../../build/doc/pgr_trsp.rst:122
 msgid "``int4`` **EDGE id** of the end edge"
 msgstr "``int4`` **Identificador del borde** de llegada"
 
@@ -308,13 +310,13 @@ msgstr "``int4`` **Identificador del borde** de llegada"
 msgid "target_pos"
 msgstr "target_pos"
 
-#: ../../build/doc/pgr_trsp.rst:122
+#: ../../build/doc/pgr_trsp.rst:123
 msgid "``float8`` fraction of 1 defines the position on the end edge"
 msgstr ""
 "``float8`` fracción de 1 que define la posición del sobre el borde de "
 "llegada."
 
-#: ../../build/doc/pgr_trsp.rst:124 ../../build/doc/pgr_trsp.rst:171
+#: ../../build/doc/pgr_trsp.rst:125 ../../build/doc/pgr_trsp.rst:172
 msgid "Returns set of:"
 msgstr "Devuelve el conjunto de:"
 
@@ -322,7 +324,7 @@ msgstr "Devuelve el conjunto de:"
 msgid "seq"
 msgstr "seq"
 
-#: ../../build/doc/pgr_trsp.rst:126 ../../build/doc/pgr_trsp.rst:173
+#: ../../build/doc/pgr_trsp.rst:127 ../../build/doc/pgr_trsp.rst:174
 msgid "row sequence"
 msgstr "Secuencia de registros"
 
@@ -330,7 +332,7 @@ msgstr "Secuencia de registros"
 msgid "id1"
 msgstr "id1"
 
-#: ../../build/doc/pgr_trsp.rst:127 ../../build/doc/pgr_trsp.rst:175
+#: ../../build/doc/pgr_trsp.rst:128 ../../build/doc/pgr_trsp.rst:176
 msgid "node ID"
 msgstr "Identificador del nodo visitado"
 
@@ -338,21 +340,21 @@ msgstr "Identificador del nodo visitado"
 msgid "id2"
 msgstr "id2"
 
-#: ../../build/doc/pgr_trsp.rst:128 ../../build/doc/pgr_trsp.rst:176
+#: ../../build/doc/pgr_trsp.rst:129 ../../build/doc/pgr_trsp.rst:177
 msgid "edge ID (``-1`` for the last row)"
 msgstr "Identificador del borde (``-1`` para el ultimo registro)"
 
-#: ../../build/doc/pgr_trsp.rst:129
+#: ../../build/doc/pgr_trsp.rst:130
 msgid "cost to traverse from ``id1`` using ``id2``"
 msgstr ""
 "costo para atravesar desde el nodo ``id1``  usando el borde``id2`` hasta su "
 "otro extremo"
 
-#: ../../build/doc/pgr_trsp.rst:132
+#: ../../build/doc/pgr_trsp.rst:133
 msgid "Support for Vias"
 msgstr "Soporte para Vias"
 
-#: ../../build/doc/pgr_trsp.rst:134
+#: ../../build/doc/pgr_trsp.rst:135
 msgid ""
 "The Support for Vias functions are prototypes. Not all corner cases are "
 "being considered."
@@ -360,7 +362,7 @@ msgstr ""
 "Las funciones de Soporte para Vias son prototipos. No se están considerando "
 "todos los casos de esquina."
 
-#: ../../build/doc/pgr_trsp.rst:137
+#: ../../build/doc/pgr_trsp.rst:138
 msgid ""
 "We also have support for vias where you can say generate a from A to B to C,"
 " etc. We support both methods above only you pass an array of vertices or "
@@ -375,7 +377,7 @@ msgstr ""
 msgid "vids"
 msgstr "vids"
 
-#: ../../build/doc/pgr_trsp.rst:152
+#: ../../build/doc/pgr_trsp.rst:153
 msgid ""
 "``int4[]`` An ordered array of **NODE id** the path will go through from "
 "start to end."
@@ -383,14 +385,14 @@ msgstr ""
 "``int4[]`` Un arreglo ordenado de **NODE id** la ruta irá de principio a "
 "fin."
 
-#: ../../build/doc/pgr_trsp.rst:164
+#: ../../build/doc/pgr_trsp.rst:165
 msgid ""
 "``text`` commar separated list of edges in the reverse order of ``rule``"
 msgstr ""
 "Lista de aristas `` text`` separadas por comas en el orden inverso de "
 "``rule``"
 
-#: ../../build/doc/pgr_trsp.rst:166
+#: ../../build/doc/pgr_trsp.rst:167
 msgid ""
 "Another variant of TRSP allows to specify **EDGE id** together with a "
 "fraction to interpolate the position:"
@@ -402,7 +404,7 @@ msgstr ""
 msgid "eids"
 msgstr "eids"
 
-#: ../../build/doc/pgr_trsp.rst:168
+#: ../../build/doc/pgr_trsp.rst:169
 msgid "``int4`` An ordered array of **EDGE id** that the path has to traverse"
 msgstr ""
 "``int4`` Un arreglo ordenado de **EDGE id** que la ruta tiene que atravesar"
@@ -411,7 +413,7 @@ msgstr ""
 msgid "pcts"
 msgstr "Pct"
 
-#: ../../build/doc/pgr_trsp.rst:169
+#: ../../build/doc/pgr_trsp.rst:170
 msgid ""
 "``float8`` An array of fractional positions along the respective edges in "
 "``eids``, where 0.0 is the start of the edge and 1.0 is the end of the "
@@ -421,7 +423,7 @@ msgstr ""
 "respectivas aristasen  ``eids``, donde 0.0 es el comienzo de la arista y 1.0"
 " es el final."
 
-#: ../../build/doc/pgr_trsp.rst:174
+#: ../../build/doc/pgr_trsp.rst:175
 msgid "route ID"
 msgstr "Identificador de la ruta"
 
@@ -429,13 +431,13 @@ msgstr "Identificador de la ruta"
 msgid "id3"
 msgstr "id3"
 
-#: ../../build/doc/pgr_trsp.rst:177
+#: ../../build/doc/pgr_trsp.rst:178
 msgid "cost to traverse from ``id2`` using ``id3``"
 msgstr ""
 "costo para atravesar desde el nodo ``id2``  usando el borde ``id3`` hasta su"
 " otro extremo"
 
-#: ../../build/doc/pgr_trsp.rst:180
+#: ../../build/doc/pgr_trsp.rst:181
 msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
@@ -443,43 +445,43 @@ msgstr "Ejemplos Adicionales"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_trsp.rst:182
+#: ../../build/doc/pgr_trsp.rst:183
 msgid "Without turn restrictions"
 msgstr "Sin restricción de giros"
 
-#: ../../build/doc/pgr_trsp.rst:188
+#: ../../build/doc/pgr_trsp.rst:189
 msgid "With turn restrictions"
 msgstr "Con restricción de giros"
 
-#: ../../build/doc/pgr_trsp.rst:190
+#: ../../build/doc/pgr_trsp.rst:191
 msgid "Then a query with turn restrictions is created as:"
 msgstr ""
 "Entonces una consulta con restricciones de giro es creada de la siguiente "
 "forma:"
 
-#: ../../build/doc/pgr_trsp.rst:196
+#: ../../build/doc/pgr_trsp.rst:197
 msgid "An example query using vertex ids and via points:"
 msgstr ""
 "Una consulta de ejemplo mediante identificadores de vértices y puntos de "
 "vía:"
 
-#: ../../build/doc/pgr_trsp.rst:202
+#: ../../build/doc/pgr_trsp.rst:203
 msgid "An example query using edge ids and vias:"
 msgstr "Una consulta de ejemplo mediante identificadores de borde y vias:"
 
-#: ../../build/doc/pgr_trsp.rst:208
+#: ../../build/doc/pgr_trsp.rst:209
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_trsp.rst:211
+#: ../../build/doc/pgr_trsp.rst:212
 msgid "Known Issues"
 msgstr "Problemas conocidos"
 
-#: ../../build/doc/pgr_trsp.rst:213
+#: ../../build/doc/pgr_trsp.rst:214
 msgid "Introduction"
 msgstr "Introducción"
 
-#: ../../build/doc/pgr_trsp.rst:214
+#: ../../build/doc/pgr_trsp.rst:215
 msgid ""
 "pgr_trsp code has issues that are not being fixed yet, but as time passes "
 "and new functionality is added to pgRouting with wrappers to **hide** the "
@@ -489,20 +491,20 @@ msgstr ""
 "medida que pasa el tiempo y se agrega nueva funcionalidad a pgRouting, hay "
 "contenedores para **ocultar** los problemas, no para solucionarlos."
 
-#: ../../build/doc/pgr_trsp.rst:216
+#: ../../build/doc/pgr_trsp.rst:217
 msgid "For clarity on the queries:"
 msgstr "Para mayor claridad en las consultas:"
 
-#: ../../build/doc/pgr_trsp.rst:218
+#: ../../build/doc/pgr_trsp.rst:219
 msgid "_pgr_trsp (internal_function) is the original code"
 msgstr "_pgr_trsp (internal_function) es el código original"
 
-#: ../../build/doc/pgr_trsp.rst:219
+#: ../../build/doc/pgr_trsp.rst:220
 msgid "pgr_trsp (lower case) represents the wrapper calling the original code"
 msgstr ""
 "pgr_trsp (minúscula) representa el contenedor que convoca al código original"
 
-#: ../../build/doc/pgr_trsp.rst:220
+#: ../../build/doc/pgr_trsp.rst:221
 msgid ""
 "pgr_TRSP (upper case) represents the wrapper calling the replacement "
 "function, depending on the function, it can be:"
@@ -510,50 +512,50 @@ msgstr ""
 "pgr_TRSP (mayúsculas) representa el contenedor que convoca a la función de "
 "reemplazo. Dependiendo de esa función, puede ser:"
 
-#: ../../build/doc/pgr_trsp.rst:222
+#: ../../build/doc/pgr_trsp.rst:223
 msgid "pgr_dijkstra"
 msgstr "pgr_dijkstra"
 
-#: ../../build/doc/pgr_trsp.rst:223
+#: ../../build/doc/pgr_trsp.rst:224
 msgid "pgr_dijkstraVia"
 msgstr "pgr_dijkstraVia"
 
-#: ../../build/doc/pgr_trsp.rst:224
+#: ../../build/doc/pgr_trsp.rst:225
 msgid "pgr_withPoints"
 msgstr "pgr_withPoints"
 
-#: ../../build/doc/pgr_trsp.rst:225
+#: ../../build/doc/pgr_trsp.rst:226
 msgid "_pgr_withPointsVia (internal function)"
 msgstr "_pgr_withPointsVia (función interna)"
 
-#: ../../build/doc/pgr_trsp.rst:228
+#: ../../build/doc/pgr_trsp.rst:229
 msgid "The restrictions"
 msgstr "Las restricciones"
 
-#: ../../build/doc/pgr_trsp.rst:230
+#: ../../build/doc/pgr_trsp.rst:231
 msgid ""
 "The restriction used in the examples does not have to do anything with the "
 "graph:"
 msgstr ""
 "La restricción utilizada en los ejemplos no tiene que ver nada con el grafo:"
 
-#: ../../build/doc/pgr_trsp.rst:232
+#: ../../build/doc/pgr_trsp.rst:233
 msgid "No vertex has id: 25, 32 or 33"
 msgstr "Ningún vértice tiene id: 25, 32 o 33"
 
-#: ../../build/doc/pgr_trsp.rst:233
+#: ../../build/doc/pgr_trsp.rst:234
 msgid "No edge has id: 25, 32 or 33"
 msgstr "Ninguna arista tiene id: 25, 32 o 33"
 
-#: ../../build/doc/pgr_trsp.rst:235
+#: ../../build/doc/pgr_trsp.rst:236
 msgid "A restriction is assigned as:"
 msgstr "Se asigna una restricción como:"
 
-#: ../../build/doc/pgr_trsp.rst:241
+#: ../../build/doc/pgr_trsp.rst:242
 msgid "The back end code has that same restriction as follows"
 msgstr "El código back-end tiene la misma restricción que la siguiente"
 
-#: ../../build/doc/pgr_trsp.rst:247
+#: ../../build/doc/pgr_trsp.rst:248
 msgid ""
 "therefore the shortest path expected are as if there was no restriction "
 "involved"
@@ -561,27 +563,27 @@ msgstr ""
 "por lo tanto, la ruta más corta esperado es como si no hubiera ninguna "
 "restricción involucrada"
 
-#: ../../build/doc/pgr_trsp.rst:250
+#: ../../build/doc/pgr_trsp.rst:251
 msgid "The \"Vertices\" signature version"
 msgstr "La versión de la firma \"Vértices\""
 
-#: ../../build/doc/pgr_trsp.rst:258 ../../build/doc/pgr_trsp.rst:360
+#: ../../build/doc/pgr_trsp.rst:259 ../../build/doc/pgr_trsp.rst:361
 msgid "Different ways to represent 'no path found`"
 msgstr "Diferentes formas de representar 'ninguna ruta encontrada'"
 
-#: ../../build/doc/pgr_trsp.rst:260 ../../build/doc/pgr_trsp.rst:362
+#: ../../build/doc/pgr_trsp.rst:261 ../../build/doc/pgr_trsp.rst:363
 msgid "Sometimes represents with EMPTY SET a no path found"
 msgstr "A veces se representa con EMPTY SET ninguna ruta encontrada"
 
-#: ../../build/doc/pgr_trsp.rst:261
+#: ../../build/doc/pgr_trsp.rst:262
 msgid "Sometimes represents with Error a no path found"
 msgstr "A veces representa con ERROR ninguna ruta encontrada"
 
-#: ../../build/doc/pgr_trsp.rst:264 ../../build/doc/pgr_trsp.rst:366
+#: ../../build/doc/pgr_trsp.rst:265 ../../build/doc/pgr_trsp.rst:367
 msgid "Returning EMPTY SET to represent no path found"
 msgstr "Se devuelve EMPTY SET para representar ninguna ruta encontrada"
 
-#: ../../build/doc/pgr_trsp.rst:269
+#: ../../build/doc/pgr_trsp.rst:270
 msgid ""
 "pgr_trsp calls :doc:`pgr_dijkstra` when there are no restrictions which "
 "returns `EMPTY SET` when a path is not found"
@@ -589,11 +591,11 @@ msgstr ""
 "pgr_trsp invoca :doc:`pgr_dijkstra` cuando no hay restricciones que "
 "devuelvan `EMPTY SET` cuando no se encuentra una ruta"
 
-#: ../../build/doc/pgr_trsp.rst:277 ../../build/doc/pgr_trsp.rst:375
+#: ../../build/doc/pgr_trsp.rst:278 ../../build/doc/pgr_trsp.rst:376
 msgid "Throwing EXCEPTION to represent no path found"
 msgstr "Se producirá una  EXCEPCIÓN para representar ninguna ruta encontrada"
 
-#: ../../build/doc/pgr_trsp.rst:282 ../../build/doc/pgr_trsp.rst:380
+#: ../../build/doc/pgr_trsp.rst:283 ../../build/doc/pgr_trsp.rst:381
 msgid ""
 "pgr_trsp use the original code when there are restrictions, even if they "
 "have nothing to do with the graph, which will throw an EXCEPTION to "
@@ -603,11 +605,11 @@ msgstr ""
 "tienen nada que ver con el grafo, lo que producirá una EXCEPCIÓN para "
 "representar ninguna ruta encontrada."
 
-#: ../../build/doc/pgr_trsp.rst:286 ../../build/doc/pgr_trsp.rst:412
+#: ../../build/doc/pgr_trsp.rst:287 ../../build/doc/pgr_trsp.rst:413
 msgid "Routing from/to same location"
 msgstr "Ruteo desde/hacia la misma ubicación"
 
-#: ../../build/doc/pgr_trsp.rst:288
+#: ../../build/doc/pgr_trsp.rst:289
 msgid ""
 "When routing from location :math:`1` to the same location :math:`1`, no path"
 " is needed to reach the destination, its already there. Therefore is "
@@ -619,25 +621,25 @@ msgstr ""
 "tanto, se espera que devuelva un `EMPTY SET` o un `EXCEPTION` dependiendo de"
 " los parámetros"
 
-#: ../../build/doc/pgr_trsp.rst:292
+#: ../../build/doc/pgr_trsp.rst:293
 msgid "Sometimes represents with EMPTY SET no path found (expected)"
 msgstr ""
 "A veces se representa con EMPTY SET ninguna ruta encontrada (esperada)"
 
-#: ../../build/doc/pgr_trsp.rst:293
+#: ../../build/doc/pgr_trsp.rst:294
 msgid "Sometimes represents with EXCEPTION no path found (expected)"
 msgstr "A veces se representa con EXCEPCIÓNninguna ruta encontrada (esperada)"
 
-#: ../../build/doc/pgr_trsp.rst:294
+#: ../../build/doc/pgr_trsp.rst:295
 msgid "Sometimes finds a path (not expected)"
 msgstr "A veces se encuentra una ruta (no esperada)"
 
-#: ../../build/doc/pgr_trsp.rst:297
+#: ../../build/doc/pgr_trsp.rst:298
 msgid "Returning expected EMPTY SET to represent no path found"
 msgstr ""
 "Se devuelve el SET EMPTY esperado para representar ninguna ruta encontrada"
 
-#: ../../build/doc/pgr_trsp.rst:302
+#: ../../build/doc/pgr_trsp.rst:303
 msgid ""
 "``pgr_trsp`` calls :doc:`pgr_dijkstra` when there are no restrictions which "
 "returns the expected to return `EMPTY SET` to represent no path found."
@@ -645,11 +647,11 @@ msgstr ""
 "``pgr_trsp`` convoca a :doc:`pgr_dijkstra` cuando no hay resctricciones que "
 "devuelvan el  `EMPTY SET` esperado para representar ninguna ruta encontrada."
 
-#: ../../build/doc/pgr_trsp.rst:306
+#: ../../build/doc/pgr_trsp.rst:307
 msgid "Returning expected EXCEPTION to represent no path found"
 msgstr "Devolver EXCEPTION esperada para representar ninguna ruta encontrada"
 
-#: ../../build/doc/pgr_trsp.rst:311
+#: ../../build/doc/pgr_trsp.rst:312
 msgid ""
 "In this case ``pgr_trsp`` calls the original code when there are "
 "restrictions, even if they have nothing to do with the graph, in this case "
@@ -659,11 +661,11 @@ msgstr ""
 " incluso si no tienen nada que ver con el grafo, en este caso ese código "
 "lanza la EXCEPCIÓN esperada"
 
-#: ../../build/doc/pgr_trsp.rst:315
+#: ../../build/doc/pgr_trsp.rst:316
 msgid "Returning unexpected path"
 msgstr "Devolver una ruta inesperado"
 
-#: ../../build/doc/pgr_trsp.rst:320
+#: ../../build/doc/pgr_trsp.rst:321
 msgid ""
 "In this case ``pgr_trsp`` calls the original code when there are "
 "restrictions, even if they have nothing to do with the graph, in this case "
@@ -673,11 +675,11 @@ msgstr ""
 " incluso si no tienen nada que ver con el grafo, en este caso ese código "
 "encuentra una ruta inesperada."
 
-#: ../../build/doc/pgr_trsp.rst:325 ../../build/doc/pgr_trsp.rst:440
+#: ../../build/doc/pgr_trsp.rst:326 ../../build/doc/pgr_trsp.rst:441
 msgid "User contradictions"
 msgstr "Contradicciones de usuarios"
 
-#: ../../build/doc/pgr_trsp.rst:327 ../../build/doc/pgr_trsp.rst:442
+#: ../../build/doc/pgr_trsp.rst:328 ../../build/doc/pgr_trsp.rst:443
 msgid ""
 "``pgr_trsp`` unlike other pgRouting functions does not autodectect the "
 "existence of ``reverse_cost`` column. Therefor it has ``has_rcost`` "
@@ -689,32 +691,32 @@ msgstr ""
 "tiene el parámetro ``has_rcost`` para verificar la existencia de la columna "
 "``reverse_cost``. Las contradicciones suceden:"
 
-#: ../../build/doc/pgr_trsp.rst:331 ../../build/doc/pgr_trsp.rst:446
+#: ../../build/doc/pgr_trsp.rst:332 ../../build/doc/pgr_trsp.rst:447
 msgid ""
 "When the reverse_cost is missing, and the flag `has_rcost` is set to true"
 msgstr ""
 "Cuando falta reverse_cost, y la marca `has_rcost` se establece como "
 "verdadera"
 
-#: ../../build/doc/pgr_trsp.rst:332 ../../build/doc/pgr_trsp.rst:343
-#: ../../build/doc/pgr_trsp.rst:447 ../../build/doc/pgr_trsp.rst:458
+#: ../../build/doc/pgr_trsp.rst:333 ../../build/doc/pgr_trsp.rst:344
+#: ../../build/doc/pgr_trsp.rst:448 ../../build/doc/pgr_trsp.rst:459
 msgid "When the reverse_cost exists, and the flag `has_rcost` is set to false"
 msgstr ""
 "Cuando el reverse_cost existe, y el indicador `has_rcost` se establece en "
 "false"
 
-#: ../../build/doc/pgr_trsp.rst:335 ../../build/doc/pgr_trsp.rst:450
+#: ../../build/doc/pgr_trsp.rst:336 ../../build/doc/pgr_trsp.rst:451
 msgid ""
 "When the reverse_cost is missing, and the flag `has_rcost` is set to true."
 msgstr ""
 "Cuando falta reverse_cost y el indicador `has_rcost` se configura como "
 "verdadero."
 
-#: ../../build/doc/pgr_trsp.rst:340 ../../build/doc/pgr_trsp.rst:455
+#: ../../build/doc/pgr_trsp.rst:341 ../../build/doc/pgr_trsp.rst:456
 msgid "An EXCEPTION is thrown."
 msgstr "Se produce una EXCEPCIÓN."
 
-#: ../../build/doc/pgr_trsp.rst:348 ../../build/doc/pgr_trsp.rst:463
+#: ../../build/doc/pgr_trsp.rst:349 ../../build/doc/pgr_trsp.rst:464
 msgid ""
 "The ``reverse_cost`` column will be effectively removed and will cost "
 "execution time"
@@ -722,15 +724,15 @@ msgstr ""
 "La columna de ``reverse_cost`` será eliminada efectivamente y costará tiempo"
 " de ejecución"
 
-#: ../../build/doc/pgr_trsp.rst:351
+#: ../../build/doc/pgr_trsp.rst:352
 msgid "The \"Edges\" signature version"
 msgstr "La versión de firma \"Edges\""
 
-#: ../../build/doc/pgr_trsp.rst:363
+#: ../../build/doc/pgr_trsp.rst:364
 msgid "Sometimes represents with EXCEPTION a no path found"
 msgstr "A veces se representa con EXCEPCIÓN ninguna ruta encontrada"
 
-#: ../../build/doc/pgr_trsp.rst:371
+#: ../../build/doc/pgr_trsp.rst:372
 msgid ""
 "pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which "
 "returns `EMPTY SET` when a path is not found"
@@ -738,27 +740,27 @@ msgstr ""
 "pgr_trsp invoca :doc:`pgr_withPoints` cuando no hay restricciones que "
 "devuelvan `EMPTY SET` cuando no se encuentra una ruta"
 
-#: ../../build/doc/pgr_trsp.rst:384
+#: ../../build/doc/pgr_trsp.rst:385
 msgid "Paths with equal number of vertices and edges"
 msgstr "Rutas con igual número de vértices y aristas"
 
-#: ../../build/doc/pgr_trsp.rst:386
+#: ../../build/doc/pgr_trsp.rst:387
 msgid "A path is made of `N` vertices and `N - 1` edges."
 msgstr "Una ruta se conforma por `N` vértices y `N - 1` aristas."
 
-#: ../../build/doc/pgr_trsp.rst:388
+#: ../../build/doc/pgr_trsp.rst:389
 msgid "Sometimes returns `N` vertices and `N - 1` edges."
 msgstr "A veces devuelve `N` vértices y `N - 1` aristas."
 
-#: ../../build/doc/pgr_trsp.rst:389
+#: ../../build/doc/pgr_trsp.rst:390
 msgid "Sometimes returns `N - 1` vertices and `N - 1` edges."
 msgstr "A veces se devuelven `N - 1` vértices y `N - 1` aristas."
 
-#: ../../build/doc/pgr_trsp.rst:392
+#: ../../build/doc/pgr_trsp.rst:393
 msgid "Returning `N` vertices and `N - 1` edges."
 msgstr "Retorno de `N` vértices y `N - 1` aristas."
 
-#: ../../build/doc/pgr_trsp.rst:397
+#: ../../build/doc/pgr_trsp.rst:398
 msgid ""
 "pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which "
 "returns the correct number of rows that will include all the vertices. The "
@@ -770,11 +772,11 @@ msgstr ""
 "última fila tendrá un ``-1`` en la columna de aristas para indicar que el "
 "número de arista es inválido para esa fila."
 
-#: ../../build/doc/pgr_trsp.rst:403
+#: ../../build/doc/pgr_trsp.rst:404
 msgid "Returning `N - 1` vertices and `N - 1` edges."
 msgstr "Retorno de `N - 1` vrtices'y `N - 1` aristas."
 
-#: ../../build/doc/pgr_trsp.rst:408
+#: ../../build/doc/pgr_trsp.rst:409
 msgid ""
 "pgr_trsp use the original code when there are restrictions, even if they "
 "have nothing to do with the graph, and will not return the last vertex of "
@@ -784,7 +786,7 @@ msgstr ""
 "tienen nada que ver con el grafo, y no devolverán el último vértice de la "
 "ruta."
 
-#: ../../build/doc/pgr_trsp.rst:414
+#: ../../build/doc/pgr_trsp.rst:415
 msgid ""
 "When routing from the same edge and position to the same edge and position, "
 "no path is needed to reach the destination, its already there. Therefore is "
@@ -796,11 +798,11 @@ msgstr ""
 "tanto, se espera que devuelva un `EMPTY SET` o una `EXCEPTION` dependiendo "
 "de los parámetros, ninguno de los cuales está sucediendo."
 
-#: ../../build/doc/pgr_trsp.rst:420
+#: ../../build/doc/pgr_trsp.rst:421
 msgid "A path with 2 vertices and edge cost 0"
 msgstr "Una ruta con 2 vértices y coste de arista 0"
 
-#: ../../build/doc/pgr_trsp.rst:425
+#: ../../build/doc/pgr_trsp.rst:426
 msgid ""
 "pgr_trsp calls :doc:`pgr_withPoints` setting the first :math:`(edge, "
 "position)` with a differenct point id from the second :math:`(edge, "
@@ -812,11 +814,11 @@ msgstr ""
 ":math:`(arista, posición)` haciendo de ellas diferentes puntos. Pero el "
 "costo usando la arista es de :math:`0`."
 
-#: ../../build/doc/pgr_trsp.rst:430
+#: ../../build/doc/pgr_trsp.rst:431
 msgid "A path with 1 vertices and edge cost 0"
 msgstr "Una ruta con 1 vértice y coste de arista 0"
 
-#: ../../build/doc/pgr_trsp.rst:435
+#: ../../build/doc/pgr_trsp.rst:436
 msgid ""
 "pgr_trsp use the original code when there are restrictions, even if they "
 "have nothing to do with the graph, and will not have the row for the vertex "
@@ -826,65 +828,65 @@ msgstr ""
 "tienen nada que ver con el grafo, y no tendrán la fila para el vértice "
 ":math:`-2`."
 
-#: ../../build/doc/pgr_trsp.rst:466
+#: ../../build/doc/pgr_trsp.rst:467
 msgid "Using a points of interest table"
 msgstr "Uso de una tabla de puntos de interés"
 
-#: ../../build/doc/pgr_trsp.rst:468
+#: ../../build/doc/pgr_trsp.rst:469
 msgid "Given a set of points of interest:"
 msgstr "Dado un conjunto de puntos de interés:"
 
-#: ../../build/doc/pgr_trsp.rst:475 ../../build/doc/pgr_trsp.rst:507
+#: ../../build/doc/pgr_trsp.rst:476 ../../build/doc/pgr_trsp.rst:508
 msgid "Using pgr_trsp"
 msgstr "Uso de pgr_trsp"
 
-#: ../../build/doc/pgr_trsp.rst:480
+#: ../../build/doc/pgr_trsp.rst:481
 msgid "On *pgr_trsp*, to be able to use the table information:"
 msgstr "En *pgr_trsp*, para poder utilizar la información de la tabla:"
 
-#: ../../build/doc/pgr_trsp.rst:482
+#: ../../build/doc/pgr_trsp.rst:483
 msgid "Each parameter has to be extracted explicitly from the table"
 msgstr "Cada parámetro debe extraerse explícitamente de la tabla"
 
-#: ../../build/doc/pgr_trsp.rst:483
+#: ../../build/doc/pgr_trsp.rst:484
 msgid "Regardles of the point pid original value"
 msgstr "Independientemente del punto pid valor original"
 
-#: ../../build/doc/pgr_trsp.rst:485
+#: ../../build/doc/pgr_trsp.rst:486
 msgid "will always be -1 for the first point"
 msgstr "siempre será -1 para el primer punto"
 
-#: ../../build/doc/pgr_trsp.rst:486
+#: ../../build/doc/pgr_trsp.rst:487
 msgid "will always be -2 for the second point"
 msgstr "siempre será -2 para el segundo punto"
 
-#: ../../build/doc/pgr_trsp.rst:488
+#: ../../build/doc/pgr_trsp.rst:489
 msgid "the row reaching point -2 will not be shown"
 msgstr "la fila que alcanza el punto -2 no se mostrará"
 
-#: ../../build/doc/pgr_trsp.rst:491 ../../build/doc/pgr_trsp.rst:522
+#: ../../build/doc/pgr_trsp.rst:492 ../../build/doc/pgr_trsp.rst:523
 msgid "Using :doc:`pgr_withPoints`"
 msgstr "Uso de :doc:`pgr_withPoints`"
 
-#: ../../build/doc/pgr_trsp.rst:496 ../../build/doc/pgr_trsp.rst:527
+#: ../../build/doc/pgr_trsp.rst:497 ../../build/doc/pgr_trsp.rst:528
 msgid ""
 "Suggestion: use :doc:`pgr_withPoints` when there are no turn restrictions:"
 msgstr ""
 "Sugerencia: use :doc:`pgr_withPoints` cuando no hay restricciones de giro:"
 
-#: ../../build/doc/pgr_trsp.rst:498 ../../build/doc/pgr_trsp.rst:530
+#: ../../build/doc/pgr_trsp.rst:499 ../../build/doc/pgr_trsp.rst:531
 msgid "Results are more complete"
 msgstr "Los resultados son más completos"
 
-#: ../../build/doc/pgr_trsp.rst:499 ../../build/doc/pgr_trsp.rst:531
+#: ../../build/doc/pgr_trsp.rst:500 ../../build/doc/pgr_trsp.rst:532
 msgid "Column names are meaningful"
 msgstr "Los nombres de columna son significativos"
 
-#: ../../build/doc/pgr_trsp.rst:502
+#: ../../build/doc/pgr_trsp.rst:503
 msgid "Routing from a vertex to a point"
 msgstr "Ruteo desde un vértice a un punto"
 
-#: ../../build/doc/pgr_trsp.rst:504
+#: ../../build/doc/pgr_trsp.rst:505
 msgid ""
 "Solving a shortest path from vertex :math:`6` to pid 1 using a points of "
 "interest table"
@@ -892,23 +894,23 @@ msgstr ""
 "Resolver una ruta más corta desde el vértice :math:`6` a pid 1 usando una "
 "tabla de puntos de interés"
 
-#: ../../build/doc/pgr_trsp.rst:512
+#: ../../build/doc/pgr_trsp.rst:513
 msgid "Vertex 6 is on edge 8 at 1 fraction"
 msgstr "El vértice 6 está en el borde 8 en 1 fracción"
 
-#: ../../build/doc/pgr_trsp.rst:519
+#: ../../build/doc/pgr_trsp.rst:520
 msgid "Vertex 6 is also edge 11 at 0 fraction"
 msgstr "El vértice 6 es también borde 11 en 0 fracción"
 
-#: ../../build/doc/pgr_trsp.rst:529
+#: ../../build/doc/pgr_trsp.rst:530
 msgid "No need to choose where the vertex is located."
 msgstr "No es necesario elegir dónde se encuentra el vértice."
 
-#: ../../build/doc/pgr_trsp.rst:535
+#: ../../build/doc/pgr_trsp.rst:536
 msgid "prototypes"
 msgstr "Prototipos"
 
-#: ../../build/doc/pgr_trsp.rst:537
+#: ../../build/doc/pgr_trsp.rst:538
 msgid ""
 "``pgr_trspViaVertices`` and ``pgr_trspViaEdges`` were added to pgRouting as "
 "prototypes"
@@ -916,7 +918,7 @@ msgstr ""
 "``pgr_trspViaVertices`` y ``pgr_trspViaEdges`` fueron añadidas como "
 "prototipos"
 
-#: ../../build/doc/pgr_trsp.rst:539
+#: ../../build/doc/pgr_trsp.rst:540
 msgid ""
 "These functions use the pgr_trsp functions inheriting all the problems "
 "mentioned above. When there are no restrictions and have a routing \"via\" "
@@ -926,29 +928,22 @@ msgstr ""
 "problemas mencionados anteriormente. Cuando no hay restricciones y tienen un"
 " problema de ruteo \"vía\" con vértices:"
 
-#: ../../build/doc/pgr_trsp.rst:542
+#: ../../build/doc/pgr_trsp.rst:543
 msgid ":doc:`pgr_dijkstraVia`"
 msgstr ":doc:`pgr_dijkstraVia`"
 
-#: ../../build/doc/pgr_trsp.rst:547
+#: ../../build/doc/pgr_trsp.rst:548
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_trsp.rst:550
+#: ../../build/doc/pgr_trsp.rst:551
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_trsp.rst:551
+#: ../../build/doc/pgr_trsp.rst:552
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_trsp.rst:552
+#: ../../build/doc/pgr_trsp.rst:553
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_trsp.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_trsp.html>`__)"
