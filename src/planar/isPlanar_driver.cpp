@@ -52,6 +52,7 @@ do_pgr_isPlanar(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    bool result = false;
     try {
 
         pgassert(!(*log_msg));
@@ -59,14 +60,14 @@ do_pgr_isPlanar(
         pgassert(!(*err_msg));
         pgassert(total_edges != 0);
 
-        bool result = false;
+
         std::string logstr;
 
         graphType gType = UNDIRECTED;
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        return result;
+
 #if 0
         pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_boyerMyrvold;
         results=fn_boyerMyrvold.boyerMyrvold(undigraph);
@@ -94,5 +95,5 @@ do_pgr_isPlanar(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-
+      return result;
 }
