@@ -80,8 +80,8 @@ class Pgr_isPlanar : public pgrouting::Pgr_messages {
       }
 
     }
-#endif
        return results;
+#endif
     }
 };
 }
