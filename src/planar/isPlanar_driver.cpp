@@ -61,13 +61,13 @@ do_pgr_isPlanar(
 
         std::bool result = false;
         std::string logstr;
-        return result;
-  #if 0
 
         graphType gType = UNDIRECTED;
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
+        return result;
+#if 0
         pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_boyerMyrvold;
         results=fn_boyerMyrvold.boyerMyrvold(undigraph);
         logstr += fn_boyerMyrvold.get_log();
