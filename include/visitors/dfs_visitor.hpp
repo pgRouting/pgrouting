@@ -74,20 +74,21 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              std::cout << "examine edge " << e << "\t" << "vertex " << source << " color " << m_colors[source] << " depth "
                        << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
              std::cout << "\tEdge depth " << depth << "\n";
+             if (m_depth[target] == 0)
+                 m_depth[target] = m_depth[source] + 1;
+             if (m_depth[target] == m_max_depth) {
+                 m_colors[target] = boost::black_color;
+                 std::cout << "\n target " << target << " color " << m_colors[target] << " depth " << m_depth[target] << "\n\n";
+             }
          }
      template <typename B_G>
          void tree_edge(E e, const B_G& g) {
              int64_t source = boost::source(e, m_graph), target = boost::target(e, m_graph);
-             m_depth[target] = m_depth[source] + 1;
              std::cout << "tree edge " << e << "\t\t" << "vertex " << source << " color " << m_colors[source] << " depth "
                        << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
              depth++;
              edge_set.insert(e);
              std::cout << "\tEdge depth " << depth << "\n";
-             if (m_depth[target] == m_max_depth) {
-                 m_colors[target] = boost::black_color;
-                 std::cout << "\ntarget " << target << " color " << m_colors[target] << "\n";
-             }
          }
 #if 1
      template <typename B_G>
