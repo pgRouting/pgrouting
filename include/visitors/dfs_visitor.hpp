@@ -57,61 +57,61 @@ class Dfs_visitor : public boost::default_dfs_visitor {
          }
      template <typename B_G>
          void start_vertex(V v, const B_G&) {
-             std::cout << "start vertex " << v << "\t\t" << "color " << m_colors[v] << "\n";
-             std::cout << "depth " << depth << "\n";
+             std::cout << "start vertex " << v << "\t\t" << "color " << m_colors[v];
+             std::cout << "\tdepth " << depth << "\n";
          }
      template <typename B_G>
          void discover_vertex(V v, const B_G&) {
              std::cout << "\n";
-             std::cout << "discover vertex " << v << "\t" << "color " << m_colors[v] << "\n";
-             std::cout << "depth " << depth << "\n";
+             std::cout << "discover vertex " << v << "\t" << "color " << m_colors[v];
+             std::cout << "\tdepth " << depth << "\n";
          }
      template <typename B_G>
          void examine_edge(E e, const B_G&) {
              int64_t source = boost::source(e, m_graph), target = boost::target(e, m_graph);
              std::cout << "examine edge " << e << "\t" << "vertex " << source << " color " << m_colors[source]
-                       << " vertex " << target << " color " << m_colors[target] << "\n";
-             std::cout << "depth " << depth << "\n";
+                       << " vertex " << target << " color " << m_colors[target];
+             std::cout << "\tdepth " << depth << "\n";
          }
      template <typename B_G>
          void tree_edge(E e, const B_G&) {
              int64_t source = boost::source(e, m_graph), target = boost::target(e, m_graph);
-             std::cout << "tree edge " << e << "\t" << "vertex " << source << " color " << m_colors[source]
-                       << " vertex " << target << " color " << m_colors[target] << "\n";
+             std::cout << "tree edge " << e << "\t\t" << "vertex " << source << " color " << m_colors[source]
+                       << " vertex " << target << " color " << m_colors[target];
              depth++;
              edge_set.insert(e);
-             std::cout << "depth " << depth << "\n";
+             std::cout << "\tdepth " << depth << "\n";
          }
 #if 1
      template <typename B_G>
          void back_edge(E e, const B_G&) {
              int64_t source = boost::source(e, m_graph), target = boost::target(e, m_graph);
-             std::cout << "back edge " << e << "\t" << "vertex " << source << " color " << m_colors[source]
-                       << " vertex " << target << " color " << m_colors[target] << "\n";
-             std::cout << "depth " << depth << "\n";
+             std::cout << "back edge " << e << "\t\t" << "vertex " << source << " color " << m_colors[source]
+                       << " vertex " << target << " color " << m_colors[target];
+             std::cout << "\tdepth " << depth << "\n";
          }
      template <typename B_G>
          void forward_or_cross_edge(E e, const B_G&) {
              int64_t source = boost::source(e, m_graph), target = boost::target(e, m_graph);
              std::cout << "forward or cross edge " << e << "\t" << "vertex " << source << " color " << m_colors[source]
-                       << " vertex " << target << " color " << m_colors[target] << "\n";
-             std::cout << "depth " << depth << "\n";
+                       << " vertex " << target << " color " << m_colors[target];
+             std::cout << "\tdepth " << depth << "\n";
          }
 #endif
      template <typename B_G>
          void finish_edge(E e, const B_G&) {
              int64_t source = boost::source(e, m_graph), target = boost::target(e, m_graph);
              std::cout << "finish edge " << e << "\t" << "vertex " << source << " color " << m_colors[source]
-                       << " vertex " << target << " color " << m_colors[target] << "\n";
+                       << " vertex " << target << " color " << m_colors[target];
              if (edge_set.find(e) != edge_set.end()) {
                  depth--;
              }
-             std::cout << "depth " << depth << "\n";
+             std::cout << "\tdepth " << depth << "\n";
          }
      template <typename B_G>
          void finish_vertex(V v, const B_G&) {
-             std::cout << "finish vertex " << v << "\t\t" << "color " << m_colors[v] << "\n";
-             std::cout << "depth " << depth << "\n";
+             std::cout << "finish vertex " << v << "\t\t" << "color " << m_colors[v];
+             std::cout << "\tdepth " << depth << "\n";
          }
 
  private:
