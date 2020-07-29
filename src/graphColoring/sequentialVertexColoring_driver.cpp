@@ -67,9 +67,15 @@ pgr_sequentialVertexColoring(G &graph) {
 
 /** @brief Performs exception handling and converts the results to postgres.
  *
- * It first asserts the variables, then builds the undirected graph using the
- * `data_edges` variable. Then, it passes the required variables to the
- * template function `pgr_sequentialVertexColoring` which calls the main function
+ * @pre log_msg is empty
+ * @pre notice_msg is empty
+ * @pre err_msg is empty
+ * @pre return_tuples is empty
+ * @pre return_count is 0
+ *
+ * It builds the undirected graph using the `data_edges` variable.
+ * Then, it passes the required variables to the template function
+ * `pgr_sequentialVertexColoring` which calls the main function
  * defined in the C++ Header file. It also does exception handling.
  *
  * @param data_edges     the set of edges from the SQL query
