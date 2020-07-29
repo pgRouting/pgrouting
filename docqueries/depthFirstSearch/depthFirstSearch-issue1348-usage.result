@@ -107,7 +107,8 @@ SELECT * FROM pgr_depthFirstSearch (
 -----+-------+-----------+------+------+------+----------
    1 |     0 |         6 |    6 |   -1 |    0 |        0
    2 |     1 |         6 |    3 |    1 |   20 |       20
-(2 rows)
+   3 |     1 |         6 |    8 |    3 |   12 |       12
+(3 rows)
 
 -- q8
 SELECT * FROM pgr_depthFirstSearch (
