@@ -45,13 +45,11 @@ template <typename V, typename E, typename G>
 class Dfs_visitor : public boost::default_dfs_visitor {
  public:
      Dfs_visitor(
-             std::ostringstream &p_log,
              V root,
              std::vector<E> &data,
              int64_t max_depth,
              std::vector<boost::default_color_type> &colors,
              G &graph) :
-         log(p_log),
          m_roots(root),
          m_data(data),
          m_max_depth(max_depth),
@@ -60,28 +58,14 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              m_depth.resize(m_graph.num_vertices(), 0);
          }
      template <typename B_G>
-         void initialize_vertex(V v, const B_G&) {
-             log << "initialize vertex " << v << "\n";
-         }
-     template <typename B_G>
          void start_vertex(V v, const B_G&) {
              // exception for visitor termination
              if (v != m_roots) throw found_goals();
              m_depth[v] = 0;
-             log << "start vertex " << v << "\t\t" << "color " << m_colors[v];
-             log << "\tVertex depth " << m_depth[v] << "\n";
-         }
-     template <typename B_G>
-         void discover_vertex(V v, const B_G&) {
-             log << "\n";
-             log << "discover vertex " << v << "\t" << "color " << m_colors[v];
-             log << "\tVertex depth " << m_depth[v] << "\n";
          }
      template <typename B_G>
          void examine_edge(E e, const B_G&) {
              auto source = m_graph.source(e), target = m_graph.target(e);
-             log << "examine edge " << e << "\t" << "vertex " << source << " color " << m_colors[source] << " depth "
-                       << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
              // If the target has not been visited before
              if (m_depth[target] == 0 && target != m_roots)
                  m_depth[target] = m_depth[source] + 1;
@@ -90,44 +74,14 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              if (m_depth[target] == m_max_depth && m_colors[target] != 4) {
                  m_colors[target] = boost::black_color;
                  m_data.push_back(e);
-                 log << "\n target " << target << " color " << m_colors[target] << " depth " << m_depth[target] << "\n\n";
              }
          }
      template <typename B_G>
          void tree_edge(E e, const B_G&) {
              m_data.push_back(e);
-             auto source = m_graph.source(e), target = m_graph.target(e);
-             log << "tree edge " << e << "\t\t" << "vertex " << source << " color " << m_colors[source] << " depth "
-                       << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
-         }
-#if 1
-     template <typename B_G>
-         void back_edge(E e, const B_G&) {
-             auto source = m_graph.source(e), target = m_graph.target(e);
-             log << "back edge " << e << "\t\t" << "vertex " << source << " color " << m_colors[source] << " depth "
-                       << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
-         }
-     template <typename B_G>
-         void forward_or_cross_edge(E e, const B_G&) {
-             auto source = m_graph.source(e), target = m_graph.target(e);
-             log << "forward/cross edge " << e << " " << "vertex " << source << " color " << m_colors[source] << " depth "
-                       << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
-         }
-#endif
-     template <typename B_G>
-         void finish_edge(E e, const B_G&) {
-             auto source = m_graph.source(e), target = m_graph.target(e);
-             log << "finish edge " << e << "\t" << "vertex " << source << " color " << m_colors[source] << " depth "
-                       << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
-         }
-     template <typename B_G>
-         void finish_vertex(V v, const B_G&) {
-             log << "finish vertex " << v << "\t\t" << "color " << m_colors[v];
-             log << "\tVertex depth " << m_depth[v] << "\n";
          }
 
  private:
-     std::ostringstream &log;
      V m_roots;
      std::vector<E> &m_data;
      int64_t m_max_depth;

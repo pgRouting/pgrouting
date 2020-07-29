@@ -133,7 +133,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
 
          std::vector<boost::default_color_type> colors(boost::num_vertices(graph.graph));
          std::map<E, boost::default_color_type> edge_color;
-         auto vis =  dfs_visitor(log, root, visited_order, max_depth, colors, graph);
+         auto vis =  dfs_visitor(root, visited_order, max_depth, colors, graph);
          auto i_map = get(boost::vertex_index, graph.graph);
          auto vertex_color_map = boost::make_iterator_property_map(colors.begin(), i_map);
          auto edge_color_map = boost::make_assoc_property_map(edge_color);
