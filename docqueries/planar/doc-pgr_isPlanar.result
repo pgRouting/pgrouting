@@ -9,7 +9,7 @@ SELECT * FROM pgr_isPlanar(
 );
  pgr_isplanar
 --------------
- f
+ t
 (1 row)
 
 -- q5
