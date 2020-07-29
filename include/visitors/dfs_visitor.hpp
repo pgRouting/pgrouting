@@ -56,8 +56,7 @@ class Dfs_visitor : public boost::default_dfs_visitor {
          m_data(data),
          m_max_depth(max_depth),
          m_colors(colors),
-         m_graph(graph),
-         depth(0) {
+         m_graph(graph) {
              m_depth.resize(m_graph.num_vertices(), 0);
          }
      template <typename B_G>
@@ -83,7 +82,6 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              auto source = m_graph.source(e), target = m_graph.target(e);
              log << "examine edge " << e << "\t" << "vertex " << source << " color " << m_colors[source] << " depth "
                        << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
-             log << "\tEdge depth " << depth << "\n";
              // If the target has not been visited before
              if (m_depth[target] == 0 && target != m_roots)
                  m_depth[target] = m_depth[source] + 1;
@@ -101,9 +99,6 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              auto source = m_graph.source(e), target = m_graph.target(e);
              log << "tree edge " << e << "\t\t" << "vertex " << source << " color " << m_colors[source] << " depth "
                        << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
-             depth++;
-             edge_set.insert(e);
-             log << "\tEdge depth " << depth << "\n";
          }
 #if 1
      template <typename B_G>
@@ -111,14 +106,12 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              auto source = m_graph.source(e), target = m_graph.target(e);
              log << "back edge " << e << "\t\t" << "vertex " << source << " color " << m_colors[source] << " depth "
                        << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
-             log << "\tEdge depth " << depth << "\n";
          }
      template <typename B_G>
          void forward_or_cross_edge(E e, const B_G&) {
              auto source = m_graph.source(e), target = m_graph.target(e);
              log << "forward/cross edge " << e << " " << "vertex " << source << " color " << m_colors[source] << " depth "
                        << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
-             log << "\tEdge depth " << depth << "\n";
          }
 #endif
      template <typename B_G>
@@ -126,10 +119,6 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              auto source = m_graph.source(e), target = m_graph.target(e);
              log << "finish edge " << e << "\t" << "vertex " << source << " color " << m_colors[source] << " depth "
                        << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
-             if (edge_set.find(e) != edge_set.end()) {
-                 depth--;
-             }
-             log << "\tEdge depth " << depth << "\n";
          }
      template <typename B_G>
          void finish_vertex(V v, const B_G&) {
@@ -144,9 +133,7 @@ class Dfs_visitor : public boost::default_dfs_visitor {
      int64_t m_max_depth;
      std::vector<boost::default_color_type> &m_colors;
      G &m_graph;
-     int64_t depth;
      std::vector<int64_t> m_depth;
-     std::set<E> edge_set;
 };
 
 
