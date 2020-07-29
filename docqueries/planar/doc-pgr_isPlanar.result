@@ -26,5 +26,25 @@ SELECT * FROM pgr_isPlanar(
  f
 (1 row)
 
+-- q4
+SELECT * FROM pgr_isPlanar(
+$$
+ SELECT id, source, target, cost, reverse_cost FROM edge_table
+    where source = any (ARRAY(SELECT node FROM pgr_connectedComponents(
+                            'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
+                        WHERE component = 14)
+                       )
+                   OR
+          target = any (ARRAY(SELECT node FROM pgr_connectedComponents(
+                            'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
+                        WHERE component = 14)
+                       )
+$$
+ );
+ pgr_isplanar
+--------------
+ t
+(1 row)
+
 ROLLBACK;
 ROLLBACK
