@@ -58,7 +58,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_sequentialVertexColoring(TEXT edges_sql)
+    pgr_sequentialVertexColoring(TEXT Edges SQL)
 
     RETURNS SET OF (node, color)
     OR EMPTY SET
@@ -82,13 +82,13 @@ Parameters
 =================== ====================== =================================================
 Parameter           Type                   Description
 =================== ====================== =================================================
-**edges_sql**       ``TEXT``               SQL query described in `Inner query`_.
+**Edges SQL**       ``TEXT``               SQL query described in `Inner query`_.
 =================== ====================== =================================================
 
 Inner query
 -------------------------------------------------------------------------------
 
-.. rubric:: edges_sql
+.. rubric:: Edges SQL
 
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start
@@ -113,20 +113,6 @@ Column           Type        Description
 
 .. result columns end
 
-
-Additional Examples
--------------------------------------------------------------------------------
-
-The examples of this section are based on the :doc:`sampledata` network.
-
-The examples include a subgraph extracted from the original undirected graph,
-containing the vertices in a linear, cyclic or cross-like arrangement.
-
-* :ref:`fig2`
-
-.. literalinclude:: doc-pgr_sequentialVertexColoring.queries
-   :start-after: -- q3
-   :end-before: -- q4
 
 See Also
 -------------------------------------------------------------------------------
