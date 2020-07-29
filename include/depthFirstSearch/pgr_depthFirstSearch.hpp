@@ -141,9 +141,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
              if (directed) {
                  boost::depth_first_search(graph.graph, vis, vertex_color_map, root);
              } else {
-#if 1
                  boost::undirected_dfs(graph.graph, vis, vertex_color_map, edge_color_map, root);
-#endif
              }
          } catch(found_goals &) {
              {}
