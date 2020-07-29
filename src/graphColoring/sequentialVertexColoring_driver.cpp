@@ -45,9 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /***********************************************************************
  *
- *   pgr_sequentialVertexColoring(
- *       edges_sql TEXT
- *   );
+ *   pgr_sequentialVertexColoring(edges_sql TEXT);
  *
  ***********************************************************************/
 
@@ -59,11 +57,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * @returns results, when results are found
  */
 
-template <class G>
-std::vector<pgr_vertex_color_rt>
-pgr_sequentialVertexColoring(
-        G &graph) {
-    pgrouting::functions::Pgr_sequentialVertexColoring<G> fn_sequentialVertexColoring;
+template < class G >
+std::vector < pgr_vertex_color_rt >
+pgr_sequentialVertexColoring(G &graph) {
+    pgrouting::functions::Pgr_sequentialVertexColoring < G > fn_sequentialVertexColoring;
     auto results = fn_sequentialVertexColoring.sequentialVertexColoring(graph);
     return results;
 }
@@ -107,15 +104,14 @@ do_pgr_sequentialVertexColoring(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        std::vector<pgr_vertex_color_rt> results;
+        std::vector < pgr_vertex_color_rt > results;
 
         graphType gType = UNDIRECTED;
         pgrouting::UndirectedGraph undigraph(gType);
 
         undigraph.insert_edges(data_edges, total_edges);
 
-        results = pgr_sequentialVertexColoring(
-                undigraph);
+        results = pgr_sequentialVertexColoring(undigraph);
 
         auto count = results.size();
 
