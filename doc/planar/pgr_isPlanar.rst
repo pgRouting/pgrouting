@@ -111,6 +111,15 @@ Column           Type        Description
 Additional Example:
 -------------------------------------------------------------------------------
 
+Now, let's add some edges to make the :doc:`sampledata` graph non-planar. Inserting edges between every pair
+in this list of vertices 1, 2, 3, 4, 5. This will make the graph non-planar.
+
+.. literalinclude:: doc-pgr_isPlanar.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+Now, check the planarity.
+
 See Also
 -------------------------------------------------------------------------------
 
