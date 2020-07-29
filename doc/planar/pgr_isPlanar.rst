@@ -52,7 +52,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_isPlanar(edges_sql)
+    pgr_isPlanar(Edges SQL)
 
     RETURNS BOOLEAN
 
@@ -68,13 +68,13 @@ Parameters
 =================== ====================== ========= =================================================
 Parameter           Type                   Default   Description
 =================== ====================== ========= =================================================
-**edges_sql**       ``TEXT``                         SQL query as described above.
+**Edges SQL**       ``TEXT``                         SQL query as described above.
 =================== ====================== ========= =================================================
 
 Inner query
 -------------------------------------------------------------------------------
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+:Edges SQL: an SQL query, which should return a set of rows with the following columns:
 
 ================= =================== ======== =================================================
 Column            Type                 Default  Description
