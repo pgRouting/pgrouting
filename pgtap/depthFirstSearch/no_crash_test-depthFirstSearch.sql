@@ -41,16 +41,16 @@ BEGIN
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
-    -- depthFirstSearch Single vertex with depth
+    -- depthFirstSearch Single vertex with max_depth
     params = ARRAY[
     '$$edges$$',
     '5::BIGINT',
-    '3::BIGINT'
+    'max_depth => 3::BIGINT'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
     '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+    'max_depth => (SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
@@ -58,7 +58,7 @@ BEGIN
     subs = ARRAY[
     'NULL',
     'NULL::BIGINT',
-    'NULL::BIGINT'
+    'max_depth => NULL::BIGINT'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
@@ -80,16 +80,16 @@ BEGIN
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 
-    -- depthFirstSearch Multiple vertices with depth
+    -- depthFirstSearch Multiple vertices with max_depth
     params = ARRAY[
     '$$edges$$',
     'ARRAY[5,3]::BIGINT[]',
-    '3::BIGINT'
+    'max_depth => 3::BIGINT'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
     '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+    'max_depth => (SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
@@ -97,7 +97,7 @@ BEGIN
     subs = ARRAY[
     'NULL',
     'NULL::BIGINT[]',
-    'NULL::BIGINT'
+    'max_depth => NULL::BIGINT'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_depthFirstSearch', params, subs);
 

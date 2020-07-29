@@ -92,21 +92,21 @@ PREPARE depthFirstSearch11 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q1',
-    5, max_depth => 2, directed => false
+    5, directed => false, max_depth => 2
 );
 
 PREPARE depthFirstSearch12 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q1',
-    ARRAY[5], max_depth => 2, directed => false
+    ARRAY[5], directed => false, max_depth => 2
 );
 
 PREPARE depthFirstSearch13 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q1',
-    ARRAY[2, 5], max_depth => 2, directed => false
+    ARRAY[2, 5], directed => false, max_depth => 2
 );
 
 SELECT is_empty('depthFirstSearch8', '8: Graph with 0 edge and 0 vertex -> Empty row is returned');
@@ -207,21 +207,21 @@ PREPARE depthFirstSearch24 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q14',
-    -10, max_depth => 2, directed => false
+    -10, directed => false, max_depth => 2
 );
 
 PREPARE depthFirstSearch25 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q14',
-    ARRAY[-10], max_depth => 2, directed => false
+    ARRAY[-10], directed => false, max_depth => 2
 );
 
 PREPARE depthFirstSearch26 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q14',
-    ARRAY[20, -10], max_depth => 2, directed => false
+    ARRAY[20, -10], directed => false, max_depth => 2
 );
 
 SELECT is_empty('depthFirstSearch21', '21: Vertex not present in graph -> Empty row is returned');
@@ -263,21 +263,21 @@ PREPARE depthFirstSearch30 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q14',
-    4, max_depth => -3, directed => false
+    4, directed => false, max_depth => -3
 );
 
 PREPARE depthFirstSearch31 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q14',
-    ARRAY[4], max_depth => -3, directed => false
+    ARRAY[4], directed => false, max_depth => -3
 );
 
 PREPARE depthFirstSearch32 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q14',
-    ARRAY[4, 20], max_depth => -3, directed => false
+    ARRAY[4, 20], directed => false, max_depth => -3
 );
 
 SELECT throws_ok('depthFirstSearch27', 'P0001', 'Negative value found on ''max_depth''', '27: Negative max_depth throws');
@@ -356,14 +356,14 @@ PREPARE depthFirstSearch40 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q33',
-    2, max_depth => 2, directed => false
+    2, directed => false, max_depth => 2
 );
 
 PREPARE depthFirstSearch41 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q33',
-    ARRAY[2], max_depth => 2, directed => false
+    ARRAY[2], directed => false, max_depth => 2
 );
 
 SELECT set_eq('depthFirstSearch38', $$VALUES (1, 0, 2, 2, -1, 0, 0)$$, '38: One row with node 2 is returned');
@@ -470,14 +470,14 @@ PREPARE depthFirstSearch53 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q42',
-    3, max_depth => 1, directed => false
+    3, directed => false, max_depth => 1
 );
 
 PREPARE depthFirstSearch54 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q42',
-    3, max_depth => 0, directed => false
+    3, directed => false, max_depth => 0
 );
 
 SELECT set_eq('depthFirstSearch49', $$VALUES (1, 0, 3, 3, -1, 0, 0), (2, 1, 3, 6, 5, 1, 1)$$, '49: Two rows are returned');
@@ -619,7 +619,7 @@ PREPARE depthFirstSearch63 AS
 SELECT *
 FROM pgr_depthFirstSearch(
     'q55',
-    6, max_depth => 1, directed => false
+    6, directed => false, max_depth => 1
 );
 
 SELECT set_eq('depthFirstSearch61',
