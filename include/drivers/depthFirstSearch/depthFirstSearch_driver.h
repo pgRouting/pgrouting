@@ -50,8 +50,8 @@ extern "C" {
      *   pgr_depthFirstSearch(
      *      edges_sql TEXT,
      *      root_vids ANYARRAY,
-     *      max_depth BIGINT DEFAULT 9223372036854775807,
      *      directed BOOLEAN DEFAULT true
+     *      max_depth BIGINT DEFAULT 9223372036854775807,
      *   );
      *
      *************************************************/
@@ -62,8 +62,8 @@ extern "C" {
             int64_t *rootsArr,
             size_t size_rootsArr,
 
-            int64_t max_depth,
             bool directed,
+            int64_t max_depth,
 
             pgr_mst_rt **return_tuples,
             size_t *return_count,

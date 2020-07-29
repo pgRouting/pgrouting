@@ -66,7 +66,7 @@ class Pgr_depthFirstSearch {
       * It does all the processing and returns the results.
       *
       * @param graph      the graph containing the edges
-      * @param roots      the starting vertices
+      * @param roots      the root vertices
       * @param max_depth  the maximum depth of traversal
       * @param directed   whether the graph is directed or undirected
       *
@@ -80,8 +80,8 @@ class Pgr_depthFirstSearch {
      std::vector < pgr_mst_rt > depthFirstSearch(
              G &graph,
              std::vector < int64_t > roots,
-             int64_t max_depth,
-             bool directed) {
+             bool directed,
+             int64_t max_depth) {
          std::vector < pgr_mst_rt > results;
 
          for (auto root : roots) {
@@ -92,7 +92,7 @@ class Pgr_depthFirstSearch {
 
                  auto v_root(graph.get_V(root));
 
-                 depthFirstSearch_single_vertex(graph, v_root, visited_order, max_depth, directed);
+                 depthFirstSearch_single_vertex(graph, v_root, visited_order, directed, max_depth);
 
                  auto result = get_results(visited_order, root, max_depth, graph);
                  results.insert(results.end(), result.begin(), result.end());
@@ -114,7 +114,7 @@ class Pgr_depthFirstSearch {
       * for directed graphs and undirected graphs, respectively.
       *
       * @param graph          the graph containing the edges
-      * @param root           the starting vertex
+      * @param root           the root vertex
       * @param visited_order  vector which will contain the edges of the resulting traversal
       * @param directed       whether the graph is directed or undirected
       *
@@ -124,8 +124,8 @@ class Pgr_depthFirstSearch {
                  G &graph,
                  V root,
                  std::vector < E > &visited_order,
-                 int64_t max_depth,
-                 bool directed) {
+                 bool directed,
+                 int64_t max_depth) {
          using dfs_visitor = visitors::Dfs_visitor < V, E, G >;
 
          // Exterior property storage containers
@@ -170,7 +170,7 @@ class Pgr_depthFirstSearch {
       * depth is less than the `max_depth`.
       *
       * @param visited_order  vector which contains the edges of the resulting traversal
-      * @param source         the starting vertex
+      * @param root           the root vertex
       * @param max_depth      the maximum depth of traversal
       * @param graph          the graph containing the edges
       *
@@ -179,7 +179,7 @@ class Pgr_depthFirstSearch {
      template < typename T >
      std::vector < pgr_mst_rt > get_results(
              T visited_order,
-             int64_t source,
+             int64_t root,
              int64_t max_depth,
              const G &graph) {
          std::vector < pgr_mst_rt > results;
@@ -196,7 +196,7 @@ class Pgr_depthFirstSearch {
 
              if (max_depth >= depth[v]) {
                  results.push_back({
-                     source,
+                     root,
                      depth[v],
                      graph[v].id,
                      graph[edge].id,
