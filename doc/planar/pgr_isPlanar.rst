@@ -120,6 +120,16 @@ in this list of vertices 1, 2, 3, 4, 5. This will make the graph non-planar.
 
 Now, check the planarity.
 
+.. literalinclude:: doc-pgr_isPlanar.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+Use of pgr_connectedComponents( ) function in query to check the planarity of a particular component.
+
+.. literalinclude:: doc-pgr_isPlanar.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
 See Also
 -------------------------------------------------------------------------------
 

@@ -13,3 +13,19 @@ SELECT * FROM pgr_isPlanar(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table'
 );
+
+\echo -- q4
+SELECT * FROM pgr_isPlanar(
+$$
+ SELECT id, source, target, cost, reverse_cost FROM edge_table
+    where source = any (ARRAY(SELECT node FROM pgr_connectedComponents(
+                            'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
+                        WHERE component = 14)
+                       )
+                   OR
+          target = any (ARRAY(SELECT node FROM pgr_connectedComponents(
+                            'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
+                        WHERE component = 14)
+                       )
+$$
+ );
