@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(72);
+SELECT plan(88);
 
 
 
@@ -643,7 +643,8 @@ SELECT set_eq('depthFirstSearch62',
 SELECT set_eq('depthFirstSearch63',
     $$VALUES
         (1, 0, 6, 6, -1, 0, 0),
-        (2, 1, 6, 3, 1, 20, 20)
+        (2, 1, 6, 3, 1, 20, 20),
+        (3, 1, 6, 8, 3, 12, 12)
     $$,
     '63: 3 vertices tests (undirected)'
 );
@@ -806,6 +807,273 @@ SELECT set_eq('depthFirstSearch72',
         (4, 3, 11, 10, 10, 1, 3)
     $$,
     '72: 4 vertices tests (undirected)'
+);
+
+-- 4 vertices tests with max_depth 1 (directed)
+
+PREPARE depthFirstSearch73 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    5, max_depth => 1
+);
+
+PREPARE depthFirstSearch74 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    6, max_depth => 1
+);
+
+PREPARE depthFirstSearch75 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    10, max_depth => 1
+);
+
+PREPARE depthFirstSearch76 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    11, max_depth => 1
+);
+
+SELECT set_eq('depthFirstSearch73',
+    $$VALUES
+        (1, 0, 5, 5, -1, 0, 0),
+        (2, 1, 5, 6, 8, 1, 1),
+        (3, 1, 5, 10, 10, 1, 1)
+    $$,
+    '73: 4 vertices tests with max_depth 1 (directed)'
+);
+
+SELECT set_eq('depthFirstSearch74',
+    $$VALUES
+        (1, 0, 6, 6, -1, 0, 0),
+        (2, 1, 6, 5, 8, 1, 1),
+        (3, 1, 6, 11, 11, 1, 1)
+    $$,
+    '74: 4 vertices tests with max_depth 1 (directed)'
+);
+
+SELECT set_eq('depthFirstSearch75',
+    $$VALUES
+        (1, 0, 10, 10, -1, 0, 0),
+        (2, 1, 10, 5, 10, 1, 1),
+        (3, 1, 10, 11, 12, 1, 1)
+    $$,
+    '75: 4 vertices tests with max_depth 1 (directed)'
+);
+
+SELECT set_eq('depthFirstSearch76',
+    $$VALUES
+        (1, 0, 11, 11, -1, 0, 0)
+    $$,
+    '76: 4 vertices tests with max_depth 1 (directed)'
+);
+
+-- 4 vertices tests with max_depth 1 (undirected)
+
+PREPARE depthFirstSearch77 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    5, directed => false, max_depth => 1
+);
+
+PREPARE depthFirstSearch78 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    6, directed => false, max_depth => 1
+);
+
+PREPARE depthFirstSearch79 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    10, directed => false, max_depth => 1
+);
+
+PREPARE depthFirstSearch80 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    11, directed => false, max_depth => 1
+);
+
+SELECT set_eq('depthFirstSearch77',
+    $$VALUES
+        (1, 0, 5, 5, -1, 0, 0),
+        (2, 1, 5, 6, 8, 1, 1),
+        (3, 1, 5, 10, 10, 1, 1)
+    $$,
+    '77: 4 vertices tests with max_depth 1 (undirected)'
+);
+
+SELECT set_eq('depthFirstSearch78',
+    $$VALUES
+        (1, 0, 6, 6, -1, 0, 0),
+        (2, 1, 6, 5, 8, 1, 1),
+        (3, 1, 6, 11, 11, 1, 1)
+    $$,
+    '78: 4 vertices tests with max_depth 1 (undirected)'
+);
+
+SELECT set_eq('depthFirstSearch79',
+    $$VALUES
+        (1, 0, 10, 10, -1, 0, 0),
+        (2, 1, 10, 5, 10, 1, 1),
+        (3, 1, 10, 11, 12, 1, 1)
+    $$,
+    '79: 4 vertices tests with max_depth 1 (undirected)'
+);
+
+SELECT set_eq('depthFirstSearch80',
+    $$VALUES
+        (1, 0, 11, 11, -1, 0, 0),
+        (2, 1, 11, 6, 11, 1, 1),
+        (3, 1, 11, 10, 12, 1, 1)
+    $$,
+    '80: 4 vertices tests with max_depth 1 (undirected)'
+);
+
+-- 4 vertices tests with max_depth 2 (directed)
+
+PREPARE depthFirstSearch81 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    5, max_depth => 2
+);
+
+PREPARE depthFirstSearch82 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    6, max_depth => 2
+);
+
+PREPARE depthFirstSearch83 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    10, max_depth => 2
+);
+
+PREPARE depthFirstSearch84 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    11, max_depth => 2
+);
+
+SELECT set_eq('depthFirstSearch81',
+    $$VALUES
+        (1, 0, 5, 5, -1, 0, 0),
+        (2, 1, 5, 6, 8, 1, 1),
+        (3, 2, 5, 11, 11, 1, 2),
+        (4, 1, 5, 10, 10, 1, 1)
+    $$,
+    '81: 4 vertices tests with max_depth 2 (directed)'
+);
+
+SELECT set_eq('depthFirstSearch82',
+    $$VALUES
+        (1, 0, 6, 6, -1, 0, 0),
+        (2, 1, 6, 5, 8, 1, 1),
+        (3, 2, 6, 10, 10, 1, 2),
+        (4, 1, 6, 11, 11, 1, 1)
+    $$,
+    '82: 4 vertices tests with max_depth 2 (directed)'
+);
+
+SELECT set_eq('depthFirstSearch83',
+    $$VALUES
+        (1, 0, 10, 10, -1, 0, 0),
+        (2, 1, 10, 5, 10, 1, 1),
+        (3, 2, 10, 6, 8, 1, 2),
+        (4, 1, 10, 11, 12, 1, 1)
+    $$,
+    '83: 4 vertices tests with max_depth 2 (directed)'
+);
+
+SELECT set_eq('depthFirstSearch84',
+    $$VALUES
+        (1, 0, 11, 11, -1, 0, 0)
+    $$,
+    '84: 4 vertices tests with max_depth 2 (directed)'
+);
+
+-- 4 vertices tests with max_depth 2 (undirected)
+
+PREPARE depthFirstSearch85 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    5, directed => false, max_depth => 2
+);
+
+PREPARE depthFirstSearch86 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    6, directed => false, max_depth => 2
+);
+
+PREPARE depthFirstSearch87 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    10, directed => false, max_depth => 2
+);
+
+PREPARE depthFirstSearch88 AS
+SELECT *
+FROM pgr_depthFirstSearch(
+    'q64',
+    11, directed => false, max_depth => 2
+);
+
+SELECT set_eq('depthFirstSearch85',
+    $$VALUES
+        (1, 0, 5, 5, -1, 0, 0),
+        (2, 1, 5, 6, 8, 1, 1),
+        (3, 2, 5, 11, 11, 1, 2),
+        (4, 1, 5, 10, 10, 1, 1)
+    $$,
+    '85: 4 vertices tests with max_depth 2 (undirected)'
+);
+
+SELECT set_eq('depthFirstSearch86',
+    $$VALUES
+        (1, 0, 6, 6, -1, 0, 0),
+        (2, 1, 6, 5, 8, 1, 1),
+        (3, 2, 6, 10, 10, 1, 2),
+        (4, 1, 6, 11, 11, 1, 1)
+    $$,
+    '86: 4 vertices tests with max_depth 2 (undirected)'
+);
+
+SELECT set_eq('depthFirstSearch87',
+    $$VALUES
+        (1, 0, 10, 10, -1, 0, 0),
+        (2, 1, 10, 5, 10, 1, 1),
+        (3, 2, 10, 6, 8, 1, 2),
+        (4, 1, 10, 11, 12, 1, 1)
+    $$,
+    '87: 4 vertices tests with max_depth 2 (undirected)'
+);
+
+SELECT set_eq('depthFirstSearch88',
+    $$VALUES
+        (1, 0, 11, 11, -1, 0, 0),
+        (2, 1, 11, 6, 11, 1, 1),
+        (3, 2, 11, 5, 8, 1, 2),
+        (4, 1, 11, 10, 12, 1, 1)
+    $$,
+    '88: 4 vertices tests with max_depth 2 (undirected)'
 );
 
 
