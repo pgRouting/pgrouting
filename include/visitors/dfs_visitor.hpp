@@ -57,15 +57,17 @@ class Dfs_visitor : public boost::default_dfs_visitor {
          m_max_depth(max_depth),
          m_colors(colors),
          m_graph(graph),
-         depth(0) {}
+         depth(0) {
+             m_depth.resize(m_graph.num_vertices(), 0);
+         }
      template <typename B_G>
          void initialize_vertex(V v, const B_G&) {
              log << "initialize vertex " << v << "\n";
          }
      template <typename B_G>
          void start_vertex(V v, const B_G&) {
+             // exception for visitor termination
              if (v != m_roots) throw found_goals();
-             m_depth.resize(m_graph.num_vertices(), 0);
              m_depth[v] = 0;
              log << "start vertex " << v << "\t\t" << "color " << m_colors[v];
              log << "\tVertex depth " << m_depth[v] << "\n";
@@ -82,8 +84,11 @@ class Dfs_visitor : public boost::default_dfs_visitor {
              log << "examine edge " << e << "\t" << "vertex " << source << " color " << m_colors[source] << " depth "
                        << m_depth[source] << " vertex " << target << " color " << m_colors[target] << " depth " << m_depth[target];
              log << "\tEdge depth " << depth << "\n";
+             // If the target has not been visited before
              if (m_depth[target] == 0 && target != m_roots)
                  m_depth[target] = m_depth[source] + 1;
+
+             // If the max_depth is reached, mark the target as visited, and push the corresponding edge
              if (m_depth[target] == m_max_depth && m_colors[target] != 4) {
                  m_colors[target] = boost::black_color;
                  m_data.push_back(e);

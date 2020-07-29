@@ -132,19 +132,17 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
          using dfs_visitor = visitors::Dfs_visitor<V, E, G>;
 
          std::vector<boost::default_color_type> colors(boost::num_vertices(graph.graph));
+         std::map<E, boost::default_color_type> edge_color;
          auto vis =  dfs_visitor(log, root, visited_order, max_depth, colors, graph);
          auto i_map = get(boost::vertex_index, graph.graph);
-         auto color_map = boost::make_iterator_property_map(colors.begin(), i_map);
+         auto vertex_color_map = boost::make_iterator_property_map(colors.begin(), i_map);
+         auto edge_color_map = boost::make_assoc_property_map(edge_color);
          try {
              if (directed) {
-                 boost::depth_first_search(graph.graph, vis, color_map, root);
+                 boost::depth_first_search(graph.graph, vis, vertex_color_map, root);
              } else {
-#if 0
-                 boost::undirected_dfs(
-                     graph.graph,
-                     visitor(dfs_visitor(root, visited_order, max_depth, colors, graph))
-                     .edge_color_map(colors)
-                     .root_vertex(root));
+#if 1
+                 boost::undirected_dfs(graph.graph, vis, vertex_color_map, edge_color_map, root);
 #endif
              }
          } catch(found_goals &) {
