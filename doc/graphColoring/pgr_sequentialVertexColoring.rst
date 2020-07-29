@@ -37,7 +37,7 @@ value to the node having the greatest value.
 Efficient graph coloring is an NP-Hard problem, and therefore, the Sequential
 Vertex Coloring algorithm does not always produce optimal coloring. This algorithm
 follows a greedy strategy by iterating through all the vertices sequentially,
-and assigning the smallest possible color that is not used by its neighbors to
+and assigning the smallest possible color that is not used by its neighbors, to
 each vertex.
 
 **The main Characteristics are:**
@@ -58,7 +58,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_sequentialVertexColoring(TEXT Edges SQL)
+    pgr_sequentialVertexColoring(Edges SQL)
 
     RETURNS SET OF (node, color)
     OR EMPTY SET
