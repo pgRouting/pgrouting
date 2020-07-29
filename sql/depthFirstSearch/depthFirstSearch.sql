@@ -37,8 +37,8 @@ CREATE OR REPLACE FUNCTION pgr_depthFirstSearch(
     TEXT,   -- edges_sql (required)
     BIGINT, -- root_vid (required)
 
-    max_depth BIGINT DEFAULT 9223372036854775807,
     directed BOOLEAN DEFAULT true,
+    max_depth BIGINT DEFAULT 9223372036854775807,
 
     OUT seq BIGINT,
     OUT depth BIGINT,
@@ -50,15 +50,15 @@ CREATE OR REPLACE FUNCTION pgr_depthFirstSearch(
 RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
-    IF $3 < 0 THEN
+    IF $4 < 0 THEN
         RAISE EXCEPTION 'Negative value found on ''max_depth'''
-        USING HINT = format('Value found: %s', $3);
+        USING HINT = format('Value found: %s', $4);
     END IF;
 
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], max_depth, directed);
+    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], directed, max_depth);
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -69,8 +69,8 @@ CREATE OR REPLACE FUNCTION pgr_depthFirstSearch(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- root_vids (required)
 
-    max_depth BIGINT DEFAULT 9223372036854775807,
     directed BOOLEAN DEFAULT true,
+    max_depth BIGINT DEFAULT 9223372036854775807,
 
     OUT seq BIGINT,
     OUT depth BIGINT,
@@ -82,15 +82,15 @@ CREATE OR REPLACE FUNCTION pgr_depthFirstSearch(
 RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
-    IF $3 < 0 THEN
+    IF $4 < 0 THEN
         RAISE EXCEPTION 'Negative value found on ''max_depth'''
-        USING HINT = format('Value found: %s', $3);
+        USING HINT = format('Value found: %s', $4);
     END IF;
 
 
     RETURN QUERY
     SELECT *
-    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), $2, max_depth, directed);
+    FROM _pgr_depthFirstSearch(_pgr_get_statement($1), $2, directed, max_depth);
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -99,26 +99,26 @@ LANGUAGE plpgsql VOLATILE STRICT;
 -- COMMENTS
 
 
-COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, BIGINT, BIGINT, BOOLEAN)
+COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, BIGINT, BOOLEAN, BIGINT)
 IS 'pgr_depthFirstSearch(Single Vertex)
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - From root vertex identifier
 - Optional parameters
-    - max_depth := 9223372036854775807
     - directed := true
+    - max_depth := 9223372036854775807
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_depthFirstSearch.html
 ';
 
-COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, ANYARRAY, BIGINT, BOOLEAN)
+COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, ANYARRAY, BOOLEAN, BIGINT)
 IS 'pgr_depthFirstSearch(Multiple Vertices)
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - From ARRAY[root vertices identifiers]
 - Optional parameters
-    - max_depth := 9223372036854775807
     - directed := true
+    - max_depth := 9223372036854775807
 - Documentation:
     - ${PGROUTING_DOC_LINK}/pgr_depthFirstSearch.html
 ';
