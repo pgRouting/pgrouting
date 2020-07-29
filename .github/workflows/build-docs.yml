@@ -65,12 +65,17 @@ jobs:
           cd build
           cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=ON -DES=ON -DLINKCHECK="ON" ..
 
+      - name: Check Links for English
+        run: |
+          cd build
+          make linkcheck-en
+
       - name: Check Links for Spanish
         run: |
           cd build
           make linkcheck-es
 
-      # - name: Check Links for LANGUAGE
-      #   run: |
-      #     cd build
-      #     make linkcheck-LANG
+      - name: Build Documentation
+        run: |
+          cd build
+          make html
