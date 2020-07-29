@@ -50,7 +50,7 @@ namespace functions {
 
 //*************************************************************
 
-template <class G>
+template < class G >
 class Pgr_depthFirstSearch {
  public:
      typedef typename G::V V;
@@ -77,22 +77,21 @@ class Pgr_depthFirstSearch {
       * @see [boost::undirected_dfs]
       * (https://www.boost.org/libs/graph/doc/undirected_dfs.html)
       */
-     std::vector<pgr_mst_rt> depthFirstSearch(
+     std::vector < pgr_mst_rt > depthFirstSearch(
              G &graph,
-             std::vector<int64_t> roots,
+             std::vector < int64_t > roots,
              int64_t max_depth,
              bool directed) {
-         std::vector<pgr_mst_rt> results;
+         std::vector < pgr_mst_rt > results;
 
          for (auto root : roots) {
-             std::vector<E> visited_order;
+             std::vector < E > visited_order;
 
              if (graph.has_vertex(root)) {
                  results.push_back({root, 0, root, -1, 0.0, 0.0});
 
                  auto v_root(graph.get_V(root));
 
-                 // perform the algorithm
                  depthFirstSearch_single_vertex(graph, v_root, visited_order, max_depth, directed);
 
                  auto result = get_results(visited_order, root, max_depth, graph);
@@ -124,17 +123,22 @@ class Pgr_depthFirstSearch {
      bool depthFirstSearch_single_vertex(
                  G &graph,
                  V root,
-                 std::vector<E> &visited_order,
+                 std::vector < E > &visited_order,
                  int64_t max_depth,
                  bool directed) {
-         using dfs_visitor = visitors::Dfs_visitor<V, E, G>;
+         using dfs_visitor = visitors::Dfs_visitor < V, E, G >;
 
-         std::vector<boost::default_color_type> colors(boost::num_vertices(graph.graph));
-         std::map<E, boost::default_color_type> edge_color;
-         auto vis =  dfs_visitor(root, visited_order, max_depth, colors, graph);
-         auto i_map = get(boost::vertex_index, graph.graph);
+         // Exterior property storage containers
+         std::vector < boost::default_color_type > colors(boost::num_vertices(graph.graph));
+         std::map < E, boost::default_color_type > edge_color;
+
+         auto i_map = boost::get(boost::vertex_index, graph.graph);
+
+         // Iterator property maps which record the color of each vertex and edge, respectively
          auto vertex_color_map = boost::make_iterator_property_map(colors.begin(), i_map);
          auto edge_color_map = boost::make_assoc_property_map(edge_color);
+
+         auto vis =  dfs_visitor(root, visited_order, max_depth, colors, graph);
 
          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
@@ -172,16 +176,16 @@ class Pgr_depthFirstSearch {
       *
       * @returns `results` vector
       */
-     template <typename T>
-     std::vector<pgr_mst_rt> get_results(
+     template < typename T >
+     std::vector < pgr_mst_rt > get_results(
              T visited_order,
              int64_t source,
              int64_t max_depth,
              const G &graph) {
-         std::vector<pgr_mst_rt> results;
+         std::vector < pgr_mst_rt > results;
 
-         std::vector<double> agg_cost(graph.num_vertices(), 0);
-         std::vector<int64_t> depth(graph.num_vertices(), 0);
+         std::vector < double > agg_cost(graph.num_vertices(), 0);
+         std::vector < int64_t > depth(graph.num_vertices(), 0);
 
          for (const auto edge : visited_order) {
              auto u = graph.source(edge);
