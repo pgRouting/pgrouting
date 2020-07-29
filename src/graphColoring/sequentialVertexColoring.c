@@ -131,9 +131,7 @@ PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
 
         /***********************************************************************
          *
-         *   pgr_sequentialVertexColoring(
-         *       edges_sql TEXT
-         *   );
+         *   pgr_sequentialVertexColoring(edges_sql TEXT);
          *
          **********************************************************************/
 
