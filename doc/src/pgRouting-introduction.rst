@@ -58,18 +58,8 @@ Individuals (in alphabetical order)
 Ashish Kumar,
 Cayetano Benavent,
 Daniel Kastl,
-Himanshu Raj,
 Martha Vergara,
 Regina Obe,
-Gudesa Venkata Sai Akhil,
-Hang Wu,
-Himanshu Raj,
-Imre Samu,
-Maoguang Wang, Martha Vergara,
-Mohamed Bakli,
-Mahmoud SAKR, Esteban Zimanyi
-Regina Obe, Rohith Reddy,
-Sourabh Garg,
 Virginia Vergara
 
 
@@ -136,3 +126,4 @@ More Information
 * PostGIS extension at the PostGIS project web site https://postgis.net.
 * Boost C++ source libraries at https://www.boost.org.
 * The Migration guide can be found at https://github.com/pgRouting/pgrouting/wiki/Migration-Guide.
+
