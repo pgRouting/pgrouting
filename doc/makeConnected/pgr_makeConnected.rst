@@ -62,7 +62,7 @@ There are 3 connected components namely **1**, **14**, **16**.
    :start-after: -- q1
    :end-before: -- q2
 
-:Example: Query done on :doc:`sampledata` network gives. The query gives list of edges that are needed in the graph to make it connected.
+:Example: Query done on :doc:`sampledata` network gives the list of edges that are needed in the graph to make it connected.
 
 .. literalinclude:: doc-pgr_makeConnected.queries
    :start-after: -- q2
