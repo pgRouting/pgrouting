@@ -50,7 +50,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_makeConnected(edges_sql)
+    pgr_makeConnected(Edges SQL)
 
     RETURNS SET OF (seq, node_from, node_to)
     OR EMPTY SET
@@ -80,13 +80,13 @@ Parameters
 =================== ====================== ========= =================================================
 Parameter           Type                   Default   Description
 =================== ====================== ========= =================================================
-**edges_sql**       ``TEXT``                         SQL query as described above.
+**Edges SQL**       ``TEXT``                         SQL query as described above.
 =================== ====================== ========= =================================================
 
 Inner query
 -------------------------------------------------------------------------------
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+:Edges SQL: an SQL query, which should return a set of rows with the following columns:
 
 ================= =================== ======== =================================================
 Column            Type                 Default  Description
