@@ -55,11 +55,24 @@ Signatures
     RETURNS SET OF (seq, node_from, node_to)
     OR EMPTY SET
 
-:Example: Query done on :doc:`sampledata` network gives.
+Using pgr_connectedComponents() to check the number of connected components in the :doc:`sampledata` graph.
+There are 3 connected components namely **1**, **14**, **16**.
 
 .. literalinclude:: doc-pgr_makeConnected.queries
    :start-after: -- q1
    :end-before: -- q2
+
+:Example: Query done on :doc:`sampledata` network gives. The query gives list of edges that are needed in the graph to make it connected.
+
+.. literalinclude:: doc-pgr_makeConnected.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+Inserting the above list of edges in the edge_table.
+
+.. literalinclude:: doc-pgr_makeConnected.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 Parameters
 -------------------------------------------------------------------------------
@@ -108,27 +121,6 @@ Column           Type        Description
 **node_from**    ``BIGINT``  Identifier of the first end point vertex of the edge.
 **node_to**      ``BIGINT``  Identifier of the second end point vertex of the edge.
 ===============  =========== ============================================================
-
-Additional Example:
--------------------------------------------------------------------------------
-
-Using pgr_connectedComponents() to check the number of connected components in the graph.
-
-.. literalinclude:: doc-pgr_makeConnected.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-So there are 3 connected components in :doc:`sampledata` namely 1, 14, 16. Now, the list of edges that are needed in the graph to make it connected.
-
-.. literalinclude:: doc-pgr_makeConnected.queries
-   :start-after: -- q3
-   :end-before: -- q4
-
-Inserting the above edges in the edge_table.
-
-.. literalinclude:: doc-pgr_makeConnected.queries
-   :start-after: -- q4
-   :end-before: -- q5
 
 See Also
 -------------------------------------------------------------------------------
