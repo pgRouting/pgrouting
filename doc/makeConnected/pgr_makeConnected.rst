@@ -74,6 +74,13 @@ Inserting the above list of edges in the edge_table.
    :start-after: -- q3
    :end-before: -- q4
 
+Using pgr_connectedComponents() to check the number of connected components. So, Now the graph has
+only one connected component.
+
+   .. literalinclude:: doc-pgr_makeConnected.queries
+      :start-after: -- q4
+      :end-before: -- q5
+
 Parameters
 -------------------------------------------------------------------------------
 
