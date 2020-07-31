@@ -32,7 +32,7 @@ the Sequential Vertex Coloring algorithm implemented by Boost.Graph.
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html>`__)
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html>`__)
 
 Description
 -------------------------------------------------------------------------------
