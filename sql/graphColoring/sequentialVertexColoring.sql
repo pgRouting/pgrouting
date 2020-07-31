@@ -36,7 +36,7 @@ CREATE OR REPLACE FUNCTION pgr_sequentialVertexColoring(
     TEXT,    -- edges_sql (required)
 
     OUT node BIGINT,
-    OUT color BIGINT)
+    OUT color_id BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
