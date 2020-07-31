@@ -49,7 +49,7 @@ each vertex.
 
 **The main Characteristics are:**
 
-- The implementation is applicable only for undirected graphs.
+- The implementation is applicable only for **undirected** graphs.
 - Provides the color to be assigned to all the nodes present in the graph.
 - The maximum value of color will not be greater than the number of vertices
   in the graph.
