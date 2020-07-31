@@ -186,7 +186,7 @@ Column           Type        Description
 
                              - :math:`0`  when ``node`` = ``start_vid``.
 
-**start_vid**     ``BIGINT``  Identifier of the start vertex.
+**start_vid**    ``BIGINT``  Identifier of the start vertex.
 
                              - In `Multiple Vertices`_ results are in ascending order.
 
