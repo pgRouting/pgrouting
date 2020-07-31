@@ -40,10 +40,7 @@ The main characteristics are:
 
   - The graph can be either weighted or unweighted.
 
-  - **Running time:** Assuming that both the vertex index and edge index supplied take time O(1) to return an index
-    and there are O(n) total self-loops and parallel edges in the graph, most combinations of arguments given to
-    boyer_myrvold_planarity_test() result in an algorithm that runs in time O(n) for a graph with n vertices and m edges.
-
+  - **Running time:** On a graph with n vertices and m edges, pgr_isPlanar runs in time O(n).
 
 Signatures
 -------------------------------------------------------------------------------
