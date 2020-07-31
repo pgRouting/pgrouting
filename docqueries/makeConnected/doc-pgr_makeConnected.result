@@ -77,5 +77,6 @@ SELECT * FROM pgr_makeConnected(
 -----+-----------+---------
 (0 rows)
 
+-- q6
 ROLLBACK;
 ROLLBACK
