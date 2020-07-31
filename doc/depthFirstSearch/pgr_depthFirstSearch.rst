@@ -25,6 +25,15 @@ Undirected DFS algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
+* Version 3.2.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html>`__)
+
 Description
 -------------------------------------------------------------------------------
 
@@ -33,10 +42,6 @@ from a root vertex (``Root vid``) and visits all the nodes in a graph in the
 depth-first search traversal order. An optional non-negative maximum depth
 parameter (``max_depth``) can be specified to get the results up to a particular
 depth.
-
-**Note**: The cost of an edge is not used for traversal. If multiple edges
-are adjacent to a vertex, then this algorithm traverses that edge which
-comes first in the ``Edges SQL``.
 
 **The main Characteristics are:**
 
@@ -50,6 +55,10 @@ comes first in the ``Edges SQL``.
 - It does not produce the shortest path from a root vertex to a target vertex.
 - The aggregate cost of traversal is not guaranteed to be minimal.
 - Depth First Search Running time: :math:`O(E + V)`
+
+**Note**: The cost of an edge is not used for traversal. If multiple edges
+are adjacent to a vertex, then this algorithm traverses that edge which
+comes first in the ``Edges SQL``.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -66,25 +75,11 @@ Signatures
 
 .. rubric:: Using defaults
 
-.. code-block:: none
-
-    pgr_depthFirstSearch(TEXT, BIGINT)
-
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
-
 :Example: From root vertex :math:`2` on a **directed** graph
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q1
    :end-before: -- q2
-
-:Example: From root vertex :math:`2` on a **directed** graph,
-          with :math:`depth <= 2`
-
-.. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q2
-   :end-before: -- q3
 
 .. index::
     single: depthFirstSearch(Single vertex) - Experimental
@@ -94,13 +89,19 @@ Single vertex
 
 .. code-block:: none
 
-    pgr_depthFirstSearch(TEXT, BIGINT,
-    BOOLEAN directed => true, BIGINT max_depth => 9223372036854775807)
+    pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From root vertex :math:`2` on an **undirected** graph
+
+.. literalinclude:: doc-pgr_depthFirstSearch.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+:Example: From root vertex :math:`2` on a **directed** graph,
+          with :math:`depth <= 2`
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q3
@@ -114,8 +115,7 @@ Multiple vertices
 
 .. code-block:: none
 
-    pgr_depthFirstSearch(TEXT, ARRAY[ANY_INTEGER],
-    BOOLEAN directed => true, BIGINT max_depth => 9223372036854775807)
+    pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
