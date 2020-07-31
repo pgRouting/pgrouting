@@ -69,5 +69,13 @@ SELECT * FROM pgr_connectedComponents(
 (17 rows)
 
 -- q5
+SELECT * FROM pgr_makeConnected(
+    'SELECT id, source, target, cost, reverse_cost
+        FROM edge_table'
+);
+ seq | node_from | node_to
+-----+-----------+---------
+(0 rows)
+
 ROLLBACK;
 ROLLBACK
