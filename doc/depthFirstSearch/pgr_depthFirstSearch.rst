@@ -45,7 +45,7 @@ comes first in the ``Edges SQL``.
   a particular maximum depth level.
 - For optimization purposes, any duplicated values in the `Root vids` are
   ignored.
-- The returned values are ordered in ascending order of `Root vid`.
+- The returned values are ordered in ascending order of `start_vid`.
 - If the root vertex does not exist, an empty row is returned.
 - It does not produce the shortest path from a root vertex to a target vertex.
 - The aggregate cost of traversal is not guaranteed to be minimal.
@@ -61,7 +61,7 @@ Signatures
     pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth])
     pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth])
 
-    RETURNS SET OF (seq, depth, Root vid, node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 .. rubric:: Using defaults
@@ -70,7 +70,7 @@ Signatures
 
     pgr_depthFirstSearch(TEXT, BIGINT)
 
-    RETURNS SET OF (seq, depth, Root vid, node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From root vertex :math:`2` on a **directed** graph
@@ -97,7 +97,7 @@ Single vertex
     pgr_depthFirstSearch(TEXT, BIGINT,
     BOOLEAN directed => true, BIGINT max_depth => 9223372036854775807)
 
-    RETURNS SET OF (seq, depth, Root vid, node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From root vertex :math:`2` on an **undirected** graph
@@ -117,7 +117,7 @@ Multiple vertices
     pgr_depthFirstSearch(TEXT, ARRAY[ANY_INTEGER],
     BOOLEAN directed => true, BIGINT max_depth => 9223372036854775807)
 
-    RETURNS SET OF (seq, depth, Root vid, node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From root vertices :math:`\{11, 12\}` on a **directed** graph
@@ -176,7 +176,7 @@ Result Columns
 
 .. result columns start
 
-Returns SET OF ``(seq, depth, Root vid, node, edge, cost, agg_cost)``
+Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
 
 ===============  =========== ====================================================
 Column           Type        Description
@@ -184,19 +184,19 @@ Column           Type        Description
 **seq**          ``BIGINT``  Sequential value starting from :math:`1`.
 **depth**        ``BIGINT``  Depth of the ``node``.
 
-                             - :math:`0`  when ``node`` = ``Root vid``.
+                             - :math:`0`  when ``node`` = ``start_vid``.
 
-**Root vid**     ``BIGINT``  Identifier of the root vertex.
+**start_vid**     ``BIGINT``  Identifier of the start vertex.
 
                              - In `Multiple Vertices`_ results are in ascending order.
 
 **node**         ``BIGINT``  Identifier of ``node`` reached using ``edge``.
 **edge**         ``BIGINT``  Identifier of the ``edge`` used to arrive to ``node``.
 
-                             - :math:`-1`  when ``node`` = ``Root vid``.
+                             - :math:`-1`  when ``node`` = ``start_vid``.
 
 **cost**         ``FLOAT``   Cost to traverse ``edge``.
-**agg_cost**     ``FLOAT``   Aggregate cost from ``Root vid`` to ``node``.
+**agg_cost**     ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
 ===============  =========== ====================================================
 
 .. result columns end
