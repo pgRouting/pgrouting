@@ -1,13 +1,26 @@
 \i setup.sql
 
---Need to write basic tests
-SELECT plan(1);
+SELECT plan(5);
 
-SELECT todo_start('Complete the inner query tests');
+SELECT has_function('pgr_bipartite');
 
-SELECT pass('Sample Test');
+SELECT has_function('pgr_bipartite', ARRAY['text']);
+SELECT function_returns('pgr_bipartite', ARRAY['text'],  'setof record');
 
-SELECT todo_end();
+-- pgr_bipartite
+-- parameter names
+SELECT bag_has(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_bipartite'$$,
+    $$SELECT  '{"","node","color"}'::TEXT[] $$
+);
 
-SELECT finish();
+-- parameter types
+SELECT set_eq(
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_bipartite'$$,
+    $$VALUES
+        ('{25,20,20}'::OID[])
+    $$
+);
+
+SELECT * FROM finish();
 ROLLBACK;
