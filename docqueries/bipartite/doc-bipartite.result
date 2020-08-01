@@ -3,7 +3,9 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 --q1
-select * from pgr_bipartite($$select id,source,target,cost,reverse_cost from edge_table$$);
+SELECT * FROM pgr_bipartite(
+    $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$
+);
  node | color
 ------+-------
     1 |     0
@@ -26,5 +28,17 @@ select * from pgr_bipartite($$select id,source,target,cost,reverse_cost from edg
 (17 rows)
 
 --q2
+SELECT * FROM pgr_bipartite(
+    $$SELECT id,source,target,cost,reverse_cost FROM edge_table WHERE id IN (8, 10, 11, 12)$$
+);
+ node | color 
+------+-------
+    5 |     0
+    6 |     1
+   10 |     1
+   11 |     0
+(4 rows)
+
+--q3
 ROLLBACK;
 ROLLBACK

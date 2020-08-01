@@ -1,3 +1,9 @@
 \echo --q1
-select * from pgr_bipartite($$select id,source,target,cost,reverse_cost from edge_table$$);
+SELECT * FROM pgr_bipartite(
+    $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$
+);
 \echo --q2
+SELECT * FROM pgr_bipartite(
+    $$SELECT id,source,target,cost,reverse_cost FROM edge_table WHERE id IN (8, 10, 11, 12)$$
+);
+\echo --q3
