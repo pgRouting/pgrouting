@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
 # Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -119,13 +119,15 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_vrpOneDepot.rst:27
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_vrpOneDepot.html>`__)"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_vrpOneDepot.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_vrpOneDepot.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_vrpOneDepot.html>`__)"
+"**Versiones soportadas:** actual(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_vrpOneDepot.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_vrpOneDepot.html>`__"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:30
+#: ../../build/doc/pgr_vrpOneDepot.rst:31
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_vrpOneDepot.html>`__ `2.5 "
@@ -145,86 +147,62 @@ msgstr ""
 "<https://docs.pgrouting.org/2.2/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__"
 " `2.1 <https://docs.pgrouting.org/2.1/en/src/vrp_basic/doc/index.html>`__"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:40
+#: ../../build/doc/pgr_vrpOneDepot.rst:41
 msgid "**TBD**"
 msgstr "**TBD**"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:43
+#: ../../build/doc/pgr_vrpOneDepot.rst:44
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:45
-#: ../../build/doc/pgr_vrpOneDepot.rst:50
-#: ../../build/doc/pgr_vrpOneDepot.rst:55
-#: ../../build/doc/pgr_vrpOneDepot.rst:60
-#: ../../build/doc/pgr_vrpOneDepot.rst:65
+#: ../../build/doc/pgr_vrpOneDepot.rst:46
+#: ../../build/doc/pgr_vrpOneDepot.rst:51
+#: ../../build/doc/pgr_vrpOneDepot.rst:56
+#: ../../build/doc/pgr_vrpOneDepot.rst:61
+#: ../../build/doc/pgr_vrpOneDepot.rst:66
 msgid "TBD"
 msgstr "Por Definirse"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:48
+#: ../../build/doc/pgr_vrpOneDepot.rst:49
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:53
+#: ../../build/doc/pgr_vrpOneDepot.rst:54
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:58
+#: ../../build/doc/pgr_vrpOneDepot.rst:59
 msgid "Inner query"
 msgstr "Consulta interna"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:63
+#: ../../build/doc/pgr_vrpOneDepot.rst:64
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:68
+#: ../../build/doc/pgr_vrpOneDepot.rst:69
 msgid "Additional Example:"
 msgstr "Ejemplo Adicional:"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:72
+#: ../../build/doc/pgr_vrpOneDepot.rst:73
 msgid "Data"
 msgstr "Datos"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:76
+#: ../../build/doc/pgr_vrpOneDepot.rst:77
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:78
+#: ../../build/doc/pgr_vrpOneDepot.rst:79
 msgid "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
 msgstr "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:81
+#: ../../build/doc/pgr_vrpOneDepot.rst:82
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:82
+#: ../../build/doc/pgr_vrpOneDepot.rst:83
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:83
+#: ../../build/doc/pgr_vrpOneDepot.rst:84
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Unsupported versions:** `2.6 "
-#~ "<https://docs.pgrouting.org/2.6/en/pgr_vrpOneDepot.html>`__ `2.5 "
-#~ "<https://docs.pgrouting.org/2.5/en/pgr_vrpOneDepot.html>`__ `2.4 "
-#~ "<https://docs.pgrouting.org/2.4/en/pgr_vrpOneDepot.html>`__ `2.3 "
-#~ "<https://docs.pgrouting.org/2.3/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__"
-#~ " `2.2 <https://docs.pgrouting.org/2.2/en/src/vrp_basic/doc/index.html>`__ "
-#~ "`2.1 <https://docs.pgrouting.org/2.1/en/src/vrp_basic/doc/index.html>`__"
-#~ msgstr ""
-#~ "**Versiones no soportadas:** `2.6 "
-#~ "<https://docs.pgrouting.org/2.6/en/pgr_vrpOneDepot.html>`__ `2.5 "
-#~ "<https://docs.pgrouting.org/2.5/en/pgr_vrpOneDepot.html>`__ `2.4 "
-#~ "<https://docs.pgrouting.org/2.4/en/pgr_vrpOneDepot.html>`__ `2.3 "
-#~ "<https://docs.pgrouting.org/2.3/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__"
-#~ " `2.2 <https://docs.pgrouting.org/2.2/en/src/vrp_basic/doc/index.html>`__ "
-#~ "`2.1 <https://docs.pgrouting.org/2.1/en/src/vrp_basic/doc/index.html>`__"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_vrpOneDepot.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_vrpOneDepot.html>`__)"

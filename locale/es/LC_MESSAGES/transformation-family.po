@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
-# Vicky Vergara <vicky@georepublic.de>, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2019
+# MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:57+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -118,13 +118,15 @@ msgstr "Versiones anteriores de esta página"
 
 #: ../../build/doc/transformation-family.rst:33
 msgid ""
-"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en"
-"/transformation-family.html>`__)"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/transformation-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+"/transformation-family.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-"/transformation-family.html>`__)"
+"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
+"/transformation-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es"
+"/transformation-family.html>`__"
 
-#: ../../build/doc/transformation-family.rst:36
+#: ../../build/doc/transformation-family.rst:37
 msgid ""
 "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
 "/transformation-family.html>`__"
@@ -132,11 +134,11 @@ msgstr ""
 "**Versiones No Soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en"
 "/transformation-family.html>`__"
 
-#: ../../build/doc/transformation-family.rst:40
+#: ../../build/doc/transformation-family.rst:41
 msgid "Introduction"
 msgstr "Introducción"
 
-#: ../../build/doc/transformation-family.rst:42
+#: ../../build/doc/transformation-family.rst:43
 msgid ""
 "This family of functions is used for transforming a given input graph "
 ":math:`G(V,E)` into a new graph :math:`G'(V',E')`."
@@ -144,25 +146,18 @@ msgstr ""
 "Esta familia de funciones se utiliza para transformar un gráfico de entrada "
 "determinado  :math:`G(V,E)`  en un nuevo grafo :math:`G'(V',E')`."
 
-#: ../../build/doc/transformation-family.rst:45
+#: ../../build/doc/transformation-family.rst:46
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/transformation-family.rst:48
+#: ../../build/doc/transformation-family.rst:49
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/transformation-family.rst:49
+#: ../../build/doc/transformation-family.rst:50
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/transformation-family.rst:50
+#: ../../build/doc/transformation-family.rst:51
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
-#~ "/transformation-family.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-#~ "/transformation-family.html>`__)"

@@ -1,19 +1,19 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
 # Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -62,15 +62,17 @@ msgstr "Nueva función **Propuesta**"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:30
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_bdAstarCost.html>`__) `2.6 "
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_bdAstarCost.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_bdAstarCost.html>`__ `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_bdAstarCost.html>`__) `2.6 "
+"**Versiones soportadas:** actual​(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_bdAstarCost.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_bdAstarCost.html>`__ `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:34
+#: ../../build/doc/pgr_bdAstarCost.rst:35
 msgid ""
 "**Unsupported versions:** `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__"
@@ -79,7 +81,7 @@ msgstr ""
 "<https://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__"
 
 #: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_aStar.rst:4
-#: ../../build/doc/pgr_bdAstarCost.rst:38
+#: ../../build/doc/pgr_bdAstarCost.rst:39
 msgid "Description"
 msgstr "Descripción"
 
@@ -154,7 +156,7 @@ msgstr ""
 msgid "Running time: :math:`O((E + V) * \\log V)`"
 msgstr "Tiempo de ejecución: :math:`O((E + V) * \\log V)`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:44
+#: ../../build/doc/pgr_bdAstarCost.rst:45
 msgid ""
 "The results are equivalent to the union of the results of the "
 "`pgr_bdAstarCost(` `One to One`_ `)` on the:"
@@ -162,33 +164,33 @@ msgstr ""
 "Los resultados son equivalentes a la unión de los resultados de  "
 "`pgr_bdAstarCost(` `Uno a Uno`_ `)` en:"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:46
+#: ../../build/doc/pgr_bdAstarCost.rst:47
 msgid "`pgr_bdAstarCost(` `One to Many`_ `)`"
 msgstr "`pgr_bdAstarCost(` `Uno a Muchos`_ `)`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:47
+#: ../../build/doc/pgr_bdAstarCost.rst:48
 msgid "`pgr_bdAstarCost(` `Many to One`_ `)`"
 msgstr "`pgr_bdAstarCost(` `Muchos a Uno`_ `)`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:48
+#: ../../build/doc/pgr_bdAstarCost.rst:49
 msgid "`pgr_bdAstarCost(` `Many to Many`_ `)`"
 msgstr "`pgr_bdAstarCost(` `Muchos a Muchos`_ `)`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:51
+#: ../../build/doc/pgr_bdAstarCost.rst:52
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:54
+#: ../../build/doc/pgr_bdAstarCost.rst:55
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:65
+#: ../../build/doc/pgr_bdAstarCost.rst:66
 msgid "Optional parameters are `named parameters` and have a default value."
 msgstr ""
 "Los parámetros opcionales son `parámetros con nombre` y tienen un valor "
 "predeterminado."
 
-#: ../../build/doc/pgr_bdAstarCost.rst:68
+#: ../../build/doc/pgr_bdAstarCost.rst:69
 msgid "Using defaults"
 msgstr "Uso de valores predeterminados"
 
@@ -196,15 +198,15 @@ msgstr "Uso de valores predeterminados"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:75
+#: ../../build/doc/pgr_bdAstarCost.rst:76
 msgid "From vertex :math:`2` to vertex :math:`3` on a **directed** graph"
 msgstr "Del vértice :math:`2` al :`3` en un grafo **dirigido** "
 
-#: ../../build/doc/pgr_bdAstarCost.rst:85
+#: ../../build/doc/pgr_bdAstarCost.rst:86
 msgid "One to One"
 msgstr "Uno a Uno"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:93
+#: ../../build/doc/pgr_bdAstarCost.rst:94
 msgid ""
 "From vertex :math:`2` to vertex :math:`3` on an **directed** graph using "
 "heuristic :math:`2`"
@@ -212,11 +214,11 @@ msgstr ""
 "Del vértice :math:`2` al vértice :math:`3` en un grafo **dirigido** usando "
 "la heurística :math:`2`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:103
+#: ../../build/doc/pgr_bdAstarCost.rst:104
 msgid "One to many"
 msgstr "Uno a Muchos"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:111
+#: ../../build/doc/pgr_bdAstarCost.rst:112
 msgid ""
 "From vertex `2` to vertices :math:`\\{3, 11\\}` on a **directed** graph "
 "using heuristic `3` and factor :math:`3.5`"
@@ -224,11 +226,11 @@ msgstr ""
 "Del vértice :math:`2` a los vértices :math:`\\{3, 11\\}` en un grafo "
 "**dirigido** usando la heurística  :math:`3` y el factor :math:`3.5`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:121
+#: ../../build/doc/pgr_bdAstarCost.rst:122
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:129
+#: ../../build/doc/pgr_bdAstarCost.rst:130
 msgid ""
 "From vertices :math:`\\{7, 2\\}` to vertex :math:`3` on a **undirected** "
 "graph using heuristic :math:`4`"
@@ -236,11 +238,11 @@ msgstr ""
 "De los vértices :math:`\\{7, 2\\}` al vértice :math:`3` en un grafo **no "
 "dirigido** usando la heurística  :math:`4`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:139
+#: ../../build/doc/pgr_bdAstarCost.rst:140
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:147
+#: ../../build/doc/pgr_bdAstarCost.rst:148
 msgid ""
 "From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 11\\}` on a "
 "**directed** using heuristic :math:`5` and factor :math:`0.5`"
@@ -248,7 +250,7 @@ msgstr ""
 "Del vértice :math:\\`{7,2\\}` a los vértices :math:`\\{3, 11\\}` en un grafo"
 " **dirigido** usando la heurística  :math:`5` y el factor :math:`0.5`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:154
+#: ../../build/doc/pgr_bdAstarCost.rst:155
 msgid "Parameters"
 msgstr "Parámetros"
 
@@ -331,7 +333,7 @@ msgstr "**to_vids**"
 msgid "Array of ending vertices identifiers. Parameter in:"
 msgstr "Matriz de identificadores de vértices finales. Parámetro en:"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:161
+#: ../../build/doc/pgr_bdAstarCost.rst:162
 msgid "Optional Parameters"
 msgstr "Parámetros opcionales"
 
@@ -425,12 +427,12 @@ msgstr "**epsilon**"
 msgid "For less restricted results. :math:`epsilon >= 1`."
 msgstr "Para resultados menos restringidos. :math:`epsilon >= 1`."
 
-#: ../../build/doc/pgr_bdAstarCost.rst:169
+#: ../../build/doc/pgr_bdAstarCost.rst:170
 msgid "Inner query"
 msgstr "Consulta interna"
 
 #: ../../build/doc/pgRouting-concepts.rst
-#: ../../build/doc/pgr_bdAstarCost.rst:172
+#: ../../build/doc/pgr_bdAstarCost.rst:173
 msgid "edges_sql"
 msgstr "edges_sql"
 
@@ -566,7 +568,7 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:179
+#: ../../build/doc/pgr_bdAstarCost.rst:180
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -611,74 +613,34 @@ msgstr "**agg_cost**"
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr "Coste agregado de ``start_vid`` a ``end_vid``."
 
-#: ../../build/doc/pgr_bdAstarCost.rst:186
+#: ../../build/doc/pgr_bdAstarCost.rst:187
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:188
+#: ../../build/doc/pgr_bdAstarCost.rst:189
 msgid ":doc:`bdAstar-family`"
 msgstr ":doc:`bdAstar-family`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:189
+#: ../../build/doc/pgr_bdAstarCost.rst:190
 msgid ":doc:`cost-category`"
 msgstr ":doc:`cost-category`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:190
+#: ../../build/doc/pgr_bdAstarCost.rst:191
 msgid ":doc:`costMatrix-category`"
 msgstr ":doc:`costMatrix-category`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:191
+#: ../../build/doc/pgr_bdAstarCost.rst:192
 msgid "Examples use :doc:`sampledata` network."
 msgstr "Los ejemplos utilizan la red :doc:`sampledata` "
 
-#: ../../build/doc/pgr_bdAstarCost.rst:194
+#: ../../build/doc/pgr_bdAstarCost.rst:195
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:195
+#: ../../build/doc/pgr_bdAstarCost.rst:196
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_bdAstarCost.rst:196
+#: ../../build/doc/pgr_bdAstarCost.rst:197
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "From vertex :math:`2` to vertex :math:`12` on a **directed** graph"
-#~ msgstr "De vértice :math:`2` a vértice :math:`12` en un grafo**dirigido**"
-
-#~ msgid ""
-#~ "From vertex :math:`2` to vertex :math:`12` on an **undirected** graph using "
-#~ "heuristic :math:`2`"
-#~ msgstr ""
-#~ "De vértice :math:`2` al vértice :math:`12` en un grafo **no dirigido** "
-#~ "usando la heurística :math:`2`"
-
-#~ msgid ""
-#~ "From vertex `2` to vertices :math:`\\{3, 12\\}` on a **directed** graph "
-#~ "using heuristic `2`"
-#~ msgstr ""
-#~ "Del vértice `2` a los vértices :math:`\\{3, 12\\}` en un grafo **dirigido** "
-#~ "usando la heurística `2`"
-
-#~ msgid ""
-#~ "From vertices :math:`\\{7, 2\\}` to vertex :math:`12` on a **directed** "
-#~ "graph using heuristic :math:`0`"
-#~ msgstr ""
-#~ "De los vértices :math:`\\{7, 2\\}` al vértice :math:`12` en un grafo "
-#~ "**dirigido** usando la heurística  :math:`0`"
-
-#~ msgid ""
-#~ "From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 12\\}` on a "
-#~ "**directed** using heuristic :math:`2`"
-#~ msgstr ""
-#~ "De los vértices :math:`\\{7, 2\\}` ta los vértices :math:`\\{3, 12\\}` en un"
-#~ " grafo **dirigido** usando la  heurística :math:`2`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_bdAstarCost.html>`__) `2.6 "
-#~ "<https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_bdAstarCost.html>`__) `2.6 "
-#~ "<https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__"

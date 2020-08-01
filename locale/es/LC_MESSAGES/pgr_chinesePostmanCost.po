@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -125,16 +125,18 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_chinesePostmanCost.rst:28
 msgid ""
-"**Supported versions** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_chinesePostmanCost.html>`__)"
+"**Supported versions** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_chinesePostmanCost.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_chinesePostmanCost.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_chinesePostmanCost.html>`__)"
+"**Versiones soportadas:** actual(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_chinesePostmanCost.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_chinesePostmanCost.html>`__"
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_chinesePostmanCost.rst:33
-#: ../../build/doc/pgr_chinesePostmanCost.rst:78
+#: ../../build/doc/pgr_chinesePostmanCost.rst:34
+#: ../../build/doc/pgr_chinesePostmanCost.rst:79
 msgid "Description"
 msgstr "Descripción"
 
@@ -154,11 +156,11 @@ msgstr "Tiempo de ejecución: :math:`O(E * (E + V * logV))`"
 msgid "Graph must be connected."
 msgstr "El grafo debe estar conectado."
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:39
+#: ../../build/doc/pgr_chinesePostmanCost.rst:40
 msgid "[TBD] Return value when the graph if disconnected"
 msgstr "[TBD] Valor devuelto cuando el grafo está desconectado"
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:42
+#: ../../build/doc/pgr_chinesePostmanCost.rst:43
 msgid "Signatures"
 msgstr "Firmas"
 
@@ -166,7 +168,7 @@ msgstr "Firmas"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:59
+#: ../../build/doc/pgr_chinesePostmanCost.rst:60
 msgid "Parameters"
 msgstr "Parámetros"
 
@@ -177,7 +179,7 @@ msgstr "Columna"
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_chinesePostmanCost.rst:78
+#: ../../build/doc/pgr_chinesePostmanCost.rst:79
 msgid "Type"
 msgstr "Tipo"
 
@@ -198,7 +200,7 @@ msgstr "``TEXT``"
 msgid "The edges SQL query as described in `Inner query`_."
 msgstr "La consulta SQL de aristas como se describe en  `Inner query`_."
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:67
+#: ../../build/doc/pgr_chinesePostmanCost.rst:68
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -300,41 +302,34 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:75
+#: ../../build/doc/pgr_chinesePostmanCost.rst:76
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:80
+#: ../../build/doc/pgr_chinesePostmanCost.rst:81
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:80
+#: ../../build/doc/pgr_chinesePostmanCost.rst:81
 msgid "Minimum costs of a circuit path."
 msgstr "Costes mínimos de una trayectoria de circuito."
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:84
+#: ../../build/doc/pgr_chinesePostmanCost.rst:85
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:86
+#: ../../build/doc/pgr_chinesePostmanCost.rst:87
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ":doc:`chinesePostmanProblem-family`"
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:89
+#: ../../build/doc/pgr_chinesePostmanCost.rst:90
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:90
+#: ../../build/doc/pgr_chinesePostmanCost.rst:91
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:91
+#: ../../build/doc/pgr_chinesePostmanCost.rst:92
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_chinesePostmanCost.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_chinesePostmanCost.html>`__)"

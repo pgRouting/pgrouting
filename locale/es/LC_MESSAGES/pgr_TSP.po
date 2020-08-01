@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -62,15 +62,17 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_TSP.rst:29
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_TSP.html>`__) `2.6 "
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_TSP.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_TSP.html>`__ `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_TSP.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_TSP.html>`__) `2.6 "
+"**Versiones soportadas:** actual(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_TSP.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_TSP.html>`__ `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_TSP.html>`__"
 
-#: ../../build/doc/pgr_TSP.rst:33
+#: ../../build/doc/pgr_TSP.rst:34
 msgid ""
 "**Unsupported versions:** `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_TSP.html>`__ `2.4 "
@@ -89,8 +91,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html>`__"
 
 #: ../../build/doc/TSP-family.rst:4 ../../build/doc/TSP-family.rst:6
-#: ../../build/doc/pgr_TSP.rst:42 ../../build/doc/pgr_TSP.rst:78
-#: ../../build/doc/pgr_TSP.rst:96
+#: ../../build/doc/pgr_TSP.rst:43 ../../build/doc/pgr_TSP.rst:79
+#: ../../build/doc/pgr_TSP.rst:97
 msgid "Description"
 msgstr "Descripción"
 
@@ -111,7 +113,7 @@ msgstr ""
 " corresponde con la ruta más corta posible que para visite cada ciudad "
 "exactamente una vez y regrese a la ciudad de origen?*"
 
-#: ../../build/doc/pgr_TSP.rst:48
+#: ../../build/doc/pgr_TSP.rst:49
 msgid ""
 "See :ref:`simulated-annealing` for a complete description of this "
 "implementation"
@@ -119,11 +121,11 @@ msgstr ""
 "Consulte :ref:`simulated-annealing` para obtener una descripción completa de"
 " esta implementación"
 
-#: ../../build/doc/pgr_TSP.rst:51
+#: ../../build/doc/pgr_TSP.rst:52
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_TSP.rst:54
+#: ../../build/doc/pgr_TSP.rst:55
 msgid "Summary"
 msgstr "Resumen"
 
@@ -131,32 +133,32 @@ msgstr "Resumen"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_TSP.rst:68
+#: ../../build/doc/pgr_TSP.rst:69
 msgid "Not having a random execution"
 msgstr "No tener una ejecución aleatoria"
 
-#: ../../build/doc/pgr_TSP.rst:75
+#: ../../build/doc/pgr_TSP.rst:76
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/TSP-family.rst:4 ../../build/doc/pgr_TSP.rst:78
+#: ../../build/doc/TSP-family.rst:4 ../../build/doc/pgr_TSP.rst:79
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/pgr_TSP.rst:80
+#: ../../build/doc/pgr_TSP.rst:81
 msgid "**Matrix SQL**"
 msgstr "**Matrix SQL**"
 
-#: ../../build/doc/pgr_TSP.rst:80
+#: ../../build/doc/pgr_TSP.rst:81
 msgid "an SQL query, described in the `Inner query`_"
 msgstr "una consulta SQL, descrita en `Inner query`_"
 
-#: ../../build/doc/pgr_TSP.rst:84
+#: ../../build/doc/pgr_TSP.rst:85
 msgid "Optional Parameters"
 msgstr "Parámetros opcionales"
 
 #: ../../build/doc/TSP-family.rst:4 ../../build/doc/TSP-family.rst:6
-#: ../../build/doc/pgr_TSP.rst:96
+#: ../../build/doc/pgr_TSP.rst:97
 msgid "Type"
 msgstr "Tipo"
 
@@ -164,13 +166,13 @@ msgstr "Tipo"
 msgid "Default"
 msgstr "Valores predeterminados"
 
-#: ../../build/doc/TSP-family.rst:6 ../../build/doc/pgr_TSP.rst:98
+#: ../../build/doc/TSP-family.rst:6 ../../build/doc/pgr_TSP.rst:99
 msgid "**start_vid**"
 msgstr "**start_vid**"
 
 #: ../../build/doc/TSP-family.rst:6 ../../build/doc/TSP-family.rst:7
-#: ../../build/doc/TSP-family.rst:9 ../../build/doc/pgr_TSP.rst:98
-#: ../../build/doc/pgr_TSP.rst:99
+#: ../../build/doc/TSP-family.rst:9 ../../build/doc/pgr_TSP.rst:99
+#: ../../build/doc/pgr_TSP.rst:100
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
@@ -182,7 +184,7 @@ msgstr "`0`"
 msgid "The greedy part of the implementation will use this identifier."
 msgstr "La parte ambiciosa de la implementación utilizará este identificador."
 
-#: ../../build/doc/TSP-family.rst:7 ../../build/doc/pgr_TSP.rst:99
+#: ../../build/doc/TSP-family.rst:7 ../../build/doc/pgr_TSP.rst:100
 msgid "**end_vid**"
 msgstr "**end_vid**"
 
@@ -196,7 +198,7 @@ msgstr "**max_processing_time**"
 
 #: ../../build/doc/TSP-family.rst:8 ../../build/doc/TSP-family.rst:10
 #: ../../build/doc/TSP-family.rst:12 ../../build/doc/TSP-family.rst:13
-#: ../../build/doc/TSP-family.rst:14 ../../build/doc/pgr_TSP.rst:100
+#: ../../build/doc/TSP-family.rst:14 ../../build/doc/pgr_TSP.rst:101
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
@@ -318,11 +320,11 @@ msgstr ""
 "falso: Use `1` como semilla. Usando este valor obtendrá los mismos "
 "resultados con los mismos datos en cada ejecución."
 
-#: ../../build/doc/pgr_TSP.rst:91
+#: ../../build/doc/pgr_TSP.rst:92
 msgid "Inner query"
 msgstr "Consulta interna"
 
-#: ../../build/doc/pgr_TSP.rst:93
+#: ../../build/doc/pgr_TSP.rst:94
 msgid ""
 "**Matrix SQL**: an SQL query, which should return a set of rows with the "
 "following columns:"
@@ -330,27 +332,27 @@ msgstr ""
 "**Matrix SQL**: una consulta SQL, que debe devolver un conjunto de filas con"
 " las siguientes columnas:"
 
-#: ../../build/doc/TSP-family.rst:6 ../../build/doc/pgr_TSP.rst:96
+#: ../../build/doc/TSP-family.rst:6 ../../build/doc/pgr_TSP.rst:97
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/pgr_TSP.rst:98
+#: ../../build/doc/pgr_TSP.rst:99
 msgid "Identifier of the starting vertex."
 msgstr "Identificador del vértice inicial."
 
-#: ../../build/doc/pgr_TSP.rst:99
+#: ../../build/doc/pgr_TSP.rst:100
 msgid "Identifier of the ending vertex."
 msgstr "Identificador del vértice final."
 
-#: ../../build/doc/TSP-family.rst:13 ../../build/doc/pgr_TSP.rst:100
+#: ../../build/doc/TSP-family.rst:13 ../../build/doc/pgr_TSP.rst:101
 msgid "**agg_cost**"
 msgstr "**agg_cost**"
 
-#: ../../build/doc/pgr_TSP.rst:100
+#: ../../build/doc/pgr_TSP.rst:101
 msgid "Cost for going from start_vid to end_vid"
 msgstr "Costo para pasar de start_vid a end_vid"
 
-#: ../../build/doc/pgr_TSP.rst:103
+#: ../../build/doc/pgr_TSP.rst:104
 msgid ""
 "Can be Used with :doc:`costMatrix-category` functions with `directed := "
 "false`."
@@ -358,7 +360,7 @@ msgstr ""
 "Se puede utilizar con las funciones :doc:`costMatrix-category`, con el valor"
 " `directed := false`."
 
-#: ../../build/doc/pgr_TSP.rst:105
+#: ../../build/doc/pgr_TSP.rst:106
 msgid ""
 "If using `directed := true`, the resulting non symmetric matrix must be "
 "converted to symmetric by fixing the non symmetric values according to your "
@@ -368,7 +370,7 @@ msgstr ""
 "convertirse a simétrica mediante la corrección de los valores no simétricos "
 "de acuerdo con las necesidades de la aplicación."
 
-#: ../../build/doc/pgr_TSP.rst:109
+#: ../../build/doc/pgr_TSP.rst:110
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -416,23 +418,23 @@ msgstr "Costo agregado del ``nodo`` en  ``seq = 1`` hacia el nodo actual."
 msgid "``0`` for the first row in the path sequence."
 msgstr "``0`` para la primera fila de la secuencia de ruta."
 
-#: ../../build/doc/pgr_TSP.rst:116
+#: ../../build/doc/pgr_TSP.rst:117
 msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
-#: ../../build/doc/pgr_TSP.rst:118
+#: ../../build/doc/pgr_TSP.rst:119
 msgid "Start from vertex :math:`7`"
 msgstr "Inicio en el vértice :math:`7`"
 
-#: ../../build/doc/pgr_TSP.rst:124
+#: ../../build/doc/pgr_TSP.rst:125
 msgid "Using with points of interest."
 msgstr "Uso con puntos de interés."
 
-#: ../../build/doc/pgr_TSP.rst:126
+#: ../../build/doc/pgr_TSP.rst:127
 msgid "To generate a symmetric matrix:"
 msgstr "Para generar una matriz simétrica:"
 
-#: ../../build/doc/pgr_TSP.rst:128
+#: ../../build/doc/pgr_TSP.rst:129
 msgid ""
 "the **side** information of pointsOfInterset is ignored by not including it "
 "in the query"
@@ -440,23 +442,23 @@ msgstr ""
 "la información del **lado** de pointsOfInterset se omite al no incluirla en "
 "la consulta"
 
-#: ../../build/doc/pgr_TSP.rst:129
+#: ../../build/doc/pgr_TSP.rst:130
 msgid "and **directed := false**"
 msgstr "y  **directed := false**"
 
-#: ../../build/doc/pgr_TSP.rst:135
+#: ../../build/doc/pgr_TSP.rst:136
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_TSP.rst:138
+#: ../../build/doc/pgr_TSP.rst:139
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_TSP.rst:140
+#: ../../build/doc/pgr_TSP.rst:141
 msgid ":doc:`TSP-family`"
 msgstr ":doc:`TSP-family`"
 
-#: ../../build/doc/pgr_TSP.rst:141
+#: ../../build/doc/pgr_TSP.rst:142
 msgid ""
 "`Simulated annaeling algorithm for beginners <https://www.theprojectspot.com"
 "/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__"
@@ -465,39 +467,30 @@ msgstr ""
 "<https://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-"
 "for-beginners/6>`__"
 
-#: ../../build/doc/pgr_TSP.rst:142
-msgid ""
-"`Wikipedia: Traveling Salesman Problem "
-"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
-msgstr ""
-"`Wikipedia: Traveling Salesman Problem "
-"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
-
 #: ../../build/doc/pgr_TSP.rst:143
 msgid ""
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
+msgstr ""
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
+
+#: ../../build/doc/pgr_TSP.rst:144
+msgid ""
 "`Wikipedia: Simulated annealing "
 "<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
 msgstr ""
 "`Wikipedia: Simulated annealing "
 "<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
 
-#: ../../build/doc/pgr_TSP.rst:146
+#: ../../build/doc/pgr_TSP.rst:147
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_TSP.rst:147
+#: ../../build/doc/pgr_TSP.rst:148
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_TSP.rst:148
+#: ../../build/doc/pgr_TSP.rst:149
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_TSP.html>`__) `2.6 "
-#~ "<https://docs.pgrouting.org/2.6/en/pgr_TSP.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_TSP.html>`__) `2.6 "
-#~ "<https://docs.pgrouting.org/2.6/en/pgr_TSP.html>`__"

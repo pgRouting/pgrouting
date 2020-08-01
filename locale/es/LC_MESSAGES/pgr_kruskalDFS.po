@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -58,20 +58,22 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:29
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_kruskalDFS.html>`__)"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_kruskalDFS.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_kruskalDFS.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_kruskalDFS.html>`__)"
+"**Versiones soportadas:** actual(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_kruskalDFS.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_kruskalDFS.html>`__"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_kruskalDD.rst:6 ../../build/doc/pgr_kruskalDFS.rst:33
-#: ../../build/doc/pgr_kruskalDFS.rst:100
-#: ../../build/doc/pgr_kruskalDFS.rst:121
+#: ../../build/doc/pgr_kruskalDD.rst:6 ../../build/doc/pgr_kruskalDFS.rst:34
+#: ../../build/doc/pgr_kruskalDFS.rst:101
+#: ../../build/doc/pgr_kruskalDFS.rst:122
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:35
+#: ../../build/doc/pgr_kruskalDFS.rst:36
 msgid ""
 "Visits and extracts the nodes information in Depth First Search ordering of "
 "the Minimum Spanning Tree created using Kruskal's algorithm."
@@ -80,7 +82,7 @@ msgstr ""
 "Primera Profundidad del Árbol de Expansión Mínima creado con el algoritmo de"
 " Kruskal."
 
-#: ../../build/doc/pgr_kruskalDFS.rst:38
+#: ../../build/doc/pgr_kruskalDFS.rst:39
 msgid "**The main Characteristics are:**"
 msgstr "**Las características principales son:**"
 
@@ -121,22 +123,22 @@ msgstr "Las aristas resultantes conforman un bosque."
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr "Tiempo de ejecución de Kruskal: :math:`O(E * log E)`"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:44
+#: ../../build/doc/pgr_kruskalDFS.rst:45
 msgid "Returned tree nodes from a root vertex are on Depth First Search order"
 msgstr ""
 "Los nodos de árbol devueltos desde un vértice raíz están en el orden de "
 "Búsqueda en Primera Profundidad "
 
-#: ../../build/doc/pgr_kruskalDFS.rst:45
+#: ../../build/doc/pgr_kruskalDFS.rst:46
 msgid "Depth First Search Running time: :math:`O(E + V)`"
 msgstr ""
 "Tiempo de ejecución de la Búsqueda en Primera Profundidad: :math:`O(E + V)`"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:48
+#: ../../build/doc/pgr_kruskalDFS.rst:49
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:61
+#: ../../build/doc/pgr_kruskalDFS.rst:62
 msgid "Single vertex"
 msgstr "Un solo vértice"
 
@@ -144,15 +146,15 @@ msgstr "Un solo vértice"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:69
+#: ../../build/doc/pgr_kruskalDFS.rst:70
 msgid "The Minimum Spanning Tree starting on vertex :math:`2`"
 msgstr "El Árbol de Expansión Mínima que comienza en el vértice :math:`2`"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:79
+#: ../../build/doc/pgr_kruskalDFS.rst:80
 msgid "Multiple vertices"
 msgstr "Múltiples Vértices"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:87
+#: ../../build/doc/pgr_kruskalDFS.rst:88
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{13, 2\\}` with "
 ":math:`depth <= 3`"
@@ -160,53 +162,53 @@ msgstr ""
 "El Árbol de Expansión Mínimo que comienza en los vértices :math:`\\{13, "
 "2\\}` con :math:`depth <= 3`"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:97
+#: ../../build/doc/pgr_kruskalDFS.rst:98
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:100
-#: ../../build/doc/pgr_kruskalDFS.rst:121
+#: ../../build/doc/pgr_kruskalDFS.rst:101
+#: ../../build/doc/pgr_kruskalDFS.rst:122
 msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_kruskalDD.rst:6 ../../build/doc/pgr_kruskalDFS.rst:100
-#: ../../build/doc/pgr_kruskalDFS.rst:121
+#: ../../build/doc/pgr_kruskalDD.rst:6 ../../build/doc/pgr_kruskalDFS.rst:101
+#: ../../build/doc/pgr_kruskalDFS.rst:122
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:102
+#: ../../build/doc/pgr_kruskalDFS.rst:103
 msgid "**Edges SQL**"
 msgstr "**Edges SQL**"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:102
+#: ../../build/doc/pgr_kruskalDFS.rst:103
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:102
+#: ../../build/doc/pgr_kruskalDFS.rst:103
 msgid "SQL query described in `Inner query`_."
 msgstr "Consulta SQL descrita en `Inner query`_."
 
-#: ../../build/doc/pgr_kruskalDFS.rst:103
+#: ../../build/doc/pgr_kruskalDFS.rst:104
 msgid "**Root vid**"
 msgstr "**Root vid**"
 
 #: ../../build/doc/pgr_kruskalDD.rst:8 ../../build/doc/pgr_kruskalDD.rst:9
 #: ../../build/doc/pgr_kruskalDD.rst:13 ../../build/doc/pgr_kruskalDD.rst:17
-#: ../../build/doc/pgr_kruskalDD.rst:18 ../../build/doc/pgr_kruskalDFS.rst:103
-#: ../../build/doc/pgr_kruskalDFS.rst:123
+#: ../../build/doc/pgr_kruskalDD.rst:18 ../../build/doc/pgr_kruskalDFS.rst:104
+#: ../../build/doc/pgr_kruskalDFS.rst:124
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:103
+#: ../../build/doc/pgr_kruskalDFS.rst:104
 msgid "Identifier of the root vertex of the tree."
 msgstr "Identificador del vértice raíz del árbol."
 
-#: ../../build/doc/pgr_kruskalDFS.rst:105
+#: ../../build/doc/pgr_kruskalDFS.rst:106
 msgid "Used on `Single vertex`_"
 msgstr "Se utiliza en `Vértice único`_"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:106
+#: ../../build/doc/pgr_kruskalDFS.rst:107
 msgid ""
 "When value is :math:`0` then gets the spanning forest starting in aleatory "
 "nodes for each tree in the forest."
@@ -214,56 +216,56 @@ msgstr ""
 "Cuando el valor es :math:`0` se obtiene el bosque de expansión que comienza "
 "en nodos aleatorios para cada árbol del bosque."
 
-#: ../../build/doc/pgr_kruskalDFS.rst:109
+#: ../../build/doc/pgr_kruskalDFS.rst:110
 msgid "**Root vids**"
 msgstr "**Root vids**"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:109
+#: ../../build/doc/pgr_kruskalDFS.rst:110
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr "``ARRAY[ANY-INTEGER]``"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:109
+#: ../../build/doc/pgr_kruskalDFS.rst:110
 msgid "Array of identifiers of the root vertices."
 msgstr "Arreglo de identificadores de los vértices raíz."
 
-#: ../../build/doc/pgr_kruskalDFS.rst:111
+#: ../../build/doc/pgr_kruskalDFS.rst:112
 msgid "Used on `Multiple vertices`_"
 msgstr "Utilizado en `Múltiples Vértices`_"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:112
+#: ../../build/doc/pgr_kruskalDFS.rst:113
 msgid ":math:`0` values are ignored"
 msgstr "los valores :math:`0` son ignorados"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:113
+#: ../../build/doc/pgr_kruskalDFS.rst:114
 msgid "For optimization purposes, any duplicated value is ignored."
 msgstr "Para fines de optimización, se omite cualquier valor duplicado."
 
-#: ../../build/doc/pgr_kruskalDFS.rst:117
+#: ../../build/doc/pgr_kruskalDFS.rst:118
 msgid "Optional Parameters"
 msgstr "Parámetros opcionales"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_kruskalDFS.rst:121
+#: ../../build/doc/pgr_kruskalDFS.rst:122
 msgid "Default"
 msgstr "Valores predeterminados"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:123
+#: ../../build/doc/pgr_kruskalDFS.rst:124
 msgid "**max_depth**"
 msgstr "**max_depth**"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:123
+#: ../../build/doc/pgr_kruskalDFS.rst:124
 msgid ":math:`9223372036854775807`"
 msgstr ":math:`9223372036854775807`"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:123
+#: ../../build/doc/pgr_kruskalDFS.rst:124
 msgid "Upper limit for depth of node in the tree"
 msgstr "Límite superior para la profundidad del nodo en el árbol"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:125
+#: ../../build/doc/pgr_kruskalDFS.rst:126
 msgid "When value is ``Negative`` then **throws error**"
 msgstr "Cuando el valor es ``Negativo`` entonces **produce error**"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:129
+#: ../../build/doc/pgr_kruskalDFS.rst:130
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -364,7 +366,7 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:138
+#: ../../build/doc/pgr_kruskalDFS.rst:139
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -442,23 +444,23 @@ msgstr "**agg_cost**"
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr "Costo agregado de ``start_vid`` a ``node``."
 
-#: ../../build/doc/pgr_kruskalDFS.rst:147
+#: ../../build/doc/pgr_kruskalDFS.rst:148
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:149
+#: ../../build/doc/pgr_kruskalDFS.rst:150
 msgid ":doc:`spanningTree-family`"
 msgstr ":doc:`spanningTree-family`"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:150
+#: ../../build/doc/pgr_kruskalDFS.rst:151
 msgid ":doc:`kruskal-family`"
 msgstr ":doc:`kruskal-family`"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:151
+#: ../../build/doc/pgr_kruskalDFS.rst:152
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_kruskalDFS.rst:152
+#: ../../build/doc/pgr_kruskalDFS.rst:153
 msgid ""
 "`Boost: Kruskal's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
@@ -466,7 +468,7 @@ msgstr ""
 "`Boost:  algoritmo de documentación de Kruskal "
 "<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:153
+#: ../../build/doc/pgr_kruskalDFS.rst:154
 msgid ""
 "`Wikipedia: Kruskal's algorithm "
 "<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
@@ -474,21 +476,14 @@ msgstr ""
 "`Wikipedia: algoritmo de Kruskal  "
 "<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:156
+#: ../../build/doc/pgr_kruskalDFS.rst:157
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:157
+#: ../../build/doc/pgr_kruskalDFS.rst:158
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:158
+#: ../../build/doc/pgr_kruskalDFS.rst:159
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_kruskalDFS.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_kruskalDFS.html>`__)"
