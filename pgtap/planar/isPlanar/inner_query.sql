@@ -4,10 +4,10 @@ SELECT plan(56);
 
 SET client_min_messages TO ERROR;
 
-SELECT has_function('pgr_boyermyrvold');
+SELECT has_function('pgr_isplanar');
 
-SELECT function_returns('pgr_boyermyrvold',ARRAY['text'],'setof record');
-SELECT style_dijkstra('pgr_boyermyrvold', ')');
+SELECT function_returns('pgr_isplanar',ARRAY['text'],'boolean');
+SELECT style_dijkstra('pgr_isplanar', ')');
 
 SELECT finish();
 ROLLBACK;
