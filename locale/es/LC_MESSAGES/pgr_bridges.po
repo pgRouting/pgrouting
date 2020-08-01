@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -66,13 +66,15 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_bridges.rst:33
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_bridges.html>`__)"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_bridges.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_bridges.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_bridges.html>`__)"
+"**Versiones soportadas:** actual(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_bridges.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_bridges.html>`__"
 
-#: ../../build/doc/pgr_bridges.rst:36
+#: ../../build/doc/pgr_bridges.rst:37
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_bridges.html>`__ `2.5 "
@@ -83,12 +85,12 @@ msgstr ""
 "<https://docs.pgrouting.org/2.5/en/pgr_bridges.html>`__"
 
 #: ../../build/doc/components-family.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_bridges.rst:42
-#: ../../build/doc/pgr_bridges.rst:99
+#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_bridges.rst:43
+#: ../../build/doc/pgr_bridges.rst:100
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_bridges.rst:44
+#: ../../build/doc/pgr_bridges.rst:45
 msgid ""
 "A bridge is an edge of an undirected graph whose deletion increases its "
 "number of connected components. This implementation can only be used with an"
@@ -98,27 +100,27 @@ msgstr ""
 "número de componentes conectados. Esta implementación solo se puede utilizar"
 " con un grafo no dirigido."
 
-#: ../../build/doc/pgr_bridges.rst:48
+#: ../../build/doc/pgr_bridges.rst:49
 msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
-#: ../../build/doc/pgr_bridges.rst:50
+#: ../../build/doc/pgr_bridges.rst:51
 msgid "The signature is for an **undirected** graph."
 msgstr "La firma es para un grafo **no dirigido**."
 
-#: ../../build/doc/pgr_bridges.rst:51
+#: ../../build/doc/pgr_bridges.rst:52
 msgid "The returned values are ordered:"
 msgstr "Los valores regresados se ordenan:"
 
-#: ../../build/doc/pgr_bridges.rst:53
+#: ../../build/doc/pgr_bridges.rst:54
 msgid "`edge` ascending"
 msgstr "`edge` ascendente."
 
-#: ../../build/doc/pgr_bridges.rst:55
+#: ../../build/doc/pgr_bridges.rst:56
 msgid "Running time: :math:`O(E * (V + E))`"
 msgstr "Tiempo de ejecución: :math:`O(E * (V + E))`"
 
-#: ../../build/doc/pgr_bridges.rst:58
+#: ../../build/doc/pgr_bridges.rst:59
 msgid "Signatures"
 msgstr "Firmas"
 
@@ -126,11 +128,11 @@ msgstr "Firmas"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_bridges.rst:70
+#: ../../build/doc/pgr_bridges.rst:71
 msgid "The bridges of the graph"
 msgstr "Los puentes del grafo"
 
-#: ../../build/doc/pgr_bridges.rst:77
+#: ../../build/doc/pgr_bridges.rst:78
 msgid "Parameters"
 msgstr "Parámetros"
 
@@ -139,7 +141,8 @@ msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/components-family.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_bridges.rst:99
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_bridges.rst:100
 msgid "Type"
 msgstr "Tipo"
 
@@ -160,7 +163,7 @@ msgstr "``TEXT``"
 msgid "Inner query as described below."
 msgstr "Consulta interna como se describe a continuación."
 
-#: ../../build/doc/pgr_bridges.rst:84
+#: ../../build/doc/pgr_bridges.rst:85
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -168,7 +171,7 @@ msgstr "Consulta interna"
 msgid "edges SQL"
 msgstr "bordes SQL"
 
-#: ../../build/doc/pgr_bridges.rst:86
+#: ../../build/doc/pgr_bridges.rst:87
 msgid ""
 "an SQL query of an **undirected** graph, which should return a set of rows "
 "with the following columns:"
@@ -176,7 +179,8 @@ msgstr ""
 "Una consulta SQL de un grafo **no dirigido**, que debería devolver un "
 "conjunto de filas con las siguientes columnas:"
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_bridges.rst:99
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_bridges.rst:100
 msgid "Column"
 msgstr "Columna"
 
@@ -271,57 +275,47 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_bridges.rst:93
+#: ../../build/doc/pgr_bridges.rst:94
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_bridges.rst:96
+#: ../../build/doc/pgr_bridges.rst:97
 msgid "Returns set of ``(edge)``"
 msgstr "Devuelve el conjunto de ``(edge)``"
 
-#: ../../build/doc/pgr_bridges.rst:101
+#: ../../build/doc/pgr_bridges.rst:102
 msgid "**edge**"
 msgstr "**edge**"
 
-#: ../../build/doc/pgr_bridges.rst:101
+#: ../../build/doc/pgr_bridges.rst:102
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_bridges.rst:101
+#: ../../build/doc/pgr_bridges.rst:102
 msgid "Identifier of the edge that is a bridge."
 msgstr "Identificador del borde que es un puente."
 
-#: ../../build/doc/pgr_bridges.rst:107
+#: ../../build/doc/pgr_bridges.rst:108
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_bridges.rst:109
+#: ../../build/doc/pgr_bridges.rst:110
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 
-#: ../../build/doc/pgr_bridges.rst:110
+#: ../../build/doc/pgr_bridges.rst:111
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_bridges.rst:113
+#: ../../build/doc/pgr_bridges.rst:114
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_bridges.rst:114
+#: ../../build/doc/pgr_bridges.rst:115
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_bridges.rst:115
+#: ../../build/doc/pgr_bridges.rst:116
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "Inner query as described bellow."
-#~ msgstr "Consulta interna como se describe a continuación."
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_bridges.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_bridges.html>`__)"
