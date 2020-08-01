@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:13
 msgid ""
-"``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a "
-"graph."
+"``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching "
+"in a graph."
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:18
@@ -69,19 +69,20 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:37
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_maxCardinalityMatch.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_maxCardinalityMatch.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_maxCardinalityMatch.html>`__) `3.0"
+" <https://docs.pgrouting.org/3.0/en/pgr_maxCardinalityMatch.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:41
 msgid ""
-"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
-"pgr_maxCardinalityMatch.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
-"pgr_maxCardinalityMatch.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
-"pgr_maximumCardinalityMatching.html>`__ `2.3 <https://docs.pgrouting.org/2.3/"
-"en/src/max_flow/doc/pgr_maximumCardinalityMatching.html#pgr-"
-"maximumcardinalitymatching>`__"
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__"
+" `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html"
+"#pgr-maximumcardinalitymatching>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:49
@@ -103,8 +104,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:54
 msgid ""
-"A maximum matching is a matching that contains the largest possible number "
-"of edges."
+"A maximum matching is a matching that contains the largest possible "
+"number of edges."
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:56
@@ -197,7 +198,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:102
 msgid ""
-"an SQL query, which should return a set of rows with the following columns:"
+"an SQL query, which should return a set of rows with the following "
+"columns:"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:105
@@ -352,3 +354,4 @@ msgstr ""
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:142
 msgid ":ref:`search`"
 msgstr ""
+

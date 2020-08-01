@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,8 +30,7 @@ msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:17
-msgid ""
-":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
+msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:18
@@ -42,8 +41,8 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:19
 msgid ""
-":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest "
-"paths."
+":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K "
+"shortest paths."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:24
@@ -96,19 +95,20 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:48
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"dijkstra-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-"
-"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-family."
-"html>`__"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/dijkstra-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+"/dijkstra-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
+"/dijkstra-family.html>`__"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:53
 msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/dijkstra-"
-"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/dijkstra-family."
-"html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra."
-"html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra."
-"html>`__"
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
+"/dijkstra-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/dijkstra-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:61
@@ -125,8 +125,8 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:69
 msgid ""
-"where  :math:`sql = \\{(id_i, source_i, target_i, cost_i, reverse"
-"\\_cost_i)\\}`"
+"where  :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
+"reverse\\_cost_i)\\}`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:71
@@ -171,11 +171,11 @@ msgstr ""
 msgid ""
 ":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) "
 "\\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = "
-"\\varnothing \\\\ \\text{ }  \\text{ }  & \\quad \\text{ } \\\\ \\text{ }  "
-"\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad "
+"\\varnothing \\\\ \\text{ }  \\text{ }  & \\quad \\text{ } \\\\ \\text{ }"
+"  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad "
 "\\text{ } \\\\ \\cup      \\{(target_i, source_i, reverse\\_cost_i) "
-"\\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost "
-"\\neq \\varnothing \\\\ \\end{cases}`"
+"\\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } "
+"reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:98
@@ -198,11 +198,11 @@ msgid ""
 "\\text{ if } reverse\\_cost = \\varnothing \\\\ \\text{ }  \\text{ }  & "
 "\\text{ } \\\\ \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } "
 "cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, cost_i) "
-"\\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, "
-"reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ "
-"\\cup  \\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse"
-"\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\"
-"\\ \\end{cases}`"
+"\\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, "
+"source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & "
+"\\text{ } \\\\ \\cup  \\{(source_i, target_i, reverse\\_cost_i) \\text{ "
+"when } reverse\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost "
+"\\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:121
@@ -223,8 +223,9 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:126
 msgid ""
-":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed = "
-"true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ \\end{cases}`"
+":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed ="
+" true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ "
+"\\end{cases}`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:131
@@ -233,8 +234,8 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:140
 msgid ""
-":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, agg"
-"\\_cost_i)\\}`"
+":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, "
+"agg\\_cost_i)\\}`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:153
@@ -263,14 +264,15 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:148
 msgid ""
-":math:`\\forall i \\neq | \\pi |, \\quad (node_i, node_{i+1}, cost_i) \\in E`"
+":math:`\\forall i \\neq | \\pi |, \\quad (node_i, node_{i+1}, cost_i) "
+"\\in E`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:149
 msgid ""
-":math:`edge_i  = \\begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &\\quad  "
-"\\text{when } i \\neq | \\pi | \\\\ -1 &\\quad  \\text{when } i = | \\pi | \\"
-"\\ \\end{cases}`"
+":math:`edge_i  = \\begin{cases}  id_{(node_i, node_{i+1},cost_i)}  "
+"&\\quad  \\text{when } i \\neq | \\pi | \\\\ -1 &\\quad  \\text{when } i "
+"= | \\pi | \\\\ \\end{cases}`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:150
@@ -279,22 +281,22 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:151
 msgid ""
-":math:`agg\\_cost_i  = \\begin{cases}  0   &\\quad  \\text{when } i = 1  \\"
-"\\ \\displaystyle\\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\\quad  "
-"\\text{when } i \\neq 1 \\\\ \\end{cases}`"
+":math:`agg\\_cost_i  = \\begin{cases}  0   &\\quad  \\text{when } i = 1  "
+"\\\\ \\displaystyle\\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\\quad"
+"  \\text{when } i \\neq 1 \\\\ \\end{cases}`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:159
 msgid ""
-"In other words: The algorithm returns a the shortest path between :math:"
-"`start_{vid}` and :math:`end_{vid}` , if it exists, in terms of a sequence "
-"of nodes  and of edges,"
+"In other words: The algorithm returns a the shortest path between "
+":math:`start_{vid}` and :math:`end_{vid}` , if it exists, in terms of a "
+"sequence of nodes  and of edges,"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:156
 msgid ""
-":math:`path\\_seq` indicates the relative position in the path of the :math:"
-"`node` or :math:`edge`."
+":math:`path\\_seq` indicates the relative position in the path of the "
+":math:`node` or :math:`edge`."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:157
@@ -303,7 +305,8 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:158
 msgid ""
-":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the node."
+":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the "
+"node."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:161
@@ -325,3 +328,4 @@ msgstr ""
 #: ../../build/doc/dijkstra-family.rst:170
 msgid ":ref:`search`"
 msgstr ""
+

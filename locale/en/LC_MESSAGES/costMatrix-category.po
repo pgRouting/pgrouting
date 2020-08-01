@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,17 +79,17 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:42
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"costMatrix-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"costMatrix-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/"
-"costMatrix-category.html>`__"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/costMatrix-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+"/costMatrix-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
+"/costMatrix-category.html>`__"
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:47
 msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/costMatrix-"
-"category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/costMatrix-"
-"category.html>`__"
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
+"/costMatrix-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/costMatrix-category.html>`__"
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:53
@@ -102,13 +102,12 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:58
 msgid ""
-":doc:`TSP-family` needs as input a symmetric cost matrix and no edge `(u, "
-"v)` must value :math:`\\infty`."
+":doc:`TSP-family` needs as input a symmetric cost matrix and no edge `(u,"
+" v)` must value :math:`\\infty`."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:60
-msgid ""
-"This collection of functions will return a cost matrix in form of a table."
+msgid "This collection of functions will return a cost matrix in form of a table."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:64
@@ -129,7 +128,8 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:70
 msgid ""
-"when the resulting matrix is symmetric and there is no :math:`\\infty` value."
+"when the resulting matrix is symmetric and there is no :math:`\\infty` "
+"value."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:71
@@ -146,12 +146,14 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:75
 msgid ""
-"By setting the upper triangle to be the mirror image of the lower triangle."
+"By setting the upper triangle to be the mirror image of the lower "
+"triangle."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:76
 msgid ""
-"By setting the lower triangle to be the mirror image of the upper triangle."
+"By setting the lower triangle to be the mirror image of the upper "
+"triangle."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:78
@@ -168,8 +170,8 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:82
 msgid ""
-"Returns the sum of the costs of the shortest path for pair combination of "
-"nodes in the graph."
+"Returns the sum of the costs of the shortest path for pair combination of"
+" nodes in the graph."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:83
@@ -187,8 +189,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:88
-msgid ""
-"When the starting vertex and ending vertex are the same, there is no path."
+msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:90
@@ -197,8 +198,8 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:92
 msgid ""
-"When the starting vertex and ending vertex are the different and there is no "
-"path."
+"When the starting vertex and ending vertex are the different and there is"
+" no path."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:94
@@ -213,7 +214,8 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:98
 msgid ""
-"Depending on the function and its parameters, the results can be symmetric."
+"Depending on the function and its parameters, the results can be "
+"symmetric."
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:100
@@ -237,8 +239,7 @@ msgid "`end_vid` ascending"
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:109
-msgid ""
-"Running time: approximately :math:`O(| start\\_vids | * (V \\log V + E))`"
+msgid "Running time: approximately :math:`O(| start\\_vids | * (V \\log V + E))`"
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:114
@@ -260,3 +261,4 @@ msgstr ""
 #: ../../build/doc/costMatrix-category.rst:121
 msgid ":ref:`search`"
 msgstr ""
+

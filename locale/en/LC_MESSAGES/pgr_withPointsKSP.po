@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,7 @@ msgid "pgr_withPointsKSP - Proposed"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:13
-msgid ""
-"``pgr_withPointsKSP`` - Find the K shortest paths using Yen's algorithm."
+msgid "``pgr_withPointsKSP`` - Find the K shortest paths using Yen's algorithm."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -84,19 +83,20 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:32
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_withPointsKSP.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_withPointsKSP.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_withPointsKSP.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_withPointsKSP.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:36
 msgid ""
-"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
-"pgr_withPointsKSP.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
-"pgr_withPointsKSP.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
-"pgr_withPointsKSP.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/"
-"withPoints/doc/pgr_withPointsKSP.html>`__ `2.2 <https://docs.pgrouting."
-"org/2.2/en/src/withPoints/doc/pgr_withPointsKSP.html>`__"
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_withPointsKSP.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_withPointsKSP.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_withPointsKSP.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsKSP.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsKSP.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
@@ -109,8 +109,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:46
 msgid ""
-"Modifies the graph to include the points defined in the ``points_sql`` and "
-"using Yen algorithm, finds the :math:`K` shortest paths."
+"Modifies the graph to include the points defined in the ``points_sql`` "
+"and using Yen algorithm, finds the :math:`K` shortest paths."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:50
@@ -162,8 +162,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:87
-msgid ""
-"From point :math:`1` to vertex :math:`6` in :math:`2` cycles with details."
+msgid "From point :math:`1` to vertex :math:`6` in :math:`2` cycles with details."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:94
@@ -255,8 +254,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:104
 msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default is "
-"``true`` which considers the graph as Directed."
+"(optional). When ``false`` the graph is considered as Undirected. Default"
+" is ``true`` which considers the graph as Directed."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:105
@@ -265,9 +264,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:105
 msgid ""
-"(optional). When ``true`` the paths calculated to get the shortests paths "
-"will be returned also. Default is ``false`` only the K shortest paths are "
-"returned."
+"(optional). When ``true`` the paths calculated to get the shortests paths"
+" will be returned also. Default is ``false`` only the K shortest paths "
+"are returned."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:106
@@ -281,7 +280,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:109
 msgid ""
-"(optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:"
+"(optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side "
+"is:"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:107
@@ -304,9 +304,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:111
 msgid ""
-"(optional). When ``true`` the results will include the driving distance to "
-"the points with in the ``distance``. Default is ``false`` which ignores "
-"other points of the points_sql."
+"(optional). When ``true`` the results will include the driving distance "
+"to the points with in the ``distance``. Default is ``false`` which "
+"ignores other points of the points_sql."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:116
@@ -364,8 +364,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -382,8 +382,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
@@ -417,7 +417,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:5
 msgid ""
-"an SQL query, which should return a set of rows with the following columns:"
+"an SQL query, which should return a set of rows with the following "
+"columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -434,7 +435,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid ""
-"If column not present, a sequential identifier will be given automatically."
+"If column not present, a sequential identifier will be given "
+"automatically."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -503,8 +505,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:136
 msgid ""
-"Path identifier. The ordering of the paths: For two paths i, j if i < j then "
-"agg_cost(i) <= agg_cost(j)."
+"Path identifier. The ordering of the paths: For two paths i, j if i < j "
+"then agg_cost(i) <= agg_cost(j)."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:137
@@ -518,8 +520,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:137
 msgid ""
-"Identifier of the node in the path. Negative values are the identifiers of a "
-"point."
+"Identifier of the node in the path. Negative values are the identifiers "
+"of a point."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:138
@@ -528,8 +530,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:139
 msgid ""
-"Identifier of the edge used to go from ``node`` to the next node in the path "
-"sequence."
+"Identifier of the edge used to go from ``node`` to the next node in the "
+"path sequence."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:139
@@ -543,8 +545,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:142
 msgid ""
-"Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the "
-"path sequence."
+"Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the"
+" path sequence."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:142
@@ -569,14 +571,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:152
 msgid ""
-"Left side driving topology from point :math:`1` to point :math:`2` in :math:"
-"`2` cycles, with details"
+"Left side driving topology from point :math:`1` to point :math:`2` in "
+":math:`2` cycles, with details"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:158
 msgid ""
-"Right side driving topology from point :math:`1` to point :math:`2` in :math:"
-"`2` cycles, with heap paths and details"
+"Right side driving topology from point :math:`1` to point :math:`2` in "
+":math:`2` cycles, with heap paths and details"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:164
@@ -602,3 +604,4 @@ msgstr ""
 #: ../../build/doc/pgr_withPointsKSP.rst:174
 msgid ":ref:`search`"
 msgstr ""
+

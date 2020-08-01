@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,7 @@ msgid "pgr_full_version"
 msgstr ""
 
 #: ../../build/doc/pgr_full_version.rst:13
-msgid ""
-"``pgr_full_version`` — Get the details of pgRouting version information."
+msgid "``pgr_full_version`` — Get the details of pgRouting version information."
 msgstr ""
 
 #: ../../build/doc/pgr_full_version.rst:16
@@ -44,9 +43,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_full_version.rst:23
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_full_version.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_full_version.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_full_version.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_full_version.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_full_version.rst:29
@@ -185,3 +184,4 @@ msgstr ""
 #: ../../build/doc/pgr_full_version.rst:77
 msgid ":ref:`search`"
 msgstr ""
+
