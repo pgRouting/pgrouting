@@ -1,13 +1,8 @@
 \i setup.sql
 
---Need to write basic tests
-SELECT plan(1);
+SELECT plan(54);
 
-SELECT todo_start('Complete the inner query tests');
-
-SELECT pass('Sample Test');
-
-SELECT todo_end();
+SELECT style_dijkstra('pgr_lengauerTarjanDominatorTree', ',1)');
 
 SELECT finish();
 ROLLBACK;
