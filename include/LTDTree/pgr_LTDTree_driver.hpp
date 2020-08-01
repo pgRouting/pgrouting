@@ -70,7 +70,6 @@ namespace pgrouting {
                /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
                 CHECK_FOR_INTERRUPTS();
                 try {
-             // calling the boost function
                 boost::lengauer_tarjan_dominator_tree(graph.graph, graph.get_V(root), domTreePredMap);
                      } catch (boost::exception const& ex) {
                           (void)ex;
