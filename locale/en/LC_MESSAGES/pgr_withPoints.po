@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:13
 msgid ""
-"``pgr_withPoints`` - Returns the shortest path in a graph with additional "
-"temporary vertices."
+"``pgr_withPoints`` - Returns the shortest path in a graph with additional"
+" temporary vertices."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -85,19 +85,20 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:32
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_withPoints.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_withPoints.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_withPoints.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_withPoints.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:36
 msgid ""
-"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
-"pgr_withPoints.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
-"pgr_withPoints.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
-"pgr_withPoints.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/"
-"withPoints/doc/pgr_withPoints.html>`__ `2.2 <https://docs.pgrouting.org/2.2/"
-"en/src/withPoints/doc/pgr_withPoints.html>`__"
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_withPoints.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_withPoints.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_withPoints.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPoints.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPoints.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
@@ -139,14 +140,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:59
 msgid ""
-"When the starting vertex and ending vertex are the same, there is no path. - "
-"The agg_cost the non included values (v, v) is 0"
+"When the starting vertex and ending vertex are the same, there is no "
+"path. - The agg_cost the non included values (v, v) is 0"
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:62
 msgid ""
-"When the starting vertex and ending vertex are the different and there is no "
-"path: - The agg_cost the non included values (u, v) is ∞"
+"When the starting vertex and ending vertex are the different and there is"
+" no path: - The agg_cost the non included values (u, v) is ∞"
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:65
@@ -156,8 +157,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:66
-msgid ""
-"The returned values are ordered: - start_vid ascending - end_vid ascending"
+msgid "The returned values are ordered: - start_vid ascending - end_vid ascending"
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:70
@@ -196,7 +196,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:96
 msgid ""
-"No **details** are given about distance of other points of points_sql query."
+"No **details** are given about distance of other points of points_sql "
+"query."
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:106
@@ -229,8 +230,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:164
 msgid ""
-"From point :math:`1` and vertex :math:`2`  to point :math:`3` and vertex :"
-"math:`7`"
+"From point :math:`1` and vertex :math:`2`  to point :math:`3` and vertex "
+":math:`7`"
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:171
@@ -308,7 +309,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:180
 msgid ""
-"Array of identifiers of starting vertices. When negative: is a point's pid."
+"Array of identifiers of starting vertices. When negative: is a point's "
+"pid."
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:181
@@ -316,8 +318,7 @@ msgid "**end_vids**"
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:181
-msgid ""
-"Array of identifiers of ending vertices. When negative: is a point's pid."
+msgid "Array of identifiers of ending vertices. When negative: is a point's pid."
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:182
@@ -331,8 +332,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:182
 msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default is "
-"``true`` which considers the graph as Directed."
+"(optional). When ``false`` the graph is considered as Undirected. Default"
+" is ``true`` which considers the graph as Directed."
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:183
@@ -346,7 +347,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:186
 msgid ""
-"(optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:"
+"(optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side "
+"is:"
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:184
@@ -369,9 +371,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:188
 msgid ""
-"(optional). When ``true`` the results will include the points in points_sql "
-"that are in the path. Default is ``false`` which ignores other points of the "
-"points_sql."
+"(optional). When ``true`` the results will include the points in "
+"points_sql that are in the path. Default is ``false`` which ignores other"
+" points of the points_sql."
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:193
@@ -429,8 +431,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -447,8 +449,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
@@ -482,7 +484,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:5
 msgid ""
-"an SQL query, which should return a set of rows with the following columns:"
+"an SQL query, which should return a set of rows with the following "
+"columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -499,7 +502,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid ""
-"If column not present, a sequential identifier will be given automatically."
+"If column not present, a sequential identifier will be given "
+"automatically."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -602,8 +606,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:221
 msgid ""
-"Identifier of the edge used to go from ``node`` to the next node in the path "
-"sequence."
+"Identifier of the edge used to go from ``node`` to the next node in the "
+"path sequence."
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:221
@@ -617,8 +621,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:224
 msgid ""
-"Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the "
-"path sequence."
+"Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the"
+" path sequence."
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:224
@@ -643,20 +647,20 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:234
 msgid ""
-"Which path (if any) passes in front of point :math:`6` or vertex :math:`6` "
-"with **right** side driving topology."
+"Which path (if any) passes in front of point :math:`6` or vertex "
+":math:`6` with **right** side driving topology."
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:240
 msgid ""
-"Which path (if any) passes in front of point :math:`6` or vertex :math:`6` "
-"with **left** side driving topology."
+"Which path (if any) passes in front of point :math:`6` or vertex "
+":math:`6` with **left** side driving topology."
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:246
 msgid ""
-"From point :math:`1` and vertex :math:`2` to point :math:`3` to vertex :math:"
-"`7` on an **undirected** graph, with details."
+"From point :math:`1` and vertex :math:`2` to point :math:`3` to vertex "
+":math:`7` on an **undirected** graph, with details."
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:252
@@ -682,3 +686,4 @@ msgstr ""
 #: ../../build/doc/pgr_withPoints.rst:262
 msgid ":ref:`search`"
 msgstr ""
+

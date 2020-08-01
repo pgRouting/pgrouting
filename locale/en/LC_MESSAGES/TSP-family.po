@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,15 +35,17 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:28
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/TSP-"
-"family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/TSP-family.html>`__ "
-"`2.6 <https://docs.pgrouting.org/2.6/en/TSP-family.html>`__"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/TSP-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/TSP-"
+"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/TSP-"
+"family.html>`__"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:33
 msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/TSP-family."
-"html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/TSP-family.html>`__ `2.3 "
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/TSP-"
+"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/TSP-"
+"family.html>`__ `2.3 "
 "<https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
 msgstr ""
 
@@ -61,15 +63,15 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:50
 msgid ""
-"The travelling salesman problem (TSP) or travelling salesperson problem asks "
-"the following question:"
+"The travelling salesman problem (TSP) or travelling salesperson problem "
+"asks the following question:"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:53
 msgid ""
-"*Given a list of cities and the distances between each pair of cities, which "
-"is the shortest possible route that visits each city exactly once and "
-"returns to the origin city?*"
+"*Given a list of cities and the distances between each pair of cities, "
+"which is the shortest possible route that visits each city exactly once "
+"and returns to the origin city?*"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:59
@@ -88,8 +90,8 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:64
 msgid ""
-"A discussion about the work of Hamilton & Kirkman can be found in the book "
-"**Graph Theory (Biggs et  al. 1976)**."
+"A discussion about the work of Hamilton & Kirkman can be found in the "
+"book **Graph Theory (Biggs et  al. 1976)**."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:67
@@ -102,12 +104,12 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:70
 msgid ""
-"It is believed that the general form of the TSP have been first studied by "
-"Kalr Menger in Vienna and Harvard. The problem was later promoted by "
-"Hassler, Whitney & Merrill at Princeton. A detailed description about the "
-"connection between Menger & Whitney, and the development of the TSP can be "
-"found in `On the history of combinatorial optimization (till 1960) <https://"
-"homepages.cwi.nl/~lex/files/histco.ps>`__"
+"It is believed that the general form of the TSP have been first studied "
+"by Kalr Menger in Vienna and Harvard. The problem was later promoted by "
+"Hassler, Whitney & Merrill at Princeton. A detailed description about the"
+" connection between Menger & Whitney, and the development of the TSP can "
+"be found in `On the history of combinatorial optimization (till 1960) "
+"<https://homepages.cwi.nl/~lex/files/histco.ps>`__"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:76
@@ -120,8 +122,8 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:80
 msgid ""
-"traveling costs from city A to city B are just as much as traveling from B "
-"to A."
+"traveling costs from city A to city B are just as much as traveling from "
+"B to A."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:82
@@ -150,8 +152,8 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:90
 msgid ""
-"Now since our travel costs do not depend on the direction we take around the "
-"tour:"
+"Now since our travel costs do not depend on the direction we take around "
+"the tour:"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:92
@@ -168,16 +170,16 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:100
 msgid ""
-"The simulated annealing algorithm was originally inspired from the process "
-"of annealing in metal work."
+"The simulated annealing algorithm was originally inspired from the "
+"process of annealing in metal work."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:103
 msgid ""
 "Annealing involves heating and cooling a material to alter its physical "
-"properties due to the changes in its internal structure. As the metal cools "
-"its new structure becomes fixed, consequently causing the metal to retain "
-"its newly obtained properties."
+"properties due to the changes in its internal structure. As the metal "
+"cools its new structure becomes fixed, consequently causing the metal to "
+"retain its newly obtained properties."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:110
@@ -186,9 +188,9 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:111
 msgid ""
-"Given an initial solution, the simulated annealing process, will start with "
-"a high temperature and gradually cool down until the desired temperature is "
-"reached."
+"Given an initial solution, the simulated annealing process, will start "
+"with a high temperature and gradually cool down until the desired "
+"temperature is reached."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:114
@@ -200,7 +202,8 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:117
 msgid ""
-"Once the desired temperature is reached, the best solution found is returned"
+"Once the desired temperature is reached, the best solution found is "
+"returned"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:140
@@ -267,8 +270,8 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:194
 msgid ""
-"Make the **tries_per_temperture** depending on the number of cities (:math:"
-"`n`), for example:"
+"Make the **tries_per_temperture** depending on the number of cities "
+"(:math:`n`), for example:"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:196
@@ -289,14 +292,14 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:203
 msgid ""
-"For a faster decreasing the temperature set **cooling_factor** to a smaller "
-"number, and set to a higher number for a slower decrease."
+"For a faster decreasing the temperature set **cooling_factor** to a "
+"smaller number, and set to a higher number for a slower decrease."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:206
 msgid ""
-"When for the same given data the same results are needed, set **randomize** "
-"to `false`."
+"When for the same given data the same results are needed, set "
+"**randomize** to `false`."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:208
@@ -475,8 +478,8 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:236
 msgid ""
-"false: Use `1` as seed. Using this value will get the same results with the "
-"same data in each execution."
+"false: Use `1` as seed. Using this value will get the same results with "
+"the same data in each execution."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:245
@@ -513,8 +516,8 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:257
 msgid ""
-"Cost to traverse from the current ``node`` to the next ``node`` in the path "
-"sequence."
+"Cost to traverse from the current ``node`` to the next ``node`` in the "
+"path sequence."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:257
@@ -543,20 +546,21 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:271
 msgid ""
-"`Simulated annaeling algorithm for beginners <https://www.theprojectspot.com/"
-"tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__"
+"`Simulated annaeling algorithm for beginners "
+"<https://www.theprojectspot.com/tutorial-post/simulated-annealing-"
+"algorithm-for-beginners/6>`__"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:272
 msgid ""
-"`Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/"
-"Traveling_salesman_problem>`__"
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:273
 msgid ""
-"`Wikipedia: Simulated annealing <https://en.wikipedia.org/wiki/"
-"Simulated_annealing>`__"
+"`Wikipedia: Simulated annealing "
+"<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:276
@@ -570,3 +574,4 @@ msgstr ""
 #: ../../build/doc/TSP-family.rst:278
 msgid ":ref:`search`"
 msgstr ""
+
