@@ -51,6 +51,7 @@ each vertex.
 
 - The implementation is applicable only for **undirected** graphs.
 - Provides the color to be assigned to all the nodes present in the graph.
+- The minimum value of color is 1.
 - The maximum value of color will not be greater than the number of vertices
   in the graph.
 - Higher color values are used only if required, i.e. the algorithm tries to
@@ -67,7 +68,7 @@ Signatures
 
     pgr_sequentialVertexColoring(Edges SQL)
 
-    RETURNS SET OF (node, color)
+    RETURNS SET OF (node, color_id)
     OR EMPTY SET
 
 :Example: Graph coloring of pgRouting :doc:`sampledata`
@@ -106,16 +107,17 @@ Result Columns
 
 .. result columns start
 
-Returns SET OF ``(node, color)``
+Returns SET OF ``(node, color_id)``
 
 ===============  =========== ====================================================
 Column           Type        Description
 ===============  =========== ====================================================
 **node**         ``BIGINT``  Identifier of all the ``nodes`` in the graph.
-**color**        ``BIGINT``  Identifier of the ``color`` of the ``node``.
+**color_id**     ``BIGINT``  Identifier of the color of the ``node``.
 
+                             - The minimum value of color is 1.
                              - The maximum value will not be greater than the
-                               number of vertices in the graph
+                               number of vertices in the graph.
 
 
 ===============  =========== ====================================================
