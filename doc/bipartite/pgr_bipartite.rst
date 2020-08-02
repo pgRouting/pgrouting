@@ -30,6 +30,13 @@ Description
 A bipartite graph is a graph with two sets of vertices which are connected to each other, but not within themselves.
 A bipartite graph is possible if the graph coloring is possible using two colors such that vertices in a set are colored with the same color.
 
+**The main Characteristics are:**
+
+- The algorithm works in undirected graph only.
+- The returned values are not ordered.
+- The algorithm checks graph is bipartite or not. If it is bipartite then it returns the node along with two colors `0` and `1` which represents two different sets.
+- If graph is not bipartite then algorithm returns empty row.
+- Running time: :math:`O(V + E)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -38,19 +45,8 @@ Signatures
 
 .. code-block:: sql
 
-    pgr_bipartite(edges_sql)
+    .. pgr_bipartite(edges_sql)
     RETURNS SET OF (vid,color)
-
-
-:Example: **TBD**
-
-.. index::
-    single: pgr_bipartaite
-
-Complete Signature
-...............................................................................
-
-.. code-block:: sql
 
 
 :Example: The pgr_bipartite algorithm with and edge_sql as a parameter when graph is bipartite:
@@ -58,6 +54,11 @@ Complete Signature
 .. literalinclude:: doc-bipartite.queries
    :start-after: --q1
    :end-before: --q2
+
+
+.. index::
+    single: breadthFirstSearch(Multiple vertices) - Experimental
+
 
 Parameters
 -------------------------------------------------------------------------------
@@ -91,13 +92,14 @@ Column         Type        Description
 Additional Examples
 ------------------------------------------------------------------------------------------
 
-:Example: To handle the one flag to choose signatures
-
 The examples in this section use the following :ref:`fig1`
 
+
+:Example: It also possibe the cyclic graph can also be bipartite. 
 .. literalinclude:: doc-bipartite.queries
-    :start-after: --q1
-    :end-before: --q2
+    :start-after: --q2
+    :end-before: --q3
+
 
 See Also
 -------------------------------------------------------------------------------
