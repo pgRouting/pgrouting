@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 
 #include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/pgr_messages.h"
+#include "cpp_common/interruption.h"
 
 
 /** @file pgr_sequentialVertexColoring.hpp
@@ -54,13 +54,13 @@ namespace functions {
 
 //*************************************************************
 
-template <class G>
-class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
+template < class G >
+class Pgr_sequentialVertexColoring {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
-     typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS> Graph;
-     typedef boost::graph_traits<Graph>::vertices_size_type vertices_size_type;
+     typedef boost::adjacency_list < boost::listS, boost::vecS, boost::undirectedS > Graph;
+     typedef boost::graph_traits < Graph > ::vertices_size_type vertices_size_type;
 
      /** @name SequentialVertexColoring
       * @{
@@ -78,21 +78,22 @@ class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
       * @see [boost::sequential_vertex_coloring]
       * (https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html)
       */
-     std::vector<pgr_vertex_color_rt> sequentialVertexColoring(
-             G &graph) {
-         std::vector<pgr_vertex_color_rt> results;
+     std::vector < pgr_vertex_color_rt > sequentialVertexColoring(G &graph) {
+         std::vector < pgr_vertex_color_rt > results;
+
+         auto i_map = boost::get(boost::vertex_index, graph.graph);
 
          // vector which will store the color of all the vertices in the graph
-         std::vector<vertices_size_type> colors(boost::num_vertices(graph.graph));
+         std::vector < vertices_size_type > colors(boost::num_vertices(graph.graph));
 
-         // An iterator property map which records the colors of each vertex
-         auto color_map = boost::make_iterator_property_map(colors.begin(),
-             boost::get(boost::vertex_index, graph.graph));
+         // An iterator property map which records the color of each vertex
+         auto color_map = boost::make_iterator_property_map(colors.begin(), i_map);
+
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
 
          try {
-             // calling the boost function
-             boost::sequential_vertex_coloring(
-                 graph.graph, color_map);
+             boost::sequential_vertex_coloring(graph.graph, color_map);
          } catch (boost::exception const& ex) {
              (void)ex;
              throw;
@@ -120,23 +121,17 @@ class Pgr_sequentialVertexColoring : public pgrouting::Pgr_messages {
       *
       * @returns `results` vector
       */
-     std::vector<pgr_vertex_color_rt> get_results(
-             std::vector<vertices_size_type> &colors,
+     std::vector < pgr_vertex_color_rt > get_results(
+             std::vector < vertices_size_type > &colors,
              const G &graph) {
-         std::vector<pgr_vertex_color_rt> results;
+         std::vector < pgr_vertex_color_rt > results;
 
-         typename boost::graph_traits<Graph>::vertex_iterator v, vend;
+         typename boost::graph_traits < Graph > ::vertex_iterator v, vend;
 
-         // iterate through every vertex in the graph
          for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
              int64_t node = graph[*v].id;
              int64_t color = colors[*v];
-
-             // push the vertex id and the color of the vertex in the `results` vector
-             results.push_back({
-                 node,
-                 color
-             });
+             results.push_back({ node, color + 1 });
          }
 
          // ordering the results in an increasing order of the node id

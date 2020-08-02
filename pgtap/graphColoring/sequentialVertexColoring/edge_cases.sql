@@ -35,7 +35,7 @@ FROM pgr_sequentialVertexColoring(
     'q3'
 );
 
-SELECT set_eq('sequentialVertexColoring4', $$VALUES (2, 0)$$, '4: Node 2 with color 0 is returned');
+SELECT set_eq('sequentialVertexColoring4', $$VALUES (2, 1)$$, '4: Node 2 with color 1 is returned');
 
 
 -- 2 vertices test (connected)
@@ -53,7 +53,7 @@ FROM pgr_sequentialVertexColoring(
     'q5'
 );
 
-SELECT set_eq('sequentialVertexColoring6', $$VALUES (5, 1), (8, 0)$$, '6: Both vertices have different color');
+SELECT set_eq('sequentialVertexColoring6', $$VALUES (5, 2), (8, 1)$$, '6: Both vertices have different color');
 
 
 -- 2 vertices test (isolated)
@@ -82,7 +82,7 @@ FROM pgr_sequentialVertexColoring(
     'q7'
 );
 
-SELECT set_eq('sequentialVertexColoring8', $$VALUES (1, 0), (2, 0)$$, '8: Both vertices have same color');
+SELECT set_eq('sequentialVertexColoring8', $$VALUES (1, 1), (2, 1)$$, '8: Both vertices have same color');
 
 
 -- 3 vertices test (linear)
@@ -100,7 +100,7 @@ FROM pgr_sequentialVertexColoring(
     'q9'
 );
 
-SELECT set_eq('sequentialVertexColoring10', $$VALUES (1, 0), (2, 1), (3, 0)$$, '10: Two colors are required');
+SELECT set_eq('sequentialVertexColoring10', $$VALUES (1, 1), (2, 2), (3, 1)$$, '10: Two colors are required');
 
 
 -- 3 vertices test (cyclic)
@@ -137,7 +137,7 @@ FROM pgr_sequentialVertexColoring(
     'q11'
 );
 
-SELECT set_eq('sequentialVertexColoring12', $$VALUES (3, 0), (6, 1), (8, 2)$$, '12: Three colors are required');
+SELECT set_eq('sequentialVertexColoring12', $$VALUES (3, 1), (6, 2), (8, 3)$$, '12: Three colors are required');
 
 
 -- 4 vertices test (linear)
@@ -162,7 +162,7 @@ FROM pgr_sequentialVertexColoring(
     'q13'
 );
 
-SELECT set_eq('sequentialVertexColoring14', $$VALUES (1, 0), (2, 1), (3, 0), (4, 1)$$, '14: Two colors are required');
+SELECT set_eq('sequentialVertexColoring14', $$VALUES (1, 1), (2, 2), (3, 1), (4, 2)$$, '14: Two colors are required');
 
 
 -- 4 vertices test (cyclic)
@@ -188,7 +188,7 @@ FROM pgr_sequentialVertexColoring(
     'q15'
 );
 
-SELECT set_eq('sequentialVertexColoring16', $$VALUES (5, 0), (6, 1), (10, 1), (11, 0)$$, '16: Two colors are required');
+SELECT set_eq('sequentialVertexColoring16', $$VALUES (5, 1), (6, 2), (10, 2), (11, 1)$$, '16: Two colors are required');
 
 
 -- 4 vertices test (all connected)
@@ -231,7 +231,7 @@ FROM pgr_sequentialVertexColoring(
     'q17'
 );
 
-SELECT set_eq('sequentialVertexColoring18', $$VALUES (1, 0), (2, 1), (3, 2), (4, 3)$$, '18: Four colors are required');
+SELECT set_eq('sequentialVertexColoring18', $$VALUES (1, 1), (2, 2), (3, 3), (4, 4)$$, '18: Four colors are required');
 
 
 SELECT * FROM finish();

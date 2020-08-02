@@ -35,16 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
-/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
 
-/* for functions to get edges information */
 #include "c_common/edges_input.h"
-/* for handling array related stuffs */
 #include "c_common/arrays_input.h"
 
 #include "drivers/depthFirstSearch/depthFirstSearch_driver.h"
@@ -61,9 +56,9 @@ PG_FUNCTION_INFO_V1(_pgr_depthfirstsearch);
  * Finally, it frees the memory and disconnects the C function to the SPI manager.
  *
  * @param edges_sql      the edges of the SQL query
- * @param roots          the starting vertices
- * @param max_depth      the maximum depth of traversal
+ * @param roots          the root vertices
  * @param directed       whether the graph is directed or undirected
+ * @param max_depth      the maximum depth of traversal
  * @param result_tuples  the rows in the result
  * @param result_count   the count of rows in the result
  *
@@ -74,32 +69,24 @@ void
 process(
         char* edges_sql,
         ArrayType *roots,
-        int64_t max_depth,
         bool directed,
+        int64_t max_depth,
 
         pgr_mst_rt **result_tuples,
         size_t *result_count) {
-    // https://www.postgresql.org/docs/current/static/spi-spi-connect.html
     pgr_SPI_connect();
 
-    PGR_DBG("Initializing arrays");
     size_t size_rootsArr = 0;
 
-    // converting the postgres array to C array
-    int64_t* rootsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_rootsArr, roots);
-    PGR_DBG("rootsArr size %ld", size_rootsArr);
+    int64_t* rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Loading the edges");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    // load the edges belonging to the graph
     pgr_get_edges(edges_sql, &edges, &total_edges);
-    PGR_DBG("Total edges in query %ld", total_edges);
 
     if (total_edges == 0) {
         if (rootsArr) pfree(rootsArr);
@@ -107,7 +94,6 @@ process(
         return;
     }
 
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
@@ -116,8 +102,8 @@ process(
             edges, total_edges,
             rootsArr, size_rootsArr,
 
-            max_depth,
             directed,
+            max_depth,
 
             result_tuples,
             result_count,
@@ -126,7 +112,6 @@ process(
             &err_msg);
 
     time_msg("processing pgr_depthFirstSearch", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -170,18 +155,17 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
          *   pgr_depthFirstSearch(
          *       edges_sql TEXT,
          *       root_vids ANYARRAY,
-         *       max_depth BIGINT DEFAULT 9223372036854775807,
          *       directed BOOLEAN DEFAULT true
+         *       max_depth BIGINT DEFAULT 9223372036854775807,
          *   );
          *
          **********************************************************************/
 
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
-                PG_GETARG_INT64(2),
-                PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(2),
+                PG_GETARG_INT64(3),
                 &result_tuples,
                 &result_count);
 
@@ -252,7 +236,6 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        PGR_DBG("Returning done");
         SRF_RETURN_DONE(funcctx);
     }
 }

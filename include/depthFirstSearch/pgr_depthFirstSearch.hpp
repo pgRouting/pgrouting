@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-#include <visitors/dfs_visitor_with_root.hpp>
+#include <visitors/dfs_visitor.hpp>
 #include <boost/graph/depth_first_search.hpp>
 #include <boost/graph/undirected_dfs.hpp>
 
@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 
 #include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/pgr_messages.h"
+#include "cpp_common/interruption.h"
 
 
 /** @file pgr_depthFirstSearch.hpp
@@ -50,8 +50,8 @@ namespace functions {
 
 //*************************************************************
 
-template <class G>
-class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
+template < class G >
+class Pgr_depthFirstSearch {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
@@ -66,7 +66,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
       * It does all the processing and returns the results.
       *
       * @param graph      the graph containing the edges
-      * @param roots      the starting vertices
+      * @param roots      the root vertices
       * @param max_depth  the maximum depth of traversal
       * @param directed   whether the graph is directed or undirected
       *
@@ -77,26 +77,23 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
       * @see [boost::undirected_dfs]
       * (https://www.boost.org/libs/graph/doc/undirected_dfs.html)
       */
-     std::vector<pgr_mst_rt> depthFirstSearch(
+     std::vector < pgr_mst_rt > depthFirstSearch(
              G &graph,
-             std::vector<int64_t> roots,
-             int64_t max_depth,
-             bool directed) {
-         std::vector<pgr_mst_rt> results;
+             std::vector < int64_t > roots,
+             bool directed,
+             int64_t max_depth) {
+         std::vector < pgr_mst_rt > results;
 
          for (auto root : roots) {
-             std::vector<E> visited_order;
+             std::vector < E > visited_order;
 
              if (graph.has_vertex(root)) {
                  results.push_back({root, 0, root, -1, 0.0, 0.0});
 
-                 // get the graph root vertex
                  auto v_root(graph.get_V(root));
 
-                 // perform the algorithm
-                 depthFirstSearch_single_vertex(graph, v_root, visited_order, directed);
+                 depthFirstSearch_single_vertex(graph, v_root, visited_order, directed, max_depth);
 
-                 // get the results
                  auto result = get_results(visited_order, root, max_depth, graph);
                  results.insert(results.end(), result.begin(), result.end());
              }
@@ -117,7 +114,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
       * for directed graphs and undirected graphs, respectively.
       *
       * @param graph          the graph containing the edges
-      * @param root           the starting vertex
+      * @param root           the root vertex
       * @param visited_order  vector which will contain the edges of the resulting traversal
       * @param directed       whether the graph is directed or undirected
       *
@@ -126,23 +123,31 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
      bool depthFirstSearch_single_vertex(
                  G &graph,
                  V root,
-                 std::vector<E> &visited_order,
-                 bool directed) {
-         using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
+                 std::vector < E > &visited_order,
+                 bool directed,
+                 int64_t max_depth) {
+         using dfs_visitor = visitors::Dfs_visitor < V, E, G >;
+
+         // Exterior property storage containers
+         std::vector < boost::default_color_type > colors(boost::num_vertices(graph.graph));
+         std::map < E, boost::default_color_type > edge_color;
+
+         auto i_map = boost::get(boost::vertex_index, graph.graph);
+
+         // Iterator property maps which record the color of each vertex and edge, respectively
+         auto vertex_color_map = boost::make_iterator_property_map(colors.begin(), i_map);
+         auto edge_color_map = boost::make_assoc_property_map(edge_color);
+
+         auto vis =  dfs_visitor(root, visited_order, max_depth, colors, graph);
+
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
 
          try {
              if (directed) {
-                 boost::depth_first_search(
-                     graph.graph,
-                     visitor(dfs_visitor(root, visited_order))
-                     .root_vertex(root));
+                 boost::depth_first_search(graph.graph, vis, vertex_color_map, root);
              } else {
-                 std::map<E, boost::default_color_type> edge_color;
-                 boost::undirected_dfs(
-                     graph.graph,
-                     visitor(dfs_visitor(root, visited_order))
-                     .edge_color_map(boost::make_assoc_property_map(edge_color))
-                     .root_vertex(root));
+                 boost::undirected_dfs(graph.graph, vis, vertex_color_map, edge_color_map, root);
              }
          } catch(found_goals &) {
              {}
@@ -165,22 +170,22 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
       * depth is less than the `max_depth`.
       *
       * @param visited_order  vector which contains the edges of the resulting traversal
-      * @param source         the starting vertex
+      * @param root           the root vertex
       * @param max_depth      the maximum depth of traversal
       * @param graph          the graph containing the edges
       *
       * @returns `results` vector
       */
-     template <typename T>
-     std::vector<pgr_mst_rt> get_results(
+     template < typename T >
+     std::vector < pgr_mst_rt > get_results(
              T visited_order,
-             int64_t source,
+             int64_t root,
              int64_t max_depth,
              const G &graph) {
-         std::vector<pgr_mst_rt> results;
+         std::vector < pgr_mst_rt > results;
 
-         std::vector<double> agg_cost(graph.num_vertices(), 0);
-         std::vector<int64_t> depth(graph.num_vertices(), 0);
+         std::vector < double > agg_cost(graph.num_vertices(), 0);
+         std::vector < int64_t > depth(graph.num_vertices(), 0);
 
          for (const auto edge : visited_order) {
              auto u = graph.source(edge);
@@ -191,7 +196,7 @@ class Pgr_depthFirstSearch : public pgrouting::Pgr_messages {
 
              if (max_depth >= depth[v]) {
                  results.push_back({
-                     source,
+                     root,
                      depth[v],
                      graph[v].id,
                      graph[edge].id,

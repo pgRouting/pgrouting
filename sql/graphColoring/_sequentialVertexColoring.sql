@@ -36,7 +36,7 @@ CREATE OR REPLACE FUNCTION _pgr_sequentialVertexColoring(
     edges_sql TEXT,
 
     OUT node BIGINT,
-    OUT color BIGINT)
+    OUT color_id BIGINT)
 
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'

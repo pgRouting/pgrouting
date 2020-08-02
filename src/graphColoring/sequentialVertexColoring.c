@@ -35,16 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
-/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
 
-/* for functions to get edges information */
 #include "c_common/edges_input.h"
-/* for handling array related stuffs */
 #include "c_common/arrays_input.h"
 
 #include "drivers/graphColoring/sequentialVertexColoring_driver.h"
@@ -73,21 +68,16 @@ process(
 
         pgr_vertex_color_rt **result_tuples,
         size_t *result_count) {
-    // https://www.postgresql.org/docs/current/static/spi-spi-connect.html
     pgr_SPI_connect();
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Loading the edges");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    // load the edges belonging to the graph
     pgr_get_edges(edges_sql, &edges, &total_edges);
-    PGR_DBG("Total edges in query %ld", total_edges);
 
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
@@ -102,7 +92,6 @@ process(
             &err_msg);
 
     time_msg("processing pgr_sequentialVertexColoring", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -142,13 +131,10 @@ PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
 
         /***********************************************************************
          *
-         *   pgr_sequentialVertexColoring(
-         *       edges_sql TEXT
-         *   );
+         *   pgr_sequentialVertexColoring(edges_sql TEXT);
          *
          **********************************************************************/
 
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 &result_tuples,
@@ -211,7 +197,6 @@ PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        PGR_DBG("Returning done");
         SRF_RETURN_DONE(funcctx);
     }
 }

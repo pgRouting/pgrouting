@@ -45,9 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /***********************************************************************
  *
- *   pgr_sequentialVertexColoring(
- *       edges_sql TEXT
- *   );
+ *   pgr_sequentialVertexColoring(edges_sql TEXT);
  *
  ***********************************************************************/
 
@@ -59,23 +57,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * @returns results, when results are found
  */
 
-template <class G>
-std::vector<pgr_vertex_color_rt>
-pgr_sequentialVertexColoring(
-        G &graph,
-        std::string &log) {
-    pgrouting::functions::Pgr_sequentialVertexColoring<G> fn_sequentialVertexColoring;
-    auto results = fn_sequentialVertexColoring.sequentialVertexColoring(
-            graph);
-    log += fn_sequentialVertexColoring.get_log();
+template < class G >
+std::vector < pgr_vertex_color_rt >
+pgr_sequentialVertexColoring(G &graph) {
+    pgrouting::functions::Pgr_sequentialVertexColoring < G > fn_sequentialVertexColoring;
+    auto results = fn_sequentialVertexColoring.sequentialVertexColoring(graph);
     return results;
 }
 
 /** @brief Performs exception handling and converts the results to postgres.
  *
- * It first asserts the variables, then builds the undirected graph using the
- * `data_edges` variable. Then, it passes the required variables to the
- * template function `pgr_sequentialVertexColoring` which calls the main function
+ * @pre log_msg is empty
+ * @pre notice_msg is empty
+ * @pre err_msg is empty
+ * @pre return_tuples is empty
+ * @pre return_count is 0
+ *
+ * It builds the undirected graph using the `data_edges` variable.
+ * Then, it passes the required variables to the template function
+ * `pgr_sequentialVertexColoring` which calls the main function
  * defined in the C++ Header file. It also does exception handling.
  *
  * @param data_edges     the set of edges from the SQL query
@@ -110,27 +110,17 @@ do_pgr_sequentialVertexColoring(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        std::vector<pgr_vertex_color_rt> results;
-
-        // string variable to store the log messages
-        std::string logstr;
+        std::vector < pgr_vertex_color_rt > results;
 
         graphType gType = UNDIRECTED;
         pgrouting::UndirectedGraph undigraph(gType);
 
         undigraph.insert_edges(data_edges, total_edges);
 
-        // calls the template function
-        results = pgr_sequentialVertexColoring(
-                undigraph,
-                logstr);
+        results = pgr_sequentialVertexColoring(undigraph);
 
-        log << logstr;
-
-        // the count of rows in the result
         auto count = results.size();
 
-        // returns directly in case of empty rows in the results
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
