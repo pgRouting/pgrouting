@@ -31,7 +31,7 @@ SELECT * FROM pgr_bipartite(
 SELECT * FROM pgr_bipartite(
     $$SELECT id,source,target,cost,reverse_cost FROM edge_table WHERE id IN (8, 10, 11, 12)$$
 );
- node | color 
+ node | color
 ------+-------
     5 |     0
     6 |     1
