@@ -45,20 +45,16 @@ depth.
 
 **The main Characteristics are:**
 
-- The implementation works for both directed and undirected graphs.
+- The implementation works for both **directed** and **undirected** graphs.
 - Provides the Depth First Search traversal order from a root vertex to
   a particular maximum depth level.
 - For optimization purposes, any duplicated values in the `Root vids` are
   ignored.
-- The returned values are ordered in ascending order of `start_vid`.
-- If the root vertex does not exist, an empty row is returned.
 - It does not produce the shortest path from a root vertex to a target vertex.
 - The aggregate cost of traversal is not guaranteed to be minimal.
+- If the root vertex does not exist, an empty row is returned.
+- The returned values are ordered in ascending order of `start_vid`.
 - Depth First Search Running time: :math:`O(E + V)`
-
-**Note**: The cost of an edge is not used for traversal. If multiple edges
-are adjacent to a vertex, then this algorithm traverses that edge which
-comes first in the ``Edges SQL``.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -120,7 +116,7 @@ Multiple vertices
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From root vertices :math:`\{11, 12\}` on a **directed** graph
+:Example: From root vertices :math:`\{11, 2\}` on an **undirected** graph
           with :math:`depth <= 2`
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
