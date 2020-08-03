@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(4);
+SELECT plan(5);
 
 
 
@@ -37,6 +37,15 @@ FROM pgr_isPlanar('q3');
 
 SELECT set_eq('vertexNotPresent4',$$VALUES('f'::bool) $$, '4: Vertex not present in graph');
 
+-- 1 vertex test
+
+PREPARE q5 AS
+SELECT id, source, 6 AS target, cost, reverse_cost
+FROM edge_table
+WHERE id = 9;
+
+-- Graph with only vertex 9
+SELECT set_eq('q5', $$VALUES (9, 6, 6, 1, 1)$$, 'q5: Graph with only vertex 6');
 
 SELECT * FROM finish();
 ROLLBACK;
