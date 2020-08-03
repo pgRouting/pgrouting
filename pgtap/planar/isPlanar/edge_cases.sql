@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(3);
+SELECT plan(4);
 
 
 
@@ -31,7 +31,11 @@ FROM edge_table WHERE source = 50;
 
 SELECT is_empty('q3','3: Vertex 50 does not exist in sample data');
 
+PREPARE vertexNotPresent4 AS
+SELECT *
+FROM pgr_isPlanar('q3');
 
+SELECT set_eq('vertexNotPresent4',$$VALUES('f'::bool) $$, '4: Vertex not present in graph');
 
 
 SELECT * FROM finish();
