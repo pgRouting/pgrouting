@@ -47,7 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 //using namespace boost;
 //using namespace  std;
-
+/********TODO week 10*********/
 namespace pgrouting {
     namespace functions {
 
@@ -81,15 +81,14 @@ namespace pgrouting {
                       } catch (...) {
                           throw;
                       }
-                
 
                 V_i v, vend;
                 for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
                     int64_t vid = graph[*v].id;
                     results.push_back ({vid, (domTreePredVector[*v]!=-1 ? (domTreePredVector[*v]+1) : 0) });
-                    
+
+                    log<<graph[*v].id<<" "<<domTreePredVector[*v]<<" \n";       
                 }
-            
 
                  return results;
             }
