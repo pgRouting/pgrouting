@@ -1,5 +1,0 @@
-<map id="pgrouting::contraction::Pgr_deadend::is_dead_end" name="pgrouting::contraction::Pgr_deadend::is_dead_end">
-<area shape="rect" id="node2" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#a1932c30148b48140d1a92847bee56b32" title="pgrouting::contraction\l::Pgr_deadend::add_if\l_dead_end" alt="" coords="273,5,422,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#aed46c6193e522fa638e46d87d0174ebb" title="pgrouting::contraction\l::Pgr_deadend::calculateVertices" alt="" coords="240,86,455,127"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ac53c67c279159a0bc491513d3de4a20b" title="pgrouting::contraction\l::Pgr_deadend::doContraction" alt="" coords="250,151,445,193"/>
-</map>

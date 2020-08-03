@@ -1,8 +1,0 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types/pickDeliver/pickDeliveryOrders_t.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/c_types/pickDeliver/pickDeliveryOrders_t.h">
-<area shape="rect" id="node2" href="$orders__input_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/c_common/orders\l_input.h" alt="" coords="5,124,180,195"/>
-<area shape="rect" id="node3" href="$pickDeliver__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/pickDeliver\l/pickDeliver_driver.h" alt="" coords="205,124,383,195"/>
-<area shape="rect" id="node4" href="$pickDeliverEuclidean__driver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/drivers/pickDeliver\l/pickDeliverEuclidean_driver.h" alt="" coords="408,124,607,195"/>
-<area shape="rect" id="node5" href="$pd__orders_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pd_orders.h" alt="" coords="631,131,792,187"/>
-<area shape="rect" id="node6" href="$pgr__pickDeliver_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/pgr_pickDeliver.h" alt="" coords="673,243,867,299"/>
-<area shape="rect" id="node7" href="$tw__node_8h.html" title="/home/vicky/pgrouting\l/pgrouting/pgrouting\l/include/vrp/tw_node.h" alt="" coords="868,131,1021,187"/>
-</map>

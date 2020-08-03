@@ -1,6 +1,0 @@
-
-digraph G { 
-    1 -> 2 [label="id = 1"];
-    2 [color = lightblue,style=filled];
-}
-

@@ -1,9 +1,0 @@
-digraph "get_edges_flow"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node121 [label="get_edges_flow",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node121 -> Node122 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node122 [label="pgr_get_flow_edges",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8h.html#ac7adfa64fe69426a12eba52bcec214ca",tooltip="read edges for flow "];
-}

@@ -1,9 +1,0 @@
-digraph "pgrouting::bidirectional::Pgr_bdDijkstra::Pgr_bdDijkstra"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node0 [label="pgrouting::bidirectional\l::Pgr_bdDijkstra::Pgr_bdDijkstra",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="pgrouting::bidirectional\l::Pgr_bdDijkstra::~Pgr\l_bdDijkstra",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html#aaf1b241885c2dc3e2c0563cfc586fd24"];
-}

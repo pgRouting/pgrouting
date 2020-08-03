@@ -1,6 +1,0 @@
-<map id="pgrouting::contraction::Pgr_linear::get_next_id" name="pgrouting::contraction::Pgr_linear::get_next_id">
-<area shape="rect" id="node2" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#acdf297158ead28ab5daddf675435ae84" title="pgrouting::contraction\l::Pgr_linear::add_edge_pair" alt="" coords="216,5,396,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a153f7422b69c808afaded724e251aeb6" title="pgrouting::contraction\l::Pgr_linear::add_if_linear" alt="" coords="221,71,391,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a8e40b3cf3839a6a3ef50cc2f7288ea99" title="add edges(shortuct) to the graph during contraction " alt="" coords="221,136,391,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a593081fe63e6d9e62a7368ae6ed0c1d1" title="pgrouting::contraction\l::Pgr_linear::is_linear" alt="" coords="233,201,379,243"/>
-</map>

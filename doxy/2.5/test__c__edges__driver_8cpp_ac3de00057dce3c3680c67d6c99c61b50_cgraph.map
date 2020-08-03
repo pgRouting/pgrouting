@@ -1,8 +1,0 @@
-<map id="do_pgr_test_c_edges" name="do_pgr_test_c_edges">
-<area shape="rect" id="node2" href="$classpgrouting_1_1CH__edge.html#a2239815ed827bcd3d70f1fba769bbf11" title="pgrouting::CH_edge\l::add_contracted_vertex" alt="" coords="208,5,371,47"/>
-<area shape="rect" id="node3" href="$namespacepgrouting.html#a7f6c592f35e628f82429127580ed29fb" title="pgrouting::extract\l_vertices" alt="" coords="228,71,351,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab7723cc4953bdf4319e1201d3eb921bd" title="get the vertex descriptor of the vertex " alt="" coords="218,136,361,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25" title="Inserts count edges of type T into the graph. " alt="" coords="200,201,379,243"/>
-<area shape="rect" id="node6" href="$dijkstra__driver_8cpp.html#afeb05fe552d2db0ce4bcfd0501a38efa" title="pgr_dijkstra" alt="" coords="245,267,334,294"/>
-<area shape="rect" id="node7" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="213,319,366,360"/>
-</map>

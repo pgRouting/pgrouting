@@ -1,9 +1,0 @@
-<map id="do_pgr_pickDeliverEuclidean" name="do_pgr_pickDeliverEuclidean">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__messages.html#a7f6fd9736d46b81a91df0c465d363547" title="get_error " alt="" coords="247,5,418,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Pgr__messages.html#ad58fe923de5b229f4630b857cc34359b" title="get_log " alt="" coords="247,71,418,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a45a23137934d700ac2f6df2afbc2b717" title="pgrouting::vrp::Pgr\l_pickDeliver::get_postgres\l_result" alt="" coords="244,137,421,193"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="469,242,544,269"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="297,267,369,294"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a92a46ffb84ddb2f728d6b500788f505c" title="pgrouting::vrp::Pgr\l_pickDeliver::solve" alt="" coords="266,319,399,360"/>
-<area shape="rect" id="node8" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="256,384,409,425"/>
-</map>

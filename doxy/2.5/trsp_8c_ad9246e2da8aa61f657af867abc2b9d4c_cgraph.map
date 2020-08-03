@@ -1,5 +1,0 @@
-<map id="turn_restrict_shortest_path_vertex" name="turn_restrict_shortest_path_vertex">
-<area shape="rect" id="node2" href="$trsp_8c.html#af22a27dfd9329f65ede022007d5d2413" title="compute_trsp" alt="" coords="392,13,493,39"/>
-<area shape="rect" id="node3" href="$trsp_8c.html#a6332a572255f484f4a57bc0ecc45463f" title="PG_FUNCTION_INFO_V1" alt="" coords="541,77,721,103"/>
-<area shape="rect" id="node4" href="$trsp_8c.html#a938bf6c15c229413b975362c1bc510ce" title="turn_restrict_shortest\l_path_edge" alt="" coords="199,40,344,81"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Vehicle_pickDeliver::orders" name="pgrouting::vrp::Vehicle_pickDeliver::orders">
-<area shape="rect" id="node2" href="$namespacepgrouting_1_1vrp.html#a0411d7092b8f18ee599a8ed55bae2d87" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="218,5,390,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a0c933b7eb549491fc0a6e40a599e3ad8" title="pgrouting::vrp::Vehicle\l_pickDeliver::set_compatibles" alt="" coords="205,57,403,98"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Optimize.html#a39173d526079577d40c59371bcfcc680" title="pgrouting::vrp::Optimize\l::swap_worse" alt="" coords="223,122,385,163"/>
-</map>

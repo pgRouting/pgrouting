@@ -1,9 +1,0 @@
-<map id="Path::push_back" name="Path::push_back">
-<area shape="rect" id="node2" href="$classPath.html#a81dda9b296131350ee5be51a13e095b7" title="Path: 2 &#45;&gt; 9 seq node edge cost agg_cost 0 2 4 1 0 1 5 8 1 1 2 6 9 1 2 3 9 &#45;1 0 3 Path: 9 &#45;&gt; 3 seq no..." alt="" coords="219,5,317,32"/>
-<area shape="rect" id="node3" href="$classPgr__dijkstra.html#ac41eff6be348e54c06d497edbf2ed62a" title="Pgr_dijkstra::drivingDistance\l_no_equicost" alt="" coords="173,57,363,98"/>
-<area shape="rect" id="node4" href="$pgr__withPoints_8hpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f" title="eliminate_details" alt="" coords="421,136,540,163"/>
-<area shape="rect" id="node5" href="$pgr__withPoints_8hpp.html#a78454780d695ee33ad171a220e3e9f38" title="eliminate_details_dd" alt="" coords="411,199,551,225"/>
-<area shape="rect" id="node6" href="$classPath.html#a75bd5ccf60152fefaff1df56be09946b" title="Path::empty" alt="" coords="221,173,315,200"/>
-<area shape="rect" id="node7" href="$classPath.html#a6e915a3786eccd377d84a284b3152e2b" title="Path::getSubpath" alt="" coords="207,275,329,301"/>
-<area shape="rect" id="node8" href="$classPath.html#aa756b9e7d3f6da13211097788882378a" title="Path::Path" alt="" coords="226,325,310,352"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="pgrouting::vrp::Solution::cost" name="pgrouting::vrp::Solution::cost">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Solution.html#adc126f5e5e435301696b12ec9afa638f" title="pgrouting::vrp::Solution\l::cost_str" alt="" coords="209,5,365,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Solution.html#af57a4f8691ed496abe7e024e90c74492" title="pgrouting::vrp::Solution::tau" alt="" coords="413,42,596,69"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Solution.html#aac93112e46694cbf1eddc560ab5a49b5" title="pgrouting::vrp::Solution\l::fleet_size" alt="" coords="209,123,365,164"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Solution.html#a9e2dd7a7a1252e40ace284d9847bb281" title="pgrouting::vrp::Solution\l::operator\&lt;" alt="" coords="209,188,365,229"/>
-</map>

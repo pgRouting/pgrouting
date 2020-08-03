@@ -1,9 +1,0 @@
-digraph "pgr_get_edges_no_id"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node40 [label="pgr_get_edges_no_id",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node40 -> Node41 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node41 [label="get_edges_5_columns",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8c.html#ab0db65aa6de02562c019ab29c2d46db7"];
-}

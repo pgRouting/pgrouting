@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::PD_Orders::build_orders" name="pgrouting::vrp::PD_Orders::build_orders">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1PD__Orders.html#a19829d552c97d5e284c3a17740a01c3e" title="pgrouting::vrp::PD\l_Orders::add_order" alt="" coords="211,5,344,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a1df703d856688be795d3f2d05a690277" title="pgrouting::tsp::Dmatrix\l::empty" alt="" coords="200,71,355,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a512937fe4b72890a7834abb0bd7e5f45" title="pgrouting::vrp::Pgr\l_pickDeliver::node_id" alt="" coords="204,136,351,177"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="GraphDefinition::my_dijkstra" name="GraphDefinition::my_dijkstra">
-<area shape="rect" id="node2" href="$classGraphDefinition.html#aae25250b66a74072f49b3d9dd5ff32f4" title="GraphDefinition::construct_path" alt="" coords="192,5,399,32"/>
-<area shape="rect" id="node3" href="$classGraphDefinition.html#af4332db6712526c0107fccec9b0bfe28" title="GraphDefinition::deleteall" alt="" coords="211,56,379,83"/>
-<area shape="rect" id="node4" href="$classGraphDefinition.html#afe8e91e384c9d2015ac1af93f542a473" title="GraphDefinition::explore" alt="" coords="214,107,377,133"/>
-</map>

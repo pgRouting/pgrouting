@@ -1,6 +1,0 @@
-<map id="main" name="main">
-<area shape="rect" id="node2" href="$pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3" title="exit_nicely" alt="" coords="141,5,225,32"/>
-<area shape="rect" id="node3" href="$performance_2dijkstra_2pgRouting_8cpp.html#adeaea4960c686af22089e71c07ca0e72" title="get_options_description" alt="" coords="104,56,263,83"/>
-<area shape="rect" id="node4" href="$performance_2dijkstra_2pgRouting_8cpp.html#a3ec9be4cb3f2602b26273161cc5158d1" title="process" alt="" coords="149,107,217,133"/>
-<area shape="rect" id="node5" href="$performance_2dijkstra_2pgRouting_8cpp.html#a372eb464c9ce278906217d91aaf1cfaf" title="process_command_line" alt="" coords="104,157,263,184"/>
-</map>

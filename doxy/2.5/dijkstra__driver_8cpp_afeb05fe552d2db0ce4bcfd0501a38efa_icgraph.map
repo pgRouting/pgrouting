@@ -1,7 +1,0 @@
-<map id="pgr_dijkstra" name="pgr_dijkstra">
-<area shape="rect" id="node2" href="$dijkstra__driver_8h.html#af572deb404f5e6d9e905c248294eac3b" title="do_pgr_many_to_many\l_dijkstra" alt="" coords="143,5,300,47"/>
-<area shape="rect" id="node3" href="$test__c__edges__driver_8h.html#ac49999b29b6bafbb8177d54fbdca83db" title="do_pgr_test_c_edges" alt="" coords="148,71,295,98"/>
-<area shape="rect" id="node4" href="$testXYedges__driver_8h.html#a04787bf5bd11c62abdd682b0d615b13f" title="do_pgr_testXYedges" alt="" coords="150,122,293,149"/>
-<area shape="rect" id="node5" href="$dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9" title="pgr_dijkstraViaVertex" alt="" coords="148,173,295,199"/>
-<area shape="rect" id="node6" href="$dijkstra_8hpp.html#aa8fd68ac88d3fe6d7f7a3792e154f5d8" title="process_dijkstra" alt="" coords="163,223,280,250"/>
-</map>

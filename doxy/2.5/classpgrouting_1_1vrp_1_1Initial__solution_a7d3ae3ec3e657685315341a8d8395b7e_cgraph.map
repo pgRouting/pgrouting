@@ -1,9 +1,0 @@
-<map id="pgrouting::vrp::Initial_solution::one_truck_all_orders" name="pgrouting::vrp::Initial_solution::one_truck_all_orders">
-<area shape="rect" id="node2" href="$classIdentifiers.html#a86a7dfb403d49326e8cbf8b6450dfe3f" title="Identifiers::begin" alt="" coords="229,5,347,32"/>
-<area shape="rect" id="node3" href="$classIdentifiers.html#a6d1a35df74df78a52e938c39dc64c640" title="Identifiers::empty" alt="" coords="227,56,349,83"/>
-<area shape="rect" id="node4" href="$classIdentifiers.html#affc6862074203a87d8e80223b555d86b" title="Identifiers::front" alt="" coords="412,136,525,163"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="219,158,357,199"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="212,223,364,265"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#ac2b7f0f11fe094e0a6964ce847542811" title="pgrouting::vrp::Initial\l_solution::invariant" alt="" coords="218,289,358,330"/>
-<area shape="rect" id="node8" href="$classIdentifiers.html#a6bfd470840528175732ced70c1b4399c" title="Identifiers::pop_front" alt="" coords="217,355,359,381"/>
-</map>

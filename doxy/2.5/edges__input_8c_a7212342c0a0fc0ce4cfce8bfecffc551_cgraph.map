@@ -1,7 +1,0 @@
-<map id="get_edges_9_columns" name="get_edges_9_columns">
-<area shape="rect" id="node2" href="$edges__input_8c.html#a9efbb1cb5cbb9cb8758bc2b92112352d" title="fetch_edge_with_xy" alt="" coords="213,5,351,32"/>
-<area shape="rect" id="node3" href="$get__check__data_8c.html#ae6967f852e7bc95d5d5131b06131de46" title="pgr_fetch_column_info" alt="" coords="205,56,359,83"/>
-<area shape="rect" id="node4" href="$postgres__connection_8c.html#a85cec439f5e567ec736a2a77a0533d9d" title="pgr_SPI_cursor_open" alt="" coords="209,107,355,133"/>
-<area shape="rect" id="node5" href="$postgres__connection_8c.html#aeb63bcfc2ca89c02b30317112bae5f12" title="pgr_SPI_prepare" alt="" coords="223,157,341,184"/>
-<area shape="rect" id="node6" href="$time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe" title="time_msg" alt="" coords="243,208,321,235"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/src/allpairs/src/floydWarshall.c" name="/home/vicky/pgrouting/pgrouting/pgrouting/src/allpairs/src/floydWarshall.c">
-<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="5,199,227,225"/>
-<area shape="rect" id="node3" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="91,117,269,143"/>
-<area shape="rect" id="node4" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="294,117,453,143"/>
-<area shape="rect" id="node5" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="477,117,648,143"/>
-<area shape="rect" id="node6" href="$floydWarshall__driver_8h.html" title="drivers/allpairs/floydWarshall\l_driver.h" alt="" coords="672,109,861,151"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Tw_node::is_dump" name="pgrouting::vrp::Tw_node::is_dump">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="180,5,332,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="193,71,319,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="181,136,331,177"/>
-</map>

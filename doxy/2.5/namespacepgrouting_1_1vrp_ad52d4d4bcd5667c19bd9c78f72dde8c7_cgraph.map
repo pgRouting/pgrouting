@@ -1,7 +1,0 @@
-<map id="pgrouting::vrp::operator&lt;&lt;" name="pgrouting::vrp::operator&lt;&lt;">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html#a147f029e589a2dd36b1edd638d7ac833" title="pgrouting::Identifier::id" alt="" coords="229,5,380,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447" title="pgrouting::Identifier::idx" alt="" coords="225,56,384,83"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a29bf7e33dfb519d7abb8648c2d631d30" title="Invariant The path must: " alt="" coords="432,129,584,170"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aba2e41f35832f29bb570c070ee6b8fab" title="@ { " alt="" coords="229,158,381,199"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle.html#adc318f75bf9a66664c2d2cefa4939c8d" title="pgrouting::vrp::Vehicle\l::speed" alt="" coords="229,223,381,265"/>
-</map>

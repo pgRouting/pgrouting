@@ -1,9 +1,0 @@
-<map id="do_pgr_contractGraph" name="do_pgr_contractGraph">
-<area shape="rect" id="node2" href="$contractGraph__driver_8cpp.html#a34fd3ca93dfcaff0cd2ce06f773c1e44" title="get_postgres_result" alt="" coords="213,5,349,32"/>
-<area shape="rect" id="node3" href="$classIdentifiers.html#afa735cce6596944fc64f95f4995ccc8e" title="Identifiers::size" alt="" coords="405,31,516,57"/>
-<area shape="rect" id="node4" href="$contractGraph__driver_8cpp.html#a5760443ab98e9225e5d3c544e0bb6d38" title="is_valid_contraction" alt="" coords="212,107,349,133"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="246,157,315,184"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="245,208,317,235"/>
-<area shape="rect" id="node7" href="$contractGraph__driver_8cpp.html#a1dba83e4fb58774c95f9cc353a9c0305" title="process_contraction" alt="" coords="211,259,350,285"/>
-<area shape="rect" id="node8" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="204,310,357,351"/>
-</map>

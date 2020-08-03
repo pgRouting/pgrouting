@@ -1,8 +1,0 @@
-<map id="pgrouting::tsp::Dmatrix::get_index" name="pgrouting::tsp::Dmatrix::get_index">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Dnode.html#a84b2f1f5665898cc60e4d45a36259fb4" title="pgrouting::vrp::Dnode\l::distance" alt="" coords="437,10,584,52"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a785a95db8b70df2c05370cf8bb121ea5" title="pgrouting::tsp::Dmatrix\l::distance" alt="" coords="221,40,376,81"/>
-<area shape="rect" id="node4" href="$newTSP__driver_8h.html#af0938bea88cf9303e4085f0b6cb2ec29" title="do_pgr_tsp" alt="" coords="467,106,554,132"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#ab22e286c676d19bcb04411f3484514aa" title="pgrouting::tsp::Dmatrix\l::Dmatrix" alt="" coords="221,157,376,198"/>
-<area shape="rect" id="node6" href="$namespacepgrouting_1_1tsp.html#a2088d8e44f8425c3414e8f73560856e5" title="pgrouting::tsp::operator\&lt;\&lt;" alt="" coords="213,223,385,250"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a3d6d1e3ab8f331daa6208385d60eb5e0" title="sets a special value for the distance(i,j) " alt="" coords="208,274,389,300"/>
-</map>

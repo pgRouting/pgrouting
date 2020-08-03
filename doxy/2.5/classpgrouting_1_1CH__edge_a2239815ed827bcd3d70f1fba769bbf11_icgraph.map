@@ -1,5 +1,0 @@
-<map id="pgrouting::CH_edge::add_contracted_vertex" name="pgrouting::CH_edge::add_contracted_vertex">
-<area shape="rect" id="node2" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#a8e40b3cf3839a6a3ef50cc2f7288ea99" title="add edges(shortuct) to the graph during contraction " alt="" coords="216,5,387,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1CH__edge.html#a192be16961e7e67a67c96c7f9662e584" title="pgrouting::CH_edge\l::CH_edge" alt="" coords="232,71,371,112"/>
-<area shape="rect" id="node4" href="$test__c__edges__driver_8h.html#ac49999b29b6bafbb8177d54fbdca83db" title="do_pgr_test_c_edges" alt="" coords="228,137,375,163"/>
-</map>

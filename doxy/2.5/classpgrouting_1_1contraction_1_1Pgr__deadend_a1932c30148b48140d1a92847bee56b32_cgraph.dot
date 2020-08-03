@@ -1,9 +1,0 @@
-digraph "pgrouting::contraction::Pgr_deadend::add_if_dead_end"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node0 [label="pgrouting::contraction\l::Pgr_deadend::add_if\l_dead_end",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="pgrouting::contraction\l::Pgr_deadend::is_dead_end",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ad86d555801d7bcdc29209f75dae1d83f",tooltip="true when v is a dead end "];
-}

@@ -1,8 +1,0 @@
-<map id="/home/vicky/pgrouting/pgrouting/pgrouting/include/vrp/tw_node.h" name="/home/vicky/pgrouting/pgrouting/pgrouting/include/vrp/tw_node.h">
-<area shape="rect" id="node3" href="$pickDeliveryOrders__t_8h.html" title="c_types/pickDeliver\l/pickDeliveryOrders_t.h" alt="" coords="27,109,186,151"/>
-<area shape="rect" id="node4" href="$vehicle__t_8h.html" title="c_types/pickDeliver\l/vehicle_t.h" alt="" coords="210,109,347,151"/>
-<area shape="rect" id="node5" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="372,117,548,143"/>
-<area shape="rect" id="node6" href="$identifier_8h.html" title="cpp_common/identifier.h" alt="" coords="572,117,736,143"/>
-<area shape="rect" id="node7" href="$pd__problem_8h.html" title="vrp/pd_problem.h" alt="" coords="780,199,902,225"/>
-<area shape="rect" id="node8" href="$node_8h.html" title="vrp/node.h" alt="" coords="761,117,844,143"/>
-</map>

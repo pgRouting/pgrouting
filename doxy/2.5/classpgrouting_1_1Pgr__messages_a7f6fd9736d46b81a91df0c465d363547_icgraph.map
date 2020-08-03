@@ -1,8 +1,0 @@
-<map id="pgrouting::Pgr_messages::get_error" name="pgrouting::Pgr_messages::get_error">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Fleet.html#a84505248f08d5fee3859ebc953a3952e" title="build the fleet " alt="" coords="250,5,389,47"/>
-<area shape="rect" id="node3" href="$pickDeliver__driver_8h.html#a06ef15d03d851e390ca5c6572fc92091" title="do_pgr_pickDeliver" alt="" coords="253,71,386,98"/>
-<area shape="rect" id="node4" href="$pickDeliverEuclidean__driver_8h.html#a53635cc50e8e7d8107be4bbee505b3f7" title="do_pgr_pickDeliverEuclidean" alt="" coords="224,122,415,149"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Fleet.html#a7e6db8641aa5268705f7c1e77ad6afff" title="pgrouting::vrp::Fleet\l::is_fleet_ok" alt="" coords="250,173,389,215"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#adb8cc9394dc91b88dee7cb5010c57a4e" title="Constructor for the matrix version. " alt="" coords="463,203,657,244"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1Pgr__messages.html#aeef4a61000c045a6fe05a39abf673393" title="pgrouting::Pgr_messages\l::operator=" alt="" coords="234,291,405,332"/>
-</map>

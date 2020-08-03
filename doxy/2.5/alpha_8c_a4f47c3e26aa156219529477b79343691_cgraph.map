@@ -1,8 +1,0 @@
-<map id="compute_alpha_shape" name="compute_alpha_shape">
-<area shape="rect" id="node2" href="$alpha__driver_8cpp.html#a64fca5dabc4ad9db224e524a154bbff1" title="alpha_shape" alt="" coords="248,5,343,32"/>
-<area shape="rect" id="node3" href="$alpha_8c.html#a7539769eb3b91d75704c2d9b775129c3" title="alphashape" alt="" coords="251,56,339,83"/>
-<area shape="rect" id="node4" href="$alpha_8c.html#ad02862c5f625c4a429bbfe0596c93c76" title="fetch_vertex" alt="" coords="248,107,343,133"/>
-<area shape="rect" id="node5" href="$alpha_8c.html#aae005778b70e07968ac950c42a4ff58e" title="fetch_vertices_columns" alt="" coords="215,157,375,184"/>
-<area shape="rect" id="node6" href="$alpha_8c.html#adbf69d62298e4d47f81c749cebaad544" title="finish" alt="" coords="269,208,322,235"/>
-<area shape="rect" id="node7" href="$alpha_8c.html#aa06bd1facff6ef040f510e2eb7c69257" title="PG_FUNCTION_INFO_V1" alt="" coords="205,259,385,285"/>
-</map>

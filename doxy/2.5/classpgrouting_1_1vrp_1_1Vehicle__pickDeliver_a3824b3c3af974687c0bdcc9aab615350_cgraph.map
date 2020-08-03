@@ -1,8 +1,0 @@
-<map id="pgrouting::vrp::Vehicle_pickDeliver::erase" name="pgrouting::vrp::Vehicle_pickDeliver::erase">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Order.html#a909823e836bd8fb257eede3dc13ba61e" title="The delivery node identifier. " alt="" coords="214,5,355,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#ad1920dd6aed04b9381b9b2ec78dddc47" title="Erase node.id() " alt="" coords="209,188,361,229"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447" title="pgrouting::Identifier::idx" alt="" coords="412,130,571,157"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a29bf7e33dfb519d7abb8648c2d631d30" title="Invariant The path must: " alt="" coords="415,217,567,259"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#adb870b4b7089194de06de8471eba0767" title="pgrouting::vrp::Vehicle\l_pickDeliver::has_order" alt="" coords="205,123,364,164"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Order.html#aabef0d026576976f0e0eddd40171645b" title="The delivery node identifier. " alt="" coords="214,305,355,347"/>
-</map>

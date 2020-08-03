@@ -1,9 +1,0 @@
-digraph "pgrouting::graph::Pgr_base_graph::target"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node161 [label="pgrouting::graph::Pgr\l_base_graph::target",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node161 -> Node162 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node162 [label="pgrouting::graph::Pgr\l_lineGraph::create_edges",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html#ab9a64f36e52212504aceaf3fa50dc66a"];
-}

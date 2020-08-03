@@ -1,7 +1,0 @@
-<map id="Pgr_ksp::doNextCycle" name="Pgr_ksp::doNextCycle">
-<area shape="rect" id="node2" href="$classPath.html#a9cb45e3a413a03f1c4224b840af1fe83" title="Path::appendPath" alt="" coords="229,5,356,32"/>
-<area shape="rect" id="node3" href="$classPgr__dijkstra.html#a78d6855cf47cb741d8baff32e7cdfe54" title="Dijkstra 1 to 1. " alt="" coords="222,56,363,83"/>
-<area shape="rect" id="node4" href="$classPath.html#a6e915a3786eccd377d84a284b3152e2b" title="Path::getSubpath" alt="" coords="231,107,354,133"/>
-<area shape="rect" id="node5" href="$classPgr__ksp.html#abc9f355a52aee675dfe5df77fd6bae71" title="stores in subPath the first i elements of path " alt="" coords="208,157,377,184"/>
-<area shape="rect" id="node6" href="$classPath.html#a3a0311765e131697250e7b45964c0510" title="Path::size" alt="" coords="252,208,333,235"/>
-</map>

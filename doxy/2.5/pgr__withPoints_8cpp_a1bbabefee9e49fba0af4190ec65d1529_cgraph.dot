@@ -1,8 +1,0 @@
-digraph "create_new_edges"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node28 [label="create_new_edges",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node28 -> Node28 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-}

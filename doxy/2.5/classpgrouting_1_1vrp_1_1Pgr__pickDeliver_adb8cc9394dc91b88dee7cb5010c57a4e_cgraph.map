@@ -1,6 +1,0 @@
-<map id="pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver" name="pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver">
-<area shape="rect" id="node2" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a1df703d856688be795d3f2d05a690277" title="pgrouting::tsp::Dmatrix\l::empty" alt="" coords="249,5,403,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Pgr__messages.html#a7f6fd9736d46b81a91df0c465d363547" title="get_error " alt="" coords="452,93,623,135"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Fleet.html#a7e6db8641aa5268705f7c1e77ad6afff" title="pgrouting::vrp::Fleet\l::is_fleet_ok" alt="" coords="257,123,395,164"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a20c4e77a2c753ff51d9802b9abb1e9c1" title="pgrouting::vrp::Pgr\l_pickDeliver::nodesOK" alt="" coords="248,188,404,229"/>
-</map>

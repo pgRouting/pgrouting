@@ -1,6 +1,0 @@
-<map id="Pgr_dijkstra::dijkstra" name="Pgr_dijkstra::dijkstra">
-<area shape="rect" id="node2" href="$classPgr__dijkstra.html#a2f5d0a4536457dd08f4d541ea5e5ffca" title="Pgr_dijkstra::clear" alt="" coords="209,5,336,32"/>
-<area shape="rect" id="node3" href="$classPgr__dijkstra.html#a86b8c09f9cbbf58f2e92475de14766d8" title="Call to Dijkstra 1 source to many targets. " alt="" coords="202,57,343,98"/>
-<area shape="rect" id="node4" href="$classPath.html#ad7eff4c127cba19f2052398089ac3b42" title="Path::end_id" alt="" coords="225,123,320,149"/>
-<area shape="rect" id="node5" href="$classPgr__dijkstra.html#a941f0239c68a6b07ee6f2ca69b66b82e" title="Pgr_dijkstra::get_paths" alt="" coords="195,173,351,200"/>
-</map>

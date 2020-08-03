@@ -1,7 +1,0 @@
-<map id="pgr_floydWarshall" name="pgr_floydWarshall">
-<area shape="rect" id="node2" href="$classPgr__allpairs.html#a516d778ba8b6fbb66a6b7138293b9773" title="Pgr_allpairs::count_rows" alt="" coords="584,106,749,133"/>
-<area shape="rect" id="node3" href="$classPgr__allpairs.html#a318e417ba9ba05931990de83d7ee6176" title="Pgr_allpairs::floydWarshall" alt="" coords="180,81,357,107"/>
-<area shape="rect" id="node4" href="$classPgr__allpairs.html#af7ff7c1ce862ce6671208dbafcd78aed" title="Pgr_allpairs::make\l_matrix" alt="" coords="405,88,536,129"/>
-<area shape="rect" id="node5" href="$classPgr__allpairs.html#afe79da2fbe6d7c047790ad0fb2070674" title="Pgr_allpairs::make\l_result" alt="" coords="405,23,536,64"/>
-<area shape="rect" id="node6" href="$classPgr__allpairs.html#abbf7d46c07a89b9568dd266b97cc4781" title="Pgr_allpairs::johnson" alt="" coords="197,30,340,57"/>
-</map>

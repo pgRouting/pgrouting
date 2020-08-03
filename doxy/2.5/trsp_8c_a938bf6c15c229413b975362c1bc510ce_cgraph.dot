@@ -1,9 +1,0 @@
-digraph "turn_restrict_shortest_path_edge"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node51 [label="turn_restrict_shortest\l_path_edge",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node51 -> Node52 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node52 [label="compute_trsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$trsp_8c.html#af22a27dfd9329f65ede022007d5d2413"];
-}

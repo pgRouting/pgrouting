@@ -1,7 +1,0 @@
-<map id="pgrouting::vrp::operator&lt;&lt;" name="pgrouting::vrp::operator&lt;&lt;">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Order.html#a909823e836bd8fb257eede3dc13ba61e" title="The delivery node identifier. " alt="" coords="228,5,369,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447" title="pgrouting::Identifier::idx" alt="" coords="420,159,579,186"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Order.html#aabef0d026576976f0e0eddd40171645b" title="The delivery node identifier. " alt="" coords="228,123,369,164"/>
-<area shape="rect" id="node5" href="$classIdentifiers.html#afa735cce6596944fc64f95f4995ccc8e" title="Identifiers::size" alt="" coords="243,189,354,215"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a7e5b1bdfeb746da922a2863bfe7ae718" title="time = distance / speed. " alt="" coords="225,240,372,281"/>
-</map>

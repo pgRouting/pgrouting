@@ -1,9 +1,0 @@
-digraph "pgrouting::graph::Pgr_componentsGraph::graph_add_edge"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node26 [label="pgrouting::graph::Pgr\l_componentsGraph::graph\l_add_edge",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node26 -> Node27 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node27 [label="pgrouting::graph::Pgr\l_base_graph::get_V",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab7723cc4953bdf4319e1201d3eb921bd",tooltip="get the vertex descriptor of the vertex "];
-}
