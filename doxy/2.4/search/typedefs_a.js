@@ -1,7 +1,0 @@
-var searchData=
-[
-  ['li',['LI',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab3b24225e6812641d81bfeb65dbbd453',1,'pgrouting::graph::Pgr_base_graph']]],
-  ['long2longmap',['Long2LongMap',['../src_2BiDirAStar_8h.html#a5ec4e27c864b3508d5f3b40b0a2e91ca',1,'Long2LongMap():&#160;BiDirAStar.h'],['../tester_2BiDirAStar_8h.html#a8b3461bd01ca3081dab8246818d5dc04',1,'Long2LongMap():&#160;BiDirAStar.h'],['../GraphDefinition_8h.html#a8b3461bd01ca3081dab8246818d5dc04',1,'Long2LongMap():&#160;GraphDefinition.h']]],
-  ['long2longvectormap',['Long2LongVectorMap',['../src_2BiDirAStar_8h.html#a19aec644c14a4421505ced59296213f9',1,'Long2LongVectorMap():&#160;BiDirAStar.h'],['../tester_2BiDirAStar_8h.html#ae9033d9b3008f9595da6c865fa7fa86a',1,'Long2LongVectorMap():&#160;BiDirAStar.h'],['../GraphDefinition_8h.html#ae9033d9b3008f9595da6c865fa7fa86a',1,'Long2LongVectorMap():&#160;GraphDefinition.h']]],
-  ['longvector',['LongVector',['../src_2BiDirAStar_8h.html#a4f350bfae149eb77d2221cf1531dbf85',1,'LongVector():&#160;BiDirAStar.h'],['../tester_2BiDirAStar_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5',1,'LongVector():&#160;BiDirAStar.h'],['../bd__astar_2tester_2utils_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5',1,'LongVector():&#160;utils.h'],['../GraphDefinition_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5',1,'LongVector():&#160;GraphDefinition.h'],['../trsp_2src_2utils_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5',1,'LongVector():&#160;utils.h']]]
-];
