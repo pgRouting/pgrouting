@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(10);
+SELECT plan(12);
 
 
 
@@ -20,7 +20,7 @@ PREPARE isPlanar1 AS
 SELECT *
 FROM pgr_isPlanar('q1');
 
-SELECT set_eq('isPlanar1',$$VALUES('f'::bool) $$, '2: Graph with 0 edge and 0 vertex -> Empty row is returned');
+SELECT set_eq('isPlanar1',$$VALUES('f'::bool) $$, '2: False, since vertex does not exist');
 
 
 -- vertex not present in graph test
@@ -35,7 +35,7 @@ PREPARE vertexNotPresent4 AS
 SELECT *
 FROM pgr_isPlanar('q3');
 
-SELECT set_eq('vertexNotPresent4',$$VALUES('f'::bool) $$, '4: Vertex not present in graph');
+SELECT set_eq('vertexNotPresent4',$$VALUES('f'::bool) $$, '4:False, Vertex not present in graph');
 
 -- 1 vertex test
 
@@ -51,7 +51,7 @@ PREPARE oneVertexTest6 AS
 SELECT *
 FROM pgr_isPlanar('q5');
 
-SELECT set_eq('oneVertexTest6',$$VALUES('t'::bool) $$, '6: Graph with only vertex 6');
+SELECT set_eq('oneVertexTest6',$$VALUES('t'::bool) $$, '6:Planar Graph with only vertex 6');
 
 PREPARE q7 AS
 SELECT id, source, 3 AS target, cost, reverse_cost
@@ -65,7 +65,7 @@ PREPARE oneVertexTest8 AS
 SELECT *
 FROM pgr_isPlanar('q7');
 
-SELECT set_eq('oneVertexTest8',$$VALUES('t'::bool) $$, '8: Graph with only vertex 3');
+SELECT set_eq('oneVertexTest8',$$VALUES('t'::bool) $$, '8:Planar Graph with only vertex 3');
 
 
 
@@ -83,7 +83,26 @@ PREPARE twoVerticesTest10 AS
 SELECT *
 FROM pgr_isPlanar('q9');
 
-SELECT set_eq('twoVerticesTest10',$$VALUES('t'::bool) $$, '10: Graph with two vertices 1 and 2');
+SELECT set_eq('twoVerticesTest10', $$VALUES('t'::bool) $$, '10:Planar Graph with two vertices 1 and 2');
+
+
+-- 3 vertices test
+
+PREPARE q11 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id IN (1,2);
+
+SELECT set_eq('q11', $$VALUES (1, 1, 2, 1, 1), (2, 2, 3, -1, 1)$$, 'q11: Graph with three vertices 1, 2 and 3');
+
+PREPARE threeVerticesTest12 AS
+SELECT *
+FROM pgr_isPlanar(
+    'q11'
+);
+
+SELECT set_eq('threeVerticesTest12', $$VALUES('t'::bool) $$, '12: Planar graph with 3 vertices');
+
 
 
 SELECT * FROM finish();
