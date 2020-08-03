@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(8);
+SELECT plan(10);
 
 
 
@@ -66,6 +66,25 @@ SELECT *
 FROM pgr_isPlanar('q7');
 
 SELECT set_eq('oneVertexTest8',$$VALUES('t'::bool) $$, '8: Graph with only vertex 3');
+
+
+
+
+-- 2 vertices tests
+
+PREPARE q9 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id = 1;
+
+SELECT set_eq('q9', $$VALUES (1, 1, 2, 1, 1)$$, 'q9: Graph with two vertices 1 and 2');
+
+PREPARE twoVerticesTest10 AS
+SELECT *
+FROM pgr_isPlanar('q9');
+
+SELECT set_eq('twoVerticesTest10',$$VALUES('t'::bool) $$, '10: Graph with two vertices 1 and 2');
+
 
 SELECT * FROM finish();
 ROLLBACK;
