@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(5);
+SELECT plan(6);
 
 
 
@@ -46,6 +46,12 @@ WHERE id = 9;
 
 -- Graph with only vertex 9
 SELECT set_eq('q5', $$VALUES (9, 6, 6, 1, 1)$$, 'q5: Graph with only vertex 6');
+
+PREPARE oneVertexTest6 AS
+SELECT *
+FROM pgr_isPlanar('q5');
+
+SELECT set_eq('oneVertexTest6',$$VALUES('t'::bool) $$, '6: Graph with only vertex 6');
 
 SELECT * FROM finish();
 ROLLBACK;
