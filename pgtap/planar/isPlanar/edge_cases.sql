@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(6);
+SELECT plan(8);
 
 
 
@@ -52,6 +52,20 @@ SELECT *
 FROM pgr_isPlanar('q5');
 
 SELECT set_eq('oneVertexTest6',$$VALUES('t'::bool) $$, '6: Graph with only vertex 6');
+
+PREPARE q7 AS
+SELECT id, source, 3 AS target, cost, reverse_cost
+FROM edge_table
+WHERE id = 3;
+
+-- Graph with only vertex 3
+SELECT set_eq('q7', $$VALUES (3, 3, 3, -1, 1)$$, 'q7: Graph with only vertex 6');
+
+PREPARE oneVertexTest8 AS
+SELECT *
+FROM pgr_isPlanar('q7');
+
+SELECT set_eq('oneVertexTest8',$$VALUES('t'::bool) $$, '8: Graph with only vertex 3');
 
 SELECT * FROM finish();
 ROLLBACK;
