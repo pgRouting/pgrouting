@@ -59,7 +59,7 @@ FROM edge_table
 WHERE id = 3;
 
 -- Graph with only vertex 3
-SELECT set_eq('q7', $$VALUES (3, 3, 3, -1, 1)$$, 'q7: Graph with only vertex 6');
+SELECT set_eq('q7', $$VALUES (3, 3, 3, -1, 1)$$, 'q7: Graph with only vertex 3');
 
 PREPARE oneVertexTest8 AS
 SELECT *
