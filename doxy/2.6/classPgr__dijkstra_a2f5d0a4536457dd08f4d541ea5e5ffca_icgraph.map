@@ -1,6 +1,0 @@
-<map id="Pgr_dijkstra::clear" name="Pgr_dijkstra::clear">
-<area shape="rect" id="node2" href="$classPgr__dijkstra.html#ab5850609cf634ae84a7a0e8d3bedcb0a" title="Dijkstra 1 to many. " alt="" coords="204,5,345,32"/>
-<area shape="rect" id="node3" href="$classPgr__dijkstra.html#a232969d40eb42381e6051e87248e9390" title="Pgr_dijkstra::drivingDistance" alt="" coords="417,85,607,112"/>
-<area shape="rect" id="node4" href="$classPgr__dijkstra.html#a54fad15282423f73f5b528ea51202607" title="Pgr_dijkstra::drivingDistance\l_with_equicost" alt="" coords="180,107,369,149"/>
-<area shape="rect" id="node5" href="$classPgr__dijkstra.html#acd2295cfb5f7b22c5164dc8b3b709549" title="to use with driving distance " alt="" coords="202,173,347,214"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="pgrouting::vrp::Fleet::operator=" name="pgrouting::vrp::Fleet::operator=">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Fleet.html#a6ea2ff496416b26f55df04bd4d9d04c8" title="pgrouting::vrp::Fleet\l::get_truck" alt="" coords="192,5,331,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Fleet.html#a7e6db8641aa5268705f7c1e77ad6afff" title="pgrouting::vrp::Fleet\l::is_fleet_ok" alt="" coords="192,71,331,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Fleet.html#a20706ce64b90c0e628fb51da79f1e490" title="Given an order, Cycle trhugh all the trucks to verify if the order can be served by at least one truc..." alt="" coords="192,136,331,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Fleet.html#acd7853577b19e5344afe1c82dbd241b7" title="pgrouting::vrp::Fleet\l::release_truck" alt="" coords="192,201,331,243"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Fleet.html#ae69becd4875cb8c486f00a75edfff54f" title="pgrouting::vrp::Fleet\l::set_compatibles" alt="" coords="192,267,331,308"/>
-</map>

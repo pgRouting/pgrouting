@@ -1,9 +1,0 @@
-<map id="do_pgr_ksp" name="do_pgr_ksp">
-<area shape="rect" id="node2" href="$basePath__SSEC_8cpp.html#a704d92207109d41b1df3e14e14579ba1" title="count_tuples" alt="" coords="184,5,280,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a7c90223ba36b5a1b43296ba8c852db25" title="Inserts count edges of type T into the graph. " alt="" coords="143,57,321,98"/>
-<area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c" title="allocates memory " alt="" coords="369,173,444,200"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="197,173,267,200"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="196,224,268,251"/>
-<area shape="rect" id="node7" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="155,275,309,317"/>
-<area shape="rect" id="node8" href="$classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac" title="Pgr_ksp::Yen" alt="" coords="181,341,283,368"/>
-</map>

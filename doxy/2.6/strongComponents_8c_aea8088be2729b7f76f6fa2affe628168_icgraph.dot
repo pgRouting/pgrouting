@@ -1,9 +1,0 @@
-digraph "process"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node35 [label="process",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node35 -> Node36 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node36 [label="strongComponents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$strongComponents_8c.html#afe480bc4995e169ffeb9d3a798ab0d44",tooltip="postgres_connection.h "];
-}

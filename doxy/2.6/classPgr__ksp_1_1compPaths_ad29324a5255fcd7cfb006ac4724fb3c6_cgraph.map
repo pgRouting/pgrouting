@@ -1,8 +1,0 @@
-<map id="Pgr_ksp::compPaths::operator()" name="Pgr_ksp::compPaths::operator()">
-<area shape="rect" id="node2" href="$classPgr__ksp.html#a1e5476d1b0d125fef8f3e5aa634b5782" title="Performs the next cycle of the algorithm. " alt="" coords="399,44,554,70"/>
-<area shape="rect" id="node3" href="$classPgr__ksp.html#abc9f355a52aee675dfe5df77fd6bae71" title="stores in subPath the first i elements of path " alt="" coords="609,6,779,33"/>
-<area shape="rect" id="node4" href="$classPath.html#a3a0311765e131697250e7b45964c0510" title="Path::size" alt="" coords="653,94,735,121"/>
-<area shape="rect" id="node5" href="$classPgr__ksp.html#a816e02e45221bab34ed59b801d9d8192" title="the actual algorithm " alt="" coords="197,81,344,108"/>
-<area shape="rect" id="node6" href="$classPgr__ksp.html#a11eac853ca869c5b829f13a7c199255c" title="Performs the first Dijkstra of the algorithm. " alt="" coords="392,106,561,133"/>
-<area shape="rect" id="node7" href="$classPath.html#acfbc7bfb329181549999d46eba51ac97" title="Path::tot_cost" alt="" coords="219,233,323,260"/>
-</map>

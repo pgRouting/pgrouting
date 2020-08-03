@@ -1,6 +1,0 @@
-<map id="pgrouting::tsp::eucledianDmatrix::distance" name="pgrouting::tsp::eucledianDmatrix::distance">
-<area shape="rect" id="node2" href="$eucledianTSP__driver_8h.html#a5846c5612bc664148f24a97aad92a68e" title="do_pgr_eucledianTSP" alt="" coords="641,95,791,122"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1tsp_1_1eucledianDmatrix.html#a6a4817283ccf3ce3dc35ee2818091c45" title="returns a row of distances " alt="" coords="217,29,381,71"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1tsp_1_1eucledianDmatrix.html#a50c3846e8877e23b6f18774fbd467e97" title="|idx| " alt="" coords="429,88,593,129"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1tsp_1_1eucledianDmatrix.html#ae33df59393a1e477c7b2c81b99d335e3" title="tour evaluation " alt="" coords="217,147,381,188"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="Pgr_dijkstra::dijkstra" name="Pgr_dijkstra::dijkstra">
-<area shape="rect" id="node2" href="$classPgr__dijkstra.html#a40223def5edfcf8bcc11243d806d3b9f" title="Pgr_dijkstra::dijkstra" alt="" coords="223,5,365,32"/>
-<area shape="rect" id="node3" href="$classPgr__ksp.html#a1e5476d1b0d125fef8f3e5aa634b5782" title="Performs the next cycle of the algorithm. " alt="" coords="217,56,371,83"/>
-<area shape="rect" id="node4" href="$classPgr__dijkstra.html#a232969d40eb42381e6051e87248e9390" title="Pgr_dijkstra::drivingDistance" alt="" coords="199,107,389,133"/>
-<area shape="rect" id="node5" href="$classPgr__dijkstraTRSP.html#aa0d9c2c04238b6c1524468bf14a18497" title="Pgr_dijkstraTRSP::getDijkstra\lSolution" alt="" coords="195,158,393,199"/>
-<area shape="rect" id="node6" href="$classPgr__ksp.html#a11eac853ca869c5b829f13a7c199255c" title="Performs the first Dijkstra of the algorithm. " alt="" coords="209,224,379,251"/>
-<area shape="rect" id="node7" href="$dijkstra__driver_8cpp.html#afeb05fe552d2db0ce4bcfd0501a38efa" title="pgr_dijkstra" alt="" coords="249,275,339,301"/>
-</map>

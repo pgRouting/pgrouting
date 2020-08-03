@@ -1,4 +1,0 @@
-<map id="pgrouting::vrp::Optimize::sort_for_move" name="pgrouting::vrp::Optimize::sort_for_move">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a92ec24c937b1b2ce82c0a6522c1a2dbf" title="pgrouting::vrp::Vehicle\l_pickDeliver::orders_size" alt="" coords="215,5,384,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a574893de6aeb02d2e7fb6a8118ffcddf" title="pgrouting::vrp::Vehicle\l::total_wait_time" alt="" coords="223,71,375,112"/>
-</map>

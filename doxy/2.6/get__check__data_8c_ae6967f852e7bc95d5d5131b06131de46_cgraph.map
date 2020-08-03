@@ -1,8 +1,0 @@
-<map id="pgr_fetch_column_info" name="pgr_fetch_column_info">
-<area shape="rect" id="node2" href="$get__check__data_8c.html#a3374b600c9631f0cf958a8395098a1c3" title="fetch_column_info" alt="" coords="251,5,379,32"/>
-<area shape="rect" id="node3" href="$get__check__data_8c.html#a9a9d3d8cee4b4672b269170e6522c3bd" title="The function check whether column type is ANY&#45;INTEGER or not. " alt="" coords="221,56,409,83"/>
-<area shape="rect" id="node4" href="$get__check__data_8c.html#a97336e9411534b91e75dff38e397ee31" title="The function check whether column type is ANY&#45;INTEGER&#45;ARRAY or not. " alt="" coords="207,107,424,133"/>
-<area shape="rect" id="node5" href="$get__check__data_8c.html#a021bfad5d191a500af85882a008e79f9" title="The function check whether column type is ANY&#45;NUMERICAL. " alt="" coords="213,157,418,184"/>
-<area shape="rect" id="node6" href="$get__check__data_8c.html#a1523c0349e990ea6fda502c802ccf394" title="The function check whether column type is CHAR or not. " alt="" coords="242,208,389,235"/>
-<area shape="rect" id="node7" href="$get__check__data_8c.html#ad2eb625caa8f72333db1ddd029ae6d15" title="The function check whether column type is TEXT or not. " alt="" coords="244,259,387,285"/>
-</map>

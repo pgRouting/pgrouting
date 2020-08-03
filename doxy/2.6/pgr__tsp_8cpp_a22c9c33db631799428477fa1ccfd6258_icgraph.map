@@ -1,6 +1,0 @@
-<map id="succ" name="succ">
-<area shape="rect" id="node2" href="$classpgrouting_1_1tsp_1_1TSP.html#a5231755a0284953740e1d3d9b4b0d23a" title="pgrouting::tsp::TSP\l::annealing" alt="" coords="104,5,239,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1tsp_1_1TSP.html#ad3933f12f1fecd5b263ef95f9353d632" title="pgrouting::tsp::TSP\l::getDeltaReverse" alt="" coords="104,71,239,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1tsp_1_1TSP.html#afddb5fa01d43c8aa277add2af2953a82" title="pgrouting::tsp::TSP\l::getDeltaSlide" alt="" coords="104,136,239,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1tsp_1_1TSP.html#a0eb8715a4615b11b2cd2b3d854421fa4" title="pgrouting::tsp::TSP\l::getDeltaSwap" alt="" coords="104,201,239,243"/>
-</map>

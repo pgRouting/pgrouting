@@ -1,6 +1,0 @@
-<map id="pgrouting::Pg_points_graph::eliminate_details" name="pgrouting::Pg_points_graph::eliminate_details">
-<area shape="rect" id="node2" href="$classPath.html#a75bd5ccf60152fefaff1df56be09946b" title="Path::empty" alt="" coords="223,5,317,32"/>
-<area shape="rect" id="node3" href="$classPath.html#a5b5d58e304f85ef96637a260917c30ac" title="Path::push_back" alt="" coords="368,31,488,57"/>
-<area shape="rect" id="node4" href="$classPath.html#ad7eff4c127cba19f2052398089ac3b42" title="Path::end_id" alt="" coords="223,107,317,133"/>
-<area shape="rect" id="node5" href="$classPath.html#a969ad8937eb448f350193fd203ad97d2" title="Path::start_id" alt="" coords="220,157,320,184"/>
-</map>

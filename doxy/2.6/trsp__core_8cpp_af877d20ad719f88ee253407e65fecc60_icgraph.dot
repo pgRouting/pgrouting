@@ -1,9 +1,0 @@
-digraph "trsp_node_wrapper"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node15 [label="trsp_node_wrapper",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node15 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node16 [label="compute_trsp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$trsp_8c.html#af22a27dfd9329f65ede022007d5d2413"];
-}

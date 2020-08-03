@@ -1,8 +1,0 @@
-<map id="ksp.c" name="ksp.c">
-<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="5,155,227,181"/>
-<area shape="rect" id="node3" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="91,80,269,107"/>
-<area shape="rect" id="node4" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="294,80,442,107"/>
-<area shape="rect" id="node5" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="466,80,625,107"/>
-<area shape="rect" id="node6" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="649,80,820,107"/>
-<area shape="rect" id="node7" href="$ksp__driver_8h.html" title="drivers/yen/ksp_driver.h" alt="" coords="845,80,1006,107"/>
-</map>

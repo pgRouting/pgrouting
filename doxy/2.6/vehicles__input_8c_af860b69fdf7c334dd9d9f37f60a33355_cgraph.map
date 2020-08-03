@@ -1,7 +1,0 @@
-<map id="pgr_get_vehicles_general" name="pgr_get_vehicles_general">
-<area shape="rect" id="node2" href="$vehicles__input_8c.html#a8dedcfbf71ecc7f6c789331d5e89e909" title="fetch_vehicles" alt="" coords="246,5,353,32"/>
-<area shape="rect" id="node3" href="$get__check__data_8c.html#ae6967f852e7bc95d5d5131b06131de46" title="Function tells expected type of each column and then check the correspondence type of each column..." alt="" coords="223,56,376,83"/>
-<area shape="rect" id="node4" href="$postgres__connection_8c.html#a85cec439f5e567ec736a2a77a0533d9d" title="pgr_SPI_cursor_open" alt="" coords="226,107,373,133"/>
-<area shape="rect" id="node5" href="$postgres__connection_8c.html#aeb63bcfc2ca89c02b30317112bae5f12" title="pgr_SPI_prepare" alt="" coords="240,157,359,184"/>
-<area shape="rect" id="node6" href="$time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe" title="time_msg" alt="" coords="260,208,339,235"/>
-</map>

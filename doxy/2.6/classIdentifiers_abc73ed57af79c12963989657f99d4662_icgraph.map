@@ -1,9 +1,0 @@
-<map id="Identifiers::has" name="Identifiers::has">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="175,5,334,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ac53c67c279159a0bc491513d3de4a20b" title="pgrouting::contraction\l::Pgr_deadend::doContraction" alt="" coords="396,200,591,241"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1contraction_1_1Pgr__linear.html#aef91793bf9d9b4e12b2b648268f64545" title="pgrouting::contraction\l::Pgr_linear::doContraction" alt="" coords="166,123,343,164"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#ab8c5a4b092d6e9ff38b3e6917f2b27a1" title="vertices with at least one contracted vertex " alt="" coords="177,189,332,245"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#adb870b4b7089194de06de8471eba0767" title="pgrouting::vrp::Vehicle\l_pickDeliver::has_order" alt="" coords="175,269,334,311"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1contraction_1_1Pgr__deadend.html#ad86d555801d7bcdc29209f75dae1d83f" title="true when v is a dead end " alt="" coords="161,335,348,376"/>
-<area shape="rect" id="node8" href="$classIdentifiers.html#a215e031fe598cdb9d75d407db30f0555" title="compund set INTERSECTION element " alt="" coords="191,400,318,441"/>
-</map>

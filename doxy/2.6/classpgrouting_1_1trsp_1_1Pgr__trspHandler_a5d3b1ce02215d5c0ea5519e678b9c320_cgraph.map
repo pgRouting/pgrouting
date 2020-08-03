@@ -1,9 +1,0 @@
-<map id="pgrouting::trsp::Pgr_trspHandler::process_trsp" name="pgrouting::trsp::Pgr_trspHandler::process_trsp">
-<area shape="rect" id="node2" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#afb0d7e7d3049ca1c2a003b0571fcc02d" title="pgrouting::trsp::Pgr\l_trspHandler::construct_path" alt="" coords="232,41,423,82"/>
-<area shape="rect" id="node3" href="$classPath.html#a5b5d58e304f85ef96637a260917c30ac" title="Path::push_back" alt="" coords="471,22,591,48"/>
-<area shape="rect" id="node4" href="$classPath.html#a969ad8937eb448f350193fd203ad97d2" title="Path::start_id" alt="" coords="481,76,581,103"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a50129ef8113261ab2e159b00bd939ee7" title="pgrouting::trsp::Pgr\l_trspHandler::dijkstra\l_exploration" alt="" coords="254,158,401,214"/>
-<area shape="rect" id="node6" href="$classPath.html#ad7eff4c127cba19f2052398089ac3b42" title="Path::end_id" alt="" coords="280,238,375,264"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a9f286e7c5e226a50bfe0e47e08eed2dd" title="pgrouting::trsp::Pgr\l_trspHandler::initialize_que" alt="" coords="238,289,417,330"/>
-<area shape="rect" id="node8" href="$classPath.html#a2a39623954fa27c2ec079c9ac1ace66d" title="Path::renumber_vertices" alt="" coords="245,355,409,382"/>
-</map>

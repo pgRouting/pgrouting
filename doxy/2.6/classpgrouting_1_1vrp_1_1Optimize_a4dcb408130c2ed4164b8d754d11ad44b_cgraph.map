@@ -1,9 +1,0 @@
-<map id="pgrouting::vrp::Optimize::delete_empty_truck" name="pgrouting::vrp::Optimize::delete_empty_truck">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Optimize.html#a558f3e604fc7df1a6b90edfb2135d632" title="pgrouting::vrp::Optimize\l::move_duration_based" alt="" coords="217,5,379,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Optimize.html#a18e362ade6f898d3b1cbba0505e5abcf" title="pgrouting::vrp::Optimize\l::move_reduce_cost" alt="" coords="217,71,379,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Optimize.html#a566ff61efd9b90653451236317ffa16f" title="pgrouting::vrp::Optimize\l::save_if_best" alt="" coords="429,121,591,163"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Solution.html#af57a4f8691ed496abe7e024e90c74492" title="pgrouting::vrp::Solution::tau" alt="" coords="639,158,821,185"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Optimize.html#a69e648bb4156e0c205f50c19563cca10" title="pgrouting::vrp::Optimize\l::move_wait_time_based" alt="" coords="215,239,381,280"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Optimize.html#aab099b1d7832d0017fef2dcce969611e" title="pgrouting::vrp::Optimize\l::sort_by_duration" alt="" coords="217,304,379,345"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Optimize.html#aec63939cbbeee8ec5c055a8a97ec52ba" title="pgrouting::vrp::Optimize\l::sort_for_move" alt="" coords="217,369,379,411"/>
-</map>

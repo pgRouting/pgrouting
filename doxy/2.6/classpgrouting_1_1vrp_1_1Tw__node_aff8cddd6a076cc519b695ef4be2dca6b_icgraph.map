@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Tw_node::is_pickup" name="pgrouting::vrp::Tw_node::is_pickup">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Order.html#a56eaa0604abebc289e5a58af278793ef" title="validate a pickup/delivery order " alt="" coords="185,5,326,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a" title="pgrouting::vrp::Tw\l_node::is_valid" alt="" coords="192,71,319,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="180,136,331,177"/>
-</map>

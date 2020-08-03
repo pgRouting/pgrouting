@@ -1,8 +1,0 @@
-<map id="tw_node.h" name="tw_node.h">
-<area shape="rect" id="node3" href="$pickDeliveryOrders__t_8h.html" title="c_types/pickDeliver\l/pickDeliveryOrders_t.h" alt="" coords="27,80,186,121"/>
-<area shape="rect" id="node4" href="$vehicle__t_8h.html" title="c_types/pickDeliver\l/vehicle_t.h" alt="" coords="210,80,347,121"/>
-<area shape="rect" id="node5" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="372,87,548,114"/>
-<area shape="rect" id="node6" href="$identifier_8h.html" title="cpp_common/identifier.h" alt="" coords="572,87,736,114"/>
-<area shape="rect" id="node7" href="$pd__problem_8h.html" title="vrp/pd_problem.h" alt="" coords="780,169,902,196"/>
-<area shape="rect" id="node8" href="$node_8h.html" title="vrp/node.h" alt="" coords="761,87,844,114"/>
-</map>

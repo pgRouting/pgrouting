@@ -1,8 +1,0 @@
-<map id="biconnectedComponents.c" name="biconnectedComponents.c">
-<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="5,184,227,211"/>
-<area shape="rect" id="node3" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="91,95,269,121"/>
-<area shape="rect" id="node4" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="294,95,442,121"/>
-<area shape="rect" id="node5" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="466,95,625,121"/>
-<area shape="rect" id="node6" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="649,95,820,121"/>
-<area shape="rect" id="node7" href="$biconnectedComponents__driver_8h.html" title="drivers/components\l/biconnectedComponents\l_driver.h" alt="" coords="844,80,1015,136"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="pgrouting::graph::PgrFlowGraph::get_edge_id" name="pgrouting::graph::PgrFlowGraph::get_edge_id">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#aca026eba52ac3dd41e5c1a56a6756dd6" title="pgrouting::graph::PgrFlow\lGraph::flow_dfs" alt="" coords="226,5,397,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a1205cab14888698d33ef2119f9df058a" title="pgrouting::graph::PgrFlow\lGraph::insert_edges" alt="" coords="226,71,397,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a587ea830e32014d17bdb64528010e6e3" title="pgrouting::graph::PgrFlow\lGraph::insert_edges_edge\l_disjoint" alt="" coords="224,137,399,193"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a65541cac3e38500f1b052730c513cbfb" title="pgrouting::graph::PgrFlow\lGraph::insert_edges_push\l_relabel" alt="" coords="224,217,399,273"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#a6d9fcc65f99c73ac788f61ea0219e9f2" title="pgrouting::graph::PgrFlow\lGraph::set_supersink" alt="" coords="226,297,397,339"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1graph_1_1PgrFlowGraph.html#af8575d1d61fb2bbbd0f1b9255e20309c" title="pgrouting::graph::PgrFlow\lGraph::set_supersource" alt="" coords="226,363,397,404"/>
-</map>

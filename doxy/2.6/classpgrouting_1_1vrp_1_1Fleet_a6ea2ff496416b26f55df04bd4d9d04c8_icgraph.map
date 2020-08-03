@@ -1,5 +1,0 @@
-<map id="pgrouting::vrp::Fleet::get_truck" name="pgrouting::vrp::Fleet::get_truck">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a49860a59bbc3ad10709d9b188321a460" title="pgrouting::vrp::Initial\l_solution::do_while_foo" alt="" coords="192,5,351,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Initial__solution.html#a7d3ae3ec3e657685315341a8d8395b7e" title="pgrouting::vrp::Initial\l_solution::one_truck_all\l_orders" alt="" coords="192,71,351,127"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Fleet.html#aebb9c0cf28fff9cdaa363bd1ef7011c7" title="pgrouting::vrp::Fleet\l::operator=" alt="" coords="202,152,341,193"/>
-</map>

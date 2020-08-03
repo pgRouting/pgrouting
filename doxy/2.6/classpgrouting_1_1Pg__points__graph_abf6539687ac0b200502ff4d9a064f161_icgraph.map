@@ -1,6 +1,0 @@
-<map id="pgrouting::Pg_points_graph::new_edges" name="pgrouting::Pg_points_graph::new_edges">
-<area shape="rect" id="node2" href="$withPoints__dd__driver_8h.html#a9072c7cdc9f6a0533c81fce96a11f580" title="do_pgr_many_withPointsDD" alt="" coords="195,5,383,32"/>
-<area shape="rect" id="node3" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="224,56,353,83"/>
-<area shape="rect" id="node4" href="$withPoints__ksp__driver_8h.html#aa374de107bce7c8ad6bdefdc60cd94ae" title="do_pgr_withPointsKsp" alt="" coords="213,107,365,133"/>
-<area shape="rect" id="node5" href="$structpgrouting_1_1Pg__points__graph_1_1pointCompare.html#a18ff9880dbee6894b73cd08512570123" title="pgrouting::Pg_points\l_graph::pointCompare\l::operator()" alt="" coords="213,157,364,213"/>
-</map>

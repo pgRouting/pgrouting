@@ -1,7 +1,0 @@
-<map id="pred" name="pred">
-<area shape="rect" id="node2" href="$classPgr__dijkstra.html#ac41eff6be348e54c06d497edbf2ed62a" title="Pgr_dijkstra::drivingDistance\l_no_equicost" alt="" coords="105,5,295,47"/>
-<area shape="rect" id="node3" href="$classPgr__dijkstra.html#a54fad15282423f73f5b528ea51202607" title="Pgr_dijkstra::drivingDistance\l_with_equicost" alt="" coords="348,93,537,135"/>
-<area shape="rect" id="node4" href="$classPgr__dijkstra.html#a1ad615c70bc2db48c8a057a1184c9f60" title="gets results in form of a container of paths " alt="" coords="100,123,300,164"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1tsp_1_1TSP.html#a0eb8715a4615b11b2cd2b3d854421fa4" title="pgrouting::tsp::TSP\l::getDeltaSwap" alt="" coords="133,188,267,229"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#ab2033c2764f192da405b9877ac441772" title="True when not violation. " alt="" coords="124,253,276,295"/>
-</map>

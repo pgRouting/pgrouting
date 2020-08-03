@@ -1,6 +1,0 @@
-<map id="GraphDefinition::my_dijkstra" name="GraphDefinition::my_dijkstra">
-<area shape="rect" id="node2" href="$classGraphDefinition.html#a2c40687b3b05b7420adc718ede9af365" title="GraphDefinition::addEdge" alt="" coords="415,11,585,37"/>
-<area shape="rect" id="node3" href="$classGraphDefinition.html#a1aa3daf43141bf0ad05ed930b3442e50" title="GraphDefinition::construct\l_graph" alt="" coords="192,33,367,74"/>
-<area shape="rect" id="node4" href="$classGraphDefinition.html#a7318fb4906c06f0cb4417ea1c09f665a" title="GraphDefinition::init" alt="" coords="211,99,348,125"/>
-<area shape="rect" id="node5" href="$classGraphDefinition.html#add1e17a19370022849bc5fa0a0a993c7" title="GraphDefinition::my\l_dijkstra" alt="" coords="210,150,349,191"/>
-</map>

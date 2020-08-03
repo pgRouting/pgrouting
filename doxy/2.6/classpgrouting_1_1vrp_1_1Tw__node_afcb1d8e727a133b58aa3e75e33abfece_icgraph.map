@@ -1,9 +1,0 @@
-<map id="pgrouting::vrp::Tw_node::is_early_arrival" name="pgrouting::vrp::Tw_node::is_early_arrival">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#af16bda121ef322dc50702241a9b20985" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="241,5,393,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="241,71,393,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a7879cfdd27e409f8b364eaaa06375656" title="True when arrivalTime in the time window. " alt="" coords="476,275,604,316"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a259954cf5ed111fb3b6ea7bb4f689b1c" title="pgrouting::vrp::Tw\l_node::is_partially\l_compatible_IJ" alt="" coords="253,187,380,243"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a40f5fc0f770bd56b0db41be2187b12fe" title="pgrouting::vrp::Tw\l_node::is_partially\l_waitTime_compatible_IJ" alt="" coords="231,267,402,323"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a0e4f84908b0ebbb71fe9888a5b421b7b" title="pgrouting::vrp::Tw\l_node::is_tight_compatible_IJ" alt="" coords="219,348,414,389"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a12d1d5cdfc3094df03a37df7ee99ea99" title="pgrouting::vrp::Tw\l_node::is_waitTime_compatible_IJ" alt="" coords="205,413,428,455"/>
-</map>

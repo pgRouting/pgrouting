@@ -1,9 +1,0 @@
-<map id="pgrouting::extract_vertices" name="pgrouting::extract_vertices">
-<area shape="rect" id="node2" href="$astar__driver_8h.html#a9d704ded9944c8b035f5f37e42e587cb" title="do_pgr_astarManyToMany" alt="" coords="177,5,353,32"/>
-<area shape="rect" id="node3" href="$bdAstar__driver_8h.html#aaa83efe9d05a08432a2f0bff6fd8ccd0" title="do_pgr_bdAstar" alt="" coords="209,56,322,83"/>
-<area shape="rect" id="node4" href="$drivedist__driver_8h.html#a1e65fbf0a2804179d6164355030a560f" title="do_pgr_driving_many\l_to_dist" alt="" coords="193,107,338,149"/>
-<area shape="rect" id="node5" href="$withPoints__driver_8h.html#a21c2758706c9735f75143b96fe93defd" title="do_pgr_withPoints" alt="" coords="201,173,330,200"/>
-<area shape="rect" id="node6" href="$withPoints__ksp__driver_8h.html#aa374de107bce7c8ad6bdefdc60cd94ae" title="do_pgr_withPointsKsp" alt="" coords="189,224,341,251"/>
-<area shape="rect" id="node7" href="$namespacepgrouting.html#a9a4a650140046a0ff4f6c5922a7040c1" title="pgrouting::extract\l_vertices" alt="" coords="204,275,327,317"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a61707a2edbad526cf5f5754d61d987c1" title="Inserts count edges of type pgr_edge_t into the graph. " alt="" coords="176,341,355,382"/>
-</map>

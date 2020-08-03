@@ -1,9 +1,0 @@
-<map id="many_to_dist_driving_distance.c" name="many_to_dist_driving_distance.c">
-<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="5,184,227,211"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="72,102,251,129"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="326,102,474,129"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="498,102,657,129"/>
-<area shape="rect" id="node7" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="681,102,852,129"/>
-<area shape="rect" id="node8" href="$arrays__input_8h.html" title="c_common/arrays_input.h" alt="" coords="877,102,1049,129"/>
-<area shape="rect" id="node9" href="$drivedist__driver_8h.html" title="drivers/driving_distance\l/drivedist_driver.h" alt="" coords="1073,95,1231,136"/>
-</map>

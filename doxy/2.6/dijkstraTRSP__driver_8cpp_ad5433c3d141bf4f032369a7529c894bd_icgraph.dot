@@ -1,9 +1,0 @@
-digraph "pgr_dijkstraTRSP"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node42 [label="pgr_dijkstraTRSP",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node42 -> Node43 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node43 [label="do_pgr_dijkstraTRSP",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$dijkstraTRSP__driver_8h.html#a965e2aa38abf784f42097b60cd55a06a"];
-}

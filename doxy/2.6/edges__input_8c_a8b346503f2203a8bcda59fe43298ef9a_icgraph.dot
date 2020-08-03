@@ -1,9 +1,0 @@
-digraph "pgr_get_edges_reversed"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node206 [label="pgr_get_edges_reversed",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node206 -> Node207 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node207 [label="process",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$dijkstra_8c.html#a25907efc4b216276ee83fd0a4f74d02d"];
-}

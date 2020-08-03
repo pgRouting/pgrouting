@@ -1,5 +1,0 @@
-<map id="pgrouting::graph::Pgr_lineGraphFull::apply_transformation" name="pgrouting::graph::Pgr_lineGraphFull::apply_transformation">
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#aa6f37d724f89d29cc1ad0612de7cd73e" title="pgrouting::graph::Pgr\l_lineGraphFull::graph\l_add_edge" alt="" coords="197,5,343,61"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad98fd25cf17ce36de3f4e7799c5fcf63" title="pgrouting::graph::Pgr\l_base_graph::source" alt="" coords="391,46,533,87"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a9ec20f50fbe8d56dc52c9910597f4984" title="pgrouting::graph::Pgr\l_lineGraphFull::insert\l_vertex" alt="" coords="197,136,343,192"/>
-</map>

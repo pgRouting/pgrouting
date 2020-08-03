@@ -1,7 +1,0 @@
-<map id="pgrouting::tsp::Tour::size" name="pgrouting::tsp::Tour::size">
-<area shape="rect" id="node2" href="$classpgrouting_1_1tsp_1_1Tour.html#abbdd3586a26f8af6d5770deabd242617" title="pgrouting::tsp::Tour\l::reverse" alt="" coords="198,5,333,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1tsp_1_1Tour.html#a33fbdb2e976e23ff5e1a8e00b20f141f" title="pgrouting::tsp::Tour\l::rotate" alt="" coords="198,71,333,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1tsp_1_1Tour.html#aaf1659d27321ff20155ecc7564659706" title="pgrouting::tsp::Tour\l::slide" alt="" coords="198,136,333,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1tsp_1_1Tour.html#a91460e508947cfa9013979f33d507358" title="pgrouting::tsp::Tour\l::swap" alt="" coords="198,201,333,243"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1tsp_1_1Dmatrix.html#a4058c260395fd9c2dae7d5d03e94c65c" title="tour evaluation " alt="" coords="188,267,343,308"/>
-</map>

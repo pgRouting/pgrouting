@@ -1,9 +1,0 @@
-<map id="pgrouting::vrp::Tw_node::travel_time_to" name="pgrouting::vrp::Tw_node::travel_time_to">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#a810f8e5e0deea10816247439a890a2a1" title="@ { " alt="" coords="203,5,369,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354" title="The actual arrival time at this node, given that: this node is visited directly after other node and ..." alt="" coords="203,71,369,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1" title="@ { " alt="" coords="205,136,367,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#af16bda121ef322dc50702241a9b20985" title="pgrouting::vrp::Vehicle\l::deltaTime" alt="" coords="210,201,362,243"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340" title="pgrouting::vrp::Vehicle\l_node::evaluate" alt="" coords="210,267,362,308"/>
-<area shape="rect" id="node7" href="$namespacepgrouting_1_1vrp.html#ad6fdaacceafff2916f80fb6855c58135" title="pgrouting::vrp::operator\&lt;\&lt;" alt="" coords="200,333,372,359"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1vrp_1_1Tw__node.html#ae32d27ea7a2dfcb283dd104129d402b1" title="Returns the length of time between the opening and closing. " alt="" coords="211,384,361,425"/>
-</map>

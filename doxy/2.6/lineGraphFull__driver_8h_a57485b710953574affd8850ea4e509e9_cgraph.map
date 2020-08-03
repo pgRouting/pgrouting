@@ -1,7 +1,0 @@
-<map id="do_pgr_lineGraphFull" name="do_pgr_lineGraphFull">
-<area shape="rect" id="node2" href="$lineGraphFull__driver_8cpp.html#a4f37f216dd6dae9c5065e548c6294026" title="get_turn_penalty_postgres\l_result" alt="" coords="213,5,388,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html#a47d90c66d212d0a023a79d2d6ab8262f" title="pgrouting::graph::Pgr\l_base_graph::insert_edges_neg" alt="" coords="197,71,404,112"/>
-<area shape="rect" id="node4" href="$pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6" title="pgr_free" alt="" coords="266,137,335,163"/>
-<area shape="rect" id="node5" href="$pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e" title="pgr_msg" alt="" coords="265,187,337,214"/>
-<area shape="rect" id="node6" href="$classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88" title="AssertFailedException\l::what" alt="" coords="224,239,377,280"/>
-</map>

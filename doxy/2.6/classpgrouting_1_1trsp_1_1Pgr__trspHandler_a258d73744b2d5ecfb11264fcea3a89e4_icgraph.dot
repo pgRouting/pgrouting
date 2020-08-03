@@ -1,9 +1,0 @@
-digraph "pgrouting::trsp::Pgr_trspHandler::initialize_restrictions"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node170 [label="pgrouting::trsp::Pgr\l_trspHandler::initialize\l_restrictions",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node170 -> Node171 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node171 [label="pgrouting::trsp::Pgr\l_trspHandler::Pgr_trspHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#aaf0d27f8b8c115993da6c4f431c11da0"];
-}

@@ -1,6 +1,0 @@
-
-digraph G {
-graph [rankdir=LR];
-this [color=green];
-"I" -> this;
-}

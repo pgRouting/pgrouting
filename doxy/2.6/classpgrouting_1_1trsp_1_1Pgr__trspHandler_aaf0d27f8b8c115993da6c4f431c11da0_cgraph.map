@@ -1,5 +1,0 @@
-<map id="pgrouting::trsp::Pgr_trspHandler::Pgr_trspHandler" name="pgrouting::trsp::Pgr_trspHandler::Pgr_trspHandler">
-<area shape="rect" id="node2" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a2701b63975585e090716e99e3d353e27" title="pgrouting::trsp::Pgr\l_trspHandler::construct_graph" alt="" coords="253,5,451,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#a258d73744b2d5ecfb11264fcea3a89e4" title="pgrouting::trsp::Pgr\l_trspHandler::initialize\l_restrictions" alt="" coords="277,71,427,127"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler.html#af7aa55cc3fedf3cd6f1ce2e801b20116" title="pgrouting::trsp::Pgr\l_trspHandler::renumber_edges" alt="" coords="252,152,452,193"/>
-</map>

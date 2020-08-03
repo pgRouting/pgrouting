@@ -1,7 +1,0 @@
-<map id="get_edges_flow" name="get_edges_flow">
-<area shape="rect" id="node2" href="$edges__input_8c.html#a7c4a0a57abd38dd84a5554e853c696bb" title="fetch_edge" alt="" coords="200,5,287,32"/>
-<area shape="rect" id="node3" href="$get__check__data_8c.html#ae6967f852e7bc95d5d5131b06131de46" title="Function tells expected type of each column and then check the correspondence type of each column..." alt="" coords="167,56,320,83"/>
-<area shape="rect" id="node4" href="$postgres__connection_8c.html#a85cec439f5e567ec736a2a77a0533d9d" title="pgr_SPI_cursor_open" alt="" coords="170,107,317,133"/>
-<area shape="rect" id="node5" href="$postgres__connection_8c.html#aeb63bcfc2ca89c02b30317112bae5f12" title="pgr_SPI_prepare" alt="" coords="184,157,303,184"/>
-<area shape="rect" id="node6" href="$time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe" title="time_msg" alt="" coords="204,208,283,235"/>
-</map>

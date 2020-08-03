@@ -1,8 +1,0 @@
-<map id="pgrouting::vrp::Vehicle::insert" name="pgrouting::vrp::Vehicle::insert">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Vehicle.html#aa22d65f920e996e3497bff86876b181f" title="Insert node in best position of the position_limits. " alt="" coords="211,5,363,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#acd6d3d720b3002cbb930a44099fa0688" title="Inserts an order. " alt="" coords="211,71,363,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a43b1afad2e0d74af5b5d79dbd6829446" title="pgrouting::vrp::Vehicle\l::insert_less_travel_time" alt="" coords="205,136,369,177"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a7b949a1e2f1c3cc36648c6224e9c8083" title="pgrouting::vrp::Vehicle\l::is_phony" alt="" coords="417,253,569,295"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a6608a42ff54a288e2e1b3bed58c8bcaa" title="Evaluated: push_back a node to the path. " alt="" coords="211,253,363,295"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle.html#a95ca8e3803a63ecfeed064a250796594" title="Evaluated: push_back a node to the path. " alt="" coords="211,319,363,360"/>
-</map>
