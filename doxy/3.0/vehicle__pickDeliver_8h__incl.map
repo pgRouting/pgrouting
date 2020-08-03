@@ -1,8 +1,0 @@
-<map id="vehicle_pickDeliver.h" name="vehicle_pickDeliver.h">
-<area shape="rect" id="node3" href="$order_8h.html" title="vrp/order.h" alt="" coords="32,80,116,107"/>
-<area shape="rect" id="node4" href="$identifiers_8hpp.html" title="cpp_common/identifiers.hpp" alt="" coords="47,155,232,181"/>
-<area shape="rect" id="node5" href="$pd__orders_8h.html" title="vrp/pd_orders.h" alt="" coords="191,80,303,107"/>
-<area shape="rect" id="node6" href="$tw__node_8h.html" title="vrp/tw_node.h" alt="" coords="327,80,431,107"/>
-<area shape="rect" id="node7" href="$vehicle_8h.html" title="vrp/vehicle.h" alt="" coords="455,80,551,107"/>
-<area shape="rect" id="node8" href="$initials__code_8h.html" title="vrp/initials_code.h" alt="" coords="576,80,703,107"/>
-</map>

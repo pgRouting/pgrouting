@@ -1,7 +1,0 @@
-digraph "Graphical Class Hierarchy"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node0 [label="pgrouting::alphashape\l::anonymous_namespace\l\{pgr_alphaShape.cpp\}::\lCompareRadius",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structpgrouting_1_1alphashape_1_1anonymous__namespace_02pgr__alphaShape_8cpp_03_1_1CompareRadius.html"];
-}

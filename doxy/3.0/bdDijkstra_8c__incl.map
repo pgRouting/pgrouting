@@ -1,9 +1,0 @@
-<map id="bdDijkstra.c" name="bdDijkstra.c">
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="88,169,309,196"/>
-<area shape="rect" id="node5" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="155,87,333,114"/>
-<area shape="rect" id="node6" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="409,87,557,114"/>
-<area shape="rect" id="node7" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="581,87,739,114"/>
-<area shape="rect" id="node8" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="764,87,935,114"/>
-<area shape="rect" id="node9" href="$arrays__input_8h.html" title="c_common/arrays_input.h" alt="" coords="959,87,1131,114"/>
-<area shape="rect" id="node10" href="$bdDijkstra__driver_8h.html" title="drivers/bdDijkstra\l/bdDijkstra_driver.h" alt="" coords="1155,80,1290,121"/>
-</map>

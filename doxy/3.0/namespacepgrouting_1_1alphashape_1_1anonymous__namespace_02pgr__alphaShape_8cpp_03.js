@@ -1,4 +1,0 @@
-var namespacepgrouting_1_1alphashape_1_1anonymous__namespace_02pgr__alphaShape_8cpp_03 =
-[
-    [ "CompareRadius", "structpgrouting_1_1alphashape_1_1anonymous__namespace_02pgr__alphaShape_8cpp_03_1_1CompareRadius.html", "structpgrouting_1_1alphashape_1_1anonymous__namespace_02pgr__alphaShape_8cpp_03_1_1CompareRadius" ]
-];

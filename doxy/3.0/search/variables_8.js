@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['last_5fedge_5fid',['last_edge_id',['../classpgrouting_1_1contraction_1_1Pgr__linear.html#a8b6d6520b8f55c307a70f8bff22b8816',1,'pgrouting::contraction::Pgr_linear']]],
-  ['log',['log',['../classpgrouting_1_1Pgr__messages.html#a7bc802659e3e98f9e4ed1d829d5220b2',1,'pgrouting::Pgr_messages::log()'],['../classPgr__dag.html#aa1dbd4602e7aa9e86d4c6fa27728a69f',1,'Pgr_dag::log()'],['../classpgrouting_1_1Pgr__dijkstra.html#a4e7f3a2bc886a561be128bf87ac46b2b',1,'pgrouting::Pgr_dijkstra::log()'],['../classpgrouting_1_1Pgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html#a7e1d0c35b8dd7e698667c9f3cb2a8a45',1,'pgrouting::Pgr_dijkstra::dijkstra_distance_visitor_no_init::log()'],['../classpgrouting_1_1graph_1_1Pgr__lineGraph.html#ae82ae4fd88dfdabaa7e6e209ae814340',1,'pgrouting::graph::Pgr_lineGraph::log()'],['../classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html#a0fa0cef33dc16beb515c036566938bf8',1,'pgrouting::graph::Pgr_lineGraphFull::log()'],['../classpgrouting_1_1tsp_1_1TSP.html#aefc002eb4850028ef3d20a86c657835b',1,'pgrouting::tsp::TSP::log()']]]
-];

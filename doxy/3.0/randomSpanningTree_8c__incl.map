@@ -1,8 +1,0 @@
-<map id="randomSpanningTree.c" name="randomSpanningTree.c">
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="69,169,291,196"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="155,87,333,114"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="358,87,506,114"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="530,87,689,114"/>
-<area shape="rect" id="node7" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="713,87,884,114"/>
-<area shape="rect" id="node8" href="$randomSpanningTree__driver_8h.html" title="drivers/spanningTree\l/randomSpanningTree_driver.h" alt="" coords="909,80,1107,121"/>
-</map>

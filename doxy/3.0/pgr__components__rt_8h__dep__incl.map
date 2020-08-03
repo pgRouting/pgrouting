@@ -1,8 +1,0 @@
-<map id="pgr_components_rt.h" name="pgr_components_rt.h">
-<area shape="rect" id="node2" href="$componentsResult_8h.html" title="componentsResult.h" alt="" coords="5,87,148,114"/>
-<area shape="rect" id="node3" href="$articulationPoints__driver_8h.html" title="articulationPoints\l_driver.h" alt="" coords="173,80,295,121"/>
-<area shape="rect" id="node4" href="$biconnectedComponents__driver_8h.html" title="biconnectedComponents\l_driver.h" alt="" coords="320,80,487,121"/>
-<area shape="rect" id="node5" href="$bridges__driver_8h.html" title="bridges_driver.h" alt="" coords="511,87,626,114"/>
-<area shape="rect" id="node6" href="$connectedComponents__driver_8h.html" title="connectedComponents\l_driver.h" alt="" coords="651,80,807,121"/>
-<area shape="rect" id="node7" href="$strongComponents__driver_8h.html" title="strongComponents_driver.h" alt="" coords="831,87,1013,114"/>
-</map>

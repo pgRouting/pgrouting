@@ -1,7 +1,0 @@
-<map id="pgr_contract.hpp" name="pgr_contract.hpp">
-<area shape="rect" id="node4" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="138,80,314,107"/>
-<area shape="rect" id="node5" href="$pgr__contractionGraph_8hpp.html" title="contraction/pgr_contraction\lGraph.hpp" alt="" coords="253,155,431,196"/>
-<area shape="rect" id="node6" href="$ch__graphs_8hpp.html" title="contraction/ch_graphs.hpp" alt="" coords="389,80,564,107"/>
-<area shape="rect" id="node7" href="$pgr__linearContraction_8hpp.html" title="contraction/pgr_linearContraction.hpp" alt="" coords="507,162,745,189"/>
-<area shape="rect" id="node8" href="$pgr__deadEndContraction_8hpp.html" title="contraction/pgr_deadEndContraction.hpp" alt="" coords="770,162,1029,189"/>
-</map>
