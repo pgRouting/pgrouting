@@ -1,0 +1,15 @@
+digraph "pgrouting::functions::Pgr_mst&lt; G &gt;"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node3 [label="pgrouting::functions\l::Pgr_mst\< G \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_tree_id\nm_roots" ,fontname="Helvetica"];
+  Node4 [label="std::vector\< int64_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_suffix" ,fontname="Helvetica"];
+  Node7 [label="std::string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node9 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_components" ,fontname="Helvetica"];
+  Node9 [label="std::vector\< size_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node10 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_spanning_tree" ,fontname="Helvetica"];
+  Node10 [label="pgrouting::functions\l::Pgr_mst\< G \>::InSpanning",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$structpgrouting_1_1functions_1_1Pgr__mst_1_1InSpanning.html"];
+}

@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::Vehicle" name="pgrouting::vrp::Vehicle">
+<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title="pgrouting::Identifier" alt="" coords="13,5,146,32"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1PD__problem.html" title="pgrouting::vrp::PD\l_problem" alt="" coords="15,57,143,98"/>
+</map>

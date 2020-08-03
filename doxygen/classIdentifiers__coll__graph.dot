@@ -1,0 +1,8 @@
+digraph "Identifiers&lt; T &gt;"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node4 [label="Identifiers\< T \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ids" ,fontname="Helvetica"];
+  Node5 [label="std::set\< T \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

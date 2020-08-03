@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title="STL class. " alt="" coords="5,31,109,57"/>
+<area shape="rect" id="node2" href="$classAssertFailedException.html" title="Extends std::exception and is the exception that we throw if an assert fails. " alt="" coords="157,5,311,32"/>
+<area shape="rect" id="node3" href="$classUserQuitException.html" title="UserQuitException" alt="" coords="168,56,300,83"/>
+</map>

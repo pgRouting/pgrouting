@@ -1,0 +1,11 @@
+digraph "allpairs" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_68267d1309a1af8e8297ef4c3efbcdba {
+    graph [ bgcolor="#ddddee", pencolor="black", label="src" fontname="Helvetica", fontsize="10", URL="dir_68267d1309a1af8e8297ef4c3efbcdba.html"]
+  dir_b225a6681fb098ede5646da9389b6da5 [shape=box, label="allpairs", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_b225a6681fb098ede5646da9389b6da5.html"];
+  }
+  dir_d44c64559bbebec7f509842c48db8b23 [shape=box label="include" fillcolor="white" style="filled" color="red" URL="dir_d44c64559bbebec7f509842c48db8b23.html"];
+  dir_b225a6681fb098ede5646da9389b6da5->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="18", labeldistance=1.5 headhref="dir_000047_000003.html"];
+}

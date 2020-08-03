@@ -1,0 +1,23 @@
+digraph "pgrouting::graph::PgrDirectedChPPGraph"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="pgrouting::graph::PgrDirected\lChPPGraph",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" resultPath" ,fontname="Helvetica"];
+  Node2 [label="std::vector\< General\l_path_element_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" VToVecid" ,fontname="Helvetica"];
+  Node6 [label="std::map\< int64_t,\l size_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" resultEdges" ,fontname="Helvetica"];
+  Node9 [label="std::vector\< pgr_edge_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node11 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" edgeToId" ,fontname="Helvetica"];
+  Node11 [label="std::map\< std::pair\l\< int64_t, int64_t \>\l, size_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node12 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" resultGraph" ,fontname="Helvetica"];
+  Node12 [label="std::vector\< std::pair\l\< int64_t, std::vector\l\< size_t \> \> \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node13 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" pathStack" ,fontname="Helvetica"];
+  Node13 [label="std::stack\< int64_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node15 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" edgeVisited" ,fontname="Helvetica"];
+  Node15 [label="std::vector\< bool \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node16 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" flowGraph" ,fontname="Helvetica"];
+  Node16 [label="pgrouting::graph::PgrCost\lFlowGraph",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1graph_1_1PgrCostFlowGraph.html"];
+}

@@ -1,0 +1,12 @@
+digraph "pgrouting::vrp::Order"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="pgrouting::vrp::Order",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="pgrouting::Identifier",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1Identifier.html"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_pickup\nm_delivery" ,fontname="Helvetica"];
+  Node4 [label="pgrouting::vrp::Vehicle_node",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Vehicle__node.html",tooltip="Extend Tw_node to evaluate the vehicle at node level. "];
+  Node17 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_compatibleI\nm_compatibleJ" ,fontname="Helvetica"];
+  Node17 [label="Identifiers\< size_t \>",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classIdentifiers.html"];
+}

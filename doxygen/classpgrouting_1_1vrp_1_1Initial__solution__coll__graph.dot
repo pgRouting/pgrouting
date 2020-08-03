@@ -1,0 +1,10 @@
+digraph "pgrouting::vrp::Initial_solution"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node3 [label="pgrouting::vrp::Initial\l_solution",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="pgrouting::vrp::Solution",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Solution.html"];
+  Node17 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" all_orders\nassigned\nunassigned" ,fontname="Helvetica"];
+  Node17 [label="Identifiers\< size_t \>",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classIdentifiers.html"];
+}

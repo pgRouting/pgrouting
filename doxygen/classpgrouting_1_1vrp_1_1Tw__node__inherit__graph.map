@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Tw_node" name="pgrouting::vrp::Tw_node">
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html" title="Extend Tw_node to evaluate the vehicle at node level. " alt="" coords="56,169,243,196"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title="pgrouting::Identifier" alt="" coords="5,13,139,39"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1PD__problem.html" title="pgrouting::vrp::PD\l_problem" alt="" coords="163,5,291,47"/>
+</map>

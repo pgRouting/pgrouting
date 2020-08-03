@@ -1,0 +1,4 @@
+<map id="pgrouting::vrp::PD_problem" name="pgrouting::vrp::PD_problem">
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html" title="pgrouting::vrp::Pgr\l_pickDeliver" alt="" coords="26,199,155,240"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__messages.html" title="pgrouting::Pgr_messages" alt="" coords="5,5,176,32"/>
+</map>

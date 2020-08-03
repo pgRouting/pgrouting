@@ -1,0 +1,6 @@
+<map id="pgrouting::Identifier" name="pgrouting::Identifier">
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Base__node.html" title="The Base_node class defines the operations that can be performed in a 2D node. " alt="" coords="187,5,361,32"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Order.html" title="pgrouting::vrp::Order" alt="" coords="203,56,345,83"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html" title="Extends the Node class to create a Node with time window attributes. " alt="" coords="193,107,355,133"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html" title="Vehicle with time windows. " alt="" coords="198,157,350,184"/>
+</map>

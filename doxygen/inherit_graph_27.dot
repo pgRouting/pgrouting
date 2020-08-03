@@ -1,0 +1,7 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="Pgr_allpairs\< G \>::\linf_plus\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structPgr__allpairs_1_1inf__plus.html"];
+}

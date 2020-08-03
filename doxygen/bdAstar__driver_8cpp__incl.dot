@@ -1,0 +1,23 @@
+digraph "bdAstar_driver.cpp"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node0 [label="bdAstar_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="drivers/bdAstar/bdAstar\l_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$bdAstar__driver_8h.html"];
+  Node0 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="sstream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="deque",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="vector",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="algorithm",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="bdAstar/pgr_bdAstar.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__bdAstar_8hpp.html"];
+  Node10 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 -> Node41 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node41 [label="cpp_common/pgr_alloc.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__alloc_8hpp.html"];
+  Node0 -> Node21 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node21 [label="cpp_common/pgr_assert.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__assert_8h.html",tooltip="Assertions Handling. "];
+}

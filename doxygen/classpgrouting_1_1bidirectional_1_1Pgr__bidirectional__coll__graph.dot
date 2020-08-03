@@ -1,0 +1,19 @@
+digraph "pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node3 [label="pgrouting::bidirectional\l::Pgr_bidirectional\< G \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" forward_predecessor\nbackward_predecessor" ,fontname="Helvetica"];
+  Node4 [label="std::vector\< V \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" backward_queue\nforward_queue" ,fontname="Helvetica"];
+  Node7 [label="std::priority_queue\l\< Cost_Vertex_pair,\l std::vector\< Cost_Vertex\l_pair \>, std::greater\< Cost\l_Vertex_pair \> \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" forward_edge\nbackward_edge" ,fontname="Helvetica"];
+  Node9 [label="std::vector\< int64_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node10 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_log" ,fontname="Helvetica"];
+  Node10 [label="std::ostringstream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node15 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" backward_finished\nforward_finished" ,fontname="Helvetica"];
+  Node15 [label="std::vector\< bool \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node16 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" forward_cost\nbackward_cost" ,fontname="Helvetica"];
+  Node16 [label="std::vector\< double \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__many__goals__visitor.html" title="class for stopping when all targets are found " alt="" coords="192,5,349,61"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1algorithms_1_1Pgr__astar_1_1astar__one__goal__visitor.html" title="visitor that terminates when we find the goal " alt="" coords="192,85,349,141"/>
+</map>

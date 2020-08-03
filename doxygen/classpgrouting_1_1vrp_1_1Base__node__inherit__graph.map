@@ -1,0 +1,5 @@
+<map id="pgrouting::vrp::Base_node" name="pgrouting::vrp::Base_node">
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Dnode.html" title="The Dnode class defines a the basic operations when data is a matrix. " alt="" coords="5,155,152,181"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Node.html" title="The Node class defines a point in 2D space with an id. " alt="" coords="177,155,317,181"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title="pgrouting::Identifier" alt="" coords="96,5,229,32"/>
+</map>
