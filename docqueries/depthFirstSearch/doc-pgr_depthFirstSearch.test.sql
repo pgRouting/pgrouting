@@ -17,13 +17,9 @@ SELECT * FROM pgr_depthFirstSearch(
     ARRAY[11, 2], directed => false, max_depth => 2
 );
 \echo -- q4
-UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
-
 SELECT * FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id <= 4
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table
     ORDER BY id DESC',
-    1, directed => false
+    2
 );
 \echo -- q5

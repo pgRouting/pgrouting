@@ -167,14 +167,17 @@ The examples of this section are based on the :doc:`sampledata` network.
 
 **Example: No internal ordering on traversal**
 
+In the following query, the inner query of the example: "Using defaults" is modified
+so that the data is entered into the algorithm is given in the reverse ordering of the id.
+
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q4
    :end-before: -- q5
 
-Here, the edge from :math:`2` to :math:`5` has a cost of :math:`1.016` which is
-greater than the cost of edge from :math:`2` to :math:`3`, which is :math:`1.004`.
-Yet, the edge with greater cost is traversed first, because it comes first in the
-``Edges SQL``.
+The resulting traversal is different.
+
+The left image shows the result with asending order of ids and the right image shows
+with descending order of ids:
 
 
 See Also
