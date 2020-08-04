@@ -40,9 +40,9 @@ of a planar graph is called a plane drawing. Every planar graph also admits a st
 plane drawing where each edge is represented by a line segment.
 
 The main characteristics are:
-  - It will return a bool value depending upon the planarity of the graph.
+  - It will return a boolean value depending upon the planarity of the graph.
 
-  - Applicable only for undirected graphs.
+  - Applicable only for **undirected** graphs.
 
   - The graph can be either weighted or unweighted.
 
