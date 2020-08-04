@@ -28,45 +28,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#ifndef INCLUDE_LTDTREE_PGR_LTDTREE_HPP
-#define INCLUDE_LTDTREE_PGR_LTDTREE_HPP
+#ifndef INCLUDE_DOMINATOR_PGR_LENGAUERTARJANDOMINATORTREE_DRIVER_HPP_
+#define INCLUDE_DOMINATOR_PGR_LENGAUERTARJANDOMINATORTREE_DRIVER_HPP_
 #pragma once
 
-#include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/pgr_messages.h"
-
-#include <vector>
-#include <algorithm>
 
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dominator_tree.hpp>
 #include <boost/property_map/property_map.hpp>
 #include <boost/property_map/vector_property_map.hpp>
 #include <boost/type_traits.hpp>
+
+#include <vector>
+#include <algorithm>
 #include "cpp_common/interruption.h"
+#include "cpp_common/pgr_messages.h"
+#include "cpp_common/pgr_base_graph.hpp"
 
-//using namespace boost;
-//using namespace  std;
-/********TODO week 10*********/
+
 namespace pgrouting {
-    namespace functions {
+namespace functions {
 
-        template<class G>
-        class Pgr_LTDTree : public pgrouting::Pgr_messages {
-        public:
+template<class G>
+class Pgr_LTDTree : public pgrouting::Pgr_messages {
+ public:
             typedef typename G::V Vertex;
             typedef typename G::E_i E_i;
             typedef typename G::V_i V_i;
-            
             std::vector <pgr_ltdtree_rt> pgr_ltdtree(
                     G &graph,
                     int64_t root
                     ){
                 std::vector<pgr_ltdtree_rt> results;
-                std::vector<Vertex> domTreePredVector = std::vector<Vertex>(boost::num_vertices(graph.graph),-1);
-                auto domTreePredMap = make_iterator_property_map(domTreePredVector.begin(), boost::get(boost::vertex_index, graph.graph));
-                   
-                    
+                std::vector<Vertex> domTreePredVector = std::vector<Vertex>(boost::num_vertices(graph.graph), -1);
+                auto domTreePredMap =
+                make_iterator_property_map
+                (domTreePredVector.begin(), boost::get(boost::vertex_index, graph.graph));
                /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
                 CHECK_FOR_INTERRUPTS();
                 try {
@@ -85,15 +82,13 @@ namespace pgrouting {
                 V_i v, vend;
                 for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
                     int64_t vid = graph[*v].id;
-                    results.push_back ({vid, (domTreePredVector[*v]!=-1 ? (domTreePredVector[*v]+1) : 0) });
-
-                    log<<graph[*v].id<<" "<<domTreePredVector[*v]<<" \n";       
+                    results.push_back({vid, (domTreePredVector[*v] != -1 ? (domTreePredVector[*v]+1) : 0) });
                 }
 
                  return results;
             }
-        };
-    }
-}
-#endif  // INCLUDE_LTDTREE_PGR_LTDTREE_HPP
+};
+}  // namespace functions
+}  // namespace pgrouting
+#endif  // INCLUDE_DOMINATOR_PGR_LENGAUERTARJANDOMINATORTREE_DRIVER_HPP_
 

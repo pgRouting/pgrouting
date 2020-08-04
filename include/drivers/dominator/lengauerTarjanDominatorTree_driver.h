@@ -27,20 +27,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_LTDTREE_DRIVER_H_
-#define INCLUDE_DRIVERS_LTDTREE_DRIVER_H_
-
+#ifndef INCLUDE_DRIVERS_DOMINATOR_LENGAUERTARJANDOMINATORTREE_DRIVER_H_
+#define INCLUDE_DRIVERS_DOMINATOR_LENGAUERTARJANDOMINATORTREE_DRIVER_H_
+#pragma once
 
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
-#include <c_types/pgr_ltdtree_rt.h>
+
 
 #else
 #   include <stddef.h>
 #endif
 
-
+#include <c_types/pgr_ltdtree_rt.h>
 #include "c_types/pgr_edge_t.h"
 
 #ifdef __cplusplus
@@ -67,4 +67,4 @@ do_pgr_LTDTree(
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_LTDTREE_LTDTREE_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_DOMINATOR_LENGAUERTARJANDOMINATORTREE_DRIVER_H_
