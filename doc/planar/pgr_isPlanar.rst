@@ -74,7 +74,7 @@ Parameters
 =================== ====================== ========= =================================================
 Parameter           Type                   Default   Description
 =================== ====================== ========= =================================================
-**Edges SQL**       ``TEXT``                         SQL query as described above.
+**Edges SQL**       ``TEXT``                         SQL query as described below.
 =================== ====================== ========= =================================================
 
 Inner query
@@ -90,11 +90,13 @@ Column            Type                 Default  Description
 **target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
 **cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
 
-                                                 - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+                                                 - When positive: edge `(target, source)` is part of the graph.
+                                                 - When negative: edge `(target, source)` is not part of the graph.
 
 **reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
 
-                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+                                                 - When positive: edge `(target, source)` is part of the graph.
+                                                 - When negative: edge `(target, source)` is not part of the graph.
 
 ================= =================== ======== =================================================
 
@@ -117,24 +119,18 @@ Column             Type        Description
 Additional Example:
 -------------------------------------------------------------------------------
 
-Now, let's add some edges to make the :doc:`sampledata` graph non-planar. Inserting edges between every pair
-in this list of vertices 1, 2, 3, 4, 5. This will make the graph non-planar.
+The following edges will make the subgraph with vertices {1, 2, 3, 4, 5} a K5 graph.
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q2
    :end-before: -- q3
 
-Now, check the planarity.
+The new graph is not planar because it has a K5 subgraph.
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q3
    :end-before: -- q4
 
-Use of pgr_connectedComponents( ) function in query to check the planarity of a particular component.
-
-.. literalinclude:: doc-pgr_isPlanar.queries
-   :start-after: -- q4
-   :end-before: -- q5
 
 See Also
 -------------------------------------------------------------------------------
