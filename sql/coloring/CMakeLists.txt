@@ -2,9 +2,13 @@
 SET(LOCAL_FILES
     _sequentialVertexColoring.sql
     sequentialVertexColoring.sql
+    _bipartite.sql
+    bipartite.sql
     )
 
 # Do not modify below this line
+
+
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})

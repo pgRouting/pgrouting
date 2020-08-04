@@ -4,6 +4,9 @@ fix_typos
 code_linter
 src/version/_version.h
 .vscode
+Bipartite_run.sh
+run.sh
+runWithDoc.sh
 
 .DS_Store
 .vagrant
