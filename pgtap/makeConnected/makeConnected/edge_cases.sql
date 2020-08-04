@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(16);
+SELECT plan(18);
 
 -- 0 edge, 0 vertex tests
 
@@ -16,9 +16,7 @@ SELECT is_empty('q1', 'q1: Graph with 0 edge and 0 vertex');
 
 PREPARE makeConnected2 AS
 SELECT *
-FROM pgr_makeConnected(
-    'q1'
-);
+FROM pgr_makeConnected('q1');
 
 SELECT is_empty('makeConnected2', '2: Graph with 0 edge and 0 vertex -> Empty row is returned');
 
@@ -47,9 +45,7 @@ SELECT set_eq('q5', $$VALUES (9, 6, 6, 1, 1)$$, 'q5: Graph with only vertex 6');
 
 PREPARE oneVertexTest6 AS
 SELECT *
-FROM pgr_makeConnected(
-    'q5'
-);
+FROM pgr_makeConnected('q5');
 
 SELECT is_empty('oneVertexTest6', '6: Graph is already Connected -> Empty row is returned');
 
@@ -64,9 +60,7 @@ SELECT set_eq('q7', $$VALUES (1, 1, 2, 1, 1)$$, 'q9: Graph with two vertices 1 a
 
 PREPARE twoVerticesTest8 AS
 SELECT *
-FROM pgr_makeConnected(
-    'q7'
-);
+FROM pgr_makeConnected('q7');
 
 SELECT is_empty('twoVerticesTest8', '8: Graph is already Connected -> Empty row is returned');
 
@@ -88,6 +82,18 @@ SELECT set_eq('twoVerticesTest10', $$VALUES (1, 2, 6)$$, '10: One row is returne
 
 -- 3 vertices tests ====> Already Connnected
 
+PREPARE q11 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id IN (1,2);
+
+SELECT set_eq('q11', $$VALUES (1, 1, 2, 1, 1), (2, 2, 3, -1, 1)$$, 'q11: Graph with three vertices 1, 2 and 3');
+
+PREPARE threeVerticesTest12 AS
+SELECT *
+FROM pgr_makeConnected('q11');
+
+SELECT is_empty('threeVerticesTest12', '12: Graph is already Connected -> Empty row is returned');
 
 
 
