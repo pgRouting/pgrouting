@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(14);
+SELECT plan(15);
 
 
 
@@ -124,6 +124,23 @@ FROM pgr_isPlanar(
 );
 
 SELECT set_eq('fourVerticesTest14', $$VALUES('t'::bool) $$, '14: Planar graph with 4 vertices');
+
+-- 4 vertices test (cyclic)
+
+PREPARE q15 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id IN (8, 10, 11, 12);
+
+SELECT set_eq('q15',
+    $$VALUES
+        (8, 5, 6, 1, 1),
+        (10, 5, 10, 1, 1),
+        (11, 6, 11, 1, -1),
+        (12, 10, 11, 1, -1)
+    $$,
+    'q15: Graph with four vertices 5, 6, 10 and 11 (cyclic)'
+);
 
 
 
