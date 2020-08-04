@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(20);
+SELECT plan(17);
 
 -- 0 edge, 0 vertex tests
 
@@ -98,54 +98,10 @@ SELECT set_eq('makeConnected8', $$VALUES (1, 7, 6)$$, '8: One row is returned');
 
 -- 3 vertices tests ====> Already Connnected
 
-CREATE TABLE three_vertices_table (
-    id BIGSERIAL,
-    source BIGINT,
-    target BIGINT,
-    cost FLOAT,
-    reverse_cost FLOAT
-);
-
-INSERT INTO three_vertices_table (source, target, cost, reverse_cost) VALUES
-    (3, 6, 20, -1),
-    (3, 8, 10, -1),
-    (6, 8, -1, 12);
-
-PREPARE q19 AS
-SELECT id, source, target, cost, reverse_cost
-FROM three_vertices_table;
-
--- Cyclic Graph with three vertices 3, 6 and 8
-SELECT set_eq('q19',
-    $$VALUES
-        (1, 3, 6, 20, -1),
-        (2, 3, 8, 10, -1),
-        (3, 6, 8, -1, 12)
-    $$,
-    'q19: Cyclic Graph with three vertices 3, 6 and 8'
-);
 
 
-PREPARE makeConnected10 AS
-SELECT *
-FROM pgr_makeConnected(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM three_vertices_table'
-);
 
-PREPARE makeConnected11 AS
-SELECT *
-FROM pgr_makeConnected(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM three_vertices_table WHERE id > 4'
-);
 
-SELECT is_empty('makeConnected10',
-    '10: Graph Already Connected -> Empty row is returned'
-);
-SELECT is_empty('makeConnected11',
-    '11: Vertex not present in graph -> Empty row is returned'
-);
 
 -- 3 vertices tests ====> Not Connnected
 PREPARE makeConnected12 AS
