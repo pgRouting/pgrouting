@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/graphColoring/sequentialVertexColoring_driver.h"
+#include "drivers/coloring/sequentialVertexColoring_driver.h"
 
 #include <sstream>
 #include <vector>
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#include "graphColoring/pgr_sequentialVertexColoring.hpp"
+#include "coloring/pgr_sequentialVertexColoring.hpp"
 
 /** @file sequentialVertexColoring_driver.cpp
  * @brief Handles actual calling of function in the `pgr_sequentialVertexColoring.hpp` file.

@@ -1,4 +1,4 @@
-ADD_LIBRARY(graphColoring OBJECT
+ADD_LIBRARY(coloring OBJECT
     sequentialVertexColoring.c
     sequentialVertexColoring_driver.cpp
     )
