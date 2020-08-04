@@ -88,12 +88,6 @@ process(
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
-    if (total_edges == 0) {
-        if (rootsArr) pfree(rootsArr);
-        pgr_SPI_finish();
-        return;
-    }
-
     clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;

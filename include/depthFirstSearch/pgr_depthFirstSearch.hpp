@@ -86,10 +86,9 @@ class Pgr_depthFirstSearch {
 
          for (auto root : roots) {
              std::vector < E > visited_order;
+             results.push_back({root, 0, root, -1, 0.0, 0.0});
 
              if (graph.has_vertex(root)) {
-                 results.push_back({root, 0, root, -1, 0.0, 0.0});
-
                  auto v_root(graph.get_V(root));
 
                  depthFirstSearch_single_vertex(graph, v_root, visited_order, directed, max_depth);

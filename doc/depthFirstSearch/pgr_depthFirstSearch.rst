@@ -51,7 +51,6 @@ and visits all the vertices in a graph, in the depth-first search traversal orde
   ignored.
 - It does not produce the shortest path from a root vertex to a target vertex.
 - The aggregate cost of traversal is not guaranteed to be minimal.
-- If the root vertex does not exist, an empty row is returned.
 - The returned values are ordered in ascending order of `start_vid`.
 - Depth First Search Running time: :math:`O(E + V)`
 
@@ -66,7 +65,6 @@ Signatures
     pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth]) -- Experimental on v3.2
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
 
 .. rubric:: Using defaults
 
@@ -87,7 +85,6 @@ Single vertex
     pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
 
 :Example: From root vertex :math:`2` on an **undirected** graph,
           with :math:`depth <= 2`
@@ -107,7 +104,6 @@ Multiple vertices
     pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
 
 :Example: From root vertices :math:`\{11, 2\}` on an **undirected** graph
           with :math:`depth <= 2`
