@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "drivers/LTDTree/LTDTree_driver.h"
-#include "LTDTree/pgr_LTDTree_driver.hpp"
+#include "drivers/dominator/LTDTree_driver.h"
+#include "dominator/pgr_LTDTree_driver.hpp"
 #include "c_types/pgr_ltdtree_rt.h"
 #include <string.h>
 #include <sstream>
