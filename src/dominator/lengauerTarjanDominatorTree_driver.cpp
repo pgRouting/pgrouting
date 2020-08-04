@@ -40,8 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "c_types/pgr_ltdtree_rt.h"
-#include "drivers/dominator/LTDTree_driver.h"
-#include "dominator/pgr_LTDTree_driver.hpp"
+#include "drivers/dominator/lengauerTarjanDominatorTree_driver.h"
+#include "dominator/pgr_lengauerTarjanDominatorTree_driver.hpp"
 
 
 /************************************************************

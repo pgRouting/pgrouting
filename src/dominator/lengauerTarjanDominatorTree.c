@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pgr_ltdtree_rt.h"
 #include "c_common/edges_input.h"
 
-#include "drivers/dominator/LTDTree_driver.h"
+#include "drivers/dominator/lengauerTarjanDominatorTree_driver.h"
 
 
 PGDLLEXPORT Datum _pgr_lengauertarjandominatortree(PG_FUNCTION_ARGS);
