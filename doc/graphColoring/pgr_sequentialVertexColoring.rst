@@ -10,8 +10,8 @@
 pgr_sequentialVertexColoring - Experimental
 ===============================================================================
 
-``pgr_sequentialVertexColoring`` — The Sequential Vertex Coloring algorithm
-implemented by Boost.Graph.
+``pgr_sequentialVertexColoring`` — Returns the vertex coloring of an undirected graph,
+using greedy approach.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html
@@ -54,8 +54,8 @@ such that no edge connects two identically colored vertices.
 - Sequential Vertex Coloring Running Time: :math:`O(|V|*(|d| + |k|))`
 
   - where :math:`|V|` is the number of vertices,
-  - :math:`|d|` is the maximum degree of the vertices in the graph,
-  - :math:`|k|` is the number of colors used.
+  - :math:`d` is the maximum degree of the vertices in the graph,
+  - :math:`k` is the number of colors used.
 
 Signatures
 ------------------------------------------------------------------------------
