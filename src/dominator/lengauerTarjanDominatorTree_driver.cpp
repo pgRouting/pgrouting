@@ -28,10 +28,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "drivers/dominator/LTDTree_driver.h"
-#include "dominator/pgr_LTDTree_driver.hpp"
-#include "c_types/pgr_ltdtree_rt.h"
-#include <string.h>
+
+
+#include <string>
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -40,6 +39,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "c_types/pgr_ltdtree_rt.h"
+#include "drivers/dominator/LTDTree_driver.h"
+#include "dominator/pgr_LTDTree_driver.hpp"
 
 
 /************************************************************
@@ -72,13 +74,12 @@ do_pgr_LTDTree(
 
 /***********************Working with graph**************************/
 
-        log << "Working with directed Graph\n";
         graphType gType = DIRECTED;
         pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges); //Creating graph using data_edges
+        digraph.insert_edges(data_edges, total_edges);
         std::vector<pgr_ltdtree_rt> results;
         pgrouting::functions::Pgr_LTDTree<pgrouting::DirectedGraph> fn_LTDTree;
-        results=fn_LTDTree.pgr_ltdtree(digraph,root_vertex);
+        results = fn_LTDTree.pgr_ltdtree(digraph, root_vertex);
 
         logstr += fn_LTDTree.get_log();
         log << logstr;
@@ -110,7 +111,6 @@ do_pgr_LTDTree(
         *notice_msg = notice.str().empty()?
                       *notice_msg :
                       pgr_msg(notice.str().c_str());
-
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -130,8 +130,4 @@ do_pgr_LTDTree(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-
-
 }
-
-
