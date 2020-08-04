@@ -178,10 +178,16 @@ so that the data is entered into the algorithm is given in the reverse ordering 
 
 The resulting traversal is different.
 
-The left image shows the result with asending order of ids and the right image shows
+The left image shows the result with ascending order of ids and the right image shows
 with descending order of ids:
 
-TODO here comes the images
+|ascending| |descending|
+
+.. |ascending| image:: images/Fig1-AscendingOrder.png
+   :width: 45%
+
+.. |descending| image:: images/Fig2-DescendingOrder.png
+   :width: 45%
 
 See Also
 -------------------------------------------------------------------------------
