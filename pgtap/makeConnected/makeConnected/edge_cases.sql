@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(17);
+SELECT plan(16);
 
 -- 0 edge, 0 vertex tests
 
@@ -84,16 +84,6 @@ SELECT *
 FROM pgr_makeConnected('q9');
 
 SELECT set_eq('twoVerticesTest10', $$VALUES (1, 2, 6)$$, '10: One row is returned');
-
-PREPARE makeConnected8 AS
-SELECT *
-FROM pgr_makeConnected('SELECT id,  source, 7 AS target, cost, reverse_cost
-                                      FROM edge_table WHERE id = 6
-                                          UNION
-                        SELECT id, source, 6 AS target, cost, reverse_cost
-                                      FROM edge_table WHERE id = 9'
-);
-SELECT set_eq('makeConnected8', $$VALUES (1, 7, 6)$$, '8: One row is returned');
 
 
 -- 3 vertices tests ====> Already Connnected
