@@ -82,7 +82,6 @@ namespace pgrouting {
                     boost::get (partition_map, *v) == boost::color_traits <boost::default_color_type>::white () ? results.push_back({vid,0}) :results.push_back({vid,1});
                     
                 }
-                
                 return results;
                
             }
