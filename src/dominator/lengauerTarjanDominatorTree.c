@@ -40,8 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/dominator/LTDTree_driver.h"
 
 
-PGDLLEXPORT Datum _pgr_lengauertarjandominatortree (PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_lengauertarjandominatortree );
+PGDLLEXPORT Datum _pgr_lengauertarjandominatortree(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_lengauertarjandominatortree);
 
 
 static
@@ -98,7 +98,7 @@ _pgr_lengauertarjandominatortree(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**********************************************************************/
-    pgr_ltdtree_rt *result_tuples =NULL;
+    pgr_ltdtree_rt *result_tuples = NULL;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -142,10 +142,7 @@ _pgr_lengauertarjandominatortree(PG_FUNCTION_ARGS) {
         Datum       result;
         Datum       *values;
         bool        *nulls;
-    
         size_t call_cntr = funcctx->call_cntr;
-
-
         size_t numb = 3;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -153,15 +150,13 @@ _pgr_lengauertarjandominatortree(PG_FUNCTION_ARGS) {
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-           
             values[0] = Int32GetDatum(call_cntr + 1);
             values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
-	        values[2] = Int64GetDatum(result_tuples[call_cntr].idom);
+            values[2] = Int64GetDatum(result_tuples[call_cntr].idom);
             tuple = heap_form_tuple(tuple_desc, values, nulls);
             result = HeapTupleGetDatum(tuple);
             SRF_RETURN_NEXT(funcctx, result);
-        }else {
+        } else {
             SRF_RETURN_DONE(funcctx);
         }
-
 }
