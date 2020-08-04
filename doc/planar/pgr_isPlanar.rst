@@ -55,7 +55,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_isPlanar(Edges SQL)
+    pgr_isPlanar(Edges SQL) -- Experimental on v3.2
 
     RETURNS BOOLEAN
 
@@ -64,6 +64,9 @@ Signatures
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q1
    :end-before: -- q2
+
+.. index::
+   single: isPlanar(Edges SQL) -- Experimental on v3.2
 
 Parameters
 -------------------------------------------------------------------------------
