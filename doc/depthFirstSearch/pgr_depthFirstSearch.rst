@@ -37,17 +37,16 @@ Undirected DFS algorithm implemented by Boost.Graph.
 Description
 -------------------------------------------------------------------------------
 
-Depth First Search algorithm is a well known traversal algorithm which starts
-from a root vertex (``Root vid``) and visits all the nodes in a graph in the
-depth-first search traversal order. An optional non-negative maximum depth
-parameter (``max_depth``) can be specified to get the results up to a particular
-depth.
+Depth First Search algorithm is a traversal algorithm which starts from a root vertex
+and visits all the vertices in a graph, in the depth-first search traversal order.
 
 **The main Characteristics are:**
 
 - The implementation works for both **directed** and **undirected** graphs.
 - Provides the Depth First Search traversal order from a root vertex to
   a particular maximum depth level.
+- An optional non-negative maximum depth parameter (``max_depth``) can be
+  specified to get the results up to a particular depth.
 - For optimization purposes, any duplicated values in the `Root vids` are
   ignored.
 - It does not produce the shortest path from a root vertex to a target vertex.
@@ -63,8 +62,8 @@ Signatures
 
 .. code-block:: none
 
-    pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth])
-    pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth])
+    pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth]) -- Experimental on v3.2
+    pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth]) -- Experimental on v3.2
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -78,7 +77,7 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: depthFirstSearch(Single vertex) - Experimental
+    single: depthFirstSearch(Single vertex) -- Experimental on v3.2
 
 Single vertex
 ...............................................................................
@@ -90,21 +89,15 @@ Single vertex
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From root vertex :math:`2` on an **undirected** graph
+:Example: From root vertex :math:`2` on an **undirected** graph,
+          with :math:`depth <= 2`
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q2
    :end-before: -- q3
 
-:Example: From root vertex :math:`2` on a **directed** graph,
-          with :math:`depth <= 2`
-
-.. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q3
-   :end-before: -- q4
-
 .. index::
-    single: depthFirstSearch(Multiple vertices) - Experimental
+    single: depthFirstSearch(Multiple vertices) -- Experimental on v3.2
 
 Multiple vertices
 ...............................................................................
@@ -120,12 +113,10 @@ Multiple vertices
           with :math:`depth <= 2`
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q4
-   :end-before: -- q5
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. Parameters, Inner query & result columns
-
-.. depthFirstSearch-information-start
 
 Parameters
 -------------------------------------------------------------------------------
@@ -150,8 +141,8 @@ Optional Parameters
 =================== =========== =========================== =================================================
 Parameter           Type        Default                     Description
 =================== =========== =========================== =================================================
-**directed**        ``BOOLEAN`` ``true``                    - When ``true`` Graph is considered `Directed`
-                                                            - When ``false`` the graph is considered as `Undirected`.
+**directed**        ``BOOLEAN`` ``true``                    - When ``true`` Graph is `Directed`
+                                                            - When ``false`` the graph is `Undirected`.
 
 **max_depth**       ``BIGINT``  :math:`9223372036854775807` Upper limit for depth of node in the tree
 
@@ -170,45 +161,20 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-.. result columns start
-
-Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
-
-===============  =========== ====================================================
-Column           Type        Description
-===============  =========== ====================================================
-**seq**          ``BIGINT``  Sequential value starting from :math:`1`.
-**depth**        ``BIGINT``  Depth of the ``node``.
-
-                             - :math:`0`  when ``node`` = ``start_vid``.
-
-**start_vid**    ``BIGINT``  Identifier of the start vertex.
-
-                             - In `Multiple Vertices`_ results are in ascending order.
-
-**node**         ``BIGINT``  Identifier of ``node`` reached using ``edge``.
-**edge**         ``BIGINT``  Identifier of the ``edge`` used to arrive to ``node``.
-
-                             - :math:`-1`  when ``node`` = ``start_vid``.
-
-**cost**         ``FLOAT``   Cost to traverse ``edge``.
-**agg_cost**     ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
-===============  =========== ====================================================
-
-.. result columns end
-
+.. include:: pgr_kruskalDD.rst
+   :start-after: result columns start
+   :end-before: result columns end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
 The examples of this section are based on the :doc:`sampledata` network.
 
-This example shows that the cost of an edge is not used for traversal. An edge
-having a greater cost may be traversed first, if it comes first in the ``Edges SQL``.
+Example: No internal ordering on traversal
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q5
-   :end-before: -- q6
+   :start-after: -- q4
+   :end-before: -- q5
 
 Here, the edge from :math:`2` to :math:`5` has a cost of :math:`1.016` which is
 greater than the cost of edge from :math:`2` to :math:`3`, which is :math:`1.004`.
