@@ -97,40 +97,21 @@ SELECT is_empty('threeVerticesTest12', '12: Graph is already Connected -> Empty 
 
 
 
-
-
 -- 3 vertices tests ====> Not Connnected
-PREPARE makeConnected12 AS
+
+PREPARE q13 AS
+SELECT id,  source, target, cost, reverse_cost FROM edge_table WHERE id = 2
+                                UNION
+SELECT id, source, 6 AS target, cost, reverse_cost FROM edge_table WHERE id = 9;
+
+SELECT set_eq('q13', $$VALUES (2, 2, 3, -1, 1), (9, 6, 6, 1, 1)$$, 'q13: Graph with two vertices 2 and 6');
+
+PREPARE threeVerticesTest14 AS
 SELECT *
-FROM pgr_makeConnected('SELECT id,  source, target, cost, reverse_cost
-                                FROM edge_table WHERE id = 2
-                                        UNION
-                        SELECT id, source, 6 AS target, cost, reverse_cost
-                                FROM edge_table WHERE id = 9'
-);
+FROM pgr_makeConnected('q13');
 
-PREPARE makeConnected13 AS
-SELECT *
-FROM pgr_makeConnected('SELECT id,  source, 2 AS target, cost, reverse_cost
-                                FROM edge_table WHERE id = 2
-                                    UNION
-                        SELECT id, source, target, cost, reverse_cost
-                                FROM edge_table WHERE id = 17'
-);
+SELECT set_eq('threeVerticesTest14', $$VALUES (1, 3, 6)$$, '10: One row is returned');
 
-SELECT set_eq('makeConnected12',
-    $$VALUES
-        (1, 3, 6)
-    $$,
-    '12:Graph with three vertices 1, 2 and 6'
-);
-
-SELECT set_eq('makeConnected13',
-    $$VALUES
-        (1, 2, 14)
-    $$,
-    '13:Graph with three vertices 2, 14 and 15'
-);
 
 -- 4 vertex tests ===> Already Connected
 
