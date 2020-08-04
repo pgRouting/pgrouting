@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /************************************************************
   edges_sql TEXT
  ***********************************************************/
-#include "drivers/bipartite/bipartite_driver.h"
-#include "bipartite/pgr_bipartite_driver.hpp"
+#include "drivers/coloring/bipartite_driver.h"
+#include "coloring/pgr_bipartite_driver.hpp"
 #include "c_types/pgr_bipartite_rt.h"
 #include <string.h>
 #include <sstream>
