@@ -10,9 +10,8 @@
 pgr_depthFirstSearch - Experimental
 ===============================================================================
 
-``pgr_depthFirstSearch`` — Returns the traversal order(s) using Depth First
-Search algorithm. In particular, the Depth First Search algorithm and the
-Undirected DFS algorithm implemented by Boost.Graph.
+``pgr_depthFirstSearch`` — The Depth First Search and the Undirected DFS algorithm
+implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/depth_first_search.html
@@ -166,7 +165,7 @@ Additional Examples
 
 The examples of this section are based on the :doc:`sampledata` network.
 
-Example: No internal ordering on traversal
+**Example: No internal ordering on traversal**
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q4
