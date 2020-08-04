@@ -110,7 +110,7 @@ PREPARE threeVerticesTest14 AS
 SELECT *
 FROM pgr_makeConnected('q13');
 
-SELECT set_eq('threeVerticesTest14', $$VALUES (1, 3, 6)$$, '10: One row is returned');
+SELECT set_eq('threeVerticesTest14', $$VALUES (1, 3, 6)$$, '14: One row is returned');
 
 
 -- 4 vertex tests ===> Cyclic
@@ -142,45 +142,27 @@ SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE id IN (1,6);
 
-SELECT set_eq('q17', $$VALUES (1, 1, 2, 1, 1), (6, 7, 8, 1, 1)$$, 'q13: Graph with four vertices 1, 2, 7 and 8');
+SELECT set_eq('q17', $$VALUES (1, 1, 2, 1, 1), (6, 7, 8, 1, 1)$$, 'q17: Graph with four vertices 1, 2, 7 and 8');
 
 PREPARE fourVerticesTest18 AS
 SELECT *
 FROM pgr_makeConnected('q17');
 
-SELECT set_eq('fourVerticesTest18', $$VALUES (1, 2, 7) $$, '15:Two Connected Components. One row is returned');
+SELECT set_eq('fourVerticesTest18', $$VALUES (1, 2, 7) $$, '18:Two Connected Components. One row is returned');
 
-PREPARE makeConnected16 AS
+
+PREPARE q19 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id IN (17,18);
+
+SELECT set_eq('q19', $$VALUES (17, 14, 15, 1, 1), (18, 16, 17, 1, 1)$$, 'q19: Graph with four vertices 14, 15, 16 and 17');
+
+PREPARE fourVerticesTest20 AS
 SELECT *
-FROM pgr_makeConnected(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id IN (2,9)'
-);
+FROM pgr_makeConnected('q19');
 
-PREPARE makeConnected17 AS
-SELECT *
-FROM pgr_makeConnected(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id IN (17,18)'
-);
-
-
-
-SELECT set_eq('makeConnected16',
-    $$VALUES
-        (1, 3, 6)
-    $$,
-    '16:Two Connected Components. One row is returned'
-);
-
-SELECT set_eq('makeConnected17',
-    $$VALUES
-        (1, 15, 16)
-    $$,
-    '16:Two Connected Components. One row is returned'
-);
+SELECT set_eq('fourVerticesTest20', $$VALUES (1, 15, 16) $$,'20:Two Connected Components. One row is returned');
 
 
 
