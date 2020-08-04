@@ -46,7 +46,7 @@ The main characteristics are:
 
   - The algorithm does not considers traversal costs in the calculations.
 
-  - **Running time:** On a graph with n vertices and m edges, pgr_isPlanar runs in time O(n).
+  - Running time: :math:`O(|V|)`
 
 Signatures
 -------------------------------------------------------------------------------
