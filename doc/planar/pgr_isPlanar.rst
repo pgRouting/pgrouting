@@ -10,7 +10,7 @@
 pgr_isPlanar - Experimental
 ===============================================================================
 
-``pgr_isPlanar`` — Returns a boolean (true/false) depending upon the planarity of the graph.
+``pgr_isPlanar`` — Returns a boolean depending upon the planarity of the graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/boyer_myrvold.html
@@ -59,7 +59,7 @@ Signatures
 
     RETURNS BOOLEAN
 
-:Example: Query done on :doc:`sampledata` network gives.
+:Example: Using the :doc:`sampledata` network.
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q1
