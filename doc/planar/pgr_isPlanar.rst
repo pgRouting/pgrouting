@@ -10,7 +10,7 @@
 pgr_isPlanar - Experimental
 ===============================================================================
 
-``pgr_isPlanar`` — Returns a boolean (true/false) depending upon the planarity of the graph. 
+``pgr_isPlanar`` — Returns a boolean (true/false) depending upon the planarity of the graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/boyer_myrvold.html
@@ -23,6 +23,14 @@ pgr_isPlanar - Experimental
 
 .. rubric:: Availability
 
+* Version 3.2.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__)
 
 Description
 -------------------------------------------------------------------------------
