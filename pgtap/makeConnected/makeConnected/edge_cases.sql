@@ -26,18 +26,15 @@ SELECT is_empty('makeConnected2', '2: Graph with 0 edge and 0 vertex -> Empty ro
 
 PREPARE q3 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
-WHERE id = -10;
+FROM edge_table WHERE source = 50;
 
-SELECT is_empty('q3', 'q3: Vertex Not present in the graph');
+SELECT is_empty('q3','3: Vertex 50 does not exist in sample data');
 
-PREPARE makeConnected4 AS
+PREPARE vertexNotPresent4 AS
 SELECT *
-FROM pgr_makeConnected(
-    'q3'
-);
+FROM pgr_makeConnected('q3');
 
-SELECT is_empty('makeConnected4', '4: Vertex Not present in the graph -> Empty row is returned');
+SELECT is_empty('vertexNotPresent4', '4: Vertex Not present in the graph -> Empty row is returned');
 
 -- 1 vertex tests
 
