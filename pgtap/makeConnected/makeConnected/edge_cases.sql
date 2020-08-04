@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(19);
+SELECT plan(20);
 
 -- 0 edge, 0 vertex tests
 
@@ -137,15 +137,18 @@ SELECT is_empty('fourVerticesCyclicTest16', '14: Graph is already Connected -> E
 
 -- 4 vertex tests ===> Not Connected
 
+PREPARE q17 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id IN (1,6);
 
+SELECT set_eq('q17', $$VALUES (1, 1, 2, 1, 1), (6, 7, 8, 1, 1)$$, 'q13: Graph with four vertices 1, 2, 7 and 8');
 
-PREPARE makeConnected15 AS
+PREPARE fourVerticesTest18 AS
 SELECT *
-FROM pgr_makeConnected(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE id IN (1,6)'
-);
+FROM pgr_makeConnected('q17');
+
+SELECT set_eq('fourVerticesTest18', $$VALUES (1, 2, 7) $$, '15:Two Connected Components. One row is returned');
 
 PREPARE makeConnected16 AS
 SELECT *
@@ -163,12 +166,7 @@ FROM pgr_makeConnected(
     WHERE id IN (17,18)'
 );
 
-SELECT set_eq('makeConnected15',
-    $$VALUES
-        (1, 2, 7)
-    $$,
-    '15:Two Connected Components. One row is returned'
-);
+
 
 SELECT set_eq('makeConnected16',
     $$VALUES
