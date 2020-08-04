@@ -296,6 +296,7 @@ pdf_style_path = ['.', '_styles']
 
 # cases to ignore during link checking
 linkcheck_ignore = [
+    "https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html",
     # might not exist yet (we are generating it!)
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
