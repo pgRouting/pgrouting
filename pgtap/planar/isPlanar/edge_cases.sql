@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(15);
+SELECT plan(16);
 
 
 
@@ -142,6 +142,13 @@ SELECT set_eq('q15',
     'q15: Graph with four vertices 5, 6, 10 and 11 (cyclic)'
 );
 
+PREPARE fourVerticesCyclicTest16 AS
+SELECT *
+FROM pgr_isPlanar(
+    'q15'
+);
+
+SELECT set_eq('fourVerticesCyclicTest16', $$VALUES('t'::bool) $$, '16: Planar cyclic graph with 4 vertices');
 
 
 SELECT * FROM finish();
