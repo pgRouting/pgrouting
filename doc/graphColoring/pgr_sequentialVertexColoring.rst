@@ -10,9 +10,8 @@
 pgr_sequentialVertexColoring - Experimental
 ===============================================================================
 
-``pgr_sequentialVertexColoring`` — Assigns labels to the vertices of graph
-such that no edge connects two identically labeled vertices. In particular,
-the Sequential Vertex Coloring algorithm implemented by Boost.Graph.
+``pgr_sequentialVertexColoring`` — The Sequential Vertex Coloring algorithm
+implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html
@@ -53,6 +52,7 @@ such that no edge connects two identically colored vertices.
   possible color that is not used by its neighbors, to each vertex.
 - The returned rows are ordered in ascending order of the vertex value.
 - Sequential Vertex Coloring Running Time: :math:`O(|V|*(|d| + |k|))`
+
   - where :math:`|V|` is the number of vertices,
   - :math:`|d|` is the maximum degree of the vertices in the graph,
   - :math:`|k|` is the number of colors used.
@@ -74,7 +74,7 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: sequentialVertexColoring - Experimental on v3.2
+    single: sequentialVertexColoring -- Experimental on v3.2
 
 .. Parameters, Inner query & result columns
 
@@ -84,13 +84,14 @@ Parameters
 =================== ====================== =================================================
 Parameter           Type                   Description
 =================== ====================== =================================================
-**Edges SQL**       ``TEXT``               SQL query described in `Inner query`_.
+**Edges SQL**       ``TEXT``               Inner query as described below.
 =================== ====================== =================================================
 
 Inner query
 -------------------------------------------------------------------------------
 
-.. rubric:: Edges SQL
+:Edges SQL: an SQL query of an **undirected** graph, which should return
+            a set of rows with the following columns:
 
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start
