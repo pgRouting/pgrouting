@@ -10,8 +10,8 @@
 pgr_depthFirstSearch - Experimental
 ===============================================================================
 
-``pgr_depthFirstSearch`` — The Depth First Search and the Undirected DFS algorithm
-implemented by Boost.Graph.
+``pgr_depthFirstSearch`` — Returns a depth first search traversal of the graph.
+The graph can be directed or undirected.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/depth_first_search.html
@@ -36,16 +36,18 @@ implemented by Boost.Graph.
 Description
 -------------------------------------------------------------------------------
 
-Depth First Search algorithm is a traversal algorithm which starts from a root vertex
-and visits all the vertices in a graph, in the depth-first search traversal order.
+Depth First Search algorithm is a traversal algorithm which starts from a root vertex,
+goes as deep as possible, and backtracks once a vertex is reached with no adjacent vertices
+or with all visited adjacent vertices. The traversal continues until all the vertices
+reachable from the root vertex are visited.
 
 **The main Characteristics are:**
 
 - The implementation works for both **directed** and **undirected** graphs.
-- Provides the Depth First Search traversal order from a root vertex to
-  a particular maximum depth level.
-- An optional non-negative maximum depth parameter (``max_depth``) can be
-  specified to get the results up to a particular depth.
+- Provides the Depth First Search traversal order from a root vertex or from a
+  set of root vertices.
+- An optional non-negative maximum depth parameter to limit the results up to
+  a particular depth.
 - For optimization purposes, any duplicated values in the `Root vids` are
   ignored.
 - It does not produce the shortest path from a root vertex to a target vertex.
@@ -139,7 +141,7 @@ Parameter           Type        Default                     Description
 **directed**        ``BOOLEAN`` ``true``                    - When ``true`` Graph is `Directed`
                                                             - When ``false`` the graph is `Undirected`.
 
-**max_depth**       ``BIGINT``  :math:`9223372036854775807` Upper limit for depth of node in the tree
+**max_depth**       ``BIGINT``  :math:`9223372036854775807` Upper limit for the depth of traversal
 
                                                             - When value is ``Negative`` then **throws error**
 =================== =========== =========================== =================================================
@@ -179,6 +181,7 @@ The resulting traversal is different.
 The left image shows the result with asending order of ids and the right image shows
 with descending order of ids:
 
+TODO here comes the images
 
 See Also
 -------------------------------------------------------------------------------
