@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(17);
+SELECT plan(18);
 
 -- 0 edge, 0 vertex tests
 
@@ -38,15 +38,20 @@ SELECT is_empty('vertexNotPresent4', '4: Vertex Not present in the graph -> Empt
 
 -- 1 vertex tests
 
-PREPARE makeConnected5 AS
+PREPARE q5 AS
+SELECT id, source, 6 AS target, cost, reverse_cost
+FROM edge_table
+WHERE id = 9;
+-- Graph with only vertex 9
+SELECT set_eq('q5', $$VALUES (9, 6, 6, 1, 1)$$, 'q5: Graph with only vertex 6');
+
+PREPARE oneVertexTest6 AS
 SELECT *
 FROM pgr_makeConnected(
-    'SELECT id, source, 6 AS target, cost, reverse_cost
-    FROM edge_table
-    WHERE id = 9'
+    'q5'
 );
 
-SELECT is_empty('makeConnected5', '5: Graph is already Connected -> Empty row is returned');
+SELECT is_empty('oneVertexTest6', '6: Graph is already Connected -> Empty row is returned');
 
 -- 2 vertices tests ===> Already Connected
 
