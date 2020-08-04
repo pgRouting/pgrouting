@@ -92,7 +92,6 @@ pgr_depthFirstSearch(
  * @pre err_msg is empty
  * @pre return_tuples is empty
  * @pre return_count is 0
- * @pre total_edges is not 0
  *
  * It builds the graph using the `data_edges`, depending on whether
  * the graph is directed or undirected. It also converts the C types
@@ -141,7 +140,6 @@ do_pgr_depthFirstSearch(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
 
         std::vector < int64_t > roots(rootsArr, rootsArr + size_rootsArr);
 

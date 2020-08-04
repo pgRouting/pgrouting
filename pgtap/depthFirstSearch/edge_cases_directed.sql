@@ -20,7 +20,10 @@ FROM pgr_depthFirstSearch(
     5
 );
 
-SELECT is_empty('depthFirstSearch2', '2: 0 edge 0 vertex test');
+SELECT set_eq('depthFirstSearch2',
+    $$VALUES (1, 0, 5, 5, -1, 0, 0)$$,
+    '2: 0 edge 0 vertex test'
+);
 
 
 
@@ -44,7 +47,10 @@ FROM pgr_depthFirstSearch(
     100
 );
 
-SELECT is_empty('depthFirstSearch4', '4: Vertex not present in graph');
+SELECT set_eq('depthFirstSearch4',
+    $$VALUES (1, 0, 100, 100, -1, 0, 0)$$,
+    '4: Vertex not present in graph'
+);
 
 
 

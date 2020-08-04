@@ -20,7 +20,7 @@ PREPARE q0 AS
 SELECT id, source, target, cost, reverse_cost FROM sample_table
 ORDER BY id;
 
--- Directed Graph with Root vid 3
+
 PREPARE q1 AS
 SELECT * FROM pgr_depthFirstSearch (
     'q0',
@@ -36,7 +36,7 @@ SELECT set_eq('q1',
     'q1: Directed Graph with Root vid 3'
 );
 
--- Directed Graph with Root vid 6
+
 PREPARE q2 AS
 SELECT * FROM pgr_depthFirstSearch (
     'q0',
@@ -52,7 +52,7 @@ SELECT set_eq('q2',
     'q2: Directed Graph with Root vid 6'
 );
 
--- Directed Graph with Root vid 6 and max_depth 1
+
 PREPARE q3 AS
 SELECT * FROM pgr_depthFirstSearch (
     'q0',
@@ -67,18 +67,19 @@ SELECT set_eq('q3',
     'q3: Directed Graph with Root vid 6 and max_depth 1'
 );
 
--- Root vid does not exist in the Graph
+
 PREPARE q4 AS
 SELECT * FROM pgr_depthFirstSearch (
     'q0',
     2
 );
 
-SELECT is_empty('q4',
-    'q4: Vertex not present in graph -> Empty row is returned'
+SELECT set_eq('q4',
+    $$VALUES (1, 0, 2, 2, -1, 0, 0)$$,
+    '4: Vertex not present in graph'
 );
 
--- Undirected Graph with Root vid 3
+
 PREPARE q5 AS
 SELECT * FROM pgr_depthFirstSearch (
     'q0',
@@ -94,7 +95,7 @@ SELECT set_eq('q5',
     'q5: Undirected Graph with Root vid 3'
 );
 
--- Undirected Graph with Root vid 6
+
 PREPARE q6 AS
 SELECT * FROM pgr_depthFirstSearch (
     'q0',
@@ -110,7 +111,7 @@ SELECT set_eq('q6',
     'q6: Undirected Graph with Root vid 6'
 );
 
--- Undirected Graph with Root vid 6 and max_depth 1
+
 PREPARE q7 AS
 SELECT * FROM pgr_depthFirstSearch (
     'q0',
@@ -126,7 +127,7 @@ SELECT set_eq('q7',
     'q7: Undirected Graph with Root vid 6 and max_depth 1'
 );
 
--- Directed Graph with multiple Root vids
+
 PREPARE q8 AS
 SELECT * FROM pgr_depthFirstSearch (
     'q0',
