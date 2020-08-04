@@ -16,11 +16,11 @@ SELECT is_empty('q1', 'q1: Graph with 0 edge and 0 vertex');
 
 -- 0 edge, 0 vertex tests
 
-PREPARE isPlanar1 AS
+PREPARE zeroEdgeTest2 AS
 SELECT *
 FROM pgr_isPlanar('q1');
 
-SELECT set_eq('isPlanar1',$$VALUES('f'::bool) $$, '2: False, since vertex does not exist');
+SELECT set_eq('zeroEdgeTest2',$$VALUES('f'::bool) $$, '2: False, since vertex does not exist');
 
 
 -- vertex not present in graph test
