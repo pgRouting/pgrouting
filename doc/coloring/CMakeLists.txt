@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     coloring-family.rst
     pgr_sequentialVertexColoring.rst
+    pgr_bipartite.rst
     )
 
 foreach (f ${LOCAL_FILES})
