@@ -11,7 +11,7 @@ SELECT function_returns('pgr_sequentialvertexcoloring', ARRAY['text'],  'setof r
 -- parameter names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_sequentialvertexcoloring'$$,
-    $$SELECT  '{"","node","color_id"}'::TEXT[] $$
+    $$SELECT  '{"","vertex_id","color_id"}'::TEXT[] $$
 );
 
 -- parameter types
