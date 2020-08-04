@@ -10,9 +10,7 @@
 pgr_isPlanar - Experimental
 ===============================================================================
 
-``pgr_isPlanar`` — Returns a boolean depending upon the planarity of the graph. Result
-is true if the input graph is planar and false if the input graph is non-planar. In
-particular, the boost::boyer_myrvold_planarity_test() is implemented by Boost.Graph.
+``pgr_isPlanar`` — Returns a boolean (true/false) depending upon the planarity of the graph. 
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/boyer_myrvold.html
