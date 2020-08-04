@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_GRAPHCOLORING_PGR_SEQUENTIALVERTEXCOLORING_HPP_
-#define INCLUDE_GRAPHCOLORING_PGR_SEQUENTIALVERTEXCOLORING_HPP_
+#ifndef INCLUDE_COLORING_PGR_SEQUENTIALVERTEXCOLORING_HPP_
+#define INCLUDE_COLORING_PGR_SEQUENTIALVERTEXCOLORING_HPP_
 #pragma once
 
 
@@ -146,4 +146,4 @@ class Pgr_sequentialVertexColoring {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_GRAPHCOLORING_PGR_SEQUENTIALVERTEXCOLORING_HPP_
+#endif  // INCLUDE_COLORING_PGR_SEQUENTIALVERTEXCOLORING_HPP_
