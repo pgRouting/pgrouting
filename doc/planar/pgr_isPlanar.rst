@@ -59,7 +59,6 @@ Signatures
 
     RETURNS BOOLEAN
 
-
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q1
    :end-before: -- q2
@@ -125,6 +124,9 @@ The following edges will make the subgraph with vertices {1, 2, 3, 4, 5} a K5 gr
    :end-before: -- q3
 
 The new graph is not planar because it has a K5 subgraph.
+
+.. image:: images/modifiedEdgeTable.png
+   :width: 45%
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q3
