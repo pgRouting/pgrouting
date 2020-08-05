@@ -36,4 +36,4 @@ typedef struct {
     int64_t vid;
     int64_t idom;
 } pgr_ltdtree_rt;
-#endif  // INCLUDE_C_TYPES_PGR_MST_RT_H_
+#endif  // INCLUDE_C_TYPES_PGR_LTDTREE_RT_H_"
