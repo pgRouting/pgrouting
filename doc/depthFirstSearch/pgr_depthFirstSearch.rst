@@ -184,10 +184,10 @@ with descending order of ids:
 |ascending| |descending|
 
 .. |ascending| image:: images/Fig1-AscendingOrder.png
-   :width: 45%
+   :scale: 50%
 
 .. |descending| image:: images/Fig2-DescendingOrder.png
-   :width: 45%
+   :scale: 50%
 
 See Also
 -------------------------------------------------------------------------------

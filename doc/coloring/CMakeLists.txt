@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+    coloring-family.rst
     pgr_sequentialVertexColoring.rst
     )
 
