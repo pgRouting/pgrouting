@@ -1,3 +1,4 @@
+
 ..
    ****************************************************************************
     pgRouting Manual
@@ -6,9 +7,6 @@
     This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
-.. index::
-    single: pgr_LengauerTarjanDominatorTree -Experimental (Complete Doc)
-.. _pgr_LengauerTarjanDominatorTree:
 
 pgr_LengauerTarjanDominatorTree -Experimental
 ===============================================================================
@@ -18,13 +16,13 @@ In particular, the Lengauer Tarjan Dominator Tree algorithm implemented by Boost
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/lengauer_tarjan_dominator.htm
-   
+
    Boost Graph Inside
 
 .. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
-   
+
 .. rubric:: Availability
 
 
@@ -56,7 +54,7 @@ Complete Signature
 
 :Example: The lengauer_tarjan_dominator_tree with root vertex :math:`2`
 
-.. literalinclude:: doc-LTDTree.queries
+.. literalinclude:: doc-lengauerTarjanDominatorTree.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -98,7 +96,7 @@ Additional Examples
 
 The examples in this section use the following :ref:`fig1`
 
-.. literalinclude:: doc-LTDTree.queries
+.. literalinclude:: doc-lengauerTarjanDominatorTree.queries
     :start-after: -- q1
     :end-before: -- q2
 
