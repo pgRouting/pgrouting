@@ -60,15 +60,15 @@ class Pgr_LTDTree : public pgrouting::Pgr_messages {
                     int64_t root
                     ){
                 std::vector<pgr_ltdtree_rt> results;
-                std::vector<Vertex> domTreePredVector = std::vector<Vertex>(boost::num_vertices(graph.graph), -1);
-                auto domTreePredMap =
+                std::vector<Vertex> idoms = std::vector<Vertex>(boost::num_vertices(graph.graph), -1);
+                auto dominatorTree =
                 make_iterator_property_map
-                (domTreePredVector.begin(), boost::get(boost::vertex_index, graph.graph));
+                (idoms.begin(), boost::get(boost::vertex_index, graph.graph));
                /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
                 CHECK_FOR_INTERRUPTS();
                 try {
              // calling the boost function
-                boost::lengauer_tarjan_dominator_tree(graph.graph, graph.get_V(root), domTreePredMap);
+                boost::lengauer_tarjan_dominator_tree(graph.graph, graph.get_V(root), dominatorTree);
                      } catch (boost::exception const& ex) {
                           (void)ex;
                              throw;
@@ -82,7 +82,7 @@ class Pgr_LTDTree : public pgrouting::Pgr_messages {
                 V_i v, vend;
                 for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
                     int64_t vid = graph[*v].id;
-                    results.push_back({vid, (domTreePredVector[*v] != -1 ? (domTreePredVector[*v]+1) : 0) });
+                    results.push_back({vid, (idoms[*v] != -1 ? (idoms[*v]+1) : 0) });
                 }
 
                  return results;
