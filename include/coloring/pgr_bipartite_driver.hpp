@@ -28,43 +28,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#ifndef INCLUDE_PGR_BIPARTITE_DRIVER_HPP
-#define INCLUDE_PGR_BIPARTITE_DRIVER_HPP
+#ifndef INCLUDE_COLORING_PGR_BIPARTITE_DRIVER_HPP_
+#define INCLUDE_COLORING_PGR_BIPARTITE_DRIVER_HPP_
 #pragma once
-#include <vector>
 
-#include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/pgr_messages.h"
-#include <iostream>
-#include <algorithm>
 #include <boost/property_map/property_map.hpp>
 #include <boost/property_map/vector_property_map.hpp>
 #include <boost/type_traits.hpp>
 #include <boost/graph/bipartite.hpp>
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/pgr_messages.h"
 #include "cpp_common/interruption.h"
 
 
 namespace pgrouting {
-    namespace functions {
+namespace functions {
 
-        template<class G>
-        class Pgr_Bipartite : public pgrouting::Pgr_messages {
-            
-            public:
+template<class G>
+class Pgr_Bipartite : public pgrouting::Pgr_messages {
+ public:
             typedef typename G::V_i V_i;
-            
             std::vector<pgr_bipartite_rt> print_Bipartite(
-                    G &graph){
+                    G &graph) {
                 std::vector<pgr_bipartite_rt> results;
-                std::vector <boost::default_color_type> partition (graph.num_vertices());    
+                std::vector <boost::default_color_type> partition(graph.num_vertices());
                 auto partition_map =
-                    make_iterator_property_map(partition.begin (), boost::get (boost::vertex_index, graph.graph));
+                    make_iterator_property_map(partition.begin(), boost::get(boost::vertex_index, graph.graph));
 
                /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
                 CHECK_FOR_INTERRUPTS();
                 try {
-             // calling the boost function
-                boost::is_bipartite (graph.graph, boost::get (boost::vertex_index, graph.graph), partition_map);
+                boost::is_bipartite(graph.graph, boost::get(boost::vertex_index, graph.graph), partition_map);
                      } catch (boost::exception const& ex) {
                           (void)ex;
                              throw;
@@ -74,33 +73,23 @@ namespace pgrouting {
                       } catch (...) {
                           throw;
                       }
-                
-                         
                 V_i v, vend;
                 for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
                     int64_t vid = graph[*v].id;
-                    boost::get (partition_map, *v) == boost::color_traits <boost::default_color_type>::white () ? results.push_back({vid,0}) :results.push_back({vid,1});
-                    
+                    boost::get(partition_map, *v) ==
+                        boost::color_traits <boost::default_color_type>::white() ?
+                        results.push_back({vid, 0}) :results.push_back({vid, 1});
                 }
                 return results;
-               
             }
-
-
             std::vector<pgr_bipartite_rt> pgr_bipartite(
                     G &graph ){
-
                 std::vector<pgr_bipartite_rt> results(graph.num_vertices());
-                  
-                bool bipartite = boost::is_bipartite (graph.graph);
-                if(bipartite) results=print_Bipartite(graph);
+                bool bipartite = boost::is_bipartite(graph.graph);
+                if (bipartite) results = print_Bipartite(graph);
                 return results;
-           
             }
-
-        };
-    }
-}
-
-
-#endif  // INCLUDE_PGR_BIPARTITE_DRIVER_HPP
+};
+}  // namespace functions
+}  // namespace pgrouting
+#endif  // INCLUDE_COLORING_PGR_BIPARTITE_DRIVER_HPP_

@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-PGDLLEXPORT Datum _pgr_bipartite (PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum _pgr_bipartite(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_bipartite);
 
 
@@ -54,7 +54,6 @@ void
 process(char* edges_sql,
         pgr_bipartite_rt **result_tuples,
         size_t *result_count) {
-    
     pgr_SPI_connect();
 
     size_t total_edges = 0;
@@ -99,33 +98,24 @@ PGDLLEXPORT Datum
 _pgr_bipartite(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
-
-    /**********************************************************************/
-
-    pgr_bipartite_rt *result_tuples =NULL;
+    pgr_bipartite_rt *result_tuples = NULL;
     size_t result_count = 0;
-    /**********************************************************************/
-
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-        /**********************************************************************/
-
-
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 &result_tuples,
                 &result_count);
 
 
-        /**********************************************************************/
 #if PGSQL_VERSION > 95
-        funcctx->max_calls = result_count; 
+        funcctx->max_calls = result_count;
 #else
         funcctx->max_calls = (uint32_t)result_count;
 #endif
-        funcctx->user_fctx = result_tuples; 
+        funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
@@ -138,32 +128,28 @@ _pgr_bipartite(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_bipartite_rt*) funcctx->user_fctx; 
+    result_tuples = (pgr_bipartite_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple   tuple; 
+        HeapTuple   tuple;
         Datum       result;
         Datum       *values;
         bool        *nulls;
-       
         size_t call_cntr = funcctx->call_cntr;
 
-        size_t numb = 2; 
+        size_t numb = 2;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
         size_t i;
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-
-        
             values[0] = Int64GetDatum(result_tuples[call_cntr].vid);
-	        values[1] = Int64GetDatum(result_tuples[call_cntr].color);
+            values[1] = Int64GetDatum(result_tuples[call_cntr].color);
             tuple = heap_form_tuple(tuple_desc, values, nulls);
             result = HeapTupleGetDatum(tuple);
             SRF_RETURN_NEXT(funcctx, result);
-        }else {
+        } else {
             SRF_RETURN_DONE(funcctx);
         }
-
 }

@@ -31,10 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /************************************************************
   edges_sql TEXT
  ***********************************************************/
-#include "drivers/coloring/bipartite_driver.h"
-#include "coloring/pgr_bipartite_driver.hpp"
-#include "c_types/pgr_bipartite_rt.h"
-#include <string.h>
+
+#include <string>
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -43,6 +41,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "drivers/coloring/bipartite_driver.h"
+#include "coloring/pgr_bipartite_driver.hpp"
+#include "c_types/pgr_bipartite_rt.h"
 
 
 /************************************************************
@@ -71,24 +72,15 @@ do_pgr_bipartite(
         pgassert(*return_count == 0);
 
         std::string logstr;
-
-/***********************Working with graph**************************/
-
-        log << "Working with undirected Graph\n";
         graphType gType = UNDIRECTED;
-        /****TODO***/
-        //Check if directed then return 0 rows
         pgrouting::UndirectedGraph undigraph(gType);
-        undigraph.insert_edges(data_edges, total_edges);//Creating graph using data_edges
+        undigraph.insert_edges(data_edges, total_edges);
         std::vector<pgr_bipartite_rt> results;
         pgrouting::functions::Pgr_Bipartite <pgrouting::UndirectedGraph> fn_Bipartite;
-        results=fn_Bipartite.pgr_bipartite(undigraph);
-
+        results = fn_Bipartite.pgr_bipartite(undigraph);
         logstr += fn_Bipartite.get_log();
         log << logstr;
-
         auto count = results.size();
-/****************************************************/
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
@@ -114,7 +106,6 @@ do_pgr_bipartite(
         *notice_msg = notice.str().empty()?
                       *notice_msg :
                       pgr_msg(notice.str().c_str());
-
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -134,7 +125,4 @@ do_pgr_bipartite(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-
-
 }
-
