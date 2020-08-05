@@ -298,6 +298,7 @@ pdf_style_path = ['.', '_styles']
 linkcheck_ignore = [
     "https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html",
     "https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html",
+    "https://docs.pgrouting.org/3.2/en/coloring-family.html",
     # might not exist yet (we are generating it!)
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
