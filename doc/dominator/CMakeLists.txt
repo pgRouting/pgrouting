@@ -1,6 +1,6 @@
 
 SET(LOCAL_FILES
-    pgr_LTDTree.rst
+    pgr_lengauerTarjanDominatorTree.rst
     )
 
 foreach (f ${LOCAL_FILES})
