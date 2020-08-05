@@ -213,8 +213,6 @@ _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double prec
 pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)
 _pgr_turnrestrictedpath(text,text,bigint,bigint,integer,boolean,boolean,boolean,boolean)
 pgr_turnrestrictedpath(text,text,bigint,bigint,integer,boolean,boolean,boolean,boolean)
-_pgr_two_graphs_common_spanning_trees(text,text,boolean)
-pgr_two_graphs_common_spanning_trees(text,text,boolean)
 pgr_version()
 _pgr_versionless(text,text)
 _pgr_vrponedepot(text,text,text,integer)
