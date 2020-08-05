@@ -95,7 +95,7 @@ Additional Examples
 The examples in this section use the following :ref:`fig1`
 
 
-:Example: It also possibe the cyclic graph can also be bipartite. 
+:Example: It also possibe the cyclic graph can also be bipartite: 
 .. literalinclude:: doc-bipartite.queries
     :start-after: --q2
     :end-before: --q3
