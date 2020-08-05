@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_BIPARTITE_DRIVER_H_
-#define INCLUDE_DRIVERS_BIPARTITE_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_COLORING_BIPARTITE_DRIVER_H_
+#define INCLUDE_DRIVERS_COLORING_BIPARTITE_DRIVER_H_
 
 
 /* for size-t */
@@ -37,8 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #else
 #   include <stddef.h>
 #endif
-#include "c_types/pgr_edge_t.h"
 #include <c_types/pgr_bipartite_rt.h>
+#include "c_types/pgr_edge_t.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -63,4 +63,4 @@ do_pgr_bipartite(
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_BIPARTITE_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_COLORING_BIPARTITE_DRIVER_H_
