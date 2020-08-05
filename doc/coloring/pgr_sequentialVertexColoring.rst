@@ -51,7 +51,7 @@ such that no edge connects two identically colored vertices.
   iterating through all the vertices sequentially, and assigning the smallest
   possible color that is not used by its neighbors, to each vertex.
 - The returned rows are ordered in ascending order of the vertex value.
-- Sequential Vertex Coloring Running Time: :math:`O(|V|*(|d| + |k|))`
+- Sequential Vertex Coloring Running Time: :math:`O(|V|*(d + k))`
 
   - where :math:`|V|` is the number of vertices,
   - :math:`d` is the maximum degree of the vertices in the graph,
