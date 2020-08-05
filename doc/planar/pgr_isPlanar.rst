@@ -59,7 +59,6 @@ Signatures
 
     RETURNS BOOLEAN
 
-:Example: Using the :doc:`sampledata` network.
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q1
