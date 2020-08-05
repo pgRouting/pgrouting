@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: LTDTree.sql
+File: _lengauerTarjanDominatorTree.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

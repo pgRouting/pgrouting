@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: LTDTree.c
+File: lengauerTarjanDominatorTree.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
