@@ -117,7 +117,7 @@ Column             Type        Description
 Additional Example:
 -------------------------------------------------------------------------------
 
-The following edges will make the subgraph with vertices {1, 2, 3, 4, 5} a K5 graph.
+The following edges will make the subgraph with vertices {3, 4, 6, 9, 16} a K5 graph.
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q2
