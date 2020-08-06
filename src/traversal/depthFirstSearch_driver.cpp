@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/depthFirstSearch/depthFirstSearch_driver.h"
+#include "drivers/traversal/depthFirstSearch_driver.h"
 
 #include <vector>
 #include <algorithm>
@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#include "depthFirstSearch/pgr_depthFirstSearch.hpp"
+#include "traversal/pgr_depthFirstSearch.hpp"
 
 /** @file depthFirstSearch_driver.cpp
  * @brief Handles actual calling of function in the `pgr_depthFirstSearch.hpp` file.
