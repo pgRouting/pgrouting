@@ -29,19 +29,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/properties.hpp>
 #include <boost/graph/graph_traits.hpp>
 #include <boost/property_map/property_map.hpp>
+#include <boost/graph/connected_components.hpp>
+#include <boost/graph/make_connected.hpp>
 #include <boost/ref.hpp>
+
 #include <vector>
 #include <set>
 #include <map>
 
-
-#include <boost/graph/connected_components.hpp>
-#include <boost/graph/make_connected.hpp>
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "c_types/pgr_makeConnected_t.h"
 //******************************************
-using namespace boost;
+// using namespace boost;
 using namespace std;
 namespace pgrouting {
 namespace functions {
@@ -52,44 +52,38 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
      typedef typename G::V V;
      typedef typename G::E E;
      typedef typename G::E_i E_i;
-     typedef adjacency_list< vecS, vecS, undirectedS, property<vertex_index_t, int>>Graph;
-     typedef boost::graph_traits< Graph >::edge_iterator  E_it;
-     std::vector<pgr_makeConnected_t> makeConnected(
-                 G &graph){
-                   return generatemakeConnected(
-                                          graph);
-                 }
+     std::vector<pgr_makeConnected_t> makeConnected(G &graph) {
+                   return generatemakeConnected(graph);
+     }
 
  private:
-      std::vector< pgr_makeConnected_t >
-      generatemakeConnected(
-       G &graph ) {
+      std::vector< pgr_makeConnected_t > generatemakeConnected(G &graph ) {
       std::vector< int >component(num_vertices(graph.graph));
-      size_t comp = connected_components(graph.graph,&component[0]);
+      size_t comp = connected_components(graph.graph, &component[0]);
       comp--;
       int64_t edgeCount = num_edges(graph.graph);
       int64_t newEdge = 0;
-      log <<"Number of Components before: "<< connected_components(graph.graph,&component[0])<<"\n";
-      int64_t i=0;
-      make_connected(graph.graph);
-      log <<"Number of Components after: "<< connected_components(graph.graph,&component[0])<<"\n";
+      log << "Number of Components before: " << boost::connected_components(graph.graph, &component[0]) << "\n";
+      int64_t i = 0;
+      boost::make_connected(graph.graph);
+      log << "Number of Components after: " << boost::connected_components(graph.graph, &component[0]) << "\n";
       E_i  ei, ei_end;
       std::vector< pgr_makeConnected_t > results(comp);
-      for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei){
+      for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei) {
               int64_t src = graph[graph.source(*ei)].id;
               int64_t tgt = graph[graph.target(*ei)].id;
-               log<<"src:"<<src<<"tgt:"<<tgt<<"\n";
-               if(newEdge>=edgeCount){
+              log<< "src:" << src<< "tgt:" << tgt <<"\n";
+              if (newEdge >= edgeCount) {
                    results[i].node_from = src;
                    results[i].node_to = tgt;
                    i++;
-                }
-                newEdge++;
+              }
+              newEdge++;
           }
        return results;
       }
 };
-}
-}
+}  // namespace functions
+}  // namespace pgrouting
 
-#endif //INCLUDE_MAKECONNECTED_PGR_MAKECONNECTED_HPP_
+#endif  // INCLUDE_MAKECONNECTED_PGR_MAKECONNECTED_HPP_
