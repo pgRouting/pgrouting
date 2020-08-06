@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DEPTHFIRSTSEARCH_PGR_DEPTHFIRSTSEARCH_HPP_
-#define INCLUDE_DEPTHFIRSTSEARCH_PGR_DEPTHFIRSTSEARCH_HPP_
+#ifndef INCLUDE_TRAVERSAL_PGR_DEPTHFIRSTSEARCH_HPP_
+#define INCLUDE_TRAVERSAL_PGR_DEPTHFIRSTSEARCH_HPP_
 #pragma once
 
 
@@ -210,4 +210,4 @@ class Pgr_depthFirstSearch {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_DEPTHFIRSTSEARCH_PGR_DEPTHFIRSTSEARCH_HPP_
+#endif  // INCLUDE_TRAVERSAL_PGR_DEPTHFIRSTSEARCH_HPP_

@@ -1,4 +1,4 @@
-ADD_LIBRARY(depthFirstSearch OBJECT
+ADD_LIBRARY(traversal OBJECT
     depthFirstSearch.c
     depthFirstSearch_driver.cpp
     )
