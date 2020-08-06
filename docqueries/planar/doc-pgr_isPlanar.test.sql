@@ -6,10 +6,10 @@ SELECT * FROM pgr_isPlanar(
 \echo -- q2
 
 INSERT INTO edge_table (source, target, cost, reverse_cost) VALUES
-(1, 3, 1, -1), (1, 4, 1, -1), (1, 5, 1, -1),
-(2, 4, 1, -1), (2, 5, 1, -1),
-(3, 5, 1, -1),
-(4, 5, 1, -1);
+(3, 9, 1, 1), (3, 16, 1, 1),
+(4, 6, 1, 1), (4, 16, 1, 1),
+(6, 16, 1, 1),
+(9, 16, 1, 1);
 
 \echo -- q3
 SELECT * FROM pgr_isPlanar(
