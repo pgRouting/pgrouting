@@ -29,17 +29,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/properties.hpp>
 #include <boost/graph/graph_traits.hpp>
 #include <boost/property_map/property_map.hpp>
-#include <boost/ref.hpp>
-#include <vector>
-
 #include <boost/graph/boyer_myrvold_planar_test.hpp>
 #include <boost/graph/is_kuratowski_subgraph.hpp>
+#include <boost/ref.hpp>
+
+#include <vector>
 
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "c_types/pgr_boyer_t.h"
 //******************************************
-using namespace boost;
 namespace pgrouting {
 namespace functions {
 
@@ -49,22 +48,21 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
      typedef typename G::V V;
      typedef typename G::E E;
      typedef typename G::E_i E_i;
-     std::vector<pgr_boyer_t> boyerMyrvold(G &graph){
+     std::vector<pgr_boyer_t> boyerMyrvold(G &graph) {
           return generateboyerMyrvold(graph);
      }
 
-     bool isPlanar(G &graph){
-          return (boyer_myrvold_planarity_test(graph.graph));
+     bool isPlanar(G &graph) {
+          return (boost::boyer_myrvold_planarity_test(graph.graph));
      }
 
  private:
      std::vector< pgr_boyer_t >generateboyerMyrvold(const G &graph ) {
      std::vector< pgr_boyer_t > results;
-     auto check = boyer_myrvold_planarity_test(graph.graph);
-     if(check){
+     auto check = boost::boyer_myrvold_planarity_test(graph.graph);
+     if (check) {
          E_i ei, ei_end;
-         int i;
-     for (boost::tie(ei, ei_end) = edges(graph.graph),i = 0; ei != ei_end; ++ei,++i){
+     for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei) {
          int64_t src = graph[graph.source(*ei)].id;
          int64_t tgt = graph[graph.target(*ei)].id;
          double cost = graph[*ei].cost;
@@ -74,13 +72,11 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
          tmp.cost = cost;
          results.push_back(tmp);
       }
-
     }
-       return results;
+     return results;
     }
-
 };
-}
-}
+}  // namespace functions
+}  // namespace pgrouting
 
-#endif //INCLUDE_PLANAR_PGR_BOYERMYRVOLD_HPP_
+#endif  // INCLUDE_PLANAR_PGR_BOYERMYRVOLD_HPP_
