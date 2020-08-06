@@ -70,7 +70,7 @@ do_pgr_makeConnected(
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         pgrouting::functions::Pgr_makeConnected<pgrouting::UndirectedGraph> fn_makeConnected;
-        results=fn_makeConnected.makeConnected(undigraph);
+        results = fn_makeConnected.makeConnected(undigraph);
         logstr += fn_makeConnected.get_log();
         log << logstr;
 
