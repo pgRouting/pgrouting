@@ -6,7 +6,7 @@
     This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
-   
+
 pgr_bipartite -Experimental
 ===============================================================================
 
@@ -15,13 +15,13 @@ In particular, the is_bipartite() algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/doc/libs/1_53_0/libs/graph/doc/is_bipartite.html
-   
+
    Boost Graph Inside
 
 .. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
-   
+
 .. rubric:: Availability
 
 
@@ -95,7 +95,8 @@ Additional Examples
 The examples in this section use the following :ref:`fig1`
 
 
-:Example: It also possibe the cyclic graph can also be bipartite: 
+:Example: It is possible that the cyclic graph can also be bipartite:
+
 .. literalinclude:: doc-bipartite.queries
     :start-after: --q2
     :end-before: --q3

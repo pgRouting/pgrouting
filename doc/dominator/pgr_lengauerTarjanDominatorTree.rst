@@ -41,22 +41,16 @@ Signatures
     RETURNS SET OF (id,vid,idom)
 
 
-:Example: **TBD**
 
 .. index::
-    single: LTDTree
-
-Complete Signature
-...............................................................................
-
-.. code-block:: sql
+    single: pgr_LengauerTarjanDominatorTree
 
 
-:Example: The lengauer_tarjan_dominator_tree with root vertex :math:`2`
+:Example: The lengauer_tarjan_dominator_tree with root vertex :math:`1`
 
 .. literalinclude:: doc-lengauerTarjanDominatorTree.queries
-   :start-after: -- q1
-   :end-before: -- q2
+   :start-after: --q1
+   :end-before: --q2
 
 Parameters
 -------------------------------------------------------------------------------
@@ -65,7 +59,7 @@ Parameters
 Column         Type           Description
 ============== ============ =================================================
 **edges_sql**   ``TEXT``    SQL query as described above.
-**root_vid**   ``BIGINT``   Identifier of the starting vertex.
+**root_vid**    ``BIGINT``  Identifier of the starting vertex.
 ============== ============ =================================================
 
 
@@ -91,14 +85,15 @@ Column         Type        Description
 
 Additional Examples
 ------------------------------------------------------------------------------------------
-
-:Example: To handle the one flag to choose signatures
-
 The examples in this section use the following :ref:`fig1`
 
+:Example: When the edge is disonnectd from graph then it will returns immidiate dominator of all vertex as zero except that edge:
+
+
+
 .. literalinclude:: doc-lengauerTarjanDominatorTree.queries
-    :start-after: -- q1
-    :end-before: -- q2
+    :start-after: --q2
+    :end-before: --q3
 
 See Also
 -------------------------------------------------------------------------------
