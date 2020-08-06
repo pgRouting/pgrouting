@@ -49,6 +49,12 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`coloring-family`
+
+.. include:: coloring-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 :doc:`topology-functions`
 
 .. include:: topology-functions.rst
@@ -61,10 +67,19 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`traversal-family`
+
+.. include:: traversal-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 .. toctree::
    :hidden:
 
    chinesePostmanProblem-family
+   coloring-family
+   transformation-family
+   traversal-family
 
 .. rubric:: categories
 
@@ -85,9 +100,7 @@ Experimental Functions
 - :doc:`pgr_binaryBreadthFirstSearch`
 - :doc:`pgr_breadthFirstSearch`
 - :doc:`pgr_dagShortestPath`
-- :doc:`pgr_depthFirstSearch`
 - :doc:`pgr_edwardMoore`
-- :doc:`pgr_sequentialVertexColoring`
 - :doc:`pgr_stoerWagner`
 - :doc:`pgr_topologicalSort`
 - :doc:`pgr_transitiveClosure`
@@ -100,9 +113,7 @@ Experimental Functions
   pgr_binaryBreadthFirstSearch
   pgr_breadthFirstSearch
   pgr_dagShortestPath
-  pgr_depthFirstSearch
   pgr_edwardMoore
-  pgr_sequentialVertexColoring
   pgr_stoerWagner
   pgr_topologicalSort
   pgr_transitiveClosure

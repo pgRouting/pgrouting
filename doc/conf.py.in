@@ -296,9 +296,11 @@ pdf_style_path = ['.', '_styles']
 
 # cases to ignore during link checking
 linkcheck_ignore = [
+    # might not exist yet (we are generating it!)
     "https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html",
     "https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html",
-    # might not exist yet (we are generating it!)
+    "https://docs.pgrouting.org/3.2/en/coloring-family.html",
+    "https://docs.pgrouting.org/3.2/en/traversal-family.html",
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
