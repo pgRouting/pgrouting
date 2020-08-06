@@ -77,6 +77,10 @@ Experimental Functions
    :hidden:
 
    chinesePostmanProblem-family
+   coloring-family
+   transformation-family
+   transformation-family
+   traversal-family
 
 .. rubric:: categories
 
