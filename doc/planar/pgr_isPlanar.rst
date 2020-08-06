@@ -37,7 +37,8 @@ Description
 
 A graph is planar if it can be drawn in two-dimensional space with no two of its edges crossing. Such a drawing
 of a planar graph is called a plane drawing. Every planar graph also admits a straight-line drawing, which is a
-plane drawing where each edge is represented by a line segment.
+plane drawing where each edge is represented by a line segment. When a graph has K5 or K3,3 as subgraph then the
+graph is not planar.
 
 The main characteristics are:
   - It will return a boolean value depending upon the planarity of the graph.
@@ -86,14 +87,10 @@ Column            Type                 Default  Description
 **id**            ``ANY-INTEGER``                Identifier of the edge.
 **source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
 **target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
-
-                                                 - When positive: edge `(target, source)` is part of the graph.
+**cost**          ``ANY-NUMERICAL``              - When positive: edge `(target, source)` is part of the graph.
                                                  - When negative: edge `(target, source)` is not part of the graph.
 
-**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
-
-                                                 - When positive: edge `(target, source)` is part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``       -1     - When positive: edge `(target, source)` is part of the graph.
                                                  - When negative: edge `(target, source)` is not part of the graph.
 
 ================= =================== ======== =================================================
@@ -131,7 +128,6 @@ The new graph is not planar because it has a K5 subgraph. Edges in blue represen
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q3
    :end-before: -- q4
-
 
 See Also
 -------------------------------------------------------------------------------
