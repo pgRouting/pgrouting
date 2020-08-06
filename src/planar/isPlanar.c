@@ -2,7 +2,7 @@
 File: isPlanar.c
 
 Generated with Template by:
-Copyright (c) 2019 pgRouting developers
+Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -100,5 +100,4 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         PG_RETURN_BOOL(process(text_to_cstring(PG_GETARG_TEXT_P(0))));
         /**********************************************************************/
-
 }

@@ -71,7 +71,7 @@ do_pgr_boyerMyrvold(
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_boyerMyrvold;
-        results=fn_boyerMyrvold.boyerMyrvold(undigraph);
+        results = fn_boyerMyrvold.boyerMyrvold(undigraph);
         logstr += fn_boyerMyrvold.get_log();
         log << logstr;
 
