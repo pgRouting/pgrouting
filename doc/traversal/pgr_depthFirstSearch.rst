@@ -151,9 +151,9 @@ Inner query
 
 .. rubric:: Edges SQL
 
-.. include:: pgRouting-concepts.rst
-   :start-after: basic_edges_sql_start
-   :end-before: basic_edges_sql_end
+.. include:: traversal-family.rst
+   :start-after: edges_sql_start
+   :end-before: edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
@@ -193,9 +193,14 @@ See Also
 -------------------------------------------------------------------------------
 
 * The queries use the :doc:`sampledata` network.
+
+.. see also start
+
 * `Boost: Depth First Search algorithm documentation <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__
 * `Boost: Undirected DFS algorithm documentation <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__
 * `Wikipedia: Depth First Search algorithm <https://en.wikipedia.org/wiki/Depth-first_search>`__
+
+.. see also end
 
 .. rubric:: Indices and tables
 

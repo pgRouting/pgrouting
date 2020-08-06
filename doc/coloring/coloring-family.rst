@@ -48,9 +48,9 @@ Inner query
 :Edges SQL: an SQL query of an **undirected** graph, which should return
             a set of rows with the following columns:
 
-.. include:: pgRouting-concepts.rst
-   :start-after: basic_edges_sql_start
-   :end-before: basic_edges_sql_end
+.. include:: traversal-family.rst
+   :start-after: edges_sql_start
+   :end-before: edges_sql_end
 
 
 Result Columns

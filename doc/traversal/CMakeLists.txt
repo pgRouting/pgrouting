@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+    traversal-family.rst
     pgr_depthFirstSearch.rst
     )
 

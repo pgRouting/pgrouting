@@ -67,6 +67,12 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`traversal-family`
+
+.. include:: traversal-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 .. toctree::
    :hidden:
 
@@ -91,7 +97,6 @@ Experimental Functions
 - :doc:`pgr_binaryBreadthFirstSearch`
 - :doc:`pgr_breadthFirstSearch`
 - :doc:`pgr_dagShortestPath`
-- :doc:`pgr_depthFirstSearch`
 - :doc:`pgr_edwardMoore`
 - :doc:`pgr_stoerWagner`
 - :doc:`pgr_topologicalSort`
@@ -105,7 +110,6 @@ Experimental Functions
   pgr_binaryBreadthFirstSearch
   pgr_breadthFirstSearch
   pgr_dagShortestPath
-  pgr_depthFirstSearch
   pgr_edwardMoore
   pgr_stoerWagner
   pgr_topologicalSort
