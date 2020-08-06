@@ -41,8 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "c_types/pgr_makeConnected_t.h"
 //******************************************
-// using namespace boost;
-using namespace std;
+
 namespace pgrouting {
 namespace functions {
 
