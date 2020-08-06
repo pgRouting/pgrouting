@@ -125,7 +125,7 @@ The following edges will make the subgraph with vertices {1, 2, 3, 4, 5} a K5 gr
 
 The new graph is not planar because it has a K5 subgraph.
 
-.. image:: images/modifiedEdgeTable.png
+.. image:: images/nonPlanar.png
    :width: 45%
 
 .. literalinclude:: doc-pgr_isPlanar.queries

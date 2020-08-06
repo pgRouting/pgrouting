@@ -1,5 +1,5 @@
 SET(LOCAL_FILES
-    modifiedEdgeTable.png
+    nonPlanar.png
     )
 
 foreach (f ${LOCAL_FILES})
