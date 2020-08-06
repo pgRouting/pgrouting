@@ -123,7 +123,7 @@ The following edges will make the subgraph with vertices {3, 4, 6, 9, 16} a K5 g
    :start-after: -- q2
    :end-before: -- q3
 
-The new graph is not planar because it has a K5 subgraph.
+The new graph is not planar because it has a K5 subgraph. Edges in blue represent K5 subgraph.
 
 .. image:: images/nonPlanar.png
    :width: 45%
