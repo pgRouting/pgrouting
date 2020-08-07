@@ -66,8 +66,33 @@ RETURNS SETOF RECORD AS
 LANGUAGE c VOLATILE;
 
 
+CREATE OR REPLACE FUNCTION _pgr_withPoints(
+    edges_sql TEXT,
+    points_sql TEXT,
+    combinations_sql TEXT,
+
+    directed BOOLEAN,
+    driving_side CHAR,
+    details BOOLEAN,
+
+    only_cost BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_pid BIGINT,
+    OUT end_pid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
+
 -- COMMENTS
 
-
 COMMENT ON FUNCTION _pgr_withPoints(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_withPoints(TEXT, TEXT, TEXT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
