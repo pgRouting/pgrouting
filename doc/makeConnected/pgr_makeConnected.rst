@@ -10,8 +10,7 @@
 pgr_makeConnected - Experimental
 ===============================================================================
 
-``pgr_makeConnected`` — Returns the set of `node_from` and `node_to` of edges. This set of edges are those edges
-which will make the graph connected.
+``pgr_makeConnected`` — Returns the set of edges that will make the graph connected.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/make_connected.html
@@ -88,13 +87,6 @@ only one connected component.
 .. literalinclude:: doc-pgr_makeConnected.queries
       :start-after: -- q4
       :end-before: -- q5
-
-pgr_makeConnected() can also be used to verify it. Since, the graph is already connected now, it will
-return an empty set of row.
-
-.. literalinclude:: doc-pgr_makeConnected.queries
-      :start-after: -- q5
-      :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------

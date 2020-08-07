@@ -37,10 +37,12 @@ Description
 
 A graph is planar if it can be drawn in two-dimensional space with no two of its edges crossing. Such a drawing
 of a planar graph is called a plane drawing. Every planar graph also admits a straight-line drawing, which is a
-plane drawing where each edge is represented by a line segment. When a graph has K5 or K3,3 as subgraph then the
+plane drawing where each edge is represented by a line segment. When a graph has :math:`K_5` or :math:`K_{3,3}` as subgraph then the
 graph is not planar.
 
 The main characteristics are:
+  - This implementation use the Boyer-Myrvold Planarity Testing.
+
   - It will return a boolean value depending upon the planarity of the graph.
 
   - Applicable only for **undirected** graphs.
@@ -108,22 +110,23 @@ Returns a boolean ``(pgr_isplanar)``
 =================  =========== ============================================================
 Column             Type        Description
 =================  =========== ============================================================
-**pgr_isplanar**   ``BOOLEAN`` `t` if graph is planar and `f` if graph is non-planar.
+**pgr_isplanar**   ``BOOLEAN`` - `true` when the graph is planar.
+                               - `false` when the graph is not planar.
 =================  =========== ============================================================
 
 Additional Example:
 -------------------------------------------------------------------------------
 
-The following edges will make the subgraph with vertices {3, 4, 6, 9, 16} a K5 graph.
+The following edges will make the subgraph with vertices {3, 4, 6, 9, 16} a :math:`K_5` graph.
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q2
    :end-before: -- q3
 
-The new graph is not planar because it has a K5 subgraph. Edges in blue represent K5 subgraph.
+The new graph is not planar because it has a :math:`K_5` subgraph. Edges in blue represent :math:`K_5` subgraph.
 
 .. image:: images/nonPlanar.png
-   :width: 45%
+   :scale: 50%
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q3
