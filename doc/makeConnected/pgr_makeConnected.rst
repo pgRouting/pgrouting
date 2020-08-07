@@ -10,8 +10,8 @@
 pgr_makeConnected - Experimental
 ===============================================================================
 
-``pgr_makeConnected`` — Returns the set of node_from and node_to of edges. This set of edges are those edges
-which will make the graph connected. In particular, the boost::make_connected( ) is implemented by Boost.Graph.
+``pgr_makeConnected`` — Returns the set of `node_from` and `node_to` of edges. This set of edges are those edges
+which will make the graph connected.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/make_connected.html
@@ -44,9 +44,9 @@ The two edges added might consist of one connecting a vertex in A with a vertex 
 The main characteristics are:
   - It will give the minimum list of all edges which are needed in the graph to make the graph connected.
 
-  - Applicable only for undirected graphs.
+  - Applicable only for **undirected** graphs.
 
-  - The graph can be either weighted or unweighted.
+  - The algorithm does not considers traversal costs in the calculations.
 
   - Running time: :math:`O(V + E)`
 
