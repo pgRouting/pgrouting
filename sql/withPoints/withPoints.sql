@@ -146,6 +146,35 @@ COST 100
 ROWS 1000;
 
 
+-- Combinations SQL signature
+CREATE OR REPLACE FUNCTION pgr_withPoints(
+    TEXT,     -- edges_sql (required)
+    TEXT,     -- points_sql (required)
+    TEXT,     -- combinations_sql (required)
+
+    directed BOOLEAN DEFAULT true,
+    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
+    details BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_pid BIGINT,
+    OUT end_pid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT a.seq, a.path_seq, a.start_pid, a.end_pid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_withPoints(_pgr_get_statement($1), _pgr_get_statement($2), _pgr_get_statement($3),
+        $4, $5, $6) AS a;
+$BODY$
+LANGUAGE sql VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+
 -- COMMENTS
 
 
@@ -214,4 +243,18 @@ IS 'pgr_withPoints (Many to Many)
     - details := ''false''
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+';
+
+COMMENT ON FUNCTION pgr_withPoints(TEXT, TEXT, TEXT, BOOLEAN, CHAR, BOOLEAN)
+IS 'pgr_withPoints(Combinations)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - Points SQL with columns: [pid], edge_id, fraction [,side]
+   - Combinations SQL with columns: source, target
+- Optional Parameters
+    - directed := ''true''
+    - driving_side := ''b''
+    - details := ''false''
+- Documentation:
+   - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
 ';

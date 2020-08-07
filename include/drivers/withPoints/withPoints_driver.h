@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/point_on_edge_t.h"
 #include "c_types/pgr_edge_t.h"
+#include "c_types/pgr_combination_t.h"
 #include "c_types/general_path_element_t.h"
 
 #ifdef __cplusplus
@@ -60,6 +61,9 @@ extern "C" {
 
             pgr_edge_t *edges_of_points,
             size_t total_edges_of_points,
+
+            pgr_combination_t  *combinations,
+            size_t total_combinations,
 
             int64_t *start_pidsArr,
             size_t size_start_pidsArr,

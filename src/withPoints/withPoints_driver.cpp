@@ -46,10 +46,12 @@ template < class G >
 std::deque< Path >
 pgr_dijkstra(
         G &graph,
+        std::vector < pgr_combination_t > &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
         bool only_cost,
         bool normal) {
+    pgassert((!combinations.empty() && normal) || (!sources.empty() && !targets.empty()));
     std::sort(sources.begin(), sources.end());
     sources.erase(
             std::unique(sources.begin(), sources.end()),
@@ -61,7 +63,9 @@ pgr_dijkstra(
             targets.end());
 
     pgrouting::Pgr_dijkstra< G > fn_dijkstra;
-    auto paths = fn_dijkstra.dijkstra(graph, sources, targets, only_cost);
+    auto paths = combinations.empty()?
+        fn_dijkstra.dijkstra(graph, sources, targets, only_cost)
+        : fn_dijkstra.dijkstra(graph, combinations, only_cost);
 
     if (!normal) {
         for (auto &path : paths) {
@@ -84,6 +88,9 @@ do_pgr_withPoints(
         pgr_edge_t *edges, size_t total_edges,
         Point_on_edge_t *points_p, size_t total_points,
         pgr_edge_t *edges_of_points, size_t total_edges_of_points,
+
+        pgr_combination_t *combinations, size_t total_combinations,
+
         int64_t *start_pidsArr, size_t size_start_pidsArr,
         int64_t *end_pidsArr, size_t size_end_pidsArr,
 
@@ -109,8 +116,7 @@ do_pgr_withPoints(
         pgassert((*return_count) == 0);
         pgassert(edges || edges_of_points);
         pgassert(points_p);
-        pgassert(start_pidsArr);
-        pgassert(end_pidsArr);
+        pgassert((start_pidsArr && end_pidsArr) || (combinations && total_combinations && normal));
 
         pgrouting::Pg_points_graph pg_graph(
                 std::vector<Point_on_edge_t>(
@@ -132,6 +138,8 @@ do_pgr_withPoints(
         }
 
 
+        std::vector<pgr_combination_t>
+                combinations_vector(combinations, combinations + total_combinations);
         std::vector<int64_t>
             start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
         std::vector< int64_t >
@@ -152,6 +160,7 @@ do_pgr_withPoints(
 
             paths = pgr_dijkstra(
                     digraph,
+                    combinations_vector,
                     start_vertices, end_vertices,
                     only_cost, normal);
         } else {
@@ -161,6 +170,7 @@ do_pgr_withPoints(
             undigraph.insert_edges(pg_graph.new_edges());
             paths = pgr_dijkstra(
                     undigraph,
+                    combinations_vector,
                     start_vertices, end_vertices,
                     only_cost, normal);
         }
