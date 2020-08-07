@@ -24,6 +24,14 @@ which will make the graph connected. In particular, the boost::make_connected( )
 
 .. rubric:: Availability
 
+* Version 3.2.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__)
 
 Description
 -------------------------------------------------------------------------------
@@ -40,7 +48,7 @@ The main characteristics are:
 
   - The graph can be either weighted or unweighted.
 
-  - **Running time:** On a graph with n vertices and m edges, make_connected runs in time O(n + m).
+  - Running time: :math:`O(V + E)`
 
 
 Signatures
@@ -94,7 +102,7 @@ Parameters
 =================== ====================== ========= =================================================
 Parameter           Type                   Default   Description
 =================== ====================== ========= =================================================
-**Edges SQL**       ``TEXT``                         SQL query as described above.
+**Edges SQL**       ``TEXT``                         SQL query as described below.
 =================== ====================== ========= =================================================
 
 Inner query
@@ -108,13 +116,11 @@ Column            Type                 Default  Description
 **id**            ``ANY-INTEGER``                Identifier of the edge.
 **source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
 **target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
+**cost**          ``ANY-NUMERICAL``              - When positive: edge `(target, source)` is part of the graph.
+                                                 - When negative: edge `(target, source)` is not part of the graph.
 
-                                                 - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-
-**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
-
-                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``       -1     - When positive: edge `(target, source)` is part of the graph.
+                                                 - When negative: edge `(target, source)` is not part of the graph.
 
 ================= =================== ======== =================================================
 
