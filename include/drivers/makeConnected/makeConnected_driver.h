@@ -47,10 +47,7 @@ extern "C" {
 #endif
 
     /*********************************************************
-    TEXT,
-    ANYARRAY,
-    max_depth BIGINT DEFAULT 9223372036854775807,
-    directed BOOLEAN DEFAULT true
+    TEXT
      ********************************************************/
 
 

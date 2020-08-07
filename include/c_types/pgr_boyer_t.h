@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
 File: pgr_boyer_t.h
 
-Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2020 Himanshu Raj
+Mail: raj.himanshu2@gmail.com
 
 ------
 
