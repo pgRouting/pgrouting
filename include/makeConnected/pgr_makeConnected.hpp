@@ -56,10 +56,10 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
 
  private:
       std::vector< pgr_makeConnected_t > generatemakeConnected(G &graph ) {
-      std::vector< int >component(num_vertices(graph.graph));
-      size_t comp = connected_components(graph.graph, &component[0]);
+      std::vector< int >component(boost::num_vertices(graph.graph));
+      size_t comp = boost::connected_components(graph.graph, &component[0]);
       comp--;
-      int64_t edgeCount = num_edges(graph.graph);
+      int64_t edgeCount = boost::num_edges(graph.graph);
       int64_t newEdge = 0;
       log << "Number of Components before: " << boost::connected_components(graph.graph, &component[0]) << "\n";
       int64_t i = 0;
@@ -78,7 +78,7 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
               }
               newEdge++;
           }
-       return results;
+      return results;
       }
 };
 }  // namespace functions
