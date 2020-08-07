@@ -62,31 +62,11 @@ Signatures
     RETURNS SET OF (seq, node_from, node_to)
     OR EMPTY SET
 
-Using pgr_connectedComponents() to check the number of connected components in the :doc:`sampledata` graph.
-There are 3 connected components namely **1**, **14**, **16**.
+:Example: Query done on :doc:`sampledata` network gives the list of edges that are needed in the graph to make it connected.
 
 .. literalinclude:: doc-pgr_makeConnected.queries
    :start-after: -- q1
    :end-before: -- q2
-
-:Example: Query done on :doc:`sampledata` network gives the list of edges that are needed in the graph to make it connected.
-
-.. literalinclude:: doc-pgr_makeConnected.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-Inserting the above list of edges in the edge_table.
-
-.. literalinclude:: doc-pgr_makeConnected.queries
-   :start-after: -- q3
-   :end-before: -- q4
-
-Using pgr_connectedComponents() to check the number of connected components. So, Now the graph has
-only one connected component.
-
-.. literalinclude:: doc-pgr_makeConnected.queries
-      :start-after: -- q4
-      :end-before: -- q5
 
 Parameters
 -------------------------------------------------------------------------------
