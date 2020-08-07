@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 #include "c_common/points_input.h"
+#include "c_common/combinations_input.h"
 #include "drivers/withPoints/get_new_queries.h"
 #include "drivers/withPoints/withPoints_driver.h"
 
@@ -50,6 +51,7 @@ void
 process(
         char* edges_sql,
         char* points_sql,
+        char* combinations_sql,
 
         ArrayType *starts,
         ArrayType *ends,
@@ -71,6 +73,9 @@ process(
 
     size_t size_end_pidsArr = 0;
     int64_t* end_pidsArr = NULL;
+
+    pgr_combination_t *combinations = NULL;
+    size_t total_combinations = 0;
 
     Point_on_edge_t *points = NULL;
     size_t total_points = 0;
@@ -103,10 +108,14 @@ process(
                 &total_edges_of_points);
         pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
-        start_pidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_pidsArr, starts);
-        end_pidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_pidsArr, ends);
+        if (starts && ends) {
+            start_pidsArr = (int64_t*)
+                pgr_get_bigIntArray(&size_start_pidsArr, starts);
+            end_pidsArr = (int64_t*)
+                pgr_get_bigIntArray(&size_end_pidsArr, ends);
+        } else if (combinations_sql) {
+            pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        }
     } else {
         pgr_get_edges_reversed(
                 edges_of_points_query,
@@ -140,6 +149,9 @@ process(
             edges, total_edges,
             points, total_points,
             edges_of_points, total_edges_of_points,
+
+            combinations, total_combinations,
+
             start_pidsArr, size_start_pidsArr,
             end_pidsArr, size_end_pidsArr,
 
@@ -155,9 +167,9 @@ process(
             &err_msg);
 
     if (only_cost) {
-        time_msg("processing pgr_withPointsCost(one to one)", start_t, clock());
+        time_msg("processing pgr_withPointsCost", start_t, clock());
     } else {
-        time_msg("processing pgr_withPoints(one to one)", start_t, clock());
+        time_msg("processing pgr_withPoints", start_t, clock());
     }
 
     if (err_msg && (*result_tuples)) {
@@ -182,6 +194,8 @@ process(
 }
 
 
+
+
 PGDLLEXPORT Datum
 _pgr_withpoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -198,22 +212,15 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /**********************************************************************/
-        // CREATE OR REPLACE FUNCTION pgr_withPoint(
-        // edges_sql TEXT,
-        // points_sql TEXT,
-        // start_pid ANYARRAY,
-        // end_pids ANYARRAY,
-        // driving_side CHAR -- DEFAULT 'b',
-        // details BOOLEAN -- DEFAULT false,
-        // directed BOOLEAN -- DEFAULT true,
-        // only_cost BOOLEAN DEFAULT false,
-        // normal BOOLEAN DEFAULT true,
+        if (PG_NARGS() == 9) {
+            /*
+             * many to many
+             */
 
-
-        process(
+            process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
+                NULL,
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_ARRAYTYPE_P(3),
                 PG_GETARG_BOOL(4),
@@ -223,6 +230,26 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(8),
                 &result_tuples,
                 &result_count);
+
+        } else if (PG_NARGS() == 7) {
+            /*
+             * Combinations
+             */
+
+            process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                text_to_cstring(PG_GETARG_TEXT_P(2)),
+                NULL,
+                NULL,
+                PG_GETARG_BOOL(3),
+                text_to_cstring(PG_GETARG_TEXT_P(4)),
+                PG_GETARG_BOOL(5),
+                PG_GETARG_BOOL(6),
+                true,
+                &result_tuples,
+                &result_count);
+        }
 
         /**********************************************************************/
 
