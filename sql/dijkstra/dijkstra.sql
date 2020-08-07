@@ -204,7 +204,7 @@ IS 'pgr_dijkstra(Many to Many)
 ';
 
 COMMENT ON FUNCTION pgr_dijkstra(TEXT, TEXT, BOOLEAN)
-IS 'pgr_dijkstra(One to One)
+IS 'pgr_dijkstra(Combinations)
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - Combinations SQL with columns: source, target
