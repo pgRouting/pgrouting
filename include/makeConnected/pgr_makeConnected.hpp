@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/interruption.h"
 //******************************************
 
 namespace pgrouting {
@@ -63,7 +64,11 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
       int64_t newEdge = 0;
       log << "Number of Components before: " << boost::connected_components(graph.graph, &component[0]) << "\n";
       int64_t i = 0;
+
+      /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+      CHECK_FOR_INTERRUPTS();
       boost::make_connected(graph.graph);
+
       log << "Number of Components after: " << boost::connected_components(graph.graph, &component[0]) << "\n";
       E_i  ei, ei_end;
       std::vector< pgr_makeConnected_t > results(comp);
