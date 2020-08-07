@@ -302,6 +302,7 @@ linkcheck_ignore = [
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
     "https://github.com/pgRouting/pgrouting/issues/*",    # limit only pgrouting
     "https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html",
+    "https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html",
 ]
 
 linkcheck_timeout = 20
