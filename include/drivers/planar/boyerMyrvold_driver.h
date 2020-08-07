@@ -2,7 +2,7 @@
 File: boyerMyrvold_driver.h
 
 Generated with Template by:
-Copyright (c) 2019 pgRouting developers
+Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
