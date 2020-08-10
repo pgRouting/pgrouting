@@ -2,9 +2,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.1)</title>
+    <meta charset="utf-8" />
+    <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.2-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -13,11 +12,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,6 +23,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -141,21 +141,19 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-nodenetwork">
 <h1>pgr_nodeNetwork<a class="headerlink" href="#pgr-nodenetwork" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> - Nodes an network edge table.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Nicolas Ribot</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Copyright:</th><td class="field-body">Nicolas Ribot, The source code is released under the MIT-X license.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Author</dt>
+<dd class="field-odd"><p>Nicolas Ribot</p>
+</dd>
+<dt class="field-even">Copyright</dt>
+<dd class="field-even"><p>Nicolas Ribot, The source code is released under the MIT-X license.</p>
+</dd>
+</dl>
 <p>The function reads edges from a not “noded” network table and writes the “noded” edges into a new table.</p>
 <div class="highlight-sql notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">pgr_nodenetwork</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="nb">text</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">table_ending</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">,</span> <span class="n">outall</span><span class="p">)</span>
 <span class="k">RETURNS</span> <span class="nb">TEXT</span>
@@ -163,24 +161,25 @@
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>Version 2.0.0<ul>
-<li><strong>Official</strong> function</li>
+<li><p>Version 2.0.0</p>
+<ul>
+<li><p><strong>Official</strong> function</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Support</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
+<li><p><strong>Supported versions:</strong>
 current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_nodeNetwork.html">3.1</a>)
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_nodeNetwork.html">3.0</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_nodeNetwork.html">2.6</a></li>
-<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_nodeNetwork.html">2.6</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_nodeNetwork.html">2.5</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_nodeNetwork.html">2.4</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_nodeNetwork.html">2.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_nodeNetwork.html">2.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/node_network.html">2.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/node_network.html">2.0</a></li>
+<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/node_network.html">2.0</a></p></li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -191,41 +190,44 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name as well)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">tolerance:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">float8</span></code> tolerance for coincident points (in projection unit)dd</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> Primary key column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">id</span></code>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> Geometry column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">table_ending:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> Suffix for the new table’s. Default value is <code class="docutils literal notranslate"><span class="pre">noded</span></code>.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">edge_table</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name as well)</p>
+</dd>
+<dt class="field-even">tolerance</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> tolerance for coincident points (in projection unit)dd</p>
+</dd>
+<dt class="field-odd">id</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Primary key column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+</dd>
+<dt class="field-even">the_geom</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Geometry column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</p>
+</dd>
+<dt class="field-odd">table_ending</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Suffix for the new table’s. Default value is <code class="docutils literal notranslate"><span class="pre">noded</span></code>.</p>
+</dd>
+</dl>
 <p>The output table will have for  <code class="docutils literal notranslate"><span class="pre">edge_table_noded</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Unique identifier for the table</td>
-</tr>
-<tr class="field-even field"><th class="field-name">old_id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">bigint</span></code>  Identifier of the edge in original table</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">sub_id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Segment number of the original edge</td>
-</tr>
-<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Empty source column to be used with  <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> function</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Empty target column to be used with  <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> function</td>
-</tr>
-<tr class="field-even field"><th class="field-name">the geom:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Geometry column of the noded network</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">id</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Unique identifier for the table</p>
+</dd>
+<dt class="field-even">old_id</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code>  Identifier of the edge in original table</p>
+</dd>
+<dt class="field-odd">sub_id</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Segment number of the original edge</p>
+</dd>
+<dt class="field-even">source</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Empty source column to be used with  <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> function</p>
+</dd>
+<dt class="field-odd">target</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Empty target column to be used with  <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> function</p>
+</dd>
+<dt class="field-even">the geom</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Geometry column of the noded network</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -367,17 +369,17 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </div>
 <div class="section" id="images">
 <h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="51%" />
-<col width="49%" />
+<col style="width: 51%" />
+<col style="width: 49%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><p class="first rubric">Before Image</p>
-<a class="last reference internal image-reference" href="_images/before_node_net.png"><img alt="before image" class="align-left" src="_images/before_node_net.png" style="width: 460.2px; height: 440.4px;" /></a>
+<tbody>
+<tr class="row-odd"><td><p class="rubric">Before Image</p>
+<a class="reference internal image-reference" href="_images/before_node_net.png"><img alt="before image" class="align-left" src="_images/before_node_net.png" style="width: 460.2px; height: 440.4px;" /></a>
 </td>
-<td><p class="first rubric">After Image</p>
-<a class="last reference internal image-reference" href="_images/after_node_net.png"><img alt="after image" class="align-right" src="_images/after_node_net.png" style="width: 456.0px; height: 439.2px;" /></a>
+<td><p class="rubric">After Image</p>
+<a class="reference internal image-reference" href="_images/after_node_net.png"><img alt="after image" class="align-right" src="_images/after_node_net.png" style="width: 456.0px; height: 439.2px;" /></a>
 </td>
 </tr>
 </tbody>
@@ -386,71 +388,70 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <div class="section" id="comparing-the-results">
 <h2>Comparing the results<a class="headerlink" href="#comparing-the-results" title="Permalink to this headline">¶</a></h2>
 <p>Comparing with the Analysis in the original edge_table, we see that.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="15%" />
-<col width="34%" />
-<col width="51%" />
+<col style="width: 15%" />
+<col style="width: 34%" />
+<col style="width: 51%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">&#160;</th>
-<th class="head">Before</th>
-<th class="head">After</th>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Before</p></th>
+<th class="head"><p>After</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Table name</td>
-<td>edge_table</td>
-<td>edge_table_noded</td>
+<tbody>
+<tr class="row-even"><td><p>Table name</p></td>
+<td><p>edge_table</p></td>
+<td><p>edge_table_noded</p></td>
 </tr>
-<tr class="row-odd"><td>Fields</td>
-<td>All original fields</td>
-<td>Has only basic fields to do a topology analysis</td>
+<tr class="row-odd"><td><p>Fields</p></td>
+<td><p>All original fields</p></td>
+<td><p>Has only basic fields to do a topology analysis</p></td>
 </tr>
-<tr class="row-even"><td>Dead ends</td>
-<td><ul class="first simple">
-<li>Edges with 1 dead end: 1,6,24</li>
-<li>Edges with 2 dead ends  17,18</li>
+<tr class="row-even"><td><p>Dead ends</p></td>
+<td><ul class="simple">
+<li><p>Edges with 1 dead end: 1,6,24</p></li>
+<li><p>Edges with 2 dead ends  17,18</p></li>
 </ul>
-<p class="last">Edge 17’s right node is a dead end
+<p>Edge 17’s right node is a dead end
 because there is no other edge sharing
 that same node. (cnt=1)</p>
 </td>
-<td>Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2</td>
+<td><p>Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2</p></td>
 </tr>
-<tr class="row-odd"><td>Isolated segments</td>
-<td>two isolated segments:  17 and 18 both
-they have 2 dead ends</td>
-<td><dl class="first last docutils">
-<dt>No Isolated segments</dt>
-<dd><ul class="first last simple">
-<li>Edge 17 now shares a node with edges 14-1 and 14-2</li>
-<li>Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2</li>
+<tr class="row-odd"><td><p>Isolated segments</p></td>
+<td><p>two isolated segments:  17 and 18 both
+they have 2 dead ends</p></td>
+<td><dl class="simple">
+<dt>No Isolated segments</dt><dd><ul class="simple">
+<li><p>Edge 17 now shares a node with edges 14-1 and 14-2</p></li>
+<li><p>Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2</p></li>
 </ul>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="row-even"><td>Gaps</td>
-<td>There is a gap between edge 17 and 14
+<tr class="row-even"><td><p>Gaps</p></td>
+<td><p>There is a gap between edge 17 and 14
 because edge 14 is near to the right
-node of edge 17</td>
-<td>Edge 14 was segmented
+node of edge 17</p></td>
+<td><p>Edge 14 was segmented
 Now edges: 14-1 14-2 17 share the same node
-The tolerance value was taken in account</td>
+The tolerance value was taken in account</p></td>
 </tr>
-<tr class="row-odd"><td>Intersections</td>
-<td>Edges 13 and 18 were intersecting</td>
-<td>Edges were segmented, So, now in the interection’s
+<tr class="row-odd"><td><p>Intersections</p></td>
+<td><p>Edges 13 and 18 were intersecting</p></td>
+<td><p>Edges were segmented, So, now in the interection’s
 point there is a node and the following edges share it:
-13-1 13-2 18-1 18-2</td>
+13-1 13-2 18-1 18-2</p></td>
 </tr>
 </tbody>
 </table>
 <p>Now, we are going to include the segments 13-1, 13-2 14-1, 14-2 ,18-1 and 18-2 into our edge-table, copying the data for dir,cost,and reverse cost with tho following steps:</p>
 <ul class="simple">
-<li>Add a column old_id into edge_table, this column is going to keep track the id of the original edge</li>
-<li>Insert only the segmented edges, that is, the ones whose max(sub_id) &gt;1</li>
+<li><p>Add a column old_id into edge_table, this column is going to keep track the id of the original edge</p></li>
+<li><p>Insert only the segmented edges, that is, the ones whose max(sub_id) &gt;1</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="n">table</span> <span class="n">edge_table</span> <span class="n">drop</span> <span class="n">column</span> <span class="k">if</span> <span class="n">exists</span> <span class="n">old_id</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">column</span> <span class="s2">&quot;old_id&quot;</span> <span class="n">of</span> <span class="n">relation</span> <span class="s2">&quot;edge_table&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
@@ -561,8 +562,8 @@ point there is a node and the following edges share it:
 <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> to analyze the edges and vertices of the edge table.</p>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -579,9 +580,9 @@ point there is a node and the following edges share it:
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Last updated on Jul 17, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
+      Last updated on Aug 10, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
 </footer>

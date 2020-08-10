@@ -2,9 +2,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_connectedComponents &#8212; pgRouting Manual (3.1)</title>
+    <meta charset="utf-8" />
+    <title>pgr_connectedComponents &#8212; pgRouting Manual (3.2-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -13,11 +12,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,6 +23,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -141,39 +141,42 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-connectedcomponents">
 <h1>pgr_connectedComponents<a class="headerlink" href="#pgr-connectedcomponents" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code> — Connected components of an undirected graph using a DFS-based approach.</p>
-<div class="figure" id="id1">
+<div class="figure align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/connected_components.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
+<p class="caption"><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>Version 3.0.0<ul>
-<li>Return columns change:<ul>
-<li><code class="docutils literal notranslate"><span class="pre">n_seq</span></code> is removed</li>
-<li><code class="docutils literal notranslate"><span class="pre">seq</span></code> changed type to <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></li>
+<li><p>Version 3.0.0</p>
+<ul>
+<li><p>Return columns change:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_seq</span></code> is removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seq</span></code> changed type to <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></li>
 </ul>
 </li>
-<li><strong>Official</strong> function</li>
+<li><p><strong>Official</strong> function</p></li>
 </ul>
 </li>
-<li>Version 2.5.0<ul>
-<li>New <strong>experimental</strong> function</li>
+<li><p>Version 2.5.0</p>
+<ul>
+<li><p>New <strong>experimental</strong> function</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Support</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
+<li><p><strong>Supported versions:</strong>
 current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_connectedComponents.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_connectedComponents.html">3.0</a></li>
-<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_connectedComponents.html">3.0</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_connectedComponents.html">2.6</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_connectedComponents.html">2.5</a></li>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_connectedComponents.html">2.5</a></p></li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -181,14 +184,15 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 from each other.</p>
 <p><strong>The main characteristics are:</strong></p>
 <ul class="simple">
-<li>The signature is for an <strong>undirected</strong> graph.</li>
-<li>Components are described by vertices</li>
-<li>The returned values are ordered:<ul>
-<li><cite>component</cite> ascending</li>
-<li><cite>node</cite> ascending</li>
+<li><p>The signature is for an <strong>undirected</strong> graph.</p></li>
+<li><p>Components are described by vertices</p></li>
+<li><p>The returned values are ordered:</p>
+<ul>
+<li><p><cite>component</cite> ascending</p></li>
+<li><p><cite>node</cite> ascending</p></li>
 </ul>
 </li>
-<li>Running time: <span class="math notranslate nohighlight">\(O(V + E)\)</span></li>
+<li><p>Running time: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
 </div>
 <div class="section" id="signatures">
@@ -199,14 +203,11 @@ RETURNS SET OF (seq, component, node)
 OR EMPTY SET
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">The connected components of the graph</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>The connected components of the graph</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span>
 <span class="p">);</span>
@@ -236,128 +237,123 @@ OR EMPTY SET
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="21%" />
-<col width="24%" />
-<col width="10%" />
-<col width="45%" />
+<col style="width: 21%" />
+<col style="width: 24%" />
+<col style="width: 10%" />
+<col style="width: 45%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>Edges SQL</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>Inner query as described below.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p>Inner query as described below.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges SQL:</th><td class="field-body">an SQL query of an <strong>undirected</strong> graph, which should return a set of rows with the following columns:</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
+<dl class="field-list simple">
+<dt class="field-odd">edges SQL</dt>
+<dd class="field-odd"><p>an SQL query of an <strong>undirected</strong> graph, which should return a set of rows with the following columns:</p>
+</dd>
+</dl>
+<table class="docutils align-default">
 <colgroup>
-<col width="12%" />
-<col width="14%" />
-<col width="6%" />
-<col width="69%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 6%" />
+<col style="width: 69%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the edge.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the edge.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the first end point vertex of the edge.</td>
+<tr class="row-odd"><td><p><strong>source</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the first end point vertex of the edge.</p></td>
 </tr>
-<tr class="row-even"><td><strong>target</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the second end point vertex of the edge.</td>
+<tr class="row-even"><td><p><strong>target</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the second end point vertex of the edge.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
-<ul class="last simple">
-<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
+<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="simple">
+<li><p>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>-1</td>
-<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
-<ul class="last simple">
-<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
+<tr class="row-even"><td><p><strong>reverse_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>-1</p></td>
+<td><p>Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="simple">
+<li><p>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Where:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">node)</span></code></p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="9%" />
-<col width="77%" />
+<col style="width: 13%" />
+<col style="width: 9%" />
+<col style="width: 77%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Sequential value starting from <strong>1</strong>.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Sequential value starting from <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>component</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Component identifier. It is equal to the minimum node identifier in the component.</td>
+<tr class="row-odd"><td><p><strong>component</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Component identifier. It is equal to the minimum node identifier in the component.</p></td>
 </tr>
-<tr class="row-even"><td><strong>node</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the vertex that belongs to <strong>component</strong>.</td>
+<tr class="row-even"><td><p><strong>node</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the vertex that belongs to <strong>component</strong>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -365,15 +361,15 @@ OR EMPTY SET
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="components-family.html"><span class="doc">Components - Family of functions</span></a></li>
-<li>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
-<li>Boost: <a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">Connected components</a></li>
-<li>wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Connected_component_(graph_theory)">Connected component</a></li>
+<li><p><a class="reference internal" href="components-family.html"><span class="doc">Components - Family of functions</span></a></p></li>
+<li><p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
+<li><p>Boost: <a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">Connected components</a></p></li>
+<li><p>wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Connected_component_(graph_theory)">Connected component</a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -390,9 +386,9 @@ OR EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Last updated on Jul 17, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
+      Last updated on Aug 10, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
 </footer>

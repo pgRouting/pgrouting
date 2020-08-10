@@ -2,9 +2,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (3.1)</title>
+    <meta charset="utf-8" />
+    <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (3.2-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -13,19 +12,22 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Traversal - Family of functions (Experimental)" href="traversal-family.html" />
+    <link rel="prev" title="pgr_lineGraph - Experimental" href="pgr_lineGraph.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -40,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -73,9 +75,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
@@ -109,6 +111,14 @@
             
               
                 
+  <li>
+    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
+    </a>
+  </li>
+  <li>
+    <a href="traversal-family.html" title="Next Chapter: Traversal - Family of functions (Experimental)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Traversal - F... &raquo;</span>
+    </a>
+  </li>
               
             
             
@@ -132,70 +142,69 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-linegraphfull-experimental">
 <h1>pgr_lineGraphFull - Experimental<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> — Transforma un grafo dado en uno nuevo donde todos los vértices del grafo original se convierten en grafos de líneas.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Advertencia</p>
+<p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
-<ul class="last simple">
-<li>Estas funciones pueden crear un bloqueo del servidor</li>
+<ul class="simple">
+<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Advertencia</p>
+<p class="admonition-title">Advertencia</p>
 <p>Funciones experimentales</p>
-<ul class="last simple">
-<li>No son oficialmente de la versión actual.</li>
-<li>Es probable que oficialmente no formen parte de la siguiente versión:<ul>
-<li>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</li>
-<li>El nombre puede cambiar.</li>
-<li>La firma (declaración de funciones) podría cambiar.</li>
-<li>La funcionalidad puede cambiar.</li>
-<li>Las pruebas de pgTap pueden estar ausentes.</li>
-<li>Posiblemente necesite codificación c/c++.</li>
-<li>Puede haber carencia de documentación.</li>
-<li>Hay documentación que, en dado caso, podría ser necesario reescribir.</li>
-<li>Ejemplos de documentación que puede ser necesario generar automáticamente.</li>
-<li>Puede ser necesaria más retroalimentación por parte de la comunidad.</li>
-<li>Puede depender de una función propuesta de pgRouting.</li>
-<li>Podría depender de una función obsoleta de pgRouting</li>
+<ul class="simple">
+<li><p>No son oficialmente de la versión actual.</p></li>
+<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<ul>
+<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
+<li><p>El nombre puede cambiar.</p></li>
+<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La funcionalidad puede cambiar.</p></li>
+<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Posiblemente necesite codificación c/c++.</p></li>
+<li><p>Puede haber carencia de documentación.</p></li>
+<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
+<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
+<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
+<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li>Versión 2.6.0<ul>
-<li>Nueva función <strong>Experimental</strong></li>
+<li><p>Versión 2.6.0</p>
+<ul>
+<li><p>Nueva función <strong>Experimental</strong></p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Soporte</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
-current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_lineGraphFull.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_lineGraphFull.html">3.0</a></li>
-<li><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html">2.6</a></li>
+<li><p><strong>Versiones soportadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_lineGraphFull.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_lineGraphFull.html">3.0</a></p></li>
+<li><p><strong>Versiones no sustentadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html">2.6</a></p></li>
 </ul>
 <div class="section" id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>pgr_lineGraphFull, convierte un grafo dirigido original a un grafo lineal dirigido, convirtiendo cada vértice en un grafo completo y manteniendo todas las aristas originales. Las nuevas aristas de conexión tienen un costo de 0 y van entre las aristas originales adyacentes, respetando la direccionalidad.</p>
 <p>Una posible aplicación del grafo resultante es <strong>«ruteo con restricciones en dos aristas»</strong>:</p>
 <ul class="simple">
-<li>Establecer un coste de uso del vértice al enrutar entre aristas en la arista de conexión</li>
-<li>Prohibir el ruteo entre dos aristas al quitar el arista de conexión</li>
+<li><p>Establecer un coste de uso del vértice al enrutar entre aristas en la arista de conexión</p></li>
+<li><p>Prohibir el ruteo entre dos aristas al quitar el arista de conexión</p></li>
 </ul>
 <p>Esto es posible porque cada una de las intersecciones (vértices) en el grafo original ahora son grafos completos que tienen una nueva arista para cada posible giro a través de esa intersección.</p>
-<dl class="docutils">
-<dt>Las principales características son:</dt>
-<dd><ul class="first last simple">
-<li>Esta función es para grafos <strong>dirigidos</strong>.</li>
-<li>Los resultados son indefinidos cuando se utiliza un identificador de vértice negativo en el grafo de entrada.</li>
-<li>Los resultados son indefinidos cuando se utiliza un identificador de borde duplicado en el grafo de entrada.</li>
-<li>Tiempo de ejecución: TBD</li>
+<dl class="simple">
+<dt>Las principales características son:</dt><dd><ul class="simple">
+<li><p>Esta función es para grafos <strong>dirigidos</strong>.</p></li>
+<li><p>Los resultados son indefinidos cuando se utiliza un identificador de vértice negativo en el grafo de entrada.</p></li>
+<li><p>Los resultados son indefinidos cuando se utiliza un identificador de borde duplicado en el grafo de entrada.</p></li>
+<li><p>Tiempo de ejecución: TBD</p></li>
 </ul>
 </dd>
 </dl>
@@ -213,14 +222,11 @@ RETURNS SET OF (seq, source, target, cost, edge)
 RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Grafo de línea completa del subgrafo de las aristas <span class="math notranslate nohighlight">\(\{4, 7, 8, 10\}\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Grafo de línea completa del subgrafo de las aristas <span class="math notranslate nohighlight">\(\{4, 7, 8, 10\}\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraphFull</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
       <span class="n">FROM</span> <span class="n">edge_table</span>
@@ -263,105 +269,100 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </div>
 <div class="section" id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="16%" />
-<col width="20%" />
-<col width="9%" />
-<col width="55%" />
+<col style="width: 16%" />
+<col style="width: 20%" />
+<col style="width: 9%" />
+<col style="width: 55%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Valores predeterminados</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>sql</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>Consulta SQL como se describió anteriormente.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p>Consulta SQL como se describió anteriormente.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="12%" />
-<col width="14%" />
-<col width="6%" />
-<col width="69%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 6%" />
+<col style="width: 69%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Valores predeterminados</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador de la arista.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>origen</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del primer punto final en el vértice de la arista.</td>
+<tr class="row-odd"><td><p><strong>origen</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-even"><td><strong>objetivo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del segundo punto final en el vértice de la arista.</td>
+<tr class="row-even"><td><p><strong>objetivo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Peso de la arista <cite>(source, target)</cite></p>
-<ul class="last simple">
-<li>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>Peso de la arista <cite>(source, target)</cite></p>
+<ul class="simple">
+<li><p>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>-1</td>
-<td><p class="first">Peso de la arista <cite>(target, source)</cite>,</p>
-<ul class="last simple">
-<li>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-even"><td><p><strong>reverse_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista <cite>(target, source)</cite>,</p>
+<ul class="simple">
+<li><p>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Donde:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Los ejemplos de esta sección se basan en la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>.</p>
 <p>Los ejemplos incluyen el subgrafo que incluye las aristas 4, 7, 8 y 10 con reverse_cost.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Por generar el LineGraphFull</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Por generar el LineGraphFull</p>
+</dd>
+</dl>
 <p>En este ejemplo se muestra cómo funciona esta transformación de grafo para crear aristas adicionales para cada giro posible en un grafoáfico.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SELECT id, source, target, cost, reverse_cost
   FROM edge_table
@@ -384,14 +385,11 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 <div class="line"><img alt="second" class="align-middle" src="_images/transformation.png" /></div>
 </div>
 <p>En el grafo transformado, todas las aristas del grafo original siguen presentes (amarillos), pero ahora tenemos aristas adicionales para cada giro que se podría hacer a través del vértice 6 (naranja).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Para crear una tabla que identifique vértices transformados</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Para crear una tabla que identifique vértices transformados</p>
+</dd>
+</dl>
 <p>Los vértices del grafo transformado se crean dividiendo los vértices en el grafo original. A menos que un vértice en el grafo original sea un vértice de hoja, generará más de un vértice en el grafo transformado. A uno de los vértices recién creados en el grafo transformado se le dará el mismo vértice-id que el vértice desde el que se creó en el grafo original, pero el resto de los vértices recién creados tendrán identificadores de vértices negativos. A continuación se muestra un ejemplo de cómo generar una tabla que mapea los identificadores de los vértices recién creados con el vértice original que se crearon a partir de</p>
 <p>El primer paso es almacenar el grafo de resultados en una tabla y, a continuación, crear la tabla de asignación de vértices con una fila para cada identificador de vértice distinto en el grafo resultante.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CREATE TABLE lineGraph_edges AS SELECT * FROM pgr_lineGraphFull(
@@ -540,14 +538,11 @@ SELECT 16
 
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Por ejecutar la ruta más corta dijkstra con penalizaciones de giro</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Por ejecutar la ruta más corta dijkstra con penalizaciones de giro</p>
+</dd>
+</dl>
 <p>Un caso de uso para esta transformación de grafo es poder ejecutar una búsqueda de ruta más corta que tenga en cuenta el costo o la limitación del giro. A continuación se muestra un ejemplo de cómo ejecutar una ruta más corta dijkstra desde el vértice 2 hasta el vértice 8 en el grafo original, mientras que agrega un costo de penalización de giro de 100 al giro desde el borde 4 hasta el borde -7.</p>
 <p>En primer lugar debemos aumentar el costo de hacer el turno a 100:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">lineGraph_edges</span>
@@ -585,13 +580,13 @@ SELECT 16
 <div class="section" id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Line_graph">https://en.wikipedia.org/wiki/Line_graph</a></li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Complete_graph">https://en.wikipedia.org/wiki/Complete_graph</a></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Line_graph">https://en.wikipedia.org/wiki/Line_graph</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Complete_graph">https://en.wikipedia.org/wiki/Complete_graph</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -608,9 +603,9 @@ SELECT 16
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Actualizado por última vez en jul. 17, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
+      Actualizado por última vez en ago. 10, 2020.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
 </footer>

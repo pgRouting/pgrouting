@@ -2,9 +2,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_aStar &#8212; pgRouting Manual (3.1)</title>
+    <meta charset="utf-8" />
+    <title>pgr_aStar &#8212; pgRouting Manual (3.2-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -13,11 +12,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,6 +23,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -153,99 +153,112 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-astar">
 <h1>pgr_aStar<a class="headerlink" href="#pgr-astar" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> — Shortest path using A* algorithm.</p>
-<div class="figure" id="id1">
+<div class="figure align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/astar_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
+<p class="caption"><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>Version 3.0.0<ul>
-<li><strong>Official</strong> function</li>
+<li><p>Version 3.0.0</p>
+<ul>
+<li><p><strong>Official</strong> function</p></li>
 </ul>
 </li>
-<li>Version 2.4.0<ul>
-<li>New <strong>Proposed</strong> functions:<ul>
-<li>pgr_aStar(One to Many)</li>
-<li>pgr_aStar(Many to One)</li>
-<li>pgr_aStar(Many to Many)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Version 2.3.0<ul>
-<li>Signature change on pgr_astar(One to One)<ul>
-<li>Old signature no longer supported</li>
+<li><p>Version 2.4.0</p>
+<ul>
+<li><p>New <strong>Proposed</strong> functions:</p>
+<ul>
+<li><p>pgr_aStar(One to Many)</p></li>
+<li><p>pgr_aStar(Many to One)</p></li>
+<li><p>pgr_aStar(Many to Many)</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Version 2.0.0<ul>
-<li><strong>Official</strong> pgr_aStar(One to One)</li>
+<li><p>Version 2.3.0</p>
+<ul>
+<li><p>Signature change on pgr_astar(One to One)</p>
+<ul>
+<li><p>Old signature no longer supported</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Version 2.0.0</p>
+<ul>
+<li><p><strong>Official</strong> pgr_aStar(One to One)</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Support</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
+<li><p><strong>Supported versions:</strong>
 current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_aStar.html">3.1</a>)
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_aStar.html">3.0</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_aStar.html">2.6</a></li>
-<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_aStar.html">2.6</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_aStar.html">2.5</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_aStar.html">2.4</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/astar/doc/pgr_astar.html">2.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html">2.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/astar/doc/index.html">2.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html">2.0</a></li>
+<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html">2.0</a></p></li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><strong>The main characteristics are:</strong></p>
 <ul class="simple">
-<li>Default kind of graph is <strong>directed</strong>  when<ul>
-<li><code class="docutils literal notranslate"><span class="pre">directed</span></code> flag is missing.</li>
-<li><code class="docutils literal notranslate"><span class="pre">directed</span></code> flag is set to true</li>
+<li><p>Default kind of graph is <strong>directed</strong>  when</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">directed</span></code> flag is missing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">directed</span></code> flag is set to true</p></li>
 </ul>
 </li>
-<li>Unless specified otherwise, ordering is:<ul>
-<li>first by <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> (if exists)</li>
-<li>then by <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></li>
+<li><p>Unless specified otherwise, ordering is:</p>
+<ul>
+<li><p>first by <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> (if exists)</p></li>
+<li><p>then by <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
 </ul>
 </li>
-<li>Values are returned when there is a path</li>
-<li>Let <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(u\)</span> be nodes on the graph:<ul>
-<li>If there is no path from <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(u\)</span>:<ul>
-<li>no corresponding row is returned</li>
-<li><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> from <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(u\)</span> is <span class="math notranslate nohighlight">\(\infty\)</span></li>
+<li><p>Values are returned when there is a path</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(u\)</span> be nodes on the graph:</p>
+<ul>
+<li><p>If there is no path from <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(u\)</span>:</p>
+<ul>
+<li><p>no corresponding row is returned</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> from <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(u\)</span> is <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
 </ul>
 </li>
-<li>There is no path when <span class="math notranslate nohighlight">\(v = u\)</span> therefore<ul>
-<li>no corresponding row is returned</li>
-<li><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> from <cite>v</cite> to <cite>u</cite> is <span class="math notranslate nohighlight">\(0\)</span></li>
+<li><p>There is no path when <span class="math notranslate nohighlight">\(v = u\)</span> therefore</p>
+<ul>
+<li><p>no corresponding row is returned</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> from <cite>v</cite> to <cite>u</cite> is <span class="math notranslate nohighlight">\(0\)</span></p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Edges with negative costs are not included in the graph.</li>
-<li>When (x,y) coordinates for the same vertex identifier differ:<ul>
-<li>A random selection of the vertex’s (x,y) coordinates is used.</li>
+<li><p>Edges with negative costs are not included in the graph.</p></li>
+<li><p>When (x,y) coordinates for the same vertex identifier differ:</p>
+<ul>
+<li><p>A random selection of the vertex’s (x,y) coordinates is used.</p></li>
 </ul>
 </li>
-<li>Running time: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></li>
+<li><p>Running time: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
 </ul>
 <ul class="simple">
-<li>The results are equivalent to the union of the results of the <cite>pgr_aStar(</cite> <a class="reference internal" href="#one-to-one">One to One</a> <cite>)</cite> on the:<ul>
-<li><cite>pgr_aStar(</cite> <a class="reference internal" href="#one-to-many">One to Many</a> <cite>)</cite></li>
-<li><cite>pgr_aStar(</cite> <a class="reference internal" href="#many-to-one">Many to One</a> <cite>)</cite></li>
-<li><cite>pgr_aStar(</cite> <a class="reference internal" href="#many-to-many">Many to Many</a> <cite>)</cite></li>
+<li><p>The results are equivalent to the union of the results of the <cite>pgr_aStar(</cite> <a class="reference internal" href="#one-to-one">One to One</a> <cite>)</cite> on the:</p>
+<ul>
+<li><p><cite>pgr_aStar(</cite> <a class="reference internal" href="#one-to-many">One to Many</a> <cite>)</cite></p></li>
+<li><p><cite>pgr_aStar(</cite> <a class="reference internal" href="#many-to-one">Many to One</a> <cite>)</cite></p></li>
+<li><p><cite>pgr_aStar(</cite> <a class="reference internal" href="#many-to-many">Many to Many</a> <cite>)</cite></p></li>
 </ul>
 </li>
-<li><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> in the result is used to distinguish to which path it belongs.</p></li>
 </ul>
 </div>
 <div class="section" id="signatures">
@@ -267,14 +280,11 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertex <span class="math notranslate nohighlight">\(12\)</span> on a <strong>directed</strong> graph</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertex <span class="math notranslate nohighlight">\(12\)</span> on a <strong>directed</strong> graph</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_astar</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
@@ -297,14 +307,11 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertex  <span class="math notranslate nohighlight">\(12\)</span> on an <strong>undirected</strong> graph using heuristic <span class="math notranslate nohighlight">\(2\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertex  <span class="math notranslate nohighlight">\(12\)</span> on an <strong>undirected</strong> graph using heuristic <span class="math notranslate nohighlight">\(2\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_astar</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span>
@@ -328,14 +335,11 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 12\}\)</span> on a <strong>directed</strong> graph using heuristic <span class="math notranslate nohighlight">\(2\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 12\}\)</span> on a <strong>directed</strong> graph using heuristic <span class="math notranslate nohighlight">\(2\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_astar</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
@@ -364,14 +368,11 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertices <span class="math notranslate nohighlight">\(\{7, 2\}\)</span> to vertex <span class="math notranslate nohighlight">\(12\)</span> on a <strong>directed</strong> graph using heuristic  <span class="math notranslate nohighlight">\(0\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{7, 2\}\)</span> to vertex <span class="math notranslate nohighlight">\(12\)</span> on a <strong>directed</strong> graph using heuristic  <span class="math notranslate nohighlight">\(0\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_astar</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">12</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
@@ -400,14 +401,11 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From vertices <span class="math notranslate nohighlight">\(\{7, 2\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 12\}\)</span> on a <strong>directed</strong> graph using heuristic <span class="math notranslate nohighlight">\(2\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{7, 2\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 12\}\)</span> on a <strong>directed</strong> graph using heuristic <span class="math notranslate nohighlight">\(2\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_astar</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
@@ -445,56 +443,56 @@ OR EMPTY SET
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="18%" />
-<col width="24%" />
-<col width="58%" />
+<col style="width: 18%" />
+<col style="width: 24%" />
+<col style="width: 58%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td><a class="reference internal" href="#edges-sql">edges_sql</a> inner query.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>edges_sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">edges_sql</a> inner query.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>from_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td><p class="first">Starting vertex identifier. Parameter in:</p>
-<ul class="last simple">
-<li><a class="reference internal" href="#one-to-one">One to One</a></li>
-<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
+<tr class="row-odd"><td><p><strong>from_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>Starting vertex identifier. Parameter in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#one-to-one">One to One</a></p></li>
+<li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>from_vids</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
-<td><p class="first">Array of starting vertices identifiers. Parameter in:</p>
-<ul class="last simple">
-<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
-<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
+<tr class="row-even"><td><p><strong>from_vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
+<td><p>Array of starting vertices identifiers. Parameter in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>to_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td><p class="first">Ending vertex identifier. Parameter in:</p>
-<ul class="last simple">
-<li><a class="reference internal" href="#one-to-one">One to One</a></li>
-<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
+<tr class="row-odd"><td><p><strong>to_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>Ending vertex identifier. Parameter in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#one-to-one">One to One</a></p></li>
+<li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>to_vids</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
-<td><p class="first">Array of ending vertices identifiers. Parameter in:</p>
-<ul class="last simple">
-<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
-<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
+<tr class="row-even"><td><p><strong>to_vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
+<td><p>Array of ending vertices identifiers. Parameter in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
 </td>
 </tr>
@@ -502,53 +500,53 @@ OR EMPTY SET
 </table>
 <div class="section" id="optional-parameters">
 <h3>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="19%" />
-<col width="7%" />
-<col width="60%" />
+<col style="width: 14%" />
+<col style="width: 19%" />
+<col style="width: 7%" />
+<col style="width: 60%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>directed</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
-<td><ul class="first last simple">
-<li>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered as Directed.</li>
-<li>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected.</li>
+<tbody>
+<tr class="row-even"><td><p><strong>directed</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered as Directed.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>heuristic</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">5</span></code></td>
-<td><p class="first">Heuristic number. Current valid values 0~5. Default <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
-<ul class="last simple">
-<li>0: h(v) = 0 (Use this value to compare with pgr_dijkstra)</li>
-<li>1: h(v) abs(max(dx, dy))</li>
-<li>2: h(v) abs(min(dx, dy))</li>
-<li>3: h(v) = dx * dx + dy * dy</li>
-<li>4: h(v) = sqrt(dx * dx + dy * dy)</li>
-<li>5: h(v) = abs(dx) + abs(dy)</li>
+<tr class="row-odd"><td><p><strong>heuristic</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+<td><p>Heuristic number. Current valid values 0~5. Default <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<ul class="simple">
+<li><p>0: h(v) = 0 (Use this value to compare with pgr_dijkstra)</p></li>
+<li><p>1: h(v) abs(max(dx, dy))</p></li>
+<li><p>2: h(v) abs(min(dx, dy))</p></li>
+<li><p>3: h(v) = dx * dx + dy * dy</p></li>
+<li><p>4: h(v) = sqrt(dx * dx + dy * dy)</p></li>
+<li><p>5: h(v) = abs(dx) + abs(dy)</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>factor</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">1</span></code></td>
-<td>For units manipulation. <span class="math notranslate nohighlight">\(factor &gt; 0\)</span>.  See <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">Factor</span></a></td>
+<tr class="row-even"><td><p><strong>factor</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>For units manipulation. <span class="math notranslate nohighlight">\(factor &gt; 0\)</span>.  See <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">Factor</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><strong>epsilon</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">1</span></code></td>
-<td>For less restricted results. <span class="math notranslate nohighlight">\(epsilon &gt;= 1\)</span>.</td>
+<tr class="row-odd"><td><p><strong>epsilon</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>For less restricted results. <span class="math notranslate nohighlight">\(epsilon &gt;= 1\)</span>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -558,156 +556,151 @@ OR EMPTY SET
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="edges-sql">
 <h3>edges_sql<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
+<dl class="field-list simple">
+<dt class="field-odd">edges_sql</dt>
+<dd class="field-odd"><p>an SQL query, which should return a set of rows with the following columns:</p>
+</dd>
+</dl>
+<table class="docutils align-default">
 <colgroup>
-<col width="12%" />
-<col width="14%" />
-<col width="6%" />
-<col width="69%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 6%" />
+<col style="width: 69%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the edge.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the edge.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the first end point vertex of the edge.</td>
+<tr class="row-odd"><td><p><strong>source</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the first end point vertex of the edge.</p></td>
 </tr>
-<tr class="row-even"><td><strong>target</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the second end point vertex of the edge.</td>
+<tr class="row-even"><td><p><strong>target</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the second end point vertex of the edge.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
-<ul class="last simple">
-<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
+<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="simple">
+<li><p>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>-1</td>
-<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
-<ul class="last simple">
-<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
+<tr class="row-even"><td><p><strong>reverse_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>-1</p></td>
+<td><p>Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="simple">
+<li><p>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>x1</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td>X coordinate of <cite>source</cite> vertex.</td>
+<tr class="row-odd"><td><p><strong>x1</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>X coordinate of <cite>source</cite> vertex.</p></td>
 </tr>
-<tr class="row-even"><td><strong>y1</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td>Y coordinate of <cite>source</cite> vertex.</td>
+<tr class="row-even"><td><p><strong>y1</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>Y coordinate of <cite>source</cite> vertex.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>x2</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td>X coordinate of <cite>target</cite> vertex.</td>
+<tr class="row-odd"><td><p><strong>x2</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>X coordinate of <cite>target</cite> vertex.</p></td>
 </tr>
-<tr class="row-even"><td><strong>y2</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td>Y coordinate of <cite>target</cite> vertex.</td>
+<tr class="row-even"><td><p><strong>y2</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>Y coordinate of <cite>target</cite> vertex.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Where:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+</dd>
+</dl>
 </div>
 </div>
 <div class="section" id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="9%" />
-<col width="7%" />
-<col width="84%" />
+<col style="width: 9%" />
+<col style="width: 7%" />
+<col style="width: 84%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
-<td>Sequential value starting from <strong>1</strong>.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
+<td><p>Sequential value starting from <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>path_seq</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
-<td>Relative position in the path. Has value <strong>1</strong> for the beginning of a path.</td>
+<tr class="row-odd"><td><p><strong>path_seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
+<td><p>Relative position in the path. Has value <strong>1</strong> for the beginning of a path.</p></td>
 </tr>
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><p class="first">Identifier of the starting vertex.
+<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the starting vertex.
 Returned when multiple starting vetrices are in the query.</p>
-<ul class="last simple">
-<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
-<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
+<ul class="simple">
+<li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><p class="first">Identifier of the ending vertex.
+<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the ending vertex.
 Returned when multiple ending vertices are in the query.</p>
-<ul class="last simple">
-<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
-<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
+<ul class="simple">
+<li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>node</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</td>
+<tr class="row-even"><td><p><strong>node</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>edge</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence. <code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last node of the path.</td>
+<tr class="row-odd"><td><p><strong>edge</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence. <code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last node of the path.</p></td>
 </tr>
-<tr class="row-even"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the path sequence.</td>
+<tr class="row-even"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the path sequence.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</td>
+<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -715,15 +708,15 @@ Returned when multiple ending vertices are in the query.</p>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Family of functions</span></a></li>
-<li><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></li>
-<li><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">https://www.boost.org/libs/graph/doc/astar_search.html</a></li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></li>
+<li><p><a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Family of functions</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">https://www.boost.org/libs/graph/doc/astar_search.html</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -740,9 +733,9 @@ Returned when multiple ending vertices are in the query.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Last updated on Jul 17, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
+      Last updated on Aug 10, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
 </footer>

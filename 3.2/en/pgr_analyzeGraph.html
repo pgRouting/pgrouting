@@ -2,9 +2,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pgr_analyzeGraph &#8212; pgRouting Manual (3.1)</title>
+    <meta charset="utf-8" />
+    <title>pgr_analyzeGraph &#8212; pgRouting Manual (3.2-dev)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -13,11 +12,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,6 +23,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -143,38 +143,39 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-analyzegraph">
 <h1>pgr_analyzeGraph<a class="headerlink" href="#pgr-analyzegraph" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_analyzeGraph</span></code> — Analyzes the network topology.</p>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>Version 2.0.0<ul>
-<li><strong>Official</strong> function</li>
+<li><p>Version 2.0.0</p>
+<ul>
+<li><p><strong>Official</strong> function</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Support</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
+<li><p><strong>Supported versions:</strong>
 current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_analyzeGraph.html">3.1</a>)
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_analyzeGraph.html">3.0</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_analyzeGraph.html">2.6</a></li>
-<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_analyzeGraph.html">2.6</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_analyzeGraph.html">2.5</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_analyzeGraph.html">2.4</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeGraph.html">2.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeGraph.html">2.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_graph.html">2.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_graph.html">2.0</a></li>
+<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_graph.html">2.0</a></p></li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The function returns:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the analysis has finished.</li>
-<li><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the analysis was not completed due to an error.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the analysis has finished.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the analysis was not completed due to an error.</p></li>
 </ul>
 <div class="highlight-sql notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="nb">varchar</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="nb">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">tolerance</span><span class="p">,</span>
                    <span class="nb">text</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span>
@@ -184,71 +185,78 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <p class="rubric">Prerequisites</p>
 <p>The  edge table to be analyzed must contain a source column and a target column filled with id’s of the vertices of the segments and the corresponding vertices table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
 <ul class="simple">
-<li>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to create the vertices table.</li>
-<li>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> to create the topology and the vertices table.</li>
+<li><p>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to create the vertices table.</p></li>
+<li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> to create the topology and the vertices table.</p></li>
 </ul>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p>The analyze graph function accepts the following parameters:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name as well)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">tolerance:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">float8</span></code> Snapping tolerance of disconnected edges. (in projection unit)</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>  Geometry column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>  Primary key column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">id</span></code>.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> Source column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">source</span></code>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>  Target column name of the network table.  Default value is <code class="docutils literal notranslate"><span class="pre">target</span></code>.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">rows_where:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condition to select  a subset or rows.  Default value is <code class="docutils literal notranslate"><span class="pre">true</span></code> to indicate all rows.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">edge_table</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name as well)</p>
+</dd>
+<dt class="field-even">tolerance</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> Snapping tolerance of disconnected edges. (in projection unit)</p>
+</dd>
+<dt class="field-odd">the_geom</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Geometry column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</p>
+</dd>
+<dt class="field-even">id</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Primary key column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+</dd>
+<dt class="field-odd">source</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Source column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p>
+</dd>
+<dt class="field-even">target</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Target column name of the network table.  Default value is <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+</dd>
+<dt class="field-odd">rows_where</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condition to select  a subset or rows.  Default value is <code class="docutils literal notranslate"><span class="pre">true</span></code> to indicate all rows.</p>
+</dd>
+</dl>
 <p>The function returns:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the analysis has finished.<ul>
-<li>Uses the vertices table: &lt;edge_table&gt;_vertices_pgr.</li>
-<li>Fills completely the <code class="docutils literal notranslate"><span class="pre">cnt</span></code> and <code class="docutils literal notranslate"><span class="pre">chk</span></code> columns of the vertices table.</li>
-<li>Returns the analysis of the section of the network defined by  <code class="docutils literal notranslate"><span class="pre">rows_where</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the analysis has finished.</p>
+<ul>
+<li><p>Uses the vertices table: &lt;edge_table&gt;_vertices_pgr.</p></li>
+<li><p>Fills completely the <code class="docutils literal notranslate"><span class="pre">cnt</span></code> and <code class="docutils literal notranslate"><span class="pre">chk</span></code> columns of the vertices table.</p></li>
+<li><p>Returns the analysis of the section of the network defined by  <code class="docutils literal notranslate"><span class="pre">rows_where</span></code></p></li>
 </ul>
 </li>
-<li><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the analysis was not completed due to an error.<ul>
-<li>The vertices table is not found.</li>
-<li>A required column of the Network table is not found or is not of the appropriate type.</li>
-<li>The condition is not well formed.</li>
-<li>The names of source , target or id are the same.</li>
-<li>The SRID of the geometry could not be determined.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the analysis was not completed due to an error.</p>
+<ul>
+<li><p>The vertices table is not found.</p></li>
+<li><p>A required column of the Network table is not found or is not of the appropriate type.</p></li>
+<li><p>The condition is not well formed.</p></li>
+<li><p>The names of source , target or id are the same.</p></li>
+<li><p>The SRID of the geometry could not be determined.</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">The Vertices Table</p>
 <p>The vertices table can be created with <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> or <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
 <p>The structure of the vertices table is:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Identifier of the vertex.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Point geometry of the vertex.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">id</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Identifier of the vertex.</p>
+</dd>
+<dt class="field-even">cnt</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex.</p>
+</dd>
+<dt class="field-odd">chk</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem.</p>
+</dd>
+<dt class="field-even">ein</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
+</dd>
+<dt class="field-odd">eout</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
+</dd>
+<dt class="field-even">the_geom</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Point geometry of the vertex.</p>
+</dd>
+</dl>
 <div class="section" id="usage-when-the-edge-table-s-columns-match-the-default-values">
 <h3>Usage when the edge table’s columns MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">The simplest way to use pgr_analyzeGraph is:</p>
@@ -313,8 +321,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </div>
 <p>We get the same result as the simplest way to use the function.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<div class="last line-block">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
 <div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <code class="docutils literal notranslate"><span class="pre">id</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> is passed to the function as the id column.</div>
 </div>
 </div>
@@ -519,8 +527,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<div class="last line-block">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
 <div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <code class="docutils literal notranslate"><span class="pre">gid</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal notranslate"><span class="pre">mygeom</span></code> is passed to the function as the id column.</div>
 </div>
 </div>
@@ -877,15 +885,15 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a>  for an overview of a topology for routing algorithms.</li>
-<li><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> to analyze directionality of the edges.</li>
-<li><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to reconstruct the vertices table based on the source and target information.</li>
-<li><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> to create nodes to a not noded edge table.</li>
+<li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a>  for an overview of a topology for routing algorithms.</p></li>
+<li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> to analyze directionality of the edges.</p></li>
+<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to reconstruct the vertices table based on the source and target information.</p></li>
+<li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> to create nodes to a not noded edge table.</p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -902,9 +910,9 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Last updated on Jul 17, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
+      Last updated on Aug 10, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
 </footer>
