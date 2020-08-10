@@ -4,7 +4,9 @@ ADD_LIBRARY(components OBJECT
 	biconnectedComponents.c
     articulationPoints.c
     bridges.c
+    makeConnected.c
 
+    makeConnected_driver.cpp
     componentsResult.cpp
     pgr_components.cpp
     connectedComponents_driver.cpp
