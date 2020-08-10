@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "drivers/makeConnected/makeConnected_driver.h"
+#include "drivers/components/makeConnected_driver.h"
 
 #include <vector>
 #include <algorithm>
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#include "makeConnected/pgr_makeConnected.hpp"
+#include "components/pgr_makeConnected.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 
 void
