@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MAKECONNECTED_PGR_MAKECONNECTED_HPP_
-#define INCLUDE_MAKECONNECTED_PGR_MAKECONNECTED_HPP_
+#ifndef INCLUDE_COMPONENTS_PGR_MAKECONNECTED_HPP_
+#define INCLUDE_COMPONENTS_PGR_MAKECONNECTED_HPP_
 #pragma once
 
 #include <boost/graph/adjacency_list.hpp>
@@ -89,4 +89,4 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_MAKECONNECTED_PGR_MAKECONNECTED_HPP_
+#endif  // INCLUDE_COMPONENTS_PGR_MAKECONNECTED_HPP_
