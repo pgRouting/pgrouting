@@ -6,6 +6,7 @@ SET(LOCAL_FILES
 	pgr_biconnectedComponents.rst
 	pgr_articulationPoints.rst
 	pgr_bridges.rst
+    pgr_makeConnected.rst
     )
 
 foreach (f ${LOCAL_FILES})
