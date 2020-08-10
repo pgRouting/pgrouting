@@ -18,12 +18,12 @@ The `index.html` documentation landing page needs to be edited manually.
 It uses Sphinx template styles, but it is not generated automatically.
 
 
-# for user's documentation in develop
+# for user's documentation
 
 ```
-rm -Rf dev 
-cp -r build/doc/html dev 
-git add dev
+rm -Rf 3.2 
+cp -r build/doc/html 3.2 
+git add 3.2
 ```
 
 # for developers documentation
