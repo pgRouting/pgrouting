@@ -67,6 +67,7 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
           } catch (...) {
              throw;
           }
+          return false;
      }
 
  private:
