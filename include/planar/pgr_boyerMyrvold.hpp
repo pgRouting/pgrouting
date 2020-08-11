@@ -56,7 +56,17 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
      bool isPlanar(G &graph) {
           /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
           CHECK_FOR_INTERRUPTS();
-          return (boost::boyer_myrvold_planarity_test(graph.graph));
+          try {
+             return (boost::boyer_myrvold_planarity_test(graph.graph));
+          } catch (boost::exception const& ex) {
+             (void)ex;
+             throw;
+          } catch (std::exception &e) {
+             (void)e;
+             throw;
+          } catch (...) {
+             throw;
+          }
      }
 
  private:
