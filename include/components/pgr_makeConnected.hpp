@@ -67,7 +67,17 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
 
       /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
       CHECK_FOR_INTERRUPTS();
-      boost::make_connected(graph.graph);
+      try {
+         boost::make_connected(graph.graph);
+      } catch (boost::exception const& ex) {
+         (void)ex;
+         throw;
+      } catch (std::exception &e) {
+         (void)e;
+         throw;
+      } catch (...) {
+         throw;
+      }
 
       log << "Number of Components after: " << boost::connected_components(graph.graph, &component[0]) << "\n";
       E_i  ei, ei_end;
