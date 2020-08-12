@@ -14,8 +14,7 @@ SET(LOCAL_FILES
     kruskalBFS.sql
     kruskalDD.sql
 
-    mrt.sql
-    _mrt.sql
+   
     #randomSpanTree.sql
 
     )
