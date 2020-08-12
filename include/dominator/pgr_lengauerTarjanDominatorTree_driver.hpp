@@ -60,7 +60,7 @@ class Pgr_LTDTree : public pgrouting::Pgr_messages {
                     int64_t root
                     ){
                 std::vector<pgr_ltdtree_rt> results;
-                std::vector<Vertex> idoms = std::vector<Vertex>(boost::num_vertices(graph.graph), -1);
+                std::vector<int64_t> idoms = std::vector<int64_t>(boost::num_vertices(graph.graph), -1);
                 auto dominatorTree =
                 make_iterator_property_map
                 (idoms.begin(), boost::get(boost::vertex_index, graph.graph));
