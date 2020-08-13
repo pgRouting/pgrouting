@@ -2,6 +2,16 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
+CREATE TABLE five_vertices_table (
+    id BIGSERIAL,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT
+);
+CREATE TABLE
+INSERT INTO five_vertices_table (source, target, cost, reverse_cost) VALUES (1,2,1,1),(2,3,1,1),(3,4,1,-1),(4,5,1,1),(5,1,1,-1);
+INSERT 0 5
 --q1
 SELECT * FROM pgr_bipartite(
     $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$
@@ -40,5 +50,13 @@ SELECT * FROM pgr_bipartite(
 (4 rows)
 
 --q3
+SELECT * FROM pgr_bipartite(
+    $$SELECT id,source,target,cost,reverse_cost FROM five_vertices_table$$
+);
+ node | color
+------+-------
+(0 rows)
+
+--q4
 ROLLBACK;
 ROLLBACK
