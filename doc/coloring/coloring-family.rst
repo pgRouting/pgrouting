@@ -35,12 +35,15 @@ Coloring - Family of functions (Experimental)
 Parameters
 -------------------------------------------------------------------------------
 
+.. parameters start
+
 =================== ====================== =================================================
 Parameter           Type                   Description
 =================== ====================== =================================================
 **Edges SQL**       ``TEXT``               Inner query as described below.
 =================== ====================== =================================================
 
+.. parameters end
 
 Inner query
 -------------------------------------------------------------------------------
@@ -56,12 +59,21 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-pgr_sequentialVertexColoring
-...............................................................................
+.. result columns start
 
-.. include:: pgr_sequentialVertexColoring.rst
-    :start-after: result columns start
-    :end-before: result columns end
+Returns SET OF ``(vertex_id, color_id)``
+
+===============  =========== ====================================================
+Column           Type        Description
+===============  =========== ====================================================
+**vertex_id**    ``BIGINT``  Identifier of the vertex.
+**color_id**     ``BIGINT``  Identifier of the color of the vertex.
+
+                             - The minimum value of color is 1.
+
+===============  =========== ====================================================
+
+.. result columns end
 
 
 See Also
