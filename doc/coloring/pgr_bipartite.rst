@@ -119,6 +119,13 @@ The examples in this section use the following :ref:`fig1`
     :end-before: --q3
 
 
+:Example: The odd length cyclic graph can not be bipartite:
+
+.. literalinclude:: doc-bipartite.queries
+    :start-after: --q3
+    :end-before: --q4
+
+
 See Also
 -------------------------------------------------------------------------------
 
