@@ -24,6 +24,16 @@ In particular, the is_bipartite() algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
+* Version 3.2.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__)
+
+
 
 Description
 -------------------------------------------------------------------------------
@@ -41,7 +51,6 @@ A bipartite graph is possible if the graph coloring is possible using two colors
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
 
 .. code-block:: sql
 
@@ -57,7 +66,7 @@ Signatures
 
 
 .. index::
-    single: breadthFirstSearch(Multiple vertices) - Experimental
+    single: bipartite (Single Vertex) - Experimental
 
 
 Parameters
@@ -73,21 +82,29 @@ Column         Type           Description
 Inner query
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
+:Edges SQL: an SQL query of an **undirected** graph, which should return
+            a set of rows with the following columns:
+
+.. include:: traversal-family.rst
+   :start-after: edges_sql_start
+   :end-before: edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(vid,color)``
+.. result columns start
 
-============== =========== =================================================
-Column         Type        Description
-============== =========== =================================================
-**vid**        ``BIGINT``  Identifier of vertex .
-**color**      ``BIGINT``  ``0``: White, ``1``:Black
-============== =========== =================================================
+Returns SET OF ``(vertex_id, color_id)``
+
+===============  =========== ====================================================
+Column           Type        Description
+===============  =========== ====================================================
+**vertex_id**    ``BIGINT``  Identifier of the vertex.
+**color_id**     ``BIGINT``  Identifier of the color of the vertex.
+                             `0`: `white`
+                             `1`: `black`
+
+===============  =========== ====================================================
 
 Additional Examples
 ------------------------------------------------------------------------------------------
