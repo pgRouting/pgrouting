@@ -104,6 +104,8 @@ Where:
 Result Columns
 -------------------------------------------------------------------------------
 
+.. return_makeConnected_start
+
 Returns set of ``(seq, start_vid, end_vid)``
 
 ===============  =========== ============================================================
@@ -113,6 +115,8 @@ Column           Type        Description
 **start_vid**    ``BIGINT``  Identifier of the first end point vertex of the edge.
 **end_vid**      ``BIGINT``  Identifier of the second end point vertex of the edge.
 ===============  =========== ============================================================
+
+.. return_makeConnected_end
 
 See Also
 -------------------------------------------------------------------------------

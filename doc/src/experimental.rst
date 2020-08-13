@@ -73,6 +73,12 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`components-family`
+
+.. include:: components-family.rst
+   :start-after: index experimental from here
+   :end-before: index experimental to here
+
 .. toctree::
    :hidden:
 
@@ -80,6 +86,7 @@ Experimental Functions
    coloring-family
    transformation-family
    traversal-family
+   components-family
 
 .. rubric:: categories
 
