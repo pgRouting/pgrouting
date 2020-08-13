@@ -34,8 +34,8 @@ SELECT *
 FROM pgr_bipartite(
     'q3'
 );
+SELECT is_empty('bipartite2', '4: One vertex graph can not be bipartite-> Empty row is returned');
 
-SELECT set_eq('bipartite2', $$VALUES (0, 0)$$, '4: One vertex graph can not be bipartite-> Empty row is returned');
 
 
 -- 2 vertices test (connected)

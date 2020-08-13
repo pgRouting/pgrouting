@@ -84,7 +84,6 @@ do_pgr_bipartite(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice << "No result found";
             *log_msg = log.str().empty()?
                        *log_msg :
                        pgr_msg(log.str().c_str());
