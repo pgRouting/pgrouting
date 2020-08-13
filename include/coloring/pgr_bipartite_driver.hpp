@@ -84,7 +84,7 @@ class Pgr_Bipartite : public pgrouting::Pgr_messages {
             }
             std::vector<pgr_bipartite_rt> pgr_bipartite(
                     G &graph ){
-                std::vector<pgr_bipartite_rt> results(graph.num_vertices());
+                std::vector<pgr_bipartite_rt> results;
                 bool bipartite = boost::is_bipartite(graph.graph);
                 if (bipartite) results = print_Bipartite(graph);
                 return results;
