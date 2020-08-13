@@ -81,11 +81,9 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-=================== ====================== =================================================
-Parameter           Type                   Description
-=================== ====================== =================================================
-**Edges SQL**       ``TEXT``               Inner query as described below.
-=================== ====================== =================================================
+.. include:: coloring-family.rst
+    :start-after: parameters start
+    :end-before: parameters end
 
 Inner query
 -------------------------------------------------------------------------------
@@ -100,23 +98,9 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-.. result columns start
-
-Returns SET OF ``(vertex_id, color_id)``
-
-===============  =========== ====================================================
-Column           Type        Description
-===============  =========== ====================================================
-**vertex_id**    ``BIGINT``  Identifier of the vertex.
-**color_id**     ``BIGINT``  Identifier of the color of the vertex.
-
-                             - The minimum value of color is 1.
-                             - The maximum value will not be greater than the
-                               number of vertices in the graph.
-
-===============  =========== ====================================================
-
-.. result columns end
+.. include:: coloring-family.rst
+    :start-after: result columns start
+    :end-before: result columns end
 
 
 See Also
