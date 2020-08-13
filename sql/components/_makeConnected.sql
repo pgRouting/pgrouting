@@ -34,8 +34,8 @@ CREATE OR REPLACE FUNCTION _pgr_makeConnected(
   TEXT,   -- edges_sql (required)
 
   OUT seq BIGINT,
-  OUT node_from BIGINT,
-  OUT node_to BIGINT)
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT)
 
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'

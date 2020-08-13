@@ -164,8 +164,8 @@ PGDLLEXPORT Datum _pgr_makeconnected(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*
-            OUT node_from BIGINT,
-            OUT node_to BIGINT
+            OUT start_vid BIGINT,
+            OUT end_vid BIGINT
         */
         /**********************************************************************/
         size_t numb = 3;
@@ -178,8 +178,8 @@ PGDLLEXPORT Datum _pgr_makeconnected(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node_from);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node_to);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_vid);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_vid);
 
         /**********************************************************************/
 

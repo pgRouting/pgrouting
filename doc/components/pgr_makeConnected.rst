@@ -59,7 +59,7 @@ Signatures
 
     pgr_makeConnected(Edges SQL)
 
-    RETURNS SET OF (seq, node_from, node_to)
+    RETURNS SET OF (seq, start_vid, end_vid)
     OR EMPTY SET
 
 :Example: Query done on :doc:`sampledata` network gives the list of edges that are needed in the graph to make it connected.
@@ -104,14 +104,14 @@ Where:
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, node_from, node_to)``
+Returns set of ``(seq, start_vid, end_vid)``
 
 ===============  =========== ============================================================
 Column           Type        Description
 ===============  =========== ============================================================
 **seq**          ``INT``     Sequential value starting from **1**.
-**node_from**    ``BIGINT``  Identifier of the first end point vertex of the edge.
-**node_to**      ``BIGINT``  Identifier of the second end point vertex of the edge.
+**start_vid**    ``BIGINT``  Identifier of the first end point vertex of the edge.
+**end_vid**      ``BIGINT``  Identifier of the second end point vertex of the edge.
 ===============  =========== ============================================================
 
 See Also

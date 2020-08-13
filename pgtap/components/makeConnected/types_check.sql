@@ -11,7 +11,7 @@ SELECT function_returns('pgr_makeconnected', ARRAY['text'], 'setof record');
 -- parameter names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_makeconnected'$$,
-    $$SELECT  '{"",seq,node_from,node_to}'::TEXT[] $$
+    $$SELECT  '{"",seq,start_vid,end_vid}'::TEXT[] $$
 );
 
 -- parameter types
