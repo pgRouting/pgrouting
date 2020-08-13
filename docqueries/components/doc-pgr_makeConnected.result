@@ -7,7 +7,7 @@ SELECT * FROM pgr_makeConnected(
     'SELECT id, source, target, cost, reverse_cost
      FROM edge_table'
 );
- seq | node_from | node_to
+ seq | start_vid | end_vid
 -----+-----------+---------
    1 |        13 |      14
    2 |        15 |      16
