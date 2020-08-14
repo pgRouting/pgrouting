@@ -113,7 +113,6 @@ Experimental Functions
 - :doc:`pgr_topologicalSort`
 - :doc:`pgr_transitiveClosure`
 - :doc:`pgr_turnRestrictedPath`
-- :doc:`pgr_bipartite`
 - :doc:`pgr_lengauerTarjanDominatorTree`
 
 .. toctree::
@@ -130,7 +129,6 @@ Experimental Functions
   pgr_transitiveClosure
   pgr_turnRestrictedPath
   pgr_lengauerTarjanDominatorTree
-  pgr_bipartite
 
 
 See Also
