@@ -69,15 +69,14 @@ Signatures
     single: bipartite (Single Vertex) - Experimental on v3.2
 
 
+.. Parameters, Inner query & result columns
+
 Parameters
 -------------------------------------------------------------------------------
 
-============== ============ =================================================
-Column         Type           Description
-============== ============ =================================================
-**edges_sql**   ``TEXT``    SQL query as described above.
-============== ============ =================================================
-
+.. include:: coloring-family.rst
+    :start-after: parameters start
+    :end-before: parameters end
 
 Inner query
 -------------------------------------------------------------------------------
@@ -92,19 +91,10 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-.. result columns start
+.. include:: coloring-family.rst
+    :start-after: result columns start
+    :end-before: result columns end
 
-Returns SET OF ``(vertex_id, color_id)``
-
-===============  =========== ====================================================
-Column           Type        Description
-===============  =========== ====================================================
-**vertex_id**    ``BIGINT``  Identifier of the vertex.
-**color_id**     ``BIGINT``  Identifier of the color of the vertex.
-                             `0`: `white`
-                             `1`: `black`
-
-===============  =========== ====================================================
 
 Additional Examples
 ------------------------------------------------------------------------------------------
