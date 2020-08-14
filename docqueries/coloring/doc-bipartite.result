@@ -16,7 +16,7 @@ INSERT 0 5
 SELECT * FROM pgr_bipartite(
     $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$
 );
- vertex_id | color_id 
+ vertex_id | color_id
 -----------+----------
          1 |        0
          2 |        1
@@ -41,7 +41,7 @@ SELECT * FROM pgr_bipartite(
 SELECT * FROM pgr_bipartite(
     $$SELECT id,source,target,cost,reverse_cost FROM edge_table WHERE id IN (8, 10, 11, 12)$$
 );
- vertex_id | color_id 
+ vertex_id | color_id
 -----------+----------
          5 |        0
          6 |        1
@@ -53,7 +53,7 @@ SELECT * FROM pgr_bipartite(
 SELECT * FROM pgr_bipartite(
     $$SELECT id,source,target,cost,reverse_cost FROM five_vertices_table$$
 );
- vertex_id | color_id 
+ vertex_id | color_id
 -----------+----------
 (0 rows)
 
