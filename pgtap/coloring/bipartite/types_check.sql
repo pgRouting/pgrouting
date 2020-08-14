@@ -11,7 +11,7 @@ SELECT function_returns('pgr_bipartite', ARRAY['text'],  'setof record');
 -- parameter names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_bipartite'$$,
-    $$SELECT  '{"","node","color"}'::TEXT[] $$
+    $$SELECT  '{"","vertex_id","color_id"}'::TEXT[] $$
 );
 
 -- parameter types
