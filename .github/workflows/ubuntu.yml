@@ -34,6 +34,7 @@ jobs:
           curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
           sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
             $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -54,12 +55,14 @@ jobs:
           export PATH=/usr/lib/postgresql/${{ matrix.psql }}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=Debug -DWITH_DOC=OFF ..
+          cmake -DPOSTGRESQL_VERSION=${{ matrix.psql }} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
+
       - name: Build
         run: |
           cd build
           make -j 4
           sudo make install
+
       - name: Test
         run: |
           sudo service postgresql start
