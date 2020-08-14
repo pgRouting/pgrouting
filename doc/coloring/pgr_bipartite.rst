@@ -129,9 +129,13 @@ The examples in this section use the following :ref:`fig1`
 See Also
 -------------------------------------------------------------------------------
 
-* https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/is_bipartite.html
-* https://en.wikipedia.org/wiki/Bipartite_graph
-* https://www.cs.cmu.edu/afs/cs/academic/class/15210-f11/www/lectures/16/lecture16.pdf
+.. see also start
+
+* `Boost: is_bipartite algorithm documentation <https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/is_bipartite.html>`__
+* `Wikipedia: bipartite graph <https://en.wikipedia.org/wiki/Bipartite_graph>`__
+
+.. see also end
+
 * :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

@@ -86,6 +86,12 @@ See Also
     :end-before: see also end
 
 
+
+.. include:: pgr_bipartite.rst
+    :start-after: see also start
+    :end-before: see also end
+
+
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
