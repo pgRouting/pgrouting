@@ -17,6 +17,7 @@ Coloring - Family of functions (Experimental)
 .. index from here
 
 * :doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach.
+* :doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring approach.
 
 .. index to here
 
@@ -25,6 +26,7 @@ Coloring - Family of functions (Experimental)
     :hidden:
 
     pgr_sequentialVertexColoring
+    pgr_bipartite
 
 .. rubric:: Versions of this page
 
