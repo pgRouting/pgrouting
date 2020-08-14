@@ -109,7 +109,6 @@ Experimental Functions
 - :doc:`pgr_dagShortestPath`
 - :doc:`pgr_edwardMoore`
 - :doc:`pgr_isPlanar`
-- :doc:`pgr_makeConnected`
 - :doc:`pgr_stoerWagner`
 - :doc:`pgr_topologicalSort`
 - :doc:`pgr_transitiveClosure`
@@ -124,7 +123,6 @@ Experimental Functions
   pgr_dagShortestPath
   pgr_edwardMoore
   pgr_isPlanar
-  pgr_makeConnected
   pgr_stoerWagner
   pgr_topologicalSort
   pgr_transitiveClosure
