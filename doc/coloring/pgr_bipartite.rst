@@ -66,7 +66,7 @@ Signatures
 
 
 .. index::
-    single: bipartite (Single Vertex) - Experimental
+    single: bipartite (Single Vertex) - Experimental on v3.2
 
 
 Parameters
@@ -112,7 +112,7 @@ Additional Examples
 The examples in this section use the following :ref:`fig1`
 
 
-:Example: It is possible that the cyclic graph can also be bipartite:
+:Example: The even length cyclic graph will be bipartite:
 
 .. literalinclude:: doc-bipartite.queries
     :start-after: --q2
