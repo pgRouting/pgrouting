@@ -74,9 +74,9 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -101,6 +101,7 @@
 <li><a class="reference internal" href="#pgr-biconnectedcomponents">pgr_biconnectedComponents</a></li>
 <li><a class="reference internal" href="#pgr-articulationpoints">pgr_articulationPoints</a></li>
 <li><a class="reference internal" href="#pgr-bridges">pgr_bridges</a></li>
+<li><a class="reference internal" href="#pgr-makeconnected-experimental">pgr_makeConnected - Experimental</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
@@ -155,6 +156,40 @@
 <li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a> - Biconnected components of an undirected graph.</p></li>
 <li><p><a class="reference internal" href="pgr_articulationPoints.html"><span class="doc">pgr_articulationPoints</span></a> - Articulation points of an undirected graph.</p></li>
 <li><p><a class="reference internal" href="pgr_bridges.html"><span class="doc">pgr_bridges</span></a> - Bridges of an undirected graph.</p></li>
+</ul>
+<p class="rubric">Experimental</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Possible server crash</p>
+<ul class="simple">
+<li><p>These functions might create a server crash</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Experimental functions</p>
+<ul class="simple">
+<li><p>They are not officially of the current release.</p></li>
+<li><p>They likely will not be officially be part of the next release:</p>
+<ul>
+<li><p>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might change.</p></li>
+<li><p>Signature might change.</p></li>
+<li><p>Functionality might change.</p></li>
+<li><p>pgTap tests might be missing.</p></li>
+<li><p>Might need c/c++ coding.</p></li>
+<li><p>May lack documentation.</p></li>
+<li><p>Documentation if any might need to be rewritten.</p></li>
+<li><p>Documentation examples might need to be automatically generated.</p></li>
+<li><p>Might need a lot of feedback from the comunity.</p></li>
+<li><p>Might depend on a proposed function of pgRouting</p></li>
+<li><p>Might depend on a deprecated function of pgRouting</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_makeConnected.html"><span class="doc">pgr_makeConnected - Experimental</span></a> - Details of edges to make graph connected.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -369,6 +404,37 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/co
 </tbody>
 </table>
 </div>
+<div class="section" id="pgr-makeconnected-experimental">
+<h3>pgr_makeConnected - Experimental<a class="headerlink" href="#pgr-makeconnected-experimental" title="Permalink to this headline">¶</a></h3>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid)</span></code></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
+<td><p>Sequential value starting from <strong>1</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the first end point vertex of the edge.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>end_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the second end point vertex of the edge.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -393,7 +459,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/co
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Aug 10, 2020.<br/>
+      Last updated on Aug 18, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>

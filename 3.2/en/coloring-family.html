@@ -96,10 +96,7 @@
 <li><a class="reference internal" href="#">Coloring - Family of functions (Experimental)</a><ul>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#inner-query">Inner query</a></li>
-<li><a class="reference internal" href="#result-columns">Result Columns</a><ul>
-<li><a class="reference internal" href="#pgr-sequentialvertexcoloring">pgr_sequentialVertexColoring</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -278,8 +275,6 @@ a set of rows with the following columns:</p>
 </div>
 <div class="section" id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="pgr-sequentialvertexcoloring">
-<h3>pgr_sequentialVertexColoring<a class="headerlink" href="#pgr-sequentialvertexcoloring" title="Permalink to this headline">¶</a></h3>
 <p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></p>
 <table class="docutils align-default">
 <colgroup>
@@ -303,14 +298,11 @@ a set of rows with the following columns:</p>
 <td><p>Identifier of the color of the vertex.</p>
 <ul class="simple">
 <li><p>The minimum value of color is 1.</p></li>
-<li><p>The maximum value will not be greater than the
-number of vertices in the graph.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -339,7 +331,7 @@ number of vertices in the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Aug 10, 2020.<br/>
+      Last updated on Aug 18, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.<br/>
     </p>
   </div>
