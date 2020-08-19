@@ -8,6 +8,6 @@ ADD_LIBRARY(spanningTree OBJECT
     prim.c
     prim_driver.cpp
 
-    
+    #randomSpanningTree.c
     #randomSpanningTree_driver.cpp
     )

@@ -13,10 +13,7 @@ SET(LOCAL_FILES
     kruskalDFS.sql
     kruskalBFS.sql
     kruskalDD.sql
-
-   
     #randomSpanTree.sql
-
     )
 
 # Do not modify below this line
