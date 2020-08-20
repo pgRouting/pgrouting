@@ -1,39 +1,26 @@
 \i setup.sql
-SELECT plan(1);
 
-SELECT todo_start('Complete this tests');
+SELECT plan(5);
 
-SELECT pass('Sample Test');
+SELECT has_function('pgr_lengauertarjandominatortree');
 
-SELECT todo_end();
+SELECT has_function('pgr_lengauertarjandominatortree', ARRAY['text','bigint']);
+SELECT function_returns('pgr_lengauertarjandominatortree', ARRAY['text','bigint'],  'setof record');
 
-SELECT finish();
-/*
-SELECT plan(7);
-
-
-SELECT has_function('pgr_dltdtree');
-
-SELECT has_function('pgr_dltdtree', ARRAY['text','bigint']);
-SELECT function_returns('pgr_dltdtree', ARRAY['text','bigint','bigint'],  'setof record');
-
--- pgr_dltdtree
+-- pgr_bipartite
 -- parameter names
 SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_dltdtree'$$,
-    $$SELECT  '{"","","max_depth","directed","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_lengauertarjandominatortree'$$,
+    $$SELECT  '{"","root_vertex","seq","vid","idom"}'::TEXT[] $$
 );
 
 -- parameter types
 SELECT set_eq(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_dltdtree'$$,
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_lengauertarjandominatortree'$$,
     $$VALUES
-        ('{25,20,20,16,20,20,20,20,20,701,701}'::OID[]),
-        ('{25,2277,20,16,20,20,20,20,20,701,701}'::OID[])
+        ('{25,20,23,20,20}'::OID[])
     $$
 );
 
 SELECT * FROM finish();
-
- */
 ROLLBACK;
