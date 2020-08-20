@@ -45,7 +45,7 @@ A bipartite graph is possible if the graph coloring is possible using two colors
 - The algorithm works in undirected graph only.
 - The returned values are not ordered.
 - The algorithm checks graph is bipartite or not. If it is bipartite then it returns the node along with two colors `0` and `1` which represents two different sets.
-- If graph is not bipartite then algorithm returns empty row.
+- If graph is not bipartite then algorithm returns empty set.
 - Running time: :math:`O(V + E)`
 
 Signatures
@@ -54,8 +54,11 @@ Signatures
 
 .. code-block:: sql
 
-    .. pgr_bipartite(edges_sql)
-    RETURNS SET OF (vid,color)
+    pgr_bipartite(Edges SQL) -- Experimental on v3.2
+    
+    RETURNS SET OF (vertex_id, color_id)
+    OR EMPTY SET
+
 
 
 :Example: The pgr_bipartite algorithm with and edge_sql as a parameter when graph is bipartite:
@@ -100,13 +103,6 @@ Additional Examples
 ------------------------------------------------------------------------------------------
 
 The examples in this section use the following :ref:`fig1`
-
-
-:Example: The even length cyclic graph will be bipartite:
-
-.. literalinclude:: doc-bipartite.queries
-    :start-after: --q2
-    :end-before: --q3
 
 
 :Example: The odd length cyclic graph can not be bipartite:
