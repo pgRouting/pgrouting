@@ -33,16 +33,12 @@ CREATE OR REPLACE FUNCTION pgr_lengauerTarjanDominatorTree(
     TEXT, -- edges_sql (required)
     root_vertex BIGINT , -- vertex (required)
     OUT seq integer,
-    OUT vid BIGINT,
+    OUT vertex_id BIGINT,
     OUT idom BIGINT
     )
 RETURNS SETOF RECORD AS 
 $BODY$
 BEGIN
-    IF $2 < 1 THEN
-        RAISE EXCEPTION 'Negative value found on ''root_vertex'''
-        USING HINT = format('Value found: %s', $2);
-    END IF;
 
     RETURN QUERY
     SELECT *
