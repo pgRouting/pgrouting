@@ -25,10 +25,29 @@ In particular, the Lengauer Tarjan Dominator Tree algorithm implemented by Boost
 
 .. rubric:: Availability
 
+* Version 3.2.0
+
+  * New **experimental** function
+
+.. rubric:: Support
+
+* **Supported versions:**
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__)
+
+
+
 
 Description
 -------------------------------------------------------------------------------
-Lengauer Tarjan Dominator Tree algorithm is used to make dominator tree of any graph. It calculates the immidiate dominator of each vertex called idom, once idom of each vertex is calculated then by making every idom of each vertex as its parent, the dominator tree can be built.
+The algorithm calculates the *immidiate dominator* of each vertex called **idom**, once **idom** of each vertex is calculated then by making every **idom** of each vertex as its parent, the dominator tree can be built.
+
+**The main Characteristics are:**
+
+- The algorithm works in directed graph only.
+- The returned values are not ordered.
+- The algorithm returns *idom* of each vertex.
+- If the *root vertex* not present in the graph then it returns empty set.
+- Running time: :math:`O((V+E)log(V+E))`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -37,9 +56,9 @@ Signatures
 
 .. code-block:: sql
 
-    pgr_LengauerTarjanDominatorTree(edges_sql,root)
-    RETURNS SET OF (id,vid,idom)
-
+    pgr_LengauerTarjanDominatorTree(Edges SQL, root) -- Experimental on v3.2
+    RETURNS SET OF (seq, vertex_id, idom)
+    OR EMPTY SET
 
 
 .. index::
@@ -58,8 +77,8 @@ Parameters
 ============== ============ =================================================
 Column         Type           Description
 ============== ============ =================================================
-**edges_sql**   ``TEXT``    SQL query as described above.
-**root_vid**    ``BIGINT``  Identifier of the starting vertex.
+**Edges SQL**   ``TEXT``    SQL query as described above.
+**root**        ``BIGINT``  Identifier of the starting vertex.
 ============== ============ =================================================
 
 
@@ -73,13 +92,13 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, vid,idom)``
+Returns set of ``(seq, vertex_id,idom)``
 
 ============== =========== =================================================
 Column         Type        Description
 ============== =========== =================================================
 **seq**        ``INTEGER`` Sequential value starting from **1**.
-**vid**        ``BIGINT``  Identifier of vertex .
+**vertex_id**  ``BIGINT``  Identifier of vertex .
 **idom**       ``BIGINT``  Immediate dominator of vertex.
 ============== =========== =================================================
 
@@ -87,7 +106,7 @@ Additional Examples
 ------------------------------------------------------------------------------------------
 The examples in this section use the following :ref:`fig1`
 
-:Example: When the edge is disonnectd from graph then it will returns immidiate dominator of all vertex as zero except that edge:
+:Example: When the edge is disonnectd from graph then it will returns immidiate dominator of all other vertex as zero.
 
 
 
