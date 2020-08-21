@@ -102,14 +102,23 @@ Result Columns
 Additional Examples
 ------------------------------------------------------------------------------------------
 
-The examples in this section use the following :ref:`fig1`
+:Example: The odd length cyclic graph can not be bipartite, The following edge will make odd length cyclic graph with 5 veritices:
+
+.. literalinclude:: doc-bipartite.queries
+   :start-after: --q2
+   :end-before: --q3
 
 
-:Example: The odd length cyclic graph can not be bipartite:
+.. image:: images/bipartite.png
+   :scale: 60%
 
 .. literalinclude:: doc-bipartite.queries
     :start-after: --q3
     :end-before: --q4
+
+
+
+
 
 
 See Also
