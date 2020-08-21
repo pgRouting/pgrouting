@@ -99,11 +99,13 @@ Result Columns
     :end-before: result columns end
 
 
-Additional Examples
+Additional Example
 ------------------------------------------------------------------------------------------
 
 :Example: The odd length cyclic graph can not be bipartite.
-Adding the edge (1,7) will make odd length cyclic graph with 5 veritices, as follows:
+
+The following edge will make subgraph with vertices {1, 2, 5, 7, 8} an odd length cyclic graph.
+
 
 .. literalinclude:: doc-bipartite.queries
    :start-after: --q2
