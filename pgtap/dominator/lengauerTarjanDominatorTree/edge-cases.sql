@@ -1,5 +1,5 @@
 \i setup.sql
-SELECT plan(6);
+SELECT plan(5);
 
 -- 0 edge 0 vertex tests
 PREPARE q1 AS
@@ -79,6 +79,7 @@ WHERE id > 0',1
 SELECT isnt_empty('q2', 'q2: Graph with 0 edge and 0 vertex');
 
 -- Negative root tests
+/*
 PREPARE q3 AS
 SELECT *
 FROM pgr_lengauerTarjanDominatorTree(
@@ -86,5 +87,5 @@ FROM pgr_lengauerTarjanDominatorTree(
 FROM edge_table',-1
 );
 SELECT throws_ok('q3', 'P0001', 'Negative value found on ''root_vertex''', '3: Negative root throws');
-
+*/
 ROLLBACK;
