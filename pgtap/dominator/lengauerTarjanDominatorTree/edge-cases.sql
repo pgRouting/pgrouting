@@ -1,91 +1,112 @@
 \i setup.sql
-SELECT plan(5);
+SELECT plan(11);
 
--- 0 edge 0 vertex tests
+-- 0 edge 0 vertex test
+
 PREPARE q1 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE id > 18;
-
 SELECT is_empty('q1', 'q1: Graph with 0 edge and 0 vertex');
 
 
 PREPARE LengauerTarjanDominatorTree_test1 AS
 SELECT *
 FROM pgr_lengauerTarjanDominatorTree(
-'SELECT id, source, target, cost, reverse_cost
-FROM edge_table
-WHERE id < 0',1
+'q1',1
 );
+
+SELECT is_empty('LengauerTarjanDominatorTree_test1', 'LengauerTarjanDominatorTree_test1: Graph with 0 edge and 0 vertex');
+
+
+-- single vertex test
+
+PREPARE q2 AS
+SELECT id, source, 1 AS target, cost, reverse_cost
+FROM edge_table
+WHERE id = 1;
+
+SELECT set_eq('q2', $$VALUES (1, 1, 1, 1, 1)$$, 'q2: Graph with only vertex 1');
 
 PREPARE LengauerTarjanDominatorTree_test2 AS
 SELECT *
 FROM pgr_lengauerTarjanDominatorTree(
-'SELECT id, source, target, cost, reverse_cost
-FROM edge_table
-WHERE id = 0',1
+'q2',1
 );
+SELECT set_eq('LengauerTarjanDominatorTree_test2', $$VALUES (1, 1, 0)$$, 'LengauerTarjanDominatorTree_test2: single vertex');
+
+
+
+
+-- 2 vertices test (connected)
+
+PREPARE q3 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id = 1;
+
+SELECT set_eq('q3', $$VALUES (1, 1, 2, 1, 1)$$, 'q3: Graph with two connected vertices 1 and 2');
 
 PREPARE LengauerTarjanDominatorTree_test3 AS
 SELECT *
 FROM pgr_lengauerTarjanDominatorTree(
-'SELECT id, source, target, cost, reverse_cost
-FROM edge_table
-WHERE id > 18',1
+    'q3',1
 );
 
-SELECT is_empty('LengauerTarjanDominatorTree_test1', 'LengauerTarjanDominatorTree_test1: Graph with 0 edge and 0 vertex');
-SELECT is_empty('LengauerTarjanDominatorTree_test2', 'LengauerTarjanDominatorTree_test2: Graph with 0 edge and 0 vertex');
-SELECT is_empty('LengauerTarjanDominatorTree_test3', 'LengauerTarjanDominatorTree_test3: Graph with 0 edge and 0 vertex');
+SELECT set_eq('LengauerTarjanDominatorTree_test3', $$VALUES (1, 1, 0),(2, 2, 1)$$, 'LengauerTarjanDominatorTree_test3: two vertices test');
 
 
 
---root not present tests
-/*
+-- 3 vertices test
+
+PREPARE q4 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id <= 2;
+
+SELECT set_eq('q4', $$VALUES (1, 1, 2, 1, 1), (2, 2, 3, -1, 1)$$, 'q4: Graph with three vertices 1, 2 and 3');
+
+
 PREPARE LengauerTarjanDominatorTree_test4 AS
 SELECT *
-FROM pgr_LengauerTarjanDominatorTree_tree(
-'SELECT id, source, target, cost, reverse_cost
-FROM edge_table
-WHERE id > 2',1
+FROM pgr_lengauerTarjanDominatorTree(
+'q4',1
 );
 
+SELECT set_eq('LengauerTarjanDominatorTree_test4', $$VALUES (1, 1, 0),(2, 2, 1),(3, 3, 0)$$, 'LengauerTarjanDominatorTree_test3:three vertices test');
+
+
+-- 4 vertices test
+
+PREPARE q5 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id <= 3;
+
+SELECT set_eq('q5',
+    $$VALUES
+        (1, 1, 2, 1, 1),
+        (2, 2, 3, -1, 1),
+        (3, 3, 4, -1, 1)
+    $$,
+    'q5: Graph with four vertices 1, 2, 3 and 4'
+);
 
 PREPARE LengauerTarjanDominatorTree_test5 AS
 SELECT *
-FROM pgr_LengauerTarjanDominatorTree(
-'SELECT id, source, target, cost, reverse_cost
-FROM edge_table
-WHERE id > 2',1
+FROM pgr_lengauerTarjanDominatorTree(
+'q5',1
 );
 
-SELECT is_empty('LengauerTarjanDominatorTree_test4', 'LengauerTarjanDominatorTree_test4: Root not present in the Graph');
-SELECT is_empty('LengauerTarjanDominatorTree_test5', 'LengauerTarjanDominatorTree_test5: Root not present in the Graph');
-*/
---vertex not present in the graph tests
+SELECT set_eq('LengauerTarjanDominatorTree_test5', $$VALUES (1, 1, 0),(2, 2, 1),(3, 3, 0), (4, 4, 0)$$, 'LengauerTarjanDominatorTree_test5: four vertices test root as 1');
 
 
---verify results test
-
-
---id constrained tests
-PREPARE q2 AS
+PREPARE LengauerTarjanDominatorTree_test6 AS
 SELECT *
 FROM pgr_lengauerTarjanDominatorTree(
-'SELECT id, source, target, cost, reverse_cost
-FROM edge_table
-WHERE id > 0',1
+'q5',4
 );
-SELECT isnt_empty('q2', 'q2: Graph with 0 edge and 0 vertex');
 
--- Negative root tests
-/*
-PREPARE q3 AS
-SELECT *
-FROM pgr_lengauerTarjanDominatorTree(
-'SELECT id, source, target, cost, reverse_cost
-FROM edge_table',-1
-);
-SELECT throws_ok('q3', 'P0001', 'Negative value found on ''root_vertex''', '3: Negative root throws');
-*/
+SELECT set_eq('LengauerTarjanDominatorTree_test6', $$VALUES (1, 1, 2),(2,2,3),(3, 3, 4),(4, 4, 0)$$, 'LengauerTarjanDominatorTree_test6:four vertices test root as 4');
+
 ROLLBACK;
