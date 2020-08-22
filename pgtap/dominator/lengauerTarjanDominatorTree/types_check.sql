@@ -11,7 +11,7 @@ SELECT function_returns('pgr_lengauertarjandominatortree', ARRAY['text','bigint'
 -- parameter names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_lengauertarjandominatortree'$$,
-    $$SELECT  '{"","root_vertex","seq","vertex_id","idom"}'::TEXT[] $$
+    $$SELECT  '{"","","seq","vertex_id","idom"}'::TEXT[] $$
 );
 
 -- parameter types
