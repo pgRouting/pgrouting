@@ -32,7 +32,7 @@ In particular, the Lengauer Tarjan Dominator Tree algorithm implemented by Boost
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__)
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_lengauerTarjanDominatorTree.html>`__)
 
 
 
@@ -117,9 +117,8 @@ The examples in this section use the following :ref:`fig1`
 See Also
 -------------------------------------------------------------------------------
 
-* https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/lengauer_tarjan_dominator.htm
-* https://www.cs.princeton.edu/courses/archive/fall03/cs528/handouts/a%20fast%20algorithm%20for%20finding.pdf
-* https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/two_graphs_common_spanning_trees.html
+* `Boost: lengauerTarjanDominatorTree algorithm documentation <https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/lengauer_tarjan_dominator.htm>`__
+* `Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__
 * :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
