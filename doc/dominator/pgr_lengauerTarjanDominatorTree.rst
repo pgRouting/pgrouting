@@ -56,7 +56,7 @@ Signatures
 
 .. code-block:: sql
 
-    pgr_LengauerTarjanDominatorTree(Edges SQL, root) -- Experimental on v3.2
+    pgr_LengauerTarjanDominatorTree(Edges SQL, start_vid) -- Experimental on v3.2
     RETURNS SET OF (seq, vertex_id, idom)
     OR EMPTY SET
 
@@ -78,7 +78,7 @@ Parameters
 Column         Type           Description
 ============== ============ =================================================
 **Edges SQL**   ``TEXT``    SQL query as described above.
-**root**        ``BIGINT``  Identifier of the starting vertex.
+**start_vid**   ``BIGINT``  Identifier of the starting vertex.
 ============== ============ =================================================
 
 
