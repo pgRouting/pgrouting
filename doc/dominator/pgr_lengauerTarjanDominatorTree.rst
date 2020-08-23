@@ -12,7 +12,6 @@ pgr_lengauerTarjanDominatorTree -Experimental
 ===============================================================================
 
 ``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all vertices.
-In particular, the Lengauer Tarjan Dominator Tree algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/lengauer_tarjan_dominator.htm
