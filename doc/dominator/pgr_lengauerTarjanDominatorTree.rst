@@ -8,10 +8,10 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_LengauerTarjanDominatorTree -Experimental
+pgr_lengauerTarjanDominatorTree -Experimental
 ===============================================================================
 
-``pgr_LengauerTarjanDominatorTree`` — Returns the immediate dominator of all vertices.
+``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all vertices.
 In particular, the Lengauer Tarjan Dominator Tree algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
@@ -56,16 +56,16 @@ Signatures
 
 .. code-block:: sql
 
-    pgr_LengauerTarjanDominatorTree(Edges SQL, start_vid) -- Experimental on v3.2
+    pgr_lengauerTarjanDominatorTree(Edges SQL, start_vid) -- Experimental on v3.2
     RETURNS SET OF (seq, vertex_id, idom)
     OR EMPTY SET
 
 
 .. index::
-    single: pgr_LengauerTarjanDominatorTree
+    single: pgr_lengauerTarjanDominatorTree
 
 
-:Example: The lengauer_tarjan_dominator_tree with root vertex :math:`1`
+:Example: The lengauerTarjanDominatorTree with root vertex :math:`1`
 
 .. literalinclude:: doc-lengauerTarjanDominatorTree.queries
    :start-after: --q1
