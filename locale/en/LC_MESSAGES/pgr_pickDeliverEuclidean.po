@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,7 @@ msgid "pgr_pickDeliverEuclidean - Experimental"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:13
-msgid ""
-"``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem"
+msgid "``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:3
@@ -116,20 +115,20 @@ msgstr ""
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:28
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_pickDeliverEuclidean.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_pickDeliverEuclidean.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__) "
+"`3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:32
 msgid ""
-"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
-"pgr_gsoc_vrppdtw.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
-"pgr_gsoc_vrppdtw.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
-"pgr_gsoc_vrppdtw.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/"
-"vrppdtw/doc/pgr_gsoc_vrppdtw.html>`__ `2.2 <https://docs.pgrouting.org/2.2/"
-"en/src/vrppdtw/doc/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/"
-"src/vrppdtw/doc/index.html>`__"
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_gsoc_vrppdtw.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_gsoc_vrppdtw.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/vrppdtw/doc/pgr_gsoc_vrppdtw.html>`__"
+" `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__ "
+"`2.1 <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:42
@@ -138,8 +137,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:44
 msgid ""
-"Problem: Distribute and optimize the pickup-delivery pairs into a fleet of "
-"vehicles."
+"Problem: Distribute and optimize the pickup-delivery pairs into a fleet "
+"of vehicles."
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:46
@@ -280,8 +279,7 @@ msgid "``TEXT``"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:6
-msgid ""
-"`Pick & Deliver Orders SQL`_ query containing the orders to be processed."
+msgid "`Pick & Deliver Orders SQL`_ query containing the orders to be processed."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:7
@@ -289,8 +287,7 @@ msgid "**vehicles_sql**"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:7
-msgid ""
-"`Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used."
+msgid "`Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:8
@@ -354,13 +351,11 @@ msgid "``4`` Optimize insert."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:16
-msgid ""
-"``5`` Push back order that allows more orders to be inserted at the back"
+msgid "``5`` Push back order that allows more orders to be inserted at the back"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:17
-msgid ""
-"``6`` Push front order that allows more orders to be inserted at the front"
+msgid "``6`` Push front order that allows more orders to be inserted at the front"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:138
@@ -645,8 +640,8 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:21
 msgid ""
-"Sequential value starting from **1** for current vehicles. The :math:`n_{th}"
-"` vehicle in the solution."
+"Sequential value starting from **1** for current vehicles. The "
+":math:`n_{th}` vehicle in the solution."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:22 ../../build/doc/VRP-category.rst:58
@@ -770,8 +765,7 @@ msgid ":math:`arrival\\_time + wait\\_time + service\\_time`."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:46
-msgid ""
-"When ``stop_type = 6`` has the `total_time` used for the current vehicle."
+msgid "When ``stop_type = 6`` has the `total_time` used for the current vehicle."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:50
@@ -817,8 +811,8 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:67
 msgid ""
-"`total_solution_time` = :math:`total\\_travel\\_time + total\\_wait\\_time + "
-"total\\_service\\_time`."
+"`total_solution_time` = :math:`total\\_travel\\_time + "
+"total\\_wait\\_time + total\\_service\\_time`."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
@@ -868,3 +862,4 @@ msgstr ""
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:215
 msgid ":ref:`search`"
 msgstr ""
+

@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,8 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:13
 msgid ""
-"The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm "
-"with a heuristic that allow it to solve most shortest path problems by "
+"The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm"
+" with a heuristic that allow it to solve most shortest path problems by "
 "evaluation only a sub-set of the overall graph."
 msgstr ""
 
@@ -46,15 +46,17 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:32
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"aStar-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/aStar-family."
-"html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/aStar-family.html>`__"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/aStar-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/aStar-"
+"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/aStar-"
+"family.html>`__"
 msgstr ""
 
 #: ../../build/doc/aStar-family.rst:37
 msgid ""
 "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/aStar-"
-"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/aStar-family.html>`__"
+"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/aStar-"
+"family.html>`__"
 msgstr ""
 
 #: ../../build/doc/aStar-family.rst:42
@@ -139,11 +141,11 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:83
 msgid ""
-"The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm "
-"with a heuristic, that is an estimation of the remaining cost from the "
+"The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm"
+" with a heuristic, that is an estimation of the remaining cost from the "
 "vertex to the goal, that allows to solve most shortest path problems by "
-"evaluation only a sub-set of the overall graph. Running time: :math:`O((E + "
-"V) * \\log V)`"
+"evaluation only a sub-set of the overall graph. Running time: :math:`O((E"
+" + V) * \\log V)`"
 msgstr ""
 
 #: ../../build/doc/aStar-family.rst:93
@@ -193,8 +195,8 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:114
 msgid ""
-"Working with cost/reverse_cost as length in degrees, x/y in lat/lon: Factor "
-"= 1   (no need to change units)"
+"Working with cost/reverse_cost as length in degrees, x/y in lat/lon: "
+"Factor = 1   (no need to change units)"
 msgstr ""
 
 #: ../../build/doc/aStar-family.rst:118
@@ -203,8 +205,8 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:119
 msgid ""
-"Working with cost/reverse_cost as length in meters, x/y in lat/lon: Factor "
-"=  would depend on the location of the points:"
+"Working with cost/reverse_cost as length in meters, x/y in lat/lon: "
+"Factor =  would depend on the location of the points:"
 msgstr ""
 
 #: ../../build/doc/aStar-family.rst:123 ../../build/doc/aStar-family.rst:136
@@ -245,9 +247,9 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:131
 msgid ""
-"Working with cost/reverse_cost as time in seconds, x/y in lat/lon: Factor: "
-"would depend on the location of the points and on the average speed say 25m/"
-"s is the speed."
+"Working with cost/reverse_cost as time in seconds, x/y in lat/lon: "
+"Factor: would depend on the location of the points and on the average "
+"speed say 25m/s is the speed."
 msgstr ""
 
 #: ../../build/doc/aStar-family.rst:138
@@ -301,3 +303,4 @@ msgstr ""
 #: ../../build/doc/aStar-family.rst:156
 msgid ":ref:`search`"
 msgstr ""
+

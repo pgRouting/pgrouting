@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:57+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -54,18 +54,20 @@ msgstr "Versiones anteriores de esta página"
 
 #: ../../build/doc/kruskal-family.rst:38
 msgid ""
-"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en"
-"/kruskal-family.html>`__)"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/kruskal-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/kruskal-"
+"family.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-"/kruskal-family.html>`__)"
+"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
+"/kruskal-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es/kruskal-"
+"family.html>`__"
 
-#: ../../build/doc/kruskal-family.rst:42
+#: ../../build/doc/kruskal-family.rst:43
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/kruskal-family.rst:44
+#: ../../build/doc/kruskal-family.rst:45
 msgid ""
 "Kruskal's algorithm is a greedy minimum spanning tree algorithm that in each"
 " cycle finds and adds the edge of the least possible weight that connects "
@@ -75,48 +77,48 @@ msgstr ""
 "que en cada ciclo encuentra y agrega la arista del menor peso posible que "
 "conecta dos árboles en el bosque."
 
-#: ../../build/doc/kruskal-family.rst:48
+#: ../../build/doc/kruskal-family.rst:49
 msgid "**The main Characteristics are:**"
 msgstr "**Las características principales son:**"
 
-#: ../../build/doc/kruskal-family.rst:52
+#: ../../build/doc/kruskal-family.rst:53
 msgid "It's implementation is only on **undirected** graph."
 msgstr "Su implementación solo está en el grafo **no direccionado**."
 
-#: ../../build/doc/kruskal-family.rst:53
+#: ../../build/doc/kruskal-family.rst:54
 msgid "Process is done only on edges with positive costs."
 msgstr "El proceso se realiza sólo en las aristas con costos positivos."
 
-#: ../../build/doc/kruskal-family.rst:54
+#: ../../build/doc/kruskal-family.rst:55
 msgid "The total weight of all the edges in the tree or forest is minimized."
 msgstr "Se minimiza el peso total de todos los bordes del árbol o bosque."
 
-#: ../../build/doc/kruskal-family.rst:55
+#: ../../build/doc/kruskal-family.rst:56
 msgid "When the graph is connected"
 msgstr "Cuando el grafo está conectado"
 
-#: ../../build/doc/kruskal-family.rst:57
+#: ../../build/doc/kruskal-family.rst:58
 msgid "The resulting edges make up a tree"
 msgstr "Las aristas resultantes componen un árbol"
 
-#: ../../build/doc/kruskal-family.rst:59
+#: ../../build/doc/kruskal-family.rst:60
 msgid "When the graph is not connected,"
 msgstr "Cuando el grafo no está conectado,"
 
-#: ../../build/doc/kruskal-family.rst:61
+#: ../../build/doc/kruskal-family.rst:62
 msgid "Finds a minimum spanning tree for each connected component."
 msgstr ""
 "Encuentra un árbol de expansión mínimo para cada componente conectado."
 
-#: ../../build/doc/kruskal-family.rst:62
+#: ../../build/doc/kruskal-family.rst:63
 msgid "The resulting edges make up a forest."
 msgstr "Las aristas resultantes conforman un bosque."
 
-#: ../../build/doc/kruskal-family.rst:64
+#: ../../build/doc/kruskal-family.rst:65
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr "Tiempo de ejecución de Kruskal: :math:`O(E * log E)`"
 
-#: ../../build/doc/kruskal-family.rst:69
+#: ../../build/doc/kruskal-family.rst:70
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -223,15 +225,15 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/kruskal-family.rst:77
+#: ../../build/doc/kruskal-family.rst:78
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/kruskal-family.rst:79
+#: ../../build/doc/kruskal-family.rst:80
 msgid ":doc:`spanningTree-family`"
 msgstr ":doc:`spanningTree-family`"
 
-#: ../../build/doc/kruskal-family.rst:80
+#: ../../build/doc/kruskal-family.rst:81
 msgid ""
 "`Boost: Kruskal's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
@@ -239,7 +241,7 @@ msgstr ""
 "`Boost:  algoritmo de documentación de Kruskal "
 "<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 
-#: ../../build/doc/kruskal-family.rst:81
+#: ../../build/doc/kruskal-family.rst:82
 msgid ""
 "`Wikipedia: Kruskal's algorithm "
 "<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
@@ -247,21 +249,14 @@ msgstr ""
 "`Wikipedia: algoritmo de Kruskal  "
 "<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 
-#: ../../build/doc/kruskal-family.rst:84
+#: ../../build/doc/kruskal-family.rst:85
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/kruskal-family.rst:85
+#: ../../build/doc/kruskal-family.rst:86
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/kruskal-family.rst:86
+#: ../../build/doc/kruskal-family.rst:87
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
-#~ "/kruskal-family.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-#~ "/kruskal-family.html>`__)"

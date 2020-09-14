@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,9 +23,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:13
 msgid ""
-"``pgr_topologicalSort`` — Returns the linear ordering of the vertices(s) for "
-"weighted directed acyclic graphs(DAG). In particular, the topological sort "
-"algorithm implemented by Boost.Graph."
+"``pgr_topologicalSort`` — Returns the linear ordering of the vertices(s) "
+"for weighted directed acyclic graphs(DAG). In particular, the topological"
+" sort algorithm implemented by Boost.Graph."
 msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:19
@@ -118,9 +118,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:33
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_topologicalSort.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_topologicalSort.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_topologicalSort.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_topologicalSort.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:37
@@ -137,8 +137,8 @@ msgstr ""
 #: ../../build/doc/pgr_topologicalSort.rst:42
 msgid ""
 "The topological sort algorithm creates a linear ordering of the vertices "
-"such that if edge (u,v) appears in the graph, then v comes before u in the "
-"ordering."
+"such that if edge (u,v) appears in the graph, then v comes before u in "
+"the ordering."
 msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:45
@@ -153,14 +153,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:48
 msgid ""
-"Process is valid for directed acyclic graphs only. otherwise it will throw "
-"warnings."
+"Process is valid for directed acyclic graphs only. otherwise it will "
+"throw warnings."
 msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:50
 msgid ""
-"For optimization purposes, if there are more than one answer, the function "
-"will return one of them."
+"For optimization purposes, if there are more than one answer, the "
+"function will return one of them."
 msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:52
@@ -228,7 +228,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:87
 msgid ""
-"an SQL query, which should return a set of rows with the following columns:"
+"an SQL query, which should return a set of rows with the following "
+"columns:"
 msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:90
@@ -281,8 +282,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:97
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:99
@@ -299,8 +300,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:101
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:105
@@ -378,3 +379,4 @@ msgstr ""
 #: ../../build/doc/pgr_topologicalSort.rst:131
 msgid ":ref:`search`"
 msgstr ""
+

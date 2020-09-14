@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -58,18 +58,20 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_kruskal.rst:28
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_kruskal.html>`__)"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_kruskal.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_kruskal.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_kruskal.html>`__)"
+"**Versiones soportadas:** actual(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_kruskal.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_kruskal.html>`__"
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_kruskal.rst:32
-#: ../../build/doc/pgr_kruskal.rst:73 ../../build/doc/pgr_kruskal.rst:92
+#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_kruskal.rst:33
+#: ../../build/doc/pgr_kruskal.rst:74 ../../build/doc/pgr_kruskal.rst:93
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_kruskal.rst:34
+#: ../../build/doc/pgr_kruskal.rst:35
 msgid ""
 "This algorithm finds the minimum spanning forest in a possibly disconnected "
 "graph using Kruskal's algorithm."
@@ -77,7 +79,7 @@ msgstr ""
 "Este algoritmo encuentra el bosque de expansión mínimo en un grafo "
 "posiblemente desconectado usando el algoritmo de Kruskal."
 
-#: ../../build/doc/pgr_kruskal.rst:37
+#: ../../build/doc/pgr_kruskal.rst:38
 msgid "**The main Characteristics are:**"
 msgstr "**Las características principales son:**"
 
@@ -118,15 +120,15 @@ msgstr "Las aristas resultantes conforman un bosque."
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr "Tiempo de ejecución de Kruskal: :math:`O(E * log E)`"
 
-#: ../../build/doc/pgr_kruskal.rst:43
+#: ../../build/doc/pgr_kruskal.rst:44
 msgid "EMPTY SET is returned when there are no edges in the graph."
 msgstr "EMPTY SET es regresado cuando no hay aristas en el grafo"
 
-#: ../../build/doc/pgr_kruskal.rst:46
+#: ../../build/doc/pgr_kruskal.rst:47
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_kruskal.rst:52
+#: ../../build/doc/pgr_kruskal.rst:53
 msgid "Summary"
 msgstr "Resumen"
 
@@ -134,40 +136,40 @@ msgstr "Resumen"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_kruskal.rst:61
+#: ../../build/doc/pgr_kruskal.rst:62
 msgid "Minimum Spanning Forest"
 msgstr "Bosque de expansión mínimo"
 
-#: ../../build/doc/pgr_kruskal.rst:70
+#: ../../build/doc/pgr_kruskal.rst:71
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_kruskal.rst:73
+#: ../../build/doc/pgr_kruskal.rst:74
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_kruskal.rst:73
-#: ../../build/doc/pgr_kruskal.rst:92
+#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_kruskal.rst:74
+#: ../../build/doc/pgr_kruskal.rst:93
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgr_kruskal.rst:75
+#: ../../build/doc/pgr_kruskal.rst:76
 msgid "**Edges SQL**"
 msgstr "**Edges SQL**"
 
-#: ../../build/doc/pgr_kruskal.rst:75
+#: ../../build/doc/pgr_kruskal.rst:76
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_kruskal.rst:75
+#: ../../build/doc/pgr_kruskal.rst:76
 msgid "SQL query described in `Inner query`_."
 msgstr "Consulta SQL descrita en `Inner query`_."
 
-#: ../../build/doc/pgr_kruskal.rst:79
+#: ../../build/doc/pgr_kruskal.rst:80
 msgid "Inner query"
 msgstr "Consulta interna"
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_kruskal.rst:92
+#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_kruskal.rst:93
 msgid "Column"
 msgstr "Columna"
 
@@ -185,7 +187,7 @@ msgstr "**id**"
 msgid "``ANY-INTEGER``"
 msgstr "``ANY-INTEGER``"
 
-#: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_kruskal.rst:94
+#: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_kruskal.rst:95
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
@@ -205,7 +207,7 @@ msgstr "**objetivo**"
 msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo punto final en el vértice de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_kruskal.rst:95
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_kruskal.rst:96
 msgid "**cost**"
 msgstr "**cost**"
 
@@ -266,47 +268,47 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_kruskal.rst:86
+#: ../../build/doc/pgr_kruskal.rst:87
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_kruskal.rst:89
+#: ../../build/doc/pgr_kruskal.rst:90
 msgid "Returns SET OF ``(edge, cost)``"
 msgstr "Devuelve SET OF (conjunto de) ``(edge, cost)``"
 
-#: ../../build/doc/pgr_kruskal.rst:94
+#: ../../build/doc/pgr_kruskal.rst:95
 msgid "**edge**"
 msgstr "**edge**"
 
-#: ../../build/doc/pgr_kruskal.rst:94
+#: ../../build/doc/pgr_kruskal.rst:95
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_kruskal.rst:95
+#: ../../build/doc/pgr_kruskal.rst:96
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
-#: ../../build/doc/pgr_kruskal.rst:95
+#: ../../build/doc/pgr_kruskal.rst:96
 msgid "Cost to traverse the edge."
 msgstr "Coste para atravezar el borde."
 
-#: ../../build/doc/pgr_kruskal.rst:102
+#: ../../build/doc/pgr_kruskal.rst:103
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_kruskal.rst:104
+#: ../../build/doc/pgr_kruskal.rst:105
 msgid ":doc:`spanningTree-family`"
 msgstr ":doc:`spanningTree-family`"
 
-#: ../../build/doc/pgr_kruskal.rst:105
+#: ../../build/doc/pgr_kruskal.rst:106
 msgid ":doc:`kruskal-family`"
 msgstr ":doc:`kruskal-family`"
 
-#: ../../build/doc/pgr_kruskal.rst:106
+#: ../../build/doc/pgr_kruskal.rst:107
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_kruskal.rst:107
+#: ../../build/doc/pgr_kruskal.rst:108
 msgid ""
 "`Boost: Kruskal's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
@@ -314,7 +316,7 @@ msgstr ""
 "`Boost:  algoritmo de documentación de Kruskal "
 "<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 
-#: ../../build/doc/pgr_kruskal.rst:108
+#: ../../build/doc/pgr_kruskal.rst:109
 msgid ""
 "`Wikipedia: Kruskal's algorithm "
 "<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
@@ -322,21 +324,14 @@ msgstr ""
 "`Wikipedia: algoritmo de Kruskal  "
 "<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 
-#: ../../build/doc/pgr_kruskal.rst:111
+#: ../../build/doc/pgr_kruskal.rst:112
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_kruskal.rst:112
+#: ../../build/doc/pgr_kruskal.rst:113
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_kruskal.rst:113
+#: ../../build/doc/pgr_kruskal.rst:114
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_kruskal.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_kruskal.html>`__)"

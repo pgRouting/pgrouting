@@ -21,6 +21,18 @@ Components - Family of functions
 
 .. index to here
 
+.. rubric:: Experimental
+
+.. include:: experimental.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
+.. index experimental from here
+
+* :doc:`pgr_makeConnected` - Details of edges to make graph connected.
+
+.. index experimental to here
+
 
 .. toctree::
     :hidden:
@@ -30,6 +42,7 @@ Components - Family of functions
     pgr_biconnectedComponents
     pgr_articulationPoints
     pgr_bridges
+    pgr_makeConnected
 
 .. rubric:: Previous versions of this page
 
@@ -95,6 +108,13 @@ pgr_bridges
 .. include:: pgr_bridges.rst
     :start-after: return_bridges_start
     :end-before: return_bridges_end
+
+pgr_makeConnected - Experimental
+...............................................................................
+
+.. include:: pgr_makeConnected.rst
+    :start-after: return_makeConnected_start
+    :end-before: return_makeConnected_end
 
 
 See Also

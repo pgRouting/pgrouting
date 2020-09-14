@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,14 +23,14 @@ msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:15
 msgid ""
-":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest "
-"paths."
+":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest"
+" paths."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:16
 msgid ""
-":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of "
-"the shortest paths"
+":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost "
+"of the shortest paths"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:17
@@ -45,16 +45,16 @@ msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:30
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"bdDijkstra-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"bdDijkstra-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/"
-"bdDijkstra-family.html>`__"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/bdDijkstra-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+"/bdDijkstra-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
+"/bdDijkstra-family.html>`__"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:35
 msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/bdDijkstra-"
-"family.html>`__"
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
+"/bdDijkstra-family.html>`__"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:40
@@ -64,8 +64,8 @@ msgstr ""
 #: ../../build/doc/bdDijkstra-family.rst:42
 msgid ""
 "Based on Dijkstra's algorithm, the bidirectional search finds a shortest "
-"path a starting vertex (``start_vid``) to an ending vertex (``end_vid``). It "
-"runs two simultaneous searches: one forward from the source, and one "
+"path a starting vertex (``start_vid``) to an ending vertex (``end_vid``)."
+" It runs two simultaneous searches: one forward from the source, and one "
 "backward from the target, stopping when the two meet in the middle. This "
 "implementation can be used with a directed graph and an undirected graph."
 msgstr ""
@@ -87,8 +87,7 @@ msgid "Values are returned when there is a path."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:59
-msgid ""
-"When the starting vertex and ending vertex are the same, there is no path."
+msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:61
@@ -97,8 +96,8 @@ msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:63
 msgid ""
-"When the starting vertex and ending vertex are the different and there is no "
-"path:"
+"When the starting vertex and ending vertex are the different and there is"
+" no path:"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:65
@@ -134,3 +133,4 @@ msgstr ""
 #: ../../build/doc/bdDijkstra-family.rst:80
 msgid ":ref:`search`"
 msgstr ""
+

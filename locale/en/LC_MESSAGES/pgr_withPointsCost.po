@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,9 +23,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:13
 msgid ""
-"``pgr_withPointsCost`` - Calculates the shortest path and returns only the "
-"aggregate cost of the shortest path(s) found, for the combination of points "
-"given."
+"``pgr_withPointsCost`` - Calculates the shortest path and returns only "
+"the aggregate cost of the shortest path(s) found, for the combination of "
+"points given."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -86,19 +86,20 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:32
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_withPointsCost.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_withPointsCost.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_withPointsCost.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_withPointsCost.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:36
 msgid ""
-"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
-"pgr_withPointsCost.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
-"pgr_withPointsCost.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
-"pgr_withPointsCost.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/"
-"withPoints/doc/pgr_withPointsCost.html>`__ `2.2 <https://docs.pgrouting."
-"org/2.2/en/src/withPoints/doc/pgr_withPointsCost.html>`__"
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_withPointsCost.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_withPointsCost.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_withPointsCost.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsCost.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsCost.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
@@ -125,8 +126,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:51
 msgid ""
-"Returns the sum of the costs of the shortest path for pair combination of "
-"vertices in the modified graph."
+"Returns the sum of the costs of the shortest path for pair combination of"
+" vertices in the modified graph."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:52
@@ -156,8 +157,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:62
-msgid ""
-"When the starting vertex and ending vertex are the same, there is no path."
+msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:64
@@ -166,8 +166,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:66
 msgid ""
-"When the starting vertex and ending vertex are the different and there is no "
-"path."
+"When the starting vertex and ending vertex are the different and there is"
+" no path."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:68
@@ -176,8 +176,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:70
 msgid ""
-"If the values returned are stored in a table, the unique index would be the "
-"pair: `(start_vid, end_vid)`."
+"If the values returned are stored in a table, the unique index would be "
+"the pair: `(start_vid, end_vid)`."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:73
@@ -280,8 +280,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:183
 msgid ""
-"From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :"
-"math:`7` on a **directed** graph."
+"From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex "
+":math:`7` on a **directed** graph."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:190
@@ -359,7 +359,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:199
 msgid ""
-"Array of identifiers of starting vertices. When negative: is a point's pid."
+"Array of identifiers of starting vertices. When negative: is a point's "
+"pid."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:200
@@ -367,8 +368,7 @@ msgid "**end_vids**"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:200
-msgid ""
-"Array of identifiers of ending vertices. When negative: is a point's pid."
+msgid "Array of identifiers of ending vertices. When negative: is a point's pid."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:201
@@ -381,8 +381,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:201
 msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default is "
-"``true`` which considers the graph as Directed."
+"(optional). When ``false`` the graph is considered as Undirected. Default"
+" is ``true`` which considers the graph as Directed."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:202
@@ -396,7 +396,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:205
 msgid ""
-"(optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:"
+"(optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side "
+"is:"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:203
@@ -467,8 +468,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(source, target)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -485,8 +486,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge `(target, source)` does not exist, therefore it's not"
+" part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
@@ -520,7 +521,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:5
 msgid ""
-"an SQL query, which should return a set of rows with the following columns:"
+"an SQL query, which should return a set of rows with the following "
+"columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -537,7 +539,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid ""
-"If column not present, a sequential identifier will be given automatically."
+"If column not present, a sequential identifier will be given "
+"automatically."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -613,20 +616,20 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:236
 msgid ""
-"From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :"
-"math:`7`, with **right** side driving topology"
+"From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex "
+":math:`7`, with **right** side driving topology"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:242
 msgid ""
-"From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :"
-"math:`7`, with **left** side driving topology"
+"From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex "
+":math:`7`, with **left** side driving topology"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:248
 msgid ""
-"From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex :"
-"math:`7`, does not matter driving side."
+"From point :math:`1` and vertex :math:`2` to point :math:`3` and vertex "
+":math:`7`, does not matter driving side."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:254
@@ -652,3 +655,4 @@ msgstr ""
 #: ../../build/doc/pgr_withPointsCost.rst:264
 msgid ":ref:`search`"
 msgstr ""
+

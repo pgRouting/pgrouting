@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -10,9 +10,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:57+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -62,13 +62,15 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_version.rst:28
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_version.html>`__)"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_version.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_version.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_version.html>`__)"
+"**Versiones soportadas:** actual(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_version.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_version.html>`__"
 
-#: ../../build/doc/pgr_version.rst:31
+#: ../../build/doc/pgr_version.rst:32
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_version.html>`__ `2.5 "
@@ -90,15 +92,15 @@ msgstr ""
 " `2.0 "
 "<https://docs.pgrouting.org/2.0/en/src/common/doc/utilities/version.html>`__"
 
-#: ../../build/doc/pgr_version.rst:41 ../../build/doc/pgr_version.rst:65
+#: ../../build/doc/pgr_version.rst:42 ../../build/doc/pgr_version.rst:66
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_version.rst:43
+#: ../../build/doc/pgr_version.rst:44
 msgid "Returns pgRouting version information."
 msgstr "Devuelve la información de la versión de pgRouting."
 
-#: ../../build/doc/pgr_version.rst:49
+#: ../../build/doc/pgr_version.rst:50
 msgid "Signature"
 msgstr "Firma"
 
@@ -106,49 +108,42 @@ msgstr "Firma"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_version.rst:55
+#: ../../build/doc/pgr_version.rst:56
 msgid "pgRouting Version for this documentatoin"
 msgstr "pgRouting Versión para esta documentación"
 
-#: ../../build/doc/pgr_version.rst:62
+#: ../../build/doc/pgr_version.rst:63
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_version.rst:65
+#: ../../build/doc/pgr_version.rst:66
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgr_version.rst:67
+#: ../../build/doc/pgr_version.rst:68
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_version.rst:67
+#: ../../build/doc/pgr_version.rst:68
 msgid "pgRouting version"
 msgstr "Versión de pgRouting"
 
-#: ../../build/doc/pgr_version.rst:71
+#: ../../build/doc/pgr_version.rst:72
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_version.rst:73
+#: ../../build/doc/pgr_version.rst:74
 msgid ":doc:`pgr_full_version`"
 msgstr ":doc:`pgr_full_version`"
 
-#: ../../build/doc/pgr_version.rst:76
+#: ../../build/doc/pgr_version.rst:77
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_version.rst:77
+#: ../../build/doc/pgr_version.rst:78
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_version.rst:78
+#: ../../build/doc/pgr_version.rst:79
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_version.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_version.html>`__)"

@@ -49,6 +49,12 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`coloring-family`
+
+.. include:: coloring-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 :doc:`topology-functions`
 
 .. include:: topology-functions.rst
@@ -61,10 +67,26 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`traversal-family`
+
+.. include:: traversal-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:doc:`components-family`
+
+.. include:: components-family.rst
+   :start-after: index experimental from here
+   :end-before: index experimental to here
+
 .. toctree::
    :hidden:
 
    chinesePostmanProblem-family
+   coloring-family
+   transformation-family
+   traversal-family
+   components-family
 
 .. rubric:: categories
 
@@ -86,10 +108,12 @@ Experimental Functions
 - :doc:`pgr_breadthFirstSearch`
 - :doc:`pgr_dagShortestPath`
 - :doc:`pgr_edwardMoore`
+- :doc:`pgr_isPlanar`
 - :doc:`pgr_stoerWagner`
 - :doc:`pgr_topologicalSort`
 - :doc:`pgr_transitiveClosure`
 - :doc:`pgr_turnRestrictedPath`
+- :doc:`pgr_lengauerTarjanDominatorTree`
 
 .. toctree::
   :hidden:
@@ -99,10 +123,12 @@ Experimental Functions
   pgr_breadthFirstSearch
   pgr_dagShortestPath
   pgr_edwardMoore
+  pgr_isPlanar
   pgr_stoerWagner
   pgr_topologicalSort
   pgr_transitiveClosure
   pgr_turnRestrictedPath
+  pgr_lengauerTarjanDominatorTree
 
 
 See Also

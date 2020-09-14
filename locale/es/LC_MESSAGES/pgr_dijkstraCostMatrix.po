@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -62,13 +62,15 @@ msgstr "Nueva función **propuesta**"
 
 #: ../../build/doc/pgr_dijkstraCostMatrix.rst:31
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_dijkstraCostMatrix.html>`__)"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_dijkstraCostMatrix.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_dijkstraCostMatrix.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_dijkstraCostMatrix.html>`__)"
+"**Versiones soportadas:** actual(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_dijkstraCostMatrix.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_dijkstraCostMatrix.html>`__"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:34
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:35
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html>`__ `2.5 "
@@ -84,25 +86,25 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:41
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:90
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:42
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:91
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:43
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:44
 msgid "Using Dijkstra algorithm, calculate and return a cost matrix."
 msgstr ""
 "Utilizando el algoritmo Dijkstra, calcula y devuelve una matriz de costes."
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:46
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:47
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:49
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:50
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:56
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:57
 msgid "Using defaults"
 msgstr "Uso de valores predeterminados"
 
@@ -110,17 +112,17 @@ msgstr "Uso de valores predeterminados"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:62
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:63
 msgid "Cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on a **directed** graph"
 msgstr ""
 "Costo de la matriz para los vértices :math:`\\{1, 2, 3, 4\\}` en un grafo "
 "**no directed**"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:73
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:74
 msgid "Complete Signature"
 msgstr "Firma completa"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:80
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:81
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on an "
 "**undirected** graph"
@@ -128,53 +130,53 @@ msgstr ""
 "Matriz de costos simétrica para vértices :math:`\\{1, 2, 3, 4\\}` en un "
 "grafo **no dirigido**"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:87
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:88
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:90
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:91
 msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:90
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:91
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:92
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:93
 msgid "**edges_sql**"
 msgstr "**edges_sql**"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:92
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:93
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:92
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:93
 msgid "Edges SQL query as described above."
 msgstr "Consulta de aristas SQL como se describió anteriormente."
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:93
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:94
 msgid "**start_vids**"
 msgstr "**start_vids**"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:93
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:94
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr "``ARRAY[ANY-INTEGER]``"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:93
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:94
 msgid "Array of identifiers of the vertices."
 msgstr "Arreglo de identificadores de los vértices."
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:94
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:95
 msgid "**directed**"
 msgstr "**dirigido**"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:94
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:95
 msgid "``BOOLEAN``"
 msgstr "``BOOLEAN``"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:94
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:95
 msgid ""
 "(optional). When ``false`` the graph is considered as Undirected. Default is"
 " ``true`` which considers the graph as Directed."
@@ -182,7 +184,7 @@ msgstr ""
 "(opcional). En caso de ``false`` el grafo se considera como No Dirigido. El "
 "valor predeterminado es ``true`` que considera el grafo como Dirigido."
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:98
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:99
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -286,7 +288,7 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:107
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:108
 msgid "Return Columns"
 msgstr "Columnas de Devoluciones"
 
@@ -335,49 +337,42 @@ msgstr "``FLOAT``"
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr "Coste agregado de ``start_vid`` a ``end_vid``."
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:114
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:115
 msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:116
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:117
 msgid "Use with tsp"
 msgstr "Usar con tsp"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:123
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:124
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:125
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:126
 msgid ":doc:`dijkstra-family`"
 msgstr ":doc:`dijkstra-family`"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:126
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:127
 msgid ":doc:`costMatrix-category`"
 msgstr ":doc:`costMatrix-category`"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:127
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:128
 msgid ":doc:`TSP-family`"
 msgstr ":doc:`TSP-family`"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:128
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:129
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:131
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:132
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:132
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:133
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:133
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:134
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_dijkstraCostMatrix.html>`__)"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_dijkstraCostMatrix.html>`__)"

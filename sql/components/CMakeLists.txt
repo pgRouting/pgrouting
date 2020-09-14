@@ -10,6 +10,8 @@ SET(LOCAL_FILES
     articulationPoints.sql
     _bridges.sql
     bridges.sql
+    _makeConnected.sql
+    makeConnected.sql
     )
 
 # Do not modify below this line

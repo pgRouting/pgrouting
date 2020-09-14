@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,9 +111,9 @@ msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:27
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_pickDeliver.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_pickDeliver.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:32
@@ -122,8 +122,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:34
 msgid ""
-"Problem: Distribute and optimize the pickup-delivery pairs into a fleet of "
-"vehicles."
+"Problem: Distribute and optimize the pickup-delivery pairs into a fleet "
+"of vehicles."
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:36
@@ -224,8 +224,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:71
 msgid ""
-"Six different initial will be optimized - the best solution found will be "
-"result"
+"Six different initial will be optimized - the best solution found will be"
+" result"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:78
@@ -271,8 +271,7 @@ msgid "``TEXT``"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:123
-msgid ""
-"`Pick & Deliver Orders SQL`_ query contianing the orders to be processed."
+msgid "`Pick & Deliver Orders SQL`_ query contianing the orders to be processed."
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:124
@@ -280,8 +279,7 @@ msgid "**vehicles_sql**"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:124
-msgid ""
-"`Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used."
+msgid "`Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used."
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:125
@@ -290,7 +288,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:125
 msgid ""
-"`Pick & Deliver Matrix SQL`_ query containing the distance or travel times."
+"`Pick & Deliver Matrix SQL`_ query containing the distance or travel "
+"times."
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:126
@@ -355,13 +354,11 @@ msgid "``4`` Optimize insert."
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:134
-msgid ""
-"``5`` Push back order that allows more orders to be inserted at the back"
+msgid "``5`` Push back order that allows more orders to be inserted at the back"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:135
-msgid ""
-"``6`` Push front order that allows more orders to be inserted at the front"
+msgid "``6`` Push front order that allows more orders to be inserted at the front"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:141
@@ -458,8 +455,8 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:3
 msgid ""
-"For the non euclidean implementation, the starting and ending identifiers "
-"are needed:"
+"For the non euclidean implementation, the starting and ending identifiers"
+" are needed:"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:8
@@ -572,8 +569,8 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:8
 msgid ""
-"The node identifier of the starting location, must match a node identifier "
-"in the matrix table."
+"The node identifier of the starting location, must match a node "
+"identifier in the matrix table."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:9
@@ -586,8 +583,8 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:9
 msgid ""
-"The node identifier of the ending location, must match a node identifier in "
-"the matrix table."
+"The node identifier of the ending location, must match a node identifier "
+"in the matrix table."
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:187
@@ -649,3 +646,4 @@ msgstr ""
 #: ../../build/doc/pgr_pickDeliver.rst:224
 msgid ":ref:`search`"
 msgstr ""
+

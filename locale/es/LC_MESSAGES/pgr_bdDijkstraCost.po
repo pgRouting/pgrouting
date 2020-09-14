@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:56+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -66,15 +66,17 @@ msgstr "Soporte"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:32
 msgid ""
-"**Supported versions:** current(`3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__) `2.6 "
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__ `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_bdDijkstraCost.html>`__) `2.6 "
+"**Versiones soportadas:** actual(`3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_bdDijkstraCost.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_bdDijkstraCost.html>`__ `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:36
+#: ../../build/doc/pgr_bdDijkstraCost.rst:37
 msgid ""
 "**Unsupported versions:** `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__"
@@ -84,12 +86,12 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_bdDijkstraCost.rst:41
-#: ../../build/doc/pgr_dijkstra.rst:4
+#: ../../build/doc/pgr_bdDijkstra.rst:4
+#: ../../build/doc/pgr_bdDijkstraCost.rst:42
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:43
+#: ../../build/doc/pgr_bdDijkstraCost.rst:44
 msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
@@ -138,15 +140,15 @@ msgstr ""
 msgid "It is expected to terminate faster than pgr_dijkstra"
 msgstr "Se espera que termine más rápido que pgr_dijkstra"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:50
+#: ../../build/doc/pgr_bdDijkstraCost.rst:51
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:53
+#: ../../build/doc/pgr_bdDijkstraCost.rst:54
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:65
+#: ../../build/doc/pgr_bdDijkstraCost.rst:66
 msgid "Using default"
 msgstr "Uso de valores predeterminados"
 
@@ -154,24 +156,24 @@ msgstr "Uso de valores predeterminados"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:72
+#: ../../build/doc/pgr_bdDijkstraCost.rst:73
 msgid "From vertex :math:`2` to vertex  :math:`3` on a **directed** graph"
 msgstr "Del vértice :math:`2` al vértice :math:`3` en un grafo **dirigido**"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:82
+#: ../../build/doc/pgr_bdDijkstraCost.rst:83
 msgid "One to One"
 msgstr "Uno a Uno"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:90
+#: ../../build/doc/pgr_bdDijkstraCost.rst:91
 msgid "From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph"
 msgstr ""
 "Del vértice :math:`2` al vértice :math:`3` en un grafo **no dirigido**"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:100
+#: ../../build/doc/pgr_bdDijkstraCost.rst:101
 msgid "One to Many"
 msgstr "Uno a Muchos"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:108
+#: ../../build/doc/pgr_bdDijkstraCost.rst:109
 msgid ""
 "From vertex :math:`2` to vertices :math:`\\{3, 11\\}` on a **directed** "
 "graph"
@@ -179,22 +181,22 @@ msgstr ""
 "Del vértice :math:`2` a los vértices :math:`\\{3, 11\\}` en un grafo "
 "**dirigido**"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:118
+#: ../../build/doc/pgr_bdDijkstraCost.rst:119
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:126
+#: ../../build/doc/pgr_bdDijkstraCost.rst:127
 msgid ""
 "From vertices :math:`\\{2, 7\\}` to vertex :math:`3` on a **directed** graph"
 msgstr ""
 "De los vértices :math:`\\{2, 7\\}` al vértice :math:`3`  en un grafo "
 "**dirigido**"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:136
+#: ../../build/doc/pgr_bdDijkstraCost.rst:137
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:144
+#: ../../build/doc/pgr_bdDijkstraCost.rst:145
 msgid ""
 "From vertices :math:`\\{2, 7\\}` to vertices :math:`\\{3, 11\\}` on a "
 "**directed** graph"
@@ -202,100 +204,108 @@ msgstr ""
 "De los vértice​s :math:`\\{2, 7\\}` a los vértice​s :math:`\\{3, 11\\}` en "
 "un grafo **dirigido**"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:151
+#: ../../build/doc/pgr_bdDijkstraCost.rst:152
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_dijkstra.rst:4
+#: ../../build/doc/pgr_bdDijkstra.rst:4
 msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_dijkstra.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgr_bdDijkstra.rst:4
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_dijkstra.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_bdDijkstra.rst:4
 msgid "Default"
 msgstr "Valores predeterminados"
 
-#: ../../build/doc/pgr_dijkstra.rst:6
-msgid "**edges_sql**"
-msgstr "**edges_sql**"
+#: ../../build/doc/pgr_bdDijkstra.rst:6
+msgid "**Edges SQL**"
+msgstr "**Edges SQL**"
 
-#: ../../build/doc/pgr_dijkstra.rst:6
+#: ../../build/doc/pgr_bdDijkstra.rst:6
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_dijkstra.rst:6
-msgid "Inner SQL query as described below."
-msgstr "Consulta SQL interna como se describe a continuación."
+#: ../../build/doc/pgr_bdDijkstra.rst:6
+msgid "`Edges query`_ as described below"
+msgstr "`Edges query`_ como se describe a continuación"
 
-#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_dijkstra.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_bdDijkstra.rst:7
 msgid "**start_vid**"
 msgstr "**start_vid**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:7
-#: ../../build/doc/pgr_dijkstra.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_bdDijkstra.rst:7 ../../build/doc/pgr_bdDijkstra.rst:9
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_dijkstra.rst:7
+#: ../../build/doc/pgr_bdDijkstra.rst:7
 msgid "Identifier of the starting vertex of the path."
 msgstr "Identificador del vértice inicial de la ruta."
 
-#: ../../build/doc/pgr_dijkstra.rst:8
+#: ../../build/doc/pgr_bdDijkstra.rst:8
 msgid "**start_vids**"
 msgstr "**start_vids**"
 
-#: ../../build/doc/pgr_dijkstra.rst:8 ../../build/doc/pgr_dijkstra.rst:10
+#: ../../build/doc/pgr_bdDijkstra.rst:8 ../../build/doc/pgr_bdDijkstra.rst:10
 msgid "``ARRAY[BIGINT]``"
 msgstr "``ARRAY[BIGINT]``"
 
-#: ../../build/doc/pgr_dijkstra.rst:8
+#: ../../build/doc/pgr_bdDijkstra.rst:8
 msgid "Array of identifiers of starting vertices."
 msgstr "Arreglo de identificadores de vértices iniciales."
 
-#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_dijkstra.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_bdDijkstra.rst:9
 msgid "**end_vid**"
 msgstr "**end_vid**"
 
-#: ../../build/doc/pgr_dijkstra.rst:9
+#: ../../build/doc/pgr_bdDijkstra.rst:9
 msgid "Identifier of the ending vertex of the path."
 msgstr "Identificador del vértice final de la ruta."
 
-#: ../../build/doc/pgr_dijkstra.rst:10
+#: ../../build/doc/pgr_bdDijkstra.rst:10
 msgid "**end_vids**"
 msgstr "**end_vids**"
 
-#: ../../build/doc/pgr_dijkstra.rst:10
+#: ../../build/doc/pgr_bdDijkstra.rst:10
 msgid "Array of identifiers of ending vertices."
 msgstr "Arreglo de identificadores de vértices finales."
 
-#: ../../build/doc/pgr_dijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:11
 msgid "**directed**"
 msgstr "**dirigido**"
 
-#: ../../build/doc/pgr_dijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:11
 msgid "``BOOLEAN``"
 msgstr "``BOOLEAN``"
 
-#: ../../build/doc/pgr_dijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:11
 msgid "``true``"
 msgstr "``true``"
 
-#: ../../build/doc/pgr_dijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:11
 msgid "When ``true`` Graph is considered `Directed`"
 msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
-#: ../../build/doc/pgr_dijkstra.rst:12
+#: ../../build/doc/pgr_bdDijkstra.rst:12
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:158
+#: ../../build/doc/pgr_bdDijkstraCost.rst:159
 msgid "Inner query"
 msgstr "Consulta interna"
+
+#: ../../build/doc/pgr_bdDijkstraCost.rst:162
+msgid "Edges query"
+msgstr "Consulta de aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -393,7 +403,7 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:165
+#: ../../build/doc/pgr_bdDijkstraCost.rst:169
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -429,46 +439,37 @@ msgstr "``FLOAT``"
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr "Coste agregado de ``start_vid`` a ``end_vid``."
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:172
+#: ../../build/doc/pgr_bdDijkstraCost.rst:176
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:174
+#: ../../build/doc/pgr_bdDijkstraCost.rst:178
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:175
+#: ../../build/doc/pgr_bdDijkstraCost.rst:179
 msgid ":doc:`pgr_bdDijkstra`"
 msgstr ":doc:`pgr_bdDijkstra`"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:176
+#: ../../build/doc/pgr_bdDijkstraCost.rst:180
 #, python-format
 msgid ""
 "https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf"
 msgstr ""
 "https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:177
+#: ../../build/doc/pgr_bdDijkstraCost.rst:181
 msgid "https://en.wikipedia.org/wiki/Bidirectional_search"
 msgstr "https://en.wikipedia.org/wiki/Bidirectional_search"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:180
+#: ../../build/doc/pgr_bdDijkstraCost.rst:184
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:181
+#: ../../build/doc/pgr_bdDijkstraCost.rst:185
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:182
+#: ../../build/doc/pgr_bdDijkstraCost.rst:186
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 "
-#~ "<https://docs.pgrouting.org/dev/en/pgr_bdDijkstraCost.html>`__) `2.6 "
-#~ "<https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 "
-#~ "<https://docs.pgrouting.org/3.0/es/pgr_bdDijkstraCost.html>`__) `2.6 "
-#~ "<https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__"

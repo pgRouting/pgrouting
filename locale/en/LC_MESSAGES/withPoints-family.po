@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,19 +87,20 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:42
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"withPoints-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"withPoints-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/"
-"withPoints-family.html>`__"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/withPoints-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+"/withPoints-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
+"/withPoints-family.html>`__"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:47
 msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/withPoints-"
-"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/withPoints-family."
-"html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/"
-"withPoints.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/"
-"doc/withPoints.html>`__"
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
+"/withPoints-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/withPoints-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html>`__"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:57
@@ -108,9 +109,10 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:59
 msgid ""
-"The squared vertices are the temporary vertices, The temporary vertices are "
-"added according to the driving side, The following images visually show the "
-"differences on how depending on the driving side the data is interpreted."
+"The squared vertices are the temporary vertices, The temporary vertices "
+"are added according to the driving side, The following images visually "
+"show the differences on how depending on the driving side the data is "
+"interpreted."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:63
@@ -131,8 +133,8 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:80
 msgid ""
-"This family of functions was thought for routing vehicles, but might as well "
-"work for some other application that we can not think of."
+"This family of functions was thought for routing vehicles, but might as "
+"well work for some other application that we can not think of."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:83
@@ -143,11 +145,12 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:86
 msgid ""
-"When given a point identified with a `pid` that its being mapped to and edge "
-"with an identifier `edge_id`, with a `fraction` along that edge (from the "
-"source to the target of the edge) and some additional information about "
-"which `side` of the edge the point is on, then routing from arbitrary points "
-"more accurately reflect routing vehicles in road networks,"
+"When given a point identified with a `pid` that its being mapped to and "
+"edge with an identifier `edge_id`, with a `fraction` along that edge "
+"(from the source to the target of the edge) and some additional "
+"information about which `side` of the edge the point is on, then routing "
+"from arbitrary points more accurately reflect routing vehicles in road "
+"networks,"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:97
@@ -173,8 +176,7 @@ msgid "pgr_withPointsDD is pgr_drivingDistance based"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:99
-msgid ""
-"In all this functions we have to take care of as many aspects as possible:"
+msgid "In all this functions we have to take care of as many aspects as possible:"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:101
@@ -198,8 +200,7 @@ msgid "In either side of the street."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:109
-msgid ""
-"Compulsory arrival on the side of the street where the point is located."
+msgid "Compulsory arrival on the side of the street where the point is located."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:111
@@ -220,8 +221,8 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:118
 msgid ""
-"Permanent, for example the set of points of clients stored in a table in the "
-"data base"
+"Permanent, for example the set of points of clients stored in a table in "
+"the data base"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:119
@@ -254,8 +255,8 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:130
 msgid ""
-"The reason for doing this is to avoid confusion when there is a vertex with "
-"the same number as identifier as the points identifier."
+"The reason for doing this is to avoid confusion when there is a vertex "
+"with the same number as identifier as the points identifier."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:133
@@ -264,8 +265,8 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:135
 msgid ""
-"Let :math:`G_d(V,E)` where :math:`V` is the set of vertices and :math:`E` is "
-"the set of edges be the original directed graph."
+"Let :math:`G_d(V,E)` where :math:`V` is the set of vertices and :math:`E`"
+" is the set of edges be the original directed graph."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:137
@@ -287,8 +288,7 @@ msgid "Point Definition"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:145
-msgid ""
-"A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)`"
+msgid "A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)`"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:147
@@ -424,3 +424,4 @@ msgstr ""
 #: ../../build/doc/withPoints-family.rst:205
 msgid ":ref:`search`"
 msgstr ""
+

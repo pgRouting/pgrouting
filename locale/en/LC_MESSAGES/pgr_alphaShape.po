@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 10:14-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,21 +71,24 @@ msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:34
 msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/"
-"pgr_alphaShape.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
-"pgr_alphaShape.html>`__"
+"**Supported versions:** current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_alphaShape.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_alphaShape.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:38
 msgid ""
-"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
-"pgr_alphaShape.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
-"pgr_alphaShape.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
-"pgr_alphaShape.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/"
-"alpha_shape/doc/pgr_alphaShape.html>`__ `2.2 <https://docs.pgrouting.org/2.2/"
-"en/src/alpha_shape/doc/pgr_alphaShape.html>`__ `2.1 <https://docs.pgrouting."
-"org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__ `2.0 <https://"
-"docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__"
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_alphaShape.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_alphaShape.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_alphaShape.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__"
+" `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:48 ../../build/doc/pgr_alphaShape.rst:88
@@ -110,8 +113,7 @@ msgid "Uses PostGis ST_DelaunyTriangles"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:56
-msgid ""
-"Instead of using CGAL's definition of `alpha` it use the ``spoon_radius``"
+msgid "Instead of using CGAL's definition of `alpha` it use the ``spoon_radius``"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:58
@@ -120,13 +122,12 @@ msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:60
 msgid ""
-"A Triangle area is considered part of the alpha shape when :math:"
-"`circumcenter\\ radius < spoon\\_radius`"
+"A Triangle area is considered part of the alpha shape when "
+":math:`circumcenter\\ radius < spoon\\_radius`"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:61
-msgid ""
-"When the total number of points is less than 3, returns an EMPTY geometry"
+msgid "When the total number of points is less than 3, returns an EMPTY geometry"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:65
@@ -139,8 +140,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:78
 msgid ""
-"Example: passing a geometry collection with spoon radius :math:`1.5` using "
-"the return variable ``geom``"
+"Example: passing a geometry collection with spoon radius :math:`1.5` "
+"using the return variable ``geom``"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:85
@@ -226,3 +227,4 @@ msgstr ""
 #: ../../build/doc/pgr_alphaShape.rst:117
 msgid ":ref:`search`"
 msgstr ""
+

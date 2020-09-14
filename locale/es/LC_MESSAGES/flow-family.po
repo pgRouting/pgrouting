@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2019
@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 09:02-0500\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2019-09-07 11:54+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -168,15 +168,15 @@ msgstr "Versiones anteriores de esta página"
 
 #: ../../build/doc/flow-family.rst:54
 msgid ""
-"**Supported versions:** current(`3.0 <https://docs.pgrouting.org/3.0/en"
-"/flow-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/flow-"
-"family.html>`__"
+"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/flow-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/flow-"
+"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/flow-family.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-"/flow-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/flow-"
-"family.html>`__"
+"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
+"/flow-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es/flow-"
+"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/flow-family.html>`__"
 
-#: ../../build/doc/flow-family.rst:58
+#: ../../build/doc/flow-family.rst:59
 msgid ""
 "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/flow-"
 "family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/flow-family.html>`__"
@@ -186,23 +186,23 @@ msgstr ""
 "family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/flow-family.html>`__"
 " `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__"
 
-#: ../../build/doc/flow-family.rst:65
+#: ../../build/doc/flow-family.rst:66
 msgid "Flow Functions General Information"
 msgstr "Información General de las Funciones de Flujo"
 
-#: ../../build/doc/flow-family.rst:69
+#: ../../build/doc/flow-family.rst:70
 msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
-#: ../../build/doc/flow-family.rst:71
+#: ../../build/doc/flow-family.rst:72
 msgid "The graph is **directed**."
 msgstr "El grafo es **dirigido**."
 
-#: ../../build/doc/flow-family.rst:72
+#: ../../build/doc/flow-family.rst:73
 msgid "Process is done only on edges with positive capacities."
 msgstr "El proceso se realiza sólo en aristas con capacidades positivas."
 
-#: ../../build/doc/flow-family.rst:73
+#: ../../build/doc/flow-family.rst:74
 msgid ""
 "When the maximum flow is 0 then there is no flow and **EMPTY SET** is "
 "returned."
@@ -210,26 +210,26 @@ msgstr ""
 "Cuando el flujo máximo es 0 entonces no hay flujo, se devolverá: **EMPTY "
 "SET**."
 
-#: ../../build/doc/flow-family.rst:75
+#: ../../build/doc/flow-family.rst:76
 msgid "There is no flow when a **source** is the same as a **target**."
 msgstr ""
 "No hay ningún flujo cuando el  **orígen** es el mismo que el **destino**."
 
-#: ../../build/doc/flow-family.rst:77
+#: ../../build/doc/flow-family.rst:78
 msgid "Any duplicated value in the source(s) or target(s) are ignored."
 msgstr ""
 "Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) será "
 "ignorado."
 
-#: ../../build/doc/flow-family.rst:78
+#: ../../build/doc/flow-family.rst:79
 msgid "Calculates the flow/residual capacity for each edge. In the output"
 msgstr "Calcula la capacidad de flujo/residuo para cada arista. En la salida"
 
-#: ../../build/doc/flow-family.rst:80
+#: ../../build/doc/flow-family.rst:81
 msgid "Edges with zero flow are omitted."
 msgstr "Se omiten las aristas con flujo cero."
 
-#: ../../build/doc/flow-family.rst:82
+#: ../../build/doc/flow-family.rst:83
 msgid ""
 "Creates a **super source** and edges to all the source(s), and a **super "
 "target** and the edges from all the targets(s)."
@@ -237,7 +237,7 @@ msgstr ""
 "Crea una **súper origen**, con aristas para todos los orígenes, y un **súper"
 " destino** con aristas para todos los destinos."
 
-#: ../../build/doc/flow-family.rst:83
+#: ../../build/doc/flow-family.rst:84
 msgid ""
 "The maximum flow through the graph is guaranteed to be the value returned by"
 " :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and"
@@ -247,15 +247,15 @@ msgstr ""
 "  :doc:`pgr_maxFlow <pgr_maxFlow>` cuando es ejecutado con los mismos "
 "parámetros y se puede calcular:"
 
-#: ../../build/doc/flow-family.rst:85
+#: ../../build/doc/flow-family.rst:86
 msgid "By aggregation of the outgoing flow from the sources"
 msgstr "Mediante la agregación del flujo saliente de los orígenes"
 
-#: ../../build/doc/flow-family.rst:86
+#: ../../build/doc/flow-family.rst:87
 msgid "By aggregation of the incoming flow to the targets"
 msgstr "Mediante la agregación del flujo entrante a los destinos"
 
-#: ../../build/doc/flow-family.rst:91
+#: ../../build/doc/flow-family.rst:92
 msgid ""
 ":doc:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is "
 "guaranteed to be the same on the functions :doc:`pgr_pushRelabel "
@@ -269,97 +269,97 @@ msgstr ""
 ":doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, pero el flujo real a "
 "través de cada arista puede variar."
 
-#: ../../build/doc/flow-family.rst:94
+#: ../../build/doc/flow-family.rst:95
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/flow-family.rst:99 ../../build/doc/flow-family.rst:120
-#: ../../build/doc/flow-family.rst:148 ../../build/doc/flow-family.rst:178
-#: ../../build/doc/flow-family.rst:195
+#: ../../build/doc/flow-family.rst:100 ../../build/doc/flow-family.rst:121
+#: ../../build/doc/flow-family.rst:149 ../../build/doc/flow-family.rst:179
+#: ../../build/doc/flow-family.rst:196
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/flow-family.rst:99 ../../build/doc/flow-family.rst:120
-#: ../../build/doc/flow-family.rst:148 ../../build/doc/flow-family.rst:178
-#: ../../build/doc/flow-family.rst:195
+#: ../../build/doc/flow-family.rst:100 ../../build/doc/flow-family.rst:121
+#: ../../build/doc/flow-family.rst:149 ../../build/doc/flow-family.rst:179
+#: ../../build/doc/flow-family.rst:196
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/flow-family.rst:99 ../../build/doc/flow-family.rst:120
-#: ../../build/doc/flow-family.rst:148
+#: ../../build/doc/flow-family.rst:100 ../../build/doc/flow-family.rst:121
+#: ../../build/doc/flow-family.rst:149
 msgid "Default"
 msgstr "Valores predeterminados"
 
-#: ../../build/doc/flow-family.rst:99 ../../build/doc/flow-family.rst:120
-#: ../../build/doc/flow-family.rst:148 ../../build/doc/flow-family.rst:178
-#: ../../build/doc/flow-family.rst:195
+#: ../../build/doc/flow-family.rst:100 ../../build/doc/flow-family.rst:121
+#: ../../build/doc/flow-family.rst:149 ../../build/doc/flow-family.rst:179
+#: ../../build/doc/flow-family.rst:196
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/flow-family.rst:101
+#: ../../build/doc/flow-family.rst:102
 msgid "**Edges SQL**"
 msgstr "**Edges SQL**"
 
-#: ../../build/doc/flow-family.rst:101
+#: ../../build/doc/flow-family.rst:102
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/flow-family.rst:101
+#: ../../build/doc/flow-family.rst:102
 msgid "The edges SQL query as described in `Inner Query`_."
 msgstr "La consulta SQL de aristas como se describe en `Inner Query`_."
 
-#: ../../build/doc/flow-family.rst:102 ../../build/doc/flow-family.rst:123
-#: ../../build/doc/flow-family.rst:151 ../../build/doc/flow-family.rst:199
+#: ../../build/doc/flow-family.rst:103 ../../build/doc/flow-family.rst:124
+#: ../../build/doc/flow-family.rst:152 ../../build/doc/flow-family.rst:200
 msgid "**source**"
 msgstr "**origen**"
 
-#: ../../build/doc/flow-family.rst:102 ../../build/doc/flow-family.rst:104
-#: ../../build/doc/flow-family.rst:181 ../../build/doc/flow-family.rst:182
-#: ../../build/doc/flow-family.rst:183 ../../build/doc/flow-family.rst:184
-#: ../../build/doc/flow-family.rst:185 ../../build/doc/flow-family.rst:198
-#: ../../build/doc/flow-family.rst:199 ../../build/doc/flow-family.rst:200
-#: ../../build/doc/flow-family.rst:201 ../../build/doc/flow-family.rst:202
+#: ../../build/doc/flow-family.rst:103 ../../build/doc/flow-family.rst:105
+#: ../../build/doc/flow-family.rst:182 ../../build/doc/flow-family.rst:183
+#: ../../build/doc/flow-family.rst:184 ../../build/doc/flow-family.rst:185
+#: ../../build/doc/flow-family.rst:186 ../../build/doc/flow-family.rst:199
+#: ../../build/doc/flow-family.rst:200 ../../build/doc/flow-family.rst:201
+#: ../../build/doc/flow-family.rst:202 ../../build/doc/flow-family.rst:203
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/flow-family.rst:102
+#: ../../build/doc/flow-family.rst:103
 msgid "Identifier of the starting vertex of the flow."
 msgstr "Identificador del vértice inicial del flujo."
 
-#: ../../build/doc/flow-family.rst:103
+#: ../../build/doc/flow-family.rst:104
 msgid "**sources**"
 msgstr "**orígenes**"
 
-#: ../../build/doc/flow-family.rst:103 ../../build/doc/flow-family.rst:105
+#: ../../build/doc/flow-family.rst:104 ../../build/doc/flow-family.rst:106
 msgid "``ARRAY[BIGINT]``"
 msgstr "``ARRAY[BIGINT]``"
 
-#: ../../build/doc/flow-family.rst:103
+#: ../../build/doc/flow-family.rst:104
 msgid "Array of identifiers of the starting vertices of the flow."
 msgstr "Conjunto de identificadores de los vértices iniciales del flujo."
 
-#: ../../build/doc/flow-family.rst:104 ../../build/doc/flow-family.rst:124
-#: ../../build/doc/flow-family.rst:152 ../../build/doc/flow-family.rst:200
+#: ../../build/doc/flow-family.rst:105 ../../build/doc/flow-family.rst:125
+#: ../../build/doc/flow-family.rst:153 ../../build/doc/flow-family.rst:201
 msgid "**target**"
 msgstr "**objetivo**"
 
-#: ../../build/doc/flow-family.rst:104
+#: ../../build/doc/flow-family.rst:105
 msgid "Identifier of the ending vertex of the flow."
 msgstr "Identificador del vértice final del flujo."
 
-#: ../../build/doc/flow-family.rst:105
+#: ../../build/doc/flow-family.rst:106
 msgid "**targets**"
 msgstr "**destinos**"
 
-#: ../../build/doc/flow-family.rst:105
+#: ../../build/doc/flow-family.rst:106
 msgid "Array of identifiers of the ending vertices of the flow."
 msgstr "Conjunto de identificadores de los vértices finales del flujo."
 
-#: ../../build/doc/flow-family.rst:111
+#: ../../build/doc/flow-family.rst:112
 msgid "Inner query"
 msgstr "Consulta interna"
 
-#: ../../build/doc/flow-family.rst:114 ../../build/doc/flow-family.rst:174
+#: ../../build/doc/flow-family.rst:115 ../../build/doc/flow-family.rst:175
 msgid ""
 "For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp "
 "<pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>` :"
@@ -371,7 +371,7 @@ msgstr ""
 msgid "Edges SQL"
 msgstr "Edges SQL"
 
-#: ../../build/doc/flow-family.rst:117 ../../build/doc/flow-family.rst:145
+#: ../../build/doc/flow-family.rst:118 ../../build/doc/flow-family.rst:146
 msgid ""
 "an SQL query of a directed graph of capacities, which should return a set of"
 " rows with the following columns:"
@@ -379,41 +379,41 @@ msgstr ""
 "Consulta SQL de un grafo dirigido de capacidades, que debe devolver un "
 "conjunto de filas con las siguientes columnas:"
 
-#: ../../build/doc/flow-family.rst:122 ../../build/doc/flow-family.rst:150
+#: ../../build/doc/flow-family.rst:123 ../../build/doc/flow-family.rst:151
 msgid "**id**"
 msgstr "**id**"
 
-#: ../../build/doc/flow-family.rst:122 ../../build/doc/flow-family.rst:123
-#: ../../build/doc/flow-family.rst:124 ../../build/doc/flow-family.rst:125
-#: ../../build/doc/flow-family.rst:129 ../../build/doc/flow-family.rst:150
-#: ../../build/doc/flow-family.rst:151 ../../build/doc/flow-family.rst:152
-#: ../../build/doc/flow-family.rst:153 ../../build/doc/flow-family.rst:156
+#: ../../build/doc/flow-family.rst:123 ../../build/doc/flow-family.rst:124
+#: ../../build/doc/flow-family.rst:125 ../../build/doc/flow-family.rst:126
+#: ../../build/doc/flow-family.rst:130 ../../build/doc/flow-family.rst:151
+#: ../../build/doc/flow-family.rst:152 ../../build/doc/flow-family.rst:153
+#: ../../build/doc/flow-family.rst:154 ../../build/doc/flow-family.rst:157
 msgid "``ANY-INTEGER``"
 msgstr "``ANY-INTEGER``"
 
-#: ../../build/doc/flow-family.rst:122 ../../build/doc/flow-family.rst:150
+#: ../../build/doc/flow-family.rst:123 ../../build/doc/flow-family.rst:151
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
-#: ../../build/doc/flow-family.rst:123 ../../build/doc/flow-family.rst:151
-#: ../../build/doc/flow-family.rst:182 ../../build/doc/flow-family.rst:199
+#: ../../build/doc/flow-family.rst:124 ../../build/doc/flow-family.rst:152
+#: ../../build/doc/flow-family.rst:183 ../../build/doc/flow-family.rst:200
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer punto final en el vértice de la arista."
 
-#: ../../build/doc/flow-family.rst:124 ../../build/doc/flow-family.rst:152
-#: ../../build/doc/flow-family.rst:183 ../../build/doc/flow-family.rst:200
+#: ../../build/doc/flow-family.rst:125 ../../build/doc/flow-family.rst:153
+#: ../../build/doc/flow-family.rst:184 ../../build/doc/flow-family.rst:201
 msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo punto final en el vértice de la arista."
 
-#: ../../build/doc/flow-family.rst:125 ../../build/doc/flow-family.rst:153
+#: ../../build/doc/flow-family.rst:126 ../../build/doc/flow-family.rst:154
 msgid "**capacity**"
 msgstr "**capacidad**"
 
-#: ../../build/doc/flow-family.rst:125
+#: ../../build/doc/flow-family.rst:126
 msgid "Weight of the edge  `(source, target)`"
 msgstr "Peso de la arista `(source, target)`"
 
-#: ../../build/doc/flow-family.rst:127 ../../build/doc/flow-family.rst:155
+#: ../../build/doc/flow-family.rst:128 ../../build/doc/flow-family.rst:156
 msgid ""
 "When negative: edge `(source, target)` does not exist, therefore it's not "
 "part of the graph."
@@ -421,19 +421,19 @@ msgstr ""
 "Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
 "es parte del grafo."
 
-#: ../../build/doc/flow-family.rst:129 ../../build/doc/flow-family.rst:156
+#: ../../build/doc/flow-family.rst:130 ../../build/doc/flow-family.rst:157
 msgid "**reverse_capacity**"
 msgstr "**reverse_capacity** (**capacidad inversa**)"
 
-#: ../../build/doc/flow-family.rst:129 ../../build/doc/flow-family.rst:156
+#: ../../build/doc/flow-family.rst:130 ../../build/doc/flow-family.rst:157
 msgid "-1"
 msgstr "-1"
 
-#: ../../build/doc/flow-family.rst:129
+#: ../../build/doc/flow-family.rst:130
 msgid "Weight of the edge `(target, source)`,"
 msgstr "Peso de la arista `(target, source)`,"
 
-#: ../../build/doc/flow-family.rst:131 ../../build/doc/flow-family.rst:158
+#: ../../build/doc/flow-family.rst:132 ../../build/doc/flow-family.rst:159
 msgid ""
 "When negative: edge `(target, source)` does not exist, therefore it's not "
 "part of the graph."
@@ -441,8 +441,8 @@ msgstr ""
 "En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
 "es parte del grafo."
 
-#: ../../build/doc/flow-family.rst:135 ../../build/doc/flow-family.rst:163
-#: ../../build/doc/flow-family.rst:260
+#: ../../build/doc/flow-family.rst:136 ../../build/doc/flow-family.rst:164
+#: ../../build/doc/flow-family.rst:261
 msgid "Where:"
 msgstr "Donde:"
 
@@ -450,43 +450,43 @@ msgstr "Donde:"
 msgid "ANY-INTEGER"
 msgstr "ANY-INTEGER"
 
-#: ../../build/doc/flow-family.rst:137 ../../build/doc/flow-family.rst:165
+#: ../../build/doc/flow-family.rst:138 ../../build/doc/flow-family.rst:166
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr "SMALLINT, INTEGER, BIGINT"
 
-#: ../../build/doc/flow-family.rst:141
+#: ../../build/doc/flow-family.rst:142
 msgid "For :doc:`pgr_maxFlowMinCost` and :doc:`pgr_maxFlowMinCost_Cost`:"
 msgstr "Para :doc:`pgr_maxFlowMinCost` and :doc:`pgr_maxFlowMinCost_Cost`:"
 
-#: ../../build/doc/flow-family.rst:153
+#: ../../build/doc/flow-family.rst:154
 msgid "Capacity of the edge  `(source, target)`"
 msgstr "Capacidad de la arista `(origen, destino)`"
 
-#: ../../build/doc/flow-family.rst:156
+#: ../../build/doc/flow-family.rst:157
 msgid "Capacity of the edge `(target, source)`,"
 msgstr "Capacidad de la arista `(destino, origen)`,"
 
-#: ../../build/doc/flow-family.rst:159 ../../build/doc/flow-family.rst:203
+#: ../../build/doc/flow-family.rst:160 ../../build/doc/flow-family.rst:204
 msgid "**cost**"
 msgstr "**cost**"
 
-#: ../../build/doc/flow-family.rst:159 ../../build/doc/flow-family.rst:160
+#: ../../build/doc/flow-family.rst:160 ../../build/doc/flow-family.rst:161
 msgid "``ANY-NUMERICAL``"
 msgstr "``ANY-NUMERICAL``"
 
-#: ../../build/doc/flow-family.rst:159
+#: ../../build/doc/flow-family.rst:160
 msgid "Weight of the edge  `(source, target)` if it exists."
 msgstr "Peso de la arista `(origen, destino)` si existe."
 
-#: ../../build/doc/flow-family.rst:160
+#: ../../build/doc/flow-family.rst:161
 msgid "**reverse_cost**"
 msgstr "**reverse_cost**"
 
-#: ../../build/doc/flow-family.rst:160
+#: ../../build/doc/flow-family.rst:161
 msgid "0"
 msgstr "0"
 
-#: ../../build/doc/flow-family.rst:160
+#: ../../build/doc/flow-family.rst:161
 msgid "Weight of the edge `(target, source)` if it exists."
 msgstr "Peso de la arista `(destino, origen)` si existe."
 
@@ -494,78 +494,78 @@ msgstr "Peso de la arista `(destino, origen)` si existe."
 msgid "ANY-NUMERICAL"
 msgstr "ANY-NUMERICAL"
 
-#: ../../build/doc/flow-family.rst:166
+#: ../../build/doc/flow-family.rst:167
 msgid "smallint, int, bigint, real, float"
 msgstr "smallint, int, bigint, real, float"
 
-#: ../../build/doc/flow-family.rst:171
+#: ../../build/doc/flow-family.rst:172
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/flow-family.rst:180 ../../build/doc/flow-family.rst:197
+#: ../../build/doc/flow-family.rst:181 ../../build/doc/flow-family.rst:198
 msgid "**seq**"
 msgstr "**seq**"
 
-#: ../../build/doc/flow-family.rst:180 ../../build/doc/flow-family.rst:197
+#: ../../build/doc/flow-family.rst:181 ../../build/doc/flow-family.rst:198
 msgid "``INT``"
 msgstr "``INT``"
 
-#: ../../build/doc/flow-family.rst:180 ../../build/doc/flow-family.rst:197
+#: ../../build/doc/flow-family.rst:181 ../../build/doc/flow-family.rst:198
 msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
-#: ../../build/doc/flow-family.rst:181 ../../build/doc/flow-family.rst:198
+#: ../../build/doc/flow-family.rst:182 ../../build/doc/flow-family.rst:199
 msgid "**edge**"
 msgstr "**edge**"
 
-#: ../../build/doc/flow-family.rst:181 ../../build/doc/flow-family.rst:198
+#: ../../build/doc/flow-family.rst:182 ../../build/doc/flow-family.rst:199
 msgid "Identifier of the edge in the original query(edges_sql)."
 msgstr "Identificador de la arista en la consulta original(edges_sql)."
 
-#: ../../build/doc/flow-family.rst:182
+#: ../../build/doc/flow-family.rst:183
 msgid "**start_vid**"
 msgstr "**start_vid**"
 
-#: ../../build/doc/flow-family.rst:183
+#: ../../build/doc/flow-family.rst:184
 msgid "**end_vid**"
 msgstr "**end_vid**"
 
-#: ../../build/doc/flow-family.rst:184 ../../build/doc/flow-family.rst:201
+#: ../../build/doc/flow-family.rst:185 ../../build/doc/flow-family.rst:202
 msgid "**flow**"
 msgstr "**flujo**"
 
-#: ../../build/doc/flow-family.rst:184
+#: ../../build/doc/flow-family.rst:185
 msgid "Flow through the edge in the direction (``start_vid``, ``end_vid``)."
 msgstr ""
 "Flujo a través del arista en la dirección  (``start_vid``, ``end_vid``)."
 
-#: ../../build/doc/flow-family.rst:185 ../../build/doc/flow-family.rst:202
+#: ../../build/doc/flow-family.rst:186 ../../build/doc/flow-family.rst:203
 msgid "**residual_capacity**"
 msgstr "**residual_capacity** (**capacidad residual**)"
 
-#: ../../build/doc/flow-family.rst:185
+#: ../../build/doc/flow-family.rst:186
 msgid ""
 "Residual capacity of the edge in the direction (``start_vid``, ``end_vid``)."
 msgstr ""
 "Capacidad residual del arista en la dirección (``start_vid``, ``end_vid``)."
 
-#: ../../build/doc/flow-family.rst:191
+#: ../../build/doc/flow-family.rst:192
 msgid "For :doc:`pgr_maxFlowMinCost`"
 msgstr "Para :doc:`pgr_maxFlowMinCost`"
 
-#: ../../build/doc/flow-family.rst:201
+#: ../../build/doc/flow-family.rst:202
 msgid "Flow through the edge in the direction (source, target)."
 msgstr "Flujo a través de la arista en la dirección (origen, destino)."
 
-#: ../../build/doc/flow-family.rst:202
+#: ../../build/doc/flow-family.rst:203
 msgid "Residual capacity of the edge in the direction (source, target)."
 msgstr "Capacidad residual de la arista en la dirección (origen, destino)."
 
-#: ../../build/doc/flow-family.rst:203 ../../build/doc/flow-family.rst:204
+#: ../../build/doc/flow-family.rst:204 ../../build/doc/flow-family.rst:205
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
-#: ../../build/doc/flow-family.rst:203
+#: ../../build/doc/flow-family.rst:204
 msgid ""
 "The cost of sending this flow through the edge in the direction (source, "
 "target)."
@@ -573,19 +573,19 @@ msgstr ""
 "El costo de enviar este flujo a través de la arista en la dirección (origen,"
 " destino)."
 
-#: ../../build/doc/flow-family.rst:204
+#: ../../build/doc/flow-family.rst:205
 msgid "**agg_cost**"
 msgstr "**agg_cost**"
 
-#: ../../build/doc/flow-family.rst:204
+#: ../../build/doc/flow-family.rst:205
 msgid "The aggregate cost."
 msgstr "El costo agregado."
 
-#: ../../build/doc/flow-family.rst:211
+#: ../../build/doc/flow-family.rst:212
 msgid "Adcanced Documentation"
 msgstr "Documentación Avanzada"
 
-#: ../../build/doc/flow-family.rst:213
+#: ../../build/doc/flow-family.rst:214
 msgid ""
 "A flow network is a directed graph where each edge has a capacity and a "
 "flow. The flow through an edge must not exceed the capacity of the edge. "
@@ -599,7 +599,7 @@ msgstr ""
 "ser igual, excepto para el origen que solo tiene flujo saliente, y el "
 "destino (receptor) que solo tiene flujo entrante."
 
-#: ../../build/doc/flow-family.rst:218
+#: ../../build/doc/flow-family.rst:219
 msgid ""
 "Maximum flow algorithms calculate the maximum flow through the graph and the"
 " flow of each edge."
@@ -607,7 +607,7 @@ msgstr ""
 "Los algoritmos de Flujo Máximo calculan a través del grafo el flujo máximoy "
 "el flujo de cada arista"
 
-#: ../../build/doc/flow-family.rst:220
+#: ../../build/doc/flow-family.rst:221
 msgid ""
 "The maximum flow through the graph is guaranteed to be the same with all "
 "implementations, but the actual flow through each edge may vary. Given the "
@@ -617,11 +617,11 @@ msgstr ""
 "las implementaciones, pero el flujo real a través de cada arista puede "
 "variar. Dada la siguiente consulta:"
 
-#: ../../build/doc/flow-family.rst:224
+#: ../../build/doc/flow-family.rst:225
 msgid "pgr_maxFlow :math:`(edges\\_sql, source\\_vertex, sink\\_vertex)`"
 msgstr "pgr_maxFlow :math:`(edges\\_sql, source\\_vertex, sink\\_vertex)`"
 
-#: ../../build/doc/flow-family.rst:226
+#: ../../build/doc/flow-family.rst:227
 msgid ""
 "where :math:`edges\\_sql = \\{(id_i, source_i, target_i, capacity_i, "
 "reverse\\_capacity_i)\\}`"
@@ -629,19 +629,19 @@ msgstr ""
 "where :math:`edges\\_sql = \\{(id_i, source_i, target_i, capacity_i, "
 "reverse\\_capacity_i)\\}`"
 
-#: ../../build/doc/flow-family.rst:229
+#: ../../build/doc/flow-family.rst:230
 msgid "Graph definition"
 msgstr "Definición del grafo"
 
-#: ../../build/doc/flow-family.rst:230
+#: ../../build/doc/flow-family.rst:231
 msgid "The weighted directed graph, :math:`G(V,E)`, is defined as:"
 msgstr "El grafo ponderado dirigido, :math:`G(V,E)`, se define como:"
 
-#: ../../build/doc/flow-family.rst:232
+#: ../../build/doc/flow-family.rst:233
 msgid "the set of vertices  :math:`V`"
 msgstr "Conjunto de vértices :math:`V`"
 
-#: ../../build/doc/flow-family.rst:234
+#: ../../build/doc/flow-family.rst:235
 msgid ""
 ":math:`source\\_vertex  \\cup  sink\\_vertex  \\bigcup  source_i  \\bigcup  "
 "target_i`"
@@ -649,11 +649,11 @@ msgstr ""
 ":math:`source\\_vertex  \\cup  sink\\_vertex  \\bigcup  source_i  \\bigcup  "
 "target_i`"
 
-#: ../../build/doc/flow-family.rst:236
+#: ../../build/doc/flow-family.rst:237
 msgid "the set of edges :math:`E`"
 msgstr "El conjunto de aristas :math:`E`"
 
-#: ../../build/doc/flow-family.rst:238
+#: ../../build/doc/flow-family.rst:239
 msgid ""
 ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, capacity_i) "
 "\\text{ when } capacity > 0 \\} & \\quad  \\text{ if } reverse\\_capacity = "
@@ -671,35 +671,35 @@ msgstr ""
 "reverse\\_capacity_i > 0)\\} & \\quad \\text{ if } reverse\\_capacity \\neq "
 "\\varnothing \\\\ \\end{cases}`"
 
-#: ../../build/doc/flow-family.rst:246
+#: ../../build/doc/flow-family.rst:247
 msgid "Maximum flow problem"
 msgstr "Problema de Flujo Máximo"
 
-#: ../../build/doc/flow-family.rst:247
+#: ../../build/doc/flow-family.rst:248
 msgid "Given:"
 msgstr "Dado:"
 
-#: ../../build/doc/flow-family.rst:250
+#: ../../build/doc/flow-family.rst:251
 msgid ":math:`G(V,E)`"
 msgstr ":math:`G(V,E)`"
 
-#: ../../build/doc/flow-family.rst:251
+#: ../../build/doc/flow-family.rst:252
 msgid ":math:`source\\_vertex \\in V` the source vertex"
 msgstr ":math:`source\\_vertex \\in V` el vértice de origen"
 
-#: ../../build/doc/flow-family.rst:252
+#: ../../build/doc/flow-family.rst:253
 msgid ":math:`sink\\_vertex \\in V` the sink vertex"
 msgstr ":math:`sink\\_vertex \\in V` el vértice pozo"
 
-#: ../../build/doc/flow-family.rst:254
+#: ../../build/doc/flow-family.rst:255
 msgid "Then:"
 msgstr "Entonces:"
 
-#: ../../build/doc/flow-family.rst:256
+#: ../../build/doc/flow-family.rst:257
 msgid ":math:`pgr\\_maxFlow(edges\\_sql, source, sink) = \\boldsymbol{\\Phi}`"
 msgstr ":math:`pgr\\_maxFlow(edges\\_sql, source, sink) = \\boldsymbol{\\Phi}`"
 
-#: ../../build/doc/flow-family.rst:258
+#: ../../build/doc/flow-family.rst:259
 msgid ""
 ":math:`\\boldsymbol{\\Phi} = {(id_i, edge\\_id_i, source_i, target_i, "
 "flow_i, residual\\_capacity_i)}`"
@@ -707,7 +707,7 @@ msgstr ""
 ":math:`\\boldsymbol{\\Phi} = {(id_i, edge\\_id_i, source_i, target_i, "
 "flow_i, residual\\_capacity_i)}`"
 
-#: ../../build/doc/flow-family.rst:262
+#: ../../build/doc/flow-family.rst:263
 msgid ""
 ":math:`\\boldsymbol{\\Phi}` is a subset of the original edges with their "
 "residual capacity and flow. The maximum flow through the graph can be "
@@ -719,43 +719,34 @@ msgstr ""
 "obtrener agregando en el origen o sumidero y sumiendo el flujo hacia él. En "
 "particular: "
 
-#: ../../build/doc/flow-family.rst:266
+#: ../../build/doc/flow-family.rst:267
 msgid ":math:`id_i = i`"
 msgstr ":math:`id_i = i`"
 
-#: ../../build/doc/flow-family.rst:267
+#: ../../build/doc/flow-family.rst:268
 msgid ":math:`edge\\_id = id_i` in edges_sql"
 msgstr ":math:`edge\\_id = id_i` in edges_sql"
 
-#: ../../build/doc/flow-family.rst:268
+#: ../../build/doc/flow-family.rst:269
 msgid ":math:`residual\\_capacity_i = capacity_i - flow_i`"
 msgstr ":math:`residual\\_capacity_i = capacity_i - flow_i`"
 
-#: ../../build/doc/flow-family.rst:272
+#: ../../build/doc/flow-family.rst:273
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/flow-family.rst:274
+#: ../../build/doc/flow-family.rst:275
 msgid "https://en.wikipedia.org/wiki/Maximum_flow_problem"
 msgstr "https://en.wikipedia.org/wiki/Maximum_flow_problem"
 
-#: ../../build/doc/flow-family.rst:277
+#: ../../build/doc/flow-family.rst:278
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/flow-family.rst:278
+#: ../../build/doc/flow-family.rst:279
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/flow-family.rst:279
+#: ../../build/doc/flow-family.rst:280
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.0 <https://docs.pgrouting.org/dev/en"
-#~ "/flow-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/flow-"
-#~ "family.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.0 <https://docs.pgrouting.org/3.0/es"
-#~ "/flow-family.html>`__) `2.6 <https://docs.pgrouting.org/2.6/en/flow-"
-#~ "family.html>`__"
