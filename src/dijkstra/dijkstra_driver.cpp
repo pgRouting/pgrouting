@@ -40,6 +40,54 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+namespace detail {
+
+void
+post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goals) {
+    paths.erase(std::remove_if(paths.begin(), paths.end(),
+                [](const Path &p){
+                    return p.size()==0;}),
+            paths.end());
+
+    if (!normal) {
+        for (auto &path : paths) path.reverse();
+    }
+
+    if (!only_cost) {
+        for (auto &p : paths) {
+            p.recalculate_agg_cost();
+        }
+    }
+
+    if (n_goals != (std::numeric_limits<size_t>::max)()) {
+        std::sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.end_id() < e2.end_id();
+                });
+        std::stable_sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.start_id() < e2.start_id();
+                });
+        std::stable_sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.tot_cost() < e2.tot_cost();
+                });
+        if (n_goals < paths.size()) {
+            paths.erase(paths.begin() + n_goals, paths.end());
+        }
+    } else {
+        std::sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.end_id() < e2.end_id();
+                });
+        std::stable_sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.start_id() < e2.start_id();
+                });
+    }
+}
+
+
 template < class G >
 std::deque< Path >
 pgr_dijkstra(
@@ -48,7 +96,7 @@ pgr_dijkstra(
         std::vector < int64_t > targets,
         bool only_cost,
         bool normal,
-        int64_t n_goals) {
+        size_t n_goals) {
     std::sort(sources.begin(), sources.end());
     sources.erase(
             std::unique(sources.begin(), sources.end()),
@@ -65,14 +113,11 @@ pgr_dijkstra(
             sources, targets,
             only_cost, n_goals);
 
-    if (!normal) {
-        for (auto &path : paths) {
-            path.reverse();
-        }
-    }
+    post_process(paths, only_cost, normal, n_goals);
+
     return paths;
 }
-
+}
 
 
 // CREATE OR REPLACE FUNCTION pgr_dijkstra(
@@ -118,14 +163,14 @@ do_pgr_many_to_many_dijkstra(
         std::vector< int64_t >
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 
-        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : n_goals;
+        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
 
         std::deque< Path >paths;
         if (directed) {
             log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            paths = pgr_dijkstra(
+            paths = detail::pgr_dijkstra(
                     digraph,
                     start_vertices, end_vertices,
                     only_cost, normal, n);
@@ -133,7 +178,7 @@ do_pgr_many_to_many_dijkstra(
             log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
-            paths = pgr_dijkstra(
+            paths = detail::pgr_dijkstra(
                     undigraph,
                     start_vertices, end_vertices,
                     only_cost, normal, n);
