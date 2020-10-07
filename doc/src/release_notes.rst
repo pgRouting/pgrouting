@@ -57,7 +57,10 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 3.2.0 Release Notes
 -------------------------------------------------------------------------------
 
-No Changes Yet
+.. rubric:: New experimental functions
+
+* pgr_depthFirstSearch
+* pgr_sequentialVertexColoring
 
 .. _changelog_3_1_0:
 

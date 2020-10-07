@@ -2,7 +2,10 @@
 pgRouting 3.2.0 Release Notes
 -------------------------------------------------------------------------------
 
-No Changes Yet
+*New experimental functions*
+
+* pgr_depthFirstSearch
+* pgr_sequentialVertexColoring
 
 
 pgRouting 3.1.0 Release Notes
