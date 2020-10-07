@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.1.0
+# Copyright (C) pgRouting Contributors - Version v3.1.1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.1.0\n"
+"Project-Id-Version: pgRouting v3.1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2020-10-07 12:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
