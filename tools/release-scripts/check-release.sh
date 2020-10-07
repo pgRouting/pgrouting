@@ -52,12 +52,13 @@ fi
 
 
 MAYOR=3
-MINOR=1
+MINOR=2
 MICRO=0
-RC=""
-PREV_REL=3.0.2
+RC="-dev"
+PREV_REL=3.1.1
 PREV_RELS="
-    3.0.2 3.0.1 3.0.0
+    3.1.1 3.1.0
+    3.0.3 3.0.2 3.0.1 3.0.0
     2.6.3 2.6.2 2.6.1 2.6.0
     "
 # These releases are not for update
@@ -218,7 +219,7 @@ echo "### checking the signature files dont change"
 
 bash tools/release-scripts/compile-release.sh
 bash tools/release-scripts/get_signatures.sh
-if [[ -z $(git diff "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig") ]]; then
+if [[ $(git diff "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig") ]]; then
     echo signature changed at: "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig"
 fi
 
@@ -235,7 +236,7 @@ echo "\`\`\`"
 
 for r in ${PREV_RELS}
 do
-    if ! bash tools/testers/update-tester.sh "$r"; then
+    if ! bash tools/testers/update-tester.sh "$r" 12; then
         echo "FATAL updating from $r"
         exit 1
     fi
