@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_version()
 RETURNS TEXT AS
 $BODY$
-    SELECT '${PGROUTING_VERSION}'::varchar AS pgr_version;
+    SELECT '${PGROUTING_VERSION}${PGROUTING_VERSION_DEV}'::varchar AS pgr_version;
 $BODY$
 LANGUAGE sql IMMUTABLE;
 
