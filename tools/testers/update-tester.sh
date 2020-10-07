@@ -28,8 +28,7 @@ set -e
 
 TWEAK=""
 PGPORT=5432
-#sorry this only works on vicky's computer
-# TODO make it more general
+echo "sorry this only works on vicky's computer"
 PGUSER="vicky"
 DB="___pgr___test___"
 
@@ -42,16 +41,16 @@ function info {
 
     echo "EXAMPLE USAGE"
     echo "- Short execution"
-    echo  "bash tools/testers/update-tester.sh $1"
+    echo  "bash tools/testers/update-tester.sh $1 $2"
     echo "- For running pgtap tests:"
-    echo  "bash tools/testers/update-tester.sh $1 long"
+    echo  "bash tools/testers/update-tester.sh $1 $2 long"
 
 }
 
 
 if [[ -z  "$1" ]]; then
     echo missing version example:
-    info 2.6.3
+    info 2.6.3 12
     exit 1
 fi
 
@@ -59,8 +58,13 @@ FROM_PGR="$1"
 CURRENT=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
 LONG=$2
 
-dropdb --if-exists "$DB"
+if [[ "$FROM_PGR" == 2.* ]];
+then
+    exit 0
+fi
 
+
+dropdb --if-exists "$DB"
 
 cd build
 cmake -DPGROUTING_DEBUG=ON -DCMAKE_BUILD_TYPE=Debug ..
