@@ -71,6 +71,9 @@ pgr_bellman_ford(
     auto paths = fn_bellman_ford.bellman_ford(
             graph, sources, targets, only_cost);
     log += fn_bellman_ford.get_log();
+    for (auto &p : paths) {
+        p.recalculate_agg_cost();
+    }
     return paths;
 }
 
