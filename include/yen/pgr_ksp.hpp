@@ -96,7 +96,6 @@ class Pgr_ksp :  public Pgr_messages {
          executeYen(graph);
 
          auto paths = get_results();
-
          if (!m_heap_paths && paths.size() > m_K) paths.resize(m_K);
 
          return paths;
@@ -135,6 +134,7 @@ class Pgr_ksp :  public Pgr_messages {
              doNextCycle(graph);
              if (m_Heap.empty()) break;
              curr_result_path = *m_Heap.begin();
+             curr_result_path.recalculate_agg_cost();
              m_ResultSet.insert(curr_result_path);
              m_Heap.erase(m_Heap.begin());
          }
@@ -150,6 +150,7 @@ class Pgr_ksp :  public Pgr_messages {
 
          Pgr_dijkstra< G > fn_dijkstra;
          path = fn_dijkstra.dijkstra(graph, m_start, m_end);
+         path.recalculate_agg_cost();
 
          if (path.empty()) return path;
          m_ResultSet.insert(path);
