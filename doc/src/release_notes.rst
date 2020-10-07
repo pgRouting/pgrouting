@@ -60,6 +60,8 @@ pgRouting 3.2.0 Release Notes
 .. rubric:: New experimental functions
 
 * pgr_depthFirstSearch
+* pgr_isPlanar
+* pgr_makeConnected
 * pgr_sequentialVertexColoring
 
 .. _changelog_3_1_0:
