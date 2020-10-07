@@ -18,7 +18,9 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_3_1_1`
 * :ref:`changelog_3_1_0`
+* :ref:`changelog_3_0_3`
 * :ref:`changelog_3_0_2`
 * :ref:`changelog_3_0_1`
 * :ref:`changelog_3_0_0`
@@ -50,10 +52,26 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog end
 
+.. _changelog_3_1_1:
+
+pgRouting 3.1.1 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github.
+
+.. rubric:: Backport issues fixes
+
+* `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path evaluation on C++ not updated before the results go back to C
+
+
 .. _changelog_3_1_0:
 
 pgRouting 3.1.0 Release Notes
 -------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github.
 
 .. rubric:: New proposed functions
 
@@ -63,6 +81,16 @@ pgRouting 3.1.0 Release Notes
 .. rubric:: Build changes
 
 * Minimal requirement for Sphinx: version 1.8
+
+.. _changelog_3_0_3:
+
+pgRouting 3.0.3 Release Notes
+-------------------------------------------------------------------------------
+
+.. rubric:: Backport issues fixes
+
+* `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path evaluation on C++ not updated before the results go back to C
+
 
 .. _changelog_3_0_2:
 

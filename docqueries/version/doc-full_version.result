@@ -4,9 +4,9 @@ SET client_min_messages TO NOTICE;
 SET
 -- q1
 SELECT * FROM pgr_full_version();
- version | build_type | compile_date |     library     |          system          |                 postgresql                  | compiler  | boost  |    hash
----------+------------+--------------+-----------------+--------------------------+---------------------------------------------+-----------+--------+------------
- 3.1.0   | Debug      | 2020/07/16   | pgrouting-3.1.0 | Linux-4.15.0-111-generic | PostgreSQL 12.2 (Ubuntu 12.2-2.pgdg18.04+1) | GNU-8.4.0 | 1.65.1 | a88a786a8b
+ version | build_type | compile_date |     library     |         system         |                 postgresql                  | compiler  | boost  |    hash
+---------+------------+--------------+-----------------+------------------------+---------------------------------------------+-----------+--------+------------
+ 3.1.1   | Debug      | 2020/10/07   | pgrouting-3.1.1 | Linux-5.4.0-48-generic | PostgreSQL 12.4 (Ubuntu 12.4-1.pgdg20.04+1) | GNU-8.4.0 | 1.71.0 | 2182ae38aa
 (1 row)
 
 -- q2

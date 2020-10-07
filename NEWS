@@ -1,6 +1,21 @@
 
+pgRouting 3.1.1 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github.
+
+*Backport issues fixes*
+
+* [#1616 ](https://github.com/pgRouting/pgrouting/issues/1616)_: Path evaluation on C++ not updated before the results go back to C
+
+
+
 pgRouting 3.1.0 Release Notes
 -------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github.
 
 *New proposed functions*
 
@@ -10,6 +25,15 @@ pgRouting 3.1.0 Release Notes
 *Build changes*
 
 * Minimal requirement for Sphinx: version 1.8
+
+
+pgRouting 3.0.3 Release Notes
+-------------------------------------------------------------------------------
+
+*Backport issues fixes*
+
+* [#1616 ](https://github.com/pgRouting/pgrouting/issues/1616)_: Path evaluation on C++ not updated before the results go back to C
+
 
 
 pgRouting 3.0.2 Release Notes
