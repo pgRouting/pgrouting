@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 12:15-0500\n"
+"POT-Creation-Date: 2020-10-07 21:01-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -528,22 +528,18 @@ msgid "https://cp-algorithms.com/graph/01_bfs.html"
 msgstr ""
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:227
-msgid "https://codeforces.com/blog/entry/22276"
-msgstr ""
-
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:228
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
 msgstr ""
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:231
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:230
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:232
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:231
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:233
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:232
 msgid ":ref:`search`"
 msgstr ""
 
