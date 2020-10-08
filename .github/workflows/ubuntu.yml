@@ -23,13 +23,19 @@ jobs:
           os: [ubuntu-latest]
 
     steps:
+      - uses: actions/checkout@v2
+
+      - name: get postgres version
+        run: |
+          sudo service postgresql start
+          pgver=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d \()')
+          echo "PGVER=${pgver}" >> $GITHUB_ENV
+          PGP=5433
+          if [ "${{ matrix.psql }}" == "${pgver}" ]; then PGP=5432; fi
+          echo "PGPORT=${PGP}" >> $GITHUB_ENV
 
       - name: Add PostgreSQL APT repository
         run: |
-          echo "gihub actor $GITHUB_ACTOR"
-          echo "gihub repository $GITHUB_REPOSITORY"
-          echo "github ref $GITHUB_REF"
-
           sudo apt-get install curl ca-certificates gnupg
           curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
           sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
@@ -47,9 +53,6 @@ jobs:
             postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }}-scripts \
             postgresql-server-dev-${{ matrix.psql }}
 
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
       - name: Configure
         run: |
           export PATH=/usr/lib/postgresql/${{ matrix.psql }}/bin:$PATH
@@ -66,9 +69,5 @@ jobs:
       - name: Test
         run: |
           sudo service postgresql start
-          PGPORT=5433
-          if [ "${{ matrix.psql }}" == "12" ]; then PGPORT=5432; fi
-          echo "${PGPORT}"
           sudo -u postgres createdb -p ${PGPORT}  ___pgr___test___
-          #sudo -u postgres psql -p ${PGPORT}  -c "CREATE EXTENSION postgis"
           sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres ${PGPORT}  Release
