@@ -103,5 +103,17 @@ SELECT * FROM pgr_withPointsCost(
 (4 rows)
 
 --q5
+SELECT * FROM pgr_withPointsCost(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+    'SELECT * FROM ( VALUES (-1, 3), (2, -3) ) AS t(source, target)',
+    driving_side => 'r');
+ start_pid | end_pid | agg_cost
+-----------+---------+----------
+        -1 |       3 |      6.4
+         2 |      -3 |      2.6
+(2 rows)
+
+--q6
 ROLLBACK;
 ROLLBACK
