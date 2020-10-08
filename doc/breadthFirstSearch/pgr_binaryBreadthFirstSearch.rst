@@ -224,7 +224,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * https://cp-algorithms.com/graph/01_bfs.html
-* https://codeforces.com/blog/entry/22276
 * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants
 
 .. rubric:: Indices and tables
