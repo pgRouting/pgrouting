@@ -46,6 +46,7 @@ SELECT pgr_createTopology('edge_table_i244',0.001);
 SET client_min_messages TO NOTICE;
 
 
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(1);
 
 PREPARE q1 AS

@@ -3,6 +3,7 @@
 -- node the network
 -- create 2 test cases with overlapping lines, one with crossing lines and one with touching (but no crossing) lines
 
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(20);
 
 SET client_min_messages = WARNING;

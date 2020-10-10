@@ -4,7 +4,7 @@ SELECT plan(1297);
 
 SET client_min_messages TO ERROR;
 
-UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
+UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 SELECT has_function('pgr_turnrestrictedpath');
 

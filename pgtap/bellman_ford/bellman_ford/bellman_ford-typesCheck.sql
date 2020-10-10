@@ -1,4 +1,5 @@
 
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(9);
 
 SELECT has_function('pgr_bellmanford');

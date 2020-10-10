@@ -2,6 +2,7 @@
 
 -- node the network
 
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(20);
 
 SET client_min_messages = WARNING;
