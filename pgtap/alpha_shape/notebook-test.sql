@@ -6,6 +6,7 @@ Benchmark tests with data from:
 https://github.com/plotly/documentation/blob/source-design-merge/_posts/python/scientific/alpha-shapes/data-ex-2d.txt
 https://plot.ly/python/alpha-shapes/
 */
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(147);
 
 

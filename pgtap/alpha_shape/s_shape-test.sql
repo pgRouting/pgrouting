@@ -4,6 +4,7 @@
 data from
 http://www.bostongis.com/postgis_concavehull.snippet
 */
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(167);
 
 CREATE TABLE s_test(geom geometry);

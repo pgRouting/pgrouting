@@ -1,5 +1,6 @@
 \i setup.sql
 
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(26);
 
 -- TESTING ONE CYCLE OF LINEAR CONTRACTION FOR A DIRECTED GRAPH
@@ -27,7 +28,7 @@ FROM edge_table WHERE id IN (3, 5, 11);
 -- GRAPH 6 - 11 - 12 - 9 - 6
 PREPARE graph_e_9_11_13_15 AS
     SELECT id, source, target, cost, reverse_cost
-FROM edge_table WHERE id IN (9, 11, 13, 15);
+FROM edge_table WHERE id IN (9, 11, 13, 15) ORDER BY id;
 
 
 -- TWO EDGES
