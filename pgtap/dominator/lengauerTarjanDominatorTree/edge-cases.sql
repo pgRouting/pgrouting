@@ -1,4 +1,5 @@
 \i setup.sql
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(11);
 
 -- 0 edge 0 vertex test

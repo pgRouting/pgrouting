@@ -3,7 +3,7 @@
 
 SELECT plan(334);
 
-UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
+UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 ALTER SEQUENCE edge_table_id_seq RESTART WITH 19;
 
 --step 1: Initial tables

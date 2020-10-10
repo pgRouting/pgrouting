@@ -1,3 +1,4 @@
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(1);
 
 SELECT bag_has(
