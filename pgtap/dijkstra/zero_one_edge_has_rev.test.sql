@@ -1,6 +1,7 @@
 \i setup.sql
 
-     SELECT plan(79);
+     UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(79);
 
 -- 0 edges tests
 
