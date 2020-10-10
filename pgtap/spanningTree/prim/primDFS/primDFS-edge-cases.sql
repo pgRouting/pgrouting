@@ -2,7 +2,7 @@
 
 SELECT plan(10);
 
-UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
+UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 --
 PREPARE prim1 AS
@@ -75,7 +75,7 @@ PREPARE prim5 AS
 SELECT seq, start_vid, depth, node, edge, depth <= 3
 FROM pgr_primDFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    FROM edge_table ORDER BY id',
     0, 3
 );
 

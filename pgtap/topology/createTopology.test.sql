@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 SELECT * INTO edges2 FROM edge_table;
 UPDATE edges2 SET source = NULL, target = NULL;
 
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(108);
 
 

@@ -1,6 +1,7 @@
 \i setup.sql
 
-    SELECT plan(144);
+    UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(144);
 
 
     create or REPLACE FUNCTION foo(cant INTEGER default 18, flag boolean default true )

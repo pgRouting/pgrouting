@@ -3,7 +3,7 @@
 
 SELECT plan(334);
 
-UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
+UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 ALTER SEQUENCE edge_table_id_seq RESTART WITH 19;
 
 
@@ -28,7 +28,7 @@ SELECT has_column('edge_table', 'contracted_vertices');
 SELECT has_column('edge_table_vertices_pgr', 'contracted_vertices');
 
 SELECT * INTO contraction_info FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], false);
 
 PREPARE c_info AS
