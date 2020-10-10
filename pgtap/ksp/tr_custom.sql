@@ -1,5 +1,6 @@
 \i setup.sql
 
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(9);
 
 SET client_min_messages TO WARNING;
@@ -20,7 +21,7 @@ AS t(path_seq, node, edge, agg_cost);
 PREPARE q1 AS
 SELECT path_seq, node, edge, agg_cost
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT * FROM new_restrictions WHERE id < 3',
     2, 12,
     1
@@ -30,7 +31,7 @@ FROM pgr_turnRestrictedPath(
 PREPARE q2 AS
 SELECT  path_seq, node, edge, agg_cost
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT * FROM new_restrictions WHERE id < 3',
     2, 12,
     1,
@@ -60,7 +61,7 @@ AS t(path_seq, node, edge, agg_cost);
 PREPARE q3 AS
 SELECT path_seq, node, edge, agg_cost
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT * FROM new_restrictions WHERE id < 3',
     2, 12,
     3,
@@ -82,7 +83,7 @@ AS t(path_seq, node, edge);
 PREPARE q4 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT * FROM new_restrictions',
     2, 12,
     1
@@ -91,7 +92,7 @@ FROM pgr_turnRestrictedPath(
 PREPARE q7 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT * FROM new_restrictions',
     2, 12,
     1,
@@ -112,7 +113,7 @@ AS t(path_seq, node, edge);
 PREPARE q5 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT * FROM new_restrictions',
     2, 12,
     2,
@@ -124,7 +125,7 @@ FROM pgr_turnRestrictedPath(
 PREPARE q6 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT * FROM new_restrictions',
     2, 12,
     3,
@@ -150,7 +151,7 @@ AS t(path_seq, node, edge);
 PREPARE q8 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT * FROM new_restrictions',
     2, 12,
     2,
@@ -161,7 +162,7 @@ FROM pgr_turnRestrictedPath(
 PREPARE q9 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT * FROM new_restrictions',
     2, 12,
     3,

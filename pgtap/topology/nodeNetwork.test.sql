@@ -4,6 +4,7 @@
 -- create 4x4 grid of overlapping lines horizontal and vertical
 -- set the even numbered ones with dir='FT' and the odd ones 'TF'
 
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(41);
 
 SET client_min_messages = WARNING;
