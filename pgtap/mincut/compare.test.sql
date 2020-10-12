@@ -20,7 +20,7 @@ PREPARE stoerWagner3 AS
 SELECT *
 FROM pgr_stoerWagner(
     'SELECT id, source, target, cost, reverse_cost
-       FROM edge_table ORDER BY id ORDER BY id'
+       FROM edge_table ORDER BY id'
 ) WHERE cost < 0;
 
 PREPARE stoerWagner4 AS
