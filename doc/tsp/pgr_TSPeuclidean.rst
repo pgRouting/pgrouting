@@ -128,7 +128,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`TSP-family`
-* `Simulated annaeling algorithm for beginners <https://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__
 * `Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
 * `Wikipedia: Simulated annealing <https://en.wikipedia.org/wiki/Simulated_annealing>`__
 
