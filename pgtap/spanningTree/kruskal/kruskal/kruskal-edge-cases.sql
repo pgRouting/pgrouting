@@ -8,7 +8,7 @@ UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(r
 PREPARE kruskal1 AS
 SELECT * FROM pgr_kruskal(
   'SELECT id, source, target, cost, reverse_cost
-   FROM edge_table WHERE id > 18'
+   FROM edge_table WHERE id > 18 ORDER BY id'
 );
 
 PREPARE kruskal2 AS
@@ -27,7 +27,7 @@ PREPARE kruskal4 AS
 SELECT count(*)
 FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table'
+     FROM edge_table ORDER BY id'
 ) WHERE edge < 0;
 
 SELECT set_eq('kruskal4',
@@ -39,7 +39,7 @@ PREPARE kruskal5 AS
 SELECT edge, cost
 FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table'
+     FROM edge_table ORDER BY id'
 );
 
 SELECT bag_has('kruskal5',
