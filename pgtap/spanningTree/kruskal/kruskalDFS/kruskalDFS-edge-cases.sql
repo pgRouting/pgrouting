@@ -8,7 +8,7 @@ UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(r
 PREPARE kruskal1 AS
 SELECT * FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table WHERE id > 18',
+    FROM edge_table WHERE id > 18 ORDER BY id',
     21, 3
 );
 
@@ -21,7 +21,7 @@ PREPARE kruskal2 AS
 SELECT *
 FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost
-     FROM edge_table WHERE id > 18',
+     FROM edge_table WHERE id > 18 ORDER BY id',
     ARRAY[21, 45],
     3
 );
@@ -39,7 +39,7 @@ PREPARE kruskal3 AS
 SELECT *
 FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table',
+     FROM edge_table ORDER BY id',
     21, 3
 );
 
@@ -52,7 +52,7 @@ PREPARE kruskal4 AS
 SELECT seq, start_vid, depth, node, edge, agg_cost <= 3.5
 FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost
-     FROM edge_table',
+     FROM edge_table ORDER BY id',
     ARRAY[21, 4],
     3
 );
@@ -75,7 +75,7 @@ PREPARE kruskal5 AS
 SELECT seq, start_vid, depth, node, edge, depth <= 3
 FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    FROM edge_table ORDER BY id',
     0, 3
 );
 
@@ -101,7 +101,7 @@ PREPARE kruskal6 AS
 SELECT *
 FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    FROM edge_table ORDER BY id',
     4, -3
 );
 
@@ -131,7 +131,7 @@ PREPARE kruskal8 AS
 SELECT *
 FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    FROM edge_table ORDER BY id',
     4, 0
 );
 
@@ -144,7 +144,7 @@ PREPARE kruskal9 AS
 SELECT seq, depth, start_vid, node, edge, depth <= 9223372036854775807
 FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    FROM edge_table ORDER BY id',
     4
 );
 
@@ -171,7 +171,7 @@ PREPARE kruskal10 AS
 SELECT seq, start_vid, depth, node, edge, depth <= 9223372036854775807
 FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    FROM edge_table ORDER BY id',
     0
 );
 
