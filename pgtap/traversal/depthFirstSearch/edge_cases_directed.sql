@@ -10,7 +10,7 @@ SELECT plan(18);
 PREPARE q1 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edge_table
-WHERE id > 18;
+WHERE id > 18 ORDER BY id;
 
 SELECT is_empty('q1', '1: Graph with 0 edge and 0 vertex');
 
@@ -32,7 +32,7 @@ SELECT set_eq('depthFirstSearch2',
 
 PREPARE q3 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table;
+FROM edge_table ORDER BY id;
 
 SELECT is_empty(
     'SELECT id, source, target, cost, reverse_cost
@@ -76,7 +76,7 @@ SELECT throws_ok('depthFirstSearch5',
 PREPARE q6 AS
 SELECT id, source, 2 AS target, cost, reverse_cost
 FROM edge_table
-WHERE id = 2;
+WHERE id = 2 ORDER BY id;
 
 SELECT set_eq('q6',
     $$VALUES (2, 2, 2, -1, 1)$$,
@@ -102,7 +102,7 @@ SELECT set_eq('depthFirstSearch7',
 PREPARE q8 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edge_table
-WHERE id = 5;
+WHERE id = 5 ORDER BY id;
 
 SELECT set_eq('q8',
     $$VALUES (5, 3, 6, 1, -1)$$,
@@ -238,7 +238,7 @@ PREPARE q15 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE (id >= 10 AND id <= 12)
-    OR id = 8;
+    OR id = 8 ORDER BY id;
 
 SELECT set_eq('q15',
     $$VALUES
