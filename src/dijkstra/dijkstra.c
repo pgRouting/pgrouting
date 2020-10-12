@@ -61,8 +61,10 @@ process(
         bool only_cost,
         bool normal,
         int64_t n_goals,
+        bool global,
         General_path_element_t **result_tuples,
         size_t *result_count) {
+    PGR_DBG("directed %d only_cost %d normal %d n_goals %ld", directed, only_cost, normal, n_goals);
     pgr_SPI_connect();
 
     int64_t* start_vidsArr = NULL;
@@ -108,6 +110,7 @@ process(
             only_cost,
             normal,
             n_goals,
+            global,
 
             result_tuples,
             result_count,
@@ -149,7 +152,8 @@ process_combinations(
         char* combinations_sql,
         bool directed,
         bool only_cost,
-        bool normal,
+        int64_t n_goals,
+        bool global,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -160,22 +164,17 @@ process_combinations(
     pgr_combination_t *combinations = NULL;
     size_t total_combinations = 0;
 
-    if (normal) {
-        pgr_get_edges(edges_sql, &edges, &total_edges);
-    } else {
-        pgr_get_edges_reversed(edges_sql, &edges, &total_edges);
-    }
+    pgr_get_edges(edges_sql, &edges, &total_edges);
 
     if (total_edges == 0) {
         pgr_SPI_finish();
         return;
-    } else {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
-        if (total_combinations == 0) {
-            if (edges) pfree(edges);
-            pgr_SPI_finish();
-            return;
-        }
+    };
+    pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+    if (total_combinations == 0) {
+        if (edges) pfree(edges);
+        pgr_SPI_finish();
+        return;
     }
 
     PGR_DBG("Starting timer");
@@ -188,7 +187,9 @@ process_combinations(
             combinations, total_combinations,
             directed,
             only_cost,
-            normal,
+            true,
+            n_goals,
+            global,
 
             result_tuples,
             result_count,
@@ -237,7 +238,6 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
         if (PG_NARGS() == 7) {
             /**********************************************************************/
             // pgr_dijkstra(
@@ -256,6 +256,7 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     PG_GETARG_BOOL(4),
                     PG_GETARG_BOOL(5),
                     PG_GETARG_INT64(6),
+                    true,
                     &result_tuples,
                     &result_count);
 
@@ -273,7 +274,39 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     text_to_cstring(PG_GETARG_TEXT_P(1)),
                     PG_GETARG_BOOL(2),
                     PG_GETARG_BOOL(3),
+                    0, true,
+                    &result_tuples,
+                    &result_count);
+
+        } else if (PG_NARGS() == 8) {
+            process(
+                    text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    PG_GETARG_ARRAYTYPE_P(1),
+                    PG_GETARG_ARRAYTYPE_P(2),
+                    PG_GETARG_BOOL(3),
                     PG_GETARG_BOOL(4),
+                    PG_GETARG_BOOL(5),
+                    PG_GETARG_INT64(6),
+                    PG_GETARG_BOOL(7),
+                    &result_tuples,
+                    &result_count);
+
+            /**********************************************************************/
+        } else /* (PG_NARGS() == 6) */ {
+            /**********************************************************************/
+            // pgr_dijkstra(
+            // edge_sql TEXT,
+            // combinations_sql TEXT,
+            // directed BOOLEAN default true,
+            // only_cost BOOLEAN default false
+
+            process_combinations(
+                    text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    text_to_cstring(PG_GETARG_TEXT_P(1)),
+                    PG_GETARG_BOOL(2),
+                    PG_GETARG_BOOL(3),
+                    PG_GETARG_INT64(4),
+                    PG_GETARG_BOOL(5),
                     &result_tuples,
                     &result_count);
 
