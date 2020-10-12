@@ -36,7 +36,7 @@ CREATE TABLE result2(
 
 DROP TABLE IF EXISTS result2_vertices_pgr;
 CREATE TABLE result2_vertices_pgr(
-  id bigint, 
+  id bigint,
   original_id bigint);
 
 CREATE or REPLACE FUNCTION lineGraphFullDijkstraEquivalence(cant INTEGER default 17)
@@ -49,19 +49,19 @@ BEGIN
 
   INSERT INTO result2 SELECT * FROM pgr_lineGraphFull(
       $$SELECT id, source, target, cost, reverse_cost
-      FROM edge_table$$
+      FROM edge_table ORDER BY id$$
   );
 
   WITH foo AS (SELECT source AS id FROM result2
       UNION
-      SELECT target FROM result2) 
+      SELECT target FROM result2)
   INSERT INTO result2_vertices_pgr SELECT *, NULL::BIGINT AS original_id
   FROM foo
   ORDER BY id;
- 
+
   UPDATE result2_vertices_pgr AS r SET original_id = v.id
   FROM edge_table_vertices_pgr AS v WHERE v.id = r.id;
- 
+
   WITH a AS (SELECT e.id, e.original_id FROM result2_vertices_pgr AS e WHERE original_id IS NOT NULL),
   b AS (SELECT * FROM result2 WHERE cost = 0 and source IN (SELECT id FROM a)),
   c AS (SELECT * FROM b JOIN result2_vertices_pgr ON(source = id)),
@@ -105,7 +105,7 @@ BEGIN
   UPDATE  result2 AS a
   SET original_source_edge = b.edge
   FROM result2 AS b
-  WHERE 
+  WHERE
       a.original_source_edge IS NULL AND
       b.original_source_edge IS NOT NULL AND
       a.source = b.target;
@@ -113,7 +113,7 @@ BEGIN
   UPDATE  result2 AS a
   SET original_target_edge = b.edge
   FROM result2 AS b
-  WHERE 
+  WHERE
       a.original_target_edge IS NULL AND
       b.original_target_edge IS NOT NULL AND
       a.target = b.source;
