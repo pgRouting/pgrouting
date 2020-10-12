@@ -9,7 +9,7 @@ PREPARE prim1 AS
 SELECT *
 FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table WHERE id > 18',
+    FROM edge_table WHERE id > 18 ORDER BY id',
     21, 3.5
 );
 
@@ -22,7 +22,7 @@ PREPARE prim2 AS
 SELECT *
 FROM pgr_primDD(
     'SELECT id, source, target, cost
-     FROM edge_table WHERE id > 18',
+     FROM edge_table WHERE id > 18 ORDER BY id',
     ARRAY[21, 45],
     3.5
 );
@@ -40,7 +40,7 @@ PREPARE prim3 AS
 SELECT *
 FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table',
+     FROM edge_table ORDER BY id',
     21, 3
 );
 
@@ -53,7 +53,7 @@ PREPARE prim4 AS
 SELECT seq, start_vid, depth, node, edge, agg_cost <= 3.5
 FROM pgr_primDD(
     'SELECT id, source, target, cost
-     FROM edge_table',
+     FROM edge_table ORDER BY id',
     ARRAY[21, 4],
     3.5
 );
@@ -76,7 +76,7 @@ PREPARE prim5 AS
 SELECT seq, start_vid, depth, node, edge, agg_cost <= 3.5
 FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    FROM edge_table ORDER BY id',
     0, 3.5
 );
 
@@ -102,7 +102,7 @@ PREPARE prim6 AS
 SELECT *
 FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table',
+     FROM edge_table ORDER BY id',
     4, -3
 );
 
@@ -117,7 +117,7 @@ PREPARE prim7 AS
 SELECT *
 FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table',
+     FROM edge_table ORDER BY id',
     ARRAY[4, 10], -3
 );
 
@@ -131,7 +131,7 @@ PREPARE prim8 AS
 SELECT *
 FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    FROM edge_table ORDER BY id',
     4, 0
 );
 
@@ -145,7 +145,7 @@ PREPARE prim9 AS
 SELECT seq, depth, start_vid, node, edge
 FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    FROM edge_table ORDER BY id',
     4, 'Infinity'
 );
 
