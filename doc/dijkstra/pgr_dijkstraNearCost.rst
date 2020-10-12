@@ -7,10 +7,10 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-pgr_dijkstraNear - Experimental
+pgr_dijkstraNearCost - Experimental
 ===============================================================================
 
-``pgr_dijkstraNear`` — Using dijkstra algorithm, finds the route that leads to
+``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that leads to
 the nearest vertex.
 
 .. include:: experimental.rst
@@ -31,7 +31,7 @@ the nearest vertex.
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html>`__)
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__)
 
 Description
 -------------------------------------------------------------------------------
@@ -43,33 +43,9 @@ ending vertex.
 Characteristics
 ...............................................................................
 
-.. dijkstraNear characteristics start
-
-* Uses Dijkstra algorithm.
-* Works for **directed** and **undirected** graphs.
-* When there are more than one path to the same vertex with same cost:
-
-  * The algorithm will return just one path
-
-* Optionally allows to find more than one path.
-
-  * When more than one path is to be returned:
-
-    * Results are sorted in increasing order of:
-
-      * aggregate cost
-      * Within the same value of aggregate costs:
-
-        * results are sorted by (source, target)
-
-* Running time: Dijkstra running time: :math:`drt = O((|E| + |V|)log|V|)`
-
-  * One to Many; :math:`drt`
-  * Many to One: :math:`drt`
-  * Many to Many: :math:`drt * |Starting vids|`
-  * Combinations: :math:`drt * |Starting vids|`
-
-.. dijkstraNear characteristics end
+.. include:: pgr_dijkstraNear.rst
+    :start-after: dijkstraNear characteristics start
+    :end-before: dijkstraNear characteristics end
 
 Signatures
 -------------------------------------------------------------------------------
@@ -78,23 +54,23 @@ Signatures
 
 .. code-block:: none
 
-    pgr_dijkstraNear(Edges SQL, Start vid,  End vids  [, directed] [, cap])
-    pgr_dijkstraNear(Edges SQL, Start vids, End vid   [, directed] [, cap])
-    pgr_dijkstraNear(Edges SQL, Start vids, End vids  [, directed] [, cap], [global])
-    pgr_dijkstraNear(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNearCost(Edges SQL, Start vid,  End vids  [, directed] [, cap])
+    pgr_dijkstraNearCost(Edges SQL, Start vids, End vid   [, directed] [, cap])
+    pgr_dijkstraNearCost(Edges SQL, Start vids, End vids  [, directed] [, cap], [global])
+    pgr_dijkstraNearCost(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
 .. index::
-    single: dijkstraNear(One to Many) - Experimental
+    single: dijkstraNearCost(One to Many) - Experimental
 
 One to Many
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_dijkstraNear(Edges SQL, Start vid,  End vids [, directed] [, cap])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNearCost(Edges SQL, Start vid,  End vids [, directed] [, cap])
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
 :Example: Departing on car from vertex :math:`2` find the nearest subway station.
@@ -107,7 +83,7 @@ One to Many
   * `cap => 1`
 
 
-.. literalinclude:: doc-pgr_dijkstraNear.queries
+.. literalinclude:: doc-pgr_dijkstraNearCost.queries
     :start-after: -- q1
     :end-before: -- q2
     :linenos:
@@ -115,15 +91,15 @@ One to Many
 The result shows that station at vertex :math:`6` is the nearest.
 
 .. index::
-    single: dijkstraNear(Many to One)  - Experimental
+    single: dijkstraNearCost(Many to One)  - Experimental
 
 Many to One
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_dijkstraNear(Edges SQL, Start vids, End vid  [, directed] [, cap])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNearCost(Edges SQL, Start vids, End vid  [, directed] [, cap])
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
 :Example: Departing on a car from a subway station find the nearest **two**
@@ -134,7 +110,7 @@ Many to One
 * On line `4`: using the positional parameter: `directed` set to ``true``
 * In line `5`: using named parameter `cap => 2`
 
-.. literalinclude:: doc-pgr_dijkstraNear.queries
+.. literalinclude:: doc-pgr_dijkstraNearCost.queries
     :start-after: -- q2
     :end-before: -- q3
     :linenos:
@@ -143,15 +119,15 @@ The result shows that station at vertex :math:`3` is the nearest and the next be
 is :math:`6`.
 
 .. index::
-    single: dijkstraNear(Many to Many)  - Experimental
+    single: dijkstraNearCost(Many to Many)  - Experimental
 
 Many to Many
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_dijkstraNear(Edges SQL, Start vids, End vids [, directed] [, cap], [global])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNearCost(Edges SQL, Start vids, End vids [, directed] [, cap], [global])
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
 :Example: Find the best pedestrian connection between two lines of buses
@@ -165,7 +141,7 @@ Many to Many
   * `cap => 1`
   * `global => true`
 
-.. literalinclude:: doc-pgr_dijkstraNear.queries
+.. literalinclude:: doc-pgr_dijkstraNearCost.queries
     :start-after: -- q3
     :end-before: -- q4
     :linenos:
@@ -176,15 +152,15 @@ first subway line and at vertex :math:`4` of the second subway line.
 Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 
 .. index::
-    single: dijkstraNear(Combinations)  - Experimental
+    single: dijkstraNearCost(Combinations)  - Experimental
 
 Combinations
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_dijkstraNear(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNearCost(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
 :Example: Find the best car connection between all the stations of two subway lines
@@ -202,7 +178,7 @@ Combinations
   * `directed => true`
   * `cap => 1`
 
-.. literalinclude:: doc-pgr_dijkstraNear.queries
+.. literalinclude:: doc-pgr_dijkstraNearCost.queries
     :start-after: -- q4
     :end-before: -- q5
     :linenos:
@@ -212,12 +188,12 @@ From the results:
 * making a connection from the first subway line to the second:
 
   * :math:`{(3 -> 9) (6 -> 9) (7 -> 9)}` and the best one is :math:`(6 -> 9)` with a
-    cost of :math:`1` (lines: `12` and `13`)
+    cost of :math:`1` (line: `11`)
 
 * making a connection from the second subway line to the first:
 
   * :math:`{(4 -> 3) (9 -> 6)}` and both are equaly good as they have the same
-    cost. (lines: `10` and `11` and lines: `14` and `15`)
+    cost. (lines: `10` and `12`)
 
 
 Parameters
@@ -260,35 +236,15 @@ Combinations query
 Return Columns
 -------------------------------------------------------------------------------
 
-RETURNS SET OF ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
-OR EMPTY SET
-
-================== ============= =================================================
-Column             Type          Description
-================== ============= =================================================
-**seq**            ``BIGINT``    Sequential value starting from 1.
-**path_seq**       ``BIGINT``    Sequential value starting from 1 for each :math:`(start\_vid \to end\_vid)` path.
-**start_vid**      ``BIGINT``    Identifier of the starting vertex of the path.
-**end_vid**        ``BIGINT``    Identifier of the ending vertex of the path.
-**node**           ``BIGINT``    Identifier of the node at position ``path_seq`` in the :math:`(start\_vid \to end\_vid)` path.
-**edge**           ``BIGINT``    Identifier of the edge used to go from node at ``path_seq`` to the node at ``path_seq + 1`` in the
-                                 :math:`(start\_vid \to end\_vid)` path.
-
-                                 * :math:`-1` for the last node of the path.
-
-**cost**           ``FLOAT``     Cost to traverse from ``node`` using ``edge`` to the next node in the route sequence.
-
-                                 * :math:`0` for the last row of the path.
-
-**agg_cost**       ``FLOAT``     Total cost of traversing :math:`(start\_vid \to node)` section of the :math:`(start\_vid \to end\_vid)` path.
-================== ============= =================================================
-
+.. include:: pgRouting-concepts.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`dijkstra-family`
-* :doc:`pgr_dijkstraNearCost`
+* :doc:`pgr_dijkstraNear`
 * :doc:`sampledata` network.
 * boost: https://www.boost.org/libs/graph/doc/table_of_contents.html
 * Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm

@@ -79,6 +79,12 @@ Experimental Functions
    :start-after: index experimental from here
    :end-before: index experimental to here
 
+:doc:`dijkstra-family`
+
+.. include:: dijkstra-family.rst
+   :start-after: index experimental from here
+   :end-before: index experimental to here
+
 .. toctree::
    :hidden:
 

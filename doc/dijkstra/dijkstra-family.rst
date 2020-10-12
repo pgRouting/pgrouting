@@ -42,6 +42,7 @@ Dijkstra - Family of functions
 .. index experimental from here
 
 * :doc:`pgr_dijkstraNear` - Get the route to the nearest vertex.
+* :doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex.
 
 .. index experimental to here
 
@@ -55,6 +56,7 @@ Dijkstra - Family of functions
     pgr_KSP
     pgr_dijkstraVia
     pgr_dijkstraNear
+    pgr_dijkstraNearCost
 
 .. rubric:: Previous versions of this page
 
