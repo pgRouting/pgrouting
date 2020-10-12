@@ -1,0 +1,73 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- q1
+SELECT * FROM pgr_dijkstraNear(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    2, ARRAY[3, 6, 7]
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         2 |       6 |    2 |    4 |    1 |        0
+   2 |        2 |         2 |       6 |    5 |    8 |    1 |        1
+   3 |        3 |         2 |       6 |    6 |   -1 |    0 |        2
+(3 rows)
+
+-- q2
+SELECT * FROM pgr_dijkstraNear(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    ARRAY[3, 6, 7], 2,
+    true,
+    cap => 2
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         3 |       2 |    3 |    2 |    1 |        0
+   2 |        2 |         3 |       2 |    2 |   -1 |    0 |        1
+   3 |        1 |         6 |       2 |    6 |    8 |    1 |        0
+   4 |        2 |         6 |       2 |    5 |    4 |    1 |        1
+   5 |        3 |         6 |       2 |    2 |   -1 |    0 |        2
+(5 rows)
+
+-- q3
+SELECT * FROM pgr_dijkstraNear(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    ARRAY[4, 9], ARRAY[3, 6, 7],
+    directed => false
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         4 |       3 |    4 |    3 |    1 |        0
+   2 |        2 |         4 |       3 |    3 |   -1 |    0 |        1
+(2 rows)
+
+-- q4
+SELECT * FROM pgr_dijkstraNear(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT unnest(ARRAY[3, 6, 7]) as source, target FROM (SELECT unnest(ARRAY[4, 9]) AS target) a
+    UNION
+    SELECT unnest(ARRAY[4, 9]), target FROM (SELECT unnest(ARRAY[3, 6, 7]) AS target) b',
+    global => false
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         4 |       3 |    4 |    3 |    1 |        0
+   2 |        2 |         4 |       3 |    3 |   -1 |    0 |        1
+   3 |        1 |         6 |       9 |    6 |    9 |    1 |        0
+   4 |        2 |         6 |       9 |    9 |   -1 |    0 |        1
+   5 |        1 |         9 |       6 |    9 |    9 |    1 |        0
+   6 |        2 |         9 |       6 |    6 |   -1 |    0 |        1
+   7 |        1 |         3 |       9 |    3 |    5 |    1 |        0
+   8 |        2 |         3 |       9 |    6 |    9 |    1 |        1
+   9 |        3 |         3 |       9 |    9 |   -1 |    0 |        2
+  10 |        1 |         7 |       9 |    7 |    6 |    1 |        0
+  11 |        2 |         7 |       9 |    8 |    7 |    1 |        1
+  12 |        3 |         7 |       9 |    5 |    8 |    1 |        2
+  13 |        4 |         7 |       9 |    6 |    9 |    1 |        3
+  14 |        5 |         7 |       9 |    9 |   -1 |    0 |        4
+(14 rows)
+
+-- q5
+ROLLBACK;
+ROLLBACK
