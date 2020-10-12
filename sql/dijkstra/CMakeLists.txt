@@ -8,6 +8,7 @@ SET(LOCAL_FILES
     dijkstraVia.sql
     _dijkstraNear.sql
     dijkstraNear.sql
+    dijkstraNearCost.sql
     )
 
 foreach (f ${LOCAL_FILES})
