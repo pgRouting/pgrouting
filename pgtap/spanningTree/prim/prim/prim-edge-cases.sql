@@ -8,7 +8,7 @@ UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(r
 PREPARE prim1 AS
 SELECT * FROM pgr_prim(
   'SELECT id, source, target, cost, reverse_cost
-   FROM edge_table WHERE id > 18'
+   FROM edge_table WHERE id > 18 ORDER BY id'
 );
 
 PREPARE prim2 AS
@@ -27,7 +27,7 @@ PREPARE prim4 AS
 SELECT count(*)
 FROM pgr_prim(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table'
+     FROM edge_table ORDER BY id'
 ) WHERE edge < 0;
 
 SELECT lives_ok('prim4',
@@ -42,7 +42,7 @@ PREPARE prim5 AS
 SELECT edge, cost
 FROM pgr_prim(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table'
+     FROM edge_table ORDER BY id'
 );
 
 SELECT bag_has('prim5',
