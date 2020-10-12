@@ -70,11 +70,14 @@ static
 size_t
 get_route(
         Routes_t **ret_path,
-        const std::deque< Path > &paths) {
+        std::deque< Path > &paths) {
     size_t sequence = 0;
     int path_id = 1;
     int route_id = 1;
     double route_cost = 0;  // routes_agg_cost
+    for (auto &p : paths) {
+        p.recalculate_agg_cost();
+    }
     for (const Path &path : paths) {
         if (path.size() > 0)
             get_path(route_id, path_id, path, ret_path, route_cost, sequence);
