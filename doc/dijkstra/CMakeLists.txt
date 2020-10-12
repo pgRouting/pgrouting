@@ -5,6 +5,7 @@ SET(LOCAL_FILES
     pgr_dijkstraCost.rst
     pgr_dijkstra.rst
     pgr_dijkstraVia.rst
+    pgr_dijkstraNear.rst
     )
 
 foreach (f ${LOCAL_FILES})

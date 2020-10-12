@@ -20,7 +20,7 @@ Dijkstra - Family of functions
 
 .. index to here
 
-.. rubric:: proposed
+.. rubric:: Proposed
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -33,6 +33,18 @@ Dijkstra - Family of functions
 
 .. index proposed to here
 
+.. rubric:: Experimental
+
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
+
+.. index experimental from here
+
+* :doc:`pgr_dijkstraNear` - Get the route to the nearest vertex.
+
+.. index experimental to here
+
 .. toctree::
     :hidden:
 
@@ -42,6 +54,7 @@ Dijkstra - Family of functions
     pgr_drivingDistance
     pgr_KSP
     pgr_dijkstraVia
+    pgr_dijkstraNear
 
 .. rubric:: Previous versions of this page
 
