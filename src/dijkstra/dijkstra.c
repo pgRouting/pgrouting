@@ -64,7 +64,6 @@ process(
         bool global,
         General_path_element_t **result_tuples,
         size_t *result_count) {
-    PGR_DBG("directed %d only_cost %d normal %d n_goals %ld", directed, only_cost, normal, n_goals);
     pgr_SPI_connect();
 
     int64_t* start_vidsArr = NULL;
@@ -96,7 +95,6 @@ process(
         return;
     }
 
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
     char* log_msg = NULL;
     char* notice_msg = NULL;
@@ -120,10 +118,18 @@ process(
             &err_msg);
 
     if (only_cost) {
-        time_msg("processing pgr_dijkstraCost", start_t, clock());
+        if (n_goals > 0) {
+            time_msg("processing pgr_dijkstraNearCost", start_t, clock());
+        } else {
+            time_msg("processing pgr_dijkstraCost", start_t, clock());
+        };
     } else {
-        time_msg("processing pgr_dijkstra", start_t, clock());
-    }
+        if (n_goals > 0) {
+            time_msg("processing pgr_dijkstraNear", start_t, clock());
+        } else {
+            time_msg("processing pgr_dijkstra", start_t, clock());
+        };
+    };
 
 
     if (err_msg && (*result_tuples)) {
@@ -177,7 +183,6 @@ process_combinations(
         return;
     }
 
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
     char* log_msg = NULL;
     char* notice_msg = NULL;
@@ -199,11 +204,18 @@ process_combinations(
             &err_msg);
 
     if (only_cost) {
-        time_msg("processing pgr_dijkstraCost", start_t, clock());
+        if (n_goals > 0) {
+            time_msg("Processing pgr_dijkstraNearCost", start_t, clock());
+        } else {
+            time_msg("Processing pgr_dijkstraCost", start_t, clock());
+        };
     } else {
-        time_msg("processing pgr_dijkstra", start_t, clock());
-    }
-
+        if (n_goals > 0) {
+            time_msg("Processing pgr_dijkstraNear", start_t, clock());
+        } else {
+            time_msg("Processing pgr_dijkstra", start_t, clock());
+        };
+    };
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);

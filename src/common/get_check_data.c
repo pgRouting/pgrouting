@@ -61,7 +61,6 @@ fetch_column_info(
          * [SPI_gettypeid](https://www.postgresql.org/docs/9.1/static/spi-spi-gettypeid.html)
          */
         (info->type) = SPI_gettypeid(SPI_tuptable->tupdesc, (info->colNumber));
-        PGR_DBG("%s %ld", info->name, info->type);
         if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
             elog(ERROR, "Type of column '%s' not Found", info->name);
         }

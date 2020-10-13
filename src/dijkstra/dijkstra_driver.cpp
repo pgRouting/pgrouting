@@ -185,7 +185,6 @@ do_pgr_many_to_many_dijkstra(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        log << "Inserting vertices into a c++ vector structure";
         std::vector<int64_t>
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
@@ -195,7 +194,6 @@ do_pgr_many_to_many_dijkstra(
 
         std::deque< Path >paths;
         if (directed) {
-            log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             paths = detail::pgr_dijkstra(
@@ -203,7 +201,6 @@ do_pgr_many_to_many_dijkstra(
                     start_vertices, end_vertices,
                     only_cost, normal, n, global);
         } else {
-            log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
             paths = detail::pgr_dijkstra(
@@ -225,7 +222,6 @@ do_pgr_many_to_many_dijkstra(
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
         *log_msg = log.str().empty()?
@@ -293,7 +289,6 @@ do_pgr_combinations_dijkstra(
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
 
-        log << "Inserting combinations into a c++ vector structure";
         std::vector<pgr_combination_t>
                 combinations_vector(combinations, combinations + total_combinations);
 
@@ -301,7 +296,6 @@ do_pgr_combinations_dijkstra(
 
         std::deque< Path >paths;
         if (directed) {
-            log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             paths = detail::pgr_dijkstra(
@@ -309,7 +303,6 @@ do_pgr_combinations_dijkstra(
                     combinations_vector,
                     only_cost, normal, n, global);
         } else {
-            log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
             paths = detail::pgr_dijkstra(
@@ -324,14 +317,12 @@ do_pgr_combinations_dijkstra(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                   "No paths found";
+            notice << "No paths found";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
         *log_msg = log.str().empty()?

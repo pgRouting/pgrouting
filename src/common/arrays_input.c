@@ -115,7 +115,6 @@ pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
 
     pfree(elements);
     pfree(nulls);
-    PGR_DBG("Array size %ld", (*arrlen));
     time_msg("reading Array", start_t, clock());
     return c_array;
 }

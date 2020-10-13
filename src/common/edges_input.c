@@ -300,7 +300,6 @@ get_edges_9_columns(
     }
 
     (*total_edges) = total_tuples;
-    PGR_DBG("Finish reading %ld edges", total_tuples);
     time_msg("reading edges", start_t, clock());
 }
 
@@ -399,7 +398,6 @@ get_edges_5_columns(
     }
 
     (*totalTuples) = total_tuples;
-    PGR_DBG("Reading %ld edges", total_tuples);
     time_msg("reading edges", start_t, clock());
 }
 
@@ -492,8 +490,7 @@ get_edges_flow(
     }
 
     (*totalTuples) = total_tuples;
-    PGR_DBG("Reading %ld edges", total_tuples);
-    time_msg("reading edges", start_t, clock());
+    time_msg("Reading edges", start_t, clock());
 }
 
 static
@@ -591,7 +588,6 @@ get_edges_costFlow(
     }
 
     (*totalTuples) = total_tuples;
-    PGR_DBG("Reading %ld edges", total_tuples);
     time_msg("reading edges", start_t, clock());
 }
 
@@ -687,7 +683,6 @@ get_edges_basic(
     }
 
     (*totalTuples) = total_tuples;
-    PGR_DBG("Reading %ld edges", total_tuples);
     time_msg("reading edges", start_t, clock());
 }
 
