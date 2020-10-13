@@ -5,6 +5,14 @@ pgRouting 3.2.0 Release Notes
 *New experimental functions*
 
 * pgr_depthFirstSearch
+* pgr_dijkstraNear(One to Many)
+* pgr_dijkstraNear(Many to One)
+* pgr_dijkstraNear(Many to Many)
+* pgr_dijkstraNear(Combinations)
+* pgr_dijkstraNearCost(One to Many)
+* pgr_dijkstraNearCost(Many to One)
+* pgr_dijkstraNearCost(Many to Many)
+* pgr_dijkstraNearCost(Combinations)
 * pgr_isPlanar
 * pgr_makeConnected
 * pgr_sequentialVertexColoring
