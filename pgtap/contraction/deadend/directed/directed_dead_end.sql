@@ -8,35 +8,35 @@ SET client_min_messages TO WARNING;
 
 -- GRAPH: 1 <=> 2
 PREPARE graph_e_1 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1;
+SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 ORDER BY id;
 
 -- GRAPH: 4 -> 3 -> 2
 PREPARE graph_e_2_3 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 3);
+SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 3) ORDER BY id;
 
 -- GRAPH: 6 -> 11 <- 10
 PREPARE graph_e_11_12 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (11, 12);
+SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (11, 12) ORDER BY id;
 
 -- GRAPH: 3 -> 2   10 -> 11
 PREPARE graph_e_2_12 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 12);
+SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 12) ORDER BY id;
 
 -- GRAPH: 3 -> 6 -> 11 -> 12
 PREPARE graph_e_5_11_13 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (5, 11, 13);
+SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (5, 11, 13) ORDER BY id;
 
 -- GRAPH: 4-> 3 -> 2   10 -> 11
 PREPARE graph_e_2_3_12 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 3, 12);
+SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 3, 12) ORDER BY id;
 
 -- GRAPH: 1 <=> 2  4 -> 3  7 <=> 8
 PREPARE graph_e_1_3_6 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (1, 3, 6);
+SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (1, 3, 6) ORDER BY id;
 
 -- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
 PREPARE graph_e_2_3_5_11 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 3, 5, 11);
+SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 3, 5, 11) ORDER BY id;
 
 -- SINGLE EDGE
 -- GRAPH: 1 <=> 2

@@ -9,7 +9,6 @@ Function's developer:
 Copyright (c) 2018 Maoguang Wang
 Mail: xjtumg1007@gmail.com
 
-
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -32,12 +31,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
+#include "c_types/general_path_element_t.h"
 #include "c_common/edges_input.h"
 
 #include "drivers/chinese/chinesePostman_driver.h"
@@ -82,9 +81,9 @@ process(
             &err_msg);
 
     if (only_cost) {
-        time_msg(" processing pgr_directedChPP_Cost", start_t, clock());
+        time_msg(" processing pgr_chinesePostmanCost", start_t, clock());
     } else {
-        time_msg(" processing pgr_directedChPP", start_t, clock());
+        time_msg(" processing pgr_chinesePostman", start_t, clock());
     }
 
     if (edges) pfree(edges);
@@ -124,14 +123,15 @@ PGDLLEXPORT Datum _pgr_chinesepostman(PG_FUNCTION_ARGS) {
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                true,
+                PG_GETARG_BOOL(1),
                 &result_tuples,
                 &result_count);
 
         /**********************************************************************/
 
-#if PGSQL_VERSION > 94
-        funcctx->max_calls = (uint32_t)result_count;
+
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
 #else
         funcctx->max_calls = (uint32_t)result_count;
 #endif
@@ -157,26 +157,27 @@ PGDLLEXPORT Datum _pgr_chinesepostman(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
+        size_t call_cntr = funcctx->call_cntr;
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
          ***********************************************************************/
 
-        values = palloc(5 * sizeof(Datum));
-        nulls = palloc(5 * sizeof(bool));
+        size_t numb = 5;
+        values =(Datum *)palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 5; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[3] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[4] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
