@@ -42,7 +42,7 @@ $BODY$
     SELECT cost
     FROM _pgr_chinesePostman(_pgr_get_statement($1), only_cost := true);
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 

@@ -61,6 +61,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 .. rubric:: Backport issues fixes
 
 * `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path evaluation on C++ not updated before the results go back to C
+* `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman crash on test data
 
 
 .. _changelog_3_0_2:
