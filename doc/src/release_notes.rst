@@ -74,9 +74,10 @@ pgRouting 3.1.1 Release Notes
 To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.1
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github.
 
-.. rubric:: Backport issues fixes
+.. rubric:: Issues fixes
 
 * `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path evaluation on C++ not updated before the results go back to C
+* `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman crash on test data
 
 
 .. _changelog_3_1_0:
@@ -104,6 +105,7 @@ pgRouting 3.0.3 Release Notes
 .. rubric:: Backport issues fixes
 
 * `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path evaluation on C++ not updated before the results go back to C
+* `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman crash on test data
 
 
 .. _changelog_3_0_2:
