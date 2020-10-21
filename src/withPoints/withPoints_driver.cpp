@@ -68,6 +68,11 @@ pgr_dijkstra(
             path.reverse();
         }
     }
+    if (!only_cost) {
+        for (auto &p : paths) {
+            p.recalculate_agg_cost();
+        }
+    }
     return paths;
 }
 
