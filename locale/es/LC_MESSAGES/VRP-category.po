@@ -4,9 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Sterling Quinn <sterling.quinn@gmail.com>, 2019
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
-# Vicky Vergara <vicky@georepublic.de>, 2019
+# Sterling Quinn <sterling.quinn@gmail.com>, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:55+0000\n"
+"PO-Revision-Date: 2020-11-04 18:28+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -941,7 +941,7 @@ msgstr "Identificador de par de órdenes Recogida-Entrega."
 #: ../../build/doc/VRP-category.rst:33 ../../build/doc/VRP-category.rst:332
 msgid "``-1``: When no order is involved on the current stop location."
 msgstr ""
-"''-1'': Cuando no hay ningún pedido involucrado en la ubicación actual de la"
+"``-1``: Cuando no hay ningún pedido involucrado en la ubicación actual de la"
 " parada."
 
 #: ../../build/doc/VRP-category.rst:35 ../../build/doc/VRP-category.rst:62
@@ -1361,7 +1361,7 @@ msgstr "Manejo de Factores"
 
 #: ../../build/doc/VRP-category.rst:478
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/VRP-category.rst:480
 msgid "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
@@ -1377,8 +1377,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/VRP-category.rst:485
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/VRP-category.rst:486
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"
