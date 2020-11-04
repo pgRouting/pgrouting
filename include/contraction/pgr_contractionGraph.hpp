@@ -206,9 +206,10 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
       @enddot
       */
      bool is_shortcut_possible(
-             V v,
              V u,
+             V v,
              V w) {
+         if (u == v || v == w || u == w) return false;
          pgassert(u != v);
          pgassert(v != w);
          pgassert(u != w);
@@ -247,7 +248,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
              adjacent_vertices.pop_front();
              V w = adjacent_vertices.front();
              adjacent_vertices.pop_front();
-             if (is_shortcut_possible(v, u, w)) {
+             if (is_shortcut_possible(u, v, w)) {
                  return true;
              }
              return false;
