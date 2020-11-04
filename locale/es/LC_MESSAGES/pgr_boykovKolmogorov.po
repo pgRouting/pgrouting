@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2019
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:56+0000\n"
+"PO-Revision-Date: 2020-11-04 18:31+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:18
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr "Boost Graph Interno"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:21
 msgid "Availability:"
@@ -348,7 +348,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:15
 msgid "**reverse_capacity**"
-msgstr "**reverse_capacity** (**capacidad inversa**)"
+msgstr "**reverse_capacity**"
 
 #: ../../build/doc/flow-family.rst:15
 msgid "-1"
@@ -431,7 +431,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:165
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:167
 msgid ":doc:`flow-family`, :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`"
@@ -447,8 +447,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:172
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:173
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"
