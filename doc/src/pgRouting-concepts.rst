@@ -483,8 +483,8 @@ Returns SET OF ``(start_vid, end_vid, agg_cost)``
 ============== ========== =================================================
 Column         Type       Description
 ============== ========== =================================================
-**start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
-**end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
+**start_vid**  ``BIGINT`` Identifier of the starting vertex.
+**end_vid**    ``BIGINT`` Identifier of the ending vertex.
 **agg_cost**   ``FLOAT``  Aggregate cost from ``start_vid`` to ``end_vid``.
 ============== ========== =================================================
 
