@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2019
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:57+0000\n"
+"PO-Revision-Date: 2020-11-04 18:30+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:22
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr "Boost Graph Interno"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:25
 msgid "Availability"
@@ -389,7 +389,7 @@ msgstr "Identificador del segundo punto final en el vértice de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_withPointsKSP.rst:141
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -562,7 +562,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:137
 msgid "**node**"
-msgstr "**node**"
+msgstr "**nodo**"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:137
 #: ../../build/doc/pgr_withPointsKSP.rst:138
@@ -579,7 +579,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:138
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:139
 msgid ""
@@ -648,7 +648,7 @@ msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:167
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:169
 msgid ":doc:`withPoints-family`"
@@ -660,8 +660,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:173
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:174
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"
