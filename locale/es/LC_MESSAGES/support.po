@@ -1,19 +1,19 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 20:36-0500\n"
-"PO-Revision-Date: 2019-09-07 11:55+0000\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"PO-Revision-Date: 2020-11-04 18:29+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -234,30 +234,3 @@ msgstr "Capranica, Italia"
 #: ../../build/doc/support.rst:78
 msgid "https://www.osgeo.org/service-providers/netlab/"
 msgstr "https://www.osgeo.org/service-providers/netlab/"
-
-#~ msgid ""
-#~ "If your problem is unreported, create a `new issue "
-#~ "<https://github.com/pgRouting/pgrouting/issues/new>`_ for it."
-#~ msgstr ""
-#~ "Si el problema no está reportado , crear una `nueva entrada "
-#~ "<https://github.com/pgRouting/pgrouting/issues/new>`_ para el problema."
-
-#~ msgid ""
-#~ "You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_ "
-#~ "and tag the question with ``pgrouting``. Find all questions tagged with "
-#~ "``pgrouting`` under http://gis.stackexchange.com/questions/tagged/pgrouting "
-#~ "or subscribe to the `pgRouting questions feed "
-#~ "<http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
-#~ msgstr ""
-#~ "También puede preguntar en `GIS StackExchange "
-#~ "<https://gis.stackexchange.com/>`_ y etiquetar la pregunta con "
-#~ "``pgrouting``. Encuentra todas las preguntas etiquetadas con ``pgrouting`` "
-#~ "en  http://gis.stackexchange.com/questions/tagged/pgrouting o suscríbete en"
-#~ "  `pgRouting questions feed "
-#~ "<http://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
-
-#~ msgid "iMaptools"
-#~ msgstr "iMaptools"
-
-#~ msgid "https://imaptools.com"
-#~ msgstr "https://imaptools.com"
