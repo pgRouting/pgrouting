@@ -113,7 +113,6 @@ do_pgr_withPoints(
         pgassert(!(*return_tuples));
         pgassert((*return_count) == 0);
         pgassert(edges || edges_of_points);
-        pgassert(points_p);
         pgassert(start_pidsArr);
         pgassert(end_pidsArr);
 
