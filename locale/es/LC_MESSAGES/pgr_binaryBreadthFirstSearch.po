@@ -1,26 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
-"PO-Revision-Date: 2019-09-07 11:55+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"POT-Creation-Date: 2020-10-07 21:01-0500\n"
+"PO-Revision-Date: 2020-11-04 18:29+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -41,7 +41,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:19
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr "Boost Graph Interno"
 
 #: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"
@@ -228,7 +228,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:96
 msgid "One to many"
-msgstr "Uno a muchos"
+msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:105
 msgid ""
@@ -527,7 +527,7 @@ msgstr "`Muchos a Uno`_"
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "`Many to Many`_"
-msgstr "`Many to Many`_"
+msgstr "`Muchos a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid ""
@@ -661,31 +661,30 @@ msgstr ""
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:224
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:226
 msgid "https://cp-algorithms.com/graph/01_bfs.html"
 msgstr "https://cp-algorithms.com/graph/01_bfs.html"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:227
-msgid "https://codeforces.com/blog/entry/22276"
-msgstr "https://codeforces.com/blog/entry/22276"
-
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:228
 #, python-format
 msgid ""
 "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
 msgstr ""
 "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:231
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:230
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:232
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:231
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:233
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:232
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"
+
+#~ msgid "https://codeforces.com/blog/entry/22276"
+#~ msgstr "https://codeforces.com/blog/entry/22276"
