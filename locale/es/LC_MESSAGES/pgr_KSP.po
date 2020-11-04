@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
-# Vicky Vergara <vicky@georepublic.de>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:56+0000\n"
+"PO-Revision-Date: 2020-11-04 18:29+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "``pgr_KSP`` — Devuelve la ruta más corta \"K\"."
 
 #: ../../build/doc/pgr_KSP.rst:19
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr "Boost Graph Interno"
 
 #: ../../build/doc/pgr_KSP.rst:22
 msgid "Availability"
@@ -270,7 +270,7 @@ msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_KSP.rst:122
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -374,7 +374,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:120
 msgid "**node**"
-msgstr "**node**"
+msgstr "**nodo**"
 
 #: ../../build/doc/pgr_KSP.rst:120
 msgid "Identifier of the node in the path."
@@ -382,7 +382,7 @@ msgstr "Identificador del nodo en la ruta."
 
 #: ../../build/doc/pgr_KSP.rst:121
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgr_KSP.rst:121
 msgid ""
@@ -466,7 +466,7 @@ msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig4`"
 
 #: ../../build/doc/pgr_KSP.rst:170
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/pgr_KSP.rst:172
 msgid "https://en.wikipedia.org/wiki/K_shortest_path_routing"
@@ -482,8 +482,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_KSP.rst:177
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/pgr_KSP.rst:178
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"
