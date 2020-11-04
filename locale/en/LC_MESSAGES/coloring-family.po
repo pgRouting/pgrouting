@@ -1,0 +1,324 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.2.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.2.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-04 12:09-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../build/doc/coloring-family.rst:11
+msgid "Coloring - Family of functions (Experimental)"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:3
+msgid "Possible server crash"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:5
+msgid "These functions might create a server crash"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:7
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:9
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:10
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:12
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:13
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:14
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:15
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:16
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:18
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:19
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:20
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:21
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:22
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:23
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:19
+msgid ""
+":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using "
+"greedy approach."
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:20
+msgid ""
+":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based "
+"coloring approach."
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:32
+msgid "Versions of this page"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:33
+msgid ""
+"**Supported versions:** current(`3.2 <https://docs.pgrouting.org/3.2/en"
+"/coloring-family.html>`__)"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:38
+msgid "Parameters"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:43
+msgid "Parameter"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:43
+#: ../../build/doc/coloring-family.rst:69
+#: ../../build/doc/traversal-family.rst:4
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:43
+#: ../../build/doc/coloring-family.rst:69
+#: ../../build/doc/traversal-family.rst:4
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:45
+msgid "**Edges SQL**"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:45
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:45
+msgid "Inner query as described below."
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:51
+msgid "Inner query"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst
+msgid "Edges SQL"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:53
+msgid ""
+"an SQL query of an **undirected** graph, which should return a set of "
+"rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:69
+#: ../../build/doc/traversal-family.rst:4
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:4
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:6
+msgid "**id**"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:6
+#: ../../build/doc/traversal-family.rst:7
+#: ../../build/doc/traversal-family.rst:8
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:6
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:7
+msgid "**source**"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:7
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:8
+msgid "**target**"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:8
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:9
+msgid "**cost**"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:9
+#: ../../build/doc/traversal-family.rst:12
+msgid "``ANY-NUMERICAL``"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:9
+msgid "When positive: edge `(source, target)` exist on the graph."
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:10
+msgid "When negative: edge `(source, target)` does not exist on the graph."
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:12
+msgid "**reverse_cost**"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:12
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:12
+msgid "When positive: edge `(target, source)` exist on the graph."
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:13
+msgid "When negative: edge `(target, source)` does not exist on the graph."
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:17
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst
+msgid "ANY-INTEGER"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:19
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:20
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:62
+msgid "Result Columns"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:66
+msgid "Returns SET OF ``(vertex_id, color_id)``"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:71
+msgid "**vertex_id**"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:71
+#: ../../build/doc/coloring-family.rst:72
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:71
+msgid "Identifier of the vertex."
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:72
+msgid "**color_id**"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:72
+msgid "Identifier of the color of the vertex."
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:74
+msgid "The minimum value of color is 1."
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:82
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:3
+msgid ""
+"`Boost: Sequential Vertex Coloring algorithm documentation "
+"<https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:4
+msgid ""
+"`Wikipedia: Graph coloring "
+"<https://en.wikipedia.org/wiki/Graph_coloring>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_bipartite.rst:3
+msgid ""
+"`Boost: is_bipartite algorithm documentation "
+"<https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/is_bipartite.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_bipartite.rst:4
+msgid ""
+"`Wikipedia: bipartite graph "
+"<https://en.wikipedia.org/wiki/Bipartite_graph>`__"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:96
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:97
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:98
+msgid ":ref:`search`"
+msgstr ""
+

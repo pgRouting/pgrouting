@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.1.0
+# Copyright (C) pgRouting Contributors - Version v3.2.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.1.0\n"
+"Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2020-11-04 13:06-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -301,7 +301,7 @@ msgid "``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:8
-msgid "Identifier of the starting vertex. Used when multiple starting vetrices are in the query."
+msgid "Identifier of the starting vertex."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
@@ -309,7 +309,7 @@ msgid "**end_vid**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Identifier of the ending vertex. Used when multiple ending vertices are in the query."
+msgid "Identifier of the ending vertex."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10

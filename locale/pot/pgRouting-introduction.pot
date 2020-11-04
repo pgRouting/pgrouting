@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.1.0
+# Copyright (C) pgRouting Contributors - Version v3.2.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.1.0\n"
+"Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2020-11-04 13:06-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,50 +85,50 @@ msgid "This Release Contributors"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:56
-#: ../../build/doc/pgRouting-introduction.rst:87
+#: ../../build/doc/pgRouting-introduction.rst:85
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:58
-msgid "Cayetano Benavent, Daniel Kastl, Esteban Zimanyi, Imre Samu, Martha Vergara, Mohamed Bakli, Mahmoud Sakr, Regina Obe, Virginia Vergara"
+msgid "Ashish Kumar, Cayetano Benavent, Daniel Kastl, Himanshu Raj, Martha Vergara, Regina Obe, Virginia Vergara"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:69
+#: ../../build/doc/pgRouting-introduction.rst:67
 msgid "And all the people that give us a little of their time making comments, finding issues, making pull requests etc. in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer."
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:74
+#: ../../build/doc/pgRouting-introduction.rst:72
 #: ../../build/doc/pgRouting-introduction.rst:108
 msgid "Corporate Sponsors (in alphabetical order)"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:76
+#: ../../build/doc/pgRouting-introduction.rst:74
 #: ../../build/doc/pgRouting-introduction.rst:110
 msgid "These are corporate entities that have contributed developer time, hosting, or direct monetary funding to the pgRouting project:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:78
+#: ../../build/doc/pgRouting-introduction.rst:76
 msgid "`Georepublic <https://georepublic.info/en/>`__"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:79
+#: ../../build/doc/pgRouting-introduction.rst:77
 msgid "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:80
+#: ../../build/doc/pgRouting-introduction.rst:78
 msgid "`Leopark <https://www.leopark.mx/>`__"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:81
+#: ../../build/doc/pgRouting-introduction.rst:79
 msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:84
+#: ../../build/doc/pgRouting-introduction.rst:82
 msgid "Contributors Past & Present:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-introduction.rst:89
-msgid "Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Sourabh Garg, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche, Vidhan Jain, Virginia Vergara"
+#: ../../build/doc/pgRouting-introduction.rst:87
+msgid "Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain, Ashish Kumar, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Sourabh Garg, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche, Vidhan Jain, Virginia Vergara"
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:112
