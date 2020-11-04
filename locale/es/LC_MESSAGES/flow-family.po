@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
-# Vicky Vergara <vicky@georepublic.de>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:54+0000\n"
+"PO-Revision-Date: 2020-11-04 18:31+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -423,7 +423,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:130 ../../build/doc/flow-family.rst:157
 msgid "**reverse_capacity**"
-msgstr "**reverse_capacity** (**capacidad inversa**)"
+msgstr "**reverse_capacity**"
 
 #: ../../build/doc/flow-family.rst:130 ../../build/doc/flow-family.rst:157
 msgid "-1"
@@ -468,7 +468,7 @@ msgstr "Capacidad de la arista `(destino, origen)`,"
 
 #: ../../build/doc/flow-family.rst:160 ../../build/doc/flow-family.rst:204
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/flow-family.rst:160 ../../build/doc/flow-family.rst:161
 msgid "``ANY-NUMERICAL``"
@@ -516,7 +516,7 @@ msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/flow-family.rst:182 ../../build/doc/flow-family.rst:199
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/flow-family.rst:182 ../../build/doc/flow-family.rst:199
 msgid "Identifier of the edge in the original query(edges_sql)."
@@ -733,7 +733,7 @@ msgstr ":math:`residual\\_capacity_i = capacity_i - flow_i`"
 
 #: ../../build/doc/flow-family.rst:273
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/flow-family.rst:275
 msgid "https://en.wikipedia.org/wiki/Maximum_flow_problem"
@@ -745,8 +745,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/flow-family.rst:279
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/flow-family.rst:280
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"

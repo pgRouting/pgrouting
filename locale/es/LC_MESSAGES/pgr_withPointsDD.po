@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2019
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:55+0000\n"
+"PO-Revision-Date: 2020-11-04 18:31+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_withPointsDD.rst:22
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr "Boost Graph Interno"
 
 #: ../../build/doc/pgr_withPointsDD.rst:25
 msgid "Availability"
@@ -182,7 +182,7 @@ msgstr "Desde el punto :math:`1` with :math:`agg\\_cost <= 3.8`"
 
 #: ../../build/doc/pgr_withPointsDD.rst:87
 msgid "Single vertex"
-msgstr "Un solo vértice"
+msgstr "Vértice único"
 
 #: ../../build/doc/pgr_withPointsDD.rst:89
 #: ../../build/doc/pgr_withPointsDD.rst:108
@@ -201,7 +201,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:106
 msgid "Multiple vertices"
-msgstr "Múltiples vértices"
+msgstr "Múltiples Vértices"
 
 #: ../../build/doc/pgr_withPointsDD.rst:116
 msgid "Parameters"
@@ -390,7 +390,7 @@ msgstr "Identificador del segundo punto final en el vértice de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_withPointsDD.rst:161
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Weight of the edge  `(source, target)`"
@@ -537,7 +537,7 @@ msgstr "secuencia de filas."
 
 #: ../../build/doc/pgr_withPointsDD.rst:157
 msgid "**node**"
-msgstr "**node**"
+msgstr "**nodo**"
 
 #: ../../build/doc/pgr_withPointsDD.rst:157
 #: ../../build/doc/pgr_withPointsDD.rst:158
@@ -554,7 +554,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:158
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgr_withPointsDD.rst:159
 msgid ""
@@ -628,7 +628,7 @@ msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
 #: ../../build/doc/pgr_withPointsDD.rst:191
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/pgr_withPointsDD.rst:193
 msgid ":doc:`pgr_drivingDistance` - Driving distance using dijkstra."
@@ -644,8 +644,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_withPointsDD.rst:198
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/pgr_withPointsDD.rst:199
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"

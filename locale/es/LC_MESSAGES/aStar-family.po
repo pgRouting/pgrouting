@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:55+0000\n"
+"PO-Revision-Date: 2020-11-04 18:29+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -97,7 +97,7 @@ msgstr "Falta la el indicador de ``directed``."
 
 #: ../../build/doc/aStar-family.rst:51
 msgid "``directed`` flag is set to true"
-msgstr "El indicador de ``directed`` se configura a \"true\"."
+msgstr "El indicador de ``directed`` se configura a verdadero."
 
 #: ../../build/doc/aStar-family.rst:53
 msgid "Unless specified otherwise, ordering is:"
@@ -306,7 +306,7 @@ msgstr "4452 s"
 
 #: ../../build/doc/aStar-family.rst:145
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/aStar-family.rst:147
 msgid ":doc:`pgr_aStar`"
@@ -334,8 +334,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/aStar-family.rst:155
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/aStar-family.rst:156
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"
