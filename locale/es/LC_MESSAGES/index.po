@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:54+0000\n"
+"PO-Revision-Date: 2020-11-04 18:29+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -383,7 +383,7 @@ msgstr ""
 #: ../../build/doc/topology-functions.rst:6
 msgid ":doc:`pgr_analyzeOneWay` - to analyze directionality of the edges."
 msgstr ""
-":doc:`pgr_analyzeOneWay` - para analizar la direccionalidad de los bordes."
+":doc:`pgr_analyzeOneWay` - para analizar la direccionalidad de las aristas."
 
 #: ../../build/doc/topology-functions.rst:7
 msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
@@ -446,21 +446,22 @@ msgstr ":doc:`drivingDistance-category`"
 msgid ""
 ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
 msgstr ""
-":doc:`pgr_drivingDistance` - Driving Distance basada en el algoritmo de "
+":doc:`pgr_drivingDistance` - Distancia Manejando basada en el algoritmo de "
 "Dijkstra."
 
 #: ../../build/doc/drivingDistance-category.rst:4
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
-msgstr ":doc:`pgr_primDD` - Driving Distance basada en el algoritmo de Prim"
+msgstr ""
+":doc:`pgr_primDD` - Distancia Manejando basada en el algoritmo de Prim"
 
 #: ../../build/doc/drivingDistance-category.rst:5
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
-":doc:`pgr_kruskalDD` - Driving Distance basada en el algoritmo de Kruskal"
+":doc:`pgr_kruskalDD` - Distancia Manejando basada en el algoritmo de Kruskal"
 
 #: ../../build/doc/drivingDistance-category.rst:6
 msgid "Post pocessing"
-msgstr "Post poce"
+msgstr "Post procesamiento"
 
 #: ../../build/doc/drivingDistance-category.rst:8
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
@@ -616,8 +617,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/index.rst:114
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/index.rst:115
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"
