@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
-"PO-Revision-Date: 2019-09-07 11:55+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"PO-Revision-Date: 2020-11-04 18:30+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -243,7 +243,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_edwardMoore.rst:110
 msgid "One to many"
-msgstr "Uno a muchos"
+msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_edwardMoore.rst:119
 msgid ""
@@ -418,7 +418,7 @@ msgstr "Identificador del segundo punto final en el vértice de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -537,12 +537,12 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "`Many to One`_"
-msgstr "`Many to One`_"
+msgstr "`Muchos a Uno`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "`Many to Many`_"
-msgstr "`Many to Many`_"
+msgstr "`Muchos a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid ""
@@ -558,7 +558,7 @@ msgstr "`Uno a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "**node**"
-msgstr "**node**"
+msgstr "**nodo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
@@ -566,7 +566,7 @@ msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 msgid ""
@@ -662,7 +662,7 @@ msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig4`"
 
 #: ../../build/doc/pgr_edwardMoore.rst:240
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/pgr_edwardMoore.rst:242
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
@@ -674,8 +674,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_edwardMoore.rst:246
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/pgr_edwardMoore.rst:247
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"
