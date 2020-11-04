@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
 # Vicky Vergara <vicky@georepublic.de>, 2020
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:54+0000\n"
+"PO-Revision-Date: 2020-11-04 18:30+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCost.rst:18
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr "Boost Graph Interno"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:21
 msgid "Availability"
@@ -95,7 +95,7 @@ msgstr "Falta la el indicador de ``directed``."
 
 #: ../../build/doc/aStar-family.rst:6
 msgid "``directed`` flag is set to true"
-msgstr "El indicador de ``directed`` se configura a \"true\"."
+msgstr "El indicador de ``directed`` se configura a verdadero."
 
 #: ../../build/doc/aStar-family.rst:8
 msgid "Unless specified otherwise, ordering is:"
@@ -363,7 +363,7 @@ msgstr "Cuando ``false`` el gráfico se considera como No Dirigido"
 
 #: ../../build/doc/pgr_aStar.rst:9
 msgid "**heuristic**"
-msgstr "**heuristic**"
+msgstr "**heurística**"
 
 #: ../../build/doc/pgr_aStar.rst:9
 msgid "``INTEGER``"
@@ -473,7 +473,7 @@ msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -615,7 +615,7 @@ msgstr "Coste agregado de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgr_bdAstarCost.rst:187
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:189
 msgid ":doc:`bdAstar-family`"
@@ -639,8 +639,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:196
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:197
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"
