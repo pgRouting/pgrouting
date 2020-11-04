@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:55+0000\n"
+"PO-Revision-Date: 2020-11-04 18:31+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
@@ -311,7 +311,7 @@ msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
 "as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
 msgstr ""
-"``integer`` Número de vértices en el edge_table que hacen referencia a este "
+"``integer`` Número de vértices en edge_table que hacen referencia a este "
 "vértice como saliente. Consulte :doc:`pgr_analyzeOneWay "
 "<pgr_analyzeOneWay>`."
 
@@ -536,7 +536,7 @@ msgstr "En el ejemplo se utiliza la red :doc:`sampledata`. "
 
 #: ../../build/doc/pgr_createVerticesTable.rst:259
 msgid "See Also"
-msgstr "Ver también"
+msgstr "Véase también"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:261
 msgid ""
@@ -572,8 +572,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:268
 msgid ":ref:`genindex`"
-msgstr ":ref:`genindex`"
+msgstr ":ref:`Índice <genindex>`"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:269
 msgid ":ref:`search`"
-msgstr ":ref:`search`"
+msgstr ":ref:`búsqueda <search>`"
