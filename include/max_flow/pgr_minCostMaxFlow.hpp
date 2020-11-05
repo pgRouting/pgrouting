@@ -72,7 +72,7 @@ class PgrCostFlowGraph {
          return boost::find_flow_cost(graph);
      }
 
-     PgrCostFlowGraph() = default;
+     PgrCostFlowGraph() = delete;
 
      PgrCostFlowGraph(
              const std::vector<pgr_costFlow_t> &edges,
