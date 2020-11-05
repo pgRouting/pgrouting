@@ -52,19 +52,14 @@ class PgrDirectedChPPGraph {
              const pgr_edge_t *dataEdges,
              const size_t totalEdges);
 
-     double DirectedChPP() {
-         try {
-             pgrouting::graph::PgrCostFlowGraph digraph1(edges, sources, targets);
-             auto minAddedCost = digraph1.MinCostMaxFlow();
-             auto maxFlow = digraph1.GetMaxFlow();
-             m_cost = (maxFlow == totalDeg)? minAddedCost + totalCost : -1.0;
-         } catch (...) {
-             return m_cost = -1;
-         }
+     double DirectedChPP() const {
          return m_cost;
      }
 
-     std::vector<General_path_element_t> GetPathEdges();
+     std::vector<General_path_element_t> GetPathEdges() const {
+         return resultPath;
+     }
+
       ~PgrDirectedChPPGraph();
 
 
@@ -72,6 +67,7 @@ class PgrDirectedChPPGraph {
      bool EulerCircuitDFS(int64_t p);
      void BuildResultGraph();
      void BuildResultPath();
+     void setPathEdges(graph::PgrCostFlowGraph &flowGraph);
 
  private:
      int64_t totalDeg;
@@ -104,7 +100,6 @@ class PgrDirectedChPPGraph {
      std::vector<pgr_costFlow_t> edges;
      std::set<int64_t> sources;
      std::set<int64_t> targets;
-     graph::PgrCostFlowGraph flowGraph;
 };
 
 PgrDirectedChPPGraph::~PgrDirectedChPPGraph() {
@@ -210,16 +205,25 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
         edges.push_back(edge);
     }
 
-    PgrCostFlowGraph graph(edges, sources, targets);
-    flowGraph = graph;
+    PgrCostFlowGraph flowGraph(edges, sources, targets);
     pgassert(pathStack.empty());
+    try {
+        pgrouting::graph::PgrCostFlowGraph digraph1(edges, sources, targets);
+        auto minAddedCost = digraph1.MinCostMaxFlow();
+        auto maxFlow = digraph1.GetMaxFlow();
+        m_cost = (maxFlow == totalDeg)? minAddedCost + totalCost : -1.0;
+    } catch (...) {
+        m_cost = -1;
+    }
+    setPathEdges(flowGraph);
 }
 
 
-std::vector<General_path_element_t>
-PgrDirectedChPPGraph::GetPathEdges() {
+void
+PgrDirectedChPPGraph::setPathEdges(graph::PgrCostFlowGraph &flowGraph) {
     pgassert(pathStack.empty());
-    if (m_cost == -1) return std::vector<General_path_element_t>();
+    resultPath.clear();
+    if (m_cost == -1) return;
     // catch new edges
     try {
         flowGraph.MinCostMaxFlow();
@@ -236,7 +240,8 @@ PgrDirectedChPPGraph::GetPathEdges() {
             }
         }
     } catch (...) {
-        return std::vector<General_path_element_t>();
+        resultPath.clear();
+        return;
     }
 
     pgassert(pathStack.empty());
@@ -249,14 +254,15 @@ PgrDirectedChPPGraph::GetPathEdges() {
     EulerCircuitDFS(startPoint);
 
     if (!(vertices - vertexVisited).empty()) {
-        return std::vector<General_path_element_t>();
+        resultPath.clear();
+        return;
     }
     pgassert(!pathStack.empty());
 
     BuildResultPath();
 
 
-    return resultPath;
+    return;
 }
 
 void
