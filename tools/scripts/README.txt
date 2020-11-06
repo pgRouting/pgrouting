@@ -30,3 +30,17 @@ sh tools/scripts/code_checker.sh <directory>
   - it works on all src/*/src
 
 - output is grouped by extension
+
+License Checker
+...............
+
+Requirements
+
+```
+sudo apt install -y licensecheck
+```
+
+Execution
+```
+bash ./tools/scripts/test_license.sh
+```

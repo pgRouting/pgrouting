@@ -10,14 +10,13 @@ on:
       - '**.po'
 
 jobs:
-  build:
-    name: Build
+  signature_check:
     runs-on: ${{ matrix.os }}
 
     strategy:
         fail-fast: false
         matrix:
-          releases: ["(2.6.0 2.6.1 2.6.2 2.6.3)","(3.0.0 3.0.1 3.0.2)"]
+          releases: ["(2.6.0 2.6.1 2.6.2 2.6.3)","(3.0.0 3.0.1 3.0.2 3.0.3)","(3.1.0 3.1.1)"]
           os: [ubuntu-latest]
 
     steps:
@@ -41,3 +40,14 @@ jobs:
         run: |
           tools/release-scripts/notes2news.pl
           ! git status | grep 'NEWS'
+
+  license_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Requirements
+        run: |
+          sudo apt install -y licensecheck
+      - name: Run License Check
+        run: bash ./tools/scripts/test_license.sh
