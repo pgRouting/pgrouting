@@ -90,7 +90,7 @@ Signatures
     RETURNS SET OF (seq, edge, cost, mincut)
     OR EMPTY SET
 
-.. literalinclude:: doc-pgr_stoerWagner.queries
+.. literalinclude:: doc-stoerWagner.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -146,13 +146,13 @@ Column           Type        Description
 Additional Example:
 -------------------------------------------------------------------------------
 
-.. literalinclude:: doc-pgr_stoerWagner.queries
+.. literalinclude:: doc-stoerWagner.queries
    :start-after: -- q2
    :end-before: -- q3
 
 Use pgr_connectedComponents( ) function in query:
 
-.. literalinclude:: doc-pgr_stoerWagner.queries
+.. literalinclude:: doc-stoerWagner.queries
    :start-after: -- q3
    :end-before: -- q4
 

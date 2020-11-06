@@ -1,7 +1,6 @@
 
 SET(LOCAL_FILES
-    doc-pgr_stoerWagner.queries
-    pgr_stoerWagner.rst 
+    pgr_stoerWagner.rst
     )
 
 foreach (f ${LOCAL_FILES})
