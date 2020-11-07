@@ -36,9 +36,9 @@ echo "*************************************************************************"
 for i in ${LANGUAGES}; do
 	DESTINATION="build/doc/latex/${i}"
 	sphinx-build -b html -a -E -D language="${i}" -c "${CONFIG}" "${ROOT}" "${DESTINATION}"
-	cd "${DESTINATION}"
+	cd "${DESTINATION}" || exit 1
 	pdflatex -interaction=nonstopmode pgRoutingDocumentation.tex > /dev/null 2>&1
-	cd "${ROOT}"
+	cd "${ROOT}" || exit 1
 done
 
 echo "*************************************************************************"

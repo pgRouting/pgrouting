@@ -130,7 +130,7 @@ fi
 
 if [ -n "$LONG" ]
 then
-    sh ./tools/testers/pg_prove_tests.sh $PGUSER $PGPORT Release
+    ./tools/testers/pg_prove_tests.sh $PGUSER $PGPORT Release
 fi
 
 dropdb "$DB"
