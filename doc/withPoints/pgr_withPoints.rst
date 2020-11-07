@@ -190,8 +190,8 @@ Combinations SQL
 
 
 .. literalinclude:: doc-pgr_withPoints.queries
-   :start-after: -- q5
-   :end-before: -- q6
+   :start-after: --q5
+   :end-before: --q6
 
 Parameters
 -------------------------------------------------------------------------------
