@@ -21,7 +21,7 @@ function error_msg() {
 
 function git_no_change {
 
-if [[ $(git status | grep 'Changes not staged for commit:') ]]; then
+if git status | grep 'Changes not staged for commit:'; then
     error_msg " There are changes staged on git"
     echo
     echo "HINT: Verify the changes and commit them"
@@ -89,12 +89,12 @@ echo
 if [[ -n $DEBUG ]]; then
     echo
     echo "\`\`\`"
-    echo sh tools/scripts/fix_typos.sh
+    echo tools/scripts/fix_typos.sh
     echo "\`\`\`"
     echo
 fi
 
-sh tools/scripts/fix_typos.sh
+tools/scripts/fix_typos.sh
 
 if [[ -z  "$DEBUG" ]]; then
     git_no_change
@@ -217,9 +217,15 @@ done
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
+<<<<<<< HEAD
 bash tools/release-scripts/compile-release.sh
 bash tools/release-scripts/get_signatures.sh
 if [[ $(git diff "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig") ]]; then
+=======
+tools/release-scripts/compile-release.sh
+tools/release-scripts/get_signatures.sh
+if [[ -z $(git diff "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig") ]]; then
+>>>>>>> f062925ed... [CI] testing and fixing shell code
     echo signature changed at: "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig"
 fi
 
@@ -231,12 +237,16 @@ echo
 echo "### Locally run the update tester"
 #---------------------------------------------------------------------
 echo "\`\`\`"
-echo bash tools/testers/update-tester.sh
+echo tools/testers/update-tester.sh
 echo "\`\`\`"
 
 for r in ${PREV_RELS}
 do
+<<<<<<< HEAD
     if ! bash tools/testers/update-tester.sh "$r" 12; then
+=======
+    if ! tools/testers/update-tester.sh "$r"; then
+>>>>>>> f062925ed... [CI] testing and fixing shell code
         echo "FATAL updating from $r"
         exit 1
     fi
@@ -255,7 +265,7 @@ tools/testers/doc_queries_generator.pl -documentation
 
 if [[ -z  "$DEBUG" ]]; then
     git_no_change
-elif [[ $(git status | grep 'Changes not staged for commit:') ]]; then
+elif git status | grep 'Changes not staged for commit:'; then
     echo "DEBUG WARNING: at least one file changed"
     git status
     exit 1
@@ -272,10 +282,10 @@ echo
 
 if [[ -z  "$DEBUG" ]]; then
     echo "\`\`\`"
-    echo "bash tools/release-scripts/compile-release.sh"
+    echo "tools/release-scripts/compile-release.sh"
     echo "\`\`\`"
 fi
-bash tools/release-scripts/compile-release.sh
+tools/release-scripts/compile-release.sh
 
 echo - [x] completed local builds
 

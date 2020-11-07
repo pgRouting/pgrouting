@@ -43,7 +43,7 @@ else
 fi;
 
 #cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}/build/lib
-cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}"
+cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}" || exit 1
 
 export REL_PGVER=${PG_VER//./} #strip the period
 
@@ -68,11 +68,11 @@ mkdir -p "${outdir}/share/extension"
 mkdir "${outdir}/bin"
 mkdir "${outdir}/lib"
 
-cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/sql"
+cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/sql" || exit 1
 cp ./*.sql "${outdir}/share/extension"
 cp "${PostgreSQL_ROOT}/share/extension/pgrouting.control" "${outdir}/share/extension"
 
-cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib"
+cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib" || exit 1
 strip ./*.dll
 
 cp -r ./*.dll "${outdir}/lib"
@@ -95,7 +95,7 @@ echo "pgRouting http://pgrouting.org : ${PGROUTING_VER}.${PGROUTING_MICRO_VER} $
     echo "Built: ${date_built}"
 } >> "${verfile}"
 
-cd "${RELDIR}"
+cd "${RELDIR}" || exit 1
 zip -r "${package}" "${RELVERDIR}"
 
 cp "${package}" "${PROJECTS}/postgis/win_web/download/windows/pg${REL_PGVER}/buildbot"

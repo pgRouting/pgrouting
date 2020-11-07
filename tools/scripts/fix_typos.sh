@@ -32,11 +32,11 @@
 if ! test -d fix_typos; then
     # Get our fork of codespell that adds --words-white-list and full filename support for -S option
     mkdir fix_typos
-    cd fix_typos
+    cd fix_typos || exit 1
     git clone https://github.com/rouault/codespell
-    cd codespell
+    cd codespell || exit 1
     git checkout gdal_improvements
-    cd ..
+    cd .. || exit 1
     # Aggregate base dictionary + QGIS one + Debian Lintian one
     curl https://raw.githubusercontent.com/qgis/QGIS/master/scripts/spelling.dat | sed "s/:/->/" | grep -v "colour->" | grep -v "colours->" > qgis.txt
     curl https://anonscm.debian.org/cgit/lintian/lintian.git/plain/data/spelling/corrections| grep "||" | grep -v "#" | sed "s/||/->/" > debian.txt
@@ -44,7 +44,7 @@ if ! test -d fix_typos; then
     cat codespell/data/dictionary.txt qgis.txt debian.txt originaldict.txt | awk 'NF' > gdal_dict.txt
     echo "difered->deferred" >> gdal_dict.txt
     echo "differed->deferred" >> gdal_dict.txt
-    cd ..
+    cd .. || exit 1
 fi
 
 EXCLUDED_FILES="*/code_linter/*"
