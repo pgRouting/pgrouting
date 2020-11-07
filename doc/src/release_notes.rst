@@ -74,6 +74,11 @@ pgRouting 3.2.0 Release Notes
 * pgr_makeConnected
 * pgr_sequentialVertexColoring
 
+.. rubric:: New proposed functions
+
+* pgr_withPoints(Combinations)
+* pgr_withPointsCost(Combinations)
+
 .. _changelog_3_1_1:
 
 pgRouting 3.1.1 Release Notes
