@@ -50,4 +50,15 @@ jobs:
         run: |
           sudo apt install -y licensecheck
       - name: Run License Check
-        run: bash ./tools/scripts/test_license.sh
+        run: ./tools/scripts/test_license.sh
+
+  shell_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Requirements
+        run: |
+          sudo apt install -y shellcheck
+      - name: Run Shell Check
+        run: ./tools/scripts/test_shell.sh
