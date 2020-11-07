@@ -19,14 +19,14 @@ mkdir "${WORKSPACE}/build${BRANCH}"
 
 cmake --version
 
-cd "../build${BRANCH}"
+cd "../build${BRANCH}" || exit 1
 cmake "../${BRANCH}"
 
 make
 sudo make install
-cd "../${BRANCH}"
+cd "../${BRANCH}" || exit 1
 perl tools/testers/doc_queries_generator.pl
 
 psql -c "CREATE DATABASE ___pgr___test___"
-sh tools/testers/pg_prove_tests.sh "${PGUSER}"
+tools/testers/pg_prove_tests.sh "${PGUSER}"
 psql -c "DROP DATABASE ___pgr___test___"
