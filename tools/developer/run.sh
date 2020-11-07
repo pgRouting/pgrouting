@@ -20,10 +20,6 @@ PGBIN="/usr/lib/postgresql/${PGVERSION}/bin"
 # When more than one compiler is installed
 GCC="8"
 
-# Using the default compiler version
-unset GCC
-
-
 ALLDIRS="
 allpairs
 alpha_shape
@@ -66,7 +62,7 @@ echo ------------------------------------
 echo "Compiling with G++-$1"
 echo ------------------------------------
 
-if [ ! -z "$1" ]; then
+if [ -n "$1" ]; then
     update-alternatives --set gcc "/usr/bin/gcc-$1"
 fi
 
@@ -119,10 +115,10 @@ echo --------------------------------------------
 echo  Update signatures
 echo --------------------------------------------
 
-sh tools/release-scripts/get_signatures.sh -p ${PGPORT}
+tools/release-scripts/get_signatures.sh -p ${PGPORT}
 
 
-if [[ $(git status | grep 'pgrouting--') ]]; then
+if git status | grep 'pgrouting--' ; then
     echo "**************************************************"
     echo "           WARNING"
     echo "the signatures changed, copyed the generated files"
@@ -144,7 +140,7 @@ echo --------------------------------------------
 echo  Update / Verify NEWS
 echo --------------------------------------------
 tools/release-scripts/notes2news.pl
-if [[ $(git status | grep 'NEWS') ]]; then
+if git status | grep 'NEWS'; then
     echo "**************************************************"
     echo "           WARNING"
     echo "the signatures changed, copying generated files"
@@ -157,7 +153,6 @@ fi
 #  Execute documentation queries for the whole project
 ########################################################
 tools/testers/doc_queries_generator.pl  -documentation  -pgport $PGPORT
-
 tools/testers/doc_queries_generator.pl -pgport $PGPORT
 
 cd build
@@ -174,7 +169,7 @@ cd ..
 dropdb --if-exists -p $PGPORT ___pgr___test___
 createdb  -p $PGPORT ___pgr___test___
 echo $PGPORT
-sh ./tools/testers/pg_prove_tests.sh vicky $PGPORT
+tools/testers/pg_prove_tests.sh vicky $PGPORT
 dropdb  -p $PGPORT ___pgr___test___
 
 #tools/testers/update-tester.sh
@@ -184,7 +179,7 @@ dropdb  -p $PGPORT ___pgr___test___
 # Uncomment what you need
 for compiler in ${GCC}
 do
-    if [ ! -z "$1" ]; then
+    if [ -n "$1" ]; then
         echo "Fresh build"
         rm -rf build/*
     fi
