@@ -95,10 +95,10 @@ cmake --version
 
 echo "PATH ${PATH}"
 
-cd "${PROJECTS}/pgrouting"
+cd "${PROJECTS}/pgrouting" || exit 1
 rm -rf "build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}"
 mkdir "build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}"
-cd "build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}"
+cd "build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}" || exit 1
 
 
 #---------------
@@ -201,7 +201,7 @@ echo "***************************"
 ls "${PGPATHEDB}/lib/libpgrouting*"
 ls "${PGPATHEDB}/share/extension/pgrouting*"
 
-cd "${PROJECTS}/pgrouting/branches/${PGROUTING_VER}"
+cd "${PROJECTS}/pgrouting/branches/${PGROUTING_VER}" || exit 1
 
 #perl tools/test-runner.pl   -pgver ${PG_VER} -pgport "${PGPORT}"  -clean
 #perl tools/testers/doc_queries_generator.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg common -clean -v
@@ -218,10 +218,10 @@ then
 else
 
     psql -c "CREATE DATABASE ___pgr___test___"
-    sh tools/testers/pg_prove_tests.sh "${PGUSER}"
+    tools/testers/pg_prove_tests.sh "${PGUSER}"
     psql -c "DROP DATABASE ___pgr___test___"
 
 fi
 
-cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib"
+cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib" || exit 1
 strip ./*.dll

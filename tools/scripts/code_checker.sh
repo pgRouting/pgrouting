@@ -31,11 +31,11 @@
 if ! test -d code_linter; then
     # Get our fork of codespell that adds --words-white-list and full filename support for -S option
     mkdir code_linter
-    cd code_linter
+    cd code_linter || exit 1
     git clone https://github.com/google/styleguide
-    cd styleguide
+    cd styleguide || exit 1
     git checkout gh-pages
-    cd ../..
+    cd ../.. || exit 1
     echo code_linter installed
 fi
 

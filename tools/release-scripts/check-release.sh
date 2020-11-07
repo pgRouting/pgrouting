@@ -21,7 +21,7 @@ function error_msg() {
 
 function git_no_change {
 
-if [[ $(git status | grep 'Changes not staged for commit:') ]]; then
+if git status | grep 'Changes not staged for commit:'; then
     error_msg " There are changes staged on git"
     echo
     echo "HINT: Verify the changes and commit them"
@@ -55,8 +55,9 @@ MAYOR=3
 MINOR=1
 MICRO=1
 RC=""
-PREV_REL=3.0.3
+PREV_REL=3.1.0
 PREV_RELS="
+    3.1.0
     3.0.3 3.0.2 3.0.1 3.0.0
     2.6.3 2.6.2 2.6.1 2.6.0
     "
@@ -88,12 +89,12 @@ echo
 if [[ -n $DEBUG ]]; then
     echo
     echo "\`\`\`"
-    echo sh tools/scripts/fix_typos.sh
+    echo tools/scripts/fix_typos.sh
     echo "\`\`\`"
     echo
 fi
 
-sh tools/scripts/fix_typos.sh
+tools/scripts/fix_typos.sh
 
 if [[ -z  "$DEBUG" ]]; then
     git_no_change
@@ -216,8 +217,8 @@ done
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
-bash tools/release-scripts/compile-release.sh
-bash tools/release-scripts/get_signatures.sh
+tools/release-scripts/compile-release.sh
+tools/release-scripts/get_signatures.sh
 if [[ -z $(git diff "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig") ]]; then
     echo signature changed at: "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig"
 fi
@@ -230,12 +231,12 @@ echo
 echo "### Locally run the update tester"
 #---------------------------------------------------------------------
 echo "\`\`\`"
-echo bash tools/testers/update-tester.sh
+echo tools/testers/update-tester.sh
 echo "\`\`\`"
 
 for r in ${PREV_RELS}
 do
-    if ! bash tools/testers/update-tester.sh "$r"; then
+    if ! tools/testers/update-tester.sh "$r"; then
         echo "FATAL updating from $r"
         exit 1
     fi
@@ -254,7 +255,7 @@ tools/testers/doc_queries_generator.pl -documentation
 
 if [[ -z  "$DEBUG" ]]; then
     git_no_change
-elif [[ $(git status | grep 'Changes not staged for commit:') ]]; then
+elif git status | grep 'Changes not staged for commit:'; then
     echo "DEBUG WARNING: at least one file changed"
     git status
     exit 1
@@ -271,10 +272,10 @@ echo
 
 if [[ -z  "$DEBUG" ]]; then
     echo "\`\`\`"
-    echo "bash tools/release-scripts/compile-release.sh"
+    echo "tools/release-scripts/compile-release.sh"
     echo "\`\`\`"
 fi
-bash tools/release-scripts/compile-release.sh
+tools/release-scripts/compile-release.sh
 
 echo - [x] completed local builds
 

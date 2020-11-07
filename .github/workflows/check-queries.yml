@@ -69,7 +69,7 @@ jobs:
           sudo service postgresql start
           sudo -u postgres createdb -p ${PGPORT}  ____sigs_routing____
           sudo -u postgres psql -p ${PGPORT} -c "CREATE ROLE runner SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN" -d ____sigs_routing____
-          sh tools/release-scripts/get_signatures.sh -p ${PGPORT}
+          tools/release-scripts/get_signatures.sh -p ${PGPORT}
           git diff --exit-code --quiet sql/sigs/*.sig
 
       - name: Test documentation queries are up to date
