@@ -1,7 +1,7 @@
 \i setup.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(656);
+SELECT plan(658);
 SET client_min_messages TO ERROR;
 
 
@@ -13,6 +13,8 @@ SELECT has_function('pgr_withpointscost',
     ARRAY['text', 'text', 'anyarray', 'bigint', 'boolean','character']);
 SELECT has_function('pgr_withpointscost',
     ARRAY['text', 'text', 'anyarray', 'anyarray', 'boolean','character']);
+SELECT has_function('pgr_withpointscost',
+    ARRAY['text', 'text', 'text', 'boolean','character']);
 
 SELECT function_returns('pgr_withpointscost',
     ARRAY['text', 'text', 'bigint', 'bigint', 'boolean','character'],
@@ -25,6 +27,9 @@ SELECT function_returns('pgr_withpointscost',
     'setof record');
 SELECT function_returns('pgr_withpointscost',
     ARRAY['text', 'text', 'anyarray', 'anyarray', 'boolean','character'],
+    'setof record');
+SELECT function_returns('pgr_withpointscost',
+    ARRAY['text', 'text', 'text', 'boolean','character'],
     'setof record');
 
 
