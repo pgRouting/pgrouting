@@ -51,7 +51,6 @@ pgr_dijkstra(
         std::vector < int64_t > targets,
         bool only_cost,
         bool normal) {
-    pgassert((!combinations.empty() && normal) || (!sources.empty() && !targets.empty()));
     std::sort(sources.begin(), sources.end());
     sources.erase(
             std::unique(sources.begin(), sources.end()),
@@ -63,9 +62,10 @@ pgr_dijkstra(
             targets.end());
 
     pgrouting::Pgr_dijkstra< G > fn_dijkstra;
+    size_t n_goals = (std::numeric_limits<size_t>::max)();
     auto paths = combinations.empty()?
         fn_dijkstra.dijkstra(graph, sources, targets, only_cost)
-        : fn_dijkstra.dijkstra(graph, combinations, only_cost);
+        : fn_dijkstra.dijkstra(graph, combinations, only_cost, n_goals);
 
     if (!normal) {
         for (auto &path : paths) {
@@ -120,8 +120,6 @@ do_pgr_withPoints(
         pgassert(!(*return_tuples));
         pgassert((*return_count) == 0);
         pgassert(edges || edges_of_points);
-        pgassert(start_pidsArr);
-        pgassert(end_pidsArr);
 
         pgrouting::Pg_points_graph pg_graph(
                 std::vector<Point_on_edge_t>(
