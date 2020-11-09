@@ -29,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
    - put all data costs in one cost column and
    - a call is made to original code in _pgr_trspViaVertices without only the positive values
 */
-CREATE OR REPLACE FUNCTION pgr_trspViaVertices(
+--v3.0
+CREATE FUNCTION pgr_trspViaVertices(
     TEXT, -- edges SQL (required)
     ANYARRAY,  -- via vids (required)
     BOOLEAN, -- directed (required)

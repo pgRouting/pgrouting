@@ -34,7 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- SINGLE VERTEX
-CREATE OR REPLACE FUNCTION pgr_kruskalDD (
+--v3.0
+CREATE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
     NUMERIC,  -- distance
@@ -61,7 +62,8 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
-CREATE OR REPLACE FUNCTION pgr_kruskalDD (
+--v3.0
+CREATE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
     FLOAT,  -- distance
@@ -90,7 +92,8 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 -- MULTIPLE VERTICES
-CREATE OR REPLACE FUNCTION pgr_kruskalDD (
+--v3.0
+CREATE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
     ANYARRAY, -- root vertex
 
@@ -119,7 +122,8 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-CREATE OR REPLACE FUNCTION pgr_kruskalDD (
+--v3.0
+CREATE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
     ANYARRAY, -- root vertex
 

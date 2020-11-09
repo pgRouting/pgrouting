@@ -21,7 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_array_reverse(anyarray) RETURNS anyarray AS $$
+--v2.6
+CREATE FUNCTION _pgr_array_reverse(anyarray) RETURNS anyarray AS $$
 SELECT ARRAY(
     SELECT $1[i]
     FROM generate_subscripts($1,1) AS s(i)

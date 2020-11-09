@@ -29,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_edgeDisjointPaths
 ------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_edgeDisjointPaths(
+--v3.0
+CREATE FUNCTION _pgr_edgeDisjointPaths(
     TEXT,
     ANYARRAY,
     ANYARRAY,

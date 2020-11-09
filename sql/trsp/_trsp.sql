@@ -33,7 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------
 
 
-CREATE OR REPLACE FUNCTION _trsp(
+--v2.6
+CREATE FUNCTION _trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
     ANYARRAY,

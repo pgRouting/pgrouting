@@ -32,7 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   IF az > pi()/2 AND az < pi() OR az > 3 * pi()/2 THEN - then to the right
 */
 
-CREATE OR REPLACE FUNCTION pgr_findClosestEdge(
+--v3.0
+CREATE FUNCTION pgr_findClosestEdge(
     edges_sql text,
     point_geom geometry,
     tolerance float8,

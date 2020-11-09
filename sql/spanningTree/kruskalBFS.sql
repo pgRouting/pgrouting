@@ -33,7 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------
 
 
-CREATE OR REPLACE FUNCTION pgr_kruskalBFS(
+--v3.0
+CREATE FUNCTION pgr_kruskalBFS(
     TEXT,   -- Edge sql (required)
     BIGINT, -- root vertex (required)
 
@@ -63,7 +64,8 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-CREATE OR REPLACE FUNCTION pgr_kruskalBFS(
+--v3.0
+CREATE FUNCTION pgr_kruskalBFS(
     TEXT,     -- Edge sql (required)
     ANYARRAY, -- root vertices (required)
 

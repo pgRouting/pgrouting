@@ -2,40 +2,23 @@ name: Check files
 
 on:
   push:
-    branches-ignore:
-      - 'translations_*'
-    tags: []
   pull_request:
-    paths-ignore:
-      - '**.po'
 
 jobs:
   signature_check:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-        fail-fast: false
-        matrix:
-          releases: ["(2.6.0 2.6.1 2.6.2 2.6.3)","(3.0.0 3.0.1 3.0.2 3.0.3)","(3.1.0 3.1.1)"]
-          os: [ubuntu-latest]
-
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Signature files do not change within same minor
+      - name: Signatures are not removed
         run: |
-          tempvar=$(echo "${{ matrix.releases }}")
-          RELEASE=(${tempvar//[\(\)]/})
-          for value in "${RELEASE[@]}"; do
-            if [ "$value" == "${RELEASE[0]}" ]; then continue; fi
-            if [ $(diff "sql/sigs/pgrouting--${value}.sig" "sql/sigs/pgrouting--${RELEASE[0]}.sig" | wc -l) != "4" ] ;
-            then
-              echo "sql/sigs/pgrouting--${value}.sig sql/sigs/pgrouting--${RELEASE[0]}.sig are different";
-              exit 1;
-            fi
-          done
+          tools/scripts/test_signatures.sh
 
+  News_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: News file up to date
         run: |
           tools/release-scripts/notes2news.pl

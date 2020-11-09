@@ -50,7 +50,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ************************************************************************/
 
-CREATE OR REPLACE FUNCTION _pgr_onError(
+--v2.6
+CREATE FUNCTION _pgr_onError(
   IN errCond boolean,  -- true there is an error
   IN reportErrs int,   -- 0, 1 or 2
   IN fnName text,      -- function name that generates the error
@@ -103,7 +104,8 @@ IS 'pgRouting internal function';
 
 ************************************************************************/
 
-CREATE OR REPLACE FUNCTION _pgr_msg(IN msgKind int, IN fnName text, IN msg text default '---->OK')
+--v2.6
+CREATE FUNCTION _pgr_msg(IN msgKind int, IN fnName text, IN msg text default '---->OK')
   RETURNS void AS
 $BODY$
 BEGIN
@@ -140,7 +142,8 @@ IS 'pgRouting internal function';
      Created: 2014/JUL/28
 ************************************************************************/
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnType(sname text, tname text, cname text,
+--v2.6
+CREATE FUNCTION _pgr_getColumnType(sname text, tname text, cname text,
      IN reportErrs int default 0, IN fnName text default '_pgr_getColumnType')
 RETURNS text AS
 $BODY$
@@ -167,7 +170,8 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnType(tab text, col text,
+--v2.6
+CREATE FUNCTION _pgr_getColumnType(tab text, col text,
      IN reportErrs int default 0, IN fnName text default '_pgr_getColumnType')
 RETURNS text AS
 $BODY$
@@ -215,7 +219,8 @@ IS 'pgRouting internal function';
   HISTORY
      Created: 2014/JUL/27
 ************************************************************************/
-CREATE OR REPLACE FUNCTION _pgr_get_statement(o_sql text)
+--v2.6
+CREATE FUNCTION _pgr_get_statement(o_sql text)
 RETURNS text AS
 $BODY$
 DECLARE
@@ -252,7 +257,8 @@ IS 'pgRouting internal function';
   HISTORY
      Created: 2014/JUL/27
 ************************************************************************/
-CREATE OR REPLACE FUNCTION _pgr_checkVertTab(vertname text, columnsArr  text[],
+--v2.6
+CREATE FUNCTION _pgr_checkVertTab(vertname text, columnsArr  text[],
     IN reportErrs int default 1, IN fnName text default '_pgr_checkVertTab',
     OUT sname text,OUT vname text)
 RETURNS record AS

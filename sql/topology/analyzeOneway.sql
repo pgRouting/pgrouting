@@ -104,7 +104,8 @@ a network that is not properly noded.
 
 */
 
-CREATE OR REPLACE FUNCTION pgr_analyzeOneway(
+--v2.6
+CREATE FUNCTION pgr_analyzeOneway(
    TEXT,
    TEXT[], -- s_in_rules (required)
    TEXT[], -- s_out_rules (required)

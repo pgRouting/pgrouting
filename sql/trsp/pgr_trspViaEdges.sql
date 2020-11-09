@@ -22,7 +22,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-create or replace function pgr_trspViaEdges(
+--v3.0
+--v3.0
+CREATE FUNCTION pgr_trspViaEdges(
     text,      -- SQL (required)
     integer[], -- eids (required)
     FLOAT[],   -- pcts (required)

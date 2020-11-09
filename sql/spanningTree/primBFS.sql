@@ -29,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- SINGLE VERTEX
-CREATE OR REPLACE FUNCTION pgr_primBFS(
+--v3.0
+CREATE FUNCTION pgr_primBFS(
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
 
@@ -60,7 +61,8 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 -- MULTIPLE VERTICES
-CREATE OR REPLACE FUNCTION pgr_primBFS(
+--v3.0
+CREATE FUNCTION pgr_primBFS(
     TEXT,     -- Edge sql
     ANYARRAY, -- root vertices
 

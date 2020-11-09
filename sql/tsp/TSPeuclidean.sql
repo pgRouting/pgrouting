@@ -30,7 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 
 
-CREATE OR REPLACE FUNCTION pgr_TSPeuclidean(
+--v3.0
+CREATE FUNCTION pgr_TSPeuclidean(
     TEXT, -- coordinates_sql (required)
 
     start_id BIGINT DEFAULT 0,

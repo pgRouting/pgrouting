@@ -31,7 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- ONE TO ONE
-CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
+--v2.6
+CREATE FUNCTION pgr_bdDijkstraCost(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid (required)
     BIGINT, -- to_vid (required)
@@ -52,7 +53,8 @@ ROWS 1000;
 
 
 -- ONE TO MANY
-CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
+--v2.6
+CREATE FUNCTION pgr_bdDijkstraCost(
     TEXT,     -- edges_sql (required)
     BIGINT,   -- from_vid (required)
     ANYARRAY, -- to_vids (required)
@@ -73,7 +75,8 @@ ROWS 1000;
 
 
 -- MANY TO ONE
-CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
+--v2.6
+CREATE FUNCTION pgr_bdDijkstraCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     BIGINT,   -- to_vid (required)
@@ -94,7 +97,8 @@ ROWS 1000;
 
 
 -- MANY TO MANY
-CREATE OR REPLACE FUNCTION pgr_bdDijkstraCost(
+--v2.6
+CREATE FUNCTION pgr_bdDijkstraCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     ANYARRAY, -- to_vids (required)
