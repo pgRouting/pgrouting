@@ -33,7 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ----------------------
 
 
-CREATE OR REPLACE FUNCTION  _pgr_withPointsVia(
+--v2.6
+CREATE FUNCTION  _pgr_withPointsVia(
     sql TEXT,
     via_edges BIGINT[],
     fraction FLOAT[],

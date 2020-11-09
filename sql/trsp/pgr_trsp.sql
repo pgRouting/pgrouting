@@ -29,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
    - put all data costs in one cost column and
    - a call is made to trsp without only the positive values
 */
-CREATE OR REPLACE FUNCTION pgr_trsp(
+--v3.0
+CREATE FUNCTION pgr_trsp(
     TEXT, -- edges SQL (required)
     INTEGER, -- from_vid (required)
     INTEGER, -- to_vid (required)
@@ -115,7 +116,8 @@ ROWS 1000;
     - with restrictions
       - calls original trsp code
 */
-CREATE OR REPLACE FUNCTION pgr_trsp(
+--v3.0
+CREATE FUNCTION pgr_trsp(
     TEXT,    -- sql (required)
     INTEGER, -- source_eid (required)
     FLOAT,   -- source_pos (required)

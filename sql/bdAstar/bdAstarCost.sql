@@ -29,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 
 -- one to one
-CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
+--v2.6
+CREATE FUNCTION pgr_bdAstarCost(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid (required)
     BIGINT, -- to_vid (required)
@@ -53,7 +54,8 @@ ROWS 1000;
 
 
 -- one to many
-CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
+--v2.6
+CREATE FUNCTION pgr_bdAstarCost(
     TEXT,     -- edges_sql (required)
     BIGINT,   -- from_vid (required)
     ANYARRAY, -- to_vidd (required)
@@ -77,7 +79,8 @@ ROWS 1000;
 
 
 -- many to one
-CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
+--v2.6
+CREATE FUNCTION pgr_bdAstarCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     BIGINT,   -- to_vid (required)
@@ -102,7 +105,8 @@ ROWS 1000;
 
 
 -- many to many
-CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
+--v2.6
+CREATE FUNCTION pgr_bdAstarCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     ANYARRAY, -- to_vids (required)
@@ -133,7 +137,7 @@ IS 'pgr_bdAstarCost(One to One)
   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
   - From vertex identifier
   - To vertex identifier
-- Optional Parameters: 
+- Optional Parameters:
   - directed := true
   - heuristic := 5
   - factor := 1
@@ -149,7 +153,7 @@ IS 'pgr_bdAstarCost(One to Many)
   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
   - From vertex identifier
   - To ARRAY[vertices identifiers]
-- Optional Parameters: 
+- Optional Parameters:
   - directed := true
   - heuristic := 5
   - factor := 1
@@ -165,7 +169,7 @@ IS 'pgr_bdAstarCost(Many to One)
   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
   - From ARRAY[vertices identifiers]
   - To vertex identifier
-- Optional Parameters: 
+- Optional Parameters:
   - directed := true
   - heuristic := 5
   - factor := 1
@@ -181,7 +185,7 @@ IS 'pgr_bdAstarCost(Many to Many)
   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
   - From ARRAY[vertices identifiers]
   - To ARRAY[vertices identifiers]
-- Optional Parameters: 
+- Optional Parameters:
   - directed := true
   - heuristic := 5
   - factor := 1

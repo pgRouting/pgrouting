@@ -22,7 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_endPoint(g geometry)
+--v2.6
+CREATE FUNCTION _pgr_endPoint(g geometry)
 RETURNS geometry AS
 $$
 SELECT CASE WHEN geometryType($1) ~ '^MULTI' THEN ST_EndPoint(st_geometryN($1,1))

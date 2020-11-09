@@ -27,7 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 ---------------
 
-CREATE OR REPLACE FUNCTION _pgr_ksp(
+--v2.6
+CREATE FUNCTION _pgr_ksp(
     edges_sql TEXT,
     start_vid BIGINT,
     end_vid BIGINT,

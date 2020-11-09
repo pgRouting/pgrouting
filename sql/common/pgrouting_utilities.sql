@@ -49,7 +49,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
-CREATE OR REPLACE FUNCTION _pgr_getTableName(IN tab text, IN reportErrs int default 0, IN fnName text default '_pgr_getTableName', OUT sname text,OUT tname text)
+--v2.6
+CREATE FUNCTION _pgr_getTableName(IN tab text, IN reportErrs int default 0, IN fnName text default '_pgr_getTableName', OUT sname text,OUT tname text)
   RETURNS RECORD AS
 $$
 DECLARE
@@ -158,7 +159,8 @@ IS 'pgRouting internal function';
 */
 
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnName(sname text, tname text, col text, IN reportErrs int default 1, IN fnName text default '_pgr_getColumnName')
+--v2.6
+CREATE FUNCTION _pgr_getColumnName(sname text, tname text, col text, IN reportErrs int default 1, IN fnName text default '_pgr_getColumnName')
 RETURNS text AS
 $BODY$
 DECLARE
@@ -185,7 +187,8 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 
-CREATE OR REPLACE FUNCTION _pgr_getColumnName(tab text, col text, IN reportErrs int default 1, IN fnName text default '_pgr_getColumnName')
+--v2.6
+CREATE FUNCTION _pgr_getColumnName(tab text, col text, IN reportErrs int default 1, IN fnName text default '_pgr_getColumnName')
 RETURNS text AS
 $BODY$
 DECLARE
@@ -229,7 +232,8 @@ IS 'pgRouting internal function';
   HISTORY
      Modified: 2013/08/19  for handling schemas
 */
-CREATE OR REPLACE FUNCTION _pgr_isColumnInTable(tab text, col text)
+--v2.6
+CREATE FUNCTION _pgr_isColumnInTable(tab text, col text)
 RETURNS boolean AS
 $BODY$
 DECLARE
@@ -262,7 +266,8 @@ IS 'pgRouting internal function';
                    when column "col" is not indexed
 */
 
-CREATE OR REPLACE FUNCTION _pgr_isColumnIndexed(sname text, tname text, cname text,
+--v2.6
+CREATE FUNCTION _pgr_isColumnIndexed(sname text, tname text, cname text,
       IN reportErrs int default 1, IN fnName text default '_pgr_isColumnIndexed')
 RETURNS boolean AS
 $BODY$
@@ -323,7 +328,8 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
-CREATE OR REPLACE FUNCTION _pgr_isColumnIndexed(tab text, col text,
+--v2.6
+CREATE FUNCTION _pgr_isColumnIndexed(tab text, col text,
       IN reportErrs int default 1, IN fnName text default '_pgr_isColumnIndexed')
 RETURNS boolean AS
 $BODY$
@@ -369,7 +375,8 @@ IS 'pgRouting internal function';
 
 */
 
-create or replace function _pgr_quote_ident(idname text)
+--v2.6
+CREATE FUNCTION _pgr_quote_ident(idname text)
     returns text as
 $body$
 declare
@@ -404,7 +411,8 @@ IS 'pgRouting internal function';
  * needed because postgis 2.1 deprecates some function names and
  * we need to detect the version at runtime
 */
-CREATE OR REPLACE FUNCTION _pgr_versionless(v1 text, v2 text)
+--v2.6
+CREATE FUNCTION _pgr_versionless(v1 text, v2 text)
   RETURNS boolean AS
 $BODY$
 

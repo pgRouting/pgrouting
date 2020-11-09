@@ -73,7 +73,6 @@ add_custom_target(PGROUTING_SQL_FILE ALL
 #-------------------
 # TARGET: update_files
 #-------------------
-
 if (PGROUTING_DEBUG)
     message(STATUS "OLD_SIGNATURES=")
     foreach (s ${OLD_SIGNATURES})
@@ -82,16 +81,18 @@ if (PGROUTING_DEBUG)
 endif()
 
 foreach (old_s ${OLD_SIGNATURES})
+    string(REGEX REPLACE "^([0-9]+\\.[0-9]+).*" "\\1" minor_s ${old_s})
     SET (UPDATE_FILES ${UPDATE_FILES} pgrouting--${old_s}--${PGROUTING_VERSION}.sql)
     SET (PGROUTING_SQL_FILES_TO_INSTALL ${PGROUTING_SQL_FILES_TO_INSTALL} "${CMAKE_CURRENT_BINARY_DIR}/pgrouting--${old_s}--${PGROUTING_VERSION}.sql")
     add_custom_command(
         OUTPUT pgrouting--${old_s}--${PGROUTING_VERSION}.sql
-        COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-update-files1.pl ${old_s} ${PGROUTING_DEBUG}
+
+        COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-update-files1.pl "${PGROUTING_VERSION}" "${old_s}" "${CMAKE_CURRENT_BINARY_DIR}/sigs" "${CMAKE_CURRENT_BINARY_DIR}" "${PGROUTING_DEBUG}"
         DEPENDS
         ./scripts/build-extension-update-files1.pl
         ${PGROUTING_CURRENT_SQL_FILE}
         PGROUTING_SQL_FILE
-        ./sigs/pgrouting--${old_s}.sig
+        ./sigs/pgrouting--${minor_s}.sig
         )
 endforeach()
 

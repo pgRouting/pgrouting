@@ -37,7 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_connectedComponents
 --------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_connectedComponents(
+--v3.0
+CREATE FUNCTION _pgr_connectedComponents(
     edges_sql TEXT,
 
     OUT seq BIGINT,

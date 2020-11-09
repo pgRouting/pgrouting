@@ -84,7 +84,8 @@ Makes more checks:
 -----------------------
 
 
-CREATE OR REPLACE FUNCTION pgr_analyzeGraph(
+--v2.6
+CREATE FUNCTION pgr_analyzeGraph(
     TEXT, -- edge table (required)
     double precision, -- tolerance (required)
 

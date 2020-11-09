@@ -26,7 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_drivingDistance
 ----------------------
 
-CREATE OR REPLACE FUNCTION _pgr_drivingDistance(
+--v3.0
+CREATE FUNCTION _pgr_drivingDistance(
     edges_sql TEXT,
     start_vids ANYARRAY,
     distance FLOAT,

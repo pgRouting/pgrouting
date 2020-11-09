@@ -27,7 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_lineGraph(
+--v2.6
+CREATE FUNCTION pgr_lineGraph(
     TEXT, -- edges_sql (required)
 
     directed BOOLEAN DEFAULT true,

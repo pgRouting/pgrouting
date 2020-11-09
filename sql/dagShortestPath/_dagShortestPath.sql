@@ -37,7 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --_pgr_dagShortestPath
 ---------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_dagShortestPath(
+--v3.0
+CREATE FUNCTION _pgr_dagShortestPath(
     TEXT,
     ANYARRAY,
     ANYARRAY,

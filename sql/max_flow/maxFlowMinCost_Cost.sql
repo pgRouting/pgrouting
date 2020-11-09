@@ -32,7 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ----------------------------
 
 --    ONE TO ONE
-CREATE OR REPLACE FUNCTION pgr_maxFlowMinCost_Cost(
+--v3.0
+CREATE FUNCTION pgr_maxFlowMinCost_Cost(
     TEXT,   -- edges_sql (required)
     BIGINT,   -- source (required)
     BIGINT)   -- target (required)
@@ -46,7 +47,8 @@ LANGUAGE SQL VOLATILE;
 
 
 --    ONE TO MANY
-CREATE OR REPLACE FUNCTION pgr_maxFlowMinCost_Cost(
+--v3.0
+CREATE FUNCTION pgr_maxFlowMinCost_Cost(
     TEXT,   -- edges_sql (required)
     BIGINT,   -- source (required)
     ANYARRAY) -- targets (required)
@@ -60,7 +62,8 @@ LANGUAGE SQL VOLATILE;
 
 
 --    MANY TO ONE
-CREATE OR REPLACE FUNCTION pgr_maxFlowMinCost_Cost(
+--v3.0
+CREATE FUNCTION pgr_maxFlowMinCost_Cost(
     TEXT,   -- edges_sql (required)
     ANYARRAY, -- sources (required)
     BIGINT)   -- target (required)
@@ -74,7 +77,8 @@ LANGUAGE SQL VOLATILE;
 
 
 --    MANY TO MANY
-CREATE OR REPLACE FUNCTION pgr_maxFlowMinCost_Cost(
+--v3.0
+CREATE FUNCTION pgr_maxFlowMinCost_Cost(
     TEXT,   -- edges_sql (required)
     ANYARRAY, -- sources (required)
     ANYARRAY) -- targets (required)
