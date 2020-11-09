@@ -27,7 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_articulationPoints(
+--v3.0
+CREATE FUNCTION pgr_articulationPoints(
     TEXT,   -- edges_sql (required)
 
     OUT node BIGINT)

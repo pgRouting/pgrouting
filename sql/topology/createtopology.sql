@@ -53,7 +53,8 @@ Last changes: 2013-03-22
 -----------------------
 
 
-CREATE OR REPLACE FUNCTION pgr_createTopology(
+--v2.6
+CREATE FUNCTION pgr_createTopology(
     TEXT, -- edge table (required)
     double precision, -- tolerance (required)
     the_geom TEXT default 'the_geom',

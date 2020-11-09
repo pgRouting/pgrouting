@@ -55,7 +55,8 @@ Last changes: 2013-03-22
 ---------------------------
 
 
-CREATE OR REPLACE FUNCTION pgr_createverticestable(
+--v2.6
+CREATE FUNCTION pgr_createverticestable(
    TEXT,  -- edge table (required)
    the_geom TEXT DEFAULT 'the_geom'::TEXT,
    source TEXT DEFAULT 'source'::TEXT,

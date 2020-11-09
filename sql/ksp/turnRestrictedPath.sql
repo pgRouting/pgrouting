@@ -27,7 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_turnRestrictedPath(
+--v3.0
+CREATE FUNCTION pgr_turnRestrictedPath(
     TEXT,   -- edges_sql (required)
     TEXT,   -- restrictions_sql (required)
     BIGINT, -- start_vertex (required)

@@ -31,7 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_bridges
 --------------
 
-CREATE OR REPLACE FUNCTION _pgr_bridges(
+--v3.0
+CREATE FUNCTION _pgr_bridges(
     edges_sql TEXT,
 
     OUT seq INTEGER,

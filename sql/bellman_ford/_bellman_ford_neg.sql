@@ -28,7 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_bellmanFordNeg
 -------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_bellmanFordNeg(
+--v3.0
+CREATE FUNCTION _pgr_bellmanFordNeg(
     edges_sql     TEXT,
     neg_edges_sql TEXT,
     from_vid      ANYARRAY,
