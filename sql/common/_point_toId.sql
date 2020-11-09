@@ -39,7 +39,8 @@ Last changes: 2013-03-22
 2013-08-19: handling schemas
 */
 
-CREATE OR REPLACE FUNCTION _pgr_pointToId(
+--v2.6
+CREATE FUNCTION _pgr_pointToId(
     point geometry,
     tolerance double precision,
     vertname text,

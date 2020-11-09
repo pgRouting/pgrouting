@@ -27,7 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
+--v2.6
+CREATE FUNCTION _pgr_pickDeliverEuclidean (
     TEXT, -- orders_sql
     TEXT, -- vehicles_sql
 

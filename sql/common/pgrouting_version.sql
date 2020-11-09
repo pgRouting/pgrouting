@@ -31,7 +31,8 @@ THE SOFTWARE.
 
 ********************************************************************PGR-MIT*/
 
-CREATE OR REPLACE FUNCTION pgr_version()
+--v3.0
+CREATE FUNCTION pgr_version()
 RETURNS TABLE(
         "version" varchar,
         tag varchar,

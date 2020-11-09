@@ -32,7 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------
 
 
-CREATE OR REPLACE FUNCTION pgr_aStar(
+--v2.6
+CREATE FUNCTION pgr_aStar(
     TEXT,     -- edges sql (required)
     BIGINT,   -- from_vid (required)
     BIGINT,   -- to_vid (required)
@@ -59,7 +60,8 @@ COST 100
 ROWS 1000;
 
 
-CREATE OR REPLACE FUNCTION pgr_aStar(
+--v2.6
+CREATE FUNCTION pgr_aStar(
     TEXT,       -- edges sql (required)
     BIGINT,     -- from_vid (required)
     ANYARRAY,   -- to_vids (required)
@@ -87,7 +89,8 @@ COST 100
 ROWS 1000;
 
 
-CREATE OR REPLACE FUNCTION pgr_aStar(
+--v2.6
+CREATE FUNCTION pgr_aStar(
     TEXT,       -- edges sql (required)
     ANYARRAY,   -- from_vids (required)
     BIGINT,     -- to_vid (required)
@@ -115,7 +118,8 @@ COST 100
 ROWS 1000;
 
 
-CREATE OR REPLACE FUNCTION pgr_aStar(
+--v2.6
+CREATE FUNCTION pgr_aStar(
     TEXT,       -- edges sql (required)
     ANYARRAY,   -- from_vids (required)
     ANYARRAY,   -- to_vids (required)

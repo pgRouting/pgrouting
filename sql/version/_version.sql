@@ -24,7 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_boost_version()
+--v3.0
+CREATE FUNCTION _pgr_boost_version()
 RETURNS TEXT AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
@@ -34,7 +35,8 @@ COMMENT ON FUNCTION _pgr_boost_version() IS
 
 ---
 
-CREATE OR REPLACE FUNCTION _pgr_build_type()
+--v3.0
+CREATE FUNCTION _pgr_build_type()
 RETURNS TEXT AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
@@ -44,7 +46,8 @@ COMMENT ON FUNCTION _pgr_build_type() IS
 
 ---
 
-CREATE OR REPLACE FUNCTION _pgr_compilation_date()
+--v3.0
+CREATE FUNCTION _pgr_compilation_date()
 RETURNS TEXT AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
@@ -54,7 +57,8 @@ COMMENT ON FUNCTION _pgr_compilation_date() IS
 
 ---
 
-CREATE OR REPLACE FUNCTION _pgr_compiler_version()
+--v3.0
+CREATE FUNCTION _pgr_compiler_version()
 RETURNS TEXT AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
@@ -64,7 +68,8 @@ COMMENT ON FUNCTION _pgr_compiler_version() IS
 
 ---
 
-CREATE OR REPLACE FUNCTION _pgr_git_hash()
+--v3.0
+CREATE FUNCTION _pgr_git_hash()
 RETURNS TEXT AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
@@ -74,7 +79,8 @@ COMMENT ON FUNCTION _pgr_compilation_date() IS
 
 ---
 
-CREATE OR REPLACE FUNCTION _pgr_lib_version()
+--v3.0
+CREATE FUNCTION _pgr_lib_version()
 RETURNS TEXT AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
@@ -85,7 +91,8 @@ COMMENT ON FUNCTION _pgr_lib_version() IS
 
 ---
 
-CREATE OR REPLACE FUNCTION _pgr_operating_system()
+--v3.0
+CREATE FUNCTION _pgr_operating_system()
 RETURNS TEXT AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
@@ -94,7 +101,8 @@ COMMENT ON FUNCTION _pgr_operating_system() IS
 'pgRouting internal function';
 ---
 
-CREATE OR REPLACE FUNCTION _pgr_pgsql_version()
+--v3.0
+CREATE FUNCTION _pgr_pgsql_version()
 RETURNS TEXT AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;

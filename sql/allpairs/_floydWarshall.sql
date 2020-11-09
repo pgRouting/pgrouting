@@ -32,7 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_floydWarshall
 ---------------------
 
-CREATE OR REPLACE FUNCTION _pgr_floydWarshall(
+--v3.0
+CREATE FUNCTION _pgr_floydWarshall(
     edges_sql TEXT,
     directed BOOLEAN,
 

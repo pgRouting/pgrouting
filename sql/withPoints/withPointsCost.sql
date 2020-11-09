@@ -34,7 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- ONE TO ONE
-CREATE OR REPLACE FUNCTION pgr_withPointsCost(
+--v2.6
+CREATE FUNCTION pgr_withPointsCost(
     TEXT, -- edges_sql (required)
     TEXT, -- points_sql (required)
     BIGINT, -- end_pid (required)
@@ -57,7 +58,8 @@ ROWS 1000;
 
 
 -- ONE TO MANY
-CREATE OR REPLACE FUNCTION pgr_withPointsCost(
+--v2.6
+CREATE FUNCTION pgr_withPointsCost(
     TEXT, -- edges_sql (required)
     TEXT, -- points_sql (required)
     BIGINT, -- end_pid (required)
@@ -80,7 +82,8 @@ ROWS 1000;
 
 
 -- MANY TO ONE
-CREATE OR REPLACE FUNCTION pgr_withPointsCost(
+--v2.6
+CREATE FUNCTION pgr_withPointsCost(
     TEXT, -- edges_sql (required)
     TEXT, -- points_sql (required)
     ANYARRAY, -- end_pid (required)
@@ -103,7 +106,8 @@ ROWS 1000;
 
 
 -- MANY TO MANY
-CREATE OR REPLACE FUNCTION pgr_withPointsCost(
+--v2.6
+CREATE FUNCTION pgr_withPointsCost(
     TEXT, -- edges_sql (required)
     TEXT, -- points_sql (required)
     ANYARRAY, -- end_pid (required)

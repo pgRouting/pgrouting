@@ -32,7 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 --ONE TO ONE
-CREATE OR REPLACE FUNCTION pgr_bellmanFord(
+--v3.0
+CREATE FUNCTION pgr_bellmanFord(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid (required)
     BIGINT, -- to_vid (required)
@@ -55,7 +56,8 @@ LANGUAGE SQL VOLATILE STRICT;
 
 
 --ONE TO MANY
-CREATE OR REPLACE FUNCTION pgr_bellmanFord(
+--v3.0
+CREATE FUNCTION pgr_bellmanFord(
     TEXT,     -- edges_sql (required)
     BIGINT,   -- from_vid (required)
     ANYARRAY, -- to_vids (required)
@@ -80,7 +82,8 @@ LANGUAGE SQL VOLATILE STRICT;
 
 
 --MANY TO ONE
-CREATE OR REPLACE FUNCTION pgr_bellmanFord(
+--v3.0
+CREATE FUNCTION pgr_bellmanFord(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     BIGINT,   -- to_vid (required)
@@ -104,7 +107,8 @@ LANGUAGE SQL VOLATILE STRICT;
 
 
 --MANY TO MANY
-CREATE OR REPLACE FUNCTION pgr_bellmanFord(
+--v3.0
+CREATE FUNCTION pgr_bellmanFord(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     ANYARRAY, -- to_vids (required)
