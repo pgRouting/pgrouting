@@ -64,7 +64,33 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c VOLATILE STRICT;
 
+
+CREATE OR REPLACE FUNCTION _pgr_astar(
+    edges_sql TEXT, -- XY edges sql
+    combinations_sql TEXT,
+
+    directed BOOLEAN DEFAULT true,
+    heuristic INTEGER DEFAULT 5,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
+    only_cost BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE c VOLATILE STRICT;
+
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_astar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_astar(TEXT, TEXT, BOOLEAN, INTEGER, FLOAT, FLOAT, BOOLEAN)
 IS 'pgRouting internal function';
