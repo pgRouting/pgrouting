@@ -29,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 
 
-CREATE OR REPLACE FUNCTION _pgr_topologicalSort(
+--v3.0
+CREATE FUNCTION _pgr_topologicalSort(
     edges_sql TEXT,
 
     OUT seq INTEGER,

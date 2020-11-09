@@ -24,7 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_version()
+--v3.0
+CREATE FUNCTION pgr_version()
 RETURNS TEXT AS
 $BODY$
     SELECT '${PGROUTING_VERSION}'::varchar AS pgr_version;

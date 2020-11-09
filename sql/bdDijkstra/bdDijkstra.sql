@@ -31,7 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- ONE TO ONE
-CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
+--v2.6
+CREATE FUNCTION pgr_bdDijkstra(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid
     BIGINT, -- to_vid
@@ -55,7 +56,8 @@ ROWS 1000;
 
 
 -- ONE TO MANY
-CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
+--v2.6
+CREATE FUNCTION pgr_bdDijkstra(
     TEXT,    -- edges_sql (required)
     BIGINT,   -- from_vid (required)
     ANYARRAY, -- to_vids (required)
@@ -80,7 +82,8 @@ ROWS 1000;
 
 
 -- MANY TO ONE
-CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
+--v2.6
+CREATE FUNCTION pgr_bdDijkstra(
     TEXT,    -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     BIGINT,   -- to_vid (required)
@@ -106,7 +109,8 @@ ROWS 1000;
 
 
 -- MANY TO MANY
-CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
+--v2.6
+CREATE FUNCTION pgr_bdDijkstra(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     ANYARRAY, -- to_vids (required)
@@ -138,7 +142,7 @@ IS 'pgr_bdDijkstra(One to One)
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From vertex identifier
   - To vertex identifier
-- Optional Parameters: 
+- Optional Parameters:
   - directed := true
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html

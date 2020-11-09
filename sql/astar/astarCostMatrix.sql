@@ -32,7 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------------------
 
 
-CREATE OR REPLACE FUNCTION pgr_aStarCostMatrix(
+--v2.6
+CREATE FUNCTION pgr_aStarCostMatrix(
     TEXT,     -- edges sql (required)
     ANYARRAY, -- vids (required)
 
@@ -56,12 +57,12 @@ ROWS 1000;
 
 -- COMMENT
 
-COMMENT ON FUNCTION pgr_aStarCostMatrix(TEXT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) 
+COMMENT ON FUNCTION pgr_aStarCostMatrix(TEXT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT)
 IS 'pgr_aStarCostMatrix
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
     - ARRAY [vertices identifiers]
-- Optional Parameters: 
+- Optional Parameters:
     - directed := true
     - heuristic := 5
     - factor := 1

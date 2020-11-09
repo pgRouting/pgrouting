@@ -30,7 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------------------
 
 
-CREATE OR REPLACE FUNCTION pgr_nodeNetwork(
+--v2.6
+CREATE FUNCTION pgr_nodeNetwork(
   TEXT, -- edge table (required)
   DOUBLE PRECISION, -- tolerance (required)
   id TEXT DEFAULT 'id',

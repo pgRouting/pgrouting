@@ -40,7 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ------------------
 
 
-CREATE OR REPLACE FUNCTION _pgr_withPoints(
+--v2.6
+CREATE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
     start_pids ANYARRAY,

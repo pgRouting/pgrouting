@@ -45,6 +45,12 @@ set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_LIB_VERSION}")
 
 string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d")
 
+set(MINORS 3.0 2.6)
+set(OLD_SIGNATURES
+    3.0.2 3.0.1 3.0.0
+    2.6.3 2.6.2 2.6.1 2.6.0
+    )
+
 
 
 #=============================================
@@ -61,7 +67,7 @@ include(pgr/Configure)
 # minimum versions
 #---------------------------------------------
 set(DOXYGEN_MINIMUM_VERSION "1.7")
-set(SPHINX_MINIMUM_VERSION "1.1")
+set(SPHINX_MINIMUM_VERSION "1.8")
 set(POSTGRESQL_MINIMUM_VERSION "9.2.0")
 set(BOOST_MINIMUM_VERSION "1.53")
 set(POSTGIS_MINIMUM_VERSION "2.0.0")

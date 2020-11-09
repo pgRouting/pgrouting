@@ -28,7 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_bdDijkstraCostMatrix
 -----------------------------
 
-CREATE OR REPLACE FUNCTION pgr_bdDijkstraCostMatrix(
+--v2.6
+CREATE FUNCTION pgr_bdDijkstraCostMatrix(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- vids (required)
 
@@ -48,7 +49,7 @@ ROWS 1000;
 
 -- COMMENT
 
-COMMENT ON FUNCTION pgr_bdDijkstraCostMatrix(TEXT, ANYARRAY, BOOLEAN) 
+COMMENT ON FUNCTION pgr_bdDijkstraCostMatrix(TEXT, ANYARRAY, BOOLEAN)
 IS 'pgr_bdDijkstraCostMatrix
 - EXPERIMENTAL
 - Parameters:
