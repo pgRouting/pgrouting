@@ -29,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- ONE to ONE
-CREATE OR REPLACE FUNCTION _pgr_trsp(
+--v2.6
+CREATE FUNCTION _pgr_trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
     BIGINT, -- start_vid
@@ -59,7 +60,8 @@ ROWS 1000;
 
 
 -- ONE to MANY
-CREATE OR REPLACE FUNCTION _pgr_trsp(
+--v2.6
+CREATE FUNCTION _pgr_trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
     BIGINT, -- start_vid
@@ -90,7 +92,8 @@ ROWS 1000;
 
 
 -- MANY to ONE
-CREATE OR REPLACE FUNCTION _pgr_trsp(
+--v2.6
+CREATE FUNCTION _pgr_trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
     ANYARRAY, -- start_vids
@@ -121,7 +124,8 @@ ROWS 1000;
 
 
 -- MANY to MANY
-CREATE OR REPLACE FUNCTION _pgr_trsp(
+--v2.6
+CREATE FUNCTION _pgr_trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
     ANYARRAY, -- start_vids

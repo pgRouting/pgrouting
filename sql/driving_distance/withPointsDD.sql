@@ -23,7 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 -- SINGLE
-CREATE OR REPLACE FUNCTION pgr_withPointsDD(
+--v2.6
+CREATE FUNCTION pgr_withPointsDD(
     TEXT,   --edges_sql (required)
     TEXT,   -- points_sql (required)
     BIGINT, -- from_vid (required)
@@ -48,7 +49,8 @@ COST 100
 ROWS 1000;
 
 -- MULTIPLE
-CREATE OR REPLACE FUNCTION pgr_withPointsDD(
+--v2.6
+CREATE FUNCTION pgr_withPointsDD(
     TEXT,     --edges_sql (required)
     TEXT,     -- points_sql (required)
     ANYARRAY, -- from_vid (required)

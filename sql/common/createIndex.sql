@@ -48,7 +48,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
      Created: 2014/JUL/28
 ************************************************************************/
 
-CREATE OR REPLACE FUNCTION _pgr_createIndex(
+--v2.6
+CREATE FUNCTION _pgr_createIndex(
     sname text, tname text, colname text, indext text,
     IN reportErrs int default 1, IN fnName text default '_pgr_createIndex')
 RETURNS void AS
@@ -93,7 +94,8 @@ $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;
 
 
-CREATE OR REPLACE FUNCTION _pgr_createIndex(tabname text, colname text, indext text,
+--v2.6
+CREATE FUNCTION _pgr_createIndex(tabname text, colname text, indext text,
     IN reportErrs int default 1, IN fnName text default '_pgr_createIndex')
 RETURNS void AS
 $BODY$

@@ -29,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_dijkstraVia
 ------------------
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstraVia(
+--v3.0
+CREATE FUNCTION _pgr_dijkstraVia(
     edges_sql TEXT,
     via_vids ANYARRAY,
     directed BOOLEAN,

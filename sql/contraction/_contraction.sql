@@ -33,7 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 --------------------
 
-CREATE OR REPLACE FUNCTION _pgr_contraction(
+--v3.0
+CREATE FUNCTION _pgr_contraction(
     edges_sql TEXT,
     contraction_order BIGINT[],
     max_cycles INTEGER DEFAULT 1,

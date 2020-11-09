@@ -26,7 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 -- ONE to ONE
-CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
+--v2.6
+CREATE FUNCTION pgr_edgeDisjointPaths(
     TEXT,   --edges_sql (required)
     BIGINT, -- From_vid (required)
     BIGINT, -- to_vid (required)
@@ -49,7 +50,8 @@ LANGUAGE SQL VOLATILE STRICT;
 
 
 -- ONE to MANY
-CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
+--v2.6
+CREATE FUNCTION pgr_edgeDisjointPaths(
     TEXT,     --edges_sql (required)
     BIGINT,   -- From_vid (required)
     ANYARRAY, -- to_vids (required)
@@ -74,7 +76,8 @@ LANGUAGE SQL VOLATILE STRICT;
 
 
 -- MANY to ONE
-CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
+--v2.6
+CREATE FUNCTION pgr_edgeDisjointPaths(
     TEXT,     --edges_sql (required)
     ANYARRAY, -- From_vids (required)
     BIGINT,   -- to_vid (required)
@@ -99,7 +102,8 @@ LANGUAGE SQL VOLATILE STRICT;
 
 
 -- MANY to MANY
-CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
+--v2.6
+CREATE FUNCTION pgr_edgeDisjointPaths(
     TEXT,     --edges_sql (required)
     ANYARRAY, -- From_vids (required)
     ANYARRAY, -- to_vids (required)

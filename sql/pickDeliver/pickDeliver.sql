@@ -27,7 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_pickDeliver(
+--v3.0
+CREATE FUNCTION pgr_pickDeliver(
     TEXT, -- orders_sql (required)
     TEXT, -- vehicles_sql (required)
     TEXT, -- matrix_cell_sql

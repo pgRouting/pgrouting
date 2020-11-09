@@ -30,7 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -------------
 
 
-CREATE OR REPLACE FUNCTION _pgr_TSP(
+--v3.0
+CREATE FUNCTION _pgr_TSP(
     matrix_row_sql TEXT,
     start_id BIGINT DEFAULT 0,
     end_id BIGINT DEFAULT 0,
