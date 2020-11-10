@@ -45,6 +45,7 @@ template < class G >
 std::deque<Path>
 pgr_astar(
         G &graph,
+        std::vector <pgr_combination_t> &combinations,
         std::vector<int64_t> sources,
         std::vector<int64_t> targets,
         int heuristic,
@@ -63,8 +64,9 @@ pgr_astar(
             targets.end());
 
     pgrouting::algorithms::Pgr_astar< G > fn_astar;
-    auto paths = fn_astar.astar(graph, sources, targets,
-            heuristic, factor, epsilon, only_cost);
+    auto paths = combinations.empty() ?
+        fn_astar.astar(graph, sources, targets, heuristic, factor, epsilon, only_cost)
+        : fn_astar.astar(graph, combinations, heuristic, factor, epsilon, only_cost);
 
     if (!normal) {
         for (auto &path : paths) {
@@ -83,6 +85,9 @@ pgr_astar(
  ***********************************************************/
 void do_pgr_astarManyToMany(
         Pgr_edge_xy_t *edges, size_t total_edges,
+
+        pgr_combination_t *combinations, size_t total_combinations,
+
         int64_t  *start_vidsArr, size_t size_start_vidsArr,
         int64_t  *end_vidsArr, size_t size_end_vidsArr,
         bool directed,
@@ -108,6 +113,8 @@ void do_pgr_astarManyToMany(
 
 
         log << "Inserting target vertices into a c++ vector structure\n";
+        std::vector<pgr_combination_t>
+                combinations_vector(combinations, combinations + total_combinations);
         std::vector< int64_t > end_vids(
                 end_vidsArr,
                 end_vidsArr + size_end_vidsArr);
@@ -124,7 +131,7 @@ void do_pgr_astarManyToMany(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
             digraph.insert_edges(edges, total_edges);
-            paths = pgr_astar(digraph, start_vids, end_vids,
+            paths = pgr_astar(digraph, combinations_vector, start_vids, end_vids,
                     heuristic, factor, epsilon, only_cost, normal);
         } else {
             log << "Working with Undirected Graph\n";
@@ -132,7 +139,7 @@ void do_pgr_astarManyToMany(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
             undigraph.insert_edges(edges, total_edges);
-            paths = pgr_astar(undigraph, start_vids, end_vids,
+            paths = pgr_astar(undigraph, combinations_vector, start_vids, end_vids,
                     heuristic, factor, epsilon, only_cost, normal);
         }
 
