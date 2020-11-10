@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(1);
+SELECT plan(2);
 
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
@@ -47,6 +47,9 @@ language plpgsql;
 
 -- test pgr_aStar
 select * from foo('SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM pgr_aStar');
+
+-- test pgr_aStarCost
+select * from foo('SELECT start_vid, end_vid, agg_cost FROM pgr_aStarCost');
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();
