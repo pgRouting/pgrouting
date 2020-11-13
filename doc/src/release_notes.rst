@@ -76,6 +76,8 @@ pgRouting 3.2.0 Release Notes
 
 .. rubric:: New proposed functions
 
+* pgr_aStar(Combinations)
+* pgr_aStarCost(Combinations)
 * pgr_withPoints(Combinations)
 * pgr_withPointsCost(Combinations)
 
