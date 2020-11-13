@@ -54,5 +54,16 @@ SELECT * FROM pgr_aStarCost(
 (4 rows)
 
 --q6
+SELECT * FROM pgr_aStarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    'SELECT * FROM ( VALUES (7, 3), (2, 12) ) AS t(source, target)',
+    heuristic := 2);
+ start_vid | end_vid | agg_cost
+-----------+---------+----------
+         2 |      12 |        4
+         7 |       3 |        6
+(2 rows)
+
+--q7
 ROLLBACK;
 ROLLBACK
