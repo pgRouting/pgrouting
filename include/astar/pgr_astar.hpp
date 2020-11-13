@@ -193,7 +193,7 @@ class Pgr_astar {
                      graph,
                      start_ends.first, start_ends.second,
                      heuristic, factor, epsilon, only_cost);
-             paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
+             paths.insert(paths.end(), r_paths.begin(), r_paths.end());
          }
 
          return paths;
