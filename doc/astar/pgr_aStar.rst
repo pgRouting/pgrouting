@@ -19,6 +19,12 @@ pgr_aStar
 
 .. rubric:: Availability
 
+* Version 3.2.0
+
+  * New **proposed** function:
+
+    * pgr_aStar(Combinations)
+
 * Version 3.0.0
 
   * **Official** function
@@ -44,7 +50,8 @@ pgr_aStar
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_aStar.html>`__)
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_aStar.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_aStar.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_aStar.html>`__
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_aStar.html>`__
 
@@ -80,10 +87,11 @@ Signatures
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(edges_sql, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(edges_sql, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(edges_sql, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(Edges SQL, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(Edges SQL, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(Edges SQL, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(Edges SQL, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon]) -- Proposed on v3.2
 
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -94,7 +102,7 @@ Optional parameters are `named parameters` and have a default value.
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, from_vid, to_vid)
+    pgr_aStar(Edges SQL, from_vid, to_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -112,7 +120,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(Edges SQL, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -131,7 +139,7 @@ One to many
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(Edges SQL, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -149,7 +157,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(Edges SQL, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -167,7 +175,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(Edges SQL, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -177,36 +185,56 @@ Many to Many
    :start-after: --q5
    :end-before: --q6
 
+.. index::
+    single: aStar(Combinations) - Proposed
+
+Combinations
+...............................................................................
+
+.. code-block:: none
+
+    pgr_aStar(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
+
+:Example: Using a combinations table on a **directed** graph using heuristic :math:`2`.
+
+
+.. literalinclude:: doc-astar.queries
+   :start-after: --q6
+   :end-before: --q7
+
 Parameters
 -------------------------------------------------------------------------------
 
 .. aStar parameters start
 
-================ ====================== =================================================
-Parameter        Type                   Description
-================ ====================== =================================================
-**edges_sql**    ``TEXT``               `edges_sql`_ inner query.
-**from_vid**     ``ANY-INTEGER``        Starting vertex identifier. Parameter in:
+======================= ====================== =================================================
+Parameter               Type                   Description
+======================= ====================== =================================================
+**Edges SQL**           ``TEXT``               `Edges query` as described below.
+**Combinations SQL**    ``TEXT``               `Combinations query` as described below.
+**from_vid**            ``ANY-INTEGER``        Starting vertex identifier. Parameter in:
 
-                                        * `One to One`_
-                                        * `One to Many`_
+                                               * `One to One`_
+                                               * `One to Many`_
 
-**from_vids**    ``ARRAY[ANY-INTEGER]`` Array of starting vertices identifiers. Parameter in:
+**from_vids**           ``ARRAY[ANY-INTEGER]`` Array of starting vertices identifiers. Parameter in:
 
-                                        * `Many to One`_
-                                        * `Many to Many`_
+                                               * `Many to One`_
+                                               * `Many to Many`_
 
-**to_vid**       ``ANY-INTEGER``        Ending vertex identifier. Parameter in:
+**to_vid**              ``ANY-INTEGER``        Ending vertex identifier. Parameter in:
 
-                                        * `One to One`_
-                                        * `Many to One`_
+                                               * `One to One`_
+                                               * `Many to One`_
 
-**to_vids**      ``ARRAY[ANY-INTEGER]`` Array of ending vertices identifiers. Parameter in:
+**to_vids**             ``ARRAY[ANY-INTEGER]`` Array of ending vertices identifiers. Parameter in:
 
-                                        * `One to Many`_
-                                        * `Many to Many`_
+                                               * `One to Many`_
+                                               * `Many to Many`_
 
-================ ====================== =================================================
+======================= ====================== =================================================
 
 .. aStar parameters end
 
@@ -236,15 +264,22 @@ Parameter        Type                   Default  Description
 
 .. aStar optional parameters end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
-edges_sql
+Edges query
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
