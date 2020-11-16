@@ -82,6 +82,12 @@ pgr_bdAstar(
         for (const auto target : targets) {
             fn_bdAstar.clear();
 
+            if (!graph.has_vertex(source)
+                    || !graph.has_vertex(target)) {
+                paths.push_back(Path(source, target));
+                continue;
+            }
+
             paths.push_back(fn_bdAstar.pgr_bdAstar(
             graph.get_V(source), graph.get_V(target),
             heuristic, factor, epsilon, only_cost));
