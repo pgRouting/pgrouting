@@ -137,7 +137,8 @@ COST 100
 ROWS 1000;
 
 
-CREATE OR REPLACE FUNCTION pgr_aStarCost(
+--v3.2
+CREATE FUNCTION pgr_aStarCost(
     TEXT,       -- edges sql (required)
     TEXT,       -- combinations_sql (required)
 

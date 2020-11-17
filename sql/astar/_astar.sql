@@ -65,7 +65,8 @@ RETURNS SETOF RECORD AS
 LANGUAGE c VOLATILE STRICT;
 
 
-CREATE OR REPLACE FUNCTION _pgr_astar(
+--v3.2
+CREATE FUNCTION _pgr_astar(
     edges_sql TEXT, -- XY edges sql
     combinations_sql TEXT,
 

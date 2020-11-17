@@ -148,8 +148,8 @@ COST 100
 ROWS 1000;
 
 
--- Combanations SQL signature
-CREATE OR REPLACE FUNCTION pgr_aStar(
+--v3.2
+CREATE FUNCTION pgr_aStar(
     TEXT,       -- edges sql (required)
     TEXT,       -- combinations_sql (required)
 
