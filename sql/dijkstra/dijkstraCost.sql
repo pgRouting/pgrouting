@@ -121,7 +121,8 @@ COST 100
 ROWS 1000;
 
 -- Combinations SQL signature
-CREATE OR REPLACE FUNCTION pgr_dijkstraCost(
+--v3.1
+CREATE FUNCTION pgr_dijkstraCost(
     TEXT,     -- edges_sql (required)
     TEXT,     -- combinations_sql (required)
 

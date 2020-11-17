@@ -45,9 +45,10 @@ set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_LIB_VERSION}")
 
 string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d")
 
-set(MINORS 3.0 2.6)
+set(MINORS 3.1 3.0 2.6)
 set(OLD_SIGNATURES
-    3.0.2 3.0.1 3.0.0
+    3.1.0
+    3.0.3 3.0.2 3.0.1 3.0.0
     2.6.3 2.6.2 2.6.1 2.6.0
     )
 

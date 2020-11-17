@@ -1,6 +1,3 @@
-#VERSION pgrouting 3.1.1
-#TYPES
-#FUNCTIONS
 pgr_alphashape(geometry,double precision)
 _pgr_alphashape(text,double precision)
 pgr_analyzegraph(text,double precision,text,text,text,text,text)

@@ -57,7 +57,8 @@ RETURNS SETOF RECORD AS
 LANGUAGE C VOLATILE STRICT;
 
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(
+--v3.1
+CREATE FUNCTION _pgr_dijkstra(
     edges_sql TEXT,
     combinations_sql TEXT,
     directed BOOLEAN DEFAULT true,
