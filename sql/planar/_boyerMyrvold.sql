@@ -30,7 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -------------------------
 -------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_boyerMyrvold(
+--v3.2
+CREATE FUNCTION _pgr_boyerMyrvold(
   TEXT,   -- edges_sql (required)
 
   OUT seq BIGINT,

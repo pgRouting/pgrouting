@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 ---------------
 
---v3.0
+--v3.2
 CREATE FUNCTION _pgr_dijkstra(
     edges_sql TEXT,
     start_vids ANYARRAY,
@@ -58,7 +58,8 @@ RETURNS SETOF RECORD AS
 LANGUAGE C VOLATILE STRICT;
 
 
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(
+--v3.2
+CREATE FUNCTION _pgr_dijkstra(
     edges_sql TEXT,
     combinations_sql TEXT,
     directed BOOLEAN,
@@ -88,7 +89,8 @@ IS 'pgRouting internal function';
 
 
 /** The following are kept for backward compatibility on signatures **/
-CREATE OR REPLACE FUNCTION _pgr_dijkstra(
+--v3.0
+CREATE FUNCTION _pgr_dijkstra(
     edges_sql TEXT,
     start_vids ANYARRAY,
     end_vids ANYARRAY,

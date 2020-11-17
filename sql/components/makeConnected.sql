@@ -30,7 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_makeConnected
 ------------------
 
-CREATE OR REPLACE FUNCTION pgr_makeConnected(
+--v3.2
+CREATE FUNCTION pgr_makeConnected(
     TEXT,   -- edges_sql (required)
     OUT seq BIGINT,
     OUT start_vid BIGINT,

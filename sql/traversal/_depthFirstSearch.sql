@@ -32,7 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------------------
 
 
-CREATE OR REPLACE FUNCTION _pgr_depthFirstSearch(
+--v3.2
+CREATE FUNCTION _pgr_depthFirstSearch(
     edges_sql TEXT,
     root_vids ANYARRAY,
 

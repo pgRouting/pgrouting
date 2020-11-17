@@ -29,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 -- _pgr_lengauerTarjanDominatorTree
 ---------------
-CREATE OR REPLACE FUNCTION _pgr_lengauerTarjanDominatorTree (
+--v3.2
+CREATE FUNCTION _pgr_lengauerTarjanDominatorTree (
     edges_sql TEXT, -- edges_sql (required)
     root_vid BIGINT , -- vertex (required)
     OUT seq integer,
