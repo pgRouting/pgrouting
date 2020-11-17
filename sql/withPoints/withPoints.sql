@@ -151,7 +151,8 @@ ROWS 1000;
 
 
 -- Combinations SQL signature
-CREATE OR REPLACE FUNCTION pgr_withPoints(
+--v3.2
+CREATE FUNCTION pgr_withPoints(
     TEXT,     -- edges_sql (required)
     TEXT,     -- points_sql (required)
     TEXT,     -- combinations_sql (required)

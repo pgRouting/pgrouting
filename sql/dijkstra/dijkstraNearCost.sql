@@ -29,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 
 -- ONE to MANY
-CREATE OR REPLACE FUNCTION pgr_dijkstraNearCost(
+--v3.2
+CREATE FUNCTION pgr_dijkstraNearCost(
     TEXT,     -- edges_sql (required)
     BIGINT,   -- from_vid (required)
     ANYARRAY, -- to_vids (required)
@@ -50,7 +51,8 @@ COST 100
 ROWS 1000;
 
 -- MANY to ONE
-CREATE OR REPLACE FUNCTION pgr_dijkstraNearCost(
+--v3.2
+CREATE FUNCTION pgr_dijkstraNearCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     BIGINT,   -- to_vid (required)
@@ -71,7 +73,8 @@ COST 100
 ROWS 1000;
 
 -- MANY to MANY
-CREATE OR REPLACE FUNCTION pgr_dijkstraNearCost(
+--v3.2
+CREATE FUNCTION pgr_dijkstraNearCost(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
     ANYARRAY, -- to_vids (required)
@@ -93,7 +96,8 @@ COST 100
 ROWS 1000;
 
 -- Combinations SQL signature
-CREATE OR REPLACE FUNCTION pgr_dijkstraNearCost(
+--v3.2
+CREATE FUNCTION pgr_dijkstraNearCost(
     TEXT,     -- edges_sql (required)
     TEXT,     -- combinations_sql (required)
 

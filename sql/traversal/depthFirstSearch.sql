@@ -33,7 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- SINGLE VERTEX
-CREATE OR REPLACE FUNCTION pgr_depthFirstSearch(
+--v3.2
+CREATE FUNCTION pgr_depthFirstSearch(
     TEXT,   -- edges_sql (required)
     BIGINT, -- root_vid (required)
 
@@ -65,7 +66,8 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 -- MULTIPLE VERTICES
-CREATE OR REPLACE FUNCTION pgr_depthFirstSearch(
+--v3.2
+CREATE FUNCTION pgr_depthFirstSearch(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- root_vids (required)
 

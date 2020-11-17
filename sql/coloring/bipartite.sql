@@ -30,7 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_bipartite
 ---------------
 
-CREATE OR REPLACE FUNCTION pgr_bipartite(
+--v3.2
+CREATE FUNCTION pgr_bipartite(
     TEXT, -- edges_sql (required)
 
     OUT vertex_id BIGINT,

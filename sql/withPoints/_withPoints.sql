@@ -67,7 +67,8 @@ RETURNS SETOF RECORD AS
 LANGUAGE c VOLATILE;
 
 
-CREATE OR REPLACE FUNCTION _pgr_withPoints(
+--v3.2
+CREATE FUNCTION _pgr_withPoints(
     edges_sql TEXT,
     points_sql TEXT,
     combinations_sql TEXT,
