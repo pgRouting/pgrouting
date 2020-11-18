@@ -48,6 +48,9 @@ language plpgsql;
 -- test pgr_bdAstar
 select * from foo('SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM pgr_bdAstar');
 
+-- test pgr_bdAstarCost
+select * from foo('SELECT start_vid, end_vid, agg_cost FROM pgr_bdAstarCost');
+
 -- Finish the tests and clean up.
 SELECT * FROM finish();
 ROLLBACK;
