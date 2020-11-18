@@ -35,4 +35,10 @@ SELECT * FROM pgr_bdAstar(
     factor := 0.5
 );
 \echo -- q6
-
+SELECT * FROM pgr_bdAstar(
+    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
+    FROM edge_table',
+    'SELECT * FROM ( VALUES (2, 3), (7, 11) ) AS t(source, target)',
+    factor := 0.5
+);
+\echo -- q7
