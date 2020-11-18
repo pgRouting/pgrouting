@@ -67,5 +67,18 @@ SELECT * FROM pgr_bdAstarCost(
 (4 rows)
 
 -- q6
+SELECT * FROM pgr_bdAstarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
+    FROM edge_table',
+    'SELECT * FROM ( VALUES (2, 3), (7, 11) ) AS t(source, target)',
+    factor := 0.5
+);
+ start_vid | end_vid | agg_cost
+-----------+---------+----------
+         2 |       3 |        5
+         7 |      11 |        4
+(2 rows)
+
+-- q7
 ROLLBACK;
 ROLLBACK
