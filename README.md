@@ -28,10 +28,12 @@ git add 3.2
 
 # for developers documentation
 
+Only for main branch documentation
+
 ``` 
-rm -Rf doxy/3.0
-cp -r build/doxygen/html doxy/3.0
-git add doxy/3.0
+rm -rf doxygen
+cp -r build/doxygen/html doxygen
+git add doxygen
 ```
 
 # for the pdf
