@@ -120,7 +120,9 @@ pgRouting 3.0.3 Release Notes
 
 .. rubric:: Backport issues fixes
 
+* `#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar fails when source or target vertex does not exist in the graph
 * `#1647 <https://github.com/pgRouting/pgrouting/issues/1647>`__: Linear Contraction contracts self loops
+* `#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints fails when points_sql is empty
 * `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path evaluation on C++ not updated before the results go back to C
 * `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman crash on test data
 
