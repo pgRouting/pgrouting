@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All Pairs - Family of Functions &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,6 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -141,39 +142,38 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="all-pairs-family-of-functions">
 <h1>All Pairs - Family of Functions<a class="headerlink" href="#all-pairs-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <p>The following functions work on all vertices pair combinations</p>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Floyd-Warshall’s algorithm.</li>
-<li><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Johnson’s algorithm</li>
+<li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Floyd-Warshall’s algorithm.</p></li>
+<li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Johnson’s algorithm</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <p class="rubric">Previous versions of this page</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
+<li><p><strong>Supported versions:</strong>
 current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/allpairs-family.html">3.1</a>)
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/allpairs-family.html">3.0</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/allpairs-family.html">2.6</a></li>
-<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/allpairs-family.html">2.6</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/allpairs-family.html">2.5</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.4/en/allpairs-family.html">2.4</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html">2.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html">2.2</a></li>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html">2.2</a></p></li>
 </ul>
 <div class="section" id="performance">
 <h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>The following tests:</dt>
-<dd><ul class="first last simple">
-<li>non server computer</li>
-<li>with AMD 64 CPU</li>
-<li>4G memory</li>
-<li>trusty</li>
-<li>posgreSQL version 9.3</li>
+<dl class="simple">
+<dt>The following tests:</dt><dd><ul class="simple">
+<li><p>non server computer</p></li>
+<li><p>with AMD 64 CPU</p></li>
+<li><p>4G memory</p></li>
+<li><p>trusty</p></li>
+<li><p>posgreSQL version 9.3</p></li>
 </ul>
 </dd>
 </dl>
@@ -194,14 +194,11 @@ osm2pgrouting -f sampledata.osm -d portland -s 0
 </div>
 <div class="section" id="results">
 <h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Test:</th><td class="field-body">One</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Test</dt>
+<dd class="field-odd"><p>One</p>
+</dd>
+</dl>
 <p>This test is not with a bounding box
 The density of the passed graph is extremely low.
 For each &lt;SIZE&gt; 30 tests were executed to get the average
@@ -214,193 +211,192 @@ SELECT count(*) FROM pgr_johnson(
 </pre></div>
 </div>
 <p>The results of this tests are presented as:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">SIZE:</th><td class="field-body">is the number of edges given as input.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">EDGES:</th><td class="field-body">is the total number of records in the query.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">DENSITY:</th><td class="field-body">is the density of the data <span class="math notranslate nohighlight">\(\dfrac{E}{V \times (V-1)}\)</span>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">OUT ROWS:</th><td class="field-body">is the number of records returned by the queries.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Floyd-Warshall:</th><td class="field-body">is the average execution time in seconds of pgr_floydWarshall.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Johnson:</th><td class="field-body">is the average execution time in seconds of pgr_johnson.</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
+<dl class="field-list simple">
+<dt class="field-odd">SIZE</dt>
+<dd class="field-odd"><p>is the number of edges given as input.</p>
+</dd>
+<dt class="field-even">EDGES</dt>
+<dd class="field-even"><p>is the total number of records in the query.</p>
+</dd>
+<dt class="field-odd">DENSITY</dt>
+<dd class="field-odd"><p>is the density of the data <span class="math notranslate nohighlight">\(\dfrac{E}{V \times (V-1)}\)</span>.</p>
+</dd>
+<dt class="field-even">OUT ROWS</dt>
+<dd class="field-even"><p>is the number of records returned by the queries.</p>
+</dd>
+<dt class="field-odd">Floyd-Warshall</dt>
+<dd class="field-odd"><p>is the average execution time in seconds of pgr_floydWarshall.</p>
+</dd>
+<dt class="field-even">Johnson</dt>
+<dd class="field-even"><p>is the average execution time in seconds of pgr_johnson.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
 <colgroup>
-<col width="11%" />
-<col width="11%" />
-<col width="18%" />
-<col width="14%" />
-<col width="25%" />
-<col width="23%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 18%" />
+<col style="width: 14%" />
+<col style="width: 25%" />
+<col style="width: 23%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">SIZE</th>
-<th class="head">EDGES</th>
-<th class="head">DENSITY</th>
-<th class="head">OUT ROWS</th>
-<th class="head">Floyd-Warshall</th>
-<th class="head">Johnson</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>SIZE</p></th>
+<th class="head"><p>EDGES</p></th>
+<th class="head"><p>DENSITY</p></th>
+<th class="head"><p>OUT ROWS</p></th>
+<th class="head"><p>Floyd-Warshall</p></th>
+<th class="head"><p>Johnson</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>500</td>
-<td>500</td>
-<td>0.18E-7</td>
-<td>1346</td>
-<td>0.14</td>
-<td>0.13</td>
+<tbody>
+<tr class="row-even"><td><p>500</p></td>
+<td><p>500</p></td>
+<td><p>0.18E-7</p></td>
+<td><p>1346</p></td>
+<td><p>0.14</p></td>
+<td><p>0.13</p></td>
 </tr>
-<tr class="row-odd"><td>1000</td>
-<td>1000</td>
-<td>0.36E-7</td>
-<td>2655</td>
-<td>0.23</td>
-<td>0.18</td>
+<tr class="row-odd"><td><p>1000</p></td>
+<td><p>1000</p></td>
+<td><p>0.36E-7</p></td>
+<td><p>2655</p></td>
+<td><p>0.23</p></td>
+<td><p>0.18</p></td>
 </tr>
-<tr class="row-even"><td>1500</td>
-<td>1500</td>
-<td>0.55E-7</td>
-<td>4110</td>
-<td>0.37</td>
-<td>0.34</td>
+<tr class="row-even"><td><p>1500</p></td>
+<td><p>1500</p></td>
+<td><p>0.55E-7</p></td>
+<td><p>4110</p></td>
+<td><p>0.37</p></td>
+<td><p>0.34</p></td>
 </tr>
-<tr class="row-odd"><td>2000</td>
-<td>2000</td>
-<td>0.73E-7</td>
-<td>5676</td>
-<td>0.56</td>
-<td>0.37</td>
+<tr class="row-odd"><td><p>2000</p></td>
+<td><p>2000</p></td>
+<td><p>0.73E-7</p></td>
+<td><p>5676</p></td>
+<td><p>0.56</p></td>
+<td><p>0.37</p></td>
 </tr>
-<tr class="row-even"><td>2500</td>
-<td>2500</td>
-<td>0.89E-7</td>
-<td>7177</td>
-<td>0.84</td>
-<td>0.51</td>
+<tr class="row-even"><td><p>2500</p></td>
+<td><p>2500</p></td>
+<td><p>0.89E-7</p></td>
+<td><p>7177</p></td>
+<td><p>0.84</p></td>
+<td><p>0.51</p></td>
 </tr>
-<tr class="row-odd"><td>3000</td>
-<td>3000</td>
-<td>1.07E-7</td>
-<td>8778</td>
-<td>1.28</td>
-<td>0.68</td>
+<tr class="row-odd"><td><p>3000</p></td>
+<td><p>3000</p></td>
+<td><p>1.07E-7</p></td>
+<td><p>8778</p></td>
+<td><p>1.28</p></td>
+<td><p>0.68</p></td>
 </tr>
-<tr class="row-even"><td>3500</td>
-<td>3500</td>
-<td>1.24E-7</td>
-<td>10526</td>
-<td>2.08</td>
-<td>0.95</td>
+<tr class="row-even"><td><p>3500</p></td>
+<td><p>3500</p></td>
+<td><p>1.24E-7</p></td>
+<td><p>10526</p></td>
+<td><p>2.08</p></td>
+<td><p>0.95</p></td>
 </tr>
-<tr class="row-odd"><td>4000</td>
-<td>4000</td>
-<td>1.41E-7</td>
-<td>12484</td>
-<td>3.16</td>
-<td>1.24</td>
+<tr class="row-odd"><td><p>4000</p></td>
+<td><p>4000</p></td>
+<td><p>1.41E-7</p></td>
+<td><p>12484</p></td>
+<td><p>3.16</p></td>
+<td><p>1.24</p></td>
 </tr>
-<tr class="row-even"><td>4500</td>
-<td>4500</td>
-<td>1.58E-7</td>
-<td>14354</td>
-<td>4.49</td>
-<td>1.47</td>
+<tr class="row-even"><td><p>4500</p></td>
+<td><p>4500</p></td>
+<td><p>1.58E-7</p></td>
+<td><p>14354</p></td>
+<td><p>4.49</p></td>
+<td><p>1.47</p></td>
 </tr>
-<tr class="row-odd"><td>5000</td>
-<td>5000</td>
-<td>1.76E-7</td>
-<td>16503</td>
-<td>6.05</td>
-<td>1.78</td>
+<tr class="row-odd"><td><p>5000</p></td>
+<td><p>5000</p></td>
+<td><p>1.76E-7</p></td>
+<td><p>16503</p></td>
+<td><p>6.05</p></td>
+<td><p>1.78</p></td>
 </tr>
-<tr class="row-even"><td>5500</td>
-<td>5500</td>
-<td>1.93E-7</td>
-<td>18623</td>
-<td>7.53</td>
-<td>2.03</td>
+<tr class="row-even"><td><p>5500</p></td>
+<td><p>5500</p></td>
+<td><p>1.93E-7</p></td>
+<td><p>18623</p></td>
+<td><p>7.53</p></td>
+<td><p>2.03</p></td>
 </tr>
-<tr class="row-odd"><td>6000</td>
-<td>6000</td>
-<td>2.11E-7</td>
-<td>20710</td>
-<td>8.47</td>
-<td>2.37</td>
+<tr class="row-odd"><td><p>6000</p></td>
+<td><p>6000</p></td>
+<td><p>2.11E-7</p></td>
+<td><p>20710</p></td>
+<td><p>8.47</p></td>
+<td><p>2.37</p></td>
 </tr>
-<tr class="row-even"><td>6500</td>
-<td>6500</td>
-<td>2.28E-7</td>
-<td>22752</td>
-<td>9.99</td>
-<td>2.68</td>
+<tr class="row-even"><td><p>6500</p></td>
+<td><p>6500</p></td>
+<td><p>2.28E-7</p></td>
+<td><p>22752</p></td>
+<td><p>9.99</p></td>
+<td><p>2.68</p></td>
 </tr>
-<tr class="row-odd"><td>7000</td>
-<td>7000</td>
-<td>2.46E-7</td>
-<td>24687</td>
-<td>11.82</td>
-<td>3.12</td>
+<tr class="row-odd"><td><p>7000</p></td>
+<td><p>7000</p></td>
+<td><p>2.46E-7</p></td>
+<td><p>24687</p></td>
+<td><p>11.82</p></td>
+<td><p>3.12</p></td>
 </tr>
-<tr class="row-even"><td>7500</td>
-<td>7500</td>
-<td>2.64E-7</td>
-<td>26861</td>
-<td>13.94</td>
-<td>3.60</td>
+<tr class="row-even"><td><p>7500</p></td>
+<td><p>7500</p></td>
+<td><p>2.64E-7</p></td>
+<td><p>26861</p></td>
+<td><p>13.94</p></td>
+<td><p>3.60</p></td>
 </tr>
-<tr class="row-odd"><td>8000</td>
-<td>8000</td>
-<td>2.83E-7</td>
-<td>29050</td>
-<td>15.61</td>
-<td>4.09</td>
+<tr class="row-odd"><td><p>8000</p></td>
+<td><p>8000</p></td>
+<td><p>2.83E-7</p></td>
+<td><p>29050</p></td>
+<td><p>15.61</p></td>
+<td><p>4.09</p></td>
 </tr>
-<tr class="row-even"><td>8500</td>
-<td>8500</td>
-<td>3.01E-7</td>
-<td>31693</td>
-<td>17.43</td>
-<td>4.63</td>
+<tr class="row-even"><td><p>8500</p></td>
+<td><p>8500</p></td>
+<td><p>3.01E-7</p></td>
+<td><p>31693</p></td>
+<td><p>17.43</p></td>
+<td><p>4.63</p></td>
 </tr>
-<tr class="row-odd"><td>9000</td>
-<td>9000</td>
-<td>3.17E-7</td>
-<td>33879</td>
-<td>19.19</td>
-<td>5.34</td>
+<tr class="row-odd"><td><p>9000</p></td>
+<td><p>9000</p></td>
+<td><p>3.17E-7</p></td>
+<td><p>33879</p></td>
+<td><p>19.19</p></td>
+<td><p>5.34</p></td>
 </tr>
-<tr class="row-even"><td>9500</td>
-<td>9500</td>
-<td>3.35E-7</td>
-<td>36287</td>
-<td>20.77</td>
-<td>6.24</td>
+<tr class="row-even"><td><p>9500</p></td>
+<td><p>9500</p></td>
+<td><p>3.35E-7</p></td>
+<td><p>36287</p></td>
+<td><p>20.77</p></td>
+<td><p>6.24</p></td>
 </tr>
-<tr class="row-odd"><td>10000</td>
-<td>10000</td>
-<td>3.52E-7</td>
-<td>38491</td>
-<td>23.26</td>
-<td>6.51</td>
-</tr>
-</tbody>
-</table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Test:</th><td class="field-body">Two</td>
+<tr class="row-odd"><td><p>10000</p></td>
+<td><p>10000</p></td>
+<td><p>3.52E-7</p></td>
+<td><p>38491</p></td>
+<td><p>23.26</p></td>
+<td><p>6.51</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="field-list simple">
+<dt class="field-odd">Test</dt>
+<dd class="field-odd"><p>Two</p>
+</dd>
+</dl>
 <p>This test is with a bounding box
 The density of the passed graph higher than of the Test One.
 For each &lt;SIZE&gt; 30 tests were executed to get the average
@@ -417,161 +413,163 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 </pre></div>
 </div>
 <p>The results of this tests are presented as:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">SIZE:</th><td class="field-body">is the size of the bounding box.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">EDGES:</th><td class="field-body">is the total number of records in the query.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">DENSITY:</th><td class="field-body">is the density of the data <span class="math notranslate nohighlight">\(\dfrac{E}{V \times (V-1)}\)</span>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">OUT ROWS:</th><td class="field-body">is the number of records returned by the queries.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Floyd-Warshall:</th><td class="field-body">is the average execution time in seconds of pgr_floydWarshall.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Johnson:</th><td class="field-body">is the average execution time in seconds of pgr_johnson.</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
+<dl class="field-list simple">
+<dt class="field-odd">SIZE</dt>
+<dd class="field-odd"><p>is the size of the bounding box.</p>
+</dd>
+<dt class="field-even">EDGES</dt>
+<dd class="field-even"><p>is the total number of records in the query.</p>
+</dd>
+<dt class="field-odd">DENSITY</dt>
+<dd class="field-odd"><p>is the density of the data <span class="math notranslate nohighlight">\(\dfrac{E}{V \times (V-1)}\)</span>.</p>
+</dd>
+<dt class="field-even">OUT ROWS</dt>
+<dd class="field-even"><p>is the number of records returned by the queries.</p>
+</dd>
+<dt class="field-odd">Floyd-Warshall</dt>
+<dd class="field-odd"><p>is the average execution time in seconds of pgr_floydWarshall.</p>
+</dd>
+<dt class="field-even">Johnson</dt>
+<dd class="field-even"><p>is the average execution time in seconds of pgr_johnson.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
 <colgroup>
-<col width="11%" />
-<col width="9%" />
-<col width="15%" />
-<col width="15%" />
-<col width="26%" />
-<col width="24%" />
+<col style="width: 11%" />
+<col style="width: 9%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 26%" />
+<col style="width: 24%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">SIZE</th>
-<th class="head">EDGES</th>
-<th class="head">DENSITY</th>
-<th class="head">OUT ROWS</th>
-<th class="head">Floyd-Warshall</th>
-<th class="head">Johnson</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>SIZE</p></th>
+<th class="head"><p>EDGES</p></th>
+<th class="head"><p>DENSITY</p></th>
+<th class="head"><p>OUT ROWS</p></th>
+<th class="head"><p>Floyd-Warshall</p></th>
+<th class="head"><p>Johnson</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>0.001</td>
-<td>44</td>
-<td>0.0608</td>
-<td>1197</td>
-<td>0.10</td>
-<td>0.10</td>
+<tbody>
+<tr class="row-even"><td><p>0.001</p></td>
+<td><p>44</p></td>
+<td><p>0.0608</p></td>
+<td><p>1197</p></td>
+<td><p>0.10</p></td>
+<td><p>0.10</p></td>
 </tr>
-<tr class="row-odd"><td>0.002</td>
-<td>99</td>
-<td>0.0251</td>
-<td>4330</td>
-<td>0.10</td>
-<td>0.10</td>
+<tr class="row-odd"><td><p>0.002</p></td>
+<td><p>99</p></td>
+<td><p>0.0251</p></td>
+<td><p>4330</p></td>
+<td><p>0.10</p></td>
+<td><p>0.10</p></td>
 </tr>
-<tr class="row-even"><td>0.003</td>
-<td>223</td>
-<td>0.0122</td>
-<td>18849</td>
-<td>0.12</td>
-<td>0.12</td>
+<tr class="row-even"><td><p>0.003</p></td>
+<td><p>223</p></td>
+<td><p>0.0122</p></td>
+<td><p>18849</p></td>
+<td><p>0.12</p></td>
+<td><p>0.12</p></td>
 </tr>
-<tr class="row-odd"><td>0.004</td>
-<td>358</td>
-<td>0.0085</td>
-<td>71834</td>
-<td>0.16</td>
-<td>0.16</td>
+<tr class="row-odd"><td><p>0.004</p></td>
+<td><p>358</p></td>
+<td><p>0.0085</p></td>
+<td><p>71834</p></td>
+<td><p>0.16</p></td>
+<td><p>0.16</p></td>
 </tr>
-<tr class="row-even"><td>0.005</td>
-<td>470</td>
-<td>0.0070</td>
-<td>116290</td>
-<td>0.22</td>
-<td>0.19</td>
+<tr class="row-even"><td><p>0.005</p></td>
+<td><p>470</p></td>
+<td><p>0.0070</p></td>
+<td><p>116290</p></td>
+<td><p>0.22</p></td>
+<td><p>0.19</p></td>
 </tr>
-<tr class="row-odd"><td>0.006</td>
-<td>639</td>
-<td>0.0055</td>
-<td>207030</td>
-<td>0.37</td>
-<td>0.27</td>
+<tr class="row-odd"><td><p>0.006</p></td>
+<td><p>639</p></td>
+<td><p>0.0055</p></td>
+<td><p>207030</p></td>
+<td><p>0.37</p></td>
+<td><p>0.27</p></td>
 </tr>
-<tr class="row-even"><td>0.007</td>
-<td>843</td>
-<td>0.0043</td>
-<td>346930</td>
-<td>0.64</td>
-<td>0.38</td>
+<tr class="row-even"><td><p>0.007</p></td>
+<td><p>843</p></td>
+<td><p>0.0043</p></td>
+<td><p>346930</p></td>
+<td><p>0.64</p></td>
+<td><p>0.38</p></td>
 </tr>
-<tr class="row-odd"><td>0.008</td>
-<td>996</td>
-<td>0.0037</td>
-<td>469936</td>
-<td>0.90</td>
-<td>0.49</td>
+<tr class="row-odd"><td><p>0.008</p></td>
+<td><p>996</p></td>
+<td><p>0.0037</p></td>
+<td><p>469936</p></td>
+<td><p>0.90</p></td>
+<td><p>0.49</p></td>
 </tr>
-<tr class="row-even"><td>0.009</td>
-<td>1146</td>
-<td>0.0032</td>
-<td>613135</td>
-<td>1.26</td>
-<td>0.62</td>
+<tr class="row-even"><td><p>0.009</p></td>
+<td><p>1146</p></td>
+<td><p>0.0032</p></td>
+<td><p>613135</p></td>
+<td><p>1.26</p></td>
+<td><p>0.62</p></td>
 </tr>
-<tr class="row-odd"><td>0.010</td>
-<td>1360</td>
-<td>0.0027</td>
-<td>849304</td>
-<td>1.87</td>
-<td>0.82</td>
+<tr class="row-odd"><td><p>0.010</p></td>
+<td><p>1360</p></td>
+<td><p>0.0027</p></td>
+<td><p>849304</p></td>
+<td><p>1.87</p></td>
+<td><p>0.82</p></td>
 </tr>
-<tr class="row-even"><td>0.011</td>
-<td>1573</td>
-<td>0.0024</td>
-<td>1147101</td>
-<td>2.65</td>
-<td>1.04</td>
+<tr class="row-even"><td><p>0.011</p></td>
+<td><p>1573</p></td>
+<td><p>0.0024</p></td>
+<td><p>1147101</p></td>
+<td><p>2.65</p></td>
+<td><p>1.04</p></td>
 </tr>
-<tr class="row-odd"><td>0.012</td>
-<td>1789</td>
-<td>0.0021</td>
-<td>1483629</td>
-<td>3.72</td>
-<td>1.35</td>
+<tr class="row-odd"><td><p>0.012</p></td>
+<td><p>1789</p></td>
+<td><p>0.0021</p></td>
+<td><p>1483629</p></td>
+<td><p>3.72</p></td>
+<td><p>1.35</p></td>
 </tr>
-<tr class="row-even"><td>0.013</td>
-<td>1975</td>
-<td>0.0019</td>
-<td>1846897</td>
-<td>4.86</td>
-<td>1.68</td>
+<tr class="row-even"><td><p>0.013</p></td>
+<td><p>1975</p></td>
+<td><p>0.0019</p></td>
+<td><p>1846897</p></td>
+<td><p>4.86</p></td>
+<td><p>1.68</p></td>
 </tr>
-<tr class="row-odd"><td>0.014</td>
-<td>2281</td>
-<td>0.0017</td>
-<td>2438298</td>
-<td>7.08</td>
-<td>2.28</td>
+<tr class="row-odd"><td><p>0.014</p></td>
+<td><p>2281</p></td>
+<td><p>0.0017</p></td>
+<td><p>2438298</p></td>
+<td><p>7.08</p></td>
+<td><p>2.28</p></td>
 </tr>
-<tr class="row-even"><td>0.015</td>
-<td>2588</td>
-<td>0.0015</td>
-<td>3156007</td>
-<td>10.28</td>
-<td>2.80</td>
+<tr class="row-even"><td><p>0.015</p></td>
+<td><p>2588</p></td>
+<td><p>0.0015</p></td>
+<td><p>3156007</p></td>
+<td><p>10.28</p></td>
+<td><p>2.80</p></td>
 </tr>
-<tr class="row-odd"><td>0.016</td>
-<td>2958</td>
-<td>0.0013</td>
-<td>4090618</td>
-<td>14.67</td>
-<td>3.76</td>
+<tr class="row-odd"><td><p>0.016</p></td>
+<td><p>2958</p></td>
+<td><p>0.0013</p></td>
+<td><p>4090618</p></td>
+<td><p>14.67</p></td>
+<td><p>3.76</p></td>
 </tr>
-<tr class="row-even"><td>0.017</td>
-<td>3247</td>
-<td>0.0012</td>
-<td>4868919</td>
-<td>18.12</td>
-<td>4.48</td>
+<tr class="row-even"><td><p>0.017</p></td>
+<td><p>3247</p></td>
+<td><p>0.0012</p></td>
+<td><p>4868919</p></td>
+<td><p>18.12</p></td>
+<td><p>4.48</p></td>
 </tr>
 </tbody>
 </table>
@@ -579,14 +577,14 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 <div class="section" id="see-also">
 <h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></li>
-<li><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a></li>
-<li><a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Boost floyd-Warshall</a> algorithm</li>
+<li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Boost floyd-Warshall</a> algorithm</p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -604,9 +602,9 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Last updated on Jul 24, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.1.<br/>
+      Last updated on Nov 19, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
     </p>
   </div>
 </footer>

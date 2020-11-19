@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_pickDeliver - Experimental &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,6 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -146,76 +147,81 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-pickdeliver-experimental">
 <h1>pgr_pickDeliver - Experimental<a class="headerlink" href="#pgr-pickdeliver-experimental" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliver</span></code> - Pickup and delivery Vehicle Routing Problem</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>Possible server crash</p>
-<ul class="last simple">
-<li>These functions might create a server crash</li>
+<ul class="simple">
+<li><p>These functions might create a server crash</p></li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>Experimental functions</p>
-<ul class="last simple">
-<li>They are not officially of the current release.</li>
-<li>They likely will not be officially be part of the next release:<ul>
-<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might change.</li>
-<li>Signature might change.</li>
-<li>Functionality might change.</li>
-<li>pgTap tests might be missing.</li>
-<li>Might need c/c++ coding.</li>
-<li>May lack documentation.</li>
-<li>Documentation if any might need to be rewritten.</li>
-<li>Documentation examples might need to be automatically generated.</li>
-<li>Might need a lot of feedback from the comunity.</li>
-<li>Might depend on a proposed function of pgRouting</li>
-<li>Might depend on a deprecated function of pgRouting</li>
+<ul class="simple">
+<li><p>They are not officially of the current release.</p></li>
+<li><p>They likely will not be officially be part of the next release:</p>
+<ul>
+<li><p>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might change.</p></li>
+<li><p>Signature might change.</p></li>
+<li><p>Functionality might change.</p></li>
+<li><p>pgTap tests might be missing.</p></li>
+<li><p>Might need c/c++ coding.</p></li>
+<li><p>May lack documentation.</p></li>
+<li><p>Documentation if any might need to be rewritten.</p></li>
+<li><p>Documentation examples might need to be automatically generated.</p></li>
+<li><p>Might need a lot of feedback from the comunity.</p></li>
+<li><p>Might depend on a proposed function of pgRouting</p></li>
+<li><p>Might depend on a deprecated function of pgRouting</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>Version 3.0.0<ul>
-<li>New <strong>experimental</strong> function</li>
+<li><p>Version 3.0.0</p>
+<ul>
+<li><p>New <strong>experimental</strong> function</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Support</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
+<li><p><strong>Supported versions:</strong>
 current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html">3.0</a></li>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html">3.0</a></p></li>
 </ul>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehicles.</p>
 <ul class="simple">
-<li>Optimization problem is NP-hard.</li>
-<li>pickup and Delivery with time windows.</li>
-<li>All vehicles are equal.<ul>
-<li>Same Starting location.</li>
-<li>Same Ending location which is the same as Starting location.</li>
-<li>All vehicles travel at the same speed.</li>
+<li><p>Optimization problem is NP-hard.</p></li>
+<li><p>pickup and Delivery with time windows.</p></li>
+<li><p>All vehicles are equal.</p>
+<ul>
+<li><p>Same Starting location.</p></li>
+<li><p>Same Ending location which is the same as Starting location.</p></li>
+<li><p>All vehicles travel at the same speed.</p></li>
 </ul>
 </li>
-<li>A customer is for doing a pickup or doing a deliver.<ul>
-<li>has an open time.</li>
-<li>has a closing time.</li>
-<li>has a service time.</li>
-<li>has an (x, y) location.</li>
+<li><p>A customer is for doing a pickup or doing a deliver.</p>
+<ul>
+<li><p>has an open time.</p></li>
+<li><p>has a closing time.</p></li>
+<li><p>has a service time.</p></li>
+<li><p>has an (x, y) location.</p></li>
 </ul>
 </li>
-<li>There is a customer where to deliver a pickup.<ul>
-<li>travel time between customers is distance / speed</li>
-<li>pickup and delivery pair is done with the same vehicle.</li>
-<li>A pickup is done before the delivery.</li>
+<li><p>There is a customer where to deliver a pickup.</p>
+<ul>
+<li><p>travel time between customers is distance / speed</p></li>
+<li><p>pickup and delivery pair is done with the same vehicle.</p></li>
+<li><p>A pickup is done before the delivery.</p></li>
 </ul>
 </li>
 </ul>
@@ -223,18 +229,19 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <div class="section" id="characteristics">
 <h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>All trucks depart at time 0.</li>
-<li>No multiple time windows for a location.</li>
-<li>Less vehicle used is considered better.</li>
-<li>Less total duration is better.</li>
-<li>Less wait time is better.</li>
-<li>the algorithm will raise an exception when<ul>
-<li>If there is a pickup-deliver pair than violates time window</li>
-<li>The speed, max_cycles, ma_capacity have illegal values</li>
+<li><p>All trucks depart at time 0.</p></li>
+<li><p>No multiple time windows for a location.</p></li>
+<li><p>Less vehicle used is considered better.</p></li>
+<li><p>Less total duration is better.</p></li>
+<li><p>Less wait time is better.</p></li>
+<li><p>the algorithm will raise an exception when</p>
+<ul>
+<li><p>If there is a pickup-deliver pair than violates time window</p></li>
+<li><p>The speed, max_cycles, ma_capacity have illegal values</p></li>
 </ul>
 </li>
-<li>Six different initial will be optimized
-- the best solution found will be result</li>
+<li><p>Six different initial will be optimized
+- the best solution found will be result</p></li>
 </ul>
 </div>
 <div class="section" id="signature">
@@ -250,57 +257,57 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id, stop, order_id, stop_type, carg
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>orders_sql, vehicles_sql, matrix_sql [, factor, max_cycles, initial_sol]
 </pre></div>
 </div>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="15%" />
-<col width="8%" />
-<col width="63%" />
+<col style="width: 14%" />
+<col style="width: 15%" />
+<col style="width: 8%" />
+<col style="width: 63%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>orders_sql</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td><a class="reference internal" href="#pick-deliver-orders-sql">Pick &amp; Deliver Orders SQL</a> query contianing the orders to be processed.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>orders_sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#pick-deliver-orders-sql">Pick &amp; Deliver Orders SQL</a> query contianing the orders to be processed.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>vehicles_sql</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td><a class="reference internal" href="#pick-deliver-vehicles-sql">Pick &amp; Deliver Vehicles SQL</a> query containing the vehicles to be used.</td>
+<tr class="row-odd"><td><p><strong>vehicles_sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#pick-deliver-vehicles-sql">Pick &amp; Deliver Vehicles SQL</a> query containing the vehicles to be used.</p></td>
 </tr>
-<tr class="row-even"><td><strong>matrix_sql</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td><a class="reference internal" href="#pick-deliver-matrix-sql">Pick &amp; Deliver Matrix SQL</a> query containing the distance or travel times.</td>
+<tr class="row-even"><td><p><strong>matrix_sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#pick-deliver-matrix-sql">Pick &amp; Deliver Matrix SQL</a> query containing the distance or travel times.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>factor</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code></td>
-<td>1</td>
-<td>Travel time multiplier. See <a class="reference internal" href="VRP-category.html#pd-factor"><span class="std std-ref">Factor Handling</span></a></td>
+<tr class="row-odd"><td><p><strong>factor</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Travel time multiplier. See <a class="reference internal" href="VRP-category.html#pd-factor"><span class="std std-ref">Factor Handling</span></a></p></td>
 </tr>
-<tr class="row-even"><td><strong>max_cycles</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
-<td>10</td>
-<td>Maximum number of cycles to perform on the optimization.</td>
+<tr class="row-even"><td><p><strong>max_cycles</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>10</p></td>
+<td><p>Maximum number of cycles to perform on the optimization.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>initial_sol</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
-<td>4</td>
-<td><p class="first">Initial solution to be used.</p>
-<ul class="last simple">
-<li><code class="docutils literal notranslate"><span class="pre">1</span></code> One order per truck</li>
-<li><code class="docutils literal notranslate"><span class="pre">2</span></code> Push front order.</li>
-<li><code class="docutils literal notranslate"><span class="pre">3</span></code> Push back order.</li>
-<li><code class="docutils literal notranslate"><span class="pre">4</span></code> Optimize insert.</li>
-<li><code class="docutils literal notranslate"><span class="pre">5</span></code> Push back order that allows more orders to be inserted at the back</li>
-<li><code class="docutils literal notranslate"><span class="pre">6</span></code> Push front order that allows more orders to be inserted at the front</li>
+<tr class="row-odd"><td><p><strong>initial_sol</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Initial solution to be used.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> One order per truck</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> Push front order.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> Push back order.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code> Optimize insert.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code> Push back order that allows more orders to be inserted at the back</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">6</span></code> Push front order that allows more orders to be inserted at the front</p></li>
 </ul>
 </td>
 </tr>
@@ -316,84 +323,84 @@ d_node_id, d_open, d_close, [d_service, ]
 </pre></div>
 </div>
 <p>where:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="15%" />
-<col width="18%" />
-<col width="10%" />
-<col width="56%" />
+<col style="width: 15%" />
+<col style="width: 18%" />
+<col style="width: 10%" />
+<col style="width: 56%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
-<td>&#160;</td>
-<td>Identifier of the pick-delivery order pair.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td></td>
+<td><p>Identifier of the pick-delivery order pair.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>demand</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td>&#160;</td>
-<td>Number of units in the order</td>
+<tr class="row-odd"><td><p><strong>demand</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>Number of units in the order</p></td>
 </tr>
-<tr class="row-even"><td><strong>p_open</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td>&#160;</td>
-<td>The time, relative to 0, when the pickup location opens.</td>
+<tr class="row-even"><td><p><strong>p_open</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the pickup location opens.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>p_close</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td>&#160;</td>
-<td>The time, relative to 0, when the pickup location closes.</td>
+<tr class="row-odd"><td><p><strong>p_close</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the pickup location closes.</p></td>
 </tr>
-<tr class="row-even"><td><strong>d_service</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td>0</td>
-<td>The duration of the loading at the pickup location.</td>
+<tr class="row-even"><td><p><strong>d_service</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>0</p></td>
+<td><p>The duration of the loading at the pickup location.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>d_open</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td>&#160;</td>
-<td>The time, relative to 0, when the delivery location opens.</td>
+<tr class="row-odd"><td><p><strong>d_open</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the delivery location opens.</p></td>
 </tr>
-<tr class="row-even"><td><strong>d_close</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td>&#160;</td>
-<td>The time, relative to 0, when the delivery location closes.</td>
+<tr class="row-even"><td><p><strong>d_close</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the delivery location closes.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>d_service</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td>0</td>
-<td>The duration of the loading at the delivery location.</td>
+<tr class="row-odd"><td><p><strong>d_service</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>0</p></td>
+<td><p>The duration of the loading at the delivery location.</p></td>
 </tr>
 </tbody>
 </table>
 <p>For the non euclidean implementation, the starting and ending identifiers are needed:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="15%" />
-<col width="70%" />
+<col style="width: 14%" />
+<col style="width: 15%" />
+<col style="width: 70%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>p_node_id</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
-<td>The node identifier of the pickup, must match a node identifier in the matrix table.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>p_node_id</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>The node identifier of the pickup, must match a node identifier in the matrix table.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>d_node_id</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
-<td>The node identifier of the delivery, must match a node identifier in the matrix table.</td>
+<tr class="row-odd"><td><p><strong>d_node_id</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>The node identifier of the delivery, must match a node identifier in the matrix table.</p></td>
 </tr>
 </tbody>
 </table>
@@ -407,93 +414,93 @@ start_node_id, start_open, start_close [, start_service, ]
 </pre></div>
 </div>
 <p>where:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="16%" />
-<col width="17%" />
-<col width="14%" />
-<col width="53%" />
+<col style="width: 16%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 53%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
-<td>&#160;</td>
-<td>Identifier of the pick-delivery order pair.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td></td>
+<td><p>Identifier of the pick-delivery order pair.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>capacity</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td>&#160;</td>
-<td>Number of units in the order</td>
+<tr class="row-odd"><td><p><strong>capacity</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>Number of units in the order</p></td>
 </tr>
-<tr class="row-even"><td><strong>speed</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td><cite>1</cite></td>
-<td>Average speed of the vehicle.</td>
+<tr class="row-even"><td><p><strong>speed</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>1</cite></p></td>
+<td><p>Average speed of the vehicle.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>start_open</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td>&#160;</td>
-<td>The time, relative to 0, when the starting location opens.</td>
+<tr class="row-odd"><td><p><strong>start_open</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the starting location opens.</p></td>
 </tr>
-<tr class="row-even"><td><strong>start_close</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td>&#160;</td>
-<td>The time, relative to 0, when the starting location closes.</td>
+<tr class="row-even"><td><p><strong>start_close</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the starting location closes.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>start_service</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td><cite>0</cite></td>
-<td>The duration of the loading at the starting location.</td>
+<tr class="row-odd"><td><p><strong>start_service</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>0</cite></p></td>
+<td><p>The duration of the loading at the starting location.</p></td>
 </tr>
-<tr class="row-even"><td><strong>end_open</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td><cite>start_open</cite></td>
-<td>The time, relative to 0, when the ending location opens.</td>
+<tr class="row-even"><td><p><strong>end_open</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>start_open</cite></p></td>
+<td><p>The time, relative to 0, when the ending location opens.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>end_close</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td><cite>start_close</cite></td>
-<td>The time, relative to 0, when the ending location closes.</td>
+<tr class="row-odd"><td><p><strong>end_close</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>start_close</cite></p></td>
+<td><p>The time, relative to 0, when the ending location closes.</p></td>
 </tr>
-<tr class="row-even"><td><strong>end_service</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></td>
-<td><cite>start_service</cite></td>
-<td>The duration of the loading at the ending location.</td>
+<tr class="row-even"><td><p><strong>end_service</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>start_service</cite></p></td>
+<td><p>The duration of the loading at the ending location.</p></td>
 </tr>
 </tbody>
 </table>
 <p>For the non euclidean implementation, the starting and ending identifiers are needed:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="12%" />
-<col width="13%" />
-<col width="11%" />
-<col width="64%" />
+<col style="width: 12%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 64%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>start_node_id</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
-<td>&#160;</td>
-<td>The node identifier of the starting location, must match a node identifier in the matrix table.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>start_node_id</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td></td>
+<td><p>The node identifier of the starting location, must match a node identifier in the matrix table.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>end_node_id</strong></td>
-<td><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></td>
-<td><cite>start_node_id</cite></td>
-<td>The node identifier of the ending location, must match a node identifier in the matrix table.</td>
+<tr class="row-odd"><td><p><strong>end_node_id</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p><cite>start_node_id</cite></p></td>
+<td><p>The node identifier of the ending location, must match a node identifier in the matrix table.</p></td>
 </tr>
 </tbody>
 </table>
@@ -502,20 +509,18 @@ start_node_id, start_open, start_close [, start_service, ]
 <h3>Pick &amp; Deliver Matrix SQL<a class="headerlink" href="#pick-deliver-matrix-sql" title="Permalink to this headline">¶</a></h3>
 <p>A <cite>SELECT</cite> statement that returns the following columns:</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">TODO</p>
+<p class="admonition-title">Warning</p>
+<p>TODO</p>
 </div>
 <p>Where:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+</dd>
+</dl>
 </div>
 </div>
 <div class="section" id="example">
@@ -549,13 +554,13 @@ start_node_id, start_open, start_close [, start_service, ]
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="VRP-category.html"><span class="doc">Vehicle Routing Functions - Category (Experimental)</span></a></li>
-<li>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</li>
+<li><p><a class="reference internal" href="VRP-category.html"><span class="doc">Vehicle Routing Functions - Category (Experimental)</span></a></p></li>
+<li><p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -572,9 +577,9 @@ start_node_id, start_open, start_close [, start_service, ]
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Last updated on Jul 24, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.1.<br/>
+      Last updated on Nov 19, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
     </p>
   </div>
 </footer>

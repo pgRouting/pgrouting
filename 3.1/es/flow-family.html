@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<html lang="es">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flow - Familia de funciones. &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -28,6 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -142,81 +143,86 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="flow-family-of-functions">
 <h1>Flow - Familia de funciones.<a class="headerlink" href="#flow-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Only the Max flow calculation using Push and Relabel algorithm.</li>
-<li><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Algoritmos Boykov y Kolmogorov con detalles del flujo en aristas.</li>
-<li><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Algoritmo de Edmonds y Karp  algorithm con detalles de flujo con detalles del flujo en aristas.</li>
-<li><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Algoritmos Push y Relabel con detalles del flujo en aristas.</li>
-<li>Aplicaciones<ul>
-<li><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calcula rutas de separación de aristas entre dos grupos de vértices.</li>
-<li><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calcula una cardinalidad máxima coincidiendo dentro de un grafo.</li>
+<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Only the Max flow calculation using Push and Relabel algorithm.</p></li>
+<li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Algoritmos Boykov y Kolmogorov con detalles del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Algoritmo de Edmonds y Karp  algorithm con detalles de flujo con detalles del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Algoritmos Push y Relabel con detalles del flujo en aristas.</p></li>
+<li><p>Aplicaciones</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calcula rutas de separación de aristas entre dos grupos de vértices.</p></li>
+<li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calcula una cardinalidad máxima coincidiendo dentro de un grafo.</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Experimental</p>
 <div class="admonition warning">
-<p class="first admonition-title">Advertencia</p>
+<p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
-<ul class="last simple">
-<li>Estas funciones pueden crear un bloqueo del servidor</li>
+<ul class="simple">
+<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Advertencia</p>
+<p class="admonition-title">Advertencia</p>
 <p>Funciones experimentales</p>
-<ul class="last simple">
-<li>No son oficialmente de la versión actual.</li>
-<li>Es probable que oficialmente no formen parte de la siguiente versión:<ul>
-<li>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</li>
-<li>El nombre puede cambiar.</li>
-<li>La firma (declaración de funciones) podría cambiar.</li>
-<li>La funcionalidad puede cambiar.</li>
-<li>Las pruebas de pgTap pueden estar ausentes.</li>
-<li>Posiblemente necesite codificación c/c++.</li>
-<li>Puede haber carencia de documentación.</li>
-<li>Hay documentación que, en dado caso, podría ser necesario reescribir.</li>
-<li>Ejemplos de documentación que puede ser necesario generar automáticamente.</li>
-<li>Puede ser necesaria más retroalimentación por parte de la comunidad.</li>
-<li>Puede depender de una función propuesta de pgRouting.</li>
-<li>Podría depender de una función obsoleta de pgRouting</li>
+<ul class="simple">
+<li><p>No son oficialmente de la versión actual.</p></li>
+<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<ul>
+<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
+<li><p>El nombre puede cambiar.</p></li>
+<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La funcionalidad puede cambiar.</p></li>
+<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Posiblemente necesite codificación c/c++.</p></li>
+<li><p>Puede haber carencia de documentación.</p></li>
+<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
+<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
+<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
+<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a> - Detalles del flujo y el coste en los bordes.</li>
-<li><a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - Experimental</span></a> - Solo el cálculo del Coste Mínimo.</li>
+<li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a> - Detalles del flujo y el coste en los bordes.</p></li>
+<li><p><a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - Experimental</span></a> - Solo el cálculo del Coste Mínimo.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <p class="rubric">Versiones anteriores de esta página</p>
 <ul class="simple">
-<li><strong>Versiones soportadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/3.1/es/flow-family.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/es/flow-family.html">3.0</a> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/flow-family.html">2.6</a></li>
-<li><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/flow-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/flow-family.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html">2.3</a></li>
+<li><p><strong>Versiones soportadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/3.1/es/flow-family.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/es/flow-family.html">3.0</a> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/flow-family.html">2.6</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/flow-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/flow-family.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html">2.3</a></p></li>
 </ul>
 <div class="section" id="flow-functions-general-information">
 <h2>Información General de las Funciones de Flujo<a class="headerlink" href="#flow-functions-general-information" title="Enlazar permanentemente con este título">¶</a></h2>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
-<li>El grafo es <strong>dirigido</strong>.</li>
-<li>El proceso se realiza sólo en aristas con capacidades positivas.</li>
-<li>Cuando el flujo máximo es 0 entonces no hay flujo, se devolverá: <strong>EMPTY SET</strong>.<ul>
-<li>No hay ningún flujo cuando el  <strong>orígen</strong> es el mismo que el <strong>destino</strong>.</li>
+<li><p>El grafo es <strong>dirigido</strong>.</p></li>
+<li><p>El proceso se realiza sólo en aristas con capacidades positivas.</p></li>
+<li><p>Cuando el flujo máximo es 0 entonces no hay flujo, se devolverá: <strong>EMPTY SET</strong>.</p>
+<ul>
+<li><p>No hay ningún flujo cuando el  <strong>orígen</strong> es el mismo que el <strong>destino</strong>.</p></li>
 </ul>
 </li>
-<li>Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) será ignorado.</li>
-<li>Calcula la capacidad de flujo/residuo para cada arista. En la salida<ul>
-<li>Se omiten las aristas con flujo cero.</li>
+<li><p>Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) será ignorado.</p></li>
+<li><p>Calcula la capacidad de flujo/residuo para cada arista. En la salida</p>
+<ul>
+<li><p>Se omiten las aristas con flujo cero.</p></li>
 </ul>
 </li>
-<li>Crea una <strong>súper origen</strong>, con aristas para todos los orígenes, y un <strong>súper destino</strong> con aristas para todos los destinos.</li>
-<li>Se garantiza que el flujo máximo a través del grafo es el valor devuelto por  <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> cuando es ejecutado con los mismos parámetros y se puede calcular:<ul>
-<li>Mediante la agregación del flujo saliente de los orígenes</li>
-<li>Mediante la agregación del flujo entrante a los destinos</li>
+<li><p>Crea una <strong>súper origen</strong>, con aristas para todos los orígenes, y un <strong>súper destino</strong> con aristas para todos los destinos.</p></li>
+<li><p>Se garantiza que el flujo máximo a través del grafo es el valor devuelto por  <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> cuando es ejecutado con los mismos parámetros y se puede calcular:</p>
+<ul>
+<li><p>Mediante la agregación del flujo saliente de los orígenes</p></li>
+<li><p>Mediante la agregación del flujo entrante a los destinos</p></li>
 </ul>
 </li>
 </ul>
@@ -224,45 +230,45 @@
 </div>
 <div class="section" id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="18%" />
-<col width="8%" />
-<col width="59%" />
+<col style="width: 14%" />
+<col style="width: 18%" />
+<col style="width: 8%" />
+<col style="width: 59%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Valores predeterminados</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>Edges SQL</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>La consulta SQL de aristas como se describe en <a class="reference internal" href="#inner-query">Inner Query</a>.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p>La consulta SQL de aristas como se describe en <a class="reference internal" href="#inner-query">Inner Query</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>origen</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
-<td>Identificador del vértice inicial del flujo.</td>
+<tr class="row-odd"><td><p><strong>origen</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td></td>
+<td><p>Identificador del vértice inicial del flujo.</p></td>
 </tr>
-<tr class="row-even"><td><strong>orígenes</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></td>
-<td>&#160;</td>
-<td>Conjunto de identificadores de los vértices iniciales del flujo.</td>
+<tr class="row-even"><td><p><strong>orígenes</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td></td>
+<td><p>Conjunto de identificadores de los vértices iniciales del flujo.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>objetivo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
-<td>Identificador del vértice final del flujo.</td>
+<tr class="row-odd"><td><p><strong>objetivo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td></td>
+<td><p>Identificador del vértice final del flujo.</p></td>
 </tr>
-<tr class="row-even"><td><strong>destinos</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></td>
-<td>&#160;</td>
-<td>Conjunto de identificadores de los vértices finales del flujo.</td>
+<tr class="row-even"><td><p><strong>destinos</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td></td>
+<td><p>Conjunto de identificadores de los vértices finales del flujo.</p></td>
 </tr>
 </tbody>
 </table>
@@ -270,241 +276,230 @@
 <div class="section" id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Para <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> :</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Edges SQL:</th><td class="field-body">Consulta SQL de un grafo dirigido de capacidades, que debe devolver un conjunto de filas con las siguientes columnas:</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
+<dl class="field-list simple">
+<dt class="field-odd">Edges SQL</dt>
+<dd class="field-odd"><p>Consulta SQL de un grafo dirigido de capacidades, que debe devolver un conjunto de filas con las siguientes columnas:</p>
+</dd>
+</dl>
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="13%" />
-<col width="6%" />
-<col width="67%" />
+<col style="width: 14%" />
+<col style="width: 13%" />
+<col style="width: 6%" />
+<col style="width: 67%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Valores predeterminados</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador de la arista.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>origen</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del primer punto final en el vértice de la arista.</td>
+<tr class="row-odd"><td><p><strong>origen</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-even"><td><strong>objetivo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del segundo punto final en el vértice de la arista.</td>
+<tr class="row-even"><td><p><strong>objetivo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>capacidad</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Peso de la arista <cite>(source, target)</cite></p>
-<ul class="last simple">
-<li>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-odd"><td><p><strong>capacidad</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Peso de la arista <cite>(source, target)</cite></p>
+<ul class="simple">
+<li><p>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>reverse_capacity</strong> (<strong>capacidad inversa</strong>)</td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>-1</td>
-<td><p class="first">Peso de la arista <cite>(target, source)</cite>,</p>
-<ul class="last simple">
-<li>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-even"><td><p><strong>reverse_capacity</strong> (<strong>capacidad inversa</strong>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista <cite>(target, source)</cite>,</p>
+<ul class="simple">
+<li><p>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Donde:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+</dl>
 <p>Para <a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a> and <a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - Experimental</span></a>:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Edges SQL:</th><td class="field-body">Consulta SQL de un grafo dirigido de capacidades, que debe devolver un conjunto de filas con las siguientes columnas:</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
+<dl class="field-list simple">
+<dt class="field-odd">Edges SQL</dt>
+<dd class="field-odd"><p>Consulta SQL de un grafo dirigido de capacidades, que debe devolver un conjunto de filas con las siguientes columnas:</p>
+</dd>
+</dl>
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="13%" />
-<col width="6%" />
-<col width="67%" />
+<col style="width: 14%" />
+<col style="width: 13%" />
+<col style="width: 6%" />
+<col style="width: 67%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Valores predeterminados</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador de la arista.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>origen</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del primer punto final en el vértice de la arista.</td>
+<tr class="row-odd"><td><p><strong>origen</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-even"><td><strong>objetivo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del segundo punto final en el vértice de la arista.</td>
+<tr class="row-even"><td><p><strong>objetivo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>capacidad</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Capacidad de la arista <cite>(origen, destino)</cite></p>
-<ul class="last simple">
-<li>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-odd"><td><p><strong>capacidad</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Capacidad de la arista <cite>(origen, destino)</cite></p>
+<ul class="simple">
+<li><p>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>reverse_capacity</strong> (<strong>capacidad inversa</strong>)</td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>-1</td>
-<td><p class="first">Capacidad de la arista <cite>(destino, origen)</cite>,</p>
-<ul class="last simple">
-<li>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-even"><td><p><strong>reverse_capacity</strong> (<strong>capacidad inversa</strong>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>-1</p></td>
+<td><p>Capacidad de la arista <cite>(destino, origen)</cite>,</p>
+<ul class="simple">
+<li><p>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td>Peso de la arista <cite>(origen, destino)</cite> si existe.</td>
+<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>Peso de la arista <cite>(origen, destino)</cite> si existe.</p></td>
 </tr>
-<tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>0</td>
-<td>Peso de la arista <cite>(destino, origen)</cite> si existe.</td>
+<tr class="row-even"><td><p><strong>reverse_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>0</p></td>
+<td><p>Peso de la arista <cite>(destino, origen)</cite> si existe.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Donde:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">smallint, int, bigint, real, float</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>smallint, int, bigint, real, float</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Para <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> :</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="18%" />
-<col width="17%" />
-<col width="65%" />
+<col style="width: 18%" />
+<col style="width: 17%" />
+<col style="width: 65%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
-<td>Valor secuencial a partir de <strong>1</strong>.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>edge</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identificador de la arista en la consulta original(edges_sql).</td>
+<tr class="row-odd"><td><p><strong>edge</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador de la arista en la consulta original(edges_sql).</p></td>
 </tr>
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identificador del primer punto final en el vértice de la arista.</td>
+<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identificador del segundo punto final en el vértice de la arista.</td>
+<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-even"><td><strong>flujo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Flujo a través del arista en la dirección  (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</td>
+<tr class="row-even"><td><p><strong>flujo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Flujo a través del arista en la dirección  (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><strong>residual_capacity</strong> (<strong>capacidad residual</strong>)</td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Capacidad residual del arista en la dirección (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</td>
+<tr class="row-odd"><td><p><strong>residual_capacity</strong> (<strong>capacidad residual</strong>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Capacidad residual del arista en la dirección (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Para <a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a></p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="17%" />
-<col width="16%" />
-<col width="66%" />
+<col style="width: 17%" />
+<col style="width: 16%" />
+<col style="width: 66%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
-<td>Valor secuencial a partir de <strong>1</strong>.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>edge</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identificador de la arista en la consulta original(edges_sql).</td>
+<tr class="row-odd"><td><p><strong>edge</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador de la arista en la consulta original(edges_sql).</p></td>
 </tr>
-<tr class="row-even"><td><strong>origen</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identificador del primer punto final en el vértice de la arista.</td>
+<tr class="row-even"><td><p><strong>origen</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>objetivo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identificador del segundo punto final en el vértice de la arista.</td>
+<tr class="row-odd"><td><p><strong>objetivo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-even"><td><strong>flujo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Flujo a través de la arista en la dirección (origen, destino).</td>
+<tr class="row-even"><td><p><strong>flujo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Flujo a través de la arista en la dirección (origen, destino).</p></td>
 </tr>
-<tr class="row-odd"><td><strong>residual_capacity</strong> (<strong>capacidad residual</strong>)</td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Capacidad residual de la arista en la dirección (origen, destino).</td>
+<tr class="row-odd"><td><p><strong>residual_capacity</strong> (<strong>capacidad residual</strong>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Capacidad residual de la arista en la dirección (origen, destino).</p></td>
 </tr>
-<tr class="row-even"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td>El costo de enviar este flujo a través de la arista en la dirección (origen, destino).</td>
+<tr class="row-even"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>El costo de enviar este flujo a través de la arista en la dirección (origen, destino).</p></td>
 </tr>
-<tr class="row-odd"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td>El costo agregado.</td>
+<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>El costo agregado.</p></td>
 </tr>
 </tbody>
 </table>
@@ -519,48 +514,50 @@
 <p class="rubric">Definición del grafo</p>
 <p>El grafo ponderado dirigido, <span class="math notranslate nohighlight">\(G(V,E)\)</span>, se define como:</p>
 <ul class="simple">
-<li>Conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span><ul>
-<li><span class="math notranslate nohighlight">\(source\_vertex  \cup  sink\_vertex  \bigcup  source_i  \bigcup  target_i\)</span></li>
+<li><p>Conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(source\_vertex  \cup  sink\_vertex  \bigcup  source_i  \bigcup  target_i\)</span></p></li>
 </ul>
 </li>
-<li>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span><ul>
-<li><span class="math notranslate nohighlight">\(E = \begin{cases}
+<li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E = \begin{cases}
 \text{ } \{(source_i, target_i, capacity_i) \text{ when } capacity &gt; 0 \} &amp; \quad  \text{ if } reverse\_capacity = \varnothing \\
 \text{ } &amp; \quad \text{ } \\
 \{(source_i, target_i, capacity_i) \text{ when } capacity &gt; 0 \} &amp; \text{ } \\
-\cup \{(target_i, source_i, reverse\_capacity_i) \text{ when } reverse\_capacity_i &gt; 0)\} &amp; \quad \text{ if } reverse\_capacity \neq \varnothing \\ \end{cases}\)</span></li>
+\cup \{(target_i, source_i, reverse\_capacity_i) \text{ when } reverse\_capacity_i &gt; 0)\} &amp; \quad \text{ if } reverse\_capacity \neq \varnothing \\ \end{cases}\)</span></p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Problema de Flujo Máximo</p>
 <p>Dado:</p>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(G(V,E)\)</span></li>
-<li><span class="math notranslate nohighlight">\(source\_vertex \in V\)</span> el vértice de origen</li>
-<li><span class="math notranslate nohighlight">\(sink\_vertex \in V\)</span> el vértice pozo</li>
+<li><p><span class="math notranslate nohighlight">\(G(V,E)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(source\_vertex \in V\)</span> el vértice de origen</p></li>
+<li><p><span class="math notranslate nohighlight">\(sink\_vertex \in V\)</span> el vértice pozo</p></li>
 </ul>
 <p>Entonces:</p>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}\)</span></li>
-<li><span class="math notranslate nohighlight">\(\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i)}\)</span></li>
+<li><p><span class="math notranslate nohighlight">\(pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i)}\)</span></p></li>
 </ul>
 <p>Donde:</p>
 <p><span class="math notranslate nohighlight">\(\boldsymbol{\Phi}\)</span> es un subconjunto de las aristas originales con su flujo y capacidad residual. El flujo máximo a través del grafo se puede obtrener agregando en el origen o sumidero y sumiendo el flujo hacia él. En particular:</p>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(id_i = i\)</span></li>
-<li><span class="math notranslate nohighlight">\(edge\_id = id_i\)</span> in edges_sql</li>
-<li><span class="math notranslate nohighlight">\(residual\_capacity_i = capacity_i - flow_i\)</span></li>
+<li><p><span class="math notranslate nohighlight">\(id_i = i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(edge\_id = id_i\)</span> in edges_sql</p></li>
+<li><p><span class="math notranslate nohighlight">\(residual\_capacity_i = capacity_i - flow_i\)</span></p></li>
 </ul>
 </div>
 <div class="section" id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_flow_problem">https://en.wikipedia.org/wiki/Maximum_flow_problem</a></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_flow_problem">https://en.wikipedia.org/wiki/Maximum_flow_problem</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -577,9 +574,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Actualizado por última vez en jul. 24, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.1.<br/>
+      Actualizado por última vez en nov. 19, 2020.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
     </p>
   </div>
 </footer>

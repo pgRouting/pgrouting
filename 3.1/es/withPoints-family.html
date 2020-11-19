@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<html lang="es">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>withPoints - Familia de funciones &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -28,6 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -142,43 +143,41 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="withpoints-family-of-functions">
 <h1>withPoints - Familia de funciones<a class="headerlink" href="#withpoints-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>Cuando los puntos también se dan como entrada:</p>
 <div class="admonition warning">
-<p class="first admonition-title">Advertencia</p>
+<p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para el próximo lanzamineto.</p>
-<ul class="last simple">
-<li>No están oficialmente en la versión actual.</li>
-<li>Es probable que oficialmente formen parte del próximo lanzamiento:<ul>
-<li>Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL</li>
-<li>Es posible que el nombre no cambie. (Pero todavía puede)</li>
-<li>Es posible que la firma no cambie. (Pero todavía puede)</li>
-<li>Es posible que la funcionalidad no cambie. (Pero todavía puede)</li>
-<li>Se han hecho pruebas de pgTap. Pero tal vez necesite más.</li>
-<li>Es posible que la documentación necesite un refinamiento.</li>
+<ul class="simple">
+<li><p>No están oficialmente en la versión actual.</p></li>
+<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
+<ul>
+<li><p>Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL</p></li>
+<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
+<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Se han hecho pruebas de pgTap. Pero tal vez necesite más.</p></li>
+<li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> - Ruta desde/hacia puntos en cualquier parte del grafo.</li>
-<li><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost - Propuesto</span></a> - Costos de las tutas más cortas.</li>
-<li><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - propuesto</span></a> - Costos de las rutas más cortas.</li>
-<li><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Propuesto</span></a> - rutas más cortas K.</li>
-<li><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Propuesto</span></a> - Distancia de conducción.</li>
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> - Ruta desde/hacia puntos en cualquier parte del grafo.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost - Propuesto</span></a> - Costos de las tutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - propuesto</span></a> - Costos de las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Propuesto</span></a> - rutas más cortas K.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Propuesto</span></a> - Distancia de conducción.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <p class="rubric">Versiones anteriores de esta página</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
-current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/withPoints-family.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/withPoints-family.html">3.0</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/withPoints-family.html">2.6</a></li>
-<li><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/withPoints-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/withPoints-family.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html">2.2</a></li>
+<li><p><strong>Versiones soportadas:</strong> actua​l(<a class="reference external" href="https://docs.pgrouting.org/3.1/es/withPoints-family.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/es/withPoints-family.html">3.0</a> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/withPoints-family.html">2.6</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/withPoints-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/withPoints-family.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html">2.2</a></p></li>
 </ul>
 <div class="section" id="images">
 <h2>Imágenes<a class="headerlink" href="#images" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -195,44 +194,49 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/wi
 <p>Esta familia de funciones fue pensada para el ruteo de vehículos, pero bien podría funcionar para alguna otra aplicación que no se nos haya ocurrido aún.</p>
 <p>La familia de funciones con puntos le da la capacidad de enrutar entre puntos arbitrarios situados fuera del grafo original.</p>
 <p>Cuando se le da un punto identificado con un <cite>pid</cite> al que se está asignando y borde con un identificador <cite>edge_id</cite>, con una <cite>fracción</cite> a lo largo de ese borde (desde el origen hasta el destino del borde) y algo de información adicional sobre qué <cite>lado</cite> del borde se encuentra en el punto, a continuación, el ruteo desde puntos arbitrarios refleja con mayor precisión los vehículos de enrutamiento en las redes de carreteras,</p>
-<dl class="docutils">
-<dt>Hablo de una familia de funciones porque incluye diferentes funcionalidades.</dt>
-<dd><ul class="first last simple">
-<li>pgr_withPoints se basa en pgr_dijkstra</li>
-<li>pgr_withPointsCost se basa en pgr_dijkstraCost</li>
-<li>pgr_withPointsKSP se basa en pgr_ksp</li>
-<li>pgr_withPointsDD se basa en pgr_drivingDistance</li>
+<dl class="simple">
+<dt>Hablo de una familia de funciones porque incluye diferentes funcionalidades.</dt><dd><ul class="simple">
+<li><p>pgr_withPoints se basa en pgr_dijkstra</p></li>
+<li><p>pgr_withPointsCost se basa en pgr_dijkstraCost</p></li>
+<li><p>pgr_withPointsKSP se basa en pgr_ksp</p></li>
+<li><p>pgr_withPointsDD se basa en pgr_drivingDistance</p></li>
 </ul>
 </dd>
 </dl>
 <p>En todas estas funciones tenemos que ocuparnos de tantos aspectos como sea posible:</p>
 <ul class="simple">
-<li>Debe funcionar para el ruteo:<ul>
-<li>Coches (grafo dirigido)</li>
-<li>Peatones (grafo no dirigido)</li>
+<li><p>Debe funcionar para el ruteo:</p>
+<ul>
+<li><p>Coches (grafo dirigido)</p></li>
+<li><p>Peatones (grafo no dirigido)</p></li>
 </ul>
 </li>
-<li>Al llegar al punto:<ul>
-<li>A ambos lados de la calle.</li>
-<li>Llegada obligatoria en el lado de la calle donde se encuentra el punto.</li>
+<li><p>Al llegar al punto:</p>
+<ul>
+<li><p>A ambos lados de la calle.</p></li>
+<li><p>Llegada obligatoria en el lado de la calle donde se encuentra el punto.</p></li>
 </ul>
 </li>
-<li>Países con:<ul>
-<li>Conducción de lado derecho</li>
-<li>Conducción de lado izquierdo</li>
+<li><p>Países con:</p>
+<ul>
+<li><p>Conducción de lado derecho</p></li>
+<li><p>Conducción de lado izquierdo</p></li>
 </ul>
 </li>
-<li>Algunos puntos son:<ul>
-<li>Permanente, por ejemplo, el conjunto de puntos de los clientes almacenados en una tabla en la base de datos</li>
-<li>Temporal, por ejemplo, puntos dados a través de una aplicación web</li>
+<li><p>Algunos puntos son:</p>
+<ul>
+<li><p>Permanente, por ejemplo, el conjunto de puntos de los clientes almacenados en una tabla en la base de datos</p></li>
+<li><p>Temporal, por ejemplo, puntos dados a través de una aplicación web</p></li>
 </ul>
 </li>
-<li>La numeración de los puntos se maneja con signo negativo.<ul>
-<li>Los identificadores de punto originales deben ser positivos.</li>
-<li>La transformación a negativa se realiza internamente.</li>
-<li>Para obtener resultados para la participación de identificadores de vértices<ul>
-<li>signo positivo es un vértice del grafo original</li>
-<li>signo negativo es un punto de los puntos temporales</li>
+<li><p>La numeración de los puntos se maneja con signo negativo.</p>
+<ul>
+<li><p>Los identificadores de punto originales deben ser positivos.</p></li>
+<li><p>La transformación a negativa se realiza internamente.</p></li>
+<li><p>Para obtener resultados para la participación de identificadores de vértices</p>
+<ul>
+<li><p>signo positivo es un vértice del grafo original</p></li>
+<li><p>signo negativo es un punto de los puntos temporales</p></li>
 </ul>
 </li>
 </ul>
@@ -243,10 +247,12 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/wi
 <div class="section" id="graph-edges">
 <h2>Grafo &amp; aristas<a class="headerlink" href="#graph-edges" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li>Permitir <span class="math notranslate nohighlight">\(G_d(V,E)\)</span> donde <span class="math notranslate nohighlight">\(V\)</span> es el conjunto de vértices y <span class="math notranslate nohighlight">\(E\)</span> es el conjunto de aristas sea el gráfico dirigido original.<ul>
-<li>Un borde del <cite>edges_sql</cite> original es <span class="math notranslate nohighlight">\((id, source, target, cost, reverse\_cost)\)</span> y se generará internamente<ul>
-<li><span class="math notranslate nohighlight">\((id, source, target, cost)\)</span></li>
-<li><span class="math notranslate nohighlight">\((id, target, source, reverse\_cost)\)</span></li>
+<li><p>Permitir <span class="math notranslate nohighlight">\(G_d(V,E)\)</span> donde <span class="math notranslate nohighlight">\(V\)</span> es el conjunto de vértices y <span class="math notranslate nohighlight">\(E\)</span> es el conjunto de aristas sea el gráfico dirigido original.</p>
+<ul>
+<li><p>Un borde del <cite>edges_sql</cite> original es <span class="math notranslate nohighlight">\((id, source, target, cost, reverse\_cost)\)</span> y se generará internamente</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\((id, source, target, cost)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((id, target, source, reverse\_cost)\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -256,11 +262,12 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/wi
 <div class="section" id="point-definition">
 <h2>Definición de Punto<a class="headerlink" href="#point-definition" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li>Un punto se define por el cuadruplicado: <span class="math notranslate nohighlight">\((pid, eid, fraction, side)\)</span><ul>
-<li><strong>pid</strong> es el identificador de punto</li>
-<li><strong>eid</strong> es un identificador de aristas de <cite>edges_sql</cite></li>
-<li><strong>fracción</strong> representa dónde se cortará el borde <cite>eid</cite>.</li>
-<li><strong>lado</strong> Indica el lado de la arista donde se encuentra el punto.</li>
+<li><p>Un punto se define por el cuadruplicado: <span class="math notranslate nohighlight">\((pid, eid, fraction, side)\)</span></p>
+<ul>
+<li><p><strong>pid</strong> es el identificador de punto</p></li>
+<li><p><strong>eid</strong> es un identificador de aristas de <cite>edges_sql</cite></p></li>
+<li><p><strong>fracción</strong> representa dónde se cortará el borde <cite>eid</cite>.</p></li>
+<li><p><strong>lado</strong> Indica el lado de la arista donde se encuentra el punto.</p></li>
 </ul>
 </li>
 </ul>
@@ -271,46 +278,46 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/wi
 <p class="rubric">En una red de conducción del lado derecho</p>
 <p>Desde la primera imagen de arriba:</p>
 <ul class="simple">
-<li>Podemos llegar al punto sólo a través del vértice 9.</li>
-<li>Sólo afecta a la arista (15, 9,12, 10) por lo que esa arista se elimina.</li>
-<li>Se mantiene la arista (15, 12, 9, 20).</li>
-<li>Crear nuevas aristas:<ul>
-<li>(15, 9, -1, 3) arista desde el vértice 9 hasta el punto 1 cuyo costo es de 3</li>
-<li>(15, -1,12, 7) arista desde el punto 1 hasta el vértice 12 cuyo costo es de 7</li>
+<li><p>Podemos llegar al punto sólo a través del vértice 9.</p></li>
+<li><p>Sólo afecta a la arista (15, 9,12, 10) por lo que esa arista se elimina.</p></li>
+<li><p>Se mantiene la arista (15, 12, 9, 20).</p></li>
+<li><p>Crear nuevas aristas:</p>
+<ul>
+<li><p>(15, 9, -1, 3) arista desde el vértice 9 hasta el punto 1 cuyo costo es de 3</p></li>
+<li><p>(15, -1,12, 7) arista desde el punto 1 hasta el vértice 12 cuyo costo es de 7</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">En una red de conducción del lado izquierdo</p>
 <p>Desde la segunda imagen de arriba:</p>
 <ul class="simple">
-<li>Podemos llegar al punto sólo a través del vértice 12.</li>
-<li>Sólo afecta a la arista (15, 12,9 20) por lo que esa arista se elimina.</li>
-<li>Se mantiene la arista (15, 9,12, 10).</li>
-<li>Crear nuevas aristas:<ul>
-<li>(15, 12,-1, 14) arista del vértice 12 al punto 1 ha costado 14</li>
-<li>(15, -1, 9, 6) arista el punto 1 hasta el vértice 9 ha costado 6</li>
+<li><p>Podemos llegar al punto sólo a través del vértice 12.</p></li>
+<li><p>Sólo afecta a la arista (15, 12,9 20) por lo que esa arista se elimina.</p></li>
+<li><p>Se mantiene la arista (15, 9,12, 10).</p></li>
+<li><p>Crear nuevas aristas:</p>
+<ul>
+<li><p>(15, 12,-1, 14) arista del vértice 12 al punto 1 ha costado 14</p></li>
+<li><p>(15, -1, 9, 6) arista el punto 1 hasta el vértice 9 ha costado 6</p></li>
 </ul>
 </li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Recordar:</th><td class="field-body">esa fracción es del vértice 9 al vértice 12</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Recordar</dt>
+<dd class="field-odd"><p>esa fracción es del vértice 9 al vértice 12</p>
+</dd>
+</dl>
 <p class="rubric">Cuando el lado de conducción no importa</p>
 <p>De la tercera imagen anterior:</p>
 <ul class="simple">
-<li>Podemos llegar al punto ya sea a través del vértice 12 o a través del vértice 9</li>
-<li>Se elimina la arista (15, 12, 9, 20).</li>
-<li>Se elimina la arista (15, 9, 12, 10).</li>
-<li>Crear nuevas aristas:<ul>
-<li>(15, 12,-1, 14) arista del vértice 12 al punto 1 ha costado 14</li>
-<li>(15, -1, 9, 6) arista el punto 1 hasta el vértice 9 ha costado 6</li>
-<li>(15, 9, -1, 3) arista desde el vértice 9 hasta el punto 1 cuyo costo es de 3</li>
-<li>(15, -1,12, 7) arista desde el punto 1 hasta el vértice 12 cuyo costo es de 7</li>
+<li><p>Podemos llegar al punto ya sea a través del vértice 12 o a través del vértice 9</p></li>
+<li><p>Se elimina la arista (15, 12, 9, 20).</p></li>
+<li><p>Se elimina la arista (15, 9, 12, 10).</p></li>
+<li><p>Crear nuevas aristas:</p>
+<ul>
+<li><p>(15, 12,-1, 14) arista del vértice 12 al punto 1 ha costado 14</p></li>
+<li><p>(15, -1, 9, 6) arista el punto 1 hasta el vértice 9 ha costado 6</p></li>
+<li><p>(15, 9, -1, 3) arista desde el vértice 9 hasta el punto 1 cuyo costo es de 3</p></li>
+<li><p>(15, -1,12, 7) arista desde el punto 1 hasta el vértice 12 cuyo costo es de 7</p></li>
 </ul>
 </li>
 </ul>
@@ -319,8 +326,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/wi
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -337,9 +344,9 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/wi
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Actualizado por última vez en jul. 24, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.1.<br/>
+      Actualizado por última vez en nov. 19, 2020.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
     </p>
   </div>
 </footer>

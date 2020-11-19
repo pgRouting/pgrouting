@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_withPointsDD - Proposed &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,6 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -146,49 +147,51 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-withpointsdd-proposed">
 <h1>pgr_withPointsDD - Proposed<a class="headerlink" href="#pgr-withpointsdd-proposed" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - Returns the driving distance from a starting point.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>Proposed functions for next mayor release.</p>
-<ul class="last simple">
-<li>They are not officially in the current release.</li>
-<li>They will likely officially be part of the next mayor release:<ul>
-<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might not change. (But still can)</li>
-<li>Signature might not change. (But still can)</li>
-<li>Functionality might not change. (But still can)</li>
-<li>pgTap tests have being done. But might need more.</li>
-<li>Documentation might need refinement.</li>
+<ul class="simple">
+<li><p>They are not officially in the current release.</p></li>
+<li><p>They will likely officially be part of the next mayor release:</p>
+<ul>
+<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might not change. (But still can)</p></li>
+<li><p>Signature might not change. (But still can)</p></li>
+<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>pgTap tests have being done. But might need more.</p></li>
+<li><p>Documentation might need refinement.</p></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="figure" id="id1">
+<div class="figure align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Boost Graph Inside</span></p>
+<p class="caption"><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>Version 2.2.0<ul>
-<li>New <strong>proposed</strong> function</li>
+<li><p>Version 2.2.0</p>
+<ul>
+<li><p>New <strong>proposed</strong> function</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Support</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
+<li><p><strong>Supported versions:</strong>
 current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_withPointsDD.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_withPointsDD.html">3.0</a></li>
-<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_withPointsDD.html">3.0</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_withPointsDD.html">2.6</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_withPointsDD.html">2.5</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_withPointsDD.html">2.4</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsDD.html">2.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html">2.2</a></li>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html">2.2</a></p></li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -206,26 +209,23 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </div>
 <p class="rubric">Using defaults</p>
 <ul class="simple">
-<li>For a <strong>directed</strong> graph.</li>
-<li>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</li>
-<li>No <strong>details</strong> are given about distance of other points of the query.</li>
+<li><p>For a <strong>directed</strong> graph.</p></li>
+<li><p>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</p></li>
+<li><p>No <strong>details</strong> are given about distance of other points of the query.</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point <span class="math notranslate nohighlight">\(1\)</span> with <span class="math notranslate nohighlight">\(agg\_cost &lt;= 3.8\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> with <span class="math notranslate nohighlight">\(agg\_cost &lt;= 3.8\)</span></p>
+</dd>
+</dl>
 <ul class="simple">
-<li>For a <strong>directed</strong> graph.</li>
-<li>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</li>
-<li>No <strong>details</strong> are given about distance of other points of the query.</li>
+<li><p>For a <strong>directed</strong> graph.</p></li>
+<li><p>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</p></li>
+<li><p>No <strong>details</strong> are given about distance of other points of the query.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
@@ -255,14 +255,11 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Right side driving topology, from point <span class="math notranslate nohighlight">\(1\)</span> with <span class="math notranslate nohighlight">\(agg\_cost &lt;= 3.8\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Right side driving topology, from point <span class="math notranslate nohighlight">\(1\)</span> with <span class="math notranslate nohighlight">\(agg\_cost &lt;= 3.8\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -295,241 +292,230 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="7%" />
-<col width="7%" />
-<col width="86%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 86%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>Edges SQL query as described above.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>edges_sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>Edges SQL query as described above.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>points_sql</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>Points SQL query as described above.</td>
+<tr class="row-odd"><td><p><strong>points_sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>Points SQL query as described above.</p></td>
 </tr>
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>Starting point id</td>
+<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>Starting point id</p></td>
 </tr>
-<tr class="row-odd"><td><strong>distance</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>Distance from the start_pid</td>
+<tr class="row-odd"><td><p><strong>distance</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>Distance from the start_pid</p></td>
 </tr>
-<tr class="row-even"><td><strong>directed</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional). When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected. Default is <code class="docutils literal notranslate"><span class="pre">true</span></code> which considers the graph as Directed.</td>
+<tr class="row-even"><td><p><strong>directed</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p>(optional). When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected. Default is <code class="docutils literal notranslate"><span class="pre">true</span></code> which considers the graph as Directed.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>driving_side</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></td>
-<td><dl class="first last docutils">
-<dt>(optional). Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the driving side is:</dt>
-<dd><ul class="first last simple">
-<li>In the right or left or</li>
-<li>If it doesn’t matter with ‘b’ or NULL.</li>
-<li>If column not present ‘b’ is considered.</li>
+<tr class="row-odd"><td><p><strong>driving_side</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><dl class="simple">
+<dt>(optional). Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the driving side is:</dt><dd><ul class="simple">
+<li><p>In the right or left or</p></li>
+<li><p>If it doesn’t matter with ‘b’ or NULL.</p></li>
+<li><p>If column not present ‘b’ is considered.</p></li>
 </ul>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="row-even"><td><strong>details</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional). When <code class="docutils literal notranslate"><span class="pre">true</span></code> the results will include the driving distance to the points with in the <code class="docutils literal notranslate"><span class="pre">distance</span></code>.
-Default is <code class="docutils literal notranslate"><span class="pre">false</span></code> which ignores other points of the points_sql.</td>
+<tr class="row-even"><td><p><strong>details</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p>(optional). When <code class="docutils literal notranslate"><span class="pre">true</span></code> the results will include the driving distance to the points with in the <code class="docutils literal notranslate"><span class="pre">distance</span></code>.
+Default is <code class="docutils literal notranslate"><span class="pre">false</span></code> which ignores other points of the points_sql.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>equicost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
-<td>(optional). When <code class="docutils literal notranslate"><span class="pre">true</span></code> the nodes will only appear in the closest start_v list. Default is <code class="docutils literal notranslate"><span class="pre">false</span></code> which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.</td>
+<tr class="row-odd"><td><p><strong>equicost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p>(optional). When <code class="docutils literal notranslate"><span class="pre">true</span></code> the nodes will only appear in the closest start_v list. Default is <code class="docutils literal notranslate"><span class="pre">false</span></code> which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="12%" />
-<col width="14%" />
-<col width="6%" />
-<col width="69%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 6%" />
+<col style="width: 69%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the edge.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the edge.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>source</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the first end point vertex of the edge.</td>
+<tr class="row-odd"><td><p><strong>source</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the first end point vertex of the edge.</p></td>
 </tr>
-<tr class="row-even"><td><strong>target</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identifier of the second end point vertex of the edge.</td>
+<tr class="row-even"><td><p><strong>target</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the second end point vertex of the edge.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
-<ul class="last simple">
-<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</li>
+<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="simple">
+<li><p>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>-1</td>
-<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
-<ul class="last simple">
-<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</li>
+<tr class="row-even"><td><p><strong>reverse_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>-1</p></td>
+<td><p>Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="simple">
+<li><p>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Where:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+</dd>
+</dl>
 <p class="rubric">Description of the Points SQL query</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">points_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
+<dl class="field-list simple">
+<dt class="field-odd">points_sql</dt>
+<dd class="field-odd"><p>an SQL query, which should return a set of rows with the following columns:</p>
+</dd>
+</dl>
+<table class="docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="14%" />
-<col width="76%" />
+<col style="width: 10%" />
+<col style="width: 14%" />
+<col style="width: 76%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>pid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td><p class="first">(optional) Identifier of the point.</p>
-<ul class="last simple">
-<li>If column present, it can not be NULL.</li>
-<li>If column not present, a sequential identifier will be given automatically.</li>
+<tbody>
+<tr class="row-even"><td><p><strong>pid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>(optional) Identifier of the point.</p>
+<ul class="simple">
+<li><p>If column present, it can not be NULL.</p></li>
+<li><p>If column not present, a sequential identifier will be given automatically.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>edge_id</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>Identifier of the “closest” edge to the point.</td>
+<tr class="row-odd"><td><p><strong>edge_id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>Identifier of the “closest” edge to the point.</p></td>
 </tr>
-<tr class="row-even"><td><strong>fraction</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>Value in &lt;0,1&gt; that indicates the relative postition from the first end point of the edge.</td>
+<tr class="row-even"><td><p><strong>fraction</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>Value in &lt;0,1&gt; that indicates the relative postition from the first end point of the edge.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>side</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></td>
-<td><p class="first">(optional) Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the point is:</p>
-<ul class="last simple">
-<li>In the right, left of the edge or</li>
-<li>If it doesn’t matter with ‘b’ or NULL.</li>
-<li>If column not present ‘b’ is considered.</li>
+<tr class="row-odd"><td><p><strong>side</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p>(optional) Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the point is:</p>
+<ul class="simple">
+<li><p>In the right, left of the edge or</p></li>
+<li><p>If it doesn’t matter with ‘b’ or NULL.</p></li>
+<li><p>If column not present ‘b’ is considered.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Where:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">smallint, int, bigint</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">smallint, int, bigint, real, float</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>smallint, int, bigint</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>smallint, int, bigint, real, float</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="8%" />
-<col width="7%" />
-<col width="85%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 85%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
-<td>row sequence.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
+<td><p>row sequence.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>node</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the node within the Distance from <code class="docutils literal notranslate"><span class="pre">start_pid</span></code>. If <code class="docutils literal notranslate"><span class="pre">details</span> <span class="pre">=:</span> <span class="pre">true</span></code> a negative value is the identifier of a point.</td>
+<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the node within the Distance from <code class="docutils literal notranslate"><span class="pre">start_pid</span></code>. If <code class="docutils literal notranslate"><span class="pre">details</span> <span class="pre">=:</span> <span class="pre">true</span></code> a negative value is the identifier of a point.</p></td>
 </tr>
-<tr class="row-even"><td><strong>edge</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><dl class="first last docutils">
-<dt>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence.</dt>
-<dd><ul class="first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">-1</span></code> when <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> = <code class="docutils literal notranslate"><span class="pre">node</span></code>.</li>
+<tr class="row-even"><td><p><strong>edge</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><dl class="simple">
+<dt>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence.</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-1</span></code> when <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> = <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td><dl class="first last docutils">
-<dt>Cost to traverse <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</dt>
-<dd><ul class="first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">0</span></code> when <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> = <code class="docutils literal notranslate"><span class="pre">node</span></code>.</li>
+<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><dl class="simple">
+<dt>Cost to traverse <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> when <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> = <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="row-even"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td><dl class="first last docutils">
-<dt>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</dt>
-<dd><ul class="first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">0</span></code> when <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> = <code class="docutils literal notranslate"><span class="pre">node</span></code>.</li>
+<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><dl class="simple">
+<dt>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> when <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> = <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -542,14 +528,11 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Examples for queries marked as <code class="docutils literal notranslate"><span class="pre">directed</span></code> with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns.</p>
 <p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Network for queries marked as directed and cost and reverse_cost columns are used</span></a></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Left side driving topology from point <span class="math notranslate nohighlight">\(1\)</span> with <span class="math notranslate nohighlight">\(agg\_cost &lt;= 3.8\)</span>, with details</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Left side driving topology from point <span class="math notranslate nohighlight">\(1\)</span> with <span class="math notranslate nohighlight">\(agg\_cost &lt;= 3.8\)</span>, with details</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -576,14 +559,11 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
 
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">From point <span class="math notranslate nohighlight">\(1\)</span> with <span class="math notranslate nohighlight">\(agg\_cost &lt;= 3.8\)</span>, does not matter driving side, with details</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> with <span class="math notranslate nohighlight">\(agg\_cost &lt;= 3.8\)</span>, does not matter driving side, with details</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -615,13 +595,13 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Driving distance using dijkstra.</li>
-<li><a class="reference internal" href="pgr_alphaShape.html"><span class="doc">pgr_alphaShape</span></a> - Alpha shape computation.</li>
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Driving distance using dijkstra.</p></li>
+<li><p><a class="reference internal" href="pgr_alphaShape.html"><span class="doc">pgr_alphaShape</span></a> - Alpha shape computation.</p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -638,9 +618,9 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Last updated on Jul 24, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.1.<br/>
+      Last updated on Nov 19, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
     </p>
   </div>
 </footer>

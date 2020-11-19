@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<html lang="es">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transformation - Familia de funciones (Experimental) &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -26,6 +23,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -40,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -128,51 +129,50 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="transformation-family-of-functions-experimental">
 <h1>Transformation - Familia de funciones (Experimental)<a class="headerlink" href="#transformation-family-of-functions-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="admonition warning">
-<p class="first admonition-title">Advertencia</p>
+<p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
-<ul class="last simple">
-<li>Estas funciones pueden crear un bloqueo del servidor</li>
+<ul class="simple">
+<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Advertencia</p>
+<p class="admonition-title">Advertencia</p>
 <p>Funciones experimentales</p>
-<ul class="last simple">
-<li>No son oficialmente de la versión actual.</li>
-<li>Es probable que oficialmente no formen parte de la siguiente versión:<ul>
-<li>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</li>
-<li>El nombre puede cambiar.</li>
-<li>La firma (declaración de funciones) podría cambiar.</li>
-<li>La funcionalidad puede cambiar.</li>
-<li>Las pruebas de pgTap pueden estar ausentes.</li>
-<li>Posiblemente necesite codificación c/c++.</li>
-<li>Puede haber carencia de documentación.</li>
-<li>Hay documentación que, en dado caso, podría ser necesario reescribir.</li>
-<li>Ejemplos de documentación que puede ser necesario generar automáticamente.</li>
-<li>Puede ser necesaria más retroalimentación por parte de la comunidad.</li>
-<li>Puede depender de una función propuesta de pgRouting.</li>
-<li>Podría depender de una función obsoleta de pgRouting</li>
+<ul class="simple">
+<li><p>No son oficialmente de la versión actual.</p></li>
+<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<ul>
+<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
+<li><p>El nombre puede cambiar.</p></li>
+<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La funcionalidad puede cambiar.</p></li>
+<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Posiblemente necesite codificación c/c++.</p></li>
+<li><p>Puede haber carencia de documentación.</p></li>
+<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
+<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
+<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
+<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_lineGraph.html"><span class="doc">pgr_lineGraph - Experimental</span></a> - Algoritmo de transformación para generar un grafo de líneas.</li>
-<li><a class="reference internal" href="pgr_lineGraphFull.html"><span class="doc">pgr_lineGraphFull - Experimental</span></a> -  Algoritmo de transformación para generar un grafo de líneas a partir de cada vértice en el grafo de entrada.</li>
+<li><p><a class="reference internal" href="pgr_lineGraph.html"><span class="doc">pgr_lineGraph - Experimental</span></a> - Algoritmo de transformación para generar un grafo de líneas.</p></li>
+<li><p><a class="reference internal" href="pgr_lineGraphFull.html"><span class="doc">pgr_lineGraphFull - Experimental</span></a> -  Algoritmo de transformación para generar un grafo de líneas a partir de cada vértice en el grafo de entrada.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <p class="rubric">Versiones anteriores de esta página</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
-current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/transformation-family.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/transformation-family.html">3.0</a></li>
-<li><strong>Versiones No Soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/transformation-family.html">2.6</a></li>
+<li><p><strong>Versiones soportadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/3.1/es/transformation-family.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/es/transformation-family.html">3.0</a></p></li>
+<li><p><strong>Versiones No Soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/transformation-family.html">2.6</a></p></li>
 </ul>
 <div class="section" id="introduction">
 <h2>Introducción<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -182,8 +182,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/tr
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -200,9 +200,9 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/tr
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Actualizado por última vez en jul. 24, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.1.<br/>
+      Actualizado por última vez en nov. 19, 2020.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
     </p>
   </div>
 </footer>

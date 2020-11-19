@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<html lang="es">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_breadthFirstSearch - Experimental &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -28,6 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -152,40 +153,41 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-breadthfirstsearch-experimental">
 <h1>pgr_breadthFirstSearch - Experimental<a class="headerlink" href="#pgr-breadthfirstsearch-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> — Devuelve el recorrido en orden de acuerdo al algoritmo de Búsqueda de Anchura.</p>
-<div class="figure" id="id1">
+<div class="figure align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Adentro: Boost Graph</span></p>
+<p class="caption"><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Advertencia</p>
+<p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
-<ul class="last simple">
-<li>Estas funciones pueden crear un bloqueo del servidor</li>
+<ul class="simple">
+<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Advertencia</p>
+<p class="admonition-title">Advertencia</p>
 <p>Funciones experimentales</p>
-<ul class="last simple">
-<li>No son oficialmente de la versión actual.</li>
-<li>Es probable que oficialmente no formen parte de la siguiente versión:<ul>
-<li>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</li>
-<li>El nombre puede cambiar.</li>
-<li>La firma (declaración de funciones) podría cambiar.</li>
-<li>La funcionalidad puede cambiar.</li>
-<li>Las pruebas de pgTap pueden estar ausentes.</li>
-<li>Posiblemente necesite codificación c/c++.</li>
-<li>Puede haber carencia de documentación.</li>
-<li>Hay documentación que, en dado caso, podría ser necesario reescribir.</li>
-<li>Ejemplos de documentación que puede ser necesario generar automáticamente.</li>
-<li>Puede ser necesaria más retroalimentación por parte de la comunidad.</li>
-<li>Puede depender de una función propuesta de pgRouting.</li>
-<li>Podría depender de una función obsoleta de pgRouting</li>
+<ul class="simple">
+<li><p>No son oficialmente de la versión actual.</p></li>
+<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<ul>
+<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
+<li><p>El nombre puede cambiar.</p></li>
+<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La funcionalidad puede cambiar.</p></li>
+<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Posiblemente necesite codificación c/c++.</p></li>
+<li><p>Puede haber carencia de documentación.</p></li>
+<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
+<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
+<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
+<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
 </ul>
@@ -196,9 +198,9 @@
 <p>Proporciona el orden transversal de Primera Búsqueda de Amplitud desde un vértice raíz hasta una profundidad particular.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
-<li>La implementación funcionará en cualquier tipo de grafo.</li>
-<li>Proporciona el orden transversal de Primera Búsqueda de Amplitud desde un nodo de origen a un nivel de profundidad del objetivo o destino</li>
-<li>Tiempo de ejecución de la Primera Búsqueda de Anchura: <span class="math notranslate nohighlight">\(O(E + V)\)</span></li>
+<li><p>La implementación funcionará en cualquier tipo de grafo.</p></li>
+<li><p>Proporciona el orden transversal de Primera Búsqueda de Amplitud desde un nodo de origen a un nivel de profundidad del objetivo o destino</p></li>
+<li><p>Tiempo de ejecución de la Primera Búsqueda de Anchura: <span class="math notranslate nohighlight">\(O(E + V)\)</span></p></li>
 </ul>
 </div>
 <div class="section" id="signatures">
@@ -216,14 +218,11 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">La Primera Búsqueda de Amplitud transversal con vértice raíz <span class="math notranslate nohighlight">\(2\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>La Primera Búsqueda de Amplitud transversal con vértice raíz <span class="math notranslate nohighlight">\(2\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_breadthFirstSearch</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="mi">2</span>
@@ -255,14 +254,11 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">La Primera Búsqueda de Amplitud tranversal comienza en vértices <span class="math notranslate nohighlight">\(\{11, 12\}\)</span> con profundidad <span class="math notranslate nohighlight">\(depth &lt;= 2\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>La Primera Búsqueda de Amplitud tranversal comienza en vértices <span class="math notranslate nohighlight">\(\{11, 12\}\)</span> con profundidad <span class="math notranslate nohighlight">\(depth &lt;= 2\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_breadthFirstSearch</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="n">max_depth</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span>
@@ -284,37 +280,37 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="19%" />
-<col width="22%" />
-<col width="60%" />
+<col style="width: 19%" />
+<col style="width: 22%" />
+<col style="width: 60%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parámetro</th>
-<th class="head">Tipo</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>Edges SQL</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>Consulta SQL descrita en <a class="reference internal" href="#inner-query">Inner query</a>.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>Consulta SQL descrita en <a class="reference internal" href="#inner-query">Inner query</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>Root vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><p class="first">Identificador del vértice raíz del árbol.</p>
-<ul class="last simple">
-<li>Se utiliza en <a class="reference internal" href="#single-vertex">Single Vertex</a>.</li>
+<tr class="row-odd"><td><p><strong>Root vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice raíz del árbol.</p>
+<ul class="simple">
+<li><p>Se utiliza en <a class="reference internal" href="#single-vertex">Single Vertex</a>.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>Root vids</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
-<td><p class="first">Arreglo de identificadores de los vértices raíz.</p>
-<ul class="last simple">
-<li>Se utiliza en <a class="reference internal" href="#multiple-vertices">Multiple Vertices</a>.</li>
-<li>Para fines de optimización, se omite cualquier valor duplicado.</li>
+<tr class="row-even"><td><p><strong>Root vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
+<td><p>Arreglo de identificadores de los vértices raíz.</p>
+<ul class="simple">
+<li><p>Se utiliza en <a class="reference internal" href="#multiple-vertices">Multiple Vertices</a>.</p></li>
+<li><p>Para fines de optimización, se omite cualquier valor duplicado.</p></li>
 </ul>
 </td>
 </tr>
@@ -322,36 +318,36 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </table>
 <div class="section" id="optional-parameters">
 <h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="17%" />
-<col width="10%" />
-<col width="24%" />
-<col width="50%" />
+<col style="width: 17%" />
+<col style="width: 10%" />
+<col style="width: 24%" />
+<col style="width: 50%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parámetro</th>
-<th class="head">Tipo</th>
-<th class="head">Valores predeterminados</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>max_depth</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><span class="math notranslate nohighlight">\(9223372036854775807\)</span></td>
-<td><p class="first">Límite superior para la profundidad del nodo en el árbol</p>
-<ul class="last simple">
-<li>Cuando el valor es <code class="docutils literal notranslate"><span class="pre">Negativo</span></code> entonces <strong>produce error</strong></li>
+<tbody>
+<tr class="row-even"><td><p><strong>max_depth</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(9223372036854775807\)</span></p></td>
+<td><p>Límite superior para la profundidad del nodo en el árbol</p>
+<ul class="simple">
+<li><p>Cuando el valor es <code class="docutils literal notranslate"><span class="pre">Negativo</span></code> entonces <strong>produce error</strong></p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>dirigido</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
-<td><ul class="first last simple">
-<li>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></li>
-<li>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite></li>
+<tr class="row-odd"><td><p><strong>dirigido</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite></p></li>
 </ul>
 </td>
 </tr>
@@ -361,137 +357,132 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </div>
 <div class="section" id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="12%" />
-<col width="14%" />
-<col width="6%" />
-<col width="69%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 6%" />
+<col style="width: 69%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Valores predeterminados</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador de la arista.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>origen</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del primer punto final en el vértice de la arista.</td>
+<tr class="row-odd"><td><p><strong>origen</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-even"><td><strong>objetivo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del segundo punto final en el vértice de la arista.</td>
+<tr class="row-even"><td><p><strong>objetivo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Peso de la arista <cite>(source, target)</cite></p>
-<ul class="last simple">
-<li>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>Peso de la arista <cite>(source, target)</cite></p>
+<ul class="simple">
+<li><p>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>-1</td>
-<td><p class="first">Peso de la arista <cite>(target, source)</cite>,</p>
-<ul class="last simple">
-<li>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-even"><td><p><strong>reverse_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista <cite>(target, source)</cite>,</p>
+<ul class="simple">
+<li><p>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Donde:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>devuelve el conjunto SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="18%" />
-<col width="13%" />
-<col width="68%" />
+<col style="width: 18%" />
+<col style="width: 13%" />
+<col style="width: 68%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Valor secuencial a partir de <span class="math notranslate nohighlight">\(1\)</span>.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Valor secuencial a partir de <span class="math notranslate nohighlight">\(1\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>profundidad</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><p class="first">Profundidad del <code class="docutils literal notranslate"><span class="pre">nodo</span></code>.</p>
-<ul class="last simple">
-<li><span class="math notranslate nohighlight">\(0\)</span>  cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</li>
+<tr class="row-odd"><td><p><strong>profundidad</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Profundidad del <code class="docutils literal notranslate"><span class="pre">nodo</span></code>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(0\)</span>  cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><p class="first">Identificador del vértice raíz.</p>
-<ul class="last simple">
-<li>En <em>Multiple Vertices</em> los resultados están en orden ascendente.</li>
+<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice raíz.</p>
+<ul class="simple">
+<li><p>En <em>Multiple Vertices</em> los resultados están en orden ascendente.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>node</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identificador del <code class="docutils literal notranslate"><span class="pre">node</span></code> alcanzado usando <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</td>
+<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del <code class="docutils literal notranslate"><span class="pre">node</span></code> alcanzado usando <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><strong>edge</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><p class="first">Identificador del “”edge”” utilizado para llegar a “”node”“.</p>
-<ul class="last simple">
-<li><span class="math notranslate nohighlight">\(-1\)</span>  cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</li>
+<tr class="row-even"><td><p><strong>edge</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del “”edge”” utilizado para llegar a “”node””.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(-1\)</span>  cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td>Costo para atravesar <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</td>
+<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Costo para atravesar <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td>Costo agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">node</span></code>.</td>
+<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Costo agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="additional-examples">
 <h3>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h3>
 <p><strong>Grafo no dirigido</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">La Primera Búsqueda de Amplitud transversal desde vértices <span class="math notranslate nohighlight">\(\{11, 12\}\)</span> con profundidad <span class="math notranslate nohighlight">\(depth &lt;= 2\)</span> considerando que el grafo no es dirigido.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>La Primera Búsqueda de Amplitud transversal desde vértices <span class="math notranslate nohighlight">\(\{11, 12\}\)</span> con profundidad <span class="math notranslate nohighlight">\(depth &lt;= 2\)</span> considerando que el grafo no es dirigido.</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_breadthFirstSearch</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="n">max_depth</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span> <span class="p">:</span><span class="o">=</span> <span class="n">false</span>
@@ -517,14 +508,11 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </pre></div>
 </div>
 <p><strong>Vértice Fuera del Grafo</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">La salida de la función, cuando un vértice no está presente en el gráfo, se pasa como parámetro.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>La salida de la función, cuando un vértice no está presente en el gráfo, se pasa como parámetro.</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_breadthFirstSearch</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="o">-</span><span class="mi">10</span>
@@ -540,14 +528,14 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 <div class="section" id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</li>
-<li><a class="reference external" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html">Boost: Breadth First Search algorithm documentation</a></li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Breadth-first_search">Wikipedia: Breadth First Search algorithm</a></li>
+<li><p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html">Boost: Breadth First Search algorithm documentation</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Breadth-first_search">Wikipedia: Breadth First Search algorithm</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -564,9 +552,9 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Actualizado por última vez en jul. 24, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.1.<br/>
+      Actualizado por última vez en nov. 19, 2020.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
     </p>
   </div>
 </footer>

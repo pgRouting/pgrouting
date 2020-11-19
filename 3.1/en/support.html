@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Support &#8212; pgRouting Manual (3.1)</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,6 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -138,7 +139,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="support">
 <span id="id1"></span><h1>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h1>
@@ -147,12 +148,12 @@
 <h2>Reporting Problems<a class="headerlink" href="#reporting-problems" title="Permalink to this headline">¶</a></h2>
 <p>Bugs are reported and managed in an <a class="reference external" href="https://github.com/pgrouting/pgrouting/issues">issue tracker</a>. Please follow these steps:</p>
 <ol class="arabic simple">
-<li>Search the tickets to see if your problem has already been reported. If so, add any extra context you might have found, or at least indicate that you too are having the problem. This will help us prioritize common issues.</li>
-<li>If your problem is unreported, create a <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/new">new issue</a> for it.</li>
-<li>In your report include explicit instructions to replicate your issue. The best tickets include the exact SQL necessary to replicate a problem.</li>
-<li>If you can test older versions of PostGIS for your problem, please do. On your ticket, note the earliest version the problem appears.</li>
-<li>For the versions where you can replicate the problem, note the operating system and version of pgRouting, PostGIS and PostgreSQL.</li>
-<li>It is recommended to use the following wrapper on the problem to pin point the step that is causing the problem.</li>
+<li><p>Search the tickets to see if your problem has already been reported. If so, add any extra context you might have found, or at least indicate that you too are having the problem. This will help us prioritize common issues.</p></li>
+<li><p>If your problem is unreported, create a <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/new">new issue</a> for it.</p></li>
+<li><p>In your report include explicit instructions to replicate your issue. The best tickets include the exact SQL necessary to replicate a problem.</p></li>
+<li><p>If you can test older versions of PostGIS for your problem, please do. On your ticket, note the earliest version the problem appears.</p></li>
+<li><p>For the versions where you can replicate the problem, note the operating system and version of pgRouting, PostGIS and PostgreSQL.</p></li>
+<li><p>It is recommended to use the following wrapper on the problem to pin point the step that is causing the problem.</p></li>
 </ol>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span> <span class="n">client_min_messages</span> <span class="k">TO</span> <span class="n">debug</span><span class="p">;</span>
   <span class="o">&lt;</span><span class="n">your</span> <span class="n">code</span><span class="o">&gt;</span>
@@ -164,8 +165,8 @@
 <h2>Mailing List and GIS StackExchange<a class="headerlink" href="#mailing-list-and-gis-stackexchange" title="Permalink to this headline">¶</a></h2>
 <p>There are two mailing lists for pgRouting hosted on OSGeo mailing list server:</p>
 <ul class="simple">
-<li>User mailing list: <a class="reference external" href="https://lists.osgeo.org/mailman/listinfo/pgrouting-users">https://lists.osgeo.org/mailman/listinfo/pgrouting-users</a></li>
-<li>Developer mailing list: <a class="reference external" href="https://lists.osgeo.org/mailman/listinfo/pgrouting-dev">https://lists.osgeo.org/mailman/listinfo/pgrouting-dev</a></li>
+<li><p>User mailing list: <a class="reference external" href="https://lists.osgeo.org/mailman/listinfo/pgrouting-users">https://lists.osgeo.org/mailman/listinfo/pgrouting-users</a></p></li>
+<li><p>Developer mailing list: <a class="reference external" href="https://lists.osgeo.org/mailman/listinfo/pgrouting-dev">https://lists.osgeo.org/mailman/listinfo/pgrouting-dev</a></p></li>
 </ul>
 <p>For general questions and topics about how to use pgRouting, please write to the user mailing list.</p>
 <p>You can also ask at <a class="reference external" href="https://gis.stackexchange.com/">GIS StackExchange</a> and tag
@@ -176,32 +177,32 @@ under <a class="reference external" href="https://gis.stackexchange.com/question
 <div class="section" id="commercial-support">
 <span id="support-commercial"></span><h2>Commercial Support<a class="headerlink" href="#commercial-support" title="Permalink to this headline">¶</a></h2>
 <p>For users who require professional support, development and consulting services, consider contacting any of the following organizations, which have significantly contributed to the development of pgRouting:</p>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="22%" />
-<col width="35%" />
-<col width="43%" />
+<col style="width: 22%" />
+<col style="width: 35%" />
+<col style="width: 43%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Company</strong></td>
-<td><strong>Offices in</strong></td>
-<td><strong>Website</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Company</strong></p></td>
+<td><p><strong>Offices in</strong></p></td>
+<td><p><strong>Website</strong></p></td>
 </tr>
-<tr class="row-even"><td>Georepublic</td>
-<td>Germany, Japan</td>
-<td><a class="reference external" href="https://georepublic.info">https://georepublic.info</a></td>
+<tr class="row-even"><td><p>Georepublic</p></td>
+<td><p>Germany, Japan</p></td>
+<td><p><a class="reference external" href="https://georepublic.info">https://georepublic.info</a></p></td>
 </tr>
-<tr class="row-odd"><td>Paragon Corporation</td>
-<td>United States</td>
-<td><a class="reference external" href="https://www.paragoncorporation.com">https://www.paragoncorporation.com</a></td>
+<tr class="row-odd"><td><p>Paragon Corporation</p></td>
+<td><p>United States</p></td>
+<td><p><a class="reference external" href="https://www.paragoncorporation.com">https://www.paragoncorporation.com</a></p></td>
 </tr>
-<tr class="row-even"><td>Camptocamp</td>
-<td>Switzerland, France</td>
-<td><a class="reference external" href="https://www.camptocamp.com">https://www.camptocamp.com</a></td>
+<tr class="row-even"><td><p>Camptocamp</p></td>
+<td><p>Switzerland, France</p></td>
+<td><p><a class="reference external" href="https://www.camptocamp.com">https://www.camptocamp.com</a></p></td>
 </tr>
-<tr class="row-odd"><td>Netlab</td>
-<td>Capranica, Italy</td>
-<td><a class="reference external" href="https://www.osgeo.org/service-providers/netlab/">https://www.osgeo.org/service-providers/netlab/</a></td>
+<tr class="row-odd"><td><p>Netlab</p></td>
+<td><p>Capranica, Italy</p></td>
+<td><p><a class="reference external" href="https://www.osgeo.org/service-providers/netlab/">https://www.osgeo.org/service-providers/netlab/</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -220,9 +221,9 @@ under <a class="reference external" href="https://gis.stackexchange.com/question
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.0.<br/>
-      Last updated on Jul 24, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.1.<br/>
+      Last updated on Nov 19, 2020.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
     </p>
   </div>
 </footer>
