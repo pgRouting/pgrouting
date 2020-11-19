@@ -1,7 +1,12 @@
 <map id="euclideanTSP_driver.cpp" name="euclideanTSP_driver.cpp">
-<area shape="rect" id="node2" href="$euclideanTSP__driver_8h.html" title="drivers/tsp/euclideanTSP\l_driver.h" alt="" coords="5,80,173,121"/>
-<area shape="rect" id="node7" href="$pgr__tsp_8hpp.html" title="tsp/pgr_tsp.hpp" alt="" coords="400,87,512,114"/>
-<area shape="rect" id="node8" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="664,169,840,196"/>
-<area shape="rect" id="node9" href="$euclideanDmatrix_8h.html" title="tsp/euclideanDmatrix.h" alt="" coords="483,169,639,196"/>
-<area shape="rect" id="node10" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="736,87,917,114"/>
+<area shape="rect" id="node1" title=" " alt="" coords="391,5,573,32"/>
+<area shape="rect" id="node2" href="$euclideanTSP__driver_8h.html" title=" " alt="" coords="5,80,188,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="212,87,283,114"/>
+<area shape="rect" id="node4" title=" " alt="" coords="358,169,433,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="439,244,501,271"/>
+<area shape="rect" id="node6" title=" " alt="" coords="669,87,754,114"/>
+<area shape="rect" id="node7" href="$pgr__tsp_8hpp.html" title=" " alt="" coords="421,87,543,114"/>
+<area shape="rect" id="node8" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="707,169,900,196"/>
+<area shape="rect" id="node9" href="$euclideanDmatrix_8h.html" title=" " alt="" coords="508,169,683,196"/>
+<area shape="rect" id="node10" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="778,87,978,114"/>
 </map>

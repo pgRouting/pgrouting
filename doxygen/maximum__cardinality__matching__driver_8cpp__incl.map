@@ -1,6 +1,9 @@
 <map id="maximum_cardinality_matching_driver.cpp" name="maximum_cardinality_matching_driver.cpp">
-<area shape="rect" id="node2" href="$maximum__cardinality__matching__driver_8h.html" title="drivers/max_flow/maximum\l_cardinality_matching_driver.h" alt="" coords="5,95,204,136"/>
-<area shape="rect" id="node5" href="$pgr__maximumcardinalitymatching_8hpp.html" title="max_flow/pgr_maximumcardinalitymatching.hpp" alt="" coords="371,102,673,129"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="697,102,878,129"/>
-<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="902,102,1078,129"/>
+<area shape="rect" id="node1" title=" " alt="" coords="385,5,550,47"/>
+<area shape="rect" id="node2" href="$maximum__cardinality__matching__driver_8h.html" title=" " alt="" coords="5,95,228,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="251,102,326,129"/>
+<area shape="rect" id="node4" title=" " alt="" coords="436,184,499,211"/>
+<area shape="rect" id="node5" href="$pgr__maximumcardinalitymatching_8hpp.html" title=" " alt="" coords="401,102,744,129"/>
+<area shape="rect" id="node6" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="769,102,969,129"/>
+<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="993,102,1187,129"/>
 </map>

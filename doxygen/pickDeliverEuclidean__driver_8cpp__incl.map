@@ -1,6 +1,12 @@
 <map id="pickDeliverEuclidean_driver.cpp" name="pickDeliverEuclidean_driver.cpp">
-<area shape="rect" id="node2" href="$pickDeliverEuclidean__driver_8h.html" title="drivers/pickDeliver\l/pickDeliverEuclidean\l_driver.h" alt="" coords="5,95,153,151"/>
-<area shape="rect" id="node8" href="$pgr__pickDeliver_8h.html" title="vrp/pgr_pickDeliver.h" alt="" coords="951,109,1096,136"/>
-<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="494,109,670,136"/>
-<area shape="rect" id="node10" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="694,109,875,136"/>
+<area shape="rect" id="node1" title=" " alt="" coords="390,5,549,47"/>
+<area shape="rect" id="node2" href="$pickDeliverEuclidean__driver_8h.html" title=" " alt="" coords="5,95,168,151"/>
+<area shape="rect" id="node3" title=" " alt="" coords="193,109,263,136"/>
+<area shape="rect" id="node4" title=" " alt="" coords="288,109,363,136"/>
+<area shape="rect" id="node5" title=" " alt="" coords="592,199,651,225"/>
+<area shape="rect" id="node6" title=" " alt="" coords="438,109,501,136"/>
+<area shape="rect" id="node7" title=" " alt="" coords="1007,199,1070,225"/>
+<area shape="rect" id="node8" href="$pgr__pickDeliver_8h.html" title=" " alt="" coords="1018,109,1179,136"/>
+<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="525,109,718,136"/>
+<area shape="rect" id="node10" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="743,109,943,136"/>
 </map>

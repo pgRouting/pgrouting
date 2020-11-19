@@ -1,5 +1,13 @@
 <map id="vehicle.h" name="vehicle.h">
-<area shape="rect" id="node9" href="$identifier_8h.html" title="cpp_common/identifier.h" alt="" coords="568,87,732,114"/>
-<area shape="rect" id="node10" href="$vehicle__node_8h.html" title="vrp/vehicle_node.h" alt="" coords="757,87,887,114"/>
-<area shape="rect" id="node11" href="$general__vehicle__orders__t_8h.html" title="c_types/pickDeliver\l/general_vehicle_orders_t.h" alt="" coords="911,80,1093,121"/>
+<area shape="rect" id="node1" title=" " alt="" coords="384,5,465,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,87,68,114"/>
+<area shape="rect" id="node3" title=" " alt="" coords="93,87,173,114"/>
+<area shape="rect" id="node4" title=" " alt="" coords="197,87,282,114"/>
+<area shape="rect" id="node5" title=" " alt="" coords="574,169,633,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="357,87,412,114"/>
+<area shape="rect" id="node7" title=" " alt="" coords="436,87,496,114"/>
+<area shape="rect" id="node8" title=" " alt="" coords="520,87,583,114"/>
+<area shape="rect" id="node9" href="$identifier_8h.html" title=" " alt="" coords="607,87,791,114"/>
+<area shape="rect" id="node10" href="$vehicle__node_8h.html" title=" " alt="" coords="816,87,961,114"/>
+<area shape="rect" id="node11" href="$general__vehicle__orders__t_8h.html" title=" " alt="" coords="985,80,1187,121"/>
 </map>

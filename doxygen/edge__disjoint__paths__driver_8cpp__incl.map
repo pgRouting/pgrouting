@@ -1,7 +1,11 @@
 <map id="edge_disjoint_paths_driver.cpp" name="edge_disjoint_paths_driver.cpp">
-<area shape="rect" id="node2" href="$edge__disjoint__paths__driver_8h.html" title="drivers/max_flow/edge\l_disjoint_paths_driver.h" alt="" coords="5,95,164,136"/>
-<area shape="rect" id="node6" href="$pgr__maxflow_8hpp.html" title="max_flow/pgr_maxflow.hpp" alt="" coords="501,102,682,129"/>
-<area shape="rect" id="node7" href="$identifiers_8hpp.html" title="cpp_common/identifiers.hpp" alt="" coords="240,102,425,129"/>
-<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="757,102,938,129"/>
-<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="962,102,1138,129"/>
+<area shape="rect" id="node1" title=" " alt="" coords="497,5,649,47"/>
+<area shape="rect" id="node2" href="$edge__disjoint__paths__driver_8h.html" title=" " alt="" coords="5,95,183,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="254,184,329,211"/>
+<area shape="rect" id="node4" title=" " alt="" coords="680,184,743,211"/>
+<area shape="rect" id="node5" title=" " alt="" coords="482,184,525,211"/>
+<area shape="rect" id="node6" href="$pgr__maxflow_8hpp.html" title=" " alt="" coords="541,102,743,129"/>
+<area shape="rect" id="node7" href="$identifiers_8hpp.html" title=" " alt="" coords="259,102,465,129"/>
+<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="818,102,1018,129"/>
+<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="1043,102,1236,129"/>
 </map>

@@ -1,5 +1,6 @@
 <map id="e_report.c" name="e_report.c">
-<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="5,155,227,181"/>
-<area shape="rect" id="node3" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="91,80,269,107"/>
-<area shape="rect" id="node4" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="294,80,442,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="151,5,238,32"/>
+<area shape="rect" id="node2" href="$postgres__connection_8h.html" title=" " alt="" coords="5,155,248,181"/>
+<area shape="rect" id="node3" href="$debug__macro_8h.html" title=" " alt="" coords="96,80,293,107"/>
+<area shape="rect" id="node4" href="$e__report_8h.html" title=" " alt="" coords="317,80,480,107"/>
 </map>

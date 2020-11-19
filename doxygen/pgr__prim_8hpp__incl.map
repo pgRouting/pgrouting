@@ -1,5 +1,9 @@
 <map id="pgr_prim.hpp" name="pgr_prim.hpp">
-<area shape="rect" id="node2" href="$prim__dijkstra__visitor_8hpp.html" title="visitors/prim_dijkstra\l_visitor.hpp" alt="" coords="26,80,168,121"/>
-<area shape="rect" id="node6" href="$pgr__mst_8hpp.html" title="spanningTree/pgr_mst.hpp" alt="" coords="193,87,369,114"/>
-<area shape="rect" id="node7" href="$interruption_8h.html" title="cpp_common/interruption.h" alt="" coords="357,169,536,196"/>
+<area shape="rect" id="node1" title=" " alt="" coords="319,5,427,32"/>
+<area shape="rect" id="node2" href="$prim__dijkstra__visitor_8hpp.html" title=" " alt="" coords="25,80,185,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="74,169,137,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="529,80,732,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="295,169,337,196"/>
+<area shape="rect" id="node6" href="$pgr__mst_8hpp.html" title=" " alt="" coords="210,87,403,114"/>
+<area shape="rect" id="node7" href="$interruption_8h.html" title=" " alt="" coords="381,169,582,196"/>
 </map>

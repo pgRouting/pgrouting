@@ -1,6 +1,10 @@
 <map id="randomSpanningTree_driver.cpp" name="randomSpanningTree_driver.cpp">
-<area shape="rect" id="node2" href="$randomSpanningTree__driver_8h.html" title="drivers/spanningTree\l/randomSpanningTree_driver.h" alt="" coords="5,95,204,136"/>
-<area shape="rect" id="node6" href="$pgr__randomSpanningTree_8hpp.html" title="spanningTree/pgr_randomSpanning\lTree.hpp" alt="" coords="454,95,681,136"/>
-<area shape="rect" id="node7" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="705,102,886,129"/>
-<area shape="rect" id="node8" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="910,102,1086,129"/>
+<area shape="rect" id="node1" title=" " alt="" coords="371,5,529,47"/>
+<area shape="rect" id="node2" href="$randomSpanningTree__driver_8h.html" title=" " alt="" coords="5,95,225,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="250,102,325,129"/>
+<area shape="rect" id="node4" title=" " alt="" coords="349,102,412,129"/>
+<area shape="rect" id="node5" title=" " alt="" coords="500,184,563,211"/>
+<area shape="rect" id="node6" href="$pgr__randomSpanningTree_8hpp.html" title=" " alt="" coords="487,95,738,136"/>
+<area shape="rect" id="node7" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="762,102,962,129"/>
+<area shape="rect" id="node8" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="987,102,1180,129"/>
 </map>

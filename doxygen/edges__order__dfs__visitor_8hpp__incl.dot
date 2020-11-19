@@ -1,12 +1,13 @@
 digraph "edges_order_dfs_visitor.hpp"
 {
+ // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node0 [label="edges_order_dfs_visitor.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="boost/graph/depth_first\l_search.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="vector",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="visitors/found_goals.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$found__goals_8hpp.html"];
+  Node1 [label="edges_order_dfs_visitor.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="boost/graph/depth_first\l_search.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="vector",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="visitors/found_goals.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$found__goals_8hpp.html",tooltip=" "];
 }

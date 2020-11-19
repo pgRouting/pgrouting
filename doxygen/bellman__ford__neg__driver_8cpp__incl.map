@@ -1,6 +1,12 @@
 <map id="bellman_ford_neg_driver.cpp" name="bellman_ford_neg_driver.cpp">
-<area shape="rect" id="node2" href="$bellman__ford__neg__driver_8h.html" title="drivers/bellman_ford\l/bellman_ford_neg_driver.h" alt="" coords="5,80,184,121"/>
-<area shape="rect" id="node8" href="$pgr__bellman__ford_8hpp.html" title="bellman_ford/pgr_bellman\l_ford.hpp" alt="" coords="360,80,531,121"/>
-<area shape="rect" id="node9" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="656,87,837,114"/>
-<area shape="rect" id="node10" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="861,87,1037,114"/>
+<area shape="rect" id="node1" title=" " alt="" coords="373,5,584,32"/>
+<area shape="rect" id="node2" href="$bellman__ford__neg__driver_8h.html" title=" " alt="" coords="5,80,205,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="217,169,292,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="339,169,402,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="438,169,501,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="531,169,616,196"/>
+<area shape="rect" id="node7" title=" " alt="" coords="643,169,701,196"/>
+<area shape="rect" id="node8" href="$pgr__bellman__ford_8hpp.html" title=" " alt="" coords="382,80,575,121"/>
+<area shape="rect" id="node9" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="701,87,901,114"/>
+<area shape="rect" id="node10" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="926,87,1119,114"/>
 </map>

@@ -1,6 +1,7 @@
 <map id="bpoint.hpp" name="bpoint.hpp">
-<area shape="rect" id="node2" href="$alphaShape__driver_8cpp.html" title="alphaShape_driver.cpp" alt="" coords="5,80,160,107"/>
-<area shape="rect" id="node3" href="$bpoint_8cpp.html" title="bpoint.cpp" alt="" coords="184,80,267,107"/>
-<area shape="rect" id="node4" href="$xy__vertex_8h.html" title="xy_vertex.h" alt="" coords="291,80,381,107"/>
-<area shape="rect" id="node5" href="$node_8h.html" title="node.h" alt="" coords="405,80,467,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="259,5,349,32"/>
+<area shape="rect" id="node2" href="$alphaShape__driver_8cpp.html" title=" " alt="" coords="5,80,176,107"/>
+<area shape="rect" id="node3" href="$bpoint_8cpp.html" title=" " alt="" coords="200,80,291,107"/>
+<area shape="rect" id="node4" href="$xy__vertex_8h.html" title=" " alt="" coords="315,80,413,107"/>
+<area shape="rect" id="node5" href="$node_8h.html" title=" " alt="" coords="437,80,504,107"/>
 </map>

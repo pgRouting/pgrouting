@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['userquitexception',['UserQuitException',['../classUserQuitException.html',1,'']]]
+  ['userquitexception_1771',['UserQuitException',['../classUserQuitException.html',1,'']]]
 ];

@@ -1,5 +1,6 @@
 <map id="pgr_tsp.hpp" name="pgr_tsp.hpp">
-<area shape="rect" id="node2" href="$euclideanTSP__driver_8cpp.html" title="euclideanTSP_driver.cpp" alt="" coords="5,80,172,107"/>
-<area shape="rect" id="node3" href="$TSP__driver_8cpp.html" title="TSP_driver.cpp" alt="" coords="197,80,309,107"/>
-<area shape="rect" id="node4" href="$pgr__tsp_8cpp.html" title="pgr_tsp.cpp" alt="" coords="333,80,423,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="221,5,320,32"/>
+<area shape="rect" id="node2" href="$euclideanTSP__driver_8cpp.html" title=" " alt="" coords="5,80,187,107"/>
+<area shape="rect" id="node3" href="$TSP__driver_8cpp.html" title=" " alt="" coords="211,80,330,107"/>
+<area shape="rect" id="node4" href="$pgr__tsp_8cpp.html" title=" " alt="" coords="354,80,451,107"/>
 </map>

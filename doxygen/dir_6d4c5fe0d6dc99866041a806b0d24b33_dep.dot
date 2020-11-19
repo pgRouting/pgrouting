@@ -1,0 +1,13 @@
+digraph "ashish" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_43e0a1f539e00dcfa1a6bc4d4fee4fc2 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="home" fontname="Helvetica", fontsize="10", URL="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html"]
+  subgraph clusterdir_6d4c5fe0d6dc99866041a806b0d24b33 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_6d4c5fe0d6dc99866041a806b0d24b33.html"];
+    dir_6d4c5fe0d6dc99866041a806b0d24b33 [shape=plaintext label="ashish"];
+    dir_fcb33163f1ba4ef33f527a468abdd7d4 [shape=box label="Documents" color="red" fillcolor="white" style="filled" URL="dir_fcb33163f1ba4ef33f527a468abdd7d4.html"];
+  }
+  }
+}

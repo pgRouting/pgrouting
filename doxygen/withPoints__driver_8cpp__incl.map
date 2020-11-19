@@ -1,7 +1,13 @@
 <map id="withPoints_driver.cpp" name="withPoints_driver.cpp">
-<area shape="rect" id="node2" href="$withPoints__driver_8h.html" title="drivers/withPoints\l/withPoints_driver.h" alt="" coords="5,80,143,121"/>
-<area shape="rect" id="node8" href="$pgr__dijkstra_8hpp.html" title="dijkstra/pgr_dijkstra.hpp" alt="" coords="269,87,429,114"/>
-<area shape="rect" id="node9" href="$pgr__withPoints_8hpp.html" title="withPoints/pgr_withPoints.hpp" alt="" coords="553,87,752,114"/>
-<area shape="rect" id="node10" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="866,87,1047,114"/>
-<area shape="rect" id="node11" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="1071,87,1247,114"/>
+<area shape="rect" id="node1" title=" " alt="" coords="445,5,607,32"/>
+<area shape="rect" id="node2" href="$withPoints__driver_8h.html" title=" " alt="" coords="5,80,156,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="161,169,246,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="306,169,381,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="424,169,487,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="520,169,583,196"/>
+<area shape="rect" id="node7" title=" " alt="" coords="831,87,901,114"/>
+<area shape="rect" id="node8" href="$pgr__dijkstra_8hpp.html" title=" " alt="" coords="283,87,463,114"/>
+<area shape="rect" id="node9" href="$pgr__withPoints_8hpp.html" title=" " alt="" coords="589,87,807,114"/>
+<area shape="rect" id="node10" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="925,87,1125,114"/>
+<area shape="rect" id="node11" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="1149,87,1343,114"/>
 </map>

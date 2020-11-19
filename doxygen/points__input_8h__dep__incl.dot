@@ -1,14 +1,15 @@
 digraph "points_input.h"
 {
+ // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node4 [label="points_input.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="points_input.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$points__input_8c.html"];
-  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="many_to_dist_withPointsDD.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$many__to__dist__withPointsDD_8c.html"];
-  Node4 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="withPoints_ksp.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$withPoints__ksp_8c.html"];
-  Node4 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node8 [label="withPoints.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$withPoints_8c.html"];
+  Node1 [label="points_input.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="points_input.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$points__input_8c.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="many_to_dist_withPointsDD.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$many__to__dist__withPointsDD_8c.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="withPoints_ksp.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$withPoints__ksp_8c.html",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="withPoints.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$withPoints_8c.html",tooltip=" "];
 }

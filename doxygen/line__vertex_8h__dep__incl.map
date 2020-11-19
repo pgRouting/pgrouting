@@ -1,5 +1,6 @@
 <map id="line_vertex.h" name="line_vertex.h">
-<area shape="rect" id="node2" href="$linear__directed__graph_8h.html" title="linear_directed_graph.h" alt="" coords="5,80,161,107"/>
-<area shape="rect" id="node3" href="$pgr__lineGraph_8hpp.html" title="pgr_lineGraph.hpp" alt="" coords="185,80,312,107"/>
-<area shape="rect" id="node4" href="$pgr__lineGraphFull_8hpp.html" title="pgr_lineGraphFull.hpp" alt="" coords="336,80,484,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="222,5,329,32"/>
+<area shape="rect" id="node2" href="$linear__directed__graph_8h.html" title=" " alt="" coords="5,80,180,107"/>
+<area shape="rect" id="node3" href="$pgr__lineGraph_8hpp.html" title=" " alt="" coords="205,80,346,107"/>
+<area shape="rect" id="node4" href="$pgr__lineGraphFull_8hpp.html" title=" " alt="" coords="371,80,535,107"/>
 </map>

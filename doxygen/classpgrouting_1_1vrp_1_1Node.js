@@ -11,5 +11,7 @@ var classpgrouting_1_1vrp_1_1Node =
     [ "print", "classpgrouting_1_1vrp_1_1Node.html#a4b817f14f0624f2e0ca1819488416984", null ],
     [ "reset_id", "classpgrouting_1_1vrp_1_1Node.html#ac447a0a784cb863f908f3375e2ca9d1c", null ],
     [ "operator<<", "classpgrouting_1_1vrp_1_1Node.html#a79dc74265ac46585d838e68285ddf735", null ],
+    [ "m_id", "classpgrouting_1_1vrp_1_1Node.html#a45b5bbbc6c8c0ec6fd3b61f87e7113f1", null ],
+    [ "m_idx", "classpgrouting_1_1vrp_1_1Node.html#ae4187b538a8f40969e11943f2d3ddfc5", null ],
     [ "m_point", "classpgrouting_1_1vrp_1_1Node.html#a031e40b8f9aecb0a4cf67efb1cac4521", null ]
 ];

@@ -4,7 +4,7 @@ var classpgrouting_1_1graph_1_1PgrCostFlowGraph =
     [ "E_it", "classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a033185710c17b1f596c7dfaa34be44a1", null ],
     [ "V", "classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a2f214553d3d76031fc6959d6662bdd68", null ],
     [ "V_it", "classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#af022b5e300cab4b48dd4546fb6967a1e", null ],
-    [ "PgrCostFlowGraph", "classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a7742b5ac2bcdd08ea4a240f18ac73887", null ],
+    [ "PgrCostFlowGraph", "classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ae110643d363ea9ba5258aa5d550f7af4", null ],
     [ "PgrCostFlowGraph", "classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#accefdb8a963bf57fc13787a7f6d9fb7b", null ],
     [ "AddEdge", "classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#ae332714d0cac50310333a89b2912954b", null ],
     [ "AddVertices", "classpgrouting_1_1graph_1_1PgrCostFlowGraph.html#a5b3d68bbd6e999a34a040b7027994b36", null ],

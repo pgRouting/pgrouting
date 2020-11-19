@@ -1,4 +1,5 @@
 <map id="pgrouting::vrp::Tw_node" name="pgrouting::vrp::Tw_node">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title="pgrouting::Identifier" alt="" coords="5,13,139,39"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1PD__problem.html" title="pgrouting::vrp::PD\l_problem" alt="" coords="163,5,291,47"/>
+<area shape="rect" id="node1" title="Extends the Node class to create a Node with time window attributes." alt="" coords="76,95,253,121"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title=" " alt="" coords="5,13,156,39"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1PD__problem.html" title=" " alt="" coords="181,5,319,47"/>
 </map>

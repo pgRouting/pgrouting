@@ -1,7 +1,11 @@
 <map id="biconnectedComponents_driver.cpp" name="biconnectedComponents_driver.cpp">
-<area shape="rect" id="node2" href="$biconnectedComponents__driver_8h.html" title="drivers/components\l/biconnectedComponents\l_driver.h" alt="" coords="5,95,176,151"/>
-<area shape="rect" id="node6" href="$pgr__components_8hpp.html" title="components/pgr_components.hpp" alt="" coords="395,109,613,136"/>
-<area shape="rect" id="node7" href="$pgr__base__graph_8hpp.html" title="cpp_common/pgr_base\l_graph.hpp" alt="" coords="355,199,512,240"/>
-<area shape="rect" id="node8" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="608,288,784,315"/>
-<area shape="rect" id="node9" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="739,109,920,136"/>
+<area shape="rect" id="node1" title=" " alt="" coords="366,5,549,47"/>
+<area shape="rect" id="node2" href="$biconnectedComponents__driver_8h.html" title=" " alt="" coords="5,95,192,151"/>
+<area shape="rect" id="node3" title=" " alt="" coords="216,109,291,136"/>
+<area shape="rect" id="node4" title=" " alt="" coords="363,288,426,315"/>
+<area shape="rect" id="node5" title=" " alt="" coords="554,288,617,315"/>
+<area shape="rect" id="node6" href="$pgr__components_8hpp.html" title=" " alt="" coords="416,109,659,136"/>
+<area shape="rect" id="node7" href="$pgr__base__graph_8hpp.html" title=" " alt="" coords="375,199,547,240"/>
+<area shape="rect" id="node8" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="645,288,838,315"/>
+<area shape="rect" id="node9" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="784,109,984,136"/>
 </map>

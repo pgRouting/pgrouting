@@ -1,2 +1,6 @@
 <map id="pgrouting::graph::PgrFlowGraph" name="pgrouting::graph::PgrFlowGraph">
+<area shape="rect" id="node1" title=" " alt="" coords="191,95,380,136"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,176,32"/>
+<area shape="rect" id="node3" title=" " alt="" coords="200,5,371,32"/>
+<area shape="rect" id="node4" title=" " alt="" coords="395,5,565,32"/>
 </map>

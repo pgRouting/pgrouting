@@ -1,6 +1,13 @@
 <map id="binaryBreadthFirstSearch_driver.cpp" name="binaryBreadthFirstSearch_driver.cpp">
-<area shape="rect" id="node2" href="$binaryBreadthFirstSearch__driver_8h.html" title="drivers/breadthFirstSearch\l/binaryBreadthFirstSearch\l_driver.h" alt="" coords="5,95,180,151"/>
-<area shape="rect" id="node9" href="$pgr__binaryBreadthFirstSearch_8hpp.html" title="breadthFirstSearch\l/pgr_binaryBreadthFirstSearch.hpp" alt="" coords="399,102,621,143"/>
-<area shape="rect" id="node10" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="546,199,722,225"/>
-<area shape="rect" id="node11" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="797,199,978,225"/>
+<area shape="rect" id="node1" title=" " alt="" coords="531,5,717,47"/>
+<area shape="rect" id="node2" href="$binaryBreadthFirstSearch__driver_8h.html" title=" " alt="" coords="5,95,197,151"/>
+<area shape="rect" id="node3" title=" " alt="" coords="221,109,296,136"/>
+<area shape="rect" id="node4" title=" " alt="" coords="302,199,365,225"/>
+<area shape="rect" id="node5" title=" " alt="" coords="389,199,451,225"/>
+<area shape="rect" id="node6" title=" " alt="" coords="476,199,561,225"/>
+<area shape="rect" id="node7" title=" " alt="" coords="788,273,847,300"/>
+<area shape="rect" id="node8" title=" " alt="" coords="905,109,948,136"/>
+<area shape="rect" id="node9" href="$pgr__binaryBreadthFirstSearch_8hpp.html" title=" " alt="" coords="421,102,667,143"/>
+<area shape="rect" id="node10" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="586,199,779,225"/>
+<area shape="rect" id="node11" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="855,199,1055,225"/>
 </map>

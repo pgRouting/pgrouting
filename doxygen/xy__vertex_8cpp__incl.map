@@ -1,4 +1,9 @@
 <map id="xy_vertex.cpp" name="xy_vertex.cpp">
-<area shape="rect" id="node2" href="$xy__vertex_8h.html" title="cpp_common/xy_vertex.h" alt="" coords="5,87,177,114"/>
-<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="586,87,762,114"/>
+<area shape="rect" id="node1" title=" " alt="" coords="353,5,467,32"/>
+<area shape="rect" id="node2" href="$xy__vertex_8h.html" title=" " alt="" coords="5,87,196,114"/>
+<area shape="rect" id="node3" title=" " alt="" coords="136,169,199,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="271,80,421,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="445,87,503,114"/>
+<area shape="rect" id="node6" title=" " alt="" coords="527,87,613,114"/>
+<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="637,87,831,114"/>
 </map>

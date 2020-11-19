@@ -1,7 +1,10 @@
 <map id="vehicles_input.c" name="vehicles_input.c">
-<area shape="rect" id="node2" href="$vehicles__input_8h.html" title="c_common/vehicles_input.h" alt="" coords="5,87,189,114"/>
-<area shape="rect" id="node5" href="$column__info__t_8h.html" title="c_types/column_info_t.h" alt="" coords="473,169,637,196"/>
-<area shape="rect" id="node6" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="435,87,613,114"/>
-<area shape="rect" id="node7" href="$get__check__data_8h.html" title="c_common/get_check\l_data.h" alt="" coords="638,80,789,121"/>
-<area shape="rect" id="node8" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="813,87,971,114"/>
+<area shape="rect" id="node1" title=" " alt="" coords="366,5,493,32"/>
+<area shape="rect" id="node2" href="$vehicles__input_8h.html" title=" " alt="" coords="5,87,208,114"/>
+<area shape="rect" id="node3" title=" " alt="" coords="233,87,303,114"/>
+<area shape="rect" id="node4" title=" " alt="" coords="328,87,392,114"/>
+<area shape="rect" id="node5" href="$column__info__t_8h.html" title=" " alt="" coords="509,169,689,196"/>
+<area shape="rect" id="node6" href="$debug__macro_8h.html" title=" " alt="" coords="467,87,664,114"/>
+<area shape="rect" id="node7" href="$get__check__data_8h.html" title=" " alt="" coords="688,80,851,121"/>
+<area shape="rect" id="node8" href="$time__msg_8h.html" title=" " alt="" coords="875,87,1050,114"/>
 </map>

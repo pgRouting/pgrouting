@@ -1,7 +1,12 @@
 <map id="prim_driver.cpp" name="prim_driver.cpp">
-<area shape="rect" id="node2" href="$prim__driver_8h.html" title="drivers/spanningTree\l/prim_driver.h" alt="" coords="5,80,148,121"/>
-<area shape="rect" id="node7" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="845,87,1026,114"/>
-<area shape="rect" id="node8" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="1050,87,1226,114"/>
-<area shape="rect" id="node9" href="$pgr__prim_8hpp.html" title="spanningTree/pgr_prim.hpp" alt="" coords="399,87,578,114"/>
-<area shape="rect" id="node10" href="$details_8hpp.html" title="spanningTree/details.hpp" alt="" coords="603,87,769,114"/>
+<area shape="rect" id="node1" title=" " alt="" coords="461,5,585,32"/>
+<area shape="rect" id="node2" href="$prim__driver_8h.html" title=" " alt="" coords="5,80,163,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="187,87,261,114"/>
+<area shape="rect" id="node4" title=" " alt="" coords="286,87,349,114"/>
+<area shape="rect" id="node5" title=" " alt="" coords="491,169,554,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="976,169,1035,196"/>
+<area shape="rect" id="node7" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="905,87,1105,114"/>
+<area shape="rect" id="node8" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="1130,87,1323,114"/>
+<area shape="rect" id="node9" href="$pgr__prim_8hpp.html" title=" " alt="" coords="423,87,622,114"/>
+<area shape="rect" id="node10" href="$details_8hpp.html" title=" " alt="" coords="647,87,831,114"/>
 </map>

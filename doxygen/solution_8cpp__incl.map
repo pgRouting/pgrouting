@@ -1,5 +1,9 @@
 <map id="solution.cpp" name="solution.cpp">
-<area shape="rect" id="node2" href="$solution_8h.html" title="vrp/solution.h" alt="" coords="27,162,127,189"/>
-<area shape="rect" id="node6" href="$pgr__pickDeliver_8h.html" title="vrp/pgr_pickDeliver.h" alt="" coords="88,80,233,107"/>
-<area shape="rect" id="node7" href="$general__vehicle__orders__t_8h.html" title="c_types/pickDeliver\l/general_vehicle_orders_t.h" alt="" coords="202,155,383,196"/>
+<area shape="rect" id="node1" title=" " alt="" coords="196,5,297,32"/>
+<area shape="rect" id="node2" href="$solution_8h.html" title=" " alt="" coords="26,162,137,189"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,244,64,271"/>
+<area shape="rect" id="node4" title=" " alt="" coords="143,244,206,271"/>
+<area shape="rect" id="node5" title=" " alt="" coords="279,80,364,107"/>
+<area shape="rect" id="node6" href="$pgr__pickDeliver_8h.html" title=" " alt="" coords="93,80,254,107"/>
+<area shape="rect" id="node7" href="$general__vehicle__orders__t_8h.html" title=" " alt="" coords="213,155,414,196"/>
 </map>

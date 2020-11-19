@@ -1,5 +1,6 @@
 <map id="found_goals.hpp" name="found_goals.hpp">
-<area shape="rect" id="node2" href="$dfs__visitor__with__root_8hpp.html" title="dfs_visitor_with_root.hpp" alt="" coords="5,80,172,107"/>
-<area shape="rect" id="node3" href="$dijkstra__one__goal__visitor_8hpp.html" title="dijkstra_one_goal_visitor.hpp" alt="" coords="196,80,387,107"/>
-<area shape="rect" id="node4" href="$edges__order__dfs__visitor_8hpp.html" title="edges_order_dfs_visitor.hpp" alt="" coords="411,80,596,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="258,5,387,32"/>
+<area shape="rect" id="node2" href="$dfs__visitor__with__root_8hpp.html" title=" " alt="" coords="5,80,192,107"/>
+<area shape="rect" id="node3" href="$dijkstra__one__goal__visitor_8hpp.html" title=" " alt="" coords="216,80,429,107"/>
+<area shape="rect" id="node4" href="$edges__order__dfs__visitor_8hpp.html" title=" " alt="" coords="453,80,659,107"/>
 </map>

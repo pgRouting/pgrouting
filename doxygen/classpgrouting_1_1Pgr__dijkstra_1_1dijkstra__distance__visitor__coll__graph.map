@@ -1,2 +1,6 @@
 <map id="pgrouting::Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor" name="pgrouting::Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor">
+<area shape="rect" id="node1" title="class for stopping when a distance/cost has being surpassed" alt="" coords="175,95,357,151"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,177,32"/>
+<area shape="rect" id="node3" title=" " alt="" coords="201,5,331,32"/>
+<area shape="rect" id="node4" title=" " alt="" coords="355,5,521,32"/>
 </map>

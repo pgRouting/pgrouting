@@ -1,7 +1,8 @@
 <map id="point_on_edge_t.h" name="point_on_edge_t.h">
-<area shape="rect" id="node2" href="$points__input_8h.html" title="points_input.h" alt="" coords="5,80,108,107"/>
-<area shape="rect" id="node3" href="$withPoints__dd__driver_8h.html" title="withPoints_dd_driver.h" alt="" coords="133,80,287,107"/>
-<area shape="rect" id="node4" href="$withPoints__driver_8h.html" title="withPoints_driver.h" alt="" coords="311,80,445,107"/>
-<area shape="rect" id="node5" href="$withPoints__ksp__driver_8h.html" title="withPoints_ksp_driver.h" alt="" coords="469,80,631,107"/>
-<area shape="rect" id="node6" href="$pgr__withPoints_8hpp.html" title="pgr_withPoints.hpp" alt="" coords="655,80,789,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="341,5,483,32"/>
+<area shape="rect" id="node2" href="$points__input_8h.html" title=" " alt="" coords="5,80,120,107"/>
+<area shape="rect" id="node3" href="$withPoints__dd__driver_8h.html" title=" " alt="" coords="144,80,315,107"/>
+<area shape="rect" id="node4" href="$withPoints__driver_8h.html" title=" " alt="" coords="339,80,485,107"/>
+<area shape="rect" id="node5" href="$withPoints__ksp__driver_8h.html" title=" " alt="" coords="510,80,687,107"/>
+<area shape="rect" id="node6" href="$pgr__withPoints_8hpp.html" title=" " alt="" coords="712,80,859,107"/>
 </map>

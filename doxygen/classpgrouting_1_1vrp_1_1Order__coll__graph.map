@@ -1,5 +1,6 @@
 <map id="pgrouting::vrp::Order" name="pgrouting::vrp::Order">
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title="pgrouting::Identifier" alt="" coords="5,5,139,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html" title="Extend Tw_node to evaluate the vehicle at node level. " alt="" coords="163,5,349,32"/>
-<area shape="rect" id="node4" href="$classIdentifiers.html" title="Identifiers\&lt; size_t \&gt;" alt="" coords="373,5,512,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="206,109,363,136"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title=" " alt="" coords="5,5,156,32"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html" title="Extend Tw_node to evaluate the vehicle at node level." alt="" coords="181,5,389,32"/>
+<area shape="rect" id="node4" href="$classIdentifiers.html" title=" " alt="" coords="413,5,569,32"/>
 </map>
