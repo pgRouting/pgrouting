@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -307,7 +307,7 @@ OR EMPTY SET
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_astar</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span>
-    <span class="n">directed</span> <span class="p">:</span><span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">directed</span> <span class="o">:=</span> <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">:=</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -337,7 +337,7 @@ OR EMPTY SET
 </table>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_astar</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">heuristic</span> <span class="o">:=</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -373,7 +373,7 @@ OR EMPTY SET
 </table>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_astar</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">12</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">12</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -409,7 +409,7 @@ OR EMPTY SET
 </table>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_astar</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">heuristic</span> <span class="o">:=</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -739,8 +739,8 @@ Returned when multiple ending vertices are in the query.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.2.<br/>
-      Last updated on Jul 14, 2020.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.3.<br/>
+      Last updated on Nov 18, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -382,7 +382,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
       <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
-      <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+      <span class="n">directed</span><span class="o">:=</span><span class="n">true</span>
    <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+------+------+------+----------</span>
@@ -447,7 +447,7 @@
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-      <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">heap_paths</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+      <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">heap_paths</span><span class="o">:=</span><span class="n">true</span>
    <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+------+------+------+----------</span>
@@ -504,7 +504,7 @@
 <p>Los ejemplos de esta sección utilizan lo siguiente <a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Se utiliza la red para consultas marcadas como undirected , cost y  reverse_cost</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-      <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="n">false</span>
+      <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span><span class="o">:=</span><span class="n">false</span>
    <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+------+------+------+----------</span>
@@ -589,7 +589,7 @@
 
 <span class="n">SELECT</span>   <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-      <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">heap_paths</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+      <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">heap_paths</span><span class="o">:=</span><span class="n">true</span>
    <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+------+------+------+----------</span>
@@ -646,7 +646,7 @@
 <p>Los ejemplos de esta sección utilizan lo siguiente <a class="reference internal" href="sampledata.html#fig4"><span class="std std-ref">Red para consultas marcadas como undirected y solo se utiliza la columna cost</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-      <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="n">false</span>
+      <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span><span class="o">:=</span><span class="n">false</span>
    <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+------+------+------+----------</span>
@@ -664,7 +664,7 @@
 
 <span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-      <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span><span class="p">:</span><span class="o">=</span><span class="n">false</span><span class="p">,</span> <span class="n">heap_paths</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+      <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span><span class="o">:=</span><span class="n">false</span><span class="p">,</span> <span class="n">heap_paths</span><span class="o">:=</span><span class="n">true</span>
    <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+------+------+------+----------</span>
@@ -714,8 +714,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.2.<br/>
-      Actualizado por última vez en jul. 14, 2020.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.3.<br/>
+      Actualizado por última vez en nov. 18, 2020.<br/>
       Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

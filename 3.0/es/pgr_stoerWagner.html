@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -243,11 +243,11 @@ OR EMPTY SET
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_stoerWagner</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
-        <span class="n">FROM</span> <span class="n">edge_table</span> 
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+        <span class="n">FROM</span> <span class="n">edge_table</span>
      <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="s1">&#39;</span>
 <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">mincut</span> 
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">mincut</span>
 <span class="o">-----+------+------+--------</span>
    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
@@ -390,11 +390,11 @@ OR EMPTY SET
 <div class="section" id="additional-example">
 <h2>Ejemplo Adicional:<a class="headerlink" href="#additional-example" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_stoerWagner</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
-        <span class="n">FROM</span> <span class="n">edge_table</span> 
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+        <span class="n">FROM</span> <span class="n">edge_table</span>
      <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">18</span><span class="s1">&#39;</span>
 <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">mincut</span> 
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">mincut</span>
 <span class="o">-----+------+------+--------</span>
    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
@@ -404,19 +404,19 @@ OR EMPTY SET
 <p>Utilice la función pgr_connectedComponents( ) en la consulta:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_stoerWagner(
 $$
- SELECT id, source, target, cost, reverse_cost FROM edge_table 
+ SELECT id, source, target, cost, reverse_cost FROM edge_table
     where source = any (ARRAY(SELECT node FROM pgr_connectedComponents(
                             &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table &#39;)
                         WHERE component = 14)
-                       ) 
-                   OR     
+                       )
+                   OR
           target = any (ARRAY(SELECT node FROM pgr_connectedComponents(
                             &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table &#39;)
                         WHERE component = 14)
                        )
 $$
  );
- seq | edge | cost | mincut 
+ seq | edge | cost | mincut
 -----+------+------+--------
    1 |   17 |    1 |      1
 (1 row)
@@ -450,8 +450,8 @@ $$
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.2.<br/>
-      Actualizado por última vez en jul. 14, 2020.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.3.<br/>
+      Actualizado por última vez en nov. 18, 2020.<br/>
       Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

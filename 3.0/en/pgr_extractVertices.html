@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -459,7 +459,7 @@ therefore other columns are ignored when <code class="docutils literal notransla
 <p>The results can be used as base code to make a refinement based on the backend development needs.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, the_geom AS geom FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="n">dryrun</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
+    <span class="n">dryrun</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>
         <span class="n">WITH</span>
 
@@ -644,8 +644,8 @@ therefore other columns are ignored when <code class="docutils literal notransla
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.2.<br/>
-      Last updated on Jul 14, 2020.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.3.<br/>
+      Last updated on Nov 18, 2020.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

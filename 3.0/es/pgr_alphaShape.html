@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -176,7 +176,7 @@
 <ul class="simple">
 <li>La entrada es una <em>geometría</em> y devuelve una <em>geometría</em></li>
 <li>Usa PostGis ST_DelaunyTriangles</li>
-<li>En lugar de utilizar la definición de CGAL de  <cite>alpha</cite> utiliza <code class="docutils literal notranslate"><span class="pre">spoon_radius</span></code> el “”spoon_radius”“<ul>
+<li>En lugar de utilizar la definición de CGAL de  <cite>alpha</cite> utiliza <code class="docutils literal notranslate"><span class="pre">spoon_radius</span></code> el “”spoon_radius””<ul>
 <li><span class="math notranslate nohighlight">\(spoon\_radius = \sqrt alpha\)</span></li>
 </ul>
 </li>
@@ -191,7 +191,7 @@
 RETURNS geometry
 </pre></div>
 </div>
-<p class="rubric">Ejemplo: pasar una colección de geometría con radio de cuchara :math:“1.5” usando la variable de retorno <code class="docutils literal notranslate"><span class="pre">geom</span></code></p>
+<p class="rubric">Ejemplo: pasar una colección de geometría con radio de cuchara :math:”1.5” usando la variable de retorno <code class="docutils literal notranslate"><span class="pre">geom</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_alphaShape</span><span class="p">((</span><span class="n">SELECT</span> <span class="n">ST_Collect</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">));</span>
  <span class="n">st_area</span>
 <span class="o">---------</span>
@@ -219,7 +219,7 @@ RETURNS geometry
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>geometría</strong></td>
-<td>“”geometría”“</td>
+<td>“”geometría””</td>
 <td>&#160;</td>
 <td>Geometría con al menos <span class="math notranslate nohighlight">\(3\)</span> puntos</td>
 </tr>
@@ -277,8 +277,8 @@ RETURNS geometry
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.2.<br/>
-      Actualizado por última vez en jul. 14, 2020.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.3.<br/>
+      Actualizado por última vez en nov. 18, 2020.<br/>
       Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -222,7 +222,7 @@ RETURNS SETOF (type, id, contracted_vertices, source, target, cost)
 </table>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-<span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">forbidden_vertices</span><span class="p">:</span><span class="o">=</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">forbidden_vertices</span><span class="o">:=</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
  <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span>
 <span class="o">------+----+---------------------+--------+--------+------</span>
  <span class="n">v</span>    <span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>                 <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
@@ -404,7 +404,7 @@ RETURNS SETOF (type, id, contracted_vertices, source, target, cost)
 <tr class="row-odd"><td><strong>id</strong></td>
 <td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
 <td><dl class="first last docutils">
-<dt>Todos los números de esta columna son “”DISTINTOS”“</dt>
+<dt>Todos los números de esta columna son “”DISTINTOS””</dt>
 <dd><ul class="first last simple">
 <li>En caso de <code class="docutils literal notranslate"><span class="pre">type</span></code> = <strong>“v”</strong>.<ul>
 <li>Identificador del vértice modificado.</li>
@@ -520,8 +520,8 @@ RETURNS SETOF (type, id, contracted_vertices, source, target, cost)
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.2.<br/>
-      Actualizado por última vez en jul. 14, 2020.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.3.<br/>
+      Actualizado por última vez en nov. 18, 2020.<br/>
       Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>

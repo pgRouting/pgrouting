@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -451,7 +451,7 @@
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">equicost</span><span class="o">:=</span><span class="n">true</span>
       <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+--------+------+------+------+----------</span>
@@ -545,7 +545,7 @@
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">equicost</span><span class="o">:=</span><span class="n">true</span>
       <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+--------+------+------+------+----------</span>
@@ -617,7 +617,7 @@
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">equicost</span><span class="o">:=</span><span class="n">true</span>
       <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+--------+------+------+------+----------</span>
@@ -705,7 +705,7 @@
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">equicost</span><span class="o">:=</span><span class="n">true</span>
       <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+--------+------+------+------+----------</span>
@@ -752,8 +752,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.2.<br/>
-      Actualizado por última vez en jul. 14, 2020.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.3.<br/>
+      Actualizado por última vez en nov. 18, 2020.<br/>
       Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
     </p>
   </div>
