@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2020
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # 
 #, fuzzy
@@ -13,14 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2020-11-04 13:06-0600\n"
 "PO-Revision-Date: 2020-11-04 18:28+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -127,6 +127,26 @@ msgid ":doc:`pgr_chinesePostmanCost`"
 msgstr ":doc:`pgr_chinesePostmanCost`"
 
 #: ../../build/doc/experimental.rst:52
+msgid ":doc:`coloring-family`"
+msgstr ":doc:`coloring-family`"
+
+#: ../../build/doc/coloring-family.rst:3
+msgid ""
+":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy"
+" approach."
+msgstr ""
+":doc:`pgr_sequentialVertexColoring`- Algoritmo de coloración de vértices "
+"mediante un enfoque codicioso."
+
+#: ../../build/doc/coloring-family.rst:4
+msgid ""
+":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring "
+"approach."
+msgstr ""
+":doc:`pgr_bipartite` - Algoritmo de grafo bipartito mediante un enfoque de "
+"coloración basado en DFS."
+
+#: ../../build/doc/experimental.rst:58
 msgid ":doc:`topology-functions`"
 msgstr ":doc:`topology-functions`"
 
@@ -138,7 +158,7 @@ msgstr ""
 ":doc:`pgr_extractVertices` - extrae información de vértices basada en el "
 "origen y el destino."
 
-#: ../../build/doc/experimental.rst:58
+#: ../../build/doc/experimental.rst:64
 msgid ":doc:`transformation-family`"
 msgstr ":doc:`transformation-family`"
 
@@ -158,10 +178,42 @@ msgstr ""
 "grafo de líneas a partir de cada vértice en el grafo de entrada."
 
 #: ../../build/doc/experimental.rst:70
+msgid ":doc:`traversal-family`"
+msgstr ":doc:`traversal-family`"
+
+#: ../../build/doc/traversal-family.rst:3
+msgid ""
+":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
+msgstr ""
+":doc:`pgr_depthFirstSearch` - Primera Búsqueda en Profundidad traversal del "
+"grafo."
+
+#: ../../build/doc/experimental.rst:76
+msgid ":doc:`components-family`"
+msgstr ":doc:`components-family`"
+
+#: ../../build/doc/components-family.rst:3
+msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
+msgstr ""
+":doc:`pgr_makeConnected` - Detalles de aristas para hacer grafos conectados."
+
+#: ../../build/doc/experimental.rst:82
+msgid ":doc:`dijkstra-family`"
+msgstr ":doc:`dijkstra-family`"
+
+#: ../../build/doc/dijkstra-family.rst:3
+msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
+msgstr ":doc:`pgr_dijkstraNear` - Obtener la ruta al vértice más cercano."
+
+#: ../../build/doc/dijkstra-family.rst:4
+msgid ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
+msgstr ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
+
+#: ../../build/doc/experimental.rst:98
 msgid "categories"
 msgstr "Categorías"
 
-#: ../../build/doc/experimental.rst:71
+#: ../../build/doc/experimental.rst:99
 msgid ":doc:`VRP-category`"
 msgstr ":doc:`VRP-category`"
 
@@ -190,58 +242,66 @@ msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
 msgstr ""
 ":doc:`pgr_vrpOneDepot` - Desde un único depósito, distribuye los pedidos"
 
-#: ../../build/doc/experimental.rst:83
+#: ../../build/doc/experimental.rst:111
 msgid "Not classified"
 msgstr "No clasificado"
 
-#: ../../build/doc/experimental.rst:84
+#: ../../build/doc/experimental.rst:112
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ":doc:`pgr_bellmanFord`"
 
-#: ../../build/doc/experimental.rst:85
+#: ../../build/doc/experimental.rst:113
 msgid ":doc:`pgr_binaryBreadthFirstSearch`"
 msgstr ":doc:`pgr_binaryBreadthFirstSearch`"
 
-#: ../../build/doc/experimental.rst:86
+#: ../../build/doc/experimental.rst:114
 msgid ":doc:`pgr_breadthFirstSearch`"
 msgstr ":doc:`pgr_breadthFirstSearch`"
 
-#: ../../build/doc/experimental.rst:87
+#: ../../build/doc/experimental.rst:115
 msgid ":doc:`pgr_dagShortestPath`"
 msgstr ":doc:`pgr_dagShortestPath`"
 
-#: ../../build/doc/experimental.rst:88
+#: ../../build/doc/experimental.rst:116
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ":doc:`pgr_edwardMoore`"
 
-#: ../../build/doc/experimental.rst:89
+#: ../../build/doc/experimental.rst:117
+msgid ":doc:`pgr_isPlanar`"
+msgstr ":doc:`pgr_isPlanar`"
+
+#: ../../build/doc/experimental.rst:118
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ":doc:`pgr_stoerWagner`"
 
-#: ../../build/doc/experimental.rst:90
+#: ../../build/doc/experimental.rst:119
 msgid ":doc:`pgr_topologicalSort`"
 msgstr ":doc:`pgr_topologicalSort`"
 
-#: ../../build/doc/experimental.rst:91
+#: ../../build/doc/experimental.rst:120
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ":doc:`pgr_transitiveClosure`"
 
-#: ../../build/doc/experimental.rst:92
+#: ../../build/doc/experimental.rst:121
 msgid ":doc:`pgr_turnRestrictedPath`"
 msgstr ":doc:`pgr_turnRestrictedPath`"
 
-#: ../../build/doc/experimental.rst:109
-msgid "See Also"
-msgstr "Véase también"
+#: ../../build/doc/experimental.rst:122
+msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
+msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
 
-#: ../../build/doc/experimental.rst:112
+#: ../../build/doc/experimental.rst:141
+msgid "See Also"
+msgstr "Ver también"
+
+#: ../../build/doc/experimental.rst:144
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/experimental.rst:113
+#: ../../build/doc/experimental.rst:145
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ":ref:`genindex`"
 
-#: ../../build/doc/experimental.rst:114
+#: ../../build/doc/experimental.rst:146
 msgid ":ref:`search`"
-msgstr ":ref:`búsqueda <search>`"
+msgstr ":ref:`search`"
