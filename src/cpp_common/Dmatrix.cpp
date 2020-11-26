@@ -76,8 +76,10 @@ Dmatrix::set_ids(const std::vector < Matrix_cell_t > &data_costs) {
 
 bool
 Dmatrix::has_id(int64_t id) const {
-    auto pos = std::lower_bound(ids.begin(), ids.end(), id);
-    return *pos == id;
+    for (const auto &i : ids) {
+        if (i == id) return true;
+    }
+    return false;
 }
 
 
