@@ -8,6 +8,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 *Issues fixes*
 
 * [#1356 ](https://github.com/pgRouting/pgrouting/issues/1356)_: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
+* [#1760 ](https://github.com/pgRouting/pgrouting/issues/1760)_: TSP server crash on ubuntu 20.04 #1760
 
 
 pgRouting 3.1.1 Release Notes
@@ -51,6 +52,8 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 *Backport issues fixes*
 
 * [#1356 ](https://github.com/pgRouting/pgrouting/issues/1356)_: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
+* [#1760 ](https://github.com/pgRouting/pgrouting/issues/1760)_: TSP server crash on ubuntu 20.04 #1760
+
 
 
 pgRouting 3.0.3 Release Notes
