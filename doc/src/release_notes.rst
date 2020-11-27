@@ -61,7 +61,9 @@ pgRouting 3.1.2 Release Notes
 To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.2
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github.
 
-No change yet
+.. rubric:: Issues fixes
+
+* `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
 
 .. _changelog_3_1_1:
 
@@ -96,6 +98,18 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 .. rubric:: Build changes
 
 * Minimal requirement for Sphinx: version 1.8
+
+.. _changelog_3_0_4:
+
+pgRouting 3.0.4 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.4
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github.
+
+.. rubric:: Backport issues fixes
+
+* `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
 
 .. _changelog_3_0_3:
 
