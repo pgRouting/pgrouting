@@ -61,7 +61,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
 .. rubric:: Backport issues fixes
 
-* Non yet
+* `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
 
 
 .. _changelog_3_0_3:
