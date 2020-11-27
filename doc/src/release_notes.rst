@@ -62,6 +62,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 .. rubric:: Backport issues fixes
 
 * `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
+* `#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server crash on ubuntu 20.04 #1760
 
 
 .. _changelog_3_0_3:
