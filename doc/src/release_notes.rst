@@ -21,7 +21,6 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_3_1_2`
 * :ref:`changelog_3_1_1`
 * :ref:`changelog_3_1_0`
-* :ref:`changelog_3_0_4`
 * :ref:`changelog_3_0_3`
 * :ref:`changelog_3_0_2`
 * :ref:`changelog_3_0_1`
