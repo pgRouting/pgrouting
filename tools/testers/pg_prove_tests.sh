@@ -10,11 +10,9 @@ set -e
 
 PGUSER=$1
 PGPORT=$2
-RELEASE_TYPE="b$3"
-echo "RELEASE_TYPE $RELEASE_TYPE"
 if [ "b$PGPORT" = "b" ]
 then
-    PGPORT=""
+    PGPORT="-p 5432"
 else
     PGPORT="-p $PGPORT"
 fi
