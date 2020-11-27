@@ -18,8 +18,10 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_3_1_2`
 * :ref:`changelog_3_1_1`
 * :ref:`changelog_3_1_0`
+* :ref:`changelog_3_0_4`
 * :ref:`changelog_3_0_3`
 * :ref:`changelog_3_0_2`
 * :ref:`changelog_3_0_1`
@@ -51,6 +53,16 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_1_x`
 
 .. changelog end
+
+.. _changelog_3_1_2:
+
+pgRouting 3.1.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.2
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github.
+
+No change yet
 
 .. _changelog_3_1_1:
 
