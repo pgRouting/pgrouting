@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2020-11-28 10:55-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -226,79 +226,88 @@ msgid "Type"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:6
-msgid "**edges_sql**"
+msgid "**Edges SQL**"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:6
+#: ../../build/doc/pgr_aStar.rst:7
 msgid "``TEXT``"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:6
-msgid "`edges_sql`_ inner query."
+msgid "`Edges query` as described below."
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:7
+msgid "**Combinations SQL**"
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:7
+msgid "`Combinations query` as described below."
+msgstr ""
+
+#: ../../build/doc/pgr_aStar.rst:8
 msgid "**from_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:7
-#: ../../build/doc/pgr_aStar.rst:17
+#: ../../build/doc/pgr_aStar.rst:8
+#: ../../build/doc/pgr_aStar.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:7
+#: ../../build/doc/pgr_aStar.rst:8
 msgid "Starting vertex identifier. Parameter in:"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:9
-#: ../../build/doc/pgr_aStar.rst:19
+#: ../../build/doc/pgr_aStar.rst:10
+#: ../../build/doc/pgr_aStar.rst:20
 msgid "`One to One`_"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:10
-#: ../../build/doc/pgr_aStar.rst:24
+#: ../../build/doc/pgr_aStar.rst:11
+#: ../../build/doc/pgr_aStar.rst:25
 msgid "`One to Many`_"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:12
+#: ../../build/doc/pgr_aStar.rst:13
 msgid "**from_vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:12
-#: ../../build/doc/pgr_aStar.rst:22
+#: ../../build/doc/pgr_aStar.rst:13
+#: ../../build/doc/pgr_aStar.rst:23
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:12
+#: ../../build/doc/pgr_aStar.rst:13
 msgid "Array of starting vertices identifiers. Parameter in:"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:14
-#: ../../build/doc/pgr_aStar.rst:20
+#: ../../build/doc/pgr_aStar.rst:15
+#: ../../build/doc/pgr_aStar.rst:21
 msgid "`Many to One`_"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:15
-#: ../../build/doc/pgr_aStar.rst:25
+#: ../../build/doc/pgr_aStar.rst:16
+#: ../../build/doc/pgr_aStar.rst:26
 msgid "`Many to Many`_"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:17
+#: ../../build/doc/pgr_aStar.rst:18
 msgid "**to_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:17
+#: ../../build/doc/pgr_aStar.rst:18
 msgid "Ending vertex identifier. Parameter in:"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:22
+#: ../../build/doc/pgr_aStar.rst:23
 msgid "**to_vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_aStar.rst:22
+#: ../../build/doc/pgr_aStar.rst:23
 msgid "Array of ending vertices identifiers. Parameter in:"
 msgstr ""
 
