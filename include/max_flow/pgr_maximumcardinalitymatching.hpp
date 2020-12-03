@@ -77,8 +77,7 @@ class PgrCardinalityGraph {
       return E_to_id[e];
   }
 
-  void create_max_cardinality_graph(pgr_basic_edge_t *data_edges,
-                                    size_t total_tuples) {
+  PgrCardinalityGraph(pgr_basic_edge_t *data_edges, size_t total_tuples) {
       std::set<int64_t> vertices;
       for (size_t i = 0; i < total_tuples; ++i) {
           vertices.insert(data_edges[i].source);
@@ -107,8 +106,13 @@ class PgrCardinalityGraph {
       }
   }
 
-  void get_matched_vertices(std::vector<pgr_basic_edge_t> &matched_vertices,
-                            const std::vector<int64_t> &mate_map) {
+  std::vector<pgr_basic_edge_t>
+  get_matched_vertices() {
+
+      std::vector<V> mate_map(boost::num_vertices(boost_graph));
+      std::vector<pgr_basic_edge_t> matched_vertices;
+      maximum_cardinality_matching(mate_map);
+
       V_it vi, vi_end;
       E e;
       bool exists;
@@ -125,8 +129,7 @@ class PgrCardinalityGraph {
                * (this last point prevents having double output with reversed
                * source and target)
                */
-              boost::tie(e, exists) =
-                  boost::edge(*vi, mate_map[*vi], boost_graph);
+              boost::tie(e, exists) = boost::edge(*vi, mate_map[*vi], boost_graph);
               if (((uint64_t)mate_map[*vi]
                           != boost::graph_traits<G>::null_vertex())
                   && exists && !already_matched[*vi]
@@ -157,9 +160,10 @@ class PgrCardinalityGraph {
               }
           }
       }
+      return matched_vertices;
   }
 
-  void maximum_cardinality_matching(std::vector<int64_t> &mate_map) {
+  void maximum_cardinality_matching(std::vector<V> &mate_map) {
       edmonds_maximum_cardinality_matching(boost_graph,
                                            &mate_map[0]);
   }
