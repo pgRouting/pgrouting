@@ -47,6 +47,8 @@ class Basic_vertex {
      explicit Basic_vertex(const int64_t _id) :
          id(_id) {}
 
+     Basic_vertex& operator=(const Basic_vertex&)=default;
+
      Basic_vertex(const pgr_edge_t &other, bool is_source) :
          id(is_source? other.source : other.target) {}
 
@@ -66,14 +68,14 @@ size_t check_vertices(std::vector < Basic_vertex > vertices);
 
 std::vector < Basic_vertex > extract_vertices(
         std::vector < Basic_vertex > vertices,
-        const pgr_edge_t *data_edges, int64_t count);
+        const pgr_edge_t *data_edges, size_t count);
 
 std::vector < Basic_vertex > extract_vertices(
         std::vector < Basic_vertex > vertices,
         const std::vector < pgr_edge_t > data_edges);
 
 std::vector < Basic_vertex > extract_vertices(
-        const pgr_edge_t *data_edges, int64_t count);
+        const pgr_edge_t *data_edges, size_t count);
 
 std::vector < Basic_vertex > extract_vertices(
         const std::vector < pgr_edge_t > &data_edges);

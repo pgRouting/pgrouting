@@ -122,7 +122,7 @@ class Path {
 
     void reverse();
 
-    Path  getSubpath(unsigned int j) const;
+    Path  getSubpath(size_t j) const;
 
 
     bool isEqual(const Path &subpath) const;

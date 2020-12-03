@@ -48,6 +48,7 @@ post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goal
                 [](const Path &p){
                     return p.size()==0;}),
             paths.end());
+    using difference_type = std::deque<double>::difference_type;
 
     if (!normal) {
         for (auto &path : paths) path.reverse();
@@ -73,7 +74,7 @@ post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goal
                     return e1.tot_cost() < e2.tot_cost();
                 });
         if (n_goals < paths.size()) {
-            paths.erase(paths.begin() + n_goals, paths.end());
+            paths.erase(paths.begin() + static_cast<difference_type>(n_goals), paths.end());
         }
     } else {
         std::sort(paths.begin(), paths.end(),

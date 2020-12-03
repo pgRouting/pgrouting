@@ -46,12 +46,12 @@ get_path(
         Routes_t **postgres_data,
         double &route_cost,
         size_t &sequence) {
-    int i = 0;
+    size_t i = 0;
     for (const auto e : path) {
         (*postgres_data)[sequence] = {
             route_id,
             path_id,
-            i,
+            static_cast<int>(i),
             path.start_id(),
             path.end_id(),
             e.node,
