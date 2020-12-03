@@ -63,23 +63,23 @@ void get_postgres_result(
     int ii = 1;
     for (boost::tie(i, end) = boost::vertices(TC); i != end; ++i) {
             auto u = *i;
-            int64_t* target_array = NULL;
-            int64_t uid = graph.graph[u].id;
-            boost::tie(ai, a_end) = adjacent_vertices(*i, TC);
-            auto adj_siz = a_end - ai;
+            int64_t* target_array = nullptr;
+            auto uid = graph.graph[u].id;
+            boost::tie(ai, a_end) = adjacent_vertices(u, TC);
+            size_t adj_siz = static_cast<size_t>(a_end - ai);
             target_array = pgr_alloc(adj_siz , target_array);
-            int count = 0;
+            int number = 0;
             for (; ai != a_end; ++ai) {
                 auto v = *ai;
                 int64_t vid = graph.graph[v].id;
-                target_array[count++] = vid;
+                target_array[number++] = vid;
             }
 
         (*return_tuples)[sequence] = {
             ii++,
             uid,
             target_array,
-            count};
+            number};
 
          ++sequence;
     }
