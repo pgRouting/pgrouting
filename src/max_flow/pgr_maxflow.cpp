@@ -226,7 +226,7 @@ PgrFlowGraph::get_flow_edges() const {
 
 void
 PgrFlowGraph::flow_dfs(V vertex,
-        int64_t path_id,
+        size_t path_id,
         std::vector<std::vector<int64_t> > &paths) {
     Eout_it ei, e_end;
     if (boost::edge(vertex, supersink, graph).second) {
@@ -252,11 +252,11 @@ PgrFlowGraph::flow_dfs(V vertex,
 
 std::vector<General_path_element_t>
 PgrFlowGraph::get_edge_disjoint_paths(
-        int64_t flow) {
+        size_t flow) {
     std::vector<General_path_element_t> path_elements;
 
     std::vector<std::vector<int64_t> > paths(flow, std::vector<int64_t>());
-    int64_t path_id = 0;
+    size_t path_id = 0;
     Eout_it ei, e_end, ei2, e2_end;
     for (boost::tie(ei, e_end) =
             boost::out_edges(supersource, graph);
@@ -274,7 +274,7 @@ PgrFlowGraph::get_edge_disjoint_paths(
             }
         }
     }
-    for (int i = 0; i < flow; i++) {
+    for (size_t i = 0; i < flow; i++) {
         size_t size = paths[i].size();
         E e;
         bool exists;
@@ -286,8 +286,7 @@ PgrFlowGraph::get_edge_disjoint_paths(
             edge.end_id = paths[i][size - 1];
             edge.node = paths[i][j];
             boost::tie(e, exists) = boost::edge(get_boost_vertex(paths[i][j]),
-                    get_boost_vertex(paths[i][j
-                        + 1]),
+                    get_boost_vertex(paths[i][j + 1]),
                     graph);
             edge.edge = get_edge_id(e);
             path_elements.push_back(edge);
