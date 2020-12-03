@@ -72,7 +72,7 @@ check_vertices(std::vector < XY_vertex > vertices);
 
 std::vector < XY_vertex >
 extract_vertices(
-    const Pgr_edge_xy_t *data_edges, int64_t count);
+    const Pgr_edge_xy_t *data_edges, size_t count);
 
 std::vector < XY_vertex >
 extract_vertices(
