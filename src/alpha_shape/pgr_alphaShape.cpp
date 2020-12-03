@@ -259,7 +259,7 @@ Pgr_alphaShape::build_best_alpha() const {
     std::map<Triangle, double> inner_triangles;
 
     size_t i(0);
-    for (const auto t : m_adjacent_triangles) {
+    for (const auto &t : m_adjacent_triangles) {
         if (t.second.size() == 2) {
             border_triangles[t.first] = radius(t.first);
         } else  {
@@ -290,7 +290,7 @@ Pgr_alphaShape::build_best_alpha() const {
          *  - are no longer inner triangles
          *  - are now border triangles
          */
-        for (const auto t : m_adjacent_triangles.at(max_border_triangle.first)) {
+        for (const auto &t : m_adjacent_triangles.at(max_border_triangle.first)) {
             if (inner_triangles.find(t) != inner_triangles.end()) {
                 inner_triangles.erase(t);
                 border_triangles[t] = radius(t);
@@ -306,7 +306,7 @@ Pgr_alphaShape::build_best_alpha() const {
             /*
              * Roll back and exit loop
              */
-             for (const auto t : m_adjacent_triangles.at(max_border_triangle.first)) {
+             for (const auto &t : m_adjacent_triangles.at(max_border_triangle.first)) {
                  border_triangles.erase(t);
                  inner_triangles[t] = radius(t);
              }
@@ -343,7 +343,7 @@ Pgr_alphaShape::recursive_build(
     if (original == used.size())  return;
 
     std::set<E> common_sides;
-    for (const auto adj_t : m_adjacent_triangles.at(face)) {
+    for (const auto &adj_t : m_adjacent_triangles.at(face)) {
         if (!faceBelongs(adj_t, alpha)) {
             /*
              * Adjacent face is not on shape
@@ -382,7 +382,7 @@ Pgr_alphaShape::operator() (double alpha) const {
     std::set<Triangle> used;
     using Subgraph = boost::filtered_graph<BG, EdgesFilter, boost::keep_all>;
 
-    for (const auto t : m_adjacent_triangles) {
+    for (const auto &t : m_adjacent_triangles) {
         EdgesFilter border_edges;
         /*
          * Recurse through the triangles to get the border sides
@@ -455,8 +455,8 @@ Pgr_alphaShape::operator() (double alpha) const {
          */
         if (!polys.empty()) {
             polygon.inners().resize(polys.size());
-            int i(0);
-            for (const auto inner_ring : polys) {
+            size_t i(0);
+            for (const auto &inner_ring : polys) {
                 bg::assign(polygon.inners()[i++], inner_ring);
             }
         }
