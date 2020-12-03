@@ -29,23 +29,43 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdint.h>
 
-#ifdef __GNUC__
-#   if __GNUC__ > 5
-#       pragma GCC diagnostic ignored "-Wpedantic"
-#   else
+
+#ifdef __clang__
+#  pragma clang diagnostic push
+#  pragma clang diagnostic ignored "-Wpedantic"
+#  pragma clang diagnostic ignored "-Wignored-attributes"
+#else
+#  ifdef __GNUC__
+#    if __GNUC__ > 5
+#      pragma GCC diagnostic ignored "-Wpedantic"
+#    else
 #       pragma GCC diagnostic ignored "-pedantic"
-#   endif
+#    endif
+#  endif
 #endif
 
 #include <postgres.h>
 
+#ifdef __clang__
+#pragma clang diagnostic pop
+#else
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
+#endif
+
 
 // for ArrayType
+#ifdef __clang__
+#  pragma clang diagnostic push
+#  pragma clang diagnostic ignored "-Wignored-attributes"
+#endif
+
 #include "utils/array.h"
 
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 
 /** @brief enforces the input array to be @b NOT empty */
 int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input);
