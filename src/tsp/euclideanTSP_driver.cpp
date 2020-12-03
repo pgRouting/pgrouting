@@ -168,7 +168,7 @@ do_pgr_euclideanTSP(
             if (id == prev_id) continue;
             General_path_element_t data;
             data.node = costs.get_id(prev_id);
-            data.edge = prev_id;
+            data.edge = static_cast<int64_t>(prev_id);
             data.cost = costs.distance(prev_id, id);
             data.agg_cost = agg_cost;
             result.push_back(data);
@@ -180,7 +180,7 @@ do_pgr_euclideanTSP(
         {
             General_path_element_t data;
             data.node = costs.get_id(bestTour.cities.front());
-            data.edge = bestTour.cities.front();
+            data.edge = static_cast<int64_t>(bestTour.cities.front());
             data.cost = costs.distance(prev_id, bestTour.cities.front());
             agg_cost += data.cost;
             data.agg_cost = agg_cost;

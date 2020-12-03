@@ -52,7 +52,7 @@ static
 size_t
 rand(size_t n) {
     pgassert(n > 0);
-    return static_cast< size_t >(std::rand() % n);
+    return static_cast< size_t >(std::rand())/((RAND_MAX + 1u)/n);
 }
 
 
@@ -573,8 +573,8 @@ TSP<MATRIX>::annealing(
                             /* reverse */
                             pgassert(n > 2);
 
-                            auto c1 = std::rand() % n;
-                            auto c2 = std::rand() % n;
+                            auto c1 = rand(n);
+                            auto c2 = rand(n);
 
                             if (c1 == c2) c2 = succ(c2, n);
                             if (c1 == (c2 - 1)) c2 = succ(c2, n);
@@ -611,8 +611,8 @@ TSP<MATRIX>::annealing(
 
                             pgassert(n > 3);
 
-                            auto first = std::rand() % n;
-                            auto last = std::rand() % n;
+                            auto first = rand(n);
+                            auto last = rand(n);
 
                             if (first == last) last = succ(last, n);
                             if (first > last) std::swap(first, last);
@@ -621,7 +621,7 @@ TSP<MATRIX>::annealing(
                             }
 
                             pgassert((n - (last - first) - 1) > 0);
-                            auto place = std::rand() % (n - (last - first) - 1);
+                            auto place = rand((n - (last - first) - 1));
                             place = place < first?  place :
                                 last + (place - first) + 1;
 
