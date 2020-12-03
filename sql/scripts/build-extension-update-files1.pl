@@ -184,8 +184,6 @@ sub generate_upgrade_script {
     my @types2remove = ();
     my @commands = ();
 
-    print "$new_version $old_version\n";
-
     #------------------------------------
     # analyze function signatures
     #------------------------------------
@@ -289,16 +287,13 @@ sub get_current_sql {
     $contents  =~ s/\\echo Use "CREATE EXTENSION pgrouting" to load this file. \\quit//;
 
     my %seen = ();
-    print "HERE\n";
     while ($contents =~ /--v([\d+].[\d+])/g) {  # scalar context
         $seen{$1}++;
     }
     my @uniq = keys %seen;
-    print "@uniq\n";
 
     foreach my $minor (@uniq) {
         if  ($old_minor >= $minor) {
-            print "$old_minor >= $minor\n";
 
             $contents =~ s{
                 --v$minor
