@@ -88,7 +88,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 
       private:
          bool has_restriction(const Path &path) const {
-             for (const auto r :  m_restrictions) {
+             for (const auto &r :  m_restrictions) {
                  if (path.has_restriction(r)) {
                      return true;
                  }
@@ -139,7 +139,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
          /*
           * No path: already in destination
           */
-         if ((start_vertex == end_vertex)) {
+         if (start_vertex == end_vertex) {
              return std::deque<Path>();
          }
 
@@ -245,7 +245,7 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
      std::deque<Path> inf_cost_on_restriction(std::deque<Path> &paths) {
          if (paths.empty()) return paths;
          for (auto &p : paths) {
-             for (const auto r : m_restrictions) {
+             for (const auto &r : m_restrictions) {
                  p = p.inf_cost_on_restriction(r);
              }
          }
