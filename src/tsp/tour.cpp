@@ -49,8 +49,8 @@ void Tour::reverse(
         size_t c2) {
     pgassert(c1 < c2 && c2 < cities.size());
     std::reverse(
-            cities.begin() + (c1 + 1),
-            cities.begin() + (c2 + 1));
+            cities.begin() + static_cast<difference_type>(c1 + 1),
+            cities.begin() + static_cast<difference_type>(c2 + 1));
 }
 
 void Tour::slide(
@@ -63,14 +63,14 @@ void Tour::slide(
 
     if (place < first) {
         std::rotate(
-                cities.begin() + (place + 1),
-                cities.begin() + (first + 1),
-                cities.begin() + (last + 1));
+                cities.begin() + static_cast<difference_type>(place + 1),
+                cities.begin() + static_cast<difference_type>(first + 1),
+                cities.begin() + static_cast<difference_type>(last + 1));
     } else {
         std::rotate(
-                cities.begin() + (first + 1),
-                cities.begin() + (last + 1),
-                cities.begin() + (place + 1));
+                cities.begin() + static_cast<difference_type>(first + 1),
+                cities.begin() + static_cast<difference_type>(last + 1),
+                cities.begin() + static_cast<difference_type>(place + 1));
     }
 }
 
@@ -81,9 +81,9 @@ void Tour::rotate(
     pgassert(c1 < c2 && c2 < c3 && c3 < cities.size());
 
     std::rotate(
-            cities.begin() + (c1 + 1),
-            cities.begin() + (c2 + 1),
-            cities.begin() + (c3 + 1));
+            cities.begin() + static_cast<difference_type>(c1 + 1),
+            cities.begin() + static_cast<difference_type>(c2 + 1),
+            cities.begin() + static_cast<difference_type>(c3 + 1));
 }
 
 
@@ -92,7 +92,7 @@ void Tour::swap(
         size_t c2 ) {
     pgassert(c1 < c2);
 
-    std::iter_swap(cities.begin() + c1, cities.begin() + c2);
+    std::iter_swap(cities.begin() + static_cast<difference_type>(c1), cities.begin() + static_cast<difference_type>(c2));
 }
 
 
