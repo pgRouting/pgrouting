@@ -92,16 +92,16 @@ class Pgr_binaryBreadthFirstSearch {
 
             std::vector<double> current_cost(graph.num_vertices(), std::numeric_limits<double>::infinity());
             std::vector<E> from_edge(graph.num_vertices());
-            std::deque<int64_t> dq;
+            std::deque<V> dq;
             DEFAULT_EDGE = from_edge[0];
 
-            int64_t bgl_start_vertex = graph.get_V(start_vertex);
+            auto bgl_start_vertex = graph.get_V(start_vertex);
 
             current_cost[bgl_start_vertex] = 0;
             dq.push_front(bgl_start_vertex);
 
             while (dq.empty() == false) {
-                int64_t head_vertex = dq.front();
+                auto head_vertex = dq.front();
 
                 dq.pop_front();
 
@@ -113,7 +113,7 @@ class Pgr_binaryBreadthFirstSearch {
                     continue;
                 }
 
-                int64_t bgl_target_vertex = graph.get_V(target_vertex);
+                auto bgl_target_vertex = graph.get_V(target_vertex);
 
                 if (from_edge[bgl_target_vertex] == DEFAULT_EDGE) {
                     continue;
@@ -128,12 +128,12 @@ class Pgr_binaryBreadthFirstSearch {
 
     Path getPath(
         G &graph,
-        int64_t bgl_start_vertex,
+        V bgl_start_vertex,
         int64_t target,
-        int64_t bgl_target_vertex,
+        V bgl_target_vertex,
         std::vector<E> &from_edge,
         std::vector<double> &current_cost) {
-        int64_t current_node = bgl_target_vertex;
+        auto current_node = bgl_target_vertex;
 
         Path path = Path(graph[bgl_start_vertex].id, graph[current_node].id);
 
@@ -152,12 +152,13 @@ class Pgr_binaryBreadthFirstSearch {
         return path;
     }
 
+
     void updateVertexCosts(
         G &graph,
         std::vector<double> &current_cost,
         std::vector<E> &from_edge,
-        std::deque<int64_t> &dq,
-        int64_t &head_vertex) {
+        std::deque<V> &dq,
+        V &head_vertex) {
         auto out_edges = boost::out_edges(head_vertex, graph.graph);
         E e;
         EO_i out_i;
