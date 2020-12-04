@@ -107,7 +107,7 @@ class GraphEdgeInfo {
 
 typedef std::vector<GraphEdgeInfo*> GraphEdgeVector;
 typedef std::map<int64, LongVector> Long2LongVectorMap;
-typedef std::map<int64, size_t> Long2LongMap;
+typedef std::map<int64, int64> Long2LongMap;
 
 
 
