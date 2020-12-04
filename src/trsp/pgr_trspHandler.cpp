@@ -62,7 +62,7 @@ Pgr_trspHandler::Pgr_trspHandler(
 int64_t Pgr_trspHandler::renumber_edges(
         pgr_edge_t *edges,
         size_t total_edges) const {
-        int64_t v_min_id = UINT64_MAX;
+        int64_t v_min_id = INT64_MAX;
         size_t z;
         for (z = 0; z < total_edges; z++) {
             if (edges[z].source < v_min_id)
@@ -95,9 +95,9 @@ void Pgr_trspHandler::clear() {
 double Pgr_trspHandler::construct_path(int64_t ed_id, Position pos) {
     pgassert(pos != ILLEGAL);
 
-    if (m_parent[ed_id].isIllegal(pos)) {
+    if (m_parent[static_cast<size_t>(ed_id)].isIllegal(pos)) {
         Path_t pelement;
-        auto cur_edge = &m_edges[ed_id];
+        auto cur_edge = &m_edges[static_cast<size_t>(ed_id)];
         if (pos == RC_EDGE) {
             pelement.node = cur_edge->startNode();
             pelement.cost = cur_edge->cost();
@@ -112,18 +112,18 @@ double Pgr_trspHandler::construct_path(int64_t ed_id, Position pos) {
         return pelement.cost;
     }
 
-    double ret = construct_path(m_parent[ed_id].e_idx[pos],
-        m_parent[ed_id].v_pos[pos]);
+    double ret = construct_path(static_cast<int64_t>(m_parent[static_cast<size_t>(ed_id)].e_idx[static_cast<size_t>(pos)]),
+        m_parent[static_cast<size_t>(ed_id)].v_pos[static_cast<size_t>(pos)]);
     Path_t pelement;
-    auto cur_edge = &m_edges[ed_id];
+    auto cur_edge = &m_edges[static_cast<size_t>(ed_id)];
     if (pos == RC_EDGE) {
         pelement.node = cur_edge->startNode();
-        pelement.cost = m_dCost[ed_id].endCost - ret;
-        ret = m_dCost[ed_id].endCost;
+        pelement.cost = m_dCost[static_cast<size_t>(ed_id)].endCost - ret;
+        ret = m_dCost[static_cast<size_t>(ed_id)].endCost;
     } else {
         pelement.node = cur_edge->endNode();
-        pelement.cost = m_dCost[ed_id].startCost - ret;
-        ret = m_dCost[ed_id].startCost;
+        pelement.cost = m_dCost[static_cast<size_t>(ed_id)].startCost - ret;
+        ret = m_dCost[static_cast<size_t>(ed_id)].startCost;
     }
     pelement.edge = cur_edge->edgeID();
 
@@ -152,13 +152,13 @@ double Pgr_trspHandler::getRestrictionCost(
 
         pgassert(!(edge_ind == -1));
         for (auto const &precedence : rule.precedencelist()) {
-            if (precedence != m_edges[edge_ind].edgeID()) {
+            if (precedence != m_edges[static_cast<size_t>(edge_ind)].edgeID()) {
                 flag = false;
                 break;
             }
-            auto m_parent_ind = m_parent[edge_ind].e_idx[v_pos];
-            v_pos = m_parent[edge_ind].v_pos[v_pos];
-            edge_ind = m_parent_ind;
+            auto m_parent_ind = m_parent[static_cast<size_t>(edge_ind)].e_idx[static_cast<size_t>(v_pos)];
+            v_pos = m_parent[static_cast<size_t>(edge_ind)].v_pos[static_cast<size_t>(v_pos)];
+            edge_ind = static_cast<int64_t>(m_parent_ind);
         }
         if (flag)
             cost += rule.cost();
@@ -193,7 +193,7 @@ void Pgr_trspHandler::explore(
         auto edge = m_edges[index];
 
         auto extra_cost = getRestrictionCost(
-                cur_edge.idx(),
+                static_cast<int64_t>(cur_edge.idx()),
                 edge, isStart);
 
         if ((edge.startNode() == cur_node) && (edge.cost() >= 0.0)) {
@@ -234,7 +234,7 @@ void Pgr_trspHandler::explore(
 // -------------------------------------------------------------------------
 int Pgr_trspHandler::initialize_restrictions(
         const std::vector<Rule> &ruleList) {
-    for (const auto rule : ruleList) {
+    for (const auto &rule : ruleList) {
         auto dest_edge_id = rule.dest_id();
         if (m_ruleTable.find(dest_edge_id) != m_ruleTable.end()) {
             m_ruleTable[dest_edge_id].push_back(rule);
@@ -357,7 +357,7 @@ EdgeInfo Pgr_trspHandler::dijkstra_exploration() {
         que.pop();
 
         auto cure_idxex = cur_pos.second.first;
-        cur_edge = m_edges[cure_idxex];
+        cur_edge = m_edges[static_cast<size_t>(cure_idxex)];
 
         if (cur_pos.second.second) {
             /*
@@ -410,9 +410,9 @@ Pgr_trspHandler::process_trsp(
     pgassert(m_path.start_id() == m_start_vertex);
 
     if (current_node == cur_edge.startNode()) {
-        construct_path(cur_edge.idx(), C_EDGE);
+        construct_path(static_cast<int64_t>(cur_edge.idx()), C_EDGE);
     } else {
-        construct_path(cur_edge.idx(), RC_EDGE);
+        construct_path(static_cast<int64_t>(cur_edge.idx()), RC_EDGE);
     }
 
     Path_t pelement;
