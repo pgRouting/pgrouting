@@ -120,7 +120,7 @@ class Pgr_bidirectional {
         backward_cost.resize(graph.num_vertices(), INF);
         std::iota(backward_predecessor.begin(), backward_predecessor.end(), 0);
 
-        v_min_node = -1;
+        v_min_node = 0;
         best_cost = INF;
     }
 

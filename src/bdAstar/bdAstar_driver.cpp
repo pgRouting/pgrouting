@@ -80,7 +80,10 @@ pgr_bdAstar(
     std::deque<Path> paths;
     for (const auto source : sources) {
         for (const auto target : targets) {
-            fn_bdAstar.clear();
+            if (source == target) {
+                paths.push_back(Path(source, target));
+                continue;
+            }
 
             if (!graph.has_vertex(source)
                     || !graph.has_vertex(target)) {
@@ -88,9 +91,10 @@ pgr_bdAstar(
                 continue;
             }
 
+            fn_bdAstar.clear();
             paths.push_back(fn_bdAstar.pgr_bdAstar(
-            graph.get_V(source), graph.get_V(target),
-            heuristic, factor, epsilon, only_cost));
+                        graph.get_V(source), graph.get_V(target),
+                        heuristic, factor, epsilon, only_cost));
         }
     }
     log << fn_bdAstar.log();
