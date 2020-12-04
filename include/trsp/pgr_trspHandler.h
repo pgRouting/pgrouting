@@ -78,8 +78,8 @@ class Pgr_trspHandler {
 
          bool isIllegal(size_t i) {return v_pos[i] == ILLEGAL;}
          bool isIllegal(Position i) {
-             pgassert(i != ILLEGAL);
-             return v_pos[i] == ILLEGAL;}
+             return i == ILLEGAL;
+         }
 
          std::vector<size_t> e_idx;
          std::vector<Position> v_pos;
