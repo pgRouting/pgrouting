@@ -17,7 +17,6 @@ ADD_LIBRARY(pickDeliver OBJECT
     initial_solution.cpp
     optimize.cpp
 
-    pgr_messages.cpp
     pgr_pickDeliver.cpp
 
 
