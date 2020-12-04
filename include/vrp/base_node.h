@@ -48,6 +48,7 @@ class Base_node : public Identifier {
  public:
      Base_node() = default;
      Base_node(size_t, int64_t);
+     virtual ~Base_node() = default;
 
 
      /** @name to be or not to be */

@@ -40,7 +40,7 @@ Solution::get_postgres_result() const {
     std::vector<General_vehicle_orders_t> result;
     /* postgres numbering starts with 1 */
     int i(1);
-    for (const auto truck : fleet) {
+    for (const auto& truck : fleet) {
         std::vector<General_vehicle_orders_t> data =
             truck.get_postgres_result(i);
         result.insert(result.end(), data.begin(), data.end());
@@ -54,7 +54,7 @@ Solution::get_postgres_result() const {
 
 bool
 Solution::is_feasable() const {
-    for (const auto v : fleet) {
+    for (const auto& v : fleet) {
         if (v.is_feasable()) continue;
         return false;
     }
@@ -64,7 +64,7 @@ Solution::is_feasable() const {
 double
 Solution::duration() const {
     double total(0);
-    for (const auto v : fleet) {
+    for (const auto &v : fleet) {
         total += v.duration();
     }
     return total;
@@ -73,7 +73,7 @@ Solution::duration() const {
 int
 Solution::twvTot() const {
     int total(0);
-    for (const auto v : fleet) {
+    for (const auto &v : fleet) {
         total += v.twvTot();
     }
     return total;
@@ -82,7 +82,7 @@ Solution::twvTot() const {
 double
 Solution::wait_time() const {
     double total(0);
-    for (const auto v : fleet) {
+    for (const auto &v : fleet) {
         total += v.total_wait_time();
     }
     return total;
@@ -91,7 +91,7 @@ Solution::wait_time() const {
 double
 Solution::total_travel_time() const {
     double total(0);
-    for (const auto v : fleet) {
+    for (const auto &v : fleet) {
         total += v.total_travel_time();
     }
     return total;
@@ -100,7 +100,7 @@ Solution::total_travel_time() const {
 double
 Solution::total_service_time() const {
     double total(0);
-    for (const auto v : fleet) {
+    for (const auto &v : fleet) {
         total += v.total_service_time();
     }
     return total;
@@ -109,7 +109,7 @@ Solution::total_service_time() const {
 int
 Solution::cvTot() const {
     int total(0);
-    for (const auto v : fleet) {
+    for (const auto &v : fleet) {
         total += v.cvTot();
     }
     return total;
@@ -121,7 +121,7 @@ Solution::cost() const {
     double total_wait_time(0);
     int total_twv(0);
     int total_cv(0);
-    for (const auto v : fleet) {
+    for (const auto &v : fleet) {
         total_duration += v.duration();
         total_wait_time += v.total_wait_time();
         total_twv += v.twvTot();
@@ -151,11 +151,10 @@ Solution::cost_str() const {
 
 std::string
 Solution::tau(const std::string &title) const {
-    Vehicle::Cost s_cost(cost());
     std::ostringstream log;
 
     log << "\n" << title << ": " << std::endl;
-    for (const auto v : fleet) {
+    for (const auto &v : fleet) {
         log << "\n" << v.tau();
     }
     log << "\n" << cost_str() << "\n";
@@ -173,7 +172,7 @@ Solution::sort_by_id() {
 
 std::ostream&
 operator << (std::ostream &log, const Solution &solution) {
-    for (const auto vehicle : solution.fleet) {
+    for (const auto &vehicle : solution.fleet) {
         log << vehicle;
     }
 

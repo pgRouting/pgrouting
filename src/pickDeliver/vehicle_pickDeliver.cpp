@@ -85,7 +85,7 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
         double p_capacity,
         double p_speed,
         double factor) :
-    Vehicle(id, kind, starting_site, ending_site, p_capacity, p_speed, factor),
+    Vehicle(id, static_cast<int64_t>(kind), starting_site, ending_site, p_capacity, p_speed, factor),
     cost((std::numeric_limits<double>::max)()) {
 #if 0
         ENTERING();
@@ -367,7 +367,7 @@ Vehicle_pickDeliver::pop_back() {
 
     auto deleted_pick_idx = pick_itr->idx();
 
-    for (const auto o : m_orders) {
+    for (const auto &o : m_orders) {
         if (o.pickup().idx() == deleted_pick_idx) {
             erase(o);
             invariant();
@@ -394,7 +394,7 @@ Vehicle_pickDeliver::pop_front() {
 
     auto deleted_pick_idx = pick_itr->idx();
 
-    for (const auto o : m_orders) {
+    for (const auto &o : m_orders) {
         if (o.pickup().idx() == deleted_pick_idx) {
             erase(o);
             invariant();
@@ -409,7 +409,7 @@ Vehicle_pickDeliver::pop_front() {
 void
 Vehicle_pickDeliver::set_compatibles(const PD_Orders &orders) {
     m_orders = orders;
-    for (const auto o : orders) {
+    for (const auto &o : orders) {
         if (is_order_feasable(o)) m_feasable_orders += o.idx();
     }
     m_orders.set_compatibles(speed());
