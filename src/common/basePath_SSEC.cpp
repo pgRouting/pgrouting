@@ -131,17 +131,19 @@ std::ostream& operator<<(std::ostream &log, const Path &path) {
 }
 
 size_t Path::countInfinityCost() const {
-    return static_cast<size_t>(std::count_if(path.begin(), path.end(),
+    return std::count_if(path.begin(), path.end(),
             [](Path_t const&p) -> size_t {
             return std::isinf(p.agg_cost);
-            }));
+            });
 }
 
 
-Path Path::getSubpath(size_t j) const {
+Path Path::getSubpath(unsigned int j) const {
     Path result(start_id(), end_id());
     if (j == 0)  return result;
-    for (const auto step : path) result.push_back(step);
+    for (auto i = path.begin(); i != path.begin() + j; ++i) {
+        result.push_back((*i));
+    }
     pgassert(result.tot_cost() != 0);
     pgassert(this->tot_cost() != 0);
     return result;
@@ -237,17 +239,15 @@ void Path::generate_postgres_data(
 void Path::get_pg_dd_path(
         General_path_element_t **ret_path,
         size_t &sequence) const {
-    int i=0;
-    for (const auto step : path) {
+    for (unsigned int i = 0; i < path.size(); i++) {
         (*ret_path)[sequence].seq = i;
         (*ret_path)[sequence].start_id = start_id();
         (*ret_path)[sequence].end_id = start_id();
-        (*ret_path)[sequence].node = step.node;
-        (*ret_path)[sequence].edge = step.edge;
-        (*ret_path)[sequence].cost = step.cost;
-        (*ret_path)[sequence].agg_cost = step.agg_cost;
+        (*ret_path)[sequence].node = path[i].node;
+        (*ret_path)[sequence].edge = path[i].edge;
+        (*ret_path)[sequence].cost = path[i].cost;
+        (*ret_path)[sequence].agg_cost = path[i].agg_cost;
         sequence++;
-        ++i;
     }
 }
 
@@ -255,19 +255,17 @@ void Path::get_pg_dd_path(
 void Path::get_pg_ksp_path(
         General_path_element_t **ret_path,
         size_t &sequence, int routeId) const {
-    int i = 0;
-    for (const auto step : path) {
+    for (unsigned int i = 0; i < path.size(); i++) {
         (*ret_path)[sequence].seq = i + 1;
         (*ret_path)[sequence].start_id = routeId;
         (*ret_path)[sequence].end_id = end_id();
-        (*ret_path)[sequence].node = step.node;
-        (*ret_path)[sequence].edge = step.edge;
-        (*ret_path)[sequence].cost = step.cost;
+        (*ret_path)[sequence].node = path[i].node;
+        (*ret_path)[sequence].edge = path[i].edge;
+        (*ret_path)[sequence].cost = path[i].cost;
         (*ret_path)[sequence].agg_cost = (i == 0)?
             0 :
-            (*ret_path)[sequence-1].agg_cost +  path[static_cast<size_t>(i-1)].cost;
+            (*ret_path)[sequence-1].agg_cost +  path[i-1].cost;
         sequence++;
-        ++i;
     }
 }
 
@@ -275,17 +273,15 @@ void Path::get_pg_ksp_path(
 void Path::get_pg_turn_restricted_path(
         General_path_element_t **ret_path,
         size_t &sequence, int routeId) const {
-    int i = 0;
-    for (const auto step : path) {
+    for (unsigned int i = 0; i < path.size(); i++) {
         (*ret_path)[sequence].seq = i + 1;
         (*ret_path)[sequence].start_id = routeId;
         (*ret_path)[sequence].end_id = end_id();
-        (*ret_path)[sequence].node = step.node;
-        (*ret_path)[sequence].edge = step.edge;
-        (*ret_path)[sequence].cost = step.cost;
-        (*ret_path)[sequence].agg_cost = step.agg_cost;
+        (*ret_path)[sequence].node = path[i].node;
+        (*ret_path)[sequence].edge = path[i].edge;
+        (*ret_path)[sequence].cost = path[i].cost;
+        (*ret_path)[sequence].agg_cost = path[i].agg_cost;
         sequence++;
-        ++i;
     }
 }
 
