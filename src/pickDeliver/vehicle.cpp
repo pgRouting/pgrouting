@@ -138,7 +138,7 @@ Vehicle::get_postgres_result(
     /* postgres numbering starts with 1 */
     int stop_seq(1);
     msg.log << "getting solution: " << tau() << "\n";
-    for (const auto p_stop : m_path) {
+    for (const auto &p_stop : m_path) {
         General_vehicle_orders_t data = {
             vid,
             id(),
@@ -175,7 +175,7 @@ Vehicle::insert(POS at, Vehicle_node node) {
     invariant();
     pgassert(at <= m_path.size());
 
-    m_path.insert(m_path.begin() + at, node);
+    m_path.insert(m_path.begin() + static_cast<difference_type>(at), node);
     evaluate(at);
 
     pgassert(at < m_path.size());
@@ -319,7 +319,7 @@ Vehicle::erase(POS at) {
     pgassert(!m_path[at].is_start());
     pgassert(!m_path[at].is_end());
 
-    m_path.erase(m_path.begin() + at);
+    m_path.erase(m_path.begin() + static_cast<difference_type>(at));
     evaluate(at);
 
     invariant();
@@ -369,7 +369,7 @@ Vehicle::evaluate(POS from) {
     pgassert(from < m_path.size());
 
 
-    auto node = m_path.begin() + from;
+    auto node = m_path.begin() + static_cast<difference_type>(from);
 
     while (node != m_path.end()) {
         if (node == m_path.begin()) {
@@ -546,6 +546,7 @@ Vehicle::Vehicle(
 #endif
     }
 
+#if 0
 Vehicle::Vehicle(const Vehicle &v) :
     Identifier(v.idx(), v.id()),
     PD_problem(),
@@ -560,6 +561,7 @@ Vehicle::Vehicle(const Vehicle &v) :
         EXITING();
 #endif
 }
+#endif
 
 
 
@@ -569,7 +571,7 @@ Vehicle::tau() const {
     std::ostringstream log;
     log << "Truck " << id() << "(" << idx() << ")"
         << " (";
-    for (const auto p_stop : m_path) {
+    for (const auto &p_stop : m_path) {
         if (!(p_stop == m_path.front()))
             log << ", ";
         log << p_stop.id();

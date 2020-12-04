@@ -86,7 +86,7 @@ do_pgr_pickDeliverEuclidean(
                 orders,
                 vehicles,
                 factor,
-                max_cycles,
+                static_cast<size_t>(max_cycles),
                 initial_solution_id);
 
         err << pd_problem.msg.get_error();
