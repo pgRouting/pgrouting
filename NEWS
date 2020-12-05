@@ -21,6 +21,8 @@ pgRouting 3.2.0 Release Notes
 
 * pgr_aStar(Combinations)
 * pgr_aStarCost(Combinations)
+* pgr_bdAstar(Combinations)
+* pgr_bdAstarCost(Combinations)
 * pgr_withPoints(Combinations)
 * pgr_withPointsCost(Combinations)
 
