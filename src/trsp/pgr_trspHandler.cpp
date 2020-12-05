@@ -94,6 +94,7 @@ void Pgr_trspHandler::clear() {
 // -------------------------------------------------------------------------
 double Pgr_trspHandler::construct_path(int64_t ed_id, Position pos) {
     pgassert(pos != ILLEGAL);
+    if (pos == ILLEGAL) return (std::numeric_limits<double>::max)();
 
     if (m_parent[static_cast<size_t>(ed_id)].isIllegal(pos)) {
         Path_t pelement;
@@ -112,8 +113,8 @@ double Pgr_trspHandler::construct_path(int64_t ed_id, Position pos) {
         return pelement.cost;
     }
 
-    double ret = construct_path(m_parent[static_cast<size_t>(ed_id)].e_idx[pos],
-        m_parent[static_cast<size_t>(ed_id)].v_pos[pos]);
+    double ret = construct_path(static_cast<int64_t>(m_parent[static_cast<size_t>(ed_id)].e_idx[static_cast<size_t>(pos)]),
+        static_cast<Position>(m_parent[static_cast<size_t>(ed_id)].v_pos[static_cast<size_t>(pos)]));
     Path_t pelement;
     auto cur_edge = &m_edges[static_cast<size_t>(ed_id)];
     if (pos == RC_EDGE) {
