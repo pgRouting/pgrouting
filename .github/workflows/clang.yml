@@ -18,7 +18,6 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          #TODO test with more versions currently is what developer has
           psql: [12]
           postgis: [3]
           os: [ubuntu-latest]
@@ -71,6 +70,6 @@ jobs:
       - name: Test
         run: |
           echo "test pending"
-          #sudo service postgresql start
-          #sudo -u postgres createdb -p ${PGPORT}  ___pgr___test___
-          #sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres ${PGPORT}  Release
+          sudo service postgresql start
+          sudo -u postgres createdb -p ${PGPORT}  ___pgr___test___
+          sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres ${PGPORT}  Debug
