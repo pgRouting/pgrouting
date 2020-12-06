@@ -48,6 +48,9 @@ language plpgsql;
 -- test pgr_bdDijkstra
 select * from foo('SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM pgr_bdDijkstra');
 
+-- test pgr_bdDijkstraCost
+select * from foo('SELECT start_vid, end_vid, agg_cost FROM pgr_bdDijkstraCost');
+
 -- Finish the tests and clean up.
 SELECT * FROM finish();
 ROLLBACK;
