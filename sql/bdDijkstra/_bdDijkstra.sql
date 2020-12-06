@@ -53,7 +53,31 @@ RETURNS SETOF RECORD AS
 LANGUAGE c VOLATILE STRICT;
 
 
+--v3.2
+CREATE FUNCTION _pgr_bdDijkstra(
+    TEXT,     -- edges_sql (required)
+    TEXT,     -- combinations_sql (required)
+
+    directed BOOLEAN,
+    only_cost BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE c VOLATILE STRICT;
+
+
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_bdDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_bdDijkstra(TEXT, TEXT, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
