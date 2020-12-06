@@ -134,6 +134,33 @@ LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
+-- COMBINATIONS
+--v3.2
+CREATE FUNCTION pgr_bdDijkstra(
+    TEXT,     -- edges_sql (required)
+    TEXT,     -- combinations_sql (required)
+
+    directed BOOLEAN DEFAULT TRUE,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_bdDijkstra(_pgr_get_statement($1), _pgr_get_statement($2), directed, false) as a;
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, BIGINT, BOOLEAN)
@@ -178,6 +205,17 @@ IS 'pgr_bdDijkstra(Many to Many)
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From ARRAY[vertices identifiers]
   - To ARRAY[vertices identifiers]
+- Optional Parameters
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+';
+
+COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, TEXT, BOOLEAN)
+IS 'pgr_bdDijkstra(Combinations)
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Combinations SQL with columns: source, target
 - Optional Parameters
   - directed := true
 - Documentation:
