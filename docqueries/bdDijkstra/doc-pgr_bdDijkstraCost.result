@@ -56,5 +56,15 @@ SELECT * FROM pgr_bdDijkstraCost(
 (4 rows)
 
 -- q6
+SELECT * FROM pgr_bdDijkstraCost(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT * FROM ( VALUES (2, 3), (7, 11) ) AS t(source, target)');
+ start_vid | end_vid | agg_cost
+-----------+---------+----------
+         2 |       3 |        5
+         7 |      11 |        4
+(2 rows)
+
+-- q7
 ROLLBACK;
 ROLLBACK
