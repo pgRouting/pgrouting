@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(6);
+SELECT plan(7);
 
 create or REPLACE FUNCTION foo( TestFunction TEXT, sql_EdgesQuery TEXT )
 RETURNS SETOF TEXT AS
@@ -61,6 +61,12 @@ select * from foo(
 -- test pgr_maxFlowMinCost
 select * from foo(
     'pgr_maxFlowMinCost',
+    'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table'
+);
+
+-- test pgr_maxFlowMinCost_Cost
+select * from foo(
+    'pgr_maxFlowMinCost_Cost',
     'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table'
 );
 
