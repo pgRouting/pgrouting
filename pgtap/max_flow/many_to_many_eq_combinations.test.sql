@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(34);
+SELECT plan(51);
 
 create or REPLACE FUNCTION foo( TestFunction TEXT, sql_EdgesQuery TEXT, cant INTEGER default 18 )
 RETURNS SETOF TEXT AS
@@ -60,6 +60,12 @@ select * from foo(
 -- test pgr_boykovKolmogorov
 select * from foo(
     'pgr_boykovKolmogorov',
+    'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
+);
+
+-- test pgr_edmondsKarp
+select * from foo(
+    'pgr_edmondsKarp',
     'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
 );
 
