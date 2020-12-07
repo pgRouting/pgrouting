@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/pgr_flow_t.h"
+#include "c_types/pgr_combination_t.h"
 #include "c_types/pgr_costFlow_t.h"
 
 #ifdef __cplusplus
@@ -56,6 +57,8 @@ extern "C" {
         do_pgr_minCostMaxFlow(
                 pgr_costFlow_t  *data_edges,
                 size_t total_edges,
+                pgr_combination_t  *combinations,
+                size_t total_combinations,
                 int64_t* source_vertices,
                 size_t size_source_verticesArr,
                 int64_t* sink_vertices,
