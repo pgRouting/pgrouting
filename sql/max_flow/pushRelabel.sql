@@ -113,6 +113,26 @@ CREATE FUNCTION pgr_pushRelabel(
   LANGUAGE sql VOLATILE STRICT;
 
 
+-- COMBINATIONS
+--v3.2
+CREATE FUNCTION pgr_pushRelabel(
+    TEXT, -- edges_sql (required)
+    TEXT, -- combinations_sql (required)
+
+    OUT seq INTEGER,
+    OUT edge BIGINT,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT)
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), _pgr_get_statement($2), 1);
+  $BODY$
+  LANGUAGE sql VOLATILE STRICT;
+
+
 -- COMMENTS
 
 
@@ -159,6 +179,16 @@ IS 'pgr_pushRelabel(Many to Many)
   - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
   - From ARRAY[vertices identifiers]
   - To ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+';
+
+COMMENT ON FUNCTION pgr_pushRelabel(TEXT, TEXT)
+IS 'pgr_pushRelabel(Combinations)
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - Combinations SQL with columns: source, target
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
 ';
