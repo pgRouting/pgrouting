@@ -59,9 +59,28 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c IMMUTABLE STRICT;
 
+--v3.2
+CREATE FUNCTION _pgr_maxFlowMinCost(
+    edges_sql TEXT,
+    combinations_sql TEXT,
+    only_cost BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT edge BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE c IMMUTABLE STRICT;
+
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_maxFlowMinCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgRouting internal function';
 
-
+COMMENT ON FUNCTION _pgr_maxFlowMinCost(TEXT, TEXT, BOOLEAN)
+IS 'pgRouting internal function';

@@ -52,7 +52,7 @@ $BODY$
     SELECT *
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 --    ONE TO MANY
@@ -75,7 +75,7 @@ $BODY$
     SELECT *
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := false);
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 --    MANY TO ONE
@@ -98,7 +98,7 @@ $BODY$
     SELECT *
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := false);
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
 
 --    MANY TO MANY
 --v3.0
@@ -120,7 +120,29 @@ $BODY$
     SELECT *
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], only_cost := false);
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
+
+
+-- COMBINATIONS
+--v3.0
+CREATE FUNCTION pgr_maxFlowMinCost(
+    TEXT,   -- edges_sql (required)
+    TEXT,   -- combinations_sql (required)
+
+    OUT seq INTEGER,
+    OUT edge BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), _pgr_get_statement($2), only_cost := false);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
 
 
 -- COMMENTS
@@ -165,6 +187,16 @@ IS 'EXPERIMENTAL pgr_maxFlowMinCost(Many to Many)
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From ARRAY[vertices identifiers]
   - To ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_maxFlowMinCost.html
+';
+
+COMMENT ON FUNCTION pgr_maxFlowMinCost(TEXT, TEXT)
+IS 'EXPERIMENTAL pgr_maxFlowMinCost(Combinations)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Combinations SQL with columns: source, target
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_maxFlowMinCost.html
 ';
