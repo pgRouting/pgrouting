@@ -169,7 +169,7 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
     void insert_vertex(
             int64_t original_vertex_id,
             int64_t original_edge_id) {
-        int64_t new_id = static_cast<int64_t>(this->num_vertices() + 1);
+        auto new_id = static_cast<int64_t>(this->num_vertices() + 1);
         m_transformation_map[new_id] =
             std::pair<int64_t, int64_t>(original_vertex_id, original_edge_id);
         m_vertex_map[std::pair<int64_t, int64_t>(original_vertex_id,

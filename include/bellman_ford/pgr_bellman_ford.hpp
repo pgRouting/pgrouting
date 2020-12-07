@@ -186,8 +186,8 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
      //! Call to BellmanFord  1 source to 1 target
      bool bellman_ford_1_to_1(
                  G &graph,
-                 V source,
-                 V /*target*/) {
+                 V source
+                 ) {
          log << std::string(__FUNCTION__) << "\n";
          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
