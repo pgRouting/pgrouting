@@ -1,7 +1,7 @@
 \i setup.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(656);
+SELECT plan(658);
 
 
 SELECT has_function('pgr_edgedisjointpaths',
@@ -12,6 +12,8 @@ SELECT has_function('pgr_edgedisjointpaths',
     ARRAY['text', 'anyarray', 'bigint', 'boolean']);
 SELECT has_function('pgr_edgedisjointpaths',
     ARRAY['text', 'anyarray', 'anyarray', 'boolean']);
+SELECT has_function('pgr_edgedisjointpaths',
+    ARRAY['text', 'text', 'boolean']);
 
 SELECT function_returns('pgr_edgedisjointpaths',
     ARRAY['text', 'bigint', 'bigint', 'boolean'],
@@ -24,6 +26,9 @@ SELECT function_returns('pgr_edgedisjointpaths',
     'setof record');
 SELECT function_returns('pgr_edgedisjointpaths',
     ARRAY['text', 'anyarray', 'anyarray', 'boolean'],
+    'setof record');
+SELECT function_returns('pgr_edgedisjointpaths',
+    ARRAY['text', 'text', 'boolean'],
     'setof record');
 
 
