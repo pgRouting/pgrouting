@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(85);
+SELECT plan(102);
 
 create or REPLACE FUNCTION foo( TestFunction TEXT, sql_EdgesQuery TEXT, cant INTEGER default 18 )
 RETURNS SETOF TEXT AS
@@ -79,6 +79,12 @@ select * from foo(
 select * from foo(
     'pgr_edgeDisjointPaths',
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
+);
+
+-- test pgr_maxFlowMinCost
+select * from foo(
+    'pgr_maxFlowMinCost',
+    'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table'
 );
 
 -- Finish the tests and clean up.

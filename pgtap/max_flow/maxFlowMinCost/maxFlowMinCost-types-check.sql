@@ -19,7 +19,8 @@ SELECT function_returns('pgr_maxflowmincost', ARRAY['text', 'anyarray', 'anyarra
 SELECT set_eq(
     $$SELECT proargnames from pg_proc where proname = 'pgr_maxflowmincost'$$,
     $$VALUES
-        ('{"","","", "seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[])
+        ('{"","","", "seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[]),
+        ('{"","", "seq", "edge", "source", "target", "flow", "residual_capacity", "cost", "agg_cost"}'::TEXT[])
     $$
 );
 
