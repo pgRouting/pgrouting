@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void
 do_pgr_max_flow(
         pgr_edge_t *data_edges, size_t total_edges,
+        pgr_combination_t *combinations, size_t total_combinations,
         int64_t *source_vertices, size_t size_source_verticesArr,
         int64_t *sink_vertices, size_t size_sink_verticesArr,
         int algorithm,
@@ -57,14 +58,24 @@ do_pgr_max_flow(
 
     try {
         pgassert(data_edges);
-        pgassert(source_vertices);
-        pgassert(sink_vertices);
 
         std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
         std::set<int64_t> sources(
                 source_vertices, source_vertices + size_source_verticesArr);
         std::set<int64_t> targets(
                 sink_vertices, sink_vertices + size_sink_verticesArr);
+        std::vector< pgr_combination_t > combinations_vector(
+                combinations, combinations + total_combinations);
+
+        if (!combinations_vector.empty()) {
+            pgassert(sources.empty());
+            pgassert(targets.empty());
+
+            for (const pgr_combination_t &comb : combinations_vector) {
+                sources.insert(comb.source);
+                targets.insert(comb.target);
+            }
+        }
 
         std::set<int64_t> vertices(sources);
         vertices.insert(targets.begin(), targets.end());
