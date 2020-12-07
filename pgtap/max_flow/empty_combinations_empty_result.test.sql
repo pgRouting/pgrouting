@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(4);
+SELECT plan(5);
 
 create or REPLACE FUNCTION foo( TestFunction TEXT, sql_EdgesQuery TEXT )
 RETURNS SETOF TEXT AS
@@ -50,6 +50,12 @@ select * from foo(
 select * from foo(
     'pgr_pushRelabel',
     'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
+);
+
+-- test pgr_edgeDisjointPaths
+select * from foo(
+    'pgr_edgeDisjointPaths',
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
 
 -- Finish the tests and clean up.
