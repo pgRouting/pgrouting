@@ -85,6 +85,19 @@ CREATE FUNCTION pgr_maxFlow(
   LANGUAGE sql VOLATILE STRICT;
 
 
+-- COMBINATIONS
+--v3.2
+CREATE FUNCTION pgr_maxFlow(
+    TEXT, -- edges_sql (required)
+    TEXT) -- combinations_sql (required)
+  RETURNS BIGINT AS
+  $BODY$
+        SELECT flow
+        FROM _pgr_maxflow(_pgr_get_statement($1), _pgr_get_statement($2), algorithm := 1, only_flow := true);
+  $BODY$
+  LANGUAGE sql VOLATILE STRICT;
+
+
 -- COMMENTS
 
 
@@ -128,6 +141,16 @@ IS 'pgr_maxFlow(Many to Many)
   - edges SQL with columns: id, source, target, capacity [,reverse_capacity]
   - from ARRAY[vertices identifiers]
   - to ARRAY[vertices identifiers]
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_maxFlow.html
+';
+
+COMMENT ON FUNCTION pgr_maxFlow(TEXT, TEXT)
+IS 'pgr_maxFlow(Combinations)
+- Directed graph
+- Parameters:
+  - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+  - Combinations SQL with columns: source, target
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_maxFlow.html
 ';
