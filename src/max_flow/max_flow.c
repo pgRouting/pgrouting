@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
+#include "c_common/combinations_input.h"
 #include "drivers/max_flow/max_flow_driver.h"
 
 PGDLLEXPORT Datum
@@ -47,6 +48,7 @@ static
 void
 process(
         char *edges_sql,
+        char *combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
         int algorithm,
@@ -59,24 +61,33 @@ process(
 
     pgr_SPI_connect();
 
+    int64_t *source_vertices = NULL;
     size_t size_source_verticesArr = 0;
-    int64_t* source_vertices =
-        pgr_get_bigIntArray(&size_source_verticesArr, starts);
 
+    int64_t *sink_vertices = NULL;
     size_t size_sink_verticesArr = 0;
-    int64_t* sink_vertices =
-        pgr_get_bigIntArray(&size_sink_verticesArr, ends);
 
     pgr_edge_t *edges = NULL;
-
     size_t total_edges = 0;
+
+    pgr_combination_t *combinations = NULL;
+    size_t total_combinations = 0;
+
+    if (starts && ends) {
+        source_vertices = (int64_t*)
+            pgr_get_bigIntArray(&size_source_verticesArr, starts);
+        sink_vertices = (int64_t*)
+            pgr_get_bigIntArray(&size_sink_verticesArr, ends);
+    } else if (combinations_sql) {
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+    }
 
     /* NOTE:
      * For flow, cost and reverse_cost are really capacity and reverse_capacity
      */
     pgr_get_flow_edges(edges_sql, &edges, &total_edges);
 
-    if (total_edges == 0) {
+    if (total_edges == 0 || (combinations_sql && total_combinations == 0)) {
         if (source_vertices) pfree(source_vertices);
         if (sink_vertices) pfree(sink_vertices);
         pgr_SPI_finish();
@@ -92,6 +103,7 @@ process(
 
     do_pgr_max_flow(
             edges, total_edges,
+            combinations, total_combinations,
             source_vertices, size_source_verticesArr,
             sink_vertices, size_sink_verticesArr,
             algorithm,
@@ -157,14 +169,34 @@ _pgr_maxflow(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
 
-        process(
+        if (PG_NARGS() == 5) {
+            /*
+             * many to many
+             */
+            process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                NULL,
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_INT32(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
+
+        } else if (PG_NARGS() == 4) {
+            /*
+             * combinations
+             */
+            process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                NULL,
+                NULL,
+                PG_GETARG_INT32(2),
+                PG_GETARG_BOOL(3),
+                &result_tuples,
+                &result_count);
+        }
 
         /*                                                                    */
         /**********************************************************************/
