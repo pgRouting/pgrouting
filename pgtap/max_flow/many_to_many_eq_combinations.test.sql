@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(17);
+SELECT plan(34);
 
 create or REPLACE FUNCTION foo( TestFunction TEXT, sql_EdgesQuery TEXT, cant INTEGER default 18 )
 RETURNS SETOF TEXT AS
@@ -54,6 +54,12 @@ language plpgsql;
 -- test pgr_maxFlow
 select * from foo(
     'pgr_maxFlow',
+    'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
+);
+
+-- test pgr_boykovKolmogorov
+select * from foo(
+    'pgr_boykovKolmogorov',
     'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
 );
 
