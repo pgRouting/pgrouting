@@ -51,8 +51,30 @@ CREATE FUNCTION _pgr_maxflow(
  'MODULE_PATHNAME'
     LANGUAGE c VOLATILE STRICT;
 
+
+--v3.2
+CREATE FUNCTION _pgr_maxflow(
+    edges_sql TEXT,
+    combinations_sql TEXT,
+
+    algorithm INTEGER DEFAULT 1,
+    only_flow BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+ 'MODULE_PATHNAME'
+    LANGUAGE c VOLATILE STRICT;
+
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_maxflow(TEXT, ANYARRAY, ANYARRAY, INTEGER, BOOLEAN)
 IS 'pgRouting internal function';
 
+COMMENT ON FUNCTION _pgr_maxflow(TEXT, TEXT, INTEGER, BOOLEAN)
+IS 'pgRouting internal function';
