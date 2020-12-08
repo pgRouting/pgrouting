@@ -131,10 +131,10 @@ std::ostream& operator<<(std::ostream &log, const Path &path) {
 }
 
 size_t Path::countInfinityCost() const {
-    return std::count_if(path.begin(), path.end(),
+    return static_cast<size_t>(std::count_if(path.begin(), path.end(),
             [](Path_t const&p) -> size_t {
             return std::isinf(p.agg_cost);
-            });
+            }));
 }
 
 
@@ -240,7 +240,7 @@ void Path::get_pg_dd_path(
         General_path_element_t **ret_path,
         size_t &sequence) const {
     for (unsigned int i = 0; i < path.size(); i++) {
-        (*ret_path)[sequence].seq = i;
+        (*ret_path)[sequence].seq = static_cast<int>(i);
         (*ret_path)[sequence].start_id = start_id();
         (*ret_path)[sequence].end_id = start_id();
         (*ret_path)[sequence].node = path[i].node;
@@ -256,7 +256,7 @@ void Path::get_pg_ksp_path(
         General_path_element_t **ret_path,
         size_t &sequence, int routeId) const {
     for (unsigned int i = 0; i < path.size(); i++) {
-        (*ret_path)[sequence].seq = i + 1;
+        (*ret_path)[sequence].seq = static_cast<int>(i + 1);
         (*ret_path)[sequence].start_id = routeId;
         (*ret_path)[sequence].end_id = end_id();
         (*ret_path)[sequence].node = path[i].node;
@@ -274,7 +274,7 @@ void Path::get_pg_turn_restricted_path(
         General_path_element_t **ret_path,
         size_t &sequence, int routeId) const {
     for (unsigned int i = 0; i < path.size(); i++) {
-        (*ret_path)[sequence].seq = i + 1;
+        (*ret_path)[sequence].seq = static_cast<int>(i + 1);
         (*ret_path)[sequence].start_id = routeId;
         (*ret_path)[sequence].end_id = end_id();
         (*ret_path)[sequence].node = path[i].node;

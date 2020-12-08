@@ -103,7 +103,7 @@ class PgrFlowGraph {
                  graph,
                  supersource,
                  supersink);
-         return get_edge_disjoint_paths(flow);
+         return get_edge_disjoint_paths(static_cast<size_t>(flow));
      }
 
      PgrFlowGraph(
@@ -122,7 +122,7 @@ class PgrFlowGraph {
      std::vector<pgr_flow_t> get_flow_edges() const;
 
      std::vector<General_path_element_t> get_edge_disjoint_paths(
-             int64_t flow);
+             size_t flow);
 
  private:
      V get_boost_vertex(int64_t id) const {
@@ -152,7 +152,7 @@ class PgrFlowGraph {
 
      void flow_dfs(
              V vertex,
-             int64_t path_id,
+             size_t path_id,
              std::vector<std::vector<int64_t> > &paths);
 
      /*
