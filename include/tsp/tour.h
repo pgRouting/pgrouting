@@ -40,6 +40,7 @@ namespace tsp {
 
 
 class Tour {
+    using difference_type = std::vector<size_t>::difference_type;
  public:
      Tour(const Tour &) = default;
 

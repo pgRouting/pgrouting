@@ -150,7 +150,7 @@ Pgr_pickDeliver::get_postgres_result() const {
 
 
 #ifndef NDEBUG
-    for (const auto sol : solutions) {
+    for (const auto &sol : solutions) {
         msg.log << sol.tau();
     }
 #endif
@@ -303,7 +303,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
 
 #ifndef NDEBUG
-        for (const auto t : m_trucks) {
+        for (const auto &t : m_trucks) {
             msg.log << t << "\n";
         }
         for (const auto &o : m_orders) {

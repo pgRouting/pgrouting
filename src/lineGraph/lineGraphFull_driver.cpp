@@ -45,9 +45,7 @@ void get_turn_penalty_postgres_result(
         std::vector< Line_graph_full_rt > edge_result,
         Line_graph_full_rt **return_tuples,
         size_t &sequence) {
-    (*return_tuples) = pgr_alloc(
-            static_cast<int>(edge_result.size()),
-            (*return_tuples));
+    (*return_tuples) = pgr_alloc(edge_result.size(), (*return_tuples));
 
     for (const auto &edge : edge_result) {
         (*return_tuples)[sequence] =

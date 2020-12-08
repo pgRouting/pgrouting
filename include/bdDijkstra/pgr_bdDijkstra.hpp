@@ -84,9 +84,6 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
          v_source = start_vertex;
          v_target = end_vertex;
 
-         if (v_source == v_target) {
-            return Path(v_source, v_target);
-         }
          return bidirectional(only_cost);
      }
 

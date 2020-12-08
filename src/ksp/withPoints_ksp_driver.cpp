@@ -114,7 +114,7 @@ do_pgr_withPointsKsp(
         vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
 
         log << "extracted vertices: ";
-        for (const auto v : vertices) {
+        for (const auto& v : vertices) {
             log << v.id << ", ";
         }
         log << "\n";

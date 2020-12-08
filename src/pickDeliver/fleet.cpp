@@ -83,7 +83,7 @@ Fleet::get_truck(size_t order) {
 #endif
     auto idx = un_used.front();
 
-    for (const auto i : un_used) {
+    for (const auto &i : un_used) {
         if (m_trucks[i].feasable_orders().has(order)) {
             idx = i;
             msg.log << "getting idx" << idx << "\n";
@@ -151,7 +151,7 @@ Fleet::add_vehicle(
     for (int i = 0; i < vehicle.cant_v; ++i) {
         m_trucks.push_back(Vehicle_pickDeliver(
                     m_trucks.size(),
-                    vehicle.id,
+                    static_cast<size_t>(vehicle.id),
                     starting_site,
                     ending_site,
                     vehicle.capacity,
@@ -353,7 +353,7 @@ Fleet::is_fleet_ok() const {
  */
 bool
 Fleet::is_order_ok(const Order &order) const {
-    for (const auto truck : m_trucks) {
+    for (const auto &truck : m_trucks) {
         if (!order.is_valid(truck.speed())) continue;
         if (truck.is_order_feasable(order)) {
             return true;
@@ -382,7 +382,7 @@ Fleet::set_compatibles(const PD_Orders &orders) {
 std::ostream&
 operator << (std::ostream &log, const Fleet &f) {
     log << "fleet\n";
-    for (const auto v : f.m_trucks) {
+    for (const auto &v : f.m_trucks) {
         log << v;
     }
     log << "end fleet\n";

@@ -77,7 +77,6 @@ Pg_points_graph::Pg_points_graph(
     m_points(p_points),
     m_o_points(p_points),
     m_edges_of_points(p_edges_of_points),
-    m_normal(p_normal),
     m_driving_side(p_driving_side),
     m_directed(p_directed) {
     if (!p_normal) {

@@ -92,7 +92,6 @@ class Pg_points_graph : public Pgr_messages {
      std::vector<Point_on_edge_t> m_o_points;
      std::vector<pgr_edge_t>      m_edges_of_points;
      std::vector<pgr_edge_t>      m_new_edges;
-     bool m_normal;
      char m_driving_side;
      bool m_directed;
 };

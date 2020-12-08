@@ -169,15 +169,16 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
     void insert_vertex(
             int64_t original_vertex_id,
             int64_t original_edge_id) {
-        m_transformation_map[this->num_vertices() + 1] =
+        auto new_id = static_cast<int64_t>(this->num_vertices() + 1);
+        m_transformation_map[new_id] =
             std::pair<int64_t, int64_t>(original_vertex_id, original_edge_id);
         m_vertex_map[std::pair<int64_t, int64_t>(original_vertex_id,
                                                  original_edge_id)] =
-            this->num_vertices() + 1;
+            new_id;
         auto v =  add_vertex(this->graph);
         this->graph[v].cp_members(original_vertex_id, original_edge_id);
-        this->graph[v].vertex_id = this->num_vertices();
-        this->vertices_map[this->num_vertices()] = v;
+        this->graph[v].vertex_id = new_id;
+        this->vertices_map[new_id] = v;
     }
 
     void store_edge_costs(
