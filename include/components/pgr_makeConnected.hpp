@@ -57,13 +57,13 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
 
  private:
       std::vector< pgr_makeConnected_t > generatemakeConnected(G &graph ) {
-      std::vector< int >component(boost::num_vertices(graph.graph));
-      size_t comp = boost::connected_components(graph.graph, &component[0]);
+      std::vector<size_t> component(boost::num_vertices(graph.graph));
+      auto comp = boost::connected_components(graph.graph, &component[0]);
       comp--;
-      int64_t edgeCount = boost::num_edges(graph.graph);
-      int64_t newEdge = 0;
+      auto edgeCount = boost::num_edges(graph.graph);
+      size_t newEdge = 0;
       log << "Number of Components before: " << boost::connected_components(graph.graph, &component[0]) << "\n";
-      int64_t i = 0;
+      size_t i = 0;
 
       /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
       CHECK_FOR_INTERRUPTS();
