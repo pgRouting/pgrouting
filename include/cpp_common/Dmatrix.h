@@ -113,7 +113,7 @@ class Dmatrix {
             std::ostream &log,
             const Dmatrix &matrix);
 
-    double empty() const {
+    bool empty() const {
         return ids.empty();
     }
 

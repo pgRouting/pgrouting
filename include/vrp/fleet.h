@@ -119,7 +119,7 @@ class Fleet : public PD_problem {
                      vehicle.start_node_id,
                      vehicle.start_x,
                      vehicle.start_y));
-         return std::move(b_start);
+         return b_start;
      }
 
      template <typename T> std::unique_ptr<Base_node> create_b_end(
@@ -130,7 +130,7 @@ class Fleet : public PD_problem {
                      vehicle.end_node_id,
                      vehicle.end_x,
                      vehicle.end_y));
-         return std::move(b_end);
+         return b_end;
      }
 };
 

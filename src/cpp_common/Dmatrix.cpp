@@ -91,7 +91,7 @@ Dmatrix::has_id(int64_t id) const {
 size_t
 Dmatrix::get_index(int64_t id) const {
     auto pos = std::lower_bound(ids.begin(), ids.end(), id);
-    return pos - ids.begin();
+    return static_cast<size_t>(pos - ids.begin());
 }
 
 int64_t
@@ -180,7 +180,7 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
     }
     log << "\n";
     size_t i = 0;
-    for (const auto row : matrix.costs) {
+    for (const auto &row : matrix.costs) {
         size_t j = 0;
         for (const auto cost : row) {
             log << "Internal(" << i << "," << j << ")"

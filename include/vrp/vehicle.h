@@ -72,6 +72,7 @@ namespace vrp {
 class Vehicle : public Identifier, public PD_problem {
  protected:
      typedef size_t POS;
+     using difference_type = std::deque<Vehicle_node>::difference_type;
      std::deque< Vehicle_node > m_path;
 
  private:
@@ -87,7 +88,7 @@ class Vehicle : public Identifier, public PD_problem {
      std::vector<General_vehicle_orders_t>
            get_postgres_result(int vid) const;
 
-     Vehicle(const Vehicle &);
+     Vehicle(const Vehicle &) = default;
      Vehicle(
              size_t idx,
              int64_t kind,

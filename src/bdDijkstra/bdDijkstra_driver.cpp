@@ -71,6 +71,17 @@ pgr_bdDijkstra(
     std::deque<Path> paths;
     for (const auto source : sources) {
         for (const auto target : targets) {
+            if (source == target) {
+                paths.push_back(Path(source, target));
+                continue;
+            }
+
+            if (!graph.has_vertex(source)
+                    || !graph.has_vertex(target)) {
+                paths.push_back(Path(source, target));
+                continue;
+            }
+
             fn_bdDijkstra.clear();
             paths.push_back(fn_bdDijkstra.pgr_bdDijkstra(
                         graph.get_V(source), graph.get_V(target), only_cost));

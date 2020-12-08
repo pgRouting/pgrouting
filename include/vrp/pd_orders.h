@@ -101,7 +101,7 @@ class PD_Orders : public PD_problem {
                      order.pick_node_id,
                      order.pick_x,
                      order.pick_y));
-         return std::move(b_pick);
+         return b_pick;
      }
 
      template <typename T> std::unique_ptr<Base_node> create_b_deliver(
@@ -112,7 +112,7 @@ class PD_Orders : public PD_problem {
                      order.deliver_node_id,
                      order.deliver_x,
                      order.deliver_y));
-         return std::move(b_drop);
+         return b_drop;
      }
 
  private:

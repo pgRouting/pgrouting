@@ -45,7 +45,7 @@ class Swap_info {
     friend class Swap_bk;
 
  public:
-    Swap_info() = default;
+    Swap_info() = delete;
     Swap_info(const Swap_info &) = default;
     Swap_info(const Vehicle_pickDeliver &from,
             const Vehicle_pickDeliver &to,

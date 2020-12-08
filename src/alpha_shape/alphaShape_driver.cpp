@@ -90,12 +90,12 @@ do_alphaShape(
         */
 
         std::sort(edges.begin(), edges.end(),
-                [&round](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
+                [&](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
             return
                 std::floor(lhs.y1 *  static_cast<double>(round)) < std::floor(rhs.y1 *  static_cast<double>(round));
         });
         std::stable_sort(edges.begin(), edges.end(),
-                [&round](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
+                [&](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
             return
                 std::floor(lhs.x1 *  static_cast<double>(round)) < std::floor(rhs.x1 *  static_cast<double>(round));
         });
@@ -173,7 +173,7 @@ do_alphaShape(
             *return_count = results.size();
             *return_tuples = pgr_alloc(*return_count, (*return_tuples));
             size_t row = 0;
-            for (const auto r : results) {
+            for (const auto &r : results) {
                 std::stringstream ss;
                 ss << bg::wkt(r);
                 (*return_tuples)[row].geom = pgr_msg(ss.str().c_str());

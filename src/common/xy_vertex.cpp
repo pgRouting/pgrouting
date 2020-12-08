@@ -91,7 +91,7 @@ extract_vertices(
 
     vertices.reserve(data_edges.size() * 2);
 
-    for (const auto edge : data_edges) {
+    for (const auto &edge : data_edges) {
         XY_vertex v_source(edge, true);
         vertices.push_back(v_source);
 
@@ -116,7 +116,7 @@ extract_vertices(
 
 std::vector < XY_vertex >
 extract_vertices(
-    const Pgr_edge_xy_t *data_edges, int64_t count) {
+    const Pgr_edge_xy_t *data_edges, size_t count) {
     return extract_vertices(
         std::vector < Pgr_edge_xy_t >(data_edges, data_edges + count));
 }

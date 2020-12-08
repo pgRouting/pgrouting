@@ -29,6 +29,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
  * Suppress the -Wpedantic warning temporarily about the postgres file
  */
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpedantic"
+#pragma clang diagnostic ignored "-Wignored-attributes"
+#else
 #ifdef __GNUC__
 #if __GNUC__ > 5
 #pragma GCC diagnostic ignored "-Wpedantic"
@@ -36,10 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-pedantic"
 #endif
 #endif
-
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-pedantic"
 #endif
 
 #ifdef __MSVC__
@@ -51,13 +52,14 @@ extern "C" {
 #include <miscadmin.h>
 }
 
+#ifdef __clang__
+#pragma clang diagnostic pop
+#else
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
-
-#ifdef __clang__
-#pragma clang diagnostic pop
 #endif
+
 
 #ifdef __MSVC__
 #pragma warning(default : 4200)

@@ -58,19 +58,11 @@ do_pgr_maximum_cardinality_matching(
         std::vector<pgr_basic_edge_t> matched_vertices;
 
         if (directed) {
-            pgrouting::flow::PgrCardinalityGraph<
-                pgrouting::BasicDirectedGraph> G;
-            G.create_max_cardinality_graph(data_edges, total_tuples);
-            std::vector<int64_t> mate_map(boost::num_vertices(G.boost_graph));
-            G.maximum_cardinality_matching(mate_map);
-            G.get_matched_vertices(matched_vertices, mate_map);
+            pgrouting::flow::PgrCardinalityGraph<pgrouting::BasicDirectedGraph> G(data_edges, total_tuples);
+            matched_vertices = G.get_matched_vertices();
         } else {
-            pgrouting::flow::PgrCardinalityGraph<
-                pgrouting::BasicUndirectedGraph> G;
-            G.create_max_cardinality_graph(data_edges, total_tuples);
-            std::vector<int64_t> mate_map(boost::num_vertices(G.boost_graph));
-            G.maximum_cardinality_matching(mate_map);
-            G.get_matched_vertices(matched_vertices, mate_map);
+            pgrouting::flow::PgrCardinalityGraph< pgrouting::BasicUndirectedGraph> G(data_edges, total_tuples);
+            matched_vertices = G.get_matched_vertices();
         }
 
         (*return_tuples) = pgr_alloc(matched_vertices.size(), (*return_tuples));
