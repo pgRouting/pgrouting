@@ -90,7 +90,7 @@ class PgrDirectedChPPGraph {
      /** vector of vertex -> vector of edges **/
      std::vector<std::pair<int64_t, std::vector<size_t>>> resultGraph;
      std::map<int64_t, size_t> VToVecid;
-     Identifiers<int64_t> edgeVisited;
+     Identifiers<size_t> edgeVisited;
      Identifiers<int64_t> vertexVisited;
 
      std::stack<int64_t> pathStack;  // node stack

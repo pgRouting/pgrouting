@@ -163,7 +163,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
             boost::tie(e, inserted) =
                 boost::add_edge(vm_s, vm_t, this->graph);
 
-            this->graph[e].id = this->num_edges();
+            this->graph[e].id = static_cast<int64_t>(this->num_edges());
         }
 
     void create_edges(

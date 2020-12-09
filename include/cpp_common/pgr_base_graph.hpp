@@ -354,18 +354,18 @@ class Pgr_base_graph {
       *  @param count
       */
      template < typename T >
-         void insert_edges(const T *edges, int64_t count) {
+         void insert_edges(const T *edges, size_t count) {
              insert_edges(std::vector < T >(edges, edges + count));
          }
 
      template < typename T >
-         void insert_edges_neg(const T *edges, int64_t count) {
+         void insert_edges_neg(const T *edges, size_t count) {
              insert_edges(std::vector < T >(edges, edges + count), false);
          }
 
      template < typename T>
-         void insert_edges(T *edges, int64_t count, bool) {
-             for (int64_t i = 0; i < count; ++i) {
+         void insert_edges(T *edges, size_t count, bool) {
+             for (size_t i = 0; i < count; ++i) {
                  pgassert(has_vertex(edges[i].source));
                  pgassert(has_vertex(edges[i].target));
                  graph_add_edge_no_create_vertex(edges[i]);
@@ -407,7 +407,7 @@ class Pgr_base_graph {
      }
 
      template <typename T>
-     void insert_min_edges_no_parallel(const T *edges, int64_t count) {
+     void insert_min_edges_no_parallel(const T *edges, size_t count) {
          insert_edges(std::vector<T>(edges, edges + count));
      }
 
@@ -490,7 +490,9 @@ class Pgr_base_graph {
          if (!has_vertex(vertex_id)) {
              return 0;
          }
-         return out_degree(get_V(vertex_id));
+         auto v = get_V(vertex_id);
+         auto d = out_degree(v);
+         return d;
      }
      degree_size_type in_degree(int64_t vertex_id) const {
          if (!has_vertex(vertex_id)) {

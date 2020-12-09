@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2020-12-08 12:28-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,20 +183,29 @@ msgid "**Edges SQL**"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:6
+#: ../../build/doc/pgr_bdDijkstra.rst:7
 msgid "``TEXT``"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:6
-msgid "`Edges query`_ as described below"
+msgid "`Edges query` as described below"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:7
+msgid "**Combinations SQL**"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:7
+msgid "`Combinations query` as described below"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:7
-#: ../../build/doc/pgr_bdDijkstra.rst:9
+#: ../../build/doc/pgr_bdDijkstra.rst:8
+#: ../../build/doc/pgr_bdDijkstra.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:24
@@ -204,57 +213,57 @@ msgstr ""
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:7
+#: ../../build/doc/pgr_bdDijkstra.rst:8
 msgid "Identifier of the starting vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:8
+#: ../../build/doc/pgr_bdDijkstra.rst:9
 msgid "**start_vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:8
-#: ../../build/doc/pgr_bdDijkstra.rst:10
+#: ../../build/doc/pgr_bdDijkstra.rst:9
+#: ../../build/doc/pgr_bdDijkstra.rst:11
 msgid "``ARRAY[BIGINT]``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:8
+#: ../../build/doc/pgr_bdDijkstra.rst:9
 msgid "Array of identifiers of starting vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:9
+#: ../../build/doc/pgr_bdDijkstra.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:9
+#: ../../build/doc/pgr_bdDijkstra.rst:10
 msgid "Identifier of the ending vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:10
+#: ../../build/doc/pgr_bdDijkstra.rst:11
 msgid "**end_vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:10
+#: ../../build/doc/pgr_bdDijkstra.rst:11
 msgid "Array of identifiers of ending vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:12
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:12
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:12
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:11
+#: ../../build/doc/pgr_bdDijkstra.rst:12
 msgid "When ``true`` Graph is considered `Directed`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:12
+#: ../../build/doc/pgr_bdDijkstra.rst:13
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 

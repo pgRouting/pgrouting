@@ -29,6 +29,19 @@ pgRouting 3.2.0 Release Notes
 * pgr_withPointsCost(Combinations)
 
 
+pgRouting 3.1.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.2
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github.
+
+*Issues fixes*
+
+* [#1356 ](https://github.com/pgRouting/pgrouting/issues/1356)_: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
+* [#1760 ](https://github.com/pgRouting/pgrouting/issues/1760)_: TSP server crash on ubuntu 20.04 #1760
+* [#1770 ](https://github.com/pgRouting/pgrouting/issues/1770)_: Remove warnings when using clang compiler
+
+
 pgRouting 3.1.1 Release Notes
 -------------------------------------------------------------------------------
 
@@ -59,6 +72,20 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 *Build changes*
 
 * Minimal requirement for Sphinx: version 1.8
+
+
+pgRouting 3.0.4 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.4
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github.
+
+*Backport issues fixes*
+
+* [#1356 ](https://github.com/pgRouting/pgrouting/issues/1356)_: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
+* [#1760 ](https://github.com/pgRouting/pgrouting/issues/1760)_: TSP server crash on ubuntu 20.04 #1760
+* [#1770 ](https://github.com/pgRouting/pgrouting/issues/1770)_: Remove warnings when using clang compiler
+
 
 
 pgRouting 3.0.3 Release Notes

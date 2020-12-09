@@ -72,7 +72,7 @@ PD_Orders::build_orders(
 #if 0
     ENTERING();
 #endif
-    for (const auto order : pd_orders) {
+    for (const auto &order : pd_orders) {
         /*
          * SAMPLE CORRECT INFORMATION
          *
@@ -161,7 +161,7 @@ PD_Orders::operator[](size_t i) const {
 void
 PD_Orders::set_compatibles(double speed) {
     for (auto &I : m_orders) {
-        for (const auto J : m_orders) {
+        for (const auto &J : m_orders) {
             I.set_compatibles(J, speed);
         }
     }

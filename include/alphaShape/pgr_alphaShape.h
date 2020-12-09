@@ -62,7 +62,7 @@ using Triangle = std::set<E>;
 
 class Pgr_alphaShape : public Pgr_messages {
  public:
-     Pgr_alphaShape() = default;
+     Pgr_alphaShape() = delete;
      explicit Pgr_alphaShape(const std::vector<Pgr_edge_xy_t> &edges);
 
      std::vector<Bpoly> operator() (double alpha) const;

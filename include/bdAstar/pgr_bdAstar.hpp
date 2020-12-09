@@ -94,9 +94,6 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
         m_heuristic = heuristic;
         m_factor = factor * epsilon;
 
-        if (v_source == v_target) {
-            return Path(v_source, v_target);
-        }
         return bidirectional(only_cost);
     }
 

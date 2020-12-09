@@ -26,7 +26,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <assert.h>
 #include "utils/lsyscache.h"
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wignored-attributes"
+#endif
 #include "catalog/pg_type.h"
+
+#ifdef __clang__
+#  pragma clang diagnostic pop
+#endif
 
 
 #include "c_common/time_msg.h"

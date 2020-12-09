@@ -122,7 +122,7 @@ namespace pgrouting {
     }
 
     std::vector < Basic_vertex > extract_vertices(
-            const pgr_edge_t *data_edges, int64_t count) {
+            const pgr_edge_t *data_edges, size_t count) {
         return extract_vertices(
                 std::vector < pgr_edge_t >(
                     data_edges, data_edges + count));
@@ -130,7 +130,7 @@ namespace pgrouting {
 
     std::vector < Basic_vertex > extract_vertices(
             const std::vector < Basic_vertex > &vertices,
-            const pgr_edge_t *data_edges, int64_t count) {
+            const pgr_edge_t *data_edges, size_t count) {
         return extract_vertices(
                 vertices, std::vector < pgr_edge_t >(
                     data_edges, data_edges + count));
