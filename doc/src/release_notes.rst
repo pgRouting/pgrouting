@@ -74,6 +74,8 @@ pgRouting 3.2.0 Release Notes
 * pgr_dijkstraNearCost(Combinations)
 * pgr_isPlanar
 * pgr_makeConnected
+* pgr_maxFlowMinCost(Combinations)
+* pgr_maxFlowMinCost_Cost(Combinations)
 * pgr_sequentialVertexColoring
 
 .. rubric:: New proposed functions
@@ -84,6 +86,11 @@ pgRouting 3.2.0 Release Notes
 * pgr_bdAstarCost(Combinations)
 * pgr_bdDijkstra(Combinations)
 * pgr_bdDijkstraCost(Combinations)
+* pgr_boykovKolmogorov(Combinations)
+* pgr_edgeDisjointPaths(Combinations)
+* pgr_edmondsKarp(Combinations)
+* pgr_maxFlow(Combinations)
+* pgr_pushRelabel(Combinations)
 * pgr_withPoints(Combinations)
 * pgr_withPointsCost(Combinations)
 
