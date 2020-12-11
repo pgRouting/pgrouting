@@ -31,3 +31,9 @@ SELECT * FROM pgr_edgeDisjointPaths(
 );
 
 \echo -- q6
+SELECT * FROM pgr_edgeDisjointPaths(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT * FROM ( VALUES (3, 4), (6, 5), (3, 10) ) AS t(source, target)'
+);
+
+\echo -- q7
