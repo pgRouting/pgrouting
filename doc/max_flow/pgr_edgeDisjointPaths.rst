@@ -20,6 +20,12 @@ pgr_edgeDisjointPaths
 
 .. Rubric:: Availability
 
+* Version 3.2.0
+
+  * New **proposed** function:
+
+    * pgr_edgeDisjointPaths(Combinations)
+
 * Version 3.0.0
 
   * **Official** function
@@ -35,7 +41,8 @@ pgr_edgeDisjointPaths
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_edgeDisjointPaths.html>`__)
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_edgeDisjointPaths.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_edgeDisjointPaths.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_edgeDisjointPaths.html>`__
 
 * **Unsupported versions:**
@@ -69,6 +76,7 @@ Signatures
     pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vids [, directed])
     pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vid [, directed])
     pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vids [, directed])
+    pgr_edgeDisjointPaths(Edges SQL, Combinations SQL [, directed]) -- Proposed on v3.2
 
     RETURNS SET OF (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -162,6 +170,24 @@ Many to Many
    :start-after: -- q5
    :end-before: -- q6
 
+.. index::
+    single: edgeDisjointPaths(Combinations) -- Proposed on v3.2
+
+Combinations
+...............................................................................
+
+.. code-block:: none
+
+    pgr_edgeDisjointPaths(Edges SQL, Combinations SQL, directed)
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
+
+:Example: Using a combinations table, equivalent to calculating result from vertices :math:`\{3, 6\}` to vertices :math:`\{4, 5, 10\}` on a **directed** graph.
+
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
+   :start-after: -- q6
+   :end-before: -- q7
+
 Parameters
 -------------------------------------------------------------------------------
 
@@ -169,7 +195,7 @@ Parameters
     :start-after: bdDijkstra_parameters_start
     :end-before: bdDijkstra_parameters_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
 Edges query
@@ -178,6 +204,13 @@ Edges query
 .. include::  pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: flow-family.rst
+    :start-after: flow_combinations_sql_start
+    :end-before: flow_combinations_sql_end
 
 Return Columns
 -------------------------------------------------------------------------------
