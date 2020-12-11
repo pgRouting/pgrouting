@@ -84,5 +84,26 @@ SELECT * FROM pgr_MaxFlowMinCost(
 (9 rows)
 
 -- q5
+SELECT * FROM pgr_MaxFlowMinCost(
+    'SELECT id,
+     source, target,
+     capacity, reverse_capacity,
+     cost, reverse_cost FROM edge_table',
+    'SELECT * FROM ( VALUES (7, 3), (13, 9) ) AS t(source, target)'
+);
+ seq | edge | source | target | flow | residual_capacity | cost | agg_cost
+-----+------+--------+--------+------+-------------------+------+----------
+   1 |    8 |      5 |      6 |  100 |                 0 |  100 |      100
+   2 |    9 |      6 |      9 |  100 |                30 |  100 |      200
+   3 |    6 |      7 |      8 |   50 |                 0 |   50 |      250
+   4 |    7 |      8 |      5 |   50 |                 0 |   50 |      300
+   5 |   10 |     10 |      5 |   50 |                 0 |   50 |      350
+   6 |   12 |     10 |     11 |   50 |                50 |   50 |      400
+   7 |   13 |     11 |     12 |   50 |                50 |   50 |      450
+   8 |   15 |     12 |      9 |   50 |                 0 |   50 |      500
+   9 |   14 |     13 |     10 |  100 |                30 |  100 |      600
+(9 rows)
+
+-- q6
 ROLLBACK;
 ROLLBACK
