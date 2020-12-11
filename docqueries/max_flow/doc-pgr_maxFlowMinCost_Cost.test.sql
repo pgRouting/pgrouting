@@ -36,3 +36,12 @@ SELECT * FROM pgr_MaxFlowMinCost_Cost(
 );
 
 \echo -- q5
+SELECT * FROM pgr_MaxFlowMinCost_Cost(
+    'SELECT id,
+     source, target,
+     capacity, reverse_capacity,
+     cost, reverse_cost FROM edge_table',
+    'SELECT * FROM ( VALUES (7, 3), (13, 9) ) AS t(source, target)'
+);
+
+\echo -- q6
