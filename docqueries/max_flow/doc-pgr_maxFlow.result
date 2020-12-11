@@ -63,5 +63,20 @@ SELECT * FROM pgr_maxFlow(
 (1 row)
 
 -- q5
+SELECT * FROM pgr_maxFlow(
+    'SELECT id,
+            source,
+            target,
+            capacity,
+            reverse_capacity
+    FROM edge_table',
+    'SELECT * FROM ( VALUES (6, 1), (8, 3), (12, 11), (8, 1) ) AS t(source, target)'
+);
+ pgr_maxflow
+-------------
+         360
+(1 row)
+
+-- q6
 ROLLBACK;
 ROLLBACK

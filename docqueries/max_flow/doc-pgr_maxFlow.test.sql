@@ -48,4 +48,14 @@ SELECT * FROM pgr_maxFlow(
 );
 
 \echo -- q5
+SELECT * FROM pgr_maxFlow(
+    'SELECT id,
+            source,
+            target,
+            capacity,
+            reverse_capacity
+    FROM edge_table',
+    'SELECT * FROM ( VALUES (6, 1), (8, 3), (12, 11), (8, 1) ) AS t(source, target)'
+);
 
+\echo -- q6
