@@ -26,82 +26,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wpedantic"
-#pragma clang diagnostic ignored "-Wignored-attributes"
-#else
-#pragma GCC diagnostic ignored "-Wpedantic"
-#endif
-
-
-#ifdef __MSVC__
-#pragma warning(disable : 4200)
-#endif
-
 #include <postgres.h>
-
-
-#ifdef __clang__
-#  pragma clang diagnostic push
-#  pragma clang diagnostic ignored "-Wsign-conversion"
-#  pragma clang diagnostic push
-#  pragma clang diagnostic ignored "-Wunused-parameter"
-#  pragma clang diagnostic push
-#  pragma GCC diagnostic ignored "-Wconversion"
-
-#else
-#  ifdef __GNUC__
-#    pragma GCC diagnostic ignored "-Wsign-conversion"
-#    pragma GCC diagnostic ignored "-Wconversion"
-#    pragma GCC diagnostic ignored "-Wunused-parameter"
-#  endif
-#endif
-
-
 #include <executor/spi.h>
 #include <funcapi.h>
-
-#ifdef __clang__
-#pragma clang diagnostic pop
-#pragma clang diagnostic pop
-#pragma clang diagnostic pop
-#pragma clang diagnostic pop
-#else
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#pragma GCC diagnostic pop
-#pragma GCC diagnostic pop
-#pragma GCC diagnostic pop
-#endif
-#endif
-
-
-#include "utils/builtins.h"  // for text_to_cstring
-
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
-#else
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
-#endif
-
+#include <utils/builtins.h>  // for text_to_cstring
+#include <access/htup_details.h>
 #include <fmgr.h>
-
-#ifdef __clang__
-#pragma clang diagnostic pop
-#else
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-#endif
-
 
 
 void pgr_send_error(int errcode);
