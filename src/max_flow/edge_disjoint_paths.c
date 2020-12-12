@@ -76,6 +76,12 @@ process(
             pgr_get_bigIntArray(&size_sink_verticesArr, ends);
     } else if (combinations_sql) {
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        if (total_combinations == 0) {
+            if (combinations)
+                pfree(combinations);
+            pgr_SPI_finish();
+            return;
+        }
     }
 
     pgr_get_edges(edges_sql, &edges, &total_edges);

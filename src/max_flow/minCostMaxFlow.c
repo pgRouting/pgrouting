@@ -103,12 +103,18 @@ process(
             pgr_get_bigIntArray(&sizeSinkVerticesArr, ends);
     } else if (combinations_sql) {
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        if (total_combinations == 0) {
+            if (combinations)
+                pfree(combinations);
+            pgr_SPI_finish();
+            return;
+        }
     }
 
     pgr_get_costFlow_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
-    if (total_edges == 0 || (combinations_sql && total_combinations == 0)) {
+    if (total_edges == 0) {
         if (sourceVertices)
             pfree(sourceVertices);
         if (sinkVertices)
