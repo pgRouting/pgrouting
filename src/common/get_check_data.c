@@ -208,7 +208,7 @@ pgr_SPI_getBigIntArr(
     */
     ArrayType *pg_array = DatumGetArrayTypeP(raw_array);
 
-    return (int64_t*) pgr_get_bigIntArray(the_size, pg_array);
+    return pgr_get_bigIntArray((size_t*)the_size, pg_array);
 }
 
 
