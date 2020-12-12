@@ -57,7 +57,15 @@ do_pgr_max_flow(
     std::ostringstream err;
 
     try {
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
         pgassert(data_edges);
+        pgassert(total_edges != 0);
+        pgassert((source_vertices && sink_vertices) || combinations);
+        pgassert((size_source_verticesArr && size_sink_verticesArr) || total_combinations);
 
         std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
         std::set<int64_t> sources(
