@@ -60,7 +60,10 @@ do_pgr_minCostMaxFlow(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+        pgassert(data_edges);
         pgassert(total_edges != 0);
+        pgassert((sourceVertices && sinkVertices) || combinations);
+        pgassert((sizeSourceVerticesArr && sizeSinkVerticesArr) || total_combinations);
 
         std::vector<pgr_costFlow_t> edges(data_edges, data_edges + total_edges);
         std::set<int64_t> sources(

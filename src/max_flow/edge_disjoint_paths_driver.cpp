@@ -82,6 +82,16 @@ do_pgr_edge_disjoint_paths(
     std::ostringstream notice;
     std::ostringstream err;
     try {
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
+        pgassert(data_edges);
+        pgassert(total_edges != 0);
+        pgassert((sources && sinks) || combinations);
+        pgassert((size_source_verticesArr && size_sink_verticesArr) || total_combinations);
+
         std::set<int64_t> set_source_vertices(
                 sources, sources + size_source_verticesArr);
         std::set<int64_t> set_sink_vertices(
