@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/pgr_edge_t.h"
+#include "c_types/pgr_combination_t.h"
 #include "c_types/general_path_element_t.h"
 
 #ifdef __cplusplus
@@ -58,10 +59,12 @@ extern "C" {
         do_pgr_bellman_ford(
                 pgr_edge_t  *data_edges,
                 size_t total_tuples,
-            int64_t  *start_vidsArr,
-            size_t size_start_vidsArr,
-            int64_t  *end_vidsArr,
-            size_t size_end_vidsArr,
+                pgr_combination_t  *combinations,
+                size_t total_combinations,
+                int64_t  *start_vidsArr,
+                size_t size_start_vidsArr,
+                int64_t  *end_vidsArr,
+                size_t size_end_vidsArr,
                 bool directed,
                 bool only_cost,
                 General_path_element_t **return_tuples,

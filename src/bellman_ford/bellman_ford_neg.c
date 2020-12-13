@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
+#include "c_common/combinations_input.h"
 
 #include "drivers/bellman_ford/bellman_ford_neg_driver.h"  // the link to the C++ code of the function
 
@@ -49,6 +50,7 @@ void
 process(
         char* edges_sql,
         char* neg_edges_sql,
+        char *combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
         bool directed,
@@ -61,15 +63,28 @@ process(
     PGR_DBG("Initializing arrays");
 
     size_t size_start_vidsArr = 0;
-    int64_t* start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
-    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
+    int64_t* start_vidsArr = NULL;
 
     size_t size_end_vidsArr = 0;
-    int64_t* end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
-    PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
+    int64_t* end_vidsArr = NULL;
 
+    size_t total_combinations = 0;
+    pgr_combination_t *combinations = NULL;
+
+    if (starts && ends) {
+        start_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_vidsArr, starts);
+        end_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    } else if (combinations_sql) {
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        if (total_combinations == 0) {
+            if (combinations)
+                pfree(combinations);
+            pgr_SPI_finish();
+            return;
+        }
+    }
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -110,6 +125,8 @@ process(
             total_positive_edges,
             negative_edges,
             total_negative_edges,
+            combinations,
+            total_combinations,
             start_vidsArr,
             size_start_vidsArr,
             end_vidsArr,
@@ -160,27 +177,37 @@ PGDLLEXPORT Datum _pgr_bellmanfordneg(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /**********************************************************************/
-        /*
-        pgr_bellman_ford(
-            edge_sql TEXT,
-            start_vids ANYARRAY,
-            end_vids ANYARRAY,
-            directed BOOLEAN DEFAULT true)
-        */
-        /**********************************************************************/
-
-
         PGR_DBG("Calling process");
-        process(
+        if (PG_NARGS() == 6) {
+            /*
+             * many to many
+             */
+            process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
+                NULL,
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_ARRAYTYPE_P(3),
                 PG_GETARG_BOOL(4),
                 PG_GETARG_BOOL(5),
                 &result_tuples,
                 &result_count);
+        } else if (PG_NARGS() == 5) {
+            /*
+             * combinations
+             */
+            process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                text_to_cstring(PG_GETARG_TEXT_P(2)),
+                NULL,
+                NULL,
+                PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(4),
+                &result_tuples,
+                &result_count);
+        }
+
 
         /**********************************************************************/
 

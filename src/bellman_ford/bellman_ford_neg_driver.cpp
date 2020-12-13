@@ -53,6 +53,7 @@ template < class G >
 std::deque< Path >
 pgr_bellman_ford(
         G &graph,
+        std::vector <pgr_combination_t> &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
         std::string &log,
@@ -68,8 +69,9 @@ pgr_bellman_ford(
             targets.end());
 
     Pgr_bellman_ford< G > fn_bellman_ford;
-    auto paths = fn_bellman_ford.bellman_ford(
-            graph, sources, targets, only_cost);
+    auto paths = combinations.empty() ?
+            fn_bellman_ford.bellman_ford(graph, sources, targets, only_cost)
+            : fn_bellman_ford.bellman_ford(graph, combinations, only_cost);
     log += fn_bellman_ford.get_log();
     return paths;
 }
@@ -80,6 +82,8 @@ do_pgr_bellman_ford_neg(
                 size_t total_positive_edges,
                 pgr_edge_t  *negative_edges,
                 size_t total_negative_edges,
+                pgr_combination_t *combinations,
+                size_t total_combinations,
                 int64_t  *start_vidsArr,
                 size_t size_start_vidsArr,
                 int64_t  *end_vidsArr,
@@ -103,6 +107,9 @@ do_pgr_bellman_ford_neg(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
+        pgassert(total_positive_edges || total_negative_edges);
+        pgassert((start_vidsArr && end_vidsArr) || combinations);
+        pgassert((size_start_vidsArr && size_end_vidsArr) || total_combinations);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -112,6 +119,8 @@ do_pgr_bellman_ford_neg(
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::vector< pgr_combination_t >
+            combinations_vector(combinations, combinations + total_combinations);
 
         std::deque< Path >paths;
         std::string logstr;
@@ -122,6 +131,7 @@ do_pgr_bellman_ford_neg(
             digraph.insert_negative_edges(negative_edges, total_negative_edges);
             log << digraph;
             paths = pgr_bellman_ford(digraph,
+                    combinations_vector,
                     start_vertices,
                     end_vertices,
                     logstr,
@@ -136,6 +146,7 @@ do_pgr_bellman_ford_neg(
             log << undigraph;
             paths = pgr_bellman_ford(
                     undigraph,
+                    combinations_vector,
                     start_vertices,
                     end_vertices,
                     logstr,
