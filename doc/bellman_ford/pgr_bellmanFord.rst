@@ -24,6 +24,12 @@ In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
+* Version 3.2.0
+
+  * New **experimental** function:
+
+    * pgr_bellmanFord(Combinations)
+
 * Version 3.0.0
 
   * New **experimental** function
@@ -31,7 +37,8 @@ In particular, the Bellman-Ford algorithm implemented by Boost.Graph.
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_bellmanFord.html>`__)
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bellmanFord.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bellmanFord.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bellmanFord.html>`__
 
 Description
@@ -70,10 +77,11 @@ Signatures
 
 .. code-block:: none
 
-    pgr_bellmanFord(edges_sql, from_vid,  to_vid  [, directed])
-    pgr_bellmanFord(edges_sql, from_vid,  to_vids [, directed])
-    pgr_bellmanFord(edges_sql, from_vids, to_vid  [, directed])
-    pgr_bellmanFord(edges_sql, from_vids, to_vids [, directed])
+    pgr_bellmanFord(Edges SQL, from_vid,  to_vid  [, directed])
+    pgr_bellmanFord(Edges SQL, from_vid,  to_vids [, directed])
+    pgr_bellmanFord(Edges SQL, from_vids, to_vid  [, directed])
+    pgr_bellmanFord(Edges SQL, from_vids, to_vids [, directed])
+    pgr_bellmanFord(Edges SQL, Combinations SQL [, directed]) -- Experimental on v3.2
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -82,7 +90,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_bellmanFord(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
+    pgr_bellmanFord(TEXT Edges SQL, BIGINT start_vid, BIGINT end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -100,7 +108,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_bellmanFord(edges_sql, from_vid,  to_vid  [, directed])
+    pgr_bellmanFord(Edges SQL, from_vid,  to_vid  [, directed])
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -118,7 +126,7 @@ One to many
 
 .. code-block:: none
 
-    pgr_bellmanFord(edges_sql, from_vid,  to_vids [, directed])
+    pgr_bellmanFord(Edges SQL, from_vid,  to_vids [, directed])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -136,7 +144,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_bellmanFord(edges_sql, from_vids, to_vid  [, directed])
+    pgr_bellmanFord(Edges SQL, from_vids, to_vid  [, directed])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -154,7 +162,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_bellmanFord(edges_sql, from_vids, to_vids [, directed])
+    pgr_bellmanFord(Edges SQL, from_vids, to_vids [, directed])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -164,6 +172,24 @@ Many to Many
    :start-after: -- q5
    :end-before: -- q6
 
+.. index::
+    single: bellmanFord(Combinations) -- Experimental on v3.2
+
+Combinations
+...............................................................................
+
+.. code-block:: none
+
+    pgr_bellmanFord(Edges SQL, Combinations SQL [, directed])
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
+
+:Example: Using a combinations table on an **undirected** graph.
+
+.. literalinclude:: doc-pgr_bellmanFord.queries
+   :start-after: -- q6
+   :end-before: -- q7
+
 Parameters
 -------------------------------------------------------------------------------
 
@@ -171,26 +197,36 @@ Parameters
 
 .. rubric:: Description of the parameters of the signatures
 
-============== ================== ======== =================================================
-Parameter      Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**        ``TEXT``                    SQL query as described above.
-**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
-**directed**   ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
-                                           - When ``false`` the graph is considered as `Undirected`.
-============== ================== ======== =================================================
+===================== ================== ======== =================================================
+Parameter             Type               Default     Description
+===================== ================== ======== =================================================
+**Edges SQL**         ``TEXT``                    Edges query as described below.
+**Combinations SQL**  ``TEXT``                    Combinations query as described below.
+**start_vid**         ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids**        ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**           ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**          ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+**directed**          ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
+                                                  - When ``false`` the graph is considered as `Undirected`.
+===================== ================== ======== =================================================
 
 .. pgr_bellmanFord_parameters_end
 
-Inner Query
+Inner Queries
 -------------------------------------------------------------------------------
 
+Edges query
+-------------------------------------------------------------------------------
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Results Columns
 -------------------------------------------------------------------------------
