@@ -77,6 +77,47 @@ class Pgr_binaryBreadthFirstSearch {
         return paths;
     }
 
+    // preparation for parallel arrays
+    std::deque<Path> binaryBreadthFirstSearch(
+        G &graph,
+        const std::vector<pgr_combination_t> &combinations) {
+        std::deque<Path> paths;
+
+        // group targets per distinct source
+        std::map< int64_t, std::vector<int64_t> > vertex_map;
+        for (const pgr_combination_t &comb : combinations) {
+            std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.source);
+            if (it != vertex_map.end()) {
+                it->second.push_back(comb.target);
+            } else {
+                std::vector<int64_t > targets{comb.target};
+                vertex_map[comb.source] = targets;
+            }
+        }
+
+        for (const auto &start_ends : vertex_map) {
+            std::deque<Path> result_paths = one_to_many_binaryBreadthFirstSearch(
+                graph,
+                start_ends.first,
+                start_ends.second);
+            paths.insert(
+                paths.begin(),
+                std::make_move_iterator(result_paths.begin()),
+                std::make_move_iterator(result_paths.end()));
+        }
+
+        std::sort(paths.begin(), paths.end(),
+                  [](const Path &e1, const Path &e2) -> bool {
+                      return e1.end_id() < e2.end_id();
+                  });
+        std::stable_sort(paths.begin(), paths.end(),
+                         [](const Path &e1, const Path &e2) -> bool {
+                             return e1.start_id() < e2.start_id();
+                         });
+
+        return paths;
+    }
+
  private:
         E DEFAULT_EDGE;
 
