@@ -217,15 +217,9 @@ done
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
-<<<<<<< HEAD
-bash tools/release-scripts/compile-release.sh
-bash tools/release-scripts/get_signatures.sh
-if [[ $(git diff "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig") ]]; then
-=======
 tools/release-scripts/compile-release.sh
 tools/release-scripts/get_signatures.sh
 if [[ -z $(git diff "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig") ]]; then
->>>>>>> f062925ed... [CI] testing and fixing shell code
     echo signature changed at: "sql/sigs/pgrouting--$MAYOR.$MINOR.$MICRO.sig"
 fi
 
@@ -242,11 +236,7 @@ echo "\`\`\`"
 
 for r in ${PREV_RELS}
 do
-<<<<<<< HEAD
-    if ! bash tools/testers/update-tester.sh "$r" 12; then
-=======
     if ! tools/testers/update-tester.sh "$r"; then
->>>>>>> f062925ed... [CI] testing and fixing shell code
         echo "FATAL updating from $r"
         exit 1
     fi
