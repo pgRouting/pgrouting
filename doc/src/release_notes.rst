@@ -64,6 +64,7 @@ pgRouting 3.2.0 Release Notes
 .. rubric:: New experimental functions
 
 * pgr_bellmanFord(Combinations)
+* pgr_binaryBreadthFirstSearch(Combinations)
 * pgr_depthFirstSearch
 * pgr_dijkstraNear(One to Many)
 * pgr_dijkstraNear(Many to One)
