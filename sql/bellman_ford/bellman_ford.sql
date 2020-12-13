@@ -132,6 +132,31 @@ $BODY$
 LANGUAGE sql VOLATILE STRICT;
 
 
+--COMBINATIONS
+--v3.2
+CREATE FUNCTION pgr_bellmanFord(
+    TEXT,     -- edges_sql (required)
+    TEXT,     -- combinations_sql (required)
+
+    directed BOOLEAN DEFAULT true,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_bellmanFord(_pgr_get_statement($1), _pgr_get_statement($2), directed, false ) AS a;
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
+
 -- COMMENTS
 
 
@@ -142,7 +167,7 @@ IS 'pgr_bellmanFord(One to One)
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From vertex identifier
   - To vertex identifier
-- Optional Parameters: 
+- Optional Parameters:
   - directed := true
 - Documentation:
   - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
@@ -184,6 +209,19 @@ IS 'pgr_bellmanFord(Many to Many)
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From ARRAY[vertices identifiers]
   - To ARRAY[vertices identifiers]
+- Optional Parameters
+  - directed := true
+- Documentation:
+  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+';
+
+
+COMMENT ON FUNCTION pgr_bellmanFord(TEXT, TEXT, BOOLEAN)
+IS 'pgr_bellmanFord(Combinations)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Combinations SQL with columns: source, target
 - Optional Parameters
   - directed := true
 - Documentation:
