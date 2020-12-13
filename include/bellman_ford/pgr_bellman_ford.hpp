@@ -180,6 +180,42 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
          return paths;
      }
 
+     // BellmanFord combinations
+     std::deque<Path> bellman_ford(
+             G &graph,
+             const std::vector<pgr_combination_t> &combinations,
+             bool only_cost = false) {
+         // a call to 1 to many is faster for each of the sources
+         std::deque<Path> paths;
+         log << std::string(__FUNCTION__) << "\n";
+
+         // group targets per distinct source
+         std::map< int64_t, std::vector<int64_t> > vertex_map;
+         for (const pgr_combination_t &comb : combinations) {
+             std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.source);
+             if (it != vertex_map.end()) {
+                 it->second.push_back(comb.target);
+             } else {
+                 std::vector<int64_t > targets{comb.target};
+                 vertex_map[comb.source] = targets;
+             }
+         }
+
+         for (const auto &start_ends : vertex_map) {
+             std::deque<Path> result_paths = bellman_ford(
+                 graph,
+                 start_ends.first,
+                 start_ends.second,
+                 only_cost);
+             paths.insert(
+                 paths.end(),
+                 std::make_move_iterator(result_paths.begin()),
+                 std::make_move_iterator(result_paths.end()));
+         }
+
+         return paths;
+     }
+
      //@}
 
  private:
