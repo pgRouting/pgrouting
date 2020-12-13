@@ -42,19 +42,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-
-/************************************************************
-  TEXT,
-    BIGINT,
-    BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
- ***********************************************************/
-
 template < class G >
 std::deque< Path >
 pgr_dagShortestPath(
         G &graph,
+        std::vector <pgr_combination_t> &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
         bool only_cost = false) {
@@ -70,7 +62,9 @@ pgr_dagShortestPath(
 
 
     Pgr_dag< G > fn_dag;
-    auto paths = fn_dag.dag(graph, sources, targets, only_cost);
+    auto paths = combinations.empty() ?
+            fn_dag.dag(graph, sources, targets, only_cost)
+            : fn_dag.dag(graph, combinations, only_cost);
 
     return paths;
 }
@@ -80,6 +74,8 @@ void
 do_pgr_dagShortestPath(
         pgr_edge_t  *data_edges,
         size_t total_edges,
+        pgr_combination_t *combinations,
+        size_t total_combinations,
         int64_t  *start_vidsArr,
         size_t size_start_vidsArr,
         int64_t  *end_vidsArr,
@@ -102,6 +98,9 @@ do_pgr_dagShortestPath(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
+        pgassert(data_edges);
+        pgassert((start_vidsArr && end_vidsArr) || combinations);
+        pgassert((size_start_vidsArr && size_end_vidsArr) || total_combinations);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -110,6 +109,8 @@ do_pgr_dagShortestPath(
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::vector< pgr_combination_t >
+            combinations_vector(combinations, combinations + total_combinations);
 
         std::deque< Path >paths;
 
@@ -118,6 +119,7 @@ do_pgr_dagShortestPath(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             paths = pgr_dagShortestPath(digraph,
+                    combinations_vector,
                     start_vertices,
                     end_vertices,
                     only_cost);
@@ -127,6 +129,7 @@ do_pgr_dagShortestPath(
             undigraph.insert_edges(data_edges, total_edges);
             paths = pgr_dagShortestPath(
                     undigraph,
+                    combinations_vector,
                     start_vertices,
                     end_vertices,
                     only_cost);

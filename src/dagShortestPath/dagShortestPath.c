@@ -37,20 +37,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
+#include "c_common/combinations_input.h"
 #include "drivers/dagShortestPath/dagShortestPath_driver.h"  // the link to the C++ code of the function
 
 PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_dagshortestpath);
 
 
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
         char* edges_sql,
-     /*   int64_t start_vid,
-        int64_t end_vid,*/
+        char* combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
         bool directed,
@@ -67,15 +65,28 @@ process(
 
     PGR_DBG("Initializing arrays");
     size_t size_start_vidsArr = 0;
-    int64_t* start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
-    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
+    int64_t* start_vidsArr = NULL;
 
     size_t size_end_vidsArr = 0;
-    int64_t* end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
-    PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
+    int64_t* end_vidsArr = NULL;
 
+    size_t total_combinations = 0;
+    pgr_combination_t *combinations = NULL;
+
+    if (starts && ends) {
+        start_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_vidsArr, starts);
+        end_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    } else if (combinations_sql) {
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        if (total_combinations == 0) {
+            if (combinations)
+                pfree(combinations);
+            pgr_SPI_finish();
+            return;
+        }
+    }
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -101,6 +112,8 @@ process(
     do_pgr_dagShortestPath(
             edges,
             total_edges,
+            combinations,
+            total_combinations,
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
 
@@ -138,13 +151,8 @@ PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -152,20 +160,14 @@ PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-           TEXT,
-    BIGINT,
-    BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-         **********************************************************************/
-
-
         PGR_DBG("Calling process");
-        process(
+        if (PG_NARGS() == 5) {
+            /*
+             * many to many
+             */
+            process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                NULL,
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
@@ -173,9 +175,23 @@ PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
+        } else if (PG_NARGS() == 4) {
+            /*
+             * combinations
+             */
+            process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                NULL,
+                NULL,
+                PG_GETARG_BOOL(2),
+                PG_GETARG_BOOL(3),
+                &result_tuples,
+                &result_count);
+        }
 
-        /*                                                                    */
-        /**********************************************************************/
+
+
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
@@ -205,16 +221,6 @@ PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-               OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT
-         ***********************************************************************/
 
         values = palloc(6 * sizeof(Datum));
         nulls = palloc(6 * sizeof(bool));
@@ -232,19 +238,13 @@ PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS) {
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
 
         PGR_DBG("Clean up code");
-
-        /**********************************************************************/
-
         SRF_RETURN_DONE(funcctx);
     }
 }
