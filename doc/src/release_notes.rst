@@ -75,6 +75,7 @@ pgRouting 3.2.0 Release Notes
 * pgr_dijkstraNearCost(Many to One)
 * pgr_dijkstraNearCost(Many to Many)
 * pgr_dijkstraNearCost(Combinations)
+* pgr_edwardMoore(Combinations)
 * pgr_isPlanar
 * pgr_makeConnected
 * pgr_maxFlowMinCost(Combinations)
