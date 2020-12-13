@@ -57,6 +57,7 @@ template < class G >
 std::deque< Path >
 pgr_edwardMoore(
         G &graph,
+        std::vector <pgr_combination_t> &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets) {
     std::sort(sources.begin(), sources.end());
@@ -70,9 +71,9 @@ pgr_edwardMoore(
             targets.end());
 
     pgrouting::functions::Pgr_edwardMoore< G > fn_edwardMoore;
-    auto paths = fn_edwardMoore.edwardMoore(
-            graph,
-            sources, targets);
+    auto paths = combinations.empty() ?
+            fn_edwardMoore.edwardMoore(graph, sources, targets)
+            : fn_edwardMoore.edwardMoore(graph, combinations);
 
     return paths;
 }
@@ -81,6 +82,8 @@ void
 do_pgr_edwardMoore(
         pgr_edge_t  *data_edges,
         size_t total_edges,
+        pgr_combination_t *combinations,
+        size_t total_combinations,
         int64_t  *start_vidsArr,
         size_t size_start_vidsArr,
         int64_t  *end_vidsArr,
@@ -103,6 +106,9 @@ do_pgr_edwardMoore(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+        pgassert(data_edges);
+        pgassert((start_vidsArr && end_vidsArr) || combinations);
+        pgassert((size_start_vidsArr && size_end_vidsArr) || total_combinations);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -111,6 +117,8 @@ do_pgr_edwardMoore(
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::vector< pgr_combination_t >
+            combinations_vector(combinations, combinations + total_combinations);
 
 
         std::deque< Path >paths;
@@ -120,6 +128,7 @@ do_pgr_edwardMoore(
             digraph.insert_edges(data_edges, total_edges);
             paths = pgr_edwardMoore(
                 digraph,
+                combinations_vector,
                 start_vertices,
                 end_vertices);
         } else {
@@ -129,6 +138,7 @@ do_pgr_edwardMoore(
 
             paths = pgr_edwardMoore(
                 undigraph,
+                combinations_vector,
                 start_vertices,
                 end_vertices);
         }
