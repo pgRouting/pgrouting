@@ -1,7 +1,7 @@
 \i setup.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(67);
+SELECT plan(81);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
@@ -101,6 +101,21 @@ BEGIN
     'NULL',
     'NULL::BIGINT[]',
     'NULL::BIGINT[]'
+    ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_bellmanFord', params, subs);
+
+    -- Combinations SQL
+    params = ARRAY['$$edges$$', '$$combinations$$']::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    '$$(SELECT source, target FROM combinations_table  WHERE source IN (-1))$$'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_bellmanFord', params, subs);
+
+    subs = ARRAY[
+    'NULL',
+    'NULL::TEXT'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_bellmanFord', params, subs);
 
