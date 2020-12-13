@@ -20,6 +20,12 @@ Edward Moore’s ​ Algorithm is an improvement of the Bellman-Ford Algorithm.
 
 .. rubric:: Availability
 
+* Version 3.2.0
+
+  * New **experimental** function:
+
+    * pgr_edwardMoore(Combinations)
+
 * Version 3.0.0
 
   * New **experimental** function
@@ -66,16 +72,17 @@ Signatures
 
 .. code-block:: none
 
-    pgr_edwardMoore(edges_sql, start_vid,  end_vid  [, directed])
-    pgr_edwardMoore(edges_sql, start_vid,  end_vids [, directed])
-    pgr_edwardMoore(edges_sql, start_vids, end_vid  [, directed])
-    pgr_edwardMoore(edges_sql, start_vids, end_vids [, directed])
+    pgr_edwardMoore(Edges SQL, start_vid,  end_vid  [, directed])
+    pgr_edwardMoore(Edges SQL, start_vid,  end_vids [, directed])
+    pgr_edwardMoore(Edges SQL, start_vids, end_vid  [, directed])
+    pgr_edwardMoore(Edges SQL, start_vids, end_vids [, directed])
+    pgr_edwardMoore(Edges SQL, Combinations SQL [, directed])
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
 .. code-block:: none
 
-    pgr_edwardMoore(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
+    pgr_edwardMoore(Edges SQL, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 :Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
@@ -92,8 +99,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_edwardMoore(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
-    BOOLEAN directed:=true);
+    pgr_edwardMoore(Edges SQL, start_vid, end_vid [, directed]);
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -111,8 +117,7 @@ One to many
 
 .. code-block:: none
 
-    pgr_edwardMoore(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
-    BOOLEAN directed:=true);
+    pgr_edwardMoore(Edges SQL, start_vid, end_vids [, directed]);
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -130,8 +135,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_edwardMoore(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
-        BOOLEAN directed:=true);
+    pgr_edwardMoore(Edges SQL, start_vids, end_vid [, directed]);
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -149,8 +153,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_edwardMoore(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
-        BOOLEAN directed:=true);
+    pgr_edwardMoore(Edges SQL, start_vids, end_vids [, directed]);
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -160,33 +163,60 @@ Many to Many
    :start-after: -- q5
    :end-before: -- q6
 
+.. index::
+    single: edwardMoore(Combinations) -- Experimental on v3.2
+
+Combinations
+...............................................................................
+
+.. code-block:: none
+
+    pgr_edwardMoore(Edges SQL, Combinations SQL [, directed]);
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
+
+:Example: Using a combinations table on an **undirected** graph.
+
+.. literalinclude:: doc-pgr_edwardMoore.queries
+   :start-after: -- q6
+   :end-before: -- q7
+
 Parameters
 -------------------------------------------------------------------------------
 
 .. pgr_edwardMoore_parameters_start
 
-============== ================== ======== =================================================
-Parameter      Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**  ``TEXT``                    Inner SQL query as described below.
-**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
-**directed**   ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
-                                           - When ``false`` the graph is considered as `Undirected`.
-============== ================== ======== =================================================
+===================== ================== ======== =================================================
+Parameter             Type               Default     Description
+===================== ================== ======== =================================================
+**Edges SQL**         ``TEXT``                    Edges query as described below.
+**Combinations SQL**  ``TEXT``                    Combinations query as described below.
+**start_vid**         ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids**        ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**           ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**          ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+**directed**          ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
+                                                  - When ``false`` the graph is considered as `Undirected`.
+===================== ================== ======== =================================================
 
 .. pgr_edwardMoore_parameters_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
-.. rubric::edges_sql
+Edges query
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Return Columns
 -------------------------------------------------------------------------------
@@ -209,32 +239,32 @@ undirected graph with and with out reverse_cost.
 The examples in this section use the following :ref:`fig1`
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q7
-   :end-before: -- q8
+   :start-after: -- q8
+   :end-before: -- q9
 
 :Examples: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
 
 The examples in this section use the following :ref:`fig2`
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q9
-   :end-before: -- q10
+   :start-after: -- q10
+   :end-before: -- q11
 
 :Examples: For queries marked as ``directed`` with ``cost`` column
 
 The examples in this section use the following :ref:`fig3`
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q11
-   :end-before: -- q12
+   :start-after: -- q12
+   :end-before: -- q13
 
 :Examples: For queries marked as ``undirected`` with ``cost`` column
 
 The examples in this section use the following :ref:`fig4`
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q13
-   :end-before: -- q14
+   :start-after: -- q14
+   :end-before: -- q15
 
 See Also
 -------------------------------------------------------------------------------
