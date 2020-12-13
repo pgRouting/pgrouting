@@ -90,7 +90,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_bellmanFord(TEXT Edges SQL, BIGINT start_vid, BIGINT end_vid)
+    pgr_bellmanFord(Edges SQL, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -216,7 +216,8 @@ Inner Queries
 -------------------------------------------------------------------------------
 
 Edges query
--------------------------------------------------------------------------------
+...............................................................................
+
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
