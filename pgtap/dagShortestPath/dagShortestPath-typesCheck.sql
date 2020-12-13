@@ -1,6 +1,6 @@
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(10);
+SELECT plan(11);
 
 SELECT has_function('pgr_dagshortestpath');
 
@@ -20,3 +20,13 @@ SELECT bag_has(
     $$SELECT  '{"","","","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 
+-- parameter types
+SELECT set_eq(
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_dagshortestpath'$$,
+    $$VALUES
+        ('{25,20,20,23,23,20,20,701,701}'::OID[]),
+        ('{25,20,2277,23,23,20,20,701,701}'::OID[]),
+        ('{25,2277,20,23,23,20,20,701,701}'::OID[]),
+        ('{25,2277,2277,23,23,20,20,701,701}'::OID[])
+    $$
+);
