@@ -46,6 +46,7 @@ template < class G >
 std::deque< Path >
 pgr_binaryBreadthFirstSearch(
         G &graph,
+        std::vector <pgr_combination_t> &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets) {
     std::sort(sources.begin(), sources.end());
@@ -59,9 +60,9 @@ pgr_binaryBreadthFirstSearch(
             targets.end());
 
     pgrouting::functions::Pgr_binaryBreadthFirstSearch< G > fn_binaryBreadthFirstSearch;
-    auto paths = fn_binaryBreadthFirstSearch.binaryBreadthFirstSearch(
-            graph,
-            sources, targets);
+    auto paths = combinations.empty() ?
+            fn_binaryBreadthFirstSearch.binaryBreadthFirstSearch(graph, sources, targets)
+            : fn_binaryBreadthFirstSearch.binaryBreadthFirstSearch(graph, combinations);
 
     return paths;
 }
@@ -105,6 +106,8 @@ void
 do_pgr_binaryBreadthFirstSearch(
         pgr_edge_t  *data_edges,
         size_t total_edges,
+        pgr_combination_t *combinations,
+        size_t total_combinations,
         int64_t  *start_vidsArr,
         size_t size_start_vidsArr,
         int64_t  *end_vidsArr,
@@ -127,6 +130,9 @@ do_pgr_binaryBreadthFirstSearch(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+        pgassert(data_edges);
+        pgassert((start_vidsArr && end_vidsArr) || combinations);
+        pgassert((size_start_vidsArr && size_end_vidsArr) || total_combinations);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -135,7 +141,8 @@ do_pgr_binaryBreadthFirstSearch(
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-
+        std::vector< pgr_combination_t >
+            combinations_vector(combinations, combinations + total_combinations);
 
         std::deque< Path >paths;
         if (directed) {
@@ -150,6 +157,7 @@ do_pgr_binaryBreadthFirstSearch(
             }
             paths = pgr_binaryBreadthFirstSearch(
                 digraph,
+                combinations_vector,
                 start_vertices,
                 end_vertices);
 
@@ -166,6 +174,7 @@ do_pgr_binaryBreadthFirstSearch(
 
             paths = pgr_binaryBreadthFirstSearch(
                 undigraph,
+                combinations_vector,
                 start_vertices,
                 end_vertices);
         }
