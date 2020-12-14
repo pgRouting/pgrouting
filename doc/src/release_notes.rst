@@ -110,7 +110,9 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
 .. rubric:: Issues fixes
 
+* `#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function
 * `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
+* `#1725 <https://github.com/pgRouting/pgrouting/issues/1725>`__: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd
 * `#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server crash on ubuntu 20.04 #1760
 * `#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove warnings when using clang compiler
 
@@ -158,7 +160,9 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
 .. rubric:: Backport issues fixes
 
+* `#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function
 * `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
+* `#1725 <https://github.com/pgRouting/pgrouting/issues/1725>`__: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd
 * `#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server crash on ubuntu 20.04 #1760
 * `#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove warnings when using clang compiler
 
