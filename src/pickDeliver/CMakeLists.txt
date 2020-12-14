@@ -1,7 +1,7 @@
 ADD_LIBRARY(pickDeliver OBJECT
-    base_node.cpp
+    #base_node.cpp
     dnode.cpp
-    node.cpp
+    #node.cpp
     tw_node.cpp
     vehicle_node.cpp
 

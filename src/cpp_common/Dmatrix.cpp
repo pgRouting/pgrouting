@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <limits>
 #include <vector>
+#include <map>
 #include <cmath>
 
 #include "tsp/tour.h"
@@ -90,8 +91,10 @@ Dmatrix::has_id(int64_t id) const {
  */
 size_t
 Dmatrix::get_index(int64_t id) const {
-    auto pos = std::lower_bound(ids.begin(), ids.end(), id);
-    return static_cast<size_t>(pos - ids.begin());
+    for (size_t pos = 0; pos < ids.size(); ++pos) {
+        if (ids[pos] == id) return pos;
+    }
+    throw std::make_pair(std::string("(INTERNAL) Dmatrix: Unable to find node on matrix"), id);
 }
 
 int64_t
@@ -112,6 +115,42 @@ Dmatrix::Dmatrix(const std::vector < Matrix_cell_t > &data_costs) {
 
     for (const auto &data : data_costs) {
         costs[get_index(data.from_vid)][get_index(data.to_vid)] = data.cost;
+    }
+
+    for (size_t i = 0; i < costs.size(); ++i) {
+        costs[i][i] = 0;
+    }
+}
+
+
+double
+get_distance(std::pair<double, double> p1 , std::pair<double, double> p2) {
+    auto dx = p1.first - p2.first;
+    auto dy = p1.second - p2.second;
+    return std::sqrt(dx * dx + dy * dy);
+}
+
+/*
+ * constructor for euclidean
+ */
+Dmatrix::Dmatrix(const std::map<std::pair<double, double>, int64_t> &euclidean_data) {
+    ids.reserve(euclidean_data.size());
+    for (const auto &e: euclidean_data) {
+        ids.push_back(e.second);
+    }
+    costs.resize(
+            ids.size(),
+            std::vector<double>(
+                ids.size(),
+                (std::numeric_limits<double>::max)()));
+
+    for (const auto &from : euclidean_data) {
+        for (const auto &to : euclidean_data) {
+            auto from_id = get_index(from.second);
+            auto to_id = get_index(to.second);
+            costs[from_id][to_id] = get_distance(from.first, to.first);
+            costs[to_id][from_id] = costs[from_id][to_id];
+        }
     }
 
     for (size_t i = 0; i < costs.size(); ++i) {
