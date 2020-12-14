@@ -135,23 +135,23 @@ void
 Fleet::add_vehicle(
         Vehicle_t vehicle,
         double factor,
-        std::unique_ptr<Base_node> b_start,
         const Vehicle_node &starting_site,
-        std::unique_ptr<Base_node> b_end,
         const Vehicle_node &ending_site) {
     pgassert(starting_site.is_start() && ending_site.is_end());
     pgassert(starting_site.opens() <= starting_site.closes());
     pgassert(ending_site.opens() <= ending_site.closes());
 
+#if 0
     problem->add_base_node(std::move(b_start));
     problem->add_base_node(std::move(b_end));
     problem->add_node(starting_site);
     problem->add_node(ending_site);
+#endif
 
     for (int i = 0; i < vehicle.cant_v; ++i) {
         m_trucks.push_back(Vehicle_pickDeliver(
                     m_trucks.size(),
-                    static_cast<size_t>(vehicle.id),
+                    vehicle.id,
                     starting_site,
                     ending_site,
                     vehicle.capacity,
@@ -216,12 +216,47 @@ Fleet::build_fleet(
 
     for (auto vehicle : vehicles) {
         if (vehicle.cant_v < 0) {
+            throw std::make_pair(std::string("Illegal number of vehicles found"), vehicle.cant_v);
+        }
+
+        if (vehicle.capacity < 0) {
+            throw std::make_pair(std::string("Illegal value for capacity found"), vehicle.capacity);
+        }
+
+        if  (!problem->m_cost_matrix.empty()) {
+            if (!problem->m_cost_matrix.has_id(vehicle.start_node_id)) {
+                throw std::make_pair(std::string("Unable to find node on matrix"), vehicle.start_node_id);
+            }
+            if (!problem->m_cost_matrix.has_id(vehicle.end_node_id)) {
+                throw std::make_pair(std::string("Unable to find node on matrix"), vehicle.end_node_id);
+            }
+        }
+
+        if (!(vehicle.start_open_t  <= vehicle.start_close_t
+                    && vehicle.end_open_t <= vehicle.end_close_t
+                    && vehicle.start_open_t <= vehicle.end_close_t)) {
+            msg.error << "Illegal values found on vehicle";
+            msg.log << "On vehicle " << vehicle.id
+                << " a condition is not met, verify that:"
+                << "\nvehicle.start_open_t  <= vehicle.start_close_t\t"
+                << vehicle.start_open_t << " <= " << vehicle.start_close_t
+                << "\nvehicle.end_open_t <= vehicle.end_close_t\t"
+                << vehicle.end_open_t << " <= " << vehicle.end_close_t
+                << "\nvehicle.start_open_t <= vehicle.end_close_t\t"
+                << vehicle.start_open_t << " <= " << vehicle.end_close_t;
+
+            throw std::make_pair(msg.get_error(), msg.get_log());
+        }
+#if 0
+        if (vehicle.cant_v < 0) {
             msg.error << "Illegal number of vehicles found vehicle";
             msg.log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
             return false;
         }
+#endif
 
         if  (problem->m_cost_matrix.empty()) {
+#if 0
             /*
              * Euclidean version
              */
@@ -266,10 +301,12 @@ Fleet::build_fleet(
             add_vehicle(vehicle, factor,
                     std::move(b_start), starting_site,
                     std::move(b_end), ending_site);
+#endif
         } else {
             /*
              * Matrix version
              */
+#if 0
             auto b_start = create_b_start<Dnode>(vehicle, problem->node_id());
             auto starting_site = Vehicle_node(
                     {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
@@ -302,12 +339,17 @@ Fleet::build_fleet(
             pgassert(starting_site.is_start());
             pgassert(ending_site.is_end());
 
+#endif
+            auto starting_site = Vehicle_node({problem->m_nodes.size(), vehicle, Tw_node::NodeType::kStart});
+            problem->add_node(starting_site);
+            auto ending_site = Vehicle_node({problem->m_nodes.size(), vehicle, Tw_node::NodeType::kEnd});
+            problem->add_node(ending_site);
+
             pgassert(starting_site.opens() <= starting_site.closes());
             pgassert(ending_site.opens() <= ending_site.closes());
             pgassert(starting_site.is_start() && ending_site.is_end());
-            add_vehicle(vehicle, factor,
-                    std::move(b_start), starting_site,
-                    std::move(b_end), ending_site);
+
+            add_vehicle(vehicle, factor, starting_site, ending_site);
         }
     }
     Identifiers<size_t> unused(m_trucks.size());
