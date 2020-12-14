@@ -1,7 +1,8 @@
 \i setup.sql
+SET client_min_messages TO NOTICE;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(77);
+SELECT plan(80);
 SET client_min_messages TO ERROR;
 
 /* A call looks like this
@@ -38,25 +39,31 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM orders $$,  $$SELECT * FROM vehicles $$,  $sql1$ SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$, ARRAY[3, 4, 5, 8, 9, 11]) $sql1$)';
+    end_sql = ' FROM orders $$,  $$SELECT * FROM vehicles $$,  $sql1$ SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$,
+        (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
+        UNION
+        SELECT d_node_id FROM orders
+        UNION
+        SELECT start_node_id FROM vehicles) a)) $sql1$)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'SMALLINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::INTEGER ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'INTEGER on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::BIGINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'BIGINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::REAL ' || end_sql;
-    RETURN query SELECT throws_ok(query);
+    RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$||parameter||$$' type. Expected ANY-INTEGER$$,'Expected Exception REAL with '||parameter);
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
-    RETURN query SELECT throws_ok(query);
+    RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$||parameter||$$' type. Expected ANY-INTEGER$$,'Expected Exception FLOAT8 with '||parameter);
 
     query := start_sql || parameter || '::NUMERIC ' || end_sql;
-    RETURN query SELECT throws_ok(query);
+    RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$||parameter||$$' type. Expected ANY-INTEGER$$,'Expected Exception NUMERIC with '||parameter);
+
 END;
 $BODY$ LANGUAGE plpgsql;
 
@@ -76,25 +83,30 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM orders $$,  $$SELECT * FROM vehicles $$, $sql1$ SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$, ARRAY[3, 4, 5, 8, 9, 11]) $sql1$)';
+    end_sql = ' FROM orders $$,  $$SELECT * FROM vehicles $$,  $sql1$ SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$,
+        (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
+        UNION
+        SELECT d_node_id FROM orders
+        UNION
+        SELECT start_node_id FROM vehicles) a)) $sql1$)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'SMALLINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::INTEGER ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'INTEGER on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::BIGINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'BIGINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::REAL ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'REAL on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'FLOAT8 on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::NUMERIC ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'NUMERIC ' ||parameter||' is OK');
 END;
 $BODY$ LANGUAGE plpgsql;
 
@@ -117,22 +129,32 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM  vehicles $$, $sql1$ SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$, ARRAY[3, 4, 5, 8, 9, 11]) $sql1$)';
+    end_sql = ' FROM vehicles $$, $sql1$ SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$,
+        (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
+        UNION
+        SELECT d_node_id FROM orders
+        UNION
+        SELECT start_node_id FROM vehicles) a)) $sql1$)';
+
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'SMALLINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::INTEGER ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'INTEGER on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::BIGINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'BIGINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::REAL ' || end_sql;
-    RETURN query SELECT throws_ok(query);
+    RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$||parameter||$$' type. Expected ANY-INTEGER$$,'Expected Exception REAL with '||parameter);
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
-    RETURN query SELECT throws_ok(query);
+    RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$||parameter||$$' type. Expected ANY-INTEGER$$,'Expected Exception FLOAT8 with '||parameter);
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
+    RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$||parameter||$$' type. Expected ANY-INTEGER$$,'Expected Exception NUMERIC with '||parameter);
+
 END;
 $BODY$ LANGUAGE plpgsql;
 
@@ -154,22 +176,30 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM vehicles $$, $sql1$ SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$, ARRAY[3, 4, 5, 8, 9, 11]) $sql1$)';
+    end_sql = ' FROM vehicles $$, $sql1$ SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$,
+        (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
+        UNION
+        SELECT d_node_id FROM orders
+        UNION
+        SELECT start_node_id FROM vehicles) a)) $sql1$)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'SMALLINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::INTEGER ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'INTEGER on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::BIGINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'BIGINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::REAL ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'REAL on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'FLOAT8 on ' ||parameter||' is OK');
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
+    RETURN query SELECT lives_ok(query,'NUMERIC ' ||parameter||' is OK');
 END;
 $BODY$ LANGUAGE plpgsql;
 
@@ -192,22 +222,31 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$, ARRAY[3, 4, 5, 8, 9, 11]) $sql1$)';
+    end_sql = ' FROM pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$,
+        (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
+        UNION
+        SELECT d_node_id FROM orders
+        UNION
+        SELECT start_node_id FROM vehicles) a)) $sql1$)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'matrix SMALLINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::INTEGER ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'matrix INTEGER on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::BIGINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'matrix BIGINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::REAL ' || end_sql;
-    RETURN query SELECT throws_ok(query);
+    RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$||parameter||$$' type. Expected ANY-INTEGER$$,'Matrix Expected Exception REAL with '||parameter);
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
-    RETURN query SELECT throws_ok(query);
+    RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$||parameter||$$' type. Expected ANY-INTEGER$$,'Matrix Expected Exception FLOAT8 with '||parameter);
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
+    RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$||parameter||$$' type. Expected ANY-INTEGER$$,'Matrix Expected Exception NUMERIC with '||parameter);
+
 END;
 $BODY$ LANGUAGE plpgsql;
 
@@ -229,22 +268,31 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$, ARRAY[3, 4, 5, 8, 9, 11]) $sql1$)';
+    end_sql = ' FROM pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$,
+        (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
+        UNION
+        SELECT d_node_id FROM orders
+        UNION
+        SELECT start_node_id FROM vehicles) a)) $sql1$)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'matrix SMALLINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::INTEGER ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'matrix INTEGER on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::BIGINT ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'matrix BIGINT on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::REAL ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'matrix REAL on ' ||parameter||' is OK');
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,'matrix FLOAT8 on ' ||parameter||' is OK');
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
+    RETURN query SELECT lives_ok(query,'matrix NUMERIC ' ||parameter||' is OK');
+
 END;
 $BODY$ LANGUAGE plpgsql;
 
@@ -313,6 +361,7 @@ SELECT test_anynumerical_orders('pgr_pickdeliver',
     'speed' is optional defaults to 1
     'start_service' is optional defaults to 0
 */
+
 SELECT test_anyInteger_matrix('pgr_pickdeliver',
     ARRAY['start_vid', 'end_vid', 'agg_cost'],
     'start_vid');
@@ -324,7 +373,6 @@ SELECT test_anyInteger_matrix('pgr_pickdeliver',
 SELECT test_anyNumerical_matrix('pgr_pickdeliver',
     ARRAY['start_vid', 'end_vid', 'agg_cost'],
     'agg_cost');
-
 
 SELECT finish();
 ROLLBACK;
