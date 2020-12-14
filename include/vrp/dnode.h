@@ -42,22 +42,25 @@ namespace vrp {
  *
  * currently needs the PD_problem
  */
-class Dnode : public Base_node, public PD_problem {
+class Dnode :  public PD_problem, public Identifier {
  public:
      /*! @name constructors
       * @{
       */
      Dnode() = default;
      /*! @brief data constructor */
-     Dnode(size_t id, int64_t original_id, double, double);
+     Dnode(size_t id, int64_t original_id);
      /*!@}*/
 
 
-     using Base_node::operator==;
+     bool operator==(const Dnode &other) const;
 
-     double distance(const Base_node *) const;
+     double distance(const Dnode &other) const;
 
      friend std::ostream& operator << (std::ostream &log, const Dnode &node);
+
+ protected:
+     static Pgr_messages& msg() ;
 };
 
 }  // namespace vrp

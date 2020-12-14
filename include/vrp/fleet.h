@@ -106,11 +106,10 @@ class Fleet : public PD_problem {
      void add_vehicle(
              Vehicle_t,
              double factor,
-             std::unique_ptr<Base_node>,
              const Vehicle_node&,
-             std::unique_ptr<Base_node>,
              const Vehicle_node&);
 
+#if 0
      template <typename T> std::unique_ptr<Base_node> create_b_start(
              const Vehicle_t &vehicle,
              size_t node_id) {
@@ -132,6 +131,7 @@ class Fleet : public PD_problem {
                      vehicle.end_y));
          return b_end;
      }
+#endif
 };
 
 

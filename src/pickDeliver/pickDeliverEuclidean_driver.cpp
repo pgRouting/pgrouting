@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <deque>
 #include <vector>
+#include <map>
 
 #include "vrp/pgr_pickDeliver.h"
 
@@ -81,10 +82,46 @@ do_pgr_pickDeliverEuclidean(
         std::vector<Vehicle_t> vehicles(
                 vehicles_arr, vehicles_arr + total_vehicles);
 
+        std::map<std::pair<double, double>, int64_t> matrix_data;
+
+        for (const auto &o : orders) {
+            matrix_data[std::pair<double, double>(o.pick_x, o.pick_y)] = o.pick_node_id;
+            matrix_data[std::pair<double, double>(o.deliver_x, o.deliver_y)] = o.deliver_node_id;
+        }
+
+        for (const auto &v : vehicles) {
+            matrix_data[std::pair<double, double>(v.start_x, v.start_y)] = v.start_node_id;
+            matrix_data[std::pair<double, double>(v.end_x, v.end_y)] = v.end_node_id;
+        }
+
+        Identifiers<int64_t> unique_ids;
+        for (const auto &e: matrix_data) {
+            unique_ids += e.second;
+        }
+        if (unique_ids.size() != matrix_data.size()) {
+            // ignoring ids given by the user
+            int64_t id(0);
+            for (auto &e: matrix_data) {
+                e.second = id++;
+            }
+        }
+
+        for (auto &o : orders) {
+            o.pick_node_id = matrix_data[std::pair<double, double>(o.pick_x, o.pick_y)];
+            o.deliver_node_id = matrix_data[std::pair<double, double>(o.deliver_x, o.deliver_y)];
+        }
+        for (auto &v : vehicles) {
+            v.start_node_id = matrix_data[std::pair<double, double>(v.start_x, v.start_y)];
+            v.end_node_id = matrix_data[std::pair<double, double>(v.end_x, v.end_y)];
+        }
+
+        pgrouting::tsp::Dmatrix cost_matrix(matrix_data);
+
         log << "Initialize problem\n";
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,
                 vehicles,
+                cost_matrix,
                 factor,
                 static_cast<size_t>(max_cycles),
                 initial_solution_id);
@@ -149,6 +186,14 @@ do_pgr_pickDeliverEuclidean(
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::pair<std::string, std::string>& ex) {
+        (*return_count) = 0;
+        err << ex.first;
+        log.str("");
+        log.clear();
+        log << ex.second;
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
