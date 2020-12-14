@@ -56,7 +56,28 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c IMMUTABLE STRICT;
 
+--v3.2
+CREATE FUNCTION _pgr_dagShortestPath(
+    TEXT,
+    TEXT,
+    directed BOOLEAN DEFAULT true,
+    only_cost BOOLEAN DEFAULT false,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C IMMUTABLE STRICT;
+
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_dagShortestPath(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_dagShortestPath(TEXT, TEXT, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
