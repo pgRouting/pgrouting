@@ -78,19 +78,21 @@ Vehicle_pickDeliver::get_first_order() const {
 
 
 Vehicle_pickDeliver::Vehicle_pickDeliver(
-        size_t id,
-        size_t kind,
+        size_t idx,
+        int64_t id,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_capacity,
         double p_speed,
         double factor) :
-    Vehicle(id, static_cast<int64_t>(kind), starting_site, ending_site, p_capacity, p_speed, factor),
-    cost((std::numeric_limits<double>::max)()) {
+    Vehicle(idx, id, starting_site, ending_site, p_capacity, p_speed, factor),
+    cost((std::numeric_limits<double>::max)()),
+    m_orders_in_vehicle(),
+    m_orders(),
+    m_feasable_orders() {
 #if 0
         ENTERING();
 #endif
-        m_orders_in_vehicle.clear();
         invariant();
 #if 0
         EXITING();

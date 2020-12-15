@@ -2,9 +2,9 @@
 
 /*
 Data from
-Benchmark tests with data from:
-https://github.com/plotly/documentation/blob/source-design-merge/_posts/python/scientific/alpha-shapes/data-ex-2d.txt
-https://plot.ly/python/alpha-shapes/
+Benchmark test with data from:
+https://github.com/plotly/graphing-library-docs/blob/master/_posts/python-v3/scientific/alpha-shapes/data-ex-2d.txt
+https://plotly.com/python/v3/alpha-shapes/
 */
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(147);

@@ -130,6 +130,7 @@ do_pgr_pickDeliver(
         }
 
         // TODO(vicky) wrap with a try and make a throw???
+	// tried it is already wrapped
         log << "Initialize problem\n";
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,
@@ -200,6 +201,22 @@ do_pgr_pickDeliver(
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::pair<std::string, std::string>& ex) {
+        (*return_count) = 0;
+        err << ex.first;
+        log.str("");
+        log.clear();
+        log << ex.second;
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::pair<std::string, int64_t>& ex) {
+        (*return_count) = 0;
+        err << ex.first;
+        log.str("");
+        log.clear();
+        log << "Node missing on matrix: id =  " << ex.second;
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {

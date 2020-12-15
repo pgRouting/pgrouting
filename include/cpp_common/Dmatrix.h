@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <iostream>
 #include <vector>
+#include <map>
 
 #include "c_types/matrix_cell_t.h"
 
@@ -43,6 +44,7 @@ class Dmatrix {
  public:
     Dmatrix() = default;
     explicit Dmatrix(const std::vector < Matrix_cell_t > &data_costs);
+    explicit Dmatrix(const std::map<std::pair<double, double>, int64_t> &euclidean_data);
 
     bool has_no_infinity() const;
     bool obeys_triangle_inequality() const;

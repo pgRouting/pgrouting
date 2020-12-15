@@ -59,8 +59,8 @@ class Vehicle_pickDeliver : public Vehicle {
      friend class Optimize;
 
      Vehicle_pickDeliver(
-             size_t id,
-             size_t kind,
+             size_t idx,
+             int64_t id,
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
              double p_capacity,
