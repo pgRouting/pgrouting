@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/identifier.h"
 
 #include "vrp/pd_problem.h"
-#include "vrp/node.h"
+#include "vrp/dnode.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -54,7 +54,7 @@ namespace vrp {
  * values and requirements for @c type and @c streetid.
  *
  */
-class Tw_node : public Identifier, public PD_problem {
+class Tw_node : public Dnode {
  public:
      typedef enum {
          kStart = 0,  ///< starting site

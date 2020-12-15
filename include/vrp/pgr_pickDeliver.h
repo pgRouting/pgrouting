@@ -53,12 +53,14 @@ class Base_node;
 
 class Pgr_pickDeliver : public PD_problem {
  public:
+#if 0
     Pgr_pickDeliver(
             const std::vector<PickDeliveryOrders_t> &pd_orders,
             const std::vector<Vehicle_t> &vehicles,
             double factor,
             size_t max_cycles,
             int initial);
+#endif
 
     Pgr_pickDeliver(
             const std::vector<PickDeliveryOrders_t> &pd_orders,
@@ -77,15 +79,17 @@ class Pgr_pickDeliver : public PD_problem {
     Solution optimize(const Solution init_solution);
     size_t max_cycles() const {return m_max_cycles;}
 
+#if 0
     inline size_t& node_id() {return m_node_id;}
+#endif
 
-    void add_node(const Vehicle_node &node) {
-        m_nodes.push_back(node);
-    }
+    void add_node(const Vehicle_node &node);
 
+#if 0
     void add_base_node(std::unique_ptr<Base_node> node_ptr) {
         m_base_nodes.push_back(std::move(node_ptr));
     }
+#endif
 
     Initials_code get_kind() const {
         return (Initials_code) problem->m_initial_id;
@@ -104,14 +108,18 @@ class Pgr_pickDeliver : public PD_problem {
     //! maximum cycles in the optimization
     size_t m_max_cycles;
 
+#if 0
     //! used to keep track of the next id the node gets in the eucledian version
     size_t m_node_id;
+#endif
 
-    std::vector<Vehicle_node> m_nodes;
 
  public:
     // TODO(vicky) make this private
+    std::vector<Vehicle_node> m_nodes;
+#if 0
     std::vector<std::unique_ptr<Base_node>> m_base_nodes;
+#endif
     pgrouting::tsp::Dmatrix m_cost_matrix;
 
  private:

@@ -20,9 +20,14 @@ SELECT * FROM pgr_pickDeliver(
 
 SELECT * FROM pgr_pickDeliver(
     $$ SELECT * FROM orders ORDER BY id $$,
-    $$ SELECT * FROM vehicles $$,
+    $$ SELECT * FROM vehicles ORDER BY id$$,
     $$ SELECT * from pgr_dijkstraCostMatrix(
-        ' SELECT * FROM edge_table ', ARRAY[3, 4, 5, 8, 9, 11])
+        'SELECT * FROM edge_table ',
+        (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
+        UNION
+        SELECT d_node_id FROM orders
+        UNION
+        SELECT start_node_id FROM vehicles) a))
     $$
 );
 

@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.1.0
+# Copyright (C) pgRouting Contributors - Version v3.2.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.1.0\n"
+"Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-08 12:28-0600\n"
+"POT-Creation-Date: 2020-12-14 13:58-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,41 +36,54 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:23
-msgid "Version 3.0.0"
+msgid "Version 3.2.0"
 msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:25
-msgid "**Official** function"
+msgid "New **proposed** function:"
 msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:27
-msgid "Version 2.5.0"
+msgid "pgr_edgeDisjointPaths(Combinations)"
 msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:29
-msgid "**Proposed** function"
+msgid "Version 3.0.0"
 msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:31
-msgid "Version 2.3.0"
+msgid "**Official** function"
 msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:33
-msgid "New **Experimental** function"
+msgid "Version 2.5.0"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:36
-msgid "Support"
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:35
+msgid "**Proposed** function"
 msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:37
+msgid "Version 2.3.0"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:39
+msgid "New **Experimental** function"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:42
+msgid "Support"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:43
 msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_edgeDisjointPaths.html>`__) `3.0 "
+"**Supported versions:** current(`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_edgeDisjointPaths.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_edgeDisjointPaths.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_edgeDisjointPaths.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:41
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:48
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_edgeDisjointPaths.html>`__ `2.5 "
@@ -82,51 +95,51 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgr_bdDijkstra.rst:4
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:48
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:55
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:50
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:57
 msgid ""
 "Calculates the edge disjoint paths between two groups of vertices. "
 "Utilizes underlying maximum flow algorithms to calculate the paths."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:58
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:65
 msgid "The main characterics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:54
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:61
 msgid "Calculates the edge disjoint paths between any two groups of vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:55
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:62
 msgid ""
 "Returns EMPTY SET when source and destination are the same, or cannot be "
 "reached."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:56
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:63
 msgid "The graph can be directed or undirected."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:57
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:64
 msgid "One to many, many to one, many to many versions are also supported."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:58
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:65
 msgid "Uses :doc:`pgr_boykovKolmogorov` to calculate the paths."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:61
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:68
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:64
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:71
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:77
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:85
 msgid "Using defaults"
 msgstr ""
 
@@ -134,49 +147,60 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:84
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:92
 msgid "From vertex :math:`3` to vertex :math:`5` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:94
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:102
 msgid "One to One"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:102
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:110
 msgid "From vertex :math:`3` to vertex :math:`5` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:112
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:120
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:120
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:128
 msgid ""
 "From vertex :math:`3` to vertices :math:`\\{4, 5, 10\\}` on a "
 "**directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:131
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:139
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:139
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:147
 msgid ""
 "From vertices :math:`\\{3, 6\\}` to vertex :math:`5` on a **directed** "
 "graph"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:150
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:158
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:158
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:166
 msgid ""
 "From vertices :math:`\\{3, 6\\}` to vertices :math:`\\{4, 5, 10\\}` on a "
 "**directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:166
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:177
+msgid "Combinations"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:185
+msgid ""
+"Using a combinations table, equivalent to calculating result from "
+"vertices :math:`\\{3, 6\\}` to vertices :math:`\\{4, 5, 10\\}` on a "
+"**directed** graph."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:192
 msgid "Parameters"
 msgstr ""
 
@@ -281,11 +305,11 @@ msgstr ""
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:173
-msgid "Inner query"
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:199
+msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:176
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:202
 msgid "Edges query"
 msgstr ""
 
@@ -308,18 +332,22 @@ msgstr ""
 msgid "Identifier of the edge."
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "**source**"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
@@ -362,6 +390,7 @@ msgid ""
 " part of the graph."
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Where:"
 msgstr ""
@@ -370,6 +399,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
@@ -382,7 +412,26 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:183
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:209
+msgid "Combinations query"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst
+msgid "Combinations SQL"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:3
+msgid "an SQL query which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:9
+msgid ""
+"The function aggregates the sources and the targets, removes the "
+"duplicates, and then it calculates the result from the resultant source "
+"vertices to the target vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:216
 msgid "Return Columns"
 msgstr ""
 
@@ -489,26 +538,23 @@ msgstr ""
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:190
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:223
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:192
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:225
 msgid ":doc:`flow-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:195
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:228
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:196
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:229
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:197
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:230
 msgid ":ref:`search`"
 msgstr ""
-
-#~ msgid "`Edges query`_ as described below"
-#~ msgstr ""
 

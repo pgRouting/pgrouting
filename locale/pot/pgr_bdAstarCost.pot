@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-08 12:28-0600\n"
+"POT-Creation-Date: 2020-12-15 07:54-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -223,15 +223,15 @@ msgstr ""
 msgid "From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 11\\}` on a **directed** using heuristic :math:`5` and factor :math:`0.5`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:163
+#: ../../build/doc/pgr_bdAstarCost.rst:166
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:171
+#: ../../build/doc/pgr_bdAstarCost.rst:174
 msgid "Using a combinations table on a **directed** graph using factor :math:`0.5`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:179
+#: ../../build/doc/pgr_bdAstarCost.rst:182
 msgid "Parameters"
 msgstr ""
 
@@ -336,7 +336,7 @@ msgstr ""
 msgid "Array of ending vertices identifiers. Parameter in:"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:186
+#: ../../build/doc/pgr_bdAstarCost.rst:189
 msgid "Optional Parameters"
 msgstr ""
 
@@ -433,11 +433,11 @@ msgstr ""
 msgid "For less restricted results. :math:`epsilon >= 1`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:194
+#: ../../build/doc/pgr_bdAstarCost.rst:197
 msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:197
+#: ../../build/doc/pgr_bdAstarCost.rst:200
 msgid "Edges query"
 msgstr ""
 
@@ -575,11 +575,11 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:204
+#: ../../build/doc/pgr_bdAstarCost.rst:207
 msgid "Combinations query"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:211
+#: ../../build/doc/pgr_bdAstarCost.rst:214
 msgid "Result Columns"
 msgstr ""
 
@@ -616,35 +616,35 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:218
+#: ../../build/doc/pgr_bdAstarCost.rst:221
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:220
+#: ../../build/doc/pgr_bdAstarCost.rst:223
 msgid ":doc:`bdAstar-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:221
+#: ../../build/doc/pgr_bdAstarCost.rst:224
 msgid ":doc:`cost-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:222
+#: ../../build/doc/pgr_bdAstarCost.rst:225
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:223
+#: ../../build/doc/pgr_bdAstarCost.rst:226
 msgid "Examples use :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:226
+#: ../../build/doc/pgr_bdAstarCost.rst:229
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:227
+#: ../../build/doc/pgr_bdAstarCost.rst:230
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdAstarCost.rst:228
+#: ../../build/doc/pgr_bdAstarCost.rst:231
 msgid ":ref:`search`"
 msgstr ""
 

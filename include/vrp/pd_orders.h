@@ -88,11 +88,10 @@ class PD_Orders : public PD_problem {
 
      void add_order(
              const PickDeliveryOrders_t &,
-             std::unique_ptr<Base_node>,
              const Vehicle_node&,
-             std::unique_ptr<Base_node>,
              const Vehicle_node&);
 
+#if 0
      template <typename T> std::unique_ptr<Base_node> create_b_pick(
              const PickDeliveryOrders_t &order,
              size_t node_id) {
@@ -114,6 +113,7 @@ class PD_Orders : public PD_problem {
                      order.deliver_y));
          return b_drop;
      }
+#endif
 
  private:
      Orders m_orders;

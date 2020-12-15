@@ -38,6 +38,9 @@ namespace vrp {
 
 double
 Tw_node::travel_time_to(const Tw_node &to, double speed) const {
+    pgassert(speed != 0);
+    return distance(to) / speed;
+#if 0
     /** TODO(vicky)
      * shall call Node or Dnode
      * static cast won't work I think
@@ -48,6 +51,7 @@ Tw_node::travel_time_to(const Tw_node &to, double speed) const {
     pgassert(speed != 0);
      /*! @todo TODO evaluate with matrix also*/
     return from->distance(destination) / speed;
+#endif
 }
 
 
@@ -185,11 +189,21 @@ Tw_node::is_end() const {
 bool
 Tw_node::operator ==(const Tw_node &other) const {
     if (&other == this) return true;
+    return m_order == other.m_order
+        && m_opens == other.m_opens
+        && m_closes == other.m_closes
+        && m_service_time == other.m_service_time
+        && m_demand == other.m_demand
+        && m_type == other.m_type
+        && id() == other.id()
+        && idx() == other.idx();
+#if 0
     auto lhs = static_cast<const Node&>(
             *problem->m_base_nodes[idx()].get());
     auto rhs = static_cast<const Node&>(
             *problem->m_base_nodes[other.idx()].get());
     return lhs == rhs;
+#endif
 }
 
 
@@ -233,7 +247,7 @@ Tw_node::Tw_node(
         size_t id,
         PickDeliveryOrders_t data,
         NodeType type) :
-    Identifier(id, data.pick_node_id),
+    Dnode(id, data.pick_node_id),
     m_order(data.id),
     m_opens(data.pick_open_t),
     m_closes(data.pick_close_t),
@@ -253,7 +267,7 @@ Tw_node::Tw_node(
         size_t id,
         Vehicle_t data,
         NodeType type) :
-    Identifier(id, data.start_node_id),
+    Dnode(id, data.start_node_id),
     m_opens(data.start_open_t),
     m_closes(data.start_close_t),
     m_service_time(data.start_service_t),
@@ -270,8 +284,7 @@ Tw_node::Tw_node(
 
 /*! * \brief Print the contents of a Twnode object. */
 std::ostream& operator << (std::ostream &log, const Tw_node &n) {
-    log << static_cast<const Node&>(
-            *n.problem->m_base_nodes[n.idx()].get())
+    log << n.id()
         << "[opens = " << n.m_opens
         << "\tcloses = " << n.m_closes
         << "\tservice = " << n.m_service_time

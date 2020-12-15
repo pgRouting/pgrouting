@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.1.0
+# Copyright (C) pgRouting Contributors - Version v3.2.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.1.0\n"
+"Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2020-12-14 13:58-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:11
 msgid "pgr_maxFlowMinCost_Cost - Experimental"
@@ -104,59 +104,73 @@ msgid "Availability"
 msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:28
-msgid "Version 3.0.0"
+msgid "Version 3.2.0"
 msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:30
-msgid "New **experimental** function"
+msgid "New **experimental** function:"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:33
-msgid "Support"
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:32
+msgid "pgr_maxFlowMinCost_Cost(Combinations)"
 msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:34
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:36
+msgid "New **experimental** function"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:39
+msgid "Support"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:40
 msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_maxFlowMinCost_Cost.html>`__) `3.0"
+"**Supported versions:** current(`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_maxFlowMinCost_Cost.html>`__) `3.1"
+" <https://docs.pgrouting.org/3.1/en/pgr_maxFlowMinCost_Cost.html>`__ `3.0"
 " <https://docs.pgrouting.org/3.0/en/pgr_maxFlowMinCost_Cost.html>`__"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:39
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:155
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:46
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:183
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:41
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:48
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:43
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:50
 msgid "The graph is **directed**."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:44
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:51
 msgid "**The cost value of all input edges must be nonnegative.**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:45
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:52
 msgid "When the maximum flow is 0 then there is no flow and **0** is returned."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:47
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:54
 msgid "There is no flow when a **source** is the same as a **target**."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:49
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:56
 msgid "Any duplicated value in the source(s) or target(s) are ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:50
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:57
 msgid "Uses the :doc:`pgr_maxFlowMinCost <pgr_maxFlowMinCost>` algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:52
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:59
 msgid ""
 "Running time: :math:`O(U * (E + V * logV))`, where :math:`U` is the value"
 " of the max flow. :math:`U` is upper bound on number of iteration. In "
@@ -164,15 +178,15 @@ msgid ""
 ":math:`U`."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:55
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:62
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:58
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:65
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:71
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:79
 msgid "One to One"
 msgstr ""
 
@@ -180,48 +194,61 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:78
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:86
 msgid "From vertex :math:`2` to vertex :math:`3`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:88
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:96
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:95
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:103
 msgid "From vertex :math:`13` to vertices :math:`\\{7, 1, 4\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:105
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:113
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:112
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:120
 msgid "From vertices :math:`\\{1, 7, 14\\}` to vertex :math:`12`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:122
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:130
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:129
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:137
 msgid "From vertices :math:`\\{7, 13\\}` to vertices :math:`\\{3, 9\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:138
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:148
+msgid "Combinations"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:155
+msgid ""
+"Using a combinations table, equivalent to calculating result from "
+"vertices :math:`\\{7, 13\\}` to vertices :math:`\\{3, 9\\}`."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:162
 msgid "Parameters"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Column"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:155
+#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:183
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr ""
 
@@ -229,56 +256,65 @@ msgstr ""
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:6
+#: ../../build/doc/flow-family.rst:6 ../../build/doc/flow-family.rst:7
 msgid "``TEXT``"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:6
-msgid "The edges SQL query as described in `Inner Query`_."
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:9
-msgid "**source**"
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:9
-msgid "``BIGINT``"
+msgid "Edges query as described in `Inner Queries`_."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:7
-msgid "Identifier of the starting vertex of the flow."
+msgid "**Combinations SQL**"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:8
-msgid "**sources**"
+#: ../../build/doc/flow-family.rst:7
+msgid "Combinations query as described in `Inner Queries`_."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "**source**"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:10
-msgid "``ARRAY[BIGINT]``"
+msgid "``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:8
-msgid "Array of identifiers of the starting vertices of the flow."
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
-msgid "**target**"
+msgid "Identifier of the starting vertex of the flow."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:9
+msgid "**sources**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:11
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:9
+msgid "Array of identifiers of the starting vertices of the flow."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:10 ../../build/doc/pgRouting-concepts.rst:7
+msgid "**target**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:10
 msgid "Identifier of the ending vertex of the flow."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/flow-family.rst:11
 msgid "**targets**"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/flow-family.rst:11
 msgid "Array of identifiers of the ending vertices of the flow."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:145
-msgid "Inner query"
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:169
+msgid "Inner queries"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst
@@ -297,7 +333,8 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
 #: ../../build/doc/flow-family.rst:10 ../../build/doc/flow-family.rst:11
-#: ../../build/doc/flow-family.rst:14
+#: ../../build/doc/flow-family.rst:14 ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
 msgid "``ANY-INTEGER``"
 msgstr ""
 
@@ -305,11 +342,11 @@ msgstr ""
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:9
+#: ../../build/doc/flow-family.rst:9 ../../build/doc/pgRouting-concepts.rst:6
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/flow-family.rst:10 ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
@@ -369,15 +406,15 @@ msgstr ""
 msgid "Weight of the edge `(target, source)` if it exists."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:21
+#: ../../build/doc/flow-family.rst:21 ../../build/doc/pgRouting-concepts.rst:11
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst
+#: ../../build/doc/flow-family.rst ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:23
+#: ../../build/doc/flow-family.rst:23 ../../build/doc/pgRouting-concepts.rst:13
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
@@ -389,39 +426,54 @@ msgstr ""
 msgid "smallint, int, bigint, real, float"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:152
+#: ../../build/doc/flow-family.rst
+msgid "Combinations SQL"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:3
+msgid "an SQL query which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:9
+msgid ""
+"The function aggregates the sources and the targets, removes the "
+"duplicates, and then it calculates the result from the resultant source "
+"vertices to the target vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:180
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:157
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:185
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:157
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:185
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:161
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:189
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:163
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:191
 msgid ":doc:`flow-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:164
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:192
 msgid "https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:167
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:195
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:168
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:196
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:169
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:197
 msgid ":ref:`search`"
 msgstr ""
 
