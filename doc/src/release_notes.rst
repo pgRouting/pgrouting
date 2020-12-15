@@ -65,6 +65,7 @@ pgRouting 3.2.0 Release Notes
 
 * pgr_bellmanFord(Combinations)
 * pgr_binaryBreadthFirstSearch(Combinations)
+* pgr_bipartite
 * pgr_dagShortestPath(Combinations)
 * pgr_depthFirstSearch
 * pgr_dijkstraNear(One to Many)
@@ -77,6 +78,7 @@ pgRouting 3.2.0 Release Notes
 * pgr_dijkstraNearCost(Combinations)
 * pgr_edwardMoore(Combinations)
 * pgr_isPlanar
+* pgr_lengauerTarjanDominatorTree
 * pgr_makeConnected
 * pgr_maxFlowMinCost(Combinations)
 * pgr_maxFlowMinCost_Cost(Combinations)
