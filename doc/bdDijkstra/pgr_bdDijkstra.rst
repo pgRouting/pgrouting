@@ -174,6 +174,9 @@ Many to Many
    :start-after: -- q5
    :end-before: -- q6
 
+.. index::
+    single: bdDijkstra(Combinations) -- Proposed on v3.2
+
 Combinations
 ...............................................................................
 

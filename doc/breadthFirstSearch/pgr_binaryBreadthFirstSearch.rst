@@ -98,7 +98,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: Binary Breadth First Search(One to Many) - Experimental
+    single: binaryBreadthFirstSearch(One to Many) - Experimental
 
 One to many
 ...............................................................................
@@ -116,7 +116,7 @@ One to many
    :end-before: -- q4
 
 .. index::
-    single: Binary Breadth First Search(Many to One) - Experimental
+    single: binaryBreadthFirstSearch(Many to One) - Experimental
 
 Many to One
 ...............................................................................
@@ -134,7 +134,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: Binary Breadth First Search(Many to Many) - Experimental
+    single: binaryBreadthFirstSearch(Many to Many) - Experimental
 
 Many to Many
 ...............................................................................
@@ -152,7 +152,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: Binary Breadth First Search(Combinations) -- Experimental on v3.2
+    single: binaryBreadthFirstSearch(Combinations) -- Experimental on v3.2
 
 Combinations
 ...............................................................................
