@@ -129,7 +129,6 @@ pgr_bdAstar(
 
             previousCombination = comb;
         }
-
     }
 
     log << fn_bdAstar.log();

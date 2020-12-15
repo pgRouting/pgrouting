@@ -192,7 +192,6 @@ _pgr_bdastar(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(6),
                 &result_tuples,
                 &result_count);
-
         }
 
 

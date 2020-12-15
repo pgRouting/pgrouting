@@ -50,9 +50,10 @@ namespace detail {
 void
 post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goals, bool global) {
     paths.erase(std::remove_if(paths.begin(), paths.end(),
-                [](const Path &p){
-                    return p.size()==0;}),
-            paths.end());
+                [](const Path &p) {
+                    return p.size() == 0;
+                }),
+                paths.end());
     using difference_type = std::deque<double>::difference_type;
 
     if (!normal) {

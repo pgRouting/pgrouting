@@ -691,7 +691,7 @@ class Pgr_dijkstra {
                      .distance_inf(std::numeric_limits<double>::infinity())
                      .visitor(dijkstra_many_goal_visitor(goals, n_goals, goals_found)));
          } catch(found_goals &) {
-             for(const auto &g : goals) {
+             for (const auto &g : goals) {
                  if (goals_found.find(g) == goals_found.end()) {
                      /* goal was not found */
                      predecessors[g] = g;

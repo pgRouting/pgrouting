@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <cassert>
+#include <limits>
 
 
 #include "dijkstra/pgr_dijkstra.hpp"
