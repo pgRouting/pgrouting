@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 FILE: pgr_pickDeliver.cpp
 
 Copyright (c) 2015 pgRouting developers
@@ -51,6 +50,8 @@ namespace vrp {
 bool
 Pgr_pickDeliver::nodesOK() const {
     ENTERING();
+    return !(m_nodes.empty());
+#if 0
     if (m_nodes.empty() && m_base_nodes.empty()) return true;
 
     pgassertwm(m_nodes.size() == m_base_nodes.size(), msg.get_log().c_str());
@@ -62,6 +63,7 @@ Pgr_pickDeliver::nodesOK() const {
     }
     EXITING();
     return true;
+#endif
 }
 
 Solution
@@ -157,6 +159,11 @@ Pgr_pickDeliver::get_postgres_result() const {
     return result;
 }
 
+void
+Pgr_pickDeliver::add_node(const Vehicle_node &node) {
+    m_nodes.push_back(node);
+}
+
 /** Constructor  for the matrix version
  *
  */
@@ -170,9 +177,13 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     PD_problem(this),
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
+#if 0
     m_node_id(0),
+#endif
     m_nodes(),
+#if 0
     m_base_nodes(),
+#endif
     m_cost_matrix(cost_matrix),
     m_orders(pd_orders),
     m_trucks(vehicles, factor) {
@@ -261,6 +272,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
 
 
+#if 0
 /***** Constructor for the eculedian version *******/
 
 Pgr_pickDeliver::Pgr_pickDeliver(
@@ -272,7 +284,9 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     PD_problem(this),
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
+#if 0
     m_node_id(0),
+#endif
     m_nodes(),
     m_base_nodes(),
     m_cost_matrix(),
@@ -330,6 +344,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         m_trucks.set_compatibles(m_orders);
         EXITING();
     }  //  constructor
+#endif
 
 
 }  //  namespace vrp

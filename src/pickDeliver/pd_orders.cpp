@@ -46,14 +46,14 @@ PD_Orders::PD_Orders(
 void
 PD_Orders:: add_order(
         const PickDeliveryOrders_t &order,
-        std::unique_ptr<Base_node> b_pick,
         const Vehicle_node &pick,
-        std::unique_ptr<Base_node> b_drop,
         const Vehicle_node &drop) {
+#if 0
     problem->add_base_node(std::move(b_pick));
     problem->add_base_node(std::move(b_drop));
     problem->add_node(pick);
     problem->add_node(drop);
+#endif
 
     /*
      * add into an order
@@ -81,6 +81,8 @@ PD_Orders::build_orders(
          */
 
         if  (problem->m_cost_matrix.empty()) {
+            pgassert(false);
+#if 0
             /*
              * Euclidean version
              */
@@ -98,10 +100,12 @@ PD_Orders::build_orders(
             add_order(order,
                     std::move(b_pick), pickup,
                     std::move(b_drop), delivery);
+#endif
         } else {
             /*
              * matrix version
              */
+#if 0
 #if 0
             msg.log << "pickup \n"
                 << "pick_node_id: " << order.pick_node_id
@@ -124,6 +128,21 @@ PD_Orders::build_orders(
             add_order(order,
                     std::move(b_pick), pickup,
                     std::move(b_drop), delivery);
+#endif
+
+            if (!problem->m_cost_matrix.has_id(order.pick_node_id)) {
+                throw std::make_pair(std::string("Unable to find node on matrix"), order.pick_node_id);
+            }
+            if (!problem->m_cost_matrix.has_id(order.deliver_node_id)) {
+                throw std::make_pair(std::string("Unable to find node on matrix"), order.deliver_node_id);
+            }
+
+            Vehicle_node pickup({problem->m_nodes.size(), order, Tw_node::NodeType::kPickup});
+            problem->add_node(pickup);
+            Vehicle_node delivery({problem->m_nodes.size(), order, Tw_node::NodeType::kDelivery});
+            problem->add_node(delivery);
+
+            add_order(order, pickup, delivery);
         }
     }  //  for (creating orders)
 

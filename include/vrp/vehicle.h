@@ -91,7 +91,7 @@ class Vehicle : public Identifier, public PD_problem {
      Vehicle(const Vehicle &) = default;
      Vehicle(
              size_t idx,
-             int64_t kind,
+             int64_t id,
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
              double p_capacity,
