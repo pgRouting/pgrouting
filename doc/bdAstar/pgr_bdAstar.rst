@@ -180,7 +180,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: bdAstar(Combinations) - Proposed
+    single: bdAstar(Combinations) -- Proposed on v3.2
 
 Combinations
 ...............................................................................

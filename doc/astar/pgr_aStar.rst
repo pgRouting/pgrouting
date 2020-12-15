@@ -186,7 +186,7 @@ Many to Many
    :end-before: --q6
 
 .. index::
-    single: aStar(Combinations) - Proposed
+    single: aStar(Combinations) -- Proposed on v3.2
 
 Combinations
 ...............................................................................

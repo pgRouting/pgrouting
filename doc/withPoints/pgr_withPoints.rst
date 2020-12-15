@@ -176,7 +176,7 @@ Many to Many
    :end-before: --q2
 
 .. index::
-    single: withPoints(Combinations) - Proposed
+    single: withPoints(Combinations) -- Proposed on v3.2
 
 Combinations SQL
 ...............................................................................

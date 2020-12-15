@@ -165,7 +165,7 @@ Many to Many
    :end-before: --q6
 
 .. index::
-    single: aStarCost(Combinations) - Proposed
+    single: aStarCost(Combinations) -- Proposed on v3.2
 
 Combinations
 ...............................................................................

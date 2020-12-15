@@ -159,12 +159,15 @@ Many to Many
    :start-after: -- q5
    :end-before: -- q6
 
+.. index::
+    single: bdAstarCost(Combinations) -- Proposed on v3.2
+
 Combinations
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_bdAstar(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstarCost(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 

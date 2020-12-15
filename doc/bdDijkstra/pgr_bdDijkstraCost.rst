@@ -156,6 +156,9 @@ Many to Many
    :start-after: -- q5
    :end-before: -- q6
 
+.. index::
+    single: bdDijkstraCost(Combinations) -- Proposed on v3.2
+
 Combinations
 ...............................................................................
 
