@@ -122,14 +122,14 @@ process(
             time_msg("processing pgr_dijkstraNearCost", start_t, clock());
         } else {
             time_msg("processing pgr_dijkstraCost", start_t, clock());
-        };
+        }
     } else {
         if (n_goals > 0) {
             time_msg("processing pgr_dijkstraNear", start_t, clock());
         } else {
             time_msg("processing pgr_dijkstra", start_t, clock());
-        };
-    };
+        }
+    }
 
 
     if (err_msg && (*result_tuples)) {
@@ -175,7 +175,7 @@ process_combinations(
     if (total_edges == 0) {
         pgr_SPI_finish();
         return;
-    };
+    }
     pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
     if (total_combinations == 0) {
         if (edges) pfree(edges);
@@ -208,14 +208,14 @@ process_combinations(
             time_msg("Processing pgr_dijkstraNearCost", start_t, clock());
         } else {
             time_msg("Processing pgr_dijkstraCost", start_t, clock());
-        };
+        }
     } else {
         if (n_goals > 0) {
             time_msg("Processing pgr_dijkstraNear", start_t, clock());
         } else {
             time_msg("Processing pgr_dijkstra", start_t, clock());
-        };
-    };
+        }
+    }
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);

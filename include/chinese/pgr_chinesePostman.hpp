@@ -112,8 +112,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
     edgeToIdx(), originalEdges(),
     resultGraph(), VToVecid(), edgeVisited(),
     pathStack(), resultPath(),
-    edges(), sources(), targets()
-{
+    edges(), sources(), targets() {
     pgassert(totalEdges > 0);
     pgassert(pathStack.empty());
 

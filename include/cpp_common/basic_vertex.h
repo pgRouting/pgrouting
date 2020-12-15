@@ -47,7 +47,7 @@ class Basic_vertex {
      explicit Basic_vertex(const int64_t _id) :
          id(_id) {}
 
-     Basic_vertex& operator=(const Basic_vertex&)=default;
+     Basic_vertex& operator=(const Basic_vertex&) = default;
 
      Basic_vertex(const pgr_edge_t &other, bool is_source) :
          id(is_source? other.source : other.target) {}

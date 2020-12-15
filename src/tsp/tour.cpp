@@ -92,7 +92,10 @@ void Tour::swap(
         size_t c2 ) {
     pgassert(c1 < c2);
 
-    std::iter_swap(cities.begin() + static_cast<difference_type>(c1), cities.begin() + static_cast<difference_type>(c2));
+    std::iter_swap(
+        cities.begin() +
+        static_cast<difference_type>(c1), cities.begin() +
+        static_cast<difference_type>(c2));
 }
 
 

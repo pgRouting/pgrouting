@@ -225,7 +225,6 @@ _pgr_astar(PG_FUNCTION_ARGS) {
                 true,
                 &result_tuples,
                 &result_count);
-
         }
 
 

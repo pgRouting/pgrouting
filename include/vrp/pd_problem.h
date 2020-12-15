@@ -50,7 +50,7 @@ class PD_problem {
 
  protected:
      static Pgr_pickDeliver* problem;
-     PD_problem& operator=(const PD_problem &) {return *this;};
+     PD_problem& operator=(const PD_problem &) {return *this;}
 };
 
 }  //  namespace vrp
