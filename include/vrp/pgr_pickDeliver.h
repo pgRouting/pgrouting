@@ -77,6 +77,14 @@ class Pgr_pickDeliver : public PD_problem {
         return (Initials_code) problem->m_initial_id;
     }
 
+    std::vector<Vehicle_node> get_m_nodes() const {
+        return m_nodes;
+    }
+
+    pgrouting::tsp::Dmatrix get_m_cost_matrix() const {
+        return m_cost_matrix;
+    }
+
     Fleet trucks() const {return m_trucks;}
 
  private:
@@ -86,14 +94,9 @@ class Pgr_pickDeliver : public PD_problem {
     //! maximum cycles in the optimization
     size_t m_max_cycles;
 
-
-
- public:
-    // TODO(vicky) make this private
     std::vector<Vehicle_node> m_nodes;
     pgrouting::tsp::Dmatrix m_cost_matrix;
 
- private:
     PD_Orders m_orders;
     Fleet m_trucks;
     std::vector<Solution> solutions;
