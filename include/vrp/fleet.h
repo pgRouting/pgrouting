@@ -109,29 +109,6 @@ class Fleet : public PD_problem {
              const Vehicle_node&,
              const Vehicle_node&);
 
-#if 0
-     template <typename T> std::unique_ptr<Base_node> create_b_start(
-             const Vehicle_t &vehicle,
-             size_t node_id) {
-         std::unique_ptr<Base_node> b_start(new T(
-                     node_id,
-                     vehicle.start_node_id,
-                     vehicle.start_x,
-                     vehicle.start_y));
-         return b_start;
-     }
-
-     template <typename T> std::unique_ptr<Base_node> create_b_end(
-             const Vehicle_t &vehicle,
-             size_t node_id) {
-         std::unique_ptr<Base_node> b_end(new T(
-                     node_id,
-                     vehicle.end_node_id,
-                     vehicle.end_x,
-                     vehicle.end_y));
-         return b_end;
-     }
-#endif
 };
 
 

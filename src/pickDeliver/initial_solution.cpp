@@ -83,9 +83,6 @@ Initial_solution::do_while_foo(int kind) {
     msg.log << "\nInitial_solution::do_while_foo\n";
 #endif
     Identifiers<size_t> notused;
-#if 0
-    bool out_of_trucks(true);
-#endif
 
     while (!unassigned.empty()) {
 #if 0
@@ -93,13 +90,7 @@ Initial_solution::do_while_foo(int kind) {
         msg.log << assigned.size() << " assigned:" << assigned << "\n";
 #endif
         auto current = unassigned.size();
-#if 0
-        auto truck = out_of_trucks?
-            trucks.get_truck(unassigned.front()) :
-            trucks.get_truck();
-#else
         auto truck = trucks.get_truck(unassigned.front());
-#endif
 #if 0
         msg.log << "got truck:" << truck.tau() << "\n";
 #endif
@@ -114,18 +105,6 @@ Initial_solution::do_while_foo(int kind) {
 #endif
         pgassertwm(current > unassigned.size(), msg.get_log().c_str());
 
-#if 0
-        if (truck.orders_in_vehicle().empty()) {
-            out_of_trucks = notused.has(truck.idx());
-            if (out_of_trucks) {
-                for (auto t : notused) {
-                    trucks.release_truck(t);
-                }
-            }
-            notused += truck.idx();
-            continue;
-        }
-#endif
         fleet.push_back(truck);
         invariant();
     }

@@ -546,23 +546,6 @@ Vehicle::Vehicle(
 #endif
     }
 
-#if 0
-Vehicle::Vehicle(const Vehicle &v) :
-    Identifier(v.idx(), v.id()),
-    PD_problem(),
-    m_path(v.m_path),
-    m_capacity(v.m_capacity),
-    m_factor(v.m_factor),
-    m_speed(v.m_speed) {
-#if 0
-        ENTERING();
-        msg.log << v.tau() << "\n";
-        msg.log << tau() << "\n";
-        EXITING();
-#endif
-}
-#endif
-
 
 
 std::string
