@@ -40,9 +40,9 @@ std::ostream& operator << (std::ostream &log, const Dnode &node) {
 
 double
 Dnode::distance(const Dnode &other) const {
-    return problem->m_cost_matrix.distance(
-            problem->m_cost_matrix.get_index(id()),
-            problem->m_cost_matrix.get_index(other.id()));
+    return problem->get_m_cost_matrix().distance(
+            problem->get_m_cost_matrix().get_index(id()),
+            problem->get_m_cost_matrix().get_index(other.id()));
 }
 
 

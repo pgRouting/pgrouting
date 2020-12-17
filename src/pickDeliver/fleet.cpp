@@ -217,11 +217,11 @@ Fleet::build_fleet(
             throw std::make_pair(std::string("Illegal value for capacity found"), vehicle.capacity);
         }
 
-        if  (!problem->m_cost_matrix.empty()) {
-            if (!problem->m_cost_matrix.has_id(vehicle.start_node_id)) {
+        if  (!problem->get_m_cost_matrix().empty()) {
+            if (!problem->get_m_cost_matrix().has_id(vehicle.start_node_id)) {
                 throw std::make_pair(std::string("Unable to find node on matrix"), vehicle.start_node_id);
             }
-            if (!problem->m_cost_matrix.has_id(vehicle.end_node_id)) {
+            if (!problem->get_m_cost_matrix().has_id(vehicle.end_node_id)) {
                 throw std::make_pair(std::string("Unable to find node on matrix"), vehicle.end_node_id);
             }
         }
@@ -245,9 +245,9 @@ Fleet::build_fleet(
         /*
          * Matrix version
          */
-        auto starting_site = Vehicle_node({problem->m_nodes.size(), vehicle, Tw_node::NodeType::kStart});
+        auto starting_site = Vehicle_node({problem->get_m_nodes().size(), vehicle, Tw_node::NodeType::kStart});
         problem->add_node(starting_site);
-        auto ending_site = Vehicle_node({problem->m_nodes.size(), vehicle, Tw_node::NodeType::kEnd});
+        auto ending_site = Vehicle_node({problem->get_m_nodes().size(), vehicle, Tw_node::NodeType::kEnd});
         problem->add_node(ending_site);
 
         pgassert(starting_site.opens() <= starting_site.closes());
