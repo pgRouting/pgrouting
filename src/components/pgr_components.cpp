@@ -45,7 +45,7 @@ namespace algorithms {
 
 std::vector<pgr_components_rt>
 pgr_connectedComponents(pgrouting::UndirectedGraph &graph) {
-    typedef typename pgrouting::UndirectedGraph::V V;
+    typedef pgrouting::UndirectedGraph::V V;
     // perform the algorithm
     std::vector<V> components(num_vertices(graph.graph));
     size_t num_comps;
@@ -70,7 +70,7 @@ pgr_connectedComponents(pgrouting::UndirectedGraph &graph) {
 std::vector<pgr_components_rt>
 strongComponents(
         pgrouting::DirectedGraph &graph) {
-    typedef typename pgrouting::UndirectedGraph::V V;
+    typedef pgrouting::UndirectedGraph::V V;
     // perform the algorithm
     std::vector<V> components(num_vertices(graph.graph));
     size_t num_comps;
