@@ -40,18 +40,6 @@ double
 Tw_node::travel_time_to(const Tw_node &to, double speed) const {
     pgassert(speed != 0);
     return distance(to) / speed;
-#if 0
-    /** TODO(vicky)
-     * shall call Node or Dnode
-     * static cast won't work I think
-     *
-     */
-    auto from =  problem->m_base_nodes[idx()].get();
-    auto destination = problem->m_base_nodes[to.idx()].get();
-    pgassert(speed != 0);
-     /*! @todo TODO evaluate with matrix also*/
-    return from->distance(destination) / speed;
-#endif
 }
 
 
@@ -197,13 +185,6 @@ Tw_node::operator ==(const Tw_node &other) const {
         && m_type == other.m_type
         && id() == other.id()
         && idx() == other.idx();
-#if 0
-    auto lhs = static_cast<const Node&>(
-            *problem->m_base_nodes[idx()].get());
-    auto rhs = static_cast<const Node&>(
-            *problem->m_base_nodes[other.idx()].get());
-    return lhs == rhs;
-#endif
 }
 
 

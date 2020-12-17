@@ -129,8 +129,6 @@ do_pgr_pickDeliver(
             return;
         }
 
-        // TODO(vicky) wrap with a try and make a throw???
-	// tried it is already wrapped
         log << "Initialize problem\n";
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 orders,

@@ -118,12 +118,6 @@ Optimize::inter_swap() {
         }
     }
 
-#if 0
-    while (!p_swaps.empty()) {
-        swapped_f = swap_order() || swapped_f;
-    }
-#endif
-
     msg.log
         << "\n" <<tau("after");
     delete_empty_truck();
@@ -427,83 +421,6 @@ Optimize::delete_empty_truck() {
     save_if_best();
 }
 
-#if 0
-void
-Optimize::move_duration_based() {
-    auto local_limit(fleet.size());
-    size_t i(0);
-
-    sort_by_duration();
-    msg.log << tau("\nmove duration based");
-    while (move_reduce_cost() && (++i < local_limit)) { }
-    delete_empty_truck();
-
-    i = 0;
-    sort_by_duration();
-    std::reverse(fleet.begin(), fleet.end());
-    msg.log << tau("\nmove duration based");
-    while (move_reduce_cost() && (++i < local_limit)) { }
-    sort_by_duration();
-    delete_empty_truck();
-    this->fleet = best_solution.fleet;
-}
-
-
-void
-Optimize::move_wait_time_based() {
-    this->fleet = best_solution.fleet;
-
-    auto local_limit(fleet.size());
-    size_t i(0);
-
-    sort_for_move();
-    msg.log << tau("\nmove wait_time based");
-    while (move_reduce_cost() && (++i < local_limit)) { }
-    delete_empty_truck();
-
-    i = 0;
-    sort_for_move();
-    std::reverse(fleet.begin(), fleet.end());
-    msg.log << tau("\nmove wait_time based");
-    while (move_reduce_cost() && (++i < local_limit)) { }
-    sort_by_duration();
-    delete_empty_truck();
-    this->fleet = best_solution.fleet;
-}
-#endif
-
-#if 0
-/*
- * On the current order of the fleet
- * T1 .......Tn-1  Tn Tn+1...... Tsize
- * Tn tries to move orders to trucks
- *      T1 .... Tn-1
- * So that it gets space for the orders given by
- *      Tn+1 .... Tsize
- * On the first move possible it returns
- *
- * When a truck is emptied, then it removes the truck from the fleet
- *
- * Returns true: when a move was possible
- * Returns false: when a move was not possible
- */
-
-
-bool
-Optimize::move_reduce_cost() {
-    if (fleet.size() < 2) return false;
-    bool moved = false;
-
-    size_t from_pos(fleet.size() - 1);
-    while (from_pos > 1) {
-        for (size_t to_pos = 0; to_pos < from_pos; ++to_pos) {
-            moved = move_reduce_cost(from_pos, to_pos) || moved;
-        }
-        --from_pos;
-    }
-    return moved;
-}
-#endif
 
 /*
  * from_truck trying to make from_truck's duration smaller

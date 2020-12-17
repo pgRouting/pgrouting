@@ -91,30 +91,6 @@ class PD_Orders : public PD_problem {
              const Vehicle_node&,
              const Vehicle_node&);
 
-#if 0
-     template <typename T> std::unique_ptr<Base_node> create_b_pick(
-             const PickDeliveryOrders_t &order,
-             size_t node_id) {
-         std::unique_ptr<Base_node> b_pick(new T(
-                     node_id,
-                     order.pick_node_id,
-                     order.pick_x,
-                     order.pick_y));
-         return b_pick;
-     }
-
-     template <typename T> std::unique_ptr<Base_node> create_b_deliver(
-             const PickDeliveryOrders_t &order,
-             size_t node_id) {
-         std::unique_ptr<Base_node> b_drop(new T(
-                     node_id,
-                     order.deliver_node_id,
-                     order.deliver_x,
-                     order.deliver_y));
-         return b_drop;
-     }
-#endif
-
  private:
      Orders m_orders;
 };
