@@ -77,11 +77,11 @@ class Pgr_pickDeliver : public PD_problem {
         return (Initials_code) problem->m_initial_id;
     }
 
-    std::vector<Vehicle_node> get_m_nodes() const {
+    std::vector<Vehicle_node> get_nodes() const {
         return m_nodes;
     }
 
-    pgrouting::tsp::Dmatrix get_m_cost_matrix() const {
+    pgrouting::tsp::Dmatrix get_cost_matrix() const {
         return m_cost_matrix;
     }
 
