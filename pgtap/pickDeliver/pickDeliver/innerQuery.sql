@@ -6,12 +6,15 @@ SELECT plan(80);
 SET client_min_messages TO ERROR;
 
 /* A call looks like this
-TODO select a smaller test, because each passing test takes about 19 seconds
 SELECT * INTO pickDeliverResults FROM pgr_pickdeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
-    $sql1$ SELECT * from pgr_dijkstraCostMatrix(
-        $$SELECT * FROM edge_table$$, ARRAY[3, 4, 5, 8, 9, 11])
+    $sql1$ SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$,
+        (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
+        UNION
+        SELECT d_node_id FROM orders
+        UNION
+        SELECT start_node_id FROM vehicles) a)) $sql1$)';
     $sql1$
     );
 */
