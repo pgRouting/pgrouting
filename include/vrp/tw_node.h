@@ -148,6 +148,7 @@ class Tw_node : public Dnode {
      bool is_dump() const;
 
 
+#if 0
      /*! @brief is_Load
       *
       * To be a Load node:
@@ -156,6 +157,7 @@ class Tw_node : public Dnode {
       *
       **/
      bool is_load() const;
+#endif
 
 
      /*! @brief is_end
@@ -192,12 +194,14 @@ class Tw_node : public Dnode {
      inline bool is_late_arrival(double arrival_time) const {
          return arrival_time > m_closes;
      }
+#if 0
      /*! @brief True when @b arrivalTime in the time window */
      inline bool is_on_time(double arrival_time) const {
          return !is_early_arrival(arrival_time)
              && !is_late_arrival(arrival_time);
      }
      /*!@}*/
+#endif
 
 
      /** @name document functions */
@@ -209,12 +213,14 @@ class Tw_node : public Dnode {
       **/
      double arrival_j_opens_i(const Tw_node &I, double speed) const;
 
+#if 0
      /*!
       * The actual arrival time at @b this node, given that:
       * @b this node is visited directly after @b other node
       * and that the actual arrival time at @b other node was closes(other)
       **/
      double arrival_j_closes_i(const Tw_node &I, double speed) const;
+#endif
 
 
      /*
@@ -223,6 +229,7 @@ class Tw_node : public Dnode {
       */
      bool is_compatible_IJ(const Tw_node &I, double speed) const;
 
+#if 0
      /*
       * is possible to arrive to @b this after visiting @bother
       *   - departing as late as possible from @b other it can arrives to @b this
@@ -249,6 +256,7 @@ class Tw_node : public Dnode {
       * - does not have a waiting time when arriving as earliest as possible after
       */
      bool is_waitTime_compatible_IJ(const Tw_node &I, double speed) const;
+#endif
 
 
      ///@}
@@ -266,8 +274,10 @@ class Tw_node : public Dnode {
              Vehicle_t data,
              NodeType type);
 
+#if 0
  protected:
      bool is_valid() const;
+#endif
 
  private:
      int64_t m_order;       ///< order to which it belongs
