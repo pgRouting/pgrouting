@@ -36,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "cpp_common/identifiers.hpp"
 
-#include "vrp/base_node.h"
 #include "vrp/pd_problem.h"
 
 
