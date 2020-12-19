@@ -136,6 +136,7 @@ Vehicle_node::Vehicle_node(const Tw_node &node)
 
 
 
+#if 0
 bool
 Vehicle_node::deltaGeneratesTWV(double delta_time) const {
     return is_late_arrival(m_arrival_time + delta_time);
@@ -155,6 +156,7 @@ Vehicle_node::arrival_i_arrives_j(
         + other.service_time()
         + other.travel_time_to(*this, speed);
 }
+#endif
 
 }  //  namespace vrp
 }  //  namespace pgrouting
