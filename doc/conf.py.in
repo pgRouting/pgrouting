@@ -318,6 +318,9 @@ pdf_style_path = ['.', '_styles']
 
 # cases to ignore during link checking
 linkcheck_ignore = [
+    # Link is going to be fixed by sponsor
+    'https://www.leopark.mx/',
+
     # might not exist yet (we are generating it!)
     'https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html',
     'https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html',
