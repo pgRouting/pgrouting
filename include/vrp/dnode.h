@@ -53,14 +53,18 @@ class Dnode :  public PD_problem, public Identifier {
      /*!@}*/
 
 
+#if 0
      bool operator==(const Dnode &other) const;
+#endif
 
      double distance(const Dnode &other) const;
 
      friend std::ostream& operator << (std::ostream &log, const Dnode &node);
 
+#if 0
  protected:
      static Pgr_messages& msg() ;
+#endif
 };
 
 }  // namespace vrp

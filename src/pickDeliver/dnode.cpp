@@ -51,6 +51,7 @@ Dnode::Dnode(size_t idx, int64_t id) :
     Identifier(idx, id) {
     }
 
+#if 0
 bool
 Dnode::operator ==(const Dnode &rhs) const {
     if (&rhs == this) return true;
@@ -63,6 +64,7 @@ Pgr_messages&
 Dnode::msg() {
     return problem->msg;
 }
+#endif
 
 }  //  namespace vrp
 }  //  namespace pgrouting
