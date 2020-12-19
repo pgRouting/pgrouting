@@ -69,11 +69,13 @@ Fleet::get_truck() {
     return m_trucks[idx];
 }
 
+#if 0
 void
 Fleet::release_truck(size_t id) {
     used -= id;
     un_used += id;
 }
+#endif
 
 Vehicle_pickDeliver
 Fleet::get_truck(size_t order) {
@@ -113,6 +115,7 @@ Fleet::get_truck(size_t order) {
 }
 
 
+#if 0
 Vehicle_pickDeliver
 Fleet::get_truck(const Order order) {
     auto id = m_trucks.front().idx();
@@ -129,6 +132,7 @@ Fleet::get_truck(const Order order) {
     }
     return m_trucks[id];
 }
+#endif
 
 
 void
