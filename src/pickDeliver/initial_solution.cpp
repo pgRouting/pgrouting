@@ -38,8 +38,8 @@ namespace vrp {
 void
 Initial_solution::invariant() const {
     /* this checks there is no order duplicated */
-    pgassert(all_orders == (assigned + unassigned));
-    pgassert((assigned * unassigned).empty());
+    pgassert(m_all_orders == (m_assigned + m_unassigned));
+    pgassert((m_assigned * m_unassigned).empty());
 }
 
 
@@ -47,9 +47,9 @@ Initial_solution::Initial_solution(
         Initials_code kind,
         size_t number_of_orders) :
     Solution(),
-    all_orders(number_of_orders),
-    unassigned(number_of_orders),
-    assigned() {
+    m_all_orders(number_of_orders),
+    m_unassigned(number_of_orders),
+    m_assigned() {
         invariant();
         pgassert(kind >= 0 && kind <= OneDepot);
 
@@ -84,26 +84,26 @@ Initial_solution::do_while_foo(int kind) {
 #endif
     Identifiers<size_t> notused;
 
-    while (!unassigned.empty()) {
+    while (!m_unassigned.empty()) {
 #if 0
-        msg.log << unassigned.size() << " unassigned: " << unassigned << "\n";
-        msg.log << assigned.size() << " assigned:" << assigned << "\n";
+        msg.log << m_unassigned.size() << " m_unassigned: " << m_unassigned << "\n";
+        msg.log << m_assigned.size() << " m_assigned:" << m_assigned << "\n";
 #endif
-        auto current = unassigned.size();
-        auto truck = trucks.get_truck(unassigned.front());
+        auto current = m_unassigned.size();
+        auto truck = trucks.get_truck(m_unassigned.front());
 #if 0
         msg.log << "got truck:" << truck.tau() << "\n";
 #endif
         /*
          * kind 1 to 7 work with the same code structure
          */
-        truck.do_while_feasable((Initials_code)kind, unassigned, assigned);
+        truck.do_while_feasable((Initials_code)kind, m_unassigned, m_assigned);
 #if 0
-        msg.log << unassigned.size() << " unassigned: " << unassigned << "\n";
-        msg.log << assigned.size() << " assigned:" << assigned << "\n";
-        msg.log << "current" << current << " unassigned: " << unassigned.size();
+        msg.log << m_unassigned.size() << " m_unassigned: " << m_unassigned << "\n";
+        msg.log << m_assigned.size() << " m_assigned:" << m_assigned << "\n";
+        msg.log << "current" << current << " m_unassigned: " << m_unassigned.size();
 #endif
-        pgassertwm(current > unassigned.size(), msg.get_log().c_str());
+        pgassertwm(current > m_unassigned.size(), msg.get_log().c_str());
 
         fleet.push_back(truck);
         invariant();
@@ -122,13 +122,13 @@ Initial_solution::one_truck_all_orders() {
     invariant();
     msg.log << "\nInitial_solution::one_truck_all_orders\n";
     auto truck = trucks.get_truck();
-    while (!unassigned.empty()) {
-        auto order(truck.orders()[*unassigned.begin()]);
+    while (!m_unassigned.empty()) {
+        auto order(truck.orders()[*m_unassigned.begin()]);
 
         truck.insert(order);
 
-        assigned += unassigned.front();
-        unassigned.pop_front();
+        m_assigned += m_unassigned.front();
+        m_unassigned.pop_front();
 
         invariant();
     }

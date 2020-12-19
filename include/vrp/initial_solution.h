@@ -60,10 +60,9 @@ class Initial_solution : public Solution {
      void do_while_foo(int kind);
 
 
- private:
-     Identifiers<size_t> all_orders;
-     Identifiers<size_t> unassigned;
-     Identifiers<size_t> assigned;
+     Identifiers<size_t> m_all_orders;
+     Identifiers<size_t> m_unassigned;
+     Identifiers<size_t> m_assigned;
 };
 
 }  //  namespace vrp
