@@ -98,6 +98,7 @@ PD_Orders::build_orders(
 #endif
 }
 
+#if 0
 bool
 PD_Orders::is_valid(double speed) const {
     for (const auto &o : m_orders) {
@@ -111,6 +112,7 @@ PD_Orders::is_valid(double speed) const {
     }
     return true;
 }
+#endif
 
 Order&
 PD_Orders::operator[](size_t i) {
