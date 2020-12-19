@@ -179,10 +179,12 @@ class Vehicle_pickDeliver : public Vehicle {
       */
      void erase(const Order &order);
 
+#if 0
      /* @brief
       */
      Order get_first_order() const;
      Order get_worse_order(Identifiers<size_t> of_this_subset) const;
+#endif
 
      void do_while_feasable(
              Initials_code kind,
@@ -196,8 +198,10 @@ class Vehicle_pickDeliver : public Vehicle {
       * \returns id of the removed order
       */
 
+#if 0
      size_t pop_back();
      size_t pop_front();
+#endif
 };
 
 }  //  namespace vrp
