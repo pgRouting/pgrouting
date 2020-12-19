@@ -75,9 +75,13 @@ class Fleet : public PD_problem {
      bool is_order_ok(const Order &order) const;
 
      Vehicle_pickDeliver get_truck();
+#if 0
      void release_truck(size_t id);
+#endif
      Vehicle_pickDeliver get_truck(size_t order);
+#if 0
      Vehicle_pickDeliver get_truck(const Order order);
+#endif
 
      /*! @name vector like functions
       * @{
