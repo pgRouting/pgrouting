@@ -312,6 +312,14 @@ Fleet::is_order_ok(const Order &order) const {
     return false;
 }
 
+Fleet&
+Fleet::operator=(const Fleet &fleet) {
+    m_trucks = fleet.m_trucks;
+    m_used = fleet.m_used;
+    m_un_used = fleet.m_un_used;
+    return *this;
+}
+
 Vehicle_pickDeliver&
 Fleet::operator[](size_t i) {
     pgassert(i < m_trucks.size());

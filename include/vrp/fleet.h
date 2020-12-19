@@ -60,13 +60,7 @@ class Fleet : public PD_problem {
      Fleet(const Fleet &fleet);
      /*!@}*/
 
-     /* TODO move code to .cpp */
-     Fleet& operator=(const Fleet &fleet) {
-         m_trucks = fleet.m_trucks;
-         m_used = fleet.m_used;
-         m_un_used = fleet.m_un_used;
-         return *this;
-     }
+     Fleet& operator=(const Fleet &fleet);
 
      void set_compatibles(const PD_Orders &orders);
 
