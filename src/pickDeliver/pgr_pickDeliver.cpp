@@ -46,6 +46,7 @@ namespace pgrouting {
 namespace vrp {
 
 
+#if 0
 Solution
 Pgr_pickDeliver::optimize(const Solution solution) {
     pgassert(false);
@@ -57,6 +58,7 @@ Pgr_pickDeliver::optimize(const Solution solution) {
     msg.log << opt_solution.best_solution.tau("optimized");
     return opt_solution.best_solution;
 }
+#endif
 
 void
 Pgr_pickDeliver::solve() {

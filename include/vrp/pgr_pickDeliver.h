@@ -68,7 +68,9 @@ class Pgr_pickDeliver : public PD_problem {
         get_postgres_result() const;
 
 
+#if 0
     Solution optimize(const Solution init_solution);
+#endif
     size_t max_cycles() const {return m_max_cycles;}
 
     void add_node(const Vehicle_node &node);
