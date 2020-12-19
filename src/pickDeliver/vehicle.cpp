@@ -184,6 +184,7 @@ Vehicle::insert(POS at, Vehicle_node node) {
 }
 
 
+#if 0
 double
 Vehicle::deltaTime(const Vehicle_node &node, POS pos) const {
     /*
@@ -233,6 +234,7 @@ Vehicle::insert_less_travel_time(const Vehicle_node &node, POS after_pos) {
     invariant();
     return min_pos;
 }
+#endif
 
 void
 Vehicle::erase(const Vehicle_node &node) {
@@ -252,6 +254,7 @@ Vehicle::erase(const Vehicle_node &node) {
 }
 
 
+#if 0
 /*
  * before: S E
  * after: S N E
@@ -307,6 +310,7 @@ Vehicle::pop_front() {
 
     invariant();
 }
+#endif
 
 
 
