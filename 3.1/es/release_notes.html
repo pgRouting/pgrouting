@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -95,8 +95,10 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Notas de versión</a><ul>
+<li><a class="reference internal" href="#pgrouting-3-1-2-release-notes">pgRouting 3.1.2 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-1-1-release-notes">pgRouting 3.1.1 Notas de la Versión</a></li>
 <li><a class="reference internal" href="#pgrouting-3-1-0-release-notes">Notas de la Versión pgRouting 3.1.0</a></li>
+<li><a class="reference internal" href="#pgrouting-3-0-4-release-notes">pgRouting 3.0.4 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-0-3-release-notes">Notas de la versión de pgRouting 3.0.3</a></li>
 <li><a class="reference internal" href="#pgrouting-3-0-2-release-notes">Notas de la Versión pgRouting 3.0.2</a></li>
 <li><a class="reference internal" href="#pgrouting-3-0-1-release-notes">Notas de la versión 3.0.1 de pgRouting</a></li>
@@ -181,8 +183,10 @@
 <p>Para ver la lista completa de cambios, consulte la lista de <a class="reference external" href="https://github.com/pgRouting/pgrouting/commits">Git commits</a> en Github.</p>
 <p class="rubric">Tabla de contenidos</p>
 <ul class="simple">
+<li><p><a class="reference internal" href="#changelog-3-1-2"><span class="std std-ref">pgRouting 3.1.2 Release Notes</span></a></p></li>
 <li><p><a class="reference internal" href="#changelog-3-1-1"><span class="std std-ref">pgRouting 3.1.1 Notas de la Versión</span></a></p></li>
 <li><p><a class="reference internal" href="#changelog-3-1-0"><span class="std std-ref">Notas de la Versión pgRouting 3.1.0</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-3-0-4"><span class="std std-ref">pgRouting 3.0.4 Release Notes</span></a></p></li>
 <li><p><a class="reference internal" href="#changelog-3-0-3"><span class="std std-ref">Notas de la versión de pgRouting 3.0.3</span></a></p></li>
 <li><p><a class="reference internal" href="#changelog-3-0-2"><span class="std std-ref">Notas de la Versión pgRouting 3.0.2</span></a></p></li>
 <li><p><a class="reference internal" href="#changelog-3-0-1"><span class="std std-ref">Notas de la versión 3.0.1 de pgRouting</span></a></p></li>
@@ -213,6 +217,18 @@
 <li><p><a class="reference internal" href="#changelog-2-0-0"><span class="std std-ref">Notas de la versión de pgRouting 2.0.0</span></a></p></li>
 <li><p><a class="reference internal" href="#changelog-1-x"><span class="std std-ref">Notas de versión de pgRouting 1.x</span></a></p></li>
 </ul>
+<div class="section" id="pgrouting-3-1-2-release-notes">
+<span id="changelog-3-1-2"></span><h2>pgRouting 3.1.2 Release Notes<a class="headerlink" href="#pgrouting-3-1-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.2%22">Git closed milestone for 3.1.2</a> on Github.</p>
+<p class="rubric">Corrección de problemas</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1304">#1304</a>: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1356">#1356</a>: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1725">#1725</a>: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1760">#1760</a>: TSP server crash on ubuntu 20.04 #1760</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1770">#1770</a>: Remove warnings when using clang compiler</p></li>
+</ul>
+</div>
 <div class="section" id="pgrouting-3-1-1-release-notes">
 <span id="changelog-3-1-1"></span><h2>pgRouting 3.1.1 Notas de la Versión<a class="headerlink" href="#pgrouting-3-1-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.1%22">Git closed milestone for 3.1.1</a> on Github.</p>
@@ -236,6 +252,18 @@
 <p class="rubric">Crear cambios</p>
 <ul class="simple">
 <li><p>Requerimientos mínimos para Sphinx: versión 1.8</p></li>
+</ul>
+</div>
+<div class="section" id="pgrouting-3-0-4-release-notes">
+<span id="changelog-3-0-4"></span><h2>pgRouting 3.0.4 Release Notes<a class="headerlink" href="#pgrouting-3-0-4-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.4%22">Git closed milestone for 3.0.4</a> on Github.</p>
+<p class="rubric">Corrección de problemas de Backport</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1304">#1304</a>: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1356">#1356</a>: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1725">#1725</a>: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1760">#1760</a>: TSP server crash on ubuntu 20.04 #1760</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1770">#1770</a>: Remove warnings when using clang compiler</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-3-0-3-release-notes">
@@ -1104,8 +1132,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.1.<br/>
-      Actualizado por última vez en nov. 19, 2020.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.2.<br/>
+      Actualizado por última vez en dic. 19, 2020.<br/>
       Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
     </p>
   </div>
