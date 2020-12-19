@@ -264,6 +264,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
 }
 
 
+#if 0
 bool
 Optimize::swap_order() {
 #if 0
@@ -389,6 +390,7 @@ Optimize::sort_by_id() {
             > rhs.orders_in_vehicle().size();
             });
 }
+#endif
 
 void
 Optimize::sort_by_size() {
@@ -559,6 +561,7 @@ Optimize::move_order(
     return false;
 }
 
+#if 0
 void
 Optimize::sort_for_move() {
     std::sort(fleet.begin(), fleet.end(), []
@@ -573,6 +576,7 @@ Optimize::sort_for_move() {
             return lhs.orders_size() > rhs.orders_size();
             });
 }
+#endif
 
 
 /*
