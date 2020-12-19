@@ -1,5 +1,6 @@
 var NAVTREEINDEX12 =
 {
+"pgr__contractionGraph_8hpp_source.html":[6,0,214],
 "pgr__costFlowGraph_8hpp.html":[6,0,216],
 "pgr__costFlowGraph_8hpp.html#a13b2545ee59830d12c544fa2811af9bf":[6,0,216,2],
 "pgr__costFlowGraph_8hpp.html#a255a422a97c302319bdd4ae2ce1b93e9":[6,0,216,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX12 =
 "structColumn__info__t.html#a72833df7d9b7fd577a9e5c866c390518":[5,0,2,3],
 "structColumn__info__t.html#a80df9b5f6ef4c51effc2da146bb0d477":[5,0,2,1],
 "structColumn__info__t.html#aabe9ce1c2584f121ef9886ae81bfb748":[5,0,2,4],
-"structColumn__info__t.html#ac166599b0a83f7da1a40e75cc1a955b9":[5,0,2,2],
-"structCoordinate__t.html":[5,0,4]
+"structColumn__info__t.html#ac166599b0a83f7da1a40e75cc1a955b9":[5,0,2,2]
 };

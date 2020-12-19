@@ -1,5 +1,5 @@
 <map id="pgrouting::graph::PgrDirectedChPPGraph" name="pgrouting::graph::PgrDirectedChPPGraph">
-<area shape="rect" id="node1" title=" " alt="" coords="601,311,815,352"/>
+<area shape="rect" id="node1" title=" " alt="" coords="601,340,815,381"/>
 <area shape="rect" id="node2" title=" " alt="" coords="273,5,431,47"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,118,151,145"/>
 <area shape="rect" id="node5" href="$classIdentifiers.html" title=" " alt="" coords="271,149,433,175"/>
@@ -9,5 +9,6 @@
 <area shape="rect" id="node8" title=" " alt="" coords="277,397,427,453"/>
 <area shape="rect" id="node9" title=" " alt="" coords="273,477,431,533"/>
 <area shape="rect" id="node10" title=" " alt="" coords="272,557,432,583"/>
-<area shape="rect" id="node11" title=" " alt="" coords="243,607,461,634"/>
+<area shape="rect" id="node11" href="$classIdentifiers.html" title=" " alt="" coords="274,607,430,634"/>
+<area shape="rect" id="node12" title=" " alt="" coords="243,658,461,685"/>
 </map>

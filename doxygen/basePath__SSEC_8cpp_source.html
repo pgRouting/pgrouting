@@ -220,10 +220,10 @@ $(document).ready(function(){initNavTree('basePath__SSEC_8cpp_source.html',''); 
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
 <div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="classPath.html#ad61a1c96149ce7b7f6ccd696a346bbc3">  133</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="classPath.html#ad61a1c96149ce7b7f6ccd696a346bbc3">Path::countInfinityCost</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">return</span> std::count_if(<a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.begin(), <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.end(),</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(std::count_if(<a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.begin(), <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.end(),</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            [](<a class="code" href="structPath__t.html">Path_t</a> <span class="keyword">const</span>&amp;p) -&gt; <span class="keywordtype">size_t</span> {</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            return std::isinf(p.agg_cost);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            });</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            }));</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
@@ -307,7 +307,7 @@ $(document).ready(function(){initNavTree('basePath__SSEC_8cpp_source.html',''); 
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **ret_path,</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keywordtype">size_t</span> &amp;sequence)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.size(); i++) {</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        (*ret_path)[sequence].seq = i;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        (*ret_path)[sequence].seq = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(i);</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        (*ret_path)[sequence].start_id = <a class="code" href="classPath.html#a969ad8937eb448f350193fd203ad97d2">start_id</a>();</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        (*ret_path)[sequence].end_id = <a class="code" href="classPath.html#a969ad8937eb448f350193fd203ad97d2">start_id</a>();</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        (*ret_path)[sequence].node = <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>[i].node;</div>
@@ -323,7 +323,7 @@ $(document).ready(function(){initNavTree('basePath__SSEC_8cpp_source.html',''); 
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **ret_path,</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordtype">size_t</span> &amp;sequence, <span class="keywordtype">int</span> routeId)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.size(); i++) {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        (*ret_path)[sequence].seq = i + 1;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        (*ret_path)[sequence].seq = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(i + 1);</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        (*ret_path)[sequence].start_id = routeId;</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        (*ret_path)[sequence].end_id = <a class="code" href="classPath.html#ad7eff4c127cba19f2052398089ac3b42">end_id</a>();</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        (*ret_path)[sequence].node = <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>[i].node;</div>
@@ -341,7 +341,7 @@ $(document).ready(function(){initNavTree('basePath__SSEC_8cpp_source.html',''); 
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **ret_path,</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordtype">size_t</span> &amp;sequence, <span class="keywordtype">int</span> routeId)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.size(); i++) {</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        (*ret_path)[sequence].seq = i + 1;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        (*ret_path)[sequence].seq = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(i + 1);</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        (*ret_path)[sequence].start_id = routeId;</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        (*ret_path)[sequence].end_id = <a class="code" href="classPath.html#ad7eff4c127cba19f2052398089ac3b42">end_id</a>();</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        (*ret_path)[sequence].node = <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>[i].node;</div>
@@ -505,7 +505,7 @@ $(document).ready(function(){initNavTree('basePath__SSEC_8cpp_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_6d4c5fe0d6dc99866041a806b0d24b33.html">ashish</a></li><li class="navelem"><a class="el" href="dir_fcb33163f1ba4ef33f527a468abdd7d4.html">Documents</a></li><li class="navelem"><a class="el" href="dir_60aaf56e1d931fc6c94a6af942e92c9a.html">gsoc</a></li><li class="navelem"><a class="el" href="dir_5820f995afd646bbf14f4bdd8a218c79.html">pgrouting</a></li><li class="navelem"><a class="el" href="dir_0c835b2c0263a359a63ff950e7b4b437.html">src</a></li><li class="navelem"><a class="el" href="dir_145bcd27a3a9366f592cd98a326f4d99.html">common</a></li><li class="navelem"><a class="el" href="basePath__SSEC_8cpp.html">basePath_SSEC.cpp</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:17 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:30 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

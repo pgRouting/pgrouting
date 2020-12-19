@@ -1088,10 +1088,10 @@ template&lt;typename G , typename V &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00133">133</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                     {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">return</span> std::count_if(<a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.begin(), <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.end(),</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(std::count_if(<a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.begin(), <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.end(),</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            [](<a class="code" href="structPath__t.html">Path_t</a> <span class="keyword">const</span>&amp;p) -&gt; <span class="keywordtype">size_t</span> {</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            return std::isinf(p.agg_cost);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            });</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            }));</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="basePath__SSEC_8hpp_source.html#l00052">path</a>.</p>
@@ -1126,7 +1126,7 @@ template&lt;typename G , typename V &gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="basePath__SSEC_8hpp_source.html#l00052">path</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00274">pgrouting::Pg_points_graph::adjust_pids()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00230">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00177">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="pgr__ksp_8hpp_source.html#l00148">pgrouting::yen::Pgr_ksp&lt; G &gt;::getFirstSolution()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00153">isEqual()</a>, <a class="el" href="pgr__turnRestrictedPath_8hpp_source.html#l00069">pgrouting::yen::Pgr_turnRestrictedPath&lt; G &gt;::Myvisitor::on_insert_first_solution()</a>, <a class="el" href="pgr__turnRestrictedPath_8hpp_source.html#l00078">pgrouting::yen::Pgr_turnRestrictedPath&lt; G &gt;::Myvisitor::on_insert_to_heap()</a>, and <a class="el" href="pgr__dijkstraVia_8hpp_source.html#l00045">pgRouting::pgr_dijkstraVia()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00273">pgrouting::Pg_points_graph::adjust_pids()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00229">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00176">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="pgr__ksp_8hpp_source.html#l00148">pgrouting::yen::Pgr_ksp&lt; G &gt;::getFirstSolution()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00153">isEqual()</a>, <a class="el" href="pgr__turnRestrictedPath_8hpp_source.html#l00069">pgrouting::yen::Pgr_turnRestrictedPath&lt; G &gt;::Myvisitor::on_insert_first_solution()</a>, <a class="el" href="pgr__turnRestrictedPath_8hpp_source.html#l00078">pgrouting::yen::Pgr_turnRestrictedPath&lt; G &gt;::Myvisitor::on_insert_to_heap()</a>, and <a class="el" href="pgr__dijkstraVia_8hpp_source.html#l00045">pgRouting::pgr_dijkstraVia()</a>.</p>
 
 </div>
 </div>
@@ -1238,7 +1238,7 @@ template&lt;typename G , typename V &gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="basePath__SSEC_8hpp_source.html#l00054">m_end_id</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00274">pgrouting::Pg_points_graph::adjust_pids()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00088">do_pgr_withPoints()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00230">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00177">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00221">generate_postgres_data()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00255">get_pg_ksp_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00273">get_pg_turn_restricted_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00141">getSubpath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00118">operator&lt;&lt;()</a>, and <a class="el" href="pgr__trspHandler_8cpp_source.html#l00387">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00273">pgrouting::Pg_points_graph::adjust_pids()</a>, <a class="el" href="withPoints__driver_8cpp_source.html#l00088">do_pgr_withPoints()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00229">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00176">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00221">generate_postgres_data()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00255">get_pg_ksp_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00273">get_pg_turn_restricted_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00141">getSubpath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00118">operator&lt;&lt;()</a>, and <a class="el" href="pgr__trspHandler_8cpp_source.html#l00388">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
 
 </div>
 </div>
@@ -1476,7 +1476,7 @@ template&lt;typename G , typename V &gt; </div>
 <p class="definition">Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00239">239</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                                {</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.size(); i++) {</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        (*ret_path)[sequence].seq = i;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        (*ret_path)[sequence].seq = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(i);</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        (*ret_path)[sequence].start_id = <a class="code" href="classPath.html#a969ad8937eb448f350193fd203ad97d2">start_id</a>();</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        (*ret_path)[sequence].end_id = <a class="code" href="classPath.html#a969ad8937eb448f350193fd203ad97d2">start_id</a>();</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        (*ret_path)[sequence].node = <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>[i].node;</div>
@@ -1526,7 +1526,7 @@ template&lt;typename G , typename V &gt; </div>
 <p class="definition">Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00255">255</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                             {</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.size(); i++) {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        (*ret_path)[sequence].seq = i + 1;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        (*ret_path)[sequence].seq = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(i + 1);</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        (*ret_path)[sequence].start_id = routeId;</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        (*ret_path)[sequence].end_id = <a class="code" href="classPath.html#ad7eff4c127cba19f2052398089ac3b42">end_id</a>();</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        (*ret_path)[sequence].node = <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>[i].node;</div>
@@ -1578,7 +1578,7 @@ template&lt;typename G , typename V &gt; </div>
 <p class="definition">Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00273">273</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                             {</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>.size(); i++) {</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        (*ret_path)[sequence].seq = i + 1;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        (*ret_path)[sequence].seq = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(i + 1);</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        (*ret_path)[sequence].start_id = routeId;</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        (*ret_path)[sequence].end_id = <a class="code" href="classPath.html#ad7eff4c127cba19f2052398089ac3b42">end_id</a>();</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        (*ret_path)[sequence].node = <a class="code" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a>[i].node;</div>
@@ -1803,7 +1803,7 @@ template&lt;typename G , typename V &gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="path__t_8h_source.html#l00039">Path_t::cost</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00055">m_tot_cost</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00052">path</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="basePath__SSEC_8cpp_source.html#l00192">append()</a>, <a class="el" href="pgr__trspHandler_8cpp_source.html#l00095">pgrouting::trsp::Pgr_trspHandler::construct_path()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00694">pgrouting::Pgr_dijkstra&lt; G &gt;::drivingDistance_no_equicost()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00230">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00177">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="pgr__binaryBreadthFirstSearch_8hpp_source.html#l00129">pgrouting::functions::Pgr_binaryBreadthFirstSearch&lt; G &gt;::getPath()</a>, <a class="el" href="pgr__edwardMoore_8hpp_source.html#l00130">pgrouting::functions::Pgr_edwardMoore&lt; G &gt;::getPath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00141">getSubpath()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00162">Path()</a>, and <a class="el" href="pgr__trspHandler_8cpp_source.html#l00387">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="basePath__SSEC_8cpp_source.html#l00192">append()</a>, <a class="el" href="pgr__trspHandler_8cpp_source.html#l00095">pgrouting::trsp::Pgr_trspHandler::construct_path()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00694">pgrouting::Pgr_dijkstra&lt; G &gt;::drivingDistance_no_equicost()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00229">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00176">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="pgr__binaryBreadthFirstSearch_8hpp_source.html#l00129">pgrouting::functions::Pgr_binaryBreadthFirstSearch&lt; G &gt;::getPath()</a>, <a class="el" href="pgr__edwardMoore_8hpp_source.html#l00130">pgrouting::functions::Pgr_edwardMoore&lt; G &gt;::getPath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00141">getSubpath()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00162">Path()</a>, and <a class="el" href="pgr__trspHandler_8cpp_source.html#l00388">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
 
 </div>
 </div>
@@ -1933,7 +1933,7 @@ template&lt;typename G , typename V &gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="basePath__SSEC_8hpp_source.html#l00054">m_end_id</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00053">m_start_id</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00052">path</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__trspHandler_8cpp_source.html#l00387">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__trspHandler_8cpp_source.html#l00388">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
 
 </div>
 </div>
@@ -2059,7 +2059,7 @@ template&lt;typename G , typename V &gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="basePath__SSEC_8hpp_source.html#l00052">path</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__ksp_8hpp_source.html#l00163">pgrouting::yen::Pgr_ksp&lt; G &gt;::doNextCycle()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00230">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00153">isEqual()</a>, <a class="el" href="compPaths_8cpp_source.html#l00040">pgrouting::compPathsLess::operator()()</a>, and <a class="el" href="pgr__dijkstraVia_8hpp_source.html#l00045">pgRouting::pgr_dijkstraVia()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__ksp_8hpp_source.html#l00163">pgrouting::yen::Pgr_ksp&lt; G &gt;::doNextCycle()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00229">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00153">isEqual()</a>, <a class="el" href="compPaths_8cpp_source.html#l00040">pgrouting::compPathsLess::operator()()</a>, and <a class="el" href="pgr__dijkstraVia_8hpp_source.html#l00045">pgRouting::pgr_dijkstraVia()</a>.</p>
 
 </div>
 </div>
@@ -2123,7 +2123,7 @@ template&lt;typename G , typename V &gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="basePath__SSEC_8hpp_source.html#l00053">m_start_id</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00274">pgrouting::Pg_points_graph::adjust_pids()</a>, <a class="el" href="pgr__trspHandler_8cpp_source.html#l00095">pgrouting::trsp::Pgr_trspHandler::construct_path()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00230">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00177">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00221">generate_postgres_data()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00239">get_pg_dd_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00141">getSubpath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00118">operator&lt;&lt;()</a>, and <a class="el" href="pgr__trspHandler_8cpp_source.html#l00387">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00273">pgrouting::Pg_points_graph::adjust_pids()</a>, <a class="el" href="pgr__trspHandler_8cpp_source.html#l00095">pgrouting::trsp::Pgr_trspHandler::construct_path()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00229">pgrouting::Pg_points_graph::eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00176">pgrouting::Pg_points_graph::eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00221">generate_postgres_data()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00239">get_pg_dd_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00141">getSubpath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00118">operator&lt;&lt;()</a>, and <a class="el" href="pgr__trspHandler_8cpp_source.html#l00388">pgrouting::trsp::Pgr_trspHandler::process_trsp()</a>.</p>
 
 </div>
 </div>
@@ -2542,7 +2542,7 @@ template&lt;typename G , typename V &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classPath.html">Path</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:18 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:33 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

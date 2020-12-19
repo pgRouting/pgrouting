@@ -6,8 +6,8 @@ var classpgrouting_1_1functions_1_1Pgr__edwardMoore =
     [ "EO_i", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a114239a43f91270057d4eba936b2793e", null ],
     [ "V", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a06d36dc5767f36695c63dd9412b57a38", null ],
     [ "edwardMoore", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#acc891bde348cf1086396c95ff714eaa1", null ],
-    [ "getPath", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a21724b511aa96fcf3e5258b9fafd835f", null ],
+    [ "getPath", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a1cab2bd66e4a72a2d8efc926209c6889", null ],
     [ "one_to_many_edwardMoore", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#aa29505e90aa463ce3bcbb975b104c771", null ],
-    [ "updateVertexCosts", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a2568b4874f4d9548baa04c455119d749", null ],
+    [ "updateVertexCosts", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#afe624795e43580e5b086a23d53464e4f", null ],
     [ "DEFAULT_EDGE", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a8caf5a3c8fa0abf97e630b5c490c7ad8", null ]
 ];

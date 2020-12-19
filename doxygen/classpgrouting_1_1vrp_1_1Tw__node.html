@@ -86,8 +86,8 @@ $(document).ready(function(){initNavTree('classpgrouting_1_1vrp_1_1Tw__node.html
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
@@ -106,10 +106,9 @@ Inheritance diagram for pgrouting::vrp::Tw_node:</div>
 <div class="dyncontent">
 <div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node__inherit__graph.png" border="0" usemap="#pgrouting_1_1vrp_1_1Tw__node_inherit__map" alt="Inheritance graph"/></div>
 <map name="pgrouting_1_1vrp_1_1Tw__node_inherit__map" id="pgrouting_1_1vrp_1_1Tw__node_inherit__map">
-<area shape="rect" title="Extends the Node class to create a Node with time window attributes." alt="" coords="76,95,253,121"/>
-<area shape="rect" href="classpgrouting_1_1vrp_1_1Vehicle__node.html" title="Extend Tw_node to evaluate the vehicle at node level." alt="" coords="61,169,269,196"/>
-<area shape="rect" href="classpgrouting_1_1Identifier.html" title=" " alt="" coords="5,13,156,39"/>
-<area shape="rect" href="classpgrouting_1_1vrp_1_1PD__problem.html" title=" " alt="" coords="181,5,319,47"/>
+<area shape="rect" title="Extends the Node class to create a Node with time window attributes." alt="" coords="21,80,198,107"/>
+<area shape="rect" href="classpgrouting_1_1vrp_1_1Vehicle__node.html" title="Extend Tw_node to evaluate the vehicle at node level." alt="" coords="5,155,213,181"/>
+<area shape="rect" href="classpgrouting_1_1vrp_1_1Dnode.html" title="The Dnode class defines a the basic operations when data is a matrix." alt="" coords="28,5,191,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -117,9 +116,8 @@ Collaboration diagram for pgrouting::vrp::Tw_node:</div>
 <div class="dyncontent">
 <div class="center"><img src="classpgrouting_1_1vrp_1_1Tw__node__coll__graph.png" border="0" usemap="#pgrouting_1_1vrp_1_1Tw__node_coll__map" alt="Collaboration graph"/></div>
 <map name="pgrouting_1_1vrp_1_1Tw__node_coll__map" id="pgrouting_1_1vrp_1_1Tw__node_coll__map">
-<area shape="rect" title="Extends the Node class to create a Node with time window attributes." alt="" coords="76,95,253,121"/>
-<area shape="rect" href="classpgrouting_1_1Identifier.html" title=" " alt="" coords="5,13,156,39"/>
-<area shape="rect" href="classpgrouting_1_1vrp_1_1PD__problem.html" title=" " alt="" coords="181,5,319,47"/>
+<area shape="rect" title="Extends the Node class to create a Node with time window attributes." alt="" coords="5,80,183,107"/>
+<area shape="rect" href="classpgrouting_1_1vrp_1_1Dnode.html" title="The Dnode class defines a the basic operations when data is a matrix." alt="" coords="13,5,175,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -147,22 +145,26 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a10b9b7e1b549b8a4f813ac15f6b46fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f654fde371d92d00ab3f996cb9da041"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1vrp_1_1Tw__node.html#a4f654fde371d92d00ab3f996cb9da041">Tw_node</a> (size_t <a class="el" href="classpgrouting_1_1Identifier.html#a147f029e589a2dd36b1edd638d7ac833">id</a>, <a class="el" href="structVehicle__t.html">Vehicle_t</a> data, <a class="el" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4">NodeType</a> <a class="el" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3">type</a>)</td></tr>
 <tr class="separator:a4f654fde371d92d00ab3f996cb9da041"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad97f91419e890bf9b541ba15fcb8c787"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1vrp_1_1Dnode.html#ad97f91419e890bf9b541ba15fcb8c787">distance</a> (const <a class="el" href="classpgrouting_1_1vrp_1_1Dnode.html">Dnode</a> &amp;other) const</td></tr>
+<tr class="separator:ad97f91419e890bf9b541ba15fcb8c787"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a147f029e589a2dd36b1edd638d7ac833"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1Identifier.html#a147f029e589a2dd36b1edd638d7ac833">id</a> () const</td></tr>
 <tr class="separator:a147f029e589a2dd36b1edd638d7ac833"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0a3414bc65c1b67101b3f5944505447"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447">idx</a> () const</td></tr>
 <tr class="separator:ae0a3414bc65c1b67101b3f5944505447"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aa08177772317bcc28a8965c97f8bc4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1vrp_1_1Dnode.html#a3aa08177772317bcc28a8965c97f8bc4">operator==</a> (const <a class="el" href="classpgrouting_1_1vrp_1_1Dnode.html">Dnode</a> &amp;other) const</td></tr>
+<tr class="separator:a3aa08177772317bcc28a8965c97f8bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac447a0a784cb863f908f3375e2ca9d1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1Identifier.html#ac447a0a784cb863f908f3375e2ca9d1c">reset_id</a> (int64_t)</td></tr>
 <tr class="separator:ac447a0a784cb863f908f3375e2ca9d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a7ea35b02b812474d4b0c19da2784fc5f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classpgrouting_1_1Pgr__messages.html">Pgr_messages</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1vrp_1_1PD__problem.html#a7ea35b02b812474d4b0c19da2784fc5f">msg</a></td></tr>
-<tr class="separator:a7ea35b02b812474d4b0c19da2784fc5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:af2bd2274eae6e957d8054af1d6d55e8a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a">is_valid</a> () const</td></tr>
 <tr class="separator:af2bd2274eae6e957d8054af1d6d55e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:ab3151adfe935bf9e2c6e16b2f0bcc53d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classpgrouting_1_1Pgr__messages.html">Pgr_messages</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1vrp_1_1Dnode.html#ab3151adfe935bf9e2c6e16b2f0bcc53d">msg</a> ()</td></tr>
+<tr class="separator:ab3151adfe935bf9e2c6e16b2f0bcc53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
@@ -328,23 +330,23 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00232">232</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                       :</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <a class="code" href="classpgrouting_1_1Identifier.html#a1a6b53e85b2454fb4c3f7bed36a5e385">Identifier</a>(<span class="keywordtype">id</span>, data.<a class="code" href="structPickDeliveryOrders__t.html#a1a921f0db33908a6cd835088291760fb">pick_node_id</a>),</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#af30dc6f10a64ae5d515c24b258701ab0">m_order</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#ab68c7b8acf30b09d2e74cf36b3cc4b69">id</a>),</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#aad07f0be1fc22b2b25fd08d957d12d64">pick_open_t</a>),</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#a207146edd7b53729eafec494550113a7">pick_close_t</a>),</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">m_service_time</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#aab503bfa38a761c32f34de528d2b8cb3">pick_service_t</a>),</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a795138a0068571b76c6678335081f2e4">m_demand</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#aec56228fc0edd5812b5cf9ad882902de">demand</a>),</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3">type</a>)  {</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63">kDelivery</a>) {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <a class="code" href="classpgrouting_1_1Identifier.html#ac447a0a784cb863f908f3375e2ca9d1c">reset_id</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#ae1c604516b9f8439bdd3f15a2442d67f">deliver_node_id</a>);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a> = data.<a class="code" href="structPickDeliveryOrders__t.html#a7f04597b7a43c58984e9815b604246b8">deliver_open_t</a>;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a> = data.<a class="code" href="structPickDeliveryOrders__t.html#a353af6b268cf3e4c4c47a0b244fd7928">deliver_close_t</a>;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">m_service_time</a> = data.<a class="code" href="structPickDeliveryOrders__t.html#af8c3366b6a7c4fa93c0c63af3ea7d544">deliver_service_t</a>;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a795138a0068571b76c6678335081f2e4">m_demand</a> *= -1;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        }</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00246">246</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                       :</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Dnode.html#a83ecb8036c0bf27646771fed68874612">Dnode</a>(<span class="keywordtype">id</span>, data.<a class="code" href="structPickDeliveryOrders__t.html#a1a921f0db33908a6cd835088291760fb">pick_node_id</a>),</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#af30dc6f10a64ae5d515c24b258701ab0">m_order</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#ab68c7b8acf30b09d2e74cf36b3cc4b69">id</a>),</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#aad07f0be1fc22b2b25fd08d957d12d64">pick_open_t</a>),</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#a207146edd7b53729eafec494550113a7">pick_close_t</a>),</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">m_service_time</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#aab503bfa38a761c32f34de528d2b8cb3">pick_service_t</a>),</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a795138a0068571b76c6678335081f2e4">m_demand</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#aec56228fc0edd5812b5cf9ad882902de">demand</a>),</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3">type</a>)  {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63">kDelivery</a>) {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <a class="code" href="classpgrouting_1_1Identifier.html#ac447a0a784cb863f908f3375e2ca9d1c">reset_id</a>(data.<a class="code" href="structPickDeliveryOrders__t.html#ae1c604516b9f8439bdd3f15a2442d67f">deliver_node_id</a>);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a> = data.<a class="code" href="structPickDeliveryOrders__t.html#a7f04597b7a43c58984e9815b604246b8">deliver_open_t</a>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a> = data.<a class="code" href="structPickDeliveryOrders__t.html#a353af6b268cf3e4c4c47a0b244fd7928">deliver_close_t</a>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">m_service_time</a> = data.<a class="code" href="structPickDeliveryOrders__t.html#af8c3366b6a7c4fa93c0c63af3ea7d544">deliver_service_t</a>;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a795138a0068571b76c6678335081f2e4">m_demand</a> *= -1;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="pickDeliveryOrders__t_8h_source.html#l00062">PickDeliveryOrders_t::deliver_close_t</a>, <a class="el" href="pickDeliveryOrders__t_8h_source.html#l00059">PickDeliveryOrders_t::deliver_node_id</a>, <a class="el" href="pickDeliveryOrders__t_8h_source.html#l00061">PickDeliveryOrders_t::deliver_open_t</a>, <a class="el" href="pickDeliveryOrders__t_8h_source.html#l00063">PickDeliveryOrders_t::deliver_service_t</a>, <a class="el" href="tw__node_8h_source.html#l00062">kDelivery</a>, <a class="el" href="tw__node_8h_source.html#l00275">m_closes</a>, <a class="el" href="tw__node_8h_source.html#l00277">m_demand</a>, <a class="el" href="tw__node_8h_source.html#l00274">m_opens</a>, <a class="el" href="tw__node_8h_source.html#l00276">m_service_time</a>, <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>, and <a class="el" href="identifier_8cpp_source.html#l00047">pgrouting::Identifier::reset_id()</a>.</p>
 
@@ -382,21 +384,21 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00252">252</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                       :</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <a class="code" href="classpgrouting_1_1Identifier.html#a1a6b53e85b2454fb4c3f7bed36a5e385">Identifier</a>(<span class="keywordtype">id</span>, data.<a class="code" href="structVehicle__t.html#a9a08e82a839cb0ed59eb025735b5facc">start_node_id</a>),</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a>(data.<a class="code" href="structVehicle__t.html#a1fdbef1d47e507b5ac7cb44b68fc0572">start_open_t</a>),</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a>(data.<a class="code" href="structVehicle__t.html#a2a10d0399d2b6e8fa774409560d78824">start_close_t</a>),</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">m_service_time</a>(data.<a class="code" href="structVehicle__t.html#ad42cc863e0e2d032e09c653c7650b299">start_service_t</a>),</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a795138a0068571b76c6678335081f2e4">m_demand</a>(0),</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3">type</a>) {</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5">kEnd</a>) {</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <a class="code" href="classpgrouting_1_1Identifier.html#ac447a0a784cb863f908f3375e2ca9d1c">reset_id</a>(data.<a class="code" href="structVehicle__t.html#a2dfa1b1d8ab15052a804eef26a229f8a">end_node_id</a>);</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a> = data.<a class="code" href="structVehicle__t.html#a1a3639fc0ca516901ffb06251a7838e1">end_open_t</a>;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a> = data.<a class="code" href="structVehicle__t.html#ab1095a1dfd25309e6d876cabf69f4aa0">end_close_t</a>;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">m_service_time</a> = data.<a class="code" href="structVehicle__t.html#af096bb6d7bb70b80126934de22546d4e">end_service_t</a>;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00266">266</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                       :</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Dnode.html#a83ecb8036c0bf27646771fed68874612">Dnode</a>(<span class="keywordtype">id</span>, data.<a class="code" href="structVehicle__t.html#a9a08e82a839cb0ed59eb025735b5facc">start_node_id</a>),</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a>(data.<a class="code" href="structVehicle__t.html#a1fdbef1d47e507b5ac7cb44b68fc0572">start_open_t</a>),</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a>(data.<a class="code" href="structVehicle__t.html#a2a10d0399d2b6e8fa774409560d78824">start_close_t</a>),</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">m_service_time</a>(data.<a class="code" href="structVehicle__t.html#ad42cc863e0e2d032e09c653c7650b299">start_service_t</a>),</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a795138a0068571b76c6678335081f2e4">m_demand</a>(0),</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3">type</a>) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5">kEnd</a>) {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <a class="code" href="classpgrouting_1_1Identifier.html#ac447a0a784cb863f908f3375e2ca9d1c">reset_id</a>(data.<a class="code" href="structVehicle__t.html#a2dfa1b1d8ab15052a804eef26a229f8a">end_node_id</a>);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a> = data.<a class="code" href="structVehicle__t.html#a1a3639fc0ca516901ffb06251a7838e1">end_open_t</a>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a> = data.<a class="code" href="structVehicle__t.html#ab1095a1dfd25309e6d876cabf69f4aa0">end_close_t</a>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">m_service_time</a> = data.<a class="code" href="structVehicle__t.html#af096bb6d7bb70b80126934de22546d4e">end_service_t</a>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="vehicle__t_8h_source.html#l00060">Vehicle_t::end_close_t</a>, <a class="el" href="vehicle__t_8h_source.html#l00057">Vehicle_t::end_node_id</a>, <a class="el" href="vehicle__t_8h_source.html#l00059">Vehicle_t::end_open_t</a>, <a class="el" href="vehicle__t_8h_source.html#l00061">Vehicle_t::end_service_t</a>, <a class="el" href="tw__node_8h_source.html#l00065">kEnd</a>, <a class="el" href="tw__node_8h_source.html#l00275">m_closes</a>, <a class="el" href="tw__node_8h_source.html#l00274">m_opens</a>, <a class="el" href="tw__node_8h_source.html#l00276">m_service_time</a>, <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>, and <a class="el" href="identifier_8cpp_source.html#l00047">pgrouting::Identifier::reset_id()</a>.</p>
 
@@ -431,15 +433,15 @@ Friends</h2></td></tr>
 
 <p>The actual arrival time at <b>this</b> node, given that: <b>this</b> node is visited directly after <b>other</b> node and that the actual arrival time at <b>other</b> node was closes(other) </p>
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00064">64</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                                                {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>) <span class="keywordflow">return</span>  (std::numeric_limits&lt;double&gt;::max)();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> I.closes() + I.service_time() + I.travel_time_to(*<span class="keyword">this</span>, speed);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00068">68</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                                                {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>) <span class="keywordflow">return</span>  (std::numeric_limits&lt;double&gt;::max)();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> I.closes() + I.service_time() + I.travel_time_to(*<span class="keyword">this</span>, speed);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00079">closes()</a>, <a class="el" href="tw__node_8h_source.html#l00060">kStart</a>, <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>, <a class="el" href="tw__node_8h_source.html#l00086">service_time()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00040">travel_time_to()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00087">is_partially_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00095">is_tight_compatible_IJ()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00091">is_partially_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00099">is_tight_compatible_IJ()</a>.</p>
 
 </div>
 </div>
@@ -472,15 +474,15 @@ Friends</h2></td></tr>
 <p>@ { </p>
 <p>The actual arrival time at <b>This</b> node, given that: <b>this</b> node is visited directly after <b>other</b> node and that the actual arrival time at <b>other</b> node was opens(other) </p>
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00058">58</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                                               {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>) <span class="keywordflow">return</span> (std::numeric_limits&lt;double&gt;::max)();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> I.opens() + I.service_time() + I.travel_time_to(*<span class="keyword">this</span>, speed);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00062">62</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                                               {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>) <span class="keywordflow">return</span> (std::numeric_limits&lt;double&gt;::max)();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> I.opens() + I.service_time() + I.travel_time_to(*<span class="keyword">this</span>, speed);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00060">kStart</a>, <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>, <a class="el" href="tw__node_8h_source.html#l00076">opens()</a>, <a class="el" href="tw__node_8h_source.html#l00086">service_time()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00040">travel_time_to()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00073">is_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00087">is_partially_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00103">is_partially_waitTime_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00095">is_tight_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00112">is_waitTime_compatible_IJ()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00077">is_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00091">is_partially_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00107">is_partially_waitTime_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00099">is_tight_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00116">is_waitTime_compatible_IJ()</a>.</p>
 
 </div>
 </div>
@@ -514,7 +516,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00275">m_closes</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="tw__node_8cpp_source.html#l00064">arrival_j_closes_i()</a>, <a class="el" href="vehicle_8cpp_source.html#l00188">pgrouting::vrp::Vehicle::deltaTime()</a>, <a class="el" href="tw__node_8cpp_source.html#l00150">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00159">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00177">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00168">is_load()</a>, <a class="el" href="vehicle_8cpp_source.html#l00505">pgrouting::vrp::Vehicle::is_ok()</a>, <a class="el" href="tw__node_8cpp_source.html#l00141">is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00132">is_start()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="tw__node_8cpp_source.html#l00068">arrival_j_closes_i()</a>, <a class="el" href="vehicle_8cpp_source.html#l00188">pgrouting::vrp::Vehicle::deltaTime()</a>, <a class="el" href="tw__node_8cpp_source.html#l00154">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00163">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00181">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00172">is_load()</a>, <a class="el" href="vehicle_8cpp_source.html#l00505">pgrouting::vrp::Vehicle::is_ok()</a>, <a class="el" href="tw__node_8cpp_source.html#l00145">is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00136">is_start()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
 
 </div>
 </div>
@@ -548,7 +550,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00277">m_demand</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00038">pgrouting::vrp::Vehicle_node::evaluate()</a>, <a class="el" href="tw__node_8cpp_source.html#l00150">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00159">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00177">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00168">is_load()</a>, <a class="el" href="tw__node_8cpp_source.html#l00141">is_pickup()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00132">is_start()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00038">pgrouting::vrp::Vehicle_node::evaluate()</a>, <a class="el" href="tw__node_8cpp_source.html#l00154">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00163">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00181">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00172">is_load()</a>, <a class="el" href="tw__node_8cpp_source.html#l00145">is_pickup()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00136">is_start()</a>.</p>
 
 </div>
 </div>
@@ -583,6 +585,43 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="ad97f91419e890bf9b541ba15fcb8c787"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad97f91419e890bf9b541ba15fcb8c787">&#9670;&nbsp;</a></span>distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double pgrouting::vrp::Dnode::distance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classpgrouting_1_1vrp_1_1Dnode.html">Dnode</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="dnode_8cpp_source.html#l00042">42</a> of file <a class="el" href="dnode_8cpp_source.html">dnode.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ab32ec47a05aefed478feab2c5bf18b0f">m_cost_matrix</a>.<a class="code" href="classpgrouting_1_1tsp_1_1Dmatrix.html#a785a95db8b70df2c05370cf8bb121ea5">distance</a>(</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ab32ec47a05aefed478feab2c5bf18b0f">m_cost_matrix</a>.<a class="code" href="classpgrouting_1_1tsp_1_1Dmatrix.html#acd3455be4c2e72e6877163b3c317c063">get_index</a>(<span class="keywordtype">id</span>()),</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ab32ec47a05aefed478feab2c5bf18b0f">m_cost_matrix</a>.<a class="code" href="classpgrouting_1_1tsp_1_1Dmatrix.html#acd3455be4c2e72e6877163b3c317c063">get_index</a>(other.id()));</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="Dmatrix_8h_source.html#l00108">pgrouting::tsp::Dmatrix::distance()</a>, <a class="el" href="Dmatrix_8cpp_source.html#l00093">pgrouting::tsp::Dmatrix::get_index()</a>, <a class="el" href="identifier_8cpp_source.html#l00042">pgrouting::Identifier::id()</a>, <a class="el" href="pgr__pickDeliver_8h_source.html#l00123">pgrouting::vrp::Pgr_pickDeliver::m_cost_matrix</a>, and <a class="el" href="pd__problem_8h_source.html#l00052">pgrouting::vrp::PD_problem::problem</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00040">travel_time_to()</a>.</p>
+
+</div>
+</div>
 <a id="a147f029e589a2dd36b1edd638d7ac833"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a147f029e589a2dd36b1edd638d7ac833">&#9670;&nbsp;</a></span>id()</h2>
 
@@ -613,7 +652,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="identifier_8h_source.html#l00053">pgrouting::Identifier::m_id</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dnode_8cpp_source.html#l00042">pgrouting::vrp::Dnode::distance()</a>, <a class="el" href="vehicle_8cpp_source.html#l00135">pgrouting::vrp::Vehicle::get_postgres_result()</a>, <a class="el" href="vehicle_8h_source.html#l00101">pgrouting::vrp::Vehicle::is_phony()</a>, <a class="el" href="base__node_8cpp_source.html#l00033">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="identifier_8cpp_source.html#l00051">pgrouting::operator&lt;&lt;()</a>, <a class="el" href="node_8cpp_source.html#l00090">pgrouting::vrp::Node::operator==()</a>, <a class="el" href="base__node_8cpp_source.html#l00043">pgrouting::vrp::Base_node::operator==()</a>, <a class="el" href="node_8cpp_source.html#l00055">pgrouting::vrp::Node::print()</a>, <a class="el" href="vehicle_8cpp_source.html#l00567">pgrouting::vrp::Vehicle::tau()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dnode_8cpp_source.html#l00042">pgrouting::vrp::Dnode::distance()</a>, <a class="el" href="vehicle_8cpp_source.html#l00135">pgrouting::vrp::Vehicle::get_postgres_result()</a>, <a class="el" href="vehicle_8h_source.html#l00102">pgrouting::vrp::Vehicle::is_phony()</a>, <a class="el" href="base__node_8cpp_source.html#l00033">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="identifier_8cpp_source.html#l00051">pgrouting::operator&lt;&lt;()</a>, <a class="el" href="dnode_8cpp_source.html#l00055">pgrouting::vrp::Dnode::operator==()</a>, <a class="el" href="node_8cpp_source.html#l00090">pgrouting::vrp::Node::operator==()</a>, <a class="el" href="base__node_8cpp_source.html#l00043">pgrouting::vrp::Base_node::operator==()</a>, <a class="el" href="tw__node_8cpp_source.html#l00190">operator==()</a>, <a class="el" href="node_8cpp_source.html#l00055">pgrouting::vrp::Node::print()</a>, <a class="el" href="vehicle_8cpp_source.html#l00569">pgrouting::vrp::Vehicle::tau()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
 
 </div>
 </div>
@@ -647,7 +686,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="identifier_8h_source.html#l00052">pgrouting::Identifier::m_idx</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00341">pgrouting::vrp::Vehicle_pickDeliver::erase()</a>, <a class="el" href="vehicle_8cpp_source.html#l00238">pgrouting::vrp::Vehicle::erase()</a>, <a class="el" href="fleet_8cpp_source.html#l00117">pgrouting::vrp::Fleet::get_truck()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00103">pgrouting::vrp::Vehicle_pickDeliver::has_order()</a>, <a class="el" href="vehicle_8cpp_source.html#l00054">pgrouting::vrp::Vehicle::insert()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00109">pgrouting::vrp::Vehicle_pickDeliver::insert()</a>, <a class="el" href="base__node_8cpp_source.html#l00033">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="identifier_8cpp_source.html#l00051">pgrouting::operator&lt;&lt;()</a>, <a class="el" href="base__node_8cpp_source.html#l00043">pgrouting::vrp::Base_node::operator==()</a>, <a class="el" href="node_8cpp_source.html#l00090">pgrouting::vrp::Node::operator==()</a>, <a class="el" href="tw__node_8cpp_source.html#l00186">operator==()</a>, <a class="el" href="node_8cpp_source.html#l00055">pgrouting::vrp::Node::print()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00227">pgrouting::vrp::Vehicle_pickDeliver::push_back()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00245">pgrouting::vrp::Vehicle_pickDeliver::push_front()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00426">pgrouting::vrp::Vehicle_pickDeliver::semiLIFO()</a>, <a class="el" href="order_8cpp_source.html#l00111">pgrouting::vrp::Order::set_compatibles()</a>, <a class="el" href="vehicle_8cpp_source.html#l00567">pgrouting::vrp::Vehicle::tau()</a>, <a class="el" href="tw__node_8cpp_source.html#l00040">travel_time_to()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00343">pgrouting::vrp::Vehicle_pickDeliver::erase()</a>, <a class="el" href="vehicle_8cpp_source.html#l00238">pgrouting::vrp::Vehicle::erase()</a>, <a class="el" href="fleet_8cpp_source.html#l00117">pgrouting::vrp::Fleet::get_truck()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00105">pgrouting::vrp::Vehicle_pickDeliver::has_order()</a>, <a class="el" href="vehicle_8cpp_source.html#l00054">pgrouting::vrp::Vehicle::insert()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00111">pgrouting::vrp::Vehicle_pickDeliver::insert()</a>, <a class="el" href="base__node_8cpp_source.html#l00033">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="identifier_8cpp_source.html#l00051">pgrouting::operator&lt;&lt;()</a>, <a class="el" href="dnode_8cpp_source.html#l00055">pgrouting::vrp::Dnode::operator==()</a>, <a class="el" href="node_8cpp_source.html#l00090">pgrouting::vrp::Node::operator==()</a>, <a class="el" href="base__node_8cpp_source.html#l00043">pgrouting::vrp::Base_node::operator==()</a>, <a class="el" href="tw__node_8cpp_source.html#l00190">operator==()</a>, <a class="el" href="node_8cpp_source.html#l00055">pgrouting::vrp::Node::print()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00229">pgrouting::vrp::Vehicle_pickDeliver::push_back()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00247">pgrouting::vrp::Vehicle_pickDeliver::push_front()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00428">pgrouting::vrp::Vehicle_pickDeliver::semiLIFO()</a>, <a class="el" href="order_8cpp_source.html#l00111">pgrouting::vrp::Order::set_compatibles()</a>, <a class="el" href="vehicle_8cpp_source.html#l00569">pgrouting::vrp::Vehicle::tau()</a>, <a class="el" href="tw__node_8cpp_source.html#l00040">travel_time_to()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
 
 </div>
 </div>
@@ -677,23 +716,23 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00073">73</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                                              {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">/*</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">     * I /-&gt;  kStart</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00077">77</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                                              {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">/*</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">     * kEnd /-&gt; (*this)</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">     * I /-&gt;  kStart</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (I.m_type == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5">kEnd</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> !<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">is_late_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed));</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">     * kEnd /-&gt; (*this)</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (I.m_type == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5">kEnd</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">return</span> !<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">is_late_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed));</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00058">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8h_source.html#l00192">is_late_arrival()</a>, <a class="el" href="tw__node_8h_source.html#l00065">kEnd</a>, <a class="el" href="tw__node_8h_source.html#l00060">kStart</a>, and <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>.</p>
+<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00062">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8h_source.html#l00192">is_late_arrival()</a>, <a class="el" href="tw__node_8h_source.html#l00065">kEnd</a>, <a class="el" href="tw__node_8h_source.html#l00060">kStart</a>, and <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="vehicle_8cpp_source.html#l00487">pgrouting::vrp::Vehicle::getPosHighLimit()</a>, <a class="el" href="tw__node_8cpp_source.html#l00087">is_partially_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00103">is_partially_waitTime_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00095">is_tight_compatible_IJ()</a>, <a class="el" href="order_8cpp_source.html#l00094">pgrouting::vrp::Order::is_valid()</a>, <a class="el" href="tw__node_8cpp_source.html#l00112">is_waitTime_compatible_IJ()</a>, and <a class="el" href="order_8cpp_source.html#l00135">pgrouting::vrp::Order::isCompatibleIJ()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="vehicle_8cpp_source.html#l00487">pgrouting::vrp::Vehicle::getPosHighLimit()</a>, <a class="el" href="tw__node_8cpp_source.html#l00091">is_partially_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00107">is_partially_waitTime_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00099">is_tight_compatible_IJ()</a>, <a class="el" href="order_8cpp_source.html#l00094">pgrouting::vrp::Order::is_valid()</a>, <a class="el" href="tw__node_8cpp_source.html#l00116">is_waitTime_compatible_IJ()</a>, and <a class="el" href="order_8cpp_source.html#l00135">pgrouting::vrp::Order::isCompatibleIJ()</a>.</p>
 
 </div>
 </div>
@@ -718,17 +757,17 @@ Friends</h2></td></tr>
 <li>demand &lt; 0 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00150">150</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                           {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63">kDelivery</a></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() &lt; 0);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00154">154</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                           {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63">kDelivery</a></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() &lt; 0);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00079">closes()</a>, <a class="el" href="tw__node_8h_source.html#l00082">demand()</a>, <a class="el" href="tw__node_8h_source.html#l00062">kDelivery</a>, <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>, <a class="el" href="tw__node_8h_source.html#l00076">opens()</a>, and <a class="el" href="tw__node_8h_source.html#l00086">service_time()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="order_8cpp_source.html#l00094">pgrouting::vrp::Order::is_valid()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00197">is_valid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="order_8cpp_source.html#l00094">pgrouting::vrp::Order::is_valid()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00211">is_valid()</a>.</p>
 
 </div>
 </div>
@@ -753,17 +792,17 @@ Friends</h2></td></tr>
 <li>demand &lt;= 0 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00159">159</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                       {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a1cac02b77057f76ebbf69348aea584b8">kDump</a></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() &lt;= 0);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00163">163</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                       {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a1cac02b77057f76ebbf69348aea584b8">kDump</a></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() &lt;= 0);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00079">closes()</a>, <a class="el" href="tw__node_8h_source.html#l00082">demand()</a>, <a class="el" href="tw__node_8h_source.html#l00063">kDump</a>, <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>, <a class="el" href="tw__node_8h_source.html#l00076">opens()</a>, and <a class="el" href="tw__node_8h_source.html#l00086">service_time()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">pgrouting::vrp::Vehicle_node::evaluate()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00197">is_valid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00068">pgrouting::vrp::Vehicle_node::evaluate()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00211">is_valid()</a>.</p>
 
 </div>
 </div>
@@ -800,7 +839,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00274">m_opens</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="vehicle_8cpp_source.html#l00188">pgrouting::vrp::Vehicle::deltaTime()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00068">pgrouting::vrp::Vehicle_node::evaluate()</a>, <a class="el" href="tw__node_8h_source.html#l00196">is_on_time()</a>, <a class="el" href="tw__node_8cpp_source.html#l00087">is_partially_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00103">is_partially_waitTime_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00095">is_tight_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00112">is_waitTime_compatible_IJ()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="vehicle_8cpp_source.html#l00188">pgrouting::vrp::Vehicle::deltaTime()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00068">pgrouting::vrp::Vehicle_node::evaluate()</a>, <a class="el" href="tw__node_8h_source.html#l00196">is_on_time()</a>, <a class="el" href="tw__node_8cpp_source.html#l00091">is_partially_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00107">is_partially_waitTime_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00099">is_tight_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00116">is_waitTime_compatible_IJ()</a>.</p>
 
 </div>
 </div>
@@ -825,17 +864,17 @@ Friends</h2></td></tr>
 <li>demand == 0 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00177">177</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                      {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5">kEnd</a></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() == 0);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00181">181</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                      {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5">kEnd</a></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() == 0);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00079">closes()</a>, <a class="el" href="tw__node_8h_source.html#l00082">demand()</a>, <a class="el" href="tw__node_8h_source.html#l00065">kEnd</a>, <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>, <a class="el" href="tw__node_8h_source.html#l00076">opens()</a>, and <a class="el" href="tw__node_8h_source.html#l00086">service_time()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="vehicle__node_8h_source.html#l00132">pgrouting::vrp::Vehicle_node::has_cv()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00197">is_valid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="vehicle__node_8h_source.html#l00132">pgrouting::vrp::Vehicle_node::has_cv()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00211">is_valid()</a>.</p>
 
 </div>
 </div>
@@ -872,7 +911,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00275">m_closes</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00140">pgrouting::vrp::Vehicle_node::deltaGeneratesTWV()</a>, <a class="el" href="vehicle__node_8h_source.html#l00124">pgrouting::vrp::Vehicle_node::has_twv()</a>, <a class="el" href="tw__node_8cpp_source.html#l00073">is_compatible_IJ()</a>, <a class="el" href="tw__node_8h_source.html#l00196">is_on_time()</a>, <a class="el" href="tw__node_8cpp_source.html#l00087">is_partially_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00095">is_tight_compatible_IJ()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00140">pgrouting::vrp::Vehicle_node::deltaGeneratesTWV()</a>, <a class="el" href="vehicle__node_8h_source.html#l00124">pgrouting::vrp::Vehicle_node::has_twv()</a>, <a class="el" href="tw__node_8cpp_source.html#l00077">is_compatible_IJ()</a>, <a class="el" href="tw__node_8h_source.html#l00196">is_on_time()</a>, <a class="el" href="tw__node_8cpp_source.html#l00091">is_partially_compatible_IJ()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00099">is_tight_compatible_IJ()</a>.</p>
 
 </div>
 </div>
@@ -897,17 +936,17 @@ Friends</h2></td></tr>
 <li>demand &gt;= 0 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00168">168</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                       {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc">kLoad</a></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() &gt;= 0);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00172">172</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                       {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc">kLoad</a></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() &gt;= 0);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00079">closes()</a>, <a class="el" href="tw__node_8h_source.html#l00082">demand()</a>, <a class="el" href="tw__node_8h_source.html#l00064">kLoad</a>, <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>, <a class="el" href="tw__node_8h_source.html#l00076">opens()</a>, and <a class="el" href="tw__node_8h_source.html#l00086">service_time()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00197">is_valid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00211">is_valid()</a>.</p>
 
 </div>
 </div>
@@ -973,15 +1012,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00087">87</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                                                        {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">is_compatible_IJ</a>(I, speed)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        &amp;&amp; !<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">is_early_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed))</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">is_late_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354">arrival_j_closes_i</a>(I, speed));</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00091">91</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                                        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">is_compatible_IJ</a>(I, speed)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        &amp;&amp; !<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">is_early_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed))</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">is_late_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354">arrival_j_closes_i</a>(I, speed));</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00064">arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00058">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00073">is_compatible_IJ()</a>, <a class="el" href="tw__node_8h_source.html#l00187">is_early_arrival()</a>, and <a class="el" href="tw__node_8h_source.html#l00192">is_late_arrival()</a>.</p>
+<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00068">arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00062">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00077">is_compatible_IJ()</a>, <a class="el" href="tw__node_8h_source.html#l00187">is_early_arrival()</a>, and <a class="el" href="tw__node_8h_source.html#l00192">is_late_arrival()</a>.</p>
 
 </div>
 </div>
@@ -1011,14 +1050,14 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00103">103</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                            {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">is_compatible_IJ</a>(I, speed)</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">is_early_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed));</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00107">107</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                            {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">is_compatible_IJ</a>(I, speed)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">is_early_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed));</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00058">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00073">is_compatible_IJ()</a>, and <a class="el" href="tw__node_8h_source.html#l00187">is_early_arrival()</a>.</p>
+<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00062">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00077">is_compatible_IJ()</a>, and <a class="el" href="tw__node_8h_source.html#l00187">is_early_arrival()</a>.</p>
 
 </div>
 </div>
@@ -1043,17 +1082,17 @@ Friends</h2></td></tr>
 <li>demand &gt; 0 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00141">141</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                         {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4aa1d0ca4b0b1f553d9887025ccb34537d">kPickup</a></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() &gt; 0);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00145">145</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                         {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4aa1d0ca4b0b1f553d9887025ccb34537d">kPickup</a></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() &gt; 0);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00079">closes()</a>, <a class="el" href="tw__node_8h_source.html#l00082">demand()</a>, <a class="el" href="tw__node_8h_source.html#l00061">kPickup</a>, <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>, <a class="el" href="tw__node_8h_source.html#l00076">opens()</a>, and <a class="el" href="tw__node_8h_source.html#l00086">service_time()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="order_8cpp_source.html#l00094">pgrouting::vrp::Order::is_valid()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00197">is_valid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="order_8cpp_source.html#l00094">pgrouting::vrp::Order::is_valid()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00211">is_valid()</a>.</p>
 
 </div>
 </div>
@@ -1079,18 +1118,18 @@ Friends</h2></td></tr>
 <li>demand == 0 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00132">132</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                        {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">return</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() == 0);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00136">136</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                        {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">return</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8">opens</a>() &lt; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">closes</a>())</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">service_time</a>() &gt;= 0)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        &amp;&amp; (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">demand</a>() == 0);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00079">closes()</a>, <a class="el" href="tw__node_8h_source.html#l00082">demand()</a>, <a class="el" href="tw__node_8h_source.html#l00060">kStart</a>, <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>, <a class="el" href="tw__node_8h_source.html#l00076">opens()</a>, and <a class="el" href="tw__node_8h_source.html#l00086">service_time()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00038">pgrouting::vrp::Vehicle_node::evaluate()</a>, <a class="el" href="vehicle__node_8h_source.html#l00132">pgrouting::vrp::Vehicle_node::has_cv()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00197">is_valid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00038">pgrouting::vrp::Vehicle_node::evaluate()</a>, <a class="el" href="vehicle__node_8h_source.html#l00132">pgrouting::vrp::Vehicle_node::has_cv()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00211">is_valid()</a>.</p>
 
 </div>
 </div>
@@ -1120,15 +1159,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00095">95</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                                                    {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">is_compatible_IJ</a>(I, speed)</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        &amp;&amp; !<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">is_early_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed))</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        &amp;&amp; !<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">is_late_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354">arrival_j_closes_i</a>(I, speed));</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00099">99</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                                                    {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">is_compatible_IJ</a>(I, speed)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        &amp;&amp; !<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">is_early_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed))</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        &amp;&amp; !<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a1e121d629694b7809b4515645ebf1576">is_late_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354">arrival_j_closes_i</a>(I, speed));</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00064">arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00058">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00073">is_compatible_IJ()</a>, <a class="el" href="tw__node_8h_source.html#l00187">is_early_arrival()</a>, and <a class="el" href="tw__node_8h_source.html#l00192">is_late_arrival()</a>.</p>
+<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00068">arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00062">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00077">is_compatible_IJ()</a>, <a class="el" href="tw__node_8h_source.html#l00187">is_early_arrival()</a>, and <a class="el" href="tw__node_8h_source.html#l00192">is_late_arrival()</a>.</p>
 
 </div>
 </div>
@@ -1155,42 +1194,42 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00197">197</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                             {</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3">type</a>()) {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>:</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483">is_start</a>();</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5">kEnd</a>:</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e">is_end</a>();</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a1cac02b77057f76ebbf69348aea584b8">kDump</a>:</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262">is_dump</a>();</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63">kDelivery</a>:</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76">is_delivery</a>();</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4aa1d0ca4b0b1f553d9887025ccb34537d">kPickup</a>:</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b">is_pickup</a>();</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc">kLoad</a>:</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a69aa3b00665b1cc9be2549c7dde0e05f">is_load</a>();</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    }</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00211">211</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                             {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3">type</a>()) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>:</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483">is_start</a>();</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5">kEnd</a>:</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e">is_end</a>();</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a1cac02b77057f76ebbf69348aea584b8">kDump</a>:</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262">is_dump</a>();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63">kDelivery</a>:</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76">is_delivery</a>();</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4aa1d0ca4b0b1f553d9887025ccb34537d">kPickup</a>:</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b">is_pickup</a>();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc">kLoad</a>:</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a69aa3b00665b1cc9be2549c7dde0e05f">is_load</a>();</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00150">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00159">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00177">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00168">is_load()</a>, <a class="el" href="tw__node_8cpp_source.html#l00141">is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00132">is_start()</a>, <a class="el" href="tw__node_8h_source.html#l00062">kDelivery</a>, <a class="el" href="tw__node_8h_source.html#l00063">kDump</a>, <a class="el" href="tw__node_8h_source.html#l00065">kEnd</a>, <a class="el" href="tw__node_8h_source.html#l00064">kLoad</a>, <a class="el" href="tw__node_8h_source.html#l00061">kPickup</a>, <a class="el" href="tw__node_8h_source.html#l00060">kStart</a>, and <a class="el" href="tw__node_8h_source.html#l00089">type()</a>.</p>
+<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00154">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00163">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00181">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00172">is_load()</a>, <a class="el" href="tw__node_8cpp_source.html#l00145">is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00136">is_start()</a>, <a class="el" href="tw__node_8h_source.html#l00062">kDelivery</a>, <a class="el" href="tw__node_8h_source.html#l00063">kDump</a>, <a class="el" href="tw__node_8h_source.html#l00065">kEnd</a>, <a class="el" href="tw__node_8h_source.html#l00064">kLoad</a>, <a class="el" href="tw__node_8h_source.html#l00061">kPickup</a>, <a class="el" href="tw__node_8h_source.html#l00060">kStart</a>, and <a class="el" href="tw__node_8h_source.html#l00089">type()</a>.</p>
 
 </div>
 </div>
@@ -1220,14 +1259,46 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00112">112</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                                                       {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">return</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">is_compatible_IJ</a>(I, speed)</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">is_early_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed));</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00116">116</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                                                       {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">is_compatible_IJ</a>(I, speed)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">is_early_arrival</a>(<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">arrival_j_opens_i</a>(I, speed));</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00058">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00073">is_compatible_IJ()</a>, and <a class="el" href="tw__node_8h_source.html#l00187">is_early_arrival()</a>.</p>
+<p class="reference">References <a class="el" href="tw__node_8cpp_source.html#l00062">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00077">is_compatible_IJ()</a>, and <a class="el" href="tw__node_8h_source.html#l00187">is_early_arrival()</a>.</p>
+
+</div>
+</div>
+<a id="ab3151adfe935bf9e2c6e16b2f0bcc53d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3151adfe935bf9e2c6e16b2f0bcc53d">&#9670;&nbsp;</a></span>msg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classpgrouting_1_1Pgr__messages.html">Pgr_messages</a> &amp; pgrouting::vrp::Dnode::msg </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="dnode_8cpp_source.html#l00063">63</a> of file <a class="el" href="dnode_8cpp_source.html">dnode.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;           {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;<a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#a7ea35b02b812474d4b0c19da2784fc5f">msg</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pd__problem_8h_source.html#l00049">pgrouting::vrp::PD_problem::msg</a>, and <a class="el" href="pd__problem_8h_source.html#l00052">pgrouting::vrp::PD_problem::problem</a>.</p>
 
 </div>
 </div>
@@ -1261,12 +1332,48 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00274">m_opens</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="tw__node_8cpp_source.html#l00058">arrival_j_opens_i()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00038">pgrouting::vrp::Vehicle_node::evaluate()</a>, <a class="el" href="tw__node_8cpp_source.html#l00150">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00159">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00177">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00168">is_load()</a>, <a class="el" href="vehicle_8cpp_source.html#l00505">pgrouting::vrp::Vehicle::is_ok()</a>, <a class="el" href="tw__node_8cpp_source.html#l00141">is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00132">is_start()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="tw__node_8cpp_source.html#l00062">arrival_j_opens_i()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00038">pgrouting::vrp::Vehicle_node::evaluate()</a>, <a class="el" href="tw__node_8cpp_source.html#l00154">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00163">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00181">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00172">is_load()</a>, <a class="el" href="vehicle_8cpp_source.html#l00505">pgrouting::vrp::Vehicle::is_ok()</a>, <a class="el" href="tw__node_8cpp_source.html#l00145">is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00136">is_start()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
+
+</div>
+</div>
+<a id="a3aa08177772317bcc28a8965c97f8bc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aa08177772317bcc28a8965c97f8bc4">&#9670;&nbsp;</a></span>operator==() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pgrouting::vrp::Dnode::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classpgrouting_1_1vrp_1_1Dnode.html">Dnode</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="dnode_8cpp_source.html#l00055">55</a> of file <a class="el" href="dnode_8cpp_source.html">dnode.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                         {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (&amp;rhs == <span class="keyword">this</span>) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        (<a class="code" href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447">idx</a>() == rhs.idx())</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;         &amp;&amp; (<a class="code" href="classpgrouting_1_1Identifier.html#a147f029e589a2dd36b1edd638d7ac833">id</a>() == rhs.id());</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="identifier_8cpp_source.html#l00042">pgrouting::Identifier::id()</a>, and <a class="el" href="identifier_8cpp_source.html#l00037">pgrouting::Identifier::idx()</a>.</p>
 
 </div>
 </div>
 <a id="ab2f1204fba2644d6c0a0edef5305645f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2f1204fba2644d6c0a0edef5305645f">&#9670;&nbsp;</a></span>operator==()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2f1204fba2644d6c0a0edef5305645f">&#9670;&nbsp;</a></span>operator==() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1281,17 +1388,27 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00186">186</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                                               {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">if</span> (&amp;other == <span class="keyword">this</span>) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keyword">auto</span> lhs = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>Node&amp;<span class="keyword">&gt;</span>(</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            *<a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#abdcfb492078e10e4d72b04c37c151c99">m_base_nodes</a>[<a class="code" href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447">idx</a>()].get());</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keyword">auto</span> rhs = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>Node&amp;<span class="keyword">&gt;</span>(</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            *<a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#abdcfb492078e10e4d72b04c37c151c99">m_base_nodes</a>[other.idx()].get());</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">return</span> lhs == rhs;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00190">190</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                               {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">if</span> (&amp;other == <span class="keyword">this</span>) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#af30dc6f10a64ae5d515c24b258701ab0">m_order</a> == other.m_order</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">m_opens</a> == other.m_opens</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05">m_closes</a> == other.m_closes</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">m_service_time</a> == other.m_service_time</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a795138a0068571b76c6678335081f2e4">m_demand</a> == other.m_demand</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">m_type</a> == other.m_type</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1Identifier.html#a147f029e589a2dd36b1edd638d7ac833">id</a>() == other.id()</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        &amp;&amp; <a class="code" href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447">idx</a>() == other.idx();</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keyword">auto</span> lhs = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>Node&amp;<span class="keyword">&gt;</span>(</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            *<a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;m_base_nodes[<a class="code" href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447">idx</a>()].get());</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keyword">auto</span> rhs = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>Node&amp;<span class="keyword">&gt;</span>(</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            *<a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;m_base_nodes[other.idx()].get());</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">return</span> lhs == rhs;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="identifier_8cpp_source.html#l00037">pgrouting::Identifier::idx()</a>, <a class="el" href="pgr__pickDeliver_8h_source.html#l00114">pgrouting::vrp::Pgr_pickDeliver::m_base_nodes</a>, and <a class="el" href="pd__problem_8h_source.html#l00052">pgrouting::vrp::PD_problem::problem</a>.</p>
+<p class="reference">References <a class="el" href="identifier_8cpp_source.html#l00042">pgrouting::Identifier::id()</a>, <a class="el" href="identifier_8cpp_source.html#l00037">pgrouting::Identifier::idx()</a>, <a class="el" href="tw__node_8h_source.html#l00275">m_closes</a>, <a class="el" href="tw__node_8h_source.html#l00277">m_demand</a>, <a class="el" href="tw__node_8h_source.html#l00274">m_opens</a>, <a class="el" href="tw__node_8h_source.html#l00273">m_order</a>, <a class="el" href="tw__node_8h_source.html#l00276">m_service_time</a>, <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>, and <a class="el" href="pd__problem_8h_source.html#l00052">pgrouting::vrp::PD_problem::problem</a>.</p>
 
 </div>
 </div>
@@ -1359,7 +1476,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="identifier_8h_source.html#l00053">pgrouting::Identifier::m_id</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00232">Tw_node()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00246">Tw_node()</a>.</p>
 
 </div>
 </div>
@@ -1396,7 +1513,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00276">m_service_time</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00151">pgrouting::vrp::Vehicle_node::arrival_i_arrives_j()</a>, <a class="el" href="tw__node_8cpp_source.html#l00064">arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00058">arrival_j_opens_i()</a>, <a class="el" href="vehicle_8cpp_source.html#l00188">pgrouting::vrp::Vehicle::deltaTime()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00038">pgrouting::vrp::Vehicle_node::evaluate()</a>, <a class="el" href="tw__node_8cpp_source.html#l00150">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00159">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00177">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00168">is_load()</a>, <a class="el" href="tw__node_8cpp_source.html#l00141">is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00132">is_start()</a>, and <a class="el" href="vehicle__node_8cpp_source.html#l00101">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00151">pgrouting::vrp::Vehicle_node::arrival_i_arrives_j()</a>, <a class="el" href="tw__node_8cpp_source.html#l00068">arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00062">arrival_j_opens_i()</a>, <a class="el" href="vehicle_8cpp_source.html#l00188">pgrouting::vrp::Vehicle::deltaTime()</a>, <a class="el" href="vehicle__node_8cpp_source.html#l00038">pgrouting::vrp::Vehicle_node::evaluate()</a>, <a class="el" href="tw__node_8cpp_source.html#l00154">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00163">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00181">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00172">is_load()</a>, <a class="el" href="tw__node_8cpp_source.html#l00145">is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00136">is_start()</a>, and <a class="el" href="vehicle__node_8cpp_source.html#l00101">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 
 </div>
 </div>
@@ -1427,20 +1544,23 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>time = distance / speed. </p>
-<p>TODO(vicky) shall call <a class="el" href="classpgrouting_1_1vrp_1_1Node.html" title="The Node class defines a point in 2D space with an id.">Node</a> or <a class="el" href="classpgrouting_1_1vrp_1_1Dnode.html" title="The Dnode class defines a the basic operations when data is a matrix.">Dnode</a> static cast won't work I think</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>TODO evaluate with matrix also </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00040">40</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                             {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">auto</span> from =  <a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#abdcfb492078e10e4d72b04c37c151c99">m_base_nodes</a>[<a class="code" href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447">idx</a>()].get();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">auto</span> destination = <a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#abdcfb492078e10e4d72b04c37c151c99">m_base_nodes</a>[to.idx()].get();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(speed != 0);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> from-&gt;distance(destination) / speed;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(speed != 0);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1vrp_1_1Dnode.html#ad97f91419e890bf9b541ba15fcb8c787">distance</a>(to) / speed;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">auto</span> from =  <a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;m_base_nodes[<a class="code" href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447">idx</a>()].get();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">auto</span> destination = <a class="code" href="classpgrouting_1_1vrp_1_1PD__problem.html#aa6625d4f26aeb5f8d43e2e9ac23ed621">problem</a>-&gt;m_base_nodes[to.idx()].get();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(speed != 0);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> from-&gt;distance(destination) / speed;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="identifier_8cpp_source.html#l00037">pgrouting::Identifier::idx()</a>, <a class="el" href="pgr__pickDeliver_8h_source.html#l00114">pgrouting::vrp::Pgr_pickDeliver::m_base_nodes</a>, <a class="el" href="pgr__assert_8h_source.html#l00094">pgassert</a>, and <a class="el" href="pd__problem_8h_source.html#l00052">pgrouting::vrp::PD_problem::problem</a>.</p>
+<p class="reference">References <a class="el" href="dnode_8cpp_source.html#l00042">pgrouting::vrp::Dnode::distance()</a>, <a class="el" href="identifier_8cpp_source.html#l00037">pgrouting::Identifier::idx()</a>, <a class="el" href="pgr__assert_8h_source.html#l00094">pgassert</a>, and <a class="el" href="pd__problem_8h_source.html#l00052">pgrouting::vrp::PD_problem::problem</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00151">pgrouting::vrp::Vehicle_node::arrival_i_arrives_j()</a>, <a class="el" href="tw__node_8cpp_source.html#l00064">arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00058">arrival_j_opens_i()</a>, <a class="el" href="vehicle_8cpp_source.html#l00188">pgrouting::vrp::Vehicle::deltaTime()</a>, and <a class="el" href="order_8cpp_source.html#l00055">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="vehicle__node_8cpp_source.html#l00151">pgrouting::vrp::Vehicle_node::arrival_i_arrives_j()</a>, <a class="el" href="tw__node_8cpp_source.html#l00068">arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00062">arrival_j_opens_i()</a>, <a class="el" href="vehicle_8cpp_source.html#l00188">pgrouting::vrp::Vehicle::deltaTime()</a>, and <a class="el" href="order_8cpp_source.html#l00055">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 
 </div>
 </div>
@@ -1477,7 +1597,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00278">m_type</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00197">is_valid()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00119">type_str()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00211">is_valid()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00123">type_str()</a>.</p>
 
 </div>
 </div>
@@ -1496,22 +1616,22 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00119">119</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                  {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3">type</a>()) {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;START&quot;</span>; <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5">kEnd</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;END&quot;</span>; <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a1cac02b77057f76ebbf69348aea584b8">kDump</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;DUMP&quot;</span>; <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc">kLoad</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;LOAD&quot;</span>; <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4aa1d0ca4b0b1f553d9887025ccb34537d">kPickup</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;PICKUP&quot;</span>; <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63">kDelivery</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;DELIVERY&quot;</span>; <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">default</span>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;UNKNOWN&quot;</span>;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00123">123</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                                  {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3">type</a>()) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">kStart</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;START&quot;</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5">kEnd</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;END&quot;</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a1cac02b77057f76ebbf69348aea584b8">kDump</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;DUMP&quot;</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc">kLoad</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;LOAD&quot;</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4aa1d0ca4b0b1f553d9887025ccb34537d">kPickup</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;PICKUP&quot;</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63">kDelivery</a>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;DELIVERY&quot;</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">default</span>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;UNKNOWN&quot;</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="tw__node_8h_source.html#l00062">kDelivery</a>, <a class="el" href="tw__node_8h_source.html#l00063">kDump</a>, <a class="el" href="tw__node_8h_source.html#l00065">kEnd</a>, <a class="el" href="tw__node_8h_source.html#l00064">kLoad</a>, <a class="el" href="tw__node_8h_source.html#l00061">kPickup</a>, <a class="el" href="tw__node_8h_source.html#l00060">kStart</a>, and <a class="el" href="tw__node_8h_source.html#l00089">type()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00272">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00286">pgrouting::vrp::operator&lt;&lt;()</a>.</p>
 
 </div>
 </div>
@@ -1587,19 +1707,18 @@ Friends</h2></td></tr>
 <li></li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00272">272</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                                                            {</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    log &lt;&lt; static_cast&lt;const Node&amp;&gt;(</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            *n.problem-&gt;m_base_nodes[n.idx()].get())</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;[opens = &quot;</span> &lt;&lt; n.m_opens</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tcloses = &quot;</span> &lt;&lt; n.m_closes</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tservice = &quot;</span> &lt;&lt; n.m_service_time</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tdemand = &quot;</span> &lt;&lt; n.m_demand</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\ttype = &quot;</span> &lt;&lt; n.type_str()</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;]&quot;</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keywordflow">return</span> log;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00286">286</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                                                            {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    log &lt;&lt; n.id()</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;[opens = &quot;</span> &lt;&lt; n.m_opens</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tcloses = &quot;</span> &lt;&lt; n.m_closes</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tservice = &quot;</span> &lt;&lt; n.m_service_time</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tdemand = &quot;</span> &lt;&lt; n.m_demand</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\ttype = &quot;</span> &lt;&lt; n.type_str()</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;]&quot;</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">return</span> log;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1628,7 +1747,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="tw__node_8h_source.html#l00275">275</a> of file <a class="el" href="tw__node_8h_source.html">tw_node.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8h_source.html#l00079">closes()</a>, <a class="el" href="tw__node_8h_source.html#l00192">is_late_arrival()</a>, <a class="el" href="tw__node_8cpp_source.html#l00272">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="tw__node_8cpp_source.html#l00232">Tw_node()</a>, and <a class="el" href="tw__node_8h_source.html#l00092">window_length()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8h_source.html#l00079">closes()</a>, <a class="el" href="tw__node_8h_source.html#l00192">is_late_arrival()</a>, <a class="el" href="tw__node_8cpp_source.html#l00286">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="tw__node_8cpp_source.html#l00190">operator==()</a>, <a class="el" href="tw__node_8cpp_source.html#l00246">Tw_node()</a>, and <a class="el" href="tw__node_8h_source.html#l00092">window_length()</a>.</p>
 
 </div>
 </div>
@@ -1656,7 +1775,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="tw__node_8h_source.html#l00277">277</a> of file <a class="el" href="tw__node_8h_source.html">tw_node.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8h_source.html#l00082">demand()</a>, <a class="el" href="tw__node_8cpp_source.html#l00272">pgrouting::vrp::operator&lt;&lt;()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00232">Tw_node()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8h_source.html#l00082">demand()</a>, <a class="el" href="tw__node_8cpp_source.html#l00286">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="tw__node_8cpp_source.html#l00190">operator==()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00246">Tw_node()</a>.</p>
 
 </div>
 </div>
@@ -1736,7 +1855,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="tw__node_8h_source.html#l00274">274</a> of file <a class="el" href="tw__node_8h_source.html">tw_node.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8h_source.html#l00187">is_early_arrival()</a>, <a class="el" href="tw__node_8h_source.html#l00076">opens()</a>, <a class="el" href="tw__node_8cpp_source.html#l00272">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="tw__node_8cpp_source.html#l00232">Tw_node()</a>, and <a class="el" href="tw__node_8h_source.html#l00092">window_length()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8h_source.html#l00187">is_early_arrival()</a>, <a class="el" href="tw__node_8h_source.html#l00076">opens()</a>, <a class="el" href="tw__node_8cpp_source.html#l00286">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="tw__node_8cpp_source.html#l00190">operator==()</a>, <a class="el" href="tw__node_8cpp_source.html#l00246">Tw_node()</a>, and <a class="el" href="tw__node_8h_source.html#l00092">window_length()</a>.</p>
 
 </div>
 </div>
@@ -1764,7 +1883,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="tw__node_8h_source.html#l00273">273</a> of file <a class="el" href="tw__node_8h_source.html">tw_node.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8h_source.html#l00073">order()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00190">operator==()</a>, and <a class="el" href="tw__node_8h_source.html#l00073">order()</a>.</p>
 
 </div>
 </div>
@@ -1790,7 +1909,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="tw__node_8h_source.html#l00276">276</a> of file <a class="el" href="tw__node_8h_source.html">tw_node.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00272">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="tw__node_8h_source.html#l00086">service_time()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00232">Tw_node()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00286">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="tw__node_8cpp_source.html#l00190">operator==()</a>, <a class="el" href="tw__node_8h_source.html#l00086">service_time()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00246">Tw_node()</a>.</p>
 
 </div>
 </div>
@@ -1818,33 +1937,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="tw__node_8h_source.html#l00278">278</a> of file <a class="el" href="tw__node_8h_source.html">tw_node.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00064">arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00058">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00073">is_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00150">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00159">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00177">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00168">is_load()</a>, <a class="el" href="tw__node_8cpp_source.html#l00141">is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00132">is_start()</a>, <a class="el" href="tw__node_8cpp_source.html#l00232">Tw_node()</a>, and <a class="el" href="tw__node_8h_source.html#l00089">type()</a>.</p>
-
-</div>
-</div>
-<a id="a7ea35b02b812474d4b0c19da2784fc5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ea35b02b812474d4b0c19da2784fc5f">&#9670;&nbsp;</a></span>msg</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classpgrouting_1_1Pgr__messages.html">Pgr_messages</a> pgrouting::vrp::PD_problem::msg</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="pd__problem_8h_source.html#l00049">49</a> of file <a class="el" href="pd__problem_8h_source.html">pd_problem.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="fleet_8cpp_source.html#l00179">pgrouting::vrp::Fleet::build_fleet()</a>, <a class="el" href="pd__orders_8cpp_source.html#l00069">pgrouting::vrp::PD_Orders::build_orders()</a>, <a class="el" href="pickDeliver__driver_8cpp_source.html#l00047">do_pgr_pickDeliver()</a>, <a class="el" href="pickDeliverEuclidean__driver_8cpp_source.html#l00052">do_pgr_pickDeliverEuclidean()</a>, <a class="el" href="vehicle__pickDeliver_8cpp_source.html#l00263">pgrouting::vrp::Vehicle_pickDeliver::do_while_feasable()</a>, <a class="el" href="initial__solution_8cpp_source.html#l00078">pgrouting::vrp::Initial_solution::do_while_foo()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00127">pgrouting::vrp::Pgr_pickDeliver::get_postgres_result()</a>, <a class="el" href="vehicle_8cpp_source.html#l00135">pgrouting::vrp::Vehicle::get_postgres_result()</a>, <a class="el" href="fleet_8cpp_source.html#l00059">pgrouting::vrp::Fleet::get_truck()</a>, <a class="el" href="optimize_8cpp_source.html#l00067">pgrouting::vrp::Optimize::inter_swap()</a>, <a class="el" href="fleet_8cpp_source.html#l00320">pgrouting::vrp::Fleet::is_fleet_ok()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00052">pgrouting::vrp::Pgr_pickDeliver::nodesOK()</a>, <a class="el" href="initial__solution_8cpp_source.html#l00142">pgrouting::vrp::Initial_solution::one_truck_all_orders()</a>, <a class="el" href="optimize_8cpp_source.html#l00051">pgrouting::vrp::Optimize::Optimize()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00068">pgrouting::vrp::Pgr_pickDeliver::optimize()</a>, <a class="el" href="pd__problem_8cpp_source.html#l00035">pgrouting::vrp::PD_problem::PD_problem()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00163">pgrouting::vrp::Pgr_pickDeliver::Pgr_pickDeliver()</a>, <a class="el" href="optimize_8cpp_source.html#l00714">pgrouting::vrp::Optimize::save_if_best()</a>, <a class="el" href="solution_8cpp_source.html#l00239">pgrouting::vrp::Solution::Solution()</a>, <a class="el" href="pgr__pickDeliver_8cpp_source.html#l00084">pgrouting::vrp::Pgr_pickDeliver::solve()</a>, <a class="el" href="optimize_8cpp_source.html#l00274">pgrouting::vrp::Optimize::swap_order()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00514">pgrouting::vrp::Vehicle::Vehicle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tw__node_8cpp_source.html#l00068">arrival_j_closes_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00062">arrival_j_opens_i()</a>, <a class="el" href="tw__node_8cpp_source.html#l00077">is_compatible_IJ()</a>, <a class="el" href="tw__node_8cpp_source.html#l00154">is_delivery()</a>, <a class="el" href="tw__node_8cpp_source.html#l00163">is_dump()</a>, <a class="el" href="tw__node_8cpp_source.html#l00181">is_end()</a>, <a class="el" href="tw__node_8cpp_source.html#l00172">is_load()</a>, <a class="el" href="tw__node_8cpp_source.html#l00145">is_pickup()</a>, <a class="el" href="tw__node_8cpp_source.html#l00136">is_start()</a>, <a class="el" href="tw__node_8cpp_source.html#l00190">operator==()</a>, <a class="el" href="tw__node_8cpp_source.html#l00246">Tw_node()</a>, and <a class="el" href="tw__node_8h_source.html#l00089">type()</a>.</p>
 
 </div>
 </div>
@@ -1870,7 +1963,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="pd__problem_8h_source.html#l00052">52</a> of file <a class="el" href="pd__problem_8h_source.html">pd_problem.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pd__orders_8cpp_source.html#l00047">pgrouting::vrp::PD_Orders::add_order()</a>, <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="fleet_8cpp_source.html#l00179">pgrouting::vrp::Fleet::build_fleet()</a>, <a class="el" href="pd__orders_8cpp_source.html#l00069">pgrouting::vrp::PD_Orders::build_orders()</a>, <a class="el" href="dnode_8cpp_source.html#l00042">pgrouting::vrp::Dnode::distance()</a>, <a class="el" href="solution_8cpp_source.html#l00235">pgrouting::vrp::Solution::get_kind()</a>, <a class="el" href="pgr__pickDeliver_8h_source.html#l00090">pgrouting::vrp::Pgr_pickDeliver::get_kind()</a>, <a class="el" href="tw__node_8cpp_source.html#l00272">pgrouting::vrp::operator&lt;&lt;()</a>, <a class="el" href="tw__node_8cpp_source.html#l00186">operator==()</a>, <a class="el" href="pd__problem_8cpp_source.html#l00035">pgrouting::vrp::PD_problem::PD_problem()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00040">travel_time_to()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pd__orders_8cpp_source.html#l00047">pgrouting::vrp::PD_Orders::add_order()</a>, <a class="el" href="fleet_8cpp_source.html#l00135">pgrouting::vrp::Fleet::add_vehicle()</a>, <a class="el" href="fleet_8cpp_source.html#l00179">pgrouting::vrp::Fleet::build_fleet()</a>, <a class="el" href="pd__orders_8cpp_source.html#l00069">pgrouting::vrp::PD_Orders::build_orders()</a>, <a class="el" href="dnode_8cpp_source.html#l00042">pgrouting::vrp::Dnode::distance()</a>, <a class="el" href="solution_8cpp_source.html#l00234">pgrouting::vrp::Solution::get_kind()</a>, <a class="el" href="pgr__pickDeliver_8h_source.html#l00094">pgrouting::vrp::Pgr_pickDeliver::get_kind()</a>, <a class="el" href="dnode_8cpp_source.html#l00063">pgrouting::vrp::Dnode::msg()</a>, <a class="el" href="tw__node_8cpp_source.html#l00190">operator==()</a>, <a class="el" href="pd__problem_8cpp_source.html#l00035">pgrouting::vrp::PD_problem::PD_problem()</a>, and <a class="el" href="tw__node_8cpp_source.html#l00040">travel_time_to()</a>.</p>
 
 </div>
 </div>
@@ -1880,37 +1973,41 @@ Friends</h2></td></tr>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Pgr__pickDeliver_html_abdcfb492078e10e4d72b04c37c151c99"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#abdcfb492078e10e4d72b04c37c151c99">pgrouting::vrp::Pgr_pickDeliver::m_base_nodes</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; Base_node &gt; &gt; m_base_nodes</div><div class="ttdef"><b>Definition:</b> <a href="pgr__pickDeliver_8h_source.html#l00114">pgr_pickDeliver.h:114</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1PD__problem_html_a7ea35b02b812474d4b0c19da2784fc5f"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1PD__problem.html#a7ea35b02b812474d4b0c19da2784fc5f">pgrouting::vrp::PD_problem::msg</a></div><div class="ttdeci">static Pgr_messages msg</div><div class="ttdef"><b>Definition:</b> <a href="pd__problem_8h_source.html#l00049">pd_problem.h:49</a></div></div>
 <div class="ttc" id="astructVehicle__t_html_af096bb6d7bb70b80126934de22546d4e"><div class="ttname"><a href="structVehicle__t.html#af096bb6d7bb70b80126934de22546d4e">Vehicle_t::end_service_t</a></div><div class="ttdeci">double end_service_t</div><div class="ttdef"><b>Definition:</b> <a href="vehicle__t_8h_source.html#l00061">vehicle_t.h:61</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1tsp_1_1Dmatrix_html_acd3455be4c2e72e6877163b3c317c063"><div class="ttname"><a href="classpgrouting_1_1tsp_1_1Dmatrix.html#acd3455be4c2e72e6877163b3c317c063">pgrouting::tsp::Dmatrix::get_index</a></div><div class="ttdeci">size_t get_index(int64_t id) const</div><div class="ttdoc">original id -&gt; idx</div><div class="ttdef"><b>Definition:</b> <a href="Dmatrix_8cpp_source.html#l00093">Dmatrix.cpp:93</a></div></div>
 <div class="ttc" id="astructPickDeliveryOrders__t_html_aec56228fc0edd5812b5cf9ad882902de"><div class="ttname"><a href="structPickDeliveryOrders__t.html#aec56228fc0edd5812b5cf9ad882902de">PickDeliveryOrders_t::demand</a></div><div class="ttdeci">double demand</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliveryOrders__t_8h_source.html#l00047">pickDeliveryOrders_t.h:47</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Dnode_html_ad97f91419e890bf9b541ba15fcb8c787"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Dnode.html#ad97f91419e890bf9b541ba15fcb8c787">pgrouting::vrp::Dnode::distance</a></div><div class="ttdeci">double distance(const Dnode &amp;other) const</div><div class="ttdef"><b>Definition:</b> <a href="dnode_8cpp_source.html#l00042">dnode.cpp:42</a></div></div>
 <div class="ttc" id="astructVehicle__t_html_a1fdbef1d47e507b5ac7cb44b68fc0572"><div class="ttname"><a href="structVehicle__t.html#a1fdbef1d47e507b5ac7cb44b68fc0572">Vehicle_t::start_open_t</a></div><div class="ttdeci">double start_open_t</div><div class="ttdef"><b>Definition:</b> <a href="vehicle__t_8h_source.html#l00051">vehicle_t.h:51</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4a1cac02b77057f76ebbf69348aea584b8"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a1cac02b77057f76ebbf69348aea584b8">pgrouting::vrp::Tw_node::kDump</a></div><div class="ttdeci">@ kDump</div><div class="ttdoc">dump site, empties truck</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00063">tw_node.h:63</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_aba4a921c9d3f8e05911b584223bc0469"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469">pgrouting::vrp::Tw_node::m_type</a></div><div class="ttdeci">NodeType m_type</div><div class="ttdoc">The demand for the Node.</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00278">tw_node.h:278</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a73dc73078ab5135d9269cb0115de898e"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e">pgrouting::vrp::Tw_node::is_end</a></div><div class="ttdeci">bool is_end() const</div><div class="ttdoc">is_end</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00177">tw_node.cpp:177</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a73dc73078ab5135d9269cb0115de898e"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a73dc73078ab5135d9269cb0115de898e">pgrouting::vrp::Tw_node::is_end</a></div><div class="ttdeci">bool is_end() const</div><div class="ttdoc">is_end</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00181">tw_node.cpp:181</a></div></div>
 <div class="ttc" id="astructVehicle__t_html_ab1095a1dfd25309e6d876cabf69f4aa0"><div class="ttname"><a href="structVehicle__t.html#ab1095a1dfd25309e6d876cabf69f4aa0">Vehicle_t::end_close_t</a></div><div class="ttdeci">double end_close_t</div><div class="ttdef"><b>Definition:</b> <a href="vehicle__t_8h_source.html#l00060">vehicle_t.h:60</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a69aa3b00665b1cc9be2549c7dde0e05f"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a69aa3b00665b1cc9be2549c7dde0e05f">pgrouting::vrp::Tw_node::is_load</a></div><div class="ttdeci">bool is_load() const</div><div class="ttdoc">is_Load</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00168">tw_node.cpp:168</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a69aa3b00665b1cc9be2549c7dde0e05f"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a69aa3b00665b1cc9be2549c7dde0e05f">pgrouting::vrp::Tw_node::is_load</a></div><div class="ttdeci">bool is_load() const</div><div class="ttdoc">is_Load</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00172">tw_node.cpp:172</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4acf3548f1631a1c56f3a67fde5f61aa63">pgrouting::vrp::Tw_node::kDelivery</a></div><div class="ttdeci">@ kDelivery</div><div class="ttdoc">delivery site</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00062">tw_node.h:62</a></div></div>
 <div class="ttc" id="astructPickDeliveryOrders__t_html_ab68c7b8acf30b09d2e74cf36b3cc4b69"><div class="ttname"><a href="structPickDeliveryOrders__t.html#ab68c7b8acf30b09d2e74cf36b3cc4b69">PickDeliveryOrders_t::id</a></div><div class="ttdeci">int64_t id</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliveryOrders__t_8h_source.html#l00046">pickDeliveryOrders_t.h:46</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025">pgrouting::vrp::Tw_node::kStart</a></div><div class="ttdeci">@ kStart</div><div class="ttdoc">starting site</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00060">tw_node.h:60</a></div></div>
 <div class="ttc" id="astructVehicle__t_html_a1a3639fc0ca516901ffb06251a7838e1"><div class="ttname"><a href="structVehicle__t.html#a1a3639fc0ca516901ffb06251a7838e1">Vehicle_t::end_open_t</a></div><div class="ttdeci">double end_open_t</div><div class="ttdef"><b>Definition:</b> <a href="vehicle__t_8h_source.html#l00059">vehicle_t.h:59</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_ab8978d7806edaa8dbd62fdd52c7f43fd"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd">pgrouting::vrp::Tw_node::demand</a></div><div class="ttdeci">double demand() const</div><div class="ttdoc">Returns the demand associated with this node.</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00082">tw_node.h:82</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_acf00cf1c32828c02fab3caeac6e857f5"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5">pgrouting::vrp::Tw_node::m_opens</a></div><div class="ttdeci">double m_opens</div><div class="ttdoc">opening time of the node</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00274">tw_node.h:274</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a3e15d2c8670445bb3ba13aa605ba980a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">pgrouting::vrp::Tw_node::is_compatible_IJ</a></div><div class="ttdeci">bool is_compatible_IJ(const Tw_node &amp;I, double speed) const</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00073">tw_node.cpp:73</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a3e15d2c8670445bb3ba13aa605ba980a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a">pgrouting::vrp::Tw_node::is_compatible_IJ</a></div><div class="ttdeci">bool is_compatible_IJ(const Tw_node &amp;I, double speed) const</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00077">tw_node.cpp:77</a></div></div>
 <div class="ttc" id="astructVehicle__t_html_a2a10d0399d2b6e8fa774409560d78824"><div class="ttname"><a href="structVehicle__t.html#a2a10d0399d2b6e8fa774409560d78824">Vehicle_t::start_close_t</a></div><div class="ttdeci">double start_close_t</div><div class="ttdef"><b>Definition:</b> <a href="vehicle__t_8h_source.html#l00052">vehicle_t.h:52</a></div></div>
 <div class="ttc" id="apgr__assert_8h_html_a09250239ca707f56bc1bbfdd04a635b1"><div class="ttname"><a href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a></div><div class="ttdeci">#define pgassert(expr)</div><div class="ttdoc">Uses the standard assert syntax.</div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00094">pgr_assert.h:94</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1Identifier_html_ae0a3414bc65c1b67101b3f5944505447"><div class="ttname"><a href="classpgrouting_1_1Identifier.html#ae0a3414bc65c1b67101b3f5944505447">pgrouting::Identifier::idx</a></div><div class="ttdeci">size_t idx() const</div><div class="ttdef"><b>Definition:</b> <a href="identifier_8cpp_source.html#l00037">identifier.cpp:37</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a3cf23e97726fbef9a8ffba6952a2aba1"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">pgrouting::vrp::Tw_node::arrival_j_opens_i</a></div><div class="ttdeci">double arrival_j_opens_i(const Tw_node &amp;I, double speed) const</div><div class="ttdoc">@ {</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00058">tw_node.cpp:58</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Pgr__pickDeliver_html_ab32ec47a05aefed478feab2c5bf18b0f"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ab32ec47a05aefed478feab2c5bf18b0f">pgrouting::vrp::Pgr_pickDeliver::m_cost_matrix</a></div><div class="ttdeci">pgrouting::tsp::Dmatrix m_cost_matrix</div><div class="ttdef"><b>Definition:</b> <a href="pgr__pickDeliver_8h_source.html#l00123">pgr_pickDeliver.h:123</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a3cf23e97726fbef9a8ffba6952a2aba1"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a3cf23e97726fbef9a8ffba6952a2aba1">pgrouting::vrp::Tw_node::arrival_j_opens_i</a></div><div class="ttdeci">double arrival_j_opens_i(const Tw_node &amp;I, double speed) const</div><div class="ttdoc">@ {</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00062">tw_node.cpp:62</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_afcb1d8e727a133b58aa3e75e33abfece"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#afcb1d8e727a133b58aa3e75e33abfece">pgrouting::vrp::Tw_node::is_early_arrival</a></div><div class="ttdeci">bool is_early_arrival(double arrival_time) const</div><div class="ttdoc">True when arrivalTime is before it opens.</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00187">tw_node.h:187</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_aff8cddd6a076cc519b695ef4be2dca6b"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b">pgrouting::vrp::Tw_node::is_pickup</a></div><div class="ttdeci">bool is_pickup() const</div><div class="ttdoc">is_pickup</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00141">tw_node.cpp:141</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_aff8cddd6a076cc519b695ef4be2dca6b"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aff8cddd6a076cc519b695ef4be2dca6b">pgrouting::vrp::Tw_node::is_pickup</a></div><div class="ttdeci">bool is_pickup() const</div><div class="ttdoc">is_pickup</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00145">tw_node.cpp:145</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5">pgrouting::vrp::Tw_node::kEnd</a></div><div class="ttdeci">@ kEnd</div><div class="ttdoc">ending site</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00065">tw_node.h:65</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_aa1a22978cc7674504dcdc570bcb5f354"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354">pgrouting::vrp::Tw_node::arrival_j_closes_i</a></div><div class="ttdeci">double arrival_j_closes_i(const Tw_node &amp;I, double speed) const</div><div class="ttdoc">The actual arrival time at this node, given that: this node is visited directly after other node and ...</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00064">tw_node.cpp:64</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_aa1a22978cc7674504dcdc570bcb5f354"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#aa1a22978cc7674504dcdc570bcb5f354">pgrouting::vrp::Tw_node::arrival_j_closes_i</a></div><div class="ttdeci">double arrival_j_closes_i(const Tw_node &amp;I, double speed) const</div><div class="ttdoc">The actual arrival time at this node, given that: this node is visited directly after other node and ...</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00068">tw_node.cpp:68</a></div></div>
 <div class="ttc" id="astructVehicle__t_html_a2dfa1b1d8ab15052a804eef26a229f8a"><div class="ttname"><a href="structVehicle__t.html#a2dfa1b1d8ab15052a804eef26a229f8a">Vehicle_t::end_node_id</a></div><div class="ttdeci">int64_t end_node_id</div><div class="ttdef"><b>Definition:</b> <a href="vehicle__t_8h_source.html#l00057">vehicle_t.h:57</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1Identifier_html_a147f029e589a2dd36b1edd638d7ac833"><div class="ttname"><a href="classpgrouting_1_1Identifier.html#a147f029e589a2dd36b1edd638d7ac833">pgrouting::Identifier::id</a></div><div class="ttdeci">int64_t id() const</div><div class="ttdef"><b>Definition:</b> <a href="identifier_8cpp_source.html#l00042">identifier.cpp:42</a></div></div>
 <div class="ttc" id="astructVehicle__t_html_ad42cc863e0e2d032e09c653c7650b299"><div class="ttname"><a href="structVehicle__t.html#ad42cc863e0e2d032e09c653c7650b299">Vehicle_t::start_service_t</a></div><div class="ttdeci">double start_service_t</div><div class="ttdef"><b>Definition:</b> <a href="vehicle__t_8h_source.html#l00053">vehicle_t.h:53</a></div></div>
 <div class="ttc" id="astructPickDeliveryOrders__t_html_a353af6b268cf3e4c4c47a0b244fd7928"><div class="ttname"><a href="structPickDeliveryOrders__t.html#a353af6b268cf3e4c4c47a0b244fd7928">PickDeliveryOrders_t::deliver_close_t</a></div><div class="ttdeci">double deliver_close_t</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliveryOrders__t_8h_source.html#l00062">pickDeliveryOrders_t.h:62</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_ae8ca4c6b1e2031591b3cc872c8ae3267"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267">pgrouting::vrp::Tw_node::closes</a></div><div class="ttdeci">double closes() const</div><div class="ttdoc">Returns the closing time.</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00079">tw_node.h:79</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a7bf5d9502d5d99627b3b7dba5b1a3b76"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76">pgrouting::vrp::Tw_node::is_delivery</a></div><div class="ttdeci">bool is_delivery() const</div><div class="ttdoc">is_delivery</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00150">tw_node.cpp:150</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a7bf5d9502d5d99627b3b7dba5b1a3b76"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7bf5d9502d5d99627b3b7dba5b1a3b76">pgrouting::vrp::Tw_node::is_delivery</a></div><div class="ttdeci">bool is_delivery() const</div><div class="ttdoc">is_delivery</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00154">tw_node.cpp:154</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_ae6a4dc8aa1ccc17fd81cf0989f31a36c"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c">pgrouting::vrp::Tw_node::m_service_time</a></div><div class="ttdeci">double m_service_time</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00276">tw_node.h:276</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_ad78f19fca930a7754678d57e1e252483"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483">pgrouting::vrp::Tw_node::is_start</a></div><div class="ttdeci">bool is_start() const</div><div class="ttdoc">@ {</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00132">tw_node.cpp:132</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_ad78f19fca930a7754678d57e1e252483"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#ad78f19fca930a7754678d57e1e252483">pgrouting::vrp::Tw_node::is_start</a></div><div class="ttdeci">bool is_start() const</div><div class="ttdoc">@ {</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00136">tw_node.cpp:136</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc">pgrouting::vrp::Tw_node::kLoad</a></div><div class="ttdeci">@ kLoad</div><div class="ttdoc">load site, fills the truck</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00064">tw_node.h:64</a></div></div>
 <div class="ttc" id="astructPickDeliveryOrders__t_html_af8c3366b6a7c4fa93c0c63af3ea7d544"><div class="ttname"><a href="structPickDeliveryOrders__t.html#af8c3366b6a7c4fa93c0c63af3ea7d544">PickDeliveryOrders_t::deliver_service_t</a></div><div class="ttdeci">double deliver_service_t</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliveryOrders__t_8h_source.html#l00063">pickDeliveryOrders_t.h:63</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4aa1d0ca4b0b1f553d9887025ccb34537d"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4aa1d0ca4b0b1f553d9887025ccb34537d">pgrouting::vrp::Tw_node::kPickup</a></div><div class="ttdeci">@ kPickup</div><div class="ttdoc">pickup site</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00061">tw_node.h:61</a></div></div>
@@ -1927,11 +2024,12 @@ Friends</h2></td></tr>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a9f94f8b0ed3f6552e13780a7d548de7a"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a9f94f8b0ed3f6552e13780a7d548de7a">pgrouting::vrp::Tw_node::service_time</a></div><div class="ttdeci">double service_time() const</div><div class="ttdoc">Returns the service time for this node.</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00086">tw_node.h:86</a></div></div>
 <div class="ttc" id="astructVehicle__t_html_a9a08e82a839cb0ed59eb025735b5facc"><div class="ttname"><a href="structVehicle__t.html#a9a08e82a839cb0ed59eb025735b5facc">Vehicle_t::start_node_id</a></div><div class="ttdeci">int64_t start_node_id</div><div class="ttdef"><b>Definition:</b> <a href="vehicle__t_8h_source.html#l00047">vehicle_t.h:47</a></div></div>
 <div class="ttc" id="astructPickDeliveryOrders__t_html_aab503bfa38a761c32f34de528d2b8cb3"><div class="ttname"><a href="structPickDeliveryOrders__t.html#aab503bfa38a761c32f34de528d2b8cb3">PickDeliveryOrders_t::pick_service_t</a></div><div class="ttdeci">double pick_service_t</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliveryOrders__t_8h_source.html#l00055">pickDeliveryOrders_t.h:55</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1tsp_1_1Dmatrix_html_a785a95db8b70df2c05370cf8bb121ea5"><div class="ttname"><a href="classpgrouting_1_1tsp_1_1Dmatrix.html#a785a95db8b70df2c05370cf8bb121ea5">pgrouting::tsp::Dmatrix::distance</a></div><div class="ttdeci">double distance(int64_t i, int64_t j) const</div><div class="ttdef"><b>Definition:</b> <a href="Dmatrix_8h_source.html#l00108">Dmatrix.h:108</a></div></div>
 <div class="ttc" id="astructPickDeliveryOrders__t_html_a1a921f0db33908a6cd835088291760fb"><div class="ttname"><a href="structPickDeliveryOrders__t.html#a1a921f0db33908a6cd835088291760fb">PickDeliveryOrders_t::pick_node_id</a></div><div class="ttdeci">int64_t pick_node_id</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliveryOrders__t_8h_source.html#l00051">pickDeliveryOrders_t.h:51</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Dnode_html_a83ecb8036c0bf27646771fed68874612"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Dnode.html#a83ecb8036c0bf27646771fed68874612">pgrouting::vrp::Dnode::Dnode</a></div><div class="ttdeci">Dnode()=default</div></div>
 <div class="ttc" id="astructPickDeliveryOrders__t_html_ae1c604516b9f8439bdd3f15a2442d67f"><div class="ttname"><a href="structPickDeliveryOrders__t.html#ae1c604516b9f8439bdd3f15a2442d67f">PickDeliveryOrders_t::deliver_node_id</a></div><div class="ttdeci">int64_t deliver_node_id</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliveryOrders__t_8h_source.html#l00059">pickDeliveryOrders_t.h:59</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1Identifier_html_a1a6b53e85b2454fb4c3f7bed36a5e385"><div class="ttname"><a href="classpgrouting_1_1Identifier.html#a1a6b53e85b2454fb4c3f7bed36a5e385">pgrouting::Identifier::Identifier</a></div><div class="ttdeci">Identifier()=default</div></div>
 <div class="ttc" id="astructPickDeliveryOrders__t_html_a207146edd7b53729eafec494550113a7"><div class="ttname"><a href="structPickDeliveryOrders__t.html#a207146edd7b53729eafec494550113a7">PickDeliveryOrders_t::pick_close_t</a></div><div class="ttdeci">double pick_close_t</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliveryOrders__t_8h_source.html#l00054">pickDeliveryOrders_t.h:54</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a70c9b8184eec7eb4e981f040f36c9262"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262">pgrouting::vrp::Tw_node::is_dump</a></div><div class="ttdeci">bool is_dump() const</div><div class="ttdoc">is_dump</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00159">tw_node.cpp:159</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a70c9b8184eec7eb4e981f040f36c9262"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a70c9b8184eec7eb4e981f040f36c9262">pgrouting::vrp::Tw_node::is_dump</a></div><div class="ttdeci">bool is_dump() const</div><div class="ttdoc">is_dump</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8cpp_source.html#l00163">tw_node.cpp:163</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_af0f855ca0fef0d717e5402230db3cbc3"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#af0f855ca0fef0d717e5402230db3cbc3">pgrouting::vrp::Tw_node::type</a></div><div class="ttdeci">NodeType type() const</div><div class="ttdoc">Returns the type of this node.</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00089">tw_node.h:89</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a7ec2117b7b4a3df2a123f1e422439ac4"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a7ec2117b7b4a3df2a123f1e422439ac4">pgrouting::vrp::Tw_node::NodeType</a></div><div class="ttdeci">NodeType</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00059">tw_node.h:59</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1vrp_1_1Tw__node_html_a795138a0068571b76c6678335081f2e4"><div class="ttname"><a href="classpgrouting_1_1vrp_1_1Tw__node.html#a795138a0068571b76c6678335081f2e4">pgrouting::vrp::Tw_node::m_demand</a></div><div class="ttdeci">double m_demand</div><div class="ttdoc">The demand for the Node.</div><div class="ttdef"><b>Definition:</b> <a href="tw__node_8h_source.html#l00277">tw_node.h:277</a></div></div>
@@ -1939,7 +2037,7 @@ Friends</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1vrp.html">vrp</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1vrp_1_1Tw__node.html">Tw_node</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:20 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:35 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

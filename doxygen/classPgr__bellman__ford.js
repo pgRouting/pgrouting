@@ -6,7 +6,7 @@ var classPgr__bellman__ford =
     [ "bellman_ford", "classPgr__bellman__ford.html#aad744bfcd6273f92bdde808f9e6c8bd1", null ],
     [ "bellman_ford", "classPgr__bellman__ford.html#a55b69b28e979ea0ee5213a4fbff51808", null ],
     [ "bellman_ford", "classPgr__bellman__ford.html#a8db85c0d6ce87dc8c9998ebe0bb58024", null ],
-    [ "bellman_ford_1_to_1", "classPgr__bellman__ford.html#aa0470cbbac60b412d3df0bae2aae0fdf", null ],
+    [ "bellman_ford_1_to_1", "classPgr__bellman__ford.html#a756932bb0e65112c0717fe5f7dfe7586", null ],
     [ "bellman_ford_1_to_many", "classPgr__bellman__ford.html#a900118b5011bf73abedaa990a2ed6ae2", null ],
     [ "clear", "classPgr__bellman__ford.html#a2a3e48f0f2323dd90a558cb715232348", null ],
     [ "get_dbglog", "classPgr__bellman__ford.html#a0ee57a6f1b3ca034a44b1b89e32e4854", null ],

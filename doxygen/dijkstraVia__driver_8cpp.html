@@ -365,12 +365,12 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00042">42</a> of file <a class="el" href="dijkstraVia__driver_8cpp_source.html">dijkstraVia_driver.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                          {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">size_t</span> i = 0;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> e : path) {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        (*postgres_data)[sequence] = {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            route_id,</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            path_id,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            i,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(i),</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            path.start_id(),</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            path.end_id(),</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            e.node,</div>
@@ -466,7 +466,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_6d4c5fe0d6dc99866041a806b0d24b33.html">ashish</a></li><li class="navelem"><a class="el" href="dir_fcb33163f1ba4ef33f527a468abdd7d4.html">Documents</a></li><li class="navelem"><a class="el" href="dir_60aaf56e1d931fc6c94a6af942e92c9a.html">gsoc</a></li><li class="navelem"><a class="el" href="dir_5820f995afd646bbf14f4bdd8a218c79.html">pgrouting</a></li><li class="navelem"><a class="el" href="dir_0c835b2c0263a359a63ff950e7b4b437.html">src</a></li><li class="navelem"><a class="el" href="dir_50a174f52f68d0f351c21910e661d53c.html">dijkstra</a></li><li class="navelem"><a class="el" href="dijkstraVia__driver_8cpp.html">dijkstraVia_driver.cpp</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:18 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:32 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

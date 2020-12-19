@@ -1,9 +1,10 @@
 var classpgrouting_1_1vrp_1_1Vehicle =
 [
     [ "Cost", "classpgrouting_1_1vrp_1_1Vehicle.html#a2c972904c3b3a8cdb6de53ae3c657fca", null ],
+    [ "difference_type", "classpgrouting_1_1vrp_1_1Vehicle.html#afc64332f0f95351d13cd998c50734f4a", null ],
     [ "POS", "classpgrouting_1_1vrp_1_1Vehicle.html#a16c474efc955b9bab7f01a2b3551957d", null ],
-    [ "Vehicle", "classpgrouting_1_1vrp_1_1Vehicle.html#afca1955f5b54ce5b2d55809efd8d0158", null ],
-    [ "Vehicle", "classpgrouting_1_1vrp_1_1Vehicle.html#a163d32b8d5c8e0444e4fa432b680a784", null ],
+    [ "Vehicle", "classpgrouting_1_1vrp_1_1Vehicle.html#ad5a9e91c25c98d4b71e3caf2f9331e8c", null ],
+    [ "Vehicle", "classpgrouting_1_1vrp_1_1Vehicle.html#ad3ada968b6d5803977403f5dd0018e93", null ],
     [ "capacity", "classpgrouting_1_1vrp_1_1Vehicle.html#ae1ed768d6cabc552f29b2d33d86ff386", null ],
     [ "cost", "classpgrouting_1_1vrp_1_1Vehicle.html#a446393c0863473ebf3f6db060ddae597", null ],
     [ "cost_compare", "classpgrouting_1_1vrp_1_1Vehicle.html#abc30f9df7e203ce3f72c6dcc964510f1", null ],

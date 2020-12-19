@@ -14,13 +14,13 @@ digraph "optimize.cpp"
   Node5 [label="cpp_common/pgr_assert.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__assert_8h.html",tooltip="An assert functionality that uses C++ throw()."];
   Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node8 [label="vrp/solution.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$solution_8h.html",tooltip=" "];
+  Node1 -> Node38 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node38 [label="vrp/book_keeping.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$book__keeping_8h.html",tooltip=" "];
   Node1 -> Node40 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node40 [label="vrp/book_keeping.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$book__keeping_8h.html",tooltip=" "];
-  Node1 -> Node42 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node42 [label="vrp/optimize.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$optimize_8h.html",tooltip=" "];
-  Node42 -> Node42 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node42 -> Node40 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 -> Node43 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node43 [label="vrp/pgr_pickDeliver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__pickDeliver_8h.html",tooltip=" "];
-  Node43 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node40 [label="vrp/optimize.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$optimize_8h.html",tooltip=" "];
+  Node40 -> Node40 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node40 -> Node38 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node41 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node41 [label="vrp/pgr_pickDeliver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__pickDeliver_8h.html",tooltip=" "];
+  Node41 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

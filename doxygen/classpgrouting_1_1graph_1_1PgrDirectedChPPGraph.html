@@ -99,7 +99,7 @@ Collaboration diagram for pgrouting::graph::PgrDirectedChPPGraph:</div>
 <div class="dyncontent">
 <div class="center"><img src="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph__coll__graph.png" border="0" usemap="#pgrouting_1_1graph_1_1PgrDirectedChPPGraph_coll__map" alt="Collaboration graph"/></div>
 <map name="pgrouting_1_1graph_1_1PgrDirectedChPPGraph_coll__map" id="pgrouting_1_1graph_1_1PgrDirectedChPPGraph_coll__map">
-<area shape="rect" title=" " alt="" coords="601,311,815,352"/>
+<area shape="rect" title=" " alt="" coords="601,340,815,381"/>
 <area shape="rect" title=" " alt="" coords="273,5,431,47"/>
 <area shape="rect" title=" " alt="" coords="5,118,151,145"/>
 <area shape="rect" href="classIdentifiers.html" title=" " alt="" coords="271,149,433,175"/>
@@ -109,7 +109,8 @@ Collaboration diagram for pgrouting::graph::PgrDirectedChPPGraph:</div>
 <area shape="rect" title=" " alt="" coords="277,397,427,453"/>
 <area shape="rect" title=" " alt="" coords="273,477,431,533"/>
 <area shape="rect" title=" " alt="" coords="272,557,432,583"/>
-<area shape="rect" title=" " alt="" coords="243,607,461,634"/>
+<area shape="rect" href="classIdentifiers.html" title=" " alt="" coords="274,607,430,634"/>
+<area shape="rect" title=" " alt="" coords="243,658,461,685"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -144,8 +145,8 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a2d55830558f3ebd05c294d5618d3acb1"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::pair&lt; int64_t, int64_t &gt;, const <a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a2d55830558f3ebd05c294d5618d3acb1">edgeToIdx</a></td></tr>
 <tr class="memdesc:a2d55830558f3ebd05c294d5618d3acb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">(source, target) -&gt; idx to originalEdges; Only the one with the lower cost is kept  <a href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a2d55830558f3ebd05c294d5618d3acb1">More...</a><br /></td></tr>
 <tr class="separator:a2d55830558f3ebd05c294d5618d3acb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac39d5c1c4e1b149c643f02bc548aae87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classIdentifiers.html">Identifiers</a>&lt; int64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ac39d5c1c4e1b149c643f02bc548aae87">edgeVisited</a></td></tr>
-<tr class="separator:ac39d5c1c4e1b149c643f02bc548aae87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a866efa20611a09879084a58ce9e5bdc0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classIdentifiers.html">Identifiers</a>&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a866efa20611a09879084a58ce9e5bdc0">edgeVisited</a></td></tr>
+<tr class="separator:a866efa20611a09879084a58ce9e5bdc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74a5d8ebbe3cf6ffc8f7ad44590e0334"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a74a5d8ebbe3cf6ffc8f7ad44590e0334">m_cost</a></td></tr>
 <tr class="separator:a74a5d8ebbe3cf6ffc8f7ad44590e0334"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad403b8e150007fbd95cc79fd827ec01b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ad403b8e150007fbd95cc79fd827ec01b">originalEdges</a></td></tr>
@@ -214,7 +215,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                 :</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ac0f8a6eba027b4b5250df20fd60e2405">totalDeg</a>(0), <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a1834d950b8e29c45026de0dcd2ede520">totalCost</a>(0), <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a0dfdcbdbcc838e656306f6c3184d400b">vertices</a>(),</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a2d55830558f3ebd05c294d5618d3acb1">edgeToIdx</a>(), <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ad403b8e150007fbd95cc79fd827ec01b">originalEdges</a>(),</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a13053604bca99c84630fac2570054421">resultGraph</a>(), <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a76e755cc5bedca565d92a2e1ac85dfcf">VToVecid</a>(), <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ac39d5c1c4e1b149c643f02bc548aae87">edgeVisited</a>(),</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a13053604bca99c84630fac2570054421">resultGraph</a>(), <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a76e755cc5bedca565d92a2e1ac85dfcf">VToVecid</a>(), <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a866efa20611a09879084a58ce9e5bdc0">edgeVisited</a>(),</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a2a65264a96511f166d85919938e3d516">pathStack</a>(), <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a9bc47921663ba2a5ae1bac9a885192cf">resultPath</a>(),</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a25ababa47f8075b3a90b3b9853ecb3d4">edges</a>(), <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a979ab56227ce5ac5e66ae8a94c4116ab">sources</a>(), <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#aadc52e0ec623cc163a3330743dd03ac6">targets</a>()</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
@@ -531,8 +532,8 @@ Private Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="pgr__chinesePostman_8hpp_source.html#l00314">314</a> of file <a class="el" href="pgr__chinesePostman_8hpp_source.html">pgr_chinesePostman.hpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                                                    {</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> e : <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a13053604bca99c84630fac2570054421">resultGraph</a>[<a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a76e755cc5bedca565d92a2e1ac85dfcf">VToVecid</a>[vertex]].second) {</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ac39d5c1c4e1b149c643f02bc548aae87">edgeVisited</a>.<a class="code" href="classIdentifiers.html#abc73ed57af79c12963989657f99d4662">has</a>(e)) {</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ac39d5c1c4e1b149c643f02bc548aae87">edgeVisited</a> += e;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a866efa20611a09879084a58ce9e5bdc0">edgeVisited</a>.<a class="code" href="classIdentifiers.html#abc73ed57af79c12963989657f99d4662">has</a>(e)) {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a866efa20611a09879084a58ce9e5bdc0">edgeVisited</a> += e;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a00bc38726520c0c1e5524a821ce70eb0">EulerCircuitDFS</a>(<a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a8703febb1b873b3fec0181de5d74c80e">resultEdges</a>[e].target);</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        }</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    }</div>
@@ -634,7 +635,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a298efb71dc048afcc3857697fc534026">BuildResultGraph</a>();</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(<a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a2a65264a96511f166d85919938e3d516">pathStack</a>.empty());</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(<a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ac39d5c1c4e1b149c643f02bc548aae87">edgeVisited</a>.<a class="code" href="classIdentifiers.html#a6d1a35df74df78a52e938c39dc64c640">empty</a>());</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(<a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a866efa20611a09879084a58ce9e5bdc0">edgeVisited</a>.<a class="code" href="classIdentifiers.html#a6d1a35df74df78a52e938c39dc64c640">empty</a>());</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a00bc38726520c0c1e5524a821ce70eb0">EulerCircuitDFS</a>(<a class="code" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a9142476b7eeaaa82816fe6baf77843d5">startPoint</a>);</div>
@@ -736,8 +737,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac39d5c1c4e1b149c643f02bc548aae87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac39d5c1c4e1b149c643f02bc548aae87">&#9670;&nbsp;</a></span>edgeVisited</h2>
+<a id="a866efa20611a09879084a58ce9e5bdc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a866efa20611a09879084a58ce9e5bdc0">&#9670;&nbsp;</a></span>edgeVisited</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -746,7 +747,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classIdentifiers.html">Identifiers</a>&lt;int64_t&gt; pgrouting::graph::PgrDirectedChPPGraph::edgeVisited</td>
+          <td class="memname"><a class="el" href="classIdentifiers.html">Identifiers</a>&lt;size_t&gt; pgrouting::graph::PgrDirectedChPPGraph::edgeVisited</td>
         </tr>
       </table>
   </td>
@@ -1201,12 +1202,12 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="aclasspgrouting_1_1graph_1_1PgrDirectedChPPGraph_html_ad403b8e150007fbd95cc79fd827ec01b"><div class="ttname"><a href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ad403b8e150007fbd95cc79fd827ec01b">pgrouting::graph::PgrDirectedChPPGraph::originalEdges</a></div><div class="ttdeci">std::vector&lt; pgr_edge_t &gt; originalEdges</div><div class="ttdef"><b>Definition:</b> <a href="pgr__chinesePostman_8hpp_source.html#l00087">pgr_chinesePostman.hpp:87</a></div></div>
 <div class="ttc" id="astructpgr__edge__t_html_a04a67da786054e84776d9e8d4b434f27"><div class="ttname"><a href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">pgr_edge_t::source</a></div><div class="ttdeci">int64_t source</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00039">pgr_edge_t.h:39</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1graph_1_1PgrDirectedChPPGraph_html_a0dfdcbdbcc838e656306f6c3184d400b"><div class="ttname"><a href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a0dfdcbdbcc838e656306f6c3184d400b">pgrouting::graph::PgrDirectedChPPGraph::vertices</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; vertices</div><div class="ttdef"><b>Definition:</b> <a href="pgr__chinesePostman_8hpp_source.html#l00078">pgr_chinesePostman.hpp:78</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1graph_1_1PgrDirectedChPPGraph_html_a866efa20611a09879084a58ce9e5bdc0"><div class="ttname"><a href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a866efa20611a09879084a58ce9e5bdc0">pgrouting::graph::PgrDirectedChPPGraph::edgeVisited</a></div><div class="ttdeci">Identifiers&lt; size_t &gt; edgeVisited</div><div class="ttdef"><b>Definition:</b> <a href="pgr__chinesePostman_8hpp_source.html#l00093">pgr_chinesePostman.hpp:93</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1graph_1_1PgrDirectedChPPGraph_html_a9bc47921663ba2a5ae1bac9a885192cf"><div class="ttname"><a href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a9bc47921663ba2a5ae1bac9a885192cf">pgrouting::graph::PgrDirectedChPPGraph::resultPath</a></div><div class="ttdeci">std::vector&lt; General_path_element_t &gt; resultPath</div><div class="ttdef"><b>Definition:</b> <a href="pgr__chinesePostman_8hpp_source.html#l00097">pgr_chinesePostman.hpp:97</a></div></div>
 <div class="ttc" id="astructpgr__edge__t_html_a46e9fc03e52f0b84da533d63b7bbce1d"><div class="ttname"><a href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">pgr_edge_t::target</a></div><div class="ttdeci">int64_t target</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00040">pgr_edge_t.h:40</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1graph_1_1PgrDirectedChPPGraph_html_a2d55830558f3ebd05c294d5618d3acb1"><div class="ttname"><a href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a2d55830558f3ebd05c294d5618d3acb1">pgrouting::graph::PgrDirectedChPPGraph::edgeToIdx</a></div><div class="ttdeci">std::map&lt; std::pair&lt; int64_t, int64_t &gt;, const pgr_edge_t * &gt; edgeToIdx</div><div class="ttdoc">(source, target) -&gt; idx to originalEdges; Only the one with the lower cost is kept</div><div class="ttdef"><b>Definition:</b> <a href="pgr__chinesePostman_8hpp_source.html#l00083">pgr_chinesePostman.hpp:83</a></div></div>
 <div class="ttc" id="astructedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00041">trsp.h:41</a></div></div>
 <div class="ttc" id="apgr__assert_8h_html_a09250239ca707f56bc1bbfdd04a635b1"><div class="ttname"><a href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a></div><div class="ttdeci">#define pgassert(expr)</div><div class="ttdoc">Uses the standard assert syntax.</div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00094">pgr_assert.h:94</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1graph_1_1PgrDirectedChPPGraph_html_ac39d5c1c4e1b149c643f02bc548aae87"><div class="ttname"><a href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ac39d5c1c4e1b149c643f02bc548aae87">pgrouting::graph::PgrDirectedChPPGraph::edgeVisited</a></div><div class="ttdeci">Identifiers&lt; int64_t &gt; edgeVisited</div><div class="ttdef"><b>Definition:</b> <a href="pgr__chinesePostman_8hpp_source.html#l00093">pgr_chinesePostman.hpp:93</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1graph_1_1PgrDirectedChPPGraph_html_a25ababa47f8075b3a90b3b9853ecb3d4"><div class="ttname"><a href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a25ababa47f8075b3a90b3b9853ecb3d4">pgrouting::graph::PgrDirectedChPPGraph::edges</a></div><div class="ttdeci">std::vector&lt; pgr_costFlow_t &gt; edges</div><div class="ttdef"><b>Definition:</b> <a href="pgr__chinesePostman_8hpp_source.html#l00100">pgr_chinesePostman.hpp:100</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1graph_1_1PgrDirectedChPPGraph_html_a3b08e91d586a9b864af7c559575ffb15"><div class="ttname"><a href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a3b08e91d586a9b864af7c559575ffb15">pgrouting::graph::PgrDirectedChPPGraph::BuildResultPath</a></div><div class="ttdeci">void BuildResultPath()</div><div class="ttdef"><b>Definition:</b> <a href="pgr__chinesePostman_8hpp_source.html#l00269">pgr_chinesePostman.hpp:269</a></div></div>
 <div class="ttc" id="astructedge_html_a0fe1e481c4a25ef89f46b88c576887c3"><div class="ttname"><a href="structedge.html#a0fe1e481c4a25ef89f46b88c576887c3">edge::source</a></div><div class="ttdeci">int64 source</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00043">trsp.h:43</a></div></div>
@@ -1236,7 +1237,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1graph.html">graph</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html">PgrDirectedChPPGraph</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:19 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:34 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

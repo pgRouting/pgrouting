@@ -1,8 +1,9 @@
 var classpgrouting_1_1vrp_1_1Vehicle__pickDeliver =
 [
     [ "Cost", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a2c972904c3b3a8cdb6de53ae3c657fca", null ],
+    [ "difference_type", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#afc64332f0f95351d13cd998c50734f4a", null ],
     [ "POS", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a16c474efc955b9bab7f01a2b3551957d", null ],
-    [ "Vehicle_pickDeliver", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a2238dbc1013a9d57b52b84bc0a243d8f", null ],
+    [ "Vehicle_pickDeliver", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a84e62de69876145193a2b51563421cc2", null ],
     [ "Vehicle_pickDeliver", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a24f07bf4e309003922ddc418fa98c3d5", null ],
     [ "capacity", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#ae1ed768d6cabc552f29b2d33d86ff386", null ],
     [ "cost", "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a446393c0863473ebf3f6db060ddae597", null ],

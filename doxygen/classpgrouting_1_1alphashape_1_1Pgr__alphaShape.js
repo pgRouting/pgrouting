@@ -1,7 +1,7 @@
 var classpgrouting_1_1alphashape_1_1Pgr__alphaShape =
 [
     [ "EdgesFilter", "structpgrouting_1_1alphashape_1_1Pgr__alphaShape_1_1EdgesFilter.html", "structpgrouting_1_1alphashape_1_1Pgr__alphaShape_1_1EdgesFilter" ],
-    [ "Pgr_alphaShape", "classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a13e014076090379b6962e548dd41528c", null ],
+    [ "Pgr_alphaShape", "classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a5563d6405ae2e2e4d15dad9c7df6bcea", null ],
     [ "Pgr_alphaShape", "classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a0f1c6ca936a8acc9dbb8b1384ce9e40f", null ],
     [ "build_best_alpha", "classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#ab3e348fc5e207a8ec49b46d0771f33ca", null ],
     [ "clear", "classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html#a99a9dde300a4a8e5ce8abc8b0560b9f8", null ],

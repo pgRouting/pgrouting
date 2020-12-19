@@ -1,7 +1,7 @@
 <map id="pgrouting::Identifier" name="pgrouting::Identifier">
 <area shape="rect" id="node1" title=" " alt="" coords="5,81,156,108"/>
 <area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Base__node.html" title="The Base_node class defines the operations that can be performed in a 2D node." alt="" coords="204,5,396,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Order.html" title=" " alt="" coords="221,56,379,83"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Tw__node.html" title="Extends the Node class to create a Node with time window attributes." alt="" coords="211,107,389,133"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Dnode.html" title="The Dnode class defines a the basic operations when data is a matrix." alt="" coords="219,56,381,83"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Order.html" title=" " alt="" coords="221,107,379,133"/>
 <area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Vehicle.html" title="Vehicle with time windows." alt="" coords="215,157,385,184"/>
 </map>

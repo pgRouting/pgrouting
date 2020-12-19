@@ -592,29 +592,29 @@ template&lt;typename G &gt; </div>
 
 <p>Implements <a class="el" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#addaa7de211d943304475aa4c38f50978">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00122">122</a> of file <a class="el" href="pgr__bdDijkstra_8hpp_source.html">pgr_bdDijkstra.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                                         {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;         <span class="keyword">typename</span> G::EI_i in, in_end;</div>
+<p class="definition">Definition at line <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00119">119</a> of file <a class="el" href="pgr__bdDijkstra_8hpp_source.html">pgr_bdDijkstra.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                                         {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;         <span class="keyword">typename</span> G::EI_i in, in_end;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;         <span class="keyword">auto</span> current_cost = node.first;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;         <span class="keyword">auto</span> current_node = node.second;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;         <span class="keyword">auto</span> current_cost = node.first;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;         <span class="keyword">auto</span> current_node = node.second;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;         <span class="keywordflow">for</span> (boost::tie(in, in_end) = in_edges(current_node, <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>.graph);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                 in != in_end; ++in) {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;             <span class="keyword">auto</span> edge_cost = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>[*in].cost;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;             <span class="keyword">auto</span> next_node = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>.adjacent(current_node, *in);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;             <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ab11a1d3c3525c178718d172ce3dbc655">backward_finished</a>[next_node]) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;             <span class="keywordflow">if</span> (edge_cost + current_cost &lt; <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adf12f52fa9cd644c77a6acbcca8fc9f8">backward_cost</a>[next_node]) {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adf12f52fa9cd644c77a6acbcca8fc9f8">backward_cost</a>[next_node] = edge_cost + current_cost;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a4ecb47d0dbeab63cd57721bc88cb13ad">backward_predecessor</a>[next_node] = current_node;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a4d8eb8fd150e8963800fd84d9bd5d524">backward_edge</a>[next_node] = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>[*in].id;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a0a54fb704d67bb33cdac08d447b829e9">backward_queue</a>.push({<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adf12f52fa9cd644c77a6acbcca8fc9f8">backward_cost</a>[next_node], next_node});</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;             }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;         }</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;         <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ab11a1d3c3525c178718d172ce3dbc655">backward_finished</a>[current_node] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;     }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;         <span class="keywordflow">for</span> (boost::tie(in, in_end) = in_edges(current_node, <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>.graph);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                 in != in_end; ++in) {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;             <span class="keyword">auto</span> edge_cost = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>[*in].cost;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;             <span class="keyword">auto</span> next_node = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>.adjacent(current_node, *in);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;             <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ab11a1d3c3525c178718d172ce3dbc655">backward_finished</a>[next_node]) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;             <span class="keywordflow">if</span> (edge_cost + current_cost &lt; <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adf12f52fa9cd644c77a6acbcca8fc9f8">backward_cost</a>[next_node]) {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adf12f52fa9cd644c77a6acbcca8fc9f8">backward_cost</a>[next_node] = edge_cost + current_cost;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a4ecb47d0dbeab63cd57721bc88cb13ad">backward_predecessor</a>[next_node] = current_node;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a4d8eb8fd150e8963800fd84d9bd5d524">backward_edge</a>[next_node] = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>[*in].id;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a0a54fb704d67bb33cdac08d447b829e9">backward_queue</a>.push({<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adf12f52fa9cd644c77a6acbcca8fc9f8">backward_cost</a>[next_node], next_node});</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;             }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;         }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;         <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ab11a1d3c3525c178718d172ce3dbc655">backward_finished</a>[current_node] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;     }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="pgr__bidirectional_8hpp_source.html#l00241">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::backward_cost</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00239">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::backward_edge</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00238">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::backward_finished</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00240">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::backward_predecessor</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00236">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::backward_queue</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00224">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::graph</a>.</p>
 
@@ -648,29 +648,29 @@ template&lt;typename G &gt; </div>
 
 <p>Implements <a class="el" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a6c4b2976e7ee0e9c301f1071fdc5903f">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00099">99</a> of file <a class="el" href="pgr__bdDijkstra_8hpp_source.html">pgr_bdDijkstra.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                                        {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;         <span class="keyword">typename</span> G::EO_i out, out_end;</div>
+<p class="definition">Definition at line <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00096">96</a> of file <a class="el" href="pgr__bdDijkstra_8hpp_source.html">pgr_bdDijkstra.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                                        {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;         <span class="keyword">typename</span> G::EO_i out, out_end;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;         <span class="keyword">auto</span> current_cost = node.first;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;         <span class="keyword">auto</span> current_node = node.second;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;         <span class="keyword">auto</span> current_cost = node.first;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;         <span class="keyword">auto</span> current_node = node.second;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;         <span class="keywordflow">for</span> (boost::tie(out, out_end) = out_edges(current_node, <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>.graph);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                 out != out_end; ++out) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;             <span class="keyword">auto</span> edge_cost = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>[*out].cost;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;             <span class="keyword">auto</span> next_node = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>.adjacent(current_node, *out);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;             <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ac9eec462e97b987cfb59bd12709c8395">forward_finished</a>[next_node]) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;             <span class="keywordflow">if</span> (edge_cost + current_cost &lt; <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a542d59dbc5f102daa94bb8687b45b75d">forward_cost</a>[next_node]) {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a542d59dbc5f102daa94bb8687b45b75d">forward_cost</a>[next_node] = edge_cost + current_cost;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#aedd355fc533967b0c04767520e9f9a5b">forward_predecessor</a>[next_node] = current_node;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ab7f293e239144ffd2a4499ecec0b2528">forward_edge</a>[next_node] = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>[*out].id;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a1d6071f9a9a1c629b9b18f48a66a6ee5">forward_queue</a>.push({<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a542d59dbc5f102daa94bb8687b45b75d">forward_cost</a>[next_node], next_node});</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;             }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;         }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;         <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ac9eec462e97b987cfb59bd12709c8395">forward_finished</a>[current_node] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;     }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;         <span class="keywordflow">for</span> (boost::tie(out, out_end) = out_edges(current_node, <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>.graph);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                 out != out_end; ++out) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;             <span class="keyword">auto</span> edge_cost = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>[*out].cost;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;             <span class="keyword">auto</span> next_node = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>.adjacent(current_node, *out);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;             <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ac9eec462e97b987cfb59bd12709c8395">forward_finished</a>[next_node]) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;             <span class="keywordflow">if</span> (edge_cost + current_cost &lt; <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a542d59dbc5f102daa94bb8687b45b75d">forward_cost</a>[next_node]) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a542d59dbc5f102daa94bb8687b45b75d">forward_cost</a>[next_node] = edge_cost + current_cost;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#aedd355fc533967b0c04767520e9f9a5b">forward_predecessor</a>[next_node] = current_node;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ab7f293e239144ffd2a4499ecec0b2528">forward_edge</a>[next_node] = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>[*out].id;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                 <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a1d6071f9a9a1c629b9b18f48a66a6ee5">forward_queue</a>.push({<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a542d59dbc5f102daa94bb8687b45b75d">forward_cost</a>[next_node], next_node});</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;             }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;         }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;         <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ac9eec462e97b987cfb59bd12709c8395">forward_finished</a>[current_node] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;     }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="pgr__bidirectional_8hpp_source.html#l00246">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::forward_cost</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00244">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::forward_edge</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00243">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::forward_finished</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00245">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::forward_predecessor</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00235">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::forward_queue</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00224">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::graph</a>.</p>
 
@@ -766,7 +766,7 @@ template&lt;typename G &gt; </div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#adf12f52fa9cd644c77a6acbcca8fc9f8">backward_cost</a>.resize(<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a58ff2aec087c8b4d339c756fa050b429">graph</a>.num_vertices(), <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ad474c98e11e561d62c9a2ff2ecb2ea81">INF</a>);</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        std::iota(<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a4ecb47d0dbeab63cd57721bc88cb13ad">backward_predecessor</a>.begin(), <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a4ecb47d0dbeab63cd57721bc88cb13ad">backward_predecessor</a>.end(), 0);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ae18fdd31a94bc7ecf735b7ab1124995f">v_min_node</a> = -1;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ae18fdd31a94bc7ecf735b7ab1124995f">v_min_node</a> = 0;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a9364fe09b92306ce8b43f9cda5b3b78a">best_cost</a> = <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ad474c98e11e561d62c9a2ff2ecb2ea81">INF</a>;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
 </div><!-- fragment -->
@@ -858,11 +858,8 @@ template&lt;typename G &gt; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;         <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a22a2bb7dd453d52d4993dcf409a4366d">v_source</a> = start_vertex;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;         <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ad78192af3cd52879c212237df49fef11">v_target</a> = end_vertex;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;         <span class="keywordflow">if</span> (<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a22a2bb7dd453d52d4993dcf409a4366d">v_source</a> == <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ad78192af3cd52879c212237df49fef11">v_target</a>) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classPath.html">Path</a>(<a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a22a2bb7dd453d52d4993dcf409a4366d">v_source</a>, <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#ad78192af3cd52879c212237df49fef11">v_target</a>);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;         }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;         <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a0a1519de1a666bdfff7584037388e5f9">bidirectional</a>(only_cost);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;     }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;         <span class="keywordflow">return</span> <a class="code" href="classpgrouting_1_1bidirectional_1_1Pgr__bidirectional.html#a0a1519de1a666bdfff7584037388e5f9">bidirectional</a>(only_cost);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;     }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00234">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::m_log</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00225">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::v_source</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00226">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::v_target</a>.</p>
 
@@ -895,7 +892,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00241">241</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00122">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00133">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00201">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::found()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00119">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00130">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00201">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::found()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
 
 </div>
 </div>
@@ -923,7 +920,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00239">239</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00122">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00133">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00119">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00130">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
 
 </div>
 </div>
@@ -951,7 +948,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00238">238</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00122">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00133">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00201">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::found()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00119">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00130">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00201">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::found()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
 
 </div>
 </div>
@@ -979,7 +976,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00240">240</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00122">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00133">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00119">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00130">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
 
 </div>
 </div>
@@ -1007,7 +1004,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00236">236</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00122">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, and <a class="el" href="pgr__bdAstar_8hpp_source.html#l00133">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00119">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, and <a class="el" href="pgr__bdAstar_8hpp_source.html#l00130">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>.</p>
 
 </div>
 </div>
@@ -1089,7 +1086,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00246">246</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00099">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00107">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00201">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::found()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00096">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00104">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00201">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::found()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1114,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00244">244</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00099">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00107">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00096">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00104">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
 
 </div>
 </div>
@@ -1145,7 +1142,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00243">243</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00099">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00107">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00201">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::found()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00096">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00104">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00201">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::found()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
 
 </div>
 </div>
@@ -1173,7 +1170,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00245">245</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00099">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00107">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00096">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00104">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
 
 </div>
 </div>
@@ -1201,7 +1198,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00235">235</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00099">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, and <a class="el" href="pgr__bdAstar_8hpp_source.html#l00107">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bidirectional_8hpp_source.html#l00091">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::clear()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00096">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, and <a class="el" href="pgr__bdAstar_8hpp_source.html#l00104">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>.</p>
 
 </div>
 </div>
@@ -1229,7 +1226,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00224">224</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00122">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00133">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00099">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00107">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00160">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::heuristic()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00119">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00130">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00096">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00104">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00157">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::heuristic()</a>, and <a class="el" href="pgr__bidirectional_8hpp_source.html#l00108">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::initialize()</a>.</p>
 
 </div>
 </div>
@@ -1347,7 +1344,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00225">225</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00133">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00086">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::pgr_bdAstar()</a>, and <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00082">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::pgr_bdDijkstra()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00130">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_backward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00086">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::pgr_bdAstar()</a>, and <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00082">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::pgr_bdDijkstra()</a>.</p>
 
 </div>
 </div>
@@ -1377,7 +1374,7 @@ template&lt;typename G &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pgr__bidirectional_8hpp_source.html#l00226">226</a> of file <a class="el" href="pgr__bidirectional_8hpp_source.html">pgr_bidirectional.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00107">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00086">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::pgr_bdAstar()</a>, and <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00082">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::pgr_bdDijkstra()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="pgr__bidirectional_8hpp_source.html#l00127">pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;::bidirectional()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00104">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::explore_forward()</a>, <a class="el" href="pgr__bdAstar_8hpp_source.html#l00086">pgrouting::bidirectional::Pgr_bdAstar&lt; G &gt;::pgr_bdAstar()</a>, and <a class="el" href="pgr__bdDijkstra_8hpp_source.html#l00082">pgrouting::bidirectional::Pgr_bdDijkstra&lt; G &gt;::pgr_bdDijkstra()</a>.</p>
 
 </div>
 </div>
@@ -1414,7 +1411,7 @@ template&lt;typename G &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1bidirectional.html">bidirectional</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1bidirectional_1_1Pgr__bdDijkstra.html">Pgr_bdDijkstra</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:19 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:33 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

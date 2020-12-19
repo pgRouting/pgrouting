@@ -207,12 +207,12 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">        */</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        std::sort(edges.begin(), edges.end(),</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                [&amp;round](<span class="keyword">const</span> <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> &amp;lhs, <span class="keyword">const</span> <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> &amp;rhs) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                [&amp;](<span class="keyword">const</span> <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> &amp;lhs, <span class="keyword">const</span> <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> &amp;rhs) {</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            return</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                std::floor(lhs.y1 *  static_cast&lt;double&gt;(round)) &lt; std::floor(rhs.y1 *  static_cast&lt;double&gt;(round));</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        });</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        std::stable_sort(edges.begin(), edges.end(),</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                [&amp;round](<span class="keyword">const</span> <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> &amp;lhs, <span class="keyword">const</span> <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> &amp;rhs) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                [&amp;](<span class="keyword">const</span> <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> &amp;lhs, <span class="keyword">const</span> <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> &amp;rhs) {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            return</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                std::floor(lhs.x1 *  static_cast&lt;double&gt;(round)) &lt; std::floor(rhs.x1 *  static_cast&lt;double&gt;(round));</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        });</div>
@@ -290,7 +290,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            *return_count = results.size();</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            *return_tuples = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(*return_count, (*return_tuples));</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordtype">size_t</span> row = 0;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> r : results) {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;r : results) {</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                std::stringstream ss;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                ss &lt;&lt; bg::wkt(r);</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                (*return_tuples)[row].geom = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(ss.str().c_str());</div>
@@ -344,7 +344,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_6d4c5fe0d6dc99866041a806b0d24b33.html">ashish</a></li><li class="navelem"><a class="el" href="dir_fcb33163f1ba4ef33f527a468abdd7d4.html">Documents</a></li><li class="navelem"><a class="el" href="dir_60aaf56e1d931fc6c94a6af942e92c9a.html">gsoc</a></li><li class="navelem"><a class="el" href="dir_5820f995afd646bbf14f4bdd8a218c79.html">pgrouting</a></li><li class="navelem"><a class="el" href="dir_d828925fd371daeaa4c854aa07a3082a.html">include</a></li><li class="navelem"><a class="el" href="dir_2fb953e7b9314979827b9b7c4f66dfd2.html">drivers</a></li><li class="navelem"><a class="el" href="dir_ec8eb209ce2ef1455d79d8fff70ce06e.html">alpha_shape</a></li><li class="navelem"><a class="el" href="alphaShape__driver_8h.html">alphaShape_driver.h</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:17 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:31 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

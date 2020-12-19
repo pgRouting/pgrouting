@@ -254,22 +254,22 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="vehicle_8cpp_source.html#l00612">612</a> of file <a class="el" href="vehicle_8cpp_source.html">vehicle.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;                                                  {</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;    lhs.invariant();</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    rhs.invariant();</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160; </div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    <span class="keywordflow">if</span> (lhs.m_path.size() &lt; rhs.m_path.size()) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<p class="definition">Definition at line <a class="el" href="vehicle_8cpp_source.html#l00614">614</a> of file <a class="el" href="vehicle_8cpp_source.html">vehicle.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;                                                  {</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    lhs.invariant();</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    rhs.invariant();</div>
 <div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160; </div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;    <span class="comment">/* here because sizes are equal */</span></div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;    <span class="keywordflow">if</span> (lhs.m_path.size() &lt; rhs.m_path.size()) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160; </div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    <span class="keywordflow">if</span> (lhs.m_path.back().total_travel_time()</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;            &lt; rhs.m_path.back().total_travel_time()) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160; </div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;}</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    <span class="comment">/* here because sizes are equal */</span></div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160; </div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    <span class="keywordflow">if</span> (lhs.m_path.back().total_travel_time()</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;            &lt; rhs.m_path.back().total_travel_time()) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160; </div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="vehicle_8cpp_source.html#l00047">pgrouting::vrp::Vehicle::invariant()</a>, and <a class="el" href="vehicle_8h_source.html#l00075">pgrouting::vrp::Vehicle::m_path</a>.</p>
+<p class="reference">References <a class="el" href="vehicle_8cpp_source.html#l00047">pgrouting::vrp::Vehicle::invariant()</a>, and <a class="el" href="vehicle_8h_source.html#l00076">pgrouting::vrp::Vehicle::m_path</a>.</p>
 
 </div>
 </div>
@@ -336,16 +336,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="fleet_8cpp_source.html#l00383">383</a> of file <a class="el" href="fleet_8cpp_source.html">fleet.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                                              {</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;fleet\n&quot;</span>;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> v : f.m_trucks) {</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        log &lt;&lt; v;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    }</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;end fleet\n&quot;</span>;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">return</span> log;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="fleet_8cpp_source.html#l00425">425</a> of file <a class="el" href="fleet_8cpp_source.html">fleet.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                                              {</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;fleet\n&quot;</span>;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;v : f.m_trucks) {</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        log &lt;&lt; v;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    }</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;end fleet\n&quot;</span>;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="keywordflow">return</span> log;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="fleet_8h_source.html#l00050">pgrouting::vrp::Fleet::m_trucks</a>.</p>
 
@@ -468,17 +468,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solution_8cpp_source.html#l00175">175</a> of file <a class="el" href="solution_8cpp_source.html">solution.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                                        {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> vehicle : solution.fleet) {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        log &lt;&lt; vehicle;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;\n SOLUTION:\n\n &quot;</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        &lt;&lt; solution.tau();</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">return</span> log;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="solution_8cpp_source.html#l00174">174</a> of file <a class="el" href="solution_8cpp_source.html">solution.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                                        {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;vehicle : solution.fleet) {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        log &lt;&lt; vehicle;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;\n SOLUTION:\n\n &quot;</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        &lt;&lt; solution.tau();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">return</span> log;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="solution_8h_source.html#l00049">pgrouting::vrp::Solution::fleet</a>, and <a class="el" href="solution_8cpp_source.html#l00153">pgrouting::vrp::Solution::tau()</a>.</p>
 
@@ -567,7 +567,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> log;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="book__keeping_8h_source.html#l00087">pgrouting::vrp::Swap_info::estimated_delta</a>, <a class="el" href="book__keeping_8h_source.html#l00085">pgrouting::vrp::Swap_info::from_order</a>, <a class="el" href="book__keeping_8h_source.html#l00083">pgrouting::vrp::Swap_info::from_truck</a>, <a class="el" href="vehicle__pickDeliver_8h_source.html#l00077">pgrouting::vrp::Vehicle_pickDeliver::orders()</a>, <a class="el" href="vehicle_8cpp_source.html#l00567">pgrouting::vrp::Vehicle::tau()</a>, <a class="el" href="book__keeping_8h_source.html#l00086">pgrouting::vrp::Swap_info::to_order</a>, and <a class="el" href="book__keeping_8h_source.html#l00084">pgrouting::vrp::Swap_info::to_truck</a>.</p>
+<p class="reference">References <a class="el" href="book__keeping_8h_source.html#l00087">pgrouting::vrp::Swap_info::estimated_delta</a>, <a class="el" href="book__keeping_8h_source.html#l00085">pgrouting::vrp::Swap_info::from_order</a>, <a class="el" href="book__keeping_8h_source.html#l00083">pgrouting::vrp::Swap_info::from_truck</a>, <a class="el" href="vehicle__pickDeliver_8h_source.html#l00077">pgrouting::vrp::Vehicle_pickDeliver::orders()</a>, <a class="el" href="vehicle_8cpp_source.html#l00569">pgrouting::vrp::Vehicle::tau()</a>, <a class="el" href="book__keeping_8h_source.html#l00086">pgrouting::vrp::Swap_info::to_order</a>, and <a class="el" href="book__keeping_8h_source.html#l00084">pgrouting::vrp::Swap_info::to_truck</a>.</p>
 
 </div>
 </div>
@@ -602,21 +602,20 @@ Functions</h2></td></tr>
 <li></li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00272">272</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                                                            {</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    log &lt;&lt; static_cast&lt;const Node&amp;&gt;(</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            *n.problem-&gt;m_base_nodes[n.idx()].get())</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;[opens = &quot;</span> &lt;&lt; n.m_opens</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tcloses = &quot;</span> &lt;&lt; n.m_closes</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tservice = &quot;</span> &lt;&lt; n.m_service_time</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tdemand = &quot;</span> &lt;&lt; n.m_demand</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\ttype = &quot;</span> &lt;&lt; n.type_str()</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;]&quot;</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keywordflow">return</span> log;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="tw__node_8cpp_source.html#l00286">286</a> of file <a class="el" href="tw__node_8cpp_source.html">tw_node.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                                                            {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    log &lt;&lt; n.id()</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;[opens = &quot;</span> &lt;&lt; n.m_opens</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tcloses = &quot;</span> &lt;&lt; n.m_closes</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tservice = &quot;</span> &lt;&lt; n.m_service_time</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tdemand = &quot;</span> &lt;&lt; n.m_demand</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\ttype = &quot;</span> &lt;&lt; n.type_str()</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;]&quot;</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">return</span> log;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="identifier_8cpp_source.html#l00037">pgrouting::Identifier::idx()</a>, <a class="el" href="pgr__pickDeliver_8h_source.html#l00114">pgrouting::vrp::Pgr_pickDeliver::m_base_nodes</a>, <a class="el" href="tw__node_8h_source.html#l00275">pgrouting::vrp::Tw_node::m_closes</a>, <a class="el" href="tw__node_8h_source.html#l00277">pgrouting::vrp::Tw_node::m_demand</a>, <a class="el" href="tw__node_8h_source.html#l00274">pgrouting::vrp::Tw_node::m_opens</a>, <a class="el" href="tw__node_8h_source.html#l00276">pgrouting::vrp::Tw_node::m_service_time</a>, <a class="el" href="pd__problem_8h_source.html#l00052">pgrouting::vrp::PD_problem::problem</a>, and <a class="el" href="tw__node_8cpp_source.html#l00119">pgrouting::vrp::Tw_node::type_str()</a>.</p>
+<p class="reference">References <a class="el" href="identifier_8cpp_source.html#l00042">pgrouting::Identifier::id()</a>, <a class="el" href="tw__node_8h_source.html#l00275">pgrouting::vrp::Tw_node::m_closes</a>, <a class="el" href="tw__node_8h_source.html#l00277">pgrouting::vrp::Tw_node::m_demand</a>, <a class="el" href="tw__node_8h_source.html#l00274">pgrouting::vrp::Tw_node::m_opens</a>, <a class="el" href="tw__node_8h_source.html#l00276">pgrouting::vrp::Tw_node::m_service_time</a>, and <a class="el" href="tw__node_8cpp_source.html#l00123">pgrouting::vrp::Tw_node::type_str()</a>.</p>
 
 </div>
 </div>
@@ -646,25 +645,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="vehicle_8cpp_source.html#l00594">594</a> of file <a class="el" href="vehicle_8cpp_source.html">vehicle.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;                                                {</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    v.invariant();</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    <span class="keywordtype">int</span> i(0);</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;\n\n****************** &quot;</span> &lt;&lt; v.idx() &lt;&lt; <span class="stringliteral">&quot;th VEHICLE*************\n&quot;</span>;</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;id = &quot;</span> &lt;&lt; v.id()</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tcapacity = &quot;</span> &lt;&lt; v.m_capacity</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tfactor = &quot;</span> &lt;&lt; v.m_factor &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tspeed = &quot;</span> &lt;&lt; v.m_speed &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tnew speed = &quot;</span> &lt;&lt; v.speed() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160; </div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path_stop : v.path()) {</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Path_stop&quot;</span> &lt;&lt; ++i &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        log &lt;&lt; path_stop &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    }</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;    <span class="keywordflow">return</span> log;</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="vehicle_8cpp_source.html#l00596">596</a> of file <a class="el" href="vehicle_8cpp_source.html">vehicle.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;                                                {</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    v.invariant();</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    <span class="keywordtype">int</span> i(0);</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;\n\n****************** &quot;</span> &lt;&lt; v.idx() &lt;&lt; <span class="stringliteral">&quot;th VEHICLE*************\n&quot;</span>;</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;id = &quot;</span> &lt;&lt; v.id()</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tcapacity = &quot;</span> &lt;&lt; v.m_capacity</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tfactor = &quot;</span> &lt;&lt; v.m_factor &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tspeed = &quot;</span> &lt;&lt; v.m_speed &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;\tnew speed = &quot;</span> &lt;&lt; v.speed() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160; </div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path_stop : v.path()) {</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Path_stop&quot;</span> &lt;&lt; ++i &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        log &lt;&lt; path_stop &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    }</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="keywordflow">return</span> log;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="identifier_8cpp_source.html#l00042">pgrouting::Identifier::id()</a>, <a class="el" href="identifier_8cpp_source.html#l00037">pgrouting::Identifier::idx()</a>, <a class="el" href="vehicle_8cpp_source.html#l00047">pgrouting::vrp::Vehicle::invariant()</a>, <a class="el" href="vehicle_8h_source.html#l00078">pgrouting::vrp::Vehicle::m_capacity</a>, <a class="el" href="vehicle_8h_source.html#l00079">pgrouting::vrp::Vehicle::m_factor</a>, <a class="el" href="vehicle_8h_source.html#l00080">pgrouting::vrp::Vehicle::m_speed</a>, <a class="el" href="vehicle_8cpp_source.html#l00387">pgrouting::vrp::Vehicle::path()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00587">pgrouting::vrp::Vehicle::speed()</a>.</p>
+<p class="reference">References <a class="el" href="identifier_8cpp_source.html#l00042">pgrouting::Identifier::id()</a>, <a class="el" href="identifier_8cpp_source.html#l00037">pgrouting::Identifier::idx()</a>, <a class="el" href="vehicle_8cpp_source.html#l00047">pgrouting::vrp::Vehicle::invariant()</a>, <a class="el" href="vehicle_8h_source.html#l00079">pgrouting::vrp::Vehicle::m_capacity</a>, <a class="el" href="vehicle_8h_source.html#l00080">pgrouting::vrp::Vehicle::m_factor</a>, <a class="el" href="vehicle_8h_source.html#l00081">pgrouting::vrp::Vehicle::m_speed</a>, <a class="el" href="vehicle_8cpp_source.html#l00387">pgrouting::vrp::Vehicle::path()</a>, and <a class="el" href="vehicle_8cpp_source.html#l00589">pgrouting::vrp::Vehicle::speed()</a>.</p>
 
 </div>
 </div>
@@ -763,7 +762,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1vrp.html">vrp</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:19 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:34 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

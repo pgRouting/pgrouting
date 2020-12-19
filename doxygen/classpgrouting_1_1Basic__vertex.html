@@ -107,6 +107,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a79a77e3dde5497d1f3f0c38636b38e34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a566f5755c422a1e1bae8888816511c9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1Basic__vertex.html#a566f5755c422a1e1bae8888816511c9d">cp_members</a> (const <a class="el" href="classpgrouting_1_1Basic__vertex.html">Basic_vertex</a> &amp;other)</td></tr>
 <tr class="separator:a566f5755c422a1e1bae8888816511c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebe9b0af8bc5ce529741bccc5249beec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpgrouting_1_1Basic__vertex.html">Basic_vertex</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1Basic__vertex.html#aebe9b0af8bc5ce529741bccc5249beec">operator=</a> (const <a class="el" href="classpgrouting_1_1Basic__vertex.html">Basic_vertex</a> &amp;)=default</td></tr>
+<tr class="separator:aebe9b0af8bc5ce529741bccc5249beec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -247,9 +249,9 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="basic__vertex_8h_source.html#l00050">50</a> of file <a class="el" href="basic__vertex_8h_source.html">basic_vertex.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                                           :</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;         <a class="code" href="classpgrouting_1_1Basic__vertex.html#a7216826799f816db92964cc08a23394a">id</a>(is_source? other.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> : other.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a>) {}</div>
+<p class="definition">Definition at line <a class="el" href="basic__vertex_8h_source.html#l00052">52</a> of file <a class="el" href="basic__vertex_8h_source.html">basic_vertex.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                           :</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;         <a class="code" href="classpgrouting_1_1Basic__vertex.html#a7216826799f816db92964cc08a23394a">id</a>(is_source? other.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> : other.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a>) {}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -278,12 +280,38 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="basic__vertex_8h_source.html#l00053">53</a> of file <a class="el" href="basic__vertex_8h_source.html">basic_vertex.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;         this-&gt;<span class="keywordtype">id</span> = other.id;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;     }</div>
+<p class="definition">Definition at line <a class="el" href="basic__vertex_8h_source.html#l00055">55</a> of file <a class="el" href="basic__vertex_8h_source.html">basic_vertex.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                                {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;         this-&gt;<span class="keywordtype">id</span> = other.id;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;     }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="basic__vertex_8h_source.html#l00060">id</a>.</p>
+<p class="reference">References <a class="el" href="basic__vertex_8h_source.html#l00062">id</a>.</p>
+
+</div>
+</div>
+<a id="aebe9b0af8bc5ce529741bccc5249beec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebe9b0af8bc5ce529741bccc5249beec">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classpgrouting_1_1Basic__vertex.html">Basic_vertex</a>&amp; pgrouting::Basic_vertex::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classpgrouting_1_1Basic__vertex.html">Basic_vertex</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -343,9 +371,9 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="basic__vertex_8h_source.html#l00060">60</a> of file <a class="el" href="basic__vertex_8h_source.html">basic_vertex.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="basic__vertex_8h_source.html#l00062">62</a> of file <a class="el" href="basic__vertex_8h_source.html">basic_vertex.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="basic__vertex_8h_source.html#l00053">cp_members()</a>, <a class="el" href="basic__vertex_8cpp_source.html#l00059">pgrouting::extract_vertices()</a>, and <a class="el" href="basic__vertex_8cpp_source.html#l00037">pgrouting::operator&lt;&lt;()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="basic__vertex_8h_source.html#l00055">cp_members()</a>, <a class="el" href="basic__vertex_8cpp_source.html#l00059">pgrouting::extract_vertices()</a>, and <a class="el" href="basic__vertex_8cpp_source.html#l00037">pgrouting::operator&lt;&lt;()</a>.</p>
 
 </div>
 </div>
@@ -361,7 +389,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="basic__vertex_8h_source.html#l00061">61</a> of file <a class="el" href="basic__vertex_8h_source.html">basic_vertex.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="basic__vertex_8h_source.html#l00063">63</a> of file <a class="el" href="basic__vertex_8h_source.html">basic_vertex.h</a>.</p>
 
 </div>
 </div>
@@ -372,12 +400,12 @@ Friends</h2></td></tr>
 </div><!-- doc-content -->
 <div class="ttc" id="astructpgr__edge__t_html_a04a67da786054e84776d9e8d4b434f27"><div class="ttname"><a href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">pgr_edge_t::source</a></div><div class="ttdeci">int64_t source</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00039">pgr_edge_t.h:39</a></div></div>
 <div class="ttc" id="astructpgr__edge__t_html_a46e9fc03e52f0b84da533d63b7bbce1d"><div class="ttname"><a href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">pgr_edge_t::target</a></div><div class="ttdeci">int64_t target</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edge__t_8h_source.html#l00040">pgr_edge_t.h:40</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1Basic__vertex_html_a7216826799f816db92964cc08a23394a"><div class="ttname"><a href="classpgrouting_1_1Basic__vertex.html#a7216826799f816db92964cc08a23394a">pgrouting::Basic_vertex::id</a></div><div class="ttdeci">int64_t id</div><div class="ttdef"><b>Definition:</b> <a href="basic__vertex_8h_source.html#l00060">basic_vertex.h:60</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1Basic__vertex_html_a7216826799f816db92964cc08a23394a"><div class="ttname"><a href="classpgrouting_1_1Basic__vertex.html#a7216826799f816db92964cc08a23394a">pgrouting::Basic_vertex::id</a></div><div class="ttdeci">int64_t id</div><div class="ttdef"><b>Definition:</b> <a href="basic__vertex_8h_source.html#l00062">basic_vertex.h:62</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1Basic__vertex.html">Basic_vertex</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:18 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:33 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

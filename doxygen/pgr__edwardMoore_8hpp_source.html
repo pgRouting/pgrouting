@@ -180,22 +180,22 @@ $(document).ready(function(){initNavTree('pgr__edwardMoore_8hpp_source.html','')
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        std::vector&lt;double&gt; current_cost(graph.num_vertices(), std::numeric_limits&lt;double&gt;::infinity());</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        std::vector&lt;bool&gt; isInQ(graph.num_vertices(), <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        std::vector&lt;E&gt; from_edge(graph.num_vertices());</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        std::deque&lt;int64_t&gt; dq;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        std::deque&lt;V&gt; dq;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a8caf5a3c8fa0abf97e630b5c490c7ad8">DEFAULT_EDGE</a> = from_edge[0];</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        int64_t bgl_start_vertex = graph.get_V(start_vertex);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">auto</span> bgl_start_vertex = graph.get_V(start_vertex);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        current_cost[bgl_start_vertex] = 0;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        isInQ[bgl_start_vertex] = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        dq.push_front(bgl_start_vertex);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">while</span> (dq.empty() == <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            int64_t head_vertex = dq.front();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keyword">auto</span> head_vertex = dq.front();</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            dq.pop_front();</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            isInQ[head_vertex] = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a2568b4874f4d9548baa04c455119d749">updateVertexCosts</a>(graph, current_cost, isInQ, from_edge, dq, head_vertex);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#afe624795e43580e5b086a23d53464e4f">updateVertexCosts</a>(graph, current_cost, isInQ, from_edge, dq, head_vertex);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> target_vertex : end_vertex) {</div>
@@ -203,27 +203,27 @@ $(document).ready(function(){initNavTree('pgr__edwardMoore_8hpp_source.html','')
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            int64_t bgl_target_vertex = graph.get_V(target_vertex);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keyword">auto</span> bgl_target_vertex = graph.get_V(target_vertex);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">if</span> (from_edge[bgl_target_vertex] == <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a8caf5a3c8fa0abf97e630b5c490c7ad8">DEFAULT_EDGE</a>) {</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            }</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            paths.push_front(</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a21724b511aa96fcf3e5258b9fafd835f">getPath</a>(graph, bgl_start_vertex, target_vertex, bgl_target_vertex, from_edge, current_cost));</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a1cab2bd66e4a72a2d8efc926209c6889">getPath</a>(graph, bgl_start_vertex, target_vertex, bgl_target_vertex, from_edge, current_cost));</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">return</span> paths;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a21724b511aa96fcf3e5258b9fafd835f">  130</a></span>&#160;    <a class="code" href="classPath.html">Path</a> <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a21724b511aa96fcf3e5258b9fafd835f">getPath</a>(</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a1cab2bd66e4a72a2d8efc926209c6889">  130</a></span>&#160;    <a class="code" href="classPath.html">Path</a> <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a1cab2bd66e4a72a2d8efc926209c6889">getPath</a>(</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="namespacepgrouting_1_1alphashape.html#ac62a20787f72148c5598057a7c3e5253">G</a> &amp;graph,</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        int64_t bgl_start_vertex,</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a06d36dc5767f36695c63dd9412b57a38">V</a> bgl_start_vertex,</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        int64_t target,</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        int64_t bgl_target_vertex,</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a06d36dc5767f36695c63dd9412b57a38">V</a> bgl_target_vertex,</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        std::vector&lt;E&gt; &amp;from_edge,</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        std::vector&lt;double&gt; &amp;current_cost) {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        int64_t current_node = bgl_target_vertex;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keyword">auto</span> current_node = bgl_target_vertex;</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <a class="code" href="classPath.html">Path</a> path = <a class="code" href="classPath.html">Path</a>(graph[bgl_start_vertex].<span class="keywordtype">id</span>, graph[current_node].<span class="keywordtype">id</span>);</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
@@ -242,13 +242,13 @@ $(document).ready(function(){initNavTree('pgr__edwardMoore_8hpp_source.html','')
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">return</span> path;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a2568b4874f4d9548baa04c455119d749">  156</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a2568b4874f4d9548baa04c455119d749">updateVertexCosts</a>(</div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#afe624795e43580e5b086a23d53464e4f">  156</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#afe624795e43580e5b086a23d53464e4f">updateVertexCosts</a>(</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="namespacepgrouting_1_1alphashape.html#ac62a20787f72148c5598057a7c3e5253">G</a> &amp;graph,</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        std::vector&lt;double&gt; &amp;current_cost,</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        std::vector&lt;bool&gt; &amp;isInQ,</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        std::vector&lt;E&gt; &amp;from_edge,</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        std::deque&lt;int64_t&gt; &amp;dq,</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        int64_t &amp;head_vertex) {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        std::deque&lt;V&gt; &amp;dq,</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <a class="code" href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a06d36dc5767f36695c63dd9412b57a38">V</a> &amp;head_vertex) {</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="comment">/* abort in case of an interruption occurs (e.g. the query is being cancelled) */</span></div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        CHECK_FOR_INTERRUPTS();</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
@@ -288,7 +288,6 @@ $(document).ready(function(){initNavTree('pgr__edwardMoore_8hpp_source.html','')
 <div class="ttc" id="aclassPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00047">basePath_SSEC.hpp:47</a></div></div>
 <div class="ttc" id="aclassPath_html_a5b5d58e304f85ef96637a260917c30ac"><div class="ttname"><a href="classPath.html#a5b5d58e304f85ef96637a260917c30ac">Path::push_back</a></div><div class="ttdeci">void push_back(Path_t data)</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00052">basePath_SSEC.cpp:52</a></div></div>
 <div class="ttc" id="apgr__base__graph_8hpp_html"><div class="ttname"><a href="pgr__base__graph_8hpp.html">pgr_base_graph.hpp</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1functions_1_1Pgr__edwardMoore_html_a21724b511aa96fcf3e5258b9fafd835f"><div class="ttname"><a href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a21724b511aa96fcf3e5258b9fafd835f">pgrouting::functions::Pgr_edwardMoore::getPath</a></div><div class="ttdeci">Path getPath(G &amp;graph, int64_t bgl_start_vertex, int64_t target, int64_t bgl_target_vertex, std::vector&lt; E &gt; &amp;from_edge, std::vector&lt; double &gt; &amp;current_cost)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edwardMoore_8hpp_source.html#l00130">pgr_edwardMoore.hpp:130</a></div></div>
 <div class="ttc" id="aclassPath_html_a0b6bcfb3ff2bdd0b5861a2c3022cb85f"><div class="ttname"><a href="classPath.html#a0b6bcfb3ff2bdd0b5861a2c3022cb85f">Path::end</a></div><div class="ttdeci">pthIt end()</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00082">basePath_SSEC.hpp:82</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1functions_1_1Pgr__edwardMoore_html"><div class="ttname"><a href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html">pgrouting::functions::Pgr_edwardMoore</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__edwardMoore_8hpp_source.html#l00040">pgr_edwardMoore.hpp:40</a></div></div>
 <div class="ttc" id="anamespacepgrouting_1_1alphashape_html_a5ab5acecfc7c23e1f9f63881d4b4b21d"><div class="ttname"><a href="namespacepgrouting_1_1alphashape.html#a5ab5acecfc7c23e1f9f63881d4b4b21d">pgrouting::alphashape::E</a></div><div class="ttdeci">boost::graph_traits&lt; BG &gt;::edge_descriptor E</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alphaShape_8h_source.html#l00057">pgr_alphaShape.h:57</a></div></div>
@@ -300,17 +299,18 @@ $(document).ready(function(){initNavTree('pgr__edwardMoore_8hpp_source.html','')
 <div class="ttc" id="aclasspgrouting_1_1functions_1_1Pgr__edwardMoore_html_acc891bde348cf1086396c95ff714eaa1"><div class="ttname"><a href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#acc891bde348cf1086396c95ff714eaa1">pgrouting::functions::Pgr_edwardMoore::edwardMoore</a></div><div class="ttdeci">std::deque&lt; Path &gt; edwardMoore(G &amp;graph, std::vector&lt; int64_t &gt; start_vertex, std::vector&lt; int64_t &gt; end_vertex)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edwardMoore_8hpp_source.html#l00048">pgr_edwardMoore.hpp:48</a></div></div>
 <div class="ttc" id="anamespacepgrouting_1_1alphashape_html_ac62a20787f72148c5598057a7c3e5253"><div class="ttname"><a href="namespacepgrouting_1_1alphashape.html#ac62a20787f72148c5598057a7c3e5253">pgrouting::alphashape::G</a></div><div class="ttdeci">graph::Pgr_base_graph&lt; BG, XY_vertex, Basic_edge &gt; G</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alphaShape_8h_source.html#l00056">pgr_alphaShape.h:56</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1functions_1_1Pgr__edwardMoore_html_a06d36dc5767f36695c63dd9412b57a38"><div class="ttname"><a href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a06d36dc5767f36695c63dd9412b57a38">pgrouting::functions::Pgr_edwardMoore::V</a></div><div class="ttdeci">G::V V</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edwardMoore_8hpp_source.html#l00042">pgr_edwardMoore.hpp:42</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1functions_1_1Pgr__edwardMoore_html_a2568b4874f4d9548baa04c455119d749"><div class="ttname"><a href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a2568b4874f4d9548baa04c455119d749">pgrouting::functions::Pgr_edwardMoore::updateVertexCosts</a></div><div class="ttdeci">void updateVertexCosts(G &amp;graph, std::vector&lt; double &gt; &amp;current_cost, std::vector&lt; bool &gt; &amp;isInQ, std::vector&lt; E &gt; &amp;from_edge, std::deque&lt; int64_t &gt; &amp;dq, int64_t &amp;head_vertex)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edwardMoore_8hpp_source.html#l00156">pgr_edwardMoore.hpp:156</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1functions_1_1Pgr__edwardMoore_html_a07cdac28ffd5bdbe7155ecd3cc1dcee6"><div class="ttname"><a href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a07cdac28ffd5bdbe7155ecd3cc1dcee6">pgrouting::functions::Pgr_edwardMoore::E</a></div><div class="ttdeci">G::E E</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edwardMoore_8hpp_source.html#l00043">pgr_edwardMoore.hpp:43</a></div></div>
 <div class="ttc" id="anamespacepgrouting_1_1alphashape_html_ae2fbcda02dd1eeda63c766733e0bc4d2"><div class="ttname"><a href="namespacepgrouting_1_1alphashape.html#ae2fbcda02dd1eeda63c766733e0bc4d2">pgrouting::alphashape::V</a></div><div class="ttdeci">boost::graph_traits&lt; BG &gt;::vertex_descriptor V</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alphaShape_8h_source.html#l00058">pgr_alphaShape.h:58</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1functions_1_1Pgr__edwardMoore_html_a1cab2bd66e4a72a2d8efc926209c6889"><div class="ttname"><a href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a1cab2bd66e4a72a2d8efc926209c6889">pgrouting::functions::Pgr_edwardMoore::getPath</a></div><div class="ttdeci">Path getPath(G &amp;graph, V bgl_start_vertex, int64_t target, V bgl_target_vertex, std::vector&lt; E &gt; &amp;from_edge, std::vector&lt; double &gt; &amp;current_cost)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edwardMoore_8hpp_source.html#l00130">pgr_edwardMoore.hpp:130</a></div></div>
 <div class="ttc" id="anamespacepgrouting_html"><div class="ttname"><a href="namespacepgrouting.html">pgrouting</a></div><div class="ttdoc">Book keeping class for swapping orders between vehicles.</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alphaShape_8cpp_source.html#l00065">pgr_alphaShape.cpp:65</a></div></div>
 <div class="ttc" id="aclassPath_html_a79263f46d8f986d822fb5b656a94fd9a"><div class="ttname"><a href="classPath.html#a79263f46d8f986d822fb5b656a94fd9a">Path::begin</a></div><div class="ttdeci">pthIt begin()</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00081">basePath_SSEC.hpp:81</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1functions_1_1Pgr__edwardMoore_html_afe624795e43580e5b086a23d53464e4f"><div class="ttname"><a href="classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#afe624795e43580e5b086a23d53464e4f">pgrouting::functions::Pgr_edwardMoore::updateVertexCosts</a></div><div class="ttdeci">void updateVertexCosts(G &amp;graph, std::vector&lt; double &gt; &amp;current_cost, std::vector&lt; bool &gt; &amp;isInQ, std::vector&lt; E &gt; &amp;from_edge, std::deque&lt; V &gt; &amp;dq, V &amp;head_vertex)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__edwardMoore_8hpp_source.html#l00156">pgr_edwardMoore.hpp:156</a></div></div>
 <div class="ttc" id="abasePath__SSEC_8hpp_html"><div class="ttname"><a href="basePath__SSEC_8hpp.html">basePath_SSEC.hpp</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_6d4c5fe0d6dc99866041a806b0d24b33.html">ashish</a></li><li class="navelem"><a class="el" href="dir_fcb33163f1ba4ef33f527a468abdd7d4.html">Documents</a></li><li class="navelem"><a class="el" href="dir_60aaf56e1d931fc6c94a6af942e92c9a.html">gsoc</a></li><li class="navelem"><a class="el" href="dir_5820f995afd646bbf14f4bdd8a218c79.html">pgrouting</a></li><li class="navelem"><a class="el" href="dir_d828925fd371daeaa4c854aa07a3082a.html">include</a></li><li class="navelem"><a class="el" href="dir_caf9221dbd5986c3331842994f1a98dd.html">bellman_ford</a></li><li class="navelem"><a class="el" href="pgr__edwardMoore_8hpp.html">pgr_edwardMoore.hpp</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:17 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:30 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

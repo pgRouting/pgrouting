@@ -305,23 +305,23 @@ template&lt;typename G &gt; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> ii = 1;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">for</span> (boost::tie(i, end) = boost::vertices(TC); i != end; ++i) {</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keyword">auto</span> u = *i;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            int64_t* target_array = NULL;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            int64_t uid = graph.graph[u].id;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            boost::tie(ai, a_end) = adjacent_vertices(*i, TC);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">auto</span> adj_siz = a_end - ai;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            int64_t* target_array = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">auto</span> uid = graph.graph[u].id;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            boost::tie(ai, a_end) = adjacent_vertices(u, TC);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordtype">size_t</span> adj_siz = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(a_end - ai);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            target_array = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(adj_siz , target_array);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordtype">int</span> count = 0;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordtype">int</span> number = 0;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">for</span> (; ai != a_end; ++ai) {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keyword">auto</span> v = *ai;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                int64_t vid = graph.graph[v].id;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                target_array[count++] = vid;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                target_array[number++] = vid;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        (*return_tuples)[sequence] = {</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            ii++,</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            uid,</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            target_array,</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            count};</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            number};</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;         ++sequence;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
@@ -390,7 +390,7 @@ template&lt;class G &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_6d4c5fe0d6dc99866041a806b0d24b33.html">ashish</a></li><li class="navelem"><a class="el" href="dir_fcb33163f1ba4ef33f527a468abdd7d4.html">Documents</a></li><li class="navelem"><a class="el" href="dir_60aaf56e1d931fc6c94a6af942e92c9a.html">gsoc</a></li><li class="navelem"><a class="el" href="dir_5820f995afd646bbf14f4bdd8a218c79.html">pgrouting</a></li><li class="navelem"><a class="el" href="dir_0c835b2c0263a359a63ff950e7b4b437.html">src</a></li><li class="navelem"><a class="el" href="dir_c2861bd99da78576c30d64bc667a1ad1.html">transitiveClosure</a></li><li class="navelem"><a class="el" href="transitiveClosure__driver_8cpp.html">transitiveClosure_driver.cpp</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:18 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:32 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

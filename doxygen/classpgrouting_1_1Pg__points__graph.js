@@ -31,7 +31,6 @@ var classpgrouting_1_1Pg__points__graph =
     [ "m_driving_side", "classpgrouting_1_1Pg__points__graph.html#aeff57e9844981b6e93b935972e00d091", null ],
     [ "m_edges_of_points", "classpgrouting_1_1Pg__points__graph.html#aad44c9609144011d082b448c31845b45", null ],
     [ "m_new_edges", "classpgrouting_1_1Pg__points__graph.html#a73fbd932e81c3eb171a6c97d6a7a331c", null ],
-    [ "m_normal", "classpgrouting_1_1Pg__points__graph.html#a3b93906ef7e90f8a015e70aa6a8cb2a2", null ],
     [ "m_o_points", "classpgrouting_1_1Pg__points__graph.html#a5c7e04213dfddf1ac8b4433479a6c6b4", null ],
     [ "m_points", "classpgrouting_1_1Pg__points__graph.html#a04889936e36f3d7a4f65cbac29c3fa02", null ],
     [ "notice", "classpgrouting_1_1Pg__points__graph.html#a5e4c820b89d1736b51a441047cb1083f", null ]

@@ -1,6 +1,5 @@
 <map id="pgrouting::vrp::Tw_node" name="pgrouting::vrp::Tw_node">
-<area shape="rect" id="node1" title="Extends the Node class to create a Node with time window attributes." alt="" coords="76,95,253,121"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html" title="Extend Tw_node to evaluate the vehicle at node level." alt="" coords="61,169,269,196"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title=" " alt="" coords="5,13,156,39"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1PD__problem.html" title=" " alt="" coords="181,5,319,47"/>
+<area shape="rect" id="node1" title="Extends the Node class to create a Node with time window attributes." alt="" coords="21,80,198,107"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html" title="Extend Tw_node to evaluate the vehicle at node level." alt="" coords="5,155,213,181"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Dnode.html" title="The Dnode class defines a the basic operations when data is a matrix." alt="" coords="28,5,191,32"/>
 </map>

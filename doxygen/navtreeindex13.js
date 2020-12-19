@@ -1,5 +1,6 @@
 var NAVTREEINDEX13 =
 {
+"structCoordinate__t.html":[5,0,4],
 "structCoordinate__t.html#a4e83334eabbe707ae5433ff65f60a475":[5,0,4,1],
 "structCoordinate__t.html#a5c5120506820750c415333c52ed30958":[5,0,4,0],
 "structCoordinate__t.html#abbc494db10b22a87bede79c5b62be604":[5,0,4,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX13 =
 "structrestrict__columns.html#a469abbb030bb630db6a1080f6f353db0":[5,0,46,0],
 "structrestrict__columns.html#ade7bb1824c15fbde7f49c8e5e71fdf2c":[5,0,46,1],
 "structrestrict__struct.html":[5,0,47],
-"structrestrict__struct.html#a031fb0e31f95ccff997607c94c8174be":[5,0,47,2],
-"structrestrict__struct.html#a128942b1f94ee63ce56bc04e72d6353c":[5,0,47,0]
+"structrestrict__struct.html#a031fb0e31f95ccff997607c94c8174be":[5,0,47,2]
 };

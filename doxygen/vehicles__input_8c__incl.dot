@@ -14,9 +14,9 @@ digraph "vehicles_input.c"
   Node8 [label="c_types/column_info_t.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$column__info__t_8h.html",tooltip=" "];
   Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node10 [label="c_common/debug_macro.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$debug__macro_8h.html",tooltip=" "];
-  Node1 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node17 [label="c_common/get_check\l_data.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$get__check__data_8h.html",tooltip=" "];
-  Node17 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node18 [label="c_common/time_msg.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$time__msg_8h.html",tooltip=" "];
+  Node18 [label="c_common/get_check\l_data.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$get__check__data_8h.html",tooltip=" "];
+  Node18 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="c_common/time_msg.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$time__msg_8h.html",tooltip=" "];
 }

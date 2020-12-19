@@ -1,5 +1,6 @@
 var classpgrouting_1_1tsp_1_1Tour =
 [
+    [ "difference_type", "classpgrouting_1_1tsp_1_1Tour.html#aa57aaaeccdfe519511e72eed5147881a", null ],
     [ "Tour", "classpgrouting_1_1tsp_1_1Tour.html#ab5ea624669d0933d535875d76fd0c201", null ],
     [ "Tour", "classpgrouting_1_1tsp_1_1Tour.html#a71d4f784b40d07480ef5ed42d3884548", null ],
     [ "Tour", "classpgrouting_1_1tsp_1_1Tour.html#afb8a14e7599429aaff5681a7bbffc464", null ],

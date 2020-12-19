@@ -26,11 +26,11 @@ digraph "pgr_tsp.hpp"
   Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node12 [label="cpp_common/Dmatrix.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$Dmatrix_8h.html",tooltip=" "];
   Node12 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node16 [label="tsp/euclideanDmatrix.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$euclideanDmatrix_8h.html",tooltip=" "];
-  Node16 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node18 [label="tsp/tour.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$tour_8h.html",tooltip=" "];
-  Node18 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node18 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="tsp/euclideanDmatrix.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$euclideanDmatrix_8h.html",tooltip=" "];
+  Node17 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="tsp/tour.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$tour_8h.html",tooltip=" "];
+  Node19 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

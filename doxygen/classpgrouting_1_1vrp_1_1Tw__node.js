@@ -17,6 +17,7 @@ var classpgrouting_1_1vrp_1_1Tw__node =
     [ "closes", "classpgrouting_1_1vrp_1_1Tw__node.html#ae8ca4c6b1e2031591b3cc872c8ae3267", null ],
     [ "demand", "classpgrouting_1_1vrp_1_1Tw__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd", null ],
     [ "demand", "classpgrouting_1_1vrp_1_1Tw__node.html#acfed3664d81aa73633e0aec086146a6e", null ],
+    [ "distance", "classpgrouting_1_1vrp_1_1Tw__node.html#ad97f91419e890bf9b541ba15fcb8c787", null ],
     [ "id", "classpgrouting_1_1vrp_1_1Tw__node.html#a147f029e589a2dd36b1edd638d7ac833", null ],
     [ "idx", "classpgrouting_1_1vrp_1_1Tw__node.html#ae0a3414bc65c1b67101b3f5944505447", null ],
     [ "is_compatible_IJ", "classpgrouting_1_1vrp_1_1Tw__node.html#a3e15d2c8670445bb3ba13aa605ba980a", null ],
@@ -34,7 +35,9 @@ var classpgrouting_1_1vrp_1_1Tw__node =
     [ "is_tight_compatible_IJ", "classpgrouting_1_1vrp_1_1Tw__node.html#a0e4f84908b0ebbb71fe9888a5b421b7b", null ],
     [ "is_valid", "classpgrouting_1_1vrp_1_1Tw__node.html#af2bd2274eae6e957d8054af1d6d55e8a", null ],
     [ "is_waitTime_compatible_IJ", "classpgrouting_1_1vrp_1_1Tw__node.html#a12d1d5cdfc3094df03a37df7ee99ea99", null ],
+    [ "msg", "classpgrouting_1_1vrp_1_1Tw__node.html#ab3151adfe935bf9e2c6e16b2f0bcc53d", null ],
     [ "opens", "classpgrouting_1_1vrp_1_1Tw__node.html#ae64feb6a6fc092fdc590ee0db579b1e8", null ],
+    [ "operator==", "classpgrouting_1_1vrp_1_1Tw__node.html#a3aa08177772317bcc28a8965c97f8bc4", null ],
     [ "operator==", "classpgrouting_1_1vrp_1_1Tw__node.html#ab2f1204fba2644d6c0a0edef5305645f", null ],
     [ "order", "classpgrouting_1_1vrp_1_1Tw__node.html#a3a4981ecc46053d2c8e74b91aeefc1b1", null ],
     [ "reset_id", "classpgrouting_1_1vrp_1_1Tw__node.html#ac447a0a784cb863f908f3375e2ca9d1c", null ],
@@ -52,6 +55,5 @@ var classpgrouting_1_1vrp_1_1Tw__node =
     [ "m_order", "classpgrouting_1_1vrp_1_1Tw__node.html#af30dc6f10a64ae5d515c24b258701ab0", null ],
     [ "m_service_time", "classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c", null ],
     [ "m_type", "classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469", null ],
-    [ "msg", "classpgrouting_1_1vrp_1_1Tw__node.html#a7ea35b02b812474d4b0c19da2784fc5f", null ],
     [ "problem", "classpgrouting_1_1vrp_1_1Tw__node.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ]
 ];

@@ -134,105 +134,103 @@ $(document).ready(function(){initNavTree('lineGraphFull__driver_8cpp_source.html
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        std::vector&lt; Line_graph_full_rt &gt; edge_result,</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="structLine__graph__full__rt.html">Line_graph_full_rt</a> **return_tuples,</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">size_t</span> &amp;sequence) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(edge_result.size()),</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            (*return_tuples));</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code" href="structedge.html">edge</a> : edge_result) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        (*return_tuples)[sequence] =</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a278fb0e32a99208c44d789d75e82c330">id</a>,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;             <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a0fe1e481c4a25ef89f46b88c576887c3">source</a>,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;             <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#afc0bbb6ab842fdeb74dbb8cab1c95828">target</a>,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;             <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a>,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;             <a class="code" href="structedge.html">edge</a>.edge};</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        sequence++;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="lineGraphFull__driver_8h.html#a57485b710953574affd8850ea4e509e9">   64</a></span>&#160;<a class="code" href="lineGraphFull__driver_8cpp.html#a57485b710953574affd8850ea4e509e9">do_pgr_lineGraphFull</a>(</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>  *data_edges,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">size_t</span> total_edges,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="structLine__graph__full__rt.html">Line_graph_full_rt</a> **return_tuples,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">size_t</span> *return_count,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">char</span> ** log_msg,</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">char</span> ** notice_msg,</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">char</span> ** err_msg) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::ostringstream log;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::ostringstream err;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::ostringstream notice;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*log_msg));</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*notice_msg));</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*err_msg));</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*return_tuples));</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(*return_count == 0);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(total_edges != 0);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(edge_result.size(), (*return_tuples));</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code" href="structedge.html">edge</a> : edge_result) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        (*return_tuples)[sequence] =</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a278fb0e32a99208c44d789d75e82c330">id</a>,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;             <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a0fe1e481c4a25ef89f46b88c576887c3">source</a>,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;             <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#afc0bbb6ab842fdeb74dbb8cab1c95828">target</a>,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;             <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a>,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;             <a class="code" href="structedge.html">edge</a>.edge};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        sequence++;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="lineGraphFull__driver_8h.html#a57485b710953574affd8850ea4e509e9">   62</a></span>&#160;<a class="code" href="lineGraphFull__driver_8cpp.html#a57485b710953574affd8850ea4e509e9">do_pgr_lineGraphFull</a>(</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>  *data_edges,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">size_t</span> total_edges,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="structLine__graph__full__rt.html">Line_graph_full_rt</a> **return_tuples,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">size_t</span> *return_count,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">char</span> ** log_msg,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">char</span> ** notice_msg,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">char</span> ** err_msg) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::ostringstream log;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::ostringstream err;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::ostringstream notice;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*log_msg));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*notice_msg));</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*err_msg));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*return_tuples));</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(*return_count == 0);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(total_edges != 0);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a> gType = <a class="code" href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a>;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a> gType = <a class="code" href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html">pgrouting::DirectedGraph</a> digraph(gType);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        digraph.<a class="code" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a47d90c66d212d0a023a79d2d6ab8262f">insert_edges_neg</a>(data_edges, total_edges);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        log &lt;&lt; digraph &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html">pgrouting::graph::Pgr_lineGraphFull</a>&lt;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <a class="code" href="namespacepgrouting.html#a8117779a91cbfa60903c5454d08d596b">pgrouting::LinearDirectedGraph</a>,</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <a class="code" href="classpgrouting_1_1Line__vertex.html">pgrouting::Line_vertex</a>,</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <a class="code" href="classpgrouting_1_1Basic__edge.html">pgrouting::Basic_edge</a> &gt; line(digraph);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        std::vector&lt; Line_graph_full_rt &gt; line_graph_edges;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        line_graph_edges = line.get_postgres_results_directed();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html">pgrouting::DirectedGraph</a> digraph(gType);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        digraph.<a class="code" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a027ff937007b564057287e66009fcd3b">insert_edges_neg</a>(data_edges, total_edges);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        log &lt;&lt; digraph &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html">pgrouting::graph::Pgr_lineGraphFull</a>&lt;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <a class="code" href="namespacepgrouting.html#a8117779a91cbfa60903c5454d08d596b">pgrouting::LinearDirectedGraph</a>,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <a class="code" href="classpgrouting_1_1Line__vertex.html">pgrouting::Line_vertex</a>,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <a class="code" href="classpgrouting_1_1Basic__edge.html">pgrouting::Basic_edge</a> &gt; line(digraph);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        std::vector&lt; Line_graph_full_rt &gt; line_graph_edges;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        line_graph_edges = line.get_postgres_results_directed();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">auto</span> count = line_graph_edges.size();</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">auto</span> count = line_graph_edges.size();</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            (*return_tuples) = NULL;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            (*return_count) = 0;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="comment">/* TODO change the notice message */</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            notice &lt;&lt;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="stringliteral">&quot;No paths found between start_vid and end_vid vertices&quot;</span>;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordtype">size_t</span> sequence = 0;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <a class="code" href="lineGraphFull__driver_8cpp.html#a4f37f216dd6dae9c5065e548c6294026">get_turn_penalty_postgres_result</a>(</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                line_graph_edges,</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                return_tuples,</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                sequence);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            (*return_count) = sequence;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#if 1</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        log &lt;&lt; line.log.str().c_str() &lt;&lt; <span class="stringliteral">&quot;\n\n\n&quot;</span>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        log &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(*err_msg == NULL);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        *log_msg = log.str().empty()?</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            *log_msg :</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        *notice_msg = notice.str().empty()?</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            *notice_msg :</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(notice.str().c_str());</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;except) {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a>(*return_tuples);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        (*return_count) = 0;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        err &lt;&lt; except.<a class="code" href="classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88">what</a>();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        *err_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(err.str().c_str());</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        *log_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    } <span class="keywordflow">catch</span> (std::exception &amp;except) {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a>(*return_tuples);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        (*return_count) = 0;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        err &lt;&lt; except.what();</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        *err_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(err.str().c_str());</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        *log_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    } <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a>(*return_tuples);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        (*return_count) = 0;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        err &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!&quot;</span>;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        *err_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(err.str().c_str());</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        *log_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            (*return_tuples) = NULL;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            (*return_count) = 0;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="comment">/* TODO change the notice message */</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            notice &lt;&lt;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="stringliteral">&quot;No paths found between start_vid and end_vid vertices&quot;</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordtype">size_t</span> sequence = 0;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <a class="code" href="lineGraphFull__driver_8cpp.html#a4f37f216dd6dae9c5065e548c6294026">get_turn_penalty_postgres_result</a>(</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                line_graph_edges,</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                return_tuples,</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                sequence);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            (*return_count) = sequence;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#if 1</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        log &lt;&lt; line.log.str().c_str() &lt;&lt; <span class="stringliteral">&quot;\n\n\n&quot;</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        log &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(*err_msg == NULL);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        *log_msg = log.str().empty()?</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            *log_msg :</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        *notice_msg = notice.str().empty()?</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            *notice_msg :</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(notice.str().c_str());</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;except) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a>(*return_tuples);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        (*return_count) = 0;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        err &lt;&lt; except.<a class="code" href="classAssertFailedException.html#a7f00e7275e82f7b6bafec6339a27bc88">what</a>();</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        *err_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(err.str().c_str());</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        *log_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    } <span class="keywordflow">catch</span> (std::exception &amp;except) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a>(*return_tuples);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        (*return_count) = 0;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        err &lt;&lt; except.what();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        *err_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(err.str().c_str());</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        *log_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    } <span class="keywordflow">catch</span>(...) {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a>(*return_tuples);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        (*return_count) = 0;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        err &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!&quot;</span>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        *err_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(err.str().c_str());</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        *log_msg = <a class="code" href="pgr__alloc_8cpp.html#a03fe028457780ee3a4d223cd7fe9d53e">pgr_msg</a>(log.str().c_str());</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="apgr__alloc_8hpp_html_ac9d34b4a4d403ed9f24050b973087a9c"><div class="ttname"><a href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a></div><div class="ttdeci">T * pgr_alloc(std::size_t size, T *ptr)</div><div class="ttdoc">allocates memory</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00066">pgr_alloc.hpp:66</a></div></div>
@@ -253,9 +251,9 @@ $(document).ready(function(){initNavTree('lineGraphFull__driver_8cpp_source.html
 <div class="ttc" id="alineGraphFull__driver_8h_html"><div class="ttname"><a href="lineGraphFull__driver_8h.html">lineGraphFull_driver.h</a></div></div>
 <div class="ttc" id="apgr__dijkstra_8hpp_html"><div class="ttname"><a href="pgr__dijkstra_8hpp.html">pgr_dijkstra.hpp</a></div></div>
 <div class="ttc" id="agraph__enum_8h_html_a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5"><div class="ttname"><a href="graph__enum_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a></div><div class="ttdeci">@ DIRECTED</div><div class="ttdef"><b>Definition:</b> <a href="graph__enum_8h_source.html#l00030">graph_enum.h:30</a></div></div>
-<div class="ttc" id="aclasspgrouting_1_1graph_1_1Pgr__base__graph_html_a47d90c66d212d0a023a79d2d6ab8262f"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a47d90c66d212d0a023a79d2d6ab8262f">pgrouting::graph::Pgr_base_graph::insert_edges_neg</a></div><div class="ttdeci">void insert_edges_neg(const T *edges, int64_t count)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00362">pgr_base_graph.hpp:362</a></div></div>
+<div class="ttc" id="aclasspgrouting_1_1graph_1_1Pgr__base__graph_html_a027ff937007b564057287e66009fcd3b"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a027ff937007b564057287e66009fcd3b">pgrouting::graph::Pgr_base_graph::insert_edges_neg</a></div><div class="ttdeci">void insert_edges_neg(const T *edges, size_t count)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00362">pgr_base_graph.hpp:362</a></div></div>
 <div class="ttc" id="alineGraphFull__driver_8cpp_html_a4f37f216dd6dae9c5065e548c6294026"><div class="ttname"><a href="lineGraphFull__driver_8cpp.html#a4f37f216dd6dae9c5065e548c6294026">get_turn_penalty_postgres_result</a></div><div class="ttdeci">void get_turn_penalty_postgres_result(std::vector&lt; Line_graph_full_rt &gt; edge_result, Line_graph_full_rt **return_tuples, size_t &amp;sequence)</div><div class="ttdef"><b>Definition:</b> <a href="lineGraphFull__driver_8cpp_source.html#l00044">lineGraphFull_driver.cpp:44</a></div></div>
-<div class="ttc" id="alineGraphFull__driver_8cpp_html_a57485b710953574affd8850ea4e509e9"><div class="ttname"><a href="lineGraphFull__driver_8cpp.html#a57485b710953574affd8850ea4e509e9">do_pgr_lineGraphFull</a></div><div class="ttdeci">void do_pgr_lineGraphFull(pgr_edge_t *data_edges, size_t total_edges, Line_graph_full_rt **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="lineGraphFull__driver_8cpp_source.html#l00064">lineGraphFull_driver.cpp:64</a></div></div>
+<div class="ttc" id="alineGraphFull__driver_8cpp_html_a57485b710953574affd8850ea4e509e9"><div class="ttname"><a href="lineGraphFull__driver_8cpp.html#a57485b710953574affd8850ea4e509e9">do_pgr_lineGraphFull</a></div><div class="ttdeci">void do_pgr_lineGraphFull(pgr_edge_t *data_edges, size_t total_edges, Line_graph_full_rt **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="lineGraphFull__driver_8cpp_source.html#l00062">lineGraphFull_driver.cpp:62</a></div></div>
 <div class="ttc" id="astructedge_html_a278fb0e32a99208c44d789d75e82c330"><div class="ttname"><a href="structedge.html#a278fb0e32a99208c44d789d75e82c330">edge::id</a></div><div class="ttdeci">int64 id</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00042">trsp.h:42</a></div></div>
 <div class="ttc" id="apgr__alloc_8hpp_html_aae87e343d8516ca2c6a60dcfbbf7fde6"><div class="ttname"><a href="pgr__alloc_8hpp.html#aae87e343d8516ca2c6a60dcfbbf7fde6">pgr_free</a></div><div class="ttdeci">T * pgr_free(T *ptr)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00077">pgr_alloc.hpp:77</a></div></div>
 <div class="ttc" id="aclasspgrouting_1_1Line__vertex_html"><div class="ttname"><a href="classpgrouting_1_1Line__vertex.html">pgrouting::Line_vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="line__vertex_8h_source.html#l00045">line_vertex.h:45</a></div></div>
@@ -268,7 +266,7 @@ $(document).ready(function(){initNavTree('lineGraphFull__driver_8cpp_source.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_43e0a1f539e00dcfa1a6bc4d4fee4fc2.html">home</a></li><li class="navelem"><a class="el" href="dir_6d4c5fe0d6dc99866041a806b0d24b33.html">ashish</a></li><li class="navelem"><a class="el" href="dir_fcb33163f1ba4ef33f527a468abdd7d4.html">Documents</a></li><li class="navelem"><a class="el" href="dir_60aaf56e1d931fc6c94a6af942e92c9a.html">gsoc</a></li><li class="navelem"><a class="el" href="dir_5820f995afd646bbf14f4bdd8a218c79.html">pgrouting</a></li><li class="navelem"><a class="el" href="dir_0c835b2c0263a359a63ff950e7b4b437.html">src</a></li><li class="navelem"><a class="el" href="dir_1fae8cbd1bd99cc6c28a96dd3c694125.html">lineGraph</a></li><li class="navelem"><a class="el" href="lineGraphFull__driver_8cpp.html">lineGraphFull_driver.cpp</a></li>
-    <li class="footer">Generated on Thu Nov 19 2020 19:47:17 for PGROUTING by
+    <li class="footer">Generated on Sat Dec 19 2020 22:27:30 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

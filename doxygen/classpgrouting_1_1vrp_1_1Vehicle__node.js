@@ -8,7 +8,7 @@ var classpgrouting_1_1vrp_1_1Vehicle__node =
       [ "kLoad", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a8fe693c767913e5e51c12b548062d8bc", null ],
       [ "kEnd", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a7ec2117b7b4a3df2a123f1e422439ac4a4a5e3a3b90103e9f303d2de85dee3aa5", null ]
     ] ],
-    [ "Vehicle_node", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a9fd405d232385c0c3955bbdb07a15b40", null ],
+    [ "Vehicle_node", "classpgrouting_1_1vrp_1_1Vehicle__node.html#ab0d3858c9429131118f4a4692ab853d1", null ],
     [ "Vehicle_node", "classpgrouting_1_1vrp_1_1Vehicle__node.html#aa0bcebdf0bc06d311aa8194b2d2df72d", null ],
     [ "Vehicle_node", "classpgrouting_1_1vrp_1_1Vehicle__node.html#af106ab5ad92b2294f95dd29e0abbddab", null ],
     [ "arrival_i_arrives_j", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a810f8e5e0deea10816247439a890a2a1", null ],
@@ -23,6 +23,7 @@ var classpgrouting_1_1vrp_1_1Vehicle__node =
     [ "demand", "classpgrouting_1_1vrp_1_1Vehicle__node.html#ab8978d7806edaa8dbd62fdd52c7f43fd", null ],
     [ "demand", "classpgrouting_1_1vrp_1_1Vehicle__node.html#acfed3664d81aa73633e0aec086146a6e", null ],
     [ "departure_time", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a688aa10a19db9a74d799cd9a63c638c0", null ],
+    [ "distance", "classpgrouting_1_1vrp_1_1Vehicle__node.html#ad97f91419e890bf9b541ba15fcb8c787", null ],
     [ "evaluate", "classpgrouting_1_1vrp_1_1Vehicle__node.html#ae31aa1d703cda83218f673c0a9a21340", null ],
     [ "evaluate", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a0afbf88acfd0da17b5745a7199c3e9ba", null ],
     [ "feasible", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a314d018ef188137d71653a3025fba002", null ],
@@ -46,7 +47,9 @@ var classpgrouting_1_1vrp_1_1Vehicle__node =
     [ "is_tight_compatible_IJ", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a0e4f84908b0ebbb71fe9888a5b421b7b", null ],
     [ "is_valid", "classpgrouting_1_1vrp_1_1Vehicle__node.html#af2bd2274eae6e957d8054af1d6d55e8a", null ],
     [ "is_waitTime_compatible_IJ", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a12d1d5cdfc3094df03a37df7ee99ea99", null ],
+    [ "msg", "classpgrouting_1_1vrp_1_1Vehicle__node.html#ab3151adfe935bf9e2c6e16b2f0bcc53d", null ],
     [ "opens", "classpgrouting_1_1vrp_1_1Vehicle__node.html#ae64feb6a6fc092fdc590ee0db579b1e8", null ],
+    [ "operator==", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a3aa08177772317bcc28a8965c97f8bc4", null ],
     [ "operator==", "classpgrouting_1_1vrp_1_1Vehicle__node.html#ab2f1204fba2644d6c0a0edef5305645f", null ],
     [ "order", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a3a4981ecc46053d2c8e74b91aeefc1b1", null ],
     [ "reset_id", "classpgrouting_1_1vrp_1_1Vehicle__node.html#ac447a0a784cb863f908f3375e2ca9d1c", null ],
@@ -82,6 +85,5 @@ var classpgrouting_1_1vrp_1_1Vehicle__node =
     [ "m_twvTot", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a50b3b2272c60ccbd570c12374e6f4293", null ],
     [ "m_type", "classpgrouting_1_1vrp_1_1Vehicle__node.html#aba4a921c9d3f8e05911b584223bc0469", null ],
     [ "m_wait_time", "classpgrouting_1_1vrp_1_1Vehicle__node.html#acf38aa5cd9a368f40d80c66b2e6a5095", null ],
-    [ "msg", "classpgrouting_1_1vrp_1_1Vehicle__node.html#a7ea35b02b812474d4b0c19da2784fc5f", null ],
     [ "problem", "classpgrouting_1_1vrp_1_1Vehicle__node.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ]
 ];

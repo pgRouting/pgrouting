@@ -11,7 +11,7 @@ var classpgrouting_1_1graph_1_1PgrDirectedChPPGraph =
     [ "edges", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a25ababa47f8075b3a90b3b9853ecb3d4", null ],
     [ "edgeToId", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ad0caec78a903d9afdf1e635dd3ee0f5c", null ],
     [ "edgeToIdx", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a2d55830558f3ebd05c294d5618d3acb1", null ],
-    [ "edgeVisited", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ac39d5c1c4e1b149c643f02bc548aae87", null ],
+    [ "edgeVisited", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a866efa20611a09879084a58ce9e5bdc0", null ],
     [ "m_cost", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a74a5d8ebbe3cf6ffc8f7ad44590e0334", null ],
     [ "originalEdges", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#ad403b8e150007fbd95cc79fd827ec01b", null ],
     [ "pathStack", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html#a2a65264a96511f166d85919938e3d516", null ],
