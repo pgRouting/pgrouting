@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
+#if 0
 Order
 Vehicle_pickDeliver::get_worse_order(
         Identifiers<size_t> orders) const {
@@ -75,6 +76,7 @@ Vehicle_pickDeliver::get_first_order() const {
     pgassert(!empty());
     return m_orders[m_path[1].idx()];
 }
+#endif
 
 
 Vehicle_pickDeliver::Vehicle_pickDeliver(
@@ -355,6 +357,7 @@ Vehicle_pickDeliver::erase(const Order &order) {
 
 
 
+#if 0
 size_t
 Vehicle_pickDeliver::pop_back() {
     invariant();
@@ -407,6 +410,7 @@ Vehicle_pickDeliver::pop_front() {
     pgassert(false);
     return 0;
 }
+#endif
 
 void
 Vehicle_pickDeliver::set_compatibles(const PD_Orders &orders) {
