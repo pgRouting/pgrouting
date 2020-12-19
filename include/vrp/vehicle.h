@@ -146,6 +146,7 @@ class Vehicle : public Identifier, public PD_problem {
 
 
 
+#if 0
      /*! @brief Evaluated: push_back a node to the path.
       *
       * ~~~~{.c}
@@ -186,6 +187,7 @@ class Vehicle : public Identifier, public PD_problem {
       * ~~~~
       */
      void pop_front();
+#endif
 
      /*! @brief Erase node.id()
       *
@@ -247,9 +249,11 @@ class Vehicle : public Identifier, public PD_problem {
      double total_service_time() const {
          return m_path.back().total_service_time();
      }
+#if 0
      double free_time() const {
          return total_wait_time() + (m_path[0].closes() - duration());
      }
+#endif
      int twvTot() const {
          return m_path.back().twvTot();
      }
@@ -327,8 +331,10 @@ class Vehicle : public Identifier, public PD_problem {
 
      ///@}
 
+#if 0
      double deltaTime(const Vehicle_node &node, POS pos) const;
      POS insert_less_travel_time(const Vehicle_node &node, POS after_pos = 0);
+#endif
 
 
 
