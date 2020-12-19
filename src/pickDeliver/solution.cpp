@@ -161,6 +161,7 @@ Solution::tau(const std::string &title) const {
     return log.str();
 }
 
+#if 0
 void
 Solution::sort_by_id() {
     std::sort(fleet.begin(), fleet.end(), []
@@ -169,6 +170,7 @@ Solution::sort_by_id() {
             return lhs.idx() < rhs.idx();
             });
 }
+#endif
 
 std::ostream&
 operator << (std::ostream &log, const Solution &solution) {
