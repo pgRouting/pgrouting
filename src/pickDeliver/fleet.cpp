@@ -40,31 +40,31 @@ namespace vrp {
 Fleet::Fleet(const Fleet &fleet) :
     PD_problem(),
     m_trucks(fleet.m_trucks),
-    used(fleet.used),
-    un_used(fleet.un_used)
+    m_used(fleet.m_used),
+    m_un_used(fleet.m_un_used)
     {}
 
 Fleet::Fleet(
         const std::vector<Vehicle_t> &vehicles, double factor) :
     PD_problem(),
-    used(),
-    un_used() {
+    m_used(),
+    m_un_used() {
         build_fleet(vehicles, factor);
         Identifiers<size_t> unused(m_trucks.size());
-        un_used = unused;
+        m_un_used = unused;
     }
 
 
 Vehicle_pickDeliver
 Fleet::get_truck() {
     ENTERING();
-    auto idx = un_used.front();
-    msg.log << "Available vehicles: " << un_used << "\n";
-    msg.log << "NOT Available vehicles: " << used << "\n";
+    auto idx = m_un_used.front();
+    msg.log << "Available vehicles: " << m_un_used << "\n";
+    msg.log << "NOT Available vehicles: " << m_used << "\n";
     msg.log << "getting idx" << idx << "\n";
     pgassertwm(idx < m_trucks.size(), msg.log.str());
-    used += idx;
-    if (un_used.size() > 1) un_used -= idx;
+    m_used += idx;
+    if (m_un_used.size() > 1) m_un_used -= idx;
     EXITING();
     return m_trucks[idx];
 }
@@ -72,25 +72,25 @@ Fleet::get_truck() {
 #if 0
 void
 Fleet::release_truck(size_t id) {
-    used -= id;
-    un_used += id;
+    m_used -= id;
+    m_un_used += id;
 }
 #endif
 
 Vehicle_pickDeliver
 Fleet::get_truck(size_t order) {
 #if 0
-    msg.log << "Available vehicles: " << un_used << "\n";
-    msg.log << "NOT Available vehicles: " << used << "\n";
+    msg.log << "Available vehicles: " << m_un_used << "\n";
+    msg.log << "NOT Available vehicles: " << m_used << "\n";
 #endif
-    auto idx = un_used.front();
+    auto idx = m_un_used.front();
 
-    for (const auto &i : un_used) {
+    for (const auto &i : m_un_used) {
         if (m_trucks[i].feasable_orders().has(order)) {
             idx = i;
             msg.log << "getting idx" << idx << "\n";
-            used += idx;
-            if (un_used.size() > 1) un_used -= idx;
+            m_used += idx;
+            if (m_un_used.size() > 1) m_un_used -= idx;
             return m_trucks[idx];
         }
     }
@@ -106,8 +106,8 @@ Fleet::get_truck(size_t order) {
             idx = truck.idx();
             msg.log << "idx" << idx << "size" << m_trucks.size();
             pgassertwm(idx < m_trucks.size(), msg.get_log());
-            used += idx;
-            if (un_used.size() > 1) un_used -= idx;
+            m_used += idx;
+            if (m_un_used.size() > 1) m_un_used -= idx;
             break;
         }
     }
@@ -125,8 +125,8 @@ Fleet::get_truck(const Order order) {
             msg.log << "id" << id
                 << "size" << m_trucks.size();
             pgassertwm(id < m_trucks.size(), msg.get_log());
-            used += id;
-            if (un_used.size() > 1) un_used -= id;
+            m_used += id;
+            if (m_un_used.size() > 1) m_un_used -= id;
             break;
         }
     }
@@ -261,7 +261,7 @@ Fleet::build_fleet(
         add_vehicle(vehicle, factor, starting_site, ending_site);
     }
     Identifiers<size_t> unused(m_trucks.size());
-    un_used = unused;
+    m_un_used = unused;
     return true;
 }
 

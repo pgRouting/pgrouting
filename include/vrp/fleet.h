@@ -45,9 +45,8 @@ class Pgr_pickDeliver;
 class PD_Orders;
 
 class Fleet : public PD_problem {
- public:
+ private:
      typedef std::vector<Vehicle_pickDeliver>::iterator iterator;
-     std::vector<Vehicle_pickDeliver> m_trucks;
 
 
  public:
@@ -64,8 +63,8 @@ class Fleet : public PD_problem {
      /* TODO move code to .cpp */
      Fleet& operator=(const Fleet &fleet) {
          m_trucks = fleet.m_trucks;
-         used = fleet.used;
-         un_used = fleet.un_used;
+         m_used = fleet.m_used;
+         m_un_used = fleet.m_un_used;
          return *this;
      }
 
@@ -96,8 +95,9 @@ class Fleet : public PD_problem {
      friend std::ostream& operator << (std::ostream &log, const Fleet &v);
 
  private:
-     Identifiers<size_t> used;
-     Identifiers<size_t> un_used;
+     std::vector<Vehicle_pickDeliver> m_trucks;
+     Identifiers<size_t> m_used;
+     Identifiers<size_t> m_un_used;
 
      /*! @brief build the fleet
       *
