@@ -168,7 +168,6 @@ pgRouting 3.0.5 Release Notes
 To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.5
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github.
 
-
 .. _changelog_3_0_4:
 
 pgRouting 3.0.4 Release Notes

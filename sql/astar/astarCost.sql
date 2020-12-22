@@ -176,7 +176,7 @@ IS 'pgr_aStarCost(One to One)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_aStarCost.html
+  - ${PROJECT_DOC_LINK}/pgr_aStarCost.html
 ';
 
 
@@ -192,7 +192,7 @@ IS 'pgr_aStarCost(One to Many)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_aStarCost.html
+  - ${PROJECT_DOC_LINK}/pgr_aStarCost.html
 ';
 
 
@@ -208,7 +208,7 @@ IS 'pgr_aStarCost(Many to One)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_aStarCost.html
+  - ${PROJECT_DOC_LINK}/pgr_aStarCost.html
 ';
 
 
@@ -224,7 +224,7 @@ IS 'pgr_aStarCost(Many to Many)
    - factor := 1
    - epsilon := 1
  - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_aStarCost.html
+   - ${PROJECT_DOC_LINK}/pgr_aStarCost.html
 ';
 
 

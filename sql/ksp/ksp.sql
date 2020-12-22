@@ -61,5 +61,5 @@ IS 'pgr_KSP
     - directed := true
     - heap_paths := false
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_KSP.html
+    - ${PROJECT_DOC_LINK}/pgr_KSP.html
 ';

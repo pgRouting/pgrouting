@@ -150,7 +150,7 @@ IS 'pgr_bdDijkstraCost(One to One)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
+  - ${PROJECT_DOC_LINK}/pgr_bdDijkstraCost.html
 ';
 
 
@@ -163,7 +163,7 @@ IS 'pgr_bdDijkstraCost(One to Many)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
+  - ${PROJECT_DOC_LINK}/pgr_bdDijkstraCost.html
 ';
 
 
@@ -176,7 +176,7 @@ IS 'pgr_bdDijkstraCost(Many to One)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
+  - ${PROJECT_DOC_LINK}/pgr_bdDijkstraCost.html
 ';
 
 
@@ -189,7 +189,7 @@ IS 'pgr_bdDijkstraCost(Many to Many)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
+  - ${PROJECT_DOC_LINK}/pgr_bdDijkstraCost.html
 ';
 
 COMMENT ON FUNCTION pgr_bdDijkstraCost(TEXT, TEXT, BOOLEAN)

@@ -85,6 +85,6 @@ IS 'pgr_TSPeuclidean
 
     - randomize := true
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_TSPeuclidean.html
+    - ${PROJECT_DOC_LINK}/pgr_TSPeuclidean.html
 ';
 

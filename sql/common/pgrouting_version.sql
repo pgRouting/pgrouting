@@ -41,10 +41,10 @@ RETURNS TABLE(
         boost varchar
     ) AS
 $BODY$
-    SELECT '${PGROUTING_VERSION}'::varchar AS version,
-        '${PGROUTING_FULL_VERSION}'::varchar AS tag,
-        '${PGROUTING_GIT_HASH}'::varchar AS hash,
-        '${PGROUTING_GIT_BRANCH}'::varchar AS branch,
+    SELECT '${PROJECT_VERSION}'::varchar AS version,
+        '${PROJECT_FULL_VERSION}'::varchar AS tag,
+        '${PROJECT_GIT_HASH}'::varchar AS hash,
+        '${PROJECT_GIT_BRANCH}'::varchar AS branch,
         '${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}'::varchar AS boost;
 $BODY$
 LANGUAGE sql IMMUTABLE;
@@ -52,5 +52,5 @@ LANGUAGE sql IMMUTABLE;
 COMMENT ON FUNCTION pgr_version() IS
 'pgr_version
 - Documentation
-  - ${PGROUTING_DOC_LINK}/pgr_version.html
+  - ${PROJECT_DOC_LINK}/pgr_version.html
 ';

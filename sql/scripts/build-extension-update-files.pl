@@ -73,7 +73,7 @@ my $current = $version_3_2;
 
 sub Usage {
     die "Usage:\nFrom the cmake:
-    build-extension-update-files1 <new_version> <old_version> <signature_dir> <output_dir> <debug>";
+    build-extension-update-files <new_version> <old_version> <signature_dir> <output_dir> <debug>";
 }
 
 # Get information from command line
@@ -132,7 +132,7 @@ print "Building the updating files\n" if $DEBUG;
 my $curr_signature = read_and_parse_signature_file($curr_signature_file_name);
 my $old_signatures = read_and_parse_signature_file($old_signature_file_name);
 
-print "\ngenerating $old_version upgrade file\n" if $DEBUG;
+print "\nGenerating $old_version upgrade file to $new_version\n" if $DEBUG;
 generate_upgrade_script($curr_signature, $old_signatures);
 
 exit 0;
@@ -187,8 +187,6 @@ sub generate_upgrade_script {
     my $err = 0;
     my @types2remove = ();
     my @commands = ();
-
-    print "$new_version $old_version\n";
 
     #------------------------------------
     # analyze function signatures
@@ -293,17 +291,13 @@ sub get_current_sql {
     $contents  =~ s/\\echo Use "CREATE EXTENSION pgrouting" to load this file. \\quit//;
 
     my %seen = ();
-    print "HERE\n";
     while ($contents =~ /--v([\d+].[\d+])/g) {  # scalar context
         $seen{$1}++;
     }
     my @uniq = keys %seen;
-    print "@uniq\n";
 
     foreach my $minor (@uniq) {
         if  ($old_minor >= $minor) {
-            print "$old_minor >= $minor\n";
-
             $contents =~ s{
                 --v$minor
                 .*?

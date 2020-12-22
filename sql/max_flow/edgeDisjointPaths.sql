@@ -162,7 +162,7 @@ IS 'pgr_edgeDisjointPaths(One to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_edgeDisjointPaths.html
+   - ${PROJECT_DOC_LINK}/pgr_edgeDisjointPaths.html
 ';
 
 
@@ -175,7 +175,7 @@ IS 'pgr_edgeDisjointPaths(One to Many)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_edgeDisjointPaths.html
+   - ${PROJECT_DOC_LINK}/pgr_edgeDisjointPaths.html
 ';
 
 
@@ -188,7 +188,7 @@ IS 'pgr_edgeDisjointPaths(Many to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_edgeDisjointPaths.html
+   - ${PROJECT_DOC_LINK}/pgr_edgeDisjointPaths.html
 ';
 
 
@@ -201,7 +201,7 @@ IS 'pgr_edgeDisjointPaths(Many to Many)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_edgeDisjointPaths.html
+   - ${PROJECT_DOC_LINK}/pgr_edgeDisjointPaths.html
 ';
 
 COMMENT ON FUNCTION pgr_edgeDisjointPaths(TEXT, TEXT, BOOLEAN)

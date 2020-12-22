@@ -159,7 +159,7 @@ IS 'pgr_dagShortestPath(One to One)
     - From vertex identifier
     - To vertex identifier
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_dagShortestPath.html
+    - ${PROJECT_DOC_LINK}/pgr_dagShortestPath.html
 ';
 
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, BIGINT, ANYARRAY)
@@ -170,7 +170,7 @@ IS 'pgr_dagShortestPath(One to Many)
   - From vertex identifier
   - To ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_dagShortestPath.html
+  - ${PROJECT_DOC_LINK}/pgr_dagShortestPath.html
 ';
 
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, ANYARRAY, BIGINT)
@@ -181,7 +181,7 @@ IS 'pgr_dagShortestPath(Many to One)
   - From ARRAY[vertices identifiers]
   - To vertex identifier
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_dagShortestPath.html
+  - ${PROJECT_DOC_LINK}/pgr_dagShortestPath.html
 ';
 
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, ANYARRAY, ANYARRAY)
@@ -192,7 +192,7 @@ IS 'pgr_dagShortestPath(Many to Many)
   - From ARRAY[vertices identifiers]
   - To ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_dagShortestPath.html
+  - ${PROJECT_DOC_LINK}/pgr_dagShortestPath.html
 ';
 
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, TEXT)
