@@ -101,7 +101,7 @@ IS 'pgr_maxFlowMinCost_Cost (One to One)
   - From vertex identifier
   - To vertex identifier
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
+  - ${PROJECT_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
 ';
 
 COMMENT ON FUNCTION pgr_maxFlowMinCost_Cost(TEXT, BIGINT, ANYARRAY)
@@ -112,7 +112,7 @@ IS 'pgr_maxFlowMinCost_Cost(One to Many)
   - From vertex identifier
   - To ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
+  - ${PROJECT_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
   ';
 
 COMMENT ON FUNCTION pgr_maxFlowMinCost_Cost(TEXT, ANYARRAY, BIGINT)
@@ -123,7 +123,7 @@ IS 'pgr_maxFlowMinCost_Cost (Many to One)
   - From ARRAY[vertices identifiers]
   - To vertex identifier
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
+  - ${PROJECT_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
 ';
 
 COMMENT ON FUNCTION pgr_maxFlowMinCost_Cost(TEXT, ANYARRAY, ANYARRAY)
@@ -134,5 +134,5 @@ IS 'EXPERIMENTAL pgr_maxFlowMinCost_Cost (Many to Many)
   - From ARRAY[vertices identifiers]
   - To ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
+  - ${PROJECT_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
 ';

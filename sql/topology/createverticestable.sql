@@ -272,5 +272,5 @@ IS 'pgr_createVerticesTable
   - target := ''target''
   - rows_where := ''true''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_createVerticesTable.html
+  - ${PROJECT_DOC_LINK}/pgr_createVerticesTable.html
 ';

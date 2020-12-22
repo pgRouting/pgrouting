@@ -111,7 +111,7 @@ IS 'pgr_breadthFirstSearch(One to Depth)
   - Maximum Depth := 9223372036854775807
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_breadthFirstSearch.html
+  - ${PROJECT_DOC_LINK}/pgr_breadthFirstSearch.html
 ';
 
 COMMENT ON FUNCTION pgr_breadthFirstSearch(TEXT, ANYARRAY, BIGINT, BOOLEAN)
@@ -124,5 +124,5 @@ IS 'pgr_breadthFirstSearch(Many to Depth)
   - Maximum Depth := 9223372036854775807
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_breadthFirstSearch.html
+  - ${PROJECT_DOC_LINK}/pgr_breadthFirstSearch.html
 ';

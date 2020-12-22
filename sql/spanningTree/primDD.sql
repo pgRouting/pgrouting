@@ -157,7 +157,7 @@ IS 'pgr_primDD(Single Vertex)
     - From root vertex identifier
     - Distance
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_primDD.html
+    - ${PROJECT_DOC_LINK}/pgr_primDD.html
 ';
 
 
@@ -169,7 +169,7 @@ IS 'pgr_primDD(Multiple Vertices)
     - From ARRAY[root vertices identifiers]
     - Distance
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_primDD.html
+    - ${PROJECT_DOC_LINK}/pgr_primDD.html
 ';
 
 
@@ -181,7 +181,7 @@ IS 'pgr_primDD(Single Vertex)
     - From root vertex identifier
     - Distance
 - DocumentatiEdgeson:
-    - ${PGROUTING_DOC_LINK}/pgr_primDD.html
+    - ${PROJECT_DOC_LINK}/pgr_primDD.html
 ';
 
 
@@ -193,5 +193,5 @@ IS 'pgr_primDD(Multiple Vertices)
     - From ARRAY[root vertices identifiers]
     - Distance
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_primDD.html
+    - ${PROJECT_DOC_LINK}/pgr_primDD.html
 ';

@@ -72,5 +72,5 @@ IS'pgr_withPointsCostMatrix
     - directed := true
     - driving_side := ''b''
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_withPointsCostMatrix.html
+    - ${PROJECT_DOC_LINK}/pgr_withPointsCostMatrix.html
 ';
