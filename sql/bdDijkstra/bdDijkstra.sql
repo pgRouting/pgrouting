@@ -145,7 +145,7 @@ IS 'pgr_bdDijkstra(One to One)
 - Optional Parameters:
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+  - ${PROJECT_DOC_LINK}/pgr_bdDijkstra.html
 ';
 
 COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN)
@@ -157,7 +157,7 @@ IS 'pgr_bdDijkstra(One to Many)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+  - ${PROJECT_DOC_LINK}/pgr_bdDijkstra.html
 ';
 
 COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN)
@@ -169,7 +169,7 @@ IS 'pgr_bdDijkstra(Many to One)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+  - ${PROJECT_DOC_LINK}/pgr_bdDijkstra.html
 ';
 
 COMMENT ON FUNCTION pgr_bdDijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
@@ -181,5 +181,5 @@ IS 'pgr_bdDijkstra(Many to Many)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+  - ${PROJECT_DOC_LINK}/pgr_bdDijkstra.html
 ';

@@ -67,5 +67,5 @@ IS 'pgr_dijkstraVia
    - strict := false
    - U_turn_on_edge := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraVia.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstraVia.html
 ';

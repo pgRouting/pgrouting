@@ -142,7 +142,7 @@ IS 'pgr_dijkstra(One to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstra.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstra.html
 ';
 
 COMMENT ON FUNCTION pgr_dijkstra(TEXT, BIGINT, ANYARRAY, BOOLEAN)
@@ -154,7 +154,7 @@ IS 'pgr_dijkstra(One to Many)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstra.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstra.html
 ';
 
 COMMENT ON FUNCTION pgr_dijkstra(TEXT, ANYARRAY, BIGINT, BOOLEAN)
@@ -166,7 +166,7 @@ IS 'pgr_dijkstra(Many to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstra.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstra.html
 ';
 
 COMMENT ON FUNCTION pgr_dijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
@@ -178,5 +178,5 @@ IS 'pgr_dijkstra(Many to Many)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstra.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstra.html
 ';

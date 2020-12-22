@@ -184,5 +184,5 @@ IS 'pgr_trspViaEdges
 - Optional parameters
   - turn_restrict_sql := NULL
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_trsp.html
+  - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';

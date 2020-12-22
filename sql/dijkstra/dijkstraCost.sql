@@ -131,7 +131,7 @@ IS 'pgr_dijkstraCost(One to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstraCost.html
 ';
 
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, BIGINT, ANYARRAY, BOOLEAN)
@@ -143,7 +143,7 @@ IS 'pgr_dijkstraCost(One to Many)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstraCost.html
 ';
 
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, ANYARRAY, BIGINT, BOOLEAN)
@@ -155,7 +155,7 @@ IS 'pgr_dijkstraCost(Many to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstraCost.html
 ';
 
 COMMENT ON FUNCTION pgr_dijkstraCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
@@ -167,5 +167,5 @@ IS 'pgr_dijkstraCost(Many to Many)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstraCost.html
 ';

@@ -143,7 +143,7 @@ IS 'pgr_bdAstarCost(One to One)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdAstarCost.html
+  - ${PROJECT_DOC_LINK}/pgr_bdAstarCost.html
 ';
 
 
@@ -159,7 +159,7 @@ IS 'pgr_bdAstarCost(One to Many)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdAstarCost.html
+  - ${PROJECT_DOC_LINK}/pgr_bdAstarCost.html
 ';
 
 
@@ -175,7 +175,7 @@ IS 'pgr_bdAstarCost(Many to One)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdAstarCost.html
+  - ${PROJECT_DOC_LINK}/pgr_bdAstarCost.html
 ';
 
 
@@ -191,5 +191,5 @@ IS 'pgr_bdAstarCost(Many to Many)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdAstarCost.html
+  - ${PROJECT_DOC_LINK}/pgr_bdAstarCost.html
 ';
