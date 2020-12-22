@@ -74,5 +74,5 @@ IS 'pgr_turnRestrictedPath
     - stop on first := true
     - strict := false
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_turnRestrictedPath.html
+    - ${PROJECT_DOC_LINK}/pgr_turnRestrictedPath.html
 ';

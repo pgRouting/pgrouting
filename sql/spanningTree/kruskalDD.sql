@@ -163,7 +163,7 @@ IS 'pgr_kruskalDD(Single Vertex)
     - From root vertex identifier
     - Distance
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+    - ${PROJECT_DOC_LINK}/pgr_kruskalDD.html
 ';
 
 
@@ -175,7 +175,7 @@ IS 'pgr_kruskalDD(Multiple Vertices)
     - From ARRAY[root vertices identifiers]
     - Distance
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+    - ${PROJECT_DOC_LINK}/pgr_kruskalDD.html
 ';
 
 
@@ -187,7 +187,7 @@ IS 'pgr_kruskalDD(Single Vertex)
     - From root vertex identifier
     - Distance
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+    - ${PROJECT_DOC_LINK}/pgr_kruskalDD.html
 ';
 
 
@@ -199,5 +199,5 @@ IS 'pgr_kruskalDD(Multiple Vertices)
     - From ARRAY[root vertices identifiers]
     - Distance
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_kruskalDD.html
+    - ${PROJECT_DOC_LINK}/pgr_kruskalDD.html
 ';

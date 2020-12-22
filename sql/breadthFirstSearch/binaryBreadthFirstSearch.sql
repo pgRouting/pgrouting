@@ -158,7 +158,7 @@ IS 'pgr_binaryBreadthFirstSearch(One to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_binaryBreadthFirstSearch.html
+   - ${PROJECT_DOC_LINK}/pgr_binaryBreadthFirstSearch.html
 ';
 
 COMMENT ON FUNCTION pgr_binaryBreadthFirstSearch(TEXT, BIGINT, ANYARRAY, BOOLEAN)
@@ -170,7 +170,7 @@ IS 'pgr_binaryBreadthFirstSearch(One to Many)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_binaryBreadthFirstSearch.html
+   - ${PROJECT_DOC_LINK}/pgr_binaryBreadthFirstSearch.html
 ';
 
 COMMENT ON FUNCTION pgr_binaryBreadthFirstSearch(TEXT, ANYARRAY, BIGINT, BOOLEAN)
@@ -182,7 +182,7 @@ IS 'pgr_binaryBreadthFirstSearch(Many to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_binaryBreadthFirstSearch.html
+   - ${PROJECT_DOC_LINK}/pgr_binaryBreadthFirstSearch.html
 ';
 
 COMMENT ON FUNCTION pgr_binaryBreadthFirstSearch(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
@@ -194,7 +194,7 @@ IS 'pgr_binaryBreadthFirstSearch(Many to Many)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_binaryBreadthFirstSearch.html
+   - ${PROJECT_DOC_LINK}/pgr_binaryBreadthFirstSearch.html
 ';
 
 COMMENT ON FUNCTION pgr_binaryBreadthFirstSearch(TEXT, TEXT, BOOLEAN)

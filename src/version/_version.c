@@ -75,7 +75,7 @@ PGDLLEXPORT Datum _pgr_compiler_version(PG_FUNCTION_ARGS) {
 PG_FUNCTION_INFO_V1(_pgr_git_hash);
 PGDLLEXPORT Datum _pgr_git_hash(PG_FUNCTION_ARGS) {
     UNUSED(fcinfo);
-    char *ver = PGROUTING_GIT_HASH;
+    char *ver = PROJECT_GIT_HASH;
     text *result = cstring_to_text(ver);
     PG_RETURN_TEXT_P(result);
 }
@@ -83,7 +83,7 @@ PGDLLEXPORT Datum _pgr_git_hash(PG_FUNCTION_ARGS) {
 PG_FUNCTION_INFO_V1(_pgr_lib_version);
 PGDLLEXPORT Datum _pgr_lib_version(PG_FUNCTION_ARGS) {
     UNUSED(fcinfo);
-    char *ver = PGROUTING_LIB_NAME;
+    char *ver = PROJECT_LIB_NAME;
     text *result = cstring_to_text(ver);
     PG_RETURN_TEXT_P(result);
 }

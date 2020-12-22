@@ -369,5 +369,5 @@ IS 'pgr_extractVertices
         OR
   - Edges SQL with columns: [id,] geom
 - Documentation:
-- ${PGROUTING_DOC_LINK}/pgr_extractVertices.html
+- ${PROJECT_DOC_LINK}/pgr_extractVertices.html
 ';

@@ -92,7 +92,7 @@ IS 'pgr_withPointsDD(Single Vertex)
     - driving_side := b
     - details := false
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_withPointsDD.html
+    - ${PROJECT_DOC_LINK}/pgr_withPointsDD.html
 ';
 
 
@@ -110,5 +110,5 @@ IS 'pgr_withPointsDD(Multiple Vertices)
     - details := false
     - equicost := false
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_withPointsDD.html
+    - ${PROJECT_DOC_LINK}/pgr_withPointsDD.html
 ';

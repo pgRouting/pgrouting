@@ -158,7 +158,7 @@ IS 'pgr_edwardMoore(One to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_edwardMoore.html
+   - ${PROJECT_DOC_LINK}/pgr_edwardMoore.html
 ';
 
 COMMENT ON FUNCTION pgr_edwardMoore(TEXT, BIGINT, ANYARRAY, BOOLEAN)
@@ -170,7 +170,7 @@ IS 'pgr_edwardMoore(One to Many)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_edwardMoore.html
+   - ${PROJECT_DOC_LINK}/pgr_edwardMoore.html
 ';
 
 COMMENT ON FUNCTION pgr_edwardMoore(TEXT, ANYARRAY, BIGINT, BOOLEAN)
@@ -182,7 +182,7 @@ IS 'pgr_edwardMoore(Many to One)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_edwardMoore.html
+   - ${PROJECT_DOC_LINK}/pgr_edwardMoore.html
 ';
 
 COMMENT ON FUNCTION pgr_edwardMoore(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
@@ -194,7 +194,7 @@ IS 'pgr_edwardMoore(Many to Many)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_edwardMoore.html
+   - ${PROJECT_DOC_LINK}/pgr_edwardMoore.html
 ';
 
 COMMENT ON FUNCTION pgr_edwardMoore(TEXT, TEXT, BOOLEAN)

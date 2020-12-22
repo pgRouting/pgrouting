@@ -59,5 +59,5 @@ IS 'pgr_dijkstraCostMatrix
 - Optional Parameters
     - directed := true
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_dijkstraCostMatrix.html
+    - ${PROJECT_DOC_LINK}/pgr_dijkstraCostMatrix.html
 ';

@@ -144,7 +144,7 @@ IS 'pgr_pushRelabel(One to One)
   - From vertex identifier
   - To vertex identifier
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+  - ${PROJECT_DOC_LINK}/pgr_pushRelabel.html
 ';
 
 
@@ -156,7 +156,7 @@ IS 'pgr_pushRelabel(One to Many)
   - From vertex identifie
   - To ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+  - ${PROJECT_DOC_LINK}/pgr_pushRelabel.html
 ';
 
 
@@ -168,7 +168,7 @@ IS 'pgr_pushRelabel(Many to One)
   - From ARRAY[vertices identifiers]
   - To vertex identifie
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+  - ${PROJECT_DOC_LINK}/pgr_pushRelabel.html
 ';
 
 
@@ -180,7 +180,7 @@ IS 'pgr_pushRelabel(Many to Many)
   - From ARRAY[vertices identifiers]
   - To ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_pushRelabel.html
+  - ${PROJECT_DOC_LINK}/pgr_pushRelabel.html
 ';
 
 COMMENT ON FUNCTION pgr_pushRelabel(TEXT, TEXT)

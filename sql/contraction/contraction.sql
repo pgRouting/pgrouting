@@ -72,5 +72,5 @@ IS 'pgr_contraction
     - forbidden_vertices := ARRAY[]::BIGINT[]
     - directed := true
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_contraction.html
+    - ${PROJECT_DOC_LINK}/pgr_contraction.html
 ';

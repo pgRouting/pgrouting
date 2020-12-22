@@ -406,5 +406,5 @@ IS 'pgr_analyzeGraph
   - target := ''target''
   - rows_where := ''true''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_analyzeGraph.html
+  - ${PROJECT_DOC_LINK}/pgr_analyzeGraph.html
 ';

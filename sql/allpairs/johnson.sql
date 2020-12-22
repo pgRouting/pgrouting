@@ -54,5 +54,5 @@ IS 'pgr_johnson
 - Optional Parameters:
     - directed := true
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_johnson.html
+    - ${PROJECT_DOC_LINK}/pgr_johnson.html
 ';
