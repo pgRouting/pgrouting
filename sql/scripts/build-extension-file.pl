@@ -35,7 +35,7 @@ use strict;
 use Data::Dumper;
 use File::Find();
 
-my $DEBUG="@PGROUTING_DEBUG@";
+my $DEBUG="@PROJECT_DEBUG@";
 
 use vars qw/*name *dir *prune/;
 *name   = *File::Find::name;
@@ -49,17 +49,17 @@ sub Usage {
 }
 
 
-my $version = "@PGROUTING_VERSION@";
+my $version = "@PROJECT_VERSION@";
 my $working_directory = "@CMAKE_CURRENT_BINARY_DIR@/..";
-my $PGROUTING_SQL_FILES =  "@PGROUTING_SQL_FILES@";
-my @sql_file = split(/;/, $PGROUTING_SQL_FILES);
-my $out_file_name = "$working_directory/@PGROUTING_CURRENT_SQL_FILE@";
+my $PROJECT_SQL_FILES =  "@PROJECT_SQL_FILES@";
+my @sql_file = split(/;/, $PROJECT_SQL_FILES);
+my $out_file_name = "$working_directory/@PROJECT_EXTENSION_FILE@";
 
-print "Working_directory $working_directory\n"      if $DEBUG;
-print "out_file_name $out_file_name\n"      if $DEBUG;
+print "Working directory $working_directory\n"      if $DEBUG;
+print "Output file name $out_file_name\n"      if $DEBUG;
 
 open(OUT, ">", "$out_file_name")
-    || die "@PGROUTING_CURRENT_SQL_FILE@ ERROR: failed to create: '$out_file_name' : $!\n";
+    || die "@PROJECT_EXTENSION_FILE@ ERROR: failed to create: '$out_file_name' : $!\n";
 
 foreach my $f (@sql_file) {
     print "--  $f\n" if $DEBUG;

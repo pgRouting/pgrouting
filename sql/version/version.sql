@@ -28,12 +28,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE FUNCTION pgr_version()
 RETURNS TEXT AS
 $BODY$
-    SELECT '${PGROUTING_VERSION}'::varchar AS pgr_version;
+    SELECT '${PROJECT_VERSION}${PROJECT_VERSION_DEV}'::varchar AS pgr_version;
 $BODY$
 LANGUAGE sql IMMUTABLE;
 
 COMMENT ON FUNCTION pgr_version() IS
 'pgr_version
 - Documentation
-  - ${PGROUTING_DOC_LINK}/pgr_version.html
+  - ${PROJECT_DOC_LINK}/pgr_version.html
 ';

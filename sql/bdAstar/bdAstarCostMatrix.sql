@@ -66,5 +66,5 @@ IS 'pgr_bdAstarCostMatrix
     - factor := 1
     - epsilon := 1
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_bdAstarCostMatrix.html
+    - ${PROJECT_DOC_LINK}/pgr_bdAstarCostMatrix.html
 ';

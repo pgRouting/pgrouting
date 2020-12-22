@@ -163,7 +163,7 @@ IS 'pgr_aStar(One to One)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_aStar.html
+  - ${PROJECT_DOC_LINK}/pgr_aStar.html
 ';
 
 
@@ -179,7 +179,7 @@ IS 'pgr_aStar(One to Many)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_aStar.html
+  - ${PROJECT_DOC_LINK}/pgr_aStar.html
 ';
 
 
@@ -195,7 +195,7 @@ IS 'pgr_aStar(Many to One)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_aStar.html
+  - ${PROJECT_DOC_LINK}/pgr_aStar.html
 ';
 
 
@@ -211,5 +211,5 @@ IS 'pgr_aStar(Many to Many)
    - factor := 1
    - epsilon := 1
  - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_aStar.html
+   - ${PROJECT_DOC_LINK}/pgr_aStar.html
 ';

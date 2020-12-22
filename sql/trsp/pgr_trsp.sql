@@ -267,7 +267,7 @@ IS 'pgr_trsp
 - Optional parameters
     - restrictions_sql := NULL
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_trsp.html
+    - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';
 
 
@@ -284,5 +284,5 @@ IS 'pgr_trsp
 - Optional parameters
     - turn_restrict_sql := NULL
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_trsp.html
+    - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';

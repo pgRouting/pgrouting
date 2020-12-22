@@ -55,5 +55,5 @@ LANGUAGE sql IMMUTABLE;
 COMMENT ON FUNCTION pgr_full_version() IS
 'pgr_full_version
 - Documentation
-  - ${PGROUTING_DOC_LINK}/pgr_full_version.html
+  - ${PROJECT_DOC_LINK}/pgr_full_version.html
 ';

@@ -57,5 +57,5 @@ IS 'pgr_lineGraph
 - Optional Parameters:
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_lineGraph.html
+  - ${PROJECT_DOC_LINK}/pgr_lineGraph.html
 ';

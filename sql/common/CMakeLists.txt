@@ -15,6 +15,6 @@ foreach (f ${LOCAL_FILES})
     list(APPEND PACKAGE_SQL_FILES  ${CMAKE_CURRENT_BINARY_DIR}/${f})
 endforeach()
 
-set(PGROUTING_SQL_FILES ${PGROUTING_SQL_FILES} ${PACKAGE_SQL_FILES} PARENT_SCOPE)
+set(PROJECT_SQL_FILES ${PROJECT_SQL_FILES} ${PACKAGE_SQL_FILES} PARENT_SCOPE)
 
-configure_file(pgrouting.control pgrouting.control)
+configure_file(${PROJECT_NAME_LOWER}.control ${PROJECT_NAME_LOWER}.control)

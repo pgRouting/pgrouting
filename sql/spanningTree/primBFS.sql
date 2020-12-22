@@ -104,7 +104,7 @@ IS 'pgr_primBFS(Single Vertex)
 - Optional parameters
     - max_depth := 9223372036854775807
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_primBFS.html
+    - ${PROJECT_DOC_LINK}/pgr_primBFS.html
 ';
 
 
@@ -117,5 +117,5 @@ IS 'pgr_primBFS(multiple Vertices)
 - Optional parameters
     - max_depth := 9223372036854775807
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_primBFS.html
+    - ${PROJECT_DOC_LINK}/pgr_primBFS.html
 ';

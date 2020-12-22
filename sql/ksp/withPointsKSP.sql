@@ -64,5 +64,5 @@ IS 'pgr_withPointsKSP
     - driving side := b
     - details := false
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_withPointsKSP.html
+    - ${PROJECT_DOC_LINK}/pgr_withPointsKSP.html
 ';

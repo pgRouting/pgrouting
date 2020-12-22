@@ -154,7 +154,7 @@ IS 'pgr_bdAstar(One to One)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdAstar.html
+  - ${PROJECT_DOC_LINK}/pgr_bdAstar.html
 ';
 
 COMMENT ON FUNCTION pgr_bdAstar(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
@@ -169,7 +169,7 @@ IS 'pgr_bdAstar(One to Many)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdAstar.html
+  - ${PROJECT_DOC_LINK}/pgr_bdAstar.html
 ';
 
 
@@ -185,7 +185,7 @@ IS 'pgr_bdAstar(Many to One)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdAstar.html
+  - ${PROJECT_DOC_LINK}/pgr_bdAstar.html
 ';
 
 COMMENT ON FUNCTION pgr_bdAstar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
@@ -200,5 +200,5 @@ IS 'pgr_bdAstar(Many to Many)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdAstar.html
+  - ${PROJECT_DOC_LINK}/pgr_bdAstar.html
 ';

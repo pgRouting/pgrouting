@@ -103,7 +103,7 @@ IS 'pgr_primDFS(Single Vertex)
 - Optional parameters
     - max_depth := 9223372036854775807
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_primDFS.html
+    - ${PROJECT_DOC_LINK}/pgr_primDFS.html
 ';
 
 COMMENT ON FUNCTION pgr_primDFS(TEXT, ANYARRAY, BIGINT)
@@ -115,5 +115,5 @@ IS 'pgr_primDFS(Multiple Vertices)
 - Optional parameters
     - max_depth := 9223372036854775807
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_primDFS.html
+    - ${PROJECT_DOC_LINK}/pgr_primDFS.html
 ';
