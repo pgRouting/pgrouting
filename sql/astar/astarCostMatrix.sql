@@ -68,5 +68,5 @@ IS 'pgr_aStarCostMatrix
     - factor := 1
     - epsilon := 1
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_aStarCostMatrix.html
+    - ${PROJECT_DOC_LINK}/pgr_aStarCostMatrix.html
 ';

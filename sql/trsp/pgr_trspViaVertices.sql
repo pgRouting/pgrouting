@@ -103,5 +103,5 @@ IS 'pgr_trspViaVertices
 - Optional parameters
     - restrictions_sql := NULL
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_trsp.html
+    - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';

@@ -53,5 +53,5 @@ IS 'pgr_maxCardinalityMatch
 - Optional Parameters:
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_maxCardinalityMatch.html
+  - ${PROJECT_DOC_LINK}/pgr_maxCardinalityMatch.html
 ';

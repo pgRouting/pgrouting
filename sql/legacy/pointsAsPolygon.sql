@@ -69,5 +69,5 @@ IS 'pgr_pointsAsPolygon
 - Optional Parameters:
     - alpha := 0
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_pointsAsPolygon.html
+    - ${PROJECT_DOC_LINK}/pgr_pointsAsPolygon.html
 ';

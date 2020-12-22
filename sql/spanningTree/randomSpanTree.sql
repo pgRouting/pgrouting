@@ -76,5 +76,5 @@ IS 'pgr_randomSpanTree
 - Optional Parameters
   - directed: default := ''true''
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_randomSpanTree.html
+   - ${PROJECT_DOC_LINK}/pgr_randomSpanTree.html
 ';

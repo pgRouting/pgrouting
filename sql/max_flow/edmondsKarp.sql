@@ -123,7 +123,7 @@ IS 'pgr_edmondsKarp(One to One)
    - From vertex
    - to vertex
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+   - ${PROJECT_DOC_LINK}/pgr_edmondsKarp.html
 ';
 
 
@@ -135,7 +135,7 @@ IS 'pgr_edmondsKarp(One to Many)
   - From vertex
   - to ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+  - ${PROJECT_DOC_LINK}/pgr_edmondsKarp.html
 ';
 
 
@@ -147,7 +147,7 @@ IS 'pgr_edmondsKarp(Many to One)
   - From ARRAY[vertices identifiers]
   - to vertex
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+  - ${PROJECT_DOC_LINK}/pgr_edmondsKarp.html
 ';
 
 
@@ -159,5 +159,5 @@ IS 'pgr_edmondsKarp(Many to Many)
   - From ARRAY[vertices identifiers]
   - to ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_edmondsKarp.html
+  - ${PROJECT_DOC_LINK}/pgr_edmondsKarp.html
 ';
