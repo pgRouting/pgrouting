@@ -199,5 +199,5 @@ IS 'pgr_dijkstraCost(Combinations SQL)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraCost.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstraCost.html
 ';
