@@ -46,19 +46,6 @@ namespace pgrouting {
 namespace vrp {
 
 
-#if 0
-Solution
-Pgr_pickDeliver::optimize(const Solution solution) {
-    pgassert(false);
-    /*
-     * Optimize a solution
-     */
-    msg.log << "max_cycles: " << m_max_cycles << "\n";
-    Optimize opt_solution(solution, m_max_cycles);
-    msg.log << opt_solution.best_solution.tau("optimized");
-    return opt_solution.best_solution;
-}
-#endif
 
 void
 Pgr_pickDeliver::solve() {

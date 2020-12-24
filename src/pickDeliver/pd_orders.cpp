@@ -98,21 +98,6 @@ PD_Orders::build_orders(
 #endif
 }
 
-#if 0
-bool
-PD_Orders::is_valid(double speed) const {
-    for (const auto &o : m_orders) {
-        if (!o.is_valid(speed)) {
-            return false;
-        }
-        pgassert(o.pickup().is_pickup());
-        pgassert(o.delivery().is_delivery());
-        /* P -> D */
-        pgassert(o.delivery().is_compatible_IJ(o.pickup(), speed));
-    }
-    return true;
-}
-#endif
 
 Order&
 PD_Orders::operator[](size_t i) {

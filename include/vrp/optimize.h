@@ -48,23 +48,13 @@ class Optimize : public Solution {
       * Optimization by decreasing trucks
       */
      void decrease_truck();
-#if 0
-     void move_wait_time_based();
-     void move_duration_based();
-#endif
      void inter_swap(size_t times);
      Solution best_solution;
 
  private:
      bool decrease_truck(size_t);
-#if 0
-     void sort_for_move();
-#endif
      void sort_by_duration();
      void sort_by_size();
-#if 0
-     void sort_by_id();
-#endif
      void delete_empty_truck();
 
      bool swap_worse(Vehicle_pickDeliver &from, Vehicle_pickDeliver &to);
@@ -75,14 +65,6 @@ class Optimize : public Solution {
              Order order,
              Vehicle_pickDeliver &from_truck,
              Vehicle_pickDeliver &to_truck);
-#if 0
-     bool swap_order();
-     bool swap_order(
-             Order from_order,
-             Vehicle_pickDeliver &from_truck,
-             Order to_order,
-             Vehicle_pickDeliver &to_truck);
-#endif
      void save_if_best();
 
  private:

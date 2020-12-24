@@ -66,9 +66,6 @@ class PD_Orders : public PD_problem {
      size_t find_best_I(Identifiers<size_t> &within_this_set) const;
 
 
-#if 0
-     bool is_valid(double speed) const;
-#endif
 
      /*! @name std container functions
       * functions with same "meaning" as an std container
