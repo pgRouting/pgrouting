@@ -69,13 +69,6 @@ Fleet::get_truck() {
     return m_trucks[idx];
 }
 
-#if 0
-void
-Fleet::release_truck(size_t id) {
-    m_used -= id;
-    m_un_used += id;
-}
-#endif
 
 Vehicle_pickDeliver
 Fleet::get_truck(size_t order) {
@@ -115,24 +108,6 @@ Fleet::get_truck(size_t order) {
 }
 
 
-#if 0
-Vehicle_pickDeliver
-Fleet::get_truck(const Order order) {
-    auto id = m_trucks.front().idx();
-    for (auto truck : m_trucks) {
-        if (truck.feasable_orders().has(order.idx())) {
-            id = truck.idx();
-            msg.log << "id" << id
-                << "size" << m_trucks.size();
-            pgassertwm(id < m_trucks.size(), msg.get_log());
-            m_used += id;
-            if (m_un_used.size() > 1) m_un_used -= id;
-            break;
-        }
-    }
-    return m_trucks[id];
-}
-#endif
 
 
 void

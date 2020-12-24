@@ -106,10 +106,6 @@ class Vehicle_node: public Tw_node {
 
      ///@}
 
-#if 0
-     /*! \brief True when \b arrival_time + \b delta_time generates TWV.*/
-     bool deltaGeneratesTWV(double delta_time) const;
-#endif
 
      /** @name State */
      ///@ {
@@ -144,17 +140,6 @@ class Vehicle_node: public Tw_node {
      void evaluate(const Vehicle_node &pred, double cargoLimit, double speed);
      ///@}
 
-#if 0
-     /** @name Document*/
-     ///@ {
-
-     /*! \brief returns the arrval time at \b this visited after \b other */
-     double arrival_i_arrives_j(
-             const Vehicle_node &other,
-             double speed) const;
-
-     ///@}
-#endif
 
 
 

@@ -52,13 +52,6 @@ Tw_node::arrival_j_opens_i(const Tw_node &I, double speed) const {
     return I.opens() + I.service_time() + I.travel_time_to(*this, speed);
 }
 
-#if 0
-double
-Tw_node::arrival_j_closes_i(const Tw_node &I, double speed) const {
-    if (m_type == kStart) return  (std::numeric_limits<double>::max)();
-    return I.closes() + I.service_time() + I.travel_time_to(*this, speed);
-}
-#endif
 
 
 
@@ -77,39 +70,6 @@ Tw_node::is_compatible_IJ(const Tw_node &I, double speed) const {
     return !is_late_arrival(arrival_j_opens_i(I, speed));
 }
 
-#if 0
-bool
-Tw_node::is_partially_compatible_IJ(const Tw_node &I, double speed) const {
-    return
-        is_compatible_IJ(I, speed)
-        && !is_early_arrival(arrival_j_opens_i(I, speed))
-        && is_late_arrival(arrival_j_closes_i(I, speed));
-}
-
-bool
-Tw_node::is_tight_compatible_IJ(const Tw_node &I, double speed) const {
-    return
-        is_compatible_IJ(I, speed)
-        && !is_early_arrival(arrival_j_opens_i(I, speed))
-        && !is_late_arrival(arrival_j_closes_i(I, speed));
-}
-
-bool
-Tw_node::is_partially_waitTime_compatible_IJ(
-        const Tw_node &I,
-        double speed) const {
-    return
-        is_compatible_IJ(I, speed)
-        && is_early_arrival(arrival_j_opens_i(I, speed));
-}
-
-bool
-Tw_node::is_waitTime_compatible_IJ(const Tw_node &I, double speed) const {
-    return
-        is_compatible_IJ(I, speed)
-        && is_early_arrival(arrival_j_opens_i(I, speed));
-}
-#endif
 
 
 std::string Tw_node::type_str() const {
@@ -160,15 +120,6 @@ Tw_node::is_dump() const {
 }
 
 
-#if 0
-bool
-Tw_node::is_load() const {
-    return m_type == kLoad
-        && (opens() < closes())
-        && (service_time() >= 0)
-        && (demand() >= 0);
-}
-#endif
 
 
 bool
@@ -195,41 +146,6 @@ Tw_node::operator ==(const Tw_node &other) const {
 
 
 
-#if 0
-bool Tw_node::is_valid() const {
-    switch (type()) {
-        case kStart:
-            return is_start();
-            break;
-
-        case kEnd:
-            return is_end();
-            break;
-
-        case kDump:
-            return is_dump();
-            break;
-
-        case kDelivery:
-            return is_delivery();
-            break;
-
-        case kPickup:
-            return is_pickup();
-            break;
-
-        case kLoad:
-            return is_load();
-            break;
-
-        default:
-            return false;
-            break;
-    }
-
-    return false;
-}
-#endif
 
 
 Tw_node::Tw_node(

@@ -62,10 +62,6 @@ class Solution : public PD_problem {
      Solution();
 
 
-#if 0
-     /* @brief move constructor */
-     Solution(Solution &&sol) = default;
-#endif
 
      /* @brief copy constructor */
      Solution(const Solution &sol) :
@@ -83,9 +79,6 @@ class Solution : public PD_problem {
          return *this;
      };
 
-#if 0
-     void sort_by_id();
-#endif
 
      Initials_code get_kind() const;
 
@@ -103,9 +96,6 @@ class Solution : public PD_problem {
      double total_service_time() const;
      int twvTot() const;
      int cvTot() const;
-#if 0
-     size_t fleet_size() const {return fleet.size();}
-#endif
 
      /*
       * Cost in terms of a tuple

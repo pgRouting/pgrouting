@@ -43,40 +43,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
-#if 0
-Order
-Vehicle_pickDeliver::get_worse_order(
-        Identifiers<size_t> orders) const {
-    invariant();
-    pgassert(!empty());
-
-    // auto orders(of_this_subset);
-    auto worse_order(m_orders[*orders.begin()]);
-    auto delta_duration((std::numeric_limits<double>::max)());
-    auto curr_duration(duration());
-    while (!orders.empty()) {
-        auto truck(*this);
-        auto order = m_orders[*orders.begin()];
-        pgassert(truck.has_order(order));
-        orders -= order.idx();
-        truck.erase(order);
-        auto delta = truck.duration() - curr_duration;
-        if (delta < delta_duration) {
-            worse_order = order;
-            delta_duration = delta;
-        }
-    }
-    return worse_order;
-}
-
-
-Order
-Vehicle_pickDeliver::get_first_order() const {
-    invariant();
-    pgassert(!empty());
-    return m_orders[m_path[1].idx()];
-}
-#endif
 
 
 Vehicle_pickDeliver::Vehicle_pickDeliver(
@@ -238,9 +204,6 @@ Vehicle_pickDeliver::push_back(const Order &order) {
     evaluate(m_path.size() - 3);
 
     pgassert(has_order(order));
-#if 0
-    pgassert(!has_cv());
-#endif
     invariant();
 }
 
@@ -256,9 +219,6 @@ Vehicle_pickDeliver::push_front(const Order &order) {
     evaluate(1);
 
     pgassert(has_order(order));
-#if 0
-    pgassert(!has_cv());
-#endif
     invariant();
 }
 
@@ -357,60 +317,6 @@ Vehicle_pickDeliver::erase(const Order &order) {
 
 
 
-#if 0
-size_t
-Vehicle_pickDeliver::pop_back() {
-    invariant();
-    pgassert(!empty());
-
-    auto pick_itr = m_path.rbegin();
-    while (pick_itr != m_path.rend() &&  !pick_itr->is_pickup()) {
-        ++pick_itr;
-    }
-
-    pgassert(pick_itr->is_pickup());
-
-    auto deleted_pick_idx = pick_itr->idx();
-
-    for (const auto &o : m_orders) {
-        if (o.pickup().idx() == deleted_pick_idx) {
-            erase(o);
-            invariant();
-            return o.idx();
-        }
-    }
-    pgassert(false);
-    return 0;
-}
-
-
-
-size_t
-Vehicle_pickDeliver::pop_front() {
-    invariant();
-    pgassert(!empty());
-
-    auto pick_itr = m_path.begin();
-    while (pick_itr != m_path.end() &&  !pick_itr->is_pickup()) {
-        ++pick_itr;
-    }
-
-    pgassert(pick_itr->is_pickup());
-
-    auto deleted_pick_idx = pick_itr->idx();
-
-    for (const auto &o : m_orders) {
-        if (o.pickup().idx() == deleted_pick_idx) {
-            erase(o);
-            invariant();
-            return o.idx();
-        }
-    }
-
-    pgassert(false);
-    return 0;
-}
-#endif
 
 void
 Vehicle_pickDeliver::set_compatibles(const PD_Orders &orders) {
