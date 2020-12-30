@@ -83,7 +83,7 @@ b2.bat
 exit
 ./bjam toolset=gcc address-model=64 define=BOOST_USE_WINDOWS_H link=static threading=multi --with-thread --prefix=/usr/local install
 
-# ------------------------- miscelaneous ----------------------------
+# ------------------------- miscellaneous ----------------------------
 
 # you can regenerate trsp-test-image.png with the command
 shp2img -m trsp-test-image.map -o trsp-test-image.png -i agg_qn
