@@ -37,4 +37,5 @@ jobs:
       - name: Test
         run: |
           pg_ctl -D /usr/local/var/postgres start
+          createuser -s postgres
           bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release
