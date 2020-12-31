@@ -17,7 +17,6 @@ jobs:
     strategy:
       matrix:
         brewpsqls: [postgresql@9.5, postgresql@9.6, postgresql@10, postgresql@11, postgresql@12, postgresql]
-        postgis: [postgis]
         os: [macos-latest]
 
     steps:
@@ -26,7 +25,7 @@ jobs:
       
       - name: install deps
         run: |
-          brew install ${{ matrix.brewpsqls }} boost
+          brew install ${{ matrix.brewpsqls }} postgis boost
 
       - name: Configure
         run: |
@@ -42,4 +41,5 @@ jobs:
 
       - name: Test
         run: |
+          brew services start ${{ matrix.brewpsqls }}
           bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release
