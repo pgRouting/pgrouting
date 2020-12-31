@@ -41,5 +41,5 @@ jobs:
 
       - name: Test
         run: |
-          pg_ctl -D ${{ matrix.brewpsqls }} start &
+          pg_ctl -D /usr/local/var/${{ matrix.brewpsqls }} start
           bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release
