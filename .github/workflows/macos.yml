@@ -18,7 +18,6 @@ jobs:
       matrix:
         brewpsqls: [postgresql@9.5, postgresql@9.6, postgresql@10, postgresql@11, postgresql@12, postgresql]
         postgis: [postgis]
-        boost: [bitshares/boost160/boost@1.60, boost]
         os: [macos-latest]
 
     steps:
@@ -27,8 +26,7 @@ jobs:
       
       - name: install deps
         run: |
-          brew tap bitshares/boost160
-          brew install --force ${{ matrix.brewpsqls }} ${{ matrix.boost }}
+          brew install ${{ matrix.brewpsqls }} boost
 
       - name: Configure
         run: |
