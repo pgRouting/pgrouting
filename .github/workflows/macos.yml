@@ -44,6 +44,7 @@ jobs:
 
       - name: Test
         run: |
+          export PATH=/usr/local/Cellar/perl/5.32.0/bin:$PATH
           pg_ctl -D /usr/local/var/postgres start
           createuser -s postgres
           createdb ___pgr___test___
