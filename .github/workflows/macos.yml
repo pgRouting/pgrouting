@@ -14,18 +14,13 @@ jobs:
     name: Build
     runs-on: ${{ matrix.os }}
 
-    strategy:
-      matrix:
-        brewpsqls: [postgresql@9.5, postgresql@9.6, postgresql@10, postgresql@11, postgresql@12, postgres]
-        os: [macos-latest]
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       
       - name: install deps
         run: |
-          brew install ${{ matrix.brewpsqls }} postgis boost
+          brew install postgresql postgis boost
 
       - name: Configure
         run: |
@@ -41,5 +36,5 @@ jobs:
 
       - name: Test
         run: |
-          pg_ctl -D /usr/local/var/${{ matrix.brewpsqls }} start
+          pg_ctl -D /usr/local/var/postgres start
           bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release
