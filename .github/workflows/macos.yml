@@ -34,6 +34,13 @@ jobs:
           make -j
           sudo make install
 
+      - name: Install pgTAP
+        run: |
+          git clone https://github.com/theory/pgtap.git
+          cd pgtap
+          make -j
+          sudo make install
+
       - name: Test
         run: |
           pg_ctl -D /usr/local/var/postgres start
