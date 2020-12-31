@@ -36,8 +36,8 @@ jobs:
 
       - name: Install pgTAP
         run: |
-          git clone https://github.com/theory/pgtap.git
-          cd pgtap
+          git clone https://github.com/theory/pgtap.git pgTapExtension
+          cd pgTapExtension
           make -j
           sudo make install
 
