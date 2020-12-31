@@ -38,7 +38,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          make
+          make -j
           sudo make install
 
       - name: Test
