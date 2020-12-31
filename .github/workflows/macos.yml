@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        brewpsqls: [postgres@9.5, postgres@9.6, postgres@10, postgres@11, postgres@12, postgres]
+        brewpsqls: [postgresql@9.5, postgresql@9.6, postgresql@10, postgresql@11, postgresql@12, postgresql]
         postgis: [postgis]
         boost: [boost@1.57, boost@1.60, boost]
         os: [macos-latest]
