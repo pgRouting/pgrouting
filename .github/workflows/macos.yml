@@ -27,7 +27,7 @@ jobs:
       
       - name: install deps
         run: |
-          brew install ${{ matrix.brewpsqls }} ${{ matrix.boost }}
+          brew install --force ${{ matrix.brewpsqls }} ${{ matrix.boost }}
 
       - name: Configure
         run: |
