@@ -5,8 +5,8 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
-# Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-14 13:58-0600\n"
 "PO-Revision-Date: 2020-11-04 18:31+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
+"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -312,7 +312,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/flow-family.rst:103
 msgid "Edges query as described in `Inner Queries`_."
-msgstr "Consulta de bordes como se describe en `Consultas internas`_."
+msgstr "Consulta de bordes como se describe en `Consultas Internas`_."
 
 #: ../../build/doc/flow-family.rst:104
 msgid "**Combinations SQL**"
@@ -320,7 +320,8 @@ msgstr "**Combinaciones SQL**"
 
 #: ../../build/doc/flow-family.rst:104
 msgid "Combinations query as described in `Inner Queries`_."
-msgstr "Consultas de combinaciones como se describe en 'Consultas internas'_."
+msgstr ""
+"Consultas de combinaciones como se describe en las `Consultas Internas`_."
 
 #: ../../build/doc/flow-family.rst:105 ../../build/doc/flow-family.rst:126
 #: ../../build/doc/flow-family.rst:154 ../../build/doc/flow-family.rst:216

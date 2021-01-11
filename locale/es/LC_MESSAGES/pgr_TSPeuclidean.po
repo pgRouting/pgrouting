@@ -4,23 +4,23 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2020
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
-# MarPetra <mvergaratrejo@gmail.com>, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2020-11-04 13:06-0600\n"
 "PO-Revision-Date: 2020-11-04 18:27+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -145,7 +145,7 @@ msgstr "**Coordenadas SQL**"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:77
 msgid "an SQL query, described in the `Inner query`_"
-msgstr "una consulta SQL, descrita en `Inner query`_"
+msgstr "una consulta SQL, descrita en la `Consulta interna`_"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:81
 msgid "Optional Parameters"
@@ -380,7 +380,7 @@ msgstr "Secuencia de filas."
 
 #: ../../build/doc/TSP-family.rst:9
 msgid "**node**"
-msgstr "**nodo**"
+msgstr "**node**"
 
 #: ../../build/doc/TSP-family.rst:9
 msgid "Identifier of the node/coordinate/point."
@@ -388,7 +388,7 @@ msgstr "Identificador del nodo/coordenada/punto."
 
 #: ../../build/doc/TSP-family.rst:10
 msgid "**cost**"
-msgstr "**costo**"
+msgstr "**cost**"
 
 #: ../../build/doc/TSP-family.rst:11
 msgid ""
@@ -436,7 +436,7 @@ msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:129
 msgid "See Also"
-msgstr "Véase también"
+msgstr "Ver también"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:131
 msgid ":doc:`TSP-family`"
@@ -444,37 +444,36 @@ msgstr ":doc:`TSP-family`"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:132
 msgid ""
-"`Simulated annaeling algorithm for beginners <https://www.theprojectspot.com"
-"/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__"
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
-"`Algoritmo de Recocido Simulado para principiantes "
-"<https://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-"
-"for-beginners/6>`__"
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:133
 msgid ""
-"`Wikipedia: Traveling Salesman Problem "
-"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
-msgstr ""
-"`Wikipedia: Traveling Salesman Problem "
-"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
-
-#: ../../build/doc/pgr_TSPeuclidean.rst:134
-msgid ""
 "`Wikipedia: Simulated annealing "
 "<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
 msgstr ""
 "`Wikipedia: Simulated annealing "
 "<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:137
+#: ../../build/doc/pgr_TSPeuclidean.rst:136
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:138
+#: ../../build/doc/pgr_TSPeuclidean.rst:137
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:139
+#: ../../build/doc/pgr_TSPeuclidean.rst:138
 msgid ":ref:`search`"
-msgstr ":ref:`búsqueda <search>`"
+msgstr ":ref:`search`"
+
+#~ msgid ""
+#~ "`Simulated annaeling algorithm for beginners <https://www.theprojectspot.com"
+#~ "/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`__"
+#~ msgstr ""
+#~ "`Algoritmo de Recocido Simulado para principiantes "
+#~ "<https://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-"
+#~ "for-beginners/6>`__"

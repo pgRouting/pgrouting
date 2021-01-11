@@ -156,7 +156,7 @@ msgstr "**Las características principales son:**"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:45
 msgid "The implementation is applicable only for **undirected** graphs."
-msgstr "La implementación solo es aplicable a los gafos **no dirigidos**."
+msgstr "La implementación solo es aplicable a los grafos **no dirigidos**."
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:46
 msgid ""
@@ -333,12 +333,12 @@ msgstr "-1"
 
 #: ../../build/doc/traversal-family.rst:12
 msgid "When positive: edge `(target, source)` exist on the graph."
-msgstr "Cuando es positivo: el borde `(origen, destino)` existe en el grafo."
+msgstr "Cuando es positivo: la arista `(origen, destino)` existe en el grafo."
 
 #: ../../build/doc/traversal-family.rst:13
 msgid "When negative: edge `(target, source)` does not exist on the graph."
 msgstr ""
-"Cuando es negativo: el borde `(destino, origen)` no existe en el grafo."
+"Cuando es negativo: la arista `(destino, origen)` no existe en el grafo."
 
 #: ../../build/doc/traversal-family.rst:17
 msgid "Where:"

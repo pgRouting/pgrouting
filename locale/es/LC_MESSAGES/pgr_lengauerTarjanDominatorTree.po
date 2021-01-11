@@ -70,7 +70,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma o declaración de funciones podría cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
@@ -171,7 +171,7 @@ msgstr "El algoritmo devuelve *idom* de cada vértice."
 msgid ""
 "If the *root vertex* not present in the graph then it returns empty set."
 msgstr ""
-"Si el vértice *raíz* no está presente en el grafo, devuelve un conjunto "
+"Si el *vértice raíz* no está presente en el grafo, devuelve un conjunto "
 "vacío."
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:49
@@ -192,7 +192,7 @@ msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:67
 msgid "The lengauerTarjanDominatorTree with root vertex :math:`1`"
-msgstr "El lengauerTarjanDominatorTree con vértice raíz :math:'1'"
+msgstr "El lengauerTarjanDominatorTree con vértice raíz :math:`1`"
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:74
 msgid "Parameters"
@@ -361,7 +361,7 @@ msgstr "**vertex_id**"
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:100
 msgid "Identifier of vertex ."
-msgstr "Identificador de vértice ."
+msgstr "Identificador de vértice."
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:101
 msgid "**idom**"
