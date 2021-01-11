@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2020-11-04 18:31+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
+"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,8 +42,8 @@ msgid ""
 "/contraction-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
 "/contraction-family.html>`__"
 msgstr ""
-"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
-"/contraction-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es"
+"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/en"
+"/contraction-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
 "/contraction-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
 "/contraction-family.html>`__"
 
@@ -766,7 +766,7 @@ msgstr ""
 
 #: ../../build/doc/contraction-family.rst:654
 msgid "See Also"
-msgstr "Véase también"
+msgstr "Ver también"
 
 #: ../../build/doc/contraction-family.rst:656
 msgid ""
@@ -792,8 +792,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/contraction-family.rst:662
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ":ref:`genindex`"
 
 #: ../../build/doc/contraction-family.rst:663
 msgid ":ref:`search`"
-msgstr ":ref:`búsqueda <search>`"
+msgstr ":ref:`search`"

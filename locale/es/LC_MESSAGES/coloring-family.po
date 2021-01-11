@@ -26,7 +26,7 @@ msgstr ""
 
 #: ../../build/doc/coloring-family.rst:11
 msgid "Coloring - Family of functions (Experimental)"
-msgstr "Colorear - Familia de funciones (Experimental)"
+msgstr "Colorante - Familia de funciones (Experimental)"
 
 #: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"

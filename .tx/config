@@ -157,7 +157,7 @@ file_filter = locale/<lang>/LC_MESSAGES/index.po
 source_file = locale/pot/index.pot
 source_lang = en
 
-[pgrouting.locale-en-lc-messages-pgr_full-version-po--develop]
+[pgrouting.locale-en-lc-messages-pgr-full-version-po--develop]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_full_version.po
 source_file = locale/pot/pgr_full_version.pot
 source_lang = en
@@ -212,7 +212,7 @@ file_filter = locale/<lang>/LC_MESSAGES/pgr_topologicalSort.po
 source_file = locale/pot/pgr_topologicalSort.pot
 source_lang = en
 
-[pgrouting.locale-en-lc-messages-pgr_maxflowmincost-cost-po--develop]
+[pgrouting.locale-en-lc-messages-pgr-maxflowmincost-cost-po--develop]
 file_filter = locale/<lang>/LC_MESSAGES/pgr_maxFlowMinCost_Cost.po
 source_file = locale/pot/pgr_maxFlowMinCost_Cost.pot
 source_lang = en

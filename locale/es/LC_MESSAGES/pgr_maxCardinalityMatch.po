@@ -4,9 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2020
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-22 08:19-0500\n"
 "PO-Revision-Date: 2020-11-04 18:28+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
+"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:18
 msgid "Boost Graph Inside"
-msgstr "Boost Graph Interno"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:21
 msgid "Availability"
@@ -355,7 +355,7 @@ msgstr "Identificador del segundo punto final de la arista."
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:132
 msgid "See Also"
-msgstr "Véase también"
+msgstr "Ver también"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:134
 msgid ":doc:`flow-family`"
@@ -380,8 +380,8 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:141
 msgid ":ref:`genindex`"
-msgstr ":ref:`Índice <genindex>`"
+msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:142
 msgid ":ref:`search`"
-msgstr ":ref:`búsqueda <search>`"
+msgstr ":ref:`search`"
