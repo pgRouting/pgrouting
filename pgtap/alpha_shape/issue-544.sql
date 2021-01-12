@@ -46,15 +46,22 @@ SELECT * FROM pgr_alphaShape((SELECT ST_Collect(ST_MakePoint(x,y)) FROM nodes wh
 PREPARE q3 AS
 SELECT * FROM pgr_alphaShape((SELECT ST_Collect(ST_MakePoint(x,y)) FROM nodes));
 
-SELECT throws_ok('q1',
- 'XX000','Less than 3 vertices. pgr_alphaShape needs at least 3 vertices.',
- 'SHOULD THROW, because there is only one point');
+SELECT CASE WHEN _pgr_versionless((SELECT boost from pgr_full_version()), '1.54.0')
+    THEN skip('pgr_alphaSahpe not supported when compiled with Boost version < 1.54.0', 3 )
+    ELSE collect_tap(
 
-SELECT throws_ok('q2',
- 'XX000','Less than 3 vertices. pgr_alphaShape needs at least 3 vertices.',
- 'SHOULD THROW, because there are less than 3 distinc points');
+        throws_ok('q1',
+            'XX000','Less than 3 vertices. pgr_alphaShape needs at least 3 vertices.',
+            'SHOULD THROW, because there is only one point'),
 
-SELECT lives_ok('q3', 'SHOULD LIVE because ater eliminating duplicates there are enough points to work with');
+        throws_ok('q2',
+            'XX000','Less than 3 vertices. pgr_alphaShape needs at least 3 vertices.',
+            'SHOULD THROW, because there are less than 3 distinc points'),
+
+        lives_ok('q3', 'SHOULD LIVE because ater eliminating duplicates there are enough points to work with')
+
+        )
+    END;
 
 
 -- Finish the tests and clean up.

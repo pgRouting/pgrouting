@@ -11,8 +11,13 @@ SELECT ST_area(pgr_alphaShape) FROM pgr_alphaShape((SELECT ST_Collect(the_geom) 
 PREPARE q2 AS
 SELECT ST_area(pgr_alphaShape((SELECT ST_Collect(the_geom) FROM edge_table), 1.582));
 
-SELECT set_eq('q1', $$SELECT 11.75$$, 'Shall have the expected area');
-SELECT set_eq('q1', 'q2', '1.582 shall be the best spoon raidus');
+SELECT CASE WHEN _pgr_versionless((SELECT boost from pgr_full_version()), '1.54.0')
+    THEN skip('pgr_alphaSahpe not supported when compiled with Boost version < 1.54.0', 2)
+    ELSE collect_tap(
+        set_eq('q1', $$SELECT 11.75$$, 'Shall have the expected area'),
+        set_eq('q1', 'q2', '1.582 shall be the best spoon raidus')
+        )
+    END;
 
 SELECT alphaShape_tester('edge_table', 'the_geom', 0, false, 11.75, 9);
 SELECT alphaShape_tester('edge_table', 'the_geom', 1.582, false, 11.75, 9);
