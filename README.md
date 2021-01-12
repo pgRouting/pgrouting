@@ -6,8 +6,8 @@
 
 ### Branches
 
-* The *master* branch has the latest release
-* The *develop* branch has the development of the next release
+* The *master* branch has the development of the next micro release
+* The *develop* branch has the development of the next minor/mayor release
 
 For the complete list of releases go to:
 https://github.com/pgRouting/pgrouting/releases
@@ -15,8 +15,8 @@ https://github.com/pgRouting/pgrouting/releases
 
 ## LINKS
 
-* http://pgrouting.org/
-* http://docs.pgrouting.org/
+* https://pgrouting.org/
+* https://docs.pgrouting.org/
 * https://github.com/pgRouting/pgrouting
 
 ## STATUS
@@ -50,8 +50,9 @@ Building requirements
 --------------------
 * Perl
 * C and C++ compilers
-  * GNU >= 4.8
-  * MSVC >= 18.0
+  * Compiling with Boost 1.53 does not have geometry support therefore pgRouting's `pgr_alphaShape` is not supported
+  * Compiling with Boost 1.53 up to Boost 1.75 requires C++ Compiler with C++03 or C++11 standard support
+  * Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support
 * Postgresql >= 9.4
 * The Boost Graph Library (BGL) >= 1.53
 * CMake >= 3.2
@@ -87,15 +88,14 @@ Build with documentation (requires [Sphinx](http://sphinx-doc.org/))
 
 	cmake -DWITH_DOC=ON ..
 
-Postgresql 9.3+
+Postgresql
 
 	createdb mydatabase
-	psql mydatabase -c "CREATE EXTENSION postgis"
-	psql mydatabase -c "CREATE EXTENSION pgrouting"
+	psql mydatabase -c "CREATE EXTENSION pgrouting CASCADE"
 
 ## USAGE
 
-See online documentation: http://docs.pgrouting.org/dev/en/index.html
+See online documentation: http://docs.pgrouting.org/latest/en/index.html
 
 ## LICENSE
 
