@@ -35,10 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_types/geom_text_rt.h"
 
+#if Boost_VERSION_MACRO >= 105400
 #include "drivers/alpha_shape/alphaShape_driver.h"
+#endif
 
 PGDLLEXPORT Datum _pgr_alphashape(PG_FUNCTION_ARGS);
 
+#if Boost_VERSION_MACRO >= 105400
 static void process(
         char* edges_sql,
         double alpha,
@@ -99,6 +102,7 @@ static void process(
     if (edgesArr) pfree(edgesArr);
     pgr_SPI_finish();
 }
+#endif
 
 PG_FUNCTION_INFO_V1(_pgr_alphashape);
 
@@ -119,11 +123,15 @@ Datum _pgr_alphashape(PG_FUNCTION_ARGS) {
 
         /******************************************************************/
 
+#if Boost_VERSION_MACRO >= 105400
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_FLOAT8(1),
                 &result_tuples,
                 &result_count);
+#else
+        elog(ERROR, "Please compile with Boost >= 1.54 to have pgr_alphaShape.");
+#endif
 
         /******************************************************************/
 
