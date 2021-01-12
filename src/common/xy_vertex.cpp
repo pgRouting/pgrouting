@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "cpp_common/xy_vertex.h"
-#if BOOST_Geometry_VERSION_OK
+#if Boost_VERSION_MACRO >= 105600
 #include <boost/geometry/io/wkt/write.hpp>
 #else
 #include <boost/bgeometry/io/wkt/write.hpp>
