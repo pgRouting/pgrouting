@@ -9,6 +9,10 @@ q TEXT;
 separator TEXT;
 BEGIN
     FOR i IN 0..array_length(params, 1) LOOP
+        IF _pgr_versionless((SELECT boost from pgr_full_version()), '1.54.0') AND func='pgr_alphashape' THEN
+            RETURN QUERY SELECT * FROM  skip('pgr_alphaSahpe not supported when compiled with Boost version < 1.54.0', 2);
+            CONTINUE;
+        END IF;
         separator = ' ';
         mp := params;
         IF i != 0 THEN

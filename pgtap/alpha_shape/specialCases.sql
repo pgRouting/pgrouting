@@ -16,7 +16,6 @@ SELECT ST_Area(pgr_alphaShape(
     SELECT  ST_Collect(the_geom) FROM data)
 ));
 
-SELECT set_eq('q1', 'q2');
 
 -- Ordering does not affect the result
 PREPARE q3 AS
@@ -24,6 +23,12 @@ SELECT ST_Area(pgr_alphaShape(
     (SELECT ST_Collect(the_geom) FROM edge_table)
 ));
 
-SELECT set_eq('q1', 'q3');
+SELECT CASE WHEN _pgr_versionless((SELECT boost from pgr_full_version()), '1.54.0')
+    THEN skip('pgr_alphaSahpe not supported when compiled with Boost version < 1.54.0', 2)
+    ELSE collect_tap(
+        set_eq('q1', 'q3'),
+        set_eq('q1', 'q2')
+        )
+    END;
 
 SELECT finish();
