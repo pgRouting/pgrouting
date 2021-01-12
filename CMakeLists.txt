@@ -52,7 +52,7 @@ include(pgr/Configure)
 set(DOXYGEN_MINIMUM_VERSION "1.7")
 set(SPHINX_MINIMUM_VERSION "1.8")
 set(POSTGRESQL_MINIMUM_VERSION "9.2.0")
-set(BOOST_MINIMUM_VERSION "1.56")
+set(BOOST_MINIMUM_VERSION "1.53.0")
 set(POSTGIS_MINIMUM_VERSION "2.0.0")
 
 message(STATUS "DOXYGEN_MINIMUM_VERSION=${DOXYGEN_MINIMUM_VERSION}")
@@ -73,26 +73,36 @@ endif()
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 
-set(CMAKE_C_STANDARD 11)
+find_package(Boost ${BOOST_MINIMUM_VERSION} REQUIRED)
+if (NOT Boost_VERSION_MACRO)
+    set(Boost_VERSION_MACRO ${Boost_VERSION})
+endif()
+add_definitions(-DBoost_VERSION_MACRO=${Boost_VERSION_MACRO})
+set(BOOST_VERSION "${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
 
 include(CheckCCompilerFlag)
 include(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-if(COMPILER_SUPPORTS_CXX11)
-    set(CMAKE_CXX_STANDARD 11)
-    set(CMAKE_CXX_STANDARD_REQUIRED ON)
-    set(CMAKE_CXX_EXTENSIONS OFF)
-else()
-    CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
-    if(COMPILER_SUPPORTS_CXX0X)
-        add_compile_options("-std=c++0x")
-        message(STATUS "Using  -std=c++0x.")
+if (BOOST_VERSION VERSION_LESS "1.75.0")
+    CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+    if(COMPILER_SUPPORTS_CXX11)
+        set(CMAKE_CXX_STANDARD 11)
+        set(CMAKE_CXX_STANDARD_REQUIRED ON)
+        set(CMAKE_CXX_EXTENSIONS OFF)
     else()
+        CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+        if(COMPILER_SUPPORTS_CXX0X)
+            add_compile_options("-std=c++0x")
+            message(STATUS "Using  -std=c++0x.")
+        else()
         message(WARNING "The compiler ${CMAKE_CXX_COMPILER} has no C++0x or C++11 flags support.
-        Using: callback compiler's standard")
+            Using: callback compiler's standard")
+        endif()
     endif()
+else()
+    set(CMAKE_CXX_STANDARD 14)
 endif()
 
+add_definitions(-DBOOST_ALLOW_DEPRECATED_HEADERS)
 set(COMPILER_VERSION "${CMAKE_CXX_COMPILER_ID}-${CMAKE_CXX_COMPILER_VERSION}")
 
 
@@ -189,35 +199,8 @@ message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
 # Boost
 #---------------------------------------------
 #---------------------------------------------
-find_package(Boost ${BOOST_MINIMUM_VERSION} REQUIRED)
-set(BOOST_VERSION "${Boost_VERSION}")
 
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-
-# Boost for Chinese postman needs 1.55 at least
-# dijkstra_shortest_paths.hpp has an error fix on 1.55
-#  error affects prim
-# BOOST_VERSION_OK if 1, use the boost file copy in the repository
-if ("${Boost_VERSION}" VERSION_LESS "1.55.0")
-    set(BOOST_VERSION_OK "0")
-else()
-    set(BOOST_VERSION_OK "1")
-endif()
-
-# Boost Geometry structure is different
-if ("${Boost_VERSION}" VERSION_LESS "1.56.0")
-    set(BOOST_Geometry_VERSION_OK "0")
-else()
-    set(BOOST_Geometry_VERSION_OK "1")
-endif()
-
-
-
-message(STATUS "Boost VERSION ${Boost_VERSION}")
-message(STATUS "BOOST_VERSION_OK ${BOOST_VERSION_OK}")
-message(STATUS "BOOST_Geometry_VERSION_OK ${BOOST_Geometry_VERSION_OK}")
-
-add_definitions(" -DBOOST_VERSION_OK=${BOOST_VERSION_OK} -DBOOST_Geometry_VERSION_OK=${BOOST_Geometry_VERSION_OK}")
 
 
 #---------------------------------------------
@@ -225,7 +208,6 @@ if (PROJECT_DEBUG)
     message(STATUS "PERL_VERSION_STRING = ${PERL_VERSION_STRING}")
     message(STATUS "POSTGRESQL_VERSION is ${PGSQL_VERSION}")
     message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
-    message(STATUS "BOOST_VERSION_OK ${BOOST_VERSION_OK}")
     message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
     message(STATUS "POSTGRESQL_INCLUDE_DIR = ${POSTGRESQL_INCLUDE_DIR}")
 endif()
