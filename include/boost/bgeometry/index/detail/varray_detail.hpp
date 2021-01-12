@@ -39,7 +39,8 @@
 #include <boost/detail/no_exceptions_support.hpp>
 #include <boost/config.hpp>
 #include <boost/move/move.hpp>
-#include <boost/core/addressof.hpp>
+
+#include <boost/utility/addressof.hpp>
 #include <boost/iterator/iterator_traits.hpp>
 
 #if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)

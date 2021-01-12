@@ -23,7 +23,7 @@
 #include <boost/graph/properties.hpp>
 #include <boost/graph/iteration_macros.hpp>
 
-#if BOOST_VERSION_OK
+#if Boost_VERSION_MACRO >= 105500
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 #include <boost/graph/detail_augment.hpp>
 #else
