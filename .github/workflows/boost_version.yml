@@ -1,0 +1,82 @@
+name: Boost supported versions
+
+on:
+  push:
+    branches-ignore:
+      - 'translations_*'
+    tags: []
+  pull_request:
+    paths-ignore:
+      - '**.po'
+
+
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+        fail-fast: false
+        matrix:
+          boost_minor: [53, 54, 55, 56, 74, 75]
+          os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get postgres version
+        run: |
+          sudo service postgresql start
+          pgver=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d \()')
+          echo "PGVER=${pgver}" >> $GITHUB_ENV
+          echo "PGIS=3" >> $GITHUB_ENV
+
+      - name: Add PostgreSQL APT repository
+        run: |
+          sudo apt-get install curl ca-certificates gnupg
+          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
+            $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+      - name: Install python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libtap-parser-sourcehandler-pgtap-perl \
+            postgresql-${PGVER} \
+            postgresql-${PGVER}-pgtap \
+            postgresql-${PGVER}-postgis-${PGIS} \
+            postgresql-${PGVER}-postgis-${PGIS}-scripts \
+            postgresql-server-dev-${PGVER}
+
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          wget https://sourceforge.net/projects/boost/files/boost/1.${{ matrix.boost_minor }}.0/boost_1_${{ matrix.boost_minor }}_0.tar.bz2
+          #wget https://dl.bintray.com/boostorg/release/1.${{ matrix.boost_minor }}.0/source/boost_1_${{ matrix.boost_minor }}_0.tar.bz2
+          sudo tar --bzip2 -xf  boost_1_${{ matrix.boost_minor }}_0.tar.bz2
+          sudo mv boost_1_${{ matrix.boost_minor }}_0/boost /usr/include/
+
+
+      - name: Configure
+        run: |
+          export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
+          mkdir build
+          cd build
+          cmake -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Debug -DWITH_DOC=OFF ..
+
+      - name: Build
+        run: |
+          cd build
+          make -j 4
+          sudo make install
+
+      - name: Test
+        run: |
+          sudo service postgresql start
+          sudo -u postgres createdb -p 5432  ___pgr___test___
+          sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres 5432  Release
