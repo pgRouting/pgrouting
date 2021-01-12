@@ -64,6 +64,11 @@ pgRouting 3.1.3 Release Notes
 To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.3
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ on Github.
 
+.. rubric:: Issues fixes
+
+* `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions are not honored
+* `#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0 geometry "point_xy.hpp" build error on macOS environment
+
 .. _changelog_3_1_2:
 
 pgRouting 3.1.2 Release Notes
@@ -121,6 +126,11 @@ pgRouting 3.0.5 Release Notes
 
 To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.5
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github.
+
+.. rubric:: Backport issues fixes
+
+* `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions are not honored
+* `#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0 geometry "point_xy.hpp" build error on macOS environment
 
 .. _changelog_3_0_4:
 

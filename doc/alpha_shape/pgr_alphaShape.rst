@@ -18,6 +18,10 @@ pgr_alphaShape
 
   * Breaking change on signature
   * Old signature no longer supported
+  * **Boost 1.54** & **Boost 1.55** are supported
+  * **Boost 1.56+** is preferable
+
+    * Boost Geometry is stable on Boost 1.56
 
 * Version 2.1.0
 
