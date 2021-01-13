@@ -14,7 +14,7 @@ pgr_stoerWagner - Experimental
 Function determines a min-cut and the min-cut weight of a connected, undirected graph implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/stoer_wagner_min_cut.html
+   :target: https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html
 
    Boost Graph Inside
 

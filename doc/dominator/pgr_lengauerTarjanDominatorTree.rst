@@ -14,7 +14,7 @@ pgr_lengauerTarjanDominatorTree -Experimental
 ``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all vertices.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/lengauer_tarjan_dominator.htm
+   :target: https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm
 
    Boost Graph Inside
 
@@ -116,7 +116,7 @@ The examples in this section use the following :ref:`fig1`
 See Also
 -------------------------------------------------------------------------------
 
-* `Boost: lengauerTarjanDominatorTree algorithm documentation <https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/lengauer_tarjan_dominator.htm>`__
+* `Boost: lengauerTarjanDominatorTree algorithm documentation <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__
 * `Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__
 * :doc:`sampledata` network.
 

@@ -14,7 +14,7 @@ pgr_transitiveClosure - Experimental
 In particular, the transitive closure algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_70_0/libs/graph/doc/transitive_closure.html
+   :target: https://www.boost.org/libs/graph/doc/transitive_closure.html
 
    Boost Graph Inside
 

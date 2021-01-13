@@ -14,7 +14,7 @@ pgr_bipartite -Experimental
 In particular, the is_bipartite() algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_53_0/libs/graph/doc/is_bipartite.html
+   :target: https://www.boost.org/libs/graph/doc/is_bipartite.html
 
    Boost Graph Inside
 
@@ -55,7 +55,7 @@ Signatures
 .. code-block:: sql
 
     pgr_bipartite(Edges SQL) -- Experimental on v3.2
-    
+
     RETURNS SET OF (vertex_id, color_id)
     OR EMPTY SET
 
@@ -110,7 +110,7 @@ The following edge will make subgraph with vertices {1, 2, 5, 7, 8} an odd lengt
 .. literalinclude:: doc-bipartite.queries
    :start-after: --q2
    :end-before: --q3
-   
+
 The new graph is not bipartite because it has a odd length cycle of 5 vertices. Edges in blue represent odd length cycle.
 
 .. image:: images/bipartite.png
@@ -130,7 +130,7 @@ See Also
 
 .. see also start
 
-* `Boost: is_bipartite algorithm documentation <https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/is_bipartite.html>`__
+* `Boost: is_bipartite algorithm documentation <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__
 * `Wikipedia: bipartite graph <https://en.wikipedia.org/wiki/Bipartite_graph>`__
 
 .. see also end
