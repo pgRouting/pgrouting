@@ -14,7 +14,7 @@ pgr_kruskalDFS
 Search ordering.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html
+   :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
 
    Boost Graph Inside
 

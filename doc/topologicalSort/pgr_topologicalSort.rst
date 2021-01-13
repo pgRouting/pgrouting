@@ -14,7 +14,7 @@ pgr_topologicalSort - Experimental
 In particular, the topological sort algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_65_1/libs/graph/doc/topological_sort.html
+   :target: https://www.boost.org/libs/graph/doc/topological_sort.html
 
    Boost Graph Inside
 
