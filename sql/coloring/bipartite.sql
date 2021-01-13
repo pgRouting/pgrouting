@@ -53,5 +53,5 @@ IS 'pgr_bipartite
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_bipartite.html
+    - ${PROJECT_DOC_LINK}/pgr_bipartite.html
 ';

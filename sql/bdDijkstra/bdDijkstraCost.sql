@@ -200,5 +200,5 @@ IS 'pgr_bdDijkstraCost(Combinations)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstraCost.html
+  - ${PROJECT_DOC_LINK}/pgr_bdDijkstraCost.html
 ';

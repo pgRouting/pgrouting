@@ -205,5 +205,5 @@ IS 'pgr_edwardMoore(Combinations)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_edwardMoore.html
+   - ${PROJECT_DOC_LINK}/pgr_edwardMoore.html
 ';

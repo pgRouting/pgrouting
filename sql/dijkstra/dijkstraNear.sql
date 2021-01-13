@@ -151,7 +151,7 @@ IS 'pgr_dijkstraNear(One to Many)
   - directed => true
   - cap => 1 (nth found)
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
+  - ${PROJECT_DOC_LINK}/pgr_dijkstraNear.html
 ';
 
 COMMENT ON FUNCTION  pgr_dijkstraNear(TEXT, ANYARRAY, BIGINT, BOOLEAN, BIGINT)
@@ -164,7 +164,7 @@ IS 'pgr_dijkstraNear(Many to One)
   - directed => true
   - cap => 1 (nth found)
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
+  - ${PROJECT_DOC_LINK}/pgr_dijkstraNear.html
 ';
 
 COMMENT ON FUNCTION  pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BIGINT, BOOLEAN)
@@ -178,7 +178,7 @@ IS 'pgr_dijkstraNear(Many to Many)
   - directed => true
   - cap => 1 (nth found)
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstraNear.html
 ';
 
 COMMENT ON FUNCTION  pgr_dijkstraNear(TEXT, TEXT, BOOLEAN, BIGINT, BOOLEAN)
@@ -191,5 +191,5 @@ IS 'pgr_dijkstraNear(Combinations)
   - directed => true
   - cap => 1 (nth found)
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_dijkstraNear.html
+  - ${PROJECT_DOC_LINK}/pgr_dijkstraNear.html
 ';

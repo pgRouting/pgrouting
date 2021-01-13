@@ -202,5 +202,5 @@ IS 'pgr_dagShortestPath(Combinations)
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Combinations SQL with columns: source, target
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_dagShortestPath.html
+  - ${PROJECT_DOC_LINK}/pgr_dagShortestPath.html
 ';

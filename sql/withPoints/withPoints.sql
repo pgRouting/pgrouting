@@ -261,5 +261,5 @@ IS 'pgr_withPoints(Combinations)
     - driving_side := ''b''
     - details := ''false''
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+   - ${PROJECT_DOC_LINK}/pgr_withPoints.html
 ';

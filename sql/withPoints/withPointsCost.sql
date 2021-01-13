@@ -227,5 +227,5 @@ IS 'pgr_withPointsCost(Combinations)
     - directed := ''true''
     - driving_side := ''b''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_withPointsCost.html
+  - ${PROJECT_DOC_LINK}/pgr_withPointsCost.html
 ';

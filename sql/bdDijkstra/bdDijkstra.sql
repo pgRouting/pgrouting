@@ -219,5 +219,5 @@ IS 'pgr_bdDijkstra(Combinations)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdDijkstra.html
+  - ${PROJECT_DOC_LINK}/pgr_bdDijkstra.html
 ';

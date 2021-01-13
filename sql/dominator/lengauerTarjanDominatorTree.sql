@@ -59,6 +59,6 @@ IS 'pgr_LTDTree
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_lengauerTarjanDominatorTree.html
+  - ${PROJECT_DOC_LINK}/pgr_lengauerTarjanDominatorTree.html
 ';
 
