@@ -19,7 +19,7 @@ now supported and maintained by `Georepublic <https://georepublic.info>`__,
 `Paragon Corporation <https://www.paragoncorporation.com/>`__ and a broad user community.
 
 pgRouting is part of `OSGeo Community Projects <https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`__
-from the `OSGeo Foundation <https://osgeo.org>`__ and included on `OSGeoLive <http://live.osgeo.org/>`__.
+from the `OSGeo Foundation <https://www.osgeo.org>`__ and included on `OSGeoLive <http://live.osgeo.org/>`__.
 
 
 .. _license:
