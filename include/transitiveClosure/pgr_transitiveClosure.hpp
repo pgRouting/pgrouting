@@ -31,11 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_TRANSITIVECLOSURE_PGR_TRANSITIVECLOSURE_HPP_
 #pragma once
 
-#if Boost_VERSION_MACRO >= 105500
 #include <boost/graph/transitive_closure.hpp>
-#else
-#include <boost/transitive_closure.hpp>
-#endif
 
 #include <deque>
 #include <vector>
