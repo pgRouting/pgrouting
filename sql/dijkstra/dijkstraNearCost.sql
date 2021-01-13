@@ -131,7 +131,7 @@ IS 'pgr_dijkstraNearCost(One to Many)
   - directed => true
   - cap => 1 (nth found)
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_dijkstraNearCost.html
+  - ${PROJECT_DOC_LINK}/pgr_dijkstraNearCost.html
 ';
 
 COMMENT ON FUNCTION  pgr_dijkstraNearCost(TEXT, ANYARRAY, BIGINT, BOOLEAN, BIGINT)
@@ -144,7 +144,7 @@ IS 'pgr_dijkstraNearCost(Many to One)
   - directed => true
   - cap => 1 (nth found)
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_dijkstraNearCost.html
+  - ${PROJECT_DOC_LINK}/pgr_dijkstraNearCost.html
 ';
 
 COMMENT ON FUNCTION  pgr_dijkstraNearCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BIGINT, BOOLEAN)
@@ -158,7 +158,7 @@ IS 'pgr_dijkstraNearCost(Many to Many)
   - directed => true
   - cap => 1 (nth found)
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_dijkstraNearCost.html
+   - ${PROJECT_DOC_LINK}/pgr_dijkstraNearCost.html
 ';
 
 COMMENT ON FUNCTION  pgr_dijkstraNearCost(TEXT, TEXT, BOOLEAN, BIGINT, BOOLEAN)
@@ -171,5 +171,5 @@ IS 'pgr_dijkstraNearCost(Combinations)
   - directed => true
   - cap => 1 (nth found)
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_dijkstraNearCost.html
+  - ${PROJECT_DOC_LINK}/pgr_dijkstraNearCost.html
 ';

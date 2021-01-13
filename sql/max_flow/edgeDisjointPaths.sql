@@ -212,5 +212,5 @@ IS 'pgr_edgeDisjointPaths(Combinations)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_edgeDisjointPaths.html
+   - ${PROJECT_DOC_LINK}/pgr_edgeDisjointPaths.html
 ';

@@ -190,5 +190,5 @@ IS 'pgr_boykovKolmogorov(Combinations)
    - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
    - Combinations SQL with columns: source, target
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+  - ${PROJECT_DOC_LINK}/pgr_boykovKolmogorov.html
 ';

@@ -152,5 +152,5 @@ IS 'pgr_maxFlow(Combinations)
   - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
   - Combinations SQL with columns: source, target
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_maxFlow.html
+  - ${PROJECT_DOC_LINK}/pgr_maxFlow.html
 ';

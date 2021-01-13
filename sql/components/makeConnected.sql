@@ -53,5 +53,5 @@ IS 'pgr_makeConnected
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_makeConnected.html
+  - ${PROJECT_DOC_LINK}/pgr_makeConnected.html
 ';

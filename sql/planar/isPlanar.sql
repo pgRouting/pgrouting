@@ -51,5 +51,5 @@ IS 'pgr_isPlanar
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_isPlanar.html
+  - ${PROJECT_DOC_LINK}/pgr_isPlanar.html
 ';

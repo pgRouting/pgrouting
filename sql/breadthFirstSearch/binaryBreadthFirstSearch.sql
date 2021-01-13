@@ -205,5 +205,5 @@ IS 'pgr_binaryBreadthFirstSearch(Combinations)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_binaryBreadthFirstSearch.html
+   - ${PROJECT_DOC_LINK}/pgr_binaryBreadthFirstSearch.html
 ';

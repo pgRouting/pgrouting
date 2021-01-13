@@ -239,5 +239,5 @@ IS 'pgr_aStarCost(Combinations)
    - factor := 1
    - epsilon := 1
  - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_aStarCost.html
+   - ${PROJECT_DOC_LINK}/pgr_aStarCost.html
 ';

@@ -158,5 +158,5 @@ IS 'EXPERIMENTAL pgr_maxFlowMinCost_Cost (Combinations)
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Combinations SQL with columns: source, target
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
+  - ${PROJECT_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
 ';

@@ -110,7 +110,7 @@ IS 'pgr_depthFirstSearch(Single Vertex)
     - directed := true
     - max_depth := 9223372036854775807
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_depthFirstSearch.html
+    - ${PROJECT_DOC_LINK}/pgr_depthFirstSearch.html
 ';
 
 COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, ANYARRAY, BOOLEAN, BIGINT)
@@ -122,5 +122,5 @@ IS 'pgr_depthFirstSearch(Multiple Vertices)
     - directed := true
     - max_depth := 9223372036854775807
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_depthFirstSearch.html
+    - ${PROJECT_DOC_LINK}/pgr_depthFirstSearch.html
 ';

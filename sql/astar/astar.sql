@@ -255,5 +255,5 @@ IS 'pgr_aStar(Combinations)
    - factor := 1
    - epsilon := 1
  - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_aStar.html
+   - ${PROJECT_DOC_LINK}/pgr_aStar.html
 ';

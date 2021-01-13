@@ -230,5 +230,5 @@ IS 'pgr_bdAstarCost(Combinations)
   - factor := 1
   - epsilon := 1
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bdAstarCost.html
+  - ${PROJECT_DOC_LINK}/pgr_bdAstarCost.html
 ';
