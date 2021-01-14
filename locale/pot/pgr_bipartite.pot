@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 12:09-0600\n"
+"POT-Creation-Date: 2021-01-13 19:03-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -348,7 +348,7 @@ msgid "See Also"
 msgstr ""
 
 #: ../../build/doc/pgr_bipartite.rst:133
-msgid "`Boost: is_bipartite algorithm documentation <https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/is_bipartite.html>`__"
+msgid "`Boost: is_bipartite algorithm documentation <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_bipartite.rst:134
