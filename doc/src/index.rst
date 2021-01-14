@@ -98,13 +98,8 @@ Available Functions but not official pgRouting functions
 :doc:`release_notes`
 ===============================================================================
 
-.. include:: release_notes.rst
-   :start-after: changelog start
-   :end-before: changelog end
-
-
 .. toctree::
-    :hidden:
+    :maxdepth: 2
 
     release_notes
 
