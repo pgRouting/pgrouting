@@ -7,61 +7,27 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _change_log:
-
 Release Notes
 ===============================================================================
 
 To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github.
 
-.. rubric:: Table of contents
-
-.. changelog start
-
-* :ref:`changelog_3_2_0`
-* :ref:`changelog_3_1_3`
-* :ref:`changelog_3_1_2`
-* :ref:`changelog_3_1_1`
-* :ref:`changelog_3_1_0`
-* :ref:`changelog_3_0_5`
-* :ref:`changelog_3_0_4`
-* :ref:`changelog_3_0_3`
-* :ref:`changelog_3_0_2`
-* :ref:`changelog_3_0_1`
-* :ref:`changelog_3_0_0`
-* :ref:`changelog_2_6_3`
-* :ref:`changelog_2_6_2`
-* :ref:`changelog_2_6_1`
-* :ref:`changelog_2_6_0`
-* :ref:`changelog_2_5_5`
-* :ref:`changelog_2_5_4`
-* :ref:`changelog_2_5_3`
-* :ref:`changelog_2_5_2`
-* :ref:`changelog_2_5_1`
-* :ref:`changelog_2_5_0`
-* :ref:`changelog_2_4_2`
-* :ref:`changelog_2_4_1`
-* :ref:`changelog_2_4_0`
-* :ref:`changelog_2_3_2`
-* :ref:`changelog_2_3_1`
-* :ref:`changelog_2_3_0`
-* :ref:`changelog_2_2_4`
-* :ref:`changelog_2_2_3`
-* :ref:`changelog_2_2_2`
-* :ref:`changelog_2_2_1`
-* :ref:`changelog_2_2_0`
-* :ref:`changelog_2_1_0`
-* :ref:`changelog_2_0_1`
-* :ref:`changelog_2_0_0`
-* :ref:`changelog_1_x`
-
-.. changelog end
+.. contents:: Contents
+   :local:
 
 
-.. _changelog_3_2_0:
 
 pgRouting 3.2.0 Release Notes
 -------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github.
+
+.. rubric:: Build
+
+* `#1825 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost min version to 1.56
+
+  * Removing support for Boost v1.53, v1.54 & v1.55
 
 .. rubric:: New experimental functions
 
@@ -70,39 +36,61 @@ pgRouting 3.2.0 Release Notes
 * pgr_bipartite
 * pgr_dagShortestPath(Combinations)
 * pgr_depthFirstSearch
-* pgr_dijkstraNear(One to Many)
-* pgr_dijkstraNear(Many to One)
-* pgr_dijkstraNear(Many to Many)
-* pgr_dijkstraNear(Combinations)
-* pgr_dijkstraNearCost(One to Many)
-* pgr_dijkstraNearCost(Many to One)
-* pgr_dijkstraNearCost(Many to Many)
-* pgr_dijkstraNearCost(Combinations)
+* Dijkstra Near
+
+   * pgr_dijkstraNearCost
+
+     * pgr_dijkstraNear(One to Many)
+     * pgr_dijkstraNear(Many to One)
+     * pgr_dijkstraNear(Many to Many)
+     * pgr_dijkstraNear(Combinations)
+
+   * pgr_dijkstraNearCost
+
+     * pgr_dijkstraNearCost(One to Many)
+     * pgr_dijkstraNearCost(Many to One)
+     * pgr_dijkstraNearCost(Many to Many)
+     * pgr_dijkstraNearCost(Combinations)
+
 * pgr_edwardMoore(Combinations)
 * pgr_isPlanar
 * pgr_lengauerTarjanDominatorTree
 * pgr_makeConnected
-* pgr_maxFlowMinCost(Combinations)
-* pgr_maxFlowMinCost_Cost(Combinations)
+* Flow
+
+  * pgr_maxFlowMinCost(Combinations)
+  * pgr_maxFlowMinCost_Cost(Combinations)
+
 * pgr_sequentialVertexColoring
 
 .. rubric:: New proposed functions
 
-* pgr_aStar(Combinations)
-* pgr_aStarCost(Combinations)
-* pgr_bdAstar(Combinations)
-* pgr_bdAstarCost(Combinations)
-* pgr_bdDijkstra(Combinations)
-* pgr_bdDijkstraCost(Combinations)
-* pgr_boykovKolmogorov(Combinations)
-* pgr_edgeDisjointPaths(Combinations)
-* pgr_edmondsKarp(Combinations)
-* pgr_maxFlow(Combinations)
-* pgr_pushRelabel(Combinations)
+* Astar
+
+   * pgr_aStar(Combinations)
+   * pgr_aStarCost(Combinations)
+
+* Bidirectional Astar
+
+   * pgr_bdAstar(Combinations)
+   * pgr_bdAstarCost(Combinations)
+
+* Bidirectional Dijkstra
+
+   * pgr_bdDijkstra(Combinations)
+   * pgr_bdDijkstraCost(Combinations)
+
+* Flow
+
+  * pgr_boykovKolmogorov(Combinations)
+  * pgr_edgeDisjointPaths(Combinations)
+  * pgr_edmondsKarp(Combinations)
+  * pgr_maxFlow(Combinations)
+  * pgr_pushRelabel(Combinations)
+
 * pgr_withPoints(Combinations)
 * pgr_withPointsCost(Combinations)
 
-.. _changelog_3_1_3:
 
 pgRouting 3.1.3 Release Notes
 -------------------------------------------------------------------------------
@@ -115,7 +103,6 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 * `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions are not honored
 * `#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0 geometry "point_xy.hpp" build error on macOS environment
 
-.. _changelog_3_1_2:
 
 pgRouting 3.1.2 Release Notes
 -------------------------------------------------------------------------------
@@ -131,7 +118,6 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 * `#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server crash on ubuntu 20.04 #1760
 * `#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove warnings when using clang compiler
 
-.. _changelog_3_1_1:
 
 pgRouting 3.1.1 Release Notes
 -------------------------------------------------------------------------------
@@ -148,7 +134,6 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 * `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman crash on test data
 
 
-.. _changelog_3_1_0:
 
 pgRouting 3.1.0 Release Notes
 -------------------------------------------------------------------------------
@@ -165,7 +150,6 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
 * Minimal requirement for Sphinx: version 1.8
 
-.. _changelog_3_0_5:
 
 pgRouting 3.0.5 Release Notes
 -------------------------------------------------------------------------------
@@ -178,7 +162,6 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 * `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions are not honored
 * `#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0 geometry "point_xy.hpp" build error on macOS environment
 
-.. _changelog_3_0_4:
 
 pgRouting 3.0.4 Release Notes
 -------------------------------------------------------------------------------
@@ -195,7 +178,6 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 * `#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove warnings when using clang compiler
 
 
-.. _changelog_3_0_3:
 
 pgRouting 3.0.3 Release Notes
 -------------------------------------------------------------------------------
@@ -209,7 +191,6 @@ pgRouting 3.0.3 Release Notes
 * `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman crash on test data
 
 
-.. _changelog_3_0_2:
 
 pgRouting 3.0.2 Release Notes
 -------------------------------------------------------------------------------
@@ -221,7 +202,6 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
 * `#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual Studio build failing
 
-.. _changelog_3_0_1:
 
 pgRouting 3.0.1 Release Notes
 -------------------------------------------------------------------------------
@@ -233,7 +213,6 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
 * `#232 <https://github.com/pgRouting/pgrouting/issues/232>`__:  Honor client cancel requests in C /C++ code
 
-.. _changelog_3_0_0:
 
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
@@ -398,7 +377,6 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 * pgr_alphaShape old signature
 
 
-.. _changelog_2_6_3:
 
 pgRouting 2.6.3 Release Notes
 -------------------------------------------------------------------------------
@@ -412,7 +390,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.3
 * `#1185 <https://github.com/pgRouting/pgrouting/pull/1185>`__ Improve FindPostgreSQL.cmake
 
 
-.. _changelog_2_6_2:
 
 pgRouting 2.6.2 Release Notes
 -------------------------------------------------------------------------------
@@ -425,7 +402,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.2
 * `#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes windows test
 * `#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes build for python3 and perl5
 
-.. _changelog_2_6_1:
 
 pgRouting 2.6.1 Release Notes
 -------------------------------------------------------------------------------
@@ -465,7 +441,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.1
 * Removed compilation warning for g++8
 * Fixed a fallthrugh on Astar and bdAstar.
 
-.. _changelog_2_6_0:
 
 pgRouting 2.6.0 Release Notes
 -------------------------------------------------------------------------------
@@ -499,7 +474,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.0
 
 * Cleaned the internal code of withPoints
 
-.. _changelog_2_5_5:
 
 pgRouting 2.5.5 Release Notes
 -------------------------------------------------------------------------------
@@ -512,7 +486,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.5
 * Fixes windows test
 * Fixes build for python3 and perl5
 
-.. _changelog_2_5_4:
 
 pgRouting 2.5.4 Release Notes
 -------------------------------------------------------------------------------
@@ -552,7 +525,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.4
 * Removed compilation warning for g++8
 * Fixed a fallthrugh on Astar and bdAstar.
 
-.. _changelog_2_5_3:
 
 pgRouting 2.5.3 Release Notes
 -------------------------------------------------------------------------------
@@ -563,7 +535,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.3
 
 * Fix for postgresql 11: Removed a compilation error when compiling with postgreSQL
 
-.. _changelog_2_5_2:
 
 pgRouting 2.5.2 Release Notes
 -------------------------------------------------------------------------------
@@ -575,7 +546,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.2
 * Fix for postgresql 10.1: Removed a compiler condition
 
 
-.. _changelog_2_5_1:
 
 pgRouting 2.5.1 Release Notes
 -------------------------------------------------------------------------------
@@ -587,7 +557,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.1
 * Fixed prerequisite minimum version of: cmake
 
 
-.. _changelog_2_5_0:
 
 pgRouting 2.5.0 Release Notes
 -------------------------------------------------------------------------------
@@ -653,7 +622,6 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 * pgr_pointToEdgeNode
 
 
-.. _changelog_2_4_2:
 
 pgRouting 2.4.2 Release Notes
 -------------------------------------------------------------------------------
@@ -671,7 +639,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.4.2
 
 
 
-.. _changelog_2_4_1:
 
 pgRouting 2.4.1 Release Notes
 -------------------------------------------------------------------------------
@@ -683,7 +650,6 @@ To see the issues closed by this release see the `Git closed milestone for 2.4.1
 * Fixed compiling error on macOS
 * Condition error on pgr_withPoints
 
-.. _changelog_2_4_0:
 
 pgRouting 2.4.0 Release Notes
 -------------------------------------------------------------------------------
@@ -723,7 +689,6 @@ To see the issues closed by this release see the `Git closed issues for 2.4.0 <h
 
 * TRSP original code is used with no changes on the compilation warnings
 
-.. _changelog_2_3_2:
 
 pgRouting 2.3.2 Release Notes
 -------------------------------------------------------------------------------
@@ -739,7 +704,6 @@ To see the issues closed by this release see the `Git closed issues for 2.3.2 <h
   * Fixed ambiguity on seq
 
 
-.. _changelog_2_3_1:
 
 pgRouting 2.3.1 Release Notes
 -------------------------------------------------------------------------------
@@ -753,7 +717,6 @@ To see the issues closed by this release see the `Git closed issues for 2.3.1 <h
 * Types discrepancy on pgr_createVerticesTable
 
 
-.. _changelog_2_3_0:
 
 pgRouting 2.3.0 Release Notes
 -------------------------------------------------------------------------------
@@ -809,7 +772,6 @@ To see the issues closed by this release see the `Git closed issues for 2.3.0 <h
 
 
 
-.. _changelog_2_2_4:
 
 pgRouting 2.2.4 Release Notes
 -------------------------------------------------------------------------------
@@ -822,7 +784,6 @@ To see the issues closed by this release see the `Git closed issues for 2.2.4 <h
 * Build error on Fedora 24 + GCC 6.0
 * Regression error pgr_nodeNetwork
 
-.. _changelog_2_2_3:
 
 pgRouting 2.2.3 Release Notes
 -------------------------------------------------------------------------------
@@ -833,7 +794,6 @@ To see the issues closed by this release see the `Git closed issues for 2.2.3 <h
 
 * Fixed compatibility issues with PostgreSQL 9.6.
 
-.. _changelog_2_2_2:
 
 pgRouting 2.2.2 Release Notes
 -------------------------------------------------------------------------------
@@ -845,7 +805,6 @@ To see the issues closed by this release see the `Git closed issues for 2.2.2 <h
 * Fixed regression error on pgr_drivingDistance
 
 
-.. _changelog_2_2_1:
 
 pgRouting 2.2.1 Release Notes
 -------------------------------------------------------------------------------
@@ -858,7 +817,6 @@ To see the issues closed by this release see the `Git closed issues for 2.2.1 <h
 * Bug fix on With Points family of functions
 
 
-.. _changelog_2_2_0:
 
 pgRouting 2.2.0 Release Notes
 -------------------------------------------------------------------------------
@@ -914,7 +872,6 @@ To see the issues closed by this release see the `Git closed issues for 2.2.0 <h
 - pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix
 
 
-.. _changelog_2_1_0:
 
 pgRouting 2.1.0 Release Notes
 -------------------------------------------------------------------------------
@@ -995,8 +952,6 @@ To see the issues closed by this release see the `Git closed issues for 2.1.0 <h
 
 
 
-.. _changelog_2_0_1:
-
 pgRouting 2.0.1 Release Notes
 -------------------------------------------------------------------------------
 
@@ -1007,14 +962,13 @@ Minor bug fixes.
 * No track of the bug fixes were kept.
 
 
-.. _changelog_2_0_0:
 
 pgRouting 2.0.0 Release Notes
 -------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.0.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ on Github.
 
-With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to :ref:`pgRouting 1.x <changelog_1_x>` releases.
+With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to `pgRouting 1.x Release Notes`_ releases.
 The main Goals for this release are:
 
 * Major restructuring of pgRouting.
@@ -1058,7 +1012,6 @@ As a result of this effort:
 
 
 
-.. _changelog_1_x:
 
 pgRouting 1.x Release Notes
 -------------------------------------------------------------------------------
