@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-01-13 19:03-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `Postg
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:21
-msgid "pgRouting is part of `OSGeo Community Projects <https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`__ from the `OSGeo Foundation <https://osgeo.org>`__ and included on `OSGeoLive <http://live.osgeo.org/>`__."
+msgid "pgRouting is part of `OSGeo Community Projects <https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`__ from the `OSGeo Foundation <https://www.osgeo.org>`__ and included on `OSGeoLive <http://live.osgeo.org/>`__."
 msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:28
