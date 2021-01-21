@@ -20,8 +20,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 3.2.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github.
 
 .. rubric:: Build
 
@@ -95,8 +94,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.1.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.3
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ on Github.
 
 .. rubric:: Issues fixes
 
@@ -108,8 +106,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.1.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.2
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github.
 
 .. rubric:: Issues fixes
 
@@ -123,8 +120,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.1.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github.
 
 .. rubric:: Issues fixes
 
@@ -139,8 +135,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.1.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github.
 
 .. rubric:: New proposed functions
 
@@ -155,8 +150,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.0.5 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.5
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github.
 
 .. rubric:: Backport issues fixes
 
@@ -168,8 +162,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.0.4 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.4
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github.
 
 .. rubric:: Backport issues fixes
 
@@ -197,8 +190,7 @@ pgRouting 3.0.3 Release Notes
 pgRouting 3.0.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.2
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github.
 
 .. rubric:: Issues fixes
 
@@ -208,8 +200,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.0.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.1
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github.
 
 .. rubric:: Issues fixes
 
@@ -219,8 +210,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.0
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github.
 
 .. rubric:: Fixed Issues
 
