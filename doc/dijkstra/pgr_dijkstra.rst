@@ -46,14 +46,16 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
   * **Official** pgr_dijkstra(One to One)
 
-.. rubric:: Support
+.. rubric:: Older versions of this page
 
 * **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstra.html>`__)
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstra.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstra.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstra.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstra.html>`__
-  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstra.html>`__
 
 * **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstra.html>`__
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstra.html>`__
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstra.html>`__
   `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstra.html>`__
