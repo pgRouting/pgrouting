@@ -1,0 +1,170 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    strategy:
+        fail-fast: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Get postgres version
+        run: |
+          sudo service postgresql start
+          PGVER=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d \()')
+          PGROUTING_VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
+          echo "PGVER=${PGVER}" >> $GITHUB_ENV
+          echo "PGPORT=5432" >> $GITHUB_ENV
+          echo "PGIS=3" >> $GITHUB_ENV
+          echo "PGROUTING_VERSION=${PGROUTING_VERSION}" >> $GITHUB_ENV
+
+      - name: Verify Tag Name
+        run: |
+          TAG_NAME=${GITHUB_REF#refs/*/}
+          echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
+          echo ${TAG_NAME}
+          echo ${PGROUTING_VERSION}
+          if [ "${TAG_NAME}" != "v${PGROUTING_VERSION}" ]; then
+            echo "Tag name should be v${PGROUTING_VERSION}"
+            exit 1
+          fi
+
+      - name: Extract branch name
+        run: |
+          raw=$(git branch -r --contains ${{ github.ref }})
+          branch=${raw##*/}
+          echo "BRANCH=$branch" >> $GITHUB_ENV
+
+      - name: Add PostgreSQL APT repository
+        run: |
+          sudo apt-get install curl ca-certificates gnupg
+          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
+            $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+      - name: Install python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libboost-graph-dev \
+            postgresql-${PGVER} \
+            postgresql-${PGVER}-postgis-${PGIS} \
+            postgresql-${PGVER}-postgis-${PGIS}-scripts \
+            postgresql-server-dev-${PGVER} \
+            graphviz \
+            doxygen
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip list
+
+      - name: Configure
+        run: |
+          export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
+          mkdir build
+          cd build
+          cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release -DES=ON ..
+
+      - name: Build
+        run: |
+          cd build
+          make doc
+          make -j 4
+          sudo make install
+          make doxy
+
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Update Users Documentation
+        run: |
+          git checkout origin/gh-pages
+          git checkout -b gh-pages
+          PGROUTING_MAJOR_MINOR="${PGROUTING_VERSION%.*}"
+          rm -rf ${PGROUTING_MAJOR_MINOR}
+          cp -r build/doc/html ${PGROUTING_MAJOR_MINOR}
+          git add ${PGROUTING_MAJOR_MINOR}
+          git commit -m "Update users documentation for ${PGROUTING_VERSION}"
+          git push origin gh-pages
+          git checkout @{-2}
+
+      - name: Update Developers Documentation
+        if: ${{ env.BRANCH == 'master' }}
+        run: |
+          git checkout gh-pages
+          rm -rf doxygen
+          cp -r build/doxygen/html doxygen
+          git add doxygen
+          git commit -m "Update developers documentation for ${PGROUTING_VERSION}"
+          git push origin gh-pages
+          git checkout @{-1}
+
+      - name: Download Assets
+        run: |
+          wget -c https://github.com/${{ github.repository }}/archive/${TAG_NAME}.zip
+          wget -c https://github.com/${{ github.repository }}/archive/${TAG_NAME}.tar.gz
+          mv ${TAG_NAME}.zip ${{ github.event.repository.name }}-${PGROUTING_VERSION}.zip
+          mv ${TAG_NAME}.tar.gz ${{ github.event.repository.name }}-${PGROUTING_VERSION}.tar.gz
+
+      - name: Make Attachments
+        run: |
+          cd build/doc
+
+          cp -r html doc-v${PGROUTING_VERSION}-en-es
+          tar -zcvf doc-v${PGROUTING_VERSION}-en-es.tar.gz doc-v${PGROUTING_VERSION}-en-es
+
+          cp -r html doc-v${PGROUTING_VERSION}-en
+          rm -rf doc-v${PGROUTING_VERSION}-en/es
+          tar -zcvf doc-v${PGROUTING_VERSION}-en.tar.gz doc-v${PGROUTING_VERSION}-en
+
+          cp -r html doc-v${PGROUTING_VERSION}-es
+          rm -rf doc-v${PGROUTING_VERSION}-es/en
+          perl -pi -e 's/en\/index.html/es\/index.html/g' doc-v${PGROUTING_VERSION}-es/index.html
+          tar -zcvf doc-v${PGROUTING_VERSION}-es.tar.gz doc-v${PGROUTING_VERSION}-es
+
+          cd ../..
+          grep -Pzo "(?s)pgRouting ${PGROUTING_VERSION//./\\.} Release Notes.*?(?=pgRouting .\..\.. Release Notes)" NEWS | tr '\0' '\n' > release_body.txt
+          echo "**Attachments**" >> release_body.txt
+          echo "File | Contents" >> release_body.txt
+          echo "| --- | --- |" >> release_body.txt
+          echo "| \`doc-v${PGROUTING_VERSION}-en-es.tar.gz\` | English and Spanish documentation. Redirection to English" >> release_body.txt
+          echo "| \`doc-v${PGROUTING_VERSION}-en.tar.gz\`|English documentation. Redirection to English" >> release_body.txt
+          echo "| \`doc-v${PGROUTING_VERSION}-es.tar.gz\`|Spanish documentation. Redirection to Spanish" >> release_body.txt
+          echo "| \`pgrouting-${PGROUTING_VERSION}.tar.gz\` | tar.gz of the release" >> release_body.txt
+          echo "| \`pgrouting-${PGROUTING_VERSION}.zip\`| zip of the release" >> release_body.txt
+          cat release_body.txt
+
+      - name: Create Draft Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: release_body.txt
+          name: ${{ env.TAG_NAME }}
+          draft: true
+          prerelease: false
+          files: |
+            build/doc/doc-v${{ env.PGROUTING_VERSION }}-en-es.tar.gz
+            build/doc/doc-v${{ env.PGROUTING_VERSION }}-en.tar.gz
+            build/doc/doc-v${{ env.PGROUTING_VERSION }}-es.tar.gz
+            ${{ github.event.repository.name }}-${{ env.PGROUTING_VERSION }}.zip
+            ${{ github.event.repository.name }}-${{ env.PGROUTING_VERSION }}.tar.gz
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
