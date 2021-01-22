@@ -25,21 +25,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "vrp/pd_problem.h"
+#include "vrp/dnode.h"
+#include "vrp/fleet.h"
+#include "vrp/solution.h"
+#include "vrp/tw_node.h"
+#include "vrp/pd_orders.h"
+#include "vrp/vehicle.h"
 
 namespace pgrouting {
 namespace vrp {
 
-Pgr_pickDeliver* PD_problem::problem;
-Pgr_messages PD_problem::msg;
-
-PD_problem::PD_problem(Pgr_pickDeliver* p_problem) {
-    PD_problem::problem = p_problem;
-    msg.clear();
+/** When the problem gets initialized
+ *  - The static pointers to the problem are initialized
+ */
+PD_problem::PD_problem(Pgr_pickDeliver* p) {
+    Dnode::problem = p;
+    Fleet::problem = p;
+    Solution::problem = p;
+    Tw_node::problem = p;
+    PD_Orders::problem = p;
+    Vehicle::problem = p;
 }
-
-PD_problem::PD_problem(const PD_problem &) {
-}
-
 
 }  //  namespace vrp
 }  //  namespace pgrouting

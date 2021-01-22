@@ -32,15 +32,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_assert.h"
 
+#include "vrp/solution.h"
+#include "vrp/optimize.h"
+#include "vrp/initial_solution.h"
 #include "vrp/initials_code.h"
 #include "vrp/vehicle_node.h"
 #include "vrp/vehicle_pickDeliver.h"
 #include "vrp/order.h"
 #include "vrp/pd_orders.h"
 #include "vrp/fleet.h"
-#include "vrp/solution.h"
-#include "vrp/initial_solution.h"
-#include "vrp/optimize.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -49,7 +49,7 @@ namespace vrp {
 // TODO(vicky) delete this function
 bool
 Pgr_pickDeliver::nodesOK() const {
-    ENTERING();
+    ENTERING(msg);
     return !(m_nodes.empty());
 #if 0
     if (m_nodes.empty() && m_base_nodes.empty()) return true;
@@ -187,7 +187,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_cost_matrix(cost_matrix),
     m_orders(pd_orders),
     m_trucks(vehicles, factor) {
-        ENTERING();
         pgassert(!pd_orders.empty());
         pgassert(!vehicles.empty());
         pgassert(!m_cost_matrix.empty());
@@ -201,14 +200,18 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             return;
         }
 
-        pgassert(m_trucks.msg.get_error().empty());
-        pgassert(msg.get_error().empty());
+#if 0
+        pgassert(m_trucks.msg().get_error().empty());
+        pgassert(msg().get_error().empty());
+#endif
 
         msg.log << "\n Checking fleet ...";
         if (!m_trucks.is_fleet_ok()) {
             pgassert(msg.get_error().empty());
+#if 0
             pgassert(!m_trucks.msg.get_error().empty());
             msg.error << m_trucks.msg.get_error();
+#endif
             return;
         }
         msg.log << "fleet OK \n";
@@ -267,7 +270,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             msg.log << t << "\n";
         }
 #endif
-        EXITING();
     }  //  constructor
 
 
