@@ -45,7 +45,10 @@ namespace vrp {
 class Order;
 class Vehicle_node;
 
-class PD_Orders : public PD_problem {
+class PD_Orders {
+    /** PD_rpblem needs access to set up the problem pointer */
+     friend class PD_problem;
+
      typedef std::vector<Order> Orders;
 
  public:
@@ -89,8 +92,16 @@ class PD_Orders : public PD_problem {
              const Vehicle_node&,
              const Vehicle_node&);
 
+
  private:
      Orders m_orders;
+
+     /** @brief Access to the problem's message */
+     Pgr_messages& msg() const;
+
+     /** The problem */
+     static Pgr_pickDeliver* problem;
+
 };
 
 }  //  namespace vrp

@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pickDeliver/general_vehicle_orders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
-#include "cpp_common/identifiers.hpp"
+#include "vrp/pd_problem.h"
 #include "cpp_common/Dmatrix.h"
 #include "vrp/fleet.h"
 #include "vrp/pd_orders.h"
@@ -49,9 +49,18 @@ namespace vrp {
 
 class Order;
 class Vehicle_node;
-class Base_node;
+
+class Dnode;
+class Solution;
+class Initial_solution;
 
 class Pgr_pickDeliver : public PD_problem {
+    friend Fleet;
+    friend Dnode;
+    friend PD_Orders;
+    friend Solution;
+    friend Initial_solution;
+
  public:
 
     Pgr_pickDeliver(
@@ -73,7 +82,7 @@ class Pgr_pickDeliver : public PD_problem {
     void add_node(const Vehicle_node &node);
 
     Initials_code get_kind() const {
-        return (Initials_code) problem->m_initial_id;
+        return (Initials_code) m_initial_id;
     }
 
     std::vector<Vehicle_node> get_nodes() const {
@@ -85,6 +94,11 @@ class Pgr_pickDeliver : public PD_problem {
     }
 
     Fleet trucks() const {return m_trucks;}
+
+    /** message controller for all classes */
+    Pgr_messages msg;
+    /** @} */
+
 
  private:
     //! used define the initial solution algorithm to be used

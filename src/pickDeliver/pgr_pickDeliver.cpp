@@ -146,7 +146,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_cost_matrix(cost_matrix),
     m_orders(pd_orders),
     m_trucks(vehicles, factor) {
-        ENTERING();
+        ENTERING(msg);
         pgassert(!pd_orders.empty());
         pgassert(!vehicles.empty());
         pgassert(!m_cost_matrix.empty());
@@ -160,14 +160,18 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             return;
         }
 
-        pgassert(m_trucks.msg.get_error().empty());
-        pgassert(msg.get_error().empty());
+#if 0
+        pgassert(m_trucks.msg().get_error().empty());
+        pgassert(msg().get_error().empty());
+#endif
 
         msg.log << "\n Checking fleet ...";
         if (!m_trucks.is_fleet_ok()) {
             pgassert(msg.get_error().empty());
+#if 0
             pgassert(!m_trucks.msg.get_error().empty());
             msg.error << m_trucks.msg.get_error();
+#endif
             return;
         }
         msg.log << "fleet OK \n";
@@ -226,7 +230,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             msg.log << t << "\n";
         }
 #endif
-        EXITING();
+        EXITING(msg);
     }  //  constructor
 
 
