@@ -39,10 +39,8 @@ namespace pgrouting {
 class Pgr_messages {
  public:
     Pgr_messages() = default;
-    Pgr_messages(const Pgr_messages&) { }
-    Pgr_messages& operator=(const Pgr_messages&) {
-        return *this;
-    }
+    Pgr_messages(const Pgr_messages&) = default;
+    Pgr_messages& operator=(const Pgr_messages&) = default;
 
     /*! @brief get_log
      *
@@ -78,25 +76,6 @@ class Pgr_messages {
      */
     void clear();
 
-#ifndef NDEBUG
-    /*! @brief get_error
-     *
-     * @returns the current contents of the log and clears the log
-     *
-     */
-    std::string get_dbglog() const;
-#endif
-
-#if 0
-    void entering(const char* function) {
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#else
-    log << "ENTERING: " << function << "\n";
-#endif
-    }
-#endif
-
-
  public:
     /*! Stores the hint information*/
     mutable std::ostringstream log;
@@ -104,20 +83,17 @@ class Pgr_messages {
     mutable std::ostringstream notice;
     /*! Stores the error information*/
     mutable std::ostringstream error;
-#ifndef NDEBUG
-    mutable std::ostringstream dbg_log;
-#endif
 };
 
 
-
 #if defined(__MINGW32__) || defined(_MSC_VER)
-#define ENTERING()
-#define EXITING()
+#define ENTERING(x)
+#define EXITING(x)
 #else
-#define ENTERING() msg.log << "--> " << __PRETTY_FUNCTION__ << "\n"
-#define EXITING() msg.log << "<-- " << __PRETTY_FUNCTION__ << "\n"
+#define ENTERING(x) x.log << "\n--> " << __PRETTY_FUNCTION__ << "\n"
+#define EXITING(x) x.log << "\n<-- " << __PRETTY_FUNCTION__ << "\n"
 #endif
+
 
 
 

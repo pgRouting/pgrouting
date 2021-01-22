@@ -37,8 +37,20 @@ namespace pgrouting {
 namespace vrp {
 
 
+Pgr_pickDeliver* Fleet::problem;
+
+/**
+* @returns reference to the problem's message
+*/
+Pgr_messages&
+Fleet::msg() {
+    return problem->msg;
+}
+
+
+
+
 Fleet::Fleet(const Fleet &fleet) :
-    PD_problem(),
     m_trucks(fleet.m_trucks),
     used(fleet.used),
     un_used(fleet.un_used)
@@ -46,7 +58,6 @@ Fleet::Fleet(const Fleet &fleet) :
 
 Fleet::Fleet(
         const std::vector<Vehicle_t> &vehicles, double factor) :
-    PD_problem(),
     used(),
     un_used() {
         build_fleet(vehicles, factor);
@@ -57,15 +68,15 @@ Fleet::Fleet(
 
 Vehicle_pickDeliver
 Fleet::get_truck() {
-    ENTERING();
+    ENTERING(msg());
     auto idx = un_used.front();
-    msg.log << "Available vehicles: " << un_used << "\n";
-    msg.log << "NOT Available vehicles: " << used << "\n";
-    msg.log << "getting idx" << idx << "\n";
-    pgassertwm(idx < m_trucks.size(), msg.log.str());
+    msg().log << "Available vehicles: " << un_used << "\n";
+    msg().log << "NOT Available vehicles: " << used << "\n";
+    msg().log << "getting idx" << idx << "\n";
+    pgassertwm(idx < m_trucks.size(), msg().log.str());
     used += idx;
     if (un_used.size() > 1) un_used -= idx;
-    EXITING();
+    EXITING(msg());
     return m_trucks[idx];
 }
 
@@ -78,15 +89,15 @@ Fleet::release_truck(size_t id) {
 Vehicle_pickDeliver
 Fleet::get_truck(size_t order) {
 #if 0
-    msg.log << "Available vehicles: " << un_used << "\n";
-    msg.log << "NOT Available vehicles: " << used << "\n";
+    msg().log << "Available vehicles: " << un_used << "\n";
+    msg().log << "NOT Available vehicles: " << used << "\n";
 #endif
     auto idx = un_used.front();
 
     for (const auto &i : un_used) {
         if (m_trucks[i].feasable_orders().has(order)) {
             idx = i;
-            msg.log << "getting idx" << idx << "\n";
+            msg().log << "getting idx" << idx << "\n";
             used += idx;
             if (un_used.size() > 1) un_used -= idx;
             return m_trucks[idx];
@@ -102,8 +113,8 @@ Fleet::get_truck(size_t order) {
     for (auto truck : m_trucks) {
         if (truck.feasable_orders().has(order)) {
             idx = truck.idx();
-            msg.log << "idx" << idx << "size" << m_trucks.size();
-            pgassertwm(idx < m_trucks.size(), msg.get_log());
+            msg().log << "idx" << idx << "size" << m_trucks.size();
+            pgassertwm(idx < m_trucks.size(), msg().get_log());
             used += idx;
             if (un_used.size() > 1) un_used -= idx;
             break;
@@ -119,9 +130,9 @@ Fleet::get_truck(const Order order) {
     for (auto truck : m_trucks) {
         if (truck.feasable_orders().has(order.idx())) {
             id = truck.idx();
-            msg.log << "id" << id
+            msg().log << "id" << id
                 << "size" << m_trucks.size();
-            pgassertwm(id < m_trucks.size(), msg.get_log());
+            pgassertwm(id < m_trucks.size(), msg().get_log());
             used += id;
             if (un_used.size() > 1) un_used -= id;
             break;
@@ -158,7 +169,7 @@ Fleet::add_vehicle(
                     vehicle.speed,
                     factor));
 #if 0
-        msg.log << "inserting vehicle: " << m_trucks.back().tau() << "\n";
+        msg().log << "inserting vehicle: " << m_trucks.back().tau() << "\n";
 #endif
         pgassert((m_trucks.back().idx() + 1)  == m_trucks.size());
         pgassert(m_trucks.back().is_ok());
@@ -235,8 +246,8 @@ Fleet::build_fleet(
         if (!(vehicle.start_open_t  <= vehicle.start_close_t
                     && vehicle.end_open_t <= vehicle.end_close_t
                     && vehicle.start_open_t <= vehicle.end_close_t)) {
-            msg.error << "Illegal values found on vehicle";
-            msg.log << "On vehicle " << vehicle.id
+            msg().error << "Illegal values found on vehicle";
+            msg().log << "On vehicle " << vehicle.id
                 << " a condition is not met, verify that:"
                 << "\nvehicle.start_open_t  <= vehicle.start_close_t\t"
                 << vehicle.start_open_t << " <= " << vehicle.start_close_t
@@ -245,12 +256,12 @@ Fleet::build_fleet(
                 << "\nvehicle.start_open_t <= vehicle.end_close_t\t"
                 << vehicle.start_open_t << " <= " << vehicle.end_close_t;
 
-            throw std::make_pair(msg.get_error(), msg.get_log());
+            throw std::make_pair(msg().get_error(), msg().get_log());
         }
 #if 0
         if (vehicle.cant_v < 0) {
-            msg.error << "Illegal number of vehicles found vehicle";
-            msg.log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
+            msg().error << "Illegal number of vehicles found vehicle";
+            msg().log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
             return false;
         }
 #endif
@@ -271,9 +282,9 @@ Fleet::build_fleet(
             if (!(starting_site.is_start() && ending_site.is_end()
                     && starting_site.opens() <= starting_site.closes()
                     && ending_site.opens() <= ending_site.closes())) {
-                msg.clear();
-                msg.error << "Illegal values found on vehicle";
-                msg.log << "On vehicle " << vehicle.id
+                msg().clear();
+                msg().error << "Illegal values found on vehicle";
+                msg().log << "On vehicle " << vehicle.id
                     << " a condition is not met:\n"
                     << "starting_site.is_start: "
                     << (starting_site.is_start()? "YES" : "NO") << "\n"
@@ -287,7 +298,7 @@ Fleet::build_fleet(
                     << ending_site.opens()
                     << "<"  << ending_site.closes() << "\n"
                     << "-  capacity > 0\n";
-                pgassert(!msg.get_error().empty());
+                pgassert(!msg().get_error().empty());
                 return false;
             }
             pgassert(starting_site.is_start());
@@ -297,7 +308,7 @@ Fleet::build_fleet(
             pgassert(ending_site.opens() <= ending_site.closes());
             pgassertwm(
                     starting_site.is_start() && ending_site.is_end(),
-                    msg.get_error().c_str());
+                    msg().get_error().c_str());
             add_vehicle(vehicle, factor,
                     std::move(b_start), starting_site,
                     std::move(b_end), ending_site);
@@ -318,9 +329,9 @@ Fleet::build_fleet(
             if (!(starting_site.is_start() && ending_site.is_end()
                     && starting_site.opens() <= starting_site.closes()
                     && ending_site.opens() <= ending_site.closes())) {
-                msg.clear();
-                msg.error << "Illegal values found on vehicle";
-                msg.log << "On vehicle " << vehicle.id
+                msg().clear();
+                msg().error << "Illegal values found on vehicle";
+                msg().log << "On vehicle " << vehicle.id
                     << " a condition is not met, verify that:\n"
                     << "starting_site.is_start()"
                     << starting_site.is_start() << "\n"
@@ -333,7 +344,7 @@ Fleet::build_fleet(
                     << ending_site.opens() << "<"
                     << ending_site.closes() << "\n"
                     << "-  capacity > 0\n";
-                pgassert(!msg.get_error().empty());
+                pgassert(!msg().get_error().empty());
                 return false;
             }
             pgassert(starting_site.is_start());
@@ -360,12 +371,12 @@ Fleet::build_fleet(
 
 bool
 Fleet::is_fleet_ok() const {
-    ENTERING();
-    if (!msg.get_error().empty()) return false;
+    ENTERING(msg());
+    if (!msg().get_error().empty()) return false;
     for (auto truck : m_trucks) {
         if (!truck.is_ok()) {
-            msg.error << "Illegal values found on vehicle";
-            msg.log << "On vehicle " << truck.id()
+            msg().error << "Illegal values found on vehicle";
+            msg().log << "On vehicle " << truck.id()
                 << " a condition is not met, verify that:\n"
                 << "-  start_open <= start_close\n"
                 << "-  end_open <= end_close\n"
@@ -376,15 +387,15 @@ Fleet::is_fleet_ok() const {
         if (!(truck.start_site().is_start()
                     && truck.end_site().is_end())) {
             pgassertwm(false, "should never pass through here");
-            msg.error << "Illegal values found on vehicle";
+            msg().error << "Illegal values found on vehicle";
             return false;
         }
         if (!truck.is_feasable()) {
-            msg.error << "Truck is not feasible";
+            msg().error << "Truck is not feasible";
             return false;
         }
     }
-    EXITING();
+    EXITING(msg());
     return true;
 }
 

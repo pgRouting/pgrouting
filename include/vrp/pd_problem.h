@@ -41,16 +41,15 @@ class Pgr_pickDeliver;
 
 class PD_problem {
  public:
+
+    /** @brief Initializing the problem pointer */
     explicit PD_problem(Pgr_pickDeliver* p_problem);
-    PD_problem(const PD_problem &problem);
-    PD_problem() { }
 
- public:
-     static Pgr_messages msg;
+    /** @brief Not wllowing to copy the problem */
+    PD_problem(const PD_problem &problem) = delete;
 
- protected:
-     static Pgr_pickDeliver* problem;
-     PD_problem& operator=(const PD_problem &) {return *this;};
+    /** @brief Not allwing initialization without information */
+    PD_problem() = delete;
 };
 
 }  //  namespace vrp
