@@ -6,7 +6,7 @@ SET
 SELECT * FROM pgr_full_version();
  version | build_type | compile_date |     library     |         system         |                   postgresql                   | compiler  | boost  |    hash
 ---------+------------+--------------+-----------------+------------------------+------------------------------------------------+-----------+--------+------------
- 3.0.5   | Release    | 2021/01/12   | pgrouting-3.0.5 | Linux-5.4.0-58-generic | PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) | GNU-8.4.0 | 1.71.0 | 436376d3ff
+ 3.0.5   | Debug      | 2021/01/22   | pgrouting-3.0.5 | Linux-5.4.0-62-generic | PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) | GNU-8.4.0 | 1.71.0 | e7dd70b5b2
 (1 row)
 
 -- q2

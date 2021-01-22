@@ -80,7 +80,7 @@ Initial_solution::do_while_foo(int kind) {
     pgassert(kind > 0 && kind <= OneDepot);
 
 #if 0
-    msg.log << "\nInitial_solution::do_while_foo\n";
+    msg().log << "\nInitial_solution::do_while_foo\n";
 #endif
     Identifiers<size_t> notused;
 #if 0
@@ -89,8 +89,8 @@ Initial_solution::do_while_foo(int kind) {
 
     while (!unassigned.empty()) {
 #if 0
-        msg.log << unassigned.size() << " unassigned: " << unassigned << "\n";
-        msg.log << assigned.size() << " assigned:" << assigned << "\n";
+        msg().log << unassigned.size() << " unassigned: " << unassigned << "\n";
+        msg().log << assigned.size() << " assigned:" << assigned << "\n";
 #endif
         auto current = unassigned.size();
 #if 0
@@ -101,18 +101,18 @@ Initial_solution::do_while_foo(int kind) {
         auto truck = trucks.get_truck(unassigned.front());
 #endif
 #if 0
-        msg.log << "got truck:" << truck.tau() << "\n";
+        msg().log << "got truck:" << truck.tau() << "\n";
 #endif
         /*
          * kind 1 to 7 work with the same code structure
          */
         truck.do_while_feasable((Initials_code)kind, unassigned, assigned);
 #if 0
-        msg.log << unassigned.size() << " unassigned: " << unassigned << "\n";
-        msg.log << assigned.size() << " assigned:" << assigned << "\n";
-        msg.log << "current" << current << " unassigned: " << unassigned.size();
+        msg().log << unassigned.size() << " unassigned: " << unassigned << "\n";
+        msg().log << assigned.size() << " assigned:" << assigned << "\n";
+        msg().log << "current" << current << " unassigned: " << unassigned.size();
 #endif
-        pgassertwm(current > unassigned.size(), msg.get_log().c_str());
+        pgassertwm(current > unassigned.size(), msg().get_log().c_str());
 
 #if 0
         if (truck.orders_in_vehicle().empty()) {
@@ -130,7 +130,7 @@ Initial_solution::do_while_foo(int kind) {
         invariant();
     }
 
-    pgassertwm(true, msg.get_log().c_str());
+    pgassertwm(true, msg().get_log().c_str());
     pgassert(is_feasable());
     invariant();
 }
@@ -141,7 +141,7 @@ Initial_solution::do_while_foo(int kind) {
 void
 Initial_solution::one_truck_all_orders() {
     invariant();
-    msg.log << "\nInitial_solution::one_truck_all_orders\n";
+    msg().log << "\nInitial_solution::one_truck_all_orders\n";
     auto truck = trucks.get_truck();
     while (!unassigned.empty()) {
         auto order(truck.orders()[*unassigned.begin()]);

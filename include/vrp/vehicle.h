@@ -45,6 +45,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
+class Pgr_pickDeliver;
+
 
 /*! @class Vehicle
  *  @brief Vehicle with time windows
@@ -69,11 +71,14 @@ namespace vrp {
  * @sa @ref Vehicle_node
  */
 
-class Vehicle : public Identifier, public PD_problem {
+class Vehicle : public Identifier {
  protected:
      typedef size_t POS;
      using difference_type = std::deque<Vehicle_node>::difference_type;
      std::deque< Vehicle_node > m_path;
+
+     friend class PD_problem;
+
 
  private:
      double m_capacity;
@@ -355,6 +360,13 @@ class Vehicle : public Identifier, public PD_problem {
 
      std::pair<POS, POS> position_limits(const Vehicle_node node) const;
      std::pair<POS, POS> drop_position_limits(const Vehicle_node node) const;
+
+
+     /** Pointer to problem */
+     static Pgr_pickDeliver* problem;
+
+     /** @brief Access to the problem's message */
+     static Pgr_messages& msg();
 
  private:
      POS getDropPosLowLimit(const Vehicle_node &node) const;

@@ -94,6 +94,8 @@ do_pgr_pickDeliver(
 
         pgrouting::tsp::Dmatrix cost_matrix(data_costs);
 
+        log << cost_matrix;
+
         auto depot_node = vehicles[0].start_node_id;
 
         /*

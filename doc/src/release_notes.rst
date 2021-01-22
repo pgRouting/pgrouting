@@ -64,6 +64,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
 * `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions are not honored
 * `#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0 geometry "point_xy.hpp" build error on macOS environment
+* `#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp functions crash server
 
 .. _changelog_3_0_4:
 

@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
+Pgr_pickDeliver* PD_Orders::problem;
 
 PD_Orders::PD_Orders(
         const std::vector<PickDeliveryOrders_t> &pd_orders

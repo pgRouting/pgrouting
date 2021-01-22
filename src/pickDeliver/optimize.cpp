@@ -31,7 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 
 #include "vrp/solution.h"
-#include "vrp/book_keeping.h"
 #include "vrp/optimize.h"
 #include "vrp/pgr_pickDeliver.h"
 
@@ -56,30 +55,30 @@ Optimize::Optimize(
         inter_swap(times);
 
         this->fleet = best_solution.fleet;
-        msg.log << tau("bestSol before sort by size");
+        msg().log << tau("bestSol before sort by size");
         sort_by_size();
-        msg.log << tau("bestSol after sort by size");
-        msg.log <<  tau();
+        msg().log << tau("bestSol after sort by size");
+        msg().log <<  tau();
     }
 
 
 void
 Optimize::inter_swap(size_t times) {
-    msg.log << tau("before sort by size");
+    msg().log << tau("before sort by size");
     sort_by_size();
-    msg.log << tau("before decrease");
+    msg().log << tau("before decrease");
     decrease_truck();
-    msg.log << tau("after decrease");
+    msg().log << tau("after decrease");
     sort_by_size();
-    msg.log << tau("after sort by size");
+    msg().log << tau("after sort by size");
 
     size_t i = 0;
     while (i++ < times) {
-        msg.log << "\n*************************** CYCLE" << i;
+        msg().log << "\n*************************** CYCLE" << i;
         inter_swap();
-        msg.log << tau("after inter swap");
+        msg().log << tau("after inter swap");
         std::rotate(fleet.begin(), fleet.begin() + 1, fleet.end());
-        msg.log << tau("before next cycle");
+        msg().log << tau("before next cycle");
     }
 }
 
@@ -93,7 +92,7 @@ Optimize::inter_swap(size_t times) {
  */
 bool
 Optimize::inter_swap() {
-    msg.log
+    msg().log
         << "\n" <<tau("before inter swap");
     delete_empty_truck();
     auto swapped_f = false;
@@ -105,7 +104,7 @@ Optimize::inter_swap() {
             if (&from == &to) break;
 
 #if 0
-            msg.log
+            msg().log
                 << "\n to " << to.id()
                 << "from " << from.id();
             auto swapped = false;
@@ -113,7 +112,7 @@ Optimize::inter_swap() {
             swap_worse(to, from);
             move_reduce_cost(from, to);
 #if 0
-            msg.log << "++++++++" << p_swaps;
+            msg().log << "++++++++" << p_swaps;
 #endif
         }
     }
@@ -124,7 +123,7 @@ Optimize::inter_swap() {
     }
 #endif
 
-    msg.log
+    msg().log
         << "\n" <<tau("after");
     delete_empty_truck();
 
@@ -270,10 +269,11 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
 }
 
 
+#if 0
 bool
 Optimize::swap_order() {
 #if 0
-    msg.log << "++++++++" << p_swaps;
+    msg().log << "++++++++" << p_swaps;
 #endif
     while (!p_swaps.empty()) {
         auto swap_data = p_swaps.top();
@@ -297,7 +297,7 @@ Optimize::swap_order() {
                 fleet[to_pos].orders()[swap_data.to_order], fleet[to_pos])) {
             save_if_best();
 #if 0
-            msg.log
+            msg().log
                 << "\n Swapping order "
                 << fleet[from_pos].orders()[
                     swap_data.from_order].pickup().original_id()
@@ -308,15 +308,16 @@ Optimize::swap_order() {
                 << " of truck " <<  fleet[to_pos].id();
 #endif
 #if 0
-            msg.log << "\nswappping after:";
-            msg.log << "\n" <<  fleet[to_pos].tau();
-            msg.log << "\n" << fleet[from_pos].tau();
+            msg().log << "\nswappping after:";
+            msg().log << "\n" <<  fleet[to_pos].tau();
+            msg().log << "\n" << fleet[from_pos].tau();
 #endif
             return true;
         }
     }
     return false;
 }
+#endif
 
 /*
  * from_truck: position of the truck where the order is
@@ -434,14 +435,14 @@ Optimize::move_duration_based() {
     size_t i(0);
 
     sort_by_duration();
-    msg.log << tau("\nmove duration based");
+    msg().log << tau("\nmove duration based");
     while (move_reduce_cost() && (++i < local_limit)) { }
     delete_empty_truck();
 
     i = 0;
     sort_by_duration();
     std::reverse(fleet.begin(), fleet.end());
-    msg.log << tau("\nmove duration based");
+    msg().log << tau("\nmove duration based");
     while (move_reduce_cost() && (++i < local_limit)) { }
     sort_by_duration();
     delete_empty_truck();
@@ -457,14 +458,14 @@ Optimize::move_wait_time_based() {
     size_t i(0);
 
     sort_for_move();
-    msg.log << tau("\nmove wait_time based");
+    msg().log << tau("\nmove wait_time based");
     while (move_reduce_cost() && (++i < local_limit)) { }
     delete_empty_truck();
 
     i = 0;
     sort_for_move();
     std::reverse(fleet.begin(), fleet.end());
-    msg.log << tau("\nmove wait_time based");
+    msg().log << tau("\nmove wait_time based");
     while (move_reduce_cost() && (++i < local_limit)) { }
     sort_by_duration();
     delete_empty_truck();
@@ -714,18 +715,18 @@ void
 Optimize::save_if_best() {
     if (duration() < best_solution.duration()) {
         best_solution = (*this);
-        msg.log << "\n*********** best by duration"
+        msg().log << "\n*********** best by duration"
             << best_solution.cost_str();
 #if 0
-        msg.dbg_log << best_solution.tau("best by duration");
+        msg().dbg_log << best_solution.tau("best by duration");
 #endif
     }
     if (fleet.size() < best_solution.fleet.size()) {
         best_solution = (*this);
-        msg.log << "\n*********** best by fleet size"
+        msg().log << "\n*********** best by fleet size"
             << best_solution.cost_str();
 #if 0
-        msg.dbg_log << best_solution.tau("best by fleet size");
+        msg().dbg_log << best_solution.tau("best by fleet size");
 #endif
     }
 }

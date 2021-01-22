@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
+Pgr_pickDeliver* Dnode::problem;
 
 std::ostream& operator << (std::ostream &log, const Dnode &node) {
     log << node.id()
@@ -47,7 +48,6 @@ Dnode::distance(const Dnode &other) const {
 
 
 Dnode::Dnode(size_t idx, int64_t id) :
-    PD_problem(),
     Identifier(idx, id) {
     }
 
