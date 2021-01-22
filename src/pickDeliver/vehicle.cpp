@@ -42,6 +42,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
+Pgr_pickDeliver* Vehicle::problem;
+
+/**
+* @returns reference to the problem's message
+*/
+Pgr_messages&
+Vehicle::msg() {
+    return problem->msg;
+}
+
+
 
 void
 Vehicle::invariant() const {
@@ -137,7 +148,7 @@ Vehicle::get_postgres_result(
     std::vector<General_vehicle_orders_t> result;
     /* postgres numbering starts with 1 */
     int stop_seq(1);
-    msg.log << "getting solution: " << tau() << "\n";
+    msg().log << "getting solution: " << tau() << "\n";
     for (const auto &p_stop : m_path) {
         General_vehicle_orders_t data = {
             vid,
@@ -531,15 +542,15 @@ Vehicle::Vehicle(
         pgassert(ending_site.opens() <= ending_site.closes());
         pgassert(capacity() > 0);
 #if 0
-        msg.log << "p_idx: " << p_idx << "\t idx(): " << idx() << "\n";
-        msg.log << "p_id: " << p_id << "\tid(): " << id() << "\n";
+        msg().log << "p_idx: " << p_idx << "\t idx(): " << idx() << "\n";
+        msg().log << "p_id: " << p_id << "\tid(): " << id() << "\n";
 #endif
 
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
 
         evaluate(0);
-        msg.log << tau() << "\n";
+        msg().log << tau() << "\n";
         invariant();
 #if 0
         EXITING();
@@ -556,8 +567,8 @@ Vehicle::Vehicle(const Vehicle &v) :
     m_speed(v.m_speed) {
 #if 0
         ENTERING();
-        msg.log << v.tau() << "\n";
-        msg.log << tau() << "\n";
+        msg().log << v.tau() << "\n";
+        msg().log << tau() << "\n";
         EXITING();
 #endif
 }
