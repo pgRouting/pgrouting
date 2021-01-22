@@ -7,7 +7,7 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-
+|
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_johnson.html>`__
