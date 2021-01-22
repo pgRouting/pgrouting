@@ -80,36 +80,36 @@ Initial_solution::do_while_foo(int kind) {
     pgassert(kind > 0 && kind <= OneDepot);
 
 #if 0
-    msg.log << "\nInitial_solution::do_while_foo\n";
+    msg().log << "\nInitial_solution::do_while_foo\n";
 #endif
     Identifiers<size_t> notused;
 
     while (!m_unassigned.empty()) {
 #if 0
-        msg.log << m_unassigned.size() << " m_unassigned: " << m_unassigned << "\n";
-        msg.log << m_assigned.size() << " m_assigned:" << m_assigned << "\n";
+        msg().log << m_unassigned.size() << " m_unassigned: " << m_unassigned << "\n";
+        msg().log << m_assigned.size() << " m_assigned:" << m_assigned << "\n";
 #endif
         auto current = m_unassigned.size();
         auto truck = trucks.get_truck(m_unassigned.front());
 #if 0
-        msg.log << "got truck:" << truck.tau() << "\n";
+        msg().log << "got truck:" << truck.tau() << "\n";
 #endif
         /*
          * kind 1 to 7 work with the same code structure
          */
         truck.do_while_feasable((Initials_code)kind, m_unassigned, m_assigned);
 #if 0
-        msg.log << m_unassigned.size() << " m_unassigned: " << m_unassigned << "\n";
-        msg.log << m_assigned.size() << " m_assigned:" << m_assigned << "\n";
-        msg.log << "current" << current << " m_unassigned: " << m_unassigned.size();
+        msg().log << m_unassigned.size() << " m_unassigned: " << m_unassigned << "\n";
+        msg().log << m_assigned.size() << " m_assigned:" << m_assigned << "\n";
+        msg().log << "current" << current << " m_unassigned: " << m_unassigned.size();
 #endif
-        pgassertwm(current > m_unassigned.size(), msg.get_log().c_str());
+        pgassertwm(current > m_unassigned.size(), msg().get_log().c_str());
 
         fleet.push_back(truck);
         invariant();
     }
 
-    pgassertwm(true, msg.get_log().c_str());
+    pgassertwm(true, msg().get_log().c_str());
     pgassert(is_feasable());
     invariant();
 }
@@ -120,7 +120,7 @@ Initial_solution::do_while_foo(int kind) {
 void
 Initial_solution::one_truck_all_orders() {
     invariant();
-    msg.log << "\nInitial_solution::one_truck_all_orders\n";
+    msg().log << "\nInitial_solution::one_truck_all_orders\n";
     auto truck = trucks.get_truck();
     while (!m_unassigned.empty()) {
         auto order(truck.orders()[*m_unassigned.begin()]);

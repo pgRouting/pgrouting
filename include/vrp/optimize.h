@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_VRP_OPTIMIZE_H_
 #pragma once
 
-#include "vrp/book_keeping.h"
+#include "vrp/optimize.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -67,8 +67,10 @@ class Optimize : public Solution {
              Vehicle_pickDeliver &to_truck);
      void save_if_best();
 
+#if 0
  private:
      Swap_bk p_swaps;
+#endif
 };
 
 }  //  namespace vrp

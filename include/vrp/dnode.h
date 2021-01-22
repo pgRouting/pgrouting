@@ -32,17 +32,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <iosfwd>
 #include "cpp_common/identifier.h"
-#include "vrp/pd_problem.h"
+#include "cpp_common/pgr_messages.h"
 
 namespace pgrouting {
 namespace vrp {
+
+class Pgr_pickDeliver;
+class PD_problem;
 
 /*! @class Dnode
  * @brief The Dnode class defines a the basic operations when data is a matrix.
  *
  * currently needs the PD_problem
  */
-class Dnode :  public PD_problem, public Identifier {
+class Dnode : public Identifier {
+    friend PD_problem;
+
  public:
      /*! @name constructors
       * @{
@@ -57,6 +62,12 @@ class Dnode :  public PD_problem, public Identifier {
      double distance(const Dnode &other) const;
 
      friend std::ostream& operator << (std::ostream &log, const Dnode &node);
+
+ protected:
+     static Pgr_messages& msg() ;
+
+     /** The problem */
+     static Pgr_pickDeliver* problem;
 
 };
 
