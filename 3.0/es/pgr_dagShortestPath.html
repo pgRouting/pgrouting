@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<html lang="es">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_dagShortestPath - Experimental &#8212; pgRouting Manual (3.0)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -28,6 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.5</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -148,84 +148,89 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-dagshortestpath-experimental">
 <h1>pgr_dagShortestPath - Experimental<a class="headerlink" href="#pgr-dagshortestpath-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dagShortestPath</span></code> —  Devuelve las rutas más cortas para los grafos acíclicos dirigidos ponderados (DAG). En particular, el algoritmo de rutas más cortas de DAG implementado por Boost.Graph.</p>
-<div class="figure" id="id1">
+<div class="figure align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dag_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Adentro: Boost Graph</span></p>
+<p class="caption"><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Advertencia</p>
+<p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
-<ul class="last simple">
-<li>Estas funciones pueden crear un bloqueo del servidor</li>
+<ul class="simple">
+<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Advertencia</p>
+<p class="admonition-title">Advertencia</p>
 <p>Funciones experimentales</p>
-<ul class="last simple">
-<li>No son oficialmente de la versión actual.</li>
-<li>Es probable que oficialmente no formen parte de la siguiente versión:<ul>
-<li>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</li>
-<li>El nombre puede cambiar.</li>
-<li>La firma (declaración de funciones) podría cambiar.</li>
-<li>La funcionalidad puede cambiar.</li>
-<li>Las pruebas de pgTap pueden estar ausentes.</li>
-<li>Posiblemente necesite codificación c/c++.</li>
-<li>Puede haber carencia de documentación.</li>
-<li>Hay documentación que, en dado caso, podría ser necesario reescribir.</li>
-<li>Ejemplos de documentación que puede ser necesario generar automáticamente.</li>
-<li>Puede ser necesaria más retroalimentación por parte de la comunidad.</li>
-<li>Puede depender de una función propuesta de pgRouting.</li>
-<li>Podría depender de una función obsoleta de pgRouting</li>
+<ul class="simple">
+<li><p>No son oficialmente de la versión actual.</p></li>
+<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<ul>
+<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
+<li><p>El nombre puede cambiar.</p></li>
+<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La funcionalidad puede cambiar.</p></li>
+<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Posiblemente necesite codificación c/c++.</p></li>
+<li><p>Puede haber carencia de documentación.</p></li>
+<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
+<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
+<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
+<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li>Versión 3.0.0<ul>
-<li>Nueva función <strong>experimental</strong></li>
+<li><p>Versión 3.0.0</p>
+<ul>
+<li><p>Nueva función <strong>experimental</strong></p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Soporte</p>
 <ul class="simple">
-<li><strong>Versiones soportadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_dagShortestPath.html">3.0</a>)</li>
+<li><p><strong>Versiones soportadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_dagShortestPath.html">3.0</a>)</p></li>
 </ul>
 <div class="section" id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Ruta Más Corta para grafos acíclicos dirigidos (DAG) es un algoritmo de búsqueda de grafos que resuelve el problema de ruta más corta para el grafo acíclico dirigido ponderado, produciendo una ruta más corta desde un vértice inicial (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) a un vértice final (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</p>
 <p>Esta implementación solo se puede utilizar con un grafo <strong>dirigido</strong> sin ciclos i.e., es decir, un grafo acíclico dirigido.</p>
 <p>El algoritmo se basa en la ordenación topológica del dag para imponer un orden lineal en los vértices, y por lo tanto es más eficaz para DAG que el algoritmo Dijkstra o Bellman-Ford.</p>
-<dl class="docutils">
-<dt>Las principales características son:</dt>
-<dd><ul class="first simple">
-<li>El proceso solo es válido para grafos acíclicos dirigidos ponderados, de lo contrario lanzará advertencias.</li>
-<li>Valores son regresados cuando hay un camino.<ul>
-<li>Cuando el vértice inicial y el vértice final son iguales, no hay camino.<ul>
-<li>El <cite>agg_cost</cite> de los valores no incluídos <cite>(v, v)</cite> es <cite>0</cite></li>
+<dl>
+<dt>Las principales características son:</dt><dd><ul class="simple">
+<li><p>El proceso solo es válido para grafos acíclicos dirigidos ponderados, de lo contrario lanzará advertencias.</p></li>
+<li><p>Valores son regresados cuando hay un camino.</p>
+<ul>
+<li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
+<ul>
+<li><p>El <cite>agg_cost</cite> de los valores no incluídos <cite>(v, v)</cite> es <cite>0</cite></p></li>
 </ul>
 </li>
-<li>Cuando el vértice inicial y el vértice final son diferentes y no hay camino:<ul>
-<li>El  “agg_cost” de los valores no incluídos “(u, v)” es :math: <cite>infty</cite></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Para fines de optimización, se omite cualquier valor duplicado en <cite>start_vids</cite> o <cite>end_vids</cite>.</li>
-<li>Los valores regresados se ordenan:<ul>
-<li><cite>start_vid</cite> ascendente</li>
-<li><cite>end_vid</cite> ascendente</li>
+<li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay camino:</p>
+<ul>
+<li><p>El  “agg_cost” de los valores no incluídos “(u, v)” es :math: <cite>infty</cite></p></li>
 </ul>
 </li>
 </ul>
-<ul class="last simple">
-<li>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V + E))\)</span></li>
+</li>
+<li><p>Para fines de optimización, se omite cualquier valor duplicado en <cite>start_vids</cite> o <cite>end_vids</cite>.</p></li>
+<li><p>Los valores regresados se ordenan:</p>
+<ul>
+<li><p><cite>start_vid</cite> ascendente</p></li>
+<li><p><cite>end_vid</cite> ascendente</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V + E))\)</span></p></li>
 </ul>
 </dd>
 </dl>
@@ -249,14 +254,11 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Desde el vértice <span class="math notranslate nohighlight">\(1\)</span> al vértice <span class="math notranslate nohighlight">\(6\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Desde el vértice <span class="math notranslate nohighlight">\(1\)</span> al vértice <span class="math notranslate nohighlight">\(6\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dagShortestPath</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span>
@@ -279,14 +281,11 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Desde el vértice <span class="math notranslate nohighlight">\(1\)</span> a los vértices <span class="math notranslate nohighlight">\(\{ 5, 6\}\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Desde el vértice <span class="math notranslate nohighlight">\(1\)</span> a los vértices <span class="math notranslate nohighlight">\(\{ 5, 6\}\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dagShortestPath</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
@@ -312,14 +311,11 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Desde los vértices <span class="math notranslate nohighlight">\(\{1, 3\}\)</span> al vértice <span class="math notranslate nohighlight">\(6\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Desde los vértices <span class="math notranslate nohighlight">\(\{1, 3\}\)</span> al vértice <span class="math notranslate nohighlight">\(6\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dagShortestPath</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">6</span>
@@ -344,14 +340,11 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Desde los vértices :<cite>{1, 4}</cite> a los vértices <span class="math notranslate nohighlight">\(\{12, 6\}\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Desde los vértices :<cite>{1, 4}</cite> a los vértices <span class="math notranslate nohighlight">\(\{12, 6\}\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dagShortestPath</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
@@ -380,170 +373,168 @@ OR EMPTY SET
 <div class="section" id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Descripción de los parámetros de las firmas (declaraciones de funciones)</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="16%" />
-<col width="20%" />
-<col width="9%" />
-<col width="55%" />
+<col style="width: 16%" />
+<col style="width: 20%" />
+<col style="width: 9%" />
+<col style="width: 55%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parámetro</th>
-<th class="head">Tipo</th>
-<th class="head">Valores predeterminados</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>&#160;</td>
-<td>Consulta SQL como se describió anteriormente.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>edges_sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p>Consulta SQL como se describió anteriormente.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
-<td>Identificador del vértice inicial de la ruta.</td>
+<tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td></td>
+<td><p>Identificador del vértice inicial de la ruta.</p></td>
 </tr>
-<tr class="row-even"><td><strong>start_vids</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></td>
-<td>&#160;</td>
-<td>Arreglo de identificadores de vértices iniciales.</td>
+<tr class="row-even"><td><p><strong>start_vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td></td>
+<td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>&#160;</td>
-<td>Identificador del vértice final de la ruta.</td>
+<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td></td>
+<td><p>Identificador del vértice final de la ruta.</p></td>
 </tr>
-<tr class="row-even"><td><strong>end_vids</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></td>
-<td>&#160;</td>
-<td>Arreglo de identificadores de vértices finales.</td>
+<tr class="row-even"><td><p><strong>end_vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td></td>
+<td><p>Arreglo de identificadores de vértices finales.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="12%" />
-<col width="14%" />
-<col width="6%" />
-<col width="69%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 6%" />
+<col style="width: 69%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Valores predeterminados</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador de la arista.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>origen</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del primer punto final en el vértice de la arista.</td>
+<tr class="row-odd"><td><p><strong>origen</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-even"><td><strong>objetivo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del segundo punto final en el vértice de la arista.</td>
+<tr class="row-even"><td><p><strong>objetivo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>costo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Peso de la arista <cite>(source, target)</cite></p>
-<ul class="last simple">
-<li>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-odd"><td><p><strong>costo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>Peso de la arista <cite>(source, target)</cite></p>
+<ul class="simple">
+<li><p>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>-1</td>
-<td><p class="first">Peso de la arista <cite>(target, source)</cite>,</p>
-<ul class="last simple">
-<li>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-even"><td><p><strong>reverse_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista <cite>(target, source)</cite>,</p>
+<ul class="simple">
+<li><p>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Donde:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="results-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#results-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="9%" />
-<col width="7%" />
-<col width="84%" />
+<col style="width: 9%" />
+<col style="width: 7%" />
+<col style="width: 84%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
-<td>Valor secuencial a partir de <strong>1</strong>.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>path_seq</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INT</span></code></td>
-<td>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</td>
+<tr class="row-odd"><td><p><strong>path_seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</p></td>
 </tr>
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><p class="first">Identificador del vértice inicial. Se devuelve cuando hay varias vetrices iniciales en la consulta.</p>
-<ul class="last simple">
-<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
-<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
+<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice inicial. Se devuelve cuando hay varias vetrices iniciales en la consulta.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><p class="first">Identificador del vértice final. Se devuelve cuando hay varios vértices finales en la consulta.</p>
-<ul class="last simple">
-<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
-<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
+<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice final. Se devuelve cuando hay varios vértices finales en la consulta.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>nodo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identificador del nodo en la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</td>
+<tr class="row-even"><td><p><strong>nodo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del nodo en la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>arista</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente nodo de la secuencia de ruta. <code class="docutils literal notranslate"><span class="pre">-1</span></code>  para el último nodo de la ruta.</td>
+<tr class="row-odd"><td><p><strong>arista</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente nodo de la secuencia de ruta. <code class="docutils literal notranslate"><span class="pre">-1</span></code>  para el último nodo de la ruta.</p></td>
 </tr>
-<tr class="row-even"><td><strong>costo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td>Costo de desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</td>
+<tr class="row-even"><td><p><strong>costo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Costo de desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td>Coste agregado de <code class="docutils literal notranslate"><span class="pre">start_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</td>
+<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Coste agregado de <code class="docutils literal notranslate"><span class="pre">start_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -551,13 +542,13 @@ OR EMPTY SET
 <div class="section" id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Topological_sorting">https://en.wikipedia.org/wiki/Topological_sorting</a></li>
-<li>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Topological_sorting">https://en.wikipedia.org/wiki/Topological_sorting</a></p></li>
+<li><p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -574,9 +565,9 @@ OR EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.4.<br/>
-      Actualizado por última vez en dic. 19, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.5.<br/>
+      Actualizado por última vez en ene. 23, 2021.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

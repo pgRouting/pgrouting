@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<html lang="es">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_dijkstraCostMatrix &#8212; pgRouting Manual (3.0)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -28,6 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.5</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -146,27 +146,29 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-dijkstracostmatrix">
 <h1>pgr_dijkstraCostMatrix<a class="headerlink" href="#pgr-dijkstracostmatrix" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCostMatrix</span></code> - Calcula la matriz de costes utilizando pgr_dijkstra.</p>
-<div class="figure" id="id1">
+<div class="figure align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Adentro: Boost Graph</span></p>
+<p class="caption"><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </div>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li>Versión 3.0.0<ul>
-<li>Función <strong>oficial</strong></li>
+<li><p>Versión 3.0.0</p>
+<ul>
+<li><p>Función <strong>oficial</strong></p></li>
 </ul>
 </li>
-<li>Versión 2.3.0<ul>
-<li>Nueva función <strong>propuesta</strong></li>
+<li><p>Versión 2.3.0</p>
+<ul>
+<li><p>Nueva función <strong>propuesta</strong></p></li>
 </ul>
 </li>
-<li><strong>Versiones soportadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_dijkstraCostMatrix.html">3.0</a>)</li>
-<li><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_dijkstraCostMatrix.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html">2.3</a></li>
+<li><p><strong>Versiones soportadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_dijkstraCostMatrix.html">3.0</a>)</p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_dijkstraCostMatrix.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html">2.3</a></p></li>
 </ul>
 <div class="section" id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -184,14 +186,11 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Costo de la matriz para los vértices <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> en un grafo <strong>no directed</strong></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Costo de la matriz para los vértices <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> en un grafo <strong>no directed</strong></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCostMatrix</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
@@ -220,14 +219,11 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Matriz de costos simétrica para vértices <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> en un grafo <strong>no dirigido</strong></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Matriz de costos simétrica para vértices <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> en un grafo <strong>no dirigido</strong></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCostMatrix</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
     <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">),</span>
@@ -255,139 +251,134 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </div>
 <div class="section" id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="14%" />
-<col width="77%" />
+<col style="width: 10%" />
+<col style="width: 14%" />
+<col style="width: 77%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parámetro</th>
-<th class="head">Tipo</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></td>
-<td>Consulta de aristas SQL como se describió anteriormente.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>edges_sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>Consulta de aristas SQL como se describió anteriormente.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>start_vids</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></td>
-<td>Arreglo de identificadores de los vértices.</td>
+<tr class="row-odd"><td><p><strong>start_vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
+<td><p>Arreglo de identificadores de los vértices.</p></td>
 </tr>
-<tr class="row-even"><td><strong>dirigido</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
-<td>(opcional). En caso de <code class="docutils literal notranslate"><span class="pre">false</span></code> el grafo se considera como No Dirigido. El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> que considera el grafo como Dirigido.</td>
+<tr class="row-even"><td><p><strong>dirigido</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p>(opcional). En caso de <code class="docutils literal notranslate"><span class="pre">false</span></code> el grafo se considera como No Dirigido. El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> que considera el grafo como Dirigido.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="12%" />
-<col width="14%" />
-<col width="6%" />
-<col width="69%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 6%" />
+<col style="width: 69%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Valores predeterminados</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>id</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador de la arista.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>origen</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del primer punto final en el vértice de la arista.</td>
+<tr class="row-odd"><td><p><strong>origen</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-even"><td><strong>objetivo</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></td>
-<td>&#160;</td>
-<td>Identificador del segundo punto final en el vértice de la arista.</td>
+<tr class="row-even"><td><p><strong>objetivo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>&#160;</td>
-<td><p class="first">Peso de la arista <cite>(source, target)</cite></p>
-<ul class="last simple">
-<li>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>Peso de la arista <cite>(source, target)</cite></p>
+<ul class="simple">
+<li><p>Cuando es negativo: la arista <cite>(source, target)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><strong>reverse_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></td>
-<td>-1</td>
-<td><p class="first">Peso de la arista <cite>(target, source)</cite>,</p>
-<ul class="last simple">
-<li>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</li>
+<tr class="row-even"><td><p><strong>reverse_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista <cite>(target, source)</cite>,</p>
+<ul class="simple">
+<li><p>En caso negativo: la arista  <cite>(target, source)</cite> no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Donde:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="return-columns">
 <h2>Columnas de Devoluciones<a class="headerlink" href="#return-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Devuelve SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="12%" />
-<col width="9%" />
-<col width="79%" />
+<col style="width: 12%" />
+<col style="width: 9%" />
+<col style="width: 79%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Columna</th>
-<th class="head">Tipo</th>
-<th class="head">Descripción</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identificador del vértice inicial. Se utiliza cuando hay varias vetrices iniciales en la consulta.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice inicial. Se utiliza cuando hay varias vetrices iniciales en la consulta.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identificador del vértice final. Se utiliza cuando hay varios vértices finales en la consulta.</td>
+<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice final. Se utiliza cuando hay varios vértices finales en la consulta.</p></td>
 </tr>
-<tr class="row-even"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td>Coste agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</td>
+<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Coste agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Ejemplo:</th><td class="field-body">Usar con tsp</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Usar con tsp</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
     $$
     SELECT * FROM pgr_dijkstraCostMatrix(
@@ -413,15 +404,15 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <div class="section" id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></li>
-<li><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a></li>
-<li><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></li>
-<li>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</li>
+<li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
+<li><p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a></p></li>
+<li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
+<li><p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -438,9 +429,9 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.4.<br/>
-      Actualizado por última vez en dic. 19, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.5.<br/>
+      Actualizado por última vez en ene. 23, 2021.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

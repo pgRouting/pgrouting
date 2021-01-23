@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<html lang="es">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introducción &#8212; pgRouting Manual (3.0)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -28,6 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.5</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -151,7 +151,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="introduction">
 <h1>Introducción<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h1>
@@ -166,26 +166,26 @@ from the <a class="reference external" href="https://osgeo.org">OSGeo Foundation
 <div class="section" id="licensing">
 <span id="license"></span><h2>Licencias<a class="headerlink" href="#licensing" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Las siguientes licencias pueden ser encontradas en pgRouting:</p>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col style="width: 33%" />
+<col style="width: 67%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Licencia</strong></td>
-<td>&#160;</td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Licencia</strong></p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td>Licencia pública general GNU , versión 2</td>
-<td>La mayoría de las características de pgRouting están disponibles bajo <a class="reference external" href="https://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License, version 2</a>.</td>
+<tr class="row-even"><td><p>GNU General Public License v2.0 or later</p></td>
+<td><p>Most features of pgRouting are available under <a class="reference external" href="https://spdx.org/licenses/GPL-2.0-or-later.html">GNU General Public License v2.0 or later</a>.</p></td>
 </tr>
-<tr class="row-odd"><td>Licencia de Software Boost - Version 1.0</td>
-<td>Algunas extensiones de Boost están disponibles bajo <a class="reference external" href="https://www.boost.org/LICENSE_1_0.txt">Boost Software License - Version 1.0</a>.</td>
+<tr class="row-odd"><td><p>Licencia de Software Boost - Version 1.0</p></td>
+<td><p>Algunas extensiones de Boost están disponibles bajo <a class="reference external" href="https://www.boost.org/LICENSE_1_0.txt">Boost Software License - Version 1.0</a>.</p></td>
 </tr>
-<tr class="row-even"><td>Licencia MIT-X</td>
-<td>Parte del código es contribución de iMaptools.com y está disponibe bajo la licencia MIT-X.</td>
+<tr class="row-even"><td><p>Licencia MIT-X</p></td>
+<td><p>Parte del código es contribución de iMaptools.com y está disponibe bajo la licencia MIT-X.</p></td>
 </tr>
-<tr class="row-odd"><td>Licencia de Creative Commons Attribution-Share Alike 3.0</td>
-<td>El Manual de pgRouting está disponible bajo una licencia <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>.</td>
+<tr class="row-odd"><td><p>Licencia de Creative Commons Attribution-Share Alike 3.0</p></td>
+<td><p>El Manual de pgRouting está disponible bajo una licencia <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -212,10 +212,10 @@ Virginia Vergara</p>
 <h4>Patrocinadores corporativos (en orden alfabético)<a class="headerlink" href="#corporate-sponsors-in-alphabetical-order" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Estas son las entidades corporativas que han contribuido con tiempo de desarrollo, alojamiento,  o financiamiento monetario directo al proyecto de pgRouting:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://georepublic.info/en/">Georepublic</a></li>
-<li><a class="reference external" href="https://summerofcode.withgoogle.com">Google Summer of Code</a></li>
-<li><a class="reference external" href="https://www.leopark.mx/">Leopark</a></li>
-<li><a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a></li>
+<li><p><a class="reference external" href="https://georepublic.info/en/">Georepublic</a></p></li>
+<li><p><a class="reference external" href="https://summerofcode.withgoogle.com">Google Summer of Code</a></p></li>
+<li><p><a class="reference external" href="https://www.leopark.mx/">Leopark</a></p></li>
+<li><p><a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a></p></li>
 </ul>
 </div>
 </div>
@@ -242,15 +242,15 @@ Vidhan Jain, Virginia Vergara</p>
 <h4>Patrocinadores corporativos (en orden alfabético)<a class="headerlink" href="#id2" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Estas son las entidades corporativas que han contribuido con tiempo de desarrollo, alojamiento,  o financiamiento monetario directo al proyecto de pgRouting:</p>
 <ul class="simple">
-<li>Camptocamp</li>
-<li>CSIS (University of Tokyo)</li>
-<li>Georepublic</li>
-<li>Google Summer of Code</li>
-<li>iMaptools</li>
-<li>Leopark</li>
-<li>Orkney</li>
-<li>Paragon Corporation</li>
-<li>Versaterm Inc.</li>
+<li><p>Camptocamp</p></li>
+<li><p>CSIS (University of Tokyo)</p></li>
+<li><p>Georepublic</p></li>
+<li><p>Google Summer of Code</p></li>
+<li><p>iMaptools</p></li>
+<li><p>Leopark</p></li>
+<li><p>Orkney</p></li>
+<li><p>Paragon Corporation</p></li>
+<li><p>Versaterm Inc.</p></li>
 </ul>
 </div>
 </div>
@@ -258,11 +258,11 @@ Vidhan Jain, Virginia Vergara</p>
 <div class="section" id="more-information">
 <h2>Más Información<a class="headerlink" href="#more-information" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li>Lo último en software, documentación y noticias, se encuentra disponible en el sitio web de pgRouting <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>.</li>
-<li>Servidor de base de datos PostgreSQL en el sitio principal de PostgreSQL <a class="reference external" href="https://www.postgresql.org">https://www.postgresql.org</a>.</li>
-<li>PostGIS extension at the PostGIS project web site <a class="reference external" href="https://postgis.net">https://postgis.net</a>.</li>
-<li>Bibliotecas de código Boost C++ en <a class="reference external" href="https://www.boost.org">https://www.boost.org</a>.</li>
-<li>La guía de Migración se puede encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Migration-Guide">https://github.com/pgRouting/pgrouting/wiki/Migration-Guide</a>.</li>
+<li><p>Lo último en software, documentación y noticias, se encuentra disponible en el sitio web de pgRouting <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>.</p></li>
+<li><p>Servidor de base de datos PostgreSQL en el sitio principal de PostgreSQL <a class="reference external" href="https://www.postgresql.org">https://www.postgresql.org</a>.</p></li>
+<li><p>PostGIS extension at the PostGIS project web site <a class="reference external" href="https://postgis.net">https://postgis.net</a>.</p></li>
+<li><p>Bibliotecas de código Boost C++ en <a class="reference external" href="https://www.boost.org">https://www.boost.org</a>.</p></li>
+<li><p>La guía de Migración se puede encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Migration-Guide">https://github.com/pgRouting/pgrouting/wiki/Migration-Guide</a>.</p></li>
 </ul>
 </div>
 </div>
@@ -279,9 +279,9 @@ Vidhan Jain, Virginia Vergara</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.4.<br/>
-      Actualizado por última vez en dic. 19, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.5.<br/>
+      Actualizado por última vez en ene. 23, 2021.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

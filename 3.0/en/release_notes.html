@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Release Notes &#8212; pgRouting Manual (3.0)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -26,6 +22,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -40,7 +40,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.5</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -93,6 +93,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Release Notes</a><ul>
+<li><a class="reference internal" href="#pgrouting-3-0-5-release-notes">pgRouting 3.0.5 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-0-4-release-notes">pgRouting 3.0.4 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-0-3-release-notes">pgRouting 3.0.3 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-0-2-release-notes">pgRouting 3.0.2 Release Notes</a></li>
@@ -171,54 +172,65 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="release-notes">
 <span id="change-log"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
 <p>To see the full list of changes check the list of <a class="reference external" href="https://github.com/pgRouting/pgrouting/commits">Git commits</a> on Github.</p>
 <p class="rubric">Table of contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#changelog-3-0-4"><span class="std std-ref">pgRouting 3.0.4 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-3-0-3"><span class="std std-ref">pgRouting 3.0.3 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-3-0-2"><span class="std std-ref">pgRouting 3.0.2 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-3-0-1"><span class="std std-ref">pgRouting 3.0.1 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-3-0-0"><span class="std std-ref">pgRouting 3.0.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-6-3"><span class="std std-ref">pgRouting 2.6.3 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-6-2"><span class="std std-ref">pgRouting 2.6.2 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-6-1"><span class="std std-ref">pgRouting 2.6.1 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-6-0"><span class="std std-ref">pgRouting 2.6.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-5-5"><span class="std std-ref">pgRouting 2.5.5 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-5-4"><span class="std std-ref">pgRouting 2.5.4 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-5-3"><span class="std std-ref">pgRouting 2.5.3 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-5-2"><span class="std std-ref">pgRouting 2.5.2 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-5-1"><span class="std std-ref">pgRouting 2.5.1 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-5-0"><span class="std std-ref">pgRouting 2.5.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-4-2"><span class="std std-ref">pgRouting 2.4.2 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-4-1"><span class="std std-ref">pgRouting 2.4.1 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-4-0"><span class="std std-ref">pgRouting 2.4.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-3-2"><span class="std std-ref">pgRouting 2.3.2 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-3-1"><span class="std std-ref">pgRouting 2.3.1 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-3-0"><span class="std std-ref">pgRouting 2.3.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-2-4"><span class="std std-ref">pgRouting 2.2.4 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-2-3"><span class="std std-ref">pgRouting 2.2.3 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-2-2"><span class="std std-ref">pgRouting 2.2.2 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-2-1"><span class="std std-ref">pgRouting 2.2.1 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-2-0"><span class="std std-ref">pgRouting 2.2.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-1-0"><span class="std std-ref">pgRouting 2.1.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-0-1"><span class="std std-ref">pgRouting 2.0.1 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-2-0-0"><span class="std std-ref">pgRouting 2.0.0 Release Notes</span></a></li>
-<li><a class="reference internal" href="#changelog-1-x"><span class="std std-ref">pgRouting 1.x Release Notes</span></a></li>
+<li><p><a class="reference internal" href="#changelog-3-0-5"><span class="std std-ref">pgRouting 3.0.5 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-3-0-4"><span class="std std-ref">pgRouting 3.0.4 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-3-0-3"><span class="std std-ref">pgRouting 3.0.3 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-3-0-2"><span class="std std-ref">pgRouting 3.0.2 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-3-0-1"><span class="std std-ref">pgRouting 3.0.1 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-3-0-0"><span class="std std-ref">pgRouting 3.0.0 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-6-3"><span class="std std-ref">pgRouting 2.6.3 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-6-2"><span class="std std-ref">pgRouting 2.6.2 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-6-1"><span class="std std-ref">pgRouting 2.6.1 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-6-0"><span class="std std-ref">pgRouting 2.6.0 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-5-5"><span class="std std-ref">pgRouting 2.5.5 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-5-4"><span class="std std-ref">pgRouting 2.5.4 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-5-3"><span class="std std-ref">pgRouting 2.5.3 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-5-2"><span class="std std-ref">pgRouting 2.5.2 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-5-1"><span class="std std-ref">pgRouting 2.5.1 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-5-0"><span class="std std-ref">pgRouting 2.5.0 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-4-2"><span class="std std-ref">pgRouting 2.4.2 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-4-1"><span class="std std-ref">pgRouting 2.4.1 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-4-0"><span class="std std-ref">pgRouting 2.4.0 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-3-2"><span class="std std-ref">pgRouting 2.3.2 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-3-1"><span class="std std-ref">pgRouting 2.3.1 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-3-0"><span class="std std-ref">pgRouting 2.3.0 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-2-4"><span class="std std-ref">pgRouting 2.2.4 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-2-3"><span class="std std-ref">pgRouting 2.2.3 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-2-2"><span class="std std-ref">pgRouting 2.2.2 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-2-1"><span class="std std-ref">pgRouting 2.2.1 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-2-0"><span class="std std-ref">pgRouting 2.2.0 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-1-0"><span class="std std-ref">pgRouting 2.1.0 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-0-1"><span class="std std-ref">pgRouting 2.0.1 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-2-0-0"><span class="std std-ref">pgRouting 2.0.0 Release Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#changelog-1-x"><span class="std std-ref">pgRouting 1.x Release Notes</span></a></p></li>
 </ul>
+<div class="section" id="pgrouting-3-0-5-release-notes">
+<span id="changelog-3-0-5"></span><h2>pgRouting 3.0.5 Release Notes<a class="headerlink" href="#pgrouting-3-0-5-release-notes" title="Permalink to this headline">¶</a></h2>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.5%22">Git closed milestone for 3.0.5</a> on Github.</p>
+<p class="rubric">Backport issues fixes</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1825">#1825</a>: Boost versions are not honored</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1849">#1849</a>: Boost 1.75.0 geometry “point_xy.hpp” build error on macOS environment</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1861">#1861</a>: vrp functions crash server</p></li>
+</ul>
+</div>
 <div class="section" id="pgrouting-3-0-4-release-notes">
 <span id="changelog-3-0-4"></span><h2>pgRouting 3.0.4 Release Notes<a class="headerlink" href="#pgrouting-3-0-4-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.4%22">Git closed milestone for 3.0.4</a> on Github.</p>
 <p class="rubric">Backport issues fixes</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1304">#1304</a>: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1356">#1356</a>: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1725">#1725</a>: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1760">#1760</a>: TSP server crash on ubuntu 20.04 #1760</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1770">#1770</a>: Remove warnings when using clang compiler</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1304">#1304</a>: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1356">#1356</a>: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1725">#1725</a>: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1760">#1760</a>: TSP server crash on ubuntu 20.04 #1760</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1770">#1770</a>: Remove warnings when using clang compiler</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-3-0-3-release-notes">
@@ -226,11 +238,11 @@
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.3%22">Git closed milestone for 3.0.3</a> on Github.</p>
 <p class="rubric">Backport issues fixes</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1733">#1733</a>: pgr_bdAstar fails when source or target vertex does not exist in the graph</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1647">#1647</a>: Linear Contraction contracts self loops</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1640">#1640</a>: pgr_withPoints fails when points_sql is empty</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1616">#1616</a>: Path evaluation on C++ not updated before the results go back to C</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1300">#1300</a>: pgr_chinesePostman crash on test data</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1733">#1733</a>: pgr_bdAstar fails when source or target vertex does not exist in the graph</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1647">#1647</a>: Linear Contraction contracts self loops</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1640">#1640</a>: pgr_withPoints fails when points_sql is empty</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1616">#1616</a>: Path evaluation on C++ not updated before the results go back to C</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1300">#1300</a>: pgr_chinesePostman crash on test data</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-3-0-2-release-notes">
@@ -238,7 +250,7 @@
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.2%22">Git closed milestone for 3.0.2</a> on Github.</p>
 <p class="rubric">Issues fixes</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1378">#1378</a>: Visual Studio build failing</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1378">#1378</a>: Visual Studio build failing</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-3-0-1-release-notes">
@@ -246,7 +258,7 @@
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.1%22">Git closed milestone for 3.0.1</a> on Github.</p>
 <p class="rubric">Issues fixes</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/232">#232</a>:  Honor client cancel requests in C /C++ code</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/232">#232</a>:  Honor client cancel requests in C /C++ code</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-3-0-0-release-notes">
@@ -254,162 +266,178 @@
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.0%22">Git closed milestone for 3.0.0</a> on Github.</p>
 <p class="rubric">Fixed Issues</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1153">#1153</a>: Renamed pgr_eucledianTSP to pgr_TSPeuclidean</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1188">#1188</a>: Removed CGAL dependency</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1002">#1002</a>: Fixed contraction issues:<ul>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1004">#1004</a>: Contracts when forbidden vertices do not belong to graph</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1005">#1005</a>: Intermideate results eliminated</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1006">#1006</a>: No loss of information</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1153">#1153</a>: Renamed pgr_eucledianTSP to pgr_TSPeuclidean</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1188">#1188</a>: Removed CGAL dependency</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1002">#1002</a>: Fixed contraction issues:</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1004">#1004</a>: Contracts when forbidden vertices do not belong to graph</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1005">#1005</a>: Intermideate results eliminated</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1006">#1006</a>: No loss of information</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">New functions</p>
 <ul class="simple">
-<li>Kruskal family<ul>
-<li>pgr_kruskal</li>
-<li>pgr_kruskalBFS</li>
-<li>pgr_kruskalDD</li>
-<li>pgr_kruskalDFS</li>
+<li><p>Kruskal family</p>
+<ul>
+<li><p>pgr_kruskal</p></li>
+<li><p>pgr_kruskalBFS</p></li>
+<li><p>pgr_kruskalDD</p></li>
+<li><p>pgr_kruskalDFS</p></li>
 </ul>
 </li>
-<li>Prim family<ul>
-<li>pgr_prim</li>
-<li>pgr_primDD</li>
-<li>pgr_primDFS</li>
-<li>pgr_primBFS</li>
+<li><p>Prim family</p>
+<ul>
+<li><p>pgr_prim</p></li>
+<li><p>pgr_primDD</p></li>
+<li><p>pgr_primDFS</p></li>
+<li><p>pgr_primBFS</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Proposed moved to official on pgRouting</p>
 <ul class="simple">
-<li>aStar Family<ul>
-<li>pgr_aStar(one to many)</li>
-<li>pgr_aStar(many to one)</li>
-<li>pgr_aStar(many to many)</li>
-<li>pgr_aStarCost(one to one)</li>
-<li>pgr_aStarCost(one to many)</li>
-<li>pgr_aStarCost(many to one)</li>
-<li>pgr_aStarCost(many to many)</li>
-<li>pgr_aStarCostMatrix(one to one)</li>
-<li>pgr_aStarCostMatrix(one to many)</li>
-<li>pgr_aStarCostMatrix(many to one)</li>
-<li>pgr_aStarCostMatrix(many to many)</li>
+<li><p>aStar Family</p>
+<ul>
+<li><p>pgr_aStar(one to many)</p></li>
+<li><p>pgr_aStar(many to one)</p></li>
+<li><p>pgr_aStar(many to many)</p></li>
+<li><p>pgr_aStarCost(one to one)</p></li>
+<li><p>pgr_aStarCost(one to many)</p></li>
+<li><p>pgr_aStarCost(many to one)</p></li>
+<li><p>pgr_aStarCost(many to many)</p></li>
+<li><p>pgr_aStarCostMatrix(one to one)</p></li>
+<li><p>pgr_aStarCostMatrix(one to many)</p></li>
+<li><p>pgr_aStarCostMatrix(many to one)</p></li>
+<li><p>pgr_aStarCostMatrix(many to many)</p></li>
 </ul>
 </li>
-<li>bdAstar Family<ul>
-<li>pgr_bdAstar(one to many)</li>
-<li>pgr_bdAstar(many to one)</li>
-<li>pgr_bdAstar(many to many)</li>
-<li>pgr_bdAstarCost(one to one)</li>
-<li>pgr_bdAstarCost(one to many)</li>
-<li>pgr_bdAstarCost(many to one)</li>
-<li>pgr_bdAstarCost(many to many)</li>
-<li>pgr_bdAstarCostMatrix(one to one)</li>
-<li>pgr_bdAstarCostMatrix(one to many)</li>
-<li>pgr_bdAstarCostMatrix(many to one)</li>
-<li>pgr_bdAstarCostMatrix(many to many)</li>
+<li><p>bdAstar Family</p>
+<ul>
+<li><p>pgr_bdAstar(one to many)</p></li>
+<li><p>pgr_bdAstar(many to one)</p></li>
+<li><p>pgr_bdAstar(many to many)</p></li>
+<li><p>pgr_bdAstarCost(one to one)</p></li>
+<li><p>pgr_bdAstarCost(one to many)</p></li>
+<li><p>pgr_bdAstarCost(many to one)</p></li>
+<li><p>pgr_bdAstarCost(many to many)</p></li>
+<li><p>pgr_bdAstarCostMatrix(one to one)</p></li>
+<li><p>pgr_bdAstarCostMatrix(one to many)</p></li>
+<li><p>pgr_bdAstarCostMatrix(many to one)</p></li>
+<li><p>pgr_bdAstarCostMatrix(many to many)</p></li>
 </ul>
 </li>
-<li>bdDijkstra Family<ul>
-<li>pgr_bdDijkstra(one to many)</li>
-<li>pgr_bdDijkstra(many to one)</li>
-<li>pgr_bdDijkstra(many to many)</li>
-<li>pgr_bdDijkstraCost(one to one)</li>
-<li>pgr_bdDijkstraCost(one to many)</li>
-<li>pgr_bdDijkstraCost(many to one)</li>
-<li>pgr_bdDijkstraCost(many to many)</li>
-<li>pgr_bdDijkstraCostMatrix(one to one)</li>
-<li>pgr_bdDijkstraCostMatrix(one to many)</li>
-<li>pgr_bdDijkstraCostMatrix(many to one)</li>
-<li>pgr_bdDijkstraCostMatrix(many to many)</li>
+<li><p>bdDijkstra Family</p>
+<ul>
+<li><p>pgr_bdDijkstra(one to many)</p></li>
+<li><p>pgr_bdDijkstra(many to one)</p></li>
+<li><p>pgr_bdDijkstra(many to many)</p></li>
+<li><p>pgr_bdDijkstraCost(one to one)</p></li>
+<li><p>pgr_bdDijkstraCost(one to many)</p></li>
+<li><p>pgr_bdDijkstraCost(many to one)</p></li>
+<li><p>pgr_bdDijkstraCost(many to many)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(one to one)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(one to many)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(many to one)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(many to many)</p></li>
 </ul>
 </li>
-<li>Flow Family<ul>
-<li>pgr_pushRelabel(one to one)</li>
-<li>pgr_pushRelabel(one to many)</li>
-<li>pgr_pushRelabel(many to one)</li>
-<li>pgr_pushRelabel(many to many)</li>
-<li>pgr_edmondsKarp(one to one)</li>
-<li>pgr_edmondsKarp(one to many)</li>
-<li>pgr_edmondsKarp(many to one)</li>
-<li>pgr_edmondsKarp(many to many)</li>
-<li>pgr_boykovKolmogorov (one to one)</li>
-<li>pgr_boykovKolmogorov (one to many)</li>
-<li>pgr_boykovKolmogorov (many to one)</li>
-<li>pgr_boykovKolmogorov (many to many)</li>
-<li>pgr_maxCardinalityMatching</li>
-<li>pgr_maxFlow</li>
-<li>pgr_edgeDisjointPaths(one to one)</li>
-<li>pgr_edgeDisjointPaths(one to many)</li>
-<li>pgr_edgeDisjointPaths(many to one)</li>
-<li>pgr_edgeDisjointPaths(many to many)</li>
+<li><p>Flow Family</p>
+<ul>
+<li><p>pgr_pushRelabel(one to one)</p></li>
+<li><p>pgr_pushRelabel(one to many)</p></li>
+<li><p>pgr_pushRelabel(many to one)</p></li>
+<li><p>pgr_pushRelabel(many to many)</p></li>
+<li><p>pgr_edmondsKarp(one to one)</p></li>
+<li><p>pgr_edmondsKarp(one to many)</p></li>
+<li><p>pgr_edmondsKarp(many to one)</p></li>
+<li><p>pgr_edmondsKarp(many to many)</p></li>
+<li><p>pgr_boykovKolmogorov (one to one)</p></li>
+<li><p>pgr_boykovKolmogorov (one to many)</p></li>
+<li><p>pgr_boykovKolmogorov (many to one)</p></li>
+<li><p>pgr_boykovKolmogorov (many to many)</p></li>
+<li><p>pgr_maxCardinalityMatching</p></li>
+<li><p>pgr_maxFlow</p></li>
+<li><p>pgr_edgeDisjointPaths(one to one)</p></li>
+<li><p>pgr_edgeDisjointPaths(one to many)</p></li>
+<li><p>pgr_edgeDisjointPaths(many to one)</p></li>
+<li><p>pgr_edgeDisjointPaths(many to many)</p></li>
 </ul>
 </li>
-<li>Components family<ul>
-<li>pgr_connectedComponents</li>
-<li>pgr_strongComponents</li>
-<li>pgr_biconnectedComponents</li>
-<li>pgr_articulationPoints</li>
-<li>pgr_bridges</li>
+<li><p>Components family</p>
+<ul>
+<li><p>pgr_connectedComponents</p></li>
+<li><p>pgr_strongComponents</p></li>
+<li><p>pgr_biconnectedComponents</p></li>
+<li><p>pgr_articulationPoints</p></li>
+<li><p>pgr_bridges</p></li>
 </ul>
 </li>
-<li>Contraction:<ul>
-<li>Removed unnecessary column seq</li>
-<li>Bug Fixes</li>
+<li><p>Contraction:</p>
+<ul>
+<li><p>Removed unnecessary column seq</p></li>
+<li><p>Bug Fixes</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">New Experimental functions</p>
 <ul class="simple">
-<li>pgr_maxFlowMinCost</li>
-<li>pgr_maxFlowMinCost_Cost</li>
-<li>pgr_extractVertices</li>
-<li>pgr_turnRestrictedPath</li>
-<li>pgr_stoerWagner</li>
-<li>pgr_dagShortestpath</li>
-<li>pgr_topologicalSort</li>
-<li>pgr_transitiveClosure</li>
-<li>VRP category<ul>
-<li>pgr_pickDeliverEuclidean</li>
-<li>pgr_pickDeliver</li>
+<li><p>pgr_maxFlowMinCost</p></li>
+<li><p>pgr_maxFlowMinCost_Cost</p></li>
+<li><p>pgr_extractVertices</p></li>
+<li><p>pgr_turnRestrictedPath</p></li>
+<li><p>pgr_stoerWagner</p></li>
+<li><p>pgr_dagShortestpath</p></li>
+<li><p>pgr_topologicalSort</p></li>
+<li><p>pgr_transitiveClosure</p></li>
+<li><p>VRP category</p>
+<ul>
+<li><p>pgr_pickDeliverEuclidean</p></li>
+<li><p>pgr_pickDeliver</p></li>
 </ul>
 </li>
-<li>Chinese Postman family<ul>
-<li>pgr_chinesePostman</li>
-<li>pgr_chinesePostmanCost</li>
+<li><p>Chinese Postman family</p>
+<ul>
+<li><p>pgr_chinesePostman</p></li>
+<li><p>pgr_chinesePostmanCost</p></li>
 </ul>
 </li>
-<li>Breadth First Search family<ul>
-<li>pgr_breadthFirstSearch</li>
-<li>pgr_binaryBreadthFirstSearch</li>
+<li><p>Breadth First Search family</p>
+<ul>
+<li><p>pgr_breadthFirstSearch</p></li>
+<li><p>pgr_binaryBreadthFirstSearch</p></li>
 </ul>
 </li>
-<li>Bellman Ford family<ul>
-<li>pgr_bellmanFord</li>
-<li>pgr_edwardMoore</li>
+<li><p>Bellman Ford family</p>
+<ul>
+<li><p>pgr_bellmanFord</p></li>
+<li><p>pgr_edwardMoore</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Moved to legacy</p>
 <ul class="simple">
-<li>Experimental functions<ul>
-<li>pgr_labelGraph  -  Use the components family of functions instead.</li>
-<li>Max flow - functions were renamed on v2.5.0<ul>
-<li>pgr_maxFlowPushRelabel</li>
-<li>pgr_maxFlowBoykovKolmogorov</li>
-<li>pgr_maxFlowEdmondsKarp</li>
-<li>pgr_maximumcardinalitymatching</li>
+<li><p>Experimental functions</p>
+<ul>
+<li><p>pgr_labelGraph  -  Use the components family of functions instead.</p></li>
+<li><p>Max flow - functions were renamed on v2.5.0</p>
+<ul>
+<li><p>pgr_maxFlowPushRelabel</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov</p></li>
+<li><p>pgr_maxFlowEdmondsKarp</p></li>
+<li><p>pgr_maximumcardinalitymatching</p></li>
 </ul>
 </li>
-<li>VRP<ul>
-<li>pgr_gsoc_vrppdtw</li>
+<li><p>VRP</p>
+<ul>
+<li><p>pgr_gsoc_vrppdtw</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li>TSP old signatures</li>
-<li>pgr_pointsAsPolygon</li>
-<li>pgr_alphaShape old signature</li>
+<li><p>TSP old signatures</p></li>
+<li><p>pgr_pointsAsPolygon</p></li>
+<li><p>pgr_alphaShape old signature</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-6-3-release-notes">
@@ -417,9 +445,9 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.3%22%20">Git closed milestone for 2.6.3</a> on Github.</p>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/1219">#1219</a> Implicit cast for via_path integer to text</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/1193">#1193</a> Fixed pgr_pointsAsPolygon breaking when comparing strings in WHERE clause</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/1185">#1185</a> Improve FindPostgreSQL.cmake</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/1219">#1219</a> Implicit cast for via_path integer to text</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/1193">#1193</a> Fixed pgr_pointsAsPolygon breaking when comparing strings in WHERE clause</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/1185">#1185</a> Improve FindPostgreSQL.cmake</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-6-2-release-notes">
@@ -427,47 +455,48 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.2%22%20">Git closed milestone for 2.6.2</a> on Github.</p>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1152">#1152</a> Fixes driving distance when vertex is not part of the graph</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1098">#1098</a> Fixes windows test</li>
-<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1165">#1165</a> Fixes build for python3 and perl5</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1152">#1152</a> Fixes driving distance when vertex is not part of the graph</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1098">#1098</a> Fixes windows test</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1165">#1165</a> Fixes build for python3 and perl5</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-6-1-release-notes">
 <span id="changelog-2-6-1"></span><h2>pgRouting 2.6.1 Release Notes<a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.1%22%20">Git closed milestone for 2.6.1</a> on Github.</p>
 <ul class="simple">
-<li>Fixes server crash on several functions.<ul>
-<li>pgr_floydWarshall</li>
-<li>pgr_johnson</li>
-<li>pgr_astar</li>
-<li>pgr_bdAstar</li>
-<li>pgr_bdDijstra</li>
-<li>pgr_alphashape</li>
-<li>pgr_dijkstraCostMatrix</li>
-<li>pgr_dijkstra</li>
-<li>pgr_dijkstraCost</li>
-<li>pgr_drivingDistance</li>
-<li>pgr_KSP</li>
-<li>pgr_dijkstraVia (proposed)</li>
-<li>pgr_boykovKolmogorov (proposed)</li>
-<li>pgr_edgeDisjointPaths (proposed)</li>
-<li>pgr_edmondsKarp (proposed)</li>
-<li>pgr_maxCardinalityMatch (proposed)</li>
-<li>pgr_maxFlow (proposed)</li>
-<li>pgr_withPoints (proposed)</li>
-<li>pgr_withPointsCost (proposed)</li>
-<li>pgr_withPointsKSP (proposed)</li>
-<li>pgr_withPointsDD (proposed)</li>
-<li>pgr_withPointsCostMatrix (proposed)</li>
-<li>pgr_contractGraph (experimental)</li>
-<li>pgr_pushRelabel (experimental)</li>
-<li>pgr_vrpOneDepot (experimental)</li>
-<li>pgr_gsoc_vrppdtw (experimental)</li>
-<li>Fixes for deprecated functions where also applied but not tested</li>
+<li><p>Fixes server crash on several functions.</p>
+<ul>
+<li><p>pgr_floydWarshall</p></li>
+<li><p>pgr_johnson</p></li>
+<li><p>pgr_astar</p></li>
+<li><p>pgr_bdAstar</p></li>
+<li><p>pgr_bdDijstra</p></li>
+<li><p>pgr_alphashape</p></li>
+<li><p>pgr_dijkstraCostMatrix</p></li>
+<li><p>pgr_dijkstra</p></li>
+<li><p>pgr_dijkstraCost</p></li>
+<li><p>pgr_drivingDistance</p></li>
+<li><p>pgr_KSP</p></li>
+<li><p>pgr_dijkstraVia (proposed)</p></li>
+<li><p>pgr_boykovKolmogorov (proposed)</p></li>
+<li><p>pgr_edgeDisjointPaths (proposed)</p></li>
+<li><p>pgr_edmondsKarp (proposed)</p></li>
+<li><p>pgr_maxCardinalityMatch (proposed)</p></li>
+<li><p>pgr_maxFlow (proposed)</p></li>
+<li><p>pgr_withPoints (proposed)</p></li>
+<li><p>pgr_withPointsCost (proposed)</p></li>
+<li><p>pgr_withPointsKSP (proposed)</p></li>
+<li><p>pgr_withPointsDD (proposed)</p></li>
+<li><p>pgr_withPointsCostMatrix (proposed)</p></li>
+<li><p>pgr_contractGraph (experimental)</p></li>
+<li><p>pgr_pushRelabel (experimental)</p></li>
+<li><p>pgr_vrpOneDepot (experimental)</p></li>
+<li><p>pgr_gsoc_vrppdtw (experimental)</p></li>
+<li><p>Fixes for deprecated functions where also applied but not tested</p></li>
 </ul>
 </li>
-<li>Removed compilation warning for g++8</li>
-<li>Fixed a fallthrugh on Astar and bdAstar.</li>
+<li><p>Removed compilation warning for g++8</p></li>
+<li><p>Fixed a fallthrugh on Astar and bdAstar.</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-6-0-release-notes">
@@ -475,18 +504,21 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.0%22%20">Git closed milestone for 2.6.0</a> on Github.</p>
 <p class="rubric">New fexperimental functions</p>
 <ul class="simple">
-<li>pgr_lineGraphFull</li>
+<li><p>pgr_lineGraphFull</p></li>
 </ul>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
-<li>Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean[,text])<ul>
-<li>without restrictions<ul>
-<li>calls pgr_dijkstra when both end points have a fraction IN (0,1)</li>
-<li>calls pgr_withPoints when at least one fraction NOT IN (0,1)</li>
+<li><p>Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean[,text])</p>
+<ul>
+<li><p>without restrictions</p>
+<ul>
+<li><p>calls pgr_dijkstra when both end points have a fraction IN (0,1)</p></li>
+<li><p>calls pgr_withPoints when at least one fraction NOT IN (0,1)</p></li>
 </ul>
 </li>
-<li>with restrictions<ul>
-<li>calls original trsp code</li>
+<li><p>with restrictions</p>
+<ul>
+<li><p>calls original trsp code</p></li>
 </ul>
 </li>
 </ul>
@@ -494,12 +526,13 @@
 </ul>
 <p class="rubric">Internal code</p>
 <ul class="simple">
-<li>Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [, text])<ul>
-<li>Removed the use of pointers</li>
-<li>Internal code can accept BIGINT</li>
+<li><p>Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [, text])</p>
+<ul>
+<li><p>Removed the use of pointers</p></li>
+<li><p>Internal code can accept BIGINT</p></li>
 </ul>
 </li>
-<li>Cleaned the internal code of withPoints</li>
+<li><p>Cleaned the internal code of withPoints</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-5-release-notes">
@@ -507,47 +540,48 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.5%22%20">Git closed milestone for 2.5.5</a> on Github.</p>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
-<li>Fixes driving distance when vertex is not part of the graph</li>
-<li>Fixes windows test</li>
-<li>Fixes build for python3 and perl5</li>
+<li><p>Fixes driving distance when vertex is not part of the graph</p></li>
+<li><p>Fixes windows test</p></li>
+<li><p>Fixes build for python3 and perl5</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-4-release-notes">
 <span id="changelog-2-5-4"></span><h2>pgRouting 2.5.4 Release Notes<a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Permalink to this headline">¶</a></h2>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.4%22%20">Git closed milestone for 2.5.4</a> on Github.</p>
 <ul class="simple">
-<li>Fixes server crash on several functions.<ul>
-<li>pgr_floydWarshall</li>
-<li>pgr_johnson</li>
-<li>pgr_astar</li>
-<li>pgr_bdAstar</li>
-<li>pgr_bdDijstra</li>
-<li>pgr_alphashape</li>
-<li>pgr_dijkstraCostMatrix</li>
-<li>pgr_dijkstra</li>
-<li>pgr_dijkstraCost</li>
-<li>pgr_drivingDistance</li>
-<li>pgr_KSP</li>
-<li>pgr_dijkstraVia (proposed)</li>
-<li>pgr_boykovKolmogorov (proposed)</li>
-<li>pgr_edgeDisjointPaths (proposed)</li>
-<li>pgr_edmondsKarp (proposed)</li>
-<li>pgr_maxCardinalityMatch (proposed)</li>
-<li>pgr_maxFlow (proposed)</li>
-<li>pgr_withPoints (proposed)</li>
-<li>pgr_withPointsCost (proposed)</li>
-<li>pgr_withPointsKSP (proposed)</li>
-<li>pgr_withPointsDD (proposed)</li>
-<li>pgr_withPointsCostMatrix (proposed)</li>
-<li>pgr_contractGraph (experimental)</li>
-<li>pgr_pushRelabel (experimental)</li>
-<li>pgr_vrpOneDepot (experimental)</li>
-<li>pgr_gsoc_vrppdtw (experimental)</li>
-<li>Fixes for deprecated functions where also applied but not tested</li>
+<li><p>Fixes server crash on several functions.</p>
+<ul>
+<li><p>pgr_floydWarshall</p></li>
+<li><p>pgr_johnson</p></li>
+<li><p>pgr_astar</p></li>
+<li><p>pgr_bdAstar</p></li>
+<li><p>pgr_bdDijstra</p></li>
+<li><p>pgr_alphashape</p></li>
+<li><p>pgr_dijkstraCostMatrix</p></li>
+<li><p>pgr_dijkstra</p></li>
+<li><p>pgr_dijkstraCost</p></li>
+<li><p>pgr_drivingDistance</p></li>
+<li><p>pgr_KSP</p></li>
+<li><p>pgr_dijkstraVia (proposed)</p></li>
+<li><p>pgr_boykovKolmogorov (proposed)</p></li>
+<li><p>pgr_edgeDisjointPaths (proposed)</p></li>
+<li><p>pgr_edmondsKarp (proposed)</p></li>
+<li><p>pgr_maxCardinalityMatch (proposed)</p></li>
+<li><p>pgr_maxFlow (proposed)</p></li>
+<li><p>pgr_withPoints (proposed)</p></li>
+<li><p>pgr_withPointsCost (proposed)</p></li>
+<li><p>pgr_withPointsKSP (proposed)</p></li>
+<li><p>pgr_withPointsDD (proposed)</p></li>
+<li><p>pgr_withPointsCostMatrix (proposed)</p></li>
+<li><p>pgr_contractGraph (experimental)</p></li>
+<li><p>pgr_pushRelabel (experimental)</p></li>
+<li><p>pgr_vrpOneDepot (experimental)</p></li>
+<li><p>pgr_gsoc_vrppdtw (experimental)</p></li>
+<li><p>Fixes for deprecated functions where also applied but not tested</p></li>
 </ul>
 </li>
-<li>Removed compilation warning for g++8</li>
-<li>Fixed a fallthrugh on Astar and bdAstar.</li>
+<li><p>Removed compilation warning for g++8</p></li>
+<li><p>Fixed a fallthrugh on Astar and bdAstar.</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-3-release-notes">
@@ -555,7 +589,7 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.3%22%20">Git closed milestone for 2.5.3</a> on Github.</p>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
-<li>Fix for postgresql 11: Removed a compilation error when compiling with postgreSQL</li>
+<li><p>Fix for postgresql 11: Removed a compilation error when compiling with postgreSQL</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-2-release-notes">
@@ -563,7 +597,7 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.2%22%20">Git closed milestone for 2.5.2</a> on Github.</p>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
-<li>Fix for postgresql 10.1: Removed a compiler condition</li>
+<li><p>Fix for postgresql 10.1: Removed a compiler condition</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-1-release-notes">
@@ -571,7 +605,7 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.1%22%20">Git closed milestone for 2.5.1</a> on Github.</p>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
-<li>Fixed prerequisite minimum version of: cmake</li>
+<li><p>Fixed prerequisite minimum version of: cmake</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-0-release-notes">
@@ -579,61 +613,62 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed">Git closed issues for 2.5.0</a> on Github.</p>
 <p class="rubric">enhancement:</p>
 <ul class="simple">
-<li>pgr_version is now on SQL language</li>
+<li><p>pgr_version is now on SQL language</p></li>
 </ul>
 <p class="rubric">Breaking change on:</p>
 <ul class="simple">
-<li>pgr_edgeDisjointPaths:<ul>
-<li>Added path_id, cost and agg_cost columns on the result</li>
-<li>Parameter names changed</li>
-<li>The many version results are the union of the one to one version</li>
+<li><p>pgr_edgeDisjointPaths:</p>
+<ul>
+<li><p>Added path_id, cost and agg_cost columns on the result</p></li>
+<li><p>Parameter names changed</p></li>
+<li><p>The many version results are the union of the one to one version</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">New Signatures:</p>
 <ul class="simple">
-<li>pgr_bdAstar(one to one)</li>
+<li><p>pgr_bdAstar(one to one)</p></li>
 </ul>
 <p class="rubric">New Proposed functions</p>
 <ul class="simple">
-<li>pgr_bdAstar(one to many)</li>
-<li>pgr_bdAstar(many to one)</li>
-<li>pgr_bdAstar(many to many)</li>
-<li>pgr_bdAstarCost(one to one)</li>
-<li>pgr_bdAstarCost(one to many)</li>
-<li>pgr_bdAstarCost(many to one)</li>
-<li>pgr_bdAstarCost(many to many)</li>
-<li>pgr_bdAstarCostMatrix</li>
-<li>pgr_bdDijkstra(one to many)</li>
-<li>pgr_bdDijkstra(many to one)</li>
-<li>pgr_bdDijkstra(many to many)</li>
-<li>pgr_bdDijkstraCost(one to one)</li>
-<li>pgr_bdDijkstraCost(one to many)</li>
-<li>pgr_bdDijkstraCost(many to one)</li>
-<li>pgr_bdDijkstraCost(many to many)</li>
-<li>pgr_bdDijkstraCostMatrix</li>
-<li>pgr_lineGraph</li>
-<li>pgr_lineGraphFull</li>
-<li>pgr_connectedComponents</li>
-<li>pgr_strongComponents</li>
-<li>pgr_biconnectedComponents</li>
-<li>pgr_articulationPoints</li>
-<li>pgr_bridges</li>
+<li><p>pgr_bdAstar(one to many)</p></li>
+<li><p>pgr_bdAstar(many to one)</p></li>
+<li><p>pgr_bdAstar(many to many)</p></li>
+<li><p>pgr_bdAstarCost(one to one)</p></li>
+<li><p>pgr_bdAstarCost(one to many)</p></li>
+<li><p>pgr_bdAstarCost(many to one)</p></li>
+<li><p>pgr_bdAstarCost(many to many)</p></li>
+<li><p>pgr_bdAstarCostMatrix</p></li>
+<li><p>pgr_bdDijkstra(one to many)</p></li>
+<li><p>pgr_bdDijkstra(many to one)</p></li>
+<li><p>pgr_bdDijkstra(many to many)</p></li>
+<li><p>pgr_bdDijkstraCost(one to one)</p></li>
+<li><p>pgr_bdDijkstraCost(one to many)</p></li>
+<li><p>pgr_bdDijkstraCost(many to one)</p></li>
+<li><p>pgr_bdDijkstraCost(many to many)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix</p></li>
+<li><p>pgr_lineGraph</p></li>
+<li><p>pgr_lineGraphFull</p></li>
+<li><p>pgr_connectedComponents</p></li>
+<li><p>pgr_strongComponents</p></li>
+<li><p>pgr_biconnectedComponents</p></li>
+<li><p>pgr_articulationPoints</p></li>
+<li><p>pgr_bridges</p></li>
 </ul>
 <p class="rubric">Deprecated Signatures</p>
 <ul class="simple">
-<li>pgr_bdastar - use pgr_bdAstar instead</li>
+<li><p>pgr_bdastar - use pgr_bdAstar instead</p></li>
 </ul>
 <p class="rubric">Renamed Functions</p>
 <ul class="simple">
-<li>pgr_maxFlowPushRelabel - use pgr_pushRelabel instead</li>
-<li>pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead</li>
-<li>pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead</li>
-<li>pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead</li>
+<li><p>pgr_maxFlowPushRelabel - use pgr_pushRelabel instead</p></li>
+<li><p>pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead</p></li>
+<li><p>pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead</p></li>
 </ul>
 <p class="rubric">Deprecated function</p>
 <ul class="simple">
-<li>pgr_pointToEdgeNode</li>
+<li><p>pgr_pointToEdgeNode</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-4-2-release-notes">
@@ -641,12 +676,12 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.2%22%20">Git closed milestone for 2.4.2</a> on Github.</p>
 <p class="rubric">Improvement</p>
 <ul class="simple">
-<li>Works for postgreSQL 10</li>
+<li><p>Works for postgreSQL 10</p></li>
 </ul>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
-<li>Fixed: Unexpected error column “cname”</li>
-<li>Replace __linux__ with __GLIBC__ for glibc-specific headers and functions</li>
+<li><p>Fixed: Unexpected error column “cname”</p></li>
+<li><p>Replace __linux__ with __GLIBC__ for glibc-specific headers and functions</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-4-1-release-notes">
@@ -654,8 +689,8 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.1%22%20">Git closed milestone for 2.4.1</a> on Github.</p>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
-<li>Fixed compiling error on macOS</li>
-<li>Condition error on pgr_withPoints</li>
+<li><p>Fixed compiling error on macOS</p></li>
+<li><p>Condition error on pgr_withPoints</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-4-0-release-notes">
@@ -663,35 +698,36 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed">Git closed issues for 2.4.0</a> on Github.</p>
 <p class="rubric">New Signatures</p>
 <ul class="simple">
-<li>pgr_bdDijkstra</li>
+<li><p>pgr_bdDijkstra</p></li>
 </ul>
 <p class="rubric">New Proposed Signatures</p>
 <ul class="simple">
-<li>pgr_maxFlow</li>
-<li>pgr_astar(one to many)</li>
-<li>pgr_astar(many to one)</li>
-<li>pgr_astar(many to many)</li>
-<li>pgr_astarCost(one to one)</li>
-<li>pgr_astarCost(one to many)</li>
-<li>pgr_astarCost(many to one)</li>
-<li>pgr_astarCost(many to many)</li>
-<li>pgr_astarCostMatrix</li>
+<li><p>pgr_maxFlow</p></li>
+<li><p>pgr_astar(one to many)</p></li>
+<li><p>pgr_astar(many to one)</p></li>
+<li><p>pgr_astar(many to many)</p></li>
+<li><p>pgr_astarCost(one to one)</p></li>
+<li><p>pgr_astarCost(one to many)</p></li>
+<li><p>pgr_astarCost(many to one)</p></li>
+<li><p>pgr_astarCost(many to many)</p></li>
+<li><p>pgr_astarCostMatrix</p></li>
 </ul>
 <p class="rubric">Deprecated Signatures</p>
 <ul class="simple">
-<li>pgr_bddijkstra - use pgr_bdDijkstra instead</li>
+<li><p>pgr_bddijkstra - use pgr_bdDijkstra instead</p></li>
 </ul>
 <p class="rubric">Deprecated Functions</p>
 <ul class="simple">
-<li>pgr_pointsToVids</li>
+<li><p>pgr_pointsToVids</p></li>
 </ul>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
-<li>Bug fixes on proposed functions<ul>
-<li>pgr_withPointsKSP: fixed ordering</li>
+<li><p>Bug fixes on proposed functions</p>
+<ul>
+<li><p>pgr_withPointsKSP: fixed ordering</p></li>
 </ul>
 </li>
-<li>TRSP original code is used with no changes on the compilation warnings</li>
+<li><p>TRSP original code is used with no changes on the compilation warnings</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-3-2-release-notes">
@@ -699,10 +735,11 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed">Git closed issues for 2.3.2</a> on Github.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
-<li>Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck.</li>
-<li>Fixed pgr_trsp:<ul>
-<li>Alternate code is not executed when the point is in reality a vertex</li>
-<li>Fixed ambiguity on seq</li>
+<li><p>Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck.</p></li>
+<li><p>Fixed pgr_trsp:</p>
+<ul>
+<li><p>Alternate code is not executed when the point is in reality a vertex</p></li>
+<li><p>Fixed ambiguity on seq</p></li>
 </ul>
 </li>
 </ul>
@@ -712,9 +749,9 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed">Git closed issues for 2.3.1</a> on Github.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
-<li>Leaks on proposed max_flow functions</li>
-<li>Regression error on pgr_trsp</li>
-<li>Types discrepancy on pgr_createVerticesTable</li>
+<li><p>Leaks on proposed max_flow functions</p></li>
+<li><p>Regression error on pgr_trsp</p></li>
+<li><p>Types discrepancy on pgr_createVerticesTable</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-3-0-release-notes">
@@ -722,47 +759,47 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed">Git closed issues for 2.3.0</a> on Github.</p>
 <p class="rubric">New Signatures</p>
 <ul class="simple">
-<li>pgr_TSP</li>
-<li>pgr_aStar</li>
+<li><p>pgr_TSP</p></li>
+<li><p>pgr_aStar</p></li>
 </ul>
 <p class="rubric">New Functions</p>
 <ul class="simple">
-<li>pgr_eucledianTSP</li>
+<li><p>pgr_eucledianTSP</p></li>
 </ul>
 <p class="rubric">New Proposed functions</p>
 <ul class="simple">
-<li>pgr_dijkstraCostMatrix</li>
-<li>pgr_withPointsCostMatrix</li>
-<li>pgr_maxFlowPushRelabel(one to one)</li>
-<li>pgr_maxFlowPushRelabel(one to many)</li>
-<li>pgr_maxFlowPushRelabel(many to one)</li>
-<li>pgr_maxFlowPushRelabel(many to many)</li>
-<li>pgr_maxFlowEdmondsKarp(one to one)</li>
-<li>pgr_maxFlowEdmondsKarp(one to many)</li>
-<li>pgr_maxFlowEdmondsKarp(many to one)</li>
-<li>pgr_maxFlowEdmondsKarp(many to many)</li>
-<li>pgr_maxFlowBoykovKolmogorov (one to one)</li>
-<li>pgr_maxFlowBoykovKolmogorov (one to many)</li>
-<li>pgr_maxFlowBoykovKolmogorov (many to one)</li>
-<li>pgr_maxFlowBoykovKolmogorov (many to many)</li>
-<li>pgr_maximumCardinalityMatching</li>
-<li>pgr_edgeDisjointPaths(one to one)</li>
-<li>pgr_edgeDisjointPaths(one to many)</li>
-<li>pgr_edgeDisjointPaths(many to one)</li>
-<li>pgr_edgeDisjointPaths(many to many)</li>
-<li>pgr_contractGraph</li>
+<li><p>pgr_dijkstraCostMatrix</p></li>
+<li><p>pgr_withPointsCostMatrix</p></li>
+<li><p>pgr_maxFlowPushRelabel(one to one)</p></li>
+<li><p>pgr_maxFlowPushRelabel(one to many)</p></li>
+<li><p>pgr_maxFlowPushRelabel(many to one)</p></li>
+<li><p>pgr_maxFlowPushRelabel(many to many)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(one to one)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(one to many)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(many to one)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(many to many)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (one to one)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (one to many)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (many to one)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (many to many)</p></li>
+<li><p>pgr_maximumCardinalityMatching</p></li>
+<li><p>pgr_edgeDisjointPaths(one to one)</p></li>
+<li><p>pgr_edgeDisjointPaths(one to many)</p></li>
+<li><p>pgr_edgeDisjointPaths(many to one)</p></li>
+<li><p>pgr_edgeDisjointPaths(many to many)</p></li>
+<li><p>pgr_contractGraph</p></li>
 </ul>
 <p class="rubric">Deprecated Signatures</p>
 <ul class="simple">
-<li>pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead</li>
-<li>pgr_astar - use pgr_aStar instead</li>
+<li><p>pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead</p></li>
+<li><p>pgr_astar - use pgr_aStar instead</p></li>
 </ul>
 <p class="rubric">Deprecated Functions</p>
 <ul class="simple">
-<li>pgr_flip_edges</li>
-<li>pgr_vidsToDmatrix</li>
-<li>pgr_pointsToDMatrix</li>
-<li>pgr_textToPoints</li>
+<li><p>pgr_flip_edges</p></li>
+<li><p>pgr_vidsToDmatrix</p></li>
+<li><p>pgr_pointsToDMatrix</p></li>
+<li><p>pgr_textToPoints</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-4-release-notes">
@@ -770,9 +807,9 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed">Git closed issues for 2.2.4</a> on Github.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
-<li>Bogus uses of extern “C”</li>
-<li>Build error on Fedora 24 + GCC 6.0</li>
-<li>Regression error pgr_nodeNetwork</li>
+<li><p>Bogus uses of extern “C”</p></li>
+<li><p>Build error on Fedora 24 + GCC 6.0</p></li>
+<li><p>Regression error pgr_nodeNetwork</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-3-release-notes">
@@ -780,7 +817,7 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed">Git closed issues for 2.2.3</a> on Github.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
-<li>Fixed compatibility issues with PostgreSQL 9.6.</li>
+<li><p>Fixed compatibility issues with PostgreSQL 9.6.</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-2-release-notes">
@@ -788,7 +825,7 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed">Git closed issues for 2.2.2</a> on Github.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
-<li>Fixed regression error on pgr_drivingDistance</li>
+<li><p>Fixed regression error on pgr_drivingDistance</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-1-release-notes">
@@ -796,8 +833,8 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed">Git closed issues for 2.2.1</a> on Github.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
-<li>Server crash fix on pgr_alphaShape</li>
-<li>Bug fix on With Points family of functions</li>
+<li><p>Server crash fix on pgr_alphaShape</p></li>
+<li><p>Bug fix on With Points family of functions</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-0-release-notes">
@@ -805,49 +842,51 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed">Git closed issues for 2.2.0</a> on Github.</p>
 <p class="rubric">Improvements</p>
 <ul class="simple">
-<li>pgr_nodeNetwork<ul>
-<li>Adding a row_where and outall optional parameters</li>
+<li><p>pgr_nodeNetwork</p>
+<ul>
+<li><p>Adding a row_where and outall optional parameters</p></li>
 </ul>
 </li>
-<li>Signature fix<ul>
-<li>pgr_dijkstra  – to match what is documented</li>
+<li><p>Signature fix</p>
+<ul>
+<li><p>pgr_dijkstra  – to match what is documented</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">New Functions</p>
 <ul class="simple">
-<li>pgr_floydWarshall</li>
-<li>pgr_Johnson</li>
-<li>pgr_dijkstraCost(one to one)</li>
-<li>pgr_dijkstraCost(one to many)</li>
-<li>pgr_dijkstraCost(many to one)</li>
-<li>pgr_dijkstraCost(many to many)</li>
+<li><p>pgr_floydWarshall</p></li>
+<li><p>pgr_Johnson</p></li>
+<li><p>pgr_dijkstraCost(one to one)</p></li>
+<li><p>pgr_dijkstraCost(one to many)</p></li>
+<li><p>pgr_dijkstraCost(many to one)</p></li>
+<li><p>pgr_dijkstraCost(many to many)</p></li>
 </ul>
 <p class="rubric">Proposed functionality</p>
 <ul class="simple">
-<li>pgr_withPoints(one to one)</li>
-<li>pgr_withPoints(one to many)</li>
-<li>pgr_withPoints(many to one)</li>
-<li>pgr_withPoints(many to many)</li>
-<li>pgr_withPointsCost(one to one)</li>
-<li>pgr_withPointsCost(one to many)</li>
-<li>pgr_withPointsCost(many to one)</li>
-<li>pgr_withPointsCost(many to many)</li>
-<li>pgr_withPointsDD(single vertex)</li>
-<li>pgr_withPointsDD(multiple vertices)</li>
-<li>pgr_withPointsKSP</li>
-<li>pgr_dijkstraVia</li>
+<li><p>pgr_withPoints(one to one)</p></li>
+<li><p>pgr_withPoints(one to many)</p></li>
+<li><p>pgr_withPoints(many to one)</p></li>
+<li><p>pgr_withPoints(many to many)</p></li>
+<li><p>pgr_withPointsCost(one to one)</p></li>
+<li><p>pgr_withPointsCost(one to many)</p></li>
+<li><p>pgr_withPointsCost(many to one)</p></li>
+<li><p>pgr_withPointsCost(many to many)</p></li>
+<li><p>pgr_withPointsDD(single vertex)</p></li>
+<li><p>pgr_withPointsDD(multiple vertices)</p></li>
+<li><p>pgr_withPointsKSP</p></li>
+<li><p>pgr_dijkstraVia</p></li>
 </ul>
 <p class="rubric">Deprecated functions:</p>
 <ul class="simple">
-<li>pgr_apspWarshall  use pgr_floydWarshall instead</li>
-<li>pgr_apspJohnson   use pgr_Johnson instead</li>
-<li>pgr_kDijkstraCost use pgr_dijkstraCost instead</li>
-<li>pgr_kDijkstraPath use pgr_dijkstra instead</li>
+<li><p>pgr_apspWarshall  use pgr_floydWarshall instead</p></li>
+<li><p>pgr_apspJohnson   use pgr_Johnson instead</p></li>
+<li><p>pgr_kDijkstraCost use pgr_dijkstraCost instead</p></li>
+<li><p>pgr_kDijkstraPath use pgr_dijkstra instead</p></li>
 </ul>
 <p class="rubric">Renamed and deprecated function</p>
 <ul class="simple">
-<li>pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix</li>
+<li><p>pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-1-0-release-notes">
@@ -855,75 +894,79 @@
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed">Git closed issues for 2.1.0</a> on Github.</p>
 <p class="rubric">New Signatures</p>
 <ul class="simple">
-<li>pgr_dijkstra(one to many)</li>
-<li>pgr_dijkstra(many to one)</li>
-<li>pgr_dijkstra(many to many)</li>
-<li>pgr_drivingDistance(multiple vertices)</li>
+<li><p>pgr_dijkstra(one to many)</p></li>
+<li><p>pgr_dijkstra(many to one)</p></li>
+<li><p>pgr_dijkstra(many to many)</p></li>
+<li><p>pgr_drivingDistance(multiple vertices)</p></li>
 </ul>
 <p class="rubric">Refactored</p>
 <ul class="simple">
-<li>pgr_dijkstra(one to one)</li>
-<li>pgr_ksp</li>
-<li>pgr_drivingDistance(single vertex)</li>
+<li><p>pgr_dijkstra(one to one)</p></li>
+<li><p>pgr_ksp</p></li>
+<li><p>pgr_drivingDistance(single vertex)</p></li>
 </ul>
 <p class="rubric">Improvements</p>
 <ul class="simple">
-<li>pgr_alphaShape function now can generate better (multi)polygon with holes and alpha parameter.</li>
+<li><p>pgr_alphaShape function now can generate better (multi)polygon with holes and alpha parameter.</p></li>
 </ul>
 <p class="rubric">Proposed functionality</p>
 <ul class="simple">
-<li>Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)<ul>
-<li>pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.</li>
-<li>pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.</li>
-<li>pgr_textToPoints - convert a string of x,y;x,y;… locations into point geometries.</li>
-<li>pgr_pointsToVids - convert an array of point geometries into vertex ids.</li>
-<li>pgr_pointsToDMatrix - Create a distance matrix from an array of points.</li>
-<li>pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.</li>
-<li>pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.</li>
+<li><p>Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)</p>
+<ul>
+<li><p>pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.</p></li>
+<li><p>pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.</p></li>
+<li><p>pgr_textToPoints - convert a string of x,y;x,y;… locations into point geometries.</p></li>
+<li><p>pgr_pointsToVids - convert an array of point geometries into vertex ids.</p></li>
+<li><p>pgr_pointsToDMatrix - Create a distance matrix from an array of points.</p></li>
+<li><p>pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.</p></li>
+<li><p>pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.</p></li>
 </ul>
 </li>
-<li>Added proposed functions from GSoc Projects:<ul>
-<li>pgr_vrppdtw</li>
-<li>pgr_vrponedepot</li>
+<li><p>Added proposed functions from GSoc Projects:</p>
+<ul>
+<li><p>pgr_vrppdtw</p></li>
+<li><p>pgr_vrponedepot</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Deprecated functions</p>
 <ul class="simple">
-<li>pgr_getColumnName</li>
-<li>pgr_getTableName</li>
-<li>pgr_isColumnCndexed</li>
-<li>pgr_isColumnInTable</li>
-<li>pgr_quote_ident</li>
-<li>pgr_versionless</li>
-<li>pgr_startPoint</li>
-<li>pgr_endPoint</li>
-<li>pgr_pointToId</li>
+<li><p>pgr_getColumnName</p></li>
+<li><p>pgr_getTableName</p></li>
+<li><p>pgr_isColumnCndexed</p></li>
+<li><p>pgr_isColumnInTable</p></li>
+<li><p>pgr_quote_ident</p></li>
+<li><p>pgr_versionless</p></li>
+<li><p>pgr_startPoint</p></li>
+<li><p>pgr_endPoint</p></li>
+<li><p>pgr_pointToId</p></li>
 </ul>
 <p class="rubric">No longer supported</p>
 <ul class="simple">
-<li>Removed the 1.x legacy functions</li>
+<li><p>Removed the 1.x legacy functions</p></li>
 </ul>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
-<li>Some bug fixes in other functions</li>
+<li><p>Some bug fixes in other functions</p></li>
 </ul>
 <p class="rubric">Refactoring Internal Code</p>
 <ul class="simple">
-<li>A C and C++ library for developer was created<ul>
-<li>encapsulates postgreSQL related functions</li>
-<li>encapsulates Boost.Graph graphs<ul>
-<li>Directed Boost.Graph</li>
-<li>Undirected Boost.graph.</li>
+<li><p>A C and C++ library for developer was created</p>
+<ul>
+<li><p>encapsulates postgreSQL related functions</p></li>
+<li><p>encapsulates Boost.Graph graphs</p>
+<ul>
+<li><p>Directed Boost.Graph</p></li>
+<li><p>Undirected Boost.graph.</p></li>
 </ul>
 </li>
-<li>allow any-integer in the id’s</li>
-<li>allow any-numerical on the cost/reverse_cost columns</li>
+<li><p>allow any-integer in the id’s</p></li>
+<li><p>allow any-numerical on the cost/reverse_cost columns</p></li>
 </ul>
 </li>
-<li>Instead of generating many libraries:
+<li><p>Instead of generating many libraries:
 - All functions are encapsulated in one library
-- The library has the prefix 2-1-0</li>
+- The library has the prefix 2-1-0</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-0-1-release-notes">
@@ -931,7 +974,7 @@
 <p>Minor bug fixes.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
-<li>No track of the bug fixes were kept.</li>
+<li><p>No track of the bug fixes were kept.</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-0-0-release-notes">
@@ -940,43 +983,43 @@
 <p>With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to <a class="reference internal" href="#changelog-1-x"><span class="std std-ref">pgRouting 1.x</span></a> releases.
 The main Goals for this release are:</p>
 <ul class="simple">
-<li>Major restructuring of pgRouting.</li>
-<li>Standardization of the function naming</li>
-<li>Preparation of the project for future development.</li>
+<li><p>Major restructuring of pgRouting.</p></li>
+<li><p>Standardization of the function naming</p></li>
+<li><p>Preparation of the project for future development.</p></li>
 </ul>
 <p>As a result of this effort:</p>
 <ul class="simple">
-<li>pgRouting has a simplified structure</li>
-<li>Significant new functionality has being added</li>
-<li>Documentation has being integrated</li>
-<li>Testing has being integrated</li>
-<li>And made it easier for multiple developers to make contributions.</li>
+<li><p>pgRouting has a simplified structure</p></li>
+<li><p>Significant new functionality has being added</p></li>
+<li><p>Documentation has being integrated</p></li>
+<li><p>Testing has being integrated</p></li>
+<li><p>And made it easier for multiple developers to make contributions.</p></li>
 </ul>
 <p class="rubric">Important Changes</p>
 <ul class="simple">
-<li>Graph Analytics - tools for detecting and fixing connection some problems in a graph</li>
-<li>A collection of useful utility functions</li>
-<li>Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)</li>
-<li>Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, pgr_bdDijkstra)</li>
-<li>One to many nodes search (pgr_kDijkstra)</li>
-<li>K alternate paths shortest path (pgr_ksp)</li>
-<li>New TSP solver that simplifies the code and the build process (pgr_tsp), dropped “Gaul Library” dependency</li>
-<li>Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star</li>
-<li>Dropped support for Shooting Star</li>
-<li>Built a test infrastructure that is run before major code changes are checked in</li>
-<li>Tested and fixed most all of the outstanding bugs reported against 1.x that existing in the 2.0-dev code base.</li>
-<li>Improved build process for Windows</li>
-<li>Automated testing on Linux and Windows platforms trigger by every commit</li>
-<li>Modular library design</li>
-<li>Compatibility with PostgreSQL 9.1 or newer</li>
-<li>Compatibility with PostGIS 2.0 or newer</li>
-<li>Installs as PostgreSQL EXTENSION</li>
-<li>Return types re factored and unified</li>
-<li>Support for table SCHEMA in function parameters</li>
-<li>Support for <code class="docutils literal notranslate"><span class="pre">st_</span></code> PostGIS function prefix</li>
-<li>Added <code class="docutils literal notranslate"><span class="pre">pgr_</span></code> prefix to functions and types</li>
-<li>Better documentation: <a class="reference external" href="https://docs.pgrouting.org">https://docs.pgrouting.org</a></li>
-<li>shooting_star is discontinued</li>
+<li><p>Graph Analytics - tools for detecting and fixing connection some problems in a graph</p></li>
+<li><p>A collection of useful utility functions</p></li>
+<li><p>Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)</p></li>
+<li><p>Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, pgr_bdDijkstra)</p></li>
+<li><p>One to many nodes search (pgr_kDijkstra)</p></li>
+<li><p>K alternate paths shortest path (pgr_ksp)</p></li>
+<li><p>New TSP solver that simplifies the code and the build process (pgr_tsp), dropped “Gaul Library” dependency</p></li>
+<li><p>Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star</p></li>
+<li><p>Dropped support for Shooting Star</p></li>
+<li><p>Built a test infrastructure that is run before major code changes are checked in</p></li>
+<li><p>Tested and fixed most all of the outstanding bugs reported against 1.x that existing in the 2.0-dev code base.</p></li>
+<li><p>Improved build process for Windows</p></li>
+<li><p>Automated testing on Linux and Windows platforms trigger by every commit</p></li>
+<li><p>Modular library design</p></li>
+<li><p>Compatibility with PostgreSQL 9.1 or newer</p></li>
+<li><p>Compatibility with PostGIS 2.0 or newer</p></li>
+<li><p>Installs as PostgreSQL EXTENSION</p></li>
+<li><p>Return types re factored and unified</p></li>
+<li><p>Support for table SCHEMA in function parameters</p></li>
+<li><p>Support for <code class="docutils literal notranslate"><span class="pre">st_</span></code> PostGIS function prefix</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">pgr_</span></code> prefix to functions and types</p></li>
+<li><p>Better documentation: <a class="reference external" href="https://docs.pgrouting.org">https://docs.pgrouting.org</a></p></li>
+<li><p>shooting_star is discontinued</p></li>
 </ul>
 </div>
 <div class="section" id="pgrouting-1-x-release-notes">
@@ -986,64 +1029,64 @@ The following release notes have been copied from the previous <code class="docu
 <div class="section" id="changes-for-release-1-05">
 <h3>Changes for release 1.05<a class="headerlink" href="#changes-for-release-1-05" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Bug fixes</li>
+<li><p>Bug fixes</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-03">
 <h3>Changes for release 1.03<a class="headerlink" href="#changes-for-release-1-03" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Much faster topology creation</li>
-<li>Bug fixes</li>
+<li><p>Much faster topology creation</p></li>
+<li><p>Bug fixes</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-02">
 <h3>Changes for release 1.02<a class="headerlink" href="#changes-for-release-1-02" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Shooting* bug fixes</li>
-<li>Compilation problems solved</li>
+<li><p>Shooting* bug fixes</p></li>
+<li><p>Compilation problems solved</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-01">
 <h3>Changes for release 1.01<a class="headerlink" href="#changes-for-release-1-01" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Shooting* bug fixes</li>
+<li><p>Shooting* bug fixes</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-0">
 <h3>Changes for release 1.0<a class="headerlink" href="#changes-for-release-1-0" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Core and extra functions are separated</li>
-<li>Cmake build process</li>
-<li>Bug fixes</li>
+<li><p>Core and extra functions are separated</p></li>
+<li><p>Cmake build process</p></li>
+<li><p>Bug fixes</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-0-0b">
 <h3>Changes for release 1.0.0b<a class="headerlink" href="#changes-for-release-1-0-0b" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Additional SQL file with more simple names for wrapper functions</li>
-<li>Bug fixes</li>
+<li><p>Additional SQL file with more simple names for wrapper functions</p></li>
+<li><p>Bug fixes</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-0-0a">
 <h3>Changes for release 1.0.0a<a class="headerlink" href="#changes-for-release-1-0-0a" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Shooting* shortest path algorithm for real road networks</li>
-<li>Several SQL bugs were fixed</li>
+<li><p>Shooting* shortest path algorithm for real road networks</p></li>
+<li><p>Several SQL bugs were fixed</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-0-9-9">
 <h3>Changes for release 0.9.9<a class="headerlink" href="#changes-for-release-0-9-9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>PostgreSQL 8.2 support</li>
-<li>Shortest path functions return empty result if they could not find any path</li>
+<li><p>PostgreSQL 8.2 support</p></li>
+<li><p>Shortest path functions return empty result if they could not find any path</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-0-9-8">
 <h3>Changes for release 0.9.8<a class="headerlink" href="#changes-for-release-0-9-8" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Renumbering scheme was added to shortest path functions</li>
-<li>Directed shortest path functions were added</li>
-<li>routing_postgis.sql was modified to use dijkstra in TSP search</li>
+<li><p>Renumbering scheme was added to shortest path functions</p></li>
+<li><p>Directed shortest path functions were added</p></li>
+<li><p>routing_postgis.sql was modified to use dijkstra in TSP search</p></li>
 </ul>
 </div>
 </div>
@@ -1061,9 +1104,9 @@ The following release notes have been copied from the previous <code class="docu
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.4.<br/>
-      Last updated on Dec 19, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.5.<br/>
+      Last updated on Jan 23, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

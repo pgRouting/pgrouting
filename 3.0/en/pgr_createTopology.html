@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_createTopology &#8212; pgRouting Manual (3.0)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,6 +23,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.5</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -144,38 +144,39 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-createtopology">
 <h1>pgr_createTopology<a class="headerlink" href="#pgr-createtopology" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code> — Builds a network topology based on the geometry information.</p>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li>Version 2.0.0<ul>
-<li>Renamed from version 1.x</li>
-<li><strong>Official</strong> function</li>
+<li><p>Version 2.0.0</p>
+<ul>
+<li><p>Renamed from version 1.x</p></li>
+<li><p><strong>Official</strong> function</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Support</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
+<li><p><strong>Supported versions:</strong>
 current(<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_createTopology.html">3.0</a>)
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_createTopology.html">2.6</a></li>
-<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_createTopology.html">2.6</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_createTopology.html">2.5</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_createTopology.html">2.4</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createTopology.html">2.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createTopology.html">2.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_topology.html">2.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_topology.html">2.0</a></li>
+<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_topology.html">2.0</a></p></li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The function returns:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the network topology has been built and the vertices table created.</li>
-<li><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the network topology was not built due to an error.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the network topology has been built and the vertices table created.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the network topology was not built due to an error.</p></li>
 </ul>
 </div>
 <div class="section" id="signatures">
@@ -190,40 +191,46 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pg
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p>The topology creation function accepts the following parameters:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edge_table:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name AS well)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">tolerance:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">float8</span></code> Snapping tolerance of disconnected edges. (in projection unit)</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>  Geometry column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>  Primary key column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">id</span></code>.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code> Source column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">source</span></code>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">target:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>  Target column name of the network table.  Default value is <code class="docutils literal notranslate"><span class="pre">target</span></code>.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">rows_where:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condition to SELECT a subset or rows.  Default value is <code class="docutils literal notranslate"><span class="pre">true</span></code> to indicate
-all rows that where <code class="docutils literal notranslate"><span class="pre">source</span></code> or <code class="docutils literal notranslate"><span class="pre">target</span></code> have a null value, otherwise the condition is used.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">clean:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">boolean</span></code> Clean any previous topology.  Default value is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">edge_table</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name AS well)</p>
+</dd>
+<dt class="field-even">tolerance</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> Snapping tolerance of disconnected edges. (in projection unit)</p>
+</dd>
+<dt class="field-odd">the_geom</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Geometry column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</p>
+</dd>
+<dt class="field-even">id</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Primary key column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+</dd>
+<dt class="field-odd">source</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Source column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p>
+</dd>
+<dt class="field-even">target</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Target column name of the network table.  Default value is <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+</dd>
+<dt class="field-odd">rows_where</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condition to SELECT a subset or rows.  Default value is <code class="docutils literal notranslate"><span class="pre">true</span></code> to indicate
+all rows that where <code class="docutils literal notranslate"><span class="pre">source</span></code> or <code class="docutils literal notranslate"><span class="pre">target</span></code> have a null value, otherwise the condition is used.</p>
+</dd>
+<dt class="field-even">clean</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> Clean any previous topology.  Default value is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</dd>
+</dl>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">edge_table</span></code> will be affected</p>
-<ul class="last simple">
-<li>The <code class="docutils literal notranslate"><span class="pre">source</span></code> column values will change.</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">target</span></code> column values will change.<ul>
-<li>An index will be created, if it doesn’t exists, to speed up the process to the following columns:<ul>
-<li><code class="docutils literal notranslate"><span class="pre">id</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">the_geom</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">source</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">target</span></code></li>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">source</span></code> column values will change.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">target</span></code> column values will change.</p>
+<ul>
+<li><p>An index will be created, if it doesn’t exists, to speed up the process to the following columns:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">the_geom</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -232,41 +239,45 @@ all rows that where <code class="docutils literal notranslate"><span class="pre"
 </div>
 <p>The function returns:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the network topology has been built.<ul>
-<li>Creates a vertices table: &lt;edge_table&gt;_vertices_pgr.</li>
-<li>Fills <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> columns of the vertices table.</li>
-<li>Fills the source and target columns of the edge table referencing the <code class="docutils literal notranslate"><span class="pre">id</span></code> of the vertices table.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the network topology has been built.</p>
+<ul>
+<li><p>Creates a vertices table: &lt;edge_table&gt;_vertices_pgr.</p></li>
+<li><p>Fills <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> columns of the vertices table.</p></li>
+<li><p>Fills the source and target columns of the edge table referencing the <code class="docutils literal notranslate"><span class="pre">id</span></code> of the vertices table.</p></li>
 </ul>
 </li>
-<li><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the network topology was not built due to an error:<ul>
-<li>A required column of the Network table is not found or is not of the appropriate type.</li>
-<li>The condition is not well formed.</li>
-<li>The names of source , target or id are the same.</li>
-<li>The SRID of the geometry could not be determined.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the network topology was not built due to an error:</p>
+<ul>
+<li><p>A required column of the Network table is not found or is not of the appropriate type.</p></li>
+<li><p>The condition is not well formed.</p></li>
+<li><p>The names of source , target or id are the same.</p></li>
+<li><p>The SRID of the geometry could not be determined.</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">The Vertices Table</p>
 <p>The vertices table is a requirement of the <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> and the <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> functions.</p>
 <p>The structure of the vertices table is:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Identifier of the vertex.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">cnt:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex. See <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">chk:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem. See <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ein:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex AS incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">eout:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex AS outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">the_geom:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Point geometry of the vertex.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">id</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Identifier of the vertex.</p>
+</dd>
+<dt class="field-even">cnt</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex. See <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
+</dd>
+<dt class="field-odd">chk</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem. See <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
+</dd>
+<dt class="field-even">ein</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex AS incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
+</dd>
+<dt class="field-odd">eout</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex AS outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
+</dd>
+<dt class="field-even">the_geom</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Point geometry of the vertex.</p>
+</dd>
+</dl>
 <div class="section" id="usage-when-the-edge-table-s-columns-match-the-default-values">
 <h3>Usage when the edge table’s columns MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this headline">¶</a></h3>
 <p>The simplest way to use pgr_createTopology is:</p>
@@ -306,13 +317,13 @@ all rows that where <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <div class="line-block">
 <div class="line">An error would occur when the arguments are not given in the appropriate order:</div>
 <div class="line">In this example, the column <code class="docutils literal notranslate"><span class="pre">id</span></code> of the table <code class="docutils literal notranslate"><span class="pre">ege_table</span></code> is passed to the function as the geometry column,</div>
 <div class="line">and the geometry column <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> is passed to the function as the id column.</div>
 </div>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
     <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
@@ -408,13 +419,13 @@ And The order of the parameters would not matter.</p>
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <div class="line-block">
 <div class="line">An error would occur when the arguments are not given in the appropiriate order:</div>
 <div class="line">In this example, the column <code class="docutils literal notranslate"><span class="pre">gid</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code> is passed to the function AS the geometry column,</div>
 <div class="line">and the geometry column <code class="docutils literal notranslate"><span class="pre">mygeom</span></code> is passed to the function AS the id column.</div>
 </div>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -498,14 +509,11 @@ The order of the parameters do not matter:</p>
 </div>
 <div class="section" id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">With full output</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>With full output</p>
+</dd>
+</dl>
 <p>This example start a clean topology, with 5 edges, and then its incremented to the rest of the edges.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>  <span class="mf">0.001</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 6&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -542,14 +550,14 @@ The order of the parameters do not matter:</p>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a> for an overview of a topology for routing algorithms.</li>
-<li><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to reconstruct the vertices table based on the source and target information.</li>
-<li><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> to analyze the edges and vertices of the edge table.</li>
+<li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a> for an overview of a topology for routing algorithms.</p></li>
+<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to reconstruct the vertices table based on the source and target information.</p></li>
+<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> to analyze the edges and vertices of the edge table.</p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -566,9 +574,9 @@ The order of the parameters do not matter:</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.4.<br/>
-      Last updated on Dec 19, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.5.<br/>
+      Last updated on Jan 23, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_TSP &#8212; pgRouting Manual (3.0)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,6 +23,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.0.4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.0.5</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -145,39 +145,42 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="pgr-tsp">
 <h1>pgr_TSP<a class="headerlink" href="#pgr-tsp" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Using <em>Simulated Annealing</em> approximation algorithm</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Using <em>Simulated Annealing</em> approximation algorithm</p></li>
 </ul>
 <p class="rubric">Availability: 2.0.0</p>
 <ul class="simple">
-<li>Version 2.3.0<ul>
-<li>Signature change<ul>
-<li>Old signature no longer supported</li>
+<li><p>Version 2.3.0</p>
+<ul>
+<li><p>Signature change</p>
+<ul>
+<li><p>Old signature no longer supported</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Version 2.0.0<ul>
-<li><strong>Official</strong> function</li>
+<li><p>Version 2.0.0</p>
+<ul>
+<li><p><strong>Official</strong> function</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Support</p>
 <ul class="simple">
-<li><strong>Supported versions:</strong>
+<li><p><strong>Supported versions:</strong>
 current(<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_TSP.html">3.0</a>)
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_TSP.html">2.6</a></li>
-<li><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_TSP.html">2.6</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_TSP.html">2.5</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_TSP.html">2.4</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_tsp.html">2.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html">2.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/tsp/doc/index.html">2.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html">2.0</a></li>
+<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html">2.0</a></p></li>
 </ul>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -199,14 +202,11 @@ the shortest possible route that visits each city exactly once and returns to th
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Not having a random execution</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Not having a random execution</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
     $$
     SELECT * FROM pgr_dijkstraCostMatrix(
@@ -238,91 +238,91 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="29%" />
-<col width="71%" />
+<col style="width: 29%" />
+<col style="width: 71%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>Matrix SQL</strong></td>
-<td>an SQL query, described in the <a class="reference internal" href="#inner-query">Inner query</a></td>
+<tbody>
+<tr class="row-even"><td><p><strong>Matrix SQL</strong></p></td>
+<td><p>an SQL query, described in the <a class="reference internal" href="#inner-query">Inner query</a></p></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="optional-parameters">
 <h3>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="19%" />
-<col width="7%" />
-<col width="8%" />
-<col width="66%" />
+<col style="width: 19%" />
+<col style="width: 7%" />
+<col style="width: 8%" />
+<col style="width: 66%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><cite>0</cite></td>
-<td>The greedy part of the implementation will use this identifier.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><cite>0</cite></p></td>
+<td><p>The greedy part of the implementation will use this identifier.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td><cite>0</cite></td>
-<td>Last visiting vertex before returning to start_vid.</td>
+<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><cite>0</cite></p></td>
+<td><p>Last visiting vertex before returning to start_vid.</p></td>
 </tr>
-<tr class="row-even"><td><strong>max_processing_time</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td><cite>+infinity</cite></td>
-<td>Stop the annealing processing when the value is reached.</td>
+<tr class="row-even"><td><p><strong>max_processing_time</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><cite>+infinity</cite></p></td>
+<td><p>Stop the annealing processing when the value is reached.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>tries_per_temperature</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
-<td><cite>500</cite></td>
-<td>Maximum number of times a neighbor(s) is searched in each temperature.</td>
+<tr class="row-odd"><td><p><strong>tries_per_temperature</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><cite>500</cite></p></td>
+<td><p>Maximum number of times a neighbor(s) is searched in each temperature.</p></td>
 </tr>
-<tr class="row-even"><td><strong>max_changes_per_temperature</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
-<td><cite>60</cite></td>
-<td>Maximum number of times the solution is changed in each temperature.</td>
+<tr class="row-even"><td><p><strong>max_changes_per_temperature</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><cite>60</cite></p></td>
+<td><p>Maximum number of times the solution is changed in each temperature.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>max_consecutive_non_changes</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
-<td><cite>100</cite></td>
-<td>Maximum number of consecutive times the solution is not changed in each temperature.</td>
+<tr class="row-odd"><td><p><strong>max_consecutive_non_changes</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><cite>100</cite></p></td>
+<td><p>Maximum number of consecutive times the solution is not changed in each temperature.</p></td>
 </tr>
-<tr class="row-even"><td><strong>initial_temperature</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td><cite>100</cite></td>
-<td>Starting temperature.</td>
+<tr class="row-even"><td><p><strong>initial_temperature</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><cite>100</cite></p></td>
+<td><p>Starting temperature.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>final_temperature</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td><cite>0.1</cite></td>
-<td>Ending temperature.</td>
+<tr class="row-odd"><td><p><strong>final_temperature</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><cite>0.1</cite></p></td>
+<td><p>Ending temperature.</p></td>
 </tr>
-<tr class="row-even"><td><strong>cooling_factor</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td><cite>0.9</cite></td>
-<td>Value between between 0 and 1 (not including) used to calculate the next temperature.</td>
+<tr class="row-even"><td><p><strong>cooling_factor</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><cite>0.9</cite></p></td>
+<td><p>Value between between 0 and 1 (not including) used to calculate the next temperature.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>randomize</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></td>
-<td><cite>true</cite></td>
-<td><p class="first">Choose the random seed</p>
-<ul class="last simple">
-<li>true: Use current time as seed</li>
-<li>false: Use <cite>1</cite> as seed. Using this value will get the same results with the same data in each execution.</li>
+<tr class="row-odd"><td><p><strong>randomize</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><cite>true</cite></p></td>
+<td><p>Choose the random seed</p>
+<ul class="simple">
+<li><p>true: Use current time as seed</p></li>
+<li><p>false: Use <cite>1</cite> as seed. Using this value will get the same results with the same data in each execution.</p></li>
 </ul>
 </td>
 </tr>
@@ -333,30 +333,30 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <div class="section" id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
 <p><strong>Matrix SQL</strong>: an SQL query, which should return a set of rows with the following columns:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="18%" />
-<col width="15%" />
-<col width="67%" />
+<col style="width: 18%" />
+<col style="width: 15%" />
+<col style="width: 67%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>start_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the starting vertex.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the starting vertex.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>end_vid</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the ending vertex.</td>
+<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the ending vertex.</p></td>
 </tr>
-<tr class="row-even"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td>Cost for going from start_vid to end_vid</td>
+<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Cost for going from start_vid to end_vid</p></td>
 </tr>
 </tbody>
 </table>
@@ -367,44 +367,42 @@ symmetric by fixing the non symmetric values according to your application needs
 <div class="section" id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="12%" />
-<col width="10%" />
-<col width="78%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 78%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Column</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><strong>seq</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></td>
-<td>Row sequence.</td>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Row sequence.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>node</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></td>
-<td>Identifier of the node/coordinate/point.</td>
+<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the node/coordinate/point.</p></td>
 </tr>
-<tr class="row-even"><td><strong>cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td><dl class="first last docutils">
-<dt>Cost to traverse from the current <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next <code class="docutils literal notranslate"><span class="pre">node</span></code> in the path sequence.</dt>
-<dd><ul class="first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the path sequence.</li>
+<tr class="row-even"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><dl class="simple">
+<dt>Cost to traverse from the current <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next <code class="docutils literal notranslate"><span class="pre">node</span></code> in the path sequence.</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the path sequence.</p></li>
 </ul>
 </dd>
 </dl>
 </td>
 </tr>
-<tr class="row-odd"><td><strong>agg_cost</strong></td>
-<td><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></td>
-<td><dl class="first last docutils">
-<dt>Aggregate cost from the <code class="docutils literal notranslate"><span class="pre">node</span></code> at <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> to the current node.</dt>
-<dd><ul class="first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the path sequence.</li>
+<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><dl class="simple">
+<dt>Aggregate cost from the <code class="docutils literal notranslate"><span class="pre">node</span></code> at <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> to the current node.</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the path sequence.</p></li>
 </ul>
 </dd>
 </dl>
@@ -415,14 +413,11 @@ symmetric by fixing the non symmetric values according to your application needs
 </div>
 <div class="section" id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Start from vertex <span class="math notranslate nohighlight">\(7\)</span></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Start from vertex <span class="math notranslate nohighlight">\(7\)</span></p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
     $$
     SELECT * FROM pgr_dijkstraCostMatrix(
@@ -454,18 +449,15 @@ symmetric by fixing the non symmetric values according to your application needs
 
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Using with points of interest.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Using with points of interest.</p>
+</dd>
+</dl>
 <p>To generate a symmetric matrix:</p>
 <ul class="simple">
-<li>the <strong>side</strong> information of pointsOfInterset is ignored by not including it in the query</li>
-<li>and <strong>directed := false</strong></li>
+<li><p>the <strong>side</strong> information of pointsOfInterset is ignored by not including it in the query</p></li>
+<li><p>and <strong>directed := false</strong></p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
     $$
@@ -494,14 +486,14 @@ symmetric by fixing the non symmetric values according to your application needs
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - Family of functions</span></a></li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Simulated_annealing">Wikipedia: Simulated annealing</a></li>
+<li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - Family of functions</span></a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Simulated_annealing">Wikipedia: Simulated annealing</a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -518,9 +510,9 @@ symmetric by fixing the non symmetric values according to your application needs
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.0.4.<br/>
-      Last updated on Dec 19, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.0.5.<br/>
+      Last updated on Jan 23, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>
