@@ -18,18 +18,15 @@ open($ifh, "$in_file") || die "ERROR: failed to open '$in_file' for read! : $!\n
 
 my $skipping = 1;
 while (my $line = <$ifh>) {
-  if ($skipping) {
-    if ($line =~ /^\.\. _changelog_/) {
-      $skipping = 0;
-    }
-    next;
-  }
+  next if $skipping and $line !~ /^pgRouting/;
+  $skipping = 0;
 
   # convert urls to markdown
-  $line =~ s/`([^<]+)<([^>]+)>`_/\[$1\]($2)/g;
+  $line =~ s/`([^<]+?)\s*<([^>]+)>`__/\[$1\]($2)/g;
+  $line =~ s/`([^<]+?)\s*<([^>]+)>`_/\[$1\]($2)/g;
 
   # convert rubric to bold
-  $line =~ s/^\.\. rubric::\s*(.+)$/*$1*/;
+  $line =~ s/^\.\. rubric::\s*(.+)$/**$1**/;
 
   next if $line =~ /^\.\. _changelog/;
 
