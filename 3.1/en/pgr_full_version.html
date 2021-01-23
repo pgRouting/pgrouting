@@ -5,15 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_full_version &#8212; pgRouting Manual (3.1)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -42,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -175,9 +174,9 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_full_version</span><span class="p">();</span>
- <span class="n">version</span> <span class="o">|</span> <span class="n">build_type</span> <span class="o">|</span> <span class="n">compile_date</span> <span class="o">|</span>     <span class="n">library</span>     <span class="o">|</span>         <span class="n">system</span>         <span class="o">|</span>                   <span class="n">postgresql</span>                   <span class="o">|</span> <span class="n">compiler</span>  <span class="o">|</span> <span class="n">boost</span>  <span class="o">|</span>   <span class="nb">hash</span>
-<span class="o">---------+------------+--------------+-----------------+------------------------+------------------------------------------------+-----------+--------+-----------</span>
- <span class="mf">3.1</span><span class="o">.</span><span class="mi">2</span>   <span class="o">|</span> <span class="n">Debug</span>      <span class="o">|</span> <span class="mi">2020</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">14</span>   <span class="o">|</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">2</span> <span class="o">|</span> <span class="n">Linux</span><span class="o">-</span><span class="mf">5.4</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">56</span><span class="o">-</span><span class="n">generic</span> <span class="o">|</span> <span class="n">PostgreSQL</span> <span class="mf">12.5</span> <span class="p">(</span><span class="n">Ubuntu</span> <span class="mf">12.5</span><span class="o">-</span><span class="mi">0</span><span class="n">ubuntu0</span><span class="o">.</span><span class="mf">20.04</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">GNU</span><span class="o">-</span><span class="mf">8.4</span><span class="o">.</span><span class="mi">0</span> <span class="o">|</span> <span class="mf">1.71</span><span class="o">.</span><span class="mi">0</span> <span class="o">|</span> <span class="mi">9</span><span class="n">f4d28da3</span>
+ <span class="n">version</span> <span class="o">|</span> <span class="n">build_type</span> <span class="o">|</span> <span class="n">compile_date</span> <span class="o">|</span>     <span class="n">library</span>     <span class="o">|</span>         <span class="n">system</span>         <span class="o">|</span>                   <span class="n">postgresql</span>                   <span class="o">|</span> <span class="n">compiler</span>  <span class="o">|</span> <span class="n">boost</span>  <span class="o">|</span>    <span class="nb">hash</span>
+<span class="o">---------+------------+--------------+-----------------+------------------------+------------------------------------------------+-----------+--------+------------</span>
+ <span class="mf">3.1</span><span class="o">.</span><span class="mi">3</span>   <span class="o">|</span> <span class="n">Release</span>    <span class="o">|</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">22</span>   <span class="o">|</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">3</span> <span class="o">|</span> <span class="n">Linux</span><span class="o">-</span><span class="mf">5.4</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">62</span><span class="o">-</span><span class="n">generic</span> <span class="o">|</span> <span class="n">PostgreSQL</span> <span class="mf">12.5</span> <span class="p">(</span><span class="n">Ubuntu</span> <span class="mf">12.5</span><span class="o">-</span><span class="mi">0</span><span class="n">ubuntu0</span><span class="o">.</span><span class="mf">20.04</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">GNU</span><span class="o">-</span><span class="mf">8.4</span><span class="o">.</span><span class="mi">0</span> <span class="o">|</span> <span class="mf">1.71</span><span class="o">.</span><span class="mi">0</span> <span class="o">|</span> <span class="n">d8d4850af1</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -262,9 +261,9 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.2.<br/>
-      Last updated on Dec 19, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.3.<br/>
+      Last updated on Jan 23, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

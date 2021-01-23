@@ -5,15 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Instalación &#8212; pgRouting Manual (3.1)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -43,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.1.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.1.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -167,8 +166,8 @@
 <div class="section" id="short-version">
 <span id="install-short"></span><h2>Versión corta<a class="headerlink" href="#short-version" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Extraer la bola de alquitrán</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvfz pgrouting-3.1.2.tar.gz
-<span class="nb">cd</span> pgrouting-3.1.2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvfz pgrouting-3.1.3.tar.gz
+<span class="nb">cd</span> pgrouting-3.1.3
 </pre></div>
 </div>
 <p>Para compilar suponiendo que tiene todas las dependencias en su ruta de búsqueda:</p>
@@ -191,7 +190,7 @@ psql routing -c <span class="s1">&#39;CREATE EXTENSION pgRouting&#39;</span>
 <p>La última versión de pgRouting se puede encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a></p>
 <p class="rubric">Wget</p>
 <p>Para descargar esta versión:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget -O pgrouting-3.1.2.tar.gz https://github.com/pgRouting/pgrouting/archive/v3.1.2.tar.gz
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget -O pgrouting-3.1.3.tar.gz https://github.com/pgRouting/pgrouting/archive/v3.1.3.tar.gz
 </pre></div>
 </div>
 <p>Ir al extracto de <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> y compilar instrucciones.</p>
@@ -199,7 +198,7 @@ psql routing -c <span class="s1">&#39;CREATE EXTENSION pgRouting&#39;</span>
 <p>Para descargar el repositorio</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git://github.com/pgRouting/pgrouting.git
 <span class="nb">cd</span> pgrouting
-git checkout v3.1.2
+git checkout v3.1.3
 </pre></div>
 </div>
 <p>Ir a <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> a las instrucciones de compilación (no hay bola de alquitrán).</p>
@@ -213,8 +212,8 @@ git checkout v3.1.2
 </pre></div>
 </div>
 <p class="rubric">Actualización de la base de datos</p>
-<p>To upgrade pgRouting in the database to version 3.1.2 use the following command:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;3.1.2&quot;</span><span class="p">;</span>
+<p>To upgrade pgRouting in the database to version 3.1.3 use the following command:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;3.1.3&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Puede hallar más información en <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createextension.html">https://www.postgresql.org/docs/current/sql-createextension.html</a></p>
@@ -410,9 +409,9 @@ dropdb  -U &lt;user&gt; ___pgr___test___
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.1.2.<br/>
-      Actualizado por última vez en dic. 19, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.1.3.<br/>
+      Actualizado por última vez en ene. 23, 2021.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>
