@@ -24,7 +24,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
 .. rubric:: Build
 
-* `#1825 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost min version to 1.56
+* `#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost min version to 1.56
 
   * Removing support for Boost v1.53, v1.54 & v1.55
 
