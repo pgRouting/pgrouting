@@ -98,7 +98,7 @@ See online documentation: http://docs.pgrouting.org/latest/en/index.html
 
 ## LICENSE
 
-* Most features are available under GPLv2.0+
+* Most features are available under [GPL-2.0-or-later](https://spdx.org/licenses/GPL-2.0-or-later.html)
 * Some Boost extensions are available under Boost license (see LICENSE_1_0.txt)
 * Some code contributed by iMaptools.com is available under MIT-X license.
 
