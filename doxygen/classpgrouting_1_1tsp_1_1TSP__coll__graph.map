@@ -1,6 +1,4 @@
 <map id="pgrouting::tsp::TSP&lt; MATRIX &gt;" name="pgrouting::tsp::TSP&lt; MATRIX &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="102,109,246,151"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,79,32"/>
-<area shape="rect" id="node3" title="STL class." alt="" coords="103,5,245,32"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1tsp_1_1Tour.html" title=" " alt="" coords="269,5,415,32"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="103,5,229,32"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1tsp_1_1Tour.html" title="pgrouting::tsp::Tour" alt="" coords="253,5,388,32"/>
 </map>

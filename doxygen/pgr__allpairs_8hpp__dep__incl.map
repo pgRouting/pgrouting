@@ -1,5 +1,4 @@
 <map id="pgr_allpairs.hpp" name="pgr_allpairs.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="129,5,255,32"/>
-<area shape="rect" id="node2" href="$floydWarshall__driver_8cpp.html" title=" " alt="" coords="5,80,189,107"/>
-<area shape="rect" id="node3" href="$johnson__driver_8cpp.html" title=" " alt="" coords="214,80,359,107"/>
+<area shape="rect" id="node2" href="$floydWarshall__driver_8cpp.html" title="floydWarshall_driver.cpp" alt="" coords="5,80,171,107"/>
+<area shape="rect" id="node3" href="$johnson__driver_8cpp.html" title="johnson_driver.cpp" alt="" coords="195,80,325,107"/>
 </map>

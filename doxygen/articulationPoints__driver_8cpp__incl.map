@@ -1,11 +1,7 @@
 <map id="articulationPoints_driver.cpp" name="articulationPoints_driver.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="354,5,490,47"/>
-<area shape="rect" id="node2" href="$articulationPoints__driver_8h.html" title=" " alt="" coords="5,95,156,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="181,109,255,136"/>
-<area shape="rect" id="node4" title=" " alt="" coords="328,288,391,315"/>
-<area shape="rect" id="node5" title=" " alt="" coords="519,288,581,315"/>
-<area shape="rect" id="node6" href="$pgr__components_8hpp.html" title=" " alt="" coords="381,109,623,136"/>
-<area shape="rect" id="node7" href="$pgr__base__graph_8hpp.html" title=" " alt="" coords="340,199,512,240"/>
-<area shape="rect" id="node8" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="609,288,803,315"/>
-<area shape="rect" id="node9" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="749,109,949,136"/>
+<area shape="rect" id="node2" href="$articulationPoints__driver_8h.html" title="drivers/components\l/articulationPoints\l_driver.h" alt="" coords="5,95,141,151"/>
+<area shape="rect" id="node6" href="$pgr__components_8hpp.html" title="components/pgr_components.hpp" alt="" coords="360,109,579,136"/>
+<area shape="rect" id="node7" href="$pgr__base__graph_8hpp.html" title="cpp_common/pgr_base\l_graph.hpp" alt="" coords="320,199,477,240"/>
+<area shape="rect" id="node8" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="573,288,749,315"/>
+<area shape="rect" id="node9" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="704,109,885,136"/>
 </map>

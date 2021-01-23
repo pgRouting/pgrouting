@@ -1,9 +1,3 @@
 <map id="pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;" name="pgrouting::bidirectional::Pgr_bidirectional&lt; G &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="399,182,577,223"/>
-<area shape="rect" id="node2" title=" " alt="" coords="38,7,169,33"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,57,201,143"/>
-<area shape="rect" id="node4" title=" " alt="" coords="20,167,187,193"/>
-<area shape="rect" id="node5" title="STL class." alt="" coords="33,217,174,244"/>
-<area shape="rect" id="node6" title=" " alt="" coords="29,272,178,299"/>
-<area shape="rect" id="node7" title=" " alt="" coords="21,332,186,359"/>
+<area shape="rect" id="node5" title="STL class. " alt="" coords="30,216,157,243"/>
 </map>

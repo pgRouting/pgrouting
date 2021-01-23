@@ -1,4 +1,9 @@
 <map id="pd_problem.cpp" name="pd_problem.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="10,5,137,32"/>
-<area shape="rect" id="node2" href="$pd__problem_8h.html" title=" " alt="" coords="5,80,141,107"/>
+<area shape="rect" id="node2" href="$pd__problem_8h.html" title="vrp/pd_problem.h" alt="" coords="107,229,230,256"/>
+<area shape="rect" id="node3" href="$dnode_8h.html" title="vrp/dnode.h" alt="" coords="137,155,227,181"/>
+<area shape="rect" id="node4" href="$fleet_8h.html" title="vrp/fleet.h" alt="" coords="33,155,113,181"/>
+<area shape="rect" id="node5" href="$solution_8h.html" title="vrp/solution.h" alt="" coords="41,80,141,107"/>
+<area shape="rect" id="node6" href="$tw__node_8h.html" title="vrp/tw_node.h" alt="" coords="217,80,321,107"/>
+<area shape="rect" id="node7" href="$pd__orders_8h.html" title="vrp/pd_orders.h" alt="" coords="302,155,414,181"/>
+<area shape="rect" id="node8" href="$vehicle_8h.html" title="vrp/vehicle.h" alt="" coords="395,80,491,107"/>
 </map>

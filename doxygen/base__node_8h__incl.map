@@ -1,5 +1,3 @@
 <map id="base_node.h" name="base_node.h">
-<area shape="rect" id="node1" title=" " alt="" coords="61,5,165,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,71,107"/>
-<area shape="rect" id="node3" href="$identifier_8h.html" title=" " alt="" coords="95,80,279,107"/>
+<area shape="rect" id="node3" href="$identifier_8h.html" title="cpp_common/identifier.h" alt="" coords="89,80,253,107"/>
 </map>

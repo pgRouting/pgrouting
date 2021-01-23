@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['swap_5fbk_3358',['Swap_bk',['../classpgrouting_1_1vrp_1_1Swap__info.html#aa1bb9b594a402078037adf23b7ff8e7a',1,'pgrouting::vrp::Swap_info']]]
+  ['pd_5fproblem',['PD_problem',['../classpgrouting_1_1vrp_1_1Fleet.html#a6ee97e292edf4606f58a2855c04ec27f',1,'pgrouting::vrp::Fleet::PD_problem()'],['../classpgrouting_1_1vrp_1_1PD__Orders.html#a6ee97e292edf4606f58a2855c04ec27f',1,'pgrouting::vrp::PD_Orders::PD_problem()'],['../classpgrouting_1_1vrp_1_1Solution.html#a6ee97e292edf4606f58a2855c04ec27f',1,'pgrouting::vrp::Solution::PD_problem()'],['../classpgrouting_1_1vrp_1_1Vehicle.html#a6ee97e292edf4606f58a2855c04ec27f',1,'pgrouting::vrp::Vehicle::PD_problem()']]]
 ];

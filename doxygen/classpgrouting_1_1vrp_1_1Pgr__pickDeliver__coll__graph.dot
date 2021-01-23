@@ -1,23 +1,23 @@
 digraph "pgrouting::vrp::Pgr_pickDeliver"
 {
- // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="pgrouting::vrp::Pgr\l_pickDeliver",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="pgrouting::vrp::PD\l_problem",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1PD__problem.html",tooltip=" "];
-  Node1 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" problem" ,fontname="Helvetica"];
-  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" solutions" ,fontname="Helvetica"];
-  Node9 [label="std::vector\< pgrouting\l::vrp::Solution \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node11 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_trucks" ,fontname="Helvetica"];
-  Node11 [label="pgrouting::vrp::Fleet",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Fleet.html",tooltip=" "];
-  Node2 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node33 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_nodes" ,fontname="Helvetica"];
-  Node33 [label="std::vector\< pgrouting\l::vrp::Vehicle_node \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node28 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_orders" ,fontname="Helvetica"];
-  Node28 [label="pgrouting::vrp::PD\l_Orders",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1PD__Orders.html",tooltip=" "];
-  Node2 -> Node28 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node34 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_cost_matrix" ,fontname="Helvetica"];
-  Node34 [label="pgrouting::tsp::Dmatrix",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1tsp_1_1Dmatrix.html",tooltip=" "];
+  Node2 [label="pgrouting::vrp::Pgr\l_pickDeliver",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="pgrouting::vrp::PD\l_problem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1PD__problem.html"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" solutions" ,fontname="Helvetica"];
+  Node4 [label="std::vector\< pgrouting\l::vrp::Solution \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_trucks" ,fontname="Helvetica"];
+  Node6 [label="pgrouting::vrp::Fleet",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1Fleet.html"];
+  Node2 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" problem" ,fontname="Helvetica"];
+  Node28 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_nodes" ,fontname="Helvetica"];
+  Node28 [label="std::vector\< pgrouting\l::vrp::Vehicle_node \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node23 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_orders" ,fontname="Helvetica"];
+  Node23 [label="pgrouting::vrp::PD\l_Orders",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1vrp_1_1PD__Orders.html"];
+  Node2 -> Node23 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" problem" ,fontname="Helvetica"];
+  Node29 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_cost_matrix" ,fontname="Helvetica"];
+  Node29 [label="pgrouting::tsp::Dmatrix",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1tsp_1_1Dmatrix.html"];
+  Node33 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" msg" ,fontname="Helvetica"];
+  Node33 [label="pgrouting::Pgr_messages",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pgr__messages.html"];
 }

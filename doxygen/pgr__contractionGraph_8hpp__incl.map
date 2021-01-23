@@ -1,12 +1,5 @@
 <map id="pgr_contractionGraph.hpp" name="pgr_contractionGraph.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="291,5,481,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="41,169,200,211"/>
-<area shape="rect" id="node3" title=" " alt="" coords="319,177,378,203"/>
-<area shape="rect" id="node4" title=" " alt="" coords="66,87,151,114"/>
-<area shape="rect" id="node5" title=" " alt="" coords="231,259,293,285"/>
-<area shape="rect" id="node6" title=" " alt="" coords="609,259,689,285"/>
-<area shape="rect" id="node7" title=" " alt="" coords="424,87,479,114"/>
-<area shape="rect" id="node8" href="$pgr__base__graph_8hpp.html" title=" " alt="" coords="176,80,348,121"/>
-<area shape="rect" id="node9" href="$ch__vertex_8h.html" title=" " alt="" coords="422,177,611,203"/>
-<area shape="rect" id="node10" href="$ch__edge_8h.html" title=" " alt="" coords="554,87,733,114"/>
+<area shape="rect" id="node8" href="$pgr__base__graph_8hpp.html" title="cpp_common/pgr_base\l_graph.hpp" alt="" coords="164,80,322,121"/>
+<area shape="rect" id="node9" href="$ch__vertex_8h.html" title="cpp_common/ch_vertex.h" alt="" coords="398,177,570,203"/>
+<area shape="rect" id="node10" href="$ch__edge_8h.html" title="cpp_common/ch_edge.h" alt="" coords="522,87,686,114"/>
 </map>

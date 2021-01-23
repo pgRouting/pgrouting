@@ -1,5 +1,4 @@
 <map id="base_node.cpp" name="base_node.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="103,5,221,32"/>
-<area shape="rect" id="node2" href="$base__node_8h.html" title=" " alt="" coords="5,80,135,107"/>
-<area shape="rect" id="node3" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="159,80,352,107"/>
+<area shape="rect" id="node2" href="$base__node_8h.html" title="vrp/base_node.h" alt="" coords="5,80,124,107"/>
+<area shape="rect" id="node3" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="149,80,325,107"/>
 </map>

@@ -1,11 +1,4 @@
 <map id="pgr_bdDijkstra.hpp" name="pgr_bdDijkstra.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="387,5,533,32"/>
-<area shape="rect" id="node2" href="$pgr__bidirectional_8hpp.html" title=" " alt="" coords="253,80,504,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,162,64,189"/>
-<area shape="rect" id="node4" title=" " alt="" coords="286,162,349,189"/>
-<area shape="rect" id="node5" title=" " alt="" coords="425,162,485,189"/>
-<area shape="rect" id="node6" title=" " alt="" coords="355,244,418,271"/>
-<area shape="rect" id="node7" title=" " alt="" coords="509,162,568,189"/>
-<area shape="rect" id="node8" title=" " alt="" coords="593,162,679,189"/>
-<area shape="rect" id="node9" href="$basePath__SSEC_8hpp.html" title=" " alt="" coords="88,155,261,196"/>
+<area shape="rect" id="node2" href="$pgr__bidirectional_8hpp.html" title="cpp_common/pgr_bidirectional.hpp" alt="" coords="241,80,464,107"/>
+<area shape="rect" id="node9" href="$basePath__SSEC_8hpp.html" title="cpp_common/basePath\l_SSEC.hpp" alt="" coords="84,155,243,196"/>
 </map>

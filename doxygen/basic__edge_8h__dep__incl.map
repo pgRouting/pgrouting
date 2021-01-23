@@ -1,6 +1,5 @@
 <map id="basic_edge.h" name="basic_edge.h">
-<area shape="rect" id="node1" title=" " alt="" coords="187,5,293,32"/>
-<area shape="rect" id="node2" href="$basic__edge_8cpp.html" title=" " alt="" coords="5,80,128,107"/>
-<area shape="rect" id="node3" href="$linear__directed__graph_8h.html" title=" " alt="" coords="153,80,327,107"/>
-<area shape="rect" id="node4" href="$pgr__base__graph_8hpp.html" title=" " alt="" coords="351,80,505,107"/>
+<area shape="rect" id="node2" href="$basic__edge_8cpp.html" title="basic_edge.cpp" alt="" coords="5,80,119,107"/>
+<area shape="rect" id="node3" href="$linear__directed__graph_8h.html" title="linear_directed_graph.h" alt="" coords="143,80,299,107"/>
+<area shape="rect" id="node4" href="$pgr__base__graph_8hpp.html" title="pgr_base_graph.hpp" alt="" coords="323,80,462,107"/>
 </map>

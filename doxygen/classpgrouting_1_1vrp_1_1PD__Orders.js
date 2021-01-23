@@ -15,11 +15,12 @@ var classpgrouting_1_1vrp_1_1PD__Orders =
     [ "find_best_I", "classpgrouting_1_1vrp_1_1PD__Orders.html#a6847ad4ff551e69b2630805f8480f01e", null ],
     [ "find_best_J", "classpgrouting_1_1vrp_1_1PD__Orders.html#a19610270a3a6663b8fa7b05bd7eb839b", null ],
     [ "is_valid", "classpgrouting_1_1vrp_1_1PD__Orders.html#a67b7c652a288a1552a74f524098795b2", null ],
+    [ "msg", "classpgrouting_1_1vrp_1_1PD__Orders.html#a816a01e8d001f2b42d3c7a089da51295", null ],
     [ "operator[]", "classpgrouting_1_1vrp_1_1PD__Orders.html#aa6defc04e04695280dc6fc5f7e165019", null ],
     [ "operator[]", "classpgrouting_1_1vrp_1_1PD__Orders.html#a4d2efd404b4bcd7857e1cf0dcf1e7cb5", null ],
     [ "set_compatibles", "classpgrouting_1_1vrp_1_1PD__Orders.html#a45389632b30c241b8ad9d6d962b59ed0", null ],
     [ "size", "classpgrouting_1_1vrp_1_1PD__Orders.html#a4602321cf872aade294419ad5782256a", null ],
+    [ "PD_problem", "classpgrouting_1_1vrp_1_1PD__Orders.html#a6ee97e292edf4606f58a2855c04ec27f", null ],
     [ "m_orders", "classpgrouting_1_1vrp_1_1PD__Orders.html#a9283733102f07d645af4b2255b8766bd", null ],
-    [ "msg", "classpgrouting_1_1vrp_1_1PD__Orders.html#a7ea35b02b812474d4b0c19da2784fc5f", null ],
-    [ "problem", "classpgrouting_1_1vrp_1_1PD__Orders.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ]
+    [ "problem", "classpgrouting_1_1vrp_1_1PD__Orders.html#aa64771c281570707db46faca013edd15", null ]
 ];

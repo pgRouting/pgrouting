@@ -1,14 +1,13 @@
 var searchData=
 [
-  ['cmakelists_2etxt_2083',['CMakeLists.txt',['../src_2allpairs_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2alpha__shape_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2astar_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2bdAstar_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2bdDijkstra_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2bellman__ford_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2breadthFirstSearch_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2chinese_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2common_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2components_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2contraction_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2cpp__common_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2dagShortestPath_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2dijkstra_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2driving__distance_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2ksp_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2lineGraph_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2max__flow_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2mincut_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2pickDeliver_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2spanningTree_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2topologicalSort_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2transitiveClosure_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2trsp_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2tsp_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2version_2CMakeLists_8txt.html',1,'(Global Namespace)'],['../src_2withPoints_2CMakeLists_8txt.html',1,'(Global Namespace)']]],
-  ['signalhandler_2ecpp_2084',['signalhandler.cpp',['../signalhandler_8cpp.html',1,'']]],
-  ['signalhandler_2eh_2085',['signalhandler.h',['../signalhandler_8h.html',1,'']]],
-  ['solution_2ecpp_2086',['solution.cpp',['../solution_8cpp.html',1,'']]],
-  ['solution_2eh_2087',['solution.h',['../solution_8h.html',1,'']]],
-  ['stoerwagner_2ec_2088',['stoerWagner.c',['../stoerWagner_8c.html',1,'']]],
-  ['stoerwagner_5fdriver_2ecpp_2089',['stoerWagner_driver.cpp',['../stoerWagner__driver_8cpp.html',1,'']]],
-  ['stoerwagner_5fdriver_2eh_2090',['stoerWagner_driver.h',['../stoerWagner__driver_8h.html',1,'']]],
-  ['strongcomponents_2ec_2091',['strongComponents.c',['../strongComponents_8c.html',1,'']]],
-  ['strongcomponents_5fdriver_2ecpp_2092',['strongComponents_driver.cpp',['../strongComponents__driver_8cpp.html',1,'']]],
-  ['strongcomponents_5fdriver_2eh_2093',['strongComponents_driver.h',['../strongComponents__driver_8h.html',1,'']]]
+  ['signalhandler_2ecpp',['signalhandler.cpp',['../signalhandler_8cpp.html',1,'']]],
+  ['signalhandler_2eh',['signalhandler.h',['../signalhandler_8h.html',1,'']]],
+  ['solution_2ecpp',['solution.cpp',['../solution_8cpp.html',1,'']]],
+  ['solution_2eh',['solution.h',['../solution_8h.html',1,'']]],
+  ['stoerwagner_2ec',['stoerWagner.c',['../stoerWagner_8c.html',1,'']]],
+  ['stoerwagner_5fdriver_2ecpp',['stoerWagner_driver.cpp',['../stoerWagner__driver_8cpp.html',1,'']]],
+  ['stoerwagner_5fdriver_2eh',['stoerWagner_driver.h',['../stoerWagner__driver_8h.html',1,'']]],
+  ['strongcomponents_2ec',['strongComponents.c',['../strongComponents_8c.html',1,'']]],
+  ['strongcomponents_5fdriver_2ecpp',['strongComponents_driver.cpp',['../strongComponents__driver_8cpp.html',1,'']]],
+  ['strongcomponents_5fdriver_2eh',['strongComponents_driver.h',['../strongComponents__driver_8h.html',1,'']]]
 ];

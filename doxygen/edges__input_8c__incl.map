@@ -1,12 +1,7 @@
 <map id="edges_input.c" name="edges_input.c">
-<area shape="rect" id="node1" title=" " alt="" coords="430,5,542,32"/>
-<area shape="rect" id="node2" href="$edges__input_8h.html" title=" " alt="" coords="5,87,193,114"/>
-<area shape="rect" id="node3" title=" " alt="" coords="129,169,203,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="269,87,337,114"/>
-<area shape="rect" id="node5" title=" " alt="" coords="362,87,426,114"/>
-<area shape="rect" id="node6" title=" " alt="" coords="451,87,521,114"/>
-<area shape="rect" id="node7" href="$column__info__t_8h.html" title=" " alt="" coords="639,169,819,196"/>
-<area shape="rect" id="node8" href="$debug__macro_8h.html" title=" " alt="" coords="597,87,794,114"/>
-<area shape="rect" id="node9" href="$get__check__data_8h.html" title=" " alt="" coords="818,80,981,121"/>
-<area shape="rect" id="node10" href="$time__msg_8h.html" title=" " alt="" coords="1005,87,1180,114"/>
+<area shape="rect" id="node2" href="$edges__input_8h.html" title="c_common/edges_input.h" alt="" coords="5,87,176,114"/>
+<area shape="rect" id="node7" href="$column__info__t_8h.html" title="c_types/column_info_t.h" alt="" coords="598,169,762,196"/>
+<area shape="rect" id="node8" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="560,87,739,114"/>
+<area shape="rect" id="node9" href="$get__check__data_8h.html" title="c_common/get_check\l_data.h" alt="" coords="763,80,914,121"/>
+<area shape="rect" id="node10" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="938,87,1097,114"/>
 </map>

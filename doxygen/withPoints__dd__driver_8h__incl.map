@@ -1,7 +1,5 @@
 <map id="withPoints_dd_driver.h" name="withPoints_dd_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="216,5,387,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,80,114"/>
-<area shape="rect" id="node3" href="$point__on__edge__t_8h.html" title=" " alt="" coords="104,87,299,114"/>
-<area shape="rect" id="node4" href="$pgr__edge__t_8h.html" title=" " alt="" coords="323,87,483,114"/>
-<area shape="rect" id="node5" href="$general__path__element__t_8h.html" title=" " alt="" coords="507,80,669,121"/>
+<area shape="rect" id="node3" href="$point__on__edge__t_8h.html" title="c_types/point_on_edge_t.h" alt="" coords="99,87,277,114"/>
+<area shape="rect" id="node4" href="$pgr__edge__t_8h.html" title="c_types/pgr_edge_t.h" alt="" coords="301,87,448,114"/>
+<area shape="rect" id="node5" href="$general__path__element__t_8h.html" title="c_types/general_path\l_element_t.h" alt="" coords="472,80,619,121"/>
 </map>

@@ -1,5 +1,4 @@
 <map id="combinations_input.h" name="combinations_input.h">
-<area shape="rect" id="node1" title=" " alt="" coords="78,5,241,32"/>
-<area shape="rect" id="node2" href="$combinations__input_8c.html" title=" " alt="" coords="5,80,167,107"/>
-<area shape="rect" id="node3" href="$dijkstra_8c.html" title=" " alt="" coords="191,80,274,107"/>
+<area shape="rect" id="node2" href="$combinations__input_8c.html" title="combinations_input.c" alt="" coords="5,80,151,107"/>
+<area shape="rect" id="node3" href="$dijkstra_8c.html" title="dijkstra.c" alt="" coords="175,80,250,107"/>
 </map>

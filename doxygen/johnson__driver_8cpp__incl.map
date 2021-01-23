@@ -1,9 +1,5 @@
 <map id="johnson_driver.cpp" name="johnson_driver.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="307,5,452,32"/>
-<area shape="rect" id="node2" href="$johnson__driver_8h.html" title=" " alt="" coords="5,80,180,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="205,87,279,114"/>
-<area shape="rect" id="node4" title=" " alt="" coords="359,169,421,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="465,169,528,196"/>
-<area shape="rect" id="node6" href="$pgr__allpairs_8hpp.html" title=" " alt="" coords="354,87,533,114"/>
-<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="608,87,801,114"/>
+<area shape="rect" id="node2" href="$johnson__driver_8h.html" title="drivers/allpairs/johnson\l_driver.h" alt="" coords="5,80,160,121"/>
+<area shape="rect" id="node6" href="$pgr__allpairs_8hpp.html" title="allpairs/pgr_allpairs.hpp" alt="" coords="329,87,487,114"/>
+<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="563,87,739,114"/>
 </map>

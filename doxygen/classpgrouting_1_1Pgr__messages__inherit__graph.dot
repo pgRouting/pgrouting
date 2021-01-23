@@ -1,16 +1,15 @@
 digraph "pgrouting::Pgr_messages"
 {
- // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="pgrouting::Pgr_messages",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="Pgr_bellman_ford\< G \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPgr__bellman__ford.html",tooltip=" "];
-  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="pgrouting::alphashape\l::Pgr_alphaShape",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html",tooltip=" "];
-  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="pgrouting::Pg_points\l_graph",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pg__points__graph.html",tooltip=" "];
-  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="pgrouting::yen::Pgr\l_ksp\< G \>",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1yen_1_1Pgr__ksp.html",tooltip=" "];
+  Node0 [label="pgrouting::Pgr_messages",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="Pgr_bellman_ford\< G \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPgr__bellman__ford.html"];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="pgrouting::alphashape\l::Pgr_alphaShape",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html"];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="pgrouting::Pg_points\l_graph",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pg__points__graph.html"];
+  Node0 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="pgrouting::yen::Pgr\l_ksp\< G \>",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1yen_1_1Pgr__ksp.html"];
 }

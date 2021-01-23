@@ -145,16 +145,14 @@ var hierarchy =
     [ "pgrouting::tsp::Dmatrix", "classpgrouting_1_1tsp_1_1Dmatrix.html", null ],
     [ "pgrouting::tsp::EuclideanDmatrix", "classpgrouting_1_1tsp_1_1EuclideanDmatrix.html", null ],
     [ "pgrouting::tsp::Tour", "classpgrouting_1_1tsp_1_1Tour.html", null ],
+    [ "pgrouting::vrp::Fleet", "classpgrouting_1_1vrp_1_1Fleet.html", null ],
+    [ "pgrouting::vrp::PD_Orders", "classpgrouting_1_1vrp_1_1PD__Orders.html", null ],
     [ "pgrouting::vrp::PD_problem", "classpgrouting_1_1vrp_1_1PD__problem.html", [
-      [ "pgrouting::vrp::Dnode", "classpgrouting_1_1vrp_1_1Dnode.html", null ],
-      [ "pgrouting::vrp::Fleet", "classpgrouting_1_1vrp_1_1Fleet.html", null ],
-      [ "pgrouting::vrp::PD_Orders", "classpgrouting_1_1vrp_1_1PD__Orders.html", null ],
-      [ "pgrouting::vrp::Pgr_pickDeliver", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html", null ],
-      [ "pgrouting::vrp::Solution", "classpgrouting_1_1vrp_1_1Solution.html", [
-        [ "pgrouting::vrp::Initial_solution", "classpgrouting_1_1vrp_1_1Initial__solution.html", null ],
-        [ "pgrouting::vrp::Optimize", "classpgrouting_1_1vrp_1_1Optimize.html", null ]
-      ] ],
-      [ "pgrouting::vrp::Vehicle", "classpgrouting_1_1vrp_1_1Vehicle.html", null ]
+      [ "pgrouting::vrp::Pgr_pickDeliver", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html", null ]
+    ] ],
+    [ "pgrouting::vrp::Solution", "classpgrouting_1_1vrp_1_1Solution.html", [
+      [ "pgrouting::vrp::Initial_solution", "classpgrouting_1_1vrp_1_1Initial__solution.html", null ],
+      [ "pgrouting::vrp::Optimize", "classpgrouting_1_1vrp_1_1Optimize.html", null ]
     ] ],
     [ "pgrouting::vrp::Swap_bk", "classpgrouting_1_1vrp_1_1Swap__bk.html", null ],
     [ "pgrouting::vrp::Swap_bk::Compare", "classpgrouting_1_1vrp_1_1Swap__bk_1_1Compare.html", null ],

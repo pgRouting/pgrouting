@@ -1,9 +1,5 @@
 <map id="floydWarshall_driver.cpp" name="floydWarshall_driver.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="325,5,509,32"/>
-<area shape="rect" id="node2" href="$floydWarshall__driver_8h.html" title=" " alt="" coords="5,80,219,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="243,87,317,114"/>
-<area shape="rect" id="node4" title=" " alt="" coords="397,169,459,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="503,169,566,196"/>
-<area shape="rect" id="node6" href="$pgr__allpairs_8hpp.html" title=" " alt="" coords="392,87,571,114"/>
-<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="646,87,839,114"/>
+<area shape="rect" id="node2" href="$floydWarshall__driver_8h.html" title="drivers/allpairs/floydWarshall\l_driver.h" alt="" coords="5,80,195,121"/>
+<area shape="rect" id="node6" href="$pgr__allpairs_8hpp.html" title="allpairs/pgr_allpairs.hpp" alt="" coords="363,87,522,114"/>
+<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="597,87,773,114"/>
 </map>

@@ -1,17 +1,16 @@
 digraph "pgrouting::yen::Pgr_ksp&lt; G &gt;"
 {
- // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="pgrouting::yen::Pgr\l_ksp\< G \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="pgrouting::Pgr_messages",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pgr__messages.html",tooltip=" "];
-  Node8 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_vis" ,fontname="Helvetica"];
-  Node8 [label="pgrouting::yen::Pgr\l_ksp\< G \>::Visitor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1yen_1_1Pgr__ksp_1_1Visitor.html",tooltip=" "];
-  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" curr_result_path" ,fontname="Helvetica"];
-  Node9 [label="Path",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classPath.html",tooltip=" "];
-  Node14 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ResultSet\nm_Heap" ,fontname="Helvetica"];
-  Node14 [label="std::set\< Path, compPaths\lLess \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node9 -> Node14 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" keys" ,fontname="Helvetica"];
+  Node3 [label="pgrouting::yen::Pgr\l_ksp\< G \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="pgrouting::Pgr_messages",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classpgrouting_1_1Pgr__messages.html"];
+  Node10 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_vis" ,fontname="Helvetica"];
+  Node10 [label="pgrouting::yen::Pgr\l_ksp\< G \>::Visitor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1yen_1_1Pgr__ksp_1_1Visitor.html"];
+  Node11 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" curr_result_path" ,fontname="Helvetica"];
+  Node11 [label="Path",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classPath.html"];
+  Node16 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ResultSet\nm_Heap" ,fontname="Helvetica"];
+  Node16 [label="std::set\< Path, compPaths\lLess \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node11 -> Node16 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" keys" ,fontname="Helvetica"];
 }

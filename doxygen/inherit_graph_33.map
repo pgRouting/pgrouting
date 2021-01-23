@@ -1,10 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,231,177,258"/>
-<area shape="rect" id="node2" href="$classPgr__dag_1_1dijkstra__many__goal__visitor.html" title="class for stopping when all targets are found" alt="" coords="241,5,412,47"/>
-<area shape="rect" id="node3" href="$classPgr__dag_1_1dijkstra__one__goal__visitor.html" title="class for stopping when 1 target is found" alt="" coords="241,71,412,112"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1Pgr__dijkstra_1_1dijkstra__distance__visitor.html" title="class for stopping when a distance/cost has being surpassed" alt="" coords="236,137,417,193"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1Pgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html" title="class for stopping when a distance/cost has being surpassed" alt="" coords="236,217,417,273"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1Pgr__dijkstra_1_1dijkstra__many__goal__visitor.html" title="class for stopping when all targets are found" alt="" coords="227,297,426,353"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1visitors_1_1dijkstra__one__goal__visitor.html" title=" " alt="" coords="254,377,399,433"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1visitors_1_1Prim__dijkstra__visitor.html" title=" " alt="" coords="225,457,428,499"/>
+<area shape="rect" id="node2" href="$classPgr__dag_1_1dijkstra__many__goal__visitor.html" title="class for stopping when all targets are found " alt="" coords="219,5,373,47"/>
+<area shape="rect" id="node3" href="$classPgr__dag_1_1dijkstra__one__goal__visitor.html" title="class for stopping when 1 target is found " alt="" coords="219,71,373,112"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1Pgr__dijkstra_1_1dijkstra__distance__visitor.html" title="class for stopping when a distance/cost has being surpassed " alt="" coords="215,137,377,193"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1Pgr__dijkstra_1_1dijkstra__distance__visitor__no__init.html" title="class for stopping when a distance/cost has being surpassed " alt="" coords="215,217,377,273"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1Pgr__dijkstra_1_1dijkstra__many__goal__visitor.html" title="class for stopping when all targets are found " alt="" coords="208,297,384,353"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1visitors_1_1dijkstra__one__goal__visitor.html" title="pgrouting::visitors\l::dijkstra_one_goal\l_visitor\&lt; V \&gt;" alt="" coords="231,377,361,433"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1visitors_1_1Prim__dijkstra__visitor.html" title="pgrouting::visitors\l::Prim_dijkstra_visitor\&lt; V \&gt;" alt="" coords="205,457,387,499"/>
 </map>

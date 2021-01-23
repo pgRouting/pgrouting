@@ -1,5 +1,4 @@
 <map id="pgr_contract.hpp" name="pgr_contract.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="124,5,255,32"/>
-<area shape="rect" id="node2" href="$contractGraph__driver_8cpp.html" title=" " alt="" coords="5,80,192,107"/>
-<area shape="rect" id="node3" href="$pgr__contract_8cpp.html" title=" " alt="" coords="216,80,347,107"/>
+<area shape="rect" id="node2" href="$contractGraph__driver_8cpp.html" title="contractGraph_driver.cpp" alt="" coords="5,80,173,107"/>
+<area shape="rect" id="node3" href="$pgr__contract_8cpp.html" title="pgr_contract.cpp" alt="" coords="198,80,317,107"/>
 </map>

@@ -1,13 +1,6 @@
 <map id="basePath_SSEC.hpp" name="basePath_SSEC.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="417,5,567,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,177,136,203"/>
-<area shape="rect" id="node3" title=" " alt="" coords="161,169,330,211"/>
-<area shape="rect" id="node4" title=" " alt="" coords="354,177,417,203"/>
-<area shape="rect" id="node5" title=" " alt="" coords="441,177,503,203"/>
-<area shape="rect" id="node6" title=" " alt="" coords="649,87,729,114"/>
-<area shape="rect" id="node7" title=" " alt="" coords="753,87,839,114"/>
-<area shape="rect" id="node8" href="$general__path__element__t_8h.html" title=" " alt="" coords="863,80,1025,121"/>
-<area shape="rect" id="node9" href="$path__t_8h.html" title=" " alt="" coords="1049,87,1215,114"/>
-<area shape="rect" id="node10" href="$pgr__base__graph_8hpp.html" title=" " alt="" coords="175,80,347,121"/>
-<area shape="rect" id="node11" href="$rule_8h.html" title=" " alt="" coords="474,87,625,114"/>
+<area shape="rect" id="node8" href="$general__path__element__t_8h.html" title="c_types/general_path\l_element_t.h" alt="" coords="797,80,943,121"/>
+<area shape="rect" id="node9" href="$path__t_8h.html" title="cpp_common/path_t.h" alt="" coords="968,87,1119,114"/>
+<area shape="rect" id="node10" href="$pgr__base__graph_8hpp.html" title="cpp_common/pgr_base\l_graph.hpp" alt="" coords="159,80,317,121"/>
+<area shape="rect" id="node11" href="$rule_8h.html" title="cpp_common/rule.h" alt="" coords="442,87,578,114"/>
 </map>

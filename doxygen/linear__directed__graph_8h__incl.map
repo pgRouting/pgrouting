@@ -1,7 +1,4 @@
 <map id="linear_directed_graph.h" name="linear_directed_graph.h">
-<area shape="rect" id="node1" title=" " alt="" coords="262,5,437,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,136,114"/>
-<area shape="rect" id="node3" title=" " alt="" coords="161,80,330,121"/>
-<area shape="rect" id="node4" href="$basic__edge_8h.html" title=" " alt="" coords="354,87,553,114"/>
-<area shape="rect" id="node5" href="$line__vertex_8h.html" title=" " alt="" coords="577,87,775,114"/>
+<area shape="rect" id="node4" href="$basic__edge_8h.html" title="cpp_common/basic_edge.h" alt="" coords="326,87,507,114"/>
+<area shape="rect" id="node5" href="$line__vertex_8h.html" title="cpp_common/line_vertex.h" alt="" coords="531,87,710,114"/>
 </map>

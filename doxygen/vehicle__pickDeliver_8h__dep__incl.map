@@ -1,8 +1,7 @@
 <map id="vehicle_pickDeliver.h" name="vehicle_pickDeliver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="205,5,368,32"/>
-<area shape="rect" id="node2" href="$pgr__pickDeliver_8cpp.html" title=" " alt="" coords="283,229,434,256"/>
-<area shape="rect" id="node3" href="$vehicle__pickDeliver_8cpp.html" title=" " alt="" coords="23,80,201,107"/>
-<area shape="rect" id="node4" href="$book__keeping_8h.html" title=" " alt="" coords="225,80,349,107"/>
-<area shape="rect" id="node5" href="$fleet_8h.html" title=" " alt="" coords="373,80,437,107"/>
-<area shape="rect" id="node6" href="$solution_8h.html" title=" " alt="" coords="397,155,483,181"/>
+<area shape="rect" id="node2" href="$pgr__pickDeliver_8cpp.html" title="pgr_pickDeliver.cpp" alt="" coords="262,229,399,256"/>
+<area shape="rect" id="node3" href="$vehicle__pickDeliver_8cpp.html" title="vehicle_pickDeliver.cpp" alt="" coords="23,80,183,107"/>
+<area shape="rect" id="node4" href="$book__keeping_8h.html" title="book_keeping.h" alt="" coords="207,80,321,107"/>
+<area shape="rect" id="node5" href="$fleet_8h.html" title="fleet.h" alt="" coords="345,80,404,107"/>
+<area shape="rect" id="node6" href="$solution_8h.html" title="solution.h" alt="" coords="369,155,447,181"/>
 </map>

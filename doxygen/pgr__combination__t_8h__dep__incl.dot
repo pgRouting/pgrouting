@@ -1,20 +1,19 @@
 digraph "pgr_combination_t.h"
 {
- // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="pgr_combination_t.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="combinations_input.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$combinations__input_8c.html",tooltip=" "];
-  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="dijkstra_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dijkstra__driver_8cpp.html",tooltip=" "];
-  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="combinations_input.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$combinations__input_8h.html",tooltip=" "];
-  Node4 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="pgr_dijkstra.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__dijkstra_8hpp.html",tooltip=" "];
-  Node6 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node19 [label="dijkstra_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$dijkstra__driver_8h.html",tooltip=" "];
-  Node19 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="pgr_combination_t.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="combinations_input.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$combinations__input_8c.html"];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="dijkstra_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dijkstra__driver_8cpp.html"];
+  Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="combinations_input.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$combinations__input_8h.html"];
+  Node5 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="pgr_dijkstra.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__dijkstra_8hpp.html"];
+  Node7 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="dijkstra_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$dijkstra__driver_8h.html"];
+  Node20 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

@@ -16,7 +16,5 @@ var classpgrouting_1_1vrp_1_1Order =
     [ "m_compatibleI", "classpgrouting_1_1vrp_1_1Order.html#a70a71f8d25607ecdec13cc5ba85990fd", null ],
     [ "m_compatibleJ", "classpgrouting_1_1vrp_1_1Order.html#a77c107f2f6eaf6da2561c4ffa858a74c", null ],
     [ "m_delivery", "classpgrouting_1_1vrp_1_1Order.html#a9bdb982340168ecebe3be10b043a501c", null ],
-    [ "m_id", "classpgrouting_1_1vrp_1_1Order.html#a45b5bbbc6c8c0ec6fd3b61f87e7113f1", null ],
-    [ "m_idx", "classpgrouting_1_1vrp_1_1Order.html#ae4187b538a8f40969e11943f2d3ddfc5", null ],
     [ "m_pickup", "classpgrouting_1_1vrp_1_1Order.html#aabe8094c5e8e6ffdc726a0762438852b", null ]
 ];

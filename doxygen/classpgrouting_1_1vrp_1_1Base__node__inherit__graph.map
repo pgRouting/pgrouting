@@ -1,5 +1,4 @@
 <map id="pgrouting::vrp::Base_node" name="pgrouting::vrp::Base_node">
-<area shape="rect" id="node1" title="The Base_node class defines the operations that can be performed in a 2D node." alt="" coords="5,80,197,107"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Node.html" title="The Node class defines a point in 2D space with an id." alt="" coords="24,155,179,181"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title=" " alt="" coords="26,5,177,32"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Node.html" title="The Node class defines a point in 2D space with an id. " alt="" coords="23,155,163,181"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title="pgrouting::Identifier" alt="" coords="26,5,159,32"/>
 </map>

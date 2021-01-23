@@ -9,7 +9,6 @@ var classpgrouting_1_1vrp_1_1Dnode =
     [ "operator==", "classpgrouting_1_1vrp_1_1Dnode.html#a3aa08177772317bcc28a8965c97f8bc4", null ],
     [ "reset_id", "classpgrouting_1_1vrp_1_1Dnode.html#ac447a0a784cb863f908f3375e2ca9d1c", null ],
     [ "operator<<", "classpgrouting_1_1vrp_1_1Dnode.html#ace10f835663ee4ccd928da77db44cc33", null ],
-    [ "m_id", "classpgrouting_1_1vrp_1_1Dnode.html#a45b5bbbc6c8c0ec6fd3b61f87e7113f1", null ],
-    [ "m_idx", "classpgrouting_1_1vrp_1_1Dnode.html#ae4187b538a8f40969e11943f2d3ddfc5", null ],
-    [ "problem", "classpgrouting_1_1vrp_1_1Dnode.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ]
+    [ "PD_problem", "classpgrouting_1_1vrp_1_1Dnode.html#a0f4f0fb67fd3f04e1d054740c62c9b41", null ],
+    [ "problem", "classpgrouting_1_1vrp_1_1Dnode.html#a1201463b3707d9c10e220101a32816ae", null ]
 ];

@@ -1,5 +1,4 @@
 <map id="lineGraph_driver.h" name="lineGraph_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="57,5,199,32"/>
-<area shape="rect" id="node2" href="$lineGraph_8c.html" title="Connecting code with postgres." alt="" coords="5,80,101,107"/>
-<area shape="rect" id="node3" href="$lineGraph__driver_8cpp.html" title=" " alt="" coords="125,80,283,107"/>
+<area shape="rect" id="node2" href="$lineGraph_8c.html" title="Connecting code with postgres. " alt="" coords="5,80,93,107"/>
+<area shape="rect" id="node3" href="$lineGraph__driver_8cpp.html" title="lineGraph_driver.cpp" alt="" coords="117,80,259,107"/>
 </map>

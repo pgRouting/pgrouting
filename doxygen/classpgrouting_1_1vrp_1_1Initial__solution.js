@@ -11,6 +11,7 @@ var classpgrouting_1_1vrp_1_1Initial__solution =
     [ "get_postgres_result", "classpgrouting_1_1vrp_1_1Initial__solution.html#a016e772056690f0481dbbe1c1375b7b4", null ],
     [ "invariant", "classpgrouting_1_1vrp_1_1Initial__solution.html#ac2b7f0f11fe094e0a6964ce847542811", null ],
     [ "is_feasable", "classpgrouting_1_1vrp_1_1Initial__solution.html#ac3e8bf605c6fd5e6eceac4ddd7255bcb", null ],
+    [ "msg", "classpgrouting_1_1vrp_1_1Initial__solution.html#a0c2b983b158da94ba66512e925997180", null ],
     [ "one_truck_all_orders", "classpgrouting_1_1vrp_1_1Initial__solution.html#a7d3ae3ec3e657685315341a8d8395b7e", null ],
     [ "operator<", "classpgrouting_1_1vrp_1_1Initial__solution.html#a9e2dd7a7a1252e40ace284d9847bb281", null ],
     [ "sort_by_id", "classpgrouting_1_1vrp_1_1Initial__solution.html#aeee2388e51cb0460bcbf8637f97d2aec", null ],
@@ -23,8 +24,6 @@ var classpgrouting_1_1vrp_1_1Initial__solution =
     [ "assigned", "classpgrouting_1_1vrp_1_1Initial__solution.html#a10f3df1b7baab533802569b849243b59", null ],
     [ "EPSILON", "classpgrouting_1_1vrp_1_1Initial__solution.html#a6f585163bbc3f99d5f7252275701021d", null ],
     [ "fleet", "classpgrouting_1_1vrp_1_1Initial__solution.html#accd5c70ed616a7e86bb9d21121ada225", null ],
-    [ "msg", "classpgrouting_1_1vrp_1_1Initial__solution.html#a7ea35b02b812474d4b0c19da2784fc5f", null ],
-    [ "problem", "classpgrouting_1_1vrp_1_1Initial__solution.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ],
     [ "trucks", "classpgrouting_1_1vrp_1_1Initial__solution.html#ad1a5c383405030e3dbf3247a7f9c7673", null ],
     [ "unassigned", "classpgrouting_1_1vrp_1_1Initial__solution.html#a5f99d3dca1bbe8ec49f52fba63621fda", null ]
 ];

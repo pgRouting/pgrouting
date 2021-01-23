@@ -1,23 +1,22 @@
 digraph "pgr_dijkstra.hpp"
 {
- // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="pgr_dijkstra.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="dijkstra_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dijkstra__driver_8cpp.html",tooltip=" "];
-  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="drivedist_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$drivedist__driver_8cpp.html",tooltip=" "];
-  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="withPoints_dd_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$withPoints__dd__driver_8cpp.html",tooltip=" "];
-  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="lineGraph_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lineGraph__driver_8cpp.html",tooltip=" "];
-  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="lineGraphFull_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lineGraphFull__driver_8cpp.html",tooltip=" "];
-  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="withPoints_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$withPoints__driver_8cpp.html",tooltip=" "];
-  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node8 [label="pgr_dijkstraVia.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__dijkstraVia_8hpp.html",tooltip=" "];
-  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="pgr_ksp.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__ksp_8hpp.html",tooltip=" "];
+  Node41 [label="pgr_dijkstra.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node41 -> Node42 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node42 [label="dijkstra_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dijkstra__driver_8cpp.html"];
+  Node41 -> Node43 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node43 [label="drivedist_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$drivedist__driver_8cpp.html"];
+  Node41 -> Node44 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node44 [label="withPoints_dd_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$withPoints__dd__driver_8cpp.html"];
+  Node41 -> Node45 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node45 [label="lineGraph_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lineGraph__driver_8cpp.html"];
+  Node41 -> Node46 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node46 [label="lineGraphFull_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lineGraphFull__driver_8cpp.html"];
+  Node41 -> Node47 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node47 [label="withPoints_driver.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$withPoints__driver_8cpp.html"];
+  Node41 -> Node48 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node48 [label="pgr_dijkstraVia.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__dijkstraVia_8hpp.html"];
+  Node41 -> Node50 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node50 [label="pgr_ksp.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__ksp_8hpp.html"];
 }

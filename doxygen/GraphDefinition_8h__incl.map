@@ -1,12 +1,3 @@
 <map id="GraphDefinition.h" name="GraphDefinition.h">
-<area shape="rect" id="node1" title=" " alt="" coords="311,5,448,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,76,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="100,80,163,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="187,80,238,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="263,80,325,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="350,80,409,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="433,80,513,107"/>
-<area shape="rect" id="node8" title=" " alt="" coords="537,80,597,107"/>
-<area shape="rect" id="node9" title=" " alt="" coords="621,80,708,107"/>
-<area shape="rect" id="node10" href="$trsp_8h.html" title=" " alt="" coords="732,80,875,107"/>
+<area shape="rect" id="node10" href="$trsp_8h.html" title="c_types/trsp/trsp.h" alt="" coords="685,80,816,107"/>
 </map>

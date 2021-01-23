@@ -1,31 +1,30 @@
 digraph "pgrouting::graph::PgrDirectedChPPGraph"
 {
- // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="pgrouting::graph::PgrDirected\lChPPGraph",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="pgrouting::graph::PgrDirected\lChPPGraph",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" resultPath" ,fontname="Helvetica"];
-  Node2 [label="std::vector\< General\l_path_element_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 [label="std::vector\< General\l_path_element_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" targets\nsources" ,fontname="Helvetica"];
-  Node6 [label="std::set\< int64_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" edgeToIdx" ,fontname="Helvetica"];
-  Node9 [label="std::map\< std::pair\l\< int64_t, int64_t \>\l, const pgr_edge_t * \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node12 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" vertexVisited\nvertices" ,fontname="Helvetica"];
-  Node12 [label="Identifiers\< int64_t \>",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classIdentifiers.html",tooltip=" "];
-  Node6 -> Node12 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ids" ,fontname="Helvetica"];
-  Node15 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" VToVecid" ,fontname="Helvetica"];
-  Node15 [label="std::map\< int64_t,\l size_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node16 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" resultEdges\noriginalEdges" ,fontname="Helvetica"];
-  Node16 [label="std::vector\< pgr_edge_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node17 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" edgeToId" ,fontname="Helvetica"];
-  Node17 [label="std::map\< std::pair\l\< int64_t, int64_t \>\l, size_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node18 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" resultGraph" ,fontname="Helvetica"];
-  Node18 [label="std::vector\< std::pair\l\< int64_t, std::vector\l\< size_t \> \> \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node19 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" pathStack" ,fontname="Helvetica"];
-  Node19 [label="std::stack\< int64_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node21 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" edgeVisited" ,fontname="Helvetica"];
-  Node21 [label="Identifiers\< size_t \>",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classIdentifiers.html",tooltip=" "];
+  Node6 [label="std::set\< int64_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" vertexVisited\nvertices" ,fontname="Helvetica"];
+  Node9 [label="Identifiers\< int64_t \>",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classIdentifiers.html"];
+  Node6 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ids" ,fontname="Helvetica"];
+  Node12 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" VToVecid" ,fontname="Helvetica"];
+  Node12 [label="std::map\< int64_t,\l size_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node14 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" resultEdges\noriginalEdges" ,fontname="Helvetica"];
+  Node14 [label="std::vector\< pgr_edge_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node16 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" edgeToId" ,fontname="Helvetica"];
+  Node16 [label="std::map\< std::pair\l\< int64_t, int64_t \>\l, size_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node17 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" resultGraph" ,fontname="Helvetica"];
+  Node17 [label="std::vector\< std::pair\l\< int64_t, std::vector\l\< size_t \> \> \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node18 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" pathStack" ,fontname="Helvetica"];
+  Node18 [label="std::stack\< int64_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node20 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" edgeVisited" ,fontname="Helvetica"];
+  Node20 [label="Identifiers\< size_t \>",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$classIdentifiers.html"];
+  Node22 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" edgeToIdx" ,fontname="Helvetica"];
+  Node22 [label="std::map\< std::pair\l\< int64_t, int64_t \>\l, const pgr_edge_t *\>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node23 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" edges" ,fontname="Helvetica"];
-  Node23 [label="std::vector\< pgr_costFlow_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node23 [label="std::vector\< pgr_costFlow_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }

@@ -5,7 +5,7 @@ var __version_8h =
     [ "CMAKE_SYSTEM_NAME", "__version_8h.html#a43c354e99e3062018072340f52ff07e3", null ],
     [ "COMPILATION_DATE", "__version_8h.html#abe3ea93fa474ca0f12b6c689a40cbe5a", null ],
     [ "COMPILER_VERSION", "__version_8h.html#ac449233b5b6227e98fb2167ab3e9ac3a", null ],
-    [ "PGROUTING_GIT_HASH", "__version_8h.html#a0efd09f764c10a465bee1fa074ed21cb", null ],
-    [ "PGROUTING_LIB_NAME", "__version_8h.html#adafdb9e6130cd25a6c6e0517da8325aa", null ],
-    [ "POSTGRES_VERSION", "__version_8h.html#af5ce90426d6e69bf9bf02814f52ae644", null ]
+    [ "POSTGRES_VERSION", "__version_8h.html#af5ce90426d6e69bf9bf02814f52ae644", null ],
+    [ "PROJECT_GIT_HASH", "__version_8h.html#a7507817eba974b21ace212f715ad3c98", null ],
+    [ "PROJECT_LIB_NAME", "__version_8h.html#a0ee4ae5b988e56e16234a78d3387d7cb", null ]
 ];

@@ -1,8 +1,4 @@
 <map id="pgr_dijkstraVia.hpp" name="pgr_dijkstraVia.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="105,5,253,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,155,80,181"/>
-<area shape="rect" id="node3" title=" " alt="" coords="126,155,189,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="243,155,306,181"/>
-<area shape="rect" id="node5" href="$pgr__dijkstra_8hpp.html" title=" " alt="" coords="89,80,269,107"/>
-<area shape="rect" id="node6" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="345,80,538,107"/>
+<area shape="rect" id="node5" href="$pgr__dijkstra_8hpp.html" title="dijkstra/pgr_dijkstra.hpp" alt="" coords="88,80,248,107"/>
+<area shape="rect" id="node6" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="323,80,499,107"/>
 </map>

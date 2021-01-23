@@ -1,13 +1,7 @@
 <map id="dijkstra_driver.cpp" name="dijkstra_driver.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="415,5,557,32"/>
-<area shape="rect" id="node2" href="$dijkstra__driver_8h.html" title=" " alt="" coords="33,80,206,121"/>
-<area shape="rect" id="node3" href="$pgr__combination__t_8h.html" title=" " alt="" coords="5,169,215,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="239,169,314,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="339,169,401,196"/>
-<area shape="rect" id="node6" title=" " alt="" coords="425,169,488,196"/>
-<area shape="rect" id="node7" title=" " alt="" coords="513,169,598,196"/>
-<area shape="rect" id="node8" title=" " alt="" coords="622,169,681,196"/>
-<area shape="rect" id="node9" href="$pgr__dijkstra_8hpp.html" title=" " alt="" coords="332,87,512,114"/>
-<area shape="rect" id="node10" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="689,87,889,114"/>
-<area shape="rect" id="node11" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="913,87,1107,114"/>
+<area shape="rect" id="node2" href="$dijkstra__driver_8h.html" title="drivers/dijkstra/dijkstra\l_driver.h" alt="" coords="26,80,179,121"/>
+<area shape="rect" id="node3" href="$pgr__combination__t_8h.html" title="c_types/pgr_combination_t.h" alt="" coords="7,169,196,196"/>
+<area shape="rect" id="node9" href="$pgr__dijkstra_8hpp.html" title="dijkstra/pgr_dijkstra.hpp" alt="" coords="305,87,465,114"/>
+<area shape="rect" id="node10" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="641,87,823,114"/>
+<area shape="rect" id="node11" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="847,87,1023,114"/>
 </map>

@@ -34,6 +34,7 @@ var classpgrouting_1_1vrp_1_1Vehicle =
     [ "is_feasable", "classpgrouting_1_1vrp_1_1Vehicle.html#af03e827c78c15067dd25279ed354150a", null ],
     [ "is_ok", "classpgrouting_1_1vrp_1_1Vehicle.html#a0923a9c16a3fa7b95123fcc76bd7c499", null ],
     [ "is_phony", "classpgrouting_1_1vrp_1_1Vehicle.html#a7b949a1e2f1c3cc36648c6224e9c8083", null ],
+    [ "msg", "classpgrouting_1_1vrp_1_1Vehicle.html#ad70a41b7b4e4d46522b446d31b61b7d3", null ],
     [ "path", "classpgrouting_1_1vrp_1_1Vehicle.html#aba2e41f35832f29bb570c070ee6b8fab", null ],
     [ "pop_back", "classpgrouting_1_1vrp_1_1Vehicle.html#aac46d18126e93540a1d7321281a1fc02", null ],
     [ "pop_front", "classpgrouting_1_1vrp_1_1Vehicle.html#aa7d6e872a8ac0e52f899827a52b6ffcc", null ],
@@ -52,12 +53,10 @@ var classpgrouting_1_1vrp_1_1Vehicle =
     [ "twvTot", "classpgrouting_1_1vrp_1_1Vehicle.html#a0052d0936d0a3a2ee4e29f07a76c7ec0", null ],
     [ "operator<", "classpgrouting_1_1vrp_1_1Vehicle.html#a5f4d5af62d6c06f7a20fe62429f58f5f", null ],
     [ "operator<<", "classpgrouting_1_1vrp_1_1Vehicle.html#a841d722916e69f459fd5a40cbc13d732", null ],
+    [ "PD_problem", "classpgrouting_1_1vrp_1_1Vehicle.html#a6ee97e292edf4606f58a2855c04ec27f", null ],
     [ "m_capacity", "classpgrouting_1_1vrp_1_1Vehicle.html#a73c3d5f2c651df4801337169ab397206", null ],
     [ "m_factor", "classpgrouting_1_1vrp_1_1Vehicle.html#a06b1d6b0c1c8b98824dacc451b746118", null ],
-    [ "m_id", "classpgrouting_1_1vrp_1_1Vehicle.html#a45b5bbbc6c8c0ec6fd3b61f87e7113f1", null ],
-    [ "m_idx", "classpgrouting_1_1vrp_1_1Vehicle.html#ae4187b538a8f40969e11943f2d3ddfc5", null ],
     [ "m_path", "classpgrouting_1_1vrp_1_1Vehicle.html#a57aa8629a815adf2c107f7a44500fb56", null ],
     [ "m_speed", "classpgrouting_1_1vrp_1_1Vehicle.html#a0824ea9c5194ac5774863fb045b83002", null ],
-    [ "msg", "classpgrouting_1_1vrp_1_1Vehicle.html#a7ea35b02b812474d4b0c19da2784fc5f", null ],
-    [ "problem", "classpgrouting_1_1vrp_1_1Vehicle.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ]
+    [ "problem", "classpgrouting_1_1vrp_1_1Vehicle.html#a15209a4c9cde0c1edb0dafbc83226d60", null ]
 ];

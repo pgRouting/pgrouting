@@ -1,6 +1,4 @@
 <map id="ksp_driver.h" name="ksp_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="133,5,235,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,80,114"/>
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title=" " alt="" coords="104,87,264,114"/>
-<area shape="rect" id="node4" href="$general__path__element__t_8h.html" title=" " alt="" coords="289,80,450,121"/>
+<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title="c_types/pgr_edge_t.h" alt="" coords="99,87,245,114"/>
+<area shape="rect" id="node4" href="$general__path__element__t_8h.html" title="c_types/general_path\l_element_t.h" alt="" coords="269,80,416,121"/>
 </map>

@@ -1,7 +1,6 @@
 <map id="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;" name="pgrouting::graph::Pgr_base_graph&lt; G, T_V, T_E &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,119,212,160"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html" title=" " alt="" coords="427,5,621,47"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html" title=" " alt="" coords="445,71,603,127"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html" title=" " alt="" coords="419,151,629,207"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html" title=" " alt="" coords="416,231,632,287"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1graph_1_1Pgr__lineGraph.html" title="pgrouting::graph::Pgr\l_lineGraph\&lt; G, T_V, T_E \&gt;" alt="" coords="402,5,585,47"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html" title="pgrouting::graph::Pgr\l_lineGraphFull\&lt; G, T\l_V, T_E \&gt;" alt="" coords="422,71,565,127"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html" title="pgrouting::graph::Pgr\l_base_graph\&lt; G, CH_vertex,\l CH_edge \&gt;" alt="" coords="397,151,590,207"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1graph_1_1Pgr__base__graph.html" title="pgrouting::graph::Pgr\l_base_graph\&lt; BG, XY_vertex,\l Basic_edge \&gt;" alt="" coords="393,231,593,287"/>
 </map>

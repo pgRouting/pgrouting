@@ -1,6 +1,5 @@
 <map id="coordinate_t.h" name="coordinate_t.h">
-<area shape="rect" id="node1" title=" " alt="" coords="206,5,321,32"/>
-<area shape="rect" id="node2" href="$coordinates__input_8h.html" title=" " alt="" coords="5,80,156,107"/>
-<area shape="rect" id="node3" href="$euclideanTSP__driver_8h.html" title=" " alt="" coords="180,80,347,107"/>
-<area shape="rect" id="node4" href="$euclideanDmatrix_8h.html" title=" " alt="" coords="371,80,521,107"/>
+<area shape="rect" id="node2" href="$coordinates__input_8h.html" title="coordinates_input.h" alt="" coords="5,80,140,107"/>
+<area shape="rect" id="node3" href="$euclideanTSP__driver_8h.html" title="euclideanTSP_driver.h" alt="" coords="164,80,317,107"/>
+<area shape="rect" id="node4" href="$euclideanDmatrix_8h.html" title="euclideanDmatrix.h" alt="" coords="341,80,476,107"/>
 </map>

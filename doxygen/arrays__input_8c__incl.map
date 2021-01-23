@@ -1,9 +1,5 @@
 <map id="arrays_input.c" name="arrays_input.c">
-<area shape="rect" id="node1" title=" " alt="" coords="406,5,521,32"/>
-<area shape="rect" id="node2" href="$arrays__input_8h.html" title=" " alt="" coords="5,80,196,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="221,80,295,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="319,80,450,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="474,80,613,107"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title=" " alt="" coords="637,80,812,107"/>
-<area shape="rect" id="node7" href="$debug__macro_8h.html" title=" " alt="" coords="837,80,1034,107"/>
+<area shape="rect" id="node2" href="$arrays__input_8h.html" title="c_common/arrays_input.h" alt="" coords="5,80,177,107"/>
+<area shape="rect" id="node6" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="589,80,748,107"/>
+<area shape="rect" id="node7" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="773,80,951,107"/>
 </map>

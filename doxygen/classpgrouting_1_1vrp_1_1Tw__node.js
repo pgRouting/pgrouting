@@ -49,11 +49,9 @@ var classpgrouting_1_1vrp_1_1Tw__node =
     [ "operator<<", "classpgrouting_1_1vrp_1_1Tw__node.html#a751dee8331bd10209abee4917dc39887", null ],
     [ "m_closes", "classpgrouting_1_1vrp_1_1Tw__node.html#a7fabac7b3b61a57df767711a144aef05", null ],
     [ "m_demand", "classpgrouting_1_1vrp_1_1Tw__node.html#a795138a0068571b76c6678335081f2e4", null ],
-    [ "m_id", "classpgrouting_1_1vrp_1_1Tw__node.html#a45b5bbbc6c8c0ec6fd3b61f87e7113f1", null ],
-    [ "m_idx", "classpgrouting_1_1vrp_1_1Tw__node.html#ae4187b538a8f40969e11943f2d3ddfc5", null ],
     [ "m_opens", "classpgrouting_1_1vrp_1_1Tw__node.html#acf00cf1c32828c02fab3caeac6e857f5", null ],
     [ "m_order", "classpgrouting_1_1vrp_1_1Tw__node.html#af30dc6f10a64ae5d515c24b258701ab0", null ],
     [ "m_service_time", "classpgrouting_1_1vrp_1_1Tw__node.html#ae6a4dc8aa1ccc17fd81cf0989f31a36c", null ],
     [ "m_type", "classpgrouting_1_1vrp_1_1Tw__node.html#aba4a921c9d3f8e05911b584223bc0469", null ],
-    [ "problem", "classpgrouting_1_1vrp_1_1Tw__node.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ]
+    [ "problem", "classpgrouting_1_1vrp_1_1Tw__node.html#a1201463b3707d9c10e220101a32816ae", null ]
 ];

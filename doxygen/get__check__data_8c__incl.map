@@ -1,9 +1,6 @@
 <map id="get_check_data.c" name="get_check_data.c">
-<area shape="rect" id="node1" title=" " alt="" coords="277,5,411,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,88,114"/>
-<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="123,169,365,196"/>
-<area shape="rect" id="node4" href="$get__check__data_8h.html" title=" " alt="" coords="163,80,325,121"/>
-<area shape="rect" id="node5" href="$arrays__input_8h.html" title=" " alt="" coords="350,87,541,114"/>
-<area shape="rect" id="node6" title=" " alt="" coords="565,87,704,114"/>
-<area shape="rect" id="node7" href="$debug__macro_8h.html" title=" " alt="" coords="728,87,925,114"/>
+<area shape="rect" id="node3" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="120,169,341,196"/>
+<area shape="rect" id="node4" href="$get__check__data_8h.html" title="c_common/get_check\l_data.h" alt="" coords="155,80,306,121"/>
+<area shape="rect" id="node5" href="$arrays__input_8h.html" title="c_common/arrays_input.h" alt="" coords="330,87,502,114"/>
+<area shape="rect" id="node7" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="676,87,855,114"/>
 </map>

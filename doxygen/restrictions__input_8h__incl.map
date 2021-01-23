@@ -1,5 +1,3 @@
 <map id="restrictions_input.h" name="restrictions_input.h">
-<area shape="rect" id="node1" title=" " alt="" coords="41,5,188,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,80,107"/>
-<area shape="rect" id="node3" href="$restriction__t_8h.html" title=" " alt="" coords="105,80,271,107"/>
+<area shape="rect" id="node3" href="$restriction__t_8h.html" title="c_types/restriction_t.h" alt="" coords="99,80,250,107"/>
 </map>

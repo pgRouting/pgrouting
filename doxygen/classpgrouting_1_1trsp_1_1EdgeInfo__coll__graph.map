@@ -1,5 +1,3 @@
 <map id="pgrouting::trsp::EdgeInfo" name="pgrouting::trsp::EdgeInfo">
-<area shape="rect" id="node1" title=" " alt="" coords="36,109,219,136"/>
-<area shape="rect" id="node2" href="$structpgr__edge__t.html" title=" " alt="" coords="5,5,100,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="124,5,283,32"/>
+<area shape="rect" id="node2" href="$structpgr__edge__t.html" title="pgr_edge_t" alt="" coords="5,5,92,32"/>
 </map>

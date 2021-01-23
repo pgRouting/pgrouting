@@ -1,7 +1,5 @@
 <map id="pgrouting::yen::Pgr_ksp&lt; G &gt;" name="pgrouting::yen::Pgr_ksp&lt; G &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="468,87,613,129"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__messages.html" title=" " alt="" coords="143,5,329,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1yen_1_1Pgr__ksp_1_1Visitor.html" title=" " alt="" coords="163,57,309,98"/>
-<area shape="rect" id="node4" href="$classPath.html" title=" " alt="" coords="5,159,56,185"/>
-<area shape="rect" id="node5" title=" " alt="" coords="139,186,333,227"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1Pgr__messages.html" title="pgrouting::Pgr_messages" alt="" coords="140,5,311,32"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1yen_1_1Pgr__ksp_1_1Visitor.html" title="pgrouting::yen::Pgr\l_ksp\&lt; G \&gt;::Visitor" alt="" coords="159,57,291,98"/>
+<area shape="rect" id="node4" href="$classPath.html" title="Path" alt="" coords="5,159,55,185"/>
 </map>

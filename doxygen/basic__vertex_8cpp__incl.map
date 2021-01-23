@@ -1,9 +1,4 @@
 <map id="basic_vertex.cpp" name="basic_vertex.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="243,5,375,32"/>
-<area shape="rect" id="node2" href="$basic__vertex_8h.html" title=" " alt="" coords="24,80,232,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="38,155,100,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="148,155,224,181"/>
-<area shape="rect" id="node5" title=" " alt="" coords="306,80,392,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="416,80,490,107"/>
-<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="515,80,708,107"/>
+<area shape="rect" id="node2" href="$basic__vertex_8h.html" title="cpp_common/basic_vertex.h" alt="" coords="51,80,240,107"/>
+<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="507,80,683,107"/>
 </map>

@@ -1,5 +1,3 @@
 <map id="coordinates_input.h" name="coordinates_input.h">
-<area shape="rect" id="node1" title=" " alt="" coords="41,5,191,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,80,107"/>
-<area shape="rect" id="node3" href="$coordinate__t_8h.html" title=" " alt="" coords="105,80,274,107"/>
+<area shape="rect" id="node3" href="$coordinate__t_8h.html" title="c_types/coordinate_t.h" alt="" coords="99,80,253,107"/>
 </map>

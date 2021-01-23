@@ -1,6 +1,4 @@
 <map id="euclideanTSP_driver.h" name="euclideanTSP_driver.h">
-<area shape="rect" id="node1" title=" " alt="" coords="106,5,273,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,80,114"/>
-<area shape="rect" id="node3" href="$coordinate__t_8h.html" title=" " alt="" coords="105,87,274,114"/>
-<area shape="rect" id="node4" href="$general__path__element__t_8h.html" title=" " alt="" coords="298,80,459,121"/>
+<area shape="rect" id="node3" href="$coordinate__t_8h.html" title="c_types/coordinate_t.h" alt="" coords="99,87,253,114"/>
+<area shape="rect" id="node4" href="$general__path__element__t_8h.html" title="c_types/general_path\l_element_t.h" alt="" coords="277,80,424,121"/>
 </map>

@@ -10,6 +10,7 @@ var classpgrouting_1_1vrp_1_1Solution =
     [ "get_kind", "classpgrouting_1_1vrp_1_1Solution.html#a82bc3ecf220fbf390c9987f908fdad26", null ],
     [ "get_postgres_result", "classpgrouting_1_1vrp_1_1Solution.html#a016e772056690f0481dbbe1c1375b7b4", null ],
     [ "is_feasable", "classpgrouting_1_1vrp_1_1Solution.html#ac3e8bf605c6fd5e6eceac4ddd7255bcb", null ],
+    [ "msg", "classpgrouting_1_1vrp_1_1Solution.html#a0c2b983b158da94ba66512e925997180", null ],
     [ "operator<", "classpgrouting_1_1vrp_1_1Solution.html#a9e2dd7a7a1252e40ace284d9847bb281", null ],
     [ "operator=", "classpgrouting_1_1vrp_1_1Solution.html#ab21af677ebe47f2fcfee71e93ab30ed3", null ],
     [ "sort_by_id", "classpgrouting_1_1vrp_1_1Solution.html#aeee2388e51cb0460bcbf8637f97d2aec", null ],
@@ -20,9 +21,9 @@ var classpgrouting_1_1vrp_1_1Solution =
     [ "wait_time", "classpgrouting_1_1vrp_1_1Solution.html#aeb1b32eb9b50566d73338b8e99a506f5", null ],
     [ "operator<<", "classpgrouting_1_1vrp_1_1Solution.html#a9bd311dd2a3505fca51408c4f73a7c8f", null ],
     [ "Optimize", "classpgrouting_1_1vrp_1_1Solution.html#a7095b2afb20c698734f4c9b0446659f5", null ],
+    [ "PD_problem", "classpgrouting_1_1vrp_1_1Solution.html#a6ee97e292edf4606f58a2855c04ec27f", null ],
     [ "EPSILON", "classpgrouting_1_1vrp_1_1Solution.html#a6f585163bbc3f99d5f7252275701021d", null ],
     [ "fleet", "classpgrouting_1_1vrp_1_1Solution.html#accd5c70ed616a7e86bb9d21121ada225", null ],
-    [ "msg", "classpgrouting_1_1vrp_1_1Solution.html#a7ea35b02b812474d4b0c19da2784fc5f", null ],
-    [ "problem", "classpgrouting_1_1vrp_1_1Solution.html#aa6625d4f26aeb5f8d43e2e9ac23ed621", null ],
+    [ "problem", "classpgrouting_1_1vrp_1_1Solution.html#a0958471e01a0137fd0c0d72cb58b1dfc", null ],
     [ "trucks", "classpgrouting_1_1vrp_1_1Solution.html#ad1a5c383405030e3dbf3247a7f9c7673", null ]
 ];

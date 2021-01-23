@@ -1,10 +1,4 @@
 <map id="solution.h" name="solution.h">
-<area shape="rect" id="node1" title=" " alt="" coords="224,5,311,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,68,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="92,80,147,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="171,80,230,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="179,155,241,181"/>
-<area shape="rect" id="node6" href="$vehicle__pickDeliver_8h.html" title=" " alt="" coords="266,155,453,181"/>
-<area shape="rect" id="node7" href="$fleet_8h.html" title=" " alt="" coords="356,80,445,107"/>
-<area shape="rect" id="node8" href="$pd__problem_8h.html" title=" " alt="" coords="477,155,613,181"/>
+<area shape="rect" id="node6" href="$vehicle__pickDeliver_8h.html" title="vrp/vehicle_pickDeliver.h" alt="" coords="321,155,489,181"/>
+<area shape="rect" id="node7" href="$fleet_8h.html" title="vrp/fleet.h" alt="" coords="293,80,373,107"/>
 </map>

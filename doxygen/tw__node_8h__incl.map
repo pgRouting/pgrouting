@@ -1,10 +1,8 @@
 <map id="tw_node.h" name="tw_node.h">
-<area shape="rect" id="node1" title=" " alt="" coords="452,5,542,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="468,169,526,196"/>
-<area shape="rect" id="node3" href="$pickDeliveryOrders__t_8h.html" title=" " alt="" coords="27,80,202,121"/>
-<area shape="rect" id="node4" href="$vehicle__t_8h.html" title=" " alt="" coords="226,80,376,121"/>
-<area shape="rect" id="node5" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="400,87,594,114"/>
-<area shape="rect" id="node6" href="$identifier_8h.html" title=" " alt="" coords="618,87,802,114"/>
-<area shape="rect" id="node7" href="$pd__problem_8h.html" title=" " alt="" coords="850,169,986,196"/>
-<area shape="rect" id="node8" href="$dnode_8h.html" title=" " alt="" coords="826,87,925,114"/>
+<area shape="rect" id="node3" href="$pickDeliveryOrders__t_8h.html" title="c_types/pickDeliver\l/pickDeliveryOrders_t.h" alt="" coords="206,80,365,121"/>
+<area shape="rect" id="node4" href="$vehicle__t_8h.html" title="c_types/pickDeliver\l/vehicle_t.h" alt="" coords="389,80,526,121"/>
+<area shape="rect" id="node5" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="5,87,181,114"/>
+<area shape="rect" id="node6" href="$identifier_8h.html" title="cpp_common/identifier.h" alt="" coords="705,169,869,196"/>
+<area shape="rect" id="node7" href="$pd__problem_8h.html" title="vrp/pd_problem.h" alt="" coords="716,87,839,114"/>
+<area shape="rect" id="node8" href="$dnode_8h.html" title="vrp/dnode.h" alt="" coords="601,87,692,114"/>
 </map>

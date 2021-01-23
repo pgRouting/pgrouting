@@ -1,6 +1,5 @@
 <map id="ch_edge.h" name="ch_edge.h">
-<area shape="rect" id="node1" title=" " alt="" coords="102,5,190,32"/>
-<area shape="rect" id="node2" href="$ch__edge_8cpp.html" title=" " alt="" coords="5,80,108,107"/>
-<area shape="rect" id="node3" href="$ch__graphs_8hpp.html" title=" " alt="" coords="155,155,271,181"/>
-<area shape="rect" id="node4" href="$pgr__contractionGraph_8hpp.html" title=" " alt="" coords="184,80,375,107"/>
+<area shape="rect" id="node2" href="$ch__edge_8cpp.html" title="ch_edge.cpp" alt="" coords="5,80,101,107"/>
+<area shape="rect" id="node3" href="$ch__graphs_8hpp.html" title="ch_graphs.hpp" alt="" coords="147,155,253,181"/>
+<area shape="rect" id="node4" href="$pgr__contractionGraph_8hpp.html" title="pgr_contractionGraph.hpp" alt="" coords="176,80,347,107"/>
 </map>
