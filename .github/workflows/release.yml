@@ -103,6 +103,8 @@ jobs:
           cp -r build/doc/html ${PGROUTING_MAJOR_MINOR}
           git add ${PGROUTING_MAJOR_MINOR}
           git commit -m "Update users documentation for ${PGROUTING_VERSION}"
+          git fetch origin
+          git rebase origin/gh-pages
           git push origin gh-pages
           git checkout @{-2}
 
@@ -114,6 +116,8 @@ jobs:
           cp -r build/doxygen/html doxygen
           git add doxygen
           git commit -m "Update developers documentation for ${PGROUTING_VERSION}"
+          git fetch origin
+          git rebase origin/gh-pages
           git push origin gh-pages
           git checkout @{-1}
 
