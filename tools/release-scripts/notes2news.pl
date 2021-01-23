@@ -22,10 +22,11 @@ while (my $line = <$ifh>) {
   $skipping = 0;
 
   # convert urls to markdown
-  $line =~ s/`([^<]+)<([^>]+)>`_/\[$1\]($2)/g;
+  $line =~ s/`([^<]+?)\s*<([^>]+)>`__/\[$1\]($2)/g;
+  $line =~ s/`([^<]+?)\s*<([^>]+)>`_/\[$1\]($2)/g;
 
   # convert rubric to bold
-  $line =~ s/^\.\. rubric::\s*(.+)$/*$1*/;
+  $line =~ s/^\.\. rubric::\s*(.+)$/**$1**/;
 
   next if $line =~ /^\.\. _changelog/;
 
