@@ -7,6 +7,11 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_breadthFirstSearch.html>`__
+
 pgr_breadthFirstSearch - Experimental
 ===============================================================================
 
