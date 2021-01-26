@@ -10,8 +10,8 @@
 |
 
 * **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/pgr_bdAstarCost.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdAstarCost.html>`__)
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_bdAstarCostMatrix.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdAstarCostMatrix.html>`__)
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdAstarCostMatrix.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdAstarCostMatrix.html>`__
 * **Unsupported versions:**
