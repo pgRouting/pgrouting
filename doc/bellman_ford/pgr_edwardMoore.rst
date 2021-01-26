@@ -7,6 +7,11 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_bellmanFord.html>`__
+
 pgr_edwardMoore - Experimental
 ===============================================================================
 
