@@ -7,6 +7,17 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/components.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/components.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/components-family.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/components-family.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/components-family.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/components-family.html>`__
+
 Components - Family of functions
 ===============================================================================
 
@@ -43,16 +54,6 @@ Components - Family of functions
     pgr_articulationPoints
     pgr_bridges
     pgr_makeConnected
-
-.. rubric:: Previous versions of this page
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/components-family.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/components-family.html>`__
-  `2.6 <https://docs.pgrouting.org/2.6/en/components-family.html>`__
-
-* **Unsupported versions:**
-  `2.5 <https://docs.pgrouting.org/2.5/en/components-family.html>`__
 
 
 Parameters
