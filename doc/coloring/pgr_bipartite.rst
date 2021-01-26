@@ -7,6 +7,12 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_bipartite.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__)
+
 pgr_bipartite -Experimental
 ===============================================================================
 
@@ -27,12 +33,6 @@ In particular, the is_bipartite() algorithm implemented by Boost.Graph.
 * Version 3.2.0
 
   * New **experimental** function
-
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__)
-
 
 
 Description
