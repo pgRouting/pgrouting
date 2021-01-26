@@ -7,6 +7,17 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/bdAstar-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/bdAstar-family.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/bdAstar-family.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-family.html>`__
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/bdAstar-family.html>`__
+  `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-family.html>`__
+
 Bidirectional A* - Family of functions
 ===============================================================================
 
@@ -25,15 +36,6 @@ Bidirectional A* - Family of functions
     pgr_bdAstarCost
     pgr_bdAstarCostMatrix
 
-.. rubric:: Previous versions of this page
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/bdAstar-family.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-family.html>`__
-  `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-family.html>`__
-
-* **Unsupported versions:**
-  `2.5 <https://docs.pgrouting.org/2.5/en/bdAstar-family.html>`__
 
 Description
 -------------------------------------------------------------------------------
