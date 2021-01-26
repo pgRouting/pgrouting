@@ -7,6 +7,13 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/coloring-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/coloring-family.html>`__)
+
+
 Coloring - Family of functions (Experimental)
 ===============================================================================
 
@@ -27,11 +34,6 @@ Coloring - Family of functions (Experimental)
 
     pgr_sequentialVertexColoring
     pgr_bipartite
-
-.. rubric:: Versions of this page
-
-* **Supported versions:**
-  current(`3.2 <https://docs.pgrouting.org/3.2/en/coloring-family.html>`__)
 
 
 Parameters
