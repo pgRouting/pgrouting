@@ -7,6 +7,17 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**  
+ `Latest <https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCostMatrix.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCostMatrix.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCostMatrix.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCostMatrix.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__
+
 pgr_bdDijkstraCostMatrix
 ===============================================================================
 
@@ -28,13 +39,6 @@ pgr_bdDijkstraCostMatrix
 
   * New **proposed** function
 
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCostMatrix.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCostMatrix.html>`__
-
-* **Unsupported versions:**
-  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__
-  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__
 
 Description
 -------------------------------------------------------------------------------
