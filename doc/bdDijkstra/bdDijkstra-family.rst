@@ -12,8 +12,8 @@
 .. rubric:: Previous versions of this page
 
 * **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/pgrbdDijkstra.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstra.html>`__)
+  `Latest <https://docs.pgrouting.org/latest/en/pgrbdDijkstra-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstra-family.html>`__)
   `3.1 <https://docs.pgrouting.org/3.1/en/bdDijkstra-family.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/bdDijkstra-family.html>`__
 * **Unsupported versions:**
