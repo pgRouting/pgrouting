@@ -10,7 +10,8 @@
 |
 
 * **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/pgr_bellmanFord.html>`__
+`Latest <https://docs.pgrouting.org/latest/en/pgr_edwardMoore.html>`__
+`(3.2 <https://docs.pgrouting.org/3.2/en/pgr_edwardMoore.html>`__)
 
 pgr_edwardMoore - Experimental
 ===============================================================================
