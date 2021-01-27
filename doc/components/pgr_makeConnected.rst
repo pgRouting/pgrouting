@@ -12,7 +12,7 @@
 
 * **Supported versions:**
   (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__)
-
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_makeConnected.html>`__
 
 pgr_makeConnected - Experimental
 ===============================================================================
