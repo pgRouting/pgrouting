@@ -10,8 +10,8 @@
 |
 
 * **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/components.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/components.html>`__)
+  `Latest <https://docs.pgrouting.org/latest/en/components-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/components-family.html>`__)
   `3.1 <https://docs.pgrouting.org/3.1/en/components-family.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/components-family.html>`__
 * **Unsupported versions:**
