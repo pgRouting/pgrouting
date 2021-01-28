@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_breadthFirstSearch.html>`__
-
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_breadthFirstSearch.html>`__)
+  
 pgr_breadthFirstSearch - Experimental
 ===============================================================================
 
