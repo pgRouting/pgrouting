@@ -7,6 +7,12 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraNear.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html>`__)
+
 pgr_dijkstraNear - Experimental
 ===============================================================================
 
@@ -28,10 +34,6 @@ the nearest vertex.
 
   * New **experimental** function
 
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html>`__)
 
 Description
 -------------------------------------------------------------------------------
