@@ -7,6 +7,15 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/transformation-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/transformation-family.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/transformation-family.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/transformation-family.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/transformation-family.html>`__
+
 Transformation - Family of functions (Experimental)
 ===============================================================================
 
@@ -28,14 +37,6 @@ Transformation - Family of functions (Experimental)
     pgr_lineGraph
     pgr_lineGraphFull
 
-.. rubric:: Previous versions of this page
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/transformation-family.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/transformation-family.html>`__
-
-* **Unsupported versions:**
-  `2.6 <https://docs.pgrouting.org/2.6/en/transformation-family.html>`__
 
 Introduction
 ------------------------
