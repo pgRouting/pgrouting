@@ -7,6 +7,12 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_isPlanar.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__)
+
 pgr_isPlanar - Experimental
 ===============================================================================
 
@@ -27,10 +33,6 @@ pgr_isPlanar - Experimental
 
   * New **experimental** function
 
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__)
 
 Description
 -------------------------------------------------------------------------------
