@@ -7,6 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_pickDeliver.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliver.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html>`__
+
 pgr_pickDeliver - Experimental
 ===============================================================================
 
@@ -22,11 +30,6 @@ pgr_pickDeliver - Experimental
 
   * New **experimental** function
 
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html>`__
 
 Synopsis
 -------------------------------------------------------------------------------
