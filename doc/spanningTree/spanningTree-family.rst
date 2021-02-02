@@ -7,6 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/spanningTree-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/spanningTree-family.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/spanningTree-family.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/spanningTree-family.html>`__
+
 Spanning Tree - Category
 ===============================================================================
 
@@ -30,9 +38,6 @@ consisting of a spanning tree of each connected component.
     kruskal-family
     prim-family
 
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/spanningTree-family.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/spanningTree-family.html>`__
 
 See Also
 -------------------------------------------------------------------------------
