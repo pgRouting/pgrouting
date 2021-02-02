@@ -7,6 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/prim-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/prim-family.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/prim-family.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/prim-family.html>`__
+
 Prim - Family of functions
 ===============================================================================
 
@@ -32,9 +40,6 @@ Prim - Family of functions
     pgr_primDD
     pgr_primDFS
 
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/prim-family.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/prim-family.html>`__
 
 Description
 -------------------------------------------------------------------------------
