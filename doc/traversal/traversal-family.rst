@@ -7,6 +7,12 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/traversal-family.html>`__
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/traversal-family.html>`__)
+
 Traversal - Family of functions (Experimental)
 ===============================================================================
 
@@ -25,11 +31,6 @@ Traversal - Family of functions (Experimental)
     :hidden:
 
     pgr_depthFirstSearch
-
-.. rubric:: Versions of this page
-
-* **Supported versions:**
-  current(`3.2 <https://docs.pgrouting.org/3.2/en/traversal-family.html>`__)
 
 
 Inner query
