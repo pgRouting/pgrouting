@@ -333,7 +333,8 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html',
     'https://docs.pgrouting.org/latest/en/pgr_lengauerTarjanDominatorTree.html',
     'https://docs.pgrouting.org/latest/en/pgr_isPlanar.html',
-    'https://docs.pgrouting.org/latest/en/pgr_randomSpanTree.html'
+    'https://docs.pgrouting.org/latest/en/pgr_randomSpanTree.html',
+    'https://docs.pgrouting.org/latest/en/pgr_depthFirstSearch.html'
 
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
