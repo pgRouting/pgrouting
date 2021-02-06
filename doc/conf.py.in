@@ -325,7 +325,7 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html',
     'https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html',
     'https://docs.pgrouting.org/3.2/en/pgr_randomSpanTree.html',
-    'https://docs.pgrouting.org/lastest/en/pgr_makeConnected.html',
+    'https://docs.pgrouting.org/latest/en/pgr_makeConnected.html',
     'https://docs.pgrouting.org/latest/en/coloring-family.html',
     'https://docs.pgrouting.org/latest/en/pgr_bipartite.html',
     'https://docs.pgrouting.org/latest/en/pgr_sequentialVertexColoring.html',
@@ -336,7 +336,7 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/latest/en/pgr_randomSpanTree.html',
     'https://docs.pgrouting.org/latest/en/pgr_depthFirstSearch.html',
     'https://docs.pgrouting.org/latest/en/traversal-family.html',
-    
+
 
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
