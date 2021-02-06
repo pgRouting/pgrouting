@@ -326,6 +326,7 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html',
     'https://docs.pgrouting.org/3.2/en/pgr_randomSpanTree.html',
     'https://docs.pgrouting.org/3.2/en/pgr_withPointsVia.html',
+    'https://docs.pgrouting.org/3.2/en/withPoints.html',
     'https://docs.pgrouting.org/latest/en/pgr_makeConnected.html',
     'https://docs.pgrouting.org/latest/en/coloring-family.html',
     'https://docs.pgrouting.org/latest/en/pgr_bipartite.html',
@@ -338,6 +339,7 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/latest/en/pgr_depthFirstSearch.html',
     'https://docs.pgrouting.org/latest/en/traversal-family.html',
     'https://docs.pgrouting.org/latest/en/pgr_withPointsVia.html',
+    'https://docs.pgrouting.org/latest/en/withPoints.html',
 
 
 
