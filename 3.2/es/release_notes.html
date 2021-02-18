@@ -5,15 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notas de versión &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -95,8 +94,14 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Notas de versión</a><ul>
-<li><a class="reference internal" href="#pgrouting-3-2-0-release-notes">pgRouting 3.2.0 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-3-2-0-release-notes">Notas del Lanzamiento de pgRouting 3.2.0</a></li>
+<li><a class="reference internal" href="#pgrouting-3-1-3-release-notes">pgRouting 3.1.3 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-3-1-2-release-notes">Notas de la Versión pgRouting 3.1.2</a></li>
+<li><a class="reference internal" href="#pgrouting-3-1-1-release-notes">pgRouting 3.1.1 Notas de la Versión</a></li>
 <li><a class="reference internal" href="#pgrouting-3-1-0-release-notes">Notas de la Versión pgRouting 3.1.0</a></li>
+<li><a class="reference internal" href="#pgrouting-3-0-5-release-notes">pgRouting 3.0.5 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-3-0-4-release-notes">Notas de la Versión pgRouting 3.0.4</a></li>
+<li><a class="reference internal" href="#pgrouting-3-0-3-release-notes">Notas de la versión de pgRouting 3.0.3</a></li>
 <li><a class="reference internal" href="#pgrouting-3-0-2-release-notes">Notas de la Versión pgRouting 3.0.2</a></li>
 <li><a class="reference internal" href="#pgrouting-3-0-1-release-notes">Notas de la versión 3.0.1 de pgRouting</a></li>
 <li><a class="reference internal" href="#pgrouting-3-0-0-release-notes">Notas de la versión de pgRouting 3.0.0</a></li>
@@ -176,47 +181,189 @@
     <div class="body col-md-12 content" role="main">
       
   <div class="section" id="release-notes">
-<span id="change-log"></span><h1>Notas de versión<a class="headerlink" href="#release-notes" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>Notas de versión<a class="headerlink" href="#release-notes" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>Para ver la lista completa de cambios, consulte la lista de <a class="reference external" href="https://github.com/pgRouting/pgrouting/commits">Git commits</a> en Github.</p>
-<p class="rubric">Tabla de contenidos</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#changelog-3-2-0"><span class="std std-ref">pgRouting 3.2.0 Release Notes</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-3-1-0"><span class="std std-ref">Notas de la Versión pgRouting 3.1.0</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-3-0-2"><span class="std std-ref">Notas de la Versión pgRouting 3.0.2</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-3-0-1"><span class="std std-ref">Notas de la versión 3.0.1 de pgRouting</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-3-0-0"><span class="std std-ref">Notas de la versión de pgRouting 3.0.0</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-6-3"><span class="std std-ref">pgRouting 2.6.3 Notas de la Versión</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-6-2"><span class="std std-ref">pgRouting 2.6.2 Notas de la versión</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-6-1"><span class="std std-ref">Notas de la versión de pgRouting 2.6.1</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-6-0"><span class="std std-ref">Notas de la versión de pgRouting 2.6.0</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-5-5"><span class="std std-ref">Notas de la versión de PgRouting 2.5.5</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-5-4"><span class="std std-ref">Notas de la versión de pgRouting 2.5.4</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-5-3"><span class="std std-ref">Notas de la versión de pgRouting 2.5.3</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-5-2"><span class="std std-ref">Notas de la versión de pgRouting 2.5.2</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-5-1"><span class="std std-ref">Notas de la versión de pgRouting 2.5.1</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-5-0"><span class="std std-ref">Notas de la versión de pgRouting 2.5.0</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-4-2"><span class="std std-ref">Notas de la versión de pgRouting 2.4.2</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-4-1"><span class="std std-ref">Notas de la versión de pgRouting 2.4.1</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-4-0"><span class="std std-ref">Notas de la versión de pgRouting 2.4.0</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-3-2"><span class="std std-ref">Notas de la versión de pgRouting 2.3.2</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-3-1"><span class="std std-ref">Notas de la versión de pgRouting 2.3.1</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-3-0"><span class="std std-ref">Notas de la versión de pgRouting 2.3.0</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-2-4"><span class="std std-ref">Notas de la versión de pgRouting 2.2.4</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-2-3"><span class="std std-ref">Notas de la versión de pgRouting 2.2.3</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-2-2"><span class="std std-ref">Notas de la versión de pgRouting 2.2.2</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-2-1"><span class="std std-ref">Notas de la versión de pgRouting 2.2.1</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-2-0"><span class="std std-ref">Notas de la versión de pgRouting 2.2.0</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-1-0"><span class="std std-ref">Notas de la versión de pgRouting 2.1.0</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-0-1"><span class="std std-ref">Notas de la versión de pgRouting 2.0.1</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-2-0-0"><span class="std std-ref">Notas de la versión de pgRouting 2.0.0</span></a></p></li>
-<li><p><a class="reference internal" href="#changelog-1-x"><span class="std std-ref">Notas de versión de pgRouting 1.x</span></a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-0-release-notes" id="id1">Notas del Lanzamiento de pgRouting 3.2.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-3-release-notes" id="id2">pgRouting 3.1.3 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-2-release-notes" id="id3">Notas de la Versión pgRouting 3.1.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-1-release-notes" id="id4">pgRouting 3.1.1 Notas de la Versión</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-0-release-notes" id="id5">Notas de la Versión pgRouting 3.1.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-5-release-notes" id="id6">pgRouting 3.0.5 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-4-release-notes" id="id7">Notas de la Versión pgRouting 3.0.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-3-release-notes" id="id8">Notas de la versión de pgRouting 3.0.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-2-release-notes" id="id9">Notas de la Versión pgRouting 3.0.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-1-release-notes" id="id10">Notas de la versión 3.0.1 de pgRouting</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-0-release-notes" id="id11">Notas de la versión de pgRouting 3.0.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-3-release-notes" id="id12">pgRouting 2.6.3 Notas de la Versión</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-2-release-notes" id="id13">pgRouting 2.6.2 Notas de la versión</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-1-release-notes" id="id14">Notas de la versión de pgRouting 2.6.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-0-release-notes" id="id15">Notas de la versión de pgRouting 2.6.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-5-release-notes" id="id16">Notas de la versión de PgRouting 2.5.5</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-4-release-notes" id="id17">Notas de la versión de pgRouting 2.5.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-3-release-notes" id="id18">Notas de la versión de pgRouting 2.5.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-2-release-notes" id="id19">Notas de la versión de pgRouting 2.5.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-1-release-notes" id="id20">Notas de la versión de pgRouting 2.5.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-0-release-notes" id="id21">Notas de la versión de pgRouting 2.5.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-2-release-notes" id="id22">Notas de la versión de pgRouting 2.4.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-1-release-notes" id="id23">Notas de la versión de pgRouting 2.4.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-0-release-notes" id="id24">Notas de la versión de pgRouting 2.4.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-3-2-release-notes" id="id25">Notas de la versión de pgRouting 2.3.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-3-1-release-notes" id="id26">Notas de la versión de pgRouting 2.3.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-3-0-release-notes" id="id27">Notas de la versión de pgRouting 2.3.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-4-release-notes" id="id28">Notas de la versión de pgRouting 2.2.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-3-release-notes" id="id29">Notas de la versión de pgRouting 2.2.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-2-release-notes" id="id30">Notas de la versión de pgRouting 2.2.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-1-release-notes" id="id31">Notas de la versión de pgRouting 2.2.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-0-release-notes" id="id32">Notas de la versión de pgRouting 2.2.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-1-0-release-notes" id="id33">Notas de la versión de pgRouting 2.1.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0-1-release-notes" id="id34">Notas de la versión de pgRouting 2.0.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0-0-release-notes" id="id35">Notas de la versión de pgRouting 2.0.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-1-x-release-notes" id="id36">Notas de versión de pgRouting 1.x</a></p>
+<ul>
+<li><p><a class="reference internal" href="#changes-for-release-1-05" id="id37">Cambios para la versión 1.05</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-03" id="id38">Cambios para la versión 1.03</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-02" id="id39">Cambios para la versión 1.02</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-01" id="id40">Cambios para la  versión 1.01</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0" id="id41">Cambios para la versión 1.0</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0-0b" id="id42">Cambios para la versión 1.0.0b</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0-0a" id="id43">Cambios para la versión 1.0.0a</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-0-9-9" id="id44">Cambios para la versión 0.9.9</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-0-9-8" id="id45">Cambios para versión 0.9.8</a></p></li>
 </ul>
+</li>
+</ul>
+</div>
 <div class="section" id="pgrouting-3-2-0-release-notes">
-<span id="changelog-3-2-0"></span><h2>pgRouting 3.2.0 Release Notes<a class="headerlink" href="#pgrouting-3-2-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>No Changes Yet</p>
+<h2><a class="toc-backref" href="#id1">Notas del Lanzamiento de pgRouting 3.2.0</a><a class="headerlink" href="#pgrouting-3-2-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.0%22">Git closed milestone for 3.2.0</a> on Github.</p>
+<p class="rubric">Build</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1850">#1850</a>: Change Boost min version to 1.56</p>
+<ul>
+<li><p>Removing support for Boost v1.53, v1.54 &amp; v1.55</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Nuevas funciones experimentales</p>
+<ul>
+<li><p>pgr_bellmanFord(Combinaciones)</p></li>
+<li><p>pgr_binaryBreadthFirstSearch(Combinaciones)</p></li>
+<li><p>pgr_bipartite</p></li>
+<li><p>pgr_dagShortestPath(Combinaciones)</p></li>
+<li><p>pgr_depthFirstSearch</p></li>
+<li><p>Dijkstra Near</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>pgr_dijkstraNearCost</p>
+<ul>
+<li><p>pgr_dijkstraNear(Uno a Muchos)</p></li>
+<li><p>pgr_dijkstraNear(Muchos a Uno)</p></li>
+<li><p>pgr_dijkstraNear(Muchos a Muchos)</p></li>
+<li><p>pgr_dijkstraNear(Combinaciones)</p></li>
+</ul>
+</li>
+<li><p>pgr_dijkstraNearCost</p>
+<ul>
+<li><p>pgr_dijkstraNearCost(Uno a Muchos)</p></li>
+<li><p>pgr_dijkstraNearCost(Muchos a Uno)</p></li>
+<li><p>pgr_dijkstraNearCost(Muchos a Muchos)</p></li>
+<li><p>pgr_dijkstraNearCost(Combinaciones)</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>pgr_edwardMoore(Combinaciones)</p></li>
+<li><p>pgr_isPlanar</p></li>
+<li><p>pgr_lengauerTarjanDominatorTree</p></li>
+<li><p>pgr_makeConnected</p></li>
+<li><p>Flow</p>
+<ul class="simple">
+<li><p>pgr_maxFlowMinCost(Combinaciones)</p></li>
+<li><p>pgr_maxFlowMinCost_Cost(Combinaciones)</p></li>
+</ul>
+</li>
+<li><p>pgr_sequentialVertexColoring</p></li>
+</ul>
+<p class="rubric">Nuevas funciones propuestas</p>
+<ul>
+<li><p>Astar</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>pgr_aStar(Combinaciones)</p></li>
+<li><p>pgr_aStarCost(Combinaciones)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Bidirectional Astar</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>pgr_bdAstar(Combinaciones)</p></li>
+<li><p>pgr_bdAstarCost(Combinaciones)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Bidirectional Dijkstra</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>pgr_bdDijkstra(Combinaciones)</p></li>
+<li><p>pgr_bdDijkstraCost(Combinaciones)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Flow</p>
+<ul class="simple">
+<li><p>pgr_boykovKolmogorov(Combinaciones)</p></li>
+<li><p>pgr_edgeDisjointPaths(Combinaciones)</p></li>
+<li><p>pgr_edmondsKarp(Combinaciones)</p></li>
+<li><p>pgr_maxFlow(Combinaciones)</p></li>
+<li><p>pgr_pushRelabel(Combinaciones)</p></li>
+</ul>
+</li>
+<li><p>pgr_withPoints(Combinaciones)</p></li>
+<li><p>pgr_withPointsCost(Combinaciones)</p></li>
+</ul>
+</div>
+<div class="section" id="pgrouting-3-1-3-release-notes">
+<h2><a class="toc-backref" href="#id2">pgRouting 3.1.3 Release Notes</a><a class="headerlink" href="#pgrouting-3-1-3-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.3%22">Git closed milestone for 3.1.3</a> on Github.</p>
+<p class="rubric">Corrección de problemas</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1825">#1825</a>: Boost versions are not honored</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1849">#1849</a>: Boost 1.75.0 geometry «point_xy.hpp» build error on macOS environment</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1861">#1861</a>: vrp functions crash server</p></li>
+</ul>
+</div>
+<div class="section" id="pgrouting-3-1-2-release-notes">
+<h2><a class="toc-backref" href="#id3">Notas de la Versión pgRouting 3.1.2</a><a class="headerlink" href="#pgrouting-3-1-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para ver todos los problemas y solicitudes de extracción cerradas por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.2%22">hito cerrado de Git para 3.1.2</a> en Github.</p>
+<p class="rubric">Corrección de problemas</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1304">#1304</a>: FreeBSD 12 de 64 bits falla en pgr_vrOneDepot prueba la función experimental</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1356">#1356</a>: tools/testers/pg_prove_tests.sh falla cuando no pasa el puerto PostgreSQL</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1725">#1725</a>: El servidor falla en pgr_pickDeliver y pgr_vrpOneDepot en openbsd</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1760">#1760</a>: el servidor TSP cae en ubuntu 20.04 #1760</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1770">#1770</a>: Eliminar advertencias cuando se utiliza el compilador clang</p></li>
+</ul>
+</div>
+<div class="section" id="pgrouting-3-1-1-release-notes">
+<h2><a class="toc-backref" href="#id4">pgRouting 3.1.1 Notas de la Versión</a><a class="headerlink" href="#pgrouting-3-1-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.1%22">Git closed milestone for 3.1.1</a> on Github.</p>
+<p class="rubric">Corrección de problemas</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1733">#1733</a>: pgr_bdAstar falla cuando el vértice de origen o de destino no existe en el gráfico</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1647">#1647</a>: La Contracción Lineal contrae bucles propios</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1640">#1640</a>: pgr_withPoints falla cuando points_sql está vacía</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1616">#1616</a>: La evaluación de la ruta en C ++ no se actualiza antes de que los resultados vuelvan a C</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1300">#1300</a>: pgr_chinesePostman falla en los datos de prueba</p></li>
+</ul>
 </div>
 <div class="section" id="pgrouting-3-1-0-release-notes">
-<span id="changelog-3-1-0"></span><h2>Notas de la Versión pgRouting 3.1.0<a class="headerlink" href="#pgrouting-3-1-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Notas de la Versión pgRouting 3.1.0</a><a class="headerlink" href="#pgrouting-3-1-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para ver los problemas cerrados por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.0%22">hito cerrado de Git para 3.1.0</a> en Github.</p>
 <p class="rubric">Nuevas funciones propuestas</p>
 <ul class="simple">
 <li><p>pgr_dijkstra(combinaciones)</p></li>
@@ -227,8 +374,41 @@
 <li><p>Requerimientos mínimos para Sphinx: versión 1.8</p></li>
 </ul>
 </div>
+<div class="section" id="pgrouting-3-0-5-release-notes">
+<h2><a class="toc-backref" href="#id6">pgRouting 3.0.5 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-5-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.5%22">Git closed milestone for 3.0.5</a> on Github.</p>
+<p class="rubric">Corrección de problemas de Backport</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1825">#1825</a>: Boost versions are not honored</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1849">#1849</a>: Boost 1.75.0 geometry «point_xy.hpp» build error on macOS environment</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1861">#1861</a>: vrp functions crash server</p></li>
+</ul>
+</div>
+<div class="section" id="pgrouting-3-0-4-release-notes">
+<h2><a class="toc-backref" href="#id7">Notas de la Versión pgRouting 3.0.4</a><a class="headerlink" href="#pgrouting-3-0-4-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para ver todos los problemas y solicitudes de extracción cerradas por esta versión, consulte el  <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.4%22">hito de cierre de Git para 3.0.4</a> en Github.</p>
+<p class="rubric">Corrección de problemas de Backport</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1304">#1304</a>: FreeBSD 12 de 64 bits falla en pgr_vrOneDepot prueba la función experimental</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1356">#1356</a>: tools/testers/pg_prove_tests.sh falla cuando no pasa el puerto PostgreSQL</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1725">#1725</a>: El servidor falla en pgr_pickDeliver y pgr_vrpOneDepot en openbsd</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1760">#1760</a>: el servidor TSP cae en ubuntu 20.04 #1760</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1770">#1770</a>: Eliminar advertencias cuando se utiliza el compilador clang</p></li>
+</ul>
+</div>
+<div class="section" id="pgrouting-3-0-3-release-notes">
+<h2><a class="toc-backref" href="#id8">Notas de la versión de pgRouting 3.0.3</a><a class="headerlink" href="#pgrouting-3-0-3-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p class="rubric">Corrección de problemas de Backport</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1733">#1733</a>: pgr_bdAstar falla cuando el vértice de origen o de destino no existe en el gráfico</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1647">#1647</a>: La Contracción Lineal contrae bucles propios</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1640">#1640</a>: pgr_withPoints falla cuando points_sql está vacía</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1616">#1616</a>: La evaluación de la ruta en C ++ no se actualiza antes de que los resultados vuelvan a C</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1300">#1300</a>: pgr_chinesePostman falla en los datos de prueba</p></li>
+</ul>
+</div>
 <div class="section" id="pgrouting-3-0-2-release-notes">
-<span id="changelog-3-0-2"></span><h2>Notas de la Versión pgRouting 3.0.2<a class="headerlink" href="#pgrouting-3-0-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">Notas de la Versión pgRouting 3.0.2</a><a class="headerlink" href="#pgrouting-3-0-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte en Github el  <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.2%22">Hito cerrado de Git para 3.0.2</a>  en Github.</p>
 <p class="rubric">Corrección de problemas</p>
 <ul class="simple">
@@ -236,7 +416,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-3-0-1-release-notes">
-<span id="changelog-3-0-1"></span><h2>Notas de la versión 3.0.1 de pgRouting<a class="headerlink" href="#pgrouting-3-0-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">Notas de la versión 3.0.1 de pgRouting</a><a class="headerlink" href="#pgrouting-3-0-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.1%22">Hito cerrado de Git para 3.0.1</a> en Github.</p>
 <p class="rubric">Corrección de problemas</p>
 <ul class="simple">
@@ -244,7 +424,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-3-0-0-release-notes">
-<span id="changelog-3-0-0"></span><h2>Notas de la versión de pgRouting 3.0.0<a class="headerlink" href="#pgrouting-3-0-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Notas de la versión de pgRouting 3.0.0</a><a class="headerlink" href="#pgrouting-3-0-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.0%22">hito cerrado de Git para 3.0.0</a> en Github.</p>
 <p class="rubric">Problemas solucionados</p>
 <ul class="simple">
@@ -423,7 +603,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-6-3-release-notes">
-<span id="changelog-2-6-3"></span><h2>pgRouting 2.6.3 Notas de la Versión<a class="headerlink" href="#pgrouting-2-6-3-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">pgRouting 2.6.3 Notas de la Versión</a><a class="headerlink" href="#pgrouting-2-6-3-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.3%22%20">Git closed milestone for 2.6.3</a> en Github.</p>
 <p class="rubric">Correcciones</p>
 <ul class="simple">
@@ -433,7 +613,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-6-2-release-notes">
-<span id="changelog-2-6-2"></span><h2>pgRouting 2.6.2 Notas de la versión<a class="headerlink" href="#pgrouting-2-6-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">pgRouting 2.6.2 Notas de la versión</a><a class="headerlink" href="#pgrouting-2-6-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte en Github el  <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.2%22%20">Git closed milestone for 2.6.2</a>.</p>
 <p class="rubric">Correcciones</p>
 <ul class="simple">
@@ -443,7 +623,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-6-1-release-notes">
-<span id="changelog-2-6-1"></span><h2>Notas de la versión de pgRouting 2.6.1<a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">Notas de la versión de pgRouting 2.6.1</a><a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.1%22%20">Git closed milestone for 2.6.1</a> en Github.</p>
 <ul class="simple">
 <li><p>Corrige el bloqueo del servidor en varias funciones.</p>
@@ -482,7 +662,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-6-0-release-notes">
-<span id="changelog-2-6-0"></span><h2>Notas de la versión de pgRouting 2.6.0<a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">Notas de la versión de pgRouting 2.6.0</a><a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el  <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.0%22%20">Git closed milestone for 2.6.0</a> en Github.</p>
 <p class="rubric">Nuevas funciones fexperimentales</p>
 <ul class="simple">
@@ -518,7 +698,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-5-release-notes">
-<span id="changelog-2-5-5"></span><h2>Notas de la versión de PgRouting 2.5.5<a class="headerlink" href="#pgrouting-2-5-5-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">Notas de la versión de PgRouting 2.5.5</a><a class="headerlink" href="#pgrouting-2-5-5-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.5%22%20">Git closed milestone for 2.5.5</a> en Github.</p>
 <p class="rubric">Correcciones</p>
 <ul class="simple">
@@ -528,7 +708,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-4-release-notes">
-<span id="changelog-2-5-4"></span><h2>Notas de la versión de pgRouting 2.5.4<a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">Notas de la versión de pgRouting 2.5.4</a><a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.4%22%20">Git closed milestone for 2.5.4</a> en Github.</p>
 <ul class="simple">
 <li><p>Corrige el bloqueo del servidor en varias funciones.</p>
@@ -567,7 +747,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-3-release-notes">
-<span id="changelog-2-5-3"></span><h2>Notas de la versión de pgRouting 2.5.3<a class="headerlink" href="#pgrouting-2-5-3-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">Notas de la versión de pgRouting 2.5.3</a><a class="headerlink" href="#pgrouting-2-5-3-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.3%22%20">Git closed milestone for 2.5.3</a> en Github.</p>
 <p class="rubric">Correcciones</p>
 <ul class="simple">
@@ -575,7 +755,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-2-release-notes">
-<span id="changelog-2-5-2"></span><h2>Notas de la versión de pgRouting 2.5.2<a class="headerlink" href="#pgrouting-2-5-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id19">Notas de la versión de pgRouting 2.5.2</a><a class="headerlink" href="#pgrouting-2-5-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el`Git closed milestone for 2.5.2 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.2%22%20">https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.2%22%20</a>&gt;`_ en Github.</p>
 <p class="rubric">Correcciones</p>
 <ul class="simple">
@@ -583,7 +763,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-1-release-notes">
-<span id="changelog-2-5-1"></span><h2>Notas de la versión de pgRouting 2.5.1<a class="headerlink" href="#pgrouting-2-5-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Notas de la versión de pgRouting 2.5.1</a><a class="headerlink" href="#pgrouting-2-5-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.1%22%20">Git closed milestone for 2.5.1</a> en Github.</p>
 <p class="rubric">Correcciones</p>
 <ul class="simple">
@@ -591,7 +771,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-5-0-release-notes">
-<span id="changelog-2-5-0"></span><h2>Notas de la versión de pgRouting 2.5.0<a class="headerlink" href="#pgrouting-2-5-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">Notas de la versión de pgRouting 2.5.0</a><a class="headerlink" href="#pgrouting-2-5-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed">Git closed issues for 2.5.0</a> en Github.</p>
 <p class="rubric">mejora:</p>
 <ul class="simple">
@@ -654,7 +834,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-4-2-release-notes">
-<span id="changelog-2-4-2"></span><h2>Notas de la versión de pgRouting 2.4.2<a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id22">Notas de la versión de pgRouting 2.4.2</a><a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.2%22%20">Git closed milestone for 2.4.2</a> en Github.</p>
 <p class="rubric">Mejora</p>
 <ul class="simple">
@@ -667,7 +847,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-4-1-release-notes">
-<span id="changelog-2-4-1"></span><h2>Notas de la versión de pgRouting 2.4.1<a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id23">Notas de la versión de pgRouting 2.4.1</a><a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.1%22%20">Git closed milestone for 2.4.1</a> on Github.</p>
 <p class="rubric">Correcciones</p>
 <ul class="simple">
@@ -676,7 +856,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-4-0-release-notes">
-<span id="changelog-2-4-0"></span><h2>Notas de la versión de pgRouting 2.4.0<a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id24">Notas de la versión de pgRouting 2.4.0</a><a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte el <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed">Git closed issues for 2.4.0</a> on Github.</p>
 <p class="rubric">Nuevas Firmas</p>
 <ul class="simple">
@@ -713,7 +893,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-3-2-release-notes">
-<span id="changelog-2-3-2"></span><h2>Notas de la versión de pgRouting 2.3.2<a class="headerlink" href="#pgrouting-2-3-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id25">Notas de la versión de pgRouting 2.3.2</a><a class="headerlink" href="#pgrouting-2-3-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed">Git closed issues for 2.3.2</a> en Github.</p>
 <p class="rubric">Corrección de errores</p>
 <ul class="simple">
@@ -727,7 +907,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-3-1-release-notes">
-<span id="changelog-2-3-1"></span><h2>Notas de la versión de pgRouting 2.3.1<a class="headerlink" href="#pgrouting-2-3-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id26">Notas de la versión de pgRouting 2.3.1</a><a class="headerlink" href="#pgrouting-2-3-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed">Git closed issues for 2.3.1</a> on Github.</p>
 <p class="rubric">Corrección de errores</p>
 <ul class="simple">
@@ -737,7 +917,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-3-0-release-notes">
-<span id="changelog-2-3-0"></span><h2>Notas de la versión de pgRouting 2.3.0<a class="headerlink" href="#pgrouting-2-3-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id27">Notas de la versión de pgRouting 2.3.0</a><a class="headerlink" href="#pgrouting-2-3-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed">Git closed issues for 2.3.0</a> en Github.</p>
 <p class="rubric">Nuevas Firmas</p>
 <ul class="simple">
@@ -785,7 +965,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-4-release-notes">
-<span id="changelog-2-2-4"></span><h2>Notas de la versión de pgRouting 2.2.4<a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id28">Notas de la versión de pgRouting 2.2.4</a><a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed">Git closed issues for 2.2.4</a> on Github.</p>
 <p class="rubric">Corrección de errores</p>
 <ul class="simple">
@@ -795,7 +975,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-3-release-notes">
-<span id="changelog-2-2-3"></span><h2>Notas de la versión de pgRouting 2.2.3<a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id29">Notas de la versión de pgRouting 2.2.3</a><a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed">Git closed issues for 2.2.3</a> en Github.</p>
 <p class="rubric">Corrección de errores</p>
 <ul class="simple">
@@ -803,7 +983,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-2-release-notes">
-<span id="changelog-2-2-2"></span><h2>Notas de la versión de pgRouting 2.2.2<a class="headerlink" href="#pgrouting-2-2-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id30">Notas de la versión de pgRouting 2.2.2</a><a class="headerlink" href="#pgrouting-2-2-2-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed">Git closed issues for 2.2.2</a> on Github.</p>
 <p class="rubric">Corrección de errores</p>
 <ul class="simple">
@@ -811,7 +991,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-1-release-notes">
-<span id="changelog-2-2-1"></span><h2>Notas de la versión de pgRouting 2.2.1<a class="headerlink" href="#pgrouting-2-2-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id31">Notas de la versión de pgRouting 2.2.1</a><a class="headerlink" href="#pgrouting-2-2-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed">Git closed issues for 2.2.1</a> en Github.</p>
 <p class="rubric">Corrección de errores</p>
 <ul class="simple">
@@ -820,7 +1000,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-0-release-notes">
-<span id="changelog-2-2-0"></span><h2>Notas de la versión de pgRouting 2.2.0<a class="headerlink" href="#pgrouting-2-2-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id32">Notas de la versión de pgRouting 2.2.0</a><a class="headerlink" href="#pgrouting-2-2-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed">Git closed issues for 2.2.0</a> on Github.</p>
 <p class="rubric">Mejoras</p>
 <ul class="simple">
@@ -872,7 +1052,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-1-0-release-notes">
-<span id="changelog-2-1-0"></span><h2>Notas de la versión de pgRouting 2.1.0<a class="headerlink" href="#pgrouting-2-1-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id33">Notas de la versión de pgRouting 2.1.0</a><a class="headerlink" href="#pgrouting-2-1-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed">Git closed issues for 2.1.0</a> en Github.</p>
 <p class="rubric">Nuevas Firmas</p>
 <ul class="simple">
@@ -950,7 +1130,7 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-0-1-release-notes">
-<span id="changelog-2-0-1"></span><h2>Notas de la versión de pgRouting 2.0.1<a class="headerlink" href="#pgrouting-2-0-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id34">Notas de la versión de pgRouting 2.0.1</a><a class="headerlink" href="#pgrouting-2-0-1-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Corrección de errores menores.</p>
 <p class="rubric">Corrección de errores</p>
 <ul class="simple">
@@ -958,9 +1138,10 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-2-0-0-release-notes">
-<span id="changelog-2-0-0"></span><h2>Notas de la versión de pgRouting 2.0.0<a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id35">Notas de la versión de pgRouting 2.0.0</a><a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed">Git closed issues for 2.0.0</a> on Github.</p>
-<p>Con el lanzamiento de pgRouting 2.0.0, la biblioteca ha abandonado compatibilidad con versiones anteriores a <a class="reference internal" href="#changelog-1-x"><span class="std std-ref">pgRouting 1.x</span></a> . Los objetivos principales de esta versión son:</p>
+<p>With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to <a class="reference internal" href="#pgrouting-1-x-release-notes">pgRouting 1.x Release Notes</a> releases.
+The main Goals for this release are:</p>
 <ul class="simple">
 <li><p>Mayor reestructuración de pgRouting.</p></li>
 <li><p>Estandarización de la nomenclatura de funciones</p></li>
@@ -1002,36 +1183,36 @@
 </ul>
 </div>
 <div class="section" id="pgrouting-1-x-release-notes">
-<span id="changelog-1-x"></span><h2>Notas de versión de pgRouting 1.x<a class="headerlink" href="#pgrouting-1-x-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id36">Notas de versión de pgRouting 1.x</a><a class="headerlink" href="#pgrouting-1-x-release-notes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed">Git closed issues for 1.x</a> on Github. The following release notes have been copied from the previous <code class="docutils literal notranslate"><span class="pre">RELEASE_NOTES</span></code> file and are kept as a reference.</p>
 <div class="section" id="changes-for-release-1-05">
-<h3>Cambios para la versión 1.05<a class="headerlink" href="#changes-for-release-1-05" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id37">Cambios para la versión 1.05</a><a class="headerlink" href="#changes-for-release-1-05" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Correcciones</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-03">
-<h3>Cambios para la versión 1.03<a class="headerlink" href="#changes-for-release-1-03" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id38">Cambios para la versión 1.03</a><a class="headerlink" href="#changes-for-release-1-03" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Creación de topología mucho más rápida</p></li>
 <li><p>Correcciones</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-02">
-<h3>Cambios para la versión 1.02<a class="headerlink" href="#changes-for-release-1-02" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id39">Cambios para la versión 1.02</a><a class="headerlink" href="#changes-for-release-1-02" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Corrección de errores de Disparo*</p></li>
 <li><p>Se resolvieron problemas de compilación</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-01">
-<h3>Cambios para la  versión 1.01<a class="headerlink" href="#changes-for-release-1-01" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id40">Cambios para la  versión 1.01</a><a class="headerlink" href="#changes-for-release-1-01" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Corrección de errores de Disparo*</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-0">
-<h3>Cambios para la versión 1.0<a class="headerlink" href="#changes-for-release-1-0" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id41">Cambios para la versión 1.0</a><a class="headerlink" href="#changes-for-release-1-0" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Núcleo y funciones adicionales están separadas</p></li>
 <li><p>Proceso de compilación con CMake</p></li>
@@ -1039,28 +1220,28 @@
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-0-0b">
-<h3>Cambios para la versión 1.0.0b<a class="headerlink" href="#changes-for-release-1-0-0b" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id42">Cambios para la versión 1.0.0b</a><a class="headerlink" href="#changes-for-release-1-0-0b" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Archivos SQL adicionales con nombres más simples para las funciones de la envolturas</p></li>
 <li><p>Correcciones</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-1-0-0a">
-<h3>Cambios para la versión 1.0.0a<a class="headerlink" href="#changes-for-release-1-0-0a" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id43">Cambios para la versión 1.0.0a</a><a class="headerlink" href="#changes-for-release-1-0-0a" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Algoritmo de ruta más corta Shooting* para redes de camino reales</p></li>
 <li><p>Se arreglaron varios errores de SQL</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-0-9-9">
-<h3>Cambios para la versión 0.9.9<a class="headerlink" href="#changes-for-release-0-9-9" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id44">Cambios para la versión 0.9.9</a><a class="headerlink" href="#changes-for-release-0-9-9" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Soporte PostgreSQL 8.2</p></li>
 <li><p>Las funciones de ruta más cortas devuelven un resultado vacío si no encuentran ninguna ruta de acceso</p></li>
 </ul>
 </div>
 <div class="section" id="changes-for-release-0-9-8">
-<h3>Cambios para versión 0.9.8<a class="headerlink" href="#changes-for-release-0-9-8" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id45">Cambios para versión 0.9.8</a><a class="headerlink" href="#changes-for-release-0-9-8" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Esquema de numeración ha sido añadido a las funciones de ruta más cortos</p></li>
 <li><p>Se agregaron funciones de ruta más cortos dirigidas</p></li>
@@ -1083,8 +1264,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en ago. 24, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
+      Actualizado por última vez en feb. 18, 2021.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

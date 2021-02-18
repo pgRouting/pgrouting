@@ -5,15 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_full_version &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -174,9 +173,9 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_full_version</span><span class="p">();</span>
- <span class="n">version</span> <span class="o">|</span> <span class="n">build_type</span> <span class="o">|</span> <span class="n">compile_date</span> <span class="o">|</span>     <span class="n">library</span>     <span class="o">|</span>          <span class="n">system</span>          <span class="o">|</span>                 <span class="n">postgresql</span>                  <span class="o">|</span> <span class="n">compiler</span>  <span class="o">|</span> <span class="n">boost</span>  <span class="o">|</span>   <span class="nb">hash</span>
-<span class="o">---------+------------+--------------+-----------------+--------------------------+---------------------------------------------+-----------+--------+-----------</span>
- <span class="mf">3.2</span><span class="o">.</span><span class="mi">0</span>   <span class="o">|</span> <span class="n">Debug</span>      <span class="o">|</span> <span class="mi">2020</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">20</span>   <span class="o">|</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">0</span> <span class="o">|</span> <span class="n">Linux</span><span class="o">-</span><span class="mf">4.15</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">111</span><span class="o">-</span><span class="n">generic</span> <span class="o">|</span> <span class="n">PostgreSQL</span> <span class="mf">12.2</span> <span class="p">(</span><span class="n">Ubuntu</span> <span class="mf">12.2</span><span class="o">-</span><span class="mf">2.</span><span class="n">pgdg18</span><span class="o">.</span><span class="mi">04</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">GNU</span><span class="o">-</span><span class="mf">8.4</span><span class="o">.</span><span class="mi">0</span> <span class="o">|</span> <span class="mf">1.65</span><span class="o">.</span><span class="mi">1</span> <span class="o">|</span> <span class="mi">36</span><span class="n">c139adf</span>
+  <span class="n">version</span>  <span class="o">|</span> <span class="n">build_type</span> <span class="o">|</span> <span class="n">compile_date</span> <span class="o">|</span>     <span class="n">library</span>     <span class="o">|</span>         <span class="n">system</span>         <span class="o">|</span>                   <span class="n">postgresql</span>                   <span class="o">|</span> <span class="n">compiler</span>  <span class="o">|</span> <span class="n">boost</span>  <span class="o">|</span>    <span class="nb">hash</span>
+<span class="o">-----------+------------+--------------+-----------------+------------------------+------------------------------------------------+-----------+--------+------------</span>
+ <span class="mf">3.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span> <span class="o">|</span> <span class="n">Debug</span>      <span class="o">|</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">22</span>   <span class="o">|</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">0</span> <span class="o">|</span> <span class="n">Linux</span><span class="o">-</span><span class="mf">5.4</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">62</span><span class="o">-</span><span class="n">generic</span> <span class="o">|</span> <span class="n">PostgreSQL</span> <span class="mf">12.5</span> <span class="p">(</span><span class="n">Ubuntu</span> <span class="mf">12.5</span><span class="o">-</span><span class="mi">0</span><span class="n">ubuntu0</span><span class="o">.</span><span class="mf">20.04</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">GNU</span><span class="o">-</span><span class="mf">8.4</span><span class="o">.</span><span class="mi">0</span> <span class="o">|</span> <span class="mf">1.71</span><span class="o">.</span><span class="mi">0</span> <span class="o">|</span> <span class="mi">22</span><span class="n">cef2eb5a</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -262,8 +261,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en ago. 24, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
+      Actualizado por última vez en feb. 18, 2021.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

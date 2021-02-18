@@ -5,15 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_primDFS &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -154,7 +153,7 @@
       
   <div class="section" id="pgr-primdfs">
 <h1>pgr_primDFS<a class="headerlink" href="#pgr-primdfs" title="Enlazar permanentemente con este título">¶</a></h1>
-<p>“”pgr_primDFS”” — Algoritmo Prim para el Árbol de Expansión Mínima con orden de Búsqueda en Primera Profundidad.</p>
+<p>“”pgr_primDFS”” — Algoritmo Prim para el Árbol de Expansión Mínima con orden de la Primera Búsqueda de Profundidad.</p>
 <div class="figure align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
@@ -173,7 +172,7 @@
 </ul>
 <div class="section" id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Visita y extrae la información de los nodos en la orden de Búsqueda en Primera Profundidad del Árbol de Expansión Mínimo creado mediante el algoritmo de Prim.</p>
+<p>Visita y extrae la información de los nodos en el orden de la Primera Búsqueda de Profundidad del Árbol de Expansión Mínima creado utilizando el algoritmo de Prim.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
 <li><p>Su implementación solo está en <strong>grafo no dirigido</strong>.</p></li>
@@ -192,8 +191,8 @@
 <li><p>Tiempo de ejecución de Prim:  <span class="math notranslate nohighlight">\(O(E*log V)\)</span></p></li>
 </ul>
 <ul class="simple">
-<li><p>Los nodos de árbol devueltos desde un vértice raíz están en el orden de Búsqueda en Primera Profundidad</p></li>
-<li><p>Tiempo de ejecución de la Búsqueda en Primera Profundidad: <span class="math notranslate nohighlight">\(O(E + V)\)</span></p></li>
+<li><p>Los nodos de árbol devueltos desde un vértice raíz están en el orden de  Primera Búsqueda de Profundidad</p></li>
+<li><p>Tiempo de ejecución de la Primera Búsqueda de Profundidad: <span class="math notranslate nohighlight">\(O(E + V)\)</span></p></li>
 </ul>
 </div>
 <div class="section" id="signatures">
@@ -475,7 +474,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 <div class="section" id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Spanning Tree - Categoría</span></a></p></li>
+<li><p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Árbol de expansión - Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p></li>
 <li><p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Prim’s algorithm documentation</a></p></li>
@@ -502,8 +501,8 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en ago. 24, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
+      Actualizado por última vez en feb. 18, 2021.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

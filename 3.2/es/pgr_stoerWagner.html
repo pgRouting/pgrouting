@@ -5,15 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_stoerWagner - Experimental &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -150,7 +149,7 @@
 <h1>pgr_stoerWagner - Experimental<a class="headerlink" href="#pgr-stoerwagner-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_stoerWagner</span></code> — Devuelve el peso del corte mínimo del grafo utilizando el algoritmo stoerWagner. La función determina un corte mínimo y el peso de corte mínimo de un grafo conectado y no dirigido implementado por Boost.Graph.</p>
 <div class="figure align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/stoer_wagner_min_cut.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <p class="caption"><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </div>
 <div class="admonition warning">
@@ -243,11 +242,11 @@ OR EMPTY SET
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_stoerWagner</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
-        <span class="n">FROM</span> <span class="n">edge_table</span> 
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+        <span class="n">FROM</span> <span class="n">edge_table</span>
      <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="s1">&#39;</span>
 <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">mincut</span> 
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">mincut</span>
 <span class="o">-----+------+------+--------</span>
    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
@@ -385,11 +384,11 @@ OR EMPTY SET
 <div class="section" id="additional-example">
 <h2>Ejemplo Adicional:<a class="headerlink" href="#additional-example" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_stoerWagner</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
-        <span class="n">FROM</span> <span class="n">edge_table</span> 
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+        <span class="n">FROM</span> <span class="n">edge_table</span>
      <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">18</span><span class="s1">&#39;</span>
 <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">mincut</span> 
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">mincut</span>
 <span class="o">-----+------+------+--------</span>
    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
@@ -399,19 +398,19 @@ OR EMPTY SET
 <p>Utilice la función pgr_connectedComponents( ) en la consulta:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_stoerWagner(
 $$
- SELECT id, source, target, cost, reverse_cost FROM edge_table 
+ SELECT id, source, target, cost, reverse_cost FROM edge_table
     where source = any (ARRAY(SELECT node FROM pgr_connectedComponents(
                             &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table &#39;)
                         WHERE component = 14)
-                       ) 
-                   OR     
+                       )
+                   OR
           target = any (ARRAY(SELECT node FROM pgr_connectedComponents(
                             &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table &#39;)
                         WHERE component = 14)
                        )
 $$
  );
- seq | edge | cost | mincut 
+ seq | edge | cost | mincut
 -----+------+------+--------
    1 |   17 |    1 |      1
 (1 row)
@@ -446,8 +445,8 @@ $$
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en ago. 24, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
+      Actualizado por última vez en feb. 18, 2021.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

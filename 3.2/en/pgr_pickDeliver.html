@@ -5,15 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pgr_pickDeliver - Experimental &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -528,9 +527,14 @@ start_node_id, start_open, start_close [, start_service, ]
 <p>This example use the following data: TODO put link</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_pickDeliver(
     $$ SELECT * FROM orders ORDER BY id $$,
-    $$ SELECT * FROM vehicles $$,
+    $$ SELECT * FROM vehicles ORDER BY id$$,
     $$ SELECT * from pgr_dijkstraCostMatrix(
-        &#39; SELECT * FROM edge_table &#39;, ARRAY[3, 4, 5, 8, 9, 11])
+        &#39;SELECT * FROM edge_table &#39;,
+        (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
+        UNION
+        SELECT d_node_id FROM orders
+        UNION
+        SELECT start_node_id FROM vehicles) a))
     $$
 );
  seq | vehicle_seq | vehicle_id | stop_seq | stop_type | stop_id | order_id | cargo | travel_time | arrival_time | wait_time | service_time | departure_time
@@ -540,12 +544,12 @@ start_node_id, start_open, start_close [, start_service, ]
    3 |           1 |          1 |        3 |         3 |      11 |        3 |     0 |           2 |            7 |         0 |            3 |             10
    4 |           1 |          1 |        4 |         2 |       9 |        2 |    20 |           2 |           12 |         0 |            2 |             14
    5 |           1 |          1 |        5 |         3 |       4 |        2 |     0 |           1 |           15 |         0 |            3 |             18
-   6 |           1 |          1 |        6 |         6 |       6 |       -1 |     0 |           4 |           22 |         0 |            0 |             22
+   6 |           1 |          1 |        6 |         6 |       6 |       -1 |     0 |           2 |           20 |         0 |            0 |             20
    7 |           2 |          1 |        1 |         1 |       6 |       -1 |     0 |           0 |            0 |         0 |            0 |              0
-   8 |           2 |          1 |        2 |         2 |       3 |        1 |    10 |           5 |            5 |         0 |            3 |              8
-   9 |           2 |          1 |        3 |         3 |       8 |        1 |     0 |           3 |           11 |         0 |            3 |             14
-  10 |           2 |          1 |        4 |         6 |       6 |       -1 |     0 |           0 |           14 |         0 |            0 |             14
-  11 |          -2 |          0 |        0 |        -1 |      -1 |       -1 |    -1 |          18 |           -1 |         1 |           17 |             36
+   8 |           2 |          1 |        2 |         2 |       3 |        1 |    10 |           3 |            3 |         0 |            3 |              6
+   9 |           2 |          1 |        3 |         3 |       8 |        1 |     0 |           3 |            9 |         0 |            3 |             12
+  10 |           2 |          1 |        4 |         6 |       6 |       -1 |     0 |           2 |           14 |         0 |            0 |             14
+  11 |          -2 |          0 |        0 |        -1 |      -1 |       -1 |    -1 |          16 |           -1 |         1 |           17 |             34
 (11 rows)
 
 </pre></div>
@@ -578,8 +582,8 @@ start_node_id, start_open, start_close [, start_service, ]
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Aug 24, 2020.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
+      Last updated on Feb 18, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

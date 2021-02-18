@@ -5,15 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Funciones Experimentales &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -144,9 +143,9 @@
 <h1>Funciones Experimentales<a class="headerlink" href="#experimental-functions" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Possible server crash</p>
+<p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>These functions might create a server crash</p></li>
+<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -183,10 +182,10 @@
 <li><p><a class="reference internal" href="pgr_chinesePostman.html"><span class="doc">pgr_chinesePostman - Experimental</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_chinesePostmanCost.html"><span class="doc">pgr_chinesePostmanCost - Experimental</span></a></p></li>
 </ul>
-<p><a class="reference internal" href="coloring-family.html"><span class="doc">Coloring - Family of functions (Experimental)</span></a></p>
+<p><a class="reference internal" href="coloring-family.html"><span class="doc">Colorante - Familia de funciones (Experimental)</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">pgr_sequentialVertexColoring - Experimental</span></a> - Vertex coloring algorithm using greedy approach.</p></li>
-<li><p><a class="reference internal" href="pgr_bipartite.html"><span class="doc">pgr_bipartite -Experimental</span></a> - Bipartite graph algorithm using a DFS-based coloring approach.</p></li>
+<li><p><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">pgr_sequentialVertexColoring - Experimental</span></a>- Algoritmo de coloración de vértices mediante un enfoque codicioso.</p></li>
+<li><p><a class="reference internal" href="pgr_bipartite.html"><span class="doc">pgr_bipartite -Experimental</span></a> - Algoritmo de grafo bipartito mediante un enfoque de coloración basado en DFS.</p></li>
 </ul>
 <p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a></p>
 <ul class="simple">
@@ -197,13 +196,18 @@
 <li><p><a class="reference internal" href="pgr_lineGraph.html"><span class="doc">pgr_lineGraph - Experimental</span></a> - Algoritmo de transformación para generar un grafo de líneas.</p></li>
 <li><p><a class="reference internal" href="pgr_lineGraphFull.html"><span class="doc">pgr_lineGraphFull - Experimental</span></a> -  Algoritmo de transformación para generar un grafo de líneas a partir de cada vértice en el grafo de entrada.</p></li>
 </ul>
-<p><a class="reference internal" href="traversal-family.html"><span class="doc">Traversal - Family of functions (Experimental)</span></a></p>
+<p><a class="reference internal" href="traversal-family.html"><span class="doc">Transversal - Familia de funciones (Experimental)</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_depthFirstSearch.html"><span class="doc">pgr_depthFirstSearch - Experimental</span></a> - Depth first search traversal of the graph.</p></li>
+<li><p><a class="reference internal" href="pgr_depthFirstSearch.html"><span class="doc">pgr_depthFirstSearch - Experimental</span></a> - Primera Búsqueda en Profundidad traversal del grafo.</p></li>
 </ul>
 <p><a class="reference internal" href="components-family.html"><span class="doc">Componentes - Familia de funciones</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_makeConnected.html"><span class="doc">pgr_makeConnected - Experimental</span></a> - Details of edges to make graph connected.</p></li>
+<li><p><a class="reference internal" href="pgr_makeConnected.html"><span class="doc">pgr_makeConnected - Experimental</span></a> - Detalles de aristas para hacer grafos conectados.</p></li>
+</ul>
+<p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Experimental</span></a> - Obtener la ruta al vértice más cercano.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Experimental</span></a> - Get the cost to the nearest vertex.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -263,8 +267,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en ago. 24, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
+      Actualizado por última vez en feb. 18, 2021.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>

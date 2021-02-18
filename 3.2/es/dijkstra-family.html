@@ -5,15 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dijkstra - Familia de funciones &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -150,7 +149,7 @@
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Use pgr_dijkstra para calcular información de captación.</p></li>
 <li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Use el algoritmo Yen con pgr_dijkstra para obtener las rutas más cortas K.</p></li>
 </ul>
-<p class="rubric">propuesta</p>
+<p class="rubric">Propuesto</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para el próximo lanzamineto.</p>
@@ -170,6 +169,28 @@
 </div>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> - Obtenga una ruta a partir de una secuencia de vértices.</p></li>
+</ul>
+<p class="rubric">Experimental</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Funciones propuestas para el próximo lanzamineto.</p>
+<ul class="simple">
+<li><p>No están oficialmente en la versión actual.</p></li>
+<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
+<ul>
+<li><p>Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL</p></li>
+<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
+<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Se han hecho pruebas de pgTap. Pero tal vez necesite más.</p></li>
+<li><p>Es posible que la documentación necesite un refinamiento.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Experimental</span></a> - Obtener la ruta al vértice más cercano.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Experimental</span></a> - Get the cost to the nearest vertex.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -289,8 +310,8 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en ago. 24, 2020.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0+.<br/>
+      Actualizado por última vez en feb. 18, 2021.<br/>
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
 </footer>
