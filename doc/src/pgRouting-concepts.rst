@@ -118,15 +118,29 @@ Compute a Path
 
 Once you have all the preparation work done above, computing a route is fairly easy.
 We have a lot of different algorithms that can work with your prepared road
-network. The general form of a route query is:
+network. The general form of a route query using Dijkstra algorithm is:
 
 .. code-block:: none
 
-    select pgr_dijkstra(`SELECT * FROM myroads', 1, 2)
+    select pgr_dijkstra(`SELECT * FROM myroads', <start>, <end>)
 
-As you can see this is fairly straight forward and you can look and the
-specific algorithms for the details of the signatures and how to use them.
-These results have information like edge id and/or the
+This algorithm only requires *id*, *source*, *target* and *cost* as the minimal attributes, that by
+default will be considered to be columns in your roads table. If the column names in your 
+roads table do not match exactly the names of these attributes, you can use aliases. For example,
+if you imported OSM data using **osm2pgrouting**, your id column's name would be *gid* and your
+roads table would be *ways*, so you would query a route from node id 1 to node id 2 by typing:
+
+.. code-block:: none
+
+    select pgr_dijkstra('SELECT gid AS id, source, target, cost FROM ways', 1, 2)
+
+As you can see this is fairly straight forward and it also allows for great flexibility, both in terms
+of database structure and in defining cost functions. You can test the previous query
+using *length_m AS cost* to compute the shortest path in meters or *cost_s / 60 AS cost* to compute
+the fastest path in minutes.
+
+You can look and the specific algorithms for the details of the signatures and how 
+to use them. These results have information like edge id and/or the
 node id along with the cost or geometry for the step in the path from *start*
 to *end*. Using the ids you can join these result back to your edge table
 to get more information about each step in the path.
