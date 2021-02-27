@@ -1,0 +1,100 @@
+name: Publish Users Documentation
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+      - develop
+    paths:
+      - 'doc/**'
+      - 'docqueries/**'
+      - 'locale/**'
+
+jobs:
+  release:
+    name: Publish Users Documentation
+    runs-on: ubuntu-latest
+
+    strategy:
+        fail-fast: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Get postgres version
+        run: |
+          sudo service postgresql start
+          PGVER=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d \()')
+          PROJECT_VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
+          echo "PGVER=${PGVER}" >> $GITHUB_ENV
+          echo "PGPORT=5432" >> $GITHUB_ENV
+          echo "PGIS=3" >> $GITHUB_ENV
+          echo "PROJECT_VERSION=${PROJECT_VERSION}" >> $GITHUB_ENV
+
+      - name: Add PostgreSQL APT repository
+        run: |
+          sudo apt-get install curl ca-certificates gnupg
+          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
+            $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+      - name: Install python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libboost-graph-dev \
+            postgresql-${PGVER} \
+            postgresql-${PGVER}-postgis-${PGIS} \
+            postgresql-${PGVER}-postgis-${PGIS}-scripts \
+            postgresql-server-dev-${PGVER} \
+            graphviz \
+            doxygen
+          python -m pip install --upgrade pip
+          pip install Sphinx
+          pip install sphinx-bootstrap-theme
+          pip list
+
+      - name: Configure
+        run: |
+          export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
+          mkdir build
+          cd build
+          cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release -DES=ON ..
+
+      - name: Build
+        run: |
+          cd build
+          make doc
+          make -j 4
+          sudo make install
+
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Update Users Documentation
+        run: |
+          git checkout origin/gh-pages
+          git checkout -b gh-pages
+          PROJECT_MAJOR_MINOR="${PROJECT_VERSION%.*}"
+          rm -rf ${PROJECT_MAJOR_MINOR}
+          cp -r build/doc/html ${PROJECT_MAJOR_MINOR}
+          rm -rf ${PROJECT_MAJOR_MINOR}/es
+          git add ${PROJECT_MAJOR_MINOR}
+          git diff-index --quiet HEAD || git commit -m "Update users documentation for ${PROJECT_VERSION}"
+          git fetch origin
+          git rebase origin/gh-pages
+          git push origin gh-pages
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
