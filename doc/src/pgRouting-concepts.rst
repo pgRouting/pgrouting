@@ -50,23 +50,32 @@ For Postgresql 9.2 and later versions
 Load Data
 ...............................................................................
 
-How you load your data will depend in what form it comes it. There are
-various OpenSource tools that can help you, like:
+There are several ways to load your data into pgRouting. The most direct way
+is to load an Open Street Maps (OSM) dataset using **osm2pgrouting**. This is a
+tool, integrated in pgRouting project, that loads OSM data into postgresql
+with pgRouting requirements, including data structure and routing topology.
 
-:osm2pgrouting: - this is a tool for loading OSM data into postgresql with pgRouting requirements
+If you have other requirements, you can try various OpenSource tools that can 
+help you, like:
+
 :shp2pgsql: - this is the postgresql shapefile loader
 :ogr2ogr: - this is a vector data conversion utility
 :osm2pgsql: - this is a tool for loading OSM data into postgresql
 
-So these tools and probably others will allow you to read vector data so that
+Please note that these tools will not import the data in a structure compatible
+with pgRouting and you might need to adapt it.
+
+These tools and probably others will allow you to read vector data so that
 you may then load that data into your database as a table of some kind. At this
 point you need to know a little about your data structure and content. One easy
-way to browse your new data table is with pgAdmin3 or phpPgAdmin.
+way to browse your new data table is with pgAdmin or phpPgAdmin.
 
 .. _build_topology:
 
 Build a Routing Topology
 ...............................................................................
+
+.. note:: this step is not needed if data is loaded with `osm2pgrouting`
 
 Next we need to build a topology for our street data. What this means is that
 for any given edge in your street data the ends of that edge will be connected
@@ -74,11 +83,11 @@ to a unique node and to other edges that are also connected to that same unique
 node. Once all the edges are connected to nodes we have a graph that can be
 used for routing with pgrouting. We provide a tool that will help with this:
 
-.. note:: this step is not needed if data is loaded with `osm2pgrouting`
-
 .. code-block:: sql
 
     select pgr_createTopology('myroads', 0.000001);
+    
+where you should replace 'myroads' with the name of your table storing the edges.
 
 * :doc:`pgr_createTopology`
 
@@ -105,6 +114,9 @@ but we have some basic tools that might help.
                                          t_in_rules, t_out_rules
                                          direction)
     select pgr_nodeNetwork('myroads', 0.001);
+    
+where you should replace 'myroads' with the name of your table storing the edges
+('ways', in case you used osm2pgrouting to import the data).
 
 * :doc:`pgr_analyzeGraph`
 * :doc:`pgr_analyzeOneWay`
@@ -123,6 +135,7 @@ network. The general form of a route query using Dijkstra algorithm is:
 .. code-block:: none
 
     select pgr_dijkstra(`SELECT * FROM myroads', <start>, <end>)
+
 
 This algorithm only requires *id*, *source*, *target* and *cost* as the minimal attributes, that by
 default will be considered to be columns in your roads table. If the column names in your 
