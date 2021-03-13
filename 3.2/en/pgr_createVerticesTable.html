@@ -13,7 +13,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -331,7 +330,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <dd class="field-odd"><p>The order of the parameters do not matter:</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -354,7 +353,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <dd class="field-odd"><p>Using a different ordering</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -377,7 +376,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <dd class="field-odd"><p>Parameters defined with a default value can be omitted, as long as the value matches the default:</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -401,7 +400,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <dd class="field-odd"><p>Selecting rows based on the id.</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -425,7 +424,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>
-    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)&#39;</span><span class="p">);</span>
+    <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -454,7 +453,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">otherTable</span> <span class="n">AS</span>  <span class="p">(</span><span class="n">SELECT</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span> <span class="n">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
 <span class="n">SELECT</span> <span class="mi">1</span>
 <span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>
-    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+    <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -532,7 +531,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <dd class="field-odd"><p>The order of the parameters do not matter:</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -557,8 +556,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </dl>
 <p>In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
-    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
-    <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">);</span>
+    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
+    <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -584,7 +583,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
     <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
-    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+    <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -608,8 +607,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
-    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
-    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
+    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -634,7 +633,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
     <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
-    <span class="n">rows_where</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
+    <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -654,8 +653,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
-    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
-    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE id=5)&#39;</span><span class="p">);</span>
+    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE id=5)&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE id=5)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -682,7 +681,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
     <span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
-    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+    <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -702,8 +701,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span>
-    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="n">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
-    <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+    <span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="n">source</span><span class="o">:=</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="n">target</span><span class="o">:=</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -749,8 +748,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Feb 18, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+      Last updated on Mar 13, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
     </p>
   </div>
 </footer>

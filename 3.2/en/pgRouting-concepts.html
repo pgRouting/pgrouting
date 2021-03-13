@@ -13,7 +13,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -281,49 +280,51 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 </div>
 <div class="section" id="load-data">
 <span id="id4"></span><h3><a class="toc-backref" href="#id47">Load Data</a><a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h3>
-<p>How you load your data will depend in what form it comes it. There are
-various OpenSource tools that can help you, like:</p>
+<p>There are several ways to load your data into pgRouting. The most direct way
+is to load an Open Street Maps (OSM) dataset using <strong>osm2pgrouting</strong>. This is a
+tool, integrated in pgRouting project, that loads OSM data into postgresql
+with pgRouting requirements, including data structure and routing topology.</p>
+<p>If you have other requirements, you can try various OpenSource tools that can
+help you, like:</p>
 <dl class="field-list simple">
-<dt class="field-odd">osm2pgrouting</dt>
+<dt class="field-odd">shp2pgsql</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p>this is a tool for loading OSM data into postgresql with pgRouting requirements</p></li>
-</ul>
-</dd>
-<dt class="field-even">shp2pgsql</dt>
-<dd class="field-even"><ul class="simple">
 <li><p>this is the postgresql shapefile loader</p></li>
 </ul>
 </dd>
-<dt class="field-odd">ogr2ogr</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-even">ogr2ogr</dt>
+<dd class="field-even"><ul class="simple">
 <li><p>this is a vector data conversion utility</p></li>
 </ul>
 </dd>
-<dt class="field-even">osm2pgsql</dt>
-<dd class="field-even"><ul class="simple">
+<dt class="field-odd">osm2pgsql</dt>
+<dd class="field-odd"><ul class="simple">
 <li><p>this is a tool for loading OSM data into postgresql</p></li>
 </ul>
 </dd>
 </dl>
-<p>So these tools and probably others will allow you to read vector data so that
+<p>Please note that these tools will not import the data in a structure compatible
+with pgRouting and you might need to adapt it.</p>
+<p>These tools and probably others will allow you to read vector data so that
 you may then load that data into your database as a table of some kind. At this
 point you need to know a little about your data structure and content. One easy
-way to browse your new data table is with pgAdmin3 or phpPgAdmin.</p>
+way to browse your new data table is with pgAdmin or phpPgAdmin.</p>
 </div>
 <div class="section" id="build-a-routing-topology">
 <span id="build-topology"></span><h3><a class="toc-backref" href="#id48">Build a Routing Topology</a><a class="headerlink" href="#build-a-routing-topology" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this step is not needed if data is loaded with <cite>osm2pgrouting</cite></p>
+</div>
 <p>Next we need to build a topology for our street data. What this means is that
 for any given edge in your street data the ends of that edge will be connected
 to a unique node and to other edges that are also connected to that same unique
 node. Once all the edges are connected to nodes we have a graph that can be
 used for routing with pgrouting. We provide a tool that will help with this:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>this step is not needed if data is loaded with <cite>osm2pgrouting</cite></p>
-</div>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
 </pre></div>
 </div>
+<p>where you should replace ‘myroads’ with the name of your table storing the edges.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p></li>
 </ul>
@@ -346,6 +347,8 @@ but we have some basic tools that might help.</p>
 <span class="k">select</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 </pre></div>
 </div>
+<p>where you should replace ‘myroads’ with the name of your table storing the edges
+(‘ways’, in case you used osm2pgrouting to import the data).</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a></p></li>
@@ -356,13 +359,24 @@ but we have some basic tools that might help.</p>
 <span id="compute-path"></span><h3><a class="toc-backref" href="#id50">Compute a Path</a><a class="headerlink" href="#compute-a-path" title="Permalink to this headline">¶</a></h3>
 <p>Once you have all the preparation work done above, computing a route is fairly easy.
 We have a lot of different algorithms that can work with your prepared road
-network. The general form of a route query is:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>select pgr_dijkstra(`SELECT * FROM myroads&#39;, 1, 2)
+network. The general form of a route query using Dijkstra algorithm is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>select pgr_dijkstra(`SELECT * FROM myroads&#39;, &lt;start&gt;, &lt;end&gt;)
 </pre></div>
 </div>
-<p>As you can see this is fairly straight forward and you can look and the
-specific algorithms for the details of the signatures and how to use them.
-These results have information like edge id and/or the
+<p>This algorithm only requires <em>id</em>, <em>source</em>, <em>target</em> and <em>cost</em> as the minimal attributes, that by
+default will be considered to be columns in your roads table. If the column names in your
+roads table do not match exactly the names of these attributes, you can use aliases. For example,
+if you imported OSM data using <strong>osm2pgrouting</strong>, your id column’s name would be <em>gid</em> and your
+roads table would be <em>ways</em>, so you would query a route from node id 1 to node id 2 by typing:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>select pgr_dijkstra(&#39;SELECT gid AS id, source, target, cost FROM ways&#39;, 1, 2)
+</pre></div>
+</div>
+<p>As you can see this is fairly straight forward and it also allows for great flexibility, both in terms
+of database structure and in defining cost functions. You can test the previous query
+using <em>length_m AS cost</em> to compute the shortest path in meters or <em>cost_s / 60 AS cost</em> to compute
+the fastest path in minutes.</p>
+<p>You can look and the specific algorithms for the details of the signatures and how
+to use them. These results have information like edge id and/or the
 node id along with the cost or geometry for the step in the path from <em>start</em>
 to <em>end</em>. Using the ids you can join these result back to your edge table
 to get more information about each step in the path.</p>
@@ -1475,8 +1489,8 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Feb 18, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+      Last updated on Mar 13, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
     </p>
   </div>
 </footer>

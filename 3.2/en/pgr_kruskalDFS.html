@@ -257,7 +257,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskalDFS</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">max_depth</span> <span class="p">:</span><span class="o">=</span> <span class="mi">3</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">max_depth</span> <span class="o">:=</span> <span class="mi">3</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+----------</span>
@@ -501,8 +501,8 @@ starting in aleatory nodes for each tree in the forest.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Feb 18, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+      Last updated on Mar 13, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
     </p>
   </div>
 </footer>

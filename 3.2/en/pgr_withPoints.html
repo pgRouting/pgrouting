@@ -296,7 +296,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
+    <span class="n">details</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -774,8 +774,8 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
         <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
         <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
         <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
-        <span class="n">driving_side</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span>
-        <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+        <span class="n">driving_side</span> <span class="o">:=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span>
+        <span class="n">details</span> <span class="o">:=</span> <span class="n">true</span><span class="p">)</span>
     <span class="n">WHERE</span> <span class="n">node</span> <span class="n">IN</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
          <span class="n">path_at</span>         <span class="o">|</span>       <span class="n">status</span>        <span class="o">|</span>  <span class="n">is_a</span>  <span class="o">|</span> <span class="nb">id</span>
 <span class="o">-------------------------+---------------------+--------+----</span>
@@ -816,8 +816,8 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
         <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
         <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
         <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
-        <span class="n">driving_side</span> <span class="p">:</span><span class="o">=</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span>
-        <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+        <span class="n">driving_side</span> <span class="o">:=</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span>
+        <span class="n">details</span> <span class="o">:=</span> <span class="n">true</span><span class="p">)</span>
     <span class="n">WHERE</span> <span class="n">node</span> <span class="n">IN</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
          <span class="n">path_at</span>         <span class="o">|</span>       <span class="n">status</span>        <span class="o">|</span>  <span class="n">is_a</span>  <span class="o">|</span> <span class="nb">id</span>
 <span class="o">-------------------------+---------------------+--------+----</span>
@@ -850,8 +850,8 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
-    <span class="n">directed</span> <span class="p">:</span><span class="o">=</span> <span class="n">false</span><span class="p">,</span>
-    <span class="n">details</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span><span class="p">);</span>
+    <span class="n">directed</span> <span class="o">:=</span> <span class="n">false</span><span class="p">,</span>
+    <span class="n">details</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -910,8 +910,8 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Feb 18, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+      Last updated on Mar 13, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
     </p>
   </div>
 </footer>

@@ -13,7 +13,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -448,7 +447,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">equicost</span><span class="o">:=</span><span class="n">true</span>
       <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+--------+------+------+------+----------</span>
@@ -539,7 +538,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">equicost</span><span class="o">:=</span><span class="n">true</span>
       <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+--------+------+------+------+----------</span>
@@ -608,7 +607,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">equicost</span><span class="o">:=</span><span class="n">true</span>
       <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+--------+------+------+------+----------</span>
@@ -693,7 +692,7 @@ The edges extracted will conform to the corresponding spanning tree.</p>
 
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">equicost</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+        <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">equicost</span><span class="o">:=</span><span class="n">true</span>
       <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">from_v</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+--------+------+------+------+----------</span>
@@ -741,8 +740,8 @@ The edges extracted will conform to the corresponding spanning tree.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Feb 18, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+      Last updated on Mar 13, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
     </p>
   </div>
 </footer>

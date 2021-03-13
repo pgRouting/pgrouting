@@ -325,7 +325,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
     <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="n">true</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span>
+    <span class="n">true</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">:=</span> <span class="mi">2</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+------+------+------+----------</span>
@@ -356,7 +356,7 @@ OR EMPTY SET
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
     <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
-    <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">factor</span> <span class="p">:</span><span class="o">=</span> <span class="mf">3.5</span>
+    <span class="n">heuristic</span> <span class="o">:=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">factor</span> <span class="o">:=</span> <span class="mf">3.5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+---------+------+------+------+----------</span>
@@ -391,7 +391,7 @@ OR EMPTY SET
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
     <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="p">:</span><span class="o">=</span> <span class="mi">4</span>
+    <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">:=</span> <span class="mi">4</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+------+------+------+----------</span>
@@ -423,7 +423,7 @@ OR EMPTY SET
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
     <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
-    <span class="n">factor</span> <span class="p">:</span><span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">factor</span> <span class="o">:=</span> <span class="mf">0.5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -470,7 +470,7 @@ OR EMPTY SET
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2</span>
     <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="s1">&#39;SELECT * FROM ( VALUES (2, 3), (7, 11) ) AS t(source, target)&#39;</span><span class="p">,</span>
-    <span class="n">factor</span> <span class="p">:</span><span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">factor</span> <span class="o">:=</span> <span class="mf">0.5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
@@ -829,8 +829,8 @@ Returned when multiple ending vertices are in the query.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Feb 18, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+      Last updated on Mar 13, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
     </p>
   </div>
 </footer>
