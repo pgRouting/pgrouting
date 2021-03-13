@@ -23,7 +23,7 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html>`__
 
-  pgr_trsp - Turn Restriction Shortest Path (TRSP)
+pgr_trsp - Turn Restriction Shortest Path (TRSP)
 ===============================================================================
 
 .. index::

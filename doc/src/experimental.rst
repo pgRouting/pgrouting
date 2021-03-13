@@ -5,6 +5,21 @@
 
     This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
+    ****************************************************************************
+
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/experimental.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/experimental.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/experimental.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/experimental.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/proposed.html#experimental-functions>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/proposed.html#experimental-functions>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/proposed.html#experimental-and-proposed-functions>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/proposed.html#experimental-and-proposed-functions>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/proposed.html#experimental-and-proposed-functions>`__
 
 Experimental Functions
 ===============================================================================
