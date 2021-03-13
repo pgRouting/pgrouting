@@ -146,7 +146,7 @@ IS 'pgr_bellmanFord(One to One)
 - Optional Parameters:
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+  - ${PROJECT_DOC_LINK}/pgr_bellmanFord.html
 ';
 
 
@@ -161,7 +161,7 @@ IS 'pgr_bellmanFord(One to Many)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+  - ${PROJECT_DOC_LINK}/pgr_bellmanFord.html
 ';
 
 
@@ -176,7 +176,7 @@ IS 'pgr_bellmanFord(Many to One)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+  - ${PROJECT_DOC_LINK}/pgr_bellmanFord.html
 ';
 
 
@@ -191,5 +191,5 @@ IS 'pgr_bellmanFord(Many to Many)
 - Optional Parameters
   - directed := true
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_bellmanFord.html
+  - ${PROJECT_DOC_LINK}/pgr_bellmanFord.html
 ';

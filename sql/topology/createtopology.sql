@@ -319,5 +319,5 @@ IS 'pgr_createTopology
    - rows_where := ''true''
    - clean := false
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_createTopology.html
+   - ${PROJECT_DOC_LINK}/pgr_createTopology.html
 ';

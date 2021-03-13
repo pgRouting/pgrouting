@@ -34,8 +34,8 @@ The following licenses can be found in pgRouting:
 
    * - **License**
      -
-   * - GNU General Public License, version 2
-     - Most features of pgRouting are available under `GNU General Public License, version 2 <https://www.gnu.org/licenses/gpl-2.0.html>`_.
+   * - GNU General Public License v2.0 or later
+     - Most features of pgRouting are available under `GNU General Public License v2.0 or later <https://spdx.org/licenses/GPL-2.0-or-later.html>`_.
    * - Boost Software License - Version 1.0
      - Some Boost extensions are available under `Boost Software License - Version 1.0 <https://www.boost.org/LICENSE_1_0.txt>`_.
    * - MIT-X License

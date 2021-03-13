@@ -69,5 +69,5 @@ IS 'pgr_vrpOneDepot
   - cost SQL with columns: src_id, dest_id, cost, distance, traveltime
   - depot id
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_vrpOneDepot.html
+  - ${PROJECT_DOC_LINK}/pgr_vrpOneDepot.html
 ';

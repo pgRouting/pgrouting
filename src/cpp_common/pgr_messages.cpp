@@ -55,13 +55,6 @@ Pgr_messages::get_error() const {
     return str;
 }
 
-#ifndef NDEBUG
-std::string
-Pgr_messages::get_dbglog() const {
-    return dbg_log.str();
-}
-#endif
-
 void
 Pgr_messages::clear() {
     log.str("");
@@ -72,11 +65,6 @@ Pgr_messages::clear() {
 
     error.str("");
     error.clear();
-
-#ifndef NDEBUG
-    dbg_log.str("");
-    dbg_log.clear();
-#endif
 }
 
 

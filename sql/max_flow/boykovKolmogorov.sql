@@ -124,7 +124,7 @@ IS 'pgr_boykovKolmogorov(One to One)
   - from vertex
   - to vertex
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+  - ${PROJECT_DOC_LINK}/pgr_boykovKolmogorov.html
 ';
 
 
@@ -136,7 +136,7 @@ IS 'pgr_boykovKolmogorov(One to Many)
   - from vertex
   - to ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+  - ${PROJECT_DOC_LINK}/pgr_boykovKolmogorov.html
 ';
 
 
@@ -148,7 +148,7 @@ IS 'pgr_boykovKolmogorov(Many to One)
   - from ARRAY[vertices identifiers]
   - to vertex
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+  - ${PROJECT_DOC_LINK}/pgr_boykovKolmogorov.html
 ';
 
 
@@ -160,6 +160,6 @@ IS 'pgr_boykovKolmogorov(Many to Many)
    - from ARRAY[vertices identifiers]
    - to ARRAY[vertices identifiers]
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_boykovKolmogorov.html
+  - ${PROJECT_DOC_LINK}/pgr_boykovKolmogorov.html
 ';
 

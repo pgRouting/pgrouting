@@ -36,14 +36,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "vrp/vehicle_pickDeliver.h"
 #include "vrp/fleet.h"
-#include "vrp/pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
 
 
-class Solution : public PD_problem {
+class Solution {
     friend class Optimize;
+    friend class PD_problem;
  protected:
      double EPSILON;
      std::deque<Vehicle_pickDeliver> fleet;
@@ -69,7 +69,6 @@ class Solution : public PD_problem {
 
      /* @brief copy constructor */
      Solution(const Solution &sol) :
-         PD_problem(),
          EPSILON(0.0001),
          fleet(sol.fleet),
          trucks(sol.trucks)
@@ -112,6 +111,14 @@ class Solution : public PD_problem {
       * <4> duration
       */
      Vehicle::Cost cost() const;
+
+     /** The problem's message */
+     static Pgr_messages& msg() ;
+
+private:
+     /** this solution belongs to this problem */
+     static Pgr_pickDeliver* problem;
+
 };
 
 
