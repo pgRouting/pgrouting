@@ -107,7 +107,7 @@ IS 'pgr_kruskalBFS(Single Vertex)
 - Optional parameters
     - max_depth: default := 9223372036854775807
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_kruskalBFS.html
+    - ${PROJECT_DOC_LINK}/pgr_kruskalBFS.html
 ';
 
 
@@ -120,5 +120,5 @@ IS 'pgr_kruskalBFS(multiple Vertices)
 - Optional parameters
     - max_depth: default := 9223372036854775807
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_kruskalBFS.html
+    - ${PROJECT_DOC_LINK}/pgr_kruskalBFS.html
 ';

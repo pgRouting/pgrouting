@@ -15,7 +15,7 @@
 #include <utility>
 #include <vector>
 
-#include <boost/core/ref.hpp>
+#include <boost/ref.hpp>
 #include <boost/range.hpp>
 #include <boost/type_traits/remove_const.hpp>
 #include <boost/type_traits/remove_reference.hpp>

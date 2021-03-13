@@ -44,7 +44,9 @@ namespace vrp {
 class Pgr_pickDeliver;
 class PD_Orders;
 
-class Fleet : public PD_problem {
+class Fleet {
+     friend class PD_problem;
+
  public:
      typedef std::vector<Vehicle_pickDeliver>::iterator iterator;
      std::vector<Vehicle_pickDeliver> m_trucks;
@@ -108,6 +110,12 @@ class Fleet : public PD_problem {
              double factor,
              const Vehicle_node&,
              const Vehicle_node&);
+
+     /** @brief the problem message */
+     static Pgr_messages& msg() ;
+
+     /** The problem */
+     static Pgr_pickDeliver* problem;
 
 #if 0
      template <typename T> std::unique_ptr<Base_node> create_b_start(

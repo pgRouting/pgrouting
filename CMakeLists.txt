@@ -1,24 +1,9 @@
-#
-# Format convention
-# - command (lower case)
-# - VARIABLE (upper case)
-# (http://www.cmake.org/cmake/help/v2.8.12/cmake.html)
-#
-
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
-if(POLICY CMP0046)
-    cmake_policy(SET CMP0046 NEW)
-endif()
-
-if(POLICY CMP0054)
-    cmake_policy(SET CMP0054 NEW)
-endif()
-
-if ( ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR} )
-        message(FATAL_ERROR "In-source builds not allowed.
-        Please make a new directory (called a build directory) and run CMake from there.
-        You may need to remove CMakeCache.txt." )
+if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
+    message(FATAL_ERROR "In-source builds not allowed.
+    Please make a new directory (called a build directory) and run CMake from there.
+    You may need to remove CMakeCache.txt." )
 endif()
 
 #---------------------------------------------
@@ -35,13 +20,14 @@ include(pgr/BuildType)
 
 project(PGROUTING VERSION 3.1.3
     LANGUAGES C CXX )
-set(PGROUTING_VERSION_DEV "")
+set(PROJECT_VERSION_DEV "")
+string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
 
 include(pgr/GitInfo)
-
 include(pgr/Version)
-add_definitions(-DPGROUTING_VERSION="${PGROUTING_VERSION}${PGROUTING_VERSION_DEV}")
-set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_LIB_VERSION}")
+
+add_definitions(-DPROJECT_VERSION="${PROJECT_VERSION}${PROJECT_VERSION_DEV}")
+set(PROJECT_LIB_NAME "${PROJECT_NAME_LOWER}-${PROJECT_LIB_VERSION}")
 
 string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d")
 
@@ -57,10 +43,6 @@ set(OLD_SIGNATURES
 #=============================================
 # Set the working directories
 #=============================================
-
-#---------------------------------------------
-#  PGROUTING_SOURCE_NAMES
-#---------------------------------------------
 include(pgr/Configure)
 
 
@@ -70,89 +52,76 @@ include(pgr/Configure)
 set(DOXYGEN_MINIMUM_VERSION "1.7")
 set(SPHINX_MINIMUM_VERSION "1.8")
 set(POSTGRESQL_MINIMUM_VERSION "9.2.0")
-set(BOOST_MINIMUM_VERSION "1.53")
+set(BOOST_MINIMUM_VERSION "1.53.0")
 set(POSTGIS_MINIMUM_VERSION "2.0.0")
-set(GNU_CXX_MINIMUM_VERSION "4.6")
-set(MSVC_CXX_MINIMUM_VERSION "18.0")
 
 message(STATUS "DOXYGEN_MINIMUM_VERSION=${DOXYGEN_MINIMUM_VERSION}")
 message(STATUS "SPHINX_MINIMUM_VERSION=${SPHINX_MINIMUM_VERSION}")
 message(STATUS "POSTGRESQL_MINIMUM_VERSION=${POSTGRESQL_MINIMUM_VERSION}")
+message(STATUS "BOOST_MINIMUM_VERSION=${BOOST_MINIMUM_VERSION}")
 message(STATUS "POSTGIS_MINIMUM_VERSION=${POSTGIS_MINIMUM_VERSION}")
-message(STATUS "GNU_CXX_MINIMUM_VERSION=${GNU_CXX_MINIMUM_VERSION}")
-message(STATUS "CLANG_CXX_MINIMUM_VERSION=${CLANG_CXX_MINIMUM_VERSION}")
-message(STATUS "MSVC_CXX_MINIMUM_VERSION=${MSVC_CXX_MINIMUM_VERSION}")
 
-
+# cmake 3.2 adds unwanted flags
 if(WIN32 AND MSVC)
     set(CMAKE_C_FLAGS "")
     set(CMAKE_CXX_FLAGS "")
 endif()
 
-#---------------------------------------------
-# adding cmake modules
-#---------------------------------------------
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+# C/C++ Compiler requirements
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
-foreach(dir ${CMAKE_MODULE_PATH})
-    message(STATUS "dir='${dir}'")
-endforeach()
+find_package(Boost ${BOOST_MINIMUM_VERSION} REQUIRED)
+if (NOT Boost_VERSION_MACRO)
+    set(Boost_VERSION_MACRO ${Boost_VERSION})
+endif()
+add_definitions(-DBoost_VERSION_MACRO=${Boost_VERSION_MACRO})
+set(BOOST_VERSION "${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
 
-include(MacroLibrary)
-include(TargetDistclean)
-
-#---------------------------------------------
-# C++ Compiler requirements
-#---------------------------------------------
-
+include(CheckCCompilerFlag)
 include(CheckCXXCompilerFlag)
-
-CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
-CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS GNU_CXX_MINIMUM_VERSION)
-        message(FATAL_ERROR "GCC version must be at least ${GNU_CXX_MINIMUM_VERSION}!
-        Found version ${CMAKE_CXX_COMPILER_VERSION}")
-    endif()
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
-    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS MSVC_CXX_MINIMUM_VERSION)
-        message(FATAL_ERROR "MSVC version must be at least ${MSVC_CXX_MINIMUM_VERSION}!")
+if (BOOST_VERSION VERSION_LESS "1.75.0")
+    CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+    if(COMPILER_SUPPORTS_CXX11)
+        set(CMAKE_CXX_STANDARD 11)
+        set(CMAKE_CXX_STANDARD_REQUIRED ON)
+        set(CMAKE_CXX_EXTENSIONS OFF)
+    else()
+        CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+        if(COMPILER_SUPPORTS_CXX0X)
+            add_compile_options("-std=c++0x")
+            message(STATUS "Using  -std=c++0x.")
+        else()
+        message(WARNING "The compiler ${CMAKE_CXX_COMPILER} has no C++0x or C++11 flags support.
+            Using: callback compiler's standard")
+        endif()
     endif()
 else()
-    message(STATUS "Unknown compiler minimum version for ${CMAKE_CXX_COMPILER_ID}")
+    set(CMAKE_CXX_STANDARD 14)
 endif()
 
-if(COMPILER_SUPPORTS_CXX11)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-    message(STATUS "Using  -std=c++11.")
-elseif(COMPILER_SUPPORTS_CXX0X)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
-    message(STATUS "Using  -std=c++0x.")
-else()
-    message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++0x or C++11 flags support.")
-endif()
+add_definitions(-DBOOST_ALLOW_DEPRECATED_HEADERS)
 set(COMPILER_VERSION "${CMAKE_CXX_COMPILER_ID}-${CMAKE_CXX_COMPILER_VERSION}")
 
 
-
-
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
+#---------------------------------------------
 # Windows compiler flags
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
+#---------------------------------------------
 
 
 if(WIN32 AND NOT MSVC)
     set(OS_BUILD  $ENV{OS_BUILD})
     if(NOT OS_BUILD)
         set(OS_BUILD "64")
-    endif(NOT OS_BUILD)
+    endif()
     set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH}:/c/ming${OS_BUILD}/projects/pgx${OS_BUILD}/pg92)
     if (NOT BOOST_ROOT)
         set(BOOST_ROOT c:/ming${OS_BUILD}/msys/local)
-    endif(NOT BOOST_ROOT)
+    endif()
 
-    if (PGROUTING_DEBUG)
+    if (PROJECT_DEBUG)
         message(STATUS "OS_BUILD=${OS_BUILD}")
         message(STATUS "BOOST_ROOT=${BOOST_ROOT}")
         message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
@@ -160,15 +129,14 @@ if(WIN32 AND NOT MSVC)
 endif(WIN32 AND NOT MSVC)
 
 if(WIN32 AND MSVC)
-    string(REGEX REPLACE "/W[3|4]" "/w" CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
-    string(REGEX REPLACE "/W[3|4]" "/w" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_SECURE_NO_DEPRECATE")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_SCL_SECURE_NO_DEPRECATE")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_SECURE_NO_WARNINGS")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_SCL_SECURE_NO_WARNINGS")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_NONSTDC_NO_DEPRECATE")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_NONSTDC_NO_DEPRECATE")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -EHsc")
+    add_compile_options(
+        -D_CRT_SECURE_NO_DEPRECATE
+        -D_SCL_SECURE_NO_DEPRECATE
+        -D_CRT_SECURE_NO_WARNINGS
+        -D_SCL_SECURE_NO_WARNINGS
+        -D_CRT_NONSTDC_NO_DEPRECATE
+        -D_CRT_NONSTDC_NO_DEPRECATE
+        -EHsc)
 endif()
 
 #-----------------------------------------------------------------------------
@@ -186,8 +154,8 @@ endif()
 #---------------------------------------------
 include(FindPerl)
 if(NOT PERL_EXECUTABLE)
-    message(FATAL_ERROR " Please check your Perl installation.")
-endif(NOT PERL_EXECUTABLE)
+    message(FATAL_ERROR "perl NOT FOUND - Please check your Perl installation.")
+endif()
 
 #---------------------------------------------
 #---------------------------------------------
@@ -195,14 +163,11 @@ endif(NOT PERL_EXECUTABLE)
 #---------------------------------------------
 #---------------------------------------------
 find_package(PostgreSQL)
-if(NOT POSTGRESQL_FOUND)
-    message(FATAL_ERROR " Please check your PostgreSQL installation.")
-endif(NOT POSTGRESQL_FOUND)
-
-if(NOT POSTGRESQL_VERSION_STRING)
-    message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
+if(NOT POSTGRESQL_FOUND OR NOT POSTGRESQL_VERSION_STRING)
+    message(FATAL_ERROR "PostgreSQL not found - Please check your PostgreSQL installation.")
 endif()
 
+message(STATUS "POSTGRESQL_VERSION_STRING=${POSTGRESQL_VERSION_STRING}")
 string(SUBSTRING "${POSTGRESQL_VERSION_STRING}" 11 -1 POSTGRESQL_VERSION)
 
 # for XbetaY XalphaY XrcY -> X.Y
@@ -222,8 +187,8 @@ if(WIN32)
     include_directories(SYSTEM ${POSTGRESQL_INCLUDE_DIR}/port/win32)
     if(MSVC)
         include_directories(SYSTEM ${POSTGRESQL_INCLUDE_DIR}/port/win32_msvc/)
-    endif(MSVC)
-endif(WIN32)
+    endif()
+endif()
 
 add_definitions(-DPGSQL_VERSION=${PGSQL_VERSION})
 message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
@@ -234,73 +199,26 @@ message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
 # Boost
 #---------------------------------------------
 #---------------------------------------------
-find_package(Boost ${BOOST_MINIMUM_VERSION})
-if(Boost_FOUND)
-    include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-    message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIRS}")
-else()
-    message(FATAL_ERROR " Please check your Boost installation ")
-endif()
-set(BOOST_VERSION "${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
 
-
-# Boost for Chinese postman needs 1.55 at least
-# dijkstra_shortest_paths.hpp has an error fix on 1.55
-#  error affects prim
-# BOOST_VERSION_OK if 1, use the boost file copy in the repository
-if ("${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}" VERSION_LESS "1.55.0")
-    set(BOOST_VERSION_OK "0")
-else()
-    set(BOOST_VERSION_OK "1")
-endif()
-
-# Boost Geometry structure is different
-if ("${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}" VERSION_LESS "1.56.0")
-    set(BOOST_Geometry_VERSION_OK "0")
-else()
-    set(BOOST_Geometry_VERSION_OK "1")
-endif()
-
-
-
-message(STATUS "Boost VERSION ${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
-message(STATUS "BOOST_VERSION_OK ${BOOST_VERSION_OK}")
-message(STATUS "BOOST_Geometry_VERSION_OK ${BOOST_Geometry_VERSION_OK}")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_VERSION_OK=${BOOST_VERSION_OK} -DBOOST_Geometry_VERSION_OK=${BOOST_Geometry_VERSION_OK}")
-
-#---------------------------------------------
-#---------------------------------------------
-# PGROUTING includes
-#---------------------------------------------
-#---------------------------------------------
-
-set(PGROUTING_INCLUDE_DIRECTORIES
-    ${PGROUTING_SOURCE_DIR}/include
-    )
-
-#-------
-include_directories(${PGROUTING_INCLUDE_DIRECTORIES})
+include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
 
 #---------------------------------------------
-if (PGROUTING_DEBUG)
+if (PROJECT_DEBUG)
     message(STATUS "PERL_VERSION_STRING = ${PERL_VERSION_STRING}")
     message(STATUS "POSTGRESQL_VERSION is ${PGSQL_VERSION}")
     message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
-    message(STATUS "BOOST_VERSION_OK ${BOOST_VERSION_OK}")
-    message(STATUS "PGROUTING_INCLUDE_DIRECTORIES = ${PGROUTING_INCLUDE_DIRECTORIES}")
-    message(STATUS "POSTGRESQL_INCLUDE_DIR = ${POSTGRESQL_INCLUDE_DIR}")
     message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
+    message(STATUS "POSTGRESQL_INCLUDE_DIR = ${POSTGRESQL_INCLUDE_DIR}")
 endif()
 
 
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-# Posgres installation directories
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-
-
+#---------------------------------------------
+#---------------------------------------------
+# PROJECT includes
+#---------------------------------------------
+#---------------------------------------------
+include_directories(${PROJECT_SOURCE_DIR}/include)
 
 #---------------------------------------------
 # library directory
@@ -308,14 +226,13 @@ endif()
 execute_process(
     COMMAND ${POSTGRESQL_PG_CONFIG} --pkglibdir
     OUTPUT_STRIP_TRAILING_WHITESPACE
-    OUTPUT_VARIABLE LIB_DIR)
+    OUTPUT_VARIABLE LIBRARY_INSTALL_PATH)
 
-if(NOT LIB_DIR)
+if(NOT LIBRARY_INSTALL_PATH)
     message(FATAL_ERROR "pg_config --pkglibdir failed to return a value. Please check your PostgreSQL installation!")
 endif()
 
-#-------
-set(LIBRARY_INSTALL_PATH ${LIB_DIR})
+message(STATUS "LIBRARY_INSTALL_PATH ${LIBRARY_INSTALL_PATH}")
 
 #---------------------------------------------
 # extension directory
@@ -334,9 +251,11 @@ else(SHARE_DIR)
 endif(SHARE_DIR)
 
 #---------------------------------------------
-if (PGROUTING_DEBUG)
-    message(STATUS "Install directory for libraries is set to ${LIB_DIR}")
-    message(STATUS "Extension directory for SQL files is set to ${SHARE_DIR}")
+
+if (PROJECT_DEBUG)
+    message(STATUS "POSTGRESQL_LIBRARIES=${POSTGRESQL_LIBRARIES}")
+    message(STATUS "LIBRARY_INSTALL_PATH=${LIBRARY_INSTALL_PATH}")
+    message(STATUS "SHARE_DIR=${SHARE_DIR}")
 endif()
 
 
@@ -346,29 +265,22 @@ endif()
 #---------------------------------------------
 
 if(WIN32)
-    message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
-    link_directories(${POSTGRESQL_LIBRARIES} ${LIB_DIR})
+    link_directories(${POSTGRESQL_LIBRARIES})
     link_libraries(postgres)
 endif()
 
 #-----------------------------------------------------------------------------
 
-if (PGROUTING_DEBUG)
+if (PROJECT_DEBUG)
     get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
-    foreach(dir ${dirs})
-        message(STATUS "dir='${dir}'")
-    endforeach()
+    message(STATUS "INCLUDE_DIRECTORIES='${dirs}'")
 endif()
 
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #compiler directives
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# for UNIX & JENKINS
-if(UNIX OR (WIN32 AND NOT MSVC))
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99")
-endif()
+# https://www.postgresql.org/docs/10/xfunc-c.html
 
 if(NOT WIN32)
     CHECK_C_COMPILER_FLAG("-fPIC" C_COMPILER_SUPPORTS_FPIC)
@@ -409,7 +321,7 @@ endif()
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-if (PGROUTING_DEBUG)
+if (PROJECT_DEBUG)
     message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
     message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
     message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
@@ -432,15 +344,15 @@ endif()
 
 if(WITH_INTERNAL_TESTS)
     message("Including InternalQueryTests")
-    set(PGROUTING_SOURCE_NAMES ${PGROUTING_SOURCE_NAMES} "internalQueryTests")
+    set(PROJECT_SRC_DIRECTORIES ${PROJECT_SRC_DIRECTORIES} "internalQueryTests")
 endif()
 
 #-------------------
 # add the subdirectories that have the C/C++ code
 #-------------------
 
-foreach (subdir ${PGROUTING_SOURCE_NAMES})
-    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}")
+foreach (subdir ${PROJECT_SRC_DIRECTORIES})
+    add_subdirectory("${PROJECT_SOURCE_DIR}/src/${subdir}")
 endforeach()
 
 
@@ -464,13 +376,13 @@ LINK_LIBRARIES(${BOOST_THREAD_LIBRARIES})
 #-------------------
 # pgRouting objects to be linked
 #-------------------
-foreach (subdir ${PGROUTING_SOURCE_NAMES} )
-    set(PGROUTING_OBJECTS ${PGROUTING_OBJECTS} "$<TARGET_OBJECTS:${subdir}>")
+foreach (subdir ${PROJECT_SRC_DIRECTORIES} )
+    set(PROJECT_OBJECTS ${PROJECT_OBJECTS} "$<TARGET_OBJECTS:${subdir}>")
 endforeach()
 
 
 #-----------------------------------------------------------------------------
-# PGROUTING Library names
+# PROJECT Library names
 #-----------------------------------------------------------------------------
 
 
@@ -478,37 +390,41 @@ endforeach()
 # PGROUTING installation files names have the following name
 #----------------------
 
-if (PGROUTING_DEBUG)
-    message(STATUS "PGROUTING_LIB_NAME ${PGROUTING_LIB_NAME}")
+if (PROJECT_DEBUG)
+    message(STATUS "PROJECT_LIB_NAME ${PROJECT_LIB_NAME}")
 endif()
 
 
 
-add_library(${PGROUTING_LIB_NAME}
+add_library(${PROJECT_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
-    ${PGROUTING_OBJECTS})
+    ${PROJECT_OBJECTS})
 
 
 
 if(APPLE)
-    set_target_properties(${PGROUTING_LIB_NAME}
+    set_target_properties(${PROJECT_LIB_NAME}
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
 if(WIN32 AND MSVC)
-    set_target_properties(${PGROUTING_LIB_NAME} PROPERTIES PREFIX "lib")
+    set_target_properties(${PROJECT_LIB_NAME} PROPERTIES PREFIX "lib")
 endif(WIN32 AND MSVC)
 
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 # sql subdirectory creates the files:
-#  pgrouting--(version).sql
-#  pgrouting--(oldVersion)--(version).sql
+#  ${PROJECT_NAME_LOWER}--(version).sql
+#  ${PROJECT_NAME_LOWER}--(oldVersion)--(version).sql
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 
 add_subdirectory(sql)
+if (PROJECT_DEBUG)
+    message(STATUS "PROJECT_FILES_TO_INSTALL=${PROJECT_FILES_TO_INSTALL}")
+endif()
+
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
@@ -517,9 +433,9 @@ add_subdirectory(sql)
 #-----------------------------------------------------------------------------
 
 
-install(TARGETS ${PGROUTING_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
+install(TARGETS ${PROJECT_LIB_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
 install(FILES
-    ${PGROUTING_SQL_FILES_TO_INSTALL}
+    ${PROJECT_FILES_TO_INSTALL}
     DESTINATION "${SHARE_DIR}"
     )
 

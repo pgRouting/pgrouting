@@ -13,7 +13,7 @@
 #include <cstddef>
 
 #include <boost/concept/assert.hpp>
-#include <boost/core/addressof.hpp>
+#include <boost/utility/addressof.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
 

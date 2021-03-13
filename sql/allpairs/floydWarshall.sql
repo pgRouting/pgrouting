@@ -54,5 +54,5 @@ IS 'pgr_floydWarshall
 - Optional Parameters:
     - directed := true
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_floydWarshall.html
+    - ${PROJECT_DOC_LINK}/pgr_floydWarshall.html
 ';

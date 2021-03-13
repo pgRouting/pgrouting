@@ -56,5 +56,5 @@ IS 'pgr_prim
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_prim.html
+    - ${PROJECT_DOC_LINK}/pgr_prim.html
 ';

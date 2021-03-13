@@ -85,5 +85,5 @@ IS 'pgr_TSP
 
     - randomize := true
 - Documentation:
-    - ${PGROUTING_DOC_LINK}/pgr_TSP.html
+    - ${PROJECT_DOC_LINK}/pgr_TSP.html
 ';

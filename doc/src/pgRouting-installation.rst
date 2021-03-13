@@ -36,8 +36,8 @@ Extracting the tar ball
 
 .. code-block:: bash
 
-    tar xvfz pgrouting-${PGROUTING_VERSION}.tar.gz
-    cd pgrouting-${PGROUTING_VERSION}
+    tar xvfz pgrouting-${PROJECT_VERSION}.tar.gz
+    cd pgrouting-${PROJECT_VERSION}
 
 To compile assuming you have all the dependencies in your search path:
 
@@ -72,7 +72,7 @@ To download this release:
 
 .. code-block:: bash
 
-    wget -O pgrouting-${PGROUTING_VERSION}.tar.gz https://github.com/pgRouting/pgrouting/archive/v${PGROUTING_VERSION}.tar.gz
+    wget -O pgrouting-${PROJECT_VERSION}.tar.gz https://github.com/pgRouting/pgrouting/archive/v${PROJECT_VERSION}.tar.gz
 
 Goto :ref:`install-short` to the extract and compile instructions.
 
@@ -84,7 +84,7 @@ To download the repository
 
     git clone git://github.com/pgRouting/pgrouting.git
     cd pgrouting
-    git checkout v${PGROUTING_VERSION}
+    git checkout v${PROJECT_VERSION}
 
 Goto :ref:`install-short` to the compile instructions (there is no tar ball).
 
@@ -107,13 +107,13 @@ pgRouting is an extension and depends on postGIS. Enabling postGIS before enabli
 
 .. rubric:: Upgrading the database
 
-To upgrade pgRouting in the database to version ${PGROUTING_VERSION} use the following command:
+To upgrade pgRouting in the database to version ${PROJECT_VERSION} use the following command:
 
 .. TODO: pumpup release must change this value
 
 .. code-block:: sql
 
-   ALTER EXTENSION pgrouting UPDATE TO "${PGROUTING_VERSION}";
+   ALTER EXTENSION pgrouting UPDATE TO "${PROJECT_VERSION}";
 
 More information can be found in https://www.postgresql.org/docs/current/sql-createextension.html
 

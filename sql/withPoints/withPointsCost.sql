@@ -144,7 +144,7 @@ IS 'pgr_withPointsCost (One to One)
     - directed := ''true''
     - driving_side := ''b''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_withPointsCost.html
+  - ${PROJECT_DOC_LINK}/pgr_withPointsCost.html
 ';
 
 
@@ -160,7 +160,7 @@ IS 'pgr_withPointsCost (One to Many)
     - directed := ''true''
     - driving_side := ''b''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_withPointsCost.html
+  - ${PROJECT_DOC_LINK}/pgr_withPointsCost.html
 ';
 
 
@@ -176,7 +176,7 @@ IS 'pgr_withPointsCost (Many to One)
     - directed := ''true''
     - driving_side := ''b''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_withPointsCost.html
+  - ${PROJECT_DOC_LINK}/pgr_withPointsCost.html
 ';
 
 
@@ -191,5 +191,5 @@ IS 'pgr_withPointsCost (Many to Many)
     - directed := ''true''
     - driving_side := ''b''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_withPointsCost.html
+  - ${PROJECT_DOC_LINK}/pgr_withPointsCost.html
 ';

@@ -85,5 +85,5 @@ IS 'pgr_pickDeliver
    - max_cycles: default := 10
    - initial_sol: default := 4
 - Documentation:
-   - ${PGROUTING_DOC_LINK}/pgr_pickDeliver.html
+   - ${PROJECT_DOC_LINK}/pgr_pickDeliver.html
 ';

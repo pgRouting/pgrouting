@@ -288,5 +288,5 @@ IS 'pgr_analyzeOneWay
   - source := ''source''
   - target:=''target''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_analyzeOneWay.html
+  - ${PROJECT_DOC_LINK}/pgr_analyzeOneWay.html
 ';

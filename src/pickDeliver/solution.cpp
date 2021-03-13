@@ -35,6 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
+Pgr_pickDeliver* Solution::problem;
+
+
 std::vector<General_vehicle_orders_t>
 Solution::get_postgres_result() const {
     std::vector<General_vehicle_orders_t> result;
@@ -48,6 +51,14 @@ Solution::get_postgres_result() const {
         ++i;
     }
     return result;
+}
+
+/**
+ * @returns The problem's message for logging
+ */
+Pgr_messages&
+Solution::msg() {
+    return problem->msg;
 }
 
 
@@ -238,11 +249,11 @@ Solution::get_kind() const {
 Solution::Solution() :
     EPSILON(0.0001),
     trucks(problem->trucks()) {
-    ENTERING();
+    ENTERING(msg());
     for (const auto &t : trucks) {
-        msg.log << t.tau() << "\n";
+        msg().log << t.tau() << "\n";
     }
-    EXITING();
+    EXITING(msg());
 }
 
 }  //  namespace vrp

@@ -166,7 +166,7 @@ IS 'pgr_withPoints (One to One)
     - driving_side := ''b''
     - details := ''false''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+  - ${PROJECT_DOC_LINK}/pgr_withPoints.html
 ';
 
 
@@ -183,7 +183,7 @@ IS 'pgr_withPoints (One to Many)
     - driving_side := ''b''
     - details := ''false''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+  - ${PROJECT_DOC_LINK}/pgr_withPoints.html
 ';
 
 
@@ -200,7 +200,7 @@ IS 'pgr_withPoints (Many to One)
     - driving_side := ''b''
     - details := ''false''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+  - ${PROJECT_DOC_LINK}/pgr_withPoints.html
 ';
 
 
@@ -217,5 +217,5 @@ IS 'pgr_withPoints (Many to Many)
     - driving_side := ''b''
     - details := ''false''
 - Documentation:
-  - ${PGROUTING_DOC_LINK}/pgr_withPoints.html
+  - ${PROJECT_DOC_LINK}/pgr_withPoints.html
 ';
