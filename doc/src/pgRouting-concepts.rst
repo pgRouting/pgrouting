@@ -7,6 +7,22 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgRouting-concepts.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-concepts.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-concepts.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgRouting-concepts.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgRouting-concepts.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgRouting-concepts.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgRouting-concepts.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/tutorial/index.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/tutorial/index.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/tutorial/index.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/tutorial/index.html>`__
+
 .. _pgrouting_concepts:
 
 pgRouting Concepts
@@ -55,7 +71,7 @@ is to load an Open Street Maps (OSM) dataset using **osm2pgrouting**. This is a
 tool, integrated in pgRouting project, that loads OSM data into postgresql
 with pgRouting requirements, including data structure and routing topology.
 
-If you have other requirements, you can try various OpenSource tools that can 
+If you have other requirements, you can try various OpenSource tools that can
 help you, like:
 
 :shp2pgsql: - this is the postgresql shapefile loader
@@ -86,7 +102,7 @@ used for routing with pgrouting. We provide a tool that will help with this:
 .. code-block:: sql
 
     select pgr_createTopology('myroads', 0.000001);
-    
+
 where you should replace 'myroads' with the name of your table storing the edges.
 
 * :doc:`pgr_createTopology`
@@ -114,7 +130,7 @@ but we have some basic tools that might help.
                                          t_in_rules, t_out_rules
                                          direction)
     select pgr_nodeNetwork('myroads', 0.001);
-    
+
 where you should replace 'myroads' with the name of your table storing the edges
 ('ways', in case you used osm2pgrouting to import the data).
 
@@ -138,7 +154,7 @@ network. The general form of a route query using Dijkstra algorithm is:
 
 
 This algorithm only requires *id*, *source*, *target* and *cost* as the minimal attributes, that by
-default will be considered to be columns in your roads table. If the column names in your 
+default will be considered to be columns in your roads table. If the column names in your
 roads table do not match exactly the names of these attributes, you can use aliases. For example,
 if you imported OSM data using **osm2pgrouting**, your id column's name would be *gid* and your
 roads table would be *ways*, so you would query a route from node id 1 to node id 2 by typing:
@@ -152,7 +168,7 @@ of database structure and in defining cost functions. You can test the previous 
 using *length_m AS cost* to compute the shortest path in meters or *cost_s / 60 AS cost* to compute
 the fastest path in minutes.
 
-You can look and the specific algorithms for the details of the signatures and how 
+You can look and the specific algorithms for the details of the signatures and how
 to use them. These results have information like edge id and/or the
 node id along with the cost or geometry for the step in the path from *start*
 to *end*. Using the ids you can join these result back to your edge table
