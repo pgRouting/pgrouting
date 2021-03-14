@@ -18,7 +18,7 @@ Here are some important resources:
 Any kind of contribution will automatically fall to the following Licences:
 
 - Code contribution: GNU General Public License v2.0 or later,
-  - Directly by making a pul explicit pull request.
+  - Directly by making an explicit pull request.
   - Indirectly by posting code on issues/wiki/gitter/mailng lists
 - Documentation contribution:
   - Creative Commons Attribution-Share Alike 3.0
