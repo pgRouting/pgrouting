@@ -94,7 +94,6 @@ jobs:
           PROJECT_MAJOR_MINOR="${PROJECT_VERSION%.*}"
           rm -rf ${PROJECT_MAJOR_MINOR}
           cp -r build/doc/html ${PROJECT_MAJOR_MINOR}
-          rm -rf ${PROJECT_MAJOR_MINOR}/es
           git add ${PROJECT_MAJOR_MINOR}
           git diff-index --quiet HEAD || git commit -m "Update users documentation for ${PROJECT_VERSION}: commit ${{ env.GIT_HASH }}"
           git fetch origin
