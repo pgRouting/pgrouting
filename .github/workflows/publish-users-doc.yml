@@ -35,6 +35,11 @@ jobs:
           echo "PGIS=3" >> $GITHUB_ENV
           echo "PROJECT_VERSION=${PROJECT_VERSION}" >> $GITHUB_ENV
 
+      - name: Extract commit hash
+        run: |
+          git_hash=$(git rev-parse --short "$GITHUB_SHA")
+          echo "GIT_HASH=$git_hash" >> $GITHUB_ENV
+
       - name: Add PostgreSQL APT repository
         run: |
           sudo apt-get install curl ca-certificates gnupg
@@ -91,7 +96,7 @@ jobs:
           cp -r build/doc/html ${PROJECT_MAJOR_MINOR}
           rm -rf ${PROJECT_MAJOR_MINOR}/es
           git add ${PROJECT_MAJOR_MINOR}
-          git diff-index --quiet HEAD || git commit -m "Update users documentation for ${PROJECT_VERSION}"
+          git diff-index --quiet HEAD || git commit -m "Update users documentation for ${PROJECT_VERSION}: commit ${{ env.GIT_HASH }}"
           git fetch origin
           git rebase origin/gh-pages
           git push origin gh-pages
