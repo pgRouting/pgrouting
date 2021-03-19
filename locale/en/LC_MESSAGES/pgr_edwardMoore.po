@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-15 07:54-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_edwardMoore.rst:11
+#: ../../build/doc/pgr_edwardMoore.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_edwardMoore.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_edwardMoore.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_edwardMoore.rst:17
 msgid "pgr_edwardMoore - Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:13
+#: ../../build/doc/pgr_edwardMoore.rst:19
 msgid ""
 "``pgr_edwardMoore`` —  Returns the shortest path(s) using Edward-Moore "
 "algorithm. Edward Moore’s ​ Algorithm is an improvement of the Bellman-"
@@ -96,38 +103,38 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:22
+#: ../../build/doc/pgr_edwardMoore.rst:28
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:23
+#: ../../build/doc/pgr_edwardMoore.rst:29
 msgid "Version 3.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:25
+#: ../../build/doc/pgr_edwardMoore.rst:31
 msgid "New **experimental** function:"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:27
+#: ../../build/doc/pgr_edwardMoore.rst:33
 msgid "pgr_edwardMoore(Combinations)"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:29
+#: ../../build/doc/pgr_edwardMoore.rst:35
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:31
+#: ../../build/doc/pgr_edwardMoore.rst:37
 msgid "New **experimental** function"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_edwardMoore.rst:34
-#: ../../build/doc/pgr_edwardMoore.rst:190
+#: ../../build/doc/pgr_edwardMoore.rst:40
+#: ../../build/doc/pgr_edwardMoore.rst:196
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:36
+#: ../../build/doc/pgr_edwardMoore.rst:42
 msgid ""
 "Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm."
 " It can compute the shortest paths from a single source vertex to all "
@@ -136,7 +143,7 @@ msgid ""
 "time."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:40
+#: ../../build/doc/pgr_edwardMoore.rst:46
 msgid ""
 "The worst-case running time of the algorithm is :math:`O(| V | * | E |)` "
 "similar to the time complexity of Bellman-Ford algorithm. However, "
@@ -145,63 +152,63 @@ msgid ""
 " faster in terms of computation speed."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:45
+#: ../../build/doc/pgr_edwardMoore.rst:51
 msgid ""
 "Thus, the algorithm is at-best, significantly faster than Bellman-Ford "
 "algorithm and is at-worst, as good as Bellman-Ford algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:68
+#: ../../build/doc/pgr_edwardMoore.rst:74
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:49
+#: ../../build/doc/pgr_edwardMoore.rst:55
 msgid "Values are returned when there is a path."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:51
+#: ../../build/doc/pgr_edwardMoore.rst:57
 msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:53
+#: ../../build/doc/pgr_edwardMoore.rst:59
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:55
+#: ../../build/doc/pgr_edwardMoore.rst:61
 msgid ""
 "When the starting vertex and ending vertex are the different and there is"
 " no path:"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:57
+#: ../../build/doc/pgr_edwardMoore.rst:63
 msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:59
+#: ../../build/doc/pgr_edwardMoore.rst:65
 msgid ""
 "For optimization purposes, any duplicated value in the `start_vids` or "
 "`end_vids` are ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:61
+#: ../../build/doc/pgr_edwardMoore.rst:67
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:63
+#: ../../build/doc/pgr_edwardMoore.rst:69
 msgid "`start_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:64
+#: ../../build/doc/pgr_edwardMoore.rst:70
 msgid "`end_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:66
+#: ../../build/doc/pgr_edwardMoore.rst:72
 msgid ""
 "Running time: - Worst case: :math:`O(| V | * | E |)` - Average case: "
 ":math:`O( | E | )`"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:71
+#: ../../build/doc/pgr_edwardMoore.rst:77
 msgid "Signatures"
 msgstr ""
 
@@ -209,98 +216,98 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:88
+#: ../../build/doc/pgr_edwardMoore.rst:94
 msgid "From vertex :math:`2` to vertex  :math:`3` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:98
+#: ../../build/doc/pgr_edwardMoore.rst:104
 msgid "One to One"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:106
+#: ../../build/doc/pgr_edwardMoore.rst:112
 msgid "From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:116
+#: ../../build/doc/pgr_edwardMoore.rst:122
 msgid "One to many"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:124
+#: ../../build/doc/pgr_edwardMoore.rst:130
 msgid ""
 "From vertex :math:`2` to vertices :math:`\\{3, 5\\}` on an **undirected**"
 " graph"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:134
+#: ../../build/doc/pgr_edwardMoore.rst:140
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:142
+#: ../../build/doc/pgr_edwardMoore.rst:148
 msgid ""
 "From vertices :math:`\\{2, 11\\}` to vertex :math:`5` on a **directed** "
 "graph"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:152
+#: ../../build/doc/pgr_edwardMoore.rst:158
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:160
+#: ../../build/doc/pgr_edwardMoore.rst:166
 msgid ""
 "From vertices :math:`\\{2, 11\\}` to vertices :math:`\\{3, 5\\}` on an "
 "**undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:170
+#: ../../build/doc/pgr_edwardMoore.rst:176
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:178
+#: ../../build/doc/pgr_edwardMoore.rst:184
 msgid "Using a combinations table on an **undirected** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:185
+#: ../../build/doc/pgr_edwardMoore.rst:191
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:190
+#: ../../build/doc/pgr_edwardMoore.rst:196
 msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_edwardMoore.rst:190
+#: ../../build/doc/pgr_edwardMoore.rst:196
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_edwardMoore.rst:190
+#: ../../build/doc/pgr_edwardMoore.rst:196
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:192
+#: ../../build/doc/pgr_edwardMoore.rst:198
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:192
-#: ../../build/doc/pgr_edwardMoore.rst:193
+#: ../../build/doc/pgr_edwardMoore.rst:198
+#: ../../build/doc/pgr_edwardMoore.rst:199
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:192
+#: ../../build/doc/pgr_edwardMoore.rst:198
 msgid "Edges query as described below."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:193
+#: ../../build/doc/pgr_edwardMoore.rst:199
 msgid "**Combinations SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:193
+#: ../../build/doc/pgr_edwardMoore.rst:199
 msgid "Combinations query as described below."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_edwardMoore.rst:194
+#: ../../build/doc/pgr_edwardMoore.rst:200
 msgid "**start_vid**"
 msgstr ""
 
@@ -308,70 +315,70 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:25
-#: ../../build/doc/pgr_edwardMoore.rst:194
-#: ../../build/doc/pgr_edwardMoore.rst:196
+#: ../../build/doc/pgr_edwardMoore.rst:200
+#: ../../build/doc/pgr_edwardMoore.rst:202
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:194
+#: ../../build/doc/pgr_edwardMoore.rst:200
 msgid "Identifier of the starting vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:195
+#: ../../build/doc/pgr_edwardMoore.rst:201
 msgid "**start_vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:195
-#: ../../build/doc/pgr_edwardMoore.rst:197
+#: ../../build/doc/pgr_edwardMoore.rst:201
+#: ../../build/doc/pgr_edwardMoore.rst:203
 msgid "``ARRAY[BIGINT]``"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:195
+#: ../../build/doc/pgr_edwardMoore.rst:201
 msgid "Array of identifiers of starting vertices."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgr_edwardMoore.rst:196
+#: ../../build/doc/pgr_edwardMoore.rst:202
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:196
+#: ../../build/doc/pgr_edwardMoore.rst:202
 msgid "Identifier of the ending vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:197
+#: ../../build/doc/pgr_edwardMoore.rst:203
 msgid "**end_vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:197
+#: ../../build/doc/pgr_edwardMoore.rst:203
 msgid "Array of identifiers of ending vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:198
+#: ../../build/doc/pgr_edwardMoore.rst:204
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:198
+#: ../../build/doc/pgr_edwardMoore.rst:204
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:198
+#: ../../build/doc/pgr_edwardMoore.rst:204
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:198
+#: ../../build/doc/pgr_edwardMoore.rst:204
 msgid "When ``true`` Graph is considered `Directed`"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:199
+#: ../../build/doc/pgr_edwardMoore.rst:205
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:205
+#: ../../build/doc/pgr_edwardMoore.rst:211
 msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:208
+#: ../../build/doc/pgr_edwardMoore.rst:214
 msgid "Edges query"
 msgstr ""
 
@@ -474,11 +481,11 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:215
+#: ../../build/doc/pgr_edwardMoore.rst:221
 msgid "Combinations query"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:222
+#: ../../build/doc/pgr_edwardMoore.rst:228
 msgid "Return Columns"
 msgstr ""
 
@@ -585,15 +592,15 @@ msgstr ""
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:230
+#: ../../build/doc/pgr_edwardMoore.rst:236
 msgid "Example Application"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:232
+#: ../../build/doc/pgr_edwardMoore.rst:238
 msgid "The examples of this section are based on the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:234
+#: ../../build/doc/pgr_edwardMoore.rst:240
 msgid ""
 "The examples include combinations from starting vertices 2 and 11 to "
 "ending vertices 3 and 5 in a directed and undirected graph with and with "
@@ -604,59 +611,59 @@ msgstr ""
 msgid "Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:237
+#: ../../build/doc/pgr_edwardMoore.rst:243
 msgid ""
 "For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` "
 "columns"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:239
+#: ../../build/doc/pgr_edwardMoore.rst:245
 msgid "The examples in this section use the following :ref:`fig1`"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:245
+#: ../../build/doc/pgr_edwardMoore.rst:251
 msgid ""
 "For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` "
 "columns"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:247
+#: ../../build/doc/pgr_edwardMoore.rst:253
 msgid "The examples in this section use the following :ref:`fig2`"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:253
+#: ../../build/doc/pgr_edwardMoore.rst:259
 msgid "For queries marked as ``directed`` with ``cost`` column"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:255
+#: ../../build/doc/pgr_edwardMoore.rst:261
 msgid "The examples in this section use the following :ref:`fig3`"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:261
+#: ../../build/doc/pgr_edwardMoore.rst:267
 msgid "For queries marked as ``undirected`` with ``cost`` column"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:263
+#: ../../build/doc/pgr_edwardMoore.rst:269
 msgid "The examples in this section use the following :ref:`fig4`"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:270
+#: ../../build/doc/pgr_edwardMoore.rst:276
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:272
+#: ../../build/doc/pgr_edwardMoore.rst:278
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:275
+#: ../../build/doc/pgr_edwardMoore.rst:281
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:276
+#: ../../build/doc/pgr_edwardMoore.rst:282
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_edwardMoore.rst:277
+#: ../../build/doc/pgr_edwardMoore.rst:283
 msgid ":ref:`search`"
 msgstr ""
 

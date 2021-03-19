@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,123 +16,131 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/sampledata.rst:11
+#: ../../build/doc/sampledata.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/sampledata.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/sampledata.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/sampledata.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/sampledata.html>`__"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:17
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/sampledata.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/sampledata.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/sampledata.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/developer/sampledata.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/developer/sampledata.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/developer/sampledata.html>`__"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:27
 msgid "Sample Data"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:13
+#: ../../build/doc/sampledata.rst:29
 msgid "The documentation provides very simple example queries based on a small sample network. To be able to execute the sample queries, run the following SQL commands to create a table with a small network data set."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:18
+#: ../../build/doc/sampledata.rst:34
 msgid "Create table"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:25
+#: ../../build/doc/sampledata.rst:41
 msgid "Insert data"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:32
+#: ../../build/doc/sampledata.rst:48
 msgid "Updating geometry"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:39
+#: ../../build/doc/sampledata.rst:55
 msgid "Topology"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:40
+#: ../../build/doc/sampledata.rst:56
 msgid "Before you test a routing function use this query to create a topology (fills the ``source`` and ``target`` columns)."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:47
+#: ../../build/doc/sampledata.rst:63
 msgid "Combinations of start and end vertices"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:48
+#: ../../build/doc/sampledata.rst:64
 msgid "Used to test the combinations_sql signature in dijkstra-like functions."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:55
+#: ../../build/doc/sampledata.rst:71
 msgid "Points of interest"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:56
+#: ../../build/doc/sampledata.rst:72
 msgid "When points outside of the graph."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:57
+#: ../../build/doc/sampledata.rst:73
 msgid "Used with the :doc:`withPoints-family` functions."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:64
+#: ../../build/doc/sampledata.rst:80
 msgid "Restrictions"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:65
+#: ../../build/doc/sampledata.rst:81
 msgid "Used with the :doc:`pgr_trsp` functions."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:72
+#: ../../build/doc/sampledata.rst:88
 msgid "Images"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:74
+#: ../../build/doc/sampledata.rst:90
 msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:75
+#: ../../build/doc/sampledata.rst:91
 msgid "Blue arrows correspond when ``reverse_cost`` > 0 in the edge table."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:76
+#: ../../build/doc/sampledata.rst:92
 msgid "Points are outside the graph."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:77
+#: ../../build/doc/sampledata.rst:93
 msgid "Click on the graph to enlarge."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:82
+#: ../../build/doc/sampledata.rst:98
 msgid "Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:84
+#: ../../build/doc/sampledata.rst:100
 msgid "When working with city networks, this is recommended for point of view of vehicles."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:89
+#: ../../build/doc/sampledata.rst:105
 msgid "**Graph 1: Directed, with cost and reverse cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:94
+#: ../../build/doc/sampledata.rst:110
 msgid "Network for queries marked as ``undirected`` and ``cost`` and ``reverse_cost`` columns are used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:96
+#: ../../build/doc/sampledata.rst:112
 msgid "When working with city networks, this is recommended for point of view of pedestrians."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:102
+#: ../../build/doc/sampledata.rst:118
 msgid "**Graph 2: Undirected, with cost and reverse cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:107
+#: ../../build/doc/sampledata.rst:123
 msgid "Network for queries marked as ``directed`` and only ``cost`` column is used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:114
+#: ../../build/doc/sampledata.rst:130
 msgid "**Graph 3: Directed, with cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:119
+#: ../../build/doc/sampledata.rst:135
 msgid "Network for queries marked as ``undirected`` and only ``cost`` column is used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:125
+#: ../../build/doc/sampledata.rst:141
 msgid "**Graph 4: Undirected, with cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:132
+#: ../../build/doc/sampledata.rst:148
 msgid "Pick & Deliver Data"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 12:09-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,17 +17,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_isPlanar.rst:11
+#: ../../build/doc/pgr_isPlanar.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_isPlanar.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_isPlanar.rst:17
 msgid "pgr_isPlanar - Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:13
+#: ../../build/doc/pgr_isPlanar.rst:19
 msgid ""
 "``pgr_isPlanar`` — Returns a boolean depending upon the planarity of the "
 "graph."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:18
+#: ../../build/doc/pgr_isPlanar.rst:24
 msgid "Boost Graph Inside"
 msgstr ""
 
@@ -99,34 +106,24 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:25
+#: ../../build/doc/pgr_isPlanar.rst:31
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:26
+#: ../../build/doc/pgr_isPlanar.rst:32
 msgid "Version 3.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:28
+#: ../../build/doc/pgr_isPlanar.rst:34
 msgid "New **experimental** function"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:31
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_isPlanar.rst:32
-msgid ""
-"**Supported versions:** current(`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__)"
-msgstr ""
-
-#: ../../build/doc/pgr_isPlanar.rst:36 ../../build/doc/pgr_isPlanar.rst:76
-#: ../../build/doc/pgr_isPlanar.rst:87 ../../build/doc/pgr_isPlanar.rst:111
+#: ../../build/doc/pgr_isPlanar.rst:38 ../../build/doc/pgr_isPlanar.rst:78
+#: ../../build/doc/pgr_isPlanar.rst:89 ../../build/doc/pgr_isPlanar.rst:113
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:38
+#: ../../build/doc/pgr_isPlanar.rst:40
 msgid ""
 "A graph is planar if it can be drawn in two-dimensional space with no two"
 " of its edges crossing. Such a drawing of a planar graph is called a "
@@ -136,68 +133,68 @@ msgid ""
 " the graph is not planar."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:52
+#: ../../build/doc/pgr_isPlanar.rst:54
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:44
+#: ../../build/doc/pgr_isPlanar.rst:46
 msgid "This implementation use the Boyer-Myrvold Planarity Testing."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:46
+#: ../../build/doc/pgr_isPlanar.rst:48
 msgid "It will return a boolean value depending upon the planarity of the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:48
+#: ../../build/doc/pgr_isPlanar.rst:50
 msgid "Applicable only for **undirected** graphs."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:50
+#: ../../build/doc/pgr_isPlanar.rst:52
 msgid "The algorithm does not considers traversal costs in the calculations."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:52
+#: ../../build/doc/pgr_isPlanar.rst:54
 msgid "Running time: :math:`O(|V|)`"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:55
+#: ../../build/doc/pgr_isPlanar.rst:57
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:58
+#: ../../build/doc/pgr_isPlanar.rst:60
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:73
+#: ../../build/doc/pgr_isPlanar.rst:75
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:76
+#: ../../build/doc/pgr_isPlanar.rst:78
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:76 ../../build/doc/pgr_isPlanar.rst:87
-#: ../../build/doc/pgr_isPlanar.rst:111
+#: ../../build/doc/pgr_isPlanar.rst:78 ../../build/doc/pgr_isPlanar.rst:89
+#: ../../build/doc/pgr_isPlanar.rst:113
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:76 ../../build/doc/pgr_isPlanar.rst:87
+#: ../../build/doc/pgr_isPlanar.rst:78 ../../build/doc/pgr_isPlanar.rst:89
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:78
+#: ../../build/doc/pgr_isPlanar.rst:80
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:78
+#: ../../build/doc/pgr_isPlanar.rst:80
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:78
+#: ../../build/doc/pgr_isPlanar.rst:80
 msgid "SQL query as described below."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:82
+#: ../../build/doc/pgr_isPlanar.rst:84
 msgid "Inner query"
 msgstr ""
 
@@ -205,70 +202,70 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:84
+#: ../../build/doc/pgr_isPlanar.rst:86
 msgid ""
 "an SQL query, which should return a set of rows with the following "
 "columns:"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:87 ../../build/doc/pgr_isPlanar.rst:111
+#: ../../build/doc/pgr_isPlanar.rst:89 ../../build/doc/pgr_isPlanar.rst:113
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:89
+#: ../../build/doc/pgr_isPlanar.rst:91
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:89 ../../build/doc/pgr_isPlanar.rst:90
-#: ../../build/doc/pgr_isPlanar.rst:91
+#: ../../build/doc/pgr_isPlanar.rst:91 ../../build/doc/pgr_isPlanar.rst:92
+#: ../../build/doc/pgr_isPlanar.rst:93
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:89
+#: ../../build/doc/pgr_isPlanar.rst:91
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:90
+#: ../../build/doc/pgr_isPlanar.rst:92
 msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:90
+#: ../../build/doc/pgr_isPlanar.rst:92
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:91
+#: ../../build/doc/pgr_isPlanar.rst:93
 msgid "**target**"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:91
+#: ../../build/doc/pgr_isPlanar.rst:93
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:92
+#: ../../build/doc/pgr_isPlanar.rst:94
 msgid "**cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:92 ../../build/doc/pgr_isPlanar.rst:95
+#: ../../build/doc/pgr_isPlanar.rst:94 ../../build/doc/pgr_isPlanar.rst:97
 msgid "``ANY-NUMERICAL``"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:92 ../../build/doc/pgr_isPlanar.rst:95
+#: ../../build/doc/pgr_isPlanar.rst:94 ../../build/doc/pgr_isPlanar.rst:97
 msgid "When positive: edge `(target, source)` is part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:93 ../../build/doc/pgr_isPlanar.rst:96
+#: ../../build/doc/pgr_isPlanar.rst:95 ../../build/doc/pgr_isPlanar.rst:98
 msgid "When negative: edge `(target, source)` is not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:95
+#: ../../build/doc/pgr_isPlanar.rst:97
 msgid "**reverse_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:95
+#: ../../build/doc/pgr_isPlanar.rst:97
 msgid "-1"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:100
+#: ../../build/doc/pgr_isPlanar.rst:102
 msgid "Where:"
 msgstr ""
 
@@ -276,7 +273,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:102
+#: ../../build/doc/pgr_isPlanar.rst:104
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
@@ -284,71 +281,79 @@ msgstr ""
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:103
+#: ../../build/doc/pgr_isPlanar.rst:105
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:106
+#: ../../build/doc/pgr_isPlanar.rst:108
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:108
+#: ../../build/doc/pgr_isPlanar.rst:110
 msgid "Returns a boolean ``(pgr_isplanar)``"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:113
+#: ../../build/doc/pgr_isPlanar.rst:115
 msgid "**pgr_isplanar**"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:113
+#: ../../build/doc/pgr_isPlanar.rst:115
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:113
+#: ../../build/doc/pgr_isPlanar.rst:115
 msgid "`true` when the graph is planar."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:114
+#: ../../build/doc/pgr_isPlanar.rst:116
 msgid "`false` when the graph is not planar."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:118
+#: ../../build/doc/pgr_isPlanar.rst:120
 msgid "Additional Example:"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:120
+#: ../../build/doc/pgr_isPlanar.rst:122
 msgid ""
 "The following edges will make the subgraph with vertices {3, 4, 6, 9, 16}"
 " a :math:`K_5` graph."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:126
+#: ../../build/doc/pgr_isPlanar.rst:128
 msgid ""
 "The new graph is not planar because it has a :math:`K_5` subgraph. Edges "
 "in blue represent :math:`K_5` subgraph."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:136
+#: ../../build/doc/pgr_isPlanar.rst:138
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:138
+#: ../../build/doc/pgr_isPlanar.rst:140
 msgid "https://www.boost.org/libs/graph/doc/boyer_myrvold.html"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:139
+#: ../../build/doc/pgr_isPlanar.rst:141
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:142
+#: ../../build/doc/pgr_isPlanar.rst:144
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:143
+#: ../../build/doc/pgr_isPlanar.rst:145
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_isPlanar.rst:144
+#: ../../build/doc/pgr_isPlanar.rst:146
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__)"
+#~ msgstr ""
 

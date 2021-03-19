@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,118 +16,114 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_floydWarshall.rst:11
+#: ../../build/doc/pgr_floydWarshall.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_floydWarshall.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_floydWarshall.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/pgr_floydWarshall.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_floydWarshall.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_floydWarshall.rst:17
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_floydWarshall.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_floydWarshall.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_floydWarshall.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_floydWarshall.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_floydWarshall.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/apsp_warshall/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/apsp_warshall/doc/index.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_floydWarshall.rst:27
 msgid "pgr_floydWarshall"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:13
+#: ../../build/doc/pgr_floydWarshall.rst:29
 msgid "``pgr_floydWarshall`` - Returns the sum of the costs of the shortest path for each pair of nodes in the graph using Floyd-Warshall algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:19
+#: ../../build/doc/pgr_floydWarshall.rst:35
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:22
+#: ../../build/doc/pgr_floydWarshall.rst:38
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:23
+#: ../../build/doc/pgr_floydWarshall.rst:39
 msgid "Version 2.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:25
+#: ../../build/doc/pgr_floydWarshall.rst:41
 msgid "Signature change"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:26
+#: ../../build/doc/pgr_floydWarshall.rst:42
 msgid "Old signature no longer supported"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:28
+#: ../../build/doc/pgr_floydWarshall.rst:44
 msgid "Version 2.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:30
+#: ../../build/doc/pgr_floydWarshall.rst:46
 msgid "**Official** function"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:33
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_floydWarshall.rst:34
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_floydWarshall.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_floydWarshall.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/pgr_floydWarshall.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_floydWarshall.rst:39
-msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/pgr_floydWarshall.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_floydWarshall.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_floydWarshall.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_floydWarshall.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/apsp_warshall/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/apsp_warshall/doc/index.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_floydWarshall.rst:48
-#: ../../build/doc/pgr_floydWarshall.rst:119
+#: ../../build/doc/pgr_floydWarshall.rst:50
+#: ../../build/doc/pgr_floydWarshall.rst:121
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_floydWarshall.rst:138
+#: ../../build/doc/pgr_floydWarshall.rst:140
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:50
+#: ../../build/doc/pgr_floydWarshall.rst:52
 msgid "The Floyd-Warshall algorithm, also known as Floyd's algorithm, is a good choice to calculate the sum of the costs of the shortest path for each pair of nodes in the graph, for *dense graphs*. We use Boost's implementation which runs in :math:`\\Theta(V^3)` time,"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:73
+#: ../../build/doc/pgr_floydWarshall.rst:75
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:56
+#: ../../build/doc/pgr_floydWarshall.rst:58
 msgid "It does not return a path."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:57
+#: ../../build/doc/pgr_floydWarshall.rst:59
 msgid "Returns the sum of the costs of the shortest path for each pair of nodes in the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:58
+#: ../../build/doc/pgr_floydWarshall.rst:60
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:59
+#: ../../build/doc/pgr_floydWarshall.rst:61
 msgid "Boost returns a :math:`V \\times V` matrix, where the infinity values. Represent the distance between vertices for which there is no path."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:62
+#: ../../build/doc/pgr_floydWarshall.rst:64
 msgid "We return only the non infinity values in form of a set of `(start_vid, end_vid, agg_cost)`."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:64
+#: ../../build/doc/pgr_floydWarshall.rst:66
 msgid "Let be the case the values returned are stored in a table, so the unique index would be the pair: `(start_vid, end_vid)`."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:67
+#: ../../build/doc/pgr_floydWarshall.rst:69
 msgid "For the undirected graph, the results are symmetric."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:69
+#: ../../build/doc/pgr_floydWarshall.rst:71
 msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:71
+#: ../../build/doc/pgr_floydWarshall.rst:73
 msgid "When  `start_vid` = `end_vid`, the `agg_cost` = 0."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:73
+#: ../../build/doc/pgr_floydWarshall.rst:75
 msgid "**Recommended, use a bounding box of no more than 3500 edges.**"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:76
+#: ../../build/doc/pgr_floydWarshall.rst:78
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:79
+#: ../../build/doc/pgr_floydWarshall.rst:81
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:87
+#: ../../build/doc/pgr_floydWarshall.rst:89
 msgid "Using defaults"
 msgstr ""
 
@@ -135,11 +131,11 @@ msgstr ""
 msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:94
+#: ../../build/doc/pgr_floydWarshall.rst:96
 msgid "For vertices :math:`\\{1, 2, 3, 4\\}` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:101
+#: ../../build/doc/pgr_floydWarshall.rst:103
 msgid "Complete Signature"
 msgstr ""
 
@@ -147,49 +143,49 @@ msgstr ""
 msgid "Example 2"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:109
+#: ../../build/doc/pgr_floydWarshall.rst:111
 msgid "For vertices :math:`\\{1, 2, 3, 4\\}` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:116
+#: ../../build/doc/pgr_floydWarshall.rst:118
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:119
+#: ../../build/doc/pgr_floydWarshall.rst:121
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:119
+#: ../../build/doc/pgr_floydWarshall.rst:121
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_floydWarshall.rst:138
+#: ../../build/doc/pgr_floydWarshall.rst:140
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:121
+#: ../../build/doc/pgr_floydWarshall.rst:123
 msgid "**edges_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:121
+#: ../../build/doc/pgr_floydWarshall.rst:123
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:121
+#: ../../build/doc/pgr_floydWarshall.rst:123
 msgid "SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:122
+#: ../../build/doc/pgr_floydWarshall.rst:124
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:122
+#: ../../build/doc/pgr_floydWarshall.rst:124
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:122
+#: ../../build/doc/pgr_floydWarshall.rst:124
 msgid "(optional) Default is true (is directed). When set to false the graph is considered as Undirected"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:126
+#: ../../build/doc/pgr_floydWarshall.rst:128
 msgid "Inner query"
 msgstr ""
 
@@ -206,7 +202,7 @@ msgid "an SQL query, which should return a set of rows with the following column
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_floydWarshall.rst:138
+#: ../../build/doc/pgr_floydWarshall.rst:140
 msgid "Column"
 msgstr ""
 
@@ -288,72 +284,72 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:133
+#: ../../build/doc/pgr_floydWarshall.rst:135
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:135
+#: ../../build/doc/pgr_floydWarshall.rst:137
 msgid "Returns set of ``(start_vid, end_vid, agg_cost)``"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:140
+#: ../../build/doc/pgr_floydWarshall.rst:142
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:140
-#: ../../build/doc/pgr_floydWarshall.rst:141
+#: ../../build/doc/pgr_floydWarshall.rst:142
+#: ../../build/doc/pgr_floydWarshall.rst:143
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:140
+#: ../../build/doc/pgr_floydWarshall.rst:142
 msgid "Identifier of the starting vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:141
+#: ../../build/doc/pgr_floydWarshall.rst:143
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:141
+#: ../../build/doc/pgr_floydWarshall.rst:143
 msgid "Identifier of the ending vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:142
+#: ../../build/doc/pgr_floydWarshall.rst:144
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:142
+#: ../../build/doc/pgr_floydWarshall.rst:144
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:142
+#: ../../build/doc/pgr_floydWarshall.rst:144
 msgid "Total cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:146
+#: ../../build/doc/pgr_floydWarshall.rst:148
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:148
+#: ../../build/doc/pgr_floydWarshall.rst:150
 msgid ":doc:`pgr_johnson`"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:149
+#: ../../build/doc/pgr_floydWarshall.rst:151
 msgid "`Boost floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:150
+#: ../../build/doc/pgr_floydWarshall.rst:152
 msgid "Queries uses the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:153
+#: ../../build/doc/pgr_floydWarshall.rst:155
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:154
+#: ../../build/doc/pgr_floydWarshall.rst:156
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_floydWarshall.rst:155
+#: ../../build/doc/pgr_floydWarshall.rst:157
 msgid ":ref:`search`"
 msgstr ""
 

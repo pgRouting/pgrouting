@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,51 +16,51 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/spanningTree-family.rst:11
+#: ../../build/doc/spanningTree-family.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/spanningTree-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/spanningTree-family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/spanningTree-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/spanningTree-family.html>`__"
+msgstr ""
+
+#: ../../build/doc/spanningTree-family.rst:19
 msgid "Spanning Tree - Category"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:16
+#: ../../build/doc/spanningTree-family.rst:24
 msgid ":doc:`kruskal-family`"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:17
+#: ../../build/doc/spanningTree-family.rst:25
 msgid ":doc:`prim-family`"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:21
+#: ../../build/doc/spanningTree-family.rst:29
 msgid "A spanning tree of an undirected graph is a tree that includes all the vertices of G with the minimum possible number of edges."
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:24
+#: ../../build/doc/spanningTree-family.rst:32
 msgid "For a disconnected graph, there there is no single tree, but a spanning forest, consisting of a spanning tree of each connected component."
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:33
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/spanningTree-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/spanningTree-family.html>`__"
-msgstr ""
-
-#: ../../build/doc/spanningTree-family.rst:38
+#: ../../build/doc/spanningTree-family.rst:43
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:40
+#: ../../build/doc/spanningTree-family.rst:45
 msgid "`Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:41
+#: ../../build/doc/spanningTree-family.rst:46
 msgid "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:44
+#: ../../build/doc/spanningTree-family.rst:49
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:45
+#: ../../build/doc/spanningTree-family.rst:50
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:46
+#: ../../build/doc/spanningTree-family.rst:51
 msgid ":ref:`search`"
 msgstr ""
 

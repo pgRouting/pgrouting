@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-15 07:54-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_dagShortestPath.rst:11
+#: ../../build/doc/pgr_dagShortestPath.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_dagShortestPath.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_dagShortestPath.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_dagShortestPath.rst:19
 msgid "pgr_dagShortestPath - Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:13
+#: ../../build/doc/pgr_dagShortestPath.rst:21
 msgid ""
 "``pgr_dagShortestPath`` — Returns the shortest path(s) for weighted "
 "directed acyclic graphs(DAG). In particular, the DAG shortest paths "
 "algorithm implemented by Boost.Graph."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:19
+#: ../../build/doc/pgr_dagShortestPath.rst:27
 msgid "Boost Graph Inside"
 msgstr ""
 
@@ -100,50 +109,38 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:26
+#: ../../build/doc/pgr_dagShortestPath.rst:34
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:27
+#: ../../build/doc/pgr_dagShortestPath.rst:35
 msgid "Version 3.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:29
+#: ../../build/doc/pgr_dagShortestPath.rst:37
 msgid "New **experimental** function:"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:31
+#: ../../build/doc/pgr_dagShortestPath.rst:39
 msgid "pgr_dagShortestPath(Combinations)"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:33
+#: ../../build/doc/pgr_dagShortestPath.rst:41
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:35
+#: ../../build/doc/pgr_dagShortestPath.rst:43
 msgid "New **experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_dagShortestPath.rst:38
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_dagShortestPath.rst:39
-msgid ""
-"**Supported versions:** current(`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_dagShortestPath.html>`__) `3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_dagShortestPath.rst:45
-#: ../../build/doc/pgr_dagShortestPath.rst:194
+#: ../../build/doc/pgr_dagShortestPath.rst:47
+#: ../../build/doc/pgr_dagShortestPath.rst:196
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:47
+#: ../../build/doc/pgr_dagShortestPath.rst:49
 msgid ""
 "Shortest Path for Directed Acyclic Graph(DAG) is a graph search algorithm"
 " that solves the shortest path problem for weighted directed acyclic "
@@ -151,82 +148,82 @@ msgid ""
 "to an ending vertex (``end_vid``)."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:51
+#: ../../build/doc/pgr_dagShortestPath.rst:53
 msgid ""
 "This implementation can only be used with a **directed** graph with no "
 "cycles i.e. directed acyclic graph."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:53
+#: ../../build/doc/pgr_dagShortestPath.rst:55
 msgid ""
 "The algorithm relies on topological sorting the dag to impose a linear "
 "ordering on the vertices, and thus is more efficient for DAG's than "
 "either the Dijkstra or Bellman-Ford algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:75
+#: ../../build/doc/pgr_dagShortestPath.rst:77
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:56
+#: ../../build/doc/pgr_dagShortestPath.rst:58
 msgid ""
 "Process is valid for weighted directed acyclic graphs only. otherwise it "
 "will throw warnings."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:57
+#: ../../build/doc/pgr_dagShortestPath.rst:59
 msgid "Values are returned when there is a path."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:59
+#: ../../build/doc/pgr_dagShortestPath.rst:61
 msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:61
+#: ../../build/doc/pgr_dagShortestPath.rst:63
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:63
+#: ../../build/doc/pgr_dagShortestPath.rst:65
 msgid ""
 "When the starting vertex and ending vertex are the different and there is"
 " no path:"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:65
+#: ../../build/doc/pgr_dagShortestPath.rst:67
 msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:67
+#: ../../build/doc/pgr_dagShortestPath.rst:69
 msgid ""
 "For optimization purposes, any duplicated value in the `start_vids` or "
 "`end_vids` are ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:69
+#: ../../build/doc/pgr_dagShortestPath.rst:71
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:71
+#: ../../build/doc/pgr_dagShortestPath.rst:73
 msgid "`start_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:72
+#: ../../build/doc/pgr_dagShortestPath.rst:74
 msgid "`end_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:74
+#: ../../build/doc/pgr_dagShortestPath.rst:76
 msgid "Running time: :math:`O(| start\\_vids | * (V + E))`"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:78
+#: ../../build/doc/pgr_dagShortestPath.rst:80
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:81
+#: ../../build/doc/pgr_dagShortestPath.rst:83
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:98
+#: ../../build/doc/pgr_dagShortestPath.rst:100
 msgid "One to One"
 msgstr ""
 
@@ -234,88 +231,88 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:106
+#: ../../build/doc/pgr_dagShortestPath.rst:108
 msgid "From vertex :math:`1` to vertex :math:`6`"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:116
+#: ../../build/doc/pgr_dagShortestPath.rst:118
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:124
+#: ../../build/doc/pgr_dagShortestPath.rst:126
 msgid "From vertex :math:`1` to vertices :math:`\\{ 5, 6\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:134
+#: ../../build/doc/pgr_dagShortestPath.rst:136
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:142
+#: ../../build/doc/pgr_dagShortestPath.rst:144
 msgid "From vertices :math:`\\{1, 3\\}` to vertex :math:`6`"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:152
+#: ../../build/doc/pgr_dagShortestPath.rst:154
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:160
+#: ../../build/doc/pgr_dagShortestPath.rst:162
 msgid "From vertices :math:`\\{1, 4\\}` to vertices :math:`\\{12, 6\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:171
+#: ../../build/doc/pgr_dagShortestPath.rst:173
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:179
+#: ../../build/doc/pgr_dagShortestPath.rst:181
 msgid "Using a combinations table on a Directed Acyclic Graph."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:187
+#: ../../build/doc/pgr_dagShortestPath.rst:189
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:192
+#: ../../build/doc/pgr_dagShortestPath.rst:194
 msgid "Description of the parameters of the signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:194
+#: ../../build/doc/pgr_dagShortestPath.rst:196
 msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_dagShortestPath.rst:194
+#: ../../build/doc/pgr_dagShortestPath.rst:196
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_dagShortestPath.rst:194
+#: ../../build/doc/pgr_dagShortestPath.rst:196
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:196
+#: ../../build/doc/pgr_dagShortestPath.rst:198
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:196
-#: ../../build/doc/pgr_dagShortestPath.rst:197
+#: ../../build/doc/pgr_dagShortestPath.rst:198
+#: ../../build/doc/pgr_dagShortestPath.rst:199
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:196
+#: ../../build/doc/pgr_dagShortestPath.rst:198
 msgid "Edges query as described below."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:197
+#: ../../build/doc/pgr_dagShortestPath.rst:199
 msgid "**Combinations SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:197
+#: ../../build/doc/pgr_dagShortestPath.rst:199
 msgid "Combinations query as described above."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgr_dagShortestPath.rst:198
+#: ../../build/doc/pgr_dagShortestPath.rst:200
 msgid "**start_vid**"
 msgstr ""
 
@@ -323,50 +320,50 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:16
 #: ../../build/doc/pgRouting-concepts.rst:22
 #: ../../build/doc/pgRouting-concepts.rst:23
-#: ../../build/doc/pgr_dagShortestPath.rst:198
 #: ../../build/doc/pgr_dagShortestPath.rst:200
+#: ../../build/doc/pgr_dagShortestPath.rst:202
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:198
+#: ../../build/doc/pgr_dagShortestPath.rst:200
 msgid "Identifier of the starting vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:199
+#: ../../build/doc/pgr_dagShortestPath.rst:201
 msgid "**start_vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:199
 #: ../../build/doc/pgr_dagShortestPath.rst:201
+#: ../../build/doc/pgr_dagShortestPath.rst:203
 msgid "``ARRAY[BIGINT]``"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:199
+#: ../../build/doc/pgr_dagShortestPath.rst:201
 msgid "Array of identifiers of starting vertices."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#: ../../build/doc/pgr_dagShortestPath.rst:200
+#: ../../build/doc/pgr_dagShortestPath.rst:202
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:200
+#: ../../build/doc/pgr_dagShortestPath.rst:202
 msgid "Identifier of the ending vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:201
+#: ../../build/doc/pgr_dagShortestPath.rst:203
 msgid "**end_vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:201
+#: ../../build/doc/pgr_dagShortestPath.rst:203
 msgid "Array of identifiers of ending vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:207
+#: ../../build/doc/pgr_dagShortestPath.rst:209
 msgid "Inner Queries"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:210
+#: ../../build/doc/pgr_dagShortestPath.rst:212
 msgid "Edges query"
 msgstr ""
 
@@ -469,11 +466,11 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:217
+#: ../../build/doc/pgr_dagShortestPath.rst:219
 msgid "Combinations query"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:224
+#: ../../build/doc/pgr_dagShortestPath.rst:226
 msgid "Results Columns"
 msgstr ""
 
@@ -568,27 +565,39 @@ msgstr ""
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:231
+#: ../../build/doc/pgr_dagShortestPath.rst:233
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:233
+#: ../../build/doc/pgr_dagShortestPath.rst:235
 msgid "https://en.wikipedia.org/wiki/Topological_sorting"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:234
+#: ../../build/doc/pgr_dagShortestPath.rst:236
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:237
+#: ../../build/doc/pgr_dagShortestPath.rst:239
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:238
+#: ../../build/doc/pgr_dagShortestPath.rst:240
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_dagShortestPath.rst:239
+#: ../../build/doc/pgr_dagShortestPath.rst:241
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_dagShortestPath.html>`__) "
+#~ "`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html>`__ "
+#~ "`3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html>`__"
+#~ msgstr ""
 

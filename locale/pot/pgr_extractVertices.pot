@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_extractVertices.rst:11
+#: ../../build/doc/pgr_extractVertices.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_extractVertices.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_extractVertices.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/pgr_extractVertices.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:19
 msgid "pgr_extractVertices -- Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:13
+#: ../../build/doc/pgr_extractVertices.rst:21
 msgid "``pgr_extractVertices`` — Extracts the vertices information based on the source and target."
 msgstr ""
 
@@ -92,44 +96,36 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:21
+#: ../../build/doc/pgr_extractVertices.rst:29
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:22
+#: ../../build/doc/pgr_extractVertices.rst:30
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:24
+#: ../../build/doc/pgr_extractVertices.rst:32
 msgid "New **experimental** function"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:27
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_extractVertices.rst:28
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_extractVertices.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_extractVertices.rst:34
-#: ../../build/doc/pgr_extractVertices.rst:64
-#: ../../build/doc/pgr_extractVertices.rst:76
-#: ../../build/doc/pgr_extractVertices.rst:98
-#: ../../build/doc/pgr_extractVertices.rst:118
-#: ../../build/doc/pgr_extractVertices.rst:132
+#: ../../build/doc/pgr_extractVertices.rst:36
+#: ../../build/doc/pgr_extractVertices.rst:66
+#: ../../build/doc/pgr_extractVertices.rst:78
+#: ../../build/doc/pgr_extractVertices.rst:100
+#: ../../build/doc/pgr_extractVertices.rst:120
+#: ../../build/doc/pgr_extractVertices.rst:134
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:36
+#: ../../build/doc/pgr_extractVertices.rst:38
 msgid "This is an auxiliary function for extracting the vertex information of the set of edges of a graph."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:39
+#: ../../build/doc/pgr_extractVertices.rst:41
 msgid "When the edge identifier is given, then it will also calculate the in and out edges"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:43
+#: ../../build/doc/pgr_extractVertices.rst:45
 msgid "Signatures"
 msgstr ""
 
@@ -137,252 +133,252 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:53
+#: ../../build/doc/pgr_extractVertices.rst:55
 msgid "Extracting the vertex information"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:61
+#: ../../build/doc/pgr_extractVertices.rst:63
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:64
+#: ../../build/doc/pgr_extractVertices.rst:66
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:64
-#: ../../build/doc/pgr_extractVertices.rst:76
-#: ../../build/doc/pgr_extractVertices.rst:98
-#: ../../build/doc/pgr_extractVertices.rst:118
-#: ../../build/doc/pgr_extractVertices.rst:132
+#: ../../build/doc/pgr_extractVertices.rst:66
+#: ../../build/doc/pgr_extractVertices.rst:78
+#: ../../build/doc/pgr_extractVertices.rst:100
+#: ../../build/doc/pgr_extractVertices.rst:120
+#: ../../build/doc/pgr_extractVertices.rst:134
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:66
+#: ../../build/doc/pgr_extractVertices.rst:68
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:66
-#: ../../build/doc/pgr_extractVertices.rst:67
+#: ../../build/doc/pgr_extractVertices.rst:68
+#: ../../build/doc/pgr_extractVertices.rst:69
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:66
+#: ../../build/doc/pgr_extractVertices.rst:68
 msgid "The set of edges of the graph. It is an `Inner Query`_ as described below."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:67
+#: ../../build/doc/pgr_extractVertices.rst:69
 msgid "**dryrun**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:67
+#: ../../build/doc/pgr_extractVertices.rst:69
 msgid "Don't process and get in a NOTICE the resulting query."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:71
+#: ../../build/doc/pgr_extractVertices.rst:73
 msgid "Inner Query"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:74
+#: ../../build/doc/pgr_extractVertices.rst:76
 msgid "When line geometry is known"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:76
-#: ../../build/doc/pgr_extractVertices.rst:98
-#: ../../build/doc/pgr_extractVertices.rst:118
-#: ../../build/doc/pgr_extractVertices.rst:132
+#: ../../build/doc/pgr_extractVertices.rst:78
+#: ../../build/doc/pgr_extractVertices.rst:100
+#: ../../build/doc/pgr_extractVertices.rst:120
+#: ../../build/doc/pgr_extractVertices.rst:134
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:78
-#: ../../build/doc/pgr_extractVertices.rst:100
-#: ../../build/doc/pgr_extractVertices.rst:120
-#: ../../build/doc/pgr_extractVertices.rst:134
+#: ../../build/doc/pgr_extractVertices.rst:80
+#: ../../build/doc/pgr_extractVertices.rst:102
+#: ../../build/doc/pgr_extractVertices.rst:122
+#: ../../build/doc/pgr_extractVertices.rst:136
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:78
-#: ../../build/doc/pgr_extractVertices.rst:100
-#: ../../build/doc/pgr_extractVertices.rst:120
-#: ../../build/doc/pgr_extractVertices.rst:134
+#: ../../build/doc/pgr_extractVertices.rst:80
+#: ../../build/doc/pgr_extractVertices.rst:102
+#: ../../build/doc/pgr_extractVertices.rst:122
+#: ../../build/doc/pgr_extractVertices.rst:136
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:78
-#: ../../build/doc/pgr_extractVertices.rst:100
-#: ../../build/doc/pgr_extractVertices.rst:120
+#: ../../build/doc/pgr_extractVertices.rst:80
+#: ../../build/doc/pgr_extractVertices.rst:102
+#: ../../build/doc/pgr_extractVertices.rst:122
 msgid "(Optional) identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:79
-#: ../../build/doc/pgr_extractVertices.rst:143
+#: ../../build/doc/pgr_extractVertices.rst:81
+#: ../../build/doc/pgr_extractVertices.rst:145
 msgid "**geom**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:79
+#: ../../build/doc/pgr_extractVertices.rst:81
 msgid "``LINESTRING``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:79
+#: ../../build/doc/pgr_extractVertices.rst:81
 msgid "LINESTRING geometry of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:82
+#: ../../build/doc/pgr_extractVertices.rst:84
 msgid "This inner query takes precedence over the next two inner query, therefore other columns are ignored when ``geom`` column appears."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:84
-#: ../../build/doc/pgr_extractVertices.rst:108
+#: ../../build/doc/pgr_extractVertices.rst:86
+#: ../../build/doc/pgr_extractVertices.rst:110
 msgid "Ignored columns:"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:86
+#: ../../build/doc/pgr_extractVertices.rst:88
 msgid "``startpoint``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:87
+#: ../../build/doc/pgr_extractVertices.rst:89
 msgid "``endpoint``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:88
-#: ../../build/doc/pgr_extractVertices.rst:110
+#: ../../build/doc/pgr_extractVertices.rst:90
+#: ../../build/doc/pgr_extractVertices.rst:112
 msgid "``source``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:89
-#: ../../build/doc/pgr_extractVertices.rst:111
+#: ../../build/doc/pgr_extractVertices.rst:91
+#: ../../build/doc/pgr_extractVertices.rst:113
 msgid "``target``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:94
+#: ../../build/doc/pgr_extractVertices.rst:96
 msgid "When vertex geometry is known"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:95
+#: ../../build/doc/pgr_extractVertices.rst:97
 msgid "To use this inner query the column ``geom`` should not be part of the set of columns."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:101
+#: ../../build/doc/pgr_extractVertices.rst:103
 msgid "**startpoint**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:101
-#: ../../build/doc/pgr_extractVertices.rst:102
-#: ../../build/doc/pgr_extractVertices.rst:143
+#: ../../build/doc/pgr_extractVertices.rst:103
+#: ../../build/doc/pgr_extractVertices.rst:104
+#: ../../build/doc/pgr_extractVertices.rst:145
 msgid "``POINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:101
+#: ../../build/doc/pgr_extractVertices.rst:103
 msgid "POINT geometry of the starting vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:102
+#: ../../build/doc/pgr_extractVertices.rst:104
 msgid "**endpoint**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:102
+#: ../../build/doc/pgr_extractVertices.rst:104
 msgid "POINT geometry of the ending vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:105
+#: ../../build/doc/pgr_extractVertices.rst:107
 msgid "This inner query takes precedence over the next inner query, therefore other columns are ignored when ``startpoint`` and ``endpoint``  columns appears."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:114
+#: ../../build/doc/pgr_extractVertices.rst:116
 msgid "When identifiers of vertices are known"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:115
+#: ../../build/doc/pgr_extractVertices.rst:117
 msgid "To use this inner query the columns ``geom``, ``startpoint`` and ``endpoint`` should not be part of the set of columns."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:121
+#: ../../build/doc/pgr_extractVertices.rst:123
 msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:121
-#: ../../build/doc/pgr_extractVertices.rst:122
+#: ../../build/doc/pgr_extractVertices.rst:123
+#: ../../build/doc/pgr_extractVertices.rst:124
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:121
-#: ../../build/doc/pgr_extractVertices.rst:134
+#: ../../build/doc/pgr_extractVertices.rst:123
+#: ../../build/doc/pgr_extractVertices.rst:136
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:122
+#: ../../build/doc/pgr_extractVertices.rst:124
 msgid "**target**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:122
+#: ../../build/doc/pgr_extractVertices.rst:124
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:127
+#: ../../build/doc/pgr_extractVertices.rst:129
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:129
+#: ../../build/doc/pgr_extractVertices.rst:131
 msgid "Rreturns set of (id, in_edges, out_edges, x, y, geom)"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:135
+#: ../../build/doc/pgr_extractVertices.rst:137
 msgid "**in_edges**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:135
 #: ../../build/doc/pgr_extractVertices.rst:137
+#: ../../build/doc/pgr_extractVertices.rst:139
 msgid "``BIGINT[]``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:135
+#: ../../build/doc/pgr_extractVertices.rst:137
 msgid "Array of identifiers of the edges that have the vertex ``id`` as *first end point*."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:136
 #: ../../build/doc/pgr_extractVertices.rst:138
+#: ../../build/doc/pgr_extractVertices.rst:140
 msgid "``NULL`` When the ``id`` is not part of the inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:137
+#: ../../build/doc/pgr_extractVertices.rst:139
 msgid "**out_edges**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:137
+#: ../../build/doc/pgr_extractVertices.rst:139
 msgid "Array of identifiers of the edges that have the vertex ``id`` as *second end point*."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:139
+#: ../../build/doc/pgr_extractVertices.rst:141
 msgid "**x**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:139
 #: ../../build/doc/pgr_extractVertices.rst:141
+#: ../../build/doc/pgr_extractVertices.rst:143
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:139
+#: ../../build/doc/pgr_extractVertices.rst:141
 msgid "X value of the POINT geometry"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:140
 #: ../../build/doc/pgr_extractVertices.rst:142
 #: ../../build/doc/pgr_extractVertices.rst:144
+#: ../../build/doc/pgr_extractVertices.rst:146
 msgid "``NULL`` When no geometry is provided"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:141
+#: ../../build/doc/pgr_extractVertices.rst:143
 msgid "**y**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:141
+#: ../../build/doc/pgr_extractVertices.rst:143
 msgid "Y value of the POINT geometry"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:143
+#: ../../build/doc/pgr_extractVertices.rst:145
 msgid "Geometry of the POINT"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:149
+#: ../../build/doc/pgr_extractVertices.rst:151
 msgid "Additional Examples"
 msgstr ""
 
@@ -390,15 +386,15 @@ msgstr ""
 msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:151
+#: ../../build/doc/pgr_extractVertices.rst:153
 msgid "Dryrun execution"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:153
+#: ../../build/doc/pgr_extractVertices.rst:155
 msgid "To get the query generated used to get the vertex information, use ``dryrun := true``."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:155
+#: ../../build/doc/pgr_extractVertices.rst:157
 msgid "The results can be used as base code to make a refinement based on the backend development needs."
 msgstr ""
 
@@ -406,63 +402,63 @@ msgstr ""
 msgid "Example 2"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:161
+#: ../../build/doc/pgr_extractVertices.rst:163
 msgid "Creating a routing topology"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:163
+#: ../../build/doc/pgr_extractVertices.rst:165
 msgid "Making sure the database does not have the ``vertices_table``"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:169
+#: ../../build/doc/pgr_extractVertices.rst:171
 msgid "Cleaning up the columns of the rotuing topology to be created"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:175
+#: ../../build/doc/pgr_extractVertices.rst:177
 msgid "Creating the vertices table"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:181
+#: ../../build/doc/pgr_extractVertices.rst:183
 msgid "Inspection of the vertices table"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:187
+#: ../../build/doc/pgr_extractVertices.rst:189
 msgid "Creating the routing topology on the edge table"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:189
+#: ../../build/doc/pgr_extractVertices.rst:191
 msgid "Updating the ``source`` information"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:195
+#: ../../build/doc/pgr_extractVertices.rst:197
 msgid "Updating the ``target`` information"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:201
+#: ../../build/doc/pgr_extractVertices.rst:203
 msgid "Inspection of the routing topology"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:208
+#: ../../build/doc/pgr_extractVertices.rst:210
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:210
+#: ../../build/doc/pgr_extractVertices.rst:212
 msgid ":doc:`topology-functions`  for an overview of a topology for routing algorithms."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:211
+#: ../../build/doc/pgr_extractVertices.rst:213
 msgid ":doc:`pgr_createVerticesTable` to create a topology based on the geometry."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:214
+#: ../../build/doc/pgr_extractVertices.rst:216
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:215
+#: ../../build/doc/pgr_extractVertices.rst:217
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:216
+#: ../../build/doc/pgr_extractVertices.rst:218
 msgid ":ref:`search`"
 msgstr ""
 

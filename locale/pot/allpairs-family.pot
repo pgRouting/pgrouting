@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,75 +16,71 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/allpairs-family.rst:11
-msgid "All Pairs - Family of Functions"
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:13
-msgid "The following functions work on all vertices pair combinations"
+#: ../../build/doc/allpairs-family.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/allpairs-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/allpairs-family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/allpairs-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/allpairs-family.html>`__"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:17
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/allpairs-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/allpairs-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/allpairs-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html>`__"
+msgstr ""
+
+#: ../../build/doc/allpairs-family.rst:26
+msgid "All Pairs - Family of Functions"
+msgstr ""
+
+#: ../../build/doc/allpairs-family.rst:28
+msgid "The following functions work on all vertices pair combinations"
+msgstr ""
+
+#: ../../build/doc/allpairs-family.rst:32
 msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:18
+#: ../../build/doc/allpairs-family.rst:33
 msgid ":doc:`pgr_johnson` - Johnson's algorithm"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:29
-msgid "Previous versions of this page"
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:30
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/allpairs-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/allpairs-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/allpairs-family.html>`__"
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:35
-msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/allpairs-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/allpairs-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html>`__"
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:44
+#: ../../build/doc/allpairs-family.rst:45
 msgid "Performance"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:51
+#: ../../build/doc/allpairs-family.rst:52
 msgid "The following tests:"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:47
+#: ../../build/doc/allpairs-family.rst:48
 msgid "non server computer"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:48
+#: ../../build/doc/allpairs-family.rst:49
 msgid "with AMD 64 CPU"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:49
+#: ../../build/doc/allpairs-family.rst:50
 msgid "4G memory"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:50
+#: ../../build/doc/allpairs-family.rst:51
 msgid "trusty"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:51
+#: ../../build/doc/allpairs-family.rst:52
 msgid "posgreSQL version 9.3"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:54
+#: ../../build/doc/allpairs-family.rst:55
 msgid "Data"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:56
+#: ../../build/doc/allpairs-family.rst:57
 msgid "The following data was used"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:64
+#: ../../build/doc/allpairs-family.rst:65
 msgid "Data processing was done with osm2pgrouting-alpha"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:77
+#: ../../build/doc/allpairs-family.rst:78
 msgid "Results"
 msgstr ""
 
@@ -93,938 +89,938 @@ msgstr ""
 msgid "Test"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:79
+#: ../../build/doc/allpairs-family.rst:80
 msgid "One"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:81
+#: ../../build/doc/allpairs-family.rst:82
 msgid "This test is not with a bounding box The density of the passed graph is extremely low. For each <SIZE> 30 tests were executed to get the average The tested query is:"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:94
-#: ../../build/doc/allpairs-family.rst:151
+#: ../../build/doc/allpairs-family.rst:95
+#: ../../build/doc/allpairs-family.rst:152
 msgid "The results of this tests are presented as:"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:105
+#: ../../build/doc/allpairs-family.rst:106
 #: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:162
+#: ../../build/doc/allpairs-family.rst:163
 msgid "SIZE"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:96
+#: ../../build/doc/allpairs-family.rst:97
 msgid "is the number of edges given as input."
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:105
+#: ../../build/doc/allpairs-family.rst:106
 #: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:162
+#: ../../build/doc/allpairs-family.rst:163
 msgid "EDGES"
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:97
-#: ../../build/doc/allpairs-family.rst:154
-msgid "is the total number of records in the query."
-msgstr ""
-
-#: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:105
-#: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:162
-msgid "DENSITY"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:98
 #: ../../build/doc/allpairs-family.rst:155
-msgid "is the density of the data :math:`\\dfrac{E}{V \\times (V-1)}`."
+msgid "is the total number of records in the query."
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:105
+#: ../../build/doc/allpairs-family.rst:106
 #: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:162
-msgid "OUT ROWS"
+#: ../../build/doc/allpairs-family.rst:163
+msgid "DENSITY"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:99
 #: ../../build/doc/allpairs-family.rst:156
-msgid "is the number of records returned by the queries."
+msgid "is the density of the data :math:`\\dfrac{E}{V \\times (V-1)}`."
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:105
+#: ../../build/doc/allpairs-family.rst:106
 #: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:162
-msgid "Floyd-Warshall"
+#: ../../build/doc/allpairs-family.rst:163
+msgid "OUT ROWS"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:100
 #: ../../build/doc/allpairs-family.rst:157
-msgid "is the average execution time in seconds of pgr_floydWarshall."
+msgid "is the number of records returned by the queries."
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:105
+#: ../../build/doc/allpairs-family.rst:106
 #: ../../build/doc/allpairs-family.rst:0
-#: ../../build/doc/allpairs-family.rst:162
-msgid "Johnson"
+#: ../../build/doc/allpairs-family.rst:163
+msgid "Floyd-Warshall"
 msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:101
 #: ../../build/doc/allpairs-family.rst:158
+msgid "is the average execution time in seconds of pgr_floydWarshall."
+msgstr ""
+
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:106
+#: ../../build/doc/allpairs-family.rst:0
+#: ../../build/doc/allpairs-family.rst:163
+msgid "Johnson"
+msgstr ""
+
+#: ../../build/doc/allpairs-family.rst:102
+#: ../../build/doc/allpairs-family.rst:159
 msgid "is the average execution time in seconds of pgr_johnson."
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:107
-#: ../../build/doc/allpairs-family.rst:107
+#: ../../build/doc/allpairs-family.rst:108
+#: ../../build/doc/allpairs-family.rst:108
 msgid "500"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:107
+#: ../../build/doc/allpairs-family.rst:108
 msgid "0.18E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:107
+#: ../../build/doc/allpairs-family.rst:108
 msgid "1346"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:107
+#: ../../build/doc/allpairs-family.rst:108
 msgid "0.14"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:107
+#: ../../build/doc/allpairs-family.rst:108
 msgid "0.13"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:108
-#: ../../build/doc/allpairs-family.rst:108
+#: ../../build/doc/allpairs-family.rst:109
+#: ../../build/doc/allpairs-family.rst:109
 msgid "1000"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:108
+#: ../../build/doc/allpairs-family.rst:109
 msgid "0.36E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:108
+#: ../../build/doc/allpairs-family.rst:109
 msgid "2655"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:108
+#: ../../build/doc/allpairs-family.rst:109
 msgid "0.23"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:108
+#: ../../build/doc/allpairs-family.rst:109
 msgid "0.18"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:109
-#: ../../build/doc/allpairs-family.rst:109
+#: ../../build/doc/allpairs-family.rst:110
+#: ../../build/doc/allpairs-family.rst:110
 msgid "1500"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:109
+#: ../../build/doc/allpairs-family.rst:110
 msgid "0.55E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:109
+#: ../../build/doc/allpairs-family.rst:110
 msgid "4110"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:109
 #: ../../build/doc/allpairs-family.rst:110
-#: ../../build/doc/allpairs-family.rst:169
+#: ../../build/doc/allpairs-family.rst:111
+#: ../../build/doc/allpairs-family.rst:170
 msgid "0.37"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:109
+#: ../../build/doc/allpairs-family.rst:110
 msgid "0.34"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:110
-#: ../../build/doc/allpairs-family.rst:110
+#: ../../build/doc/allpairs-family.rst:111
+#: ../../build/doc/allpairs-family.rst:111
 msgid "2000"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:110
+#: ../../build/doc/allpairs-family.rst:111
 msgid "0.73E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:110
+#: ../../build/doc/allpairs-family.rst:111
 msgid "5676"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:110
+#: ../../build/doc/allpairs-family.rst:111
 msgid "0.56"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:111
-#: ../../build/doc/allpairs-family.rst:111
+#: ../../build/doc/allpairs-family.rst:112
+#: ../../build/doc/allpairs-family.rst:112
 msgid "2500"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:111
+#: ../../build/doc/allpairs-family.rst:112
 msgid "0.89E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:111
+#: ../../build/doc/allpairs-family.rst:112
 msgid "7177"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:111
+#: ../../build/doc/allpairs-family.rst:112
 msgid "0.84"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:111
+#: ../../build/doc/allpairs-family.rst:112
 msgid "0.51"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:112
-#: ../../build/doc/allpairs-family.rst:112
+#: ../../build/doc/allpairs-family.rst:113
+#: ../../build/doc/allpairs-family.rst:113
 msgid "3000"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:112
+#: ../../build/doc/allpairs-family.rst:113
 msgid "1.07E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:112
+#: ../../build/doc/allpairs-family.rst:113
 msgid "8778"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:112
+#: ../../build/doc/allpairs-family.rst:113
 msgid "1.28"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:112
+#: ../../build/doc/allpairs-family.rst:113
 msgid "0.68"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:113
-#: ../../build/doc/allpairs-family.rst:113
+#: ../../build/doc/allpairs-family.rst:114
+#: ../../build/doc/allpairs-family.rst:114
 msgid "3500"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:113
+#: ../../build/doc/allpairs-family.rst:114
 msgid "1.24E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:113
+#: ../../build/doc/allpairs-family.rst:114
 msgid "10526"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:113
+#: ../../build/doc/allpairs-family.rst:114
 msgid "2.08"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:113
+#: ../../build/doc/allpairs-family.rst:114
 msgid "0.95"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:114
-#: ../../build/doc/allpairs-family.rst:114
+#: ../../build/doc/allpairs-family.rst:115
+#: ../../build/doc/allpairs-family.rst:115
 msgid "4000"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:114
+#: ../../build/doc/allpairs-family.rst:115
 msgid "1.41E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:114
+#: ../../build/doc/allpairs-family.rst:115
 msgid "12484"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:114
+#: ../../build/doc/allpairs-family.rst:115
 msgid "3.16"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:114
+#: ../../build/doc/allpairs-family.rst:115
 msgid "1.24"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:115
-#: ../../build/doc/allpairs-family.rst:115
+#: ../../build/doc/allpairs-family.rst:116
+#: ../../build/doc/allpairs-family.rst:116
 msgid "4500"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:115
+#: ../../build/doc/allpairs-family.rst:116
 msgid "1.58E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:115
+#: ../../build/doc/allpairs-family.rst:116
 msgid "14354"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:115
+#: ../../build/doc/allpairs-family.rst:116
 msgid "4.49"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:115
+#: ../../build/doc/allpairs-family.rst:116
 msgid "1.47"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:116
-#: ../../build/doc/allpairs-family.rst:116
+#: ../../build/doc/allpairs-family.rst:117
+#: ../../build/doc/allpairs-family.rst:117
 msgid "5000"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:116
+#: ../../build/doc/allpairs-family.rst:117
 msgid "1.76E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:116
+#: ../../build/doc/allpairs-family.rst:117
 msgid "16503"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:116
+#: ../../build/doc/allpairs-family.rst:117
 msgid "6.05"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:116
+#: ../../build/doc/allpairs-family.rst:117
 msgid "1.78"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:117
-#: ../../build/doc/allpairs-family.rst:117
+#: ../../build/doc/allpairs-family.rst:118
+#: ../../build/doc/allpairs-family.rst:118
 msgid "5500"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:117
+#: ../../build/doc/allpairs-family.rst:118
 msgid "1.93E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:117
+#: ../../build/doc/allpairs-family.rst:118
 msgid "18623"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:117
+#: ../../build/doc/allpairs-family.rst:118
 msgid "7.53"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:117
+#: ../../build/doc/allpairs-family.rst:118
 msgid "2.03"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:118
-#: ../../build/doc/allpairs-family.rst:118
+#: ../../build/doc/allpairs-family.rst:119
+#: ../../build/doc/allpairs-family.rst:119
 msgid "6000"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:118
+#: ../../build/doc/allpairs-family.rst:119
 msgid "2.11E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:118
+#: ../../build/doc/allpairs-family.rst:119
 msgid "20710"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:118
+#: ../../build/doc/allpairs-family.rst:119
 msgid "8.47"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:118
+#: ../../build/doc/allpairs-family.rst:119
 msgid "2.37"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:119
-#: ../../build/doc/allpairs-family.rst:119
+#: ../../build/doc/allpairs-family.rst:120
+#: ../../build/doc/allpairs-family.rst:120
 msgid "6500"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:119
+#: ../../build/doc/allpairs-family.rst:120
 msgid "2.28E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:119
+#: ../../build/doc/allpairs-family.rst:120
 msgid "22752"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:119
+#: ../../build/doc/allpairs-family.rst:120
 msgid "9.99"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:119
+#: ../../build/doc/allpairs-family.rst:120
 msgid "2.68"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:120
-#: ../../build/doc/allpairs-family.rst:120
+#: ../../build/doc/allpairs-family.rst:121
+#: ../../build/doc/allpairs-family.rst:121
 msgid "7000"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:120
+#: ../../build/doc/allpairs-family.rst:121
 msgid "2.46E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:120
+#: ../../build/doc/allpairs-family.rst:121
 msgid "24687"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:120
+#: ../../build/doc/allpairs-family.rst:121
 msgid "11.82"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:120
+#: ../../build/doc/allpairs-family.rst:121
 msgid "3.12"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:121
-#: ../../build/doc/allpairs-family.rst:121
+#: ../../build/doc/allpairs-family.rst:122
+#: ../../build/doc/allpairs-family.rst:122
 msgid "7500"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:121
+#: ../../build/doc/allpairs-family.rst:122
 msgid "2.64E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:121
+#: ../../build/doc/allpairs-family.rst:122
 msgid "26861"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:121
+#: ../../build/doc/allpairs-family.rst:122
 msgid "13.94"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:121
+#: ../../build/doc/allpairs-family.rst:122
 msgid "3.60"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:122
-#: ../../build/doc/allpairs-family.rst:122
+#: ../../build/doc/allpairs-family.rst:123
+#: ../../build/doc/allpairs-family.rst:123
 msgid "8000"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:122
+#: ../../build/doc/allpairs-family.rst:123
 msgid "2.83E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:122
+#: ../../build/doc/allpairs-family.rst:123
 msgid "29050"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:122
+#: ../../build/doc/allpairs-family.rst:123
 msgid "15.61"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:122
+#: ../../build/doc/allpairs-family.rst:123
 msgid "4.09"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:123
-#: ../../build/doc/allpairs-family.rst:123
+#: ../../build/doc/allpairs-family.rst:124
+#: ../../build/doc/allpairs-family.rst:124
 msgid "8500"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:123
+#: ../../build/doc/allpairs-family.rst:124
 msgid "3.01E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:123
+#: ../../build/doc/allpairs-family.rst:124
 msgid "31693"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:123
+#: ../../build/doc/allpairs-family.rst:124
 msgid "17.43"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:123
+#: ../../build/doc/allpairs-family.rst:124
 msgid "4.63"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:124
-#: ../../build/doc/allpairs-family.rst:124
+#: ../../build/doc/allpairs-family.rst:125
+#: ../../build/doc/allpairs-family.rst:125
 msgid "9000"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:124
+#: ../../build/doc/allpairs-family.rst:125
 msgid "3.17E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:124
+#: ../../build/doc/allpairs-family.rst:125
 msgid "33879"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:124
+#: ../../build/doc/allpairs-family.rst:125
 msgid "19.19"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:124
+#: ../../build/doc/allpairs-family.rst:125
 msgid "5.34"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:125
-#: ../../build/doc/allpairs-family.rst:125
+#: ../../build/doc/allpairs-family.rst:126
+#: ../../build/doc/allpairs-family.rst:126
 msgid "9500"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:125
+#: ../../build/doc/allpairs-family.rst:126
 msgid "3.35E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:125
+#: ../../build/doc/allpairs-family.rst:126
 msgid "36287"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:125
+#: ../../build/doc/allpairs-family.rst:126
 msgid "20.77"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:125
+#: ../../build/doc/allpairs-family.rst:126
 msgid "6.24"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:126
-#: ../../build/doc/allpairs-family.rst:126
+#: ../../build/doc/allpairs-family.rst:127
+#: ../../build/doc/allpairs-family.rst:127
 msgid "10000"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:126
+#: ../../build/doc/allpairs-family.rst:127
 msgid "3.52E-7"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:126
+#: ../../build/doc/allpairs-family.rst:127
 msgid "38491"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:126
+#: ../../build/doc/allpairs-family.rst:127
 msgid "23.26"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:126
+#: ../../build/doc/allpairs-family.rst:127
 msgid "6.51"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:130
+#: ../../build/doc/allpairs-family.rst:131
 msgid "Two"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:132
+#: ../../build/doc/allpairs-family.rst:133
 msgid "This test is with a bounding box The density of the passed graph higher than of the Test One. For each <SIZE> 30 tests were executed to get the average The tested edge query is:"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:144
+#: ../../build/doc/allpairs-family.rst:145
 msgid "The tested queries"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:153
+#: ../../build/doc/allpairs-family.rst:154
 msgid "is the size of the bounding box."
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:164
+#: ../../build/doc/allpairs-family.rst:165
 msgid "0.001"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:164
+#: ../../build/doc/allpairs-family.rst:165
 msgid "44"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:164
+#: ../../build/doc/allpairs-family.rst:165
 msgid "0.0608"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:164
+#: ../../build/doc/allpairs-family.rst:165
 msgid "1197"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:164
-#: ../../build/doc/allpairs-family.rst:164
 #: ../../build/doc/allpairs-family.rst:165
 #: ../../build/doc/allpairs-family.rst:165
+#: ../../build/doc/allpairs-family.rst:166
+#: ../../build/doc/allpairs-family.rst:166
 msgid "0.10"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:165
+#: ../../build/doc/allpairs-family.rst:166
 msgid "0.002"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:165
+#: ../../build/doc/allpairs-family.rst:166
 msgid "99"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:165
+#: ../../build/doc/allpairs-family.rst:166
 msgid "0.0251"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:165
+#: ../../build/doc/allpairs-family.rst:166
 msgid "4330"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:166
+#: ../../build/doc/allpairs-family.rst:167
 msgid "0.003"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:166
+#: ../../build/doc/allpairs-family.rst:167
 msgid "223"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:166
+#: ../../build/doc/allpairs-family.rst:167
 msgid "0.0122"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:166
+#: ../../build/doc/allpairs-family.rst:167
 msgid "18849"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:166
-#: ../../build/doc/allpairs-family.rst:166
+#: ../../build/doc/allpairs-family.rst:167
+#: ../../build/doc/allpairs-family.rst:167
 msgid "0.12"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:167
+#: ../../build/doc/allpairs-family.rst:168
 msgid "0.004"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:167
+#: ../../build/doc/allpairs-family.rst:168
 msgid "358"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:167
+#: ../../build/doc/allpairs-family.rst:168
 msgid "0.0085"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:167
+#: ../../build/doc/allpairs-family.rst:168
 msgid "71834"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:167
-#: ../../build/doc/allpairs-family.rst:167
+#: ../../build/doc/allpairs-family.rst:168
+#: ../../build/doc/allpairs-family.rst:168
 msgid "0.16"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:168
+#: ../../build/doc/allpairs-family.rst:169
 msgid "0.005"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:168
+#: ../../build/doc/allpairs-family.rst:169
 msgid "470"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:168
+#: ../../build/doc/allpairs-family.rst:169
 msgid "0.0070"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:168
+#: ../../build/doc/allpairs-family.rst:169
 msgid "116290"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:168
+#: ../../build/doc/allpairs-family.rst:169
 msgid "0.22"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:168
+#: ../../build/doc/allpairs-family.rst:169
 msgid "0.19"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:169
+#: ../../build/doc/allpairs-family.rst:170
 msgid "0.006"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:169
+#: ../../build/doc/allpairs-family.rst:170
 msgid "639"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:169
+#: ../../build/doc/allpairs-family.rst:170
 msgid "0.0055"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:169
+#: ../../build/doc/allpairs-family.rst:170
 msgid "207030"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:169
+#: ../../build/doc/allpairs-family.rst:170
 msgid "0.27"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:170
+#: ../../build/doc/allpairs-family.rst:171
 msgid "0.007"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:170
+#: ../../build/doc/allpairs-family.rst:171
 msgid "843"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:170
+#: ../../build/doc/allpairs-family.rst:171
 msgid "0.0043"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:170
+#: ../../build/doc/allpairs-family.rst:171
 msgid "346930"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:170
+#: ../../build/doc/allpairs-family.rst:171
 msgid "0.64"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:170
+#: ../../build/doc/allpairs-family.rst:171
 msgid "0.38"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:171
+#: ../../build/doc/allpairs-family.rst:172
 msgid "0.008"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:171
+#: ../../build/doc/allpairs-family.rst:172
 msgid "996"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:171
+#: ../../build/doc/allpairs-family.rst:172
 msgid "0.0037"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:171
+#: ../../build/doc/allpairs-family.rst:172
 msgid "469936"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:171
+#: ../../build/doc/allpairs-family.rst:172
 msgid "0.90"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:171
+#: ../../build/doc/allpairs-family.rst:172
 msgid "0.49"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:172
+#: ../../build/doc/allpairs-family.rst:173
 msgid "0.009"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:172
+#: ../../build/doc/allpairs-family.rst:173
 msgid "1146"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:172
+#: ../../build/doc/allpairs-family.rst:173
 msgid "0.0032"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:172
+#: ../../build/doc/allpairs-family.rst:173
 msgid "613135"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:172
+#: ../../build/doc/allpairs-family.rst:173
 msgid "1.26"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:172
+#: ../../build/doc/allpairs-family.rst:173
 msgid "0.62"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:173
+#: ../../build/doc/allpairs-family.rst:174
 msgid "0.010"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:173
+#: ../../build/doc/allpairs-family.rst:174
 msgid "1360"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:173
+#: ../../build/doc/allpairs-family.rst:174
 msgid "0.0027"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:173
+#: ../../build/doc/allpairs-family.rst:174
 msgid "849304"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:173
+#: ../../build/doc/allpairs-family.rst:174
 msgid "1.87"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:173
+#: ../../build/doc/allpairs-family.rst:174
 msgid "0.82"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:174
+#: ../../build/doc/allpairs-family.rst:175
 msgid "0.011"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:174
+#: ../../build/doc/allpairs-family.rst:175
 msgid "1573"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:174
+#: ../../build/doc/allpairs-family.rst:175
 msgid "0.0024"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:174
+#: ../../build/doc/allpairs-family.rst:175
 msgid "1147101"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:174
+#: ../../build/doc/allpairs-family.rst:175
 msgid "2.65"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:174
+#: ../../build/doc/allpairs-family.rst:175
 msgid "1.04"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:175
+#: ../../build/doc/allpairs-family.rst:176
 msgid "0.012"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:175
+#: ../../build/doc/allpairs-family.rst:176
 msgid "1789"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:175
+#: ../../build/doc/allpairs-family.rst:176
 msgid "0.0021"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:175
+#: ../../build/doc/allpairs-family.rst:176
 msgid "1483629"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:175
+#: ../../build/doc/allpairs-family.rst:176
 msgid "3.72"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:175
+#: ../../build/doc/allpairs-family.rst:176
 msgid "1.35"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:176
+#: ../../build/doc/allpairs-family.rst:177
 msgid "0.013"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:176
+#: ../../build/doc/allpairs-family.rst:177
 msgid "1975"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:176
+#: ../../build/doc/allpairs-family.rst:177
 msgid "0.0019"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:176
+#: ../../build/doc/allpairs-family.rst:177
 msgid "1846897"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:176
+#: ../../build/doc/allpairs-family.rst:177
 msgid "4.86"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:176
+#: ../../build/doc/allpairs-family.rst:177
 msgid "1.68"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:177
+#: ../../build/doc/allpairs-family.rst:178
 msgid "0.014"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:177
+#: ../../build/doc/allpairs-family.rst:178
 msgid "2281"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:177
+#: ../../build/doc/allpairs-family.rst:178
 msgid "0.0017"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:177
+#: ../../build/doc/allpairs-family.rst:178
 msgid "2438298"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:177
+#: ../../build/doc/allpairs-family.rst:178
 msgid "7.08"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:177
+#: ../../build/doc/allpairs-family.rst:178
 msgid "2.28"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:178
+#: ../../build/doc/allpairs-family.rst:179
 msgid "0.015"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:178
+#: ../../build/doc/allpairs-family.rst:179
 msgid "2588"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:178
+#: ../../build/doc/allpairs-family.rst:179
 msgid "0.0015"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:178
+#: ../../build/doc/allpairs-family.rst:179
 msgid "3156007"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:178
+#: ../../build/doc/allpairs-family.rst:179
 msgid "10.28"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:178
+#: ../../build/doc/allpairs-family.rst:179
 msgid "2.80"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:179
+#: ../../build/doc/allpairs-family.rst:180
 msgid "0.016"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:179
+#: ../../build/doc/allpairs-family.rst:180
 msgid "2958"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:179
+#: ../../build/doc/allpairs-family.rst:180
 msgid "0.0013"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:179
+#: ../../build/doc/allpairs-family.rst:180
 msgid "4090618"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:179
+#: ../../build/doc/allpairs-family.rst:180
 msgid "14.67"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:179
+#: ../../build/doc/allpairs-family.rst:180
 msgid "3.76"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:180
+#: ../../build/doc/allpairs-family.rst:181
 msgid "0.017"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:180
+#: ../../build/doc/allpairs-family.rst:181
 msgid "3247"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:180
+#: ../../build/doc/allpairs-family.rst:181
 msgid "0.0012"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:180
+#: ../../build/doc/allpairs-family.rst:181
 msgid "4868919"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:180
+#: ../../build/doc/allpairs-family.rst:181
 msgid "18.12"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:180
+#: ../../build/doc/allpairs-family.rst:181
 msgid "4.48"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:185
+#: ../../build/doc/allpairs-family.rst:186
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:187
+#: ../../build/doc/allpairs-family.rst:188
 msgid ":doc:`pgr_johnson`"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:188
+#: ../../build/doc/allpairs-family.rst:189
 msgid ":doc:`pgr_floydWarshall`"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:189
+#: ../../build/doc/allpairs-family.rst:190
 msgid "`Boost floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ algorithm"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:192
+#: ../../build/doc/allpairs-family.rst:193
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:193
+#: ../../build/doc/allpairs-family.rst:194
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/allpairs-family.rst:194
+#: ../../build/doc/allpairs-family.rst:195
 msgid ":ref:`search`"
 msgstr ""
 

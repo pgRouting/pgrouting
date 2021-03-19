@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,86 +16,82 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_bridges.rst:11
-msgid "pgr_bridges"
+#: ../../build/doc/pgr_bridges.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_bridges.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bridges.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bridges.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bridges.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:13
-msgid "``pgr_bridges`` - Return the bridges of an undirected graph."
-msgstr ""
-
-#: ../../build/doc/pgr_bridges.rst:18
-msgid "Boost Graph Inside"
-msgstr ""
-
-#: ../../build/doc/pgr_bridges.rst:21
-msgid "Availability"
-msgstr ""
-
-#: ../../build/doc/pgr_bridges.rst:22
-msgid "Version 3.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_bridges.rst:24
-msgid "Return columns change: ``seq`` is removed"
-msgstr ""
-
-#: ../../build/doc/pgr_bridges.rst:25
-msgid "**Official** function"
-msgstr ""
-
-#: ../../build/doc/pgr_bridges.rst:27
-msgid "Version 2.5.0"
-msgstr ""
-
-#: ../../build/doc/pgr_bridges.rst:29
-msgid "New **experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_bridges.rst:32
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_bridges.rst:33
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_bridges.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bridges.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_bridges.rst:37
+#: ../../build/doc/pgr_bridges.rst:17
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bridges.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bridges.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:43
+#: ../../build/doc/pgr_bridges.rst:22
+msgid "pgr_bridges"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:24
+msgid "``pgr_bridges`` - Return the bridges of an undirected graph."
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:29
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:32
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:33
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:35
+msgid "Return columns change: ``seq`` is removed"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:36
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:38
+msgid "Version 2.5.0"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:40
+msgid "New **experimental** function"
+msgstr ""
+
+#: ../../build/doc/pgr_bridges.rst:44
 #: ../../build/doc/components-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_bridges.rst:100
+#: ../../build/doc/pgr_bridges.rst:101
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:45
+#: ../../build/doc/pgr_bridges.rst:46
 msgid "A bridge is an edge of an undirected graph whose deletion increases its number of connected components. This implementation can only be used with an undirected graph."
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:49
+#: ../../build/doc/pgr_bridges.rst:50
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:51
+#: ../../build/doc/pgr_bridges.rst:52
 msgid "The signature is for an **undirected** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:52
+#: ../../build/doc/pgr_bridges.rst:53
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:54
+#: ../../build/doc/pgr_bridges.rst:55
 msgid "`edge` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:56
+#: ../../build/doc/pgr_bridges.rst:57
 msgid "Running time: :math:`O(E * (V + E))`"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:59
+#: ../../build/doc/pgr_bridges.rst:60
 msgid "Signatures"
 msgstr ""
 
@@ -103,11 +99,11 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:71
+#: ../../build/doc/pgr_bridges.rst:72
 msgid "The bridges of the graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:78
+#: ../../build/doc/pgr_bridges.rst:79
 msgid "Parameters"
 msgstr ""
 
@@ -117,7 +113,7 @@ msgstr ""
 
 #: ../../build/doc/components-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_bridges.rst:100
+#: ../../build/doc/pgr_bridges.rst:101
 msgid "Type"
 msgstr ""
 
@@ -138,7 +134,7 @@ msgstr ""
 msgid "Inner query as described below."
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:85
+#: ../../build/doc/pgr_bridges.rst:86
 msgid "Inner query"
 msgstr ""
 
@@ -146,12 +142,12 @@ msgstr ""
 msgid "edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:87
+#: ../../build/doc/pgr_bridges.rst:88
 msgid "an SQL query of an **undirected** graph, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_bridges.rst:100
+#: ../../build/doc/pgr_bridges.rst:101
 msgid "Column"
 msgstr ""
 
@@ -238,47 +234,47 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:94
+#: ../../build/doc/pgr_bridges.rst:95
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:97
+#: ../../build/doc/pgr_bridges.rst:98
 msgid "Returns set of ``(edge)``"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:102
+#: ../../build/doc/pgr_bridges.rst:103
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:102
+#: ../../build/doc/pgr_bridges.rst:103
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:102
+#: ../../build/doc/pgr_bridges.rst:103
 msgid "Identifier of the edge that is a bridge."
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:108
+#: ../../build/doc/pgr_bridges.rst:109
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:110
+#: ../../build/doc/pgr_bridges.rst:111
 msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:111
+#: ../../build/doc/pgr_bridges.rst:112
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:114
+#: ../../build/doc/pgr_bridges.rst:115
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:115
+#: ../../build/doc/pgr_bridges.rst:116
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:116
+#: ../../build/doc/pgr_bridges.rst:117
 msgid ":ref:`search`"
 msgstr ""
 

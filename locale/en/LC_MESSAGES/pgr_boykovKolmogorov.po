@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-14 13:58-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,78 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:11
-msgid "pgr_boykovKolmogorov"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:13
+#: ../../build/doc/pgr_boykovKolmogorov.rst:12
 msgid ""
-"``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that "
-"maximizes the flow from the sources to the targets using Boykov "
-"Kolmogorov algorithm."
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:18
-msgid "Boost Graph Inside"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:21
-msgid "Availability:"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:22
-msgid "Version 3.2.0"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:24
-msgid "New **proposed** function:"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:26
-msgid "pgr_boykovKolmogorov(Combinations)"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:28
-msgid "Version 3.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:30
-msgid "**Official** function"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:32
-msgid "Version 2.5.0"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:34
-msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:35
-msgid "**Proposed** function"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:37
-msgid "Version 2.3.0"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:39
-msgid "New **Experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:42
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:43
-msgid ""
-"**Supported versions:** current(`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_boykovKolmogorov.html>`__) `3.1 "
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_boykovKolmogorov.html>`__ (`3.2"
+" <https://docs.pgrouting.org/3.2/en/pgr_boykovKolmogorov.html>`__) `3.1 "
 "<https://docs.pgrouting.org/3.1/en/pgr_boykovKolmogorov.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_boykovKolmogorov.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:48
+#: ../../build/doc/pgr_boykovKolmogorov.rst:17
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_boykovKolmogorov.html>`__ `2.5 "
@@ -96,6 +34,65 @@ msgid ""
 "<https://docs.pgrouting.org/2.4/en/pgr_maxFlowBoykovKolmogorov.html>`__ "
 "`2.3 "
 "<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:24
+msgid "pgr_boykovKolmogorov"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:26
+msgid ""
+"``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that "
+"maximizes the flow from the sources to the targets using Boykov "
+"Kolmogorov algorithm."
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:31
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:34
+msgid "Availability:"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:35
+msgid "Version 3.2.0"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:37
+msgid "New **proposed** function:"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:39
+msgid "pgr_boykovKolmogorov(Combinations)"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:41
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:43
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:45
+msgid "Version 2.5.0"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:47
+msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:48
+msgid "**Proposed** function"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:50
+msgid "Version 2.3.0"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:52
+msgid "New **Experimental** function"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
@@ -470,4 +467,16 @@ msgstr ""
 #: ../../build/doc/pgr_boykovKolmogorov.rst:203
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_boykovKolmogorov.html>`__) "
+#~ "`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_boykovKolmogorov.html>`__ "
+#~ "`3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_boykovKolmogorov.html>`__"
+#~ msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 12:09-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/traversal-family.rst:11
+#: ../../build/doc/traversal-family.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/traversal-family.html>`__ current(`3.2 "
+"<https://docs.pgrouting.org/3.2/en/traversal-family.html>`__)"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:17
 msgid "Traversal - Family of functions (Experimental)"
 msgstr ""
 
@@ -89,108 +96,98 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:19
+#: ../../build/doc/traversal-family.rst:25
 msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:30
-msgid "Versions of this page"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:31
-msgid ""
-"**Supported versions:** current(`3.2 <https://docs.pgrouting.org/3.2/en"
-"/traversal-family.html>`__)"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:36
+#: ../../build/doc/traversal-family.rst:37
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:39
+#: ../../build/doc/traversal-family.rst:40
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:43
+#: ../../build/doc/traversal-family.rst:44
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:43
+#: ../../build/doc/traversal-family.rst:44
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:43
+#: ../../build/doc/traversal-family.rst:44
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:43
+#: ../../build/doc/traversal-family.rst:44
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:45
+#: ../../build/doc/traversal-family.rst:46
 msgid "**id**"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:45
 #: ../../build/doc/traversal-family.rst:46
 #: ../../build/doc/traversal-family.rst:47
+#: ../../build/doc/traversal-family.rst:48
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:45
+#: ../../build/doc/traversal-family.rst:46
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:46
+#: ../../build/doc/traversal-family.rst:47
 msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:46
+#: ../../build/doc/traversal-family.rst:47
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:47
+#: ../../build/doc/traversal-family.rst:48
 msgid "**target**"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:47
+#: ../../build/doc/traversal-family.rst:48
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:48
+#: ../../build/doc/traversal-family.rst:49
 msgid "**cost**"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:48
-#: ../../build/doc/traversal-family.rst:51
+#: ../../build/doc/traversal-family.rst:49
+#: ../../build/doc/traversal-family.rst:52
 msgid "``ANY-NUMERICAL``"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:48
+#: ../../build/doc/traversal-family.rst:49
 msgid "When positive: edge `(source, target)` exist on the graph."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:49
+#: ../../build/doc/traversal-family.rst:50
 msgid "When negative: edge `(source, target)` does not exist on the graph."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:51
+#: ../../build/doc/traversal-family.rst:52
 msgid "**reverse_cost**"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:51
+#: ../../build/doc/traversal-family.rst:52
 msgid "-1"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:51
+#: ../../build/doc/traversal-family.rst:52
 msgid "When positive: edge `(target, source)` exist on the graph."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:52
+#: ../../build/doc/traversal-family.rst:53
 msgid "When negative: edge `(target, source)` does not exist on the graph."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:56
+#: ../../build/doc/traversal-family.rst:57
 msgid "Where:"
 msgstr ""
 
@@ -198,7 +195,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:58
+#: ../../build/doc/traversal-family.rst:59
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
@@ -206,11 +203,11 @@ msgstr ""
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:59
+#: ../../build/doc/traversal-family.rst:60
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:65
+#: ../../build/doc/traversal-family.rst:66
 msgid "See Also"
 msgstr ""
 
@@ -232,15 +229,23 @@ msgid ""
 "/Depth-first_search>`__"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:73
+#: ../../build/doc/traversal-family.rst:74
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:74
+#: ../../build/doc/traversal-family.rst:75
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:75
+#: ../../build/doc/traversal-family.rst:76
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Versions of this page"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/traversal-family.html>`__)"
+#~ msgstr ""
 

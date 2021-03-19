@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-13 19:03-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_bipartite.rst:11
+#: ../../build/doc/pgr_bipartite.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_bipartite.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_bipartite.rst:17
 msgid "pgr_bipartite -Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:13
+#: ../../build/doc/pgr_bipartite.rst:19
 msgid ""
 "``pgr_bipartite`` — If graph is bipartite then function returns the "
 "vertex id along with color (0 and 1) else it will return an empty set. In"
 " particular, the is_bipartite() algorithm implemented by Boost.Graph."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:19
+#: ../../build/doc/pgr_bipartite.rst:25
 msgid "Boost Graph Inside"
 msgstr ""
 
@@ -100,26 +107,16 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:26
+#: ../../build/doc/pgr_bipartite.rst:32
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:27
+#: ../../build/doc/pgr_bipartite.rst:33
 msgid "Version 3.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:29
+#: ../../build/doc/pgr_bipartite.rst:35
 msgid "New **experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_bipartite.rst:32
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_bipartite.rst:33
-msgid ""
-"**Supported versions:** current(`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__)"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:4 ../../build/doc/coloring-family.rst:6
@@ -393,5 +390,13 @@ msgstr ""
 #~ msgid ""
 #~ "`Boost: is_bipartite algorithm documentation "
 #~ "<https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/is_bipartite.html>`__"
+#~ msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__)"
 #~ msgstr ""
 

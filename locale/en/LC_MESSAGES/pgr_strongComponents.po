@@ -8,121 +8,119 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_strongComponents.rst:11
-msgid "pgr_strongComponents"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:13
+#: ../../build/doc/pgr_strongComponents.rst:12
 msgid ""
-"``pgr_strongComponents`` — Strongly connected components of a directed "
-"graph using Tarjan's algorithm based on DFS."
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:18
-msgid "Boost Graph Inside"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:21
-msgid "Availability"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:22
-msgid "Version 3.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:24
-msgid "Return columns change:"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:26
-msgid "``n_seq`` is removed"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:27
-msgid "``seq`` changed type to ``BIGINT``"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:29
-msgid "**Official** function"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:31
-msgid "Version 2.5.0"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:33
-msgid "New **experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:36
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_strongComponents.rst:37
-msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_strongComponents.html>`__) `3.0 "
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_strongComponents.html>`__ (`3.2"
+" <https://docs.pgrouting.org/3.2/en/pgr_strongComponents.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_strongComponents.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_strongComponents.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:41
+#: ../../build/doc/pgr_strongComponents.rst:17
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_strongComponents.html>`__ `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_strongComponents.html>`__"
 msgstr ""
 
+#: ../../build/doc/pgr_strongComponents.rst:22
+msgid "pgr_strongComponents"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:24
+msgid ""
+"``pgr_strongComponents`` — Strongly connected components of a directed "
+"graph using Tarjan's algorithm based on DFS."
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:29
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:32
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:33
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:35
+msgid "Return columns change:"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:37
+msgid "``n_seq`` is removed"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:38
+msgid "``seq`` changed type to ``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:40
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:42
+msgid "Version 2.5.0"
+msgstr ""
+
+#: ../../build/doc/pgr_strongComponents.rst:44
+msgid "New **experimental** function"
+msgstr ""
+
 #: ../../build/doc/components-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_connectedComponents.rst:6
-#: ../../build/doc/pgr_strongComponents.rst:46
+#: ../../build/doc/pgr_strongComponents.rst:48
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:48
+#: ../../build/doc/pgr_strongComponents.rst:50
 msgid ""
 "A strongly connected component of a directed graph is a set of vertices "
 "that are all reachable from each other."
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:51
+#: ../../build/doc/pgr_strongComponents.rst:53
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:53
+#: ../../build/doc/pgr_strongComponents.rst:55
 msgid "The signature is for a **directed** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:54
+#: ../../build/doc/pgr_strongComponents.rst:56
 msgid "Components are described by vertices"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:55
+#: ../../build/doc/pgr_strongComponents.rst:57
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:57
+#: ../../build/doc/pgr_strongComponents.rst:59
 msgid "`component` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:58
+#: ../../build/doc/pgr_strongComponents.rst:60
 msgid "`node` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:60
+#: ../../build/doc/pgr_strongComponents.rst:62
 msgid "Running time: :math:`O(V + E)`"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:63
+#: ../../build/doc/pgr_strongComponents.rst:65
 msgid "Signatures"
 msgstr ""
 
@@ -130,11 +128,11 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:75
+#: ../../build/doc/pgr_strongComponents.rst:77
 msgid "The strong components of the graph"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:82
+#: ../../build/doc/pgr_strongComponents.rst:84
 msgid "Parameters"
 msgstr ""
 
@@ -165,7 +163,7 @@ msgstr ""
 msgid "Inner query as described below."
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:90
+#: ../../build/doc/pgr_strongComponents.rst:92
 msgid "Inner query"
 msgstr ""
 
@@ -173,7 +171,7 @@ msgstr ""
 msgid "edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:92
+#: ../../build/doc/pgr_strongComponents.rst:94
 msgid ""
 "an SQL query of a **directed** graph, which should return a set of rows "
 "with the following columns:"
@@ -271,7 +269,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:100
+#: ../../build/doc/pgr_strongComponents.rst:102
 msgid "Result Columns"
 msgstr ""
 
@@ -311,39 +309,49 @@ msgstr ""
 msgid "Identifier of the vertex that belongs to **component**."
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:107
+#: ../../build/doc/pgr_strongComponents.rst:109
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:109
+#: ../../build/doc/pgr_strongComponents.rst:111
 msgid ":doc:`components-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:110
+#: ../../build/doc/pgr_strongComponents.rst:112
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:111
+#: ../../build/doc/pgr_strongComponents.rst:113
 msgid ""
 "Boost: `Strong components "
 "<https://www.boost.org/libs/graph/doc/strong_components.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:112
+#: ../../build/doc/pgr_strongComponents.rst:114
 msgid ""
 "wikipedia: `Strongly connected component "
 "<https://en.wikipedia.org/wiki/Strongly_connected_component>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:115
+#: ../../build/doc/pgr_strongComponents.rst:117
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:116
+#: ../../build/doc/pgr_strongComponents.rst:118
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_strongComponents.rst:117
+#: ../../build/doc/pgr_strongComponents.rst:119
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_strongComponents.html>`__) "
+#~ "`3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_strongComponents.html>`__"
+#~ msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-08 12:28-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,69 +17,66 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:11
+#: ../../build/doc/pgr_bdDijkstraCost.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCost.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCost.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCost.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCost.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCost.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCost.rst:22
 msgid "pgr_bdDijkstraCost"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:13
+#: ../../build/doc/pgr_bdDijkstraCost.rst:24
 msgid ""
 "``pgr_bdDijkstraCost`` — Returns the shortest path(s)'s cost using "
 "Bidirectional Dijkstra algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:18
+#: ../../build/doc/pgr_bdDijkstraCost.rst:29
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:21
+#: ../../build/doc/pgr_bdDijkstraCost.rst:32
 msgid "Availability:"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:22
+#: ../../build/doc/pgr_bdDijkstraCost.rst:33
 msgid "Version 3.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:24
+#: ../../build/doc/pgr_bdDijkstraCost.rst:35
 msgid "New **proposed** function:"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:26
+#: ../../build/doc/pgr_bdDijkstraCost.rst:37
 msgid "pgr_bdDijkstraCost(Combinations)"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:28
+#: ../../build/doc/pgr_bdDijkstraCost.rst:39
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:30
+#: ../../build/doc/pgr_bdDijkstraCost.rst:41
 msgid "**Official** function"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:32
+#: ../../build/doc/pgr_bdDijkstraCost.rst:43
 msgid "Version 2.5.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:34
+#: ../../build/doc/pgr_bdDijkstraCost.rst:45
 msgid "New **proposed** function"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCost.rst:37
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCost.rst:38
-msgid ""
-"**Supported versions:** current(`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCost.html>`__) `3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__ `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCost.rst:44
-msgid ""
-"**Unsupported versions:** `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
@@ -191,15 +188,15 @@ msgid ""
 "**directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:160
+#: ../../build/doc/pgr_bdDijkstraCost.rst:163
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:168
+#: ../../build/doc/pgr_bdDijkstraCost.rst:171
 msgid "Using a combinations table on a **directed** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:175
+#: ../../build/doc/pgr_bdDijkstraCost.rst:178
 msgid "Parameters"
 msgstr ""
 
@@ -302,11 +299,11 @@ msgstr ""
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:182
+#: ../../build/doc/pgr_bdDijkstraCost.rst:185
 msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:185
+#: ../../build/doc/pgr_bdDijkstraCost.rst:188
 msgid "Edges query"
 msgstr ""
 
@@ -408,11 +405,11 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:192
+#: ../../build/doc/pgr_bdDijkstraCost.rst:195
 msgid "Combinations query"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:199
+#: ../../build/doc/pgr_bdDijkstraCost.rst:202
 msgid "Result Columns"
 msgstr ""
 
@@ -440,36 +437,36 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:206
+#: ../../build/doc/pgr_bdDijkstraCost.rst:209
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:208
+#: ../../build/doc/pgr_bdDijkstraCost.rst:211
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:209
+#: ../../build/doc/pgr_bdDijkstraCost.rst:212
 msgid ":doc:`pgr_bdDijkstra`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:210
+#: ../../build/doc/pgr_bdDijkstraCost.rst:213
 #, python-format
 msgid "https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:211
+#: ../../build/doc/pgr_bdDijkstraCost.rst:214
 msgid "https://en.wikipedia.org/wiki/Bidirectional_search"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:214
+#: ../../build/doc/pgr_bdDijkstraCost.rst:217
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:215
+#: ../../build/doc/pgr_bdDijkstraCost.rst:218
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCost.rst:216
+#: ../../build/doc/pgr_bdDijkstraCost.rst:219
 msgid ":ref:`search`"
 msgstr ""
 
@@ -497,5 +494,23 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Inner query"
+#~ msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCost.html>`__) "
+#~ "`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html>`__ "
+#~ "`3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__ "
+#~ "`2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__"
 #~ msgstr ""
 

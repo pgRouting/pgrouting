@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-14 13:58-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,51 +17,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/flow-family.rst:11
+#: ../../build/doc/flow-family.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/flow-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/flow-"
+"family.html>`__) current(`3.2 <https://docs.pgrouting.org/3.2/en/flow-"
+"family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/flow-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/flow-"
+"family.html>`__"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:18
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/flow-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/flow-"
+"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/flow-"
+"family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:25
 msgid "Flow - Family of functions"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:15
+#: ../../build/doc/flow-family.rst:29
 msgid ""
 ":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel"
 " algorithm."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:16
+#: ../../build/doc/flow-family.rst:30
 msgid ""
 ":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow "
 "on edges."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:17
+#: ../../build/doc/flow-family.rst:31
 msgid ""
 ":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow "
 "on edges."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:18
+#: ../../build/doc/flow-family.rst:32
 msgid ""
 ":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow "
 "on edges."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:19
+#: ../../build/doc/flow-family.rst:33
 msgid "Applications"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:21
+#: ../../build/doc/flow-family.rst:35
 msgid ""
 ":doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two"
 " groups of vertices."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:22
+#: ../../build/doc/flow-family.rst:36
 msgid ""
 ":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality "
 "matching in a graph."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:27
+#: ../../build/doc/flow-family.rst:41
 msgid "Experimental"
 msgstr ""
 
@@ -133,33 +152,12 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:34
+#: ../../build/doc/flow-family.rst:48
 msgid ":doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:35
+#: ../../build/doc/flow-family.rst:49
 msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:53
-msgid "Previous versions of this page"
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:54
-msgid ""
-"**Supported versions:** current(`3.2 <https://docs.pgrouting.org/3.2/en"
-"/flow-family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/flow-"
-"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/flow-"
-"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/flow-"
-"family.html>`__"
-msgstr ""
-
-#: ../../build/doc/flow-family.rst:60
-msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/flow-"
-"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/flow-"
-"family.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:67
@@ -713,4 +711,24 @@ msgstr ""
 #: ../../build/doc/flow-family.rst:296
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Previous versions of this page"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/flow-family.html>`__) "
+#~ "`3.1 <https://docs.pgrouting.org/3.1/en/flow-"
+#~ "family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+#~ "/flow-family.html>`__ `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/flow-family.html>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/flow-family.html>`__ "
+#~ "`2.4 <https://docs.pgrouting.org/2.4/en/flow-"
+#~ "family.html>`__ `2.3 "
+#~ "<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__"
+#~ msgstr ""
 

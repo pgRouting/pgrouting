@@ -8,73 +8,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:11
-msgid "pgr_maxCardinalityMatch"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:13
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:12
 msgid ""
-"``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching "
-"in a graph."
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:18
-msgid "Boost Graph Inside"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:21
-msgid "Availability"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:22
-msgid "Version 3.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:24
-msgid "**Official** function"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:26
-msgid "Version 2.5.0"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:28
-msgid "Renamed from ``pgr_maximumCardinalityMatching``"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:29
-msgid "**Proposed** function"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:31
-msgid "Version 2.3.0"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:33
-msgid "New **Experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:36
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:37
-msgid ""
-"**Supported versions:** current(`3.1 "
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_maxCardinalityMatch.html>`__ "
+"(`3.1 "
 "<https://docs.pgrouting.org/3.1/en/pgr_maxCardinalityMatch.html>`__) `3.0"
 " <https://docs.pgrouting.org/3.0/en/pgr_maxCardinalityMatch.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_maxCardinalityMatch.rst:41
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:16
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 "
@@ -83,6 +35,52 @@ msgid ""
 " `2.3 "
 "<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html"
 "#pgr-maximumcardinalitymatching>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:23
+msgid "pgr_maxCardinalityMatch"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:25
+msgid ""
+"``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching "
+"in a graph."
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:30
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:33
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:34
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:36
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:38
+msgid "Version 2.5.0"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:40
+msgid "Renamed from ``pgr_maximumCardinalityMatching``"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:41
+msgid "**Proposed** function"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:43
+msgid "Version 2.3.0"
+msgstr ""
+
+#: ../../build/doc/pgr_maxCardinalityMatch.rst:45
+msgid "New **Experimental** function"
 msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:49
@@ -354,4 +352,14 @@ msgstr ""
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:142
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_maxCardinalityMatch.html>`__)"
+#~ " `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_maxCardinalityMatch.html>`__"
+#~ msgstr ""
 

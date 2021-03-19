@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 12:09-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:11
+#: ../../build/doc/pgr_dijkstraNearCost.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstraNearCost.rst:17
 msgid "pgr_dijkstraNearCost - Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:13
+#: ../../build/doc/pgr_dijkstraNearCost.rst:19
 msgid "``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that leads to the nearest vertex."
 msgstr ""
 
@@ -92,43 +96,35 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:23
+#: ../../build/doc/pgr_dijkstraNearCost.rst:29
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:26
+#: ../../build/doc/pgr_dijkstraNearCost.rst:32
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:27
+#: ../../build/doc/pgr_dijkstraNearCost.rst:33
 msgid "Version 3.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:29
+#: ../../build/doc/pgr_dijkstraNearCost.rst:35
 msgid "New **experimental** function"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:32
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraNearCost.rst:33
-msgid "**Supported versions:** current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__)"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraNearCost.rst:37
-#: ../../build/doc/pgr_dijkstraNearCost.rst:203
+#: ../../build/doc/pgr_dijkstraNearCost.rst:39
+#: ../../build/doc/pgr_dijkstraNearCost.rst:205
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:39
+#: ../../build/doc/pgr_dijkstraNearCost.rst:41
 msgid "Given a graph, a starting vertex and a set of ending vertices, this function finds the shortest path from the starting vertex to the nearest ending vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:44
+#: ../../build/doc/pgr_dijkstraNearCost.rst:46
 msgid "Characteristics"
 msgstr ""
 
@@ -192,15 +188,15 @@ msgstr ""
 msgid "Combinations: :math:`drt * |Starting vids|`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:51
+#: ../../build/doc/pgr_dijkstraNearCost.rst:53
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:54
+#: ../../build/doc/pgr_dijkstraNearCost.rst:56
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:68
+#: ../../build/doc/pgr_dijkstraNearCost.rst:70
 msgid "One to Many"
 msgstr ""
 
@@ -211,278 +207,278 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:76
+#: ../../build/doc/pgr_dijkstraNearCost.rst:78
 msgid "Departing on car from vertex :math:`2` find the nearest subway station."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:78
-#: ../../build/doc/pgr_dijkstraNearCost.rst:108
-#: ../../build/doc/pgr_dijkstraNearCost.rst:168
+#: ../../build/doc/pgr_dijkstraNearCost.rst:80
+#: ../../build/doc/pgr_dijkstraNearCost.rst:110
+#: ../../build/doc/pgr_dijkstraNearCost.rst:170
 msgid "Using a **directed** graph for car routing."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:79
-#: ../../build/doc/pgr_dijkstraNearCost.rst:109
+#: ../../build/doc/pgr_dijkstraNearCost.rst:81
+#: ../../build/doc/pgr_dijkstraNearCost.rst:111
 msgid "The subway stations are on the following vertices :math:`\\{ 3, 6, 7\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:80
-#: ../../build/doc/pgr_dijkstraNearCost.rst:139
-#: ../../build/doc/pgr_dijkstraNearCost.rst:176
+#: ../../build/doc/pgr_dijkstraNearCost.rst:82
+#: ../../build/doc/pgr_dijkstraNearCost.rst:141
+#: ../../build/doc/pgr_dijkstraNearCost.rst:178
 msgid "The defaults used:"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:82
-#: ../../build/doc/pgr_dijkstraNearCost.rst:178
+#: ../../build/doc/pgr_dijkstraNearCost.rst:84
+#: ../../build/doc/pgr_dijkstraNearCost.rst:180
 msgid "`directed => true`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:83
-#: ../../build/doc/pgr_dijkstraNearCost.rst:141
-#: ../../build/doc/pgr_dijkstraNearCost.rst:179
+#: ../../build/doc/pgr_dijkstraNearCost.rst:85
+#: ../../build/doc/pgr_dijkstraNearCost.rst:143
+#: ../../build/doc/pgr_dijkstraNearCost.rst:181
 msgid "`cap => 1`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:91
+#: ../../build/doc/pgr_dijkstraNearCost.rst:93
 msgid "The result shows that station at vertex :math:`6` is the nearest."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:97
+#: ../../build/doc/pgr_dijkstraNearCost.rst:99
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:105
+#: ../../build/doc/pgr_dijkstraNearCost.rst:107
 msgid "Departing on a car from a subway station find the nearest **two** stations to vertex :math:`2`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:110
+#: ../../build/doc/pgr_dijkstraNearCost.rst:112
 msgid "On line `4`: using the positional parameter: `directed` set to ``true``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:111
+#: ../../build/doc/pgr_dijkstraNearCost.rst:113
 msgid "In line `5`: using named parameter `cap => 2`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:118
+#: ../../build/doc/pgr_dijkstraNearCost.rst:120
 msgid "The result shows that station at vertex :math:`3` is the nearest and the next best is :math:`6`."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:125
+#: ../../build/doc/pgr_dijkstraNearCost.rst:127
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:133
+#: ../../build/doc/pgr_dijkstraNearCost.rst:135
 msgid "Find the best pedestrian connection between two lines of buses"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:135
+#: ../../build/doc/pgr_dijkstraNearCost.rst:137
 msgid "Unsing an **undirected** graph for pedestrian routing"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:136
-#: ../../build/doc/pgr_dijkstraNearCost.rst:169
+#: ../../build/doc/pgr_dijkstraNearCost.rst:138
+#: ../../build/doc/pgr_dijkstraNearCost.rst:171
 msgid "The first subway line stations stops are at :math:`\\{3, 6, 7\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:137
-#: ../../build/doc/pgr_dijkstraNearCost.rst:170
+#: ../../build/doc/pgr_dijkstraNearCost.rst:139
+#: ../../build/doc/pgr_dijkstraNearCost.rst:172
 msgid "The second subway line stations are at :math:`\\{4, 9\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:138
+#: ../../build/doc/pgr_dijkstraNearCost.rst:140
 msgid "On line `4`: using the named parameter: `directed => false`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:142
+#: ../../build/doc/pgr_dijkstraNearCost.rst:144
 msgid "`global => true`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:149
+#: ../../build/doc/pgr_dijkstraNearCost.rst:151
 msgid "For a pedestrian the best connection is to get on/off is at vertex :math:`3` of the first subway line and at vertex :math:`4` of the second subway line."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:152
+#: ../../build/doc/pgr_dijkstraNearCost.rst:154
 msgid "Only `one` route is returned because `global` is ``true`` and `cap` is ``1``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:158
+#: ../../build/doc/pgr_dijkstraNearCost.rst:160
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:166
+#: ../../build/doc/pgr_dijkstraNearCost.rst:168
 msgid "Find the best car connection between all the stations of two subway lines"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:171
+#: ../../build/doc/pgr_dijkstraNearCost.rst:173
 msgid "line `3` sets the start vertices to be from the fisrt subway line and the ending vertices to be from the second subway line"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:173
+#: ../../build/doc/pgr_dijkstraNearCost.rst:175
 msgid "line `5` sets the start vertices to be from the first subway line and the ending vertices to be from the first subway line"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:175
+#: ../../build/doc/pgr_dijkstraNearCost.rst:177
 msgid "On line `6`: using the named parameter is `global => false`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:186
+#: ../../build/doc/pgr_dijkstraNearCost.rst:188
 msgid "From the results:"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:188
+#: ../../build/doc/pgr_dijkstraNearCost.rst:190
 msgid "making a connection from the first subway line to the second:"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:190
+#: ../../build/doc/pgr_dijkstraNearCost.rst:192
 msgid ":math:`{(3 -> 9) (6 -> 9) (7 -> 9)}` and the best one is :math:`(6 -> 9)` with a cost of :math:`1` (line: `11`)"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:193
+#: ../../build/doc/pgr_dijkstraNearCost.rst:195
 msgid "making a connection from the second subway line to the first:"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:195
+#: ../../build/doc/pgr_dijkstraNearCost.rst:197
 msgid ":math:`{(4 -> 3) (9 -> 6)}` and both are equaly good as they have the same cost. (lines: `10` and `12`)"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:200
+#: ../../build/doc/pgr_dijkstraNearCost.rst:202
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:203
+#: ../../build/doc/pgr_dijkstraNearCost.rst:205
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:203
+#: ../../build/doc/pgr_dijkstraNearCost.rst:205
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:203
+#: ../../build/doc/pgr_dijkstraNearCost.rst:205
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:205
+#: ../../build/doc/pgr_dijkstraNearCost.rst:207
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:205
-#: ../../build/doc/pgr_dijkstraNearCost.rst:206
+#: ../../build/doc/pgr_dijkstraNearCost.rst:207
+#: ../../build/doc/pgr_dijkstraNearCost.rst:208
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:205
+#: ../../build/doc/pgr_dijkstraNearCost.rst:207
 msgid "`Edges query`_ as described below"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:206
+#: ../../build/doc/pgr_dijkstraNearCost.rst:208
 msgid "**Combinations SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:206
+#: ../../build/doc/pgr_dijkstraNearCost.rst:208
 msgid "`Combinations query` as described below"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:207
+#: ../../build/doc/pgr_dijkstraNearCost.rst:209
 msgid "**Start vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:207
 #: ../../build/doc/pgr_dijkstraNearCost.rst:209
-#: ../../build/doc/pgr_dijkstraNearCost.rst:213
+#: ../../build/doc/pgr_dijkstraNearCost.rst:211
+#: ../../build/doc/pgr_dijkstraNearCost.rst:215
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:207
+#: ../../build/doc/pgr_dijkstraNearCost.rst:209
 msgid "Identifier of the starting vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:208
+#: ../../build/doc/pgr_dijkstraNearCost.rst:210
 msgid "**Start vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:208
 #: ../../build/doc/pgr_dijkstraNearCost.rst:210
+#: ../../build/doc/pgr_dijkstraNearCost.rst:212
 msgid "``ARRAY[BIGINT]``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:208
+#: ../../build/doc/pgr_dijkstraNearCost.rst:210
 msgid "Array of identifiers of starting vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:209
+#: ../../build/doc/pgr_dijkstraNearCost.rst:211
 msgid "**End vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:209
+#: ../../build/doc/pgr_dijkstraNearCost.rst:211
 msgid "Identifier of the ending vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:210
+#: ../../build/doc/pgr_dijkstraNearCost.rst:212
 msgid "**End vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:210
+#: ../../build/doc/pgr_dijkstraNearCost.rst:212
 msgid "Array of identifiers of ending vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:211
+#: ../../build/doc/pgr_dijkstraNearCost.rst:213
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:211
-#: ../../build/doc/pgr_dijkstraNearCost.rst:214
+#: ../../build/doc/pgr_dijkstraNearCost.rst:213
+#: ../../build/doc/pgr_dijkstraNearCost.rst:216
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:211
-#: ../../build/doc/pgr_dijkstraNearCost.rst:214
+#: ../../build/doc/pgr_dijkstraNearCost.rst:213
+#: ../../build/doc/pgr_dijkstraNearCost.rst:216
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:211
+#: ../../build/doc/pgr_dijkstraNearCost.rst:213
 msgid "When ``true`` the graph is considered `Directed`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:212
+#: ../../build/doc/pgr_dijkstraNearCost.rst:214
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:213
+#: ../../build/doc/pgr_dijkstraNearCost.rst:215
 msgid "**cap**"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:213
+#: ../../build/doc/pgr_dijkstraNearCost.rst:215
 msgid "1"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:213
+#: ../../build/doc/pgr_dijkstraNearCost.rst:215
 msgid "Find at most ``cap`` number of nearest shortest paths"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:214
+#: ../../build/doc/pgr_dijkstraNearCost.rst:216
 msgid "**global**"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:214
+#: ../../build/doc/pgr_dijkstraNearCost.rst:216
 msgid "When ``true``: only ``cap`` limit results will be returned"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:215
+#: ../../build/doc/pgr_dijkstraNearCost.rst:217
 msgid "When ``false``: ``cap`` limit per ``Start vid`` will be returned"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:220
+#: ../../build/doc/pgr_dijkstraNearCost.rst:222
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:223
+#: ../../build/doc/pgr_dijkstraNearCost.rst:225
 msgid "Edges query"
 msgstr ""
 
@@ -584,11 +580,11 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:230
+#: ../../build/doc/pgr_dijkstraNearCost.rst:232
 msgid "Combinations query"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:237
+#: ../../build/doc/pgr_dijkstraNearCost.rst:239
 msgid "Return Columns"
 msgstr ""
 
@@ -624,39 +620,39 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:244
+#: ../../build/doc/pgr_dijkstraNearCost.rst:246
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:246
+#: ../../build/doc/pgr_dijkstraNearCost.rst:248
 msgid ":doc:`dijkstra-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:247
+#: ../../build/doc/pgr_dijkstraNearCost.rst:249
 msgid ":doc:`pgr_dijkstraNear`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:248
+#: ../../build/doc/pgr_dijkstraNearCost.rst:250
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:249
+#: ../../build/doc/pgr_dijkstraNearCost.rst:251
 msgid "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:250
+#: ../../build/doc/pgr_dijkstraNearCost.rst:252
 msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:253
+#: ../../build/doc/pgr_dijkstraNearCost.rst:255
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:254
+#: ../../build/doc/pgr_dijkstraNearCost.rst:256
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:255
+#: ../../build/doc/pgr_dijkstraNearCost.rst:257
 msgid ":ref:`search`"
 msgstr ""
 

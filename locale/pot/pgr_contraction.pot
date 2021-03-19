@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,135 +16,131 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_contraction.rst:11
-msgid "pgr_contraction"
+#: ../../build/doc/pgr_contraction.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_contraction.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_contraction.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/pgr_contraction.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_contraction.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:13
-msgid "``pgr_contraction`` — Performs graph contraction and returns the contracted vertices and edges."
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:18
-msgid "Boost Graph Inside"
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:21
-msgid "Availability"
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:22
-msgid "Version 3.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:24
-msgid "Return columns change: ``seq`` is removed"
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:25
-msgid "Name change from ``pgr_contractGraph``"
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:26
-msgid "Bug fixes"
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:27
-msgid "**Official** function"
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:29
-msgid "Version 2.3.0"
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:31
-msgid "New **experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:34
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:35
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_contraction.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_contraction.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_contraction.rst:39
+#: ../../build/doc/pgr_contraction.rst:17
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_contractGraph.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_contractGraph.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_contractGraph.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/contraction/doc/pgr_contractGraph.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:46
-#: ../../build/doc/pgr_contraction.rst:99
-#: ../../build/doc/pgr_contraction.rst:111
+#: ../../build/doc/pgr_contraction.rst:25
+msgid "pgr_contraction"
+msgstr ""
+
+#: ../../build/doc/pgr_contraction.rst:27
+msgid "``pgr_contraction`` — Performs graph contraction and returns the contracted vertices and edges."
+msgstr ""
+
+#: ../../build/doc/pgr_contraction.rst:32
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_contraction.rst:35
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_contraction.rst:36
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_contraction.rst:38
+msgid "Return columns change: ``seq`` is removed"
+msgstr ""
+
+#: ../../build/doc/pgr_contraction.rst:39
+msgid "Name change from ``pgr_contractGraph``"
+msgstr ""
+
+#: ../../build/doc/pgr_contraction.rst:40
+msgid "Bug fixes"
+msgstr ""
+
+#: ../../build/doc/pgr_contraction.rst:41
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_contraction.rst:43
+msgid "Version 2.3.0"
+msgstr ""
+
+#: ../../build/doc/pgr_contraction.rst:45
+msgid "New **experimental** function"
+msgstr ""
+
+#: ../../build/doc/pgr_contraction.rst:49
+#: ../../build/doc/pgr_contraction.rst:102
+#: ../../build/doc/pgr_contraction.rst:114
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_contraction.rst:134
+#: ../../build/doc/pgr_contraction.rst:137
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:48
+#: ../../build/doc/pgr_contraction.rst:51
 msgid "Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:72
+#: ../../build/doc/pgr_contraction.rst:75
 msgid "The main Characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:53
+#: ../../build/doc/pgr_contraction.rst:56
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:54
+#: ../../build/doc/pgr_contraction.rst:57
 msgid "Does not return the full contracted graph"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:56
+#: ../../build/doc/pgr_contraction.rst:59
 msgid "Only changes on the graph are returned"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:58
+#: ../../build/doc/pgr_contraction.rst:61
 msgid "Currnetly there are two types of contraction methods"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:60
+#: ../../build/doc/pgr_contraction.rst:63
 msgid "Dead End Contraction"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:61
+#: ../../build/doc/pgr_contraction.rst:64
 msgid "Linear Contraction"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:63
+#: ../../build/doc/pgr_contraction.rst:66
 msgid "The returned values include"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:65
+#: ../../build/doc/pgr_contraction.rst:68
 msgid "the added edges by linear contraction."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:66
+#: ../../build/doc/pgr_contraction.rst:69
 msgid "the modified vertices by dead end contraction."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:68
+#: ../../build/doc/pgr_contraction.rst:71
 msgid "The returned values are ordered as follows:"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:70
+#: ../../build/doc/pgr_contraction.rst:73
 msgid "column `id` ascending when type = `v`"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:71
+#: ../../build/doc/pgr_contraction.rst:74
 msgid "column `id` descending when type = `e`"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:75
+#: ../../build/doc/pgr_contraction.rst:78
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:78
+#: ../../build/doc/pgr_contraction.rst:81
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:79
+#: ../../build/doc/pgr_contraction.rst:82
 msgid "The pgr_contraction function has the following signature:"
 msgstr ""
 
@@ -154,125 +150,125 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:89
+#: ../../build/doc/pgr_contraction.rst:92
 msgid "Making a dead end contraction and a linear contraction with vertex 2 forbidden from being contracted"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:96
+#: ../../build/doc/pgr_contraction.rst:99
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:99
-#: ../../build/doc/pgr_contraction.rst:111
+#: ../../build/doc/pgr_contraction.rst:102
+#: ../../build/doc/pgr_contraction.rst:114
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_contraction.rst:134
+#: ../../build/doc/pgr_contraction.rst:137
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:99
-#: ../../build/doc/pgr_contraction.rst:111
+#: ../../build/doc/pgr_contraction.rst:102
+#: ../../build/doc/pgr_contraction.rst:114
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_contraction.rst:134
+#: ../../build/doc/pgr_contraction.rst:137
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:101
+#: ../../build/doc/pgr_contraction.rst:104
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:101
-#: ../../build/doc/pgr_contraction.rst:136
+#: ../../build/doc/pgr_contraction.rst:104
+#: ../../build/doc/pgr_contraction.rst:139
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:101
+#: ../../build/doc/pgr_contraction.rst:104
 msgid "SQL query as described in `Inner query`_"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:102
+#: ../../build/doc/pgr_contraction.rst:105
 msgid "**Ccontraction Order**"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:102
-#: ../../build/doc/pgr_contraction.rst:113
+#: ../../build/doc/pgr_contraction.rst:105
+#: ../../build/doc/pgr_contraction.rst:116
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:103
+#: ../../build/doc/pgr_contraction.rst:106
 msgid "Ordered contraction operations."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:103
+#: ../../build/doc/pgr_contraction.rst:106
 msgid "1 = Dead end contraction"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:104
+#: ../../build/doc/pgr_contraction.rst:107
 msgid "2 = Linear contraction"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:108
+#: ../../build/doc/pgr_contraction.rst:111
 msgid "Optional Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:111
+#: ../../build/doc/pgr_contraction.rst:114
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:113
+#: ../../build/doc/pgr_contraction.rst:116
 msgid "**forbidden_vertices**"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:113
+#: ../../build/doc/pgr_contraction.rst:116
 msgid "Empty"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:113
+#: ../../build/doc/pgr_contraction.rst:116
 msgid "Identifiers of vertices forbidden from contraction."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:114
+#: ../../build/doc/pgr_contraction.rst:117
 msgid "**max_cycles**"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:114
+#: ../../build/doc/pgr_contraction.rst:117
 msgid "``INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:114
+#: ../../build/doc/pgr_contraction.rst:117
 msgid ":math:`1`"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:114
+#: ../../build/doc/pgr_contraction.rst:117
 msgid "Number of times the contraction operations on `contraction_order` will be performed."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:115
+#: ../../build/doc/pgr_contraction.rst:118
 msgid "**directed**"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:115
+#: ../../build/doc/pgr_contraction.rst:118
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:115
+#: ../../build/doc/pgr_contraction.rst:118
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:115
+#: ../../build/doc/pgr_contraction.rst:118
 msgid "When ``true`` the graph is considered as `Directed`."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:116
+#: ../../build/doc/pgr_contraction.rst:119
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:120
+#: ../../build/doc/pgr_contraction.rst:123
 msgid "Inner query"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_contraction.rst:139
+#: ../../build/doc/pgr_contraction.rst:142
 msgid "**id**"
 msgstr ""
 
@@ -287,7 +283,7 @@ msgid "Identifier of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgr_contraction.rst:149
+#: ../../build/doc/pgr_contraction.rst:152
 msgid "**source**"
 msgstr ""
 
@@ -296,7 +292,7 @@ msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_contraction.rst:151
+#: ../../build/doc/pgr_contraction.rst:154
 msgid "**target**"
 msgstr ""
 
@@ -305,7 +301,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_contraction.rst:153
+#: ../../build/doc/pgr_contraction.rst:156
 msgid "**cost**"
 msgstr ""
 
@@ -358,127 +354,127 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:127
+#: ../../build/doc/pgr_contraction.rst:130
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:129
+#: ../../build/doc/pgr_contraction.rst:132
 msgid "RETURNS SETOF  (type, id, contracted_vertices, source, target, cost)"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:131
+#: ../../build/doc/pgr_contraction.rst:134
 msgid "The function returns a single row. The columns of the row are:"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:136
+#: ../../build/doc/pgr_contraction.rst:139
 msgid "**type**"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:137
+#: ../../build/doc/pgr_contraction.rst:140
 msgid "Type of the `id`."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:137
+#: ../../build/doc/pgr_contraction.rst:140
 msgid "**'v'** when the row is a vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:138
+#: ../../build/doc/pgr_contraction.rst:141
 msgid "**'e'** when the row is an edge."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:139
-#: ../../build/doc/pgr_contraction.rst:149
-#: ../../build/doc/pgr_contraction.rst:151
+#: ../../build/doc/pgr_contraction.rst:142
+#: ../../build/doc/pgr_contraction.rst:152
+#: ../../build/doc/pgr_contraction.rst:154
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:146
+#: ../../build/doc/pgr_contraction.rst:149
 msgid "All numbers on this column are ``DISTINCT``"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:140
+#: ../../build/doc/pgr_contraction.rst:143
 msgid "When ``type`` = **'v'**."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:142
+#: ../../build/doc/pgr_contraction.rst:145
 msgid "Identifier of the modified vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:143
+#: ../../build/doc/pgr_contraction.rst:146
 msgid "When ``type`` = **'e'**."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:145
+#: ../../build/doc/pgr_contraction.rst:148
 msgid "Decreasing sequence starting from **-1**."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:147
+#: ../../build/doc/pgr_contraction.rst:150
 msgid "Representing a pseudo `id` as is not incorporated in the set of original edges."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:148
+#: ../../build/doc/pgr_contraction.rst:151
 msgid "**contracted_vertices**"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:148
+#: ../../build/doc/pgr_contraction.rst:151
 msgid "``ARRAY[BIGINT]``"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:148
+#: ../../build/doc/pgr_contraction.rst:151
 msgid "Array of contracted vertex identifiers."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:149
-#: ../../build/doc/pgr_contraction.rst:151
-#: ../../build/doc/pgr_contraction.rst:153
+#: ../../build/doc/pgr_contraction.rst:152
+#: ../../build/doc/pgr_contraction.rst:154
+#: ../../build/doc/pgr_contraction.rst:156
 msgid "When ``type`` = **'v'**: :math:`-1`"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:150
+#: ../../build/doc/pgr_contraction.rst:153
 msgid "When ``type`` = **'e'**: Identifier of the source vertex of the current edge (``source``, ``target``)."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:152
+#: ../../build/doc/pgr_contraction.rst:155
 msgid "When ``type`` = **'e'**: Identifier of the target vertex of the current edge (``source``, ``target``)."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:153
+#: ../../build/doc/pgr_contraction.rst:156
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:154
+#: ../../build/doc/pgr_contraction.rst:157
 msgid "When ``type`` = **'e'**: Weight of the current edge (``source``, ``target``)."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:158
+#: ../../build/doc/pgr_contraction.rst:161
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:160
+#: ../../build/doc/pgr_contraction.rst:163
 msgid "Only dead end contraction"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:166
+#: ../../build/doc/pgr_contraction.rst:169
 msgid "Only linear contraction"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:173
+#: ../../build/doc/pgr_contraction.rst:176
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:175
+#: ../../build/doc/pgr_contraction.rst:178
 msgid ":doc:`contraction-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:178
+#: ../../build/doc/pgr_contraction.rst:181
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:179
+#: ../../build/doc/pgr_contraction.rst:182
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:180
+#: ../../build/doc/pgr_contraction.rst:183
 msgid ":ref:`search`"
 msgstr ""
 

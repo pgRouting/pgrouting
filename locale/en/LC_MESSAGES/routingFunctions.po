@@ -8,20 +8,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: ../../build/doc/routingFunctions.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/routingFunctions.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/routingFunctions.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/routingFunctions.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/routingFunctions.html>`__"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/routingFunctions.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/routingFunctions.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/routingFunctions.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/routingFunctions.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/routingFunctions.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/index.html>`__ `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/index.html>`__"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:28
 msgid "Function Families"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:18
+#: ../../build/doc/routingFunctions.rst:34
 msgid ":doc:`allpairs-family`"
 msgstr ""
 
@@ -33,7 +54,7 @@ msgstr ""
 msgid ":doc:`pgr_johnson` - Johnson's algorithm"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:24
+#: ../../build/doc/routingFunctions.rst:40
 msgid ":doc:`aStar-family`"
 msgstr ""
 
@@ -49,7 +70,7 @@ msgstr ""
 msgid ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:31
+#: ../../build/doc/routingFunctions.rst:47
 msgid ":doc:`bdAstar-family`"
 msgstr ""
 
@@ -69,7 +90,7 @@ msgid ""
 "cost matrix of paths."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:37
+#: ../../build/doc/routingFunctions.rst:53
 msgid ":doc:`bdDijkstra-family`"
 msgstr ""
 
@@ -91,7 +112,7 @@ msgid ""
 "create a matrix of costs of the shortest paths."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:43
+#: ../../build/doc/routingFunctions.rst:59
 msgid ":doc:`components-family`"
 msgstr ""
 
@@ -123,7 +144,7 @@ msgstr ""
 msgid ":doc:`pgr_bridges` - Bridges of an undirected graph."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:49
+#: ../../build/doc/routingFunctions.rst:65
 msgid ":doc:`contraction-family`"
 msgstr ""
 
@@ -131,7 +152,7 @@ msgstr ""
 msgid ":doc:`pgr_contraction`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:55
+#: ../../build/doc/routingFunctions.rst:71
 msgid ":doc:`dijkstra-family`"
 msgstr ""
 
@@ -159,7 +180,7 @@ msgid ""
 "shortest paths."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:61
+#: ../../build/doc/routingFunctions.rst:77
 msgid ":doc:`flow-family`"
 msgstr ""
 
@@ -203,7 +224,7 @@ msgid ""
 "matching in a graph."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:67
+#: ../../build/doc/routingFunctions.rst:83
 #: ../../build/doc/spanningTree-family.rst:3
 msgid ":doc:`kruskal-family`"
 msgstr ""
@@ -224,7 +245,7 @@ msgstr ""
 msgid ":doc:`pgr_kruskalDFS`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:73
+#: ../../build/doc/routingFunctions.rst:89
 #: ../../build/doc/spanningTree-family.rst:4
 msgid ":doc:`prim-family`"
 msgstr ""
@@ -245,7 +266,7 @@ msgstr ""
 msgid ":doc:`pgr_primDFS`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:79
+#: ../../build/doc/routingFunctions.rst:95
 msgid ":doc:`topology-functions`"
 msgstr ""
 
@@ -273,7 +294,7 @@ msgstr ""
 msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:85
+#: ../../build/doc/routingFunctions.rst:101
 msgid ":doc:`TSP-family`"
 msgstr ""
 
@@ -285,15 +306,15 @@ msgstr ""
 msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:91
+#: ../../build/doc/routingFunctions.rst:107
 msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:95
+#: ../../build/doc/routingFunctions.rst:111
 msgid "Functions by categories"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:97
+#: ../../build/doc/routingFunctions.rst:113
 msgid ":doc:`cost-category`"
 msgstr ""
 
@@ -305,7 +326,7 @@ msgstr ""
 msgid ":doc:`pgr_dijkstraCost`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:103
+#: ../../build/doc/routingFunctions.rst:119
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
@@ -317,7 +338,7 @@ msgstr ""
 msgid ":doc:`pgr_dijkstraCostMatrix`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:110
+#: ../../build/doc/routingFunctions.rst:126
 msgid ":doc:`drivingDistance-category`"
 msgstr ""
 
@@ -343,7 +364,7 @@ msgstr ""
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:116
+#: ../../build/doc/routingFunctions.rst:132
 msgid ":doc:`KSP-category`"
 msgstr ""
 
@@ -351,23 +372,23 @@ msgstr ""
 msgid ":doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:122
+#: ../../build/doc/routingFunctions.rst:138
 msgid ":doc:`spanningTree-family`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:158
+#: ../../build/doc/routingFunctions.rst:174
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:161
+#: ../../build/doc/routingFunctions.rst:177
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:162
+#: ../../build/doc/routingFunctions.rst:178
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/routingFunctions.rst:163
+#: ../../build/doc/routingFunctions.rst:179
 msgid ":ref:`search`"
 msgstr ""
 

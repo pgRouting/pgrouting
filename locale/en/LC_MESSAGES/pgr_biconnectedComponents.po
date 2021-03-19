@@ -8,75 +8,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:11
-msgid "pgr_biconnectedComponents"
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:13
+#: ../../build/doc/pgr_biconnectedComponents.rst:12
 msgid ""
-"``pgr_biconnectedComponents`` — Return the biconnected components of an "
-"undirected graph. In particular, the algorithm implemented by "
-"Boost.Graph."
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:19
-msgid "Boost Graph Inside"
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:22
-msgid "Availability"
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:23
-msgid "Version 3.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:25
-msgid "Return columns change:"
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:27
-msgid "``n_seq`` is removed"
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:28
-msgid "``seq`` changed type to ``BIGINT``"
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:30
-msgid "**Official** function"
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:32
-msgid "Version 2.5.0"
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:34
-msgid "New **experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:37
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_biconnectedComponents.rst:38
-msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_biconnectedComponents.html>`__) "
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_biconnectedComponents.html>`__ "
+"(`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_biconnectedComponents.html>`__) "
+"`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_biconnectedComponents.html>`__ "
 "`3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_biconnectedComponents.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:42
+#: ../../build/doc/pgr_biconnectedComponents.rst:17
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_biconnectedComponents.html>`__ "
@@ -84,14 +37,61 @@ msgid ""
 "<https://docs.pgrouting.org/2.5/en/pgr_biconnectedComponents.html>`__"
 msgstr ""
 
+#: ../../build/doc/pgr_biconnectedComponents.rst:23
+msgid "pgr_biconnectedComponents"
+msgstr ""
+
+#: ../../build/doc/pgr_biconnectedComponents.rst:25
+msgid ""
+"``pgr_biconnectedComponents`` — Return the biconnected components of an "
+"undirected graph. In particular, the algorithm implemented by "
+"Boost.Graph."
+msgstr ""
+
+#: ../../build/doc/pgr_biconnectedComponents.rst:31
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_biconnectedComponents.rst:34
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_biconnectedComponents.rst:35
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_biconnectedComponents.rst:37
+msgid "Return columns change:"
+msgstr ""
+
+#: ../../build/doc/pgr_biconnectedComponents.rst:39
+msgid "``n_seq`` is removed"
+msgstr ""
+
+#: ../../build/doc/pgr_biconnectedComponents.rst:40
+msgid "``seq`` changed type to ``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgr_biconnectedComponents.rst:42
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_biconnectedComponents.rst:44
+msgid "Version 2.5.0"
+msgstr ""
+
+#: ../../build/doc/pgr_biconnectedComponents.rst:46
+msgid "New **experimental** function"
+msgstr ""
+
 #: ../../build/doc/components-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_biconnectedComponents.rst:47
-#: ../../build/doc/pgr_biconnectedComponents.rst:108
+#: ../../build/doc/pgr_biconnectedComponents.rst:50
+#: ../../build/doc/pgr_biconnectedComponents.rst:111
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:49
+#: ../../build/doc/pgr_biconnectedComponents.rst:52
 msgid ""
 "The biconnected components of an undirected graph are the maximal subsets"
 " of vertices such that the removal of a vertex from particular component "
@@ -101,35 +101,35 @@ msgid ""
 "a single biconnected component."
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:54
+#: ../../build/doc/pgr_biconnectedComponents.rst:57
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:56
+#: ../../build/doc/pgr_biconnectedComponents.rst:59
 msgid "The signature is for an **undirected** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:57
+#: ../../build/doc/pgr_biconnectedComponents.rst:60
 msgid "Components are described by edges."
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:58
+#: ../../build/doc/pgr_biconnectedComponents.rst:61
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:60
+#: ../../build/doc/pgr_biconnectedComponents.rst:63
 msgid "`component` ascending."
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:61
+#: ../../build/doc/pgr_biconnectedComponents.rst:64
 msgid "`edge` ascending."
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:63
+#: ../../build/doc/pgr_biconnectedComponents.rst:66
 msgid "Running time: :math:`O(V + E)`"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:66
+#: ../../build/doc/pgr_biconnectedComponents.rst:69
 msgid "Signatures"
 msgstr ""
 
@@ -137,11 +137,11 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:78
+#: ../../build/doc/pgr_biconnectedComponents.rst:81
 msgid "The biconnected components of the graph"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:85
+#: ../../build/doc/pgr_biconnectedComponents.rst:88
 msgid "Parameters"
 msgstr ""
 
@@ -151,7 +151,7 @@ msgstr ""
 
 #: ../../build/doc/components-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_biconnectedComponents.rst:108
+#: ../../build/doc/pgr_biconnectedComponents.rst:111
 msgid "Type"
 msgstr ""
 
@@ -172,7 +172,7 @@ msgstr ""
 msgid "Inner query as described below."
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:92
+#: ../../build/doc/pgr_biconnectedComponents.rst:95
 msgid "Inner query"
 msgstr ""
 
@@ -180,14 +180,14 @@ msgstr ""
 msgid "edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:94
+#: ../../build/doc/pgr_biconnectedComponents.rst:97
 msgid ""
 "an SQL query of an **undirected** graph, which should return a set of "
 "rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_biconnectedComponents.rst:108
+#: ../../build/doc/pgr_biconnectedComponents.rst:111
 msgid "Column"
 msgstr ""
 
@@ -202,7 +202,7 @@ msgid "``ANY-INTEGER``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_biconnectedComponents.rst:112
+#: ../../build/doc/pgr_biconnectedComponents.rst:115
 msgid "Identifier of the edge."
 msgstr ""
 
@@ -279,75 +279,85 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:101
+#: ../../build/doc/pgr_biconnectedComponents.rst:104
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:105
+#: ../../build/doc/pgr_biconnectedComponents.rst:108
 msgid "Returns set of ``(seq, component, edge)``"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:110
+#: ../../build/doc/pgr_biconnectedComponents.rst:113
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:110
-#: ../../build/doc/pgr_biconnectedComponents.rst:111
-#: ../../build/doc/pgr_biconnectedComponents.rst:112
+#: ../../build/doc/pgr_biconnectedComponents.rst:113
+#: ../../build/doc/pgr_biconnectedComponents.rst:114
+#: ../../build/doc/pgr_biconnectedComponents.rst:115
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:110
+#: ../../build/doc/pgr_biconnectedComponents.rst:113
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:111
+#: ../../build/doc/pgr_biconnectedComponents.rst:114
 msgid "**component**"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:111
+#: ../../build/doc/pgr_biconnectedComponents.rst:114
 msgid ""
 "Component identifier. It is equal to the minimum edge identifier in the "
 "component."
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:112
+#: ../../build/doc/pgr_biconnectedComponents.rst:115
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:118
+#: ../../build/doc/pgr_biconnectedComponents.rst:121
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:120
+#: ../../build/doc/pgr_biconnectedComponents.rst:123
 msgid ":doc:`components-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:121
+#: ../../build/doc/pgr_biconnectedComponents.rst:124
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:122
+#: ../../build/doc/pgr_biconnectedComponents.rst:125
 msgid ""
 "Boost: `Biconnected components "
 "<https://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:123
+#: ../../build/doc/pgr_biconnectedComponents.rst:126
 msgid ""
 "wikipedia: `Biconnected component "
 "<https://en.wikipedia.org/wiki/Biconnected_component>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:126
+#: ../../build/doc/pgr_biconnectedComponents.rst:129
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:127
+#: ../../build/doc/pgr_biconnectedComponents.rst:130
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_biconnectedComponents.rst:128
+#: ../../build/doc/pgr_biconnectedComponents.rst:131
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_biconnectedComponents.html>`__)"
+#~ " `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_biconnectedComponents.html>`__"
+#~ msgstr ""
 

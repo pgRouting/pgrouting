@@ -8,56 +8,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_createVerticesTable.rst:11
-msgid "pgr_createVerticesTable"
-msgstr ""
-
-#: ../../build/doc/pgr_createVerticesTable.rst:13
+#: ../../build/doc/pgr_createVerticesTable.rst:12
 msgid ""
-"``pgr_createVerticesTable`` — Reconstructs the vertices table based on "
-"the source and target information."
-msgstr ""
-
-#: ../../build/doc/pgr_createVerticesTable.rst:16
-msgid "Availability"
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_createVerticesTable.html>`__ "
+"(`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_createVerticesTable.html>`__) `3.1"
+" <https://docs.pgrouting.org/3.1/en/pgr_createVerticesTable.html>`__ `3.0"
+" <https://docs.pgrouting.org/3.0/en/pgr_createVerticesTable.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_createVerticesTable.rst:17
-msgid "Version 2.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_createVerticesTable.rst:19
-msgid "Renamed from version 1.x"
-msgstr ""
-
-#: ../../build/doc/pgr_createVerticesTable.rst:20
-msgid "**Official** function"
-msgstr ""
-
-#: ../../build/doc/pgr_createVerticesTable.rst:23
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_createVerticesTable.rst:24
 msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_createVerticesTable.html>`__) `3.0"
-" <https://docs.pgrouting.org/3.0/en/pgr_createVerticesTable.html>`__ `2.6"
-" <https://docs.pgrouting.org/2.6/en/pgr_createVerticesTable.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_createVerticesTable.rst:29
-msgid ""
-"**Unsupported versions:** `2.5 "
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_createVerticesTable.html>`__ `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_createVerticesTable.html>`__ `2.4 "
 "<https://docs.pgrouting.org/2.4/en/pgr_createVerticesTable.html>`__ `2.3 "
 "<https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createVerticesTable.html>`__"
@@ -69,34 +42,60 @@ msgid ""
 "<https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_vert_table.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:38
+#: ../../build/doc/pgr_createVerticesTable.rst:27
+msgid "pgr_createVerticesTable"
+msgstr ""
+
+#: ../../build/doc/pgr_createVerticesTable.rst:29
+msgid ""
+"``pgr_createVerticesTable`` — Reconstructs the vertices table based on "
+"the source and target information."
+msgstr ""
+
+#: ../../build/doc/pgr_createVerticesTable.rst:32
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_createVerticesTable.rst:33
+msgid "Version 2.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_createVerticesTable.rst:35
+msgid "Renamed from version 1.x"
+msgstr ""
+
+#: ../../build/doc/pgr_createVerticesTable.rst:36
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_createVerticesTable.rst:39
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:40
-#: ../../build/doc/pgr_createVerticesTable.rst:74
+#: ../../build/doc/pgr_createVerticesTable.rst:41
+#: ../../build/doc/pgr_createVerticesTable.rst:75
 msgid "The function returns:"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:42
-#: ../../build/doc/pgr_createVerticesTable.rst:76
+#: ../../build/doc/pgr_createVerticesTable.rst:43
+#: ../../build/doc/pgr_createVerticesTable.rst:77
 msgid "``OK`` after the vertices table has been reconstructed."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:43
-#: ../../build/doc/pgr_createVerticesTable.rst:81
+#: ../../build/doc/pgr_createVerticesTable.rst:44
+#: ../../build/doc/pgr_createVerticesTable.rst:82
 msgid "``FAIL`` when the vertices table was not reconstructed due to an error."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:46
+#: ../../build/doc/pgr_createVerticesTable.rst:47
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:54
+#: ../../build/doc/pgr_createVerticesTable.rst:55
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:56
+#: ../../build/doc/pgr_createVerticesTable.rst:57
 msgid ""
 "The reconstruction of the vertices table  function accepts the following "
 "parameters:"
@@ -106,7 +105,7 @@ msgstr ""
 msgid "edge_table"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:58
+#: ../../build/doc/pgr_createVerticesTable.rst:59
 msgid "``text`` Network table name. (may contain the schema name as well)"
 msgstr ""
 
@@ -114,7 +113,7 @@ msgstr ""
 msgid "the_geom"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:59
+#: ../../build/doc/pgr_createVerticesTable.rst:60
 msgid ""
 "``text``  Geometry column name of the network table. Default value is "
 "``the_geom``."
@@ -124,7 +123,7 @@ msgstr ""
 msgid "source"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:60
+#: ../../build/doc/pgr_createVerticesTable.rst:61
 msgid ""
 "``text`` Source column name of the network table. Default value is "
 "``source``."
@@ -134,7 +133,7 @@ msgstr ""
 msgid "target"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:61
+#: ../../build/doc/pgr_createVerticesTable.rst:62
 msgid ""
 "``text``  Target column name of the network table.  Default value is "
 "``target``."
@@ -144,74 +143,74 @@ msgstr ""
 msgid "rows_where"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:62
+#: ../../build/doc/pgr_createVerticesTable.rst:63
 msgid ""
 "``text``   Condition to SELECT a subset or rows.  Default value is "
 "``true`` to indicate all rows."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:66
+#: ../../build/doc/pgr_createVerticesTable.rst:67
 msgid "The ``edge_table`` will be affected"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:68
+#: ../../build/doc/pgr_createVerticesTable.rst:69
 msgid ""
 "An index will be created, if it doesn't exists, to speed up the process "
 "to the following columns:"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:70
+#: ../../build/doc/pgr_createVerticesTable.rst:71
 msgid "``the_geom``"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:71
+#: ../../build/doc/pgr_createVerticesTable.rst:72
 msgid "``source``"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:72
+#: ../../build/doc/pgr_createVerticesTable.rst:73
 msgid "``target``"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:78
+#: ../../build/doc/pgr_createVerticesTable.rst:79
 msgid "Creates a vertices table: <edge_table>_vertices_pgr."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:79
+#: ../../build/doc/pgr_createVerticesTable.rst:80
 msgid ""
 "Fills ``id`` and ``the_geom`` columns of the vertices table based on the "
 "source and target columns of the edge table."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:83
+#: ../../build/doc/pgr_createVerticesTable.rst:84
 msgid ""
 "A required column of the Network table is not found or is not of the "
 "appropriate type."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:84
+#: ../../build/doc/pgr_createVerticesTable.rst:85
 msgid "The condition is not well formed."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:85
+#: ../../build/doc/pgr_createVerticesTable.rst:86
 msgid "The names of source, target are the same."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:86
+#: ../../build/doc/pgr_createVerticesTable.rst:87
 msgid "The SRID of the geometry could not be determined."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:89
+#: ../../build/doc/pgr_createVerticesTable.rst:90
 msgid "The Vertices Table"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:90
+#: ../../build/doc/pgr_createVerticesTable.rst:91
 msgid ""
 "The vertices table is a requierment of the :doc:`pgr_analyzeGraph "
 "<pgr_analyzeGraph>` and the :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>` "
 "functions."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:92
+#: ../../build/doc/pgr_createVerticesTable.rst:93
 msgid "The structure of the vertices table is:"
 msgstr ""
 
@@ -219,7 +218,7 @@ msgstr ""
 msgid "id"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:94
+#: ../../build/doc/pgr_createVerticesTable.rst:95
 msgid "``bigint`` Identifier of the vertex."
 msgstr ""
 
@@ -227,7 +226,7 @@ msgstr ""
 msgid "cnt"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:95
+#: ../../build/doc/pgr_createVerticesTable.rst:96
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
 "vertex. See :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
@@ -237,7 +236,7 @@ msgstr ""
 msgid "chk"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:96
+#: ../../build/doc/pgr_createVerticesTable.rst:97
 msgid ""
 "``integer``  Indicator that the vertex might have a problem. See "
 ":doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
@@ -247,7 +246,7 @@ msgstr ""
 msgid "ein"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:97
+#: ../../build/doc/pgr_createVerticesTable.rst:98
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
 "vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
@@ -257,13 +256,13 @@ msgstr ""
 msgid "eout"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:98
+#: ../../build/doc/pgr_createVerticesTable.rst:99
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
 "vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:99
+#: ../../build/doc/pgr_createVerticesTable.rst:100
 msgid "``geometry`` Point geometry of the vertex."
 msgstr ""
 
@@ -271,11 +270,11 @@ msgstr ""
 msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:101
+#: ../../build/doc/pgr_createVerticesTable.rst:102
 msgid "The simplest way to use pgr_createVerticesTable"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:109
+#: ../../build/doc/pgr_createVerticesTable.rst:110
 msgid "Additional Examples"
 msgstr ""
 
@@ -283,15 +282,15 @@ msgstr ""
 msgid "Example 2"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:112
+#: ../../build/doc/pgr_createVerticesTable.rst:113
 msgid "When the arguments are given in the order described in the parameters:"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:119
+#: ../../build/doc/pgr_createVerticesTable.rst:120
 msgid "We get the same result as the simplest way to use the function."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:121
+#: ../../build/doc/pgr_createVerticesTable.rst:122
 msgid ""
 "An error would occur when the arguments are not given in the appropriate "
 "order: In this example, the column source column ``source`` of the table "
@@ -300,8 +299,8 @@ msgid ""
 "column."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:129
-#: ../../build/doc/pgr_createVerticesTable.rst:197
+#: ../../build/doc/pgr_createVerticesTable.rst:130
+#: ../../build/doc/pgr_createVerticesTable.rst:198
 msgid "When using the named notation"
 msgstr ""
 
@@ -309,8 +308,8 @@ msgstr ""
 msgid "Example 3"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:130
-#: ../../build/doc/pgr_createVerticesTable.rst:198
+#: ../../build/doc/pgr_createVerticesTable.rst:131
+#: ../../build/doc/pgr_createVerticesTable.rst:199
 msgid "The order of the parameters do not matter:"
 msgstr ""
 
@@ -318,8 +317,8 @@ msgstr ""
 msgid "Example 4"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:136
-#: ../../build/doc/pgr_createVerticesTable.rst:204
+#: ../../build/doc/pgr_createVerticesTable.rst:137
+#: ../../build/doc/pgr_createVerticesTable.rst:205
 msgid "Using a different ordering"
 msgstr ""
 
@@ -327,14 +326,14 @@ msgstr ""
 msgid "Example 5"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:143
+#: ../../build/doc/pgr_createVerticesTable.rst:144
 msgid ""
 "Parameters defined with a default value can be omitted, as long as the "
 "value matches the default:"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:151
-#: ../../build/doc/pgr_createVerticesTable.rst:214
+#: ../../build/doc/pgr_createVerticesTable.rst:152
+#: ../../build/doc/pgr_createVerticesTable.rst:215
 msgid "Selecting rows using rows_where parameter"
 msgstr ""
 
@@ -342,7 +341,7 @@ msgstr ""
 msgid "Example 6"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:152
+#: ../../build/doc/pgr_createVerticesTable.rst:153
 msgid "Selecting rows based on the id."
 msgstr ""
 
@@ -350,7 +349,7 @@ msgstr ""
 msgid "Example 7"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:159
+#: ../../build/doc/pgr_createVerticesTable.rst:160
 msgid ""
 "Selecting the rows where the geometry is near the geometry of row with "
 "``id`` =5 ."
@@ -360,22 +359,22 @@ msgstr ""
 msgid "Example 8"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:166
-#: ../../build/doc/pgr_createVerticesTable.rst:240
+#: ../../build/doc/pgr_createVerticesTable.rst:167
+#: ../../build/doc/pgr_createVerticesTable.rst:241
 msgid ""
 "Selecting the rows where the geometry is near the geometry of the row "
 "with ``gid`` =100 of the table ``othertable``."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:173
+#: ../../build/doc/pgr_createVerticesTable.rst:174
 msgid "Usage when the edge table's columns DO NOT MATCH the default values:"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:175
+#: ../../build/doc/pgr_createVerticesTable.rst:176
 msgid "Using the following table"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:183
+#: ../../build/doc/pgr_createVerticesTable.rst:184
 msgid "Using positional notation:"
 msgstr ""
 
@@ -383,7 +382,7 @@ msgstr ""
 msgid "Example 9"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:184
+#: ../../build/doc/pgr_createVerticesTable.rst:185
 msgid "The arguments need to be given in the order described in the parameters:"
 msgstr ""
 
@@ -403,7 +402,7 @@ msgstr ""
 msgid "Example 11"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:206
+#: ../../build/doc/pgr_createVerticesTable.rst:207
 msgid ""
 "In this scenario omitting a parameter would create an error because the "
 "default values for the column names do not match the column names of the "
@@ -414,7 +413,7 @@ msgstr ""
 msgid "Example 12"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:215
+#: ../../build/doc/pgr_createVerticesTable.rst:216
 msgid "Selecting rows based on the gid. (positional notation)"
 msgstr ""
 
@@ -422,7 +421,7 @@ msgstr ""
 msgid "Example 13"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:221
+#: ../../build/doc/pgr_createVerticesTable.rst:222
 msgid "Selecting rows based on the gid. (named notation)"
 msgstr ""
 
@@ -430,7 +429,7 @@ msgstr ""
 msgid "Example 14"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:227
+#: ../../build/doc/pgr_createVerticesTable.rst:228
 msgid ""
 "Selecting the rows where the geometry is near the geometry of row with "
 "``gid`` = 5."
@@ -440,8 +439,8 @@ msgstr ""
 msgid "Example 15"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:234
-#: ../../build/doc/pgr_createVerticesTable.rst:250
+#: ../../build/doc/pgr_createVerticesTable.rst:235
+#: ../../build/doc/pgr_createVerticesTable.rst:251
 msgid "TBD"
 msgstr ""
 
@@ -453,45 +452,72 @@ msgstr ""
 msgid "Example 17"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:256
+#: ../../build/doc/pgr_createVerticesTable.rst:257
 msgid "The example uses the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:259
+#: ../../build/doc/pgr_createVerticesTable.rst:260
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:261
+#: ../../build/doc/pgr_createVerticesTable.rst:262
 msgid ""
 ":doc:`topology-functions`  for an overview of a topology for routing "
 "algorithms."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:262
+#: ../../build/doc/pgr_createVerticesTable.rst:263
 msgid ""
 ":doc:`pgr_createTopology` <pgr_create_topology>` to create a topology "
 "based on the geometry."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:263
+#: ../../build/doc/pgr_createVerticesTable.rst:264
 msgid ""
 ":doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge "
 "table."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:264
+#: ../../build/doc/pgr_createVerticesTable.rst:265
 msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:267
+#: ../../build/doc/pgr_createVerticesTable.rst:268
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:268
+#: ../../build/doc/pgr_createVerticesTable.rst:269
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_createVerticesTable.rst:269
+#: ../../build/doc/pgr_createVerticesTable.rst:270
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_createVerticesTable.html>`__)"
+#~ " `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_createVerticesTable.html>`__"
+#~ " `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_createVerticesTable.html>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_createVerticesTable.html>`__"
+#~ " `2.4 "
+#~ "<https://docs.pgrouting.org/2.4/en/pgr_createVerticesTable.html>`__"
+#~ " `2.3 "
+#~ "<https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createVerticesTable.html>`__"
+#~ " `2.2 "
+#~ "<https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createVerticesTable.html>`__"
+#~ " `2.1 "
+#~ "<https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_vert_table.html>`__"
+#~ " `2.0 "
+#~ "<https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_vert_table.html>`__"
+#~ msgstr ""
 
