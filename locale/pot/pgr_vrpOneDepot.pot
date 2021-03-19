@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:11
+#: ../../build/doc/pgr_vrpOneDepot.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_vrpOneDepot.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_vrpOneDepot.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/pgr_vrpOneDepot.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_vrpOneDepot.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_vrpOneDepot.rst:17
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_vrpOneDepot.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_vrpOneDepot.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_vrpOneDepot.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/vrp_basic/doc/index.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_vrpOneDepot.rst:26
 msgid "pgr_vrpOneDepot - Experimental"
 msgstr ""
 
@@ -88,32 +96,20 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:17
+#: ../../build/doc/pgr_vrpOneDepot.rst:32
 msgid "**No documentation available**"
 msgstr ""
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:20
+#: ../../build/doc/pgr_vrpOneDepot.rst:35
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:21
+#: ../../build/doc/pgr_vrpOneDepot.rst:36
 msgid "Version 2.1.0"
 msgstr ""
 
-#: ../../build/doc/pgr_vrpOneDepot.rst:23
+#: ../../build/doc/pgr_vrpOneDepot.rst:38
 msgid "New **experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_vrpOneDepot.rst:26
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_vrpOneDepot.rst:27
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_vrpOneDepot.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_vrpOneDepot.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_vrpOneDepot.rst:31
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_vrpOneDepot.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_vrpOneDepot.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_vrpOneDepot.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/vrp_basic/doc/index.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_vrpOneDepot.rst:41

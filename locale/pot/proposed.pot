@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,51 +16,59 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/proposed.rst:10
-msgid "Proposed Functions"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:14
-msgid "Proposed functions for next mayor release."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:16
-msgid "They are not officially in the current release."
+#: ../../build/doc/proposed.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/proposed.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/proposed.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/proposed.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/proposed.html>`__"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:17
-msgid "They will likely officially be part of the next mayor release:"
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/proposed.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/proposed.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/proposed.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/proposed.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/proposed.html>`__"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:19
-msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:20
-msgid "Name might not change. (But still can)"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:21
-msgid "Signature might not change. (But still can)"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:22
-msgid "Functionality might not change. (But still can)"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:23
-msgid "pgTap tests have being done. But might need more."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:24
-msgid "Documentation might need refinement."
+#: ../../build/doc/proposed.rst:25
+msgid "Proposed Functions"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:29
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:31
+msgid "They are not officially in the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:32
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:34
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:35
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:36
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:37
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:38
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:39
+msgid "Documentation might need refinement."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:44
 msgid "Families"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:30
+#: ../../build/doc/proposed.rst:45
 msgid ":doc:`dijkstra-family`"
 msgstr ""
 
@@ -68,7 +76,7 @@ msgstr ""
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:36
+#: ../../build/doc/proposed.rst:51
 msgid ":doc:`withPoints-family`"
 msgstr ""
 
@@ -92,11 +100,11 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` - Driving distance."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:43
+#: ../../build/doc/proposed.rst:58
 msgid "categories"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:44
+#: ../../build/doc/proposed.rst:59
 msgid ":doc:`cost-category`"
 msgstr ""
 
@@ -104,7 +112,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCost`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:50
+#: ../../build/doc/proposed.rst:65
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
@@ -112,7 +120,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCostMatrix`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:56
+#: ../../build/doc/proposed.rst:71
 msgid ":doc:`drivingDistance-category`"
 msgstr ""
 
@@ -120,7 +128,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:62
+#: ../../build/doc/proposed.rst:77
 msgid ":doc:`KSP-category`"
 msgstr ""
 
@@ -128,23 +136,23 @@ msgstr ""
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:76
+#: ../../build/doc/proposed.rst:91
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:78
+#: ../../build/doc/proposed.rst:93
 msgid ":doc:`experimental`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:81
+#: ../../build/doc/proposed.rst:96
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:82
+#: ../../build/doc/proposed.rst:97
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:83
+#: ../../build/doc/proposed.rst:98
 msgid ":ref:`search`"
 msgstr ""
 

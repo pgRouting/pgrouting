@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-14 13:58-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,111 +16,107 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_maxFlow.rst:11
-msgid "pgr_maxFlow"
+#: ../../build/doc/pgr_maxFlow.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_maxFlow.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_maxFlow.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/pgr_maxFlow.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxFlow.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:13
-msgid "``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the source(s) to the targets(s) using the Push Relabel algorithm."
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:18
-msgid "Boost Graph Inside"
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:21
-msgid "Availability"
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:22
-msgid "Version 3.2.0"
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:24
-msgid "New **proposed** function:"
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:26
-msgid "pgr_maxFlow(Combinations)"
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:28
-msgid "Version 3.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:30
-msgid "**Official** function"
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:32
-msgid "Version 2.4.0"
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:34
-msgid "New **Proposed** function"
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:37
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:38
-msgid "**Supported versions:** current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_maxFlow.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/pgr_maxFlow.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxFlow.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_maxFlow.rst:43
+#: ../../build/doc/pgr_maxFlow.rst:17
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_maxFlow.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_maxFlow.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlow.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:49
+#: ../../build/doc/pgr_maxFlow.rst:23
+msgid "pgr_maxFlow"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:25
+msgid "``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the source(s) to the targets(s) using the Push Relabel algorithm."
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:30
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:33
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:34
+msgid "Version 3.2.0"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:36
+msgid "New **proposed** function:"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:38
+msgid "pgr_maxFlow(Combinations)"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:40
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:42
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:44
+msgid "Version 2.4.0"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:46
+msgid "New **Proposed** function"
+msgstr ""
+
+#: ../../build/doc/pgr_maxFlow.rst:50
 #: ../../build/doc/flow-family.rst:4
 #: ../../build/doc/flow-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_maxFlow.rst:185
+#: ../../build/doc/pgr_maxFlow.rst:186
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:51
+#: ../../build/doc/pgr_maxFlow.rst:52
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:53
+#: ../../build/doc/pgr_maxFlow.rst:54
 msgid "The graph is **directed**."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:54
+#: ../../build/doc/pgr_maxFlow.rst:55
 msgid "Calculates the maximum flow from the `source(s)` to the `target(s)`."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:56
+#: ../../build/doc/pgr_maxFlow.rst:57
 msgid "When the maximum flow is **0** then there is no flow and **0** is returned."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:57
+#: ../../build/doc/pgr_maxFlow.rst:58
 msgid "There is no flow when a **source** is the same as a **target**."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:59
+#: ../../build/doc/pgr_maxFlow.rst:60
 msgid "Any duplicated value in the source(s) or target(s) are ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:60
+#: ../../build/doc/pgr_maxFlow.rst:61
 msgid "Uses the :doc:`pgr_pushRelabel <pgr_pushRelabel>` algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:62
+#: ../../build/doc/pgr_maxFlow.rst:63
 msgid "Running time: :math:`O( V ^ 3)`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:65
+#: ../../build/doc/pgr_maxFlow.rst:66
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:68
+#: ../../build/doc/pgr_maxFlow.rst:69
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:82
+#: ../../build/doc/pgr_maxFlow.rst:83
 msgid "One to One"
 msgstr ""
 
@@ -132,43 +128,43 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:89
+#: ../../build/doc/pgr_maxFlow.rst:90
 msgid "From vertex :math:`6` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:99
+#: ../../build/doc/pgr_maxFlow.rst:100
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:106
+#: ../../build/doc/pgr_maxFlow.rst:107
 msgid "From vertex :math:`6` to vertices :math:`\\{11, 1, 13\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:116
+#: ../../build/doc/pgr_maxFlow.rst:117
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:123
+#: ../../build/doc/pgr_maxFlow.rst:124
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:133
+#: ../../build/doc/pgr_maxFlow.rst:134
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:140
+#: ../../build/doc/pgr_maxFlow.rst:141
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:150
+#: ../../build/doc/pgr_maxFlow.rst:151
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:157
+#: ../../build/doc/pgr_maxFlow.rst:158
 msgid "Using a combinations table, equivalent to calculating result from vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:164
+#: ../../build/doc/pgr_maxFlow.rst:165
 msgid "Parameters"
 msgstr ""
 
@@ -181,7 +177,7 @@ msgstr ""
 #: ../../build/doc/flow-family.rst:4
 #: ../../build/doc/flow-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_maxFlow.rst:185
+#: ../../build/doc/pgr_maxFlow.rst:186
 msgid "Type"
 msgstr ""
 
@@ -220,7 +216,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:8
 #: ../../build/doc/flow-family.rst:10
-#: ../../build/doc/pgr_maxFlow.rst:187
+#: ../../build/doc/pgr_maxFlow.rst:188
 msgid "``BIGINT``"
 msgstr ""
 
@@ -259,7 +255,7 @@ msgstr ""
 msgid "Array of identifiers of the ending vertices of the flow."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:171
+#: ../../build/doc/pgr_maxFlow.rst:172
 msgid "Inner queries"
 msgstr ""
 
@@ -354,39 +350,39 @@ msgstr ""
 msgid "The function aggregates the sources and the targets, removes the duplicates, and then it calculates the result from the resultant source vertices to the target vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:182
+#: ../../build/doc/pgr_maxFlow.rst:183
 msgid "Return Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:187
+#: ../../build/doc/pgr_maxFlow.rst:188
 msgid "Maximum flow possible from the source(s) to the target(s)"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:191
+#: ../../build/doc/pgr_maxFlow.rst:192
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:193
+#: ../../build/doc/pgr_maxFlow.rst:194
 msgid ":doc:`flow-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:194
+#: ../../build/doc/pgr_maxFlow.rst:195
 msgid "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:195
+#: ../../build/doc/pgr_maxFlow.rst:196
 msgid "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:198
+#: ../../build/doc/pgr_maxFlow.rst:199
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:199
+#: ../../build/doc/pgr_maxFlow.rst:200
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlow.rst:200
+#: ../../build/doc/pgr_maxFlow.rst:201
 msgid ":ref:`search`"
 msgstr ""
 

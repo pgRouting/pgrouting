@@ -8,20 +8,42 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:11
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_pickDeliverEuclidean.html>`__ "
+"(`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_pickDeliverEuclidean.html>`__) "
+"current(`3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__) "
+"`3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_gsoc_vrppdtw.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_gsoc_vrppdtw.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/vrppdtw/doc/pgr_gsoc_vrppdtw.html>`__"
+" `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__ "
+"`2.1 <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:26
 msgid "pgr_pickDeliverEuclidean - Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:13
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:28
 msgid "``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem"
 msgstr ""
 
@@ -93,161 +115,139 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:20
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:35
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:21
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:36
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:23
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:38
 msgid "Replaces ``pgr_gsoc_vrppdtw``"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:24
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:39
 msgid "New **experimental** function"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:27
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:28
-msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__) "
-"`3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:32
-msgid ""
-"**Unsupported versions:** `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html>`__ `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_gsoc_vrppdtw.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_gsoc_vrppdtw.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/vrppdtw/doc/pgr_gsoc_vrppdtw.html>`__"
-" `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__ "
-"`2.1 <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:42
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:43
 msgid "Synopsis"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:44
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:45
 msgid ""
 "Problem: Distribute and optimize the pickup-delivery pairs into a fleet "
 "of vehicles."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:46
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:47
 msgid "Optimization problem is NP-hard."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:47
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:48
 msgid "Pickup and Delivery:"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:49
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:50
 msgid "capacitated"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:50
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:51
 msgid "with time windows."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:52
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:53
 msgid "The vehicles"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:54
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:55
 msgid "have (x, y) start and ending locations."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:55
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:56
 msgid "have a start and ending service times."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:56
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:57
 msgid "have opening and closing times for the start and ending locations."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:58
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:59
 msgid "An order is for doing a pickup and a a deliver."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:60
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:61
 msgid "has (x, y) pickup and delivery locations."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:61
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:62
 msgid "has opening and closing times for the pickup and delivery locations."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:62
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:63
 msgid "has a pickup and deliver service times."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:64
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:65
 msgid "There is a customer where to deliver a pickup."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:66
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:67
 msgid "travel time between customers is distance / speed"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:67
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:68
 msgid "pickup and delivery pair is done with the same vehicle."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:68
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:69
 msgid "A pickup is done before the delivery."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:73
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:74
 msgid "Characteristics"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:75
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:76
 msgid "No multiple time windows for a location."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:76
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:77
 msgid "Less vehicle used is considered better."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:77
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:78
 msgid "Less total duration is better."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:78
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:79
 msgid "Less wait time is better."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:79
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:80
 msgid "Six different optional different initial solutions"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:81
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:82
 msgid "the best solution found will be result"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:89
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:90
 msgid "Signature"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:122
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:123
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:124
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:125
 msgid "The parameters are:"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:3
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:130
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:148
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:131
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:149
 msgid "Where:"
 msgstr ""
 
@@ -358,12 +358,12 @@ msgstr ""
 msgid "``6`` Push front order that allows more orders to be inserted at the front"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:138
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:139
 msgid "Pick & Deliver Orders SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:140
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:164
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:141
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:165
 msgid "A `SELECT` statement that returns the following columns:"
 msgstr ""
 
@@ -481,11 +481,11 @@ msgstr ""
 msgid ":math:`y` value of the delivery location"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:162
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:163
 msgid "Pick & Deliver Vehicles SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:172
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:173
 msgid "where:"
 msgstr ""
 
@@ -831,35 +831,45 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:195
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:196
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:199
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:200
 msgid "This example use the following data: TODO put link"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:207
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:208
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:209
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:210
 msgid ":doc:`VRP-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:210
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:211
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:213
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:214
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:214
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:215
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:215
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:216
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__)"
+#~ " `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__"
+#~ msgstr ""
 

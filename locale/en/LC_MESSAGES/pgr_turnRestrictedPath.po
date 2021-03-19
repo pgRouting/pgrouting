@@ -8,20 +8,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:11
+#: ../../build/doc/pgr_turnRestrictedPath.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_turnRestrictedPath.html>`__ "
+"(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_turnRestrictedPath.html>`__)"
+" `3.1 <https://docs.pgrouting.org/3.1/en/pgr_turnRestrictedPath.html>`__ "
+"`3.0 <https://docs.pgrouting.org/3.0/en/pgr_turnRestrictedPath.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_turnRestrictedPath.rst:19
 msgid "pgr_turnRestrictedPath - Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:13
+#: ../../build/doc/pgr_turnRestrictedPath.rst:21
 msgid "``pgr_turnRestrictedPath``"
 msgstr ""
 
@@ -93,58 +102,47 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:20
+#: ../../build/doc/pgr_turnRestrictedPath.rst:28
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:21
+#: ../../build/doc/pgr_turnRestrictedPath.rst:29
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:23
+#: ../../build/doc/pgr_turnRestrictedPath.rst:31
 msgid "New **Experimental** function"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:26
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_turnRestrictedPath.rst:27
-msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_turnRestrictedPath.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_turnRestrictedPath.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_turnRestrictedPath.rst:33
+#: ../../build/doc/pgr_turnRestrictedPath.rst:35
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:35
-#: ../../build/doc/pgr_turnRestrictedPath.rst:40
-#: ../../build/doc/pgr_turnRestrictedPath.rst:45
-#: ../../build/doc/pgr_turnRestrictedPath.rst:50
-#: ../../build/doc/pgr_turnRestrictedPath.rst:55
+#: ../../build/doc/pgr_turnRestrictedPath.rst:37
+#: ../../build/doc/pgr_turnRestrictedPath.rst:42
+#: ../../build/doc/pgr_turnRestrictedPath.rst:47
+#: ../../build/doc/pgr_turnRestrictedPath.rst:52
+#: ../../build/doc/pgr_turnRestrictedPath.rst:57
 msgid "TBD"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:38
+#: ../../build/doc/pgr_turnRestrictedPath.rst:40
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:43
+#: ../../build/doc/pgr_turnRestrictedPath.rst:45
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:48
+#: ../../build/doc/pgr_turnRestrictedPath.rst:50
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:53
+#: ../../build/doc/pgr_turnRestrictedPath.rst:55
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:58
+#: ../../build/doc/pgr_turnRestrictedPath.rst:60
 msgid "Additional Examples"
 msgstr ""
 
@@ -152,19 +150,29 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:63
+#: ../../build/doc/pgr_turnRestrictedPath.rst:65
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:66
+#: ../../build/doc/pgr_turnRestrictedPath.rst:68
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:67
+#: ../../build/doc/pgr_turnRestrictedPath.rst:69
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:68
+#: ../../build/doc/pgr_turnRestrictedPath.rst:70
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_turnRestrictedPath.html>`__)"
+#~ " `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_turnRestrictedPath.html>`__"
+#~ msgstr ""
 

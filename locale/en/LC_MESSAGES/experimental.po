@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,83 +17,106 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/experimental.rst:10
-msgid "Experimental Functions"
+#: ../../build/doc/experimental.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/experimental.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/experimental.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/experimental.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/experimental.html>`__"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:14
-msgid "Possible server crash"
-msgstr ""
-
-#: ../../build/doc/experimental.rst:16
-msgid "These functions might create a server crash"
-msgstr ""
-
-#: ../../build/doc/experimental.rst:18
-msgid "Experimental functions"
-msgstr ""
-
-#: ../../build/doc/experimental.rst:20
-msgid "They are not officially of the current release."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:21
-msgid "They likely will not be officially be part of the next release:"
-msgstr ""
-
-#: ../../build/doc/experimental.rst:23
-msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr ""
-
-#: ../../build/doc/experimental.rst:24
-msgid "Name might change."
+#: ../../build/doc/experimental.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/proposed.html#experimental-"
+"functions>`__ `2.5 <https://docs.pgrouting.org/2.5/en/proposed.html"
+"#experimental-functions>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/proposed.html#experimental-and-"
+"proposed-functions>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/proposed.html#experimental-and-"
+"proposed-functions>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/proposed.html#experimental-and-"
+"proposed-functions>`__"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:25
-msgid "Signature might change."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:26
-msgid "Functionality might change."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:27
-msgid "pgTap tests might be missing."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:28
-msgid "Might need c/c++ coding."
+msgid "Experimental Functions"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:29
-msgid "May lack documentation."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:30
-msgid "Documentation if any might need to be rewritten."
+msgid "Possible server crash"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:31
-msgid "Documentation examples might need to be automatically generated."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:32
-msgid "Might need a lot of feedback from the comunity."
+msgid "These functions might create a server crash"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:33
-msgid "Might depend on a proposed function of pgRouting"
+msgid "Experimental functions"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:34
-msgid "Might depend on a deprecated function of pgRouting"
+#: ../../build/doc/experimental.rst:35
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:36
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:38
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:39
-msgid "Families"
+msgid "Name might change."
 msgstr ""
 
 #: ../../build/doc/experimental.rst:40
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:41
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:42
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:43
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:44
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:45
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:46
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:47
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:48
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:49
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:54
+msgid "Families"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:55
 msgid ":doc:`flow-family`"
 msgstr ""
 
@@ -105,7 +128,7 @@ msgstr ""
 msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:46
+#: ../../build/doc/experimental.rst:61
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ""
 
@@ -117,7 +140,7 @@ msgstr ""
 msgid ":doc:`pgr_chinesePostmanCost`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:52
+#: ../../build/doc/experimental.rst:67
 msgid ":doc:`coloring-family`"
 msgstr ""
 
@@ -133,7 +156,7 @@ msgid ""
 "coloring approach."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:58
+#: ../../build/doc/experimental.rst:73
 msgid ":doc:`topology-functions`"
 msgstr ""
 
@@ -143,7 +166,7 @@ msgid ""
 "source and target."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:64
+#: ../../build/doc/experimental.rst:79
 msgid ":doc:`transformation-family`"
 msgstr ""
 
@@ -159,7 +182,7 @@ msgid ""
 " Graph out of each vertex in the input graph."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:70
+#: ../../build/doc/experimental.rst:85
 msgid ":doc:`traversal-family`"
 msgstr ""
 
@@ -167,7 +190,7 @@ msgstr ""
 msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:76
+#: ../../build/doc/experimental.rst:91
 msgid ":doc:`components-family`"
 msgstr ""
 
@@ -175,7 +198,7 @@ msgstr ""
 msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:82
+#: ../../build/doc/experimental.rst:97
 msgid ":doc:`dijkstra-family`"
 msgstr ""
 
@@ -187,11 +210,11 @@ msgstr ""
 msgid ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:98
+#: ../../build/doc/experimental.rst:113
 msgid "categories"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:99
+#: ../../build/doc/experimental.rst:114
 msgid ":doc:`VRP-category`"
 msgstr ""
 
@@ -217,67 +240,67 @@ msgstr ""
 msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:111
+#: ../../build/doc/experimental.rst:126
 msgid "Not classified"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:112
+#: ../../build/doc/experimental.rst:127
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:113
+#: ../../build/doc/experimental.rst:128
 msgid ":doc:`pgr_binaryBreadthFirstSearch`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:114
+#: ../../build/doc/experimental.rst:129
 msgid ":doc:`pgr_breadthFirstSearch`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:115
+#: ../../build/doc/experimental.rst:130
 msgid ":doc:`pgr_dagShortestPath`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:116
+#: ../../build/doc/experimental.rst:131
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:117
+#: ../../build/doc/experimental.rst:132
 msgid ":doc:`pgr_isPlanar`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:118
+#: ../../build/doc/experimental.rst:133
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:119
+#: ../../build/doc/experimental.rst:134
 msgid ":doc:`pgr_topologicalSort`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:120
+#: ../../build/doc/experimental.rst:135
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:121
+#: ../../build/doc/experimental.rst:136
 msgid ":doc:`pgr_turnRestrictedPath`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:122
+#: ../../build/doc/experimental.rst:137
 msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:141
+#: ../../build/doc/experimental.rst:156
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:144
+#: ../../build/doc/experimental.rst:159
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:145
+#: ../../build/doc/experimental.rst:160
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:146
+#: ../../build/doc/experimental.rst:161
 msgid ":ref:`search`"
 msgstr ""
 

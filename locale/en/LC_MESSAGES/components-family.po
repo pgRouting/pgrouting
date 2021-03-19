@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,39 +17,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/components-family.rst:11
+#: ../../build/doc/components-family.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/components-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en"
+"/components-family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en"
+"/components-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/components-family.html>`__"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/components-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/components-family.html>`__"
+msgstr ""
+
+#: ../../build/doc/components-family.rst:22
 msgid "Components - Family of functions"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:16
+#: ../../build/doc/components-family.rst:27
 msgid ""
 ":doc:`pgr_connectedComponents` - Connected components of an undirected "
 "graph."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:17
+#: ../../build/doc/components-family.rst:28
 msgid ""
 ":doc:`pgr_strongComponents` - Strongly connected components of a directed"
 " graph."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:18
+#: ../../build/doc/components-family.rst:29
 msgid ""
 ":doc:`pgr_biconnectedComponents` - Biconnected components of an "
 "undirected graph."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:19
+#: ../../build/doc/components-family.rst:30
 msgid ""
 ":doc:`pgr_articulationPoints` - Articulation points of an undirected "
 "graph."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:20
+#: ../../build/doc/components-family.rst:31
 msgid ":doc:`pgr_bridges` - Bridges of an undirected graph."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:25
+#: ../../build/doc/components-family.rst:36
 msgid "Experimental"
 msgstr ""
 
@@ -121,37 +137,19 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:32
+#: ../../build/doc/components-family.rst:43
 msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:48
-msgid "Previous versions of this page"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:49
-msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
-"/components-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
-"/components-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
-"/components-family.html>`__"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:54
-msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
-"/components-family.html>`__"
-msgstr ""
-
-#: ../../build/doc/components-family.rst:59
+#: ../../build/doc/components-family.rst:60
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:64
+#: ../../build/doc/components-family.rst:65
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:64
+#: ../../build/doc/components-family.rst:65
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_articulationPoints.rst:6
 #: ../../build/doc/pgr_biconnectedComponents.rst:6
@@ -161,12 +159,12 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:64
+#: ../../build/doc/components-family.rst:65
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:64
+#: ../../build/doc/components-family.rst:65
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_articulationPoints.rst:6
 #: ../../build/doc/pgr_biconnectedComponents.rst:6
@@ -176,19 +174,19 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:66
+#: ../../build/doc/components-family.rst:67
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:66
+#: ../../build/doc/components-family.rst:67
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:66
+#: ../../build/doc/components-family.rst:67
 msgid "Inner query as described below."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:72
+#: ../../build/doc/components-family.rst:73
 msgid "Inner query"
 msgstr ""
 
@@ -196,7 +194,7 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:74
+#: ../../build/doc/components-family.rst:75
 msgid "an SQL query which should return a set of rows with the following columns:"
 msgstr ""
 
@@ -299,11 +297,11 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:81
+#: ../../build/doc/components-family.rst:82
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:84
+#: ../../build/doc/components-family.rst:85
 msgid "pgr_connectedComponents & pgr_strongComponents"
 msgstr ""
 
@@ -356,7 +354,7 @@ msgstr ""
 msgid "Identifier of the vertex that belongs to **component**."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:92
+#: ../../build/doc/components-family.rst:93
 msgid "pgr_biconnectedComponents"
 msgstr ""
 
@@ -375,7 +373,7 @@ msgstr ""
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:99
+#: ../../build/doc/components-family.rst:100
 msgid "pgr_articulationPoints"
 msgstr ""
 
@@ -387,7 +385,7 @@ msgstr ""
 msgid "Identifier of the vertex."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:106
+#: ../../build/doc/components-family.rst:107
 msgid "pgr_bridges"
 msgstr ""
 
@@ -399,7 +397,7 @@ msgstr ""
 msgid "Identifier of the edge that is a bridge."
 msgstr ""
 
-#: ../../build/doc/components-family.rst:113
+#: ../../build/doc/components-family.rst:114
 msgid "pgr_makeConnected - Experimental"
 msgstr ""
 
@@ -419,19 +417,35 @@ msgstr ""
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:121
+#: ../../build/doc/components-family.rst:122
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:124
+#: ../../build/doc/components-family.rst:125
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:125
+#: ../../build/doc/components-family.rst:126
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/components-family.rst:126
+#: ../../build/doc/components-family.rst:127
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Previous versions of this page"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/components-family.html>`__)"
+#~ " `3.0 <https://docs.pgrouting.org/3.0/en/components-"
+#~ "family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
+#~ "/components-family.html>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/components-family.html>`__"
+#~ msgstr ""
 

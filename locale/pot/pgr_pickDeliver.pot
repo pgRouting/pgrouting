@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_pickDeliver.rst:11
+#: ../../build/doc/pgr_pickDeliver.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_pickDeliver.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliver.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliver.rst:19
 msgid "pgr_pickDeliver - Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:13
+#: ../../build/doc/pgr_pickDeliver.rst:21
 msgid "``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem"
 msgstr ""
 
@@ -92,147 +96,139 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:20
+#: ../../build/doc/pgr_pickDeliver.rst:28
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:21
+#: ../../build/doc/pgr_pickDeliver.rst:29
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:23
+#: ../../build/doc/pgr_pickDeliver.rst:31
 msgid "New **experimental** function"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:26
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst:27
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_pickDeliver.rst:32
+#: ../../build/doc/pgr_pickDeliver.rst:35
 msgid "Synopsis"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:34
+#: ../../build/doc/pgr_pickDeliver.rst:37
 msgid "Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehicles."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:36
+#: ../../build/doc/pgr_pickDeliver.rst:39
 msgid "Optimization problem is NP-hard."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:37
+#: ../../build/doc/pgr_pickDeliver.rst:40
 msgid "pickup and Delivery with time windows."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:38
+#: ../../build/doc/pgr_pickDeliver.rst:41
 msgid "All vehicles are equal."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:40
+#: ../../build/doc/pgr_pickDeliver.rst:43
 msgid "Same Starting location."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:41
+#: ../../build/doc/pgr_pickDeliver.rst:44
 msgid "Same Ending location which is the same as Starting location."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:42
+#: ../../build/doc/pgr_pickDeliver.rst:45
 msgid "All vehicles travel at the same speed."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:44
+#: ../../build/doc/pgr_pickDeliver.rst:47
 msgid "A customer is for doing a pickup or doing a deliver."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:46
+#: ../../build/doc/pgr_pickDeliver.rst:49
 msgid "has an open time."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:47
+#: ../../build/doc/pgr_pickDeliver.rst:50
 msgid "has a closing time."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:48
+#: ../../build/doc/pgr_pickDeliver.rst:51
 msgid "has a service time."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:49
+#: ../../build/doc/pgr_pickDeliver.rst:52
 msgid "has an (x, y) location."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:51
+#: ../../build/doc/pgr_pickDeliver.rst:54
 msgid "There is a customer where to deliver a pickup."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:53
+#: ../../build/doc/pgr_pickDeliver.rst:56
 msgid "travel time between customers is distance / speed"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:54
+#: ../../build/doc/pgr_pickDeliver.rst:57
 msgid "pickup and delivery pair is done with the same vehicle."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:55
+#: ../../build/doc/pgr_pickDeliver.rst:58
 msgid "A pickup is done before the delivery."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:59
+#: ../../build/doc/pgr_pickDeliver.rst:62
 msgid "Characteristics"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:61
+#: ../../build/doc/pgr_pickDeliver.rst:64
 msgid "All trucks depart at time 0."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:62
+#: ../../build/doc/pgr_pickDeliver.rst:65
 msgid "No multiple time windows for a location."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:63
+#: ../../build/doc/pgr_pickDeliver.rst:66
 msgid "Less vehicle used is considered better."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:64
+#: ../../build/doc/pgr_pickDeliver.rst:67
 msgid "Less total duration is better."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:65
+#: ../../build/doc/pgr_pickDeliver.rst:68
 msgid "Less wait time is better."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:66
+#: ../../build/doc/pgr_pickDeliver.rst:69
 msgid "the algorithm will raise an exception when"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:68
+#: ../../build/doc/pgr_pickDeliver.rst:71
 msgid "If there is a pickup-deliver pair than violates time window"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:69
+#: ../../build/doc/pgr_pickDeliver.rst:72
 msgid "The speed, max_cycles, ma_capacity have illegal values"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:71
+#: ../../build/doc/pgr_pickDeliver.rst:74
 msgid "Six different initial will be optimized - the best solution found will be result"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:78
+#: ../../build/doc/pgr_pickDeliver.rst:81
 msgid "Signature"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:111
+#: ../../build/doc/pgr_pickDeliver.rst:114
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:113
+#: ../../build/doc/pgr_pickDeliver.rst:116
 msgid "The parameters are:"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:121
+#: ../../build/doc/pgr_pickDeliver.rst:124
 #: ../../build/doc/VRP-category.rst:4
 #: ../../build/doc/VRP-category.rst:6
 #: ../../build/doc/VRP-category.rst:4
@@ -240,7 +236,7 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:121
+#: ../../build/doc/pgr_pickDeliver.rst:124
 #: ../../build/doc/VRP-category.rst:4
 #: ../../build/doc/VRP-category.rst:6
 #: ../../build/doc/VRP-category.rst:4
@@ -248,14 +244,14 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:121
+#: ../../build/doc/pgr_pickDeliver.rst:124
 #: ../../build/doc/VRP-category.rst:4
 #: ../../build/doc/VRP-category.rst:4
 #: ../../build/doc/VRP-category.rst:6
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:121
+#: ../../build/doc/pgr_pickDeliver.rst:124
 #: ../../build/doc/VRP-category.rst:4
 #: ../../build/doc/VRP-category.rst:6
 #: ../../build/doc/VRP-category.rst:4
@@ -263,117 +259,117 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:123
+#: ../../build/doc/pgr_pickDeliver.rst:126
 msgid "**orders_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:123
-#: ../../build/doc/pgr_pickDeliver.rst:124
-#: ../../build/doc/pgr_pickDeliver.rst:125
+#: ../../build/doc/pgr_pickDeliver.rst:126
+#: ../../build/doc/pgr_pickDeliver.rst:127
+#: ../../build/doc/pgr_pickDeliver.rst:128
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:123
+#: ../../build/doc/pgr_pickDeliver.rst:126
 msgid "`Pick & Deliver Orders SQL`_ query contianing the orders to be processed."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:124
+#: ../../build/doc/pgr_pickDeliver.rst:127
 msgid "**vehicles_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:124
+#: ../../build/doc/pgr_pickDeliver.rst:127
 msgid "`Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:125
+#: ../../build/doc/pgr_pickDeliver.rst:128
 msgid "**matrix_sql**"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:125
+#: ../../build/doc/pgr_pickDeliver.rst:128
 msgid "`Pick & Deliver Matrix SQL`_ query containing the distance or travel times."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:126
+#: ../../build/doc/pgr_pickDeliver.rst:129
 msgid "**factor**"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:126
+#: ../../build/doc/pgr_pickDeliver.rst:129
 msgid "``NUMERIC``"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:126
+#: ../../build/doc/pgr_pickDeliver.rst:129
 msgid "1"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:126
+#: ../../build/doc/pgr_pickDeliver.rst:129
 msgid "Travel time multiplier. See :ref:`pd_factor`"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:127
+#: ../../build/doc/pgr_pickDeliver.rst:130
 msgid "**max_cycles**"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:127
-#: ../../build/doc/pgr_pickDeliver.rst:128
+#: ../../build/doc/pgr_pickDeliver.rst:130
+#: ../../build/doc/pgr_pickDeliver.rst:131
 msgid "``INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:127
+#: ../../build/doc/pgr_pickDeliver.rst:130
 msgid "10"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:127
+#: ../../build/doc/pgr_pickDeliver.rst:130
 msgid "Maximum number of cycles to perform on the optimization."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:128
+#: ../../build/doc/pgr_pickDeliver.rst:131
 msgid "**initial_sol**"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:128
+#: ../../build/doc/pgr_pickDeliver.rst:131
 msgid "4"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:128
+#: ../../build/doc/pgr_pickDeliver.rst:131
 msgid "Initial solution to be used."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:130
+#: ../../build/doc/pgr_pickDeliver.rst:133
 msgid "``1`` One order per truck"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:131
+#: ../../build/doc/pgr_pickDeliver.rst:134
 msgid "``2`` Push front order."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:132
+#: ../../build/doc/pgr_pickDeliver.rst:135
 msgid "``3`` Push back order."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:133
+#: ../../build/doc/pgr_pickDeliver.rst:136
 msgid "``4`` Optimize insert."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:134
+#: ../../build/doc/pgr_pickDeliver.rst:137
 msgid "``5`` Push back order that allows more orders to be inserted at the back"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:135
+#: ../../build/doc/pgr_pickDeliver.rst:138
 msgid "``6`` Push front order that allows more orders to be inserted at the front"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:141
+#: ../../build/doc/pgr_pickDeliver.rst:144
 msgid "Pick & Deliver Orders SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:143
-#: ../../build/doc/pgr_pickDeliver.rst:165
-#: ../../build/doc/pgr_pickDeliver.rst:189
+#: ../../build/doc/pgr_pickDeliver.rst:146
+#: ../../build/doc/pgr_pickDeliver.rst:168
+#: ../../build/doc/pgr_pickDeliver.rst:192
 msgid "A `SELECT` statement that returns the following columns:"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:151
-#: ../../build/doc/pgr_pickDeliver.rst:173
+#: ../../build/doc/pgr_pickDeliver.rst:154
+#: ../../build/doc/pgr_pickDeliver.rst:176
 msgid "where:"
 msgstr ""
 
@@ -494,7 +490,7 @@ msgstr ""
 msgid "The node identifier of the delivery, must match a node identifier in the matrix table."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:163
+#: ../../build/doc/pgr_pickDeliver.rst:166
 msgid "Pick & Deliver Vehicles SQL"
 msgstr ""
 
@@ -598,11 +594,11 @@ msgstr ""
 msgid "The node identifier of the ending location, must match a node identifier in the matrix table."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:187
+#: ../../build/doc/pgr_pickDeliver.rst:190
 msgid "Pick & Deliver Matrix SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:193
+#: ../../build/doc/pgr_pickDeliver.rst:196
 msgid "TODO"
 msgstr ""
 
@@ -626,35 +622,35 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:204
+#: ../../build/doc/pgr_pickDeliver.rst:207
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:208
+#: ../../build/doc/pgr_pickDeliver.rst:211
 msgid "This example use the following data: TODO put link"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:216
+#: ../../build/doc/pgr_pickDeliver.rst:219
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:218
+#: ../../build/doc/pgr_pickDeliver.rst:221
 msgid ":doc:`VRP-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:219
+#: ../../build/doc/pgr_pickDeliver.rst:222
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:222
+#: ../../build/doc/pgr_pickDeliver.rst:225
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:223
+#: ../../build/doc/pgr_pickDeliver.rst:226
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_pickDeliver.rst:224
+#: ../../build/doc/pgr_pickDeliver.rst:227
 msgid ":ref:`search`"
 msgstr ""
 

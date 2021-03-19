@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,88 +16,88 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/prim-family.rst:11
+#: ../../build/doc/prim-family.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/prim-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/prim-family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/prim-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/prim-family.html>`__"
+msgstr ""
+
+#: ../../build/doc/prim-family.rst:19
 msgid "Prim - Family of functions"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:15
+#: ../../build/doc/prim-family.rst:23
 msgid ":doc:`pgr_prim`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:16
+#: ../../build/doc/prim-family.rst:24
 msgid ":doc:`pgr_primBFS`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:17
+#: ../../build/doc/prim-family.rst:25
 msgid ":doc:`pgr_primDD`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:18
+#: ../../build/doc/prim-family.rst:26
 msgid ":doc:`pgr_primDFS`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:25
+#: ../../build/doc/prim-family.rst:33
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:35
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/prim-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/prim-family.html>`__"
-msgstr ""
-
-#: ../../build/doc/prim-family.rst:40
+#: ../../build/doc/prim-family.rst:45
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:42
+#: ../../build/doc/prim-family.rst:47
 msgid "The prim algorithm was developed in 1930 by Czech mathematician Vojtěch Jarník. It is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph. This means it finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized. The algorithm operates by building this tree one vertex at a time, from an arbitrary starting vertex, at each step adding the cheapest possible connection from the tree to another vertex."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:50
+#: ../../build/doc/prim-family.rst:55
 msgid "This algorithms find the minimum spanning forest in a possibly disconnected graph; in contrast, the most basic form of Prim's algorithm only finds minimum spanning trees in connected graphs. However, running Prim's algorithm separately for each connected component of the graph, then it is called minimum spanning forest."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:56
+#: ../../build/doc/prim-family.rst:61
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:60
+#: ../../build/doc/prim-family.rst:65
 msgid "It's implementation is only on **undirected graph**."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:61
+#: ../../build/doc/prim-family.rst:66
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:62
+#: ../../build/doc/prim-family.rst:67
 msgid "When the graph is connected"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:64
+#: ../../build/doc/prim-family.rst:69
 msgid "The resulting edges make up a tree"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:66
+#: ../../build/doc/prim-family.rst:71
 msgid "When the graph is not connected,"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:68
+#: ../../build/doc/prim-family.rst:73
 msgid "Finds a minimum spanning tree for each connected component."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:69
+#: ../../build/doc/prim-family.rst:74
 msgid "The resulting edges make up a forest."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:71
+#: ../../build/doc/prim-family.rst:76
 msgid "Prim's running time: :math:`O(E*log V)`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:76
+#: ../../build/doc/prim-family.rst:81
 msgid "From boost Graph: \"The algorithm as implemented in Boost.Graph does not produce correct results on graphs with parallel edges.\""
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:80
+#: ../../build/doc/prim-family.rst:85
 msgid "Inner query"
 msgstr ""
 
@@ -196,31 +196,31 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:87
+#: ../../build/doc/prim-family.rst:92
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:89
+#: ../../build/doc/prim-family.rst:94
 msgid ":doc:`spanningTree-family`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:90
+#: ../../build/doc/prim-family.rst:95
 msgid "`Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:91
+#: ../../build/doc/prim-family.rst:96
 msgid "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:94
+#: ../../build/doc/prim-family.rst:99
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:95
+#: ../../build/doc/prim-family.rst:100
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:96
+#: ../../build/doc/prim-family.rst:101
 msgid ":ref:`search`"
 msgstr ""
 

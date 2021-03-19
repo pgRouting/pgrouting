@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-13 19:03-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/index.rst:14
+#: ../../build/doc/index.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/index.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/index.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/index.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/index.html>`__"
+msgstr ""
+
+#: ../../build/doc/index.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/index.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/index.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/index.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 "
+"<https://docs.pgrouting.org/2.0/en/index.html>`__"
+msgstr ""
+
+#: ../../build/doc/index.rst:28
 msgid "Table of Contents"
 msgstr ""
 
-#: ../../build/doc/index.rst:16
+#: ../../build/doc/index.rst:30
 msgid ""
 "pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL "
 "<https://www.postgresql.org>`__ geospatial database to provide geospatial"
 " routing and other network analysis functionality."
 msgstr ""
 
-#: ../../build/doc/index.rst:19
+#: ../../build/doc/index.rst:33
 msgid "This is the manual for pgRouting |release|."
 msgstr ""
 
-#: ../../build/doc/index.rst:25
+#: ../../build/doc/index.rst:39
 msgid ""
 "The pgRouting Manual is licensed under a `Creative Commons Attribution-"
 "Share Alike 3.0 License <https://creativecommons.org/licenses/by-"
@@ -42,31 +63,31 @@ msgid ""
 "pgRouting see the :ref:`license` page."
 msgstr ""
 
-#: ../../build/doc/index.rst:32
+#: ../../build/doc/index.rst:46
 msgid "General"
 msgstr ""
 
-#: ../../build/doc/index.rst:42
+#: ../../build/doc/index.rst:56
 msgid ":doc:`sampledata` that is used in the examples of this manual."
 msgstr ""
 
-#: ../../build/doc/index.rst:50
+#: ../../build/doc/index.rst:64
 msgid "Pgrouting Concepts"
 msgstr ""
 
-#: ../../build/doc/index.rst:59
+#: ../../build/doc/index.rst:73
 msgid "Reference"
 msgstr ""
 
-#: ../../build/doc/index.rst:60
+#: ../../build/doc/index.rst:74
 msgid ":doc:`pgr_version` - Get pgRouting's version information."
 msgstr ""
 
-#: ../../build/doc/index.rst:61
+#: ../../build/doc/index.rst:75
 msgid ":doc:`pgr_full_version` - Get pgRouting's details of version."
 msgstr ""
 
-#: ../../build/doc/index.rst:71
+#: ../../build/doc/index.rst:85
 msgid ":doc:`routingFunctions`"
 msgstr ""
 
@@ -404,31 +425,31 @@ msgstr ""
 msgid ":doc:`spanningTree-family`"
 msgstr ""
 
-#: ../../build/doc/index.rst:85
+#: ../../build/doc/index.rst:99
 msgid "Available Functions but not official pgRouting functions"
 msgstr ""
 
-#: ../../build/doc/index.rst:87
+#: ../../build/doc/index.rst:101
 msgid ":doc:`proposed`"
 msgstr ""
 
-#: ../../build/doc/index.rst:88
+#: ../../build/doc/index.rst:102
 msgid ":doc:`experimental`"
 msgstr ""
 
-#: ../../build/doc/index.rst:99
+#: ../../build/doc/index.rst:113
 msgid ":doc:`release_notes`"
 msgstr ""
 
-#: ../../build/doc/index.rst:108
+#: ../../build/doc/index.rst:122
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/index.rst:109
+#: ../../build/doc/index.rst:123
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/index.rst:110
+#: ../../build/doc/index.rst:124
 msgid ":ref:`search`"
 msgstr ""
 

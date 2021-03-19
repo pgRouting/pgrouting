@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-14 13:58-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,78 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_pushRelabel.rst:11
-msgid "pgr_pushRelabel"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:13
+#: ../../build/doc/pgr_pushRelabel.rst:12
 msgid ""
-"``pgr_pushRelabel`` — Calculates the flow on the graph edges that "
-"maximizes the flow from the sources to the targets using Push Relabel "
-"Algorithm."
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:18
-msgid "Boost Graph Inside"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:21
-msgid "Availability"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:22
-msgid "Version 3.2.0"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:24
-msgid "New **proposed** function:"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:26
-msgid "pgr_pushRelabel(Combinations)"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:28
-msgid "Version 3.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:30
-msgid "**Official** function"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:32
-msgid "Version 2.5.0"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:34
-msgid "Renamed from ``pgr_maxFlowPushRelabel``"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:35
-msgid "**Proposed** function"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:37
-msgid "Version 2.3.0"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:39
-msgid "New **Experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:42
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_pushRelabel.rst:43
-msgid ""
-"**Supported versions:** current(`3.2 "
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_pushRelabel.html>`__ (`3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_pushRelabel.html>`__) `3.1 "
 "<https://docs.pgrouting.org/3.1/en/pgr_pushRelabel.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_pushRelabel.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:48
+#: ../../build/doc/pgr_pushRelabel.rst:17
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_pushRelabel.html>`__ `2.5 "
@@ -97,9 +35,68 @@ msgid ""
 "<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowPushRelabel.html>`__"
 msgstr ""
 
+#: ../../build/doc/pgr_pushRelabel.rst:24
+msgid "pgr_pushRelabel"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:26
+msgid ""
+"``pgr_pushRelabel`` — Calculates the flow on the graph edges that "
+"maximizes the flow from the sources to the targets using Push Relabel "
+"Algorithm."
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:31
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:34
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:35
+msgid "Version 3.2.0"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:37
+msgid "New **proposed** function:"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:39
+msgid "pgr_pushRelabel(Combinations)"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:41
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:43
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:45
+msgid "Version 2.5.0"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:47
+msgid "Renamed from ``pgr_maxFlowPushRelabel``"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:48
+msgid "**Proposed** function"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:50
+msgid "Version 2.3.0"
+msgstr ""
+
+#: ../../build/doc/pgr_pushRelabel.rst:52
+msgid "New **Experimental** function"
+msgstr ""
+
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_pushRelabel.rst:55
+#: ../../build/doc/pgr_pushRelabel.rst:56
 msgid "Description"
 msgstr ""
 
@@ -158,19 +155,19 @@ msgstr ""
 msgid "By aggregation of the incoming flow to the targets"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:61
+#: ../../build/doc/pgr_pushRelabel.rst:62
 msgid "Running time: :math:`O( V ^ 3)`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:64
+#: ../../build/doc/pgr_pushRelabel.rst:65
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:67
+#: ../../build/doc/pgr_pushRelabel.rst:68
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:82
+#: ../../build/doc/pgr_pushRelabel.rst:83
 msgid "One to One"
 msgstr ""
 
@@ -178,51 +175,51 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:90
+#: ../../build/doc/pgr_pushRelabel.rst:91
 msgid "From vertex :math:`6` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:100
+#: ../../build/doc/pgr_pushRelabel.rst:101
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:102
+#: ../../build/doc/pgr_pushRelabel.rst:103
 msgid ""
 "Calculates the flow on the graph edges that maximizes the flow from the "
 "`source` to all of the `targets`."
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:110
+#: ../../build/doc/pgr_pushRelabel.rst:111
 msgid "From vertex :math:`6` to vertices :math:`\\{11, 1, 13\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:120
+#: ../../build/doc/pgr_pushRelabel.rst:121
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:128
+#: ../../build/doc/pgr_pushRelabel.rst:129
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:138
+#: ../../build/doc/pgr_pushRelabel.rst:139
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:146
+#: ../../build/doc/pgr_pushRelabel.rst:147
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:156
+#: ../../build/doc/pgr_pushRelabel.rst:157
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:164
+#: ../../build/doc/pgr_pushRelabel.rst:165
 msgid ""
 "Using a combinations table, equivalent to calculating result from "
 "vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`."
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:171
+#: ../../build/doc/pgr_pushRelabel.rst:172
 msgid "Parameters"
 msgstr ""
 
@@ -304,7 +301,7 @@ msgstr ""
 msgid "Array of identifiers of the ending vertices of the flow."
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:178
+#: ../../build/doc/pgr_pushRelabel.rst:179
 msgid "Inner queries"
 msgstr ""
 
@@ -402,7 +399,7 @@ msgid ""
 "vertices to the target vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:189
+#: ../../build/doc/pgr_pushRelabel.rst:190
 msgid "Result Columns"
 msgstr ""
 
@@ -452,32 +449,43 @@ msgid ""
 "``end_vid``)."
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:196
+#: ../../build/doc/pgr_pushRelabel.rst:197
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:198
+#: ../../build/doc/pgr_pushRelabel.rst:199
 msgid ":doc:`flow-family`, :doc:`pgr_boykovKolmogorov`, :doc:`pgr_edmondsKarp`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:199
+#: ../../build/doc/pgr_pushRelabel.rst:200
 msgid "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:200
+#: ../../build/doc/pgr_pushRelabel.rst:201
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:203
+#: ../../build/doc/pgr_pushRelabel.rst:204
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:204
+#: ../../build/doc/pgr_pushRelabel.rst:205
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_pushRelabel.rst:205
+#: ../../build/doc/pgr_pushRelabel.rst:206
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_pushRelabel.html>`__) "
+#~ "`3.1 <https://docs.pgrouting.org/3.1/en/pgr_pushRelabel.html>`__"
+#~ " `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_pushRelabel.html>`__"
+#~ msgstr ""
 

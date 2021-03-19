@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,39 +16,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_primBFS.rst:11
-msgid "pgr_primBFS"
-msgstr ""
-
-#: ../../build/doc/pgr_primBFS.rst:13
-msgid "``pgr_primBFS`` — Prim's algorithm for Minimum Spanning Tree with Depth First Search ordering."
+#: ../../build/doc/pgr_primBFS.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_primBFS.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_primBFS.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/pgr_primBFS.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_primBFS.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_primBFS.rst:19
+msgid "pgr_primBFS"
+msgstr ""
+
+#: ../../build/doc/pgr_primBFS.rst:21
+msgid "``pgr_primBFS`` — Prim's algorithm for Minimum Spanning Tree with Depth First Search ordering."
+msgstr ""
+
+#: ../../build/doc/pgr_primBFS.rst:27
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:22
+#: ../../build/doc/pgr_primBFS.rst:30
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:23
+#: ../../build/doc/pgr_primBFS.rst:31
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:25
+#: ../../build/doc/pgr_primBFS.rst:33
 msgid "New **Official** function"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:28
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_primBFS.rst:29
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_primBFS.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_primBFS.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_primBFS.rst:34
+#: ../../build/doc/pgr_primBFS.rst:37
 #: ../../build/doc/pgr_kruskalDFS.rst:7
 #: ../../build/doc/pgr_kruskalDFS.rst:28
 #: ../../build/doc/pgRouting-concepts.rst:4
@@ -56,11 +52,11 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:36
+#: ../../build/doc/pgr_primBFS.rst:39
 msgid "Visits and extracts the nodes information in Breath First Search ordering of the Minimum Spanning Tree created with Prims's algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:39
+#: ../../build/doc/pgr_primBFS.rst:42
 msgid "**The main Characteristics are:**"
 msgstr ""
 
@@ -96,19 +92,19 @@ msgstr ""
 msgid "Prim's running time: :math:`O(E*log V)`"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:45
+#: ../../build/doc/pgr_primBFS.rst:48
 msgid "Returned tree nodes from a root vertex are on Breath First Search order"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:46
+#: ../../build/doc/pgr_primBFS.rst:49
 msgid "Breath First Search Running time: :math:`O(E + V)`"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:49
+#: ../../build/doc/pgr_primBFS.rst:52
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:62
+#: ../../build/doc/pgr_primBFS.rst:65
 msgid "Single vertex"
 msgstr ""
 
@@ -117,15 +113,15 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:70
+#: ../../build/doc/pgr_primBFS.rst:73
 msgid "The Minimum Spanning Tree having as root vertex :math:`2`"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:80
+#: ../../build/doc/pgr_primBFS.rst:83
 msgid "Multiple vertices"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:88
+#: ../../build/doc/pgr_primBFS.rst:91
 msgid "The Minimum Spanning Tree starting on vertices :math:`\\{13, 2\\}` with :math:`depth <= 3`"
 msgstr ""
 
@@ -402,39 +398,39 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:103
+#: ../../build/doc/pgr_primBFS.rst:106
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:105
+#: ../../build/doc/pgr_primBFS.rst:108
 msgid ":doc:`spanningTree-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:106
+#: ../../build/doc/pgr_primBFS.rst:109
 msgid ":doc:`prim-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:107
+#: ../../build/doc/pgr_primBFS.rst:110
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:108
+#: ../../build/doc/pgr_primBFS.rst:111
 msgid "`Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:109
+#: ../../build/doc/pgr_primBFS.rst:112
 msgid "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:112
+#: ../../build/doc/pgr_primBFS.rst:115
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:113
+#: ../../build/doc/pgr_primBFS.rst:116
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_primBFS.rst:114
+#: ../../build/doc/pgr_primBFS.rst:117
 msgid ":ref:`search`"
 msgstr ""
 

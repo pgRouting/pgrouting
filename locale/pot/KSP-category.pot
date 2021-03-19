@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 13:06-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,15 +16,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/KSP-category.rst:11
+#: ../../build/doc/KSP-category.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/KSP-category.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/KSP-category.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/KSP-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/KSP-category.html>`__"
+msgstr ""
+
+#: ../../build/doc/KSP-category.rst:17
+msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/KSP-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/KSP-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/KSP-category.html>`__"
+msgstr ""
+
+#: ../../build/doc/KSP-category.rst:23
 msgid "K shortest paths - Category"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:15
+#: ../../build/doc/KSP-category.rst:27
 msgid ":doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:20
+#: ../../build/doc/KSP-category.rst:32
 msgid "Proposed"
 msgstr ""
 
@@ -64,31 +72,19 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:27
+#: ../../build/doc/KSP-category.rst:39
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:33
-msgid "Previous versions of this page"
-msgstr ""
-
-#: ../../build/doc/KSP-category.rst:34
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/KSP-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/KSP-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/KSP-category.html>`__"
-msgstr ""
-
-#: ../../build/doc/KSP-category.rst:39
-msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/KSP-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/KSP-category.html>`__"
-msgstr ""
-
-#: ../../build/doc/KSP-category.rst:44
+#: ../../build/doc/KSP-category.rst:45
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:45
+#: ../../build/doc/KSP-category.rst:46
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:46
+#: ../../build/doc/KSP-category.rst:47
 msgid ":ref:`search`"
 msgstr ""
 

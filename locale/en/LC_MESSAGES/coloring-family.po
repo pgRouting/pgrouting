@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-13 19:03-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/coloring-family.rst:11
+#: ../../build/doc/coloring-family.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/coloring-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en"
+"/coloring-family.html>`__)"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:18
 msgid "Coloring - Family of functions (Experimental)"
 msgstr ""
 
@@ -89,61 +96,51 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:19
+#: ../../build/doc/coloring-family.rst:26
 msgid ""
 ":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using "
 "greedy approach."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:20
+#: ../../build/doc/coloring-family.rst:27
 msgid ""
 ":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based "
 "coloring approach."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:32
-msgid "Versions of this page"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:33
-msgid ""
-"**Supported versions:** current(`3.2 <https://docs.pgrouting.org/3.2/en"
-"/coloring-family.html>`__)"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:38
+#: ../../build/doc/coloring-family.rst:40
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:43
+#: ../../build/doc/coloring-family.rst:45
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:43
-#: ../../build/doc/coloring-family.rst:69
+#: ../../build/doc/coloring-family.rst:45
+#: ../../build/doc/coloring-family.rst:71
 #: ../../build/doc/traversal-family.rst:4
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:43
-#: ../../build/doc/coloring-family.rst:69
+#: ../../build/doc/coloring-family.rst:45
+#: ../../build/doc/coloring-family.rst:71
 #: ../../build/doc/traversal-family.rst:4
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:45
+#: ../../build/doc/coloring-family.rst:47
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:45
+#: ../../build/doc/coloring-family.rst:47
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:45
+#: ../../build/doc/coloring-family.rst:47
 msgid "Inner query as described below."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:51
+#: ../../build/doc/coloring-family.rst:53
 msgid "Inner query"
 msgstr ""
 
@@ -151,13 +148,13 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:53
+#: ../../build/doc/coloring-family.rst:55
 msgid ""
 "an SQL query of an **undirected** graph, which should return a set of "
 "rows with the following columns:"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:69
+#: ../../build/doc/coloring-family.rst:71
 #: ../../build/doc/traversal-family.rst:4
 msgid "Column"
 msgstr ""
@@ -249,40 +246,40 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:62
+#: ../../build/doc/coloring-family.rst:64
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:66
+#: ../../build/doc/coloring-family.rst:68
 msgid "Returns SET OF ``(vertex_id, color_id)``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:71
+#: ../../build/doc/coloring-family.rst:73
 msgid "**vertex_id**"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:71
-#: ../../build/doc/coloring-family.rst:72
+#: ../../build/doc/coloring-family.rst:73
+#: ../../build/doc/coloring-family.rst:74
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:71
+#: ../../build/doc/coloring-family.rst:73
 msgid "Identifier of the vertex."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:72
+#: ../../build/doc/coloring-family.rst:74
 msgid "**color_id**"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:72
+#: ../../build/doc/coloring-family.rst:74
 msgid "Identifier of the color of the vertex."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:74
+#: ../../build/doc/coloring-family.rst:76
 msgid "The minimum value of color is 1."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:82
+#: ../../build/doc/coloring-family.rst:84
 msgid "See Also"
 msgstr ""
 
@@ -310,20 +307,28 @@ msgid ""
 "<https://en.wikipedia.org/wiki/Bipartite_graph>`__"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:96
+#: ../../build/doc/coloring-family.rst:98
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:97
+#: ../../build/doc/coloring-family.rst:99
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:98
+#: ../../build/doc/coloring-family.rst:100
 msgid ":ref:`search`"
 msgstr ""
 
 #~ msgid ""
 #~ "`Boost: is_bipartite algorithm documentation "
 #~ "<https://www.boost.org/doc/libs/1_50_0/libs/graph/doc/is_bipartite.html>`__"
+#~ msgstr ""
+
+#~ msgid "Versions of this page"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/coloring-family.html>`__)"
 #~ msgstr ""
 
