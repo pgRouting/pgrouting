@@ -30,37 +30,54 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/time_msg.h"
 #include "c_common/debug_macro.h"
-
+/** 
+ * @brief Function for array input
+ * @details This function generates the array inputs according to their type 
+ * received through @a ArrayType *v parameter and store them in @a c_array. It
+ * can be empty also if received @a allow_empty true. The cases of failure are:-
+ * 1. When @a ndim is not equal to one dimension. 
+ * 2. When no element is found i.e. nitems is zero or negative. 
+ * 3. If the element type doesn't lie in switch cases, give the error of expected array of any integer type
+ * 4. When size of @a c_array is out of range or memory. 
+ * 5. When null value is found in the array. 
+ * 
+ * All these failures are represented as error through @a elog.
+ * @param *v The type of element to be processed.
+ * @param *arrlen The length of the array (To be determined in this function).
+ * @param allow_empty Bool type parameter that tells us whether to consider empty
+ *                    array or not.
+ * @pre The initial value of *arrlen should be zero.
+ * @returns The resultant array i.e. @a c_array.
+ */
 static
 int64_t*
 pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
-    clock_t start_t = clock();
-    int64_t *c_array = NULL;;
+    clock_t start_t = clock(); 
+    int64_t *c_array = NULL;  
 
-    Oid     element_type = ARR_ELEMTYPE(v);
-    int    *dim = ARR_DIMS(v);
+    Oid     element_type = ARR_ELEMTYPE(v); 
+    int    *dim = ARR_DIMS(v); 
     int     ndim = ARR_NDIM(v);
     int     nitems = ArrayGetNItems(ndim, dim);
     Datum  *elements;
-    bool   *nulls;
-    int16   typlen;
-    bool    typbyval;
-    char    typalign;
+    bool   *nulls; 
+    int16   typlen; 
+    bool    typbyval; 
+    char    typalign; 
 
     assert((*arrlen) == 0);
 
-
+    
     if (allow_empty && (ndim == 0 || nitems <= 0)) {
         PGR_DBG("ndim %i nitems % i", ndim, nitems);
-        return (int64_t*) NULL;
+        return (int64_t*)NULL;
     }
-    /* the array is not empty*/
-
+    /* array is not empty */
     if (ndim != 1) {
         elog(ERROR, "One dimension expected");
         return (int64_t*)NULL;
     }
-
+    
     if (nitems <= 0) {
         elog(ERROR, "No elements found");
         return (int64_t*)NULL;
@@ -69,7 +86,7 @@ pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
     get_typlenbyvalalign(element_type,
             &typlen, &typbyval, &typalign);
 
-    /* validate input data type */
+    /* Validate input data type */
     switch (element_type) {
         case INT2OID:
         case INT4OID:
@@ -84,7 +101,7 @@ pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
     deconstruct_array(v, element_type, typlen, typbyval,
             typalign, &elements, &nulls,
             &nitems);
-
+    
     c_array = (int64_t *) palloc(sizeof(int64_t) * (size_t)nitems);
     if (!c_array) {
         elog(ERROR, "Out of memory!");
@@ -92,7 +109,7 @@ pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
 
 
     int i;
-    for (i = 0; i < nitems; i++) {
+    for (i = 0; i < nitems; i++) {  
         if (nulls[i]) {
             pfree(c_array);
             elog(ERROR, "NULL value found in Array!");
@@ -123,7 +140,6 @@ pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
 int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     return pgr_get_bigIntArr(input, arrlen, false);
 }
-
 
 
 int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input) {

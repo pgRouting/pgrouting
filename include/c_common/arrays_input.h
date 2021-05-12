@@ -31,10 +31,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <postgres.h>
 #include <utils/array.h>
 
-/** @brief enforces the input array to be @b NOT empty */
+/** 
+ * @brief Enforces the input array to be @b NOT empty 
+ * @param *arrlen Length of the array
+ * @param *input Input type of the array
+ * @returns Returns the output of @a pgr_get_bitIntArray when @a allow_empty is set to false 
+ */
 int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input);
 
-/** @brief Allows the input array to be empty */
+/** 
+ * @brief Allows the input array to be empty
+ * @param *arrlen Length of the array
+ * @param *input Input type of the array
+ * @returns Returns the output of @a pgr_get_bitIntArray when @a allow_empty is set to true
+ */
 int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input);
 
 #endif  // INCLUDE_C_COMMON_ARRAYS_INPUT_H_
