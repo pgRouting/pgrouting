@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <postgres.h>
 #include <utils/array.h>
 
-/** @brief enforces the input array to be @b NOT empty */
+/** @brief Enforces the input array to be @b NOT empty */
 int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input);
 
 /** @brief Allows the input array to be empty */
