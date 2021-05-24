@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      
+
       - name: install deps
         run: |
           brew install postgresql postgis boost
@@ -40,7 +40,9 @@ jobs:
           cd pgTapExtension
           make -j
           sudo make install
-          cpan TAP::Parser::SourceHandler::pgTAP
+          sudo cpan TAP::Parser::SourceHandler::pgTAP
+          sudo find /usr/local -name pg_prove
+          sudo ln -s  /usr/local/Cellar/perl/5.32.1_1/bin/pg_prove  symlink it into /usr/local/bin
 
       - name: Test
         run: |
