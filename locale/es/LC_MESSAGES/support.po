@@ -5,29 +5,69 @@
 # 
 # Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2020
-# MarPetra <mvergaratrejo@gmail.com>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: 2020-11-04 18:29+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/support.rst:13
+#: ../../build/doc/support.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/support.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/support.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/support.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/support.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual "
+"<https://docs.pgrouting.org/latest/en/support.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/support.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/support.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/support.html>`__"
+
+#: ../../build/doc/support.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/support.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/support.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/support.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/doc/src/introduction/support.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/doc/src/introduction/support.html>`__ "
+"`2.1 "
+"<https://docs.pgrouting.org/2.1/en/doc/src/introduction/support.html>`__ "
+"`2.0 "
+"<https://docs.pgrouting.org/2.0/en/doc/src/introduction/support.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/support.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/support.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/support.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/doc/src/introduction/support.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/doc/src/introduction/support.html>`__ "
+"`2.1 "
+"<https://docs.pgrouting.org/2.1/en/doc/src/introduction/support.html>`__ "
+"`2.0 "
+"<https://docs.pgrouting.org/2.0/en/doc/src/introduction/support.html>`__"
+
+#: ../../build/doc/support.rst:27
 msgid "Support"
 msgstr "Soporte"
 
-#: ../../build/doc/support.rst:15
+#: ../../build/doc/support.rst:29
 msgid ""
 "pgRouting community support is available through the `pgRouting website "
 "<https://pgrouting.org/support.html>`_, `documentation "
@@ -43,11 +83,11 @@ msgstr ""
 "comercial), debajo encontrarás una lista de compañias que proporcionan "
 "servicios de consultoría y desarrollo de ruteo."
 
-#: ../../build/doc/support.rst:19
+#: ../../build/doc/support.rst:33
 msgid "Reporting Problems"
 msgstr "Reporte de Problemas"
 
-#: ../../build/doc/support.rst:21
+#: ../../build/doc/support.rst:35
 msgid ""
 "Bugs are reported and managed in an `issue tracker "
 "<https://github.com/pgrouting/pgrouting/issues>`_. Please follow these "
@@ -57,7 +97,7 @@ msgstr ""
 "<https://github.com/pgrouting/pgrouting/issues>`_. Por favor siga los "
 "siguientes pasos:"
 
-#: ../../build/doc/support.rst:23
+#: ../../build/doc/support.rst:37
 msgid ""
 "Search the tickets to see if your problem has already been reported. If so, "
 "add any extra context you might have found, or at least indicate that you "
@@ -68,7 +108,7 @@ msgstr ""
 "indicar que también está teniendo el problema. Esto nos ayudará a priorizar "
 "los problemas más comunes."
 
-#: ../../build/doc/support.rst:24
+#: ../../build/doc/support.rst:38
 msgid ""
 "If your problem is unreported, create a `new issue "
 "<https://github.com/pgRouting/pgrouting/issues/new>`__ for it."
@@ -76,7 +116,7 @@ msgstr ""
 "Si su problema no se ha informado, cree un `nuevo asunto "
 "<https://github.com/pgRouting/pgrouting/issues/new>`__ para ello."
 
-#: ../../build/doc/support.rst:25
+#: ../../build/doc/support.rst:39
 msgid ""
 "In your report include explicit instructions to replicate your issue. The "
 "best tickets include the exact SQL necessary to replicate a problem."
@@ -85,7 +125,7 @@ msgstr ""
 "Las mejores entradas incluyen consultas SQL exactas que se necesitan para "
 "reproducir el problema."
 
-#: ../../build/doc/support.rst:26
+#: ../../build/doc/support.rst:40
 msgid ""
 "If you can test older versions of PostGIS for your problem, please do. On "
 "your ticket, note the earliest version the problem appears."
@@ -94,7 +134,7 @@ msgstr ""
 "por favor hágalo. En su reporte, tenga en cuenta la versión más antigua en "
 "la que aparezca el problema."
 
-#: ../../build/doc/support.rst:27
+#: ../../build/doc/support.rst:41
 msgid ""
 "For the versions where you can replicate the problem, note the operating "
 "system and version of pgRouting, PostGIS and PostgreSQL."
@@ -102,7 +142,7 @@ msgstr ""
 "Para las versiones donde se puede reproducir el problema, anote el sistema "
 "operativo y la versión de pgRouting, PostGIS y PostgreSQL."
 
-#: ../../build/doc/support.rst:28
+#: ../../build/doc/support.rst:42
 msgid ""
 "It is recommended to use the following wrapper on the problem to pin point "
 "the step that is causing the problem."
@@ -110,11 +150,11 @@ msgstr ""
 "Se recomienda que utilice el siguiente envoltorio en su problema para "
 "determinar el paso que está causando el problema"
 
-#: ../../build/doc/support.rst:39
+#: ../../build/doc/support.rst:53
 msgid "Mailing List and GIS StackExchange"
 msgstr "Listas de correo y GIS StackExchange"
 
-#: ../../build/doc/support.rst:41
+#: ../../build/doc/support.rst:55
 msgid ""
 "There are two mailing lists for pgRouting hosted on OSGeo mailing list "
 "server:"
@@ -122,14 +162,14 @@ msgstr ""
 "Hay dos listas de correo para pgRouting alojados en las listas de correo del"
 " Servidor de OSGeo:"
 
-#: ../../build/doc/support.rst:43
+#: ../../build/doc/support.rst:57
 msgid ""
 "User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
 msgstr ""
 "Lista de correo para usuarios: https://lists.osgeo.org/mailman/listinfo"
 "/pgrouting-users"
 
-#: ../../build/doc/support.rst:44
+#: ../../build/doc/support.rst:58
 msgid ""
 "Developer mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-"
 "dev"
@@ -137,7 +177,7 @@ msgstr ""
 "Lista de correo para desarroladores: "
 "https://lists.osgeo.org/mailman/listinfo/pgrouting-dev"
 
-#: ../../build/doc/support.rst:46
+#: ../../build/doc/support.rst:60
 msgid ""
 "For general questions and topics about how to use pgRouting, please write to"
 " the user mailing list."
@@ -145,7 +185,7 @@ msgstr ""
 "Para preguntas generales y tópicos sobre el uso pgRouting, escriba a la "
 "lista de correo para usuario."
 
-#: ../../build/doc/support.rst:48
+#: ../../build/doc/support.rst:62
 msgid ""
 "You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_ "
 "and tag the question with ``pgrouting``. Find all questions tagged with "
@@ -160,11 +200,11 @@ msgstr ""
 "`preguntas de retroalimentación de pgRouting "
 "<https://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
 
-#: ../../build/doc/support.rst:57
+#: ../../build/doc/support.rst:71
 msgid "Commercial Support"
 msgstr "Soporte Comercial"
 
-#: ../../build/doc/support.rst:59
+#: ../../build/doc/support.rst:73
 msgid ""
 "For users who require professional support, development and consulting "
 "services, consider contacting any of the following organizations, which have"
@@ -175,62 +215,62 @@ msgstr ""
 "organizaciones, que han contribuido significativamente al desarrollo de "
 "pgRouting:"
 
-#: ../../build/doc/support.rst:64
+#: ../../build/doc/support.rst:78
 msgid "**Company**"
 msgstr "**Empresa**"
 
-#: ../../build/doc/support.rst:65
+#: ../../build/doc/support.rst:79
 msgid "**Offices in**"
 msgstr "**Oficinas en**"
 
-#: ../../build/doc/support.rst:66
+#: ../../build/doc/support.rst:80
 msgid "**Website**"
 msgstr "**Sitio web**"
 
-#: ../../build/doc/support.rst:67
+#: ../../build/doc/support.rst:81
 msgid "Georepublic"
 msgstr "Georepublic"
 
-#: ../../build/doc/support.rst:68
+#: ../../build/doc/support.rst:82
 msgid "Germany, Japan"
 msgstr "Alemania, Japón"
 
-#: ../../build/doc/support.rst:69
+#: ../../build/doc/support.rst:83
 msgid "https://georepublic.info"
 msgstr "https://georepublic.info"
 
-#: ../../build/doc/support.rst:70
+#: ../../build/doc/support.rst:84
 msgid "Paragon Corporation"
 msgstr "Paragon Corporation"
 
-#: ../../build/doc/support.rst:71
+#: ../../build/doc/support.rst:85
 msgid "United States"
 msgstr "Estados Unidos"
 
-#: ../../build/doc/support.rst:72
+#: ../../build/doc/support.rst:86
 msgid "https://www.paragoncorporation.com"
 msgstr "https://www.paragoncorporation.com"
 
-#: ../../build/doc/support.rst:73
+#: ../../build/doc/support.rst:87
 msgid "Camptocamp"
 msgstr "Camptocamp"
 
-#: ../../build/doc/support.rst:74
+#: ../../build/doc/support.rst:88
 msgid "Switzerland, France"
 msgstr "Suiza, Francia"
 
-#: ../../build/doc/support.rst:75
+#: ../../build/doc/support.rst:89
 msgid "https://www.camptocamp.com"
 msgstr "https://www.camptocamp.com"
 
-#: ../../build/doc/support.rst:76
+#: ../../build/doc/support.rst:90
 msgid "Netlab"
 msgstr "Netlab"
 
-#: ../../build/doc/support.rst:77
+#: ../../build/doc/support.rst:91
 msgid "Capranica, Italy"
 msgstr "Capranica, Italia"
 
-#: ../../build/doc/support.rst:78
+#: ../../build/doc/support.rst:92
 msgid "https://www.osgeo.org/service-providers/netlab/"
 msgstr "https://www.osgeo.org/service-providers/netlab/"

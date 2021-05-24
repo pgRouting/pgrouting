@@ -5,34 +5,50 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
-# MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: 2020-11-04 18:29+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:11
+#: ../../build/doc/chinesePostmanProblem-family.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/chinesePostmanProblem-family.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/chinesePostmanProblem-family.html>`__) "
+"`3.1 <https://docs.pgrouting.org/3.1/en/chinesePostmanProblem-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/chinesePostmanProblem-family.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual <https://docs.pgrouting.org/latest/en"
+"/chinesePostmanProblem-family.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/chinesePostmanProblem-family.html>`__) "
+"`3.1 <https://docs.pgrouting.org/3.1/en/chinesePostmanProblem-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/chinesePostmanProblem-family.html>`__"
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:19
 msgid "Chinese Postman Problem - Family of functions (Experimental)"
 msgstr "Chinese Postman Problem - Familia de funciones (Experimental)"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:15
+#: ../../build/doc/chinesePostmanProblem-family.rst:23
 msgid ":doc:`pgr_chinesePostman`"
 msgstr ":doc:`pgr_chinesePostman`"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:16
+#: ../../build/doc/chinesePostmanProblem-family.rst:24
 msgid ":doc:`pgr_chinesePostmanCost`"
 msgstr ":doc:`pgr_chinesePostmanCost`"
 
@@ -105,79 +121,65 @@ msgstr "Puede depender de una función propuesta de pgRouting."
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:31
-msgid "Versions of this page"
-msgstr "Versiones de esta página"
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:32
-msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
-"/chinesePostmanProblem-family.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/en/chinesePostmanProblem-family.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
-"/chinesePostmanProblem-family.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/es/chinesePostmanProblem-family.html>`__"
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:38
-#: ../../build/doc/chinesePostmanProblem-family.rst:56
+#: ../../build/doc/chinesePostmanProblem-family.rst:40
+#: ../../build/doc/chinesePostmanProblem-family.rst:58
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:42
+#: ../../build/doc/chinesePostmanProblem-family.rst:44
 msgid "The main characteristics are:"
 msgstr "Las principales características son:"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:44
+#: ../../build/doc/chinesePostmanProblem-family.rst:46
 msgid "Process is done only on edges with **positive** costs."
 msgstr "El proceso se realiza solo en bordes con costos **positivos**."
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:45
+#: ../../build/doc/chinesePostmanProblem-family.rst:47
 msgid "Running time: :math:`O(E * (E + V * logV))`"
 msgstr "Tiempo de ejecución: :math:`O(E * (E + V * logV))`"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:46
+#: ../../build/doc/chinesePostmanProblem-family.rst:48
 msgid "Graph must be connected."
 msgstr "El grafo debe estar conectado."
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:51
+#: ../../build/doc/chinesePostmanProblem-family.rst:53
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:56
+#: ../../build/doc/chinesePostmanProblem-family.rst:58
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:56
+#: ../../build/doc/chinesePostmanProblem-family.rst:58
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:56
+#: ../../build/doc/chinesePostmanProblem-family.rst:58
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr "Valores predeterminados"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:58
+#: ../../build/doc/chinesePostmanProblem-family.rst:60
 msgid "**edges_sql**"
 msgstr "**edges_sql**"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:58
+#: ../../build/doc/chinesePostmanProblem-family.rst:60
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:58
+#: ../../build/doc/chinesePostmanProblem-family.rst:60
 msgid "The edges SQL query as described in `Inner query`_."
 msgstr ""
 "La consulta SQL de aristas como se describe en  la `Consulta interna`_."
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:65
+#: ../../build/doc/chinesePostmanProblem-family.rst:67
 msgid "Inner query"
 msgstr "Consulta interna"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:69
+#: ../../build/doc/chinesePostmanProblem-family.rst:71
 msgid ""
 "An Edges SQL that represents a **directed** graph with the following columns"
 msgstr ""
@@ -275,18 +277,30 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:78
+#: ../../build/doc/chinesePostmanProblem-family.rst:80
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:81
+#: ../../build/doc/chinesePostmanProblem-family.rst:83
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:82
+#: ../../build/doc/chinesePostmanProblem-family.rst:84
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:83
+#: ../../build/doc/chinesePostmanProblem-family.rst:85
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "Versions of this page"
+#~ msgstr "Versiones de esta página"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+#~ "/chinesePostmanProblem-family.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/chinesePostmanProblem-family.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/en"
+#~ "/chinesePostmanProblem-family.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/chinesePostmanProblem-family.html>`__"

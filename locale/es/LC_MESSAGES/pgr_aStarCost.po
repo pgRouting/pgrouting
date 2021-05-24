@@ -6,16 +6,16 @@
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2020
-# MarPetra <mvergaratrejo@gmail.com>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-28 10:55-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: 2020-11-04 18:32+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,11 +24,37 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/pgr_aStarCost.rst:11
+#: ../../build/doc/pgr_aStarCost.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_aStarCost.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_aStarCost.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_aStarCost.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_aStarCost.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual "
+"<https://docs.pgrouting.org/latest/en/pgr_aStarCost.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_aStarCost.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_aStarCost.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_aStarCost.html>`__"
+
+#: ../../build/doc/pgr_aStarCost.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__"
+
+#: ../../build/doc/pgr_aStarCost.rst:23
 msgid "pgr_aStarCost"
 msgstr "pgr_aStarCost"
 
-#: ../../build/doc/pgr_aStarCost.rst:13
+#: ../../build/doc/pgr_aStarCost.rst:25
 msgid ""
 "``pgr_aStarCost`` — Returns the aggregate cost shortest path using "
 ":doc:`pgr_aStar` algorithm."
@@ -36,77 +62,49 @@ msgstr ""
 "``pgr_aStarCost`` — Devuelve el costo agregado de la ruta más corta usando "
 "el algoritmo :doc:`pgr_aStar` ."
 
-#: ../../build/doc/pgr_aStarCost.rst:18
+#: ../../build/doc/pgr_aStarCost.rst:30
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
-#: ../../build/doc/pgr_aStarCost.rst:21
+#: ../../build/doc/pgr_aStarCost.rst:33
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_aStarCost.rst:22
+#: ../../build/doc/pgr_aStarCost.rst:34
 msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
-#: ../../build/doc/pgr_aStarCost.rst:24
+#: ../../build/doc/pgr_aStarCost.rst:36
 msgid "New **proposed** function:"
 msgstr "Nueva función **propuesta**:"
 
-#: ../../build/doc/pgr_aStarCost.rst:26
+#: ../../build/doc/pgr_aStarCost.rst:38
 msgid "pgr_aStarCost(Combinations)"
 msgstr "pgr_aStarCost(Combinaciones)"
 
-#: ../../build/doc/pgr_aStarCost.rst:28
+#: ../../build/doc/pgr_aStarCost.rst:40
 msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
-#: ../../build/doc/pgr_aStarCost.rst:30
+#: ../../build/doc/pgr_aStarCost.rst:42
 msgid "**Official** function"
 msgstr "Función **oficial**"
 
-#: ../../build/doc/pgr_aStarCost.rst:32
+#: ../../build/doc/pgr_aStarCost.rst:44
 msgid "Version 2.4.0"
 msgstr "Versión 2.4.0"
 
-#: ../../build/doc/pgr_aStarCost.rst:34
+#: ../../build/doc/pgr_aStarCost.rst:46
 msgid "New **proposed** function"
 msgstr "Nueva función **propuesta**"
 
-#: ../../build/doc/pgr_aStarCost.rst:37
-msgid "Support"
-msgstr "Soporte"
-
-#: ../../build/doc/pgr_aStarCost.rst:38
-msgid ""
-"**Supported versions:** current(`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_aStarCost.html>`__) `3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_aStarCost.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_aStarCost.html>`__ `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual(`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_aStarCost.html>`__) `3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_aStarCost.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_aStarCost.html>`__ `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__"
-
-#: ../../build/doc/pgr_aStarCost.rst:44
-msgid ""
-"**Unsupported versions:** `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__"
-msgstr ""
-"**Versiones no soportadas:** `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__"
-
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_aStar.rst:4
-#: ../../build/doc/pgr_aStarCost.rst:49
+#: ../../build/doc/pgr_aStarCost.rst:50
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_aStarCost.rst:51
+#: ../../build/doc/pgr_aStarCost.rst:52
 msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
@@ -181,7 +179,7 @@ msgstr ""
 msgid "Running time: :math:`O((E + V) * \\log V)`"
 msgstr "Tiempo de ejecución: :math:`O((E + V) * \\log V)`"
 
-#: ../../build/doc/pgr_aStarCost.rst:57
+#: ../../build/doc/pgr_aStarCost.rst:58
 msgid ""
 "The results are equivalent to the union of the results of the "
 "`pgr_aStarCost(` `One to One`_ `)` on the:"
@@ -189,33 +187,33 @@ msgstr ""
 "Los resultados son equivalentes a la unión de los resultados de "
 "`pgr_aStarCost(` `Uno a Uno`_ `)` en:"
 
-#: ../../build/doc/pgr_aStarCost.rst:59
+#: ../../build/doc/pgr_aStarCost.rst:60
 msgid "`pgr_aStarCost(` `One to Many`_ `)`"
 msgstr "`pgr_aStarCost(` `Uno a Muchos`_ `)`"
 
-#: ../../build/doc/pgr_aStarCost.rst:60
+#: ../../build/doc/pgr_aStarCost.rst:61
 msgid "`pgr_aStarCost(` `Many to One`_ `)`"
 msgstr "`pgr_aStarCost(` `Muchos a Uno`_ `)`"
 
-#: ../../build/doc/pgr_aStarCost.rst:61
+#: ../../build/doc/pgr_aStarCost.rst:62
 msgid "`pgr_aStarCost(` `Many to Many`_ `)`"
 msgstr "`pgr_aStarCost(` `Muchos a Muchos`_ `)`"
 
-#: ../../build/doc/pgr_aStarCost.rst:64
+#: ../../build/doc/pgr_aStarCost.rst:65
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_aStarCost.rst:67
+#: ../../build/doc/pgr_aStarCost.rst:68
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_aStarCost.rst:79
+#: ../../build/doc/pgr_aStarCost.rst:80
 msgid "Optional parameters are `named parameters` and have a default value."
 msgstr ""
 "Los parámetros opcionales son `parámetros con nombre` y tienen un valor "
 "predeterminado."
 
-#: ../../build/doc/pgr_aStarCost.rst:82
+#: ../../build/doc/pgr_aStarCost.rst:83
 msgid "Using defaults"
 msgstr "Uso de valores predeterminados"
 
@@ -223,15 +221,15 @@ msgstr "Uso de valores predeterminados"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_aStarCost.rst:89
+#: ../../build/doc/pgr_aStarCost.rst:90
 msgid "From vertex :math:`2` to vertex  :math:`12` on a **directed** graph"
 msgstr "Del vértice :math:`2` al vértice :math:`12` en un grafo **dirigido**"
 
-#: ../../build/doc/pgr_aStarCost.rst:99
+#: ../../build/doc/pgr_aStarCost.rst:100
 msgid "One to One"
 msgstr "Uno a Uno"
 
-#: ../../build/doc/pgr_aStarCost.rst:107
+#: ../../build/doc/pgr_aStarCost.rst:108
 msgid ""
 "From vertex :math:`2` to vertex  :math:`12` on an **undirected** graph using"
 " heuristic :math:`2`"
@@ -239,11 +237,11 @@ msgstr ""
 "De vértice :math:`2` a vértice :math:`12` en un grafo **no dirigido** usando"
 " la heurística :math:`2`"
 
-#: ../../build/doc/pgr_aStarCost.rst:117
+#: ../../build/doc/pgr_aStarCost.rst:118
 msgid "One to many"
 msgstr "Uno a Muchos"
 
-#: ../../build/doc/pgr_aStarCost.rst:125
+#: ../../build/doc/pgr_aStarCost.rst:126
 msgid ""
 "From vertex :math:`2` to vertices :math:`\\{3, 12\\}` on a **directed** "
 "graph using heuristic :math:`2`"
@@ -251,11 +249,11 @@ msgstr ""
 "Desde el vértice :math:`2`  a los vértices :math:`\\{3, 12\\}`  en un grafo "
 "**dirigido** usando la heurística :math:`2`"
 
-#: ../../build/doc/pgr_aStarCost.rst:135
+#: ../../build/doc/pgr_aStarCost.rst:136
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
-#: ../../build/doc/pgr_aStarCost.rst:143
+#: ../../build/doc/pgr_aStarCost.rst:144
 msgid ""
 "From vertices :math:`\\{7, 2\\}` to vertex :math:`12` on a **directed** "
 "graph using heuristic :math:`0`"
@@ -263,11 +261,11 @@ msgstr ""
 "De los vértices :math:`\\{7, 2\\}` al vértice :math:`12` en un grafo "
 "**dirigido** usando la heurística  :math:`0`"
 
-#: ../../build/doc/pgr_aStarCost.rst:153
+#: ../../build/doc/pgr_aStarCost.rst:154
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
-#: ../../build/doc/pgr_aStarCost.rst:161
+#: ../../build/doc/pgr_aStarCost.rst:162
 msgid ""
 "From vertices :math:`\\{7, 2\\}` to vertices :math:`\\{3, 12\\}` on a "
 "**directed** graph using heuristic :math:`2`"
@@ -275,11 +273,11 @@ msgstr ""
 "De los vértices :math:`\\{7, 2\\}` a los vértices  :math:`\\{3, 12\\}` en un"
 " gráfico **dirigido** usando la heurística :math:`2`"
 
-#: ../../build/doc/pgr_aStarCost.rst:171
+#: ../../build/doc/pgr_aStarCost.rst:172
 msgid "Combinations"
 msgstr "Combinaciones"
 
-#: ../../build/doc/pgr_aStarCost.rst:179
+#: ../../build/doc/pgr_aStarCost.rst:180
 msgid ""
 "Using a combinations table on a **directed** graph using heuristic "
 ":math:`2`."
@@ -287,7 +285,7 @@ msgstr ""
 "Usando una tabla de combinaciones en un grafo **dirigido** usando heurística"
 " :math:`2`."
 
-#: ../../build/doc/pgr_aStarCost.rst:187
+#: ../../build/doc/pgr_aStarCost.rst:188
 msgid "Parameters"
 msgstr "Parámetros"
 
@@ -381,7 +379,7 @@ msgstr "**to_vids**"
 msgid "Array of ending vertices identifiers. Parameter in:"
 msgstr "Matriz de identificadores de vértices finales. Parámetro en:"
 
-#: ../../build/doc/pgr_aStarCost.rst:194
+#: ../../build/doc/pgr_aStarCost.rst:195
 msgid "Optional Parameters"
 msgstr "Parámetros opcionales"
 
@@ -476,11 +474,11 @@ msgstr "**epsilon**"
 msgid "For less restricted results. :math:`epsilon >= 1`."
 msgstr "Para resultados menos restringidos. :math:`epsilon >= 1`."
 
-#: ../../build/doc/pgr_aStarCost.rst:201
+#: ../../build/doc/pgr_aStarCost.rst:202
 msgid "Inner queries"
 msgstr "Consultas internas"
 
-#: ../../build/doc/pgr_aStarCost.rst:204
+#: ../../build/doc/pgr_aStarCost.rst:205
 msgid "Edges query"
 msgstr "Consulta de aristas"
 
@@ -627,11 +625,11 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_aStarCost.rst:211
+#: ../../build/doc/pgr_aStarCost.rst:212
 msgid "Combinations query"
 msgstr "Consulta de combinaciones"
 
-#: ../../build/doc/pgr_aStarCost.rst:218
+#: ../../build/doc/pgr_aStarCost.rst:219
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -668,35 +666,35 @@ msgstr "**agg_cost**"
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr "Coste agregado de ``start_vid`` a ``end_vid``."
 
-#: ../../build/doc/pgr_aStarCost.rst:225
+#: ../../build/doc/pgr_aStarCost.rst:226
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_aStarCost.rst:227
+#: ../../build/doc/pgr_aStarCost.rst:228
 msgid ":doc:`aStar-family`"
 msgstr ":doc:`aStar-family`"
 
-#: ../../build/doc/pgr_aStarCost.rst:228
+#: ../../build/doc/pgr_aStarCost.rst:229
 msgid ":doc:`cost-category`"
 msgstr ":doc:`cost-category`"
 
-#: ../../build/doc/pgr_aStarCost.rst:229
+#: ../../build/doc/pgr_aStarCost.rst:230
 msgid ":doc:`costMatrix-category`"
 msgstr ":doc:`costMatrix-category`"
 
-#: ../../build/doc/pgr_aStarCost.rst:230
+#: ../../build/doc/pgr_aStarCost.rst:231
 msgid "Examples use :doc:`sampledata` network."
 msgstr "Los ejemplos utilizan la red :doc:`sampledata` "
 
-#: ../../build/doc/pgr_aStarCost.rst:233
+#: ../../build/doc/pgr_aStarCost.rst:234
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_aStarCost.rst:234
+#: ../../build/doc/pgr_aStarCost.rst:235
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_aStarCost.rst:235
+#: ../../build/doc/pgr_aStarCost.rst:236
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
@@ -733,3 +731,28 @@ msgstr ":ref:`search`"
 
 #~ msgid "Inner query"
 #~ msgstr "Consulta interna"
+
+#~ msgid "Support"
+#~ msgstr "Soporte"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_aStarCost.html>`__) `3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_aStarCost.html>`__ `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_aStarCost.html>`__ `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_aStarCost.html>`__) `3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_aStarCost.html>`__ `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_aStarCost.html>`__ `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__"
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__ `2.4 "
+#~ "<https://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__"
+#~ msgstr ""
+#~ "**Versiones no soportadas:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__ `2.4 "
+#~ "<https://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__"

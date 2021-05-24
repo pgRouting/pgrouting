@@ -4,39 +4,53 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2020
 # Esteban Zimanyi <estebanzimanyi@gmail.com>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: 2020-11-04 18:28+0000\n"
-"Last-Translator: Esteban Zimanyi <estebanzimanyi@gmail.com>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/spanningTree-family.rst:11
+#: ../../build/doc/spanningTree-family.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/spanningTree-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en"
+"/spanningTree-family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en"
+"/spanningTree-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/spanningTree-family.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual <https://docs.pgrouting.org/latest/en"
+"/spanningTree-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en"
+"/spanningTree-family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en"
+"/spanningTree-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/spanningTree-family.html>`__"
+
+#: ../../build/doc/spanningTree-family.rst:19
 msgid "Spanning Tree - Category"
 msgstr "Árbol de expansión - Categoría"
 
-#: ../../build/doc/spanningTree-family.rst:16
+#: ../../build/doc/spanningTree-family.rst:24
 msgid ":doc:`kruskal-family`"
 msgstr ":doc:`kruskal-family`"
 
-#: ../../build/doc/spanningTree-family.rst:17
+#: ../../build/doc/spanningTree-family.rst:25
 msgid ":doc:`prim-family`"
 msgstr ":doc:`prim-family`"
 
-#: ../../build/doc/spanningTree-family.rst:21
+#: ../../build/doc/spanningTree-family.rst:29
 msgid ""
 "A spanning tree of an undirected graph is a tree that includes all the "
 "vertices of G with the minimum possible number of edges."
@@ -44,7 +58,7 @@ msgstr ""
 "El árbol de expansión de un grafo no dirigido es un árbol que incluye todos "
 "los vértices de G con el número mínimo posible de aristas."
 
-#: ../../build/doc/spanningTree-family.rst:24
+#: ../../build/doc/spanningTree-family.rst:32
 msgid ""
 "For a disconnected graph, there there is no single tree, but a spanning "
 "forest, consisting of a spanning tree of each connected component."
@@ -53,21 +67,11 @@ msgstr ""
 "expansión, que consiste en un árbol de expansión de cada componente "
 "conectado."
 
-#: ../../build/doc/spanningTree-family.rst:33
-msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
-"/spanningTree-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
-"/spanningTree-family.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
-"/spanningTree-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es"
-"/spanningTree-family.html>`__"
-
-#: ../../build/doc/spanningTree-family.rst:38
+#: ../../build/doc/spanningTree-family.rst:43
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/spanningTree-family.rst:40
+#: ../../build/doc/spanningTree-family.rst:45
 msgid ""
 "`Boost: Prim's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
@@ -75,7 +79,7 @@ msgstr ""
 "`Boost: Documentación del algorithmo de Prim "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 
-#: ../../build/doc/spanningTree-family.rst:41
+#: ../../build/doc/spanningTree-family.rst:46
 #, python-format
 msgid ""
 "`Wikipedia: Prim's algorithm "
@@ -84,14 +88,23 @@ msgstr ""
 "`Wikipedia: algoritmo de Prim "
 "<https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 
-#: ../../build/doc/spanningTree-family.rst:44
+#: ../../build/doc/spanningTree-family.rst:49
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/spanningTree-family.rst:45
+#: ../../build/doc/spanningTree-family.rst:50
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/spanningTree-family.rst:46
+#: ../../build/doc/spanningTree-family.rst:51
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+#~ "/spanningTree-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+#~ "/spanningTree-family.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/en"
+#~ "/spanningTree-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+#~ "/spanningTree-family.html>`__"
