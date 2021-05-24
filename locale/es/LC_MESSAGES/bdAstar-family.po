@@ -6,16 +6,16 @@
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2020
-# MarPetra <mvergaratrejo@gmail.com>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-08 12:28-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: 2020-11-04 18:30+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,15 +24,39 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/bdAstar-family.rst:11
+#: ../../build/doc/bdAstar-family.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/bdAstar-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/bdAstar-"
+"family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/bdAstar-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-"
+"family.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual <https://docs.pgrouting.org/latest/en"
+"/bdAstar-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/bdAstar-"
+"family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/bdAstar-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-"
+"family.html>`__"
+
+#: ../../build/doc/bdAstar-family.rst:17
+msgid ""
+"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/bdAstar-"
+"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-"
+"family.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en"
+"/bdAstar-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-"
+"family.html>`__"
+
+#: ../../build/doc/bdAstar-family.rst:22
 msgid "Bidirectional A* - Family of functions"
 msgstr "A* Bidireccional - Familia de Funciones"
 
-#: ../../build/doc/bdAstar-family.rst:15
+#: ../../build/doc/bdAstar-family.rst:26
 msgid ":doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
 msgstr ":doc:`pgr_bdAstar` -  Algoritmo bidireccional A* para obtener rutas."
 
-#: ../../build/doc/bdAstar-family.rst:16
+#: ../../build/doc/bdAstar-family.rst:27
 msgid ""
 ":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of"
 " the paths."
@@ -40,7 +64,7 @@ msgstr ""
 ":doc:`pgr_bdAstarCost` - Algoritmo bidireccional A* para calcular el coste "
 "de las rutas."
 
-#: ../../build/doc/bdAstar-family.rst:17
+#: ../../build/doc/bdAstar-family.rst:28
 msgid ""
 ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a "
 "cost matrix of paths."
@@ -48,37 +72,13 @@ msgstr ""
 ":doc:`pgr_bdAstarCostMatrix`  Algoritmo bidireccional A* para calcular una "
 "matriz de coste de rutas."
 
-#: ../../build/doc/bdAstar-family.rst:29
-msgid "Previous versions of this page"
-msgstr "Versiones anteriores de esta página"
-
-#: ../../build/doc/bdAstar-family.rst:30
-msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
-"/bdAstar-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-"
-"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-"
-"family.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
-"/bdAstar-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es/bdAstar-"
-"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-"
-"family.html>`__"
-
-#: ../../build/doc/bdAstar-family.rst:35
-msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/bdAstar-"
-"family.html>`__"
-msgstr ""
-"**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en"
-"/bdAstar-family.html>`__"
-
-#: ../../build/doc/bdAstar-family.rst:39 ../../build/doc/bdAstar-family.rst:88
+#: ../../build/doc/bdAstar-family.rst:41 ../../build/doc/bdAstar-family.rst:90
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/bdAstar-family.rst:41
+#: ../../build/doc/bdAstar-family.rst:43
 msgid ""
 "Based on A* algorithm, the bidirectional search finds a shortest path from a"
 " starting vertex (``start_vid``) to an ending vertex (``end_vid``). It runs "
@@ -94,44 +94,44 @@ msgstr ""
 "dos se encuentran en el medio. Esta aplicación puede utilizarse con un grafo"
 " dirigido y un grafo sin dirección."
 
-#: ../../build/doc/bdAstar-family.rst:47
+#: ../../build/doc/bdAstar-family.rst:49
 msgid "The main Characteristics are:"
 msgstr "Las características principales son:"
 
-#: ../../build/doc/bdAstar-family.rst:49
+#: ../../build/doc/bdAstar-family.rst:51
 msgid "Process is done only on edges with positive costs."
 msgstr "El proceso se realiza sólo en las aristas con costos positivos."
 
-#: ../../build/doc/bdAstar-family.rst:50
+#: ../../build/doc/bdAstar-family.rst:52
 msgid "Values are returned when there is a path."
 msgstr "Valores son regresados cuando hay un camino."
 
-#: ../../build/doc/bdAstar-family.rst:52
+#: ../../build/doc/bdAstar-family.rst:54
 msgid ""
 "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 "Cuando el vértice inicial y el vértice final son iguales, no hay camino."
 
-#: ../../build/doc/bdAstar-family.rst:54
+#: ../../build/doc/bdAstar-family.rst:56
 msgid "The `agg_cost` the non included values `(v, v)` is `0`"
 msgstr "El `agg_cost` de los valores no incluídos `(v, v)` es `0`"
 
-#: ../../build/doc/bdAstar-family.rst:56
+#: ../../build/doc/bdAstar-family.rst:58
 msgid ""
 "When the starting vertex and ending vertex are the different and there is no"
 " path:"
 msgstr ""
 "Cuando el vértice inicial y el vértice final son diferentes y no hay camino:"
 
-#: ../../build/doc/bdAstar-family.rst:58
+#: ../../build/doc/bdAstar-family.rst:60
 msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
 msgstr "El  'agg_cost' de los valores no incluídos '(u, v)' es :math: `\\infty`"
 
-#: ../../build/doc/bdAstar-family.rst:60
+#: ../../build/doc/bdAstar-family.rst:62
 msgid "Running time (worse case scenario): :math:`O((E + V) * \\log V)`"
 msgstr "Duración (peor de los casos): :math:`O ((E + V) * \\log V)`"
 
-#: ../../build/doc/bdAstar-family.rst:61
+#: ../../build/doc/bdAstar-family.rst:63
 msgid ""
 "For large graphs where there is a path bewtween the starting vertex and "
 "ending vertex:"
@@ -139,15 +139,15 @@ msgstr ""
 "Para grandes gráficos donde hay un camino entre el vértice inicial y el "
 "vértice final:"
 
-#: ../../build/doc/bdAstar-family.rst:63
+#: ../../build/doc/bdAstar-family.rst:65
 msgid "It is expected to terminate faster than pgr_astar"
 msgstr "Se espera que termine más rápido que pgr_astar"
 
-#: ../../build/doc/bdAstar-family.rst:66
+#: ../../build/doc/bdAstar-family.rst:68
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/bdAstar-family.rst:69
+#: ../../build/doc/bdAstar-family.rst:71
 msgid "Edges query"
 msgstr "Consulta de aristas"
 
@@ -167,7 +167,7 @@ msgstr ""
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/bdAstar-family.rst:88
+#: ../../build/doc/bdAstar-family.rst:90
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Type"
@@ -182,7 +182,7 @@ msgstr "Valores predeterminados"
 msgid "**id**"
 msgstr "**id**"
 
-#: ../../build/doc/bdAstar-family.rst:92 ../../build/doc/bdAstar-family.rst:94
+#: ../../build/doc/bdAstar-family.rst:94 ../../build/doc/bdAstar-family.rst:96
 #: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
@@ -314,142 +314,142 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/bdAstar-family.rst:76
+#: ../../build/doc/bdAstar-family.rst:78
 msgid "Combinations query"
 msgstr "Consulta de combinaciones"
 
-#: ../../build/doc/bdAstar-family.rst:85
+#: ../../build/doc/bdAstar-family.rst:87
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/bdAstar-family.rst:88
+#: ../../build/doc/bdAstar-family.rst:90
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/bdAstar-family.rst:90
+#: ../../build/doc/bdAstar-family.rst:92
 msgid "**Edges SQL**"
 msgstr "**Edges SQL**"
 
-#: ../../build/doc/bdAstar-family.rst:90 ../../build/doc/bdAstar-family.rst:91
+#: ../../build/doc/bdAstar-family.rst:92 ../../build/doc/bdAstar-family.rst:93
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/bdAstar-family.rst:90
+#: ../../build/doc/bdAstar-family.rst:92
 msgid "Edges query as described above."
 msgstr "Consulta de bordes como se describió anteriormente."
 
-#: ../../build/doc/bdAstar-family.rst:91
+#: ../../build/doc/bdAstar-family.rst:93
 msgid "**Combinations SQL**"
 msgstr "**Combinaciones SQL**"
 
-#: ../../build/doc/bdAstar-family.rst:91
+#: ../../build/doc/bdAstar-family.rst:93
 msgid "Combinations query as described above."
 msgstr "Consulta de combinaciones como se describió anteriormente."
 
-#: ../../build/doc/bdAstar-family.rst:92
+#: ../../build/doc/bdAstar-family.rst:94
 msgid "**start_vid**"
 msgstr "**start_vid**"
 
-#: ../../build/doc/bdAstar-family.rst:92
+#: ../../build/doc/bdAstar-family.rst:94
 msgid "Starting vertex identifier."
 msgstr "Comenzando identificador de vértice."
 
-#: ../../build/doc/bdAstar-family.rst:93
+#: ../../build/doc/bdAstar-family.rst:95
 msgid "**start_vids**"
 msgstr "**start_vids**"
 
-#: ../../build/doc/bdAstar-family.rst:93 ../../build/doc/bdAstar-family.rst:95
+#: ../../build/doc/bdAstar-family.rst:95 ../../build/doc/bdAstar-family.rst:97
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr "``ARRAY[ANY-INTEGER]``"
 
-#: ../../build/doc/bdAstar-family.rst:93
+#: ../../build/doc/bdAstar-family.rst:95
 msgid "Starting vertices identifierers."
 msgstr "Comenzando identificadores de vértices."
 
-#: ../../build/doc/bdAstar-family.rst:94
+#: ../../build/doc/bdAstar-family.rst:96
 msgid "**end_vid**"
 msgstr "**end_vid**"
 
-#: ../../build/doc/bdAstar-family.rst:94
+#: ../../build/doc/bdAstar-family.rst:96
 msgid "Ending vertex identifier."
 msgstr "Terminando identificador de vértice."
 
-#: ../../build/doc/bdAstar-family.rst:95
+#: ../../build/doc/bdAstar-family.rst:97
 msgid "**end_vids**"
 msgstr "**end_vids**"
 
-#: ../../build/doc/bdAstar-family.rst:95
+#: ../../build/doc/bdAstar-family.rst:97
 msgid "Ending vertices identifiers."
 msgstr "Terminando identificadores de vértices."
 
-#: ../../build/doc/bdAstar-family.rst:96
+#: ../../build/doc/bdAstar-family.rst:98
 msgid "**directed**"
 msgstr "**dirigido**"
 
-#: ../../build/doc/bdAstar-family.rst:96
+#: ../../build/doc/bdAstar-family.rst:98
 msgid "``BOOLEAN``"
 msgstr "``BOOLEAN``"
 
-#: ../../build/doc/bdAstar-family.rst:96
+#: ../../build/doc/bdAstar-family.rst:98
 msgid "Optional."
 msgstr "Opcional."
 
-#: ../../build/doc/bdAstar-family.rst:98
+#: ../../build/doc/bdAstar-family.rst:100
 msgid "When ``false`` the graph is considered as Undirected."
 msgstr "Cuando ``false`` el gráfico se considera como No Dirigido"
 
-#: ../../build/doc/bdAstar-family.rst:99
+#: ../../build/doc/bdAstar-family.rst:101
 msgid "Default is ``true`` which considers the graph as Directed."
 msgstr "El valor predeterminado `` true`` considera el gráfico como Dirigido."
 
-#: ../../build/doc/bdAstar-family.rst:101
+#: ../../build/doc/bdAstar-family.rst:103
 msgid "**heuristic**"
 msgstr "**heuristic**"
 
-#: ../../build/doc/bdAstar-family.rst:101
+#: ../../build/doc/bdAstar-family.rst:103
 msgid "``INTEGER``"
 msgstr "``INTEGER``"
 
-#: ../../build/doc/bdAstar-family.rst:101
+#: ../../build/doc/bdAstar-family.rst:103
 msgid "(optional). Heuristic number. Current valid values 0~5. Default ``5``"
 msgstr ""
 "(opcional). Número heurístico. Valores válidos actuales 0~5. Predeterminado "
 "``5``"
 
-#: ../../build/doc/bdAstar-family.rst:103
+#: ../../build/doc/bdAstar-family.rst:105
 msgid "0: h(v) = 0 (Use this value to compare with pgr_dijkstra)"
 msgstr "0: h(v) = 0 (utilizar este valor para comparar con pgr_dijkstra)"
 
-#: ../../build/doc/bdAstar-family.rst:104
+#: ../../build/doc/bdAstar-family.rst:106
 msgid "1: h(v) abs(max(dx, dy))"
 msgstr "1: h(v) abs(max(dx, dy))"
 
-#: ../../build/doc/bdAstar-family.rst:105
+#: ../../build/doc/bdAstar-family.rst:107
 msgid "2: h(v) abs(min(dx, dy))"
 msgstr "2: h(v) abs(min(dx, dy))"
 
-#: ../../build/doc/bdAstar-family.rst:106
+#: ../../build/doc/bdAstar-family.rst:108
 msgid "3: h(v) = dx * dx + dy * dy"
 msgstr "3: h(v) = dx * dx + dy * dy"
 
-#: ../../build/doc/bdAstar-family.rst:107
+#: ../../build/doc/bdAstar-family.rst:109
 msgid "4: h(v) = sqrt(dx * dx + dy * dy)"
 msgstr "4: h(v) = sqrt(dx * dx + dy * dy)"
 
-#: ../../build/doc/bdAstar-family.rst:108
+#: ../../build/doc/bdAstar-family.rst:110
 msgid "5: h(v) = abs(dx) + abs(dy)"
 msgstr "5: h(v) = abs(dx) + abs(dy)"
 
-#: ../../build/doc/bdAstar-family.rst:110
+#: ../../build/doc/bdAstar-family.rst:112
 msgid "**factor**"
 msgstr "**factor**"
 
-#: ../../build/doc/bdAstar-family.rst:110
-#: ../../build/doc/bdAstar-family.rst:111
+#: ../../build/doc/bdAstar-family.rst:112
+#: ../../build/doc/bdAstar-family.rst:113
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
-#: ../../build/doc/bdAstar-family.rst:110
+#: ../../build/doc/bdAstar-family.rst:112
 msgid ""
 "(optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see "
 ":ref:`astar_factor`"
@@ -457,11 +457,11 @@ msgstr ""
 "(opcional). Para la manipulación de unidades. :math:`factor > 0`.  Predeterminado ``1``. \n"
 "Ver :ref:`astar_factor`"
 
-#: ../../build/doc/bdAstar-family.rst:111
+#: ../../build/doc/bdAstar-family.rst:113
 msgid "**epsilon**"
 msgstr "**epsilon**"
 
-#: ../../build/doc/bdAstar-family.rst:111
+#: ../../build/doc/bdAstar-family.rst:113
 msgid ""
 "(optional). For less restricted results. :math:`epsilon >= 1`.  Default "
 "``1``."
@@ -469,19 +469,19 @@ msgstr ""
 "(opcional). Para resultados menos restringidos. :math:`epsilon >= 1`.  "
 "Predeterminado '' 1''."
 
-#: ../../build/doc/bdAstar-family.rst:117
+#: ../../build/doc/bdAstar-family.rst:119
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/bdAstar-family.rst:120
+#: ../../build/doc/bdAstar-family.rst:122
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/bdAstar-family.rst:121
+#: ../../build/doc/bdAstar-family.rst:123
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/bdAstar-family.rst:122
+#: ../../build/doc/bdAstar-family.rst:124
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
@@ -490,3 +490,24 @@ msgstr ":ref:`search`"
 
 #~ msgid "Edges SQL query as described above."
 #~ msgstr "Consulta de aristas SQL como se describió anteriormente."
+
+#~ msgid "Previous versions of this page"
+#~ msgstr "Versiones anteriores de esta página"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+#~ "/bdAstar-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-"
+#~ "family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-"
+#~ "family.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
+#~ "/bdAstar-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es/bdAstar-"
+#~ "family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-"
+#~ "family.html>`__"
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/bdAstar-"
+#~ "family.html>`__"
+#~ msgstr ""
+#~ "**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en"
+#~ "/bdAstar-family.html>`__"

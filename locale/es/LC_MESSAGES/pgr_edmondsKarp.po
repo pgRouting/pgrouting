@@ -5,17 +5,17 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
-# MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2021
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-14 13:58-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: 2020-11-04 18:28+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,11 +24,39 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:11
+#: ../../build/doc/pgr_edmondsKarp.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_edmondsKarp.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_edmondsKarp.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_edmondsKarp.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_edmondsKarp.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual "
+"<https://docs.pgrouting.org/latest/en/pgr_edmondsKarp.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_edmondsKarp.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_edmondsKarp.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_edmondsKarp.html>`__"
+
+#: ../../build/doc/pgr_edmondsKarp.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_edmondsKarp.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_edmondsKarp.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_maxFlowEdmondsKarp.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowEdmondsKarp.html>`__"
+msgstr ""
+"**Versiones soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_edmondsKarp.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_edmondsKarp.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_maxFlowEdmondsKarp.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowEdmondsKarp.html>`__"
+
+#: ../../build/doc/pgr_edmondsKarp.rst:24
 msgid "pgr_edmondsKarp"
 msgstr "pgr_edmondsKarp"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:13
+#: ../../build/doc/pgr_edmondsKarp.rst:26
 msgid ""
 "``pgr_edmondsKarp`` — Calculates the flow on the graph edges that maximizes "
 "the flow from the sources to the targets using Push Relabel Algorithm."
@@ -37,87 +65,57 @@ msgstr ""
 " el flujo de los orígenes a los destinos mediante el algoritmo de Push "
 "Relabel."
 
-#: ../../build/doc/pgr_edmondsKarp.rst:19
+#: ../../build/doc/pgr_edmondsKarp.rst:32
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:22
+#: ../../build/doc/pgr_edmondsKarp.rst:35
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:23
+#: ../../build/doc/pgr_edmondsKarp.rst:36
 msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:25
+#: ../../build/doc/pgr_edmondsKarp.rst:38
 msgid "New **proposed** function:"
 msgstr "Nueva función **propuesta**:"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:27
+#: ../../build/doc/pgr_edmondsKarp.rst:40
 msgid "pgr_edmondsKarp(Combinations)"
 msgstr "pgr_edmondsKarp(Combinaciones)"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:29
+#: ../../build/doc/pgr_edmondsKarp.rst:42
 msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:31
+#: ../../build/doc/pgr_edmondsKarp.rst:44
 msgid "**Official** function"
 msgstr "Función **oficial**"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:33
+#: ../../build/doc/pgr_edmondsKarp.rst:46
 msgid "Version 2.5.0"
 msgstr "Versión 2.5.0"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:35
+#: ../../build/doc/pgr_edmondsKarp.rst:48
 msgid "Renamed from ``pgr_maxFlowEdmondsKarp``"
 msgstr "Renombrado desde ``pgr_maxFlowEdmondsKarp``"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:36
+#: ../../build/doc/pgr_edmondsKarp.rst:49
 msgid "**Proposed** function"
 msgstr "Función **propuesta**"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:38
+#: ../../build/doc/pgr_edmondsKarp.rst:51
 msgid "Version 2.3.0"
 msgstr "Versión 2.3.0"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:40
+#: ../../build/doc/pgr_edmondsKarp.rst:53
 msgid "New **Experimental** function"
 msgstr "Nueva función **Experimental**"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:43
-msgid "Support"
-msgstr "Soporte"
-
-#: ../../build/doc/pgr_edmondsKarp.rst:44
-msgid ""
-"**Supported versions:** current(`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_edmondsKarp.html>`__) `3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_edmondsKarp.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_edmondsKarp.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual(`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_edmondsKarp.html>`__) `3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_edmondsKarp.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_edmondsKarp.html>`__"
-
-#: ../../build/doc/pgr_edmondsKarp.rst:49
-msgid ""
-"**Unsupported versions:** `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_edmondsKarp.html>`__ `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_edmondsKarp.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_maxFlowEdmondsKarp.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowEdmondsKarp.html>`__"
-msgstr ""
-"Versiones no sustentadas:** `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_edmondsKarp.html>`__ `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_edmondsKarp.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_maxFlowEdmondsKarp.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowEdmondsKarp.html>`__"
-
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_edmondsKarp.rst:56
+#: ../../build/doc/pgr_edmondsKarp.rst:57
 msgid "Description"
 msgstr "Descripción"
 
@@ -165,8 +163,8 @@ msgid ""
 "Creates a **super source** and edges to all the source(s), and a **super "
 "target** and the edges from all the targets(s)."
 msgstr ""
-"Crea una **súper origen**, con aristas para todos los orígenes, y un **súper"
-" destino** con aristas para todos los destinos."
+"Crea una **súper origen**, con aristas para todos los orígen(es), y un "
+"**súper destino** con aristas para todos los destin(os)."
 
 #: ../../build/doc/flow-family.rst:17
 msgid ""
@@ -186,19 +184,19 @@ msgstr "Mediante la agregación del flujo saliente de los orígenes"
 msgid "By aggregation of the incoming flow to the targets"
 msgstr "Mediante la agregación del flujo entrante a los destinos"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:62
+#: ../../build/doc/pgr_edmondsKarp.rst:63
 msgid "Running time: :math:`O( V * E ^ 2)`"
 msgstr "Tiempo de ejecución: :math:`O( V * E ^ 2)`"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:65
+#: ../../build/doc/pgr_edmondsKarp.rst:66
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:68
+#: ../../build/doc/pgr_edmondsKarp.rst:69
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:83
+#: ../../build/doc/pgr_edmondsKarp.rst:84
 msgid "One to One"
 msgstr "Uno a Uno"
 
@@ -206,39 +204,39 @@ msgstr "Uno a Uno"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:91
+#: ../../build/doc/pgr_edmondsKarp.rst:92
 msgid "From vertex :math:`6` to vertex :math:`11`"
 msgstr "Del vértice :math:`6` al vértice :math:`11`"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:101
+#: ../../build/doc/pgr_edmondsKarp.rst:102
 msgid "One to Many"
 msgstr "Uno a Muchos"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:109
+#: ../../build/doc/pgr_edmondsKarp.rst:110
 msgid "From vertex :math:`6` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr "Del vértice :math:`6` a los vértices :math:`\\{1, 3, 11\\}`"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:119
+#: ../../build/doc/pgr_edmondsKarp.rst:120
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:127
+#: ../../build/doc/pgr_edmondsKarp.rst:128
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertex :math:`11`"
 msgstr "De los vértices vertices :math:`\\{6, 8, 12\\}` al vértice :math:`11`"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:137
+#: ../../build/doc/pgr_edmondsKarp.rst:138
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:145
+#: ../../build/doc/pgr_edmondsKarp.rst:146
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr "De los vértices :math:`\\{6, 8, 12\\}` a los vértices :math:`\\{1, 3, 11\\}`"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:155
+#: ../../build/doc/pgr_edmondsKarp.rst:156
 msgid "Combinations"
 msgstr "Combinaciones"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:163
+#: ../../build/doc/pgr_edmondsKarp.rst:164
 msgid ""
 "Using a combinations table, equivalent to calculating result from vertices "
 ":math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`."
@@ -246,7 +244,7 @@ msgstr ""
 "Usando una tabla de combinaciones, equivalente a calcular el resultado de "
 "los vértices  :math:`\\{6, 8, 12\\}` a los vértices :math:`\\{1, 3, 11\\}`."
 
-#: ../../build/doc/pgr_edmondsKarp.rst:170
+#: ../../build/doc/pgr_edmondsKarp.rst:171
 msgid "Parameters"
 msgstr "Parámetros"
 
@@ -328,7 +326,7 @@ msgstr "**destinos**"
 msgid "Array of identifiers of the ending vertices of the flow."
 msgstr "Conjunto de identificadores de los vértices finales del flujo."
 
-#: ../../build/doc/pgr_edmondsKarp.rst:177
+#: ../../build/doc/pgr_edmondsKarp.rst:178
 msgid "Inner queries"
 msgstr "Consultas internas"
 
@@ -387,7 +385,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:15
 msgid "**reverse_capacity**"
-msgstr "**reverse_capacity** (**capacidad inversa**)"
+msgstr "**reverse_capacity**"
 
 #: ../../build/doc/flow-family.rst:15
 msgid "-1"
@@ -440,7 +438,7 @@ msgstr ""
 "continuación, calcula el resultado de los vértices de origen resultantes a "
 "los vértices de destino."
 
-#: ../../build/doc/pgr_edmondsKarp.rst:188
+#: ../../build/doc/pgr_edmondsKarp.rst:189
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -483,7 +481,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:11
 msgid "**residual_capacity**"
-msgstr "**residual_capacity** (**capacidad residual**)"
+msgstr "**residual_capacity**"
 
 #: ../../build/doc/flow-family.rst:11
 msgid ""
@@ -491,33 +489,47 @@ msgid ""
 msgstr ""
 "Capacidad residual del arista en la dirección (``start_vid``, ``end_vid``)."
 
-#: ../../build/doc/pgr_edmondsKarp.rst:195
+#: ../../build/doc/pgr_edmondsKarp.rst:196
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:197
+#: ../../build/doc/pgr_edmondsKarp.rst:198
 msgid ""
 ":doc:`flow-family`, :doc:`pgr_boykovKolmogorov`, :doc:`pgr_pushRelabel`"
 msgstr ""
 ":doc:`flow-family`, :doc:`pgr_boykovKolmogorov`, :doc:`pgr_pushRelabel`"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:198
+#: ../../build/doc/pgr_edmondsKarp.rst:199
 msgid "https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"
 msgstr "https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:199
+#: ../../build/doc/pgr_edmondsKarp.rst:200
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:202
+#: ../../build/doc/pgr_edmondsKarp.rst:203
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:203
+#: ../../build/doc/pgr_edmondsKarp.rst:204
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_edmondsKarp.rst:204
+#: ../../build/doc/pgr_edmondsKarp.rst:205
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "Support"
+#~ msgstr "Soporte"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_edmondsKarp.html>`__) `3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_edmondsKarp.html>`__ `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_edmondsKarp.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_edmondsKarp.html>`__) `3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_edmondsKarp.html>`__ `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_edmondsKarp.html>`__"

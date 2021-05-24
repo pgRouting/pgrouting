@@ -5,101 +5,101 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
-# MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: 2020-11-04 18:29+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/pgr_KSP.rst:11
+#: ../../build/doc/pgr_KSP.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_KSP.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_KSP.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_KSP.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_KSP.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual "
+"<https://docs.pgrouting.org/latest/en/pgr_KSP.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_KSP.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_KSP.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_KSP.html>`__"
+
+#: ../../build/doc/pgr_KSP.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_KSP.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_KSP.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_KSP.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/ksp/doc/pgr_ksp.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/ksp/doc/pgr_ksp.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/ksp/doc/index.html>`__ `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/ksp/doc/index.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_KSP.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_KSP.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_KSP.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/ksp/doc/pgr_ksp.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/ksp/doc/pgr_ksp.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/ksp/doc/index.html>`__ `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/ksp/doc/index.html>`__"
+
+#: ../../build/doc/pgr_KSP.rst:27
 msgid "pgr_KSP"
 msgstr "pgr_KSP"
 
-#: ../../build/doc/pgr_KSP.rst:13
+#: ../../build/doc/pgr_KSP.rst:29
 msgid "``pgr_KSP`` — Returns the \"K\" shortest paths."
 msgstr "``pgr_KSP`` — Devuelve la ruta más corta \"K\"."
 
-#: ../../build/doc/pgr_KSP.rst:19
+#: ../../build/doc/pgr_KSP.rst:35
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
-#: ../../build/doc/pgr_KSP.rst:22
+#: ../../build/doc/pgr_KSP.rst:38
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_KSP.rst:23
+#: ../../build/doc/pgr_KSP.rst:39
 msgid "Version 2.1.0"
 msgstr "Versión 2.1.0"
 
-#: ../../build/doc/pgr_KSP.rst:25
+#: ../../build/doc/pgr_KSP.rst:41
 msgid "Signature change"
 msgstr "Cambio de firma"
 
-#: ../../build/doc/pgr_KSP.rst:27
+#: ../../build/doc/pgr_KSP.rst:43
 msgid "Old signature no longer supported"
 msgstr "Firma antigua ya no soportada"
 
-#: ../../build/doc/pgr_KSP.rst:29
+#: ../../build/doc/pgr_KSP.rst:45
 msgid "Version 2.0.0"
 msgstr "Versión 2.0.0"
 
-#: ../../build/doc/pgr_KSP.rst:31
+#: ../../build/doc/pgr_KSP.rst:47
 msgid "**Official** function"
 msgstr "Función **oficial**"
 
-#: ../../build/doc/pgr_KSP.rst:34
-msgid "Support"
-msgstr "Soporte"
-
-#: ../../build/doc/pgr_KSP.rst:35
-msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_KSP.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_KSP.html>`__ `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_KSP.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual(`3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_KSP.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_KSP.html>`__ `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_KSP.html>`__"
-
-#: ../../build/doc/pgr_KSP.rst:40
-msgid ""
-"**Unsupported versions:** `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_KSP.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_KSP.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/ksp/doc/pgr_ksp.html>`__ `2.2 "
-"<https://docs.pgrouting.org/2.2/en/src/ksp/doc/pgr_ksp.html>`__ `2.1 "
-"<https://docs.pgrouting.org/2.1/en/src/ksp/doc/index.html>`__ `2.0 "
-"<https://docs.pgrouting.org/2.0/en/src/ksp/doc/index.html>`__"
-msgstr ""
-"**Versiones no soportadas:** `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_KSP.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_KSP.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/ksp/doc/pgr_ksp.html>`__ `2.2 "
-"<https://docs.pgrouting.org/2.2/en/src/ksp/doc/pgr_ksp.html>`__ `2.1 "
-"<https://docs.pgrouting.org/2.1/en/src/ksp/doc/index.html>`__ `2.0 "
-"<https://docs.pgrouting.org/2.0/en/src/ksp/doc/index.html>`__"
-
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_KSP.rst:50
-#: ../../build/doc/pgr_KSP.rst:90 ../../build/doc/pgr_KSP.rst:115
+#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_KSP.rst:51
+#: ../../build/doc/pgr_KSP.rst:91 ../../build/doc/pgr_KSP.rst:116
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_KSP.rst:52
+#: ../../build/doc/pgr_KSP.rst:53
 msgid ""
 "The K shortest path routing algorithm based on Yen's algorithm. \"K\" is the"
 " number of shortest paths desired."
@@ -107,15 +107,15 @@ msgstr ""
 "El algoritmo de ruteo  para obtener la ruta más corta K basado en el "
 "algoritmo de Yen . \"K\" es el número de rutas más cortas deseadas."
 
-#: ../../build/doc/pgr_KSP.rst:55
+#: ../../build/doc/pgr_KSP.rst:56
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_KSP.rst:58
+#: ../../build/doc/pgr_KSP.rst:59
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_KSP.rst:65
+#: ../../build/doc/pgr_KSP.rst:66
 msgid "Using defaults"
 msgstr "Uso de valores predeterminados"
 
@@ -123,84 +123,84 @@ msgstr "Uso de valores predeterminados"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_KSP.rst:71 ../../build/doc/pgr_KSP.rst:84
+#: ../../build/doc/pgr_KSP.rst:72 ../../build/doc/pgr_KSP.rst:85
 msgid "**TBD**"
 msgstr "**TBD**"
 
-#: ../../build/doc/pgr_KSP.rst:77
+#: ../../build/doc/pgr_KSP.rst:78
 msgid "Complete Signature"
 msgstr "Firma completa"
 
-#: ../../build/doc/pgr_KSP.rst:87
+#: ../../build/doc/pgr_KSP.rst:88
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_KSP.rst:90
-#: ../../build/doc/pgr_KSP.rst:115
+#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_KSP.rst:91
+#: ../../build/doc/pgr_KSP.rst:116
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_KSP.rst:90
-#: ../../build/doc/pgr_KSP.rst:115
+#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_KSP.rst:91
+#: ../../build/doc/pgr_KSP.rst:116
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgr_KSP.rst:92
+#: ../../build/doc/pgr_KSP.rst:93
 msgid "**edges_sql**"
 msgstr "**edges_sql**"
 
-#: ../../build/doc/pgr_KSP.rst:92
+#: ../../build/doc/pgr_KSP.rst:93
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_KSP.rst:92
+#: ../../build/doc/pgr_KSP.rst:93
 msgid "SQL query as described above."
 msgstr "Consulta SQL como se describió anteriormente."
 
-#: ../../build/doc/pgr_KSP.rst:93
+#: ../../build/doc/pgr_KSP.rst:94
 msgid "**start_vid**"
 msgstr "**start_vid**"
 
-#: ../../build/doc/pgr_KSP.rst:93 ../../build/doc/pgr_KSP.rst:94
-#: ../../build/doc/pgr_KSP.rst:119 ../../build/doc/pgr_KSP.rst:120
-#: ../../build/doc/pgr_KSP.rst:121
+#: ../../build/doc/pgr_KSP.rst:94 ../../build/doc/pgr_KSP.rst:95
+#: ../../build/doc/pgr_KSP.rst:120 ../../build/doc/pgr_KSP.rst:121
+#: ../../build/doc/pgr_KSP.rst:122
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_KSP.rst:93
+#: ../../build/doc/pgr_KSP.rst:94
 msgid "Identifier of the starting vertex."
 msgstr "Identificador del vértice inicial."
 
-#: ../../build/doc/pgr_KSP.rst:94
+#: ../../build/doc/pgr_KSP.rst:95
 msgid "**end_vid**"
 msgstr "**end_vid**"
 
-#: ../../build/doc/pgr_KSP.rst:94
+#: ../../build/doc/pgr_KSP.rst:95
 msgid "Identifier of the ending vertex."
 msgstr "Identificador del vértice final."
 
-#: ../../build/doc/pgr_KSP.rst:95
+#: ../../build/doc/pgr_KSP.rst:96
 msgid "**k**"
 msgstr "**k**"
 
-#: ../../build/doc/pgr_KSP.rst:95 ../../build/doc/pgr_KSP.rst:117
-#: ../../build/doc/pgr_KSP.rst:118
+#: ../../build/doc/pgr_KSP.rst:96 ../../build/doc/pgr_KSP.rst:118
+#: ../../build/doc/pgr_KSP.rst:119
 msgid "``INTEGER``"
 msgstr "``INTEGER``"
 
-#: ../../build/doc/pgr_KSP.rst:95
+#: ../../build/doc/pgr_KSP.rst:96
 msgid "The desiered number of paths."
 msgstr "El número de rutas desedadas."
 
-#: ../../build/doc/pgr_KSP.rst:96
+#: ../../build/doc/pgr_KSP.rst:97
 msgid "**directed**"
 msgstr "**dirigido**"
 
-#: ../../build/doc/pgr_KSP.rst:96 ../../build/doc/pgr_KSP.rst:97
+#: ../../build/doc/pgr_KSP.rst:97 ../../build/doc/pgr_KSP.rst:98
 msgid "``BOOLEAN``"
 msgstr "``BOOLEAN``"
 
-#: ../../build/doc/pgr_KSP.rst:96
+#: ../../build/doc/pgr_KSP.rst:97
 msgid ""
 "(optional). When ``false`` the graph is considered as Undirected. Default is"
 " ``true`` which considers the graph as Directed."
@@ -208,11 +208,11 @@ msgstr ""
 "(opcional). En caso de ``false`` el grafo se considera como No Dirigido. El "
 "valor predeterminado es ``true`` que considera el grafo como Dirigido."
 
-#: ../../build/doc/pgr_KSP.rst:97
+#: ../../build/doc/pgr_KSP.rst:98
 msgid "**heap_paths**"
 msgstr "**heap_paths**"
 
-#: ../../build/doc/pgr_KSP.rst:97
+#: ../../build/doc/pgr_KSP.rst:98
 msgid ""
 "(optional). When ``true`` returns all the paths stored in the process heap. "
 "Default is ``false`` which only returns ``k`` paths."
@@ -221,7 +221,7 @@ msgstr ""
 "el montón de procesos. El valor predeterminado es ``false`` que solo "
 "devuelve rutas ``k``."
 
-#: ../../build/doc/pgr_KSP.rst:100
+#: ../../build/doc/pgr_KSP.rst:101
 msgid ""
 "Roughly, if the shortest path has ``N`` edges, the heap will contain about "
 "than ``N * k`` paths for small value of ``k`` and ``k > 1``."
@@ -230,7 +230,7 @@ msgstr ""
 "contendrá aproximadamente más que las rutas ``N * k`` para valores pequeños "
 "de ``k`` y ``k > 1``."
 
-#: ../../build/doc/pgr_KSP.rst:103
+#: ../../build/doc/pgr_KSP.rst:104
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -268,7 +268,7 @@ msgstr "**objetivo**"
 msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo punto final en el vértice de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_KSP.rst:122
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_KSP.rst:123
 msgid "**cost**"
 msgstr "**cost**"
 
@@ -329,30 +329,30 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_KSP.rst:110
+#: ../../build/doc/pgr_KSP.rst:111
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_KSP.rst:112
+#: ../../build/doc/pgr_KSP.rst:113
 msgid ""
 "Returns set of ``(seq, path_seq, path_id, node, edge, cost, agg_cost)``"
 msgstr ""
 "Ddevuelve el conjunto de ``(seq, path_seq, path_id, node, edge, cost, "
 "agg_cost)``"
 
-#: ../../build/doc/pgr_KSP.rst:117
+#: ../../build/doc/pgr_KSP.rst:118
 msgid "**seq**"
 msgstr "**seq**"
 
-#: ../../build/doc/pgr_KSP.rst:117
+#: ../../build/doc/pgr_KSP.rst:118
 msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
-#: ../../build/doc/pgr_KSP.rst:118
+#: ../../build/doc/pgr_KSP.rst:119
 msgid "**path_seq**"
 msgstr "**path_seq**"
 
-#: ../../build/doc/pgr_KSP.rst:118
+#: ../../build/doc/pgr_KSP.rst:119
 msgid ""
 "Relative position in the path of ``node`` and ``edge``. Has value **1** for "
 "the beginning of a path."
@@ -360,11 +360,11 @@ msgstr ""
 "Posición relativa en la ruta de ``node`` y ``edge``. El valor es **1** para "
 "el inicio de una ruta."
 
-#: ../../build/doc/pgr_KSP.rst:119
+#: ../../build/doc/pgr_KSP.rst:120
 msgid "**path_id**"
 msgstr "**path_id**"
 
-#: ../../build/doc/pgr_KSP.rst:119
+#: ../../build/doc/pgr_KSP.rst:120
 msgid ""
 "Path identifier. The ordering of the paths For two paths i, j if i < j then "
 "agg_cost(i) <= agg_cost(j)."
@@ -372,19 +372,19 @@ msgstr ""
 "Identificador de rutas. El orden de las rutas para dos rutas i, j if i < j "
 "entonces agg_cost(i) <= agg_cost(j)."
 
-#: ../../build/doc/pgr_KSP.rst:120
+#: ../../build/doc/pgr_KSP.rst:121
 msgid "**node**"
 msgstr "**node**"
 
-#: ../../build/doc/pgr_KSP.rst:120
+#: ../../build/doc/pgr_KSP.rst:121
 msgid "Identifier of the node in the path."
 msgstr "Identificador del nodo en la ruta."
 
-#: ../../build/doc/pgr_KSP.rst:121
+#: ../../build/doc/pgr_KSP.rst:122
 msgid "**edge**"
 msgstr "**edge**"
 
-#: ../../build/doc/pgr_KSP.rst:121
+#: ../../build/doc/pgr_KSP.rst:122
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the path"
 " sequence. ``-1`` for the last node of the route."
@@ -392,11 +392,11 @@ msgstr ""
 "Identificador de la arista utilizada para ir desde ``node`` al siguiente "
 "nodo en la secuencia de ruta . ``-1`` para el último nodo de la ruta."
 
-#: ../../build/doc/pgr_KSP.rst:122 ../../build/doc/pgr_KSP.rst:123
+#: ../../build/doc/pgr_KSP.rst:123 ../../build/doc/pgr_KSP.rst:124
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
-#: ../../build/doc/pgr_KSP.rst:122
+#: ../../build/doc/pgr_KSP.rst:123
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the path "
 "sequence."
@@ -404,27 +404,27 @@ msgstr ""
 "Costo de desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
 "nodo en la secuencia de ruta."
 
-#: ../../build/doc/pgr_KSP.rst:123
+#: ../../build/doc/pgr_KSP.rst:124
 msgid "**agg_cost**"
 msgstr "**agg_cost**"
 
-#: ../../build/doc/pgr_KSP.rst:123
+#: ../../build/doc/pgr_KSP.rst:124
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr "Costo agregado de ``start_vid`` a ``node``."
 
-#: ../../build/doc/pgr_KSP.rst:127
+#: ../../build/doc/pgr_KSP.rst:128
 msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
-#: ../../build/doc/pgr_KSP.rst:129
+#: ../../build/doc/pgr_KSP.rst:130
 msgid "To handle the one flag to choose signatures"
 msgstr "Para manejar la única marca para elegir firmas"
 
-#: ../../build/doc/pgr_KSP.rst:131 ../../build/doc/pgr_KSP.rst:139
+#: ../../build/doc/pgr_KSP.rst:132 ../../build/doc/pgr_KSP.rst:140
 msgid "The examples in this section use the following :ref:`fig1`"
 msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig1`"
 
-#: ../../build/doc/pgr_KSP.rst:137
+#: ../../build/doc/pgr_KSP.rst:138
 msgid ""
 "For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` "
 "columns"
@@ -436,7 +436,7 @@ msgstr ""
 msgid "Examples"
 msgstr "Ejemplos"
 
-#: ../../build/doc/pgr_KSP.rst:145
+#: ../../build/doc/pgr_KSP.rst:146
 msgid ""
 "For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` "
 "columns"
@@ -444,46 +444,77 @@ msgstr ""
 "Para consultas marcadas como  ``undirected`` con columnas ``cost`` y "
 "``reverse_cost`` "
 
-#: ../../build/doc/pgr_KSP.rst:147
+#: ../../build/doc/pgr_KSP.rst:148
 msgid "The examples in this section use the following :ref:`fig2`"
 msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig2`"
 
-#: ../../build/doc/pgr_KSP.rst:153
+#: ../../build/doc/pgr_KSP.rst:154
 msgid "For queries marked as ``directed`` with ``cost`` column"
 msgstr "Para consultas marcadas como  ``directed`` con columna``cost``"
 
-#: ../../build/doc/pgr_KSP.rst:155
+#: ../../build/doc/pgr_KSP.rst:156
 msgid "The examples in this section use the following :ref:`fig3`"
 msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig3`"
 
-#: ../../build/doc/pgr_KSP.rst:161
+#: ../../build/doc/pgr_KSP.rst:162
 msgid "For queries marked as ``undirected`` with ``cost`` column"
 msgstr "Para consultas marcadas como  ``undirected`` con columna ``cost``"
 
-#: ../../build/doc/pgr_KSP.rst:163
+#: ../../build/doc/pgr_KSP.rst:164
 msgid "The examples in this section use the following :ref:`fig4`"
 msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig4`"
 
-#: ../../build/doc/pgr_KSP.rst:170
+#: ../../build/doc/pgr_KSP.rst:171
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_KSP.rst:172
+#: ../../build/doc/pgr_KSP.rst:173
 msgid "https://en.wikipedia.org/wiki/K_shortest_path_routing"
 msgstr "https://en.wikipedia.org/wiki/K_shortest_path_routing"
 
-#: ../../build/doc/pgr_KSP.rst:173
+#: ../../build/doc/pgr_KSP.rst:174
 msgid ":doc:`sampledata` network."
 msgstr "Red :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_KSP.rst:176
+#: ../../build/doc/pgr_KSP.rst:177
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_KSP.rst:177
+#: ../../build/doc/pgr_KSP.rst:178
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_KSP.rst:178
+#: ../../build/doc/pgr_KSP.rst:179
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "Support"
+#~ msgstr "Soporte"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_KSP.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_KSP.html>`__ `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_KSP.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/es/pgr_KSP.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/es/pgr_KSP.html>`__ `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_KSP.html>`__"
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_KSP.html>`__ `2.4 "
+#~ "<https://docs.pgrouting.org/2.4/en/pgr_KSP.html>`__ `2.3 "
+#~ "<https://docs.pgrouting.org/2.3/en/src/ksp/doc/pgr_ksp.html>`__ `2.2 "
+#~ "<https://docs.pgrouting.org/2.2/en/src/ksp/doc/pgr_ksp.html>`__ `2.1 "
+#~ "<https://docs.pgrouting.org/2.1/en/src/ksp/doc/index.html>`__ `2.0 "
+#~ "<https://docs.pgrouting.org/2.0/en/src/ksp/doc/index.html>`__"
+#~ msgstr ""
+#~ "**Versiones no soportadas:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_KSP.html>`__ `2.4 "
+#~ "<https://docs.pgrouting.org/2.4/en/pgr_KSP.html>`__ `2.3 "
+#~ "<https://docs.pgrouting.org/2.3/en/src/ksp/doc/pgr_ksp.html>`__ `2.2 "
+#~ "<https://docs.pgrouting.org/2.2/en/src/ksp/doc/pgr_ksp.html>`__ `2.1 "
+#~ "<https://docs.pgrouting.org/2.1/en/src/ksp/doc/index.html>`__ `2.0 "
+#~ "<https://docs.pgrouting.org/2.0/en/src/ksp/doc/index.html>`__"

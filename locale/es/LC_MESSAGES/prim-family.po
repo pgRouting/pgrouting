@@ -5,64 +5,66 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
-# MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: 2020-11-04 18:28+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/prim-family.rst:11
+#: ../../build/doc/prim-family.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/prim-"
+"family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/prim-"
+"family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/prim-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/prim-family.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual <https://docs.pgrouting.org/latest/en"
+"/prim-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/prim-"
+"family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/prim-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/prim-family.html>`__"
+
+#: ../../build/doc/prim-family.rst:19
 msgid "Prim - Family of functions"
 msgstr "Prim - Familia de funciones"
 
-#: ../../build/doc/prim-family.rst:15
+#: ../../build/doc/prim-family.rst:23
 msgid ":doc:`pgr_prim`"
 msgstr ":doc:`pgr_prim`"
 
-#: ../../build/doc/prim-family.rst:16
+#: ../../build/doc/prim-family.rst:24
 msgid ":doc:`pgr_primBFS`"
 msgstr ":doc:`pgr_primBFS`"
 
-#: ../../build/doc/prim-family.rst:17
+#: ../../build/doc/prim-family.rst:25
 msgid ":doc:`pgr_primDD`"
 msgstr ":doc:`pgr_primDD`"
 
-#: ../../build/doc/prim-family.rst:18
+#: ../../build/doc/prim-family.rst:26
 msgid ":doc:`pgr_primDFS`"
 msgstr ":doc:`pgr_primDFS`"
 
-#: ../../build/doc/prim-family.rst:25
+#: ../../build/doc/prim-family.rst:33
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
-#: ../../build/doc/prim-family.rst:35
-msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
-"/prim-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/prim-"
-"family.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
-"/prim-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es/prim-"
-"family.html>`__"
-
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/prim-family.rst:40
+#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/prim-family.rst:45
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/prim-family.rst:42
+#: ../../build/doc/prim-family.rst:47
 msgid ""
 "The prim algorithm was developed in 1930 by Czech mathematician Vojtěch "
 "Jarník. It is a greedy algorithm that finds a minimum spanning tree for a "
@@ -81,7 +83,7 @@ msgstr ""
 "arbitrario, paso a paso agregando la conexión más barata posible desde el "
 "árbol a otro vértice."
 
-#: ../../build/doc/prim-family.rst:50
+#: ../../build/doc/prim-family.rst:55
 msgid ""
 "This algorithms find the minimum spanning forest in a possibly disconnected "
 "graph; in contrast, the most basic form of Prim's algorithm only finds "
@@ -95,44 +97,44 @@ msgstr ""
 "Sin embargo, al ejecutar el algoritmo de Prim por separado para cada "
 "componente conectado del grafo, se denomina bosque de expansión mínimo."
 
-#: ../../build/doc/prim-family.rst:56
+#: ../../build/doc/prim-family.rst:61
 msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
-#: ../../build/doc/prim-family.rst:60
+#: ../../build/doc/prim-family.rst:65
 msgid "It's implementation is only on **undirected graph**."
 msgstr "Su implementación solo está en **grafo no dirigido**."
 
-#: ../../build/doc/prim-family.rst:61
+#: ../../build/doc/prim-family.rst:66
 msgid "Process is done only on edges with positive costs."
 msgstr "El proceso se realiza sólo en las aristas con costos positivos."
 
-#: ../../build/doc/prim-family.rst:62
+#: ../../build/doc/prim-family.rst:67
 msgid "When the graph is connected"
 msgstr "Cuando el grafo está conectado"
 
-#: ../../build/doc/prim-family.rst:64
+#: ../../build/doc/prim-family.rst:69
 msgid "The resulting edges make up a tree"
 msgstr "Las aristas resultantes componen un árbol"
 
-#: ../../build/doc/prim-family.rst:66
+#: ../../build/doc/prim-family.rst:71
 msgid "When the graph is not connected,"
 msgstr "Cuando el grafo no está conectado,"
 
-#: ../../build/doc/prim-family.rst:68
+#: ../../build/doc/prim-family.rst:73
 msgid "Finds a minimum spanning tree for each connected component."
 msgstr ""
 "Encuentra un árbol de expansión mínimo para cada componente conectado."
 
-#: ../../build/doc/prim-family.rst:69
+#: ../../build/doc/prim-family.rst:74
 msgid "The resulting edges make up a forest."
 msgstr "Las aristas resultantes conforman un bosque."
 
-#: ../../build/doc/prim-family.rst:71
+#: ../../build/doc/prim-family.rst:76
 msgid "Prim's running time: :math:`O(E*log V)`"
 msgstr "Tiempo de ejecución de Prim:  :math:`O(E*log V)`"
 
-#: ../../build/doc/prim-family.rst:76
+#: ../../build/doc/prim-family.rst:81
 msgid ""
 "From boost Graph: \"The algorithm as implemented in Boost.Graph does not "
 "produce correct results on graphs with parallel edges.\""
@@ -140,7 +142,7 @@ msgstr ""
 "De boost Graph: \"El algoritmo tal como se aplica en el Boost.Graph no "
 "produce resultados correctos en grafos con bordes paralelos \"."
 
-#: ../../build/doc/prim-family.rst:80
+#: ../../build/doc/prim-family.rst:85
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -247,15 +249,15 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/prim-family.rst:87
+#: ../../build/doc/prim-family.rst:92
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/prim-family.rst:89
+#: ../../build/doc/prim-family.rst:94
 msgid ":doc:`spanningTree-family`"
 msgstr ":doc:`spanningTree-family`"
 
-#: ../../build/doc/prim-family.rst:90
+#: ../../build/doc/prim-family.rst:95
 msgid ""
 "`Boost: Prim's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
@@ -263,7 +265,7 @@ msgstr ""
 "`Boost: Prim's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 
-#: ../../build/doc/prim-family.rst:91
+#: ../../build/doc/prim-family.rst:96
 #, python-format
 msgid ""
 "`Wikipedia: Prim's algorithm "
@@ -272,14 +274,23 @@ msgstr ""
 "`Wikipedia: algoritmo de Prim "
 "<https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 
-#: ../../build/doc/prim-family.rst:94
+#: ../../build/doc/prim-family.rst:99
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/prim-family.rst:95
+#: ../../build/doc/prim-family.rst:100
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/prim-family.rst:96
+#: ../../build/doc/prim-family.rst:101
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+#~ "/prim-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/prim-"
+#~ "family.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/en"
+#~ "/prim-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/prim-"
+#~ "family.html>`__"

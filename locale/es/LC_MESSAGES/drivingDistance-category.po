@@ -4,55 +4,81 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: 2020-11-04 18:29+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/drivingDistance-category.rst:11
+#: ../../build/doc/drivingDistance-category.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/drivingDistance-category.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en"
+"/drivingDistance-category.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en"
+"/drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+"/drivingDistance-category.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual <https://docs.pgrouting.org/latest/en"
+"/drivingDistance-category.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en"
+"/drivingDistance-category.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en"
+"/drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+"/drivingDistance-category.html>`__"
+
+#: ../../build/doc/drivingDistance-category.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/drivingDistance-category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/drivingDistance-category.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/drivingDistance-category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/drivingDistance-category.html>`__"
+
+#: ../../build/doc/drivingDistance-category.rst:23
 msgid "Driving Distance - Category"
 msgstr "Distancia Manejando - Categoría"
 
-#: ../../build/doc/drivingDistance-category.rst:15
+#: ../../build/doc/drivingDistance-category.rst:27
 msgid ""
 ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
 msgstr ""
 ":doc:`pgr_drivingDistance` - Distancia Manejando basada en el algoritmo de "
 "Dijkstra."
 
-#: ../../build/doc/drivingDistance-category.rst:16
+#: ../../build/doc/drivingDistance-category.rst:28
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
 msgstr ""
 ":doc:`pgr_primDD` - Distancia Manejando basada en el algoritmo de Prim"
 
-#: ../../build/doc/drivingDistance-category.rst:17
+#: ../../build/doc/drivingDistance-category.rst:29
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
 ":doc:`pgr_kruskalDD` - Distancia Manejando basada en el algoritmo de Kruskal"
 
-#: ../../build/doc/drivingDistance-category.rst:18
+#: ../../build/doc/drivingDistance-category.rst:30
 msgid "Post pocessing"
 msgstr "Post procesamiento"
 
-#: ../../build/doc/drivingDistance-category.rst:20
+#: ../../build/doc/drivingDistance-category.rst:32
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
 msgstr ":doc:`pgr_alphaShape` - Cálculo de la forma Alpha"
 
-#: ../../build/doc/drivingDistance-category.rst:25
+#: ../../build/doc/drivingDistance-category.rst:37
 msgid "Proposed"
 msgstr "Propuesto"
 
@@ -92,49 +118,46 @@ msgstr "Se han hecho pruebas de pgTap. Pero tal vez necesite más."
 msgid "Documentation might need refinement."
 msgstr "Es posible que la documentación necesite un refinamiento."
 
-#: ../../build/doc/drivingDistance-category.rst:32
+#: ../../build/doc/drivingDistance-category.rst:44
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
 ":doc:`pgr_withPointsDD` - Distancia Manejando basada en pgr_withPoints"
 
-#: ../../build/doc/drivingDistance-category.rst:42
-msgid "Previous versions of this page"
-msgstr "Versiones anteriores de esta página"
-
-#: ../../build/doc/drivingDistance-category.rst:43
-msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
-"/drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
-"/drivingDistance-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
-"/drivingDistance-category.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
-"/drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es"
-"/drivingDistance-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
-"/drivingDistance-category.html>`__"
-
-#: ../../build/doc/drivingDistance-category.rst:48
-msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
-"/drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
-"/drivingDistance-category.html>`__"
-msgstr ""
-"**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en"
-"/drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
-"/drivingDistance-category.html>`__"
-
-#: ../../build/doc/drivingDistance-category.rst:54
+#: ../../build/doc/drivingDistance-category.rst:55
 msgid "See Also"
 msgstr "Véase también"
 
-#: ../../build/doc/drivingDistance-category.rst:57
+#: ../../build/doc/drivingDistance-category.rst:58
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/drivingDistance-category.rst:58
+#: ../../build/doc/drivingDistance-category.rst:59
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/drivingDistance-category.rst:59
+#: ../../build/doc/drivingDistance-category.rst:60
 msgid ":ref:`search`"
 msgstr ":ref:`búsqueda <search>`"
+
+#~ msgid "Previous versions of this page"
+#~ msgstr "Versiones anteriores de esta página"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
+#~ "/drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+#~ "/drivingDistance-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
+#~ "/drivingDistance-category.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/es"
+#~ "/drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/es"
+#~ "/drivingDistance-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
+#~ "/drivingDistance-category.html>`__"
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
+#~ "/drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+#~ "/drivingDistance-category.html>`__"
+#~ msgstr ""
+#~ "**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en"
+#~ "/drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+#~ "/drivingDistance-category.html>`__"

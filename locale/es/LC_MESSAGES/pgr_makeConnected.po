@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 12:09-0600\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: 2020-11-04 19:19+0000\n"
 "Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
@@ -24,11 +24,18 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/pgr_makeConnected.rst:11
+#: ../../build/doc/pgr_makeConnected.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_makeConnected.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_makeConnected.rst:17
 msgid "pgr_makeConnected - Experimental"
 msgstr "pgr_makeConnected - Experimental"
 
-#: ../../build/doc/pgr_makeConnected.rst:13
+#: ../../build/doc/pgr_makeConnected.rst:19
 msgid ""
 "``pgr_makeConnected`` — Returns the set of edges that will make the graph "
 "connected."
@@ -36,7 +43,7 @@ msgstr ""
 "``pgr_makeConnected`` — Devuelve el conjunto de bordes que harán que el "
 "gráfico esté conectado."
 
-#: ../../build/doc/pgr_makeConnected.rst:18
+#: ../../build/doc/pgr_makeConnected.rst:24
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
@@ -109,38 +116,26 @@ msgstr "Puede depender de una función propuesta de pgRouting."
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
-#: ../../build/doc/pgr_makeConnected.rst:25
+#: ../../build/doc/pgr_makeConnected.rst:31
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_makeConnected.rst:26
+#: ../../build/doc/pgr_makeConnected.rst:32
 msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
-#: ../../build/doc/pgr_makeConnected.rst:28
+#: ../../build/doc/pgr_makeConnected.rst:34
 msgid "New **experimental** function"
 msgstr "Nueva función **experimental**"
 
-#: ../../build/doc/pgr_makeConnected.rst:31
-msgid "Support"
-msgstr "Soporte"
-
-#: ../../build/doc/pgr_makeConnected.rst:32
-msgid ""
-"**Supported versions:** current(`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__)"
-msgstr ""
-"**Versiones soportadas:** actual(`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__)"
-
-#: ../../build/doc/pgr_makeConnected.rst:36
-#: ../../build/doc/pgr_makeConnected.rst:75
-#: ../../build/doc/pgr_makeConnected.rst:86
-#: ../../build/doc/pgr_makeConnected.rst:112
+#: ../../build/doc/pgr_makeConnected.rst:38
+#: ../../build/doc/pgr_makeConnected.rst:77
+#: ../../build/doc/pgr_makeConnected.rst:88
+#: ../../build/doc/pgr_makeConnected.rst:114
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_makeConnected.rst:38
+#: ../../build/doc/pgr_makeConnected.rst:40
 msgid ""
 "Adds the minimum number of edges needed to make the input graph connected. "
 "The algorithm first identifies all of the connected components in the graph,"
@@ -158,11 +153,11 @@ msgstr ""
 "consistir en una que conecta un vértice en A con un vértice en B y otra que "
 "conecta un vértice en B con un vértice en C."
 
-#: ../../build/doc/pgr_makeConnected.rst:51
+#: ../../build/doc/pgr_makeConnected.rst:53
 msgid "The main characteristics are:"
 msgstr "Las principales características son:"
 
-#: ../../build/doc/pgr_makeConnected.rst:44
+#: ../../build/doc/pgr_makeConnected.rst:46
 msgid ""
 "It will give the minimum list of all edges which are needed in the graph to "
 "make the graph connected."
@@ -170,23 +165,23 @@ msgstr ""
 "Le dará la lista mínima de todos los bordes que se necesitan en el grafo "
 "para hacerlo conectado"
 
-#: ../../build/doc/pgr_makeConnected.rst:46
+#: ../../build/doc/pgr_makeConnected.rst:48
 msgid "Applicable only for **undirected** graphs."
 msgstr "Aplicable solo para grafos **no dirigidos**."
 
-#: ../../build/doc/pgr_makeConnected.rst:48
+#: ../../build/doc/pgr_makeConnected.rst:50
 msgid "The algorithm does not considers traversal costs in the calculations."
 msgstr "El algoritmo no considera los costos transversales en los cálculos."
 
-#: ../../build/doc/pgr_makeConnected.rst:50
+#: ../../build/doc/pgr_makeConnected.rst:52
 msgid "Running time: :math:`O(V + E)`"
 msgstr "Tiempo de ejecución: :math:`O(V + E)`"
 
-#: ../../build/doc/pgr_makeConnected.rst:54
+#: ../../build/doc/pgr_makeConnected.rst:56
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_makeConnected.rst:57
+#: ../../build/doc/pgr_makeConnected.rst:59
 msgid "Summary"
 msgstr "Resumen"
 
@@ -194,7 +189,7 @@ msgstr "Resumen"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_makeConnected.rst:65
+#: ../../build/doc/pgr_makeConnected.rst:67
 msgid ""
 "Query done on :doc:`sampledata` network gives the list of edges that are "
 "needed in the graph to make it connected."
@@ -202,38 +197,38 @@ msgstr ""
 "La consulta realizada en la red de :doc:`sampledata` proporciona la lista de"
 " aristas que se necesitan en el grafo para que esté conectado."
 
-#: ../../build/doc/pgr_makeConnected.rst:72
+#: ../../build/doc/pgr_makeConnected.rst:74
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_makeConnected.rst:75
+#: ../../build/doc/pgr_makeConnected.rst:77
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/pgr_makeConnected.rst:75
-#: ../../build/doc/pgr_makeConnected.rst:86
-#: ../../build/doc/pgr_makeConnected.rst:112
+#: ../../build/doc/pgr_makeConnected.rst:77
+#: ../../build/doc/pgr_makeConnected.rst:88
+#: ../../build/doc/pgr_makeConnected.rst:114
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgr_makeConnected.rst:75
-#: ../../build/doc/pgr_makeConnected.rst:86
+#: ../../build/doc/pgr_makeConnected.rst:77
+#: ../../build/doc/pgr_makeConnected.rst:88
 msgid "Default"
 msgstr "Valores predeterminados"
 
-#: ../../build/doc/pgr_makeConnected.rst:77
+#: ../../build/doc/pgr_makeConnected.rst:79
 msgid "**Edges SQL**"
 msgstr "**Edges SQL**"
 
-#: ../../build/doc/pgr_makeConnected.rst:77
+#: ../../build/doc/pgr_makeConnected.rst:79
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_makeConnected.rst:77
+#: ../../build/doc/pgr_makeConnected.rst:79
 msgid "SQL query as described below."
 msgstr "Consulta SQL como se describe a continuación."
 
-#: ../../build/doc/pgr_makeConnected.rst:81
+#: ../../build/doc/pgr_makeConnected.rst:83
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -241,79 +236,79 @@ msgstr "Consulta interna"
 msgid "Edges SQL"
 msgstr "Edges SQL"
 
-#: ../../build/doc/pgr_makeConnected.rst:83
+#: ../../build/doc/pgr_makeConnected.rst:85
 msgid ""
 "an SQL query, which should return a set of rows with the following columns:"
 msgstr ""
 "Una consulta SQL, que debe regresar un conjunto de filas con las siguientes "
 "columnas:"
 
-#: ../../build/doc/pgr_makeConnected.rst:86
-#: ../../build/doc/pgr_makeConnected.rst:112
+#: ../../build/doc/pgr_makeConnected.rst:88
+#: ../../build/doc/pgr_makeConnected.rst:114
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/pgr_makeConnected.rst:88
+#: ../../build/doc/pgr_makeConnected.rst:90
 msgid "**id**"
 msgstr "**id**"
 
-#: ../../build/doc/pgr_makeConnected.rst:88
-#: ../../build/doc/pgr_makeConnected.rst:89
 #: ../../build/doc/pgr_makeConnected.rst:90
+#: ../../build/doc/pgr_makeConnected.rst:91
+#: ../../build/doc/pgr_makeConnected.rst:92
 msgid "``ANY-INTEGER``"
 msgstr "``ANY-INTEGER``"
 
-#: ../../build/doc/pgr_makeConnected.rst:88
+#: ../../build/doc/pgr_makeConnected.rst:90
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
-#: ../../build/doc/pgr_makeConnected.rst:89
+#: ../../build/doc/pgr_makeConnected.rst:91
 msgid "**source**"
 msgstr "**origen**"
 
-#: ../../build/doc/pgr_makeConnected.rst:89
-#: ../../build/doc/pgr_makeConnected.rst:115
+#: ../../build/doc/pgr_makeConnected.rst:91
+#: ../../build/doc/pgr_makeConnected.rst:117
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer punto final en el vértice de la arista."
 
-#: ../../build/doc/pgr_makeConnected.rst:90
+#: ../../build/doc/pgr_makeConnected.rst:92
 msgid "**target**"
 msgstr "**objetivo**"
 
-#: ../../build/doc/pgr_makeConnected.rst:90
-#: ../../build/doc/pgr_makeConnected.rst:116
+#: ../../build/doc/pgr_makeConnected.rst:92
+#: ../../build/doc/pgr_makeConnected.rst:118
 msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo punto final en el vértice de la arista."
 
-#: ../../build/doc/pgr_makeConnected.rst:91
+#: ../../build/doc/pgr_makeConnected.rst:93
 msgid "**cost**"
 msgstr "**cost**"
 
-#: ../../build/doc/pgr_makeConnected.rst:91
-#: ../../build/doc/pgr_makeConnected.rst:94
+#: ../../build/doc/pgr_makeConnected.rst:93
+#: ../../build/doc/pgr_makeConnected.rst:96
 msgid "``ANY-NUMERICAL``"
 msgstr "``ANY-NUMERICAL``"
 
-#: ../../build/doc/pgr_makeConnected.rst:91
-#: ../../build/doc/pgr_makeConnected.rst:94
+#: ../../build/doc/pgr_makeConnected.rst:93
+#: ../../build/doc/pgr_makeConnected.rst:96
 msgid "When positive: edge `(target, source)` is part of the graph."
 msgstr "Cuando es positivo: la arista `(destino, origen)` es parte del grafo."
 
-#: ../../build/doc/pgr_makeConnected.rst:92
-#: ../../build/doc/pgr_makeConnected.rst:95
+#: ../../build/doc/pgr_makeConnected.rst:94
+#: ../../build/doc/pgr_makeConnected.rst:97
 msgid "When negative: edge `(target, source)` is not part of the graph."
 msgstr ""
 "En caso negativo: la arista `(destino, origen)` no forma parte del grafo."
 
-#: ../../build/doc/pgr_makeConnected.rst:94
+#: ../../build/doc/pgr_makeConnected.rst:96
 msgid "**reverse_cost**"
 msgstr "**reverse_cost**"
 
-#: ../../build/doc/pgr_makeConnected.rst:94
+#: ../../build/doc/pgr_makeConnected.rst:96
 msgid "-1"
 msgstr "-1"
 
-#: ../../build/doc/pgr_makeConnected.rst:99
+#: ../../build/doc/pgr_makeConnected.rst:101
 msgid "Where:"
 msgstr "Donde:"
 
@@ -321,7 +316,7 @@ msgstr "Donde:"
 msgid "ANY-INTEGER"
 msgstr "ANY-INTEGER"
 
-#: ../../build/doc/pgr_makeConnected.rst:101
+#: ../../build/doc/pgr_makeConnected.rst:103
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr "SMALLINT, INTEGER, BIGINT"
 
@@ -329,63 +324,73 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 msgid "ANY-NUMERICAL"
 msgstr "ANY-NUMERICAL"
 
-#: ../../build/doc/pgr_makeConnected.rst:102
+#: ../../build/doc/pgr_makeConnected.rst:104
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_makeConnected.rst:105
+#: ../../build/doc/pgr_makeConnected.rst:107
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_makeConnected.rst:109
+#: ../../build/doc/pgr_makeConnected.rst:111
 msgid "Returns set of ``(seq, start_vid, end_vid)``"
 msgstr "Devuelve el conjunto de ``(seq, start_vid, end_vid)``"
 
-#: ../../build/doc/pgr_makeConnected.rst:114
+#: ../../build/doc/pgr_makeConnected.rst:116
 msgid "**seq**"
 msgstr "**seq**"
 
-#: ../../build/doc/pgr_makeConnected.rst:114
+#: ../../build/doc/pgr_makeConnected.rst:116
 msgid "``INT``"
 msgstr "``INT``"
 
-#: ../../build/doc/pgr_makeConnected.rst:114
+#: ../../build/doc/pgr_makeConnected.rst:116
 msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
-#: ../../build/doc/pgr_makeConnected.rst:115
+#: ../../build/doc/pgr_makeConnected.rst:117
 msgid "**start_vid**"
 msgstr "**start_vid**"
 
-#: ../../build/doc/pgr_makeConnected.rst:115
-#: ../../build/doc/pgr_makeConnected.rst:116
+#: ../../build/doc/pgr_makeConnected.rst:117
+#: ../../build/doc/pgr_makeConnected.rst:118
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_makeConnected.rst:116
+#: ../../build/doc/pgr_makeConnected.rst:118
 msgid "**end_vid**"
 msgstr "**end_vid**"
 
-#: ../../build/doc/pgr_makeConnected.rst:122
+#: ../../build/doc/pgr_makeConnected.rst:124
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_makeConnected.rst:124
+#: ../../build/doc/pgr_makeConnected.rst:126
 msgid "https://www.boost.org/libs/graph/doc/make_connected.html"
 msgstr "https://www.boost.org/libs/graph/doc/make_connected.html"
 
-#: ../../build/doc/pgr_makeConnected.rst:125
+#: ../../build/doc/pgr_makeConnected.rst:127
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_makeConnected.rst:128
+#: ../../build/doc/pgr_makeConnected.rst:130
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_makeConnected.rst:129
+#: ../../build/doc/pgr_makeConnected.rst:131
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_makeConnected.rst:130
+#: ../../build/doc/pgr_makeConnected.rst:132
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "Support"
+#~ msgstr "Soporte"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__)"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__)"
