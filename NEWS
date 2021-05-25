@@ -18,19 +18,19 @@ To see all issues & pull requests closed by this release see the [Git closed mil
 * pgr_depthFirstSearch
 * Dijkstra Near
 
-   * pgr_dijkstraNearCost
+  * pgr_dijkstraNearCost
 
-     * pgr_dijkstraNear(One to Many)
-     * pgr_dijkstraNear(Many to One)
-     * pgr_dijkstraNear(Many to Many)
-     * pgr_dijkstraNear(Combinations)
+    * pgr_dijkstraNear(One to Many)
+    * pgr_dijkstraNear(Many to One)
+    * pgr_dijkstraNear(Many to Many)
+    * pgr_dijkstraNear(Combinations)
 
-   * pgr_dijkstraNearCost
+  * pgr_dijkstraNearCost
 
-     * pgr_dijkstraNearCost(One to Many)
-     * pgr_dijkstraNearCost(Many to One)
-     * pgr_dijkstraNearCost(Many to Many)
-     * pgr_dijkstraNearCost(Combinations)
+    * pgr_dijkstraNearCost(One to Many)
+    * pgr_dijkstraNearCost(Many to One)
+    * pgr_dijkstraNearCost(Many to Many)
+    * pgr_dijkstraNearCost(Combinations)
 
 * pgr_edwardMoore(Combinations)
 * pgr_isPlanar
@@ -47,18 +47,18 @@ To see all issues & pull requests closed by this release see the [Git closed mil
 
 * Astar
 
-   * pgr_aStar(Combinations)
-   * pgr_aStarCost(Combinations)
+  * pgr_aStar(Combinations)
+  * pgr_aStarCost(Combinations)
 
 * Bidirectional Astar
 
-   * pgr_bdAstar(Combinations)
-   * pgr_bdAstarCost(Combinations)
+  * pgr_bdAstar(Combinations)
+  * pgr_bdAstarCost(Combinations)
 
 * Bidirectional Dijkstra
 
-   * pgr_bdDijkstra(Combinations)
-   * pgr_bdDijkstraCost(Combinations)
+  * pgr_bdDijkstra(Combinations)
+  * pgr_bdDijkstraCost(Combinations)
 
 * Flow
 
