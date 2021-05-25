@@ -1,6 +1,7 @@
 <map id="pgr_point_input.c" name="pgr_point_input.c">
-<area shape="rect" id="node2" href="$pgr__point__input_8h.html" title="c_common/pgr_point\l_input.h" alt="" coords="5,80,148,121"/>
-<area shape="rect" id="node3" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="173,87,351,114"/>
-<area shape="rect" id="node4" href="$get__check__data_8h.html" title="c_common/get_check\l_data.h" alt="" coords="376,80,527,121"/>
-<area shape="rect" id="node5" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="551,87,709,114"/>
+<area shape="rect" id="node1" title=" " alt="" coords="321,5,456,32"/>
+<area shape="rect" id="node2" href="$pgr__point__input_8h.html" title=" " alt="" coords="5,80,164,121"/>
+<area shape="rect" id="node3" href="$debug__macro_8h.html" title=" " alt="" coords="189,87,386,114"/>
+<area shape="rect" id="node4" href="$get__check__data_8h.html" title=" " alt="" coords="410,80,573,121"/>
+<area shape="rect" id="node5" href="$time__msg_8h.html" title=" " alt="" coords="597,87,772,114"/>
 </map>

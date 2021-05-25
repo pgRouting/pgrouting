@@ -4,8 +4,8 @@ var trsp_8h =
     [ "path_element", "structpath__element.html", "structpath__element" ],
     [ "restrict_struct", "structrestrict__struct.html", "structrestrict__struct" ],
     [ "MAX_RULE_LENGTH", "trsp_8h.html#a2b2d1b8288abf80b6781151bdde6101f", null ],
-    [ "edge_t", "trsp_8h.html#aff905ba824de026b4ae434817a5b923c", null ],
-    [ "path_element_tt", "trsp_8h.html#adfa1ab41027fc911470a0328c9c9772a", null ],
-    [ "restrict_t", "trsp_8h.html#a737b6d7654307647025209d889d79e4c", null ],
+    [ "edge_t", "trsp_8h.html#ad85e157bedf2d9e91492c7ee1982e5ad", null ],
+    [ "path_element_tt", "trsp_8h.html#a7bae051f30820138db64b7f025477b20", null ],
+    [ "restrict_t", "trsp_8h.html#a8434be555c7e3937035ddf024f4855f5", null ],
     [ "trsp_edge_wrapper", "trsp_8h.html#a9936d9f5cc903264889dd89eb99b219d", null ]
 ];

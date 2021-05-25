@@ -1,19 +1,20 @@
 digraph "pgr_flow_t.h"
 {
+ // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node2 [label="pgr_flow_t.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="edges_input.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8h.html"];
-  Node2 -> Node45 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node45 [label="pgr_chinesePostman.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__chinesePostman_8hpp.html"];
-  Node2 -> Node47 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node47 [label="max_flow_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$max__flow__driver_8h.html"];
-  Node2 -> Node49 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node49 [label="minCostMaxFlow_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$minCostMaxFlow__driver_8h.html"];
-  Node2 -> Node51 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node51 [label="pgr_maxflow.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__maxflow_8hpp.html"];
-  Node2 -> Node54 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node54 [label="pgr_minCostMaxFlow.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__minCostMaxFlow_8hpp.html"];
-  Node54 -> Node45 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="pgr_flow_t.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="edges_input.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$edges__input_8h.html",tooltip=" "];
+  Node1 -> Node51 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node51 [label="pgr_chinesePostman.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__chinesePostman_8hpp.html",tooltip=" "];
+  Node1 -> Node53 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node53 [label="max_flow_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$max__flow__driver_8h.html",tooltip=" "];
+  Node1 -> Node55 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node55 [label="minCostMaxFlow_driver.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$minCostMaxFlow__driver_8h.html",tooltip=" "];
+  Node1 -> Node57 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node57 [label="pgr_maxflow.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__maxflow_8hpp.html",tooltip=" "];
+  Node1 -> Node60 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node60 [label="pgr_minCostMaxFlow.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__minCostMaxFlow_8hpp.html",tooltip=" "];
+  Node60 -> Node51 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

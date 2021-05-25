@@ -1,10 +1,8 @@
 var namespacepgrouting_1_1vrp =
 [
-    [ "Base_node", "classpgrouting_1_1vrp_1_1Base__node.html", "classpgrouting_1_1vrp_1_1Base__node" ],
     [ "Dnode", "classpgrouting_1_1vrp_1_1Dnode.html", "classpgrouting_1_1vrp_1_1Dnode" ],
     [ "Fleet", "classpgrouting_1_1vrp_1_1Fleet.html", "classpgrouting_1_1vrp_1_1Fleet" ],
     [ "Initial_solution", "classpgrouting_1_1vrp_1_1Initial__solution.html", "classpgrouting_1_1vrp_1_1Initial__solution" ],
-    [ "Node", "classpgrouting_1_1vrp_1_1Node.html", "classpgrouting_1_1vrp_1_1Node" ],
     [ "Optimize", "classpgrouting_1_1vrp_1_1Optimize.html", "classpgrouting_1_1vrp_1_1Optimize" ],
     [ "Order", "classpgrouting_1_1vrp_1_1Order.html", "classpgrouting_1_1vrp_1_1Order" ],
     [ "PD_Orders", "classpgrouting_1_1vrp_1_1PD__Orders.html", "classpgrouting_1_1vrp_1_1PD__Orders" ],

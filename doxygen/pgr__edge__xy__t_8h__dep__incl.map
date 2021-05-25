@@ -1,8 +1,9 @@
 <map id="pgr_edge_xy_t.h" name="pgr_edge_xy_t.h">
-<area shape="rect" id="node2" href="$pgr__alphaShape_8h.html" title="pgr_alphaShape.h" alt="" coords="5,80,132,107"/>
-<area shape="rect" id="node3" href="$edges__input_8h.html" title="edges_input.h" alt="" coords="156,80,259,107"/>
-<area shape="rect" id="node4" href="$xy__vertex_8h.html" title="xy_vertex.h" alt="" coords="283,80,374,107"/>
-<area shape="rect" id="node5" href="$alphaShape__driver_8h.html" title="alphaShape_driver.h" alt="" coords="399,80,539,107"/>
-<area shape="rect" id="node6" href="$astar__driver_8h.html" title="astar_driver.h" alt="" coords="563,80,665,107"/>
-<area shape="rect" id="node7" href="$bdAstar__driver_8h.html" title="bdAstar_driver.h" alt="" coords="689,80,806,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="366,5,495,32"/>
+<area shape="rect" id="node2" href="$pgr__alphaShape_8h.html" title=" " alt="" coords="5,80,144,107"/>
+<area shape="rect" id="node3" href="$edges__input_8h.html" title=" " alt="" coords="169,80,282,107"/>
+<area shape="rect" id="node4" href="$xy__vertex_8h.html" title=" " alt="" coords="307,80,405,107"/>
+<area shape="rect" id="node5" href="$alphaShape__driver_8h.html" title=" " alt="" coords="429,80,584,107"/>
+<area shape="rect" id="node6" href="$astar__driver_8h.html" title=" " alt="" coords="609,80,719,107"/>
+<area shape="rect" id="node7" href="$bdAstar__driver_8h.html" title=" " alt="" coords="744,80,872,107"/>
 </map>

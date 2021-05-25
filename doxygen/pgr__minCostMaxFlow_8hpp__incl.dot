@@ -1,28 +1,29 @@
 digraph "pgr_minCostMaxFlow.hpp"
 {
+ // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node0 [label="pgr_minCostMaxFlow.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="map",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="utility",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="vector",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="set",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="limits",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="max_flow/pgr_costFlowGraph.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__costFlowGraph_8hpp.html"];
-  Node0 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="boost/successive_shortest\l_path_nonnegative_weights.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node11 [label="boost/find_flow_cost.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node12 [label="c_types/pgr_flow_t.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__flow__t_8h.html"];
-  Node0 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node14 [label="c_types/pgr_costFlow_t.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__costFlow__t_8h.html"];
+  Node1 [label="pgr_minCostMaxFlow.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="map",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="utility",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="vector",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="set",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="limits",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="max_flow/pgr_costFlowGraph.hpp",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__costFlowGraph_8hpp.html",tooltip=" "];
+  Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="boost/graph/successive\l_shortest_path_nonnegative\l_weights.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="boost/graph/find_flow\l_cost.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="c_types/pgr_flow_t.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__flow__t_8h.html",tooltip=" "];
+  Node1 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="c_types/pgr_costFlow_t.h",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$pgr__costFlow__t_8h.html",tooltip=" "];
 }

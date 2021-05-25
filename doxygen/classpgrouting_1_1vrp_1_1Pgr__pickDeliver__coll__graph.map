@@ -1,7 +1,10 @@
 <map id="pgrouting::vrp::Pgr_pickDeliver" name="pgrouting::vrp::Pgr_pickDeliver">
-<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Fleet.html" title="pgrouting::vrp::Fleet" alt="" coords="551,106,689,133"/>
-<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1PD__Orders.html" title="pgrouting::vrp::PD\l_Orders" alt="" coords="556,173,684,215"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1PD__problem.html" title="pgrouting::vrp::PD\l_problem" alt="" coords="27,5,155,47"/>
-<area shape="rect" id="node7" href="$classpgrouting_1_1tsp_1_1Dmatrix.html" title="pgrouting::tsp::Dmatrix" alt="" coords="13,202,168,229"/>
-<area shape="rect" id="node8" href="$classpgrouting_1_1Pgr__messages.html" title="pgrouting::Pgr_messages" alt="" coords="5,253,176,279"/>
+<area shape="rect" id="node1" title=" " alt="" coords="341,136,484,177"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Fleet.html" title=" " alt="" coords="597,106,752,133"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1PD__Orders.html" title=" " alt="" coords="605,173,744,215"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1PD__problem.html" title=" " alt="" coords="29,5,168,47"/>
+<area shape="rect" id="node3" title=" " alt="" coords="15,71,183,112"/>
+<area shape="rect" id="node5" title=" " alt="" coords="15,136,183,177"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1tsp_1_1Dmatrix.html" title=" " alt="" coords="12,202,185,229"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1Pgr__messages.html" title=" " alt="" coords="5,253,192,279"/>
 </map>

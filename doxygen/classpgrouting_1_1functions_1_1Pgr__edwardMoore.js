@@ -5,6 +5,7 @@ var classpgrouting_1_1functions_1_1Pgr__edwardMoore =
     [ "E_i", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a474a8c4f9d8b60549930da009a436477", null ],
     [ "EO_i", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a114239a43f91270057d4eba936b2793e", null ],
     [ "V", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a06d36dc5767f36695c63dd9412b57a38", null ],
+    [ "edwardMoore", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a6df0ee38957df2b738dfa4ef6f6f1eda", null ],
     [ "edwardMoore", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#acc891bde348cf1086396c95ff714eaa1", null ],
     [ "getPath", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#a1cab2bd66e4a72a2d8efc926209c6889", null ],
     [ "one_to_many_edwardMoore", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html#aa29505e90aa463ce3bcbb975b104c771", null ],

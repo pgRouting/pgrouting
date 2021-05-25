@@ -1,8 +1,9 @@
 digraph "pgrouting::Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor"
 {
+ // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node0 [label="pgrouting::Pgr_dijkstra\l\< G \>::dijkstra_distance\l_visitor",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="default_dijkstra_visitor",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 [label="pgrouting::Pgr_dijkstra\l\< G \>::dijkstra_distance\l_visitor",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="class for stopping when a distance/cost has being surpassed"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="default_dijkstra_visitor",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
 }

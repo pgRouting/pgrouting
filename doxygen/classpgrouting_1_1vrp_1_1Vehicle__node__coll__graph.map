@@ -1,3 +1,4 @@
 <map id="pgrouting::vrp::Vehicle_node" name="pgrouting::vrp::Vehicle_node">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html" title="Extends the Node class to create a Node with time window attributes. " alt="" coords="17,5,180,32"/>
+<area shape="rect" id="node1" title="Extend Tw_node to evaluate the vehicle at node level." alt="" coords="5,80,212,107"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Tw__node.html" title="Extends the Node class to create a Node with time window attributes." alt="" coords="20,5,197,32"/>
 </map>

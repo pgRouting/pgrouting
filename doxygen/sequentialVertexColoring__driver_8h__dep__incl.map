@@ -1,0 +1,5 @@
+<map id="sequentialVertexColoring_driver.h" name="sequentialVertexColoring_driver.h">
+<area shape="rect" id="node1" title=" " alt="" coords="119,5,305,47"/>
+<area shape="rect" id="node2" href="$sequentialVertexColoring_8c.html" title="Connecting code with postgres." alt="" coords="5,102,203,129"/>
+<area shape="rect" id="node3" href="$sequentialVertexColoring__driver_8cpp.html" title="Handles actual calling of function in the pgr_sequentialVertexColoring.hpp file." alt="" coords="227,95,413,136"/>
+</map>

@@ -1,4 +1,6 @@
 <map id="articulationPoints_driver.h" name="articulationPoints_driver.h">
-<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title="c_types/pgr_edge_t.h" alt="" coords="99,95,245,121"/>
-<area shape="rect" id="node4" href="$pgr__components__rt_8h.html" title="c_types/pgr_components_rt.h" alt="" coords="269,95,464,121"/>
+<area shape="rect" id="node1" title=" " alt="" coords="116,5,252,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,80,121"/>
+<area shape="rect" id="node3" href="$pgr__edge__t_8h.html" title=" " alt="" coords="104,95,264,121"/>
+<area shape="rect" id="node4" href="$pgr__components__rt_8h.html" title=" " alt="" coords="288,95,501,121"/>
 </map>

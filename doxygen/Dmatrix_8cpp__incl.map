@@ -1,5 +1,13 @@
 <map id="Dmatrix.cpp" name="Dmatrix.cpp">
-<area shape="rect" id="node2" href="$Dmatrix_8h.html" title="cpp_common/Dmatrix.h" alt="" coords="23,155,184,181"/>
-<area shape="rect" id="node10" href="$tour_8h.html" title="tsp/tour.h" alt="" coords="73,80,150,107"/>
-<area shape="rect" id="node11" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="619,80,795,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="299,5,402,32"/>
+<area shape="rect" id="node2" href="$Dmatrix_8h.html" title=" " alt="" coords="22,155,201,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="207,229,270,256"/>
+<area shape="rect" id="node4" title=" " alt="" coords="24,229,74,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="180,80,251,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="276,80,350,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="310,155,396,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="425,80,484,107"/>
+<area shape="rect" id="node9" title=" " alt="" coords="508,80,571,107"/>
+<area shape="rect" id="node10" href="$tour_8h.html" title=" " alt="" coords="73,80,156,107"/>
+<area shape="rect" id="node11" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="647,80,840,107"/>
 </map>

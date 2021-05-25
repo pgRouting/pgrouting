@@ -1,11 +1,12 @@
 <map id="column_info_t.h" name="column_info_t.h">
-<area shape="rect" id="node2" href="$combinations__input_8c.html" title="combinations_input.c" alt="" coords="5,155,151,181"/>
-<area shape="rect" id="node3" href="$coordinates__input_8c.html" title="coordinates_input.c" alt="" coords="175,155,309,181"/>
-<area shape="rect" id="node4" href="$edges__input_8c.html" title="edges_input.c" alt="" coords="333,155,436,181"/>
-<area shape="rect" id="node5" href="$matrixRows__input_8c.html" title="matrixRows_input.c" alt="" coords="461,155,599,181"/>
-<area shape="rect" id="node6" href="$orders__input_8c.html" title="orders_input.c" alt="" coords="623,155,727,181"/>
-<area shape="rect" id="node7" href="$points__input_8c.html" title="points_input.c" alt="" coords="752,155,855,181"/>
-<area shape="rect" id="node8" href="$restrictions__input_8c.html" title="restrictions_input.c" alt="" coords="879,155,1011,181"/>
-<area shape="rect" id="node9" href="$vehicles__input_8c.html" title="vehicles_input.c" alt="" coords="1035,155,1151,181"/>
-<area shape="rect" id="node10" href="$get__check__data_8h.html" title="get_check_data.h" alt="" coords="531,80,657,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="587,5,713,32"/>
+<area shape="rect" id="node2" href="$combinations__input_8c.html" title=" " alt="" coords="5,155,167,181"/>
+<area shape="rect" id="node3" href="$coordinates__input_8c.html" title=" " alt="" coords="191,155,341,181"/>
+<area shape="rect" id="node4" href="$edges__input_8c.html" title=" " alt="" coords="365,155,477,181"/>
+<area shape="rect" id="node5" href="$matrixRows__input_8c.html" title=" " alt="" coords="501,155,652,181"/>
+<area shape="rect" id="node6" href="$orders__input_8c.html" title=" " alt="" coords="677,155,791,181"/>
+<area shape="rect" id="node7" href="$points__input_8c.html" title=" " alt="" coords="816,155,929,181"/>
+<area shape="rect" id="node8" href="$restrictions__input_8c.html" title=" " alt="" coords="954,155,1101,181"/>
+<area shape="rect" id="node9" href="$vehicles__input_8c.html" title=" " alt="" coords="1125,155,1252,181"/>
+<area shape="rect" id="node10" href="$get__check__data_8h.html" title=" " alt="" coords="582,80,718,107"/>
 </map>

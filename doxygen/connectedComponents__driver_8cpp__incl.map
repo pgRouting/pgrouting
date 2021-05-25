@@ -1,7 +1,11 @@
 <map id="connectedComponents_driver.cpp" name="connectedComponents_driver.cpp">
-<area shape="rect" id="node2" href="$connectedComponents__driver_8h.html" title="drivers/components\l/connectedComponents\l_driver.h" alt="" coords="5,95,165,151"/>
-<area shape="rect" id="node6" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="384,109,565,136"/>
-<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="432,288,608,315"/>
-<area shape="rect" id="node8" href="$pgr__base__graph_8hpp.html" title="cpp_common/pgr_base\l_graph.hpp" alt="" coords="524,199,681,240"/>
-<area shape="rect" id="node9" href="$pgr__components_8hpp.html" title="components/pgr_components.hpp" alt="" coords="640,109,859,136"/>
+<area shape="rect" id="node1" title=" " alt="" coords="350,5,521,47"/>
+<area shape="rect" id="node2" href="$connectedComponents__driver_8h.html" title=" " alt="" coords="5,95,180,151"/>
+<area shape="rect" id="node3" title=" " alt="" coords="205,109,279,136"/>
+<area shape="rect" id="node4" title=" " alt="" coords="329,288,392,315"/>
+<area shape="rect" id="node5" title=" " alt="" coords="769,288,832,315"/>
+<area shape="rect" id="node6" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="405,109,605,136"/>
+<area shape="rect" id="node7" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="459,288,652,315"/>
+<area shape="rect" id="node8" href="$pgr__base__graph_8hpp.html" title=" " alt="" coords="556,199,728,240"/>
+<area shape="rect" id="node9" href="$pgr__components_8hpp.html" title=" " alt="" coords="679,109,922,136"/>
 </map>

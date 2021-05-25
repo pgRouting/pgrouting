@@ -1,4 +1,8 @@
 <map id="postgres_connection.c" name="postgres_connection.c">
-<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="21,155,242,181"/>
-<area shape="rect" id="node6" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="311,80,490,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="25,5,191,32"/>
+<area shape="rect" id="node2" href="$postgres__connection_8h.html" title=" " alt="" coords="21,155,264,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,229,120,256"/>
+<area shape="rect" id="node4" title=" " alt="" coords="73,80,143,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="168,80,307,107"/>
+<area shape="rect" id="node6" href="$debug__macro_8h.html" title=" " alt="" coords="331,80,528,107"/>
 </map>

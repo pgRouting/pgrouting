@@ -1,4 +1,6 @@
 <map id="pgrouting::vrp::Solution" name="pgrouting::vrp::Solution">
-<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Fleet.html" title="pgrouting::vrp::Fleet" alt="" coords="5,15,144,41"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html" title="pgrouting::vrp::Pgr\l_pickDeliver" alt="" coords="277,42,407,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="583,51,757,77"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Fleet.html" title=" " alt="" coords="5,16,160,43"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html" title=" " alt="" coords="303,43,446,85"/>
+<area shape="rect" id="node4" title=" " alt="" coords="273,109,476,150"/>
 </map>

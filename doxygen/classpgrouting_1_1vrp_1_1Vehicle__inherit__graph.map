@@ -1,4 +1,5 @@
 <map id="pgrouting::vrp::Vehicle" name="pgrouting::vrp::Vehicle">
-<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html" title="pgrouting::vrp::Vehicle\l_pickDeliver" alt="" coords="5,155,157,196"/>
-<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title="pgrouting::Identifier" alt="" coords="15,5,148,32"/>
+<area shape="rect" id="node1" title="Vehicle with time windows." alt="" coords="5,80,173,107"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html" title=" " alt="" coords="5,155,173,196"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1Identifier.html" title=" " alt="" coords="14,5,165,32"/>
 </map>

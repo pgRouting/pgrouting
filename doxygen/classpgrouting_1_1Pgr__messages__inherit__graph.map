@@ -1,6 +1,11 @@
 <map id="pgrouting::Pgr_messages" name="pgrouting::Pgr_messages">
-<area shape="rect" id="node2" href="$classPgr__bellman__ford.html" title="Pgr_bellman_ford\&lt; G \&gt;" alt="" coords="224,5,381,32"/>
-<area shape="rect" id="node3" href="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html" title="pgrouting::alphashape\l::Pgr_alphaShape" alt="" coords="228,57,377,98"/>
-<area shape="rect" id="node4" href="$classpgrouting_1_1Pg__points__graph.html" title="pgrouting::Pg_points\l_graph" alt="" coords="232,122,373,163"/>
-<area shape="rect" id="node5" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html" title="pgrouting::yen::Pgr\l_ksp\&lt; G \&gt;" alt="" coords="237,187,369,229"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,228,192,255"/>
+<area shape="rect" id="node2" href="$classPgr__bellman__ford.html" title=" " alt="" coords="253,5,429,32"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html" title=" " alt="" coords="258,57,425,98"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1functions_1_1Pgr__Bipartite.html" title=" " alt="" coords="264,122,419,163"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1functions_1_1Pgr__boyerMyrvold.html" title=" " alt="" coords="247,187,435,229"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1functions_1_1Pgr__LTDTree.html" title=" " alt="" coords="265,253,417,294"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1functions_1_1Pgr__makeConnected.html" title=" " alt="" coords="240,318,443,359"/>
+<area shape="rect" id="node8" href="$classpgrouting_1_1Pg__points__graph.html" title=" " alt="" coords="264,383,419,425"/>
+<area shape="rect" id="node9" href="$classpgrouting_1_1yen_1_1Pgr__ksp.html" title=" " alt="" coords="269,449,414,490"/>
 </map>

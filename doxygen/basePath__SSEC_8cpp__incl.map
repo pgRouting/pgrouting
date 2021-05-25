@@ -1,5 +1,12 @@
 <map id="basePath_SSEC.cpp" name="basePath_SSEC.cpp">
-<area shape="rect" id="node2" href="$basePath__SSEC_8hpp.html" title="cpp_common/basePath\l_SSEC.hpp" alt="" coords="116,80,275,121"/>
-<area shape="rect" id="node6" href="$general__path__element__t_8h.html" title="c_types/general_path\l_element_t.h" alt="" coords="289,169,435,211"/>
-<area shape="rect" id="node10" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="638,87,814,114"/>
+<area shape="rect" id="node1" title=" " alt="" coords="312,5,460,32"/>
+<area shape="rect" id="node2" href="$basePath__SSEC_8hpp.html" title=" " alt="" coords="125,80,297,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,177,68,203"/>
+<area shape="rect" id="node4" title=" " alt="" coords="93,177,173,203"/>
+<area shape="rect" id="node5" title=" " alt="" coords="197,177,282,203"/>
+<area shape="rect" id="node6" href="$general__path__element__t_8h.html" title=" " alt="" coords="307,169,468,211"/>
+<area shape="rect" id="node7" title=" " alt="" coords="424,87,487,114"/>
+<area shape="rect" id="node8" title=" " alt="" coords="511,87,570,114"/>
+<area shape="rect" id="node9" title=" " alt="" coords="595,87,655,114"/>
+<area shape="rect" id="node10" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="679,87,872,114"/>
 </map>

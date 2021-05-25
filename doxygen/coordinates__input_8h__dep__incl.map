@@ -1,4 +1,5 @@
 <map id="coordinates_input.h" name="coordinates_input.h">
-<area shape="rect" id="node2" href="$coordinates__input_8c.html" title="coordinates_input.c" alt="" coords="5,80,140,107"/>
-<area shape="rect" id="node3" href="$euclideanTSP_8c.html" title="euclideanTSP.c" alt="" coords="165,80,279,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="83,5,234,32"/>
+<area shape="rect" id="node2" href="$coordinates__input_8c.html" title=" " alt="" coords="5,80,155,107"/>
+<area shape="rect" id="node3" href="$euclideanTSP_8c.html" title=" " alt="" coords="179,80,298,107"/>
 </map>

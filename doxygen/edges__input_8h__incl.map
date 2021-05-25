@@ -1,7 +1,9 @@
 <map id="edges_input.h" name="edges_input.h">
-<area shape="rect" id="node3" href="$pgr__costFlow__t_8h.html" title="c_types/pgr_costFlow_t.h" alt="" coords="99,80,271,107"/>
-<area shape="rect" id="node4" href="$pgr__flow__t_8h.html" title="c_types/pgr_flow_t.h" alt="" coords="295,80,438,107"/>
-<area shape="rect" id="node5" href="$pgr__basic__edge__t_8h.html" title="c_types/pgr_basic_edge_t.h" alt="" coords="462,80,647,107"/>
-<area shape="rect" id="node6" href="$pgr__edge__t_8h.html" title="c_types/pgr_edge_t.h" alt="" coords="672,80,819,107"/>
-<area shape="rect" id="node7" href="$pgr__edge__xy__t_8h.html" title="c_types/pgr_edge_xy_t.h" alt="" coords="843,80,1011,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="437,5,550,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,80,107"/>
+<area shape="rect" id="node3" href="$pgr__costFlow__t_8h.html" title=" " alt="" coords="104,80,291,107"/>
+<area shape="rect" id="node4" href="$pgr__flow__t_8h.html" title=" " alt="" coords="315,80,469,107"/>
+<area shape="rect" id="node5" href="$pgr__basic__edge__t_8h.html" title=" " alt="" coords="494,80,695,107"/>
+<area shape="rect" id="node6" href="$pgr__edge__t_8h.html" title=" " alt="" coords="720,80,880,107"/>
+<area shape="rect" id="node7" href="$pgr__edge__xy__t_8h.html" title=" " alt="" coords="905,80,1087,107"/>
 </map>

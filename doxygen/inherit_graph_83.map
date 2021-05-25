@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classpgrouting_1_1trsp_1_1Pgr__trspHandler_1_1CostHolder.html" title="pgrouting::trsp::Pgr\l_trspHandler::CostHolder" alt="" coords="5,5,176,47"/>
+<area shape="rect" id="node1" href="$classpgrouting_1_1Identifier.html" title=" " alt="" coords="5,56,156,83"/>
+<area shape="rect" id="node2" href="$classpgrouting_1_1vrp_1_1Dnode.html" title="The Dnode class defines a the basic operations when data is a matrix." alt="" coords="207,5,369,32"/>
+<area shape="rect" id="node5" href="$classpgrouting_1_1vrp_1_1Order.html" title=" " alt="" coords="209,56,367,83"/>
+<area shape="rect" id="node6" href="$classpgrouting_1_1vrp_1_1Vehicle.html" title="Vehicle with time windows." alt="" coords="204,107,372,133"/>
+<area shape="rect" id="node3" href="$classpgrouting_1_1vrp_1_1Tw__node.html" title="Extends the Node class to create a Node with time window attributes." alt="" coords="420,5,597,32"/>
+<area shape="rect" id="node4" href="$classpgrouting_1_1vrp_1_1Vehicle__node.html" title="Extend Tw_node to evaluate the vehicle at node level." alt="" coords="645,5,852,32"/>
+<area shape="rect" id="node7" href="$classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html" title=" " alt="" coords="425,99,593,141"/>
 </map>

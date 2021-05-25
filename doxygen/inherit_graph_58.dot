@@ -1,7 +1,8 @@
 digraph "Graphical Class Hierarchy"
 {
+ // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="pgrouting::CH_vertex",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpgrouting_1_1CH__vertex.html"];
+  Node0 [label="pgrouting::alphashape\l::Pgr_alphaShape::EdgesFilter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structpgrouting_1_1alphashape_1_1Pgr__alphaShape_1_1EdgesFilter.html",tooltip=" "];
 }

@@ -1,5 +1,5 @@
 var astar__driver_8cpp =
 [
-    [ "do_pgr_astarManyToMany", "astar__driver_8cpp.html#a828b045826e6d6fa823646b017f8fa58", null ],
-    [ "pgr_astar", "astar__driver_8cpp.html#a1e8d0064b04fcec0509ec834a85b8787", null ]
+    [ "do_pgr_astarManyToMany", "astar__driver_8cpp.html#af7a07670eed0d44fbe686b45753f9af5", null ],
+    [ "pgr_astar", "astar__driver_8cpp.html#af978e2deb7486369c121df28d1a51743", null ]
 ];

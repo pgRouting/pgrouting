@@ -1,6 +1,11 @@
 <map id="bdAstar_driver.cpp" name="bdAstar_driver.cpp">
-<area shape="rect" id="node2" href="$bdAstar__driver_8h.html" title="drivers/bdAstar/bdAstar\l_driver.h" alt="" coords="5,80,164,121"/>
-<area shape="rect" id="node7" href="$pgr__bdAstar_8hpp.html" title="bdAstar/pgr_bdAstar.hpp" alt="" coords="515,87,681,114"/>
-<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="706,87,887,114"/>
-<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="911,87,1087,114"/>
+<area shape="rect" id="node1" title=" " alt="" coords="373,5,516,32"/>
+<area shape="rect" id="node2" href="$bdAstar__driver_8h.html" title=" " alt="" coords="5,80,180,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="205,87,279,114"/>
+<area shape="rect" id="node4" title=" " alt="" coords="304,87,367,114"/>
+<area shape="rect" id="node5" title=" " alt="" coords="492,169,555,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="442,87,527,114"/>
+<area shape="rect" id="node7" href="$pgr__bdAstar_8hpp.html" title=" " alt="" coords="551,87,733,114"/>
+<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="757,87,957,114"/>
+<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="981,87,1175,114"/>
 </map>

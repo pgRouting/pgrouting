@@ -2,11 +2,11 @@ var classpgrouting_1_1vrp_1_1Pgr__pickDeliver =
 [
     [ "Pgr_pickDeliver", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#adb8cc9394dc91b88dee7cb5010c57a4e", null ],
     [ "add_node", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a29ac4c9f908dc5a106f360e97660b6d1", null ],
+    [ "get_cost_matrix", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#aad7d56386b7502688fb2c2ff6f5012d6", null ],
     [ "get_kind", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a16c03113dfc093fa32913f2b579dd9af", null ],
+    [ "get_nodes", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ac65e72ab6f805bf9209af95497bc8b0e", null ],
     [ "get_postgres_result", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a45a23137934d700ac2f6df2afbc2b717", null ],
     [ "max_cycles", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a03193ad6e696772de1f8430edf2fcfd3", null ],
-    [ "nodesOK", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a20c4e77a2c753ff51d9802b9abb1e9c1", null ],
-    [ "optimize", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a84d90033d899d7377497cb3d42cb5d05", null ],
     [ "solve", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a92a46ffb84ddb2f728d6b500788f505c", null ],
     [ "trucks", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#aa04e0233bf4628314181b6bac594d3f7", null ],
     [ "Dnode", "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#aa87e2ed158d17a7a0d549bf529a83024", null ],

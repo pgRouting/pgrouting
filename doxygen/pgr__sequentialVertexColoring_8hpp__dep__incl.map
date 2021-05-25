@@ -1,0 +1,4 @@
+<map id="pgr_sequentialVertexColoring.hpp" name="pgr_sequentialVertexColoring.hpp">
+<area shape="rect" id="node1" title="The main file which calls the respective boost function." alt="" coords="5,5,248,32"/>
+<area shape="rect" id="node2" href="$sequentialVertexColoring__driver_8cpp.html" title="Handles actual calling of function in the pgr_sequentialVertexColoring.hpp file." alt="" coords="33,80,220,121"/>
+</map>

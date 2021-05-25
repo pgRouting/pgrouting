@@ -7,5 +7,5 @@ digraph "chinese" {
   dir_95fba6266b3976e128013f29d7c7670d [shape=box, label="chinese", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_95fba6266b3976e128013f29d7c7670d.html"];
   }
   dir_d5995d5871f728649bd47ea0d6428e03 [shape=box label="c_types" fillcolor="white" style="filled" color="red" URL="dir_d5995d5871f728649bd47ea0d6428e03.html"];
-  dir_95fba6266b3976e128013f29d7c7670d->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="2", labeldistance=1.5 headhref="dir_000026_000027.html"];
+  dir_95fba6266b3976e128013f29d7c7670d->dir_d5995d5871f728649bd47ea0d6428e03 [headlabel="2", labeldistance=1.5 headhref="dir_000030_000049.html"];
 }

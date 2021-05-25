@@ -11,6 +11,7 @@ var hierarchy =
       [ "pgrouting::visitors::Edges_order_bfs_visitor< E >", "classpgrouting_1_1visitors_1_1Edges__order__bfs__visitor.html", null ]
     ] ],
     [ "default_dfs_visitor", null, [
+      [ "pgrouting::visitors::Dfs_visitor< V, E, G >", "classpgrouting_1_1visitors_1_1Dfs__visitor.html", null ],
       [ "pgrouting::visitors::Dfs_visitor_with_root< V, E >", "classpgrouting_1_1visitors_1_1Dfs__visitor__with__root.html", null ],
       [ "pgrouting::visitors::Edges_order_dfs_visitor< E >", "classpgrouting_1_1visitors_1_1Edges__order__dfs__visitor.html", null ]
     ] ],
@@ -61,6 +62,8 @@ var hierarchy =
       [ "pgrouting::graph::Pgr_contractionGraph< G >", "classpgrouting_1_1graph_1_1Pgr__contractionGraph.html", null ]
     ] ],
     [ "pgr_basic_edge_t", "structpgr__basic__edge__t.html", null ],
+    [ "pgr_bipartite_rt", "structpgr__bipartite__rt.html", null ],
+    [ "pgr_boyer_t", "structpgr__boyer__t.html", null ],
     [ "pgr_combination_t", "structpgr__combination__t.html", null ],
     [ "pgr_components_rt", "structpgr__components__rt.html", null ],
     [ "pgr_costFlow_t", "structpgr__costFlow__t.html", null ],
@@ -69,6 +72,8 @@ var hierarchy =
     [ "pgr_edge_t", "structpgr__edge__t.html", null ],
     [ "Pgr_edge_xy_t", "structPgr__edge__xy__t.html", null ],
     [ "pgr_flow_t", "structpgr__flow__t.html", null ],
+    [ "pgr_ltdtree_rt", "structpgr__ltdtree__rt.html", null ],
+    [ "pgr_makeConnected_t", "structpgr__makeConnected__t.html", null ],
     [ "pgr_mst_rt", "structpgr__mst__rt.html", null ],
     [ "Pgr_point_t", "structPgr__point__t.html", null ],
     [ "pgr_prim_rt", "structpgr__prim__rt.html", null ],
@@ -79,6 +84,7 @@ var hierarchy =
     [ "Pgr_topologicalSort< G >", "classPgr__topologicalSort.html", null ],
     [ "pgr_topologicalSort_t", "structpgr__topologicalSort__t.html", null ],
     [ "Pgr_transitiveClosure< G >", "classPgr__transitiveClosure.html", null ],
+    [ "pgr_vertex_color_rt", "structpgr__vertex__color__rt.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >", "classpgrouting_1_1algorithms_1_1Pgr__astar.html", null ],
     [ "pgrouting::algorithms::Pgr_astar< G >::found_goals", "structpgrouting_1_1algorithms_1_1Pgr__astar_1_1found__goals.html", null ],
     [ "pgrouting::alphashape::anonymous_namespace{pgr_alphaShape.cpp}::CompareRadius", "structpgrouting_1_1alphashape_1_1anonymous__namespace_02pgr__alphaShape_8cpp_03_1_1CompareRadius.html", null ],
@@ -99,12 +105,14 @@ var hierarchy =
     [ "pgrouting::found_goals", "structpgrouting_1_1found__goals.html", null ],
     [ "pgrouting::functions::Pgr_binaryBreadthFirstSearch< G >", "classpgrouting_1_1functions_1_1Pgr__binaryBreadthFirstSearch.html", null ],
     [ "pgrouting::functions::Pgr_breadthFirstSearch< G >", "classpgrouting_1_1functions_1_1Pgr__breadthFirstSearch.html", null ],
+    [ "pgrouting::functions::Pgr_depthFirstSearch< G >", "classpgrouting_1_1functions_1_1Pgr__depthFirstSearch.html", null ],
     [ "pgrouting::functions::Pgr_edwardMoore< G >", "classpgrouting_1_1functions_1_1Pgr__edwardMoore.html", null ],
     [ "pgrouting::functions::Pgr_mst< G >", "classpgrouting_1_1functions_1_1Pgr__mst.html", [
       [ "pgrouting::functions::Pgr_kruskal< G >", "classpgrouting_1_1functions_1_1Pgr__kruskal.html", null ],
       [ "pgrouting::functions::Pgr_prim< G >", "classpgrouting_1_1functions_1_1Pgr__prim.html", null ]
     ] ],
     [ "pgrouting::functions::Pgr_mst< G >::InSpanning", "structpgrouting_1_1functions_1_1Pgr__mst_1_1InSpanning.html", null ],
+    [ "pgrouting::functions::Pgr_sequentialVertexColoring< G >", "classpgrouting_1_1functions_1_1Pgr__sequentialVertexColoring.html", null ],
     [ "pgrouting::graph::Pgr_base_graph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__base__graph.html", [
       [ "pgrouting::graph::Pgr_lineGraph< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__lineGraph.html", null ],
       [ "pgrouting::graph::Pgr_lineGraphFull< G, T_V, T_E >", "classpgrouting_1_1graph_1_1Pgr__lineGraphFull.html", null ]
@@ -113,9 +121,6 @@ var hierarchy =
     [ "pgrouting::graph::PgrDirectedChPPGraph", "classpgrouting_1_1graph_1_1PgrDirectedChPPGraph.html", null ],
     [ "pgrouting::graph::PgrFlowGraph", "classpgrouting_1_1graph_1_1PgrFlowGraph.html", null ],
     [ "pgrouting::Identifier", "classpgrouting_1_1Identifier.html", [
-      [ "pgrouting::vrp::Base_node", "classpgrouting_1_1vrp_1_1Base__node.html", [
-        [ "pgrouting::vrp::Node", "classpgrouting_1_1vrp_1_1Node.html", null ]
-      ] ],
       [ "pgrouting::vrp::Dnode", "classpgrouting_1_1vrp_1_1Dnode.html", [
         [ "pgrouting::vrp::Tw_node", "classpgrouting_1_1vrp_1_1Tw__node.html", [
           [ "pgrouting::vrp::Vehicle_node", "classpgrouting_1_1vrp_1_1Vehicle__node.html", null ]
@@ -132,6 +137,10 @@ var hierarchy =
     [ "pgrouting::Pgr_messages", "classpgrouting_1_1Pgr__messages.html", [
       [ "Pgr_bellman_ford< G >", "classPgr__bellman__ford.html", null ],
       [ "pgrouting::alphashape::Pgr_alphaShape", "classpgrouting_1_1alphashape_1_1Pgr__alphaShape.html", null ],
+      [ "pgrouting::functions::Pgr_Bipartite< G >", "classpgrouting_1_1functions_1_1Pgr__Bipartite.html", null ],
+      [ "pgrouting::functions::Pgr_boyerMyrvold< G >", "classpgrouting_1_1functions_1_1Pgr__boyerMyrvold.html", null ],
+      [ "pgrouting::functions::Pgr_LTDTree< G >", "classpgrouting_1_1functions_1_1Pgr__LTDTree.html", null ],
+      [ "pgrouting::functions::Pgr_makeConnected< G >", "classpgrouting_1_1functions_1_1Pgr__makeConnected.html", null ],
       [ "pgrouting::Pg_points_graph", "classpgrouting_1_1Pg__points__graph.html", null ],
       [ "pgrouting::yen::Pgr_ksp< G >", "classpgrouting_1_1yen_1_1Pgr__ksp.html", [
         [ "pgrouting::yen::Pgr_turnRestrictedPath< G >", "classpgrouting_1_1yen_1_1Pgr__turnRestrictedPath.html", null ]

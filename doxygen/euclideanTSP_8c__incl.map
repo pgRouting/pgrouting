@@ -1,8 +1,10 @@
 <map id="euclideanTSP.c" name="euclideanTSP.c">
-<area shape="rect" id="node2" href="$postgres__connection_8h.html" title="c_common/postgres_connection.h" alt="" coords="5,169,227,196"/>
-<area shape="rect" id="node4" href="$debug__macro_8h.html" title="c_common/debug_macro.h" alt="" coords="148,87,327,114"/>
-<area shape="rect" id="node5" href="$e__report_8h.html" title="c_common/e_report.h" alt="" coords="351,87,499,114"/>
-<area shape="rect" id="node6" href="$time__msg_8h.html" title="c_common/time_msg.h" alt="" coords="523,87,682,114"/>
-<area shape="rect" id="node7" href="$coordinates__input_8h.html" title="c_common/coordinates\l_input.h" alt="" coords="707,80,864,121"/>
-<area shape="rect" id="node8" href="$euclideanTSP__driver_8h.html" title="drivers/tsp/euclideanTSP\l_driver.h" alt="" coords="888,80,1056,121"/>
+<area shape="rect" id="node1" title=" " alt="" coords="401,5,519,32"/>
+<area shape="rect" id="node2" href="$postgres__connection_8h.html" title=" " alt="" coords="5,169,248,196"/>
+<area shape="rect" id="node3" title=" " alt="" coords="35,87,133,114"/>
+<area shape="rect" id="node4" href="$debug__macro_8h.html" title=" " alt="" coords="157,87,355,114"/>
+<area shape="rect" id="node5" href="$e__report_8h.html" title=" " alt="" coords="379,87,541,114"/>
+<area shape="rect" id="node6" href="$time__msg_8h.html" title=" " alt="" coords="566,87,741,114"/>
+<area shape="rect" id="node7" href="$coordinates__input_8h.html" title=" " alt="" coords="765,80,939,121"/>
+<area shape="rect" id="node8" href="$euclideanTSP__driver_8h.html" title=" " alt="" coords="963,80,1146,121"/>
 </map>

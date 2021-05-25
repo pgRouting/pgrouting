@@ -14,7 +14,6 @@ var classpgrouting_1_1vrp_1_1PD__Orders =
     [ "end", "classpgrouting_1_1vrp_1_1PD__Orders.html#a95689691f98d6831933b08f976842187", null ],
     [ "find_best_I", "classpgrouting_1_1vrp_1_1PD__Orders.html#a6847ad4ff551e69b2630805f8480f01e", null ],
     [ "find_best_J", "classpgrouting_1_1vrp_1_1PD__Orders.html#a19610270a3a6663b8fa7b05bd7eb839b", null ],
-    [ "is_valid", "classpgrouting_1_1vrp_1_1PD__Orders.html#a67b7c652a288a1552a74f524098795b2", null ],
     [ "msg", "classpgrouting_1_1vrp_1_1PD__Orders.html#a816a01e8d001f2b42d3c7a089da51295", null ],
     [ "operator[]", "classpgrouting_1_1vrp_1_1PD__Orders.html#aa6defc04e04695280dc6fc5f7e165019", null ],
     [ "operator[]", "classpgrouting_1_1vrp_1_1PD__Orders.html#a4d2efd404b4bcd7857e1cf0dcf1e7cb5", null ],

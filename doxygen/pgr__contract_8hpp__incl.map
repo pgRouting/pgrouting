@@ -1,7 +1,10 @@
 <map id="pgr_contract.hpp" name="pgr_contract.hpp">
-<area shape="rect" id="node4" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="138,80,314,107"/>
-<area shape="rect" id="node5" href="$pgr__contractionGraph_8hpp.html" title="contraction/pgr_contraction\lGraph.hpp" alt="" coords="253,155,431,196"/>
-<area shape="rect" id="node6" href="$ch__graphs_8hpp.html" title="contraction/ch_graphs.hpp" alt="" coords="389,80,564,107"/>
-<area shape="rect" id="node7" href="$pgr__linearContraction_8hpp.html" title="contraction/pgr_linearContraction.hpp" alt="" coords="507,162,745,189"/>
-<area shape="rect" id="node8" href="$pgr__deadEndContraction_8hpp.html" title="contraction/pgr_deadEndContraction.hpp" alt="" coords="770,162,1029,189"/>
+<area shape="rect" id="node1" title=" " alt="" coords="310,5,441,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,68,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="469,244,532,271"/>
+<area shape="rect" id="node4" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="144,80,337,107"/>
+<area shape="rect" id="node5" href="$pgr__contractionGraph_8hpp.html" title=" " alt="" coords="263,155,463,196"/>
+<area shape="rect" id="node6" href="$ch__graphs_8hpp.html" title=" " alt="" coords="413,80,607,107"/>
+<area shape="rect" id="node7" href="$pgr__linearContraction_8hpp.html" title=" " alt="" coords="538,162,805,189"/>
+<area shape="rect" id="node8" href="$pgr__deadEndContraction_8hpp.html" title=" " alt="" coords="829,162,1116,189"/>
 </map>

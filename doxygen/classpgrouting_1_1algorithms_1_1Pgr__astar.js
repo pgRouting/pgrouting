@@ -6,6 +6,7 @@ var classpgrouting_1_1algorithms_1_1Pgr__astar =
     [ "found_goals", "structpgrouting_1_1algorithms_1_1Pgr__astar_1_1found__goals.html", null ],
     [ "B_G", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a7428d73c9fae0c55c6e001b31c03df5a", null ],
     [ "V", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a4ffd46234f5f3924c0b31f22cfe9fb73", null ],
+    [ "astar", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#af36b957b9dd1a042cab95688f35968fe", null ],
     [ "astar", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a556ce53d0181fdf27d13f6e39d109c09", null ],
     [ "astar", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a187eb488ab36784f3d5e36b30b3cfe0f", null ],
     [ "astar", "classpgrouting_1_1algorithms_1_1Pgr__astar.html#a540dad9278b2222a4e8d0b0f173353b4", null ],

@@ -1,6 +1,11 @@
 <map id="astar_driver.cpp" name="astar_driver.cpp">
-<area shape="rect" id="node2" href="$astar__driver_8h.html" title="drivers/astar/astar\l_driver.h" alt="" coords="5,80,132,121"/>
-<area shape="rect" id="node7" href="$pgr__astar_8hpp.html" title="astar/pgr_astar.hpp" alt="" coords="301,87,436,114"/>
-<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html" title="cpp_common/pgr_alloc.hpp" alt="" coords="562,87,743,114"/>
-<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="767,87,943,114"/>
+<area shape="rect" id="node1" title=" " alt="" coords="385,5,511,32"/>
+<area shape="rect" id="node2" href="$astar__driver_8h.html" title=" " alt="" coords="5,80,147,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="171,87,245,114"/>
+<area shape="rect" id="node4" title=" " alt="" coords="274,169,337,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="367,169,452,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="507,169,570,196"/>
+<area shape="rect" id="node7" href="$pgr__astar_8hpp.html" title=" " alt="" coords="320,87,467,114"/>
+<area shape="rect" id="node8" href="$pgr__alloc_8hpp.html" title=" " alt="" coords="592,87,792,114"/>
+<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="817,87,1010,114"/>
 </map>

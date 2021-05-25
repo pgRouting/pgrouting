@@ -1,0 +1,12 @@
+<map id="sequentialVertexColoring.c" name="sequentialVertexColoring.c">
+<area shape="rect" id="node1" title="Connecting code with postgres." alt="" coords="417,5,615,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,87,88,114"/>
+<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="91,169,333,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="396,169,495,196"/>
+<area shape="rect" id="node5" href="$debug__macro_8h.html" title=" " alt="" coords="163,87,360,114"/>
+<area shape="rect" id="node6" href="$e__report_8h.html" title=" " alt="" coords="435,87,597,114"/>
+<area shape="rect" id="node7" href="$time__msg_8h.html" title=" " alt="" coords="622,87,797,114"/>
+<area shape="rect" id="node8" href="$edges__input_8h.html" title=" " alt="" coords="821,87,1009,114"/>
+<area shape="rect" id="node9" href="$arrays__input_8h.html" title=" " alt="" coords="1033,87,1223,114"/>
+<area shape="rect" id="node10" href="$sequentialVertexColoring__driver_8h.html" title=" " alt="" coords="1248,80,1443,121"/>
+</map>

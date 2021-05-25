@@ -26,7 +26,7 @@ var classpgrouting_1_1functions_1_1Pgr__mst =
     [ "m_get_component", "classpgrouting_1_1functions_1_1Pgr__mst.html#a189c1bcf9487bbf92f8b244784ded5f4", null ],
     [ "m_max_depth", "classpgrouting_1_1functions_1_1Pgr__mst.html#ac2c3361b1e093dfba63a33d3894cd4b3", null ],
     [ "m_roots", "classpgrouting_1_1functions_1_1Pgr__mst.html#a46acf081252897e8175291f6b2230c9f", null ],
-    [ "m_spanning_tree", "classpgrouting_1_1functions_1_1Pgr__mst.html#a56d870ea6bb3eef40bf99ca6a66b938e", null ],
+    [ "m_spanning_tree", "classpgrouting_1_1functions_1_1Pgr__mst.html#a502a8cb4479fd8e7872deae4acdee8ed", null ],
     [ "m_suffix", "classpgrouting_1_1functions_1_1Pgr__mst.html#a549a5122dbf37d76296af8954b88fc01", null ],
     [ "m_tree_id", "classpgrouting_1_1functions_1_1Pgr__mst.html#aa94332888b9488e0321dc365e55c6ba4", null ]
 ];

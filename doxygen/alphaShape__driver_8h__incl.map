@@ -1,4 +1,6 @@
 <map id="alphaShape_driver.h" name="alphaShape_driver.h">
-<area shape="rect" id="node3" href="$pgr__edge__xy__t_8h.html" title="c_types/pgr_edge_xy_t.h" alt="" coords="99,80,267,107"/>
-<area shape="rect" id="node4" href="$geom__text__rt_8h.html" title="c_types/geom_text_rt.h" alt="" coords="291,80,450,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="119,5,273,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,80,107"/>
+<area shape="rect" id="node3" href="$pgr__edge__xy__t_8h.html" title=" " alt="" coords="105,80,287,107"/>
+<area shape="rect" id="node4" href="$geom__text__rt_8h.html" title=" " alt="" coords="311,80,486,107"/>
 </map>

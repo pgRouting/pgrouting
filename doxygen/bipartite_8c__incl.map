@@ -1,0 +1,12 @@
+<map id="bipartite.c" name="bipartite.c">
+<area shape="rect" id="node1" title=" " alt="" coords="615,5,703,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,87,88,114"/>
+<area shape="rect" id="node3" href="$postgres__connection_8h.html" title=" " alt="" coords="72,169,315,196"/>
+<area shape="rect" id="node4" href="$debug__macro_8h.html" title=" " alt="" coords="163,87,360,114"/>
+<area shape="rect" id="node5" href="$e__report_8h.html" title=" " alt="" coords="384,87,547,114"/>
+<area shape="rect" id="node6" href="$time__msg_8h.html" title=" " alt="" coords="571,87,746,114"/>
+<area shape="rect" id="node7" href="$pgr__bipartite__rt_8h.html" title=" " alt="" coords="967,169,1155,196"/>
+<area shape="rect" id="node8" href="$edges__input_8h.html" title=" " alt="" coords="822,87,1010,114"/>
+<area shape="rect" id="node9" href="$arrays__input_8h.html" title=" " alt="" coords="1034,87,1225,114"/>
+<area shape="rect" id="node10" href="$bipartite__driver_8h.html" title=" " alt="" coords="1249,80,1431,121"/>
+</map>

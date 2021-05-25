@@ -1,4 +1,14 @@
 <map id="pgrouting::graph::PgrDirectedChPPGraph" name="pgrouting::graph::PgrDirectedChPPGraph">
-<area shape="rect" id="node4" href="$classIdentifiers.html" title="Identifiers\&lt; int64_t \&gt;" alt="" coords="250,149,393,175"/>
-<area shape="rect" id="node10" href="$classIdentifiers.html" title="Identifiers\&lt; size_t \&gt;" alt="" coords="252,527,391,554"/>
+<area shape="rect" id="node1" title=" " alt="" coords="601,340,815,381"/>
+<area shape="rect" id="node2" title=" " alt="" coords="273,5,431,47"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,118,151,145"/>
+<area shape="rect" id="node5" href="$classIdentifiers.html" title=" " alt="" coords="271,149,433,175"/>
+<area shape="rect" id="node4" title=" " alt="" coords="269,199,435,255"/>
+<area shape="rect" id="node6" title=" " alt="" coords="281,280,423,321"/>
+<area shape="rect" id="node7" title=" " alt="" coords="255,346,449,373"/>
+<area shape="rect" id="node8" title=" " alt="" coords="277,397,427,453"/>
+<area shape="rect" id="node9" title=" " alt="" coords="273,477,431,533"/>
+<area shape="rect" id="node10" title=" " alt="" coords="272,557,432,583"/>
+<area shape="rect" id="node11" href="$classIdentifiers.html" title=" " alt="" coords="275,607,429,634"/>
+<area shape="rect" id="node12" title=" " alt="" coords="243,658,461,685"/>
 </map>

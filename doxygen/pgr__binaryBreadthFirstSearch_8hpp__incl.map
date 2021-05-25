@@ -1,5 +1,12 @@
 <map id="pgr_binaryBreadthFirstSearch.hpp" name="pgr_binaryBreadthFirstSearch.hpp">
-<area shape="rect" id="node7" href="$basePath__SSEC_8hpp.html" title="cpp_common/basePath\l_SSEC.hpp" alt="" coords="68,80,227,121"/>
-<area shape="rect" id="node8" href="$pgr__base__graph_8hpp.html" title="cpp_common/pgr_base\l_graph.hpp" alt="" coords="237,169,394,211"/>
-<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="Assertions Handling. " alt="" coords="386,259,562,285"/>
+<area shape="rect" id="node1" title=" " alt="" coords="229,5,471,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,259,68,285"/>
+<area shape="rect" id="node3" title=" " alt="" coords="143,177,229,203"/>
+<area shape="rect" id="node4" title=" " alt="" coords="603,87,665,114"/>
+<area shape="rect" id="node5" title=" " alt="" coords="310,259,369,285"/>
+<area shape="rect" id="node6" title=" " alt="" coords="92,259,155,285"/>
+<area shape="rect" id="node7" title=" " alt="" coords="393,259,443,285"/>
+<area shape="rect" id="node8" href="$basePath__SSEC_8hpp.html" title=" " alt="" coords="89,80,261,121"/>
+<area shape="rect" id="node9" href="$pgr__base__graph_8hpp.html" title=" " alt="" coords="253,169,425,211"/>
+<area shape="rect" id="node10" href="$pgr__assert_8h.html" title="An assert functionality that uses C++ throw()." alt="" coords="468,259,661,285"/>
 </map>
