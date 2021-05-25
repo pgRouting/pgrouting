@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
+#include "c_common/combinations_input.h"
 
 #include "drivers/bdDijkstra/bdDijkstra_driver.h"
 
@@ -51,6 +52,7 @@ static
 void
 process(
         char* edges_sql,
+        char* combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
         bool directed,
@@ -59,16 +61,26 @@ process(
         size_t *result_count) {
     pgr_SPI_connect();
 
+    int64_t* start_vidsArr = NULL;
     size_t size_start_vidsArr = 0;
-    int64_t* start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
 
+    int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
-    int64_t* end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
+
+    pgr_combination_t *combinations = NULL;
+    size_t total_combinations = 0;
+
+    if (starts && ends) {
+        start_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_vidsArr, starts);
+        end_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    } else if (combinations_sql) {
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+    }
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
@@ -86,6 +98,7 @@ process(
     char *err_msg = NULL;
     do_pgr_bdDijkstra(
             edges, total_edges,
+            combinations, total_combinations,
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
 
@@ -137,25 +150,34 @@ PGDLLEXPORT Datum _pgr_bddijkstra(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-           edges_sql TEXT,
-           start_vid BIGINT,
-           end_vid BIGINT,
-           directed BOOLEAN DEFAULT true,
-           only_cost BOOLEAN DEFAULT false,
-         **********************************************************************/
-
-
-        process(
+        if (PG_NARGS() == 5) {
+            /*
+             * many to many
+             */
+            process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                NULL,
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
+
+        } else if (PG_NARGS() == 4) {
+            /*
+             * combinations
+             */
+            process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                NULL,
+                NULL,
+                PG_GETARG_BOOL(2),
+                PG_GETARG_BOOL(3),
+                &result_tuples,
+                &result_count);
+        }
 
         /*                                                                    */
         /**********************************************************************/

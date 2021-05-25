@@ -7,6 +7,13 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_stoerWagner.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_stoerWagner.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_stoerWagner.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_stoerWagner.html>`__
+
 pgr_stoerWagner - Experimental
 ===============================================================================
 
@@ -14,7 +21,7 @@ pgr_stoerWagner - Experimental
 Function determines a min-cut and the min-cut weight of a connected, undirected graph implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/stoer_wagner_min_cut.html
+   :target: https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html
 
    Boost Graph Inside
 
@@ -28,11 +35,6 @@ Function determines a min-cut and the min-cut weight of a connected, undirected 
 
    * New **Experimental** function
 
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_stoerWagner.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_stoerWagner.html>`__
 
 Description
 -------------------------------------------------------------------------------

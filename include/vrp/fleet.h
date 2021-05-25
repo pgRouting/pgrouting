@@ -49,7 +49,6 @@ class Fleet {
 
  public:
      typedef std::vector<Vehicle_pickDeliver>::iterator iterator;
-     std::vector<Vehicle_pickDeliver> m_trucks;
 
 
  public:
@@ -63,13 +62,7 @@ class Fleet {
      Fleet(const Fleet &fleet);
      /*!@}*/
 
-     /* TODO move code to .cpp */
-     Fleet& operator=(const Fleet &fleet) {
-         m_trucks = fleet.m_trucks;
-         used = fleet.used;
-         un_used = fleet.un_used;
-         return *this;
-     }
+     Fleet& operator=(const Fleet &fleet);
 
      void set_compatibles(const PD_Orders &orders);
 
@@ -77,9 +70,7 @@ class Fleet {
      bool is_order_ok(const Order &order) const;
 
      Vehicle_pickDeliver get_truck();
-     void release_truck(size_t id);
      Vehicle_pickDeliver get_truck(size_t order);
-     Vehicle_pickDeliver get_truck(const Order order);
 
      /*! @name vector like functions
       * @{
@@ -94,8 +85,9 @@ class Fleet {
      friend std::ostream& operator << (std::ostream &log, const Fleet &v);
 
  private:
-     Identifiers<size_t> used;
-     Identifiers<size_t> un_used;
+     std::vector<Vehicle_pickDeliver> m_trucks;
+     Identifiers<size_t> m_used;
+     Identifiers<size_t> m_un_used;
 
      /*! @brief build the fleet
       *
@@ -117,29 +109,6 @@ class Fleet {
      /** The problem */
      static Pgr_pickDeliver* problem;
 
-#if 0
-     template <typename T> std::unique_ptr<Base_node> create_b_start(
-             const Vehicle_t &vehicle,
-             size_t node_id) {
-         std::unique_ptr<Base_node> b_start(new T(
-                     node_id,
-                     vehicle.start_node_id,
-                     vehicle.start_x,
-                     vehicle.start_y));
-         return b_start;
-     }
-
-     template <typename T> std::unique_ptr<Base_node> create_b_end(
-             const Vehicle_t &vehicle,
-             size_t node_id) {
-         std::unique_ptr<Base_node> b_end(new T(
-                     node_id,
-                     vehicle.end_node_id,
-                     vehicle.end_x,
-                     vehicle.end_y));
-         return b_end;
-     }
-#endif
 };
 
 

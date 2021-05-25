@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.1.1
+# Copyright (C) pgRouting Contributors - Version v3.2.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.1.1\n"
+"Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 12:15-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,65 +16,74 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:11
-msgid "pgr_boykovKolmogorov"
+#: ../../build/doc/pgr_boykovKolmogorov.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_boykovKolmogorov.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_boykovKolmogorov.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/pgr_boykovKolmogorov.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_boykovKolmogorov.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:13
-msgid "``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm."
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:18
-msgid "Boost Graph Inside"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:21
-msgid "Availability:"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:22
-msgid "Version 3.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:24
-msgid "**Official** function"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:26
-msgid "Version 2.5.0"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:28
-msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:29
-msgid "**Proposed** function"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:31
-msgid "Version 2.3.0"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:33
-msgid "New **Experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:36
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:37
-msgid "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_boykovKolmogorov.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_boykovKolmogorov.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_boykovKolmogorov.rst:41
+#: ../../build/doc/pgr_boykovKolmogorov.rst:17
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_boykovKolmogorov.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_boykovKolmogorov.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlowBoykovKolmogorov.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:49
+#: ../../build/doc/pgr_boykovKolmogorov.rst:24
+msgid "pgr_boykovKolmogorov"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:26
+msgid "``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm."
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:31
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:34
+msgid "Availability:"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:35
+msgid "Version 3.2.0"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:37
+msgid "New **proposed** function:"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:39
+msgid "pgr_boykovKolmogorov(Combinations)"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:41
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:43
+msgid "**Official** function"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:45
+msgid "Version 2.5.0"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:47
+msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:48
+msgid "**Proposed** function"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:50
+msgid "Version 2.3.0"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:52
+msgid "New **Experimental** function"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:56
 #: ../../build/doc/flow-family.rst:4
 #: ../../build/doc/flow-family.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/flow-family.rst:4
 msgid "Description"
 msgstr ""
@@ -127,19 +136,19 @@ msgstr ""
 msgid "By aggregation of the incoming flow to the targets"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:55
+#: ../../build/doc/pgr_boykovKolmogorov.rst:62
 msgid "Running time: Polynomial"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:58
+#: ../../build/doc/pgr_boykovKolmogorov.rst:65
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:61
+#: ../../build/doc/pgr_boykovKolmogorov.rst:68
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:75
+#: ../../build/doc/pgr_boykovKolmogorov.rst:83
 msgid "One to One"
 msgstr ""
 
@@ -147,55 +156,67 @@ msgstr ""
 #: ../../build/doc/pgr_boykovKolmogorov.rst:0
 #: ../../build/doc/pgr_boykovKolmogorov.rst:0
 #: ../../build/doc/pgr_boykovKolmogorov.rst:0
+#: ../../build/doc/pgr_boykovKolmogorov.rst:0
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:83
+#: ../../build/doc/pgr_boykovKolmogorov.rst:91
 msgid "From vertex :math:`6` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:93
+#: ../../build/doc/pgr_boykovKolmogorov.rst:101
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:101
+#: ../../build/doc/pgr_boykovKolmogorov.rst:109
 msgid "From vertex :math:`6` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:111
+#: ../../build/doc/pgr_boykovKolmogorov.rst:119
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:119
+#: ../../build/doc/pgr_boykovKolmogorov.rst:127
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:129
+#: ../../build/doc/pgr_boykovKolmogorov.rst:137
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:137
+#: ../../build/doc/pgr_boykovKolmogorov.rst:145
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:144
+#: ../../build/doc/pgr_boykovKolmogorov.rst:155
+msgid "Combinations"
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:163
+msgid "Using a combinations table, equivalent to calculating result from vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`."
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:170
 msgid "Parameters"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4
 #: ../../build/doc/flow-family.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/flow-family.rst:4
 msgid "Column"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4
 #: ../../build/doc/flow-family.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/flow-family.rst:4
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4
 #: ../../build/doc/flow-family.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
 msgstr ""
 
@@ -204,20 +225,30 @@ msgid "**Edges SQL**"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:6
+#: ../../build/doc/flow-family.rst:7
 msgid "``TEXT``"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:6
-msgid "The edges SQL query as described in `Inner Query`_."
+msgid "Edges query as described in `Inner Queries`_."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:7
+msgid "**Combinations SQL**"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:7
+msgid "Combinations query as described in `Inner Queries`_."
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:8
 #: ../../build/doc/flow-family.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:6
 msgid "**source**"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:7
-#: ../../build/doc/flow-family.rst:9
+#: ../../build/doc/flow-family.rst:8
+#: ../../build/doc/flow-family.rst:10
 #: ../../build/doc/flow-family.rst:7
 #: ../../build/doc/flow-family.rst:8
 #: ../../build/doc/flow-family.rst:9
@@ -226,42 +257,43 @@ msgstr ""
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:7
+#: ../../build/doc/flow-family.rst:8
 msgid "Identifier of the starting vertex of the flow."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:8
+#: ../../build/doc/flow-family.rst:9
 msgid "**sources**"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:8
-#: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/flow-family.rst:9
+#: ../../build/doc/flow-family.rst:11
 msgid "``ARRAY[BIGINT]``"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:8
+#: ../../build/doc/flow-family.rst:9
 msgid "Array of identifiers of the starting vertices of the flow."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:9
 #: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:7
 msgid "**target**"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:9
+#: ../../build/doc/flow-family.rst:10
 msgid "Identifier of the ending vertex of the flow."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/flow-family.rst:11
 msgid "**targets**"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/flow-family.rst:11
 msgid "Array of identifiers of the ending vertices of the flow."
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:151
-msgid "Inner query"
+#: ../../build/doc/pgr_boykovKolmogorov.rst:177
+msgid "Inner queries"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:0
@@ -281,6 +313,8 @@ msgstr ""
 #: ../../build/doc/flow-family.rst:10
 #: ../../build/doc/flow-family.rst:11
 #: ../../build/doc/flow-family.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:7
 msgid "``ANY-INTEGER``"
 msgstr ""
 
@@ -289,11 +323,13 @@ msgid "Identifier of the edge."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/flow-family.rst:8
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/flow-family.rst:9
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
@@ -327,18 +363,33 @@ msgid "When negative: edge `(target, source)` does not exist, therefore it's not
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:21
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Where:"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:23
+#: ../../build/doc/pgRouting-concepts.rst:13
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:158
+#: ../../build/doc/flow-family.rst:0
+msgid "Combinations SQL"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:3
+msgid "an SQL query which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/flow-family.rst:9
+msgid "The function aggregates the sources and the targets, removes the duplicates, and then it calculates the result from the resultant source vertices to the target vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_boykovKolmogorov.rst:188
 msgid "Result Columns"
 msgstr ""
 
@@ -386,27 +437,27 @@ msgstr ""
 msgid "Residual capacity of the edge in the direction (``start_vid``, ``end_vid``)."
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:165
+#: ../../build/doc/pgr_boykovKolmogorov.rst:195
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:167
+#: ../../build/doc/pgr_boykovKolmogorov.rst:197
 msgid ":doc:`flow-family`, :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:168
+#: ../../build/doc/pgr_boykovKolmogorov.rst:198
 msgid "https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:171
+#: ../../build/doc/pgr_boykovKolmogorov.rst:201
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:172
+#: ../../build/doc/pgr_boykovKolmogorov.rst:202
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_boykovKolmogorov.rst:173
+#: ../../build/doc/pgr_boykovKolmogorov.rst:203
 msgid ":ref:`search`"
 msgstr ""
 

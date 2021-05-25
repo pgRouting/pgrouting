@@ -69,5 +69,21 @@ SELECT * FROM pgr_dagShortestPath(
 (13 rows)
 
 -- q5
+SELECT * FROM pgr_dagShortestPath(
+    'SELECT id, source, target, cost FROM edge_table',
+    'SELECT * FROM ( VALUES (1, 6), (4, 12) ) AS t(source, target)'
+);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |    1 |    1 |    1 |        0
+   2 |        2 |    2 |    4 |    1 |        1
+   3 |        3 |    5 |    8 |    1 |        2
+   4 |        4 |    6 |   -1 |    0 |        3
+   5 |        1 |    4 |   16 |    1 |        0
+   6 |        2 |    9 |   15 |    1 |        1
+   7 |        3 |   12 |   -1 |    0 |        2
+(7 rows)
+
+-- q6
 ROLLBACK;
 ROLLBACK

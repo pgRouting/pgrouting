@@ -36,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "cpp_common/identifiers.hpp"
 
-#include "vrp/base_node.h"
 #include "vrp/pd_problem.h"
 
 
@@ -70,7 +69,6 @@ class PD_Orders {
      size_t find_best_I(Identifiers<size_t> &within_this_set) const;
 
 
-     bool is_valid(double speed) const;
 
      /*! @name std container functions
       * functions with same "meaning" as an std container

@@ -52,8 +52,6 @@ Vehicle::msg() {
     return problem->msg;
 }
 
-
-
 void
 Vehicle::invariant() const {
     pgassert(m_path.size() >= 2);
@@ -195,55 +193,6 @@ Vehicle::insert(POS at, Vehicle_node node) {
 }
 
 
-double
-Vehicle::deltaTime(const Vehicle_node &node, POS pos) const {
-    /*
-     * .... POS POS+1 ....
-     * .... POS node POS+1 ....
-     *
-     */
-    auto prev = m_path[pos-1];
-    auto next = m_path[pos];
-    auto original_time = next.travel_time();
-    auto tt_p_n = prev.travel_time_to(node, speed());
-    tt_p_n = node.is_early_arrival(prev.departure_time() + tt_p_n) ?
-        node.closes() - prev.departure_time()
-        : tt_p_n;
-
-    auto tt_n_x = node.travel_time_to(next, speed());
-    tt_p_n = next.is_early_arrival(
-            prev.departure_time() + tt_p_n + node.service_time() + tt_n_x) ?
-        next.closes() - (prev.departure_time() + tt_p_n + node.service_time())
-        : tt_n_x;
-
-    return (tt_p_n + tt_n_x) - original_time;
-}
-
-
-
-
-size_t
-Vehicle::insert_less_travel_time(const Vehicle_node &node, POS after_pos) {
-    invariant();
-
-    double min_delta = (std::numeric_limits<double>::max)();
-    POS min_pos = after_pos;
-
-    for (POS pos = after_pos; pos < m_path.size(); ++pos) {
-        if (!m_path[pos].is_start()) {
-            auto tt = deltaTime(node, pos);
-
-            if (tt < min_delta) {
-                min_delta = tt;
-                min_pos = pos;
-            }
-        }
-    }
-    insert(min_pos, node);
-
-    invariant();
-    return min_pos;
-}
 
 void
 Vehicle::erase(const Vehicle_node &node) {
@@ -263,61 +212,6 @@ Vehicle::erase(const Vehicle_node &node) {
 }
 
 
-/*
- * before: S E
- * after: S N E
- *
- * before: S n1 n2 ... n E
- * after: S N n1 n2 ... n E
- */
-void
-Vehicle::push_front(const Vehicle_node &node) {
-    invariant();
-
-    /* insert evaluates */
-    insert(1, node);
-
-    invariant();
-}
-
-/*
- * before: S E
- * after: S N E
- *
- * before: S n1 n2 ... n E
- * after: S n1 n2 ... n N E
- */
-void
-Vehicle::push_back(const Vehicle_node &node) {
-    invariant();
-
-    /* insert evaluates */
-    insert(m_path.size() - 1, node);
-
-    invariant();
-}
-
-void
-Vehicle::pop_back() {
-    invariant();
-    pgassert(m_path.size() > 2);
-
-    /* erase evaluates */
-    erase(m_path.size() - 2);
-
-    invariant();
-}
-
-void
-Vehicle::pop_front() {
-    invariant();
-    pgassert(m_path.size() > 2);
-
-    /* erase evaluates */
-    erase(1);
-
-    invariant();
-}
 
 
 
@@ -556,23 +450,6 @@ Vehicle::Vehicle(
         EXITING();
 #endif
     }
-
-#if 0
-Vehicle::Vehicle(const Vehicle &v) :
-    Identifier(v.idx(), v.id()),
-    PD_problem(),
-    m_path(v.m_path),
-    m_capacity(v.m_capacity),
-    m_factor(v.m_factor),
-    m_speed(v.m_speed) {
-#if 0
-        ENTERING();
-        msg().log << v.tau() << "\n";
-        msg().log << tau() << "\n";
-        EXITING();
-#endif
-}
-#endif
 
 
 

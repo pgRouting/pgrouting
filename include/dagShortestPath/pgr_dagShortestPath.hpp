@@ -29,11 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <boost/config.hpp>
-#if Boost_VERSION_MACRO >= 105500
 #include <boost/graph/dijkstra_shortest_paths.hpp>
-#else
-#include "boost/dijkstra_shortest_paths.hpp"
-#endif
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dag_shortest_paths.hpp>
 #include <deque>
@@ -43,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <functional>
 #include <limits>
+#include <map>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -180,6 +177,40 @@ class Pgr_dag {
                  [](const Path &e1, const Path &e2)->bool {
                  return e1.start_id() < e2.start_id();
                  });
+         return paths;
+     }
+
+     // preparation for parallel arrays
+     std::deque<Path> dag(
+             G &graph,
+             const std::vector<pgr_combination_t> &combinations,
+             bool only_cost) {
+         std::deque<Path> paths;
+
+         // group targets per distinct source
+         std::map< int64_t, std::vector<int64_t> > vertex_map;
+         for (const pgr_combination_t &comb : combinations) {
+             std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.source);
+             if (it != vertex_map.end()) {
+                 it->second.push_back(comb.target);
+             } else {
+                 std::vector<int64_t > targets{comb.target};
+                 vertex_map[comb.source] = targets;
+             }
+         }
+
+         for (const auto &start_ends : vertex_map) {
+             auto result_paths = dag(
+                     graph,
+                     start_ends.first,
+                     start_ends.second,
+                     only_cost);
+             paths.insert(
+                     paths.end(),
+                     std::make_move_iterator(result_paths.begin()),
+                     std::make_move_iterator(result_paths.end()));
+         }
+
          return paths;
      }
 

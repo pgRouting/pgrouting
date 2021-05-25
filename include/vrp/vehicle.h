@@ -47,7 +47,6 @@ namespace vrp {
 
 class Pgr_pickDeliver;
 
-
 /*! @class Vehicle
  *  @brief Vehicle with time windows
  *
@@ -78,7 +77,6 @@ class Vehicle : public Identifier {
      std::deque< Vehicle_node > m_path;
 
      friend class PD_problem;
-
 
  private:
      double m_capacity;
@@ -151,46 +149,6 @@ class Vehicle : public Identifier {
 
 
 
-     /*! @brief Evaluated: push_back a node to the path.
-      *
-      * ~~~~{.c}
-      * before: S <nodes> E
-      * after: S <nodes> n E
-      * ~~~~
-      *
-      * @param[in] node to be push_back.
-      */
-     void push_back(const Vehicle_node &node);
-
-     /*! @brief Evaluated: push_back a node to the path.
-      *
-      * ~~~~{.c}
-      * before: S <nodes> E
-      * after: S n <nodes> E
-      * ~~~~
-      *
-      * @param[in] node to be push_back.
-      */
-     void push_front(const Vehicle_node &node);
-
-
-     /*! @brief Evaluated: pop_back a node to the path.
-      *
-      * ~~~~{.c}
-      * before: S <nodes> n E
-      * after: S <nodes> E
-      * ~~~~
-      */
-     void pop_back();
-
-     /*! @brief Evaluated: pop_front a node to the path.
-      *
-      * ~~~~{.c}
-      * before: S n <nodes> E
-      * after: S <nodes> E
-      * ~~~~
-      */
-     void pop_front();
 
      /*! @brief Erase node.id()
       *
@@ -252,9 +210,6 @@ class Vehicle : public Identifier {
      double total_service_time() const {
          return m_path.back().total_service_time();
      }
-     double free_time() const {
-         return total_wait_time() + (m_path[0].closes() - duration());
-     }
      int twvTot() const {
          return m_path.back().twvTot();
      }
@@ -280,9 +235,6 @@ class Vehicle : public Identifier {
      Vehicle_node end_site() const {
          return m_path.back();
      }
-#if 0
-     double speed() const {return m_speed;}
-#endif
      double capacity() const {return m_capacity;}
      /// @}
 
@@ -332,8 +284,6 @@ class Vehicle : public Identifier {
 
      ///@}
 
-     double deltaTime(const Vehicle_node &node, POS pos) const;
-     POS insert_less_travel_time(const Vehicle_node &node, POS after_pos = 0);
 
 
 
@@ -360,7 +310,6 @@ class Vehicle : public Identifier {
 
      std::pair<POS, POS> position_limits(const Vehicle_node node) const;
      std::pair<POS, POS> drop_position_limits(const Vehicle_node node) const;
-
 
      /** Pointer to problem */
      static Pgr_pickDeliver* problem;

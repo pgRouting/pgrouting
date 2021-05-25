@@ -52,7 +52,31 @@ RETURNS SETOF RECORD AS
 LANGUAGE c IMMUTABLE STRICT;
 
 
+--v3.2
+CREATE FUNCTION _pgr_bellmanFord(
+    edges_sql TEXT,
+    combinations_sql TEXT,
+    directed  BOOLEAN,
+    only_cost BOOLEAN,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C IMMUTABLE STRICT;
+
+
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_bellmanFord(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_bellmanFord(TEXT, TEXT, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';

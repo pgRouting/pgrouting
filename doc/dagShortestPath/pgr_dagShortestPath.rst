@@ -7,6 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_dagShortestPath.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dagShortestPath.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html>`__
+
 pgr_dagShortestPath - Experimental
 ===============================================================================
 
@@ -24,15 +32,16 @@ In particular, the DAG shortest paths algorithm implemented by Boost.Graph.
 
 .. rubric:: Availability
 
+* Version 3.2.0
+
+  * New **experimental** function:
+
+    * pgr_dagShortestPath(Combinations)
+
 * Version 3.0.0
 
   * New **experimental** function
 
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -74,10 +83,11 @@ Signatures
 
 .. code-block:: none
 
-    pgr_dagShortestPath(edges_sql, from_vid,  to_vid)
-    pgr_dagShortestPath(edges_sql, from_vid,  to_vids)
-    pgr_dagShortestPath(edges_sql, from_vids, to_vid)
-    pgr_dagShortestPath(edges_sql, from_vids, to_vids)
+    pgr_dagShortestPath(Edges SQL, from_vid,  to_vid)
+    pgr_dagShortestPath(Edges SQL, from_vid,  to_vids)
+    pgr_dagShortestPath(Edges SQL, from_vids, to_vid)
+    pgr_dagShortestPath(Edges SQL, from_vids, to_vids)
+    pgr_dagShortestPath(Edges SQL, Combinations) -- Experimental on v3.2
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -91,7 +101,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_dagShortestPath(edges_sql, from_vid,  to_vid)
+    pgr_dagShortestPath(Edges SQL, from_vid,  to_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -109,7 +119,7 @@ One to Many
 
 .. code-block:: none
 
-    pgr_dagShortestPath(edges_sql, from_vid,  to_vids)
+    pgr_dagShortestPath(Edges SQL, from_vid,  to_vids)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -127,7 +137,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_dagShortestPath(edges_sql, from_vids, to_vid)
+    pgr_dagShortestPath(Edges SQL, from_vids, to_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -145,7 +155,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_dagShortestPath(edges_sql, from_vids, to_vids)
+    pgr_dagShortestPath(Edges SQL, from_vids, to_vids)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -156,6 +166,25 @@ Many to Many
    :start-after: -- q4
    :end-before: -- q5
 
+.. index::
+    single: dagShortestPath(Combinations) -- Experimental on v3.2
+
+Combinations
+...............................................................................
+
+.. code-block:: none
+
+    pgr_dagShortestPath(Edges SQL, Combinations)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    OR EMPTY SET
+
+:Example: Using a combinations table on a Directed Acyclic Graph.
+
+
+.. literalinclude:: doc-pgr_dagShortestPath.queries
+   :start-after: -- q5
+   :end-before: -- q6
+
 Parameters
 -------------------------------------------------------------------------------
 
@@ -163,24 +192,35 @@ Parameters
 
 .. rubric:: Description of the parameters of the signatures
 
-============== ================== ======== =================================================
-Parameter      Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**        ``TEXT``                    SQL query as described above.
-**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
-============== ================== ======== =================================================
+===================== ================== ======== =================================================
+Parameter             Type               Default     Description
+===================== ================== ======== =================================================
+**Edges SQL**         ``TEXT``                    Edges query as described below.
+**Combinations SQL**  ``TEXT``                    Combinations query as described above.
+**start_vid**         ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids**        ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**           ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**          ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+===================== ================== ======== =================================================
 
 .. pgr_dagShortestPath_parameters_end
 
-Inner Query
+Inner Queries
 -------------------------------------------------------------------------------
+
+Edges query
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Results Columns
 -------------------------------------------------------------------------------

@@ -7,6 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/kruskal-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/kruskal-family.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/kruskal-family.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/kruskal-family.html>`__
+
 Kruskal - Family of functions
 ===============================================================================
 
@@ -33,11 +41,6 @@ Kruskal - Family of functions
     pgr_kruskalDD
     pgr_kruskalDFS
 
-.. rubric:: Previous versions of this page
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/kruskal-family.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/kruskal-family.html>`__
 
 Description
 -------------------------------------------------------------------------------

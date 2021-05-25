@@ -7,6 +7,20 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/flow-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/flow-family.html>`__)
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/flow-family.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/flow-family.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/flow-family.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/flow-family.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/flow-family.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/flow-family.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__
+
 Flow - Family of functions
 ===================================
 
@@ -49,19 +63,6 @@ Flow - Family of functions
     pgr_maxFlowMinCost_Cost
 
 
-.. rubric:: Previous versions of this page
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/flow-family.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/flow-family.html>`__
-  `2.6 <https://docs.pgrouting.org/2.6/en/flow-family.html>`__
-
-* **Unsupported versions:**
-  `2.5 <https://docs.pgrouting.org/2.5/en/flow-family.html>`__
-  `2.4 <https://docs.pgrouting.org/2.4/en/flow-family.html>`__
-  `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__
-
-
 Flow Functions General Information
 -----------------------------------
 
@@ -96,19 +97,20 @@ Parameters
 
 .. pgr_flow_parameters_start
 
-============== ================== ======== =================================================
-Column         Type               Default     Description
-============== ================== ======== =================================================
-**Edges SQL**  ``TEXT``                    The edges SQL query as described in `Inner Query`_.
-**source**     ``BIGINT``                  Identifier of the starting vertex of the flow.
-**sources**    ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
-**target**     ``BIGINT``                  Identifier of the ending vertex of the flow.
-**targets**    ``ARRAY[BIGINT]``           Array of identifiers of the ending vertices of the flow.
-============== ================== ======== =================================================
+===================== ================== ======== =================================================
+Column                Type               Default     Description
+===================== ================== ======== =================================================
+**Edges SQL**         ``TEXT``                    Edges query as described in `Inner Queries`_.
+**Combinations SQL**  ``TEXT``                    Combinations query as described in `Inner Queries`_.
+**source**            ``BIGINT``                  Identifier of the starting vertex of the flow.
+**sources**           ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
+**target**            ``BIGINT``                  Identifier of the ending vertex of the flow.
+**targets**           ``ARRAY[BIGINT]``           Array of identifiers of the ending vertices of the flow.
+===================== ================== ======== =================================================
 
 .. pgr_flow_parameters_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
 .. rubric:: For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>` :
@@ -167,6 +169,20 @@ Where:
 :ANY-NUMERICAL: smallint, int, bigint, real, float
 
 .. costFlow_edges_sql_end
+
+For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, :doc:`pgr_edgeDisjointPaths <pgr_edgeDisjointPaths>`, :doc:`pgr_maxFlowMinCost <pgr_maxFlowMinCost>` and :doc:`pgr_maxFlowMinCost_Cost <pgr_maxFlowMinCost_Cost>` :
+
+.. flow_combinations_sql_start
+
+:Combinations SQL: an SQL query which should return a set of rows with the following columns:
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
+
+The function aggregates the sources and the targets, removes the duplicates, and then it calculates the result from the resultant source vertices to the target vertices.
+
+.. flow_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------

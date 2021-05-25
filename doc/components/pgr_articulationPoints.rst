@@ -7,6 +7,18 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_articulationPoints.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_articulationPoints.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_articulationPoints.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_articulationPoints.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_articulationPoints.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_articulationPoints.html>`__
+
+
 pgr_articulationPoints
 ===============================================================================
 
@@ -27,16 +39,6 @@ pgr_articulationPoints
 * Version 2.5.0
 
   * New **experimental** function
-
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_articulationPoints.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_articulationPoints.html>`__
-
-* **Unsupported versions:**
-  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_articulationPoints.html>`__
-  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_articulationPoints.html>`__
 
 Description
 -------------------------------------------------------------------------------

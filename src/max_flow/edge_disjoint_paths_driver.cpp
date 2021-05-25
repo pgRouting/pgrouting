@@ -66,6 +66,8 @@ void
 do_pgr_edge_disjoint_paths(
     pgr_edge_t *data_edges,
     size_t total_edges,
+    pgr_combination_t *combinations,
+    size_t total_combinations,
     int64_t *sources,
     size_t size_source_verticesArr,
     int64_t *sinks,
@@ -80,12 +82,34 @@ do_pgr_edge_disjoint_paths(
     std::ostringstream notice;
     std::ostringstream err;
     try {
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
+        pgassert(data_edges);
+        pgassert(total_edges != 0);
+        pgassert((sources && sinks) || combinations);
+        pgassert((size_source_verticesArr && size_sink_verticesArr) || total_combinations);
+
         std::set<int64_t> set_source_vertices(
                 sources, sources + size_source_verticesArr);
         std::set<int64_t> set_sink_vertices(
                 sinks, sinks + size_sink_verticesArr);
+        std::vector< pgr_combination_t > combinations_vector(
+                combinations, combinations + total_combinations);
         std::vector<pgr_edge_t> edges(
                 data_edges, data_edges + total_edges);
+
+        if (!combinations_vector.empty()) {
+            pgassert(set_source_vertices.empty());
+            pgassert(set_sink_vertices.empty());
+
+            for (const pgr_combination_t &comb : combinations_vector) {
+                set_source_vertices.insert(comb.source);
+                set_sink_vertices.insert(comb.target);
+            }
+        }
 
 
         std::vector<General_path_element_t> paths;

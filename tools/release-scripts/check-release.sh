@@ -52,12 +52,12 @@ fi
 
 
 MAYOR=3
-MINOR=1
-MICRO=1
-RC=""
-PREV_REL=3.1.0
+MINOR=2
+MICRO=0
+RC="-dev"
+PREV_REL=3.1.1
 PREV_RELS="
-    3.1.0
+    3.1.1 3.1.0
     3.0.3 3.0.2 3.0.1 3.0.0
     2.6.3 2.6.2 2.6.1 2.6.0
     "

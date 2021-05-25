@@ -123,6 +123,30 @@ $BODY$
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
 
+
+-- COMBINATIONS
+--v3.2
+CREATE FUNCTION pgr_edwardMoore(
+    TEXT,     -- edges_sql (required)
+    TEXT,     -- combinations_sql (required)
+
+    directed BOOLEAN DEFAULT true,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_edwardMoore(_pgr_get_statement($1), _pgr_get_statement($2), $3) AS a;
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_edwardMoore(TEXT, BIGINT, BIGINT, BOOLEAN)
@@ -167,6 +191,17 @@ IS 'pgr_edwardMoore(Many to Many)
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
    - To ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PROJECT_DOC_LINK}/pgr_edwardMoore.html
+';
+
+COMMENT ON FUNCTION pgr_edwardMoore(TEXT, TEXT, BOOLEAN)
+IS 'pgr_edwardMoore(Combinations)
+- Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - Combinations SQL with columns: source, target
 - Optional Parameters
    - directed := true
 - Documentation:

@@ -32,55 +32,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_assert.h"
 
-#include "vrp/solution.h"
-#include "vrp/optimize.h"
-#include "vrp/initial_solution.h"
 #include "vrp/initials_code.h"
 #include "vrp/vehicle_node.h"
 #include "vrp/vehicle_pickDeliver.h"
 #include "vrp/order.h"
 #include "vrp/pd_orders.h"
 #include "vrp/fleet.h"
+#include "vrp/solution.h"
+#include "vrp/initial_solution.h"
+#include "vrp/optimize.h"
 
 namespace pgrouting {
 namespace vrp {
 
 
-// TODO(vicky) delete this function
-bool
-Pgr_pickDeliver::nodesOK() const {
-    ENTERING(msg);
-    return !(m_nodes.empty());
-#if 0
-    if (m_nodes.empty() && m_base_nodes.empty()) return true;
-
-    pgassertwm(m_nodes.size() == m_base_nodes.size(), msg.get_log().c_str());
-    for (size_t i = 0; i < m_nodes.size() ; ++i) {
-        pgassertwm(m_nodes[i].id() ==  m_base_nodes[i]->id(),
-                msg.get_log().c_str());
-        pgassertwm(m_nodes[i].idx() ==  m_base_nodes[i]->idx(),
-                msg.get_log().c_str());
-    }
-    EXITING();
-    return true;
-#endif
-}
-
-Solution
-Pgr_pickDeliver::optimize(const Solution solution) {
-    pgassert(false);
-    /*
-     * Optimize a solution
-     */
-#if 1
-    msg.log << "max_cycles: " << m_max_cycles << "\n";
-    Optimize opt_solution(solution, m_max_cycles);
-#else
-    Optimize opt_solution(solution, 1);
-#endif
-    msg.log << opt_solution.best_solution.tau("optimized");
-    return opt_solution.best_solution;
-}
 
 void
 Pgr_pickDeliver::solve() {
@@ -177,16 +142,11 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     PD_problem(this),
     m_initial_id(initial),
     m_max_cycles(p_max_cycles),
-#if 0
-    m_node_id(0),
-#endif
     m_nodes(),
-#if 0
-    m_base_nodes(),
-#endif
     m_cost_matrix(cost_matrix),
     m_orders(pd_orders),
     m_trucks(vehicles, factor) {
+        ENTERING(msg);
         pgassert(!pd_orders.empty());
         pgassert(!vehicles.empty());
         pgassert(!m_cost_matrix.empty());
@@ -194,7 +154,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             msg.log << "\n m_initial_id " << m_initial_id;
         }
         pgassertwm(m_initial_id > 0 && m_initial_id <= OneDepot, msg.get_log().c_str());
-        pgassert(nodesOK());
+        pgassert(!m_nodes.empty());
 
         if (!msg.get_error().empty()) {
             return;
@@ -270,83 +230,9 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             msg.log << t << "\n";
         }
 #endif
+        EXITING(msg);
     }  //  constructor
 
-
-
-#if 0
-/***** Constructor for the eculedian version *******/
-
-Pgr_pickDeliver::Pgr_pickDeliver(
-        const std::vector<PickDeliveryOrders_t> &pd_orders,
-        const std::vector<Vehicle_t> &vehicles,
-        double factor,
-        size_t p_max_cycles,
-        int initial) :
-    PD_problem(this),
-    m_initial_id(initial),
-    m_max_cycles(p_max_cycles),
-#if 0
-    m_node_id(0),
-#endif
-    m_nodes(),
-    m_base_nodes(),
-    m_cost_matrix(),
-    m_orders(pd_orders),
-    m_trucks(vehicles, factor) {
-        ENTERING();
-        pgassert(!pd_orders.empty());
-        pgassert(!vehicles.empty());
-        pgassert(m_cost_matrix.empty());
-        pgassert(factor > 0);
-        pgassert(m_initial_id > 0 && m_initial_id < 7);
-
-        if (!msg.get_error().empty()) {
-            return;
-        }
-
-        pgassert(m_trucks.msg.get_error().empty());
-        pgassert(msg.get_error().empty());
-
-        msg.log << "\n Checking fleet";
-        if (!m_trucks.is_fleet_ok()) {
-            msg.error << m_trucks.msg.get_error();
-            pgassert(!m_trucks.msg.get_error().empty());
-            return;
-        }
-
-        pgassert(m_trucks.msg.get_error().empty());
-
-
-#ifndef NDEBUG
-        for (const auto &t : m_trucks) {
-            msg.log << t << "\n";
-        }
-        for (const auto &o : m_orders) {
-            msg.log << o << "\n";
-        }
-#endif
-
-        /*
-         * check the (S, P, D, E) order on all vehicles
-         * stop when a feasible truck is found
-         */
-        msg.log << "\n Checking orders";
-        for (const auto &o : m_orders) {
-            if (!m_trucks.is_order_ok(o)) {
-                msg.error << "Order not feasible on any truck was found";
-                msg.log << "The order "
-                    << o.pickup().order()
-                    << " is not feasible on any truck";
-                msg.log << "\n" << o;
-                return;
-            }
-        }
-
-        m_trucks.set_compatibles(m_orders);
-        EXITING();
-    }  //  constructor
-#endif
 
 
 }  //  namespace vrp

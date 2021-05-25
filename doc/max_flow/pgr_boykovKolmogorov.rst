@@ -7,6 +7,19 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_boykovKolmogorov.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_boykovKolmogorov.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_boykovKolmogorov.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_boykovKolmogorov.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_boykovKolmogorov.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_boykovKolmogorov.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlowBoykovKolmogorov.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html>`__
+
 pgr_boykovKolmogorov
 ============================================
 
@@ -18,6 +31,12 @@ pgr_boykovKolmogorov
    Boost Graph Inside
 
 .. Rubric:: Availability:
+
+* Version 3.2.0
+
+  * New **proposed** function:
+
+    * pgr_boykovKolmogorov(Combinations)
 
 * Version 3.0.0
 
@@ -31,18 +50,6 @@ pgr_boykovKolmogorov
 * Version 2.3.0
 
   * New **Experimental** function
-
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_boykovKolmogorov.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_boykovKolmogorov.html>`__
-
-* **Unsupported versions:**
-  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_boykovKolmogorov.html>`__
-  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_boykovKolmogorov.html>`__
-  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlowBoykovKolmogorov.html>`__
-  `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html>`__
 
 
 Description
@@ -65,6 +72,7 @@ Signatures
     pgr_boykovKolmogorov(Edges SQL, sources, target)
     pgr_boykovKolmogorov(Edges SQL, source,  targets)
     pgr_boykovKolmogorov(Edges SQL, sources, targets)
+    pgr_boykovKolmogorov(Edges SQL, Combinations SQL) -- Proposed on v3.2
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -140,6 +148,24 @@ Many to Many
    :start-after: -- q4
    :end-before: -- q5
 
+.. index::
+    single: boykovKolmogorov(Combinations) -- Proposed on v3.2
+
+Combinations
+...............................................................................
+
+.. code-block:: none
+
+    pgr_boykovKolmogorov(Edges SQL, Combinations SQL)
+    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
+    OR EMPTY SET
+
+:Example: Using a combinations table, equivalent to calculating result from vertices :math:`\{6, 8, 12\}` to vertices :math:`\{1, 3, 11\}`.
+
+.. literalinclude:: doc-pgr_boykovKolmogorov.queries
+   :start-after: -- q5
+   :end-before: -- q6
+
 Parameters
 -------------------------------------------------------------------------------
 
@@ -147,12 +173,16 @@ Parameters
     :start-after: pgr_flow_parameters_start
     :end-before: pgr_flow_parameters_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
 .. include:: flow-family.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
+
+.. include:: flow-family.rst
+    :start-after: flow_combinations_sql_start
+    :end-before: flow_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------

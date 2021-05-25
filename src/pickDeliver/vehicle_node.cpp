@@ -136,25 +136,6 @@ Vehicle_node::Vehicle_node(const Tw_node &node)
 
 
 
-bool
-Vehicle_node::deltaGeneratesTWV(double delta_time) const {
-    return is_late_arrival(m_arrival_time + delta_time);
-}
-
-
-/*!
-  The actual arrival time at \b This node, given that:
-  \b this node is visited directly after \b other node
-  and that the actual arrival time at \b other node was arrival(other)
-  */
-double
-Vehicle_node::arrival_i_arrives_j(
-        const Vehicle_node &other,
-        double speed) const {
-    return other.arrival_time()
-        + other.service_time()
-        + other.travel_time_to(*this, speed);
-}
 
 }  //  namespace vrp
 }  //  namespace pgrouting

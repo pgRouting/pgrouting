@@ -7,6 +7,20 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/dijkstra-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/dijkstra-family.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/dijkstra-family.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-family.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-family.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/dijkstra-family.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/dijkstra-family.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__
+
 Dijkstra - Family of functions
 ===============================================================================
 
@@ -20,7 +34,7 @@ Dijkstra - Family of functions
 
 .. index to here
 
-.. rubric:: proposed
+.. rubric:: Proposed
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -33,6 +47,19 @@ Dijkstra - Family of functions
 
 .. index proposed to here
 
+.. rubric:: Experimental
+
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
+
+.. index experimental from here
+
+* :doc:`pgr_dijkstraNear` - Get the route to the nearest vertex.
+* :doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex.
+
+.. index experimental to here
+
 .. toctree::
     :hidden:
 
@@ -42,19 +69,8 @@ Dijkstra - Family of functions
     pgr_drivingDistance
     pgr_KSP
     pgr_dijkstraVia
-
-.. rubric:: Previous versions of this page
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/dijkstra-family.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-family.html>`__
-  `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-family.html>`__
-
-* **Unsupported versions:**
-  `2.5 <https://docs.pgrouting.org/2.5/en/dijkstra-family.html>`__
-  `2.4 <https://docs.pgrouting.org/2.4/en/dijkstra-family.html>`__
-  `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__
-  `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__
+    pgr_dijkstraNear
+    pgr_dijkstraNearCost
 
 
 The problem definition (Advanced documentation)

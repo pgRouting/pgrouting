@@ -5,6 +5,21 @@
 
     This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
+    ****************************************************************************
+
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/experimental.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/experimental.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/experimental.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/experimental.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/proposed.html#experimental-functions>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/proposed.html#experimental-functions>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/proposed.html#experimental-and-proposed-functions>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/proposed.html#experimental-and-proposed-functions>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/proposed.html#experimental-and-proposed-functions>`__
 
 Experimental Functions
 ===============================================================================
@@ -49,6 +64,12 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`coloring-family`
+
+.. include:: coloring-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 :doc:`topology-functions`
 
 .. include:: topology-functions.rst
@@ -61,10 +82,32 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`traversal-family`
+
+.. include:: traversal-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:doc:`components-family`
+
+.. include:: components-family.rst
+   :start-after: index experimental from here
+   :end-before: index experimental to here
+
+:doc:`dijkstra-family`
+
+.. include:: dijkstra-family.rst
+   :start-after: index experimental from here
+   :end-before: index experimental to here
+
 .. toctree::
    :hidden:
 
    chinesePostmanProblem-family
+   coloring-family
+   transformation-family
+   traversal-family
+   components-family
 
 .. rubric:: categories
 
@@ -86,10 +129,12 @@ Experimental Functions
 - :doc:`pgr_breadthFirstSearch`
 - :doc:`pgr_dagShortestPath`
 - :doc:`pgr_edwardMoore`
+- :doc:`pgr_isPlanar`
 - :doc:`pgr_stoerWagner`
 - :doc:`pgr_topologicalSort`
 - :doc:`pgr_transitiveClosure`
 - :doc:`pgr_turnRestrictedPath`
+- :doc:`pgr_lengauerTarjanDominatorTree`
 
 .. toctree::
   :hidden:
@@ -99,10 +144,12 @@ Experimental Functions
   pgr_breadthFirstSearch
   pgr_dagShortestPath
   pgr_edwardMoore
+  pgr_isPlanar
   pgr_stoerWagner
   pgr_topologicalSort
   pgr_transitiveClosure
   pgr_turnRestrictedPath
+  pgr_lengauerTarjanDominatorTree
 
 
 See Also

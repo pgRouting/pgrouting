@@ -7,6 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_transitiveClosure.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_transitiveClosure.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_transitiveClosure.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_transitiveClosure.html>`__
+
 pgr_transitiveClosure - Experimental
 ===============================================================================
 
@@ -14,7 +22,7 @@ pgr_transitiveClosure - Experimental
 In particular, the transitive closure algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_70_0/libs/graph/doc/transitive_closure.html
+   :target: https://www.boost.org/libs/graph/doc/transitive_closure.html
 
    Boost Graph Inside
 
@@ -28,11 +36,6 @@ In particular, the transitive closure algorithm implemented by Boost.Graph.
 
   * New **experimental** function
 
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_transitiveClosure.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_transitiveClosure.html>`__
 
 Description
 -------------------------------------------------------------------------------

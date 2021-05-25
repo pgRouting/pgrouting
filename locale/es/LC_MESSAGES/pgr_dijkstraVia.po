@@ -4,31 +4,63 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2019
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2020
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:57+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"PO-Revision-Date: 2020-11-04 18:28+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:11
+#: ../../build/doc/pgr_dijkstraVia.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_dijkstraVia.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_dijkstraVia.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_dijkstraVia.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_dijkstraVia.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual "
+"<https://docs.pgrouting.org/latest/en/pgr_dijkstraVia.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_dijkstraVia.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_dijkstraVia.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_dijkstraVia.html>`__"
+
+#: ../../build/doc/pgr_dijkstraVia.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_dijkstraVia.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_dijkstraVia.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_dijkstraVia.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_dijkstraVia.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_dijkstraVia.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_dijkstraVia.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__"
+
+#: ../../build/doc/pgr_dijkstraVia.rst:25
 msgid "pgr_dijkstraVia - Proposed"
 msgstr "pgr_dijkstraVia - Propuesto"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:13
+#: ../../build/doc/pgr_dijkstraVia.rst:27
 msgid ""
 "``pgr_dijkstraVia`` — Using dijkstra algorithm, it finds the route that goes"
 " through a list of vertices."
@@ -72,62 +104,30 @@ msgstr "Se han hecho pruebas de pgTap. Pero tal vez necesite más."
 msgid "Documentation might need refinement."
 msgstr "Es posible que la documentación necesite un refinamiento."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:23
+#: ../../build/doc/pgr_dijkstraVia.rst:37
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:26
+#: ../../build/doc/pgr_dijkstraVia.rst:40
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:27
+#: ../../build/doc/pgr_dijkstraVia.rst:41
 msgid "Version 2.2.0"
 msgstr "Version 2.2.0"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:29
+#: ../../build/doc/pgr_dijkstraVia.rst:43
 msgid "New **proposed** function"
 msgstr "Nueva función **propuesta**"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:32
-msgid "Support"
-msgstr "Soporte"
-
-#: ../../build/doc/pgr_dijkstraVia.rst:33
-msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_dijkstraVia.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_dijkstraVia.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual(​`3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_dijkstraVia.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_dijkstraVia.html>`__"
-
-#: ../../build/doc/pgr_dijkstraVia.rst:37
-msgid ""
-"**Unsupported versions:** `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_dijkstraVia.html>`__ `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_dijkstraVia.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_dijkstraVia.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__"
-" `2.2 "
-"<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__"
-msgstr ""
-"**Versiones no sustentadas:** `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_dijkstraVia.html>`__ `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_dijkstraVia.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_dijkstraVia.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__"
-" `2.2 "
-"<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__"
-
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgr_dijkstraVia.rst:46
-#: ../../build/doc/pgr_dijkstraVia.rst:116
+#: ../../build/doc/pgr_dijkstraVia.rst:47
+#: ../../build/doc/pgr_dijkstraVia.rst:117
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:48
+#: ../../build/doc/pgr_dijkstraVia.rst:49
 msgid ""
 "Given a list of vertices and a graph, this function is equivalent to finding"
 " the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all"
@@ -137,19 +137,19 @@ msgstr ""
 "ruta más corta entre :math:`vertex_i` y :math:`vertex_{i+1}` para todos "
 ":math:`i < size\\_of(vertex_via)`."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:51
+#: ../../build/doc/pgr_dijkstraVia.rst:52
 msgid "The paths represents the sections of the route."
 msgstr "Las trayectorias representan los tramos de la ruta."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:54
+#: ../../build/doc/pgr_dijkstraVia.rst:55
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:57
+#: ../../build/doc/pgr_dijkstraVia.rst:58
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:66
+#: ../../build/doc/pgr_dijkstraVia.rst:67
 msgid "Using default"
 msgstr "Uso de valores predeterminados"
 
@@ -157,7 +157,7 @@ msgstr "Uso de valores predeterminados"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:74
+#: ../../build/doc/pgr_dijkstraVia.rst:75
 msgid ""
 "Find the route that visits the vertices :math:`\\{ 1, 3, 9\\}`  in that "
 "order"
@@ -165,11 +165,11 @@ msgstr ""
 "Encuentre la ruta que visita los vértices :math:`\\{ 1, 3, 9\\}` en ese "
 "orden"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:84
+#: ../../build/doc/pgr_dijkstraVia.rst:85
 msgid "Complete Signature"
 msgstr "Firma completa"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:93
+#: ../../build/doc/pgr_dijkstraVia.rst:94
 msgid ""
 "Find the route that visits the vertices :math:`\\{ 1, 3, 9\\}` in that order"
 " on an **undirected** graph, avoiding U-turns when possible"
@@ -188,7 +188,7 @@ msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgr_dijkstraVia.rst:116
+#: ../../build/doc/pgr_dijkstraVia.rst:117
 msgid "Type"
 msgstr "Tipo"
 
@@ -289,12 +289,12 @@ msgstr ""
 "utiliza el giro U utilizando el borde con el mismo `id` cuando no se "
 "encuentra ninguna otra ruta."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:104
+#: ../../build/doc/pgr_dijkstraVia.rst:105
 msgid "Inner query"
 msgstr "Consulta interna"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_dijkstraVia.rst:116
+#: ../../build/doc/pgr_dijkstraVia.rst:117
 msgid "Column"
 msgstr "Columna"
 
@@ -329,7 +329,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_dijkstraVia.rst:125
+#: ../../build/doc/pgr_dijkstraVia.rst:126
 msgid "**cost**"
 msgstr "**cost**"
 
@@ -390,77 +390,77 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:111
+#: ../../build/doc/pgr_dijkstraVia.rst:112
 msgid "Return Columns"
 msgstr "Columnas de Devoluciones"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:113
+#: ../../build/doc/pgr_dijkstraVia.rst:114
 msgid "Returns set of ``(start_vid, end_vid, agg_cost)``"
 msgstr "Devuelve un conjunto de ``(start_vid, end_vid, agg_cost)``"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:118
+#: ../../build/doc/pgr_dijkstraVia.rst:119
 msgid "**seq**"
 msgstr "**seq**"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:118
 #: ../../build/doc/pgr_dijkstraVia.rst:119
 #: ../../build/doc/pgr_dijkstraVia.rst:120
 #: ../../build/doc/pgr_dijkstraVia.rst:121
 #: ../../build/doc/pgr_dijkstraVia.rst:122
 #: ../../build/doc/pgr_dijkstraVia.rst:123
 #: ../../build/doc/pgr_dijkstraVia.rst:124
+#: ../../build/doc/pgr_dijkstraVia.rst:125
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:118
+#: ../../build/doc/pgr_dijkstraVia.rst:119
 msgid "Sequential value starting from 1."
 msgstr "Valor secuencial a partir de 1."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:119
+#: ../../build/doc/pgr_dijkstraVia.rst:120
 msgid "**path_pid**"
 msgstr "**path_pid**"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:119
+#: ../../build/doc/pgr_dijkstraVia.rst:120
 msgid "Identifier of the path."
 msgstr "Identificador de la ruta."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:120
+#: ../../build/doc/pgr_dijkstraVia.rst:121
 msgid "**path_seq**"
 msgstr "**path_seq**"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:120
+#: ../../build/doc/pgr_dijkstraVia.rst:121
 msgid "Sequential value starting from 1 for the path."
 msgstr "Valor secuencial a partir de 1 para la ruta."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:121
+#: ../../build/doc/pgr_dijkstraVia.rst:122
 msgid "**start_vid**"
 msgstr "**start_vid**"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:121
+#: ../../build/doc/pgr_dijkstraVia.rst:122
 msgid "Identifier of the starting vertex of the path."
 msgstr "Identificador del vértice inicial de la ruta."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:122
+#: ../../build/doc/pgr_dijkstraVia.rst:123
 msgid "**end_vid**"
 msgstr "**end_vid**"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:122
+#: ../../build/doc/pgr_dijkstraVia.rst:123
 msgid "Identifier of the ending vertex of the path."
 msgstr "Identificador del vértice final de la ruta."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:123
+#: ../../build/doc/pgr_dijkstraVia.rst:124
 msgid "**node**"
 msgstr "**node**"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:123
+#: ../../build/doc/pgr_dijkstraVia.rst:124
 msgid "Identifier of the node in the path from start_vid to end_vid."
 msgstr "Identificador del nodo en la ruta de start_vid a end_vid."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:124
+#: ../../build/doc/pgr_dijkstraVia.rst:125
 msgid "**edge**"
 msgstr "**edge**"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:124
+#: ../../build/doc/pgr_dijkstraVia.rst:125
 msgid ""
 "Identifier of the edge used to go from node to the next node in the path "
 "sequence. -1 for the last node of the path. -2 for the last node of the "
@@ -470,13 +470,13 @@ msgstr ""
 "la secuencia de la ruta. -1 para el último nodo de la trayectoria. -2 para "
 "el último nodo de la ruta."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:125
 #: ../../build/doc/pgr_dijkstraVia.rst:126
 #: ../../build/doc/pgr_dijkstraVia.rst:127
+#: ../../build/doc/pgr_dijkstraVia.rst:128
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:125
+#: ../../build/doc/pgr_dijkstraVia.rst:126
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the route "
 "sequence."
@@ -484,19 +484,19 @@ msgstr ""
 "Coste para recorrer desde ``node`` usando ``edge`` hacia el siguiente nodo "
 "de la secuencia de ruta."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:126
+#: ../../build/doc/pgr_dijkstraVia.rst:127
 msgid "**agg_cost**"
 msgstr "**agg_cost**"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:126
+#: ../../build/doc/pgr_dijkstraVia.rst:127
 msgid "Total cost from ``start_vid`` to ``end_vid`` of the path."
 msgstr "Coste total desde ``start_vid`` hacia ``end_vid`` de la ruta."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:127
+#: ../../build/doc/pgr_dijkstraVia.rst:128
 msgid "**route_agg_cost**"
 msgstr "**route_agg_cost**"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:127
+#: ../../build/doc/pgr_dijkstraVia.rst:128
 msgid ""
 "Total cost from ``start_vid`` of ``path_pid = 1`` to ``end_vid`` of the "
 "current ``path_pid`` ."
@@ -504,7 +504,7 @@ msgstr ""
 "Coste total desde ``start_vid`` de ``path_pid = 1`` hacia ``end_vid`` del "
 "actual  ``path_pid`` ."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:131
+#: ../../build/doc/pgr_dijkstraVia.rst:132
 msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
@@ -512,7 +512,7 @@ msgstr "Ejemplos Adicionales"
 msgid "Example 1"
 msgstr "Ejemplo 1"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:133
+#: ../../build/doc/pgr_dijkstraVia.rst:134
 msgid ""
 "Find the route that visits the vertices :math:`\\{1, 5, 3, 9, 4\\}` in that "
 "order"
@@ -524,7 +524,7 @@ msgstr ""
 msgid "Example 2"
 msgstr "Ejemplo 2"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:139
+#: ../../build/doc/pgr_dijkstraVia.rst:140
 msgid "What's the aggregate cost of the third path?"
 msgstr "¿Cuál es el costo total de la tercera ruta?"
 
@@ -532,7 +532,7 @@ msgstr "¿Cuál es el costo total de la tercera ruta?"
 msgid "Example 3"
 msgstr "Ejemplo 3"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:145
+#: ../../build/doc/pgr_dijkstraVia.rst:146
 msgid ""
 "What's the route's aggregate cost of the route at the end of the third path?"
 msgstr ""
@@ -542,7 +542,7 @@ msgstr ""
 msgid "Example 4"
 msgstr "Ejemplo 4"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:151
+#: ../../build/doc/pgr_dijkstraVia.rst:152
 msgid "How are the nodes visited in the route?"
 msgstr "¿Cómo se visitan los nodos en la ruta?"
 
@@ -550,7 +550,7 @@ msgstr "¿Cómo se visitan los nodos en la ruta?"
 msgid "Example 5"
 msgstr "Ejemplo 5"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:157
+#: ../../build/doc/pgr_dijkstraVia.rst:158
 msgid ""
 "What are the aggregate costs of the route when the visited vertices are "
 "reached?"
@@ -562,7 +562,7 @@ msgstr ""
 msgid "Example 6"
 msgstr "Ejemplo 6"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:163
+#: ../../build/doc/pgr_dijkstraVia.rst:164
 msgid ""
 "Show the route's seq and aggregate cost and a status of \"passes in front\" "
 "or \"visits\" node :math:`9`"
@@ -570,27 +570,39 @@ msgstr ""
 "Muestre la secuencia de la ruta, el costo agregado y el estado de los "
 "\"pases al frente\" o del nodo  :math:`9` , \"visitss\""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:169
+#: ../../build/doc/pgr_dijkstraVia.rst:170
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:171
+#: ../../build/doc/pgr_dijkstraVia.rst:172
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:172
+#: ../../build/doc/pgr_dijkstraVia.rst:173
 msgid ":doc:`sampledata` network."
 msgstr "Red :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_dijkstraVia.rst:175
+#: ../../build/doc/pgr_dijkstraVia.rst:176
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:176
+#: ../../build/doc/pgr_dijkstraVia.rst:177
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_dijkstraVia.rst:177
+#: ../../build/doc/pgr_dijkstraVia.rst:178
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "Support"
+#~ msgstr "Soporte"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_dijkstraVia.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_dijkstraVia.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_dijkstraVia.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_dijkstraVia.html>`__"

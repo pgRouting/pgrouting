@@ -4,109 +4,109 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Vicky Vergara <vicky@georepublic.de>, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:56+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"PO-Revision-Date: 2020-11-04 18:31+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:11
+#: ../../build/doc/pgr_analyzeGraph.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_analyzeGraph.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_analyzeGraph.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_analyzeGraph.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_analyzeGraph.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual "
+"<https://docs.pgrouting.org/latest/en/pgr_analyzeGraph.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_analyzeGraph.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_analyzeGraph.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_analyzeGraph.html>`__"
+
+#: ../../build/doc/pgr_analyzeGraph.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_analyzeGraph.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_analyzeGraph.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_analyzeGraph.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeGraph.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeGraph.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_graph.html>`__"
+" `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_graph.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_analyzeGraph.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_analyzeGraph.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_analyzeGraph.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeGraph.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeGraph.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_graph.html>`__"
+" `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_graph.html>`__"
+
+#: ../../build/doc/pgr_analyzeGraph.rst:27
 msgid "pgr_analyzeGraph"
 msgstr "pgr_analyzeGraph"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:13
+#: ../../build/doc/pgr_analyzeGraph.rst:29
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
 msgstr "``pgr_analyzeGraph`` — analiza la topología de red."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:16
+#: ../../build/doc/pgr_analyzeGraph.rst:32
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:17
+#: ../../build/doc/pgr_analyzeGraph.rst:33
 msgid "Version 2.0.0"
 msgstr "Versión 2.0.0"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:19
+#: ../../build/doc/pgr_analyzeGraph.rst:35
 msgid "**Official** function"
 msgstr "Función **oficial**"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:22
-msgid "Support"
-msgstr "Soporte"
-
-#: ../../build/doc/pgr_analyzeGraph.rst:23
-msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_analyzeGraph.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_analyzeGraph.html>`__ `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_analyzeGraph.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual(`3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_analyzeGraph.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_analyzeGraph.html>`__ `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_analyzeGraph.html>`__"
-
-#: ../../build/doc/pgr_analyzeGraph.rst:28
-msgid ""
-"**Unsupported versions:** `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_analyzeGraph.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_analyzeGraph.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeGraph.html>`__"
-" `2.2 "
-"<https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeGraph.html>`__"
-" `2.1 "
-"<https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_graph.html>`__"
-" `2.0 "
-"<https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_graph.html>`__"
-msgstr ""
-"**Versiones no soportadas:**  `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_analyzeGraph.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/pgr_analyzeGraph.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeGraph.html>`__"
-" `2.2 "
-"<https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeGraph.html>`__"
-" `2.1 "
-"<https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_graph.html>`__"
-" `2.0 "
-"<https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_graph.html>`__"
-
-#: ../../build/doc/pgr_analyzeGraph.rst:38
+#: ../../build/doc/pgr_analyzeGraph.rst:39
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:40
-#: ../../build/doc/pgr_analyzeGraph.rst:74
+#: ../../build/doc/pgr_analyzeGraph.rst:41
+#: ../../build/doc/pgr_analyzeGraph.rst:75
 msgid "The function returns:"
 msgstr "La función devuelve:"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:42
-#: ../../build/doc/pgr_analyzeGraph.rst:76
+#: ../../build/doc/pgr_analyzeGraph.rst:43
+#: ../../build/doc/pgr_analyzeGraph.rst:77
 msgid "``OK`` after the analysis has finished."
 msgstr "``OK`` Cuando el análisis ha terminado."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:43
-#: ../../build/doc/pgr_analyzeGraph.rst:82
+#: ../../build/doc/pgr_analyzeGraph.rst:44
+#: ../../build/doc/pgr_analyzeGraph.rst:83
 msgid "``FAIL`` when the analysis was not completed due to an error."
 msgstr "``FAIL`` cuando el análisis no se completó debido a un error."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:55
+#: ../../build/doc/pgr_analyzeGraph.rst:56
 msgid "Prerequisites"
 msgstr "Pre-requisitos"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:56
+#: ../../build/doc/pgr_analyzeGraph.rst:57
 msgid ""
 "The  edge table to be analyzed must contain a source column and a target "
 "column filled with id's of the vertices of the segments and the "
@@ -118,7 +118,7 @@ msgstr ""
 "segmentos y los vértices correspondientes de la tabla "
 "<edge_table>_vertices_pgr que almacena la información de los vértices."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:58
+#: ../../build/doc/pgr_analyzeGraph.rst:59
 msgid ""
 "Use :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` to create the "
 "vertices table."
@@ -126,7 +126,7 @@ msgstr ""
 "Use :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` para crear la "
 "tabla de vértices."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:59
+#: ../../build/doc/pgr_analyzeGraph.rst:60
 msgid ""
 "Use :doc:`pgr_createTopology <pgr_createTopology>` to create the topology "
 "and the vertices table."
@@ -134,11 +134,11 @@ msgstr ""
 "Use :doc:`pgr_createTopology <pgr_createTopology>` para crear la topología y"
 " los vértices."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:62
+#: ../../build/doc/pgr_analyzeGraph.rst:63
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:64
+#: ../../build/doc/pgr_analyzeGraph.rst:65
 msgid "The analyze graph function accepts the following parameters:"
 msgstr "La función de análisis gráfico acepta los siguientes parámetros:"
 
@@ -146,7 +146,7 @@ msgstr "La función de análisis gráfico acepta los siguientes parámetros:"
 msgid "edge_table"
 msgstr "edge_table"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:66
+#: ../../build/doc/pgr_analyzeGraph.rst:67
 msgid "``text`` Network table name. (may contain the schema name as well)"
 msgstr "``text`` La tabla de la red. (puede contener el nombre del esquema)"
 
@@ -154,7 +154,7 @@ msgstr "``text`` La tabla de la red. (puede contener el nombre del esquema)"
 msgid "tolerance"
 msgstr "tolerancia"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:67
+#: ../../build/doc/pgr_analyzeGraph.rst:68
 msgid ""
 "``float8`` Snapping tolerance of disconnected edges. (in projection unit)"
 msgstr ""
@@ -165,7 +165,7 @@ msgstr ""
 msgid "the_geom"
 msgstr "the_geom"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:68
+#: ../../build/doc/pgr_analyzeGraph.rst:69
 msgid ""
 "``text``  Geometry column name of the network table. Default value is "
 "``the_geom``."
@@ -177,7 +177,7 @@ msgstr ""
 msgid "id"
 msgstr "id"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:69
+#: ../../build/doc/pgr_analyzeGraph.rst:70
 msgid ""
 "``text``  Primary key column name of the network table. Default value is "
 "``id``."
@@ -189,7 +189,7 @@ msgstr ""
 msgid "source"
 msgstr "source"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:70
+#: ../../build/doc/pgr_analyzeGraph.rst:71
 msgid ""
 "``text`` Source column name of the network table. Default value is "
 "``source``."
@@ -201,7 +201,7 @@ msgstr ""
 msgid "target"
 msgstr "target"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:71
+#: ../../build/doc/pgr_analyzeGraph.rst:72
 msgid ""
 "``text``  Target column name of the network table.  Default value is "
 "``target``."
@@ -213,7 +213,7 @@ msgstr ""
 msgid "rows_where"
 msgstr "rows_where"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:72
+#: ../../build/doc/pgr_analyzeGraph.rst:73
 msgid ""
 "``text``   Condition to select  a subset or rows.  Default value is ``true``"
 " to indicate all rows."
@@ -221,28 +221,28 @@ msgstr ""
 "``text`` condición para seleccionar un subconjunto o filas.  Valor "
 "predeterminado es ``true`` para indicar todas las filas."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:78
+#: ../../build/doc/pgr_analyzeGraph.rst:79
 msgid "Uses the vertices table: <edge_table>_vertices_pgr."
 msgstr "Utiliza la tabla de los vértices: <edge_table>_vertices_pgr."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:79
+#: ../../build/doc/pgr_analyzeGraph.rst:80
 msgid ""
 "Fills completely the ``cnt`` and ``chk`` columns of the vertices table."
 msgstr ""
 "Llena totalmente las columnas ``cnt`` y ``chk``  de la tabla de vértices."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:80
+#: ../../build/doc/pgr_analyzeGraph.rst:81
 msgid ""
 "Returns the analysis of the section of the network defined by  "
 "``rows_where``"
 msgstr ""
 "Devuelve el análisis de la sección de la red definida por ``rows_where``"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:84
+#: ../../build/doc/pgr_analyzeGraph.rst:85
 msgid "The vertices table is not found."
 msgstr "No se encuentra en la tabla de los vértices."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:85
+#: ../../build/doc/pgr_analyzeGraph.rst:86
 msgid ""
 "A required column of the Network table is not found or is not of the "
 "appropriate type."
@@ -250,23 +250,23 @@ msgstr ""
 "Una columna de la tabla de red requerida no se encuentra o no es del tipo "
 "apropiado."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:86
+#: ../../build/doc/pgr_analyzeGraph.rst:87
 msgid "The condition is not well formed."
 msgstr "La condición no está bien formada."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:87
+#: ../../build/doc/pgr_analyzeGraph.rst:88
 msgid "The names of source , target or id are the same."
 msgstr "Los nombres de origen, destino o id son las mismos."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:88
+#: ../../build/doc/pgr_analyzeGraph.rst:89
 msgid "The SRID of the geometry could not be determined."
 msgstr "No pudo determinarse el SRID de la geometría."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:92
+#: ../../build/doc/pgr_analyzeGraph.rst:93
 msgid "The Vertices Table"
 msgstr "La tabla de vértices"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:93
+#: ../../build/doc/pgr_analyzeGraph.rst:94
 msgid ""
 "The vertices table can be created with :doc:`pgr_createVerticesTable "
 "<pgr_createVerticesTable>` or :doc:`pgr_createTopology <pgr_createTopology>`"
@@ -274,11 +274,11 @@ msgstr ""
 "Los vértices pueden ser creados con :doc:`pgr_createVerticesTable "
 "<pgr_createVerticesTable>` o :doc:`pgr_createTopology <pgr_createTopology>`"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:95
+#: ../../build/doc/pgr_analyzeGraph.rst:96
 msgid "The structure of the vertices table is:"
 msgstr "La estructura de la tabla de los vértices es:"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:97
+#: ../../build/doc/pgr_analyzeGraph.rst:98
 msgid "``bigint`` Identifier of the vertex."
 msgstr "``bigint`` identificador del vértice."
 
@@ -286,7 +286,7 @@ msgstr "``bigint`` identificador del vértice."
 msgid "cnt"
 msgstr "cnt"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:98
+#: ../../build/doc/pgr_analyzeGraph.rst:99
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex."
 msgstr ""
@@ -297,7 +297,7 @@ msgstr ""
 msgid "chk"
 msgstr "chk"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:99
+#: ../../build/doc/pgr_analyzeGraph.rst:100
 msgid "``integer``  Indicator that the vertex might have a problem."
 msgstr "``integer`` indicador que el vértice podría tener un problema."
 
@@ -305,7 +305,7 @@ msgstr "``integer`` indicador que el vértice podría tener un problema."
 msgid "ein"
 msgstr "ein"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:100
+#: ../../build/doc/pgr_analyzeGraph.rst:101
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
 "as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
@@ -317,7 +317,7 @@ msgstr ""
 msgid "eout"
 msgstr "eout"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:101
+#: ../../build/doc/pgr_analyzeGraph.rst:102
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex "
 "as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
@@ -326,26 +326,26 @@ msgstr ""
 "vértice como saliente. Consulte :doc:`pgr_analyzeOneWay "
 "<pgr_analyzeOneWay>`."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:102
+#: ../../build/doc/pgr_analyzeGraph.rst:103
 msgid "``geometry`` Point geometry of the vertex."
 msgstr "``geometry`` Valor de la geometría POINT del vértice."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:105
+#: ../../build/doc/pgr_analyzeGraph.rst:106
 msgid "Usage when the edge table's columns MATCH the default values:"
 msgstr ""
 "Uso cuando las columnas de la tabla de borde coinciden con los valores por "
 "defecto:"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:108
+#: ../../build/doc/pgr_analyzeGraph.rst:109
 msgid "The simplest way to use pgr_analyzeGraph is:"
 msgstr "La forma más sencilla de usar pgr_analyzeGraph es:"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:114
+#: ../../build/doc/pgr_analyzeGraph.rst:115
 msgid "When the arguments are given in the order described in the parameters:"
 msgstr ""
 "Cuando los argumentos se escriben en el orden descrito en los parámetros:"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:119
+#: ../../build/doc/pgr_analyzeGraph.rst:120
 msgid "We get the same result as the simplest way to use the function."
 msgstr ""
 "Obtenemos el mismo resultado que la forma más sencilla de utilizar la "
@@ -363,17 +363,17 @@ msgstr ""
 "función como geometría, y la columna de geometría ``the_geom`` se pasa a la "
 "función de como columna ``id``."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:129
-#: ../../build/doc/pgr_analyzeGraph.rst:190
+#: ../../build/doc/pgr_analyzeGraph.rst:130
+#: ../../build/doc/pgr_analyzeGraph.rst:191
 msgid "When using the named notation"
 msgstr "Cuando se utiliza la notación por nombre"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:130
-#: ../../build/doc/pgr_analyzeGraph.rst:191
+#: ../../build/doc/pgr_analyzeGraph.rst:131
+#: ../../build/doc/pgr_analyzeGraph.rst:192
 msgid "The order of the parameters do not matter:"
 msgstr "No importa el orden de los parámetros:"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:140
+#: ../../build/doc/pgr_analyzeGraph.rst:141
 msgid ""
 "Parameters defined with a default value can be omitted, as long as the value"
 " matches the default:"
@@ -381,12 +381,12 @@ msgstr ""
 "Parámetros definidos con un valor predeterminado se pueden omitir, siempre y"
 " cuando el valor coincida con el valor por defecto:"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:147
-#: ../../build/doc/pgr_analyzeGraph.rst:205
+#: ../../build/doc/pgr_analyzeGraph.rst:148
+#: ../../build/doc/pgr_analyzeGraph.rst:206
 msgid "Selecting rows using rows_where parameter"
 msgstr "Seleccionar filas utilizando el parámetro rows_where"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:148
+#: ../../build/doc/pgr_analyzeGraph.rst:149
 msgid ""
 "Selecting rows based on the id. Displays the analysis a the section of the "
 "network."
@@ -394,7 +394,7 @@ msgstr ""
 "La selección de filas basadas en el id. El análisis muestra una parte de la "
 "red."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:154
+#: ../../build/doc/pgr_analyzeGraph.rst:155
 msgid ""
 "Selecting the rows where the geometry is near the geometry of row with "
 "``id`` =5 ."
@@ -402,7 +402,7 @@ msgstr ""
 "Seleccionar las filas donde la geometría está cerca de la geometría de la "
 "fila con ``id`` =5."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:160
+#: ../../build/doc/pgr_analyzeGraph.rst:161
 msgid ""
 "Selecting the rows where the geometry is near the geometry of the row with "
 "``gid`` =100 of the table ``othertable``."
@@ -410,21 +410,21 @@ msgstr ""
 "Seleccionar las filas donde la geometría está cerca de la geometría de la "
 "fila con``gid`` =100  de la tabla ``othertable``."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:167
+#: ../../build/doc/pgr_analyzeGraph.rst:168
 msgid "Usage when the edge table's columns DO NOT MATCH the default values:"
 msgstr ""
 "Uso cuando las columnas de la tabla de borde NO COINCIDEN con los valores "
 "por defecto:"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:169
+#: ../../build/doc/pgr_analyzeGraph.rst:170
 msgid "For the following table"
 msgstr "Para la siguiente tabla"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:176
+#: ../../build/doc/pgr_analyzeGraph.rst:177
 msgid "Using positional notation:"
 msgstr "Usando notación posicional:"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:177
+#: ../../build/doc/pgr_analyzeGraph.rst:178
 msgid ""
 "The arguments need to be given in the order described in the parameters:"
 msgstr "Las discusiones deben recibir en el orden descrito en los parámetros:"
@@ -441,7 +441,7 @@ msgstr ""
 "función como geometría, y la columna de geometría``mygeom`` se pasa a la "
 "función como columna ``id``."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:201
+#: ../../build/doc/pgr_analyzeGraph.rst:202
 msgid ""
 "In this scenario omitting a parameter would create an error because the "
 "default values for the column names do not match the column names of the "
@@ -451,11 +451,11 @@ msgstr ""
 "predeterminados de los nombres de columna no coinciden con los nombres de "
 "columna de la tabla."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:206
+#: ../../build/doc/pgr_analyzeGraph.rst:207
 msgid "Selecting rows based on the id."
 msgstr "La selección de filas basadas en el id."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:216
+#: ../../build/doc/pgr_analyzeGraph.rst:217
 msgid ""
 "Selecting the rows WHERE the geometry is near the geometry of row with "
 "``id`` =5 ."
@@ -463,7 +463,7 @@ msgstr ""
 "Seleccionar las filas donde la geometría está cerca de la geometría de la "
 "fila con ``id`` =5 ."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:226
+#: ../../build/doc/pgr_analyzeGraph.rst:227
 msgid ""
 "Selecting the rows WHERE the geometry is near the place='myhouse' of the "
 "table ``othertable``. (note the use of quote_literal)"
@@ -471,19 +471,19 @@ msgstr ""
 "Seleccionar las filas donde la geometría está cerca de la place='myhouse'  "
 "de la tabla ``othertable``. (Nótese el uso de quote_literal)"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:237
+#: ../../build/doc/pgr_analyzeGraph.rst:238
 msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:263
+#: ../../build/doc/pgr_analyzeGraph.rst:264
 msgid "The examples use the :doc:`sampledata` network."
 msgstr "Los ejemplos usan la red de ejemplo  :doc:`sampledata`"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:267
+#: ../../build/doc/pgr_analyzeGraph.rst:268
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:269
+#: ../../build/doc/pgr_analyzeGraph.rst:270
 msgid ""
 ":doc:`topology-functions`  for an overview of a topology for routing "
 "algorithms."
@@ -491,12 +491,12 @@ msgstr ""
 ":doc:`topology-functions` para obtener una visión general de una topología "
 "para algoritmos de ruteo."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:270
+#: ../../build/doc/pgr_analyzeGraph.rst:271
 msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
 msgstr ""
 ":doc:`pgr_analyzeOneWay` para analizar la direccionalidad de los bordes."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:271
+#: ../../build/doc/pgr_analyzeGraph.rst:272
 msgid ""
 ":doc:`pgr_createVerticesTable <pgr_createVerticesTable>` to reconstruct the "
 "vertices table based on the source and target information."
@@ -504,7 +504,7 @@ msgstr ""
 ":doc:`pgr_createVerticesTable <pgr_createVerticesTable>` para reconstruir la"
 " tabla de vértices con base en la información de origen y destino."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:272
+#: ../../build/doc/pgr_analyzeGraph.rst:273
 msgid ""
 ":doc:`pgr_nodeNetwork <pgr_nodeNetwork>` to create nodes to a not noded edge"
 " table."
@@ -512,14 +512,51 @@ msgstr ""
 ":doc:`pgr_nodeNetwork <pgr_nodeNetwork>` para crear nodos en una tabla sin "
 "nodos."
 
-#: ../../build/doc/pgr_analyzeGraph.rst:275
+#: ../../build/doc/pgr_analyzeGraph.rst:276
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:276
+#: ../../build/doc/pgr_analyzeGraph.rst:277
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_analyzeGraph.rst:277
+#: ../../build/doc/pgr_analyzeGraph.rst:278
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "Support"
+#~ msgstr "Soporte"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_analyzeGraph.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_analyzeGraph.html>`__ `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_analyzeGraph.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/es/pgr_analyzeGraph.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/es/pgr_analyzeGraph.html>`__ `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_analyzeGraph.html>`__"
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_analyzeGraph.html>`__ `2.4 "
+#~ "<https://docs.pgrouting.org/2.4/en/pgr_analyzeGraph.html>`__ `2.3 "
+#~ "<https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeGraph.html>`__"
+#~ " `2.2 "
+#~ "<https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeGraph.html>`__"
+#~ " `2.1 "
+#~ "<https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_graph.html>`__"
+#~ " `2.0 "
+#~ "<https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_graph.html>`__"
+#~ msgstr ""
+#~ "**Versiones no soportadas:**  `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_analyzeGraph.html>`__ `2.4 "
+#~ "<https://docs.pgrouting.org/2.4/en/pgr_analyzeGraph.html>`__ `2.3 "
+#~ "<https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeGraph.html>`__"
+#~ " `2.2 "
+#~ "<https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeGraph.html>`__"
+#~ " `2.1 "
+#~ "<https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_graph.html>`__"
+#~ " `2.0 "
+#~ "<https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_graph.html>`__"

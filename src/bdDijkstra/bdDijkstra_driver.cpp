@@ -50,41 +50,72 @@ static
 std::deque<Path>
 pgr_bdDijkstra(
         G &graph,
+        std::vector < pgr_combination_t > &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
 
         std::ostream &log,
         bool only_cost) {
     log << "entering static function\n";
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
 
     pgrouting::bidirectional::Pgr_bdDijkstra<G> fn_bdDijkstra(graph);
-
     std::deque<Path> paths;
-    for (const auto source : sources) {
-        for (const auto target : targets) {
-            if (source == target) {
-                paths.push_back(Path(source, target));
-                continue;
-            }
 
-            if (!graph.has_vertex(source)
-                    || !graph.has_vertex(target)) {
-                paths.push_back(Path(source, target));
-                continue;
-            }
+    if (combinations.empty()) {
+        std::sort(sources.begin(), sources.end());
+        sources.erase(
+                std::unique(sources.begin(), sources.end()),
+                sources.end());
 
-            fn_bdDijkstra.clear();
-            paths.push_back(fn_bdDijkstra.pgr_bdDijkstra(
+        std::sort(targets.begin(), targets.end());
+        targets.erase(
+                std::unique(targets.begin(), targets.end()),
+                targets.end());
+
+        for (const auto source : sources) {
+            for (const auto target : targets) {
+                fn_bdDijkstra.clear();
+
+                if (!graph.has_vertex(source)
+                        || !graph.has_vertex(target)) {
+                    paths.push_back(Path(source, target));
+                    continue;
+                }
+
+                paths.push_back(fn_bdDijkstra.pgr_bdDijkstra(
                         graph.get_V(source), graph.get_V(target), only_cost));
+            }
+        }
+
+    } else {
+        std::sort(combinations.begin(), combinations.end(),
+                [](const pgr_combination_t &lhs, const pgr_combination_t &rhs)->bool {
+                    return lhs.target < rhs.target;
+                });
+        std::stable_sort(combinations.begin(), combinations.end(),
+                [](const pgr_combination_t &lhs, const pgr_combination_t &rhs)->bool {
+                    return lhs.source < rhs.source;
+                });
+
+        pgr_combination_t previousCombination{0, 0};
+
+        for (const pgr_combination_t &comb : combinations) {
+            fn_bdDijkstra.clear();
+            if (comb.source == previousCombination.source &&
+                    comb.target == previousCombination.target) {
+                continue;
+            }
+
+            if (!graph.has_vertex(comb.source)
+                    || !graph.has_vertex(comb.target)) {
+                paths.push_back(Path(comb.source, comb.target));
+                continue;
+            }
+
+            paths.push_back(fn_bdDijkstra.pgr_bdDijkstra(
+                    graph.get_V(comb.source), graph.get_V(comb.target), only_cost));
+
+            previousCombination = comb;
         }
     }
 
@@ -98,6 +129,8 @@ void
 do_pgr_bdDijkstra(
         pgr_edge_t  *data_edges,
         size_t total_edges,
+        pgr_combination_t *combinations,
+        size_t total_combinations,
         int64_t  *start_vidsArr,
         size_t size_start_vidsArr,
         int64_t  *end_vidsArr,
@@ -116,9 +149,6 @@ do_pgr_bdDijkstra(
     std::ostringstream notice;
     try {
         pgassert(total_edges != 0);
-        pgassert(size_start_vidsArr != 0);
-        pgassert(size_end_vidsArr != 0);
-
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
@@ -130,6 +160,8 @@ do_pgr_bdDijkstra(
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::vector< pgr_combination_t >
+            combinations_vector(combinations, combinations + total_combinations);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -141,6 +173,7 @@ do_pgr_bdDijkstra(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             paths = pgr_bdDijkstra(digraph,
+                    combinations_vector,
                     start_vertices,
                     end_vertices,
                     log,
@@ -151,6 +184,7 @@ do_pgr_bdDijkstra(
             undigraph.insert_edges(data_edges, total_edges);
             paths = pgr_bdDijkstra(
                     undigraph,
+                    combinations_vector,
                     start_vertices,
                     end_vertices,
                     log,

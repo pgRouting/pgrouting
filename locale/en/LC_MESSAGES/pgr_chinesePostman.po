@@ -8,20 +8,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_chinesePostman.rst:11
+#: ../../build/doc/pgr_chinesePostman.rst:12
+msgid ""
+"**Supported versions** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_chinesePostman.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_chinesePostman.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_chinesePostman.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_chinesePostman.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_chinesePostman.rst:19
 msgid "pgr_chinesePostman - Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:13
+#: ../../build/doc/pgr_chinesePostman.rst:21
 msgid ""
 "``pgr_chinesePostman`` — Calculates the shortest circuit path which "
 "contains every edge in a directed graph and starts and ends on the same "
@@ -96,33 +105,22 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:21
+#: ../../build/doc/pgr_chinesePostman.rst:29
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:22
+#: ../../build/doc/pgr_chinesePostman.rst:30
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:24
+#: ../../build/doc/pgr_chinesePostman.rst:32
 msgid "New **experimental** function"
-msgstr ""
-
-#: ../../build/doc/pgr_chinesePostman.rst:27
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_chinesePostman.rst:28
-msgid ""
-"**Supported versions** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_chinesePostman.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_chinesePostman.html>`__"
 msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_chinesePostman.rst:33
-#: ../../build/doc/pgr_chinesePostman.rst:81
+#: ../../build/doc/pgr_chinesePostman.rst:36
+#: ../../build/doc/pgr_chinesePostman.rst:84
 msgid "Description"
 msgstr ""
 
@@ -142,11 +140,11 @@ msgstr ""
 msgid "Graph must be connected."
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:39
+#: ../../build/doc/pgr_chinesePostman.rst:42
 msgid "Returns ``EMPTY SET`` on a disconnected graph"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:42
+#: ../../build/doc/pgr_chinesePostman.rst:45
 msgid "Signatures"
 msgstr ""
 
@@ -154,19 +152,19 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:60
+#: ../../build/doc/pgr_chinesePostman.rst:63
 msgid "Parameters"
 msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_chinesePostman.rst:81
+#: ../../build/doc/pgr_chinesePostman.rst:84
 msgid "Column"
 msgstr ""
 
 #: ../../build/doc/chinesePostmanProblem-family.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_chinesePostman.rst:81
+#: ../../build/doc/pgr_chinesePostman.rst:84
 msgid "Type"
 msgstr ""
 
@@ -187,7 +185,7 @@ msgstr ""
 msgid "The edges SQL query as described in `Inner query`_."
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:68
+#: ../../build/doc/pgr_chinesePostman.rst:71
 msgid "Inner query"
 msgstr ""
 
@@ -228,7 +226,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_chinesePostman.rst:86
+#: ../../build/doc/pgr_chinesePostman.rst:89
 msgid "**cost**"
 msgstr ""
 
@@ -285,85 +283,95 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:76
+#: ../../build/doc/pgr_chinesePostman.rst:79
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:78
+#: ../../build/doc/pgr_chinesePostman.rst:81
 msgid "Returns set of ``(seq, node, edge, cost, agg_cost)``"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:83
+#: ../../build/doc/pgr_chinesePostman.rst:86
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:83
+#: ../../build/doc/pgr_chinesePostman.rst:86
 msgid "``INT``"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:83
+#: ../../build/doc/pgr_chinesePostman.rst:86
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:84
+#: ../../build/doc/pgr_chinesePostman.rst:87
 msgid "**node**"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:84
-#: ../../build/doc/pgr_chinesePostman.rst:85
+#: ../../build/doc/pgr_chinesePostman.rst:87
+#: ../../build/doc/pgr_chinesePostman.rst:88
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:84
+#: ../../build/doc/pgr_chinesePostman.rst:87
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:85
+#: ../../build/doc/pgr_chinesePostman.rst:88
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:85
+#: ../../build/doc/pgr_chinesePostman.rst:88
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. ``-1`` for the last node of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:86
-#: ../../build/doc/pgr_chinesePostman.rst:87
+#: ../../build/doc/pgr_chinesePostman.rst:89
+#: ../../build/doc/pgr_chinesePostman.rst:90
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:86
+#: ../../build/doc/pgr_chinesePostman.rst:89
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the "
 "path sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:87
+#: ../../build/doc/pgr_chinesePostman.rst:90
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:87
+#: ../../build/doc/pgr_chinesePostman.rst:90
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:92
+#: ../../build/doc/pgr_chinesePostman.rst:95
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:94
+#: ../../build/doc/pgr_chinesePostman.rst:97
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:97
+#: ../../build/doc/pgr_chinesePostman.rst:100
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:98
+#: ../../build/doc/pgr_chinesePostman.rst:101
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostman.rst:99
+#: ../../build/doc/pgr_chinesePostman.rst:102
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_chinesePostman.html>`__) "
+#~ "`3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_chinesePostman.html>`__"
+#~ msgstr ""
 

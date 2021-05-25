@@ -1,73 +1,103 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
-"PO-Revision-Date: 2019-09-07 11:57+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"PO-Revision-Date: 2020-11-04 18:28+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/proposed.rst:10
+#: ../../build/doc/proposed.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/proposed.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/proposed.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/proposed.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/proposed.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual "
+"<https://docs.pgrouting.org/latest/en/proposed.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/proposed.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/proposed.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/proposed.html>`__"
+
+#: ../../build/doc/proposed.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/proposed.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/proposed.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/proposed.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/proposed.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/proposed.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/proposed.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/proposed.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/proposed.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/proposed.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/proposed.html>`__"
+
+#: ../../build/doc/proposed.rst:25
 msgid "Proposed Functions"
 msgstr "Funciones propuestas"
 
-#: ../../build/doc/proposed.rst:14
+#: ../../build/doc/proposed.rst:29
 msgid "Proposed functions for next mayor release."
 msgstr "Funciones propuestas para el próximo lanzamineto."
 
-#: ../../build/doc/proposed.rst:16
+#: ../../build/doc/proposed.rst:31
 msgid "They are not officially in the current release."
 msgstr "No están oficialmente en la versión actual."
 
-#: ../../build/doc/proposed.rst:17
+#: ../../build/doc/proposed.rst:32
 msgid "They will likely officially be part of the next mayor release:"
 msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
-#: ../../build/doc/proposed.rst:19
+#: ../../build/doc/proposed.rst:34
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
 
-#: ../../build/doc/proposed.rst:20
+#: ../../build/doc/proposed.rst:35
 msgid "Name might not change. (But still can)"
 msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
 
-#: ../../build/doc/proposed.rst:21
+#: ../../build/doc/proposed.rst:36
 msgid "Signature might not change. (But still can)"
 msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
-#: ../../build/doc/proposed.rst:22
+#: ../../build/doc/proposed.rst:37
 msgid "Functionality might not change. (But still can)"
 msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
 
-#: ../../build/doc/proposed.rst:23
+#: ../../build/doc/proposed.rst:38
 msgid "pgTap tests have being done. But might need more."
 msgstr "Se han hecho pruebas de pgTap. Pero tal vez necesite más."
 
-#: ../../build/doc/proposed.rst:24
+#: ../../build/doc/proposed.rst:39
 msgid "Documentation might need refinement."
 msgstr "Es posible que la documentación necesite un refinamiento."
 
-#: ../../build/doc/proposed.rst:29
+#: ../../build/doc/proposed.rst:44
 msgid "Families"
 msgstr "Familias"
 
-#: ../../build/doc/proposed.rst:30
+#: ../../build/doc/proposed.rst:45
 msgid ":doc:`dijkstra-family`"
 msgstr ":doc:`dijkstra-family`"
 
@@ -77,7 +107,7 @@ msgstr ""
 ":doc:`pgr_dijkstraVia` - Obtenga una ruta a partir de una secuencia de "
 "vértices."
 
-#: ../../build/doc/proposed.rst:36
+#: ../../build/doc/proposed.rst:51
 msgid ":doc:`withPoints-family`"
 msgstr ":doc:`withPoints-family`"
 
@@ -103,11 +133,11 @@ msgstr ":doc:`pgr_withPointsKSP` - rutas más cortas K."
 msgid ":doc:`pgr_withPointsDD` - Driving distance."
 msgstr ":doc:`pgr_withPointsDD` - Distancia de conducción."
 
-#: ../../build/doc/proposed.rst:43
+#: ../../build/doc/proposed.rst:58
 msgid "categories"
 msgstr "Categorías"
 
-#: ../../build/doc/proposed.rst:44
+#: ../../build/doc/proposed.rst:59
 msgid ":doc:`cost-category`"
 msgstr ":doc:`cost-category`"
 
@@ -115,7 +145,7 @@ msgstr ":doc:`cost-category`"
 msgid ":doc:`pgr_withPointsCost`"
 msgstr ":doc:`pgr_withPointsCost`"
 
-#: ../../build/doc/proposed.rst:50
+#: ../../build/doc/proposed.rst:65
 msgid ":doc:`costMatrix-category`"
 msgstr ":doc:`costMatrix-category`"
 
@@ -123,7 +153,7 @@ msgstr ":doc:`costMatrix-category`"
 msgid ":doc:`pgr_withPointsCostMatrix`"
 msgstr ":doc:`pgr_withPointsCostMatrix`"
 
-#: ../../build/doc/proposed.rst:56
+#: ../../build/doc/proposed.rst:71
 msgid ":doc:`drivingDistance-category`"
 msgstr ":doc:`drivingDistance-category`"
 
@@ -131,7 +161,7 @@ msgstr ":doc:`drivingDistance-category`"
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ":doc:`pgr_withPointsDD` - Driving Distance basada en pgr_withPoints"
 
-#: ../../build/doc/proposed.rst:62
+#: ../../build/doc/proposed.rst:77
 msgid ":doc:`KSP-category`"
 msgstr ":doc:`KSP-category`"
 
@@ -139,22 +169,22 @@ msgstr ":doc:`KSP-category`"
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ":doc:`pgr_withPointsKSP` - Algoritmo de Yen basado en pgr_withPoints"
 
-#: ../../build/doc/proposed.rst:76
+#: ../../build/doc/proposed.rst:91
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/proposed.rst:78
+#: ../../build/doc/proposed.rst:93
 msgid ":doc:`experimental`"
 msgstr ":doc:`experimental`"
 
-#: ../../build/doc/proposed.rst:81
+#: ../../build/doc/proposed.rst:96
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/proposed.rst:82
+#: ../../build/doc/proposed.rst:97
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/proposed.rst:83
+#: ../../build/doc/proposed.rst:98
 msgid ":ref:`search`"
 msgstr ":ref:`search`"

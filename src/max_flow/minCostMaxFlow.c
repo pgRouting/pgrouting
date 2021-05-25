@@ -58,6 +58,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 /* for functions to get array input */
 #include "c_common/arrays_input.h"
+#include "c_common/combinations_input.h"
 
 #include "drivers/max_flow/minCostMaxFlow_driver.h"  // the link to the C++ code of the function
 
@@ -71,6 +72,7 @@ static
 void
 process(
         char* edges_sql,
+        char* combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
         bool only_cost,
@@ -81,18 +83,33 @@ process(
      */
     pgr_SPI_connect();
 
+    int64_t *sourceVertices = NULL;
     size_t sizeSourceVerticesArr = 0;
-    int64_t* sourceVertices =
-        pgr_get_bigIntArray(&sizeSourceVerticesArr, starts);
 
+    int64_t *sinkVertices = NULL;
     size_t sizeSinkVerticesArr = 0;
-    int64_t* sinkVertices =
-        pgr_get_bigIntArray(&sizeSinkVerticesArr, ends);
 
     PGR_DBG("Load data");
     pgr_costFlow_t *edges = NULL;
-
     size_t total_edges = 0;
+
+    pgr_combination_t *combinations = NULL;
+    size_t total_combinations = 0;
+
+    if (starts && ends) {
+        sourceVertices = (int64_t*)
+            pgr_get_bigIntArray(&sizeSourceVerticesArr, starts);
+        sinkVertices = (int64_t*)
+            pgr_get_bigIntArray(&sizeSinkVerticesArr, ends);
+    } else if (combinations_sql) {
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        if (total_combinations == 0) {
+            if (combinations)
+                pfree(combinations);
+            pgr_SPI_finish();
+            return;
+        }
+    }
 
     pgr_get_costFlow_edges(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
@@ -115,6 +132,7 @@ process(
 
     do_pgr_minCostMaxFlow(
             edges, total_edges,
+            combinations, total_combinations,
             sourceVertices, sizeSourceVerticesArr,
             sinkVertices, sizeSinkVerticesArr,
             only_cost,
@@ -185,13 +203,33 @@ PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS) {
 
 
         PGR_DBG("Calling process");
-        process(
+
+        if (PG_NARGS() == 4) {
+            /*
+             * many to many
+             */
+            process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                NULL,
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
                 &result_tuples,
                 &result_count);
+
+        } else if (PG_NARGS() == 3) {
+            /*
+             * combinations
+             */
+            process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                NULL,
+                NULL,
+                PG_GETARG_BOOL(2),
+                &result_tuples,
+                &result_count);
+        }
 
         /*                                                                    */
         /**********************************************************************/

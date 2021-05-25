@@ -7,6 +7,14 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_topologicalSort.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_topologicalSort.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_topologicalSort.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_topologicalSort.html>`__
+
 pgr_topologicalSort - Experimental
 ===============================================================================
 
@@ -14,7 +22,7 @@ pgr_topologicalSort - Experimental
 In particular, the topological sort algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_65_1/libs/graph/doc/topological_sort.html
+   :target: https://www.boost.org/libs/graph/doc/topological_sort.html
 
    Boost Graph Inside
 
@@ -27,12 +35,6 @@ In particular, the topological sort algorithm implemented by Boost.Graph.
 * Version 3.0.0
 
   * New **experimental** function
-
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_topologicalSort.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_topologicalSort.html>`__
 
 * **TBD**
 

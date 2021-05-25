@@ -28,3 +28,8 @@ SELECT * FROM pgr_bellmanFord(
     ARRAY[2,11], ARRAY[3,5]
 );
 \echo -- q6
+SELECT * FROM pgr_bellmanFord(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT * FROM ( VALUES (2, 3), (11, 5) ) AS t(source, target)'
+);
+\echo -- q7

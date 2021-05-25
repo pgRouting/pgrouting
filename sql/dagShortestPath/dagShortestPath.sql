@@ -126,6 +126,29 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+
+-- COMBINATIONS
+--v3.2
+CREATE FUNCTION pgr_dagShortestPath(
+    TEXT,     -- edges_sql (required)
+    TEXT,     -- combinations_sql (required)
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_dagShortestPath(_pgr_get_statement($1), _pgr_get_statement($2), true, false ) AS a;
+$BODY$
+LANGUAGE sql VOLATILE STRICT
+COST 100
+ROWS 1000;
+
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, BIGINT, BIGINT)
@@ -156,7 +179,7 @@ IS 'pgr_dagShortestPath(Many to One)
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From ARRAY[vertices identifiers]
-  - To vertex identifier 
+  - To vertex identifier
 - Documentation:
   - ${PROJECT_DOC_LINK}/pgr_dagShortestPath.html
 ';
@@ -172,3 +195,12 @@ IS 'pgr_dagShortestPath(Many to Many)
   - ${PROJECT_DOC_LINK}/pgr_dagShortestPath.html
 ';
 
+COMMENT ON FUNCTION pgr_dagShortestPath(TEXT, TEXT)
+IS 'pgr_dagShortestPath(Combinations)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Combinations SQL with columns: source, target
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_dagShortestPath.html
+';

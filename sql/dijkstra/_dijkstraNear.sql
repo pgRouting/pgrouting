@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 -- _pgr_dijkstraNear
 --------------------
+/* this file is kept for backward compatibility */
 
 -- ONE to MANY
 --v3.0

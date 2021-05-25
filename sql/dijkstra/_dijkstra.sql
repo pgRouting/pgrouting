@@ -34,6 +34,61 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------
 ---------------
 
+--v3.2
+CREATE FUNCTION _pgr_dijkstra(
+    edges_sql TEXT,
+    start_vids ANYARRAY,
+    end_vids ANYARRAY,
+    directed BOOLEAN,
+    only_cost BOOLEAN,
+    normal BOOLEAN,
+    n_goals BIGINT,
+    global BOOLEAN,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
+
+
+--v3.2
+CREATE FUNCTION _pgr_dijkstra(
+    edges_sql TEXT,
+    combinations_sql TEXT,
+    directed BOOLEAN,
+    only_cost BOOLEAN,
+    n_goals BIGINT,
+    global BOOLEAN,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_dijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, BIGINT, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_dijkstra(TEXT, TEXT, BOOLEAN, BOOLEAN, BIGINT, BOOLEAN)
+IS 'pgRouting internal function';
+
+
+/** The following are kept for backward compatibility on signatures **/
 --v3.0
 CREATE FUNCTION _pgr_dijkstra(
     edges_sql TEXT,

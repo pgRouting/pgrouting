@@ -8,56 +8,54 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/pgr_full_version.rst:11
-msgid "pgr_full_version"
-msgstr ""
-
-#: ../../build/doc/pgr_full_version.rst:13
-msgid "``pgr_full_version`` — Get the details of pgRouting version information."
-msgstr ""
-
-#: ../../build/doc/pgr_full_version.rst:16
-msgid "Availability"
-msgstr ""
-
-#: ../../build/doc/pgr_full_version.rst:17
-msgid "Version 3.0.0"
-msgstr ""
-
-#: ../../build/doc/pgr_full_version.rst:19
-msgid "New **official** function"
-msgstr ""
-
-#: ../../build/doc/pgr_full_version.rst:22
-msgid "Support"
-msgstr ""
-
-#: ../../build/doc/pgr_full_version.rst:23
+#: ../../build/doc/pgr_full_version.rst:12
 msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_full_version.html>`__) `3.0 "
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_full_version.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_full_version.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_full_version.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_full_version.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:29
-#: ../../build/doc/pgr_full_version.rst:55
-msgid "Description"
+#: ../../build/doc/pgr_full_version.rst:19
+msgid "pgr_full_version"
+msgstr ""
+
+#: ../../build/doc/pgr_full_version.rst:21
+msgid "``pgr_full_version`` — Get the details of pgRouting version information."
+msgstr ""
+
+#: ../../build/doc/pgr_full_version.rst:24
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_full_version.rst:25
+msgid "Version 3.0.0"
+msgstr ""
+
+#: ../../build/doc/pgr_full_version.rst:27
+msgid "New **official** function"
 msgstr ""
 
 #: ../../build/doc/pgr_full_version.rst:31
+#: ../../build/doc/pgr_full_version.rst:57
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_full_version.rst:33
 msgid "Get the details of pgRouting version information"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:37
+#: ../../build/doc/pgr_full_version.rst:39
 msgid "Signatures"
 msgstr ""
 
@@ -65,28 +63,26 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:45
+#: ../../build/doc/pgr_full_version.rst:47
 msgid "Information when this documentation was build"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:52
+#: ../../build/doc/pgr_full_version.rst:54
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:55
+#: ../../build/doc/pgr_full_version.rst:57
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:55
+#: ../../build/doc/pgr_full_version.rst:57
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:57
+#: ../../build/doc/pgr_full_version.rst:59
 msgid "**version**"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:57
-#: ../../build/doc/pgr_full_version.rst:58
 #: ../../build/doc/pgr_full_version.rst:59
 #: ../../build/doc/pgr_full_version.rst:60
 #: ../../build/doc/pgr_full_version.rst:61
@@ -94,94 +90,106 @@ msgstr ""
 #: ../../build/doc/pgr_full_version.rst:63
 #: ../../build/doc/pgr_full_version.rst:64
 #: ../../build/doc/pgr_full_version.rst:65
+#: ../../build/doc/pgr_full_version.rst:66
+#: ../../build/doc/pgr_full_version.rst:67
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:57
+#: ../../build/doc/pgr_full_version.rst:59
 msgid "pgRouting version"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:58
+#: ../../build/doc/pgr_full_version.rst:60
 msgid "**build_type**"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:58
+#: ../../build/doc/pgr_full_version.rst:60
 msgid "The Build type"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:59
+#: ../../build/doc/pgr_full_version.rst:61
 msgid "**compile_date**"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:59
+#: ../../build/doc/pgr_full_version.rst:61
 msgid "Compilation date"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:60
+#: ../../build/doc/pgr_full_version.rst:62
 msgid "**library**"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:60
+#: ../../build/doc/pgr_full_version.rst:62
 msgid "Library name and version"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:61
+#: ../../build/doc/pgr_full_version.rst:63
 msgid "**system**"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:61
+#: ../../build/doc/pgr_full_version.rst:63
 msgid "Operative system"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:62
+#: ../../build/doc/pgr_full_version.rst:64
 msgid "**postgreSQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:62
+#: ../../build/doc/pgr_full_version.rst:64
 msgid "pgsql used"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:63
+#: ../../build/doc/pgr_full_version.rst:65
 msgid "**compiler**"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:63
+#: ../../build/doc/pgr_full_version.rst:65
 msgid "Compiler and version"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:64
+#: ../../build/doc/pgr_full_version.rst:66
 msgid "**boost**"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:64
+#: ../../build/doc/pgr_full_version.rst:66
 msgid "Boost version"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:65
+#: ../../build/doc/pgr_full_version.rst:67
 msgid "**hash**"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:65
+#: ../../build/doc/pgr_full_version.rst:67
 msgid "Git hash of pgRouting build"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:70
+#: ../../build/doc/pgr_full_version.rst:72
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:72
+#: ../../build/doc/pgr_full_version.rst:74
 msgid ":doc:`pgr_version`"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:75
+#: ../../build/doc/pgr_full_version.rst:77
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:76
+#: ../../build/doc/pgr_full_version.rst:78
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_full_version.rst:77
+#: ../../build/doc/pgr_full_version.rst:79
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Support"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_full_version.html>`__) "
+#~ "`3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_full_version.html>`__"
+#~ msgstr ""
 

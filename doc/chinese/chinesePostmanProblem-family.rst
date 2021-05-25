@@ -7,6 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/chinesePostmanProblem-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/chinesePostmanProblem-family.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/chinesePostmanProblem-family.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/chinesePostmanProblem-family.html>`__
+
 Chinese Postman Problem - Family of functions (Experimental)
 =============================================================
 
@@ -26,12 +34,6 @@ Chinese Postman Problem - Family of functions (Experimental)
 .. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
-
-.. rubric:: Versions of this page
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/chinesePostmanProblem-family.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/chinesePostmanProblem-family.html>`__
 
 
 Description

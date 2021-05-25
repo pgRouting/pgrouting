@@ -43,7 +43,7 @@ $BODY$
     SELECT cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := true);
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 --    ONE TO MANY
@@ -58,7 +58,7 @@ $BODY$
     SELECT cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], only_cost := true);
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 --    MANY TO ONE
@@ -73,7 +73,7 @@ $BODY$
     SELECT cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], only_cost := true);
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 --    MANY TO MANY
@@ -88,7 +88,21 @@ $BODY$
     SELECT cost
     FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], only_cost := true);
 $BODY$
-LANGUAGE SQL VOLATILE;
+LANGUAGE SQL VOLATILE STRICT;
+
+
+-- COMBINATIONS
+--v3.2
+CREATE FUNCTION pgr_maxFlowMinCost_Cost(
+    TEXT,   -- edges_sql (required)
+    TEXT)   -- combinations_sql (required)
+
+RETURNS FLOAT AS
+$BODY$
+    SELECT cost
+    FROM _pgr_maxFlowMinCost(_pgr_get_statement($1), _pgr_get_statement($2), only_cost := true);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
 
 
 -- COMMENTS
@@ -133,6 +147,16 @@ IS 'EXPERIMENTAL pgr_maxFlowMinCost_Cost (Many to Many)
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From ARRAY[vertices identifiers]
   - To ARRAY[vertices identifiers]
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
+';
+
+COMMENT ON FUNCTION pgr_maxFlowMinCost_Cost(TEXT, TEXT)
+IS 'EXPERIMENTAL pgr_maxFlowMinCost_Cost (Combinations)
+- EXPERIMENTAL
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Combinations SQL with columns: source, target
 - Documentation:
   - ${PROJECT_DOC_LINK}/pgr_maxFlowMinCost_Cost.html
 ';

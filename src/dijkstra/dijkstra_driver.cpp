@@ -48,11 +48,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace detail {
 
 void
-post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goals) {
+post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goals, bool global) {
     paths.erase(std::remove_if(paths.begin(), paths.end(),
-                [](const Path &p){
-                    return p.size()==0;}),
-            paths.end());
+                [](const Path &p) {
+                    return p.size() == 0;
+                }),
+                paths.end());
     using difference_type = std::deque<double>::difference_type;
 
     if (!normal) {
@@ -78,7 +79,7 @@ post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goal
                 [](const Path &e1, const Path &e2)->bool {
                     return e1.tot_cost() < e2.tot_cost();
                 });
-        if (n_goals < paths.size()) {
+        if (global && n_goals < paths.size()) {
             paths.erase(paths.begin() + static_cast<difference_type>(n_goals), paths.end());
         }
     } else {
@@ -102,7 +103,8 @@ pgr_dijkstra(
         std::vector < int64_t > targets,
         bool only_cost,
         bool normal,
-        size_t n_goals) {
+        size_t n_goals,
+        bool global) {
     std::sort(sources.begin(), sources.end());
     sources.erase(
             std::unique(sources.begin(), sources.end()),
@@ -119,7 +121,7 @@ pgr_dijkstra(
             sources, targets,
             only_cost, n_goals);
 
-    post_process(paths, only_cost, normal, n_goals);
+    post_process(paths, only_cost, normal, n_goals, global);
 
     return paths;
 }
@@ -131,14 +133,16 @@ pgr_dijkstra(
         G &graph,
         std::vector < pgr_combination_t > &combinations,
         bool only_cost,
-        bool normal) {
+        bool normal,
+        size_t n_goals,
+        bool global) {
     pgrouting::Pgr_dijkstra< G > fn_dijkstra;
     auto paths = fn_dijkstra.dijkstra(
             graph,
             combinations,
-            only_cost);
+            only_cost, n_goals);
 
-    post_process(paths, only_cost, normal, (std::numeric_limits<size_t>::max)());
+    post_process(paths, only_cost, normal, n_goals, global);
 
     return paths;
 }
@@ -162,6 +166,7 @@ do_pgr_many_to_many_dijkstra(
         bool only_cost,
         bool normal,
         int64_t n_goals,
+        bool global,
 
         General_path_element_t **return_tuples,
         size_t *return_count,
@@ -182,7 +187,6 @@ do_pgr_many_to_many_dijkstra(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        log << "Inserting vertices into a c++ vector structure";
         std::vector<int64_t>
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
@@ -192,21 +196,19 @@ do_pgr_many_to_many_dijkstra(
 
         std::deque< Path >paths;
         if (directed) {
-            log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             paths = detail::pgr_dijkstra(
                     digraph,
                     start_vertices, end_vertices,
-                    only_cost, normal, n);
+                    only_cost, normal, n, global);
         } else {
-            log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
             paths = detail::pgr_dijkstra(
                     undigraph,
                     start_vertices, end_vertices,
-                    only_cost, normal, n);
+                    only_cost, normal, n, global);
         }
 
         size_t count(0);
@@ -222,7 +224,6 @@ do_pgr_many_to_many_dijkstra(
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
         *log_msg = log.str().empty()?
@@ -266,6 +267,8 @@ do_pgr_combinations_dijkstra(
         bool directed,
         bool only_cost,
         bool normal,
+        int64_t n_goals,
+        bool global,
 
         General_path_element_t **return_tuples,
         size_t *return_count,
@@ -288,27 +291,26 @@ do_pgr_combinations_dijkstra(
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
 
-        log << "Inserting combinations into a c++ vector structure";
         std::vector<pgr_combination_t>
                 combinations_vector(combinations, combinations + total_combinations);
 
+        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
+
         std::deque< Path >paths;
         if (directed) {
-            log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             paths = detail::pgr_dijkstra(
                     digraph,
                     combinations_vector,
-                    only_cost, normal);
+                    only_cost, normal, n, global);
         } else {
-            log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
             paths = detail::pgr_dijkstra(
                     undigraph,
                     combinations_vector,
-                    only_cost, normal);
+                    only_cost, normal, n, global);
         }
         combinations_vector.clear();
         size_t count(0);
@@ -317,14 +319,12 @@ do_pgr_combinations_dijkstra(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                   "No paths found";
+            notice << "No paths found";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
         *log_msg = log.str().empty()?

@@ -7,6 +7,22 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgRouting-introduction.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-introduction.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-introduction.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgRouting-introduction.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgRouting-introduction.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgRouting-introduction.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgRouting-introduction.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/introduction/introduction.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/introduction/introduction.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/introduction/introduction.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/introduction/introduction.html>`__
+
 Introduction
 ===============================================================================
 
@@ -19,7 +35,7 @@ now supported and maintained by `Georepublic <https://georepublic.info>`__,
 `Paragon Corporation <https://www.paragoncorporation.com/>`__ and a broad user community.
 
 pgRouting is part of `OSGeo Community Projects <https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`__
-from the `OSGeo Foundation <https://osgeo.org>`__ and included on `OSGeoLive <http://live.osgeo.org/>`__.
+from the `OSGeo Foundation <https://www.osgeo.org>`__ and included on `OSGeoLive <http://live.osgeo.org/>`__.
 
 
 .. _license:
@@ -55,13 +71,11 @@ This Release Contributors
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Ashish Kumar,
 Cayetano Benavent,
 Daniel Kastl,
-Esteban Zimanyi,
-Imre Samu,
+Himanshu Raj,
 Martha Vergara,
-Mohamed Bakli,
-Mahmoud Sakr,
 Regina Obe,
 Virginia Vergara
 
@@ -87,6 +101,7 @@ Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain,
+Ashish Kumar,
 Cayetano Benavent, Christian Gonzalez,
 Daniel Kastl, Dave Potts, David Techer, Denis Rykov,
 Ema Miyawaki,
@@ -94,6 +109,7 @@ Esteban Zimanyi,
 Florian Thurkow, Frederic Junod,
 Gerald Fenoy, Gudesa Venkata Sai Akhil,
 Hang Wu,
+Himanshu Raj,
 Imre Samu,
 Jay Mahadeokar, Jinfu Leng,
 Kai Behncke, Kishore Kumar, Ko Nagase,
@@ -128,4 +144,3 @@ More Information
 * PostGIS extension at the PostGIS project web site https://postgis.net.
 * Boost C++ source libraries at https://www.boost.org.
 * The Migration guide can be found at https://github.com/pgRouting/pgrouting/wiki/Migration-Guide.
-

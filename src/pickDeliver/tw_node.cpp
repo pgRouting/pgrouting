@@ -40,18 +40,6 @@ double
 Tw_node::travel_time_to(const Tw_node &to, double speed) const {
     pgassert(speed != 0);
     return distance(to) / speed;
-#if 0
-    /** TODO(vicky)
-     * shall call Node or Dnode
-     * static cast won't work I think
-     *
-     */
-    auto from =  problem->m_base_nodes[idx()].get();
-    auto destination = problem->m_base_nodes[to.idx()].get();
-    pgassert(speed != 0);
-     /*! @todo TODO evaluate with matrix also*/
-    return from->distance(destination) / speed;
-#endif
 }
 
 
@@ -64,11 +52,6 @@ Tw_node::arrival_j_opens_i(const Tw_node &I, double speed) const {
     return I.opens() + I.service_time() + I.travel_time_to(*this, speed);
 }
 
-double
-Tw_node::arrival_j_closes_i(const Tw_node &I, double speed) const {
-    if (m_type == kStart) return  (std::numeric_limits<double>::max)();
-    return I.closes() + I.service_time() + I.travel_time_to(*this, speed);
-}
 
 
 
@@ -87,37 +70,6 @@ Tw_node::is_compatible_IJ(const Tw_node &I, double speed) const {
     return !is_late_arrival(arrival_j_opens_i(I, speed));
 }
 
-bool
-Tw_node::is_partially_compatible_IJ(const Tw_node &I, double speed) const {
-    return
-        is_compatible_IJ(I, speed)
-        && !is_early_arrival(arrival_j_opens_i(I, speed))
-        && is_late_arrival(arrival_j_closes_i(I, speed));
-}
-
-bool
-Tw_node::is_tight_compatible_IJ(const Tw_node &I, double speed) const {
-    return
-        is_compatible_IJ(I, speed)
-        && !is_early_arrival(arrival_j_opens_i(I, speed))
-        && !is_late_arrival(arrival_j_closes_i(I, speed));
-}
-
-bool
-Tw_node::is_partially_waitTime_compatible_IJ(
-        const Tw_node &I,
-        double speed) const {
-    return
-        is_compatible_IJ(I, speed)
-        && is_early_arrival(arrival_j_opens_i(I, speed));
-}
-
-bool
-Tw_node::is_waitTime_compatible_IJ(const Tw_node &I, double speed) const {
-    return
-        is_compatible_IJ(I, speed)
-        && is_early_arrival(arrival_j_opens_i(I, speed));
-}
 
 
 std::string Tw_node::type_str() const {
@@ -168,13 +120,6 @@ Tw_node::is_dump() const {
 }
 
 
-bool
-Tw_node::is_load() const {
-    return m_type == kLoad
-        && (opens() < closes())
-        && (service_time() >= 0)
-        && (demand() >= 0);
-}
 
 
 bool
@@ -197,50 +142,10 @@ Tw_node::operator ==(const Tw_node &other) const {
         && m_type == other.m_type
         && id() == other.id()
         && idx() == other.idx();
-#if 0
-    auto lhs = static_cast<const Node&>(
-            *problem->m_base_nodes[idx()].get());
-    auto rhs = static_cast<const Node&>(
-            *problem->m_base_nodes[other.idx()].get());
-    return lhs == rhs;
-#endif
 }
 
 
 
-bool Tw_node::is_valid() const {
-    switch (type()) {
-        case kStart:
-            return is_start();
-            break;
-
-        case kEnd:
-            return is_end();
-            break;
-
-        case kDump:
-            return is_dump();
-            break;
-
-        case kDelivery:
-            return is_delivery();
-            break;
-
-        case kPickup:
-            return is_pickup();
-            break;
-
-        case kLoad:
-            return is_load();
-            break;
-
-        default:
-            return false;
-            break;
-    }
-
-    return false;
-}
 
 
 Tw_node::Tw_node(

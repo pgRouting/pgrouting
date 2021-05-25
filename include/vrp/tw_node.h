@@ -148,14 +148,6 @@ class Tw_node : public Dnode {
      bool is_dump() const;
 
 
-     /*! @brief is_Load
-      *
-      * To be a Load node:
-      *   - type is kLoad
-      *   - demand >= 0
-      *
-      **/
-     bool is_load() const;
 
 
      /*! @brief is_end
@@ -192,12 +184,6 @@ class Tw_node : public Dnode {
      inline bool is_late_arrival(double arrival_time) const {
          return arrival_time > m_closes;
      }
-     /*! @brief True when @b arrivalTime in the time window */
-     inline bool is_on_time(double arrival_time) const {
-         return !is_early_arrival(arrival_time)
-             && !is_late_arrival(arrival_time);
-     }
-     /*!@}*/
 
 
      /** @name document functions */
@@ -209,12 +195,6 @@ class Tw_node : public Dnode {
       **/
      double arrival_j_opens_i(const Tw_node &I, double speed) const;
 
-     /*!
-      * The actual arrival time at @b this node, given that:
-      * @b this node is visited directly after @b other node
-      * and that the actual arrival time at @b other node was closes(other)
-      **/
-     double arrival_j_closes_i(const Tw_node &I, double speed) const;
 
 
      /*
@@ -223,32 +203,6 @@ class Tw_node : public Dnode {
       */
      bool is_compatible_IJ(const Tw_node &I, double speed) const;
 
-     /*
-      * is possible to arrive to @b this after visiting @bother
-      *   - departing as late as possible from @b other it can arrives to @b this
-      */
-     bool is_partially_compatible_IJ(const Tw_node &I, double speed) const;
-
-     /*
-      * is possible to arrive to @b this after visiting @bother
-      *   - departing as late as possible from @b other it can arrives to @b this
-      */
-     bool is_tight_compatible_IJ(const Tw_node &I, double speed) const;
-
-     /*
-      * is possible to arrive to @b this after visiting @b other
-      *   - departing as late as possible from @b other it can arrives to @b this
-      */
-     bool is_partially_waitTime_compatible_IJ(
-             const Tw_node &I,
-             double speed) const;
-
-     /*
-      * is compatible to arrive to @b this after visiting @b other
-      * - is fully compatible
-      * - does not have a waiting time when arriving as earliest as possible after
-      */
-     bool is_waitTime_compatible_IJ(const Tw_node &I, double speed) const;
 
 
      ///@}
@@ -266,8 +220,6 @@ class Tw_node : public Dnode {
              Vehicle_t data,
              NodeType type);
 
- protected:
-     bool is_valid() const;
 
  private:
      int64_t m_order;       ///< order to which it belongs

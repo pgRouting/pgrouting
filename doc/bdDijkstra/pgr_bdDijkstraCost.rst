@@ -7,6 +7,17 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCost.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCost.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCost.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCost.html>`__
+
 pgr_bdDijkstraCost
 ===============================================================================
 
@@ -19,6 +30,12 @@ pgr_bdDijkstraCost
 
 .. rubric:: Availability:
 
+* Version 3.2.0
+
+  * New **proposed** function:
+
+    * pgr_bdDijkstraCost(Combinations)
+
 * Version 3.0.0
 
   * **Official** function
@@ -26,16 +43,6 @@ pgr_bdDijkstraCost
 * Version 2.5.0
 
   * New **proposed** function
-
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__
-  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__
-
-* **Unsupported versions:**
-  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__
 
 
 Description
@@ -54,10 +61,11 @@ Signatures
 
 .. code-block:: none
 
-    pgr_bdDijkstraCost(edges_sql, from_vid,  to_vid  [, directed])
-    pgr_bdDijkstraCost(edges_sql, from_vid,  to_vids [, directed])
-    pgr_bdDijkstraCost(edges_sql, from_vids, to_vid  [, directed])
-    pgr_bdDijkstraCost(edges_sql, from_vids, to_vids [, directed])
+    pgr_bdDijkstraCost(Edges SQL, from_vid,  to_vid  [, directed])
+    pgr_bdDijkstraCost(Edges SQL, from_vid,  to_vids [, directed])
+    pgr_bdDijkstraCost(Edges SQL, from_vids, to_vid  [, directed])
+    pgr_bdDijkstraCost(Edges SQL, from_vids, to_vids [, directed])
+    pgr_bdDijkstraCost(Edges SQL, Combinations SQL [, directed]) -- Proposed on v3.2
 
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
@@ -66,7 +74,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_bdDijkstraCost(edges_sql, from_vid,  to_vid)
+    pgr_bdDijkstraCost(Edges SQL, from_vid,  to_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -84,7 +92,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_bdDijkstraCost(edges_sql, from_vid,  to_vid  [, directed])
+    pgr_bdDijkstraCost(Edges SQL, from_vid,  to_vid  [, directed])
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -102,7 +110,7 @@ One to Many
 
 .. code-block:: none
 
-    pgr_bdDijkstraCost(edges_sql, from_vid,  to_vids [, directed])
+    pgr_bdDijkstraCost(Edges SQL, from_vid,  to_vids [, directed])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -120,7 +128,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_bdDijkstraCost(edges_sql, from_vids, to_vids [, directed])
+    pgr_bdDijkstraCost(Edges SQL, from_vids, to_vids [, directed])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -138,7 +146,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_bdDijkstraCost(edges_sql, start_vids, end_vids [, directed])
+    pgr_bdDijkstraCost(Edges SQL, start_vids, end_vids [, directed])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -148,6 +156,24 @@ Many to Many
    :start-after: -- q5
    :end-before: -- q6
 
+.. index::
+    single: bdDijkstraCost(Combinations) -- Proposed on v3.2
+
+Combinations
+...............................................................................
+
+.. code-block:: none
+
+    pgr_bdDijkstra(Edges SQL, Combinations SQL [, directed])
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
+
+:Example: Using a combinations table on a **directed** graph.
+
+.. literalinclude:: doc-pgr_bdDijkstraCost.queries
+   :start-after: -- q6
+   :end-before: -- q7
+
 Parameters
 -------------------------------------------------------------------------------
 
@@ -155,15 +181,22 @@ Parameters
     :start-after: bdDijkstra_parameters_start
     :end-before: bdDijkstra_parameters_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
 Edges query
 ...............................................................................
 
-.. include::  pgRouting-concepts.rst
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------

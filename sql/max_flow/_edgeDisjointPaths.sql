@@ -50,7 +50,30 @@ RETURNS SEtoF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
 
+--v3.2
+CREATE FUNCTION _pgr_edgeDisjointPaths(
+    TEXT,
+    TEXT,
+
+    directed BOOLEAN,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SEtoF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
+
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_edgeDisjointPaths(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_edgeDisjointPaths(TEXT, TEXT, BOOLEAN)
 IS 'pgRouting internal function';

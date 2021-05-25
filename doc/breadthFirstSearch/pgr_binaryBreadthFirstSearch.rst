@@ -7,6 +7,12 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_binaryBreadthFirstSearch.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_binaryBreadthFirstSearch.html>`__)
+  
 pgr_binaryBreadthFirstSearch - Experimental
 ===============================================================================
 
@@ -24,7 +30,15 @@ Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any non-nega
 
 .. rubric:: Availability
 
-* To-be experimental on v3.0.0
+* Version 3.2.0
+
+  * New **experimental** function:
+
+    * pgr_binaryBreadthFirstSearch(Combinations)
+
+* Version 3.0.0
+
+  * New **experimental** function
 
 Description
 -------------------------------------------------------------------------------
@@ -52,16 +66,17 @@ Signatures
 
 .. code-block:: none
 
-    pgr_binaryBreadthFirstSearch(edges_sql, start_vid,  end_vid  [, directed])
-    pgr_binaryBreadthFirstSearch(edges_sql, start_vid,  end_vids [, directed])
-    pgr_binaryBreadthFirstSearch(edges_sql, start_vids, end_vid  [, directed])
-    pgr_binaryBreadthFirstSearch(edges_sql, start_vids, end_vids [, directed])
+    pgr_binaryBreadthFirstSearch(Edges SQL, start_vid,  end_vid  [, directed])
+    pgr_binaryBreadthFirstSearch(Edges SQL, start_vid,  end_vids [, directed])
+    pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vid  [, directed])
+    pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vids [, directed])
+    pgr_binaryBreadthFirstSearch(Edges SQL, Combinations SQL [, directed]) -- Proposed on v3.2
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
 .. code-block:: none
 
-    pgr_binaryBreadthFirstSearch(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
+    pgr_binaryBreadthFirstSearch(Edges SQL, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 :Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** binary graph
@@ -78,8 +93,7 @@ One to One
 
 .. code-block:: none
 
-    pgr_binaryBreadthFirstSearch(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
-    BOOLEAN directed:=true);
+    pgr_binaryBreadthFirstSearch(Edges SQL, start_vid, end_vid [, directed]);
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -90,15 +104,14 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: Binary Breadth First Search(One to Many) - Experimental
+    single: binaryBreadthFirstSearch(One to Many) - Experimental
 
 One to many
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_binaryBreadthFirstSearch(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
-    BOOLEAN directed:=true);
+    pgr_binaryBreadthFirstSearch(Edges SQL, start_vid, end_vids [, directed]);
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -109,15 +122,14 @@ One to many
    :end-before: -- q4
 
 .. index::
-    single: Binary Breadth First Search(Many to One) - Experimental
+    single: binaryBreadthFirstSearch(Many to One) - Experimental
 
 Many to One
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_binaryBreadthFirstSearch(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
-        BOOLEAN directed:=true);
+    pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vid [, directed]);
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -128,15 +140,14 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: Binary Breadth First Search(Many to Many) - Experimental
+    single: binaryBreadthFirstSearch(Many to Many) - Experimental
 
 Many to Many
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_binaryBreadthFirstSearch(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
-        BOOLEAN directed:=true);
+    pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vids [, directed]);
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -146,33 +157,60 @@ Many to Many
    :start-after: -- q5
    :end-before: -- q6
 
+.. index::
+    single: binaryBreadthFirstSearch(Combinations) -- Experimental on v3.2
+
+Combinations
+...............................................................................
+
+.. code-block:: none
+
+    pgr_binaryBreadthFirstSearch(Edges SQL, Combinations SQL [, directed]);
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
+
+:Example: Using a combinations table on an **undirected** binary graph.
+
+.. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
+   :start-after: -- q6
+   :end-before: -- q7
+
 Parameters
 -------------------------------------------------------------------------------
 
 .. pgr_binaryBreadthFirstSearch_parameters_start
 
-============== ================== ======== =================================================
-Parameter      Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**  ``TEXT``                    Inner SQL query as described below.
-**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
-**directed**   ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
-                                           - When ``false`` the graph is considered as `Undirected`.
-============== ================== ======== =================================================
+===================== ================== ======== =================================================
+Parameter             Type               Default     Description
+===================== ================== ======== =================================================
+**Edges SQL**         ``TEXT``                    Edges query as described below.
+**Combinations SQL**  ``TEXT``                    Combinations query as described below.
+**start_vid**         ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids**        ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**           ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**          ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+**directed**          ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
+                                                  - When ``false`` the graph is considered as `Undirected`.
+===================== ================== ======== =================================================
 
 .. pgr_binaryBreadthFirstSearch_parameters_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
-.. rubric::edges_sql
+Edges query
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Return Columns
 -------------------------------------------------------------------------------

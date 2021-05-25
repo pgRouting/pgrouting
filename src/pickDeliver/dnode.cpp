@@ -41,9 +41,9 @@ std::ostream& operator << (std::ostream &log, const Dnode &node) {
 
 double
 Dnode::distance(const Dnode &other) const {
-    return problem->m_cost_matrix.distance(
-            problem->m_cost_matrix.get_index(id()),
-            problem->m_cost_matrix.get_index(other.id()));
+    return problem->get_cost_matrix().distance(
+            problem->get_cost_matrix().get_index(id()),
+            problem->get_cost_matrix().get_index(other.id()));
 }
 
 
@@ -51,18 +51,6 @@ Dnode::Dnode(size_t idx, int64_t id) :
     Identifier(idx, id) {
     }
 
-bool
-Dnode::operator ==(const Dnode &rhs) const {
-    if (&rhs == this) return true;
-    return
-        (idx() == rhs.idx())
-         && (id() == rhs.id());
-}
-
-Pgr_messages&
-Dnode::msg() {
-    return problem->msg;
-}
 
 }  //  namespace vrp
 }  //  namespace pgrouting

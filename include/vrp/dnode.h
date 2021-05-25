@@ -58,7 +58,6 @@ class Dnode : public Identifier {
      /*!@}*/
 
 
-     bool operator==(const Dnode &other) const;
 
      double distance(const Dnode &other) const;
 

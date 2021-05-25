@@ -5,6 +5,7 @@ SET(LOCAL_FILES
     doc-pgr_bridges
     doc-pgr_connectedComponents
     doc-pgr_strongComponents
+    doc-pgr_makeConnected
     )
 
 foreach (f ${LOCAL_FILES})

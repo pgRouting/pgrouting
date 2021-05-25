@@ -7,6 +7,17 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/bdAstar-family.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/bdAstar-family.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/bdAstar-family.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-family.html>`__
+* **Unsupported versions:**
+  `2.5 <https://docs.pgrouting.org/2.5/en/bdAstar-family.html>`__
+  `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-family.html>`__
+
 Bidirectional A* - Family of functions
 ===============================================================================
 
@@ -25,15 +36,6 @@ Bidirectional A* - Family of functions
     pgr_bdAstarCost
     pgr_bdAstarCostMatrix
 
-.. rubric:: Previous versions of this page
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/bdAstar-family.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-family.html>`__
-  `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-family.html>`__
-
-* **Unsupported versions:**
-  `2.5 <https://docs.pgrouting.org/2.5/en/bdAstar-family.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -65,40 +67,51 @@ The main Characteristics are:
 Signatures
 -------------------------------------------------------------------------------
 
+Edges query
+...............................................................................
+
 .. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 .. parameters_begin
 
 Parameters
 -------------------------------------------------------------------------------
 
-================ ====================== =================================================
-Parameter        Type                   Description
-================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as described above.
-**start_vid**    ``ANY-INTEGER``        Starting vertex identifier.
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Starting vertices identifierers.
-**end_vid**      ``ANY-INTEGER``        Ending vertex identifier.
-**end_vids**     ``ARRAY[ANY-INTEGER]`` Ending vertices identifiers.
-**directed**     ``BOOLEAN``            - Optional.
+======================= ====================== =================================================
+Parameter               Type                   Description
+======================= ====================== =================================================
+**Edges SQL**           ``TEXT``               Edges query as described above.
+**Combinations SQL**    ``TEXT``               Combinations query as described above.
+**start_vid**           ``ANY-INTEGER``        Starting vertex identifier.
+**start_vids**          ``ARRAY[ANY-INTEGER]`` Starting vertices identifierers.
+**end_vid**             ``ANY-INTEGER``        Ending vertex identifier.
+**end_vids**            ``ARRAY[ANY-INTEGER]`` Ending vertices identifiers.
+**directed**            ``BOOLEAN``            - Optional.
 
-                                          - When ``false`` the graph is considered as Undirected.
-                                          - Default is ``true`` which considers the graph as Directed.
+                                                 - When ``false`` the graph is considered as Undirected.
+                                                 - Default is ``true`` which considers the graph as Directed.
 
-**heuristic**    ``INTEGER``            (optional). Heuristic number. Current valid values 0~5. Default ``5``
+**heuristic**           ``INTEGER``            (optional). Heuristic number. Current valid values 0~5. Default ``5``
 
-                                          - 0: h(v) = 0 (Use this value to compare with pgr_dijkstra)
-                                          - 1: h(v) abs(max(dx, dy))
-                                          - 2: h(v) abs(min(dx, dy))
-                                          - 3: h(v) = dx * dx + dy * dy
-                                          - 4: h(v) = sqrt(dx * dx + dy * dy)
-                                          - 5: h(v) = abs(dx) + abs(dy)
+                                                 - 0: h(v) = 0 (Use this value to compare with pgr_dijkstra)
+                                                 - 1: h(v) abs(max(dx, dy))
+                                                 - 2: h(v) abs(min(dx, dy))
+                                                 - 3: h(v) = dx * dx + dy * dy
+                                                 - 4: h(v) = sqrt(dx * dx + dy * dy)
+                                                 - 5: h(v) = abs(dx) + abs(dy)
 
-**factor**       ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see :ref:`astar_factor`
-**epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
-================ ====================== =================================================
+**factor**              ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see :ref:`astar_factor`
+**epsilon**             ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
+======================= ====================== =================================================
 
 .. parameters_end
 

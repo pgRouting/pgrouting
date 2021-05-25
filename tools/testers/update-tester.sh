@@ -26,7 +26,6 @@
 
 set -e
 
-TWEAK=""
 PGPORT=5432
 echo "sorry this only works on vicky's computer"
 PGUSER="vicky"
@@ -56,13 +55,13 @@ fi
 
 FROM_PGR="$1"
 CURRENT=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
-LONG=$2
+TWEAK=$(grep -Po '(?<=set\(PGROUTING_VERSION_DEV ")[^;]+(?="\))' CMakeLists.txt)
+LONG=$3
 
 if [[ "$FROM_PGR" == 2.* ]];
 then
     exit 0
 fi
-
 
 dropdb --if-exists "$DB"
 

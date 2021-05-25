@@ -127,6 +127,30 @@ CREATE FUNCTION pgr_edgeDisjointPaths(
 LANGUAGE SQL VOLATILE STRICT;
 
 
+-- COMBINATIONS
+--v3.2
+CREATE FUNCTION pgr_edgeDisjointPaths(
+    TEXT,     -- edges_sql (required)
+    TEXT,     -- combinations_sql (required)
+
+    directed BOOLEAN DEFAULT true,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+  RETURNS SEtoF RECORD AS
+  $BODY$
+    SELECT *
+    From _pgr_edgeDisjointPaths(_pgr_get_statement($1), _pgr_get_statement($2), $3) AS a;
+  $BODY$
+LANGUAGE SQL VOLATILE STRICT;
+
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_edgeDisjointPaths(TEXT, BIGINT, BIGINT, BOOLEAN)
@@ -174,6 +198,17 @@ IS 'pgr_edgeDisjointPaths(Many to Many)
    - edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
    - to ARRAY[vertices identifiers]
+- Optional Parameters
+   - directed := true
+- Documentation:
+   - ${PROJECT_DOC_LINK}/pgr_edgeDisjointPaths.html
+';
+
+COMMENT ON FUNCTION pgr_edgeDisjointPaths(TEXT, TEXT, BOOLEAN)
+IS 'pgr_edgeDisjointPaths(Combinations)
+ - Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+   - Combinations SQL with columns: source, target
 - Optional Parameters
    - directed := true
 - Documentation:

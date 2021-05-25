@@ -148,6 +148,35 @@ COST 100
 ROWS 1000;
 
 
+--v3.2
+CREATE FUNCTION pgr_aStar(
+    TEXT,       -- edges sql (required)
+    TEXT,       -- combinations_sql (required)
+
+    directed BOOLEAN DEFAULT true,
+    heuristic INTEGER DEFAULT 5,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_aStar(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5::FLOAT, $6::FLOAT) AS a;
+$BODY$
+LANGUAGE sql VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+
 -- COMMENTS
 
 
@@ -205,6 +234,21 @@ IS 'pgr_aStar(Many to Many)
    - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
    - From ARRAY[vertices identifiers]
    - To ARRAY[vertices identifiers]
+ - Optional Parameters:
+   - directed := true
+   - heuristic := 5
+   - factor := 1
+   - epsilon := 1
+ - Documentation:
+   - ${PROJECT_DOC_LINK}/pgr_aStar.html
+';
+
+
+COMMENT ON FUNCTION pgr_aStar(TEXT, TEXT, BOOLEAN, INTEGER, FLOAT, FLOAT)
+IS 'pgr_aStar(Combinations)
+ - Parameters:
+   - Edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
+   - Combinations SQL with columns: source, target
  - Optional Parameters:
    - directed := true
    - heuristic := 5

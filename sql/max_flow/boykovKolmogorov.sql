@@ -113,6 +113,26 @@ CREATE FUNCTION pgr_boykovKolmogorov(
   LANGUAGE sql VOLATILE STRICT;
 
 
+-- COMBINATIONS
+--v3.2
+CREATE FUNCTION pgr_boykovKolmogorov(
+    TEXT, -- edges_sql (required)
+    TEXT, -- combinations_sql (required)
+
+    OUT seq INTEGER,
+    OUT edge BIGINT,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT)
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), _pgr_get_statement($2), 2);
+  $BODY$
+  LANGUAGE sql VOLATILE STRICT;
+
+
 -- COMMENTS
 
 
@@ -163,3 +183,12 @@ IS 'pgr_boykovKolmogorov(Many to Many)
   - ${PROJECT_DOC_LINK}/pgr_boykovKolmogorov.html
 ';
 
+COMMENT ON FUNCTION pgr_boykovKolmogorov(TEXT, TEXT)
+IS 'pgr_boykovKolmogorov(Combinations)
+ - Directed graph
+ - Parameters:
+   - Edges SQL with columns: id, source, target, capacity [,reverse_capacity]
+   - Combinations SQL with columns: source, target
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_boykovKolmogorov.html
+';

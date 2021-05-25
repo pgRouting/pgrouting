@@ -1,45 +1,57 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-rc1
+# Copyright (C) pgRouting Contributors - Version v3.2.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-rc1\n"
+"Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 23:41-0600\n"
-"PO-Revision-Date: 2019-09-07 11:55+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"PO-Revision-Date: 2020-11-04 18:29+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:11
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_binaryBreadthFirstSearch.html>`__ "
+"(`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_binaryBreadthFirstSearch.html>`__)"
+msgstr ""
+"**Versiones soportadas:** `Actual "
+"<https://docs.pgrouting.org/latest/en/pgr_binaryBreadthFirstSearch.html>`__ "
+"(`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_binaryBreadthFirstSearch.html>`__)"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:17
 msgid "pgr_binaryBreadthFirstSearch - Experimental"
 msgstr "pgr_binaryBreadthFirstSearch - Experimental"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:13
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:19
 msgid ""
 "``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary "
 "graph. Any graph whose edge-weights belongs to the set {0,X}, where 'X' is "
 "any non-negative real integer, is termed as a 'binary graph'."
 msgstr ""
-"``pgr_binaryBreadthFirstSearch`` — Devuelve la(s) ruta(s) más cortas en un "
+"``pgr_binaryBreadthFirstSearch`` — Devuelve la(s) rutas más cortas en un "
 "grafo binario. Cualquier gráfico cuyos pesos de borde pertenecen al conjunto"
 " {0, X}, donde 'X' es cualquier número entero real no negativo, se denomina "
 "como 'grafo binario'."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:19
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:25
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
@@ -73,7 +85,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma o declaración de funciones podría cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
@@ -112,22 +124,38 @@ msgstr "Puede depender de una función propuesta de pgRouting."
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:26
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:32
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:27
-msgid "To-be experimental on v3.0.0"
-msgstr "Para ser experimental en v3.0.0"
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:33
+msgid "Version 3.2.0"
+msgstr "Versión 3.2.0"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:35
+msgid "New **experimental** function:"
+msgstr "Nueva función **experimental**:"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:37
+msgid "pgr_binaryBreadthFirstSearch(Combinations)"
+msgstr "pgr_binaryBreadthFirstSearch(Combinaciones)"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:39
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:41
+msgid "New **experimental** function"
+msgstr "Nueva función **experimental**"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:30
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:155
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:44
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:184
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:32
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:46
 msgid ""
 "It is well-known that the shortest paths between a single source and all "
 "other vertices can be found using Breadth First Search in :math:`O(|E|)` in "
@@ -147,7 +175,7 @@ msgstr ""
 "peso, que necesitamos un algoritmo más general, como el Algoritmo de "
 "Dijkstra que se ejecuta en :math:`O(|E|log|V|)` tiempo."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:34
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:48
 msgid ""
 "However if the weights are more constrained, we can use a faster algorithm. "
 "This algorithm, termed as 'Binary Breadth First Search' as well as '0-1 "
@@ -163,11 +191,11 @@ msgstr ""
 ":math:`O(|E|)`,  si los pesos de cada arista pertenecen al conjunto de "
 "caracteres de {0,X}, donde 'X' es cualquier entero real no negativo."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:37
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:51
 msgid "**The main Characteristics are:**"
 msgstr "**Las características principales son:**"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:39
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:53
 msgid ""
 "Process is done only on 'binary graphs'. ('Binary Graph': Any graph whose "
 "edge-weights belongs to the set {0,X}, where 'X' is any non-negative real "
@@ -177,7 +205,7 @@ msgstr ""
 " grafo  cuyos pesos de aristas pertenezcan al conjunto {0, X}, donde 'X' es "
 "cualquier entero real no negativo)."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:41
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:55
 msgid ""
 "For optimization purposes, any duplicated value in the `start_vids` or "
 "`end_vids` are ignored."
@@ -185,23 +213,23 @@ msgstr ""
 "Para fines de optimización, se omite cualquier valor duplicado en "
 "`start_vids` o `end_vids`."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:43
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:57
 msgid "The returned values are ordered:"
 msgstr "Los valores regresados se ordenan:"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:45
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:59
 msgid "`start_vid` ascending"
 msgstr "`start_vid` ascendente"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:46
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:60
 msgid "`end_vid` ascending"
 msgstr "`end_vid` ascendente"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:48
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:62
 msgid "Running time: :math:`O(| start\\_vids | * |E|)`"
 msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * |E|)`"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:51
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:65
 msgid "Signatures"
 msgstr "Firmas"
 
@@ -209,28 +237,28 @@ msgstr "Firmas"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:67
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:82
 msgid ""
 "From vertex :math:`2` to vertex  :math:`3` on a **directed** binary graph"
 msgstr ""
 "Del vértice :math:`2` al vértice :math:`3` en un grafo binario **dirigido** "
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:77
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:92
 msgid "One to One"
 msgstr "Uno a Uno"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:86
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:100
 msgid ""
 "From vertex :math:`2` to vertex  :math:`3` on an **undirected** binary graph"
 msgstr ""
 "Del vértice :math:`2` al vértice :math:`3` en un grafo binario **no "
 "dirigido** "
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:96
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:110
 msgid "One to many"
 msgstr "Uno a muchos"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:105
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:118
 msgid ""
 "From vertex :math:`2` to vertices :math:`\\{3, 5\\}` on an **undirected** "
 "binary graph"
@@ -238,11 +266,11 @@ msgstr ""
 "Del vértice :math:`2`  a los vértices :math:`\\{3, 5\\}` en un grafo binario"
 "  **no dirigido**"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:115
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:128
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:124
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:136
 msgid ""
 "From vertices :math:`\\{2, 11\\}` to vertex :math:`5` on a **directed** "
 "binary graph"
@@ -250,11 +278,11 @@ msgstr ""
 "De los vértices :math:`\\{2, 11\\}` al vértice :math:`5` en un grafo binario"
 " **dirigido**"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:134
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:146
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:143
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:154
 msgid ""
 "From vertices :math:`\\{2, 11\\}` to vertices :math:`\\{3, 5\\}` on an "
 "**undirected** binary graph"
@@ -262,39 +290,57 @@ msgstr ""
 "De los vértices :math:`\\{2, 11\\}` a los vértices :math:`\\{3, 5\\}` en un "
 "grafo binario **no dirigido**"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:150
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:164
+msgid "Combinations"
+msgstr "Combinaciones"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:172
+msgid "Using a combinations table on an **undirected** binary graph."
+msgstr ""
+"Uso de una tabla de combinaciones en un grafo binario **no dirigido**."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:179
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:155
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:184
 msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:155
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:184
 msgid "Type"
 msgstr "Tipo"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:155
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:184
 msgid "Default"
 msgstr "Valores predeterminados"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:157
-msgid "**edges_sql**"
-msgstr "**edges_sql**"
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:186
+msgid "**Edges SQL**"
+msgstr "**Edges SQL**"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:157
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:186
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:187
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:157
-msgid "Inner SQL query as described below."
-msgstr "Consulta SQL interna como se describe a continuación."
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:186
+msgid "Edges query as described below."
+msgstr "Consulta de bordes como se describe a continuación."
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:187
+msgid "**Combinations SQL**"
+msgstr "**Combinaciones SQL**"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:187
+msgid "Combinations query as described below."
+msgstr "Consulta de combinaciones como se describe a continuación."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:158
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:188
 msgid "**start_vid**"
 msgstr "**start_vid**"
 
@@ -302,68 +348,72 @@ msgstr "**start_vid**"
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:25
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:158
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:160
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:188
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:190
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:158
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:188
 msgid "Identifier of the starting vertex of the path."
 msgstr "Identificador del vértice inicial de la ruta."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:159
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:189
 msgid "**start_vids**"
 msgstr "**start_vids**"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:159
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:161
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:189
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:191
 msgid "``ARRAY[BIGINT]``"
 msgstr "``ARRAY[BIGINT]``"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:159
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:189
 msgid "Array of identifiers of starting vertices."
 msgstr "Arreglo de identificadores de vértices iniciales."
 
 #: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:160
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:190
 msgid "**end_vid**"
 msgstr "**end_vid**"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:160
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:190
 msgid "Identifier of the ending vertex of the path."
 msgstr "Identificador del vértice final de la ruta."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:161
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:191
 msgid "**end_vids**"
 msgstr "**end_vids**"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:161
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:191
 msgid "Array of identifiers of ending vertices."
 msgstr "Arreglo de identificadores de vértices finales."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:162
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:192
 msgid "**directed**"
 msgstr "**dirigido**"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:162
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:192
 msgid "``BOOLEAN``"
 msgstr "``BOOLEAN``"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:162
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:192
 msgid "``true``"
 msgstr "``true``"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:162
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:192
 msgid "When ``true`` Graph is considered `Directed`"
 msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:163
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:193
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:169
-msgid "Inner query"
-msgstr "Consulta interna"
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:199
+msgid "Inner queries"
+msgstr "Consultas internas"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:202
+msgid "Edges query"
+msgstr "Consulta de aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgRouting-concepts.rst:6
@@ -384,18 +434,22 @@ msgstr "``ANY-INTEGER``"
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
+#: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "**source**"
 msgstr "**origen**"
 
+#: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer punto final en el vértice de la arista."
 
+#: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
 msgstr "**objetivo**"
 
+#: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo punto final en el vértice de la arista."
@@ -442,6 +496,7 @@ msgstr ""
 "En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
 "es parte del grafo."
 
+#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Where:"
 msgstr "Donde:"
@@ -450,6 +505,7 @@ msgstr "Donde:"
 msgid "ANY-INTEGER"
 msgstr "ANY-INTEGER"
 
+#: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr "SMALLINT, INTEGER, BIGINT"
@@ -462,7 +518,11 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:178
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:209
+msgid "Combinations query"
+msgstr "Consulta de combinaciones"
+
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:216
 msgid "Return Columns"
 msgstr "Columnas de Devoluciones"
 
@@ -582,15 +642,15 @@ msgstr "**agg_cost**"
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr "Coste agregado de ``start_v`` to ``node``."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:186
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:224
 msgid "Example Data"
 msgstr "Datos de ejemplo"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:188
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:226
 msgid "This type of data is used on the examples of this page."
 msgstr "Este tipo de datos se utiliza en los ejemplos de esta página."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:190
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:228
 msgid ""
 "Edwards-Moore Algorithm is best applied when trying to answer queries such "
 "as the following: **“Find the path with the minimum number from Source to "
@@ -604,7 +664,7 @@ msgstr ""
 "Cualquier vértice de destino arbitrario * *X* es un evento/propiedad * Cada "
 "arista del grafo es “*X*” o “*Not X*” ."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:197
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:235
 msgid ""
 "Example: “Find the path with the minimum number of road works from Source to"
 " Destination”"
@@ -612,7 +672,7 @@ msgstr ""
 "Ejemplo: \"Encuentra la ruta con el número mínimo de obras de carretera de "
 "Origen a Destino\""
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:200
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:238
 msgid ""
 "Here, a road under work(aka **road works**)  means that part of the road is "
 "occupied for construction work/maintenance."
@@ -621,7 +681,7 @@ msgstr ""
 "significa que parte de la carretera está ocupada para trabajos de "
 "construcción/mantenimiento."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:203
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:241
 msgid ""
 "Here: * Edge ( *u* , *v* ) has weight = 0 if no road work is ongoing on the "
 "road from *u* to *v*. * Edge ( *u*, *v*) has weight = 1 if road work is "
@@ -631,7 +691,7 @@ msgstr ""
 "en la carreterea desde *u* a *v*. * Arista ( *u*, *v*) pesa = 1 si hay obras"
 " viales en ese momento desde *u* a *v*."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:207
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:245
 msgid ""
 "Then, upon running the algorithm, we obtain the path with the minimum number"
 " of road works from the given source and destination."
@@ -639,7 +699,7 @@ msgstr ""
 "Luego, al ejecutar el algoritmo, obtenemos la ruta con el número mínimo de "
 "obras viales desde el origen y el destino dados."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:210
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:248
 msgid ""
 "Thus, the queries used in the previous section can be interpreted in this "
 "manner."
@@ -647,11 +707,11 @@ msgstr ""
 "Por lo tanto, las consultas utilizadas en la sección anterior se pueden "
 "interpretar de esta manera."
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:213
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:251
 msgid "Table Data"
 msgstr "Datos de la Tabla"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:216
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:254
 msgid ""
 "The queries in the previous sections use the table 'roadworks'. The data of "
 "the table:"
@@ -659,33 +719,29 @@ msgstr ""
 "Las consultas de las secciones anteriores utilizan la tabla 'roadworks'. Los"
 " datos de la tabla:"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:224
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:262
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:226
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:264
 msgid "https://cp-algorithms.com/graph/01_bfs.html"
 msgstr "https://cp-algorithms.com/graph/01_bfs.html"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:227
-msgid "https://codeforces.com/blog/entry/22276"
-msgstr "https://codeforces.com/blog/entry/22276"
-
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:228
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:265
 #, python-format
 msgid ""
 "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
 msgstr ""
 "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:231
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:268
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:232
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:269
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:233
+#: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:270
 msgid ":ref:`search`"
 msgstr ":ref:`search`"

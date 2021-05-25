@@ -51,7 +51,29 @@ RETURNS SETOF RECORD AS
 LANGUAGE c IMMUTABLE STRICT;
 
 
+--v3.2
+CREATE FUNCTION _pgr_binaryBreadthFirstSearch(
+    edges_sql TEXT,
+    combinations_sql TEXT,
+    directed  BOOLEAN DEFAULT true,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C IMMUTABLE STRICT;
+
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_binaryBreadthFirstSearch(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_binaryBreadthFirstSearch(TEXT, TEXT, BOOLEAN)
 IS 'pgRouting internal function';

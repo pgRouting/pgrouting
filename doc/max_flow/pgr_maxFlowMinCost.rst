@@ -7,6 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_maxFlowMinCost.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_maxFlowMinCost.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_maxFlowMinCost.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxFlowMinCost.html>`__
+
 pgr_maxFlowMinCost - Experimental
 ============================================
 
@@ -24,15 +32,16 @@ the flow and minimizes the cost from the sources to the targets.
 
 .. rubric:: Availability
 
+* Version 3.2.0
+
+  * New **experimental** function:
+
+    * pgr_maxFlowMinCost(Combinations)
+
 * Version 3.0.0
 
 * New **experimental** function
 
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_maxFlowMinCost.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxFlowMinCost.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -64,6 +73,7 @@ Signatures
     pgr_maxFlowMinCost(Edges SQL, sources, target)
     pgr_maxFlowMinCost(Edges SQL, source,  targets)
     pgr_maxFlowMinCost(Edges SQL, sources, targets)
+    pgr_maxFlowMinCost(Edges SQL, Combinations SQL) -- Experimental on v3.2
     RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
@@ -139,6 +149,24 @@ Many to Many
    :start-after: -- q4
    :end-before: -- q5
 
+.. index::
+    single: maxFlowMinCost(Combinations) -- Experimental on v3.2
+
+Combinations
+...............................................................................
+
+.. code-block:: none
+
+    pgr_maxFlowMinCost(Edges SQL, Combinations SQL)
+    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    OR EMPTY SET
+
+:Example: Using a combinations table, equivalent to calculating result from vertices :math:`\{7, 13\}` to vertices :math:`\{3, 9\}`.
+
+.. literalinclude:: doc-pgr_maxFlowMinCost.queries
+   :start-after: -- q5
+   :end-before: -- q6
+
 Parameters
 -------------------------------------------------------------------------------
 
@@ -146,12 +174,16 @@ Parameters
     :start-after: pgr_flow_parameters_start
     :end-before: pgr_flow_parameters_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
 .. include:: flow-family.rst
     :start-after: costFlow_edges_sql_start
     :end-before: costFlow_edges_sql_end
+
+.. include:: flow-family.rst
+    :start-after: flow_combinations_sql_start
+    :end-before: flow_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------

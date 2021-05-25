@@ -1,7 +1,7 @@
 \i setup.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(584);
+SELECT plan(586);
 
 
 SELECT has_function('pgr_maxflowmincost',
@@ -12,6 +12,8 @@ SELECT has_function('pgr_maxflowmincost',
     ARRAY['text', 'anyarray', 'bigint']);
 SELECT has_function('pgr_maxflowmincost',
     ARRAY['text', 'anyarray', 'anyarray']);
+SELECT has_function('pgr_maxflowmincost',
+    ARRAY['text', 'text']);
 
 SELECT function_returns('pgr_maxflowmincost',
     ARRAY['text', 'bigint', 'bigint'],
@@ -24,6 +26,9 @@ SELECT function_returns('pgr_maxflowmincost',
     'setof record');
 SELECT function_returns('pgr_maxflowmincost',
     ARRAY['text', 'anyarray', 'anyarray'],
+    'setof record');
+SELECT function_returns('pgr_maxflowmincost',
+    ARRAY['text', 'text'],
     'setof record');
 
 

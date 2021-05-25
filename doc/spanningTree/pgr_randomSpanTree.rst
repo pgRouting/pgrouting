@@ -7,13 +7,19 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_randomSpanTree.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_randomSpanTree.html>`__)
+
 pgr_randomSpanTree - Experimental
 ===============================================================================
 
 ``pgr_randomSpanTree`` — Random spanning tree of a graph using the algorithm implemented by Boost.Graph.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/kruskal_min_spanning_tree.html
+   :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
 
    Boost Graph Inside
 

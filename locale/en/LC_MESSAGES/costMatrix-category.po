@@ -8,28 +8,45 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/costMatrix-category.rst:11
+#: ../../build/doc/costMatrix-category.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/costMatrix-category.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en"
+"/costMatrix-category.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en"
+"/costMatrix-category.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/costMatrix-category.html>`__"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/costMatrix-category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/costMatrix-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/costMatrix-category.html>`__"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:23
 msgid "Cost Matrix - Category"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:15
+#: ../../build/doc/costMatrix-category.rst:27
 msgid ":doc:`pgr_aStarCostMatrix`"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:16
+#: ../../build/doc/costMatrix-category.rst:28
 msgid ":doc:`pgr_dijkstraCostMatrix`"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:22
+#: ../../build/doc/costMatrix-category.rst:34
 msgid "proposed"
 msgstr ""
 
@@ -69,56 +86,37 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:29
+#: ../../build/doc/costMatrix-category.rst:41
 msgid ":doc:`pgr_withPointsCostMatrix`"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:41
-msgid "Previous versions of this page"
-msgstr ""
-
-#: ../../build/doc/costMatrix-category.rst:42
-msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
-"/costMatrix-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
-"/costMatrix-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
-"/costMatrix-category.html>`__"
-msgstr ""
-
-#: ../../build/doc/costMatrix-category.rst:47
-msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en"
-"/costMatrix-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
-"/costMatrix-category.html>`__"
-msgstr ""
-
-#: ../../build/doc/costMatrix-category.rst:53
+#: ../../build/doc/costMatrix-category.rst:54
 msgid "General Information"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:56
+#: ../../build/doc/costMatrix-category.rst:57
 msgid "Synopsis"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:58
+#: ../../build/doc/costMatrix-category.rst:59
 msgid ""
 ":doc:`TSP-family` needs as input a symmetric cost matrix and no edge `(u,"
 " v)` must value :math:`\\infty`."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:60
+#: ../../build/doc/costMatrix-category.rst:61
 msgid "This collection of functions will return a cost matrix in form of a table."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:64
+#: ../../build/doc/costMatrix-category.rst:65
 msgid "Characteristics"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:66
+#: ../../build/doc/costMatrix-category.rst:67
 msgid "The main Characteristics are:"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:68
+#: ../../build/doc/costMatrix-category.rst:69
 msgid "Can be used as input to :doc:`pgr_TSP`."
 msgstr ""
 
@@ -126,139 +124,157 @@ msgstr ""
 msgid "directly"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:70
+#: ../../build/doc/costMatrix-category.rst:71
 msgid ""
 "when the resulting matrix is symmetric and there is no :math:`\\infty` "
 "value."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:71
+#: ../../build/doc/costMatrix-category.rst:72
 msgid "It will be the users responsibility to make the matrix symmetric."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:73
+#: ../../build/doc/costMatrix-category.rst:74
 msgid "By using geometric or harmonic average of the non symmetric values."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:74
+#: ../../build/doc/costMatrix-category.rst:75
 msgid "By using max or min the non symmetric values."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:75
+#: ../../build/doc/costMatrix-category.rst:76
 msgid ""
 "By setting the upper triangle to be the mirror image of the lower "
 "triangle."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:76
+#: ../../build/doc/costMatrix-category.rst:77
 msgid ""
 "By setting the lower triangle to be the mirror image of the upper "
 "triangle."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:78
+#: ../../build/doc/costMatrix-category.rst:79
 msgid "It is also the users responsibility to fix an :math:`\\infty` value."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:80
+#: ../../build/doc/costMatrix-category.rst:81
 msgid "Each function works as part of the family it belongs to."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:81
+#: ../../build/doc/costMatrix-category.rst:82
 msgid "It does not return a path."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:82
+#: ../../build/doc/costMatrix-category.rst:83
 msgid ""
 "Returns the sum of the costs of the shortest path for pair combination of"
 " nodes in the graph."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:83
+#: ../../build/doc/costMatrix-category.rst:84
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:84
+#: ../../build/doc/costMatrix-category.rst:85
 msgid "Values are returned when there is a path."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:86
+#: ../../build/doc/costMatrix-category.rst:87
 msgid ""
 "The returned values are in the form of a set of `(start_vid, end_vid, "
 "agg_cost)`."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:88
+#: ../../build/doc/costMatrix-category.rst:89
 msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:90
+#: ../../build/doc/costMatrix-category.rst:91
 msgid "The `agg_cost` int the non included values `(v, v)` is `0`."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:92
+#: ../../build/doc/costMatrix-category.rst:93
 msgid ""
 "When the starting vertex and ending vertex are the different and there is"
 " no path."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:94
+#: ../../build/doc/costMatrix-category.rst:95
 msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:96
+#: ../../build/doc/costMatrix-category.rst:97
 msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
 "index would be the pair: `(start_vid, end_vid)`."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:98
+#: ../../build/doc/costMatrix-category.rst:99
 msgid ""
 "Depending on the function and its parameters, the results can be "
 "symmetric."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:100
+#: ../../build/doc/costMatrix-category.rst:101
 msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:102
+#: ../../build/doc/costMatrix-category.rst:103
 msgid "Any duplicated value in the `start_vids` are ignored."
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:104
+#: ../../build/doc/costMatrix-category.rst:105
 msgid "The returned values are ordered:"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:106
+#: ../../build/doc/costMatrix-category.rst:107
 msgid "`start_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:107
+#: ../../build/doc/costMatrix-category.rst:108
 msgid "`end_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:109
+#: ../../build/doc/costMatrix-category.rst:110
 msgid "Running time: approximately :math:`O(| start\\_vids | * (V \\log V + E))`"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:114
+#: ../../build/doc/costMatrix-category.rst:115
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:116
+#: ../../build/doc/costMatrix-category.rst:117
 msgid ":doc:`TSP-family`"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:119
+#: ../../build/doc/costMatrix-category.rst:120
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:120
+#: ../../build/doc/costMatrix-category.rst:121
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/costMatrix-category.rst:121
+#: ../../build/doc/costMatrix-category.rst:122
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Previous versions of this page"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/costMatrix-category.html>`__)"
+#~ " `3.0 <https://docs.pgrouting.org/3.0/en/costMatrix-"
+#~ "category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
+#~ "/costMatrix-category.html>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/costMatrix-category.html>`__"
+#~ " `2.4 <https://docs.pgrouting.org/2.4/en/costMatrix-"
+#~ "category.html>`__"
+#~ msgstr ""
 

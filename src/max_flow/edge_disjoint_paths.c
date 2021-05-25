@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
+#include "c_common/combinations_input.h"
 #include "drivers/max_flow/edge_disjoint_paths_driver.h"
 
 PGDLLEXPORT Datum
@@ -46,6 +47,7 @@ static
 void
 process(
     char *edges_sql,
+    char *combinations_sql,
     ArrayType *starts,
     ArrayType *ends,
 
@@ -54,17 +56,33 @@ process(
     size_t *result_count) {
     pgr_SPI_connect();
 
+    int64_t *source_vertices = NULL;
     size_t size_source_verticesArr = 0;
-    int64_t* source_vertices =
-        pgr_get_bigIntArray(&size_source_verticesArr, starts);
 
+    int64_t *sink_vertices = NULL;
     size_t size_sink_verticesArr = 0;
-    int64_t* sink_vertices =
-        pgr_get_bigIntArray(&size_sink_verticesArr, ends);
 
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
+
+    pgr_combination_t *combinations = NULL;
+    size_t total_combinations = 0;
+
+    if (starts && ends) {
+        source_vertices = (int64_t*)
+            pgr_get_bigIntArray(&size_source_verticesArr, starts);
+        sink_vertices = (int64_t*)
+            pgr_get_bigIntArray(&size_sink_verticesArr, ends);
+    } else if (combinations_sql) {
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        if (total_combinations == 0) {
+            if (combinations)
+                pfree(combinations);
+            pgr_SPI_finish();
+            return;
+        }
+    }
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
@@ -84,6 +102,7 @@ process(
 
     do_pgr_edge_disjoint_paths(
         edges, total_edges,
+        combinations, total_combinations,
         source_vertices, size_source_verticesArr,
         sink_vertices, size_sink_verticesArr,
         directed,
@@ -129,14 +148,32 @@ _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-
-        process(
+        if (PG_NARGS() == 4) {
+            /*
+             * many to many
+             */
+            process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                NULL,
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
                 &result_tuples,
                 &result_count);
+
+        } else if (PG_NARGS() == 3) {
+            /*
+             * combinations
+             */
+            process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                NULL,
+                NULL,
+                PG_GETARG_BOOL(2),
+                &result_tuples,
+                &result_count);
+        }
 
 
 #if PGSQL_VERSION > 95

@@ -7,6 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_chinesePostmanCost.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_chinesePostmanCost.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_chinesePostmanCost.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_chinesePostmanCost.html>`__
+
 pgr_chinesePostmanCost - Experimental
 ============================================
 
@@ -22,12 +30,6 @@ contains every edge in a directed graph and starts and ends on the same vertex.
 * Version 3.0.0
 
   * New **experimental** function
-
-.. rubric:: Support
-
-* **Supported versions**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_chinesePostmanCost.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_chinesePostmanCost.html>`__
 
 
 Description

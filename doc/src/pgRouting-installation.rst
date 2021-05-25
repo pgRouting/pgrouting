@@ -7,7 +7,21 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _installation:
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgRouting-installation.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-installation.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-installation.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgRouting-installation.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgRouting-installation.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgRouting-installation.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgRouting-installation.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/installation/installation.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/installation/installation.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/installation/index.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/installation/index.html>`__
 
 Installation
 ===============================================================================
@@ -128,9 +142,10 @@ Dependencies
 To be able to compile pgRouting, make sure that the following dependencies are met:
 
 * C and C++0x compilers
-  * g++ version >= 4.8
-* Postgresql version >= 9.3
-* The Boost Graph Library (BGL). Version >= 1.53
+  * Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support
+  * Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support
+* Postgresql version = Supported versions by PostgreSQL
+* The Boost Graph Library (BGL). Version >= 1.56
 * CMake >= 3.2
 
 

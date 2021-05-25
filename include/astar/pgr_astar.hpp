@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <vector>
 #include <set>
+#include <map>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -162,6 +163,40 @@ class Pgr_astar {
                  [](const Path &e1, const Path &e2)->bool {
                  return e1.start_id() < e2.start_id();
                  });
+         return paths;
+     }
+
+     // preparation for parallel arrays
+     std::deque<Path> astar(
+             G &graph,
+             const std::vector<pgr_combination_t> &combinations,
+             int heuristic,
+             double factor,
+             double epsilon,
+             bool only_cost) {
+         // a call to 1 to many is faster for each of the sources
+         std::deque<Path> paths;
+
+         // group targets per distinct source
+         std::map< int64_t, std::vector<int64_t> > vertex_map;
+         for (const pgr_combination_t &comb : combinations) {
+             std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.source);
+             if (it != vertex_map.end()) {
+                 it->second.push_back(comb.target);
+             } else {
+                 std::vector<int64_t > targets{comb.target};
+                 vertex_map[comb.source] = targets;
+             }
+         }
+
+         for (const auto &start_ends : vertex_map) {
+             auto r_paths = astar(
+                     graph,
+                     start_ends.first, start_ends.second,
+                     heuristic, factor, epsilon, only_cost);
+             paths.insert(paths.end(), r_paths.begin(), r_paths.end());
+         }
+
          return paths;
      }
      //@}

@@ -33,11 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/one_bit_color_map.hpp>
-#if Boost_VERSION_MACRO >= 105400
 #include <boost/graph/stoer_wagner_min_cut.hpp>
-#else
-#include <boost/stoer_wagner_min_cut.hpp>
-#endif
 #include <boost/property_map/property_map.hpp>
 #include <boost/typeof/typeof.hpp>
 

@@ -140,6 +140,34 @@ LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
+-- combinations
+--v3.2
+CREATE FUNCTION pgr_bdAstar(
+    TEXT,     -- edges_sql (required)
+    TEXT,     -- combinations_sql (required)
+
+    directed BOOLEAN DEFAULT true,
+    heuristic INTEGER DEFAULT 5,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT *
+    FROM _pgr_bdAstar(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5::FLOAT, $6::FLOAT, false);
+$BODY$
+LANGUAGE sql VOLATILE STRICT
+COST 100
+ROWS 1000;
+
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_bdAstar(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
@@ -194,6 +222,20 @@ IS 'pgr_bdAstar(Many to Many)
   - edges SQL with columns: id, source, target, cost [,reverse_cost], x1, y1, x2, y2
   - From ARRAY[vertices identifiers]
   - To ARRAY[vertices identifiers]
+- Optional Parameters:
+  - directed := true
+  - heuristic := 5
+  - factor := 1
+  - epsilon := 1
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_bdAstar.html
+';
+
+COMMENT ON FUNCTION pgr_bdAstar(TEXT, TEXT, BOOLEAN, INTEGER, NUMERIC, NUMERIC)
+IS 'pgr_bdAstar(Combinations)
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [, reverse_cost], x1, y1, x2, y2
+  - Combinations SQL with columns: source, target
 - Optional Parameters:
   - directed := true
   - heuristic := 5

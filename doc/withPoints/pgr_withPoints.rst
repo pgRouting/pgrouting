@@ -7,6 +7,20 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_withPoints.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPoints.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPoints.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPoints.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPoints.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPoints.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPoints.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPoints.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPoints.html>`__
+
 pgr_withPoints - Proposed
 ===============================================================================
 
@@ -23,6 +37,12 @@ pgr_withPoints - Proposed
 
 .. rubric:: Availability
 
+* Version 3.2.0
+
+  * New **proposed** function:
+
+    * pgr_withPoints(Combinations)
+
 * Version 2.2.0
 
   * New **proposed** function
@@ -30,7 +50,8 @@ pgr_withPoints - Proposed
 .. rubric:: Support
 
 * **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPoints.html>`__)
+  current(`3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPoints.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPoints.html>`__)
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPoints.html>`__
 
 * **Unsupported versions:**
@@ -80,6 +101,7 @@ Signatures
     pgr_withPoints(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side] [, details])
     pgr_withPoints(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side] [, details])
     pgr_withPoints(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side] [, details])
+    pgr_withPoints(Edges SQL, Points SQL, Combinations SQL  [, directed] [, driving_side] [, details])
     RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
 
 .. rubric:: Using defaults
@@ -167,27 +189,46 @@ Many to Many
    :start-after: --e5
    :end-before: --q2
 
+.. index::
+    single: withPoints(Combinations) -- Proposed on v3.2
+
+Combinations SQL
+...............................................................................
+
+.. code-block:: none
+
+    pgr_withPoints(Edges SQL, Points SQL, Combinations SQL [, directed] [, driving_side] [, details])
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+
+:Example: Two (source, target) combinations: (from point :math:`1` to vertex :math:`3`), and (from vertex :math:`2` to point :math:`3`) with **right** side driving topology.
+
+
+.. literalinclude:: doc-pgr_withPoints.queries
+   :start-after: --q5
+   :end-before: --q6
+
 Parameters
 -------------------------------------------------------------------------------
 
-================ ====================== =================================================
-Parameter        Type                   Description
-================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as described above.
-**points_sql**   ``TEXT``               Points SQL query as described above.
-**start_vid**    ``ANY-INTEGER``        Starting vertex identifier. When negative: is a point's pid.
-**end_vid**      ``ANY-INTEGER``        Ending vertex identifier. When negative: is a point's pid.
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices. When negative: is a point's pid.
-**end_vids**     ``ARRAY[ANY-INTEGER]`` Array of identifiers of ending vertices. When negative: is a point's pid.
-**directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-**driving_side** ``CHAR``               (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
-                                          - In the right or left or
-                                          - If it doesn't matter with 'b' or NULL.
-                                          - If column not present 'b' is considered.
+====================== ====================== =================================================
+Parameter              Type                   Description
+====================== ====================== =================================================
+**Edges SQL**          ``TEXT``               `Edges query` as described above.
+**Points SQL**         ``TEXT``               `Points query` as described above.
+**Combinations SQL**   ``TEXT``               `Combinations query` as described below.
+**start_vid**          ``ANY-INTEGER``        Starting vertex identifier. When negative: is a point's pid.
+**end_vid**            ``ANY-INTEGER``        Ending vertex identifier. When negative: is a point's pid.
+**start_vids**         ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices. When negative: is a point's pid.
+**end_vids**           ``ARRAY[ANY-INTEGER]`` Array of identifiers of ending vertices. When negative: is a point's pid.
+**directed**           ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
+**driving_side**       ``CHAR``               (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
+                                                - In the right or left or
+                                                - If it doesn't matter with 'b' or NULL.
+                                                - If column not present 'b' is considered.
 
-**details**      ``BOOLEAN``            (optional). When ``true`` the results will include the points in points_sql that are in the path.
-                                        Default is ``false`` which ignores other points of the points_sql.
-================ ====================== =================================================
+**details**            ``BOOLEAN``            (optional). When ``true`` the results will include the points in points_sql that are in the path.
+                                              Default is ``false`` which ignores other points of the points_sql.
+====================== ====================== =================================================
 
 Inner query
 -------------------------------------------------------------------------------
@@ -195,13 +236,26 @@ Inner query
 ..
     description of the sql queries
 
+Edges query
+...............................................................................
+
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
+Points query
+...............................................................................
+
 .. include:: pgRouting-concepts.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------

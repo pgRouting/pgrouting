@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
+#include "c_common/combinations_input.h"
 #include "c_common/check_parameters.h"
 
 
@@ -51,6 +52,7 @@ PG_FUNCTION_INFO_V1(_pgr_bdastar);
 static
 void
 process(char* edges_sql,
+        char* combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
         bool directed,
@@ -64,15 +66,24 @@ process(char* edges_sql,
 
     pgr_SPI_connect();
 
+    int64_t* start_vidsArr = NULL;
     size_t size_start_vidsArr = 0;
-    int64_t* start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
 
+    int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
-    int64_t* end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
 
-    PGR_DBG("Load data");
+    pgr_combination_t *combinations = NULL;
+    size_t total_combinations = 0;
+
+    if (starts && ends) {
+        start_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_vidsArr, starts);
+        end_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    } else if (combinations_sql) {
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+    }
+
     Pgr_edge_xy_t *edges = NULL;
     size_t total_edges = 0;
 
@@ -94,6 +105,7 @@ process(char* edges_sql,
     clock_t start_t = clock();
     do_pgr_bdAstar(
             edges, total_edges,
+            combinations, total_combinations,
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
 
@@ -145,20 +157,13 @@ _pgr_bdastar(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /**********************************************************************
-          edges_sql TEXT,
-          start_vid BIGINT,
-          end_vid BIGINT,
-          directed BOOLEAN DEFAULT true,
-          heuristic INTEGER DEFAULT 0,
-          factor FLOAT DEFAULT 1.0,
-          epsilon FLOAT DEFAULT 1.0,
-
-         **********************************************************************/
-
-        PGR_DBG("Calling process");
-        process(
+        if (PG_NARGS() == 8) {
+            /*
+             * many to many
+             */
+            process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
+                NULL,
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
 
@@ -169,6 +174,26 @@ _pgr_bdastar(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(7),
                 &result_tuples,
                 &result_count);
+
+        } else if (PG_NARGS() == 7) {
+            /*
+             * combinations
+             */
+            process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                NULL,
+                NULL,
+
+                PG_GETARG_BOOL(2),
+                PG_GETARG_INT32(3),
+                PG_GETARG_FLOAT8(4),
+                PG_GETARG_FLOAT8(5),
+                PG_GETARG_BOOL(6),
+                &result_tuples,
+                &result_count);
+        }
+
 
 
 #if PGSQL_VERSION > 95

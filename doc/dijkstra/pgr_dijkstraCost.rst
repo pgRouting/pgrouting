@@ -7,6 +7,19 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCost.html>`__)
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraCost.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost>`__
+  `2.3 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost>`__
+
+
 pgr_dijkstraCost
 ===============================================================================
 
@@ -31,17 +44,6 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
 * Version 2.2.0
 
   * New **Official** function
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCost.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraCost.html>`__
-  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__
-
-* **Unsupported versions:**
-  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__
-  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__
-  `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost>`__
-  `2.3 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost>`__
 
 
 Description

@@ -8,138 +8,136 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: ../../build/doc/aStar-family.rst:11
+#: ../../build/doc/aStar-family.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/aStar-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/aStar-"
+"family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/aStar-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/aStar-"
+"family.html>`__"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/aStar-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/aStar-"
+"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/aStar-"
+"family.html>`__"
+msgstr ""
+
+#: ../../build/doc/aStar-family.rst:23
 msgid "aStar - Family of functions"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:13
+#: ../../build/doc/aStar-family.rst:25
 msgid ""
 "The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm"
 " with a heuristic that allow it to solve most shortest path problems by "
 "evaluation only a sub-set of the overall graph."
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:17
+#: ../../build/doc/aStar-family.rst:29
 msgid ":doc:`pgr_aStar` - A* algorithm for the shortest path."
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:18
+#: ../../build/doc/aStar-family.rst:30
 msgid ":doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:19
+#: ../../build/doc/aStar-family.rst:31
 msgid ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:31
-msgid "Previous versions of this page"
-msgstr ""
-
-#: ../../build/doc/aStar-family.rst:32
-msgid ""
-"**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
-"/aStar-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/aStar-"
-"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/aStar-"
-"family.html>`__"
-msgstr ""
-
-#: ../../build/doc/aStar-family.rst:37
-msgid ""
-"**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/aStar-"
-"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/aStar-"
-"family.html>`__"
-msgstr ""
-
-#: ../../build/doc/aStar-family.rst:42
+#: ../../build/doc/aStar-family.rst:44
 msgid "General Information"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:44
+#: ../../build/doc/aStar-family.rst:46
 msgid "The main Characteristics are:"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:48
+#: ../../build/doc/aStar-family.rst:50
 msgid "Default kind of graph is **directed**  when"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:50
+#: ../../build/doc/aStar-family.rst:52
 msgid "``directed`` flag is missing."
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:51
+#: ../../build/doc/aStar-family.rst:53
 msgid "``directed`` flag is set to true"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:53
+#: ../../build/doc/aStar-family.rst:55
 msgid "Unless specified otherwise, ordering is:"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:55
+#: ../../build/doc/aStar-family.rst:57
 msgid "first by ``start_vid`` (if exists)"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:56
+#: ../../build/doc/aStar-family.rst:58
 msgid "then by ``end_vid``"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:58
+#: ../../build/doc/aStar-family.rst:60
 msgid "Values are returned when there is a path"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:59
+#: ../../build/doc/aStar-family.rst:61
 msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:61
+#: ../../build/doc/aStar-family.rst:63
 msgid "If there is no path from :math:`v` to :math:`u`:"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:63 ../../build/doc/aStar-family.rst:68
+#: ../../build/doc/aStar-family.rst:65 ../../build/doc/aStar-family.rst:70
 msgid "no corresponding row is returned"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:64
+#: ../../build/doc/aStar-family.rst:66
 msgid "``agg_cost`` from :math:`v` to :math:`u` is :math:`\\infty`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:66
+#: ../../build/doc/aStar-family.rst:68
 msgid "There is no path when :math:`v = u` therefore"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:69
+#: ../../build/doc/aStar-family.rst:71
 msgid "``agg_cost`` from `v` to `u` is :math:`0`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:71
+#: ../../build/doc/aStar-family.rst:73
 msgid "Edges with negative costs are not included in the graph."
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:72
+#: ../../build/doc/aStar-family.rst:74
 msgid "When (x,y) coordinates for the same vertex identifier differ:"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:74
+#: ../../build/doc/aStar-family.rst:76
 msgid "A random selection of the vertex's (x,y) coordinates is used."
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:76
+#: ../../build/doc/aStar-family.rst:78
 msgid "Running time: :math:`O((E + V) * \\log V)`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:81
+#: ../../build/doc/aStar-family.rst:83
 msgid "Advanced documentation"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:83
+#: ../../build/doc/aStar-family.rst:85
 msgid ""
 "The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm"
 " with a heuristic, that is an estimation of the remaining cost from the "
@@ -148,159 +146,177 @@ msgid ""
 " + V) * \\log V)`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:93
+#: ../../build/doc/aStar-family.rst:95
 msgid "Heuristic"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:95
+#: ../../build/doc/aStar-family.rst:97
 msgid "Currently the heuristic functions available are:"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:97
+#: ../../build/doc/aStar-family.rst:99
 msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:98
+#: ../../build/doc/aStar-family.rst:100
 msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:99
+#: ../../build/doc/aStar-family.rst:101
 msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:100
+#: ../../build/doc/aStar-family.rst:102
 msgid "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:101
+#: ../../build/doc/aStar-family.rst:103
 msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:102
+#: ../../build/doc/aStar-family.rst:104
 msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:104
+#: ../../build/doc/aStar-family.rst:106
 msgid "where :math:`\\Delta x = x_1 - x_0` and :math:`\\Delta y = y_1 - y_0`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:110 ../../build/doc/aStar-family.rst:123
-#: ../../build/doc/aStar-family.rst:136
+#: ../../build/doc/aStar-family.rst:112 ../../build/doc/aStar-family.rst:125
+#: ../../build/doc/aStar-family.rst:138
 msgid "Factor"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:113
+#: ../../build/doc/aStar-family.rst:115
 msgid "Analysis 1"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:114
+#: ../../build/doc/aStar-family.rst:116
 msgid ""
 "Working with cost/reverse_cost as length in degrees, x/y in lat/lon: "
 "Factor = 1   (no need to change units)"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:118
+#: ../../build/doc/aStar-family.rst:120
 msgid "Analysis 2"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:119
+#: ../../build/doc/aStar-family.rst:121
 msgid ""
 "Working with cost/reverse_cost as length in meters, x/y in lat/lon: "
 "Factor =  would depend on the location of the points:"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:123 ../../build/doc/aStar-family.rst:136
+#: ../../build/doc/aStar-family.rst:125 ../../build/doc/aStar-family.rst:138
 msgid "Latitude"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:123 ../../build/doc/aStar-family.rst:136
+#: ../../build/doc/aStar-family.rst:125 ../../build/doc/aStar-family.rst:138
 msgid "Conversion"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:125 ../../build/doc/aStar-family.rst:138
+#: ../../build/doc/aStar-family.rst:127 ../../build/doc/aStar-family.rst:140
 msgid "45"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:125
+#: ../../build/doc/aStar-family.rst:127
 msgid "1 longitude degree is  78846.81 m"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:125
+#: ../../build/doc/aStar-family.rst:127
 msgid "78846"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:126 ../../build/doc/aStar-family.rst:139
+#: ../../build/doc/aStar-family.rst:128 ../../build/doc/aStar-family.rst:141
 msgid "0"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:126
+#: ../../build/doc/aStar-family.rst:128
 msgid "1 longitude degree is 111319.46 m"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:126
+#: ../../build/doc/aStar-family.rst:128
 msgid "111319"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:130
+#: ../../build/doc/aStar-family.rst:132
 msgid "Analysis 3"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:131
+#: ../../build/doc/aStar-family.rst:133
 msgid ""
 "Working with cost/reverse_cost as time in seconds, x/y in lat/lon: "
 "Factor: would depend on the location of the points and on the average "
 "speed say 25m/s is the speed."
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:138
+#: ../../build/doc/aStar-family.rst:140
 msgid "1 longitude degree is (78846.81m)/(25m/s)"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:138
+#: ../../build/doc/aStar-family.rst:140
 msgid "3153 s"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:139
+#: ../../build/doc/aStar-family.rst:141
 msgid "1 longitude degree is (111319.46 m)/(25m/s)"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:139
+#: ../../build/doc/aStar-family.rst:141
 msgid "4452 s"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:145
+#: ../../build/doc/aStar-family.rst:147
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:147
+#: ../../build/doc/aStar-family.rst:149
 msgid ":doc:`pgr_aStar`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:148
+#: ../../build/doc/aStar-family.rst:150
 msgid ":doc:`pgr_aStarCost`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:149
+#: ../../build/doc/aStar-family.rst:151
 msgid ":doc:`pgr_aStarCostMatrix`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:150
+#: ../../build/doc/aStar-family.rst:152
 msgid "https://www.boost.org/libs/graph/doc/astar_search.html"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:151
+#: ../../build/doc/aStar-family.rst:153
 msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:154
+#: ../../build/doc/aStar-family.rst:156
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:155
+#: ../../build/doc/aStar-family.rst:157
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:156
+#: ../../build/doc/aStar-family.rst:158
 msgid ":ref:`search`"
 msgstr ""
+
+#~ msgid "Previous versions of this page"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/aStar-family.html>`__) "
+#~ "`3.0 <https://docs.pgrouting.org/3.0/en/aStar-"
+#~ "family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
+#~ "/aStar-family.html>`__"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/aStar-family.html>`__ "
+#~ "`2.4 <https://docs.pgrouting.org/2.4/en/aStar-"
+#~ "family.html>`__"
+#~ msgstr ""
 

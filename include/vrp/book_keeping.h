@@ -52,14 +52,6 @@ class Swap_info {
             size_t from_o,
             size_t to_o,
             double delta);
-#if 0
-    from_truck(from),
-        to_truck(to),
-        from_order(from_o),
-        to_order(to_o),
-        estimated_delta(delta)
-        { }
-#endif
     friend std::ostream& operator << (std::ostream& log, const Swap_info &d);
 #if 0
     {
@@ -106,17 +98,6 @@ class Swap_bk {
 
      Swaps_queue  m_swaps;
      friend std::ostream& operator<< (std::ostream &log, const Swap_bk &data);
-#if 0
-     {
-         auto q = data.m_swaps;
-         while (!q.empty()) {
-             log << q.top() << " ";
-             q.pop();
-         }
-         log << '\n';
-         return log;
-     }
-#endif
 
  public:
      Swap_bk() = default;

@@ -1,7 +1,7 @@
 \i setup.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(224);
+SELECT plan(226);
 
 
 SELECT has_function('pgr_pushrelabel',
@@ -12,6 +12,8 @@ SELECT has_function('pgr_pushrelabel',
     ARRAY['text', 'anyarray', 'bigint']);
 SELECT has_function('pgr_pushrelabel',
     ARRAY['text', 'anyarray', 'anyarray']);
+SELECT has_function('pgr_pushrelabel',
+    ARRAY['text', 'text']);
 
 SELECT function_returns('pgr_pushrelabel',
     ARRAY['text', 'bigint', 'bigint'],
@@ -24,6 +26,9 @@ SELECT function_returns('pgr_pushrelabel',
     'setof record');
 SELECT function_returns('pgr_pushrelabel',
     ARRAY['text', 'anyarray', 'anyarray'],
+    'setof record');
+SELECT function_returns('pgr_pushrelabel',
+    ARRAY['text', 'text'],
     'setof record');
 
 

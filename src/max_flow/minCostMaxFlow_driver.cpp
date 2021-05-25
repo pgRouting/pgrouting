@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void
 do_pgr_minCostMaxFlow(
         pgr_costFlow_t  *data_edges, size_t total_edges,
+        pgr_combination_t *combinations, size_t total_combinations,
         int64_t *sourceVertices, size_t sizeSourceVerticesArr,
         int64_t *sinkVertices, size_t sizeSinkVerticesArr,
         bool only_cost,
@@ -59,13 +60,28 @@ do_pgr_minCostMaxFlow(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+        pgassert(data_edges);
         pgassert(total_edges != 0);
+        pgassert((sourceVertices && sinkVertices) || combinations);
+        pgassert((sizeSourceVerticesArr && sizeSinkVerticesArr) || total_combinations);
 
         std::vector<pgr_costFlow_t> edges(data_edges, data_edges + total_edges);
         std::set<int64_t> sources(
                 sourceVertices, sourceVertices + sizeSourceVerticesArr);
         std::set<int64_t> targets(
                 sinkVertices, sinkVertices + sizeSinkVerticesArr);
+        std::vector< pgr_combination_t > combinations_vector(
+                combinations, combinations + total_combinations);
+
+        if (!combinations_vector.empty()) {
+            pgassert(sources.empty());
+            pgassert(targets.empty());
+
+            for (const pgr_combination_t &comb : combinations_vector) {
+                sources.insert(comb.source);
+                targets.insert(comb.target);
+            }
+        }
 
         std::set<int64_t> vertices(sources);
         vertices.insert(targets.begin(), targets.end());

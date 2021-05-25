@@ -1,99 +1,143 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.0.0-beta
+# Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2019
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.0.0-beta\n"
+"Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-07 12:09-0500\n"
-"PO-Revision-Date: 2019-09-07 19:11+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2019\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"PO-Revision-Date: 2020-11-04 18:28+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/experimental.rst:10
+#: ../../build/doc/experimental.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/experimental.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/experimental.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/experimental.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/experimental.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual "
+"<https://docs.pgrouting.org/latest/en/experimental.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/experimental.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/experimental.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/experimental.html>`__"
+
+#: ../../build/doc/experimental.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/proposed.html#experimental-functions>`__ "
+"`2.5 <https://docs.pgrouting.org/2.5/en/proposed.html#experimental-"
+"functions>`__ `2.4 <https://docs.pgrouting.org/2.4/en/proposed.html"
+"#experimental-and-proposed-functions>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/proposed.html#experimental-and-"
+"proposed-functions>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/proposed.html#experimental-and-"
+"proposed-functions>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/proposed.html#experimental-functions>`__ "
+"`2.5 <https://docs.pgrouting.org/2.5/en/proposed.html#experimental-"
+"functions>`__ `2.4 <https://docs.pgrouting.org/2.4/en/proposed.html"
+"#experimental-and-proposed-functions>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/proposed.html#experimental-and-"
+"proposed-functions>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/proposed.html#experimental-and-"
+"proposed-functions>`__"
+
+#: ../../build/doc/experimental.rst:25
 msgid "Experimental Functions"
 msgstr "Funciones Experimentales"
 
-#: ../../build/doc/experimental.rst:14
+#: ../../build/doc/experimental.rst:29
+msgid "Possible server crash"
+msgstr "Posible bloqueo del servidor"
+
+#: ../../build/doc/experimental.rst:31
+msgid "These functions might create a server crash"
+msgstr "Estas funciones pueden crear un bloqueo del servidor"
+
+#: ../../build/doc/experimental.rst:33
 msgid "Experimental functions"
 msgstr "Funciones experimentales"
 
-#: ../../build/doc/experimental.rst:16
+#: ../../build/doc/experimental.rst:35
 msgid "They are not officially of the current release."
 msgstr "No son oficialmente de la versión actual."
 
-#: ../../build/doc/experimental.rst:17
+#: ../../build/doc/experimental.rst:36
 msgid "They likely will not be officially be part of the next release:"
 msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
 
-#: ../../build/doc/experimental.rst:19
+#: ../../build/doc/experimental.rst:38
 msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
 
-#: ../../build/doc/experimental.rst:20
+#: ../../build/doc/experimental.rst:39
 msgid "Name might change."
 msgstr "El nombre puede cambiar."
 
-#: ../../build/doc/experimental.rst:21
+#: ../../build/doc/experimental.rst:40
 msgid "Signature might change."
 msgstr "La firma (declaración de funciones) podría cambiar."
 
-#: ../../build/doc/experimental.rst:22
+#: ../../build/doc/experimental.rst:41
 msgid "Functionality might change."
 msgstr "La funcionalidad puede cambiar."
 
-#: ../../build/doc/experimental.rst:23
+#: ../../build/doc/experimental.rst:42
 msgid "pgTap tests might be missing."
 msgstr "Las pruebas de pgTap pueden estar ausentes."
 
-#: ../../build/doc/experimental.rst:24
+#: ../../build/doc/experimental.rst:43
 msgid "Might need c/c++ coding."
 msgstr "Posiblemente necesite codificación c/c++."
 
-#: ../../build/doc/experimental.rst:25
+#: ../../build/doc/experimental.rst:44
 msgid "May lack documentation."
 msgstr "Puede haber carencia de documentación."
 
-#: ../../build/doc/experimental.rst:26
+#: ../../build/doc/experimental.rst:45
 msgid "Documentation if any might need to be rewritten."
 msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
-#: ../../build/doc/experimental.rst:27
+#: ../../build/doc/experimental.rst:46
 msgid "Documentation examples might need to be automatically generated."
 msgstr ""
 "Ejemplos de documentación que puede ser necesario generar automáticamente."
 
-#: ../../build/doc/experimental.rst:28
+#: ../../build/doc/experimental.rst:47
 msgid "Might need a lot of feedback from the comunity."
 msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
 
-#: ../../build/doc/experimental.rst:29
+#: ../../build/doc/experimental.rst:48
 msgid "Might depend on a proposed function of pgRouting"
 msgstr "Puede depender de una función propuesta de pgRouting."
 
-#: ../../build/doc/experimental.rst:30
+#: ../../build/doc/experimental.rst:49
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
-#: ../../build/doc/experimental.rst:35
+#: ../../build/doc/experimental.rst:54
 msgid "Families"
 msgstr "Familias"
 
-#: ../../build/doc/experimental.rst:36
+#: ../../build/doc/experimental.rst:55
 msgid ":doc:`flow-family`"
 msgstr ":doc:`flow-family`"
 
@@ -106,7 +150,7 @@ msgstr ""
 msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
 msgstr ":doc:`pgr_maxFlowMinCost_Cost` - Solo el cálculo del Coste Mínimo."
 
-#: ../../build/doc/experimental.rst:42
+#: ../../build/doc/experimental.rst:61
 msgid ":doc:`chinesePostmanProblem-family`"
 msgstr ":doc:`chinesePostmanProblem-family`"
 
@@ -118,7 +162,27 @@ msgstr ":doc:`pgr_chinesePostman`"
 msgid ":doc:`pgr_chinesePostmanCost`"
 msgstr ":doc:`pgr_chinesePostmanCost`"
 
-#: ../../build/doc/experimental.rst:48
+#: ../../build/doc/experimental.rst:67
+msgid ":doc:`coloring-family`"
+msgstr ":doc:`coloring-family`"
+
+#: ../../build/doc/coloring-family.rst:3
+msgid ""
+":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy"
+" approach."
+msgstr ""
+":doc:`pgr_sequentialVertexColoring`- Algoritmo de coloración de vértices "
+"mediante un enfoque codicioso."
+
+#: ../../build/doc/coloring-family.rst:4
+msgid ""
+":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring "
+"approach."
+msgstr ""
+":doc:`pgr_bipartite` - Algoritmo de grafo bipartito mediante un enfoque de "
+"coloración basado en DFS."
+
+#: ../../build/doc/experimental.rst:73
 msgid ":doc:`topology-functions`"
 msgstr ":doc:`topology-functions`"
 
@@ -130,7 +194,7 @@ msgstr ""
 ":doc:`pgr_extractVertices` - extrae información de vértices basada en el "
 "origen y el destino."
 
-#: ../../build/doc/experimental.rst:54
+#: ../../build/doc/experimental.rst:79
 msgid ":doc:`transformation-family`"
 msgstr ":doc:`transformation-family`"
 
@@ -149,11 +213,43 @@ msgstr ""
 ":doc:`pgr_lineGraphFull` -  Algoritmo de transformación para generar un "
 "grafo de líneas a partir de cada vértice en el grafo de entrada."
 
-#: ../../build/doc/experimental.rst:66
+#: ../../build/doc/experimental.rst:85
+msgid ":doc:`traversal-family`"
+msgstr ":doc:`traversal-family`"
+
+#: ../../build/doc/traversal-family.rst:3
+msgid ""
+":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
+msgstr ""
+":doc:`pgr_depthFirstSearch` - Primera Búsqueda en Profundidad traversal del "
+"grafo."
+
+#: ../../build/doc/experimental.rst:91
+msgid ":doc:`components-family`"
+msgstr ":doc:`components-family`"
+
+#: ../../build/doc/components-family.rst:3
+msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
+msgstr ""
+":doc:`pgr_makeConnected` - Detalles de aristas para hacer grafos conectados."
+
+#: ../../build/doc/experimental.rst:97
+msgid ":doc:`dijkstra-family`"
+msgstr ":doc:`dijkstra-family`"
+
+#: ../../build/doc/dijkstra-family.rst:3
+msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
+msgstr ":doc:`pgr_dijkstraNear` - Obtener la ruta al vértice más cercano."
+
+#: ../../build/doc/dijkstra-family.rst:4
+msgid ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
+msgstr ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
+
+#: ../../build/doc/experimental.rst:113
 msgid "categories"
 msgstr "Categorías"
 
-#: ../../build/doc/experimental.rst:67
+#: ../../build/doc/experimental.rst:114
 msgid ":doc:`VRP-category`"
 msgstr ":doc:`VRP-category`"
 
@@ -182,58 +278,66 @@ msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
 msgstr ""
 ":doc:`pgr_vrpOneDepot` - Desde un único depósito, distribuye los pedidos"
 
-#: ../../build/doc/experimental.rst:79
+#: ../../build/doc/experimental.rst:126
 msgid "Not classified"
 msgstr "No clasificado"
 
-#: ../../build/doc/experimental.rst:80
+#: ../../build/doc/experimental.rst:127
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ":doc:`pgr_bellmanFord`"
 
-#: ../../build/doc/experimental.rst:81
+#: ../../build/doc/experimental.rst:128
 msgid ":doc:`pgr_binaryBreadthFirstSearch`"
 msgstr ":doc:`pgr_binaryBreadthFirstSearch`"
 
-#: ../../build/doc/experimental.rst:82
+#: ../../build/doc/experimental.rst:129
 msgid ":doc:`pgr_breadthFirstSearch`"
 msgstr ":doc:`pgr_breadthFirstSearch`"
 
-#: ../../build/doc/experimental.rst:83
+#: ../../build/doc/experimental.rst:130
 msgid ":doc:`pgr_dagShortestPath`"
 msgstr ":doc:`pgr_dagShortestPath`"
 
-#: ../../build/doc/experimental.rst:84
+#: ../../build/doc/experimental.rst:131
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ":doc:`pgr_edwardMoore`"
 
-#: ../../build/doc/experimental.rst:85
+#: ../../build/doc/experimental.rst:132
+msgid ":doc:`pgr_isPlanar`"
+msgstr ":doc:`pgr_isPlanar`"
+
+#: ../../build/doc/experimental.rst:133
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ":doc:`pgr_stoerWagner`"
 
-#: ../../build/doc/experimental.rst:86
+#: ../../build/doc/experimental.rst:134
 msgid ":doc:`pgr_topologicalSort`"
 msgstr ":doc:`pgr_topologicalSort`"
 
-#: ../../build/doc/experimental.rst:87
+#: ../../build/doc/experimental.rst:135
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ":doc:`pgr_transitiveClosure`"
 
-#: ../../build/doc/experimental.rst:88
+#: ../../build/doc/experimental.rst:136
 msgid ":doc:`pgr_turnRestrictedPath`"
 msgstr ":doc:`pgr_turnRestrictedPath`"
 
-#: ../../build/doc/experimental.rst:105
+#: ../../build/doc/experimental.rst:137
+msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
+msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
+
+#: ../../build/doc/experimental.rst:156
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/experimental.rst:108
+#: ../../build/doc/experimental.rst:159
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/experimental.rst:109
+#: ../../build/doc/experimental.rst:160
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/experimental.rst:110
+#: ../../build/doc/experimental.rst:161
 msgid ":ref:`search`"
 msgstr ":ref:`search`"

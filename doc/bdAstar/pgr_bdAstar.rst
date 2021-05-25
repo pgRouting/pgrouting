@@ -7,6 +7,22 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+|
+
+* **Supported versions:**
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_bdAstar.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdAstar.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdAstar.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdAstar.html>`__
+* **Unsupported versions:**
+  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__
+  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__
+  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_bdAstar.html>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/bd_astar/doc/pgr_bdAstar.html>`__
+  `2.2 <https://docs.pgrouting.org/2.2/en/src/bd_astar/doc/pgr_bdAstar.html>`__
+  `2.1 <https://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__
+  `2.0 <https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__
+
 pgr_bdAstar
 ===============================================================================
 
@@ -18,6 +34,12 @@ pgr_bdAstar
    Boost Graph Inside
 
 .. rubric:: Availability:
+
+* Version 3.2.0
+
+  * New **proposed** function:
+
+    * pgr_bdAstar(Combinations)
 
 * Version 3.0.0
 
@@ -39,20 +61,6 @@ pgr_bdAstar
 
   * **Official** pgr_bdAstar(One to One)
 
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdAstar.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdAstar.html>`__
-  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__
-
-* **Unsupported versions:**
-  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__
-  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_bdAstar.html>`__
-  `2.3 <https://docs.pgrouting.org/2.3/en/src/bd_astar/doc/pgr_bdAstar.html>`__
-  `2.2 <https://docs.pgrouting.org/2.2/en/src/bd_astar/doc/pgr_bdAstar.html>`__
-  `2.1 <https://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__
-  `2.0 <https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -78,10 +86,11 @@ Signature
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, from_vid,  to_vid,  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_bdAstar(edges_sql, from_vid,  to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_bdAstar(edges_sql, from_vids, to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_bdAstar(edges_sql, from_vids, to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(Edges SQL, from_vid,  to_vid,  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(Edges SQL, from_vid,  to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(Edges SQL, from_vids, to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(Edges SQL, from_vids, to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon]) -- Proposed on v3.2
 
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -92,7 +101,7 @@ Optional parameters are `named parameters` and have a default value.
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vid, end_vid)
+    pgr_bdAstar(Edges SQL, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 :Example: From vertex :math:`2` to vertex :math:`3` on a **directed** graph
@@ -108,7 +117,7 @@ One to One
 ...............................................................................
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, from_vid,  to_vid,  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(Edges SQL, from_vid,  to_vid,  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 :Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph using heuristic :math:`2`
@@ -125,7 +134,7 @@ One to many
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, from_vid,  to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(Edges SQL, from_vid,  to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -143,7 +152,7 @@ Many to One
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, from_vids, to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(Edges SQL, from_vids, to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -161,7 +170,7 @@ Many to Many
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, from_vids, to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstar(Edges SQL, from_vids, to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -170,6 +179,25 @@ Many to Many
 .. literalinclude:: doc-pgr_bdAstar.queries
    :start-after: -- q5
    :end-before: -- q6
+
+.. index::
+    single: bdAstar(Combinations) -- Proposed on v3.2
+
+Combinations
+...............................................................................
+
+.. code-block:: none
+
+    pgr_bdAstar(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
+
+:Example: Using a combinations table on a **directed** graph using factor :math:`0.5`.
+
+
+.. literalinclude:: doc-pgr_bdAstar.queries
+   :start-after: -- q6
+   :end-before: -- q7
 
 Parameters
 -------------------------------------------------------------------------------
@@ -186,15 +214,22 @@ Optional Parameters
    :end-before: aStar optional parameters end
 
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
-edges_sql
+Edges query
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
+
+Combinations query
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------

@@ -4,31 +4,55 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
-# Vicky Vergara <vicky@georepublic.de>, 2019
-# MarPetra <mvergaratrejo@gmail.com>, 2020
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
+# MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:55+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"PO-Revision-Date: 2020-11-04 18:32+0000\n"
+"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:11
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_bdAstarCostMatrix.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_bdAstarCostMatrix.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_bdAstarCostMatrix.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_bdAstarCostMatrix.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual "
+"<https://docs.pgrouting.org/latest/en/pgr_bdAstarCostMatrix.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_bdAstarCostMatrix.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_bdAstarCostMatrix.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_bdAstarCostMatrix.html>`__"
+
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:17
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html>`__"
+
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:22
 msgid "pgr_bdAstarCostMatrix"
 msgstr "pgr_bdAstarCostMatrix"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:13
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:24
 msgid ""
 "``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using "
 ":doc:`pgr_aStar`."
@@ -36,114 +60,90 @@ msgstr ""
 "``pgr_bdAstarCostMatrix`` - Calcula la matriz de costes utilizando "
 ":doc:`pgr_aStar`."
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:18
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:29
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:21
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:32
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:22
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:33
 msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:24
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:35
 msgid "**Official** function"
 msgstr "Función **oficial**"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:26
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:37
 msgid "Version 2.5.0"
 msgstr "Versión 2.5.0"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:28
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:39
 msgid "New **Proposed** function"
 msgstr "Nueva función **Propuesta**"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:31
-msgid "Support"
-msgstr "Soporte"
-
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:32
-msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_bdAstarCostMatrix.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_bdAstarCostMatrix.html>`__ `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual​(`3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_bdAstarCostMatrix.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_bdAstarCostMatrix.html>`__ `2.6 "
-"<https://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html>`__"
-
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:37
-msgid ""
-"**Unsupported versions:** `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html>`__"
-msgstr ""
-"**Versiones no soportadas:** `2.5 "
-"<https://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html>`__"
-
 #: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_aStar.rst:4
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:41
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:108
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:43
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:110
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:43
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:45
 msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:45
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:47
 msgid "Using internaly the :doc:`pgr_bdAstar` algorithm"
 msgstr "Usando internamente el algoritmo :doc:`pgr_bdAstar`"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:46
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:48
 msgid "Returns a cost matrix."
 msgstr "Devuelve una matriz de costes."
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:47
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:49
 msgid "No ordering is performed"
 msgstr "No se realiza ningún pedido"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:48
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:50
 msgid "let `v` and `u` are nodes on the graph:"
 msgstr "Sean `v` y `u` nodos en el grafo:"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:50
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:52
 msgid "when there is no path from `v` to `u`:"
 msgstr "cuando no hay ruta de `v` a `u`:"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:52
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:57
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:54
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:59
 msgid "no corresponding row is returned"
 msgstr "no se devuelve ninguna fila correspondiente"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:53
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:55
 msgid "cost from `v` to `u` is :math:`\\inf`"
 msgstr "costo de `v` a `u` es :math:`\\inf`"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:55
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:57
 msgid "when :math:`v = u` then"
 msgstr "cuando :math:`v = u` entonces"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:58
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:60
 msgid "cost from `v` to `u` is :math:`0`"
 msgstr "costo de `v` a `u` es :math:`0`"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:60
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:62
 msgid "When the graph is **undirected** the cost matrix is symmetric"
 msgstr "Cuando el grafo es **no dirigido**, la matriz de costes es simétrica"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:63
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:65
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:66
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:68
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:73
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:75
 msgid "Using defaults"
 msgstr "Uso de valores predeterminados"
 
@@ -151,17 +151,17 @@ msgstr "Uso de valores predeterminados"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:79
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:81
 msgid "Cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on a **directed** graph"
 msgstr ""
 "Costo de la matriz para los vértices :math:`\\{1, 2, 3, 4\\}` en un grafo "
 "**no directed**"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:90
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:92
 msgid "Complete Signature"
 msgstr "Firma completa"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:98
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:100
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on an "
 "**undirected** graph using heuristic :math:`2`"
@@ -169,45 +169,45 @@ msgstr ""
 "Matriz de costes simetrica para los vértices :math:`\\{1, 2, 3, 4\\}` en un "
 "grafo **no dirigido** usando la  heurística :math:`2`"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:105
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:107
 msgid "Parameters"
 msgstr "Parámetros"
 
 #: ../../build/doc/pgr_aStar.rst:4
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:108
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:110
 msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:6 ../../build/doc/pgr_aStar.rst:4
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:108
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:110
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:110
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:112
 msgid "**edges_sql**"
 msgstr "**edges_sql**"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:110
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:112
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:110
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:112
 msgid "`edges_sql`_  inner query."
 msgstr "`edges_sql`_  consulta interna."
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:111
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:113
 msgid "**vids**"
 msgstr "**vids**"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:111
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:113
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr "``ARRAY[ANY-INTEGER]``"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:111
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:113
 msgid "Array of vertices identifiers."
 msgstr "Arreglo de identificadores de vértices."
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:115
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:117
 msgid "Optional Parameters"
 msgstr "Parámetros opcionales"
 
@@ -301,12 +301,12 @@ msgstr "**epsilon**"
 msgid "For less restricted results. :math:`epsilon >= 1`."
 msgstr "Para resultados menos restringidos. :math:`epsilon >= 1`."
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:122
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:124
 msgid "Inner query"
 msgstr "Consulta interna"
 
 #: ../../build/doc/pgRouting-concepts.rst
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:125
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:127
 msgid "edges_sql"
 msgstr "edges_sql"
 
@@ -448,7 +448,7 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:132
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:134
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -466,24 +466,16 @@ msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
-msgid ""
-"Identifier of the starting vertex. Used when multiple starting vetrices are "
-"in the query."
-msgstr ""
-"Identificador del vértice inicial. Se utiliza cuando hay varias vetrices "
-"iniciales en la consulta."
+msgid "Identifier of the starting vertex."
+msgstr "Identificador del vértice inicial."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**end_vid**"
 msgstr "**end_vid**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
-msgid ""
-"Identifier of the ending vertex. Used when multiple ending vertices are in "
-"the query."
-msgstr ""
-"Identificador del vértice final. Se utiliza cuando hay varios vértices "
-"finales en la consulta."
+msgid "Identifier of the ending vertex."
+msgstr "Identificador del vértice final."
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "**agg_cost**"
@@ -493,50 +485,85 @@ msgstr "**agg_cost**"
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr "Coste agregado de ``start_vid`` a ``end_vid``."
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:139
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:141
 msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:141
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:143
 msgid "Use with :doc:`pgr_TSP`"
 msgstr "Uso con :doc:`pgr_TSP`"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:148
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:150
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:150
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:152
 msgid ":doc:`aStar-family`"
 msgstr ":doc:`aStar-family`"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:151
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:153
 msgid ":doc:`bdAstar-family`"
 msgstr ":doc:`bdAstar-family`"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:152
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:154
 msgid ":doc:`cost-category`"
 msgstr ":doc:`cost-category`"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:153
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:155
 msgid ":doc:`costMatrix-category`"
 msgstr ":doc:`costMatrix-category`"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:154
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:156
 msgid ":doc:`TSP-family`"
 msgstr ":doc:`TSP-family`"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:155
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:157
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:158
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:160
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:159
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:161
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_bdAstarCostMatrix.rst:160
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:162
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid ""
+#~ "Identifier of the starting vertex. Used when multiple starting vetrices are "
+#~ "in the query."
+#~ msgstr ""
+#~ "Identificador del vértice inicial. Se utiliza cuando hay varias vetrices "
+#~ "iniciales en la consulta."
+
+#~ msgid ""
+#~ "Identifier of the ending vertex. Used when multiple ending vertices are in "
+#~ "the query."
+#~ msgstr ""
+#~ "Identificador del vértice final. Se utiliza cuando hay varios vértices "
+#~ "finales en la consulta."
+
+#~ msgid "Support"
+#~ msgstr "Soporte"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_bdAstarCostMatrix.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_bdAstarCostMatrix.html>`__ `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual​(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/es/pgr_bdAstarCostMatrix.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/es/pgr_bdAstarCostMatrix.html>`__ `2.6 "
+#~ "<https://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html>`__"
+
+#~ msgid ""
+#~ "**Unsupported versions:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html>`__"
+#~ msgstr ""
+#~ "**Versiones no soportadas:** `2.5 "
+#~ "<https://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html>`__"

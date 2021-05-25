@@ -4,31 +4,40 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 # Translators:
-# 0a3886ca72a6d508a04563bd8c050dff, 2019
-# Vicky Vergara <vicky@georepublic.de>, 2019
+# 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 08:19-0500\n"
-"PO-Revision-Date: 2019-09-07 11:55+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2020\n"
+"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"PO-Revision-Date: 2020-11-04 18:32+0000\n"
+"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:11
+#: ../../build/doc/pgr_transitiveClosure.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_transitiveClosure.html>`__ (`3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_transitiveClosure.html>`__) `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_transitiveClosure.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_transitiveClosure.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_transitiveClosure.rst:19
 msgid "pgr_transitiveClosure - Experimental"
 msgstr "pgr_transitiveClosure - Experimental"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:13
+#: ../../build/doc/pgr_transitiveClosure.rst:21
 msgid ""
 "``pgr_transitiveClosure`` — Returns the transitive closure graph of the "
 "input graph. In particular, the transitive closure algorithm implemented by "
@@ -38,7 +47,7 @@ msgstr ""
 " de entrada. En particular, el algoritmo de cierre transitivo implementado "
 "por Boost.Graph."
 
-#: ../../build/doc/pgr_transitiveClosure.rst:19
+#: ../../build/doc/pgr_transitiveClosure.rst:27
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
@@ -111,40 +120,26 @@ msgstr "Puede depender de una función propuesta de pgRouting."
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:26
+#: ../../build/doc/pgr_transitiveClosure.rst:34
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:27
+#: ../../build/doc/pgr_transitiveClosure.rst:35
 msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:29
+#: ../../build/doc/pgr_transitiveClosure.rst:37
 msgid "New **experimental** function"
 msgstr "Nueva función **experimental**"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:32
-msgid "Support"
-msgstr "Soporte"
-
-#: ../../build/doc/pgr_transitiveClosure.rst:33
-msgid ""
-"**Supported versions:** current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_transitiveClosure.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_transitiveClosure.html>`__"
-msgstr ""
-"**Versiones soportadas:** actual(`3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_transitiveClosure.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_transitiveClosure.html>`__"
-
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_transitiveClosure.rst:38
-#: ../../build/doc/pgr_transitiveClosure.rst:77
-#: ../../build/doc/pgr_transitiveClosure.rst:97
+#: ../../build/doc/pgr_transitiveClosure.rst:41
+#: ../../build/doc/pgr_transitiveClosure.rst:80
+#: ../../build/doc/pgr_transitiveClosure.rst:100
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:40
+#: ../../build/doc/pgr_transitiveClosure.rst:43
 msgid ""
 "The transitive_closure() function transforms the input graph g into the "
 "transitive closure graph tc."
@@ -152,7 +147,7 @@ msgstr ""
 "La función transitive_closure() transforma el grafo de entrada g en el grafo"
 " de cierre transitivo tc."
 
-#: ../../build/doc/pgr_transitiveClosure.rst:42
+#: ../../build/doc/pgr_transitiveClosure.rst:45
 msgid ""
 "This implementation can only be used with a **directed** graph with no "
 "cycles i.e. directed acyclic graph."
@@ -160,11 +155,11 @@ msgstr ""
 "Esta implementación solo se puede utilizar con un grafo **dirigido** sin "
 "ciclos i.e., es decir, un grafo acíclico dirigido."
 
-#: ../../build/doc/pgr_transitiveClosure.rst:50
+#: ../../build/doc/pgr_transitiveClosure.rst:53
 msgid "The main characteristics are:"
 msgstr "Las principales características son:"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:45
+#: ../../build/doc/pgr_transitiveClosure.rst:48
 msgid ""
 "Process is valid for directed acyclic graphs only. otherwise it will throw "
 "warnings."
@@ -172,23 +167,23 @@ msgstr ""
 "El proceso solo es válido para grafos acíclicos dirigidos. de lo contrario "
 "lanzará advertencias."
 
-#: ../../build/doc/pgr_transitiveClosure.rst:47
+#: ../../build/doc/pgr_transitiveClosure.rst:50
 msgid "The returned values are not ordered:"
 msgstr "Los valores devueltos no se ordenan:"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:49
+#: ../../build/doc/pgr_transitiveClosure.rst:52
 msgid "Running time: :math:`O(|V||E|)`"
 msgstr "Tiempo de ejecución: :math:`O(|V||E|)`"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:53
+#: ../../build/doc/pgr_transitiveClosure.rst:56
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:56
+#: ../../build/doc/pgr_transitiveClosure.rst:59
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:57
+#: ../../build/doc/pgr_transitiveClosure.rst:60
 msgid "The pgr_transitiveClosure function has the following signature:"
 msgstr "La función pgr_transitiveClosure tiene la siguiente firma:"
 
@@ -196,39 +191,39 @@ msgstr "La función pgr_transitiveClosure tiene la siguiente firma:"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:67
+#: ../../build/doc/pgr_transitiveClosure.rst:70
 msgid "Complete Graph of 3 vertexs"
 msgstr "Grafo Completo de 3 vértices"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:74
+#: ../../build/doc/pgr_transitiveClosure.rst:77
 msgid "Parameters"
 msgstr "Parámetros"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_transitiveClosure.rst:77
-#: ../../build/doc/pgr_transitiveClosure.rst:97
+#: ../../build/doc/pgr_transitiveClosure.rst:80
+#: ../../build/doc/pgr_transitiveClosure.rst:100
 msgid "Column"
 msgstr "Columna"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_transitiveClosure.rst:77
-#: ../../build/doc/pgr_transitiveClosure.rst:97
+#: ../../build/doc/pgr_transitiveClosure.rst:80
+#: ../../build/doc/pgr_transitiveClosure.rst:100
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:79
+#: ../../build/doc/pgr_transitiveClosure.rst:82
 msgid "**Edges SQL**"
 msgstr "**Edges SQL**"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:79
+#: ../../build/doc/pgr_transitiveClosure.rst:82
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:79
+#: ../../build/doc/pgr_transitiveClosure.rst:82
 msgid "SQL query as described in `Inner query`_"
 msgstr "Consulta SQL como se describe en `Inner query`_"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:83
+#: ../../build/doc/pgr_transitiveClosure.rst:86
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -327,84 +322,96 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:90
+#: ../../build/doc/pgr_transitiveClosure.rst:93
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:92
+#: ../../build/doc/pgr_transitiveClosure.rst:95
 msgid "RETURNS SETOF  (seq, vid, target_array)"
 msgstr "DEVUELVE UN CONJUNTO DE  (seq, vid, target_array)"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:94
+#: ../../build/doc/pgr_transitiveClosure.rst:97
 msgid "The function returns a single row. The columns of the row are:"
 msgstr "La función devuelve una sola fila. Las columnas de la fila son:"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:99
+#: ../../build/doc/pgr_transitiveClosure.rst:102
 msgid "**seq**"
 msgstr "**seq**"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:99
+#: ../../build/doc/pgr_transitiveClosure.rst:102
 msgid "``INTEGER``"
 msgstr "``INTEGER``"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:99
+#: ../../build/doc/pgr_transitiveClosure.rst:102
 msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
-#: ../../build/doc/pgr_transitiveClosure.rst:100
+#: ../../build/doc/pgr_transitiveClosure.rst:103
 msgid "**vid**"
 msgstr "**vid**"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:100
+#: ../../build/doc/pgr_transitiveClosure.rst:103
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:100
+#: ../../build/doc/pgr_transitiveClosure.rst:103
 msgid "Identifier of the vertex."
 msgstr "Identificador del vértice."
 
-#: ../../build/doc/pgr_transitiveClosure.rst:101
+#: ../../build/doc/pgr_transitiveClosure.rst:104
 msgid "**target_array**"
 msgstr "**target_array**"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:101
+#: ../../build/doc/pgr_transitiveClosure.rst:104
 msgid "``ARRAY[BIGINT]``"
 msgstr "``ARRAY[BIGINT]``"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:101
+#: ../../build/doc/pgr_transitiveClosure.rst:104
 msgid "Array of identifiers of the vertices that are reachable from vertex v."
 msgstr ""
 "Arreglo de identificadores de los vértices a los que se puede acceder desde "
 "el vértice v."
 
-#: ../../build/doc/pgr_transitiveClosure.rst:105
+#: ../../build/doc/pgr_transitiveClosure.rst:108
 msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:107
+#: ../../build/doc/pgr_transitiveClosure.rst:110
 msgid "Some sub graphs of the sample data"
 msgstr "Algunos subgrafos de los datos de muestra"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:115
+#: ../../build/doc/pgr_transitiveClosure.rst:118
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:117
+#: ../../build/doc/pgr_transitiveClosure.rst:120
 msgid "https://en.wikipedia.org/wiki/Transitive_closure"
 msgstr "https://en.wikipedia.org/wiki/Transitive_closure"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:118
+#: ../../build/doc/pgr_transitiveClosure.rst:121
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_transitiveClosure.rst:121
+#: ../../build/doc/pgr_transitiveClosure.rst:124
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:122
+#: ../../build/doc/pgr_transitiveClosure.rst:125
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_transitiveClosure.rst:123
+#: ../../build/doc/pgr_transitiveClosure.rst:126
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "Support"
+#~ msgstr "Soporte"
+
+#~ msgid ""
+#~ "**Supported versions:** current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_transitiveClosure.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_transitiveClosure.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** actual(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/es/pgr_transitiveClosure.html>`__) `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/es/pgr_transitiveClosure.html>`__"

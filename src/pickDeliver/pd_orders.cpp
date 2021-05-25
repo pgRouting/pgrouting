@@ -49,12 +49,6 @@ PD_Orders:: add_order(
         const PickDeliveryOrders_t &order,
         const Vehicle_node &pick,
         const Vehicle_node &drop) {
-#if 0
-    problem->add_base_node(std::move(b_pick));
-    problem->add_base_node(std::move(b_drop));
-    problem->add_node(pick);
-    problem->add_node(drop);
-#endif
 
     /*
      * add into an order
@@ -81,70 +75,23 @@ PD_Orders::build_orders(
          * 1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
          */
 
-        if  (problem->m_cost_matrix.empty()) {
-            pgassert(false);
-#if 0
-            /*
-             * Euclidean version
-             */
-            auto b_pick = create_b_pick<Node>(order, problem->node_id());
-            Vehicle_node pickup(
-                    {problem->node_id()++, order, Tw_node::NodeType::kPickup});
+        /*
+         * matrix version
+         */
 
-            auto b_drop = create_b_deliver<Node>(order, problem->node_id());
-            Vehicle_node delivery({
-                    problem->node_id()++,
-                    order,
-                    Tw_node::NodeType::kDelivery});
-
-
-            add_order(order,
-                    std::move(b_pick), pickup,
-                    std::move(b_drop), delivery);
-#endif
-        } else {
-            /*
-             * matrix version
-             */
-#if 0
-#if 0
-            msg.log << "pickup \n"
-                << "pick_node_id: " << order.pick_node_id
-                << "\n";
-
-            msg.log << "pickup \n"
-                << "deliver_node_id: " << order.deliver_node_id
-                << "\n";
-#endif
-            auto b_pick = create_b_pick<Dnode>(order, problem->node_id());
-            Vehicle_node pickup(
-                    {problem->node_id()++, order, Tw_node::NodeType::kPickup});
-
-            auto b_drop = create_b_deliver<Dnode>(order, problem->node_id());
-            Vehicle_node delivery({
-                    problem->node_id()++,
-                    order,
-                    Tw_node::NodeType::kDelivery});
-
-            add_order(order,
-                    std::move(b_pick), pickup,
-                    std::move(b_drop), delivery);
-#endif
-
-            if (!problem->m_cost_matrix.has_id(order.pick_node_id)) {
-                throw std::make_pair(std::string("Unable to find node on matrix"), order.pick_node_id);
-            }
-            if (!problem->m_cost_matrix.has_id(order.deliver_node_id)) {
-                throw std::make_pair(std::string("Unable to find node on matrix"), order.deliver_node_id);
-            }
-
-            Vehicle_node pickup({problem->m_nodes.size(), order, Tw_node::NodeType::kPickup});
-            problem->add_node(pickup);
-            Vehicle_node delivery({problem->m_nodes.size(), order, Tw_node::NodeType::kDelivery});
-            problem->add_node(delivery);
-
-            add_order(order, pickup, delivery);
+        if (!problem->get_cost_matrix().has_id(order.pick_node_id)) {
+            throw std::make_pair(std::string("Unable to find node on matrix"), order.pick_node_id);
         }
+        if (!problem->get_cost_matrix().has_id(order.deliver_node_id)) {
+            throw std::make_pair(std::string("Unable to find node on matrix"), order.deliver_node_id);
+        }
+
+        Vehicle_node pickup({problem->get_nodes().size(), order, Tw_node::NodeType::kPickup});
+        problem->add_node(pickup);
+        Vehicle_node delivery({problem->get_nodes().size(), order, Tw_node::NodeType::kDelivery});
+        problem->add_node(delivery);
+
+        add_order(order, pickup, delivery);
     }  //  for (creating orders)
 
 #if 0
@@ -152,19 +99,6 @@ PD_Orders::build_orders(
 #endif
 }
 
-bool
-PD_Orders::is_valid(double speed) const {
-    for (const auto &o : m_orders) {
-        if (!o.is_valid(speed)) {
-            return false;
-        }
-        pgassert(o.pickup().is_pickup());
-        pgassert(o.delivery().is_delivery());
-        /* P -> D */
-        pgassert(o.delivery().is_compatible_IJ(o.pickup(), speed));
-    }
-    return true;
-}
 
 Order&
 PD_Orders::operator[](size_t i) {

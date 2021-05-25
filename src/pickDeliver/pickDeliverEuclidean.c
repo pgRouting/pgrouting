@@ -38,7 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/pickDeliver/pickDeliverEuclidean_driver.h"
 
-PGDLLEXPORT Datum _pgr_pickdelivereuclidean(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum
+_pgr_pickdelivereuclidean(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_pickdelivereuclidean);
 
 

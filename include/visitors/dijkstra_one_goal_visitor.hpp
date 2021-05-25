@@ -28,11 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_VISITORS_DIJKSTRA_ONE_GOAL_VISITOR_HPP_
 #define INCLUDE_VISITORS_DIJKSTRA_ONE_GOAL_VISITOR_HPP_
 
-#if Boost_VERSION_MACRO >= 105500
 #include <boost/graph/dijkstra_shortest_paths.hpp>
-#else
-#include "boost/dijkstra_shortest_paths.hpp"
-#endif
 
 #include "visitors/found_goals.hpp"
 

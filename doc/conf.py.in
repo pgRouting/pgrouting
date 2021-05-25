@@ -164,7 +164,7 @@ html_favicon = "_static/images/favicon.ico"
 html_static_path = ["_static"]
 
 def setup(app):
-    app.add_stylesheet('custom.css')
+    app.add_css_file('custom.css')
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -322,6 +322,26 @@ linkcheck_ignore = [
     'https://www.leopark.mx/',
 
     # might not exist yet (we are generating it!)
+    'https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html',
+    'https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html',
+    'https://docs.pgrouting.org/3.2/en/pgr_randomSpanTree.html',
+    'https://docs.pgrouting.org/3.2/en/pgr_withPointsVia.html',
+    'https://docs.pgrouting.org/3.2/en/withPoints.html',
+    'https://docs.pgrouting.org/latest/en/pgr_makeConnected.html',
+    'https://docs.pgrouting.org/latest/en/coloring-family.html',
+    'https://docs.pgrouting.org/latest/en/pgr_bipartite.html',
+    'https://docs.pgrouting.org/latest/en/pgr_sequentialVertexColoring.html',
+    'https://docs.pgrouting.org/latest/en/pgr_dijkstraNear.html',
+    'https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html',
+    'https://docs.pgrouting.org/latest/en/pgr_lengauerTarjanDominatorTree.html',
+    'https://docs.pgrouting.org/latest/en/pgr_isPlanar.html',
+    'https://docs.pgrouting.org/latest/en/pgr_randomSpanTree.html',
+    'https://docs.pgrouting.org/latest/en/pgr_depthFirstSearch.html',
+    'https://docs.pgrouting.org/latest/en/traversal-family.html',
+    'https://docs.pgrouting.org/latest/en/pgr_withPointsVia.html',
+    'https://docs.pgrouting.org/latest/en/withPoints.html',
+
+
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
